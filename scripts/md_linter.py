@@ -98,6 +98,37 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 severity='warning',
                 content=stripped
             ))
+        
+        # Rule 8: Standalone em-dash markers (Formex list artifact)
+        # Em-dash (—) on its own line indicates content is on wrong line
+        if re.match(r'^\s*—\s*$', stripped):
+            issues.append(LintIssue(
+                line_num=i,
+                rule='FORMAT002',
+                message='Standalone em-dash marker (content on wrong line)',
+                severity='warning',
+                content=stripped
+            ))
+        
+        # Rule 9: Standalone parenthesized numbered markers like "(1)" or "(2)" on their own
+        if re.match(r'^\s*\(\d+\)\s*$', stripped):
+            issues.append(LintIssue(
+                line_num=i,
+                rule='FORMAT003',
+                message='Empty parenthesized number marker (content on wrong line)',
+                severity='warning',
+                content=stripped
+            ))
+        
+        # Rule 10: Standalone line-numbered markers like "1." or "2." on their own
+        if re.match(r'^\s*\d+\.\s*$', stripped):
+            issues.append(LintIssue(
+                line_num=i,
+                rule='FORMAT004',
+                message='Empty numbered line marker (content on wrong line)',
+                severity='warning',
+                content=stripped
+            ))
     
     return issues
 
