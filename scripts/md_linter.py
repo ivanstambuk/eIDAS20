@@ -141,6 +141,16 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 severity='warning',
                 content=stripped[:60] + '...' if len(stripped) > 60 else stripped
             ))
+        
+        # Rule 12: Headers starting with single quotes (Formex conversion artifact)
+        if re.match(r'^#{1,6}\s+\'', line):
+            issues.append(LintIssue(
+                line_num=i,
+                rule='FORMAT006',
+                message='Header starts with single quote (remove quote)',
+                severity='warning',
+                content=stripped[:60] + '...' if len(stripped) > 60 else stripped
+            ))
     
     return issues
 
