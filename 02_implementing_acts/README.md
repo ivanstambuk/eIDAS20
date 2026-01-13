@@ -11,8 +11,6 @@ The European Commission is mandated to adopt implementing acts to establish refe
 - **Third Batch**: July/September 2025 - Trust services and peer reviews
 - **Fourth Batch**: October/November 2025 - Conformity assessment, trusted lists, and qualified services
 
----
-
 ## ✅ First Batch (December 2024) - EUDI Wallet Implementation
 
 All converted with Formex v2 pipeline.
@@ -28,8 +26,6 @@ All converted with Formex v2 pipeline.
 
 **Entry into force**: December 24, 2024
 
----
-
 ## ✅ Second Batch (May 2025) - EUDI Wallet Operations
 
 | CELEX | Regulation | Title | Status |
@@ -40,8 +36,6 @@ All converted with Formex v2 pipeline.
 | 32025R0849 | 2025/849 | **Certified wallet list** - Commission info submission | ✅ Formex v2 |
 
 **Entry into force**: May 26, 2025
-
----
 
 ## ✅ Third Batch (July/September 2025) - Trust Services & Electronic Attestations
 
@@ -63,8 +57,6 @@ All converted with Formex v2 pipeline.
 
 **Entry into force**: August 19 - October 19, 2025
 
----
-
 ## ✅ Fourth Batch (October/November 2025) - Conformity & Qualified Services
 
 | CELEX | Regulation | Title | Status |
@@ -79,16 +71,12 @@ All converted with Formex v2 pipeline.
 
 **Entry into force**: November 16, 2025
 
----
-
 ## 📋 Draft Acts (Pending Adoption)
 
 | Topic | Status | Link |
 |-------|--------|------|
 | Formats of advanced electronic signatures and seals | 📋 Public Consultation | [Have Your Say](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14753) |
 | Remote user onboarding | 📋 Public Consultation | [Have Your Say](https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/15572) |
-
----
 
 ## Directory Structure
 
@@ -132,8 +120,6 @@ Each directory contains:
 - `{CELEX}.fmx4.zip` - Original Formex XML archive
 - `formex/` - Extracted Formex XML files
 
----
-
 ## Key Topics by Regulation
 
 ### EUDI Wallet Core
@@ -175,16 +161,12 @@ Each directory contains:
 ### Cross-Border Recognition
 - **2025/1568**: Peer review procedures for eID schemes
 
----
-
 ## EUR-Lex Access
 
 All implementing acts available via:
 ```
 https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}
 ```
-
----
 
 ## Related Resources
 

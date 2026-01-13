@@ -170,6 +170,23 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                     break
                 elif prev_stripped:  # Non-empty line that isn't ---
                     break  # Not consecutive, stop checking
+        
+        # Rule 14: Horizontal rule immediately before a header (redundant)
+        # Headers already have built-in visual separation in renderers
+        if re.match(r'^---+$', stripped):
+            # Look ahead to find if next non-blank line is a header
+            for j in range(i, min(len(lines), i + 4)):  # Check next 3 lines
+                next_stripped = lines[j].rstrip()
+                if next_stripped and not re.match(r'^---+$', next_stripped):
+                    if re.match(r'^#{1,6}\s+', next_stripped):
+                        issues.append(LintIssue(
+                            line_num=i,
+                            rule='FORMAT008',
+                            message='Horizontal rule before header (redundant - headers have built-in styling)',
+                            severity='warning',
+                            content=stripped
+                        ))
+                    break
     
     return issues
 

@@ -29,6 +29,10 @@ for search_dir in ['01_regulation', '02_implementing_acts']:
             prev = content
             content = re.sub(r'(---+\n)(\s*\n)*---+', r'---', content)
         
+        # Fix FORMAT008: Remove horizontal rules immediately before headers
+        # Matches: ---\n\n# Header or ---\n## Header etc.
+        content = re.sub(r'^---+\n(\s*\n)*(#{1,6}\s+)', r'\2', content, flags=re.MULTILINE)
+        
         if content != original:
             md_file.write_text(content, encoding='utf-8')
             print(f'Fixed: {md_file.name}')

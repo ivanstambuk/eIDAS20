@@ -554,8 +554,6 @@ def convert_formex_to_md(xml_path, output_path=None):
     # Enacting Terms header
     enacting = root.find('.//ENACTING.TERMS')
     if enacting is not None:
-        md_lines.append("---")
-        md_lines.append("")
         md_lines.append("## Enacting Terms")
         md_lines.append("")
     
