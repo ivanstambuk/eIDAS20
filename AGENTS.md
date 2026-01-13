@@ -12,32 +12,39 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - Created directory structure (`01_regulation`, `02_implementing_acts`, `03_arf`, `04_technical_specs`)
    - Created README.md with project overview
    - Created this AGENTS.md file
+   - Initialized Git repository with conventional commits
 
 2. **Regulations Downloaded**
-   - ✅ Regulation (EU) 2024/1183 (eIDAS 2.0) - Converted to Markdown
+   - ✅ Regulation (EU) 2024/1183 (eIDAS 2.0) - Converted to Markdown (`01_regulation/2024_1183_eIDAS2/`)
    
 3. **Git Repositories Cloned**
    - ✅ ARF: `eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework` → `03_arf/`
    - ✅ Technical Specs: `eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications` → `04_technical_specs/`
+
+4. **Implementing Acts Research**
+   - ✅ Created implementing acts catalog (`02_implementing_acts/README.md`)
+   - ✅ Identified First Batch (Dec 2024): 5 regulations (2024/2977, 2024/2979, 2024/2980, 2024/2981, 2024/2982)
+   - ✅ Identified Second Batch (Jul 2025): 4+ regulations (2025/847, 2025/1568, 2025/1944, 2025/1945)
 
 ### Pending Tasks
 
 1. **Regulations**
    - [ ] Download and convert Regulation (EU) 910/2014 (original eIDAS)
 
-2. **Implementing Acts**
-   - [ ] Research complete list of adopted implementing acts
-   - [ ] Download and convert each implementing act to Markdown
-   - Known acts include:
-     - Wallet technical specifications and certification
-     - Trust services requirements
-     - Trusted lists formats
-     - Conformity assessment body accreditation
-     - Electronic attestation of attributes verification
-     - And 15+ more...
+2. **Implementing Acts - First Batch (Dec 2024)**
+   - [ ] Download 2024/2977 - Person identification data and attestations
+   - [ ] Download 2024/2979 - Integrity and core functionalities
+   - [ ] Download 2024/2980 - Notifications to the Commission
+   - [ ] Download 2024/2981 - Certification of EUDI Wallets
+   - [ ] Download 2024/2982 - Protocols and interfaces
 
-3. **Organization**
-   - [ ] Create index/catalog of all implementing acts
+3. **Implementing Acts - Second Batch (Jul 2025)**
+   - [ ] Download 2025/1568 - Peer reviews
+   - [ ] Download 2025/1944 - Registered delivery services
+   - [ ] Research and download remaining regulations
+
+4. **Organization**
+   - [x] Create index/catalog of all implementing acts
    - [ ] Cross-reference documents
 
 ## Document Sources
