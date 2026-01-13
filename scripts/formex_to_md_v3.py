@@ -601,6 +601,14 @@ def convert_formex_to_md(xml_path, output_path=None):
     content = '\n'.join(md_lines)
     content = re.sub(r'\n{3,}', '\n\n', content)
     
+    # Collapse consecutive horizontal rules (---) into one
+    # Matches: ---\n\n---  or  ---\n---  etc.
+    # Apply repeatedly in case there are 3+ consecutive rules
+    prev_content = None
+    while prev_content != content:
+        prev_content = content
+        content = re.sub(r'(---+\n)(\s*\n)*---+', r'---', content)
+    
     if output_path:
         Path(output_path).write_text(content, encoding='utf-8')
         print(f"Converted: {xml_path} -> {output_path}")

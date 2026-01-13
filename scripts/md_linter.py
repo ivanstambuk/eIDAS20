@@ -152,6 +152,24 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 severity='warning',
                 content=stripped[:60] + '...' if len(stripped) > 60 else stripped
             ))
+        
+        # Rule 13: Consecutive horizontal rules (redundant separators)
+        # Check if this line is a horizontal rule and so was a recent previous line
+        if re.match(r'^---+$', stripped):
+            # Look back to find if there's another --- with only blank lines between
+            for j in range(i - 2, max(0, i - 6), -1):  # Check up to 5 lines back
+                prev_stripped = lines[j].rstrip()
+                if re.match(r'^---+$', prev_stripped):
+                    issues.append(LintIssue(
+                        line_num=i,
+                        rule='FORMAT007',
+                        message='Consecutive horizontal rule (redundant - merge with previous)',
+                        severity='warning',
+                        content=stripped
+                    ))
+                    break
+                elif prev_stripped:  # Non-empty line that isn't ---
+                    break  # Not consecutive, stop checking
     
     return issues
 

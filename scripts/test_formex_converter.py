@@ -356,6 +356,54 @@ class TestDuplicateArticleExtraction(unittest.TestCase):
             f"Found {article_49_headings} occurrences. Output:\n{output[:500]}")
 
 
+class TestPostProcessing(unittest.TestCase):
+    """Test post-processing of Markdown output."""
+    
+    def test_consecutive_horizontal_rules_collapsed(self):
+        """
+        Consecutive horizontal rules (---) with only whitespace between should 
+        be collapsed into a single rule. This is FORMAT007.
+        """
+        import re
+        
+        # Simulate the post-processing regex
+        input_md = "Some content\n\n---\n\n---\n\nMore content"
+        
+        # Apply the same regex used in convert_formex_to_md
+        output_md = re.sub(r'(---+\n)(\s*\n)*---+', r'---', input_md)
+        
+        # Count horizontal rules
+        hr_count = output_md.count('---')
+        self.assertEqual(hr_count, 1, 
+            f"Consecutive --- should be collapsed to one. Got: {output_md}")
+    
+    def test_multiple_consecutive_hrs_collapsed(self):
+        """Three or more consecutive --- should also collapse to one."""
+        import re
+        
+        input_md = "Content\n---\n\n---\n\n---\nMore content"
+        output_md = input_md
+        
+        # Apply repeatedly until no more changes (as done in the converter)
+        prev = None
+        while prev != output_md:
+            prev = output_md
+            output_md = re.sub(r'(---+\n)(\s*\n)*---+', r'---', output_md)
+        
+        # Should collapse to single ---
+        self.assertEqual(output_md.count('---'), 1)
+    
+    def test_separated_hrs_preserved(self):
+        """Non-consecutive --- (with content between) should be preserved."""
+        import re
+        
+        input_md = "Content\n---\nSection 1\n---\nSection 2"
+        output_md = re.sub(r'(---+\n)(\s*\n)*---+', r'---', input_md)
+        
+        # Both --- should remain (they have content between them)
+        self.assertEqual(output_md.count('---'), 2)
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)
