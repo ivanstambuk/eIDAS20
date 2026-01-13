@@ -6,124 +6,137 @@ This directory contains the Commission Implementing Regulations (CIRs) adopted u
 
 The European Commission is mandated to adopt implementing acts to establish reference standards, specifications, and procedures for the European Digital Identity Framework. These implementing acts are adopted in phases:
 
-- **First Batch**: November 2024 (published December 4, 2024)
-- **Second Batch**: May-July 2025
+- **First Batch**: December 2024 (published December 4, 2024) - EUDI Wallet core
+- **Second Batch - May 2025**: EUDI Wallet security and operations
+- **Third Batch - July 2025**: Trust services and peer reviews
+- **Fourth Batch - October 2025**: Conformity assessment and trusted lists
 
 ---
 
-## First Batch (December 2024) - EUDI Wallet Implementation
+## ✅ First Batch (December 2024) - EUDI Wallet Implementation
 
-These four implementing regulations form the core technical framework for EUDI Wallet:
+All converted with Formex v2 pipeline.
 
-| CELEX | Number | Date | Title | Status |
-|-------|--------|------|-------|--------|
-| 32024R2977 | 2024/2977 | 28 Nov 2024 | Person identification data and electronic attestations of attributes | 📋 To Download |
-| 32024R2979 | 2024/2979 | 28 Nov 2024 | Integrity and core functionalities of European Digital Identity Wallets | 📋 To Download |
-| 32024R2980 | 2024/2980 | 28 Nov 2024 | Notifications to the Commission concerning the EUDI Wallet ecosystem | 📋 To Download |
-| 32024R2981 | 2024/2981 | 28 Nov 2024 | Certification of European Digital Identity Wallets | 📋 To Download |
-| 32024R2982 | 2024/2982 | 28 Nov 2024 | Protocols and interfaces to be supported by the European Digital Identity Framework | 📋 To Download |
+| CELEX | Regulation | Title | Status |
+|-------|------------|-------|--------|
+| 32024R2977 | 2024/2977 | Person identification data and electronic attestations of attributes | ✅ Formex v2 |
+| 32024R2978 | 2024/2978 | Trusted lists publication | ✅ Formex v2 |
+| 32024R2979 | 2024/2979 | Integrity and core functionalities of EUDI Wallets | ✅ Formex v2 |
+| 32024R2980 | 2024/2980 | Notifications to the Commission | ✅ Formex v2 |
+| 32024R2981 | 2024/2981 | Certification of EUDI Wallets | ✅ Formex v2 |
+| 32024R2982 | 2024/2982 | Protocols and interfaces | ✅ Formex v2 |
 
-**Entry into force**: December 24, 2024 (20 days after publication)
-
----
-
-## Second Batch (July 2025) - Trust Services & Electronic Attestations
-
-| CELEX | Number | Date | Title | Status |
-|-------|--------|------|-------|--------|
-| 32025R0847 | 2025/847 | 6 May 2025 | [Details TBD] | 📋 To Research |
-| 32025R1568 | 2025/1568 | 29 Jul 2025 | Peer reviews of electronic identification schemes | 📋 To Download |
-| 32025R1944 | 2025/1944 | 29 Sep 2025 | Electronic registered delivery services | 📋 To Download |
-| 32025R1945 | 2025/1945 | 2025 | [Details TBD] | 📋 To Research |
+**Entry into force**: December 24, 2024
 
 ---
 
-## Detailed Descriptions
+## ✅ Second Batch - May 2025 (EUDI Wallet Operations)
 
-### 2024/2977 - Person Identification Data and Attestations
+| CELEX | Regulation | Title | Status |
+|-------|------------|-------|--------|
+| 32025R0847 | 2025/847 | **Security breach responses** for EUDI Wallets | ✅ Downloaded |
+| 32025R0848 | 2025/848 | **Relying party registration** for EUDI Wallets | ✅ Downloaded |
+| 32025R0849 | 2025/849 | **Certified wallet list** - Commission info submission | ✅ Downloaded |
 
-**Full Title**: Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets
-
-**Scope**: 
-- Lifecycle management (issuance, verification, revocation, suspension) of personal identification data
-- Electronic attestations of attributes within wallets
-- Disclosure of credentials to relying parties
-
-**Legal Basis**: Article 5a(23) of Regulation (EU) No 910/2014
+**Entry into force**: May 26, 2025
 
 ---
 
-### 2024/2979 - Integrity and Core Functionalities
+## ✅ Third Batch - July/September 2025 (Trust Services & Peer Reviews)
 
-**Full Title**: Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets
+| CELEX | Regulation | Title | Status |
+|-------|------------|-------|--------|
+| 32025R1568 | 2025/1568 | **Peer reviews** of electronic identification schemes | ✅ Downloaded |
+| 32025R1944 | 2025/1944 | **Electronic registered delivery services** | ✅ Downloaded |
+| 32025R1945 | 2025/1945 | **Signature/seal validation** requirements | ✅ Downloaded |
 
-**Scope**:
-- Core functional requirements for EUDI Wallets
-- Integrity requirements for wallet solutions
-- Security requirements
-
-**Legal Basis**: Article 5a(23) of Regulation (EU) No 910/2014
-
----
-
-### 2024/2980 - Notifications to the Commission
-
-**Full Title**: Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem
-
-**Scope**:
-- Member States' notification requirements
-- Trusted entities registration
-- Commission list maintenance
-
-**Legal Basis**: Article 5a(23) of Regulation (EU) No 910/2014
+**Entry into force**: August 19, 2025 (1568), October 19, 2025 (1944, 1945)
 
 ---
 
-### 2024/2981 - Certification of EUDI Wallets
+## ✅ Fourth Batch - October 2025 (Conformity & Trusted Lists)
 
-**Full Title**: Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets
+| CELEX | Regulation | Title | Status |
+|-------|------------|-------|--------|
+| 32025R2160 | 2025/2160 | **Non-qualified trust services** risk policies | ✅ Downloaded |
+| 32025R2162 | 2025/2162 | **CAB accreditation** - Conformity assessment bodies | ✅ Downloaded |
+| 32025D2164 | 2025/2164 | **Trusted lists** templates (Decision) | ✅ Downloaded |
 
-**Scope**:
-- Certification framework for EUDI Wallets
-- Functional, cybersecurity, and data protection requirements
-- National certification scheme requirements
-- Assurance level high requirements
-
-**Legal Basis**: Article 5c(6) of Regulation (EU) No 910/2014
+**Entry into force**: November 16, 2025
 
 ---
 
-### 2024/2982 - Protocols and Interfaces
+## Directory Structure
 
-**Full Title**: Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework
-
-**Scope**:
-- Technical protocols for EUDI Wallet interoperability
-- Standard interfaces for issuance, verification, and sharing
-- Communication protocols
-
-**Legal Basis**: Article 5a(23) of Regulation (EU) No 910/2014
-
----
-
-## EUR-Lex URLs
-
-All implementing acts can be accessed via EUR-Lex using the pattern:
 ```
-https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:3{CELEX}
+02_implementing_acts/
+├── 2024_2977_PID_and_EAA/              # Person ID & Attestations
+├── 2024_2978_TSP_List_Publication/     # Trust Service Provider Lists
+├── 2024_2979_Integrity_Core_Functions/ # Wallet Integrity
+├── 2024_2980_Notifications/            # Commission Notifications
+├── 2024_2981_Certification/            # Wallet Certification
+├── 2024_2982_Protocols_Interfaces/     # Technical Protocols
+├── 2025_0847_Security_Breach_Response/ # Security Incidents
+├── 2025_0848_Relying_Party_Registration/ # RP Registration
+├── 2025_0849_Certified_Wallet_List/    # Certified Wallets
+├── 2025_1568_Peer_Reviews_eID/         # eID Scheme Reviews
+├── 2025_1944_Electronic_Delivery/      # ERDS Standards
+├── 2025_1945_Signature_Validation/     # Signature Validation
+├── 2025_2160_Non_Qualified_TS_Risks/   # Risk Management
+├── 2025_2162_CAB_Accreditation/        # CAB Requirements
+├── 2025_2164_Trusted_Lists/            # TL Templates
+└── README.md
 ```
 
-Example:
-- **2024/2977**: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R2977
+Each directory contains:
+- `{CELEX}.md` - Full regulation text in Markdown
+- `{CELEX}.fmx4.zip` - Original Formex XML archive
+- `formex/` - Extracted Formex XML files
+
+---
+
+## Key Topics by Regulation
+
+### EUDI Wallet Core
+- **2024/2977**: PID lifecycle, EAA management, credential disclosure
+- **2024/2979**: Core wallet functions, security requirements
+- **2024/2981**: Certification framework, assurance levels
+- **2024/2982**: Technical protocols, interoperability
+
+### EUDI Wallet Operations
+- **2025/0847**: Incident response, suspension/withdrawal procedures
+- **2025/0848**: Relying party registration requirements
+- **2025/0849**: Certified wallet publication to Commission
+
+### Trust Services
+- **2024/2978**: Trusted lists publication format
+- **2025/1944**: Electronic registered delivery service standards
+- **2025/1945**: Signature and seal validation procedures
+- **2025/2160**: Risk management for non-qualified services
+- **2025/2162**: Conformity assessment body accreditation
+- **2025/2164**: Common trusted list templates
+
+### Cross-Border Recognition
+- **2025/1568**: Peer review procedures for eID schemes
+
+---
+
+## EUR-Lex Access
+
+All implementing acts available via:
+```
+https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}
+```
 
 ---
 
 ## Related Resources
 
-- **Architecture Reference Framework (ARF)**: See `../03_arf/`
-- **Technical Specifications**: See `../04_technical_specs/`
-- **Main Regulation**: See `../01_regulation/2024_1183_eIDAS2/`
+- **Architecture Reference Framework**: `../03_arf/`
+- **Technical Specifications**: `../04_technical_specs/`
+- **Main Regulation (eIDAS 2.0)**: `../01_regulation/2024_1183_eIDAS2/`
 
 ---
 
 *Last updated: 2026-01-13*
+*Total: 15 implementing acts downloaded*
