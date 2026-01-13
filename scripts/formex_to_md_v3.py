@@ -124,6 +124,8 @@ def format_quoted_article(article_elem, indent=""):
     ti_art = article_elem.find('TI.ART')
     if ti_art is not None:
         title = clean_text(get_element_text(ti_art))
+        # Strip leading/trailing quote marks - the blockquote context handles quoting
+        title = title.strip("'\"")
         if title:
             lines.append(f"{indent}> *{title}*")
             lines.append(f"{indent}>")  # Blank line for separation
