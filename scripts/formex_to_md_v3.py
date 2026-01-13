@@ -361,9 +361,35 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                             article_lines = format_quoted_article(quot_child, indent)
                             lines.extend(article_lines)
                             had_blockquote_content = True
+                        elif quot_child.tag == 'LIST':
+                            # Handle nested lists inside QUOT.S - each item on separate line
+                            for list_item in quot_child.findall('ITEM'):
+                                np = list_item.find('NP')
+                                if np is not None:
+                                    no_p = np.find('NO.P')
+                                    item_num = get_element_text(no_p).strip() if no_p is not None else ""
+                                    # Strip leading/trailing quotes from item numbers
+                                    item_num = item_num.strip("'\"")
+                                    
+                                    txt = np.find('TXT')
+                                    if txt is not None:
+                                        item_text = clean_text(get_element_text(txt))
+                                    else:
+                                        # Get text after NO.P
+                                        item_text = ""
+                                        if no_p is not None and no_p.tail:
+                                            item_text = clean_text(no_p.tail)
+                                    
+                                    if item_num or item_text:
+                                        if had_blockquote_content:
+                                            lines.append(f"{indent}>")
+                                        lines.append(f"{indent}> {item_num} {item_text}".strip())
+                                        had_blockquote_content = True
                         else:
-                            # Generic text extraction
+                            # Generic text extraction for other elements
                             child_text = clean_text(get_element_text(quot_child))
+                            # Strip leading/trailing quotes
+                            child_text = child_text.strip("'\"")
                             if child_text:
                                 if had_blockquote_content:
                                     lines.append(f"{indent}>")

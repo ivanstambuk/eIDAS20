@@ -726,6 +726,48 @@ class TestBlockquoteParagraphNumbers(unittest.TestCase):
         self.assertIn("This Regulation applies", output, "Paragraph text should be present")
 
 
+class TestNestedListInBlockquote(unittest.TestCase):
+    """Test that LIST elements inside QUOT.S are properly formatted."""
+    
+    def test_list_items_on_separate_lines(self):
+        """
+        When QUOT.S contains a LIST, each ITEM should be on its own line,
+        not concatenated together on a single line.
+        """
+        xml = '''<NP>
+            <NO.P>(a)</NO.P>
+            <TXT>points (1) to (3) are replaced by the following:</TXT>
+            <P>
+                <QUOT.S LEVEL="1">
+                    <LIST TYPE="ARAB">
+                        <ITEM><NP><NO.P>'(1)</NO.P><TXT>first definition;</TXT></NP></ITEM>
+                        <ITEM><NP><NO.P>(2)</NO.P><TXT>second definition;</TXT></NP></ITEM>
+                        <ITEM><NP><NO.P>(3)</NO.P><TXT>third definition;</TXT></NP></ITEM>
+                    </LIST>
+                </QUOT.S>
+            </P>
+        </NP>'''
+        
+        list_xml = f'<LIST><ITEM>{xml}</ITEM></LIST>'
+        elem = ET.fromstring(list_xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # Each item should be on a separate line (count blockquote lines)
+        blockquote_lines = [l for l in lines if l.strip().startswith('>')]
+        self.assertGreaterEqual(len(blockquote_lines), 3, 
+            f"Should have at least 3 blockquote lines (one per item), got {len(blockquote_lines)}")
+        
+        # Leading quotes should be stripped from item numbers
+        self.assertNotIn("'(1)", output, "Leading quote should be stripped from first item")
+        self.assertIn("(1)", output, "First item number should be present")
+        self.assertIn("(2)", output, "Second item number should be present")
+        self.assertIn("(3)", output, "Third item number should be present")
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)
