@@ -54,12 +54,14 @@ def get_element_text(elem, include_tail=False):
         # Skip processing instructions
         if isinstance(tag, str):
             # Handle footnotes/notes - convert to inline reference
+            # IMPORTANT: Escape square brackets to prevent Markdown link interpretation
             if tag == 'NOTE':
                 note_id = child.get('NOTE.ID', '')
                 note_text = get_element_text(child)
-                # Format as inline footnote
+                # Format as inline footnote with escaped brackets
                 if note_text:
-                    parts.append(f" [{note_text.strip()}]")
+                    escaped_text = note_text.strip().replace('[', '\\[').replace(']', '\\]')
+                    parts.append(f" \\[{escaped_text}\\]")
             # Handle date elements
             elif tag == 'DATE':
                 parts.append(get_element_text(child))
@@ -329,6 +331,10 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                     had_blockquote_content = False
                     for quot_child in quot_s:
                         if quot_child.tag == 'PARAG':
+                            # Get paragraph number from NO.PARAG
+                            no_parag = quot_child.find('NO.PARAG')
+                            para_num = get_element_text(no_parag).strip() if no_parag is not None else ""
+                            
                             # Get ALINEA text from PARAG
                             for alinea in quot_child.findall('ALINEA'):
                                 alinea_text = clean_text(get_element_text(alinea))
@@ -336,7 +342,12 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                                     # Add blank > line between consecutive paragraphs
                                     if had_blockquote_content:
                                         lines.append(f"{indent}>")
-                                    lines.append(f"{indent}> {alinea_text}")
+                                    # Include paragraph number if present
+                                    if para_num:
+                                        lines.append(f"{indent}> {para_num} {alinea_text}")
+                                        para_num = ""  # Only add once
+                                    else:
+                                        lines.append(f"{indent}> {alinea_text}")
                                     had_blockquote_content = True
                         elif quot_child.tag == 'ARTICLE':
                             # Handle nested articles with proper formatting

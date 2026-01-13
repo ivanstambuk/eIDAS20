@@ -69,11 +69,13 @@ class TestGetElementText(unittest.TestCase):
         self.assertIn('**bold content**', result)
     
     def test_note_inline(self):
-        """NOTE elements should be converted to inline references."""
+        """NOTE elements should be converted to inline references with escaped brackets."""
         xml = '<P>Text with footnote<NOTE NOTE.ID="1">Footnote text here</NOTE> continues</P>'
         elem = ET.fromstring(xml)
         result = get_element_text(elem)
-        self.assertIn('[Footnote text here]', result)
+        # Brackets are escaped to prevent Markdown link interpretation
+        self.assertIn('\\[Footnote text here\\]', result)
+
     
     def test_quote_markers(self):
         """QUOT.START and QUOT.END should produce quote characters."""
@@ -630,6 +632,96 @@ class TestQuotedArticleFormatting(unittest.TestCase):
         self.assertNotIn('<pre>- (a)', html,
             "List items should not be in pre blocks")
 
+
+
+class TestFootnoteEscaping(unittest.TestCase):
+    """Test that footnote square brackets are escaped to prevent Markdown link interpretation."""
+    
+    def test_footnote_brackets_escaped(self):
+        """
+        BUG FIX: Footnote text in square brackets [like this] was being
+        interpreted as Markdown links when followed by certain text patterns.
+        
+        The fix escapes the brackets: \\[like this\\]
+        """
+        xml = '''<P>Text with footnote<NOTE NOTE.ID="E0001"><P>Regulation (EU) 2016/679 (OJ L 119, 4.5.2016, p. 1).</P></NOTE> continues</P>'''
+        elem = ET.fromstring(xml)
+        result = get_element_text(elem)
+        
+        # The brackets should be escaped
+        self.assertIn('\\[', result, "Opening bracket should be escaped")
+        self.assertIn('\\]', result, "Closing bracket should be escaped")
+        # The note text should still be present
+        self.assertIn('Regulation (EU) 2016/679', result)
+    
+    def test_nested_brackets_in_footnote_escaped(self):
+        """
+        Footnotes containing nested brackets (e.g., OJ references) should 
+        have ALL brackets escaped.
+        """
+        xml = '''<P>Reference<NOTE NOTE.ID="E0001"><P>See [OJ L 119] for details.</P></NOTE>.</P>'''
+        elem = ET.fromstring(xml)
+        result = get_element_text(elem)
+        
+        # All brackets should be escaped
+        # The outer NOTE brackets + the inner [OJ L 119] brackets
+        self.assertEqual(result.count('\\['), 2, "All opening brackets should be escaped")
+        self.assertEqual(result.count('\\]'), 2, "All closing brackets should be escaped")
+    
+    def test_footnote_not_rendered_as_link(self):
+        """
+        When the Markdown is rendered, escaped brackets should appear as
+        literal text, not as links.
+        """
+        try:
+            import markdown
+        except ImportError:
+            self.skipTest("markdown module not installed")
+        
+        # Simulate what the converter produces
+        test_md = "This Regulation \\[Regulation (EU) 2016/679\\]."
+        html = markdown.markdown(test_md)
+        
+        # Should NOT contain <a> tag (link)
+        self.assertNotIn('<a ', html, "Escaped brackets should not create links")
+        # The bracketed text should be visible
+        self.assertIn('[Regulation (EU) 2016/679]', html, 
+            "Bracketed text should be visible (without escapes in rendered HTML)")
+
+
+class TestBlockquoteParagraphNumbers(unittest.TestCase):
+    """Test that paragraph numbers are included in blockquoted content."""
+    
+    def test_paragraph_number_in_blockquote(self):
+        """
+        Paragraph numbers (from NO.PARAG) should be included in blockquoted
+        replacement text from QUOT.S blocks.
+        """
+        xml = '''<NP>
+            <NO.P>(a)</NO.P>
+            <TXT>paragraph 1 is replaced by the following:</TXT>
+            <P>
+                <QUOT.S LEVEL="1">
+                    <PARAG IDENTIFIER="001.001">
+                        <NO.PARAG>'1.</NO.PARAG>
+                        <ALINEA>This Regulation applies to all services.</ALINEA>
+                    </PARAG>
+                </QUOT.S>
+            </P>
+        </NP>'''
+        
+        # Create a wrapper LIST/ITEM for the function
+        list_xml = f'<LIST><ITEM>{xml}</ITEM></LIST>'
+        elem = ET.fromstring(list_xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # The blockquote should include the paragraph number
+        self.assertIn("'1.", output, "Paragraph number should be present in blockquote")
+        self.assertIn("This Regulation applies", output, "Paragraph text should be present")
 
 
 if __name__ == '__main__':
