@@ -129,6 +129,18 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 severity='warning',
                 content=stripped
             ))
+        
+        # Rule 11: Letter markers not formatted as list items
+        # Detects "(a) text" that should be "- (a) text" for proper nesting
+        # Only warns if there's leading whitespace (suggesting it should be nested)
+        if re.match(r'^\s+\([a-z]+\)\s+\S', line) and not re.match(r'^\s+-\s+\([a-z]+\)', line):
+            issues.append(LintIssue(
+                line_num=i,
+                rule='FORMAT005',
+                message='Letter marker should be list item for proper indentation (add "- " prefix)',
+                severity='warning',
+                content=stripped[:60] + '...' if len(stripped) > 60 else stripped
+            ))
     
     return issues
 
