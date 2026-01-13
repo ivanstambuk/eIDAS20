@@ -34,7 +34,8 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
     
     if re.search(r'\*\*CELEX:\*\*\s*\d+[A-Z]\d+', first_lines):
         has_celex = True
-    if re.search(r'\*\*Source:\*\*\s*https?://eur-lex\.europa\.eu/', first_lines):
+    # Accept both direct URL and markdown link format: [EUR-Lex](https://...)
+    if re.search(r'\*\*Source:\*\*\s*(\[.*?\]\()?\s*https?://eur-lex\.europa\.eu/', first_lines):
         has_source = True
     
     # Only check for legal documents (regulations, directives, implementing acts)
