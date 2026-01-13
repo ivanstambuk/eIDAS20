@@ -594,11 +594,41 @@ class TestQuotedArticleFormatting(unittest.TestCase):
         if md_file.exists():
             content = md_file.read_text(encoding='utf-8')
             # The file should have blank > lines between consecutive blockquote paragraphs
-            # Pattern: "    >\n    >" where the first > is blank separator
-            self.assertIn('    >\n    >', content,
+            # Pattern: ">\n>" where the first > is blank separator (no indent now)
+            self.assertIn('>\n>', content,
                 "Multi-paragraph blockquotes should have blank > separator lines")
         else:
             self.skipTest("32024R1183.md not available")
+
+    def test_html_structure_validation(self):
+        """
+        Programmatic validation that the Markdown renders to proper HTML structure.
+        This catches issues where content renders as code blocks instead of lists.
+        """
+        try:
+            import markdown
+        except ImportError:
+            self.skipTest("markdown module not installed")
+        
+        from pathlib import Path
+        
+        md_file = Path('01_regulation/2024_1183_eIDAS2_Amending/32024R1183.md')
+        if not md_file.exists():
+            self.skipTest("32024R1183.md not available")
+        
+        md_content = md_file.read_text(encoding='utf-8')
+        html = markdown.markdown(md_content, extensions=['extra'])
+        
+        # Validate proper HTML structure
+        self.assertIn('<blockquote>', html, "Blockquotes should render as <blockquote> tags")
+        self.assertIn('<ul>', html, "Lists should render as <ul> tags")
+        self.assertIn('<li>', html, "List items should render as <li> tags")
+        
+        # Lists should NOT be rendered as code blocks
+        self.assertNotIn('<code>- (a)', html, 
+            "List items should not be in code blocks")
+        self.assertNotIn('<pre>- (a)', html,
+            "List items should not be in pre blocks")
 
 
 
