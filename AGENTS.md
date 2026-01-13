@@ -32,10 +32,11 @@ d:\aab\eIDAS20\
 ├── 04_technical_specs/                # Standards & Tech Specs (GitHub)
 ├── scripts/                           # Conversion & validation utilities
 │   ├── eurlex_formex.py              # EUR-Lex Formex XML downloader
-│   ├── formex_to_md_v2.py            # Formex XML → Markdown converter
+│   ├── formex_to_md_v3.py            # Formex XML → Markdown converter (v3)
+│   ├── test_formex_converter.py      # Unit tests for converter
 │   ├── md_linter.py                  # Markdown quality checker
-│   ├── add_headers.py                # Metadata header injection
-│   └── fix_list_markers.py           # FORMAT001 list marker fixer
+│   └── add_headers.py                # Metadata header injection
+
 ├── AGENTS.md                          # This file (AI context)
 ├── README.md                          # Project overview
 └── TRACKER.md                         # Work session tracker
@@ -89,6 +90,47 @@ pandoc -f html -t markdown --wrap=none -o file.md file.html
 python scripts/md_linter.py --dir 01_regulation
 python scripts/md_linter.py --dir 02_implementing_acts
 ```
+
+### 🚨 MANDATORY: Test-Driven Conversion Rule
+
+**Every edge case discovered during conversion MUST be:**
+1. **Fixed in the conversion script** (`formex_to_md_v3.py`) - NOT via post-processing scripts
+2. **Accompanied by a unit test** in `test_formex_converter.py` that reproduces and verifies the fix
+
+**Rationale**: Post-processing scripts are fragile, document-specific workarounds. Fixing issues at the source ensures:
+- All documents benefit from the fix
+- Regressions are caught by tests
+- The conversion pipeline remains maintainable
+
+**Example**: If a date like "21 May 2026" is being truncated:
+- ✅ DO: Find the bug in `formex_to_md_v3.py`, fix it, add a test
+- ❌ DON'T: Write a post-processing script to patch the output
+
+**Running tests**:
+```bash
+python scripts/test_formex_converter.py
+```
+
+## Markdown Formatting Rules
+
+For amending regulations and legal documents with hierarchical amendments:
+
+1. **Blockquote Rule for Amendments**: 
+   - **Instruction text** (e.g., "(a) paragraph 1 is replaced by the following:") → **NO blockquote** (normal text)
+   - **Actual replacement content** (e.g., "'1. This Regulation applies to...") → **IS blockquote** (indented with `>`)
+   
+   Example:
+   ```markdown
+   **(1)** Article 1 is replaced by the following:
+   
+   (a) paragraph 1 is replaced by the following:
+   > '1. This Regulation applies to electronic identification schemes...';
+   
+   (b) paragraph 3 is replaced by the following:
+   > '3. This Regulation does not affect Union or national law...';
+   ```
+
+2. **Nested Content**: Use double blockquotes (`>>`) for content nested within blockquoted sections (e.g., sub-points within a replaced article).
 
 ## Key Terminology
 
