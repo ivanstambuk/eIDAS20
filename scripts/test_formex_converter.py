@@ -844,6 +844,64 @@ class TestBulletPointNesting(unittest.TestCase):
             f"Blockquote indent ({blockquote_indent}) should be greater than bullet indent ({bullet_indent})")
 
 
+class TestDivisionInBlockquote(unittest.TestCase):
+    """Test that DIVISION elements inside QUOT.S are properly structured."""
+    
+    def test_division_with_articles_properly_separated(self):
+        """
+        DIVISION containing section title and multiple articles should be
+        formatted with proper separation, not flattened into one line.
+        """
+        xml = '''<NP>
+            <NO.P>(5)</NO.P>
+            <TXT>the following section is inserted:</TXT>
+            <P>
+                <QUOT.S LEVEL="1">
+                    <DIVISION>
+                        <TITLE>SECTION 1 EUROPEAN DIGITAL IDENTITY WALLET</TITLE>
+                        <ARTICLE IDENTIFIER="005A">
+                            <TI.ART>Article 5a</TI.ART>
+                            <STI.ART>European Digital Identity Wallets</STI.ART>
+                            <PARAG IDENTIFIER="005A.001">
+                                <NO.PARAG>1.</NO.PARAG>
+                                <ALINEA>First paragraph of Article 5a.</ALINEA>
+                            </PARAG>
+                        </ARTICLE>
+                        <ARTICLE IDENTIFIER="005B">
+                            <TI.ART>Article 5b</TI.ART>
+                            <STI.ART>Relying Parties</STI.ART>
+                            <PARAG IDENTIFIER="005B.001">
+                                <NO.PARAG>1.</NO.PARAG>
+                                <ALINEA>First paragraph of Article 5b.</ALINEA>
+                            </PARAG>
+                        </ARTICLE>
+                    </DIVISION>
+                </QUOT.S>
+            </P>
+        </NP>'''
+        
+        list_xml = f'<LIST><ITEM>{xml}</ITEM></LIST>'
+        elem = ET.fromstring(list_xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # Section title should be present
+        self.assertIn("SECTION 1", output, "Section title should be present")
+        
+        # Both articles should be present
+        self.assertIn("Article 5a", output, "Article 5a should be present")
+        self.assertIn("Article 5b", output, "Article 5b should be present")
+        
+        # Articles should be on separate lines (not all concatenated)
+        # Count lines containing article references
+        article_lines = [l for l in lines if 'Article 5a' in l or 'Article 5b' in l]
+        self.assertGreaterEqual(len(article_lines), 2, 
+            f"Articles should be on separate lines, but found {len(article_lines)} article lines")
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)

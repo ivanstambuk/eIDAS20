@@ -395,6 +395,26 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                                             lines.append(f"{bullet_indent}>")
                                         lines.append(f"{bullet_indent}> {item_num} {item_text}".rstrip())
                                         had_blockquote_content = True
+                        elif quot_child.tag == 'DIVISION':
+                            # Handle DIVISION elements - contain section title and multiple articles
+                            # Process TITLE
+                            title_elem = quot_child.find('TITLE')
+                            if title_elem is not None:
+                                title_text = clean_text(get_element_text(title_elem))
+                                if title_text:
+                                    if had_blockquote_content:
+                                        lines.append(f"{bullet_indent}>")
+                                    lines.append(f"{bullet_indent}> **{title_text}**")
+                                    lines.append(f"{bullet_indent}>")
+                                    had_blockquote_content = True
+                            
+                            # Process all ARTICLE elements within DIVISION
+                            for article in quot_child.findall('ARTICLE'):
+                                if had_blockquote_content:
+                                    lines.append(f"{bullet_indent}>")
+                                article_lines = format_quoted_article(article, bullet_indent)
+                                lines.extend(article_lines)
+                                had_blockquote_content = True
                         else:
                             # Generic text extraction for other elements
                             child_text = clean_text(get_element_text(quot_child))
