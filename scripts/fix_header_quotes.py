@@ -20,6 +20,10 @@ def fix_headers(base_dirs):
             # Pattern: ### 'Article -> ### Article
             content = re.sub(r"^(#{1,6})\s*'(.+)$", r'\1 \2', content, flags=re.MULTILINE)
             
+            # Remove leading single quotes from regular text lines
+            # Pattern: '(a) text -> (a) text
+            content = re.sub(r"^'(.+)$", r'\1', content, flags=re.MULTILINE)
+            
             if content != original:
                 md_file.write_text(content, encoding='utf-8')
                 print(f'Fixed: {md_file.name}')
