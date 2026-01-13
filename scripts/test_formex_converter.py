@@ -402,6 +402,81 @@ class TestPostProcessing(unittest.TestCase):
         
         # Both --- should remain (they have content between them)
         self.assertEqual(output_md.count('---'), 2)
+    
+    def test_hr_before_header_removed(self):
+        """
+        FORMAT008: Horizontal rule immediately before a header should be removed.
+        Headers have built-in visual styling, so preceding HRs are redundant.
+        """
+        import re
+        
+        # Test H1 header
+        input_md = "Some content\n\n---\n\n# ANNEXES\n\nMore content"
+        # Apply the fix regex from fix_format_issues.py
+        output_md = re.sub(r'^---+\n(\s*\n)*(#{1,6}\s+)', r'\2', input_md, flags=re.MULTILINE)
+        
+        self.assertNotIn('---', output_md, 
+            "HR before H1 header should be removed")
+        self.assertIn('# ANNEXES', output_md,
+            "Header should be preserved")
+    
+    def test_hr_before_h2_header_removed(self):
+        """FORMAT008: HR before H2 header should also be removed."""
+        import re
+        
+        input_md = "Article content\n\n---\n\n## Enacting Terms\n\nTerms here"
+        output_md = re.sub(r'^---+\n(\s*\n)*(#{1,6}\s+)', r'\2', input_md, flags=re.MULTILINE)
+        
+        self.assertNotIn('---', output_md)
+        self.assertIn('## Enacting Terms', output_md)
+    
+    def test_hr_before_non_header_preserved(self):
+        """HR before regular text (not a header) should be preserved."""
+        import re
+        
+        input_md = "Article 52\n\n---\n\nThis Regulation shall be binding"
+        output_md = re.sub(r'^---+\n(\s*\n)*(#{1,6}\s+)', r'\2', input_md, flags=re.MULTILINE)
+        
+        # HR should remain since next line is not a header
+        self.assertIn('---', output_md)
+        self.assertIn('This Regulation shall be binding', output_md)
+    
+    def test_converter_no_hr_before_enacting_terms(self):
+        """
+        The converter should NOT output --- before the Enacting Terms header.
+        Headers provide their own visual separation.
+        """
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Minimal valid Formex XML with ENACTING.TERMS
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <ACT>
+            <TITLE><TI><P>Test Regulation</P></TI></TITLE>
+            <ENACTING.TERMS>
+                <ARTICLE>
+                    <TI.ART>Article 1</TI.ART>
+                    <PARAG><ALINEA>Test content.</ALINEA></PARAG>
+                </ARTICLE>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        # Write to temp file and convert
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # Check that there's no "---" immediately before "## Enacting Terms"
+            self.assertIn('## Enacting Terms', result,
+                "Enacting Terms header should be present")
+            self.assertNotIn('---\n\n## Enacting Terms', result,
+                "There should be no HR immediately before Enacting Terms header")
+        finally:
+            os.unlink(temp_path)
 
 
 if __name__ == '__main__':
