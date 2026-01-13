@@ -38,30 +38,6 @@ The eIDAS 2.0 regulatory reference library is **100% complete**:
 
 ---
 
-## Reference Information
-
-### Key Terminology
-
-| Abbrev | Meaning |
-|--------|---------|
-| CIR | Commission Implementing Regulation |
-| EUDI | European Digital Identity |
-| ARF | Architecture and Reference Framework |
-| QEAA | Qualified Electronic Attestation of Attributes |
-| QTSP | Qualified Trust Service Provider |
-| PID | Person Identification Data |
-
-### Git Commands
-
-```powershell
-cd "d:\aab\eIDAS20"
-& 'C:\Program Files\Git\bin\git.exe' status
-& 'C:\Program Files\Git\bin\git.exe' add .
-& 'C:\Program Files\Git\bin\git.exe' commit -m "type: description"
-```
-
----
-
 ## Session History
 
 | Date | Summary |
