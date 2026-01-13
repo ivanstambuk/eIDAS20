@@ -91,25 +91,39 @@ python scripts/md_linter.py --dir 01_regulation
 python scripts/md_linter.py --dir 02_implementing_acts
 ```
 
-### 🚨 MANDATORY: Test-Driven Conversion Rule
+### 🚨 MANDATORY: Test-Driven Development Rule (Rule 70)
 
-**Every edge case discovered during conversion MUST be:**
-1. **Fixed in the conversion script** (`formex_to_md_v3.py`) - NOT via post-processing scripts
-2. **Accompanied by a unit test** in `test_formex_converter.py` that reproduces and verifies the fix
+**Every change to the conversion script (`formex_to_md_v3.py`) or linter (`md_linter.py`) MUST be:**
+1. **Fixed in the source script** - NOT via post-processing workarounds
+2. **Accompanied by a unit test** in `test_formex_converter.py` that reproduces and verifies the change
+
+This applies to:
+- ✅ Bug fixes (e.g., date extraction, duplicate content)
+- ✅ New features (e.g., FORMAT008 rule for HRs before headers)
+- ✅ Behavioral changes (e.g., removing `---` before headers)
+- ✅ Edge cases discovered during conversion
 
 **Rationale**: Post-processing scripts are fragile, document-specific workarounds. Fixing issues at the source ensures:
 - All documents benefit from the fix
 - Regressions are caught by tests
 - The conversion pipeline remains maintainable
 
-**Example**: If a date like "21 May 2026" is being truncated:
+**Example - Bug Fix**:
+If a date like "21 May 2026" is being truncated:
 - ✅ DO: Find the bug in `formex_to_md_v3.py`, fix it, add a test
 - ❌ DON'T: Write a post-processing script to patch the output
+
+**Example - New Rule**:
+If adding a new linter rule (e.g., FORMAT008):
+- ✅ DO: Add the rule to `md_linter.py`, add tests for detection and edge cases
+- ✅ DO: Update the converter if it generates the flagged pattern, add tests
 
 **Running tests**:
 ```bash
 python scripts/test_formex_converter.py
 ```
+
+**Current test count**: 28 tests (as of 2026-01-13)
 
 ## Markdown Formatting Rules
 
