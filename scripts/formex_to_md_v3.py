@@ -316,6 +316,13 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
             elif number:
                 lines.append(f"{indent}{number}")
             
+            # Check if there are P elements that will follow - if so, add blank line
+            # This ensures Markdown renders nested content properly instead of inline
+            p_elements = np_elem.findall('P')
+            nested_np_lists = np_elem.findall('LIST')
+            if p_elements or nested_np_lists:
+                lines.append("")
+            
             # Now process P elements inside NP - handling different cases:
             for p_elem in np_elem.findall('P'):
                 # Case 1: P contains a nested LIST - process the LIST, don't blockquote P
