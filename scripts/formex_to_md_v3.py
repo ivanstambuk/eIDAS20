@@ -337,6 +337,8 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                             # Get paragraph number from NO.PARAG
                             no_parag = quot_child.find('NO.PARAG')
                             para_num = get_element_text(no_parag).strip() if no_parag is not None else ""
+                            # Strip leading/trailing quote marks - blockquote context handles quoting
+                            para_num = para_num.strip("'\"")
                             
                             # Get ALINEA text from PARAG
                             for alinea in quot_child.findall('ALINEA'):

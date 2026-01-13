@@ -719,8 +719,10 @@ class TestBlockquoteParagraphNumbers(unittest.TestCase):
         lines = process_list_with_quotes(elem, parent, 0)
         output = '\n'.join(lines)
         
-        # The blockquote should include the paragraph number
-        self.assertIn("'1.", output, "Paragraph number should be present in blockquote")
+        # The blockquote should include the paragraph number WITHOUT quote marks
+        # (QUOT.START produces quote chars which should be stripped in blockquote context)
+        self.assertIn("1.", output, "Paragraph number should be present in blockquote")
+        self.assertNotIn("'1.", output, "Leading quote should be stripped from paragraph number")
         self.assertIn("This Regulation applies", output, "Paragraph text should be present")
 
 
