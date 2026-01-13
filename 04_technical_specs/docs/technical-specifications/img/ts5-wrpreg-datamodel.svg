@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.62cm" height="16.46cm" viewBox="0 0 1422 622">
+<title></title>
+<desc>Created with Enterprise Architect (Build: 1704) 2</desc>
+
+<g style="fill:#FFFFFF;fill-opacity:1.00;">
+	 <rect x="0" y="0" width="1422" height="622" shape-rendering="auto"/>
+</g><g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#F0F8FF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="846" y="241" width="222" height="79" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="929.00" y="261.00" textLength="56" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 929.00 261.00)">Provider</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 846 269 L 1067 269" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="851.00" y="284.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 851.00 284.00)">+ </text>
+	<text x="879.00" y="284.00" textLength="140" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 879.00 284.00)">providerType: string</text>
+	<text x="851.00" y="298.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 851.00 298.00)">+ </text>
+	<text x="879.00" y="298.00" textLength="147" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 879.00 298.00)">policy: Policy [1..*]</text>
+	<text x="851.00" y="312.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 851.00 312.00)">+ </text>
+	<text x="879.00" y="312.00" textLength="126" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 879.00 312.00)">x5c: string [0..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="1246" y="69" width="166" height="70" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="1294.00" y="89.00" textLength="70" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1294.00 89.00)">Identifier</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 1246 97 L 1411 97" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="1251.00" y="112.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1251.00 112.00)">+ </text>
+	<text x="1279.00" y="112.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1279.00 112.00)">type: string</text>
+	<text x="1251.00" y="126.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1251.00 126.00)">+ </text>
+	<text x="1279.00" y="126.00" textLength="126" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1279.00 126.00)">identifier: string</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="1246" y="250" width="164" height="69" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="1307.00" y="270.00" textLength="42" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1307.00 270.00)">Policy</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 1246 278 L 1409 278" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="1251.00" y="293.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1251.00 293.00)">+ </text>
+	<text x="1279.00" y="293.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1279.00 293.00)">type: string</text>
+	<text x="1251.00" y="307.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1251.00 307.00)">+ </text>
+	<text x="1279.00" y="307.00" textLength="119" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1279.00 307.00)">policyURI: string</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#F5FFFA;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="788" y="421" width="339" height="191" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="894.00" y="441.00" textLength="126" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 894.00 441.00)">WalletRelyingParty</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 788 449 L 1126 449" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="793.00" y="464.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 464.00)">+ </text>
+	<text x="821.00" y="464.00" textLength="168" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 464.00)">tradeName: string [0..1]</text>
+	<text x="793.00" y="478.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 478.00)">+ </text>
+	<text x="821.00" y="478.00" textLength="175" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 478.00)">supportURI: string [1..*]</text>
+	<text x="793.00" y="492.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 492.00)">+ </text>
+	<text x="821.00" y="492.00" textLength="266" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 492.00)">srvDescription: MultiLangString [1..*]</text>
+	<text x="793.00" y="506.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 506.00)">+ </text>
+	<text x="821.00" y="506.00" textLength="217" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 506.00)">intendedUse: IntendedUse [1..*]</text>
+	<text x="793.00" y="520.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 520.00)">+ </text>
+	<text x="821.00" y="520.00" textLength="98" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 520.00)">isPSB: boolean</text>
+	<text x="793.00" y="534.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 534.00)">+ </text>
+	<text x="821.00" y="534.00" textLength="182" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 534.00)">entitlement: string [1..*]</text>
+	<text x="793.00" y="548.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 548.00)">+ </text>
+	<text x="821.00" y="548.00" textLength="273" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 548.00)">providesAttestations: Credential [0..*]</text>
+	<text x="793.00" y="562.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 562.00)">+ </text>
+	<text x="821.00" y="562.00" textLength="231" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 562.00)">supervisoryAuthority: LegalEntity</text>
+	<text x="793.00" y="576.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 576.00)">+ </text>
+	<text x="821.00" y="576.00" textLength="133" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 576.00)">registryURI: string</text>
+	<text x="793.00" y="590.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 590.00)">+ </text>
+	<text x="821.00" y="590.00" textLength="301" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 590.00)">usesIntermediary: WalletRelyingParty [0..*]</text>
+	<text x="793.00" y="604.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 793.00 604.00)">+ </text>
+	<text x="821.00" y="604.00" textLength="161" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 604.00)">isIntermediary: boolean</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="20" y="10" width="164" height="72" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="91.00" y="30.00" textLength="21" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 91.00 30.00)">Law</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 20 38 L 183 38" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="25.00" y="53.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 25.00 53.00)">+ </text>
+	<text x="53.00" y="53.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 53.00 53.00)">lang: string</text>
+	<text x="25.00" y="67.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 25.00 67.00)">+ </text>
+	<text x="53.00" y="67.00" textLength="126" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 53.00 67.00)">legalBasis: string</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="10" y="302" width="196" height="70" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="90.00" y="322.00" textLength="35" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 90.00 322.00)">Claim</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 10 330 L 205 330" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="15.00" y="345.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 15.00 345.00)">+ </text>
+	<text x="43.00" y="345.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 43.00 345.00)">path: string</text>
+	<text x="15.00" y="359.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 15.00 359.00)">+ </text>
+	<text x="43.00" y="359.00" textLength="147" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 43.00 359.00)">values: string [0..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#F0F8FF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="816" y="30" width="283" height="149" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="919.00" y="50.00" textLength="77" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 919.00 50.00)">LegalEntity</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 816 58 L 1098 58" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="821.00" y="73.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 73.00)">+ </text>
+	<text x="849.00" y="73.00" textLength="217" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 73.00)">legalPerson: LegalEntity [0..1]</text>
+	<text x="821.00" y="87.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 87.00)">+ </text>
+	<text x="849.00" y="87.00" textLength="245" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 87.00)">naturalPerson: NaturalPerson [0..1]</text>
+	<text x="821.00" y="101.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 101.00)">+ </text>
+	<text x="849.00" y="101.00" textLength="203" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 101.00)">identifier: Identifier [0..*]</text>
+	<text x="821.00" y="115.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 115.00)">+ </text>
+	<text x="849.00" y="115.00" textLength="196" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 115.00)">postalAddress: string [0..*]</text>
+	<text x="821.00" y="129.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 129.00)">+ </text>
+	<text x="849.00" y="129.00" textLength="105" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 129.00)">country: string</text>
+	<text x="821.00" y="143.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 143.00)">+ </text>
+	<text x="849.00" y="143.00" textLength="140" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 143.00)">email: string [0..*]</text>
+	<text x="821.00" y="157.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 157.00)">+ </text>
+	<text x="849.00" y="157.00" textLength="140" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 157.00)">phone: string [0..*]</text>
+	<text x="821.00" y="171.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 821.00 171.00)">+ </text>
+	<text x="849.00" y="171.00" textLength="154" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 849.00 171.00)">infoURI: string [0..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="334" y="11" width="248" height="70" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="419.00" y="31.00" textLength="77" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 419.00 31.00)">LegalPerson</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 334 39 L 581 39" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="339.00" y="54.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 54.00)">+ </text>
+	<text x="367.00" y="54.00" textLength="168" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 54.00)">legalName: string [1..*]</text>
+	<text x="339.00" y="68.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 68.00)">+ </text>
+	<text x="367.00" y="68.00" textLength="196" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 68.00)">establishedByLaw: Law [0..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="334" y="114" width="248" height="94" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="412.00" y="134.00" textLength="91" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 412.00 134.00)">NaturalPerson</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 334 142 L 581 142" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="339.00" y="157.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 157.00)">+ </text>
+	<text x="367.00" y="157.00" textLength="119" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 157.00)">givenName: string</text>
+	<text x="339.00" y="171.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 171.00)">+ </text>
+	<text x="367.00" y="171.00" textLength="126" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 171.00)">familyName: string</text>
+	<text x="339.00" y="185.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 185.00)">+ </text>
+	<text x="367.00" y="185.00" textLength="182" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 185.00)">dateOfBirth: string [0..1]</text>
+	<text x="339.00" y="199.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 339.00 199.00)">+ </text>
+	<text x="367.00" y="199.00" textLength="189" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 367.00 199.00)">placeOfBirth: string [0..1]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="417" y="460" width="255" height="121" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="506.00" y="480.00" textLength="77" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 506.00 480.00)">IntendedUse</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 417 488 L 671 488" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="422.00" y="503.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 503.00)">+ </text>
+	<text x="450.00" y="503.00" textLength="217" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 503.00)">purpose: MultiLangString [1..*]</text>
+	<text x="422.00" y="517.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 517.00)">+ </text>
+	<text x="450.00" y="517.00" textLength="196" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 517.00)">privacyPolicy: Policy [1..*]</text>
+	<text x="422.00" y="531.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 531.00)">+ </text>
+	<text x="450.00" y="531.00" textLength="203" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 531.00)">intendedUseIdentifier: string</text>
+	<text x="422.00" y="545.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 545.00)">+ </text>
+	<text x="450.00" y="545.00" textLength="119" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 545.00)">createdAt: string</text>
+	<text x="422.00" y="559.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 559.00)">+ </text>
+	<text x="450.00" y="559.00" textLength="168" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 559.00)">revokedAt: string [0..1]</text>
+	<text x="422.00" y="573.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 422.00 573.00)">+ </text>
+	<text x="450.00" y="573.00" textLength="203" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 450.00 573.00)">credential: Credential [1..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#96768E; stroke-opacity:1.00" stroke-dasharray="3,3">
+  <path d="M 699 114 L 699 63" shape-rendering="auto"/>
+  <path d="M 699 114 L 699 170" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#96768E; stroke-opacity:1.00">
+  <polygon points="621 90 621 139 778 139 778 102 766 90" shape-rendering="auto"   style="fill-rule:evenodd;"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#DCDCDC;fill-opacity:1.00; stroke:#96768E; stroke-opacity:1.00">
+  <polygon points="766 90 766 102 778 102" shape-rendering="auto"   style="fill-rule:evenodd;"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#3C3C3C;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="626.00" y="105.00" textLength="111" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#3C3C3C;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 626.00 105.00)">{LegalEntity may either be a</text>
+	<text x="626.00" y="118.00" textLength="133" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#3C3C3C;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 626.00 118.00)">LegalPerson or a NaturalPerson : }</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="450" y="297" width="188" height="80" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="509.00" y="317.00" textLength="70" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 509.00 317.00)">Credential</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 450 325 L 637 325" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="455.00" y="340.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 455.00 340.00)">+ </text>
+	<text x="483.00" y="340.00" textLength="98" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 483.00 340.00)">format: string</text>
+	<text x="455.00" y="354.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 455.00 354.00)">+ </text>
+	<text x="483.00" y="354.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 483.00 354.00)">meta: string</text>
+	<text x="455.00" y="368.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 455.00 368.00)">+ </text>
+	<text x="483.00" y="368.00" textLength="133" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 483.00 368.00)">claim: Claim [0..*]</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FFFFFF;fill-opacity:1.00; stroke:#000000; stroke-opacity:1.00">
+ <rect x="10" y="478" width="196" height="70" rx="0.00" shape-rendering="auto"  />
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="55.00" y="498.00" textLength="105" style="font-family:Consolas; font-weight:700; font-style:normal; font-size:12px; fill:#000000;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 55.00 498.00)">MultiLangString</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#000000; stroke-opacity:1.00">
+  <path d="M 10 506 L 205 506" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="15.00" y="521.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 15.00 521.00)">+ </text>
+	<text x="43.00" y="521.00" textLength="84" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 43.00 521.00)">lang: string</text>
+	<text x="15.00" y="535.00" textLength="14" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 15.00 535.00)">+ </text>
+	<text x="43.00" y="535.00" textLength="105" style="font-family:Consolas; font-weight:400; font-style:normal; font-size:12px; fill:#66413F;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 43.00 535.00)">content: string</text>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#69738C; stroke-opacity:1.00">
+  <path d="M 450 338 L 206 336" shape-rendering="auto"/>
+  <path d="M 221 330 L 206 336 L 221 342" shape-rendering="auto"/>
+  <path d="M 546 460 L 546 377" shape-rendering="auto"/>
+  <path d="M 552 392 L 546 377 L 540 392" shape-rendering="auto"/>
+  <path d="M 417 517 L 206 514" shape-rendering="auto"/>
+  <path d="M 221 508 L 206 514 L 221 520" shape-rendering="auto"/>
+  <path d="M 334 46 L 184 46" shape-rendering="auto"/>
+  <path d="M 199 40 L 184 46 L 199 52" shape-rendering="auto"/>
+  <path d="M 1099 105 L 1246 107" shape-rendering="auto"/>
+  <path d="M 1231 113 L 1246 107 L 1231 101" shape-rendering="auto"/>
+  <path d="M 816 74 L 582 52" shape-rendering="auto"/>
+  <path d="M 597 47 L 582 52 L 596 59" shape-rendering="auto"/>
+  <path d="M 816 154 L 582 186" shape-rendering="auto"/>
+  <path d="M 596 178 L 582 186 L 598 190" shape-rendering="auto"/>
+  <path d="M 954 421 L 954 320" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FAF1EC;fill-opacity:1.00; stroke:#69738C; stroke-opacity:1.00">
+  <polygon points="960 336 948 336 954 320" shape-rendering="auto"   style="fill-rule:evenodd;"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#000000;fill-opacity:0.00; stroke:#69738C; stroke-opacity:1.00">
+  <path d="M 788 517 L 672 518" shape-rendering="auto"/>
+  <path d="M 687 512 L 672 518 L 687 524" shape-rendering="auto"/>
+  <path d="M 1068 285 L 1246 285" shape-rendering="auto"/>
+  <path d="M 1231 291 L 1246 285 L 1231 279" shape-rendering="auto"/>
+  <path d="M 957 241 L 957 179" shape-rendering="auto"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#FAF1EC;fill-opacity:1.00; stroke:#69738C; stroke-opacity:1.00">
+  <polygon points="963 195 951 195 957 179" shape-rendering="auto"   style="fill-rule:evenodd;"/>
+</g>
+<g style="stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00">
+	<text x="308.00" y="328.00" textLength="49" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 308.00 328.00)">may contain</text>
+	<text x="1144.00" y="100.00" textLength="57" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1144.00 100.00)">is identified by</text>
+	<text x="1150.00" y="281.00" textLength="14" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 1150.00 281.00)">has</text>
+	<text x="685.00" y="53.00" textLength="30" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 685.00 53.00)">may be</text>
+	<text x="685.00" y="190.00" textLength="30" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 685.00 190.00)">may be</text>
+	<text x="295.00" y="508.00" textLength="33" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 295.00 508.00)">contains</text>
+	<text x="231.00" y="39.00" textLength="65" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 231.00 39.00)">is established by</text>
+	<text x="553.00" y="428.00" textLength="33" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 553.00 428.00)">contains</text>
+	<text x="719.00" y="508.00" textLength="33" style="font-family:Calibri; font-weight:0; font-style:normal; font-size:10px; fill:#595959;fill-opacity:1.00; stroke:#000000; stroke-opacity:0.00 stroke-width:0; white-space: pre;" xml:space="preserve" transform="rotate(-0.00 719.00 508.00)">contains</text>
+</g>
+</svg>

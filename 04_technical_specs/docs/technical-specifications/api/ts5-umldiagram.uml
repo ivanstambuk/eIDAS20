@@ -1,0 +1,101 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam classStereotypeFontSize 8
+
+package "http://data.europa.eu/eudi/" {
+  class WalletRelyingParty {
+    + entitlement: string[*]
+    + intendedUse: IntendedUse[*]
+    + isPSB: boolean
+    + providesAttestations: Credential[*]
+    + srvDescription: MultiLangString[][*]
+    + supervisoryAuthority: LegalEntity
+    + supportURI: string
+    + tradeName: string
+    + usesIntermediary: WalletRelyingParty[*]
+    + isIntermediary: boolean
+  }
+  WalletRelyingParty --|> Provider
+
+  class Provider {
+    + policy: Policy[*]
+    + providerType: integer
+    + x5c: string
+  }
+
+  class Policy {
+    + policyURI: string
+    + type: string
+  }
+
+  class IntendedUse {
+    + purpose: MultiLangString[*]
+    + privacyPolicy: Policy[*]
+    + createdAt: string
+    + revokedAt: string
+    + credential: Credential[*]
+  }
+
+  class Credential {
+    + format: string
+    + meta: string
+    + claim: Claim[*]
+  }
+
+  class Claim {
+    + path: string
+    + values: string
+  }
+
+  class LegalEntity {
+    + country: string
+    + email: string[*]
+    + identifier: Identifier[*]
+    + infoURI: string[*]
+    + legalPerson: LegalEntity
+    + may_be: LegalPerson[*]
+    + naturalPerson: NaturalPerson
+    + phone: string[*]
+    + postalAddress: string[*]
+  }
+
+  class Identifier {
+    + identifier: string
+    + type: string
+  }
+
+  class LegalPerson {
+    + establishedByLaw: Law[*]
+    + legalName: string[*]
+  }
+
+  class Law {
+    + lang: string
+    + legalBasis: string
+  }
+  
+  class MultiLangString {
+    + lang: string
+    + content: string
+  }
+
+  class NaturalPerson {
+    + dateOfBirth: string
+    + familyName: string
+    + givenName: string
+    + placeOfBirth: string
+  }
+
+  WalletRelyingParty "0..*" -- "0..*" WalletRelyingParty : uses
+  intendedUse "1..*" -- "1..*" MultiLangString : purpose
+  IntendedUse "1..*" -- "1" Policy : privacyPolicy
+  IntendedUse "1..*" -- "1..*" Credential : credential
+  Credential "0..*" -- "0..*" Claim : claim
+  LegalEntity "0..1" -- "0..1" LegalEntity : legalPerson
+  LegalEntity "0..*" -- "0..*" Identifier : identifier
+  LegalEntity "0..*" -- "0..*" LegalPerson : may be
+  LegalEntity "0..1" -- "0..1" NaturalPerson : naturalPerson
+  LegalPerson "0..*" -- "0..*" Law : establishedByLaw
+  Provider "0..*" -- "0..*" Policy : policy
+}
+@enduml
