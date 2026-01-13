@@ -183,23 +183,42 @@ def main():
         print("       python add_annexes.py <single_dir> <celex>")
         sys.exit(1)
     
-    # CELEX mapping
+    # CELEX mapping - comprehensive list of all implementing acts
     celex_map = {
+        # First batch - Dec 2024
         '2024_2977_PID_and_EAA': '32024R2977',
         '2024_2978_TSP_List_Publication': '32024R2978',
         '2024_2979_Integrity_Core_Functions': '32024R2979',
         '2024_2980_Notifications': '32024R2980',
         '2024_2981_Certification': '32024R2981',
         '2024_2982_Protocols_Interfaces': '32024R2982',
+        # Second batch - May 2025
+        '2025_0846_Cross_Border_Identity': '32025R0846',
         '2025_0847_Security_Breach_Response': '32025R0847',
         '2025_0848_Relying_Party_Registration': '32025R0848',
-        '2025_0849_Certified_Wallet_List': '32025D0849',
+        '2025_0849_Certified_Wallet_List': '32025R0849',
+        # Third batch - Jul/Sep 2025
+        '2025_1566_QC_Identity_Verification': '32025R1566',
+        '2025_1567_Remote_Creation_Devices': '32025R1567',
         '2025_1568_Peer_Reviews_eID': '32025R1568',
+        '2025_1569_EAA_Verification': '32025R1569',
+        '2025_1570_Certified_Creation_Devices': '32025R1570',
+        '2025_1571_Annual_Reports': '32025R1571',
+        '2025_1572_QTS_Applications': '32025R1572',
+        '2025_1929_Electronic_Timestamps': '32025R1929',
+        '2025_1942_Validation_Services': '32025R1942',
+        '2025_1943_Signature_Standards': '32025R1943',
         '2025_1944_Electronic_Delivery': '32025R1944',
         '2025_1945_Signature_Validation': '32025R1945',
+        '2025_1946_Preservation_Services': '32025R1946',
+        # Fourth batch - Oct 2025
         '2025_2160_Non_Qualified_TS_Risks': '32025R2160',
         '2025_2162_CAB_Accreditation': '32025R2162',
         '2025_2164_Trusted_Lists': '32025D2164',
+        '2025_2527_Website_Auth_Certs': '32025R2527',
+        '2025_2530_QTSP_Requirements': '32025R2530',
+        '2025_2531_Electronic_Ledgers': '32025R2531',
+        '2025_2532_Archiving_Services': '32025R2532',
     }
     
     base_dir = Path(sys.argv[1])
