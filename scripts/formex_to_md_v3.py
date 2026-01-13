@@ -383,7 +383,7 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                                     if item_num or item_text:
                                         if had_blockquote_content:
                                             lines.append(f"{indent}>")
-                                        lines.append(f"{indent}> {item_num} {item_text}".strip())
+                                        lines.append(f"{indent}> {item_num} {item_text}".rstrip())
                                         had_blockquote_content = True
                         else:
                             # Generic text extraction for other elements
