@@ -2,68 +2,93 @@
 
 ## Project Context
 
-This project is an **eIDAS 2.0 Knowledge Base** containing primary source documents for the European Digital Identity Framework. The goal is to collect, organize, and convert official EU regulatory documents for internal knowledge management purposes.
+This project is an **eIDAS 2.0 Knowledge Base** containing primary source documents for the European Digital Identity Framework. All regulatory documents are converted to Markdown for internal knowledge management and AI-assisted analysis.
 
-## Current Status
+## Project Structure
 
-### Completed Tasks (2026-01-13)
+```
+d:\aab\eIDAS20\
+├── 01_regulation/                      # EU Regulations (parent laws)
+│   ├── 910_2014_eIDAS_Consolidated/   # Consolidated eIDAS (as amended)
+│   └── 2024_1183_eIDAS2_Amending/     # eIDAS 2.0 Amending Regulation
+├── 02_implementing_acts/               # Commission Implementing Regulations (15 acts)
+│   ├── 2024_2977_PID_and_EAA/         # Person identification data
+│   ├── 2024_2978_TSP_List_Publication/# Trusted lists publication
+│   ├── 2024_2979_Integrity_Core_Functions/
+│   ├── 2024_2980_Notifications/
+│   ├── 2024_2981_Certification/
+│   ├── 2024_2982_Protocols_Interfaces/
+│   ├── 2025_0847_Security_Breach_Response/
+│   ├── 2025_0848_Relying_Party_Registration/
+│   ├── 2025_0849_Certified_Wallet_List/
+│   ├── 2025_1568_Peer_Reviews_eID/
+│   ├── 2025_1944_Electronic_Delivery/
+│   ├── 2025_1945_Signature_Validation/
+│   ├── 2025_2160_Non_Qualified_TS_Risks/
+│   ├── 2025_2162_CAB_Accreditation/
+│   ├── 2025_2164_Trusted_Lists/       # Decision (not Regulation)
+│   └── README.md                      # Implementing acts catalog
+├── 03_arf/                            # Architecture Reference Framework (GitHub)
+├── 04_technical_specs/                # Standards & Tech Specs (GitHub)
+├── scripts/                           # Conversion & validation utilities
+│   ├── eurlex_formex.py              # EUR-Lex Formex XML downloader
+│   ├── formex_to_md_v2.py            # Formex XML → Markdown converter
+│   ├── md_linter.py                  # Markdown quality checker
+│   ├── add_headers.py                # Metadata header injection
+│   └── fix_list_markers.py           # FORMAT001 list marker fixer
+├── AGENTS.md                          # This file (AI context)
+├── README.md                          # Project overview
+└── TRACKER.md                         # Work session tracker
+```
 
-1. **Initial Setup**
-   - Created directory structure (`01_regulation`, `02_implementing_acts`, `03_arf`, `04_technical_specs`)
-   - Created README.md with project overview
-   - Created this AGENTS.md file
-   - Initialized Git repository with conventional commits
+## Current Status (2026-01-13)
 
-2. **Regulations Downloaded**
-   - ✅ Regulation (EU) 2024/1183 (eIDAS 2.0) - Converted to Markdown (`01_regulation/2024_1183_eIDAS2/`)
-   
-3. **Git Repositories Cloned**
-   - ✅ ARF: `eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework` → `03_arf/`
-   - ✅ Technical Specs: `eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications` → `04_technical_specs/`
+### ✅ Completed
+- **17 regulatory documents** downloaded, converted to Markdown, and validated
+- **Formex XML v2 pipeline** - highest quality conversion preserving legal structure
+- **Linter validation** - all documents pass with 0 errors/warnings
+- **Git repository** initialized with conventional commits
 
-4. **Implementing Acts Research**
-   - ✅ Created implementing acts catalog (`02_implementing_acts/README.md`)
-   - ✅ Identified First Batch (Dec 2024): 5 regulations (2024/2977, 2024/2979, 2024/2980, 2024/2981, 2024/2982)
-   - ✅ Identified Second Batch (Jul 2025): 4+ regulations (2025/847, 2025/1568, 2025/1944, 2025/1945)
+### Document Inventory
 
-### Pending Tasks
-
-1. **Regulations**
-   - [ ] Download and convert Regulation (EU) 910/2014 (original eIDAS)
-
-2. **Implementing Acts - First Batch (Dec 2024)**
-   - [ ] Download 2024/2977 - Person identification data and attestations
-   - [ ] Download 2024/2979 - Integrity and core functionalities
-   - [ ] Download 2024/2980 - Notifications to the Commission
-   - [ ] Download 2024/2981 - Certification of EUDI Wallets
-   - [ ] Download 2024/2982 - Protocols and interfaces
-
-3. **Implementing Acts - Second Batch (Jul 2025)**
-   - [ ] Download 2025/1568 - Peer reviews
-   - [ ] Download 2025/1944 - Registered delivery services
-   - [ ] Research and download remaining regulations
-
-4. **Organization**
-   - [x] Create index/catalog of all implementing acts
-   - [ ] Cross-reference documents
+| Category | Count | Status |
+|----------|-------|--------|
+| Core Regulations | 2 | ✅ Complete |
+| Implementing Acts (Dec 2024) | 6 | ✅ Complete |
+| Implementing Acts (May 2025) | 3 | ✅ Complete |
+| Implementing Acts (Jul-Sep 2025) | 3 | ✅ Complete |
+| Implementing Acts (Oct 2025) | 3 | ✅ Complete |
 
 ## Document Sources
 
-| Source | URL Pattern | Format | Notes |
-|--------|-------------|--------|-------|
-| EUR-Lex Regulations | `https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:3{YEAR}R{NUMBER}` | HTML | Official EU law |
-| EUR-Lex Decisions | `https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:3{YEAR}D{NUMBER}` | HTML | Commission decisions |
-| GitHub ARF | `github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework` | Markdown | Already in MD |
-| GitHub STS | `github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications` | Markdown | Already in MD |
+| Source | URL Pattern | Format |
+|--------|-------------|--------|
+| EUR-Lex Formex (preferred) | `https://eur-lex.europa.eu/legal-content/EN/TXT/XML/?uri=CELEX:{CELEX}` | XML |
+| EUR-Lex HTML (fallback) | `https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}` | HTML |
+| GitHub ARF | `eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework` | Markdown |
+| GitHub STS | `eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications` | Markdown |
 
 ## Conversion Guidelines
 
-When converting EUR-Lex HTML to Markdown:
-1. Preserve document structure (titles, articles, paragraphs)
-2. Use proper heading hierarchy (`#`, `##`, `###`)
-3. Convert numbered lists appropriately
-4. Add source/citation block at the end
-5. Include metadata (CELEX number, date, ELI)
+### Preferred: Formex XML Pipeline
+```bash
+python scripts/eurlex_formex.py {CELEX} {output_dir}
+```
+- Uses structured XML for highest fidelity
+- Preserves recitals, articles, numbered paragraphs, nested lists
+- Inline footnotes and cross-references
+
+### Fallback: HTML via Pandoc
+```bash
+curl -s -o file.html "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}"
+pandoc -f html -t markdown --wrap=none -o file.md file.html
+```
+
+### Validation
+```bash
+python scripts/md_linter.py --dir 01_regulation
+python scripts/md_linter.py --dir 02_implementing_acts
+```
 
 ## Key Terminology
 
@@ -73,36 +98,21 @@ When converting EUR-Lex HTML to Markdown:
 | **EUDI Wallet** | European Digital Identity Wallet |
 | **CIR** | Commission Implementing Regulation |
 | **ARF** | Architecture and Reference Framework |
-| **STS** | Standards and Technical Specifications |
-| **QES** | Qualified Electronic Signature |
+| **PID** | Person Identification Data |
+| **EAA** | Electronic Attestation of Attributes |
 | **QEAA** | Qualified Electronic Attestation of Attributes |
-| **TSP** | Trust Service Provider |
-| **QTSP** | Qualified Trust Service Provider |
+| **TSP/QTSP** | (Qualified) Trust Service Provider |
+| **WSCA/WSCD** | Wallet Secure Cryptographic Application/Device |
 
 ## Git Workflow
 
-This repository uses **conventional commits**:
-- `feat:` - New document/feature added
+Uses **conventional commits**:
+- `feat:` - New document added
+- `fix:` - Corrections to content/formatting
 - `docs:` - Documentation updates
 - `chore:` - Maintenance tasks
-- `fix:` - Corrections to existing content
-
-Example:
-```
-feat: add regulation 2024/1183 eIDAS 2.0
-docs: update README with implementation timeline
-chore: update git repos to latest version
-```
-
-## Next Steps for Agents
-
-When continuing this project:
-1. Check EUR-Lex for newly adopted implementing acts
-2. Update Git submodules/clones for ARF and STS
-3. Download and convert new documents
-4. Update this AGENTS.md with progress
-5. Commit changes with conventional commit messages
 
 ---
 
-*Last updated: 2026-01-13 - Initial setup completed*
+*Last updated: 2026-01-13 18:57 CET*
+
