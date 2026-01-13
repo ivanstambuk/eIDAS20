@@ -768,6 +768,82 @@ class TestNestedListInBlockquote(unittest.TestCase):
         self.assertIn("(3)", output, "Third item number should be present")
 
 
+class TestBulletPointNesting(unittest.TestCase):
+    """Test that list items use bullet points for proper Markdown nesting."""
+    
+    def test_instruction_items_have_bullet_prefix(self):
+        """
+        Instruction items like '(a) paragraph 1 is replaced...' should have
+        bullet point prefix '- ' for proper Markdown list nesting.
+        """
+        xml = '''<NP>
+            <NO.P>(a)</NO.P>
+            <TXT>paragraph 1 is replaced by the following:</TXT>
+            <P>
+                <QUOT.S LEVEL="1">
+                    <PARAG IDENTIFIER="001.001">
+                        <NO.PARAG>1.</NO.PARAG>
+                        <ALINEA>This is the replacement text.</ALINEA>
+                    </PARAG>
+                </QUOT.S>
+            </P>
+        </NP>'''
+        
+        list_xml = f'<LIST><ITEM>{xml}</ITEM></LIST>'
+        elem = ET.fromstring(list_xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # Item should have bullet point prefix
+        self.assertIn("- (a)", output, "Instruction item should have bullet point prefix")
+        
+    def test_blockquotes_indented_under_bullets(self):
+        """
+        Blockquoted content should be indented under its parent bullet point.
+        The blockquote should have 2 extra spaces of indentation.
+        """
+        xml = '''<NP>
+            <NO.P>(a)</NO.P>
+            <TXT>paragraph 1 is replaced by the following:</TXT>
+            <P>
+                <QUOT.S LEVEL="1">
+                    <PARAG IDENTIFIER="001.001">
+                        <NO.PARAG>1.</NO.PARAG>
+                        <ALINEA>Replacement text here.</ALINEA>
+                    </PARAG>
+                </QUOT.S>
+            </P>
+        </NP>'''
+        
+        list_xml = f'<LIST><ITEM>{xml}</ITEM></LIST>'
+        elem = ET.fromstring(list_xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        
+        # Find the bullet line and blockquote line
+        bullet_line = None
+        blockquote_line = None
+        for line in lines:
+            if '- (a)' in line:
+                bullet_line = line
+            elif '>' in line and 'Replacement' in line:
+                blockquote_line = line
+        
+        self.assertIsNotNone(bullet_line, "Should have a bullet point line")
+        self.assertIsNotNone(blockquote_line, "Should have a blockquote line")
+        
+        # Blockquote should have more indentation than the bullet
+        bullet_indent = len(bullet_line) - len(bullet_line.lstrip())
+        blockquote_indent = len(blockquote_line) - len(blockquote_line.lstrip())
+        self.assertGreater(blockquote_indent, bullet_indent, 
+            f"Blockquote indent ({blockquote_indent}) should be greater than bullet indent ({bullet_indent})")
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)
