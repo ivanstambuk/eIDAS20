@@ -479,6 +479,110 @@ class TestPostProcessing(unittest.TestCase):
             os.unlink(temp_path)
 
 
+class TestQuotedArticleFormatting(unittest.TestCase):
+    """Tests for format_quoted_article function and QUOT.S handling."""
+    
+    def test_format_quoted_article_structure(self):
+        """
+        ARTICLE inside QUOT.S should be formatted with proper structure:
+        - Article title on its own line
+        - Subtitle bolded on its own line  
+        - Paragraph text on its own line
+        - List items (a), (b), (c) on separate lines
+        """
+        from formex_to_md_v3 import format_quoted_article
+        import xml.etree.ElementTree as ET
+        
+        # Create an ARTICLE element similar to what we'd find in QUOT.S
+        article_xml = '''
+        <ARTICLE IDENTIFIER="001">
+            <TI.ART>Article 1</TI.ART>
+            <STI.ART><P>Subject matter</P></STI.ART>
+            <ALINEA>
+                <P>This Regulation applies to all services.</P>
+                <LIST>
+                    <ITEM><NP><NO.P>(a)</NO.P><TXT>first point;</TXT></NP></ITEM>
+                    <ITEM><NP><NO.P>(b)</NO.P><TXT>second point;</TXT></NP></ITEM>
+                </LIST>
+            </ALINEA>
+        </ARTICLE>
+        '''
+        article_elem = ET.fromstring(article_xml)
+        
+        lines = format_quoted_article(article_elem, indent="")
+        
+        # Check that we have separate lines for each part
+        # Note: No leading quote on title - QUOT.S/QUOT.E elements handle quoting
+        self.assertTrue(any("*Article 1*" in line for line in lines),
+            "Article title should be present and italicized")
+        self.assertTrue(any("**Subject matter**" in line for line in lines),
+            "Subtitle should be bolded")
+        self.assertTrue(any("This Regulation applies" in line for line in lines),
+            "Paragraph text should be present")
+        self.assertTrue(any("(a)" in line for line in lines),
+            "List item (a) should be present")
+        self.assertTrue(any("(b)" in line for line in lines),
+            "List item (b) should be present")
+        
+        # All lines should be blockquoted
+        for line in lines:
+            self.assertTrue(line.startswith(">"), 
+                f"Line should start with blockquote: {line}")
+    
+    def test_blank_line_after_blockquote(self):
+        """
+        After blockquote content, there should be a blank line to prevent
+        Markdown from merging it with the next item.
+        """
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Minimal XML with QUOT.S containing simple content
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <ACT>
+            <TITLE><TI><P>Test</P></TI></TITLE>
+            <ENACTING.TERMS>
+                <ARTICLE IDENTIFIER="001">
+                    <TI.ART>Article 1</TI.ART>
+                    <PARAG>
+                        <ALINEA>
+                            <LIST>
+                                <ITEM>
+                                    <NP>
+                                        <NO.P>(1)</NO.P>
+                                        <TXT>First is replaced:</TXT>
+                                        <P><QUOT.S LEVEL="1"><P>Replacement text.</P></QUOT.S></P>
+                                    </NP>
+                                </ITEM>
+                                <ITEM>
+                                    <NP>
+                                        <NO.P>(2)</NO.P>
+                                        <TXT>Second is amended.</TXT>
+                                    </NP>
+                                </ITEM>
+                            </LIST>
+                        </ALINEA>
+                    </PARAG>
+                </ARTICLE>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # After blockquote ">", there should be blank line before "(2)"
+            # The pattern should NOT be "> text\n(2)" but "> text\n\n(2)"
+            self.assertNotIn('>\n(2)', result.replace('\r\n', '\n'),
+                "There should be a blank line between blockquote and next item")
+        finally:
+            os.unlink(temp_path)
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)

@@ -101,6 +101,98 @@ def get_element_text(elem, include_tail=False):
     return ''.join(parts)
 
 
+def format_quoted_article(article_elem, indent=""):
+    """
+    Format an ARTICLE element inside a blockquote with proper structure.
+    
+    Preserves:
+    - Article title (e.g., "Article 1")
+    - Article subtitle (e.g., "Subject matter")  
+    - Paragraph text
+    - Sub-points (a), (b), (c) etc.
+    
+    Uses blank blockquote lines (>) between sections for proper Markdown
+    paragraph separation.
+    
+    Returns list of blockquoted lines.
+    """
+    lines = []
+    
+    # Article title (TI.ART)
+    ti_art = article_elem.find('TI.ART')
+    if ti_art is not None:
+        title = clean_text(get_element_text(ti_art))
+        if title:
+            lines.append(f"{indent}> *{title}*")
+            lines.append(f"{indent}>")  # Blank line for separation
+    
+    # Article subtitle (STI.ART)
+    sti_art = article_elem.find('STI.ART')
+    if sti_art is not None:
+        subtitle_p = sti_art.find('P')
+        if subtitle_p is not None:
+            subtitle = clean_text(get_element_text(subtitle_p))
+        else:
+            subtitle = clean_text(get_element_text(sti_art))
+        if subtitle:
+            lines.append(f"{indent}> **{subtitle}**")
+            lines.append(f"{indent}>")  # Blank line for separation
+    
+    # Process ALINEA content (main body) - can be directly under ARTICLE or under PARAG
+    for alinea in article_elem.findall('.//ALINEA'):
+        # First, check if ALINEA has direct text content (not just child elements)
+        alinea_text = clean_text(get_element_text(alinea))
+        if alinea_text:
+            # Check if it's a simple ALINEA with just text (no P or LIST children)
+            has_p = alinea.find('P') is not None
+            has_list = alinea.find('LIST') is not None
+            if not has_p and not has_list:
+                lines.append(f"{indent}> {alinea_text}")
+                lines.append(f"{indent}>")  # Blank line after paragraph
+                continue
+        
+        # Get paragraph text (P element before LIST)
+        for p_elem in alinea.findall('P'):
+            # Skip P elements that only contain LIST
+            if p_elem.find('LIST') is not None and not p_elem.text:
+                continue
+            p_text = clean_text(get_element_text(p_elem))
+            if p_text:
+                lines.append(f"{indent}> {p_text}")
+                lines.append(f"{indent}>")  # Blank line after paragraph
+        
+        # Get LIST items (a), (b), (c) etc. - format as blockquoted list
+        list_elem = alinea.find('LIST')
+        if list_elem is not None:
+            for item in list_elem.findall('ITEM'):
+                np = item.find('NP')
+                if np is not None:
+                    no_p = np.find('NO.P')
+                    number = clean_text(get_element_text(no_p)) if no_p is not None else ""
+                    
+                    # Get item text
+                    txt = np.find('TXT')
+                    if txt is not None:
+                        item_text = clean_text(get_element_text(txt))
+                    else:
+                        # Get text after NO.P
+                        item_text = ""
+                        if no_p is not None and no_p.tail:
+                            item_text = clean_text(no_p.tail)
+                    
+                    if number or item_text:
+                        # Format as blockquoted list item
+                        lines.append(f"{indent}> - {number} {item_text}")
+    
+    # Remove trailing blank blockquote line if present
+    if lines and lines[-1].strip() == ">":
+        lines.pop()
+    
+    # Note: No closing quote needed - the QUOT.S/QUOT.E elements handle quoting
+    
+    return lines
+
+
 def get_following_quoted_content(parent_elem, after_elem):
     """
     Get quoted content (QUOT.S...P...QUOT.E) that follows a specific element.
@@ -233,33 +325,32 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                 quot_s = p_elem.find('QUOT.S')
                 if quot_s is not None:
                     # Extract all content from within QUOT.S block
-                    quoted_parts = []
                     for quot_child in quot_s:
                         if quot_child.tag == 'PARAG':
                             # Get ALINEA text from PARAG
                             for alinea in quot_child.findall('ALINEA'):
                                 alinea_text = clean_text(get_element_text(alinea))
                                 if alinea_text:
-                                    quoted_parts.append(alinea_text)
+                                    lines.append(f"{indent}> {alinea_text}")
                         elif quot_child.tag == 'ARTICLE':
-                            # Handle nested articles
-                            article_text = clean_text(get_element_text(quot_child))
-                            if article_text:
-                                quoted_parts.append(article_text)
+                            # Handle nested articles with proper formatting
+                            article_lines = format_quoted_article(quot_child, indent)
+                            lines.extend(article_lines)
                         else:
                             # Generic text extraction
                             child_text = clean_text(get_element_text(quot_child))
                             if child_text:
-                                quoted_parts.append(child_text)
+                                lines.append(f"{indent}> {child_text}")
                     
-                    for part in quoted_parts:
-                        lines.append(f"{indent}> {part}")
+                    # Add blank line after blockquote to separate from next item
+                    lines.append("")
                     continue
                 
                 # Case 3: Plain P without nested structures - blockquote its content
                 p_text = clean_text(get_element_text(p_elem))
                 if p_text:
                     lines.append(f"{indent}> {p_text}")
+                    lines.append("")  # Add blank line after blockquote
             
             # Process nested lists that are direct children of NP (outside P)
             for nested_list in np_elem.findall('LIST'):
