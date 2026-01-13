@@ -102,10 +102,16 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
     return issues
 
 
-def print_report(file_path: str, issues: List[LintIssue]) -> int:
+def print_report(file_path: str, issues: List[LintIssue], use_ascii: bool = False) -> int:
     """Print lint report and return exit code."""
+    # Define icons with ASCII fallbacks for Windows terminals
+    if use_ascii:
+        ok_icon, file_icon, err_icon, warn_icon, info_icon = "[OK]", "[FILE]", "[ERR]", "[WARN]", "[INFO]"
+    else:
+        ok_icon, file_icon, err_icon, warn_icon, info_icon = "OK", "FILE", "ERR", "WARN", "INFO"
+    
     if not issues:
-        print(f"✅ {file_path}: No issues found")
+        print(f"{ok_icon} {file_path}: No issues found")
         return 0
     
     # Group by severity
@@ -114,14 +120,15 @@ def print_report(file_path: str, issues: List[LintIssue]) -> int:
     infos = [i for i in issues if i.severity == 'info']
     
     print(f"\n{'='*60}")
-    print(f"📄 {file_path}")
+    print(f"{file_icon} {file_path}")
     print(f"   {len(errors)} errors, {len(warnings)} warnings, {len(infos)} info")
     print(f"{'='*60}")
     
+    icon_map = {'error': err_icon, 'warning': warn_icon, 'info': info_icon}
     for issue in issues:
-        icon = {'error': '❌', 'warning': '⚠️', 'info': 'ℹ️'}[issue.severity]
+        icon = icon_map[issue.severity]
         print(f"  {icon} Line {issue.line_num}: [{issue.rule}] {issue.message}")
-        print(f"     → {issue.content}")
+        print(f"     -> {issue.content}")
     
     return 1 if errors else 0
 
@@ -145,13 +152,13 @@ def main():
     
     for file_path in files:
         if not file_path.exists():
-            print(f"❌ File not found: {file_path}")
+            print(f"[ERR] File not found: {file_path}")
             continue
         
         issues = lint_markdown(str(file_path))
         total_issues += len(issues)
         
-        if print_report(str(file_path), issues) != 0:
+        if print_report(str(file_path), issues, use_ascii=True) != 0:
             exit_code = 1
     
     print(f"\n{'='*60}")
