@@ -26,6 +26,39 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
     with open(file_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     
+    # Document-level check: Metadata header (CELEX ID and Source URL)
+    # Check first 10 lines for required metadata
+    has_celex = False
+    has_source = False
+    first_lines = ''.join(lines[:10])
+    
+    if re.search(r'\*\*CELEX:\*\*\s*\d+[A-Z]\d+', first_lines):
+        has_celex = True
+    if re.search(r'\*\*Source:\*\*\s*https?://eur-lex\.europa\.eu/', first_lines):
+        has_source = True
+    
+    # Only check for legal documents (regulations, directives, implementing acts)
+    # Identified by having "Regulation" or "Directive" in the title
+    is_legal_doc = re.search(r'#.*(?:Regulation|Directive|Decision)', first_lines, re.IGNORECASE)
+    
+    if is_legal_doc:
+        if not has_celex:
+            issues.append(LintIssue(
+                line_num=1,
+                rule='META001',
+                message='Missing CELEX ID in document header (add "> **CELEX:** 32024R1183" etc.)',
+                severity='warning',
+                content='Document should start with CELEX metadata blockquote'
+            ))
+        if not has_source:
+            issues.append(LintIssue(
+                line_num=1,
+                rule='META002',
+                message='Missing Source URL in document header (add "> **Source:** https://eur-lex.europa.eu/...")',
+                severity='warning',
+                content='Document should include EUR-Lex source URL'
+            ))
+    
     for i, line in enumerate(lines, 1):
         stripped = line.rstrip()
         
