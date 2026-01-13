@@ -47,7 +47,7 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 line_num=1,
                 rule='META001',
                 message='Missing CELEX ID in document header (add "> **CELEX:** 32024R1183" etc.)',
-                severity='warning',
+                severity='error',
                 content='Document should start with CELEX metadata blockquote'
             ))
         if not has_source:
@@ -55,7 +55,7 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
                 line_num=1,
                 rule='META002',
                 message='Missing Source URL in document header (add "> **Source:** https://eur-lex.europa.eu/...")',
-                severity='warning',
+                severity='error',
                 content='Document should include EUR-Lex source URL'
             ))
     
@@ -166,14 +166,26 @@ def lint_markdown(file_path: str) -> List[LintIssue]:
         # Rule 11: Letter markers not formatted as list items
         # Detects "(a) text" that should be "- (a) text" for proper nesting
         # Only warns if there's leading whitespace (suggesting it should be nested)
+        # EXCEPTION: Skip this warning for amending regulation patterns where
+        # the letter marker is an instruction followed by blockquoted content
         if re.match(r'^\s+\([a-z]+\)\s+\S', line) and not re.match(r'^\s+-\s+\([a-z]+\)', line):
-            issues.append(LintIssue(
-                line_num=i,
-                rule='FORMAT005',
-                message='Letter marker should be list item for proper indentation (add "- " prefix)',
-                severity='warning',
-                content=stripped[:60] + '...' if len(stripped) > 60 else stripped
-            ))
+            # Check if this is an amending instruction (followed by blockquote or similar pattern)
+            is_amending_instruction = False
+            # Check if content suggests amending pattern (e.g., "is replaced", "is amended", "is inserted")
+            if re.search(r'(is replaced|is amended|is inserted|is deleted|is added|are replaced|are amended|are inserted|are deleted|are added)', line, re.IGNORECASE):
+                is_amending_instruction = True
+            # Also check if next line is a blockquote
+            if i < len(lines) and lines[i].strip().startswith('>'):
+                is_amending_instruction = True
+            
+            if not is_amending_instruction:
+                issues.append(LintIssue(
+                    line_num=i,
+                    rule='FORMAT005',
+                    message='Letter marker should be list item for proper indentation (add "- " prefix)',
+                    severity='warning',
+                    content=stripped[:60] + '...' if len(stripped) > 60 else stripped
+                ))
         
         # Rule 12: Lines starting with single quotes (Formex conversion artifact)
         # Detects both headers and regular text lines starting with orphan quotes
