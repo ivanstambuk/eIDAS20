@@ -288,7 +288,8 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
     Returns Markdown formatted lines with instructions + blockquoted replacement content.
     """
     lines = []
-    indent = "    " * indent_level
+    # Use 2-space indent to avoid Markdown code block interpretation (4 spaces = code)
+    indent = "  " * indent_level
     
     for item in list_elem.findall('ITEM'):
         np_elem = item.find('NP')
@@ -401,7 +402,8 @@ def process_list_simple(list_elem, indent_level=0):
     Used for lists that don't need quoted content extraction.
     """
     lines = []
-    indent = "    " * indent_level
+    # Use 2-space indent to avoid Markdown code block interpretation (4 spaces = code)
+    indent = "  " * indent_level
     
     for item in list_elem.findall('ITEM'):
         np_elem = item.find('NP')
