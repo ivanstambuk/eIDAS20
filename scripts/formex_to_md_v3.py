@@ -310,11 +310,11 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                 if no_p is not None and no_p.tail:
                     instruction_text = clean_text(no_p.tail)
             
-            # Output the instruction line
+            # Output the instruction line with bullet point for proper Markdown nesting
             if instruction_text:
-                lines.append(f"{indent}{number} {instruction_text}")
+                lines.append(f"{indent}- {number} {instruction_text}")
             elif number:
-                lines.append(f"{indent}{number}")
+                lines.append(f"{indent}- {number}")
             
             # Check if there are P elements that will follow - if so, add blank line
             # This ensures Markdown renders nested content properly instead of inline
@@ -322,6 +322,9 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
             nested_np_lists = np_elem.findall('LIST')
             if p_elements or nested_np_lists:
                 lines.append("")
+            
+            # Blockquotes should be indented 2 extra spaces under the bullet point
+            bullet_indent = indent + "  "
             
             # Now process P elements inside NP - handling different cases:
             for p_elem in np_elem.findall('P'):
@@ -353,19 +356,19 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                                 if alinea_text:
                                     # Add blank > line between consecutive paragraphs
                                     if had_blockquote_content:
-                                        lines.append(f"{indent}>")
+                                        lines.append(f"{bullet_indent}>")
                                     # Include paragraph number if present
                                     if para_num:
-                                        lines.append(f"{indent}> {para_num} {alinea_text}")
+                                        lines.append(f"{bullet_indent}> {para_num} {alinea_text}")
                                         para_num = ""  # Only add once
                                     else:
-                                        lines.append(f"{indent}> {alinea_text}")
+                                        lines.append(f"{bullet_indent}> {alinea_text}")
                                     had_blockquote_content = True
                         elif quot_child.tag == 'ARTICLE':
                             # Handle nested articles with proper formatting
                             if had_blockquote_content:
-                                lines.append(f"{indent}>")
-                            article_lines = format_quoted_article(quot_child, indent)
+                                lines.append(f"{bullet_indent}>")
+                            article_lines = format_quoted_article(quot_child, bullet_indent)
                             lines.extend(article_lines)
                             had_blockquote_content = True
                         elif quot_child.tag == 'LIST':
@@ -389,8 +392,8 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                                     
                                     if item_num or item_text:
                                         if had_blockquote_content:
-                                            lines.append(f"{indent}>")
-                                        lines.append(f"{indent}> {item_num} {item_text}".rstrip())
+                                            lines.append(f"{bullet_indent}>")
+                                        lines.append(f"{bullet_indent}> {item_num} {item_text}".rstrip())
                                         had_blockquote_content = True
                         else:
                             # Generic text extraction for other elements
@@ -399,8 +402,8 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                             child_text = child_text.strip("'\"")
                             if child_text:
                                 if had_blockquote_content:
-                                    lines.append(f"{indent}>")
-                                lines.append(f"{indent}> {child_text}")
+                                    lines.append(f"{bullet_indent}>")
+                                lines.append(f"{bullet_indent}> {child_text}")
                                 had_blockquote_content = True
                     
                     # Add blank line after blockquote to separate from next item
@@ -410,7 +413,7 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                 # Case 3: Plain P without nested structures - blockquote its content
                 p_text = clean_text(get_element_text(p_elem))
                 if p_text:
-                    lines.append(f"{indent}> {p_text}")
+                    lines.append(f"{bullet_indent}> {p_text}")
                     lines.append("")  # Add blank line after blockquote
             
             # Process nested lists that are direct children of NP (outside P)
