@@ -325,22 +325,34 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                 quot_s = p_elem.find('QUOT.S')
                 if quot_s is not None:
                     # Extract all content from within QUOT.S block
+                    # Track if we just added a blockquote line to add separators
+                    had_blockquote_content = False
                     for quot_child in quot_s:
                         if quot_child.tag == 'PARAG':
                             # Get ALINEA text from PARAG
                             for alinea in quot_child.findall('ALINEA'):
                                 alinea_text = clean_text(get_element_text(alinea))
                                 if alinea_text:
+                                    # Add blank > line between consecutive paragraphs
+                                    if had_blockquote_content:
+                                        lines.append(f"{indent}>")
                                     lines.append(f"{indent}> {alinea_text}")
+                                    had_blockquote_content = True
                         elif quot_child.tag == 'ARTICLE':
                             # Handle nested articles with proper formatting
+                            if had_blockquote_content:
+                                lines.append(f"{indent}>")
                             article_lines = format_quoted_article(quot_child, indent)
                             lines.extend(article_lines)
+                            had_blockquote_content = True
                         else:
                             # Generic text extraction
                             child_text = clean_text(get_element_text(quot_child))
                             if child_text:
+                                if had_blockquote_content:
+                                    lines.append(f"{indent}>")
                                 lines.append(f"{indent}> {child_text}")
+                                had_blockquote_content = True
                     
                     # Add blank line after blockquote to separate from next item
                     lines.append("")

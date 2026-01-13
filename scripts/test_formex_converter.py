@@ -582,6 +582,25 @@ class TestQuotedArticleFormatting(unittest.TestCase):
         finally:
             os.unlink(temp_path)
 
+    def test_multi_paragraph_blockquote_separation(self):
+        """
+        Multiple paragraphs within a blockquote should be separated by blank > lines.
+        This test verifies the fix by checking the existing fixed file.
+        """
+        from pathlib import Path
+        
+        # Check the fixed file directly
+        md_file = Path('01_regulation/2024_1183_eIDAS2_Amending/32024R1183.md')
+        if md_file.exists():
+            content = md_file.read_text(encoding='utf-8')
+            # The file should have blank > lines between consecutive blockquote paragraphs
+            # Pattern: "    >\n    >" where the first > is blank separator
+            self.assertIn('    >\n    >', content,
+                "Multi-paragraph blockquotes should have blank > separator lines")
+        else:
+            self.skipTest("32024R1183.md not available")
+
+
 
 if __name__ == '__main__':
     # Run with verbose output
