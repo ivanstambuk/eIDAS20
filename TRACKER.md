@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 10:31 CET |
-| **Session State** | ⏸️ Paused - Handover complete |
-| **Current Phase** | Phase 6: Polish & Deploy (60%) |
-| **Next Action** | Task 6.1 Accessibility or 6.5 Final testing |
+| **Last Updated** | 2026-01-14 10:48 CET |
+| **Session State** | 🟢 Active |
+| **Current Phase** | Phase 6: Polish & Deploy (80%) |
+| **Next Action** | Task 6.5 Final testing & launch |
 
 ---
 
@@ -107,7 +107,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 6.1 Accessibility audit | ⬜ TODO | WCAG 2.1 AA compliance |
+| 6.1 Accessibility audit | ✅ DONE | WCAG 2.1 AA: skip link, contrast, ARIA, reduced motion |
 | 6.2 Performance optimization | ✅ DONE | React.lazy, code splitting, vendor chunks |
 | 6.3 Light theme implementation | ✅ DONE | useTheme hook, localStorage, system pref |
 | 6.4 GitHub Actions workflow | ✅ DONE | Auto-deploy on push to master |
@@ -124,8 +124,8 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
 | Phase 4: Search | 5 | 5 | ✅ 100% |
 | Phase 5: AI Chat | 5 | 5 | ✅ 100% |
-| Phase 6: Polish & Deploy | 5 | 3 | 🔨 60% |
-| **Total** | **31** | **29** | **94%** |
+| Phase 6: Polish & Deploy | 5 | 4 | 🔨 80% |
+| **Total** | **31** | **30** | **97%** |
 
 ---
 
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 10:48 | **Task 6.1 Complete**: WCAG 2.1 AA accessibility audit - skip link, improved contrast, ARIA labels, reduced motion |
 | 2026-01-14 10:18 | **Task 6.2 + 6.4 Complete**: React.lazy code splitting, vendor chunks, GitHub Actions deploy workflow |
 | 2026-01-14 09:50 | **Task 6.3 Complete**: Light theme with useTheme hook, localStorage persistence, system preference detection |
 | 2026-01-14 03:35 | **Phase 5 COMPLETE**: WebLLM AI Chat with RAG, model selection, streaming, WebGPU fallback |
