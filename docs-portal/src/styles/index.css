@@ -54,6 +54,8 @@ body {
   /* Accent Colors */
   --accent-primary: #00d4ff;
   /* Cyan - primary brand */
+  --accent-primary-rgb: 0, 212, 255;
+  /* RGB values for rgba() usage */
   --accent-primary-dim: rgba(0, 212, 255, 0.15);
   --accent-primary-glow: rgba(0, 212, 255, 0.4);
   --accent-secondary: #22c55e;
@@ -146,6 +148,11 @@ body {
   --sidebar-width: 280px;
   --header-height: 64px;
   --max-content-width: 1200px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
@@ -535,6 +542,59 @@ pre code {
 
 .search-box .input {
   padding-left: var(--space-10);
+}
+
+/* Search Trigger Button (Header) */
+.search-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.search-trigger:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-accent);
+}
+
+.search-trigger .search-icon {
+  position: static;
+  transform: none;
+  flex-shrink: 0;
+}
+
+.search-trigger .search-placeholder {
+  flex: 1;
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+}
+
+.search-trigger .search-shortcut {
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-muted);
+}
+
+/* Status colors */
+:root {
+  --status-error: #ef4444;
+}
+
+/* Border subtle alias */
+:root {
+  --border-subtle: var(--border-primary);
+  --text-muted: var(--text-secondary);
 }
 
 /* ============================================

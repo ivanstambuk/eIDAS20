@@ -1,63 +1,85 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { SearchModal } from '../Search';
 
 const Header = ({ onMenuToggle }) => {
-    const location = useLocation();
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    // Global keyboard shortcut: Cmd/Ctrl + K
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                setIsSearchOpen(true);
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     return (
-        <header className="header">
-            <div className="header-left flex items-center gap-4">
-                <button
-                    className="btn btn-ghost menu-toggle"
-                    onClick={onMenuToggle}
-                    aria-label="Toggle menu"
-                >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M3 12h18M3 6h18M3 18h18" />
-                    </svg>
-                </button>
+        <>
+            <header className="header">
+                <div className="header-left flex items-center gap-4">
+                    <button
+                        className="btn btn-ghost menu-toggle"
+                        onClick={onMenuToggle}
+                        aria-label="Toggle menu"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                    </button>
 
-                <Link to="/" className="header-logo">
-                    <span className="logo-accent">eIDAS</span>
-                    <span>2.0</span>
-                    <span className="text-muted text-sm" style={{ marginLeft: '8px' }}>Documentation</span>
-                </Link>
-            </div>
-
-            <div className="header-center flex-1" style={{ maxWidth: '500px', margin: '0 auto' }}>
-                <div className="search-box">
-                    <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.35-4.35" />
-                    </svg>
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Search regulations, articles, terms..."
-                        aria-label="Search"
-                    />
+                    <Link to="/" className="header-logo">
+                        <span className="logo-accent">eIDAS</span>
+                        <span>2.0</span>
+                        <span className="text-muted text-sm" style={{ marginLeft: '8px' }}>Documentation</span>
+                    </Link>
                 </div>
-            </div>
 
-            <div className="header-right flex items-center gap-3">
-                <button className="btn btn-ghost" aria-label="Toggle theme">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
+                <div className="header-center flex-1" style={{ maxWidth: '500px', margin: '0 auto' }}>
+                    <button
+                        className="search-box search-trigger"
+                        onClick={() => setIsSearchOpen(true)}
+                        aria-label="Open search"
+                    >
+                        <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                        <span className="search-placeholder">Search regulations, articles, terms...</span>
+                        <kbd className="search-shortcut">⌘K</kbd>
+                    </button>
+                </div>
 
-                <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-ghost"
-                    aria-label="GitHub"
-                >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-            </div>
-        </header>
+                <div className="header-right flex items-center gap-3">
+                    <button className="btn btn-ghost" aria-label="Toggle theme">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+
+                    <a
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-ghost"
+                        aria-label="GitHub"
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                </div>
+            </header>
+
+            <SearchModal
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+            />
+        </>
     );
 };
 
