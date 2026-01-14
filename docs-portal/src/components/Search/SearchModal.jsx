@@ -238,14 +238,23 @@ export function SearchModal({ isOpen, onClose }) {
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, onClose]);
 
-    // Handle mode change
+    // Handle mode change - preserve query and re-search
     const handleModeChange = useCallback((mode) => {
+        const currentQuery = inputRef.current?.value || '';
         setSearchMode(mode);
-        // Clear results when switching modes
+
+        // Clear previous mode's results
         keywordSearch.clearSearch();
         semanticSearch.clearSearch();
+
+        // Re-run search with preserved query in new mode
+        if (currentQuery.trim()) {
+            // Use the appropriate search function for the new mode
+            const newSearch = mode === 'semantic' ? semanticSearch : keywordSearch;
+            newSearch.search(currentQuery);
+        }
+
         if (inputRef.current) {
-            inputRef.current.value = '';
             inputRef.current.focus();
         }
     }, [keywordSearch, semanticSearch]);
