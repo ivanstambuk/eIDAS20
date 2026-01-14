@@ -1,0 +1,117 @@
+/* TermPopover styles */
+
+.term-trigger {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+    cursor: help;
+    transition: color 0.2s ease;
+}
+
+.term-trigger:hover,
+.term-trigger:focus {
+    color: var(--accent-secondary);
+    text-decoration-style: solid;
+    outline: none;
+}
+
+.term-popover {
+    position: fixed;
+    z-index: 1000;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(0, 255, 255, 0.1);
+    animation: popoverFadeIn 0.2s ease;
+    transform: translateX(-50%);
+}
+
+@keyframes popoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.term-popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-secondary);
+}
+
+.term-popover-title {
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--accent-primary);
+}
+
+.term-popover-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background: var(--accent-primary-dim);
+    color: var(--accent-primary);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.term-popover-definition {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-3);
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.term-popover-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-secondary);
+}
+
+.term-popover-link {
+    font-size: var(--text-xs);
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+.term-popover-link:hover {
+    text-decoration: underline;
+}
+
+.term-popover-sources {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+/* Dark scrollbar for definition overflow */
+.term-popover-definition::-webkit-scrollbar {
+    width: 4px;
+}
+
+.term-popover-definition::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+}
+
+.term-popover-definition::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 2px;
+}
