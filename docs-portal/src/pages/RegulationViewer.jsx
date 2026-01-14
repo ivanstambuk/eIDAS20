@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
+import { useIsMobile } from '../hooks/useMediaQuery';
+import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
+import '../components/CitationPopover/CitationPopover.css';
 
 /**
  * Calculate estimated reading time for legal/regulatory text.
@@ -49,6 +52,10 @@ const RegulationViewer = () => {
     const [regulation, setRegulation] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // Citation system
+    const { citations } = useCitations(id);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const loadRegulation = async () => {
@@ -175,8 +182,15 @@ const RegulationViewer = () => {
                     <article
                         className="regulation-content card"
                         style={{ padding: 'var(--space-8)' }}
-                        dangerouslySetInnerHTML={{ __html: regulation.contentHtml }}
-                    />
+                    >
+                        {/* Main content - citations already transformed at build time */}
+                        <div dangerouslySetInnerHTML={{ __html: regulation.contentHtml }} />
+
+                        {/* References section (shown on mobile, also for accessibility) */}
+                        {citations.length > 0 && (
+                            <div dangerouslySetInnerHTML={{ __html: generateReferencesHtml(citations) }} />
+                        )}
+                    </article>
                 </main>
 
                 {/* Table of Contents Sidebar */}

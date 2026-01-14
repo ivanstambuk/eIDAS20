@@ -1,0 +1,239 @@
+/* CitationPopover styles */
+/* Part of DEC-009: Citation formatting with responsive behavior */
+
+/* =============================================================================
+   Trigger Styles (inline citation text)
+   ============================================================================= */
+
+/* The build-time transformation uses .citation-ref class */
+.citation-ref,
+.citation-trigger {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+    cursor: help;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.citation-ref:hover,
+.citation-ref:focus,
+.citation-trigger:hover,
+.citation-trigger:focus {
+    color: var(--accent-primary);
+    text-decoration-style: solid;
+    outline: none;
+}
+
+/* =============================================================================
+   Popover Styles (desktop hover)
+   ============================================================================= */
+
+.citation-popover {
+    position: fixed;
+    z-index: 1000;
+    width: 420px;
+    max-width: calc(100vw - 40px);
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(0, 100, 255, 0.15);
+    animation: citationPopoverFadeIn 0.2s ease;
+    transform: translateX(-50%);
+}
+
+@keyframes citationPopoverFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.citation-popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-secondary);
+}
+
+.citation-popover-title {
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--text-link);
+}
+
+.citation-popover-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+}
+
+.citation-popover-fulltext {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-2);
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.citation-popover-ojref {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin: 0 0 var(--space-3);
+    font-style: italic;
+}
+
+.citation-popover-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-secondary);
+}
+
+.citation-popover-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-link);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s ease;
+}
+
+.citation-popover-link:hover {
+    background: var(--accent-primary-dim);
+    color: var(--accent-primary);
+}
+
+.citation-popover-link--external {
+    color: var(--text-secondary);
+}
+
+/* =============================================================================
+   Footnote Reference (mobile)
+   ============================================================================= */
+
+.citation-footnote-ref {
+    font-size: var(--text-xs);
+    vertical-align: super;
+    line-height: 1;
+}
+
+.citation-footnote-ref a {
+    color: var(--text-link);
+    text-decoration: none;
+    padding: 0 var(--space-1);
+}
+
+.citation-footnote-ref a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================================================
+   References Section (bottom of page)
+   ============================================================================= */
+
+.references-section {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 2px solid var(--border-primary);
+}
+
+.references-section h2 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+}
+
+.references-list {
+    list-style: decimal;
+    padding-left: var(--space-6);
+    font-size: var(--text-sm);
+    line-height: 1.8;
+}
+
+.references-list li {
+    margin-bottom: var(--space-2);
+    color: var(--text-secondary);
+}
+
+.reference-link {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.reference-link:hover {
+    color: var(--text-link);
+    text-decoration: underline;
+}
+
+.reference-oj {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.reference-backlink {
+    margin-left: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.reference-backlink:hover {
+    color: var(--text-link);
+}
+
+/* =============================================================================
+   Mobile: Hide popover triggers, show footnotes
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    /* On mobile, simplified styling */
+    .citation-trigger {
+        text-decoration-style: solid;
+    }
+
+    /* References section more prominent on mobile */
+    .references-section {
+        margin-top: var(--space-6);
+        padding-top: var(--space-4);
+    }
+}
+
+/* =============================================================================
+   Scrollbar for long popover content
+   ============================================================================= */
+
+.citation-popover-fulltext::-webkit-scrollbar {
+    width: 4px;
+}
+
+.citation-popover-fulltext::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+}
+
+.citation-popover-fulltext::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: 2px;
+}

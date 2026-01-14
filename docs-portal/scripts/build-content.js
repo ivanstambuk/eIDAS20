@@ -78,6 +78,77 @@ const PREAMBLE_INJECTION = {
 };
 
 /**
+ * Citation Transformation Configuration
+ * 
+ * Part of DEC-009: Replace verbose inline citations with clean short names.
+ * 
+ * Input: \[Full title of Act (OJ L xxx, date, p. xx, ELI: http://...)\]
+ * Output: <span class="citation-ref" data-index="N">Short Name</span>
+ * 
+ * Citations are extracted at build time by build-citations.js which creates
+ * citation JSON files. This function reads those files and transforms the
+ * markdown content before HTML conversion.
+ */
+const CITATIONS_DIR = join(__dirname, '..', 'public', 'data', 'citations');
+
+/**
+ * Load citations for a given slug if they exist.
+ * @param {string} slug - Document slug (e.g., "2025-0846")
+ * @returns {Array|null} - Array of citation objects or null if not found
+ */
+function loadCitations(slug) {
+    const citationPath = join(CITATIONS_DIR, `${slug}.json`);
+    if (!existsSync(citationPath)) {
+        return null;
+    }
+    try {
+        const data = JSON.parse(readFileSync(citationPath, 'utf-8'));
+        return data.citations || null;
+    } catch (err) {
+        console.warn(`  ⚠️  Error loading citations for ${slug}:`, err.message);
+        return null;
+    }
+}
+
+/**
+ * Transform citations in markdown content.
+ * 
+ * Replaces verbose inline citations with clean span elements containing
+ * the short name and data attributes for frontend hydration.
+ * 
+ * @param {string} content - Markdown content
+ * @param {Array} citations - Array of citation objects from build-citations.js
+ * @returns {string} - Transformed markdown
+ */
+function transformCitationsInMarkdown(content, citations) {
+    if (!citations || citations.length === 0) return content;
+
+    let transformed = content;
+    let replacements = 0;
+
+    for (const citation of citations) {
+        // The originalText is exactly as it appears in the markdown
+        const originalText = citation.originalText;
+
+        // Replace with HTML span (will pass through markdown processor)
+        // Using data attributes for frontend popover hydration
+        const replacement = `<span class="citation-ref" tabindex="0" role="button" data-idx="${citation.index}" data-short="${citation.shortName.replace(/"/g, '&quot;')}" data-celex="${citation.celex || ''}" data-internal="${citation.isInternal}" data-url="${citation.url}">${citation.shortName}</span>`;
+
+        // Use simple string includes/replace - more reliable than regex for complex text
+        if (transformed.includes(originalText)) {
+            transformed = transformed.split(originalText).join(replacement);
+            replacements++;
+        }
+    }
+
+    if (replacements > 0) {
+        console.log(`     ✅ Transformed ${replacements} citations`);
+    }
+
+    return transformed;
+}
+
+/**
  * Parse CELEX and metadata from the first line blockquote
  */
 function parseMetadata(content) {
@@ -513,6 +584,13 @@ function processMarkdownFile(filePath, dirName, type) {
     const toc = buildTableOfContents(content);
     const description = parseDescription(rawContent, title);  // Use raw for preamble extraction
     const date = extractDate(rawContent, dirName, metadata.celex);
+
+    // Transform citations BEFORE markdown → HTML conversion
+    const citations = loadCitations(slug);
+    if (citations && citations.length > 0) {
+        console.log(`  📚 Transforming ${citations.length} citations for ${slug}...`);
+        content = transformCitationsInMarkdown(content, citations);
+    }
 
     // Prepare the regulation data object
     const regulationData = {
