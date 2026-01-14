@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 23:46 CET |
+| **Last Updated** | 2026-01-14 23:52 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
-| **Next Action** | Desktop hover popovers + hide References on desktop (DEC-009 Phase 2) |
+| **Next Action** | Deploy to GitHub Pages / additional enhancements |
 
 ---
 
@@ -35,6 +35,7 @@
 - **List indentation** (definitions, recitals, and numbered items properly indented)
 - **Preamble injection** (78 recitals from 2024/1183 amendment injected into consolidated 910/2014)
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
+- **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
 
 ---
 
@@ -54,6 +55,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 23:52 | DEC-009 Phase 2: Desktop hover popovers, responsive References section (hidden on desktop) |
 | 2026-01-14 23:45 | Citation system complete: build-time transformation (160 citations), References section, internal/external linking |
 | 2026-01-14 23:25 | Citation system (WIP): DEC-009, build-citations.js extracting 160 citations (42 internal, 118 external) |
 | 2026-01-14 23:05 | Fixed metadata loss: restored CELEX/EUR-Lex links in 29 docs; added prevention guard to batch script |

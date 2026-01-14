@@ -57,6 +57,115 @@ const RegulationViewer = () => {
     const { citations } = useCitations(id);
     const isMobile = useIsMobile();
 
+    // Desktop hover popover hydration for citations
+    useEffect(() => {
+        // Skip on mobile - popovers don't work well with touch
+        if (isMobile || !regulation) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        let activePopover = null;
+        let hideTimeout = null;
+
+        const showPopover = (triggerEl) => {
+            // Parse data attributes from the span
+            const data = {
+                idx: triggerEl.dataset.idx,
+                short: triggerEl.dataset.short,
+                celex: triggerEl.dataset.celex,
+                isInternal: triggerEl.dataset.internal === 'true',
+                url: triggerEl.dataset.url,
+            };
+
+            // Find the full citation from loaded data
+            const citation = citations.find(c => c.index === parseInt(data.idx, 10));
+            if (!citation) return;
+
+            // Create popover element
+            const popover = document.createElement('div');
+            popover.className = 'citation-popover';
+            popover.innerHTML = `
+                <div class="citation-popover-header">
+                    <span class="citation-popover-title">${citation.shortName}</span>
+                    ${citation.celex ? `<span class="citation-popover-badge">${citation.isInternal ? '📄' : '🔗'} ${citation.celex}</span>` : ''}
+                </div>
+                <p class="citation-popover-fulltext">${citation.fullTitle}</p>
+                ${citation.ojRef ? `<p class="citation-popover-ojref">${citation.ojRef}</p>` : ''}
+                <div class="citation-popover-footer">
+                    <a href="${citation.url}" ${citation.isInternal ? '' : 'target="_blank" rel="noopener noreferrer"'} class="citation-popover-link${citation.isInternal ? '' : ' citation-popover-link--external'}">
+                        ${citation.isInternal ? 'View in Portal →' : 'View on EUR-Lex 🔗'}
+                    </a>
+                </div>
+            `;
+
+            // Position below trigger, centered
+            const rect = triggerEl.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            let top = rect.bottom + 8;
+            let left = rect.left + (rect.width / 2);
+
+            // Adjust for viewport edges
+            if (left + 200 > viewportWidth) left = viewportWidth - 220;
+            if (left < 20) left = 20;
+            if (top + 200 > viewportHeight) top = rect.top - 8;
+
+            popover.style.top = `${top}px`;
+            popover.style.left = `${left}px`;
+
+            document.body.appendChild(popover);
+            activePopover = popover;
+
+            // Keep popover alive when hovering over it
+            popover.addEventListener('mouseenter', () => {
+                if (hideTimeout) clearTimeout(hideTimeout);
+            });
+            popover.addEventListener('mouseleave', hidePopover);
+        };
+
+        const hidePopover = () => {
+            hideTimeout = setTimeout(() => {
+                if (activePopover) {
+                    activePopover.remove();
+                    activePopover = null;
+                }
+            }, 150);
+        };
+
+        const handleMouseEnter = (e) => {
+            const trigger = e.target.closest('.citation-ref');
+            if (!trigger) return;
+
+            if (hideTimeout) clearTimeout(hideTimeout);
+
+            // Remove any existing popover
+            if (activePopover) {
+                activePopover.remove();
+                activePopover = null;
+            }
+
+            showPopover(trigger);
+        };
+
+        const handleMouseLeave = (e) => {
+            const trigger = e.target.closest('.citation-ref');
+            if (!trigger) return;
+            hidePopover();
+        };
+
+        contentEl.addEventListener('mouseenter', handleMouseEnter, true);
+        contentEl.addEventListener('mouseleave', handleMouseLeave, true);
+
+        return () => {
+            contentEl.removeEventListener('mouseenter', handleMouseEnter, true);
+            contentEl.removeEventListener('mouseleave', handleMouseLeave, true);
+            if (activePopover) activePopover.remove();
+            if (hideTimeout) clearTimeout(hideTimeout);
+        };
+    }, [regulation, citations, isMobile]);
+
     useEffect(() => {
         const loadRegulation = async () => {
             try {

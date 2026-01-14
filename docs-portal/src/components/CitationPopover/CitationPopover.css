@@ -203,18 +203,30 @@
 }
 
 /* =============================================================================
-   Mobile: Hide popover triggers, show footnotes
+   Desktop: Hide References section (hover popovers provide the info)
+   ============================================================================= */
+
+@media (min-width: 769px) {
+    .references-section {
+        display: none;
+    }
+}
+
+/* =============================================================================
+   Mobile: Show References section (no hover on touch devices)
    ============================================================================= */
 
 @media (max-width: 768px) {
 
     /* On mobile, simplified styling */
-    .citation-trigger {
+    .citation-trigger,
+    .citation-ref {
         text-decoration-style: solid;
     }
 
     /* References section more prominent on mobile */
     .references-section {
+        display: block;
         margin-top: var(--space-6);
         padding-top: var(--space-4);
     }
