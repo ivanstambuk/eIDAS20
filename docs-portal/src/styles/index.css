@@ -19,7 +19,7 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
+  /* scroll-behavior handled by JS for faster 150ms animation */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
