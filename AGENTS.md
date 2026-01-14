@@ -44,6 +44,9 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - **Auto-commit IMMEDIATELY** after each logical increment that is tested and working
    - Use **conventional commit** format: `type: brief description`
    - Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `test`
+   - **Bundle TRACKER.md updates in the SAME commit** as the change they document
+     - ❌ WRONG: Commit change → Commit TRACKER update (creates noise)
+     - ✅ CORRECT: Edit files + edit TRACKER.md → Single commit
 
 3. **Clean Chrome Tabs Before browser_subagent (MANDATORY):**
    - **BEFORE calling `browser_subagent`**, clean up accumulated tabs:
