@@ -65,26 +65,43 @@ function parseMetadata(content) {
 }
 
 /**
- * Strip the metadata blockquote from content for rendering.
- * The blockquote contains CELEX, Document type, Source URL which are already
- * displayed in the UI (header badges, EUR-Lex link). Rendering them in the
- * content area is redundant and visually jarring.
+ * Strip front matter that is redundant in the portal UI.
  * 
- * Decision: 2026-01-14 - Metadata blockquote stripped from all rendered content.
+ * This includes:
+ * 1. Metadata blockquote: CELEX, Document type, Source URL (shown in header badges)
+ * 2. Amendment History table: Only in consolidated regulations, renders as raw markdown
+ * 
+ * Decision: 2026-01-14 - Metadata stripped from rendered content.
  * The original markdown files retain this data for archival purposes.
  * See AGENTS.md for documentation of this decision.
  */
-function stripMetadataBlockquote(content) {
-    // Match the opening blockquote lines at the start of the document
-    // Pattern: All consecutive lines starting with > at the beginning of the document
-    // This captures:
+function stripFrontMatter(content) {
+    let result = content;
+
+    // 1. Strip metadata blockquote at start of document
+    // Pattern: All consecutive lines starting with > at the beginning
+    // Example:
     //   > **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
     //   >
     //   > **Source:** https://eur-lex.europa.eu/...
-    //   (blank line)
-    // The regex matches all lines starting with > (including empty >) until a non-blockquote line
     const metadataPattern = /^(>.*\n)+\n?/;
-    return content.replace(metadataPattern, '');
+    result = result.replace(metadataPattern, '');
+
+    // 2. Strip Amendment History section (only in consolidated regulations)
+    // Pattern: ## Amendment History through the markdown table until next heading
+    // Example:
+    //   ## Amendment History
+    //   
+    //   | Code | Act | Official Journal |
+    //   |------|-----|------------------|
+    //   | ►B | [Regulation...] | OJ L 257... |
+    //   ...
+    //   
+    //   # Regulation (EU) No 910/2014...
+    const amendmentHistoryPattern = /^## Amendment History\s*\n(?:\s*\n|\|[^\n]*\n)*\n*/m;
+    result = result.replace(amendmentHistoryPattern, '');
+
+    return result;
 }
 
 /**
@@ -274,9 +291,14 @@ function markdownToHtml(markdown) {
  * Process a single markdown file
  */
 function processMarkdownFile(filePath, dirName, type) {
-    const content = readFileSync(filePath, 'utf-8');
+    const rawContent = readFileSync(filePath, 'utf-8');
 
-    const metadata = parseMetadata(content);
+    // Parse metadata from raw content (before stripping)
+    const metadata = parseMetadata(rawContent);
+
+    // Strip front matter for all content-related processing
+    const content = stripFrontMatter(rawContent);
+
     const title = parseTitle(content);
     const slug = generateSlug(dirName, type);
     const shortTitle = extractShortTitle(title, metadata.celex, type);
@@ -296,13 +318,12 @@ function processMarkdownFile(filePath, dirName, type) {
         source: metadata.source,
         version: metadata.version,
         toc,
-        // Strip metadata blockquote before storing content for rendering
-        // (metadata is already shown in UI header, see AGENTS.md decision)
-        contentMarkdown: stripMetadataBlockquote(content),
+        // Content is already stripped of front matter
+        contentMarkdown: content,
         // Also provide pre-rendered HTML for simple use cases
-        contentHtml: markdownToHtml(stripMetadataBlockquote(content)),
-        // Metadata for search and filtering
-        wordCount: content.split(/\s+/).length,
+        contentHtml: markdownToHtml(content),
+        // Metadata for search and filtering (use raw for accurate count)
+        wordCount: rawContent.split(/\s+/).length,
         lastProcessed: new Date().toISOString()
     };
 

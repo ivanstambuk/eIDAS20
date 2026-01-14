@@ -180,23 +180,37 @@ python scripts/test_formex_converter.py
 
 ## 📋 Portal Content Processing Decisions
 
-### Decision: Strip Metadata Blockquotes (2026-01-14)
+### Decision: Strip Front Matter (2026-01-14, updated)
 
-**Context**: All markdown source files contain a metadata blockquote at the top:
+**Context**: Markdown source files contain metadata that is redundant in the portal UI:
+
+1. **Metadata blockquote** (all documents):
 ```markdown
 > **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
 >
 > **Source:** https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2977
 ```
 
-**Decision**: Strip this blockquote from rendered portal content.
+2. **Amendment History table** (consolidated regulations only):
+```markdown
+## Amendment History
+
+| Code | Act | Official Journal |
+|------|-----|------------------|
+| ►B | [Regulation (EU) No 910/2014](...) - Original | OJ L 257, 28.8.2014, p. 73 |
+| ►M1 | [Directive (EU) 2022/2555](...) - NIS 2 Directive | OJ L 333, 27.12.2022, p. 80 |
+| ►M2 | [Regulation (EU) 2024/1183](...) - eIDAS 2.0 | OJ L 1183, 30.4.2024, p. 1 |
+```
+
+**Decision**: Strip both from rendered portal content.
 
 **Rationale**:
-1. **Redundant** — The UI already displays CELEX badge, date, and "View on EUR-Lex" link in the header
-2. **Visual clutter** — Raw technical metadata breaks the premium design aesthetic
-3. **Preserved at source** — Original markdown files retain the metadata for archival/traceability
+1. **Redundant** — UI already displays CELEX badge, date, and "View on EUR-Lex" link in header
+2. **Visual clutter** — Raw markdown tables don't render properly and break premium aesthetic
+3. **Reading flow** — Legal readers want to jump straight to Article 1, not see amendment tables
+4. **Preserved at source** — Original markdown files retain all metadata for archival/traceability
 
-**Implementation**: `docs-portal/scripts/build-content.js` → `stripMetadataBlockquote()` function
+**Implementation**: `docs-portal/scripts/build-content.js` → `stripFrontMatter()` function
 
 **Applies to**: All 32 regulatory documents (2 regulations + 30 implementing acts)
 
