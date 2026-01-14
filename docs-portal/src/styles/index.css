@@ -860,6 +860,26 @@ pre code {
   background: var(--bg-hover);
 }
 
+/* --- Lists (proper indentation for hierarchy) --- */
+.regulation-content ul,
+.regulation-content ol {
+  padding-left: var(--space-8);
+  margin: var(--space-4) 0;
+}
+
+.regulation-content li {
+  margin-bottom: var(--space-2);
+}
+
+/* Nested lists get additional indent */
+.regulation-content ul ul,
+.regulation-content ul ol,
+.regulation-content ol ul,
+.regulation-content ol ol {
+  padding-left: var(--space-6);
+  margin: var(--space-2) 0;
+}
+
 /* --- Term Highlight (Terminology Popover) --- */
 .term-highlight {
   color: var(--accent-primary);
