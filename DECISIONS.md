@@ -201,5 +201,56 @@ combinedScore = (semanticSim * 0.7) + (titleSim * 0.3)
 
 ---
 
-*Add new decisions at the bottom with incrementing DEC-XXX numbers.*
+## DEC-008: Preamble injection from amending to consolidated regulation
 
+**Date:** 2026-01-14  
+**Status:** Accepted  
+
+**Context:**  
+The consolidated eIDAS regulation (910/2014) from EUR-Lex does not include a preamble or recitals. However, the amending regulation (2024/1183) contains 78 recitals explaining the legislative rationale for the 2024 amendments. User requirements:
+1. Want to link to recitals from the consolidated document
+2. Avoid linking to the amending regulation separately (per project rules)
+3. Need interpretive context available alongside the applicable law
+
+**Decision:**  
+Implement a **build-time preamble injection** that automatically copies the preamble and recitals from 2024/1183 into the consolidated 910/2014 during the content build process.
+
+**Implementation:**
+- `docs-portal/scripts/build-content.js` — Added `PREAMBLE_INJECTION` config
+- `extractAmendmentPreamble()` — Reads preamble from amending regulation markdown
+- `injectPreamble()` — Inserts preamble before "Enacting Terms" in consolidated document
+- Attribution notice clearly marks the source
+
+**Output structure in consolidated:**
+```markdown
+> **Note:** The following preamble and recitals are from the amending 
+> **Regulation (EU) 2024/1183**...
+
+## Preamble
+THE EUROPEAN PARLIAMENT AND THE COUNCIL...
+
+## Recitals
+- (1) The Commission Communication...
+- ...
+- (78) Regulation (EU) No 910/2014 should therefore be amended accordingly,
+
+## Enacting Terms
+### Article 1
+...
+```
+
+**Rationale:**
+1. **Single document** — Users get complete law + legislative intent in one place
+2. **Deep linking** — `?section=recitals` works within consolidated document
+3. **Reproducible** — Runs automatically on every build, not manual copy/paste
+4. **Legal accuracy** — Clear attribution preserves provenance
+5. **TOC integration** — Recitals appear in table of contents for navigation
+
+**Alternatives considered:**
+1. **Manual copy** — Rejected: not reproducible, error-prone
+2. **Linked section** — Rejected: violates "no links to amending regulation" rule
+3. **Two-part preamble (original + amendment)** — Deferred: would require fetching original 910/2014 recitals from EUR-Lex
+
+---
+
+*Add new decisions at the bottom with incrementing DEC-XXX numbers.*

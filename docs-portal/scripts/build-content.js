@@ -43,6 +43,41 @@ const SOURCE_DIRS = [
 ];
 
 /**
+ * Preamble Injection Configuration
+ * 
+ * The consolidated eIDAS regulation (910/2014) from EUR-Lex doesn't include a preamble.
+ * However, the amending regulation (2024/1183) contains valuable recitals that explain
+ * the legislative rationale for the 2024 amendments.
+ * 
+ * This configuration enables automatic injection of the amendment preamble into the
+ * consolidated document at build time, allowing:
+ * - Deep linking to recitals (e.g., ?section=recital-42)
+ * - Avoiding links to the amending regulation (per project rules)
+ * - Single-document experience for users
+ * 
+ * See DECISIONS.md for the design decision (DEC-XXX).
+ */
+const PREAMBLE_INJECTION = {
+    // Target: Consolidated eIDAS regulation
+    targetSlugPattern: /^910-2014$/,
+
+    // Source: eIDAS 2.0 amending regulation
+    sourceDir: join(PROJECT_ROOT, '01_regulation', '2024_1183_eIDAS2_Amending'),
+
+    // Section markers in the source document
+    preambleStartMarker: '## Preamble',
+    recitalsStartMarker: '## Recitals',
+    enactingTermsMarker: '## Enacting Terms',
+
+    // Attribution notice (inserted before preamble)
+    attributionNote: `
+> **Note:** The following preamble and recitals are from the amending **Regulation (EU) 2024/1183**
+> (eIDAS 2.0), which established the European Digital Identity Framework. These recitals explain
+> the legislative rationale for the 2024 amendments to this consolidated regulation.
+`
+};
+
+/**
  * Parse CELEX and metadata from the first line blockquote
  */
 function parseMetadata(content) {
@@ -335,6 +370,81 @@ function extractDate(content, dirName, celex) {
 }
 
 /**
+ * Extract preamble and recitals from the eIDAS 2.0 amendment.
+ * 
+ * This reads the 2024/1183 markdown file and extracts:
+ * - The formal preamble (legal citations)
+ * - All 78 recitals explaining the amendments
+ * 
+ * Returns null if the source file cannot be found.
+ */
+function extractAmendmentPreamble() {
+    const { sourceDir, preambleStartMarker, enactingTermsMarker, attributionNote } = PREAMBLE_INJECTION;
+
+    // Find the markdown file in the source directory
+    if (!existsSync(sourceDir)) {
+        console.warn(`  ⚠️  Amendment source directory not found: ${sourceDir}`);
+        return null;
+    }
+
+    const files = readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+    if (files.length === 0) {
+        console.warn(`  ⚠️  No markdown files found in: ${sourceDir}`);
+        return null;
+    }
+
+    const sourcePath = join(sourceDir, files[0]);
+    const content = readFileSync(sourcePath, 'utf-8');
+
+    // Find the start of the preamble section
+    const preambleStart = content.indexOf(preambleStartMarker);
+    if (preambleStart === -1) {
+        console.warn(`  ⚠️  Preamble section not found in amendment`);
+        return null;
+    }
+
+    // Find the end (Enacting Terms section)
+    const enactingStart = content.indexOf(enactingTermsMarker, preambleStart);
+    if (enactingStart === -1) {
+        console.warn(`  ⚠️  Enacting Terms section not found in amendment`);
+        return null;
+    }
+
+    // Extract the preamble section (including Preamble and Recitals)
+    let preambleContent = content.substring(preambleStart, enactingStart).trim();
+
+    // Add attribution notice at the beginning
+    preambleContent = attributionNote.trim() + '\n\n' + preambleContent;
+
+    return preambleContent;
+}
+
+/**
+ * Inject the amendment preamble into the consolidated regulation content.
+ * 
+ * The preamble is inserted after the Amendment History table (if present)
+ * or at the very beginning of the content, before the Enacting Terms.
+ * 
+ * @param {string} content - The stripped markdown content
+ * @param {string} preamble - The preamble content to inject
+ * @returns {string} - Content with preamble injected
+ */
+function injectPreamble(content, preamble) {
+    // Look for "Enacting Terms" to insert preamble before it
+    const enactingIndex = content.indexOf('## Enacting Terms');
+
+    if (enactingIndex !== -1) {
+        // Insert preamble before Enacting Terms
+        const before = content.substring(0, enactingIndex).trimEnd();
+        const after = content.substring(enactingIndex);
+        return before + '\n\n' + preamble + '\n\n' + after;
+    }
+
+    // Fallback: prepend preamble to content
+    return preamble + '\n\n' + content;
+}
+
+/**
  * Create the unified processor for markdown → HTML conversion.
  * 
  * Pipeline:
@@ -382,10 +492,24 @@ function processMarkdownFile(filePath, dirName, type) {
     const title = parseTitle(rawContent);  // Extract title BEFORE stripping H1
 
     // Strip front matter for all content-related processing
-    const content = stripFrontMatter(rawContent);
+    let content = stripFrontMatter(rawContent);
 
     const slug = generateSlug(dirName, type);
     const shortTitle = extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
+
+    // Check if this is the consolidated eIDAS regulation that needs preamble injection
+    let preambleInjected = false;
+    if (PREAMBLE_INJECTION.targetSlugPattern.test(slug)) {
+        console.log(`  📜 Injecting amendment preamble into ${slug}...`);
+        const preamble = extractAmendmentPreamble();
+        if (preamble) {
+            content = injectPreamble(content, preamble);
+            preambleInjected = true;
+            console.log(`     ✅ Preamble injected (78 recitals)`);
+        }
+    }
+
+    // Build TOC after potential preamble injection so recitals appear in TOC
     const toc = buildTableOfContents(content);
     const description = parseDescription(rawContent, title);  // Use raw for preamble extraction
     const date = extractDate(rawContent, dirName, metadata.celex);
@@ -402,13 +526,15 @@ function processMarkdownFile(filePath, dirName, type) {
         source: metadata.source,
         version: metadata.version,
         toc,
-        // Content is already stripped of front matter
+        // Content is already stripped of front matter (and preamble injected if applicable)
         contentMarkdown: content,
         // Also provide pre-rendered HTML for simple use cases
         contentHtml: markdownToHtml(content),
         // Metadata for search and filtering (use raw for accurate count)
-        wordCount: rawContent.split(/\s+/).length,
-        lastProcessed: new Date().toISOString()
+        wordCount: content.split(/\s+/).length,  // Use processed content for accurate count
+        lastProcessed: new Date().toISOString(),
+        // Track preamble injection for debugging
+        preambleInjected
     };
 
     return regulationData;
