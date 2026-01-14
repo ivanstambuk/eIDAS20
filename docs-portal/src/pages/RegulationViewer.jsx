@@ -3,6 +3,32 @@ import { useParams, Link, useSearchParams } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 
 /**
+ * Calculate estimated reading time for legal/regulatory text.
+ * Uses 150 WPM (slower than standard 265 WPM due to legal complexity).
+ * @param {number} wordCount - Total word count
+ * @returns {string} - Formatted time (e.g., "45 min read" or "~2h 45m read")
+ */
+function calculateReadingTime(wordCount) {
+    if (!wordCount || wordCount <= 0) return null;
+
+    const WPM = 150; // Legal text reading speed
+    const totalMinutes = Math.ceil(wordCount / WPM);
+
+    if (totalMinutes < 60) {
+        return `${totalMinutes} min read`;
+    }
+
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    if (minutes === 0) {
+        return `~${hours}h read`;
+    }
+
+    return `~${hours}h ${minutes}m read`;
+}
+
+/**
  * Scroll to element with header offset (same logic as CollapsibleTOC)
  */
 function scrollToSection(elementId) {
@@ -121,6 +147,9 @@ const RegulationViewer = () => {
                 <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
                     <span>📅 {regulation.date}</span>
                     <span>📖 {regulation.wordCount?.toLocaleString()} words</span>
+                    {regulation.wordCount && (
+                        <span>⏱️ {calculateReadingTime(regulation.wordCount)}</span>
+                    )}
                     {regulation.source && (
                         <a
                             href={regulation.source}
