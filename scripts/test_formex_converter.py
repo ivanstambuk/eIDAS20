@@ -997,6 +997,138 @@ class TestListBulletPrefixes(unittest.TestCase):
                     f"Nested item should be indented: {line}")
 
 
+class TestRecitalsIndentation(unittest.TestCase):
+    """Test that recitals are output as list items for proper indentation."""
+    
+    def test_recitals_have_bullet_prefix(self):
+        """Recitals should be output as list items with bullet prefix."""
+        from formex_to_md_v3 import extract_recitals
+        
+        xml = '''<ACT>
+            <PREAMBLE>
+                <GR.CONSID>
+                    <CONSID>
+                        <NP>
+                            <NO.P>(1)</NO.P>
+                            <TXT>The European Digital Identity Framework is crucial.</TXT>
+                        </NP>
+                    </CONSID>
+                    <CONSID>
+                        <NP>
+                            <NO.P>(2)</NO.P>
+                            <TXT>Regulations apply to all Member States.</TXT>
+                        </NP>
+                    </CONSID>
+                </GR.CONSID>
+            </PREAMBLE>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_recitals(root)
+        output = '\n'.join(lines)
+        
+        # Recitals should have bullet prefix for indentation
+        self.assertIn('- (1)', output, "Recital (1) should have bullet prefix")
+        self.assertIn('- (2)', output, "Recital (2) should have bullet prefix")
+        self.assertIn('European Digital Identity', output)
+        self.assertIn('Regulations apply', output)
+
+
+class TestDefinitionsIndentation(unittest.TestCase):
+    """Test that definition patterns are converted to list items."""
+    
+    def test_definition_patterns_converted_to_list(self):
+        """Lines starting with (N) 'term' should be converted to list items."""
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Minimal Formex with definition-style article
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <ACT>
+            <TITLE><TI><P>Test Regulation</P></TI></TITLE>
+            <ENACTING.TERMS>
+                <ARTICLE>
+                    <TI.ART>Article 3</TI.ART>
+                    <STI.ART>Definitions</STI.ART>
+                    <ALINEA>
+                        <P>For the purposes of this Regulation:</P>
+                    </ALINEA>
+                    <ALINEA>
+                        <P>(1) 'electronic identification' means the process of using data;</P>
+                    </ALINEA>
+                    <ALINEA>
+                        <P>(2) 'trust service' means an electronic service;</P>
+                    </ALINEA>
+                    <ALINEA>
+                        <P>(23a) 'qualified service' means a certified service;</P>
+                    </ALINEA>
+                </ARTICLE>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # Definition patterns should be converted to list items
+            self.assertIn("- (1) 'electronic identification'", result,
+                "Definition (1) should have bullet prefix")
+            self.assertIn("- (2) 'trust service'", result,
+                "Definition (2) should have bullet prefix")
+            self.assertIn("- (23a) 'qualified service'", result,
+                "Definition (23a) should have bullet prefix")
+            
+            # The intro line should NOT have a bullet (doesn't match pattern)
+            self.assertIn("For the purposes of this Regulation:", result)
+            self.assertNotIn("- For the purposes", result,
+                "Intro line should not get a bullet prefix")
+        finally:
+            os.unlink(temp_path)
+    
+    def test_nested_definitions_not_double_bulleted(self):
+        """Definitions that are already list items should not get double bullets."""
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Formex with LIST structure (already outputs as list items)
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <ACT>
+            <TITLE><TI><P>Test</P></TI></TITLE>
+            <ENACTING.TERMS>
+                <ARTICLE>
+                    <TI.ART>Article 1</TI.ART>
+                    <ALINEA>
+                        <P>This regulation:</P>
+                        <LIST>
+                            <ITEM><NP><NO.P>(a)</NO.P><TXT>first point;</TXT></NP></ITEM>
+                            <ITEM><NP><NO.P>(b)</NO.P><TXT>second point.</TXT></NP></ITEM>
+                        </LIST>
+                    </ALINEA>
+                </ARTICLE>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # List items (a), (b) should have single bullet, not double
+            self.assertNotIn('- - (a)', result,
+                "Should not have double bullet prefix")
+            self.assertIn('- (a)', result,
+                "List item (a) should have bullet prefix")
+        finally:
+            os.unlink(temp_path)
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)

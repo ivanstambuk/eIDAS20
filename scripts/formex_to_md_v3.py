@@ -502,7 +502,10 @@ def process_list_simple(list_elem, indent_level=0):
 
 
 def extract_recitals(root):
-    """Extract recitals (Whereas clauses) from GR.CONSID."""
+    """Extract recitals (Whereas clauses) from GR.CONSID.
+    
+    Outputs recitals as list items for proper indentation.
+    """
     lines = []
     
     gr_consid = root.find('.//GR.CONSID')
@@ -529,7 +532,8 @@ def extract_recitals(root):
                     text = text[len(number):].strip()
             
             if text:
-                lines.append(f"{number} {text}")
+                # Output as list item for proper indentation
+                lines.append(f"- {number} {text}")
                 lines.append("")
     
     return lines
@@ -782,6 +786,17 @@ def convert_formex_to_md(xml_path, output_path=None):
     while prev_content != content:
         prev_content = content
         content = re.sub(r'(---+\n)(\s*\n)*---+', r'---', content)
+    
+    # Convert definition patterns to list items for proper indentation
+    # Pattern: Lines starting with (N) or (Na) where N is a number, optionally followed by a letter
+    # Examples: (1) 'term' means..., (23a) 'term' means..., (5) definition...
+    # Only convert if the line starts with the pattern (not indented as nested content)
+    content = re.sub(
+        r'^(\([0-9]+[a-z]?\)\s)',  # Match (1) or (23a) etc. at line start
+        r'- \1',
+        content,
+        flags=re.MULTILINE
+    )
     
     if output_path:
         Path(output_path).write_text(content, encoding='utf-8')
