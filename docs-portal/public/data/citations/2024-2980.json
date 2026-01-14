@@ -1,0 +1,103 @@
+{
+  "citations": [
+    {
+      "index": 1,
+      "shortName": "Regulation 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
+      "ojRef": "OJ L 119, 4.5.2016, p. 1",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+    },
+    {
+      "index": 2,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "ojRef": "OJ L 295, 21.11.2018, p. 39",
+      "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+    },
+    {
+      "index": 3,
+      "shortName": "Directive 2002/58",
+      "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
+      "ojRef": "OJ L 201, 31.7.2002, p. 37",
+      "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
+      "celex": "32002L0058",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation 2024/2982",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2982/oj",
+      "celex": "32024R2982",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2982",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework (OJ L, 2024/2982, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2982/oj).\\]"
+    },
+    {
+      "index": 5,
+      "shortName": "Regulation 2024/2979",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2979/oj",
+      "celex": "32024R2979",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2979",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets (OJ L, 2024/2979, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2979/oj).\\]"
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation 2024/2977",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2977/oj",
+      "celex": "32024R2977",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2977",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets (OJ L, 2024/2977, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2977/oj).\\]"
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation 2024/2980",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2980/oj",
+      "celex": "32024R2980",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2980",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem (OJ L, 2024/2980, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2980/oj).\\]"
+    },
+    {
+      "index": 8,
+      "shortName": "Regulation 2024/1183",
+      "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
+      "celex": "32024R1183",
+      "isInternal": true,
+      "url": "#/regulations/2024-1183",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]"
+    },
+    {
+      "index": 9,
+      "shortName": "Decision 2015/1984",
+      "fullTitle": "Commission Implementing Decision (EU) 2015/1984 of 3 November 2015 defining the circumstances, formats and procedures of notification pursuant to Article 9(5) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+      "ojRef": "OJ L 289, 5.11.2015, p. 18",
+      "eli": "http://data.europa.eu/eli/dec_impl/2015/1984/oj",
+      "celex": "32015D1984",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dec_impl/2015/1984/oj",
+      "originalText": "\\[Commission Implementing Decision (EU) 2015/1984 of 3 November 2015 defining the circumstances, formats and procedures of notification pursuant to Article 9(5) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 289, 5.11.2015, p. 18, ELI: http://data.europa.eu/eli/dec_impl/2015/1984/oj).\\]"
+    }
+  ]
+}

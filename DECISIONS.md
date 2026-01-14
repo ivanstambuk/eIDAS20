@@ -253,4 +253,72 @@ THE EUROPEAN PARLIAMENT AND THE COUNCIL...
 
 ---
 
+## DEC-009: Citation formatting with responsive behavior and internal linking
+
+**Date:** 2026-01-14  
+**Status:** Accepted  
+
+**Context:**  
+Legal documents contain inline citations in verbose format:
+```
+[Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union 
+Toolbox... (OJ L 210, 14.6.2021, p. 51, ELI: http://data.europa.eu/eli/reco/2021/946/oj).]
+```
+
+Problems:
+1. Breaks reading flow (4-5 lines per citation)
+2. Raw URLs visible inline
+3. Redundant information (citation name repeated)
+4. No distinction between internal documents (we have them) and external references
+
+**Decision:**  
+
+**Part 1: Responsive rendering (Hybrid B+A)**
+- **Desktop (≥768px):** Hover popovers — dotted underline, tooltip with full citation on hover
+- **Mobile (<768px):** Footnotes — superscript numbers with References section at bottom
+
+**Part 2: Internal vs External linking**
+- **Internal documents** (in our portal): Link to portal route (`/#/regulations/910-2014`)
+- **External documents** (not in portal): Link to EUR-Lex with 🔗 icon
+
+**Implementation:**
+
+1. **Build-time extraction:** Parse citations from markdown, extract CELEX/ELI, generate structured data
+2. **Document registry:** Maintain list of all CELEX numbers in our database
+3. **Link resolution:** Check if citation target is internal (portal link) or external (EUR-Lex)
+4. **React components:**
+   - `CitationRef` — Inline reference with media query switch
+   - `CitationPopover` — Hover card (reuses TermPopover patterns)
+   - `ReferencesSection` — Bottom section for mobile + accessibility
+
+**Example output:**
+
+*Desktop:*
+> ...rely on the work carried out under <u>Commission Recommendation (EU) 2021/946</u>...
+> [Popover on hover: Title, Date, OJ ref, "View on EUR-Lex →"]
+
+*Mobile:*
+> ...rely on the work carried out under Recommendation 2021/946<sup>1</sup>...
+> 
+> ---
+> **References**
+> 1. [Commission Recommendation (EU) 2021/946](https://eur-lex.europa.eu/...) 🔗
+
+*Internal link (we have the document):*
+> ...as amended by [Regulation (EU) 2024/1183](#/regulations/2024-1183)...
+
+**Rationale:**
+1. **Platform-appropriate UX** — Hover works on desktop; footnotes work everywhere
+2. **Reading flow** — Main text stays clean and scannable
+3. **Portal ecosystem** — Internal links keep users in the app, load instantly
+4. **Accessibility** — Footnotes + References section work for screen readers
+5. **Legal standards** — Matches academic/legal publishing conventions
+
+**Alternatives considered:**
+1. **Footnotes only** — Simpler, but loses instant-context benefit on desktop
+2. **Popovers only** — Breaks on mobile (no hover on touch devices)
+3. **All external links** — Misses opportunity to keep users in portal
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*

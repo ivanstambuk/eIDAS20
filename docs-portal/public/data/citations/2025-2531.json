@@ -1,0 +1,70 @@
+{
+  "citations": [
+    {
+      "index": 1,
+      "shortName": "Regulation 2024/1183",
+      "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
+      "celex": "32024R1183",
+      "isInternal": true,
+      "url": "#/regulations/2024-1183",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]"
+    },
+    {
+      "index": 2,
+      "shortName": "Regulation 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
+      "ojRef": "OJ L 119, 4.5.2016, p. 1",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+    },
+    {
+      "index": 3,
+      "shortName": "Directive 2002/58",
+      "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
+      "ojRef": "OJ L 201, 31.7.2002, p. 37",
+      "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
+      "celex": "32002L0058",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "ojRef": "OJ L 295, 21.11.2018, p. 39",
+      "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+    },
+    {
+      "index": 5,
+      "shortName": "Regulation 2024/482",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme ('EUCC')",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/482/2025-01-08",
+      "celex": "32024R0482",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/482/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme ('EUCC') (OJ L, 2024/482, 7.2.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/482/2025-01-08).\\]"
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation 2024/3144",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/3144/oj",
+      "celex": "32024R3144",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/3144/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation (OJ L, 2024/3144, 19.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/3144/oj).\\]"
+    }
+  ]
+}

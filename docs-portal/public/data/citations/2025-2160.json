@@ -1,0 +1,70 @@
+{
+  "citations": [
+    {
+      "index": 1,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "ojRef": "OJ L 333, 27.12.2022, p. 80",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/oj",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]"
+    },
+    {
+      "index": 2,
+      "shortName": "Regulation 2024/2690",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2690 of 17 October 2024 laying down rules for the application of Directive (EU) 2022/2555 as regards technical and methodological requirements of cybersecurity risk-management measures and further specification of the cases in which an incident is considered to be significant with regard to DNS service providers, TLD name registries, cloud computing service providers, data centre service providers, content delivery network providers, managed service providers, managed security service providers, providers of online market places, of online search engines and of social networking services platforms, and trust service providers",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2690/oj",
+      "celex": "32024R2690",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/2690/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2690 of 17 October 2024 laying down rules for the application of Directive (EU) 2022/2555 as regards technical and methodological requirements of cybersecurity risk-management measures and further specification of the cases in which an incident is considered to be significant with regard to DNS service providers, TLD name registries, cloud computing service providers, data centre service providers, content delivery network providers, managed service providers, managed security service providers, providers of online market places, of online search engines and of social networking services platforms, and trust service providers (OJ L, 2024/2690, 18.10.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2690/oj).\\]"
+    },
+    {
+      "index": 3,
+      "shortName": "Regulation 2024/1183",
+      "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
+      "celex": "32024R1183",
+      "isInternal": true,
+      "url": "#/regulations/2024-1183",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]"
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
+      "ojRef": "OJ L 119, 4.5.2016, p. 1",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+    },
+    {
+      "index": 5,
+      "shortName": "Directive 2002/58",
+      "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
+      "ojRef": "OJ L 201, 31.7.2002, p. 37",
+      "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
+      "celex": "32002L0058",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "ojRef": "OJ L 295, 21.11.2018, p. 39",
+      "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+    }
+  ]
+}

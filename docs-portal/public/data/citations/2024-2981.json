@@ -1,0 +1,103 @@
+{
+  "citations": [
+    {
+      "index": 1,
+      "shortName": "Regulation 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
+      "ojRef": "OJ L 119, 4.5.2016, p. 1",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+    },
+    {
+      "index": 2,
+      "shortName": "Directive 2002/58",
+      "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
+      "ojRef": "OJ L 201, 31.7.2002, p. 37",
+      "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
+      "celex": "32002L0058",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+    },
+    {
+      "index": 3,
+      "shortName": "Regulation 2024/1183",
+      "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
+      "celex": "32024R1183",
+      "isInternal": true,
+      "url": "#/regulations/2024-1183",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]"
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation 2019/881",
+      "fullTitle": "Regulation (EU) 2019/881 of the European Parliament and of the Council of 17 April 2019 on ENISA (the European Union Agency for Cybersecurity) and on information and communications technology cybersecurity certification and repealing Regulation (EU) No 526/2013 (Cybersecurity Act)",
+      "ojRef": "OJ L 151, 7.6.2019, p. 15",
+      "eli": "http://data.europa.eu/eli/reg/2019/881/oj",
+      "celex": "32019R0881",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/881/oj",
+      "originalText": "\\[Regulation (EU) 2019/881 of the European Parliament and of the Council of 17 April 2019 on ENISA (the European Union Agency for Cybersecurity) and on information and communications technology cybersecurity certification and repealing Regulation (EU) No 526/2013 (Cybersecurity Act) (OJ L 151, 7.6.2019, p. 15, ELI: http://data.europa.eu/eli/reg/2019/881/oj).\\]"
+    },
+    {
+      "index": 5,
+      "shortName": "Regulation 2015/1502",
+      "fullTitle": "Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+      "ojRef": "OJ L 235, 9.9.2015, p. 7",
+      "eli": "http://data.europa.eu/eli/reg_impl/2015/1502/oj",
+      "celex": "32015R1502",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2015/1502/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2015/1502/oj).\\]"
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation 2024/482",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme (EUCC)",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/482/oj",
+      "celex": "32024R0482",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/482/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme (EUCC) (OJ L, 2024/482, 7.2.2024, ELI: http://data.europa.eu/eli/reg/2024/482/oj).\\]"
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "ojRef": "OJ L 295, 21.11.2018, p. 39",
+      "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+    },
+    {
+      "index": 8,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "ojRef": "OJ L 333, 27.12.2022, p. 80",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/oj",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]"
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation 1025/2012",
+      "fullTitle": "Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council Decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council",
+      "ojRef": "OJ L 316, 14.11.2012, p. 12",
+      "eli": "http://data.europa.eu/eli/reg/2012/1025/oj",
+      "celex": "32012R1025",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2012/1025/oj",
+      "originalText": "\\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council Decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14.11.2012, p. 12, ELI: http://data.europa.eu/eli/reg/2012/1025/oj).\\]"
+    }
+  ]
+}

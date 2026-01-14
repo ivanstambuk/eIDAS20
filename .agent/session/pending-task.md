@@ -3,53 +3,33 @@
 
 ## Current State
 
-- **Focus**: Fixing missing annexes in implementing acts - 8 documents still have annexes embedded in main XML that weren't extracted
-- **Next**: Investigate how to extract embedded annexes from main Formex XML files (vs separate .000901 files)
-- **Status**: In Progress
+- **Focus**: Portal ready - all known bugs fixed
+- **Next**: Deploy to GitHub Pages OR investigate 8 embedded annexes
+- **Status**: Ready for decision
 - **Phase**: Phase 7 (Enhancements) - Content Quality
+
+## Completed This Session
+
+1. **Fixed metadata loss bug**: Restored CELEX/EUR-Lex links in 29 implementing acts
+2. **Added prevention guard**: Updated `batch_fix_annexes.py` to preserve metadata headers
+3. **Verified visually**: Browser screenshot confirms badges are back
 
 ## Key Files
 
-- `scripts/formex_to_md_v3.py` — Converter with annex handling (lines 744-800)
-- `scripts/batch_fix_annexes.py` — Batch download/convert script
-- `docs-portal/scripts/build-content.js` — Build-time annex validation (validateAnnexes function)
+- `scripts/restore_metadata.py` — Recovery script (can rerun if needed)
+- `scripts/batch_fix_annexes.py` — Now preserves metadata (lines 146-197)
 
-## Context Notes
+## Remaining Optional Work
 
-Things git commits don't capture:
+8 documents still have annexes embedded in main XML (not separate files):
+- 2024-1183, 2024-2977, 2024-2982, 2025-0848
+- 2025-2160, 2025-2164, 2025-2527, 2025-2530
 
-1. **Two types of annex storage in Formex**:
-   - Separate files (`.000901.fmx.xml`) - SOLVED by batch_fix_annexes.py
-   - Embedded in main file (`<ANNEX>` element inside `.000101.fmx.xml`) - NOT YET HANDLED
-
-2. **8 documents with embedded annexes still missing** (validated by build-content.js):
-   - 2024-1183, 2024-2977, 2024-2982, 2025-0848
-   - 2025-2160, 2025-2164, 2025-2527, 2025-2530
-
-3. **Converter already has annex code** (lines 744-800) but it may not be extracting embedded annexes correctly - need to debug with one of these files
-
-4. **New rules added to AGENTS.md**:
-   - Rule 5: Proactive Prevention Protocol (after bug fix, implement automated guard)
-   - Rule 2 updated: TRACKER.md updates must be in same commit as change
+These require converter changes to extract `<ANNEX>` from inside the main `.000101.fmx.xml`.
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Check warnings about missing annexes:
-npm run build:content | grep -A20 "ANNEX VALIDATION"
-```
-
-## Investigation Commands
-
-```bash
-# Download fresh Formex for a problem document:
-cd ~/dev/eIDAS20/scripts
-python3 eurlex_formex.py 32024R2977 /tmp/test_2977
-
-# Check if ANNEX exists in main XML:
-grep -i "ANNEX" /tmp/test_2977/formex/*.xml
-
-# Check EUR-Lex directly:
-curl -s "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R2977" | grep -c "ANNEX"
+# Check portal at http://localhost:5173/eIDAS20/
 ```
