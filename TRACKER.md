@@ -55,6 +55,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-15 00:05 | DEC-010: Remove "Enacting Terms" from TOC (structural marker, not navigation target) |
 | 2026-01-14 23:52 | DEC-009 Phase 2: Desktop hover popovers, responsive References section (hidden on desktop) |
 | 2026-01-14 23:45 | Citation system complete: build-time transformation (160 citations), References section, internal/external linking |
 | 2026-01-14 23:25 | Citation system (WIP): DEC-009, build-citations.js extracting 160 citations (42 internal, 118 external) |

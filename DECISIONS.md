@@ -321,4 +321,41 @@ Problems:
 
 ---
 
+## DEC-010: Remove "Enacting Terms" from Table of Contents
+
+**Date:** 2026-01-15  
+**Status:** Accepted  
+
+**Context:**  
+The Formex XML format uses `<ENACTING.TERMS>` as a structural container element that wraps all articles. The converter outputs this as a `## Enacting Terms` heading in markdown. This creates a TOC entry that:
+
+1. Appears between Preamble/Recitals and Chapter I
+2. Does NOT contain the chapters/articles as nested children
+3. Is not a useful navigation target (users want Article 3, not "Enacting Terms")
+
+**Options evaluated:**
+
+| Option | Description | Pros | Cons |
+|--------|-------------|------|------|
+| **A: Remove from TOC** | Filter out from TOC generation | Clean, space-efficient | Loses XML structure visibility |
+| **B: Keep as divider** | Non-clickable label (current) | Shows structure | Misleading — children not indented |
+| **C: Collapsible parent** | Chapters nested under it | Accurate to XML | Text overflow, extra click depth |
+| **D: Conditional** | Different behavior per doc type | Context-aware | Inconsistent UX |
+
+**Decision:** Option A — Remove "Enacting Terms" from the TOC entirely.
+
+**Rationale:**
+1. **Not a navigation target** — No user says "take me to enacting terms"; they want specific articles
+2. **Original purpose served** — The heading exists for preamble injection anchor (DEC-008), not navigation
+3. **No information loss** — The heading remains in rendered content for readers scrolling through
+4. **Space efficiency** — TOC sidebar is 280px; every line matters
+5. **EUR-Lex precedent** — EUR-Lex HTML doesn't show "Enacting Terms" as navigable either
+
+**Implementation:**
+- `build-content.js` → `buildTableOfContents()` filters out heading via `excludedHeadings` Set
+- Heading still renders in article content (visible when scrolling)
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
+

@@ -367,6 +367,9 @@ function generateSlug(dirName, type) {
 /**
  * Build Table of Contents from headings.
  * Uses github-slugger to generate IDs that match rehype-slug output exactly.
+ * 
+ * Note: "Enacting Terms" is filtered out per DEC-010 — it's not a useful
+ * navigation target (users want articles/chapters, not structural markers).
  */
 function buildTableOfContents(content) {
     const toc = [];
@@ -374,6 +377,9 @@ function buildTableOfContents(content) {
 
     // Use the same slugger as rehype-slug for consistent ID generation
     const slugger = new GithubSlugger();
+
+    // Headings to exclude from TOC (still present in rendered content)
+    const excludedHeadings = new Set(['Enacting Terms']);
 
     let match;
 
@@ -386,6 +392,9 @@ function buildTableOfContents(content) {
 
         // Clean the title (remove bold markers, etc.)
         const cleanTitle = title.replace(/\*\*/g, '');
+
+        // Skip excluded headings (DEC-010: Enacting Terms not navigation target)
+        if (excludedHeadings.has(cleanTitle)) continue;
 
         // Generate ID using github-slugger (same as rehype-slug)
         const id = slugger.slug(cleanTitle);
