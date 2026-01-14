@@ -1071,6 +1071,14 @@ pre code {
    11. RESPONSIVE DESIGN
    ============================================ */
 
+/* Hide hamburger menu on desktop - sidebar is always visible */
+/* Using !important to override .btn { display: flex } from accessibility rules */
+@media (min-width: 1025px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .sidebar {
     transform: translateX(-100%);
