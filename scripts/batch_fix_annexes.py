@@ -143,8 +143,46 @@ def find_content_files(formex_dir):
     return main_file, annex_files
 
 
+def extract_metadata_header(content: str) -> str:
+    """Extract metadata block (lines starting with '> **') from existing content.
+    
+    This preserves CELEX, EUR-Lex source, subject, and conversion info
+    when re-processing a file.
+    """
+    lines = content.split('\n')
+    metadata_lines = []
+    
+    for line in lines:
+        if line.startswith('> **'):
+            metadata_lines.append(line)
+        elif line.startswith('#'):
+            # Hit the title, stop
+            break
+        elif line.strip() == '' and metadata_lines:
+            # Empty line after metadata, continue
+            continue
+        elif metadata_lines:
+            # Non-metadata, non-empty line after metadata started = done
+            break
+    
+    return '\n'.join(metadata_lines) if metadata_lines else ""
+
+
 def convert_with_annexes(main_file, annex_files, output_path):
-    """Convert main document and append annex content."""
+    """Convert main document and append annex content.
+    
+    IMPORTANT: Preserves existing metadata headers (CELEX, EUR-Lex source)
+    to prevent data loss during re-processing.
+    """
+    # Extract existing metadata BEFORE overwriting
+    existing_metadata = ""
+    output_file = Path(output_path)
+    if output_file.exists():
+        existing_content = output_file.read_text(encoding='utf-8')
+        existing_metadata = extract_metadata_header(existing_content)
+        if existing_metadata:
+            print(f"   Preserving metadata header ({len(existing_metadata.split(chr(10)))} lines)")
+    
     # Convert main document
     main_content = convert_formex_to_md(str(main_file), None)
     
@@ -154,8 +192,12 @@ def convert_with_annexes(main_file, annex_files, output_path):
         if annex_content and len(annex_content.strip()) > 20:
             main_content += "\n\n" + annex_content
     
+    # Re-inject metadata at the top if we had any
+    if existing_metadata:
+        main_content = existing_metadata + '\n\n' + main_content
+    
     # Write combined output
-    Path(output_path).write_text(main_content, encoding='utf-8')
+    output_file.write_text(main_content, encoding='utf-8')
     return len(main_content)
 
 
