@@ -593,6 +593,57 @@ function scanDirectory(sourceDir, type) {
 }
 
 /**
+ * Validate that documents referencing annexes actually have annex sections.
+ * 
+ * This prevents accidentally dropping annexes during conversion.
+ * A document "references" an annex if it contains phrases like:
+ * - "the Annex"
+ * - "Annex I"
+ * - "Annex II"
+ * - "in the Annex"
+ * - "set out in the Annex"
+ * 
+ * Returns an array of { slug, reference } for documents with potential missing annexes.
+ */
+function validateAnnexes(regulations) {
+    const warnings = [];
+
+    // Patterns that indicate annex content is expected (self-references, not external)
+    // Note: Patterns like "Annex I of Regulation X" are EXTERNAL references, not missing content
+    const annexReferencePatterns = [
+        /\bset\s+out\s+in\s+the\s+Annex\b/i,          // "set out in the Annex" (implies own annex)
+        /\bin\s+the\s+Annex\s+to\s+this\b/i,          // "in the Annex to this Regulation"
+        /\bcomplies?\s+with\s+the\s+Annex\b/i,        // "comply with the Annex"
+        /\bthe\s+Annex(?!\s+(?:to|of)\s+(?:Implementing\s+)?(?:Regulation|Directive|Decision))/i,  // "the Annex" not followed by external ref
+    ];
+
+    // Pattern for actual annex section headings
+    const annexHeadingPattern = /^##\s+ANNEX/im;
+
+    for (const reg of regulations) {
+        const content = reg.contentMarkdown;
+
+        // Check if document has an ANNEX section
+        const hasAnnexSection = annexHeadingPattern.test(content);
+        if (hasAnnexSection) continue;
+
+        // Check if document references annexes
+        for (const pattern of annexReferencePatterns) {
+            const match = content.match(pattern);
+            if (match) {
+                warnings.push({
+                    slug: reg.slug,
+                    reference: match[0]
+                });
+                break; // Only report first match per document
+            }
+        }
+    }
+
+    return warnings;
+}
+
+/**
  * Main build function
  */
 function build() {
@@ -644,6 +695,17 @@ function build() {
     const indexPath = join(OUTPUT_DIR, '..', 'regulations-index.json');
     writeFileSync(indexPath, JSON.stringify(index, null, 2));
     console.log(`\n📋 Index written: regulations-index.json (${index.length} documents)`);
+
+    // Validate: Check for missing annexes
+    const annexWarnings = validateAnnexes(allRegulations);
+    if (annexWarnings.length > 0) {
+        console.log('\n⚠️  ANNEX VALIDATION WARNINGS:');
+        console.log('   The following documents reference annexes but have no ## ANNEX section:');
+        for (const warning of annexWarnings) {
+            console.log(`   - ${warning.slug}: "${warning.reference}"`);
+        }
+        console.log('   Run: python scripts/batch_fix_annexes.py to re-download with annexes.\n');
+    }
 
     console.log('\n✨ Build complete!');
     console.log(`   Total documents: ${allRegulations.length}`);
