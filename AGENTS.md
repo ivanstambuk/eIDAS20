@@ -45,6 +45,15 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - Use **conventional commit** format: `type: brief description`
    - Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `test`
 
+3. **Clean Chrome Tabs Before browser_subagent (MANDATORY):**
+   - **BEFORE calling `browser_subagent`**, clean up accumulated tabs:
+     ```bash
+     ~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh
+     ```
+   - **Why:** Each `browser_subagent` call creates a new tab. After 6+ tabs with SSE connections, the browser's per-origin connection limit is exhausted, causing failures.
+   - **Anti-pattern:** Call browser_subagent 5 times → 5 tabs accumulate → SSE issues
+   - **Correct pattern:** Clean tabs → call browser_subagent → clean tabs → call again
+
 ## Project Structure
 
 ```
