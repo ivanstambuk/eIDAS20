@@ -8,102 +8,126 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 00:40 CET |
-| **Session State** | ✅ Complete - Cleanup & Enhancements |
-| **Next Action** | None - Repository is clean and ready |
+| **Last Updated** | 2026-01-14 01:30 CET |
+| **Session State** | 🚀 Active - Docs Portal Development |
+| **Current Phase** | Phase 2: Content & Navigation |
+| **Next Action** | Implement regulation viewer component |
 
 ---
 
-## ✅ Completed: Session 2026-01-14
+## 🎯 Active Project: eIDAS 2.0 Documentation Portal
 
-### Converter Enhancements
-1. **Bullet point list structure** - Items now use `- (a)` format for proper Markdown nesting
-2. **DIVISION handling** - Sections with multiple articles now properly formatted
-3. **Blockquote indentation** - Fixed `.strip()` → `.rstrip()` to preserve leading indent
+### Project Overview
 
-### Linter Updates
-1. **META001**: Missing CELEX ID → **ERROR** (was warning)
-2. **META002**: Missing Source URL → **ERROR** (was warning)
-3. **FORMAT005**: Now skips amending regulation patterns
+A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hosted on GitHub Pages.
 
-### Metadata Headers Added
-- Added CELEX/Source headers to 16 implementing acts that were missing them
-- Added header to `32024R1183.md` amending regulation
+| Attribute | Value |
+|-----------|-------|
+| **Location** | `docs-portal/` subdirectory |
+| **Framework** | Vite + React |
+| **Dev URL** | http://localhost:5173/eIDAS20/ |
+| **Hosting** | GitHub Pages (default URL) |
+| **Content Source** | 32 markdown files (~0.8 MB) |
 
-### Repository Cleanup
-- Created `.gitignore` (Python, temp dirs, IDE files)
-- Deleted `temp_formex/` (source XML/ZIP files - 13 files)
-- Deleted `scripts/__pycache__/`
-- Deleted 15 superseded scripts (see below)
+### Key Features
 
-### Test Suite Expanded
-`scripts/test_formex_converter.py` now has **40 unit tests** covering:
-- Basic text extraction
-- DATE element handling (including non-breaking spaces `\xa0`)
-- Nested element processing (HT, NOTE, QUOT markers)
-- Amendment list processing
-- Duplicate article extraction prevention
-- Quoted article structure formatting
-- **Bullet point nesting** (new)
-- **DIVISION in blockquote** (new)
-- Real-world XML validation
-
-**All 40 tests pass ✅**
+1. **Regulation Filter** - Multi-select by regulation/implementing act
+2. **Role Selector** - RP, Wallet Provider, QTSP, Evaluator views
+3. **Export to File** - PDF, Markdown, JSON export
+4. **Embedded AI Chat** - Gemma 2B via WebGPU (with fallback)
+5. **Terminology Page** - Pre-generated with hover popups + cross-refs
+6. **Light/Dark Theme** - System detection + manual toggle
 
 ---
 
-## ✅ Completed: Blockquote Article Formatting Fix
+## 📋 Implementation Plan
 
-### Bug Identified & Fixed
-**Issue**: Article content inside `QUOT.S` blockquotes was being flattened into single lines, losing:
-- Proper structure (title, subtitle, paragraphs)
-- Date content from nested ALINEA elements
-- List item formatting
+### Phase 1: Foundation ✅ COMPLETE
 
-**Root Cause**: `process_list_with_quotes()` used simple text extraction without preserving nested structure.
+| Task | Status | Notes |
+|------|--------|-------|
+| 1.1 Initialize Vite + React project | ✅ DONE | `docs-portal/` created |
+| 1.2 Configure for GitHub Pages | ✅ DONE | `base: '/eIDAS20/'` in vite.config.js |
+| 1.3 Create design system (CSS) | ✅ DONE | Dark theme, cyan accents, typography |
+| 1.4 Build content processor script | ✅ DONE | Reads markdown files at build time |
+| 1.5 Create basic layout components | ✅ DONE | Header, Sidebar, MainContent |
+| 1.6 Set up routing structure | ✅ DONE | HashRouter with all routes |
 
-**Fix Applied**: 
-1. Added `format_quoted_article()` helper function to properly format ARTICLE elements inside blockquotes
-2. Updated Case 2 handling to use this function for ARTICLE elements
-3. Added blank line after blockquote content to prevent Markdown merging
-4. Fixed ALINEA direct text extraction (dates like "21 May 2026" now preserved)
+**Validation:** Browser subagent confirmed UI is modern, premium, fully functional.
+
+### Phase 2: Content & Navigation ⏳ IN PROGRESS
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 2.1 Build regulation viewer component | ⬜ TODO | Renders processed markdown |
+| 2.2 Implement regulation filter | ⬜ TODO | Multi-select chips/tags |
+| 2.3 Build table of contents sidebar | ⬜ TODO | Auto-generated from headings |
+| 2.4 Add role-based filtering | ⬜ TODO | Highlight relevant sections |
+| 2.5 Implement export functionality | ⬜ TODO | Browser print → PDF, download |
+
+### Phase 3: Terminology System ⬜ NOT STARTED
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 3.1 Write terminology extractor | ⬜ TODO | **BUILD TIME Node.js script** |
+| 3.2 Generate terminology.json | ⬜ TODO | Pre-generated static JSON |
+| 3.3 Build terminology page | ⬜ TODO | Alphabetical list with deep links |
+| 3.4 Implement hover popover | ⬜ TODO | Shows definition on term hover |
+| 3.5 Add cross-reference links | ⬜ TODO | Links to source regulation/article |
+
+### Phase 4: Search ⬜ NOT STARTED
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 4.1 Integrate Orama search | ⬜ TODO | Full-text search index |
+| 4.2 Write embedding generator | ⬜ TODO | **BUILD TIME Node.js script** |
+| 4.3 Pre-compute embeddings | ⬜ TODO | Output: `embeddings.json` |
+| 4.4 Implement semantic search UI | ⬜ TODO | Ranked results with snippets |
+| 4.5 Add search suggestions | ⬜ TODO | Recent searches, popular queries |
+
+### Phase 5: AI Chat ⬜ NOT STARTED
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 5.1 Integrate WebLLM | ⬜ TODO | Load Gemma 2B on demand |
+| 5.2 Build chat UI component | ⬜ TODO | Floating widget, expandable |
+| 5.3 Implement RAG pipeline | ⬜ TODO | Retrieve → Augment → Generate |
+| 5.4 Add context window management | ⬜ TODO | Include relevant chunks in prompt |
+| 5.5 Implement WebGPU detection | ⬜ TODO | Graceful fallback for unsupported browsers |
+
+### Phase 6: Polish & Deploy ⬜ NOT STARTED
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 6.1 Accessibility audit | ⬜ TODO | WCAG 2.1 AA compliance |
+| 6.2 Performance optimization | ⬜ TODO | Lazy loading, code splitting |
+| 6.3 Light theme implementation | ⬜ TODO | CSS variables swap |
+| 6.4 GitHub Actions workflow | ⬜ TODO | Auto-deploy on push |
+| 6.5 Final testing & launch | ⬜ TODO | Cross-browser testing |
 
 ---
 
-## ✅ V3 Migration Complete (Earlier)
+## 📊 Progress Summary
 
-### Results
-
-| Category | Count | Status |
-|----------|-------|--------|
-| Core Regulations | 2 | ✅ Linter: 0 issues |
-| Implementing Acts | 30 | ✅ Linter: 0 issues |
-| **Total** | **32** | **✅ All Clean** |
+| Phase | Tasks | Done | Progress |
+|-------|-------|------|----------|
+| Phase 1: Foundation | 6 | 6 | ✅ 100% |
+| Phase 2: Content & Navigation | 5 | 0 | ⬜ 0% |
+| Phase 3: Terminology | 5 | 0 | ⬜ 0% |
+| Phase 4: Search | 5 | 0 | ⬜ 0% |
+| Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
+| Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
+| **Total** | **31** | **6** | **19%** |
 
 ---
 
-## Document Inventory
+## 📁 Document Inventory
 
 | Directory | Files | Status |
 |-----------|-------|--------|
 | `01_regulation/` | 2 | ✅ Complete |
 | `02_implementing_acts/` | 30 | ✅ Complete |
-
----
-
-## Active Scripts
-
-| Script | Purpose |
-|--------|---------|
-| `formex_to_md_v3.py` | Primary Formex→Markdown converter |
-| `test_formex_converter.py` | Unit tests for converter (40 tests) |
-| `md_linter.py` | Markdown linter for EUR-Lex documents |
-| `eurlex_formex.py` | EUR-Lex Formex download utility |
-| `batch_download_new_acts.py` | Batch download for new implementing acts |
-| `preview_md.py` | Markdown preview utility |
-
-### Deleted Scripts (superseded)
-`formex_to_md.py`, `formex_to_md_v2.py`, `fix_*.py` (6 files), `add_*.py` (2), `clean_annexes.py`, `check_annexes.py`, `migrate_*.py` (2), `test_md_content.py`, `test_nbsp.py`
+| `docs-portal/` | - | 🚀 Phase 1 Complete |
 
 ---
 
@@ -111,12 +135,11 @@
 
 | Date | Summary |
 |------|---------|
-| 2026-01-13 (Late Night) | **Bug Fix**: Fixed duplicate ARTICLE extraction in QUOT.S blocks, created unit test suite (21 tests), updated AGENTS.md with test-driven conversion rule |
-| 2026-01-13 (Night) | **V3 Migration**: Fixed converter bug, downloaded missing Formex XML for 15 docs, converted all 32 documents, applied formatting fixes, linter validation: 0 issues |
-| 2026-01-13 (PM) | Discovered 15 new implementing acts, downloaded via Formex v2 pipeline |
-| 2026-01-13 (AM) | Initial setup, downloaded original 15 regulations, Formex v2 conversion |
+| 2026-01-14 01:30 | **Phase 1 Complete**: Browser validation confirms UI is functional. Added WSL browser testing scripts. |
+| 2026-01-14 00:40 | **Environment Fix**: Migrated to WSL, fixed CRLF→LF line endings, reinstalled node_modules |
+| 2026-01-13 (Night) | **Portal Started**: Created docs-portal with Vite + React, implemented all Phase 1 tasks |
+| 2026-01-13 (Earlier) | **V3 Migration**: All 32 documents converted and validated, linter: 0 issues |
 
 ---
 
 *End of Tracker*
-
