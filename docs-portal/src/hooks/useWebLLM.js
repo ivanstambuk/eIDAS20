@@ -11,20 +11,45 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { CreateWebWorkerMLCEngine, prebuiltAppConfig } from '@mlc-ai/web-llm';
 
-// Available models - curated list of models for browser-based inference
+// Available models - curated list of small, fast models suitable for browser
+// Models are sorted by size (smallest first) for quick loading
 export const AVAILABLE_MODELS = [
+    {
+        id: 'SmolLM2-360M-Instruct-q4f16_1-MLC',
+        name: 'SmolLM2 360M',
+        size: '~200MB',
+        description: 'Ultra-fast, lightweight model. Best for quick responses.',
+        recommended: true,
+    },
+    {
+        id: 'SmolLM2-1.7B-Instruct-q4f16_1-MLC',
+        name: 'SmolLM2 1.7B',
+        size: '~900MB',
+        description: 'Balanced performance and quality.',
+    },
+    {
+        id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC',
+        name: 'Qwen2.5 0.5B',
+        size: '~300MB',
+        description: 'Fast multilingual model from Alibaba.',
+    },
+    {
+        id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC',
+        name: 'Qwen2.5 1.5B',
+        size: '~850MB',
+        description: 'Larger Qwen model for better quality.',
+    },
     {
         id: 'gemma-2-2b-it-q4f16_1-MLC',
         name: 'Gemma 2 2B',
         size: '~1.2GB',
-        description: 'Google Gemma 2. Fast and high quality.',
-        recommended: true,
+        description: 'Google Gemma model. High quality but slower.',
     },
     {
         id: 'Phi-3.5-mini-instruct-q4f16_1-MLC',
         name: 'Phi-3.5 Mini',
         size: '~2.2GB',
-        description: 'Microsoft Phi. Best quality, slower loading.',
+        description: 'Microsoft Phi model. Best quality, slowest loading.',
     },
 ];
 
