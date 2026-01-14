@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 20:47 CET |
+| **Last Updated** | 2026-01-14 21:17 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -30,6 +30,8 @@
 - **Scroll-to-top on navigation** (fixes SPA scroll persistence bug)
 - **Search prioritizes definitions** (10x boost full-text, two-tier semantic)
 - **Deep linking** (direct URLs to articles/annexes via `?section=` param)
+- **Sticky alphabet nav** (Terminology page, glassmorphism effect)
+- **Fast 150ms scroll** (consistent across all pages)
 
 ---
 
@@ -49,6 +51,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 21:17 | Sticky alphabet nav on Terminology page, fast 150ms scroll everywhere |
 | 2026-01-14 20:47 | Deep linking: ?section= param for direct article/annex URLs, HashRouter-compatible |
 | 2026-01-14 20:31 | Converter bug: missing bullet prefix in process_list_simple, strengthened Rule 70 (Converter-First), TOC annexes at bottom |
 | 2026-01-14 20:02 | Search: terminology prioritized (10x boost + two-tier ranking), DEC-005/006, DECISIONS.md created |
