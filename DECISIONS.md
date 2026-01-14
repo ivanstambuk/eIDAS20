@@ -136,5 +136,30 @@ The amending regulation (2024/1183) contains "patch" instructions like "Article 
 
 ---
 
+## DEC-006: Terminology prioritized in search results
+
+**Date:** 2026-01-14  
+**Status:** Accepted  
+
+**Context:**  
+When searching for "wallet unit", users expect the **definition** to appear first, not articles that merely *contain* the term.
+
+**Decision:**  
+- **Full-text search (Orama):** Add `term` field with 10x boost factor
+- **Semantic search:** Two-tier ranking — definitions always appear before articles
+
+**Implementation:**
+- `build-search-index.js` — Adds terminology with dedicated `term` field
+- `build-embeddings.js` — Adds terminology with `type: 'definition'`
+- `useSearch.js` — Boosts `term` field 10x
+- `useSemanticSearch.js` — Separates definitions/articles, concatenates in order
+
+**Rationale:**
+1. **User expectation** — "What is X?" queries should return definitions first
+2. **Different score systems** — Full-text uses unbounded scores (10x works); semantic uses 0-1 similarity (requires tiered approach)
+3. **Legal context** — Precise definitions matter more than casual mentions
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
