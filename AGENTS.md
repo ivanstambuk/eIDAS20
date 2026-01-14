@@ -241,65 +241,13 @@ python scripts/test_formex_converter.py
 
 **Current test count**: 28 tests (as of 2026-01-13)
 
-## 📋 Portal Content Processing Decisions
+## 📋 Design Decisions
 
-### Decision: Strip Front Matter (2026-01-14, updated)
-
-**Context**: Markdown source files contain metadata that is redundant in the portal UI:
-
-1. **Metadata blockquote** (all documents):
-```markdown
-> **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
->
-> **Source:** https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2977
-```
-
-2. **Amendment History table** (consolidated regulations only):\
-```markdown
-## Amendment History
-
-| Code | Act | Official Journal |
-|------|-----|------------------|
-| ►B | [Regulation (EU) No 910/2014](...) - Original | OJ L 257, 28.8.2014, p. 73 |
-```
-
-3. **Main H1 title** (all documents):
-```markdown
-# Regulation (EU) No 910/2014 of the European Parliament...
-```
-
-**Decision**: Strip all three from rendered portal content.
-
-**Rationale**:
-1. **Redundant** — Header already displays title, CELEX badge, date, "View on EUR-Lex" link
-2. **Visual clutter** — Giant H1 takes ~20% of visible content area
-3. **Reading flow** — Legal readers want to jump straight to Article 1
-4. **Preserved at source** — Original markdown files retain all data for archival/traceability
-
-**Implementation**: `docs-portal/scripts/build-content.js` → `stripFrontMatter()` function
-
-**Applies to**: All 32 regulatory documents (2 regulations + 30 implementing acts)
-
-## Markdown Formatting Rules
-
-For amending regulations and legal documents with hierarchical amendments:
-
-1. **Blockquote Rule for Amendments**: 
-   - **Instruction text** (e.g., "(a) paragraph 1 is replaced by the following:") → **NO blockquote** (normal text)
-   - **Actual replacement content** (e.g., "'1. This Regulation applies to...") → **IS blockquote** (indented with `>`)
-   
-   Example:
-   ```markdown
-   **(1)** Article 1 is replaced by the following:
-   
-   (a) paragraph 1 is replaced by the following:
-   > '1. This Regulation applies to electronic identification schemes...';
-   
-   (b) paragraph 3 is replaced by the following:
-   > '3. This Regulation does not affect Union or national law...';
-   ```
-
-2. **Nested Content**: Use double blockquotes (`>>`) for content nested within blockquoted sections (e.g., sub-points within a replaced article).
+See **[DECISIONS.md](DECISIONS.md)** for architectural and UX decisions, including:
+- DEC-001: Single-page terminology glossary
+- DEC-002: Strip front matter from rendered content
+- DEC-003: Blockquote formatting for amendments
+- DEC-004: Hide hamburger menu on desktop
 
 ## Key Terminology
 
