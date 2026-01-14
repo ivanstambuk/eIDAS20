@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 02:55 CET |
-| **Session State** | 🔄 Active - Phase 4 in progress |
-| **Current Phase** | Phase 4: Search (Tasks 4.1, 4.5 COMPLETE) |
-| **Next Action** | Continue with Task 4.2/4.3 (embeddings) or Task 4.4 (semantic search) |
+| **Last Updated** | 2026-01-14 03:10 CET |
+| **Session State** | 🔄 Active - Phase 4 COMPLETE |
+| **Current Phase** | Phase 4: Search ✅ COMPLETE |
+| **Next Action** | Begin Phase 5: AI Chat |
 
 ---
 
@@ -79,15 +79,17 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 **Completed:** Terminology extraction pipeline, full terminology page, popover components ready.
 
-### Phase 4: Search 🔄 IN PROGRESS
+### Phase 4: Search ✅ COMPLETE
 
 | Task | Status | Notes |
 |------|--------|-------|
 | 4.1 Integrate Orama search | ✅ DONE | Full-text search, 246 sections indexed |
-| 4.2 Write embedding generator | ⬜ TODO | **BUILD TIME Node.js script** |
-| 4.3 Pre-compute embeddings | ⬜ TODO | Output: `embeddings.json` |
-| 4.4 Implement semantic search UI | ⬜ TODO | Ranked results with snippets |
+| 4.2 Write embedding generator | ✅ DONE | Transformers.js + all-MiniLM-L6-v2 |
+| 4.3 Pre-compute embeddings | ✅ DONE | 248 embeddings, 384 dims, 2MB |
+| 4.4 Implement semantic search UI | ✅ DONE | Mode toggle, similarity %, AI hints |
 | 4.5 Add search suggestions | ✅ DONE | Recent history + 8 popular topics |
+
+**Completed:** Full-text + semantic search with mode toggle, similarity ranking, suggestions.
 
 ### Phase 5: AI Chat ⬜ NOT STARTED
 
@@ -118,10 +120,10 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 1: Foundation | 6 | 6 | ✅ 100% |
 | Phase 2: Content & Navigation | 5 | 5 | ✅ 100% |
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
-| Phase 4: Search | 5 | 2 | 🔄 40% |
+| Phase 4: Search | 5 | 5 | ✅ 100% |
 | Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **18** | **58%** |
+| **Total** | **31** | **21** | **68%** |
 
 ---
 
@@ -139,6 +141,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 03:10 | **Phase 4 COMPLETE**: Semantic search with Transformers.js (248 embeddings), mode toggle, similarity ranking |
 | 2026-01-14 02:55 | **Task 4.5 Complete**: Search suggestions with 8 popular topics + recent search history |
 | 2026-01-14 02:45 | **Task 4.1 Complete**: Orama full-text search (246 sections, 784KB index), SearchModal with highlighting |
 | 2026-01-14 02:30 | **Phase 3 Complete**: Terminology extraction (96 terms), full terminology page, popover components |
