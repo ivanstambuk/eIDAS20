@@ -146,7 +146,9 @@ const RegulationViewer = () => {
                                                 const element = document.getElementById(item.id);
                                                 if (element) {
                                                     // Fast smooth scroll (300ms instead of browser's ~1000ms)
-                                                    const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+                                                    // Account for fixed header + padding (matches CSS scroll-margin-top)
+                                                    const headerOffset = 64 + 16; // header height (64px) + padding (16px)
+                                                    const targetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
                                                     const startPosition = window.scrollY;
                                                     const distance = targetPosition - startPosition;
                                                     const duration = 300; // ms - fast but still smooth
