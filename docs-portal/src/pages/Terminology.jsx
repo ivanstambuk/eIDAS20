@@ -138,13 +138,24 @@ const Terminology = () => {
                 </div>
             </header>
 
-            {/* Alphabet quick nav */}
+            {/* Alphabet quick nav - sticky below header */}
             <nav
+                className="alphabet-nav-sticky"
                 style={{
+                    position: 'sticky',
+                    top: '64px', /* Below header */
+                    zIndex: 90,
+                    margin: '0 calc(-1 * var(--space-6))', /* Full-width bleed */
+                    padding: 'var(--space-3) var(--space-6)',
                     marginBottom: 'var(--space-6)',
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: 'var(--space-1)'
+                    justifyContent: 'center',
+                    gap: 'var(--space-1)',
+                    background: 'rgba(var(--bg-primary-rgb), 0.85)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    borderBottom: '1px solid var(--border-secondary)'
                 }}
             >
                 {alphabet.map(letter => {
@@ -165,7 +176,8 @@ const Terminology = () => {
                                 if (isAvailable) {
                                     const el = document.getElementById(`letter-${letter}`);
                                     if (el) {
-                                        const headerOffset = 64 + 16;
+                                        // Header (64px) + sticky nav (~52px) + padding
+                                        const headerOffset = 64 + 56;
                                         const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset;
                                         fastScrollTo(targetY);
                                     }
