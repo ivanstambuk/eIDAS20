@@ -42,6 +42,68 @@ function cosineSimilarity(a, b) {
 }
 
 /**
+ * Calculate title similarity with prefix-aware matching.
+ * Handles partial word queries like "wallet solutio" matching "wallet solution".
+ * 
+ * @param {string} title - The document/term title
+ * @param {string} query - The search query (may contain partial words)
+ * @returns {number} Similarity score between 0 and 1
+ */
+function titleSimilarity(title, query) {
+    if (!title || !query) return 0;
+
+    const normalizedTitle = title.toLowerCase().trim();
+    const normalizedQuery = query.toLowerCase().trim();
+
+    // Exact match
+    if (normalizedTitle === normalizedQuery) return 1.0;
+
+    // Title starts with query (perfect prefix)
+    if (normalizedTitle.startsWith(normalizedQuery)) return 0.95;
+
+    // Word-by-word prefix matching for partial words
+    // "wallet solutio" → ["wallet", "solutio"]
+    // "wallet solution" → ["wallet", "solution"]
+    const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 0);
+    const titleWords = normalizedTitle.split(/\s+/).filter(w => w.length > 0);
+
+    if (queryWords.length === 0) return 0;
+
+    let matchedWords = 0;
+    let partialMatchBonus = 0;
+
+    for (let i = 0; i < queryWords.length; i++) {
+        const qWord = queryWords[i];
+
+        // Check if this query word matches any title word (as prefix)
+        for (let j = 0; j < titleWords.length; j++) {
+            const tWord = titleWords[j];
+
+            if (tWord === qWord) {
+                // Exact word match
+                matchedWords += 1;
+                break;
+            } else if (tWord.startsWith(qWord) && qWord.length >= 3) {
+                // Partial word match (prefix of at least 3 chars)
+                // Score based on how much of the word is typed
+                const coverage = qWord.length / tWord.length;
+                matchedWords += coverage;
+                partialMatchBonus += 0.1 * coverage; // Small bonus for partial
+                break;
+            }
+        }
+    }
+
+    // Score: proportion of query words that matched
+    const matchScore = matchedWords / queryWords.length;
+
+    // Bonus if query word count matches title word count (likely exact term)
+    const lengthBonus = queryWords.length === titleWords.length ? 0.1 : 0;
+
+    return Math.min(1.0, matchScore + partialMatchBonus + lengthBonus);
+}
+
+/**
  * Load the embeddings data from the pre-computed JSON file
  */
 async function loadEmbeddings() {
@@ -168,23 +230,40 @@ export function useSemanticSearch() {
             const queryVector = Array.from(output.data);
 
             // Calculate similarity with all document embeddings
-            const similarities = embeddingsData.embeddings.map((doc) => ({
-                ...doc,
-                similarity: cosineSimilarity(queryVector, doc.vector),
-            }));
+            // Combined ranking: semantic similarity (70%) + title similarity (30%)
+            // Title similarity handles partial word queries like "wallet solutio"
+            const similarities = embeddingsData.embeddings.map((doc) => {
+                const semanticSim = cosineSimilarity(queryVector, doc.vector);
+
+                // For definitions, use sectionTitle (the term name) for title matching
+                // For articles, use sectionTitle (article heading)
+                const titleForMatching = doc.sectionTitle || doc.section || '';
+                const titleSim = titleSimilarity(titleForMatching, searchQuery);
+
+                // Combined score: 70% semantic + 30% title similarity
+                // Title similarity helps with partial word matches
+                const combinedScore = (semanticSim * 0.7) + (titleSim * 0.3);
+
+                return {
+                    ...doc,
+                    similarity: semanticSim,
+                    titleSimilarity: titleSim,
+                    combinedScore: combinedScore,
+                };
+            });
 
             // Two-tier ranking: definitions first, then articles
-            // This ensures terminology definitions always appear before article content
-            const relevantResults = similarities.filter((r) => r.similarity > 0.3);
+            // Within each tier, sort by COMBINED score (not just semantic)
+            const relevantResults = similarities.filter((r) => r.combinedScore > 0.25);
 
-            // Separate definitions and articles
+            // Separate definitions and articles, sort by combined score
             const definitions = relevantResults
                 .filter((r) => r.type === 'definition')
-                .sort((a, b) => b.similarity - a.similarity);
+                .sort((a, b) => b.combinedScore - a.combinedScore);
 
             const articles = relevantResults
                 .filter((r) => r.type !== 'definition')
-                .sort((a, b) => b.similarity - a.similarity);
+                .sort((a, b) => b.combinedScore - a.combinedScore);
 
             // Concatenate: definitions first, then articles
             const topResults = [...definitions, ...articles]
@@ -197,7 +276,7 @@ export function useSemanticSearch() {
                     section: r.section,
                     sectionTitle: r.sectionTitle,
                     content: r.snippet,
-                    score: r.similarity,
+                    score: r.combinedScore, // Use combined score for display
                 }));
 
             setResults(topResults);
