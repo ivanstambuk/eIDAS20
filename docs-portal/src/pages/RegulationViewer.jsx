@@ -151,7 +151,7 @@ const RegulationViewer = () => {
                                                     const targetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
                                                     const startPosition = window.scrollY;
                                                     const distance = targetPosition - startPosition;
-                                                    const duration = 300; // ms - fast but still smooth
+                                                    const duration = 150; // ms - snappy scroll
                                                     let startTime = null;
 
                                                     const animation = (currentTime) => {
