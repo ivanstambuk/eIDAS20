@@ -66,6 +66,52 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - **Anti-pattern:** "I'll implement option A" → WRONG
    - **Correct pattern:** Generate mockup with options → Present comparison table → Wait for approval → Implement
 
+5. **Proactive Prevention Protocol (MANDATORY — After Any Bug Fix):**
+   
+   After fixing ANY bug or issue, you MUST:
+   
+   **Step 1: Root Cause Analysis**
+   - What allowed this bug to exist?
+   - What validation was missing?
+   
+   **Step 2: Implement Automated Prevention**
+   Choose the appropriate prevention mechanism:
+   
+   | Issue Type | Prevention Mechanism |
+   |------------|---------------------|
+   | **Code logic bugs** | Unit test in `test_*.py` |
+   | **Data/content issues** | Build-time validation in `build-*.js` |
+   | **Format/structure issues** | Converter test case |
+   | **Process issues** | Rule in AGENTS.md |
+   | **Design decisions** | Document in DECISIONS.md |
+   
+   **Step 3: Verify Prevention Works**
+   - Run the prevention mechanism
+   - Confirm it would catch the original bug
+   - Commit the prevention with the fix
+   
+   **Examples:**
+   ```
+   ✅ Missing annexes in documents
+      → Added validateAnnexes() in build-content.js
+      → Now warns during every build if annexes are missing
+   
+   ✅ Missing bullet prefixes in lists
+      → Added TestListBulletPrefixes in test_formex_converter.py
+      → Now fails tests if converter regresses
+   
+   ✅ Duplicate ANNEX headings
+      → Fixed converter logic + added to DECISIONS.md
+      → Root cause documented for future reference
+   ```
+   
+   **Anti-patterns:**
+   - ❌ "Fixed the bug" → close without prevention
+   - ❌ "Added a TODO to check this later"
+   - ❌ Manual verification only ("I checked and it works")
+   
+   **Why this matters:** Bugs that can happen once can happen again. Automated prevention catches issues before they reach users, reduces debugging time, and builds institutional knowledge into the codebase.
+
 ## Project Structure
 
 ```
