@@ -1,73 +1,121 @@
+import { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+
 const Terminology = () => {
-    // TODO: Load from pre-generated terminology.json
-    const terms = [
-        {
-            id: 'electronic-identification',
-            term: 'electronic identification',
-            definition: 'the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person',
-            source: 'Article 3(1)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'electronic-identification-means',
-            term: 'electronic identification means',
-            definition: 'a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service',
-            source: 'Article 3(2)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'european-digital-identity-wallet',
-            term: 'European Digital Identity Wallet',
-            definition: 'an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals',
-            source: 'Article 3(42)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'relying-party',
-            term: 'relying party',
-            definition: 'a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service',
-            source: 'Article 3(6)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'trust-service',
-            term: 'trust service',
-            definition: 'an electronic service normally provided for remuneration which consists of any of the following: the issuance of certificates, validation of certificates, creation of electronic signatures or seals, validation of electronic signatures or seals, preservation, management of remote devices, issuance of electronic attestations of attributes, validation of attestations, creation/validation of timestamps, provision of registered delivery services, electronic archiving, recording in electronic ledgers',
-            source: 'Article 3(16)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'qualified-trust-service',
-            term: 'qualified trust service',
-            definition: 'a trust service that meets the applicable requirements laid down in this Regulation',
-            source: 'Article 3(17)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'qualified-trust-service-provider',
-            term: 'qualified trust service provider',
-            definition: 'a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body',
-            source: 'Article 3(20)',
-            regulation: '910/2014'
-        },
-        {
-            id: 'electronic-attestation-of-attributes',
-            term: 'electronic attestation of attributes',
-            definition: 'an attestation in electronic form that allows attributes to be authenticated',
-            source: 'Article 3(44)',
-            regulation: '910/2014'
-        },
-    ];
+    const [terminology, setTerminology] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [expandedTerms, setExpandedTerms] = useState(new Set());
+
+    // Load terminology data
+    useEffect(() => {
+        const loadTerminology = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.BASE_URL}data/terminology.json`);
+                if (!response.ok) throw new Error('Failed to load terminology');
+                const data = await response.json();
+                setTerminology(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadTerminology();
+    }, []);
+
+    // Filter terms based on search query
+    const filteredTerms = useMemo(() => {
+        if (!terminology) return [];
+        if (!searchQuery.trim()) return terminology.terms;
+
+        const query = searchQuery.toLowerCase();
+        return terminology.terms.filter(term =>
+            term.term.toLowerCase().includes(query) ||
+            term.definitions.some(d => d.text.toLowerCase().includes(query))
+        );
+    }, [terminology, searchQuery]);
+
+    // Group filtered terms by first letter
+    const groupedTerms = useMemo(() => {
+        const groups = {};
+        for (const term of filteredTerms) {
+            const letter = term.term[0].toUpperCase();
+            if (!groups[letter]) groups[letter] = [];
+            groups[letter].push(term);
+        }
+        return groups;
+    }, [filteredTerms]);
+
+    // Available letters (only those with terms after filtering)
+    const availableLetters = useMemo(() => {
+        return Object.keys(groupedTerms).sort();
+    }, [groupedTerms]);
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+    const toggleExpanded = (termId) => {
+        setExpandedTerms(prev => {
+            const next = new Set(prev);
+            if (next.has(termId)) {
+                next.delete(termId);
+            } else {
+                next.add(termId);
+            }
+            return next;
+        });
+    };
+
+    // Get document route path based on type
+    const getDocumentPath = (source) => {
+        const basePath = source.type === 'regulation' ? 'regulation' : 'implementing-acts';
+        return `/${basePath}/${source.slug}#article-${source.article}`;
+    };
+
+    if (loading) {
+        return (
+            <div className="animate-fadeIn" style={{ textAlign: 'center', padding: 'var(--space-16) 0' }}>
+                <div className="spinner" style={{ width: '48px', height: '48px', margin: '0 auto var(--space-4)' }} />
+                <p className="text-muted">Loading terminology...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="animate-fadeIn">
+                <div className="card" style={{ background: 'var(--bg-tertiary)', textAlign: 'center' }}>
+                    <p className="text-error">❌ {error}</p>
+                    <p className="text-sm text-muted" style={{ marginTop: 'var(--space-2)' }}>
+                        Run <code>npm run build:terminology</code> to generate terminology data.
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="animate-fadeIn">
             <header style={{ marginBottom: 'var(--space-8)' }}>
                 <h1 style={{ marginBottom: 'var(--space-3)' }}>Terminology</h1>
                 <p className="text-lg text-muted">
-                    Legal definitions from Article 3 of Regulation (EU) No 910/2014
+                    Legal definitions from eIDAS Regulation and Implementing Acts
                 </p>
+                <div className="flex gap-4 mt-4" style={{ flexWrap: 'wrap' }}>
+                    <span className="badge badge-secondary">
+                        {terminology.statistics.totalTerms} terms
+                    </span>
+                    <span className="badge badge-secondary">
+                        {terminology.statistics.totalDefinitions} definitions
+                    </span>
+                    <span className="badge badge-primary">
+                        {terminology.statistics.sources.regulations} from Regulations
+                    </span>
+                    <span className="badge">
+                        {terminology.statistics.sources.implementingActs} from Implementing Acts
+                    </span>
+                </div>
             </header>
 
             {/* Alphabet quick nav */}
@@ -79,24 +127,38 @@ const Terminology = () => {
                     gap: 'var(--space-1)'
                 }}
             >
-                {alphabet.map(letter => (
-                    <a
-                        key={letter}
-                        href={`#letter-${letter}`}
-                        className="btn btn-ghost"
-                        style={{
-                            padding: 'var(--space-1) var(--space-2)',
-                            fontSize: 'var(--text-sm)',
-                            minWidth: '32px'
-                        }}
-                    >
-                        {letter}
-                    </a>
-                ))}
+                {alphabet.map(letter => {
+                    const isAvailable = availableLetters.includes(letter);
+                    return (
+                        <button
+                            key={letter}
+                            className={`btn ${isAvailable ? 'btn-ghost' : 'btn-ghost'}`}
+                            style={{
+                                padding: 'var(--space-1) var(--space-2)',
+                                fontSize: 'var(--text-sm)',
+                                minWidth: '32px',
+                                opacity: isAvailable ? 1 : 0.3,
+                                cursor: isAvailable ? 'pointer' : 'default'
+                            }}
+                            disabled={!isAvailable}
+                            onClick={() => {
+                                if (isAvailable) {
+                                    const el = document.getElementById(`letter-${letter}`);
+                                    if (el) {
+                                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }
+                            }}
+                        >
+                            {letter}
+                        </button>
+                    );
+                })}
             </nav>
 
+
             {/* Search */}
-            <div className="search-box" style={{ marginBottom: 'var(--space-8)', maxWidth: '400px' }}>
+            <div className="search-box" style={{ marginBottom: 'var(--space-8)', maxWidth: '500px' }}>
                 <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <path d="m21 21-4.35-4.35" />
@@ -104,49 +166,174 @@ const Terminology = () => {
                 <input
                     type="text"
                     className="input"
-                    placeholder="Search definitions..."
+                    placeholder="Search terms and definitions..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
-            </div>
-
-            {/* Terms list */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                {terms.map(term => (
-                    <article
-                        key={term.id}
-                        id={`term-${term.id}`}
-                        className="card"
+                {searchQuery && (
+                    <button
+                        onClick={() => setSearchQuery('')}
+                        className="btn btn-ghost"
+                        style={{
+                            position: 'absolute',
+                            right: 'var(--space-2)',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            padding: 'var(--space-1)'
+                        }}
                     >
-                        <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-3)' }}>
-                            <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
-                                {term.term}
-                            </h3>
-                            <span className="badge badge-primary">{term.source}</span>
-                        </div>
-                        <p style={{ lineHeight: 1.7 }}>
-                            {term.definition}
-                        </p>
-                        <div className="flex items-center gap-4 mt-4">
-                            <a
-                                href={`/regulation/910-2014#article-3`}
-                                className="text-sm text-link"
-                            >
-                                View in context →
-                            </a>
-                            <button
-                                className="btn btn-ghost text-sm"
-                                onClick={() => navigator.clipboard.writeText(term.definition)}
-                            >
-                                Copy definition
-                            </button>
-                        </div>
-                    </article>
-                ))}
+                        ✕
+                    </button>
+                )}
             </div>
 
-            <p className="text-sm text-muted" style={{ marginTop: 'var(--space-8)' }}>
-                Showing {terms.length} of 57 definitions.
-                Full terminology will be loaded from pre-generated data.
-            </p>
+            {/* Results count */}
+            {searchQuery && (
+                <p className="text-sm text-muted" style={{ marginBottom: 'var(--space-4)' }}>
+                    Found {filteredTerms.length} term{filteredTerms.length !== 1 ? 's' : ''} matching "{searchQuery}"
+                </p>
+            )}
+
+            {/* Terms list grouped by letter */}
+            {availableLetters.length === 0 ? (
+                <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
+                    <p className="text-muted">No terms found matching your search.</p>
+                </div>
+            ) : (
+                availableLetters.map(letter => (
+                    <section key={letter} id={`letter-${letter}`} style={{ marginBottom: 'var(--space-8)' }}>
+                        <h2
+                            style={{
+                                fontSize: 'var(--text-2xl)',
+                                color: 'var(--accent-primary)',
+                                marginBottom: 'var(--space-4)',
+                                paddingBottom: 'var(--space-2)',
+                                borderBottom: '2px solid var(--border-primary)'
+                            }}
+                        >
+                            {letter}
+                        </h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                            {groupedTerms[letter].map(term => {
+                                const isExpanded = expandedTerms.has(term.id);
+                                const hasMultipleDefs = term.definitions.length > 1;
+                                const primaryDef = term.definitions[0];
+
+                                return (
+                                    <article
+                                        key={term.id}
+                                        id={`term-${term.id}`}
+                                        className="card"
+                                    >
+                                        <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-3)' }}>
+                                            <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
+                                                {term.term}
+                                            </h3>
+                                            <div className="flex gap-2">
+                                                <span className="badge badge-primary">
+                                                    Art. {primaryDef.source.article}({primaryDef.source.ordinal})
+                                                </span>
+                                                {hasMultipleDefs && (
+                                                    <span className="badge badge-secondary">
+                                                        {term.definitions.length} sources
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <p style={{ lineHeight: 1.7 }}>
+                                            {primaryDef.text}
+                                        </p>
+
+                                        <div className="flex items-center gap-4 mt-4" style={{ flexWrap: 'wrap' }}>
+                                            <Link
+                                                to={getDocumentPath(primaryDef.source)}
+                                                className="text-sm text-link"
+                                            >
+                                                View in {primaryDef.source.shortRef} →
+                                            </Link>
+                                            <button
+                                                className="btn btn-ghost text-sm"
+                                                onClick={() => {
+                                                    navigator.clipboard.writeText(primaryDef.text);
+                                                }}
+                                            >
+                                                Copy definition
+                                            </button>
+                                            {hasMultipleDefs && (
+                                                <button
+                                                    className="btn btn-ghost text-sm"
+                                                    onClick={() => toggleExpanded(term.id)}
+                                                >
+                                                    {isExpanded ? 'Hide sources ▲' : `Show all sources ▼`}
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        {/* Expanded sources */}
+                                        {isExpanded && hasMultipleDefs && (
+                                            <div
+                                                className="mt-4"
+                                                style={{
+                                                    borderTop: '1px solid var(--border-secondary)',
+                                                    paddingTop: 'var(--space-4)'
+                                                }}
+                                            >
+                                                <p className="text-sm text-muted mb-3">
+                                                    This term is defined in {term.definitions.length} documents:
+                                                </p>
+                                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                                    {term.definitions.map((def, idx) => (
+                                                        <li
+                                                            key={idx}
+                                                            style={{
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                gap: 'var(--space-3)',
+                                                                padding: 'var(--space-2) 0',
+                                                                borderBottom: idx < term.definitions.length - 1 ? '1px solid var(--border-tertiary)' : 'none'
+                                                            }}
+                                                        >
+                                                            <span className="badge" style={{ flexShrink: 0 }}>
+                                                                Art. {def.source.article}({def.source.ordinal})
+                                                            </span>
+                                                            <Link
+                                                                to={getDocumentPath(def.source)}
+                                                                className="text-sm text-link"
+                                                                style={{ flex: 1 }}
+                                                            >
+                                                                {def.source.shortRef}
+                                                            </Link>
+                                                            <span
+                                                                className="text-xs"
+                                                                style={{
+                                                                    color: def.source.type === 'regulation' ? 'var(--accent-primary)' : 'var(--text-muted)'
+                                                                }}
+                                                            >
+                                                                {def.source.type === 'regulation' ? '📜 Regulation' : '📋 IA'}
+                                                            </span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </article>
+                                );
+                            })}
+                        </div>
+                    </section>
+                ))
+            )}
+
+            {/* Back to top */}
+            <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
+                <button
+                    className="btn btn-ghost text-sm"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    ↑ Back to top
+                </button>
+            </div>
         </div>
     );
 };
