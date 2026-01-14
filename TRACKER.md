@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 03:11 CET |
-| **Session State** | ⏸️ Paused - Handover complete |
-| **Current Phase** | Phase 4: Search ✅ COMPLETE |
-| **Next Action** | Begin Phase 5: AI Chat (WebLLM + RAG) |
+| **Last Updated** | 2026-01-14 03:35 CET |
+| **Session State** | 🟢 Active |
+| **Current Phase** | Phase 5: AI Chat ✅ COMPLETE |
+| **Next Action** | Begin Phase 6: Polish & Deploy |
 
 ---
 
@@ -91,15 +91,17 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 **Completed:** Full-text + semantic search with mode toggle, similarity ranking, suggestions.
 
-### Phase 5: AI Chat ⬜ NOT STARTED
+### Phase 5: AI Chat ✅ COMPLETE
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 5.1 Integrate WebLLM | ⬜ TODO | Load Gemma 2B on demand |
-| 5.2 Build chat UI component | ⬜ TODO | Floating widget, expandable |
-| 5.3 Implement RAG pipeline | ⬜ TODO | Retrieve → Augment → Generate |
-| 5.4 Add context window management | ⬜ TODO | Include relevant chunks in prompt |
-| 5.5 Implement WebGPU detection | ⬜ TODO | Graceful fallback for unsupported browsers |
+| 5.1 Integrate WebLLM | ✅ DONE | @mlc-ai/web-llm, multiple models (SmolLM2, Qwen2.5, Gemma, Phi) |
+| 5.2 Build chat UI component | ✅ DONE | Floating widget, premium design, model selector |
+| 5.3 Implement RAG pipeline | ✅ DONE | useRAG hook, top-K retrieval from embeddings |
+| 5.4 Add context window management | ✅ DONE | System prompt with 4 context chunks |
+| 5.5 Implement WebGPU detection | ✅ DONE | Graceful fallback with browser guidance |
+
+**Completed:** Full AI chat with WebLLM, RAG-powered answers, streaming responses, model selection.
 
 ### Phase 6: Polish & Deploy ⬜ NOT STARTED
 
@@ -121,9 +123,9 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 2: Content & Navigation | 5 | 5 | ✅ 100% |
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
 | Phase 4: Search | 5 | 5 | ✅ 100% |
-| Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
+| Phase 5: AI Chat | 5 | 5 | ✅ 100% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **21** | **68%** |
+| **Total** | **31** | **26** | **84%** |
 
 ---
 
@@ -141,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 03:35 | **Phase 5 COMPLETE**: WebLLM AI Chat with RAG, model selection, streaming, WebGPU fallback |
 | 2026-01-14 03:10 | **Phase 4 COMPLETE**: Semantic search with Transformers.js (248 embeddings), mode toggle, similarity ranking |
 | 2026-01-14 02:55 | **Task 4.5 Complete**: Search suggestions with 8 popular topics + recent search history |
 | 2026-01-14 02:45 | **Task 4.1 Complete**: Orama full-text search (246 sections, 784KB index), SearchModal with highlighting |
