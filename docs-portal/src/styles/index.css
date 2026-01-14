@@ -812,6 +812,10 @@ pre code {
   margin-bottom: var(--space-4);
 }
 
+.regulation-content h2:first-child {
+  margin-top: 0;
+}
+
 .regulation-content h3 {
   margin-top: var(--space-6);
   margin-bottom: var(--space-3);
