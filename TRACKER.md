@@ -35,6 +35,7 @@
 
 | Feature | Description | Priority |
 |---------|-------------|----------|
+| GitHub header link | Update placeholder `https://github.com` to actual repo URL once published | High |
 | Definition anchors | Deep links to specific definitions within articles (`#def-trust-service`) | Medium |
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
