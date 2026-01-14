@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 20:02 CET |
+| **Last Updated** | 2026-01-14 20:31 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -25,7 +25,7 @@
 - **Themes** (light/dark, system detection)
 - **Accessibility** (WCAG 2.1 AA)
 - **CI/CD** (GitHub Actions auto-deploy)
-- **Collapsible TOC** (official chapter structure for eIDAS 910/2014)
+- **Collapsible TOC** (official chapter structure for eIDAS 910/2014, Annexes at bottom)
 - **Human-friendly document names** (short titles from folder names/metadata)
 - **Scroll-to-top on navigation** (fixes SPA scroll persistence bug)
 - **Search prioritizes definitions** (10x boost full-text, two-tier semantic)
@@ -48,13 +48,13 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 20:31 | Converter bug: missing bullet prefix in process_list_simple, strengthened Rule 70 (Converter-First), TOC annexes at bottom |
 | 2026-01-14 20:02 | Search: terminology prioritized (10x boost + two-tier ranking), DEC-005/006, DECISIONS.md created |
 | 2026-01-14 18:55 | Human-friendly short titles (PID & EAA, etc.), scroll-to-top fix |
 | 2026-01-14 18:25 | Collapsible TOC: Official chapters, short Roman numerals (I., II.), text wrap |
 | 2026-01-14 17:50 | CSS scroll fix: Removed scroll-behavior:smooth conflicting with 150ms JS animation |
 | 2026-01-14 17:35 | AST-based Markdown Pipeline: unified/remark/rehype, TOC deep-linking works |
 | 2026-01-14 17:25 | UI Refinement: Strip front matter, agent-done.sh, tab cleanup rule |
-| 2026-01-14 11:24 | Phase 6 Complete: Browser testing verified all features |
 
 ---
 
