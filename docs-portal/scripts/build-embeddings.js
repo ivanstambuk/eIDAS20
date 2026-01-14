@@ -26,6 +26,7 @@ const DATA_DIR = path.join(__dirname, '../public/data');
 const REGULATIONS_DIR = path.join(DATA_DIR, 'regulations');
 const OUTPUT_FILE = path.join(DATA_DIR, 'embeddings.json');
 const INDEX_FILE = path.join(DATA_DIR, 'regulations-index.json');
+const DOC_CONFIG_FILE = path.join(__dirname, 'document-config.json');
 
 // Model configuration
 const MODEL_NAME = 'Xenova/all-MiniLM-L6-v2';
@@ -129,6 +130,10 @@ async function generateEmbeddings() {
     const regulationsIndex = JSON.parse(fs.readFileSync(INDEX_FILE, 'utf-8'));
     console.log(`📚 Found ${regulationsIndex.length} documents`);
 
+    // Load document configuration (DEC-005: exclude amending regulation from RAG)
+    const docConfig = JSON.parse(fs.readFileSync(DOC_CONFIG_FILE, 'utf-8'));
+    const getDocConfig = (slug) => docConfig.documents[slug] || docConfig.defaults;
+
     // Load the embedding model
     console.log(`\n🔄 Loading embedding model: ${MODEL_NAME}`);
     console.log('   (This may take a minute on first run to download the model...)\n');
@@ -142,7 +147,16 @@ async function generateEmbeddings() {
     // Collect all sections
     const allSections = [];
 
+    let skippedCount = 0;
     for (const doc of regulationsIndex) {
+        // Check if document should be included in RAG (DEC-005)
+        const config = getDocConfig(doc.slug);
+        if (!config.ragEnabled) {
+            console.log(`⏭️  Skipping ${doc.slug} (ragEnabled: false)`);
+            skippedCount++;
+            continue;
+        }
+
         const docPath = path.join(REGULATIONS_DIR, `${doc.slug}.json`);
 
         if (!fs.existsSync(docPath)) {
@@ -161,7 +175,7 @@ async function generateEmbeddings() {
         allSections.push(...sections);
     }
 
-    console.log(`📑 Total sections to embed: ${allSections.length}\n`);
+    console.log(`📑 Total sections to embed: ${allSections.length} (skipped ${skippedCount} documents)\n`);
 
     // Generate embeddings
     const embeddings = [];

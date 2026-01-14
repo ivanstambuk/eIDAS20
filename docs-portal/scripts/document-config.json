@@ -1,0 +1,22 @@
+{
+    "$schema": "./document-config.schema.json",
+    "$comment": "Document-level configuration for build scripts. See DECISIONS.md DEC-005.",
+    "documents": {
+        "2024-1183": {
+            "label": "Amending Regulation",
+            "ragEnabled": false,
+            "terminologySource": false,
+            "comment": "Amending regulation contains 'patch' instructions, not standalone law. Use consolidated 910/2014 for RAG and terminology."
+        },
+        "910-2014": {
+            "label": "Consolidated Regulation",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "comment": "Primary source of truth for current eIDAS law."
+        }
+    },
+    "defaults": {
+        "ragEnabled": true,
+        "terminologySource": true
+    }
+}

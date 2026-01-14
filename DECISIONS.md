@@ -110,4 +110,31 @@ The hamburger (☰) menu button toggles sidebar visibility. On desktop (>1024px)
 
 ---
 
+## DEC-005: Exclude amending regulation from RAG and terminology
+
+**Date:** 2026-01-14  
+**Status:** Accepted  
+
+**Context:**  
+The amending regulation (2024/1183) contains "patch" instructions like "Article X is replaced by the following:..." — not standalone legal text. The consolidated regulation (910/2014) contains the complete, applicable law.
+
+**Decision:**  
+- **RAG (AI context):** Exclude 2024/1183 from embedding generation
+- **Terminology:** Only extract/link definitions from consolidated 910/2014
+- **Full-text search:** Keep both searchable (for "what changed" queries)
+- **Display:** Keep amending reg in portal, clearly labeled
+
+**Rationale:**
+1. **Legal correctness** — Consolidated is "the law"; amending is "the diff"
+2. **User expectation** — Queries about definitions should return applicable law
+3. **Avoiding confusion** — Replacement instructions are not standalone text
+4. **Analogy** — An amending reg is like a git diff; you don't search diffs to understand current code
+
+**Implementation:** 
+- `docs-portal/scripts/document-config.json` — Metadata flags per document
+- Build scripts check `ragEnabled` and `terminologySource` flags
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
+

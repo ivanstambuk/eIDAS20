@@ -24,6 +24,7 @@ const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, '..', '..');
 const OUTPUT_DIR = join(__dirname, '..', 'public', 'data');
 const OUTPUT_FILE = join(OUTPUT_DIR, 'terminology.json');
+const DOC_CONFIG_FILE = join(__dirname, 'document-config.json');
 
 // Source directories
 const SOURCE_DIRS = [
@@ -146,8 +147,9 @@ function extractDefinitions(content) {
 
 /**
  * Process a single markdown file for terminology
+ * @param {Object} docConfig - Document configuration with terminologySource flag
  */
-function processFile(filePath, dirName, type) {
+function processFile(filePath, dirName, type, docConfig) {
     const content = readFileSync(filePath, 'utf-8');
     const terms = [];
 
@@ -155,6 +157,13 @@ function processFile(filePath, dirName, type) {
     const title = extractTitle(content);
     const shortRef = extractShortRef(title, celex);
     const slug = generateSlug(dirName, type);
+
+    // Check if this document should be a terminology source (DEC-005)
+    const config = docConfig.documents[slug] || docConfig.defaults;
+    if (!config.terminologySource) {
+        return { terms: [], skipped: true, slug };
+    }
+
     const definitionArticle = findDefinitionArticle(content);
 
     const definitions = extractDefinitions(content);
@@ -175,14 +184,16 @@ function processFile(filePath, dirName, type) {
         });
     }
 
-    return terms;
+    return { terms, skipped: false, slug };
 }
 
 /**
  * Scan a source directory for markdown files
+ * @param {Object} docConfig - Document configuration
  */
-function scanDirectory(sourceDir, type) {
+function scanDirectory(sourceDir, type, docConfig) {
     const terms = [];
+    let skippedDocs = [];
 
     if (!existsSync(sourceDir)) {
         console.warn(`⚠️  Source directory not found: ${sourceDir}`);
@@ -202,22 +213,28 @@ function scanDirectory(sourceDir, type) {
 
             for (const mdFile of mdFiles) {
                 const mdPath = join(entryPath, mdFile);
-                const fileTerms = processFile(mdPath, entry, type);
-                if (fileTerms.length > 0) {
-                    console.log(`  📄 ${entry}/${mdFile}: ${fileTerms.length} definitions`);
-                    terms.push(...fileTerms);
+                const result = processFile(mdPath, entry, type, docConfig);
+                if (result.skipped) {
+                    console.log(`  ⏭️  ${entry}/${mdFile}: skipped (terminologySource: false)`);
+                    skippedDocs.push(result.slug);
+                } else if (result.terms.length > 0) {
+                    console.log(`  📄 ${entry}/${mdFile}: ${result.terms.length} definitions`);
+                    terms.push(...result.terms);
                 }
             }
         } else if (entry.endsWith('.md') && entry.toLowerCase() !== 'readme.md') {
-            const fileTerms = processFile(entryPath, entry.replace('.md', ''), type);
-            if (fileTerms.length > 0) {
-                console.log(`  📄 ${entry}: ${fileTerms.length} definitions`);
-                terms.push(...fileTerms);
+            const result = processFile(entryPath, entry.replace('.md', ''), type, docConfig);
+            if (result.skipped) {
+                console.log(`  ⏭️  ${entry}: skipped (terminologySource: false)`);
+                skippedDocs.push(result.slug);
+            } else if (result.terms.length > 0) {
+                console.log(`  📄 ${entry}: ${result.terms.length} definitions`);
+                terms.push(...result.terms);
             }
         }
     }
 
-    return terms;
+    return { terms, skippedDocs };
 }
 
 /**
@@ -261,14 +278,23 @@ function build() {
     // Ensure output directory exists
     mkdirSync(OUTPUT_DIR, { recursive: true });
 
+    // Load document configuration (DEC-005: exclude amending regulation from terminology)
+    const docConfig = JSON.parse(readFileSync(DOC_CONFIG_FILE, 'utf-8'));
+
     const allTerms = [];
+    const allSkipped = [];
 
     // Process each source directory
     for (const source of SOURCE_DIRS) {
         console.log(`📂 Scanning ${source.type}s: ${source.path}`);
-        const terms = scanDirectory(source.path, source.type);
+        const { terms, skippedDocs } = scanDirectory(source.path, source.type, docConfig);
         allTerms.push(...terms);
+        allSkipped.push(...skippedDocs);
         console.log(`   Found ${terms.length} definitions\n`);
+    }
+
+    if (allSkipped.length > 0) {
+        console.log(`ℹ️  Skipped ${allSkipped.length} document(s): ${allSkipped.join(', ')}\n`);
     }
 
     // Merge terms from multiple sources
