@@ -23,8 +23,8 @@ import urllib.request
 from pathlib import Path
 from datetime import datetime
 
-# Import the improved v2 converter
-from formex_to_md_v2 import convert_formex_to_md as convert_formex_v2
+# Import the improved v3 converter (better annex handling)
+from formex_to_md_v3 import convert_formex_to_md as convert_formex_v3
 
 
 def download_file(url, filepath):
@@ -309,7 +309,7 @@ def main():
     
     if main_xml:
         md_path = output_dir / f"{celex}.md"
-        md_content = convert_formex_v2(str(main_xml), str(md_path))
+        md_content = convert_formex_v3(str(main_xml), str(md_path))
         print(f"  Created: {md_path} ({len(md_content)} bytes)")
     else:
         print("ERROR: No XML file found in ZIP")
