@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 02:07 CET |
-| **Session State** | ✅ Handover - Ready for next session |
-| **Current Phase** | Phase 2 COMPLETE → Phase 3 next |
-| **Next Action** | Begin Phase 3: Terminology System (Task 3.1) |
+| **Last Updated** | 2026-01-14 02:30 CET |
+| **Session State** | ✅ Active - In Progress |
+| **Current Phase** | Phase 3 COMPLETE → Phase 4 next |
+| **Next Action** | Begin Phase 4: Search (Task 4.1) |
 
 ---
 
@@ -67,15 +67,17 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 **Completed:** Build-time markdown→JSON processor, multi-select filters, full export suite.
 
-### Phase 3: Terminology System ⬜ NOT STARTED
+### Phase 3: Terminology System ✅ COMPLETE
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 3.1 Write terminology extractor | ⬜ TODO | **BUILD TIME Node.js script** |
-| 3.2 Generate terminology.json | ⬜ TODO | Pre-generated static JSON |
-| 3.3 Build terminology page | ⬜ TODO | Alphabetical list with deep links |
-| 3.4 Implement hover popover | ⬜ TODO | Shows definition on term hover |
-| 3.5 Add cross-reference links | ⬜ TODO | Links to source regulation/article |
+| 3.1 Write terminology extractor | ✅ DONE | `build-terminology.js` - extracts definitions |
+| 3.2 Generate terminology.json | ✅ DONE | 96 unique terms, 186 total definitions |
+| 3.3 Build terminology page | ✅ DONE | Alphabetical grouping, search, expandable sources |
+| 3.4 Implement hover popover | ✅ DONE | TermPopover component with smart positioning |
+| 3.5 Add cross-reference links | ✅ DONE | Deep links to source documents + articles |
+
+**Completed:** Terminology extraction pipeline, full terminology page, popover components ready.
 
 ### Phase 4: Search ⬜ NOT STARTED
 
@@ -115,11 +117,11 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 |-------|-------|------|----------|
 | Phase 1: Foundation | 6 | 6 | ✅ 100% |
 | Phase 2: Content & Navigation | 5 | 5 | ✅ 100% |
-| Phase 3: Terminology | 5 | 0 | ⬜ 0% |
+| Phase 3: Terminology | 5 | 5 | ✅ 100% |
 | Phase 4: Search | 5 | 0 | ⬜ 0% |
 | Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **11** | **35%** |
+| **Total** | **31** | **16** | **52%** |
 
 ---
 
@@ -137,6 +139,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 02:30 | **Phase 3 Complete**: Terminology extraction (96 terms), full terminology page, popover components |
 | 2026-01-14 02:15 | **Phase 2 Complete**: Multi-select filters, export suite (PDF/MD/JSON), print styles |
 | 2026-01-14 02:00 | **Content Loading**: Created build-content.js, 32 JSON files generated, RegulationViewer now loads real content |
 | 2026-01-14 01:30 | **Phase 1 Complete**: Browser validation confirms UI is functional. Added WSL browser testing scripts. |
