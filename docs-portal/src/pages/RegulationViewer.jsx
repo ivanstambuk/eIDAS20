@@ -145,7 +145,24 @@ const RegulationViewer = () => {
                                                 e.preventDefault();
                                                 const element = document.getElementById(item.id);
                                                 if (element) {
-                                                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                                    // Fast smooth scroll (300ms instead of browser's ~1000ms)
+                                                    const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+                                                    const startPosition = window.scrollY;
+                                                    const distance = targetPosition - startPosition;
+                                                    const duration = 300; // ms - fast but still smooth
+                                                    let startTime = null;
+
+                                                    const animation = (currentTime) => {
+                                                        if (!startTime) startTime = currentTime;
+                                                        const elapsed = currentTime - startTime;
+                                                        const progress = Math.min(elapsed / duration, 1);
+                                                        // Ease-out curve for natural deceleration
+                                                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                                                        window.scrollTo(0, startPosition + distance * easeOut);
+                                                        if (progress < 1) requestAnimationFrame(animation);
+                                                    };
+                                                    requestAnimationFrame(animation);
+
                                                     // Update visual focus for accessibility
                                                     element.focus({ preventScroll: true });
                                                 }
