@@ -1,6 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { Home, Terminology, ImplementingActs } from './pages';
+import { Home, Terminology, ImplementingActs, RegulationViewer } from './pages';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
           <Route path="terminology" element={<Terminology />} />
           <Route path="implementing-acts" element={<ImplementingActs />} />
 
-          {/* Placeholder routes - to be implemented */}
-          <Route path="regulation/:id" element={<PlaceholderPage title="Regulation Viewer" />} />
+          {/* Document viewers */}
+          <Route path="regulation/:id" element={<RegulationViewer />} />
           <Route path="implementing-acts/:id" element={<PlaceholderPage title="Implementing Act Viewer" />} />
           <Route path="quickstart" element={<PlaceholderPage title="Quick Start Guide" />} />
           <Route path="by-role" element={<PlaceholderPage title="Browse by Role" />} />
