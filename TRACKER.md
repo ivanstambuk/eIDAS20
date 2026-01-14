@@ -7,9 +7,9 @@
 ## Current Session Status
 
 | Field | Value |
-|-------|-------|
-| **Last Updated** | 2026-01-14 11:24 CET |
-| **Session State** | 🟢 Active |
+|-------|---------|
+| **Last Updated** | 2026-01-14 16:50 CET |
+| **Session State** | 🔵 Handover |
 | **Current Phase** | Phase 6: Polish & Deploy (100%) |
 | **Next Action** | Deploy to GitHub Pages |
 
@@ -95,7 +95,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 5.1 Integrate WebLLM | ✅ DONE | @mlc-ai/web-llm, multiple models (SmolLM2, Qwen2.5, Gemma, Phi) |
+| 5.1 Integrate WebLLM | ✅ DONE | @mlc-ai/web-llm, 6 models (SmolLM2, Qwen3, Gemma 2, Phi-3.5) |
 | 5.2 Build chat UI component | ✅ DONE | Floating widget, premium design, model selector |
 | 5.3 Implement RAG pipeline | ✅ DONE | useRAG hook, top-K retrieval from embeddings |
 | 5.4 Add context window management | ✅ DONE | System prompt with 4 context chunks |
@@ -103,7 +103,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 **Completed:** Full AI chat with WebLLM, RAG-powered answers, streaming responses, model selection.
 
-### Phase 6: Polish & Deploy 🔨 IN PROGRESS
+### Phase 6: Polish & Deploy ✅ COMPLETE
 
 | Task | Status | Notes |
 |------|--------|-------|
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 16:50 | **Polish**: Strip metadata blockquote from rendered content (AGENTS.md decision), upgrade AI models (Qwen2.5→Qwen3) |
 | 2026-01-14 11:24 | **Task 6.5 Complete / Phase 6 COMPLETE**: Browser testing verified - Search modal (keyword/semantic), TOC navigation fix, themes, accessibility |
 | 2026-01-14 10:48 | **Task 6.1 Complete**: WCAG 2.1 AA accessibility audit - skip link, improved contrast, ARIA labels, reduced motion |
 | 2026-01-14 10:18 | **Task 6.2 + 6.4 Complete**: React.lazy code splitting, vendor chunks, GitHub Actions deploy workflow |
