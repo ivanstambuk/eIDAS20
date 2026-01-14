@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 01:47 CET |
-| **Session State** | ✅ Handover - Ready for next session |
+| **Last Updated** | 2026-01-14 02:00 CET |
+| **Session State** | ⏳ In Progress |
 | **Current Phase** | Phase 2: Content & Navigation |
-| **Next Action** | Create build-time markdown→JSON processor |
+| **Next Action** | Implement regulation filter (multi-select) |
 
 ---
 
@@ -59,13 +59,13 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 2.1 Build regulation viewer component | ✅ DONE | Layout, TOC, actions panel complete |
+| 2.1 Build regulation viewer component | ✅ DONE | Layout, TOC, actions panel, content loading |
 | 2.2 Implement regulation filter | ⬜ TODO | Multi-select chips/tags |
-| 2.3 Build table of contents sidebar | ✅ DONE | Part of RegulationViewer |
+| 2.3 Build table of contents sidebar | ✅ DONE | Dynamic from JSON headings |
 | 2.4 Add role-based filtering | ⬜ TODO | Highlight relevant sections |
 | 2.5 Implement export functionality | ⬜ TODO | Browser print → PDF, download |
 
-**Next step:** Create build-time markdown→JSON processor to load actual regulation content.
+**Completed:** Build-time markdown→JSON processor (`scripts/build-content.js`) that converts all 32 documents.
 
 ### Phase 3: Terminology System ⬜ NOT STARTED
 
@@ -114,12 +114,12 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase | Tasks | Done | Progress |
 |-------|-------|------|----------|
 | Phase 1: Foundation | 6 | 6 | ✅ 100% |
-| Phase 2: Content & Navigation | 5 | 2 | ⏳ 40% |
+| Phase 2: Content & Navigation | 5 | 3 | ⏳ 60% |
 | Phase 3: Terminology | 5 | 0 | ⬜ 0% |
 | Phase 4: Search | 5 | 0 | ⬜ 0% |
 | Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **8** | **26%** |
+| **Total** | **31** | **9** | **29%** |
 
 ---
 
@@ -137,6 +137,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 02:00 | **Content Loading**: Created build-content.js, 32 JSON files generated, RegulationViewer now loads real content |
 | 2026-01-14 01:30 | **Phase 1 Complete**: Browser validation confirms UI is functional. Added WSL browser testing scripts. |
 | 2026-01-14 00:40 | **Environment Fix**: Migrated to WSL, fixed CRLF→LF line endings, reinstalled node_modules |
 | 2026-01-13 (Night) | **Portal Started**: Created docs-portal with Vite + React, implemented all Phase 1 tasks |

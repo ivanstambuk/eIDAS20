@@ -4,32 +4,33 @@
 ## Current State
 
 - **Focus**: Building eIDAS 2.0 Documentation Portal - Phase 2 Content & Navigation
-- **Next**: Create a build-time Node.js script to process markdown files into JSON for the RegulationViewer
+- **Next**: Implement regulation filter with multi-select chips/tags
 - **Status**: In Progress
-- **Phase**: Phase 2, Task 2.1 (viewer component done, needs content loading)
+- **Phase**: Phase 2, Task 2.2 (content loading complete, filter next)
 
 ## Key Files
 
-- `docs-portal/src/pages/RegulationViewer.jsx` — Main viewer component (placeholder content)
-- `docs-portal/src/styles/index.css` — Design system with all utilities
-- `01_regulation/910_2014_eIDAS_Consolidated/02014R0910-20241018.md` — Source regulation to process
-- `TRACKER.md` — Phase progress tracking (26% complete)
+- `docs-portal/src/pages/RegulationViewer.jsx` — Main viewer component (loads from JSON)
+- `docs-portal/scripts/build-content.js` — Build-time markdown→JSON processor
+- `docs-portal/public/data/regulations/` — 32 generated JSON files
+- `docs-portal/public/data/regulations-index.json` — Index for listing pages
+- `TRACKER.md` — Phase progress tracking (29% complete)
 
 ## Context Notes
 
-- **WSL Migration**: Moved from Windows to WSL. Fixed CRLF→LF line endings with .gitattributes
-- **Port Reference**: Portal = 5173, Chrome CDP = 9222 (NOT 5174 which is Alfred)
-- **Viewer Architecture**: RegulationViewer has TOC sidebar, breadcrumb, actions panel - just needs real content
-- **Next Step**: Create `docs-portal/scripts/build-content.js` to convert markdown→JSON at build time
+- **Build Script**: Run `npm run build:content` to regenerate JSON from markdown
+- **Port Reference**: Portal = 5173, Chrome CDP = 9222
+- **Content Stats**: 32 documents, 121k words total
+- **JSON Structure**: Each regulation has slug, title, shortTitle, toc[], contentHtml, contentMarkdown
 
 ## Session Accomplishments
 
-1. ✅ Fixed line endings (CRLF→LF) for WSL
-2. ✅ Copied browser testing scripts from Alfred
-3. ✅ Created /init, /handover, /retro, /browser-testing workflows
-4. ✅ Committed docs-portal (Phase 1 complete)
-5. ✅ Created RegulationViewer component with layout/TOC
-6. ✅ Updated AGENTS.md with portal docs and browser testing
+1. ✅ Created `scripts/build-content.js` - markdown→JSON converter
+2. ✅ Generated 32 regulation JSON files + index
+3. ✅ Rewrote RegulationViewer to fetch from JSON
+4. ✅ Both /regulation/:id and /implementing-acts/:id work
+5. ✅ Browser verified - content loads correctly with TOC
+6. ✅ Committed: feat(portal): implement build-time markdown→JSON processor
 
 ## Quick Start
 
@@ -37,4 +38,11 @@
 cd ~/dev/eIDAS20/docs-portal && npm run dev
 # Portal runs at http://localhost:5173/eIDAS20/
 # Test regulation viewer at http://localhost:5173/eIDAS20/#/regulation/910-2014
+# Test implementing act at http://localhost:5173/eIDAS20/#/implementing-acts/2024-2977
 ```
+
+## Next Tasks (Phase 2 Remaining)
+
+1. **2.2 Regulation Filter** - Multi-select chips for filtering document list
+2. **2.4 Role-Based Filtering** - Highlight sections relevant to RP/QTSP/etc.
+3. **2.5 Export Functionality** - PDF export via print, markdown download
