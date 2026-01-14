@@ -13,7 +13,7 @@ function App() {
 
           {/* Document viewers */}
           <Route path="regulation/:id" element={<RegulationViewer />} />
-          <Route path="implementing-acts/:id" element={<PlaceholderPage title="Implementing Act Viewer" />} />
+          <Route path="implementing-acts/:id" element={<RegulationViewer />} />
           <Route path="quickstart" element={<PlaceholderPage title="Quick Start Guide" />} />
           <Route path="by-role" element={<PlaceholderPage title="Browse by Role" />} />
           <Route path="cross-references" element={<PlaceholderPage title="Cross-References" />} />
