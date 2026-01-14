@@ -50,7 +50,8 @@ function parseMetadata(content) {
         celex: null,
         documentType: null,
         source: null,
-        version: null
+        version: null,
+        subject: null
     };
 
     // Match first blockquote line: > **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
@@ -75,6 +76,12 @@ function parseMetadata(content) {
     const sourceMatch = content.match(/\*\*Source:\*\*\s*\[?([^\]\n]+)\]?\(?([^)\n]*)?\)?/);
     if (sourceMatch) {
         metadata.source = sourceMatch[2] || sourceMatch[1];
+    }
+
+    // Match subject field (if present): > **Subject:** Registration of relying parties
+    const subjectMatch = content.match(/\*\*Subject:\*\*\s*([^\n|]+)/);
+    if (subjectMatch) {
+        metadata.subject = subjectMatch[1].trim();
     }
 
     return metadata;
@@ -137,16 +144,75 @@ function parseTitle(content) {
 }
 
 /**
- * Extract a short title from the full title
+ * Extract a human-readable short title from metadata, folder name, or title.
+ * 
+ * Priority chain (Single Source of Truth principle):
+ * 1. Explicit **Subject:** field in markdown metadata
+ * 2. Descriptive part of folder name (e.g., "Relying_Party_Registration")
+ * 3. Special casing for parent regulations
+ * 4. Fallback to CELEX-based pattern
+ * 
+ * @param {string} fullTitle - The full document title
+ * @param {string} celex - The CELEX number
+ * @param {string} type - Document type ('regulation' or 'implementing-act')
+ * @param {string} dirName - The directory name containing the document
+ * @param {string|null} subject - Optional subject from markdown metadata
  */
-function extractShortTitle(fullTitle, celex, type) {
-    // Try to extract regulation number from title
+function extractShortTitle(fullTitle, celex, type, dirName, subject) {
+    // Priority 1: Use explicit subject from metadata if available
+    if (subject) {
+        return subject;
+    }
+
+    // Priority 2: For implementing acts, extract from folder name
+    // Format: YYYY_NNNN_Human_Readable_Description
+    if (type === 'implementing-act' && dirName) {
+        const folderMatch = dirName.match(/^\d{4}_\d+_(.+)$/);
+        if (folderMatch) {
+            // Common eIDAS acronyms that should be preserved
+            const acronyms = new Set(['PID', 'EAA', 'EID', 'TSP', 'TS', 'CAB', 'QTS', 'QC', 'QTSP', 'API', 'EU']);
+
+            // Convert underscores to spaces for readability
+            // e.g., "Relying_Party_Registration" → "Relying Party Registration"
+            const description = folderMatch[1]
+                .replace(/_/g, ' ')
+                .replace(/\band\b/gi, '&'); // Restore "and" to "&"
+
+            // Smart title casing: preserve acronyms, title-case other words
+            const titleCase = description
+                .split(' ')
+                .map((word, index) => {
+                    const upperWord = word.toUpperCase();
+                    // Preserve acronyms (check uppercase version against acronym set)
+                    if (acronyms.has(upperWord)) {
+                        // Special case: eID stays as "eID" not "EID"
+                        if (upperWord === 'EID') return 'eID';
+                        return upperWord;
+                    }
+                    // Title case: capitalize first letter
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                })
+                .join(' ');
+            return titleCase;
+        }
+    }
+
+    // Priority 3: Special handling for parent regulations
     if (type === 'regulation') {
-        const regMatch = fullTitle.match(/Regulation \(EU\) (?:No )?(\d+\/\d+)/);
+        // eIDAS 2.0 Amendment (2024/1183)
+        if (celex && celex.includes('2024') && celex.includes('1183')) {
+            return 'eIDAS 2.0 Amendment';
+        }
+        // Consolidated eIDAS Regulation (910/2014)
+        if (celex && (celex.includes('2014') || celex.includes('910'))) {
+            return 'eIDAS Regulation (Consolidated)';
+        }
+        // Generic regulation fallback
+        const regMatch = fullTitle.match(/Regulation \(EU\) (?:No )?(\\d+\/\\d+)/);
         if (regMatch) return `Regulation ${regMatch[1]}`;
     }
 
-    // For implementing acts, extract from CELEX (e.g., "32024R2977" -> "IR 2024/2977")
+    // Priority 4: For implementing acts without folder description, use CELEX pattern
     if (type === 'implementing-act' && celex) {
         // CELEX format: 3YYYYRNNN or 3YYYYDNNNN (R=Regulation, D=Decision)
         const celexMatch = celex.match(/3(\d{4})[RD](\d+)/);
@@ -156,9 +222,10 @@ function extractShortTitle(fullTitle, celex, type) {
         }
     }
 
-    // Fallback: first 60 chars
+    // Fallback: first 60 chars of title
     return fullTitle.length > 60 ? fullTitle.substring(0, 57) + '...' : fullTitle;
 }
+
 
 /**
  * Generate URL-safe slug from directory name
@@ -318,7 +385,7 @@ function processMarkdownFile(filePath, dirName, type) {
     const content = stripFrontMatter(rawContent);
 
     const slug = generateSlug(dirName, type);
-    const shortTitle = extractShortTitle(title, metadata.celex, type);
+    const shortTitle = extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
     const toc = buildTableOfContents(content);
     const description = parseDescription(rawContent, title);  // Use raw for preamble extraction
     const date = extractDate(rawContent, dirName, metadata.celex);
