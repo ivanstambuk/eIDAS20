@@ -57,17 +57,38 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - **Anti-pattern:** Call browser_subagent 5 times → 5 tabs accumulate → SSE issues
    - **Correct pattern:** Clean tabs → call browser_subagent → clean tabs → call again
 
-4. **UI/UX Proposals (MANDATORY — Visual Mockups):**
-   - **SHOW OPTIONS BEFORE IMPLEMENTING** — Never implement UI changes without visual approval first
-   - When presenting UI/UX options, **generate image mockups** using `generate_image`
-   - **Generate ALL options in a SINGLE image** (model is powerful enough)
-   - Label options clearly (A, B, C, D, E) with visible names in the image
-   - Present options table with pros/cons and recommendation
-   - **Wait for user selection** before writing any code
-   - Do NOT make multiple `generate_image` calls (rate limits ~60s between calls)
-   - **Why:** Users need to visualize UI changes before committing. A picture is worth a thousand words.
-   - **Anti-pattern:** "I'll implement option A" → WRONG
-   - **Correct pattern:** Generate mockup with options → Present comparison table → Wait for approval → Implement
+4. **UI/UX Proposals (MANDATORY — Visual Mockups FIRST):**
+   
+   **🚨 TRIGGER CONDITION: Whenever you present 2+ options for ANY visual/UI change, you MUST generate a mockup BEFORE the text explanation.**
+   
+   **Applies to:**
+   - Layout changes (sidebar, header, footer)
+   - Component designs (buttons, cards, popovers)
+   - Content formatting (citations, lists, tables)
+   - Navigation patterns
+   - ANY change the user will SEE
+   
+   **Execution order:**
+   1. **FIRST:** Call `generate_image` with ALL options in a SINGLE image
+   2. **THEN:** Present the comparison table with pros/cons
+   3. **THEN:** Give your recommendation
+   4. **WAIT** for user selection before writing any code
+   
+   **Image requirements:**
+   - ALL options in ONE image (A, B, C, D labeled clearly)
+   - Dark theme to match portal aesthetic
+   - Show realistic content, not lorem ipsum
+   - Do NOT make multiple `generate_image` calls (rate limits ~60s)
+   
+   **Anti-patterns:**
+   - ❌ "Here are 3 options..." (text-only table without image)
+   - ❌ "I recommend Option A, let me implement it"
+   - ❌ Generating mockup AFTER explaining options in text
+   
+   **Correct pattern:**
+   - ✅ `generate_image` → Table with pros/cons → "Which option do you prefer?"
+   
+   **Why:** Text descriptions of UI are ambiguous. Users MUST see visual mockups to make informed decisions. A picture is worth a thousand words.
 
 5. **Proactive Prevention Protocol (MANDATORY — After Any Bug Fix):**
    
