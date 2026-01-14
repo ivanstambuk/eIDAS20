@@ -20,6 +20,7 @@ const __dirname = dirname(__filename);
 // Paths
 const REGULATIONS_DIR = join(__dirname, '..', 'public', 'data', 'regulations');
 const INDEX_PATH = join(__dirname, '..', 'public', 'data', 'regulations-index.json');
+const TERMINOLOGY_PATH = join(__dirname, '..', 'public', 'data', 'terminology.json');
 const OUTPUT_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json');
 
 /**
@@ -125,17 +126,52 @@ async function loadRegulations() {
 }
 
 /**
+ * Load terminology and create search documents for definitions
+ */
+function loadTerminology() {
+    console.log('\n📖 Loading terminology...');
+
+    try {
+        const terminology = JSON.parse(readFileSync(TERMINOLOGY_PATH, 'utf-8'));
+        const termSections = [];
+
+        for (const term of terminology.terms) {
+            // Use the first (primary) definition
+            const primaryDef = term.definitions[0];
+
+            termSections.push({
+                id: `term-${term.id}`,
+                slug: 'terminology',
+                type: 'definition',  // Special type for boosting
+                term: term.term,     // Dedicated field for 10x boost
+                docTitle: 'Terminology',
+                section: `Art. ${primaryDef.source.article}(${primaryDef.source.ordinal})`,
+                sectionTitle: term.term,
+                content: primaryDef.text,
+            });
+        }
+
+        console.log(`  📚 ${termSections.length} terms loaded`);
+        return termSections;
+    } catch (err) {
+        console.warn('  ⚠️  Could not load terminology:', err.message);
+        return [];
+    }
+}
+
+/**
  * Build the Orama search index
  */
 async function buildIndex() {
     console.log('🔍 Building search index...\n');
 
-    // Create Orama database
+    // Create Orama database with 'term' field for definitions
     const db = await create({
         schema: {
             id: 'string',
             slug: 'string',
             type: 'string',
+            term: 'string',        // For terminology - boosted 10x in search
             docTitle: 'string',
             section: 'string',
             sectionTitle: 'string',
@@ -144,12 +180,18 @@ async function buildIndex() {
     });
 
     // Load and process regulations
-    const sections = await loadRegulations();
-    console.log(`\n📊 Total sections: ${sections.length}`);
+    const regulationSections = await loadRegulations();
+
+    // Load terminology
+    const termSections = loadTerminology();
+
+    // Combine all sections
+    const allSections = [...termSections, ...regulationSections];
+    console.log(`\n📊 Total sections: ${allSections.length} (${termSections.length} terms + ${regulationSections.length} articles}`);
 
     // Insert documents into Orama
     console.log('\n⚡ Inserting into Orama...');
-    await insertMultiple(db, sections);
+    await insertMultiple(db, allSections);
 
     // Serialize the database
     console.log('💾 Serializing index...');

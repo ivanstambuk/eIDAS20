@@ -173,11 +173,22 @@ export function useSemanticSearch() {
                 similarity: cosineSimilarity(queryVector, doc.vector),
             }));
 
-            // Sort by similarity and take top results
-            const topResults = similarities
-                .sort((a, b) => b.similarity - a.similarity)
+            // Two-tier ranking: definitions first, then articles
+            // This ensures terminology definitions always appear before article content
+            const relevantResults = similarities.filter((r) => r.similarity > 0.3);
+
+            // Separate definitions and articles
+            const definitions = relevantResults
+                .filter((r) => r.type === 'definition')
+                .sort((a, b) => b.similarity - a.similarity);
+
+            const articles = relevantResults
+                .filter((r) => r.type !== 'definition')
+                .sort((a, b) => b.similarity - a.similarity);
+
+            // Concatenate: definitions first, then articles
+            const topResults = [...definitions, ...articles]
                 .slice(0, 20)
-                .filter((r) => r.similarity > 0.3) // Threshold for relevance
                 .map((r) => ({
                     id: r.id,
                     slug: r.slug,

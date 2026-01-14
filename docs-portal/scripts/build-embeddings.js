@@ -26,6 +26,7 @@ const DATA_DIR = path.join(__dirname, '../public/data');
 const REGULATIONS_DIR = path.join(DATA_DIR, 'regulations');
 const OUTPUT_FILE = path.join(DATA_DIR, 'embeddings.json');
 const INDEX_FILE = path.join(DATA_DIR, 'regulations-index.json');
+const TERMINOLOGY_FILE = path.join(DATA_DIR, 'terminology.json');
 const DOC_CONFIG_FILE = path.join(__dirname, 'document-config.json');
 
 // Model configuration
@@ -114,6 +115,38 @@ function splitIntoSections(markdown, slug, type, docTitle) {
 }
 
 /**
+ * Load terminology definitions as sections for embedding
+ */
+function loadTerminology() {
+    console.log('\n📖 Loading terminology for embeddings...');
+
+    try {
+        const terminology = JSON.parse(fs.readFileSync(TERMINOLOGY_FILE, 'utf-8'));
+        const termSections = [];
+
+        for (const term of terminology.terms) {
+            const primaryDef = term.definitions[0];
+
+            termSections.push({
+                id: `term-${term.id}`,
+                slug: 'terminology',
+                type: 'definition',  // For two-tier ranking
+                docTitle: 'Terminology',
+                section: term.term,
+                sectionTitle: term.term,
+                content: `${term.term}: ${primaryDef.text}`.substring(0, 2000),
+            });
+        }
+
+        console.log(`  📚 ${termSections.length} terms loaded`);
+        return termSections;
+    } catch (err) {
+        console.warn('  ⚠️  Could not load terminology:', err.message);
+        return [];
+    }
+}
+
+/**
  * Main embedding generation function
  */
 async function generateEmbeddings() {
@@ -175,7 +208,11 @@ async function generateEmbeddings() {
         allSections.push(...sections);
     }
 
-    console.log(`📑 Total sections to embed: ${allSections.length} (skipped ${skippedCount} documents)\n`);
+    // Load terminology definitions (for two-tier ranking in semantic search)
+    const termSections = loadTerminology();
+    allSections.push(...termSections);
+
+    console.log(`📑 Total sections to embed: ${allSections.length} (${termSections.length} terms + articles, skipped ${skippedCount} documents)\n`);
 
     // Generate embeddings
     const embeddings = [];

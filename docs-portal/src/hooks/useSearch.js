@@ -35,6 +35,7 @@ async function loadSearchIndex() {
                     id: 'string',
                     slug: 'string',
                     type: 'string',
+                    term: 'string',        // For terminology definitions
                     docTitle: 'string',
                     section: 'string',
                     sectionTitle: 'string',
@@ -99,9 +100,10 @@ export function useSearch() {
         try {
             const searchResults = await search(searchDb, {
                 term: searchQuery,
-                properties: ['content', 'sectionTitle', 'docTitle', 'section'],
+                properties: ['term', 'content', 'sectionTitle', 'docTitle', 'section'],
                 limit: 20,
                 boost: {
+                    term: 10,           // Terminology definitions: 10x boost
                     sectionTitle: 3,
                     section: 2,
                     docTitle: 1.5,
