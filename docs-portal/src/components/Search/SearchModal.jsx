@@ -106,10 +106,14 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
                 </div>
             </div>
             <div className="search-result-title">
-                {highlightTerms(result.sectionTitle, query)}
+                {isSemanticMode
+                    ? result.sectionTitle
+                    : highlightTerms(result.sectionTitle, query)}
             </div>
             <div className="search-result-snippet">
-                {highlightTerms(getSnippet(result.content, query), query)}
+                {isSemanticMode
+                    ? getSnippet(result.content, query)
+                    : highlightTerms(getSnippet(result.content, query), query)}
             </div>
         </Link>
     );
