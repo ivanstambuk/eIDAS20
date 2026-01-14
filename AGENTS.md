@@ -54,6 +54,18 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - **Anti-pattern:** Call browser_subagent 5 times → 5 tabs accumulate → SSE issues
    - **Correct pattern:** Clean tabs → call browser_subagent → clean tabs → call again
 
+4. **UI/UX Proposals (MANDATORY — Visual Mockups):**
+   - **SHOW OPTIONS BEFORE IMPLEMENTING** — Never implement UI changes without visual approval first
+   - When presenting UI/UX options, **generate image mockups** using `generate_image`
+   - **Generate ALL options in a SINGLE image** (model is powerful enough)
+   - Label options clearly (A, B, C, D, E) with visible names in the image
+   - Present options table with pros/cons and recommendation
+   - **Wait for user selection** before writing any code
+   - Do NOT make multiple `generate_image` calls (rate limits ~60s between calls)
+   - **Why:** Users need to visualize UI changes before committing. A picture is worth a thousand words.
+   - **Anti-pattern:** "I'll implement option A" → WRONG
+   - **Correct pattern:** Generate mockup with options → Present comparison table → Wait for approval → Implement
+
 ## Project Structure
 
 ```
