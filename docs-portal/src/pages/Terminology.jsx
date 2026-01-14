@@ -1,6 +1,26 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Fast smooth scroll (150ms) - matches RegulationViewer behavior
+ */
+function fastScrollTo(targetY) {
+    const startPosition = window.scrollY;
+    const distance = targetY - startPosition;
+    const duration = 150;
+    let startTime = null;
+
+    const animation = (currentTime) => {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, startPosition + distance * easeOut);
+        if (progress < 1) requestAnimationFrame(animation);
+    };
+    requestAnimationFrame(animation);
+}
+
 const Terminology = () => {
     const [terminology, setTerminology] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -145,7 +165,9 @@ const Terminology = () => {
                                 if (isAvailable) {
                                     const el = document.getElementById(`letter-${letter}`);
                                     if (el) {
-                                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        const headerOffset = 64 + 16;
+                                        const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+                                        fastScrollTo(targetY);
                                     }
                                 }
                             }}
@@ -329,7 +351,7 @@ const Terminology = () => {
             <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
                 <button
                     className="btn btn-ghost text-sm"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    onClick={() => fastScrollTo(0)}
                 >
                     ↑ Back to top
                 </button>
