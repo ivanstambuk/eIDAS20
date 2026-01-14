@@ -217,15 +217,34 @@ export default function CollapsibleTOC({ toc, slug, type }) {
         const articlesInChapters = new Set();
         chapters.forEach(ch => ch.articles.forEach(a => articlesInChapters.add(a)));
 
-        // Find orphan items (not in any chapter) - like "Enacting Terms"
-        const orphanItems = toc.filter(item => !articlesInChapters.has(item.id) && item.level <= 2);
+        // Separate orphan items into:
+        // 1. Pre-content items (like "Enacting Terms") - shown first
+        // 2. Annex items (start with "annex") - shown last, grouped
+        const preContentItems = [];
+        const annexItems = [];
+
+        toc.filter(item => !articlesInChapters.has(item.id) && item.level <= 2)
+            .forEach(item => {
+                const idLower = item.id.toLowerCase();
+                if (idLower.includes('annex')) {
+                    // Skip the "ANNEXES" header if it exists, we'll create our own group
+                    if (idLower !== 'annexes') {
+                        annexItems.push(item);
+                    }
+                } else {
+                    preContentItems.push(item);
+                }
+            });
+
+        // Create an Annexes chapter-like group if we have annexes
+        const hasAnnexes = annexItems.length > 0;
 
         return (
             <nav>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {/* Orphan items first (like "Enacting Terms") */}
-                    {orphanItems.map((item, idx) => (
-                        <TOCItem key={`orphan-${idx}`} item={item} />
+                    {/* Pre-content items first (like "Enacting Terms") */}
+                    {preContentItems.map((item, idx) => (
+                        <TOCItem key={`pre-${idx}`} item={item} />
                     ))}
 
                     {/* Chapters with nested articles */}
@@ -233,7 +252,7 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                         // Get actual TOC items for this chapter's articles
                         const chapterArticles = chapter.articles
                             .map(articleId => tocMap[articleId])
-                            .filter(Boolean); // Filter out missing items
+                            .filter(Boolean);
 
                         if (chapterArticles.length === 0) return null;
 
@@ -242,10 +261,20 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                                 key={chapter.id}
                                 chapter={chapter}
                                 articles={chapterArticles}
-                                defaultExpanded={idx === 0} // First chapter expanded by default
+                                defaultExpanded={idx === 0}
                             />
                         );
                     })}
+
+                    {/* Annexes at the end, in their own collapsible group */}
+                    {hasAnnexes && (
+                        <ChapterGroup
+                            key="annexes-group"
+                            chapter={{ title: 'Annexes', id: 'annexes-group' }}
+                            articles={annexItems}
+                            defaultExpanded={false}
+                        />
+                    )}
                 </ul>
             </nav>
         );
