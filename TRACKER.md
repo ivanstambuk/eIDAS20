@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 21:17 CET |
+| **Last Updated** | 2026-01-14 21:56 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -32,6 +32,7 @@
 - **Deep linking** (direct URLs to articles/annexes via `?section=` param)
 - **Sticky alphabet nav** (Terminology page, glassmorphism effect)
 - **Fast 150ms scroll** (consistent across all pages)
+- **List indentation** (definitions, recitals, and numbered items properly indented)
 
 ---
 
@@ -51,6 +52,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 21:56 | List indentation: definitions (60), recitals (78), implementing acts (496), CSS padding for ul/ol |
 | 2026-01-14 21:17 | Sticky alphabet nav on Terminology page, fast 150ms scroll everywhere |
 | 2026-01-14 20:47 | Deep linking: ?section= param for direct article/annex URLs, HashRouter-compatible |
 | 2026-01-14 20:31 | Converter bug: missing bullet prefix in process_list_simple, strengthened Rule 70 (Converter-First), TOC annexes at bottom |
@@ -59,7 +61,6 @@
 | 2026-01-14 18:25 | Collapsible TOC: Official chapters, short Roman numerals (I., II.), text wrap |
 | 2026-01-14 17:50 | CSS scroll fix: Removed scroll-behavior:smooth conflicting with 150ms JS animation |
 | 2026-01-14 17:35 | AST-based Markdown Pipeline: unified/remark/rehype, TOC deep-linking works |
-| 2026-01-14 17:25 | UI Refinement: Strip front matter, agent-done.sh, tab cleanup rule |
 
 ---
 
