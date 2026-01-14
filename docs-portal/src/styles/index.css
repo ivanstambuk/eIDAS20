@@ -175,23 +175,106 @@ body {
   --z-toast: 600;
 }
 
-/* Light Theme (toggled via class on html/body) */
+/* ============================================
+   LIGHT THEME
+   Toggled via .light class on <html> element
+   ============================================ */
+
 :root.light {
+  color-scheme: light;
+
+  /* Backgrounds - Light layered depth */
   --bg-primary: #ffffff;
   --bg-secondary: #f6f8fa;
   --bg-tertiary: #eaeef2;
-  --bg-hover: #d0d7de;
-  --bg-active: #c0c7ce;
+  --bg-hover: #d8dee4;
+  --bg-active: #ced4da;
 
+  /* Text Colors */
   --text-primary: #1f2328;
-  --text-secondary: #656d76;
-  --text-tertiary: #8b949e;
+  --text-secondary: #57606a;
+  --text-tertiary: #6e7781;
+  --text-link: #0969da;
+  --text-link-hover: #0550ae;
 
+  /* Accent Colors - Slightly darker for light backgrounds */
+  --accent-primary: #0891b2;
+  --accent-primary-rgb: 8, 145, 178;
+  --accent-primary-dim: rgba(8, 145, 178, 0.12);
+  --accent-primary-glow: rgba(8, 145, 178, 0.25);
+  --accent-secondary: #16a34a;
+  --accent-secondary-rgb: 22, 163, 74;
+  --accent-secondary-dim: rgba(22, 163, 74, 0.12);
+
+  /* Borders */
   --border-primary: rgba(31, 35, 40, 0.15);
   --border-secondary: rgba(31, 35, 40, 0.08);
+  --border-accent: rgba(8, 145, 178, 0.4);
 
-  --accent-primary: #0891b2;
-  --accent-primary-dim: rgba(8, 145, 178, 0.12);
+  /* Shadows - softer for light theme */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px var(--accent-primary-glow);
+}
+
+/* Header backdrop blur adjustment for light theme */
+:root.light .header {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Scrollbar for light theme */
+:root.light ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+:root.light ::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+}
+
+:root.light ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Skeleton loading for light theme */
+:root.light .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-hover) 50%,
+    var(--bg-tertiary) 75%
+  );
+}
+
+/* Chat button gradient for light theme */
+:root.light .chat-toggle-btn {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+/* ============================================
+   THEME TRANSITIONS
+   Smooth color changes when toggling theme
+   ============================================ */
+
+html {
+  color-scheme: dark;
+}
+
+html,
+body,
+.header,
+.sidebar,
+.card,
+.btn,
+.input,
+.badge,
+.chat-panel,
+.search-trigger {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 
