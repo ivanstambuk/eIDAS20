@@ -7,10 +7,10 @@
 ## Current Session Status
 
 | Field | Value |
-|-------|---------|
-| **Last Updated** | 2026-01-14 17:25 CET |
-| **Session State** | 🔵 Handover |
-| **Current Phase** | Phase 6: Polish & Deploy (100%) |
+|-------|---------| 
+| **Last Updated** | 2026-01-14 17:35 CET |
+| **Session State** | 🟢 Active |
+| **Current Phase** | Post-launch enhancements |
 | **Next Action** | Deploy to GitHub Pages |
 
 ---
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 17:35 | **AST-based Markdown Pipeline**: Migrated from regex to unified/remark/rehype for proper AST processing. TOC deep-linking now works. Foundation for future annotations (definition anchors, term highlighting). |
 | 2026-01-14 17:25 | **UI Refinement + Agent Rules**: Strip front matter (blockquote, Amendment History, H1 title), fix content spacing, add notification system (agent-done.sh), add mandatory tab cleanup rule |
 | 2026-01-14 16:50 | **Polish**: Strip metadata blockquote from rendered content (AGENTS.md decision), upgrade AI models (Qwen2.5→Qwen3) |
 | 2026-01-14 11:24 | **Task 6.5 Complete / Phase 6 COMPLETE**: Browser testing verified - Search modal (keyword/semantic), TOC navigation fix, themes, accessibility |
