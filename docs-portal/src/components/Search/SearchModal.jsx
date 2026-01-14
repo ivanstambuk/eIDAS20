@@ -1,12 +1,14 @@
 /**
  * Search Modal Component
  * 
- * Full-screen search overlay with instant results
+ * Full-screen search overlay with instant results,
+ * recent searches, and popular suggestions.
  */
 
 import { useEffect, useRef, useCallback } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
+import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
 import './Search.css';
 
 /**
@@ -102,21 +104,58 @@ function SearchResult({ result, query, onClick }) {
 }
 
 /**
+ * Suggestion item (recent or popular)
+ */
+function SuggestionItem({ suggestion, icon, onSelect, onRemove, isRecent }) {
+    return (
+        <div className="suggestion-item">
+            <button
+                className="suggestion-button"
+                onClick={() => onSelect(suggestion)}
+            >
+                <span className="suggestion-icon">{icon}</span>
+                <span className="suggestion-text">{suggestion}</span>
+            </button>
+            {isRecent && onRemove && (
+                <button
+                    className="suggestion-remove"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onRemove(suggestion);
+                    }}
+                    aria-label="Remove from history"
+                >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            )}
+        </div>
+    );
+}
+
+/**
  * Main Search Modal
  */
 export function SearchModal({ isOpen, onClose }) {
     const inputRef = useRef(null);
-    const navigate = useNavigate();
     const {
         isLoading,
         isSearching,
-        isReady,
         error,
         query,
         results,
         search,
         clearSearch
     } = useSearch();
+
+    const {
+        recentSearches,
+        popularSuggestions,
+        addToHistory,
+        removeFromHistory,
+        clearHistory,
+    } = useSearchSuggestions();
 
     // Focus input when modal opens
     useEffect(() => {
@@ -132,25 +171,28 @@ export function SearchModal({ isOpen, onClose }) {
             if (e.key === 'Escape' && isOpen) {
                 onClose();
             }
-
-            // Open search on Cmd/Ctrl + K
-            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                e.preventDefault();
-                if (!isOpen) {
-                    // Parent component should handle this
-                }
-            }
         };
 
         document.addEventListener('keydown', handleKeyDown);
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, onClose]);
 
-    // Handle result click
+    // Handle result click - save to history
     const handleResultClick = useCallback(() => {
+        if (query.trim()) {
+            addToHistory(query);
+        }
         onClose();
         clearSearch();
-    }, [onClose, clearSearch]);
+    }, [query, addToHistory, onClose, clearSearch]);
+
+    // Handle suggestion selection
+    const handleSuggestionSelect = useCallback((suggestionQuery) => {
+        search(suggestionQuery);
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [search]);
 
     // Handle backdrop click
     const handleBackdropClick = (e) => {
@@ -160,6 +202,8 @@ export function SearchModal({ isOpen, onClose }) {
     };
 
     if (!isOpen) return null;
+
+    const showSuggestions = !query && (recentSearches.length > 0 || popularSuggestions.length > 0);
 
     return (
         <div className="search-modal-backdrop" onClick={handleBackdropClick}>
@@ -211,7 +255,7 @@ export function SearchModal({ isOpen, onClose }) {
                     </button>
                 </div>
 
-                {/* Search results */}
+                {/* Search results / suggestions */}
                 <div className="search-modal-body">
                     {isLoading && (
                         <div className="search-status">
@@ -226,7 +270,58 @@ export function SearchModal({ isOpen, onClose }) {
                         </div>
                     )}
 
-                    {!isLoading && !error && !query && (
+                    {/* Suggestions (when no query) */}
+                    {!isLoading && !error && showSuggestions && (
+                        <div className="search-suggestions">
+                            {/* Recent Searches */}
+                            {recentSearches.length > 0 && (
+                                <div className="suggestion-section">
+                                    <div className="suggestion-section-header">
+                                        <span className="suggestion-section-title">Recent Searches</span>
+                                        <button
+                                            className="suggestion-clear-all"
+                                            onClick={clearHistory}
+                                        >
+                                            Clear all
+                                        </button>
+                                    </div>
+                                    <div className="suggestion-list">
+                                        {recentSearches.map((item) => (
+                                            <SuggestionItem
+                                                key={item.query}
+                                                suggestion={item.query}
+                                                icon="🕒"
+                                                onSelect={handleSuggestionSelect}
+                                                onRemove={removeFromHistory}
+                                                isRecent={true}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Popular Suggestions */}
+                            <div className="suggestion-section">
+                                <div className="suggestion-section-header">
+                                    <span className="suggestion-section-title">Popular Topics</span>
+                                </div>
+                                <div className="suggestion-list">
+                                    {popularSuggestions.map((item) => (
+                                        <SuggestionItem
+                                            key={item.query}
+                                            suggestion={item.query}
+                                            icon={item.icon}
+                                            onSelect={handleSuggestionSelect}
+                                            isRecent={false}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Search hint (when no query and no suggestions) */}
+                    {!isLoading && !error && !query && !showSuggestions && (
                         <div className="search-status search-hint">
                             <p>Start typing to search across all eIDAS regulations and implementing acts.</p>
                             <div className="search-tips">
@@ -237,12 +332,14 @@ export function SearchModal({ isOpen, onClose }) {
                         </div>
                     )}
 
+                    {/* No results */}
                     {!isLoading && query && results.length === 0 && !isSearching && (
                         <div className="search-status">
                             <span>No results found for "{query}"</span>
                         </div>
                     )}
 
+                    {/* Search results */}
                     {results.length > 0 && (
                         <div className="search-results">
                             <div className="search-results-header">
