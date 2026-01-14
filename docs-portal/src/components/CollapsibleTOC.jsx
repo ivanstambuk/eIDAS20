@@ -64,8 +64,9 @@ const EIDAS_CHAPTERS = {
 
 /**
  * Fast smooth scroll with header offset (150ms)
+ * Also updates URL with ?section= query param for deep linking
  */
-function scrollToElement(elementId) {
+function scrollToElement(elementId, updateUrl = true) {
     const element = document.getElementById(elementId);
     if (!element) return;
 
@@ -85,6 +86,19 @@ function scrollToElement(elementId) {
         if (progress < 1) requestAnimationFrame(animation);
     };
     requestAnimationFrame(animation);
+
+    // Update URL with section param for deep linking (without page reload)
+    // For HashRouter: params must be INSIDE the hash, e.g., #/route?section=id
+    if (updateUrl) {
+        const hash = window.location.hash || '#/';
+        // Parse the hash as if it were a URL path
+        const hashPath = hash.slice(1); // Remove leading #
+        const [pathPart, existingParams] = hashPath.split('?');
+        const params = new URLSearchParams(existingParams || '');
+        params.set('section', elementId);
+        const newHash = `#${pathPart}?${params.toString()}`;
+        window.history.replaceState(null, '', `${window.location.pathname}${newHash}`);
+    }
 
     // Accessibility focus
     element.focus({ preventScroll: true });

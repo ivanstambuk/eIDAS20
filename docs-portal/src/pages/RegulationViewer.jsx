@@ -1,9 +1,25 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
+
+/**
+ * Scroll to element with header offset (same logic as CollapsibleTOC)
+ */
+function scrollToSection(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    const headerOffset = 64 + 16; // header height + padding
+    const targetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    // Use instant scroll for initial page load (no animation needed)
+    window.scrollTo(0, targetPosition);
+    element.focus({ preventScroll: true });
+}
 
 const RegulationViewer = () => {
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
     const [regulation, setRegulation] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -34,6 +50,19 @@ const RegulationViewer = () => {
             loadRegulation();
         }
     }, [id]);
+
+    // Deep linking: scroll to section when content loads or section param changes
+    useEffect(() => {
+        if (!loading && regulation) {
+            const section = searchParams.get('section');
+            if (section) {
+                // Small delay to ensure DOM is fully rendered
+                requestAnimationFrame(() => {
+                    scrollToSection(section);
+                });
+            }
+        }
+    }, [loading, regulation, searchParams]);
 
     // Loading state
     if (loading) {
