@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 09:34 CET |
-| **Session State** | ⏸️ Paused - Handover complete |
-| **Current Phase** | Phase 5: AI Chat ✅ COMPLETE |
-| **Next Action** | Begin Phase 6: Polish & Deploy |
+| **Last Updated** | 2026-01-14 09:50 CET |
+| **Session State** | 🔨 Active |
+| **Current Phase** | Phase 6: Polish & Deploy (20%) |
+| **Next Action** | Task 6.1 or 6.2 |
 
 ---
 
@@ -103,13 +103,13 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 **Completed:** Full AI chat with WebLLM, RAG-powered answers, streaming responses, model selection.
 
-### Phase 6: Polish & Deploy ⬜ NOT STARTED
+### Phase 6: Polish & Deploy 🔨 IN PROGRESS
 
 | Task | Status | Notes |
 |------|--------|-------|
 | 6.1 Accessibility audit | ⬜ TODO | WCAG 2.1 AA compliance |
 | 6.2 Performance optimization | ⬜ TODO | Lazy loading, code splitting |
-| 6.3 Light theme implementation | ⬜ TODO | CSS variables swap |
+| 6.3 Light theme implementation | ✅ DONE | useTheme hook, localStorage, system pref |
 | 6.4 GitHub Actions workflow | ⬜ TODO | Auto-deploy on push |
 | 6.5 Final testing & launch | ⬜ TODO | Cross-browser testing |
 
@@ -124,8 +124,8 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
 | Phase 4: Search | 5 | 5 | ✅ 100% |
 | Phase 5: AI Chat | 5 | 5 | ✅ 100% |
-| Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **26** | **84%** |
+| Phase 6: Polish & Deploy | 5 | 1 | 🔨 20% |
+| **Total** | **31** | **27** | **87%** |
 
 ---
 
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 09:50 | **Task 6.3 Complete**: Light theme with useTheme hook, localStorage persistence, system preference detection |
 | 2026-01-14 03:35 | **Phase 5 COMPLETE**: WebLLM AI Chat with RAG, model selection, streaming, WebGPU fallback |
 | 2026-01-14 03:10 | **Phase 4 COMPLETE**: Semantic search with Transformers.js (248 embeddings), mode toggle, similarity ranking |
 | 2026-01-14 02:55 | **Task 4.5 Complete**: Search suggestions with 8 popular topics + recent search history |
