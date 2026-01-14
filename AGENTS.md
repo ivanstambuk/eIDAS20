@@ -207,39 +207,47 @@ python scripts/md_linter.py --dir 01_regulation
 python scripts/md_linter.py --dir 02_implementing_acts
 ```
 
-### 🚨 MANDATORY: Test-Driven Development Rule (Rule 70)
+### 🚨 MANDATORY: Converter-First Rule (Rule 70)
 
-**Every change to the conversion script (`formex_to_md_v3.py`) or linter (`md_linter.py`) MUST be:**
-1. **Fixed in the source script** - NOT via post-processing workarounds
-2. **Accompanied by a unit test** in `test_formex_converter.py` that reproduces and verifies the change
+**When a formatting issue is detected in generated Markdown:**
 
-This applies to:
-- ✅ Bug fixes (e.g., date extraction, duplicate content)
+1. **NEVER edit the `.md` file directly** — it will be overwritten when regenerated
+2. **ALWAYS fix the root cause in the converter** (`formex_to_md_v3.py`)
+3. **ALWAYS add or improve a test case** in `test_formex_converter.py`
+
+**Why this matters:**
+- Generated markdown files (`01_regulation/`, `02_implementing_acts/`) are **outputs**, not sources
+- Running the converter again will **overwrite any manual fixes**
+- Test cases prevent **regression** when the converter is modified
+
+**This applies to:**
+- ✅ Bug fixes (e.g., missing bullet prefixes, date extraction)
 - ✅ New features (e.g., FORMAT008 rule for HRs before headers)
 - ✅ Behavioral changes (e.g., removing `---` before headers)
-- ✅ Edge cases discovered during conversion
+- ✅ Edge cases discovered during conversion or portal rendering
 
 **Rationale**: Post-processing scripts are fragile, document-specific workarounds. Fixing issues at the source ensures:
 - All documents benefit from the fix
 - Regressions are caught by tests
 - The conversion pipeline remains maintainable
 
-**Example - Bug Fix**:
-If a date like "21 May 2026" is being truncated:
-- ✅ DO: Find the bug in `formex_to_md_v3.py`, fix it, add a test
-- ❌ DON'T: Write a post-processing script to patch the output
+**Example - Missing Bullet Prefix (actual bug fixed 2026-01-14):**
+```
+# WRONG: Edit the markdown file
+sed -i 's/^(b) /- (b) /' 01_regulation/910_2014.../02014R0910.md
 
-**Example - New Rule**:
-If adding a new linter rule (e.g., FORMAT008):
-- ✅ DO: Add the rule to `md_linter.py`, add tests for detection and edge cases
-- ✅ DO: Update the converter if it generates the flagged pattern, add tests
-
-**Running tests**:
-```bash
-python scripts/test_formex_converter.py
+# CORRECT: Fix the converter AND add test
+# 1. Fix formex_to_md_v3.py process_list_simple() to add '- ' prefix
+# 2. Add TestListBulletPrefixes in test_formex_converter.py
+# 3. Regenerate the markdown with npm run build:content
 ```
 
-**Current test count**: 28 tests (as of 2026-01-13)
+**Running tests:**
+```bash
+python3 scripts/test_formex_converter.py
+```
+
+**Current test count**: 42 tests (as of 2026-01-14)
 
 ## 📋 Design Decisions
 
