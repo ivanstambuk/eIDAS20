@@ -173,24 +173,77 @@ const RegulationViewer = () => {
 
                     {/* Quick Actions */}
                     <div className="card" style={{ padding: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
-                        <h4 style={{ marginBottom: 'var(--space-3)' }}>Actions</h4>
+                        <h4 style={{ marginBottom: 'var(--space-3)' }}>Export</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
                             <button
                                 className="btn btn-secondary btn-sm"
                                 style={{ width: '100%', justifyContent: 'flex-start' }}
-                                onClick={() => window.print()}
+                                onClick={() => {
+                                    // Open print dialog for PDF export
+                                    window.print();
+                                }}
+                                title="Use browser print-to-PDF"
                             >
-                                📄 Export PDF
+                                📄 Save as PDF
                             </button>
                             <button
                                 className="btn btn-secondary btn-sm"
                                 style={{ width: '100%', justifyContent: 'flex-start' }}
                                 onClick={() => {
-                                    navigator.clipboard.writeText(window.location.href);
-                                    alert('Link copied to clipboard!');
+                                    // Download as Markdown
+                                    if (regulation.contentMarkdown) {
+                                        const blob = new Blob([regulation.contentMarkdown], { type: 'text/markdown' });
+                                        const url = URL.createObjectURL(blob);
+                                        const a = document.createElement('a');
+                                        a.href = url;
+                                        a.download = `${regulation.slug || 'regulation'}.md`;
+                                        document.body.appendChild(a);
+                                        a.click();
+                                        document.body.removeChild(a);
+                                        URL.revokeObjectURL(url);
+                                    }
                                 }}
                             >
-                                📋 Copy Link
+                                📝 Download Markdown
+                            </button>
+                            <button
+                                className="btn btn-secondary btn-sm"
+                                style={{ width: '100%', justifyContent: 'flex-start' }}
+                                onClick={() => {
+                                    // Download as JSON
+                                    const blob = new Blob([JSON.stringify(regulation, null, 2)], { type: 'application/json' });
+                                    const url = URL.createObjectURL(blob);
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = `${regulation.slug || 'regulation'}.json`;
+                                    document.body.appendChild(a);
+                                    a.click();
+                                    document.body.removeChild(a);
+                                    URL.revokeObjectURL(url);
+                                }}
+                            >
+                                📋 Download JSON
+                            </button>
+                        </div>
+
+                        <h4 style={{ marginBottom: 'var(--space-3)', marginTop: 'var(--space-4)', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border-color)' }}>Share</h4>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                            <button
+                                className="btn btn-secondary btn-sm"
+                                style={{ width: '100%', justifyContent: 'flex-start' }}
+                                onClick={(e) => {
+                                    navigator.clipboard.writeText(window.location.href);
+                                    const btn = e.currentTarget;
+                                    const originalText = btn.innerHTML;
+                                    btn.innerHTML = '✅ Copied!';
+                                    btn.style.color = 'var(--accent-success)';
+                                    setTimeout(() => {
+                                        btn.innerHTML = originalText;
+                                        btn.style.color = '';
+                                    }, 2000);
+                                }}
+                            >
+                                🔗 Copy Link
                             </button>
                             {regulation.source && (
                                 <a
@@ -200,7 +253,7 @@ const RegulationViewer = () => {
                                     className="btn btn-secondary btn-sm"
                                     style={{ width: '100%', justifyContent: 'flex-start', textDecoration: 'none' }}
                                 >
-                                    🔗 View on EUR-Lex
+                                    🌐 View on EUR-Lex
                                 </a>
                             )}
                         </div>
