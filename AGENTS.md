@@ -7,40 +7,93 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 ## Project Structure
 
 ```
-d:\aab\eIDAS20\
+~/dev/eIDAS20/
 ├── 01_regulation/                      # EU Regulations (parent laws)
 │   ├── 910_2014_eIDAS_Consolidated/   # Consolidated eIDAS (as amended)
 │   └── 2024_1183_eIDAS2_Amending/     # eIDAS 2.0 Amending Regulation
-├── 02_implementing_acts/               # Commission Implementing Regulations (15 acts)
-│   ├── 2024_2977_PID_and_EAA/         # Person identification data
-│   ├── 2024_2978_TSP_List_Publication/# Trusted lists publication
-│   ├── 2024_2979_Integrity_Core_Functions/
-│   ├── 2024_2980_Notifications/
-│   ├── 2024_2981_Certification/
-│   ├── 2024_2982_Protocols_Interfaces/
-│   ├── 2025_0847_Security_Breach_Response/
-│   ├── 2025_0848_Relying_Party_Registration/
-│   ├── 2025_0849_Certified_Wallet_List/
-│   ├── 2025_1568_Peer_Reviews_eID/
-│   ├── 2025_1944_Electronic_Delivery/
-│   ├── 2025_1945_Signature_Validation/
-│   ├── 2025_2160_Non_Qualified_TS_Risks/
-│   ├── 2025_2162_CAB_Accreditation/
-│   ├── 2025_2164_Trusted_Lists/       # Decision (not Regulation)
-│   └── README.md                      # Implementing acts catalog
+├── 02_implementing_acts/               # Commission Implementing Regulations (30 acts)
+│   └── ...                            # See TRACKER.md for full list
 ├── 03_arf/                            # Architecture Reference Framework (GitHub)
 ├── 04_technical_specs/                # Standards & Tech Specs (GitHub)
+├── docs-portal/                       # 🌐 Documentation Portal (Vite + React)
+│   ├── src/                           # React components and pages
+│   ├── public/                        # Static assets
+│   ├── scripts/                       # Build-time Node.js scripts
+│   └── package.json
 ├── scripts/                           # Conversion & validation utilities
 │   ├── eurlex_formex.py              # EUR-Lex Formex XML downloader
 │   ├── formex_to_md_v3.py            # Formex XML → Markdown converter (v3)
 │   ├── test_formex_converter.py      # Unit tests for converter
 │   ├── md_linter.py                  # Markdown quality checker
-│   └── add_headers.py                # Metadata header injection
-
+│   ├── restart-chrome.sh             # Start Chrome with CDP (WSL → Windows)
+│   └── cleanup-chrome-tabs.sh        # Clean stale browser tabs
+├── .agent/workflows/                  # Agent workflows
+│   └── browser-testing.md            # Visual UI validation workflow
 ├── AGENTS.md                          # This file (AI context)
 ├── README.md                          # Project overview
 └── TRACKER.md                         # Work session tracker
 ```
+
+## 🌐 Documentation Portal
+
+The `docs-portal/` is a **100% client-side static site** for eIDAS 2.0 documentation.
+
+| Attribute | Value |
+|-----------|-------|
+| **Framework** | Vite + React |
+| **Dev URL** | http://localhost:5173/eIDAS20/ |
+| **Hosting** | GitHub Pages (planned) |
+
+### Running the Portal
+
+```bash
+cd ~/dev/eIDAS20/docs-portal
+npm run dev
+# Opens at http://localhost:5173/eIDAS20/
+```
+
+## 🖥️ WSL Browser Testing
+
+For visual UI validation using `browser_subagent` from WSL:
+
+### Port Reference
+
+| Port | Service |
+|------|---------|
+| **5173** | Vite dev server (docs-portal) |
+| **9222** | Chrome CDP (remote debugging) |
+
+### Start Chrome with Remote Debugging
+
+```bash
+~/dev/eIDAS20/scripts/restart-chrome.sh
+```
+
+This starts Chrome on Windows with:
+- Remote debugging on port 9222
+- Isolated profile (`ag-cdp`) — doesn't affect regular Chrome
+- `about:blank` tab ready for testing
+
+### Verify Chrome is Accessible
+
+```bash
+curl -s http://localhost:9222/json/version | head -1
+```
+
+### Clean Up Stale Tabs
+
+After multiple `browser_subagent` calls, clean accumulated tabs:
+
+```bash
+~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh
+```
+
+**Why:** Each browser_subagent call creates a new tab. After 6+ tabs, Chrome's per-origin connection limit can cause failures.
+
+### Prerequisites
+
+1. **WSL networking**: `.wslconfig` must have `networkingMode=mirrored`
+2. **Workflow**: See `.agent/workflows/browser-testing.md` for full workflow
 
 ## Current Status (2026-01-13)
 
