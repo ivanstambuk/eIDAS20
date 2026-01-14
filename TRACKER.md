@@ -59,11 +59,13 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Task | Status | Notes |
 |------|--------|-------|
-| 2.1 Build regulation viewer component | ⬜ TODO | Renders processed markdown |
+| 2.1 Build regulation viewer component | ✅ DONE | Layout, TOC, actions panel complete |
 | 2.2 Implement regulation filter | ⬜ TODO | Multi-select chips/tags |
-| 2.3 Build table of contents sidebar | ⬜ TODO | Auto-generated from headings |
+| 2.3 Build table of contents sidebar | ✅ DONE | Part of RegulationViewer |
 | 2.4 Add role-based filtering | ⬜ TODO | Highlight relevant sections |
 | 2.5 Implement export functionality | ⬜ TODO | Browser print → PDF, download |
+
+**Next step:** Create build-time markdown→JSON processor to load actual regulation content.
 
 ### Phase 3: Terminology System ⬜ NOT STARTED
 
@@ -112,12 +114,12 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase | Tasks | Done | Progress |
 |-------|-------|------|----------|
 | Phase 1: Foundation | 6 | 6 | ✅ 100% |
-| Phase 2: Content & Navigation | 5 | 0 | ⬜ 0% |
+| Phase 2: Content & Navigation | 5 | 2 | ⏳ 40% |
 | Phase 3: Terminology | 5 | 0 | ⬜ 0% |
 | Phase 4: Search | 5 | 0 | ⬜ 0% |
 | Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **6** | **19%** |
+| **Total** | **31** | **8** | **26%** |
 
 ---
 
