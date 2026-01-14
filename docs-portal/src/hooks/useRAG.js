@@ -122,26 +122,31 @@ export function useRAG() {
     const retrieveContext = useCallback(async (query, topK = 5) => {
         // Load embeddings if needed
         const data = embeddings || await loadEmbeddings();
-        if (!data) throw new Error('Embeddings not loaded');
+        if (!data || !data.embeddings) {
+            throw new Error('Embeddings not loaded');
+        }
 
         // Get query embedding
         const queryVector = await embedQuery(query);
 
-        // Calculate similarities
-        const results = data.sections.map((section) => ({
-            ...section,
-            similarity: cosineSimilarity(queryVector, section.vector),
+        // Calculate similarities - use correct field names from embeddings.json
+        const results = data.embeddings.map((item) => ({
+            ...item,
+            similarity: cosineSimilarity(queryVector, item.vector),
         }));
 
         // Sort by similarity and take top K
         results.sort((a, b) => b.similarity - a.similarity);
 
+        // Map to expected format for RAG prompt
         return results.slice(0, topK).map(r => ({
             id: r.id,
-            title: r.title,
-            documentTitle: r.documentTitle,
-            content: r.content,
+            title: r.sectionTitle || r.section || 'Unknown Section',
+            documentTitle: r.docTitle || 'Unknown Document',
+            content: r.snippet || '',
             similarity: r.similarity,
+            slug: r.slug,
+            type: r.type,
         }));
     }, [embeddings, loadEmbeddings, embedQuery]);
 
