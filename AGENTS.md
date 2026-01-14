@@ -4,6 +4,47 @@
 
 This project is an **eIDAS 2.0 Knowledge Base** containing primary source documents for the European Digital Identity Framework. All regulatory documents are converted to Markdown for internal knowledge management and AI-assisted analysis.
 
+## ⚠️ Critical Rules (always enforce)
+
+1. **Notification + Context Report:** At the END of every response:
+   
+   **Use the helper script** (combines context calculation + notification):
+   ```bash
+   ~/dev/eIDAS20/scripts/agent-done.sh <ctx_remaining> "[Gemini] Brief summary"
+   ```
+   
+   - `<ctx_remaining>` = the `<ctx_window>` value from your MOST RECENT system feedback
+   - Example: `<ctx_window>89133 tokens left</ctx_window>` → use `89133`
+   
+   **Example:**
+   ```bash
+   ~/dev/eIDAS20/scripts/agent-done.sh 89133 "[Gemini] Fixed the Amendment History bug"
+   ```
+   
+   The script will:
+   - Calculate context % using `bc` (LLMs make arithmetic errors with mental math)
+   - Run `codex-notify` (Windows toast notification)
+   - Output the context report (copy this to your response)
+   
+   **After running, include the script output:**
+   ```
+   📊 Context: XX% consumed
+   ```
+   
+   **At 75%+**, the script also outputs:
+   ```
+   ⚠️ Context at XX% consumed — recommend /retro then /handover for clean session
+   ```
+   
+   **Why 75%:** Research shows Claude quality degrades around 60-70% due to "lost in the middle" problem. 75% is a safe handoff point.
+   
+   **No other text or tool calls after the notification.**
+
+2. **Auto-commit Protocol (MANDATORY):**
+   - **Auto-commit IMMEDIATELY** after each logical increment that is tested and working
+   - Use **conventional commit** format: `type: brief description`
+   - Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `test`
+
 ## Project Structure
 
 ```
@@ -26,7 +67,8 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 │   ├── test_formex_converter.py      # Unit tests for converter
 │   ├── md_linter.py                  # Markdown quality checker
 │   ├── restart-chrome.sh             # Start Chrome with CDP (WSL → Windows)
-│   └── cleanup-chrome-tabs.sh        # Clean stale browser tabs
+│   ├── cleanup-chrome-tabs.sh        # Clean stale browser tabs
+│   └── agent-done.sh                 # End-of-response notification + context
 ├── .agent/workflows/                  # Agent workflows
 │   └── browser-testing.md            # Visual UI validation workflow
 ├── AGENTS.md                          # This file (AI context)
