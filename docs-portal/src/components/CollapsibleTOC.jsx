@@ -14,19 +14,19 @@ const EIDAS_CHAPTERS = {
     '910-2014': [
         {
             id: 'chapter-1',
-            title: 'Chapter I — General Provisions',
+            title: 'I. General Provisions',
             articles: ['article-1', 'article-2', 'article-3', 'article-4', 'article-5',
                 'article-5a', 'article-5b', 'article-5c', 'article-5d', 'article-5e', 'article-5f']
         },
         {
             id: 'chapter-2',
-            title: 'Chapter II — Electronic Identification',
+            title: 'II. Electronic Identification',
             articles: ['article-6', 'article-7', 'article-8', 'article-9', 'article-10',
                 'article-11', 'article-11a', 'article-12', 'article-12a', 'article-12b']
         },
         {
             id: 'chapter-3',
-            title: 'Chapter III — Trust Services',
+            title: 'III. Trust Services',
             // Section 1: General provisions
             // Section 2: Supervision
             // Section 3: Qualified trust services
@@ -46,17 +46,17 @@ const EIDAS_CHAPTERS = {
         },
         {
             id: 'chapter-4',
-            title: 'Chapter IV — Electronic Documents',
+            title: 'IV. Electronic Documents',
             articles: ['article-46', 'article-46a', 'article-46b', 'article-46c', 'article-46d', 'article-46e']
         },
         {
             id: 'chapter-5',
-            title: 'Chapter V — Delegation & Implementation',
+            title: 'V. Delegation & Implementation',
             articles: ['article-47', 'article-48', 'article-48a', 'article-48b', 'article-49']
         },
         {
             id: 'chapter-6',
-            title: 'Chapter VI — Final Provisions',
+            title: 'VI. Final Provisions',
             articles: ['article-50', 'article-51', 'article-52', 'article-53', 'article-54', 'article-55']
         }
     ]
@@ -165,9 +165,8 @@ function ChapterGroup({ chapter, articles, defaultExpanded = false }) {
                     ▶
                 </span>
                 <span style={{
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap'
+                    flex: 1,
+                    lineHeight: 1.3
                 }}>
                     {chapter.title}
                 </span>
