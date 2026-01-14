@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 18:25 CET |
-| **Session State** | 🟡 Handover |
+| **Last Updated** | 2026-01-14 18:55 CET |
+| **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
-| **Next Action** | Continue UX polish or deploy to GitHub Pages |
+| **Next Action** | Deploy to GitHub Pages or continue UX polish |
 
 ---
 
@@ -26,6 +26,8 @@
 - **Accessibility** (WCAG 2.1 AA)
 - **CI/CD** (GitHub Actions auto-deploy)
 - **Collapsible TOC** (official chapter structure for eIDAS 910/2014)
+- **Human-friendly document names** (short titles from folder names/metadata)
+- **Scroll-to-top on navigation** (fixes SPA scroll persistence bug)
 
 ---
 
@@ -44,6 +46,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 18:55 | Human-friendly short titles (PID & EAA, etc.), scroll-to-top fix |
 | 2026-01-14 18:25 | Collapsible TOC: Official chapters, short Roman numerals (I., II.), text wrap |
 | 2026-01-14 17:50 | CSS scroll fix: Removed scroll-behavior:smooth conflicting with 150ms JS animation |
 | 2026-01-14 17:35 | AST-based Markdown Pipeline: unified/remark/rehype, TOC deep-linking works |
@@ -53,4 +56,5 @@
 ---
 
 *Full history available in git. See `git log --oneline` for commits.*
+
 
