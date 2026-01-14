@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 22:05 CET |
+| **Last Updated** | 2026-01-14 22:12 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -34,6 +34,7 @@
 - **Fast 150ms scroll** (consistent across all pages)
 - **List indentation** (definitions, recitals, and numbered items properly indented)
 - **Preamble injection** (78 recitals from 2024/1183 amendment injected into consolidated 910/2014)
+- **Reading time estimate** (150 WPM for legal text, smart formatting)
 
 ---
 
@@ -53,6 +54,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 22:12 | Reading time estimate: 150 WPM, smart formatting (minutes vs hours+minutes) |
 | 2026-01-14 22:05 | Preamble injection: 78 recitals from amendment copied into consolidated, DEC-008, TOC updated |
 | 2026-01-14 21:56 | List indentation: definitions (60), recitals (78), implementing acts (496), CSS padding for ul/ol |
 | 2026-01-14 21:17 | Sticky alphabet nav on Terminology page, fast 150ms scroll everywhere |
