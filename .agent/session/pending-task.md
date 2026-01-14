@@ -3,33 +3,67 @@
 
 ## Current State
 
-- **Focus**: Portal ready - all known bugs fixed
-- **Next**: Deploy to GitHub Pages OR investigate 8 embedded annexes
-- **Status**: Ready for decision
-- **Phase**: Phase 7 (Enhancements) - Content Quality
+- **Focus**: DEC-009 Phase 2 - Desktop hover popovers for citations
+- **Next**: Hydrate `.citation-ref` spans with popover behavior on hover
+- **Status**: Ready
+- **Phase**: Phase 7 Enhancement
 
-## Completed This Session
+## What's Done (DEC-009 Phase 1)
 
-1. **Fixed metadata loss bug**: Restored CELEX/EUR-Lex links in 29 implementing acts
-2. **Added prevention guard**: Updated `batch_fix_annexes.py` to preserve metadata headers
-3. **Verified visually**: Browser screenshot confirms badges are back
+- ✅ `build-citations.js` extracts 160 citations (42 internal, 118 external)
+- ✅ `build-content.js` transforms verbose citations → short names at build time
+- ✅ References section at bottom (works on all devices)
+- ✅ CSS styling for `.citation-ref` (dotted underline, hover color)
+
+## What's Pending (DEC-009 Phase 2)
+
+1. **Desktop hover popovers**:
+   - The HTML already has data attributes: `data-idx`, `data-short`, `data-celex`, `data-internal`, `data-url`
+   - Need: useEffect to attach hover listeners to `.citation-ref` elements
+   - Reuse `CitationPopover` component patterns (already created)
+
+2. **Responsive References section**:
+   - Desktop (≥768px): HIDE References section (popovers provide the info)
+   - Mobile (<768px): SHOW References section (no hover on touch)
+   - Use CSS media query or `useIsMobile` hook
 
 ## Key Files
 
-- `scripts/restore_metadata.py` — Recovery script (can rerun if needed)
-- `scripts/batch_fix_annexes.py` — Now preserves metadata (lines 146-197)
+- `docs-portal/src/pages/RegulationViewer.jsx` — Add useEffect for popover hydration
+- `docs-portal/src/components/CitationPopover/CitationPopover.jsx` — Popover component (already built)
+- `docs-portal/src/components/CitationPopover/CitationPopover.css` — Add `.references-section` media query
+- `docs-portal/src/hooks/useMediaQuery.js` — `useIsMobile()` hook (already built)
 
-## Remaining Optional Work
+## Context Notes
 
-8 documents still have annexes embedded in main XML (not separate files):
-- 2024-1183, 2024-2977, 2024-2982, 2025-0848
-- 2025-2160, 2025-2164, 2025-2527, 2025-2530
+- The build-time approach was chosen over runtime parsing because ELI URLs were getting converted to `<a>` tags before we could replace them
+- Simple string `split().join()` replacement works; regex over-escaping failed
+- CitationPopover.jsx exists but isn't used yet - it's designed for React component rendering, not DOM hydration
+- For hydration, consider: creating a floating popover via DOM, or using event delegation
 
-These require converter changes to extract `<ANNEX>` from inside the main `.000101.fmx.xml`.
+## Implementation Approach (Suggestion)
+
+```jsx
+// In RegulationViewer.jsx, after content renders:
+useEffect(() => {
+  if (isMobile) return; // No popovers on mobile
+  
+  const handleHover = (e) => {
+    const el = e.target.closest('.citation-ref');
+    if (!el) return;
+    // Show popover with data from el.dataset
+  };
+  
+  const content = document.querySelector('.regulation-content');
+  content?.addEventListener('mouseenter', handleHover, true);
+  return () => content?.removeEventListener('mouseenter', handleHover, true);
+}, [regulation, isMobile]);
+```
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Check portal at http://localhost:5173/eIDAS20/
+# Test: http://localhost:5173/eIDAS20/#/implementing-acts/2025-0846
+# Look for: .citation-ref elements with short names like "Recommendation 2021/946"
 ```
