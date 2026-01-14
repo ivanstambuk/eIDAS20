@@ -70,6 +70,7 @@ function parseMetadata(content) {
  * This includes:
  * 1. Metadata blockquote: CELEX, Document type, Source URL (shown in header badges)
  * 2. Amendment History table: Only in consolidated regulations, renders as raw markdown
+ * 3. Main H1 title: Already displayed in the header component
  * 
  * Decision: 2026-01-14 - Metadata stripped from rendered content.
  * The original markdown files retain this data for archival purposes.
@@ -100,6 +101,13 @@ function stripFrontMatter(content) {
     //   # Regulation (EU) No 910/2014...
     const amendmentHistoryPattern = /^## Amendment History\s*\n(?:\s*\n|\|[^\n]*\n)*\n*/m;
     result = result.replace(amendmentHistoryPattern, '');
+
+    // 3. Strip main H1 title (already shown in header)
+    // Pattern: # Title text... followed by blank line
+    // The header already displays the regulation title with badges and metadata,
+    // so showing it again as a giant H1 is redundant and wastes screen space.
+    const h1TitlePattern = /^# .+\n+/m;
+    result = result.replace(h1TitlePattern, '');
 
     return result;
 }
@@ -293,18 +301,18 @@ function markdownToHtml(markdown) {
 function processMarkdownFile(filePath, dirName, type) {
     const rawContent = readFileSync(filePath, 'utf-8');
 
-    // Parse metadata from raw content (before stripping)
+    // Parse metadata and title from raw content (before stripping)
     const metadata = parseMetadata(rawContent);
+    const title = parseTitle(rawContent);  // Extract title BEFORE stripping H1
 
     // Strip front matter for all content-related processing
     const content = stripFrontMatter(rawContent);
 
-    const title = parseTitle(content);
     const slug = generateSlug(dirName, type);
     const shortTitle = extractShortTitle(title, metadata.celex, type);
     const toc = buildTableOfContents(content);
-    const description = parseDescription(content, title);
-    const date = extractDate(content, dirName, metadata.celex);
+    const description = parseDescription(rawContent, title);  // Use raw for preamble extraction
+    const date = extractDate(rawContent, dirName, metadata.celex);
 
     // Prepare the regulation data object
     const regulationData = {

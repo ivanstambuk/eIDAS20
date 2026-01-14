@@ -233,24 +233,27 @@ python scripts/test_formex_converter.py
 > **Source:** https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2977
 ```
 
-2. **Amendment History table** (consolidated regulations only):
+2. **Amendment History table** (consolidated regulations only):\
 ```markdown
 ## Amendment History
 
 | Code | Act | Official Journal |
 |------|-----|------------------|
 | ►B | [Regulation (EU) No 910/2014](...) - Original | OJ L 257, 28.8.2014, p. 73 |
-| ►M1 | [Directive (EU) 2022/2555](...) - NIS 2 Directive | OJ L 333, 27.12.2022, p. 80 |
-| ►M2 | [Regulation (EU) 2024/1183](...) - eIDAS 2.0 | OJ L 1183, 30.4.2024, p. 1 |
 ```
 
-**Decision**: Strip both from rendered portal content.
+3. **Main H1 title** (all documents):
+```markdown
+# Regulation (EU) No 910/2014 of the European Parliament...
+```
+
+**Decision**: Strip all three from rendered portal content.
 
 **Rationale**:
-1. **Redundant** — UI already displays CELEX badge, date, and "View on EUR-Lex" link in header
-2. **Visual clutter** — Raw markdown tables don't render properly and break premium aesthetic
-3. **Reading flow** — Legal readers want to jump straight to Article 1, not see amendment tables
-4. **Preserved at source** — Original markdown files retain all metadata for archival/traceability
+1. **Redundant** — Header already displays title, CELEX badge, date, "View on EUR-Lex" link
+2. **Visual clutter** — Giant H1 takes ~20% of visible content area
+3. **Reading flow** — Legal readers want to jump straight to Article 1
+4. **Preserved at source** — Original markdown files retain all data for archival/traceability
 
 **Implementation**: `docs-portal/scripts/build-content.js` → `stripFrontMatter()` function
 
