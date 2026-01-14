@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-14 16:50 CET |
+| **Last Updated** | 2026-01-14 17:25 CET |
 | **Session State** | 🔵 Handover |
 | **Current Phase** | Phase 6: Polish & Deploy (100%) |
 | **Next Action** | Deploy to GitHub Pages |
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 17:25 | **UI Refinement + Agent Rules**: Strip front matter (blockquote, Amendment History, H1 title), fix content spacing, add notification system (agent-done.sh), add mandatory tab cleanup rule |
 | 2026-01-14 16:50 | **Polish**: Strip metadata blockquote from rendered content (AGENTS.md decision), upgrade AI models (Qwen2.5→Qwen3) |
 | 2026-01-14 11:24 | **Task 6.5 Complete / Phase 6 COMPLETE**: Browser testing verified - Search modal (keyword/semantic), TOC navigation fix, themes, accessibility |
 | 2026-01-14 10:48 | **Task 6.1 Complete**: WCAG 2.1 AA accessibility audit - skip link, improved contrast, ARIA labels, reduced motion |
