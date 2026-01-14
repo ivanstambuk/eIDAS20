@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 22:12 CET |
+| **Last Updated** | 2026-01-14 22:30 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -46,6 +46,7 @@
 | Cross-doc references | Link from implementing acts to eIDAS regulation articles | Medium |
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
+| Missing annexes | Re-download and convert ~27 implementing acts with annexes in separate XML files | High |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 
 ---
@@ -54,6 +55,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 22:30 | Fixed missing annex in 2025-0847 (Security Breach Response); converter now handles standalone ANNEX files |
 | 2026-01-14 22:12 | Reading time estimate: 150 WPM, smart formatting (minutes vs hours+minutes) |
 | 2026-01-14 22:05 | Preamble injection: 78 recitals from amendment copied into consolidated, DEC-008, TOC updated |
 | 2026-01-14 21:56 | List indentation: definitions (60), recitals (78), implementing acts (496), CSS padding for ul/ol |
