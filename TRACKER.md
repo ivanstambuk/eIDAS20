@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 02:45 CET |
+| **Last Updated** | 2026-01-14 02:55 CET |
 | **Session State** | 🔄 Active - Phase 4 in progress |
-| **Current Phase** | Phase 4: Search (Task 4.1 COMPLETE) |
-| **Next Action** | Continue with Task 4.2 (embedding generator) or Task 4.4 (search UI improvements) |
+| **Current Phase** | Phase 4: Search (Tasks 4.1, 4.5 COMPLETE) |
+| **Next Action** | Continue with Task 4.2/4.3 (embeddings) or Task 4.4 (semantic search) |
 
 ---
 
@@ -87,7 +87,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | 4.2 Write embedding generator | ⬜ TODO | **BUILD TIME Node.js script** |
 | 4.3 Pre-compute embeddings | ⬜ TODO | Output: `embeddings.json` |
 | 4.4 Implement semantic search UI | ⬜ TODO | Ranked results with snippets |
-| 4.5 Add search suggestions | ⬜ TODO | Recent searches, popular queries |
+| 4.5 Add search suggestions | ✅ DONE | Recent history + 8 popular topics |
 
 ### Phase 5: AI Chat ⬜ NOT STARTED
 
@@ -118,10 +118,10 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 1: Foundation | 6 | 6 | ✅ 100% |
 | Phase 2: Content & Navigation | 5 | 5 | ✅ 100% |
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
-| Phase 4: Search | 5 | 1 | 🔄 20% |
+| Phase 4: Search | 5 | 2 | 🔄 40% |
 | Phase 5: AI Chat | 5 | 0 | ⬜ 0% |
 | Phase 6: Polish & Deploy | 5 | 0 | ⬜ 0% |
-| **Total** | **31** | **17** | **55%** |
+| **Total** | **31** | **18** | **58%** |
 
 ---
 
@@ -139,6 +139,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 02:55 | **Task 4.5 Complete**: Search suggestions with 8 popular topics + recent search history |
 | 2026-01-14 02:45 | **Task 4.1 Complete**: Orama full-text search (246 sections, 784KB index), SearchModal with highlighting |
 | 2026-01-14 02:30 | **Phase 3 Complete**: Terminology extraction (96 terms), full terminology page, popover components |
 | 2026-01-14 02:15 | **Phase 2 Complete**: Multi-select filters, export suite (PDF/MD/JSON), print styles |
