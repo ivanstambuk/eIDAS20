@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 17:40 CET |
-| **Session State** | 🟢 Active |
-| **Portal Status** | ✅ All 6 phases complete |
-| **Next Action** | Deploy to GitHub Pages |
+| **Last Updated** | 2026-01-14 18:25 CET |
+| **Session State** | 🟡 Handover |
+| **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
+| **Next Action** | Continue UX polish or deploy to GitHub Pages |
 
 ---
 
@@ -25,6 +25,7 @@
 - **Themes** (light/dark, system detection)
 - **Accessibility** (WCAG 2.1 AA)
 - **CI/CD** (GitHub Actions auto-deploy)
+- **Collapsible TOC** (official chapter structure for eIDAS 910/2014)
 
 ---
 
@@ -35,6 +36,7 @@
 | Definition anchors | Deep links to specific definitions within articles (`#def-trust-service`) | Medium |
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
+| eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 
 ---
 
@@ -42,12 +44,13 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 18:25 | Collapsible TOC: Official chapters, short Roman numerals (I., II.), text wrap |
+| 2026-01-14 17:50 | CSS scroll fix: Removed scroll-behavior:smooth conflicting with 150ms JS animation |
 | 2026-01-14 17:35 | AST-based Markdown Pipeline: unified/remark/rehype, TOC deep-linking works |
 | 2026-01-14 17:25 | UI Refinement: Strip front matter, agent-done.sh, tab cleanup rule |
 | 2026-01-14 11:24 | Phase 6 Complete: Browser testing verified all features |
-| 2026-01-14 03:35 | Phase 5 Complete: WebLLM AI Chat with RAG |
-| 2026-01-14 03:10 | Phase 4 Complete: Semantic search with embeddings |
 
 ---
 
 *Full history available in git. See `git log --oneline` for commits.*
+
