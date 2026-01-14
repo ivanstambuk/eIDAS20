@@ -488,7 +488,7 @@ def process_list_simple(list_elem, indent_level=0):
                 text = clean_text(''.join(text_parts))
             
             if text:
-                lines.append(f"{indent}{number} {text}")
+                lines.append(f"{indent}- {number} {text}")
             
             # Process nested lists
             for nested_list in np_elem.findall('P/LIST'):

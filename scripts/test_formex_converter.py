@@ -23,6 +23,7 @@ from formex_to_md_v3 import (
     get_element_text,
     clean_text,
     process_list_with_quotes,
+    process_list_simple,
     get_following_quoted_content
 )
 
@@ -902,8 +903,101 @@ class TestDivisionInBlockquote(unittest.TestCase):
             f"Articles should be on separate lines, but found {len(article_lines)} article lines")
 
 
+class TestListBulletPrefixes(unittest.TestCase):
+    """Test that list items in process_list_simple have bullet prefixes."""
+    
+    def test_all_list_items_have_bullet_prefix(self):
+        """
+        BUG FIX: process_list_simple was outputting list items without the
+        '- ' bullet prefix, causing items (b), (c), etc. to be rendered
+        as continuation of item (a) rather than separate list items.
+        
+        All list items should have '- ' prefix for proper Markdown rendering.
+        """
+        # Simulate a LIST element with multiple items (a), (b), (c)
+        xml = '''<LIST>
+            <ITEM>
+                <NP>
+                    <NO.P>(a)</NO.P>
+                    <TXT>first point about identification;</TXT>
+                </NP>
+            </ITEM>
+            <ITEM>
+                <NP>
+                    <NO.P>(b)</NO.P>
+                    <TXT>second point about trust services;</TXT>
+                </NP>
+            </ITEM>
+            <ITEM>
+                <NP>
+                    <NO.P>(c)</NO.P>
+                    <TXT>third point about electronic ledgers.</TXT>
+                </NP>
+            </ITEM>
+        </LIST>'''
+        
+        elem = ET.fromstring(xml)
+        lines = process_list_simple(elem, indent_level=0)
+        
+        # All items should have bullet prefix
+        self.assertIn('- (a)', '\n'.join(lines), "Item (a) should have bullet prefix")
+        self.assertIn('- (b)', '\n'.join(lines), "Item (b) should have bullet prefix")
+        self.assertIn('- (c)', '\n'.join(lines), "Item (c) should have bullet prefix")
+        
+        # Each line should start with '- '
+        for line in lines:
+            if line.strip():  # Skip empty lines
+                self.assertTrue(line.lstrip().startswith('- '),
+                    f"Line should start with bullet prefix: {line}")
+    
+    def test_nested_list_items_indented_with_bullets(self):
+        """
+        Nested list items should be properly indented AND have bullet prefixes.
+        """
+        xml = '''<LIST>
+            <ITEM>
+                <NP>
+                    <NO.P>(a)</NO.P>
+                    <TXT>main point:</TXT>
+                    <P>
+                        <LIST>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(i)</NO.P>
+                                    <TXT>sub-point one;</TXT>
+                                </NP>
+                            </ITEM>
+                            <ITEM>
+                                <NP>
+                                    <NO.P>(ii)</NO.P>
+                                    <TXT>sub-point two;</TXT>
+                                </NP>
+                            </ITEM>
+                        </LIST>
+                    </P>
+                </NP>
+            </ITEM>
+        </LIST>'''
+        
+        elem = ET.fromstring(xml)
+        lines = process_list_simple(elem, indent_level=0)
+        output = '\n'.join(lines)
+        
+        # Main item should have bullet
+        self.assertIn('- (a)', output, "Main item should have bullet prefix")
+        
+        # Nested items should have bullets too
+        self.assertIn('- (i)', output, "Nested item (i) should have bullet prefix")
+        self.assertIn('- (ii)', output, "Nested item (ii) should have bullet prefix")
+        
+        # Nested items should be indented (have leading spaces)
+        for line in lines:
+            if '(i)' in line or '(ii)' in line:
+                self.assertTrue(line.startswith('  '),
+                    f"Nested item should be indented: {line}")
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)
-
 
