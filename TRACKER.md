@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 18:55 CET |
+| **Last Updated** | 2026-01-14 20:02 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages or continue UX polish |
@@ -28,6 +28,7 @@
 - **Collapsible TOC** (official chapter structure for eIDAS 910/2014)
 - **Human-friendly document names** (short titles from folder names/metadata)
 - **Scroll-to-top on navigation** (fixes SPA scroll persistence bug)
+- **Search prioritizes definitions** (10x boost full-text, two-tier semantic)
 
 ---
 
@@ -47,6 +48,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 20:02 | Search: terminology prioritized (10x boost + two-tier ranking), DEC-005/006, DECISIONS.md created |
 | 2026-01-14 18:55 | Human-friendly short titles (PID & EAA, etc.), scroll-to-top fix |
 | 2026-01-14 18:25 | Collapsible TOC: Official chapters, short Roman numerals (I., II.), text wrap |
 | 2026-01-14 17:50 | CSS scroll fix: Removed scroll-behavior:smooth conflicting with 150ms JS animation |
