@@ -683,19 +683,20 @@ def convert_formex_to_md(xml_path, output_path=None):
     
     md_lines = []
     
-    # Title
-    title_elem = root.find('.//TITLE')
-    if title_elem is not None:
-        ti = title_elem.find('TI')
-        if ti is not None:
-            title_parts = []
-            for p in ti.findall('P'):
-                text = clean_text(get_element_text(p))
-                if text:
-                    title_parts.append(text)
-            if title_parts:
-                md_lines.append(f"# {' '.join(title_parts)}")
-                md_lines.append("")
+    # Title - skip for standalone ANNEX files (they're handled in annex processing)
+    if root.tag != 'ANNEX':
+        title_elem = root.find('.//TITLE')
+        if title_elem is not None:
+            ti = title_elem.find('TI')
+            if ti is not None:
+                title_parts = []
+                for p in ti.findall('P'):
+                    text = clean_text(get_element_text(p))
+                    if text:
+                        title_parts.append(text)
+                if title_parts:
+                    md_lines.append(f"# {' '.join(title_parts)}")
+                    md_lines.append("")
     
     # Preamble init
     preamble = root.find('.//PREAMBLE')
@@ -766,16 +767,16 @@ def convert_formex_to_md(xml_path, output_path=None):
             seq_title = gr_seq.find('TITLE/TI')
             if seq_title is not None:
                 subtitle = clean_text(get_element_text(seq_title))
+                # Strip existing formatting to avoid ****double bold****
+                subtitle = subtitle.strip('*')
                 if subtitle and subtitle != annex_title:
                     md_lines.append(f"**{subtitle}**")
                     md_lines.append("")
             
-            # Process lists in this GR.SEQ (more precise than iterating all)
-            for list_elem in gr_seq.findall('.//LIST'):
-                # Only process top-level lists (not nested ones)
-                parent = list_elem.find('..')
-                if parent is not None and parent.tag == 'LIST':
-                    continue  # Skip nested lists, they're handled by process_list_simple
+            # Process only DIRECT child lists in GR.SEQ (not nested via .//LIST which causes duplicates)
+            # GR.SEQ typically contains: TITLE, then LIST elements directly or inside CONTENTS
+            contents = gr_seq.find('CONTENTS') or gr_seq
+            for list_elem in contents.findall('LIST'):
                 list_lines = process_list_simple(list_elem, 0)
                 md_lines.extend(list_lines)
                 if list_lines:
