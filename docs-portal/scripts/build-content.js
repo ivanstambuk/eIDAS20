@@ -4,6 +4,11 @@
  * This script processes all eIDAS regulation markdown files and converts them
  * to a structured JSON format for the documentation portal.
  * 
+ * Uses the unified/remark/rehype ecosystem for proper AST-based processing:
+ * - Automatic heading ID generation (for TOC navigation)
+ * - GitHub-flavored markdown (tables, strikethrough, etc.)
+ * - Extensible plugin architecture for future annotations
+ * 
  * Usage: node scripts/build-content.js
  * 
  * Output: public/data/regulations/*.json + public/data/regulations-index.json
@@ -12,6 +17,17 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
+
+// Unified ecosystem for AST-based markdown processing
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeSlug from 'rehype-slug';
+import rehypeStringify from 'rehype-stringify';
+
+// Use the same slugger as rehype-slug for consistent IDs
+import GithubSlugger from 'github-slugger';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -176,39 +192,34 @@ function generateSlug(dirName, type) {
 }
 
 /**
- * Build Table of Contents from headings
+ * Build Table of Contents from headings.
+ * Uses github-slugger to generate IDs that match rehype-slug output exactly.
  */
 function buildTableOfContents(content) {
     const toc = [];
     const headingRegex = /^(#{1,4})\s+(.+)$/gm;
 
+    // Use the same slugger as rehype-slug for consistent ID generation
+    const slugger = new GithubSlugger();
+
     let match;
-    let articleCount = 0;
 
     while ((match = headingRegex.exec(content)) !== null) {
         const level = match[1].length;
         const title = match[2].trim();
 
-        // Skip the main title (H1) and metadata sections
+        // Skip the main title (H1) - it's displayed in the header
         if (level === 1 && toc.length === 0) continue;
 
-        // Generate ID from title
-        let id = title
-            .toLowerCase()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/\s+/g, '-')
-            .substring(0, 50);
+        // Clean the title (remove bold markers, etc.)
+        const cleanTitle = title.replace(/\*\*/g, '');
 
-        // For articles, use article-N format
-        const articleMatch = title.match(/^Article\s+(\d+\w?)/i);
-        if (articleMatch) {
-            id = `article-${articleMatch[1].toLowerCase()}`;
-            articleCount++;
-        }
+        // Generate ID using github-slugger (same as rehype-slug)
+        const id = slugger.slug(cleanTitle);
 
         toc.push({
             id,
-            title: title.replace(/\*\*/g, ''), // Remove bold markers
+            title: cleanTitle,
             level
         });
     }
@@ -257,42 +268,40 @@ function extractDate(content, dirName, celex) {
 }
 
 /**
- * Convert markdown content to HTML (basic conversion)
- * This is a simplified converter - the React app may use a full markdown library
+ * Create the unified processor for markdown → HTML conversion.
+ * 
+ * Pipeline:
+ * 1. remarkParse: Markdown string → MDAST (Markdown AST)
+ * 2. remarkGfm: Enable GitHub-flavored markdown (tables, strikethrough, etc.)
+ * 3. remarkRehype: MDAST → HAST (HTML AST)
+ * 4. rehypeSlug: Auto-generate IDs for all headings (for TOC navigation)
+ * 5. rehypeStringify: HAST → HTML string
+ * 
+ * This replaces the fragile regex-based approach with proper AST processing.
+ */
+const markdownProcessor = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeSlug)
+    .use(rehypeStringify, { allowDangerousHtml: true });
+
+/**
+ * Convert markdown content to HTML using the unified processor.
+ * Generates proper heading IDs for TOC deep-linking.
  */
 function markdownToHtml(markdown) {
     if (!markdown) return '';
 
-    return markdown
-        // Escape HTML entities first
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        // Then apply markdown transformations
-        // Headers (process from h4 down to h1 to avoid conflicts)
-        .replace(/^#### (.+)$/gm, '<h4 id="$1">$1</h4>')
-        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-        // Bold
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        // Italic
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        // Code
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        // Blockquotes
-        .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-        // Horizontal rules
-        .replace(/^---$/gm, '<hr />')
-        // Lists (basic)
-        .replace(/^- (.+)$/gm, '<li>$1</li>')
-        // Links
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-        // Paragraphs (simple line break handling)
-        .replace(/\n\n/g, '</p><p>')
-        // Wrap in paragraph if not starting with HTML tag
-        .replace(/^([^<])/, '<p>$1')
-        .replace(/([^>])$/, '$1</p>');
+    try {
+        // Process synchronously (unified supports .processSync for build-time)
+        const result = markdownProcessor.processSync(markdown);
+        return String(result);
+    } catch (err) {
+        console.error('  ⚠️  Markdown processing error:', err.message);
+        // Fallback: return escaped markdown
+        return `<pre>${markdown.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
+    }
 }
 
 /**
