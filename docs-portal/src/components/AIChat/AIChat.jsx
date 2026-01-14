@@ -47,7 +47,7 @@ const SparklesIcon = () => (
 );
 
 const DownloadIcon = () => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
         <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
     </svg>
 );
@@ -190,7 +190,7 @@ function WelcomeScreen({ onLoadModel }) {
 
     return (
         <div className="welcome-screen">
-            <div className="welcome-icon">
+            <div className="welcome-icon" aria-hidden="true">
                 <SparklesIcon />
             </div>
             <h3>eIDAS AI Assistant</h3>
@@ -200,15 +200,15 @@ function WelcomeScreen({ onLoadModel }) {
             </p>
             <div className="welcome-features">
                 <div className="feature">
-                    <span className="feature-icon">🔒</span>
+                    <span className="feature-icon" aria-hidden="true">🔒</span>
                     <span>100% Private - No data leaves your device</span>
                 </div>
                 <div className="feature">
-                    <span className="feature-icon">📚</span>
+                    <span className="feature-icon" aria-hidden="true">📚</span>
                     <span>RAG-powered - Answers based on official documents</span>
                 </div>
                 <div className="feature">
-                    <span className="feature-icon">⚡</span>
+                    <span className="feature-icon" aria-hidden="true">⚡</span>
                     <span>Fast - GPU-accelerated inference</span>
                 </div>
             </div>
@@ -398,8 +398,10 @@ export function AIChat() {
                 </div>
 
                 <div className="chat-input-area">
+                    <label htmlFor="chat-input" className="sr-only">Type your question about eIDAS 2.0</label>
                     <textarea
                         ref={inputRef}
+                        id="chat-input"
                         className="chat-input"
                         placeholder="Ask about eIDAS 2.0..."
                         value={input}
@@ -407,13 +409,14 @@ export function AIChat() {
                         onKeyDown={handleKeyDown}
                         rows={1}
                         disabled={llm.isGenerating}
+                        aria-label="Type your question about eIDAS 2.0"
                     />
 
                     {llm.isGenerating ? (
                         <button
                             className="btn btn-stop"
                             onClick={handleStopGeneration}
-                            title="Stop generation"
+                            aria-label="Stop generating response"
                         >
                             <StopIcon />
                         </button>
@@ -422,7 +425,7 @@ export function AIChat() {
                             className="btn btn-send"
                             onClick={handleSendMessage}
                             disabled={!input.trim()}
-                            title="Send message"
+                            aria-label="Send message"
                         >
                             <SendIcon />
                         </button>
@@ -435,11 +438,16 @@ export function AIChat() {
     return (
         <div className="ai-chat-widget">
             {isOpen && (
-                <div className="chat-panel">
+                <div
+                    className="chat-panel"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="chat-panel-title"
+                >
                     <div className="chat-header">
                         <div className="header-left">
-                            <SparklesIcon />
-                            <span className="header-title">eIDAS AI Assistant</span>
+                            <span aria-hidden="true"><SparklesIcon /></span>
+                            <span className="header-title" id="chat-panel-title">eIDAS AI Assistant</span>
                         </div>
 
                         {llm.isReady && (
@@ -455,7 +463,7 @@ export function AIChat() {
                         <button
                             className="btn-close"
                             onClick={() => setIsOpen(false)}
-                            title="Close chat"
+                            aria-label="Close AI chat"
                         >
                             <CloseIcon />
                         </button>
@@ -470,7 +478,9 @@ export function AIChat() {
             <button
                 className={`chat-toggle-btn ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
-                title={isOpen ? 'Close AI chat' : 'Open AI chat'}
+                aria-label={isOpen ? 'Close AI chat' : 'Open AI chat'}
+                aria-expanded={isOpen}
+                aria-controls="chat-panel"
             >
                 {isOpen ? <CloseIcon /> : <ChatIcon />}
             </button>

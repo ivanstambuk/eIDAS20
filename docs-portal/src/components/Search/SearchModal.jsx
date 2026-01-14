@@ -151,12 +151,13 @@ function SuggestionItem({ suggestion, icon, onSelect, onRemove, isRecent }) {
  */
 function SearchModeToggle({ mode, onModeChange, semanticReady, semanticStatus }) {
     return (
-        <div className="search-mode-toggle">
+        <div className="search-mode-toggle" role="group" aria-label="Search mode">
             <button
                 className={`search-mode-btn ${mode === 'keyword' ? 'active' : ''}`}
                 onClick={() => onModeChange('keyword')}
+                aria-pressed={mode === 'keyword'}
             >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M4 6h16M4 12h16M4 18h12" />
                 </svg>
                 Keyword
@@ -165,14 +166,15 @@ function SearchModeToggle({ mode, onModeChange, semanticReady, semanticStatus })
                 className={`search-mode-btn ${mode === 'semantic' ? 'active' : ''}`}
                 onClick={() => onModeChange('semantic')}
                 disabled={!semanticReady}
+                aria-pressed={mode === 'semantic'}
                 title={!semanticReady ? `Loading AI model... (${semanticStatus})` : 'Semantic search uses AI to find related content'}
             >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <circle cx="12" cy="12" r="3" />
                     <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                 </svg>
                 Semantic
-                {!semanticReady && <span className="mode-loading-dot" />}
+                {!semanticReady && <span className="mode-loading-dot" aria-hidden="true" />}
             </button>
         </div>
     );
@@ -274,10 +276,16 @@ export function SearchModal({ isOpen, onClose }) {
     const showSuggestions = !query && (recentSearches.length > 0 || popularSuggestions.length > 0);
 
     return (
-        <div className="search-modal-backdrop" onClick={handleBackdropClick}>
-            <div className="search-modal">
+        <div className="search-modal-backdrop" onClick={handleBackdropClick} role="presentation">
+            <div
+                className="search-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="search-modal-title"
+            >
                 {/* Search header with mode toggle */}
                 <div className="search-modal-header">
+                    <h2 id="search-modal-title" className="sr-only">Search eIDAS 2.0 Documentation</h2>
                     <div className="search-input-wrapper">
                         <svg
                             className="search-input-icon"
@@ -287,12 +295,19 @@ export function SearchModal({ isOpen, onClose }) {
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
+                            aria-hidden="true"
                         >
                             <circle cx="11" cy="11" r="8" />
                             <path d="m21 21-4.35-4.35" />
                         </svg>
+                        <label htmlFor="search-input" className="sr-only">
+                            {searchMode === 'semantic'
+                                ? "Ask a question or describe what you're looking for"
+                                : "Search regulations, articles, terms"}
+                        </label>
                         <input
                             ref={inputRef}
+                            id="search-input"
                             type="text"
                             className="search-modal-input"
                             placeholder={searchMode === 'semantic'

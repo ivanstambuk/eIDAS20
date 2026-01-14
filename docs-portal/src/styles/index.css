@@ -190,10 +190,12 @@ body {
   --bg-hover: #d8dee4;
   --bg-active: #ced4da;
 
-  /* Text Colors */
+  /* Text Colors - Improved for WCAG 2.1 AA contrast (4.5:1 min) */
   --text-primary: #1f2328;
-  --text-secondary: #57606a;
-  --text-tertiary: #6e7781;
+  --text-secondary: #4b5563;
+  /* Darkened from #57606a for 4.5:1 contrast */
+  --text-tertiary: #57606a;
+  /* Darkened from #6e7781 for better readability */
   --text-link: #0969da;
   --text-link-hover: #0550ae;
 
@@ -238,12 +240,10 @@ body {
 
 /* Skeleton loading for light theme */
 :root.light .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-tertiary) 25%,
-    var(--bg-hover) 50%,
-    var(--bg-tertiary) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--bg-tertiary) 25%,
+      var(--bg-hover) 50%,
+      var(--bg-tertiary) 75%);
 }
 
 /* Chat button gradient for light theme */
@@ -1258,5 +1258,87 @@ pre code {
   .regulation-content a[href^="#"]:after,
   .regulation-content a[href^="javascript"]:after {
     content: "";
+  }
+}
+
+/* ============================================
+   14. ACCESSIBILITY (WCAG 2.1 AA)
+   ============================================ */
+
+/* Skip Link - Visible only on focus for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 10000;
+  padding: var(--space-3) var(--space-6);
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Enhanced focus states for all interactive elements */
+.btn:focus-visible,
+.input:focus-visible,
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Screen reader only text that becomes visible on focus (for skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Ensure minimum touch target size (44x44px for WCAG 2.1 AAA, 24x24 for AA) */
+.btn,
+.sidebar-nav-link,
+.toc-link {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -17,10 +17,15 @@ const Layout = () => {
 
     return (
         <div className="app-layout">
+            {/* Skip link for keyboard users - WCAG 2.1 AA */}
+            <a href="#main-content" className="skip-link">
+                Skip to main content
+            </a>
+
             <Header onMenuToggle={toggleSidebar} />
             <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
 
-            <main className="main-content">
+            <main className="main-content" id="main-content" tabIndex={-1}>
                 <div className="main-content-inner">
                     <Outlet />
                 </div>
