@@ -178,6 +178,28 @@ python scripts/test_formex_converter.py
 
 **Current test count**: 28 tests (as of 2026-01-13)
 
+## 📋 Portal Content Processing Decisions
+
+### Decision: Strip Metadata Blockquotes (2026-01-14)
+
+**Context**: All markdown source files contain a metadata blockquote at the top:
+```markdown
+> **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
+>
+> **Source:** https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2977
+```
+
+**Decision**: Strip this blockquote from rendered portal content.
+
+**Rationale**:
+1. **Redundant** — The UI already displays CELEX badge, date, and "View on EUR-Lex" link in the header
+2. **Visual clutter** — Raw technical metadata breaks the premium design aesthetic
+3. **Preserved at source** — Original markdown files retain the metadata for archival/traceability
+
+**Implementation**: `docs-portal/scripts/build-content.js` → `stripMetadataBlockquote()` function
+
+**Applies to**: All 32 regulatory documents (2 regulations + 30 implementing acts)
+
 ## Markdown Formatting Rules
 
 For amending regulations and legal documents with hierarchical amendments:

@@ -65,6 +65,29 @@ function parseMetadata(content) {
 }
 
 /**
+ * Strip the metadata blockquote from content for rendering.
+ * The blockquote contains CELEX, Document type, Source URL which are already
+ * displayed in the UI (header badges, EUR-Lex link). Rendering them in the
+ * content area is redundant and visually jarring.
+ * 
+ * Decision: 2026-01-14 - Metadata blockquote stripped from all rendered content.
+ * The original markdown files retain this data for archival purposes.
+ * See AGENTS.md for documentation of this decision.
+ */
+function stripMetadataBlockquote(content) {
+    // Match the opening blockquote lines at the start of the document
+    // Pattern: All consecutive lines starting with > at the beginning of the document
+    // This captures:
+    //   > **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
+    //   >
+    //   > **Source:** https://eur-lex.europa.eu/...
+    //   (blank line)
+    // The regex matches all lines starting with > (including empty >) until a non-blockquote line
+    const metadataPattern = /^(>.*\n)+\n?/;
+    return content.replace(metadataPattern, '');
+}
+
+/**
  * Extract the main title (first H1 heading)
  */
 function parseTitle(content) {
@@ -273,10 +296,11 @@ function processMarkdownFile(filePath, dirName, type) {
         source: metadata.source,
         version: metadata.version,
         toc,
-        // Store raw markdown - React app can render with a proper markdown library
-        contentMarkdown: content,
+        // Strip metadata blockquote before storing content for rendering
+        // (metadata is already shown in UI header, see AGENTS.md decision)
+        contentMarkdown: stripMetadataBlockquote(content),
         // Also provide pre-rendered HTML for simple use cases
-        contentHtml: markdownToHtml(content),
+        contentHtml: markdownToHtml(stripMetadataBlockquote(content)),
         // Metadata for search and filtering
         wordCount: content.split(/\s+/).length,
         lastProcessed: new Date().toISOString()
