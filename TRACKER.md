@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 10:48 CET |
+| **Last Updated** | 2026-01-14 11:24 CET |
 | **Session State** | 🟢 Active |
-| **Current Phase** | Phase 6: Polish & Deploy (80%) |
-| **Next Action** | Task 6.5 Final testing & launch |
+| **Current Phase** | Phase 6: Polish & Deploy (100%) |
+| **Next Action** | Deploy to GitHub Pages |
 
 ---
 
@@ -111,7 +111,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | 6.2 Performance optimization | ✅ DONE | React.lazy, code splitting, vendor chunks |
 | 6.3 Light theme implementation | ✅ DONE | useTheme hook, localStorage, system pref |
 | 6.4 GitHub Actions workflow | ✅ DONE | Auto-deploy on push to master |
-| 6.5 Final testing & launch | ⬜ TODO | Cross-browser testing |
+| 6.5 Final testing & launch | ✅ DONE | Browser testing verified: Search, TOC, themes |
 
 ---
 
@@ -124,8 +124,8 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 | Phase 3: Terminology | 5 | 5 | ✅ 100% |
 | Phase 4: Search | 5 | 5 | ✅ 100% |
 | Phase 5: AI Chat | 5 | 5 | ✅ 100% |
-| Phase 6: Polish & Deploy | 5 | 4 | 🔨 80% |
-| **Total** | **31** | **30** | **97%** |
+| Phase 6: Polish & Deploy | 5 | 5 | ✅ 100% |
+| **Total** | **31** | **31** | **✅ 100%** |
 
 ---
 
@@ -143,6 +143,7 @@ A **100% client-side static site** for eIDAS 2.0 regulatory documentation, hoste
 
 | Date | Summary |
 |------|---------|
+| 2026-01-14 11:24 | **Task 6.5 Complete / Phase 6 COMPLETE**: Browser testing verified - Search modal (keyword/semantic), TOC navigation fix, themes, accessibility |
 | 2026-01-14 10:48 | **Task 6.1 Complete**: WCAG 2.1 AA accessibility audit - skip link, improved contrast, ARIA labels, reduced motion |
 | 2026-01-14 10:18 | **Task 6.2 + 6.4 Complete**: React.lazy code splitting, vendor chunks, GitHub Actions deploy workflow |
 | 2026-01-14 09:50 | **Task 6.3 Complete**: Light theme with useTheme hook, localStorage persistence, system preference detection |

@@ -139,11 +139,23 @@ const RegulationViewer = () => {
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                                 {regulation.toc?.slice(0, 30).map((item, index) => (
                                     <li key={`${item.id}-${index}`} style={{ marginBottom: 'var(--space-1)' }}>
-                                        <a
-                                            href={`#${item.id}`}
+                                        <button
                                             className="toc-link"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                const element = document.getElementById(item.id);
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                                    // Update visual focus for accessibility
+                                                    element.focus({ preventScroll: true });
+                                                }
+                                            }}
                                             style={{
                                                 display: 'block',
+                                                width: '100%',
+                                                textAlign: 'left',
+                                                background: 'none',
+                                                border: 'none',
                                                 padding: 'var(--space-1) var(--space-2)',
                                                 paddingLeft: `calc(var(--space-2) + ${(item.level - 1) * 12}px)`,
                                                 color: 'var(--text-secondary)',
@@ -154,12 +166,13 @@ const RegulationViewer = () => {
                                                 transition: 'all var(--transition-fast)',
                                                 whiteSpace: 'nowrap',
                                                 overflow: 'hidden',
-                                                textOverflow: 'ellipsis'
+                                                textOverflow: 'ellipsis',
+                                                cursor: 'pointer'
                                             }}
                                             title={item.title}
                                         >
                                             {item.title}
-                                        </a>
+                                        </button>
                                     </li>
                                 ))}
                                 {regulation.toc?.length > 30 && (
