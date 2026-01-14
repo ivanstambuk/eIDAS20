@@ -161,5 +161,45 @@ When searching for "wallet unit", users expect the **definition** to appear firs
 
 ---
 
+## DEC-007: Combined ranking for partial word queries
+
+**Date:** 2026-01-14  
+**Status:** Accepted  
+
+**Context:**  
+When typing "wallet solutio" (incomplete word), semantic search ranked "wallet unit" first because:
+- Transformers tokenize "solutio" differently than "solution" (WordPiece fragmentation)
+- The embedding for the incomplete word isn't similar to the complete word
+- Full-text search handles this with prefix matching; semantic search does not
+
+**Decision:**  
+Implement **Combined Ranking** that blends:
+- **Semantic similarity (70%)** — Embedding-based vector distance
+- **Title similarity (30%)** — Prefix-aware word matching against term/section titles
+
+**Algorithm:**
+```javascript
+combinedScore = (semanticSim * 0.7) + (titleSim * 0.3)
+```
+
+**Title similarity scoring:**
+- Exact match: 1.0
+- Title starts with query: 0.95
+- Word-by-word prefix matching for partial words
+- Minimum 3 characters for partial word matching
+
+**Result:**
+- Query "wallet solutio" → "wallet solution" now ranks **#1** (was #3)
+- Related concepts still surface (semantic meaning preserved)
+- Handles typos and incomplete input gracefully
+
+**Alternatives considered:**
+1. **Query completion** — Detect incomplete words, complete from dictionary. Rejected: requires maintaining term dictionary, may miss novel words.
+2. **Post-processing boost** — Fixed boost for title matches. Rejected: less nuanced than weighted combination.
+
+**Implementation:** `useSemanticSearch.js` → `titleSimilarity()` function + combined scoring
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
