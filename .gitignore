@@ -27,3 +27,6 @@ Thumbs.db
 *.egg-info/
 dist/
 build/
+
+# Transformers.js model cache
+docs-portal/.cache/

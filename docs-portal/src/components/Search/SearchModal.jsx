@@ -2,12 +2,13 @@
  * Search Modal Component
  * 
  * Full-screen search overlay with instant results,
- * recent searches, and popular suggestions.
+ * recent searches, popular suggestions, and semantic search.
  */
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
+import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
 import './Search.css';
 
@@ -72,12 +73,16 @@ function getSnippet(content, query, maxLength = 200) {
 /**
  * Search result item
  */
-function SearchResult({ result, query, onClick }) {
+function SearchResult({ result, query, onClick, isSemanticMode }) {
     const getDocUrl = () => {
         const baseType = result.type === 'regulation' ? 'regulation' : 'implementing-acts';
         const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
         return `/${baseType}/${result.slug}${hash}`;
     };
+
+    const similarityPercent = isSemanticMode && result.score
+        ? Math.round(result.score * 100)
+        : null;
 
     return (
         <Link
@@ -89,9 +94,16 @@ function SearchResult({ result, query, onClick }) {
                 <span className={`search-result-type ${result.type}`}>
                     {result.type === 'regulation' ? '📜' : '📋'} {result.docTitle}
                 </span>
-                <span className="search-result-section">
-                    {result.section}
-                </span>
+                <div className="search-result-meta">
+                    {similarityPercent && (
+                        <span className="search-result-similarity">
+                            {similarityPercent}% match
+                        </span>
+                    )}
+                    <span className="search-result-section">
+                        {result.section}
+                    </span>
+                </div>
             </div>
             <div className="search-result-title">
                 {highlightTerms(result.sectionTitle, query)}
@@ -135,20 +147,51 @@ function SuggestionItem({ suggestion, icon, onSelect, onRemove, isRecent }) {
 }
 
 /**
+ * Search mode toggle
+ */
+function SearchModeToggle({ mode, onModeChange, semanticReady, semanticStatus }) {
+    return (
+        <div className="search-mode-toggle">
+            <button
+                className={`search-mode-btn ${mode === 'keyword' ? 'active' : ''}`}
+                onClick={() => onModeChange('keyword')}
+            >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 6h16M4 12h16M4 18h12" />
+                </svg>
+                Keyword
+            </button>
+            <button
+                className={`search-mode-btn ${mode === 'semantic' ? 'active' : ''}`}
+                onClick={() => onModeChange('semantic')}
+                disabled={!semanticReady}
+                title={!semanticReady ? `Loading AI model... (${semanticStatus})` : 'Semantic search uses AI to find related content'}
+            >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                </svg>
+                Semantic
+                {!semanticReady && <span className="mode-loading-dot" />}
+            </button>
+        </div>
+    );
+}
+
+/**
  * Main Search Modal
  */
 export function SearchModal({ isOpen, onClose }) {
     const inputRef = useRef(null);
-    const {
-        isLoading,
-        isSearching,
-        error,
-        query,
-        results,
-        search,
-        clearSearch
-    } = useSearch();
+    const [searchMode, setSearchMode] = useState('keyword');
 
+    // Keyword search
+    const keywordSearch = useSearch();
+
+    // Semantic search
+    const semanticSearch = useSemanticSearch();
+
+    // Search suggestions
     const {
         recentSearches,
         popularSuggestions,
@@ -156,6 +199,18 @@ export function SearchModal({ isOpen, onClose }) {
         removeFromHistory,
         clearHistory,
     } = useSearchSuggestions();
+
+    // Get current search state based on mode
+    const currentSearch = searchMode === 'semantic' ? semanticSearch : keywordSearch;
+    const {
+        isLoading,
+        isSearching,
+        error,
+        query,
+        results,
+        search,
+        clearSearch,
+    } = currentSearch;
 
     // Focus input when modal opens
     useEffect(() => {
@@ -177,6 +232,18 @@ export function SearchModal({ isOpen, onClose }) {
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, onClose]);
 
+    // Handle mode change
+    const handleModeChange = useCallback((mode) => {
+        setSearchMode(mode);
+        // Clear results when switching modes
+        keywordSearch.clearSearch();
+        semanticSearch.clearSearch();
+        if (inputRef.current) {
+            inputRef.current.value = '';
+            inputRef.current.focus();
+        }
+    }, [keywordSearch, semanticSearch]);
+
     // Handle result click - save to history
     const handleResultClick = useCallback(() => {
         if (query.trim()) {
@@ -190,6 +257,7 @@ export function SearchModal({ isOpen, onClose }) {
     const handleSuggestionSelect = useCallback((suggestionQuery) => {
         search(suggestionQuery);
         if (inputRef.current) {
+            inputRef.current.value = suggestionQuery;
             inputRef.current.focus();
         }
     }, [search]);
@@ -208,7 +276,7 @@ export function SearchModal({ isOpen, onClose }) {
     return (
         <div className="search-modal-backdrop" onClick={handleBackdropClick}>
             <div className="search-modal">
-                {/* Search input */}
+                {/* Search header with mode toggle */}
                 <div className="search-modal-header">
                     <div className="search-input-wrapper">
                         <svg
@@ -227,8 +295,10 @@ export function SearchModal({ isOpen, onClose }) {
                             ref={inputRef}
                             type="text"
                             className="search-modal-input"
-                            placeholder="Search regulations, articles, terms..."
-                            value={query}
+                            placeholder={searchMode === 'semantic'
+                                ? "Ask a question or describe what you're looking for..."
+                                : "Search regulations, articles, terms..."}
+                            defaultValue={query}
                             onChange={(e) => search(e.target.value)}
                             autoComplete="off"
                             autoCapitalize="off"
@@ -237,7 +307,13 @@ export function SearchModal({ isOpen, onClose }) {
                         {query && (
                             <button
                                 className="search-clear-btn"
-                                onClick={clearSearch}
+                                onClick={() => {
+                                    clearSearch();
+                                    if (inputRef.current) {
+                                        inputRef.current.value = '';
+                                        inputRef.current.focus();
+                                    }
+                                }}
                                 aria-label="Clear search"
                             >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -255,12 +331,31 @@ export function SearchModal({ isOpen, onClose }) {
                     </button>
                 </div>
 
+                {/* Search mode toggle */}
+                <div className="search-modal-controls">
+                    <SearchModeToggle
+                        mode={searchMode}
+                        onModeChange={handleModeChange}
+                        semanticReady={semanticSearch.isReady}
+                        semanticStatus={semanticSearch.modelStatus}
+                    />
+                    {searchMode === 'semantic' && (
+                        <span className="search-mode-hint">
+                            🧠 AI-powered semantic search finds related concepts
+                        </span>
+                    )}
+                </div>
+
                 {/* Search results / suggestions */}
                 <div className="search-modal-body">
                     {isLoading && (
                         <div className="search-status">
                             <div className="search-spinner" />
-                            <span>Loading search index...</span>
+                            <span>
+                                {searchMode === 'semantic'
+                                    ? 'Loading AI model...'
+                                    : 'Loading search index...'}
+                            </span>
                         </div>
                     )}
 
@@ -303,7 +398,9 @@ export function SearchModal({ isOpen, onClose }) {
                             {/* Popular Suggestions */}
                             <div className="suggestion-section">
                                 <div className="suggestion-section-header">
-                                    <span className="suggestion-section-title">Popular Topics</span>
+                                    <span className="suggestion-section-title">
+                                        {searchMode === 'semantic' ? 'Try asking about...' : 'Popular Topics'}
+                                    </span>
                                 </div>
                                 <div className="suggestion-list">
                                     {popularSuggestions.map((item) => (
@@ -323,7 +420,11 @@ export function SearchModal({ isOpen, onClose }) {
                     {/* Search hint (when no query and no suggestions) */}
                     {!isLoading && !error && !query && !showSuggestions && (
                         <div className="search-status search-hint">
-                            <p>Start typing to search across all eIDAS regulations and implementing acts.</p>
+                            <p>
+                                {searchMode === 'semantic'
+                                    ? 'Ask a question or describe what you\'re looking for. AI will find related content.'
+                                    : 'Start typing to search across all eIDAS regulations and implementing acts.'}
+                            </p>
                             <div className="search-tips">
                                 <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
                                 <span><kbd>Enter</kbd> Open</span>
@@ -336,6 +437,11 @@ export function SearchModal({ isOpen, onClose }) {
                     {!isLoading && query && results.length === 0 && !isSearching && (
                         <div className="search-status">
                             <span>No results found for "{query}"</span>
+                            {searchMode === 'keyword' && (
+                                <p className="search-status-hint">
+                                    Try switching to <strong>Semantic</strong> mode to find related concepts
+                                </p>
+                            )}
                         </div>
                     )}
 
@@ -353,6 +459,7 @@ export function SearchModal({ isOpen, onClose }) {
                                         result={result}
                                         query={query}
                                         onClick={handleResultClick}
+                                        isSemanticMode={searchMode === 'semantic'}
                                     />
                                 ))}
                             </div>
