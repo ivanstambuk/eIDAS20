@@ -305,6 +305,7 @@
     background: var(--bg-hover);
     border-color: var(--accent-primary);
     transform: translateX(4px);
+    text-decoration: none;
 }
 
 .search-result-header {
