@@ -30,3 +30,4 @@ build/
 
 # Transformers.js model cache
 docs-portal/.cache/
+scripts/.cache/
