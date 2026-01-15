@@ -120,6 +120,14 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}, point (${pointLetter})`;
     }
 
+    // Phase 3: Handle subpoints - article-5a-subpoint-ii → Article 5a, point (ii)
+    const subpointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-subpoint-([ivx]+)$/);
+    if (subpointMatch) {
+        const articleNum = formatArticleNumber(subpointMatch[1]);
+        const romanNumeral = subpointMatch[2];
+        return `Article ${articleNum}, point (${romanNumeral})`;
+    }
+
     // Handle basic articles: article-5a → Article 5a
     const articleMatch = headingId.match(/^article-(.+)$/);
     if (articleMatch) {

@@ -102,18 +102,18 @@ function rehypeParagraphIds() {
             }
 
             // Process unordered lists (points) within the current article context
-            // Points are identified by text starting with (a), (b), etc.
+            // Points can be:
+            // - Lettered: (a), (b), (c) → linkable-point
+            // - Roman numeral: (i), (ii), (iii) → linkable-subpoint (Phase 3)
             if (node.tagName === 'ul' && currentArticleId) {
                 for (const child of node.children) {
                     if (child.type === 'element' && child.tagName === 'li') {
-                        // Check if the li text starts with a point marker like "(a)"
                         const textContent = getTextContent(child);
-                        const pointMatch = textContent.match(/^\s*\(([a-z])\)/);
 
-                        if (pointMatch) {
-                            const pointLetter = pointMatch[1];
-
-                            // Generate ID: article-5a-point-a (simplified without para context)
+                        // Check for lettered points: (a), (b), (c), etc.
+                        const letterMatch = textContent.match(/^\s*\(([a-z])\)/);
+                        if (letterMatch) {
+                            const pointLetter = letterMatch[1];
                             const pointId = `${currentArticleId}-point-${pointLetter}`;
 
                             child.properties = child.properties || {};
@@ -123,6 +123,23 @@ function rehypeParagraphIds() {
                             child.properties.className = [
                                 ...(child.properties.className || []),
                                 'linkable-point'
+                            ];
+                            continue;
+                        }
+
+                        // Check for roman numeral subpoints: (i), (ii), (iii), (iv), etc.
+                        const romanMatch = textContent.match(/^\s*\((i{1,3}|iv|vi{0,3}|ix|x{0,3})\)/);
+                        if (romanMatch) {
+                            const romanNumeral = romanMatch[1];
+                            const subpointId = `${currentArticleId}-subpoint-${romanNumeral}`;
+
+                            child.properties = child.properties || {};
+                            child.properties.id = subpointId;
+                            child.properties['data-subpoint'] = romanNumeral;
+                            child.properties['data-article'] = currentArticleId;
+                            child.properties.className = [
+                                ...(child.properties.className || []),
+                                'linkable-subpoint'
                             ];
                         }
                     }

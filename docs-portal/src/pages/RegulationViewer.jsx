@@ -261,6 +261,13 @@ const RegulationViewer = () => {
             addGutter(point, point.id, `point (${pointLetter})`);
         });
 
+        // Create gutter icons for subpoints (Phase 3: roman numerals)
+        const subpoints = contentEl.querySelectorAll('li.linkable-subpoint[id]');
+        subpoints.forEach(subpoint => {
+            const romanNumeral = subpoint.dataset.subpoint || '';
+            addGutter(subpoint, subpoint.id, `point (${romanNumeral})`);
+        });
+
         // Event delegation for gutter button clicks
         const handleClick = async (e) => {
             const btn = e.target.closest('.copy-gutter-btn');

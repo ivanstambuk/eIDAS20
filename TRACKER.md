@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-15 19:48 CET |
+| **Last Updated** | 2026-01-15 19:56 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages / additional enhancements |
@@ -37,7 +37,7 @@
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
 - **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
-- **Copy Reference** (DEC-011: Gutter icons for EU citations + deep links — 316 paragraphs + 258 points)
+- **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints)
 
 ---
 
@@ -57,6 +57,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-15 19:56 | DEC-011 Phase 3: Roman numeral subpoints (i), (ii), (iii) - 30 additional IDs |
 | 2026-01-15 19:48 | DEC-011 Phase 2: Paragraph/point-level copy reference (316 para + 258 point IDs) |
 | 2026-01-15 19:30 | DEC-011: Copy Reference gutter icons (Phase 1: article-level, EU citations + deep links) |
 | 2026-01-15 00:05 | DEC-010: Remove "Enacting Terms" from TOC (structural marker, not navigation target) |

@@ -9,7 +9,8 @@
 .regulation-content h2[id],
 .regulation-content h3[id],
 .regulation-content li.linkable-paragraph,
-.regulation-content li.linkable-point {
+.regulation-content li.linkable-point,
+.regulation-content li.linkable-subpoint {
     position: relative;
 }
 
@@ -28,7 +29,8 @@
 
 /* For list items, adjust positioning */
 li.linkable-paragraph>.copy-gutter,
-li.linkable-point>.copy-gutter {
+li.linkable-point>.copy-gutter,
+li.linkable-subpoint>.copy-gutter {
     left: -56px;
     /* Account for list marker */
     top: 12px;
@@ -40,6 +42,7 @@ li.linkable-point>.copy-gutter {
 .regulation-content h3[id]:hover .copy-gutter,
 .regulation-content li.linkable-paragraph:hover>.copy-gutter,
 .regulation-content li.linkable-point:hover>.copy-gutter,
+.regulation-content li.linkable-subpoint:hover>.copy-gutter,
 .copy-gutter:hover {
     opacity: 1;
 }
