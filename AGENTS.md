@@ -114,6 +114,29 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    - Confirm it would catch the original bug
    - Commit the prevention with the fix
    
+   **Step 4: Defense in Depth (for Build Pipelines)**
+   
+   When the bug involves a **build pipeline** (data flows through multiple scripts):
+   
+   1. **Validate at the source** — the script that generates the data
+   2. **Validate at consumers** — scripts that depend on that data  
+   3. **Add staleness detection** — warn if inputs are newer than outputs
+   4. **Verify build chain** — ensure `npm run build` includes ALL steps in correct order
+   
+   ```
+   Example - Terminology Pipeline (actual bug fixed 2026-01-15):
+   
+   build-terminology.js → terminology.json (validates ≥50 terms)
+           ↓
+   build-search-index.js → search-index.json (validates terms loaded, staleness check)
+           ↓
+   build-embeddings.js → embeddings.json (validates terms loaded, staleness check)
+   
+   ✅ Each script validates: ≥50 terms loaded
+   ✅ Each script warns: if inputs newer than output  
+   ✅ npm run build: runs ALL scripts in dependency order
+   ```
+   
    **Examples:**
    ```
    ✅ Missing annexes in documents
@@ -127,12 +150,20 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    ✅ Duplicate ANNEX headings
       → Fixed converter logic + added to DECISIONS.md
       → Root cause documented for future reference
+   
+   ✅ Terminology extraction broke (2026-01-15)
+      → Added invariant validation (≥50 terms, core terms exist)
+      → Added downstream validation in search + embeddings scripts
+      → Added staleness detection
+      → Fixed npm run build to include all scripts
    ```
    
    **Anti-patterns:**
    - ❌ "Fixed the bug" → close without prevention
    - ❌ "Added a TODO to check this later"
    - ❌ Manual verification only ("I checked and it works")
+   - ❌ Validate only at source (consumers silently fail with bad data)
+   - ❌ Individual scripts work but not chained in `npm run build`
    
    **Why this matters:** Bugs that can happen once can happen again. Automated prevention catches issues before they reach users, reduces debugging time, and builds institutional knowledge into the codebase.
 
