@@ -211,6 +211,11 @@ def process_document(doc: dict, skip_download: bool = False, force: bool = False
     print(f"   CELEX: {celex}")
     print(f"   Output: {doc['output_dir']}")
     
+    # Check for skip_pipeline flag
+    if doc.get('skip_pipeline'):
+        print(f"   ⏭️  Skipping (skip_pipeline=true in config)")
+        return True  # Not a failure, just skipped
+    
     try:
         # Step 1: Download (or use cache)
         if skip_download:
