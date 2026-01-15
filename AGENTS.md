@@ -136,6 +136,22 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    
    **Why this matters:** Bugs that can happen once can happen again. Automated prevention catches issues before they reach users, reduces debugging time, and builds institutional knowledge into the codebase.
 
+6. **Route Path Verification (When Generating URLs):**
+   
+   Before generating any portal URL (deep links, navigation, etc.):
+   
+   1. **Check `App.jsx`** or router config for exact route paths
+   2. **Verify singular vs plural** — e.g., `/regulation/` not `/regulations/`
+   3. **Test the generated URL** in browser
+   
+   **Example from DEC-011:**
+   ```
+   ❌ WRONG: /#/regulations/910-2014?section=article-5a
+   ✅ CORRECT: /#/regulation/910-2014?section=article-5a (singular)
+   ```
+   
+   **Why:** Route typos cause 404s and are easy to miss in code review.
+
 ## Project Structure
 
 ```
