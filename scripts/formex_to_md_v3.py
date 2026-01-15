@@ -911,10 +911,15 @@ def convert_formex_to_md(xml_path, output_path=None):
     md_lines.extend(article_lines)
     
     # Annexes - handle both nested ANNEX elements AND standalone annex files (ANNEX as root)
+    # Also handle CONS.ANNEX used in consolidated documents
     annexes = root.findall('.//ANNEX')
+    cons_annexes = root.findall('.//CONS.ANNEX')
+    annexes.extend(cons_annexes)
     
     # If root IS the ANNEX element, add it to the list
     if root.tag == 'ANNEX':
+        annexes = [root]
+    elif root.tag == 'CONS.ANNEX':
         annexes = [root]
     
     for annex in annexes:
