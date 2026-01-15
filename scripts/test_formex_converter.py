@@ -1253,6 +1253,64 @@ class TestNestedParagraphPointSubpointHierarchy(unittest.TestCase):
         self.assertEqual(ol_count, 1, "Should have exactly one ordered list (paragraphs)")
 
 
+class TestAlineaMixedContent(unittest.TestCase):
+    """
+    Test process_alinea_nested with mixed content (text + inline elements).
+    
+    Bug fixed: ALINEA elements with inline elements like DATE were being
+    truncated because only alinea_elem.text was captured, not the full content.
+    
+    Example:
+        <ALINEA>By <DATE>21 May 2025</DATE>, the Commission shall...</ALINEA>
+    Was converted to just "By " instead of the full text.
+    """
+    
+    def test_alinea_with_inline_date(self):
+        """ALINEA with inline DATE element should include full text."""
+        from formex_to_md_v3 import process_alinea_nested
+        
+        xml = '''<ALINEA>By <DATE ISO="20250521">21 May 2025</DATE>, the Commission shall, by means of implementing acts, establish specifications.</ALINEA>'''
+        elem = ET.fromstring(xml)
+        
+        intro_text, nested_lines = process_alinea_nested(elem)
+        
+        # Should have the full text including the date
+        self.assertIn("21 May 2025", intro_text)
+        self.assertIn("Commission shall", intro_text)
+        self.assertIn("by means of implementing acts", intro_text)
+        
+        # No nested lines for simple mixed content
+        self.assertEqual(len(nested_lines), 0)
+    
+    def test_alinea_with_multiple_inline_elements(self):
+        """ALINEA with multiple inline elements."""
+        from formex_to_md_v3 import process_alinea_nested
+        
+        xml = '''<ALINEA>Entry into force: <DATE>1 January 2026</DATE> as per <REF.DOC.OJ>OJ L 123</REF.DOC.OJ>.</ALINEA>'''
+        elem = ET.fromstring(xml)
+        
+        intro_text, nested_lines = process_alinea_nested(elem)
+        
+        self.assertIn("1 January 2026", intro_text)
+        self.assertIn("OJ L 123", intro_text)
+    
+    def test_alinea_with_structural_children_unchanged(self):
+        """ALINEA with P/LIST children should still work as before."""
+        from formex_to_md_v3 import process_alinea_nested
+        
+        xml = '''<ALINEA><P>A provider shall:</P><LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>comply</TXT></NP></ITEM></LIST></ALINEA>'''
+        elem = ET.fromstring(xml)
+        
+        intro_text, nested_lines = process_alinea_nested(elem)
+        
+        # P content should be intro
+        self.assertIn("provider shall", intro_text)
+        
+        # LIST should create nested lines
+        self.assertTrue(len(nested_lines) > 0)
+        self.assertTrue(any("(a)" in line for line in nested_lines))
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)
