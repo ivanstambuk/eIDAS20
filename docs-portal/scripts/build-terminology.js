@@ -117,10 +117,11 @@ function findDefinitionArticle(content) {
 function extractDefinitions(content) {
     const definitions = [];
 
-    // Pattern: (N) 'term' means definition
+    // Pattern: - (N) 'term' means definition (markdown list format)
     // Also handles: (Na) 'term' for numbered variants like (5a)
+    // Handles markdown list format: "- (N) 'term' means..."
     // Captures: ordinal, term, definition
-    const defPattern = /^\(?(\d+\w?)\)?\s*'([^']+)'\s*means\s+([^;]+(?:;|$))/gm;
+    const defPattern = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;]+(?:;|$))/gm;
 
     let match;
     while ((match = defPattern.exec(content)) !== null) {

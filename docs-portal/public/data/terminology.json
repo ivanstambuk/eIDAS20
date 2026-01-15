@@ -1,14 +1,2954 @@
 {
   "version": "1.0",
-  "generated": "2026-01-14T22:40:19.590Z",
+  "generated": "2026-01-15T21:54:43.754Z",
   "statistics": {
-    "totalTerms": 0,
-    "totalDefinitions": 0,
+    "totalTerms": 96,
+    "totalDefinitions": 186,
     "sources": {
-      "regulations": 0,
-      "implementingActs": 0
+      "regulations": 58,
+      "implementingActs": 128
     }
   },
-  "index": {},
-  "terms": []
+  "index": {
+    "A": [
+      "accreditation",
+      "advanced-electronic-seal",
+      "advanced-electronic-signature",
+      "attribute",
+      "authentic-source",
+      "authentication"
+    ],
+    "B": [
+      "body-governed-by-public-law"
+    ],
+    "C": [
+      "catalogue-of-attributes",
+      "catalogue-of-schemes-for-the-attestation-of-attributes",
+      "certificate-for-electronic-seal",
+      "certificate-for-electronic-signature",
+      "certificate-for-website-authentication",
+      "certificate-of-conformity",
+      "certification-body",
+      "certification-decision",
+      "conformity-assessment-body",
+      "conformity-assessment-report",
+      "conformity-assessment-scheme",
+      "creator-of-a-seal",
+      "critical-assets",
+      "cryptographic-binding"
+    ],
+    "D": [
+      "data-record"
+    ],
+    "E": [
+      "electronic-archiving",
+      "electronic-attestation-of-attributes",
+      "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
+      "electronic-document",
+      "electronic-identification",
+      "electronic-identification-means",
+      "electronic-ledger",
+      "electronic-registered-delivery-service",
+      "electronic-seal",
+      "electronic-seal-creation-data",
+      "electronic-seal-creation-device",
+      "electronic-signature",
+      "electronic-signature-creation-data",
+      "electronic-signature-creation-device",
+      "electronic-time-stamp",
+      "embedded-disclosure-policy",
+      "eu-digital-identity-wallet-trust-mark",
+      "european-digital-identity-wallet"
+    ],
+    "F": [
+      "flexible-scope-accreditation"
+    ],
+    "I": [
+      "identity-matching",
+      "incident"
+    ],
+    "N": [
+      "national-accreditation-body",
+      "national-register-of-wallet-relying-parties"
+    ],
+    "O": [
+      "object-of-certification",
+      "owner-of-a-scheme-for-the-attestation-of-attributes"
+    ],
+    "P": [
+      "person-identification-data",
+      "personal-data",
+      "product",
+      "provider-of-person-identification-data",
+      "provider-of-wallet-relying-party-access-certificates",
+      "provider-of-wallet-relying-party-registration-certificates",
+      "public-sector-body"
+    ],
+    "Q": [
+      "qualified-certificate-for-electronic-seal",
+      "qualified-certificate-for-electronic-signature",
+      "qualified-certificate-for-website-authentication",
+      "qualified-electronic-archiving-service",
+      "qualified-electronic-attestation-of-attributes",
+      "qualified-electronic-ledger",
+      "qualified-electronic-registered-delivery-service",
+      "qualified-electronic-seal",
+      "qualified-electronic-seal-creation-device",
+      "qualified-electronic-signature",
+      "qualified-electronic-signature-creation-device",
+      "qualified-electronic-time-stamp",
+      "qualified-trust-service",
+      "qualified-trust-service-provider"
+    ],
+    "R": [
+      "register-of-wallet-relying-parties",
+      "registrar-of-wallet-relying-parties",
+      "relying-party",
+      "remote-qualified-electronic-seal-creation-device",
+      "remote-qualified-electronic-signature-creation-device",
+      "risk-register"
+    ],
+    "S": [
+      "scheme-for-the-attestation-of-attributes",
+      "scheme-owner",
+      "signatory",
+      "strong-user-authentication"
+    ],
+    "T": [
+      "trust-service",
+      "trust-service-provider",
+      "type-of-electronic-attestation-of-attributes"
+    ],
+    "U": [
+      "user"
+    ],
+    "V": [
+      "validation",
+      "validation-data"
+    ],
+    "W": [
+      "wallet-cryptographic-operation",
+      "wallet-instance",
+      "wallet-provider",
+      "wallet-secure-cryptographic-application",
+      "wallet-secure-cryptographic-device",
+      "wallet-solution",
+      "wallet-unit",
+      "wallet-unit-attestation",
+      "wallet-user",
+      "wallet-relying-party",
+      "wallet-relying-party-access-certificate",
+      "wallet-relying-party-registration-certificate"
+    ]
+  },
+  "terms": [
+    {
+      "id": "accreditation",
+      "term": "accreditation",
+      "definitions": [
+        {
+          "text": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "advanced-electronic-seal",
+      "term": "advanced electronic seal",
+      "definitions": [
+        {
+          "text": "an electronic seal, which meets the requirements set out in Article 36",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "advanced-electronic-signature",
+      "term": "advanced electronic signature",
+      "definitions": [
+        {
+          "text": "an electronic signature which meets the requirements set out in Article 26",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "11"
+          }
+        }
+      ]
+    },
+    {
+      "id": "attribute",
+      "term": "attribute",
+      "definitions": [
+        {
+          "text": "a characteristic, quality, right or permission of a natural or legal person or of an object",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "43"
+          }
+        }
+      ]
+    },
+    {
+      "id": "authentic-source",
+      "term": "authentic source",
+      "definitions": [
+        {
+          "text": "a repository or system, held under the responsibility of a public sector body or private entity, that contains and provides attributes about a natural or legal person or object and that is considered to be a primary source of that information or recognised as authentic in accordance with Union or national law, including administrative practice",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "47"
+          }
+        }
+      ]
+    },
+    {
+      "id": "authentication",
+      "term": "authentication",
+      "definitions": [
+        {
+          "text": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "body-governed-by-public-law",
+      "term": "body governed by public law",
+      "definitions": [
+        {
+          "text": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28.3.2014, p. 65).\\]",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "catalogue-of-attributes",
+      "term": "catalogue of attributes",
+      "definitions": [
+        {
+          "text": "a digital repository of attributes that is maintained and published online by the Commission",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "catalogue-of-schemes-for-the-attestation-of-attributes",
+      "term": "catalogue of schemes for the attestation of attributes",
+      "definitions": [
+        {
+          "text": "a digital repository listing schemes for the attestation of attributes registered in accordance with this Regulation and that is maintained [and published online] by the Commission",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certificate-for-electronic-seal",
+      "term": "certificate for electronic seal",
+      "definitions": [
+        {
+          "text": "an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certificate-for-electronic-signature",
+      "term": "certificate for electronic signature",
+      "definitions": [
+        {
+          "text": "an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certificate-for-website-authentication",
+      "term": "certificate for website authentication",
+      "definitions": [
+        {
+          "text": "an electronic attestation that makes it possible to authenticate a website and links the website to the natural or legal person to whom the certificate is issued",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "38"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certificate-of-conformity",
+      "term": "certificate of conformity",
+      "definitions": [
+        {
+          "text": "a document by which a conformity assessment body attests a certification decision that positively confirms that a specific qualified trust service provider and the qualified trust service it provides comply with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certification-body",
+      "term": "certification body",
+      "definitions": [
+        {
+          "text": "a third-party conformity assessment body operating certification schemes",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certification-decision",
+      "term": "certification decision",
+      "definitions": [
+        {
+          "text": "a certification decision, which follows a conformity assessment conducted by a conformity assessment body where that body positively or negatively confirms the conformity of a specific qualified trust service provider and the qualified trust service it provides with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "conformity-assessment-body",
+      "term": "conformity assessment body",
+      "definitions": [
+        {
+          "text": "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "18"
+          }
+        }
+      ]
+    },
+    {
+      "id": "conformity-assessment-report",
+      "term": "conformity assessment report",
+      "definitions": [
+        {
+          "text": "a document that provides detailed information, where applicable supplementary to that contained in a certification decision and associated certificate of conformity, on the method used to carry out, in accordance with a conformity assessment scheme, a conformity assessment of the compliance of a specific qualified trust service provider and the qualified trust service it provides with the requirements of Regulation (EU) No 910/2014 and of Article 21 of Directive (EU) 2022/2555 and on the results of the conformity assessment",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "conformity-assessment-scheme",
+      "term": "conformity assessment scheme",
+      "definitions": [
+        {
+          "text": "a set of rules and procedures to be used by conformity assessment bodies for the purpose of the assessment of the conformity of qualified trust service providers and the qualified trust services that they provide with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "creator-of-a-seal",
+      "term": "creator of a seal",
+      "definitions": [
+        {
+          "text": "a legal person who creates an electronic seal",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "24"
+          }
+        }
+      ]
+    },
+    {
+      "id": "critical-assets",
+      "term": "critical assets",
+      "definitions": [
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cryptographic-binding",
+      "term": "cryptographic binding",
+      "definitions": [
+        {
+          "text": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means. ### Article 3 **General provisions** Regarding the protocols and interfaces referred to in Articles 4 and 5, wallet providers shall ensure that wallet units: - (1) authenticate and validate the wallet-relying party access certificates where interacting with wallet-relying parties",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "data-record",
+      "term": "data record",
+      "definitions": [
+        {
+          "text": "electronic data recorded with related meta-data supporting the processing of the data",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "56"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-archiving",
+      "term": "electronic archiving",
+      "definitions": [
+        {
+          "text": "a service ensuring the receipt, storage, retrieval and deletion of electronic data and electronic documents in order to ensure their durability and legibility as well as to preserve their integrity, confidentiality and proof of origin throughout the preservation period",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "48"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-attestation-of-attributes",
+      "term": "electronic attestation of attributes",
+      "definitions": [
+        {
+          "text": "an attestation in electronic form that allows attributes to be authenticated",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "44"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
+      "term": "electronic attestation of attributes issued by or on behalf of a public sector body responsible for an authentic source",
+      "definitions": [
+        {
+          "text": "an electronic attestation of attributes issued by a public sector body that is responsible for an authentic source or by a public sector body that is designated by the Member State to issue such attestations of attributes on behalf of the public sector bodies responsible for authentic sources in accordance with Article 45f and with Annex VII",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "46"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-document",
+      "term": "electronic document",
+      "definitions": [
+        {
+          "text": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "35"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-identification",
+      "term": "electronic identification",
+      "definitions": [
+        {
+          "text": "the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-identification-means",
+      "term": "electronic identification means",
+      "definitions": [
+        {
+          "text": "a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-ledger",
+      "term": "electronic ledger",
+      "definitions": [
+        {
+          "text": "a sequence of electronic data records, ensuring the integrity of those records and the accuracy of the chronological ordering of those records",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "52"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-registered-delivery-service",
+      "term": "electronic registered delivery service",
+      "definitions": [
+        {
+          "text": "a service that makes it possible to transmit data between third parties by electronic means and provides evidence relating to the handling of the transmitted data, including proof of sending and receiving the data, and that protects transmitted data against the risk of loss, theft, damage or any unauthorised alterations",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "36"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-seal",
+      "term": "electronic seal",
+      "definitions": [
+        {
+          "text": "data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter’s origin and integrity",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "25"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-seal-creation-data",
+      "term": "electronic seal creation data",
+      "definitions": [
+        {
+          "text": "unique data, which is used by the creator of the electronic seal to create an electronic seal",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "28"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-seal-creation-device",
+      "term": "electronic seal creation device",
+      "definitions": [
+        {
+          "text": "configured software or hardware used to create an electronic seal",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "31"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-signature",
+      "term": "electronic signature",
+      "definitions": [
+        {
+          "text": "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-signature-creation-data",
+      "term": "electronic signature creation data",
+      "definitions": [
+        {
+          "text": "unique data which is used by the signatory to create an electronic signature",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-signature-creation-device",
+      "term": "electronic signature creation device",
+      "definitions": [
+        {
+          "text": "configured software or hardware used to create an electronic signature",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "22"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-time-stamp",
+      "term": "electronic time stamp",
+      "definitions": [
+        {
+          "text": "data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "33"
+          }
+        }
+      ]
+    },
+    {
+      "id": "embedded-disclosure-policy",
+      "term": "embedded disclosure policy",
+      "definitions": [
+        {
+          "text": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes. ### Article 3 **Establishment of national certification schemes** 1. Member States shall assign a scheme owner for each national certification scheme. 2. The object of certification defined in national certification schemes shall be the provision and operation of wallet solutions and of the electronic identification schemes under which they are provided. 3. In accordance with Implementing Regulation (EU) 2015/1502, the object of certification in national certification schemes shall include the following elements: - (a) the software components, including settings and configurations of a wallet solution and of the electronic identification scheme under which the wallet solutions are provided",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "14"
+          }
+        },
+        {
+          "text": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eu-digital-identity-wallet-trust-mark",
+      "term": "EU Digital Identity Wallet Trust Mark",
+      "definitions": [
+        {
+          "text": "a verifiable, simple and recognisable indication which is communicated in a clear manner that a European Digital Identity Wallet has been provided in accordance with this Regulation",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "european-digital-identity-wallet",
+      "term": "European Digital Identity Wallet",
+      "definitions": [
+        {
+          "text": "an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "42"
+          }
+        }
+      ]
+    },
+    {
+      "id": "flexible-scope-accreditation",
+      "term": "flexible scope accreditation",
+      "definitions": [
+        {
+          "text": "an accreditation where the specific conformity assessment activities for which accreditation is sought, or has been granted, are expressed to allow conformity assessment bodies to make changes in methodology and other parameters which fall within the competence of the conformity assessment body as confirmed by the national accreditation body",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "identity-matching",
+      "term": "identity matching",
+      "definitions": [
+        {
+          "text": "a process where person identification data, or electronic identification means are matched with or linked to an existing account belonging to the same person",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "55"
+          }
+        }
+      ]
+    },
+    {
+      "id": "incident",
+      "term": "incident",
+      "definitions": [
+        {
+          "text": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "national-accreditation-body",
+      "term": "national accreditation body",
+      "definitions": [
+        {
+          "text": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008. ### Article 2 **Accreditation of conformity assessment bodies** 1. For the purposes of making certification decisions in accordance with a specific conformity assessment scheme, conformity assessment bodies shall be accredited in accordance with standard EN ISO/IEC 17065:2012 supplemented by standard ETSI EN 319403-1 v2.3.1. 2. The accreditation of conformity assessment bodies referred to in paragraph 1 shall be performed by a national accreditation body in compliance with standard EN ISO/IEC 17011:2017. ### Article 3 **Accreditation certificate issued to conformity assessment bodies** 1. National accreditation bodies shall ensure that the accreditation certificates they issue to conformity assessment bodies contain at least the following information: - (a) the unique accreditation certificate identity code",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "national-register-of-wallet-relying-parties",
+      "term": "national register of wallet-relying parties",
+      "definitions": [
+        {
+          "text": "a national electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "object-of-certification",
+      "term": "object of certification",
+      "definitions": [
+        {
+          "text": "products, processes and services or a combination thereof to which specified requirements apply",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "owner-of-a-scheme-for-the-attestation-of-attributes",
+      "term": "owner of a scheme for the attestation of attributes",
+      "definitions": [
+        {
+          "text": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes. ### Article 3 **Issuance of qualified electronic attestations of attributes and electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source** 1. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall comply with the list of reference standards and specifications set out in Annex I and shall ensure that the electronic attestations of attributes they issue comply with the technical specifications set out in Annex II. 2. Where providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source issue electronic attestations of attributes which are included in schemes registered in the catalogue of schemes for the attestation of attributes, they shall comply with the requirements of the corresponding scheme for the attestation of attributes. Policies and procedures established by the issuers of attestations in order to grant compliance with the requirements of the schemes for the attestation of attributes shall be part of the conformity assessment established in Regulation (EU) No 910/2014. ### Article 4 **Revocation of qualified electronic attestations of attributes and electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source** 1. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall have written and publicly accessible policies relating to validity or revocation status management. These policies shall include, where applicable, the conditions under which electronic attestations of attributes can be revoked without delay and measures for ensuring the availability of the validity status information. 2. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall be the only entities able to revoke the electronic attestations of attributes they issue. 3. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source, whenever those attestations are issued with a validity period of more than 24 hours, shall revoke them in at least the following circumstances: - (a) upon the explicit request of the person to whom the electronic attestation of attributes was issued or, where applicable, of the subject of the attestation",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "person-identification-data",
+      "term": "person identification data",
+      "definitions": [
+        {
+          "text": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person. - (4) 'electronic identification scheme' means a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "personal-data",
+      "term": "personal data",
+      "definitions": [
+        {
+          "text": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "54"
+          }
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "term": "product",
+      "definitions": [
+        {
+          "text": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "21"
+          }
+        }
+      ]
+    },
+    {
+      "id": "provider-of-person-identification-data",
+      "term": "provider of person identification data",
+      "definitions": [
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "15"
+          }
+        },
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        },
+        {
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit. ### Article 3 **Format, procedure for submissions and information to be submitted by Member States to the Commission** 1. Member States shall submit the information set out in the Annex to the Commission and to the Cooperation Group through a secure electronic channel made available by the Commission. 2. Member States shall submit the information required under paragraph 1 at least in English. 3. Where there are any changes to the submitted information, including changes to the certification status of the wallets, Member States shall submit the updated information through the channel referred to in paragraph 1. ### Article 4 **Entry into force** This Regulation shall enter into force on the twentieth day following that of its publication in the --- This Regulation shall be binding in its entirety and directly applicable in all Member States. Done at Brussels, 6 May 2025. *For the Commission* *The President* Ursula von der Leyen",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "provider-of-wallet-relying-party-access-certificates",
+      "term": "provider of wallet-relying party access certificates",
+      "definitions": [
+        {
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State. ### Article 3 **Issuance of person identification data to wallet units** 1. Providers of person identification data shall issue person identification data to wallet units in accordance with the electronic identification schemes under which wallet solutions are provided. 2. Providers of person identification data shall ensure that person identification data issued to wallet units contains the information necessary for authentication and validation of the person identification data. 3. Providers of person identification data shall ensure that person identification data issued to wallet units comply with the technical specifications set out in the Annex. 4. Member States shall ensure that the person identification data issued to a given wallet user is unique for the Member State. 5. Providers of person identification data shall ensure that person identification data that they issue is cryptographically bound to the wallet unit to which it is issued. 6. Member States shall make publicly available a list of wallet solutions that are supported by providers of person identification data that is part of electronic identification schemes of that Member State. 7. Member States shall enroll wallet users in accordance with the requirements relating to enrolment at assurance level high, as set out in Commission Implementing Regulation (EU) 2015/1502 \\[Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2015/1502/oj).\\]. In the context of the enrolment process, providers of person identification data shall perform identity verification of the wallet user in accordance with the requirements related to identity proofing and verification before issuing the person identification data to the wallet unit of the corresponding wallet user. 8. When issuing person identification data to wallet units, providers of person identification data shall identify themselves to wallet units using their wallet-relying party access certificate or by using another authentication mechanism in accordance with an electronic identity scheme notified at assurance level high. 9. Before issuing person identification data to a wallet unit, providers of person identification data shall authenticate and validate the wallet unit attestation of the wallet unit and verify that the wallet unit belongs to a wallet solution the provider of person identification data accepts or use another authentication mechanism in accordance with an electronic identity scheme notified at assurance level high. ### Article 4 **Issuance of electronic attestations of attributes to wallet units** 1. Electronic attestations of attributes issued to wallet units shall comply with at least one of the standards in the list set out in Annex I of Implementing Regulation (EU) 2024/2979. 2. Providers of electronic attestations of attributes shall identify themselves to wallet units using their wallet-relying party access certificate. 3. Providers of electronic attestations of attributes shall ensure that electronic attestations of attributes issued to wallet units contain the information necessary for authentication and validation of those electronic attestations of attributes. ### Article 5 **Revocation of person identification data** 1. Providers of person identification data issued to a wallet unit shall have written and publicly accessible policies relating to validity status management, including, where applicable, the conditions under which such person identification data can be revoked without delay. 2. Only providers of person identification data or electronic attestation of attributes can revoke the person identification data or electronic attestations of attributes issued by them. 3. Where providers of person identification data have revoked person identification data, they shall, through dedicated and secure channels, inform wallet users subject of those person identification data within 24 hours of the revocation and of the reasons for the revocation. This shall be done in a manner that is concise, easily accessible and using clear and plain language. 4. Where providers of person identification data revoke person identification data issued to wallet units, they shall do so in each of the following circumstances: - (a) upon the explicit request of the wallet user to whose wallet unit the person identification data or electronic attestation of attributes were issued to",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        },
+        {
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State. ### Article 3 **Wallet unit integrity** 1. Wallet units shall not perform any functionality listed in Article 5a(4) of Regulation (EU) No 910/2014, except wallet user authentication to access the wallet unit, until the wallet unit has successfully authenticated the wallet user. 2. Wallet providers shall, for each wallet unit, sign or seal, at least one wallet unit attestation compliant with the requirements laid down in Article 6. The certificate used to sign or seal the wallet unit attestation shall be issued under a certificate listed in the trusted list referred to in Implementing Regulation (EU) 2024/2980. ### Article 4 **Wallet instances** 1. Wallet instances shall use at least one wallet secure cryptographic device to manage critical assets. 2. Wallet providers shall ensure integrity, authenticity and confidentiality of the communication between wallet instances and wallet secure cryptographic applications. 3. Where critical assets relate to performing electronic identification at assurance level high, the wallet cryptographic operations or other operations processing critical assets shall be performed in accordance with the requirements for the characteristics and design of electronic identification means at assurance level high, as set out in Commission Implementing Regulation (EU) 2015/1502 \\[Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2015/1502/oj).\\]. ### Article 5 **Wallet secure cryptographic applications** 1. Wallet providers shall ensure that wallet secure cryptographic applications: - (a) perform wallet cryptographic operations involving critical assets other than those needed for the wallet unit to authenticate the wallet user only in cases where those applications have successfully authenticated wallet users",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "15"
+          }
+        },
+        {
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        },
+        {
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        },
+        {
+          "text": "a natural or legal person mandated by a Member State to issue wallet-relying party access certificates to wallet-relying parties registered in that Member State",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        }
+      ]
+    },
+    {
+      "id": "provider-of-wallet-relying-party-registration-certificates",
+      "term": "provider of wallet-relying party registration certificates",
+      "definitions": [
+        {
+          "text": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State. ### Article 3 **National registers** 1. Member States shall establish and maintain at least one national register of wallet-relying parties with information regarding registered wallet-relying parties established in that Member State. 2. The register shall include at least the information set out in Annex I. 3. Member States shall designate at least one registrar to manage and operate at least one national register of wallet-relying parties. 4. Member States shall make the information set out in Annex I on registered wallet-relying parties publicly available online, both in human-readable form and in a form suitable for automated processing. 5. The information referred to in paragraph 2 shall be available through a single common application programming interface ( > API 6. Member States shall ensure that the API referred to in paragraph 5 complies with the common requirements set out in Section 2 of Annex II. 7. Member States shall ensure that the registers comply with the relevant common registration policies set out in Article 4. ### Article 4 **Registration policies** 1. Member States shall lay down and publish one or more national registration policies applicable to the national registers established in their territory. 2. Member States may include or reuse existing sectoral or national registration policies. 3. The national registration policy shall include at least information on: - (a) the identification and authentication procedures applicable to wallet-relying parties during the registration process",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-sector-body",
+      "term": "public sector body",
+      "definitions": [
+        {
+          "text": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-certificate-for-electronic-seal",
+      "term": "qualified certificate for electronic seal",
+      "definitions": [
+        {
+          "text": "a certificate for an electronic seal, that is issued by a qualified trust service provider and meets the requirements laid down in Annex III",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-certificate-for-electronic-signature",
+      "term": "qualified certificate for electronic signature",
+      "definitions": [
+        {
+          "text": "a certificate for electronic signatures, that is issued by a qualified trust service provider and meets the requirements laid down in Annex I",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-certificate-for-website-authentication",
+      "term": "qualified certificate for website authentication",
+      "definitions": [
+        {
+          "text": "a certificate for website authentication, which is issued by a qualified trust service provider and meets the requirements laid down in Annex IV",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "39"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-archiving-service",
+      "term": "qualified electronic archiving service",
+      "definitions": [
+        {
+          "text": "an electronic archiving service which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45j",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "49"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-attestation-of-attributes",
+      "term": "qualified electronic attestation of attributes",
+      "definitions": [
+        {
+          "text": "an electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "45"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-ledger",
+      "term": "qualified electronic ledger",
+      "definitions": [
+        {
+          "text": "an electronic ledger which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45l",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "53"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-registered-delivery-service",
+      "term": "qualified electronic registered delivery service",
+      "definitions": [
+        {
+          "text": "an electronic registered delivery service which meets the requirements laid down in Article 44",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "37"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-seal",
+      "term": "qualified electronic seal",
+      "definitions": [
+        {
+          "text": "an advanced electronic seal, which is created by a qualified electronic seal creation device, and that is based on a qualified certificate for electronic seal",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "27"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-seal-creation-device",
+      "term": "qualified electronic seal creation device",
+      "definitions": [
+        {
+          "text": "an electronic seal creation device that meets mutatis mutandis the requirements laid down in Annex II",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "32"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-signature",
+      "term": "qualified electronic signature",
+      "definitions": [
+        {
+          "text": "an advanced electronic signature that is created by a qualified electronic signature creation device, and which is based on a qualified certificate for electronic signatures",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-signature-creation-device",
+      "term": "qualified electronic signature creation device",
+      "definitions": [
+        {
+          "text": "an electronic signature creation device that meets the requirements laid down in Annex II",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-electronic-time-stamp",
+      "term": "qualified electronic time stamp",
+      "definitions": [
+        {
+          "text": "an electronic time stamp which meets the requirements laid down in Article 42",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "34"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-trust-service",
+      "term": "qualified trust service",
+      "definitions": [
+        {
+          "text": "a trust service that meets the applicable requirements laid down in this Regulation",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "17"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qualified-trust-service-provider",
+      "term": "qualified trust service provider",
+      "definitions": [
+        {
+          "text": "a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "20"
+          }
+        }
+      ]
+    },
+    {
+      "id": "register-of-wallet-relying-parties",
+      "term": "register of wallet-relying parties",
+      "definitions": [
+        {
+          "text": "an electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "registrar-of-wallet-relying-parties",
+      "term": "registrar of wallet-relying parties",
+      "definitions": [
+        {
+          "text": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory who has been designated by a Member State",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory and who has been designated by a Member State",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "relying-party",
+      "term": "relying party",
+      "definitions": [
+        {
+          "text": "a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "remote-qualified-electronic-seal-creation-device",
+      "term": "remote qualified electronic seal creation device",
+      "definitions": [
+        {
+          "text": "a qualified electronic seal creation device that is managed by a qualified trust service provider in accordance with Article 39a on behalf of a seal creator",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "23b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "remote-qualified-electronic-signature-creation-device",
+      "term": "remote qualified electronic signature creation device",
+      "definitions": [
+        {
+          "text": "a qualified electronic signature creation device that is managed by a qualified trust service provider in accordance with Article 29a on behalf of a signatory",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "23a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "risk-register",
+      "term": "risk register",
+      "definitions": [
+        {
+          "text": "a record of information relevant to the certification process about identified risks",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scheme-for-the-attestation-of-attributes",
+      "term": "scheme for the attestation of attributes",
+      "definitions": [
+        {
+          "text": "a set of rules applicable to one or more types of electronic attestation of attributes",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scheme-owner",
+      "term": "scheme owner",
+      "definitions": [
+        {
+          "text": "an organisation which is responsible for developing and maintaining a certification scheme",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "an entity or a group of entities which is responsible for developing and maintaining a conformity assessment scheme",
+          "source": {
+            "celex": "32025R2162",
+            "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
+            "shortRef": "Regulation 2025/2162",
+            "slug": "2025-2162",
+            "type": "implementing-act",
+            "article": "1",
+            "ordinal": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "signatory",
+      "term": "signatory",
+      "definitions": [
+        {
+          "text": "a natural person who creates an electronic signature",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strong-user-authentication",
+      "term": "strong user authentication",
+      "definitions": [
+        {
+          "text": "an authentication based on the use of at least two authentication factors from different categories of either knowledge, something only the user knows, possession, something only the user possesses or inherence, something the user is, that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "51"
+          }
+        }
+      ]
+    },
+    {
+      "id": "trust-service",
+      "term": "trust service",
+      "definitions": [
+        {
+          "text": "an electronic service normally provided for remuneration which consists of any of the following: - (a) the issuance of certificates for electronic signatures, certificates for electronic seals, certificates for website authentication or certificates for the provision of other trust services",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "trust-service-provider",
+      "term": "trust service provider",
+      "definitions": [
+        {
+          "text": "a natural or a legal person who provides one or more trust services either as a qualified or as a non-qualified trust service provider",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "19"
+          }
+        }
+      ]
+    },
+    {
+      "id": "type-of-electronic-attestation-of-attributes",
+      "term": "type of electronic attestation of attributes",
+      "definitions": [
+        {
+          "text": "a specifically named and semantically described group of electronic attestation of attributes",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "user",
+      "term": "user",
+      "definitions": [
+        {
+          "text": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "5a"
+          }
+        }
+      ]
+    },
+    {
+      "id": "validation",
+      "term": "validation",
+      "definitions": [
+        {
+          "text": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "41"
+          }
+        }
+      ]
+    },
+    {
+      "id": "validation-data",
+      "term": "validation data",
+      "definitions": [
+        {
+          "text": "data that is used to validate an electronic signature or an electronic seal",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "40"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-cryptographic-operation",
+      "term": "wallet cryptographic operation",
+      "definitions": [
+        {
+          "text": "a cryptographic mechanism necessary in the context of authentication of the wallet user and the issuance or presentation of person identification data or electronic attestations of attributes",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "13"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-instance",
+      "term": "wallet instance",
+      "definitions": [
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and which the wallet user uses to interact with the wallet unit",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-provider",
+      "term": "wallet provider",
+      "definitions": [
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "a natural or legal person who provides wallet solutions",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-secure-cryptographic-application",
+      "term": "wallet secure cryptographic application",
+      "definitions": [
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-secure-cryptographic-device",
+      "term": "wallet secure cryptographic device",
+      "definitions": [
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-solution",
+      "term": "wallet solution",
+      "definitions": [
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "7"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-unit",
+      "term": "wallet unit",
+      "definitions": [
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "4"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-unit-attestation",
+      "term": "wallet unit attestation",
+      "definitions": [
+        {
+          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "8"
+          }
+        },
+        {
+          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        },
+        {
+          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components. ### Article 3 **Establishing a security breach or compromise** 1. Without prejudice to Directive (EU) 2022/2555 and to Regulations (EU) 2019/881 and (EU) 2024/2847, Member States shall duly consider the criteria set out in the Annex I to this Regulation to assess whether a security breach or compromise of a wallet solution, of the validation mechanisms referred to in Article 5a(8) of Regulation (EU) No 910/2014, or of the electronic identification scheme under which the wallet solution is provided, is affecting their reliability or the reliability of other wallet solutions. 2. Where a Member State establishes, on the basis of the assessment laid down in paragraph 1, that a security breach or compromise is affecting the reliability of a wallet solution and suspends the provision and the use of that wallet solution, that Member State shall take the measures set out in Articles 4 and 5. Where a Member State withdraws the wallet solution, that Member State shall take the measures set out in Articles 8 and 9. 3. Where a Member State becomes aware of information relating to a possible security breach or compromise possibly affecting the reliability of one or more wallet solutions provided by another Member State, that Member State shall, without undue delay, communicate to the Commission and the single points of contact of the affected Member States designated pursuant to Article 46c(1) of Regulation (EU) No 910/2014 on that fact. This communication shall include the information set out in Article 5(2). 4. The Member State receiving information provided pursuant to paragraph 3 shall take the measures set out in paragraphs 1 and 2 without undue delay. ### Article 4 **Suspension of the provision and the use of wallets and other remedies** 1. Member States shall ensure that no wallet units are provided, used or activated under the suspended wallet solution. 2. Member States shall evaluate whether revoking wallet unit attestations of the wallet units affected by the suspension of a wallet solution, or any other additional remedy, is necessary to react adequately to the security breach or compromise. 3. The measures set out in paragraphs 1 and 2 shall be taken without undue delay, and in any event no later than 24 hours after the suspension of the provision and the use of the wallet solution affected by the security breach or compromise. 4. The measures set out in paragraphs 1 and 2 shall not hinder affected wallet users from exercising their right to data portability set out in Article 5a(4), point (g) of Regulation (EU) No 910/2014. This is under the condition that this right may be exercised by wallet users without impairing the security of the critical assets of the affected wallet units, in particular considering the reasons for suspension and the need to ensure the effective protection of those assets against misuse. ### Article 5 **Information about suspensions and remedies** 1. Information in a clear, comprehensive and easily accessible manner about the suspension of the provision and the use of a wallet solution shall be provided, without undue delay and no later than 24 hours after the suspension of the provision and the use of the wallet solution, to: - (a) the single points of contact designated pursuant to Article 46c(1) of Regulation (EU) No 910/2014",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-user",
+      "term": "wallet user",
+      "definitions": [
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32024R2981",
+            "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2981",
+            "slug": "2024-2981",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "9"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32025R0849",
+            "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/849",
+            "slug": "2025-0849",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "5"
+          }
+        },
+        {
+          "text": "a user who is in control of the wallet unit",
+          "source": {
+            "celex": "32025R1569",
+            "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+            "shortRef": "Regulation 2025/1569",
+            "slug": "2025-1569",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-relying-party",
+      "term": "wallet-relying party",
+      "definitions": [
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "11"
+          }
+        },
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "6"
+          }
+        },
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        },
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32025R0847",
+            "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
+            "shortRef": "Regulation 2025/847",
+            "slug": "2025-0847",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "3"
+          }
+        },
+        {
+          "text": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-relying-party-access-certificate",
+      "term": "wallet-relying party access certificate",
+      "definitions": [
+        {
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+          "source": {
+            "celex": "32024R2977",
+            "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2977",
+            "slug": "2024-2977",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        },
+        {
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+          "source": {
+            "celex": "32024R2979",
+            "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
+            "shortRef": "Regulation 2024/2979",
+            "slug": "2024-2979",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "14"
+          }
+        },
+        {
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates. ### Article 3 **Notification system** 1. The Commission shall make available to Member States a secure electronic notification system, no later than twelve months after the publication of this Regulation in the *Official Journal of the European Union*, enabling Member States to notify the information on the bodies and mechanisms referred to in Article 5a(18) of Regulation (EU) No 910/2014. 2. The secure electronic notification system shall comply with the technical requirements laid down in Annex I. ### Article 4 **Notifications by Member States** 1. Member States shall submit, through the secure electronic notification system referred to in Article 3(1), at least the information specified in Annex II. 2. Member States shall make the notifications at least in English. Member States shall not be obliged to translate any document supporting the notifications where this would create an unreasonable administrative or financial burden. 3. The Commission may request additional information or clarifications from the Member States for the purpose of verifying the completeness and consistency of the notified information. ### Article 5 **Publications by the Commission** 1. The Commission shall establish, maintain and publish a list compiling the information notified by Member States on registrars of wallet-relying parties and registers of wallet-relying parties as referred to in Annex II section 1. 2. The Commission shall establish, maintain and publish a list compiling the information notified by Member States on wallet providers, providers of person identification data and providers of wallet-relying party access certificates, as referred to in Annex II sections 2, 3 and 4. 3. The Commission shall ensure the lists referred to in paragraphs 1 and 2 of this Article can be accessed: - (a) in both electronically signed or sealed form suitable for automated processing and through a human readable website available in at least English",
+          "source": {
+            "celex": "32024R2980",
+            "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+            "shortRef": "Regulation 2024/2980",
+            "slug": "2024-2980",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "14"
+          }
+        },
+        {
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "10"
+          }
+        },
+        {
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wallet-relying-party-registration-certificate",
+      "term": "wallet-relying party registration certificate",
+      "definitions": [
+        {
+          "text": "a data object that indicates the attributes the relying party has registered to intend to request from users",
+          "source": {
+            "celex": "32024R2982",
+            "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+            "shortRef": "Regulation 2024/2982",
+            "slug": "2024-2982",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "14"
+          }
+        },
+        {
+          "text": "a data object that describes the intended use of the relying party and indicates the attributes the relying party has registered to intend to request from users",
+          "source": {
+            "celex": "32025R0848",
+            "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+            "shortRef": "Regulation 2025/848",
+            "slug": "2025-0848",
+            "type": "implementing-act",
+            "article": "2",
+            "ordinal": "15"
+          }
+        }
+      ]
+    }
+  ]
 }

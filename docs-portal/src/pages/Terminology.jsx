@@ -25,7 +25,6 @@ const Terminology = () => {
     const [terminology, setTerminology] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
     const [expandedTerms, setExpandedTerms] = useState(new Set());
 
     // Load terminology data
@@ -45,17 +44,11 @@ const Terminology = () => {
         loadTerminology();
     }, []);
 
-    // Filter terms based on search query
+    // All terms (filtering removed - use global search instead)
     const filteredTerms = useMemo(() => {
         if (!terminology) return [];
-        if (!searchQuery.trim()) return terminology.terms;
-
-        const query = searchQuery.toLowerCase();
-        return terminology.terms.filter(term =>
-            term.term.toLowerCase().includes(query) ||
-            term.definitions.some(d => d.text.toLowerCase().includes(query))
-        );
-    }, [terminology, searchQuery]);
+        return terminology.terms;
+    }, [terminology]);
 
     // Group filtered terms by first letter
     const groupedTerms = useMemo(() => {
@@ -191,47 +184,11 @@ const Terminology = () => {
             </nav>
 
 
-            {/* Search */}
-            <div className="search-box" style={{ marginBottom: 'var(--space-8)', maxWidth: '500px' }}>
-                <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.35-4.35" />
-                </svg>
-                <input
-                    type="text"
-                    className="input"
-                    placeholder="Search terms and definitions..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                {searchQuery && (
-                    <button
-                        onClick={() => setSearchQuery('')}
-                        className="btn btn-ghost"
-                        style={{
-                            position: 'absolute',
-                            right: 'var(--space-2)',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            padding: 'var(--space-1)'
-                        }}
-                    >
-                        ✕
-                    </button>
-                )}
-            </div>
-
-            {/* Results count */}
-            {searchQuery && (
-                <p className="text-sm text-muted" style={{ marginBottom: 'var(--space-4)' }}>
-                    Found {filteredTerms.length} term{filteredTerms.length !== 1 ? 's' : ''} matching "{searchQuery}"
-                </p>
-            )}
 
             {/* Terms list grouped by letter */}
             {availableLetters.length === 0 ? (
                 <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
-                    <p className="text-muted">No terms found matching your search.</p>
+                    <p className="text-muted">No terms available. Run <code>npm run build:terminology</code> to generate terminology data.</p>
                 </div>
             ) : (
                 availableLetters.map(letter => (
