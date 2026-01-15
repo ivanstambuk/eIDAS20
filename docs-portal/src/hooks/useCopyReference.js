@@ -88,7 +88,8 @@ function getDocumentType(type, title) {
  * Examples:
  * - "article-5a" → "Article 5a"
  * - "article-5a-para-1" → "Article 5a(1)"
- * - "article-5a-point-a" → "Article 5a, point (a)"
+ * - "article-5a-para-1-point-a" → "Article 5a(1)(a)"
+ * - "article-19a-para-1-point-a-subpoint-i" → "Article 19a(1)(a)(i)"
  * - "chapter-iii" → "Chapter III"
  * - "preamble" → "Preamble"
  * - "recitals" → "Recitals"
@@ -104,6 +105,30 @@ function formatHeadingReference(headingId) {
     if (headingId === 'recitals') return 'Recitals';
     if (headingId === 'enacting-terms') return 'Enacting Terms';
 
+    // Phase 3: Handle full hierarchy - article-19a-para-1-point-a-subpoint-i
+    // Matches: article-{num}-para-{n}-point-{letter}-subpoint-{roman}
+    const fullHierarchyMatch = headingId.match(
+        /^article-([^-]+(?:-[a-z])?)-para-(\d+)-point-([a-z])-subpoint-([ivx]+)$/
+    );
+    if (fullHierarchyMatch) {
+        const articleNum = formatArticleNumber(fullHierarchyMatch[1]);
+        const paraNum = fullHierarchyMatch[2];
+        const pointLetter = fullHierarchyMatch[3];
+        const romanNumeral = fullHierarchyMatch[4];
+        return `Article ${articleNum}(${paraNum})(${pointLetter})(${romanNumeral})`;
+    }
+
+    // Phase 2+: Handle point with paragraph context - article-5a-para-1-point-a
+    const pointWithParaMatch = headingId.match(
+        /^article-([^-]+(?:-[a-z])?)-para-(\d+)-point-([a-z])$/
+    );
+    if (pointWithParaMatch) {
+        const articleNum = formatArticleNumber(pointWithParaMatch[1]);
+        const paraNum = pointWithParaMatch[2];
+        const pointLetter = pointWithParaMatch[3];
+        return `Article ${articleNum}(${paraNum})(${pointLetter})`;
+    }
+
     // Phase 2: Handle paragraphs - article-5a-para-1 → Article 5a(1)
     const paraMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-para-(\d+)$/);
     if (paraMatch) {
@@ -112,8 +137,8 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}(${paraNum})`;
     }
 
-    // Phase 2: Handle points - article-5a-point-a → Article 5a(a)
-    // Concise format per user preference: Article 1(1)(a) style
+    // Legacy: Handle points without paragraph context - article-5a-point-a
+    // (kept for backward compatibility)
     const pointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-point-([a-z])$/);
     if (pointMatch) {
         const articleNum = formatArticleNumber(pointMatch[1]);
@@ -121,8 +146,8 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}(${pointLetter})`;
     }
 
-    // Phase 3: Handle subpoints - article-5a-subpoint-ii → Article 5a(ii)
-    // Concise format: Article 1(1)(a)(i) style
+    // Legacy: Handle subpoints without full context - article-5a-subpoint-ii
+    // (kept for backward compatibility)
     const subpointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-subpoint-([ivx]+)$/);
     if (subpointMatch) {
         const articleNum = formatArticleNumber(subpointMatch[1]);
