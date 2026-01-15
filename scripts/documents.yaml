@@ -124,7 +124,7 @@ documents:
 - celex: 32025R1946
   title: Wallet Reference Issuer
   type: implementing_act
-  cellar_id: e28b6ae5-9d97-11f0-97c8-01aa75ed71a1.0006.02
+  cellar_id: 2fa94e9a-9d98-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1946_Wallet_Reference_Issuer
 - celex: 32025R2160
   title: Supervisory Data Exchange
