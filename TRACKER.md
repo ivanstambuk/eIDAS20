@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-14 23:52 CET |
+| **Last Updated** | 2026-01-15 01:33 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages / additional enhancements |
@@ -36,6 +36,7 @@
 - **Preamble injection** (78 recitals from 2024/1183 amendment injected into consolidated 910/2014)
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
+- **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
 
 ---
 
