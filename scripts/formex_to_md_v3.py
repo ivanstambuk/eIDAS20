@@ -659,6 +659,14 @@ def process_list_nested(list_elem, base_indent="", level=0):
             for nested_list in np_elem.findall('P/LIST'):
                 nested = process_list_nested(nested_list, base_indent, level + 1)
                 lines.extend(nested)
+        else:
+            # Fallback: ITEM with P children but no NP wrapper
+            # Example: <ITEM><P>for a legal person: the name...</P></ITEM>
+            p_elem = item.find('P')
+            if p_elem is not None:
+                text = clean_text(get_element_text(p_elem))
+                if text:
+                    lines.append(f"{indent}  - {text}")
         
         # Also check for LIST directly under ITEM (sibling of NP)
         for nested_list in item.findall('LIST'):
@@ -946,21 +954,77 @@ def convert_formex_to_md(xml_path, output_path=None):
                     md_lines.append(f"**{subtitle}**")
                     md_lines.append("")
             
-            # Process only DIRECT child lists in GR.SEQ (not nested via .//LIST which causes duplicates)
-            # GR.SEQ typically contains: TITLE, then LIST elements directly or inside CONTENTS
+            # Process content within GR.SEQ
+            # Look for CONTENTS first, otherwise use GR.SEQ directly
             contents = gr_seq.find('CONTENTS') or gr_seq
+            
+            # Extract intro paragraph(s) BEFORE the list
+            # Example: <P>Qualified certificates shall contain:</P> <LIST>...</LIST>
+            for p in contents.findall('P'):
+                # Skip P elements that contain LIST (these are list wrapper, not intro)
+                if p.find('LIST') is not None:
+                    continue
+                text = clean_text(get_element_text(p))
+                if text:
+                    md_lines.append(text)
+                    md_lines.append("")
+            
+            # Process lists with proper nesting support
             for list_elem in contents.findall('LIST'):
-                list_lines = process_list_simple(list_elem, 0)
+                # Use process_list_nested for proper nested sub-items
+                list_lines = process_list_nested(list_elem, base_indent="", level=0)
                 md_lines.extend(list_lines)
                 if list_lines:
                     md_lines.append("")
+            
+            # Process NP elements directly inside GR.SEQ (numbered paragraphs)
+            # Example from ANNEX II: <NP><NO.P>1.</NO.P><TXT>...</TXT><P><LIST>...</LIST></P></NP>
+            for np_elem in contents.findall('NP'):
+                no_p = np_elem.find('NO.P')
+                number = get_element_text(no_p).strip() if no_p is not None else ""
+                
+                # Get paragraph text from TXT
+                txt_elem = np_elem.find('TXT')
+                if txt_elem is not None:
+                    text = clean_text(get_element_text(txt_elem))
+                else:
+                    text = ""
+                
+                # Output the numbered paragraph
+                if number and text:
+                    md_lines.append(f"{number} {text}")
+                elif text:
+                    md_lines.append(text)
+                md_lines.append("")
+                
+                # Process nested lists inside this NP (e.g., points (a), (b), etc.)
+                for nested_list in np_elem.findall('P/LIST'):
+                    list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                    md_lines.extend(list_lines)
+                    if list_lines:
+                        md_lines.append("")
+                for nested_list in np_elem.findall('LIST'):
+                    list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                    md_lines.extend(list_lines)
+                    if list_lines:
+                        md_lines.append("")
         
         # Fallback: if no GR.SEQ found, try direct content extraction
         if not gr_seqs:
             contents = annex.find('CONTENTS')
             if contents is not None:
-                for list_elem in contents.findall('.//LIST'):
-                    list_lines = process_list_simple(list_elem, 0)
+                # Extract intro paragraphs
+                for p in contents.findall('P'):
+                    if p.find('LIST') is not None:
+                        continue
+                    text = clean_text(get_element_text(p))
+                    if text:
+                        md_lines.append(text)
+                        md_lines.append("")
+                
+                # Process lists with nesting
+                for list_elem in contents.findall('LIST'):
+                    list_lines = process_list_nested(list_elem, base_indent="", level=0)
                     md_lines.extend(list_lines)
                     if list_lines:
                         md_lines.append("")
