@@ -1129,6 +1129,130 @@ class TestDefinitionsIndentation(unittest.TestCase):
             os.unlink(temp_path)
 
 
+class TestNestedParagraphPointSubpointHierarchy(unittest.TestCase):
+    """Test that paragraphs, points, and subpoints are properly nested in Markdown.
+    
+    v3.1 FIX: The converter should produce properly nested Markdown lists so that
+    the HTML structure correctly reflects the EU legal hierarchy:
+    
+    1. Paragraph text...
+       - (a) point text...
+          - (i) subpoint text...
+    """
+    
+    def test_points_nested_under_paragraph(self):
+        """Points (a), (b), (c) should be indented under their parent paragraph."""
+        from formex_to_md_v3 import extract_articles
+        
+        xml = '''<ROOT>
+          <ARTICLE>
+            <TI.ART>Article 1</TI.ART>
+            <PARAG>
+              <NO.PARAG>1.</NO.PARAG>
+              <ALINEA>
+                <P>The provider shall:</P>
+                <LIST>
+                  <ITEM><NP><NO.P>(a)</NO.P><TXT>first point;</TXT></NP></ITEM>
+                  <ITEM><NP><NO.P>(b)</NO.P><TXT>second point.</TXT></NP></ITEM>
+                </LIST>
+              </ALINEA>
+            </PARAG>
+          </ARTICLE>
+        </ROOT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_articles(root)
+        output = '\n'.join(lines)
+        
+        # Points should be indented (3 spaces under paragraph)
+        self.assertIn('   - (a)', output,
+            "Point (a) should be indented 3 spaces under paragraph")
+        self.assertIn('   - (b)', output,
+            "Point (b) should be indented 3 spaces under paragraph")
+    
+    def test_subpoints_nested_under_points(self):
+        """Subpoints (i), (ii) should be indented under their parent point."""
+        from formex_to_md_v3 import extract_articles
+        
+        xml = '''<ROOT>
+          <ARTICLE>
+            <TI.ART>Article 19a</TI.ART>
+            <PARAG>
+              <NO.PARAG>1.</NO.PARAG>
+              <ALINEA>
+                <P>A provider shall:</P>
+                <LIST>
+                  <ITEM>
+                    <NP><NO.P>(a)</NO.P><TXT>have policies including:</TXT></NP>
+                    <LIST>
+                      <ITEM><NP><NO.P>(i)</NO.P><TXT>registration;</TXT></NP></ITEM>
+                      <ITEM><NP><NO.P>(ii)</NO.P><TXT>checks;</TXT></NP></ITEM>
+                    </LIST>
+                  </ITEM>
+                  <ITEM><NP><NO.P>(b)</NO.P><TXT>notify;</TXT></NP></ITEM>
+                </LIST>
+              </ALINEA>
+            </PARAG>
+          </ARTICLE>
+        </ROOT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_articles(root)
+        output = '\n'.join(lines)
+        
+        # Subpoints should be at 6-space indent (3 + 3)
+        self.assertIn('      - (i)', output,
+            "Subpoint (i) should be indented 6 spaces (under point)")
+        self.assertIn('      - (ii)', output,
+            "Subpoint (ii) should be indented 6 spaces")
+        
+        # Point (b) should return to 3-space indent
+        self.assertIn('   - (b)', output,
+            "Point (b) should be at 3-space indent after subpoints")
+    
+    def test_full_hierarchy_produces_nested_html(self):
+        """The nested Markdown should produce properly nested HTML structure.
+        
+        Target HTML structure:
+        <ol>
+          <li>Paragraph...
+            <ul>
+              <li>(a) point...
+                <ul>
+                  <li>(i) subpoint...</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+        """
+        try:
+            import markdown
+        except ImportError:
+            self.skipTest("markdown module not installed")
+        
+        # The properly nested Markdown
+        md = """### Article 19a
+
+1. A provider shall:
+   - (a) have policies:
+      - (i) registration
+   - (b) notify
+"""
+        
+        html = markdown.markdown(md)
+        
+        # Should have nested ul inside ol
+        self.assertIn('<ol>', html, "Should have ordered list")
+        self.assertIn('<ul>', html, "Should have unordered list for points")
+        
+        # Lists should NOT be at the same level (siblings)
+        # The (a) list should be INSIDE the <li> of paragraph 1
+        # This is verified by checking there's only one <ol> (paragraph) and nested <ul> (points)
+        ol_count = html.count('<ol>')
+        self.assertEqual(ol_count, 1, "Should have exactly one ordered list (paragraphs)")
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)

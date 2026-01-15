@@ -539,10 +539,146 @@ def extract_recitals(root):
     return lines
 
 
+def process_alinea_nested(alinea_elem, base_indent=""):
+    """
+    Process an ALINEA element with proper nesting support.
+    
+    Returns a tuple: (intro_text, nested_lines)
+    - intro_text: The introductory text (if any) before lists
+    - nested_lines: List of already-indented lines for nested content
+    
+    This allows the caller to combine paragraph numbers with intro text
+    and properly indent nested lists under the paragraph.
+    """
+    intro_text = ""
+    nested_lines = []
+    
+    children = list(alinea_elem)
+    
+    # Check for direct text content first
+    if alinea_elem.text:
+        text = clean_text(alinea_elem.text)
+        if text:
+            intro_text = text
+    
+    for child in children:
+        if child.tag == 'P':
+            # Check if this P has nested LIST - if so, handle specially
+            has_nested_list = child.find('LIST') is not None
+            
+            p_text = clean_text(get_element_text(child))
+            if p_text and not intro_text:
+                intro_text = p_text
+            elif p_text:
+                # Additional P content goes to nested lines
+                nested_lines.append(f"{base_indent}{p_text}")
+            
+            # Process nested lists inside P
+            for list_elem in child.findall('LIST'):
+                list_lines = process_list_nested(list_elem, base_indent)
+                nested_lines.extend(list_lines)
+        
+        elif child.tag == 'LIST':
+            # Top-level list in ALINEA - nested under paragraph
+            list_lines = process_list_nested(child, base_indent)
+            nested_lines.extend(list_lines)
+        
+        elif child.tag in ('QUOT.S', 'QUOT.START'):
+            # Quoted content - keep existing behavior but add to nested
+            quote_text = extract_quoted_content(child, children)
+            if quote_text:
+                nested_lines.append(f"{base_indent}> {quote_text}")
+    
+    return intro_text, nested_lines
+
+
+def process_list_nested(list_elem, base_indent="", level=0):
+    """
+    Process a LIST element with proper nesting.
+    Returns list of properly indented Markdown lines.
+    
+    Uses 3-space indent to nest under numbered list items (matches "1. " width).
+    """
+    lines = []
+    # Use 3-space indent per level for proper Markdown nesting under "1. " style items
+    indent = base_indent + ("   " * level)
+    
+    for item in list_elem.findall('ITEM'):
+        np_elem = item.find('NP')
+        if np_elem is None:
+            np_elem = item.find('.//NP')
+        
+        if np_elem is not None:
+            no_p = np_elem.find('NO.P')
+            number = get_element_text(no_p).strip() if no_p is not None else ""
+            
+            # Get item text from TXT or after NO.P
+            txt_elem = np_elem.find('TXT')
+            if txt_elem is not None:
+                text = clean_text(get_element_text(txt_elem))
+            else:
+                text_parts = []
+                if no_p is not None and no_p.tail:
+                    text_parts.append(no_p.tail)
+                for child in np_elem:
+                    if child.tag not in ('NO.P', 'LIST', 'P'):
+                        text_parts.append(get_element_text(child))
+                        if child.tail:
+                            text_parts.append(child.tail)
+                text = clean_text(''.join(text_parts))
+            
+            # Output the item
+            if number and text:
+                lines.append(f"{indent}- {number} {text}")
+            elif number:
+                lines.append(f"{indent}- {number}")
+            elif text:
+                lines.append(f"{indent}- {text}")
+            
+            # Process nested lists (subpoints) - can be under NP, P, or directly under ITEM
+            for nested_list in np_elem.findall('LIST'):
+                nested = process_list_nested(nested_list, base_indent, level + 1)
+                lines.extend(nested)
+            for nested_list in np_elem.findall('P/LIST'):
+                nested = process_list_nested(nested_list, base_indent, level + 1)
+                lines.extend(nested)
+        
+        # Also check for LIST directly under ITEM (sibling of NP)
+        for nested_list in item.findall('LIST'):
+            nested = process_list_nested(nested_list, base_indent, level + 1)
+            lines.extend(nested)
+    
+    return lines
+
+
+def extract_quoted_content(quot_start, siblings):
+    """Extract text from a QUOT.S block."""
+    parts = []
+    collecting = False
+    
+    for elem in siblings:
+        if elem == quot_start:
+            collecting = True
+            if elem.tail:
+                parts.append(elem.tail)
+            continue
+        if not collecting:
+            continue
+        if elem.tag in ('QUOT.E', 'QUOT.END'):
+            break
+        if elem.tag == 'P':
+            parts.append(clean_text(get_element_text(elem)))
+    
+    return clean_text(' '.join(parts))
+
+
 def process_alinea(alinea_elem):
     """
     Process an ALINEA element, handling both lists and quoted content.
     Returns list of Markdown lines.
+    
+    LEGACY wrapper - maintains backward compatibility.
+    For new code, use process_alinea_nested() instead.
     """
     lines = []
     
@@ -617,6 +753,12 @@ def extract_articles(root):
     IMPORTANT: Skip any ARTICLE elements that are nested inside QUOT.S blocks,
     as these are replacement content for amending regulations and should only
     be rendered as blockquoted text within the amendment instruction context.
+    
+    v3.1: Uses process_alinea_nested() for proper Markdown list nesting.
+    Paragraphs with points are rendered as:
+        1. Intro text...
+           - (a) point text...
+              - (i) subpoint text...
     """
     lines = []
     
@@ -650,25 +792,34 @@ def extract_articles(root):
             lines.append(f"**{art_title}**")
         lines.append("")
         
-        # Process paragraphs
+        # Process paragraphs with proper nesting
         for parag in article.findall('PARAG'):
             no_parag = parag.find('NO.PARAG')
             para_num = get_element_text(no_parag).strip() if no_parag is not None else ""
             
-            # Get all ALINEA content
+            # Get all ALINEA content using the new nested processor
             for alinea in parag.findall('ALINEA'):
-                alinea_lines = process_alinea(alinea)
+                intro_text, nested_lines = process_alinea_nested(alinea, base_indent="   ")
                 
-                # Prepend paragraph number to first line if present
-                if para_num and alinea_lines:
-                    first_line = alinea_lines[0]
-                    if not first_line.startswith(para_num):
-                        alinea_lines[0] = f"{para_num} {first_line}"
-                    para_num = ""  # Only add once
+                # Output paragraph: "1. Intro text..."
+                if para_num and intro_text:
+                    lines.append(f"{para_num} {intro_text}")
+                    para_num = ""  # Only use once
+                elif intro_text:
+                    lines.append(intro_text)
+                elif para_num:
+                    # Paragraph number with no intro (rare)
+                    lines.append(f"{para_num}")
+                    para_num = ""
                 
-                lines.extend(alinea_lines)
+                # Output nested content (points, subpoints) - already indented
+                if nested_lines:
+                    lines.extend(nested_lines)
+                
+                # Add blank line after the complete paragraph structure
+                lines.append("")
         
-        # Direct ALINEA (without PARAG wrapper)
+        # Direct ALINEA (without PARAG wrapper) - use legacy processing
         for alinea in article.findall('ALINEA'):
             alinea_lines = process_alinea(alinea)
             lines.extend(alinea_lines)
