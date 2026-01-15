@@ -458,18 +458,6 @@ pre code {
   gap: var(--space-4);
 }
 
-.gap-5 {
-  gap: var(--space-5);
-}
-
-.gap-6 {
-  gap: var(--space-6);
-}
-
-.gap-8 {
-  gap: var(--space-8);
-}
-
 /* Spacing utilities */
 .p-2 {
   padding: var(--space-2);

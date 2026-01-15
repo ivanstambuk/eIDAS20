@@ -365,7 +365,7 @@ const RegulationViewer = () => {
                 <p className="text-lg text-muted" style={{ lineHeight: '1.5' }}>
                     {regulation.title}
                 </p>
-                <div className="flex gap-6 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
+                <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
                     <span>📅 {regulation.date}</span>
                     <span>📖 {regulation.wordCount?.toLocaleString()} words</span>
                     {regulation.wordCount && (
