@@ -225,6 +225,19 @@ export function SearchModal({ isOpen, onClose }) {
         }
     }, [isOpen]);
 
+    // Clear search state when modal closes
+    useEffect(() => {
+        if (!isOpen) {
+            // Clear both search modes when modal is closed
+            keywordSearch.clearSearch();
+            semanticSearch.clearSearch();
+            // Also clear the input field value for next open
+            if (inputRef.current) {
+                inputRef.current.value = '';
+            }
+        }
+    }, [isOpen, keywordSearch, semanticSearch]);
+
     // Handle keyboard shortcuts
     useEffect(() => {
         const handleKeyDown = (e) => {
