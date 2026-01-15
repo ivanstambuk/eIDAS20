@@ -24,6 +24,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
+import rehypeParagraphIds from './rehype-paragraph-ids.js';
 import rehypeStringify from 'rehype-stringify';
 
 // Use the same slugger as rehype-slug for consistent IDs
@@ -541,6 +542,7 @@ const markdownProcessor = unified()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
+    .use(rehypeParagraphIds)  // DEC-011 Phase 2: Add IDs to paragraphs/points
     .use(rehypeStringify, { allowDangerousHtml: true });
 
 /**

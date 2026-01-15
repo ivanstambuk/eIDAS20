@@ -87,7 +87,8 @@ function getDocumentType(type, title) {
  * 
  * Examples:
  * - "article-5a" → "Article 5a"
- * - "article-5a-1" → "Article 5a(1)" (future: paragraph level)
+ * - "article-5a-para-1" → "Article 5a(1)"
+ * - "article-5a-point-a" → "Article 5a, point (a)"
  * - "chapter-iii" → "Chapter III"
  * - "preamble" → "Preamble"
  * - "recitals" → "Recitals"
@@ -103,15 +104,26 @@ function formatHeadingReference(headingId) {
     if (headingId === 'recitals') return 'Recitals';
     if (headingId === 'enacting-terms') return 'Enacting Terms';
 
-    // Handle articles: article-5a → Article 5a
+    // Phase 2: Handle paragraphs - article-5a-para-1 → Article 5a(1)
+    const paraMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-para-(\d+)$/);
+    if (paraMatch) {
+        const articleNum = formatArticleNumber(paraMatch[1]);
+        const paraNum = paraMatch[2];
+        return `Article ${articleNum}(${paraNum})`;
+    }
+
+    // Phase 2: Handle points - article-5a-point-a → Article 5a, point (a)
+    const pointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-point-([a-z])$/);
+    if (pointMatch) {
+        const articleNum = formatArticleNumber(pointMatch[1]);
+        const pointLetter = pointMatch[2];
+        return `Article ${articleNum}, point (${pointLetter})`;
+    }
+
+    // Handle basic articles: article-5a → Article 5a
     const articleMatch = headingId.match(/^article-(.+)$/);
     if (articleMatch) {
-        const articleNum = articleMatch[1].replace(/-/g, '').toUpperCase();
-        // Convert "5A" back to "5a" (lowercase letter suffix)
-        const formatted = articleNum.replace(/(\d+)([A-Z])?$/i, (_, num, letter) => {
-            return letter ? `${num}${letter.toLowerCase()}` : num;
-        });
-        return `Article ${formatted}`;
+        return `Article ${formatArticleNumber(articleMatch[1])}`;
     }
 
     // Handle chapters: chapter-iii → Chapter III
@@ -130,6 +142,19 @@ function formatHeadingReference(headingId) {
     return headingId
         .replace(/-/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+/**
+ * Format article number: "5a" → "5a", "12b" → "12b"
+ * Handles dashes from IDs: "5-a" → "5a"
+ */
+function formatArticleNumber(rawNum) {
+    // Remove extra dashes and handle letter suffixes
+    const cleaned = rawNum.replace(/-/g, '');
+    // Ensure letter suffix is lowercase
+    return cleaned.replace(/(\d+)([A-Z])?$/i, (_, num, letter) => {
+        return letter ? `${num}${letter.toLowerCase()}` : num;
+    });
 }
 
 /**

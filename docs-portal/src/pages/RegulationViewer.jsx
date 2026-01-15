@@ -215,30 +215,50 @@ const RegulationViewer = () => {
         const contentEl = document.querySelector('.regulation-content');
         if (!contentEl) return;
 
-        // Find all headings with IDs (articles, chapters, sections)
+        // Find all elements with IDs that should have gutter icons:
+        // - Headings (h2, h3): articles, chapters, sections
+        // - Linkable paragraphs (li.linkable-paragraph): numbered paragraphs
+        // - Linkable points (li.linkable-point): lettered points (a), (b), etc.
         const headings = contentEl.querySelectorAll('h2[id], h3[id]');
+        const paragraphs = contentEl.querySelectorAll('li.linkable-paragraph[id]');
+        const points = contentEl.querySelectorAll('li.linkable-point[id]');
 
-        // Create gutter icons for each heading
-        headings.forEach(heading => {
+        // Helper function to create gutter icons for an element
+        const addGutter = (element, elementId, labelText) => {
             // Skip if already hydrated
-            if (heading.querySelector('.copy-gutter')) return;
-
-            const headingId = heading.id;
+            if (element.querySelector('.copy-gutter')) return;
 
             // Create gutter container
             const gutter = document.createElement('span');
             gutter.className = 'copy-gutter';
             gutter.innerHTML = `
-                <button class="copy-gutter-btn" data-action="link" data-id="${headingId}" data-tooltip="Copy Link" aria-label="Copy link to ${heading.textContent}">
+                <button class="copy-gutter-btn" data-action="link" data-id="${elementId}" data-tooltip="Copy Link" aria-label="Copy link to ${labelText}">
                     🔗
                 </button>
-                <button class="copy-gutter-btn" data-action="ref" data-id="${headingId}" data-tooltip="Copy EU Reference" aria-label="Copy EU reference for ${heading.textContent}">
+                <button class="copy-gutter-btn" data-action="ref" data-id="${elementId}" data-tooltip="Copy EU Reference" aria-label="Copy EU reference for ${labelText}">
                     📜
                 </button>
             `;
 
-            // Insert at the beginning of the heading
-            heading.insertBefore(gutter, heading.firstChild);
+            // Insert at the beginning of the element
+            element.insertBefore(gutter, element.firstChild);
+        };
+
+        // Create gutter icons for each heading
+        headings.forEach(heading => {
+            addGutter(heading, heading.id, heading.textContent);
+        });
+
+        // Create gutter icons for paragraphs (Phase 2)
+        paragraphs.forEach(para => {
+            const paraNum = para.dataset.para || '';
+            addGutter(para, para.id, `paragraph ${paraNum}`);
+        });
+
+        // Create gutter icons for points (Phase 2)
+        points.forEach(point => {
+            const pointLetter = point.dataset.point || '';
+            addGutter(point, point.id, `point (${pointLetter})`);
         });
 
         // Event delegation for gutter button clicks
