@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && vite build",
+    "build": "node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:content": "node scripts/build-content.js",
     "build:terminology": "node scripts/build-terminology.js",
     "build:search": "node scripts/build-search-index.js",

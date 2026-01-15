@@ -35,6 +35,25 @@ const EMBEDDING_DIM = 384;
 const MAX_CHUNK_LENGTH = 512; // Max tokens for the model
 
 /**
+ * Check if any input file is newer than the output file
+ * Warns developer if output may be stale
+ */
+function checkStaleness() {
+    if (!fs.existsSync(OUTPUT_FILE)) return; // First build, nothing to check
+
+    const outputTime = fs.statSync(OUTPUT_FILE).mtime;
+    const inputs = [TERMINOLOGY_FILE, INDEX_FILE];
+
+    for (const input of inputs) {
+        if (fs.existsSync(input) && fs.statSync(input).mtime > outputTime) {
+            console.warn(`⚠️  WARNING: ${path.basename(input)} is newer than embeddings.json`);
+            console.warn('   Embeddings may be stale. This build will update them.\n');
+            return;
+        }
+    }
+}
+
+/**
  * Strip markdown formatting from text
  */
 function stripMarkdown(text) {
@@ -152,6 +171,9 @@ function loadTerminology() {
 async function generateEmbeddings() {
     console.log('🧠 Embedding Generator');
     console.log('='.repeat(50));
+
+    // Check for stale inputs
+    checkStaleness();
 
     // Check for regulations index
     if (!fs.existsSync(INDEX_FILE)) {

@@ -10,7 +10,7 @@
  */
 
 import { create, insertMultiple, save } from '@orama/orama';
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -22,6 +22,25 @@ const REGULATIONS_DIR = join(__dirname, '..', 'public', 'data', 'regulations');
 const INDEX_PATH = join(__dirname, '..', 'public', 'data', 'regulations-index.json');
 const TERMINOLOGY_PATH = join(__dirname, '..', 'public', 'data', 'terminology.json');
 const OUTPUT_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json');
+
+/**
+ * Check if any input file is newer than the output file
+ * Warns developer if output may be stale
+ */
+function checkStaleness() {
+    if (!existsSync(OUTPUT_PATH)) return; // First build, nothing to check
+
+    const outputTime = statSync(OUTPUT_PATH).mtime;
+    const inputs = [TERMINOLOGY_PATH, INDEX_PATH];
+
+    for (const input of inputs) {
+        if (existsSync(input) && statSync(input).mtime > outputTime) {
+            console.warn(`⚠️  WARNING: ${input.split('/').pop()} is newer than search-index.json`);
+            console.warn('   The search index may be stale. This build will update it.\n');
+            return;
+        }
+    }
+}
 
 /**
  * Extract text from markdown content, stripping formatting
@@ -164,6 +183,9 @@ function loadTerminology() {
  */
 async function buildIndex() {
     console.log('🔍 Building search index...\n');
+
+    // Check for stale inputs
+    checkStaleness();
 
     // Create Orama database with 'term' field for definitions
     const db = await create({
