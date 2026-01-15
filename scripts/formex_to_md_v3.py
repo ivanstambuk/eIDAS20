@@ -555,7 +555,24 @@ def process_alinea_nested(alinea_elem, base_indent=""):
     
     children = list(alinea_elem)
     
-    # Check for direct text content first
+    # Check what types of children we have
+    structural_tags = {'P', 'LIST', 'QUOT.S', 'QUOT.START'}
+    has_structural_children = any(
+        child.tag in structural_tags for child in children 
+        if isinstance(child.tag, str)
+    )
+    
+    # If no structural children, the ALINEA contains mixed content (text + inline elements)
+    # Example: <ALINEA>By <DATE>21 May 2025</DATE>, the Commission shall...</ALINEA>
+    # In this case, use get_element_text to extract ALL content including inline elements
+    if not has_structural_children:
+        full_text = clean_text(get_element_text(alinea_elem))
+        if full_text:
+            intro_text = full_text
+        return intro_text, nested_lines
+    
+    # Otherwise, process structured content (P, LIST, etc.)
+    # Check for direct text content first (before any child elements)
     if alinea_elem.text:
         text = clean_text(alinea_elem.text)
         if text:
