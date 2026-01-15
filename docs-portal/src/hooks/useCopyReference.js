@@ -112,20 +112,22 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}(${paraNum})`;
     }
 
-    // Phase 2: Handle points - article-5a-point-a → Article 5a, point (a)
+    // Phase 2: Handle points - article-5a-point-a → Article 5a(a)
+    // Concise format per user preference: Article 1(1)(a) style
     const pointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-point-([a-z])$/);
     if (pointMatch) {
         const articleNum = formatArticleNumber(pointMatch[1]);
         const pointLetter = pointMatch[2];
-        return `Article ${articleNum}, point (${pointLetter})`;
+        return `Article ${articleNum}(${pointLetter})`;
     }
 
-    // Phase 3: Handle subpoints - article-5a-subpoint-ii → Article 5a, point (ii)
+    // Phase 3: Handle subpoints - article-5a-subpoint-ii → Article 5a(ii)
+    // Concise format: Article 1(1)(a)(i) style
     const subpointMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-subpoint-([ivx]+)$/);
     if (subpointMatch) {
         const articleNum = formatArticleNumber(subpointMatch[1]);
         const romanNumeral = subpointMatch[2];
-        return `Article ${articleNum}, point (${romanNumeral})`;
+        return `Article ${articleNum}(${romanNumeral})`;
     }
 
     // Handle basic articles: article-5a → Article 5a
