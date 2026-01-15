@@ -152,6 +152,85 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    
    **Why:** Route typos cause 404s and are easy to miss in code review.
 
+7. **Systematic Solutions Only (MANDATORY — No Workarounds):**
+   
+   When fixing any issue, follow this hierarchy:
+   
+   **Fix at the SOURCE, not downstream:**
+   
+   | Problem Location | Fix Location |
+   |------------------|--------------|
+   | **Data generation** (converter, build script) | Fix the generator |
+   | **Data structure** (Formex → MD → HTML) | Fix earliest stage possible |
+   | **UI rendering** (React component) | Fix the component, not CSS hacks |
+   | **Multiple layers affected** | Fix the root cause, then simplify downstream |
+   
+   **After applying a systematic fix:**
+   
+   1. **Reconvert/rebuild ALL affected data** — not just the one file you're testing
+   2. **Remove ALL workarounds** that the systematic fix replaces
+   3. **Simplify downstream code** that was compensating for the upstream issue
+   
+   **Anti-patterns:**
+   - ❌ "Fixed the converter but keeping the JS workaround just in case"
+   - ❌ "Applied the fix to one document, will do others later"
+   - ❌ "Added a layer to handle this edge case" (when the edge case is a bug upstream)
+   
+   **Correct pattern:**
+   - ✅ Fix converter → Reconvert ALL documents → Remove JS workaround → Verify
+   
+   **Example - Nested List Hierarchy (actual issue 2026-01-15):**
+   ```
+   # WRONG: Fix in JS only (workaround)
+   → Sibling-tracking logic in rehype plugin
+   → Converter still produces flat structure
+   → Two places to maintain
+   
+   # CORRECT: Fix at source (systematic)
+   → Fix converter to produce nested Markdown
+   → Reconvert ALL documents
+   → Simplify rehype plugin (just walk nested tree)
+   → Remove sibling-tracking workaround
+   ```
+   
+   **Why this matters:**
+   - Workarounds accumulate technical debt
+   - Multiple fixes for the same issue = maintenance nightmare
+   - Systematic fixes benefit ALL documents, not just the one being tested
+
+8. **Infinite Time Principle (MANDATORY):**
+   
+   **Never consider time constraints, context limits, or tokens when making technical decisions.**
+   
+   - Work as if you have **infinite time** to complete tasks
+   - Do NOT let context window consumption affect solution quality
+   - Do NOT take shortcuts due to perceived time pressure
+   - Do NOT mention "given time constraints" or similar as justification
+   
+   **Anti-patterns:**
+   - ❌ "Given the time constraints, let me take a pragmatic approach..."
+   - ❌ "Since context is running low, I'll simplify..."
+   - ❌ "To save time, let's skip the full validation..."
+   
+   **Why:** Technical debt from rushed solutions costs more than the time "saved." Always implement the correct solution.
+
+9. **AGENTS.md Requires Explicit Approval (MANDATORY):**
+   
+   **Never modify AGENTS.md without the user's explicit consent.**
+   
+   - If you believe a rule should be added or changed, **propose it to the user first**
+   - Wait for explicit approval before making any changes
+   - This applies to ALL modifications: additions, deletions, and edits
+   
+   **Correct pattern:**
+   ```
+   "I recommend adding a rule about X. Would you like me to add this to AGENTS.md?"
+   [Wait for user approval]
+   [Only then make the change]
+   ```
+   
+   **Why:** AGENTS.md defines agent behavior. Changes should be intentional and user-approved, not autonomous.
+
 ## Project Structure
 
 ```

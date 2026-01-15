@@ -4,21 +4,19 @@
  * A rehype plugin that adds IDs to list items within ordered lists to enable
  * deep linking to specific paragraphs in EU legal documents.
  * 
- * EU Legal Structure Challenge:
- * In the source Markdown, paragraphs and points are SIBLING lists, not nested:
+ * EU Legal Document Structure (after v3.1 converter fix):
  * 
- *   1. Paragraph text...      ← <ol><li>
- *   - (a) point text...       ← <ul><li> (sibling, not child!)
- *       - (i) subpoint...     ← nested <ul><li> (child of point)
+ *   1. Paragraph text...           ← <ol><li id="article-X-para-N">
+ *      - (a) point text...         ←   <ul><li id="article-X-para-N-point-a">
+ *         - (i) subpoint...        ←     <ul><li id="...point-a-subpoint-i">
  * 
- * Solution: Track the "current paragraph context" as we traverse siblings.
- * When we see an <ol><li>, remember the last paragraph ID.
- * When we see a <ul> immediately after, use that paragraph context.
+ * The Markdown is now properly nested, so we walk the tree and inherit
+ * context from parent elements. No sibling tracking needed.
  * 
- * DEC-011 Phase 2+3: Full paragraph/point/subpoint deep linking
+ * v3.1 FIX: Simplified to rely on proper nesting from converter.
  */
 
-import { visit } from 'unist-util-visit';
+import { visitParents } from 'unist-util-visit-parents';
 
 /**
  * Extract text content from a HAST node recursively.
@@ -49,43 +47,92 @@ function matchLetterPoint(text) {
     return match ? match[1] : null;
 }
 
+/**
+ * Find the nearest ancestor article context from the parent chain.
+ */
+function findArticleContext(ancestors) {
+    for (let i = ancestors.length - 1; i >= 0; i--) {
+        const node = ancestors[i];
+        if (node.type === 'element' && node.properties?.id?.startsWith('article-')) {
+            return node.properties.id;
+        }
+    }
+    return null;
+}
+
+/**
+ * Find paragraph context (nearest ol > li ancestor with para ID)
+ */
+function findParagraphContext(ancestors) {
+    for (let i = ancestors.length - 1; i >= 0; i--) {
+        const node = ancestors[i];
+        if (node.type === 'element' &&
+            node.tagName === 'li' &&
+            node.properties?.id?.includes('-para-')) {
+            return {
+                id: node.properties.id,
+                num: node.properties['data-para']
+            };
+        }
+    }
+    return null;
+}
+
+/**
+ * Find point context (nearest ul > li ancestor with point ID)
+ */
+function findPointContext(ancestors) {
+    for (let i = ancestors.length - 1; i >= 0; i--) {
+        const node = ancestors[i];
+        if (node.type === 'element' &&
+            node.tagName === 'li' &&
+            node.properties?.id?.includes('-point-') &&
+            !node.properties.id.includes('-subpoint-')) {
+            return {
+                id: node.properties.id,
+                letter: node.properties['data-point']
+            };
+        }
+    }
+    return null;
+}
+
 function rehypeParagraphIds() {
     return (tree) => {
         let currentArticleId = null;
-        let currentParaId = null;      // Track last seen paragraph ID
-        let currentParaNum = null;     // Track last seen paragraph number
-        let lastPointId = null;        // Track last seen point ID (for subpoints)
-        let lastPointLetter = null;    // Track last seen point letter
 
-        visit(tree, 'element', (node, index, parent) => {
-            // Track article headings (h2 or h3 with id starting with "article-")
+        // First pass: track article headings
+        visitParents(tree, 'element', (node) => {
             if ((node.tagName === 'h3' || node.tagName === 'h2') &&
                 node.properties?.id?.startsWith('article-')) {
                 currentArticleId = node.properties.id;
-                currentParaId = null;
-                currentParaNum = null;
-                lastPointId = null;
-                lastPointLetter = null;
+            }
+        });
+
+        // Second pass: process with full ancestor context
+        visitParents(tree, 'element', (node, ancestors) => {
+            // Track current article from headings
+            if ((node.tagName === 'h3' || node.tagName === 'h2') &&
+                node.properties?.id?.startsWith('article-')) {
+                currentArticleId = node.properties.id;
                 return;
             }
 
-            // When we hit a new section (non-article heading), clear all context
+            // Reset article context on new section
             if ((node.tagName === 'h2' || node.tagName === 'h3') &&
                 node.properties?.id &&
                 !node.properties.id.startsWith('article-')) {
                 currentArticleId = null;
-                currentParaId = null;
-                currentParaNum = null;
-                lastPointId = null;
-                lastPointLetter = null;
                 return;
             }
 
-            // Process ordered lists (paragraphs)
-            if (node.tagName === 'ol' && currentArticleId) {
-                const startNum = node.properties?.start || 1;
+            if (!currentArticleId) return;
 
+            // Process ordered list items (paragraphs)
+            if (node.tagName === 'ol') {
+                const startNum = node.properties?.start || 1;
                 let liIndex = 0;
+
                 for (const child of node.children) {
                     if (child.type === 'element' && child.tagName === 'li') {
                         const paragraphNum = startNum + liIndex;
@@ -100,26 +147,16 @@ function rehypeParagraphIds() {
                             'linkable-paragraph'
                         ];
 
-                        // Update tracking - this paragraph is now "current" for following sibling ULs
-                        currentParaId = paraId;
-                        currentParaNum = paragraphNum;
-                        lastPointId = null;  // Reset point context for new paragraph
-                        lastPointLetter = null;
-
                         liIndex++;
                     }
                 }
                 return;
             }
 
-            // Process unordered lists (points and subpoints)
-            // Skip if this UL is nested inside a point LI (handled by processNestedSubpoints)
-            if (node.tagName === 'ul' && currentArticleId) {
-                // Check if parent is a point LI - if so, skip (already processed)
-                if (parent?.tagName === 'li' &&
-                    parent?.properties?.className?.includes('linkable-point')) {
-                    return;
-                }
+            // Process unordered list items (points and subpoints)
+            if (node.tagName === 'ul') {
+                const paraContext = findParagraphContext(ancestors);
+                const pointContext = findPointContext(ancestors);
 
                 for (const child of node.children) {
                     if (child.type !== 'element' || child.tagName !== 'li') continue;
@@ -127,22 +164,19 @@ function rehypeParagraphIds() {
                     const textContent = getTextContent(child);
                     child.properties = child.properties || {};
 
-                    // First check for roman numeral subpoints (i), (ii), etc.
-                    // These appear as nested lists under a point LI
+                    // Check for roman numeral subpoints first (more specific)
                     const romanNumeral = matchRomanNumeral(textContent);
-                    if (romanNumeral && lastPointId) {
-                        // Subpoint: article-5a-para-1-point-a-subpoint-i
-                        const subpointId = `${lastPointId}-subpoint-${romanNumeral}`;
+                    if (romanNumeral && pointContext) {
+                        // Subpoint: inherits from point
+                        const subpointId = `${pointContext.id}-subpoint-${romanNumeral}`;
 
                         child.properties.id = subpointId;
                         child.properties['data-subpoint'] = romanNumeral;
                         child.properties['data-article'] = currentArticleId;
-                        if (currentParaNum) {
-                            child.properties['data-para'] = currentParaNum;
+                        if (paraContext) {
+                            child.properties['data-para'] = paraContext.num;
                         }
-                        if (lastPointLetter) {
-                            child.properties['data-point'] = lastPointLetter;
-                        }
+                        child.properties['data-point'] = pointContext.letter;
                         child.properties.className = [
                             ...(child.properties.className || []),
                             'linkable-subpoint'
@@ -150,44 +184,36 @@ function rehypeParagraphIds() {
                         continue;
                     }
 
-                    // Check for letter points (a), (b), (c), etc.
+                    // Check for letter points
                     const pointLetter = matchLetterPoint(textContent);
                     if (pointLetter) {
-                        // Build ID with paragraph context if available
-                        const baseId = currentParaId || currentArticleId;
+                        // Point: inherits from paragraph
+                        const baseId = paraContext?.id || currentArticleId;
                         const pointId = `${baseId}-point-${pointLetter}`;
 
                         child.properties.id = pointId;
                         child.properties['data-point'] = pointLetter;
                         child.properties['data-article'] = currentArticleId;
-                        if (currentParaNum) {
-                            child.properties['data-para'] = currentParaNum;
+                        if (paraContext) {
+                            child.properties['data-para'] = paraContext.num;
                         }
                         child.properties.className = [
                             ...(child.properties.className || []),
                             'linkable-point'
                         ];
-
-                        // Update point tracking for nested subpoints
-                        lastPointId = pointId;
-                        lastPointLetter = pointLetter;
-
-                        // Process nested ULs inside this point LI for subpoints
-                        processNestedSubpoints(child, pointId, currentArticleId, currentParaNum, pointLetter);
-
                         continue;
                     }
 
-                    // Fallback: roman numeral without point context (edge case)
+                    // Fallback: roman numeral without point context
                     if (romanNumeral) {
-                        const baseId = currentParaId || currentArticleId;
+                        const baseId = paraContext?.id || currentArticleId;
                         const subpointId = `${baseId}-subpoint-${romanNumeral}`;
 
                         child.properties.id = subpointId;
                         child.properties['data-subpoint'] = romanNumeral;
                         child.properties['data-article'] = currentArticleId;
-                        if (currentParaNum) {
-                            child.properties['data-para'] = currentParaNum;
+                        if (paraContext) {
+                            child.properties['data-para'] = paraContext.num;
                         }
                         child.properties.className = [
                             ...(child.properties.className || []),
@@ -198,40 +224,6 @@ function rehypeParagraphIds() {
             }
         });
     };
-}
-
-/**
- * Process nested UL elements inside a point LI to find subpoints.
- * This handles the case where subpoints are properly nested in Markdown.
- */
-function processNestedSubpoints(pointLi, pointId, articleId, paraNum, pointLetter) {
-    for (const child of pointLi.children || []) {
-        if (child.type === 'element' && child.tagName === 'ul') {
-            for (const subChild of child.children || []) {
-                if (subChild.type !== 'element' || subChild.tagName !== 'li') continue;
-
-                const textContent = getTextContent(subChild);
-                const romanNumeral = matchRomanNumeral(textContent);
-
-                if (romanNumeral) {
-                    const subpointId = `${pointId}-subpoint-${romanNumeral}`;
-
-                    subChild.properties = subChild.properties || {};
-                    subChild.properties.id = subpointId;
-                    subChild.properties['data-subpoint'] = romanNumeral;
-                    subChild.properties['data-article'] = articleId;
-                    if (paraNum) {
-                        subChild.properties['data-para'] = paraNum;
-                    }
-                    subChild.properties['data-point'] = pointLetter;
-                    subChild.properties.className = [
-                        ...(subChild.properties.className || []),
-                        'linkable-subpoint'
-                    ];
-                }
-            }
-        }
-    }
 }
 
 export default rehypeParagraphIds;

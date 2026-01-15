@@ -18,8 +18,8 @@
     "description": "(EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directiv",
     "celex": "02014R0910-20241018",
     "date": "23 July 2014",
-    "wordCount": 38396,
-    "tocCount": 92
+    "wordCount": 33011,
+    "tocCount": 87
   },
   {
     "slug": "2024-2977",
@@ -31,6 +31,17 @@
     "date": "28 November 2024",
     "wordCount": 2500,
     "tocCount": 8
+  },
+  {
+    "slug": "2024-2978",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2024/2978 of 25 November 2024 on the registration of the geographical indication 'Gaziantep Menengiç Kahvesi / Gaziantep Melengiç Kahvesi' (PDO) in the Union register of geographical indications pursuant to Regulation (EU) 2024/1143 of the European Parliament and of the Council",
+    "shortTitle": "Relying Party Registration",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) 2024/1143 of the European Parliament and of the Council of 11 April 2024 on geographical indications for wine, spirit drinks and agricultural products, as well as traditional specialities guaranteed and optional quality terms for agricultural products, amending Regulations (EU) No 1308/2013, (EU) 2019/787 and (EU) 2019/1753 and repealing Regulation (EU) No 1151/2012 \\[OJ L, 2024/1143, 23.",
+    "celex": "32024R2978",
+    "date": "25 November 2024",
+    "wordCount": 305,
+    "tocCount": 4
   },
   {
     "slug": "2024-2978",
@@ -53,6 +64,17 @@
     "date": "28 November 2024",
     "wordCount": 3871,
     "tocCount": 17
+  },
+  {
+    "slug": "2024-2980",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
+    "shortTitle": "Dashboard Requirements",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32024R2980",
+    "date": "28 November 2024",
+    "wordCount": 1825,
+    "tocCount": 8
   },
   {
     "slug": "2024-2980",
@@ -91,7 +113,7 @@
     "slug": "2025-0846",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/846 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards cross-border identity matching of natural persons",
-    "shortTitle": "Cross-border identity matching",
+    "shortTitle": "Cross Border Identity",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R0846",
     "date": "6 May 2025",
@@ -106,8 +128,19 @@
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R0847",
     "date": "6 May 2025",
-    "wordCount": 4828,
-    "tocCount": 14
+    "wordCount": 3931,
+    "tocCount": 13
+  },
+  {
+    "slug": "2025-0848",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
+    "shortTitle": "Notified Wallet List",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R0848",
+    "date": "6 May 2025",
+    "wordCount": 3366,
+    "tocCount": 13
   },
   {
     "slug": "2025-0848",
@@ -128,8 +161,8 @@
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R0849",
     "date": "6 May 2025",
-    "wordCount": 1319,
-    "tocCount": 8
+    "wordCount": 1117,
+    "tocCount": 6
   },
   {
     "slug": "2025-1566",
@@ -141,6 +174,28 @@
     "date": "29 July 2025",
     "wordCount": 659,
     "tocCount": 6
+  },
+  {
+    "slug": "2025-1566",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1566 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for the verification of the identity and attributes of the person to whom the qualified certificate or the qualified electronic attestation of attributes is to be issued",
+    "shortTitle": "Registered Delivery",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1566",
+    "date": "29 July 2025",
+    "wordCount": 586,
+    "tocCount": 4
+  },
+  {
+    "slug": "2025-1567",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1567 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the management of remote qualified electronic signature creation devices and of remote qualified electronic seal creation devices as qualified trust services",
+    "shortTitle": "Certificate Formats",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1567",
+    "date": "29 July 2025",
+    "wordCount": 660,
+    "tocCount": 4
   },
   {
     "slug": "2025-1567",
@@ -165,6 +220,17 @@
     "tocCount": 10
   },
   {
+    "slug": "2025-1568",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1568 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards procedural arrangements for peer reviews of electronic identification schemes and for cooperation on the organisation of such reviews within the Cooperation Group and repealing Commission Implementing Decision (EU) 2015/296",
+    "shortTitle": "Remote Signing",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1568",
+    "date": "29 July 2025",
+    "wordCount": 3510,
+    "tocCount": 10
+  },
+  {
     "slug": "2025-1569",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
@@ -176,15 +242,26 @@
     "tocCount": 13
   },
   {
+    "slug": "2025-1569",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
+    "shortTitle": "Sign Creation Devices",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1569",
+    "date": "29 July 2025",
+    "wordCount": 5261,
+    "tocCount": 13
+  },
+  {
     "slug": "2025-1570",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1570 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notification of information on certified qualified electronic signature creation devices and certified qualified electronic seal creation devices",
-    "shortTitle": "Certified creation devices",
+    "shortTitle": "Certified Creation Devices",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R1570",
     "date": "29 July 2025",
-    "wordCount": 624,
-    "tocCount": 6
+    "wordCount": 483,
+    "tocCount": 4
   },
   {
     "slug": "2025-1571",
@@ -196,6 +273,28 @@
     "date": "29 July 2025",
     "wordCount": 1205,
     "tocCount": 6
+  },
+  {
+    "slug": "2025-1571",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1571 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the formats and procedures for annual reports by supervisory bodies",
+    "shortTitle": "Seal Standards",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1571",
+    "date": "29 July 2025",
+    "wordCount": 711,
+    "tocCount": 4
+  },
+  {
+    "slug": "2025-1572",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1572 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the format and procedures for notification of intention and verification with regard to the initiation of qualified trust services",
+    "shortTitle": "Esignature Standards",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1572",
+    "date": "29 July 2025",
+    "wordCount": 1257,
+    "tocCount": 7
   },
   {
     "slug": "2025-1572",
@@ -212,34 +311,34 @@
     "slug": "2025-1929",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1929 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the binding of date and time to data and establishing the accuracy of the time sources for the provision of qualified electronic time stamps",
-    "shortTitle": "Qualified electronic time stamps",
+    "shortTitle": "Electronic Timestamps",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R1929",
     "date": "29 September 2025",
-    "wordCount": 1047,
-    "tocCount": 6
+    "wordCount": 584,
+    "tocCount": 4
   },
   {
     "slug": "2025-1942",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1942 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified validation services for qualified electronic signatures and qualified validation services for qualified electronic seals",
-    "shortTitle": "Recognition of qualified validation services",
+    "shortTitle": "Validation Services",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R1942",
     "date": "29 September 2025",
-    "wordCount": 1640,
-    "tocCount": 6
+    "wordCount": 607,
+    "tocCount": 4
   },
   {
     "slug": "2025-1943",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1943 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for qualified certificates for electronic signatures and qualified certificates for electronic seals",
-    "shortTitle": "Reference standards & Validation procedures",
+    "shortTitle": "Signature Standards",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R1943",
     "date": "29 September 2025",
-    "wordCount": 1018,
-    "tocCount": 6
+    "wordCount": 651,
+    "tocCount": 4
   },
   {
     "slug": "2025-1944",
@@ -253,6 +352,17 @@
     "tocCount": 7
   },
   {
+    "slug": "2025-1944",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1944 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for processes for sending and receiving data in qualified electronic registered delivery services and as regards interoperability of those services",
+    "shortTitle": "Preservation Standards",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1944",
+    "date": "29 September 2025",
+    "wordCount": 677,
+    "tocCount": 5
+  },
+  {
     "slug": "2025-1945",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/1945 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the validation of qualified electronic signatures and of qualified electronic seals and the validation of advanced electronic signatures based on qualified certificates and of advanced electronic seals based on qualified certificates",
@@ -262,6 +372,17 @@
     "date": "29 September 2025",
     "wordCount": 758,
     "tocCount": 6
+  },
+  {
+    "slug": "2025-1945",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/1945 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the validation of qualified electronic signatures and of qualified electronic seals and the validation of advanced electronic signatures based on qualified certificates and of advanced electronic seals based on qualified certificates",
+    "shortTitle": "Wallet Attributes",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R1945",
+    "date": "29 September 2025",
+    "wordCount": 608,
+    "tocCount": 4
   },
   {
     "slug": "2025-1946",
@@ -275,10 +396,32 @@
     "tocCount": 6
   },
   {
+    "slug": "2025-1946",
+    "type": "implementing-act",
+    "title": "Untitled Document",
+    "shortTitle": "Wallet Reference Issuer",
+    "description": "",
+    "celex": null,
+    "date": "2025",
+    "wordCount": 434,
+    "tocCount": 1
+  },
+  {
     "slug": "2025-2160",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/2160 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards, specifications and procedures for the management of risks to the provision of non-qualified trust services",
     "shortTitle": "Non Qualified TS Risks",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
+    "celex": "32025R2160",
+    "date": "27 October 2025",
+    "wordCount": 1794,
+    "tocCount": 7
+  },
+  {
+    "slug": "2025-2160",
+    "type": "implementing-act",
+    "title": "Commission Implementing Regulation (EU) 2025/2160 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards, specifications and procedures for the management of risks to the provision of non-qualified trust services",
+    "shortTitle": "Supervisory Data",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R2160",
     "date": "27 October 2025",
@@ -301,17 +444,17 @@
     "type": "implementing-act",
     "title": "Commission Implementing Decision (EU) 2025/2164 of 27 October 2025 amending Implementing Decision (EU) 2015/1505 as regards the version of the standard on which the common template for the trusted lists is based",
     "shortTitle": "Trusted Lists",
-    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC [OJ L 257, 28.",
+    "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025D2164",
     "date": "27 October 2025",
-    "wordCount": 693,
+    "wordCount": 889,
     "tocCount": 4
   },
   {
     "slug": "2025-2527",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/2527 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for qualified certificates for website authentication",
-    "shortTitle": "Qualified certificates for website authentication",
+    "shortTitle": "Website Auth Certs",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R2527",
     "date": "16 December 2025",
@@ -322,7 +465,7 @@
     "slug": "2025-2530",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/2530 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards requirements for qualified trust service providers providing qualified trust services",
-    "shortTitle": "Qualified trust service providers",
+    "shortTitle": "QTSP Requirements",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R2530",
     "date": "16 December 2025",
@@ -333,22 +476,22 @@
     "slug": "2025-2531",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/2531 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards and specifications for qualified electronic ledgers",
-    "shortTitle": "Qualified electronic ledgers",
+    "shortTitle": "Electronic Ledgers",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R2531",
     "date": "16 December 2025",
-    "wordCount": 1652,
-    "tocCount": 6
+    "wordCount": 693,
+    "tocCount": 4
   },
   {
     "slug": "2025-2532",
     "type": "implementing-act",
     "title": "Commission Implementing Regulation (EU) 2025/2532 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards and specifications for qualified electronic archiving services",
-    "shortTitle": "Qualified electronic archiving services",
+    "shortTitle": "Archiving Services",
     "description": "THE EUROPEAN COMMISSION,\n\n*Having regard to the Treaty on the Functioning of the European Union,*\n\n*Having regard to Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC \\[OJ L 257, 28.",
     "celex": "32025R2532",
     "date": "16 December 2025",
-    "wordCount": 1129,
-    "tocCount": 7
+    "wordCount": 971,
+    "tocCount": 5
   }
 ]
