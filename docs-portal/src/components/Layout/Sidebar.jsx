@@ -11,7 +11,7 @@ const navigation = [
     {
         title: 'Regulations',
         items: [
-            { name: 'eIDAS Regulation', path: '/regulation/910-2014', icon: 'file-text' },
+            { name: 'eIDAS 2.0 Regulation', path: '/regulation/910-2014', icon: 'file-text' },
             { name: 'Amending Regulation', path: '/regulation/2024-1183', icon: 'file-plus' },
             { name: 'Implementing Acts', path: '/implementing-acts', icon: 'layers' },
         ]

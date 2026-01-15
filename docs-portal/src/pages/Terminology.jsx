@@ -120,7 +120,7 @@ const Terminology = () => {
             <header style={{ marginBottom: 'var(--space-8)' }}>
                 <h1 style={{ marginBottom: 'var(--space-3)' }}>Terminology</h1>
                 <p className="text-lg text-muted">
-                    Legal definitions from eIDAS Regulation and Implementing Acts
+                    Legal definitions from eIDAS 2.0 Regulation and Implementing Acts
                 </p>
                 <div className="flex gap-4 mt-4" style={{ flexWrap: 'wrap' }}>
                     <span className="badge badge-secondary">
