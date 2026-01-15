@@ -210,6 +210,20 @@ async function generateEmbeddings() {
 
     // Load terminology definitions (for two-tier ranking in semantic search)
     const termSections = loadTerminology();
+
+    // ════════════════════════════════════════════════════════════════════════════
+    // VALIDATION: Fail if terminology is missing or empty
+    // This catches cases where terminology.json exists but has 0 terms
+    // ════════════════════════════════════════════════════════════════════════════
+    const MIN_TERMS = 50;
+    if (termSections.length < MIN_TERMS) {
+        console.error(`\n❌ VALIDATION FAILED: Only ${termSections.length} terminology entries found (minimum: ${MIN_TERMS})`);
+        console.error('   This means terminology extraction is likely broken.');
+        console.error('   Run: npm run build:terminology');
+        console.error('   Then re-run this script.\n');
+        process.exit(1);
+    }
+
     allSections.push(...termSections);
 
     console.log(`📑 Total sections to embed: ${allSections.length} (${termSections.length} terms + articles, skipped ${skippedCount} documents)\n`);

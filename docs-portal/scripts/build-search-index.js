@@ -185,6 +185,19 @@ async function buildIndex() {
     // Load terminology
     const termSections = loadTerminology();
 
+    // ════════════════════════════════════════════════════════════════════════════
+    // VALIDATION: Fail if terminology is missing or empty
+    // This catches cases where terminology.json exists but has 0 terms
+    // ════════════════════════════════════════════════════════════════════════════
+    const MIN_TERMS = 50;
+    if (termSections.length < MIN_TERMS) {
+        console.error(`\n❌ VALIDATION FAILED: Only ${termSections.length} terminology entries found (minimum: ${MIN_TERMS})`);
+        console.error('   This means terminology extraction is likely broken.');
+        console.error('   Run: npm run build:terminology');
+        console.error('   Then re-run this script.\n');
+        process.exit(1);
+    }
+
     // Combine all sections
     const allSections = [...termSections, ...regulationSections];
     console.log(`\n📊 Total sections: ${allSections.length} (${termSections.length} terms + ${regulationSections.length} articles}`);
@@ -201,6 +214,7 @@ async function buildIndex() {
     writeFileSync(OUTPUT_PATH, JSON.stringify(serialized));
     const sizeKB = (readFileSync(OUTPUT_PATH).length / 1024).toFixed(1);
     console.log(`\n✅ Search index written: search-index.json (${sizeKB} KB)`);
+    console.log(`   ✓ Includes ${termSections.length} terminology definitions (boosted 10x)`);
 
     return db;
 }
