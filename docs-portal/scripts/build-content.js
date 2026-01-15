@@ -312,7 +312,7 @@ function extractShortTitle(fullTitle, celex, type, dirName, subject) {
         }
         // Consolidated eIDAS Regulation (910/2014)
         if (celex && (celex.includes('2014') || celex.includes('910'))) {
-            return 'eIDAS Regulation (Consolidated)';
+            return 'eIDAS 2.0 Regulation (Consolidated)';
         }
         // Generic regulation fallback
         const regMatch = fullTitle.match(/Regulation \(EU\) (?:No )?(\\d+\/\\d+)/);
