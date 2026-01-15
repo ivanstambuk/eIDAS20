@@ -357,5 +357,50 @@ The Formex XML format uses `<ENACTING.TERMS>` as a structural container element 
 
 ---
 
+## DEC-011: Copy Reference gutter icons (EU-standard citations)
+
+**Date:** 2026-01-15  
+**Status:** Accepted (Phase 1 complete)  
+
+**Context:**  
+Legal professionals need to cite specific articles, paragraphs, and points from EU regulations in official format. The EU Interinstitutional Style Guide defines precise citation conventions:
+
+| Level | Symbol | Citation |
+|-------|--------|----------|
+| Article | Article 1 | Article 1 of Regulation (EU) No 910/2014 |
+| Paragraph | 1., 2. | Article 1(1) |
+| Point | (a), (b) | Article 1(1)(a) |
+| Nested point | (i), (ii) | Article 1(1)(a)(i) |
+
+**Decision:**  
+Implement **gutter icons** (Option A from design evaluation) that appear on hover next to legal structure headings:
+
+1. **🔗 Copy Link** — Deep link URL with `?section=` parameter
+2. **📜 Copy Reference** — EU-standard citation format
+
+**Implementation:**
+
+- **Phase 1 (complete):** Article headings only (H2/H3 with IDs)
+- **Phase 2 (future):** Paragraph-level (requires converter changes to emit paragraph IDs)
+- **Phase 3 (future):** Point-level `(a)`, `(b)` items
+
+**Technical approach:**
+- DOM hydration via useEffect (same pattern as citation popovers)
+- Event delegation for click handling
+- `useCopyReference.js` hook generates proper EU citations from CELEX
+- Visual feedback: ✓ checkmark + green color on successful copy
+
+**Example outputs:**
+- Link: `https://example.com/eIDAS20/#/regulations/910-2014?section=article-5a`
+- Reference: `Article 5a of Regulation (EU) No 910/2014`
+
+**Rationale:**
+1. **Discoverability** — Gutter icons are always visible on hover
+2. **Touch-friendly** — Works on mobile (icons inline, always visible)
+3. **Professional workflow** — Legal teams copy citations frequently
+4. **Consistency** — Matches EUR-Lex's own linking patterns
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 

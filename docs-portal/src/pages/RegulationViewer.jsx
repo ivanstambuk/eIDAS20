@@ -3,7 +3,9 @@ import { useParams, Link, useSearchParams } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
+import { useCopyReference, generateEUReference, generateDeepLink } from '../hooks/useCopyReference';
 import '../components/CitationPopover/CitationPopover.css';
+import '../components/CopyReference/CopyReference.css';
 
 /**
  * Calculate estimated reading time for legal/regulatory text.
@@ -205,6 +207,82 @@ const RegulationViewer = () => {
             }
         }
     }, [loading, regulation, searchParams]);
+
+    // Copy Reference Gutter Icons: Hydrate headings with copy buttons (DEC-011)
+    useEffect(() => {
+        if (!regulation || loading) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        // Find all headings with IDs (articles, chapters, sections)
+        const headings = contentEl.querySelectorAll('h2[id], h3[id]');
+
+        // Create gutter icons for each heading
+        headings.forEach(heading => {
+            // Skip if already hydrated
+            if (heading.querySelector('.copy-gutter')) return;
+
+            const headingId = heading.id;
+
+            // Create gutter container
+            const gutter = document.createElement('span');
+            gutter.className = 'copy-gutter';
+            gutter.innerHTML = `
+                <button class="copy-gutter-btn" data-action="link" data-id="${headingId}" data-tooltip="Copy Link" aria-label="Copy link to ${heading.textContent}">
+                    🔗
+                </button>
+                <button class="copy-gutter-btn" data-action="ref" data-id="${headingId}" data-tooltip="Copy EU Reference" aria-label="Copy EU reference for ${heading.textContent}">
+                    📜
+                </button>
+            `;
+
+            // Insert at the beginning of the heading
+            heading.insertBefore(gutter, heading.firstChild);
+        });
+
+        // Event delegation for gutter button clicks
+        const handleClick = async (e) => {
+            const btn = e.target.closest('.copy-gutter-btn');
+            if (!btn) return;
+
+            const action = btn.dataset.action;
+            const headingId = btn.dataset.id;
+
+            let textToCopy;
+            if (action === 'link') {
+                textToCopy = generateDeepLink(headingId, regulation.slug);
+            } else if (action === 'ref') {
+                textToCopy = generateEUReference(headingId, regulation);
+            }
+
+            if (textToCopy) {
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+
+                    // Visual feedback
+                    btn.classList.add('copied');
+                    const originalText = btn.textContent;
+                    btn.textContent = '✓';
+
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                        btn.textContent = originalText;
+                    }, 1500);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+            }
+        };
+
+        contentEl.addEventListener('click', handleClick);
+
+        return () => {
+            contentEl.removeEventListener('click', handleClick);
+            // Clean up gutter elements on unmount
+            contentEl.querySelectorAll('.copy-gutter').forEach(g => g.remove());
+        };
+    }, [regulation, loading]);
 
     // Loading state
     if (loading) {

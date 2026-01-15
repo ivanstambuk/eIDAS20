@@ -1,0 +1,122 @@
+/**
+ * Copy Reference Gutter Icons
+ * 
+ * DEC-011: Gutter-style copy icons for EU legal citations
+ * Shows link + reference buttons on hover for articles, paragraphs, and points.
+ */
+
+/* Make headings position relative for absolute gutter icons */
+.regulation-content h2[id],
+.regulation-content h3[id] {
+    position: relative;
+}
+
+/* Gutter icon container - positioned to the left of heading */
+.copy-gutter {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: 10;
+}
+
+/* Show gutter on heading hover */
+.regulation-content h2[id]:hover .copy-gutter,
+.regulation-content h3[id]:hover .copy-gutter,
+.copy-gutter:hover {
+    opacity: 1;
+}
+
+/* Individual gutter button */
+.copy-gutter-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+    padding: 0;
+}
+
+.copy-gutter-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.copy-gutter-btn:active {
+    transform: scale(0.95);
+}
+
+/* Success state after copy */
+.copy-gutter-btn.copied {
+    background: var(--accent-secondary-dim);
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+}
+
+/* Tooltip for buttons */
+.copy-gutter-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    color: var(--text-primary);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    z-index: 100;
+}
+
+.copy-gutter-btn:hover::after {
+    opacity: 1;
+}
+
+/* Mobile: Show gutter icons inline instead of left gutter */
+@media (max-width: 768px) {
+    .copy-gutter {
+        position: static;
+        display: inline-flex;
+        transform: none;
+        opacity: 1;
+        margin-left: var(--space-2);
+        vertical-align: middle;
+    }
+    
+    .copy-gutter-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+}
+
+/* Ensure content doesn't get cut off on left */
+.regulation-content {
+    padding-left: 48px;
+    margin-left: -48px;
+}
+
+@media (max-width: 768px) {
+    .regulation-content {
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
