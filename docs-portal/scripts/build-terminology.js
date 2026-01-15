@@ -336,7 +336,68 @@ function build() {
     for (const term of mergedTerms.slice(0, 5)) {
         console.log(`   • ${term.term} (${term.definitions.length} definition${term.definitions.length > 1 ? 's' : ''})`);
     }
+
+    // ════════════════════════════════════════════════════════════════════════════
+    // VALIDATION: Fail the build if terminology extraction is broken
+    // This prevents silent failures like the regex mismatch bug (2026-01-15)
+    // ════════════════════════════════════════════════════════════════════════════
+    console.log('\n🔍 Validating terminology extraction...');
+    const validationErrors = [];
+
+    // Invariant 1: Minimum total terms (we have 96 unique terms across all docs)
+    const MIN_TOTAL_TERMS = 50;
+    if (mergedTerms.length < MIN_TOTAL_TERMS) {
+        validationErrors.push(
+            `Total terms (${mergedTerms.length}) below minimum threshold (${MIN_TOTAL_TERMS}). ` +
+            `Extraction may be broken.`
+        );
+    }
+
+    // Invariant 2: Core terms that MUST exist (from Article 3 of 910/2014)
+    const REQUIRED_TERMS = [
+        'electronic identification',
+        'electronic signature',
+        'trust service',
+        'qualified trust service provider',
+        'electronic seal'
+    ];
+    const termNames = new Set(mergedTerms.map(t => t.term.toLowerCase()));
+    const missingTerms = REQUIRED_TERMS.filter(t => !termNames.has(t));
+    if (missingTerms.length > 0) {
+        validationErrors.push(
+            `Missing required core terms: ${missingTerms.join(', ')}. ` +
+            `These fundamental eIDAS definitions should always be extracted.`
+        );
+    }
+
+    // Invariant 3: Minimum definitions from the consolidated regulation
+    // Article 3 of 910/2014 contains exactly 58 legal definitions
+    const MIN_REGULATION_DEFS = 50;
+    const regulationDefs = terminology.statistics.sources.regulations;
+    if (regulationDefs < MIN_REGULATION_DEFS) {
+        validationErrors.push(
+            `Regulation definitions (${regulationDefs}) below minimum (${MIN_REGULATION_DEFS}). ` +
+            `Article 3 of 910/2014 alone contains 58 definitions.`
+        );
+    }
+
+    // Report validation results
+    if (validationErrors.length > 0) {
+        console.error('\n❌ VALIDATION FAILED:');
+        for (const error of validationErrors) {
+            console.error(`   ⚠️  ${error}`);
+        }
+        console.error('\n💡 This likely indicates a bug in the extraction regex or markdown format change.');
+        console.error('   Check the definition pattern in extractDefinitions() matches the source files.\n');
+        process.exit(1);
+    }
+
+    console.log('   ✅ All invariants satisfied');
+    console.log(`      • Total terms: ${mergedTerms.length} >= ${MIN_TOTAL_TERMS}`);
+    console.log(`      • Core terms: ${REQUIRED_TERMS.length}/${REQUIRED_TERMS.length} present`);
+    console.log(`      • Regulation definitions: ${regulationDefs} >= ${MIN_REGULATION_DEFS}`);
 }
 
 // Run the build
 build();
+
