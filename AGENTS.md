@@ -231,6 +231,32 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    
    **Why:** AGENTS.md defines agent behavior. Changes should be intentional and user-approved, not autonomous.
 
+10. **Clarify Before Acting (MANDATORY — When User Asks Questions):**
+    
+    **When the user asks for your OPINION or asks a QUESTION about something, ANSWER first before taking any action.**
+    
+    **Trigger phrases:**
+    - "Does X look OK to you?"
+    - "Is this a UX pattern?"
+    - "What do you think about...?"
+    - "Should we...?"
+    - Any question-form request
+    
+    **Correct pattern:**
+    1. **FIRST:** Answer the question directly
+    2. **THEN:** Ask if they want you to make changes
+    3. **WAIT:** Only proceed after explicit confirmation
+    
+    **Anti-patterns:**
+    - ❌ User asks "Does the header look OK?" → Immediately edit CSS
+    - ❌ User asks "Is this a pattern?" → Start implementing changes
+    - ❌ Interpreting a question as an implicit request to fix
+    
+    **Correct pattern:**
+    - ✅ User asks "Does the header look OK?" → "Looking at it, I notice X and Y. This is/isn't a standard pattern because... Would you like me to adjust it?"
+    
+    **Why:** Questions are not requests. Acting without clarification wastes time if the user just wanted information, and creates unnecessary work to revert unwanted changes.
+
 ## Project Structure
 
 ```

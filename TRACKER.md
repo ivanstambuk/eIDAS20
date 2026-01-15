@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-15 20:08 CET |
+| **Last Updated** | 2026-01-15 22:46 CET |
 | **Session State** | ✅ Complete |
 | **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
 | **Next Action** | Deploy to GitHub Pages / additional enhancements |
@@ -38,6 +38,7 @@
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
 - **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints)
+- **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 
 ---
 
@@ -57,6 +58,9 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-15 22:43 | Retro: Added Rule 10 (Clarify Before Acting), cleaned stale directories, renamed to "eIDAS 2.0 Regulation" |
+| 2026-01-15 22:24 | Cleaned 13 stale legacy directories (fixed duplicate document count 43→30 IAs) |
+| 2026-01-15 22:21 | Annex processing complete: CONS.ANNEX support, intro paragraphs, nested lists, NP in GR.SEQ |
 | 2026-01-15 19:56 | DEC-011 Phase 3: Roman numeral subpoints (i), (ii), (iii) - 30 additional IDs |
 | 2026-01-15 19:48 | DEC-011 Phase 2: Paragraph/point-level copy reference (316 para + 258 point IDs) |
 | 2026-01-15 19:30 | DEC-011: Copy Reference gutter icons (Phase 1: article-level, EU citations + deep links) |
