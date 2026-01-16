@@ -1,73 +1,86 @@
-# Session Context: Multi-Source Terminology System
+# Session Context: EUR-Lex HTML Parser
 
 ## Current State
 
-- **Focus**: Multi-source terminology for 765/2008 + 910/2014 integration
-- **Next**: Phase 5 - Comprehensive testing & verification
-- **Status**: In Progress (Phase 4/6 complete)
-- **Phase**: DEC-039 Multi-Source Terminology, Task 5
-
-## Progress Summary
-
-**✅ Phases 1-4 Complete:**
-- Phase 1: Regulation 765/2008 imported (20 defs, 33 docs total)
-- Phase 2: Multi-source data model (`sources[]`), build-time merging, stacked UI (113 terms, 207 defs)
-- Phase 3: TermPopover stacked display, Referenced Regulations sidebar section
-- Phase 4: Search ranking with 1.5x boost for multi-source terms (21 terms boosted, browser-verified)
-
-**✅ BONUS: Complete 765/2008 Extraction (2026-01-16 17:50)**
-- Original version was a partial streamlined extraction (148 lines, ~1,400 words)
-- Now complete: 703 lines, 11,566 words
-- Includes: 48 recitals, 44 articles (6 chapters), 2 annexes
-- Terminology now: 115 terms, 208 definitions (up from 113 terms, 207 defs)
-
-**⏳ Remaining:**
-- Phase 5: Comprehensive end-to-end testing (popovers, search, sidebar)
-- Phase 6: Documentation (update DECISIONS.md with DEC-039)
+- **Focus**: Create deterministic HTML→Markdown converter for EUR-Lex regulations lacking Formex XML
+- **Next**: Implement `scripts/eurlex_html_to_md.py` following the plan
+- **Status**: Ready to start (implementation plan complete)
+- **Blocker**: None
 
 ## Key Files
 
-- `01_regulation/765_2008_Market_Surveillance/02008R0765.md` — Complete regulation (11,566 words)
-- `docs-portal/scripts/build-terminology.js` — Multi-source extraction & merging
-- `docs-portal/scripts/build-search-index.js` — Search indexing with sourceCount boost
-- `docs-portal/src/pages/Terminology.jsx` — Stacked UI display
-- `docs-portal/src/components/TermPopover.jsx` — Multi-source hover popovers
-- `docs-portal/src/hooks/useSearch.js` — 1.5x boost for multi-source terms
-- `docs-portal/public/data/terminology.json` — Generated output (115 terms)
+- `.agent/session/eurlex-html-parser-plan.md` — **Full implementation plan (READ THIS FIRST)**
+- `scripts/formex_to_md_v3.py` — Reference: Formex converter output format to match
+- `scripts/eurlex_formex.py` — Fallback integration point
+- `01_regulation/765_2008_Market_Surveillance/02008R0765.md` — Current output (manual extraction)
+- `01_regulation/910_2014_eIDAS_Consolidated/02014R0910-20241018.md` — Reference: target format
 
 ## Context Notes
 
-**Data Model:**
-- Each term has `sources[]` array (not `definitions[]`)
-- Sources ordered by `displayOrder`: primary (1) > implementing-act (2) > referenced (3)
-- Multi-source terms have `sourceCount > 1` for search boosting
+**Why this matters:**
+- 765/2008 was manually extracted (one-time, non-repeatable)
+- If Formex converter adds features (paragraph IDs, citations), 765/2008 won't get them
+- Need unified pipeline: Formex first, HTML fallback
 
-**Search Integration:**
-- `sourceCount` field added to Orama schema
-- 1.5x post-search score boost for multi-source terms
-- Browser-verified: "conformity assessment body" ranks #1, ambiguous "body" shows multi-source dominance
+**Key insight from session:**
+- Tested `get_formex_url('32008R0765')` → Returns `None`
+- Formex XML genuinely unavailable for older regulations (pre-~2010)
+- The 1.18MB XML from EUR-Lex is metadata only (NOTICE format), not content
 
-**Display Rules:**
-- Always show ALL sources (no collapse)
-- eIDAS definitions display first
-- Single stacked box (not tabs/accordions)
-- Category-based borders: Cyan (primary), Purple (implementing), Gray (referenced)
+**Output format requirements:**
+- Metadata header: `> **CELEX:** ... | **Document:** ...`
+- Chapters: `## CHAPTER I — TITLE`
+- Articles: `### Article N — Title`
+- Definitions: `- N. 'term' means...`
+- Must match Formex output exactly for downstream compatibility
+
+**EUR-Lex HTML endpoint:**
+```
+https://eur-lex.europa.eu/eli/reg/2008/765/oj/eng
+```
 
 ## Quick Start
 
 ```bash
-cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Portal: http://localhost:5173/eIDAS20/
-# Test complete 765/2008: http://localhost:5173/eIDAS20/#/regulation/765-2008
-# Test multi-source search: "conformity assessment body"
-# Test popover: hover over term on Terminology page
+cd ~/dev/eIDAS20
+
+# 1. Read the implementation plan (REQUIRED)
+cat .agent/session/eurlex-html-parser-plan.md
+
+# 2. Analyze HTML structure
+curl -o /tmp/test_765.html "https://eur-lex.europa.eu/eli/reg/2008/765/oj/eng"
+python3 -c "from bs4 import BeautifulSoup; print(BeautifulSoup(open('/tmp/test_765.html').read(), 'lxml').prettify()[:2000])"
+
+# 3. Start implementation
+touch scripts/eurlex_html_to_md.py
+
+# 4. Compare with Formex output format
+head -100 01_regulation/910_2014_eIDAS_Consolidated/02014R0910-20241018.md
 ```
 
-**Verification Checklist:**
-- ✅ 115 terms, 20 multi-source (terminology.json)
-- ✅ Search ranking boost working (browser-tested)
-- ✅ Regulation 765/2008 complete (11,566 words, 1h 18m reading time)
-- ⏳ Comprehensive popover testing (Phase 5)
-- ⏳ DEC-039 documentation (Phase 6)
+**Dev server:**
+```bash
+cd ~/dev/eIDAS20/docs-portal && npm run dev
+# http://localhost:5173/eIDAS20/
+```
 
-**Implementation Plan:** `.agent/session/765-2008-implementation-plan.md` (full 6-phase breakdown)
+## Success Criteria
+
+1. ✅ `python eurlex_html_to_md.py 32008R0765 ./output` works
+2. ✅ Output matches Formex converter structure exactly
+3. ✅ All 48 recitals, 44 articles, 2 annexes extracted
+4. ✅ `npm run build:terminology` works on output
+5. ✅ Portal displays correctly
+
+## Implementation Plan Location
+
+**Full plan:** `.agent/session/eurlex-html-parser-plan.md`
+
+5 phases:
+1. HTML Source Analysis (30 min)
+2. Create Parser Script (2-3 hours) ← **Main work**
+3. Pipeline Integration (30 min)
+4. Testing & Validation (30 min)
+5. Documentation (15 min)
+
+Total estimated: 3-4 hours

@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 17:50 CET |
-| **Session State** | ✅ Complete: Regulation 765/2008 Full Extraction (HTML→Markdown) |
+| **Last Updated** | 2026-01-16 18:02 CET |
+| **Session State** | ⏳ Pending: EUR-Lex HTML Parser (see `.agent/session/eurlex-html-parser-plan.md`) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Phase 5: Comprehensive testing & verification (Multi-Source Terminology) |
+| **Next Action** | Implement `eurlex_html_to_md.py` for deterministic HTML→Markdown conversion |
 
 ---
 
