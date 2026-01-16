@@ -392,6 +392,73 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Time saved: ~60 minutes by using browser_subagent first
     ```
 
+12. **DOM-First Debugging (MANDATORY — UI/Navigation Issues):**
+    
+    **When debugging UI rendering or navigation issues, ALWAYS verify the actual browser DOM state BEFORE proposing solutions.**
+    
+    **Trigger conditions:**
+    - Deep linking not working
+    - Elements not scrolling into view
+    - Missing IDs or classes
+    - Routing issues
+    - Any "it should work but doesn't" scenario
+    
+    **Correct pattern:**
+    1. **FIRST:** Use `browser_subagent` to inspect actual DOM
+    2. **VERIFY:** Check what HTML is actually rendered (not what you expect)
+    3. **IDENTIFY:** Find the root cause from runtime state
+    4. **THEN:** Propose solution based on evidence
+    
+    **Anti-patterns:**
+    - ❌ "The ID should be article-2-para-1, let me update the link"
+    - ❌ Assuming code logic produces expected HTML
+    - ❌ Multiple iterations fixing symptoms instead of root cause
+    
+    **Correct pattern:**
+    - ✅ browser_subagent → inspect DOM → find article-2 has no IDs → investigate why → fix rehype plugin
+    
+    **Real example from 2026-01-16:**
+    ```
+    Issue: Terminology links don't scroll to definitions
+    Assumption: Link format is wrong (used # instead of ?)
+    Reality (from DOM): Article 2 definitions have NO paragraph IDs at all
+    Root cause: rehype plugin only processes <ol>, but Article 2 uses <ul>
+    Fix: Extend rehype plugin to process both <ol> and <ul>
+    Time saved: ~10 min by checking DOM first instead of 3 iterations on link format
+    ```
+    
+    **Why this matters:** The DOM is the source of truth. Assumptions about what "should" be rendered waste time when the actual HTML is different.
+
+13. **Legal Structure Preservation (MANDATORY — Legal Documents):**
+    
+    **NEVER modify the structure of legal documents. List types, numbering, and formatting have legal significance.**
+    
+    **Rules:**
+    - ❌ NEVER change `<ul>` to `<ol>` or vice versa
+    - ❌ NEVER change numbering schemes (1,2,3 vs a,b,c vs i,ii,iii)
+    - ❌ NEVER reorder paragraphs or sections
+    - ✅ ONLY add IDs, classes, or attributes for functionality
+    - ✅ ALWAYS preserve the original document structure from EUR-Lex XML
+    
+    **Why this matters:**
+    - Legal references cite specific paragraph numbers (e.g., "Article 2(1)")
+    - Changing list types could alter legal interpretation
+    - We must faithfully represent the official legal text
+    
+    **If a feature requires a specific structure:**
+    - ✅ Adapt the feature to work with both structures
+    - ❌ Never change the legal document to fit the feature
+    
+    **Real example from 2026-01-16:**
+    ```
+    Issue: Deep linking needs paragraph IDs, but Article 2 uses <ul> 
+    Wrong approach: "Change converter to output <ol> for Article 2"
+    Correct approach: "Extend rehype plugin to also process <ul> while preserving list type"
+    ```
+    
+    **Why this matters:** We're building a reference tool, not editing the law. Accuracy and fidelity to source documents is paramount.
+
+
 
 ## Project Structure
 

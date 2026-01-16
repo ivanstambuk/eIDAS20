@@ -1,12 +1,23 @@
 /**
  * rehype-paragraph-ids
  * 
- * A rehype plugin that adds IDs to list items within ordered lists to enable
- * deep linking to specific paragraphs in EU legal documents.
+ * A rehype plugin that adds IDs to list items to enable deep linking to 
+ * specific paragraphs in EU legal documents.
+ * 
+ * ⚠️ CRITICAL: LEGAL STRUCTURE PRESERVATION
+ * This plugin processes BOTH <ol> and <ul> elements because EU regulations
+ * use BOTH types for numbered paragraphs:
+ * - Main eIDAS regulation (910/2014): Article 2 uses <ol> (ordered list)
+ * - Implementing acts (e.g., 2024/2977): Article 2 uses <ul> (unordered list)
+ * 
+ * We MUST preserve the original list type (UL vs OL) as it appears in the
+ * source XML. Changing list types would alter the legal document structure,
+ * which is legally significant. We only ADD IDs for deep linking while
+ * keeping the original structure intact.
  * 
  * EU Legal Document Structure (after v3.1 converter fix):
  * 
- *   1. Paragraph text...           ← <ol><li id="article-X-para-N">
+ *   1. Paragraph text...           ← <ol> or <ul> <li id="article-X-para-N">
  *      - (a) point text...         ←   <ul><li id="article-X-para-N-point-a">
  *         - (i) subpoint...        ←     <ul><li id="...point-a-subpoint-i">
  * 
@@ -14,6 +25,7 @@
  * context from parent elements. No sibling tracking needed.
  * 
  * v3.1 FIX: Simplified to rely on proper nesting from converter.
+ * v3.2 FIX: Added UL support while preserving legal document structure.
  */
 
 import { visitParents } from 'unist-util-visit-parents';
