@@ -1,0 +1,208 @@
+# eIDAS 2.0 Documentation Portal — Terminology
+
+> Status: Living Document | Last updated: 2026-01-17
+
+Common terms used across the documentation portal project to ensure consistent vocabulary. This is the authoritative source for terminology—any ambiguity in communication should be resolved by consulting this document.
+
+---
+
+## Document Structure (EU Legal)
+
+### Document Hierarchy
+
+| Term | Description |
+|------|-------------|
+| **Regulation** | A primary EU legislative act (e.g., eIDAS 2.0, Regulation 910/2014). Regulations are directly applicable in all EU Member States. |
+| **Implementing Act** | A secondary act issued by the Commission to provide technical specifications for a Regulation (e.g., 2024/2977 on wallet attestations). |
+| **Delegated Act** | A secondary act that supplements or amends certain non-essential elements of a Regulation. |
+| **Referenced Document** | A document cited by the primary regulation that isn't part of the eIDAS ecosystem itself (e.g., Regulation 765/2008 on accreditation). |
+
+### Document Parts
+
+| Term | Description |
+|------|-------------|
+| **Preamble** | The introductory section of a legislative act before the articles. Contains the legal basis and recitals. |
+| **Recital** | A numbered paragraph in the preamble explaining the reasoning behind the legislation. Format: `(1)`, `(2)`, etc. Recitals are **non-binding** but provide interpretive guidance. |
+| **Enacting Terms** | The binding provisions of a regulation—the articles themselves. Everything after "HAS ADOPTED THIS REGULATION:". |
+| **Article** | A numbered provision in the enacting terms. Format: `Article 1`, `Article 5a`. The fundamental unit of legal obligation. |
+| **Paragraph** | A numbered subdivision within an article. Format: `Article 5(1)`, `Article 5(2)`. Parentheses distinguish from articles. |
+| **Point** | A lettered subdivision within a paragraph. Format: `Article 5(1)(a)`, `Article 5(1)(b)`. Uses lowercase letters. |
+| **Subpoint** | A roman-numeral subdivision within a point. Format: `Article 5(1)(a)(i)`, `Article 5(1)(a)(ii)`. Uses lowercase roman numerals. |
+| **Annex** | Supplementary material at the end of a regulation, often containing technical specifications or requirements. |
+| **Chapter** | A grouping of related articles (e.g., `Chapter III — Electronic Identification`). |
+| **Section** | A subdivision within a chapter. |
+
+### Document Identifiers
+
+| Term | Description |
+|------|-------------|
+| **CELEX** | The unique identifier for EU legal documents in EUR-Lex. Format examples: `32014R0910` (Regulation 910/2014), `32024R1183` (Regulation 2024/1183). The first digit indicates document type (3=Regulation). |
+| **ELI** | European Legislation Identifier. A standardized URI for citing EU law. Format: `http://data.europa.eu/eli/reg/2014/910/oj`. |
+| **Slug** | The internal identifier used in the portal's URL routing. Format: `910-2014`, `2024-1183`, `765-2008`. Derived from CELEX, human-readable. |
+
+---
+
+## UI Components
+
+### Navigation Elements
+
+| Term | Description |
+|------|-------------|
+| **Sidebar** | The left navigation panel containing document list and category sections. |
+| **Table of Contents (ToC)** | The right sidebar panel showing structural navigation within the current document. |
+| **Collapsible ToC** | The expandable/collapsible hierarchy in the ToC (chapters → articles). |
+| **Document Switcher** | The section of the sidebar listing available regulations and implementing acts. |
+
+### Content Display
+
+| Term | Description |
+|------|-------------|
+| **Regulation Viewer** | The main content area displaying the current document's text. Component: `RegulationViewer.jsx`. |
+| **Article Text** | The content of articles in the enacting terms—the binding legal provisions. Contrast with **Recital Text** which is interpretive. |
+| **Recital Text** | The content of recitals in the preamble—the explanatory context. Recitals explain *why*; articles specify *what*. |
+
+### Interactive Elements
+
+| Term | Description |
+|------|-------------|
+| **Gutter Icons** | The 🔗 📜 buttons that appear on hover to the left of articles, paragraphs, points, and recitals. Positioned in the "gutter" (left margin). |
+| **Copy Reference Gutter** | The container holding the gutter icon buttons (`.copy-gutter` class). |
+| **Copy Link Button** | The 🔗 button that copies a deep link URL to the clipboard. |
+| **Copy EU Reference Button** | The 📜 button that copies the EU-formatted citation to the clipboard. |
+| **Deep Link** | A URL that navigates directly to a specific provision. Format: `#/regulation/910-2014?section=article-5a-para-1`. |
+
+### Popovers
+
+| Term | Description |
+|------|-------------|
+| **Popover** | A floating UI element that appears on hover (desktop) or tap (mobile) to show additional information without navigating away. |
+| **Citation Popover** | A popover triggered by hovering over a legislation citation link. Shows the document title, CELEX, and EUR-Lex link. |
+| **Term Popover** | A popover triggered by hovering over a defined term (e.g., "electronic signature"). Shows the definition from the terminology database. |
+| **Popover Trigger** | The element that activates a popover. For citations: `<span class="citation-ref">`. For terms: `<abbr class="defined-term">`. |
+| **Hover Delay** | Brief delay before popover appears (prevents accidental triggers during cursor movement). |
+| **Hover Persistence** | Popover stays visible when cursor moves from trigger to popover content, allowing interaction with popover links. |
+
+---
+
+## Citation & Reference System
+
+### EU Citation Format
+
+| Term | Description |
+|------|-------------|
+| **EU-Formatted Citation** | A human-readable legal citation following EU style. Examples: `Article 5a(1) of Regulation (EU) No 910/2014`, `Recital (42) of Regulation (EU) No 910/2014`. |
+| **Short Title** | The human-friendly name for a document. Examples: "eIDAS 2.0 Regulation", "Digital Identity Wallet Attestation Regulation". Stored in `shortTitle` field. |
+| **Citation Reference** | The text copied by the 📜 button—a complete EU-formatted citation suitable for legal documents. |
+
+### Citation Types in Content
+
+| Term | Description |
+|------|-------------|
+| **Internal Citation** | A reference to another provision within the same document (e.g., "as specified in Article 12"). |
+| **Cross-Document Citation** | A reference to another document in the portal (e.g., "in accordance with Regulation (EU) 2024/1183"). Links within portal. |
+| **External Citation** | A reference to a document not in the portal (e.g., "Decision No 768/2008/EC"). Links to EUR-Lex. |
+| **Formal Citation** | A citation with an ELI URL in the source, extractable with high confidence. |
+| **Informal Citation** | A citation detected by pattern matching (e.g., "Directive 2001/95/EC"). CELEX auto-constructed. |
+
+---
+
+## Terminology System
+
+| Term | Description |
+|------|-------------|
+| **Defined Term** | A word or phrase that has a legal definition in one or more documents (e.g., "electronic signature", "relying party"). |
+| **Definition** | The explanatory text defining a term, typically found in Article 2 or Article 3 of regulations. |
+| **Multi-Source Term** | A term defined in multiple documents (e.g., "manufacturer" defined in both eIDAS and Reg 765/2008). Displayed as stacked definitions. |
+| **Primary Definition** | The definition from the main eIDAS regulation (highest priority in display). |
+| **Referenced Definition** | A definition from a referenced document (e.g., Reg 765/2008). Lower display priority. |
+| **Source Badge** | The colored indicator showing which document a definition comes from (e.g., "Primary", "Referenced"). |
+| **Terminology Page** | The `/terminology` view listing all defined terms alphabetically with their definitions. |
+
+---
+
+## Data Model
+
+### Content Files
+
+| Term | Description |
+|------|-------------|
+| **Regulation JSON** | The processed document data in `/public/data/regulations/{slug}.json`. Contains title, HTML content, metadata. |
+| **Citations JSON** | The citation data for a document in `/public/data/citations/{slug}.json`. Lists all legislation references found in content. |
+| **Metadata JSON** | The portal-wide statistics in `/public/data/metadata.json`. Contains document count, word counts, build timestamp. |
+| **Regulations Index** | The document listing in `/public/data/regulations-index.json`. Used by sidebar and search. |
+
+### Source Files
+
+| Term | Description |
+|------|-------------|
+| **Source Markdown** | The markdown file in `/01_regulation/` containing the original converted content. |
+| **Formex XML** | The official EUR-Lex structured format for EU legislation. Primary source for conversion. |
+| **EUR-Lex HTML** | The web format of EU legislation. Fallback source when Formex unavailable. |
+
+---
+
+## Build Pipeline
+
+| Term | Description |
+|------|-------------|
+| **Content Build** | The process of converting source markdown to JSON. Command: `npm run build:content`. |
+| **rehype Plugin** | A unified.js plugin that processes HTML AST. Used for adding IDs, transforming citations. |
+| **Paragraph ID Plugin** | The `rehype-paragraph-ids.js` plugin that assigns linkable IDs to articles, paragraphs, points, and recitals. |
+| **Citation Extraction** | The process of finding and cataloging legislation references in document content. |
+| **Citation Transformation** | Converting citation text to interactive `<span>` elements with popover triggers. |
+
+---
+
+## Linkable Elements
+
+| Term | CSS Class | ID Format | Example |
+|------|-----------|-----------|---------|
+| **Linkable Heading** | `h2[id]`, `h3[id]` | `article-5a`, `chapter-iii` | `<h3 id="article-5a">Article 5a</h3>` |
+| **Linkable Paragraph** | `linkable-paragraph` | `article-5a-para-1` | `<li id="article-5a-para-1" class="linkable-paragraph">` |
+| **Linkable Point** | `linkable-point` | `article-5a-para-1-point-a` | `<li id="article-5a-para-1-point-a" class="linkable-point">` |
+| **Linkable Subpoint** | `linkable-subpoint` | `article-5a-para-1-point-a-subpoint-i` | `<li id="..." class="linkable-subpoint">` |
+| **Linkable Recital** | `linkable-recital` | `recital-42` | `<li id="recital-42" class="linkable-recital">` |
+
+---
+
+## Document Categories
+
+| Term | Internal Value | Description |
+|------|----------------|-------------|
+| **Primary Regulation** | `category: "regulation"` | The core eIDAS regulations (910/2014, 2024/1183). |
+| **Implementing Act** | `category: "implementing-act"` | Commission implementing regulations (e.g., 2024/2977). |
+| **Referenced Document** | `category: "referenced"` | External documents cited by eIDAS (e.g., 765/2008). |
+
+---
+
+## File Locations
+
+| Path | Contains |
+|------|----------|
+| `docs-portal/src/pages/` | Page-level React components (RegulationViewer, Terminology) |
+| `docs-portal/src/components/` | Reusable UI components |
+| `docs-portal/src/hooks/` | Custom React hooks (useCitations, useCopyReference, useSearch) |
+| `docs-portal/scripts/` | Build-time scripts (build-content.js, rehype plugins) |
+| `docs-portal/public/data/` | Generated JSON files (regulations, citations, terminology) |
+| `01_regulation/` | Source markdown files organized by document |
+
+---
+
+## Interaction Patterns
+
+### Hover-to-Preview Pattern
+On desktop, hovering over citation links and defined terms shows a popover with additional information. The popover remains visible while the cursor is over either the trigger or the popover itself (hover persistence).
+
+### Gutter Icon Pattern
+On hover, linkable elements (articles, paragraphs, points, recitals) reveal copy icons in the left margin. Icons fade in on hover, fade out on mouse leave.
+
+### Deep Link Scroll Pattern
+Navigating to a URL with `?section=` parameter scrolls the viewport to that element and applies a brief highlight animation.
+
+---
+
+## See Also
+
+- [DECISIONS.md](DECISIONS.md) - Architectural and design decisions
+- [AGENTS.md](AGENTS.md) - AI agent guidelines
+- [TRACKER.md](TRACKER.md) - Implementation progress tracking
