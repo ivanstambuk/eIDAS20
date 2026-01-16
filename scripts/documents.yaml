@@ -13,11 +13,11 @@ documents:
   type: amending
   cellar_id: 459993a1-068e-11ef-a251-01aa75ed71a1.0006.02
   output_dir: 01_regulation/2024_1183_eIDAS2_Amending
-- celex: 32008R0765
-  title: Market Surveillance Regulation
-  shortTitle: Market Surveillance Regulation
+- celex: 02008R0765-20210716
+  title: Accreditation and Market Surveillance Regulation (Consolidated)
+  shortTitle: Accreditation Regulation
   type: referenced
-  source: html  # No Formex XML available, use eurlex_html_to_md.py
+  source: manual  # Consolidated version manually merged (preamble from original + consolidated enacting terms)
   output_dir: 01_regulation/765_2008_Market_Surveillance
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
