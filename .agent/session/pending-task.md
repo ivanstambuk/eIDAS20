@@ -2,87 +2,93 @@
 
 ## Current State
 
-- **Focus**: Importing Regulation 765/2008 as complementary referenced regulation with multi-source terminology support
-- **Next**: Phase 2 - Implement multi-source terminology extraction and merging logic in `scripts/build-terminology.js`
-- **Status**: Phase 1/6 Complete - Document imported and built successfully
-- **Phase**: DEC-012 Multi-Source Terminology, Task 2.1-2.3
-
-## Key Files
-
-- `.agent/session/765-2008-implementation-plan.md` — Complete 13-15h implementation plan with all 6 phases
-- `01_regulation/765_2008_Market_Surveillance/02008R0765.md` — Complete regulation (1,394 words, 7 chapters, 44 articles)
-- `docs-portal/public/data/regulations/765-2008.json` — Built content (ready for frontend)
-- `scripts/build-terminology.js` — (NEXT) Extract & merge multi-source terms
-- `docs-portal/src/pages/Terminology.jsx` — (NEXT) Stacked definition UI
-- `docs-portal/src/components/Sidebar.jsx` — (NEXT) Three-tier sidebar with Referenced Regulations section
+- **Focus**: Implementing multi-source terminology for 765/2008 + 910/2014 integration
+- **Next**: Phase 2.3 - Update terminology hover popovers for multi-source display
+- **Status**: In Progress (Phase 2.2/6 complete)
+- **Phase**: DEC-039 Multi-Source Terminology, Task 2.3
 
 ## Progress Summary
 
 **✅ Phase 1 Complete (2h):**
-- Regulation 765/2008 imported with all chapters and articles
-- Manual conversion from EUR-Lex HTML (Formex XML unavailable for 2008 regs)
-- Document successfully built: 765-2008.json (1,394 words)
-- Portal now has 33 documents (3 regulations + 30 implementing acts)
-- Committed: `feat: import Regulation 765/2008 (Phase 1 complete)`
+- Regulation 765/2008 imported (20 definitions, 1,394 words)
+- Portal now has 33 documents total
 
-**⏳ Remaining Phases (11-13h):**
-- Phase 2: Multi-source terminology extraction (4-5h)
-- Phase 3: Sidebar & navigation (2-3h)
-- Phase 4: Search integration (2h)
-- Phase 5: Testing (2h)
-- Phase 6: Documentation (1h)
+**✅ Phase 2.1 Complete (3h):**
+- Multi-source data model implemented (`sources` array)
+- Display ordering: primary (1) > implementing-act (2) > referenced (3)
+- Supports EU numbered format `N.` and eIDAS format `(N)`
+- Article detection for older regulations fixed
+- 113 unique terms (up from 97), 207 total definitions
+
+**✅ Phase 2.2 Complete (2h):**
+- Terminology.jsx updated for stacked definitions
+- Visual hierarchy: colored borders (primary cyan, referenced muted)
+- "Referenced" badges on 765/2008 definitions
+- Browser-verified working: "conformity assessment body" shows both sources correctly
+
+**⏳ Remaining Work:**
+- Phase 2.3: Update hover popovers (CitationPopover.jsx) for multi-source
+- Phase 3: Three-tier sidebar (Regulations / Referenced / Implementing Acts)
+- Phase 4: Search integration with category-based ranking
+- Phase 5: Testing & verification
+- Phase 6: Documentation (DECISIONS.md)
+
+## Key Files
+
+- `docs-portal/scripts/build-terminology.js` — Multi-source extraction & merging logic
+- `docs-portal/scripts/document-config.json` — 765/2008 configured as "referenced"
+- `docs-portal/src/pages/Terminology.jsx` — Stacked UI display (UPDATED)
+- `docs-portal/public/data/terminology.json` — Generated output (113 terms)
+- `docs-portal/src/components/CitationPopover.jsx` — (NEXT) Hover popover component
+- `01_regulation/765_2008_Market_Surveillance/02008R0765.md` — Source document
+- `.agent/session/765-2008-implementation-plan.md` — Full 6-phase plan
 
 ## Context Notes
 
-**Key Decisions:**
-- **eIDAS-first display**: In multi-source terms, eIDAS 910/2014 always displays first, then 765/2008 below (user requirement)
-- **Always visible**: Referenced regulation NOT hidden by default (user rejected Option C toggle)
-- **Single stacked box**: Both definitions in one box, no tabs/accordions (user requirement)
-- **Manual conversion**: Formex XML API doesn't work for pre-2010 regulations; used direct HTML conversion
+**Data Model Change:**
+- OLD: `term.definitions[].text` + `term.definitions[].source`
+- NEW: `term.sources[].definition` + `term.sources[].documentId/Title/Category`
 
-**Architecture:**
-- New data model: `sources` array instead of single `source` 
-- `displayOrder` field (1=primary, 3=referenced) separate from canonical source
-- Three-tier sidebar: Regulations / Referenced Regulations / Implementing Acts
-- Category-based search ranking: primary 1.0x, implementing 0.8x, referenced 0.6x
-
-**Example Multi-Source Term:**
-```javascript
+**Example Multi-Source Term** (conformity assessment body):
+```json
 {
-  term: "conformity assessment body",
-  sources: [
+  "sources": [
     {
-      definition: "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008...",
-      documentId: "regulation-910-2014",
-      articleId: "article-3-18b",
-      displayOrder: 1  // eIDAS first
+      "documentTitle": "Regulation 910/2014",
+      "documentCategory": "primary",
+      "displayOrder": 1,
+      "articleId": "article-3-18"
     },
     {
-      definition: "a body that performs conformity assessment activities including calibration, testing...",
-      documentId: "regulation-765-2008",
-      articleId: "article-2-point-13",
-      displayOrder: 3  // Referenced second
+      "documentTitle": "2008/0765",
+      "documentCategory": "referenced",
+      "displayOrder": 3,
+      "articleId": "article-2-13"
     }
   ]
 }
 ```
 
+**Important Decisions:**
+- Always display ALL sources (no collapse/expand)
+- eIDAS definitions always display first (user requirement)
+- Single stacked box, not tabs/accordions
+- Referenced regs NOT hidden by default
+
+**Gotchas:**
+- 765/2008 had literal `\u003e` escape sequences (fixed)
+- Needed dual regex: `(N)` for eIDAS, `N.` for EU numbered lists
+- Article detection needs 3 patterns: **Definitions**, `- Definitions`, `following definitions`
+
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Portal running on localhost:5173
-# Next: Implement Phase 2 (build-terminology.js multi-source merging)
+# Portal: http://localhost:5173/eIDAS20/#/terminology
+# Test: Search for "conformity assessment body" - should show 2 sources stacked
 ```
 
 **Verification:**
-- Portal should show 33 documents in index
-- 765-2008.json should exist in public/data/regulations/
-- Document not yet visible in sidebar (needs Phase 3)
-
-## Implementation Plan Reference
-
-Full detailed plan: `.agent/session/765-2008-implementation-plan.md`
-- 6 phases, 13-15h total
-- Phase 1: ✅ Complete
-- Phase 2: Next (multi-source terminology system)
+- ✅ 113 terms in terminology.json
+- ✅ Multi-source display working in browser
+- ✅ All tests passing, no console errors
