@@ -976,3 +976,88 @@ Added Invariant 4 to build-time validation:
 | `build-terminology.js` | Fix Pattern 2 regex termination |
 | `build-terminology.js` | Add Invariant 4 (765/2008 terms) |
 
+---
+
+## DEC-056: Multi-Source Terminology Visual Separation
+
+**Date:** 2026-01-17  
+**Status:** Accepted  
+**Category:** UI/UX / Visual Design
+
+**Context:**
+
+Multi-source terminology (terms defined in multiple documents, e.g., "accreditation" defined in both Regulation 2025/2162 and Regulation 765/2008) was visually confusing on the Terminology page:
+
+1. **No visual boundary** between definitions from different sources
+2. **Redundant information** — Source name appeared twice:
+   - Header: "Regulation 765/2008, Article 2(10):"
+   - Link: "View in Regulation 765/2008 →"
+3. **No category distinction** — Primary and referenced documents looked identical
+
+**User Feedback:**  
+> "Is there a way to visually separate them? Make some suggestions."
+
+**Options Considered:**
+
+| Option | Description | Pros | Cons |
+|--------|-------------|------|------|
+| A: Divider Line | Thin horizontal line between definitions | Minimal, easy | Subtle, may not be distinct |
+| B: Cards | Each definition in bordered card | Clear separation | Heavy, "boxy" feel |
+| **C: Colored Left Border** | Vertical accent bar per source | Leverages color system, category-aware | Requires color legend |
+| D: Numbered Badges | Circle badges (1, 2) | Shows count | Conflicts with "N sources" badge |
+
+**Decision:**
+
+Implement **Option C (Colored Left Border)** combined with **Merged Source Headers**:
+
+1. **Colored Left Borders:**
+   - Primary documents (eIDAS, etc.): `--accent-primary` (cyan)
+   - Referenced documents (765/2008): `--purple-accent` (#a855f7)
+
+2. **Merged Clickable Headers:**
+   - Combine source name + link into single clickable header
+   - Arrow (→) indicates clickability
+   - Removes redundant "View in Regulation" link
+
+**Before:**
+```
+┌─────────────────────────────────────────────────────┐
+│ Regulation 765/2008, Article 2(10):                 │  ← Plain text header
+│ an attestation by a national accreditation body... │
+│ View in Regulation 765/2008 →                       │  ← Redundant link
+└─────────────────────────────────────────────────────┘
+```
+
+**After:**
+```
+┌┃────────────────────────────────────────────────────┐
+│┃ Regulation 765/2008, Article 2(10) →  [REFERENCED] │  ← Clickable header
+│┃ an attestation by a national accreditation body... │
+└┃────────────────────────────────────────────────────┘
+ ↑ Purple left border
+```
+
+**Implementation:**
+
+| Component | Change |
+|-----------|--------|
+| `Terminology.jsx` | Merged `<Link>` as header, removed separate link |
+| `Terminology.jsx` | Updated border colors: cyan/purple per category |
+| `index.css` | Added `--purple-accent` CSS variable |
+| `index.css` | Added hover styles for `.source-header-link` |
+
+**Benefits:**
+
+1. **Visual clarity** — Colored borders instantly show source category
+2. **Less redundancy** — Source name appears once, not twice
+3. **Consistent design language** — Matches popover color scheme (cyan/purple)
+4. **Better scanning** — Users can quickly identify multi-source terms while scrolling
+
+**CSS Variables Added:**
+
+```css
+--purple-accent: #a855f7;
+--purple-accent-dim: rgba(168, 85, 247, 0.15);
+```
+
+
