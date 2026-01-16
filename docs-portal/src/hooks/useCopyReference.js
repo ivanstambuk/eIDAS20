@@ -105,6 +105,12 @@ function formatHeadingReference(headingId) {
     if (headingId === 'recitals') return 'Recitals';
     if (headingId === 'enacting-terms') return 'Enacting Terms';
 
+    // Handle individual recitals: recital-42 → Recital (42)
+    const recitalMatch = headingId.match(/^recital-(\d+)$/);
+    if (recitalMatch) {
+        return `Recital (${recitalMatch[1]})`;
+    }
+
     // Phase 3: Handle full hierarchy - article-19a-para-1-point-a-subpoint-i
     // Matches: article-{num}-para-{n}-point-{letter}-subpoint-{roman}
     const fullHierarchyMatch = headingId.match(

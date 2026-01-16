@@ -268,6 +268,13 @@ const RegulationViewer = () => {
             addGutter(subpoint, subpoint.id, `point (${romanNumeral})`);
         });
 
+        // Create gutter icons for recitals (Phase 4: preamble recitals)
+        const recitals = contentEl.querySelectorAll('li.linkable-recital[id]');
+        recitals.forEach(recital => {
+            const recitalNum = recital.dataset.recital || '';
+            addGutter(recital, recital.id, `recital (${recitalNum})`);
+        });
+
         // Event delegation for gutter button clicks
         const handleClick = async (e) => {
             const btn = e.target.closest('.copy-gutter-btn');

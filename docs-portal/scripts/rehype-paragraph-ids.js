@@ -112,6 +112,8 @@ function findPointContext(ancestors) {
 function rehypeParagraphIds() {
     return (tree) => {
         let currentArticleId = null;
+        let inRecitalsSection = false;  // Track if we're in the Recitals section
+        let recitalCounter = 0;         // Counter for recital numbering
 
         // First pass: track article headings
         visitParents(tree, 'element', (node) => {
@@ -127,17 +129,50 @@ function rehypeParagraphIds() {
             if ((node.tagName === 'h3' || node.tagName === 'h2') &&
                 node.properties?.id?.startsWith('article-')) {
                 currentArticleId = node.properties.id;
+                inRecitalsSection = false;  // Exit recitals section when entering articles
                 return;
             }
 
-            // Reset article context on new section
+            // Track Recitals section
+            if ((node.tagName === 'h2') && node.properties?.id === 'recitals') {
+                inRecitalsSection = true;
+                recitalCounter = 0;
+                currentArticleId = null;  // Exit article context
+                return;
+            }
+
+            // Reset on other section headings
             if ((node.tagName === 'h2' || node.tagName === 'h3') &&
                 node.properties?.id &&
-                !node.properties.id.startsWith('article-')) {
+                !node.properties.id.startsWith('article-') &&
+                node.properties.id !== 'recitals') {
                 currentArticleId = null;
+                inRecitalsSection = false;
                 return;
             }
 
+            // =========================================================
+            // RECITALS PROCESSING
+            // =========================================================
+            if (inRecitalsSection && node.tagName === 'ul') {
+                for (const child of node.children) {
+                    if (child.type === 'element' && child.tagName === 'li') {
+                        recitalCounter++;
+                        const recitalId = `recital-${recitalCounter}`;
+
+                        child.properties = child.properties || {};
+                        child.properties.id = recitalId;
+                        child.properties['data-recital'] = recitalCounter;
+                        child.properties.className = [
+                            ...(child.properties.className || []),
+                            'linkable-recital'
+                        ];
+                    }
+                }
+                return;
+            }
+
+            // Skip article processing if not in article context
             if (!currentArticleId) return;
 
             // Process ordered list items (paragraphs)
