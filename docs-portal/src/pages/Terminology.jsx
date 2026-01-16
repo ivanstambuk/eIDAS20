@@ -104,7 +104,12 @@ const Terminology = () => {
     // Get document route path based on type
     const getDocumentPath = (source) => {
         const basePath = source.type === 'regulation' ? 'regulation' : 'implementing-acts';
-        return `/${basePath}/${source.slug}#article-${source.article}`;
+        // Link to the specific paragraph where the definition is located
+        // Format: article-{article}-para-{ordinal} (e.g., article-2-para-1)
+        const sectionId = source.ordinal
+            ? `article-${source.article}-para-${source.ordinal}`
+            : `article-${source.article}`;
+        return `/${basePath}/${source.slug}?section=${sectionId}`;
     };
 
     if (loading) {
