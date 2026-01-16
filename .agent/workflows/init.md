@@ -17,10 +17,16 @@ Prime the AI agent with eIDAS project context at session start.
 cat ~/dev/eIDAS20/AGENTS.md | head -120
 ```
 
+// turbo
+```bash
+cat ~/dev/eIDAS20/TERMINOLOGY.md | head -80
+```
+
 Pay special attention to:
 - Project Structure (docs-portal/, scripts/, regulations)
 - Documentation Portal section
 - WSL Browser Testing section
+- **TERMINOLOGY.md** — shared vocabulary to prevent misunderstandings
 
 ---
 

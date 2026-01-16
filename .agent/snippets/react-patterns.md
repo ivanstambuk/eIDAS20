@@ -267,3 +267,91 @@ src/
     useNavigationType.js    ← Create here
     useSemanticSearch.js    (existing)
 ```
+
+---
+
+## Linkable Element CSS Pattern
+
+**Problem:** When adding a new linkable element type (e.g., `linkable-recital`), you must update **4 files** with consistent selectors.
+
+**Files to update (in order):**
+
+### 1. `scripts/rehype-paragraph-ids.js` — Add ID generation
+```javascript
+// Track new section type
+let inRecitalsSection = false;
+
+// Detect section heading
+if ((node.tagName === 'h2') && node.properties?.id === 'recitals') {
+    inRecitalsSection = true;
+    return;
+}
+
+// Assign IDs to list items
+if (inRecitalsSection && node.tagName === 'ul') {
+    child.properties.id = `recital-${counter}`;
+    child.properties['data-recital'] = counter;
+    child.properties.className = [...existing, 'linkable-recital'];
+}
+```
+
+### 2. `src/pages/RegulationViewer.jsx` — Hydrate gutter icons
+```javascript
+// Add to the useEffect that hydrates gutter icons
+const recitals = contentEl.querySelectorAll('li.linkable-recital[id]');
+recitals.forEach(recital => {
+    const recitalNum = recital.dataset.recital || '';
+    addGutter(recital, recital.id, `recital (${recitalNum})`);
+});
+```
+
+### 3. `src/hooks/useCopyReference.js` — Format EU reference
+```javascript
+// Add pattern matching in formatHeadingReference()
+const recitalMatch = headingId.match(/^recital-(\d+)$/);
+if (recitalMatch) {
+    return `Recital (${recitalMatch[1]})`;
+}
+```
+
+### 4. `src/components/CopyReference/CopyReference.css` — Update **3 selectors**
+```css
+/* Selector 1: Position relative (for absolute gutter positioning) */
+.regulation-content h2[id],
+.regulation-content h3[id],
+.regulation-content li.linkable-paragraph,
+.regulation-content li.linkable-point,
+.regulation-content li.linkable-subpoint,
+.regulation-content li.linkable-recital {  /* ← ADD */
+    position: relative;
+}
+
+/* Selector 2: Gutter positioning (adjust left offset) */
+li.linkable-paragraph>.copy-gutter,
+li.linkable-point>.copy-gutter,
+li.linkable-subpoint>.copy-gutter,
+li.linkable-recital>.copy-gutter {  /* ← ADD */
+    left: -56px;
+    top: 12px;
+    transform: none;
+}
+
+/* Selector 3: Hover visibility */
+.regulation-content li.linkable-paragraph:hover>.copy-gutter,
+.regulation-content li.linkable-point:hover>.copy-gutter,
+.regulation-content li.linkable-subpoint:hover>.copy-gutter,
+.regulation-content li.linkable-recital:hover>.copy-gutter,  /* ← ADD */
+.copy-gutter:hover {
+    opacity: 1;
+}
+```
+
+### Checklist
+- [ ] `rehype-paragraph-ids.js` — ID + class assignment
+- [ ] `RegulationViewer.jsx` — gutter icon hydration
+- [ ] `useCopyReference.js` — EU citation format
+- [ ] `CopyReference.css` — 3 CSS selectors (position, gutter, hover)
+- [ ] Rebuild content: `npm run build:content`
+- [ ] Test in browser: hover over new element type
+
+**Real example:** `linkable-recital` (Phase 4, 2026-01-17)

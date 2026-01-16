@@ -563,6 +563,58 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** Lost work costs significant time to recreate and risks missing details.
 
+15. **Vocabulary Confirmation (MANDATORY — When User Uses UI/Domain Terms):**
+    
+    **When the user requests a feature using UI or domain terminology, CONFIRM your understanding before implementing.**
+    
+    **Trigger phrases (UI terms that could be ambiguous):**
+    - \"popover\", \"tooltip\", \"hover\"
+    - \"gutter\", \"sidebar\", \"panel\"
+    - \"link\", \"reference\", \"citation\"
+    - \"recital\", \"article\", \"provision\"
+    - Any term defined in TERMINOLOGY.md
+    
+    **Correct pattern:**
+    1. **FIRST:** State what you understand the request to mean
+    2. **REFERENCE:** TERMINOLOGY.md definitions if applicable
+    3. **CONFIRM:** Ask \"Is this what you mean?\" before implementing
+    
+    **Example:**
+    ```
+    User: \"Add popovers for recitals\"
+    
+    ❌ WRONG: Start implementing citation popovers in recital text
+    
+    ✅ CORRECT: \"Do you mean:
+       (A) Gutter icons (🔗 📜) on individual recitals for copying links/references, or
+       (B) Citation popovers when hovering legislation references within recitals?
+       (See TERMINOLOGY.md: 'Gutter Icons' vs 'Citation Popover')\"
+    ```
+    
+    **Why this matters:** Ambiguous vocabulary causes wasted implementation time. The TERMINOLOGY.md exists specifically to resolve these ambiguities.
+
+16. **TERMINOLOGY.md Maintenance (MANDATORY — Living Document):**
+    
+    **Proactively update TERMINOLOGY.md when new concepts are introduced or existing ones change.**
+    
+    **When to update:**
+    - Adding a new UI component → Add to \"UI Components\" section
+    - Adding a new data structure → Add to \"Data Model\" section
+    - Adding a new CSS class → Add to \"Linkable Elements\" table
+    - Discovering term ambiguity → Add clarification or both meanings
+    - User corrects a misunderstanding → Document the distinction
+    
+    **Update protocol:**
+    1. After implementing a new feature, check if new terms were introduced
+    2. Add definitions for any new terms to appropriate section
+    3. Include the TERMINOLOGY.md update in the same commit
+    
+    **Anti-patterns:**
+    - ❌ Implementing without updating terminology
+    - ❌ Creating internal-only naming that isn't documented
+    - ❌ Using different terms for the same concept across files
+    
+    **Why this matters:** TERMINOLOGY.md is the project's vocabulary source of truth. Keeping it current prevents future miscommunication.
 
 
 ## Project Structure

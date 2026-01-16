@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 23:05 CET |
-| **Session State** | ✅ Regulation 765/2008 harmonization complete |
+| **Last Updated** | 2026-01-17 00:10 CET |
+| **Session State** | ✅ Recital gutter icons + TERMINOLOGY.md complete |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Run batch_fix_annexes.py for missing annex content |
+| **Next Action** | Citation enhancement backlog (see .agent/pending-task.md) |
 
 ---
 
@@ -38,11 +38,13 @@
 - **Preamble injection** (78 recitals from 2024/1183 amendment injected into consolidated 910/2014)
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
-- **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
-- **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints)
-- **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
+- **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
+- **Clean TOC** (DEC-010: \"Enacting Terms\" removed from navigation, cleaner sidebar)
+- **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
+- **Recital gutter icons** (Phase 4: individual recitals now have 🔗 📜 copy buttons)
+- **\"eIDAS 2.0 Regulation\"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
-- **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
+- **Terminology deep linking** (Click \"View in Regulation\" → jumps to exact paragraph, preserves legal structure UL/OL)
 - **Scroll restoration** (Back button restores position, manual navigation starts at top; Performance API detection)
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
@@ -61,6 +63,8 @@
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | **Download missing annexes** | **Run batch_fix_annexes.py — 20 implementing acts with missing annexes** | **Medium** |
+| **Cross-link portal citations** | **Internal docs link to portal instead of EUR-Lex** | **High** |
+| **Recital cross-references** | **Link \"recital (42)\" text to actual recital** | **Medium** |
 
 ---
 
@@ -68,7 +72,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-16 23:05 | Reg 765/2008 harmonization: Preamble, recitals bullet list, article headings split, chapter format (Roman numerals), collapsible TOC, removed redundant Source Reference, dynamic chapter extraction + retro improvements |
+| 2026-01-17 00:10 | Recital gutter icons (Phase 4), informal citation detection, TERMINOLOGY.md created, retro improvements (Rule 15+16, init workflow, snippets) |
 | 2026-01-16 21:30 | DEC-043 Short Title SSOT: YAML shortTitle field, fail-fast build validation, schema validation (`npm run validate:config`), annex warning cleanup, retro workflow updates |
 | 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
 | 2026-01-16 17:50 | Regulation 765/2008: Full HTML extraction (48 recitals, 44 articles, 2 annexes, 11,566 words replacing 1,400 word partial) |
