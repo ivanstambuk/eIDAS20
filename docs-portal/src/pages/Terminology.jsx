@@ -54,8 +54,8 @@ const Terminology = () => {
                 requestAnimationFrame(() => {
                     const element = document.getElementById(section);
                     if (element) {
-                        // Header (64px) + sticky nav (~56px) + padding
-                        const headerOffset = 64 + 56;
+                        // Header (64px) + sticky nav (~56px) + extra padding for visibility
+                        const headerOffset = 135;
                         const targetY = element.getBoundingClientRect().top + window.scrollY - headerOffset;
                         fastScrollTo(targetY);
                         element.focus({ preventScroll: true });
@@ -190,8 +190,8 @@ const Terminology = () => {
                                 if (isAvailable) {
                                     const el = document.getElementById(`letter-${letter}`);
                                     if (el) {
-                                        // Header (64px) + sticky nav (~52px) + padding
-                                        const headerOffset = 64 + 56;
+                                        // Header (64px) + sticky nav (~56px) + extra padding for visibility
+                                        const headerOffset = 135;
                                         const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset;
                                         fastScrollTo(targetY);
                                     }
