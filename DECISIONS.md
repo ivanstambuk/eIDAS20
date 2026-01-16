@@ -692,7 +692,10 @@ THE EUROPEAN PARLIAMENT AND THE COUNCIL OF THE EUROPEAN UNION,
 
 Whereas:
 
-(1) [First recital]
+## Recitals
+
+- (1) [First recital]
+- (2) [Second recital]
 ...
 
 HAVE ADOPTED THIS REGULATION:
@@ -711,6 +714,8 @@ HAVE ADOPTED THIS REGULATION:
 | "Having regard to..." | *Having regard to...* | Having regard to... |
 | Horizontal rule after notes | ❌ No `---` | ✅ Has `---` |
 | Preamble header position | Before "THE EUROPEAN PARLIAMENT..." | After formal introduction |
+| Recitals header | `## Recitals` after "Whereas:" | No header |
+| Recitals format | Bullet list: `- (1) ...` | Plain paragraphs: `(1) ...` |
 | EEA relevance | In metadata header: `> **EEA Relevance:** Yes` | Inline: `*(Text with EEA relevance)*` |
 
 **Why This Matters:**
@@ -729,7 +734,8 @@ When importing a new regulation, verify:
 - [ ] `## Preamble` header before formal introduction
 - [ ] "Having regard to..." lines are *italicized*
 - [ ] "Whereas:" on its own line before recitals
-- [ ] Recitals numbered as `(1)`, `(2)`, etc.
+- [ ] `## Recitals` header after "Whereas:"
+- [ ] Recitals as bullet list: `- (1) ...`, `- (2) ...`
 - [ ] `HAVE ADOPTED THIS REGULATION:` before enacting terms
 - [ ] `## Enacting Terms` header before Article 1
 - [ ] No horizontal rules (`---`) in document body
@@ -742,7 +748,7 @@ Apply to existing regulations and all future imports. The Formex XML converter a
 
 | File | Changes Applied |
 |------|-----------------|
-| `01_regulation/765_2008_Market_Surveillance/02008R0765.md` | Moved Preamble header, italicized formal intro, removed `---` |
+| `01_regulation/765_2008_Market_Surveillance/02008R0765.md` | Moved Preamble header, italicized formal intro, removed `---`, added `## Recitals` header, converted recitals to bullet list |
 
 ---
 
