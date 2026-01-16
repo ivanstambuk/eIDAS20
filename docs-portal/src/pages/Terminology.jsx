@@ -27,7 +27,6 @@ const Terminology = () => {
     const [terminology, setTerminology] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [expandedTerms, setExpandedTerms] = useState(new Set());
 
     // Load terminology data
     useEffect(() => {
@@ -133,27 +132,10 @@ const Terminology = () => {
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    const toggleExpanded = (termId) => {
-        setExpandedTerms(prev => {
-            const next = new Set(prev);
-            if (next.has(termId)) {
-                next.delete(termId);
-            } else {
-                next.add(termId);
-            }
-            return next;
-        });
-    };
-
-    // Get document route path based on type
+    // Get document route path using the new source format
     const getDocumentPath = (source) => {
-        const basePath = source.type === 'regulation' ? 'regulation' : 'implementing-acts';
-        // Link to the specific paragraph where the definition is located
-        // Format: article-{article}-para-{ordinal} (e.g., article-2-para-1)
-        const sectionId = source.ordinal
-            ? `article-${source.article}-para-${source.ordinal}`
-            : `article-${source.article}`;
-        return `/${basePath}/${source.slug}?section=${sectionId}`;
+        const basePath = source.documentType === 'regulation' ? 'regulation' : 'implementing-acts';
+        return `/${basePath}/${source.documentId}?section=${source.articleId}`;
     };
 
     if (loading) {
@@ -276,9 +258,7 @@ const Terminology = () => {
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                             {groupedTerms[letter].map(term => {
-                                const isExpanded = expandedTerms.has(term.id);
-                                const hasMultipleDefs = term.definitions.length > 1;
-                                const primaryDef = term.definitions[0];
+                                const hasMultipleSources = term.sources.length > 1;
 
                                 return (
                                     <article
@@ -286,100 +266,55 @@ const Terminology = () => {
                                         id={`term-${term.id}`}
                                         className="card"
                                     >
-                                        <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-3)' }}>
+                                        <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-4)' }}>
                                             <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
                                                 {term.term}
                                             </h3>
                                             <div className="flex gap-2">
                                                 <span className="badge badge-primary">
-                                                    Art. {primaryDef.source.article}({primaryDef.source.ordinal})
+                                                    Art. {term.sources[0].articleNumber}
                                                 </span>
-                                                {hasMultipleDefs && (
-                                                    <span className="badge badge-secondary">
-                                                        {term.definitions.length} sources
+                                                {hasMultipleSources && (
+                                                    <span className="badge badge-secondary" title={`Defined in ${term.sources.length} documents`}>
+                                                        {term.sources.length} sources
                                                     </span>
                                                 )}
                                             </div>
                                         </div>
 
-                                        <p style={{ lineHeight: 1.7 }}>
-                                            {primaryDef.text}
-                                        </p>
-
-                                        <div className="flex items-center gap-4 mt-4" style={{ flexWrap: 'wrap' }}>
-                                            <Link
-                                                to={getDocumentPath(primaryDef.source)}
-                                                className="text-sm text-link"
-                                                onClick={handleSaveScroll}
-                                            >
-                                                View in {primaryDef.source.shortRef} →
-                                            </Link>
-                                            <button
-                                                className="btn btn-ghost text-sm"
-                                                onClick={() => {
-                                                    navigator.clipboard.writeText(primaryDef.text);
-                                                }}
-                                            >
-                                                Copy definition
-                                            </button>
-                                            {hasMultipleDefs && (
-                                                <button
-                                                    className="btn btn-ghost text-sm"
-                                                    onClick={() => toggleExpanded(term.id)}
+                                        {/* Stacked definitions from all sources */}
+                                        <div className="definitions-stack" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                                            {term.sources.map((source, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    className={`definition-source ${source.documentCategory}`}
+                                                    style={{
+                                                        borderLeft: source.documentCategory === 'primary' ? '3px solid var(--accent-primary)' : '3px solid var(--cyan-muted)',
+                                                        paddingLeft: 'var(--space-3)',
+                                                        opacity: source.documentCategory === 'referenced' ? 0.9 : 1
+                                                    }}
                                                 >
-                                                    {isExpanded ? 'Hide sources ▲' : `Show all sources ▼`}
-                                                </button>
-                                            )}
+                                                    <div className="source-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
+                                                        <strong>{source.documentTitle}</strong>, Article {source.articleNumber}:
+                                                        {source.documentCategory === 'referenced' && (
+                                                            <span className="referenced-badge" style={{ background: 'var(--cyan-muted)', color: 'var(--bg-primary)', padding: '0.125rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
+                                                                Referenced
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 'var(--space-3)' }}>
+                                                        {source.definition}
+                                                    </p>
+                                                    <Link
+                                                        to={getDocumentPath(source)}
+                                                        className="view-link text-sm text-link"
+                                                        onClick={handleSaveScroll}
+                                                    >
+                                                        View in {source.documentTitle} →
+                                                    </Link>
+                                                </div>
+                                            ))}
                                         </div>
-
-                                        {/* Expanded sources */}
-                                        {isExpanded && hasMultipleDefs && (
-                                            <div
-                                                className="mt-4"
-                                                style={{
-                                                    borderTop: '1px solid var(--border-secondary)',
-                                                    paddingTop: 'var(--space-4)'
-                                                }}
-                                            >
-                                                <p className="text-sm text-muted mb-3">
-                                                    This term is defined in {term.definitions.length} documents:
-                                                </p>
-                                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                                    {term.definitions.map((def, idx) => (
-                                                        <li
-                                                            key={idx}
-                                                            style={{
-                                                                display: 'flex',
-                                                                alignItems: 'center',
-                                                                gap: 'var(--space-3)',
-                                                                padding: 'var(--space-2) 0',
-                                                                borderBottom: idx < term.definitions.length - 1 ? '1px solid var(--border-tertiary)' : 'none'
-                                                            }}
-                                                        >
-                                                            <span className="badge" style={{ flexShrink: 0 }}>
-                                                                Art. {def.source.article}({def.source.ordinal})
-                                                            </span>
-                                                            <Link
-                                                                to={getDocumentPath(def.source)}
-                                                                className="text-sm text-link"
-                                                                style={{ flex: 1 }}
-                                                                onClick={handleSaveScroll}
-                                                            >
-                                                                {def.source.shortRef}
-                                                            </Link>
-                                                            <span
-                                                                className="text-xs"
-                                                                style={{
-                                                                    color: def.source.type === 'regulation' ? 'var(--accent-primary)' : 'var(--text-muted)'
-                                                                }}
-                                                            >
-                                                                {def.source.type === 'regulation' ? '📜 Regulation' : '📋 IA'}
-                                                            </span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
                                     </article>
                                 );
                             })}
