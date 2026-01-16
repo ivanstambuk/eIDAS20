@@ -23,8 +23,44 @@ import urllib.request
 from pathlib import Path
 from datetime import datetime
 
+import yaml
+
 # Import the improved v3 converter (better annex handling)
 from formex_to_md_v3 import convert_formex_to_md as convert_formex_v3
+
+# HTML fallback converter (for documents without Formex XML)
+from eurlex_html_to_md import convert_html_to_markdown
+
+
+def get_document_config(celex: str) -> dict | None:
+    """
+    Check documents.yaml for document configuration.
+    
+    Returns the document config dict if found, None otherwise.
+    """
+    documents_yaml = Path(__file__).parent / 'documents.yaml'
+    
+    if not documents_yaml.exists():
+        return None
+    
+    with open(documents_yaml, 'r', encoding='utf-8') as f:
+        config = yaml.safe_load(f)
+    
+    for doc in config.get('documents', []):
+        if doc.get('celex') == celex:
+            return doc
+    
+    return None
+
+
+def uses_html_source(celex: str) -> bool:
+    """
+    Check if a document is configured to use HTML source.
+    
+    Returns True if documents.yaml has source: html for this CELEX.
+    """
+    config = get_document_config(celex)
+    return config is not None and config.get('source') == 'html'
 
 
 def download_file(url, filepath):
@@ -261,6 +297,34 @@ def main():
     output_dir = Path(sys.argv[2])
     output_dir.mkdir(parents=True, exist_ok=True)
     
+    # =========================================================
+    # Check if this document is configured to use HTML source
+    # =========================================================
+    if uses_html_source(celex):
+        print(f"\n=== EUR-Lex HTML Download: {celex} ===\n")
+        print(f"  ⚠️ Formex XML not available for {celex}")
+        print(f"  Using HTML fallback converter...\n")
+        
+        try:
+            markdown = convert_html_to_markdown(celex)
+            
+            md_path = output_dir / f"{celex}.md"
+            md_path.write_text(markdown, encoding='utf-8')
+            
+            word_count = len(markdown.split())
+            print(f"\n✅ HTML conversion complete!")
+            print(f"   Output: {md_path}")
+            print(f"   Words: {word_count}")
+        except Exception as e:
+            print(f"ERROR during HTML conversion: {e}")
+            sys.exit(1)
+        
+        print("\n=== Done ===\n")
+        return
+    
+    # =========================================================
+    # Standard Formex processing
+    # =========================================================
     print(f"\n=== EUR-Lex Formex Download: {celex} ===\n")
     
     # Step 1: Get Formex URL
@@ -268,7 +332,8 @@ def main():
     cellar_url = get_formex_url(celex)
     
     if not cellar_url:
-        print("ERROR: Could not find Formex URL. Falling back to HTML.")
+        print("ERROR: Could not find Formex URL.")
+        print("  TIP: Add 'source: html' in documents.yaml for this CELEX to use HTML fallback.")
         sys.exit(1)
     
     print(f"  Found: {cellar_url}")
