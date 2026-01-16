@@ -2,55 +2,43 @@
 
 ## Current State
 
-- **Focus**: Testing & Validation - Verify parser output and build integration
-- **Next**: Run build pipeline and verify portal rendering
-- **Status**: Ready
-- **Phase**: Phase 4 of 5
+- **Focus**: ✅ All phases complete
+- **Status**: Done
+- **Phase**: 5 of 5 — Complete
 
 ## Completed Phases
 
 - ✅ **Phase 1**: HTML Source Analysis
-- ✅ **Phase 2**: Create Parser Script (`eurlex_html_to_md.py`)
-- ✅ **Phase 3**: Pipeline Integration (`eurlex_formex.py` now uses HTML fallback)
+- ✅ **Phase 2**: Create Parser Script (`eurlex_html_to_md.py` — 760 lines)
+- ✅ **Phase 3**: Pipeline Integration (`eurlex_formex.py` HTML fallback routing)
+- ✅ **Phase 4**: Testing & Validation (portal verified, 115 terms, 208 definitions)
+- ✅ **Phase 5**: Documentation (DEC-042 in DECISIONS.md)
 
-## Key Files
+## Key Deliverables
 
-- `scripts/eurlex_html_to_md.py` — **COMPLETE**: HTML→MD converter (760 lines)
-- `scripts/documents.yaml` — **UPDATED**: 765/2008 added with `source: html`
-- `scripts/eurlex_formex.py` — **UPDATED**: HTML fallback logic integrated
-- `~/.venvs/eurlex/` — Virtual env with beautifulsoup4, lxml, requests, pyyaml
+| File | Description |
+|------|-------------|
+| `scripts/eurlex_html_to_md.py` | HTML→MD converter (760 lines) |
+| `scripts/eurlex_formex.py` | Pipeline with HTML fallback |
+| `scripts/documents.yaml` | 765/2008 has `source: html` |
+| `DECISIONS.md` | DEC-042 architecture decision |
 
-## Phase 4 Tasks
+## Validation Summary
 
-1. **Run build pipeline**:
-   ```bash
-   cd docs-portal && npm run build:all
-   ```
+- ✅ 765/2008: 6 chapters, 44 articles, 2 annexes, 11,674 words
+- ✅ Portal rendering verified via browser
+- ✅ Terminology extraction: 115 terms (including multi-source)
+- ✅ Build pipeline: 33 docs, 136,918 words
 
-2. **Verify terminology extracted**:
-   ```bash
-   grep "conformity assessment body" public/data/terminology.json
-   ```
+## Next Steps (Future Work)
 
-3. **Portal verification** (browser):
-   - Navigate to http://localhost:5173/eIDAS20/#/regulation/765-2008
-   - Verify TOC has all 6 chapters
-   - Verify definitions link correctly
-   - Verify multi-source popover shows both 910/2014 and 765/2008 definitions
+1. Add more HTML-only regulations:
+   - 768/2008 (Product Marketing Decision)
+   - GDPR 2016/679
+   - Services Directive (2006/123/EC)
 
-## Validation Summary (Phase 3)
+2. Add unit tests for HTML converter edge cases
 
-Pipeline integration tested:
-- ✅ `uses_html_source('32008R0765')` → True
-- ✅ `uses_html_source('32024R1183')` → False
-- ✅ Converter output: 6 chapters, 44 articles, 2 annexes, 11,674 words
+---
 
-## Quick Commands
-
-```bash
-# Test HTML converter directly:
-~/.venvs/eurlex/bin/python3 scripts/eurlex_html_to_md.py 32008R0765 /tmp/test
-
-# Test via pipeline (uses documents.yaml):
-~/.venvs/eurlex/bin/python3 scripts/eurlex_formex.py 32008R0765 /tmp/test
-```
+*Task complete. Remove this file when no longer needed.*
