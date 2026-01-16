@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 21:30 CET |
-| **Session State** | ✅ DEC-043: Short Title Single Source of Truth |
+| **Last Updated** | 2026-01-16 23:05 CET |
+| **Session State** | ✅ Regulation 765/2008 harmonization complete |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Run batch_fix_annexes.py for missing annex content |
 
@@ -68,6 +68,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 23:05 | Reg 765/2008 harmonization: Preamble, recitals bullet list, article headings split, chapter format (Roman numerals), collapsible TOC, removed redundant Source Reference, dynamic chapter extraction + retro improvements |
 | 2026-01-16 21:30 | DEC-043 Short Title SSOT: YAML shortTitle field, fail-fast build validation, schema validation (`npm run validate:config`), annex warning cleanup, retro workflow updates |
 | 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
 | 2026-01-16 17:50 | Regulation 765/2008: Full HTML extraction (48 recitals, 44 articles, 2 annexes, 11,566 words replacing 1,400 word partial) |
