@@ -644,5 +644,107 @@ If a regulation has no `shortTitle` in documents.yaml, the build fails immediate
 
 ---
 
+## DEC-044: Regulation Document Style Guide
+
+**Date:** 2026-01-16  
+**Status:** Accepted  
+**Category:** Content Format / Document Structure
+
+**Context:**
+
+When importing Regulation 765/2008, visual inconsistencies emerged compared to the eIDAS regulation (which was converted from authoritative Formex XML). These inconsistencies affected:
+1. Navigation (Preamble header placement)
+2. Visual styling (italics for formal introduction)
+3. Redundant elements (horizontal rules)
+
+**Decision:**
+
+Establish a **mandatory style guide** for all regulation Markdown files. The eIDAS Formex-converted output serves as the canonical reference.
+
+**Required Document Structure:**
+
+```markdown
+> **CELEX:** [...]
+> **Source:** [...]
+> **Official Journal:** [...]
+> **ELI:** [...]
+> **Consolidated version:** [...] (if applicable)
+> **Amended by:** [...] (if applicable)
+> **EEA Relevance:** Yes (if applicable)
+
+# [Full regulation title]
+
+> **Note/Consolidation Note:** [...] (if applicable)
+
+## Preamble
+
+THE EUROPEAN PARLIAMENT AND THE COUNCIL OF THE EUROPEAN UNION,
+
+*Having regard to the Treaty...,*
+
+*Having regard to the proposal from the Commission,*
+
+*Having regard to the opinion of...,*
+
+*After consulting...,*
+
+*Acting in accordance with...,*
+
+Whereas:
+
+(1) [First recital]
+...
+
+HAVE ADOPTED THIS REGULATION:
+
+## Enacting Terms
+
+### Article 1
+...
+```
+
+**Style Rules:**
+
+| Element | Correct Format | Incorrect Format |
+|---------|----------------|------------------|
+| Formal introduction | *Italicized* | Plain text |
+| "Having regard to..." | *Having regard to...* | Having regard to... |
+| Horizontal rule after notes | ❌ No `---` | ✅ Has `---` |
+| Preamble header position | Before "THE EUROPEAN PARLIAMENT..." | After formal introduction |
+| EEA relevance | In metadata header: `> **EEA Relevance:** Yes` | Inline: `*(Text with EEA relevance)*` |
+
+**Why This Matters:**
+
+1. **TOC Navigation** — `## Preamble` header enables direct navigation to preamble section
+2. **Visual Distinction** — Italicized formal introduction matches official EU document styling
+3. **Consistency** — All regulations look identical, reducing cognitive load
+4. **Pipeline Compatibility** — Consistent structure enables reliable parsing by build scripts
+
+**Checklist for New Regulations:**
+
+When importing a new regulation, verify:
+
+- [ ] Metadata blockquote at top (CELEX, Source, OJ, ELI)
+- [ ] EEA relevance in metadata (not inline)
+- [ ] `## Preamble` header before formal introduction
+- [ ] "Having regard to..." lines are *italicized*
+- [ ] "Whereas:" on its own line before recitals
+- [ ] Recitals numbered as `(1)`, `(2)`, etc.
+- [ ] `HAVE ADOPTED THIS REGULATION:` before enacting terms
+- [ ] `## Enacting Terms` header before Article 1
+- [ ] No horizontal rules (`---`) in document body
+
+**Implementation:**
+
+Apply to existing regulations and all future imports. The Formex XML converter already follows this guide; HTML imports must be manually harmonized.
+
+**Files affected by harmonization (2026-01-16):**
+
+| File | Changes Applied |
+|------|-----------------|
+| `01_regulation/765_2008_Market_Surveillance/02008R0765.md` | Moved Preamble header, italicized formal intro, removed `---` |
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
