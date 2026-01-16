@@ -407,5 +407,81 @@ Implement **gutter icons** that appear on hover next to legal structure elements
 
 ---
 
+## DEC-012: Build-Time Metadata Generation (Prevent hardcoded counts)
+
+**Date:** 2026-01-16  
+**Status:** Accepted  
+
+**Context:**  
+The Sidebar displayed "32 Documents Loaded" as a hardcoded value, which became stale when Regulation 765/2008 was added (bringing the total to 33). This violated the principle of single source of truth and would recur with every new document.
+
+**Root Cause:**  
+UI components lacked access to computed statistics at build time, forcing developers to either:
+1. Hardcode values (error-prone)
+2. Fetch large index files at runtime (30KB `regulations-index.json` just to count items)
+3. Compute on every render (inefficient)
+
+**Decision:**  
+Implement **build-time metadata generation** that computes and validates statistics during the content build process.
+
+**Architecture:**
+
+```
+Source Files (33 docs)
+    ↓
+build-content.js
+    ├─→ regulations-index.json (29KB, full metadata)
+    └─→ metadata.json (510B, computed stats) ← NEW
+            ↓
+        Sidebar.jsx fetches metadata.json
+            ↓
+        "33 Documents Loaded" (dynamic)
+```
+
+**Generated Metadata (`public/data/metadata.json`):**
+```json
+{
+  "documentCount": 33,
+  "regulationCount": 3,
+  "implementingActCount": 30,
+  "totalWordCount": 126727,
+  "buildDate": "Jan 16, 2026",
+  "lastBuildTime": "2026-01-16T15:31:14.740Z",
+  "categories": { "regulations": {...}, "implementingActs": {...} }
+}
+```
+
+**Build-Time Validation (Defense in Depth):**
+1. **Type consistency:** `regulationCount + implementingActCount === documentCount`
+2. **Expected count:** Warn if regulation count ≠ 3 (we should always have 910/2014, 2024/1183, 765/2008)
+3. **Sanity check:** Fail if `totalWordCount < 10,000` (indicates extraction failure)
+
+**Benefits:**
+1. **Single source of truth** — Counts computed from actual documents, never hardcoded
+2. **Build fails fast** — Data integrity errors caught at build time, not production
+3. **150x smaller payload** — 510 bytes vs 30KB (regulations-index.json)
+4. **Future-proof** — Adding documents automatically updates all stats
+5. **Extensible** — Can add more metadata fields without changing UI code
+
+**Implementation:**
+- `docs-portal/scripts/build-content.js` — `generateMetadata()` function
+- `docs-portal/src/components/Layout/Sidebar.jsx` — Fetches `metadata.json` instead of computing from index
+- Build process now outputs TWO index files:
+  - `regulations-index.json` — Full document metadata (for listings, search)
+  - `metadata.json` — Lightweight aggregated stats (for UI indicators)
+
+**Prevention Mechanism:**  
+Following **AGENTS.md Rule 5 (Proactive Prevention Protocol)**, this pattern prevents ALL hardcoded values in UI components that should derive from source data. Future stats (category counts, word counts, etc.) must be added to `metadata.json`, not hardcoded.
+
+**Alternatives considered:**
+1. **Static import of regulations-index.json** — Simpler but bundles 30KB into JS
+2. **Generate constants.js file** — Less flexible than JSON metadata
+3. **Keep runtime fetch** — Works but wastes bandwidth and lacks build-time validation
+
+**When to reconsider:**  
+If metadata grows beyond ~2KB, consider splitting into specialized metadata files (e.g., `stats.json`, `build-info.json`).
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 

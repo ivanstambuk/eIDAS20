@@ -118,22 +118,22 @@ const icons = {
 };
 
 const Sidebar = ({ isOpen, onClose }) => {
-    const [documentCount, setDocumentCount] = useState(32); // Default to 32 while loading
+    const [metadata, setMetadata] = useState(null);
 
     useEffect(() => {
-        const fetchDocumentCount = async () => {
+        const fetchMetadata = async () => {
             try {
-                const response = await fetch(`${import.meta.env.BASE_URL}data/regulations-index.json`);
+                const response = await fetch(`${import.meta.env.BASE_URL}data/metadata.json`);
                 if (response.ok) {
-                    const documents = await response.json();
-                    setDocumentCount(documents.length);
+                    const data = await response.json();
+                    setMetadata(data);
                 }
             } catch (error) {
-                console.error('Failed to fetch document count:', error);
+                console.error('Failed to fetch metadata:', error);
             }
         };
 
-        fetchDocumentCount();
+        fetchMetadata();
     }, []);
 
     return (
@@ -201,10 +201,12 @@ const Sidebar = ({ isOpen, onClose }) => {
                                     background: 'var(--accent-secondary)'
                                 }}
                             />
-                            <span className="font-medium">{documentCount} Documents Loaded</span>
+                            <span className="font-medium">
+                                {metadata ? `${metadata.documentCount} Documents Loaded` : 'Loading...'}
+                            </span>
                         </div>
                         <p className="text-muted">
-                            Last updated: Jan 2026
+                            Last updated: {metadata ? metadata.buildDate : 'Loading...'}
                         </p>
                     </div>
                 </div>

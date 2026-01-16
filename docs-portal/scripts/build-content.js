@@ -733,6 +733,100 @@ function validateAnnexes(regulations) {
 }
 
 /**
+ * Generate metadata.json with computed statistics.
+ * 
+ * This metadata file provides build-time computed stats that prevent
+ * hardcoding values in UI components. The metadata includes:
+ * - Document counts (total, by category)
+ * - Word counts (total, by category)
+ * - Build timestamp
+ * 
+ * Build-time validation ensures data integrity (Defense in Depth, AGENTS.md Rule 5).
+ * 
+ * @param {Array} regulations - Array of all processed regulation objects
+ * @returns {Object} - Metadata object to be written to metadata.json
+ */
+function generateMetadata(regulations) {
+    // Count documents by type
+    const regulationDocs = regulations.filter(r => r.type === 'regulation');
+    const implementingActDocs = regulations.filter(r => r.type === 'implementing-act');
+
+    // Calculate word counts
+    const totalWordCount = regulations.reduce((sum, r) => sum + r.wordCount, 0);
+    const regulationWordCount = regulationDocs.reduce((sum, r) => sum + r.wordCount, 0);
+    const implementingActWordCount = implementingActDocs.reduce((sum, r) => sum + r.wordCount, 0);
+
+    // Build-time validation (Defense in Depth)
+    const documentCount = regulations.length;
+    const regulationCount = regulationDocs.length;
+    const implementingActCount = implementingActDocs.length;
+
+    // Validation 1: Sum of categories must equal total
+    if (regulationCount + implementingActCount !== documentCount) {
+        throw new Error(
+            `Data integrity error: Document type mismatch!\n` +
+            `  Total documents: ${documentCount}\n` +
+            `  Regulations: ${regulationCount}\n` +
+            `  Implementing acts: ${implementingActCount}\n` +
+            `  Sum: ${regulationCount + implementingActCount}\n` +
+            `  Expected: Total = Regulations + Implementing Acts`
+        );
+    }
+
+    // Validation 2: We should have exactly 3 regulations (910/2014, 2024/1183, 765/2008)
+    const expectedRegulationCount = 3;
+    if (regulationCount !== expectedRegulationCount) {
+        console.warn(
+            `⚠️  Warning: Expected ${expectedRegulationCount} regulations, found ${regulationCount}\n` +
+            `   Regulations: ${regulationDocs.map(r => r.slug).join(', ')}`
+        );
+    }
+
+    // Validation 3: Word count sanity check (total should be reasonable)
+    if (totalWordCount < 10000) {
+        throw new Error(
+            `Data integrity error: Total word count (${totalWordCount}) is suspiciously low!\n` +
+            `  This suggests content was not properly extracted.`
+        );
+    }
+
+    const metadata = {
+        // Document counts
+        documentCount,
+        regulationCount,
+        implementingActCount,
+
+        // Word counts
+        totalWordCount,
+        regulationWordCount,
+        implementingActWordCount,
+
+        // Build info
+        lastBuildTime: new Date().toISOString(),
+        buildDate: new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        }),
+
+        // Category details (for potential future use)
+        categories: {
+            regulations: {
+                count: regulationCount,
+                wordCount: regulationWordCount,
+                slugs: regulationDocs.map(r => r.slug)
+            },
+            implementingActs: {
+                count: implementingActCount,
+                wordCount: implementingActWordCount
+            }
+        }
+    };
+
+    return metadata;
+}
+
+/**
  * Main build function
  */
 function build() {
@@ -785,6 +879,14 @@ function build() {
     writeFileSync(indexPath, JSON.stringify(index, null, 2));
     console.log(`\n📋 Index written: regulations-index.json (${index.length} documents)`);
 
+    // Generate metadata with build-time validation
+    console.log('\n📊 Generating metadata...');
+    const metadata = generateMetadata(allRegulations);
+    const metadataPath = join(OUTPUT_DIR, '..', 'metadata.json');
+    writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
+    console.log(`   ✅ Metadata written: metadata.json`);
+    console.log(`   📈 Stats: ${metadata.documentCount} docs, ${metadata.totalWordCount.toLocaleString()} words`);
+
     // Validate: Check for missing annexes
     const annexWarnings = validateAnnexes(allRegulations);
     if (annexWarnings.length > 0) {
@@ -797,8 +899,9 @@ function build() {
     }
 
     console.log('\n✨ Build complete!');
-    console.log(`   Total documents: ${allRegulations.length}`);
-    console.log(`   Total words: ${allRegulations.reduce((sum, r) => sum + r.wordCount, 0).toLocaleString()}`);
+    console.log(`   📄 Documents: ${metadata.documentCount} (${metadata.regulationCount} regulations + ${metadata.implementingActCount} implementing acts)`);
+    console.log(`   📝 Total words: ${metadata.totalWordCount.toLocaleString()}`);
+    console.log(`   🕒 Built: ${metadata.buildDate}`);
 }
 
 // Run the build
