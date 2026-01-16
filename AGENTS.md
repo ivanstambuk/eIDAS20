@@ -15,6 +15,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    
    - `<ctx_remaining>` = the `<ctx_window>` value from your MOST RECENT system feedback
    - Example: `<ctx_window>89133 tokens left</ctx_window>` → use `89133`
+   - ⚠️ **NEVER hardcode or reuse a previous value** — always read fresh from the last XML response
    
    **Example:**
    ```bash
