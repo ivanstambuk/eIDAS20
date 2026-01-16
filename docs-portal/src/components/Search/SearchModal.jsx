@@ -226,17 +226,21 @@ export function SearchModal({ isOpen, onClose }) {
     }, [isOpen]);
 
     // Clear search state when modal closes
+    // Extract stable function references to prevent infinite loop
+    const clearKeywordSearch = keywordSearch.clearSearch;
+    const clearSemanticSearch = semanticSearch.clearSearch;
+
     useEffect(() => {
         if (!isOpen) {
             // Clear both search modes when modal is closed
-            keywordSearch.clearSearch();
-            semanticSearch.clearSearch();
+            clearKeywordSearch();
+            clearSemanticSearch();
             // Also clear the input field value for next open
             if (inputRef.current) {
                 inputRef.current.value = '';
             }
         }
-    }, [isOpen, keywordSearch, semanticSearch]);
+    }, [isOpen, clearKeywordSearch, clearSemanticSearch]);
 
     // Handle keyboard shortcuts
     useEffect(() => {
@@ -257,20 +261,20 @@ export function SearchModal({ isOpen, onClose }) {
         setSearchMode(mode);
 
         // Clear previous mode's results
-        keywordSearch.clearSearch();
-        semanticSearch.clearSearch();
+        clearKeywordSearch();
+        clearSemanticSearch();
 
         // Re-run search with preserved query in new mode
         if (currentQuery.trim()) {
             // Use the appropriate search function for the new mode
-            const newSearch = mode === 'semantic' ? semanticSearch : keywordSearch;
-            newSearch.search(currentQuery);
+            const newSearch = mode === 'semantic' ? semanticSearch.search : keywordSearch.search;
+            newSearch(currentQuery);
         }
 
         if (inputRef.current) {
             inputRef.current.focus();
         }
-    }, [keywordSearch, semanticSearch]);
+    }, [clearKeywordSearch, clearSemanticSearch, keywordSearch.search, semanticSearch.search]);
 
     // Handle result click - save to history
     const handleResultClick = useCallback(() => {
