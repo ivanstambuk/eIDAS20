@@ -20,7 +20,8 @@ const navigation = [
     {
         title: 'Referenced Regulations',
         items: [
-            { name: 'Regulation 765/2008', path: '/regulation/765-2008', icon: 'external-link' },
+            // Human-friendly name per DEC-051; technical ref: Regulation (EC) No 765/2008
+            { name: 'Accreditation Regulation', path: '/regulation/765-2008', icon: 'external-link' },
         ]
     },
     {

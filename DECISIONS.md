@@ -828,5 +828,62 @@ If a regulation needs to show legislative evolution (e.g., for educational purpo
 
 ---
 
+## DEC-051: Human-Friendly Sidebar Navigation Names
+
+**Date:** 2026-01-16  
+**Status:** Accepted  
+**Category:** UX / Navigation
+
+**Context:**
+
+The sidebar navigation showed "Regulation 765/2008" for the Referenced Regulations section. This technical CELEX-style identifier:
+1. Requires users to memorize regulation numbers
+2. Provides no context about regulation subject matter
+3. Violates UX best practices for navigation labels
+
+**Decision:**
+
+**Sidebar navigation items MUST use human-friendly names, never technical identifiers.**
+
+Examples:
+
+| ❌ Technical (Prohibited) | ✅ Human-Friendly (Required) |
+|--------------------------|------------------------------|
+| Regulation 765/2008 | Accreditation Regulation |
+| Regulation 910/2014 | eIDAS 2.0 Regulation |
+| Regulation 2024/1183 | Amending Regulation |
+| 32024R2977 | PID & EAA |
+
+**Implementation:**
+
+- Sidebar.jsx: All `name` properties must be human-readable labels
+- Comment format: Include technical reference as JSDoc comment if needed
+  ```javascript
+  // Human-friendly name per DEC-051; technical ref: Regulation (EC) No 765/2008
+  { name: 'Accreditation Regulation', path: '/regulation/765-2008', icon: 'external-link' },
+  ```
+
+**Naming Guidelines:**
+
+1. **Subject over number** — Describe what the regulation regulates, not its publication ID
+2. **Short and scannable** — Target 2-4 words maximum
+3. **Commonly used names** — Use industry-standard short names when available
+4. **Consistency** — Similar documents should have similar naming patterns
+
+**Rationale:**
+
+1. **Cognitive load** — Users shouldn't need to memorize regulation numbers
+2. **Discoverability** — Subject-based names help users find relevant content
+3. **Professional UX** — Matches patterns from legal databases (Westlaw, LexisNexis)
+4. **Accessibility** — Screen readers benefit from descriptive names
+
+**Files affected:**
+
+| File | Change |
+|------|--------|
+| `Sidebar.jsx` | "Regulation 765/2008" → "Accreditation Regulation" |
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
