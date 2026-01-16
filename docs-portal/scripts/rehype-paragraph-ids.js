@@ -153,6 +153,60 @@ function rehypeParagraphIds() {
                 return;
             }
 
+            // Process unordered list items (paragraphs) - treats them identically to ordered lists
+            // This is necessary for Article 2 (Definitions) sections that use unordered lists
+            // We preserve the original list type but still enable deep linking with paragraph IDs
+            if (node.tagName === 'ul') {
+                // Check if this is a top-level list (direct child after article heading)
+                // by checking if parent contains NO other ul/ol between article heading and this ul
+                const isTopLevelList = (() => {
+                    // Find parent in ancestors
+                    const parentIndex = ancestors.findIndex(a => a === node);
+                    if (parentIndex === -1) return true;
+
+                    // Look for article heading before this ul
+                    let foundArticle = false;
+                    for (let i = parentIndex - 1; i >= 0; i--) {
+                        const ancestor = ancestors[i];
+                        if (ancestor.type === 'element') {
+                            if ((ancestor.tagName === 'h2' || ancestor.tagName === 'h3') &&
+                                ancestor.properties?.id?.startsWith('article-')) {
+                                foundArticle = true;
+                                break;
+                            }
+                            // If we find another list before the article, this is nested
+                            if (ancestor.tagName === 'ul' || ancestor.tagName === 'ol') {
+                                return false;
+                            }
+                        }
+                    }
+                    return foundArticle;
+                })();
+
+                if (isTopLevelList) {
+                    let liIndex = 0;
+
+                    for (const child of node.children) {
+                        if (child.type === 'element' && child.tagName === 'li') {
+                            const paragraphNum = liIndex + 1; // 1-indexed like ordered lists
+                            const paraId = `${currentArticleId}-para-${paragraphNum}`;
+
+                            child.properties = child.properties || {};
+                            child.properties.id = paraId;
+                            child.properties['data-para'] = paragraphNum;
+                            child.properties['data-article'] = currentArticleId;
+                            child.properties.className = [
+                                ...(child.properties.className || []),
+                                'linkable-paragraph'
+                            ];
+
+                            liIndex++;
+                        }
+                    }
+                    return;
+                }
+            }
+
             // Process unordered list items (points and subpoints)
             if (node.tagName === 'ul') {
                 const paraContext = findParagraphContext(ancestors);
