@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 17:36 CET |
-| **Session State** | ✅ Complete: Build-Time Metadata Generation (DEC-012) + Retro improvements |
+| **Last Updated** | 2026-01-16 17:50 CET |
+| **Session State** | ✅ Complete: Regulation 765/2008 Full Extraction (HTML→Markdown) |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Phase 5: Comprehensive testing & verification (Multi-Source Terminology) |
 
@@ -19,8 +19,9 @@
 
 - **33 documents** (3 regulations: 910/2014, 2024/1183, 765/2008 + 30 implementing acts)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
-- **Terminology system** (113 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Terminology system** (115 terms from 3 sources, multi-source display, hover popovers, cross-refs)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
+- **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
 - **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
 - **Export** (PDF, Markdown, JSON)
 - **Themes** (light/dark, system detection)
@@ -63,6 +64,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 17:50 | Regulation 765/2008: Full HTML extraction (48 recitals, 44 articles, 2 annexes, 11,566 words replacing 1,400 word partial) |
 | 2026-01-16 17:36 | Retro: Added ⚠️ code comments, JSDoc types, build-time metadata pattern to AGENTS.md Rule 5 |
 | 2026-01-16 17:31 | DEC-012: Build-time metadata generation (prevents hardcoded counts, 3-tier validation, 150x smaller payload) |
 | 2026-01-16 17:23 | Fixed hardcoded document count: Sidebar now dynamically fetches from regulations-index.json (32 → 33 documents) |
