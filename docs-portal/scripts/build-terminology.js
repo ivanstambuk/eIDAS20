@@ -121,7 +121,8 @@ function extractDefinitions(content) {
     // Also handles: (Na) 'term' for numbered variants like (5a)
     // Handles markdown list format: "- (N) 'term' means..."
     // Captures: ordinal, term, definition
-    const defPattern = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;]+(?:;|$))/gm;
+    // Stops at: semicolon, period, or double newline (article boundary)
+    const defPattern = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     let match;
     while ((match = defPattern.exec(content)) !== null) {

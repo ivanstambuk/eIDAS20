@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "generated": "2026-01-15T21:57:57.043Z",
+  "generated": "2026-01-16T11:47:19.493Z",
   "statistics": {
-    "totalTerms": 96,
-    "totalDefinitions": 186,
+    "totalTerms": 97,
+    "totalDefinitions": 187,
     "sources": {
-      "regulations": 58,
+      "regulations": 59,
       "implementingActs": 128
     }
   },
@@ -47,6 +47,7 @@
       "electronic-document",
       "electronic-identification",
       "electronic-identification-means",
+      "electronic-identification-scheme",
       "electronic-ledger",
       "electronic-registered-delivery-service",
       "electronic-seal",
@@ -255,7 +256,7 @@
       "term": "body governed by public law",
       "definitions": [
         {
-          "text": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28.3.2014, p. 65).\\]",
+          "text": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
           "source": {
             "celex": "02014R0910-20241018",
             "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
@@ -603,7 +604,7 @@
       "term": "cryptographic binding",
       "definitions": [
         {
-          "text": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means. ### Article 3 **General provisions** Regarding the protocols and interfaces referred to in Articles 4 and 5, wallet providers shall ensure that wallet units: - (1) authenticate and validate the wallet-relying party access certificates where interacting with wallet-relying parties",
+          "text": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means",
           "source": {
             "celex": "32024R2982",
             "title": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
@@ -738,6 +739,24 @@
             "type": "regulation",
             "article": "3",
             "ordinal": "2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "electronic-identification-scheme",
+      "term": "electronic identification scheme",
+      "definitions": [
+        {
+          "text": "a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
+          "source": {
+            "celex": "02014R0910-20241018",
+            "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+            "shortRef": "Regulation 910/2014",
+            "slug": "910-2014",
+            "type": "regulation",
+            "article": "3",
+            "ordinal": "4"
           }
         }
       ]
@@ -921,7 +940,7 @@
           }
         },
         {
-          "text": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes. ### Article 3 **Establishment of national certification schemes** 1. Member States shall assign a scheme owner for each national certification scheme. 2. The object of certification defined in national certification schemes shall be the provision and operation of wallet solutions and of the electronic identification schemes under which they are provided. 3. In accordance with Implementing Regulation (EU) 2015/1502, the object of certification in national certification schemes shall include the following elements: - (a) the software components, including settings and configurations of a wallet solution and of the electronic identification scheme under which the wallet solutions are provided",
+          "text": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
           "source": {
             "celex": "32024R2981",
             "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
@@ -1023,7 +1042,7 @@
       "term": "incident",
       "definitions": [
         {
-          "text": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+          "text": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
           "source": {
             "celex": "32024R2981",
             "title": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
@@ -1041,7 +1060,7 @@
       "term": "national accreditation body",
       "definitions": [
         {
-          "text": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008. ### Article 2 **Accreditation of conformity assessment bodies** 1. For the purposes of making certification decisions in accordance with a specific conformity assessment scheme, conformity assessment bodies shall be accredited in accordance with standard EN ISO/IEC 17065:2012 supplemented by standard ETSI EN 319403-1 v2.3.1. 2. The accreditation of conformity assessment bodies referred to in paragraph 1 shall be performed by a national accreditation body in compliance with standard EN ISO/IEC 17011:2017. ### Article 3 **Accreditation certificate issued to conformity assessment bodies** 1. National accreditation bodies shall ensure that the accreditation certificates they issue to conformity assessment bodies contain at least the following information: - (a) the unique accreditation certificate identity code",
+          "text": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008",
           "source": {
             "celex": "32025R2162",
             "title": "Commission Implementing Regulation (EU) 2025/2162 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme",
@@ -1095,7 +1114,7 @@
       "term": "owner of a scheme for the attestation of attributes",
       "definitions": [
         {
-          "text": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes. ### Article 3 **Issuance of qualified electronic attestations of attributes and electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source** 1. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall comply with the list of reference standards and specifications set out in Annex I and shall ensure that the electronic attestations of attributes they issue comply with the technical specifications set out in Annex II. 2. Where providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source issue electronic attestations of attributes which are included in schemes registered in the catalogue of schemes for the attestation of attributes, they shall comply with the requirements of the corresponding scheme for the attestation of attributes. Policies and procedures established by the issuers of attestations in order to grant compliance with the requirements of the schemes for the attestation of attributes shall be part of the conformity assessment established in Regulation (EU) No 910/2014. ### Article 4 **Revocation of qualified electronic attestations of attributes and electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source** 1. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall have written and publicly accessible policies relating to validity or revocation status management. These policies shall include, where applicable, the conditions under which electronic attestations of attributes can be revoked without delay and measures for ensuring the availability of the validity status information. 2. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source shall be the only entities able to revoke the electronic attestations of attributes they issue. 3. Providers of qualified electronic attestations of attributes and providers of electronic attestations of attributes issued by or on behalf of a public sector body responsible for an authentic source, whenever those attestations are issued with a validity period of more than 24 hours, shall revoke them in at least the following circumstances: - (a) upon the explicit request of the person to whom the electronic attestation of attributes was issued or, where applicable, of the subject of the attestation",
+          "text": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes",
           "source": {
             "celex": "32025R1569",
             "title": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
@@ -1113,7 +1132,7 @@
       "term": "person identification data",
       "definitions": [
         {
-          "text": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person. - (4) 'electronic identification scheme' means a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
+          "text": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person",
           "source": {
             "celex": "02014R0910-20241018",
             "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
@@ -1227,7 +1246,7 @@
           }
         },
         {
-          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit. ### Article 3 **Format, procedure for submissions and information to be submitted by Member States to the Commission** 1. Member States shall submit the information set out in the Annex to the Commission and to the Cooperation Group through a secure electronic channel made available by the Commission. 2. Member States shall submit the information required under paragraph 1 at least in English. 3. Where there are any changes to the submitted information, including changes to the certification status of the wallets, Member States shall submit the updated information through the channel referred to in paragraph 1. ### Article 4 **Entry into force** This Regulation shall enter into force on the twentieth day following that of its publication in the --- This Regulation shall be binding in its entirety and directly applicable in all Member States. Done at Brussels, 6 May 2025. *For the Commission* *The President* Ursula von der Leyen",
+          "text": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
           "source": {
             "celex": "32025R0849",
             "title": "Commission Implementing Regulation (EU) 2025/849 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the submission of information to the Commission and to the Cooperation Group for the list of certified European Digital Identity Wallets",
@@ -1245,7 +1264,7 @@
       "term": "provider of wallet-relying party access certificates",
       "definitions": [
         {
-          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State. ### Article 3 **Issuance of person identification data to wallet units** 1. Providers of person identification data shall issue person identification data to wallet units in accordance with the electronic identification schemes under which wallet solutions are provided. 2. Providers of person identification data shall ensure that person identification data issued to wallet units contains the information necessary for authentication and validation of the person identification data. 3. Providers of person identification data shall ensure that person identification data issued to wallet units comply with the technical specifications set out in the Annex. 4. Member States shall ensure that the person identification data issued to a given wallet user is unique for the Member State. 5. Providers of person identification data shall ensure that person identification data that they issue is cryptographically bound to the wallet unit to which it is issued. 6. Member States shall make publicly available a list of wallet solutions that are supported by providers of person identification data that is part of electronic identification schemes of that Member State. 7. Member States shall enroll wallet users in accordance with the requirements relating to enrolment at assurance level high, as set out in Commission Implementing Regulation (EU) 2015/1502 \\[Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2015/1502/oj).\\]. In the context of the enrolment process, providers of person identification data shall perform identity verification of the wallet user in accordance with the requirements related to identity proofing and verification before issuing the person identification data to the wallet unit of the corresponding wallet user. 8. When issuing person identification data to wallet units, providers of person identification data shall identify themselves to wallet units using their wallet-relying party access certificate or by using another authentication mechanism in accordance with an electronic identity scheme notified at assurance level high. 9. Before issuing person identification data to a wallet unit, providers of person identification data shall authenticate and validate the wallet unit attestation of the wallet unit and verify that the wallet unit belongs to a wallet solution the provider of person identification data accepts or use another authentication mechanism in accordance with an electronic identity scheme notified at assurance level high. ### Article 4 **Issuance of electronic attestations of attributes to wallet units** 1. Electronic attestations of attributes issued to wallet units shall comply with at least one of the standards in the list set out in Annex I of Implementing Regulation (EU) 2024/2979. 2. Providers of electronic attestations of attributes shall identify themselves to wallet units using their wallet-relying party access certificate. 3. Providers of electronic attestations of attributes shall ensure that electronic attestations of attributes issued to wallet units contain the information necessary for authentication and validation of those electronic attestations of attributes. ### Article 5 **Revocation of person identification data** 1. Providers of person identification data issued to a wallet unit shall have written and publicly accessible policies relating to validity status management, including, where applicable, the conditions under which such person identification data can be revoked without delay. 2. Only providers of person identification data or electronic attestation of attributes can revoke the person identification data or electronic attestations of attributes issued by them. 3. Where providers of person identification data have revoked person identification data, they shall, through dedicated and secure channels, inform wallet users subject of those person identification data within 24 hours of the revocation and of the reasons for the revocation. This shall be done in a manner that is concise, easily accessible and using clear and plain language. 4. Where providers of person identification data revoke person identification data issued to wallet units, they shall do so in each of the following circumstances: - (a) upon the explicit request of the wallet user to whose wallet unit the person identification data or electronic attestation of attributes were issued to",
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
           "source": {
             "celex": "32024R2977",
             "title": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
@@ -1257,7 +1276,7 @@
           }
         },
         {
-          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State. ### Article 3 **Wallet unit integrity** 1. Wallet units shall not perform any functionality listed in Article 5a(4) of Regulation (EU) No 910/2014, except wallet user authentication to access the wallet unit, until the wallet unit has successfully authenticated the wallet user. 2. Wallet providers shall, for each wallet unit, sign or seal, at least one wallet unit attestation compliant with the requirements laid down in Article 6. The certificate used to sign or seal the wallet unit attestation shall be issued under a certificate listed in the trusted list referred to in Implementing Regulation (EU) 2024/2980. ### Article 4 **Wallet instances** 1. Wallet instances shall use at least one wallet secure cryptographic device to manage critical assets. 2. Wallet providers shall ensure integrity, authenticity and confidentiality of the communication between wallet instances and wallet secure cryptographic applications. 3. Where critical assets relate to performing electronic identification at assurance level high, the wallet cryptographic operations or other operations processing critical assets shall be performed in accordance with the requirements for the characteristics and design of electronic identification means at assurance level high, as set out in Commission Implementing Regulation (EU) 2015/1502 \\[Commission Implementing Regulation (EU) 2015/1502 of 8 September 2015 on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2015/1502/oj).\\]. ### Article 5 **Wallet secure cryptographic applications** 1. Wallet providers shall ensure that wallet secure cryptographic applications: - (a) perform wallet cryptographic operations involving critical assets other than those needed for the wallet unit to authenticate the wallet user only in cases where those applications have successfully authenticated wallet users",
+          "text": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
           "source": {
             "celex": "32024R2979",
             "title": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
@@ -1311,7 +1330,7 @@
       "term": "provider of wallet-relying party registration certificates",
       "definitions": [
         {
-          "text": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State. ### Article 3 **National registers** 1. Member States shall establish and maintain at least one national register of wallet-relying parties with information regarding registered wallet-relying parties established in that Member State. 2. The register shall include at least the information set out in Annex I. 3. Member States shall designate at least one registrar to manage and operate at least one national register of wallet-relying parties. 4. Member States shall make the information set out in Annex I on registered wallet-relying parties publicly available online, both in human-readable form and in a form suitable for automated processing. 5. The information referred to in paragraph 2 shall be available through a single common application programming interface ( > API 6. Member States shall ensure that the API referred to in paragraph 5 complies with the common requirements set out in Section 2 of Annex II. 7. Member States shall ensure that the registers comply with the relevant common registration policies set out in Article 4. ### Article 4 **Registration policies** 1. Member States shall lay down and publish one or more national registration policies applicable to the national registers established in their territory. 2. Member States may include or reuse existing sectoral or national registration policies. 3. The national registration policy shall include at least information on: - (a) the identification and authentication procedures applicable to wallet-relying parties during the registration process",
+          "text": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State",
           "source": {
             "celex": "32025R0848",
             "title": "Commission Implementing Regulation (EU) 2025/848 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the registration of wallet-relying parties",
@@ -1803,7 +1822,7 @@
       "term": "trust service",
       "definitions": [
         {
-          "text": "an electronic service normally provided for remuneration which consists of any of the following: - (a) the issuance of certificates for electronic signatures, certificates for electronic seals, certificates for website authentication or certificates for the provision of other trust services",
+          "text": "an electronic service normally provided for remuneration which consists of any of the following:",
           "source": {
             "celex": "02014R0910-20241018",
             "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
@@ -2649,7 +2668,7 @@
           }
         },
         {
-          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components. ### Article 3 **Establishing a security breach or compromise** 1. Without prejudice to Directive (EU) 2022/2555 and to Regulations (EU) 2019/881 and (EU) 2024/2847, Member States shall duly consider the criteria set out in the Annex I to this Regulation to assess whether a security breach or compromise of a wallet solution, of the validation mechanisms referred to in Article 5a(8) of Regulation (EU) No 910/2014, or of the electronic identification scheme under which the wallet solution is provided, is affecting their reliability or the reliability of other wallet solutions. 2. Where a Member State establishes, on the basis of the assessment laid down in paragraph 1, that a security breach or compromise is affecting the reliability of a wallet solution and suspends the provision and the use of that wallet solution, that Member State shall take the measures set out in Articles 4 and 5. Where a Member State withdraws the wallet solution, that Member State shall take the measures set out in Articles 8 and 9. 3. Where a Member State becomes aware of information relating to a possible security breach or compromise possibly affecting the reliability of one or more wallet solutions provided by another Member State, that Member State shall, without undue delay, communicate to the Commission and the single points of contact of the affected Member States designated pursuant to Article 46c(1) of Regulation (EU) No 910/2014 on that fact. This communication shall include the information set out in Article 5(2). 4. The Member State receiving information provided pursuant to paragraph 3 shall take the measures set out in paragraphs 1 and 2 without undue delay. ### Article 4 **Suspension of the provision and the use of wallets and other remedies** 1. Member States shall ensure that no wallet units are provided, used or activated under the suspended wallet solution. 2. Member States shall evaluate whether revoking wallet unit attestations of the wallet units affected by the suspension of a wallet solution, or any other additional remedy, is necessary to react adequately to the security breach or compromise. 3. The measures set out in paragraphs 1 and 2 shall be taken without undue delay, and in any event no later than 24 hours after the suspension of the provision and the use of the wallet solution affected by the security breach or compromise. 4. The measures set out in paragraphs 1 and 2 shall not hinder affected wallet users from exercising their right to data portability set out in Article 5a(4), point (g) of Regulation (EU) No 910/2014. This is under the condition that this right may be exercised by wallet users without impairing the security of the critical assets of the affected wallet units, in particular considering the reasons for suspension and the need to ensure the effective protection of those assets against misuse. ### Article 5 **Information about suspensions and remedies** 1. Information in a clear, comprehensive and easily accessible manner about the suspension of the provision and the use of a wallet solution shall be provided, without undue delay and no later than 24 hours after the suspension of the provision and the use of the wallet solution, to: - (a) the single points of contact designated pursuant to Article 46c(1) of Regulation (EU) No 910/2014",
+          "text": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
           "source": {
             "celex": "32025R0847",
             "title": "Commission Implementing Regulation (EU) 2025/847 of 6 May 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reactions to security breaches of European Digital Identity Wallets",
@@ -2883,7 +2902,7 @@
           }
         },
         {
-          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates. ### Article 3 **Notification system** 1. The Commission shall make available to Member States a secure electronic notification system, no later than twelve months after the publication of this Regulation in the *Official Journal of the European Union*, enabling Member States to notify the information on the bodies and mechanisms referred to in Article 5a(18) of Regulation (EU) No 910/2014. 2. The secure electronic notification system shall comply with the technical requirements laid down in Annex I. ### Article 4 **Notifications by Member States** 1. Member States shall submit, through the secure electronic notification system referred to in Article 3(1), at least the information specified in Annex II. 2. Member States shall make the notifications at least in English. Member States shall not be obliged to translate any document supporting the notifications where this would create an unreasonable administrative or financial burden. 3. The Commission may request additional information or clarifications from the Member States for the purpose of verifying the completeness and consistency of the notified information. ### Article 5 **Publications by the Commission** 1. The Commission shall establish, maintain and publish a list compiling the information notified by Member States on registrars of wallet-relying parties and registers of wallet-relying parties as referred to in Annex II section 1. 2. The Commission shall establish, maintain and publish a list compiling the information notified by Member States on wallet providers, providers of person identification data and providers of wallet-relying party access certificates, as referred to in Annex II sections 2, 3 and 4. 3. The Commission shall ensure the lists referred to in paragraphs 1 and 2 of this Article can be accessed: - (a) in both electronically signed or sealed form suitable for automated processing and through a human readable website available in at least English",
+          "text": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
           "source": {
             "celex": "32024R2980",
             "title": "Commission Implementing Regulation (EU) 2024/2980 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notifications to the Commission concerning the European Digital Identity Wallet ecosystem",
