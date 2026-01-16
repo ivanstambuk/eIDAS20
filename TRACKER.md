@@ -8,16 +8,16 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 14:07 CET |
-| **Session State** | ✅ Active Development (Clean Handover) |
+| **Last Updated** | 2026-01-16 14:31 CET |
+| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 1/6 complete) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Continue with backlog items or new features |
+| **Next Action** | Phase 2: Implement multi-source terminology system |
 
 ---
 
 ## Portal Features (Complete)
 
-- **32 documents** (2 regulations + 30 implementing acts)
+- **33 documents** (3 regulations: 910/2014, 2024/1183, 765/2008 + 30 implementing acts)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology system** (96 terms, hover popovers, cross-refs)
 - **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
@@ -54,6 +54,7 @@
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
+| **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 
 ---
 
@@ -61,6 +62,7 @@
 
 | Date | Summary |
 |------|---------| 
+| 2026-01-16 14:31 | Regulation 765/2008 import (Phase 1/6): Complete regulation added (7 chapters, 44 articles, 1,394 words), portal now 33 docs, Phase 2 next |
 | 2026-01-16 14:07 | Scroll restoration + retro: Performance API navigation detection (back button vs manual), useNavigationType hook, react-patterns.md, updated Rule 11 |
 | 2026-01-16 12:22 | Retro improvements: Rule 12 (DOM-First Debugging), Rule 13 (Legal Preservation), debugging-patterns.md, rehype warning comment |
 | 2026-01-16 12:10 | Terminology deep linking: Extended rehype to process UL+OL (preserves legal structure), rebuilt all content, end-to-end verified |
