@@ -5,7 +5,7 @@
  * using a pre-built Orama index loaded at runtime.
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { create, load, search } from '@orama/orama';
 
 // Singleton for the search database
@@ -151,7 +151,9 @@ export function useSearch() {
         setResults([]);
     }, []);
 
-    return {
+    // Return a stable object reference to prevent infinite loops when used in dependency arrays
+    // Without useMemo, this object is recreated on every render, causing useEffect deps to always change
+    return useMemo(() => ({
         isLoading,
         isSearching,
         isReady,
@@ -160,7 +162,7 @@ export function useSearch() {
         results,
         search: debouncedSearch,
         clearSearch,
-    };
+    }), [isLoading, isSearching, isReady, error, query, results, debouncedSearch, clearSearch]);
 }
 
 export default useSearch;

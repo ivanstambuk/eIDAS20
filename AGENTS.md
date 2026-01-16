@@ -288,6 +288,111 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why:** Questions are not requests. Acting without clarification wastes time if the user just wanted information, and creates unnecessary work to revert unwanted changes.
 
+11. **React Development Best Practices (MANDATORY):**
+    
+    ### Unstable Dependency Anti-Pattern
+    
+    **Problem:** Custom hooks that return new object literals on every render cause infinite loops when used in `useEffect`/`useCallback` dependency arrays.
+    
+    **Example of the problem:**
+    ```javascript
+    // ❌ BAD: Hook returns new object every render
+    export function useSearch() {
+        const [results, setResults] = useState([]);
+        
+        return {
+            results,
+            search: (q) => { /* ... */ },
+        }; // ← New object reference every render!
+    }
+    
+    // ❌ BAD: Using unstable object in deps
+    const searchHook = useSearch();
+    useEffect(() => {
+        searchHook.search('query');
+    }, [searchHook]); // ← Infinite loop! Object changes every render
+    ```
+    
+    **Solution 1: Extract stable function references**
+    ```javascript
+    // ✅ GOOD: Extract only what you need
+    const searchHook = useSearch();
+    const searchFn = searchHook.search; // Extract stable function ref
+    
+    useEffect(() => {
+        searchFn('query');
+    }, [searchFn]); // ← Only depends on stable function
+    ```
+    
+    **Solution 2: Make hooks return stable objects**
+    ```javascript
+    // ✅ BETTER: Hook returns stable object
+    export function useSearch() {
+        const [results, setResults] = useState([]);
+        const search = useCallback((q) => { /* ... */ }, []);
+        
+        // Wrap return in useMemo to ensure stable reference
+        return useMemo(() => ({
+            results,
+            search,
+        }), [results, search]);
+    }
+    ```
+    
+    **When to apply:**
+    - ✅ ALL custom hooks that return objects/arrays
+    - ✅ Especially hooks used in other components' dependency arrays
+    - ✅ When you see "Maximum update depth exceeded" errors
+    
+    ### Debugging React Infinite Loops
+    
+    **When you see: "Maximum update depth exceeded"**
+    
+    **Step 1: Use browser_subagent to inspect runtime (MANDATORY FIRST STEP)**
+    - DO NOT start with manual code inspection
+    - The browser console shows the EXACT component and line causing the loop
+    - React's error messages include component stack traces
+    
+    ```bash
+    # Clean tabs first
+    ~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh
+    
+    # Then use browser_subagent to capture console errors
+    # Look for: component stack trace, which useEffect is triggering
+    ```
+    
+    **Step 2: Identify the pattern**
+    - Look for `useEffect` hooks with objects/arrays in dependency arrays
+    - Check if those dependencies are created new on every render
+    - Common culprits: custom hook return values, inline objects, inline arrays
+    
+    **Step 3: Fix at the source**
+    - If the issue is in a custom hook → add `useMemo` to the hook's return
+    - If the issue is in a component → extract stable references
+    - NEVER work around it with empty dependency arrays or eslint-disable
+    
+    **Anti-patterns:**
+    - ❌ Starting with manual code review instead of runtime inspection
+    - ❌ Checking Layout/Sidebar/Header when error could be in SearchModal
+    - ❌ Trusting previous session's diagnosis without verification
+    - ❌ Using `// eslint-disable-next-line` to silence warnings
+    - ❌ Removing dependencies to "fix" the warning
+    
+    **Correct pattern:**
+    - ✅ browser_subagent → console errors → exact component → fix root cause
+    - ✅ Add useMemo/useCallback to make dependencies stable
+    - ✅ Add warning comments explaining the pattern
+    
+    **Real example from 2026-01-16:**
+    ```
+    Issue: "Maximum update depth exceeded" 
+    Previous session: Checked Layout, Sidebar, Header (70 min, wrong components)
+    Correct approach: browser_subagent → found SearchModal → unstable hook objects in deps
+    Fix: Extract stable function refs + add useMemo to hooks
+    Time saved: ~60 minutes by using browser_subagent first
+    ```
+
+
 ## Project Structure
 
 ```

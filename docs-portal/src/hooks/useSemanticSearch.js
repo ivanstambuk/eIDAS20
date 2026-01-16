@@ -6,7 +6,7 @@
  * via cosine similarity.
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { pipeline, env } from '@xenova/transformers';
 
 // Configure transformers.js for browser
@@ -308,7 +308,9 @@ export function useSemanticSearch() {
         setResults([]);
     }, []);
 
-    return {
+    // Return a stable object reference to prevent infinite loops when used in dependency arrays
+    // Without useMemo, this object is recreated on every render, causing useEffect deps to always change
+    return useMemo(() => ({
         isLoading,
         isSearching,
         isReady,
@@ -318,7 +320,7 @@ export function useSemanticSearch() {
         modelStatus,
         search: debouncedSearch,
         clearSearch,
-    };
+    }), [isLoading, isSearching, isReady, error, query, results, modelStatus, debouncedSearch, clearSearch]);
 }
 
 export default useSemanticSearch;

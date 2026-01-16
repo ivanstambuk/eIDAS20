@@ -226,7 +226,17 @@ export function SearchModal({ isOpen, onClose }) {
     }, [isOpen]);
 
     // Clear search state when modal closes
-    // Extract stable function references to prevent infinite loop
+    // ⚠️ WARNING: Unstable Dependency Anti-Pattern Prevention
+    // 
+    // We extract individual function references rather than using the entire hook objects
+    // (keywordSearch, semanticSearch) in the useEffect dependency array because:
+    // 
+    // 1. useSearch() and useSemanticSearch() return NEW object literals on every render
+    // 2. If we put these objects in the dependency array, React sees them as "changed" every render
+    // 3. This triggers the useEffect → calls clearSearch() → updates state → re-render → infinite loop!
+    // 
+    // Solution: Only depend on the stable function references (wrapped in useCallback in the hooks)
+    // This pattern applies ANYWHERE you use custom hook return values in dependency arrays.
     const clearKeywordSearch = keywordSearch.clearSearch;
     const clearSemanticSearch = semanticSearch.clearSearch;
 

@@ -5,7 +5,7 @@
  * for LLM prompts from the eIDAS documentation.
  */
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 
 /**
  * Compute cosine similarity between two vectors
@@ -194,7 +194,8 @@ ${c.content}
         loadEmbeddings();
     }, [loadEmbeddings]);
 
-    return {
+    // Return a stable object reference to prevent infinite loops when used in dependency arrays
+    return useMemo(() => ({
         // State
         embeddings,
         isLoading,
@@ -209,5 +210,5 @@ ${c.content}
         retrieveContext,
         buildRAGPrompt,
         prepareRAGQuery,
-    };
+    }), [embeddings, isLoading, error, model, loadEmbeddings, loadModel, embedQuery, retrieveContext, buildRAGPrompt, prepareRAGQuery]);
 }
