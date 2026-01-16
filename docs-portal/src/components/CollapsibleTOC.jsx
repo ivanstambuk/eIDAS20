@@ -10,6 +10,8 @@ import { useState, useCallback } from 'react';
 
 // Official eIDAS 910/2014 chapter structure (consolidated version)
 // Source: EUR-Lex CELEX:32014R0910
+// NOTE: These hardcoded mappings are kept as fallback. 
+// New regulations should use the dynamic extraction below.
 const EIDAS_CHAPTERS = {
     '910-2014': [
         {
@@ -94,6 +96,59 @@ const EIDAS_CHAPTERS = {
         }
     ]
 };
+
+/**
+ * Dynamically extract chapter structure from TOC.
+ * 
+ * Looks for level-2 headings matching "N. Title" pattern (Roman numerals)
+ * and groups subsequent level-3 "Article N" headings under them.
+ * 
+ * @param {Array} toc - Array of {id, title, level} objects
+ * @returns {Array|null} - Array of chapter objects or null if no chapters found
+ */
+function extractChaptersFromTOC(toc) {
+    // Pattern: Roman numeral followed by period and title (e.g., "I. General Provisions")
+    const chapterPattern = /^([IVXLCDM]+)\.\s+(.+)$/;
+    const articlePattern = /^Article\s+(\d+[a-z]?)$/i;
+
+    const chapters = [];
+    let currentChapter = null;
+
+    for (const item of toc) {
+        // Level 2 = chapter headings (## in markdown)
+        if (item.level === 2) {
+            const match = item.title.match(chapterPattern);
+            if (match) {
+                // Save previous chapter if exists
+                if (currentChapter && currentChapter.articles.length > 0) {
+                    chapters.push(currentChapter);
+                }
+                // Start new chapter
+                currentChapter = {
+                    id: item.id,
+                    title: item.title,
+                    articles: []
+                };
+            }
+        }
+        // Level 3 = article headings (### in markdown)
+        else if (item.level === 3 && currentChapter) {
+            const match = item.title.match(articlePattern);
+            if (match) {
+                currentChapter.articles.push(item.id);
+            }
+        }
+    }
+
+    // Don't forget the last chapter
+    if (currentChapter && currentChapter.articles.length > 0) {
+        chapters.push(currentChapter);
+    }
+
+    // Return null if we didn't find at least 2 chapters with articles
+    // (to avoid false positives on implementing acts)
+    return chapters.length >= 2 ? chapters : null;
+}
 
 /**
  * Fast smooth scroll with header offset (150ms)
@@ -249,8 +304,9 @@ function ChapterGroup({ chapter, articles, defaultExpanded = false }) {
  * Main CollapsibleTOC component
  */
 export default function CollapsibleTOC({ toc, slug, type }) {
-    // Check if we have chapter definitions for this document
-    const chapters = EIDAS_CHAPTERS[slug];
+    // Try dynamic chapter extraction first (works for any regulation with proper headings)
+    // Fall back to hardcoded EIDAS_CHAPTERS for backward compatibility
+    const chapters = extractChaptersFromTOC(toc) || EIDAS_CHAPTERS[slug];
 
     // Create a map of article IDs to TOC items for quick lookup
     const tocMap = {};

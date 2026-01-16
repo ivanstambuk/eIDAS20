@@ -748,6 +748,7 @@ When importing a new regulation, verify:
 - [ ] Article headings: `### Article N` (number only, no title)
 - [ ] Article titles: bold subtitle on separate line: `**Title**`
 - [ ] No horizontal rules (`---`) in document body
+- [ ] No "Source Reference" section (metadata is in header blockquote only)
 
 **Implementation:**
 

@@ -700,6 +700,16 @@ curl -s -o file.html "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=C
 pandoc -f html -t markdown --wrap=none -o file.md file.html
 ```
 
+### Manual Harmonization (Non-Formex Regulations)
+
+For regulations imported from HTML that don't match eIDAS format:
+
+1. Set `source: "manual"` in `scripts/documents.yaml` (prevents auto-regeneration)
+2. Follow checklist in `.agent/snippets/regulation-harmonization.md`
+3. Add chapter structure to `CollapsibleTOC.jsx`
+
+Key steps: Recitals header, article heading split, chapter format conversion.
+
 ### Validation
 ```bash
 python scripts/md_linter.py --dir 01_regulation
