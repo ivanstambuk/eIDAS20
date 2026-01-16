@@ -2,29 +2,55 @@
 
 ## Current State
 
-- **Focus**: Pipeline integration - Add HTML fallback when Formex unavailable
-- **Next**: Update `eurlex_formex.py` to check `source: html` in documents.yaml
+- **Focus**: Testing & Validation - Verify parser output and build integration
+- **Next**: Run build pipeline and verify portal rendering
 - **Status**: Ready
-- **Phase**: Phase 3 of 5
+- **Phase**: Phase 4 of 5
+
+## Completed Phases
+
+- ✅ **Phase 1**: HTML Source Analysis
+- ✅ **Phase 2**: Create Parser Script (`eurlex_html_to_md.py`)
+- ✅ **Phase 3**: Pipeline Integration (`eurlex_formex.py` now uses HTML fallback)
 
 ## Key Files
 
-- `scripts/eurlex_html_to_md.py` — **COMPLETE**: HTML→MD converter
+- `scripts/eurlex_html_to_md.py` — **COMPLETE**: HTML→MD converter (760 lines)
 - `scripts/documents.yaml` — **UPDATED**: 765/2008 added with `source: html`
-- `scripts/eurlex_formex.py` — **NEXT**: Add fallback logic
-- `~/.venvs/eurlex/` — Virtual env with beautifulsoup4, lxml, requests
+- `scripts/eurlex_formex.py` — **UPDATED**: HTML fallback logic integrated
+- `~/.venvs/eurlex/` — Virtual env with beautifulsoup4, lxml, requests, pyyaml
 
-## Context Notes
+## Phase 4 Tasks
 
-- EUR-Lex HTML uses separate `<p>` elements for numbers and content
-- Converter handles: recitals, chapters, articles, annexes (oj-enumeration-spacing)
-- Validation: 48 recitals, 6 chapters, 44 articles, 2 annexes, 11,674 words
-- URL pattern: `https://eur-lex.europa.eu/eli/reg/{year}/{number}/oj/eng`
+1. **Run build pipeline**:
+   ```bash
+   cd docs-portal && npm run build:all
+   ```
 
-## Quick Start
+2. **Verify terminology extracted**:
+   ```bash
+   grep "conformity assessment body" public/data/terminology.json
+   ```
+
+3. **Portal verification** (browser):
+   - Navigate to http://localhost:5173/eIDAS20/#/regulation/765-2008
+   - Verify TOC has all 6 chapters
+   - Verify definitions link correctly
+   - Verify multi-source popover shows both 910/2014 and 765/2008 definitions
+
+## Validation Summary (Phase 3)
+
+Pipeline integration tested:
+- ✅ `uses_html_source('32008R0765')` → True
+- ✅ `uses_html_source('32024R1183')` → False
+- ✅ Converter output: 6 chapters, 44 articles, 2 annexes, 11,674 words
+
+## Quick Commands
 
 ```bash
-cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Test converter:
+# Test HTML converter directly:
 ~/.venvs/eurlex/bin/python3 scripts/eurlex_html_to_md.py 32008R0765 /tmp/test
+
+# Test via pipeline (uses documents.yaml):
+~/.venvs/eurlex/bin/python3 scripts/eurlex_formex.py 32008R0765 /tmp/test
 ```

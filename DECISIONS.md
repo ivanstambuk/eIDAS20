@@ -483,5 +483,97 @@ If metadata grows beyond ~2KB, consider splitting into specialized metadata file
 
 ---
 
+## DEC-042: EUR-Lex HTML Fallback Converter
+
+**Date:** 2026-01-16  
+**Status:** Accepted  
+
+**Context:**  
+Older EU regulations (typically pre-2010) lack Formex XML manifestations on EUR-Lex. Regulation 765/2008 was initially manually extracted from HTML, which is:
+1. Non-reproducible (one-time manual effort)
+2. Cannot receive automated enrichments (paragraph IDs, citations, etc.)
+3. Doesn't scale to additional HTML-only regulations (768/2008, GDPR, etc.)
+
+**Discovery Process:**  
+During ingestion of 765/2008:
+1. Formex probe failed: `get_formex_url('32008R0765')` returned `None`
+2. TXT probe failed: No TXT manifestation available
+3. Only HTML available at `https://eur-lex.europa.eu/eli/reg/2008/765/oj/eng`
+
+**Decision:**  
+Create `eurlex_html_to_md.py` — a deterministic HTML parser that produces Markdown **structurally identical** to the Formex XML converter output.
+
+**Architecture:**
+
+```
+documents.yaml
+    │
+    ├── source: formex (default) ──→ eurlex_formex.py
+    │                                   ├── Download Formex ZIP
+    │                                   └── Convert via formex_to_md_v3.py
+    │
+    └── source: html ──────────────→ eurlex_html_to_md.py
+                                        ├── Download HTML from ELI endpoint
+                                        ├── Parse with BeautifulSoup
+                                        └── Generate identical Markdown structure
+```
+
+**Key Design Decisions:**
+
+1. **Configuration-driven:** `source: html` in `documents.yaml` triggers HTML path
+2. **Structural parity:** Output matches Formex converter exactly:
+   - Same metadata blockquote format
+   - Same heading hierarchy (`## CHAPTER`, `### Article`)
+   - Same list formatting (`- (a)`, `- 1.`)
+3. **Separate element parsing:** EUR-Lex HTML uses separate `<p>` elements for numbers and content (e.g., `<p>1.</p><p>Content...</p>`), requiring stateful lookahead parsing
+4. **Pipeline integration:** `eurlex_formex.py` checks `uses_html_source()` before attempting Formex download
+
+**HTML CSS Class Reference:**
+
+| Class | Content Type |
+|-------|--------------|
+| `oj-ti-section-1` | Chapter numbers (`CHAPTER I`) |
+| `oj-ti-section-2` | Chapter titles |
+| `oj-ti-art` | Article numbers (`Article 1`) |
+| `oj-sti-art` | Article titles |
+| `oj-normal` | Paragraph text, recitals, definitions |
+| `oj-doc-ti` | Document title, annex titles |
+
+**Validation (Regulation 765/2008):**
+
+| Metric | Expected | Actual |
+|--------|----------|--------|
+| Chapters | 6 | ✅ 6 |
+| Articles | 44 | ✅ 44 |
+| Annexes | 2 | ✅ 2 |
+| Recitals | 48 | ✅ 48 |
+| Words | ~11,500 | ✅ 11,674 |
+
+**Benefits:**
+1. **Deterministic and repeatable** — Same input always produces same output
+2. **Receives all enrichments** — Paragraph IDs, citations, terminology extraction work automatically
+3. **Scalable** — Adding more HTML-only regulations requires only YAML configuration
+4. **Single processing pipeline** — Downstream scripts (terminology, search, TOC) unchanged
+
+**Files Created/Modified:**
+
+| File | Change |
+|------|--------|
+| `scripts/eurlex_html_to_md.py` | New: 760-line HTML→MD converter |
+| `scripts/eurlex_formex.py` | Modified: HTML fallback routing |
+| `scripts/documents.yaml` | Modified: `source: html` for 765/2008 |
+
+**Future Work:**
+- Add more HTML-only regulations (768/2008, GDPR 2016/679, Services Directive)
+- Consider consolidated version detection for HTML documents
+- Add unit tests for edge case HTML patterns
+
+**Alternatives considered:**
+1. **Manual extraction** — Rejected: non-reproducible, doesn't receive enrichments
+2. **AI-assisted extraction** — Rejected: non-deterministic, harder to validate
+3. **Request Formex from EU** — Rejected: no guarantee of availability for older regs
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 

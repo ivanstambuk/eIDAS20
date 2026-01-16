@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 17:23 CET |
-| **Session State** | ⏳ EUR-Lex HTML Parser: Phase 3 pending (pipeline integration) |
+| **Last Updated** | 2026-01-16 18:35 CET |
+| **Session State** | ✅ EUR-Lex HTML Parser: Complete (DEC-042) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Update `eurlex_formex.py` to use `source: html` fallback |
+| **Next Action** | Add more HTML-only regulations (768/2008, GDPR) |
 
 ---
 
@@ -64,6 +64,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
 | 2026-01-16 18:30 | EUR-Lex HTML Parser: Created `eurlex_html_to_md.py` — deterministic HTML→MD for pre-2010 regulations (48 recitals, 44 articles, 2 annexes, 11,674 words) |
 | 2026-01-16 17:50 | Regulation 765/2008: Full HTML extraction (48 recitals, 44 articles, 2 annexes, 11,566 words replacing 1,400 word partial) |
 | 2026-01-16 17:36 | Retro: Added ⚠️ code comments, JSDoc types, build-time metadata pattern to AGENTS.md Rule 5 |
