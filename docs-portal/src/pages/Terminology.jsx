@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -22,6 +22,7 @@ function fastScrollTo(targetY) {
 }
 
 const Terminology = () => {
+    const [searchParams] = useSearchParams();
     const [terminology, setTerminology] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -43,6 +44,26 @@ const Terminology = () => {
         };
         loadTerminology();
     }, []);
+
+    // Deep linking: scroll to term when content loads or section param changes
+    useEffect(() => {
+        if (!loading && terminology) {
+            const section = searchParams.get('section');
+            if (section) {
+                // Small delay to ensure DOM is fully rendered
+                requestAnimationFrame(() => {
+                    const element = document.getElementById(section);
+                    if (element) {
+                        // Header (64px) + sticky nav (~56px) + padding
+                        const headerOffset = 64 + 56;
+                        const targetY = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+                        fastScrollTo(targetY);
+                        element.focus({ preventScroll: true });
+                    }
+                });
+            }
+        }
+    }, [loading, terminology, searchParams]);
 
     // All terms (filtering removed - use global search instead)
     const filteredTerms = useMemo(() => {

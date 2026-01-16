@@ -77,8 +77,10 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
     const getDocUrl = () => {
         // Handle terminology definitions specially
         if (result.type === 'definition') {
-            const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
-            return `/terminology${hash}`;
+            // result.id is already "term-{id}", which matches the DOM element ID in Terminology.jsx
+            // Use ?section= query param because HashRouter already uses # for routing
+            const section = result.id ? `?section=${result.id}` : '';
+            return `/terminology${section}`;
         }
 
         // Handle regulations and implementing acts
