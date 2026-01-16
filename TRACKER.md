@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 18:30 CET |
-| **Session State** | ✅ EUR-Lex HTML Parser implemented and tested |
+| **Last Updated** | 2026-01-16 17:23 CET |
+| **Session State** | ⏳ EUR-Lex HTML Parser: Phase 3 pending (pipeline integration) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Pipeline integration: Add fallback to `eurlex_formex.py` |
+| **Next Action** | Update `eurlex_formex.py` to use `source: html` fallback |
 
 ---
 
