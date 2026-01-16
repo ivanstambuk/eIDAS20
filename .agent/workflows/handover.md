@@ -11,34 +11,35 @@ Use this workflow when:
 
 ---
 
-## Step 1: Commit Pending Changes
+## ⚠️ CRITICAL: NO COMMITS DURING HANDOVER
 
-```bash
-cd ~/dev/eIDAS20 && git status
-# If dirty, commit with appropriate message
-git add -A && git commit -m "wip: [brief description of state]"
-```
+**DO NOT commit anything during handover.**
+
+Rationale: The user typically runs `/init` immediately after in a new session. Committing during handover:
+1. Creates unnecessary "handover" commits that clutter history
+2. Splits logical changes across commits
+3. The next session can commit when real work is complete
+
+**If there are uncommitted changes:** Leave them. The next session will handle them.
 
 ---
 
-## Step 2: Update TRACKER.md
+## Step 1: Update TRACKER.md (IN MEMORY ONLY)
 
-**ALWAYS update TRACKER.md before handover:**
+**Update TRACKER.md but DO NOT commit:**
 
-```bash
-# Update these fields:
-# - Last Updated timestamp
-# - Session State
-# - Current Phase
-# - Next Action
-# - Any task status changes
-```
+Update these fields:
+- Last Updated timestamp
+- Session State
+- Current Phase (if changed)
+- Next Action
+- Add session to Recent Sessions table
 
 The TRACKER.md is the **source of truth** for project progress.
 
 ---
 
-## Step 3: Create/Update Pending Task File (if incomplete work)
+## Step 2: Create/Update Pending Task File (if incomplete work)
 
 **File**: `.agent/session/pending-task.md`
 
@@ -80,44 +81,36 @@ cd ~/dev/eIDAS20/docs-portal && npm run dev
 
 ---
 
-## Step 4: Confirm to User
+## Step 3: Confirm to User
 
 Output ONLY:
 
 ```
 ✅ Handover complete.
-- TRACKER.md updated
+- TRACKER.md updated (uncommitted)
 - Pending task: `.agent/session/pending-task.md`
 
 Next session: Run `/init` to resume.
 ```
 
 **DO NOT output the file contents in chat.**
-
----
-
-## Step 5: Cleanup Check
-
-Before ending:
-- [ ] All changes committed (or WIP committed)
-- [ ] TRACKER.md updated with current progress
-- [ ] pending-task.md created (if work incomplete)
-- [ ] Dev server status noted
+**DO NOT commit anything.**
 
 ---
 
 ## Important Rules
 
-1. **TRACKER.md is source of truth** — Always update it
-2. **100 LINE HARD CAP** — Prune context notes if needed
-3. **Context Notes > History** — Capture decisions/gotchas, not just what was done
-4. **If task COMPLETE** — Don't create pending-task.md, just update TRACKER
+1. **🚨 NO COMMITS** — Never commit during handover
+2. **TRACKER.md is source of truth** — Always update it (but don't commit)
+3. **100 LINE HARD CAP** — Prune context notes if needed
+4. **Context Notes > History** — Capture decisions/gotchas, not just what was done
+5. **If task COMPLETE** — Don't create pending-task.md, just update TRACKER
 
 ---
 
 ## ⚠️ When Task is COMPLETE: Skip pending-task.md
 
 **If the task you were working on is fully complete:**
-- Update TRACKER.md with completion status
+- Update TRACKER.md with completion status (don't commit)
 - Do NOT create pending-task.md
 - The `/init` workflow will read TRACKER.md to find the next task

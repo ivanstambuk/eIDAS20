@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 00:10 CET |
-| **Session State** | ✅ Recital gutter icons + TERMINOLOGY.md complete |
+| **Last Updated** | 2026-01-17 00:38 CET |
+| **Session State** | ✅ Terminology extraction fixes complete |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Citation enhancement backlog (see .agent/pending-task.md) |
+| **Next Action** | Backlog items (see table below) |
 
 ---
 
@@ -72,6 +72,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 00:38 | Terminology fixes: flex gap spacing, 765/2008 article detection (N/A→2), greedy regex fix (DEC-055), retro (6 improvements: AGENTS.md rules 17-18, Invariant 4) |
 | 2026-01-17 00:10 | Recital gutter icons (Phase 4), informal citation detection, TERMINOLOGY.md created, retro improvements (Rule 15+16, init workflow, snippets) |
 | 2026-01-16 21:30 | DEC-043 Short Title SSOT: YAML shortTitle field, fail-fast build validation, schema validation (`npm run validate:config`), annex warning cleanup, retro workflow updates |
 | 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
