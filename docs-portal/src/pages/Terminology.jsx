@@ -270,16 +270,11 @@ const Terminology = () => {
                                             <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
                                                 {term.term}
                                             </h3>
-                                            <div className="flex gap-2">
-                                                <span className="badge badge-primary">
-                                                    Art. {term.sources[0].articleNumber}
+                                            {hasMultipleSources && (
+                                                <span className="badge badge-secondary" title={`Defined in ${term.sources.length} documents`}>
+                                                    {term.sources.length} sources
                                                 </span>
-                                                {hasMultipleSources && (
-                                                    <span className="badge badge-secondary" title={`Defined in ${term.sources.length} documents`}>
-                                                        {term.sources.length} sources
-                                                    </span>
-                                                )}
-                                            </div>
+                                            )}
                                         </div>
 
                                         {/* Stacked definitions from all sources */}
