@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "eIDAS Documents Configuration",
+    "description": "Schema for documents.yaml - Single Source of Truth for document metadata",
+    "type": "object",
+    "required": [
+        "version",
+        "documents"
+    ],
+    "properties": {
+        "version": {
+            "type": "string",
+            "description": "Schema version"
+        },
+        "last_updated": {
+            "type": "string",
+            "description": "Last modification date"
+        },
+        "documents": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/document"
+            }
+        }
+    },
+    "definitions": {
+        "document": {
+            "type": "object",
+            "required": [
+                "celex",
+                "title",
+                "type",
+                "output_dir"
+            ],
+            "properties": {
+                "celex": {
+                    "type": "string",
+                    "description": "CELEX identifier"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Document title"
+                },
+                "shortTitle": {
+                    "type": "string",
+                    "description": "Human-readable short title (REQUIRED for regulations per DEC-043)"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "consolidated",
+                        "amending",
+                        "referenced",
+                        "implementing_act",
+                        "decision"
+                    ],
+                    "description": "Document type"
+                },
+                "cellar_id": {
+                    "type": "string",
+                    "description": "EU Cellar identifier for Formex download"
+                },
+                "source": {
+                    "type": "string",
+                    "enum": [
+                        "html",
+                        "formex"
+                    ],
+                    "description": "Source format (html for fallback parser)"
+                },
+                "output_dir": {
+                    "type": "string",
+                    "description": "Output directory path"
+                }
+            }
+        }
+    }
+}

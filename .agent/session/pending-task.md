@@ -1,43 +1,49 @@
-# Session Context: EUR-Lex HTML Parser
+# Session Context: DEC-043 Short Title Single Source of Truth
 
 ## Current State
 
-- **Focus**: ✅ All phases complete
-- **Status**: Done
-- **Phase**: 5 of 5 — Complete
+- **Focus**: ✅ Complete
+- **Status**: All retro items implemented
+- **Session**: 2026-01-16 21:30 CET
 
-## Completed Phases
+## Completed This Session
 
-- ✅ **Phase 1**: HTML Source Analysis
-- ✅ **Phase 2**: Create Parser Script (`eurlex_html_to_md.py` — 760 lines)
-- ✅ **Phase 3**: Pipeline Integration (`eurlex_formex.py` HTML fallback routing)
-- ✅ **Phase 4**: Testing & Validation (portal verified, 115 terms, 208 definitions)
-- ✅ **Phase 5**: Documentation (DEC-042 in DECISIONS.md)
+### DEC-043: Short Title YAML Config
+- ✅ Added `shortTitle` field to documents.yaml (3 regulations)
+- ✅ Refactored `extractShortTitle()` to use YAML as source of truth
+- ✅ Removed hardcoded CELEX pattern matching
+- ✅ Added fail-fast build validation (build fails if regulation missing shortTitle)
 
-## Key Deliverables
+### Build Improvements
+- ✅ Created `documents.schema.json` (JSON Schema validation)
+- ✅ Added `npm run validate:config` script
+- ✅ Integrated schema validation into build chain
+- ✅ Cleaned annex warnings (20 known → suppressed, only new warnings shown)
 
-| File | Description |
-|------|-------------|
-| `scripts/eurlex_html_to_md.py` | HTML→MD converter (760 lines) |
-| `scripts/eurlex_formex.py` | Pipeline with HTML fallback |
-| `scripts/documents.yaml` | 765/2008 has `source: html` |
-| `DECISIONS.md` | DEC-042 architecture decision |
+### Documentation Updates
+- ✅ Updated retro workflow (no priority sorting, no "skip all" option, fixed checkbox strikethrough)
+- ✅ Added Rule 14: Git Checkout Safety
+- ✅ Created DEC-043 in DECISIONS.md
+- ✅ Updated TRACKER.md with session summary
 
-## Validation Summary
+## Key Files Changed
 
-- ✅ 765/2008: 6 chapters, 44 articles, 2 annexes, 11,674 words
-- ✅ Portal rendering verified via browser
-- ✅ Terminology extraction: 115 terms (including multi-source)
-- ✅ Build pipeline: 33 docs, 136,918 words
+| File | Change |
+|------|--------|
+| `scripts/documents.yaml` | Added `shortTitle` field to 3 regulations |
+| `scripts/documents.schema.json` | NEW: JSON Schema for YAML validation |
+| `docs-portal/scripts/validate-documents.js` | NEW: Schema validation script |
+| `docs-portal/scripts/build-content.js` | YAML-driven short titles, clean annex output |
+| `docs-portal/package.json` | Added `validate:config` script |
+| `AGENTS.md` | Rule 14: Git Checkout Safety |
+| `DECISIONS.md` | DEC-043 architecture decision |
+| `.agent/workflows/retro.md` | Updated proposal format |
 
-## Next Steps (Future Work)
+## Next Session Suggestions
 
-1. Add more HTML-only regulations:
-   - 768/2008 (Product Marketing Decision)
-   - GDPR 2016/679
-   - Services Directive (2006/123/EC)
-
-2. Add unit tests for HTML converter edge cases
+1. Run `batch_fix_annexes.py` to download 20 implementing acts with missing annexes
+2. Add more HTML-only regulations (768/2008, GDPR)
+3. Deploy to GitHub Pages
 
 ---
 

@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 18:35 CET |
-| **Session State** | ✅ EUR-Lex HTML Parser: Complete (DEC-042) |
+| **Last Updated** | 2026-01-16 21:30 CET |
+| **Session State** | ✅ DEC-043: Short Title Single Source of Truth |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Add more HTML-only regulations (768/2008, GDPR) |
+| **Next Action** | Run batch_fix_annexes.py for missing annex content |
 
 ---
 
@@ -44,6 +44,9 @@
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
 - **Scroll restoration** (Back button restores position, manual navigation starts at top; Performance API detection)
+- **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
+- **YAML schema validation** (`npm run validate:config` before build)
+- **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
 
 ---
 
@@ -57,6 +60,7 @@
 | GitHub Pages deploy | Push to master to trigger workflow | High |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
+| **Download missing annexes** | **Run batch_fix_annexes.py — 20 implementing acts with missing annexes** | **Medium** |
 
 ---
 
@@ -64,8 +68,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 21:30 | DEC-043 Short Title SSOT: YAML shortTitle field, fail-fast build validation, schema validation (`npm run validate:config`), annex warning cleanup, retro workflow updates |
 | 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
-| 2026-01-16 18:30 | EUR-Lex HTML Parser: Created `eurlex_html_to_md.py` — deterministic HTML→MD for pre-2010 regulations (48 recitals, 44 articles, 2 annexes, 11,674 words) |
 | 2026-01-16 17:50 | Regulation 765/2008: Full HTML extraction (48 recitals, 44 articles, 2 annexes, 11,566 words replacing 1,400 word partial) |
 | 2026-01-16 17:36 | Retro: Added ⚠️ code comments, JSDoc types, build-time metadata pattern to AGENTS.md Rule 5 |
 | 2026-01-16 17:31 | DEC-012: Build-time metadata generation (prevents hardcoded counts, 3-tier validation, 150x smaller payload) |

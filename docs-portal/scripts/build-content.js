@@ -763,6 +763,16 @@ function scanDirectory(sourceDir, type) {
 function validateAnnexes(regulations) {
     const warnings = [];
 
+    // Known documents with missing annexes - suppress individual warnings but count them
+    // TODO: Run batch_fix_annexes.py to download complete versions with annexes  
+    // Once fixed, remove slugs from this list
+    const KNOWN_MISSING_ANNEXES = new Set([
+        '2024-1183', '2024-2977', '2024-2982', '2025-0847', '2025-0848', '2025-0849',
+        '2025-1566', '2025-1567', '2025-1570', '2025-1929', '2025-1942', '2025-1943',
+        '2025-1944', '2025-1946', '2025-2160', '2025-2164', '2025-2527', '2025-2530',
+        '2025-2531', '2025-2532'
+    ]);
+
     // Patterns that indicate annex content is expected (self-references, not external)
     // Note: Patterns like "Annex I of Regulation X" are EXTERNAL references, not missing content
     const annexReferencePatterns = [
@@ -775,6 +785,8 @@ function validateAnnexes(regulations) {
     // Pattern for actual annex section headings
     const annexHeadingPattern = /^##\s+ANNEX/im;
 
+    let knownCount = 0;
+
     for (const reg of regulations) {
         const content = reg.contentMarkdown;
 
@@ -786,16 +798,22 @@ function validateAnnexes(regulations) {
         for (const pattern of annexReferencePatterns) {
             const match = content.match(pattern);
             if (match) {
-                warnings.push({
-                    slug: reg.slug,
-                    reference: match[0]
-                });
+                if (KNOWN_MISSING_ANNEXES.has(reg.slug)) {
+                    // Suppress known warnings but count them
+                    knownCount++;
+                } else {
+                    // NEW warning - document with missing annex not in known list
+                    warnings.push({
+                        slug: reg.slug,
+                        reference: match[0]
+                    });
+                }
                 break; // Only report first match per document
             }
         }
     }
 
-    return warnings;
+    return { warnings, knownCount };
 }
 
 /**
@@ -973,14 +991,21 @@ function build() {
     console.log(`   📈 Stats: ${metadata.documentCount} docs, ${metadata.totalWordCount.toLocaleString()} words`);
 
     // Validate: Check for missing annexes
-    const annexWarnings = validateAnnexes(allRegulations);
+    const { warnings: annexWarnings, knownCount } = validateAnnexes(allRegulations);
+
+    // Only show detailed warnings for NEW documents (not in known list)
     if (annexWarnings.length > 0) {
-        console.log('\n⚠️  ANNEX VALIDATION WARNINGS:');
-        console.log('   The following documents reference annexes but have no ## ANNEX section:');
+        console.log('\n⚠️  NEW ANNEX WARNINGS (action required):');
         for (const warning of annexWarnings) {
             console.log(`   - ${warning.slug}: "${warning.reference}"`);
         }
-        console.log('   Run: python scripts/batch_fix_annexes.py to re-download with annexes.\n');
+        console.log('   Add to KNOWN_MISSING_ANNEXES in build-content.js or fix with batch_fix_annexes.py\n');
+    }
+
+    // Show summary of known suppressed warnings (quieter output)
+    if (knownCount > 0) {
+        console.log(`\n📋 Annex status: ${knownCount} documents with known missing annexes (suppressed)`);
+        console.log('   Run: python scripts/batch_fix_annexes.py to download complete versions');
     }
 
     console.log('\n✨ Build complete!');

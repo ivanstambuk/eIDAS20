@@ -520,6 +520,49 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** We're building a reference tool, not editing the law. Accuracy and fidelity to source documents is paramount.
 
+14. **Git Checkout Safety (MANDATORY — Testing with Temporary Changes):**
+    
+    **NEVER use `git checkout <file>` to revert test changes if you have uncommitted work in that file.**
+    
+    **Problem scenario:**
+    ```bash
+    # You edit documents.yaml (intended changes)
+    # Then temporarily break it to test validation
+    # Then run: git checkout scripts/documents.yaml  
+    # ❌ OOPS! All your intended changes are gone!
+    ```
+    
+    **Safe patterns for testing:**
+    
+    1. **Copy before testing:**
+       ```bash
+       cp scripts/documents.yaml /tmp/backup.yaml
+       # Make test changes
+       # Run test
+       mv /tmp/backup.yaml scripts/documents.yaml
+       ```
+    
+    2. **Use git stash (if already committed once):**
+       ```bash
+       git stash
+       # Make test changes
+       # Run test
+       git stash pop
+       ```
+    
+    3. **Create test in temporary location:**
+       ```bash
+       mkdir /tmp/test_regulation
+       # Run test with temp files
+       rm -rf /tmp/test_regulation
+       ```
+    
+    **Anti-patterns:**
+    - ❌ `git checkout <file>` when file has uncommitted intended changes
+    - ❌ Assuming `git checkout` only reverts last edit (it reverts ALL uncommitted changes)
+    
+    **Why this matters:** Lost work costs significant time to recreate and risks missing details.
+
 
 
 ## Project Structure

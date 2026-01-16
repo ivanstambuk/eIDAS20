@@ -139,49 +139,61 @@ Categories to consider:
 
 ---
 
-## Step 3: Quick Wins Summary
+## Step 3: Complete Improvements List
 
-Create a table sorted by effort/impact ratio:
+**⚠️ DO NOT SORT OR PRIORITIZE** — Present ALL improvements in a single flat list. Let the USER decide what to implement.
 
 ```markdown
-## Quick Wins for Next Session
+## All Improvements Identified
 
-| Action | Type | Effort | Impact | Priority |
-|--------|------|--------|--------|----------|
-| [Add CSS utility] | Style | 2 min | Better DX | 🔴 Do Now |
-| [Update docs] | Docs | 5 min | Clarity | 🔴 Do Now |
+| # | Improvement | Type | Effort | Description |
+|---|-------------|------|--------|-------------|
+| 1 | [Item name] | Process | ~X min | [What it fixes] |
+| 2 | [Item name] | Portal | ~X min | [What it fixes] |
+| 3 | [Item name] | Docs | ~X min | [What it fixes] |
+| 4 | [Item name] | Snippet | ~X min | [What it fixes] |
 ```
+
+**DO NOT:**
+- ❌ Sort by priority (🔴/🟡/🟢)
+- ❌ Filter out "optional" items
+- ❌ Create "Quick Wins" vs "Later" categories
+- ❌ Hide items you think are low priority
+
+**DO:**
+- ✅ List every single improvement identified
+- ✅ Include effort estimates for each
+- ✅ Let user see the complete picture
 
 ---
 
 ## Step 4: Propose Changes
 
 **CRITICAL RULES:**
-1. **Offer ALL identified items**
-2. **Primary option is "implement ALL now"**
-3. **NO BACKLOG for small items** — Either implement now or skip
+1. **List ALL identified items** — No filtering, no sorting by priority
+2. **Only two options** — "Implement ALL" or "Specific items"
+3. **Use numbered list** — NOT checkbox syntax (causes strikethrough rendering bug)
 
 ```markdown
 ## Proposed Actions
 
 I've identified [N] improvements:
 
-**From Process Improvements:**
 1. **[Item]** - [description] (~X min)
-
-**From Portal-Specific:**
 2. **[Item]** - [description] (~X min)
-
-**From Documentation:**
 3. **[Item]** - [description] (~X min)
 
 **Total estimated time**: ~X minutes
 
 Would you like me to:
-- [ ] **Implement ALL now** (recommended)
-- [ ] Skip all
-- [ ] Specific items only: [list numbers]
+1. **Implement ALL now** (all N items)
+2. **Specific items only** — tell me which numbers
 ```
+
+**Format notes:**
+- Use numbered list (1. 2.) NOT checkboxes (`- [ ]` or `- [x]`)
+- Checkboxes with `[x]` render as strikethrough in some markdown viewers
+- No "Skip all" option — if user wants to skip, they'll tell you
 
 ---
 

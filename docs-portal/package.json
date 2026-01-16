@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
+    "validate:config": "node scripts/validate-documents.js",
+    "build": "npm run validate:config && node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:content": "node scripts/build-content.js",
     "build:terminology": "node scripts/build-terminology.js",
     "build:search": "node scripts/build-search-index.js",
@@ -17,6 +18,7 @@
     "@mlc-ai/web-llm": "^0.2.80",
     "@orama/orama": "^3.1.18",
     "@xenova/transformers": "^2.17.2",
+    "ajv": "^8.17.1",
     "js-yaml": "^4.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
