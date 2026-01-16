@@ -52,8 +52,8 @@ function extractTitle(content) {
  * Generate a short reference from the document title
  */
 function extractShortRef(title, celex) {
-    // Try regulation format
-    const regMatch = title.match(/Regulation \(EU\) (?:No )?([\d/]+)/);
+    // Try regulation format (EU or EC)
+    const regMatch = title.match(/Regulation \((?:EU|EC)\) (?:No )?([\d/]+)/);
     if (regMatch) return `Regulation ${regMatch[1]}`;
 
     // Try implementing regulation format
@@ -97,8 +97,8 @@ function generateSlug(dirName, type) {
  * Returns the article number (usually "2" or "3" for main definition articles)
  */
 function findDefinitionArticle(content) {
-    // Pattern 1: eIDAS format - "### Article 3" followed by "**Definitions**"
-    const pattern1 = /^### Article (\d+\w?)\s*\n\*\*Definitions?\*\*/gm;
+    // Pattern 1: eIDAS format - "### Article 3" followed by "**Definitions**" (may have blank lines between)
+    const pattern1 = /^### Article (\d+\w?)\s*\n+\*\*Definitions?\*\*/gm;
     const match1 = pattern1.exec(content);
     if (match1) return match1[1];
 

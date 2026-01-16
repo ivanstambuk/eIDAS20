@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-01-16T20:54:38.328Z",
+  "generated": "2026-01-16T23:30:03.064Z",
   "statistics": {
     "totalTerms": 106,
     "totalDefinitions": 199,
@@ -174,12 +174,12 @@
         {
           "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-10",
-          "articleNumber": "N/A(10)",
+          "articleId": "article-2-10",
+          "articleNumber": "2(10)",
           "displayOrder": 3
         }
       ],
@@ -288,17 +288,17 @@
         {
           "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-4",
-          "articleNumber": "N/A(4)",
+          "articleId": "article-2-4",
+          "articleNumber": "2(4)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-4"
+      "primaryLinkTarget": "article-2-4"
     },
     {
       "id": "body-governed-by-public-law",
@@ -364,17 +364,17 @@
         {
           "definition": "a marking by which the manufacturer indicates that the product is in conformity with the applicable requirements set out in Community harmonisation legislation providing for its affixing",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-20",
-          "articleNumber": "N/A(20)",
+          "articleId": "article-2-20",
+          "articleNumber": "2(20)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-20"
+      "primaryLinkTarget": "article-2-20"
     },
     {
       "id": "certificate-for-electronic-seal",
@@ -495,19 +495,19 @@
       "term": "Community harmonisation legislation",
       "sources": [
         {
-          "definition": "any Community legislation harmonising the conditions for the marketing of products. ## CHAPTER II — ACCREDITATION ### Article 3 — Scope This Chapter shall apply to accreditation, used on a compulsory or voluntary basis, relating to conformity assessment, whether that assessment is compulsory or not, and irrespective of the legal status of the body performing the accreditation. ### Article 4 — General principles 1. Each Member State shall appoint a single national accreditation body. 2. Where a Member State considers that it is not economically meaningful or sustainable to have a national accreditation body or to provide certain accreditation services, it shall, as far as possible, have recourse to the national accreditation body of another Member State. 3. A Member State shall inform the Commission and the other Member States where, in accordance with paragraph 2, recourse is had to the national accreditation body of another Member State. 4. On the basis of the information referred to in paragraph 3 and Article 12, the Commission shall draw up and update a list of national accreditation bodies which it shall make publicly available. 5. Where accreditation is not operated directly by the public authorities themselves, a Member State shall entrust its national accreditation body with the operation of accreditation as a public authority activity and grant it formal recognition. 6. The responsibilities and tasks of the national accreditation body shall be clearly distinguished from those of other national authorities. 7. The national accreditation body shall operate on a not-for-profit basis. 8. The national accreditation body shall not offer or provide any activities or services that conformity assessment bodies provide, nor shall it provide consultancy services, own shares in or otherwise have a financial or managerial interest in a conformity assessment body. 9. Each Member State shall ensure that its national accreditation body has the appropriate financial and personnel resources for the proper performance of its tasks, including the fulfilment of special tasks, such as activities for European and international accreditation cooperation and activities that are required to support public policy and which are not self-financing. 10. The national accreditation body shall be a member of the body recognised under Article 14. 11. National accreditation bodies shall establish and maintain appropriate structures to ensure the effective and balanced involvement of all interested parties within both their organisations and the body recognised under Article 14. ### Article 5 — Operation of accreditation 1. A national accreditation body shall, when requested by a conformity assessment body, evaluate whether that conformity assessment body is competent to carry out a specific conformity assessment activity. Where it is found to be competent, the national accreditation body shall issue an accreditation certificate to that effect. 2. When a Member State decides not to use accreditation, it shall provide the Commission and the other Member States with all the documentary evidence necessary for the verification of the competence of the conformity assessment bodies it selects for the implementation of the Community harmonisation legislation in question. 3. National accreditation bodies shall monitor the conformity assessment bodies to which they have issued an accreditation certificate. 4. Where a national accreditation body ascertains that a conformity assessment body which has received an accreditation certificate is no longer competent to carry out a specific conformity assessment activity or has committed a serious breach of its obligations, that accreditation body shall take all appropriate measures within a reasonable timeframe to restrict, suspend or withdraw the accreditation certificate. 5. Member States shall establish procedures for the resolution of appeals, including, where appropriate, legal remedies against accreditation decisions or the absence thereof. ### Article 6 — Principle of non-competition 1. National accreditation bodies shall not compete with conformity assessment bodies. 2. National accreditation bodies shall not compete with other national accreditation bodies. 3. National accreditation bodies shall be permitted to operate across national borders, within the territory of another Member State, either at the request of a conformity assessment body in the circumstances set out in Article 7(1), or, if they are asked to do so by a national accreditation body in accordance with Article 7(3), in cooperation with the national accreditation body of that Member State. ### Article 7 — Cross-border accreditation 1. Where a conformity assessment body requests accreditation it shall do so with the national accreditation body of the Member State in which it is established or with the national accreditation body to which that Member State has had recourse in accordance with Article 4(2). However, a conformity assessment body may request accreditation by a national accreditation body other than those referred to in the first subparagraph in any one of the following situations: (a) where the Member State in which it is established has decided not to establish a national accreditation body and has not had recourse to the national accreditation body of another Member State in accordance with Article 4(2)",
+          "definition": "any Community legislation harmonising the conditions for the marketing of products. ## II. Accreditation ### Article 3 **Scope** This Chapter shall apply to accreditation, used on a compulsory or voluntary basis, relating to conformity assessment, whether that assessment is compulsory or not, and irrespective of the legal status of the body performing the accreditation. ### Article 4 **General principles** 1. Each Member State shall appoint a single national accreditation body. 2. Where a Member State considers that it is not economically meaningful or sustainable to have a national accreditation body or to provide certain accreditation services, it shall, as far as possible, have recourse to the national accreditation body of another Member State. 3. A Member State shall inform the Commission and the other Member States where, in accordance with paragraph 2, recourse is had to the national accreditation body of another Member State. 4. On the basis of the information referred to in paragraph 3 and Article 12, the Commission shall draw up and update a list of national accreditation bodies which it shall make publicly available. 5. Where accreditation is not operated directly by the public authorities themselves, a Member State shall entrust its national accreditation body with the operation of accreditation as a public authority activity and grant it formal recognition. 6. The responsibilities and tasks of the national accreditation body shall be clearly distinguished from those of other national authorities. 7. The national accreditation body shall operate on a not-for-profit basis. 8. The national accreditation body shall not offer or provide any activities or services that conformity assessment bodies provide, nor shall it provide consultancy services, own shares in or otherwise have a financial or managerial interest in a conformity assessment body. 9. Each Member State shall ensure that its national accreditation body has the appropriate financial and personnel resources for the proper performance of its tasks, including the fulfilment of special tasks, such as activities for European and international accreditation cooperation and activities that are required to support public policy and which are not self-financing. 10. The national accreditation body shall be a member of the body recognised under Article 14. 11. National accreditation bodies shall establish and maintain appropriate structures to ensure the effective and balanced involvement of all interested parties within both their organisations and the body recognised under Article 14. ### Article 5 **Operation of accreditation** 1. A national accreditation body shall, when requested by a conformity assessment body, evaluate whether that conformity assessment body is competent to carry out a specific conformity assessment activity. Where it is found to be competent, the national accreditation body shall issue an accreditation certificate to that effect. 2. When a Member State decides not to use accreditation, it shall provide the Commission and the other Member States with all the documentary evidence necessary for the verification of the competence of the conformity assessment bodies it selects for the implementation of the Community harmonisation legislation in question. 3. National accreditation bodies shall monitor the conformity assessment bodies to which they have issued an accreditation certificate. 4. Where a national accreditation body ascertains that a conformity assessment body which has received an accreditation certificate is no longer competent to carry out a specific conformity assessment activity or has committed a serious breach of its obligations, that accreditation body shall take all appropriate measures within a reasonable timeframe to restrict, suspend or withdraw the accreditation certificate. 5. Member States shall establish procedures for the resolution of appeals, including, where appropriate, legal remedies against accreditation decisions or the absence thereof. ### Article 6 **Principle of non-competition** 1. National accreditation bodies shall not compete with conformity assessment bodies. 2. National accreditation bodies shall not compete with other national accreditation bodies. 3. National accreditation bodies shall be permitted to operate across national borders, within the territory of another Member State, either at the request of a conformity assessment body in the circumstances set out in Article 7(1), or, if they are asked to do so by a national accreditation body in accordance with Article 7(3), in cooperation with the national accreditation body of that Member State. ### Article 7 **Cross-border accreditation** 1. Where a conformity assessment body requests accreditation it shall do so with the national accreditation body of the Member State in which it is established or with the national accreditation body to which that Member State has had recourse in accordance with Article 4(2). However, a conformity assessment body may request accreditation by a national accreditation body other than those referred to in the first subparagraph in any one of the following situations: (a) where the Member State in which it is established has decided not to establish a national accreditation body and has not had recourse to the national accreditation body of another Member State in accordance with Article 4(2)",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-21",
-          "articleNumber": "N/A(21)",
+          "articleId": "article-2-21",
+          "articleNumber": "2(21)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-21"
+      "primaryLinkTarget": "article-2-21"
     },
     {
       "id": "conformity-assessment",
@@ -516,17 +516,17 @@
         {
           "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-12",
-          "articleNumber": "N/A(12)",
+          "articleId": "article-2-12",
+          "articleNumber": "2(12)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-12"
+      "primaryLinkTarget": "article-2-12"
     },
     {
       "id": "conformity-assessment-body",
@@ -546,12 +546,12 @@
         {
           "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-13",
-          "articleNumber": "N/A(13)",
+          "articleId": "article-2-13",
+          "articleNumber": "2(13)",
           "displayOrder": 3
         }
       ],
@@ -1169,17 +1169,17 @@
         {
           "definition": "a standard adopted by one of the European standardisation bodies listed in Annex I to Directive 98/34/EC of the European Parliament and of the Council of 22 June 1998 laying down a procedure for the provision of information in the field of technical standards and regulations and of rules on Information Society services on the basis of a request made by the Commission in accordance with Article 6 of that Directive",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-9",
-          "articleNumber": "N/A(9)",
+          "articleId": "article-2-9",
+          "articleNumber": "2(9)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-9"
+      "primaryLinkTarget": "article-2-9"
     },
     {
       "id": "identity-matching",
@@ -1226,17 +1226,17 @@
         {
           "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-3",
-          "articleNumber": "N/A(3)",
+          "articleId": "article-2-3",
+          "articleNumber": "2(3)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-3"
+      "primaryLinkTarget": "article-2-3"
     },
     {
       "id": "national-accreditation-body",
@@ -1256,12 +1256,12 @@
         {
           "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-11",
-          "articleNumber": "N/A(11)",
+          "articleId": "article-2-11",
+          "articleNumber": "2(11)",
           "displayOrder": 3
         }
       ],
@@ -1332,17 +1332,17 @@
         {
           "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-16",
-          "articleNumber": "N/A(16)",
+          "articleId": "article-2-16",
+          "articleNumber": "2(16)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-16"
+      "primaryLinkTarget": "article-2-16"
     },
     {
       "id": "person-identification-data",
@@ -1898,17 +1898,17 @@
         {
           "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-19",
-          "articleNumber": "N/A(19)",
+          "articleId": "article-2-19",
+          "articleNumber": "2(19)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-19"
+      "primaryLinkTarget": "article-2-19"
     },
     {
       "id": "relying-party",
@@ -2080,17 +2080,17 @@
         {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
           "documentId": "765-2008",
-          "documentTitle": "Regulation (EC) No 765/2008 of the Europ",
+          "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-N/A-8",
-          "articleNumber": "N/A(8)",
+          "articleId": "article-2-8",
+          "articleNumber": "2(8)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-N/A-8"
+      "primaryLinkTarget": "article-2-8"
     },
     {
       "id": "trust-service",
