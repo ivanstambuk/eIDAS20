@@ -15,7 +15,7 @@ documents:
   output_dir: 01_regulation/2024_1183_eIDAS2_Amending
 - celex: 02008R0765-20210716
   title: Accreditation and Market Surveillance Regulation (Consolidated)
-  shortTitle: Accreditation Regulation
+  shortTitle: Accreditation Regulation (Consolidated)
   type: referenced
   source: manual  # Consolidated version manually merged (preamble from original + consolidated enacting terms)
   output_dir: 01_regulation/765_2008_Market_Surveillance
