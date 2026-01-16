@@ -3,16 +3,19 @@ last_updated: '2026-01-15'
 documents:
 - celex: 02014R0910-20241018
   title: Consolidated eIDAS Regulation
+  shortTitle: eIDAS 2.0 Regulation (Consolidated)
   type: consolidated
   cellar_id: 6a1e14d9-907e-11ef-a130-01aa75ed71a1.0007.01
   output_dir: 01_regulation/910_2014_eIDAS_Consolidated
 - celex: 32024R1183
   title: eIDAS 2.0 Amending Regulation
+  shortTitle: eIDAS 2.0 Amendment
   type: amending
   cellar_id: 459993a1-068e-11ef-a251-01aa75ed71a1.0006.02
   output_dir: 01_regulation/2024_1183_eIDAS2_Amending
 - celex: 32008R0765
   title: Market Surveillance Regulation
+  shortTitle: Market Surveillance Regulation
   type: referenced
   source: html  # No Formex XML available, use eurlex_html_to_md.py
   output_dir: 01_regulation/765_2008_Market_Surveillance

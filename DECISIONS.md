@@ -575,5 +575,74 @@ documents.yaml
 
 ---
 
+## DEC-043: Short Title Single Source of Truth
+
+**Date:** 2026-01-16  
+**Status:** Implemented  
+**Category:** Architecture / Build Pipeline
+
+**Context:**
+
+When adding Regulation 765/2008, we discovered the `extractShortTitle()` function in `build-content.js` had hardcoded CELEX pattern matching for regulation titles. This violated the Single Source of Truth principle — titles were defined in two places (YAML config and JS code), making it easy to forget updating one when adding new regulations.
+
+**Problem:**
+
+```javascript
+// Previous hardcoded approach (DRY violation)
+if (celex.includes('2024') && celex.includes('1183')) return 'eIDAS 2.0 Amendment';
+if (celex.includes('2014') || celex.includes('910')) return 'eIDAS 2.0 Regulation (Consolidated)';
+if (celex.includes('2008') && celex.includes('765')) return 'Market Surveillance Regulation';
+// Forgot to add new regulation? Silent truncation to "Regulation (EU) No..."
+```
+
+**Decision:**
+
+Make `documents.yaml` the Single Source of Truth for regulation short titles with fail-fast build validation.
+
+**Architecture:**
+
+```
+documents.yaml (authoritative)         build-content.js
+┌─────────────────────────────────┐    ┌──────────────────────────────┐
+│ - celex: 32008R0765             │    │ Priority chain:              │
+│   shortTitle: "Market Surveil." │───▶│  1. Markdown Subject: field  │
+│   title: "Regulation 765/2008"  │    │  2. YAML shortTitle (←NEW)   │
+│   output_dir: 01_regulation/... │    │  3. Folder name pattern (IA) │
+└─────────────────────────────────┘    │  4. CELEX pattern (IA)       │
+                                       │  5. FAIL BUILD (regulations) │
+                                       └──────────────────────────────┘
+```
+
+**Fail-Fast Validation:**
+
+If a regulation has no `shortTitle` in documents.yaml, the build fails immediately with actionable instructions:
+
+```
+❌ BUILD FAILED: No shortTitle for regulation "new_regulation" (CELEX: 39999R9999)
+
+   Regulations must have explicit shortTitle in documents.yaml.
+   
+   FIX: Add to scripts/documents.yaml:
+   
+   - celex: 39999R9999
+     shortTitle: "Human Readable Name"  # ← Add this line
+```
+
+**Benefits:**
+
+1. **Single Source of Truth** — All regulation metadata in one place
+2. **Fail Fast** — Missing titles caught at build time, not in production
+3. **Self-Documenting** — YAML config shows all regulation titles at a glance
+4. **No Hardcoding** — No more CELEX pattern matching in JS code
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `scripts/documents.yaml` | Added `shortTitle` field to all 3 regulations |
+| `docs-portal/scripts/build-content.js` | Added YAML loader, refactored `extractShortTitle()` |
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 

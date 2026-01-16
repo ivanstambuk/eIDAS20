@@ -30,6 +30,9 @@ import rehypeStringify from 'rehype-stringify';
 // Use the same slugger as rehype-slug for consistent IDs
 import GithubSlugger from 'github-slugger';
 
+// YAML parser for loading documents.yaml (Single Source of Truth for titles)
+import yaml from 'js-yaml';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -42,6 +45,48 @@ const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '01_regulation'), type: 'regulation' },
     { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' }
 ];
+
+/**
+ * Load documents.yaml - Single Source of Truth for document metadata.
+ * 
+ * This file defines shortTitle for regulations, preventing hardcoded
+ * title logic in this script. DEC-043 (2026-01-16).
+ */
+const DOCUMENTS_YAML_PATH = join(PROJECT_ROOT, 'scripts', 'documents.yaml');
+let documentsConfig = null;
+
+function loadDocumentsConfig() {
+    if (documentsConfig) return documentsConfig;
+
+    try {
+        const content = readFileSync(DOCUMENTS_YAML_PATH, 'utf-8');
+        documentsConfig = yaml.load(content);
+        return documentsConfig;
+    } catch (err) {
+        console.warn(`⚠️  Could not load documents.yaml: ${err.message}`);
+        return { documents: [] };
+    }
+}
+
+/**
+ * Get shortTitle for a document from documents.yaml.
+ * 
+ * Matches by output_dir (folder name) since CELEX format varies.
+ * Returns null if not found or no shortTitle defined.
+ * 
+ * @param {string} dirName - Directory name (e.g., "765_2008_Market_Surveillance")
+ * @returns {string|null} - The shortTitle from documents.yaml or null
+ */
+function getShortTitleFromConfig(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return null;
+
+    const doc = config.documents.find(d =>
+        d.output_dir && d.output_dir.endsWith(dirName)
+    );
+
+    return doc?.shortTitle || null;
+}
 
 /**
  * Preamble Injection Configuration
@@ -251,13 +296,14 @@ function parseTitle(content) {
 }
 
 /**
- * Extract a human-readable short title from metadata, folder name, or title.
+ * Extract a human-readable short title from metadata, folder name, or config.
  * 
- * Priority chain (Single Source of Truth principle):
+ * Priority chain (Single Source of Truth principle - DEC-043):
  * 1. Explicit **Subject:** field in markdown metadata
- * 2. Descriptive part of folder name (e.g., "Relying_Party_Registration")
- * 3. Special casing for parent regulations
- * 4. Fallback to CELEX-based pattern
+ * 2. Explicit shortTitle from documents.yaml (AUTHORITATIVE for regulations)
+ * 3. Folder name pattern (YYYY_NNNN_Human_Readable) for implementing acts
+ * 4. CELEX-based pattern fallback for implementing acts
+ * 5. FAIL BUILD for regulations without shortTitle (fail-fast validation)
  * 
  * @param {string} fullTitle - The full document title
  * @param {string} celex - The CELEX number
@@ -271,7 +317,14 @@ function extractShortTitle(fullTitle, celex, type, dirName, subject) {
         return subject;
     }
 
-    // Priority 2: For implementing acts, extract from folder name
+    // Priority 2: Check documents.yaml for explicit shortTitle
+    // This is the Single Source of Truth for regulation titles (DEC-043)
+    const configShortTitle = getShortTitleFromConfig(dirName);
+    if (configShortTitle) {
+        return configShortTitle;
+    }
+
+    // Priority 3: For implementing acts, extract from folder name
     // Format: YYYY_NNNN_Human_Readable_Description
     if (type === 'implementing-act' && dirName) {
         const folderMatch = dirName.match(/^\d{4}_\d+_(.+)$/);
@@ -304,25 +357,6 @@ function extractShortTitle(fullTitle, celex, type, dirName, subject) {
         }
     }
 
-    // Priority 3: Special handling for parent regulations
-    if (type === 'regulation') {
-        // eIDAS 2.0 Amendment (2024/1183)
-        if (celex && celex.includes('2024') && celex.includes('1183')) {
-            return 'eIDAS 2.0 Amendment';
-        }
-        // Consolidated eIDAS Regulation (910/2014)
-        if (celex && (celex.includes('2014') || celex.includes('910'))) {
-            return 'eIDAS 2.0 Regulation (Consolidated)';
-        }
-        // Market Surveillance Regulation (765/2008)
-        if (celex && (celex.includes('2008') && celex.includes('765'))) {
-            return 'Market Surveillance Regulation';
-        }
-        // Generic regulation fallback
-        const regMatch = fullTitle.match(/Regulation \(EU\) (?:No )?(\d+\/\d+)/);
-        if (regMatch) return `Regulation ${regMatch[1]}`;
-    }
-
     // Priority 4: For implementing acts without folder description, use CELEX pattern
     if (type === 'implementing-act' && celex) {
         // CELEX format: 3YYYYRNNN or 3YYYYDNNNN (R=Regulation, D=Decision)
@@ -333,7 +367,27 @@ function extractShortTitle(fullTitle, celex, type, dirName, subject) {
         }
     }
 
-    // Fallback: first 60 chars of title
+    // FAIL FAST: Regulations MUST have explicit shortTitle in documents.yaml
+    // This prevents forgetting to update config when adding new regulations
+    if (type === 'regulation') {
+        throw new Error(
+            `❌ BUILD FAILED: No shortTitle for regulation "${dirName}" (CELEX: ${celex})\n` +
+            `\n` +
+            `   Regulations must have explicit shortTitle in documents.yaml.\n` +
+            `   This prevents hardcoded title logic in build-content.js.\n` +
+            `\n` +
+            `   FIX: Add to scripts/documents.yaml:\n` +
+            `\n` +
+            `   - celex: ${celex}\n` +
+            `     shortTitle: "Human Readable Name"  # ← Add this line\n` +
+            `     type: ...\n` +
+            `     output_dir: 01_regulation/${dirName}\n` +
+            `\n` +
+            `   See DEC-043 for rationale.`
+        );
+    }
+
+    // Fallback for other types: first 60 chars of title
     return fullTitle.length > 60 ? fullTitle.substring(0, 57) + '...' : fullTitle;
 }
 
@@ -667,6 +721,10 @@ function scanDirectory(sourceDir, type) {
                     regulations.push(data);
                 } catch (err) {
                     console.error(`  ❌ Error processing ${mdPath}:`, err.message);
+                    // Re-throw critical build errors (fail-fast validation)
+                    if (err.message.includes('BUILD FAILED')) {
+                        throw err;
+                    }
                 }
             }
         } else if (entry.endsWith('.md') && entry.toLowerCase() !== 'readme.md') {
@@ -678,6 +736,10 @@ function scanDirectory(sourceDir, type) {
                 regulations.push(data);
             } catch (err) {
                 console.error(`  ❌ Error processing ${entryPath}:`, err.message);
+                // Re-throw critical build errors (fail-fast validation)
+                if (err.message.includes('BUILD FAILED')) {
+                    throw err;
+                }
             }
         }
     }
