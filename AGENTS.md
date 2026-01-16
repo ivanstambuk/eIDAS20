@@ -156,6 +156,12 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
       → Added downstream validation in search + embeddings scripts
       → Added staleness detection
       → Fixed npm run build to include all scripts
+   
+   ✅ Hardcoded document count in UI (2026-01-16)
+      → Added generateMetadata() with build-time computation + 3-tier validation
+      → Generated metadata.json (510B) with documentCount, buildDate, etc.
+      → UI fetches computed stats instead of hardcoding
+      → Build fails fast on data integrity issues (DEC-012)
    ```
    
    **Anti-patterns:**

@@ -735,6 +735,10 @@ function validateAnnexes(regulations) {
 /**
  * Generate metadata.json with computed statistics.
  * 
+ * ⚠️ VALIDATION CRITICAL: This function includes 3-tier validation that prevents
+ * data integrity issues. Do not remove or weaken validation checks without careful
+ * consideration. Build should FAIL FAST on data corruption.
+ * 
  * This metadata file provides build-time computed stats that prevent
  * hardcoding values in UI components. The metadata includes:
  * - Document counts (total, by category)
@@ -743,8 +747,23 @@ function validateAnnexes(regulations) {
  * 
  * Build-time validation ensures data integrity (Defense in Depth, AGENTS.md Rule 5).
  * 
- * @param {Array} regulations - Array of all processed regulation objects
- * @returns {Object} - Metadata object to be written to metadata.json
+ * @param {Array<{type: string, wordCount: number, slug: string}>} regulations - Array of all processed regulation objects
+ * @returns {{
+ *   documentCount: number,
+ *   regulationCount: number,
+ *   implementingActCount: number,
+ *   totalWordCount: number,
+ *   regulationWordCount: number,
+ *   implementingActWordCount: number,
+ *   lastBuildTime: string,
+ *   buildDate: string,
+ *   categories: {
+ *     regulations: {count: number, wordCount: number, slugs: string[]},
+ *     implementingActs: {count: number, wordCount: number}
+ *   }
+ * }} Metadata object to be written to metadata.json
+ * 
+ * @see DECISIONS.md - DEC-012 for architecture and rationale
  */
 function generateMetadata(regulations) {
     // Count documents by type

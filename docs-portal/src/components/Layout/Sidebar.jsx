@@ -117,6 +117,17 @@ const icons = {
     ),
 };
 
+/**
+ * ⚠️ CRITICAL: Do NOT hardcode document counts, dates, or statistics
+ * 
+ * Always fetch from build-time generated metadata.json. This ensures:
+ * - Single source of truth (counts computed from actual documents)
+ * - Build-time validation (3-tier checks prevent data corruption)
+ * - Future-proof (new documents automatically update all stats)
+ * 
+ * See DEC-012 in DECISIONS.md for full rationale and architecture.
+ */
+
 const Sidebar = ({ isOpen, onClose }) => {
     const [metadata, setMetadata] = useState(null);
 
