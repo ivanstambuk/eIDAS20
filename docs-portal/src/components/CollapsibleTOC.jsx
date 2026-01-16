@@ -276,9 +276,14 @@ export default function CollapsibleTOC({ toc, slug, type }) {
 
         // Separate orphan items into:
         // 1. Pre-content items (like "Preamble", "Recitals") - shown first
-        // 2. Annex items (start with "annex") - shown last, grouped
+        // 2. Annex items (start with "annex") - shown in collapsible group
+        // 3. Post-content items (like "Source Reference") - shown last
         const preContentItems = [];
         const annexItems = [];
+        const postContentItems = [];
+
+        // Items that belong at the end of the TOC (after chapters and annexes)
+        const postContentPatterns = ['source-reference', 'references', 'bibliography'];
 
         toc.filter(item => !articlesInChapters.has(item.id) && item.level <= 2)
             .forEach(item => {
@@ -294,6 +299,8 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                     if (idLower !== 'annexes') {
                         annexItems.push(item);
                     }
+                } else if (postContentPatterns.some(p => idLower.includes(p))) {
+                    postContentItems.push(item);
                 } else {
                     preContentItems.push(item);
                 }
@@ -305,7 +312,7 @@ export default function CollapsibleTOC({ toc, slug, type }) {
         return (
             <nav>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {/* Pre-content items first (like "Enacting Terms") */}
+                    {/* Pre-content items first (like "Preamble", "Recitals") */}
                     {preContentItems.map((item, idx) => (
                         <TOCItem key={`pre-${idx}`} item={item} />
                     ))}
@@ -329,7 +336,7 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                         );
                     })}
 
-                    {/* Annexes at the end, in their own collapsible group */}
+                    {/* Annexes in their own collapsible group */}
                     {hasAnnexes && (
                         <ChapterGroup
                             key="annexes-group"
@@ -338,6 +345,11 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                             defaultExpanded={false}
                         />
                     )}
+
+                    {/* Post-content items last (like "Source Reference") */}
+                    {postContentItems.map((item, idx) => (
+                        <TOCItem key={`post-${idx}`} item={item} />
+                    ))}
                 </ul>
             </nav>
         );
