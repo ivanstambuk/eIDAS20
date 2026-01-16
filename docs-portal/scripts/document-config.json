@@ -12,7 +12,15 @@
             "label": "Consolidated Regulation",
             "ragEnabled": true,
             "terminologySource": true,
+            "category": "primary",
             "comment": "Primary source of truth for current eIDAS law."
+        },
+        "765-2008": {
+            "label": "Referenced Regulation",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "Foundational regulation defining conformity assessment, accreditation, and market surveillance frameworks. Referenced by eIDAS 910/2014."
         }
     },
     "defaults": {

@@ -94,18 +94,23 @@ function generateSlug(dirName, type) {
 
 /**
  * Find the Article containing definitions in a document
- * Returns the article number (usually "3" for main definition articles)
+ * Returns the article number (usually "2" or "3" for main definition articles)
  */
 function findDefinitionArticle(content) {
-    // Look for "### Article 3" followed by "Definitions" or similar
-    const articlePattern = /^### Article (\d+\w?)\s*\n\*\*Definitions?\*\*/gm;
-    const match = articlePattern.exec(content);
-    if (match) return match[1];
+    // Pattern 1: eIDAS format - "### Article 3" followed by "**Definitions**"
+    const pattern1 = /^### Article (\d+\w?)\s*\n\*\*Definitions?\*\*/gm;
+    const match1 = pattern1.exec(content);
+    if (match1) return match1[1];
 
-    // Also check for definitions article by content pattern
-    const altPattern = /^### Article (\d+\w?)\s*\n.*\n.*following definitions apply/gmi;
-    const altMatch = altPattern.exec(content);
-    if (altMatch) return altMatch[1];
+    // Pattern 2: EU format - "### Article 2 - Definitions"
+    const pattern2 = /^### Article (\d+\w?)\s*-\s*Definitions/gm;
+    const match2 = pattern2.exec(content);
+    if (match2) return match2[1];
+
+    // Pattern 3: Content-based - "following definitions apply"
+    const pattern3 = /^### Article (\d+\w?)\s*\n.*\n.*following definitions (?:shall )?apply/gmi;
+    const match3 = pattern3.exec(content);
+    if (match3) return match3[1];
 
     return null;
 }
@@ -117,15 +122,20 @@ function findDefinitionArticle(content) {
 function extractDefinitions(content) {
     const definitions = [];
 
-    // Pattern: - (N) 'term' means definition (markdown list format)
+    // Pattern 1: eIDAS format - (N) 'term' means definition
     // Also handles: (Na) 'term' for numbered variants like (5a)
     // Handles markdown list format: "- (N) 'term' means..."
     // Captures: ordinal, term, definition
     // Stops at: semicolon, period, or double newline (article boundary)
-    const defPattern = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
+    const defPatternParens = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
+    // Pattern 2: EU numbered list format - N. 'term' means definition
+    // Used in older regulations like 765/2008
+    const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;]+);/gm;
+
+    // Try pattern 1 (parenthesized)
     let match;
-    while ((match = defPattern.exec(content)) !== null) {
+    while ((match = defPatternParens.exec(content)) !== null) {
         const ordinal = match[1];
         const term = match[2].trim();
         // Clean up definition: remove trailing semicolon/period, normalize whitespace
@@ -142,6 +152,28 @@ function extractDefinitions(content) {
             term,
             definition
         });
+    }
+
+    // Try pattern 2 (numbered list) if we didn't find many definitions
+    if (definitions.length < 5) {
+        while ((match = defPatternNumbered.exec(content)) !== null) {
+            const ordinal = match[1];
+            const term = match[2].trim();
+            // Clean up definition: remove trailing semicolon, normalize whitespace
+            let definition = match[3]
+                .replace(/;\s*$/, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            // Skip very short or malformed definitions
+            if (definition.length < 10) continue;
+
+            definitions.push({
+                ordinal,
+                term,
+                definition
+            });
+        }
     }
 
     return definitions;
@@ -166,6 +198,9 @@ function processFile(filePath, dirName, type, docConfig) {
         return { terms: [], skipped: true, slug };
     }
 
+    // Get category for display ordering (DEC-039)
+    const category = config.category || (type === 'implementing-act' ? 'implementing-act' : 'primary');
+
     const definitionArticle = findDefinitionArticle(content);
 
     const definitions = extractDefinitions(content);
@@ -180,6 +215,7 @@ function processFile(filePath, dirName, type, docConfig) {
                 shortRef,
                 slug,
                 type,
+                category,  // Add category for display ordering
                 article: definitionArticle || 'N/A',
                 ordinal: def.ordinal
             }
@@ -241,10 +277,25 @@ function scanDirectory(sourceDir, type, docConfig) {
 
 /**
  * Merge duplicate terms from different sources
- * Groups terms by normalized term name
+ * Groups terms by normalized term name and creates multi-source entries
+ * 
+ * Display ordering (DEC-039):
+ *   1. primary (eIDAS 910/2014, 2024/1183)
+ *   2. implementing-act (technical specifications)
+ *   3. referenced (765/2008, foundational regulations)
  */
 function mergeTerms(allTerms) {
     const termMap = new Map();
+
+    // Display order mapping
+    const DISPLAY_ORDER = {
+        'primary': 1,
+        'implementing-act': 2,
+        'referenced': 3
+    };
+
+    // Helper function to get display order
+    const getDisplayOrder = (category) => DISPLAY_ORDER[category] || 99;
 
     for (const term of allTerms) {
         // Normalize term for grouping (lowercase, remove extra spaces)
@@ -253,16 +304,40 @@ function mergeTerms(allTerms) {
         if (!termMap.has(normalizedTerm)) {
             termMap.set(normalizedTerm, {
                 id: normalizedTerm.replace(/[^a-z0-9]+/g, '-'),
-                term: term.term,
-                definitions: []
+                term: term.term,  // Preserve original casing from first occurrence
+                sources: [],
+                hasMultipleSources: false
             });
         }
 
-        // Add this definition with its source
-        termMap.get(normalizedTerm).definitions.push({
-            text: term.definition,
-            source: term.source
-        });
+        const entry = termMap.get(normalizedTerm);
+
+        // Build source entry with display order
+        const sourceEntry = {
+            definition: term.definition,
+            documentId: term.source.slug,
+            documentTitle: term.source.shortRef,
+            documentCategory: term.source.category,
+            documentType: term.source.type,
+            celex: term.source.celex,
+            articleId: `article-${term.source.article}${term.source.ordinal ? `-${term.source.ordinal}` : ''}`,
+            articleNumber: term.source.ordinal ? `${term.source.article}(${term.source.ordinal})` : term.source.article,
+            displayOrder: getDisplayOrder(term.source.category)
+        };
+
+        entry.sources.push(sourceEntry);
+    }
+
+    // Post-process: sort sources by display order and set flags
+    for (const [key, entry] of termMap.entries()) {
+        // Sort sources by display order (primary first, then implementing-act, then referenced)
+        entry.sources.sort((a, b) => a.displayOrder - b.displayOrder);
+
+        // Set multi-source flag
+        entry.hasMultipleSources = entry.sources.length > 1;
+
+        // Set primary link target (first source after sorting = highest priority)
+        entry.primaryLinkTarget = entry.sources[0].articleId;
     }
 
     // Convert to array and sort alphabetically
@@ -335,7 +410,7 @@ function build() {
     // Show first few terms as preview
     console.log('\n📋 Preview (first 5 terms):');
     for (const term of mergedTerms.slice(0, 5)) {
-        console.log(`   • ${term.term} (${term.definitions.length} definition${term.definitions.length > 1 ? 's' : ''})`);
+        console.log(`   • ${term.term} (${term.sources.length} source${term.sources.length > 1 ? 's' : ''})`);
     }
 
     // ════════════════════════════════════════════════════════════════════════════
