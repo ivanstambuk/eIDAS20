@@ -290,7 +290,7 @@ const Terminology = () => {
                                                     }}
                                                 >
                                                     <div className="source-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
-                                                        <strong>{source.documentTitle}</strong>, Article {source.articleNumber}:
+                                                        <span><strong>{source.documentTitle}</strong>, Article {source.articleNumber}:</span>
                                                         {source.documentCategory === 'referenced' && (
                                                             <span className="referenced-badge" style={{ background: 'var(--cyan-muted)', color: 'var(--bg-primary)', padding: '0.125rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
                                                                 Referenced
