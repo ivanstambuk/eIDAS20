@@ -6,7 +6,7 @@ import './TermPopover.css';
  * TermPopover - Shows definition when hovering over a term
  * 
  * Props:
- * - term: { id, term, definitions: [{ text, source }] }
+ * - term: { id, term, sources: [{ definition, documentId, documentTitle, documentCategory, articleId, articleNumber }] }
  * - children: The term text to display
  */
 export function TermPopover({ term, children }) {
@@ -63,13 +63,24 @@ export function TermPopover({ term, children }) {
         };
     }, []);
 
-    const primaryDef = term.definitions[0];
-    const hasMultipleDefs = term.definitions.length > 1;
+    // Multi-source support: sources are already sorted by displayOrder
+    const sources = term.sources || [];
+    const hasMultipleSources = sources.length > 1;
+
+    // Get category badge color class
+    const getCategoryClass = (category) => {
+        switch (category) {
+            case 'primary': return 'term-source-primary';
+            case 'implementing-act': return 'term-source-implementing';
+            case 'referenced': return 'term-source-referenced';
+            default: return '';
+        }
+    };
 
     // Get document route path
     const getDocumentPath = (source) => {
-        const basePath = source.type === 'regulation' ? 'regulation' : 'implementing-acts';
-        return `/${basePath}/${source.slug}#article-${source.article}`;
+        const basePath = source.documentType === 'regulation' ? 'regulation' : 'implementing-acts';
+        return `/${basePath}/${source.documentId}#${source.articleId}`;
     };
 
     return (
@@ -105,27 +116,50 @@ export function TermPopover({ term, children }) {
                 >
                     <div className="term-popover-header">
                         <span className="term-popover-title">{term.term}</span>
-                        <span className="term-popover-badge">
-                            Art. {primaryDef.source.article}({primaryDef.source.ordinal})
-                        </span>
+                        {hasMultipleSources && (
+                            <span className="term-popover-count">
+                                {sources.length} sources
+                            </span>
+                        )}
                     </div>
 
-                    <p className="term-popover-definition">
-                        {primaryDef.text}
-                    </p>
+                    {/* Display all sources in stacked layout */}
+                    <div className="term-popover-sources">
+                        {sources.map((source, index) => (
+                            <div
+                                key={`${source.documentId}-${source.articleId}`}
+                                className={`term-popover-source ${getCategoryClass(source.documentCategory)}`}
+                            >
+                                <div className="term-popover-source-header">
+                                    <Link
+                                        to={getDocumentPath(source)}
+                                        className="term-popover-source-title"
+                                    >
+                                        {source.documentTitle}
+                                    </Link>
+                                    <span className="term-popover-article">
+                                        Art. {source.articleNumber}
+                                    </span>
+                                    {source.documentCategory === 'referenced' && (
+                                        <span className="term-popover-badge-referenced">
+                                            Referenced
+                                        </span>
+                                    )}
+                                </div>
+                                <p className="term-popover-definition">
+                                    {source.definition}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
 
                     <div className="term-popover-footer">
                         <Link
                             to={`/terminology#term-${term.id}`}
                             className="term-popover-link"
                         >
-                            View in Terminology
+                            View in Terminology →
                         </Link>
-                        {hasMultipleDefs && (
-                            <span className="term-popover-sources">
-                                {term.definitions.length} sources
-                            </span>
-                        )}
                     </div>
                 </div>
             )}

@@ -59,7 +59,7 @@
     color: var(--accent-primary);
 }
 
-.term-popover-badge {
+.term-popover-count {
     font-size: var(--text-xs);
     padding: var(--space-1) var(--space-2);
     background: var(--accent-primary-dim);
@@ -68,14 +68,87 @@
     white-space: nowrap;
 }
 
+/* Multi-source stacked display */
+.term-popover-sources {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.term-popover-source {
+    padding: var(--space-3);
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease;
+}
+
+.term-popover-source:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Category-based border colors */
+.term-popover-source.term-source-primary {
+    border-left-color: var(--accent-primary);
+    /* Cyan for primary eIDAS */
+}
+
+.term-popover-source.term-source-implementing {
+    border-left-color: var(--accent-secondary);
+    /* Purple for implementing acts */
+}
+
+.term-popover-source.term-source-referenced {
+    border-left-color: var(--text-muted);
+    /* Muted gray for referenced docs */
+}
+
+.term-popover-source-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.term-popover-source-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.term-popover-source-title:hover {
+    color: var(--accent-primary);
+}
+
+.term-popover-article {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.term-popover-badge-referenced {
+    font-size: var(--text-xs);
+    padding: 2px var(--space-2);
+    background: rgba(150, 150, 150, 0.15);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    white-space: nowrap;
+}
+
 .term-popover-definition {
     font-size: var(--text-sm);
     line-height: 1.6;
-    color: var(--text-primary);
-    margin: 0 0 var(--space-3);
-    max-height: 150px;
-    overflow-y: auto;
+    color: var(--text-secondary);
+    margin: 0;
 }
+
 
 .term-popover-footer {
     display: flex;
@@ -96,22 +169,17 @@
     text-decoration: underline;
 }
 
-.term-popover-sources {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-}
-
-/* Dark scrollbar for definition overflow */
-.term-popover-definition::-webkit-scrollbar {
+/* Dark scrollbar for sources overflow */
+.term-popover-sources::-webkit-scrollbar {
     width: 4px;
 }
 
-.term-popover-definition::-webkit-scrollbar-track {
+.term-popover-sources::-webkit-scrollbar-track {
     background: var(--bg-tertiary);
     border-radius: 2px;
 }
 
-.term-popover-definition::-webkit-scrollbar-thumb {
+.term-popover-sources::-webkit-scrollbar-thumb {
     background: var(--border-primary);
     border-radius: 2px;
 }
