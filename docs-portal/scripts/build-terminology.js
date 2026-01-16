@@ -131,7 +131,8 @@ function extractDefinitions(content) {
 
     // Pattern 2: EU numbered list format - N. 'term' means definition
     // Used in older regulations like 765/2008
-    const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;]+);/gm;
+    // Must stop at semicolon, period, or newline (last definition in 765/2008 ends with period)
+    const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     // Try pattern 1 (parenthesized)
     let match;
