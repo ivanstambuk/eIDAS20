@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 12:22 CET |
+| **Last Updated** | 2026-01-16 14:07 CET |
 | **Session State** | ✅ Active Development (Clean Handover) |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Continue with backlog items or new features |
@@ -41,6 +41,7 @@
 - **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
+- **Scroll restoration** (Back button restores position, manual navigation starts at top; Performance API detection)
 
 ---
 
@@ -59,7 +60,8 @@
 ## Recent Sessions
 
 | Date | Summary |
-|------|---------|
+|------|---------| 
+| 2026-01-16 14:07 | Scroll restoration + retro: Performance API navigation detection (back button vs manual), useNavigationType hook, react-patterns.md, updated Rule 11 |
 | 2026-01-16 12:22 | Retro improvements: Rule 12 (DOM-First Debugging), Rule 13 (Legal Preservation), debugging-patterns.md, rehype warning comment |
 | 2026-01-16 12:10 | Terminology deep linking: Extended rehype to process UL+OL (preserves legal structure), rebuilt all content, end-to-end verified |
 | 2026-01-16 12:02 | TOC all-collapsed + terminology scroll fixes: alphabet nav offset 135px, deep linking with ?section= param |
