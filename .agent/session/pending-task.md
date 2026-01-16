@@ -3,9 +3,9 @@
 ## Current State
 
 - **Focus**: Implementing multi-source terminology for 765/2008 + 910/2014 integration
-- **Next**: Phase 2.3 - Update terminology hover popovers for multi-source display
-- **Status**: In Progress (Phase 2.2/6 complete)
-- **Phase**: DEC-039 Multi-Source Terminology, Task 2.3
+- **Next**: Phase 4 - Search integration with category-based ranking (boost referenced terms)
+- **Status**: In Progress (Phase 3/6 complete)
+- **Phase**: DEC-039 Multi-Source Terminology, Task 4
 
 ## Progress Summary
 
@@ -26,12 +26,22 @@
 - "Referenced" badges on 765/2008 definitions
 - Browser-verified working: "conformity assessment body" shows both sources correctly
 
+**✅ Phase 2.3 Complete (30min):**
+- TermPopover.jsx updated for multi-source hover popovers
+- Stacked display with category-based borders (Cyan/Purple/Gray)
+- Shows "X sources" count badge in header
+- Hover persistence with 150ms grace period
+
+**✅ Phase 3 Complete (15min):**
+- Added "Referenced Regulations" section to sidebar
+- Regulation 765/2008 now always visible in navigation
+- External-link icon added
+- Implements DEC-038 (Tiered Document Architecture)
+
 **⏳ Remaining Work:**
-- Phase 2.3: Update hover popovers (CitationPopover.jsx) for multi-source
-- Phase 3: Three-tier sidebar (Regulations / Referenced / Implementing Acts)
 - Phase 4: Search integration with category-based ranking
-- Phase 5: Testing & verification
-- Phase 6: Documentation (DECISIONS.md)
+- Phase 5: Testing & verification (browser test multi-source popovers)
+- Phase 6: Documentation (update DECISIONS.md with DEC-039)
 
 ## Key Files
 

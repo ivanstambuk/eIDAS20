@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 15:35 CET |
-| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 2.2/6 complete - UI rendering done) |
+| **Last Updated** | 2026-01-16 15:24 CET |
+| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 3/6 complete - popovers + sidebar done) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Phase 2.3: Update terminology hover popovers for multi-source display |
+| **Next Action** | Phase 4: Search integration with category-based ranking |
 
 ---
 
@@ -62,7 +62,8 @@
 ## Recent Sessions
 
 | Date | Summary |
-|------|---------|
+|------|------------|
+| 2026-01-16 15:24 | Multi-source popovers Phase 3: TermPopover stacked display (Cyan/Purple/Gray), Referenced Regulations sidebar section, Regulation 765/2008 always visible |
 | 2026-01-16 15:35 | Multi-source terminology Phase 2: Build-time merging (113 terms, 207 defs), stacked UI display, document categories (primary/referenced), 20 defs from 765/2008 |
 | 2026-01-16 14:31 | Regulation 765/2008 import (Phase 1/6): Complete regulation added (7 chapters, 44 articles, 1,394 words), portal now 33 docs, Phase 2 next |
 | 2026-01-16 14:07 | Scroll restoration + retro: Performance API navigation detection (back button vs manual), useNavigationType hook, react-patterns.md, updated Rule 11 |
