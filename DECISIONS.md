@@ -746,5 +746,71 @@ Apply to existing regulations and all future imports. The Formex XML converter a
 
 ---
 
+## DEC-045: Consolidated Regulations Contain Only In-Force Content
+
+**Date:** 2026-01-16  
+**Status:** Accepted  
+**Category:** Content Policy / Legal Accuracy
+
+**Context:**
+
+When importing the consolidated version of Regulation 765/2008, the initial approach was to mark repealed sections with strikethrough text and `[REPEALED]` tags:
+
+```markdown
+#### ~~Article 15 — Scope~~ [REPEALED]
+#### ~~Article 16 — General requirements~~ [REPEALED]
+...
+```
+
+This resulted in:
+1. **Visual clutter** — 15+ lines of strikethrough text in TOC and content
+2. **No legal value** — Repealed content has no legal effect
+3. **User confusion** — Readers might not understand why obsolete content is shown
+
+**Decision:**
+
+**Consolidated regulations shall contain ONLY in-force content.** Repealed articles, chapters, and definitions are removed entirely.
+
+**Implementation:**
+
+| Element | Treatment |
+|---------|-----------|
+| Repealed chapters | Remove entirely |
+| Repealed articles | Remove entirely |
+| Repealed definitions | Remove entirely |
+| Repealed paragraphs | Remove entirely |
+| Reference to repealing act | Keep in consolidation note at top |
+
+**Required Consolidation Note:**
+
+When content has been removed, include a note at the document top:
+
+```markdown
+> **⚠️ Consolidation Note:** This is the consolidated version as of [DATE]. 
+> [Chapter/Article X] was **repealed** by [Regulation (EU) XXXX/XXX](link) 
+> and has been removed from this document.
+```
+
+**Rationale:**
+
+1. **Legal accuracy** — Consolidated acts show current law, not historical artifacts
+2. **EUR-Lex precedent** — EUR-Lex consolidated versions don't include repealed content
+3. **User focus** — Readers want applicable law, not legislative history
+4. **Cleaner TOC** — Navigation shows only relevant sections
+5. **Reduced maintenance** — No need to format/style obsolete content
+
+**Exception:**
+
+If a regulation needs to show legislative evolution (e.g., for educational purposes), create a separate "Legislative History" document rather than cluttering the consolidated version.
+
+**Applied to:**
+
+| Regulation | Repealed Content Removed |
+|------------|-------------------------|
+| Regulation 765/2008 | Chapter III (Articles 15-29), Definitions 1-2, 5-7, 14-15, 17-18 |
+| Regulation 910/2014 | N/A (EUR-Lex consolidated version already clean) |
+
+---
+
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
