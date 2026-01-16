@@ -785,7 +785,7 @@ This resulted in:
 
 **Decision:**
 
-**Consolidated regulations shall contain ONLY in-force content.** Repealed articles, chapters, and definitions are removed entirely.
+**Consolidated regulations shall contain ONLY in-force content.** Repealed articles, chapters, and definitions are removed entirely, with **NO TRACE** in the document body.
 
 **Implementation:**
 
@@ -795,7 +795,34 @@ This resulted in:
 | Repealed articles | Remove entirely |
 | Repealed definitions | Remove entirely |
 | Repealed paragraphs | Remove entirely |
-| Reference to repealing act | Keep in consolidation note at top |
+| Repealed points (a), (b), etc. | Remove entirely |
+| Reference to repealing act | Keep in consolidation note **at top ONLY** |
+
+**🚫 Prohibited Patterns (NEVER include these inline):**
+
+```markdown
+# ❌ WRONG — strikethrough with tag
+#### ~~Article 15 — Scope~~ [REPEALED]
+
+# ❌ WRONG — deletion note inline
+> **[As amended by Regulation (EU) 2019/1020]** — Point (d) deleted
+
+# ❌ WRONG — placeholder for deleted content
+(d) [deleted]
+
+# ❌ WRONG — any reference to what was removed
+<!-- Point (d) was here but repealed -->
+```
+
+**✅ Correct Pattern:**
+
+Simply omit the deleted content. Points skip from (c) to (e) with no explanation inline:
+
+```markdown
+   (c) the drawing up and updating of guidelines...
+
+   (e) the performance of preliminary work...
+```
 
 **Required Consolidation Note:**
 
