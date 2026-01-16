@@ -275,7 +275,7 @@ export default function CollapsibleTOC({ toc, slug, type }) {
                                 key={chapter.id}
                                 chapter={chapter}
                                 articles={chapterArticles}
-                                defaultExpanded={idx === 0}
+                                defaultExpanded={false}
                             />
                         );
                     })}
