@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-15 23:29 CET |
-| **Session State** | ✅ Complete |
-| **Portal Status** | ✅ All 6 phases complete + Phase 7 enhancements |
-| **Next Action** | Deploy to GitHub Pages / additional enhancements |
+| **Last Updated** | 2026-01-16 11:13 CET |
+| **Session State** | 🔍 Bug Investigation (Blocked) |
+| **Portal Status** | ⚠️ Navigation broken - infinite loop bug |
+| **Next Action** | Fix "Maximum update depth exceeded" error in Sidebar/Layout |
 
 ---
 
@@ -58,6 +58,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-16 11:13 | Navigation bug investigation (70min): Identified infinite loop in Layout/Sidebar; reverted all changes, documented findings |
 | 2026-01-15 23:28 | Defense in Depth: downstream validation, staleness checks, fixed build chain; search UX improvements (clear on close, no hover underline) |
 | 2026-01-15 22:55 | Removed redundant Terminology search box; added build-time validation (invariants) to prevent extraction failures |
 | 2026-01-15 22:43 | Retro: Added Rule 10 (Clarify Before Acting), cleaned stale directories, renamed to "eIDAS 2.0 Regulation" |
