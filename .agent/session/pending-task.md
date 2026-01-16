@@ -15,18 +15,25 @@
 - Phase 3: TermPopover stacked display, Referenced Regulations sidebar section
 - Phase 4: Search ranking with 1.5x boost for multi-source terms (21 terms boosted, browser-verified)
 
+**✅ BONUS: Complete 765/2008 Extraction (2026-01-16 17:50)**
+- Original version was a partial streamlined extraction (148 lines, ~1,400 words)
+- Now complete: 703 lines, 11,566 words
+- Includes: 48 recitals, 44 articles (6 chapters), 2 annexes
+- Terminology now: 115 terms, 208 definitions (up from 113 terms, 207 defs)
+
 **⏳ Remaining:**
 - Phase 5: Comprehensive end-to-end testing (popovers, search, sidebar)
 - Phase 6: Documentation (update DECISIONS.md with DEC-039)
 
 ## Key Files
 
+- `01_regulation/765_2008_Market_Surveillance/02008R0765.md` — Complete regulation (11,566 words)
 - `docs-portal/scripts/build-terminology.js` — Multi-source extraction & merging
 - `docs-portal/scripts/build-search-index.js` — Search indexing with sourceCount boost
 - `docs-portal/src/pages/Terminology.jsx` — Stacked UI display
 - `docs-portal/src/components/TermPopover.jsx` — Multi-source hover popovers
 - `docs-portal/src/hooks/useSearch.js` — 1.5x boost for multi-source terms
-- `docs-portal/public/data/terminology.json` — Generated output (113 terms)
+- `docs-portal/public/data/terminology.json` — Generated output (115 terms)
 
 ## Context Notes
 
@@ -46,23 +53,20 @@
 - Single stacked box (not tabs/accordions)
 - Category-based borders: Cyan (primary), Purple (implementing), Gray (referenced)
 
-**Gotchas:**
-- 765/2008 had literal `\>` escape sequences (fixed)
-- Dual regex needed: `(N)` for eIDAS, `N.` for EU format
-- Article detection: 3 patterns required (**Definitions**, `- Definitions`, `following definitions`)
-
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
 # Portal: http://localhost:5173/eIDAS20/
+# Test complete 765/2008: http://localhost:5173/eIDAS20/#/regulation/765-2008
 # Test multi-source search: "conformity assessment body"
 # Test popover: hover over term on Terminology page
 ```
 
 **Verification Checklist:**
-- ✅ 113 terms, 21 multi-source (terminology.json)
+- ✅ 115 terms, 20 multi-source (terminology.json)
 - ✅ Search ranking boost working (browser-tested)
+- ✅ Regulation 765/2008 complete (11,566 words, 1h 18m reading time)
 - ⏳ Comprehensive popover testing (Phase 5)
 - ⏳ DEC-039 documentation (Phase 6)
 
