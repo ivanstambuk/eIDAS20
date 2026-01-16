@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 11:45 CET |
+| **Last Updated** | 2026-01-16 12:22 CET |
 | **Session State** | ✅ Active Development (Clean Handover) |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Continue with backlog items or new features |
@@ -39,6 +39,8 @@
 - **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints)
 - **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
+- **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
+- **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
 
 ---
 
@@ -58,6 +60,9 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-16 12:22 | Retro improvements: Rule 12 (DOM-First Debugging), Rule 13 (Legal Preservation), debugging-patterns.md, rehype warning comment |
+| 2026-01-16 12:10 | Terminology deep linking: Extended rehype to process UL+OL (preserves legal structure), rebuilt all content, end-to-end verified |
+| 2026-01-16 12:02 | TOC all-collapsed + terminology scroll fixes: alphabet nav offset 135px, deep linking with ?section= param |
 | 2026-01-16 11:45 | Retro: Stabilized all custom hooks (useMemo), added React best practices (Rule 11) to AGENTS.md, 100% test pass |
 | 2026-01-16 11:50 | Fixed SearchModal infinite loop bug: Unstable objects in useEffect deps caused "Maximum update depth exceeded" |
 | 2026-01-16 11:13 | Navigation bug investigation (70min): Identified infinite loop in Layout/Sidebar; reverted all changes, documented findings |
