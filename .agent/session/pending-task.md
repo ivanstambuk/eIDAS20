@@ -3,9 +3,9 @@
 ## Current State
 
 - **Focus**: Implementing multi-source terminology for 765/2008 + 910/2014 integration
-- **Next**: Phase 4 - Search integration with category-based ranking (boost referenced terms)
-- **Status**: In Progress (Phase 3/6 complete)
-- **Phase**: DEC-039 Multi-Source Terminology, Task 4
+- **Next**: Phase 5 - Testing & verification (visual validation in browser)
+- **Status**: In Progress (Phase 4/6 complete)
+- **Phase**: DEC-039 Multi-Source Terminology, Task 5
 
 ## Progress Summary
 
@@ -38,10 +38,16 @@
 - External-link icon added
 - Implements DEC-038 (Tiered Document Architecture)
 
+**✅ Phase 4 Complete (45min):**
+- Updated `build-search-index.js` to support multi-source terminology model
+- Added `sourceCount` field to Orama schema (build + client)
+- Implemented 1.5x score boost for multi-source terms in `useSearch.js`
+- Browser-verified: Multi-source terms rank higher (e.g., "conformity assessment body" #1, "body" query shows multi-source terms dominating)
+- 21 multi-source terms now boosted in search results
+
 **⏳ Remaining Work:**
-- Phase 4: Search integration with category-based ranking
-- Phase 5: Testing & verification (browser test multi-source popovers)
-- Phase 6: Documentation (update DECISIONS.md with DEC-039)
+- Phase 5: Comprehensive testing (multi-source popover hover, search ranking, sidebar navigation)
+- Phase 6: Documentation (update DECISIONS.md with DEC-039, TRACKER.md)
 
 ## Key Files
 

@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 15:24 CET |
-| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 3/6 complete - popovers + sidebar done) |
+| **Last Updated** | 2026-01-16 15:42 CET |
+| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 4/6 complete - search ranking done) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Phase 4: Search integration with category-based ranking |
+| **Next Action** | Phase 5: Comprehensive testing & verification |
 
 ---
 
@@ -63,6 +63,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 15:42 | Multi-source search Phase 4: Category-based ranking (1.5x boost for sourceCount > 1), 21 multi-source terms prioritized, browser-verified |
 | 2026-01-16 15:24 | Multi-source popovers Phase 3: TermPopover stacked display (Cyan/Purple/Gray), Referenced Regulations sidebar section, Regulation 765/2008 always visible |
 | 2026-01-16 15:35 | Multi-source terminology Phase 2: Build-time merging (113 terms, 207 defs), stacked UI display, document categories (primary/referenced), 20 defs from 765/2008 |
 | 2026-01-16 14:31 | Regulation 765/2008 import (Phase 1/6): Complete regulation added (7 chapters, 44 articles, 1,394 words), portal now 33 docs, Phase 2 next |

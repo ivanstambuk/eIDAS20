@@ -40,6 +40,7 @@ async function loadSearchIndex() {
                     section: 'string',
                     sectionTitle: 'string',
                     content: 'string',
+                    sourceCount: 'number', // Number of sources (for multi-source boost)
                 },
             });
 
@@ -111,17 +112,35 @@ export function useSearch() {
                 },
             });
 
-            // Transform results for display
-            const transformedResults = searchResults.hits.map((hit) => ({
-                id: hit.document.id,
-                slug: hit.document.slug,
-                type: hit.document.type,
-                docTitle: hit.document.docTitle,
-                section: hit.document.section,
-                sectionTitle: hit.document.sectionTitle,
-                content: hit.document.content,
-                score: hit.score,
-            }));
+            // ════════════════════════════════════════════════════════════════════════════
+            // CATEGORY-BASED RANKING: Boost multi-source terms
+            // Terms with multiple sources (e.g., from both 910/2014 and 765/2008) are more
+            // significant and should rank higher in search results.
+            // ════════════════════════════════════════════════════════════════════════════
+            const MULTI_SOURCE_BOOST = 1.5;
+
+            // Transform results for display and apply multi-source boost
+            const transformedResults = searchResults.hits.map((hit) => {
+                const sourceCount = hit.document.sourceCount || 1;
+                const isMultiSource = sourceCount > 1;
+                const boostedScore = isMultiSource ? hit.score * MULTI_SOURCE_BOOST : hit.score;
+
+                return {
+                    id: hit.document.id,
+                    slug: hit.document.slug,
+                    type: hit.document.type,
+                    docTitle: hit.document.docTitle,
+                    section: hit.document.section,
+                    sectionTitle: hit.document.sectionTitle,
+                    content: hit.document.content,
+                    score: boostedScore,
+                    sourceCount: sourceCount,
+                    isMultiSource: isMultiSource,
+                };
+            });
+
+            // Re-sort by adjusted score (multi-source boost may have changed order)
+            transformedResults.sort((a, b) => b.score - a.score);
 
             setResults(transformedResults);
         } catch (err) {

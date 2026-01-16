@@ -155,8 +155,14 @@ function loadTerminology() {
         const termSections = [];
 
         for (const term of terminology.terms) {
-            // Use the first (primary) definition
-            const primaryDef = term.definitions[0];
+            // Multi-source terminology model: each term has sources[] array
+            // Use the first source (primary/implementing-act/referenced, ordered by displayOrder)
+            const primarySource = term.sources[0];
+
+            // Concatenate all definitions for searchability
+            const allDefinitions = term.sources
+                .map(src => src.definition)
+                .join(' | ');
 
             termSections.push({
                 id: `term-${term.id}`,
@@ -164,13 +170,16 @@ function loadTerminology() {
                 type: 'definition',  // Special type for boosting
                 term: term.term,     // Dedicated field for 10x boost
                 docTitle: 'Terminology',
-                section: `Art. ${primaryDef.source.article}(${primaryDef.source.ordinal})`,
+                section: `Art. ${primarySource.articleNumber}`,
                 sectionTitle: term.term,
-                content: primaryDef.text,
+                content: allDefinitions,  // Include all sources for better matching
+                sourceCount: term.sources.length,  // Number of sources (for multi-source boost)
             });
         }
 
         console.log(`  📚 ${termSections.length} terms loaded`);
+        const multiSourceTerms = termSections.filter(t => t.sourceCount > 1).length;
+        console.log(`  🔗 ${multiSourceTerms} multi-source terms (will be boosted in search)`);
         return termSections;
     } catch (err) {
         console.warn('  ⚠️  Could not load terminology:', err.message);
@@ -198,6 +207,7 @@ async function buildIndex() {
             section: 'string',
             sectionTitle: 'string',
             content: 'string',
+            sourceCount: 'number', // Number of sources for multi-source boost
         },
     });
 
