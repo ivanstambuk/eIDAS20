@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 14:31 CET |
-| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 1/6 complete) |
+| **Last Updated** | 2026-01-16 15:35 CET |
+| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 2.2/6 complete - UI rendering done) |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Phase 2: Implement multi-source terminology system |
+| **Next Action** | Phase 2.3: Update terminology hover popovers for multi-source display |
 
 ---
 
@@ -19,7 +19,8 @@
 
 - **33 documents** (3 regulations: 910/2014, 2024/1183, 765/2008 + 30 implementing acts)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
-- **Terminology system** (96 terms, hover popovers, cross-refs)
+- **Terminology system** (113 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
 - **Export** (PDF, Markdown, JSON)
 - **Themes** (light/dark, system detection)
@@ -61,7 +62,8 @@
 ## Recent Sessions
 
 | Date | Summary |
-|------|---------| 
+|------|---------|
+| 2026-01-16 15:35 | Multi-source terminology Phase 2: Build-time merging (113 terms, 207 defs), stacked UI display, document categories (primary/referenced), 20 defs from 765/2008 |
 | 2026-01-16 14:31 | Regulation 765/2008 import (Phase 1/6): Complete regulation added (7 chapters, 44 articles, 1,394 words), portal now 33 docs, Phase 2 next |
 | 2026-01-16 14:07 | Scroll restoration + retro: Performance API navigation detection (back button vs manual), useNavigationType hook, react-patterns.md, updated Rule 11 |
 | 2026-01-16 12:22 | Retro improvements: Rule 12 (DOM-First Debugging), Rule 13 (Legal Preservation), debugging-patterns.md, rehype warning comment |
