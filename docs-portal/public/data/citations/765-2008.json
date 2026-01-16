@@ -1,0 +1,130 @@
+{
+  "citations": [
+    {
+      "index": 1,
+      "shortName": "Directive 2001/95/EC",
+      "fullTitle": "Directive 2001/95/EC",
+      "celex": "32001L0095",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001L0095",
+      "originalText": "Directive 2001/95/EC"
+    },
+    {
+      "index": 2,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 3,
+      "shortName": "Directive 98/34/EC",
+      "fullTitle": "Directive 98/34/EC",
+      "celex": "31998L0034",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31998L0034",
+      "originalText": "Directive 98/34/EC"
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation (EU) 2019/1020",
+      "fullTitle": "Regulation (EU) 2019/1020",
+      "celex": "32019R1020",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R1020",
+      "originalText": "Regulation (EU) 2019/1020"
+    },
+    {
+      "index": 5,
+      "shortName": "Regulation (EC) No 765/2008",
+      "fullTitle": "Regulation (EC) No 765/2008",
+      "celex": "32008R0765",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R0765",
+      "originalText": "Regulation (EC) No 765/2008"
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation (EEC) No 339/93",
+      "fullTitle": "Regulation (EEC) No 339/93",
+      "celex": "31993R0339",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31993R0339",
+      "originalText": "Regulation (EEC) No 339/93"
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation (EC) No 1049/2001",
+      "fullTitle": "Regulation (EC) No 1049/2001",
+      "celex": "32001R1049",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R1049",
+      "originalText": "Regulation (EC) No 1049/2001"
+    },
+    {
+      "index": 8,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation (EC, Euratom) No 1605/2002",
+      "fullTitle": "Regulation (EC, Euratom) No 1605/2002",
+      "celex": "32002R1605",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002R1605",
+      "originalText": "Regulation (EC, Euratom) No 1605/2002"
+    },
+    {
+      "index": 10,
+      "shortName": "Regulation (EEC) No 2913/92",
+      "fullTitle": "Regulation (EEC) No 2913/92",
+      "celex": "31992R2913",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31992R2913",
+      "originalText": "Regulation (EEC) No 2913/92"
+    },
+    {
+      "index": 11,
+      "shortName": "Regulation (EC, Euratom) No 2342/2002",
+      "fullTitle": "Regulation (EC, Euratom) No 2342/2002",
+      "celex": "32002R2342",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002R2342",
+      "originalText": "Regulation (EC, Euratom) No 2342/2002"
+    },
+    {
+      "index": 12,
+      "shortName": "Regulation (EC, Euratom) No 2988/95",
+      "fullTitle": "Regulation (EC, Euratom) No 2988/95",
+      "celex": "31995R2988",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995R2988",
+      "originalText": "Regulation (EC, Euratom) No 2988/95"
+    },
+    {
+      "index": 13,
+      "shortName": "Regulation (EC) No 1073/1999",
+      "fullTitle": "Regulation (EC) No 1073/1999",
+      "celex": "31999R1073",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999R1073",
+      "originalText": "Regulation (EC) No 1073/1999"
+    },
+    {
+      "index": 14,
+      "shortName": "Decision No 768/2008/EC",
+      "fullTitle": "Decision No 768/2008/EC",
+      "celex": "32008D0768",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008D0768",
+      "originalText": "Decision No 768/2008/EC"
+    }
+  ]
+}

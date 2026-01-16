@@ -87,6 +87,69 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj",
       "originalText": "\\[Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act) (OJ L, 2024/2847, 20.11.2024, ELI: http://data.europa.eu/eli/reg/2024/2847/oj).\\]"
+    },
+    {
+      "index": 9,
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
+    },
+    {
+      "index": 10,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 11,
+      "shortName": "Regulation (EU) 2025/847",
+      "fullTitle": "Regulation (EU) 2025/847",
+      "celex": "32025R0847",
+      "isInternal": true,
+      "url": "#/implementing-acts/2025-0847",
+      "originalText": "Regulation (EU) 2025/847"
+    },
+    {
+      "index": 12,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 13,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 14,
+      "shortName": "Regulation (EU) No 526/2013",
+      "fullTitle": "Regulation (EU) No 526/2013",
+      "celex": "32013R0526",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R0526",
+      "originalText": "Regulation (EU) No 526/2013"
+    },
+    {
+      "index": 15,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
     }
   ]
 }

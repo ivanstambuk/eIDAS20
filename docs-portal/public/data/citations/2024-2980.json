@@ -98,6 +98,51 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/dec_impl/2015/1984/oj",
       "originalText": "\\[Commission Implementing Decision (EU) 2015/1984 of 3 November 2015 defining the circumstances, formats and procedures of notification pursuant to Article 9(5) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 289, 5.11.2015, p. 18, ELI: http://data.europa.eu/eli/dec_impl/2015/1984/oj).\\]"
+    },
+    {
+      "index": 10,
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
+    },
+    {
+      "index": 11,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 12,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 13,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 14,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
     }
   ]
 }

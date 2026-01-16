@@ -65,6 +65,60 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
       "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+    },
+    {
+      "index": 7,
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
+    },
+    {
+      "index": 8,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation (EU) 2025/1568",
+      "fullTitle": "Regulation (EU) 2025/1568",
+      "celex": "32025R1568",
+      "isInternal": true,
+      "url": "#/implementing-acts/2025-1568",
+      "originalText": "Regulation (EU) 2025/1568"
+    },
+    {
+      "index": 10,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 11,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 12,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
     }
   ]
 }

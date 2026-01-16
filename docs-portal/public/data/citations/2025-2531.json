@@ -46,25 +46,57 @@
     },
     {
       "index": 5,
-      "shortName": "Regulation 2024/482",
-      "fullTitle": "Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme ('EUCC')",
-      "ojRef": null,
-      "eli": "http://data.europa.eu/eli/reg_impl/2024/482/2025-01-08",
-      "celex": "32024R0482",
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
       "isInternal": false,
-      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/482/oj",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme ('EUCC') (OJ L, 2024/482, 7.2.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/482/2025-01-08).\\]"
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
     },
     {
       "index": 6,
-      "shortName": "Regulation 2024/3144",
-      "fullTitle": "Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation",
-      "ojRef": null,
-      "eli": "http://data.europa.eu/eli/reg_impl/2024/3144/oj",
-      "celex": "32024R3144",
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
       "isInternal": false,
-      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/3144/oj",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation (OJ L, 2024/3144, 19.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/3144/oj).\\]"
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation (EU) 2025/2531",
+      "fullTitle": "Regulation (EU) 2025/2531",
+      "celex": "32025R2531",
+      "isInternal": true,
+      "url": "#/implementing-acts/2025-2531",
+      "originalText": "Regulation (EU) 2025/2531"
+    },
+    {
+      "index": 8,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 10,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
     }
   ]
 }

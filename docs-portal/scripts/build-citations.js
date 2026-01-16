@@ -128,16 +128,131 @@ function extractOjRef(citationText) {
     return null;
 }
 
+// =============================================================================
+// INFORMAL LEGISLATION PATTERN DETECTION
+// =============================================================================
+
+/**
+ * Normalize 2-digit years to 4-digit.
+ * 93 → 1993, 08 → 2008
+ */
+function normalizeYear(year) {
+    if (year.length === 4) return year;
+    const num = parseInt(year, 10);
+    // Threshold: < 50 means 2000s, >= 50 means 1900s
+    return num < 50 ? `20${year.padStart(2, '0')}` : `19${year}`;
+}
+
+/**
+ * Extract informal legislation references (without ELI URLs).
+ * Patterns detected:
+ * - Directive YYYY/NN/EC, Directive YYYY/NN/EU, Directive YYYY/NN/EEC
+ * - Regulation (EU|EC|EEC) No NNN/YYYY
+ * - Regulation (EU|EC|EEC) YYYY/NNN
+ * - Decision No NNN/YYYY/EC
+ * - Council Regulation (EEC) No NNN/YY
+ */
+function extractInformalCitations(content, documentRegistry, existingCelex) {
+    const citations = [];
+    const seen = new Set(existingCelex); // Skip already-found citations
+
+    // Pattern groups for different EU legislation formats
+    const patterns = [
+        // Directive YYYY/NN/EC (or EU, EEC)
+        {
+            regex: /Directive\s+(\d{2,4})\/(\d+)\/(EU|EC|EEC)/gi,
+            type: 'L', // Directive
+            extract: (m) => ({ year: m[1], number: m[2], jurisdiction: m[3] })
+        },
+        // Regulation (EU) YYYY/NNN format (newer style, 2014+) — CHECK FIRST
+        // Year comes first (4 digits starting with 20), then number
+        {
+            regex: /Regulation\s+\(EU\)\s+(20\d{2})\/(\d+)/gi,
+            type: 'R',
+            extract: (m) => ({ year: m[1], number: m[2] })
+        },
+        // Regulation (EU|EC|EEC) No NNN/YYYY (older style with "No")
+        // Number comes first, then year
+        {
+            regex: /Regulation\s+\((?:EU|EC|EEC)(?:,\s*Euratom)?\)\s+No\s+(\d+)\/(\d{2,4})/gi,
+            type: 'R',
+            extract: (m) => ({ number: m[1], year: m[2] })
+        },
+        // Regulation (EU|EC|EEC) NNN/YY (older style without "No", 2-digit year)
+        // Number comes first, then 2-digit year
+        {
+            regex: /Regulation\s+\((?:EU|EC|EEC)(?:,\s*Euratom)?\)\s+(\d{1,4})\/(\d{2})(?!\d)/gi,
+            type: 'R',
+            extract: (m) => ({ number: m[1], year: m[2] })
+        },
+        // Council Regulation (EEC) No NNN/YY
+        {
+            regex: /Council\s+Regulation\s+\((?:EU|EC|EEC)\)\s+No\s+(\d+)\/(\d{2,4})/gi,
+            type: 'R',
+            extract: (m) => ({ number: m[1], year: m[2] })
+        },
+        // Decision No NNN/YYYY/EC or Decision (EU) YYYY/NNN
+        {
+            regex: /Decision\s+(?:No\s+)?(\d+)\/(\d{2,4})(?:\/(?:EU|EC|EEC))?/gi,
+            type: 'D',
+            extract: (m) => ({ number: m[1], year: m[2] })
+        },
+    ];
+
+    for (const pattern of patterns) {
+        let match;
+        // Reset regex lastIndex
+        pattern.regex.lastIndex = 0;
+
+        while ((match = pattern.regex.exec(content)) !== null) {
+            const extracted = pattern.extract(match);
+            const year = normalizeYear(extracted.year);
+            const number = extracted.number.padStart(4, '0');
+            const celex = `3${year}${pattern.type}${number}`;
+
+            // Skip if already seen
+            if (seen.has(celex)) continue;
+            seen.add(celex);
+
+            // Check if internal document
+            const internalDoc = documentRegistry[celex];
+            const isInternal = !!internalDoc;
+
+            // Build citation
+            const citation = {
+                index: citations.length + 1,
+                shortName: match[0].trim(),
+                fullTitle: match[0].trim(),
+                celex,
+                isInternal,
+                url: isInternal
+                    ? internalDoc.route
+                    : `https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${celex}`,
+                originalText: match[0],
+            };
+
+            citations.push(citation);
+        }
+    }
+
+    return citations;
+}
+
 /**
  * Extract all citations from markdown content.
  * 
- * Pattern: [Full citation text (OJ ref, ELI: url).]
+ * Handles two patterns:
+ * 1. Formal: [Full citation text (OJ ref, ELI: url).]
+ * 2. Informal: Directive YYYY/NN/EC, Regulation (EU) No NNN/YYYY, etc.
  */
 function extractCitations(content, documentRegistry) {
     const citations = [];
     const seen = new Set();
 
-    // Pattern to match citations with ELI
+    // ==========================================================================
+    // PATTERN 1: Formal citations with ELI URLs
+    // ==========================================================================
+
     // Markdown uses \[ and \] for escaped brackets
     // Pattern: \[Full text (OJ ref, ELI: url)\] or [Full text (OJ ref, ELI: url)]
     const citationPattern = /\\?\[([^\]]+?)\s*\(OJ\s+[^)]+,\s*ELI:\s*(http:\/\/data\.europa\.eu\/eli\/[^\s\])\\]+)[^\]]*\\?\]/g;
@@ -176,6 +291,18 @@ function extractCitations(content, documentRegistry) {
         };
 
         citations.push(citation);
+    }
+
+    // ==========================================================================
+    // PATTERN 2: Informal legislation references (no ELI)
+    // ==========================================================================
+
+    const informalCitations = extractInformalCitations(content, documentRegistry, seen);
+
+    // Merge and re-index
+    for (const informal of informalCitations) {
+        informal.index = citations.length + 1;
+        citations.push(informal);
     }
 
     return citations;

@@ -32,6 +32,71 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
       "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+    },
+    {
+      "index": 4,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "ojRef": "OJ L 333, 27.12.2022, p. 80",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/oj",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]"
+    },
+    {
+      "index": 5,
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
+    },
+    {
+      "index": 6,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation (EU) 2025/1572",
+      "fullTitle": "Regulation (EU) 2025/1572",
+      "celex": "32025R1572",
+      "isInternal": true,
+      "url": "#/implementing-acts/2025-1572",
+      "originalText": "Regulation (EU) 2025/1572"
+    },
+    {
+      "index": 8,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 10,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
     }
   ]
 }

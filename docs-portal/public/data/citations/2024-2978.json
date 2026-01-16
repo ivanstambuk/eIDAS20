@@ -10,6 +10,24 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2012/1151/oj",
       "originalText": "\\[Regulation (EU) No 1151/2012 of the European Parliament and of the Council of 21 November 2012 on quality schemes for agricultural products and foodstuffs (OJ L 343, 14.12.2012, p. 1, ELI: http://data.europa.eu/eli/reg/2012/1151/oj).\\]"
+    },
+    {
+      "index": 2,
+      "shortName": "Regulation (EU) 2024/2978",
+      "fullTitle": "Regulation (EU) 2024/2978",
+      "celex": "32024R2978",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2978",
+      "originalText": "Regulation (EU) 2024/2978"
+    },
+    {
+      "index": 3,
+      "shortName": "Regulation (EU) 2024/1143",
+      "fullTitle": "Regulation (EU) 2024/1143",
+      "celex": "32024R1143",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1143",
+      "originalText": "Regulation (EU) 2024/1143"
     }
   ]
 }

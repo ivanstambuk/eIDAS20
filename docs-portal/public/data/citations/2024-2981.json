@@ -98,6 +98,118 @@
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2012/1025/oj",
       "originalText": "\\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council Decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14.11.2012, p. 12, ELI: http://data.europa.eu/eli/reg/2012/1025/oj).\\]"
+    },
+    {
+      "index": 10,
+      "shortName": "Regulation 2024/2847",
+      "fullTitle": "Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act)",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg/2024/2847/oj",
+      "celex": "32024R2847",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj",
+      "originalText": "\\[Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act) (OJ L, 2024/2847, 20.11.2024, ELI: http://data.europa.eu/eli/reg/2024/2847/oj).\\]"
+    },
+    {
+      "index": 11,
+      "shortName": "Regulation 765/2008",
+      "fullTitle": "Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93",
+      "ojRef": "OJ L 218, 13.8.2008, p. 30",
+      "eli": "http://data.europa.eu/eli/reg/2008/765/oj",
+      "celex": "32008R0765",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/eli/reg/2008/765/oj",
+      "originalText": "\\[Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93 (OJ L 218, 13.8.2008, p. 30, ELI: http://data.europa.eu/eli/reg/2008/765/oj).\\]"
+    },
+    {
+      "index": 12,
+      "shortName": "Directive 1999/93/EC",
+      "fullTitle": "Directive 1999/93/EC",
+      "celex": "31999L0093",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
+      "originalText": "Directive 1999/93/EC"
+    },
+    {
+      "index": 13,
+      "shortName": "Directive 95/46/EC",
+      "fullTitle": "Directive 95/46/EC",
+      "celex": "31995L0046",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
+      "originalText": "Directive 95/46/EC"
+    },
+    {
+      "index": 14,
+      "shortName": "Regulation (EU) 2024/2981",
+      "fullTitle": "Regulation (EU) 2024/2981",
+      "celex": "32024R2981",
+      "isInternal": true,
+      "url": "#/implementing-acts/2024-2981",
+      "originalText": "Regulation (EU) 2024/2981"
+    },
+    {
+      "index": 15,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "originalText": "Regulation (EU) No 910/2014"
+    },
+    {
+      "index": 16,
+      "shortName": "Regulation (EU) No 526/2013",
+      "fullTitle": "Regulation (EU) No 526/2013",
+      "celex": "32013R0526",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R0526",
+      "originalText": "Regulation (EU) No 526/2013"
+    },
+    {
+      "index": 17,
+      "shortName": "Regulation (EC) No 45/2001",
+      "fullTitle": "Regulation (EC) No 45/2001",
+      "celex": "32001R0045",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
+      "originalText": "Regulation (EC) No 45/2001"
+    },
+    {
+      "index": 18,
+      "shortName": "Regulation (EEC) No 339/93",
+      "fullTitle": "Regulation (EEC) No 339/93",
+      "celex": "31993R0339",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31993R0339",
+      "originalText": "Regulation (EEC) No 339/93"
+    },
+    {
+      "index": 19,
+      "shortName": "Decision No 1247/2002/EC",
+      "fullTitle": "Decision No 1247/2002/EC",
+      "celex": "32002D1247",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
+      "originalText": "Decision No 1247/2002/EC"
+    },
+    {
+      "index": 20,
+      "shortName": "Decision 87/95/EEC",
+      "fullTitle": "Decision 87/95/EEC",
+      "celex": "31995D0087",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995D0087",
+      "originalText": "Decision 87/95/EEC"
+    },
+    {
+      "index": 21,
+      "shortName": "Decision No 1673/2006/EC",
+      "fullTitle": "Decision No 1673/2006/EC",
+      "celex": "32006D1673",
+      "isInternal": false,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32006D1673",
+      "originalText": "Decision No 1673/2006/EC"
     }
   ]
 }
