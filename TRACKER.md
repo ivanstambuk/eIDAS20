@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-16 15:42 CET |
-| **Session State** | 🔄 In Progress: Multi-Source Terminology (Phase 4/6 complete - search ranking done) |
+| **Last Updated** | 2026-01-16 17:36 CET |
+| **Session State** | ✅ Complete: Build-Time Metadata Generation (DEC-012) + Retro improvements |
 | **Portal Status** | ✅ Fully functional |
-| **Next Action** | Phase 5: Comprehensive testing & verification |
+| **Next Action** | Phase 5: Comprehensive testing & verification (Multi-Source Terminology) |
 
 ---
 
@@ -63,6 +63,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-16 17:36 | Retro: Added ⚠️ code comments, JSDoc types, build-time metadata pattern to AGENTS.md Rule 5 |
 | 2026-01-16 17:31 | DEC-012: Build-time metadata generation (prevents hardcoded counts, 3-tier validation, 150x smaller payload) |
 | 2026-01-16 17:23 | Fixed hardcoded document count: Sidebar now dynamically fetches from regulations-index.json (32 → 33 documents) |
 | 2026-01-16 15:42 | Multi-source search Phase 4: Category-based ranking (1.5x boost for sourceCount > 1), 21 multi-source terms prioritized, browser-verified |
