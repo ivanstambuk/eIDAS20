@@ -719,6 +719,7 @@ HAVE ADOPTED THIS REGULATION:
 | Preamble header position | Before "THE EUROPEAN PARLIAMENT..." | After formal introduction |
 | Recitals header | `## Recitals` after "Whereas:" | No header |
 | Recitals format | Bullet list: `- (1) ...` | Plain paragraphs: `(1) ...` |
+| Chapter headings | `## I. General Provisions` | `## CHAPTER I — GENERAL PROVISIONS` |
 | Article headings | `### Article N` (number only) | `### Article N — Title` (combined) |
 | Article titles | Bold subtitle: `**Title**` | In heading with em-dash |
 | EEA relevance | In metadata header: `> **EEA Relevance:** Yes` | Inline: `*(Text with EEA relevance)*` |
@@ -743,6 +744,7 @@ When importing a new regulation, verify:
 - [ ] Recitals as bullet list: `- (1) ...`, `- (2) ...`
 - [ ] `HAVE ADOPTED THIS REGULATION:` before enacting terms
 - [ ] `## Enacting Terms` header before Article 1
+- [ ] Chapter headings: `## I. Title` (Roman numeral, Title Case)
 - [ ] Article headings: `### Article N` (number only, no title)
 - [ ] Article titles: bold subtitle on separate line: `**Title**`
 - [ ] No horizontal rules (`---`) in document body
@@ -755,7 +757,7 @@ Apply to existing regulations and all future imports. The Formex XML converter a
 
 | File | Changes Applied |
 |------|-----------------|
-| `01_regulation/765_2008_Market_Surveillance/02008R0765.md` | Preamble header, italics, `## Recitals`, bullet list, split article headings (29 articles) |
+| `01_regulation/765_2008_Market_Surveillance/02008R0765.md` | Preamble, italics, recitals bullet list, chapter format, article headings |
 
 ---
 
