@@ -391,6 +391,61 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Fix: Extract stable function refs + add useMemo to hooks
     Time saved: ~60 minutes by using browser_subagent first
     ```
+    
+    ### React Router Link Event Handlers
+    
+    **Problem:** Need to execute code before React Router navigates to a new page (e.g., save state, analytics).
+    
+    **❌ WRONG: DOM event listeners don't work with React Router `<Link>`**
+    ```javascript
+    // This DOES NOT WORK - event listener won't fire!
+    useEffect(() => {
+        const links = document.querySelectorAll('a[href^="/"]');
+        links.forEach(link => {
+            link.addEventListener('click', handleClick);  // Never fires!
+        });
+        
+        return () => {
+            links.forEach(link => {
+                link.removeEventListener('click', handleClick);
+            });
+        };
+    }, []);
+    ```
+    
+    **✅ CORRECT: Use onClick prop on Link component**
+    ```javascript
+    import { Link } from 'react-router-dom';
+    
+    function MyComponent() {
+        const handleLinkClick = () => {
+            // This runs BEFORE navigation
+            sessionStorage.setItem('scrollPosition', window.scrollY);
+        };
+    
+        return (
+            <Link to="/other-page" onClick={handleLinkClick}>
+                Navigate
+            </Link>
+        );
+    }
+    ```
+    
+    **Why this matters:**
+    - React Router's `<Link>` intercepts clicks programmatically
+    - It prevents default browser navigation and uses History API
+    - DOM event listeners added via `addEventListener` won't receive the events
+    - You **must** use the `onClick` prop on the `<Link>` component itself
+    
+    **Real example from 2026-01-16:**
+    ```
+    Issue: Need to save scroll position before navigating from Terminology page
+    Wrong approach: Add click event listeners to all links in useEffect (~15 min wasted)
+    Correct approach: Add onClick={handleSaveScroll} to Link components  
+    Result: Works immediately, cleaner code
+    ```
+    
+    **See also:** `.agent/snippets/react-patterns.md` for scroll restoration pattern using this technique.
 
 12. **DOM-First Debugging (MANDATORY — UI/Navigation Issues):**
     

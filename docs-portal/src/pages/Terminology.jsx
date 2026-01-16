@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useNavigationType } from '../hooks/useNavigationType';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -45,11 +46,54 @@ const Terminology = () => {
         loadTerminology();
     }, []);
 
+    // ⚠️ Navigation Type Detection Pattern
+    // Uses the Performance Navigation API to distinguish between:
+    //   - Back/forward button navigation (type: 'back_forward') → Restore scroll position
+    //   - Manual navigation via menu/links (type: 'navigate')   → Start at top
+    // This provides the optimal UX: users can pick up where they left off when using browser 
+    // back button, but get a fresh start when explicitly clicking the Terminology menu item.
+    // See: .agent/snippets/react-patterns.md for full scroll restoration pattern documentation
+    const { isBackForward } = useNavigationType();
+
+    // Scroll restoration: restore scroll position when returning via back/forward button
+    useEffect(() => {
+        if (!loading && terminology) {
+            const savedScrollY = sessionStorage.getItem('terminologyScrollY');
+
+            if (savedScrollY && isBackForward) {
+                // Only restore scroll position if user came via back/forward button
+                const scrollY = parseInt(savedScrollY, 10);
+                setTimeout(() => {
+                    window.scrollTo(0, scrollY);
+                    sessionStorage.removeItem('terminologyScrollY');
+                }, 0);
+            } else if (savedScrollY && !isBackForward) {
+                // User navigated manually (e.g., clicked menu link), clear saved position
+                sessionStorage.removeItem('terminologyScrollY');
+            }
+        }
+    }, [loading, terminology, isBackForward]);
+
+    // Cleanup: clear saved scroll position on unmount
+    useEffect(() => {
+        return () => {
+            sessionStorage.removeItem('terminologyScrollY');
+        };
+    }, []);
+
+    // Save scroll position before navigating away
+    const handleSaveScroll = () => {
+        sessionStorage.setItem('terminologyScrollY', window.scrollY.toString());
+    };
+
     // Deep linking: scroll to term when content loads or section param changes
+    // This takes precedence over scroll restoration
     useEffect(() => {
         if (!loading && terminology) {
             const section = searchParams.get('section');
             if (section) {
+                // Clear saved scroll position if we have a section param (deep link)
+                sessionStorage.removeItem('terminologyScrollY');
                 // Small delay to ensure DOM is fully rendered
                 requestAnimationFrame(() => {
                     const element = document.getElementById(section);
@@ -266,6 +310,7 @@ const Terminology = () => {
                                             <Link
                                                 to={getDocumentPath(primaryDef.source)}
                                                 className="text-sm text-link"
+                                                onClick={handleSaveScroll}
                                             >
                                                 View in {primaryDef.source.shortRef} →
                                             </Link>
@@ -318,6 +363,7 @@ const Terminology = () => {
                                                                 to={getDocumentPath(def.source)}
                                                                 className="text-sm text-link"
                                                                 style={{ flex: 1 }}
+                                                                onClick={handleSaveScroll}
                                                             >
                                                                 {def.source.shortRef}
                                                             </Link>
