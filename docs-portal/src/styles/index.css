@@ -73,6 +73,9 @@ body {
   --accent-danger-dim: rgba(239, 68, 68, 0.15);
   --accent-info: #6366f1;
   /* Indigo - info */
+  --purple-accent: #a855f7;
+  /* Purple - referenced documents */
+  --purple-accent-dim: rgba(168, 85, 247, 0.15);
 
   /* Text Colors */
   --text-primary: #f0f6fc;
@@ -1374,6 +1377,15 @@ a:focus-visible,
 .toc-chapter:hover {
   background: var(--bg-hover);
   color: var(--accent-primary);
+}
+
+/* Terminology page: source header link hover */
+.source-header-link:hover {
+  color: var(--text-link-hover);
+}
+
+.source-header-link:hover strong {
+  text-decoration: underline;
 }
 
 /* Reduced motion for users who prefer it */

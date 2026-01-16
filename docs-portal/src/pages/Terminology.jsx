@@ -284,29 +284,40 @@ const Terminology = () => {
                                                     key={idx}
                                                     className={`definition-source ${source.documentCategory}`}
                                                     style={{
-                                                        borderLeft: source.documentCategory === 'primary' ? '3px solid var(--accent-primary)' : '3px solid var(--cyan-muted)',
+                                                        borderLeft: source.documentCategory === 'primary'
+                                                            ? '3px solid var(--accent-primary)'
+                                                            : '3px solid var(--purple-accent, #a855f7)',
                                                         paddingLeft: 'var(--space-3)',
                                                         opacity: source.documentCategory === 'referenced' ? 0.9 : 1
                                                     }}
                                                 >
-                                                    <div className="source-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
-                                                        <span><strong>{source.documentTitle}</strong>, Article {source.articleNumber}:</span>
+                                                    {/* Merged source header + link: clickable header eliminates redundancy */}
+                                                    <Link
+                                                        to={getDocumentPath(source)}
+                                                        className="source-header-link"
+                                                        onClick={handleSaveScroll}
+                                                        style={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            gap: 'var(--space-2)',
+                                                            marginBottom: 'var(--space-2)',
+                                                            fontSize: 'var(--text-sm)',
+                                                            color: 'var(--accent-secondary)',
+                                                            textDecoration: 'none'
+                                                        }}
+                                                    >
+                                                        <span>
+                                                            <strong>{source.documentTitle}</strong>, Article {source.articleNumber} →
+                                                        </span>
                                                         {source.documentCategory === 'referenced' && (
-                                                            <span className="referenced-badge" style={{ background: 'var(--cyan-muted)', color: 'var(--bg-primary)', padding: '0.125rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
+                                                            <span className="referenced-badge" style={{ background: 'var(--purple-accent, #a855f7)', color: 'white', padding: '0.125rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
                                                                 Referenced
                                                             </span>
                                                         )}
-                                                    </div>
-                                                    <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 'var(--space-3)' }}>
+                                                    </Link>
+                                                    <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, margin: 0 }}>
                                                         {source.definition}
                                                     </p>
-                                                    <Link
-                                                        to={getDocumentPath(source)}
-                                                        className="view-link text-sm text-link"
-                                                        onClick={handleSaveScroll}
-                                                    >
-                                                        View in {source.documentTitle} →
-                                                    </Link>
                                                 </div>
                                             ))}
                                         </div>
