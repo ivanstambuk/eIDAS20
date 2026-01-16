@@ -75,6 +75,13 @@ function getSnippet(content, query, maxLength = 200) {
  */
 function SearchResult({ result, query, onClick, isSemanticMode }) {
     const getDocUrl = () => {
+        // Handle terminology definitions specially
+        if (result.type === 'definition') {
+            const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
+            return `/terminology${hash}`;
+        }
+
+        // Handle regulations and implementing acts
         const baseType = result.type === 'regulation' ? 'regulation' : 'implementing-acts';
         const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
         return `/${baseType}/${result.slug}${hash}`;
