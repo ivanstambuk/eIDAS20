@@ -264,8 +264,18 @@ export default function CollapsibleTOC({ toc, slug, type }) {
         const articlesInChapters = new Set();
         chapters.forEach(ch => ch.articles.forEach(a => articlesInChapters.add(a)));
 
+        // Also track chapter titles to avoid duplicates
+        // Chapter titles in TOC have IDs like "i-general-provisions" or match chapter titles
+        const chapterTitleIds = new Set();
+        chapters.forEach(ch => {
+            chapterTitleIds.add(ch.id);
+            // Also match by normalized title (e.g., "I. General Provisions" -> "i-general-provisions")
+            const normalizedTitle = ch.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            chapterTitleIds.add(normalizedTitle);
+        });
+
         // Separate orphan items into:
-        // 1. Pre-content items (like "Enacting Terms") - shown first
+        // 1. Pre-content items (like "Preamble", "Recitals") - shown first
         // 2. Annex items (start with "annex") - shown last, grouped
         const preContentItems = [];
         const annexItems = [];
@@ -273,6 +283,12 @@ export default function CollapsibleTOC({ toc, slug, type }) {
         toc.filter(item => !articlesInChapters.has(item.id) && item.level <= 2)
             .forEach(item => {
                 const idLower = item.id.toLowerCase();
+
+                // Skip chapter headings (they're rendered as collapsible groups)
+                if (chapterTitleIds.has(idLower) || chapterTitleIds.has(item.id)) {
+                    return;
+                }
+
                 if (idLower.includes('annex')) {
                     // Skip the "ANNEXES" header if it exists, we'll create our own group
                     if (idLower !== 'annexes') {
