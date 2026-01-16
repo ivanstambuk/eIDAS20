@@ -59,6 +59,39 @@ const EIDAS_CHAPTERS = {
             title: 'VI. Final Provisions',
             articles: ['article-50', 'article-51', 'article-52', 'article-53', 'article-54', 'article-55']
         }
+    ],
+    // Regulation 765/2008 (Accreditation and Market Surveillance) - Consolidated
+    // Note: Chapter III (Articles 15-29) was repealed by Regulation 2019/1020
+    '765-2008': [
+        {
+            id: 'i-general-provisions',
+            title: 'I. General Provisions',
+            articles: ['article-1', 'article-2']
+        },
+        {
+            id: 'ii-accreditation',
+            title: 'II. Accreditation',
+            articles: ['article-3', 'article-4', 'article-5', 'article-6', 'article-7',
+                'article-8', 'article-9', 'article-10', 'article-11', 'article-12',
+                'article-13', 'article-14']
+        },
+        // Chapter III (Articles 15-29) REPEALED - removed per DEC-045
+        {
+            id: 'iv-ce-marking',
+            title: 'IV. CE Marking',
+            articles: ['article-30']
+        },
+        {
+            id: 'v-community-financing',
+            title: 'V. Community Financing',
+            articles: ['article-31', 'article-32', 'article-33', 'article-34', 'article-35',
+                'article-36', 'article-37', 'article-38', 'article-39']
+        },
+        {
+            id: 'vi-final-provisions',
+            title: 'VI. Final Provisions',
+            articles: ['article-40', 'article-41', 'article-42', 'article-43', 'article-44']
+        }
     ]
 };
 
