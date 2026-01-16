@@ -126,12 +126,21 @@ function extractDefinitions(content) {
     // Also handles: (Na) 'term' for numbered variants like (5a)
     // Handles markdown list format: "- (N) 'term' means..."
     // Captures: ordinal, term, definition
-    // Stops at: semicolon, period, or double newline (article boundary)
+    //
+    // TERMINATION (critical for correctness):
+    //   - Stops at: semicolon (;), period (.), or newline (\n)
+    //   - This prevents greedy capture of subsequent articles
+    //   - See DEC-055 for rationale
     const defPatternParens = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     // Pattern 2: EU numbered list format - N. 'term' means definition
-    // Used in older regulations like 765/2008
-    // Must stop at semicolon, period, or newline (last definition in 765/2008 ends with period)
+    // Used in older regulations like 765/2008 (Article 2: Definitions)
+    //
+    // TERMINATION (critical for correctness):
+    //   - Must stop at semicolon (;), period (.), OR newline (\n)
+    //   - Definition 21 in 765/2008 ends with period, not semicolon
+    //   - Without period termination, regex captures entire rest of document
+    //   - See DEC-055 for the greedy regex bug this fixes
     const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     // Try pattern 1 (parenthesized)
@@ -458,6 +467,19 @@ function build() {
         );
     }
 
+    // Invariant 4: Regulation 765/2008 definitions (referenced document)
+    // Article 2 of 765/2008 contains 12 definitions (3-21, with gaps)
+    // This validates the numbered list pattern (defPatternNumbered) works correctly
+    // NOTE: Use lowercase - termNames set uses .toLowerCase()
+    const REQUIRED_765_TERMS = ['accreditation', 'manufacturer', 'ce marking'];
+    const missing765Terms = REQUIRED_765_TERMS.filter(t => !termNames.has(t));
+    if (missing765Terms.length > 0) {
+        validationErrors.push(
+            `Missing Regulation 765/2008 terms: ${missing765Terms.join(', ')}. ` +
+            `These terms validate the numbered list extraction pattern works.`
+        );
+    }
+
     // Report validation results
     if (validationErrors.length > 0) {
         console.error('\n❌ VALIDATION FAILED:');
@@ -473,6 +495,7 @@ function build() {
     console.log(`      • Total terms: ${mergedTerms.length} >= ${MIN_TOTAL_TERMS}`);
     console.log(`      • Core terms: ${REQUIRED_TERMS.length}/${REQUIRED_TERMS.length} present`);
     console.log(`      • Regulation definitions: ${regulationDefs} >= ${MIN_REGULATION_DEFS}`);
+    console.log(`      • 765/2008 terms: ${REQUIRED_765_TERMS.length}/${REQUIRED_765_TERMS.length} present`);
 }
 
 // Run the build

@@ -616,6 +616,57 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** TERMINOLOGY.md is the project's vocabulary source of truth. Keeping it current prevents future miscommunication.
 
+17. **CSS Flex Gap with Inline Text (PITFALL):**
+    
+    **Problem:** When using `display: flex` with `gap`, the gap is applied between ALL child nodes, including text nodes.
+    
+    **Example of the bug:**
+    ```jsx
+    // ❌ BAD: gap adds space before comma
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <strong>Title</strong>, subtitle
+    </div>
+    // Renders: "Title   , subtitle" (unwanted space before comma)
+    ```
+    
+    **Solution:** Wrap adjacent inline content in a single element:
+    ```jsx
+    // ✅ GOOD: wrap in single span
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <span><strong>Title</strong>, subtitle</span>
+    </div>
+    // Renders: "Title, subtitle" (correct)
+    ```
+    
+    **Why:** Flex treats `<strong>Title</strong>` and `, subtitle` as two flex items, applying `gap` between them. Wrapping in `<span>` creates a single flex item.
+    
+    **Real example from 2026-01-17:**
+    ```
+    Issue: Terminology source headers showed "Regulation 765/2008   , Article 2:"
+    Root cause: flex gap between <strong> and text node
+    Fix: Wrap in <span><strong>...</strong>, Article...</span>
+    ```
+
+18. **EU Regulation Numbering Formats (EC vs EU):**
+    
+    **Older regulations (pre-2009) use `(EC)`, newer use `(EU)`:**
+    
+    | Era | Format | Example |
+    |-----|--------|---------|
+    | Pre-2009 | Regulation (EC) No X/YYYY | Regulation (EC) No 765/2008 |
+    | Post-2009 | Regulation (EU) X/YYYY | Regulation (EU) 910/2014 |
+    
+    **When writing regex patterns for regulation references:**
+    ```javascript
+    // ❌ BAD: Only matches EU regulations
+    /Regulation \(EU\) (?:No )?(\d+\/\d+)/
+    
+    // ✅ GOOD: Matches both EC and EU
+    /Regulation \((?:EU|EC)\) (?:No )?(\d+\/\d+)/
+    ```
+    
+    **Why this matters:** The eIDAS ecosystem references older EC regulations (like 765/2008 for accreditation). Patterns that only handle `(EU)` will miss these references.
+
 
 ## Project Structure
 

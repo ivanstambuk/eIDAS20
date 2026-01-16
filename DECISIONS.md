@@ -914,3 +914,65 @@ Examples:
 
 *Add new decisions at the bottom with incrementing DEC-XXX numbers.*
 
+
+## DEC-055: Definition Extraction Termination Rules
+
+**Date:** 2026-01-17
+
+**Context:**
+
+The terminology extraction in `build-terminology.js` uses regex patterns to extract legal definitions from regulation markdown files. Two patterns exist:
+
+1. **Pattern 1 (parenthesized):** `(N) 'term' means definition;`
+2. **Pattern 2 (numbered list):** `N. 'term' means definition;`
+
+**Problem:**
+
+Regulation 765/2008 Article 2 uses the numbered list format. Definition 21 ("Community harmonisation legislation") ends with a **period**, not a semicolon:
+
+```markdown
+21. 'Community harmonisation legislation' means any Community legislation harmonising the conditions for the marketing of products.
+```
+
+The original Pattern 2 regex only terminated at semicolons:
+```javascript
+const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;]+);/gm;
+```
+
+This caused greedy capture: `[^;]+` matched everything until the next semicolon, which was pages later in the document, resulting in a definition containing the entire rest of the regulation.
+
+**Decision:**
+
+**Both definition extraction patterns MUST terminate at semicolon (;), period (.), OR newline (\\n).**
+
+```javascript
+// Correct termination pattern
+const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
+```
+
+**Implementation:**
+
+| Component | Change |
+|-----------|--------|
+| Pattern 1 | Already correct (stops at `;.\\n`) |
+| Pattern 2 | Fixed: `[^;]+;` → `[^;.\\n]+(?:[;.]\|\\n\|$)` |
+
+**Validation:**
+
+Added Invariant 4 to build-time validation:
+- Required 765/2008 terms: `accreditation`, `manufacturer`, `CE marking`
+- Build fails if these terms are missing (indicates pattern regression)
+
+**Rationale:**
+
+1. **EU legal drafting convention:** Some regulations end definitions with periods, others with semicolons
+2. **Defense in depth:** Terminate at multiple characters to prevent greedy capture
+3. **Build-time validation:** Add invariants to catch extraction regressions
+
+**Files affected:**
+
+| File | Change |
+|------|--------|
+| `build-terminology.js` | Fix Pattern 2 regex termination |
+| `build-terminology.js` | Add Invariant 4 (765/2008 terms) |
+
