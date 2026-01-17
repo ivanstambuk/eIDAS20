@@ -1008,6 +1008,41 @@ function build() {
         console.log('   Run: python scripts/batch_fix_annexes.py to download complete versions');
     }
 
+    // Validate: Check that linkable classes are being generated correctly
+    // This prevents regressions like the isTopLevelList bug (2026-01-17)
+    console.log('\n🔍 Validating linkable element classes...');
+    let hasParagraphs = false;
+    let hasPoints = false;
+    let hasRecitals = false;
+
+    for (const reg of allRegulations) {
+        const html = reg.contentHtml;
+        if (html.includes('linkable-paragraph')) hasParagraphs = true;
+        if (html.includes('linkable-point')) hasPoints = true;
+        if (html.includes('linkable-recital')) hasRecitals = true;
+    }
+
+    // Validate: All expected classes should be present across the corpus
+    const missingClasses = [];
+    if (!hasParagraphs) missingClasses.push('linkable-paragraph');
+    if (!hasPoints) missingClasses.push('linkable-point');
+    if (!hasRecitals) missingClasses.push('linkable-recital');
+
+    if (missingClasses.length > 0) {
+        throw new Error(
+            `❌ BUILD FAILED: Missing linkable classes in output!\n` +
+            `\n` +
+            `   Missing: ${missingClasses.join(', ')}\n` +
+            `\n` +
+            `   This usually indicates a bug in rehype-paragraph-ids.js.\n` +
+            `   The isTopLevelList() function may be incorrectly classifying nested lists.\n` +
+            `\n` +
+            `   Run: node scripts/test-rehype-paragraph-ids.js\n` +
+            `   See: AGENTS.md Rule 25 (AST traversal pitfall)\n`
+        );
+    }
+    console.log('   ✅ All linkable classes present (paragraph, point, recital)');
+
     console.log('\n✨ Build complete!');
     console.log(`   📄 Documents: ${metadata.documentCount} (${metadata.regulationCount} regulations + ${metadata.implementingActCount} implementing acts)`);
     console.log(`   📝 Total words: ${metadata.totalWordCount.toLocaleString()}`);

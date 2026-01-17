@@ -217,6 +217,10 @@ function rehypeParagraphIds() {
                 // This distinguishes between:
                 //   - Top-level Article 2 definitions (ul after h3) → paragraphs
                 //   - Nested points like (a), (b), (c) inside paragraphs → points
+                //
+                // ⚠️ CRITICAL: The `ancestors` array does NOT include the current node!
+                // ancestors = [root, ..., directParent] — never includes `node` itself.
+                // See AGENTS.md Rule 25 for the full explanation of this pitfall.
                 const isTopLevelList = (() => {
                     // Check if any ancestor is a list or list item
                     for (const ancestor of ancestors) {

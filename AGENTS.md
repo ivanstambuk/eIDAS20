@@ -876,6 +876,36 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **See also:** `src/utils/debugCSS.js` for implementation details.
 
+25. **AST Traversal Pitfall: Ancestors Don't Include Current Node:**
+    
+    **When using `visitParents` or similar AST visitors, the `ancestors` array does NOT include the current node.**
+    
+    ```javascript
+    // ❌ WRONG: Node is never in its own ancestors!
+    visitParents(tree, 'element', (node, ancestors) => {
+        const index = ancestors.findIndex(a => a === node);
+        // index is ALWAYS -1! The node is not its own ancestor.
+    });
+    
+    // ✅ CORRECT: Ancestors are the PARENTS of the node
+    visitParents(tree, 'element', (node, ancestors) => {
+        // ancestors[0] = root, ancestors[last] = direct parent of node
+        const hasListAncestor = ancestors.some(a => 
+            a.type === 'element' && ['ul', 'ol', 'li'].includes(a.tagName)
+        );
+    });
+    ```
+    
+    **Why this matters:** This caused a subtle bug in `rehype-paragraph-ids.js` where `isTopLevelList()` always returned `true` because the check for the node in ancestors always failed.
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: All <ul> elements treated as top-level paragraphs
+    Wrong code: ancestors.findIndex(a => a === node) → always -1 → return true
+    Fix: Check if ANY ancestor is ul/ol/li (don't look for current node)
+    Result: Nested lists now correctly get linkable-point class
+    ```
+
 ## Project Structure
 
 ```
