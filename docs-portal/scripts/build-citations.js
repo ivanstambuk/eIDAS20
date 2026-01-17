@@ -10,11 +10,21 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { getLegislationMetadata, formatEntryIntoForce, getStatusDisplay } from './legislation-metadata.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+/**
+ * Compute MD5 hash of content for cache validation.
+ * @param {string} content - Content to hash
+ * @returns {string} - MD5 hash hex string
+ */
+function computeHash(content) {
+    return crypto.createHash('md5').update(content).digest('hex');
+}
 
 // =============================================================================
 // DOCUMENT CONFIGURATION (for consolidation metadata)
@@ -491,6 +501,7 @@ async function main() {
     let internalCount = 0;
     let externalCount = 0;
     let docsWithCitations = 0;
+    let skippedCount = 0;  // Hash-based cache hits
 
     for (const sourceDir of sourceDirs) {
         if (!fs.existsSync(sourceDir)) continue;
@@ -528,19 +539,48 @@ async function main() {
                 const citations = extractCitations(content, registry, slug, documentConfig);
 
                 if (citations.length > 0) {
-                    // Save citations file
+                    // Compute hash for cache validation (content + config version)
+                    const cacheKey = computeHash(content + JSON.stringify(documentConfig.documents[slug] || {}));
                     const citationFile = path.join(outputDir, `${slug}.json`);
-                    fs.writeFileSync(citationFile, JSON.stringify({ citations }, null, 2));
 
-                    const internal = citations.filter(c => c.isInternal).length;
-                    const external = citations.length - internal;
+                    // Check if output already exists and matches
+                    let skipWrite = false;
+                    if (fs.existsSync(citationFile)) {
+                        try {
+                            const existingData = JSON.parse(fs.readFileSync(citationFile, 'utf-8'));
+                            if (existingData._cacheKey === cacheKey) {
+                                skipWrite = true;
+                                // Still count for stats
+                                const internal = citations.filter(c => c.isInternal).length;
+                                const external = citations.length - internal;
+                                totalCitations += citations.length;
+                                internalCount += internal;
+                                externalCount += external;
+                                docsWithCitations++;
+                                skippedCount++;
+                            }
+                        } catch (e) {
+                            // Invalid JSON, regenerate
+                        }
+                    }
 
-                    console.log(`  ✅ ${slug}: ${citations.length} citations (${internal} internal, ${external} external)`);
+                    if (!skipWrite) {
+                        // Save citations file with cache key
+                        fs.writeFileSync(citationFile, JSON.stringify({
+                            _cacheKey: cacheKey,
+                            citations
+                        }, null, 2));
 
-                    totalCitations += citations.length;
-                    internalCount += internal;
-                    externalCount += external;
-                    docsWithCitations++;
+                        const internal = citations.filter(c => c.isInternal).length;
+                        const external = citations.length - internal;
+
+                        console.log(`  ✅ ${slug}: ${citations.length} citations (${internal} internal, ${external} external)`);
+
+                        totalCitations += citations.length;
+                        internalCount += internal;
+                        externalCount += external;
+                        docsWithCitations++;
+                    }
                 }
             }
         }
@@ -551,6 +591,9 @@ async function main() {
     console.log(`📊 Total: ${totalCitations} citations across ${docsWithCitations} documents`);
     console.log(`   Internal (portal links): ${internalCount}`);
     console.log(`   External (EUR-Lex): ${externalCount}`);
+    if (skippedCount > 0) {
+        console.log(`   ⚡ Cache hits (unchanged): ${skippedCount}`);
+    }
     console.log('='.repeat(60));
 }
 
