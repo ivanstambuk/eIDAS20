@@ -556,16 +556,31 @@ def process_alinea_nested(alinea_elem, base_indent=""):
     children = list(alinea_elem)
     
     # Check what types of children we have
-    structural_tags = {'P', 'LIST', 'QUOT.S', 'QUOT.START'}
+    # NOTE: QUOT.S/QUOT.START are NOT structural if they're inline (preceded by text)
+    # They're only structural when standalone (e.g., blockquoted replacement text)
+    structural_tags = {'P', 'LIST'}
     has_structural_children = any(
         child.tag in structural_tags for child in children 
         if isinstance(child.tag, str)
     )
     
-    # If no structural children, the ALINEA contains mixed content (text + inline elements)
-    # Example: <ALINEA>By <DATE>21 May 2025</DATE>, the Commission shall...</ALINEA>
-    # In this case, use get_element_text to extract ALL content including inline elements
-    if not has_structural_children:
+    # Check if QUOT.START/QUOT.S is preceded by text (inline quote like 'API')
+    # vs standalone (blockquote content)
+    has_inline_quotes = False
+    has_standalone_quotes = False
+    for child in children:
+        if child.tag in ('QUOT.S', 'QUOT.START'):
+            # If there's text before this element, it's inline
+            if alinea_elem.text and alinea_elem.text.strip():
+                has_inline_quotes = True
+            else:
+                has_standalone_quotes = True
+            break
+    
+    # If no structural children AND (no quotes OR only inline quotes),
+    # treat the ALINEA as mixed content (text + inline elements)
+    # Example: <ALINEA>...interface (<QUOT.START/>API<QUOT.END/>)...</ALINEA>
+    if not has_structural_children and not has_standalone_quotes:
         full_text = clean_text(get_element_text(alinea_elem))
         if full_text:
             intro_text = full_text
@@ -601,10 +616,12 @@ def process_alinea_nested(alinea_elem, base_indent=""):
             nested_lines.extend(list_lines)
         
         elif child.tag in ('QUOT.S', 'QUOT.START'):
-            # Quoted content - keep existing behavior but add to nested
-            quote_text = extract_quoted_content(child, children)
-            if quote_text:
-                nested_lines.append(f"{base_indent}> {quote_text}")
+            # Only treat as blockquote if standalone (no preceding text)
+            if has_standalone_quotes and not has_inline_quotes:
+                quote_text = extract_quoted_content(child, children)
+                if quote_text:
+                    nested_lines.append(f"{base_indent}> {quote_text}")
+            # If inline, skip - already handled by get_element_text in intro_text
     
     return intro_text, nested_lines
 
