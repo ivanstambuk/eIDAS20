@@ -18,7 +18,8 @@
 /* Gutter icon container - positioned to the left of heading */
 .copy-gutter {
     position: absolute;
-    left: -40px;
+    left: -70px;
+    /* Moved further left to avoid text overlap */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -33,7 +34,8 @@ li.linkable-paragraph>.copy-gutter,
 li.linkable-point>.copy-gutter,
 li.linkable-subpoint>.copy-gutter,
 li.linkable-recital>.copy-gutter {
-    left: -56px;
+    left: -80px;
+    /* Moved further left for nested lists */
     /* Account for list marker */
     top: 12px;
     transform: none;
@@ -139,8 +141,9 @@ li.linkable-recital>.copy-gutter {
 
 /* Ensure content doesn't get cut off on left */
 .regulation-content {
-    padding-left: 48px;
-    margin-left: -48px;
+    padding-left: 80px;
+    /* Increased to accommodate gutter icons further left */
+    margin-left: -80px;
 }
 
 @media (max-width: 768px) {
