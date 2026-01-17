@@ -52,6 +52,7 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Table of Contents (ToC)** | The right sidebar panel showing structural navigation within the current document. |
 | **Collapsible ToC** | The expandable/collapsible hierarchy in the ToC (chapters → articles). |
 | **Document Switcher** | The section of the sidebar listing available regulations and implementing acts. |
+| **Sticky Alphabet Nav** | The A-Z letter bar on the Terminology page that sticks below the header while scrolling. Clicking a letter jumps to that section. Uses glassmorphism effect. |
 
 ### Content Display
 
