@@ -258,6 +258,21 @@ function rehypeParagraphIds() {
 
                     for (const child of node.children) {
                         if (child.type === 'element' && child.tagName === 'li') {
+                            // Skip if this <li> is just a wrapper for a nested list
+                            // (the nested list's <li> will get the ID instead)
+                            const hasNestedList = child.children?.some(
+                                c => c.type === 'element' && (c.tagName === 'ol' || c.tagName === 'ul')
+                            );
+                            // Check if there's meaningful text BEFORE the nested list
+                            const firstChild = child.children?.[0];
+                            const hasTextBeforeList = firstChild?.type === 'text' && firstChild.value?.trim();
+
+                            if (hasNestedList && !hasTextBeforeList) {
+                                // This is just a wrapper <li> - skip it
+                                liIndex++;
+                                continue;
+                            }
+
                             // Extract ordinal from text content
                             // Pattern 1: eIDAS format "(18)" or "(23a)"
                             // Pattern 2: EU numbered format "10. 'term'" (used in 765/2008)
