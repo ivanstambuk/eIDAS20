@@ -5,7 +5,14 @@
  * 
  * Provides functionality to copy:
  * 1. Deep link URL (portal link with ?section= param)
- * 2. EU-standard citation reference (e.g., "Article 5a(1) of Regulation (EU) No 910/2014")
+ * 2. EU-standard citation reference
+ * 
+ * EU Citation Format (per Interinstitutional Style Guide):
+ * - Articles:  Article 5(1)(a) of Regulation (EU) No 910/2014
+ * - Annexes:   Annex I, point 3(a) of Regulation (EU) No 910/2014
+ * 
+ * Key difference: Annexes use "point N" (spelled out) instead of parenthetical
+ * notation. Parentheses are reserved for sub-points in annexes.
  */
 
 import { useCallback } from 'react';

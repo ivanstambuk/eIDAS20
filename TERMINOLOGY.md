@@ -28,7 +28,7 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Paragraph** | A numbered subdivision within an article. Format: `Article 5(1)`, `Article 5(2)`. Parentheses distinguish from articles. |
 | **Point** | A lettered subdivision within a paragraph. Format: `Article 5(1)(a)`, `Article 5(1)(b)`. Uses lowercase letters. |
 | **Subpoint** | A roman-numeral subdivision within a point. Format: `Article 5(1)(a)(i)`, `Article 5(1)(a)(ii)`. Uses lowercase roman numerals. |
-| **Annex** | Supplementary material at the end of a regulation, often containing technical specifications or requirements. |
+| **Annex** | Supplementary material at the end of a regulation, often containing technical specifications. **Annexes use "point" (not "paragraph")** for subdivisions. Format: `Annex I, point 3`, `Annex I, point 3(a)`. Note: Unlike articles where paragraphs use parentheses (e.g., `Article 5(1)`), annexes explicitly spell out "point" before the number. |
 | **Chapter** | A grouping of related articles (e.g., `Chapter III — Electronic Identification`). |
 | **Section** | A subdivision within a chapter. |
 
