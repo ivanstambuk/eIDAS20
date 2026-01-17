@@ -217,6 +217,36 @@ def add_metadata_header(md_path: Path, doc: dict):
     print(f"   📋 Added metadata header")
 
 
+def validate_annex_extraction(md_path: Path, annex_xmls: list) -> tuple:
+    """
+    Validate that annexes were properly extracted.
+    
+    If annex XML files were found in the archive, the output markdown
+    should contain corresponding ## ANNEX headings.
+    
+    Returns: (is_valid: bool, error_message: str or None)
+    """
+    if not annex_xmls:
+        return (True, None)  # No annexes to validate
+    
+    # Read the output markdown
+    content = md_path.read_text(encoding='utf-8')
+    
+    # Count annex headings in output (## Annex, ## ANNEX, ## Annex I, etc.)
+    import re
+    annex_headings = re.findall(r'^## (?:Annex|ANNEX)', content, re.MULTILINE)
+    annex_count_in_output = len(annex_headings)
+    
+    # We found N annex XML files, we should have at least 1 annex heading
+    # (multiple XML files might produce one combined annex section, so we check >= 1)
+    if annex_count_in_output == 0:
+        return (False, 
+            f"Found {len(annex_xmls)} annex XML file(s) but output has 0 '## Annex' headings. "
+            f"Annex files: {[f.name for f in annex_xmls]}")
+    
+    return (True, None)
+
+
 def cleanup_temp_files(output_dir: Path):
     """Remove temporary extraction directory."""
     xml_dir = output_dir / "formex"
@@ -279,6 +309,11 @@ def process_document(doc: dict, skip_download: bool = False, force: bool = False
             if annex_count > 0:
                 print(f"   📎 Appended {annex_count} annex(es) to output")
         
+        # Step 3c: Validate annex extraction (prevent regression)
+        is_valid, error_msg = validate_annex_extraction(md_path, annex_xmls)
+        if not is_valid:
+            raise ValueError(f"Annex validation failed: {error_msg}")
+        
         # Step 4: Enrich (add metadata)
         add_metadata_header(md_path, doc)
         
@@ -287,6 +322,7 @@ def process_document(doc: dict, skip_download: bool = False, force: bool = False
         
         print(f"   ✅ SUCCESS")
         return True
+
         
     except Exception as e:
         print(f"   ❌ FAILED: {e}")
