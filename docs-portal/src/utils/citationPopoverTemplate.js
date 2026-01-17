@@ -29,7 +29,7 @@ export function generateConsolidatedPopoverHtml(citation) {
         </div>
         <h3 class="citation-popover-human-name">${citation.humanName || citation.fullTitle}</h3>
         <p class="citation-popover-formal">${citation.shortName}</p>
-        <p class="citation-popover-amendment-info">
+        <p class="citation-popover-amendment-notice">
             As amended by: ${info.amendments.map(a => a.label).join(', ')}
         </p>
         <div class="citation-popover-eurlex-group">

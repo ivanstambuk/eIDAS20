@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "validate:config": "node scripts/validate-documents.js",
-    "build": "npm run validate:config && node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
+    "validate:css": "node scripts/validate-css-classes.js",
+    "build": "npm run validate:config && npm run validate:css && node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:content": "node scripts/build-content.js",
     "build:terminology": "node scripts/build-terminology.js",
     "build:search": "node scripts/build-search-index.js",

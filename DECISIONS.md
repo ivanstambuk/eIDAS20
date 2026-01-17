@@ -1378,7 +1378,7 @@ citation.isAmended = !!(metadata.amendedBy?.length);
 
 Updated `generateStandardPopoverHtml()` to:
 1. Add AMENDED badge if `citation.isAmended`
-2. Render amendment notice with formatted date
+2. Render amendment notice with formatted date and **linked regulation reference**
 3. Change primary button from "View in Portal" to "View Consolidated" when `consolidatedSlug` exists
 
 **Visual Design:**
@@ -1386,7 +1386,7 @@ Updated `generateStandardPopoverHtml()` to:
 | Element | Style |
 |---------|-------|
 | AMENDED badge | Amber background (`rgba(245, 158, 11, 0.15)`), gold text (`#fbbf24`) |
-| Amendment notice | ⚠️ prefix, italic, secondary text color |
+| Amendment notice | ⚠️ prefix, normal text, secondary color, linked regulation reference |
 | View Consolidated button | Primary blue button (same as existing) |
 
 **Relationship to DEC-060 (Smart Consolidation):**
@@ -1401,8 +1401,14 @@ Updated `generateStandardPopoverHtml()` to:
 |------|--------|
 | `scripts/legislation-metadata.js` | Added `amendedBy`, `amendmentDate`, `consolidatedSlug` fields |
 | `scripts/build-citations.js` | Extended `enrichCitation()` with amendment fields |
-| `src/utils/citationPopoverTemplate.js` | Added dual badges, amendment notice, consolidated link |
-| `src/components/CitationPopover/CitationPopover.css` | Added `.citation-popover-status--amended` style |
+| `src/utils/citationPopoverTemplate.js` | Added dual badges, amendment notice with linked regulation, consolidated link |
+| `src/components/CitationPopover/CitationPopover.css` | Added `.citation-popover-status--amended` and `.citation-popover-amendment-link` styles |
+
+**Implementation Notes (Retro):**
+
+1. **Route naming**: Use `#/regulation/` (singular), not `#/regulations/` (plural). The app's router uses singular form.
+2. **CSS class naming**: The template class must exactly match the CSS selector. A mismatch (`-info` vs `-notice`) caused silent styling failure. Added `npm run validate:css` to catch this at build time.
+3. **Linked regulation**: The amending regulation reference is now clickable, linking to the portal document.
 
 **Benefits:**
 
@@ -1416,3 +1422,4 @@ Updated `generateStandardPopoverHtml()` to:
 - Extend to other amended regulations (GDPR is not amended, but older directives might be)
 - Show human-readable name of amending regulation in notice
 - Support multiple amendments in sequence (show most recent with "…and N others")
+
