@@ -109,7 +109,7 @@ Common terms used across the documentation portal project to ensure consistent v
 | Term | Description |
 |------|-------------|
 | **Document Citation** | A citation that links to the root of a document (e.g., "Regulation (EU) 910/2014" → `#/regulations/910-2014`). Currently implemented for Cross-Document and External citations. |
-| **Provision Citation** | A citation that deep-links to a specific provision within a document — article, paragraph, point, recital, or annex. Uses `?section=` parameter for navigation (e.g., "Article 5a(1)" → `?section=article-5a-para-1`). Pattern examples: "Article 5a(1)", "recital (42)", "Annex I". *(Backlog item)* |
+| **Provision Citation** | A citation that deep-links to a specific provision within a document — article, paragraph, point, recital, or annex. Uses `?section=` parameter for navigation (e.g., "Article 5a(1)" → `?section=article-5a-para-1`). Pattern examples: "Article 5a(1)", "recital (42)", "Annex I". |
 
 ---
 

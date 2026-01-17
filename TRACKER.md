@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 13:50 CET |
-| **Session State** | ✅ Annex extraction + validation + retro complete |
-| **Portal Status** | ✅ Fully functional (168,956 words) |
-| **Next Action** | Backlog items (see table below) |
+| **Last Updated** | 2026-01-17 14:18 CET |
+| **Session State** | Terminology cleanup + Amendment-Aware Popovers planned |
+| **Portal Status** | ✅ Fully functional (168,248 words) |
+| **Next Action** | Implement Amendment-Aware Citation Popovers (see pending-task.md) |
 
 ---
 
@@ -74,6 +74,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 14:18 | Terminology consolidation: Added "Provision Citation" term, merged Cross-doc refs + Recital refs backlog items. Fixed eIDAS → eIDAS 1.0 abbreviation. Planned Amendment-Aware Citation Popovers (Option E). |
 | 2026-01-17 13:50 | Retro: Added Rules 26-28 (Formex structure, fix cause not symptom, script deletion checklist), DEC-061. Pipeline validation prevents annex extraction regression. |
 | 2026-01-17 13:20 | Pipeline fix: Annex extraction now processes all supplementary XML files in Formex archives — 27 implementing acts now have proper annexes extracted (+30,820 words, total 168,956). Removed stale batch_fix_annexes.py task. |
 | 2026-01-17 12:21 | DEC-060: Smart Consolidation self-reference detection — consolidated documents now detect citations to their own base regulation and display "CURRENT DOCUMENT" badge with dual EUR-Lex links (Original 2014 + Amendment 2024). Retro: extracted popover template utility, hash-based citation caching |
