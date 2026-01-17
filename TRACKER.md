@@ -8,16 +8,17 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 22:58 CET |
+| **Last Updated** | 2026-01-18 00:40 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (169,410 words) |
+| **Portal Status** | ✅ Fully functional (171,231 words) |
 | **Next Action** | See Backlog |
 
 ---
 
 ## Portal Features (Complete)
 
-- **33 documents** (3 regulations: 910/2014, 2024/1183, 765/2008 + 30 implementing acts)
+- **34 documents** (4 regulations: 910/2014, 2024/1183, 765/2008, 2021/946 Recommendation + 30 implementing acts)
+- **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology system** (115 terms from 3 sources, multi-source display, hover popovers, cross-refs)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
@@ -27,6 +28,7 @@
 - **Themes** (light/dark, system detection)
 - **Accessibility** (WCAG 2.1 AA)
 - **CI/CD** (GitHub Actions auto-deploy)
+
 - **Collapsible TOC** (official chapter structure for eIDAS 910/2014, Annexes at bottom)
 - **Human-friendly document names** (short titles from folder names/metadata)
 - **Scroll-to-top on navigation** (fixes SPA scroll persistence bug)
@@ -78,6 +80,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 00:40 | EUDIW Toolbox Recommendation import: Added 32021H0946 via Formex pipeline (foundational document for EDIF). Extended formex_to_md_v3.py with `extract_gr_seq_sections()` to handle `<GR.SEQ>` tags used in Recommendations. Added Rule 33 (No Manual Markdown Creation). 171,231 words total. |
 | 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
 | 2026-01-17 19:43 | Fix: Inline QUOT.START/END rendered as blockquotes — abbreviation ('API') now inline. Added ALINEA to TERMINOLOGY.md. Retro: Rules 31-32 (directory naming, QUOT.* detection), installed python3-markdown (3 fewer skipped tests). |
 | 2026-01-17 19:09 | Fix: RegulationViewer scroll restoration (same DOM height timing bug as Terminology). Retro: extracted shared `useScrollRestoration` hook (eliminates ~60 lines duplicate code), documented "Wait for DOM Height" pattern (AGENTS.md rule 24) |
