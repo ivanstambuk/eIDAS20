@@ -1063,5 +1063,50 @@ Initially implemented with multi-color scheme (cyan for primary, purple for refe
 3. **Consistent design** — Cyan matches term title color
 4. **Gap separation** — Vertical gap between definitions provides structure
 
+---
 
+## DEC-057: HTML-based definitions for legal notation fidelity
 
+**Date:** 2026-01-17  
+**Status:** Accepted  
+
+**Context:**  
+Regulation 765/2008 uses `N. 'term' means...` format (e.g., `3. 'manufacturer'`), while eIDAS uses `(N) 'term' means...` format. Both formats must be preserved exactly.
+
+**Problem:**  
+Standard markdown interpretation caused issues:
+1. Lines like `3. 'manufacturer'` were parsed as ordered list items
+2. Non-consecutive numbering (3, 4, 8, 9...) was renumbered (3, 4, 5, 6...)
+3. This broke deep linking: terminology page referenced `article-2-para-10` but rendered HTML had different IDs
+
+**Decision:** Use raw HTML for 765/2008 Article 2 definitions with explicit IDs.
+
+**Implementation:**
+
+```html
+<ul class="legal-definitions">
+<li id="article-2-para-3" class="linkable-paragraph" data-para="3" data-article="article-2">
+  3. 'manufacturer' means any natural or legal person...
+</li>
+<li id="article-2-para-10" class="linkable-paragraph" data-para="10" data-article="article-2">
+  10. 'accreditation' means an attestation by a national...
+</li>
+</ul>
+```
+
+**Benefits:**
+
+1. **Legal fidelity** — Displays exact `N. 'term'` notation from EUR-Lex
+2. **Deep linking** — Explicit IDs enable accurate scroll-to behavior
+3. **No markdown interference** — HTML bypasses all list parsing
+4. **Terminology extraction** — Updated regex matches content inside `<li>` tags
+
+**Files modified:**
+
+| File | Change |
+|------|--------|
+| `02008R0765.md` | Article 2 uses raw HTML `<ul><li id="...">` |
+| `build-terminology.js` | Regex pattern `(?:^|>)(\d+)\.` handles HTML |
+| `AGENTS.md` | Rule 19 prevents future notation changes |
+
+**Related:** Rule 19 in AGENTS.md (Legal Document Visual Fidelity - ABSOLUTE)

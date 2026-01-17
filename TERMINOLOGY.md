@@ -118,6 +118,15 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Source Badge** | The colored indicator showing which document a definition comes from (e.g., "Primary", "Referenced"). |
 | **Terminology Page** | The `/terminology` view listing all defined terms alphabetically with their definitions. |
 
+### Definition Numbering Formats
+
+| Era | Format | Example |
+|-----|--------|---------|
+| **EC regulations (pre-2009)** | `N. 'term' means...` | `3. 'manufacturer' means...` |
+| **EU regulations (post-2009)** | `(N) 'term' means...` | `(3) 'electronic signature' means...` |
+
+**Why this matters:** Both formats must be preserved exactly as they appear in EUR-Lex. The portal handles both via regex patterns in `build-terminology.js` and uses raw HTML for 765/2008 to prevent markdown renumbering (see DEC-057).
+
 ---
 
 ## Data Model

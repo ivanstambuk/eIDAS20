@@ -707,6 +707,39 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     CORRECT approach: Use raw HTML to preserve exact notation while enabling deep linking
     ```
 
+20. **Markdown Numbered List Renumbering (PITFALL):**
+    
+    **Problem:** Markdown renumbers non-consecutive numbered lists.
+    
+    **Example:**
+    ```markdown
+    3. First item
+    4. Second item
+    8. Third item (gap!)
+    9. Fourth item
+    ```
+    
+    **Rendered HTML becomes:**
+    ```html
+    <ol start="3">
+      <li>First item</li>   <!-- Actually 3 -->
+      <li>Second item</li>  <!-- Actually 4 -->
+      <li>Third item</li>   <!-- Becomes 5, NOT 8! -->
+      <li>Fourth item</li>  <!-- Becomes 6, NOT 9! -->
+    </ol>
+    ```
+    
+    **Why this matters:** Legal documents have non-consecutive paragraph numbers (provisions are repealed, leaving gaps). If you rely on markdown list numbering, the rendered IDs won't match the source numbers.
+    
+    **Solution:** For non-consecutive legal lists, use raw HTML with explicit IDs:
+    ```html
+    <ul class="legal-definitions">
+    <li id="article-2-para-8">8. 'technical specification' means...</li>
+    </ul>
+    ```
+    
+    **Real example:** Regulation 765/2008 Article 2 has definitions 3, 4, 8, 9, 10... (gaps due to repealed provisions). See DEC-057.
+
 ## Project Structure
 
 ```

@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 00:53 CET |
-| **Session State** | ✅ Terminology extraction fixes complete |
+| **Last Updated** | 2026-01-17 01:40 CET |
+| **Session State** | ✅ Deep linking fix complete with legal notation preservation |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Backlog items (see table below) |
 
@@ -49,7 +49,8 @@
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
-- **Multi-source visual separation** (DEC-056: Colored left borders cyan/purple, merged clickable source headers)
+- **Multi-source visual separation** (DEC-056: Single cyan color, merged clickable source headers)
+- **Legal notation fidelity** (DEC-057: Reg 765/2008 uses HTML for exact `N.` format preservation)
 
 ---
 
@@ -73,8 +74,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 01:40 | DEC-057: Deep linking fix with legal notation preservation (Rule 19 added, HTML for 765/2008 definitions), retro → 6 improvements |
 | 2026-01-17 00:53 | DEC-056: Multi-source visual separation (colored borders cyan/purple, merged clickable source headers, removed redundant links) |
-| 2026-01-17 00:38 | Terminology fixes: flex gap spacing, 765/2008 article detection (N/A→2), greedy regex fix (DEC-055), retro (6 improvements: AGENTS.md rules 17-18, Invariant 4) |
 | 2026-01-17 00:10 | Recital gutter icons (Phase 4), informal citation detection, TERMINOLOGY.md created, retro improvements (Rule 15+16, init workflow, snippets) |
 | 2026-01-16 21:30 | DEC-043 Short Title SSOT: YAML shortTitle field, fail-fast build validation, schema validation (`npm run validate:config`), annex warning cleanup, retro workflow updates |
 | 2026-01-16 18:35 | DEC-042 complete: EUR-Lex HTML parser pipeline integration, portal validation, documentation (5 phases done) |
