@@ -906,6 +906,95 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Result: Nested lists now correctly get linkable-point class
     ```
 
+26. **Formex Archive Structure (EUR-Lex XML Downloads):**
+    
+    **Formex ZIP archives contain multiple XML files with specific naming patterns:**
+    
+    | Pattern | Description | Example |
+    |---------|-------------|---------|
+    | `.000101.fmx.xml` | **Main document** (regulation body) | `L_202402982EN.000101.fmx.xml` |
+    | `.000XYZ.fmx.xml` | **Supplementary content** (annexes) | `L_202402982EN.000701.fmx.xml` |
+    | `.doc.fmx.xml` | Document metadata (skip) | `L_202402982EN.doc.fmx.xml` |
+    | `.toc.fmx.xml` | Table of contents (skip) | `L_202402982EN.toc.fmx.xml` |
+    | `.0001.xml` | Alternative main pattern (consolidated) | `CL2014R0910EN0020030.0001.xml` |
+    
+    **Important:** Annexes are stored in **separate XML files**, not embedded in the main document. A regulation with 5 annexes will have 6+ XML files in the archive.
+    
+    **Example: 2024/2981 (Certification)**
+    ```
+    32024R2981.fmx4.zip contains:
+    - L_202402981EN.000101.fmx.xml  ← Main document
+    - L_202402981EN.001801.fmx.xml  ← ANNEX I
+    - L_202402981EN.003101.fmx.xml  ← ANNEX II
+    - L_202402981EN.003301.fmx.xml  ← ANNEX III
+    ... (9 annexes total)
+    ```
+    
+    **Pipeline validation:** The pipeline validates that if annex XML files are found, the output markdown contains `## Annex` headings. See `validate_annex_extraction()` in `pipeline.py`.
+
+27. **Fix Cause, Not Symptom (MANDATORY — After Any Bug Fix):**
+    
+    **When fixing issues, always address the ROOT CAUSE in the permanent codebase, not just the symptoms.**
+    
+    **Anti-pattern: One-Time Fix Script**
+    ```bash
+    # ❌ WRONG: One-time script fixes current data but doesn't fix the pipeline
+    python batch_fix_annexes.py  # Fixes 20 documents
+    rm batch_fix_annexes.py      # Script deleted
+    # Next pipeline run: Same 20 documents are broken again!
+    ```
+    
+    **Correct pattern: Systemic Fix**
+    ```bash
+    # ✅ CORRECT: Fix the pipeline itself
+    # 1. Identify root cause (pipeline only extracts main XML, ignores annexes)
+    # 2. Fix the pipeline (extract_formex returns all XML files)
+    # 3. Add validation (prevent regression)
+    # 4. Re-run pipeline (all documents now correct)
+    ```
+    
+    **Decision framework:**
+    
+    | Question | If Yes → | If No → |
+    |----------|----------|---------|
+    | Will the issue recur if the pipeline runs again? | Fix the pipeline | One-time script OK |
+    | Does the fix need to apply to future documents? | Fix the pipeline | One-time script OK |
+    | Does the fix involve data transformation logic? | Fix the converter | One-time script OK |
+    
+    **Real example from 2026-01-17:**
+    ```
+    Issue: 27 implementing acts missing annexes
+    One-time fix (Jan 14): batch_fix_annexes.py — fixed symptoms, deleted script
+    Systemic fix (Jan 17): Fixed pipeline.py extract_formex() + added validation
+    Result: All documents correct on every pipeline run, permanently
+    ```
+    
+    **Why this matters:** One-time fixes create technical debt and confusion. Future sessions see stale TRACKER entries referencing deleted scripts, wasting investigation time.
+
+28. **Script Deletion Checklist (MANDATORY — Before Removing Fix Scripts):**
+    
+    **Before deleting any one-time fix script, verify the root cause was addressed:**
+    
+    | Check | Question |
+    |-------|----------|
+    | ✅ Pipeline fixed? | Did we modify the build/conversion pipeline to prevent recurrence? |
+    | ✅ Validation added? | Is there automated validation that would catch this issue? |
+    | ✅ All documents rebuilt? | Did we re-run the pipeline on ALL affected documents? |
+    | ✅ TRACKER updated? | Did we remove any backlog items that reference this script? |
+    
+    **If ANY check fails:** The root cause was NOT fixed. Either:
+    1. Keep the script (document why in comments), OR
+    2. Fix the root cause first, THEN delete the script
+    
+    **Anti-pattern:**
+    ```bash
+    # ❌ WRONG: Delete script without fixing root cause
+    git commit -m "chore: remove obsolete one-time fix scripts"
+    # Weeks later: "Why are annexes missing? TRACKER says run batch_fix_annexes.py..."
+    ```
+    
+    **Why this matters:** Deleting symptom-fix scripts without addressing root causes creates orphaned documentation, wasted investigation time, and recurring bugs.
+
 ## Project Structure
 
 ```

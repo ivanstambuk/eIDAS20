@@ -1248,3 +1248,72 @@ document-config.json                   build-citations.js
 **Future Work:**
 - Extend pattern to other consolidated documents as they're added
 - Consider same treatment for citations to 2024/1183 (the amendment itself)
+
+---
+
+## DEC-061: Pipeline Annex Extraction with Validation (2026-01-17)
+
+**Status:** ✅ Complete
+
+**Context:**
+Investigation revealed that 27 implementing acts were missing their annexes. The annexes were present in the Formex ZIP archives (as separate `.000XYZ.fmx.xml` files) but the pipeline only extracted the main document (`.000101.fmx.xml`).
+
+A previous one-time fix script (`batch_fix_annexes.py`) had been run and deleted, but it only fixed the symptoms—not the root cause in the pipeline. This led to:
+1. Stale TRACKER.md entry saying "run batch_fix_annexes.py"
+2. 27 documents missing annexes after any pipeline re-run
+3. ~30,820 words of legal content missing from the portal
+
+**Problem:**
+```python
+# OLD: extract_formex() only returned main XML
+def extract_formex(zip_path, output_dir) -> Path:
+    # ... find .000101. file only
+    return main_xml  # Annexes ignored!
+```
+
+**Solution:**
+```python
+# NEW: extract_formex() returns main + all annex XMLs
+def extract_formex(zip_path, output_dir) -> tuple:
+    # ... find .000101. AND all .000XYZ. files
+    return (main_xml, annex_xmls)  # List of annex paths
+
+# process_document() now:
+# 1. Converts main XML
+# 2. Appends each annex XML content
+# 3. Validates annex extraction (fail-fast)
+```
+
+**Validation (Regression Prevention):**
+```python
+def validate_annex_extraction(md_path, annex_xmls) -> tuple:
+    """
+    If annex XML files were found in archive,
+    output markdown MUST contain '## Annex' headings.
+    """
+    if not annex_xmls:
+        return (True, None)
+    
+    content = md_path.read_text()
+    annex_headings = re.findall(r'^## (?:Annex|ANNEX)', content, re.MULTILINE)
+    
+    if len(annex_headings) == 0:
+        return (False, f"Found {len(annex_xmls)} annex XMLs but 0 headings")
+    
+    return (True, None)
+```
+
+**Results:**
+| Metric | Before | After |
+|--------|--------|-------|
+| Implementing acts with annexes | 0 | 27 |
+| Total word count | 138,136 | 168,956 |
+| New content | — | +30,820 words |
+
+**Documentation Added:**
+- AGENTS.md Rule 26: Formex archive structure
+- AGENTS.md Rule 27: Fix cause, not symptom
+- AGENTS.md Rule 28: Script deletion checklist
+
+**Why This Matters:**
+One-time fix scripts that address symptoms—not causes—create recurring issues and stale documentation. This decision codifies the principle: always fix the pipeline, not just the data.
