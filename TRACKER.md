@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 10:44 CET |
-| **Session State** | ✅ DEC-059 complete + retro improvements |
+| **Last Updated** | 2026-01-17 11:48 CET |
+| **Session State** | ✅ Gutter icon fixes complete + retro |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Backlog items (see table below) |
 
@@ -75,6 +75,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 11:48 | Gutter icon bug fix: duplicate icons on nested points (isTopLevelList bug), CSS debug mode (`?debug=css`), gutter positioning refinement (horizontal + vertical alignment) |
 | 2026-01-17 10:37 | DEC-059: Enhanced citation popovers (Hybrid B+C) — abbreviation badges ("GDPR", "eIDAS"), status pills ("IN FORCE"/"REPEALED"), human-friendly names, entry-into-force dates, EUR-Lex registry enrichment |
 | 2026-01-17 10:10 | Retro: Trace utility (`src/utils/trace.js`) for debugging — enable via `?debug=scroll`, Rules 21-23 (tracing, SPA pitfalls, React Router hooks) |
 | 2026-01-17 09:58 | Fix: Scroll restoration bug — Performance API doesn't work for SPAs! Switched to React Router's `useNavigationType()` which returns `POP` for back/forward |

@@ -13,7 +13,19 @@
             "ragEnabled": true,
             "terminologySource": true,
             "category": "primary",
-            "comment": "Primary source of truth for current eIDAS law."
+            "comment": "Primary source of truth for current eIDAS law.",
+            "consolidation": {
+                "baseCelex": "32014R0910",
+                "amendments": [
+                    {
+                        "celex": "32024R1183",
+                        "shortName": "Regulation 2024/1183",
+                        "label": "eIDAS 2.0 Amendment",
+                        "eurlexUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1183"
+                    }
+                ],
+                "originalEurlexUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910"
+            }
         },
         "765-2008": {
             "label": "Referenced Regulation",

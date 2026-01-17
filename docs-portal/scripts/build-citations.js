@@ -17,6 +17,81 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // =============================================================================
+// DOCUMENT CONFIGURATION (for consolidation metadata)
+// =============================================================================
+
+/**
+ * Load document configuration from document-config.json.
+ * Contains consolidation metadata for self-reference detection.
+ */
+function loadDocumentConfig() {
+    const configPath = path.join(__dirname, 'document-config.json');
+    if (!fs.existsSync(configPath)) {
+        console.warn('⚠️  document-config.json not found');
+        return { documents: {} };
+    }
+    return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+}
+
+/**
+ * Extract base CELEX from a consolidated CELEX.
+ * E.g., "02014R0910-20241018" → "32014R0910"
+ *       "32014R0910" → "32014R0910" (already base)
+ * 
+ * Consolidated CELEX format: 0YYYYRNNN-YYYYMMDD (starts with 0)
+ * Base CELEX format: 3YYYYRNNN (starts with 3 for regulations)
+ */
+function extractBaseCelex(celex) {
+    if (!celex) return null;
+    // If starts with 0, it's a consolidated version
+    if (celex.startsWith('0')) {
+        // 02014R0910-20241018 → 32014R0910
+        const match = celex.match(/^0(\d{4}[A-Z]\d{4})/);
+        if (match) {
+            return '3' + match[1];
+        }
+    }
+    return celex;
+}
+
+/**
+ * Check if a citation CELEX matches the current document's base CELEX.
+ * This detects self-references in consolidated documents.
+ * 
+ * @param {string} citationCelex - CELEX of the citation (e.g., "32014R0910")
+ * @param {string} currentSlug - Current document slug (e.g., "910-2014")
+ * @param {Object} documentConfig - Document configuration object
+ * @returns {{ isSelfReference: boolean, consolidationInfo: Object|null }}
+ */
+function checkSelfReference(citationCelex, currentSlug, documentConfig) {
+    if (!currentSlug || !documentConfig?.documents?.[currentSlug]) {
+        return { isSelfReference: false, consolidationInfo: null };
+    }
+
+    const docInfo = documentConfig.documents[currentSlug];
+    const consolidation = docInfo.consolidation;
+
+    if (!consolidation) {
+        return { isSelfReference: false, consolidationInfo: null };
+    }
+
+    // Check if citation matches the base CELEX of this consolidated document
+    if (citationCelex === consolidation.baseCelex) {
+        return {
+            isSelfReference: true,
+            consolidationInfo: {
+                isConsolidated: true,
+                baseCelex: consolidation.baseCelex,
+                originalEurlexUrl: consolidation.originalEurlexUrl,
+                amendments: consolidation.amendments || [],
+            }
+        };
+    }
+
+    return { isSelfReference: false, consolidationInfo: null };
+}
+
+// =============================================================================
 // INTERNAL DOCUMENT REGISTRY
 // =============================================================================
 
@@ -184,8 +259,10 @@ function normalizeYear(year) {
  * - Regulation (EU|EC|EEC) YYYY/NNN
  * - Decision No NNN/YYYY/EC
  * - Council Regulation (EEC) No NNN/YY
+ * 
+ * DEC-060: Added currentSlug and documentConfig for self-reference detection.
  */
-function extractInformalCitations(content, documentRegistry, existingCelex) {
+function extractInformalCitations(content, documentRegistry, existingCelex, currentSlug = null, documentConfig = null) {
     const citations = [];
     const seen = new Set(existingCelex); // Skip already-found citations
 
@@ -251,6 +328,11 @@ function extractInformalCitations(content, documentRegistry, existingCelex) {
             const internalDoc = documentRegistry[celex];
             const isInternal = !!internalDoc;
 
+            // DEC-060: Check for self-reference
+            const { isSelfReference, consolidationInfo } = checkSelfReference(
+                celex, currentSlug, documentConfig
+            );
+
             // Build citation
             const citation = enrichCitation({
                 index: citations.length + 1,
@@ -258,6 +340,8 @@ function extractInformalCitations(content, documentRegistry, existingCelex) {
                 fullTitle: match[0].trim(),
                 celex,
                 isInternal,
+                isSelfReference,
+                consolidationInfo,
                 url: isInternal
                     ? internalDoc.route
                     : `https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${celex}`,
@@ -277,8 +361,14 @@ function extractInformalCitations(content, documentRegistry, existingCelex) {
  * Handles two patterns:
  * 1. Formal: [Full citation text (OJ ref, ELI: url).]
  * 2. Informal: Directive YYYY/NN/EC, Regulation (EU) No NNN/YYYY, etc.
+ * 
+ * DEC-060: Self-reference detection for consolidated documents.
+ * @param {string} content - Markdown content
+ * @param {Object} documentRegistry - Registry of internal documents
+ * @param {string} currentSlug - Slug of the document being processed (e.g., "910-2014")
+ * @param {Object} documentConfig - Document configuration with consolidation metadata
  */
-function extractCitations(content, documentRegistry) {
+function extractCitations(content, documentRegistry, currentSlug = null, documentConfig = null) {
     const citations = [];
     const seen = new Set();
 
@@ -308,6 +398,11 @@ function extractCitations(content, documentRegistry) {
         const internalDoc = documentRegistry[eliInfo.celex];
         const isInternal = !!internalDoc;
 
+        // DEC-060: Check for self-reference
+        const { isSelfReference, consolidationInfo } = checkSelfReference(
+            eliInfo.celex, currentSlug, documentConfig
+        );
+
         // Build citation object
         const citation = enrichCitation({
             index: citations.length + 1,
@@ -317,6 +412,8 @@ function extractCitations(content, documentRegistry) {
             eli: eliInfo.eli,
             celex: eliInfo.celex,
             isInternal,
+            isSelfReference,
+            consolidationInfo,
             url: isInternal
                 ? internalDoc.route
                 : `https://eur-lex.europa.eu/eli/${eliInfo.docType}/${eliInfo.year}/${eliInfo.number}/oj`,
@@ -330,7 +427,7 @@ function extractCitations(content, documentRegistry) {
     // PATTERN 2: Informal legislation references (no ELI)
     // ==========================================================================
 
-    const informalCitations = extractInformalCitations(content, documentRegistry, seen);
+    const informalCitations = extractInformalCitations(content, documentRegistry, seen, currentSlug, documentConfig);
 
     // Merge and re-index
     for (const informal of informalCitations) {
@@ -375,6 +472,9 @@ async function main() {
     // Build document registry from existing JSON files
     const registry = buildDocumentRegistry();
 
+    // DEC-060: Load document configuration for consolidation metadata
+    const documentConfig = loadDocumentConfig();
+
     // Source markdown directories
     const sourceDirs = [
         path.join(__dirname, '..', '..', '01_regulation'),
@@ -409,25 +509,25 @@ async function main() {
                 const mdPath = path.join(folderPath, mdFile);
                 const content = fs.readFileSync(mdPath, 'utf-8');
 
-                // Extract citations
-                const citations = extractCitations(content, registry);
+                // Generate slug from folder name FIRST (needed for self-reference detection)
+                // 2025_0846_Cross_Border_Identity → 2025-0846
+                // 910_2014_eIDAS_Consolidated → 910-2014
+                const slugMatch = folder.match(/^(\d{4})_(\d{4})|^(\d{3})_(\d{4})/);
+                let slug;
+                if (slugMatch) {
+                    if (slugMatch[1] && slugMatch[2]) {
+                        slug = `${slugMatch[1]}-${slugMatch[2]}`;
+                    } else if (slugMatch[3] && slugMatch[4]) {
+                        slug = `${slugMatch[3]}-${slugMatch[4]}`;
+                    }
+                } else {
+                    slug = folder.replace(/_/g, '-').toLowerCase();
+                }
+
+                // Extract citations (DEC-060: pass slug and config for self-reference detection)
+                const citations = extractCitations(content, registry, slug, documentConfig);
 
                 if (citations.length > 0) {
-                    // Generate slug from folder name
-                    // 2025_0846_Cross_Border_Identity → 2025-0846
-                    // 910_2014_eIDAS_Consolidated → 910-2014
-                    const slugMatch = folder.match(/^(\d{4})_(\d{4})|^(\d{3})_(\d{4})/);
-                    let slug;
-                    if (slugMatch) {
-                        if (slugMatch[1] && slugMatch[2]) {
-                            slug = `${slugMatch[1]}-${slugMatch[2]}`;
-                        } else if (slugMatch[3] && slugMatch[4]) {
-                            slug = `${slugMatch[3]}-${slugMatch[4]}`;
-                        }
-                    } else {
-                        slug = folder.replace(/_/g, '-').toLowerCase();
-                    }
-
                     // Save citations file
                     const citationFile = path.join(outputDir, `${slug}.json`);
                     fs.writeFileSync(citationFile, JSON.stringify({ citations }, null, 2));

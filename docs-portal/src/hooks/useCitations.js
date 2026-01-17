@@ -83,8 +83,9 @@ export function transformCitationsInHtml(html, citations, isMobile) {
         } else {
             // Desktop: span with data attributes for popover hydration
             // DEC-059: Enhanced with humanName, abbreviation, entryIntoForce, status
+            // DEC-060: Added isSelfReference and consolidationInfo for consolidated documents
             const replacement = `<span 
-                class="citation-trigger" 
+                class="citation-trigger${citation.isSelfReference ? ' citation-self-reference' : ''}" 
                 tabindex="0"
                 role="button"
                 data-citation-index="${citation.index}"
@@ -100,6 +101,8 @@ export function transformCitationsInHtml(html, citations, isMobile) {
                 data-citation-status="${citation.status || ''}"
                 data-citation-status-label="${citation.statusDisplay?.label || ''}"
                 data-citation-status-color="${citation.statusDisplay?.color || ''}"
+                data-citation-self-reference="${citation.isSelfReference || false}"
+                data-citation-consolidation="${citation.consolidationInfo ? encodeURIComponent(JSON.stringify(citation.consolidationInfo)) : ''}"
             >${citation.shortName}</span>`;
             transformed = transformed.replace(pattern, replacement);
         }

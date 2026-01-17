@@ -1133,3 +1133,118 @@ Standard markdown interpretation caused issues:
 **Files Modified:**
 - `scripts/build-terminology.js` — Added grouping logic
 - `src/pages/Terminology.jsx` — Added DefinitionGroup component with accordion UI
+
+---
+
+## DEC-059: Citation Popover Enhancement (2026-01-17)
+
+**Status:** Accepted
+
+**Context:**
+The existing citation popovers displayed minimal information—just the formal citation text and a link. Users needed more context to understand what legislation they were hovering over.
+
+**Decision:**
+Implement **Hybrid B+C design** that combines rich metadata with clear action buttons.
+
+**Popover Content:**
+- **Header:** Abbreviation badge (e.g., "GDPR", "eIDAS") + Status indicator (In Force/Repealed)
+- **Title:** Human-friendly name (e.g., "General Data Protection Regulation")
+- **Subtitle:** Formal citation (e.g., "Regulation (EU) 2016/679")
+- **Date:** Entry into force date
+- **Category:** "Available in Portal" badge for internal documents
+- **Actions:** 
+  - Internal: "View in Portal →" + "EUR-Lex ↗"
+  - External: "View on EUR-Lex ↗"
+
+**Implementation:**
+- `scripts/legislation-metadata.js` — Registry of legislation metadata (humanName, abbreviation, entryIntoForce, status)
+- `scripts/build-citations.js` — `enrichCitation()` function adds metadata during build
+- `src/pages/RegulationViewer.jsx` — Popover template updated with rich content
+- `src/components/CitationPopover/CitationPopover.css` — Styling for badges, status indicators
+
+**Files Modified:**
+| File | Change |
+|------|--------|
+| `scripts/legislation-metadata.js` | New: 220+ line metadata registry |
+| `scripts/build-citations.js` | Added enrichCitation() with metadata lookup |
+| `src/pages/RegulationViewer.jsx` | Updated popover HTML template |
+| `src/components/CitationPopover/CitationPopover.css` | Added badge/status styles |
+
+---
+
+## DEC-060: Smart Consolidation Self-Reference Detection (2026-01-17)
+
+**Status:** ✅ Complete
+
+**Context:**
+When reading the consolidated eIDAS Regulation (910-2014), a citation to "Regulation (EU) No 910/2014" triggered a popover suggesting users view the document on EUR-Lex—despite already reading the consolidated version of that exact regulation. This was semantically misleading.
+
+**Problem:**
+1. User is reading `02014R0910-20241018` (consolidated eIDAS)
+2. Citation references `32014R0910` (original eIDAS)
+3. Popover treats it as external document
+4. User is confused: "Shouldn't I already be reading this?"
+
+**Decision:**
+Implement **Smart Consolidation** pattern that detects self-referential citations and renders a special popover variant.
+
+**Self-Reference Detection (Build-Time):**
+```
+document-config.json                   build-citations.js
+┌─────────────────────────────┐       ┌───────────────────────────────────┐
+│ "910-2014": {               │       │ checkSelfReference(citationCelex, │
+│   "consolidation": {        │───▶   │   currentSlug, documentConfig)    │
+│     "baseCelex": "32014R0910"       │                                   │
+│     "amendments": [...]     │       │ Returns: {                        │
+│   }                         │       │   isSelfReference: true,          │
+│ }                           │       │   consolidationInfo: {...}        │
+└─────────────────────────────┘       │ }                                 │
+                                      └───────────────────────────────────┘
+```
+
+**Consolidated Popover UI:**
+```
+┌───────────────────────────────────────────────┐
+│  📍 CURRENT DOCUMENT                          │
+├───────────────────────────────────────────────┤
+│  Electronic Identification and Trust Services │
+│  Regulation                                    │
+│                                               │
+│  Regulation (EU) No 910/2014                  │
+│                                               │
+│  As amended by: eIDAS 2.0 Amendment           │
+│                                               │
+│  ┌───────────────────────────────────────────┐│
+│  │ View on EUR-Lex:                          ││
+│  │  📄 Original (2014) ↗   📝 Amendment ↗   ││
+│  └───────────────────────────────────────────┘│
+│                                               │
+│  ✓ You're reading the merged version          │
+└───────────────────────────────────────────────┘
+```
+
+**Key Features:**
+1. **Cyan "CURRENT DOCUMENT" badge** — Immediately signals self-reference
+2. **"As amended by" list** — Shows which amendments are folded in
+3. **Dual EUR-Lex links** — Separate buttons for Original and Amendment documents
+4. **"Merged version" notice** — Confirms user is reading the consolidated text
+
+**Implementation (Files Modified):**
+
+| File | Change |
+|------|--------|
+| `scripts/document-config.json` | Added `consolidation` block with baseCelex/amendments |
+| `scripts/build-citations.js` | Added `checkSelfReference()`, `extractBaseCelex()` |
+| `src/hooks/useCitations.js` | Added `data-citation-self-reference` and `data-citation-consolidation` attributes |
+| `src/pages/RegulationViewer.jsx` | Conditional rendering for consolidated variant popover |
+| `src/components/CitationPopover/CitationPopover.css` | `.citation-popover--consolidated` and related styles |
+
+**Benefits:**
+1. **Legal accuracy** — Acknowledges consolidation relationship
+2. **Transparency** — Clearly shows amendment provenance
+3. **Educational** — Teaches users about EU law consolidation
+4. **Traceability** — Provides links to both original and amending acts
+
+**Future Work:**
+- Extend pattern to other consolidated documents as they're added
+- Consider same treatment for citations to 2024/1183 (the amendment itself)
