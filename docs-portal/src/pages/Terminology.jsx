@@ -282,13 +282,10 @@ const Terminology = () => {
                                             {term.sources.map((source, idx) => (
                                                 <div
                                                     key={idx}
-                                                    className={`definition-source ${source.documentCategory}`}
+                                                    className="definition-source"
                                                     style={{
-                                                        borderLeft: source.documentCategory === 'primary'
-                                                            ? '3px solid var(--accent-primary)'
-                                                            : '3px solid var(--purple-accent, #a855f7)',
-                                                        paddingLeft: 'var(--space-3)',
-                                                        opacity: source.documentCategory === 'referenced' ? 0.9 : 1
+                                                        borderLeft: '3px solid var(--accent-primary)',
+                                                        paddingLeft: 'var(--space-3)'
                                                     }}
                                                 >
                                                     {/* Merged source header + link: clickable header eliminates redundancy */}
@@ -302,18 +299,13 @@ const Terminology = () => {
                                                             gap: 'var(--space-2)',
                                                             marginBottom: 'var(--space-2)',
                                                             fontSize: 'var(--text-sm)',
-                                                            color: 'var(--accent-secondary)',
+                                                            color: 'var(--accent-primary)',
                                                             textDecoration: 'none'
                                                         }}
                                                     >
                                                         <span>
                                                             <strong>{source.documentTitle}</strong>, Article {source.articleNumber} →
                                                         </span>
-                                                        {source.documentCategory === 'referenced' && (
-                                                            <span className="referenced-badge" style={{ background: 'var(--purple-accent, #a855f7)', color: 'white', padding: '0.125rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
-                                                                Referenced
-                                                            </span>
-                                                        )}
                                                     </Link>
                                                     <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, margin: 0 }}>
                                                         {source.definition}
