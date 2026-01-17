@@ -23,6 +23,25 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// =============================================================================
+// ROUTE PATH CONSTANTS
+// =============================================================================
+// ⚠️ IMPORTANT: These must match the router paths in App.jsx
+// Using singular form: /regulation/ not /regulations/
+
+const ROUTES = {
+    REGULATION: '#/regulation',
+    IMPLEMENTING_ACT: '#/implementing-acts',
+};
+
+// =============================================================================
+// CACHE VERSION
+// =============================================================================
+// ⚠️ INCREMENT THIS when changing script logic that affects output format.
+// The hash-based cache only detects content changes, not script changes.
+// Bumping this version forces a full rebuild.
+const CACHE_VERSION = '1.0.1';  // Bumped: fixed plural→singular route path
+
 /**
  * Compute MD5 hash of content for cache validation.
  * @param {string} content - Content to hash
@@ -136,8 +155,8 @@ function buildDocumentRegistry() {
         const type = content.type;
 
         const route = type === 'regulation'
-            ? `#/regulation/${slug}`
-            : `#/implementing-acts/${slug}`;
+            ? `${ROUTES.REGULATION}/${slug}`
+            : `${ROUTES.IMPLEMENTING_ACT}/${slug}`;
 
         if (celex) {
             registry[celex] = { slug, type, route };
@@ -214,8 +233,10 @@ function validateProvisionLinks(citations, anchorIndex, sourceSlug) {
         const anchor = citation.provision.anchor;
         const url = citation.url || '';
 
-        // Extract target slug from URL: #/regulation/910-2014?section=article-5
-        const slugMatch = url.match(/#\/(?:regulation|implementing-acts)\/([^?]+)/);
+        // Extract target slug from URL using ROUTES patterns
+        // Example: #/regulation/910-2014?section=article-5
+        const routePattern = new RegExp(`(?:${ROUTES.REGULATION}|${ROUTES.IMPLEMENTING_ACT})/([^?]+)`.replace('#', '#'));
+        const slugMatch = url.match(routePattern);
         if (!slugMatch) continue;
 
         const targetSlug = slugMatch[1];
@@ -836,8 +857,11 @@ async function main() {
                         }
                     }
 
-                    // Compute hash for cache validation (content + config version)
-                    const cacheKey = computeHash(content + JSON.stringify(documentConfig.documents[slug] || {}));
+                    // Compute hash for cache validation (content + config + script version)
+                    // ⚠️ CACHE_VERSION must be bumped when script logic changes
+                    const cacheKey = computeHash(
+                        CACHE_VERSION + content + JSON.stringify(documentConfig.documents[slug] || {})
+                    );
                     const citationFile = path.join(outputDir, `${slug}.json`);
 
                     // Check if output already exists and matches

@@ -995,6 +995,50 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** Deleting symptom-fix scripts without addressing root causes creates orphaned documentation, wasted investigation time, and recurring bugs.
 
+29. **Build Script Cache Invalidation (GOTCHA):**
+    
+    **Build scripts with hash-based caching (like `build-citations.js`) only detect SOURCE CONTENT changes, not SCRIPT LOGIC changes.**
+    
+    **Problem:**
+    ```bash
+    # You fix a bug in build-citations.js (e.g., route path typo)
+    # You run: node scripts/build-citations.js
+    # Output: "⚡ Cache hits: 33" — all files skipped!
+    # The fix wasn't applied because source markdown didn't change
+    ```
+    
+    **Solution in this project:**
+    
+    1. **Bump CACHE_VERSION** in the build script when changing output-affecting logic:
+       ```javascript
+       // In build-citations.js (and similar scripts with caching)
+       const CACHE_VERSION = '1.0.2';  // Bump this when you change script logic
+       ```
+    
+    2. **Manual cache clear** if you forget to bump version:
+       ```bash
+       rm public/data/citations/*.json && node scripts/build-citations.js
+       ```
+    
+    **Scripts with this pattern:**
+    - `build-citations.js` — uses `CACHE_VERSION` in hash computation
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: Fixed /regulations/ → /regulation/ in build-citations.js
+    Problem: Ran build, but cached JSON still had old URLs
+    Root cause: Hash only checked source markdown, not script logic
+    Fix: Added CACHE_VERSION to hash + cleared cache manually
+    Time lost: ~10 min debugging why fix wasn't applied
+    ```
+    
+    **Route Path Convention:**
+    This project uses **singular** route paths:
+    - ✅ `/regulation/` (not `/regulations/`)
+    - ✅ `/implementing-acts/` (already correct)
+    
+    Routes are defined via `ROUTES` constants in `build-citations.js`.
+
 ## Project Structure
 
 ```

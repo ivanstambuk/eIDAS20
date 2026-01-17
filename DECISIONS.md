@@ -1423,3 +1423,43 @@ Updated `generateStandardPopoverHtml()` to:
 - Show human-readable name of amending regulation in notice
 - Support multiple amendments in sequence (show most recent with "…and N others")
 
+
+
+---
+
+## DEC-065: Terminology Distinction for Implementing Regulations
+
+**Date:** 2025-01-17
+**Status:** Implemented
+**Context:** Citation popovers displayed "Regulation 2024/2980" for implementing acts, which is technically imprecise. These are Commission Implementing Regulations, not base regulations like GDPR or eIDAS.
+
+**Decision:**
+
+1. **Popovers use precise terminology**: Display "Implementing Regulation YYYY/NNNN" for implementing regulations, distinguishing them from base regulations.
+
+2. **Sidebar uses shorter term for UX**: Keep "Implementing Acts" in the navigation sidebar because "Implementing Regulations" wraps to two lines due to sidebar width constraints.
+
+**Rationale:**
+
+| Location | Term | Reasoning |
+|----------|------|-----------|
+| **Sidebar navigation** | "Implementing Acts" | Fits on one line; acceptable as the broader category name |
+| **Citation popovers** | "Implementing Regulation X/Y" | Precise legal terminology where users are examining specific documents |
+
+Both terms are technically correct:
+- "Implementing Acts" = umbrella category (includes regulations, decisions, etc.)
+- "Implementing Regulation" = specific legal form (all eIDAS implementing acts happen to be regulations)
+
+**Implementation:**
+
+1. Added `subcategory: 'implementing'` to all 9 implementing regulations in `legislation-metadata.js`
+2. Added `formatFormalName()` helper in `citationPopoverTemplate.js` that prepends "Implementing" when `subcategory === 'implementing'`
+3. Updated `build-citations.js` to pass `subcategory` through to citation objects
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `scripts/legislation-metadata.js` | Added `subcategory: 'implementing'` to 9 implementing regulations |
+| `scripts/build-citations.js` | Extended `enrichCitation()` with `subcategory` field |
+| `src/utils/citationPopoverTemplate.js` | Added `formatFormalName()` helper to transform "Regulation X/Y" → "Implementing Regulation X/Y" |

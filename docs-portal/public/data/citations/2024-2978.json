@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "0f9659cc31d1f65880c53338617b6225",
+  "_cacheKey": "dfec21b96eb1eedc102a455c58f694ee",
   "citations": [
     {
       "index": 1,
@@ -23,10 +23,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -48,10 +50,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": "implementing",
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -63,6 +67,39 @@
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1143",
       "originalText": "Regulation (EU) 2024/1143",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 4,
+      "shortName": "Regulation (EU) 2024/1143",
+      "fullTitle": "Regulation (EU) 2024/1143",
+      "celex": "32024R1143",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1143",
+      "originalText": "Article 17 of Regulation (EU) 2024/1143",
+      "provision": {
+        "type": "article",
+        "display": "Article 17",
+        "anchor": "article-17",
+        "fullReference": "Article 17 of Regulation (EU) 2024/1143"
+      },
       "humanName": null,
       "abbreviation": null,
       "entryIntoForce": null,

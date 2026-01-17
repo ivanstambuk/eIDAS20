@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "aa228fdbe7b2c516d451f7d77ef3c804",
+  "_cacheKey": "282b8269e08b5ec5252a6e92cac017e4",
   "citations": [
     {
       "index": 1,
@@ -21,10 +21,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -46,10 +48,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -71,10 +75,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 4,
@@ -96,20 +102,22 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 5,
       "shortName": "Regulation (EC) No 765/2008",
       "fullTitle": "Regulation (EC) No 765/2008",
       "celex": "32008R0765",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R0765",
+      "url": "#/regulation/765-2008",
       "originalText": "Regulation (EC) No 765/2008",
       "humanName": "Accreditation and Market Surveillance Regulation",
       "abbreviation": null,
@@ -121,10 +129,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 6,
@@ -146,10 +156,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 7,
@@ -171,10 +183,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 8,
@@ -196,10 +210,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 9,
@@ -221,10 +237,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 10,
@@ -246,10 +264,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 11,
@@ -271,10 +291,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 12,
@@ -296,10 +318,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 13,
@@ -321,10 +345,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 14,
@@ -336,6 +362,39 @@
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008D0768",
       "originalText": "Decision No 768/2008/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 15,
+      "shortName": "Regulation 95/2988",
+      "fullTitle": null,
+      "celex": "32988R0095",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32988R0095",
+      "originalText": "Article 1(2) of Regulation (EC, Euratom) No 2988/95",
+      "provision": {
+        "type": "article",
+        "display": "Article 1(2)",
+        "anchor": "article-1-para-2",
+        "fullReference": "Article 1(2) of Regulation (EC, Euratom) No 2988/95"
+      },
       "humanName": null,
       "abbreviation": null,
       "entryIntoForce": null,

@@ -81,17 +81,11 @@ const RegulationViewer = () => {
         let hideTimeout = null;
 
         const showPopover = (triggerEl) => {
-            // Parse data attributes from the span
-            const data = {
-                idx: triggerEl.dataset.idx,
-                short: triggerEl.dataset.short,
-                celex: triggerEl.dataset.celex,
-                isInternal: triggerEl.dataset.internal === 'true',
-                url: triggerEl.dataset.url,
-            };
+            // Parse data attributes from the span (format from build-time transformation)
+            const idx = triggerEl.dataset.idx;
 
-            // Find the full citation from loaded data
-            const citation = citations.find(c => c.index === parseInt(data.idx, 10));
+            // Find the full citation from loaded data (includes provision info from build-citations.js)
+            const citation = citations.find(c => c.index === parseInt(idx, 10));
             if (!citation) return;
 
             // Generate popover content using extracted template utility
@@ -405,7 +399,7 @@ const RegulationViewer = () => {
                         className="regulation-content card"
                         style={{ padding: 'var(--space-8)' }}
                     >
-                        {/* Main content - citations already transformed at build time */}
+                        {/* Main content - citations already in HTML from build-content.js (DEC-064: provision data comes from citations JSON) */}
                         <div dangerouslySetInnerHTML={{ __html: regulation.contentHtml }} />
 
                         {/* References section (shown on mobile, also for accessibility) */}

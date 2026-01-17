@@ -101,6 +101,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',  // DEC-064: Distinguishes from regular regulations
     },
 
     '32024R2978': {
@@ -109,6 +110,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32024R2979': {
@@ -117,6 +119,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32024R2980': {
@@ -125,6 +128,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32024R2981': {
@@ -133,6 +137,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32024R2982': {
@@ -141,6 +146,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2024-12-25',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32025R0846': {
@@ -149,6 +155,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2025-01-14',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32025R0847': {
@@ -157,6 +164,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2025-01-14',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     '32025R0848': {
@@ -165,6 +173,7 @@ export const LEGISLATION_METADATA = {
         entryIntoForce: '2025-01-14',
         status: 'in-force',
         category: 'regulation',
+        subcategory: 'implementing',
     },
 
     // =========================================================================

@@ -176,9 +176,15 @@ function transformCitationsInMarkdown(content, citations) {
         // The originalText is exactly as it appears in the markdown
         const originalText = citation.originalText;
 
+        // DEC-064: For provision citations, show the full reference (e.g., "Article 5a(23) of Regulation 910/2014")
+        // For base citations, show just the short name
+        const displayText = citation.provision
+            ? citation.provision.fullReference
+            : citation.shortName;
+
         // Replace with HTML span (will pass through markdown processor)
         // Using data attributes for frontend popover hydration
-        const replacement = `<span class="citation-ref" tabindex="0" role="button" data-idx="${citation.index}" data-short="${citation.shortName.replace(/"/g, '&quot;')}" data-celex="${citation.celex || ''}" data-internal="${citation.isInternal}" data-url="${citation.url}">${citation.shortName}</span>`;
+        const replacement = `<span class="citation-ref" tabindex="0" role="button" data-idx="${citation.index}" data-short="${citation.shortName.replace(/"/g, '&quot;')}" data-celex="${citation.celex || ''}" data-internal="${citation.isInternal}" data-url="${citation.url}">${displayText}</span>`;
 
         // Use simple string includes/replace - more reliable than regex for complex text
         if (transformed.includes(originalText)) {

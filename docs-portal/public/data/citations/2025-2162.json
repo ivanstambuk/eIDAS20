@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "baeb1d47ab0b209ad6783ffc07b30e4a",
+  "_cacheKey": "29d594a0bc23f618f866d58fe9233885",
   "citations": [
     {
       "index": 1,
@@ -23,10 +23,12 @@
         "color": "green"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -35,10 +37,10 @@
       "ojRef": "OJ L 218, 13.8.2008, p. 30",
       "eli": "http://data.europa.eu/eli/reg/2008/765/oj",
       "celex": "32008R0765",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/eli/reg/2008/765/oj",
+      "url": "#/regulation/765-2008",
       "originalText": "\\[Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93 (OJ L 218, 13.8.2008, p. 30, ELI: http://data.europa.eu/eli/reg/2008/765/oj).\\]",
       "humanName": "Accreditation and Market Surveillance Regulation",
       "abbreviation": null,
@@ -50,10 +52,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -65,7 +69,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulations/2024-1183",
+      "url": "#/regulation/2024-1183",
       "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
@@ -77,10 +81,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 4,
@@ -104,10 +110,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 5,
@@ -131,10 +139,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 6,
@@ -158,10 +168,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 7,
@@ -183,10 +195,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 8,
@@ -208,10 +222,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 9,
@@ -233,20 +249,22 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 10,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "url": "#/regulation/910-2014",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -258,12 +276,14 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": [
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
       "consolidatedSlug": "910-2014",
-      "isAmended": true
+      "isAmended": true,
+      "provision": null
     },
     {
       "index": 11,
@@ -285,10 +305,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 12,
@@ -310,10 +332,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 13,
@@ -335,10 +359,796 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 14,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "Article 21 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 21",
+        "anchor": "article-21",
+        "fullReference": "Article 21 of Directive (EU) 2022/2555"
+      },
+      "humanName": "Network and Information Security Directive",
+      "abbreviation": "NIS2",
+      "entryIntoForce": "2023-01-16",
+      "entryIntoForceDisplay": "16 Jan 2023",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "directive",
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
       "isAmended": false
+    },
+    {
+      "index": 15,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-45f-para-3",
+      "originalText": "Article 45f(3) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 45f(3)",
+        "anchor": "article-45f-para-3",
+        "fullReference": "Article 45f(3) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 16,
+      "shortName": "Regulation 765/2008",
+      "fullTitle": "Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93",
+      "celex": "32008R0765",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/765-2008?section=article-5",
+      "originalText": "Article 5 of Regulation (EC) No 765/2008",
+      "provision": {
+        "type": "article",
+        "display": "Article 5",
+        "anchor": "article-5",
+        "fullReference": "Article 5 of Regulation (EC) No 765/2008"
+      },
+      "humanName": "Accreditation and Market Surveillance Regulation",
+      "abbreviation": null,
+      "entryIntoForce": "2010-01-01",
+      "entryIntoForceDisplay": "1 Jan 2010",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 17,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-22",
+      "originalText": "Article 22 of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 22",
+        "anchor": "article-22",
+        "fullReference": "Article 22 of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 18,
+      "shortName": "Regulation 2024/1183",
+      "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
+      "celex": "32024R1183",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/2024-1183?section=recital-75",
+      "originalText": "Recital 75 of Regulation (EU) 2024/1183",
+      "provision": {
+        "type": "recital",
+        "display": "Recital 75",
+        "anchor": "recital-75",
+        "fullReference": "Recital 75 of Regulation (EU) 2024/1183"
+      },
+      "humanName": "European Digital Identity Framework",
+      "abbreviation": "eIDAS 2.0",
+      "entryIntoForce": "2024-05-20",
+      "entryIntoForceDisplay": "20 May 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 19,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "Article 42(1) of Regulation (EU) 2018/1725",
+      "provision": {
+        "type": "article",
+        "display": "Article 42(1)",
+        "anchor": "article-42-para-1",
+        "fullReference": "Article 42(1) of Regulation (EU) 2018/1725"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 20,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-48",
+      "originalText": "Article 48 of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 48",
+        "anchor": "article-48",
+        "fullReference": "Article 48 of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 21,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-46b-para-1",
+      "originalText": "Article 46b(1) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 46b(1)",
+        "anchor": "article-46b-para-1",
+        "fullReference": "Article 46b(1) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 22,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-20-para-1",
+      "originalText": "Article 20(1) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 20(1)",
+        "anchor": "article-20-para-1",
+        "fullReference": "Article 20(1) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 23,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-22-para-5",
+      "originalText": "Article 22(5) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 22(5)",
+        "anchor": "article-22-para-5",
+        "fullReference": "Article 22(5) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 24,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-24-para-5",
+      "originalText": "Article 24(5) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 24(5)",
+        "anchor": "article-24-para-5",
+        "fullReference": "Article 24(5) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 25,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-28-para-6",
+      "originalText": "Article 28(6) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 28(6)",
+        "anchor": "article-28-para-6",
+        "fullReference": "Article 28(6) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 26,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-38-para-6",
+      "originalText": "Article 38(6) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 38(6)",
+        "anchor": "article-38-para-6",
+        "fullReference": "Article 38(6) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 27,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-45-para-2",
+      "originalText": "Article 45(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 45(2)",
+        "anchor": "article-45-para-2",
+        "fullReference": "Article 45(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 28,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-33-para-2",
+      "originalText": "Article 33(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 33(2)",
+        "anchor": "article-33-para-2",
+        "fullReference": "Article 33(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 29,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-40",
+      "originalText": "Article 40 of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 40",
+        "anchor": "article-40",
+        "fullReference": "Article 40 of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 30,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-34-para-2",
+      "originalText": "Article 34(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 34(2)",
+        "anchor": "article-34-para-2",
+        "fullReference": "Article 34(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 31,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-42-para-2",
+      "originalText": "Article 42(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 42(2)",
+        "anchor": "article-42-para-2",
+        "fullReference": "Article 42(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 32,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-44-para-2",
+      "originalText": "Article 44(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 44(2)",
+        "anchor": "article-44-para-2",
+        "fullReference": "Article 44(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 33,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-29a-para-2",
+      "originalText": "Article 29a(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 29a(2)",
+        "anchor": "article-29a-para-2",
+        "fullReference": "Article 29a(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 34,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-39a",
+      "originalText": "Article 39a of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 39a",
+        "anchor": "article-39a",
+        "fullReference": "Article 39a of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 35,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-45j-para-2",
+      "originalText": "Article 45j(2) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 45j(2)",
+        "anchor": "article-45j-para-2",
+        "fullReference": "Article 45j(2) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 36,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-45d-para-5",
+      "originalText": "Article 45d(5) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 45d(5)",
+        "anchor": "article-45d-para-5",
+        "fullReference": "Article 45d(5) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 37,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-45l-para-3",
+      "originalText": "Article 45l(3) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 45l(3)",
+        "anchor": "article-45l-para-3",
+        "fullReference": "Article 45l(3) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
     }
   ]
 }

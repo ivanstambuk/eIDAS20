@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "28ab76792b2cebaf89898b95325eb61d",
+  "_cacheKey": "c45ca6e7e5f259f318d1b6407f41fdb3",
   "citations": [
     {
       "index": 1,
@@ -23,10 +23,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -50,10 +52,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -77,10 +81,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 4,
@@ -104,10 +110,12 @@
         "color": "green"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 5,
@@ -129,10 +137,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 6,
@@ -154,10 +164,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 7,
@@ -179,20 +191,22 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 8,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "url": "#/regulation/910-2014",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -204,12 +218,14 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": [
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
       "consolidatedSlug": "910-2014",
-      "isAmended": true
+      "isAmended": true,
+      "provision": null
     },
     {
       "index": 9,
@@ -231,10 +247,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 10,
@@ -256,10 +274,235 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 11,
+      "shortName": "Regulation 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
+      "originalText": "Article 42(1) of Regulation (EU) 2018/1725",
+      "provision": {
+        "type": "article",
+        "display": "Article 42(1)",
+        "anchor": "article-42-para-1",
+        "fullReference": "Article 42(1) of Regulation (EU) 2018/1725"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
       "isAmended": false
+    },
+    {
+      "index": 12,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-48",
+      "originalText": "Article 48 of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 48",
+        "anchor": "article-48",
+        "fullReference": "Article 48 of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 13,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "Article 21(2) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 21(2)",
+        "anchor": "article-21-para-2",
+        "fullReference": "Article 21(2) of Directive (EU) 2022/2555"
+      },
+      "humanName": "Network and Information Security Directive",
+      "abbreviation": "NIS2",
+      "entryIntoForce": "2023-01-16",
+      "entryIntoForceDisplay": "16 Jan 2023",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "directive",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 14,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "Article 8(1) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 8(1)",
+        "anchor": "article-8-para-1",
+        "fullReference": "Article 8(1) of Directive (EU) 2022/2555"
+      },
+      "humanName": "Network and Information Security Directive",
+      "abbreviation": "NIS2",
+      "entryIntoForce": "2023-01-16",
+      "entryIntoForceDisplay": "16 Jan 2023",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "directive",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 15,
+      "shortName": "Directive 2022/2555",
+      "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "originalText": "Article 21 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 21",
+        "anchor": "article-21",
+        "fullReference": "Article 21 of Directive (EU) 2022/2555"
+      },
+      "humanName": "Network and Information Security Directive",
+      "abbreviation": "NIS2",
+      "entryIntoForce": "2023-01-16",
+      "entryIntoForceDisplay": "16 Jan 2023",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "directive",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 16,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-24-para-2-point-i",
+      "originalText": "Article 24(2), point (i) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 24(2), point (i)",
+        "anchor": "article-24-para-2-point-i",
+        "fullReference": "Article 24(2), point (i) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 17,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-20-para-4",
+      "originalText": "Article 20(4) of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 20(4)",
+        "anchor": "article-20-para-4",
+        "fullReference": "Article 20(4) of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
     }
   ]
 }

@@ -8,6 +8,27 @@
  */
 
 /**
+ * Format the formal name for display in the popover.
+ * DEC-064: Prepends "Implementing" for implementing regulations to distinguish
+ * them from base regulations like GDPR or eIDAS.
+ * 
+ * @param {Object} citation - Citation object with shortName, category, subcategory
+ * @returns {string} Formatted name (e.g., "Implementing Regulation 2024/2980")
+ */
+function formatFormalName(citation) {
+    // Check if this is an implementing regulation
+    if (citation.subcategory === 'implementing' && citation.category === 'regulation') {
+        // If shortName already starts with "Regulation", replace it with "Implementing Regulation"
+        if (citation.shortName?.startsWith('Regulation ')) {
+            return citation.shortName.replace('Regulation ', 'Implementing Regulation ');
+        }
+        // Otherwise, just prepend "Implementing"
+        return `Implementing ${citation.shortName}`;
+    }
+    return citation.shortName;
+}
+
+/**
  * Generate the HTML content for a consolidated document self-reference popover.
  * Used when a document cites its own base regulation (e.g., 910/2014 citing itself).
  * 
@@ -56,6 +77,17 @@ export function generateConsolidatedPopoverHtml(citation) {
  * @returns {string} HTML string for the popover content
  */
 export function generateStandardPopoverHtml(citation) {
+    // DEC-064: Provision header (displayed prominently if citation targets a specific provision)
+    let provisionSection = '';
+    if (citation.provision) {
+        provisionSection = `
+            <div class="citation-popover-provision">
+                <span class="citation-popover-provision-icon">📍</span>
+                <span class="citation-popover-provision-text">${citation.provision.display}</span>
+            </div>
+        `;
+    }
+
     // Header: Abbreviation + Status + (optionally) AMENDED badge
     const headerParts = [];
     if (citation.abbreviation) {
@@ -104,6 +136,11 @@ export function generateStandardPopoverHtml(citation) {
 
     // Action buttons
     // DEC-062: For amended regulations with consolidatedSlug, show "View Consolidated" as primary
+    // DEC-064: For provision citations, action text indicates provision target
+    const actionLabel = citation.provision && citation.isInternal
+        ? `View ${citation.provision.display} →`
+        : 'View in Portal →';
+
     let actionButtons;
     if (citation.isAmended && citation.consolidatedSlug) {
         // Consolidated document available in portal
@@ -113,7 +150,7 @@ export function generateStandardPopoverHtml(citation) {
         `;
     } else if (citation.isInternal) {
         actionButtons = `
-            <a href="${citation.url}" class="citation-popover-link citation-popover-link--primary">View in Portal →</a>
+            <a href="${citation.url}" class="citation-popover-link citation-popover-link--primary">${actionLabel}</a>
             <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--secondary">EUR-Lex ↗</a>
         `;
     } else {
@@ -121,11 +158,12 @@ export function generateStandardPopoverHtml(citation) {
     }
 
     return `
+        ${provisionSection}
         <div class="citation-popover-header">
             ${headerParts.join('')}
         </div>
         <h3 class="citation-popover-human-name">${citation.humanName || citation.fullTitle}</h3>
-        <p class="citation-popover-formal">${citation.shortName}</p>
+        <p class="citation-popover-formal">${formatFormalName(citation)}</p>
         ${dateText}
         ${amendmentNotice}
         ${categoryBadge}

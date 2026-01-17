@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "4cc034100281c66efa359c5e55bc4ce4",
+  "_cacheKey": "039d15b2a80875ed41a841c757f284b5",
   "citations": [
     {
       "index": 1,
@@ -21,10 +21,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -46,10 +48,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -71,10 +75,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 4,
@@ -96,10 +102,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 5,
@@ -109,7 +117,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulations/2024-1183",
+      "url": "#/regulation/2024-1183",
       "originalText": "Regulation (EU) 2024/1183",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
@@ -121,10 +129,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 6,
@@ -146,10 +156,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 7,
@@ -171,10 +183,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 8,
@@ -196,10 +210,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 9,
@@ -221,10 +237,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 10,
@@ -246,10 +264,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 11,
@@ -271,20 +291,22 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 12,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "url": "#/regulation/910-2014",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -296,12 +318,14 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": [
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
       "consolidatedSlug": "910-2014",
-      "isAmended": true
+      "isAmended": true,
+      "provision": null
     },
     {
       "index": 13,
@@ -323,10 +347,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 14,
@@ -348,20 +374,22 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 15,
       "shortName": "Regulation (EC) No 765/2008",
       "fullTitle": "Regulation (EC) No 765/2008",
       "celex": "32008R0765",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R0765",
+      "url": "#/regulation/765-2008",
       "originalText": "Regulation (EC) No 765/2008",
       "humanName": "Accreditation and Market Surveillance Regulation",
       "abbreviation": null,
@@ -373,10 +401,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 16,
@@ -398,10 +428,487 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 17,
+      "shortName": "Regulation (EU) 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+      "originalText": "Article 17 of Regulation (EU) 2016/679",
+      "provision": {
+        "type": "article",
+        "display": "Article 17",
+        "anchor": "article-17",
+        "fullReference": "Article 17 of Regulation (EU) 2016/679"
+      },
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
       "isAmended": false
+    },
+    {
+      "index": 18,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=article-46b",
+      "originalText": "Article 46b of Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "article",
+        "display": "Article 46b",
+        "anchor": "article-46b",
+        "fullReference": "Article 46b of Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 19,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 8(1) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 8(1)",
+        "anchor": "article-8-para-1",
+        "fullReference": "Article 8(1) of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 20,
+      "shortName": "Regulation (EU) 2022/2065",
+      "fullTitle": "Regulation (EU) 2022/2065",
+      "celex": "32022R2065",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065",
+      "originalText": "Article 33(1) of Regulation (EU) 2022/2065",
+      "provision": {
+        "type": "article",
+        "display": "Article 33(1)",
+        "anchor": "article-33-para-1",
+        "fullReference": "Article 33(1) of Regulation (EU) 2022/2065"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 21,
+      "shortName": "Regulation (EU) 2018/1725",
+      "fullTitle": "Regulation (EU) 2018/1725",
+      "celex": "32018R1725",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R1725",
+      "originalText": "Article 42(1) of Regulation (EU) 2018/1725",
+      "provision": {
+        "type": "article",
+        "display": "Article 42(1)",
+        "anchor": "article-42-para-1",
+        "fullReference": "Article 42(1) of Regulation (EU) 2018/1725"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 22,
+      "shortName": "Regulation (EU) 2022/2065",
+      "fullTitle": "Regulation (EU) 2022/2065",
+      "celex": "32022R2065",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065",
+      "originalText": "Article 33 of Regulation (EU) 2022/2065",
+      "provision": {
+        "type": "article",
+        "display": "Article 33",
+        "anchor": "article-33",
+        "fullReference": "Article 33 of Regulation (EU) 2022/2065"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 23,
+      "shortName": "Regulation (EU) 2022/1925",
+      "fullTitle": "Regulation (EU) 2022/1925",
+      "celex": "32022R1925",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R1925",
+      "originalText": "Article 6(7) of Regulation (EU) 2022/1925",
+      "provision": {
+        "type": "article",
+        "display": "Article 6(7)",
+        "anchor": "article-6-para-7",
+        "fullReference": "Article 6(7) of Regulation (EU) 2022/1925"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 24,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 31 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 31",
+        "anchor": "article-31",
+        "fullReference": "Article 31 of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 25,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 21 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 21",
+        "anchor": "article-21",
+        "fullReference": "Article 21 of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 26,
+      "shortName": "Regulation (EU) 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+      "originalText": "Article 51 of Regulation (EU) 2016/679",
+      "provision": {
+        "type": "article",
+        "display": "Article 51",
+        "anchor": "article-51",
+        "fullReference": "Article 51 of Regulation (EU) 2016/679"
+      },
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 27,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 8(3) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 8(3)",
+        "anchor": "article-8-para-3",
+        "fullReference": "Article 8(3) of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 28,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=annex-i",
+      "originalText": "Annex I to Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "annex",
+        "display": "Annex I",
+        "anchor": "annex-i",
+        "fullReference": "Annex I to Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 29,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=annex-ii",
+      "originalText": "Annex II to Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "annex",
+        "display": "Annex II",
+        "anchor": "annex-ii",
+        "fullReference": "Annex II to Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 30,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=annex-iii",
+      "originalText": "Annex III to Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "annex",
+        "display": "Annex III",
+        "anchor": "annex-iii",
+        "fullReference": "Annex III to Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
+    },
+    {
+      "index": 31,
+      "shortName": "Regulation (EU) No 910/2014",
+      "fullTitle": "Regulation (EU) No 910/2014",
+      "celex": "32014R0910",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/regulation/910-2014?section=annex-iv",
+      "originalText": "Annex IV to Regulation (EU) No 910/2014",
+      "provision": {
+        "type": "annex",
+        "display": "Annex IV",
+        "anchor": "annex-iv",
+        "fullReference": "Annex IV to Regulation (EU) No 910/2014"
+      },
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS 1.0",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "f66b957c0efc1dfb9485f7337d8728a7",
+  "_cacheKey": "dd79a64c0950fa25608f954b80db180b",
   "citations": [
     {
       "index": 1,
@@ -21,10 +21,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 2,
@@ -46,10 +48,12 @@
         "color": "red"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 3,
@@ -71,10 +75,12 @@
         "color": "green"
       },
       "category": "directive",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 4,
@@ -96,10 +102,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 5,
@@ -121,10 +129,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 6,
@@ -146,10 +156,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 7,
@@ -171,10 +183,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 8,
@@ -196,10 +210,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 9,
@@ -221,17 +237,19 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 10,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": true,
       "consolidationInfo": {
         "isConsolidated": true,
@@ -246,7 +264,7 @@
           }
         ]
       },
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
+      "url": "#/regulation/910-2014",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -258,22 +276,24 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": [
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
       "consolidatedSlug": "910-2014",
-      "isAmended": true
+      "isAmended": true,
+      "provision": null
     },
     {
       "index": 11,
       "shortName": "Regulation (EC) No 765/2008",
       "fullTitle": "Regulation (EC) No 765/2008",
       "celex": "32008R0765",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R0765",
+      "url": "#/regulation/765-2008",
       "originalText": "Regulation (EC) No 765/2008",
       "humanName": "Accreditation and Market Surveillance Regulation",
       "abbreviation": null,
@@ -285,10 +305,12 @@
         "color": "green"
       },
       "category": "regulation",
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 12,
@@ -310,10 +332,12 @@
         "color": "gray"
       },
       "category": null,
+      "subcategory": null,
       "amendedBy": null,
       "amendmentDate": null,
       "consolidatedSlug": null,
-      "isAmended": false
+      "isAmended": false,
+      "provision": null
     },
     {
       "index": 13,
@@ -325,6 +349,287 @@
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32011R0182",
       "originalText": "Regulation (EU) No 182/2011",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "subcategory": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false,
+      "provision": null
+    },
+    {
+      "index": 14,
+      "shortName": "Regulation (EU) 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+      "originalText": "Article 17 of Regulation (EU) 2016/679",
+      "provision": {
+        "type": "article",
+        "display": "Article 17",
+        "anchor": "article-17",
+        "fullReference": "Article 17 of Regulation (EU) 2016/679"
+      },
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 15,
+      "shortName": "Regulation (EU) 2022/2065",
+      "fullTitle": "Regulation (EU) 2022/2065",
+      "celex": "32022R2065",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065",
+      "originalText": "Article 33 of Regulation (EU) 2022/2065",
+      "provision": {
+        "type": "article",
+        "display": "Article 33",
+        "anchor": "article-33",
+        "fullReference": "Article 33 of Regulation (EU) 2022/2065"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 16,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 31 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 31",
+        "anchor": "article-31",
+        "fullReference": "Article 31 of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 17,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 21 of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 21",
+        "anchor": "article-21",
+        "fullReference": "Article 21 of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 18,
+      "shortName": "Regulation (EU) 2016/679",
+      "fullTitle": "Regulation (EU) 2016/679",
+      "celex": "32016R0679",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+      "originalText": "Article 51 of Regulation (EU) 2016/679",
+      "provision": {
+        "type": "article",
+        "display": "Article 51",
+        "anchor": "article-51",
+        "fullReference": "Article 51 of Regulation (EU) 2016/679"
+      },
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 19,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 8(1) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 8(1)",
+        "anchor": "article-8-para-1",
+        "fullReference": "Article 8(1) of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 20,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 8(3) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 8(3)",
+        "anchor": "article-8-para-3",
+        "fullReference": "Article 8(3) of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 21,
+      "shortName": "Directive 2555/2022",
+      "fullTitle": null,
+      "celex": "32022L2555",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555",
+      "originalText": "Article 14(1) of Directive (EU) 2022/2555",
+      "provision": {
+        "type": "article",
+        "display": "Article 14(1)",
+        "anchor": "article-14-para-1",
+        "fullReference": "Article 14(1) of Directive (EU) 2022/2555"
+      },
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
+    },
+    {
+      "index": 22,
+      "shortName": "Regulation (EU) No 182/2011",
+      "fullTitle": "Regulation (EU) No 182/2011",
+      "celex": "32011R0182",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32011R0182",
+      "originalText": "Article 5 of Regulation (EU) No 182/2011",
+      "provision": {
+        "type": "article",
+        "display": "Article 5",
+        "anchor": "article-5",
+        "fullReference": "Article 5 of Regulation (EU) No 182/2011"
+      },
       "humanName": null,
       "abbreviation": null,
       "entryIntoForce": null,

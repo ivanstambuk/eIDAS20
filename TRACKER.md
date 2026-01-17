@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 14:50 CET |
+| **Last Updated** | 2026-01-17 15:25 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (168,956 words) |
 | **Next Action** | See Backlog |
@@ -75,6 +75,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 15:25 | Retro: CSS class validation script (`validate-css-classes.js`) — catches template/CSS class mismatches at build time. Fixed stale class reference in consolidated popover. |
 | 2026-01-17 14:50 | DEC-062: Amendment-Aware Citation Popovers — eIDAS 1.0 citations now show dual badges (IN FORCE + AMENDED), amendment notice with date, "View Consolidated →" button. Data model + build-time + popover template + CSS. Browser-verified. |
 | 2026-01-17 14:18 | Terminology consolidation: Added "Provision Citation" term, merged Cross-doc refs + Recital refs backlog items. Fixed eIDAS → eIDAS 1.0 abbreviation. Planned Amendment-Aware Citation Popovers (Option E). |
 | 2026-01-17 13:50 | Retro: Added Rules 26-28 (Formex structure, fix cause not symptom, script deletion checklist), DEC-061. Pipeline validation prevents annex extraction regression. |

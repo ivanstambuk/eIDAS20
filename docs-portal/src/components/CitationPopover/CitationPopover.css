@@ -444,3 +444,31 @@
     color: #22c55e;
     font-weight: 500;
 }
+
+/* =============================================================================
+   DEC-064: Provision Citation Styles
+   Displays the specific provision (Article, Recital, Annex) prominently
+   ============================================================================= */
+
+.citation-popover-provision {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+}
+
+.citation-popover-provision-icon {
+    font-size: var(--text-base);
+    flex-shrink: 0;
+}
+
+.citation-popover-provision-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: #60a5fa;
+    letter-spacing: 0.01em;
+}
