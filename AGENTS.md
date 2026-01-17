@@ -1157,6 +1157,51 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Result: "...interface ('API')..."
     ```
 
+33. **Legal Document Import Protocol (MANDATORY — No Manual Markdown Creation):**
+    
+    **NEVER manually create or type legal document Markdown files. ALL legal documents must be imported via the conversion pipelines.**
+    
+    **Available pipelines:**
+    | Source Format | Tool | Usage |
+    |---------------|------|-------|
+    | **Formex XML** (preferred) | `scripts/pipeline.py` | Documents with `cellar_id` in `documents.yaml` |
+    | **EUR-Lex HTML** | `scripts/eurlex_html_to_md.py` | Older documents or those without Formex XML |
+    
+    **Import protocol:**
+    1. **Check for Formex XML first** — most 2020+ documents have it via cellar
+    2. **Find the cellar_id** — look in EUR-Lex page source for `cellar:UUID` or use `discover_cellar_ids.py`
+    3. **Add to `documents.yaml`** — register the document with `cellar_id` for reproducible builds
+    4. **Run `pipeline.py --only CELEX`** — import via the proper pipeline
+    5. **Run `npm run build:content`** — verify the import works in portal
+    
+    **Anti-patterns:**
+    - ❌ Transcribing legal text by hand from EUR-Lex webpage
+    - ❌ Copy-pasting content into a new `.md` file
+    - ❌ Creating markdown "from scratch" even if carefully copied
+    - ❌ Using `read_url_content` and reformatting as markdown
+    
+    **Correct pattern:**
+    ```bash
+    # 1. Find cellar_id: Look for "cellar:UUID" in EUR-Lex "Download notice" URL
+    # 2. Add to documents.yaml with cellar_id
+    # 3. Run pipeline:
+    python scripts/pipeline.py --only 32021H0946
+    # 4. Build portal content:
+    cd docs-portal && npm run build:content
+    ```
+    
+    **Why this is MANDATORY:**
+    - **Reproducibility** — imports can be re-run when pipelines are improved
+    - **Accuracy** — parsers preserve structure; humans make transcription errors  
+    - **Auditability** — `cellar_id` in `documents.yaml` documents exact source version
+    - **Automation** — batch re-imports are possible when formats change
+    
+    **Real example from 2026-01-18:**
+    ```
+    WRONG: Manually typed 32021H0946.md from EUR-Lex webpage content
+    CORRECT: Found cellar_id, ran pipeline.py --only 32021H0946 → deterministic import
+    ```
+
 ## Project Structure
 
 ```
