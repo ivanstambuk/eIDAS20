@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 15:25 CET |
+| **Last Updated** | 2026-01-17 18:13 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (168,956 words) |
+| **Portal Status** | ✅ Fully functional (169,375 words) |
 | **Next Action** | See Backlog |
 
 ---
@@ -41,20 +41,21 @@
 - **Enhanced citation popovers** (DEC-059: Hybrid B+C design — abbreviation badges, status indicators, human-friendly names, entry-into-force dates, dual action buttons)
 - **Smart Consolidation popovers** (DEC-060: Self-reference detection for consolidated documents — "CURRENT DOCUMENT" badge, dual EUR-Lex links to Original/Amendment)
 - **Amendment-Aware Citation Popovers** (DEC-062: Dual badges IN FORCE + AMENDED, amendment notice with date, "View Consolidated" button for amended regulations)
+- **Provision Deep Links** (DEC-064: Cross-document citations to specific articles/recitals generate ?section= deep links — e.g., "Article 5a(23) of Regulation 910/2014" → clickable with popover badge + direct navigation)
 - **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
-- **Clean TOC** (DEC-010: \"Enacting Terms\" removed from navigation, cleaner sidebar)
+- **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
 - **Recital gutter icons** (Phase 4: individual recitals now have 🔗 📜 copy buttons)
-- **\"eIDAS 2.0 Regulation\"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
+- **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
-- **Terminology deep linking** (Click \"View in Regulation\" → jumps to exact paragraph, preserves legal structure UL/OL)
+- **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
 - **Scroll restoration** (Back button restores position, manual navigation starts at top; React Router `useNavigationType` → POP detection)
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
 - **Multi-source visual separation** (DEC-056: Single cyan color, merged clickable source headers)
 - **Legal notation fidelity** (DEC-057: Reg 765/2008 uses HTML for exact `N.` format preservation)
-- **Hash-based citation caching** (MD5 cache key skips unchanged files during build-citations.js)
+- **Hash-based citation caching** (MD5 cache key + CACHE_VERSION for script logic changes)
 
 ---
 
@@ -64,7 +65,7 @@
 |---------|-------------|----------|
 | GitHub header link | Update placeholder `https://github.com` to actual repo URL once published | High |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
-| **Provision Citations** | **Deep-link references to specific provisions (articles, paragraphs, points, recitals, annexes) within documents. Pattern examples: "Article 5a(1)", "recital (42)", "Annex I"** | **Medium** |
+| ~~Provision Citations~~ | ~~Deep-link references to specific provisions~~ | ~~Done (DEC-064)~~ |
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
@@ -75,6 +76,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 18:13 | DEC-064 complete: Fixed plural→singular route path bug (/regulations/ → /regulation/), retro improvements (ROUTES constants, CACHE_VERSION, rule #29 cache invalidation gotcha), cleaned up completed plan |
 | 2026-01-17 15:25 | Retro: CSS class validation script (`validate-css-classes.js`) — catches template/CSS class mismatches at build time. Fixed stale class reference in consolidated popover. |
 | 2026-01-17 14:50 | DEC-062: Amendment-Aware Citation Popovers — eIDAS 1.0 citations now show dual badges (IN FORCE + AMENDED), amendment notice with date, "View Consolidated →" button. Data model + build-time + popover template + CSS. Browser-verified. |
 | 2026-01-17 14:18 | Terminology consolidation: Added "Provision Citation" term, merged Cross-doc refs + Recital refs backlog items. Fixed eIDAS → eIDAS 1.0 abbreviation. Planned Amendment-Aware Citation Popovers (Option E). |

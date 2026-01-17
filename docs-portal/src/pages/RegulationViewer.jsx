@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useParams, Link, useSearchParams, useNavigationType } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
@@ -59,6 +59,66 @@ const RegulationViewer = () => {
     // Citation system
     const { citations } = useCitations(id);
     const isMobile = useIsMobile();
+
+    // ⚠️ Navigation Type Detection Pattern (same as Terminology.jsx)
+    // Uses React Router's useNavigationType() hook to distinguish between:
+    //   - 'POP':     Back/forward button navigation → Restore scroll position
+    //   - 'PUSH':    Link click navigation         → Start at top (or deep link)
+    //   - 'REPLACE': Replace navigation            → Start at top
+    const navigationType = useNavigationType();
+    const isBackForward = navigationType === 'POP';
+
+    // Generate sessionStorage key based on document ID to avoid cross-document conflicts
+    const scrollStorageKey = `regulationScrollY_${id}`;
+
+    // Scroll restoration: restore scroll position when returning via back/forward button
+    // This effect runs AFTER the deep-linking effect, so deep links take precedence
+    useEffect(() => {
+        if (!loading && regulation) {
+            const section = searchParams.get('section');
+            // Only restore if no deep link AND navigating via back/forward
+            if (!section && isBackForward) {
+                const savedScrollY = sessionStorage.getItem(scrollStorageKey);
+                if (savedScrollY) {
+                    const scrollY = parseInt(savedScrollY, 10);
+                    
+                    // Wait for DOM to have enough height before scrolling
+                    // This handles the timing issue where content isn't rendered yet
+                    let attempts = 0;
+                    const maxAttempts = 10;
+                    const checkAndScroll = () => {
+                        attempts++;
+                        const canScroll = document.documentElement.scrollHeight > scrollY + window.innerHeight;
+                        
+                        if (canScroll) {
+                            window.scrollTo(0, scrollY);
+                            sessionStorage.removeItem(scrollStorageKey);
+                        } else if (attempts < maxAttempts) {
+                            // Content not tall enough yet, retry after a frame
+                            requestAnimationFrame(checkAndScroll);
+                        } else {
+                            // Give up after max attempts, but still clean up storage
+                            sessionStorage.removeItem(scrollStorageKey);
+                        }
+                    };
+                    
+                    // Start the polling after initial paint
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(checkAndScroll);
+                    });
+                }
+            } else if (!isBackForward) {
+                // Manual navigation (not back/forward), clear saved position
+                sessionStorage.removeItem(scrollStorageKey);
+            }
+        }
+    }, [loading, regulation, isBackForward, searchParams, scrollStorageKey]);
+
+    // Save scroll position when clicking popover internal links
+    // This is wired up in the popover click handler below (useCallback for stable reference)
+    const saveScrollPosition = useCallback(() => {
+        sessionStorage.setItem(scrollStorageKey, window.scrollY.toString());
+    }, [scrollStorageKey]);
 
     // ⚠️ IMPORTANT: This is the ACTUAL citation popover implementation.
     // The CitationPopover.jsx React component exists but is NOT used here.
@@ -120,6 +180,16 @@ const RegulationViewer = () => {
                 if (hideTimeout) clearTimeout(hideTimeout);
             });
             popover.addEventListener('mouseleave', hidePopover);
+
+            // Save scroll position when clicking internal popover links (provision deep links)
+            // This enables scroll restoration when pressing browser back button
+            popover.addEventListener('click', (e) => {
+                const link = e.target.closest('a.citation-popover-link--primary');
+                if (link && link.href.includes('#/')) {
+                    // Internal portal link - save scroll position for back-navigation
+                    saveScrollPosition();
+                }
+            });
         };
 
         const hidePopover = () => {
@@ -161,7 +231,7 @@ const RegulationViewer = () => {
             if (activePopover) activePopover.remove();
             if (hideTimeout) clearTimeout(hideTimeout);
         };
-    }, [regulation, citations, isMobile]);
+    }, [regulation, citations, isMobile, saveScrollPosition, scrollStorageKey]);
 
     useEffect(() => {
         const loadRegulation = async () => {
