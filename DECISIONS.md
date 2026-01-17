@@ -1028,36 +1028,40 @@ Implement **Option C (Colored Left Border)** combined with **Merged Source Heade
 └─────────────────────────────────────────────────────┘
 ```
 
-**After:**
+**After (final):**
 ```
 ┌┃────────────────────────────────────────────────────┐
-│┃ Regulation 765/2008, Article 2(10) →  [REFERENCED] │  ← Clickable header
+│┃ Regulation 765/2008, Article 2(10) →               │  ← Clickable cyan header
 │┃ an attestation by a national accreditation body... │
 └┃────────────────────────────────────────────────────┘
- ↑ Purple left border
+ ↑ Cyan left border (same color for all sources)
 ```
+
+**Design Evolution:**
+
+Initially implemented with multi-color scheme (cyan for primary, purple for referenced documents). User feedback:
+> "Multiple colors make it too cluttered. Use a single color everywhere."
+
+**Final Design:**
+- **Single color:** All left borders and header links use `--accent-primary` (cyan)
+- **No badges:** Removed "REFERENCED" badge to reduce visual noise
+- **Gap separation:** Visual gap between definitions indicates separate sources
+- **Consistency:** Matches term title color for cohesive appearance
 
 **Implementation:**
 
 | Component | Change |
 |-----------|--------|
 | `Terminology.jsx` | Merged `<Link>` as header, removed separate link |
-| `Terminology.jsx` | Updated border colors: cyan/purple per category |
-| `index.css` | Added `--purple-accent` CSS variable |
+| `Terminology.jsx` | Single cyan color for all borders and links |
 | `index.css` | Added hover styles for `.source-header-link` |
 
 **Benefits:**
 
-1. **Visual clarity** — Colored borders instantly show source category
+1. **Clean, uncluttered** — Single color reduces visual noise
 2. **Less redundancy** — Source name appears once, not twice
-3. **Consistent design language** — Matches popover color scheme (cyan/purple)
-4. **Better scanning** — Users can quickly identify multi-source terms while scrolling
+3. **Consistent design** — Cyan matches term title color
+4. **Gap separation** — Vertical gap between definitions provides structure
 
-**CSS Variables Added:**
-
-```css
---purple-accent: #a855f7;
---purple-accent-dim: rgba(168, 85, 247, 0.15);
-```
 
 
