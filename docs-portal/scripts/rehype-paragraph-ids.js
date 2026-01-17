@@ -112,8 +112,9 @@ function findPointContext(ancestors) {
 function rehypeParagraphIds() {
     return (tree) => {
         let currentArticleId = null;
-        let inRecitalsSection = false;  // Track if we're in the Recitals section
-        let recitalCounter = 0;         // Counter for recital numbering
+        let currentAnnexId = null;       // Track annex context separately
+        let inRecitalsSection = false;   // Track if we're in the Recitals section
+        let recitalCounter = 0;          // Counter for recital numbering
 
         // First pass: track article headings
         visitParents(tree, 'element', (node) => {
@@ -129,7 +130,16 @@ function rehypeParagraphIds() {
             if ((node.tagName === 'h3' || node.tagName === 'h2') &&
                 node.properties?.id?.startsWith('article-')) {
                 currentArticleId = node.properties.id;
-                inRecitalsSection = false;  // Exit recitals section when entering articles
+                currentAnnexId = null;    // Exit annex context
+                inRecitalsSection = false;
+                return;
+            }
+
+            // Track Annex section - annexes get similar treatment to articles
+            if ((node.tagName === 'h2') && node.properties?.id?.startsWith('annex-')) {
+                currentAnnexId = node.properties.id;
+                currentArticleId = null;  // Exit article context
+                inRecitalsSection = false;
                 return;
             }
 
@@ -137,19 +147,25 @@ function rehypeParagraphIds() {
             if ((node.tagName === 'h2') && node.properties?.id === 'recitals') {
                 inRecitalsSection = true;
                 recitalCounter = 0;
-                currentArticleId = null;  // Exit article context
+                currentArticleId = null;
+                currentAnnexId = null;
                 return;
             }
 
-            // Reset on other section headings
+            // Reset on other section headings (not article/annex/recitals)
             if ((node.tagName === 'h2' || node.tagName === 'h3') &&
                 node.properties?.id &&
                 !node.properties.id.startsWith('article-') &&
+                !node.properties.id.startsWith('annex-') &&
                 node.properties.id !== 'recitals') {
                 currentArticleId = null;
+                currentAnnexId = null;
                 inRecitalsSection = false;
                 return;
             }
+
+            // Determine current context (article or annex)
+            const currentContextId = currentArticleId || currentAnnexId;
 
             // =========================================================
             // RECITALS PROCESSING
@@ -172,8 +188,8 @@ function rehypeParagraphIds() {
                 return;
             }
 
-            // Skip article processing if not in article context
-            if (!currentArticleId) return;
+            // Skip processing if not in article or annex context
+            if (!currentContextId) return;
 
             // Process ordered list items (paragraphs)
             if (node.tagName === 'ol') {
@@ -191,12 +207,12 @@ function rehypeParagraphIds() {
                         const paragraphNum = parenMatch ? parenMatch[1] :
                             numDotMatch ? numDotMatch[1] :
                                 (startNum + liIndex);
-                        const paraId = `${currentArticleId}-para-${paragraphNum}`;
+                        const paraId = `${currentContextId}-para-${paragraphNum}`;
 
                         child.properties = child.properties || {};
                         child.properties.id = paraId;
                         child.properties['data-para'] = paragraphNum;
-                        child.properties['data-article'] = currentArticleId;
+                        child.properties['data-context'] = currentContextId;
                         child.properties.className = [
                             ...(child.properties.className || []),
                             'linkable-paragraph'
@@ -251,12 +267,12 @@ function rehypeParagraphIds() {
                             const paragraphNum = parenMatch ? parenMatch[1] :
                                 numDotMatch ? numDotMatch[1] :
                                     (liIndex + 1);
-                            const paraId = `${currentArticleId}-para-${paragraphNum}`;
+                            const paraId = `${currentContextId}-para-${paragraphNum}`;
 
                             child.properties = child.properties || {};
                             child.properties.id = paraId;
                             child.properties['data-para'] = paragraphNum;
-                            child.properties['data-article'] = currentArticleId;
+                            child.properties['data-context'] = currentContextId;
                             child.properties.className = [
                                 ...(child.properties.className || []),
                                 'linkable-paragraph'
@@ -288,7 +304,7 @@ function rehypeParagraphIds() {
 
                         child.properties.id = subpointId;
                         child.properties['data-subpoint'] = romanNumeral;
-                        child.properties['data-article'] = currentArticleId;
+                        child.properties['data-context'] = currentContextId;
                         if (paraContext) {
                             child.properties['data-para'] = paraContext.num;
                         }
@@ -304,12 +320,12 @@ function rehypeParagraphIds() {
                     const pointLetter = matchLetterPoint(textContent);
                     if (pointLetter) {
                         // Point: inherits from paragraph
-                        const baseId = paraContext?.id || currentArticleId;
+                        const baseId = paraContext?.id || currentContextId;
                         const pointId = `${baseId}-point-${pointLetter}`;
 
                         child.properties.id = pointId;
                         child.properties['data-point'] = pointLetter;
-                        child.properties['data-article'] = currentArticleId;
+                        child.properties['data-context'] = currentContextId;
                         if (paraContext) {
                             child.properties['data-para'] = paraContext.num;
                         }
@@ -322,12 +338,12 @@ function rehypeParagraphIds() {
 
                     // Fallback: roman numeral without point context
                     if (romanNumeral) {
-                        const baseId = paraContext?.id || currentArticleId;
+                        const baseId = paraContext?.id || currentContextId;
                         const subpointId = `${baseId}-subpoint-${romanNumeral}`;
 
                         child.properties.id = subpointId;
                         child.properties['data-subpoint'] = romanNumeral;
-                        child.properties['data-article'] = currentArticleId;
+                        child.properties['data-context'] = currentContextId;
                         if (paraContext) {
                             child.properties['data-para'] = paraContext.num;
                         }
