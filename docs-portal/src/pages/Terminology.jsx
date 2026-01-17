@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams, useNavigationType } from 'react-router-dom';
+import { trace } from '../utils/trace';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -180,13 +181,24 @@ const Terminology = () => {
     const isBackForward = navigationType === 'POP';
 
     // Scroll restoration: restore scroll position when returning via back/forward button
+    // [TRACE] Enable with: ?debug=scroll or window.enableTrace('scroll')
     useEffect(() => {
         if (!loading && terminology) {
             const savedScrollY = sessionStorage.getItem('terminologyScrollY');
 
+            // Trace the state for debugging (zero-cost when disabled)
+            trace('scroll:restore', {
+                navigationType,
+                isBackForward,
+                savedScrollY,
+                scrollHeight: document.documentElement.scrollHeight
+            });
+
             if (savedScrollY && isBackForward) {
                 // Only restore scroll position if user came via back/forward button
                 const scrollY = parseInt(savedScrollY, 10);
+                trace('scroll:restore', 'Restoring to', scrollY);
+
                 // Double-RAF pattern: ensures DOM has fully painted before scrolling
                 // - First RAF: queued after current frame
                 // - Second RAF: runs after browser has completed layout/paint
@@ -195,14 +207,18 @@ const Terminology = () => {
                     requestAnimationFrame(() => {
                         window.scrollTo(0, scrollY);
                         sessionStorage.removeItem('terminologyScrollY');
+                        trace('scroll:restore', 'Scroll applied, final scrollY:', window.scrollY);
                     });
                 });
             } else if (savedScrollY && !isBackForward) {
                 // User navigated manually (e.g., clicked menu link), clear saved position
+                trace('scroll:restore', 'Manual navigation, clearing saved position');
                 sessionStorage.removeItem('terminologyScrollY');
+            } else {
+                trace('scroll:restore', 'No saved position or not applicable');
             }
         }
-    }, [loading, terminology, isBackForward]);
+    }, [loading, terminology, isBackForward, navigationType]);
 
     // NOTE: We intentionally do NOT clear the scroll position on unmount.
     // The save-restore cycle works like this:
@@ -213,8 +229,11 @@ const Terminology = () => {
     // Clearing on unmount (step 2) would break this cycle.
 
     // Save scroll position before navigating away
+    // [TRACE] Enable with: ?debug=scroll or window.enableTrace('scroll')
     const handleSaveScroll = () => {
-        sessionStorage.setItem('terminologyScrollY', window.scrollY.toString());
+        const scrollY = window.scrollY;
+        trace('scroll:save', 'Saving position:', scrollY);
+        sessionStorage.setItem('terminologyScrollY', scrollY.toString());
     };
 
     // Deep linking: scroll to term when content loads or section param changes

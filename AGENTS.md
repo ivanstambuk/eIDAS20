@@ -740,6 +740,105 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Real example:** Regulation 765/2008 Article 2 has definitions 3, 4, 8, 9, 10... (gaps due to repealed provisions). See DEC-057.
 
+21. **Client-Side Tracing (Debugging Long-Running Issues):**
+    
+    **The portal includes a built-in tracing system for debugging.** Use it when issues persist across sessions or involve complex state.
+    
+    **Enable tracing:**
+    - URL: `?debug=scroll` or `?debug=true` (all namespaces)
+    - Console: `window.enableTrace('scroll')` or `window.enableTrace('*')`
+    - Persistent: `localStorage.setItem('debug', 'scroll')`
+    
+    **Add traces to code:**
+    ```javascript
+    import { trace } from '../utils/trace';
+    
+    // Log state for debugging (zero-cost when disabled)
+    trace('scroll:restore', { isBackForward, savedScrollY, scrollHeight });
+    ```
+    
+    **Available namespaces:**
+    | Namespace | Feature |
+    |-----------|---------|
+    | `scroll` | Scroll position save/restore |
+    | `nav` | Navigation and routing |
+    | `search` | Search functionality |
+    
+    **When to add traces:**
+    - Complex conditional logic (especially boolean conditions)
+    - State that changes across navigations
+    - Async operations with timing dependencies
+    - Any feature that has broken unexpectedly
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: Scroll restoration not working
+    Without traces: Spent 2+ hours trying timing fixes (setTimeout, RAF)
+    With traces: Would have immediately shown isBackForward: false
+    Root cause: Performance API doesn't track SPA navigation
+    ```
+
+22. **SPA API Pitfalls (Browser APIs That Don't Work in SPAs):**
+    
+    **Many browser APIs don't work as expected in Single Page Applications.** Always verify API behavior in SPA context.
+    
+    | API | Expected Behavior | Actual SPA Behavior |
+    |-----|-------------------|---------------------|
+    | `performance.getEntriesByType('navigation')` | Updates on each navigation | Only reflects initial page load |
+    | `window.onbeforeunload` | Fires before leaving | Doesn't fire for SPA navigation |
+    | `document.referrer` | Previous page URL | Static from initial load |
+    | `history.length` | Navigation count | Includes SPA navigations (works) |
+    
+    **Why this happens:** SPAs handle navigation client-side via the History API without loading a new document. APIs that rely on "document load" events only fire on the initial page load.
+    
+    **Correct pattern:** Use framework-provided alternatives:
+    ```javascript
+    // ❌ WRONG: Browser API (doesn't track SPA navigation)
+    const isBack = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+    
+    // ✅ CORRECT: React Router hook (tracks client-side navigation)
+    const navigationType = useNavigationType(); // 'POP' | 'PUSH' | 'REPLACE'
+    const isBack = navigationType === 'POP';
+    ```
+    
+    **Before using any browser API for navigation/history:**
+    1. Ask: "Does this API rely on document load events?"
+    2. If yes: Look for a framework alternative
+    3. Test: Verify with traces to ensure it works in SPA context
+
+23. **React Router Built-in Hooks (Use Before Custom):**
+    
+    **React Router provides hooks that replace many custom implementations.** Check if a built-in hook exists before writing custom code.
+    
+    | Need | React Router Hook | Return Value |
+    |------|-------------------|--------------|
+    | Navigation type | `useNavigationType()` | `'POP'` \| `'PUSH'` \| `'REPLACE'` |
+    | Current location | `useLocation()` | `{ pathname, search, hash, state }` |
+    | URL params | `useParams()` | `{ paramName: value }` |
+    | Search params | `useSearchParams()` | `[searchParams, setSearchParams]` |
+    | Navigate function | `useNavigate()` | `navigate(to, options)` |
+    | Match info | `useMatch(pattern)` | Match object or null |
+    
+    **Anti-pattern:**
+    ```javascript
+    // ❌ WRONG: Custom hook using Performance API
+    function useNavigationType() {
+        const entries = performance.getEntriesByType('navigation');
+        return entries[0]?.type; // Doesn't work for SPA!
+    }
+    
+    // ✅ CORRECT: Use React Router's built-in hook
+    import { useNavigationType } from 'react-router-dom';
+    ```
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: Custom useNavigationType hook always returned initial load type
+    Root cause: Used browser's Performance API instead of React Router
+    Fix: Replace custom hook with react-router-dom's useNavigationType
+    Time saved: Would have avoided 2+ hours debugging across sessions
+    ```
+
 ## Project Structure
 
 ```

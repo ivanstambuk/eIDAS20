@@ -111,6 +111,24 @@ function MyPage() {
 - **Clean up `sessionStorage`** after restoring or when navigation type indicates manual nav
 - **Wait for content to load** (`!loading`) before attempting restoration
 
+### Debugging Scroll Restoration
+
+If scroll restoration isn't working, enable tracing to see the exact state:
+
+```
+URL: http://localhost:5173/eIDAS20/?debug=scroll
+Console: window.enableTrace('scroll')
+```
+
+This will show:
+```
+[10:02:15.123] scroll:restore { navigationType: 'POP', isBackForward: true, savedScrollY: '1234', scrollHeight: 24500 }
+[10:02:15.125] scroll:restore Restoring to 1234
+[10:02:15.180] scroll:restore Scroll applied, final scrollY: 1234
+```
+
+If `isBackForward` is always `false`, you're using the wrong API (see "SPA API Pitfalls" in AGENTS.md).
+
 ---
 
 ## React Router Link Event Handlers

@@ -74,6 +74,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 10:10 | Retro: Trace utility (`src/utils/trace.js`) for debugging — enable via `?debug=scroll`, Rules 21-23 (tracing, SPA pitfalls, React Router hooks) |
 | 2026-01-17 09:58 | Fix: Scroll restoration bug — Performance API doesn't work for SPAs! Switched to React Router's `useNavigationType()` which returns `POP` for back/forward |
 | 2026-01-17 01:40 | DEC-057: Deep linking fix with legal notation preservation (Rule 19 added, HTML for 765/2008 definitions), retro → 6 improvements |
 | 2026-01-17 00:53 | DEC-056: Multi-source visual separation (colored borders cyan/purple, merged clickable source headers, removed redundant links) |
