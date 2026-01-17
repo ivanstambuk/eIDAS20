@@ -155,6 +155,7 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Source Markdown** | The markdown file in `/01_regulation/` containing the original converted content. |
 | **Formex XML** | The official EUR-Lex structured format for EU legislation. Primary source for conversion. |
 | **EUR-Lex HTML** | The web format of EU legislation. Fallback source when Formex unavailable. |
+| **ALINEA** | A Formex XML element representing the content block within an article paragraph. Contains the actual text, lists, and inline elements (e.g., `<DATE>`, `<QUOT.START>`). Plural: ALINEA (same). Processed by `process_alinea_nested()` in the converter. |
 
 ---
 
