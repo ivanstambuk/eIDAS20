@@ -671,6 +671,31 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     ```
     
     **Why this matters:** The eIDAS ecosystem references older EC regulations (like 765/2008 for accreditation). Patterns that only handle `(EU)` will miss these references.
+    
+    **CELEX Year/Number Position Variations:**
+    
+    | Era | Citation Format | CELEX Construction |
+    |-----|-----------------|-------------------|
+    | Pre-2014 | Regulation No **NNN/YYYY** (number first) | `3{YYYY}R{NNNN}` |
+    | Post-2014 | Regulation **YYYY/NNN** (year first) | `3{YYYY}R{NNNN}` |
+    
+    **Example:**
+    ```
+    "Regulation (EC) No 910/2014" → number=910, year=2014 → CELEX: 32014R0910
+    "Regulation (EU) 2024/1183" → year=2024, number=1183 → CELEX: 32024R1183
+    ```
+    
+    **Why this matters:** Citation parsers must handle BOTH formats. The 4-digit block ≥1990 is typically the year, but position varies by era.
+    
+    **Citation Cache Invalidation:**
+    
+    When updating `legislation-metadata.js`, you must force-rebuild citations:
+    ```bash
+    rm -f docs-portal/public/data/citations/*.json
+    cd docs-portal && node scripts/build-citations.js
+    ```
+    
+    **Why:** The citation cache uses content hash but doesn't track metadata registry changes. Cached citations won't reflect new metadata until manually purged.
 
 19. **⛔ Legal Document Visual Fidelity (ABSOLUTE — No Exceptions):**
     

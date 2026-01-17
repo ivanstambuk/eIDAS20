@@ -1,6 +1,6 @@
 # eIDAS 2.0 Documentation Portal — Terminology
 
-> Status: Living Document | Last updated: 2026-01-17
+> Status: Living Document | Last updated: 2026-01-18
 
 Common terms used across the documentation portal project to ensure consistent vocabulary. This is the authoritative source for terminology—any ambiguity in communication should be resolved by consulting this document.
 
@@ -104,6 +104,8 @@ Common terms used across the documentation portal project to ensure consistent v
 | **External Citation** | A reference to a document not in the portal (e.g., "Decision No 768/2008/EC"). Links to EUR-Lex. |
 | **Formal Citation** | A citation with an ELI URL in the source, extractable with high confidence. |
 | **Informal Citation** | A citation detected by pattern matching (e.g., "Directive 2001/95/EC"). CELEX auto-constructed. |
+| **Base Citation** | The parent document citation that a provision citation inherits metadata from. When a provision is cited (e.g., "Article 5 of NIS2"), the base citation is the document-level entry for NIS2. |
+| **Metadata Registry** | The `LEGISLATION_METADATA` object in `legislation-metadata.js` containing enriched data (humanName, abbreviation, status, category) for known CELEX numbers. Used to enrich citation popovers. |
 
 ### Citation Granularity
 
@@ -295,6 +297,7 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **Preamble Injection** | Build-time process that copies recitals from an amending act into the consolidated document's preamble. |
 | **Status Badge** | A colored indicator in citation popovers showing document status: `IN FORCE` (green), `REPEALED` (red), `PENDING` (yellow). |
 | **Amended Badge** | An amber badge shown alongside `IN FORCE` when a regulation has been modified by another act. |
+| **Category Badge** | A colored indicator of document type for non-regulation documents: `Directive` (blue), `Decision` (purple), `Recommendation` (cyan). Regulations don't show a badge (most common type). |
 
 ---
 
