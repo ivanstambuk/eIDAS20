@@ -610,6 +610,11 @@ function extractProvisionCitations(content, existingCitations, documentRegistry)
         const internalDoc = documentRegistry[celex];
         const isInternal = !!internalDoc;
 
+        // DEC-063: Fallback to metadata registry if baseCitation is null
+        // This handles provision citations for documents that weren't extracted
+        // via the formal/informal patterns but ARE in our metadata registry.
+        const metadata = baseCitation ? null : getLegislationMetadata(celex);
+
         // Build the provision citation
         const provisionCitation = {
             index: existingCitations.length + provisionCitations.length + 1,
@@ -630,18 +635,18 @@ function extractProvisionCitations(content, existingCitations, documentRegistry)
                 anchor: provision.anchor,
                 fullReference: fullMatch.trim(),
             },
-            // Inherit metadata from base citation if available
-            humanName: baseCitation?.humanName || null,
-            abbreviation: baseCitation?.abbreviation || null,
-            entryIntoForce: baseCitation?.entryIntoForce || null,
-            entryIntoForceDisplay: baseCitation?.entryIntoForceDisplay || null,
-            status: baseCitation?.status || 'unknown',
-            statusDisplay: baseCitation?.statusDisplay || { label: 'Unknown', color: 'gray' },
-            category: baseCitation?.category || null,
-            amendedBy: baseCitation?.amendedBy || null,
-            amendmentDate: baseCitation?.amendmentDate || null,
-            consolidatedSlug: baseCitation?.consolidatedSlug || null,
-            isAmended: baseCitation?.isAmended || false,
+            // Inherit metadata from base citation, or fallback to registry lookup
+            humanName: baseCitation?.humanName || metadata?.humanName || null,
+            abbreviation: baseCitation?.abbreviation || metadata?.abbreviation || null,
+            entryIntoForce: baseCitation?.entryIntoForce || metadata?.entryIntoForce || null,
+            entryIntoForceDisplay: baseCitation?.entryIntoForceDisplay || (metadata?.entryIntoForce ? formatEntryIntoForce(metadata.entryIntoForce) : null),
+            status: baseCitation?.status || metadata?.status || 'unknown',
+            statusDisplay: baseCitation?.statusDisplay || getStatusDisplay(metadata?.status),
+            category: baseCitation?.category || metadata?.category || null,
+            amendedBy: baseCitation?.amendedBy || metadata?.amendedBy || null,
+            amendmentDate: baseCitation?.amendmentDate || metadata?.amendmentDate || null,
+            consolidatedSlug: baseCitation?.consolidatedSlug || metadata?.consolidatedSlug || null,
+            isAmended: baseCitation?.isAmended || !!(metadata?.amendedBy?.length),
         };
 
         provisionCitations.push(provisionCitation);
