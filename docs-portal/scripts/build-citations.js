@@ -3,6 +3,7 @@
  * 
  * Extracts legal citations from markdown content and generates structured data.
  * Part of DEC-009: Citation formatting with responsive behavior and internal linking.
+ * Enhanced in DEC-059: Citation Popover Enhancement (Hybrid B+C design)
  * 
  * Run: node scripts/build-citations.js
  */
@@ -10,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { getLegislationMetadata, formatEntryIntoForce, getStatusDisplay } from './legislation-metadata.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -128,6 +130,37 @@ function extractOjRef(citationText) {
     return null;
 }
 
+/**
+ * Enrich a citation with metadata from the legislation registry.
+ * Part of DEC-059: Citation Popover Enhancement
+ * 
+ * Adds: humanName, abbreviation, entryIntoForce, status, statusDisplay
+ */
+function enrichCitation(citation) {
+    const metadata = getLegislationMetadata(citation.celex);
+
+    if (metadata) {
+        citation.humanName = metadata.humanName;
+        citation.abbreviation = metadata.abbreviation;
+        citation.entryIntoForce = metadata.entryIntoForce;
+        citation.entryIntoForceDisplay = formatEntryIntoForce(metadata.entryIntoForce);
+        citation.status = metadata.status;
+        citation.statusDisplay = getStatusDisplay(metadata.status);
+        citation.category = metadata.category;
+    } else {
+        // Fallback: use shortName as humanName, no abbreviation
+        citation.humanName = citation.humanName || null;
+        citation.abbreviation = null;
+        citation.entryIntoForce = null;
+        citation.entryIntoForceDisplay = null;
+        citation.status = 'unknown';
+        citation.statusDisplay = { label: 'Unknown', color: 'gray' };
+        citation.category = null;
+    }
+
+    return citation;
+}
+
 // =============================================================================
 // INFORMAL LEGISLATION PATTERN DETECTION
 // =============================================================================
@@ -219,7 +252,7 @@ function extractInformalCitations(content, documentRegistry, existingCelex) {
             const isInternal = !!internalDoc;
 
             // Build citation
-            const citation = {
+            const citation = enrichCitation({
                 index: citations.length + 1,
                 shortName: match[0].trim(),
                 fullTitle: match[0].trim(),
@@ -229,7 +262,7 @@ function extractInformalCitations(content, documentRegistry, existingCelex) {
                     ? internalDoc.route
                     : `https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${celex}`,
                 originalText: match[0],
-            };
+            });
 
             citations.push(citation);
         }
@@ -276,7 +309,7 @@ function extractCitations(content, documentRegistry) {
         const isInternal = !!internalDoc;
 
         // Build citation object
-        const citation = {
+        const citation = enrichCitation({
             index: citations.length + 1,
             shortName: extractShortName(titlePart),
             fullTitle: titlePart.trim(),
@@ -288,7 +321,7 @@ function extractCitations(content, documentRegistry) {
                 ? internalDoc.route
                 : `https://eur-lex.europa.eu/eli/${eliInfo.docType}/${eliInfo.year}/${eliInfo.number}/oj`,
             originalText: fullText,
-        };
+        });
 
         citations.push(citation);
     }

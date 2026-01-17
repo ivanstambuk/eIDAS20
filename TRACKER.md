@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 09:58 CET |
-| **Session State** | ✅ Scroll restoration bug fixed (React Router hook) |
+| **Last Updated** | 2026-01-17 10:37 CET |
+| **Session State** | ✅ Enhanced citation popovers (DEC-059) |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Backlog items (see table below) |
 
@@ -38,6 +38,7 @@
 - **Preamble injection** (78 recitals from 2024/1183 amendment injected into consolidated 910/2014)
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
+- **Enhanced citation popovers** (DEC-059: Hybrid B+C design — abbreviation badges, status indicators, human-friendly names, entry-into-force dates, dual action buttons)
 - **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
 - **Clean TOC** (DEC-010: \"Enacting Terms\" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
@@ -74,6 +75,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 10:37 | DEC-059: Enhanced citation popovers (Hybrid B+C) — abbreviation badges ("GDPR", "eIDAS"), status pills ("IN FORCE"/"REPEALED"), human-friendly names, entry-into-force dates, EUR-Lex registry enrichment |
 | 2026-01-17 10:10 | Retro: Trace utility (`src/utils/trace.js`) for debugging — enable via `?debug=scroll`, Rules 21-23 (tracing, SPA pitfalls, React Router hooks) |
 | 2026-01-17 09:58 | Fix: Scroll restoration bug — Performance API doesn't work for SPAs! Switched to React Router's `useNavigationType()` which returns `POP` for back/forward |
 | 2026-01-17 01:40 | DEC-057: Deep linking fix with legal notation preservation (Rule 19 added, HTML for 765/2008 definitions), retro → 6 improvements |

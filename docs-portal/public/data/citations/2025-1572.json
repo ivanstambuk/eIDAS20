@@ -9,7 +9,17 @@
       "celex": "32016R0679",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 2,
@@ -20,7 +30,17 @@
       "celex": "32002L0058",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
-      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 3,
@@ -31,7 +51,17 @@
       "celex": "32018R1725",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 4,
@@ -42,7 +72,17 @@
       "celex": "32022L2555",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
-      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]"
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+      "humanName": "Network and Information Security Directive",
+      "abbreviation": "NIS2",
+      "entryIntoForce": "2023-01-16",
+      "entryIntoForceDisplay": "16 Jan 2023",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "directive"
     },
     {
       "index": 5,
@@ -51,7 +91,17 @@
       "celex": "31999L0093",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
-      "originalText": "Directive 1999/93/EC"
+      "originalText": "Directive 1999/93/EC",
+      "humanName": "Electronic Signature Directive",
+      "abbreviation": null,
+      "entryIntoForce": "2000-01-19",
+      "entryIntoForceDisplay": "19 Jan 2000",
+      "status": "repealed",
+      "statusDisplay": {
+        "label": "Repealed",
+        "color": "red"
+      },
+      "category": "directive"
     },
     {
       "index": 6,
@@ -60,7 +110,17 @@
       "celex": "31995L0046",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
-      "originalText": "Directive 95/46/EC"
+      "originalText": "Directive 95/46/EC",
+      "humanName": "Data Protection Directive",
+      "abbreviation": null,
+      "entryIntoForce": "1995-10-24",
+      "entryIntoForceDisplay": "24 Oct 1995",
+      "status": "repealed",
+      "statusDisplay": {
+        "label": "Repealed",
+        "color": "red"
+      },
+      "category": "directive"
     },
     {
       "index": 7,
@@ -69,7 +129,17 @@
       "celex": "32025R1572",
       "isInternal": true,
       "url": "#/implementing-acts/2025-1572",
-      "originalText": "Regulation (EU) 2025/1572"
+      "originalText": "Regulation (EU) 2025/1572",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 8,
@@ -78,7 +148,17 @@
       "celex": "32014R0910",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
-      "originalText": "Regulation (EU) No 910/2014"
+      "originalText": "Regulation (EU) No 910/2014",
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 9,
@@ -87,7 +167,17 @@
       "celex": "32001R0045",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
-      "originalText": "Regulation (EC) No 45/2001"
+      "originalText": "Regulation (EC) No 45/2001",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 10,
@@ -96,7 +186,17 @@
       "celex": "32002D1247",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
-      "originalText": "Decision No 1247/2002/EC"
+      "originalText": "Decision No 1247/2002/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     }
   ]
 }

@@ -84,20 +84,50 @@ const RegulationViewer = () => {
             const citation = citations.find(c => c.index === parseInt(data.idx, 10));
             if (!citation) return;
 
-            // Create popover element
+            // Build enhanced popover HTML (DEC-059: Hybrid B+C design)
             const popover = document.createElement('div');
             popover.className = 'citation-popover';
+
+            // Header: Abbreviation + Status
+            const headerParts = [];
+            if (citation.abbreviation) {
+                headerParts.push(`<span class="citation-popover-abbrev">${citation.abbreviation}</span>`);
+            }
+            if (citation.statusDisplay) {
+                headerParts.push(`<span class="citation-popover-status citation-popover-status--${citation.statusDisplay.color}">${citation.statusDisplay.label}</span>`);
+            }
+
+            // Entry into force line
+            const dateText = citation.entryIntoForceDisplay
+                ? `<p class="citation-popover-date">📅 ${citation.status === 'in-force' ? 'In force since' : 'Entry into force:'} ${citation.entryIntoForceDisplay}</p>`
+                : '';
+
+            // Category badge (if internal)
+            const categoryBadge = citation.isInternal
+                ? '<span class="citation-popover-category">Available in Portal</span>'
+                : '';
+
+            // Action buttons
+            let actionButtons;
+            if (citation.isInternal) {
+                actionButtons = `
+                    <a href="${citation.url}" class="citation-popover-link citation-popover-link--primary">View in Portal →</a>
+                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--secondary">EUR-Lex ↗</a>
+                `;
+            } else {
+                actionButtons = `<a href="${citation.url}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--external">View on EUR-Lex ↗</a>`;
+            }
+
             popover.innerHTML = `
                 <div class="citation-popover-header">
-                    <span class="citation-popover-title">${citation.shortName}</span>
-                    ${citation.celex ? `<span class="citation-popover-badge">${citation.isInternal ? '📄' : '🔗'} ${citation.celex}</span>` : ''}
+                    ${headerParts.join('')}
                 </div>
-                <p class="citation-popover-fulltext">${citation.fullTitle}</p>
-                ${citation.ojRef ? `<p class="citation-popover-ojref">${citation.ojRef}</p>` : ''}
+                <h3 class="citation-popover-human-name">${citation.humanName || citation.fullTitle}</h3>
+                <p class="citation-popover-formal">${citation.shortName}</p>
+                ${dateText}
+                ${categoryBadge}
                 <div class="citation-popover-footer">
-                    <a href="${citation.url}" ${citation.isInternal ? '' : 'target="_blank" rel="noopener noreferrer"'} class="citation-popover-link${citation.isInternal ? '' : ' citation-popover-link--external'}">
-                        ${citation.isInternal ? 'View in Portal →' : 'View on EUR-Lex 🔗'}
-                    </a>
+                    ${actionButtons}
                 </div>
             `;
 

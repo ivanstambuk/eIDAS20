@@ -65,22 +65,6 @@ export function CitationPopover({ citation, children }) {
         };
     }, []);
 
-    // Determine if internal or external link
-    const linkElement = citation.isInternal ? (
-        <Link to={citation.url.replace('#', '')} className="citation-popover-link">
-            View in Portal →
-        </Link>
-    ) : (
-        <a
-            href={citation.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="citation-popover-link citation-popover-link--external"
-        >
-            View on EUR-Lex 🔗
-        </a>
-    );
-
     return (
         <>
             <span
@@ -112,27 +96,71 @@ export function CitationPopover({ citation, children }) {
                     onMouseLeave={hidePopover}
                     role="tooltip"
                 >
+                    {/* Header: Abbreviation badge + Status */}
                     <div className="citation-popover-header">
-                        <span className="citation-popover-title">{citation.shortName}</span>
-                        {citation.celex && (
-                            <span className="citation-popover-badge">
-                                {citation.isInternal ? '📄' : '🔗'} {citation.celex}
+                        {citation.abbreviation ? (
+                            <span className="citation-popover-abbrev">{citation.abbreviation}</span>
+                        ) : null}
+                        {citation.statusDisplay && (
+                            <span className={`citation-popover-status citation-popover-status--${citation.statusDisplay.color}`}>
+                                {citation.statusDisplay.label}
                             </span>
                         )}
                     </div>
 
-                    <p className="citation-popover-fulltext">
-                        {citation.fullTitle}
+                    {/* Human-friendly name (primary) */}
+                    <h3 className="citation-popover-human-name">
+                        {citation.humanName || citation.fullTitle}
+                    </h3>
+
+                    {/* Formal citation (secondary) */}
+                    <p className="citation-popover-formal">
+                        {citation.shortName}
+                        {citation.shortName !== citation.fullTitle && citation.humanName && (
+                            <span className="citation-popover-formal-full"> — {citation.fullTitle}</span>
+                        )}
                     </p>
 
-                    {citation.ojRef && (
-                        <p className="citation-popover-ojref">
-                            {citation.ojRef}
+                    {/* Entry into force date */}
+                    {citation.entryIntoForceDisplay && (
+                        <p className="citation-popover-date">
+                            📅 {citation.status === 'in-force' ? 'In force since' : 'Entry into force:'} {citation.entryIntoForceDisplay}
                         </p>
                     )}
 
+                    {/* Category badge (if internal) */}
+                    {citation.isInternal && (
+                        <span className="citation-popover-category">
+                            Available in Portal
+                        </span>
+                    )}
+
+                    {/* Action buttons */}
                     <div className="citation-popover-footer">
-                        {linkElement}
+                        {citation.isInternal ? (
+                            <>
+                                <Link to={citation.url.replace('#', '')} className="citation-popover-link citation-popover-link--primary">
+                                    View in Portal →
+                                </Link>
+                                <a
+                                    href={`https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="citation-popover-link citation-popover-link--secondary"
+                                >
+                                    EUR-Lex ↗
+                                </a>
+                            </>
+                        ) : (
+                            <a
+                                href={citation.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="citation-popover-link citation-popover-link--external"
+                            >
+                                View on EUR-Lex ↗
+                            </a>
+                        )}
                     </div>
                 </div>
             )}

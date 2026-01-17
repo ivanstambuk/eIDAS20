@@ -7,7 +7,17 @@
       "celex": "32001L0095",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001L0095",
-      "originalText": "Directive 2001/95/EC"
+      "originalText": "Directive 2001/95/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 2,
@@ -16,7 +26,17 @@
       "celex": "31995L0046",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
-      "originalText": "Directive 95/46/EC"
+      "originalText": "Directive 95/46/EC",
+      "humanName": "Data Protection Directive",
+      "abbreviation": null,
+      "entryIntoForce": "1995-10-24",
+      "entryIntoForceDisplay": "24 Oct 1995",
+      "status": "repealed",
+      "statusDisplay": {
+        "label": "Repealed",
+        "color": "red"
+      },
+      "category": "directive"
     },
     {
       "index": 3,
@@ -25,7 +45,17 @@
       "celex": "31998L0034",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31998L0034",
-      "originalText": "Directive 98/34/EC"
+      "originalText": "Directive 98/34/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 4,
@@ -34,7 +64,17 @@
       "celex": "32019R1020",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R1020",
-      "originalText": "Regulation (EU) 2019/1020"
+      "originalText": "Regulation (EU) 2019/1020",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 5,
@@ -43,7 +83,17 @@
       "celex": "32008R0765",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008R0765",
-      "originalText": "Regulation (EC) No 765/2008"
+      "originalText": "Regulation (EC) No 765/2008",
+      "humanName": "Accreditation and Market Surveillance Regulation",
+      "abbreviation": null,
+      "entryIntoForce": "2010-01-01",
+      "entryIntoForceDisplay": "1 Jan 2010",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 6,
@@ -52,7 +102,17 @@
       "celex": "31993R0339",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31993R0339",
-      "originalText": "Regulation (EEC) No 339/93"
+      "originalText": "Regulation (EEC) No 339/93",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 7,
@@ -61,7 +121,17 @@
       "celex": "32001R1049",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R1049",
-      "originalText": "Regulation (EC) No 1049/2001"
+      "originalText": "Regulation (EC) No 1049/2001",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 8,
@@ -70,7 +140,17 @@
       "celex": "32001R0045",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
-      "originalText": "Regulation (EC) No 45/2001"
+      "originalText": "Regulation (EC) No 45/2001",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 9,
@@ -79,7 +159,17 @@
       "celex": "32002R1605",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002R1605",
-      "originalText": "Regulation (EC, Euratom) No 1605/2002"
+      "originalText": "Regulation (EC, Euratom) No 1605/2002",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 10,
@@ -88,7 +178,17 @@
       "celex": "31992R2913",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31992R2913",
-      "originalText": "Regulation (EEC) No 2913/92"
+      "originalText": "Regulation (EEC) No 2913/92",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 11,
@@ -97,7 +197,17 @@
       "celex": "32002R2342",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002R2342",
-      "originalText": "Regulation (EC, Euratom) No 2342/2002"
+      "originalText": "Regulation (EC, Euratom) No 2342/2002",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 12,
@@ -106,7 +216,17 @@
       "celex": "31995R2988",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995R2988",
-      "originalText": "Regulation (EC, Euratom) No 2988/95"
+      "originalText": "Regulation (EC, Euratom) No 2988/95",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 13,
@@ -115,7 +235,17 @@
       "celex": "31999R1073",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999R1073",
-      "originalText": "Regulation (EC) No 1073/1999"
+      "originalText": "Regulation (EC) No 1073/1999",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 14,
@@ -124,7 +254,17 @@
       "celex": "32008D0768",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32008D0768",
-      "originalText": "Decision No 768/2008/EC"
+      "originalText": "Decision No 768/2008/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     }
   ]
 }

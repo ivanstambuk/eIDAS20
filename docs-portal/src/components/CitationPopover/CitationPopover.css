@@ -61,41 +61,90 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-3);
-    margin-bottom: var(--space-3);
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--border-secondary);
+    margin-bottom: var(--space-2);
 }
 
-.citation-popover-title {
-    font-weight: 600;
-    font-size: var(--text-base);
-    color: var(--text-link);
+/* Abbreviation badge (e.g., "GDPR", "eIDAS") */
+.citation-popover-abbrev {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--accent-primary);
+    letter-spacing: 0.02em;
 }
 
-.citation-popover-badge {
+/* Status indicator */
+.citation-popover-status {
     font-size: var(--text-xs);
+    font-weight: 500;
     padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.citation-popover-status--green {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.citation-popover-status--red {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.citation-popover-status--yellow {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.citation-popover-status--orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+.citation-popover-status--gray {
     background: var(--bg-tertiary);
     color: var(--text-muted);
-    border-radius: var(--radius-sm);
-    white-space: nowrap;
-    font-family: var(--font-mono);
 }
 
-.citation-popover-fulltext {
-    font-size: var(--text-sm);
-    line-height: 1.6;
+/* Human-friendly name (primary title) */
+.citation-popover-human-name {
+    font-size: var(--text-base);
+    font-weight: 600;
     color: var(--text-primary);
     margin: 0 0 var(--space-2);
-    max-height: 120px;
-    overflow-y: auto;
+    line-height: 1.4;
 }
 
-.citation-popover-ojref {
-    font-size: var(--text-xs);
+/* Formal citation (secondary) */
+.citation-popover-formal {
+    font-size: var(--text-sm);
     color: var(--text-muted);
+    margin: 0 0 var(--space-2);
+    line-height: 1.5;
+}
+
+.citation-popover-formal-full {
+    color: var(--text-secondary);
+}
+
+/* Entry into force date */
+.citation-popover-date {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
     margin: 0 0 var(--space-3);
-    font-style: italic;
+}
+
+/* Category badge */
+.citation-popover-category {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-2);
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
 }
 
 .citation-popover-footer {
@@ -103,28 +152,49 @@
     align-items: center;
     justify-content: flex-start;
     gap: var(--space-2);
-    padding-top: var(--space-2);
+    padding-top: var(--space-3);
     border-top: 1px solid var(--border-secondary);
 }
 
 .citation-popover-link {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--text-link);
     text-decoration: none;
-    padding: var(--space-1) var(--space-2);
-    background: var(--bg-tertiary);
+    padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-sm);
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-.citation-popover-link:hover {
+/* Primary action (View in Portal) */
+.citation-popover-link--primary {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+.citation-popover-link--primary:hover {
+    background: var(--accent-primary-bright);
+}
+
+/* Secondary action (EUR-Lex for internal docs) */
+.citation-popover-link--secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.citation-popover-link--secondary:hover {
+    background: var(--border-primary);
+    color: var(--text-primary);
+}
+
+/* External-only action */
+.citation-popover-link--external {
+    background: var(--bg-tertiary);
+    color: var(--text-link);
+}
+
+.citation-popover-link--external:hover {
     background: var(--accent-primary-dim);
     color: var(--accent-primary);
-}
-
-.citation-popover-link--external {
-    color: var(--text-secondary);
 }
 
 /* =============================================================================

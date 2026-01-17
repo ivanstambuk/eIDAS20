@@ -9,7 +9,17 @@
       "celex": "32021H0946",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reco/2021/946/oj",
-      "originalText": "\\[Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework (OJ L 210, 14.6.2021, p. 51, ELI: http://data.europa.eu/eli/reco/2021/946/oj).\\]"
+      "originalText": "\\[Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework (OJ L 210, 14.6.2021, p. 51, ELI: http://data.europa.eu/eli/reco/2021/946/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 2,
@@ -20,7 +30,17 @@
       "celex": "32024R1183",
       "isInternal": true,
       "url": "#/regulations/2024-1183",
-      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]"
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "humanName": "European Digital Identity Framework",
+      "abbreviation": "eIDAS 2.0",
+      "entryIntoForce": "2024-05-20",
+      "entryIntoForceDisplay": "20 May 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 3,
@@ -31,7 +51,17 @@
       "celex": "32015R1501",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg_impl/2015/1501/oj",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2015/1501 of 8 September 2015 on the interoperability framework pursuant to Article 12(8) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 1, ELI: http://data.europa.eu/eli/reg_impl/2015/1501/oj).\\]"
+      "originalText": "\\[Commission Implementing Regulation (EU) 2015/1501 of 8 September 2015 on the interoperability framework pursuant to Article 12(8) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 1, ELI: http://data.europa.eu/eli/reg_impl/2015/1501/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 4,
@@ -42,7 +72,17 @@
       "celex": "32024R2977",
       "isInternal": true,
       "url": "#/implementing-acts/2024-2977",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets (OJ L, 2024/2977, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2977/oj).\\]"
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets (OJ L, 2024/2977, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2977/oj).\\]",
+      "humanName": "Wallet Trust Evidence and Wallet Attestations",
+      "abbreviation": null,
+      "entryIntoForce": "2024-12-25",
+      "entryIntoForceDisplay": "25 Dec 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 5,
@@ -53,7 +93,17 @@
       "celex": "32016R0679",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]"
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "humanName": "General Data Protection Regulation",
+      "abbreviation": "GDPR",
+      "entryIntoForce": "2018-05-25",
+      "entryIntoForceDisplay": "25 May 2018",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 6,
@@ -64,7 +114,17 @@
       "celex": "32002L0058",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
-      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]"
+      "originalText": "\\[Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications) (OJ L 201, 31.7.2002, p. 37, ELI: http://data.europa.eu/eli/dir/2002/58/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 7,
@@ -75,7 +135,17 @@
       "celex": "32018R1725",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]"
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 8,
@@ -84,7 +154,17 @@
       "celex": "31999L0093",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31999L0093",
-      "originalText": "Directive 1999/93/EC"
+      "originalText": "Directive 1999/93/EC",
+      "humanName": "Electronic Signature Directive",
+      "abbreviation": null,
+      "entryIntoForce": "2000-01-19",
+      "entryIntoForceDisplay": "19 Jan 2000",
+      "status": "repealed",
+      "statusDisplay": {
+        "label": "Repealed",
+        "color": "red"
+      },
+      "category": "directive"
     },
     {
       "index": 9,
@@ -93,7 +173,17 @@
       "celex": "31995L0046",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31995L0046",
-      "originalText": "Directive 95/46/EC"
+      "originalText": "Directive 95/46/EC",
+      "humanName": "Data Protection Directive",
+      "abbreviation": null,
+      "entryIntoForce": "1995-10-24",
+      "entryIntoForceDisplay": "24 Oct 1995",
+      "status": "repealed",
+      "statusDisplay": {
+        "label": "Repealed",
+        "color": "red"
+      },
+      "category": "directive"
     },
     {
       "index": 10,
@@ -102,7 +192,17 @@
       "celex": "32025R0846",
       "isInternal": true,
       "url": "#/implementing-acts/2025-0846",
-      "originalText": "Regulation (EU) 2025/846"
+      "originalText": "Regulation (EU) 2025/846",
+      "humanName": "Cross-Border Identity Verification",
+      "abbreviation": null,
+      "entryIntoForce": "2025-01-14",
+      "entryIntoForceDisplay": "14 Jan 2025",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 11,
@@ -111,7 +211,17 @@
       "celex": "32014R0910",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
-      "originalText": "Regulation (EU) No 910/2014"
+      "originalText": "Regulation (EU) No 910/2014",
+      "humanName": "Electronic Identification and Trust Services Regulation",
+      "abbreviation": "eIDAS",
+      "entryIntoForce": "2014-09-17",
+      "entryIntoForceDisplay": "17 Sept 2014",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
     },
     {
       "index": 12,
@@ -120,7 +230,17 @@
       "celex": "32001R0045",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32001R0045",
-      "originalText": "Regulation (EC) No 45/2001"
+      "originalText": "Regulation (EC) No 45/2001",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     },
     {
       "index": 13,
@@ -129,7 +249,17 @@
       "celex": "32002D1247",
       "isInternal": false,
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002D1247",
-      "originalText": "Decision No 1247/2002/EC"
+      "originalText": "Decision No 1247/2002/EC",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
     }
   ]
 }

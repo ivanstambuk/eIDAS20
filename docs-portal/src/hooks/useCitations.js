@@ -82,6 +82,7 @@ export function transformCitationsInHtml(html, citations, isMobile) {
             transformed = transformed.replace(pattern, replacement);
         } else {
             // Desktop: span with data attributes for popover hydration
+            // DEC-059: Enhanced with humanName, abbreviation, entryIntoForce, status
             const replacement = `<span 
                 class="citation-trigger" 
                 tabindex="0"
@@ -93,6 +94,12 @@ export function transformCitationsInHtml(html, citations, isMobile) {
                 data-citation-celex="${citation.celex || ''}"
                 data-citation-internal="${citation.isInternal}"
                 data-citation-url="${citation.url}"
+                data-citation-human-name="${encodeURIComponent(citation.humanName || '')}"
+                data-citation-abbreviation="${citation.abbreviation || ''}"
+                data-citation-entry-into-force="${citation.entryIntoForceDisplay || ''}"
+                data-citation-status="${citation.status || ''}"
+                data-citation-status-label="${citation.statusDisplay?.label || ''}"
+                data-citation-status-color="${citation.statusDisplay?.color || ''}"
             >${citation.shortName}</span>`;
             transformed = transformed.replace(pattern, replacement);
         }
