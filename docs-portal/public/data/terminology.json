@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-01-16T23:37:48.813Z",
+  "generated": "2026-01-17T00:20:14.352Z",
   "statistics": {
     "totalTerms": 106,
     "totalDefinitions": 199,
@@ -167,7 +167,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-6",
+          "articleId": "article-1-para-6",
           "articleNumber": "1(6)",
           "displayOrder": 2
         },
@@ -178,13 +178,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-6"
+      "primaryLinkTarget": "article-1-para-6"
     },
     {
       "id": "advanced-electronic-seal",
@@ -197,13 +197,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-26",
+          "articleId": "article-3-para-26",
           "articleNumber": "3(26)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-26"
+      "primaryLinkTarget": "article-3-para-26"
     },
     {
       "id": "advanced-electronic-signature",
@@ -216,13 +216,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-11",
+          "articleId": "article-3-para-11",
           "articleNumber": "3(11)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-11"
+      "primaryLinkTarget": "article-3-para-11"
     },
     {
       "id": "attribute",
@@ -235,13 +235,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-43",
+          "articleId": "article-3-para-43",
           "articleNumber": "3(43)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-43"
+      "primaryLinkTarget": "article-3-para-43"
     },
     {
       "id": "authentic-source",
@@ -254,13 +254,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-47",
+          "articleId": "article-3-para-47",
           "articleNumber": "3(47)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-47"
+      "primaryLinkTarget": "article-3-para-47"
     },
     {
       "id": "authentication",
@@ -273,13 +273,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-5",
+          "articleId": "article-3-para-5",
           "articleNumber": "3(5)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-5"
+      "primaryLinkTarget": "article-3-para-5"
     },
     {
       "id": "authorised-representative",
@@ -292,13 +292,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-4"
+      "primaryLinkTarget": "article-2-para-4"
     },
     {
       "id": "body-governed-by-public-law",
@@ -311,13 +311,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-8",
+          "articleId": "article-3-para-8",
           "articleNumber": "3(8)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-8"
+      "primaryLinkTarget": "article-3-para-8"
     },
     {
       "id": "catalogue-of-attributes",
@@ -330,13 +330,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-3"
+      "primaryLinkTarget": "article-2-para-3"
     },
     {
       "id": "catalogue-of-schemes-for-the-attestation-of-attributes",
@@ -349,13 +349,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-6"
+      "primaryLinkTarget": "article-2-para-6"
     },
     {
       "id": "ce-marking",
@@ -368,13 +368,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-20",
+          "articleId": "article-2-para-20",
           "articleNumber": "2(20)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-20"
+      "primaryLinkTarget": "article-2-para-20"
     },
     {
       "id": "certificate-for-electronic-seal",
@@ -387,13 +387,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-29",
+          "articleId": "article-3-para-29",
           "articleNumber": "3(29)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-29"
+      "primaryLinkTarget": "article-3-para-29"
     },
     {
       "id": "certificate-for-electronic-signature",
@@ -406,13 +406,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-14",
+          "articleId": "article-3-para-14",
           "articleNumber": "3(14)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-14"
+      "primaryLinkTarget": "article-3-para-14"
     },
     {
       "id": "certificate-for-website-authentication",
@@ -425,13 +425,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-38",
+          "articleId": "article-3-para-38",
           "articleNumber": "3(38)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-38"
+      "primaryLinkTarget": "article-3-para-38"
     },
     {
       "id": "certificate-of-conformity",
@@ -444,13 +444,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-3",
+          "articleId": "article-1-para-3",
           "articleNumber": "1(3)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-3"
+      "primaryLinkTarget": "article-1-para-3"
     },
     {
       "id": "certification-body",
@@ -463,13 +463,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-9"
+      "primaryLinkTarget": "article-2-para-9"
     },
     {
       "id": "certification-decision",
@@ -482,13 +482,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-2",
+          "articleId": "article-1-para-2",
           "articleNumber": "1(2)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-2"
+      "primaryLinkTarget": "article-1-para-2"
     },
     {
       "id": "community-harmonisation-legislation",
@@ -501,13 +501,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-21",
+          "articleId": "article-2-para-21",
           "articleNumber": "2(21)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-21"
+      "primaryLinkTarget": "article-2-para-21"
     },
     {
       "id": "conformity-assessment",
@@ -520,13 +520,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-12"
+      "primaryLinkTarget": "article-2-para-12"
     },
     {
       "id": "conformity-assessment-body",
@@ -539,7 +539,7 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-18",
+          "articleId": "article-3-para-18",
           "articleNumber": "3(18)",
           "displayOrder": 1
         },
@@ -550,13 +550,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-3-18"
+      "primaryLinkTarget": "article-3-para-18"
     },
     {
       "id": "conformity-assessment-report",
@@ -569,13 +569,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-5",
+          "articleId": "article-1-para-5",
           "articleNumber": "1(5)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-5"
+      "primaryLinkTarget": "article-1-para-5"
     },
     {
       "id": "conformity-assessment-scheme",
@@ -588,13 +588,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-4",
+          "articleId": "article-1-para-4",
           "articleNumber": "1(4)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-4"
+      "primaryLinkTarget": "article-1-para-4"
     },
     {
       "id": "creator-of-a-seal",
@@ -607,13 +607,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-24",
+          "articleId": "article-3-para-24",
           "articleNumber": "3(24)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-24"
+      "primaryLinkTarget": "article-3-para-24"
     },
     {
       "id": "critical-assets",
@@ -626,7 +626,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         },
@@ -637,7 +637,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -648,7 +648,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         },
@@ -659,7 +659,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         },
@@ -670,7 +670,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -681,7 +681,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -692,7 +692,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -703,7 +703,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -714,13 +714,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-10"
+      "primaryLinkTarget": "article-2-para-10"
     },
     {
       "id": "cryptographic-binding",
@@ -733,13 +733,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-16",
+          "articleId": "article-2-para-16",
           "articleNumber": "2(16)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-16"
+      "primaryLinkTarget": "article-2-para-16"
     },
     {
       "id": "data-record",
@@ -752,13 +752,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-56",
+          "articleId": "article-3-para-56",
           "articleNumber": "3(56)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-56"
+      "primaryLinkTarget": "article-3-para-56"
     },
     {
       "id": "electronic-archiving",
@@ -771,13 +771,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-48",
+          "articleId": "article-3-para-48",
           "articleNumber": "3(48)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-48"
+      "primaryLinkTarget": "article-3-para-48"
     },
     {
       "id": "electronic-attestation-of-attributes",
@@ -790,13 +790,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-44",
+          "articleId": "article-3-para-44",
           "articleNumber": "3(44)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-44"
+      "primaryLinkTarget": "article-3-para-44"
     },
     {
       "id": "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
@@ -809,13 +809,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-46",
+          "articleId": "article-3-para-46",
           "articleNumber": "3(46)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-46"
+      "primaryLinkTarget": "article-3-para-46"
     },
     {
       "id": "electronic-document",
@@ -828,13 +828,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-35",
+          "articleId": "article-3-para-35",
           "articleNumber": "3(35)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-35"
+      "primaryLinkTarget": "article-3-para-35"
     },
     {
       "id": "electronic-identification",
@@ -847,13 +847,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-1",
+          "articleId": "article-3-para-1",
           "articleNumber": "3(1)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-1"
+      "primaryLinkTarget": "article-3-para-1"
     },
     {
       "id": "electronic-identification-means",
@@ -866,13 +866,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-2",
+          "articleId": "article-3-para-2",
           "articleNumber": "3(2)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-2"
+      "primaryLinkTarget": "article-3-para-2"
     },
     {
       "id": "electronic-identification-scheme",
@@ -885,13 +885,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-4",
+          "articleId": "article-3-para-4",
           "articleNumber": "3(4)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-4"
+      "primaryLinkTarget": "article-3-para-4"
     },
     {
       "id": "electronic-ledger",
@@ -904,13 +904,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-52",
+          "articleId": "article-3-para-52",
           "articleNumber": "3(52)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-52"
+      "primaryLinkTarget": "article-3-para-52"
     },
     {
       "id": "electronic-registered-delivery-service",
@@ -923,13 +923,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-36",
+          "articleId": "article-3-para-36",
           "articleNumber": "3(36)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-36"
+      "primaryLinkTarget": "article-3-para-36"
     },
     {
       "id": "electronic-seal",
@@ -942,13 +942,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-25",
+          "articleId": "article-3-para-25",
           "articleNumber": "3(25)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-25"
+      "primaryLinkTarget": "article-3-para-25"
     },
     {
       "id": "electronic-seal-creation-data",
@@ -961,13 +961,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-28",
+          "articleId": "article-3-para-28",
           "articleNumber": "3(28)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-28"
+      "primaryLinkTarget": "article-3-para-28"
     },
     {
       "id": "electronic-seal-creation-device",
@@ -980,13 +980,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-31",
+          "articleId": "article-3-para-31",
           "articleNumber": "3(31)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-31"
+      "primaryLinkTarget": "article-3-para-31"
     },
     {
       "id": "electronic-signature",
@@ -999,13 +999,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-10",
+          "articleId": "article-3-para-10",
           "articleNumber": "3(10)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-10"
+      "primaryLinkTarget": "article-3-para-10"
     },
     {
       "id": "electronic-signature-creation-data",
@@ -1018,13 +1018,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-13",
+          "articleId": "article-3-para-13",
           "articleNumber": "3(13)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-13"
+      "primaryLinkTarget": "article-3-para-13"
     },
     {
       "id": "electronic-signature-creation-device",
@@ -1037,13 +1037,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-22",
+          "articleId": "article-3-para-22",
           "articleNumber": "3(22)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-22"
+      "primaryLinkTarget": "article-3-para-22"
     },
     {
       "id": "electronic-time-stamp",
@@ -1056,13 +1056,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-33",
+          "articleId": "article-3-para-33",
           "articleNumber": "3(33)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-33"
+      "primaryLinkTarget": "article-3-para-33"
     },
     {
       "id": "embedded-disclosure-policy",
@@ -1075,7 +1075,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -1086,7 +1086,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-14",
+          "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
         },
@@ -1097,13 +1097,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-9"
+      "primaryLinkTarget": "article-2-para-9"
     },
     {
       "id": "eu-digital-identity-wallet-trust-mark",
@@ -1116,13 +1116,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-50",
+          "articleId": "article-3-para-50",
           "articleNumber": "3(50)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-50"
+      "primaryLinkTarget": "article-3-para-50"
     },
     {
       "id": "european-digital-identity-wallet",
@@ -1135,13 +1135,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-42",
+          "articleId": "article-3-para-42",
           "articleNumber": "3(42)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-42"
+      "primaryLinkTarget": "article-3-para-42"
     },
     {
       "id": "flexible-scope-accreditation",
@@ -1154,13 +1154,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-7",
+          "articleId": "article-1-para-7",
           "articleNumber": "1(7)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-7"
+      "primaryLinkTarget": "article-1-para-7"
     },
     {
       "id": "harmonised-standard",
@@ -1173,13 +1173,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-9"
+      "primaryLinkTarget": "article-2-para-9"
     },
     {
       "id": "identity-matching",
@@ -1192,13 +1192,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-55",
+          "articleId": "article-3-para-55",
           "articleNumber": "3(55)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-55"
+      "primaryLinkTarget": "article-3-para-55"
     },
     {
       "id": "incident",
@@ -1211,13 +1211,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-13"
+      "primaryLinkTarget": "article-2-para-13"
     },
     {
       "id": "manufacturer",
@@ -1230,13 +1230,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-3"
+      "primaryLinkTarget": "article-2-para-3"
     },
     {
       "id": "national-accreditation-body",
@@ -1249,7 +1249,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-8",
+          "articleId": "article-1-para-8",
           "articleNumber": "1(8)",
           "displayOrder": 2
         },
@@ -1260,13 +1260,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-8"
+      "primaryLinkTarget": "article-1-para-8"
     },
     {
       "id": "national-register-of-wallet-relying-parties",
@@ -1279,13 +1279,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-10"
+      "primaryLinkTarget": "article-2-para-10"
     },
     {
       "id": "object-of-certification",
@@ -1298,13 +1298,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-3"
+      "primaryLinkTarget": "article-2-para-3"
     },
     {
       "id": "owner-of-a-scheme-for-the-attestation-of-attributes",
@@ -1317,13 +1317,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-13"
+      "primaryLinkTarget": "article-2-para-13"
     },
     {
       "id": "peer-evaluation",
@@ -1336,13 +1336,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-16",
+          "articleId": "article-2-para-16",
           "articleNumber": "2(16)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-16"
+      "primaryLinkTarget": "article-2-para-16"
     },
     {
       "id": "person-identification-data",
@@ -1355,13 +1355,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-3",
+          "articleId": "article-3-para-3",
           "articleNumber": "3(3)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-3"
+      "primaryLinkTarget": "article-3-para-3"
     },
     {
       "id": "personal-data",
@@ -1374,13 +1374,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-54",
+          "articleId": "article-3-para-54",
           "articleNumber": "3(54)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-54"
+      "primaryLinkTarget": "article-3-para-54"
     },
     {
       "id": "product",
@@ -1393,13 +1393,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-21",
+          "articleId": "article-3-para-21",
           "articleNumber": "3(21)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-21"
+      "primaryLinkTarget": "article-3-para-21"
     },
     {
       "id": "provider-of-person-identification-data",
@@ -1412,7 +1412,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -1423,7 +1423,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -1434,7 +1434,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -1445,7 +1445,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-15",
+          "articleId": "article-2-para-15",
           "articleNumber": "2(15)",
           "displayOrder": 2
         },
@@ -1456,7 +1456,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         },
@@ -1467,13 +1467,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-4"
+      "primaryLinkTarget": "article-2-para-4"
     },
     {
       "id": "provider-of-wallet-relying-party-access-certificates",
@@ -1486,7 +1486,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         },
@@ -1497,7 +1497,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-15",
+          "articleId": "article-2-para-15",
           "articleNumber": "2(15)",
           "displayOrder": 2
         },
@@ -1508,7 +1508,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         },
@@ -1519,7 +1519,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         },
@@ -1530,13 +1530,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-13"
+      "primaryLinkTarget": "article-2-para-13"
     },
     {
       "id": "provider-of-wallet-relying-party-registration-certificates",
@@ -1549,13 +1549,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-16",
+          "articleId": "article-2-para-16",
           "articleNumber": "2(16)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-16"
+      "primaryLinkTarget": "article-2-para-16"
     },
     {
       "id": "public-sector-body",
@@ -1568,13 +1568,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-7",
+          "articleId": "article-3-para-7",
           "articleNumber": "3(7)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-7"
+      "primaryLinkTarget": "article-3-para-7"
     },
     {
       "id": "qualified-certificate-for-electronic-seal",
@@ -1587,13 +1587,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-30",
+          "articleId": "article-3-para-30",
           "articleNumber": "3(30)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-30"
+      "primaryLinkTarget": "article-3-para-30"
     },
     {
       "id": "qualified-certificate-for-electronic-signature",
@@ -1606,13 +1606,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-15",
+          "articleId": "article-3-para-15",
           "articleNumber": "3(15)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-15"
+      "primaryLinkTarget": "article-3-para-15"
     },
     {
       "id": "qualified-certificate-for-website-authentication",
@@ -1625,13 +1625,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-39",
+          "articleId": "article-3-para-39",
           "articleNumber": "3(39)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-39"
+      "primaryLinkTarget": "article-3-para-39"
     },
     {
       "id": "qualified-electronic-archiving-service",
@@ -1644,13 +1644,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-49",
+          "articleId": "article-3-para-49",
           "articleNumber": "3(49)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-49"
+      "primaryLinkTarget": "article-3-para-49"
     },
     {
       "id": "qualified-electronic-attestation-of-attributes",
@@ -1663,13 +1663,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-45",
+          "articleId": "article-3-para-45",
           "articleNumber": "3(45)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-45"
+      "primaryLinkTarget": "article-3-para-45"
     },
     {
       "id": "qualified-electronic-ledger",
@@ -1682,13 +1682,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-53",
+          "articleId": "article-3-para-53",
           "articleNumber": "3(53)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-53"
+      "primaryLinkTarget": "article-3-para-53"
     },
     {
       "id": "qualified-electronic-registered-delivery-service",
@@ -1701,13 +1701,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-37",
+          "articleId": "article-3-para-37",
           "articleNumber": "3(37)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-37"
+      "primaryLinkTarget": "article-3-para-37"
     },
     {
       "id": "qualified-electronic-seal",
@@ -1720,13 +1720,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-27",
+          "articleId": "article-3-para-27",
           "articleNumber": "3(27)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-27"
+      "primaryLinkTarget": "article-3-para-27"
     },
     {
       "id": "qualified-electronic-seal-creation-device",
@@ -1739,13 +1739,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-32",
+          "articleId": "article-3-para-32",
           "articleNumber": "3(32)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-32"
+      "primaryLinkTarget": "article-3-para-32"
     },
     {
       "id": "qualified-electronic-signature",
@@ -1758,13 +1758,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-12",
+          "articleId": "article-3-para-12",
           "articleNumber": "3(12)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-12"
+      "primaryLinkTarget": "article-3-para-12"
     },
     {
       "id": "qualified-electronic-signature-creation-device",
@@ -1777,13 +1777,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-23",
+          "articleId": "article-3-para-23",
           "articleNumber": "3(23)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-23"
+      "primaryLinkTarget": "article-3-para-23"
     },
     {
       "id": "qualified-electronic-time-stamp",
@@ -1796,13 +1796,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-34",
+          "articleId": "article-3-para-34",
           "articleNumber": "3(34)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-34"
+      "primaryLinkTarget": "article-3-para-34"
     },
     {
       "id": "qualified-trust-service",
@@ -1815,13 +1815,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-17",
+          "articleId": "article-3-para-17",
           "articleNumber": "3(17)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-17"
+      "primaryLinkTarget": "article-3-para-17"
     },
     {
       "id": "qualified-trust-service-provider",
@@ -1834,13 +1834,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-20",
+          "articleId": "article-3-para-20",
           "articleNumber": "3(20)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-20"
+      "primaryLinkTarget": "article-3-para-20"
     },
     {
       "id": "register-of-wallet-relying-parties",
@@ -1853,13 +1853,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-4"
+      "primaryLinkTarget": "article-2-para-4"
     },
     {
       "id": "registrar-of-wallet-relying-parties",
@@ -1872,7 +1872,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -1883,13 +1883,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-14",
+          "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-5"
+      "primaryLinkTarget": "article-2-para-5"
     },
     {
       "id": "release-for-free-circulation",
@@ -1902,13 +1902,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-19",
+          "articleId": "article-2-para-19",
           "articleNumber": "2(19)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-19"
+      "primaryLinkTarget": "article-2-para-19"
     },
     {
       "id": "relying-party",
@@ -1921,13 +1921,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-6",
+          "articleId": "article-3-para-6",
           "articleNumber": "3(6)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-6"
+      "primaryLinkTarget": "article-3-para-6"
     },
     {
       "id": "remote-qualified-electronic-seal-creation-device",
@@ -1940,13 +1940,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-23b",
+          "articleId": "article-3-para-23b",
           "articleNumber": "3(23b)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-23b"
+      "primaryLinkTarget": "article-3-para-23b"
     },
     {
       "id": "remote-qualified-electronic-signature-creation-device",
@@ -1959,13 +1959,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-23a",
+          "articleId": "article-3-para-23a",
           "articleNumber": "3(23a)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-23a"
+      "primaryLinkTarget": "article-3-para-23a"
     },
     {
       "id": "risk-register",
@@ -1978,13 +1978,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-7"
+      "primaryLinkTarget": "article-2-para-7"
     },
     {
       "id": "scheme-for-the-attestation-of-attributes",
@@ -1997,13 +1997,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-4"
+      "primaryLinkTarget": "article-2-para-4"
     },
     {
       "id": "scheme-owner",
@@ -2016,7 +2016,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2027,13 +2027,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R2162",
-          "articleId": "article-1-1",
+          "articleId": "article-1-para-1",
           "articleNumber": "1(1)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-2"
+      "primaryLinkTarget": "article-2-para-2"
     },
     {
       "id": "signatory",
@@ -2046,13 +2046,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-9",
+          "articleId": "article-3-para-9",
           "articleNumber": "3(9)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-9"
+      "primaryLinkTarget": "article-3-para-9"
     },
     {
       "id": "strong-user-authentication",
@@ -2065,13 +2065,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-51",
+          "articleId": "article-3-para-51",
           "articleNumber": "3(51)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-51"
+      "primaryLinkTarget": "article-3-para-51"
     },
     {
       "id": "technical-specification",
@@ -2084,13 +2084,13 @@
           "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02008R0765-20210716",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-8"
+      "primaryLinkTarget": "article-2-para-8"
     },
     {
       "id": "trust-service",
@@ -2103,13 +2103,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-16",
+          "articleId": "article-3-para-16",
           "articleNumber": "3(16)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-16"
+      "primaryLinkTarget": "article-3-para-16"
     },
     {
       "id": "trust-service-provider",
@@ -2122,13 +2122,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-19",
+          "articleId": "article-3-para-19",
           "articleNumber": "3(19)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-19"
+      "primaryLinkTarget": "article-3-para-19"
     },
     {
       "id": "type-of-electronic-attestation-of-attributes",
@@ -2141,13 +2141,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-5"
+      "primaryLinkTarget": "article-2-para-5"
     },
     {
       "id": "user",
@@ -2160,13 +2160,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-5a",
+          "articleId": "article-3-para-5a",
           "articleNumber": "3(5a)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-5a"
+      "primaryLinkTarget": "article-3-para-5a"
     },
     {
       "id": "validation",
@@ -2179,13 +2179,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-41",
+          "articleId": "article-3-para-41",
           "articleNumber": "3(41)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-41"
+      "primaryLinkTarget": "article-3-para-41"
     },
     {
       "id": "validation-data",
@@ -2198,13 +2198,13 @@
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "02014R0910-20241018",
-          "articleId": "article-3-40",
+          "articleId": "article-3-para-40",
           "articleNumber": "3(40)",
           "displayOrder": 1
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-40"
+      "primaryLinkTarget": "article-3-para-40"
     },
     {
       "id": "wallet-cryptographic-operation",
@@ -2217,13 +2217,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-13",
+          "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-13"
+      "primaryLinkTarget": "article-2-para-13"
     },
     {
       "id": "wallet-instance",
@@ -2236,7 +2236,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2247,7 +2247,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         },
@@ -2258,7 +2258,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2269,7 +2269,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2280,7 +2280,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2291,7 +2291,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -2302,7 +2302,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -2313,7 +2313,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2324,13 +2324,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-6"
+      "primaryLinkTarget": "article-2-para-6"
     },
     {
       "id": "wallet-provider",
@@ -2343,7 +2343,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -2354,7 +2354,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2365,7 +2365,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2376,7 +2376,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2387,7 +2387,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2398,7 +2398,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2409,7 +2409,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2420,7 +2420,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -2431,13 +2431,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-9"
+      "primaryLinkTarget": "article-2-para-9"
     },
     {
       "id": "wallet-secure-cryptographic-application",
@@ -2450,7 +2450,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2461,7 +2461,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2472,7 +2472,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -2483,7 +2483,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -2494,7 +2494,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2505,7 +2505,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2516,7 +2516,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2527,7 +2527,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2538,13 +2538,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-7"
+      "primaryLinkTarget": "article-2-para-7"
     },
     {
       "id": "wallet-secure-cryptographic-device",
@@ -2557,7 +2557,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2568,7 +2568,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         },
@@ -2579,7 +2579,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         },
@@ -2590,7 +2590,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2601,7 +2601,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2612,7 +2612,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2623,7 +2623,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2634,7 +2634,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2645,13 +2645,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-8"
+      "primaryLinkTarget": "article-2-para-8"
     },
     {
       "id": "wallet-solution",
@@ -2664,7 +2664,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -2675,7 +2675,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         },
@@ -2686,7 +2686,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         },
@@ -2697,7 +2697,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2708,7 +2708,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -2719,7 +2719,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2730,7 +2730,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -2741,7 +2741,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2752,13 +2752,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-7",
+          "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-3"
+      "primaryLinkTarget": "article-2-para-3"
     },
     {
       "id": "wallet-unit",
@@ -2771,7 +2771,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2782,7 +2782,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2793,7 +2793,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -2804,7 +2804,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         },
@@ -2815,7 +2815,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-4",
+          "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
         },
@@ -2826,7 +2826,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2837,7 +2837,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2848,7 +2848,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -2859,13 +2859,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-2"
+      "primaryLinkTarget": "article-2-para-2"
     },
     {
       "id": "wallet-unit-attestation",
@@ -2878,7 +2878,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2889,7 +2889,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-8",
+          "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
         },
@@ -2900,7 +2900,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         },
@@ -2911,13 +2911,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-5"
+      "primaryLinkTarget": "article-2-para-5"
     },
     {
       "id": "wallet-user",
@@ -2930,7 +2930,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -2941,7 +2941,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -2952,7 +2952,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         },
@@ -2963,7 +2963,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2981",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         },
@@ -2974,7 +2974,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2985,7 +2985,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         },
@@ -2996,7 +2996,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-9",
+          "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
         },
@@ -3007,7 +3007,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0849",
-          "articleId": "article-2-5",
+          "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
         },
@@ -3018,13 +3018,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
-          "articleId": "article-2-2",
+          "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-1"
+      "primaryLinkTarget": "article-2-para-1"
     },
     {
       "id": "wallet-relying-party",
@@ -3037,7 +3037,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-11",
+          "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
         },
@@ -3048,7 +3048,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-6",
+          "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
         },
@@ -3059,7 +3059,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -3070,7 +3070,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         },
@@ -3081,7 +3081,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0847",
-          "articleId": "article-2-3",
+          "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
         },
@@ -3092,13 +3092,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-1",
+          "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-11"
+      "primaryLinkTarget": "article-2-para-11"
     },
     {
       "id": "wallet-relying-party-access-certificate",
@@ -3111,7 +3111,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2977",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         },
@@ -3122,7 +3122,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2979",
-          "articleId": "article-2-14",
+          "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
         },
@@ -3133,7 +3133,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2980",
-          "articleId": "article-2-14",
+          "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
         },
@@ -3144,7 +3144,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-10",
+          "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
         },
@@ -3155,13 +3155,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-12",
+          "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-12"
+      "primaryLinkTarget": "article-2-para-12"
     },
     {
       "id": "wallet-relying-party-registration-certificate",
@@ -3174,7 +3174,7 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32024R2982",
-          "articleId": "article-2-14",
+          "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
         },
@@ -3185,13 +3185,13 @@
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
-          "articleId": "article-2-15",
+          "articleId": "article-2-para-15",
           "articleNumber": "2(15)",
           "displayOrder": 2
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-14"
+      "primaryLinkTarget": "article-2-para-14"
     }
   ]
 }

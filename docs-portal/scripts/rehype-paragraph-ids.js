@@ -182,10 +182,15 @@ function rehypeParagraphIds() {
 
                 for (const child of node.children) {
                     if (child.type === 'element' && child.tagName === 'li') {
-                        // Extract ordinal from text content (e.g., "(18)" or "(23a)")
+                        // Extract ordinal from text content
+                        // Pattern 1: eIDAS format "(18)" or "(23a)"
+                        // Pattern 2: EU numbered format "10. 'term'" (used in 765/2008)
                         const textContent = getTextContent(child);
-                        const ordinalMatch = textContent.match(/^\s*\((\d+\w?)\)/);
-                        const paragraphNum = ordinalMatch ? ordinalMatch[1] : (startNum + liIndex);
+                        const parenMatch = textContent.match(/^\s*\((\d+\w?)\)/);
+                        const numDotMatch = textContent.match(/^\s*(\d+)\.\s/);
+                        const paragraphNum = parenMatch ? parenMatch[1] :
+                            numDotMatch ? numDotMatch[1] :
+                                (startNum + liIndex);
                         const paraId = `${currentArticleId}-para-${paragraphNum}`;
 
                         child.properties = child.properties || {};
@@ -238,10 +243,15 @@ function rehypeParagraphIds() {
 
                     for (const child of node.children) {
                         if (child.type === 'element' && child.tagName === 'li') {
-                            // Extract ordinal from text content (e.g., "(18)" or "(23a)")
+                            // Extract ordinal from text content
+                            // Pattern 1: eIDAS format "(18)" or "(23a)"
+                            // Pattern 2: EU numbered format "10. 'term'" (used in 765/2008)
                             const textContent = getTextContent(child);
-                            const ordinalMatch = textContent.match(/^\s*\((\d+\w?)\)/);
-                            const paragraphNum = ordinalMatch ? ordinalMatch[1] : (liIndex + 1);
+                            const parenMatch = textContent.match(/^\s*\((\d+\w?)\)/);
+                            const numDotMatch = textContent.match(/^\s*(\d+)\.\s/);
+                            const paragraphNum = parenMatch ? parenMatch[1] :
+                                numDotMatch ? numDotMatch[1] :
+                                    (liIndex + 1);
                             const paraId = `${currentArticleId}-para-${paragraphNum}`;
 
                             child.properties = child.properties || {};

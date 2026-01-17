@@ -330,7 +330,7 @@ function mergeTerms(allTerms) {
             documentCategory: term.source.category,
             documentType: term.source.type,
             celex: term.source.celex,
-            articleId: `article-${term.source.article}${term.source.ordinal ? `-${term.source.ordinal}` : ''}`,
+            articleId: `article-${term.source.article}${term.source.ordinal ? `-para-${term.source.ordinal}` : ''}`,
             articleNumber: term.source.ordinal ? `${term.source.article}(${term.source.ordinal})` : term.source.article,
             displayOrder: getDisplayOrder(term.source.category)
         };
