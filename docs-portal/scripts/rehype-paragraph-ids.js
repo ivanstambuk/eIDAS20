@@ -212,30 +212,25 @@ function rehypeParagraphIds() {
             // This is necessary for Article 2 (Definitions) sections that use unordered lists
             // We preserve the original list type but still enable deep linking with paragraph IDs
             if (node.tagName === 'ul') {
-                // Check if this is a top-level list (direct child after article heading)
-                // by checking if parent contains NO other ul/ol between article heading and this ul
+                // Check if this is a top-level list (NOT nested inside another list)
+                // A list is top-level if none of its ancestors are ul/ol/li elements.
+                // This distinguishes between:
+                //   - Top-level Article 2 definitions (ul after h3) → paragraphs
+                //   - Nested points like (a), (b), (c) inside paragraphs → points
                 const isTopLevelList = (() => {
-                    // Find parent in ancestors
-                    const parentIndex = ancestors.findIndex(a => a === node);
-                    if (parentIndex === -1) return true;
-
-                    // Look for article heading before this ul
-                    let foundArticle = false;
-                    for (let i = parentIndex - 1; i >= 0; i--) {
-                        const ancestor = ancestors[i];
+                    // Check if any ancestor is a list or list item
+                    for (const ancestor of ancestors) {
                         if (ancestor.type === 'element') {
-                            if ((ancestor.tagName === 'h2' || ancestor.tagName === 'h3') &&
-                                ancestor.properties?.id?.startsWith('article-')) {
-                                foundArticle = true;
-                                break;
-                            }
-                            // If we find another list before the article, this is nested
-                            if (ancestor.tagName === 'ul' || ancestor.tagName === 'ol') {
+                            // If we find a list or list item ancestor, this is nested
+                            if (ancestor.tagName === 'ul' ||
+                                ancestor.tagName === 'ol' ||
+                                ancestor.tagName === 'li') {
                                 return false;
                             }
                         }
                     }
-                    return foundArticle;
+                    // No list ancestors found - this is a top-level list
+                    return true;
                 })();
 
                 if (isTopLevelList) {

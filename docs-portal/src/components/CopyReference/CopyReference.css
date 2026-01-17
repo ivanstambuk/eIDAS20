@@ -50,6 +50,16 @@ li.linkable-recital>.copy-gutter {
     opacity: 1;
 }
 
+/* Hide parent gutter when hovering a nested child element.
+ * Prevents duplicate gutters (e.g., paragraph + point both showing).
+ * Only the innermost hovered element should show its gutter.
+ */
+.regulation-content li.linkable-paragraph:hover:has(.linkable-point:hover)>.copy-gutter,
+.regulation-content li.linkable-paragraph:hover:has(.linkable-subpoint:hover)>.copy-gutter,
+.regulation-content li.linkable-point:hover:has(.linkable-subpoint:hover)>.copy-gutter {
+    opacity: 0;
+}
+
 /* Individual gutter button */
 .copy-gutter-btn {
     width: 28px;
