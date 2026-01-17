@@ -22,6 +22,8 @@ const navigation = [
         items: [
             // Human-friendly name per DEC-051; technical ref: Regulation (EC) No 765/2008
             { name: 'Accreditation Regulation', path: '/regulation/765-2008', icon: 'external-link' },
+            // Commission Recommendation (EU) 2021/946 — foundational EUDIW Toolbox
+            { name: 'EUDIW Toolbox', path: '/regulation/2021-946', icon: 'external-link' },
         ]
     },
     {

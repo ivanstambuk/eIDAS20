@@ -89,6 +89,30 @@ function getShortTitleFromConfig(dirName) {
 }
 
 /**
+ * Get document typing (legalType and category) from documents.yaml.
+ * 
+ * These two fields separate:
+ * - legalType: What the document IS under EU law (regulation, recommendation, decision)
+ * - category: How it relates to the eIDAS project (primary, implementing_act, referenced)
+ * 
+ * @param {string} dirName - Directory name (e.g., "765_2008_Market_Surveillance")
+ * @returns {{legalType: string|null, category: string|null}}
+ */
+function getDocumentTypingFromConfig(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return { legalType: null, category: null };
+
+    const doc = config.documents.find(d =>
+        d.output_dir && d.output_dir.endsWith(dirName)
+    );
+
+    return {
+        legalType: doc?.legalType || null,
+        category: doc?.category || null
+    };
+}
+
+/**
  * Preamble Injection Configuration
  * 
  * The consolidated eIDAS regulation (910/2014) from EUR-Lex doesn't include a preamble.
@@ -643,6 +667,9 @@ function processMarkdownFile(filePath, dirName, type) {
     const slug = generateSlug(dirName, type);
     const shortTitle = extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
 
+    // Get document typing from documents.yaml (legalType + category)
+    const docTyping = getDocumentTypingFromConfig(dirName);
+
     // Check if this is the consolidated eIDAS regulation that needs preamble injection
     let preambleInjected = false;
     if (PREAMBLE_INJECTION.targetSlugPattern.test(slug)) {
@@ -670,7 +697,10 @@ function processMarkdownFile(filePath, dirName, type) {
     // Prepare the regulation data object
     const regulationData = {
         slug,
-        type,
+        type,  // Legacy: 'regulation' or 'implementing-act' from source directory
+        // New two-field model from documents.yaml:
+        legalType: docTyping.legalType,    // What it IS (regulation, recommendation, decision)
+        category: docTyping.category,       // Project role (primary, implementing_act, referenced)
         title,
         shortTitle,
         description,
@@ -965,7 +995,9 @@ function build() {
     // Create index file (without content, just metadata for listing)
     const index = allRegulations.map(reg => ({
         slug: reg.slug,
-        type: reg.type,
+        type: reg.type,  // Legacy field
+        legalType: reg.legalType,  // New: What it IS (regulation, recommendation, decision)
+        category: reg.category,     // New: Project role (primary, implementing_act, referenced)
         title: reg.title,
         shortTitle: reg.shortTitle,
         description: reg.description,
