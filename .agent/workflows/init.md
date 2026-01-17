@@ -112,6 +112,17 @@ curl -s http://localhost:9222/json/version | head -1 || echo "❌ Chrome CDP not
 
 ---
 
+## 7.1. Clean Antigravity Browser Recordings
+
+// turbo
+```bash
+rm -rf ~/.gemini/antigravity/browser_recordings/* 2>/dev/null && echo "🧹 Cleaned browser recordings" || echo "No recordings to clean"
+```
+
+Browser recordings are debug videos from `browser_subagent` sessions. They can grow to **30GB+** over time. Safe to delete — not needed for Antigravity functionality.
+
+---
+
 ## After Initialization
 
 Provide a brief summary:
