@@ -869,6 +869,165 @@ def extract_articles(root):
     return lines
 
 
+def extract_gr_seq_sections(root):
+    """Extract and format GR.SEQ sections from ENACTING.TERMS.
+    
+    Used for Recommendations which structure their normative content differently
+    from Regulations. Instead of <ARTICLE> elements, Recommendations use:
+    
+    <ENACTING.TERMS>
+      <GR.SEQ LEVEL="1">
+        <TITLE><TI><NP><NO.P>1.</NO.P><TXT><HT>OBJECTIVES AND DEFINITIONS</HT></TXT></NP></TI></TITLE>
+        <NP><NO.P>(1)</NO.P><TXT>It is recommended that...</TXT>
+          <P><LIST>...</LIST></P>
+        </NP>
+        ...
+      </GR.SEQ>
+      <GR.SEQ LEVEL="1">
+        <TITLE>...</TITLE>
+        ...
+      </GR.SEQ>
+    </ENACTING.TERMS>
+    
+    Returns list of Markdown lines.
+    """
+    lines = []
+    
+    # Find ENACTING.TERMS
+    enacting = root.find('.//ENACTING.TERMS')
+    if enacting is None:
+        return lines
+    
+    # Process top-level GR.SEQ elements (LEVEL="1" sections)
+    for gr_seq in enacting.findall('GR.SEQ'):
+        level = gr_seq.get('LEVEL', '1')
+        
+        # Extract section title from TITLE/TI
+        title_elem = gr_seq.find('TITLE/TI')
+        if title_elem is None:
+            title_elem = gr_seq.find('TITLE')
+        
+        if title_elem is not None:
+            # Title may be in NP/NO.P + NP/TXT format or direct P
+            np_elem = title_elem.find('NP')
+            if np_elem is not None:
+                no_p = np_elem.find('NO.P')
+                number = get_element_text(no_p).strip() if no_p is not None else ""
+                txt = np_elem.find('TXT')
+                title_text = clean_text(get_element_text(txt)) if txt is not None else ""
+                
+                if number and title_text:
+                    section_title = f"{number} {title_text}"
+                elif title_text:
+                    section_title = title_text
+                else:
+                    section_title = number
+            else:
+                section_title = clean_text(get_element_text(title_elem))
+            
+            # Output section as ### heading
+            if section_title:
+                lines.append(f"### {section_title}")
+                lines.append("")
+        
+        # Process NP elements (numbered paragraphs within section)
+        for np_elem in gr_seq.findall('NP'):
+            no_p = np_elem.find('NO.P')
+            number = get_element_text(no_p).strip() if no_p is not None else ""
+            
+            # Get paragraph text from TXT
+            txt_elem = np_elem.find('TXT')
+            if txt_elem is not None:
+                text = clean_text(get_element_text(txt_elem))
+            else:
+                text = ""
+            
+            # Output the numbered paragraph
+            if number and text:
+                lines.append(f"{number} {text}")
+            elif text:
+                lines.append(text)
+            elif number:
+                lines.append(f"{number}")
+            
+            lines.append("")
+            
+            # Process nested lists inside this NP (points (a), (b), etc.)
+            for nested_list in np_elem.findall('P/LIST'):
+                list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                lines.extend(list_lines)
+                if list_lines:
+                    lines.append("")
+            for nested_list in np_elem.findall('LIST'):
+                list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                lines.extend(list_lines)
+                if list_lines:
+                    lines.append("")
+        
+        # Process P elements directly under GR.SEQ (unnumbered paragraphs)
+        for p_elem in gr_seq.findall('P'):
+            # Skip P elements that contain LIST (handled separately)
+            if p_elem.find('LIST') is not None:
+                continue
+            text = clean_text(get_element_text(p_elem))
+            if text:
+                lines.append(text)
+                lines.append("")
+        
+        # Process nested GR.SEQ elements (LEVEL="2" subsections)
+        for sub_gr_seq in gr_seq.findall('GR.SEQ'):
+            sub_level = sub_gr_seq.get('LEVEL', '2')
+            
+            # Extract subsection title
+            sub_title_elem = sub_gr_seq.find('TITLE/TI')
+            if sub_title_elem is not None:
+                # P elements inside TI contain the subtitle
+                p_elem = sub_title_elem.find('P')
+                if p_elem is not None:
+                    subtitle = clean_text(get_element_text(p_elem))
+                else:
+                    subtitle = clean_text(get_element_text(sub_title_elem))
+                
+                if subtitle:
+                    # Use italic for subsection titles (they're often styled that way)
+                    lines.append(f"*{subtitle}*")
+                    lines.append("")
+            
+            # Process NP elements in subsection
+            for np_elem in sub_gr_seq.findall('NP'):
+                no_p = np_elem.find('NO.P')
+                number = get_element_text(no_p).strip() if no_p is not None else ""
+                
+                txt_elem = np_elem.find('TXT')
+                if txt_elem is not None:
+                    text = clean_text(get_element_text(txt_elem))
+                else:
+                    text = ""
+                
+                if number and text:
+                    lines.append(f"{number} {text}")
+                elif text:
+                    lines.append(text)
+                elif number:
+                    lines.append(f"{number}")
+                
+                lines.append("")
+                
+                # Process nested lists
+                for nested_list in np_elem.findall('P/LIST'):
+                    list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                    lines.extend(list_lines)
+                    if list_lines:
+                        lines.append("")
+                for nested_list in np_elem.findall('LIST'):
+                    list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                    lines.extend(list_lines)
+                    if list_lines:
+                        lines.append("")
+    
+    return lines
+
+
 def convert_formex_to_md(xml_path, output_path=None):
     """Main conversion function."""
     tree = ET.parse(xml_path)
@@ -934,6 +1093,11 @@ def convert_formex_to_md(xml_path, output_path=None):
     # Articles
     article_lines = extract_articles(root)
     md_lines.extend(article_lines)
+    
+    # GR.SEQ sections (for Recommendations which use GR.SEQ instead of ARTICLE)
+    # This will only produce output if there are GR.SEQ elements in ENACTING.TERMS
+    gr_seq_lines = extract_gr_seq_sections(root)
+    md_lines.extend(gr_seq_lines)
     
     # Annexes - handle both nested ANNEX elements AND standalone annex files (ANNEX as root)
     # Also handle CONS.ANNEX used in consolidated documents
