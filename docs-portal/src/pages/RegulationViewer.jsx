@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams, Link, useSearchParams, useNavigationType } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
-import { useCopyReference, generateEUReference, generateDeepLink } from '../hooks/useCopyReference';
+import { generateEUReference, generateDeepLink } from '../hooks/useCopyReference';
+import { useScrollRestoration } from '../hooks/useScrollRestoration';
 import { generatePopoverContent } from '../utils/citationPopoverTemplate';
 import '../components/CitationPopover/CitationPopover.css';
 import '../components/CopyReference/CopyReference.css';
@@ -60,65 +61,14 @@ const RegulationViewer = () => {
     const { citations } = useCitations(id);
     const isMobile = useIsMobile();
 
-    // ⚠️ Navigation Type Detection Pattern (same as Terminology.jsx)
-    // Uses React Router's useNavigationType() hook to distinguish between:
-    //   - 'POP':     Back/forward button navigation → Restore scroll position
-    //   - 'PUSH':    Link click navigation         → Start at top (or deep link)
-    //   - 'REPLACE': Replace navigation            → Start at top
-    const navigationType = useNavigationType();
-    const isBackForward = navigationType === 'POP';
-
-    // Generate sessionStorage key based on document ID to avoid cross-document conflicts
-    const scrollStorageKey = `regulationScrollY_${id}`;
-
-    // Scroll restoration: restore scroll position when returning via back/forward button
-    // This effect runs AFTER the deep-linking effect, so deep links take precedence
-    useEffect(() => {
-        if (!loading && regulation) {
-            const section = searchParams.get('section');
-            // Only restore if no deep link AND navigating via back/forward
-            if (!section && isBackForward) {
-                const savedScrollY = sessionStorage.getItem(scrollStorageKey);
-                if (savedScrollY) {
-                    const scrollY = parseInt(savedScrollY, 10);
-                    
-                    // Wait for DOM to have enough height before scrolling
-                    // This handles the timing issue where content isn't rendered yet
-                    let attempts = 0;
-                    const maxAttempts = 10;
-                    const checkAndScroll = () => {
-                        attempts++;
-                        const canScroll = document.documentElement.scrollHeight > scrollY + window.innerHeight;
-                        
-                        if (canScroll) {
-                            window.scrollTo(0, scrollY);
-                            sessionStorage.removeItem(scrollStorageKey);
-                        } else if (attempts < maxAttempts) {
-                            // Content not tall enough yet, retry after a frame
-                            requestAnimationFrame(checkAndScroll);
-                        } else {
-                            // Give up after max attempts, but still clean up storage
-                            sessionStorage.removeItem(scrollStorageKey);
-                        }
-                    };
-                    
-                    // Start the polling after initial paint
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(checkAndScroll);
-                    });
-                }
-            } else if (!isBackForward) {
-                // Manual navigation (not back/forward), clear saved position
-                sessionStorage.removeItem(scrollStorageKey);
-            }
-        }
-    }, [loading, regulation, isBackForward, searchParams, scrollStorageKey]);
-
-    // Save scroll position when clicking popover internal links
-    // This is wired up in the popover click handler below (useCallback for stable reference)
-    const saveScrollPosition = useCallback(() => {
-        sessionStorage.setItem(scrollStorageKey, window.scrollY.toString());
-    }, [scrollStorageKey]);
+    // Scroll restoration: uses shared hook that handles the DOM height timing issue
+    // (window.scrollTo() fails if called before content renders)
+    // Deep links take precedence over scroll restoration
+    const { saveScrollPosition } = useScrollRestoration({
+        storageKey: `regulationScrollY_${id}`,
+        ready: !loading && regulation !== null,
+        hasDeepLink: !!searchParams.get('section')
+    });
 
     // ⚠️ IMPORTANT: This is the ACTUAL citation popover implementation.
     // The CitationPopover.jsx React component exists but is NOT used here.
@@ -231,7 +181,7 @@ const RegulationViewer = () => {
             if (activePopover) activePopover.remove();
             if (hideTimeout) clearTimeout(hideTimeout);
         };
-    }, [regulation, citations, isMobile, saveScrollPosition, scrollStorageKey]);
+    }, [regulation, citations, isMobile, saveScrollPosition, id]);
 
     useEffect(() => {
         const loadRegulation = async () => {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link, useSearchParams, useNavigationType } from 'react-router-dom';
-import { trace } from '../utils/trace';
+import { Link, useSearchParams } from 'react-router-dom';
+import { useScrollRestoration } from '../hooks/useScrollRestoration';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -166,59 +166,13 @@ const Terminology = () => {
         loadTerminology();
     }, []);
 
-    // ⚠️ Navigation Type Detection Pattern
-    // Uses React Router's useNavigationType() hook to distinguish between:
-    //   - 'POP':     Back/forward button navigation → Restore scroll position
-    //   - 'PUSH':    Link click navigation         → Start at top
-    //   - 'REPLACE': Replace navigation            → Start at top
-    // This provides the optimal UX: users can pick up where they left off when using browser 
-    // back button, but get a fresh start when explicitly clicking the Terminology menu item.
-    // 
-    // NOTE: The Performance Navigation API does NOT work for SPA navigation because
-    // React Router handles navigation client-side without loading a new document.
-    // React Router's hook properly tracks in-app navigation via the History API.
-    const navigationType = useNavigationType();
-    const isBackForward = navigationType === 'POP';
-
-    // Scroll restoration: restore scroll position when returning via back/forward button
+    // Scroll restoration hook: handles the DOM height timing issue and navigation detection
     // [TRACE] Enable with: ?debug=scroll or window.enableTrace('scroll')
-    useEffect(() => {
-        if (!loading && terminology) {
-            const savedScrollY = sessionStorage.getItem('terminologyScrollY');
-
-            // Trace the state for debugging (zero-cost when disabled)
-            trace('scroll:restore', {
-                navigationType,
-                isBackForward,
-                savedScrollY,
-                scrollHeight: document.documentElement.scrollHeight
-            });
-
-            if (savedScrollY && isBackForward) {
-                // Only restore scroll position if user came via back/forward button
-                const scrollY = parseInt(savedScrollY, 10);
-                trace('scroll:restore', 'Restoring to', scrollY);
-
-                // Double-RAF pattern: ensures DOM has fully painted before scrolling
-                // - First RAF: queued after current frame
-                // - Second RAF: runs after browser has completed layout/paint
-                // This is critical for long lists (500+ terminology items)
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        window.scrollTo(0, scrollY);
-                        sessionStorage.removeItem('terminologyScrollY');
-                        trace('scroll:restore', 'Scroll applied, final scrollY:', window.scrollY);
-                    });
-                });
-            } else if (savedScrollY && !isBackForward) {
-                // User navigated manually (e.g., clicked menu link), clear saved position
-                trace('scroll:restore', 'Manual navigation, clearing saved position');
-                sessionStorage.removeItem('terminologyScrollY');
-            } else {
-                trace('scroll:restore', 'No saved position or not applicable');
-            }
-        }
-    }, [loading, terminology, isBackForward, navigationType]);
+    const { saveScrollPosition: handleSaveScroll } = useScrollRestoration({
+        storageKey: 'terminologyScrollY',
+        ready: !loading && terminology !== null,
+        hasDeepLink: !!searchParams.get('section')
+    });
 
     // NOTE: We intentionally do NOT clear the scroll position on unmount.
     // The save-restore cycle works like this:
@@ -227,14 +181,6 @@ const Terminology = () => {
     //   3. User clicks back → component remounts, isBackForward=true
     //   4. Scroll is restored, then position is cleared
     // Clearing on unmount (step 2) would break this cycle.
-
-    // Save scroll position before navigating away
-    // [TRACE] Enable with: ?debug=scroll or window.enableTrace('scroll')
-    const handleSaveScroll = () => {
-        const scrollY = window.scrollY;
-        trace('scroll:save', 'Saving position:', scrollY);
-        sessionStorage.setItem('terminologyScrollY', scrollY.toString());
-    };
 
     // Deep linking: scroll to term when content loads or section param changes
     // This takes precedence over scroll restoration

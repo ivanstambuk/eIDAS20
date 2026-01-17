@@ -839,7 +839,51 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Time saved: Would have avoided 2+ hours debugging across sessions
     ```
 
-24. **CSS Debug Mode (Visual Element Debugging):**
+24. **Scroll Restoration: Wait for DOM Height (SPA Pitfall):**
+    
+    **`window.scrollTo()` silently fails if the DOM doesn't have enough content height.** This is a common SPA issue when restoring scroll position after back navigation.
+    
+    **Why it fails:**
+    1. Component mounts, triggers scroll restoration effect
+    2. Effect calls `window.scrollTo(0, 1200)`
+    3. But DOM only has ~500px of content rendered so far
+    4. Browser silently clamps to max scrollable height (0)
+    5. Content finishes rendering at 2000px — but scroll already happened at 0
+    
+    **Solution: Poll for sufficient height before scrolling:**
+    ```javascript
+    // ❌ WRONG: Double-RAF alone is not enough for long content
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            window.scrollTo(0, scrollY);  // Often fails!
+        });
+    });
+    
+    // ✅ CORRECT: Wait for document to be tall enough
+    const checkAndScroll = () => {
+        const canScroll = document.documentElement.scrollHeight > scrollY + window.innerHeight;
+        if (canScroll) {
+            window.scrollTo(0, scrollY);
+        } else {
+            requestAnimationFrame(checkAndScroll);  // Retry
+        }
+    };
+    requestAnimationFrame(() => requestAnimationFrame(checkAndScroll));
+    ```
+    
+    **This project's solution:** Use the shared `useScrollRestoration` hook from `src/hooks/useScrollRestoration.js`, which implements this pattern with automatic retries and tracing.
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: RegulationViewer scroll restoration failing on back navigation
+    Debug showed: window.scrollTo(0, 1200) was called, but window.scrollY stayed 0
+    Root cause: DOM height was ~500px when scrollTo fired
+    Fix: Polling approach that waits for scrollHeight > targetY + viewportHeight
+    Time wasted: ~20 min (same bug was fixed in Terminology.jsx in prior session)
+    Prevention: Extracted to shared useScrollRestoration hook
+    ```
+
+25. **CSS Debug Mode (Visual Element Debugging):**
     
     **The portal includes visual CSS debugging to inspect element boundaries and class assignments.**
     
@@ -876,7 +920,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **See also:** `src/utils/debugCSS.js` for implementation details.
 
-25. **AST Traversal Pitfall: Ancestors Don't Include Current Node:**
+26. **AST Traversal Pitfall: Ancestors Don't Include Current Node:**
     
     **When using `visitParents` or similar AST visitors, the `ancestors` array does NOT include the current node.**
     
@@ -906,7 +950,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Result: Nested lists now correctly get linkable-point class
     ```
 
-26. **Formex Archive Structure (EUR-Lex XML Downloads):**
+27. **Formex Archive Structure (EUR-Lex XML Downloads):**
     
     **Formex ZIP archives contain multiple XML files with specific naming patterns:**
     
@@ -932,7 +976,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Pipeline validation:** The pipeline validates that if annex XML files are found, the output markdown contains `## Annex` headings. See `validate_annex_extraction()` in `pipeline.py`.
 
-27. **Fix Cause, Not Symptom (MANDATORY — After Any Bug Fix):**
+28. **Fix Cause, Not Symptom (MANDATORY — After Any Bug Fix):**
     
     **When fixing issues, always address the ROOT CAUSE in the permanent codebase, not just the symptoms.**
     
@@ -971,7 +1015,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** One-time fixes create technical debt and confusion. Future sessions see stale TRACKER entries referencing deleted scripts, wasting investigation time.
 
-28. **Script Deletion Checklist (MANDATORY — Before Removing Fix Scripts):**
+29. **Script Deletion Checklist (MANDATORY — Before Removing Fix Scripts):**
     
     **Before deleting any one-time fix script, verify the root cause was addressed:**
     
@@ -995,7 +1039,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** Deleting symptom-fix scripts without addressing root causes creates orphaned documentation, wasted investigation time, and recurring bugs.
 
-29. **Build Script Cache Invalidation (GOTCHA):**
+30. **Build Script Cache Invalidation (GOTCHA):**
     
     **Build scripts with hash-based caching (like `build-citations.js`) only detect SOURCE CONTENT changes, not SCRIPT LOGIC changes.**
     
