@@ -135,13 +135,17 @@ function extractDefinitions(content) {
 
     // Pattern 2: EU numbered list format - N. 'term' means definition
     // Used in older regulations like 765/2008 (Article 2: Definitions)
+    // 
+    // Supports both:
+    // - Plain markdown: "3. 'manufacturer' means..."
+    // - HTML li tags: "<li...>3. 'manufacturer' means...</li>" (for legal fidelity)
     //
     // TERMINATION (critical for correctness):
-    //   - Must stop at semicolon (;), period (.), OR newline (\n)
+    //   - Must stop at semicolon (;), period (.), OR newline (\n) OR closing tag
     //   - Definition 21 in 765/2008 ends with period, not semicolon
     //   - Without period termination, regex captures entire rest of document
     //   - See DEC-055 for the greedy regex bug this fixes
-    const defPatternNumbered = /^(\d+)\.\s+'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
+    const defPatternNumbered = /(?:^|>)(\d+)\.\s+'([^']+)'\s*means\s+([^;.<\n]+)(?:[;.]|<|\n|$)/gm;
 
     // Try pattern 1 (parenthesized)
     let match;

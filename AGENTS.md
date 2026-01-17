@@ -667,6 +667,45 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     **Why this matters:** The eIDAS ecosystem references older EC regulations (like 765/2008 for accreditation). Patterns that only handle `(EU)` will miss these references.
 
+19. **⛔ Legal Document Visual Fidelity (ABSOLUTE — No Exceptions):**
+    
+    **NEVER modify the visual notation or formatting of legal text without EXPLICIT USER APPROVAL.**
+    
+    This rule has **no exceptions** and applies to:
+    
+    | Element | Example | Prohibition |
+    |---------|---------|-------------|
+    | **Paragraph numbering format** | `3.` vs `(3)` vs `3)` | ❌ NEVER convert between formats |
+    | **Term quoting style** | `'term'` vs `"term"` | ❌ NEVER change quote style |
+    | **Definition syntax** | `means` vs `shall mean` | ❌ NEVER modernize language |
+    | **Numbering gaps** | 3, 4, 8, 9... | ❌ NEVER renumber to fill gaps |
+    | **Letter casing** | ANNEX vs Annex | ❌ NEVER change casing |
+    
+    **Why this is ABSOLUTE:**
+    - Legal citations reference exact text ("...as defined in Article 2(3)...")
+    - Different regulations use different notation (EC era vs EU era)
+    - We are a **mirror** of official legislation, not an editor
+    
+    **Correct pattern when format causes technical issues:**
+    1. **STOP** — Do not modify the legal text
+    2. **EXPLAIN** — "The `N.` format causes [technical issue]"
+    3. **PROPOSE** — "I can solve this by [modifying the build pipeline / using HTML / etc.]"
+    4. **WAIT** — Get explicit approval before ANY change to legal content
+    
+    **Anti-patterns:**
+    - ❌ Converting `3. 'manufacturer'` to `(3) 'manufacturer'` for consistency
+    - ❌ Escaping characters (`3\.`) to work around markdown parsing
+    - ❌ Any "normalization" of legal text for technical convenience
+    
+    **This rule supersedes:** Convenience, consistency, technical simplicity. The legal text is sacred.
+    
+    **Real example from 2026-01-17:**
+    ```
+    Issue: Deep linking needed IDs, but markdown renumbered "3, 4, 8, 9..." to "3, 4, 5, 6..."
+    WRONG approach: Convert "3." to "(3)" to match eIDAS format
+    WRONG approach: Escape period "3\." to prevent markdown parsing
+    CORRECT approach: Use raw HTML to preserve exact notation while enabling deep linking
+    ```
 
 ## Project Structure
 
