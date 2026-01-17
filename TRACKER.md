@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 19:43 CET |
+| **Last Updated** | 2026-01-17 22:58 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (169,410 words) |
 | **Next Action** | See Backlog |
@@ -44,8 +44,9 @@
 - **Provision Deep Links** (DEC-064: Cross-document citations to specific articles/recitals generate ?section= deep links — e.g., "Article 5a(23) of Regulation 910/2014" → clickable with popover badge + direct navigation)
 - **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
 - **Clean TOC** (DEC-010: "Enacting Terms" removed from navigation, cleaner sidebar)
-- **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
+- **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals + **annex points**)
 - **Recital gutter icons** (Phase 4: individual recitals now have 🔗 📜 copy buttons)
+- **Annex gutter icons** (Annexes now have 🔗 📜 copy buttons for paragraphs and points — `Annex I, point 3(a)` citation format)
 - **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
@@ -69,6 +70,7 @@
 | Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
+| Fix Formex annex nesting | Converter produces sibling structure — ideal fix is nested Markdown | Low |
 
 ---
 
@@ -76,6 +78,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
 | 2026-01-17 19:43 | Fix: Inline QUOT.START/END rendered as blockquotes — abbreviation ('API') now inline. Added ALINEA to TERMINOLOGY.md. Retro: Rules 31-32 (directory naming, QUOT.* detection), installed python3-markdown (3 fewer skipped tests). |
 | 2026-01-17 19:09 | Fix: RegulationViewer scroll restoration (same DOM height timing bug as Terminology). Retro: extracted shared `useScrollRestoration` hook (eliminates ~60 lines duplicate code), documented "Wait for DOM Height" pattern (AGENTS.md rule 24) |
 | 2026-01-17 15:25 | Retro: CSS class validation script (`validate-css-classes.js`) — catches template/CSS class mismatches at build time. Fixed stale class reference in consolidated popover. |

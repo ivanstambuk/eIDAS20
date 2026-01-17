@@ -142,6 +142,49 @@ test('Recitals get linkable-recital class', async () => {
     assertIncludes(html, 'id="recital-2"');
 });
 
+console.log('\n## Annexes');
+
+test('Annex paragraphs get correct IDs', async () => {
+    const markdown = `
+## Annex I {#annex-i}
+
+1. First annex point
+2. Second annex point
+`;
+    const html = await processMarkdown(markdown);
+    assertIncludes(html, 'id="annex-i-para-1"', 'First paragraph should have annex ID');
+    assertIncludes(html, 'id="annex-i-para-2"', 'Second paragraph should have annex ID');
+    assertIncludes(html, 'linkable-paragraph');
+});
+
+test('Annex points get hierarchical IDs with paragraph context', async () => {
+    const markdown = `
+## Annex I {#annex-i}
+
+1. Paragraph one with points:
+   - (a) First point
+   - (b) Second point
+`;
+    const html = await processMarkdown(markdown);
+    assertIncludes(html, 'id="annex-i-para-1-point-a"', 'Point (a) should include para context');
+    assertIncludes(html, 'id="annex-i-para-1-point-b"', 'Point (b) should include para context');
+});
+
+test('Context resets between article and annex', async () => {
+    const markdown = `
+### Article 5 {#article-5}
+
+1. Article paragraph
+
+## Annex I {#annex-i}
+
+1. Annex paragraph
+`;
+    const html = await processMarkdown(markdown);
+    assertIncludes(html, 'id="article-5-para-1"', 'Article paragraph should have article context');
+    assertIncludes(html, 'id="annex-i-para-1"', 'Annex paragraph should have annex context');
+});
+
 // ============================================================================
 // Summary
 // ============================================================================

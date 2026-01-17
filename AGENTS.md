@@ -217,18 +217,23 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
    **Correct pattern:**
    - ✅ Fix converter → Reconvert ALL documents → Remove JS workaround → Verify
    
-   **Example - Nested List Hierarchy (actual issue 2026-01-15):**
+   **Example - Annex Sibling List Structure (2026-01-17):**
    ```
-   # WRONG: Fix in JS only (workaround)
-   → Sibling-tracking logic in rehype plugin
-   → Converter still produces flat structure
-   → Two places to maintain
+   # ISSUE: Formex converter produces sibling structure for annexes
+   Markdown: "- 1. text\n   - (a) point"
+   HTML: <ul><li><ol><li id="para-3">...</ol><ul><li id="point-a">...
    
-   # CORRECT: Fix at source (systematic)
-   → Fix converter to produce nested Markdown
+   The point <ul> is a SIBLING of the paragraph <ol>, not a child.
+   This breaks ancestor-based context lookup (findParagraphContext).
+   
+   # CURRENT STATE: Workaround in rehype plugin
+   → lastParagraphInContext tracking handles sibling case
+   → Works but is technical debt
+   
+   # IDEAL FIX: Fix at source (systematic)
+   → Fix converter to produce nested Markdown: "1. text\n   (a) point"
    → Reconvert ALL documents
-   → Simplify rehype plugin (just walk nested tree)
-   → Remove sibling-tracking workaround
+   → Simplify rehype plugin (remove sibling-tracking)
    ```
    
    **Why this matters:**
