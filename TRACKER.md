@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 13:20 CET |
-| **Session State** | ✅ Pipeline fixed — all annexes now extracted |
+| **Last Updated** | 2026-01-17 13:50 CET |
+| **Session State** | ✅ Annex extraction + validation + retro complete |
 | **Portal Status** | ✅ Fully functional (168,956 words) |
 | **Next Action** | Backlog items (see table below) |
 
@@ -67,7 +67,6 @@
 | GitHub Pages deploy | Push to master to trigger workflow | High |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
-| **Cross-link portal citations** | **Internal docs link to portal instead of EUR-Lex** | **High** |
 | **Recital cross-references** | **Link \"recital (42)\" text to actual recital** | **Medium** |
 
 ---
@@ -76,6 +75,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 13:50 | Retro: Added Rules 26-28 (Formex structure, fix cause not symptom, script deletion checklist), DEC-061. Pipeline validation prevents annex extraction regression. |
 | 2026-01-17 13:20 | Pipeline fix: Annex extraction now processes all supplementary XML files in Formex archives — 27 implementing acts now have proper annexes extracted (+30,820 words, total 168,956). Removed stale batch_fix_annexes.py task. |
 | 2026-01-17 12:21 | DEC-060: Smart Consolidation self-reference detection — consolidated documents now detect citations to their own base regulation and display "CURRENT DOCUMENT" badge with dual EUR-Lex links (Original 2014 + Amendment 2024). Retro: extracted popover template utility, hash-based citation caching |
 | 2026-01-17 10:37 | DEC-059: Enhanced citation popovers (Hybrid B+C) — abbreviation badges ("GDPR", "eIDAS"), status pills ("IN FORCE"/"REPEALED"), human-friendly names, entry-into-force dates, EUR-Lex registry enrichment |
