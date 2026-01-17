@@ -1083,6 +1083,50 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     Routes are defined via `ROUTES` constants in `build-citations.js`.
 
+31. **Directory Naming Gotcha (02_implementing_acts/):**
+    
+    **Folder names in `02_implementing_acts/` don't always match the CELEX number or document title exactly.**
+    
+    **Example:**
+    ```
+    CELEX: 32025R0848
+    Document: "Wallet-Relying Party Registration"
+    Folder: 2025_0848_Notified_Wallet_List/  ← Name doesn't match!
+    ```
+    
+    **Why this matters:** When searching for a document by CELEX, use `find` or `grep` with partial match:
+    ```bash
+    find 02_implementing_acts -name "*0848*" -type d
+    ```
+    
+    **Don't assume:** Folder name = document title. The folder names were set during initial project setup and may use short names or earlier draft titles.
+
+32. **Inline vs Standalone QUOT.* Detection (Formex Converter):**
+    
+    **QUOT.START/QUOT.END elements can appear in two contexts with different rendering:**
+    
+    | Context | Example XML | Rendered As |
+    |---------|-------------|-------------|
+    | **Inline** (abbreviation) | `...interface (<QUOT.START/>API<QUOT.END/>)` | `...interface ('API')...` |
+    | **Standalone** (amendment) | `<ALINEA><QUOT.S><P>Replacement text</P></QUOT.S></ALINEA>` | `> Replacement text` (blockquote) |
+    
+    **Detection rule in `process_alinea_nested()`:**
+    ```python
+    # If ALINEA has text BEFORE the QUOT.START element → inline quote
+    if alinea_elem.text and alinea_elem.text.strip():
+        has_inline_quotes = True  # Render via get_element_text()
+    else:
+        has_standalone_quotes = True  # Render as blockquote
+    ```
+    
+    **Real bug fixed (2026-01-17):**
+    ```
+    Document: 32025R0848, Article 3(5)
+    Bug: "...interface (" followed by blockquote "> API"
+    Fix: Detect preceding text → treat as inline
+    Result: "...interface ('API')..."
+    ```
+
 ## Project Structure
 
 ```
