@@ -36,8 +36,8 @@ li.linkable-subpoint>.copy-gutter,
 li.linkable-recital>.copy-gutter {
     left: -80px;
     /* Moved further left for nested lists */
-    /* Account for list marker */
-    top: 12px;
+    top: 2px;
+    /* Align with first line of text, not centered */
     transform: none;
 }
 
