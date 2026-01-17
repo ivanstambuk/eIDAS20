@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 01:40 CET |
-| **Session State** | ✅ Deep linking fix complete with legal notation preservation |
+| **Last Updated** | 2026-01-17 09:58 CET |
+| **Session State** | ✅ Scroll restoration bug fixed (React Router hook) |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Backlog items (see table below) |
 
@@ -45,7 +45,7 @@
 - **\"eIDAS 2.0 Regulation\"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click \"View in Regulation\" → jumps to exact paragraph, preserves legal structure UL/OL)
-- **Scroll restoration** (Back button restores position, manual navigation starts at top; Performance API detection)
+- **Scroll restoration** (Back button restores position, manual navigation starts at top; React Router `useNavigationType` → POP detection)
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
@@ -74,6 +74,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 09:58 | Fix: Scroll restoration bug — Performance API doesn't work for SPAs! Switched to React Router's `useNavigationType()` which returns `POP` for back/forward |
 | 2026-01-17 01:40 | DEC-057: Deep linking fix with legal notation preservation (Rule 19 added, HTML for 765/2008 definitions), retro → 6 improvements |
 | 2026-01-17 00:53 | DEC-056: Multi-source visual separation (colored borders cyan/purple, merged clickable source headers, removed redundant links) |
 | 2026-01-17 00:10 | Recital gutter icons (Phase 4), informal citation detection, TERMINOLOGY.md created, retro improvements (Rule 15+16, init workflow, snippets) |

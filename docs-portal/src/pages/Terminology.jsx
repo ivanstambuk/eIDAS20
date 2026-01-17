@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useNavigationType } from '../hooks/useNavigationType';
+import { Link, useSearchParams, useNavigationType } from 'react-router-dom';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -167,13 +166,18 @@ const Terminology = () => {
     }, []);
 
     // ⚠️ Navigation Type Detection Pattern
-    // Uses the Performance Navigation API to distinguish between:
-    //   - Back/forward button navigation (type: 'back_forward') → Restore scroll position
-    //   - Manual navigation via menu/links (type: 'navigate')   → Start at top
+    // Uses React Router's useNavigationType() hook to distinguish between:
+    //   - 'POP':     Back/forward button navigation → Restore scroll position
+    //   - 'PUSH':    Link click navigation         → Start at top
+    //   - 'REPLACE': Replace navigation            → Start at top
     // This provides the optimal UX: users can pick up where they left off when using browser 
     // back button, but get a fresh start when explicitly clicking the Terminology menu item.
-    // See: .agent/snippets/react-patterns.md for full scroll restoration pattern documentation
-    const { isBackForward } = useNavigationType();
+    // 
+    // NOTE: The Performance Navigation API does NOT work for SPA navigation because
+    // React Router handles navigation client-side without loading a new document.
+    // React Router's hook properly tracks in-app navigation via the History API.
+    const navigationType = useNavigationType();
+    const isBackForward = navigationType === 'POP';
 
     // Scroll restoration: restore scroll position when returning via back/forward button
     useEffect(() => {
@@ -183,10 +187,16 @@ const Terminology = () => {
             if (savedScrollY && isBackForward) {
                 // Only restore scroll position if user came via back/forward button
                 const scrollY = parseInt(savedScrollY, 10);
-                setTimeout(() => {
-                    window.scrollTo(0, scrollY);
-                    sessionStorage.removeItem('terminologyScrollY');
-                }, 0);
+                // Double-RAF pattern: ensures DOM has fully painted before scrolling
+                // - First RAF: queued after current frame
+                // - Second RAF: runs after browser has completed layout/paint
+                // This is critical for long lists (500+ terminology items)
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        window.scrollTo(0, scrollY);
+                        sessionStorage.removeItem('terminologyScrollY');
+                    });
+                });
             } else if (savedScrollY && !isBackForward) {
                 // User navigated manually (e.g., clicked menu link), clear saved position
                 sessionStorage.removeItem('terminologyScrollY');
@@ -194,12 +204,13 @@ const Terminology = () => {
         }
     }, [loading, terminology, isBackForward]);
 
-    // Cleanup: clear saved scroll position on unmount
-    useEffect(() => {
-        return () => {
-            sessionStorage.removeItem('terminologyScrollY');
-        };
-    }, []);
+    // NOTE: We intentionally do NOT clear the scroll position on unmount.
+    // The save-restore cycle works like this:
+    //   1. User clicks source link → handleSaveScroll saves position
+    //   2. Component unmounts (navigation to regulation)
+    //   3. User clicks back → component remounts, isBackForward=true
+    //   4. Scroll is restored, then position is cleared
+    // Clearing on unmount (step 2) would break this cycle.
 
     // Save scroll position before navigating away
     const handleSaveScroll = () => {

@@ -8,33 +8,46 @@ This file contains reusable React patterns discovered and refined during develop
 
 **Problem**: Single Page Applications (SPAs) need to remember scroll position when users navigate away and return via the browser back button, but should start at the top when users manually click navigation links.
 
-**Solution**: Use the Performance Navigation API to distinguish between back/forward navigation and manual navigation.
+**Solution**: Use React Router's built-in `useNavigationType` hook to distinguish between back/forward navigation (`POP`) and link clicks (`PUSH`).
 
-### Implementation
+### ⚠️ Critical Insight: Performance API Does NOT Work for SPAs
 
-#### Step 1: Create a Navigation Type Detection Hook
+The Performance Navigation API (`performance.getEntriesByType('navigation')`) only tracks how the **initial HTML document** was loaded. It does NOT update for SPA client-side navigations!
 
 ```javascript
-/**
- * Custom hook to detect the type of navigation that brought the user to the current page.
- * Uses the Performance Navigation API.
- */
-export function useNavigationType() {
-    const navigationEntries = performance.getEntriesByType('navigation');
-    const navigationType = navigationEntries.length > 0 
-        ? navigationEntries[0].type 
-        : 'navigate';
+// ❌ WRONG: This only detects how the page was FIRST loaded, not SPA navigation
+const navigationEntries = performance.getEntriesByType('navigation');
+const isBackForward = navigationEntries[0]?.type === 'back_forward';
+// ^ This will ALWAYS reflect the initial page load, not in-app navigation!
+```
+
+React Router handles navigation entirely client-side via the History API without loading a new document. The Performance API never updates because no new document is loaded.
+
+### ✅ Correct Solution: React Router's useNavigationType
+
+React Router v7+ provides a built-in `useNavigationType` hook that properly tracks SPA navigation:
+
+```javascript
+import { useNavigationType } from 'react-router-dom';
+
+function MyComponent() {
+    const navigationType = useNavigationType();
+    // Returns: 'POP' | 'PUSH' | 'REPLACE'
     
-    const isBackForward = navigationType === 'back_forward';
-    
-    return {
-        navigationType,  // 'navigate', 'reload', 'back_forward', or 'prerender'
-        isBackForward    // true if user arrived via browser back/forward buttons
-    };
+    const isBackForward = navigationType === 'POP';
+    // ^ This correctly detects back/forward button clicks!
 }
 ```
 
-#### Step 2: Save Scroll Position Before Navigation
+| Type | Meaning |
+|------|---------|
+| `POP` | User clicked browser Back/Forward buttons |
+| `PUSH` | User clicked a `<Link>` (new history entry) |
+| `REPLACE` | Navigation replaced current history entry |
+
+### Implementation
+
+#### Step 1: Save Scroll Position Before Navigation
 
 When using React Router's `<Link>` component, add an `onClick` handler:
 
@@ -51,13 +64,14 @@ const handleSaveScroll = () => {
 
 ⚠️ **Important**: React Router's `<Link>` components intercept clicks programmatically. You **cannot** use `addEventListener` on the DOM element. You **must** use the `onClick` prop.
 
-#### Step 3: Restore Scroll Position Conditionally
+#### Step 2: Restore Scroll Position Conditionally
 
 ```javascript
-import { useNavigationType } from '../hooks/useNavigationType';
+import { useNavigationType } from 'react-router-dom';
 
 function MyPage() {
-    const { isBackForward } = useNavigationType();
+    const navigationType = useNavigationType();
+    const isBackForward = navigationType === 'POP';
     const [content, setContent] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -69,10 +83,14 @@ function MyPage() {
             if (savedScrollY && isBackForward) {
                 // Only restore scroll position if user came via back/forward button
                 const scrollY = parseInt(savedScrollY, 10);
-                setTimeout(() => {
-                    window.scrollTo(0, scrollY);
-                    sessionStorage.removeItem('myPageScrollY');
-                }, 0);
+                // Double-RAF pattern: ensures DOM has fully painted before scrolling
+                // Critical for long lists (500+ items) that need layout time
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        window.scrollTo(0, scrollY);
+                        sessionStorage.removeItem('myPageScrollY');
+                    });
+                });
             } else if (savedScrollY && !isBackForward) {
                 // User navigated manually, clear saved position and start at top
                 sessionStorage.removeItem('myPageScrollY');
@@ -80,23 +98,17 @@ function MyPage() {
         }
     }, [loading, content, isBackForward]);
 
-    // Cleanup: clear saved scroll position on unmount
-    useEffect(() => {
-        return () => {
-            sessionStorage.removeItem('myPageScrollY');
-        };
-    }, []);
-
     return <div>...</div>;
 }
 ```
 
 ### Key Points
 
+- **Use React Router's `useNavigationType`**, NOT the Performance Navigation API
 - **Use `onClick` on `<Link>` components**, not `addEventListener` on DOM elements
-- **Check `isBackForward`** to distinguish navigation types
-- **Use `setTimeout()`** to ensure DOM is fully rendered before scrolling
-- **Clean up `sessionStorage`** after restoring or when component unmounts
+- **Check `navigationType === 'POP'`** to detect back/forward navigation
+- **Use double-RAF pattern** to ensure DOM is fully painted before scrolling (critical for long lists)
+- **Clean up `sessionStorage`** after restoring or when navigation type indicates manual nav
 - **Wait for content to load** (`!loading`) before attempting restoration
 
 ---
@@ -157,29 +169,36 @@ Because of this, DOM event listeners added via `addEventListener` won't receive 
 
 ---
 
-## Performance Navigation API
+## Performance Navigation API (Page Load Only — NOT for SPAs!)
 
-The Performance Navigation API provides information about how the user navigated to the current page.
+⚠️ **WARNING**: This API does NOT work for detecting navigation within a Single Page Application. For SPA navigation detection, use React Router's `useNavigationType()` instead.
 
-### Navigation Types
+The Performance Navigation API provides information about how the **initial HTML document** was loaded — not subsequent in-app navigations.
+
+### Navigation Types (Initial Page Load Only)
 
 ```javascript
 const navigationEntries = performance.getEntriesByType('navigation');
 const navType = navigationEntries[0]?.type;
 
-// Possible values:
-// - 'navigate'      : User clicked a link, entered URL, or form submission
+// Possible values (these reflect HOW THE PAGE WAS FIRST LOADED, not SPA navigation):
+// - 'navigate'      : User typed URL, clicked external link, or form submission
 // - 'reload'        : User refreshed the page (F5, Cmd+R, etc.)
-// - 'back_forward'  : User clicked back/forward button
+// - 'back_forward'  : User used back/forward to return FROM ANOTHER SITE
 // - 'prerender'     : Page was prerendered
 ```
 
-### Use Cases
+### When This DOES Work
 
-1. **Scroll Restoration**: Restore scroll position only on back/forward navigation
-2. **Analytics**: Track how users arrive at pages
-3. **State Management**: Decide whether to restore cached state or fetch fresh data
-4. **User Experience**: Show different content based on navigation type
+1. **Multi-page applications** (traditional server-rendered apps)
+2. **Cross-origin navigation** (user leaves your site and returns)
+3. **Analytics for initial page load** (how did the user first arrive?)
+
+### When This DOES NOT Work
+
+1. **Single Page Applications** — React Router navigates entirely client-side
+2. **In-app back/forward detection** — the History API doesn't trigger new navigation entries
+3. **Any client-side routing framework** (Next.js, Vue Router, Angular Router, etc.)
 
 ### Browser Support
 
@@ -230,10 +249,13 @@ fastScrollTo(500);  // Scroll to Y position 500
 
 ## React Hook Dependencies Best Practices
 
-When using `useNavigationType()` or similar hooks in effects:
+When using `useNavigationType()` from React Router in effects:
 
 ```javascript
-const { isBackForward } = useNavigationType();
+import { useNavigationType } from 'react-router-dom';
+
+const navigationType = useNavigationType();
+const isBackForward = navigationType === 'POP';
 
 // ✅ CORRECT: Include isBackForward in dependencies
 useEffect(() => {
@@ -250,23 +272,11 @@ useEffect(() => {
 }, []);  // Missing isBackForward - may cause stale closure bugs
 ```
 
-Even though `isBackForward` is computed from the Performance API and won't change during component lifecycle, including it in the dependencies array:
+Including all used values in the dependencies array:
 - Prevents React warnings
 - Makes code more maintainable
 - Follows React's rules of hooks
 - Avoids potential bugs if implementation changes
-
----
-
-## File: `src/hooks/useNavigationType.js`
-
-Location for the navigation type detection hook:
-```
-src/
-  hooks/
-    useNavigationType.js    ← Create here
-    useSemanticSearch.js    (existing)
-```
 
 ---
 
