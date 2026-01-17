@@ -1107,8 +1107,7 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 │   ├── restart-chrome.sh             # Start Chrome with CDP (WSL → Windows)
 │   ├── cleanup-chrome-tabs.sh        # Clean stale browser tabs
 │   └── agent-done.sh                 # End-of-response notification + context
-├── .agent/workflows/                  # Agent workflows
-│   └── browser-testing.md            # Visual UI validation workflow
+├── .agent/workflows/                  # Human-invoked workflows (/init, /handover, /retro)
 ├── AGENTS.md                          # This file (AI context)
 ├── README.md                          # Project overview
 └── TRACKER.md                         # Work session tracker
@@ -1134,7 +1133,7 @@ npm run dev
 
 ## 🖥️ WSL Browser Testing
 
-For visual UI validation using `browser_subagent` from WSL:
+For visual UI validation using `browser_subagent` from WSL.
 
 ### Port Reference
 
@@ -1143,37 +1142,52 @@ For visual UI validation using `browser_subagent` from WSL:
 | **5173** | Vite dev server (docs-portal) |
 | **9222** | Chrome CDP (remote debugging) |
 
-### Start Chrome with Remote Debugging
+### Prerequisites
 
+1. **WSL networking**: `.wslconfig` must have `networkingMode=mirrored`
+2. **Chrome with CDP**: Must be running with remote debugging on port 9222
+
+### Browser Testing Checklist (MANDATORY before browser_subagent)
+
+**Step 1: Clean Up Tabs (REQUIRED)**
+```bash
+~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh
+```
+Closes all tabs except one blank tab, preventing connection limit issues.
+
+**Step 2: Verify Chrome is Accessible**
+```bash
+curl -s http://localhost:9222/json/version | head -1
+```
+If not running, start Chrome:
 ```bash
 ~/dev/eIDAS20/scripts/restart-chrome.sh
 ```
-
 This starts Chrome on Windows with:
 - Remote debugging on port 9222
 - Isolated profile (`ag-cdp`) — doesn't affect regular Chrome
 - `about:blank` tab ready for testing
 
-### Verify Chrome is Accessible
-
+**Step 3: Ensure Dev Server is Running**
 ```bash
-curl -s http://localhost:9222/json/version | head -1
+curl -s http://localhost:5173/eIDAS20/ > /dev/null && echo "✅ Dev server running" || echo "❌ Start with: cd ~/dev/eIDAS20/docs-portal && npm run dev"
 ```
 
-### Clean Up Stale Tabs
+**Step 4: Run Browser Validation**
 
-After multiple `browser_subagent` calls, clean accumulated tabs:
+Use `browser_subagent` to navigate to `http://localhost:5173/eIDAS20/` and validate:
+1. **Homepage**: Dark theme, cyan accents, stats dashboard, quick links
+2. **Terminology**: A-Z index, search, definition cards
+3. **Implementing Acts**: Category filters, act cards with status badges
+4. **Navigation**: All sidebar links work
 
-```bash
-~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh
-```
+### Troubleshooting
 
-**Why:** Each browser_subagent call creates a new tab. After 6+ tabs, Chrome's per-origin connection limit can cause failures.
-
-### Prerequisites
-
-1. **WSL networking**: `.wslconfig` must have `networkingMode=mirrored`
-2. **Workflow**: See `.agent/workflows/browser-testing.md` for full workflow
+| Issue | Solution |
+|-------|----------|
+| Chrome not accessible | `~/dev/eIDAS20/scripts/restart-chrome.sh` |
+| Too many tabs / SSE issues | `~/dev/eIDAS20/scripts/cleanup-chrome-tabs.sh` |
+| Wrong port errors | Portal uses **5173** (not 5174), Chrome uses **9222** |
 
 ## Current Status (2026-01-13)
 
@@ -1234,7 +1248,7 @@ python scripts/md_linter.py --dir 01_regulation
 python scripts/md_linter.py --dir 02_implementing_acts
 ```
 
-### 🚨 MANDATORY: Converter-First Rule (Rule 70)
+### 🚨 MANDATORY: Converter-First Rule + TDD Workflow
 
 **When a formatting issue is detected in generated Markdown:**
 
@@ -1253,28 +1267,68 @@ python scripts/md_linter.py --dir 02_implementing_acts
 - ✅ Behavioral changes (e.g., removing `---` before headers)
 - ✅ Edge cases discovered during conversion or portal rendering
 
-**Rationale**: Post-processing scripts are fragile, document-specific workarounds. Fixing issues at the source ensures:
-- All documents benefit from the fix
-- Regressions are caught by tests
-- The conversion pipeline remains maintainable
+#### Formex Converter Modification Workflow (TDD)
 
-**Example - Missing Bullet Prefix (actual bug fixed 2026-01-14):**
-```
-# WRONG: Edit the markdown file
-sed -i 's/^(b) /- (b) /' 01_regulation/910_2014.../02014R0910.md
+**Step 1: Understand the Issue**
+- Identify the XML pattern that's being converted incorrectly
+- View examples in source XML files (e.g., `temp_formex/formex/*.fmx.xml`)
+- Check the current Markdown output to understand what's wrong
 
-# CORRECT: Fix the converter AND add test
-# 1. Fix formex_to_md_v3.py process_list_simple() to add '- ' prefix
-# 2. Add TestListBulletPrefixes in test_formex_converter.py
-# 3. Regenerate the markdown with npm run build:content
-```
-
-**Running tests:**
+**Step 2: Write the Test FIRST**
 ```bash
-python3 scripts/test_formex_converter.py
+# Add a new test class/method to scripts/test_formex_converter.py
+# Test naming: TestFeatureName class with test_specific_behavior methods
 ```
 
-**Current test count**: 42 tests (as of 2026-01-14)
+**Step 3: Run the Test (Expect Failure)**
+```bash
+python -m unittest scripts.test_formex_converter.TestNewTestClass -v
+```
+
+**Step 4: Implement the Fix**
+- Modify the converter function in `formex_to_md_v3.py`
+- Keep changes minimal and focused
+
+**Step 5: Run Tests Again (Expect Pass)**
+```bash
+python -m unittest scripts.test_formex_converter -v
+```
+All 42+ tests must pass.
+
+**Step 6: Re-convert the Document**
+```bash
+python scripts/formex_to_md_v3.py temp_formex/formex/L_*.fmx.xml output.md
+```
+
+**Step 7: Commit with Both Files**
+```bash
+git add scripts/formex_to_md_v3.py scripts/test_formex_converter.py *.md
+git commit -m "fix: description
+
+- What was wrong
+- What the fix does
+- Added test: TestClassName.test_method"
+```
+
+#### Testing Patterns
+
+**Testing list processing:**
+```python
+xml = '''<LIST><ITEM><NP>...</NP></ITEM></LIST>'''
+elem = ET.fromstring(xml)
+lines = process_list_with_quotes(elem, parent, indent_level=0)
+self.assertIn("expected text", '\n'.join(lines))
+```
+
+**Testing element text extraction:**
+```python
+xml = '''<ELEMENT>text content</ELEMENT>'''
+elem = ET.fromstring(xml)
+result = get_element_text(elem)
+self.assertEqual(result, "expected text")
+```
+
+⚠️ **CRITICAL: Never commit converter changes without corresponding unit tests!**
 
 ## 📋 Design Decisions
 
