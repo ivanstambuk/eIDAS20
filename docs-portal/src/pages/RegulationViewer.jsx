@@ -59,7 +59,16 @@ const RegulationViewer = () => {
     const { citations } = useCitations(id);
     const isMobile = useIsMobile();
 
-    // Desktop hover popover hydration for citations
+    // ⚠️ IMPORTANT: This is the ACTUAL citation popover implementation.
+    // The CitationPopover.jsx React component exists but is NOT used here.
+    // Popovers are created via imperative DOM manipulation because:
+    // 1. Citation triggers are generated at build-time as static HTML spans
+    // 2. We hydrate them with event listeners after React renders the content
+    // 3. Popovers are appended to document.body for proper positioning
+    //
+    // To modify popover appearance: Edit the template string in showPopover() below
+    // To modify popover styling: Edit CitationPopover.css
+    // DEC-059: Enhanced with abbreviation badges, status indicators, temporal context
     useEffect(() => {
         // Skip on mobile - popovers don't work well with touch
         if (isMobile || !regulation) return;

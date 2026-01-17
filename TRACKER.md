@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 10:37 CET |
-| **Session State** | ✅ Enhanced citation popovers (DEC-059) |
+| **Last Updated** | 2026-01-17 10:44 CET |
+| **Session State** | ✅ DEC-059 complete + retro improvements |
 | **Portal Status** | ✅ Fully functional |
 | **Next Action** | Backlog items (see table below) |
 

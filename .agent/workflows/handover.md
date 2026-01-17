@@ -11,16 +11,26 @@ Use this workflow when:
 
 ---
 
-## ⚠️ CRITICAL: NO COMMITS DURING HANDOVER
+## Commit Rules
 
-**DO NOT commit anything during handover.**
+### ❌ NO COMMITS when handover is STANDALONE
 
-Rationale: The user typically runs `/init` immediately after in a new session. Committing during handover:
-1. Creates unnecessary "handover" commits that clutter history
-2. Splits logical changes across commits
-3. The next session can commit when real work is complete
+If `/handover` is invoked on its own (no prior work in this turn):
+- **DO NOT commit** — leave uncommitted changes for next session
+- Rationale: Avoids cluttering history with "handover" commits
 
-**If there are uncommitted changes:** Leave them. The next session will handle them.
+### ✅ COMMITS ALLOWED when handover follows work
+
+If `/handover` follows `/retro` fixes or other real changes in the same turn:
+- **DO commit** those changes before completing handover
+- Rationale: These are logical units of work that should be captured
+- Example: `/retro` implements improvements → commit them → then complete handover
+
+**How to tell the difference:**
+- Standalone: User says just `/handover` with no prior uncommitted work from this turn
+- Combined: User says `/retro` then `/handover`, or does fixes then `/handover`
+
+**If there are uncommitted changes from PREVIOUS sessions:** Leave them. The next session will handle them.
 
 ---
 
@@ -94,14 +104,13 @@ Next session: Run `/init` to resume.
 ```
 
 **DO NOT output the file contents in chat.**
-**DO NOT commit anything.**
 
 ---
 
 ## Important Rules
 
-1. **🚨 NO COMMITS** — Never commit during handover
-2. **TRACKER.md is source of truth** — Always update it (but don't commit)
+1. **Commit policy** — See "Commit Rules" section above (standalone vs combined)
+2. **TRACKER.md is source of truth** — Always update it
 3. **100 LINE HARD CAP** — Prune context notes if needed
 4. **Context Notes > History** — Capture decisions/gotchas, not just what was done
 5. **If task COMPLETE** — Don't create pending-task.md, just update TRACKER
@@ -111,6 +120,6 @@ Next session: Run `/init` to resume.
 ## ⚠️ When Task is COMPLETE: Skip pending-task.md
 
 **If the task you were working on is fully complete:**
-- Update TRACKER.md with completion status (don't commit)
+- Update TRACKER.md with completion status
 - Do NOT create pending-task.md
 - The `/init` workflow will read TRACKER.md to find the next task
