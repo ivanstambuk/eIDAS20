@@ -19,6 +19,12 @@ documents:
   type: referenced
   source: manual  # Consolidated version manually merged (preamble from original + consolidated enacting terms)
   output_dir: 01_regulation/765_2008_Market_Surveillance
+- celex: 32021H0946
+  title: Commission Recommendation on a common Union Toolbox for a European Digital Identity Framework
+  shortTitle: EUDIW Toolbox Recommendation
+  type: recommendation
+  cellar_id: db5be7e4-ccf1-11eb-ac72-01aa75ed71a1.0006.02
+  output_dir: 01_regulation/2021_946_EUDIW_Toolbox
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
   type: implementing_act

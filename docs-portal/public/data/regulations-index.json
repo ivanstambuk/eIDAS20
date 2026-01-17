@@ -1,5 +1,16 @@
 [
   {
+    "slug": "2021-946",
+    "type": "regulation",
+    "title": "Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework",
+    "shortTitle": "EUDIW Toolbox Recommendation",
+    "description": "Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework",
+    "celex": "32021H0946",
+    "date": "3 June 2021",
+    "wordCount": 1024,
+    "tocCount": 2
+  },
+  {
     "slug": "2024-1183",
     "type": "regulation",
     "title": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
