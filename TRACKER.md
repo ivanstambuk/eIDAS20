@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 11:48 CET |
-| **Session State** | ✅ Gutter icon fixes complete + retro |
-| **Portal Status** | ✅ Fully functional |
+| **Last Updated** | 2026-01-17 13:20 CET |
+| **Session State** | ✅ Pipeline fixed — all annexes now extracted |
+| **Portal Status** | ✅ Fully functional (168,956 words) |
 | **Next Action** | Backlog items (see table below) |
 
 ---
@@ -39,6 +39,7 @@
 - **Reading time estimate** (150 WPM for legal text, smart formatting)
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
 - **Enhanced citation popovers** (DEC-059: Hybrid B+C design — abbreviation badges, status indicators, human-friendly names, entry-into-force dates, dual action buttons)
+- **Smart Consolidation popovers** (DEC-060: Self-reference detection for consolidated documents — "CURRENT DOCUMENT" badge, dual EUR-Lex links to Original/Amendment)
 - **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
 - **Clean TOC** (DEC-010: \"Enacting Terms\" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
@@ -52,6 +53,7 @@
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
 - **Multi-source visual separation** (DEC-056: Single cyan color, merged clickable source headers)
 - **Legal notation fidelity** (DEC-057: Reg 765/2008 uses HTML for exact `N.` format preservation)
+- **Hash-based citation caching** (MD5 cache key skips unchanged files during build-citations.js)
 
 ---
 
@@ -65,7 +67,6 @@
 | GitHub Pages deploy | Push to master to trigger workflow | High |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
-| **Download missing annexes** | **Run batch_fix_annexes.py — 20 implementing acts with missing annexes** | **Medium** |
 | **Cross-link portal citations** | **Internal docs link to portal instead of EUR-Lex** | **High** |
 | **Recital cross-references** | **Link \"recital (42)\" text to actual recital** | **Medium** |
 
@@ -75,7 +76,8 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-17 11:48 | Gutter icon bug fix: duplicate icons on nested points (isTopLevelList bug), CSS debug mode (`?debug=css`), gutter positioning refinement (horizontal + vertical alignment) |
+| 2026-01-17 13:20 | Pipeline fix: Annex extraction now processes all supplementary XML files in Formex archives — 27 implementing acts now have proper annexes extracted (+30,820 words, total 168,956). Removed stale batch_fix_annexes.py task. |
+| 2026-01-17 12:21 | DEC-060: Smart Consolidation self-reference detection — consolidated documents now detect citations to their own base regulation and display "CURRENT DOCUMENT" badge with dual EUR-Lex links (Original 2014 + Amendment 2024). Retro: extracted popover template utility, hash-based citation caching |
 | 2026-01-17 10:37 | DEC-059: Enhanced citation popovers (Hybrid B+C) — abbreviation badges ("GDPR", "eIDAS"), status pills ("IN FORCE"/"REPEALED"), human-friendly names, entry-into-force dates, EUR-Lex registry enrichment |
 | 2026-01-17 10:10 | Retro: Trace utility (`src/utils/trace.js`) for debugging — enable via `?debug=scroll`, Rules 21-23 (tracing, SPA pitfalls, React Router hooks) |
 | 2026-01-17 09:58 | Fix: Scroll restoration bug — Performance API doesn't work for SPAs! Switched to React Router's `useNavigationType()` which returns `POP` for back/forward |

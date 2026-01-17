@@ -104,11 +104,18 @@ def download_formex(doc: dict, force: bool = False) -> Path:
         raise
 
 
-def extract_formex(zip_path: Path, output_dir: Path) -> Path:
+def extract_formex(zip_path: Path, output_dir: Path) -> tuple:
     """
     Extract Formex XML from ZIP.
     
-    Returns path to the main XML file.
+    Returns tuple: (main_xml_path, list_of_annex_xml_paths)
+    
+    Formex archives contain multiple XML files:
+    - .000101.fmx.xml — Main regulation/act document
+    - .000XYZ.fmx.xml — Supplementary content (annexes, amendments)
+    - .doc.fmx.xml — Document metadata (skip)
+    - .toc.fmx.xml — Table of contents (skip)
+    - .0001.xml — Alternative main pattern (consolidated docs)
     """
     xml_dir = output_dir / "formex"
     
@@ -124,32 +131,53 @@ def extract_formex(zip_path: Path, output_dir: Path) -> Path:
     
     print(f"   📂 Extracted: {len(files)} files")
     
-    # Find main XML:
-    # 1. Prefer .000101. pattern (standard Formex naming)
-    # 2. Exclude .doc.xml (document metadata, not content)
-    # 3. Otherwise, pick the largest XML file
+    # Collect all XML files, categorized
     xml_files = [f for f in xml_dir.iterdir() if f.suffix == '.xml']
     
-    # Filter and score XML files
-    candidates = []
-    for f in xml_files:
-        score = 0
-        if '.000101.' in f.name:
-            score += 100  # Strong preference for .000101. pattern
-        if '.doc.' not in f.name:
-            score += 10   # Avoid .doc.xml files
-        score += f.stat().st_size // 1000  # Larger files are better
-        candidates.append((score, f))
+    main_xml = None
+    annex_xmls = []
     
-    if not candidates:
+    for f in xml_files:
+        name = f.name
+        
+        # Skip metadata and TOC files
+        if '.doc.' in name or '.toc.' in name:
+            continue
+        
+        # Main document patterns:
+        # - L_XXXXXXX.000101.fmx.xml (standard Formex)
+        # - CLXXXXXXX.0001.xml (consolidated docs)
+        if '.000101.' in name or name.endswith('.0001.xml'):
+            main_xml = f
+        else:
+            # All other content XML files are annexes/supplements
+            # They have patterns like .000301., .000701., .001001., etc.
+            annex_xmls.append(f)
+    
+    # Fallback: if no main found via pattern, pick the largest non-metadata file
+    if main_xml is None:
+        content_files = [f for f in xml_files 
+                         if '.doc.' not in f.name and '.toc.' not in f.name]
+        if content_files:
+            content_files.sort(key=lambda f: f.stat().st_size, reverse=True)
+            main_xml = content_files[0]
+            # Remove from annexes if it was added there
+            annex_xmls = [f for f in annex_xmls if f != main_xml]
+    
+    if main_xml is None:
         raise ValueError(f"No XML file found in: {zip_path}")
     
-    # Sort by score descending, pick best
-    candidates.sort(key=lambda x: x[0], reverse=True)
-    main_xml = candidates[0][1]
+    # Sort annexes by filename to ensure consistent ordering
+    # (e.g., .000301. before .000701. before .001001.)
+    annex_xmls.sort(key=lambda f: f.name)
     
     print(f"   📄 Main XML: {main_xml.name}")
-    return main_xml
+    if annex_xmls:
+        print(f"   📎 Annexes: {len(annex_xmls)} supplementary file(s)")
+        for a in annex_xmls:
+            print(f"      - {a.name}")
+    
+    return (main_xml, annex_xmls)
 
 
 def convert_to_markdown(xml_path: Path, output_path: Path) -> int:
@@ -227,13 +255,29 @@ def process_document(doc: dict, skip_download: bool = False, force: bool = False
         else:
             cache_path = download_formex(doc, force=force)
         
-        # Step 2: Extract
+        # Step 2: Extract (now returns main + annex paths)
         output_dir.mkdir(parents=True, exist_ok=True)
-        xml_path = extract_formex(cache_path, output_dir)
+        main_xml, annex_xmls = extract_formex(cache_path, output_dir)
         
-        # Step 3: Convert
+        # Step 3: Convert main document
         md_path = output_dir / f"{celex}.md"
-        convert_to_markdown(xml_path, md_path)
+        convert_to_markdown(main_xml, md_path)
+        
+        # Step 3b: Convert and append annexes (if any)
+        if annex_xmls:
+            annex_count = 0
+            for annex_xml in annex_xmls:
+                # Convert annex to temporary content (not file)
+                annex_content = convert_formex_to_md(str(annex_xml), None)
+                if annex_content and annex_content.strip():
+                    # Append to main markdown file
+                    with open(md_path, 'a', encoding='utf-8') as f:
+                        f.write('\n\n')  # Separator
+                        f.write(annex_content)
+                    annex_count += 1
+            
+            if annex_count > 0:
+                print(f"   📎 Appended {annex_count} annex(es) to output")
         
         # Step 4: Enrich (add metadata)
         add_metadata_header(md_path, doc)
@@ -247,6 +291,7 @@ def process_document(doc: dict, skip_download: bool = False, force: bool = False
     except Exception as e:
         print(f"   ❌ FAILED: {e}")
         return False
+
 
 
 def validate_documents():
