@@ -104,6 +104,13 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Formal Citation** | A citation with an ELI URL in the source, extractable with high confidence. |
 | **Informal Citation** | A citation detected by pattern matching (e.g., "Directive 2001/95/EC"). CELEX auto-constructed. |
 
+### Citation Granularity
+
+| Term | Description |
+|------|-------------|
+| **Document Citation** | A citation that links to the root of a document (e.g., "Regulation (EU) 910/2014" → `#/regulations/910-2014`). Currently implemented for Cross-Document and External citations. |
+| **Provision Citation** | A citation that deep-links to a specific provision within a document — article, paragraph, point, recital, or annex. Uses `?section=` parameter for navigation (e.g., "Article 5a(1)" → `?section=article-5a-para-1`). Pattern examples: "Article 5a(1)", "recital (42)", "Annex I". *(Backlog item)* |
+
 ---
 
 ## Terminology System

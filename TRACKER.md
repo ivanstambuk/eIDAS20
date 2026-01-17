@@ -62,12 +62,11 @@
 | Feature | Description | Priority |
 |---------|-------------|----------|
 | GitHub header link | Update placeholder `https://github.com` to actual repo URL once published | High |
-| Cross-doc references | Link from implementing acts to eIDAS regulation articles | Medium |
-| Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
-| eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
+| **Provision Citations** | **Deep-link references to specific provisions (articles, paragraphs, points, recitals, annexes) within documents. Pattern examples: "Article 5a(1)", "recital (42)", "Annex I"** | **Medium** |
+| Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
-| **Recital cross-references** | **Link \"recital (42)\" text to actual recital** | **Medium** |
+| eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 
 ---
 
