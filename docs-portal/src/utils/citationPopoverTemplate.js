@@ -50,11 +50,13 @@ export function generateConsolidatedPopoverHtml(citation) {
  * Generate the HTML content for a standard citation popover.
  * Used for external and internal citations that are not self-references.
  * 
+ * DEC-062: Amendment-aware popovers show dual badges and consolidated links.
+ * 
  * @param {Object} citation - Citation object with metadata fields
  * @returns {string} HTML string for the popover content
  */
 export function generateStandardPopoverHtml(citation) {
-    // Header: Abbreviation + Status
+    // Header: Abbreviation + Status + (optionally) AMENDED badge
     const headerParts = [];
     if (citation.abbreviation) {
         headerParts.push(`<span class="citation-popover-abbrev">${citation.abbreviation}</span>`);
@@ -62,11 +64,38 @@ export function generateStandardPopoverHtml(citation) {
     if (citation.statusDisplay) {
         headerParts.push(`<span class="citation-popover-status citation-popover-status--${citation.statusDisplay.color}">${citation.statusDisplay.label}</span>`);
     }
+    // DEC-062: Add AMENDED badge if this regulation has been amended
+    if (citation.isAmended) {
+        headerParts.push(`<span class="citation-popover-status citation-popover-status--amended">Amended</span>`);
+    }
 
     // Entry into force line
     const dateText = citation.entryIntoForceDisplay
         ? `<p class="citation-popover-date">📅 ${citation.status === 'in-force' ? 'In force since' : 'Entry into force:'} ${citation.entryIntoForceDisplay}</p>`
         : '';
+
+    // DEC-062: Amendment notice (appears below the date)
+    let amendmentNotice = '';
+    if (citation.isAmended && citation.amendedBy?.length) {
+        const amendingCelex = citation.amendedBy[0]; // Primary amending act
+        const amendmentDateFormatted = citation.amendmentDate
+            ? new Date(citation.amendmentDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+            : null;
+
+        // Convert CELEX to slug: 32024R1183 -> 2024-1183
+        const amendingSlug = amendingCelex.replace(/^3(\d{4})[A-Z](\d{4})$/, '$1-$2');
+        // Convert CELEX to display: 32024R1183 -> 2024/1183
+        const amendingDisplay = amendingCelex.replace(/^3/, '').replace(/R/, '/');
+
+        // Build notice with linked regulation
+        let noticeText = '⚠️ Amended';
+        if (amendmentDateFormatted) {
+            noticeText += ` on ${amendmentDateFormatted}`;
+        }
+        noticeText += ` by <a href="#/regulation/${amendingSlug}" class="citation-popover-amendment-link">Regulation ${amendingDisplay}</a>`;
+
+        amendmentNotice = `<p class="citation-popover-amendment-notice">${noticeText}</p>`;
+    }
 
     // Category badge (if internal)
     const categoryBadge = citation.isInternal
@@ -74,8 +103,15 @@ export function generateStandardPopoverHtml(citation) {
         : '';
 
     // Action buttons
+    // DEC-062: For amended regulations with consolidatedSlug, show "View Consolidated" as primary
     let actionButtons;
-    if (citation.isInternal) {
+    if (citation.isAmended && citation.consolidatedSlug) {
+        // Consolidated document available in portal
+        actionButtons = `
+            <a href="#/regulation/${citation.consolidatedSlug}" class="citation-popover-link citation-popover-link--primary">View Consolidated →</a>
+            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--secondary">EUR-Lex ↗</a>
+        `;
+    } else if (citation.isInternal) {
         actionButtons = `
             <a href="${citation.url}" class="citation-popover-link citation-popover-link--primary">View in Portal →</a>
             <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--secondary">EUR-Lex ↗</a>
@@ -91,6 +127,7 @@ export function generateStandardPopoverHtml(citation) {
         <h3 class="citation-popover-human-name">${citation.humanName || citation.fullTitle}</h3>
         <p class="citation-popover-formal">${citation.shortName}</p>
         ${dateText}
+        ${amendmentNotice}
         ${categoryBadge}
         <div class="citation-popover-footer">
             ${actionButtons}

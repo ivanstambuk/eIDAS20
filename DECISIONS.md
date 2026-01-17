@@ -1317,3 +1317,102 @@ def validate_annex_extraction(md_path, annex_xmls) -> tuple:
 
 **Why This Matters:**
 One-time fix scripts that address symptoms—not causes—create recurring issues and stale documentation. This decision codifies the principle: always fix the pipeline, not just the data.
+
+---
+
+## DEC-062: Amendment-Aware Citation Popovers
+
+**Date:** 2026-01-17  
+**Status:** ✅ Implemented  
+**Category:** UX / Citation Enrichment
+
+**Context:**
+
+When hovering over a citation to eIDAS 1.0 (Regulation 910/2014), the popover showed:
+- Green **IN FORCE** badge
+- Human-readable name and entry into force date
+- Links to EUR-Lex
+
+However, this was misleading because 910/2014 has been **substantially amended** by Regulation 2024/1183 (eIDAS 2.0). The current applicable law is the consolidated version, not the original 2014 text. Showing only "IN FORCE" implies the original is still the authoritative source.
+
+**User Impact:**
+
+A legal professional clicking "View on EUR-Lex" for 910/2014 would see the **original 2014 text**, not the current consolidated version. They might miss critical amendments from 2024.
+
+**Decision:**
+
+Implement **Amendment-Aware Citation Popovers** that detect amended regulations and provide enhanced context:
+
+1. **Dual status badges:** `IN FORCE` + `AMENDED` (amber)
+2. **Amendment notice:** "⚠️ Amended on [date] by Regulation [CELEX]"
+3. **Consolidated link:** "View Consolidated →" (points to portal document)
+4. **EUR-Lex link:** Preserved for reference to original
+
+**Data Model Extension (`legislation-metadata.js`):**
+
+```javascript
+'32014R0910': {
+    humanName: 'Electronic Identification and Trust Services Regulation',
+    abbreviation: 'eIDAS 1.0',
+    entryIntoForce: '2014-09-17',
+    status: 'in-force',
+    category: 'regulation',
+    // NEW: Amendment-aware fields
+    amendedBy: ['32024R1183'],           // CELEX of amending regulation(s)
+    amendmentDate: '2024-05-20',          // When amendment entered into force
+    consolidatedSlug: '910-2014',         // Portal slug for consolidated version
+},
+```
+
+**Build-Time Enrichment (`build-citations.js`):**
+
+The `enrichCitation()` function now adds:
+```javascript
+citation.amendedBy = metadata.amendedBy || null;
+citation.amendmentDate = metadata.amendmentDate || null;
+citation.consolidatedSlug = metadata.consolidatedSlug || null;
+citation.isAmended = !!(metadata.amendedBy?.length);
+```
+
+**Popover Template (`citationPopoverTemplate.js`):**
+
+Updated `generateStandardPopoverHtml()` to:
+1. Add AMENDED badge if `citation.isAmended`
+2. Render amendment notice with formatted date
+3. Change primary button from "View in Portal" to "View Consolidated" when `consolidatedSlug` exists
+
+**Visual Design:**
+
+| Element | Style |
+|---------|-------|
+| AMENDED badge | Amber background (`rgba(245, 158, 11, 0.15)`), gold text (`#fbbf24`) |
+| Amendment notice | ⚠️ prefix, italic, secondary text color |
+| View Consolidated button | Primary blue button (same as existing) |
+
+**Relationship to DEC-060 (Smart Consolidation):**
+
+- DEC-060 handles **self-references** within consolidated documents (showing "CURRENT DOCUMENT" badge)
+- DEC-062 handles **external references** to amended regulations from other documents
+- Both share the goal of preventing users from accidentally reading outdated legal text
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `scripts/legislation-metadata.js` | Added `amendedBy`, `amendmentDate`, `consolidatedSlug` fields |
+| `scripts/build-citations.js` | Extended `enrichCitation()` with amendment fields |
+| `src/utils/citationPopoverTemplate.js` | Added dual badges, amendment notice, consolidated link |
+| `src/components/CitationPopover/CitationPopover.css` | Added `.citation-popover-status--amended` style |
+
+**Benefits:**
+
+1. **Legal accuracy** — Users know the regulation has been amended before clicking
+2. **Correct navigation** — "View Consolidated" leads to applicable law
+3. **Context preservation** — EUR-Lex link to original still available for historical reference
+4. **Visual hierarchy** — Amber "AMENDED" badge draws attention to important context
+
+**Future Enhancements:**
+
+- Extend to other amended regulations (GDPR is not amended, but older directives might be)
+- Show human-readable name of amending regulation in notice
+- Support multiple amendments in sequence (show most recent with "…and N others")

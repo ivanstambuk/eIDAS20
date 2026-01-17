@@ -218,8 +218,10 @@ function extractOjRef(citationText) {
 /**
  * Enrich a citation with metadata from the legislation registry.
  * Part of DEC-059: Citation Popover Enhancement
+ * Part of DEC-062: Amendment-Aware Citation Popovers
  * 
  * Adds: humanName, abbreviation, entryIntoForce, status, statusDisplay
+ * DEC-062: amendedBy, amendmentDate, consolidatedSlug, isAmended
  */
 function enrichCitation(citation) {
     const metadata = getLegislationMetadata(citation.celex);
@@ -232,6 +234,12 @@ function enrichCitation(citation) {
         citation.status = metadata.status;
         citation.statusDisplay = getStatusDisplay(metadata.status);
         citation.category = metadata.category;
+
+        // DEC-062: Amendment-aware fields
+        citation.amendedBy = metadata.amendedBy || null;
+        citation.amendmentDate = metadata.amendmentDate || null;
+        citation.consolidatedSlug = metadata.consolidatedSlug || null;
+        citation.isAmended = !!(metadata.amendedBy?.length);
     } else {
         // Fallback: use shortName as humanName, no abbreviation
         citation.humanName = citation.humanName || null;
@@ -241,6 +249,12 @@ function enrichCitation(citation) {
         citation.status = 'unknown';
         citation.statusDisplay = { label: 'Unknown', color: 'gray' };
         citation.category = null;
+
+        // DEC-062: No amendment data for unknown citations
+        citation.amendedBy = null;
+        citation.amendmentDate = null;
+        citation.consolidatedSlug = null;
+        citation.isAmended = false;
     }
 
     return citation;

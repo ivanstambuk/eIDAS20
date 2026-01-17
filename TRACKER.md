@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 14:18 CET |
-| **Session State** | Terminology cleanup + Amendment-Aware Popovers planned |
-| **Portal Status** | ✅ Fully functional (168,248 words) |
-| **Next Action** | Implement Amendment-Aware Citation Popovers (see pending-task.md) |
+| **Last Updated** | 2026-01-17 14:50 CET |
+| **Session State** | V1.0 Production Ready |
+| **Portal Status** | ✅ Fully functional (168,956 words) |
+| **Next Action** | See Backlog |
 
 ---
 
@@ -40,6 +40,7 @@
 - **Citation popovers** (160 citations with desktop hover popovers, responsive References section)
 - **Enhanced citation popovers** (DEC-059: Hybrid B+C design — abbreviation badges, status indicators, human-friendly names, entry-into-force dates, dual action buttons)
 - **Smart Consolidation popovers** (DEC-060: Self-reference detection for consolidated documents — "CURRENT DOCUMENT" badge, dual EUR-Lex links to Original/Amendment)
+- **Amendment-Aware Citation Popovers** (DEC-062: Dual badges IN FORCE + AMENDED, amendment notice with date, "View Consolidated" button for amended regulations)
 - **Informal citation detection** (Directive/Regulation/Decision patterns without ELI, auto-CELEX construction)
 - **Clean TOC** (DEC-010: \"Enacting Terms\" removed from navigation, cleaner sidebar)
 - **Copy Reference** (DEC-011: Full EU citation hierarchy — articles + 316 paras + 258 points + 30 subpoints + recitals)
@@ -74,6 +75,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-17 14:50 | DEC-062: Amendment-Aware Citation Popovers — eIDAS 1.0 citations now show dual badges (IN FORCE + AMENDED), amendment notice with date, "View Consolidated →" button. Data model + build-time + popover template + CSS. Browser-verified. |
 | 2026-01-17 14:18 | Terminology consolidation: Added "Provision Citation" term, merged Cross-doc refs + Recital refs backlog items. Fixed eIDAS → eIDAS 1.0 abbreviation. Planned Amendment-Aware Citation Popovers (Option E). |
 | 2026-01-17 13:50 | Retro: Added Rules 26-28 (Formex structure, fix cause not symptom, script deletion checklist), DEC-061. Pipeline validation prevents annex extraction regression. |
 | 2026-01-17 13:20 | Pipeline fix: Annex extraction now processes all supplementary XML files in Formex archives — 27 implementing acts now have proper annexes extracted (+30,820 words, total 168,956). Removed stale batch_fix_annexes.py task. |

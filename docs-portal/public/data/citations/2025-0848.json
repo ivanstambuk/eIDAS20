@@ -22,7 +22,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 2,
@@ -45,7 +49,11 @@
         "label": "In Force",
         "color": "green"
       },
-      "category": "regulation"
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 3,
@@ -68,7 +76,11 @@
         "label": "In Force",
         "color": "green"
       },
-      "category": "regulation"
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 4,
@@ -91,7 +103,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 5,
@@ -114,7 +130,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 6,
@@ -137,7 +157,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 7,
@@ -160,7 +184,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 8,
@@ -183,7 +211,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 9,
@@ -206,7 +238,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 10,
@@ -227,7 +263,11 @@
         "label": "Repealed",
         "color": "red"
       },
-      "category": "directive"
+      "category": "directive",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 11,
@@ -248,7 +288,11 @@
         "label": "Repealed",
         "color": "red"
       },
-      "category": "directive"
+      "category": "directive",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 12,
@@ -269,7 +313,11 @@
         "label": "In Force",
         "color": "green"
       },
-      "category": "regulation"
+      "category": "regulation",
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 13,
@@ -290,7 +338,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 14,
@@ -311,7 +363,13 @@
         "label": "In Force",
         "color": "green"
       },
-      "category": "regulation"
+      "category": "regulation",
+      "amendedBy": [
+        "32024R1183"
+      ],
+      "amendmentDate": "2024-05-20",
+      "consolidatedSlug": "910-2014",
+      "isAmended": true
     },
     {
       "index": 15,
@@ -332,7 +390,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 16,
@@ -353,7 +415,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 17,
@@ -374,7 +440,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 18,
@@ -395,7 +465,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     },
     {
       "index": 19,
@@ -416,7 +490,11 @@
         "label": "Unknown",
         "color": "gray"
       },
-      "category": null
+      "category": null,
+      "amendedBy": null,
+      "amendmentDate": null,
+      "consolidatedSlug": null,
+      "isAmended": false
     }
   ]
 }

@@ -21,6 +21,11 @@
  * - entryIntoForce: Date when legislation became applicable (ISO format)
  * - status: 'in-force' | 'repealed' | 'not-yet-applicable' | 'partially-applicable'
  * - category: 'regulation' | 'directive' | 'decision' | 'recommendation'
+ * 
+ * Amendment-aware fields (DEC-062):
+ * - amendedBy: Array of CELEX numbers of amending regulations (e.g., ['32024R1183'])
+ * - amendmentDate: Date when the amendment entered into force (ISO format)
+ * - consolidatedSlug: Portal slug for the consolidated version (e.g., '910-2014')
  */
 export const LEGISLATION_METADATA = {
     // =========================================================================
@@ -37,12 +42,17 @@ export const LEGISLATION_METADATA = {
     },
 
     // eIDAS 1.0 - Electronic Identification and Trust Services (original)
+    // Note: This is the original regulation, now amended by eIDAS 2.0 (2024/1183)
     '32014R0910': {
         humanName: 'Electronic Identification and Trust Services Regulation',
         abbreviation: 'eIDAS 1.0',
         entryIntoForce: '2014-09-17', // Entry into force (full application: 2016-07-01)
         status: 'in-force',
         category: 'regulation',
+        // Amendment relationship (for amendment-aware popovers)
+        amendedBy: ['32024R1183'],           // CELEX of amending regulation(s)
+        amendmentDate: '2024-05-20',          // When amendment entered into force
+        consolidatedSlug: '910-2014',         // Portal slug for consolidated version
     },
 
     // eIDAS 2.0 - Amending Regulation
