@@ -215,6 +215,48 @@ On hover, linkable elements (articles, paragraphs, points, recitals) reveal copy
 ### Deep Link Scroll Pattern
 Navigating to a URL with `?section=` parameter scrolls the viewport to that element and applies a brief highlight animation.
 
+### Scroll Restoration Pattern
+Preserves user's scroll position when navigating away and back via browser history. Implementation:
+1. **Save on Exit**: When user clicks an internal link, current `window.scrollY` is saved to `sessionStorage`.
+2. **Detect Back/Forward**: Uses React Router's `useNavigationType()` to detect `'POP'` (back/forward) vs `'PUSH'` (manual navigation).
+3. **Height-Aware Polling**: Waits until `document.scrollHeight > targetY + viewportHeight` before restoring (fixes timing issue where content hasn't rendered yet).
+4. **Deep Link Precedence**: If URL has `?section=` parameter, deep linking takes priority over scroll restoration.
+
+Hook: `useScrollRestoration.js` — shared between Terminology.jsx and RegulationViewer.jsx.
+
+---
+
+## Provisions (Collective Term)
+
+| Term | Description |
+|------|-------------|
+| **Provision** | A collective term for any addressable legal subdivision: article, paragraph, point, subpoint, or recital. Used when referring generically to "linkable elements within a legal document." |
+| **Provision ID** | The stable identifier assigned to a provision for deep linking. Format: `article-5a-para-1-point-a`. |
+| **Provision Citation** | A reference that targets a specific provision within a document, not just the document root. Contrasted with **Document Citation**. |
+| **Provision Path** | The full hierarchical path to a provision: Article → Paragraph → Point → Subpoint. Used for generating EU-formatted citations. |
+
+---
+
+## Citation Relationships
+
+| Term | Description |
+|------|-------------|
+| **Self-Reference** | A citation pointing to the current document's base regulation (e.g., consolidated eIDAS 910/2014 citing "Regulation 910/2014"). Handled specially with "CURRENT DOCUMENT" badge (DEC-060). |
+| **Intra-Document Reference** | A reference to another provision within the same document (e.g., "see Article 12" within Regulation 910/2014). |
+| **Cross-Document Reference** | A reference to a provision in a different document (e.g., "Article 5a(1) of Regulation 910/2014" cited from an implementing act). |
+| **Amended Reference** | A citation to a regulation that has been modified by another act. Shows dual badges: "IN FORCE" + "AMENDED" (DEC-062). |
+
+---
+
+## Navigation State
+
+| Term | Description |
+|------|-------------|
+| **Navigation Type** | React Router's classification of how the user arrived: `'POP'` (back/forward button), `'PUSH'` (link click), `'REPLACE'` (redirect). |
+| **Back/Forward Navigation** | Browser history navigation (`navigationType === 'POP'`). Triggers scroll position restoration. |
+| **Manual Navigation** | Explicit link click or URL entry (`navigationType === 'PUSH'`). Starts fresh at top of page or deep link target. |
+| **DOM Height Timing** | The race condition where `window.scrollTo()` is called before the page content has fully rendered. Solved by height-aware polling. |
+
 ---
 
 ## See Also

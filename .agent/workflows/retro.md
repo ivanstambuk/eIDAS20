@@ -139,6 +139,30 @@ Categories to consider:
 
 ---
 
+## Step 2.9: Terminology Review
+
+**Key question:** "Did this session introduce or heavily use terms that aren't in TERMINOLOGY.md?"
+
+Review the session for:
+1. **New concepts introduced** — e.g., "scroll restoration", "provision", "self-reference"
+2. **Collective terms** — umbrella terms for groups of things (e.g., "provision" = article + paragraph + point + recital)
+3. **Technical patterns** — named patterns used repeatedly (e.g., "height-aware polling", "double-RAF")
+4. **Domain distinctions** — clarifications of similar-sounding concepts (e.g., "internal citation" vs "cross-document citation")
+
+```markdown
+## Terminology Updates
+
+| Term | Category | Description |
+|------|----------|-------------|
+| [e.g., Provision] | Document Structure | Collective term for article/paragraph/point/subpoint/recital |
+| [e.g., Self-Reference] | Citation Relationships | Citation pointing to current document |
+| [e.g., DOM Height Timing] | Navigation State | Race condition where scrollTo fires before content renders |
+
+**Action:** Update TERMINOLOGY.md with missing terms
+```
+
+**Why this matters:** TERMINOLOGY.md is the shared vocabulary. If an agent uses terms that aren't defined there, future agents may use different words for the same concept, causing confusion.
+
 ## Step 3: Complete Improvements List
 
 **⚠️ DO NOT SORT OR PRIORITIZE** — Present ALL improvements in a single flat list. Let the USER decide what to implement.
@@ -250,4 +274,5 @@ Retro improvements:
 ### Documentation
 - [ ] TRACKER.md up to date?
 - [ ] AGENTS.md complete?
+- [ ] TERMINOLOGY.md updated with new terms?
 - [ ] Phase tasks accurately tracked?

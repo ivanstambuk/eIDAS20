@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-17 18:13 CET |
+| **Last Updated** | 2026-01-17 19:09 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (169,375 words) |
 | **Next Action** | See Backlog |
@@ -49,7 +49,7 @@
 - **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
-- **Scroll restoration** (Back button restores position, manual navigation starts at top; React Router `useNavigationType` → POP detection)
+- **Scroll restoration** (Back button restores position, manual navigation starts at top; shared `useScrollRestoration` hook with height-aware polling)
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
@@ -76,7 +76,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-17 18:13 | DEC-064 complete: Fixed plural→singular route path bug (/regulations/ → /regulation/), retro improvements (ROUTES constants, CACHE_VERSION, rule #29 cache invalidation gotcha), cleaned up completed plan |
+| 2026-01-17 19:09 | Fix: RegulationViewer scroll restoration (same DOM height timing bug as Terminology). Retro: extracted shared `useScrollRestoration` hook (eliminates ~60 lines duplicate code), documented "Wait for DOM Height" pattern (AGENTS.md rule 24) |
 | 2026-01-17 15:25 | Retro: CSS class validation script (`validate-css-classes.js`) — catches template/CSS class mismatches at build time. Fixed stale class reference in consolidated popover. |
 | 2026-01-17 14:50 | DEC-062: Amendment-Aware Citation Popovers — eIDAS 1.0 citations now show dual badges (IN FORCE + AMENDED), amendment notice with date, "View Consolidated →" button. Data model + build-time + popover template + CSS. Browser-verified. |
 | 2026-01-17 14:18 | Terminology consolidation: Added "Provision Citation" term, merged Cross-doc refs + Recital refs backlog items. Fixed eIDAS → eIDAS 1.0 abbreviation. Planned Amendment-Aware Citation Popovers (Option E). |
