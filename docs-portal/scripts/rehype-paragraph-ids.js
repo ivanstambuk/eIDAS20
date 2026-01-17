@@ -116,6 +116,12 @@ function rehypeParagraphIds() {
         let inRecitalsSection = false;   // Track if we're in the Recitals section
         let recitalCounter = 0;          // Counter for recital numbering
 
+        // Track last-seen paragraph for sibling point structures
+        // In Annex I, structure is: <li><ol><li id="annex-i-para-3">...</ol><ul><li>(a)...
+        // The <ul> with points is a SIBLING of the <ol> with paragraph, not a child.
+        // So we track the last paragraph ID to use when ancestor lookup fails.
+        let lastParagraphInContext = null;
+
         // First pass: track article headings
         visitParents(tree, 'element', (node) => {
             if ((node.tagName === 'h3' || node.tagName === 'h2') &&
@@ -132,6 +138,7 @@ function rehypeParagraphIds() {
                 currentArticleId = node.properties.id;
                 currentAnnexId = null;    // Exit annex context
                 inRecitalsSection = false;
+                lastParagraphInContext = null;  // Reset paragraph tracking
                 return;
             }
 
@@ -140,6 +147,7 @@ function rehypeParagraphIds() {
                 currentAnnexId = node.properties.id;
                 currentArticleId = null;  // Exit article context
                 inRecitalsSection = false;
+                lastParagraphInContext = null;  // Reset paragraph tracking
                 return;
             }
 
@@ -149,6 +157,7 @@ function rehypeParagraphIds() {
                 recitalCounter = 0;
                 currentArticleId = null;
                 currentAnnexId = null;
+                lastParagraphInContext = null;  // Reset paragraph tracking
                 return;
             }
 
@@ -217,6 +226,9 @@ function rehypeParagraphIds() {
                             ...(child.properties.className || []),
                             'linkable-paragraph'
                         ];
+
+                        // Track this paragraph for sibling point structures
+                        lastParagraphInContext = { id: paraId, num: paragraphNum };
 
                         liIndex++;
                     }
@@ -293,6 +305,9 @@ function rehypeParagraphIds() {
                                 'linkable-paragraph'
                             ];
 
+                            // Track this paragraph for sibling point structures
+                            lastParagraphInContext = { id: paraId, num: paragraphNum };
+
                             liIndex++;
                         }
                     }
@@ -302,7 +317,9 @@ function rehypeParagraphIds() {
 
             // Process unordered list items (points and subpoints)
             if (node.tagName === 'ul') {
-                const paraContext = findParagraphContext(ancestors);
+                // First try to find paragraph from ancestor chain
+                // Fallback to last-seen paragraph in context (for sibling structures)
+                const paraContext = findParagraphContext(ancestors) || lastParagraphInContext;
                 const pointContext = findPointContext(ancestors);
 
                 for (const child of node.children) {

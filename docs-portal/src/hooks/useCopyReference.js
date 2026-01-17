@@ -173,8 +173,40 @@ function formatHeadingReference(headingId) {
         return `Chapter ${chapterMatch[1].toUpperCase()}`;
     }
 
-    // Handle annexes: annex-i → Annex I
-    const annexMatch = headingId.match(/^annex-(.+)$/);
+    // Handle annex hierarchies: annex-i-para-3-point-a-subpoint-ii → Annex I, point 3(a)(ii)
+    // EU Citation style for annexes uses "point" instead of "paragraph"
+    const annexFullHierarchyMatch = headingId.match(
+        /^annex-([ivx]+)-para-(\d+)-point-([a-z])-subpoint-([ivx]+)$/
+    );
+    if (annexFullHierarchyMatch) {
+        const annexNum = annexFullHierarchyMatch[1].toUpperCase();
+        const pointNum = annexFullHierarchyMatch[2];
+        const subLetter = annexFullHierarchyMatch[3];
+        const roman = annexFullHierarchyMatch[4];
+        return `Annex ${annexNum}, point ${pointNum}(${subLetter})(${roman})`;
+    }
+
+    // Handle annex with point: annex-i-para-3-point-a → Annex I, point 3(a)
+    const annexPointMatch = headingId.match(
+        /^annex-([ivx]+)-para-(\d+)-point-([a-z])$/
+    );
+    if (annexPointMatch) {
+        const annexNum = annexPointMatch[1].toUpperCase();
+        const pointNum = annexPointMatch[2];
+        const subLetter = annexPointMatch[3];
+        return `Annex ${annexNum}, point ${pointNum}(${subLetter})`;
+    }
+
+    // Handle annex paragraph: annex-i-para-3 → Annex I, point 3
+    const annexParaMatch = headingId.match(/^annex-([ivx]+)-para-(\d+)$/);
+    if (annexParaMatch) {
+        const annexNum = annexParaMatch[1].toUpperCase();
+        const pointNum = annexParaMatch[2];
+        return `Annex ${annexNum}, point ${pointNum}`;
+    }
+
+    // Handle basic annexes: annex-i → Annex I
+    const annexMatch = headingId.match(/^annex-([ivx]+)$/);
     if (annexMatch) {
         return `Annex ${annexMatch[1].toUpperCase()}`;
     }
