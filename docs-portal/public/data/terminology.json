@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-01-17T00:33:09.845Z",
+  "generated": "2026-01-17T00:59:14.682Z",
   "statistics": {
     "totalTerms": 106,
     "totalDefinitions": 199,
@@ -184,7 +184,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-para-6"
+      "primaryLinkTarget": "article-1-para-6",
+      "definitionGroups": [
+        {
+          "definition": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-6",
+              "articleNumber": "1(6)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
+          "sources": [
+            {
+              "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "advanced-electronic-seal",
@@ -203,7 +239,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-26"
+      "primaryLinkTarget": "article-3-para-26",
+      "definitionGroups": [
+        {
+          "definition": "an electronic seal, which meets the requirements set out in Article 36",
+          "sources": [
+            {
+              "definition": "an electronic seal, which meets the requirements set out in Article 36",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-26",
+              "articleNumber": "3(26)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "advanced-electronic-signature",
@@ -222,7 +277,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-11"
+      "primaryLinkTarget": "article-3-para-11",
+      "definitionGroups": [
+        {
+          "definition": "an electronic signature which meets the requirements set out in Article 26",
+          "sources": [
+            {
+              "definition": "an electronic signature which meets the requirements set out in Article 26",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-11",
+              "articleNumber": "3(11)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "attribute",
@@ -241,7 +315,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-43"
+      "primaryLinkTarget": "article-3-para-43",
+      "definitionGroups": [
+        {
+          "definition": "a characteristic, quality, right or permission of a natural or legal person or of an object",
+          "sources": [
+            {
+              "definition": "a characteristic, quality, right or permission of a natural or legal person or of an object",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-43",
+              "articleNumber": "3(43)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "authentic-source",
@@ -260,7 +353,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-47"
+      "primaryLinkTarget": "article-3-para-47",
+      "definitionGroups": [
+        {
+          "definition": "a repository or system, held under the responsibility of a public sector body or private entity, that contains and provides attributes about a natural or legal person or object and that is considered to be a primary source of that information or recognised as authentic in accordance with Union or national law, including administrative practice",
+          "sources": [
+            {
+              "definition": "a repository or system, held under the responsibility of a public sector body or private entity, that contains and provides attributes about a natural or legal person or object and that is considered to be a primary source of that information or recognised as authentic in accordance with Union or national law, including administrative practice",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-47",
+              "articleNumber": "3(47)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "authentication",
@@ -279,7 +391,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-5"
+      "primaryLinkTarget": "article-3-para-5",
+      "definitionGroups": [
+        {
+          "definition": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
+          "sources": [
+            {
+              "definition": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-5",
+              "articleNumber": "3(5)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "authorised-representative",
@@ -298,7 +429,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-4"
+      "primaryLinkTarget": "article-2-para-4",
+      "definitionGroups": [
+        {
+          "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
+          "sources": [
+            {
+              "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "body-governed-by-public-law",
@@ -317,7 +467,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-8"
+      "primaryLinkTarget": "article-3-para-8",
+      "definitionGroups": [
+        {
+          "definition": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
+          "sources": [
+            {
+              "definition": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-8",
+              "articleNumber": "3(8)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "catalogue-of-attributes",
@@ -336,7 +505,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-3"
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a digital repository of attributes that is maintained and published online by the Commission",
+          "sources": [
+            {
+              "definition": "a digital repository of attributes that is maintained and published online by the Commission",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "catalogue-of-schemes-for-the-attestation-of-attributes",
@@ -355,7 +543,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-6"
+      "primaryLinkTarget": "article-2-para-6",
+      "definitionGroups": [
+        {
+          "definition": "a digital repository listing schemes for the attestation of attributes registered in accordance with this Regulation and that is maintained [and published online] by the Commission",
+          "sources": [
+            {
+              "definition": "a digital repository listing schemes for the attestation of attributes registered in accordance with this Regulation and that is maintained [and published online] by the Commission",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "ce-marking",
@@ -374,7 +581,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-20"
+      "primaryLinkTarget": "article-2-para-20",
+      "definitionGroups": [
+        {
+          "definition": "a marking by which the manufacturer indicates that the product is in conformity with the applicable requirements set out in Community harmonisation legislation providing for its affixing",
+          "sources": [
+            {
+              "definition": "a marking by which the manufacturer indicates that the product is in conformity with the applicable requirements set out in Community harmonisation legislation providing for its affixing",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-20",
+              "articleNumber": "2(20)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certificate-for-electronic-seal",
@@ -393,7 +619,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-29"
+      "primaryLinkTarget": "article-3-para-29",
+      "definitionGroups": [
+        {
+          "definition": "an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person",
+          "sources": [
+            {
+              "definition": "an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-29",
+              "articleNumber": "3(29)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certificate-for-electronic-signature",
@@ -412,7 +657,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-14"
+      "primaryLinkTarget": "article-3-para-14",
+      "definitionGroups": [
+        {
+          "definition": "an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person",
+          "sources": [
+            {
+              "definition": "an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-14",
+              "articleNumber": "3(14)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certificate-for-website-authentication",
@@ -431,7 +695,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-38"
+      "primaryLinkTarget": "article-3-para-38",
+      "definitionGroups": [
+        {
+          "definition": "an electronic attestation that makes it possible to authenticate a website and links the website to the natural or legal person to whom the certificate is issued",
+          "sources": [
+            {
+              "definition": "an electronic attestation that makes it possible to authenticate a website and links the website to the natural or legal person to whom the certificate is issued",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-38",
+              "articleNumber": "3(38)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certificate-of-conformity",
@@ -450,7 +733,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-para-3"
+      "primaryLinkTarget": "article-1-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a document by which a conformity assessment body attests a certification decision that positively confirms that a specific qualified trust service provider and the qualified trust service it provides comply with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "sources": [
+            {
+              "definition": "a document by which a conformity assessment body attests a certification decision that positively confirms that a specific qualified trust service provider and the qualified trust service it provides comply with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-3",
+              "articleNumber": "1(3)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certification-body",
@@ -469,7 +771,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-9"
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a third-party conformity assessment body operating certification schemes",
+          "sources": [
+            {
+              "definition": "a third-party conformity assessment body operating certification schemes",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "certification-decision",
@@ -488,7 +809,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-para-2"
+      "primaryLinkTarget": "article-1-para-2",
+      "definitionGroups": [
+        {
+          "definition": "a certification decision, which follows a conformity assessment conducted by a conformity assessment body where that body positively or negatively confirms the conformity of a specific qualified trust service provider and the qualified trust service it provides with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "sources": [
+            {
+              "definition": "a certification decision, which follows a conformity assessment conducted by a conformity assessment body where that body positively or negatively confirms the conformity of a specific qualified trust service provider and the qualified trust service it provides with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-2",
+              "articleNumber": "1(2)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "community-harmonisation-legislation",
@@ -507,7 +847,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-21"
+      "primaryLinkTarget": "article-2-para-21",
+      "definitionGroups": [
+        {
+          "definition": "any Community legislation harmonising the conditions for the marketing of products",
+          "sources": [
+            {
+              "definition": "any Community legislation harmonising the conditions for the marketing of products",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-21",
+              "articleNumber": "2(21)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "conformity-assessment",
@@ -526,7 +885,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-12"
+      "primaryLinkTarget": "article-2-para-12",
+      "definitionGroups": [
+        {
+          "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
+          "sources": [
+            {
+              "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "conformity-assessment-body",
@@ -556,7 +934,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-3-para-18"
+      "primaryLinkTarget": "article-3-para-18",
+      "definitionGroups": [
+        {
+          "definition": "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means",
+          "sources": [
+            {
+              "definition": "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-18",
+              "articleNumber": "3(18)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
+          "sources": [
+            {
+              "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "conformity-assessment-report",
@@ -575,7 +989,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-para-5"
+      "primaryLinkTarget": "article-1-para-5",
+      "definitionGroups": [
+        {
+          "definition": "a document that provides detailed information, where applicable supplementary to that contained in a certification decision and associated certificate of conformity, on the method used to carry out, in accordance with a conformity assessment scheme, a conformity assessment of the compliance of a specific qualified trust service provider and the qualified trust service it provides with the requirements of Regulation (EU) No 910/2014 and of Article 21 of Directive (EU) 2022/2555 and on the results of the conformity assessment",
+          "sources": [
+            {
+              "definition": "a document that provides detailed information, where applicable supplementary to that contained in a certification decision and associated certificate of conformity, on the method used to carry out, in accordance with a conformity assessment scheme, a conformity assessment of the compliance of a specific qualified trust service provider and the qualified trust service it provides with the requirements of Regulation (EU) No 910/2014 and of Article 21 of Directive (EU) 2022/2555 and on the results of the conformity assessment",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-5",
+              "articleNumber": "1(5)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "conformity-assessment-scheme",
@@ -594,7 +1027,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-para-4"
+      "primaryLinkTarget": "article-1-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a set of rules and procedures to be used by conformity assessment bodies for the purpose of the assessment of the conformity of qualified trust service providers and the qualified trust services that they provide with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+          "sources": [
+            {
+              "definition": "a set of rules and procedures to be used by conformity assessment bodies for the purpose of the assessment of the conformity of qualified trust service providers and the qualified trust services that they provide with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-4",
+              "articleNumber": "1(4)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "creator-of-a-seal",
@@ -613,7 +1065,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-24"
+      "primaryLinkTarget": "article-3-para-24",
+      "definitionGroups": [
+        {
+          "definition": "a legal person who creates an electronic seal",
+          "sources": [
+            {
+              "definition": "a legal person who creates an electronic seal",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-24",
+              "articleNumber": "3(24)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "critical-assets",
@@ -720,7 +1191,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-10"
+      "primaryLinkTarget": "article-2-para-10",
+      "definitionGroups": [
+        {
+          "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+          "sources": [
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "cryptographic-binding",
@@ -739,7 +1317,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-16"
+      "primaryLinkTarget": "article-2-para-16",
+      "definitionGroups": [
+        {
+          "definition": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means",
+          "sources": [
+            {
+              "definition": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-16",
+              "articleNumber": "2(16)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "data-record",
@@ -758,7 +1355,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-56"
+      "primaryLinkTarget": "article-3-para-56",
+      "definitionGroups": [
+        {
+          "definition": "electronic data recorded with related meta-data supporting the processing of the data",
+          "sources": [
+            {
+              "definition": "electronic data recorded with related meta-data supporting the processing of the data",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-56",
+              "articleNumber": "3(56)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-archiving",
@@ -777,7 +1393,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-48"
+      "primaryLinkTarget": "article-3-para-48",
+      "definitionGroups": [
+        {
+          "definition": "a service ensuring the receipt, storage, retrieval and deletion of electronic data and electronic documents in order to ensure their durability and legibility as well as to preserve their integrity, confidentiality and proof of origin throughout the preservation period",
+          "sources": [
+            {
+              "definition": "a service ensuring the receipt, storage, retrieval and deletion of electronic data and electronic documents in order to ensure their durability and legibility as well as to preserve their integrity, confidentiality and proof of origin throughout the preservation period",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-48",
+              "articleNumber": "3(48)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-attestation-of-attributes",
@@ -796,7 +1431,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-44"
+      "primaryLinkTarget": "article-3-para-44",
+      "definitionGroups": [
+        {
+          "definition": "an attestation in electronic form that allows attributes to be authenticated",
+          "sources": [
+            {
+              "definition": "an attestation in electronic form that allows attributes to be authenticated",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-44",
+              "articleNumber": "3(44)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
@@ -815,7 +1469,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-46"
+      "primaryLinkTarget": "article-3-para-46",
+      "definitionGroups": [
+        {
+          "definition": "an electronic attestation of attributes issued by a public sector body that is responsible for an authentic source or by a public sector body that is designated by the Member State to issue such attestations of attributes on behalf of the public sector bodies responsible for authentic sources in accordance with Article 45f and with Annex VII",
+          "sources": [
+            {
+              "definition": "an electronic attestation of attributes issued by a public sector body that is responsible for an authentic source or by a public sector body that is designated by the Member State to issue such attestations of attributes on behalf of the public sector bodies responsible for authentic sources in accordance with Article 45f and with Annex VII",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-46",
+              "articleNumber": "3(46)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-document",
@@ -834,7 +1507,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-35"
+      "primaryLinkTarget": "article-3-para-35",
+      "definitionGroups": [
+        {
+          "definition": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
+          "sources": [
+            {
+              "definition": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-35",
+              "articleNumber": "3(35)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-identification",
@@ -853,7 +1545,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-1"
+      "primaryLinkTarget": "article-3-para-1",
+      "definitionGroups": [
+        {
+          "definition": "the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person",
+          "sources": [
+            {
+              "definition": "the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-1",
+              "articleNumber": "3(1)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-identification-means",
@@ -872,7 +1583,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-2"
+      "primaryLinkTarget": "article-3-para-2",
+      "definitionGroups": [
+        {
+          "definition": "a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service",
+          "sources": [
+            {
+              "definition": "a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-2",
+              "articleNumber": "3(2)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-identification-scheme",
@@ -891,7 +1621,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-4"
+      "primaryLinkTarget": "article-3-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
+          "sources": [
+            {
+              "definition": "a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-4",
+              "articleNumber": "3(4)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-ledger",
@@ -910,7 +1659,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-52"
+      "primaryLinkTarget": "article-3-para-52",
+      "definitionGroups": [
+        {
+          "definition": "a sequence of electronic data records, ensuring the integrity of those records and the accuracy of the chronological ordering of those records",
+          "sources": [
+            {
+              "definition": "a sequence of electronic data records, ensuring the integrity of those records and the accuracy of the chronological ordering of those records",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-52",
+              "articleNumber": "3(52)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-registered-delivery-service",
@@ -929,7 +1697,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-36"
+      "primaryLinkTarget": "article-3-para-36",
+      "definitionGroups": [
+        {
+          "definition": "a service that makes it possible to transmit data between third parties by electronic means and provides evidence relating to the handling of the transmitted data, including proof of sending and receiving the data, and that protects transmitted data against the risk of loss, theft, damage or any unauthorised alterations",
+          "sources": [
+            {
+              "definition": "a service that makes it possible to transmit data between third parties by electronic means and provides evidence relating to the handling of the transmitted data, including proof of sending and receiving the data, and that protects transmitted data against the risk of loss, theft, damage or any unauthorised alterations",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-36",
+              "articleNumber": "3(36)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-seal",
@@ -948,7 +1735,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-25"
+      "primaryLinkTarget": "article-3-para-25",
+      "definitionGroups": [
+        {
+          "definition": "data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter’s origin and integrity",
+          "sources": [
+            {
+              "definition": "data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter’s origin and integrity",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-25",
+              "articleNumber": "3(25)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-seal-creation-data",
@@ -967,7 +1773,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-28"
+      "primaryLinkTarget": "article-3-para-28",
+      "definitionGroups": [
+        {
+          "definition": "unique data, which is used by the creator of the electronic seal to create an electronic seal",
+          "sources": [
+            {
+              "definition": "unique data, which is used by the creator of the electronic seal to create an electronic seal",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-28",
+              "articleNumber": "3(28)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-seal-creation-device",
@@ -986,7 +1811,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-31"
+      "primaryLinkTarget": "article-3-para-31",
+      "definitionGroups": [
+        {
+          "definition": "configured software or hardware used to create an electronic seal",
+          "sources": [
+            {
+              "definition": "configured software or hardware used to create an electronic seal",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-31",
+              "articleNumber": "3(31)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-signature",
@@ -1005,7 +1849,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-10"
+      "primaryLinkTarget": "article-3-para-10",
+      "definitionGroups": [
+        {
+          "definition": "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign",
+          "sources": [
+            {
+              "definition": "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-10",
+              "articleNumber": "3(10)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-signature-creation-data",
@@ -1024,7 +1887,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-13"
+      "primaryLinkTarget": "article-3-para-13",
+      "definitionGroups": [
+        {
+          "definition": "unique data which is used by the signatory to create an electronic signature",
+          "sources": [
+            {
+              "definition": "unique data which is used by the signatory to create an electronic signature",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-13",
+              "articleNumber": "3(13)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-signature-creation-device",
@@ -1043,7 +1925,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-22"
+      "primaryLinkTarget": "article-3-para-22",
+      "definitionGroups": [
+        {
+          "definition": "configured software or hardware used to create an electronic signature",
+          "sources": [
+            {
+              "definition": "configured software or hardware used to create an electronic signature",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-22",
+              "articleNumber": "3(22)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "electronic-time-stamp",
@@ -1062,7 +1963,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-33"
+      "primaryLinkTarget": "article-3-para-33",
+      "definitionGroups": [
+        {
+          "definition": "data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time",
+          "sources": [
+            {
+              "definition": "data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-33",
+              "articleNumber": "3(33)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "embedded-disclosure-policy",
@@ -1103,7 +2023,48 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-9"
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+          "sources": [
+            {
+              "definition": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a set of rules, embedded in an electronic attestation of attributes by its provider, that indicates the conditions that a wallet-relying party has to meet to access the electronic attestation of attributes",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "eu-digital-identity-wallet-trust-mark",
@@ -1122,7 +2083,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-50"
+      "primaryLinkTarget": "article-3-para-50",
+      "definitionGroups": [
+        {
+          "definition": "a verifiable, simple and recognisable indication which is communicated in a clear manner that a European Digital Identity Wallet has been provided in accordance with this Regulation",
+          "sources": [
+            {
+              "definition": "a verifiable, simple and recognisable indication which is communicated in a clear manner that a European Digital Identity Wallet has been provided in accordance with this Regulation",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-50",
+              "articleNumber": "3(50)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "european-digital-identity-wallet",
@@ -1141,7 +2121,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-42"
+      "primaryLinkTarget": "article-3-para-42",
+      "definitionGroups": [
+        {
+          "definition": "an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals",
+          "sources": [
+            {
+              "definition": "an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-42",
+              "articleNumber": "3(42)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "flexible-scope-accreditation",
@@ -1160,7 +2159,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-1-para-7"
+      "primaryLinkTarget": "article-1-para-7",
+      "definitionGroups": [
+        {
+          "definition": "an accreditation where the specific conformity assessment activities for which accreditation is sought, or has been granted, are expressed to allow conformity assessment bodies to make changes in methodology and other parameters which fall within the competence of the conformity assessment body as confirmed by the national accreditation body",
+          "sources": [
+            {
+              "definition": "an accreditation where the specific conformity assessment activities for which accreditation is sought, or has been granted, are expressed to allow conformity assessment bodies to make changes in methodology and other parameters which fall within the competence of the conformity assessment body as confirmed by the national accreditation body",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-7",
+              "articleNumber": "1(7)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "harmonised-standard",
@@ -1179,7 +2197,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-9"
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a standard adopted by one of the European standardisation bodies listed in Annex I to Directive 98/34/EC of the European Parliament and of the Council of 22 June 1998 laying down a procedure for the provision of information in the field of technical standards and regulations and of rules on Information Society services on the basis of a request made by the Commission in accordance with Article 6 of that Directive",
+          "sources": [
+            {
+              "definition": "a standard adopted by one of the European standardisation bodies listed in Annex I to Directive 98/34/EC of the European Parliament and of the Council of 22 June 1998 laying down a procedure for the provision of information in the field of technical standards and regulations and of rules on Information Society services on the basis of a request made by the Commission in accordance with Article 6 of that Directive",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "identity-matching",
@@ -1198,7 +2235,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-55"
+      "primaryLinkTarget": "article-3-para-55",
+      "definitionGroups": [
+        {
+          "definition": "a process where person identification data, or electronic identification means are matched with or linked to an existing account belonging to the same person",
+          "sources": [
+            {
+              "definition": "a process where person identification data, or electronic identification means are matched with or linked to an existing account belonging to the same person",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-55",
+              "articleNumber": "3(55)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "incident",
@@ -1217,7 +2273,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-13"
+      "primaryLinkTarget": "article-2-para-13",
+      "definitionGroups": [
+        {
+          "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
+          "sources": [
+            {
+              "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "manufacturer",
@@ -1236,7 +2311,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-3"
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
+          "sources": [
+            {
+              "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "national-accreditation-body",
@@ -1266,7 +2360,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-para-8"
+      "primaryLinkTarget": "article-1-para-8",
+      "definitionGroups": [
+        {
+          "definition": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-8",
+              "articleNumber": "1(8)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
+          "sources": [
+            {
+              "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "national-register-of-wallet-relying-parties",
@@ -1285,7 +2415,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-10"
+      "primaryLinkTarget": "article-2-para-10",
+      "definitionGroups": [
+        {
+          "definition": "a national electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "a national electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "object-of-certification",
@@ -1304,7 +2453,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-3"
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "products, processes and services or a combination thereof to which specified requirements apply",
+          "sources": [
+            {
+              "definition": "products, processes and services or a combination thereof to which specified requirements apply",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "owner-of-a-scheme-for-the-attestation-of-attributes",
@@ -1323,7 +2491,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-13"
+      "primaryLinkTarget": "article-2-para-13",
+      "definitionGroups": [
+        {
+          "definition": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes",
+          "sources": [
+            {
+              "definition": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "peer-evaluation",
@@ -1342,7 +2529,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-16"
+      "primaryLinkTarget": "article-2-para-16",
+      "definitionGroups": [
+        {
+          "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
+          "sources": [
+            {
+              "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-16",
+              "articleNumber": "2(16)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "person-identification-data",
@@ -1361,7 +2567,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-3"
+      "primaryLinkTarget": "article-3-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person",
+          "sources": [
+            {
+              "definition": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-3",
+              "articleNumber": "3(3)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "personal-data",
@@ -1380,7 +2605,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-54"
+      "primaryLinkTarget": "article-3-para-54",
+      "definitionGroups": [
+        {
+          "definition": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
+          "sources": [
+            {
+              "definition": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-54",
+              "articleNumber": "3(54)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "product",
@@ -1399,7 +2643,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-21"
+      "primaryLinkTarget": "article-3-para-21",
+      "definitionGroups": [
+        {
+          "definition": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
+          "sources": [
+            {
+              "definition": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-21",
+              "articleNumber": "3(21)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "provider-of-person-identification-data",
@@ -1473,7 +2736,81 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-4"
+      "primaryLinkTarget": "article-2-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+          "sources": [
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-15",
+              "articleNumber": "2(15)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "provider-of-wallet-relying-party-access-certificates",
@@ -1536,7 +2873,76 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-13"
+      "primaryLinkTarget": "article-2-para-13",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+          "sources": [
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-15",
+              "articleNumber": "2(15)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue relying party access certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party access certificates to wallet-relying parties registered in that Member State",
+          "sources": [
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party access certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "provider-of-wallet-relying-party-registration-certificates",
@@ -1555,7 +2961,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-16"
+      "primaryLinkTarget": "article-2-para-16",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State",
+          "sources": [
+            {
+              "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-16",
+              "articleNumber": "2(16)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "public-sector-body",
@@ -1574,7 +2999,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-7"
+      "primaryLinkTarget": "article-3-para-7",
+      "definitionGroups": [
+        {
+          "definition": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
+          "sources": [
+            {
+              "definition": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-7",
+              "articleNumber": "3(7)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-certificate-for-electronic-seal",
@@ -1593,7 +3037,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-30"
+      "primaryLinkTarget": "article-3-para-30",
+      "definitionGroups": [
+        {
+          "definition": "a certificate for an electronic seal, that is issued by a qualified trust service provider and meets the requirements laid down in Annex III",
+          "sources": [
+            {
+              "definition": "a certificate for an electronic seal, that is issued by a qualified trust service provider and meets the requirements laid down in Annex III",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-30",
+              "articleNumber": "3(30)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-certificate-for-electronic-signature",
@@ -1612,7 +3075,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-15"
+      "primaryLinkTarget": "article-3-para-15",
+      "definitionGroups": [
+        {
+          "definition": "a certificate for electronic signatures, that is issued by a qualified trust service provider and meets the requirements laid down in Annex I",
+          "sources": [
+            {
+              "definition": "a certificate for electronic signatures, that is issued by a qualified trust service provider and meets the requirements laid down in Annex I",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-15",
+              "articleNumber": "3(15)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-certificate-for-website-authentication",
@@ -1631,7 +3113,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-39"
+      "primaryLinkTarget": "article-3-para-39",
+      "definitionGroups": [
+        {
+          "definition": "a certificate for website authentication, which is issued by a qualified trust service provider and meets the requirements laid down in Annex IV",
+          "sources": [
+            {
+              "definition": "a certificate for website authentication, which is issued by a qualified trust service provider and meets the requirements laid down in Annex IV",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-39",
+              "articleNumber": "3(39)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-archiving-service",
@@ -1650,7 +3151,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-49"
+      "primaryLinkTarget": "article-3-para-49",
+      "definitionGroups": [
+        {
+          "definition": "an electronic archiving service which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45j",
+          "sources": [
+            {
+              "definition": "an electronic archiving service which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45j",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-49",
+              "articleNumber": "3(49)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-attestation-of-attributes",
@@ -1669,7 +3189,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-45"
+      "primaryLinkTarget": "article-3-para-45",
+      "definitionGroups": [
+        {
+          "definition": "an electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V",
+          "sources": [
+            {
+              "definition": "an electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-45",
+              "articleNumber": "3(45)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-ledger",
@@ -1688,7 +3227,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-53"
+      "primaryLinkTarget": "article-3-para-53",
+      "definitionGroups": [
+        {
+          "definition": "an electronic ledger which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45l",
+          "sources": [
+            {
+              "definition": "an electronic ledger which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45l",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-53",
+              "articleNumber": "3(53)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-registered-delivery-service",
@@ -1707,7 +3265,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-37"
+      "primaryLinkTarget": "article-3-para-37",
+      "definitionGroups": [
+        {
+          "definition": "an electronic registered delivery service which meets the requirements laid down in Article 44",
+          "sources": [
+            {
+              "definition": "an electronic registered delivery service which meets the requirements laid down in Article 44",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-37",
+              "articleNumber": "3(37)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-seal",
@@ -1726,7 +3303,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-27"
+      "primaryLinkTarget": "article-3-para-27",
+      "definitionGroups": [
+        {
+          "definition": "an advanced electronic seal, which is created by a qualified electronic seal creation device, and that is based on a qualified certificate for electronic seal",
+          "sources": [
+            {
+              "definition": "an advanced electronic seal, which is created by a qualified electronic seal creation device, and that is based on a qualified certificate for electronic seal",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-27",
+              "articleNumber": "3(27)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-seal-creation-device",
@@ -1745,7 +3341,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-32"
+      "primaryLinkTarget": "article-3-para-32",
+      "definitionGroups": [
+        {
+          "definition": "an electronic seal creation device that meets mutatis mutandis the requirements laid down in Annex II",
+          "sources": [
+            {
+              "definition": "an electronic seal creation device that meets mutatis mutandis the requirements laid down in Annex II",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-32",
+              "articleNumber": "3(32)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-signature",
@@ -1764,7 +3379,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-12"
+      "primaryLinkTarget": "article-3-para-12",
+      "definitionGroups": [
+        {
+          "definition": "an advanced electronic signature that is created by a qualified electronic signature creation device, and which is based on a qualified certificate for electronic signatures",
+          "sources": [
+            {
+              "definition": "an advanced electronic signature that is created by a qualified electronic signature creation device, and which is based on a qualified certificate for electronic signatures",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-12",
+              "articleNumber": "3(12)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-signature-creation-device",
@@ -1783,7 +3417,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-23"
+      "primaryLinkTarget": "article-3-para-23",
+      "definitionGroups": [
+        {
+          "definition": "an electronic signature creation device that meets the requirements laid down in Annex II",
+          "sources": [
+            {
+              "definition": "an electronic signature creation device that meets the requirements laid down in Annex II",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-23",
+              "articleNumber": "3(23)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-electronic-time-stamp",
@@ -1802,7 +3455,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-34"
+      "primaryLinkTarget": "article-3-para-34",
+      "definitionGroups": [
+        {
+          "definition": "an electronic time stamp which meets the requirements laid down in Article 42",
+          "sources": [
+            {
+              "definition": "an electronic time stamp which meets the requirements laid down in Article 42",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-34",
+              "articleNumber": "3(34)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-trust-service",
@@ -1821,7 +3493,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-17"
+      "primaryLinkTarget": "article-3-para-17",
+      "definitionGroups": [
+        {
+          "definition": "a trust service that meets the applicable requirements laid down in this Regulation",
+          "sources": [
+            {
+              "definition": "a trust service that meets the applicable requirements laid down in this Regulation",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-17",
+              "articleNumber": "3(17)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "qualified-trust-service-provider",
@@ -1840,7 +3531,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-20"
+      "primaryLinkTarget": "article-3-para-20",
+      "definitionGroups": [
+        {
+          "definition": "a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body",
+          "sources": [
+            {
+              "definition": "a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-20",
+              "articleNumber": "3(20)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "register-of-wallet-relying-parties",
@@ -1859,7 +3569,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-4"
+      "primaryLinkTarget": "article-2-para-4",
+      "definitionGroups": [
+        {
+          "definition": "an electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "an electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "registrar-of-wallet-relying-parties",
@@ -1889,7 +3618,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-5"
+      "primaryLinkTarget": "article-2-para-5",
+      "definitionGroups": [
+        {
+          "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory who has been designated by a Member State",
+          "sources": [
+            {
+              "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory who has been designated by a Member State",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory and who has been designated by a Member State",
+          "sources": [
+            {
+              "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory and who has been designated by a Member State",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "release-for-free-circulation",
@@ -1908,7 +3673,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-19"
+      "primaryLinkTarget": "article-2-para-19",
+      "definitionGroups": [
+        {
+          "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
+          "sources": [
+            {
+              "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-19",
+              "articleNumber": "2(19)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "relying-party",
@@ -1927,7 +3711,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-6"
+      "primaryLinkTarget": "article-3-para-6",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service",
+          "sources": [
+            {
+              "definition": "a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-6",
+              "articleNumber": "3(6)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "remote-qualified-electronic-seal-creation-device",
@@ -1946,7 +3749,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-23b"
+      "primaryLinkTarget": "article-3-para-23b",
+      "definitionGroups": [
+        {
+          "definition": "a qualified electronic seal creation device that is managed by a qualified trust service provider in accordance with Article 39a on behalf of a seal creator",
+          "sources": [
+            {
+              "definition": "a qualified electronic seal creation device that is managed by a qualified trust service provider in accordance with Article 39a on behalf of a seal creator",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-23b",
+              "articleNumber": "3(23b)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "remote-qualified-electronic-signature-creation-device",
@@ -1965,7 +3787,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-23a"
+      "primaryLinkTarget": "article-3-para-23a",
+      "definitionGroups": [
+        {
+          "definition": "a qualified electronic signature creation device that is managed by a qualified trust service provider in accordance with Article 29a on behalf of a signatory",
+          "sources": [
+            {
+              "definition": "a qualified electronic signature creation device that is managed by a qualified trust service provider in accordance with Article 29a on behalf of a signatory",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-23a",
+              "articleNumber": "3(23a)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "risk-register",
@@ -1984,7 +3825,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-7"
+      "primaryLinkTarget": "article-2-para-7",
+      "definitionGroups": [
+        {
+          "definition": "a record of information relevant to the certification process about identified risks",
+          "sources": [
+            {
+              "definition": "a record of information relevant to the certification process about identified risks",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "scheme-for-the-attestation-of-attributes",
@@ -2003,7 +3863,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-4"
+      "primaryLinkTarget": "article-2-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a set of rules applicable to one or more types of electronic attestation of attributes",
+          "sources": [
+            {
+              "definition": "a set of rules applicable to one or more types of electronic attestation of attributes",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "scheme-owner",
@@ -2033,7 +3912,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-2"
+      "primaryLinkTarget": "article-2-para-2",
+      "definitionGroups": [
+        {
+          "definition": "an organisation which is responsible for developing and maintaining a certification scheme",
+          "sources": [
+            {
+              "definition": "an organisation which is responsible for developing and maintaining a certification scheme",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "an entity or a group of entities which is responsible for developing and maintaining a conformity assessment scheme",
+          "sources": [
+            {
+              "definition": "an entity or a group of entities which is responsible for developing and maintaining a conformity assessment scheme",
+              "documentId": "2025-2162",
+              "documentTitle": "Regulation 2025/2162",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2162",
+              "articleId": "article-1-para-1",
+              "articleNumber": "1(1)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "signatory",
@@ -2052,7 +3967,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-9"
+      "primaryLinkTarget": "article-3-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a natural person who creates an electronic signature",
+          "sources": [
+            {
+              "definition": "a natural person who creates an electronic signature",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-9",
+              "articleNumber": "3(9)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "strong-user-authentication",
@@ -2071,7 +4005,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-51"
+      "primaryLinkTarget": "article-3-para-51",
+      "definitionGroups": [
+        {
+          "definition": "an authentication based on the use of at least two authentication factors from different categories of either knowledge, something only the user knows, possession, something only the user possesses or inherence, something the user is, that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data",
+          "sources": [
+            {
+              "definition": "an authentication based on the use of at least two authentication factors from different categories of either knowledge, something only the user knows, possession, something only the user possesses or inherence, something the user is, that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-51",
+              "articleNumber": "3(51)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "technical-specification",
@@ -2090,7 +4043,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-8"
+      "primaryLinkTarget": "article-2-para-8",
+      "definitionGroups": [
+        {
+          "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
+          "sources": [
+            {
+              "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
+              "documentId": "765-2008",
+              "documentTitle": "Regulation 765/2008",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02008R0765-20210716",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "trust-service",
@@ -2109,7 +4081,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-16"
+      "primaryLinkTarget": "article-3-para-16",
+      "definitionGroups": [
+        {
+          "definition": "an electronic service normally provided for remuneration which consists of any of the following:",
+          "sources": [
+            {
+              "definition": "an electronic service normally provided for remuneration which consists of any of the following:",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-16",
+              "articleNumber": "3(16)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "trust-service-provider",
@@ -2128,7 +4119,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-19"
+      "primaryLinkTarget": "article-3-para-19",
+      "definitionGroups": [
+        {
+          "definition": "a natural or a legal person who provides one or more trust services either as a qualified or as a non-qualified trust service provider",
+          "sources": [
+            {
+              "definition": "a natural or a legal person who provides one or more trust services either as a qualified or as a non-qualified trust service provider",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-19",
+              "articleNumber": "3(19)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "type-of-electronic-attestation-of-attributes",
@@ -2147,7 +4157,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-5"
+      "primaryLinkTarget": "article-2-para-5",
+      "definitionGroups": [
+        {
+          "definition": "a specifically named and semantically described group of electronic attestation of attributes",
+          "sources": [
+            {
+              "definition": "a specifically named and semantically described group of electronic attestation of attributes",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "user",
@@ -2166,7 +4195,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-5a"
+      "primaryLinkTarget": "article-3-para-5a",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
+          "sources": [
+            {
+              "definition": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-5a",
+              "articleNumber": "3(5a)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "validation",
@@ -2185,7 +4233,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-41"
+      "primaryLinkTarget": "article-3-para-41",
+      "definitionGroups": [
+        {
+          "definition": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
+          "sources": [
+            {
+              "definition": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-41",
+              "articleNumber": "3(41)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "validation-data",
@@ -2204,7 +4271,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-3-para-40"
+      "primaryLinkTarget": "article-3-para-40",
+      "definitionGroups": [
+        {
+          "definition": "data that is used to validate an electronic signature or an electronic seal",
+          "sources": [
+            {
+              "definition": "data that is used to validate an electronic signature or an electronic seal",
+              "documentId": "910-2014",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-40",
+              "articleNumber": "3(40)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-cryptographic-operation",
@@ -2223,7 +4309,26 @@
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-13"
+      "primaryLinkTarget": "article-2-para-13",
+      "definitionGroups": [
+        {
+          "definition": "a cryptographic mechanism necessary in the context of authentication of the wallet user and the issuance or presentation of person identification data or electronic attestations of attributes",
+          "sources": [
+            {
+              "definition": "a cryptographic mechanism necessary in the context of authentication of the wallet user and the issuance or presentation of person identification data or electronic attestations of attributes",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-instance",
@@ -2330,7 +4435,120 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-6"
+      "primaryLinkTarget": "article-2-para-6",
+      "definitionGroups": [
+        {
+          "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+          "sources": [
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and which the wallet user uses to interact with the wallet unit",
+          "sources": [
+            {
+              "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and which the wallet user uses to interact with the wallet unit",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     },
     {
       "id": "wallet-provider",
@@ -2437,7 +4655,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-9"
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person who provides wallet solutions",
+          "sources": [
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a natural or legal person who provides wallet solutions",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-secure-cryptographic-application",
@@ -2544,7 +4869,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-7"
+      "primaryLinkTarget": "article-2-para-7",
+      "definitionGroups": [
+        {
+          "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+          "sources": [
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-secure-cryptographic-device",
@@ -2651,7 +5083,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-8"
+      "primaryLinkTarget": "article-2-para-8",
+      "definitionGroups": [
+        {
+          "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+          "sources": [
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-solution",
@@ -2758,7 +5297,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-3"
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+          "sources": [
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-unit",
@@ -2865,7 +5511,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-2"
+      "primaryLinkTarget": "article-2-para-2",
+      "definitionGroups": [
+        {
+          "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+          "sources": [
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-unit-attestation",
@@ -2917,7 +5670,59 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-5"
+      "primaryLinkTarget": "article-2-para-5",
+      "definitionGroups": [
+        {
+          "definition": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+          "sources": [
+            {
+              "definition": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a data object that describes the components of the wallet unit or allows authentication and validation of those components",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-user",
@@ -3024,7 +5829,114 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-1"
+      "primaryLinkTarget": "article-2-para-1",
+      "definitionGroups": [
+        {
+          "definition": "a user who is in control of the wallet unit",
+          "sources": [
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2024-2981",
+              "documentTitle": "Regulation 2024/2981",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2981",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2025-0849",
+              "documentTitle": "Regulation 2025/849",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0849",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a user who is in control of the wallet unit",
+              "documentId": "2025-1569",
+              "documentTitle": "Regulation 2025/1569",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R1569",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-relying-party",
@@ -3098,7 +6010,81 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-11"
+      "primaryLinkTarget": "article-2-para-11",
+      "definitionGroups": [
+        {
+          "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+          "sources": [
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2025-0847",
+              "documentTitle": "Regulation 2025/847",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0847",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-relying-party-access-certificate",
@@ -3161,7 +6147,70 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-12"
+      "primaryLinkTarget": "article-2-para-12",
+      "definitionGroups": [
+        {
+          "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+          "sources": [
+            {
+              "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+              "documentId": "2024-2977",
+              "documentTitle": "Regulation 2024/2977",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2977",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+              "documentId": "2024-2979",
+              "documentTitle": "Regulation 2024/2979",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2979",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+              "documentId": "2024-2980",
+              "documentTitle": "Regulation 2024/2980",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2980",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 2
+            },
+            {
+              "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
     },
     {
       "id": "wallet-relying-party-registration-certificate",
@@ -3191,7 +6240,43 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-14"
+      "primaryLinkTarget": "article-2-para-14",
+      "definitionGroups": [
+        {
+          "definition": "a data object that indicates the attributes the relying party has registered to intend to request from users",
+          "sources": [
+            {
+              "definition": "a data object that indicates the attributes the relying party has registered to intend to request from users",
+              "documentId": "2024-2982",
+              "documentTitle": "Regulation 2024/2982",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32024R2982",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "a data object that describes the intended use of the relying party and indicates the attributes the relying party has registered to intend to request from users",
+          "sources": [
+            {
+              "definition": "a data object that describes the intended use of the relying party and indicates the attributes the relying party has registered to intend to request from users",
+              "documentId": "2025-0848",
+              "documentTitle": "Regulation 2025/848",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R0848",
+              "articleId": "article-2-para-15",
+              "articleNumber": "2(15)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": true
+        }
+      ]
     }
   ]
 }

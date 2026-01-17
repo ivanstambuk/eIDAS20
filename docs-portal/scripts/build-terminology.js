@@ -361,6 +361,64 @@ function mergeTerms(allTerms) {
 }
 
 /**
+ * Normalize definition text for comparison
+ * Strips whitespace variations and punctuation differences
+ */
+function normalizeDefinition(text) {
+    return text
+        .toLowerCase()
+        .replace(/\s+/g, ' ')       // Normalize whitespace
+        .replace(/[;,.]$/g, '')     // Strip trailing punctuation
+        .trim();
+}
+
+/**
+ * Group sources by identical definition text
+ * This enables the accordion collapse UI (DEC-058)
+ * 
+ * Takes a term with multiple sources and returns:
+ * - definitionGroups[]: Array of { definition, sources[], isVariant }
+ * 
+ * Example: "wallet provider" with 9 identical sources becomes:
+ *   definitionGroups: [{ definition: "a natural...", sources: [src1, src2, ...], isVariant: false }]
+ * 
+ * Example: "provider of wallet-relying party access certificates" with 4 identical + 1 different:
+ *   definitionGroups: [
+ *     { definition: "a natural...relying party...", sources: [src1-4], isVariant: false },
+ *     { definition: "a natural...wallet-relying party...", sources: [src5], isVariant: true }
+ *   ]
+ */
+function groupByDefinition(term) {
+    const groups = new Map(); // normalized definition -> { definition, sources[] }
+
+    for (const source of term.sources) {
+        const normalizedDef = normalizeDefinition(source.definition);
+
+        if (!groups.has(normalizedDef)) {
+            groups.set(normalizedDef, {
+                definition: source.definition, // Preserve original formatting
+                sources: [],
+                normalizedDef
+            });
+        }
+
+        groups.get(normalizedDef).sources.push(source);
+    }
+
+    // Convert to array and sort by number of sources (descending)
+    // The most common definition is the "primary", others are "variants"
+    const groupsArray = Array.from(groups.values())
+        .sort((a, b) => b.sources.length - a.sources.length);
+
+    // Mark variants (all groups after the first are variants)
+    return groupsArray.map((group, idx) => ({
+        definition: group.definition,
+        sources: group.sources,
+        isVariant: idx > 0
+    }));
+}
+
+/**
  * Build the terminology index
  */
 function build() {
@@ -390,6 +448,11 @@ function build() {
 
     // Merge terms from multiple sources
     const mergedTerms = mergeTerms(allTerms);
+
+    // Group sources by identical definition (DEC-058: Accordion Collapse UI)
+    for (const term of mergedTerms) {
+        term.definitionGroups = groupByDefinition(term);
+    }
 
     // Build output structure
     const terminology = {

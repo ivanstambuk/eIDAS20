@@ -22,6 +22,127 @@ function fastScrollTo(targetY) {
     requestAnimationFrame(animation);
 }
 
+/**
+ * DefinitionGroup component - DEC-058 Accordion Collapse UI
+ * 
+ * Handles three scenarios:
+ * 1. Single source: Direct display (no accordion)
+ * 2. Multiple identical: Definition first, accordion for sources
+ * 3. Variant: Purple border + "Variant definition" label
+ */
+const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const { definition, sources, isVariant } = group;
+    const isSingleSource = sources.length === 1;
+
+    // Border color: cyan for primary, purple for variants (DEC-058)
+    const borderColor = isVariant ? '#a855f7' : 'var(--accent-primary)';
+    const labelColor = isVariant ? '#a855f7' : 'var(--text-secondary)';
+
+    return (
+        <div
+            className="definition-group"
+            style={{
+                borderLeft: `3px solid ${borderColor}`,
+                paddingLeft: 'var(--space-3)'
+            }}
+        >
+            {/* Variant label */}
+            {isVariant && (
+                <div style={{
+                    fontSize: 'var(--text-xs)',
+                    color: labelColor,
+                    marginBottom: 'var(--space-1)',
+                    fontWeight: 500
+                }}>
+                    Variant definition ({sources.length} {sources.length === 1 ? 'source' : 'sources'})
+                </div>
+            )}
+
+            {/* Definition text (always shown first) */}
+            <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, margin: 0 }}>
+                {definition}
+            </p>
+
+            {/* Source(s) - shown below definition */}
+            {isSingleSource ? (
+                /* Single source: direct display */
+                <Link
+                    to={getDocumentPath(sources[0])}
+                    className="source-link"
+                    onClick={handleSaveScroll}
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 'var(--space-1)',
+                        marginTop: 'var(--space-2)',
+                        fontSize: 'var(--text-sm)',
+                        color: 'var(--text-secondary)',
+                        textDecoration: 'none'
+                    }}
+                >
+                    <span style={{ color: 'var(--accent-primary)' }}>
+                        — {sources[0].documentTitle}
+                    </span>
+                    <span>, Article {sources[0].articleNumber} →</span>
+                </Link>
+            ) : (
+                /* Multiple sources: accordion */
+                <div style={{ marginTop: 'var(--space-2)' }}>
+                    <button
+                        className="btn btn-ghost"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        style={{
+                            padding: 'var(--space-1) 0',
+                            fontSize: 'var(--text-sm)',
+                            color: 'var(--text-secondary)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--space-1)'
+                        }}
+                    >
+                        <span style={{
+                            display: 'inline-block',
+                            transition: 'transform 0.2s',
+                            transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)'
+                        }}>
+                            ▶
+                        </span>
+                        {isExpanded ? 'Hide' : 'View'} {sources.length} sources
+                    </button>
+
+                    {/* Expanded source list */}
+                    {isExpanded && (
+                        <div style={{
+                            marginTop: 'var(--space-2)',
+                            paddingLeft: 'var(--space-2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 'var(--space-1)'
+                        }}>
+                            {sources.map((source, idx) => (
+                                <Link
+                                    key={idx}
+                                    to={getDocumentPath(source)}
+                                    onClick={handleSaveScroll}
+                                    style={{
+                                        fontSize: 'var(--text-sm)',
+                                        color: 'var(--accent-primary)',
+                                        textDecoration: 'none'
+                                    }}
+                                >
+                                    {source.documentTitle}, Article {source.articleNumber} →
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+};
+
+
 const Terminology = () => {
     const [searchParams] = useSearchParams();
     const [terminology, setTerminology] = useState(null);
@@ -258,7 +379,8 @@ const Terminology = () => {
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                             {groupedTerms[letter].map(term => {
-                                const hasMultipleSources = term.sources.length > 1;
+                                const sourceCount = term.sources.length;
+                                const groups = term.definitionGroups || [{ definition: term.sources[0]?.definition, sources: term.sources, isVariant: false }];
 
                                 return (
                                     <article
@@ -270,47 +392,24 @@ const Terminology = () => {
                                             <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
                                                 {term.term}
                                             </h3>
-                                            {hasMultipleSources && (
-                                                <span className="badge badge-secondary" title={`Defined in ${term.sources.length} documents`}>
-                                                    {term.sources.length} sources
-                                                </span>
-                                            )}
+                                            <span
+                                                className={`badge ${sourceCount > 1 ? 'badge-secondary' : ''}`}
+                                                style={sourceCount === 1 ? { background: 'var(--bg-tertiary)', color: 'var(--text-secondary)' } : {}}
+                                                title={`Defined in ${sourceCount} document${sourceCount > 1 ? 's' : ''}`}
+                                            >
+                                                {sourceCount} {sourceCount === 1 ? 'source' : 'sources'}
+                                            </span>
                                         </div>
 
-                                        {/* Stacked definitions from all sources */}
+                                        {/* Definition groups - DEC-058 Accordion Collapse */}
                                         <div className="definitions-stack" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                                            {term.sources.map((source, idx) => (
-                                                <div
-                                                    key={idx}
-                                                    className="definition-source"
-                                                    style={{
-                                                        borderLeft: '3px solid var(--accent-primary)',
-                                                        paddingLeft: 'var(--space-3)'
-                                                    }}
-                                                >
-                                                    {/* Merged source header + link: clickable header eliminates redundancy */}
-                                                    <Link
-                                                        to={getDocumentPath(source)}
-                                                        className="source-header-link"
-                                                        onClick={handleSaveScroll}
-                                                        style={{
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            gap: 'var(--space-2)',
-                                                            marginBottom: 'var(--space-2)',
-                                                            fontSize: 'var(--text-sm)',
-                                                            color: 'var(--accent-primary)',
-                                                            textDecoration: 'none'
-                                                        }}
-                                                    >
-                                                        <span>
-                                                            <strong>{source.documentTitle}</strong>, Article {source.articleNumber} →
-                                                        </span>
-                                                    </Link>
-                                                    <p className="definition-text" style={{ fontSize: '1rem', lineHeight: 1.6, margin: 0 }}>
-                                                        {source.definition}
-                                                    </p>
-                                                </div>
+                                            {groups.map((group, groupIdx) => (
+                                                <DefinitionGroup
+                                                    key={groupIdx}
+                                                    group={group}
+                                                    getDocumentPath={getDocumentPath}
+                                                    handleSaveScroll={handleSaveScroll}
+                                                />
                                             ))}
                                         </div>
                                     </article>

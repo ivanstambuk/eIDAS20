@@ -1110,3 +1110,26 @@ Standard markdown interpretation caused issues:
 | `AGENTS.md` | Rule 19 prevents future notation changes |
 
 **Related:** Rule 19 in AGENTS.md (Legal Document Visual Fidelity - ABSOLUTE)
+
+## DEC-058: Terminology Accordion Collapse UI (2026-01-17)
+
+**Problem:** Terms with identical definitions across multiple regulations (e.g., "wallet provider" in 9 implementing acts) created visual noise by repeating the same definition 9 times.
+
+**Solution:** Accordion Collapse UI - Option B (Definition First)
+- Single source: Definition + source link displayed inline
+- Multiple identical: Definition displayed once, "▶ View N sources" accordion below
+- Variant definitions: Separate block with purple border + "Variant definition" label
+
+**Implementation:**
+- Build script (`build-terminology.js`):
+  - Added `normalizeDefinition()` to normalize text for comparison
+  - Added `groupByDefinition()` to group sources with identical text
+  - Each term now has `definitionGroups[]` array
+- Frontend (`Terminology.jsx`):
+  - Added `DefinitionGroup` component with accordion state
+  - Handles three scenarios: single source, multiple identical, mixed definitions
+  - Purple border (#a855f7) distinguishes variant definitions from primary
+
+**Files Modified:**
+- `scripts/build-terminology.js` — Added grouping logic
+- `src/pages/Terminology.jsx` — Added DefinitionGroup component with accordion UI
