@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "8ef3503f5cf9bdab544d0af67dc63dba",
+  "_cacheKey": "7b04e5bd94505d140628778780494f87",
   "citations": [
     {
       "index": 1,
@@ -158,6 +158,69 @@
     },
     {
       "index": 8,
+      "shortName": "Regulation (EU) 2024/482",
+      "fullTitle": "Regulation (EU) 2024/482",
+      "celex": "32024R0482",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R0482",
+      "originalText": "Regulation (EU) 2024/482",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation (EU) 2019/881",
+      "fullTitle": "Regulation (EU) 2019/881",
+      "celex": "32019R0881",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R0881",
+      "originalText": "Regulation (EU) 2019/881",
+      "humanName": "Cybersecurity Act",
+      "abbreviation": "CSA",
+      "entryIntoForce": "2019-06-27",
+      "entryIntoForceDisplay": "27 Jun 2019",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 10,
+      "shortName": "Regulation (EU) 2024/3144",
+      "fullTitle": "Regulation (EU) 2024/3144",
+      "celex": "32024R3144",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3144",
+      "originalText": "Regulation (EU) 2024/3144",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 11,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
@@ -167,7 +230,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",
@@ -178,7 +241,7 @@
       "category": "regulation"
     },
     {
-      "index": 9,
+      "index": 12,
       "shortName": "Regulation (EC) No 45/2001",
       "fullTitle": "Regulation (EC) No 45/2001",
       "celex": "32001R0045",
@@ -199,7 +262,7 @@
       "category": null
     },
     {
-      "index": 10,
+      "index": 13,
       "shortName": "Decision No 1247/2002/EC",
       "fullTitle": "Decision No 1247/2002/EC",
       "celex": "32002D1247",

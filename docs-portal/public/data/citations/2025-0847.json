@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "934d31c507a9db0613b4de36be2e264d",
+  "_cacheKey": "2599c6de37d85194287a0e3d9f2b0349",
   "citations": [
     {
       "index": 1,
@@ -187,6 +187,29 @@
     },
     {
       "index": 9,
+      "shortName": "Regulation 2024/2981",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2981/oj",
+      "celex": "32024R2981",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/implementing-acts/2024-2981",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets (OJ L, 2024/2981, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2981/oj).\\]",
+      "humanName": "Integrity and Core Functionality Certification",
+      "abbreviation": null,
+      "entryIntoForce": "2024-12-25",
+      "entryIntoForceDisplay": "25 Dec 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 10,
       "shortName": "Directive 1999/93/EC",
       "fullTitle": "Directive 1999/93/EC",
       "celex": "31999L0093",
@@ -207,7 +230,7 @@
       "category": "directive"
     },
     {
-      "index": 10,
+      "index": 11,
       "shortName": "Directive 95/46/EC",
       "fullTitle": "Directive 95/46/EC",
       "celex": "31995L0046",
@@ -228,7 +251,7 @@
       "category": "directive"
     },
     {
-      "index": 11,
+      "index": 12,
       "shortName": "Regulation (EU) 2025/847",
       "fullTitle": "Regulation (EU) 2025/847",
       "celex": "32025R0847",
@@ -249,7 +272,7 @@
       "category": "regulation"
     },
     {
-      "index": 12,
+      "index": 13,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
@@ -259,7 +282,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",
@@ -270,7 +293,7 @@
       "category": "regulation"
     },
     {
-      "index": 13,
+      "index": 14,
       "shortName": "Regulation (EC) No 45/2001",
       "fullTitle": "Regulation (EC) No 45/2001",
       "celex": "32001R0045",
@@ -291,7 +314,7 @@
       "category": null
     },
     {
-      "index": 14,
+      "index": 15,
       "shortName": "Regulation (EU) No 526/2013",
       "fullTitle": "Regulation (EU) No 526/2013",
       "celex": "32013R0526",
@@ -312,7 +335,7 @@
       "category": null
     },
     {
-      "index": 15,
+      "index": 16,
       "shortName": "Decision No 1247/2002/EC",
       "fullTitle": "Decision No 1247/2002/EC",
       "celex": "32002D1247",

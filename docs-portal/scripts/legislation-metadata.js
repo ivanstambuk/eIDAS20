@@ -36,10 +36,10 @@ export const LEGISLATION_METADATA = {
         category: 'regulation',
     },
 
-    // eIDAS - Electronic Identification and Trust Services
+    // eIDAS 1.0 - Electronic Identification and Trust Services (original)
     '32014R0910': {
         humanName: 'Electronic Identification and Trust Services Regulation',
-        abbreviation: 'eIDAS',
+        abbreviation: 'eIDAS 1.0',
         entryIntoForce: '2014-09-17', // Entry into force (full application: 2016-07-01)
         status: 'in-force',
         category: 'regulation',

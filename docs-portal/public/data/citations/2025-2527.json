@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "28d35f695a24a812966cdbb55c3dea1c",
+  "_cacheKey": "ea7a968728ee34c2fad7a51560b349e8",
   "citations": [
     {
       "index": 1,
@@ -211,7 +211,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",

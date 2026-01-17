@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "1a832f3e1cbd656f34dfb137b1c69204",
+  "_cacheKey": "cf84f9134a94bb04bf84802f240b1792",
   "citations": [
     {
       "index": 1,
@@ -256,6 +256,75 @@
     },
     {
       "index": 12,
+      "shortName": "Regulation 2024/2979",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2979/oj",
+      "celex": "32024R2979",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/implementing-acts/2024-2979",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities (OJ L, 2024/2979, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2979/oj).\\]",
+      "humanName": "Person Identification Data and Electronic Attestations",
+      "abbreviation": null,
+      "entryIntoForce": "2024-12-25",
+      "entryIntoForceDisplay": "25 Dec 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 13,
+      "shortName": "Regulation 2024/2982",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2982/oj",
+      "celex": "32024R2982",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/implementing-acts/2024-2982",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2982 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards protocols and interfaces to be supported by the European Digital Identity Framework (OJ L, 2024/2982, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2982/oj).\\]",
+      "humanName": "Notifications to the Commission",
+      "abbreviation": null,
+      "entryIntoForce": "2024-12-25",
+      "entryIntoForceDisplay": "25 Dec 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 14,
+      "shortName": "Regulation 2024/2977",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/2977/oj",
+      "celex": "32024R2977",
+      "isInternal": true,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "#/implementing-acts/2024-2977",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets (OJ L, 2024/2977, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2977/oj).\\]",
+      "humanName": "Wallet Trust Evidence and Wallet Attestations",
+      "abbreviation": null,
+      "entryIntoForce": "2024-12-25",
+      "entryIntoForceDisplay": "25 Dec 2024",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 15,
       "shortName": "Directive 1999/93/EC",
       "fullTitle": "Directive 1999/93/EC",
       "celex": "31999L0093",
@@ -276,7 +345,7 @@
       "category": "directive"
     },
     {
-      "index": 13,
+      "index": 16,
       "shortName": "Directive 95/46/EC",
       "fullTitle": "Directive 95/46/EC",
       "celex": "31995L0046",
@@ -297,7 +366,7 @@
       "category": "directive"
     },
     {
-      "index": 14,
+      "index": 17,
       "shortName": "Regulation (EU) 2024/2981",
       "fullTitle": "Regulation (EU) 2024/2981",
       "celex": "32024R2981",
@@ -318,7 +387,7 @@
       "category": "regulation"
     },
     {
-      "index": 15,
+      "index": 18,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
@@ -328,7 +397,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",
@@ -339,7 +408,7 @@
       "category": "regulation"
     },
     {
-      "index": 16,
+      "index": 19,
       "shortName": "Regulation (EU) No 526/2013",
       "fullTitle": "Regulation (EU) No 526/2013",
       "celex": "32013R0526",
@@ -360,7 +429,7 @@
       "category": null
     },
     {
-      "index": 17,
+      "index": 20,
       "shortName": "Regulation (EC) No 45/2001",
       "fullTitle": "Regulation (EC) No 45/2001",
       "celex": "32001R0045",
@@ -381,7 +450,7 @@
       "category": null
     },
     {
-      "index": 18,
+      "index": 21,
       "shortName": "Regulation (EEC) No 339/93",
       "fullTitle": "Regulation (EEC) No 339/93",
       "celex": "31993R0339",
@@ -402,7 +471,7 @@
       "category": null
     },
     {
-      "index": 19,
+      "index": 22,
       "shortName": "Decision No 1247/2002/EC",
       "fullTitle": "Decision No 1247/2002/EC",
       "celex": "32002D1247",
@@ -423,7 +492,7 @@
       "category": null
     },
     {
-      "index": 20,
+      "index": 23,
       "shortName": "Decision 87/95/EEC",
       "fullTitle": "Decision 87/95/EEC",
       "celex": "31995D0087",
@@ -444,7 +513,7 @@
       "category": null
     },
     {
-      "index": 21,
+      "index": 24,
       "shortName": "Decision No 1673/2006/EC",
       "fullTitle": "Decision No 1673/2006/EC",
       "celex": "32006D1673",

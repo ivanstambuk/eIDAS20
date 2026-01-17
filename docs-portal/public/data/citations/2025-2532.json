@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "aa1ae109f49678701db100008db004d6",
+  "_cacheKey": "ff91150d2db865fce53abbf77cd1cffe",
   "citations": [
     {
       "index": 1,
@@ -95,6 +95,52 @@
     },
     {
       "index": 5,
+      "shortName": "Regulation 2024/482",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme (EUCC)",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/482/oj",
+      "celex": "32024R0482",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/482/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/482 of 31 January 2024 laying down rules for the application of Regulation (EU) 2019/881 of the European Parliament and of the Council as regards the adoption of the European Common Criteria-based cybersecurity certification scheme (EUCC) (OJ L, 2024/482, 7.2.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/482/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 6,
+      "shortName": "Regulation 2024/3144",
+      "fullTitle": "Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation",
+      "ojRef": null,
+      "eli": "http://data.europa.eu/eli/reg_impl/2024/3144/oj",
+      "celex": "32024R3144",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/3144/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2024/3144 of 18 December 2024 amending Implementing Regulation (EU) 2024/482 as regards applicable international standards and correcting that Implementing Regulation (OJ L, 2024/3144, 19.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/3144/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 7,
       "shortName": "Directive 1999/93/EC",
       "fullTitle": "Directive 1999/93/EC",
       "celex": "31999L0093",
@@ -115,7 +161,7 @@
       "category": "directive"
     },
     {
-      "index": 6,
+      "index": 8,
       "shortName": "Directive 95/46/EC",
       "fullTitle": "Directive 95/46/EC",
       "celex": "31995L0046",
@@ -136,7 +182,7 @@
       "category": "directive"
     },
     {
-      "index": 7,
+      "index": 9,
       "shortName": "Regulation (EU) 2025/2532",
       "fullTitle": "Regulation (EU) 2025/2532",
       "celex": "32025R2532",
@@ -157,7 +203,28 @@
       "category": null
     },
     {
-      "index": 8,
+      "index": 10,
+      "shortName": "Regulation (EU) 2019/881",
+      "fullTitle": "Regulation (EU) 2019/881",
+      "celex": "32019R0881",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R0881",
+      "originalText": "Regulation (EU) 2019/881",
+      "humanName": "Cybersecurity Act",
+      "abbreviation": "CSA",
+      "entryIntoForce": "2019-06-27",
+      "entryIntoForceDisplay": "27 Jun 2019",
+      "status": "in-force",
+      "statusDisplay": {
+        "label": "In Force",
+        "color": "green"
+      },
+      "category": "regulation"
+    },
+    {
+      "index": 11,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
@@ -167,7 +234,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",
@@ -178,7 +245,7 @@
       "category": "regulation"
     },
     {
-      "index": 9,
+      "index": 12,
       "shortName": "Regulation (EC) No 45/2001",
       "fullTitle": "Regulation (EC) No 45/2001",
       "celex": "32001R0045",
@@ -199,7 +266,7 @@
       "category": null
     },
     {
-      "index": 10,
+      "index": 13,
       "shortName": "Decision No 1247/2002/EC",
       "fullTitle": "Decision No 1247/2002/EC",
       "celex": "32002D1247",

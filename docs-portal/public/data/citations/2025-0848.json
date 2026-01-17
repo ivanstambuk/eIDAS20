@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "3d369b2e3293e39ec464e459ffece6a1",
+  "_cacheKey": "d27b300a17819daeebeeefc3095c5d6d",
   "citations": [
     {
       "index": 1,
@@ -118,6 +118,98 @@
     },
     {
       "index": 6,
+      "shortName": "Regulation 1352/2013",
+      "fullTitle": "Commission Implementing Regulation (EU) No 1352/2013 of 4 December 2013 establishing the forms provided for in Regulation (EU) No 608/2013 of the European Parliament and of the Council concerning customs enforcement of intellectual property rights",
+      "ojRef": "OJ L 341, 18.12.2013, p. 10",
+      "eli": "http://data.europa.eu/eli/reg_impl/2013/1352/oj",
+      "celex": "32013R1352",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2013/1352/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) No 1352/2013 of 4 December 2013 establishing the forms provided for in Regulation (EU) No 608/2013 of the European Parliament and of the Council concerning customs enforcement of intellectual property rights (OJ L 341, 18.12.2013, p. 10, ELI: http://data.europa.eu/eli/reg_impl/2013/1352/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 7,
+      "shortName": "Regulation 2022/1860",
+      "fullTitle": "Commission Implementing Regulation (EU) 2022/1860 of 10 June 2022 laying down implementing technical standards for the application of Regulation (EU) No 648/2012 of the European Parliament and of the Council with regard to the standards, formats, frequency and methods and arrangements for reporting",
+      "ojRef": "OJ L 262, 7.10.2022, p. 68",
+      "eli": "http://data.europa.eu/eli/reg_impl/2022/1860/oj",
+      "celex": "32022R1860",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2022/1860/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2022/1860 of 10 June 2022 laying down implementing technical standards for the application of Regulation (EU) No 648/2012 of the European Parliament and of the Council with regard to the standards, formats, frequency and methods and arrangements for reporting (OJ L 262, 7.10.2022, p. 68, ELI: http://data.europa.eu/eli/reg_impl/2022/1860/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 8,
+      "shortName": "Regulation 389/2012",
+      "fullTitle": "Council Regulation (EU) No 389/2012 of 2 May 2012 on administrative cooperation in the field of excise duties and repealing Regulation (EC) No 2073/2004",
+      "ojRef": "OJ L 121, 8.5.2012, p. 1",
+      "eli": "http://data.europa.eu/eli/reg/2012/389/oj",
+      "celex": "32012R0389",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg/2012/389/oj",
+      "originalText": "\\[Council Regulation (EU) No 389/2012 of 2 May 2012 on administrative cooperation in the field of excise duties and repealing Regulation (EC) No 2073/2004 (OJ L 121, 8.5.2012, p. 1, ELI: http://data.europa.eu/eli/reg/2012/389/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 9,
+      "shortName": "Regulation 2021/1042",
+      "fullTitle": "Commission Implementing Regulation (EU) 2021/1042 of 18 June 2021 laying down rules for the application of Directive (EU) 2017/1132 of the European Parliament and of the Council as regards technical specifications and procedures for the system of interconnection of registers and repealing Commission Implementing Regulation (EU) 2020/2244",
+      "ojRef": "OJ L 225, 25.6.2021, p. 7",
+      "eli": "http://data.europa.eu/eli/reg_impl/2021/1042/oj",
+      "celex": "32021R1042",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2021/1042/oj",
+      "originalText": "\\[Commission Implementing Regulation (EU) 2021/1042 of 18 June 2021 laying down rules for the application of Directive (EU) 2017/1132 of the European Parliament and of the Council as regards technical specifications and procedures for the system of interconnection of registers and repealing Commission Implementing Regulation (EU) 2020/2244 (OJ L 225, 25.6.2021, p. 7, ELI: http://data.europa.eu/eli/reg_impl/2021/1042/oj).\\]",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 10,
       "shortName": "Directive 1999/93/EC",
       "fullTitle": "Directive 1999/93/EC",
       "celex": "31999L0093",
@@ -138,7 +230,7 @@
       "category": "directive"
     },
     {
-      "index": 7,
+      "index": 11,
       "shortName": "Directive 95/46/EC",
       "fullTitle": "Directive 95/46/EC",
       "celex": "31995L0046",
@@ -159,7 +251,7 @@
       "category": "directive"
     },
     {
-      "index": 8,
+      "index": 12,
       "shortName": "Regulation (EU) 2025/848",
       "fullTitle": "Regulation (EU) 2025/848",
       "celex": "32025R0848",
@@ -180,7 +272,28 @@
       "category": "regulation"
     },
     {
-      "index": 9,
+      "index": 13,
+      "shortName": "Regulation (EU) 2020/2244",
+      "fullTitle": "Regulation (EU) 2020/2244",
+      "celex": "32020R2244",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020R2244",
+      "originalText": "Regulation (EU) 2020/2244",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 14,
       "shortName": "Regulation (EU) No 910/2014",
       "fullTitle": "Regulation (EU) No 910/2014",
       "celex": "32014R0910",
@@ -190,7 +303,7 @@
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
-      "abbreviation": "eIDAS",
+      "abbreviation": "eIDAS 1.0",
       "entryIntoForce": "2014-09-17",
       "entryIntoForceDisplay": "17 Sept 2014",
       "status": "in-force",
@@ -201,7 +314,7 @@
       "category": "regulation"
     },
     {
-      "index": 10,
+      "index": 15,
       "shortName": "Regulation (EC) No 45/2001",
       "fullTitle": "Regulation (EC) No 45/2001",
       "celex": "32001R0045",
@@ -222,7 +335,70 @@
       "category": null
     },
     {
-      "index": 11,
+      "index": 16,
+      "shortName": "Regulation (EU) No 608/2013",
+      "fullTitle": "Regulation (EU) No 608/2013",
+      "celex": "32013R0608",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R0608",
+      "originalText": "Regulation (EU) No 608/2013",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 17,
+      "shortName": "Regulation (EU) No 648/2012",
+      "fullTitle": "Regulation (EU) No 648/2012",
+      "celex": "32012R0648",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32012R0648",
+      "originalText": "Regulation (EU) No 648/2012",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 18,
+      "shortName": "Regulation (EC) No 2073/2004",
+      "fullTitle": "Regulation (EC) No 2073/2004",
+      "celex": "32004R2073",
+      "isInternal": false,
+      "isSelfReference": false,
+      "consolidationInfo": null,
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004R2073",
+      "originalText": "Regulation (EC) No 2073/2004",
+      "humanName": null,
+      "abbreviation": null,
+      "entryIntoForce": null,
+      "entryIntoForceDisplay": null,
+      "status": "unknown",
+      "statusDisplay": {
+        "label": "Unknown",
+        "color": "gray"
+      },
+      "category": null
+    },
+    {
+      "index": 19,
       "shortName": "Decision No 1247/2002/EC",
       "fullTitle": "Decision No 1247/2002/EC",
       "celex": "32002D1247",
