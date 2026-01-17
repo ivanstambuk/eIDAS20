@@ -13,6 +13,12 @@ import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { getLegislationMetadata, formatEntryIntoForce, getStatusDisplay } from './legislation-metadata.js';
+import {
+    parseProvisionReference,
+    findProvisionDocumentAssociations,
+    generateDeepLinkUrl,
+    containsProvisionReference,
+} from './provision-parser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -108,6 +114,9 @@ function checkSelfReference(citationCelex, currentSlug, documentConfig) {
 /**
  * Build registry of all documents we have in the portal.
  * Maps CELEX number to portal route.
+ * 
+ * DEC-064: Also maps base CELEX for consolidated documents to enable
+ * provision deep linking. E.g., 32014R0910 → 910-2014 route.
  */
 function buildDocumentRegistry() {
     const registry = {};
@@ -126,19 +135,116 @@ function buildDocumentRegistry() {
         const slug = content.slug;
         const type = content.type;
 
+        const route = type === 'regulation'
+            ? `#/regulation/${slug}`
+            : `#/implementing-acts/${slug}`;
+
         if (celex) {
-            registry[celex] = {
-                slug,
-                type,
-                route: type === 'regulation'
-                    ? `#/regulations/${slug}`
-                    : `#/implementing-acts/${slug}`
-            };
+            registry[celex] = { slug, type, route };
+
+            // DEC-064: Also register base CELEX for consolidated documents
+            // This enables provision deep links to work for references like
+            // "Article 5 of Regulation 910/2014" which use base CELEX 32014R0910
+            const baseCelex = extractBaseCelex(celex);
+            if (baseCelex && baseCelex !== celex) {
+                registry[baseCelex] = { slug, type, route };
+            }
         }
     }
 
     console.log(`📚 Document registry: ${Object.keys(registry).length} documents`);
     return registry;
+}
+
+/**
+ * Build an index of all anchor IDs present in document HTML.
+ * Used for validating provision deep links at build time.
+ * 
+ * DEC-064: Build-time validation to catch broken provision links.
+ * 
+ * @returns {Map<string, Set<string>>} Map of slug → Set of anchor IDs
+ */
+function buildAnchorIndex() {
+    const anchorIndex = new Map();
+    const dataDir = path.join(__dirname, '..', 'public', 'data', 'regulations');
+
+    if (!fs.existsSync(dataDir)) {
+        return anchorIndex;
+    }
+
+    const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
+
+    for (const file of files) {
+        const content = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf-8'));
+        const slug = content.slug;
+        const html = content.contentHtml || '';
+
+        // Extract all id="..." attributes from HTML
+        const idPattern = /id="([^"]+)"/g;
+        const anchors = new Set();
+        let match;
+        while ((match = idPattern.exec(html)) !== null) {
+            anchors.add(match[1]);
+        }
+
+        anchorIndex.set(slug, anchors);
+    }
+
+    return anchorIndex;
+}
+
+/**
+ * Validate provision citations against the anchor index.
+ * Reports warnings for broken links but does not fail the build.
+ * 
+ * DEC-064: Build-time validation to catch broken provision links.
+ * 
+ * @param {Object[]} citations - Array of citation objects
+ * @param {Map<string, Set<string>>} anchorIndex - Map of slug → Set of anchor IDs
+ * @param {string} sourceSlug - Slug of the document being processed
+ * @returns {{ valid: number, broken: Array<{ anchor: string, targetSlug: string, reference: string }> }}
+ */
+function validateProvisionLinks(citations, anchorIndex, sourceSlug) {
+    const results = { valid: 0, broken: [] };
+
+    for (const citation of citations) {
+        // Only validate internal provision citations
+        if (!citation.provision || !citation.isInternal) continue;
+
+        const anchor = citation.provision.anchor;
+        const url = citation.url || '';
+
+        // Extract target slug from URL: #/regulation/910-2014?section=article-5
+        const slugMatch = url.match(/#\/(?:regulation|implementing-acts)\/([^?]+)/);
+        if (!slugMatch) continue;
+
+        const targetSlug = slugMatch[1];
+        const targetAnchors = anchorIndex.get(targetSlug);
+
+        if (!targetAnchors) {
+            // Target document not found in anchor index
+            results.broken.push({
+                anchor,
+                targetSlug,
+                reference: citation.provision.fullReference || citation.originalText,
+                reason: 'Document not found',
+            });
+            continue;
+        }
+
+        if (targetAnchors.has(anchor)) {
+            results.valid++;
+        } else {
+            results.broken.push({
+                anchor,
+                targetSlug,
+                reference: citation.provision.fullReference || citation.originalText,
+                reason: 'Anchor not found',
+            });
+        }
+    }
+
+    return results;
 }
 
 // =============================================================================
@@ -234,12 +340,18 @@ function enrichCitation(citation) {
         citation.status = metadata.status;
         citation.statusDisplay = getStatusDisplay(metadata.status);
         citation.category = metadata.category;
+        citation.subcategory = metadata.subcategory || null;  // DEC-064: e.g., 'implementing' for implementing regulations
 
         // DEC-062: Amendment-aware fields
         citation.amendedBy = metadata.amendedBy || null;
         citation.amendmentDate = metadata.amendmentDate || null;
         citation.consolidatedSlug = metadata.consolidatedSlug || null;
         citation.isAmended = !!(metadata.amendedBy?.length);
+
+        // DEC-064: Provision info added during extraction, not enrichment
+        if (!citation.provision) {
+            citation.provision = null;
+        }
     } else {
         // Fallback: use shortName as humanName, no abbreviation
         citation.humanName = citation.humanName || null;
@@ -249,12 +361,16 @@ function enrichCitation(citation) {
         citation.status = 'unknown';
         citation.statusDisplay = { label: 'Unknown', color: 'gray' };
         citation.category = null;
+        citation.subcategory = null;
 
         // DEC-062: No amendment data for unknown citations
         citation.amendedBy = null;
         citation.amendmentDate = null;
         citation.consolidatedSlug = null;
         citation.isAmended = false;
+
+        // DEC-064: No provision info by default
+        citation.provision = null;
     }
 
     return citation;
@@ -379,6 +495,147 @@ function extractInformalCitations(content, documentRegistry, existingCelex, curr
     return citations;
 }
 
+// =============================================================================
+// DEC-064: PROVISION CITATION EXTRACTION
+// =============================================================================
+
+/**
+ * Extract provision citations and enrich existing citations with provision data.
+ * 
+ * Scans content for patterns like:
+ * - "Article 5(1) of Regulation (EU) No 910/2014"
+ * - "recital 75 of Regulation (EU) 2024/1183"
+ * - "Annex I to Regulation ..."
+ * 
+ * Creates new citation entries with provision data for deep linking.
+ * 
+ * @param {string} content - Markdown content to scan
+ * @param {Object[]} existingCitations - Array of extracted citations
+ * @param {Object} documentRegistry - Registry mapping CELEX to portal routes
+ */
+function extractProvisionCitations(content, existingCitations, documentRegistry) {
+    // Build a CELEX-to-citation lookup for fast matching
+    const celexToCitation = new Map();
+    for (const citation of existingCitations) {
+        if (citation.celex) {
+            celexToCitation.set(citation.celex, citation);
+        }
+    }
+
+    // Pattern for "Article X of [Document]" style references
+    // Captures: Article/Recital/Annex + number + "of" + Document type + legal ID
+    const provisionOfDocPattern = new RegExp(
+        '(' +
+        // Article patterns
+        'Article\\s+\\d+[a-z]?(?:\\(\\d+\\))?(?:\\([a-z]\\))?(?:,?\\s*(?:point|points)\\s*\\(?[a-z]\\)?)?' +
+        '|' +
+        // Recital patterns
+        '[Rr]ecital\\s*\\(?\\d+\\)?' +
+        '|' +
+        // Annex patterns
+        'Annex\\s+[IVX]+' +
+        ')' +
+        '\\s+(?:of|to)\\s+' +
+        '(?:Regulation|Directive|Decision)\\s+\\([A-Z,\\s]+\\)\\s*(?:No\\s*)?(\\d+)\\/(\\d{2,4})',
+        'gi'
+    );
+
+    let match;
+    const provisionCitations = [];
+    const seen = new Map(); // Track unique provision+document combinations
+
+    while ((match = provisionOfDocPattern.exec(content)) !== null) {
+        const [fullMatch, provisionText, num1, num2] = match;
+
+        // Parse provision
+        const provision = parseProvisionReference(provisionText);
+        if (!provision) continue;
+
+        // Determine year and number based on format
+        // Newer style (2014+): YYYY/NNN where year first
+        // Older style: NNN/YYYY where number first
+        let year, number;
+        if (num1.length === 4 && parseInt(num1) >= 1990) {
+            // Newer style: 2024/1183 → year=2024, number=1183
+            year = num1;
+            number = num2;
+        } else if (num2.length === 4 || parseInt(num2) >= 1990) {
+            // Older style: 910/2014 → number=910, year=2014
+            number = num1;
+            year = num2;
+        } else {
+            // 2-digit year
+            number = num1;
+            year = parseInt(num2) < 50 ? `20${num2.padStart(2, '0')}` : `19${num2}`;
+        }
+
+        // Determine CELEX type from match
+        let celexType = 'R'; // Default to Regulation
+        if (/directive/i.test(fullMatch)) {
+            celexType = 'L';
+        } else if (/decision/i.test(fullMatch)) {
+            celexType = 'D';
+        }
+
+        const celex = `3${year}${celexType}${number.padStart(4, '0')}`;
+
+        // Generate unique key for deduplication
+        const uniqueKey = `${celex}:${provision.anchor}`;
+        if (seen.has(uniqueKey)) continue;
+        seen.set(uniqueKey, true);
+
+        // Find the base citation for this document
+        const baseCitation = celexToCitation.get(celex);
+        const internalDoc = documentRegistry[celex];
+        const isInternal = !!internalDoc;
+
+        // Build the provision citation
+        const provisionCitation = {
+            index: existingCitations.length + provisionCitations.length + 1,
+            shortName: baseCitation?.shortName || `${celexType === 'R' ? 'Regulation' : celexType === 'L' ? 'Directive' : 'Decision'} ${number}/${year}`,
+            fullTitle: baseCitation?.fullTitle || null,
+            celex,
+            isInternal,
+            isSelfReference: baseCitation?.isSelfReference || false,
+            consolidationInfo: baseCitation?.consolidationInfo || null,
+            url: isInternal
+                ? generateDeepLinkUrl(internalDoc.route, provision.anchor)
+                : baseCitation?.url || `https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${celex}`,
+            originalText: fullMatch,
+            // DEC-064: Provision data
+            provision: {
+                type: provision.type,
+                display: provision.display,
+                anchor: provision.anchor,
+                fullReference: fullMatch.trim(),
+            },
+            // Inherit metadata from base citation if available
+            humanName: baseCitation?.humanName || null,
+            abbreviation: baseCitation?.abbreviation || null,
+            entryIntoForce: baseCitation?.entryIntoForce || null,
+            entryIntoForceDisplay: baseCitation?.entryIntoForceDisplay || null,
+            status: baseCitation?.status || 'unknown',
+            statusDisplay: baseCitation?.statusDisplay || { label: 'Unknown', color: 'gray' },
+            category: baseCitation?.category || null,
+            amendedBy: baseCitation?.amendedBy || null,
+            amendmentDate: baseCitation?.amendmentDate || null,
+            consolidatedSlug: baseCitation?.consolidatedSlug || null,
+            isAmended: baseCitation?.isAmended || false,
+        };
+
+        provisionCitations.push(provisionCitation);
+    }
+
+    // Add provision citations to the main array
+    for (const provCitation of provisionCitations) {
+        existingCitations.push(provCitation);
+    }
+
+    if (provisionCitations.length > 0) {
+        console.log(`    📍 Found ${provisionCitations.length} provision citations`);
+    }
+}
+
 /**
  * Extract all citations from markdown content.
  * 
@@ -387,6 +644,7 @@ function extractInformalCitations(content, documentRegistry, existingCelex, curr
  * 2. Informal: Directive YYYY/NN/EC, Regulation (EU) No NNN/YYYY, etc.
  * 
  * DEC-060: Self-reference detection for consolidated documents.
+ * DEC-064: Provision citation extraction for deep linking.
  * @param {string} content - Markdown content
  * @param {Object} documentRegistry - Registry of internal documents
  * @param {string} currentSlug - Slug of the document being processed (e.g., "910-2014")
@@ -459,6 +717,14 @@ function extractCitations(content, documentRegistry, currentSlug = null, documen
         citations.push(informal);
     }
 
+    // ==========================================================================
+    // DEC-064: PROVISION CITATION EXTRACTION
+    // Extract provision references (Article X, Recital Y, Annex Z) and associate
+    // with document citations. Enriches citations with deep link anchors.
+    // ==========================================================================
+
+    extractProvisionCitations(content, citations, documentRegistry);
+
     return citations;
 }
 
@@ -496,6 +762,10 @@ async function main() {
     // Build document registry from existing JSON files
     const registry = buildDocumentRegistry();
 
+    // DEC-064: Build anchor index for provision link validation
+    const anchorIndex = buildAnchorIndex();
+    console.log(`🔗 Anchor index: ${anchorIndex.size} documents indexed`);
+
     // DEC-060: Load document configuration for consolidation metadata
     const documentConfig = loadDocumentConfig();
 
@@ -516,6 +786,10 @@ async function main() {
     let externalCount = 0;
     let docsWithCitations = 0;
     let skippedCount = 0;  // Hash-based cache hits
+
+    // DEC-064: Track provision link validation results
+    let totalValidLinks = 0;
+    const allBrokenLinks = [];
 
     for (const sourceDir of sourceDirs) {
         if (!fs.existsSync(sourceDir)) continue;
@@ -553,6 +827,15 @@ async function main() {
                 const citations = extractCitations(content, registry, slug, documentConfig);
 
                 if (citations.length > 0) {
+                    // DEC-064: Validate provision links
+                    const validation = validateProvisionLinks(citations, anchorIndex, slug);
+                    totalValidLinks += validation.valid;
+                    if (validation.broken.length > 0) {
+                        for (const broken of validation.broken) {
+                            allBrokenLinks.push({ sourceSlug: slug, ...broken });
+                        }
+                    }
+
                     // Compute hash for cache validation (content + config version)
                     const cacheKey = computeHash(content + JSON.stringify(documentConfig.documents[slug] || {}));
                     const citationFile = path.join(outputDir, `${slug}.json`);
@@ -608,6 +891,29 @@ async function main() {
     if (skippedCount > 0) {
         console.log(`   ⚡ Cache hits (unchanged): ${skippedCount}`);
     }
+
+    // DEC-064: Report provision link validation results
+    console.log();
+    console.log('🔗 Provision Link Validation:');
+    console.log(`   ✅ Valid links: ${totalValidLinks}`);
+    if (allBrokenLinks.length > 0) {
+        console.log(`   ❌ Broken links: ${allBrokenLinks.length}`);
+        console.log();
+        console.log('   Broken link details:');
+        for (const broken of allBrokenLinks.slice(0, 10)) {
+            console.log(`     - [${broken.sourceSlug}] "${broken.reference}" → ${broken.targetSlug}#${broken.anchor} (${broken.reason})`);
+        }
+        if (allBrokenLinks.length > 10) {
+            console.log(`     ... and ${allBrokenLinks.length - 10} more`);
+        }
+        console.log();
+        console.log('='.repeat(60));
+        console.error('❌ BUILD FAILED: Broken provision links detected. Fix the source data or parser logic.');
+        process.exit(1);
+    } else {
+        console.log(`   ✅ Broken links: 0`);
+    }
+
     console.log('='.repeat(60));
 }
 
