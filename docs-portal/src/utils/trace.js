@@ -44,6 +44,13 @@
  * | `search:fts` | Full-text search |
  * | `search:semantic` | Semantic search |
  * 
+ * ## Related: CSS Debug Mode
+ * 
+ * For visual CSS debugging (element boundaries, class verification), see:
+ * - URL: `?debug=css` or `?debug=css:linkables,css:gutters`
+ * - Console: `window.enableCSSDebug()`, `window.cssDebugStatus()`
+ * - File: `src/utils/debugCSS.js`
+ * 
  * ## Why This Exists
  * 
  * Debugging "ghost conditionals" (conditions that look like they should be true

@@ -839,6 +839,43 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Time saved: Would have avoided 2+ hours debugging across sessions
     ```
 
+24. **CSS Debug Mode (Visual Element Debugging):**
+    
+    **The portal includes visual CSS debugging to inspect element boundaries and class assignments.**
+    
+    **Enable CSS debug mode:**
+    - URL: `?debug=css` (default modes) or `?debug=css:linkables,css:gutters`
+    - Console: `window.enableCSSDebug()` or `window.enableCSSDebug('gutters')`
+    - Toggle: `window.toggleCSSDebug('linkables')`, `window.cssDebugStatus()`
+    
+    **Available modes:**
+    | Mode | What It Shows |
+    |------|---------------|
+    | `linkables` | Paragraph (red), point (blue), subpoint (green), recital (orange) outlines |
+    | `gutters` | Gutter icon containers (yellow background) |
+    | `citations` | Citation reference links (cyan) |
+    | `structure` | Article and chapter headings (purple/pink) |
+    | `hover` | Thicker outline on currently hovered element |
+    | `legend` | Color legend in bottom-right corner |
+    | `all` | Enable all modes |
+    
+    **When to use:**
+    - Verifying correct class assignment after build
+    - Debugging hover/interaction issues
+    - Understanding element nesting hierarchy
+    - Checking gutter icon positioning
+    
+    **Real example from 2026-01-17:**
+    ```
+    Bug: Duplicate gutter icons appearing on nested points
+    Without CSS debug: Hard to see which elements had which classes
+    With CSS debug: Would have immediately shown all elements were RED 
+                    (linkable-paragraph) when points should be BLUE
+    Root cause: rehype plugin assigned wrong class to nested lists
+    ```
+    
+    **See also:** `src/utils/debugCSS.js` for implementation details.
+
 ## Project Structure
 
 ```
