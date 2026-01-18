@@ -52,7 +52,7 @@ export const LEGISLATION_METADATA = {
         // Amendment relationship (for amendment-aware popovers)
         amendedBy: ['32024R1183'],           // CELEX of amending regulation(s)
         amendmentDate: '2024-05-20',          // When amendment entered into force
-        consolidatedSlug: '910-2014',         // Portal slug for consolidated version
+        consolidatedSlug: '2014-910',         // Portal slug for consolidated version
     },
 
     // eIDAS 2.0 - Amending Regulation

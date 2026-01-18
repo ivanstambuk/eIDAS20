@@ -1,5 +1,33 @@
 [
   {
+    "slug": "2008-765",
+    "type": "regulation",
+    "legalType": "regulation",
+    "category": "referenced",
+    "title": "Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and repealing Regulation (EEC) No 339/93",
+    "shortTitle": "Accreditation Regulation (Consolidated)",
+    "sidebarTitle": "Accreditation Regulation",
+    "description": "(EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and repealing Regulation (EEC) No 339/93",
+    "celex": "02008R0765-20210716",
+    "date": "9 July 2008",
+    "wordCount": 8304,
+    "tocCount": 40
+  },
+  {
+    "slug": "2014-910",
+    "type": "regulation",
+    "legalType": "regulation",
+    "category": "primary",
+    "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
+    "shortTitle": "eIDAS 2.0 Regulation (Consolidated)",
+    "sidebarTitle": "eIDAS 2.0 Regulation (Consolidated)",
+    "description": "(EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directiv",
+    "celex": "02014R0910-20241018",
+    "date": "23 July 2014",
+    "wordCount": 37902,
+    "tocCount": 94
+  },
+  {
     "slug": "2015-1501",
     "type": "regulation",
     "legalType": "implementing_regulation",
@@ -40,34 +68,6 @@
     "date": "11 April 2024",
     "wordCount": 30479,
     "tocCount": 14
-  },
-  {
-    "slug": "765-2008",
-    "type": "regulation",
-    "legalType": "regulation",
-    "category": "referenced",
-    "title": "Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and repealing Regulation (EEC) No 339/93",
-    "shortTitle": "Accreditation Regulation (Consolidated)",
-    "sidebarTitle": "Accreditation Regulation",
-    "description": "(EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and repealing Regulation (EEC) No 339/93",
-    "celex": "02008R0765-20210716",
-    "date": "9 July 2008",
-    "wordCount": 8571,
-    "tocCount": 40
-  },
-  {
-    "slug": "910-2014",
-    "type": "regulation",
-    "legalType": "regulation",
-    "category": "primary",
-    "title": "Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC",
-    "shortTitle": "eIDAS 2.0 Regulation (Consolidated)",
-    "sidebarTitle": "eIDAS 2.0 Regulation (Consolidated)",
-    "description": "(EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directiv",
-    "celex": "02014R0910-20241018",
-    "date": "23 July 2014",
-    "wordCount": 38749,
-    "tocCount": 94
   },
   {
     "slug": "2024-2977",

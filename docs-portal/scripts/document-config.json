@@ -8,7 +8,7 @@
             "terminologySource": false,
             "comment": "Amending regulation contains 'patch' instructions, not standalone law. Use consolidated 910/2014 for RAG and terminology."
         },
-        "910-2014": {
+        "2014-910": {
             "label": "Consolidated Regulation",
             "ragEnabled": true,
             "terminologySource": true,
@@ -27,7 +27,7 @@
                 "originalEurlexUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910"
             }
         },
-        "765-2008": {
+        "2008-765": {
             "label": "Referenced Regulation",
             "ragEnabled": true,
             "terminologySource": true,

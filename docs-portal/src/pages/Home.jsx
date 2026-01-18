@@ -13,7 +13,7 @@ const Home = () => {
                     Navigate regulations, implementing acts, and terminology with ease.
                 </p>
                 <div className="flex gap-3">
-                    <Link to="/regulation/910-2014" className="btn btn-primary">
+                    <Link to="/regulation/2014-910" className="btn btn-primary">
                         Read the Regulation
                     </Link>
                     <Link to="/terminology" className="btn btn-secondary">
@@ -67,13 +67,13 @@ const Home = () => {
                     <QuickLinkCard
                         title="European Digital Identity Wallet"
                         description="Article 5a - Core requirements for EUDI Wallets"
-                        path="/regulation/910-2014#article-5a"
+                        path="/regulation/2014-910#article-5a"
                         badge="Core"
                     />
                     <QuickLinkCard
                         title="Qualified Trust Services"
                         description="Chapter III - Requirements for QTSPs"
-                        path="/regulation/910-2014#chapter-iii"
+                        path="/regulation/2014-910#chapter-iii"
                         badge="Trust Services"
                     />
                     <QuickLinkCard
@@ -85,7 +85,7 @@ const Home = () => {
                     <QuickLinkCard
                         title="Electronic Attestations"
                         description="Articles 45d-45g - Attestation of Attributes"
-                        path="/regulation/910-2014#article-45d"
+                        path="/regulation/2014-910#article-45d"
                         badge="Attestations"
                     />
                 </div>

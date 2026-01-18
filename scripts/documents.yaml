@@ -10,7 +10,7 @@ documents:
   legalType: regulation
   category: primary
   cellar_id: 6a1e14d9-907e-11ef-a130-01aa75ed71a1.0007.01
-  output_dir: 01_regulation/910_2014_eIDAS_Consolidated
+  output_dir: 01_regulation/2014_910_eIDAS_Consolidated
 - celex: 32024R1183
   title: eIDAS 2.0 Amending Regulation
   shortTitle: eIDAS 2.0 Amendment
@@ -25,7 +25,7 @@ documents:
   legalType: regulation
   category: referenced
   source: manual  # Consolidated version manually merged (preamble from original + consolidated enacting terms)
-  output_dir: 01_regulation/765_2008_Market_Surveillance
+  output_dir: 01_regulation/2008_765_Market_Surveillance
 - celex: 32021H0946
   title: Commission Recommendation on a common Union Toolbox for a European Digital Identity Framework
   shortTitle: EUDIW Toolbox Recommendation

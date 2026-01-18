@@ -152,8 +152,8 @@ function getDocumentTypingFromConfig(dirName) {
  * See DECISIONS.md for the design decision (DEC-XXX).
  */
 const PREAMBLE_INJECTION = {
-    // Target: Consolidated eIDAS regulation
-    targetSlugPattern: /^910-2014$/,
+    // Target: Consolidated eIDAS regulation (new standardized slug format)
+    targetSlugPattern: /^2014-910$/,
 
     // Source: eIDAS 2.0 amending regulation
     sourceDir: join(PROJECT_ROOT, '01_regulation', '2024_1183_eIDAS2_Amending'),
@@ -449,26 +449,14 @@ function extractShortTitle(fullTitle, celex, type, dirName, subject) {
 
 /**
  * Generate URL-safe slug from directory name
+ * 
+ * All directories now use {year}_{number}_{description} format (DEC-083).
+ * Examples:
+ *   - 2014_910_eIDAS_Consolidated -> 2014-910
+ *   - 2024_2977_PID_and_EAA -> 2024-2977
  */
 function generateSlug(dirName, type) {
-    // Convert directory name to URL slug
-    // e.g., "910_2014_eIDAS_Consolidated" -> "910-2014"
-    // e.g., "2024_2977_PID_and_EAA" -> "2024-2977"
-
-    // Special handling for regulations to match expected URL patterns
-    // For "910_2014_*" -> "910-2014"
-    const regMatch = dirName.match(/^(\d+)_(\d{4})/);
-    if (regMatch && type === 'regulation') {
-        // Swap to CELEX-like format: number-year for 910/2014 style
-        // Check if first number looks like regulation number (smaller)
-        const num1 = parseInt(regMatch[1]);
-        const num2 = parseInt(regMatch[2]);
-        if (num1 < 10000 && num2 >= 2000) {
-            return `${num1}-${num2}`; // e.g., 910-2014
-        }
-    }
-
-    // Standard format: year-number for implementing acts
+    // Standard format: year-number for all documents
     const match = dirName.match(/^(\d{4})_(\d+)/);
     if (match) {
         return `${match[1]}-${match[2]}`;
