@@ -847,6 +847,10 @@ pre code {
   border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
 }
 
+.regulation-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 .regulation-content table {
   width: 100%;
   border-collapse: collapse;
