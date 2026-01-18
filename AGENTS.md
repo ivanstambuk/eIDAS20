@@ -249,6 +249,30 @@ When fixing any issue, follow this hierarchy:
 
 ---
 
+### 11. Recommendations Required (MANDATORY — When Asking Clarifying Questions)
+
+**When asking the user clarifying questions, you MUST include your recommended answer with justification.**
+
+The user should never need to ask "why?" as a follow-up. Provide complete reasoning upfront.
+
+**Correct pattern:**
+```
+**Question 3a:** Should we match plural forms?
+- **Recommendation:** Yes
+- **Justification:** Legal documents naturally use both "electronic signature" and 
+  "electronic signatures". Users expect both to link to the same definition. 
+  Implementing plural matching is straightforward (add 's'/'es' variants to regex).
+```
+
+**Anti-patterns:**
+- ❌ "Should we match plurals?" (no recommendation)
+- ❌ "I recommend yes." (no justification)
+- ❌ Deferring entirely: "What do you think?" without stating your position
+
+**Why this matters:** The user hired you for expertise. Forcing them to make decisions without your input wastes their time and produces worse outcomes.
+
+---
+
 ## Project Structure
 
 ```
