@@ -379,8 +379,7 @@ const RegulationViewer = () => {
                     <span className="badge badge-primary">
                         {regulation.legalType === 'recommendation' ? 'Recommendation' :
                             regulation.legalType === 'decision' ? 'Decision' :
-                                regulation.legalType === 'implementing_regulation' ? 'Implementing Regulation' :
-                                    regulation.type === 'regulation' ? 'Regulation' : 'Implementing Act'}
+                                regulation.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
                     </span>
                     <span className="badge badge-info">CELEX: {regulation.celex}</span>
                 </div>
