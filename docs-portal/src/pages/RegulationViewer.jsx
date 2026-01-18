@@ -376,10 +376,7 @@ const RegulationViewer = () => {
             {/* Header */}
             <header style={{ marginBottom: 'var(--space-8)' }}>
                 <div className="flex items-center gap-3" style={{ marginBottom: 'var(--space-3)' }}>
-                    <span className={`badge ${regulation.legalType === 'recommendation' ? 'badge-secondary' :
-                            regulation.legalType === 'decision' ? 'badge-warning' :
-                                regulation.type === 'regulation' ? 'badge-primary' : 'badge-info'
-                        }`}>
+                    <span className="badge badge-primary">
                         {regulation.legalType === 'recommendation' ? 'Recommendation' :
                             regulation.legalType === 'decision' ? 'Decision' :
                                 regulation.legalType === 'implementing_regulation' ? 'Implementing Regulation' :
