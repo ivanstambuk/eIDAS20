@@ -540,14 +540,15 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
     """
     Extract annexes from the document.
     
-    EUR-Lex HTML structure for annexes:
-        <div id="anx_I">
-            <p class="oj-doc-ti">ANNEX I</p>
-            <p class="oj-doc-ti">Title of Annex</p>
-            <div class="oj-enumeration-spacing">
-                <p style="display: inline;">1.   </p>
-                <p style="display: inline;"><span>Content...</span></p>
-            </div>
+    EUR-Lex HTML structure for annexes (more complex than originally documented):
+        <div id="anx_1">
+            <p class="oj-doc-ti">ANNEX</p>
+            <p class="oj-ti-grseq-1"><span class="oj-bold">Title of Annex</span></p>
+            <p class="oj-ti-grseq-1">1.   <span class="oj-bold">Section heading</span></p>
+            <p class="oj-normal">Intro text...</p>
+            <table>  <!-- Points (a), (b), etc. are in tables -->
+                <tr><td>(a)</td><td>content</td></tr>
+            </table>
         </div>
     
     Returns list of Markdown lines.
@@ -559,12 +560,16 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
     for annex_div in content.find_all('div', id=re.compile(r'^anx_', re.I)):
         annex_id = annex_div.get('id', '')
         
-        # Extract annex number from id (anx_I -> I, anx_II -> II)
+        # Extract annex number from id (anx_I -> I, anx_II -> II, anx_1 -> 1)
         annex_num_match = re.search(r'anx_([IVX]+|\d+)', annex_id, re.I)
         if not annex_num_match:
             continue
         
         annex_num = annex_num_match.group(1).upper()
+        # Convert numeric to Roman if single digit for consistency
+        if annex_num.isdigit():
+            roman_map = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X'}
+            annex_num = roman_map.get(int(annex_num), annex_num)
         
         lines.append("")
         lines.append("---")
@@ -572,84 +577,59 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
         lines.append(f"## ANNEX {annex_num}")
         lines.append("")
         
-        # Find title (second oj-doc-ti in annex div)
-        doc_ti_elements = annex_div.find_all('p', class_='oj-doc-ti')
-        for i, p in enumerate(doc_ti_elements):
-            text = clean_text(p.get_text())
-            if i == 0 and text.upper().startswith('ANNEX'):
-                continue  # Skip the ANNEX number header
-            if text:
-                lines.append(f"### {text}")
-                lines.append("")
-                break
-        
-        # Find enumerated content
-        for enum_div in annex_div.find_all('div', class_='oj-enumeration-spacing'):
-            # Get all text from the div - the number and content are in separate inline <p> elements
-            full_text = clean_text(enum_div.get_text())
-            if full_text:
-                # Check if it starts with a number
-                num_match = re.match(r'^(\d+)\.\s+(.*)$', full_text)
-                if num_match:
-                    num, item_text = num_match.groups()
-                    lines.append(f"{num}. {item_text}")
+        # Process all elements in document order
+        for child in annex_div.descendants:
+            if not hasattr(child, 'name') or child.name is None:
+                continue
+            
+            classes = child.get('class', [])
+            
+            # Skip the ANNEX header itself (oj-doc-ti)
+            if child.name == 'p' and 'oj-doc-ti' in classes:
+                text = clean_text(child.get_text())
+                if text.upper().startswith('ANNEX'):
+                    continue
+            
+            # oj-ti-grseq-1: Annex title or numbered section heading
+            if child.name == 'p' and 'oj-ti-grseq-1' in classes:
+                text = clean_text(child.get_text())
+                if not text:
+                    continue
+                
+                # Check for numbered section: "1.   Section title"
+                num_section_match = re.match(r'^(\d+)\.\s+(.+)$', text)
+                if num_section_match:
+                    num, section_title = num_section_match.groups()
+                    lines.append(f"**{num}. {section_title}**")
                     lines.append("")
                 else:
-                    lines.append(full_text)
+                    # It's the annex title (italic for distinction)
+                    lines.append(f"*{text}*")
                     lines.append("")
-        
-        # Also check for oj-normal paragraphs in annex
-        # Need to handle split elements: (a) in one <p>, content in next <p>
-        annex_paras = list(annex_div.find_all('p', class_='oj-normal'))
-        pending_point = None
-        
-        j = 0
-        while j < len(annex_paras):
-            p = annex_paras[j]
-            text = clean_text(p.get_text())
-            
-            if not text:
-                j += 1
                 continue
             
-            # Check for standalone point letter: "(a)" or "(b)" etc.
-            standalone_point_match = re.match(r'^(\([a-z]\))$', text)
-            if standalone_point_match:
-                pending_point = standalone_point_match.group(1)
-                j += 1
+            # Tables contain points (a), (b), etc.
+            if child.name == 'table':
+                for row in child.find_all('tr'):
+                    cells = row.find_all('td')
+                    if len(cells) >= 2:
+                        point = clean_text(cells[0].get_text())
+                        content_text = clean_text(cells[1].get_text())
+                        if point and content_text:
+                            lines.append(f"{point} {content_text}")
+                            lines.append("")
                 continue
             
-            # Check for combined point: "(a) content..."
-            combined_point_match = re.match(r'^(\([a-z]\))\s+(.+)$', text)
-            if combined_point_match:
-                point, point_text = combined_point_match.groups()
-                lines.append(f"{point} {point_text}")
-                lines.append("")
-                pending_point = None
-                j += 1
+            # Regular paragraphs (oj-normal) - intro text etc.
+            if child.name == 'p' and 'oj-normal' in classes:
+                # Skip if this p is inside a table (already handled)
+                if child.find_parent('table'):
+                    continue
+                text = clean_text(child.get_text())
+                if text:
+                    lines.append(text)
+                    lines.append("")
                 continue
-            
-            # Content for pending point letter
-            if pending_point:
-                lines.append(f"{pending_point} {text}")
-                lines.append("")
-                pending_point = None
-                j += 1
-                continue
-            
-            # Check for numbered item
-            num_match = re.match(r'^(\d+)\.\s+(.*)$', text)
-            if num_match:
-                num, item_text = num_match.groups()
-                lines.append(f"{num}. {item_text}")
-                lines.append("")
-                j += 1
-                continue
-            
-            # Regular text
-            lines.append(text)
-            lines.append("")
-            j += 1
     
     return lines
 
