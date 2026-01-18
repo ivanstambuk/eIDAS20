@@ -25,12 +25,100 @@ const PROJECT_ROOT = join(__dirname, '..', '..');
 const OUTPUT_DIR = join(__dirname, '..', 'public', 'data');
 const OUTPUT_FILE = join(OUTPUT_DIR, 'terminology.json');
 const DOC_CONFIG_FILE = join(__dirname, 'document-config.json');
+const CONFIG_DIR = join(__dirname, '..', 'config');
+const TERM_ROLES_FILE = join(CONFIG_DIR, 'term-roles.json');
+const TERM_DOMAINS_FILE = join(CONFIG_DIR, 'term-domains.json');
+const FILTERS_CONFIG_FILE = join(CONFIG_DIR, 'terminology-filters.yaml');
 
 // Source directories
 const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '01_regulation'), type: 'regulation' },
     { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' }
 ];
+
+/**
+ * Load role mappings from config file
+ */
+function loadRoleMappings() {
+    try {
+        const data = JSON.parse(readFileSync(TERM_ROLES_FILE, 'utf-8'));
+        return {
+            roles: data.roles || {},
+            mappings: data.mappings || {}
+        };
+    } catch (err) {
+        console.warn('⚠️  Could not load term-roles.json:', err.message);
+        return { roles: {}, mappings: {} };
+    }
+}
+
+/**
+ * Load domain mappings from config file
+ */
+function loadDomainMappings() {
+    try {
+        const data = JSON.parse(readFileSync(TERM_DOMAINS_FILE, 'utf-8'));
+        return {
+            domains: data.domains || {},
+            mappings: data.mappings || {}
+        };
+    } catch (err) {
+        console.warn('⚠️  Could not load term-domains.json:', err.message);
+        return { domains: {}, mappings: {} };
+    }
+}
+
+/**
+ * Load filter configuration (YAML)
+ * Simple YAML parser for our specific format
+ */
+function loadFilterConfig() {
+    try {
+        const content = readFileSync(FILTERS_CONFIG_FILE, 'utf-8');
+        // Simple YAML parsing for our specific structure
+        const documentTypes = {};
+        let currentType = null;
+        let inDocTypes = false;
+
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('#') || !trimmed) continue;
+
+            if (trimmed === 'documentTypes:') {
+                inDocTypes = true;
+                continue;
+            }
+
+            if (!inDocTypes) continue;
+
+            // Type definition (e.g., "eidas:")
+            const typeMatch = line.match(/^  (\w+):$/);
+            if (typeMatch) {
+                currentType = typeMatch[1];
+                documentTypes[currentType] = { matchCategories: [] };
+                continue;
+            }
+
+            if (currentType && line.startsWith('    ')) {
+                // Property line
+                const labelMatch = line.match(/label:\s*["']?([^"']+)["']?/);
+                const descMatch = line.match(/description:\s*["']?([^"']+)["']?/);
+                const colorMatch = line.match(/color:\s*["']?([^"'#]+|#[A-Fa-f0-9]+)["']?/);
+                const catMatch = line.match(/- ["']?([^"']+)["']?/);
+
+                if (labelMatch) documentTypes[currentType].label = labelMatch[1].trim();
+                if (descMatch) documentTypes[currentType].description = descMatch[1].trim();
+                if (colorMatch) documentTypes[currentType].color = colorMatch[1].trim();
+                if (catMatch) documentTypes[currentType].matchCategories.push(catMatch[1].trim());
+            }
+        }
+
+        return { documentTypes };
+    } catch (err) {
+        console.warn('⚠️  Could not load terminology-filters.yaml:', err.message);
+        return { documentTypes: {} };
+    }
+}
 
 /**
  * Extract CELEX identifier from document content
@@ -454,9 +542,67 @@ function build() {
         term.definitionGroups = groupByDefinition(term);
     }
 
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DEC-086: Enrich terms with roles and domains from config files
+    // ═══════════════════════════════════════════════════════════════════════════
+    console.log('\n🏷️  Enriching terms with roles and domains...');
+    const { roles: roleDefinitions, mappings: roleMappings } = loadRoleMappings();
+    const { domains: domainDefinitions, mappings: domainMappings } = loadDomainMappings();
+    const { documentTypes } = loadFilterConfig();
+
+    let termsWithRoles = 0;
+    let termsWithDomains = 0;
+    const unmappedTerms = [];
+
+    for (const term of mergedTerms) {
+        // Assign roles
+        term.roles = roleMappings[term.id] || [];
+        if (term.roles.length > 0) termsWithRoles++;
+
+        // Assign domains
+        term.domains = domainMappings[term.id] || [];
+        if (term.domains.length > 0) termsWithDomains++;
+
+        // Track unmapped terms for validation
+        if (term.roles.length === 0 && term.domains.length === 0) {
+            unmappedTerms.push(term.id);
+        }
+    }
+
+    console.log(`   🎭 Terms with roles: ${termsWithRoles}/${mergedTerms.length}`);
+    console.log(`   🏷️  Terms with domains: ${termsWithDomains}/${mergedTerms.length}`);
+
+    if (unmappedTerms.length > 0) {
+        console.warn(`   ⚠️  Terms without role OR domain mapping: ${unmappedTerms.length}`);
+        console.warn(`      ${unmappedTerms.slice(0, 5).join(', ')}${unmappedTerms.length > 5 ? '...' : ''}`);
+    }
+
+    // Build filter metadata for UI dropdowns
+    const filterMetadata = {
+        documentTypes: Object.entries(documentTypes).map(([id, config]) => ({
+            id,
+            label: config.label,
+            description: config.description,
+            color: config.color,
+            matchCategories: config.matchCategories
+        })),
+        roles: Object.entries(roleDefinitions).map(([id, config]) => ({
+            id,
+            label: config.label,
+            description: config.description,
+            icon: config.icon
+        })),
+        domains: Object.entries(domainDefinitions).map(([id, config]) => ({
+            id,
+            label: config.label,
+            description: config.description,
+            icon: config.icon
+        }))
+    };
+
     // Build output structure
     const terminology = {
-        version: '1.0',
+        version: '2.0',  // Bumped for DEC-086 filter support
         generated: new Date().toISOString(),
         statistics: {
             totalTerms: mergedTerms.length,
@@ -464,8 +610,11 @@ function build() {
             sources: {
                 regulations: allTerms.filter(t => t.source.type === 'regulation').length,
                 implementingActs: allTerms.filter(t => t.source.type === 'implementing-act').length
-            }
+            },
+            termsWithRoles,
+            termsWithDomains
         },
+        filterMetadata,
         // Alphabetically indexed for quick lookup
         index: mergedTerms.reduce((acc, term) => {
             const firstLetter = term.term[0].toUpperCase();

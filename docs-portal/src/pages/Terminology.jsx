@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useScrollRestoration } from '../hooks/useScrollRestoration';
+import FilterDropdown from '../components/FilterDropdown';
 
 /**
  * Fast smooth scroll (150ms) - matches RegulationViewer behavior
@@ -144,10 +145,17 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
 
 
 const Terminology = () => {
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [terminology, setTerminology] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // ════════════════════════════════════════════════════════════════════════════
+    // DEC-086: Multi-dimensional filter state
+    // ════════════════════════════════════════════════════════════════════════════
+    const [selectedDocTypes, setSelectedDocTypes] = useState([]);
+    const [selectedRoles, setSelectedRoles] = useState([]);
+    const [selectedDomains, setSelectedDomains] = useState([]);
 
     // Load terminology data
     useEffect(() => {
@@ -213,8 +221,8 @@ const Terminology = () => {
                 requestAnimationFrame(() => {
                     const element = document.getElementById(targetElementId);
                     if (element) {
-                        // Header (64px) + sticky nav (~56px) + extra padding for visibility
-                        const headerOffset = 135;
+                        // Header (64px) + filter bar + sticky nav (~110px) + extra padding
+                        const headerOffset = 175;
                         const targetY = element.getBoundingClientRect().top + window.scrollY - headerOffset;
                         fastScrollTo(targetY);
                         element.focus({ preventScroll: true });
@@ -224,11 +232,56 @@ const Terminology = () => {
         }
     }, [loading, terminology, searchParams]);
 
-    // All terms (filtering removed - use global search instead)
+    // ════════════════════════════════════════════════════════════════════════════
+    // DEC-086: Multi-dimensional filtering logic
+    // A term matches if:
+    // - (if doc type filters active) ANY of its sources match selected doc types
+    // - AND (if role filters active) ANY of its roles match selected roles  
+    // - AND (if domain filters active) ANY of its domains match selected domains
+    // ════════════════════════════════════════════════════════════════════════════
+
+    // Build docType -> matchCategories lookup from filterMetadata
+    const docTypeCategoryMap = useMemo(() => {
+        if (!terminology?.filterMetadata?.documentTypes) return {};
+        const map = {};
+        for (const dt of terminology.filterMetadata.documentTypes) {
+            map[dt.id] = dt.matchCategories || [];
+        }
+        return map;
+    }, [terminology]);
+
     const filteredTerms = useMemo(() => {
         if (!terminology) return [];
-        return terminology.terms;
-    }, [terminology]);
+
+        // Get all matchCategories for selected doc types
+        const selectedCategories = selectedDocTypes.flatMap(dtId => docTypeCategoryMap[dtId] || []);
+
+        return terminology.terms.filter(term => {
+            // Document type filter (check source categories)
+            const matchesDocType = selectedDocTypes.length === 0 ||
+                term.sources.some(s => selectedCategories.includes(s.documentCategory));
+
+            // Role filter
+            const matchesRole = selectedRoles.length === 0 ||
+                (term.roles || []).some(r => selectedRoles.includes(r));
+
+            // Domain filter
+            const matchesDomain = selectedDomains.length === 0 ||
+                (term.domains || []).some(d => selectedDomains.includes(d));
+
+            return matchesDocType && matchesRole && matchesDomain;
+        });
+    }, [terminology, selectedDocTypes, selectedRoles, selectedDomains, docTypeCategoryMap]);
+
+    // Check if any filters are active
+    const hasActiveFilters = selectedDocTypes.length > 0 || selectedRoles.length > 0 || selectedDomains.length > 0;
+
+    // Clear all filters
+    const handleClearAllFilters = useCallback(() => {
+        setSelectedDocTypes([]);
+        setSelectedRoles([]);
+        setSelectedDomains([]);
+    }, []);
 
     // Group filtered terms by first letter
     const groupedTerms = useMemo(() => {
@@ -299,9 +352,9 @@ const Terminology = () => {
                 </div>
             </header>
 
-            {/* Alphabet quick nav - sticky below header */}
+            {/* Filter Bar + Alphabet Nav - Sticky below header (DEC-086) */}
             <nav
-                className="alphabet-nav-sticky"
+                className="terminology-filter-bar"
                 style={{
                     position: 'sticky',
                     top: '64px', /* Below header */
@@ -309,46 +362,105 @@ const Terminology = () => {
                     margin: '0 calc(-1 * var(--space-6))', /* Full-width bleed */
                     padding: 'var(--space-3) var(--space-6)',
                     marginBottom: 'var(--space-6)',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: 'var(--space-1)',
                     background: 'rgba(var(--bg-primary-rgb), 0.85)',
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
                     borderBottom: '1px solid var(--border-secondary)'
                 }}
             >
-                {alphabet.map(letter => {
-                    const isAvailable = availableLetters.includes(letter);
-                    return (
+                {/* Filter dropdowns row */}
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    gap: 'var(--space-2)',
+                    marginBottom: 'var(--space-3)'
+                }}>
+                    <FilterDropdown
+                        label="Document Type"
+                        icon="📄"
+                        options={terminology.filterMetadata?.documentTypes || []}
+                        selectedIds={selectedDocTypes}
+                        onSelectionChange={setSelectedDocTypes}
+                    />
+                    <FilterDropdown
+                        label="Role"
+                        icon="👤"
+                        options={terminology.filterMetadata?.roles || []}
+                        selectedIds={selectedRoles}
+                        onSelectionChange={setSelectedRoles}
+                    />
+                    <FilterDropdown
+                        label="Domain"
+                        icon="🏷️"
+                        options={terminology.filterMetadata?.domains || []}
+                        selectedIds={selectedDomains}
+                        onSelectionChange={setSelectedDomains}
+                    />
+
+                    {/* Clear filters button (only shown when filters active) */}
+                    {hasActiveFilters && (
                         <button
-                            key={letter}
-                            className={`btn ${isAvailable ? 'btn-ghost' : 'btn-ghost'}`}
+                            className="btn btn-ghost"
+                            onClick={handleClearAllFilters}
                             style={{
-                                padding: 'var(--space-1) var(--space-2)',
                                 fontSize: 'var(--text-sm)',
-                                minWidth: '32px',
-                                opacity: isAvailable ? 1 : 0.3,
-                                cursor: isAvailable ? 'pointer' : 'default'
-                            }}
-                            disabled={!isAvailable}
-                            onClick={() => {
-                                if (isAvailable) {
-                                    const el = document.getElementById(`letter-${letter}`);
-                                    if (el) {
-                                        // Header (64px) + sticky nav (~56px) + extra padding for visibility
-                                        const headerOffset = 135;
-                                        const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset;
-                                        fastScrollTo(targetY);
-                                    }
-                                }
+                                color: 'var(--text-muted)',
+                                padding: 'var(--space-2)'
                             }}
                         >
-                            {letter}
+                            ✕ Clear all
                         </button>
-                    );
-                })}
+                    )}
+
+                    {/* Result count */}
+                    <span style={{
+                        marginLeft: 'auto',
+                        fontSize: 'var(--text-sm)',
+                        color: hasActiveFilters ? 'var(--accent-primary)' : 'var(--text-muted)'
+                    }}>
+                        {filteredTerms.length} of {terminology.terms.length} terms
+                    </span>
+                </div>
+
+                {/* Alphabet quick nav row */}
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: 'var(--space-1)'
+                }}>
+                    {alphabet.map(letter => {
+                        const isAvailable = availableLetters.includes(letter);
+                        return (
+                            <button
+                                key={letter}
+                                className="btn btn-ghost"
+                                style={{
+                                    padding: 'var(--space-1) var(--space-2)',
+                                    fontSize: 'var(--text-sm)',
+                                    minWidth: '32px',
+                                    opacity: isAvailable ? 1 : 0.3,
+                                    cursor: isAvailable ? 'pointer' : 'default'
+                                }}
+                                disabled={!isAvailable}
+                                onClick={() => {
+                                    if (isAvailable) {
+                                        const el = document.getElementById(`letter-${letter}`);
+                                        if (el) {
+                                            // Header (64px) + sticky nav (~110px with filters) + extra padding
+                                            const headerOffset = 175;
+                                            const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+                                            fastScrollTo(targetY);
+                                        }
+                                    }
+                                }}
+                            >
+                                {letter}
+                            </button>
+                        );
+                    })}
+                </div>
             </nav>
 
 
@@ -356,7 +468,19 @@ const Terminology = () => {
             {/* Terms list grouped by letter */}
             {availableLetters.length === 0 ? (
                 <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
-                    <p className="text-muted">No terms available. Run <code>npm run build:terminology</code> to generate terminology data.</p>
+                    {hasActiveFilters ? (
+                        <>
+                            <p className="text-muted">No terms match the current filters.</p>
+                            <button
+                                className="btn btn-primary mt-4"
+                                onClick={handleClearAllFilters}
+                            >
+                                Clear Filters
+                            </button>
+                        </>
+                    ) : (
+                        <p className="text-muted">No terms available. Run <code>npm run build:terminology</code> to generate terminology data.</p>
+                    )}
                 </div>
             ) : (
                 availableLetters.map(letter => (

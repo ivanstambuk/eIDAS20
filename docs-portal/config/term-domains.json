@@ -1,0 +1,390 @@
+{
+    "$schema": "./term-domains.schema.json",
+    "$comment": "Exhaustive semantic domain assignments for all 107 terminology terms (DEC-086). Each term can have multiple domains.",
+    "domains": {
+        "cryptography": {
+            "label": "Cryptography",
+            "description": "Terms related to cryptographic operations, signatures, seals, and key management",
+            "icon": "🔑"
+        },
+        "identity": {
+            "label": "Identity",
+            "description": "Terms related to electronic identification, authentication, and person data",
+            "icon": "🆔"
+        },
+        "attestation": {
+            "label": "Attestation",
+            "description": "Terms related to attributes, attestations, and certificates",
+            "icon": "📄"
+        },
+        "governance": {
+            "label": "Governance",
+            "description": "Terms related to conformity assessment, accreditation, and regulatory oversight",
+            "icon": "🏛️"
+        },
+        "wallet_ecosystem": {
+            "label": "Wallet Ecosystem",
+            "description": "Terms specific to the EUDI Wallet infrastructure and relying party ecosystem",
+            "icon": "📱"
+        }
+    },
+    "mappings": {
+        "accreditation": [
+            "governance"
+        ],
+        "advanced-electronic-seal": [
+            "cryptography"
+        ],
+        "advanced-electronic-signature": [
+            "cryptography"
+        ],
+        "attribute": [
+            "attestation"
+        ],
+        "authentic-source": [
+            "attestation",
+            "identity"
+        ],
+        "authentication": [
+            "identity",
+            "cryptography"
+        ],
+        "authorised-representative": [
+            "governance"
+        ],
+        "body-governed-by-public-law": [
+            "governance"
+        ],
+        "catalogue-of-attributes": [
+            "attestation",
+            "wallet_ecosystem"
+        ],
+        "catalogue-of-schemes-for-the-attestation-of-attributes": [
+            "attestation",
+            "wallet_ecosystem"
+        ],
+        "ce-marking": [
+            "governance"
+        ],
+        "certificate-for-electronic-seal": [
+            "cryptography",
+            "attestation"
+        ],
+        "certificate-for-electronic-signature": [
+            "cryptography",
+            "attestation"
+        ],
+        "certificate-for-website-authentication": [
+            "cryptography",
+            "attestation"
+        ],
+        "certificate-of-conformity": [
+            "governance"
+        ],
+        "certification-body": [
+            "governance"
+        ],
+        "certification-decision": [
+            "governance"
+        ],
+        "community-harmonisation-legislation": [
+            "governance"
+        ],
+        "conformity-assessment": [
+            "governance"
+        ],
+        "conformity-assessment-body": [
+            "governance"
+        ],
+        "conformity-assessment-report": [
+            "governance"
+        ],
+        "conformity-assessment-scheme": [
+            "governance"
+        ],
+        "creator-of-a-seal": [
+            "cryptography"
+        ],
+        "critical-assets": [
+            "wallet_ecosystem"
+        ],
+        "cryptographic-binding": [
+            "cryptography",
+            "wallet_ecosystem"
+        ],
+        "data-record": [
+            "wallet_ecosystem"
+        ],
+        "electronic-archiving": [
+            "attestation"
+        ],
+        "electronic-attestation-of-attributes": [
+            "attestation"
+        ],
+        "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source": [
+            "attestation",
+            "identity"
+        ],
+        "electronic-document": [
+            "attestation"
+        ],
+        "electronic-identification": [
+            "identity"
+        ],
+        "electronic-identification-means": [
+            "identity"
+        ],
+        "electronic-identification-scheme": [
+            "identity",
+            "governance"
+        ],
+        "electronic-ledger": [
+            "cryptography"
+        ],
+        "electronic-registered-delivery-service": [
+            "attestation"
+        ],
+        "electronic-seal": [
+            "cryptography"
+        ],
+        "electronic-seal-creation-data": [
+            "cryptography"
+        ],
+        "electronic-seal-creation-device": [
+            "cryptography"
+        ],
+        "electronic-signature": [
+            "cryptography"
+        ],
+        "electronic-signature-creation-data": [
+            "cryptography"
+        ],
+        "electronic-signature-creation-device": [
+            "cryptography"
+        ],
+        "electronic-time-stamp": [
+            "cryptography"
+        ],
+        "embedded-disclosure-policy": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "eu-digital-identity-wallet-trust-mark": [
+            "wallet_ecosystem",
+            "governance"
+        ],
+        "european-digital-identity-wallet": [
+            "wallet_ecosystem",
+            "identity"
+        ],
+        "flexible-scope-accreditation": [
+            "governance"
+        ],
+        "harmonised-standard": [
+            "governance"
+        ],
+        "identity-matching": [
+            "identity"
+        ],
+        "incident": [
+            "governance",
+            "wallet_ecosystem"
+        ],
+        "manufacturer": [
+            "governance"
+        ],
+        "national-accreditation-body": [
+            "governance"
+        ],
+        "national-register-of-wallet-relying-parties": [
+            "wallet_ecosystem",
+            "governance"
+        ],
+        "object-of-certification": [
+            "governance"
+        ],
+        "offline-mode": [
+            "wallet_ecosystem"
+        ],
+        "owner-of-a-scheme-for-the-attestation-of-attributes": [
+            "attestation"
+        ],
+        "peer-evaluation": [
+            "governance"
+        ],
+        "person-identification-data": [
+            "identity"
+        ],
+        "personal-data": [
+            "identity"
+        ],
+        "product": [
+            "governance"
+        ],
+        "provider-of-person-identification-data": [
+            "identity"
+        ],
+        "provider-of-wallet-relying-party-access-certificates": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "provider-of-wallet-relying-party-registration-certificates": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "public-sector-body": [
+            "governance"
+        ],
+        "qualified-certificate-for-electronic-seal": [
+            "cryptography",
+            "attestation"
+        ],
+        "qualified-certificate-for-electronic-signature": [
+            "cryptography",
+            "attestation"
+        ],
+        "qualified-certificate-for-website-authentication": [
+            "cryptography",
+            "attestation"
+        ],
+        "qualified-electronic-archiving-service": [
+            "attestation"
+        ],
+        "qualified-electronic-attestation-of-attributes": [
+            "attestation"
+        ],
+        "qualified-electronic-ledger": [
+            "cryptography"
+        ],
+        "qualified-electronic-registered-delivery-service": [
+            "attestation"
+        ],
+        "qualified-electronic-seal": [
+            "cryptography"
+        ],
+        "qualified-electronic-seal-creation-device": [
+            "cryptography"
+        ],
+        "qualified-electronic-signature": [
+            "cryptography"
+        ],
+        "qualified-electronic-signature-creation-device": [
+            "cryptography"
+        ],
+        "qualified-electronic-time-stamp": [
+            "cryptography"
+        ],
+        "qualified-trust-service": [
+            "attestation"
+        ],
+        "qualified-trust-service-provider": [
+            "attestation",
+            "governance"
+        ],
+        "register-of-wallet-relying-parties": [
+            "wallet_ecosystem",
+            "governance"
+        ],
+        "registrar-of-wallet-relying-parties": [
+            "wallet_ecosystem",
+            "governance"
+        ],
+        "release-for-free-circulation": [
+            "governance"
+        ],
+        "relying-party": [
+            "wallet_ecosystem"
+        ],
+        "remote-qualified-electronic-seal-creation-device": [
+            "cryptography"
+        ],
+        "remote-qualified-electronic-signature-creation-device": [
+            "cryptography"
+        ],
+        "risk-register": [
+            "governance",
+            "wallet_ecosystem"
+        ],
+        "scheme-for-the-attestation-of-attributes": [
+            "attestation"
+        ],
+        "scheme-owner": [
+            "attestation",
+            "governance"
+        ],
+        "signatory": [
+            "cryptography",
+            "identity"
+        ],
+        "strong-user-authentication": [
+            "identity",
+            "wallet_ecosystem"
+        ],
+        "technical-specification": [
+            "governance"
+        ],
+        "trust-service": [
+            "attestation"
+        ],
+        "trust-service-provider": [
+            "attestation",
+            "governance"
+        ],
+        "type-of-electronic-attestation-of-attributes": [
+            "attestation"
+        ],
+        "user": [
+            "identity",
+            "wallet_ecosystem"
+        ],
+        "validation": [
+            "cryptography"
+        ],
+        "validation-data": [
+            "cryptography"
+        ],
+        "wallet-cryptographic-operation": [
+            "wallet_ecosystem",
+            "cryptography"
+        ],
+        "wallet-instance": [
+            "wallet_ecosystem"
+        ],
+        "wallet-provider": [
+            "wallet_ecosystem"
+        ],
+        "wallet-relying-party": [
+            "wallet_ecosystem"
+        ],
+        "wallet-relying-party-access-certificate": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "wallet-relying-party-registration-certificate": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "wallet-secure-cryptographic-application": [
+            "wallet_ecosystem",
+            "cryptography"
+        ],
+        "wallet-secure-cryptographic-device": [
+            "wallet_ecosystem",
+            "cryptography"
+        ],
+        "wallet-solution": [
+            "wallet_ecosystem"
+        ],
+        "wallet-unit": [
+            "wallet_ecosystem"
+        ],
+        "wallet-unit-attestation": [
+            "wallet_ecosystem",
+            "attestation"
+        ],
+        "wallet-user": [
+            "wallet_ecosystem",
+            "identity"
+        ]
+    }
+}

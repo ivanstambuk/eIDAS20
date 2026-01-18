@@ -1,0 +1,54 @@
+# Terminology Filter Configuration (DEC-086)
+# 
+# Extensible document type definitions for terminology filtering.
+# Add new types here without code changes.
+#
+# Each type specifies:
+#   - label: Display name in the UI
+#   - description: Tooltip text
+#   - matchCategories: Array of documentCategory values that match this filter
+#   - color: Optional accent color for the filter chip
+
+documentTypes:
+  eidas:
+    label: "eIDAS Regulation"
+    description: "Core eIDAS 2.0 Regulation (910/2014 consolidated)"
+    matchCategories:
+      - "primary"
+    color: "#22d3ee"  # cyan
+    
+  implementing_acts:
+    label: "Implementing Acts"
+    description: "Commission implementing regulations providing technical specifications"
+    matchCategories:
+      - "implementing-act"
+    color: "#a855f7"  # purple
+    
+  recommendations:
+    label: "Recommendations"
+    description: "EU Recommendations and non-binding guidance (e.g., EUDIW Toolbox)"
+    matchCategories:
+      - "recommendation"
+    color: "#f59e0b"  # amber
+    
+  eu_law:
+    label: "EU Law (General)"
+    description: "Referenced foundational EU regulations (e.g., 765/2008 on accreditation)"
+    matchCategories:
+      - "referenced"
+    color: "#6366f1"  # indigo
+
+  # --- Future document types (extensible) ---
+  # faq:
+  #   label: "FAQ"
+  #   description: "Frequently asked questions and clarifications"
+  #   matchCategories:
+  #     - "faq"
+  #   color: "#10b981"  # emerald
+  # 
+  # guidance:
+  #   label: "Guidance"
+  #   description: "Implementation guidance documents"
+  #   matchCategories:
+  #     - "guidance"
+  #   color: "#14b8a6"  # teal

@@ -1,0 +1,422 @@
+{
+    "$schema": "./term-roles.schema.json",
+    "$comment": "Exhaustive role assignments for all 107 terminology terms (DEC-086). Each term can have multiple roles.",
+    "roles": {
+        "holder": {
+            "label": "Holder / User",
+            "description": "Natural or legal person controlling the wallet, the subject of identity data",
+            "icon": "👤"
+        },
+        "pid_provider": {
+            "label": "PID Provider",
+            "description": "State entity responsible for issuing core Person Identification Data",
+            "icon": "🏛️"
+        },
+        "eaa_provider": {
+            "label": "(Q)EAA Provider",
+            "description": "Issuers of Electronic Attestations of Attributes (qualified or non-qualified)",
+            "icon": "📜"
+        },
+        "wallet_provider": {
+            "label": "Wallet Provider",
+            "description": "Entity developing and operating the wallet application",
+            "icon": "📱"
+        },
+        "qtsp": {
+            "label": "QTSP",
+            "description": "Qualified Trust Service Providers - signatures, seals, timestamps, certificates",
+            "icon": "🔐"
+        },
+        "cabs": {
+            "label": "CABs",
+            "description": "Conformity Assessment Bodies - independent auditors",
+            "icon": "✅"
+        },
+        "supervisory": {
+            "label": "Supervisory Bodies",
+            "description": "National government agencies overseeing the ecosystem",
+            "icon": "⚖️"
+        },
+        "trusted_list": {
+            "label": "Trusted List Providers",
+            "description": "Entities maintaining machine-readable trusted lists",
+            "icon": "📋"
+        },
+        "relying_party": {
+            "label": "Relying Party",
+            "description": "Entities accepting wallet credentials for service provision",
+            "icon": "🏢"
+        }
+    },
+    "mappings": {
+        "accreditation": [
+            "cabs",
+            "supervisory"
+        ],
+        "advanced-electronic-seal": [
+            "qtsp"
+        ],
+        "advanced-electronic-signature": [
+            "qtsp",
+            "holder"
+        ],
+        "attribute": [
+            "eaa_provider",
+            "holder"
+        ],
+        "authentic-source": [
+            "pid_provider",
+            "eaa_provider"
+        ],
+        "authentication": [
+            "holder",
+            "wallet_provider"
+        ],
+        "authorised-representative": [
+            "cabs"
+        ],
+        "body-governed-by-public-law": [
+            "supervisory"
+        ],
+        "catalogue-of-attributes": [
+            "eaa_provider",
+            "supervisory"
+        ],
+        "catalogue-of-schemes-for-the-attestation-of-attributes": [
+            "eaa_provider",
+            "supervisory"
+        ],
+        "ce-marking": [
+            "cabs"
+        ],
+        "certificate-for-electronic-seal": [
+            "qtsp"
+        ],
+        "certificate-for-electronic-signature": [
+            "qtsp",
+            "holder"
+        ],
+        "certificate-for-website-authentication": [
+            "qtsp",
+            "relying_party"
+        ],
+        "certificate-of-conformity": [
+            "cabs"
+        ],
+        "certification-body": [
+            "cabs"
+        ],
+        "certification-decision": [
+            "cabs"
+        ],
+        "community-harmonisation-legislation": [
+            "supervisory"
+        ],
+        "conformity-assessment": [
+            "cabs"
+        ],
+        "conformity-assessment-body": [
+            "cabs"
+        ],
+        "conformity-assessment-report": [
+            "cabs"
+        ],
+        "conformity-assessment-scheme": [
+            "cabs"
+        ],
+        "creator-of-a-seal": [
+            "qtsp"
+        ],
+        "critical-assets": [
+            "wallet_provider",
+            "qtsp"
+        ],
+        "cryptographic-binding": [
+            "wallet_provider",
+            "qtsp"
+        ],
+        "data-record": [
+            "wallet_provider"
+        ],
+        "electronic-archiving": [
+            "qtsp"
+        ],
+        "electronic-attestation-of-attributes": [
+            "eaa_provider",
+            "holder"
+        ],
+        "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source": [
+            "eaa_provider",
+            "pid_provider"
+        ],
+        "electronic-document": [
+            "holder",
+            "relying_party"
+        ],
+        "electronic-identification": [
+            "holder",
+            "pid_provider"
+        ],
+        "electronic-identification-means": [
+            "holder",
+            "pid_provider"
+        ],
+        "electronic-identification-scheme": [
+            "pid_provider",
+            "supervisory"
+        ],
+        "electronic-ledger": [
+            "qtsp"
+        ],
+        "electronic-registered-delivery-service": [
+            "qtsp"
+        ],
+        "electronic-seal": [
+            "qtsp"
+        ],
+        "electronic-seal-creation-data": [
+            "qtsp"
+        ],
+        "electronic-seal-creation-device": [
+            "qtsp"
+        ],
+        "electronic-signature": [
+            "holder",
+            "qtsp"
+        ],
+        "electronic-signature-creation-data": [
+            "holder",
+            "qtsp"
+        ],
+        "electronic-signature-creation-device": [
+            "holder",
+            "qtsp"
+        ],
+        "electronic-time-stamp": [
+            "qtsp"
+        ],
+        "embedded-disclosure-policy": [
+            "eaa_provider",
+            "wallet_provider"
+        ],
+        "eu-digital-identity-wallet-trust-mark": [
+            "wallet_provider",
+            "supervisory"
+        ],
+        "european-digital-identity-wallet": [
+            "holder",
+            "wallet_provider"
+        ],
+        "flexible-scope-accreditation": [
+            "cabs"
+        ],
+        "harmonised-standard": [
+            "cabs",
+            "supervisory"
+        ],
+        "identity-matching": [
+            "pid_provider",
+            "relying_party"
+        ],
+        "incident": [
+            "wallet_provider",
+            "qtsp",
+            "supervisory"
+        ],
+        "manufacturer": [
+            "cabs"
+        ],
+        "national-accreditation-body": [
+            "cabs",
+            "supervisory"
+        ],
+        "national-register-of-wallet-relying-parties": [
+            "relying_party",
+            "supervisory"
+        ],
+        "object-of-certification": [
+            "cabs"
+        ],
+        "offline-mode": [
+            "wallet_provider",
+            "holder"
+        ],
+        "owner-of-a-scheme-for-the-attestation-of-attributes": [
+            "eaa_provider"
+        ],
+        "peer-evaluation": [
+            "cabs"
+        ],
+        "person-identification-data": [
+            "pid_provider",
+            "holder"
+        ],
+        "personal-data": [
+            "holder"
+        ],
+        "product": [
+            "cabs"
+        ],
+        "provider-of-person-identification-data": [
+            "pid_provider"
+        ],
+        "provider-of-wallet-relying-party-access-certificates": [
+            "relying_party",
+            "trusted_list"
+        ],
+        "provider-of-wallet-relying-party-registration-certificates": [
+            "relying_party",
+            "trusted_list"
+        ],
+        "public-sector-body": [
+            "supervisory",
+            "pid_provider"
+        ],
+        "qualified-certificate-for-electronic-seal": [
+            "qtsp"
+        ],
+        "qualified-certificate-for-electronic-signature": [
+            "qtsp",
+            "holder"
+        ],
+        "qualified-certificate-for-website-authentication": [
+            "qtsp",
+            "relying_party"
+        ],
+        "qualified-electronic-archiving-service": [
+            "qtsp"
+        ],
+        "qualified-electronic-attestation-of-attributes": [
+            "eaa_provider"
+        ],
+        "qualified-electronic-ledger": [
+            "qtsp"
+        ],
+        "qualified-electronic-registered-delivery-service": [
+            "qtsp"
+        ],
+        "qualified-electronic-seal": [
+            "qtsp"
+        ],
+        "qualified-electronic-seal-creation-device": [
+            "qtsp"
+        ],
+        "qualified-electronic-signature": [
+            "holder",
+            "qtsp"
+        ],
+        "qualified-electronic-signature-creation-device": [
+            "holder",
+            "qtsp"
+        ],
+        "qualified-electronic-time-stamp": [
+            "qtsp"
+        ],
+        "qualified-trust-service": [
+            "qtsp"
+        ],
+        "qualified-trust-service-provider": [
+            "qtsp"
+        ],
+        "register-of-wallet-relying-parties": [
+            "relying_party",
+            "supervisory"
+        ],
+        "registrar-of-wallet-relying-parties": [
+            "relying_party",
+            "supervisory"
+        ],
+        "release-for-free-circulation": [
+            "cabs"
+        ],
+        "relying-party": [
+            "relying_party"
+        ],
+        "remote-qualified-electronic-seal-creation-device": [
+            "qtsp"
+        ],
+        "remote-qualified-electronic-signature-creation-device": [
+            "holder",
+            "qtsp"
+        ],
+        "risk-register": [
+            "wallet_provider",
+            "qtsp"
+        ],
+        "scheme-for-the-attestation-of-attributes": [
+            "eaa_provider"
+        ],
+        "scheme-owner": [
+            "eaa_provider"
+        ],
+        "signatory": [
+            "holder"
+        ],
+        "strong-user-authentication": [
+            "holder",
+            "wallet_provider"
+        ],
+        "technical-specification": [
+            "supervisory"
+        ],
+        "trust-service": [
+            "qtsp"
+        ],
+        "trust-service-provider": [
+            "qtsp"
+        ],
+        "type-of-electronic-attestation-of-attributes": [
+            "eaa_provider"
+        ],
+        "user": [
+            "holder"
+        ],
+        "validation": [
+            "qtsp",
+            "relying_party"
+        ],
+        "validation-data": [
+            "qtsp"
+        ],
+        "wallet-cryptographic-operation": [
+            "wallet_provider"
+        ],
+        "wallet-instance": [
+            "wallet_provider",
+            "holder"
+        ],
+        "wallet-provider": [
+            "wallet_provider"
+        ],
+        "wallet-relying-party": [
+            "relying_party"
+        ],
+        "wallet-relying-party-access-certificate": [
+            "relying_party",
+            "trusted_list"
+        ],
+        "wallet-relying-party-registration-certificate": [
+            "relying_party",
+            "trusted_list"
+        ],
+        "wallet-secure-cryptographic-application": [
+            "wallet_provider"
+        ],
+        "wallet-secure-cryptographic-device": [
+            "wallet_provider"
+        ],
+        "wallet-solution": [
+            "wallet_provider"
+        ],
+        "wallet-unit": [
+            "wallet_provider",
+            "holder"
+        ],
+        "wallet-unit-attestation": [
+            "wallet_provider"
+        ],
+        "wallet-user": [
+            "holder"
+        ]
+    }
+}
