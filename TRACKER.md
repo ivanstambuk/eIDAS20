@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 12:15 CET |
+| **Last Updated** | 2026-01-18 13:35 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (173,385 words) |
+| **Portal Status** | ✅ Fully functional (172,232 words) |
 | **Next Action** | See Backlog |
 
 ---
@@ -83,6 +83,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 13:35 | **Modular AGENTS.md Refactor**: Split 1,888-line AGENTS.md into hub + modules following sdd-bundle-editor pattern. Critical Rules 1-10 remain inline (416 lines). Extracted: development-rules.md (Rules 11-25, 553 lines), content-rules.md (Rules 26-44, 498 lines), rules/README.md (index), build-pipeline.md (architecture). Total preserved: 1,728 lines across 5 files. Quick Reference table links to all docs. |
+| 2026-01-18 13:20 | **2015/1501 Interoperability Framework Header Fixes + Retro**: (1) Badge now shows "Impl. Regulation" for implementing_regulation legalType, (2) Date extraction prioritizes signature block "Done at" date over cited dates, (3) HTML parser fixed to italicize all "Having regard" clauses regardless of HTML order, (4) Rules 42-44 added to AGENTS.md (CSS specificity, HTML parser gold standard, blockquote spacing), (5) Terminology added: CSS Specificity Cascade, Title Continuation Pattern. |
 | 2026-01-18 12:15 | **Quick Jump + Slug Standardization**: (1) Added `useQuickJump` hook for CELEX/slug/ELI detection in search, (2) Standardized ALL slugs to `{year}-{number}` format (DEC-083), (3) Renamed directories 910_2014→2014_910, 765_2008→2008_765, (4) Updated schema for legalType/category model, (5) Rule 41 added to AGENTS.md. Full pipeline verified. |
 | 2026-01-18 10:59 | **EUR-Lex HTML Parser Fixes**: (1) Removed banned "Source Reference" footer, (2) Article titles now separate from headings (clean ToC), (3) Annex points combined with content, (4) Complete annex extraction with titles/sections/tables, (5) Gutter icons for annex points. Added Rules 37-40 to AGENTS.md. 35 docs, 173,385 words. |
 | 2026-01-18 01:33 | Citation display text preservation: original legal reference (e.g., "Commission Recommendation (EU) 2021/946") is now preserved as link text instead of shortened version. Regex refined to exclude institutional attribution ("of the European Parliament..."). Added Rule 36 to AGENTS.md. 171,117 words. |
