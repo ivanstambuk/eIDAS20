@@ -171,7 +171,7 @@ const Terminology = () => {
     const { saveScrollPosition: handleSaveScroll } = useScrollRestoration({
         storageKey: 'terminologyScrollY',
         ready: !loading && terminology !== null,
-        hasDeepLink: !!(searchParams.get('section') || searchParams.get('term'))
+        hasDeepLink: !!(searchParams.get('section') || searchParams.get('term') || searchParams.get('scrollTo'))
     });
 
     // NOTE: We intentionally do NOT clear the scroll position on unmount.
@@ -183,16 +183,22 @@ const Terminology = () => {
     // Clearing on unmount (step 2) would break this cycle.
 
     // Deep linking: scroll to term when content loads or params change
-    // Supports both ?section=letter-X (for sections) and ?term=term-id (for specific terms)
-    // This takes precedence over scroll restoration
+    // Supports:
+    //   ?section=letter-X (for letter headings)
+    //   ?term=term-id (for specific terms, without 'term-' prefix)
+    //   ?scrollTo=term-id (for specific terms, WITH 'term-' prefix - used by AI chat)
     useEffect(() => {
         if (!loading && terminology) {
             const section = searchParams.get('section');
             const termId = searchParams.get('term');
+            const scrollTo = searchParams.get('scrollTo');
 
             // Determine target element ID
             let targetElementId = null;
-            if (termId) {
+            if (scrollTo) {
+                // Direct element ID from AI chat sources (e.g., term-wallet-instance)
+                targetElementId = scrollTo;
+            } else if (termId) {
                 // Direct link to a specific term (from popover)
                 targetElementId = `term-${termId}`;
             } else if (section) {

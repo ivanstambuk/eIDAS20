@@ -218,9 +218,9 @@ function getSourceUrl(source) {
 
     // Determine route based on source type or slug pattern
     if (source.type === 'terminology' || source.slug === 'terminology') {
-        // Link directly to the term with anchor fragment
+        // Link directly to the term using query param (HashRouter doesn't support multiple #)
         if (source.id && source.id.startsWith('term-')) {
-            return `/terminology#${source.id}`;
+            return `/terminology?scrollTo=${source.id}`;
         }
         return '/terminology';
     }
