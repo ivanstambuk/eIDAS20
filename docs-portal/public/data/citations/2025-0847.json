@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "8814f4232ef938c6d3389f16c032faea",
+  "_cacheKey": "136552bc77f3851f6591ab4f4c690ecd",
   "citations": [
     {
       "index": 1,
       "shortName": "Regulation 2016/679",
+      "displayText": "Regulation 2016/679",
       "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
       "ojRef": "OJ L 119, 4.5.2016, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
@@ -33,6 +34,7 @@
     {
       "index": 2,
       "shortName": "Regulation 2018/1725",
+      "displayText": "Regulation 2018/1725",
       "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
       "ojRef": "OJ L 295, 21.11.2018, p. 39",
       "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
@@ -62,6 +64,7 @@
     {
       "index": 3,
       "shortName": "Directive 2002/58",
+      "displayText": "Directive 2002/58",
       "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications",
       "ojRef": "OJ L 201, 31.7.2002, p. 37",
       "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
@@ -91,6 +94,7 @@
     {
       "index": 4,
       "shortName": "Recommendation 2021/946",
+      "displayText": "Commission Recommendation (EU) 2021/946",
       "fullTitle": "Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework",
       "ojRef": "OJ L 210, 14.6.2021, p. 51",
       "eli": "http://data.europa.eu/eli/reco/2021/946/oj",
@@ -120,6 +124,7 @@
     {
       "index": 5,
       "shortName": "Regulation 2024/1183",
+      "displayText": "Regulation 2024/1183",
       "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
@@ -128,7 +133,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2024-1183",
-      "originalText": "Regulation (EU) 2024/1183 of the European Parliament and of the Council \\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
       "entryIntoForce": "2024-05-20",
@@ -149,6 +154,7 @@
     {
       "index": 6,
       "shortName": "Directive 2022/2555",
+      "displayText": "Directive 2022/2555",
       "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
       "ojRef": "OJ L 333, 27.12.2022, p. 80",
       "eli": "http://data.europa.eu/eli/dir/2022/2555/oj",
@@ -157,7 +163,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
-      "originalText": "Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
       "humanName": "Network and Information Security Directive",
       "abbreviation": "NIS2",
       "entryIntoForce": "2023-01-16",
@@ -178,6 +184,7 @@
     {
       "index": 7,
       "shortName": "Regulation 2019/881",
+      "displayText": "Regulation 2019/881",
       "fullTitle": "Regulation (EU) 2019/881 of the European Parliament and of the Council of 17 April 2019 on ENISA (the European Union Agency for Cybersecurity) and on information and communications technology cybersecurity certification and repealing Regulation (EU) No 526/2013 (Cybersecurity Act)",
       "ojRef": "OJ L 151, 7.6.2019, p. 15",
       "eli": "http://data.europa.eu/eli/reg/2019/881/oj",
@@ -207,6 +214,7 @@
     {
       "index": 8,
       "shortName": "Regulation 2024/2847",
+      "displayText": "Regulation 2024/2847",
       "fullTitle": "Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act)",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/2847/oj",
@@ -236,6 +244,7 @@
     {
       "index": 9,
       "shortName": "Regulation 2024/2981",
+      "displayText": "Commission Implementing Regulation (EU) 2024/2981",
       "fullTitle": "Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2024/2981/oj",

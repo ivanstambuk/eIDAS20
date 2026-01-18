@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "6c073b499fd7cf321626b96a23362c4a",
+  "_cacheKey": "212e373b867623cb2ff66a3f0b4157c3",
   "citations": [
     {
       "index": 1,
       "shortName": "Decision 2015/1505",
+      "displayText": "Commission Implementing Decision (EU) 2015/1505",
       "fullTitle": "Commission Implementing Decision (EU) 2015/1505 of 8 September 2015 laying down technical specifications and formats relating to trusted lists pursuant to Article 22(5) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
       "ojRef": "OJ L 235, 9.9.2015, p. 26",
       "eli": "http://data.europa.eu/eli/dec_impl/2015/1505/oj",
@@ -33,6 +34,7 @@
     {
       "index": 2,
       "shortName": "Regulation 2024/1183",
+      "displayText": "Regulation 2024/1183",
       "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
@@ -41,7 +43,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2024-1183",
-      "originalText": "Regulation (EU) 2024/1183 of the European Parliament and of the Council \\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
       "entryIntoForce": "2024-05-20",
@@ -62,6 +64,7 @@
     {
       "index": 3,
       "shortName": "Regulation 2016/679",
+      "displayText": "Regulation 2016/679",
       "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
       "ojRef": "OJ L 119, 4.5.2016, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
@@ -70,7 +73,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -91,6 +94,7 @@
     {
       "index": 4,
       "shortName": "Directive 2002/58",
+      "displayText": "Directive 2002/58",
       "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
       "ojRef": "OJ L 201, 31.7.2002, p. 37",
       "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
@@ -120,6 +124,7 @@
     {
       "index": 5,
       "shortName": "Regulation 2018/1725",
+      "displayText": "Regulation 2018/1725",
       "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
       "ojRef": "OJ L 295, 21.11.2018, p. 39",
       "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
@@ -128,7 +133,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",

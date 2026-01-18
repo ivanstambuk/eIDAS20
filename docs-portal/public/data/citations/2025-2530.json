@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "b51e6ae9943d3270a447d63596dffcae",
+  "_cacheKey": "2628f7ec0c268f83e172e39cab3b3333",
   "citations": [
     {
       "index": 1,
       "shortName": "Regulation 2024/1183",
+      "displayText": "Regulation 2024/1183",
       "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
@@ -12,7 +13,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2024-1183",
-      "originalText": "Regulation (EU) 2024/1183 of the European Parliament and of the Council \\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
       "entryIntoForce": "2024-05-20",
@@ -33,6 +34,7 @@
     {
       "index": 2,
       "shortName": "Directive 2022/2555",
+      "displayText": "Directive 2022/2555",
       "fullTitle": "Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive)",
       "ojRef": "OJ L 333, 27.12.2022, p. 80",
       "eli": "http://data.europa.eu/eli/dir/2022/2555/oj",
@@ -41,7 +43,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
-      "originalText": "Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
       "humanName": "Network and Information Security Directive",
       "abbreviation": "NIS2",
       "entryIntoForce": "2023-01-16",
@@ -62,6 +64,7 @@
     {
       "index": 3,
       "shortName": "Regulation 2024/2690",
+      "displayText": "Commission Implementing Regulation (EU) 2024/2690",
       "fullTitle": "Commission Implementing Regulation (EU) 2024/2690 of 17 October 2024 laying down rules for the application of Directive (EU) 2022/2555 as regards technical and methodological requirements of cybersecurity risk-management measures and further specification of the cases in which an incident is considered to be significant with regard to DNS service providers, TLD name registries, cloud computing service providers, data centre service providers, content delivery network providers, managed service providers, managed security service providers, providers of online market places, of online search engines and of social networking services platforms, and trust service providers",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2024/2690/oj",
@@ -91,6 +94,7 @@
     {
       "index": 4,
       "shortName": "Regulation 2025/2160",
+      "displayText": "Commission Implementing Regulation (EU) 2025/2160",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/2160 of 27 October 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards, specifications and procedures for the management of risks to the provision of non-qualified trust services",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/2160/oj",
@@ -120,6 +124,7 @@
     {
       "index": 5,
       "shortName": "Regulation 2016/679",
+      "displayText": "Regulation 2016/679",
       "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
       "ojRef": "OJ L 119, 4.5.2016, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
@@ -128,7 +133,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -149,6 +154,7 @@
     {
       "index": 6,
       "shortName": "Directive 2002/58",
+      "displayText": "Directive 2002/58",
       "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
       "ojRef": "OJ L 201, 31.7.2002, p. 37",
       "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
@@ -178,6 +184,7 @@
     {
       "index": 7,
       "shortName": "Regulation 2018/1725",
+      "displayText": "Regulation 2018/1725",
       "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
       "ojRef": "OJ L 295, 21.11.2018, p. 39",
       "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
@@ -186,7 +193,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",
@@ -207,6 +214,7 @@
     {
       "index": 8,
       "shortName": "Regulation 2025/1943",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1943",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1943 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for qualified certificates for electronic signatures and qualified certificates for electronic seals",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1943/oj",
@@ -236,6 +244,7 @@
     {
       "index": 9,
       "shortName": "Regulation 2025/1942",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1942",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1942 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified validation services for qualified electronic signatures and qualified validation services for qualified electronic seals",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1942/oj",
@@ -265,6 +274,7 @@
     {
       "index": 10,
       "shortName": "Regulation 2025/1946",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1946",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1946 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified preservation services for qualified electronic signatures and for qualified electronic seals",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1946/oj",
@@ -294,6 +304,7 @@
     {
       "index": 11,
       "shortName": "Regulation 2025/1929",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1929",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1929 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the binding of date and time to data and establishing the accuracy of the time sources for the provision of qualified electronic time stamps",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1929/oj",
@@ -323,6 +334,7 @@
     {
       "index": 12,
       "shortName": "Regulation 2025/1944",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1944",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1944 of 29 September 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for processes for sending and receiving data in qualified electronic registered delivery services and as regards interoperability of those services",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1944/oj",
@@ -352,6 +364,7 @@
     {
       "index": 13,
       "shortName": "Regulation 2025/1567",
+      "displayText": "Implementing Regulation (EU) 2025/1567",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1567 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the management of remote qualified electronic signature creation devices and of remote qualified electronic seal creation devices as qualified trust services",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1567/oj",
@@ -381,6 +394,7 @@
     {
       "index": 14,
       "shortName": "Regulation 2025/2532",
+      "displayText": "Commission Implementing Regulation (EU) 2025/2532",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/2532 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards and specifications for qualified electronic archiving services",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/2532/oj",
@@ -410,6 +424,7 @@
     {
       "index": 15,
       "shortName": "Regulation 2025/1569",
+      "displayText": "Commission Implementing Regulation (EU) 2025/1569",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/1569 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards qualified electronic attestations of attributes and electronic attestations of attributes provided by or on behalf of a public sector body responsible for an authentic source",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/1569/oj",
@@ -439,6 +454,7 @@
     {
       "index": 16,
       "shortName": "Regulation 2025/2531",
+      "displayText": "Commission Implementing Regulation (EU) 2025/2531",
       "fullTitle": "Commission Implementing Regulation (EU) 2025/2531 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards and specifications for qualified electronic ledgers",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2025/2531/oj",

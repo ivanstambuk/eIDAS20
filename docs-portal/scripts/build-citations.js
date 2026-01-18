@@ -40,7 +40,7 @@ const ROUTES = {
 // ⚠️ INCREMENT THIS when changing script logic that affects output format.
 // The hash-based cache only detects content changes, not script changes.
 // Bumping this version forces a full rebuild.
-const CACHE_VERSION = '1.0.2';  // Bumped: capture prepended legislation text to fix duplicates
+const CACHE_VERSION = '1.0.4';  // Bumped: exclude institutional attribution from display text
 
 /**
  * Compute MD5 hash of content for cache validation.
@@ -693,10 +693,14 @@ function extractCitations(content, documentRegistry, currentSlug = null, documen
     // where the inline text duplicates the footnote. We capture the preceding text
     // to replace BOTH with a single linked reference.
     //
+    // IMPORTANT: Only capture the legislation reference itself (e.g., "Regulation (EU) 2024/1183"),
+    // NOT the institutional attribution ("of the European Parliament and of the Council").
+    // The regex stops at the number/year pattern, preserving the exact legal reference.
+    //
     // Group 1: Optional preceding legislation reference (e.g., "Commission Recommendation (EU) 2021/946 ")
     // Group 2: The footnote title part
     // Group 3: The ELI URL
-    const citationPattern = /((?:(?:Commission\s+)?(?:Implementing\s+)?(?:Regulation|Directive|Recommendation|Decision)\s+\([A-Z,\s]+\)\s*(?:No\s*)?\d+\/\d+(?:\s+of\s+[^[]+?)?\s+)?)?\\?\[([^\]]+?)\s*\(OJ\s+[^)]+,\s*ELI:\s*(http:\/\/data\.europa\.eu\/eli\/[^\s\])\\]+)[^\]]*\\?\]/g;
+    const citationPattern = /((?:(?:Commission\s+)?(?:Implementing\s+)?(?:Regulation|Directive|Recommendation|Decision)\s+\([A-Z,\s]+\)\s*(?:No\s*)?\d+\/\d+)\s+)?\\\[([^\]]+?)\s*\(OJ\s+[^)]+,\s*ELI:\s*(http:\/\/data\.europa\.eu\/eli\/[^\s\])\\]+)[^\]]*\\\]/g;
 
     let match;
     while ((match = citationPattern.exec(content)) !== null) {
@@ -723,9 +727,14 @@ function extractCitations(content, documentRegistry, currentSlug = null, documen
         );
 
         // Build citation object
+        // If there's prepended text (the original inline reference), use that as the display text
+        // This preserves "Commission Recommendation (EU) 2021/946" instead of shortening to "Recommendation 2021/946"
+        const displayText = prependedText.trim() || extractShortName(titlePart);
+
         const citation = enrichCitation({
             index: citations.length + 1,
             shortName: extractShortName(titlePart),
+            displayText,  // Use original inline text when available
             fullTitle: titlePart.trim(),
             ojRef: extractOjRef(fullText),
             eli: eliInfo.eli,

@@ -10,7 +10,7 @@
 |-------|-------|
 | **Last Updated** | 2026-01-18 01:30 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (165,650 words) |
+| **Portal Status** | ✅ Fully functional (171,117 words) |
 | **Next Action** | See Backlog |
 
 ---
@@ -80,7 +80,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-18 01:30 | Fix: Duplicate citation text removed. Formex produces patterns like `Commission Recommendation (EU) 2021/946 \[full citation...\]` — extended citationPattern regex to capture prepended legislation reference and replace BOTH with single linked shortName. Cache version bumped to force rebuild. Word count reduced 171,231 → 165,650 (−5,581 duplicate words). |
+| 2026-01-18 01:33 | Citation display text preservation: original legal reference (e.g., "Commission Recommendation (EU) 2021/946") is now preserved as link text instead of shortened version. Regex refined to exclude institutional attribution ("of the European Parliament..."). Added Rule 36 to AGENTS.md. 171,117 words. |
 | 2026-01-18 01:06 | **Session Complete**: EUDIW Toolbox import (32021H0946) + data model refactor (legalType/category). Extended Formex converter with `extract_gr_seq_sections()` for Recommendations. Rules 33-35 added (legal doc import, citation rebuild, Formex patterns). TERMINOLOGY.md expanded with CELEX codes, GR.SEQ, legalType/category. 5 new unit tests. 171,231 words across 34 documents. |
 | 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
 | 2026-01-17 19:43 | Fix: Inline QUOT.START/END rendered as blockquotes — abbreviation ('API') now inline. Added ALINEA to TERMINOLOGY.md. Retro: Rules 31-32 (directory naming, QUOT.* detection), installed python3-markdown (3 fewer skipped tests). |

@@ -201,10 +201,11 @@ function transformCitationsInMarkdown(content, citations) {
         const originalText = citation.originalText;
 
         // DEC-064: For provision citations, show the full reference (e.g., "Article 5a(23) of Regulation 910/2014")
-        // For base citations, show just the short name
+        // For base citations, use displayText (original inline text like "Commission Recommendation (EU) 2021/946")
+        // or fall back to shortName
         const displayText = citation.provision
             ? citation.provision.fullReference
-            : citation.shortName;
+            : (citation.displayText || citation.shortName);
 
         // Replace with HTML span (will pass through markdown processor)
         // Using data attributes for frontend popover hydration

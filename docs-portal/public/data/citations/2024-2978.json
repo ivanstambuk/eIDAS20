@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "fe6607b2992aef1d329a2e0298017f12",
+  "_cacheKey": "13375b40380a7a9874688a24edbfc2bb",
   "citations": [
     {
       "index": 1,
       "shortName": "Regulation 1151/2012",
+      "displayText": "Regulation 1151/2012",
       "fullTitle": "Regulation (EU) No 1151/2012 of the European Parliament and of the Council of 21 November 2012 on quality schemes for agricultural products and foodstuffs",
       "ojRef": "OJ L 343, 14.12.2012, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2012/1151/oj",
@@ -12,7 +13,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2012/1151/oj",
-      "originalText": "Regulation (EU) No 1151/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1151/2012 of the European Parliament and of the Council of 21 November 2012 on quality schemes for agricultural products and foodstuffs (OJ L 343, 14.12.2012, p. 1, ELI: http://data.europa.eu/eli/reg/2012/1151/oj).\\]",
+      "originalText": "\\[Regulation (EU) No 1151/2012 of the European Parliament and of the Council of 21 November 2012 on quality schemes for agricultural products and foodstuffs (OJ L 343, 14.12.2012, p. 1, ELI: http://data.europa.eu/eli/reg/2012/1151/oj).\\]",
       "humanName": "Quality Schemes for Agricultural Products",
       "abbreviation": "PDO/PGI Regulation",
       "entryIntoForce": "2013-01-03",

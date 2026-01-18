@@ -1255,6 +1255,48 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     
     The converter handles this via `extract_gr_seq_sections()` in `formex_to_md_v3.py`.
 
+36. **Citation Display Text Preservation (MANDATORY — No Paraphrasing Legal References):**
+    
+    **When creating citation links, the displayed link text must preserve the EXACT original legal text as it appears in the source document.**
+    
+    **Example:**
+    ```
+    Source text: "...carried out under Commission Recommendation (EU) 2021/946 [full citation...]"
+    
+    ❌ WRONG: Replace with shortened text
+       <span>Recommendation 2021/946</span>
+    
+    ✅ CORRECT: Preserve original inline text  
+       <span>Commission Recommendation (EU) 2021/946</span>
+    ```
+    
+    **What to capture vs exclude:**
+    
+    | Include in Link | Exclude from Link |
+    |-----------------|-------------------|
+    | `Commission Recommendation (EU) 2021/946` | ❌ `of the European Parliament and of the Council` |
+    | `Regulation (EU) No 910/2014` | ❌ `amending Directive...` |
+    | `Commission Implementing Regulation (EU) 2024/2977` | ❌ Any text after the number/year |
+    
+    **Why this is MANDATORY:**
+    - Legal citations use the **exact phrasing** for precision
+    - Shortening "Commission Recommendation (EU) 2021/946" to "Recommendation 2021/946" is a modification
+    - We are a **mirror** of official legislation, not an editor
+    - The regex in `build-citations.js` captures only up to the number/year pattern
+    
+    **This applies to:**
+    - Citation links in rendered HTML
+    - Popover trigger text
+    - Any display of legal references
+    
+    **Real example from 2026-01-18:**
+    ```
+    Bug: Link text was "Regulation (EU) 2024/1183 of the European Parliament and of the Council"
+    Root cause: Regex captured too much — included institutional attribution
+    Fix: Regex now stops at number/year pattern (e.g., "2024/1183")
+    Result: Link text is clean "Regulation (EU) 2024/1183"
+    ```
+
 ## Project Structure
 
 ```

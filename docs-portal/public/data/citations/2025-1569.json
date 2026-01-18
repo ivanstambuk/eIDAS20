@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "efa767f4b7cb663ebf0f693d9848059a",
+  "_cacheKey": "9c41288293971bba0308d56faf358ead",
   "citations": [
     {
       "index": 1,
       "shortName": "Regulation 2024/1183",
+      "displayText": "Regulation 2024/1183",
       "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
@@ -33,6 +34,7 @@
     {
       "index": 2,
       "shortName": "Regulation 2024/903",
+      "displayText": "Regulation 2024/903",
       "fullTitle": "Regulation (EU) 2024/903 of the European Parliament and of the Council of 13 March 2024 laying down measures for a high level of public sector interoperability across the Union (Interoperable Europe Act)",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/903/oj",
@@ -62,6 +64,7 @@
     {
       "index": 3,
       "shortName": "Regulation 2018/1724",
+      "displayText": "Regulation (EU) No 1024/2012",
       "fullTitle": "Regulation (EU) 2018/1724 of the European Parliament and of the Council of 2 October 2018 establishing a single digital gateway to provide access to information, to procedures and to assistance and problem-solving services and amending Regulation (EU) No 1024/2012",
       "ojRef": "OJ L 295, 21.11.2018, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2018/1724/oj",
@@ -70,7 +73,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1724/oj",
-      "originalText": "Regulation (EU) 2018/1724 of the Parliament and of the Council establishing a single digital gateway and amending Regulation (EU) No 1024/2012 \\[Regulation (EU) 2018/1724 of the European Parliament and of the Council of 2 October 2018 establishing a single digital gateway to provide access to information, to procedures and to assistance and problem-solving services and amending Regulation (EU) No 1024/2012 (OJ L 295, 21.11.2018, p. 1, ELI: http://data.europa.eu/eli/reg/2018/1724/oj).\\]",
+      "originalText": "Regulation (EU) No 1024/2012 \\[Regulation (EU) 2018/1724 of the European Parliament and of the Council of 2 October 2018 establishing a single digital gateway to provide access to information, to procedures and to assistance and problem-solving services and amending Regulation (EU) No 1024/2012 (OJ L 295, 21.11.2018, p. 1, ELI: http://data.europa.eu/eli/reg/2018/1724/oj).\\]",
       "humanName": "Single Digital Gateway Regulation",
       "abbreviation": "SDG",
       "entryIntoForce": "2018-11-11",
@@ -91,6 +94,7 @@
     {
       "index": 4,
       "shortName": "Regulation 2016/679",
+      "displayText": "Regulation 2016/679",
       "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
       "ojRef": "OJ L 119, 4.5.2016, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
@@ -99,7 +103,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -120,6 +124,7 @@
     {
       "index": 5,
       "shortName": "Directive 2002/58",
+      "displayText": "Directive 2002/58",
       "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
       "ojRef": "OJ L 201, 31.7.2002, p. 37",
       "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
@@ -149,6 +154,7 @@
     {
       "index": 6,
       "shortName": "Regulation 2018/1725",
+      "displayText": "Regulation 2018/1725",
       "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
       "ojRef": "OJ L 295, 21.11.2018, p. 39",
       "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
@@ -157,7 +163,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",
@@ -178,6 +184,7 @@
     {
       "index": 7,
       "shortName": "Regulation 2024/2979",
+      "displayText": "Commission Implementing Regulation (EU) 2024/2979",
       "fullTitle": "Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2024/2979/oj",

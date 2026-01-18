@@ -1,9 +1,10 @@
 {
-  "_cacheKey": "7702b9ec0c52855c75df3405917d71a6",
+  "_cacheKey": "30be3877e4b897f5edb5a6730b83e255",
   "citations": [
     {
       "index": 1,
       "shortName": "Recommendation 2021/946",
+      "displayText": "Commission Recommendation (EU) 2021/946",
       "fullTitle": "Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework",
       "ojRef": "OJ L 210, 14.6.2021, p. 51",
       "eli": "http://data.europa.eu/eli/reco/2021/946/oj",
@@ -33,6 +34,7 @@
     {
       "index": 2,
       "shortName": "Regulation 2024/1183",
+      "displayText": "Regulation 2024/1183",
       "fullTitle": "Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg/2024/1183/oj",
@@ -41,7 +43,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2024-1183",
-      "originalText": "Regulation (EU) 2024/1183 of the European Parliament and of the Council \\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
       "entryIntoForce": "2024-05-20",
@@ -62,6 +64,7 @@
     {
       "index": 3,
       "shortName": "Regulation 2015/1501",
+      "displayText": "Commission Implementing Regulation (EU) 2015/1501",
       "fullTitle": "Commission Implementing Regulation (EU) 2015/1501 of 8 September 2015 on the interoperability framework pursuant to Article 12(8) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
       "ojRef": "OJ L 235, 9.9.2015, p. 1",
       "eli": "http://data.europa.eu/eli/reg_impl/2015/1501/oj",
@@ -91,6 +94,7 @@
     {
       "index": 4,
       "shortName": "Regulation 2024/2977",
+      "displayText": "Commission Implementing Regulation (EU) 2024/2977",
       "fullTitle": "Commission Implementing Regulation (EU) 2024/2977 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards person identification data and electronic attestations of attributes issued to European Digital Identity Wallets",
       "ojRef": null,
       "eli": "http://data.europa.eu/eli/reg_impl/2024/2977/oj",
@@ -120,6 +124,7 @@
     {
       "index": 5,
       "shortName": "Regulation 2016/679",
+      "displayText": "Regulation 2016/679",
       "fullTitle": "Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)",
       "ojRef": "OJ L 119, 4.5.2016, p. 1",
       "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
@@ -128,7 +133,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -149,6 +154,7 @@
     {
       "index": 6,
       "shortName": "Directive 2002/58",
+      "displayText": "Directive 2002/58",
       "fullTitle": "Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)",
       "ojRef": "OJ L 201, 31.7.2002, p. 37",
       "eli": "http://data.europa.eu/eli/dir/2002/58/oj",
@@ -178,6 +184,7 @@
     {
       "index": 7,
       "shortName": "Regulation 2018/1725",
+      "displayText": "Regulation 2018/1725",
       "fullTitle": "Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC",
       "ojRef": "OJ L 295, 21.11.2018, p. 39",
       "eli": "http://data.europa.eu/eli/reg/2018/1725/oj",
@@ -186,7 +193,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",
