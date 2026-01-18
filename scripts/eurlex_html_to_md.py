@@ -385,12 +385,15 @@ def extract_chapters_and_articles(soup: BeautifulSoup) -> list[str]:
             past_enacting_formula = True
             
             # Look ahead for article title
+            # Format: heading is just "Article N", title is bold text below (matches Formex)
             if i + 1 < len(all_p):
                 next_p = all_p[i + 1]
                 next_classes = next_p.get('class', [])
                 if 'oj-sti-art' in next_classes:
                     title = clean_text(next_p.get_text())
-                    lines.append(f"### {text} — {title}")
+                    lines.append(f"### {text}")
+                    lines.append("")
+                    lines.append(f"**{title}**")
                     lines.append("")
                     i += 2  # Skip both article number and title
                     continue
