@@ -766,12 +766,18 @@ pre code {
 
 .sidebar-nav-link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--border-radius-md);
   color: var(--text-secondary);
   transition: all var(--transition-fast);
+}
+
+.sidebar-nav-link svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  /* Align icon with first line of text */
 }
 
 .sidebar-nav-link:hover {
@@ -1365,12 +1371,16 @@ a:focus-visible,
 
 /* Ensure minimum touch target size (44x44px for WCAG 2.1 AAA, 24x24 for AA) */
 .btn,
-.sidebar-nav-link,
 .toc-link,
 .toc-chapter {
   min-height: 44px;
   display: flex;
   align-items: center;
+}
+
+/* Sidebar links: 44px min-height but flex-start for multi-line text */
+.sidebar-nav-link {
+  min-height: 44px;
 }
 
 /* Collapsible chapter heading in TOC */
