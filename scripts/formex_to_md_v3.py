@@ -1209,6 +1209,39 @@ def convert_formex_to_md(xml_path, output_path=None):
                     md_lines.extend(list_lines)
                     if list_lines:
                         md_lines.append("")
+                
+                # Process NP elements directly inside CONTENTS (numbered paragraphs)
+                # This handles annexes like VII, VIII, IX in 2024/2981 that use
+                # CONTENTS > NP structure without GR.SEQ wrapper
+                for np_elem in contents.findall('NP'):
+                    no_p = np_elem.find('NO.P')
+                    number = get_element_text(no_p).strip() if no_p is not None else ""
+                    
+                    # Get paragraph text from TXT
+                    txt_elem = np_elem.find('TXT')
+                    if txt_elem is not None:
+                        text = clean_text(get_element_text(txt_elem))
+                    else:
+                        text = ""
+                    
+                    # Output the numbered paragraph
+                    if number and text:
+                        md_lines.append(f"{number} {text}")
+                    elif text:
+                        md_lines.append(text)
+                    md_lines.append("")
+                    
+                    # Process nested lists inside this NP (e.g., points (a), (b), etc.)
+                    for nested_list in np_elem.findall('P/LIST'):
+                        list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                        md_lines.extend(list_lines)
+                        if list_lines:
+                            md_lines.append("")
+                    for nested_list in np_elem.findall('LIST'):
+                        list_lines = process_list_nested(nested_list, base_indent="", level=0)
+                        md_lines.extend(list_lines)
+                        if list_lines:
+                            md_lines.append("")
             else:
                 # Last resort: process P elements directly under annex
                 for p in annex.findall('.//P'):
