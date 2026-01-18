@@ -197,6 +197,18 @@ function countLines(text) {
 }
 
 /**
+ * Strip markdown formatting from text (e.g., **bold**)
+ */
+function stripMarkdown(text) {
+    if (!text) return '';
+    return text
+        .replace(/\*\*/g, '')  // Remove bold markers
+        .replace(/\*/g, '')    // Remove italic markers
+        .replace(/_/g, '')     // Remove underscore markers
+        .trim();
+}
+
+/**
  * Build URL for a source reference
  * @param {Object} source - Source with type, slug, title
  * @returns {string|null} - URL path to navigate to, or null if not linkable
@@ -287,18 +299,19 @@ function ChatMessage({ message, isStreaming }) {
                         <span className="sources-label">Sources:</span>
                         {message.sources.map((source, i) => {
                             const url = getSourceUrl(source);
+                            const title = stripMarkdown(source.title);
                             return url ? (
                                 <Link
                                     key={i}
                                     to={url}
                                     className="source-tag source-link"
-                                    title={`${source.document || 'View source'} - ${source.title}`}
+                                    title={`${source.document || 'View source'} - ${title}`}
                                 >
-                                    {source.title}
+                                    {title}
                                 </Link>
                             ) : (
                                 <span key={i} className="source-tag">
-                                    {source.title}
+                                    {title}
                                 </span>
                             );
                         })}

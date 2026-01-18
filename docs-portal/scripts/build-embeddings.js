@@ -144,7 +144,9 @@ function loadTerminology() {
         const termSections = [];
 
         for (const term of terminology.terms) {
-            const primaryDef = term.definitions[0];
+            // New format uses 'sources' array instead of 'definitions'
+            const primarySource = term.sources?.[0];
+            if (!primarySource) continue;
 
             termSections.push({
                 id: `term-${term.id}`,
@@ -153,7 +155,7 @@ function loadTerminology() {
                 docTitle: 'Terminology',
                 section: term.term,
                 sectionTitle: term.term,
-                content: `${term.term}: ${primaryDef.text}`.substring(0, 2000),
+                content: `${term.term}: ${primarySource.definition}`.substring(0, 2000),
             });
         }
 
