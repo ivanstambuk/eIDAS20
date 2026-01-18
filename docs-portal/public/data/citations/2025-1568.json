@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "833c8aba6f72d46fa9c57bd98a6b7dae",
+  "_cacheKey": "e6088cfc6276f00be2a5413451c95ee0",
   "citations": [
     {
       "index": 1,
@@ -39,10 +39,10 @@
       "ojRef": "OJ L 235, 9.9.2015, p. 1",
       "eli": "http://data.europa.eu/eli/reg_impl/2015/1501/oj",
       "celex": "32015R1501",
-      "isInternal": false,
+      "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "https://eur-lex.europa.eu/eli/reg_impl/2015/1501/oj",
+      "url": "#/regulation/2015-1501",
       "originalText": "Commission Implementing Regulation (EU) 2015/1501 \\[Commission Implementing Regulation (EU) 2015/1501 of 8 September 2015 on the interoperability framework pursuant to Article 12(8) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market (OJ L 235, 9.9.2015, p. 1, ELI: http://data.europa.eu/eli/reg_impl/2015/1501/oj).\\]",
       "humanName": "eIDAS Interoperability Framework",
       "abbreviation": null,

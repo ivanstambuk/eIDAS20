@@ -40,7 +40,7 @@ const ROUTES = {
 // ⚠️ INCREMENT THIS when changing script logic that affects output format.
 // The hash-based cache only detects content changes, not script changes.
 // Bumping this version forces a full rebuild.
-const CACHE_VERSION = '1.0.4';  // Bumped: exclude institutional attribution from display text
+const CACHE_VERSION = '1.0.5';  // Bumped: added 32015R1501 as internal document
 
 /**
  * Compute MD5 hash of content for cache validation.
