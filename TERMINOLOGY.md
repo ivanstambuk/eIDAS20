@@ -108,6 +108,8 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Informal Citation** | A citation detected by pattern matching (e.g., "Directive 2001/95/EC"). CELEX auto-constructed. |
 | **Base Citation** | The parent document citation that a provision citation inherits metadata from. When a provision is cited (e.g., "Article 5 of NIS2"), the base citation is the document-level entry for NIS2. |
 | **Metadata Registry** | The `LEGISLATION_METADATA` object in `legislation-metadata.js` containing enriched data (humanName, abbreviation, status, category) for known CELEX numbers. Used to enrich citation popovers. |
+| **displayText** | The visible link text for a citation, preserved from the original source document. Shows the exact legislation reference as written (e.g., "Commission Recommendation (EU) 2021/946"), not an abbreviated version. See Rule 36 in AGENTS.md. |
+| **Institutional Attribution** | The phrase "of the European Parliament and of the Council" (or similar) identifying which EU institutions adopted an act. **Excluded from citation link text** — appears as regular text after the link. |
 
 ### Citation Granularity
 
