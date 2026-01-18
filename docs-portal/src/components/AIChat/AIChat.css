@@ -975,6 +975,19 @@
     border: 1px solid var(--border-primary);
 }
 
+/* Clickable source links */
+.source-tag.source-link {
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.source-tag.source-link:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
 /* ============================================
    10.5 THINKING BLOCK (Collapsible)
    ============================================ */

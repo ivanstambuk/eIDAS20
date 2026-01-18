@@ -11,6 +11,7 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useWebLLM, getAvailableModels, getModelSupportsThinking } from '../../hooks/useWebLLM';
 import { useRAG } from '../../hooks/useRAG';
@@ -196,6 +197,28 @@ function countLines(text) {
 }
 
 /**
+ * Build URL for a source reference
+ * @param {Object} source - Source with type, slug, title
+ * @returns {string|null} - URL path to navigate to, or null if not linkable
+ */
+function getSourceUrl(source) {
+    if (!source.slug) return null;
+
+    // Determine route based on source type or slug pattern
+    if (source.type === 'terminology' || source.slug === 'terminology') {
+        return '/terminology';
+    }
+
+    // Check if it's an implementing act (based on slug pattern)
+    if (source.slug.includes('impl-') || source.type === 'implementing_act') {
+        return `/implementing-acts/${source.slug}`;
+    }
+
+    // Default to regulation route
+    return `/regulation/${source.slug}`;
+}
+
+/**
  * ThinkingBlock - Collapsible thinking trace display
  */
 function ThinkingBlock({ thinking }) {
@@ -258,15 +281,27 @@ function ChatMessage({ message, isStreaming }) {
                     {isStreaming && <span className="cursor-blink">▊</span>}
                 </div>
 
-                {/* Sources */}
+                {/* Sources - clickable links to documents */}
                 {message.sources && message.sources.length > 0 && (
                     <div className="message-sources">
                         <span className="sources-label">Sources:</span>
-                        {message.sources.map((source, i) => (
-                            <span key={i} className="source-tag">
-                                {source.title}
-                            </span>
-                        ))}
+                        {message.sources.map((source, i) => {
+                            const url = getSourceUrl(source);
+                            return url ? (
+                                <Link
+                                    key={i}
+                                    to={url}
+                                    className="source-tag source-link"
+                                    title={`${source.document || 'View source'} - ${source.title}`}
+                                >
+                                    {source.title}
+                                </Link>
+                            ) : (
+                                <span key={i} className="source-tag">
+                                    {source.title}
+                                </span>
+                            );
+                        })}
                     </div>
                 )}
             </div>
@@ -520,6 +555,8 @@ export function AIChat() {
                     sources: context.map(c => ({
                         title: c.title,
                         document: c.documentTitle,
+                        slug: c.slug,
+                        type: c.type,
                     })),
                 },
             ]);
