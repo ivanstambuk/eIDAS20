@@ -1222,11 +1222,18 @@ pre code {
   .header,
   .sidebar,
   .chat-widget,
+  .ai-chat-widget,
   aside,
   .btn,
   nav,
-  .badge {
+  .badge,
+  .copy-gutter {
     display: none !important;
+  }
+
+  /* Reset layout for print - override inline grid from RegulationViewer */
+  .regulation-layout {
+    display: block !important;
   }
 
   /* Reset layout for print */
@@ -1234,10 +1241,25 @@ pre code {
     margin: 0 !important;
     padding: 0 !important;
     max-width: 100% !important;
+    width: 100% !important;
   }
 
   .main-content-inner {
     max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Ensure main content area expands */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Term links: remove interactive styling for print */
+  .term-link {
+    border-bottom: none !important;
+    cursor: default !important;
+    color: inherit !important;
   }
 
   /* Light theme for printing */

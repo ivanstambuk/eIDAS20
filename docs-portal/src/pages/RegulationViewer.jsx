@@ -544,7 +544,7 @@ const RegulationViewer = () => {
             </header>
 
             {/* Main Content Area with TOC */}
-            <div style={{
+            <div className="regulation-layout" style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 280px',
                 gap: 'var(--space-8)',
