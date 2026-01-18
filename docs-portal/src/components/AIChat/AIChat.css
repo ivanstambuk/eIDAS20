@@ -893,6 +893,65 @@
     }
 }
 
+/* Markdown styling in assistant messages */
+.chat-message.assistant .message-text p {
+    margin: 0 0 var(--space-2) 0;
+}
+
+.chat-message.assistant .message-text p:last-child {
+    margin-bottom: 0;
+}
+
+.chat-message.assistant .message-text strong {
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+}
+
+.chat-message.assistant .message-text em {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.chat-message.assistant .message-text a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+.chat-message.assistant .message-text a:hover {
+    color: var(--accent-secondary);
+}
+
+.chat-message.assistant .message-text ul,
+.chat-message.assistant .message-text ol {
+    margin: var(--space-2) 0;
+    padding-left: var(--space-4);
+}
+
+.chat-message.assistant .message-text li {
+    margin-bottom: var(--space-1);
+}
+
+.chat-message.assistant .message-text code {
+    background: var(--bg-secondary);
+    padding: 1px 4px;
+    border-radius: var(--radius-sm);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+.chat-message.assistant .message-text pre {
+    background: var(--bg-secondary);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: var(--space-2) 0;
+}
+
+.chat-message.assistant .message-text pre code {
+    background: none;
+    padding: 0;
+}
+
 /* Message sources */
 .message-sources {
     display: flex;

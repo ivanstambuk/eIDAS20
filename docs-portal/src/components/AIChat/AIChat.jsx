@@ -11,6 +11,7 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useWebLLM, getAvailableModels, getModelSupportsThinking } from '../../hooks/useWebLLM';
 import { useRAG } from '../../hooks/useRAG';
 import './AIChat.css';
@@ -236,9 +237,13 @@ function ChatMessage({ message, isStreaming }) {
                     <ThinkingBlock thinking={thinking} />
                 )}
 
-                {/* Main message text */}
+                {/* Main message text - rendered as markdown for assistant */}
                 <div className="message-text">
-                    {answer}
+                    {message.role === 'assistant' ? (
+                        <ReactMarkdown>{answer}</ReactMarkdown>
+                    ) : (
+                        answer
+                    )}
                     {isStreaming && <span className="cursor-blink">▊</span>}
                 </div>
 
