@@ -29,7 +29,8 @@
             "required": [
                 "celex",
                 "title",
-                "type",
+                "legalType",
+                "category",
                 "output_dir"
             ],
             "properties": {
@@ -45,16 +46,29 @@
                     "type": "string",
                     "description": "Human-readable short title (REQUIRED for regulations per DEC-043)"
                 },
-                "type": {
+                "sidebarTitle": {
+                    "type": "string",
+                    "description": "Optional shorter title for sidebar display"
+                },
+                "legalType": {
                     "type": "string",
                     "enum": [
-                        "consolidated",
-                        "amending",
-                        "referenced",
-                        "implementing_act",
-                        "decision"
+                        "regulation",
+                        "implementing_regulation",
+                        "decision",
+                        "recommendation",
+                        "directive"
                     ],
-                    "description": "Document type"
+                    "description": "What the document IS under EU law"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "primary",
+                        "implementing_act",
+                        "referenced"
+                    ],
+                    "description": "How the document relates to the eIDAS project"
                 },
                 "cellar_id": {
                     "type": "string",
@@ -64,9 +78,10 @@
                     "type": "string",
                     "enum": [
                         "html",
-                        "formex"
+                        "formex",
+                        "manual"
                     ],
-                    "description": "Source format (html for fallback parser)"
+                    "description": "Source format (html for fallback parser, manual for hand-merged)"
                 },
                 "output_dir": {
                     "type": "string",

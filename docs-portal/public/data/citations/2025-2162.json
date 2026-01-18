@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "8b081293be77e805f4940b0b9681bd14",
+  "_cacheKey": "6942fb9c927b519825fca1f35cab9440",
   "citations": [
     {
       "index": 1,
@@ -42,7 +42,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/765-2008",
+      "url": "#/regulation/2008-765",
       "originalText": "\\[Regulation (EC) No 765/2008 of the European Parliament and of the Council of 9 July 2008 setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93 (OJ L 218, 13.8.2008, p. 30, ELI: http://data.europa.eu/eli/reg/2008/765/oj).\\]",
       "humanName": "Accreditation and Market Surveillance Regulation",
       "abbreviation": null,
@@ -270,7 +270,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -287,7 +287,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     },
@@ -411,7 +411,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45f-para-3",
+      "url": "#/regulation/2014-910?section=article-45f-para-3",
       "originalText": "Article 45f(3) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -433,7 +433,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -444,7 +444,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/765-2008?section=article-5",
+      "url": "#/regulation/2008-765?section=article-5",
       "originalText": "Article 5 of Regulation (EC) No 765/2008",
       "provision": {
         "type": "article",
@@ -475,7 +475,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-22",
+      "url": "#/regulation/2014-910?section=article-22",
       "originalText": "Article 22 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -497,7 +497,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -570,7 +570,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-48",
+      "url": "#/regulation/2014-910?section=article-48",
       "originalText": "Article 48 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -592,7 +592,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -603,7 +603,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-46b-para-1",
+      "url": "#/regulation/2014-910?section=article-46b-para-1",
       "originalText": "Article 46b(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -625,7 +625,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -636,7 +636,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-20-para-1",
+      "url": "#/regulation/2014-910?section=article-20-para-1",
       "originalText": "Article 20(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -658,7 +658,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -669,7 +669,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-22-para-5",
+      "url": "#/regulation/2014-910?section=article-22-para-5",
       "originalText": "Article 22(5) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -691,7 +691,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -702,7 +702,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-24-para-5",
+      "url": "#/regulation/2014-910?section=article-24-para-5",
       "originalText": "Article 24(5) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -724,7 +724,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -735,7 +735,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-28-para-6",
+      "url": "#/regulation/2014-910?section=article-28-para-6",
       "originalText": "Article 28(6) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -757,7 +757,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -768,7 +768,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-38-para-6",
+      "url": "#/regulation/2014-910?section=article-38-para-6",
       "originalText": "Article 38(6) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -790,7 +790,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -801,7 +801,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45-para-2",
+      "url": "#/regulation/2014-910?section=article-45-para-2",
       "originalText": "Article 45(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -823,7 +823,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -834,7 +834,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-33-para-2",
+      "url": "#/regulation/2014-910?section=article-33-para-2",
       "originalText": "Article 33(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -856,7 +856,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -867,7 +867,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-40",
+      "url": "#/regulation/2014-910?section=article-40",
       "originalText": "Article 40 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -889,7 +889,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -900,7 +900,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-34-para-2",
+      "url": "#/regulation/2014-910?section=article-34-para-2",
       "originalText": "Article 34(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -922,7 +922,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -933,7 +933,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-42-para-2",
+      "url": "#/regulation/2014-910?section=article-42-para-2",
       "originalText": "Article 42(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -955,7 +955,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -966,7 +966,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-44-para-2",
+      "url": "#/regulation/2014-910?section=article-44-para-2",
       "originalText": "Article 44(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -988,7 +988,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -999,7 +999,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-29a-para-2",
+      "url": "#/regulation/2014-910?section=article-29a-para-2",
       "originalText": "Article 29a(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -1021,7 +1021,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -1032,7 +1032,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-39a",
+      "url": "#/regulation/2014-910?section=article-39a",
       "originalText": "Article 39a of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -1054,7 +1054,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -1065,7 +1065,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45j-para-2",
+      "url": "#/regulation/2014-910?section=article-45j-para-2",
       "originalText": "Article 45j(2) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -1087,7 +1087,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -1098,7 +1098,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45d-para-5",
+      "url": "#/regulation/2014-910?section=article-45d-para-5",
       "originalText": "Article 45d(5) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -1120,7 +1120,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -1131,7 +1131,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45l-para-3",
+      "url": "#/regulation/2014-910?section=article-45l-para-3",
       "originalText": "Article 45l(3) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -1153,7 +1153,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     }
   ]

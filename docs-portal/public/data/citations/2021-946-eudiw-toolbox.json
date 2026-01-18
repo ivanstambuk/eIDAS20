@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "258926b04c93a5c4614067951890d12c",
+  "_cacheKey": "7a31950d33511540d0323167bb0cf287",
   "citations": [
     {
       "index": 1,
@@ -36,7 +36,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -53,7 +53,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     }

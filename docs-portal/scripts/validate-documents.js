@@ -60,14 +60,14 @@ function validate() {
 
     // Additional DEC-043 validation: regulations must have shortTitle
     const regulations = config.documents.filter(d =>
-        ['consolidated', 'amending', 'referenced'].includes(d.type)
+        d.legalType === 'regulation' && d.category !== 'implementing_act'
     );
 
     const missingShortTitle = regulations.filter(r => !r.shortTitle);
     if (missingShortTitle.length > 0) {
         console.error('❌ DEC-043 violation: Regulations missing shortTitle:\n');
         for (const doc of missingShortTitle) {
-            console.error(`   - ${doc.celex} (${doc.type})`);
+            console.error(`   - ${doc.celex} (${doc.legalType}/${doc.category})`);
             console.error(`     Add: shortTitle: "Human Readable Name"\n`);
         }
         process.exit(1);
@@ -75,8 +75,8 @@ function validate() {
 
     console.log(`✅ documents.yaml is valid!`);
     console.log(`   📄 ${config.documents.length} documents`);
-    console.log(`   📜 ${regulations.length} regulations (all have shortTitle)`);
-    console.log(`   📋 ${config.documents.length - regulations.length} implementing acts`);
+    console.log(`   📜 ${regulations.length} core regulations (all have shortTitle)`);
+    console.log(`   📋 ${config.documents.length - regulations.length} implementing acts/referenced docs`);
 }
 
 validate();

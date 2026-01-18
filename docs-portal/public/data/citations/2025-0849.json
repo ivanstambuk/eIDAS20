@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "ab9757c3c5294e64222d4dcd35053fa1",
+  "_cacheKey": "b4158e5bbe58be25c785a8e89ad85390",
   "citations": [
     {
       "index": 1,
@@ -180,7 +180,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -197,7 +197,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     },
@@ -263,7 +263,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-46e-para-1",
+      "url": "#/regulation/2014-910?section=article-46e-para-1",
       "originalText": "Article 46e(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -285,7 +285,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -327,7 +327,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-48",
+      "url": "#/regulation/2014-910?section=article-48",
       "originalText": "Article 48 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -349,7 +349,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -360,7 +360,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5d",
+      "url": "#/regulation/2014-910?section=article-5d",
       "originalText": "Article 5d of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -382,7 +382,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -393,7 +393,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-46a",
+      "url": "#/regulation/2014-910?section=article-46a",
       "originalText": "Article 46a of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -415,7 +415,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -426,7 +426,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5a-para-19",
+      "url": "#/regulation/2014-910?section=article-5a-para-19",
       "originalText": "Article 5a(19) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -448,7 +448,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -459,7 +459,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5c",
+      "url": "#/regulation/2014-910?section=article-5c",
       "originalText": "Article 5c of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -481,7 +481,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     }
   ]

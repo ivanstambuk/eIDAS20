@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "142043652d02f7e70aef6bd197e31f05",
+  "_cacheKey": "8220f526ff83b7cc4ac145623e56f989",
   "citations": [
     {
       "index": 1,
@@ -300,7 +300,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -317,7 +317,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     },
@@ -410,7 +410,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45g",
+      "url": "#/regulation/2014-910?section=article-45g",
       "originalText": "Article 45g of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -432,7 +432,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -443,7 +443,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=annex-vii",
+      "url": "#/regulation/2014-910?section=annex-vii",
       "originalText": "Annex VII of Regulation (EU) No 910/2014",
       "provision": {
         "type": "annex",
@@ -465,7 +465,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -476,7 +476,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-46e-para-1",
+      "url": "#/regulation/2014-910?section=article-46e-para-1",
       "originalText": "Article 46e(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -498,7 +498,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -509,7 +509,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=annex-vi",
+      "url": "#/regulation/2014-910?section=annex-vi",
       "originalText": "Annex VI to Regulation (EU) No 910/2014",
       "provision": {
         "type": "annex",
@@ -531,7 +531,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -542,7 +542,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-45e-para-1",
+      "url": "#/regulation/2014-910?section=article-45e-para-1",
       "originalText": "Article 45e(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -564,7 +564,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -606,7 +606,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-48",
+      "url": "#/regulation/2014-910?section=article-48",
       "originalText": "Article 48 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -628,7 +628,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {

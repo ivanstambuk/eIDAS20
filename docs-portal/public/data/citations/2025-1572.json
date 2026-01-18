@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "c744922a61e4e7a73a723e870f5bb83c",
+  "_cacheKey": "a7c8e72bc080dcdfb4a68f6bb0335764",
   "citations": [
     {
       "index": 1,
@@ -210,7 +210,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -227,7 +227,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     },
@@ -324,7 +324,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-48",
+      "url": "#/regulation/2014-910?section=article-48",
       "originalText": "Article 48 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -346,7 +346,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -450,7 +450,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-24-para-2-point-i",
+      "url": "#/regulation/2014-910?section=article-24-para-2-point-i",
       "originalText": "Article 24(2), point (i) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -472,7 +472,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -483,7 +483,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-20-para-4",
+      "url": "#/regulation/2014-910?section=article-20-para-4",
       "originalText": "Article 20(4) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -505,7 +505,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     }
   ]

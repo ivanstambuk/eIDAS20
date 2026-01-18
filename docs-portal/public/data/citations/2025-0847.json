@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "85b1653171f75eba8920867bddd09df0",
+  "_cacheKey": "7a1ec855cd4caea31da197dc0d10fd8d",
   "citations": [
     {
       "index": 1,
@@ -360,7 +360,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014",
+      "url": "#/regulation/2014-910",
       "originalText": "Regulation (EU) No 910/2014",
       "humanName": "Electronic Identification and Trust Services Regulation",
       "abbreviation": "eIDAS 1.0",
@@ -377,7 +377,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true,
       "provision": null
     },
@@ -501,7 +501,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5a-para-8",
+      "url": "#/regulation/2014-910?section=article-5a-para-8",
       "originalText": "Article 5a(8) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -523,7 +523,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -534,7 +534,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-46c-para-1",
+      "url": "#/regulation/2014-910?section=article-46c-para-1",
       "originalText": "Article 46c(1) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -556,7 +556,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -598,7 +598,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-48",
+      "url": "#/regulation/2014-910?section=article-48",
       "originalText": "Article 48 of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -620,7 +620,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -631,7 +631,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5a-para-4-point-g",
+      "url": "#/regulation/2014-910?section=article-5a-para-4-point-g",
       "originalText": "Article 5a(4), point (g) of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -653,7 +653,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -664,7 +664,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5b",
+      "url": "#/regulation/2014-910?section=article-5b",
       "originalText": "Article 5b of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -686,7 +686,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {
@@ -697,7 +697,7 @@
       "isInternal": true,
       "isSelfReference": false,
       "consolidationInfo": null,
-      "url": "#/regulation/910-2014?section=article-5d",
+      "url": "#/regulation/2014-910?section=article-5d",
       "originalText": "Article 5d of Regulation (EU) No 910/2014",
       "provision": {
         "type": "article",
@@ -719,7 +719,7 @@
         "32024R1183"
       ],
       "amendmentDate": "2024-05-20",
-      "consolidatedSlug": "910-2014",
+      "consolidatedSlug": "2014-910",
       "isAmended": true
     },
     {

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-01-17T00:59:14.682Z",
+  "generated": "2026-01-18T11:05:43.440Z",
   "statistics": {
     "totalTerms": 106,
     "totalDefinitions": 199,
@@ -173,7 +173,7 @@
         },
         {
           "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -208,7 +208,7 @@
           "sources": [
             {
               "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -228,7 +228,7 @@
       "sources": [
         {
           "definition": "an electronic seal, which meets the requirements set out in Article 36",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -246,7 +246,7 @@
           "sources": [
             {
               "definition": "an electronic seal, which meets the requirements set out in Article 36",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -266,7 +266,7 @@
       "sources": [
         {
           "definition": "an electronic signature which meets the requirements set out in Article 26",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -284,7 +284,7 @@
           "sources": [
             {
               "definition": "an electronic signature which meets the requirements set out in Article 26",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -304,7 +304,7 @@
       "sources": [
         {
           "definition": "a characteristic, quality, right or permission of a natural or legal person or of an object",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -322,7 +322,7 @@
           "sources": [
             {
               "definition": "a characteristic, quality, right or permission of a natural or legal person or of an object",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -342,7 +342,7 @@
       "sources": [
         {
           "definition": "a repository or system, held under the responsibility of a public sector body or private entity, that contains and provides attributes about a natural or legal person or object and that is considered to be a primary source of that information or recognised as authentic in accordance with Union or national law, including administrative practice",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -360,7 +360,7 @@
           "sources": [
             {
               "definition": "a repository or system, held under the responsibility of a public sector body or private entity, that contains and provides attributes about a natural or legal person or object and that is considered to be a primary source of that information or recognised as authentic in accordance with Union or national law, including administrative practice",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -380,7 +380,7 @@
       "sources": [
         {
           "definition": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -398,7 +398,7 @@
           "sources": [
             {
               "definition": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -418,7 +418,7 @@
       "sources": [
         {
           "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -436,7 +436,7 @@
           "sources": [
             {
               "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -456,7 +456,7 @@
       "sources": [
         {
           "definition": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -474,7 +474,7 @@
           "sources": [
             {
               "definition": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -570,7 +570,7 @@
       "sources": [
         {
           "definition": "a marking by which the manufacturer indicates that the product is in conformity with the applicable requirements set out in Community harmonisation legislation providing for its affixing",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -588,7 +588,7 @@
           "sources": [
             {
               "definition": "a marking by which the manufacturer indicates that the product is in conformity with the applicable requirements set out in Community harmonisation legislation providing for its affixing",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -608,7 +608,7 @@
       "sources": [
         {
           "definition": "an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -626,7 +626,7 @@
           "sources": [
             {
               "definition": "an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -646,7 +646,7 @@
       "sources": [
         {
           "definition": "an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -664,7 +664,7 @@
           "sources": [
             {
               "definition": "an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -684,7 +684,7 @@
       "sources": [
         {
           "definition": "an electronic attestation that makes it possible to authenticate a website and links the website to the natural or legal person to whom the certificate is issued",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -702,7 +702,7 @@
           "sources": [
             {
               "definition": "an electronic attestation that makes it possible to authenticate a website and links the website to the natural or legal person to whom the certificate is issued",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -836,7 +836,7 @@
       "sources": [
         {
           "definition": "any Community legislation harmonising the conditions for the marketing of products",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -854,7 +854,7 @@
           "sources": [
             {
               "definition": "any Community legislation harmonising the conditions for the marketing of products",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -874,7 +874,7 @@
       "sources": [
         {
           "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -892,7 +892,7 @@
           "sources": [
             {
               "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -912,7 +912,7 @@
       "sources": [
         {
           "definition": "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -923,7 +923,7 @@
         },
         {
           "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -941,7 +941,7 @@
           "sources": [
             {
               "definition": "a conformity assessment body as defined in Article 2, point 13, of Regulation (EC) No 765/2008, which is accredited in accordance with that Regulation as competent to carry out conformity assessment of a qualified trust service provider and the qualified trust services it provides, or as competent to carry out certification of European Digital Identity Wallets or electronic identification means",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -958,7 +958,7 @@
           "sources": [
             {
               "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -1054,7 +1054,7 @@
       "sources": [
         {
           "definition": "a legal person who creates an electronic seal",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1072,7 +1072,7 @@
           "sources": [
             {
               "definition": "a legal person who creates an electronic seal",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1344,7 +1344,7 @@
       "sources": [
         {
           "definition": "electronic data recorded with related meta-data supporting the processing of the data",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1362,7 +1362,7 @@
           "sources": [
             {
               "definition": "electronic data recorded with related meta-data supporting the processing of the data",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1382,7 +1382,7 @@
       "sources": [
         {
           "definition": "a service ensuring the receipt, storage, retrieval and deletion of electronic data and electronic documents in order to ensure their durability and legibility as well as to preserve their integrity, confidentiality and proof of origin throughout the preservation period",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1400,7 +1400,7 @@
           "sources": [
             {
               "definition": "a service ensuring the receipt, storage, retrieval and deletion of electronic data and electronic documents in order to ensure their durability and legibility as well as to preserve their integrity, confidentiality and proof of origin throughout the preservation period",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1420,7 +1420,7 @@
       "sources": [
         {
           "definition": "an attestation in electronic form that allows attributes to be authenticated",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1438,7 +1438,7 @@
           "sources": [
             {
               "definition": "an attestation in electronic form that allows attributes to be authenticated",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1458,7 +1458,7 @@
       "sources": [
         {
           "definition": "an electronic attestation of attributes issued by a public sector body that is responsible for an authentic source or by a public sector body that is designated by the Member State to issue such attestations of attributes on behalf of the public sector bodies responsible for authentic sources in accordance with Article 45f and with Annex VII",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1476,7 +1476,7 @@
           "sources": [
             {
               "definition": "an electronic attestation of attributes issued by a public sector body that is responsible for an authentic source or by a public sector body that is designated by the Member State to issue such attestations of attributes on behalf of the public sector bodies responsible for authentic sources in accordance with Article 45f and with Annex VII",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1496,7 +1496,7 @@
       "sources": [
         {
           "definition": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1514,7 +1514,7 @@
           "sources": [
             {
               "definition": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1534,7 +1534,7 @@
       "sources": [
         {
           "definition": "the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1552,7 +1552,7 @@
           "sources": [
             {
               "definition": "the process of using person identification data in electronic form uniquely representing either a natural or legal person, or a natural person representing another natural person or a legal person",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1572,7 +1572,7 @@
       "sources": [
         {
           "definition": "a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1590,7 +1590,7 @@
           "sources": [
             {
               "definition": "a material and/or immaterial unit containing person identification data and which is used for authentication for an online service or, where appropriate, for an offline service",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1610,7 +1610,7 @@
       "sources": [
         {
           "definition": "a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1628,7 +1628,7 @@
           "sources": [
             {
               "definition": "a system for electronic identification under which electronic identification means are issued to natural or legal persons or natural persons representing other natural persons or legal persons",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1648,7 +1648,7 @@
       "sources": [
         {
           "definition": "a sequence of electronic data records, ensuring the integrity of those records and the accuracy of the chronological ordering of those records",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1666,7 +1666,7 @@
           "sources": [
             {
               "definition": "a sequence of electronic data records, ensuring the integrity of those records and the accuracy of the chronological ordering of those records",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1686,7 +1686,7 @@
       "sources": [
         {
           "definition": "a service that makes it possible to transmit data between third parties by electronic means and provides evidence relating to the handling of the transmitted data, including proof of sending and receiving the data, and that protects transmitted data against the risk of loss, theft, damage or any unauthorised alterations",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1704,7 +1704,7 @@
           "sources": [
             {
               "definition": "a service that makes it possible to transmit data between third parties by electronic means and provides evidence relating to the handling of the transmitted data, including proof of sending and receiving the data, and that protects transmitted data against the risk of loss, theft, damage or any unauthorised alterations",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1724,7 +1724,7 @@
       "sources": [
         {
           "definition": "data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter’s origin and integrity",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1742,7 +1742,7 @@
           "sources": [
             {
               "definition": "data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter’s origin and integrity",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1762,7 +1762,7 @@
       "sources": [
         {
           "definition": "unique data, which is used by the creator of the electronic seal to create an electronic seal",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1780,7 +1780,7 @@
           "sources": [
             {
               "definition": "unique data, which is used by the creator of the electronic seal to create an electronic seal",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1800,7 +1800,7 @@
       "sources": [
         {
           "definition": "configured software or hardware used to create an electronic seal",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1818,7 +1818,7 @@
           "sources": [
             {
               "definition": "configured software or hardware used to create an electronic seal",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1838,7 +1838,7 @@
       "sources": [
         {
           "definition": "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1856,7 +1856,7 @@
           "sources": [
             {
               "definition": "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1876,7 +1876,7 @@
       "sources": [
         {
           "definition": "unique data which is used by the signatory to create an electronic signature",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1894,7 +1894,7 @@
           "sources": [
             {
               "definition": "unique data which is used by the signatory to create an electronic signature",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1914,7 +1914,7 @@
       "sources": [
         {
           "definition": "configured software or hardware used to create an electronic signature",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1932,7 +1932,7 @@
           "sources": [
             {
               "definition": "configured software or hardware used to create an electronic signature",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -1952,7 +1952,7 @@
       "sources": [
         {
           "definition": "data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -1970,7 +1970,7 @@
           "sources": [
             {
               "definition": "data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2072,7 +2072,7 @@
       "sources": [
         {
           "definition": "a verifiable, simple and recognisable indication which is communicated in a clear manner that a European Digital Identity Wallet has been provided in accordance with this Regulation",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2090,7 +2090,7 @@
           "sources": [
             {
               "definition": "a verifiable, simple and recognisable indication which is communicated in a clear manner that a European Digital Identity Wallet has been provided in accordance with this Regulation",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2110,7 +2110,7 @@
       "sources": [
         {
           "definition": "an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2128,7 +2128,7 @@
           "sources": [
             {
               "definition": "an electronic identification means which allows the user to securely store, manage and validate person identification data and electronic attestations of attributes for the purpose of providing them to relying parties and other users of European Digital Identity Wallets, and to sign by means of qualified electronic signatures or to seal by means of qualified electronic seals",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2186,7 +2186,7 @@
       "sources": [
         {
           "definition": "a standard adopted by one of the European standardisation bodies listed in Annex I to Directive 98/34/EC of the European Parliament and of the Council of 22 June 1998 laying down a procedure for the provision of information in the field of technical standards and regulations and of rules on Information Society services on the basis of a request made by the Commission in accordance with Article 6 of that Directive",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -2204,7 +2204,7 @@
           "sources": [
             {
               "definition": "a standard adopted by one of the European standardisation bodies listed in Annex I to Directive 98/34/EC of the European Parliament and of the Council of 22 June 1998 laying down a procedure for the provision of information in the field of technical standards and regulations and of rules on Information Society services on the basis of a request made by the Commission in accordance with Article 6 of that Directive",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -2224,7 +2224,7 @@
       "sources": [
         {
           "definition": "a process where person identification data, or electronic identification means are matched with or linked to an existing account belonging to the same person",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2242,7 +2242,7 @@
           "sources": [
             {
               "definition": "a process where person identification data, or electronic identification means are matched with or linked to an existing account belonging to the same person",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2300,7 +2300,7 @@
       "sources": [
         {
           "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -2318,7 +2318,7 @@
           "sources": [
             {
               "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -2349,7 +2349,7 @@
         },
         {
           "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -2384,7 +2384,7 @@
           "sources": [
             {
               "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -2518,7 +2518,7 @@
       "sources": [
         {
           "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -2536,7 +2536,7 @@
           "sources": [
             {
               "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -2556,7 +2556,7 @@
       "sources": [
         {
           "definition": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2574,7 +2574,7 @@
           "sources": [
             {
               "definition": "a set of data that is issued in accordance with Union or national law and that enables the establishment of the identity of a natural or legal person, or of a natural person representing another natural person or a legal person",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2594,7 +2594,7 @@
       "sources": [
         {
           "definition": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2612,7 +2612,7 @@
           "sources": [
             {
               "definition": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2632,7 +2632,7 @@
       "sources": [
         {
           "definition": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -2650,7 +2650,7 @@
           "sources": [
             {
               "definition": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -2988,7 +2988,7 @@
       "sources": [
         {
           "definition": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3006,7 +3006,7 @@
           "sources": [
             {
               "definition": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3026,7 +3026,7 @@
       "sources": [
         {
           "definition": "a certificate for an electronic seal, that is issued by a qualified trust service provider and meets the requirements laid down in Annex III",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3044,7 +3044,7 @@
           "sources": [
             {
               "definition": "a certificate for an electronic seal, that is issued by a qualified trust service provider and meets the requirements laid down in Annex III",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3064,7 +3064,7 @@
       "sources": [
         {
           "definition": "a certificate for electronic signatures, that is issued by a qualified trust service provider and meets the requirements laid down in Annex I",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3082,7 +3082,7 @@
           "sources": [
             {
               "definition": "a certificate for electronic signatures, that is issued by a qualified trust service provider and meets the requirements laid down in Annex I",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3102,7 +3102,7 @@
       "sources": [
         {
           "definition": "a certificate for website authentication, which is issued by a qualified trust service provider and meets the requirements laid down in Annex IV",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3120,7 +3120,7 @@
           "sources": [
             {
               "definition": "a certificate for website authentication, which is issued by a qualified trust service provider and meets the requirements laid down in Annex IV",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3140,7 +3140,7 @@
       "sources": [
         {
           "definition": "an electronic archiving service which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45j",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3158,7 +3158,7 @@
           "sources": [
             {
               "definition": "an electronic archiving service which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45j",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3178,7 +3178,7 @@
       "sources": [
         {
           "definition": "an electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3196,7 +3196,7 @@
           "sources": [
             {
               "definition": "an electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3216,7 +3216,7 @@
       "sources": [
         {
           "definition": "an electronic ledger which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45l",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3234,7 +3234,7 @@
           "sources": [
             {
               "definition": "an electronic ledger which is provided by a qualified trust service provider and which meets the requirements laid down in Article 45l",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3254,7 +3254,7 @@
       "sources": [
         {
           "definition": "an electronic registered delivery service which meets the requirements laid down in Article 44",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3272,7 +3272,7 @@
           "sources": [
             {
               "definition": "an electronic registered delivery service which meets the requirements laid down in Article 44",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3292,7 +3292,7 @@
       "sources": [
         {
           "definition": "an advanced electronic seal, which is created by a qualified electronic seal creation device, and that is based on a qualified certificate for electronic seal",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3310,7 +3310,7 @@
           "sources": [
             {
               "definition": "an advanced electronic seal, which is created by a qualified electronic seal creation device, and that is based on a qualified certificate for electronic seal",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3330,7 +3330,7 @@
       "sources": [
         {
           "definition": "an electronic seal creation device that meets mutatis mutandis the requirements laid down in Annex II",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3348,7 +3348,7 @@
           "sources": [
             {
               "definition": "an electronic seal creation device that meets mutatis mutandis the requirements laid down in Annex II",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3368,7 +3368,7 @@
       "sources": [
         {
           "definition": "an advanced electronic signature that is created by a qualified electronic signature creation device, and which is based on a qualified certificate for electronic signatures",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3386,7 +3386,7 @@
           "sources": [
             {
               "definition": "an advanced electronic signature that is created by a qualified electronic signature creation device, and which is based on a qualified certificate for electronic signatures",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3406,7 +3406,7 @@
       "sources": [
         {
           "definition": "an electronic signature creation device that meets the requirements laid down in Annex II",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3424,7 +3424,7 @@
           "sources": [
             {
               "definition": "an electronic signature creation device that meets the requirements laid down in Annex II",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3444,7 +3444,7 @@
       "sources": [
         {
           "definition": "an electronic time stamp which meets the requirements laid down in Article 42",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3462,7 +3462,7 @@
           "sources": [
             {
               "definition": "an electronic time stamp which meets the requirements laid down in Article 42",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3482,7 +3482,7 @@
       "sources": [
         {
           "definition": "a trust service that meets the applicable requirements laid down in this Regulation",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3500,7 +3500,7 @@
           "sources": [
             {
               "definition": "a trust service that meets the applicable requirements laid down in this Regulation",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3520,7 +3520,7 @@
       "sources": [
         {
           "definition": "a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3538,7 +3538,7 @@
           "sources": [
             {
               "definition": "a trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3662,7 +3662,7 @@
       "sources": [
         {
           "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -3680,7 +3680,7 @@
           "sources": [
             {
               "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -3700,7 +3700,7 @@
       "sources": [
         {
           "definition": "a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3718,7 +3718,7 @@
           "sources": [
             {
               "definition": "a natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3738,7 +3738,7 @@
       "sources": [
         {
           "definition": "a qualified electronic seal creation device that is managed by a qualified trust service provider in accordance with Article 39a on behalf of a seal creator",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3756,7 +3756,7 @@
           "sources": [
             {
               "definition": "a qualified electronic seal creation device that is managed by a qualified trust service provider in accordance with Article 39a on behalf of a seal creator",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3776,7 +3776,7 @@
       "sources": [
         {
           "definition": "a qualified electronic signature creation device that is managed by a qualified trust service provider in accordance with Article 29a on behalf of a signatory",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3794,7 +3794,7 @@
           "sources": [
             {
               "definition": "a qualified electronic signature creation device that is managed by a qualified trust service provider in accordance with Article 29a on behalf of a signatory",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3956,7 +3956,7 @@
       "sources": [
         {
           "definition": "a natural person who creates an electronic signature",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -3974,7 +3974,7 @@
           "sources": [
             {
               "definition": "a natural person who creates an electronic signature",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -3994,7 +3994,7 @@
       "sources": [
         {
           "definition": "an authentication based on the use of at least two authentication factors from different categories of either knowledge, something only the user knows, possession, something only the user possesses or inherence, something the user is, that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4012,7 +4012,7 @@
           "sources": [
             {
               "definition": "an authentication based on the use of at least two authentication factors from different categories of either knowledge, something only the user knows, possession, something only the user possesses or inherence, something the user is, that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -4032,7 +4032,7 @@
       "sources": [
         {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
-          "documentId": "765-2008",
+          "documentId": "2008-765",
           "documentTitle": "Regulation 765/2008",
           "documentCategory": "referenced",
           "documentType": "regulation",
@@ -4050,7 +4050,7 @@
           "sources": [
             {
               "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
-              "documentId": "765-2008",
+              "documentId": "2008-765",
               "documentTitle": "Regulation 765/2008",
               "documentCategory": "referenced",
               "documentType": "regulation",
@@ -4070,7 +4070,7 @@
       "sources": [
         {
           "definition": "an electronic service normally provided for remuneration which consists of any of the following:",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4088,7 +4088,7 @@
           "sources": [
             {
               "definition": "an electronic service normally provided for remuneration which consists of any of the following:",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -4108,7 +4108,7 @@
       "sources": [
         {
           "definition": "a natural or a legal person who provides one or more trust services either as a qualified or as a non-qualified trust service provider",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4126,7 +4126,7 @@
           "sources": [
             {
               "definition": "a natural or a legal person who provides one or more trust services either as a qualified or as a non-qualified trust service provider",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -4184,7 +4184,7 @@
       "sources": [
         {
           "definition": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4202,7 +4202,7 @@
           "sources": [
             {
               "definition": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -4222,7 +4222,7 @@
       "sources": [
         {
           "definition": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4240,7 +4240,7 @@
           "sources": [
             {
               "definition": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
@@ -4260,7 +4260,7 @@
       "sources": [
         {
           "definition": "data that is used to validate an electronic signature or an electronic seal",
-          "documentId": "910-2014",
+          "documentId": "2014-910",
           "documentTitle": "Regulation 910/2014",
           "documentCategory": "primary",
           "documentType": "regulation",
@@ -4278,7 +4278,7 @@
           "sources": [
             {
               "definition": "data that is used to validate an electronic signature or an electronic seal",
-              "documentId": "910-2014",
+              "documentId": "2014-910",
               "documentTitle": "Regulation 910/2014",
               "documentCategory": "primary",
               "documentType": "regulation",
