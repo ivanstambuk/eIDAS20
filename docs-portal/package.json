@@ -12,6 +12,7 @@
     "build:terminology": "node scripts/build-terminology.js",
     "build:search": "node scripts/build-search-index.js",
     "build:embeddings": "node scripts/build-embeddings.js",
+    "build:citations": "node scripts/build-citations.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

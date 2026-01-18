@@ -39,8 +39,23 @@ Common terms used across the documentation portal project to ensure consistent v
 | Term | Description |
 |------|-------------|
 | **CELEX** | The unique identifier for EU legal documents in EUR-Lex. Format examples: `32014R0910` (Regulation 910/2014), `32024R1183` (Regulation 2024/1183). The first digit indicates document type (3=Regulation). |
-| **ELI** | European Legislation Identifier. A standardized URI for citing EU law. Format: `http://data.europa.eu/eli/reg/2014/910/oj`. |
+| **ELI** | European Legislation Identifier. A standardized URI for citing EU law. Base format: `http://data.europa.eu/eli/{type}/{year}/{number}/oj`. |
 | **Slug** | The internal identifier used in the portal's URL routing. Format: `910-2014`, `2024-1183`, `765-2008`. Derived from CELEX, human-readable. |
+
+### ELI Path Variants
+
+Different legal act types use different ELI path segments:
+
+| Legal Act Type | ELI Path | Example URI |
+|----------------|----------|-------------|
+| **Regulation** | `/eli/reg/` | `http://data.europa.eu/eli/reg/2014/910/oj` |
+| **Implementing Regulation** | `/eli/reg_impl/` | `http://data.europa.eu/eli/reg_impl/2015/1501/oj` |
+| **Delegated Regulation** | `/eli/reg_del/` | `http://data.europa.eu/eli/reg_del/2024/xxx/oj` |
+| **Directive** | `/eli/dir/` | `http://data.europa.eu/eli/dir/2016/1148/oj` |
+| **Decision** | `/eli/dec/` | `http://data.europa.eu/eli/dec/2015/2240/oj` |
+| **Recommendation** | `/eli/reco/` | `http://data.europa.eu/eli/reco/2021/946/oj` |
+
+**Why this matters:** The `eurlex_html_to_md.py` script auto-detects the regulation type from the HTML title and uses the correct ELI path. The CELEX type code (R for all regulations) doesn't distinguish between regular and implementing regulations—only the ELI does.
 
 ---
 

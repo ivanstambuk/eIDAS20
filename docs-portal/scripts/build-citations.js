@@ -38,9 +38,11 @@ const ROUTES = {
 // CACHE VERSION
 // =============================================================================
 // ⚠️ INCREMENT THIS when changing script logic that affects output format.
-// The hash-based cache only detects content changes, not script changes.
+// The hash-based cache detects content changes and registry changes.
 // Bumping this version forces a full rebuild.
-const CACHE_VERSION = '1.0.5';  // Bumped: added 32015R1501 as internal document
+// Note: Registry hash is also included in cache key (see main()), so adding
+// new internal documents will auto-invalidate citation caches.
+const CACHE_VERSION = '1.0.6';
 
 /**
  * Compute MD5 hash of content for cache validation.
@@ -808,6 +810,10 @@ async function main() {
     // Build document registry from existing JSON files
     const registry = buildDocumentRegistry();
 
+    // Compute registry hash for cache invalidation
+    // When a new document is added, this hash changes, invalidating all citation caches
+    const registryHash = computeHash(JSON.stringify(Object.keys(registry).sort()));
+
     // DEC-064: Build anchor index for provision link validation
     const anchorIndex = buildAnchorIndex();
     console.log(`🔗 Anchor index: ${anchorIndex.size} documents indexed`);
@@ -882,10 +888,11 @@ async function main() {
                         }
                     }
 
-                    // Compute hash for cache validation (content + config + script version)
+                    // Compute hash for cache validation (content + config + script version + registry)
                     // ⚠️ CACHE_VERSION must be bumped when script logic changes
+                    // Registry hash ensures citations are rebuilt when new internal docs are added
                     const cacheKey = computeHash(
-                        CACHE_VERSION + content + JSON.stringify(documentConfig.documents[slug] || {})
+                        CACHE_VERSION + registryHash + content + JSON.stringify(documentConfig.documents[slug] || {})
                     );
                     const citationFile = path.join(outputDir, `${slug}.json`);
 

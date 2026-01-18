@@ -19,14 +19,10 @@ const navigation = [
     },
     {
         title: 'Referenced Regulations',
-        items: [
-            // Human-friendly name per DEC-051; technical ref: Regulation (EC) No 765/2008
-            { name: 'Accreditation Regulation', path: '/regulation/765-2008', icon: 'external-link' },
-            // Commission Recommendation (EU) 2021/946 — foundational EUDIW Toolbox
-            { name: 'EUDIW Toolbox', path: '/regulation/2021-946', icon: 'external-link' },
-            // Commission Implementing Regulation (EU) 2015/1501 — eIDAS Interoperability Framework
-            { name: 'Interoperability Framework', path: '/regulation/2015-1501', icon: 'external-link' },
-        ]
+        // Dynamically populated from regulations-index.json
+        // See referencedDocs state below
+        isDynamic: true,
+        items: []
     },
     {
         title: 'Reference',
@@ -135,6 +131,7 @@ const icons = {
 
 const Sidebar = ({ isOpen, onClose }) => {
     const [metadata, setMetadata] = useState(null);
+    const [referencedDocs, setReferencedDocs] = useState([]);
 
     useEffect(() => {
         const fetchMetadata = async () => {
@@ -149,7 +146,29 @@ const Sidebar = ({ isOpen, onClose }) => {
             }
         };
 
+        // Fetch referenced regulations dynamically from the index
+        const fetchReferencedDocs = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.BASE_URL}data/regulations-index.json`);
+                if (response.ok) {
+                    const data = await response.json();
+                    // Filter for category === 'referenced' documents
+                    const referenced = data
+                        .filter(doc => doc.category === 'referenced')
+                        .map(doc => ({
+                            name: doc.shortTitle,
+                            path: `/regulation/${doc.slug}`,
+                            icon: 'external-link'
+                        }));
+                    setReferencedDocs(referenced);
+                }
+            } catch (error) {
+                console.error('Failed to fetch regulations index:', error);
+            }
+        };
+
         fetchMetadata();
+        fetchReferencedDocs();
     }, []);
 
     return (
@@ -175,28 +194,38 @@ const Sidebar = ({ isOpen, onClose }) => {
                 role="navigation"
                 aria-label="Main navigation"
             >
-                {navigation.map((section) => (
-                    <div key={section.title} className="sidebar-section" role="group" aria-labelledby={`nav-${section.title.toLowerCase()}`}>
-                        <span id={`nav-${section.title.toLowerCase()}`} className="sidebar-section-title">{section.title}</span>
-                        <ul className="sidebar-nav" role="list">
-                            {section.items.map((item) => (
-                                <li key={item.path} className="sidebar-nav-item">
-                                    <NavLink
-                                        to={item.path}
-                                        className={({ isActive }) =>
-                                            `sidebar-nav-link ${isActive ? 'active' : ''}`
-                                        }
-                                        onClick={onClose}
-                                        aria-current={({ isActive }) => isActive ? 'page' : undefined}
-                                    >
-                                        {icons[item.icon]}
-                                        <span>{item.name}</span>
-                                    </NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+                {navigation.map((section) => {
+                    // Use dynamically fetched items for Referenced Regulations section
+                    const items = section.isDynamic ? referencedDocs : section.items;
+
+                    // Don't render dynamic section until data is loaded
+                    if (section.isDynamic && items.length === 0) {
+                        return null;
+                    }
+
+                    return (
+                        <div key={section.title} className="sidebar-section" role="group" aria-labelledby={`nav-${section.title.toLowerCase()}`}>
+                            <span id={`nav-${section.title.toLowerCase()}`} className="sidebar-section-title">{section.title}</span>
+                            <ul className="sidebar-nav" role="list">
+                                {items.map((item) => (
+                                    <li key={item.path} className="sidebar-nav-item">
+                                        <NavLink
+                                            to={item.path}
+                                            className={({ isActive }) =>
+                                                `sidebar-nav-link ${isActive ? 'active' : ''}`
+                                            }
+                                            onClick={onClose}
+                                            aria-current={({ isActive }) => isActive ? 'page' : undefined}
+                                        >
+                                            {icons[item.icon]}
+                                            <span>{item.name}</span>
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    );
+                })}
 
                 {/* Status indicator */}
                 <div className="sidebar-section" style={{ marginTop: 'auto' }}>

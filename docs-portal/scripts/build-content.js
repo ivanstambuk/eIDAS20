@@ -913,15 +913,9 @@ function generateMetadata(regulations) {
         );
     }
 
-    // Validation 2: We should have exactly 4 regulations
-    // (910/2014, 2024/1183, 765/2008, 2021/946)
-    const expectedRegulationCount = 4;
-    if (regulationCount !== expectedRegulationCount) {
-        console.warn(
-            `⚠️  Warning: Expected ${expectedRegulationCount} regulations, found ${regulationCount}\n` +
-            `   Regulations: ${regulationDocs.map(r => r.slug).join(', ')}`
-        );
-    }
+    // Note: Regulation count is no longer hardcoded—it's derived from documents.yaml
+    // Log for reference (not an error or warning)
+    console.log(`   Regulations (type=regulation): ${regulationDocs.map(r => r.slug).join(', ')}`);
 
     // Validation 3: Word count sanity check (total should be reasonable)
     if (totalWordCount < 10000) {

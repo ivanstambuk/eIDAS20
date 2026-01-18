@@ -1202,29 +1202,85 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     CORRECT: Found cellar_id, ran pipeline.py --only 32021H0946 → deterministic import
     ```
 
-34. **Rebuild Citations After Document Import:**
+34. **Citations Auto-Update When New Documents Are Added:**
     
-    When importing a new document into the portal, the citation system caches need to be invalidated so the new document is recognized as "internal."
+    The citation system now **automatically invalidates caches** when new documents are added to the portal.
     
-    **After running `pipeline.py` and `npm run build:content`:**
+    **How it works:**
+    - `build-citations.js` includes a hash of the document registry in its cache key
+    - When a new document is added (new JSON file in `public/data/regulations/`), the registry hash changes
+    - This invalidates all citation caches, forcing a full rebuild
+    - Citations that previously showed "View on EUR-Lex" will now show "View in Portal"
+    
+    **Standard import workflow:**
     ```bash
-    # Clear citation cache and rebuild
-    rm -rf docs-portal/public/data/citations/*.json
-    cd docs-portal && node scripts/build-citations.js
+    # 1. Import the document (via pipeline or HTML parser)
+    python scripts/pipeline.py --only 32015R1501
+    # OR
+    python3 scripts/eurlex_html_to_md.py 32015R1501 01_regulation/2015_1501_eIDAS_Interoperability
     
-    # Then rebuild content to pick up updated citations
+    # 2. Add to documents.yaml (if not already)
+    # Edit scripts/documents.yaml
+    
+    # 3. Rebuild content (creates new JSON file)
+    cd docs-portal && npm run build:content
+    
+    # 4. Rebuild citations (auto-invalidated by registry hash)
+    npm run build:citations
+    
+    # 5. Rebuild content again (picks up updated citations)
     npm run build:content
     ```
     
-    **Why this is needed:**
-    - The document registry (`buildDocumentRegistry()`) builds from existing JSON files
-    - New documents won't be in the registry until content is built
-    - Citations are cached with MD5 hashes — won't regenerate unless cache is cleared
-    - Without this, citations to the new document show "View on EUR-Lex" instead of "View in Portal"
+    **Note:** The registry hash is computed from `Object.keys(registry).sort()`, so ONLY adding/removing documents triggers invalidation—not changes to existing document content.
+
+34a. **EUR-Lex HTML Import Workflow (for older documents):**
     
-    **Signs you forgot this step:**
-    - Citation popover shows only "View on EUR-Lex ↗" (no "View in Portal →")
-    - `isInternal: false` in the citation JSON for a document you just imported
+    Some older documents don't have Formex XML available (no `cellar_id`). Use the HTML converter:
+    
+    **Step 1: Identify the document**
+    - Find the CELEX number (e.g., `32015R1501`)
+    - Determine the legal type (regulation, implementing_regulation, delegated_regulation)
+    - The script auto-detects type from the HTML title
+    
+    **Step 2: Run the HTML converter**
+    ```bash
+    python3 scripts/eurlex_html_to_md.py 32015R1501 01_regulation/2015_1501_eIDAS_Interoperability
+    ```
+    
+    **Step 3: Add to documents.yaml**
+    ```yaml
+    - celex: 32015R1501
+      title: Commission Implementing Regulation on the interoperability framework
+      shortTitle: eIDAS Interoperability Framework
+      legalType: implementing_regulation
+      category: referenced
+      source: html  # Indicates HTML source, not Formex
+      output_dir: 01_regulation/2015_1501_eIDAS_Interoperability
+    ```
+    
+    **Step 4: Build content and citations**
+    ```bash
+    cd docs-portal
+    npm run build:content
+    npm run build:citations
+    npm run build:content  # Again to pick up updated citations
+    ```
+    
+    **Supported regulation types:**
+    | Type | ELI Path | Example |
+    |------|----------|---------|
+    | Regulation | `/eli/reg/YYYY/NNN/oj` | 32014R0910 |
+    | Implementing Regulation | `/eli/reg_impl/YYYY/NNN/oj` | 32015R1501 |
+    | Delegated Regulation | `/eli/reg_del/YYYY/NNN/oj` | (future) |
+    
+    **Real example from 2026-01-18:**
+    ```
+    Document: Commission Implementing Regulation (EU) 2015/1501 (eIDAS Interoperability)
+    No Formex available → used eurlex_html_to_md.py
+    Script auto-detected "Implementing Regulation" from HTML title
+    Generated correct ELI path: /eli/reg_impl/2015/1501/oj
+    ```
 
 35. **Formex Document Structure Patterns:**
     
