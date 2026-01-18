@@ -58,6 +58,34 @@ const WarningIcon = () => (
     </svg>
 );
 
+const NewChatIcon = () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 5v14M5 12h14" />
+    </svg>
+);
+
+const ThinkingIcon = () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z" />
+        <path d="M9 22h6" />
+        <path d="M12 17v5" />
+    </svg>
+);
+
+const ClearIcon = () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+    </svg>
+);
+
+const MicrophoneIcon = () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 1a4 4 0 0 0-4 4v7a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z" />
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+        <path d="M12 19v4M8 23h8" />
+    </svg>
+);
+
 /**
  * Model Selector component
  */
@@ -269,6 +297,7 @@ export function AIChat() {
     const [input, setInput] = useState('');
     const [streamingContent, setStreamingContent] = useState('');
     const [currentSources, setCurrentSources] = useState([]);
+    const [thinkingEnabled, setThinkingEnabled] = useState(false);
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
@@ -358,6 +387,24 @@ export function AIChat() {
         }
     };
 
+    const handleNewChat = useCallback(() => {
+        setMessages([]);
+        setStreamingContent('');
+        setCurrentSources([]);
+        setInput('');
+        inputRef.current?.focus();
+    }, []);
+
+    const handleClearContext = useCallback(() => {
+        setMessages([]);
+        setStreamingContent('');
+        setCurrentSources([]);
+    }, []);
+
+    const handleToggleThinking = useCallback(() => {
+        setThinkingEnabled(prev => !prev);
+    }, []);
+
     // Render chat panel content
     const renderPanelContent = () => {
         // WebGPU not supported
@@ -439,6 +486,14 @@ export function AIChat() {
                 </div>
 
                 <div className="chat-input-area">
+                    <button
+                        className="btn-mic"
+                        onClick={() => {/* TODO: Implement speech-to-text */ }}
+                        aria-label="Voice input"
+                        title="Voice input (coming soon)"
+                    >
+                        <MicrophoneIcon />
+                    </button>
                     <label htmlFor="chat-input" className="sr-only">Type your question about eIDAS 2.0</label>
                     <textarea
                         ref={inputRef}
@@ -509,6 +564,38 @@ export function AIChat() {
                             <CloseIcon />
                         </button>
                     </div>
+
+                    {/* Toolbar - only visible when model is ready */}
+                    {llm.isReady && (
+                        <div className="chat-toolbar">
+                            <button
+                                className="toolbar-btn"
+                                onClick={handleNewChat}
+                                aria-label="Start new chat"
+                            >
+                                <NewChatIcon />
+                                <span>New</span>
+                            </button>
+                            <button
+                                className={`toolbar-btn ${thinkingEnabled ? 'active' : ''}`}
+                                onClick={handleToggleThinking}
+                                aria-label={thinkingEnabled ? 'Disable thinking' : 'Enable thinking'}
+                                aria-pressed={thinkingEnabled}
+                            >
+                                <ThinkingIcon />
+                                <span>{thinkingEnabled ? 'Think ON' : 'Think'}</span>
+                            </button>
+                            <button
+                                className="toolbar-btn"
+                                onClick={handleClearContext}
+                                aria-label="Clear chat context"
+                                disabled={messages.length === 0}
+                            >
+                                <ClearIcon />
+                                <span>Clear</span>
+                            </button>
+                        </div>
+                    )}
 
                     <div className="chat-body">
                         {renderPanelContent()}
