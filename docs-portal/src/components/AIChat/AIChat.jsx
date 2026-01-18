@@ -151,9 +151,78 @@ function ModelSelector({ currentModel, onSelectModel, isLoading, loadProgress, l
 }
 
 /**
+ * Parse content to extract thinking blocks
+ * Returns { thinking: string | null, answer: string }
+ */
+function parseThinkingContent(content) {
+    if (!content) return { thinking: null, answer: '' };
+
+    // Match <think>...</think> blocks (case insensitive, multiline)
+    const thinkRegex = /<think>([\s\S]*?)<\/think>/gi;
+    const matches = [...content.matchAll(thinkRegex)];
+
+    if (matches.length === 0) {
+        return { thinking: null, answer: content };
+    }
+
+    // Extract all thinking content
+    const thinkingParts = matches.map(m => m[1].trim());
+    const thinking = thinkingParts.join('\n\n');
+
+    // Remove thinking blocks from content to get the answer
+    const answer = content.replace(thinkRegex, '').trim();
+
+    return { thinking, answer };
+}
+
+/**
+ * Count lines in a string (for display)
+ */
+function countLines(text) {
+    if (!text) return 0;
+    return text.split('\n').filter(line => line.trim()).length;
+}
+
+/**
+ * ThinkingBlock - Collapsible thinking trace display
+ */
+function ThinkingBlock({ thinking }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const lineCount = countLines(thinking);
+
+    if (!thinking) return null;
+
+    return (
+        <div className="thinking-block">
+            <button
+                className={`thinking-toggle ${isExpanded ? 'expanded' : ''}`}
+                onClick={() => setIsExpanded(!isExpanded)}
+                aria-expanded={isExpanded}
+            >
+                <span className="thinking-icon">💭</span>
+                <span className="thinking-label">
+                    {isExpanded ? 'Hide thinking' : `Show thinking (${lineCount} lines)`}
+                </span>
+                <span className="thinking-arrow">{isExpanded ? '▲' : '▼'}</span>
+            </button>
+            {isExpanded && (
+                <div className="thinking-content">
+                    {thinking}
+                </div>
+            )}
+        </div>
+    );
+}
+
+/**
  * Chat Message component
  */
 function ChatMessage({ message, isStreaming }) {
+    // Parse thinking content for assistant messages
+    const { thinking, answer } = message.role === 'assistant'
+        ? parseThinkingContent(message.content)
+        : { thinking: null, answer: message.content };
+
     return (
         <div className={`chat-message ${message.role}`}>
             {message.role === 'assistant' && (
@@ -162,10 +231,18 @@ function ChatMessage({ message, isStreaming }) {
                 </div>
             )}
             <div className="message-content">
+                {/* Thinking block (collapsible) - only for assistant with thinking */}
+                {message.role === 'assistant' && thinking && (
+                    <ThinkingBlock thinking={thinking} />
+                )}
+
+                {/* Main message text */}
                 <div className="message-text">
-                    {message.content}
+                    {answer}
                     {isStreaming && <span className="cursor-blink">▊</span>}
                 </div>
+
+                {/* Sources */}
                 {message.sources && message.sources.length > 0 && (
                     <div className="message-sources">
                         <span className="sources-label">Sources:</span>
