@@ -13,6 +13,7 @@ import { CreateWebWorkerMLCEngine, prebuiltAppConfig, hasModelInCache } from '@m
 
 // Available models - curated list of small, fast models suitable for browser
 // Models are sorted by size (smallest first) for quick loading
+// Note: supportsThinking indicates if the model has native Chain-of-Thought reasoning
 export const AVAILABLE_MODELS = [
     {
         id: 'SmolLM2-360M-Instruct-q4f16_1-MLC',
@@ -20,36 +21,42 @@ export const AVAILABLE_MODELS = [
         size: '~200MB',
         description: 'Ultra-fast, lightweight model. Best for quick responses.',
         recommended: true,
+        supportsThinking: false,
     },
     {
         id: 'SmolLM2-1.7B-Instruct-q4f16_1-MLC',
         name: 'SmolLM2 1.7B',
         size: '~900MB',
         description: 'Balanced performance and quality.',
+        supportsThinking: false,
     },
     {
         id: 'Qwen3-0.6B-q4f16_1-MLC',
         name: 'Qwen3 0.6B',
         size: '~400MB',
-        description: 'Fast multilingual model from Alibaba (Qwen3).',
+        description: 'Fast multilingual model with thinking mode.',
+        supportsThinking: true, // Qwen3 has native <think> support
     },
     {
         id: 'Qwen3-1.7B-q4f16_1-MLC',
         name: 'Qwen3 1.7B',
         size: '~1GB',
-        description: 'Larger Qwen3 model for better quality.',
+        description: 'Larger Qwen3 with enhanced reasoning.',
+        supportsThinking: true, // Qwen3 has native <think> support
     },
     {
         id: 'gemma-2-2b-it-q4f16_1-MLC',
         name: 'Gemma 2 2B',
         size: '~1.2GB',
         description: 'Google Gemma model. High quality but slower.',
+        supportsThinking: false,
     },
     {
         id: 'Phi-3.5-mini-instruct-q4f16_1-MLC',
         name: 'Phi-3.5 Mini',
         size: '~2.2GB',
         description: 'Microsoft Phi model. Best quality, slowest loading.',
+        supportsThinking: false,
     },
 ];
 
@@ -68,6 +75,12 @@ export const getDefaultModelId = () => {
     const available = getAvailableModels();
     const recommended = available.find(m => m.recommended);
     return recommended?.id || available[0]?.id || null;
+};
+
+// Check if a model supports thinking mode (Chain-of-Thought reasoning)
+export const getModelSupportsThinking = (modelId) => {
+    const model = AVAILABLE_MODELS.find(m => m.id === modelId);
+    return model?.supportsThinking === true;
 };
 
 // localStorage key for persisting model preference
@@ -292,6 +305,9 @@ export function useWebLLM() {
      * 
      * @param {Array} messages - Array of { role, content } objects
      * @param {Object} options - Generation options
+     * @param {number} options.temperature - Sampling temperature (default 0.7, 0.6 for thinking)
+     * @param {number} options.maxTokens - Maximum tokens to generate
+     * @param {boolean} options.enableThinking - Enable Qwen3 thinking mode (<think> tags)
      * @param {Function} onToken - Callback for each token (streaming)
      * @returns {Promise<string>} - Full response text
      */
@@ -304,13 +320,26 @@ export function useWebLLM() {
         abortControllerRef.current = new AbortController();
 
         try {
-            const chunks = await engineRef.current.chat.completions.create({
+            // Build request options
+            const requestOptions = {
                 messages,
                 temperature: options.temperature ?? 0.7,
                 max_tokens: options.maxTokens ?? 1024,
                 stream: true,
                 stream_options: { include_usage: true },
-            });
+            };
+
+            // Add thinking mode support for Qwen3 models
+            // Qwen3 uses enable_thinking in extra_body to trigger <think>...</think> output
+            if (options.enableThinking) {
+                requestOptions.extra_body = {
+                    enable_thinking: true,
+                    // Optional: limit thinking tokens to prevent runaway reasoning
+                    // max_thinking_tokens: 1024,
+                };
+            }
+
+            const chunks = await engineRef.current.chat.completions.create(requestOptions);
 
             let fullResponse = '';
 

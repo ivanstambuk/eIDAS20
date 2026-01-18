@@ -11,7 +11,7 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { useWebLLM, getAvailableModels } from '../../hooks/useWebLLM';
+import { useWebLLM, getAvailableModels, getModelSupportsThinking } from '../../hooks/useWebLLM';
 import { useRAG } from '../../hooks/useRAG';
 import './AIChat.css';
 
@@ -250,6 +250,9 @@ function WelcomeScreen({
                                     {model.recommended && (
                                         <span className="badge badge-recommended">RECOMMENDED</span>
                                     )}
+                                    {model.supportsThinking && (
+                                        <span className="badge badge-thinking">THINKING</span>
+                                    )}
                                 </div>
                                 <span className="model-card-size">{model.size}</span>
                             </div>
@@ -334,9 +337,17 @@ export function AIChat() {
             // Start streaming response
             setStreamingContent('');
 
+            // Check if thinking mode should be enabled for this request
+            const useThinking = thinkingEnabled && getModelSupportsThinking(llm.currentModel);
+
             const response = await llm.chat(
                 ragMessages,
-                { temperature: 0.7, maxTokens: 1024 },
+                {
+                    // Qwen3 recommends temperature=0.6 for thinking mode
+                    temperature: useThinking ? 0.6 : 0.7,
+                    maxTokens: useThinking ? 2048 : 1024,
+                    enableThinking: useThinking,
+                },
                 (token, fullText) => {
                     setStreamingContent(fullText);
                 }
@@ -367,7 +378,7 @@ export function AIChat() {
             ]);
             setStreamingContent('');
         }
-    }, [input, llm, rag]);
+    }, [input, llm, rag, thinkingEnabled]);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -577,13 +588,25 @@ export function AIChat() {
                                 <span>New</span>
                             </button>
                             <button
-                                className={`toolbar-btn ${thinkingEnabled ? 'active' : ''}`}
+                                className={`toolbar-btn ${thinkingEnabled && getModelSupportsThinking(llm.currentModel) ? 'active' : ''}`}
                                 onClick={handleToggleThinking}
-                                aria-label={thinkingEnabled ? 'Disable thinking' : 'Enable thinking'}
-                                aria-pressed={thinkingEnabled}
+                                aria-label={
+                                    !getModelSupportsThinking(llm.currentModel)
+                                        ? 'Thinking mode not available for this model'
+                                        : thinkingEnabled
+                                            ? 'Disable thinking'
+                                            : 'Enable thinking'
+                                }
+                                aria-pressed={thinkingEnabled && getModelSupportsThinking(llm.currentModel)}
+                                disabled={!getModelSupportsThinking(llm.currentModel)}
+                                title={
+                                    !getModelSupportsThinking(llm.currentModel)
+                                        ? 'Use Qwen3 for thinking mode'
+                                        : ''
+                                }
                             >
                                 <ThinkingIcon />
-                                <span>{thinkingEnabled ? 'Think ON' : 'Think'}</span>
+                                <span>{thinkingEnabled && getModelSupportsThinking(llm.currentModel) ? 'Think ON' : 'Think'}</span>
                             </button>
                             <button
                                 className="toolbar-btn"

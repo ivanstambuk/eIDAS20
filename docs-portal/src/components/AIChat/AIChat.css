@@ -545,6 +545,11 @@
     color: var(--accent-secondary);
 }
 
+.badge-thinking {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+
 /* Cache Indicator */
 .cache-indicator {
     display: flex;
