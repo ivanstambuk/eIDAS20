@@ -171,7 +171,7 @@ const Terminology = () => {
     const { saveScrollPosition: handleSaveScroll } = useScrollRestoration({
         storageKey: 'terminologyScrollY',
         ready: !loading && terminology !== null,
-        hasDeepLink: !!searchParams.get('section')
+        hasDeepLink: !!(searchParams.get('section') || searchParams.get('term'))
     });
 
     // NOTE: We intentionally do NOT clear the scroll position on unmount.
@@ -182,17 +182,30 @@ const Terminology = () => {
     //   4. Scroll is restored, then position is cleared
     // Clearing on unmount (step 2) would break this cycle.
 
-    // Deep linking: scroll to term when content loads or section param changes
+    // Deep linking: scroll to term when content loads or params change
+    // Supports both ?section=letter-X (for sections) and ?term=term-id (for specific terms)
     // This takes precedence over scroll restoration
     useEffect(() => {
         if (!loading && terminology) {
             const section = searchParams.get('section');
-            if (section) {
-                // Clear saved scroll position if we have a section param (deep link)
+            const termId = searchParams.get('term');
+
+            // Determine target element ID
+            let targetElementId = null;
+            if (termId) {
+                // Direct link to a specific term (from popover)
+                targetElementId = `term-${termId}`;
+            } else if (section) {
+                // Link to a section (letter heading)
+                targetElementId = section;
+            }
+
+            if (targetElementId) {
+                // Clear saved scroll position if we have a deep link
                 sessionStorage.removeItem('terminologyScrollY');
                 // Small delay to ensure DOM is fully rendered
                 requestAnimationFrame(() => {
-                    const element = document.getElementById(section);
+                    const element = document.getElementById(targetElementId);
                     if (element) {
                         // Header (64px) + sticky nav (~56px) + extra padding for visibility
                         const headerOffset = 135;
