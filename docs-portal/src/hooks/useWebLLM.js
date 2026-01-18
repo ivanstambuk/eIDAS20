@@ -63,6 +63,48 @@ export const getAvailableModels = () => {
     return AVAILABLE_MODELS.filter(m => isModelAvailable(m.id));
 };
 
+// Get the default model (recommended or first available)
+export const getDefaultModelId = () => {
+    const available = getAvailableModels();
+    const recommended = available.find(m => m.recommended);
+    return recommended?.id || available[0]?.id || null;
+};
+
+// localStorage key for persisting model preference
+const STORAGE_KEY = 'eidas-ai-model';
+
+/**
+ * Load saved model preference from localStorage
+ * @returns {string|null} Saved model ID or null if not found/invalid
+ */
+const loadSavedModelPreference = () => {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            // Validate that the saved model is still available
+            const available = getAvailableModels();
+            if (available.some(m => m.id === saved)) {
+                return saved;
+            }
+        }
+    } catch (e) {
+        console.debug('Could not load model preference:', e.message);
+    }
+    return null;
+};
+
+/**
+ * Save model preference to localStorage
+ * @param {string} modelId - Model ID to save
+ */
+const saveModelPreference = (modelId) => {
+    try {
+        localStorage.setItem(STORAGE_KEY, modelId);
+    } catch (e) {
+        console.debug('Could not save model preference:', e.message);
+    }
+};
+
 /**
  * Check WebGPU availability
  */
@@ -99,6 +141,10 @@ export function useWebLLM() {
     const [currentModel, setCurrentModel] = useState(null);
     const [webGPUSupported, setWebGPUSupported] = useState(null);
     const [cachedModels, setCachedModels] = useState([]); // Array of model IDs that are cached
+    // Selected model preference (persisted to localStorage)
+    const [selectedModelId, setSelectedModelIdState] = useState(() => {
+        return loadSavedModelPreference() || getDefaultModelId();
+    });
 
     const engineRef = useRef(null);
     const workerRef = useRef(null);
@@ -125,6 +171,14 @@ export function useWebLLM() {
 
         setCachedModels(cachedIds);
         return cachedIds;
+    }, []);
+
+    /**
+     * Set selected model and persist to localStorage
+     */
+    const setSelectedModelId = useCallback((modelId) => {
+        setSelectedModelIdState(modelId);
+        saveModelPreference(modelId);
     }, []);
 
     // Check WebGPU support and cached models on mount
@@ -318,6 +372,7 @@ export function useWebLLM() {
         currentModel,
         webGPUSupported,
         cachedModels, // Array of model IDs that are cached
+        selectedModelId, // User's preferred model (persisted)
         isLoading: status === 'loading',
         isReady: status === 'ready',
         isGenerating: status === 'generating',
@@ -328,5 +383,6 @@ export function useWebLLM() {
         chat,
         abort,
         checkCachedModels, // Refresh cached models list
+        setSelectedModelId, // Change preferred model (persists to localStorage)
     };
 }

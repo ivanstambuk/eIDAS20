@@ -3,22 +3,28 @@
 ## Current State
 
 - **Focus**: Add model selector to AI chat welcome screen (before loading)
-- **Next**: Implement Phase 1 — cache detection in `useWebLLM.js`
-- **Status**: Ready (plan approved)
+- **Next**: Implement Phase 2 — persistence to localStorage
+- **Status**: Phase 1 complete ✓
 - **Phase**: Backlog enhancement
+
+## Completed
+
+### Phase 1: Cache Detection ✓
+- Added `hasModelInCache` import from @mlc-ai/web-llm
+- Added `cachedModels` state array tracking cached model IDs
+- Added `checkCachedModels()` function to check all available models
+- Cache checked on mount after WebGPU validation
+- Cache list refreshed after successful model load
+- Exposed `cachedModels` and `checkCachedModels` in hook return
+- Committed: `c6cc4a4`
 
 ## Key Files
 
 - `docs-portal/src/components/AIChat/AIChat.jsx` — Main component with `WelcomeScreen`
 - `docs-portal/src/components/AIChat/AIChat.css` — Styles for new model selector
-- `docs-portal/src/hooks/useWebLLM.js` — Add cache detection + persistence
+- `docs-portal/src/hooks/useWebLLM.js` — ✓ Cache detection added
 
-## Implementation Plan
-
-### Phase 1: Cache Detection (~10 min)
-1. Add `checkModelCached(modelId)` using WebLLM's cache API
-2. Expose `cachedModels` state array from useWebLLM hook
-3. Check cache status on mount
+## Remaining Implementation Plan
 
 ### Phase 2: Persistence (~5 min)
 1. Save selected model to `localStorage` key `eidas-ai-model`
@@ -44,7 +50,7 @@ Mockup saved: `~/.gemini/antigravity/brain/3ee771b8-550d-4560-8c1b-20094a195640/
 
 - 6 models available in `AVAILABLE_MODELS` array (useWebLLM.js lines 16-54)
 - `ModelSelector` component already exists (lines 61-123) but only shown AFTER model loads
-- WebLLM uses IndexedDB for caching — need to check their API for cache detection
+- WebLLM uses IndexedDB for caching — hasModelInCache API confirmed working
 - User confirmed: explicit "Load" button required (no auto-start on selection)
 
 ## Quick Start
