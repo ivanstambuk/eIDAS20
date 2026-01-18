@@ -608,7 +608,7 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
                     lines.append("")
                 continue
             
-            # Tables contain points (a), (b), etc.
+            # Tables contain points (a), (b), etc. - output as list items for gutter icons
             if child.name == 'table':
                 for row in child.find_all('tr'):
                     cells = row.find_all('td')
@@ -616,8 +616,8 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
                         point = clean_text(cells[0].get_text())
                         content_text = clean_text(cells[1].get_text())
                         if point and content_text:
-                            lines.append(f"{point} {content_text}")
-                            lines.append("")
+                            # Use list format so rehype assigns IDs for gutter icons
+                            lines.append(f"- {point} {content_text}")
                 continue
             
             # Regular paragraphs (oj-normal) - intro text etc.
