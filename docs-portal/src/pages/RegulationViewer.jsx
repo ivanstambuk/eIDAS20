@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useParams, Link, useSearchParams, useNavigationType } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
@@ -65,11 +65,22 @@ const RegulationViewer = () => {
 
     // Scroll restoration: uses shared hook that handles the DOM height timing issue
     // (window.scrollTo() fails if called before content renders)
-    // Deep links take precedence over scroll restoration
+    // 
+    // Key insight: On back navigation with a saved scroll position, we want to restore
+    // to that position, NOT scroll to the section indicated by ?section= parameter.
+    // The section param is only a "deep link" on fresh/forward navigation.
+    const navigationType = useNavigationType();
+    const isBackForward = navigationType === 'POP';
+    const hasSavedPosition = !!sessionStorage.getItem(`regulationScrollY_${id}`);
+
+    // Skip deep link handling if back-navigating with a saved position
+    const shouldRestoreScroll = isBackForward && hasSavedPosition;
+    const hasDeepLink = !!searchParams.get('section') && !shouldRestoreScroll;
+
     const { saveScrollPosition } = useScrollRestoration({
         storageKey: `regulationScrollY_${id}`,
         ready: !loading && regulation !== null,
-        hasDeepLink: !!searchParams.get('section')
+        hasDeepLink
     });
 
     // ⚠️ IMPORTANT: This is the ACTUAL citation popover implementation.
@@ -253,6 +264,16 @@ const RegulationViewer = () => {
                 if (termHideTimeout) clearTimeout(termHideTimeout);
             });
             popover.addEventListener('mouseleave', hideTermPopover);
+
+            // Save scroll position when clicking "View in Terminology" link
+            // This enables scroll restoration when pressing browser back button
+            popover.addEventListener('click', (e) => {
+                const link = e.target.closest('a.term-popover-link');
+                if (link && link.href.includes('#/')) {
+                    // Internal portal link - save scroll position for back-navigation
+                    saveScrollPosition();
+                }
+            });
         };
 
         const hideTermPopover = () => {
@@ -293,7 +314,7 @@ const RegulationViewer = () => {
             if (activeTermPopover) activeTermPopover.remove();
             if (termHideTimeout) clearTimeout(termHideTimeout);
         };
-    }, [regulation, isMobile]);
+    }, [regulation, isMobile, saveScrollPosition]);
 
     useEffect(() => {
         const loadRegulation = async () => {
@@ -323,8 +344,9 @@ const RegulationViewer = () => {
     }, [id]);
 
     // Deep linking: scroll to section when content loads or section param changes
+    // Skip if we're restoring scroll position from back navigation
     useEffect(() => {
-        if (!loading && regulation) {
+        if (!loading && regulation && !shouldRestoreScroll) {
             const section = searchParams.get('section');
             if (section) {
                 // Small delay to ensure DOM is fully rendered
@@ -333,7 +355,7 @@ const RegulationViewer = () => {
                 });
             }
         }
-    }, [loading, regulation, searchParams]);
+    }, [loading, regulation, searchParams, shouldRestoreScroll]);
 
     // Copy Reference Gutter Icons: Hydrate headings with copy buttons (DEC-011)
     useEffect(() => {
