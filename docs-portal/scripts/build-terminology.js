@@ -131,7 +131,7 @@ function extractDefinitions(content) {
     //   - Stops at: semicolon (;), period (.), or newline (\n)
     //   - This prevents greedy capture of subsequent articles
     //   - See DEC-055 for rationale
-    const defPatternParens = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
+    const defPatternParens = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means,?\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     // Pattern 2: EU numbered list format - N. 'term' means definition
     // Used in older regulations like 765/2008 (Article 2: Definitions)

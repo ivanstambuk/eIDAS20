@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "generated": "2026-01-18T11:05:43.440Z",
+  "generated": "2026-01-18T14:24:19.584Z",
   "statistics": {
-    "totalTerms": 106,
-    "totalDefinitions": 199,
+    "totalTerms": 107,
+    "totalDefinitions": 200,
     "sources": {
-      "regulations": 71,
+      "regulations": 72,
       "implementingActs": 128
     }
   },
@@ -84,6 +84,7 @@
     ],
     "O": [
       "object-of-certification",
+      "offline-mode",
       "owner-of-a-scheme-for-the-attestation-of-attributes"
     ],
     "P": [
@@ -2468,6 +2469,44 @@
               "articleId": "article-2-para-3",
               "articleNumber": "2(3)",
               "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ]
+    },
+    {
+      "id": "offline-mode",
+      "term": "offline mode",
+      "sources": [
+        {
+          "definition": "as regards the use of European Digital Identity Wallets, an interaction between a user and a third party at a physical location using close proximity technologies, whereby the European Digital Identity Wallet is not required to access remote systems via electronic communication networks for the purpose of the interaction",
+          "documentId": "2014-910",
+          "documentTitle": "Regulation 910/2014",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02014R0910-20241018",
+          "articleId": "article-3-para-57",
+          "articleNumber": "3(57)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-3-para-57",
+      "definitionGroups": [
+        {
+          "definition": "as regards the use of European Digital Identity Wallets, an interaction between a user and a third party at a physical location using close proximity technologies, whereby the European Digital Identity Wallet is not required to access remote systems via electronic communication networks for the purpose of the interaction",
+          "sources": [
+            {
+              "definition": "as regards the use of European Digital Identity Wallets, an interaction between a user and a third party at a physical location using close proximity technologies, whereby the European Digital Identity Wallet is not required to access remote systems via electronic communication networks for the purpose of the interaction",
+              "documentId": "2014-910",
+              "documentTitle": "Regulation 910/2014",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02014R0910-20241018",
+              "articleId": "article-3-para-57",
+              "articleNumber": "3(57)",
+              "displayOrder": 1
             }
           ],
           "isVariant": false
