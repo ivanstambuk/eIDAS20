@@ -1169,6 +1169,35 @@
     height: 18px;
 }
 
+/* Active listening state */
+.btn-mic.listening {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--error);
+    color: var(--error);
+    animation: pulse-mic 1.5s ease-in-out infinite;
+}
+
+.btn-mic.listening svg {
+    fill: var(--error);
+}
+
+@keyframes pulse-mic {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+    }
+}
+
+/* Interim text styling */
+.chat-input.has-interim::placeholder {
+    color: var(--text-tertiary);
+}
+
 /* ============================================
    12. LOADING OVERLAY (in model selector)
    ============================================ */

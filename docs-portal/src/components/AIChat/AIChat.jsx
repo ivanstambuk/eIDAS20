@@ -87,6 +87,17 @@ const MicrophoneIcon = () => (
     </svg>
 );
 
+const StopRecordingIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor">
+        <rect x="6" y="6" width="12" height="12" rx="2" />
+    </svg>
+);
+
+// Check if Web Speech API is available (for speech-to-text)
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const speechSupported = !!SpeechRecognition;
+
+
 /**
  * Model Selector component
  */
@@ -384,11 +395,75 @@ export function AIChat() {
     const [currentSources, setCurrentSources] = useState([]);
     const [thinkingEnabled, setThinkingEnabled] = useState(false);
 
+    // Speech-to-text state
+    const [isListening, setIsListening] = useState(false);
+    const [interimText, setInterimText] = useState('');
+
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
 
+    // Speech recognition refs
+    const recognitionRef = useRef(null);
+    const finalizedTextRef = useRef('');
+    const stoppingForSendRef = useRef(false);
+
     const llm = useWebLLM();
     const rag = useRAG();
+
+    // Initialize speech recognition
+    useEffect(() => {
+        if (!speechSupported) return;
+
+        const recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = (event) => {
+            if (stoppingForSendRef.current) return;
+
+            let finalTranscript = '';
+            let interimTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    finalTranscript += transcript;
+                } else {
+                    interimTranscript += transcript;
+                }
+            }
+
+            if (finalTranscript) {
+                finalizedTextRef.current += finalTranscript;
+                setInput(finalizedTextRef.current);
+                setInterimText('');
+            }
+
+            if (interimTranscript) {
+                setInterimText(interimTranscript);
+            }
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+            setIsListening(false);
+            stoppingForSendRef.current = false;
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+            stoppingForSendRef.current = false;
+        };
+
+        recognitionRef.current = recognition;
+
+        return () => {
+            if (recognitionRef.current) {
+                recognitionRef.current.abort();
+            }
+        };
+    }, []);
 
     // Scroll to bottom when messages change
     useEffect(() => {
@@ -401,6 +476,7 @@ export function AIChat() {
             inputRef.current?.focus();
         }
     }, [isOpen, llm.isReady]);
+
 
     const handleSendMessage = useCallback(async () => {
         if (!input.trim() || !llm.isReady || llm.isGenerating) return;
@@ -462,10 +538,33 @@ export function AIChat() {
         }
     }, [input, llm, rag, thinkingEnabled]);
 
+    // Handle send with speech-to-text support
+    const handleSend = useCallback(async () => {
+        // If listening, stop and send accumulated text
+        if (isListening) {
+            stoppingForSendRef.current = true;
+            recognitionRef.current?.stop();
+            setIsListening(false);
+
+            const fullText = (input + interimText).trim();
+            setInterimText('');
+            finalizedTextRef.current = '';
+
+            if (fullText) {
+                setInput(fullText);
+                // Small delay to let state update, then send
+                setTimeout(() => handleSendMessage(), 50);
+            }
+            return;
+        }
+
+        handleSendMessage();
+    }, [isListening, input, interimText, handleSendMessage]);
+
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            handleSendMessage();
+            handleSend();
         }
     };
 
@@ -481,12 +580,36 @@ export function AIChat() {
     };
 
     const handleNewChat = useCallback(() => {
+        // Stop listening if active
+        if (isListening) {
+            recognitionRef.current?.stop();
+            setIsListening(false);
+            setInterimText('');
+            finalizedTextRef.current = '';
+        }
         setMessages([]);
         setStreamingContent('');
         setCurrentSources([]);
         setInput('');
         inputRef.current?.focus();
-    }, []);
+    }, [isListening]);
+
+    // Toggle speech-to-text listening
+    const toggleListening = useCallback(() => {
+        if (!speechSupported || !recognitionRef.current) return;
+
+        if (isListening) {
+            recognitionRef.current.stop();
+            setIsListening(false);
+        } else {
+            // Clear input when starting fresh
+            setInput('');
+            setInterimText('');
+            finalizedTextRef.current = '';
+            recognitionRef.current.start();
+            setIsListening(true);
+        }
+    }, [isListening]);
 
     const handleClearContext = useCallback(() => {
         setMessages([]);
@@ -579,25 +702,30 @@ export function AIChat() {
                 </div>
 
                 <div className="chat-input-area">
-                    <button
-                        className="btn-mic"
-                        onClick={() => {/* TODO: Implement speech-to-text */ }}
-                        aria-label="Voice input"
-                        title="Voice input (coming soon)"
-                    >
-                        <MicrophoneIcon />
-                    </button>
+                    {speechSupported && (
+                        <button
+                            className={`btn-mic ${isListening ? 'listening' : ''}`}
+                            onClick={toggleListening}
+                            aria-label={isListening ? 'Stop listening' : 'Voice input'}
+                            title={isListening ? 'Stop listening' : 'Speech-to-text'}
+                        >
+                            {isListening ? <StopRecordingIcon /> : <MicrophoneIcon />}
+                        </button>
+                    )}
                     <label htmlFor="chat-input" className="sr-only">Type your question about eIDAS 2.0</label>
                     <textarea
                         ref={inputRef}
                         id="chat-input"
-                        className="chat-input"
-                        placeholder="Ask about eIDAS 2.0..."
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
+                        className={`chat-input ${interimText ? 'has-interim' : ''}`}
+                        placeholder={isListening ? 'Listening...' : 'Ask about eIDAS 2.0...'}
+                        value={isListening ? input + interimText : input}
+                        onChange={(e) => {
+                            if (!isListening) setInput(e.target.value);
+                        }}
                         onKeyDown={handleKeyDown}
                         rows={1}
                         disabled={llm.isGenerating}
+                        readOnly={isListening}
                         aria-label="Type your question about eIDAS 2.0"
                     />
 
@@ -612,8 +740,8 @@ export function AIChat() {
                     ) : (
                         <button
                             className="btn btn-send"
-                            onClick={handleSendMessage}
-                            disabled={!input.trim()}
+                            onClick={handleSend}
+                            disabled={!input.trim() && !isListening}
                             aria-label="Send message"
                         >
                             <SendIcon />
