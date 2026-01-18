@@ -599,17 +599,57 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
                     lines.append("")
         
         # Also check for oj-normal paragraphs in annex
-        for p in annex_div.find_all('p', class_='oj-normal'):
+        # Need to handle split elements: (a) in one <p>, content in next <p>
+        annex_paras = list(annex_div.find_all('p', class_='oj-normal'))
+        pending_point = None
+        
+        j = 0
+        while j < len(annex_paras):
+            p = annex_paras[j]
             text = clean_text(p.get_text())
-            if text:
-                num_match = re.match(r'^(\d+)\.\s+(.*)$', text)
-                if num_match:
-                    num, item_text = num_match.groups()
-                    lines.append(f"{num}. {item_text}")
-                    lines.append("")
-                else:
-                    lines.append(text)
-                    lines.append("")
+            
+            if not text:
+                j += 1
+                continue
+            
+            # Check for standalone point letter: "(a)" or "(b)" etc.
+            standalone_point_match = re.match(r'^(\([a-z]\))$', text)
+            if standalone_point_match:
+                pending_point = standalone_point_match.group(1)
+                j += 1
+                continue
+            
+            # Check for combined point: "(a) content..."
+            combined_point_match = re.match(r'^(\([a-z]\))\s+(.+)$', text)
+            if combined_point_match:
+                point, point_text = combined_point_match.groups()
+                lines.append(f"{point} {point_text}")
+                lines.append("")
+                pending_point = None
+                j += 1
+                continue
+            
+            # Content for pending point letter
+            if pending_point:
+                lines.append(f"{pending_point} {text}")
+                lines.append("")
+                pending_point = None
+                j += 1
+                continue
+            
+            # Check for numbered item
+            num_match = re.match(r'^(\d+)\.\s+(.*)$', text)
+            if num_match:
+                num, item_text = num_match.groups()
+                lines.append(f"{num}. {item_text}")
+                lines.append("")
+                j += 1
+                continue
+            
+            # Regular text
+            lines.append(text)
+            lines.append("")
+            j += 1
     
     return lines
 
