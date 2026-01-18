@@ -206,6 +206,14 @@ def extract_preamble(soup: BeautifulSoup) -> list[str]:
     
     The recital number and content are in SEPARATE adjacent <p> elements.
     
+    Output structure (matching 765/2008 pattern):
+        ## Preamble
+        THE EUROPEAN COMMISSION,
+        *Having regard to...*
+        Whereas:
+        ## Recitals
+        - (1) First recital...
+    
     Returns list of Markdown lines.
     """
     content = soup.find(id='document1') or soup
@@ -213,7 +221,8 @@ def extract_preamble(soup: BeautifulSoup) -> list[str]:
     # Find all oj-normal paragraphs as a list (need index access for lookahead)
     normal_paras = list(content.find_all('p', class_='oj-normal'))
     
-    institutional_lines = []
+    institutional_body = []  # THE EUROPEAN PARLIAMENT/COMMISSION
+    having_regard_clauses = []  # "Having regard to..."
     recitals = []
     pending_recital_num = None
     found_first_recital = False
@@ -265,33 +274,49 @@ def extract_preamble(soup: BeautifulSoup) -> list[str]:
             i += 1
             continue
         
-        # Before recitals: collect institutional preamble
+        # Before recitals: categorize preamble content
         if not found_first_recital and not past_recitals:
-            if any(kw in text.upper() for kw in ['THE EUROPEAN PARLIAMENT', 'HAVING REGARD', 'ACTING IN ACCORDANCE']):
-                institutional_lines.append(text)
+            text_upper = text.upper()
+            if 'THE EUROPEAN PARLIAMENT' in text_upper or 'THE EUROPEAN COMMISSION' in text_upper or 'THE COUNCIL' in text_upper:
+                # Institutional body (not italicized)
+                institutional_body.append(text)
+            elif any(kw in text_upper for kw in ['HAVING REGARD', 'ACTING IN ACCORDANCE', 'AFTER CONSULTING']):
+                # "Having regard to..." clauses (italicized in output)
+                having_regard_clauses.append(text)
         
         i += 1
     
-    # Build output
+    # Build output (matching 765/2008 structure)
     result = []
     
-    # Institutional formula (before "Preamble")
-    for line in institutional_lines:
+    # 1. Preamble heading FIRST (not after institutional formula)
+    result.append("## Preamble")
+    result.append("")
+    
+    # 2. Institutional body (THE EUROPEAN PARLIAMENT/COMMISSION)
+    for line in institutional_body:
         result.append(line)
         result.append("")
     
-    # Preamble header
-    result.append("## Preamble")
-    result.append("")
+    # 3. "Having regard to..." clauses (italicized)
+    for line in having_regard_clauses:
+        result.append(f"*{line}*")
+        result.append("")
+    
+    # 4. "Whereas:" transition
     result.append("Whereas:")
     result.append("")
     
-    # Recitals
+    # 5. Recitals section
+    result.append("## Recitals")
+    result.append("")
+    
+    # 6. Individual recitals (as list items for gutter icon functionality per DEC-XXX)
     for num, text in recitals:
-        result.append(f"({num}) {text}")
+        result.append(f"- ({num}) {text}")
         result.append("")
     
-    # Enacting formula
+    # 7. Enacting formula
     if enacting_formula:
         result.append(enacting_formula)
         result.append("")
@@ -689,42 +714,39 @@ def format_markdown(metadata: dict, preamble: list[str], chapters: list[str],
         lines.append(f"> **Official Journal:** OJ {oj_ref}")
     lines.append(f"> **ELI:** {metadata['eli']}")
     lines.append(f"> **In force:** Current consolidated version: {datetime.now().strftime('%d/%m/%Y')}")
+    # EEA relevance goes in metadata blockquote (consistent with 765/2008 pattern)
+    if metadata.get('eea_note'):
+        lines.append(f"> **EEA Relevance:** Yes")
     lines.append("")
     
-    # 2. Document title
+    # 2. Document title (full legal title including date and subject)
+    # The date ("of DATE") and subject ("on SUBJECT") are part of the formal legal title
+    # but are NOT repeated in the body - they're already displayed in the header component.
+    # This matches how 765/2008 and other regulations are structured.
     lines.append(f"# {metadata['title']}")
     lines.append("")
     
-    # 3. Date and subject
-    if metadata.get('date'):
-        lines.append(f"**{metadata['date']}**")
-        lines.append("")
+    # NOTE: Date, subject, and EEA note are NOT output here anymore.
+    # - Date: Extracted and used in header (via build-content.js extractDate)
+    # - Subject: Part of the legal title (already shown in header subtitle)
+    # - EEA note: Now in metadata blockquote above
+    # This prevents redundant "of 8 September 2015" / "on the interoperability..." 
+    # appearing at the start of body content.
     
-    if metadata.get('subject'):
-        lines.append(f"**{metadata['subject']}**")
-        lines.append("")
-    
-    if metadata.get('eea_note'):
-        lines.append(f"*{metadata['eea_note']}*")
-        lines.append("")
-    
-    lines.append("---")
-    lines.append("")
-    
-    # 4. Preamble (institutional formula + recitals)
+    # 3. Preamble (institutional formula + recitals)
     lines.extend(preamble)
     
-    # 5. Enacting Terms marker
+    # 4. Enacting Terms marker
     lines.append("## Enacting Terms")
     lines.append("")
     
-    # 6. Chapters and Articles
+    # 5. Chapters and Articles
     lines.extend(chapters)
     
-    # 7. Signatories
+    # 6. Signatories
     lines.extend(signatories)
     
-    # 8. Annexes
+    # 7. Annexes
     if annexes:
         lines.extend(annexes)
     
