@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 16:50 CET |
+| **Last Updated** | 2026-01-18 17:50 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (172,232 words) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms) |
 | **Next Action** | See Backlog |
 
 ---

@@ -7,6 +7,7 @@
  * Supports:
  * - CELEX numbers (e.g., "32015R1501", "02014R0910-20241018")
  * - Document slugs (e.g., "2015-1501", "910-2014")
+ * - EU legal citation format (e.g., "910/2014", "1501/2015")
  * - ELI URIs (e.g., "eli/reg/2014/910", "http://data.europa.eu/eli/reg_impl/2015/1501/oj")
  * - Partial CELEX (e.g., "1501", "2977")
  */
@@ -67,6 +68,9 @@ function looksLikeDocRef(query) {
     // Slug format: YYYY-NNNN (e.g., 2015-1501, 910-2014)
     if (/^\d{3,4}-\d{3,4}$/i.test(trimmed)) return true;
 
+    // EU legal citation format: NNN/YYYY or NNNN/YYYY (e.g., 910/2014, 1501/2015)
+    if (/^\d{3,4}\/\d{4}$/i.test(trimmed)) return true;
+
     // Just the number part: 4 digits (e.g., 1501, 2977)
     if (/^\d{4}$/.test(trimmed)) return true;
 
@@ -97,6 +101,19 @@ function extractFromELI(query) {
 }
 
 /**
+ * Convert EU legal citation format (910/2014) to slug (2014-910)
+ * e.g., "910/2014" -> "2014-910"
+ */
+function convertLegalCitation(query) {
+    const match = query.match(/^(\d{3,4})\/(\d{4})$/);
+    if (match) {
+        const [, number, year] = match;
+        return `${year}-${number}`;
+    }
+    return null;
+}
+
+/**
  * Find matching documents for a query
  */
 function findMatches(query, index) {
@@ -104,7 +121,11 @@ function findMatches(query, index) {
 
     // Check if this is an ELI URI and extract the slug
     const eliSlug = extractFromELI(query);
-    const normalizedQuery = eliSlug || query;
+
+    // Check if this is EU legal citation format (910/2014)
+    const legalCitationSlug = convertLegalCitation(query);
+
+    const normalizedQuery = eliSlug || legalCitationSlug || query;
 
     // For ELI, also try reversed format (2014-910 vs 910-2014)
     let reversedEliSlug = null;
