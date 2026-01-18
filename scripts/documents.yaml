@@ -1,14 +1,19 @@
 version: '1.0'
-last_updated: '2026-01-18'
+last_updated: '2026-01-19'
 # Document Model:
 #   legalType: What the document IS under EU law (regulation, recommendation, decision, directive)
 #   category:  How it relates to the eIDAS project (primary, implementing_act, referenced)
+#   source:    Conversion pipeline used:
+#              - formex: Formex XML from EUR-Lex cellar (preferred for 2020+ documents)
+#              - html:   EUR-Lex HTML parser (fallback for older documents without Formex)
+#              - manual: Manually created/merged (special cases like consolidated versions)
 documents:
 - celex: 02014R0910-20241018
   title: Consolidated eIDAS Regulation
   shortTitle: eIDAS 2.0 Regulation (Consolidated)
   legalType: regulation
   category: primary
+  source: formex
   cellar_id: 6a1e14d9-907e-11ef-a130-01aa75ed71a1.0007.01
   output_dir: 01_regulation/2014_910_eIDAS_Consolidated
 - celex: 32024R1183
@@ -16,6 +21,7 @@ documents:
   shortTitle: eIDAS 2.0 Amendment
   legalType: regulation
   category: primary
+  source: formex
   cellar_id: 459993a1-068e-11ef-a251-01aa75ed71a1.0006.02
   output_dir: 01_regulation/2024_1183_eIDAS2_Amending
 - celex: 02008R0765-20210716
@@ -32,6 +38,7 @@ documents:
   sidebarTitle: EUDIW Toolbox
   legalType: recommendation
   category: referenced
+  source: formex
   cellar_id: db5be7e4-ccf1-11eb-ac72-01aa75ed71a1.0006.02
   output_dir: 01_regulation/2021_946_EUDIW_Toolbox
 - celex: 32015R1501
@@ -39,185 +46,215 @@ documents:
   shortTitle: eIDAS Interoperability Framework
   legalType: implementing_regulation
   category: referenced
-  source: html  # Imported via eurlex_html_to_md.py
+  source: html  # Imported via eurlex_html_to_md.py (no Formex available for 2015 document)
   output_dir: 01_regulation/2015_1501_eIDAS_Interoperability
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: acccd446-b1e0-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2977_PID_and_EAA
 - celex: 32024R2978
   title: Relying Party Registration
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 4b26c98d-b050-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2978_Relying_Party_Registration
 - celex: 32024R2979
   title: Integrity and Core Functions
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: a7576de1-b1e0-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2979_Integrity_Core_Functions
 - celex: 32024R2980
   title: Dashboard Requirements
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: e331b1f3-b1e0-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2980_Dashboard_Requirements
 - celex: 32024R2981
   title: Certification of Wallet Units
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 049b9eb6-b1e1-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2981_Certification
 - celex: 32024R2982
   title: Protocols and Interfaces
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 0c2d7c7b-b1e1-11ef-acb1-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2024_2982_Protocols_Interfaces
 - celex: 32025R0846
   title: Cross-border Identity Matching
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: cf9aac3c-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0846_Cross_Border_Identity
 - celex: 32025R0847
   title: Security Breach Notification and Response
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 574269fb-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0847_Security_Breach_Response
 - celex: 32025R0848
   title: Notified European Digital Identity Wallets List
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: a6ba31dd-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0848_Notified_Wallet_List
 - celex: 32025R0849
   title: Certified European Digital Identity Wallets List
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 6cc3a1f7-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0849_Certified_Wallet_List
 - celex: 32025R1566
   title: Registered Electronic Delivery Services
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 9738ce8b-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1566_Registered_Delivery
 - celex: 32025R1567
   title: Certificate Formats
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 8a505cff-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1567_Certificate_Formats
 - celex: 32025R1568
   title: Remote Qualified Electronic Signature Creation
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: e85cbfd7-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1568_Remote_Signing
 - celex: 32025R1569
   title: Signature and Seal Creation Devices
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 990be0dd-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1569_Sign_Creation_Devices
 - celex: 32025R1570
   title: Certified Qualified Electronic Signature Creation Devices
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: fdc40733-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1570_Certified_Creation_Devices
 - celex: 32025R1571
   title: Electronic Seal Standards
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 3dd3fad4-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1571_Seal_Standards
 - celex: 32025R1572
   title: Electronic Signature Standards
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: e4955790-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1572_Esignature_Standards
 - celex: 32025R1929
   title: Qualified Electronic Time Stamps
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 31a2d4ad-9d98-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1929_Electronic_Timestamps
 - celex: 32025R1942
   title: Qualified Validation Services
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: fb634c13-9db7-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1942_Validation_Services
 - celex: 32025R1943
   title: Signature Standards and Validation Procedures
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: c3d31ae8-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1943_Signature_Standards
 - celex: 32025R1944
   title: Qualified Electronic Preservation Services
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: d8575546-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1944_Preservation_Standards
 - celex: 32025R1945
   title: Wallet Trust Evidence Issuance
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: dead57ac-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1945_Wallet_Attributes
 - celex: 32025R1946
   title: Wallet Reference Issuer
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 2fa94e9a-9d98-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1946_Wallet_Reference_Issuer
 - celex: 32025R2160
   title: Supervisory Data Exchange
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 99582d76-b39f-11f0-b37f-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2160_Supervisory_Data
 - celex: 32025R2162
   title: Conformity Assessment Body Accreditation
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 99b393e7-b39f-11f0-b37f-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2162_CAB_Accreditation
 - celex: 32025D2164
   title: Trusted Lists
   legalType: decision
   category: implementing_act
+  source: formex
   cellar_id: 8f6925cf-b39f-11f0-b37f-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2164_Trusted_Lists
 - celex: 32025R2527
   title: Qualified Certificates for Website Authentication
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 97a07e59-daec-11f0-8da2-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2527_Website_Auth_Certs
 - celex: 32025R2530
   title: Qualified Trust Service Provider Requirements
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: 79adb6f5-daec-11f0-8da2-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2530_QTSP_Requirements
 - celex: 32025R2531
   title: Qualified Electronic Ledgers
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: cbd048d0-daeb-11f0-8da2-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2531_Electronic_Ledgers
 - celex: 32025R2532
   title: Qualified Electronic Archiving Services
   legalType: regulation
   category: implementing_act
+  source: formex
   cellar_id: d3945a29-daeb-11f0-8da2-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_2532_Archiving_Services

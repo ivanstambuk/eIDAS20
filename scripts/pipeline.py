@@ -204,17 +204,25 @@ def add_metadata_header(md_path: Path, doc: dict):
     celex = doc['celex']
     title = doc.get('title', 'Unknown')
     doc_type = doc.get('type', 'regulation')
+    source = doc.get('source', 'formex')  # Default to formex for pipeline-processed docs
+    
+    # Format source for display
+    source_display = {
+        'formex': 'Formex XML',
+        'html': 'HTML Parser',
+        'manual': 'Manual'
+    }.get(source, source.title())
     
     header = f"""> **CELEX:** {celex} | **Type:** {doc_type.replace('_', ' ').title()}
 > **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex})
-> **Converted:** {datetime.now().strftime('%Y-%m-%d')} via Pipeline v1.0
+> **Converted:** {datetime.now().strftime('%Y-%m-%d')} via {source_display} Pipeline v1.0
 
 """
     
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(header + content)
     
-    print(f"   📋 Added metadata header")
+    print(f"   📋 Added metadata header (source: {source})")
 
 
 def validate_annex_extraction(md_path: Path, annex_xmls: list) -> tuple:
