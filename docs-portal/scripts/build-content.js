@@ -25,6 +25,7 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeParagraphIds from './rehype-paragraph-ids.js';
+import rehypeTermLinks from './rehype-term-links.js';
 import rehypeStringify from 'rehype-stringify';
 
 // Use the same slugger as rehype-slug for consistent IDs
@@ -39,12 +40,37 @@ const __dirname = dirname(__filename);
 // Paths relative to docs-portal
 const PROJECT_ROOT = join(__dirname, '..', '..');
 const OUTPUT_DIR = join(__dirname, '..', 'public', 'data', 'regulations');
+const TERMINOLOGY_PATH = join(__dirname, '..', 'public', 'data', 'terminology.json');
 
 // Source directories
 const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '01_regulation'), type: 'regulation' },
     { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' }
 ];
+
+/**
+ * Load terminology data for term linking.
+ * DEC-085: Terminology Cross-Linking
+ */
+let terminologyData = null;
+
+function loadTerminology() {
+    if (terminologyData) return terminologyData;
+
+    if (!existsSync(TERMINOLOGY_PATH)) {
+        console.warn('  ⚠️  terminology.json not found - run npm run build:terminology first');
+        return null;
+    }
+
+    try {
+        terminologyData = JSON.parse(readFileSync(TERMINOLOGY_PATH, 'utf-8'));
+        console.log(`📚 Loaded terminology: ${terminologyData.terms?.length || 0} terms`);
+        return terminologyData;
+    } catch (err) {
+        console.warn('  ⚠️  Error loading terminology:', err.message);
+        return null;
+    }
+}
 
 /**
  * Load documents.yaml - Single Source of Truth for document metadata.
@@ -671,17 +697,27 @@ function injectPreamble(content, preamble) {
  * 2. remarkGfm: Enable GitHub-flavored markdown (tables, strikethrough, etc.)
  * 3. remarkRehype: MDAST → HAST (HTML AST)
  * 4. rehypeSlug: Auto-generate IDs for all headings (for TOC navigation)
- * 5. rehypeStringify: HAST → HTML string
+ * 5. rehypeParagraphIds: Add IDs to paragraphs/points for deep linking
+ * 6. rehypeTermLinks: Link defined terms to terminology (DEC-085)
+ * 7. rehypeStringify: HAST → HTML string
  * 
  * This replaces the fragile regex-based approach with proper AST processing.
  */
-const markdownProcessor = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeSlug)
-    .use(rehypeParagraphIds)  // DEC-011 Phase 2: Add IDs to paragraphs/points
-    .use(rehypeStringify, { allowDangerousHtml: true });
+function createMarkdownProcessor() {
+    const terminology = loadTerminology();
+
+    return unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype, { allowDangerousHtml: true })
+        .use(rehypeSlug)
+        .use(rehypeParagraphIds)  // DEC-011 Phase 2: Add IDs to paragraphs/points
+        .use(rehypeTermLinks, { terminology })  // DEC-085: Link defined terms
+        .use(rehypeStringify, { allowDangerousHtml: true });
+}
+
+// Lazily initialized processor
+let markdownProcessor = null;
 
 /**
  * Convert markdown content to HTML using the unified processor.
@@ -689,6 +725,11 @@ const markdownProcessor = unified()
  */
 function markdownToHtml(markdown) {
     if (!markdown) return '';
+
+    // Initialize processor on first use
+    if (!markdownProcessor) {
+        markdownProcessor = createMarkdownProcessor();
+    }
 
     try {
         // Process synchronously (unified supports .processSync for build-time)

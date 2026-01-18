@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 13:35 CET |
+| **Last Updated** | 2026-01-18 14:50 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (172,232 words) |
 | **Next Action** | See Backlog |
@@ -21,7 +21,8 @@
 - **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
-- **Terminology system** (115 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Terminology cross-linking** (DEC-085: Auto-highlight defined terms in running text with hover popovers — definitions articles exempted)
+- **Terminology system** (106 terms from 3 sources, multi-source display, hover popovers, cross-refs)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
 - **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
@@ -72,7 +73,7 @@
 | GitHub header link | Update placeholder `https://github.com` to actual repo URL once published | High |
 | GitHub Pages deploy | Push to master to trigger workflow | High |
 | ~~Provision Citations~~ | ~~Deep-link references to specific provisions~~ | ~~Done (DEC-064)~~ |
-| Terminology highlighting | Auto-highlight defined terms in content with hover popovers | Medium |
+| ~~Terminology highlighting~~ | ~~Auto-highlight defined terms in content with hover popovers~~ | ~~Done (DEC-085)~~ |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | eIDAS 2.0 (2024/1183) chapters | Add chapter structure for the amending regulation | Low |
 | Fix Formex annex nesting | Converter produces sibling structure — ideal fix is nested Markdown | Low |
@@ -83,6 +84,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 14:50 | **Terminology Cross-Linking (DEC-085 Phase 1-3)**: Implemented build-time term detection and CSS styling. Created `rehype-term-links.js` plugin that: (1) matches 106 terms + plural variants, (2) exempts definitions articles (Article 2/3) from linking, (3) wraps matches with `<span class="term-link">`. Added CSS for dotted underline styling. 1,589 term links in eIDAS consolidated. Rule 11 added to AGENTS.md (recommendations required). |
 | 2026-01-18 13:35 | **Modular AGENTS.md Refactor**: Split 1,888-line AGENTS.md into hub + modules following sdd-bundle-editor pattern. Critical Rules 1-10 remain inline (416 lines). Extracted: development-rules.md (Rules 11-25, 553 lines), content-rules.md (Rules 26-44, 498 lines), rules/README.md (index), build-pipeline.md (architecture). Total preserved: 1,728 lines across 5 files. Quick Reference table links to all docs. |
 | 2026-01-18 13:20 | **2015/1501 Interoperability Framework Header Fixes + Retro**: (1) Badge now shows "Impl. Regulation" for implementing_regulation legalType, (2) Date extraction prioritizes signature block "Done at" date over cited dates, (3) HTML parser fixed to italicize all "Having regard" clauses regardless of HTML order, (4) Rules 42-44 added to AGENTS.md (CSS specificity, HTML parser gold standard, blockquote spacing), (5) Terminology added: CSS Specificity Cascade, Title Continuation Pattern. |
 | 2026-01-18 12:15 | **Quick Jump + Slug Standardization**: (1) Added `useQuickJump` hook for CELEX/slug/ELI detection in search, (2) Standardized ALL slugs to `{year}-{number}` format (DEC-083), (3) Renamed directories 910_2014→2014_910, 765_2008→2008_765, (4) Updated schema for legalType/category model, (5) Rule 41 added to AGENTS.md. Full pipeline verified. |

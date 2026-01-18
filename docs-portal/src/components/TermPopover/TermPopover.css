@@ -1,5 +1,33 @@
 /* TermPopover styles */
 
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Term Links in Regulation Content (DEC-085)
+ * 
+ * These are injected at build-time by rehype-term-links.js.
+ * They enable hover popovers for defined terminology terms.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+.term-link {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--accent-primary-dim);
+    text-underline-offset: 2px;
+    cursor: help;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.term-link:hover,
+.term-link:focus {
+    color: var(--accent-primary);
+    text-decoration-color: var(--accent-primary);
+    outline: none;
+}
+
+/* Ensure no conflict with citation links */
+.citation-ref.term-link {
+    /* If somehow both classes apply, citation styling wins */
+    text-decoration-style: solid;
+}
+
 .term-trigger {
     color: var(--accent-primary);
     text-decoration: underline;
