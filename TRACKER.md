@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 00:40 CET |
+| **Last Updated** | 2026-01-18 01:06 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (171,231 words) |
 | **Next Action** | See Backlog |
@@ -80,7 +80,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-18 00:50 | EUDIW Toolbox import + data model refactor: Added 32021H0946 via Formex pipeline. Separated `legalType` (regulation/recommendation/decision) from `category` (primary/implementing_act/referenced) in documents.yaml. Extended formex_to_md_v3.py with `extract_gr_seq_sections()`. Added Rule 33 (No Manual Markdown Creation). Sidebar now shows both Accreditation Regulation + EUDIW Toolbox under Referenced Regulations. |
+| 2026-01-18 01:06 | **Session Complete**: EUDIW Toolbox import (32021H0946) + data model refactor (legalType/category). Extended Formex converter with `extract_gr_seq_sections()` for Recommendations. Rules 33-35 added (legal doc import, citation rebuild, Formex patterns). TERMINOLOGY.md expanded with CELEX codes, GR.SEQ, legalType/category. 5 new unit tests. 171,231 words across 34 documents. |
 | 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
 | 2026-01-17 19:43 | Fix: Inline QUOT.START/END rendered as blockquotes — abbreviation ('API') now inline. Added ALINEA to TERMINOLOGY.md. Retro: Rules 31-32 (directory naming, QUOT.* detection), installed python3-markdown (3 fewer skipped tests). |
 | 2026-01-17 19:09 | Fix: RegulationViewer scroll restoration (same DOM height timing bug as Terminology). Retro: extracted shared `useScrollRestoration` hook (eliminates ~60 lines duplicate code), documented "Wait for DOM Height" pattern (AGENTS.md rule 24) |
