@@ -12,6 +12,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { pipeline, env } from '@xenova/transformers';
 
@@ -33,6 +34,74 @@ const DOC_CONFIG_FILE = path.join(__dirname, 'document-config.json');
 const MODEL_NAME = 'Xenova/all-MiniLM-L6-v2';
 const EMBEDDING_DIM = 384;
 const MAX_CHUNK_LENGTH = 512; // Max tokens for the model
+
+/**
+ * Compute a hash of all source files to detect changes
+ * Returns a SHA256 hash of concatenated file contents
+ */
+function computeSourceHash() {
+    const hash = crypto.createHash('sha256');
+
+    // Hash the regulations index
+    if (fs.existsSync(INDEX_FILE)) {
+        hash.update(fs.readFileSync(INDEX_FILE));
+    }
+
+    // Hash terminology
+    if (fs.existsSync(TERMINOLOGY_FILE)) {
+        hash.update(fs.readFileSync(TERMINOLOGY_FILE));
+    }
+
+    // Hash document config
+    if (fs.existsSync(DOC_CONFIG_FILE)) {
+        hash.update(fs.readFileSync(DOC_CONFIG_FILE));
+    }
+
+    // Hash all regulation JSON files
+    if (fs.existsSync(REGULATIONS_DIR)) {
+        const files = fs.readdirSync(REGULATIONS_DIR)
+            .filter(f => f.endsWith('.json'))
+            .sort(); // Ensure consistent order
+
+        for (const file of files) {
+            hash.update(fs.readFileSync(path.join(REGULATIONS_DIR, file)));
+        }
+    }
+
+    return hash.digest('hex');
+}
+
+/**
+ * Check if embeddings need regeneration based on source hash
+ * Returns true if regeneration is needed, false to skip
+ */
+function needsRegeneration() {
+    const currentHash = computeSourceHash();
+
+    if (!fs.existsSync(OUTPUT_FILE)) {
+        console.log('📦 No embeddings.json found - generating...\n');
+        return { needed: true, hash: currentHash };
+    }
+
+    try {
+        const existing = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf-8'));
+
+        if (existing.sourceHash === currentHash) {
+            console.log('✅ Embeddings are up-to-date (source hash matches)');
+            console.log(`   Hash: ${currentHash.substring(0, 16)}...`);
+            console.log('   Skipping regeneration.\n');
+            return { needed: false, hash: currentHash };
+        }
+
+        console.log('🔄 Source files changed - regenerating embeddings...');
+        console.log(`   Old hash: ${(existing.sourceHash || 'none').substring(0, 16)}...`);
+        console.log(`   New hash: ${currentHash.substring(0, 16)}...\n`);
+        return { needed: true, hash: currentHash };
+    } catch (err) {
+        console.log('⚠️  Could not read existing embeddings - regenerating...\n');
+        return { needed: true, hash: currentHash };
+    }
+}
 
 /**
  * Check if any input file is newer than the output file
@@ -174,8 +243,11 @@ async function generateEmbeddings() {
     console.log('🧠 Embedding Generator');
     console.log('='.repeat(50));
 
-    // Check for stale inputs
-    checkStaleness();
+    // Check if regeneration is needed (hash-based)
+    const { needed, hash: sourceHash } = needsRegeneration();
+    if (!needed) {
+        process.exit(0); // Up-to-date, nothing to do
+    }
 
     // Check for regulations index
     if (!fs.existsSync(INDEX_FILE)) {
@@ -300,11 +372,12 @@ async function generateEmbeddings() {
 
     console.log('\n');
 
-    // Save embeddings
+    // Save embeddings with source hash for change detection
     const output = {
         model: MODEL_NAME,
         dimension: EMBEDDING_DIM,
         count: embeddings.length,
+        sourceHash, // For hash-based invalidation
         generatedAt: new Date().toISOString(),
         embeddings,
     };
