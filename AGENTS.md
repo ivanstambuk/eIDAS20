@@ -1474,6 +1474,38 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Fix: Added "- " prefix to annex points in HTML parser
     ```
 
+41. **Slug Format Convention (DEC-083):**
+    
+    **All document slugs must use `{year}-{number}` format.**
+    
+    | Component | Format | Example |
+    |-----------|--------|---------|
+    | **Directory name** | `{year}_{number}_{Description}` | `2014_910_eIDAS_Consolidated` |
+    | **URL slug** | `{year}-{number}` | `2014-910` |
+    | **CELEX → slug** | Year extracted first | `32014R0910` → `2014-910` |
+    
+    **Why year-first:**
+    - Matches ELI URI structure (`eli/reg/2014/910`)
+    - Enables direct Quick Jump matching from ELI references
+    - Consistent sort order (chronological)
+    
+    **Anti-patterns:**
+    - ❌ `910-2014` (number-first — legacy format)
+    - ❌ `910_2014_...` (legacy directory naming)
+    
+    **This applies to:**
+    - Source directory names in `01_regulation/`
+    - `document-config.json` keys
+    - `regulations-index.json` slugs
+    - All internal portal URLs (`/regulation/{slug}`)
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: ELI Quick Jump didn't find eIDAS 910/2014
+    Root cause: ELI gives "2014-910", but internal slug was "910-2014"
+    Fix: Renamed directories, standardized all slugs to {year}-{number}
+    ```
+
 ## Project Structure
 
 

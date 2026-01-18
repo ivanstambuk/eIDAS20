@@ -1463,3 +1463,67 @@ Both terms are technically correct:
 | `scripts/legislation-metadata.js` | Added `subcategory: 'implementing'` to 9 implementing regulations |
 | `scripts/build-citations.js` | Extended `enrichCitation()` with `subcategory` field |
 | `src/utils/citationPopoverTemplate.js` | Added `formatFormalName()` helper to transform "Regulation X/Y" → "Implementing Regulation X/Y" |
+
+---
+
+## DEC-083: Slug Format Standardization (2026-01-18)
+
+**Date:** 2026-01-18  
+**Status:** Implemented  
+**Context:** An internal inconsistency was discovered in document slug formats:
+
+| Document | Old Slug | Issue |
+|----------|----------|-------|
+| eIDAS Regulation 910/2014 | `910-2014` | Year-last format |
+| Accreditation Regulation 765/2008 | `765-2008` | Year-last format |
+| All other documents | `2024-1183`, `2025-0847`, etc. | Year-first format |
+
+This caused problems when:
+1. Quick Jump feature parsed ELI URIs like `eli/reg/2014/910` which use `year/number` order
+2. The matching logic needed special-case handling to check both `2014-910` and `910-2014`
+
+**Decision:**
+
+Standardize ALL slugs to `{year}-{number}` format, matching ELI URI structure.
+
+**Implementation:**
+
+1. **Renamed source directories:**
+   - `765_2008_Market_Surveillance` → `2008_765_Market_Surveillance`
+   - `910_2014_eIDAS_Consolidated` → `2014_910_eIDAS_Consolidated`
+
+2. **Updated configuration files:**
+   - `documents.yaml` — Output directory paths
+   - `document-config.json` — Slug keys
+   - `legislation-metadata.js` — `consolidatedSlug` field
+
+3. **Simplified code:**
+   - Removed special-case regex in `build-content.js generateSlug()`
+   - Quick Jump now matches ELI directly without reversal logic
+
+**Breaking Change:**
+
+| Old URL | New URL |
+|---------|---------|
+| `/regulation/910-2014` | `/regulation/2014-910` |
+| `/regulation/765-2008` | `/regulation/2008-765` |
+
+**Rationale:**
+
+1. **Consistency** — All documents now use identical format
+2. **ELI compatibility** — Slugs match European Legislation Identifier structure
+3. **Simpler code** — No special cases needed in slug generation or matching
+4. **Future-proof** — Any new regulations automatically get correct format
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `01_regulation/` | Renamed 2 directories |
+| `scripts/documents.yaml` | Updated output_dir paths |
+| `docs-portal/scripts/document-config.json` | Updated slug keys |
+| `docs-portal/scripts/legislation-metadata.js` | Updated consolidatedSlug |
+| `docs-portal/scripts/build-content.js` | Simplified generateSlug() |
+| `docs-portal/src/components/Layout/Sidebar.jsx` | Updated nav link |
+| `docs-portal/src/pages/Home.jsx` | Updated quick links |
+

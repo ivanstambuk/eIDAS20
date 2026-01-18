@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 10:59 CET |
+| **Last Updated** | 2026-01-18 12:15 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (173,385 words) |
 | **Next Action** | See Backlog |
@@ -59,6 +59,8 @@
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
 - **Multi-source visual separation** (DEC-056: Single cyan color, merged clickable source headers)
 - **Legal notation fidelity** (DEC-057: Reg 765/2008 uses HTML for exact `N.` format preservation)
+- **Quick Jump search** (DEC-083: Detect document identifiers — CELEX, slugs, ELI URIs — in search query for instant navigation)
+- **Slug format standardization** (DEC-083: All slugs now use `{year}-{number}` format, matching ELI URIs)
 - **Hash-based citation caching** (MD5 cache key + CACHE_VERSION for script logic changes)
 
 ---
@@ -81,6 +83,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 12:15 | **Quick Jump + Slug Standardization**: (1) Added `useQuickJump` hook for CELEX/slug/ELI detection in search, (2) Standardized ALL slugs to `{year}-{number}` format (DEC-083), (3) Renamed directories 910_2014→2014_910, 765_2008→2008_765, (4) Updated schema for legalType/category model, (5) Rule 41 added to AGENTS.md. Full pipeline verified. |
 | 2026-01-18 10:59 | **EUR-Lex HTML Parser Fixes**: (1) Removed banned "Source Reference" footer, (2) Article titles now separate from headings (clean ToC), (3) Annex points combined with content, (4) Complete annex extraction with titles/sections/tables, (5) Gutter icons for annex points. Added Rules 37-40 to AGENTS.md. 35 docs, 173,385 words. |
 | 2026-01-18 01:33 | Citation display text preservation: original legal reference (e.g., "Commission Recommendation (EU) 2021/946") is now preserved as link text instead of shortened version. Regex refined to exclude institutional attribution ("of the European Parliament..."). Added Rule 36 to AGENTS.md. 171,117 words. |
 | 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
