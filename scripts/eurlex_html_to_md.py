@@ -293,12 +293,22 @@ def extract_preamble(soup: BeautifulSoup) -> list[str]:
     result.append("## Preamble")
     result.append("")
     
-    # 2. Institutional body (THE EUROPEAN PARLIAMENT/COMMISSION)
+    # 3. "Having regard to..." clauses (italicized)
+    # Re-check institutional_body for misclassified "Having regard" clauses
+    # (This can happen when Having regard appears before institutional header in HTML)
+    filtered_institutional = []
     for line in institutional_body:
+        if any(kw in line.upper() for kw in ['HAVING REGARD', 'ACTING IN ACCORDANCE', 'AFTER CONSULTING']):
+            having_regard_clauses.append(line)
+        else:
+            filtered_institutional.append(line)
+    
+    # Output the filtered institutional body
+    for line in filtered_institutional:
         result.append(line)
         result.append("")
     
-    # 3. "Having regard to..." clauses (italicized)
+    # Then output all Having regard clauses (italicized)
     for line in having_regard_clauses:
         result.append(f"*{line}*")
         result.append("")

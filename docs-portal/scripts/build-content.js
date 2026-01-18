@@ -533,16 +533,53 @@ function parseDescription(content, title) {
 }
 
 /**
- * Extract date from content or directory name
+ * Extract date from content or directory name.
+ * 
+ * Priority order:
+ * 1. Metadata blockquote (first 10 lines) - most reliable
+ * 2. Title continuation "of DATE" pattern (e.g., "**of 8 September 2015**")
+ * 3. Signature block "Done at LOCATION, DATE" pattern - official adoption date
+ * 4. Fallback: first date in content (may be from citations - less reliable)
+ * 5. Year from directory name
  */
 function extractDate(content, dirName, celex) {
-    // Try to find date in content
-    const dateMatch = content.match(/(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})/);
-    if (dateMatch) {
-        return dateMatch[1];
+    const datePattern = /(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})/g;
+
+    // Split into lines for priority searching
+    const lines = content.split('\n');
+    const firstTenLines = lines.slice(0, 10).join('\n');
+
+    // Priority 1: Look for date in metadata blockquote (first 10 lines)
+    const metadataMatch = firstTenLines.match(datePattern);
+    if (metadataMatch) {
+        return metadataMatch[0];
     }
 
-    // Extract year from directory name
+    // Priority 2: Look for "Done at LOCATION, DATE" pattern (signature block)
+    // This is the official adoption date in EU documents - most reliable
+    const doneAtPattern = /Done at [^,]+,\s*(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})/;
+    const doneAtMatch = content.match(doneAtPattern);
+    if (doneAtMatch) {
+        return doneAtMatch[1];
+    }
+
+    // Priority 3: Look for "of DATE" pattern (title continuation)
+    // This captures dates like "**of 8 September 2015**"
+    // Note: Can match dates from citations, so check after Done at
+    const ofDatePattern = /\bof\s+(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})/;
+    const first50Lines = lines.slice(0, 50).join('\n');
+    const ofDateMatch = first50Lines.match(ofDatePattern);
+    if (ofDateMatch) {
+        return ofDateMatch[1];
+    }
+
+    // Priority 4: First date found anywhere (fallback - may be from citations)
+    const fallbackMatch = content.match(datePattern);
+    if (fallbackMatch) {
+        return fallbackMatch[0];
+    }
+
+    // Priority 5: Extract year from directory name
     const yearMatch = dirName.match(/^(\d{4})/);
     if (yearMatch) {
         return yearMatch[1];

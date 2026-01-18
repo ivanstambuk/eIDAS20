@@ -1506,7 +1506,104 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Fix: Renamed directories, standardized all slugs to {year}-{number}
     ```
 
+42. **CSS Specificity Cascade (Accessibility Rules Override):**
+    
+    **When adding CSS rules, check the end of `index.css` for accessibility-related combined rules that may override your changes.**
+    
+    **Problem:**
+    ```css
+    /* Line 770: You add this */
+    .sidebar-nav-link {
+        align-items: flex-start; /* Icon at top of text */
+    }
+    
+    /* Line 1375: Accessibility rule at bottom of file */
+    .sidebar-nav-link,
+    .btn,
+    .some-other-element {
+        align-items: center; /* WCAG touch targets - overrides! */
+    }
+    ```
+    
+    **Why this happens:** CSS specificity is equal for identical selectors, so the LAST rule wins. Accessibility rules at the bottom of stylesheets have the final word.
+    
+    **Solution:** Either:
+    1. Add your rule AFTER the accessibility rule
+    2. Use a more specific selector (e.g., `.sidebar .sidebar-nav-link`)
+    3. Update the accessibility rule to exclude your element
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: align-items: flex-start wasn't applying
+    Debug: CSS inspector showed rule was present but crossed out
+    Root cause: Combined WCAG rule at line 1375 set align-items: center
+    Fix: Split rule to apply center only to elements that need it
+    ```
+
+43. **EUR-Lex HTML Parser Gold Standard (765/2008 Pattern):**
+    
+    **When the HTML parser outputs documents, they should match the structure of successfully converted documents like Accreditation Regulation (765/2008).**
+    
+    **Gold standard structure:**
+    ```markdown
+    > **CELEX:** ... | **Document:** ...
+    > **Source:** [EUR-Lex](...)
+    > **EEA Relevance:** Yes  ← If applicable
+    
+    # TITLE
+    
+    ## Preamble
+    
+    THE EUROPEAN COMMISSION,
+    
+    *Having regard to...*
+    
+    Whereas:
+    
+    ## Recitals
+    
+    - (1) First recital...
+    
+    ## Enacting Terms
+    
+    ### Article 1
+    
+    **Subject matter**
+    ```
+    
+    **Key patterns:**
+    - EEA relevance in metadata blockquote (not body text)
+    - Date/subject NOT repeated after H1 title
+    - Preamble heading FIRST, then institutional body
+    - "Having regard" clauses in italics
+    - Recitals as list items (for gutter icons)
+    
+    **See:** `01_regulation/2008_765_Market_Surveillance/02008R0765.md` as reference.
+
+44. **Blockquote Spacing (Last Paragraph Margin):**
+    
+    **All blockquotes need the last paragraph's margin removed to prevent asymmetric spacing.**
+    
+    ```css
+    /* Always include this rule for blockquotes in rich text */
+    .regulation-content blockquote p:last-child {
+        margin-bottom: 0;
+    }
+    ```
+    
+    **Why:** Blockquotes have `padding: 16px`. The last `<p>` inside also has `margin-bottom: 16px`. This creates 32px at the bottom vs 16px at the top — visually unbalanced.
+    
+    **Applies to:** Consolidation notices, amendment blockquotes, any block-level quoted content.
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: Extra "newline" appearing at bottom of consolidation notice
+    Root cause: padding + margin stacking (16 + 16 = 32px bottom, vs 16px top)
+    Fix: margin-bottom: 0 on p:last-child
+    ```
+
 ## Project Structure
+
 
 
 ```

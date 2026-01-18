@@ -189,6 +189,8 @@ Different legal act types use different ELI path segments:
 | **Paragraph ID Plugin** | The `rehype-paragraph-ids.js` plugin that assigns linkable IDs to articles, paragraphs, points, and recitals. |
 | **Citation Extraction** | The process of finding and cataloging legislation references in document content. |
 | **Citation Transformation** | Converting citation text to interactive `<span>` elements with popover triggers. |
+| **CSS Specificity Cascade** | The CSS rule priority mechanism where the LAST matching rule wins when specificity is equal. Critical for understanding why accessibility rules at the bottom of `index.css` override earlier styling. Solution: use higher specificity or place rules after accessibility declarations. |
+| **Title Continuation Pattern** | The EU legal document pattern where formal title elements (`**of DATE**`, `**on SUBJECT**`, `*(Text with EEA relevance)*`) appear after the H1 title. These are stripped by the HTML parser since they're already displayed in the header component. See Rule 43 in AGENTS.md. |
 
 ---
 
