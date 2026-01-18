@@ -156,7 +156,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                     const referenced = data
                         .filter(doc => doc.category === 'referenced')
                         .map(doc => ({
-                            name: doc.shortTitle,
+                            name: doc.sidebarTitle || doc.shortTitle,  // Prefer sidebarTitle for cleaner nav
                             path: `/regulation/${doc.slug}`,
                             icon: 'external-link'
                         }));

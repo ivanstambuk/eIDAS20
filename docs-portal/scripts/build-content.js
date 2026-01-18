@@ -89,6 +89,30 @@ function getShortTitleFromConfig(dirName) {
 }
 
 /**
+ * Get sidebarTitle for a document from documents.yaml.
+ * 
+ * The sidebarTitle is used for display in the navigation sidebar,
+ * allowing a shorter/cleaner title than shortTitle (which may include
+ * suffixes like "(Consolidated)" for document headers).
+ * 
+ * Falls back to shortTitle if sidebarTitle is not defined.
+ * 
+ * @param {string} dirName - Directory name (e.g., "765_2008_Market_Surveillance")
+ * @returns {string|null} - The sidebarTitle from documents.yaml, or shortTitle, or null
+ */
+function getSidebarTitleFromConfig(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return null;
+
+    const doc = config.documents.find(d =>
+        d.output_dir && d.output_dir.endsWith(dirName)
+    );
+
+    // Return sidebarTitle if defined, otherwise fall back to shortTitle
+    return doc?.sidebarTitle || doc?.shortTitle || null;
+}
+
+/**
  * Get document typing (legalType and category) from documents.yaml.
  * 
  * These two fields separate:
@@ -667,6 +691,7 @@ function processMarkdownFile(filePath, dirName, type) {
 
     const slug = generateSlug(dirName, type);
     const shortTitle = extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
+    const sidebarTitle = getSidebarTitleFromConfig(dirName);  // May be null (uses shortTitle fallback)
 
     // Get document typing from documents.yaml (legalType + category)
     const docTyping = getDocumentTypingFromConfig(dirName);
@@ -704,6 +729,7 @@ function processMarkdownFile(filePath, dirName, type) {
         category: docTyping.category,       // Project role (primary, implementing_act, referenced)
         title,
         shortTitle,
+        sidebarTitle,  // May be null; consumers should fall back to shortTitle
         description,
         celex: metadata.celex,
         date,
@@ -996,6 +1022,7 @@ function build() {
         category: reg.category,     // New: Project role (primary, implementing_act, referenced)
         title: reg.title,
         shortTitle: reg.shortTitle,
+        sidebarTitle: reg.sidebarTitle,  // New: Cleaner title for sidebar navigation
         description: reg.description,
         celex: reg.celex,
         date: reg.date,

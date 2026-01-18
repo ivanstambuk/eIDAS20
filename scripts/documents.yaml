@@ -21,6 +21,7 @@ documents:
 - celex: 02008R0765-20210716
   title: Accreditation and Market Surveillance Regulation (Consolidated)
   shortTitle: Accreditation Regulation (Consolidated)
+  sidebarTitle: Accreditation Regulation
   legalType: regulation
   category: referenced
   source: manual  # Consolidated version manually merged (preamble from original + consolidated enacting terms)
