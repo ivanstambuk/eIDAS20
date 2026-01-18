@@ -6,7 +6,9 @@ import { useCitations, generateReferencesHtml } from '../hooks/useCitations';
 import { generateEUReference, generateDeepLink } from '../hooks/useCopyReference';
 import { useScrollRestoration } from '../hooks/useScrollRestoration';
 import { generatePopoverContent } from '../utils/citationPopoverTemplate';
+import { generateTermPopoverContent } from '../utils/termPopoverTemplate';
 import '../components/CitationPopover/CitationPopover.css';
+import '../components/TermPopover/TermPopover.css';
 import '../components/CopyReference/CopyReference.css';
 
 /**
@@ -182,6 +184,116 @@ const RegulationViewer = () => {
             if (hideTimeout) clearTimeout(hideTimeout);
         };
     }, [regulation, citations, isMobile, saveScrollPosition, id]);
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DEC-085: Term Link Popover Hydration
+    // 
+    // Term links are injected at build-time by rehype-term-links.js.
+    // This useEffect hydrates them with hover popovers showing definitions.
+    // Pattern follows citation popovers above.
+    // ═══════════════════════════════════════════════════════════════════════════
+    useEffect(() => {
+        if (isMobile || !regulation) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        // Load terminology data
+        let terminology = null;
+        let activeTermPopover = null;
+        let termHideTimeout = null;
+
+        const loadTerminology = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.BASE_URL}data/terminology.json`);
+                if (response.ok) {
+                    terminology = await response.json();
+                }
+            } catch (err) {
+                console.warn('Failed to load terminology for popovers:', err);
+            }
+        };
+
+        loadTerminology();
+
+        const showTermPopover = (triggerEl) => {
+            if (!terminology) return;
+
+            const termId = triggerEl.dataset.termId;
+            const term = terminology.terms?.find(t => t.id === termId);
+            if (!term) return;
+
+            const { className, html } = generateTermPopoverContent(term);
+
+            const popover = document.createElement('div');
+            popover.className = className;
+            popover.innerHTML = html;
+
+            // Position below trigger, centered
+            const rect = triggerEl.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            let top = rect.bottom + 8;
+            let left = rect.left + (rect.width / 2);
+
+            // Adjust for viewport edges
+            if (left + 200 > viewportWidth) left = viewportWidth - 220;
+            if (left < 20) left = 20;
+            if (top + 200 > viewportHeight) top = rect.top - 8;
+
+            popover.style.top = `${top}px`;
+            popover.style.left = `${left}px`;
+
+            document.body.appendChild(popover);
+            activeTermPopover = popover;
+
+            // Keep popover alive when hovering over it
+            popover.addEventListener('mouseenter', () => {
+                if (termHideTimeout) clearTimeout(termHideTimeout);
+            });
+            popover.addEventListener('mouseleave', hideTermPopover);
+        };
+
+        const hideTermPopover = () => {
+            termHideTimeout = setTimeout(() => {
+                if (activeTermPopover) {
+                    activeTermPopover.remove();
+                    activeTermPopover = null;
+                }
+            }, 150);
+        };
+
+        const handleTermMouseEnter = (e) => {
+            const trigger = e.target.closest('.term-link');
+            if (!trigger) return;
+
+            if (termHideTimeout) clearTimeout(termHideTimeout);
+
+            if (activeTermPopover) {
+                activeTermPopover.remove();
+                activeTermPopover = null;
+            }
+
+            showTermPopover(trigger);
+        };
+
+        const handleTermMouseLeave = (e) => {
+            const trigger = e.target.closest('.term-link');
+            if (!trigger) return;
+            hideTermPopover();
+        };
+
+        contentEl.addEventListener('mouseenter', handleTermMouseEnter, true);
+        contentEl.addEventListener('mouseleave', handleTermMouseLeave, true);
+
+        return () => {
+            contentEl.removeEventListener('mouseenter', handleTermMouseEnter, true);
+            contentEl.removeEventListener('mouseleave', handleTermMouseLeave, true);
+            if (activeTermPopover) activeTermPopover.remove();
+            if (termHideTimeout) clearTimeout(termHideTimeout);
+        };
+    }, [regulation, isMobile]);
 
     useEffect(() => {
         const loadRegulation = async () => {

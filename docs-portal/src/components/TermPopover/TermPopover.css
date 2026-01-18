@@ -9,16 +9,15 @@
 .term-link {
     text-decoration: underline;
     text-decoration-style: dotted;
-    text-decoration-color: var(--accent-primary-dim);
+    text-decoration-color: var(--accent-primary);
     text-underline-offset: 2px;
     cursor: help;
-    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    transition: background-color 0.15s ease;
 }
 
 .term-link:hover,
 .term-link:focus {
-    color: var(--accent-primary);
-    text-decoration-color: var(--accent-primary);
+    background-color: rgba(0, 255, 255, 0.1);
     outline: none;
 }
 
