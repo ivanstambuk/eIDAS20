@@ -705,18 +705,7 @@ def format_markdown(metadata: dict, preamble: list[str], chapters: list[str],
     if annexes:
         lines.extend(annexes)
     
-    # 9. Source Reference footer
-    lines.append("")
-    lines.append("---")
-    lines.append("")
-    lines.append("## Source Reference")
-    lines.append("")
-    lines.append(f"- **CELEX Number:** {metadata['celex']}")
-    lines.append("- **Source:** EUR-Lex (HTML)")
-    lines.append(f"- **URL:** {metadata['eurlex_url']}")
-    lines.append(f"- **Conversion Date:** {datetime.now().strftime('%Y-%m-%d')}")
-    lines.append("- **Format:** HTML → Markdown (eurlex_html_to_md.py)")
-    lines.append("")
+    # NOTE: No "Source Reference" footer — metadata is in header blockquote only (DECISIONS.md)
     
     return '\n'.join(lines)
 

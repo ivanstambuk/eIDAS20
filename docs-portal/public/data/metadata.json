@@ -2,15 +2,15 @@
   "documentCount": 35,
   "regulationCount": 5,
   "implementingActCount": 30,
-  "totalWordCount": 173368,
-  "regulationWordCount": 81871,
+  "totalWordCount": 173343,
+  "regulationWordCount": 81846,
   "implementingActWordCount": 91497,
-  "lastBuildTime": "2026-01-18T00:57:53.301Z",
+  "lastBuildTime": "2026-01-18T01:12:21.450Z",
   "buildDate": "Jan 18, 2026",
   "categories": {
     "regulations": {
       "count": 5,
-      "wordCount": 81871,
+      "wordCount": 81846,
       "slugs": [
         "2015-1501",
         "2021-946",
