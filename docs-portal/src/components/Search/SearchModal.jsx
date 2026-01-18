@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useSearch } from '../../hooks/useSearch';
 import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
+import { useQuickJump } from '../../hooks/useQuickJump';
 import './Search.css';
 
 /**
@@ -227,6 +228,9 @@ export function SearchModal({ isOpen, onClose }) {
         clearSearch,
     } = currentSearch;
 
+    // Quick jump: detect document references (CELEX, slugs, ELI)
+    const quickJump = useQuickJump(query);
+
     // Focus input when modal opens
     useEffect(() => {
         if (isOpen && inputRef.current) {
@@ -426,6 +430,39 @@ export function SearchModal({ isOpen, onClose }) {
                     {error && (
                         <div className="search-status search-error">
                             <span>⚠️ {error}</span>
+                        </div>
+                    )}
+
+                    {/* Quick Jump: Direct navigation to documents by ID/reference */}
+                    {!isLoading && quickJump.hasMatches && (
+                        <div className="quick-jump-section">
+                            <div className="quick-jump-header">
+                                <span className="quick-jump-icon">🚀</span>
+                                <span className="quick-jump-title">Quick Jump</span>
+                            </div>
+                            <div className="quick-jump-results">
+                                {quickJump.matches.map((doc) => (
+                                    <Link
+                                        key={doc.slug}
+                                        to={`/regulation/${doc.slug}`}
+                                        className="quick-jump-item"
+                                        onClick={onClose}
+                                    >
+                                        <div className="quick-jump-item-header">
+                                            <span className="quick-jump-item-title">{doc.shortTitle}</span>
+                                            <span className="quick-jump-item-celex">{doc.celex}</span>
+                                        </div>
+                                        <div className="quick-jump-item-meta">
+                                            <span className="quick-jump-item-type">
+                                                {doc.legalType === 'recommendation' ? 'Recommendation' :
+                                                    doc.legalType === 'decision' ? 'Decision' :
+                                                        doc.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
+                                            </span>
+                                            <span className="quick-jump-item-date">{doc.date}</span>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
                     )}
 
