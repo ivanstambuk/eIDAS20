@@ -28,6 +28,11 @@ Pay special attention to:
 - WSL Browser Testing section
 - **TERMINOLOGY.md** — shared vocabulary to prevent misunderstandings
 
+**Note:** AGENTS.md contains Critical Rules 1-10. Extended rules (11-44) are in:
+- `.agent/docs/rules/development-rules.md` — React, CSS, debugging
+- `.agent/docs/rules/content-rules.md` — Formex, HTML, legal documents
+- `.agent/docs/rules/README.md` — Full index with navigation
+
 ---
 
 ## 2. Check Project Status (TRACKER.md)

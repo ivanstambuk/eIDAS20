@@ -253,6 +253,21 @@ How the document relates to the eIDAS project:
 
 
 
+## Project Structure
+
+### Agent Documentation
+
+| Term | Description |
+|------|-------------|
+| **Hub and Spoke Documentation** | A modular documentation pattern where the main file (hub) contains essential content and links to specialized documents (spokes). AGENTS.md is the hub; `.agent/docs/` contains spokes. This pattern allows the main file to stay concise while preserving all information in modular, topic-specific files. |
+| **Quick Reference Table** | A markdown table at the top of a hub document linking to related spoke documents. Enables fast navigation without scrolling through a monolithic file. Example: "Development Rules → `.agent/docs/rules/development-rules.md`". |
+| **Critical Rules** | Rules 1-10 in AGENTS.md that must remain inline (not extracted) because they apply to every session: notifications, commits, browser cleanup, UI proposals, etc. |
+| **Development Rules** | Rules 11-25 covering React patterns, CSS debugging, legal structure preservation, and development best practices. Located in `.agent/docs/rules/development-rules.md`. |
+| **Content Rules** | Rules 26-44 covering Formex/HTML conversion, legal document handling, build pipeline patterns, and content-specific gotchas. Located in `.agent/docs/rules/content-rules.md`. |
+| **Rules Index** | The `.agent/docs/rules/README.md` file providing a complete table of all 44 rules with navigation by topic and severity. |
+
+---
+
 ## File Locations
 
 | Path | Contains |
