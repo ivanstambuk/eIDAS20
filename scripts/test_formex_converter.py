@@ -25,7 +25,8 @@ from formex_to_md_v3 import (
     process_list_with_quotes,
     process_list_simple,
     get_following_quoted_content,
-    process_alinea_nested
+    process_alinea_nested,
+    extract_gr_seq_sections
 )
 
 
@@ -1370,6 +1371,132 @@ class TestAlineaMixedContent(unittest.TestCase):
         # LIST should create nested lines
         self.assertTrue(len(nested_lines) > 0)
         self.assertTrue(any("(a)" in line for line in nested_lines))
+
+
+class TestGrSeqExtraction(unittest.TestCase):
+    """Test the extract_gr_seq_sections function for Recommendations."""
+    
+    def test_basic_gr_seq_extraction(self):
+        """
+        Basic GR.SEQ extraction from a Recommendation structure.
+        Recommendations use GR.SEQ instead of ARTICLE for normative sections.
+        """
+        xml = '''<ACT>
+            <ENACTING.TERMS>
+                <GR.SEQ LEVEL="1">
+                    <TITLE><TI><NP><NO.P>1.</NO.P><TXT>OBJECTIVES AND DEFINITIONS</TXT></NP></TI></TITLE>
+                    <NP><NO.P>(1)</NO.P><TXT>Member States should cooperate to develop a toolbox.</TXT></NP>
+                    <NP><NO.P>(2)</NO.P><TXT>For the purposes of this Recommendation:</TXT></NP>
+                </GR.SEQ>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_gr_seq_sections(root)
+        output = '\n'.join(lines)
+        
+        # Should have the section heading
+        self.assertIn('### 1. OBJECTIVES AND DEFINITIONS', output,
+            "Section title should be formatted as H3 heading")
+        
+        # Should have numbered paragraphs
+        self.assertIn('(1)', output, "First numbered paragraph should be present")
+        self.assertIn('cooperate to develop a toolbox', output, 
+            "Paragraph text should be present")
+        self.assertIn('(2)', output, "Second numbered paragraph should be present")
+    
+    def test_gr_seq_with_nested_list(self):
+        """
+        GR.SEQ paragraphs may contain nested LIST elements with points.
+        """
+        xml = '''<ACT>
+            <ENACTING.TERMS>
+                <GR.SEQ LEVEL="1">
+                    <TITLE><TI><NP><NO.P>2.</NO.P><TXT>PROCESS</TXT></NP></TI></TITLE>
+                    <NP>
+                        <NO.P>(1)</NO.P>
+                        <TXT>The toolbox should include:</TXT>
+                        <LIST TYPE="alpha">
+                            <ITEM><NP><NO.P>(a)</NO.P><TXT>a technical architecture;</TXT></NP></ITEM>
+                            <ITEM><NP><NO.P>(b)</NO.P><TXT>common standards.</TXT></NP></ITEM>
+                        </LIST>
+                    </NP>
+                </GR.SEQ>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_gr_seq_sections(root)
+        output = '\n'.join(lines)
+        
+        # Check section heading
+        self.assertIn('### 2. PROCESS', output)
+        
+        # Check list items
+        self.assertIn('(a)', output, "List point (a) should be present")
+        self.assertIn('technical architecture', output)
+        self.assertIn('(b)', output, "List point (b) should be present")
+        self.assertIn('common standards', output)
+    
+    def test_gr_seq_level_2_subsections(self):
+        """
+        GR.SEQ with LEVEL="2" should be formatted as subsection titles.
+        """
+        xml = '''<ACT>
+            <ENACTING.TERMS>
+                <GR.SEQ LEVEL="1">
+                    <TITLE><TI><NP><NO.P>3.</NO.P><TXT>COOPERATION</TXT></NP></TI></TITLE>
+                    <GR.SEQ LEVEL="2">
+                        <TITLE><TI>National coordination</TI></TITLE>
+                        <NP><NO.P>(1)</NO.P><TXT>Each Member State should designate a coordinator.</TXT></NP>
+                    </GR.SEQ>
+                </GR.SEQ>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_gr_seq_sections(root)
+        output = '\n'.join(lines)
+        
+        # Main section heading
+        self.assertIn('### 3. COOPERATION', output)
+        
+        # Subsection should be italicized
+        self.assertIn('*National coordination*', output,
+            "Level 2 GR.SEQ title should be italicized")
+        
+        # Content should be present
+        self.assertIn('designate a coordinator', output)
+    
+    def test_empty_enacting_terms_no_crash(self):
+        """
+        If ENACTING.TERMS has no GR.SEQ, should return empty list without crashing.
+        """
+        xml = '''<ACT>
+            <ENACTING.TERMS>
+                <ARTICLE><TI.ART>Article 1</TI.ART></ARTICLE>
+            </ENACTING.TERMS>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_gr_seq_sections(root)
+        
+        # Should return empty list, not crash
+        self.assertEqual(len(lines), 0,
+            "Documents without GR.SEQ should return empty list")
+    
+    def test_no_enacting_terms_no_crash(self):
+        """
+        If document has no ENACTING.TERMS, should return empty list.
+        """
+        xml = '''<ACT>
+            <TITLE><TI><P>Test Document</P></TI></TITLE>
+        </ACT>'''
+        
+        root = ET.fromstring(xml)
+        lines = extract_gr_seq_sections(root)
+        
+        self.assertEqual(len(lines), 0)
 
 
 if __name__ == '__main__':

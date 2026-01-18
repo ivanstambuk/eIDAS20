@@ -912,8 +912,9 @@ function generateMetadata(regulations) {
         );
     }
 
-    // Validation 2: We should have exactly 3 regulations (910/2014, 2024/1183, 765/2008)
-    const expectedRegulationCount = 3;
+    // Validation 2: We should have exactly 4 regulations
+    // (910/2014, 2024/1183, 765/2008, 2021/946)
+    const expectedRegulationCount = 4;
     if (regulationCount !== expectedRegulationCount) {
         console.warn(
             `⚠️  Warning: Expected ${expectedRegulationCount} regulations, found ${regulationCount}\n` +

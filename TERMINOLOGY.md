@@ -15,6 +15,8 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Regulation** | A primary EU legislative act (e.g., eIDAS 2.0, Regulation 910/2014). Regulations are directly applicable in all EU Member States. |
 | **Implementing Act** | A secondary act issued by the Commission to provide technical specifications for a Regulation (e.g., 2024/2977 on wallet attestations). |
 | **Delegated Act** | A secondary act that supplements or amends certain non-essential elements of a Regulation. |
+| **Recommendation** | A non-binding EU act providing guidance. While not legally binding, used to coordinate Member State cooperation (e.g., 2021/946 EUDIW Toolbox). |
+| **Decision** | An EU act binding on those it addresses (specific Member States, companies, or individuals). May use GR.SEQ or ARTICLE structure. |
 | **Referenced Document** | A document cited by the primary regulation that isn't part of the eIDAS ecosystem itself (e.g., Regulation 765/2008 on accreditation). |
 
 ### Document Parts
@@ -187,13 +189,50 @@ Common terms used across the documentation portal project to ensure consistent v
 
 ## Document Categories
 
-| Term | Internal Value | Description |
-|------|----------------|-------------|
-| **Primary Regulation** | `category: "regulation"` | The core eIDAS regulations (910/2014, 2024/1183). |
-| **Implementing Act** | `category: "implementing-act"` | Commission implementing regulations (e.g., 2024/2977). |
-| **Referenced Document** | `category: "referenced"` | External documents cited by eIDAS (e.g., 765/2008). |
+The portal's data model uses **two orthogonal dimensions** to classify documents:
+
+### Legal Type (legalType)
+
+What the document IS under EU law:
+
+| legalType | Binding? | Description |
+|-----------|----------|-------------|
+| **regulation** | ✅ Legally binding | Directly applicable in all Member States (e.g., eIDAS 910/2014) |
+| **recommendation** | ❌ Non-binding | Guidance document (e.g., EUDIW Toolbox 2021/946) |
+| **decision** | ✅ Binding on addressees | Binding only on those it addresses (e.g., Trusted Lists 2025/2164) |
+| **directive** | ✅ Goals binding | Sets goals; Member States choose implementation |
+
+### Category (category)
+
+How the document relates to the eIDAS project:
+
+| category | Description |
+|----------|-------------|
+| **primary** | Core eIDAS legislation (910/2014, 2024/1183) |
+| **implementing_act** | Commission implementing regulations (technical specs) |
+| **referenced** | External documents cited by eIDAS (765/2008, 2021/946) |
+
+### CELEX Type Codes
+
+| Code | Document Type | Example |
+|------|---------------|---------|
+| `R` | Regulation | 32024**R**1183 |
+| `H` | Recommendation | 32021**H**0946 |
+| `D` | Decision | 32025**D**2164 |
+| `L` | Directive | 32006**L**0123 |
 
 ---
+
+## Formex XML Structures
+
+| Term | Description |
+|------|-------------|
+| **GR.SEQ** | Group Sequence element in Formex XML. Used by Recommendations (and some Decisions) to structure normative sections instead of `<ARTICLE>` tags. Contains numbered sections with `<TITLE>` and `<NP>` elements. |
+| **ARTICLE** | Formex XML element for binding provisions. Standard in Regulations. Contains `<PARAG>` and `<ALINEA>`. |
+| **NP** | Numbered Paragraph element in Formex. Contains `<NO.P>` (the number) and `<TXT>` (the text). |
+| **NO.P** | Number element within NP. The actual number text like "(1)" or "1.". |
+
+
 
 ## File Locations
 

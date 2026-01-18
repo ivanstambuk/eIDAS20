@@ -1202,6 +1202,59 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     CORRECT: Found cellar_id, ran pipeline.py --only 32021H0946 → deterministic import
     ```
 
+34. **Rebuild Citations After Document Import:**
+    
+    When importing a new document into the portal, the citation system caches need to be invalidated so the new document is recognized as "internal."
+    
+    **After running `pipeline.py` and `npm run build:content`:**
+    ```bash
+    # Clear citation cache and rebuild
+    rm -rf docs-portal/public/data/citations/*.json
+    cd docs-portal && node scripts/build-citations.js
+    
+    # Then rebuild content to pick up updated citations
+    npm run build:content
+    ```
+    
+    **Why this is needed:**
+    - The document registry (`buildDocumentRegistry()`) builds from existing JSON files
+    - New documents won't be in the registry until content is built
+    - Citations are cached with MD5 hashes — won't regenerate unless cache is cleared
+    - Without this, citations to the new document show "View on EUR-Lex" instead of "View in Portal"
+    
+    **Signs you forgot this step:**
+    - Citation popover shows only "View on EUR-Lex ↗" (no "View in Portal →")
+    - `isInternal: false` in the citation JSON for a document you just imported
+
+35. **Formex Document Structure Patterns:**
+    
+    Different EU document types use different Formex XML structures:
+    
+    | Document Type | CELEX Pattern | Main Content | Example |
+    |---------------|---------------|--------------|---------|
+    | **Regulation** | `3YYYYR...` | `<ARTICLE>` tags | 32024R1183 |
+    | **Implementing Regulation** | `3YYYYR...` | `<ARTICLE>` tags | 32024R2977 |
+    | **Recommendation** | `3YYYYH...` | `<GR.SEQ>` tags | 32021H0946 |
+    | **Decision** | `3YYYYD...` | `<ARTICLE>` or `<GR.SEQ>` | 32025D2164 |
+    
+    **CELEX type codes:**
+    - `R` = Regulation (legally binding)
+    - `H` = Recommendation (non-binding)
+    - `D` = Decision (binding on addressees)
+    - `L` = Directive (goals binding, implementation left to MS)
+    
+    **GR.SEQ structure (Recommendations):**
+    ```xml
+    <ENACTING.TERMS>
+      <GR.SEQ LEVEL="1">
+        <TITLE><TI><NP><NO.P>1.</NO.P><TXT>OBJECTIVES</TXT></NP></TI></TITLE>
+        <NP><NO.P>(1)</NO.P><TXT>It is recommended that...</TXT></NP>
+      </GR.SEQ>
+    </ENACTING.TERMS>
+    ```
+    
+    The converter handles this via `extract_gr_seq_sections()` in `formex_to_md_v3.py`.
+
 ## Project Structure
 
 ```
