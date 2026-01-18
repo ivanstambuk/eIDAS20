@@ -218,6 +218,10 @@ function getSourceUrl(source) {
 
     // Determine route based on source type or slug pattern
     if (source.type === 'terminology' || source.slug === 'terminology') {
+        // Link directly to the term with anchor fragment
+        if (source.id && source.id.startsWith('term-')) {
+            return `/terminology#${source.id}`;
+        }
         return '/terminology';
     }
 
@@ -566,6 +570,7 @@ export function AIChat() {
                     role: 'assistant',
                     content: response,
                     sources: context.map(c => ({
+                        id: c.id, // For anchor links (e.g., term-wallet-instance)
                         title: c.title,
                         document: c.documentTitle,
                         slug: c.slug,
