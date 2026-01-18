@@ -9,7 +9,7 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { CreateWebWorkerMLCEngine, prebuiltAppConfig } from '@mlc-ai/web-llm';
+import { CreateWebWorkerMLCEngine, prebuiltAppConfig, hasModelInCache } from '@mlc-ai/web-llm';
 
 // Available models - curated list of small, fast models suitable for browser
 // Models are sorted by size (smallest first) for quick loading
@@ -98,21 +98,48 @@ export function useWebLLM() {
     const [error, setError] = useState(null);
     const [currentModel, setCurrentModel] = useState(null);
     const [webGPUSupported, setWebGPUSupported] = useState(null);
+    const [cachedModels, setCachedModels] = useState([]); // Array of model IDs that are cached
 
     const engineRef = useRef(null);
     const workerRef = useRef(null);
     const abortControllerRef = useRef(null);
 
-    // Check WebGPU support on mount
+    /**
+     * Check which models are cached in browser storage
+     */
+    const checkCachedModels = useCallback(async () => {
+        const availableModels = getAvailableModels();
+        const cachedIds = [];
+
+        for (const model of availableModels) {
+            try {
+                const isCached = await hasModelInCache(model.id);
+                if (isCached) {
+                    cachedIds.push(model.id);
+                }
+            } catch (e) {
+                // Model not in cache or error checking - skip silently
+                console.debug(`Cache check for ${model.id}:`, e.message);
+            }
+        }
+
+        setCachedModels(cachedIds);
+        return cachedIds;
+    }, []);
+
+    // Check WebGPU support and cached models on mount
     useEffect(() => {
         checkWebGPUSupport().then(result => {
             setWebGPUSupported(result.supported);
             if (!result.supported) {
                 setError(result.reason);
                 setStatus('error');
+            } else {
+                // WebGPU supported - check which models are cached
+                checkCachedModels();
             }
         });
-    }, []);
+    }, [checkCachedModels]);
 
     /**
      * Initialize the engine with a specific model
@@ -170,6 +197,9 @@ export function useWebLLM() {
             setLoadProgress(1);
             setLoadingText('Ready');
 
+            // Refresh cache list (this model is now cached)
+            checkCachedModels();
+
             return true;
         } catch (err) {
             console.error('Error loading model:', err);
@@ -177,7 +207,7 @@ export function useWebLLM() {
             setStatus('error');
             return false;
         }
-    }, [webGPUSupported]);
+    }, [webGPUSupported, checkCachedModels]);
 
     /**
      * Unload the current model
@@ -287,6 +317,7 @@ export function useWebLLM() {
         error,
         currentModel,
         webGPUSupported,
+        cachedModels, // Array of model IDs that are cached
         isLoading: status === 'loading',
         isReady: status === 'ready',
         isGenerating: status === 'generating',
@@ -296,5 +327,6 @@ export function useWebLLM() {
         unloadModel,
         chat,
         abort,
+        checkCachedModels, // Refresh cached models list
     };
 }

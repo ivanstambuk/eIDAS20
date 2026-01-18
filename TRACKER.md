@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 17:50 CET |
+| **Last Updated** | 2026-01-18 19:45 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms) |
-| **Next Action** | See Backlog |
+| **Next Action** | AI Chat model selector (see pending-task.md) |
 
 ---
 
@@ -84,6 +84,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 19:45 | **Bug Fixes + AI Model Selector Plan**: (1) Fixed Quick Jump to recognize EU legal citation format (`910/2014` → `2014-910`), (2) Fixed TOC chapters missing after DEC-083 slug standardization (EIDAS_CHAPTERS keys updated), (3) Designed AI chat model selector for welcome screen — user can now choose model BEFORE loading, with cache detection and localStorage persistence. Plan saved to pending-task.md. |
 | 2026-01-18 16:50 | **Term Extraction Fix + Scroll Restoration**: (1) Fixed regex to capture definitions with "means," pattern — "offline mode" was missed, (2) Added unit tests for terminology extraction (`test-terminology-extraction.js` — 15 tests), (3) Implemented full scroll restoration for Article→Terminology→Back flow, (4) Created centralized scroll restoration docs (`.agent/docs/scroll-restoration.md`), (5) Added "Deep Link Override" to TERMINOLOGY.md. |
 | 2026-01-18 14:50 | **Terminology Cross-Linking (DEC-085 Phase 1-3)**: Implemented build-time term detection and CSS styling. Created `rehype-term-links.js` plugin that: (1) matches 106 terms + plural variants, (2) exempts definitions articles (Article 2/3) from linking, (3) wraps matches with `<span class="term-link">`. Added CSS for dotted underline styling. 1,589 term links in eIDAS consolidated. Rule 11 added to AGENTS.md (recommendations required). |
 | 2026-01-18 13:35 | **Modular AGENTS.md Refactor**: Split 1,888-line AGENTS.md into hub + modules following sdd-bundle-editor pattern. Critical Rules 1-10 remain inline (416 lines). Extracted: development-rules.md (Rules 11-25, 553 lines), content-rules.md (Rules 26-44, 498 lines), rules/README.md (index), build-pipeline.md (architecture). Total preserved: 1,728 lines across 5 files. Quick Reference table links to all docs. |
