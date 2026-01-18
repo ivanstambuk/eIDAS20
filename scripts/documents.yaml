@@ -32,6 +32,13 @@ documents:
   category: referenced
   cellar_id: db5be7e4-ccf1-11eb-ac72-01aa75ed71a1.0006.02
   output_dir: 01_regulation/2021_946_EUDIW_Toolbox
+- celex: 32015R1501
+  title: Commission Implementing Regulation on the interoperability framework
+  shortTitle: eIDAS Interoperability Framework
+  legalType: implementing_regulation
+  category: referenced
+  source: html  # Imported via eurlex_html_to_md.py
+  output_dir: 01_regulation/2015_1501_eIDAS_Interoperability
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
   legalType: regulation

@@ -43,10 +43,11 @@ def celex_to_eli(celex: str) -> tuple[str, str]:
     Examples:
         32008R0765 → ('2008', '765')
         32014R0910 → ('2014', '910')
+        32015R1501 → ('2015', '1501')  # Implementing Regulation
     
     Returns (year, number) tuple.
     """
-    # CELEX format: 3YYYYRNNNN (3=sector, YYYY=year, R=regulation, NNNN=number)
+    # CELEX format: 3YYYYRNNNN (3=sector, YYYY=year, R=regulation/impl reg, NNNN=number)
     match = re.match(r'3(\d{4})R(\d+)', celex)
     if match:
         year, num = match.groups()
@@ -54,10 +55,39 @@ def celex_to_eli(celex: str) -> tuple[str, str]:
     raise ValueError(f"Invalid CELEX format: {celex}")
 
 
-def download_html(celex: str) -> str:
-    """Download regulation HTML from EUR-Lex ELI endpoint."""
-    year, num = celex_to_eli(celex)
-    url = f"https://eur-lex.europa.eu/eli/reg/{year}/{num}/oj/eng"
+def detect_regulation_type(soup: BeautifulSoup) -> str:
+    """
+    Detect if this is a regular Regulation or an Implementing Regulation.
+    
+    Returns:
+        'reg_impl' for Implementing Regulations
+        'reg' for regular Regulations
+    """
+    content = soup.find(id='document1') or soup
+    
+    # Check the main title for "IMPLEMENTING REGULATION"
+    for p in content.find_all('p', class_='oj-doc-ti'):
+        text = p.get_text().strip().upper()
+        if 'IMPLEMENTING REGULATION' in text:
+            return 'reg_impl'
+        if 'DELEGATED REGULATION' in text:
+            return 'reg_del'
+    
+    return 'reg'
+
+
+def download_html(celex: str, reg_type: str = 'reg') -> str:
+    """
+    Download regulation HTML from EUR-Lex CELEX endpoint.
+    
+    Args:
+        celex: CELEX number (e.g., '32015R1501')
+        reg_type: Regulation type ('reg', 'reg_impl', 'reg_del')
+        
+    Note: We use the CELEX-based URL which works for all regulation types,
+    rather than the ELI URL which requires knowing the type in advance.
+    """
+    url = f"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{celex}"
     
     print(f"  Downloading from {url}...")
     response = requests.get(url, timeout=30)
@@ -81,8 +111,15 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-def extract_metadata(soup: BeautifulSoup, celex: str) -> dict:
-    """Extract document metadata."""
+def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> dict:
+    """
+    Extract document metadata.
+    
+    Args:
+        soup: Parsed HTML
+        celex: CELEX number
+        reg_type: Regulation type ('reg', 'reg_impl', 'reg_del')
+    """
     content = soup.find(id='document1') or soup
     
     # Document title (multiple oj-doc-ti elements form the full title)
@@ -110,7 +147,7 @@ def extract_metadata(soup: BeautifulSoup, celex: str) -> dict:
     for p in content.find_all('p', class_='oj-doc-ti'):
         text = clean_text(p.get_text())
         # Subject is the long descriptive part (contains words like "setting", "laying", etc.)
-        if len(text) > 80 and not text.upper().startswith('REGULATION'):
+        if len(text) > 80 and not text.upper().startswith('REGULATION') and not text.upper().startswith('IMPLEMENTING') and not text.upper().startswith('COMMISSION'):
             subject = text
             break
     
@@ -130,6 +167,17 @@ def extract_metadata(soup: BeautifulSoup, celex: str) -> dict:
     
     year, num = celex_to_eli(celex)
     
+    # Build ELI URL based on regulation type
+    eli_path = reg_type  # 'reg', 'reg_impl', or 'reg_del'
+    
+    # Determine document type label
+    doc_type_labels = {
+        'reg': 'Regulation (EC)',
+        'reg_impl': 'Implementing Regulation (EU)',
+        'reg_del': 'Delegated Regulation (EU)'
+    }
+    doc_type = doc_type_labels.get(reg_type, 'Regulation')
+    
     return {
         'celex': celex,
         'title': main_title,
@@ -137,10 +185,12 @@ def extract_metadata(soup: BeautifulSoup, celex: str) -> dict:
         'subject': subject,
         'eea_note': eea_note,
         'oj_reference': oj_ref,
-        'eli': f"http://data.europa.eu/eli/reg/{year}/{num}/oj",
+        'eli': f"http://data.europa.eu/eli/{eli_path}/{year}/{num}/oj",
         'year': year,
         'number': num,
-        'eurlex_url': f"https://eur-lex.europa.eu/eli/reg/{year}/{num}/oj/eng"
+        'reg_type': reg_type,
+        'doc_type': doc_type,
+        'eurlex_url': f"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex}"
     }
 
 
@@ -605,8 +655,9 @@ def format_markdown(metadata: dict, preamble: list[str], chapters: list[str],
     
     # 1. Metadata header (blockquote format - matches Formex output)
     year, num = metadata['year'], metadata['number']
+    doc_type = metadata.get('doc_type', 'Regulation (EC)')
     
-    lines.append(f"> **CELEX:** {metadata['celex']} | **Document:** Regulation (EC) No {num}/{year}")
+    lines.append(f"> **CELEX:** {metadata['celex']} | **Document:** {doc_type} No {num}/{year}")
     lines.append("> ")
     lines.append(f"> **Source:** [EUR-Lex]({metadata['eurlex_url']})")
     if metadata.get('oj_reference'):
@@ -689,9 +740,13 @@ def convert_html_to_markdown(celex: str, html_content: Optional[str] = None) -> 
     print("  Parsing HTML...")
     soup = BeautifulSoup(html_content, 'lxml')
     
+    # Detect regulation type (regular, implementing, delegated)
+    reg_type = detect_regulation_type(soup)
+    print(f"  Detected regulation type: {reg_type}")
+    
     # Extract components
     print("  Extracting metadata...")
-    metadata = extract_metadata(soup, celex)
+    metadata = extract_metadata(soup, celex, reg_type)
     
     print("  Extracting preamble and recitals...")
     preamble = extract_preamble(soup)

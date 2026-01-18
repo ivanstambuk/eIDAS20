@@ -24,6 +24,8 @@ const navigation = [
             { name: 'Accreditation Regulation', path: '/regulation/765-2008', icon: 'external-link' },
             // Commission Recommendation (EU) 2021/946 — foundational EUDIW Toolbox
             { name: 'EUDIW Toolbox', path: '/regulation/2021-946', icon: 'external-link' },
+            // Commission Implementing Regulation (EU) 2015/1501 — eIDAS Interoperability Framework
+            { name: 'Interoperability Framework', path: '/regulation/2015-1501', icon: 'external-link' },
         ]
     },
     {
