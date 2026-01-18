@@ -3,8 +3,8 @@
 ## Current State
 
 - **Focus**: Add model selector to AI chat welcome screen (before loading)
-- **Next**: Implement Phase 2 — persistence to localStorage
-- **Status**: Phase 1 complete ✓
+- **Next**: Implement Phase 3 — Welcome Screen Redesign
+- **Status**: Phase 1 ✓, Phase 2 ✓
 - **Phase**: Backlog enhancement
 
 ## Completed
@@ -13,24 +13,26 @@
 - Added `hasModelInCache` import from @mlc-ai/web-llm
 - Added `cachedModels` state array tracking cached model IDs
 - Added `checkCachedModels()` function to check all available models
-- Cache checked on mount after WebGPU validation
-- Cache list refreshed after successful model load
-- Exposed `cachedModels` and `checkCachedModels` in hook return
 - Committed: `c6cc4a4`
+
+### Phase 2: Persistence ✓
+- Added localStorage key `eidas-ai-model`
+- Added `loadSavedModelPreference()` with validation
+- Added `saveModelPreference()` helper
+- Added `getDefaultModelId()` export
+- Added `selectedModelId` state with persistence
+- Added `setSelectedModelId()` wrapper that saves to localStorage
+- Committed: `4a6a070`
 
 ## Key Files
 
 - `docs-portal/src/components/AIChat/AIChat.jsx` — Main component with `WelcomeScreen`
 - `docs-portal/src/components/AIChat/AIChat.css` — Styles for new model selector
-- `docs-portal/src/hooks/useWebLLM.js` — ✓ Cache detection added
+- `docs-portal/src/hooks/useWebLLM.js` — ✓ Cache detection + persistence complete
 
 ## Remaining Implementation Plan
 
-### Phase 2: Persistence (~5 min)
-1. Save selected model to `localStorage` key `eidas-ai-model`
-2. Load preference on mount, default to recommended if none saved
-
-### Phase 3: Welcome Screen Redesign (~25 min)
+### Phase 3: Welcome Screen Redesign (~25 min) ← NEXT
 1. Replace single button with model selection list
 2. Model cards show: name, size, RECOMMENDED badge, CACHED indicator
 3. Selected model highlighted with cyan border
@@ -46,12 +48,18 @@
 
 Mockup saved: `~/.gemini/antigravity/brain/3ee771b8-550d-4560-8c1b-20094a195640/model_selector_mockup_1768761460074.png`
 
-## Context Notes
+## Hook API Summary (useWebLLM)
 
-- 6 models available in `AVAILABLE_MODELS` array (useWebLLM.js lines 16-54)
-- `ModelSelector` component already exists (lines 61-123) but only shown AFTER model loads
-- WebLLM uses IndexedDB for caching — hasModelInCache API confirmed working
-- User confirmed: explicit "Load" button required (no auto-start on selection)
+```javascript
+// State
+selectedModelId    // User's preferred model (persisted to localStorage)
+cachedModels       // Array of model IDs that are cached in browser
+
+// Actions  
+setSelectedModelId(modelId)  // Change preference (persists to localStorage)
+checkCachedModels()          // Refresh cached models list
+loadModel(modelId)           // Load and initialize a model
+```
 
 ## Quick Start
 

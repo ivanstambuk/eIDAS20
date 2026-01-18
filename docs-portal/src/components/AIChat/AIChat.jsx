@@ -182,11 +182,17 @@ function WebGPUFallback() {
 }
 
 /**
- * Welcome/Onboarding screen
+ * Welcome/Onboarding screen with model selector
  */
-function WelcomeScreen({ onLoadModel }) {
+function WelcomeScreen({
+    onLoadModel,
+    selectedModelId,
+    onSelectModel,
+    cachedModels
+}) {
     const models = getAvailableModels();
-    const recommendedModel = models.find(m => m.recommended) || models[0];
+    const selectedModel = models.find(m => m.id === selectedModelId) || models[0];
+    const isSelectedCached = cachedModels.includes(selectedModelId);
 
     return (
         <div className="welcome-screen">
@@ -194,33 +200,61 @@ function WelcomeScreen({ onLoadModel }) {
                 <SparklesIcon />
             </div>
             <h3>eIDAS AI Assistant</h3>
-            <p>
-                Ask questions about the eIDAS 2.0 regulation and get instant answers
-                powered by AI running directly in your browser.
-            </p>
-            <div className="welcome-features">
-                <div className="feature">
-                    <span className="feature-icon" aria-hidden="true">🔒</span>
-                    <span>100% Private - No data leaves your device</span>
-                </div>
-                <div className="feature">
-                    <span className="feature-icon" aria-hidden="true">📚</span>
-                    <span>RAG-powered - Answers based on official documents</span>
-                </div>
-                <div className="feature">
-                    <span className="feature-icon" aria-hidden="true">⚡</span>
-                    <span>Fast - GPU-accelerated inference</span>
-                </div>
+
+            <p className="welcome-subtitle">Select Model</p>
+
+            <div className="model-list" role="listbox" aria-label="Available AI models">
+                {models.map((model) => {
+                    const isCached = cachedModels.includes(model.id);
+                    const isSelected = model.id === selectedModelId;
+
+                    return (
+                        <button
+                            key={model.id}
+                            className={`model-card ${isSelected ? 'selected' : ''}`}
+                            onClick={() => onSelectModel(model.id)}
+                            role="option"
+                            aria-selected={isSelected}
+                        >
+                            <div className="model-card-info">
+                                <div className="model-card-header">
+                                    <span className="model-card-name">{model.name}</span>
+                                    {model.recommended && (
+                                        <span className="badge badge-recommended">RECOMMENDED</span>
+                                    )}
+                                </div>
+                                <span className="model-card-size">{model.size}</span>
+                            </div>
+                            <div className="model-card-status">
+                                {isCached ? (
+                                    <span className="cache-indicator cached">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                        </svg>
+                                        CACHED
+                                    </span>
+                                ) : (
+                                    <span className="cache-indicator download" aria-label="Requires download">
+                                        <DownloadIcon />
+                                    </span>
+                                )}
+                            </div>
+                        </button>
+                    );
+                })}
             </div>
+
             <button
                 className="btn btn-primary welcome-cta"
-                onClick={() => onLoadModel(recommendedModel?.id)}
+                onClick={() => onLoadModel(selectedModelId)}
             >
-                <DownloadIcon />
-                <span>Load AI Model ({recommendedModel?.size})</span>
+                <span>Load {selectedModel?.name} ({selectedModel?.size})</span>
             </button>
+
             <p className="welcome-note">
-                First load downloads the model. Subsequent loads are instant from cache.
+                {isSelectedCached
+                    ? 'This model is cached — loads instantly!'
+                    : 'Cached models load instantly. New models require download.'}
             </p>
         </div>
     );
@@ -333,7 +367,14 @@ export function AIChat() {
 
         // No model loaded yet
         if (llm.status === 'idle' || llm.status === 'checking') {
-            return <WelcomeScreen onLoadModel={llm.loadModel} />;
+            return (
+                <WelcomeScreen
+                    onLoadModel={llm.loadModel}
+                    selectedModelId={llm.selectedModelId}
+                    onSelectModel={llm.setSelectedModelId}
+                    cachedModels={llm.cachedModels}
+                />
+            );
         }
 
         // Loading model

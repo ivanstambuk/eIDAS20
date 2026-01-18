@@ -314,40 +314,171 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: var(--space-6);
+    padding: var(--space-4) var(--space-4) var(--space-3);
     text-align: center;
+    overflow-y: auto;
 }
 
 .welcome-icon {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     background: linear-gradient(135deg, var(--accent-primary), #0891b2);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
+    flex-shrink: 0;
 }
 
 .welcome-icon svg {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     color: white;
 }
 
 .welcome-screen h3 {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     margin-bottom: var(--space-2);
 }
 
-.welcome-screen>p {
+.welcome-subtitle {
     font-size: var(--text-sm);
     color: var(--text-secondary);
-    margin-bottom: var(--space-6);
-    max-width: 300px;
+    margin-bottom: var(--space-3);
 }
 
+/* Model List */
+.model-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    margin-bottom: var(--space-4);
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+/* Model Card */
+.model-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+}
+
+.model-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-primary);
+}
+
+.model-card.selected {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary-dim);
+}
+
+.model-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.model-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.model-card-name {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+}
+
+.model-card-size {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-sm);
+}
+
+.badge-recommended {
+    background: var(--accent-secondary-dim);
+    color: var(--accent-secondary);
+}
+
+/* Cache Indicator */
+.cache-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.cache-indicator.cached {
+    color: var(--accent-secondary);
+}
+
+.cache-indicator.cached svg {
+    width: 14px;
+    height: 14px;
+}
+
+.cache-indicator.download {
+    color: var(--text-tertiary);
+}
+
+.cache-indicator.download svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
+/* Welcome CTA Button */
+.welcome-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+}
+
+.welcome-cta svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Welcome Note */
+.welcome-note {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    margin-top: var(--space-3);
+}
+
+/* Legacy feature styles - kept for potential re-use */
 .welcome-features {
     display: flex;
     flex-direction: column;
@@ -369,25 +500,6 @@
 
 .feature-icon {
     font-size: var(--text-base);
-}
-
-.welcome-cta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-6);
-    font-size: var(--text-sm);
-}
-
-.welcome-cta svg {
-    width: 18px;
-    height: 18px;
-}
-
-.welcome-note {
-    font-size: var(--text-xs);
-    color: var(--text-tertiary);
-    margin-top: var(--space-4);
 }
 
 /* ============================================
