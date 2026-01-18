@@ -7,10 +7,10 @@
 ## Current Status
 
 | Field | Value |
-|-------|-------|
-| **Last Updated** | 2026-01-18 22:20 CET |
-| **Session State** | V1.1 — AI Selection Matrix Complete |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms) |
+|-------|---------|
+| **Last Updated** | 2026-01-19 00:25 CET |
+| **Session State** | V1.2 — Terminology Filtering Complete |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 3-dimensional filtering) |
 | **Next Action** | Backlog items (see TRACKER.md Backlog section) |
 
 ---
@@ -23,6 +23,7 @@
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology cross-linking** (DEC-085: Auto-highlight defined terms in running text with hover popovers — definitions articles exempted)
 - **Terminology system** (107 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Terminology filtering** (DEC-086: 3-dimensional filtering by Document Type, Role, and Semantic Domain — exhaustive manual curation of all 107 terms)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
 - **AI Chat** (WebLLM, RAG-powered, **AI Selection Matrix** — model selector with cache detection, persistence, and polish animations)
@@ -84,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-19 00:25 | **Terminology Filtering (DEC-086)**: 3-dimensional filtering system for 107 terms. Dimensions: Document Type (eIDAS, Implementing Acts, Recommendations, EU Law), Role (Holder, PID Provider, Wallet Provider, QTSP, CABs, etc.), Domain (Cryptography, Identity, Attestation, Governance, Wallet Ecosystem). Config-based extensibility (terminology-filters.yaml). Exhaustive manual curation of all 107 terms with roles (term-roles.json) and domains (term-domains.json). FilterDropdown component with glassmorphism styling. Multi-select logic with clear all. No badges on term cards (filtering only). Commit: `0b82505`. |
 | 2026-01-18 22:20 | **AI Selection Matrix Complete (DEC-070)**: All 4 phases implemented. Phase 1: Cache detection via `hasModelInCache`. Phase 2: localStorage persistence. Phase 3: Model selector UI (cards, badges, dynamic button). Phase 4: Polish (staggered fade-in, glow effects, hover states). 4 commits: `c6cc4a4`, `4a6a070`, `48febe3`, `66bf780`. |
 | 2026-01-18 19:45 | **Bug Fixes + AI Model Selector Plan**: (1) Fixed Quick Jump to recognize EU legal citation format (`910/2014` → `2014-910`), (2) Fixed TOC chapters missing after DEC-083 slug standardization (EIDAS_CHAPTERS keys updated), (3) Designed AI chat model selector for welcome screen — user can now choose model BEFORE loading, with cache detection and localStorage persistence. Plan saved to pending-task.md. |
 | 2026-01-18 16:50 | **Term Extraction Fix + Scroll Restoration**: (1) Fixed regex to capture definitions with "means," pattern — "offline mode" was missed, (2) Added unit tests for terminology extraction (`test-terminology-extraction.js` — 15 tests), (3) Implemented full scroll restoration for Article→Terminology→Back flow, (4) Created centralized scroll restoration docs (`.agent/docs/scroll-restoration.md`), (5) Added "Deep Link Override" to TERMINOLOGY.md. |
