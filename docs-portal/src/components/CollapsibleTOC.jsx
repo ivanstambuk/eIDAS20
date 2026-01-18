@@ -13,7 +13,7 @@ import { useState, useCallback } from 'react';
 // NOTE: These hardcoded mappings are kept as fallback. 
 // New regulations should use the dynamic extraction below.
 const EIDAS_CHAPTERS = {
-    '910-2014': [
+    '2014-910': [
         {
             id: 'chapter-1',
             title: 'I. General Provisions',
@@ -64,7 +64,7 @@ const EIDAS_CHAPTERS = {
     ],
     // Regulation 765/2008 (Accreditation and Market Surveillance) - Consolidated
     // Note: Chapter III (Articles 15-29) was repealed by Regulation 2019/1020
-    '765-2008': [
+    '2008-765': [
         {
             id: 'i-general-provisions',
             title: 'I. General Provisions',
