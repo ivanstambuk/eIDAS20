@@ -357,6 +357,26 @@
     margin-bottom: var(--space-4);
     max-height: 280px;
     overflow-y: auto;
+    padding-right: var(--space-1);
+}
+
+/* Styled scrollbar for model list */
+.model-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.model-list::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+}
+
+.model-list::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: var(--radius-full);
+}
+
+.model-list::-webkit-scrollbar-thumb:hover {
+    background: var(--border-accent);
 }
 
 /* Model Card */
@@ -371,17 +391,61 @@
     border-radius: var(--radius-md);
     cursor: pointer;
     text-align: left;
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
+    animation: fadeInUp 0.3s ease-out backwards;
+}
+
+/* Staggered animation for model cards */
+.model-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.model-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.model-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.model-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.model-card:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.model-card:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .model-card:hover {
     background: var(--bg-hover);
     border-color: var(--border-primary);
+    transform: scale(1.01);
+}
+
+.model-card:active {
+    transform: scale(0.99);
 }
 
 .model-card.selected {
     border-color: var(--accent-primary);
     background: var(--accent-primary-dim);
+    box-shadow: 0 0 12px var(--accent-primary-glow);
 }
 
 .model-card-info {
@@ -464,6 +528,16 @@
     padding: var(--space-3) var(--space-4);
     font-size: var(--text-sm);
     font-weight: var(--font-semibold);
+    transition: all 0.2s ease;
+}
+
+.welcome-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px var(--accent-primary-glow);
+}
+
+.welcome-cta:active {
+    transform: translateY(0);
 }
 
 .welcome-cta svg {
@@ -476,6 +550,7 @@
     font-size: var(--text-xs);
     color: var(--text-tertiary);
     margin-top: var(--space-3);
+    transition: color 0.2s ease;
 }
 
 /* Legacy feature styles - kept for potential re-use */
