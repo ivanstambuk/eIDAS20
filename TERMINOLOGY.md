@@ -294,12 +294,19 @@ Navigating to a URL with `?section=` parameter scrolls the viewport to that elem
 
 ### Scroll Restoration Pattern
 Preserves user's scroll position when navigating away and back via browser history. Implementation:
-1. **Save on Exit**: When user clicks an internal link, current `window.scrollY` is saved to `sessionStorage`.
+1. **Save on Exit**: When user clicks an internal link (citation/term popover), current `window.scrollY` is saved to `sessionStorage`.
 2. **Detect Back/Forward**: Uses React Router's `useNavigationType()` to detect `'POP'` (back/forward) vs `'PUSH'` (manual navigation).
 3. **Height-Aware Polling**: Waits until `document.scrollHeight > targetY + viewportHeight` before restoring (fixes timing issue where content hasn't rendered yet).
-4. **Deep Link Precedence**: If URL has `?section=` parameter, deep linking takes priority over scroll restoration.
+4. **Deep Link Override**: On back navigation with a saved position, URL parameters like `?section=` are ignored—scroll restoration takes precedence.
+
+**Supported Flows**:
+- Terminology → Term → Back (restores Terminology position)
+- Regulation → Citation Popover → Back (restores Regulation position)
+- Regulation → Term Popover → Terminology → Back (restores Regulation position)
 
 Hook: `useScrollRestoration.js` — shared between Terminology.jsx and RegulationViewer.jsx.
+
+📄 **Full documentation**: [.agent/docs/scroll-restoration.md](.agent/docs/scroll-restoration.md)
 
 ---
 
@@ -333,6 +340,7 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **Back/Forward Navigation** | Browser history navigation (`navigationType === 'POP'`). Triggers scroll position restoration. |
 | **Manual Navigation** | Explicit link click or URL entry (`navigationType === 'PUSH'`). Starts fresh at top of page or deep link target. |
 | **DOM Height Timing** | The race condition where `window.scrollTo()` is called before the page content has fully rendered. Solved by height-aware polling. |
+| **Deep Link Override** | The behavior where a saved scroll position takes precedence over URL-based section scrolling on back navigation. When `navigationType === 'POP'` and a saved position exists, `?section=` parameters are ignored. |
 
 ---
 

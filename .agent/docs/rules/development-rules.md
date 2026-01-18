@@ -528,6 +528,8 @@ requestAnimationFrame(() => requestAnimationFrame(checkAndScroll));
 
 **This project's solution:** Use the shared `useScrollRestoration` hook from `src/hooks/useScrollRestoration.js`.
 
+📄 **Full documentation**: See [.agent/docs/scroll-restoration.md](../scroll-restoration.md) for complete navigation flows and implementation details.
+
 ---
 
 ## 25. CSS Debug Mode (Visual Element Debugging)

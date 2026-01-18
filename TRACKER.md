@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 14:50 CET |
+| **Last Updated** | 2026-01-18 16:50 CET |
 | **Session State** | V1.0 Production Ready |
 | **Portal Status** | ✅ Fully functional (172,232 words) |
 | **Next Action** | See Backlog |
@@ -22,7 +22,7 @@
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology cross-linking** (DEC-085: Auto-highlight defined terms in running text with hover popovers — definitions articles exempted)
-- **Terminology system** (106 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Terminology system** (107 terms from 3 sources, multi-source display, hover popovers, cross-refs)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
 - **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
@@ -54,7 +54,7 @@
 - **"eIDAS 2.0 Regulation"** (Consolidated regulation renamed for clarity across sidebar, header, breadcrumbs)
 - **TOC all-collapsed default** (Progressive disclosure: all chapters start collapsed for cleaner initial view)
 - **Terminology deep linking** (Click "View in Regulation" → jumps to exact paragraph, preserves legal structure UL/OL)
-- **Scroll restoration** (Back button restores position, manual navigation starts at top; shared `useScrollRestoration` hook with height-aware polling)
+- **Scroll restoration** (Back button restores position for Article→Terminology→Back and Terminology→Term→Back flows; shared `useScrollRestoration` hook with height-aware polling)
 - **Short Title YAML config** (DEC-043: Single source of truth with fail-fast build validation)
 - **YAML schema validation** (`npm run validate:config` before build)
 - **Clean annex warnings** (Known missing annexes suppressed, only new warnings shown)
@@ -84,6 +84,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 16:50 | **Term Extraction Fix + Scroll Restoration**: (1) Fixed regex to capture definitions with "means," pattern — "offline mode" was missed, (2) Added unit tests for terminology extraction (`test-terminology-extraction.js` — 15 tests), (3) Implemented full scroll restoration for Article→Terminology→Back flow, (4) Created centralized scroll restoration docs (`.agent/docs/scroll-restoration.md`), (5) Added "Deep Link Override" to TERMINOLOGY.md. |
 | 2026-01-18 14:50 | **Terminology Cross-Linking (DEC-085 Phase 1-3)**: Implemented build-time term detection and CSS styling. Created `rehype-term-links.js` plugin that: (1) matches 106 terms + plural variants, (2) exempts definitions articles (Article 2/3) from linking, (3) wraps matches with `<span class="term-link">`. Added CSS for dotted underline styling. 1,589 term links in eIDAS consolidated. Rule 11 added to AGENTS.md (recommendations required). |
 | 2026-01-18 13:35 | **Modular AGENTS.md Refactor**: Split 1,888-line AGENTS.md into hub + modules following sdd-bundle-editor pattern. Critical Rules 1-10 remain inline (416 lines). Extracted: development-rules.md (Rules 11-25, 553 lines), content-rules.md (Rules 26-44, 498 lines), rules/README.md (index), build-pipeline.md (architecture). Total preserved: 1,728 lines across 5 files. Quick Reference table links to all docs. |
 | 2026-01-18 13:20 | **2015/1501 Interoperability Framework Header Fixes + Retro**: (1) Badge now shows "Impl. Regulation" for implementing_regulation legalType, (2) Date extraction prioritizes signature block "Done at" date over cited dates, (3) HTML parser fixed to italicize all "Having regard" clauses regardless of HTML order, (4) Rules 42-44 added to AGENTS.md (CSS specificity, HTML parser gold standard, blockquote spacing), (5) Terminology added: CSS Specificity Cascade, Title Continuation Pattern. |
