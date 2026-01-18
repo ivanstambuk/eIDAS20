@@ -29,6 +29,7 @@ documents:
 - celex: 32021H0946
   title: Commission Recommendation on a common Union Toolbox for a European Digital Identity Framework
   shortTitle: EUDIW Toolbox Recommendation
+  sidebarTitle: EUDIW Toolbox
   legalType: recommendation
   category: referenced
   cellar_id: db5be7e4-ccf1-11eb-ac72-01aa75ed71a1.0006.02
