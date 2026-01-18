@@ -10,6 +10,7 @@
     text-decoration: underline;
     text-decoration-style: dotted;
     text-decoration-color: var(--accent-primary);
+    text-decoration-thickness: 2px;
     text-underline-offset: 2px;
     cursor: help;
     transition: background-color 0.15s ease;
@@ -17,7 +18,7 @@
 
 .term-link:hover,
 .term-link:focus {
-    background-color: rgba(0, 255, 255, 0.1);
+    background-color: var(--accent-primary-dim);
     outline: none;
 }
 
