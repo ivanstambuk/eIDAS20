@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 19:45 CET |
-| **Session State** | V1.0 Production Ready |
+| **Last Updated** | 2026-01-18 22:20 CET |
+| **Session State** | V1.1 — AI Selection Matrix Complete |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms) |
-| **Next Action** | AI Chat model selector (see pending-task.md) |
+| **Next Action** | Backlog items (see TRACKER.md Backlog section) |
 
 ---
 
@@ -25,7 +25,7 @@
 - **Terminology system** (107 terms from 3 sources, multi-source display, hover popovers, cross-refs)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
-- **AI Chat** (WebLLM, RAG-powered, Gemma 2B recommended)
+- **AI Chat** (WebLLM, RAG-powered, **AI Selection Matrix** — model selector with cache detection, persistence, and polish animations)
 - **Export** (PDF, Markdown, JSON)
 - **Themes** (light/dark, system detection)
 - **Accessibility** (WCAG 2.1 AA)
@@ -84,7 +84,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-18 20:15 | **AI Selection Matrix (DEC-070 Phases 1-3)**: Implemented proactive model selection for AI chat. Phase 1: Cache detection via `hasModelInCache` API. Phase 2: localStorage persistence (`eidas-ai-model` key). Phase 3: Welcome screen redesign with model cards — RECOMMENDED badge, CACHED indicator, cyan selection border, dynamic "Load [Model]" button. Browser-verified. |
+| 2026-01-18 22:20 | **AI Selection Matrix Complete (DEC-070)**: All 4 phases implemented. Phase 1: Cache detection via `hasModelInCache`. Phase 2: localStorage persistence. Phase 3: Model selector UI (cards, badges, dynamic button). Phase 4: Polish (staggered fade-in, glow effects, hover states). 4 commits: `c6cc4a4`, `4a6a070`, `48febe3`, `66bf780`. |
 | 2026-01-18 19:45 | **Bug Fixes + AI Model Selector Plan**: (1) Fixed Quick Jump to recognize EU legal citation format (`910/2014` → `2014-910`), (2) Fixed TOC chapters missing after DEC-083 slug standardization (EIDAS_CHAPTERS keys updated), (3) Designed AI chat model selector for welcome screen — user can now choose model BEFORE loading, with cache detection and localStorage persistence. Plan saved to pending-task.md. |
 | 2026-01-18 16:50 | **Term Extraction Fix + Scroll Restoration**: (1) Fixed regex to capture definitions with "means," pattern — "offline mode" was missed, (2) Added unit tests for terminology extraction (`test-terminology-extraction.js` — 15 tests), (3) Implemented full scroll restoration for Article→Terminology→Back flow, (4) Created centralized scroll restoration docs (`.agent/docs/scroll-restoration.md`), (5) Added "Deep Link Override" to TERMINOLOGY.md. |
 | 2026-01-18 14:50 | **Terminology Cross-Linking (DEC-085 Phase 1-3)**: Implemented build-time term detection and CSS styling. Created `rehype-term-links.js` plugin that: (1) matches 106 terms + plural variants, (2) exempts definitions articles (Article 2/3) from linking, (3) wraps matches with `<span class="term-link">`. Added CSS for dotted underline styling. 1,589 term links in eIDAS consolidated. Rule 11 added to AGENTS.md (recommendations required). |
