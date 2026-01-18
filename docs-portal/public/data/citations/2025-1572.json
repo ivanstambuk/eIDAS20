@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "c45ca6e7e5f259f318d1b6407f41fdb3",
+  "_cacheKey": "7e80b692542bfff542db81c22a754cac",
   "citations": [
     {
       "index": 1,
@@ -12,7 +12,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -70,7 +70,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",
@@ -99,7 +99,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
-      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+      "originalText": "Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
       "humanName": "Network and Information Security Directive",
       "abbreviation": "NIS2",
       "entryIntoForce": "2023-01-16",

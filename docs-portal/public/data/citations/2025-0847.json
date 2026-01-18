@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "8f5a40279171b75f0f7d3d34a5756cf1",
+  "_cacheKey": "8814f4232ef938c6d3389f16c032faea",
   "citations": [
     {
       "index": 1,
@@ -99,7 +99,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2021-946",
-      "originalText": "\\[Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework (OJ L 210, 14.6.2021, p. 51, ELI: http://data.europa.eu/eli/reco/2021/946/oj).\\]",
+      "originalText": "Commission Recommendation (EU) 2021/946 \\[Commission Recommendation (EU) 2021/946 of 3 June 2021 on a common Union Toolbox for a coordinated approach towards a European Digital Identity Framework (OJ L 210, 14.6.2021, p. 51, ELI: http://data.europa.eu/eli/reco/2021/946/oj).\\]",
       "humanName": "EU Digital Identity Toolbox Recommendation",
       "abbreviation": "EUDIW Toolbox",
       "entryIntoForce": "2021-06-03",
@@ -128,7 +128,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/regulation/2024-1183",
-      "originalText": "\\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
+      "originalText": "Regulation (EU) 2024/1183 of the European Parliament and of the Council \\[Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 910/2014 as regards establishing the European Digital Identity Framework (OJ L, 2024/1183, 30.4.2024, ELI: http://data.europa.eu/eli/reg/2024/1183/oj).\\]",
       "humanName": "European Digital Identity Framework",
       "abbreviation": "eIDAS 2.0",
       "entryIntoForce": "2024-05-20",
@@ -157,7 +157,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
-      "originalText": "\\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
+      "originalText": "Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27.12.2022, p. 80, ELI: http://data.europa.eu/eli/dir/2022/2555/oj).\\]",
       "humanName": "Network and Information Security Directive",
       "abbreviation": "NIS2",
       "entryIntoForce": "2023-01-16",
@@ -244,7 +244,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/implementing-acts/2024-2981",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets (OJ L, 2024/2981, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2981/oj).\\]",
+      "originalText": "Commission Implementing Regulation (EU) 2024/2981 \\[Commission Implementing Regulation (EU) 2024/2981 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and the Council as regards the certification of European Digital Identity Wallets (OJ L, 2024/2981, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2981/oj).\\]",
       "humanName": "Integrity and Core Functionality Certification",
       "abbreviation": null,
       "entryIntoForce": "2024-12-25",

@@ -40,7 +40,7 @@ const ROUTES = {
 // ⚠️ INCREMENT THIS when changing script logic that affects output format.
 // The hash-based cache only detects content changes, not script changes.
 // Bumping this version forces a full rebuild.
-const CACHE_VERSION = '1.0.1';  // Bumped: fixed plural→singular route path
+const CACHE_VERSION = '1.0.2';  // Bumped: capture prepended legislation text to fix duplicates
 
 /**
  * Compute MD5 hash of content for cache validation.
@@ -686,13 +686,24 @@ function extractCitations(content, documentRegistry, currentSlug = null, documen
 
     // Markdown uses \[ and \] for escaped brackets
     // Pattern: \[Full text (OJ ref, ELI: url)\] or [Full text (OJ ref, ELI: url)]
-    const citationPattern = /\\?\[([^\]]+?)\s*\(OJ\s+[^)]+,\s*ELI:\s*(http:\/\/data\.europa\.eu\/eli\/[^\s\])\\]+)[^\]]*\\?\]/g;
+    // 
+    // Extended pattern: Also capture any preceding legislation reference text that
+    // matches the footnote. Formex conversion sometimes produces:
+    //   "Commission Recommendation (EU) 2021/946 \[Commission Recommendation (EU) 2021/946 of...\]"
+    // where the inline text duplicates the footnote. We capture the preceding text
+    // to replace BOTH with a single linked reference.
+    //
+    // Group 1: Optional preceding legislation reference (e.g., "Commission Recommendation (EU) 2021/946 ")
+    // Group 2: The footnote title part
+    // Group 3: The ELI URL
+    const citationPattern = /((?:(?:Commission\s+)?(?:Implementing\s+)?(?:Regulation|Directive|Recommendation|Decision)\s+\([A-Z,\s]+\)\s*(?:No\s*)?\d+\/\d+(?:\s+of\s+[^[]+?)?\s+)?)?\\?\[([^\]]+?)\s*\(OJ\s+[^)]+,\s*ELI:\s*(http:\/\/data\.europa\.eu\/eli\/[^\s\])\\]+)[^\]]*\\?\]/g;
 
     let match;
     while ((match = citationPattern.exec(content)) !== null) {
-        const fullText = match[0];
-        const titlePart = match[1];
-        const eliUrl = match[2];
+        const fullText = match[0];  // Includes any preceding legislation reference
+        const prependedText = match[1] || '';  // Optional preceding text (e.g., "Commission Recommendation (EU) 2021/946 ")
+        const titlePart = match[2];
+        const eliUrl = match[3];
 
         // Parse the ELI to get CELEX
         const eliInfo = parseEli(eliUrl);

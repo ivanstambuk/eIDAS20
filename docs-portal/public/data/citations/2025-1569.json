@@ -1,5 +1,5 @@
 {
-  "_cacheKey": "1abce956eddf80ca2722ec2e01185f8e",
+  "_cacheKey": "efa767f4b7cb663ebf0f693d9848059a",
   "citations": [
     {
       "index": 1,
@@ -70,7 +70,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1724/oj",
-      "originalText": "\\[Regulation (EU) 2018/1724 of the European Parliament and of the Council of 2 October 2018 establishing a single digital gateway to provide access to information, to procedures and to assistance and problem-solving services and amending Regulation (EU) No 1024/2012 (OJ L 295, 21.11.2018, p. 1, ELI: http://data.europa.eu/eli/reg/2018/1724/oj).\\]",
+      "originalText": "Regulation (EU) 2018/1724 of the Parliament and of the Council establishing a single digital gateway and amending Regulation (EU) No 1024/2012 \\[Regulation (EU) 2018/1724 of the European Parliament and of the Council of 2 October 2018 establishing a single digital gateway to provide access to information, to procedures and to assistance and problem-solving services and amending Regulation (EU) No 1024/2012 (OJ L 295, 21.11.2018, p. 1, ELI: http://data.europa.eu/eli/reg/2018/1724/oj).\\]",
       "humanName": "Single Digital Gateway Regulation",
       "abbreviation": "SDG",
       "entryIntoForce": "2018-11-11",
@@ -99,7 +99,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
-      "originalText": "\\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
+      "originalText": "Regulation (EU) 2016/679 of the European Parliament and of the Council \\[Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (OJ L 119, 4.5.2016, p. 1, ELI: http://data.europa.eu/eli/reg/2016/679/oj).\\]",
       "humanName": "General Data Protection Regulation",
       "abbreviation": "GDPR",
       "entryIntoForce": "2018-05-25",
@@ -157,7 +157,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "https://eur-lex.europa.eu/eli/reg/2018/1725/oj",
-      "originalText": "\\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
+      "originalText": "Regulation (EU) 2018/1725 of the European Parliament and of the Council \\[Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC (OJ L 295, 21.11.2018, p. 39, ELI: http://data.europa.eu/eli/reg/2018/1725/oj).\\]",
       "humanName": "Data Protection for EU Institutions",
       "abbreviation": "EUDPR",
       "entryIntoForce": "2018-12-11",
@@ -186,7 +186,7 @@
       "isSelfReference": false,
       "consolidationInfo": null,
       "url": "#/implementing-acts/2024-2979",
-      "originalText": "\\[Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets (OJ L, 2024/2979, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2979/oj).\\]",
+      "originalText": "Commission Implementing Regulation (EU) 2024/2979 \\[Commission Implementing Regulation (EU) 2024/2979 of 28 November 2024 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards the integrity and core functionalities of European Digital Identity Wallets (OJ L, 2024/2979, 4.12.2024, ELI: http://data.europa.eu/eli/reg_impl/2024/2979/oj).\\]",
       "humanName": "Person Identification Data and Electronic Attestations",
       "abbreviation": null,
       "entryIntoForce": "2024-12-25",
