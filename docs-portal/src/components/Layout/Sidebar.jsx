@@ -204,7 +204,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                     }
 
                     return (
-                        <div key={section.title} className="sidebar-section" role="group" aria-labelledby={`nav-${section.title.toLowerCase()}`}>
+                        <div key={section.title} className={`sidebar-section${section.isDynamic ? ' sidebar-section-referenced' : ''}`} role="group" aria-labelledby={`nav-${section.title.toLowerCase()}`}>
                             <span id={`nav-${section.title.toLowerCase()}`} className="sidebar-section-title">{section.title}</span>
                             <ul className="sidebar-nav" role="list">
                                 {items.map((item) => (
