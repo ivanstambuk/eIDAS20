@@ -1353,7 +1353,129 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
     Result: Link text is clean "Regulation (EU) 2024/1183"
     ```
 
+37. **EUR-Lex HTML CSS Class Reference (Parser Development):**
+    
+    **When developing or debugging the EUR-Lex HTML parser (`eurlex_html_to_md.py`), reference these CSS classes:**
+    
+    | Class | Element Type | Location |
+    |-------|-------------|----------|
+    | `oj-doc-ti` | Document title, ANNEX header | Top of document, annex divs |
+    | `oj-ti-art` | Article number | `<p>Article 1</p>` |
+    | `oj-sti-art` | Article title/subtitle | `<p>Subject matter</p>` |
+    | `oj-ti-grseq-1` | Annex title OR numbered section heading | Annexes: *italic title* or **1. Section heading** |
+    | `oj-normal` | Regular paragraph content | Body text, definitions |
+    | `oj-enumeration-spacing` | Enumerated content container | `<div>` wrapping inline `<p>` elements |
+    | `oj-note` | Footnotes | Bottom of articles |
+    | `oj-bold` | Bold text (inside `<span>`) | Emphasis in titles |
+    
+    **Annex structure pattern:**
+    ```html
+    <div id="anx_1">
+        <p class="oj-doc-ti">ANNEX</p>
+        <p class="oj-ti-grseq-1"><span class="oj-bold">Annex Title</span></p>
+        <p class="oj-ti-grseq-1">1.   <span class="oj-bold">Section heading</span></p>
+        <p class="oj-normal">Intro text...</p>
+        <table>  <!-- Points (a), (b), etc. in tables -->
+            <tr><td>(a)</td><td>content</td></tr>
+        </table>
+    </div>
+    ```
+    
+    **Split element pattern:** EUR-Lex often puts numbers/letters in one `<p>` and content in the next `<p>`. Use lookahead to combine them.
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: Annex points like (a), (b), (c) appearing on separate lines
+    Root cause: Points stored in HTML tables, not oj-normal paragraphs
+    Fix: Added table parsing to extract_annexes()
+    ```
+
+38. **HTML vs Formex Parser Selection:**
+    
+    **Choose the appropriate parser based on the EUR-Lex source format:**
+    
+    | Criterion | Use Formex Parser | Use HTML Parser |
+    |-----------|-------------------|-----------------|
+    | **Source availability** | Formex XML available (`DOC_1` package) | Only HTML available |
+    | **Document complexity** | Complex structure (nested annexes, tables) | Simple articles only |
+    | **Metadata extraction** | Full metadata in XML | Extract from HTML elements |
+    | **Preferred for** | Implementing Acts (newer) | Older regulations, fallback |
+    
+    **Formex is preferred when available** because:
+    - Structured XML is unambiguous
+    - Metadata is machine-readable
+    - Annex structure is explicit
+    
+    **HTML parser is a fallback** for documents without Formex packages or when Formex extraction fails.
+    
+    **Example workflow:**
+    ```bash
+    # Try Formex first
+    python3 formex_to_md_v3.py 32024R2977 ../02_implementing_acts/...
+    
+    # If "Formex package not found", use HTML
+    python3 eurlex_html_to_md.py 32024R2977 ../02_implementing_acts/...
+    ```
+
+39. **Article Heading Format (ToC Clarity):**
+    
+    **Article headings must NOT include the article title in the same line.**
+    
+    ❌ **WRONG (clutters ToC):**
+    ```markdown
+    ### Article 1 — Subject matter
+    ```
+    
+    ✅ **CORRECT (clean ToC, title as bold subtitle):**
+    ```markdown
+    ### Article 1
+    
+    **Subject matter**
+    ```
+    
+    **Why this matters:**
+    - The Table of Contents shows H2/H3 headings
+    - "Article 1 — Subject matter — Definition of..." is too long for TOC
+    - Formex parser uses this format; HTML parser must match
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: TOC showed "Article 1 — Subject matter", "Article 2 — Definitions"...
+    Root cause: HTML parser combined article number + title in heading
+    Fix: Output title as bold text below heading, not in heading
+    ```
+
+40. **Annex Point Format (Gutter Icons Requirement):**
+    
+    **Annex points must use Markdown list format for gutter icons to appear.**
+    
+    ❌ **WRONG (no gutter icons):**
+    ```markdown
+    (a) current family name(s);
+    
+    (b) current first name(s);
+    ```
+    
+    ✅ **CORRECT (gutter icons work):**
+    ```markdown
+    - (a) current family name(s);
+    - (b) current first name(s);
+    ```
+    
+    **Why this matters:**
+    - The `rehype-paragraph-ids.js` plugin assigns IDs to `<li>` elements
+    - Gutter icons (🔗 📜) require linkable IDs
+    - Plain paragraphs don't get IDs assigned
+    
+    **Real example from 2026-01-18:**
+    ```
+    Issue: Annex points had no copy reference icons
+    Root cause: Points output as plain paragraphs, not list items
+    Fix: Added "- " prefix to annex points in HTML parser
+    ```
+
 ## Project Structure
+
 
 ```
 ~/dev/eIDAS20/

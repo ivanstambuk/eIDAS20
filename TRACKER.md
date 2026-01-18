@@ -8,16 +8,17 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-18 01:43 CET |
+| **Last Updated** | 2026-01-18 10:59 CET |
 | **Session State** | V1.0 Production Ready |
-| **Portal Status** | ✅ Fully functional (171,117 words) |
+| **Portal Status** | ✅ Fully functional (173,385 words) |
 | **Next Action** | See Backlog |
 
 ---
 
 ## Portal Features (Complete)
 
-- **34 documents** (4 regulations: 910/2014, 2024/1183, 765/2008, 2021/946 Recommendation + 30 implementing acts)
+- **35 documents** (5 regulations: 910/2014, 2024/1183, 765/2008, 2021/946 Recommendation, **2015/1501 Interoperability Framework** + 30 implementing acts)
+- **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology system** (115 terms from 3 sources, multi-source display, hover popovers, cross-refs)
@@ -80,8 +81,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-18 10:59 | **EUR-Lex HTML Parser Fixes**: (1) Removed banned "Source Reference" footer, (2) Article titles now separate from headings (clean ToC), (3) Annex points combined with content, (4) Complete annex extraction with titles/sections/tables, (5) Gutter icons for annex points. Added Rules 37-40 to AGENTS.md. 35 docs, 173,385 words. |
 | 2026-01-18 01:33 | Citation display text preservation: original legal reference (e.g., "Commission Recommendation (EU) 2021/946") is now preserved as link text instead of shortened version. Regex refined to exclude institutional attribution ("of the European Parliament..."). Added Rule 36 to AGENTS.md. 171,117 words. |
-| 2026-01-18 01:06 | **Session Complete**: EUDIW Toolbox import (32021H0946) + data model refactor (legalType/category). Extended Formex converter with `extract_gr_seq_sections()` for Recommendations. Rules 33-35 added (legal doc import, citation rebuild, Formex patterns). TERMINOLOGY.md expanded with CELEX codes, GR.SEQ, legalType/category. 5 new unit tests. 171,231 words across 34 documents. |
 | 2026-01-17 22:58 | Annex gutter icons: paragraphs + points now have 🔗 📜 buttons. EU citation format `Annex I, point 3(a)` per Interinstitutional Style Guide. Fixed: duplicate icons (wrapper skip), sibling context (lastParagraphInContext). Documented in TERMINOLOGY.md + useCopyReference.js. |
 | 2026-01-17 19:43 | Fix: Inline QUOT.START/END rendered as blockquotes — abbreviation ('API') now inline. Added ALINEA to TERMINOLOGY.md. Retro: Rules 31-32 (directory naming, QUOT.* detection), installed python3-markdown (3 fewer skipped tests). |
 | 2026-01-17 19:09 | Fix: RegulationViewer scroll restoration (same DOM height timing bug as Terminology). Retro: extracted shared `useScrollRestoration` hook (eliminates ~60 lines duplicate code), documented "Wait for DOM Height" pattern (AGENTS.md rule 24) |
