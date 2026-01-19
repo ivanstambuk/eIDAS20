@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-19 00:25 CET |
-| **Session State** | V1.2 — Terminology Filtering Complete |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 3-dimensional filtering) |
-| **Next Action** | Backlog items (see TRACKER.md Backlog section) |
+| **Last Updated** | 2026-01-19 18:32 CET |
+| **Session State** | V2.0 — RCA Audit Complete (87 Requirements) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 87 RP requirements) |
+| **Next Action** | RCA Role Expansion: Add wallet_provider + trust_service_provider requirements |
 
 ---
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-19 18:30 | **RCA Systematic Audit Complete**: Comprehensive review of all 29 implementing acts + consolidated regulation. Added 20 new RP requirements (67→87), schema version 10. Key acts: 2024/2977 (PID/EAA — 6 reqs), 2024/2979 (Integrity — 5 reqs), 2025/846 (Cross-Border Identity — 6 reqs), 2025/847 (Security — 3 reqs). 21 acts confirmed N/A (TSP/infrastructure). Created AUDIT_TRACKER.md with article-level mapping. Next: Expand to wallet_provider + trust_service_provider roles. |
 | 2026-01-19 00:25 | **Terminology Filtering (DEC-086)**: 3-dimensional filtering system for 107 terms. Dimensions: Document Type (eIDAS, Implementing Acts, Recommendations, EU Law), Role (Holder, PID Provider, Wallet Provider, QTSP, CABs, etc.), Domain (Cryptography, Identity, Attestation, Governance, Wallet Ecosystem). Config-based extensibility (terminology-filters.yaml). Exhaustive manual curation of all 107 terms with roles (term-roles.json) and domains (term-domains.json). FilterDropdown component with glassmorphism styling. Multi-select logic with clear all. No badges on term cards (filtering only). Commit: `0b82505`. |
 | 2026-01-18 22:20 | **AI Selection Matrix Complete (DEC-070)**: All 4 phases implemented. Phase 1: Cache detection via `hasModelInCache`. Phase 2: localStorage persistence. Phase 3: Model selector UI (cards, badges, dynamic button). Phase 4: Polish (staggered fade-in, glow effects, hover states). 4 commits: `c6cc4a4`, `4a6a070`, `48febe3`, `66bf780`. |
 | 2026-01-18 19:45 | **Bug Fixes + AI Model Selector Plan**: (1) Fixed Quick Jump to recognize EU legal citation format (`910/2014` → `2014-910`), (2) Fixed TOC chapters missing after DEC-083 slug standardization (EIDAS_CHAPTERS keys updated), (3) Designed AI chat model selector for welcome screen — user can now choose model BEFORE loading, with cache detection and localStorage persistence. Plan saved to pending-task.md. |

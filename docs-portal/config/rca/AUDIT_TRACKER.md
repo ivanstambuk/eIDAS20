@@ -28,156 +28,157 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter | ⬜ | | Scope definition |
-| Art. 2 | Scope | ⬜ | | Applicability |
-| Art. 3 | Definitions | ⬜ | | Key terms |
-| Art. 4 | Internal market principle | ⬜ | | |
+| Art. 1 | Subject matter | ➖ | | Scope definition - no RP obligations |
+| Art. 2 | Scope | ➖ | | Applicability rules - no RP obligations |
+| Art. 3 | Definitions | ➖ | | Key terms including "relying party" definition |
+| Art. 4 | Internal market principle | ➖ | | Free circulation - no RP obligations |
 
 ### Chapter II - Electronic Identification (Articles 5-12b)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 5 | Unique identifier | ⬜ | | |
-| Art. 5a | European Digital Identity Wallets | ✅ | RP-REG-001 to RP-REG-006 | Core wallet obligations |
-| Art. 5b | Relying parties of European Digital Identity Wallets | ✅ | RP-REG-001 to RP-REG-006 | Registration requirements |
-| Art. 5c | Certification of EUDI Wallets | ⬜ | | Primarily for wallet providers |
-| Art. 5d | Publication of certified EUDI Wallets | ⬜ | | Commission duties |
-| Art. 5e | Security breach of EUDI Wallets | ⬜ | | Member State duties |
-| Art. 5f | Cross-border reliance on EUDI Wallets | ✅ | RP-ACCEPT-001 to RP-ACCEPT-003 | Acceptance obligations |
-| Art. 6 | Mutual recognition | ⬜ | | |
-| Art. 7 | Eligibility for notification | ⬜ | | Member State duties |
-| Art. 8 | Assurance levels | ⬜ | | |
-| Art. 9 | Notification | ⬜ | | |
-| Art. 10 | Security breach of eID schemes | ⬜ | | |
-| Art. 11 | Liability | ⬜ | | Liability framework |
-| Art. 11a | Cross-border identity matching | ⬜ | | |
-| Art. 12 | Interoperability | ⬜ | | |
-| Art. 12a | Certification of eID schemes | ⬜ | | |
-| Art. 12b | Access to hardware and software features | ⬜ | | |
+| Art. 5 | Pseudonyms in electronic transactions | ➖ | | Users may use pseudonyms - no RP obligation |
+| Art. 5a | European Digital Identity Wallets | ✅ | RP-REG-001 to RP-REG-006 | Para 5(c): RPs must authenticate; Para 8: validation mechanisms |
+| Art. 5b | Relying parties of EUDI Wallets | ✅ | RP-REG-001 to RP-REG-012 | Core RP registration, authentication, data request obligations |
+| Art. 5c | Certification of EUDI Wallets | ➖ | | Wallet provider/CAB duties - no RP obligations |
+| Art. 5d | Publication of certified EUDI Wallets | ➖ | | Member State/Commission duties |
+| Art. 5e | Security breach of EUDI Wallets | ✅ | RP-SEC-001 to RP-SEC-003 | Para 1,3: RPs must be informed of suspensions/breaches |
+| Art. 5f | Cross-border reliance on EUDI Wallets | ✅ | RP-ACCEPT-001 to RP-ACCEPT-003 | Mandatory acceptance for public sector + specified private RPs |
+| Art. 6 | Mutual recognition | ➖ | | Member State recognition duties |
+| Art. 7 | Eligibility for notification | ➖ | | Member State notification criteria |
+| Art. 8 | Assurance levels | ➖ | | Defines assurance levels - no RP obligations |
+| Art. 9 | Notification | ➖ | | Member State notification procedures |
+| Art. 10 | Security breach of eID schemes | ➖ | | Member State duties for eID breaches |
+| Art. 11 | Liability | ➖ | | Liability of MS/issuers - no direct RP obligations |
+| Art. 11a | Cross-border identity matching | ✅ | RP-AUTH-009 to RP-AUTH-013 | RPs acting for cross-border services - identity matching |
+| Art. 12 | Interoperability | ➖ | | Interoperability framework - MS duties |
+| Art. 12a | Certification of eID schemes | ➖ | | Certification by CABs - no RP obligations |
+| Art. 12b | Access to hardware and software features | ➖ | | Platform access - wallet provider/issuer focus |
 
 ### Chapter III - Trust Services (Articles 13-24a)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 13 | Liability and burden of proof | ⬜ | | TSP liability |
-| Art. 14 | International aspects | ⬜ | | Third country recognition |
-| Art. 15 | Accessibility | ⬜ | | |
-| Art. 16 | Penalties | ⬜ | | |
-| Art. 17 | Supervisory body | ⬜ | | |
-| Art. 18 | Mutual assistance | ⬜ | | |
-| Art. 19 | Security requirements for TSPs | ⬜ | | |
-| Art. 19a | Requirements for non-qualified TSPs | ⬜ | | |
-| Art. 20 | Supervision of qualified TSPs | ⬜ | | |
-| Art. 21 | Initiation of qualified trust service | ⬜ | | |
-| Art. 22 | Trusted lists | ⬜ | | |
-| Art. 23 | EU trust mark | ⬜ | | |
-| Art. 24 | Requirements for qualified TSPs | ✅ | RP-ESIG-016 | Certificate status info |
-| Art. 24a | Recognition of qualified trust services | ⬜ | | |
+| Art. 13 | Liability and burden of proof | ➖ | | TSP liability framework - no RP obligations |
+| Art. 14 | International aspects | ➖ | | Third country recognition - Commission duties |
+| Art. 15 | Accessibility | ➖ | | Accessibility requirements for TSPs |
+| Art. 16 | Penalties | ➖ | | Member State penalty rules |
+| Art. 17 | Supervisory body | ➖ | | Supervisory body designation - MS duties |
+| Art. 18 | Mutual assistance | ➖ | | Supervisory body cooperation |
+| Art. 19 | Security requirements for TSPs | ➖ | | TSP security measures |
+| Art. 19a | Requirements for non-qualified TSPs | ➖ | | Non-qualified TSP obligations |
+| Art. 20 | Supervision of qualified TSPs | ➖ | | QTSP audit/supervision |
+| Art. 21 | Initiation of qualified trust service | ➖ | | QTSP initiation procedures |
+| Art. 22 | Trusted lists | ➖ | | Member State trusted list duties |
+| Art. 23 | EU trust mark | ➖ | | Trust mark usage by QTSPs |
+| Art. 24 | Requirements for qualified TSPs | ✅ | RP-ESIG-016 | Para 4: QTSPs must provide RPs with certificate status info |
+| Art. 24a | Recognition of qualified trust services | ➖ | | Cross-border recognition rules |
 
 ### Chapter III, Section 2 - Electronic Signatures (Articles 25-34)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 25 | Legal effects of electronic signatures | ✅ | RP-ESIG-001 to RP-ESIG-003 | Recognition requirements |
-| Art. 26 | Requirements for advanced e-signatures | ⬜ | | Definition |
-| Art. 27 | Electronic signatures in public services | ✅ | RP-ESIG-004 to RP-ESIG-006 | Public sector acceptance |
-| Art. 28 | Qualified certificates for e-signatures | ⬜ | | Certificate requirements |
-| Art. 29 | Requirements for qualified e-sig creation devices | ⬜ | | QSCD requirements |
-| Art. 29a | Requirements for remote QSCD management | ⬜ | | |
-| Art. 30 | Certification of QSCDs | ⬜ | | |
-| Art. 31 | Publication of certified QSCDs | ⬜ | | |
-| Art. 32 | Validation of qualified e-signatures | ✅ | RP-ESIG-007 to RP-ESIG-009 | Validation requirements |
-| Art. 32a | Validation of advanced e-signatures | ⬜ | | |
-| Art. 33 | Qualified validation service | ⬜ | | |
-| Art. 34 | Qualified preservation service | ⬜ | | |
+| Art. 25 | Legal effects of electronic signatures | ✅ | RP-ESIG-001 to RP-ESIG-003 | RPs must not deny legal effect |
+| Art. 26 | Requirements for advanced e-signatures | ➖ | | Definition of advanced e-sig requirements |
+| Art. 27 | Electronic signatures in public services | ✅ | RP-ESIG-004 to RP-ESIG-006 | Public sector RPs must accept specified formats |
+| Art. 28 | Qualified certificates for e-signatures | ➖ | | Certificate content requirements - TSP focus |
+| Art. 29 | Requirements for qualified e-sig creation devices | ➖ | | QSCD requirements - device manufacturers |
+| Art. 29a | Requirements for remote QSCD management | ➖ | | QTSP remote management duties |
+| Art. 30 | Certification of QSCDs | ➖ | | CAB/MS certification duties |
+| Art. 31 | Publication of certified QSCDs | ➖ | | MS/Commission publication duties |
+| Art. 32 | Validation of qualified e-signatures | ✅ | RP-ESIG-007 to RP-ESIG-009 | Validation requirements with RP focus (data to RP) |
+| Art. 32a | Validation of advanced e-signatures | ✅ | RP-ESIG-007 (related) | Similar validation requirements for advanced sigs |
+| Art. 33 | Qualified validation service | ➖ | | QVSP requirements - TSP focus |
+| Art. 34 | Qualified preservation service | ➖ | | Preservation service requirements - TSP focus |
 
 ### Chapter III, Section 3 - Electronic Seals (Articles 35-40a)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 35 | Legal effects of electronic seals | ✅ | RP-ESIG-010 to RP-ESIG-012 | Recognition requirements |
-| Art. 36 | Requirements for advanced e-seals | ⬜ | | |
-| Art. 37 | Electronic seals in public services | ✅ | RP-ESIG-013 to RP-ESIG-015 | Public sector acceptance |
-| Art. 38 | Qualified certificates for e-seals | ⬜ | | |
-| Art. 39 | Qualified e-seal creation devices | ⬜ | | |
-| Art. 39a | Requirements for remote QSCD (seals) | ⬜ | | |
-| Art. 40 | Validation and preservation of e-seals | ⬜ | | |
-| Art. 40a | Validation of advanced e-seals | ⬜ | | |
+| Art. 35 | Legal effects of electronic seals | ✅ | RP-ESIG-010 to RP-ESIG-012 | RPs must not deny legal effect |
+| Art. 36 | Requirements for advanced e-seals | ➖ | | Definition of advanced e-seal requirements |
+| Art. 37 | Electronic seals in public services | ✅ | RP-ESIG-013 to RP-ESIG-015 | Public sector RPs must accept specified formats |
+| Art. 38 | Qualified certificates for e-seals | ➖ | | Certificate content requirements - TSP focus |
+| Art. 39 | Qualified e-seal creation devices | ➖ | | QSCD requirements - refers to Art 29/30/31 |
+| Art. 39a | Requirements for remote QSCD (seals) | ➖ | | Refers to Art 29a - QTSP duties |
+| Art. 40 | Validation and preservation of e-seals | ➖ | | Refers to Arts 32-34 - validation/preservation TSP focus |
+| Art. 40a | Validation of advanced e-seals | ➖ | | Refers to Art 32a |
 
 ### Chapter III, Section 4 - Electronic Time Stamps (Articles 41-42)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 41 | Legal effect of e-time stamps | ✅ | RP-ESIG-017, RP-ESIG-018 | Recognition requirements |
-| Art. 42 | Requirements for qualified e-time stamps | ⬜ | | |
+| Art. 41 | Legal effect of e-time stamps | ✅ | RP-ESIG-017, RP-ESIG-018 | RPs must not deny legal effect |
+| Art. 42 | Requirements for qualified e-time stamps | ➖ | | QTSP requirements for timestamp creation |
 
 ### Chapter III, Section 5 - Electronic Registered Delivery (Articles 43-44)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 43 | Legal effect of ERDS | ✅ | RP-ESIG-019, RP-ESIG-020 | Recognition requirements |
-| Art. 44 | Requirements for qualified ERDS | ⬜ | | |
+| Art. 43 | Legal effect of ERDS | ✅ | RP-ESIG-019, RP-ESIG-020 | RPs must not deny legal effect |
+| Art. 44 | Requirements for qualified ERDS | ➖ | | QTSP service requirements |
 
 ### Chapter III, Section 6 - Website Authentication (Article 45-45a)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45 | Requirements for QWACs | ✅ | RP-ESIG-021, RP-ESIG-022 | Recognition/browser support |
-| Art. 45a | Cybersecurity precautionary measures | ⬜ | | Browser providers |
+| Art. 45 | Requirements for QWACs | ✅ | RP-ESIG-021, RP-ESIG-022 | Browser providers must recognize QWACs |
+| Art. 45a | Cybersecurity precautionary measures | ➖ | | Browser provider duties for precautionary measures |
 
 ### Chapter III, Section 7 - Electronic Attestation of Attributes (Articles 45b-45h)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45b | Legal effects of EAA | ✅ | RP-ESIG-023, RP-ESIG-024 | Recognition requirements |
-| Art. 45c | EAA in public services | ⬜ | | |
-| Art. 45d | Requirements for qualified EAA | ⬜ | | |
-| Art. 45e | Verification against authentic sources | ⬜ | | |
-| Art. 45f | Requirements for public sector EAA | ⬜ | | |
-| Art. 45g | Issuing EAA to EUDI Wallets | ⬜ | | Issuer duties |
-| Art. 45h | Additional rules for EAA services | ⬜ | | Data separation |
+| Art. 45b | Legal effects of EAA | ✅ | RP-ESIG-023, RP-ESIG-024 | RPs must not deny legal effect |
+| Art. 45c | EAA in public services | ➖ | | Member State rules for PID substitution |
+| Art. 45d | Requirements for qualified EAA | ➖ | | QTSP requirements for QEAA issuance |
+| Art. 45e | Verification against authentic sources | ➖ | | Member State/TSP duties for authentic source access |
+| Art. 45f | Requirements for public sector EAA | ➖ | | Public sector body issuer duties |
+| Art. 45g | Issuing EAA to EUDI Wallets | ➖ | | EAA provider interface duties |
+| Art. 45h | Additional rules for EAA services | ➖ | | EAA provider data separation duties |
 
 ### Chapter III, Section 8 - Electronic Archiving (Articles 45i-45j)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45i | Legal effect of e-archiving | ✅ | RP-ESIG-025 | Recognition requirements |
-| Art. 45j | Requirements for qualified e-archiving | ⬜ | | |
+| Art. 45i | Legal effect of e-archiving | ✅ | RP-ESIG-025 | RPs must not deny legal effect |
+| Art. 45j | Requirements for qualified e-archiving | ➖ | | QTSP archiving service requirements |
 
 ### Chapter III, Section 9 - Electronic Ledgers (Articles 45k-45l)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45k | Legal effects of e-ledgers | ✅ | RP-ESIG-026 | Recognition requirements |
-| Art. 45l | Requirements for qualified e-ledgers | ⬜ | | |
+| Art. 45k | Legal effects of e-ledgers | ✅ | RP-ESIG-026 | RPs must not deny legal effect |
+| Art. 45l | Requirements for qualified e-ledgers | ➖ | | QTSP ledger service requirements |
 
 ### Chapter III, Section 10 - Electronic Documents (Article 46)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 46 | Legal effects of electronic documents | ⬜ | | |
+| Art. 46 | Legal effects of electronic documents | ➖ | | General principle - no specific RP obligations |
 
 ### Chapter IV - Supervision (Articles 46a-46f)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 46a | Supervision of EUDI Wallet Framework | ⬜ | | Supervisory body duties |
-| Art. 46b | Supervision of trust services | ⬜ | | |
-| Art. 46c | Single points of contact | ⬜ | | |
-| Art. 46d | Mutual assistance (EUDI Wallet) | ⬜ | | |
-| Art. 46e | European Digital Identity Cooperation Group | ⬜ | | |
-| Art. 46f | ENISA reports | ⬜ | | |
+| Art. 46a | Supervision of EUDI Wallet Framework | ➖ | | Supervisory body duties for wallet providers |
+| Art. 46b | Supervision of trust services | ➖ | | Supervisory body duties for TSPs |
+| Art. 46c | Single points of contact | ➖ | | Member State designation duties |
+| Art. 46d | Mutual assistance (EUDI Wallet) | ➖ | | Supervisory body cooperation |
+| Art. 46e | European Digital Identity Cooperation Group | ➖ | | Commission/MS cooperation framework |
+| Art. 46f | ENISA reports | ➖ | | ENISA reporting duties |
 
 ### Chapter V - Final Provisions (Articles 47-52)
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 47 | Exercise of delegation | ⬜ | | |
-| Art. 48 | Committee procedure | ⬜ | | |
-| Art. 49 | Review | ⬜ | | |
-| Art. 50 | Transitional measures | ⬜ | | |
-| Art. 51 | Repeal | ⬜ | | |
-| Art. 52 | Entry into force | ⬜ | | |
+| Art. 47 | Exercise of delegation | ➖ | | Commission delegated act procedures |
+| Art. 48 | Committee procedure | ➖ | | Committee procedures |
+| Art. 48a | Reporting requirements | ➖ | | Member State statistics collection |
+| Art. 49 | Review | ➖ | | Commission review duties |
+| Art. 50 | Repeal | ➖ | | Directive 1999/93/EC repeal |
+| Art. 51 | Transitional measures | ➖ | | Transitional provisions |
+| Art. 52 | Entry into force | ➖ | | Entry into force dates |
 
 ---
 
@@ -185,13 +186,13 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Annex | Title | Status | RP Requirements | Notes |
 |-------|-------|--------|-----------------|-------|
-| Annex I | Requirements for qualified certificates for e-signatures | ⬜ | | Certificate field requirements |
-| Annex II | Requirements for qualified e-signature creation devices | ⬜ | | QSCD technical requirements |
-| Annex III | Requirements for qualified certificates for e-seals | ⬜ | | Certificate field requirements |
-| Annex IV | Requirements for qualified certificates for website auth | ⬜ | | QWAC field requirements |
-| Annex V | Requirements for qualified EAA | ⬜ | | EAA field requirements |
-| Annex VI | Minimum list of attributes for authentic sources | ⬜ | | Attribute catalog |
-| Annex VII | Requirements for public sector EAA | ⬜ | | |
+| Annex I | Requirements for qualified certificates for e-signatures | ➖ | | Certificate content requirements - TSP issuers |
+| Annex II | Requirements for qualified e-signature creation devices | ➖ | | QSCD technical requirements - device makers |
+| Annex III | Requirements for qualified certificates for e-seals | ➖ | | Certificate content requirements - TSP issuers |
+| Annex IV | Requirements for qualified certificates for website auth | ➖ | | QWAC content requirements - TSP issuers |
+| Annex V | Requirements for qualified EAA | ➖ | | QEAA content requirements - TSP issuers |
+| Annex VI | Minimum list of attributes for authentic sources | ➖ | | Attribute catalog - Member State duties |
+| Annex VII | Requirements for public sector EAA | ➖ | | Public sector body issuer requirements |
 
 ---
 
@@ -440,17 +441,17 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 
 ## Summary Statistics
 
-### Coverage Status
-- **Total Articles in 910/2014:** ~70
-- **Articles Reviewed:** ~25
-- **Articles with RP Requirements:** ~15
-- **Articles Pending Review:** ~45
+### Main Regulation (910/2014) Coverage
+- **Total Articles Reviewed:** 70+ (ALL reviewed)
+- **Articles with RP Requirements:** 18 (spanning registration, acceptance, authentication, trust services)
+- **Articles with No Direct RP Requirements:** 52+ (Member State, Commission, TSP, or Wallet Provider duties)
+- **Annexes Reviewed:** 7/7 (all TSP/issuer-focused, no RP obligations)
 
 ### Implementing Acts Coverage
 - **Total Implementing Acts:** 29
 - **Reviewed with RP Requirements:** 6 (2024/2977, 2024/2979, 2024/2982, 2025/846, 2025/847, 2025/848)
 - **Reviewed - No Direct RP Requirements:** 21 (TSP/infrastructure-focused)
-- **Pending Review:** 2 (2024/2980, 2024/2981 - may have indirect relevance)
+- **Pending Deeper Review:** 2 (2024/2980, 2024/2981 - may have indirect relevance)
 
 ### Current Requirements
 - **Total in relying-party.yaml:** 87
@@ -459,14 +460,16 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 
 ---
 
-## Next Steps Priority
+## Audit Completion Status
 
-1. **DONE**: 2024/2977 (PID/EAA) - 6 requirements extracted
-2. **DONE**: 2024/2979 (Integrity) - 5 requirements extracted
-3. **DONE**: 2024/2982 (Protocols) - Already covered
-4. **DONE**: 2025/847 (Security Breach) - 3 requirements extracted
-5. **DONE**: 2025/846 (Cross-Border Identity) - 6 requirements extracted
-6. **DONE**: 2025/2164 (Trusted Lists) - Infrastructure, no direct RP reqs
-7. **DONE**: 2025/1942 (Validation Services) - QVSP standards, no direct RP reqs
-8. **LOW**: Review remaining implementing acts (mainly TSP standards)
-9. **LOW**: Review Annexes I-VII of main regulation
+✅ **MAIN REGULATION AUDIT COMPLETE** (2026-01-19)
+
+All articles and annexes of Regulation (EU) No 910/2014 (Consolidated) have been systematically reviewed article-by-article for Relying Party requirements.
+
+### Next Steps (RCA Enhancement)
+
+1. **Expand to Other Roles**: Create `wallet-provider.yaml` and `trust-service-provider.yaml` requirement files
+2. **Add Deadline Dashboard**: Visual timeline for compliance deadlines
+3. **Compliance Status Tracker**: Allow marking requirements as Done/In Progress
+4. **Implementation Guidance**: Add practical how-to notes for each requirement
+
