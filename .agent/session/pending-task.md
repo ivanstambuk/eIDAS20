@@ -12,19 +12,14 @@
 
 - **87 RP requirements** extracted from 6 implementing acts + consolidated regulation
 - **Schema version 10** with 8 categories
-- **AUDIT_TRACKER.md** created with article-level mapping
-- Implementing acts with RP requirements:
-  - 2024/2977 (PID/EAA) - 6 reqs
-  - 2024/2979 (Integrity) - 5 reqs  
-  - 2024/2982 (Protocols) - 8 reqs
-  - 2025/846 (Cross-Border Identity) - 6 reqs
-  - 2025/847 (Security Breach) - 3 reqs
-  - 2025/848 (Registration) - 6 reqs
+- **AUDIT_TRACKER.md** fully updated - ALL articles reviewed article-by-article
+- Main regulation: 70+ articles reviewed, 18 with RP requirements, 52+ with no RP obligations
+- Annexes I-VII: All reviewed, TSP/issuer focus, no RP obligations
 
 ## Key Files
 
 - `docs-portal/config/rca/requirements/relying-party.yaml` — Template structure (87 reqs)
-- `docs-portal/config/rca/AUDIT_TRACKER.md` — Article-by-article audit status
+- `docs-portal/config/rca/AUDIT_TRACKER.md` — Complete article-by-article audit status
 - `docs-portal/scripts/build-rca.js` — Build script (supports multi-file)
 - `docs-portal/src/pages/ComplianceAssessment.jsx` — UI (role selector already exists)
 - `02_implementing_acts/` — Source documents (29 acts)

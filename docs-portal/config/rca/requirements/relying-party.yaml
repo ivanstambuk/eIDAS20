@@ -12,10 +12,10 @@
 # - useCases: which use cases this applies to (or "all" for universal)
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
-# AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 10 - Added 2025/846 Cross-Border Identity Matching
+# AUDIT: 2026-01-19 - Complete article-by-article review with gap analysis
+# Schema version 11 - Added Art 5b(9) auth, Art 5b(10) intermediaries, Art 32(2) validation
 
-schemaVersion: 10
+schemaVersion: 11
 
 # Requirement categories for grouping in the UI
 categories:
@@ -186,6 +186,45 @@ requirements:
     useCases:
       - pseudonym
       - age-verification
+
+  - id: RP-AUTH-001
+    category: authentication
+    requirement: "Implement and perform authentication and validation procedures"
+    explanation: |
+      Relying parties have the legal responsibility for properly authenticating and validating 
+      person identification data and electronic attestations of attributes. This is not optional - 
+      the RP must actively perform these procedures correctly.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure for authenticating 
+      and validating person identification data and electronic attestation of attributes 
+      requested from European Digital Identity Wallets.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-OPS-004
+    category: operational
+    requirement: "Intermediaries acting on behalf of RPs must not store transaction content data"
+    explanation: |
+      When an intermediary (e.g., a payment processor, integration platform) acts on behalf 
+      of a relying party, they are deemed to be relying parties themselves and are prohibited 
+      from storing data about the content of the transaction.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be relying 
+      parties and shall not store data about the content of the transaction.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
 
   # ----------------------------------------------------------------------------
   # Source: Implementing Regulation (EU) 2025/848 - Relying Party Registration
@@ -752,6 +791,27 @@ requirements:
       (d) the unique set of data representing the signatory in the certificate is correctly 
       provided to the relying party; (e) the use of any pseudonym is clearly indicated to 
       the relying party [...].
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+
+  - id: RP-ESIG-007a
+    category: esignature
+    requirement: "Ensure validation system allows detection of security issues"
+    explanation: |
+      When using a validation system for qualified electronic signatures, relying parties 
+      must ensure the system provides the correct validation result AND enables them to 
+      detect any security-relevant issues that may affect the signature's validity.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 32"
+      paragraph: "2"
+    legalText: |
+      The system used for validating the qualified electronic signature shall provide to 
+      the relying party the correct result of the validation process and shall allow the 
+      relying party to detect any security relevant issues.
     deadline: "2025-05-21"
     roles:
       - relying_party

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T17:40:28.303Z",
+  "generatedAt": "2026-01-19T17:50:23.179Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -628,6 +628,84 @@
         "age-verification"
       ],
       "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-AUTH-001",
+      "category": "authentication",
+      "requirement": "Implement and perform authentication and validation procedures",
+      "explanation": "Relying parties have the legal responsibility for properly authenticating and validating \nperson identification data and electronic attestations of attributes. This is not optional - \nthe RP must actively perform these procedures correctly.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "9"
+      },
+      "legalText": "Relying parties shall be responsible for carrying out the procedure for authenticating \nand validating person identification data and electronic attestation of attributes \nrequested from European Digital Identity Wallets.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-OPS-004",
+      "category": "operational",
+      "requirement": "Intermediaries acting on behalf of RPs must not store transaction content data",
+      "explanation": "When an intermediary (e.g., a payment processor, integration platform) acts on behalf \nof a relying party, they are deemed to be relying parties themselves and are prohibited \nfrom storing data about the content of the transaction.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be relying \nparties and shall not store data about the content of the transaction.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
     },
     {
       "id": "RP-REG-007",
@@ -1406,6 +1484,27 @@
         "paragraph": "1"
       },
       "legalText": "The process for the validation of an advanced electronic signature based on a \nqualified certificate shall confirm the validity of an advanced electronic signature \nbased on a qualified certificate, provided that: (a) the certificate that supports \nthe signature was, at the time of signing, a qualified certificate [...]; \n(c) the signature validation data corresponds to the data provided to the relying party; \n(d) the unique set of data representing the signatory in the certificate is correctly \nprovided to the relying party; (e) the use of any pseudonym is clearly indicated to \nthe relying party [...].",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-007a",
+      "category": "esignature",
+      "requirement": "Ensure validation system allows detection of security issues",
+      "explanation": "When using a validation system for qualified electronic signatures, relying parties \nmust ensure the system provides the correct validation result AND enables them to \ndetect any security-relevant issues that may affect the signature's validity.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 32",
+        "paragraph": "2"
+      },
+      "legalText": "The system used for validating the qualified electronic signature shall provide to \nthe relying party the correct result of the validation process and shall allow the \nrelying party to detect any security relevant issues.",
       "legalSourceInfo": null,
       "deadline": "2025-05-21",
       "applicableRoles": [
@@ -3055,6 +3154,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3106,6 +3207,8 @@
         "RP-REG-004",
         "RP-REG-005",
         "RP-REG-006",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3146,6 +3249,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3166,6 +3271,7 @@
         "RP-ESIG-005",
         "RP-ESIG-006",
         "RP-ESIG-007",
+        "RP-ESIG-007a",
         "RP-ESIG-008",
         "RP-ESIG-009",
         "RP-ESIG-010",
@@ -3207,6 +3313,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3244,6 +3352,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3281,6 +3391,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3316,6 +3428,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3351,6 +3465,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3386,6 +3502,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3421,6 +3539,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3456,6 +3576,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3491,6 +3613,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3526,6 +3650,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3562,6 +3688,8 @@
         "RP-REG-004",
         "RP-REG-005",
         "RP-REG-006",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3600,6 +3728,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3635,6 +3765,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3670,6 +3802,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3705,6 +3839,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3740,6 +3876,8 @@
         "RP-REG-003",
         "RP-REG-004",
         "RP-REG-005",
+        "RP-AUTH-001",
+        "RP-OPS-004",
         "RP-REG-007",
         "RP-REG-008",
         "RP-REG-009",
@@ -3830,11 +3968,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 87,
+    "totalRequirements": 90,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 87
+      "relying_party": 89
     }
   }
 }

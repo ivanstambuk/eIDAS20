@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 87
-**Schema Version:** 10
+**Current Requirements Count:** 90
+**Schema Version:** 11
 
 ---
 
@@ -362,80 +362,80 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 
 | Recital | Topic | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Recital 4 | Wallet objectives | ⬜ | | Cross-border access goals |
-| Recital 5 | User control and privacy | ⬜ | | Privacy principles |
-| Recital 6 | Voluntary use | ⬜ | | No mandatory use for users |
-| Recital 9 | High assurance level | ⬜ | | Security expectations |
-| Recital 11 | Wallet features | ⬜ | | Core functionality |
-| Recital 12 | Legal person wallets | ⬜ | | Business use |
-| Recital 13 | Free-of-charge provision | ⬜ | | Cost to natural persons |
-| Recital 14 | Electronic signatures | ⬜ | | Signature capabilities |
-| Recital 16 | Authentic sources | ⬜ | | EAA verification |
-| Recital 17 | DPIA requirements | ✅ | RP-INFO-001 | High-risk processing |
-| Recital 18 | User dashboard | ⬜ | | Transparency features |
-| Recital 19 | Transaction logs | ⬜ | | User visibility |
-| Recital 20 | Portability | ⬜ | | Data export rights |
-| Recital 21 | Suspension rights | ⬜ | | User control |
-| Recital 22 | Reporting mechanism | ⬜ | | User complaints |
-| Recital 23 | Certification | ⬜ | | Security certification |
-| Recital 24 | Open source | ⬜ | | Transparency |
-| Recital 25 | Interoperability | ⬜ | | Cross-border use |
-| Recital 26 | Security breach | ⬜ | | Incident handling |
-| Recital 27 | Peer review | ⬜ | | Scheme evaluation |
-| Recital 28 | Non-discrimination | ⬜ | | Alternative access |
-| Recital 29 | Accessibility | ⬜ | | Disability access |
-| Recital 30 | Online services | ⬜ | | Service scope |
-| Recital 31 | Offline authentication | ⬜ | | Proximity use |
-| Recital 32 | Age verification | ⬜ | | Derivation without disclosure |
-| Recital 33 | Member State cooperation | ⬜ | | Governance |
-| Recital 34 | Public sector acceptance | ⬜ | | Mandatory acceptance |
-| Recital 35 | Private sector acceptance | ⬜ | | Sectoral obligations |
-| Recital 36 | Microenterprises exemption | ⬜ | | SME exclusions |
-| Recital 37 | Very large platforms | ⬜ | | DSA obligations |
-| Recital 38 | Codes of conduct | ⬜ | | Voluntary adoption |
-| Recital 39 | Review clause | ⬜ | | Future assessment |
-| Recital 40 | Relying party registration | ⬜ | | Registration purpose |
-| Recital 41 | Registration transparency | ⬜ | | Public information |
-| Recital 42 | Data protection compliance | ⬜ | | GDPR alignment |
-| Recital 43 | RP authentication | ⬜ | | RP identification to users |
-| Recital 44 | Data request limitation | ⬜ | | No over-requesting |
-| Recital 45 | Invalid data requests | ⬜ | | Wallet protection |
-| Recital 46 | RP liability | ⬜ | | Damage responsibility |
-| Recital 47 | Unique identifier | ⬜ | | Cross-border matching |
-| Recital 48 | Liability framework | ⬜ | | Damage compensation |
-| Recital 49 | Trust services scope | ⬜ | | Service expansion |
-| Recital 50 | Non-qualified TSPs | ⬜ | | Lower tier services |
-| Recital 51 | TSP requirements | ⬜ | | Provider duties |
-| Recital 52 | Supervisory bodies | ⬜ | | Oversight |
-| Recital 53 | NIS2 alignment | ⬜ | | Cybersecurity |
-| Recital 54 | Qualified TSPs | ⬜ | | Higher tier |
-| Recital 55 | Remote identity proofing | ⬜ | | Verification methods |
+| Recital 4 | Wallet objectives | ➖ | | Policy context - no RP obligations |
+| Recital 5 | User control and privacy | ➖ | | User-focused - no direct RP obligations |
+| Recital 6 | Voluntary use | ➖ | | User choice - no RP obligations |
+| Recital 9 | High assurance level | ➖ | | Wallet provider focus |
+| Recital 11 | Wallet features | ➖ | | Wallet provider focus |
+| Recital 12 | Legal person wallets | ➖ | | Legal person user context |
+| Recital 13 | Free-of-charge provision | ➖ | | Member State duty |
+| Recital 14 | Electronic signatures | ➖ | | Wallet feature |
+| Recital 16 | Authentic sources | ➖ | | EAA issuer focus |
+| Recital 17 | DPIA requirements | ✅ | RP-INFO-001 | High-risk processing guidance |
+| Recital 18 | User dashboard | ➖ | | Wallet provider feature |
+| Recital 19 | Transaction logs | ➖ | | RP visibility to users - indirect |
+| Recital 20 | Portability | ➖ | | User right |
+| Recital 21 | Suspension rights | ➖ | | User control |
+| Recital 22 | Reporting mechanism | ➖ | | User complaints about RPs |
+| Recital 23 | Certification | ➖ | | Wallet certification |
+| Recital 24 | Open source | ➖ | | Wallet provider duty |
+| Recital 25 | Interoperability | ➖ | | Framework context |
+| Recital 26 | Security breach | ➖ | | Member State duty |
+| Recital 27 | Peer review | ➖ | | Member State duty |
+| Recital 28 | Non-discrimination | ✅ | RP-ACCEPT-* (related) | Alternative access must remain |
+| Recital 29 | Accessibility | ➖ | | Service providers generally |
+| Recital 30 | Online services | ➖ | | Service scope context |
+| Recital 31 | Offline authentication | ➖ | | Use case context |
+| Recital 32 | Age verification | ➖ | | Privacy feature - wallet focus |
+| Recital 33 | Member State cooperation | ➖ | | Governance |
+| Recital 34 | Public sector acceptance | ✅ | RP-ACCEPT-001 (related) | Mandatory acceptance context |
+| Recital 35 | Private sector acceptance | ✅ | RP-ACCEPT-002 (related) | Sectoral obligations context |
+| Recital 36 | Microenterprises exemption | ✅ | RP-ACCEPT-002 (related) | SME exclusions defined |
+| Recital 37 | Very large platforms | ✅ | RP-INFO-005 | DSA VLOP obligations |
+| Recital 38 | Codes of conduct | ➖ | | Voluntary adoption |
+| Recital 39 | Review clause | ➖ | | Commission duty |
+| Recital 40 | Relying party registration | ✅ | RP-REG-* (context) | Registration purpose explained |
+| Recital 41 | Registration transparency | ✅ | RP-REG-002 (context) | Public information about RPs |
+| Recital 42 | Data protection compliance | ✅ | RP-DATA-* (context) | GDPR alignment |
+| Recital 43 | RP authentication | ✅ | RP-REG-005 (context) | RP must identify to users |
+| Recital 44 | Data request limitation | ✅ | RP-REG-003, RP-DATA-001 (context) | No over-requesting |
+| Recital 45 | Invalid data requests | ➖ | | Wallet protection |
+| Recital 46 | RP liability | ➖ | | Liability context - MS law |
+| Recital 47 | Unique identifier | ➖ | | Cross-border matching context |
+| Recital 48 | Liability framework | ➖ | | General liability framework |
+| Recital 49 | Trust services scope | ➖ | | TSP context |
+| Recital 50 | Non-qualified TSPs | ➖ | | TSP context |
+| Recital 51 | TSP requirements | ➖ | | TSP duties |
+| Recital 52 | Supervisory bodies | ➖ | | Supervision context |
+| Recital 53 | NIS2 alignment | ➖ | | Cybersecurity alignment |
+| Recital 54 | Qualified TSPs | ➖ | | QTSP context |
+| Recital 55 | Remote identity proofing | ➖ | | TSP verification methods |
 | Recital 56 | Data minimization | ✅ | RP-INFO-002 | Proportionate requests |
 | Recital 57 | VLOPs acceptance | ✅ | RP-INFO-005 | Platform obligations |
-| Recital 58 | No tracking/profiling | ⬜ | | Privacy protection |
-| Recital 59 | Selective disclosure | ✅ | RP-INFO-004 | Privacy feature |
+| Recital 58 | No tracking/profiling | ➖ | | Wallet provider duty |
+| Recital 59 | Selective disclosure | ✅ | RP-INFO-004 | Privacy feature - RP must support |
 | Recital 60 | Pseudonyms | ✅ | RP-INFO-003 | Unless legally required |
-| Recital 61 | Zero-knowledge proofs | ⬜ | | Privacy-enhancing tech |
-| Recital 62 | E-signature legal effect | ⬜ | | Recognition |
-| Recital 63 | Advanced signatures | ⬜ | | Format recognition |
-| Recital 64 | Website authentication | ⬜ | | QWAC recognition |
-| Recital 65 | Browser obligations | ⬜ | | Certificate display |
-| Recital 66 | Electronic attestations | ⬜ | | EAA framework |
-| Recital 67 | Public sector EAA | ⬜ | | Authentic sources |
-| Recital 68 | EAA interoperability | ⬜ | | Cross-border use |
-| Recital 69 | Electronic archiving | ⬜ | | Preservation |
-| Recital 70 | Electronic ledgers | ⬜ | | DLT recognition |
-| Recital 71 | GDPR compliance | ⬜ | | Data protection |
-| Recital 72 | NIS2 consistency | ⬜ | | Security framework |
-| Recital 73 | Penalties | ⬜ | | Enforcement |
-| Recital 74 | EDPS consultation | ⬜ | | Privacy review |
-| Recital 75 | Regular review | ⬜ | | Commission updates |
+| Recital 61 | Zero-knowledge proofs | ➖ | | Technology context |
+| Recital 62 | E-signature legal effect | ➖ | | Legal effect - not RP-specific duty |
+| Recital 63 | Advanced signatures | ➖ | | Format recognition context |
+| Recital 64 | Website authentication | ➖ | | QWAC browser context |
+| Recital 65 | Browser obligations | ➖ | | Browser provider duty |
+| Recital 66 | Electronic attestations | ➖ | | EAA framework context |
+| Recital 67 | Public sector EAA | ➖ | | EAA issuer context |
+| Recital 68 | EAA interoperability | ➖ | | Framework context |
+| Recital 69 | Electronic archiving | ➖ | | TSP archiving context |
+| Recital 70 | Electronic ledgers | ➖ | | DLT context |
+| Recital 71 | GDPR compliance | ➖ | | General compliance context |
+| Recital 72 | NIS2 consistency | ➖ | | Security framework context |
+| Recital 73 | Penalties | ➖ | | Enforcement - MS focus |
+| Recital 74 | EDPS consultation | ➖ | | Procedure |
+| Recital 75 | Regular review | ➖ | | Commission duty |
 
 ### Recitals from Consolidated 910/2014 (Original Recitals 1-76)
 
 | Recital | Topic | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Recital 1-76 | Original eIDAS recitals | ⬜ | | Review alongside amending |
+| Recital 1-76 | Original eIDAS recitals | ➖ | | Historical context - mostly TSP/MS focused |
 
 ---
 
@@ -454,8 +454,8 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 - **Pending Deeper Review:** 2 (2024/2980, 2024/2981 - may have indirect relevance)
 
 ### Current Requirements
-- **Total in relying-party.yaml:** 87
-- **Binding (Article-based):** 82
+- **Total in relying-party.yaml:** 90
+- **Binding (Article-based):** 85
 - **Informative (Recital-based):** 5
 
 ---
