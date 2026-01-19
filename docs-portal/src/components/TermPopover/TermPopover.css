@@ -215,6 +215,15 @@
     text-decoration: underline;
 }
 
+/* "+X more sources" text when sources are truncated */
+.term-popover-more {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    padding: var(--space-2);
+    text-align: center;
+    font-style: italic;
+}
+
 /* Dark scrollbar for sources overflow */
 .term-popover-sources::-webkit-scrollbar {
     width: 4px;

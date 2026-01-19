@@ -1424,6 +1424,11 @@ a:focus-visible,
   text-decoration: underline;
 }
 
+/* Terminology filter bar (DEC-086) - styles are inline, this is a semantic hook */
+.terminology-filter-bar {
+  /* All styles applied via inline JSX - this class exists for CSS validation */
+}
+
 /* Reduced motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
 
