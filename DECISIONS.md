@@ -1527,3 +1527,37 @@ Standardize ALL slugs to `{year}-{number}` format, matching ELI URI structure.
 | `docs-portal/src/components/Layout/Sidebar.jsx` | Updated nav link |
 | `docs-portal/src/pages/Home.jsx` | Updated quick links |
 
+
+
+---
+
+## DEC-087: Exclude Original 2014 eIDAS Recitals from RCA Audits
+
+**Date:** 2026-01-19  
+**Status:** Accepted  
+
+**Context:**  
+The consolidated eIDAS Regulation (910/2014 as amended by 2024/1183) contains two sets of recitals:
+1. **Original 2014 recitals (1-76)** — From the initial eIDAS Regulation
+2. **2024/1183 amendment recitals (1-75)** — From the amending regulation introducing EUDI Wallets
+
+The 2014 recitals predate the EUDI Wallet framework entirely. They provide context for the original eID schemes and trust services framework but contain no content relevant to wallet providers, relying parties, or other wallet-related roles.
+
+**Decision:** Exclude original 2014 recitals from RCA audit trackers.
+
+**Rationale:**
+
+1. **Pre-wallet framework** — The 2014 recitals were written before EUDI Wallets were conceived
+2. **Not imported** — These recitals are not imported into the documentation portal
+3. **Non-binding** — Recitals are interpretive guidance, not binding obligations
+4. **Amendment recitals suffice** — The 2024/1183 recitals provide all necessary context for wallet provisions
+
+**Affected Files:**
+
+| File | Change |
+|------|--------|
+| `AUDIT_TRACKER_WP.md` | 2014 recitals section removed |
+| `AUDIT_TRACKER_RP.md` | 2014 recitals section removed |
+
+**Note:** Both trackers now include an explicit note explaining this exclusion.
+
