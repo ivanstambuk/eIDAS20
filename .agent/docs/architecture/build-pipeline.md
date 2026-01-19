@@ -22,6 +22,28 @@ build-search-index.js → search-index.json
 build-embeddings.js → embeddings.json
 ```
 
+## Formex XML File Conventions
+
+EUR-Lex Formex ZIP archives contain multiple XML files with specific naming conventions:
+
+| Pattern | Example | Content |
+|---------|---------|---------|
+| `.000101.fmx.xml` | `L_202402977EN.000101.fmx.xml` | **Main document** (preamble, recitals, articles) |
+| `.000201.fmx.xml` | `L_202402981EN.000201.fmx.xml` | First annex (if separate) |
+| `.000301.fmx.xml` | `L_202402981EN.000301.fmx.xml` | Second annex |
+| `.000701.fmx.xml` | `L_202402977EN.000701.fmx.xml` | Table-heavy annex (higher numbers) |
+| `.doc.fmx.xml` | `L_202402977EN.doc.fmx.xml` | Document metadata (skip) |
+| `.toc.fmx.xml` | `L_202402977EN.toc.fmx.xml` | Table of contents (skip) |
+
+### Merge Logic in `eurlex_formex.py`
+
+1. **Main document**: Always use `000101` (lowest number = main body)
+2. **Annexes**: Any `.000[2-9]XX.` files (000201, 000301, 000701, etc.)
+3. **Skip**: Metadata files (`.doc.`, `.toc.`)
+4. **Merge**: Main document + all annexes → single combined Markdown
+
+⚠️ **Critical**: The main document may NOT contain annexes. Tables often appear only in separate annex files (000701). Always merge all files to get complete content.
+
 ## Script Dependencies
 
 | Script | Inputs | Outputs | Validates |
