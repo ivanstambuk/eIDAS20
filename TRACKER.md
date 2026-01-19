@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-19 18:45 CET |
-| **Session State** | V2.0 — RCA Audit Complete (Article-by-Article Review) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 87 RP requirements) |
+| **Last Updated** | 2026-01-19 18:50 CET |
+| **Session State** | V2.1 — RCA Gap Analysis Complete (90 Requirements) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 90 RP requirements) |
 | **Next Action** | RCA Role Expansion: Add wallet_provider + trust_service_provider requirements |
 
 ---
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-19 18:50 | **RCA Gap Analysis + Recitals Review**: Cross-referenced articles against existing relying-party.yaml. Found 3 missing requirements: RP-AUTH-001 (Art 5b(9) auth responsibility), RP-OPS-004 (Art 5b(10) intermediary data prohibition), RP-ESIG-007a (Art 32(2) validation security). Reviewed all 75 recitals from 2024/1183 (18 RP-relevant, 57 non-RP). Schema v11, 90 total requirements. Renamed AUDIT_TRACKER.md → AUDIT_TRACKER_RP.md for role-specific tracking. |
 | 2026-01-19 18:30 | **RCA Systematic Audit Complete**: Comprehensive review of all 29 implementing acts + consolidated regulation. Added 20 new RP requirements (67→87), schema version 10. Key acts: 2024/2977 (PID/EAA — 6 reqs), 2024/2979 (Integrity — 5 reqs), 2025/846 (Cross-Border Identity — 6 reqs), 2025/847 (Security — 3 reqs). 21 acts confirmed N/A (TSP/infrastructure). Created AUDIT_TRACKER.md with article-level mapping. Next: Expand to wallet_provider + trust_service_provider roles. |
 | 2026-01-19 00:25 | **Terminology Filtering (DEC-086)**: 3-dimensional filtering system for 107 terms. Dimensions: Document Type (eIDAS, Implementing Acts, Recommendations, EU Law), Role (Holder, PID Provider, Wallet Provider, QTSP, CABs, etc.), Domain (Cryptography, Identity, Attestation, Governance, Wallet Ecosystem). Config-based extensibility (terminology-filters.yaml). Exhaustive manual curation of all 107 terms with roles (term-roles.json) and domains (term-domains.json). FilterDropdown component with glassmorphism styling. Multi-select logic with clear all. No badges on term cards (filtering only). Commit: `0b82505`. |
 | 2026-01-18 22:20 | **AI Selection Matrix Complete (DEC-070)**: All 4 phases implemented. Phase 1: Cache detection via `hasModelInCache`. Phase 2: localStorage persistence. Phase 3: Model selector UI (cards, badges, dynamic button). Phase 4: Polish (staggered fade-in, glow effects, hover states). 4 commits: `c6cc4a4`, `4a6a070`, `48febe3`, `66bf780`. |

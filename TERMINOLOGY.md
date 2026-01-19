@@ -395,6 +395,20 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 
 ---
 
+## Regulatory Compliance Analyzer (RCA)
+
+| Term | Description |
+|------|-------------|
+| **RCA** | Regulatory Compliance Analyzer. The portal feature that extracts, organizes, and tracks compliance requirements from eIDAS legal sources. |
+| **Gap Analysis** | The process of cross-referencing legal articles against existing requirements to identify missing obligations. A mandatory step in the `/rca-audit` workflow. |
+| **Binding Type** | Classification of requirement source: `mandatory` (from articles — legally binding) or `informative` (from recitals — interpretive guidance). |
+| **Role-Specific Tracker** | An audit tracker file scoped to a single role. Naming convention: `AUDIT_TRACKER_{ROLE}.md` (e.g., `AUDIT_TRACKER_RP.md` for Relying Party). |
+| **Requirement ID** | The unique identifier for a compliance requirement. Format: `{ROLE_PREFIX}-{CATEGORY}-{NUMBER}` (e.g., `RP-REG-001`, `WP-CERT-003`, `TSP-QUAL-002`). |
+| **Use Case** | A specific scenario where a requirement applies (e.g., `age-verification`, `public_service`, `esignature`). Requirements tagged with `useCases: all` apply universally. |
+| **Schema Version** | The version number of the requirements YAML structure. Incremented when requirements are added or modified. |
+
+---
+
 ## See Also
 
 - [DECISIONS.md](DECISIONS.md) - Architectural and design decisions

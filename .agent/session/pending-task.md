@@ -10,59 +10,48 @@
 
 ## Completed RCA Work (RP Requirements)
 
-- **87 RP requirements** extracted from 6 implementing acts + consolidated regulation
-- **Schema version 10** with 8 categories
-- **AUDIT_TRACKER.md** fully updated - ALL articles reviewed article-by-article
-- Main regulation: 70+ articles reviewed, 18 with RP requirements, 52+ with no RP obligations
-- Annexes I-VII: All reviewed, TSP/issuer focus, no RP obligations
+- **90 RP requirements** extracted (schema v11)
+- **AUDIT_TRACKER_RP.md** fully updated - ALL articles + recitals reviewed
+- Gap analysis found 3 new requirements:
+  - RP-AUTH-001: Art 5b(9) authentication responsibility
+  - RP-OPS-004: Art 5b(10) intermediary data storage prohibition
+  - RP-ESIG-007a: Art 32(2) validation security detection
+- Recitals: 75 reviewed, 18 RP-relevant, 57 non-RP
 
 ## Key Files
 
-- `docs-portal/config/rca/requirements/relying-party.yaml` — Template structure (87 reqs)
-- `docs-portal/config/rca/AUDIT_TRACKER.md` — Complete article-by-article audit status
-- `docs-portal/scripts/build-rca.js` — Build script (supports multi-file)
-- `docs-portal/src/pages/ComplianceAssessment.jsx` — UI (role selector already exists)
-- `02_implementing_acts/` — Source documents (29 acts)
-- `01_regulation/2014_910_eIDAS_Consolidated/` — Main regulation
+- `docs-portal/config/rca/requirements/relying-party.yaml` — Template (90 reqs)
+- `docs-portal/config/rca/AUDIT_TRACKER_RP.md` — Complete RP audit (renamed)
+- `docs-portal/scripts/build-rca.js` — Build script (multi-role support)
+- `docs-portal/src/pages/ComplianceAssessment.jsx` — UI (role selector exists)
 
 ## Wallet Provider Requirements Sources
 
-Priority implementing acts for wallet_provider role:
-1. **2024/2979** (Integrity & Core Functionalities) - Art 3-14 are wallet-focused
-2. **2024/2981** (Certification) - Entire act about wallet certification
-3. **2024/2977** (PID/EAA) - Art 3-4 issuance requirements
-4. **2024/2982** (Protocols) - Art 4 issuance protocols
-5. **Main Regulation Art 5a-5e** - Core EUDIW requirements
+Priority for wallet_provider role:
+1. **Art 5a** - Core EUDIW requirements (paras 1-24)
+2. **2024/2979** (Integrity) - Art 3-14 wallet-focused
+3. **2024/2981** (Certification) - Wallet certification
+4. **2024/2977** (PID/EAA) - Art 3-4 issuance
+5. **2024/2982** (Protocols) - Art 4 issuance protocols
 
-## Trust Service Provider Requirements Sources
+## TSP Requirements Sources
 
-Priority sources for trust_service_provider role:
-1. **Main Regulation Art 19-24a** - TSP/QTSP obligations
-2. **2025/2530** (QTSP Requirements) - Detailed TSP standards
-3. **2025/1569** (EAA/Attributes) - EAA issuance requirements
-4. **2025/1942** (Validation Services) - QVSP standards
-5. **Trust service implementing acts** (2025/1566-1572, 2025/1929-1946)
+Priority for trust_service_provider role:
+1. **Art 19-24a** - TSP/QTSP obligations
+2. **2025/2530** (QTSP Requirements) - Detailed standards
+3. **Trust service acts** (2025/1566-1572, 2025/1929-1946)
 
-## Implementation Steps
+## Implementation Pattern
 
-1. Create `wallet-provider.yaml` following relying-party.yaml structure
-2. Audit 2024/2979 articles for wallet_provider obligations
-3. Audit 2024/2981 for certification requirements
-4. Update `build-rca.js` to load multiple role files (already supports this)
-5. Test role filtering in UI
-
-## Context Notes
-
-- `build-rca.js` already loads all .yaml files from requirements/ dir
-- UI role selector supports multiple roles
-- Use same category structure where applicable
-- `bindingType: mandatory` for articles, `informative` for recitals
-- Each requirement needs: id, category, requirement, explanation, legalBasis, legalText, deadline, roles, useCases
+Follow `relying-party.yaml` structure:
+- id: WP-REG-001 / TSP-REG-001
+- category, requirement, explanation, legalBasis, legalText, deadline, roles, useCases
+- Create AUDIT_TRACKER_WP.md / AUDIT_TRACKER_TSP.md
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
 # Visit http://localhost:5177/#/compliance
-# Then: Check role selector dropdown for new roles
+npm run build:rca  # Rebuild after adding requirements
 ```

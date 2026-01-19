@@ -385,6 +385,7 @@ curl -s http://localhost:5173/eIDAS20/ > /dev/null && echo "✅ Dev server runni
 | `/init` | Start of session | Prime agent with project context |
 | `/handover` | End of session | Generate handover summary |
 | `/retro` | After milestones | Run structured retrospective |
+| `/rca-audit` | RCA work | Audit legal docs for role-specific requirements |
 
 See `.agent/workflows/` for detailed instructions.
 
