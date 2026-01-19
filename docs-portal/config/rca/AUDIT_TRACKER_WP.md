@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Wallet Provider requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 43
-**Schema Version:** 2
+**Current Requirements Count:** 105
+**Schema Version:** 4
 **Verification Status:** 🔍 AUDIT IN PROGRESS
 
 ---
@@ -215,25 +215,25 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | |
-| Art. 3 | Wallet unit integrity | ⬜ | | **PRIMARY SOURCE** |
-| Art. 4 | Wallet instances | ⬜ | | **PRIMARY SOURCE** |
-| Art. 5 | Wallet secure cryptographic applications | ⬜ | | **PRIMARY SOURCE** |
-| Art. 6 | Wallet unit authenticity and validity | ⬜ | | **PRIMARY SOURCE** |
-| Art. 7 | Revocation of wallet unit attestations | ⬜ | | **PRIMARY SOURCE** |
-| Art. 8 | Formats for PID and EAA | ⬜ | | **PRIMARY SOURCE** |
-| Art. 9 | Transaction logs | ⬜ | | **PRIMARY SOURCE** |
-| Art. 10 | Embedded disclosure | ⬜ | | |
-| Art. 11 | Qualified e-signatures and seals | ⬜ | | **PRIMARY SOURCE** |
-| Art. 12 | Signature creation applications | ⬜ | | **PRIMARY SOURCE** |
-| Art. 13 | Data export and portability | ⬜ | | **PRIMARY SOURCE** |
-| Art. 14 | Pseudonyms | ⬜ | | **PRIMARY SOURCE** |
-| Annex I | Standards for WSCA | ⬜ | | **PRIMARY SOURCE** |
-| Annex II | Data format standards | ⬜ | | **PRIMARY SOURCE** |
-| Annex III | Embedded disclosure policies | ⬜ | | |
-| Annex IV | Signature formats | ⬜ | | **PRIMARY SOURCE** |
-| Annex V | Pseudonym specifications | ⬜ | | **PRIMARY SOURCE** |
+| Art. 1 | Subject matter and scope | ➖ | | Scope definition only |
+| Art. 2 | Definitions | ➖ | | Term definitions only |
+| Art. 3 | Wallet unit integrity | ✅ | WP-INT-001, WP-INT-002 | User auth required, WUA signing |
+| Art. 4 | Wallet instances | ✅ | WP-INT-003, WP-INT-004, WP-INT-005 | WSCD usage, secure comms |
+| Art. 5 | Wallet secure cryptographic applications | ✅ | WP-WSCA-001 to WP-WSCA-009 | 9 WSCA requirements |
+| Art. 6 | Wallet unit authenticity and validity | ✅ | WP-WUA-001 to WP-WUA-005 | 5 WUA requirements |
+| Art. 7 | Revocation of wallet unit attestations | ✅ | WP-REV-001 to WP-REV-004 | 4 revocation requirements |
+| Art. 8 | Formats for PID and EAA | ✅ | WP-FMT-001 | ISO/W3C format support |
+| Art. 9 | Transaction logs | ✅ | WP-LOG-001 to WP-LOG-007 | 7 logging requirements |
+| Art. 10 | Embedded disclosure | ✅ | WP-EDP-001 to WP-EDP-003 | 3 disclosure requirements |
+| Art. 11 | Qualified e-signatures and seals | ✅ | WP-SIG-001 to WP-SIG-003 | 3 QES requirements |
+| Art. 12 | Signature creation applications | ✅ | WP-SCA-001, WP-SCA-002 | 2 SCA requirements |
+| Art. 13 | Data export and portability | ✅ | WP-PORT-001 | Migration support |
+| Art. 14 | Pseudonyms | ✅ | WP-PSEU-001, WP-PSEU-002 | 2 pseudonym requirements |
+| Annex I | Standards for WSCA | ✅ | Referenced in WP-WSCA-009 | GlobalPlatform, GSMA |
+| Annex II | Data format standards | ✅ | Referenced in WP-FMT-001 | ISO 18013-5, W3C VC |
+| Annex III | Embedded disclosure policies | ✅ | Referenced in WP-EDP-001 | Policy types |
+| Annex IV | Signature formats | ✅ | Referenced in WP-SCA-001/002 | XAdES, JAdES, CAdES, CSC |
+| Annex V | Pseudonym specifications | ✅ | Referenced in WP-PSEU-001 | WebAuthn |
 
 ### 2024/2980 - Notifications to the Commission
 
@@ -250,37 +250,37 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | wallet solution defined |
-| Art. 3 | Establishment of national certification schemes | ⬜ | | |
-| Art. 4 | General requirements | ⬜ | | |
-| Art. 5 | Incident and vulnerability management | ⬜ | | **Wallet provider duties** |
-| Art. 6 | Maintenance of national certification schemes | ⬜ | | |
-| Art. 7 | General requirements (scheme owners) | ⬜ | | |
-| Art. 8 | General requirements (providers) | ⬜ | | **PRIMARY SOURCE** |
-| Art. 9 | General requirements (CABs) | ⬜ | | |
-| Art. 10 | Subcontracting | ⬜ | | |
-| Art. 11 | Notification to supervisory body | ⬜ | | |
-| Art. 12 | Incident and vulnerability management (CABs) | ⬜ | | |
-| Art. 13 | Evaluation activities | ⬜ | | |
-| Art. 14 | Certification activities | ⬜ | | |
-| Art. 15 | Complaints and appeals | ⬜ | | |
-| Art. 16 | Surveillance activities | ⬜ | | |
-| Art. 17 | Consequences of non-compliance | ⬜ | | |
-| Art. 18 | Certification lifecycle | ⬜ | | |
-| Art. 19 | Retention of records | ⬜ | | |
-| Art. 20 | Protection of information | ⬜ | | |
-| Art. 21 | Transition to EU cybersecurity scheme | ⬜ | | |
-| Art. 22 | Entry into force | ⬜ | | |
-| Annex I | Risk register | ⬜ | | Threat descriptions |
-| Annex II | Certification schemes | ⬜ | | |
-| Annex III | Functional requirements | ⬜ | | **PRIMARY SOURCE - wallet functional reqs** |
-| Annex IV | Evaluation activities | ⬜ | | |
-| Annex V | Public security info | ⬜ | | **Wallet provider transparency** |
-| Annex VI | Dependency analysis | ⬜ | | |
-| Annex VII | Certificate content | ⬜ | | |
-| Annex VIII | Certification reports | ⬜ | | |
-| Annex IX | Evaluation requirements | ⬜ | | |
+| Art. 1 | Subject matter and scope | ➖ | | Scope definition |
+| Art. 2 | Definitions | ➖ | | Term definitions |
+| Art. 3 | Establishment of national certification schemes | ➖ | | MS/Scheme Owner duties |
+| Art. 4 | General requirements | ➖ | | Scheme requirements |
+| Art. 5 | Incident and vulnerability management | ✅ | WP-VULN-001 to WP-VULN-007 | 7 vulnerability mgmt requirements |
+| Art. 6 | Maintenance of national certification schemes | ➖ | | Scheme Owner duties |
+| Art. 7 | General requirements (scheme owners) | ➖ | | Scheme Owner duties |
+| Art. 8 | General requirements (providers) | ✅ | WP-CSEC-001 to WP-CSEC-005 | 5 security criteria requirements |
+| Art. 9 | General requirements (CABs) | ➖ | | CAB duties |
+| Art. 10 | Subcontracting | ➖ | | CAB duties |
+| Art. 11 | Notification to supervisory body | ➖ | | CAB duties |
+| Art. 12 | Incident and vulnerability management (CABs) | ➖ | | CAB duties |
+| Art. 13 | Evaluation activities | ➖ | | CAB duties |
+| Art. 14 | Certification activities | ➖ | | CAB duties |
+| Art. 15 | Complaints and appeals | ➖ | | Scheme procedures |
+| Art. 16 | Surveillance activities | ➖ | | CAB duties |
+| Art. 17 | Consequences of non-compliance | ➖ | | Scheme procedures |
+| Art. 18 | Certification lifecycle | ➖ | | Scheme procedures |
+| Art. 19 | Retention of records | ✅ | WP-REC-001, WP-REC-002 | 2 recordkeeping reqs |
+| Art. 20 | Protection of information | ✅ | WP-CONF-001 | Confidentiality |
+| Art. 21 | Transition to EU cybersecurity scheme | ➖ | | Future transition |
+| Art. 22 | Entry into force | ➖ | | Dates |
+| Annex I | Risk register | ➖ | | Threat taxonomy (ref only) |
+| Annex II | Certification schemes | ➖ | | Scheme references |
+| Annex III | Functional requirements | ✅ | Referenced by Art. 8 | Cross-refs 2024/2979, 2024/2982, 2024/2977 |
+| Annex IV | Evaluation activities | ➖ | | CAB evaluation methods |
+| Annex V | Public security info | ✅ | WP-PUB-001, WP-PUB-002 | 2 transparency requirements |
+| Annex VI | Dependency analysis | ➖ | | Evaluation methodology |
+| Annex VII | Certificate content | ➖ | | Certificate format |
+| Annex VIII | Certification reports | ➖ | | Report format |
+| Annex IX | Evaluation requirements | ➖ | | Evaluation lifecycle |
 
 ### 2024/2982 - Protocols and Interfaces
 

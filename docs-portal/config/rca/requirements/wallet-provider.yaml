@@ -15,7 +15,7 @@
 # AUDIT: 2026-01-19 - Initial file created. Pending systematic audit.
 # Schema version 1 - Initial structure
 
-schemaVersion: 2
+schemaVersion: 4
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1006,3 +1006,1218 @@ requirements:
     roles:
       - wallet_provider
     useCases: all
+
+  # ============================================================================
+  # WALLET UNIT INTEGRITY (from 2024/2979)
+  # Source: Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-INT-001
+    category: security
+    requirement: "Require user authentication before wallet functionality access"
+    explanation: |
+      Wallet units must not perform any Article 5a(4) functionality except 
+      user authentication to access the wallet until the user has been 
+      successfully authenticated.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Wallet units shall not perform any functionality listed in Article 5a(4) 
+      of Regulation (EU) No 910/2014, except wallet user authentication to 
+      access the wallet unit, until the wallet unit has successfully 
+      authenticated the wallet user.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INT-002
+    category: security
+    requirement: "Sign or seal wallet unit attestations"
+    explanation: |
+      Wallet providers must sign or seal at least one wallet unit attestation 
+      per wallet unit, using a certificate from the trusted list.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall, for each wallet unit, sign or seal, at least 
+      one wallet unit attestation compliant with the requirements laid down 
+      in Article 6. The certificate used to sign or seal the wallet unit 
+      attestation shall be issued under a certificate listed in the trusted 
+      list referred to in Implementing Regulation (EU) 2024/2980.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INT-003
+    category: security
+    requirement: "Use wallet secure cryptographic device for critical assets"
+    explanation: |
+      Wallet instances must use at least one wallet secure cryptographic 
+      device (WSCD) to manage critical assets.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Wallet instances shall use at least one wallet secure cryptographic 
+      device to manage critical assets.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INT-004
+    category: security
+    requirement: "Ensure secure communication between wallet instances and WSCA"
+    explanation: |
+      Wallet providers must ensure integrity, authenticity and confidentiality 
+      of the communication between wallet instances and wallet secure 
+      cryptographic applications.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall ensure integrity, authenticity and confidentiality 
+      of the communication between wallet instances and wallet secure 
+      cryptographic applications.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INT-005
+    category: security
+    requirement: "Perform critical asset operations per assurance level high requirements"
+    explanation: |
+      Where critical assets relate to performing eID at assurance level high, 
+      wallet cryptographic operations must be performed per Implementing 
+      Regulation 2015/1502.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "3"
+    legalText: |
+      Where critical assets relate to performing electronic identification 
+      at assurance level high, the wallet cryptographic operations or other 
+      operations processing critical assets shall be performed in accordance 
+      with the requirements for the characteristics and design of electronic 
+      identification means at assurance level high, as set out in Commission 
+      Implementing Regulation (EU) 2015/1502.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # WALLET SECURE CRYPTOGRAPHIC APPLICATION (from 2024/2979)
+  # Source: Article 5 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-WSCA-001
+    category: security
+    requirement: "WSCA must perform crypto operations only after user authentication"
+    explanation: |
+      Wallet secure cryptographic applications must only perform wallet 
+      cryptographic operations involving critical assets (other than user auth) 
+      when they have successfully authenticated users.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(a)"
+    legalText: |
+      Wallet providers shall ensure that wallet secure cryptographic applications: 
+      (a) perform wallet cryptographic operations involving critical assets other 
+      than those needed for the wallet unit to authenticate the wallet user only 
+      in cases where those applications have successfully authenticated wallet users.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-002
+    category: security
+    requirement: "WSCA must authenticate users per assurance level high requirements"
+    explanation: |
+      When performing eID at assurance level high, WSCA must authenticate 
+      users in accordance with Implementing Regulation 2015/1502.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(b)"
+    legalText: |
+      [...] (b) where they authenticate wallet users in the context of 
+      performing electronic identification at assurance level high; perform 
+      authentication of wallet users, in accordance with, the requirements 
+      for the characteristics and design of electronic identification means 
+      at assurance level high, as set out in Implementing Regulation (EU) 2015/1502.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-003
+    category: security
+    requirement: "WSCA must support secure key generation"
+    explanation: |
+      Wallet secure cryptographic applications must be able to securely 
+      generate new cryptographic keys.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(c)"
+    legalText: |
+      [...] (c) are able to securely generate new cryptographic keys.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-004
+    category: security
+    requirement: "WSCA must support secure erasure of critical assets"
+    explanation: |
+      Wallet secure cryptographic applications must be able to perform 
+      secure erasure of critical assets.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(d)"
+    legalText: |
+      [...] (d) are able to perform secure erasure of critical assets.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-005
+    category: security
+    requirement: "WSCA must support proof of possession of private keys"
+    explanation: |
+      Wallet secure cryptographic applications must be able to generate 
+      a proof of possession of private keys.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(e)"
+    legalText: |
+      [...] (e) are able to generate a proof of possession of private keys.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-006
+    category: security
+    requirement: "WSCA must protect private keys during their lifetime"
+    explanation: |
+      Wallet secure cryptographic applications must protect private keys 
+      generated by those applications during the existence of the keys.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(f)"
+    legalText: |
+      [...] (f) protect the private keys generated by those wallet secure 
+      cryptographic applications during the existence of the keys.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-007
+    category: security
+    requirement: "WSCA must comply with assurance level high requirements"
+    explanation: |
+      Wallet secure cryptographic applications must comply with assurance 
+      level high requirements per Implementing Regulation 2015/1502.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(g)"
+    legalText: |
+      [...] (g) comply with the requirements for the characteristics and 
+      design of electronic identification means at assurance level high, 
+      as set out in Implementing Regulation (EU) 2015/1502.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-008
+    category: security
+    requirement: "WSCA must be exclusive executor of critical operations"
+    explanation: |
+      Wallet secure cryptographic applications must be the only components 
+      able to execute wallet cryptographic operations and operations with 
+      critical assets for assurance level high eID.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "1(h)"
+    legalText: |
+      [...] (h) are the only components able to execute wallet cryptographic 
+      operations and any other operation with critical assets in the context 
+      of performing electronic identification at assurance level high.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WSCA-009
+    category: interoperability
+    requirement: "Use Annex I standards for embedded secure element WSCA"
+    explanation: |
+      Where wallet providers provide a WSCA to an embedded secure element, 
+      they must base technical solutions on Annex I standards (GlobalPlatform, 
+      GSMA) or equivalent.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      Where wallet providers decide to provide a wallet secure cryptographic 
+      application to an embedded secure element these wallet providers shall 
+      base their technical solution on the technical specifications listed 
+      in Annex I or on other equivalent technical specifications.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # WALLET UNIT ATTESTATION (from 2024/2979)
+  # Source: Article 6 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-WUA-001
+    category: operational
+    requirement: "Ensure each wallet unit contains wallet unit attestations"
+    explanation: |
+      Wallet providers must ensure that each wallet unit contains wallet 
+      unit attestations for verifying authenticity and validity.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that each wallet unit contains wallet 
+      unit attestations.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WUA-002
+    category: security
+    requirement: "Protect WUA private keys with WSCD"
+    explanation: |
+      Wallet unit attestations must contain public keys with corresponding 
+      private keys protected by a wallet secure cryptographic device.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall ensure that the wallet unit attestations 
+      referred to in paragraph 1 contain public keys and that the 
+      corresponding private keys are protected by a wallet secure 
+      cryptographic device.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WUA-003
+    category: operational
+    requirement: "Inform users of rights and obligations for wallet unit"
+    explanation: |
+      Wallet providers must inform wallet users of their rights and 
+      obligations in relation to their wallet unit.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: "3(a)"
+    legalText: |
+      Wallet providers shall: (a) inform wallet users of their rights 
+      and obligations in relation to their wallet unit.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WUA-004
+    category: security
+    requirement: "Provide independent user identification/authentication mechanisms"
+    explanation: |
+      Wallet providers must provide mechanisms, independent of wallet units, 
+      for the secure identification and authentication of wallet users.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: "3(b)"
+    legalText: |
+      [...] (b) provide mechanisms, independent of wallet units, for the 
+      secure identification and authentication of wallet users.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-WUA-005
+    category: operational
+    requirement: "Enable user-requested revocation of WUA"
+    explanation: |
+      Wallet providers must ensure users can request revocation of their 
+      wallet unit attestations using the independent authentication mechanisms.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: "3(c)"
+    legalText: |
+      [...] (c) ensure wallet users have the right to request revocation 
+      of their wallet unit attestations, using the authentication mechanisms 
+      referred to in point (b).
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # REVOCATION OF WALLET UNIT ATTESTATIONS (from 2024/2979)
+  # Source: Article 7 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-REV-001
+    category: operational
+    requirement: "Be sole entity capable of revoking own WUAs"
+    explanation: |
+      Wallet providers must be the only entities capable of revoking 
+      wallet unit attestations for wallet units that they have provided.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 7"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall be the only entities capable of revoking 
+      wallet unit attestations for wallet units that they have provided.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-REV-002
+    category: operational
+    requirement: "Publish revocation policy with conditions and timeframe"
+    explanation: |
+      Wallet providers must establish a publicly available policy 
+      specifying conditions and timeframe for revocation of WUAs.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 7"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall establish a publicly available policy 
+      specifying the conditions and the timeframe for the revocation 
+      of wallet unit attestations.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-REV-003
+    category: operational
+    requirement: "Notify users of WUA revocation within 24 hours"
+    explanation: |
+      When WUAs are revoked, wallet providers must inform affected users 
+      within 24 hours, including reason and consequences, in clear language.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 7"
+      paragraph: "3"
+    legalText: |
+      Where wallet providers have revoked wallet unit attestations, they 
+      shall inform affected wallet users within 24 hours of the revocation 
+      of their wallet units, including the reason for the revocation and 
+      the consequences for the wallet user. This information shall be 
+      provided in a manner that is concise, easily accessible and using 
+      clear and plain language.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-REV-004
+    category: operational
+    requirement: "Publish WUA validity status in privacy-preserving manner"
+    explanation: |
+      When WUAs are revoked, providers must make validity status publicly 
+      available in a privacy-preserving manner and describe its location 
+      in the WUA.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 7"
+      paragraph: "4"
+    legalText: |
+      Where wallet providers have revoked wallet unit attestations, they 
+      shall make publicly available the validity status of the wallet 
+      unit attestation in a privacy preserving manner and describe the 
+      location of that information in the wallet unit attestation.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # DATA FORMATS (from 2024/2979)
+  # Source: Article 8 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-FMT-001
+    category: interoperability
+    requirement: "Support ISO/IEC 18013-5 and W3C VC data formats"
+    explanation: |
+      Wallet providers must ensure wallet solutions support PID and EAA 
+      issued in compliance with Annex II standards (ISO mDL, W3C VC).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the 
+      usage of person identification data and electronic attestations 
+      of attributes issued in compliance with the list of standards 
+      set out in Annex II.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # TRANSACTION LOGGING (from 2024/2979)
+  # Source: Article 9 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-LOG-001
+    category: functionality
+    requirement: "Log all transactions including incomplete ones"
+    explanation: |
+      Wallet instances must log all transactions with relying parties 
+      and other wallet units, including signing/sealing, regardless of 
+      completion status.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "1"
+    legalText: |
+      Irrespective of whether or not a transaction is successfully 
+      completed, wallet instances shall log all transactions with 
+      wallet-relying parties and other wallet units, including 
+      electronic signing and sealing.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-002
+    category: functionality
+    requirement: "Include mandatory log content (time, RP info, data types)"
+    explanation: |
+      Transaction logs must include time/date, RP name/contact/identifier/
+      Member State, data types requested/presented, and reason for 
+      non-completion if applicable.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "2"
+    legalText: |
+      The logged information shall at least contain: (a) the time and 
+      date of the transaction; (b) the name, contact details, and the 
+      unique identifier of the corresponding wallet-relying party and 
+      the Member State in which that wallet-relying party is established, 
+      or in case of other wallet units, relevant information from the 
+      wallet unit attestation; (c) the type or types of data requested 
+      and presented in the transaction; (d) in the case of non-completed 
+      transactions, the reason for such non-completion.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-003
+    category: security
+    requirement: "Ensure log integrity, authenticity, and confidentiality"
+    explanation: |
+      Wallet providers must ensure integrity, authenticity and 
+      confidentiality of logged information.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure integrity, authenticity and 
+      confidentiality of the logged information.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-004
+    category: functionality
+    requirement: "Log DPA reports sent via wallet"
+    explanation: |
+      Wallet instances must log reports sent by the wallet user to data 
+      protection authorities via their wallet unit.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "4"
+    legalText: |
+      Wallet instances shall log reports sent by the wallet user to the 
+      data protection authorities via their wallet unit.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-005
+    category: data-protection
+    requirement: "Provider log access only with explicit user consent"
+    explanation: |
+      Transaction logs are accessible to wallet provider only where 
+      necessary for wallet services, based on explicit prior user consent.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "5"
+    legalText: |
+      The logs referred to in paragraphs 1 and 2 shall be accessible 
+      to the wallet provider, where it is necessary for the provision 
+      of wallet services, on the basis of explicit prior consent by 
+      the wallet user.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-006
+    category: operational
+    requirement: "Retain logs as required by law"
+    explanation: |
+      Transaction logs must remain accessible for as long as required 
+      by Union law or national law.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "6"
+    legalText: |
+      The logs referred to in paragraphs 1 and 2 shall remain accessible 
+      for as long as they are required by Union law or national law.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-LOG-007
+    category: functionality
+    requirement: "Enable user export of logged information"
+    explanation: |
+      Wallet providers must enable wallet users to export the logged 
+      transaction information.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 9"
+      paragraph: "7"
+    legalText: |
+      Wallet providers shall enable wallet users to export the logged 
+      information referred to in paragraph 2.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # EMBEDDED DISCLOSURE (from 2024/2979)
+  # Source: Article 10 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-EDP-001
+    category: functionality
+    requirement: "Process Annex III embedded disclosure policies"
+    explanation: |
+      Wallet providers must ensure that EAAs with common embedded 
+      disclosure policies (Annex III) can be processed by their wallet units.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 10"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that electronic attestations of 
+      attributes with common embedded disclosure policies set out in 
+      Annex III can be processed by the wallet units that they provide.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-EDP-002
+    category: functionality
+    requirement: "Present embedded disclosure policies with RP data"
+    explanation: |
+      Wallet instances must be able to process and present embedded 
+      disclosure policies in conjunction with data from the requesting RP.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 10"
+      paragraph: "2"
+    legalText: |
+      Wallet instances shall be able to process and present such 
+      embedded disclosure policies referred to in paragraph 1 in 
+      conjunction with data received from the requesting wallet-relying party.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-EDP-003
+    category: functionality
+    requirement: "Verify RP compliance with embedded disclosure policy"
+    explanation: |
+      Wallet instances must verify whether the relying party complies 
+      with the embedded disclosure policy requirements and inform the 
+      user of the result.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 10"
+      paragraph: "3"
+    legalText: |
+      Wallet instances shall verify whether the wallet-relying party 
+      complies with the requirements of the embedded disclosure policy 
+      and inform the wallet user of the result.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # QUALIFIED ELECTRONIC SIGNATURES/SEALS (from 2024/2979)
+  # Source: Article 11 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-SIG-001
+    category: functionality
+    requirement: "Enable receipt of qualified certificates linked to QSCD"
+    explanation: |
+      Wallet providers must ensure users can receive qualified certificates 
+      for QES/QESeal linked to qualified signature/seal creation devices 
+      (local, external, or remote).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 11"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet users are able to receive, 
+      qualified certificates for qualified electronic signatures or seals 
+      which are linked to qualified signature or seal creation devices 
+      that are either local, external, or remote in relation to the 
+      wallet instances.
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  - id: WP-SIG-002
+    category: functionality
+    requirement: "Interface securely with local/external/remote QSCD"
+    explanation: |
+      Wallet solutions must be able to securely interface with at least 
+      one type of qualified signature/seal creation device (local, 
+      external, or remote).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 11"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions are able to 
+      securely interface with one of the following types of qualified 
+      signature or seal creation devices: local, external, or remotely 
+      managed qualified signature or seal creation devices for the 
+      purposes of using the qualified certificates referred to in paragraph 1.
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  - id: WP-SIG-003
+    category: operational
+    requirement: "Provide free signature creation application for natural persons"
+    explanation: |
+      Wallet providers must ensure natural persons have free-of-charge 
+      access to signature creation applications for non-professional 
+      purposes with free QES.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 11"
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure that wallet users who are natural 
+      persons have, at least for non-professional purposes, free-of-charge 
+      access to signature creation applications which allow the creation 
+      of free-of-charge qualified electronic signatures using the 
+      certificates referred to in paragraph 1.
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  # ============================================================================
+  # SIGNATURE CREATION APPLICATIONS (from 2024/2979)
+  # Source: Article 12 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-SCA-001
+    category: functionality
+    requirement: "Signature creation applications must support core functions"
+    explanation: |
+      Signature creation applications must sign/seal user/RP provided data, 
+      create signatures per Annex IV formats, and inform users of results.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 12"
+      paragraph: "2"
+    legalText: |
+      Signature creation applications shall have the following functions: 
+      (a) signing or sealing wallet user-provided data; (b) signing or 
+      sealing relying party-provided data; (c) creating signatures or 
+      seals in accordance with at least the mandatory formats referred 
+      to in Annex IV; (d) informing wallet users about the result of 
+      the signature or seal creation process.
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  - id: WP-SCA-002
+    category: interoperability
+    requirement: "Support CSC API for remote QSCD integrated in wallet instance"
+    explanation: |
+      Where signature creation applications rely on remote QSCD and are 
+      integrated into wallet instances, they must support the Cloud 
+      Signature Consortium API (Annex IV).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 12"
+      paragraph: "3"
+    legalText: |
+      The signature creation applications may either be integrated into 
+      or be external to wallet instances. Where signature creation 
+      applications rely on remote qualified signature creation devices 
+      and where they are integrated into wallet instances, they shall 
+      support the application programming interface referred to in Annex IV.
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  # ============================================================================
+  # DATA EXPORT AND PORTABILITY (from 2024/2979)
+  # Source: Article 13 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-PORT-001
+    category: functionality
+    requirement: "Support secure data export and portability for migration"
+    explanation: |
+      Wallet units must support secure export and portability of user 
+      personal data (except critical assets) to allow migration to 
+      different wallet solutions at assurance level high.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 13"
+      paragraph: ""
+    legalText: |
+      Wallet units shall, where technically feasible and excepting cases 
+      of critical assets, support secure export and portability of 
+      personal data of the wallet user, to allow the wallet user to 
+      migrate to a wallet unit of a different wallet solution in a way 
+      that ensures level of assurance high as set out in Implementing 
+      Regulation (EU) 2015/1502.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # PSEUDONYMS (from 2024/2979)
+  # Source: Article 14 of Implementing Regulation (EU) 2024/2979
+  # ============================================================================
+
+  - id: WP-PSEU-001
+    category: functionality
+    requirement: "Support pseudonym generation per Annex V specifications"
+    explanation: |
+      Wallet units must support generation of pseudonyms for wallet 
+      users in compliance with Annex V (WebAuthn) specifications.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 14"
+      paragraph: "1"
+    legalText: |
+      Wallet units shall support the generation of pseudonyms for 
+      wallet users in compliance with the technical specifications 
+      set out in Annex V.
+    roles:
+      - wallet_provider
+    useCases:
+      - pseudonym
+
+  - id: WP-PSEU-002
+    category: functionality
+    requirement: "Generate RP-specific unique pseudonyms on request"
+    explanation: |
+      Wallet units must support generating, on RP request, a pseudonym 
+      specific and unique to that RP, optionally combined with PID/EAA.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 14"
+      paragraph: "2"
+    legalText: |
+      Wallet units shall support the generation, upon the request of 
+      a wallet-relying party, of a pseudonym which is specific and 
+      unique to that wallet-relying party and provide this pseudonym 
+      to the wallet-relying party, either standalone or in combination 
+      with any person identification data or electronic attribute 
+      attestation requested by that wallet-relying party.
+    roles:
+      - wallet_provider
+    useCases:
+      - pseudonym
+
+  # ============================================================================
+  # CERTIFICATION REQUIREMENTS (from 2024/2981)
+  # Source: Implementing Regulation (EU) 2024/2981
+  # ============================================================================
+
+  - id: WP-VULN-001
+    category: security
+    requirement: "Notify certification body of security breaches without undue delay"
+    explanation: |
+      Certificate holders must notify their certification body without undue 
+      delay of any breach or compromise affecting conformity with certification 
+      requirements.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      The holder of a certificate of conformity of a wallet solution and of 
+      the electronic identification scheme under which it is provided shall 
+      notify their certification body without undue delay of any breach or 
+      compromise of the wallet solution, or of the electronic identification 
+      scheme under which it is provided, that is likely to impact its 
+      conformity with the requirements of the national certification schemes' 
+      requirements.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-002
+    category: security
+    requirement: "Establish and maintain vulnerability management policy"
+    explanation: |
+      Certificate holders must establish, maintain and operate a vulnerability 
+      management policy and procedures per EN ISO/IEC 30111:2019.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      The holder of a certificate of conformity shall establish, maintain 
+      and operate a vulnerability management policy and procedures, taking 
+      into account the procedures set out in existing European and 
+      international standards, including EN ISO/IEC 30111:2019.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-003
+    category: security
+    requirement: "Notify certification body of vulnerabilities and changes"
+    explanation: |
+      Certificate holders must notify the certification body of vulnerabilities 
+      and changes affecting the wallet solution based on defined impact criteria.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "4"
+    legalText: |
+      The holder of the certificate of conformity shall notify the issuing 
+      certification body of the vulnerabilities and changes affecting the 
+      wallet solution, based on defined criteria on the impact of these 
+      vulnerabilities and changes.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-004
+    category: security
+    requirement: "Prepare vulnerability impact analysis reports"
+    explanation: |
+      For any vulnerability affecting software components, certificate holders 
+      must prepare a vulnerability impact analysis report including impact, 
+      attack likelihood, remediation possibility, and possible remedies.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "5"
+    legalText: |
+      The holder of the certificate of conformity shall prepare a vulnerability 
+      impact analysis report for any vulnerability that affects the software 
+      components of the wallet solution. The report shall include the following 
+      information: (a) the impact of the vulnerability on the certified wallet 
+      solution; (b) possible risks associated with the proximity or likelihood 
+      of an attack; (c) whether the vulnerability can be remedied using 
+      available means; (d) where the vulnerability can be remedied using 
+      available means, possible ways to remedy the vulnerability.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-005
+    category: security
+    requirement: "Transmit vulnerability reports to certification body"
+    explanation: |
+      When notification is required, the certificate holder must transmit 
+      the vulnerability impact analysis report to the certification body 
+      without undue delay.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "6"
+    legalText: |
+      Where notification is required in paragraph 4, the holder of the 
+      certificate of conformity shall transmit, without undue delay, the 
+      vulnerability impact analysis report referred to in paragraph 5 to 
+      the certification body.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-006
+    category: security
+    requirement: "Comply with Cyber Resilience Act vulnerability requirements"
+    explanation: |
+      Certificate holders must establish, maintain and operate a vulnerability 
+      management policy meeting Cyber Resilience Act Annex I requirements.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "7"
+    legalText: |
+      The holder of a certificate of conformity shall establish, maintain 
+      and operate a vulnerability management policy meeting the requirements 
+      set out in Annex I to the Cyber Resilience Act.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-VULN-007
+    category: operational
+    requirement: "Disclose and register remediated vulnerabilities publicly"
+    explanation: |
+      Certificate holders must disclose and register any publicly known and 
+      remediated vulnerability in online repositories (per Annex V).
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 5"
+      paragraph: "9"
+    legalText: |
+      The holder of a certificate of conformity shall disclose and register 
+      any publicly known and remediated vulnerability in the wallet solution 
+      or in one of the online repositories referred to in Annex V.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CSEC-001
+    category: security
+    requirement: "Implement risk management policies for wallet operation"
+    explanation: |
+      Wallet providers must establish policies and procedures for managing 
+      risks associated with wallet solution operation, including identification, 
+      assessment and mitigation.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 8"
+      paragraph: "3(b)"
+    legalText: |
+      National certification schemes shall establish security criteria, which 
+      shall include the following requirements: [...] (b) the establishment 
+      and implementation of policies and procedures concerning the management 
+      of risks associated with the operation of a wallet solution, including 
+      the identification and assessment of risks and the mitigation of the 
+      identified risks.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CSEC-002
+    category: security
+    requirement: "Implement change and vulnerability management policies"
+    explanation: |
+      Wallet providers must establish policies and procedures for managing 
+      changes and vulnerabilities in accordance with Article 5.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 8"
+      paragraph: "3(c)"
+    legalText: |
+      [...] (c) the establishment and implementation of policies and 
+      procedures related to the management of changes and to the management 
+      of vulnerabilities in accordance with Article 5 of this Regulation.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CSEC-003
+    category: operational
+    requirement: "Implement HR policies for qualified security personnel"
+    explanation: |
+      Wallet providers must establish HR policies including requirements on 
+      expertise, reliability, experience, training and qualifications of 
+      personnel involved in wallet development/operation.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 8"
+      paragraph: "3(d)"
+    legalText: |
+      [...] (d) the establishment and implementation of human resource 
+      management policies and procedures, including requirements on expertise, 
+      reliability, experience, security training, and qualifications of 
+      personnel involved in the development or operation of the wallet solution.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CSEC-004
+    category: security
+    requirement: "Define operating environment assumptions with enforcement mechanisms"
+    explanation: |
+      Wallet providers must describe mechanisms used to enforce security 
+      assumptions on operating environment (devices, platforms, WSCD) with 
+      justification of sufficiency.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 8"
+      paragraph: "3(f)"
+    legalText: |
+      [...] (f) for each assumption that is not backed by a certificate of 
+      conformity or other acceptable assurance information, a description 
+      of the mechanism that the wallet provider uses to enforce the assumption, 
+      as well as a justification that the mechanism is sufficient to ensure 
+      that the assumption is verified.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CSEC-005
+    category: operational
+    requirement: "Ensure use of currently certified wallet version"
+    explanation: |
+      Wallet providers must establish measures to ensure users are using 
+      a currently certified version of the wallet solution.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 8"
+      paragraph: "3(g)"
+    legalText: |
+      [...] (g) the establishment and implementation of measures to ensure 
+      the use of a currently certified version of the wallet solution.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-REC-001
+    category: operational
+    requirement: "Retain certification records securely for 5 years"
+    explanation: |
+      Certificate holders must store certification-related records securely 
+      for at least 5 years after certificate cancellation or expiry, including 
+      information provided to certification body and hardware specimens.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 19"
+      paragraph: "2"
+    legalText: |
+      National certification schemes shall set out requirements for the 
+      holder of the certificate of conformity to store the following 
+      information securely for the purpose of this Regulation, and for 
+      at least five years after the cancellation or expiry of the relevant 
+      certificate of conformity: (a) records of the information provided 
+      to the certification body or any of its sub-contractors during the 
+      certification process; (b) specimens of hardware components that 
+      have been included in the scope of certification for the wallet solution.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-REC-002
+    category: operational
+    requirement: "Provide records to certification body/supervisory body on request"
+    explanation: |
+      Certificate holders must make stored information available to the 
+      certification body or supervisory body upon request.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 19"
+      paragraph: "3"
+    legalText: |
+      National certification schemes shall require the holder of the 
+      certificate of conformity to make the information referred to in 
+      paragraph 1 available to the certification body or the supervisory 
+      body referred to in Article 46a(1) of Regulation (EU) No 910/2014 
+      upon request.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CONF-001
+    category: security
+    requirement: "Protect trade secrets and confidential information"
+    explanation: |
+      All persons/organisations granted access to information under the 
+      certification scheme must ensure security and protection of trade 
+      secrets and confidential information with appropriate measures.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 20"
+      paragraph: ""
+    legalText: |
+      Under national certification schemes, all persons or organisations 
+      that are granted access to information in the execution of activities 
+      under the national certification scheme shall be required to ensure 
+      the security and protection of trade secrets and other confidential 
+      information, as well as preserving intellectual property rights, and 
+      take the necessary and appropriate technical and organisational 
+      measures to ensure this confidentiality.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-PUB-001
+    category: operational
+    requirement: "Publish mandatory security information"
+    explanation: |
+      Wallet providers must publish specified security information including 
+      limitations, secure configuration guidance, security support period, 
+      vulnerability contact info, and vulnerability repository references.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Annex V"
+      paragraph: "1"
+    legalText: |
+      The information that shall be made public pursuant to Article 8(5) 
+      shall include at least the following: (a) any limitations on the use 
+      of a wallet solution; (b) guidance and recommendations by the wallet 
+      provider to assist end users with the secure configuration, installation, 
+      deployment, operation and maintenance of wallets; (c) the period during 
+      which security support will be offered to end users, in particular as 
+      regards to the availability of cybersecurity related updates; (d) contact 
+      information of the manufacturer or provider and accepted methods for 
+      receiving vulnerability information from end users and security 
+      researchers; (e) a reference to online repositories listing publicly 
+      disclosed vulnerabilities related to wallets and to any relevant 
+      cybersecurity advisories.
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-PUB-002
+    category: operational
+    requirement: "Ensure public security information is clear and accessible"
+    explanation: |
+      Published security information must be made available in a clear, 
+      comprehensive and easily accessible manner in a publicly accessible space.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Annex V"
+      paragraph: "2"
+    legalText: |
+      The information referred to in paragraph 1 shall be made available 
+      in a clear, comprehensive and easily accessible manner, in a publicly 
+      accessible space, to any person seeking to use a wallet solution.
+    roles:
+      - wallet_provider
+    useCases: all
+
