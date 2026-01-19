@@ -4,10 +4,13 @@
 # - roles: which roles this applies to
 # - useCases: which use cases this applies to (or "all" for universal)
 #
+# IMPORTANT: All legal citations have been verified against the actual regulation text.
+# See DEC-110 for the audit that identified fabricated citations.
+#
 # The build script will filter and include requirements based on selected role + use cases.
 
 # Schema version for future migrations
-schemaVersion: 1
+schemaVersion: 2  # Bumped after audit - removed fabricated citations
 
 # Requirement categories for grouping in the UI
 categories:
@@ -46,6 +49,7 @@ requirements:
 
   # ============================================================================
   # REGISTRATION & AUTHORIZATION
+  # Source: Article 5b of Regulation 2014/910 (consolidated with 2024/1183)
   # ============================================================================
 
   - id: RP-REG-001
@@ -129,212 +133,82 @@ requirements:
 
   # ============================================================================
   # TECHNICAL REQUIREMENTS
+  # Sources: 2024/2979 (Integrity & Core Functions), 2024/2977 (PID & EAA)
   # ============================================================================
 
   - id: RP-TECH-001
     category: technical
-    requirement: "Validate Wallet Unit Attestation (WUA) before accepting credentials"
+    requirement: "Support mandated credential formats (ISO 18013-5 and W3C VC)"
     explanation: |
-      Before accepting any PID or EAA from a wallet, the relying party must validate the 
-      Wallet Unit Attestation to ensure the wallet is genuine, uncompromised, and running 
-      on secure hardware.
+      Wallet solutions must support person identification data in both ISO/IEC 18013-5:2021 
+      (mDL/mDoc) format and W3C Verifiable Credentials Data Model 1.1. Relying parties 
+      accepting PID must be able to process at least one of these formats.
     legalBasis:
       regulation: "2024/2979"
-      article: "Article 5"
-      paragraph: "1"
+      article: "Article 8"
+      paragraph: ""
     legalText: |
-      Before accepting person identification data or electronic attestations of attributes 
-      from a wallet unit, a relying party shall validate the wallet unit attestation.
+      Wallet providers shall ensure that wallet solutions support the usage of person 
+      identification data and electronic attestations of attributes issued in compliance 
+      with the list of standards set out in Annex II.
+    annexReference: |
+      Annex II of 2024/2979:
+      - ISO/IEC.18013-5:2021
+      - 'Verifiable Credentials Data Model 1.1', W3C Recommendation, 3 March 2022
     deadline: "2027-11-21"
     roles:
       - relying_party
     useCases: all
-    technicalSpec: TS03
 
   - id: RP-TECH-002
     category: technical
-    requirement: "Verify wallet unit belongs to a certified wallet solution"
+    requirement: "Comply with WebAuthn specification for pseudonym generation"
     explanation: |
-      The WUA validation must confirm that the wallet unit belongs to a wallet solution 
-      that has been certified and is listed on the relevant Trusted List.
+      When accepting pseudonymous authentication from wallet units, relying parties must 
+      support the WebAuthn specification as mandated in Annex V of the Integrity regulation.
     legalBasis:
       regulation: "2024/2979"
-      article: "Article 5"
-      paragraph: "2"
+      article: "Article 14"
+      paragraph: "1"
     legalText: |
-      The relying party shall verify that the wallet unit belongs to a wallet solution that 
-      has been certified in accordance with Implementing Regulation (EU) 2024/2981 and is 
-      included in the relevant trusted list.
+      Wallet units shall support the generation of pseudonyms for wallet users in compliance 
+      with the technical specifications set out in Annex V.
+    annexReference: |
+      Annex V of 2024/2979:
+      - WebAuthn – W3C Recommendation, 8 April 2021, Level 2
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases: all
+    useCases:
+      - pseudonym
 
   - id: RP-TECH-003
     category: technical
-    requirement: "Support at least one of the mandated credential formats"
+    requirement: "Support relying-party-specific pseudonyms"
     explanation: |
-      Relying parties must support at least one of the credential formats specified in the 
-      implementing acts: SD-JWT VC for online scenarios or ISO 18013-5 (mDoc) for proximity 
-      scenarios.
-    legalBasis:
-      regulation: "2024/2977"
-      article: "Article 6"
-      paragraph: "1"
-    legalText: |
-      Electronic attestations of attributes issued to wallet units shall comply with at 
-      least one of the standards listed in Annex I.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-TECH-004
-    category: technical
-    requirement: "Implement OpenID4VP protocol for credential requests"
-    explanation: |
-      For online remote presentation scenarios, relying parties shall implement the OpenID 
-      for Verifiable Presentations (OpenID4VP) protocol as specified in the technical 
-      specifications.
+      Relying parties may request a pseudonym that is unique and specific to them. This 
+      enables unlinkable authentication across different relying parties while allowing 
+      the same RP to recognize returning users.
     legalBasis:
       regulation: "2024/2979"
-      article: "Article 8"
-      paragraph: "1"
+      article: "Article 14"
+      paragraph: "2"
     legalText: |
-      For remote online presentation of person identification data and electronic 
-      attestations of attributes, relying parties shall implement the protocols specified 
-      in Annex III.
+      Wallet units shall support the generation, upon the request of a wallet-relying party, 
+      of a pseudonym which is specific and unique to that wallet-relying party and provide 
+      this pseudonym to the wallet-relying party, either standalone or in combination with 
+      any person identification data or electronic attribute attestation requested by that 
+      wallet-relying party.
     deadline: "2027-11-21"
     roles:
       - relying_party
     useCases:
-      - pid-online
-      - payment-auth
-      - open-bank-account
-      - age-verification
-      - esignature
       - pseudonym
-
-  - id: RP-TECH-005
-    category: technical
-    requirement: "Implement ISO 18013-5 for proximity/in-person scenarios"
-    explanation: |
-      For in-person (proximity) presentation scenarios, relying parties shall implement 
-      the ISO 18013-5 standard for device engagement and data retrieval.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 8"
-      paragraph: "2"
-    legalText: |
-      For proximity presentation of person identification data and electronic attestations 
-      of attributes, relying parties shall implement the protocols specified in Annex IV.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases:
-      - proximity-id
-      - mdl
-      - age-verification
-
-  - id: RP-TECH-006
-    category: technical
-    requirement: "Use ES256 algorithm for signature verification"
-    explanation: |
-      Credential signatures shall be verified using the ES256 (ECDSA with P-256 and SHA-256) 
-      algorithm as the mandatory baseline. HSMs must support this curve.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 9"
-      paragraph: "1"
-    legalText: |
-      The cryptographic algorithms and key types used for the issuance and verification of 
-      person identification data and electronic attestations of attributes shall comply 
-      with the specifications in Annex V.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  # ============================================================================
-  # AUTHENTICATION & VERIFICATION
-  # ============================================================================
-
-  - id: RP-AUTH-001
-    category: authentication
-    requirement: "Verify cryptographic holder binding"
-    explanation: |
-      Relying parties must verify that the wallet presenting credentials possesses the 
-      private key bound to those credentials. This prevents replay attacks.
-    legalBasis:
-      regulation: "2024/2977"
-      article: "Article 7"
-      paragraph: "1"
-    legalText: |
-      Relying parties shall verify that the wallet unit presenting person identification 
-      data or electronic attestations of attributes possesses the private key associated 
-      with the public key bound to those credentials.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-AUTH-002
-    category: authentication
-    requirement: "Verify credential issuer signature against Trusted Lists"
-    explanation: |
-      The digital signature on credentials must be verified against the issuer's public 
-      key, retrieved from the applicable Trusted List.
-    legalBasis:
-      regulation: "2024/2977"
-      article: "Article 7"
-      paragraph: "2"
-    legalText: |
-      Relying parties shall verify the digital signature of person identification data 
-      and electronic attestations of attributes against the issuer's public key obtained 
-      from the relevant trusted list.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-AUTH-003
-    category: authentication
-    requirement: "Check credential revocation status"
-    explanation: |
-      Before accepting credentials, relying parties must check their revocation status 
-      using the privacy-preserving mechanisms specified (e.g., Bitstring Status Lists).
-    legalBasis:
-      regulation: "2024/2977"
-      article: "Article 8"
-      paragraph: "1"
-    legalText: |
-      Relying parties shall verify that the person identification data or electronic 
-      attestations of attributes have not been revoked or suspended.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-AUTH-004
-    category: authentication
-    requirement: "Verify credential validity period"
-    explanation: |
-      Credentials have defined validity periods. Relying parties must reject expired 
-      credentials.
-    legalBasis:
-      regulation: "2024/2977"
-      article: "Article 8"
-      paragraph: "2"
-    legalText: |
-      Relying parties shall verify that the person identification data or electronic 
-      attestations of attributes are within their validity period.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
+      - pid-online
 
   # ============================================================================
   # PSD2 SCA SPECIFIC (payment-auth, open-bank-account)
+  # Source: Article 5f of Regulation 2014/910 (consolidated)
   # ============================================================================
 
   - id: RP-SCA-001
@@ -360,75 +234,10 @@ requirements:
     useCases:
       - payment-auth
       - open-bank-account
-    technicalSpec: TS12
-
-  - id: RP-SCA-002
-    category: authentication
-    requirement: "Implement Dynamic Linking for payment transactions"
-    explanation: |
-      For remote payment transactions, the authentication code must be dynamically 
-      linked to a specific amount and payee. The wallet must display these details 
-      before the user signs.
-    legalBasis:
-      regulation: "2014/910"
-      article: "Article 5f"
-      paragraph: "2"
-    relatedRegulation:
-      regulation: "PSD2"
-      article: "Article 97(2)"
-    legalText: |
-      For remote payment transactions, the authentication shall include elements which 
-      dynamically link the transaction to a specific amount and a specific payee.
-    deadline: "2027-12-21"
-    roles:
-      - relying_party
-    useCases:
-      - payment-auth
-    technicalSpec: TS12
-
-  - id: RP-SCA-003
-    category: authentication
-    requirement: "Transmit Transaction Object securely to wallet"
-    explanation: |
-      The bank must structure payment details into a Transaction Object and transmit 
-      it securely to the wallet. The wallet's signature must cover the hash of this object.
-    legalBasis:
-      regulation: "2014/910"
-      article: "Article 5f"
-      paragraph: "3"
-    legalText: |
-      The authentication code generated shall be specific to the amount of the transaction 
-      and the payee agreed to by the payer.
-    deadline: "2027-12-21"
-    roles:
-      - relying_party
-    useCases:
-      - payment-auth
-    technicalSpec: TS12
-
-  - id: RP-SCA-004
-    category: authentication
-    requirement: "Accept SCA Attestation from wallet"
-    explanation: |
-      Relying parties (PSPs) shall accept SCA Attestations issued by authorized 
-      providers, which associate a Wallet Unit with a specific payer and account.
-    legalBasis:
-      regulation: "2014/910"
-      article: "Article 5f"
-      paragraph: "4"
-    legalText: |
-      Payment service providers shall accept electronic attestations of attributes 
-      attesting to the association between a wallet unit and a payment account or 
-      payment instrument.
-    deadline: "2027-12-21"
-    roles:
-      - relying_party
-    useCases:
-      - payment-auth
-    technicalSpec: TS12
 
   # ============================================================================
   # DATA PROTECTION & PRIVACY
+  # Source: Article 5a and 5c of Regulation 2014/910 (consolidated)
   # ============================================================================
 
   - id: RP-DP-001
@@ -530,84 +339,8 @@ requirements:
     useCases: all
 
   # ============================================================================
-  # SECURITY
-  # ============================================================================
-
-  - id: RP-SEC-001
-    category: security
-    requirement: "Implement replay attack prevention"
-    explanation: |
-      Authentication requests must include a cryptographic nonce. The response signature 
-      must cover this nonce to prevent replay of captured authentication tokens.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 10"
-      paragraph: "1"
-    legalText: |
-      Relying parties shall implement measures to prevent the replay of person 
-      identification data or electronic attestations of attributes.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-SEC-002
-    category: security
-    requirement: "Secure transport using TLS 1.3 or equivalent"
-    explanation: |
-      All communications with wallet units must be encrypted using TLS 1.3 or 
-      equivalent secure transport protocols.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 10"
-      paragraph: "2"
-    legalText: |
-      Communications between relying parties and wallet units shall be protected by 
-      appropriate cryptographic means.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-SEC-003
-    category: security
-    requirement: "Log Wallet Unit Attestations for audit trail"
-    explanation: |
-      Relying parties should retain WUA information for each transaction to build 
-      a defensible audit trail in case of fraud disputes.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 11"
-      paragraph: "1"
-    legalText: |
-      Relying parties shall maintain records of the wallet unit attestations received 
-      in accordance with applicable record-keeping requirements.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-SEC-004
-    category: security
-    requirement: "Block transactions from compromised wallet units"
-    explanation: |
-      If WUA indicates a compromised security state (e.g., rooted device, software-only 
-      keys for high-assurance use cases), the transaction must be blocked.
-    legalBasis:
-      regulation: "2024/2979"
-      article: "Article 5"
-      paragraph: "3"
-    legalText: |
-      Relying parties shall reject person identification data or electronic attestations 
-      of attributes from wallet units for which the wallet unit attestation indicates a 
-      security state that is incompatible with the assurance level required for the service.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  # ============================================================================
   # OPERATIONAL
+  # Source: Article 5c, 5d, 5f of Regulation 2014/910 (consolidated)
   # ============================================================================
 
   - id: RP-OPS-001
