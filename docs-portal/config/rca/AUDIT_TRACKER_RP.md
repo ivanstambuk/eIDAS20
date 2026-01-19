@@ -2,9 +2,10 @@
 
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
-**Last Updated:** 2026-01-19
+**Last Updated:** 2026-01-19 (Second Pass)
 **Current Requirements Count:** 90
-**Schema Version:** 11
+**Schema Version:** 12 (Fixed duplicate ID: RP-AUTH-001 → RP-AUTH-005)
+**Verification Status:** ✅ SECOND-PASS DEEP AUDIT COMPLETE
 
 ---
 
@@ -71,7 +72,7 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 | Art. 21 | Initiation of qualified trust service | ➖ | | QTSP initiation procedures |
 | Art. 22 | Trusted lists | ➖ | | Member State trusted list duties |
 | Art. 23 | EU trust mark | ➖ | | Trust mark usage by QTSPs |
-| Art. 24 | Requirements for qualified TSPs | ✅ | RP-ESIG-016 | Para 4: QTSPs must provide RPs with certificate status info |
+| Art. 24 | Requirements for qualified TSPs | ✅ | RP-AUTH-004 | Para 4: QTSPs must provide RPs with certificate status info |
 | Art. 24a | Recognition of qualified trust services | ➖ | | Cross-border recognition rules |
 
 ### Chapter III, Section 2 - Electronic Signatures (Articles 25-34)
@@ -86,7 +87,7 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 | Art. 29a | Requirements for remote QSCD management | ➖ | | QTSP remote management duties |
 | Art. 30 | Certification of QSCDs | ➖ | | CAB/MS certification duties |
 | Art. 31 | Publication of certified QSCDs | ➖ | | MS/Commission publication duties |
-| Art. 32 | Validation of qualified e-signatures | ✅ | RP-ESIG-007 to RP-ESIG-009 | Validation requirements with RP focus (data to RP) |
+| Art. 32 | Validation of qualified e-signatures | ✅ | RP-ESIG-006, 007, 007a, 008 | Para 1: validation process; Para 2: security detection |
 | Art. 32a | Validation of advanced e-signatures | ✅ | RP-ESIG-007 (related) | Similar validation requirements for advanced sigs |
 | Art. 33 | Qualified validation service | ➖ | | QVSP requirements - TSP focus |
 | Art. 34 | Qualified preservation service | ➖ | | Preservation service requirements - TSP focus |

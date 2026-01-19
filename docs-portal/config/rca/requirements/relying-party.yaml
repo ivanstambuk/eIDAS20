@@ -12,10 +12,10 @@
 # - useCases: which use cases this applies to (or "all" for universal)
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
-# AUDIT: 2026-01-19 - Complete article-by-article review with gap analysis
-# Schema version 11 - Added Art 5b(9) auth, Art 5b(10) intermediaries, Art 32(2) validation
+# AUDIT: 2026-01-19 - Second-pass deep verification complete. Fixed RP-AUTH-001 duplicate ID.
+# Schema version 12 - Fixed duplicate ID (RP-AUTH-001 → RP-AUTH-005 for Art 6(1))
 
-schemaVersion: 11
+schemaVersion: 12
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1236,7 +1236,7 @@ requirements:
 
   # --- Mutual Recognition & Cross-Border (Art 6, 11a) ---
 
-  - id: RP-AUTH-001
+  - id: RP-AUTH-005
     category: authentication
     requirement: "Public sector: Recognize e-ID from other Member States"
     explanation: |

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T17:50:23.179Z",
+  "generatedAt": "2026-01-19T18:16:21.670Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -1931,7 +1931,7 @@
       "appliesToAllUseCases": false
     },
     {
-      "id": "RP-AUTH-001",
+      "id": "RP-AUTH-005",
       "category": "authentication",
       "requirement": "Public sector: Recognize e-ID from other Member States",
       "explanation": "When requiring electronic identification for online services, public sector RPs \nmust accept notified e-ID means from other Member States at substantial/high levels.",
@@ -3174,7 +3174,7 @@
         "RP-ACCEPT-003",
         "RP-ESIG-004",
         "RP-ESIG-012",
-        "RP-AUTH-001",
+        "RP-AUTH-005",
         "RP-AUTH-002",
         "RP-AUTH-003",
         "RP-DP-001",
@@ -3930,7 +3930,7 @@
         "RP-ESIG-020",
         "RP-ESIG-021",
         "RP-ESIG-022",
-        "RP-AUTH-001",
+        "RP-AUTH-005",
         "RP-AUTH-002",
         "RP-AUTH-003",
         "RP-AUTH-004"
@@ -3972,7 +3972,7 @@
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 89
+      "relying_party": 90
     }
   }
 }
