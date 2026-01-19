@@ -575,26 +575,15 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
     """
     Extract annexes from the document.
     
-    EUR-Lex HTML has TWO formats:
-    
-    OLD FORMAT (pre-2024):
+    EUR-Lex HTML structure for annexes (more complex than originally documented):
         <div id="anx_1">
             <p class="oj-doc-ti">ANNEX</p>
             <p class="oj-ti-grseq-1"><span class="oj-bold">Title of Annex</span></p>
+            <p class="oj-ti-grseq-1">1.   <span class="oj-bold">Section heading</span></p>
+            <p class="oj-normal">Intro text...</p>
             <table>  <!-- Points (a), (b), etc. are in tables -->
                 <tr><td>(a)</td><td>content</td></tr>
             </table>
-        </div>
-    
-    NEW FORMAT (2024+, grid-based):
-        <div id="anx_V">
-            <p class="title-annex-1">ANNEX V</p>
-            <p class="title-annex-2">TITLE OF ANNEX</p>
-            <p class="norm">Intro text...</p>
-            <div class="grid-container grid-list">
-                <div class="list grid-list-column-1"><span>(a)</span></div>
-                <div class="grid-list-column-2"><p class="norm">content</p></div>
-            </div>
         </div>
     
     Returns list of Markdown lines.
@@ -606,7 +595,7 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
     for annex_div in content.find_all('div', id=re.compile(r'^anx_', re.I)):
         annex_id = annex_div.get('id', '')
         
-        # Extract annex number from id (anx_I -> I, anx_II -> II, anx_1 -> 1, anx_V -> V)
+        # Extract annex number from id (anx_I -> I, anx_II -> II, anx_1 -> 1)
         annex_num_match = re.search(r'anx_([IVX]+|\d+)', annex_id, re.I)
         if not annex_num_match:
             continue
@@ -618,154 +607,66 @@ def extract_annexes(soup: BeautifulSoup) -> list[str]:
             annex_num = roman_map.get(int(annex_num), annex_num)
         
         lines.append("")
-        lines.append("## ANNEX " + annex_num)
+        lines.append("---")
+        lines.append("")
+        lines.append(f"## ANNEX {annex_num}")
         lines.append("")
         
-        # Detect format by checking for characteristic elements
-        has_new_format = annex_div.find('div', class_='grid-container')
-        
-        if has_new_format:
-            # NEW FORMAT: grid-based structure
-            _extract_annex_new_format(annex_div, lines)
-        else:
-            # OLD FORMAT: table-based structure
-            _extract_annex_old_format(annex_div, lines)
+        # Process all elements in document order
+        for child in annex_div.descendants:
+            if not hasattr(child, 'name') or child.name is None:
+                continue
+            
+            classes = child.get('class', [])
+            
+            # Skip the ANNEX header itself (oj-doc-ti)
+            if child.name == 'p' and 'oj-doc-ti' in classes:
+                text = clean_text(child.get_text())
+                if text.upper().startswith('ANNEX'):
+                    continue
+            
+            # oj-ti-grseq-1: Annex title or numbered section heading
+            if child.name == 'p' and 'oj-ti-grseq-1' in classes:
+                text = clean_text(child.get_text())
+                if not text:
+                    continue
+                
+                # Check for numbered section: "1.   Section title"
+                num_section_match = re.match(r'^(\d+)\.\s+(.+)$', text)
+                if num_section_match:
+                    num, section_title = num_section_match.groups()
+                    lines.append(f"**{num}. {section_title}**")
+                    lines.append("")
+                else:
+                    # It's the annex title (italic for distinction)
+                    lines.append(f"*{text}*")
+                    lines.append("")
+                continue
+            
+            # Tables contain points (a), (b), etc. - output as list items for gutter icons
+            if child.name == 'table':
+                for row in child.find_all('tr'):
+                    cells = row.find_all('td')
+                    if len(cells) >= 2:
+                        point = clean_text(cells[0].get_text())
+                        content_text = clean_text(cells[1].get_text())
+                        if point and content_text:
+                            # Use list format so rehype assigns IDs for gutter icons
+                            lines.append(f"- {point} {content_text}")
+                continue
+            
+            # Regular paragraphs (oj-normal) - intro text etc.
+            if child.name == 'p' and 'oj-normal' in classes:
+                # Skip if this p is inside a table (already handled)
+                if child.find_parent('table'):
+                    continue
+                text = clean_text(child.get_text())
+                if text:
+                    lines.append(text)
+                    lines.append("")
+                continue
     
     return lines
-
-
-def _extract_annex_new_format(annex_div: Tag, lines: list[str]) -> None:
-    """Extract annex content using new EUR-Lex grid-based format (2024+)."""
-    
-    # Track processed elements to avoid duplicates
-    processed_grids = set()
-    
-    for child in annex_div.children:
-        if not hasattr(child, 'name') or child.name is None:
-            continue
-        
-        classes = child.get('class', [])
-        
-        # Skip the ANNEX header itself (title-annex-1)
-        if child.name == 'p' and 'title-annex-1' in classes:
-            continue
-        
-        # Annex title (title-annex-2) - bold
-        if child.name == 'p' and 'title-annex-2' in classes:
-            text = clean_text(child.get_text())
-            if text:
-                lines.append(f"**{text}**")
-                lines.append("")
-            continue
-        
-        # Regular paragraphs (norm class)
-        if child.name == 'p' and 'norm' in classes:
-            text = clean_text(child.get_text())
-            if text:
-                lines.append(text)
-                lines.append("")
-            continue
-        
-        # Grid-based list items (points (a), (b), etc.)
-        if child.name == 'div' and 'grid-container' in classes and 'grid-list' in classes:
-            child_id = id(child)
-            if child_id in processed_grids:
-                continue
-            processed_grids.add(child_id)
-            
-            # Extract point marker from column 1
-            col1 = child.find('div', class_='grid-list-column-1')
-            col2 = child.find('div', class_='grid-list-column-2')
-            
-            if col1 and col2:
-                point = clean_text(col1.get_text())
-                
-                # Check for nested points in column 2
-                nested_grids = col2.find_all('div', class_='grid-container', recursive=False)
-                
-                if nested_grids:
-                    # Has nested points - extract main text first
-                    main_text_parts = []
-                    for elem in col2.children:
-                        if hasattr(elem, 'name') and elem.name == 'p':
-                            main_text_parts.append(clean_text(elem.get_text()))
-                    
-                    main_text = ' '.join(main_text_parts)
-                    if point and main_text:
-                        lines.append(f"- {point} {main_text}")
-                    
-                    # Process nested points with indentation
-                    for nested_grid in nested_grids:
-                        nested_col1 = nested_grid.find('div', class_='grid-list-column-1')
-                        nested_col2 = nested_grid.find('div', class_='grid-list-column-2')
-                        if nested_col1 and nested_col2:
-                            nested_point = clean_text(nested_col1.get_text())
-                            nested_text = clean_text(nested_col2.get_text())
-                            if nested_point and nested_text:
-                                lines.append(f"     - {nested_point} {nested_text}")
-                else:
-                    # Simple point without nesting
-                    content_text = clean_text(col2.get_text())
-                    if point and content_text:
-                        lines.append(f"- {point} {content_text}")
-            continue
-
-
-def _extract_annex_old_format(annex_div: Tag, lines: list[str]) -> None:
-    """Extract annex content using old EUR-Lex table-based format (pre-2024)."""
-    
-    for child in annex_div.descendants:
-        if not hasattr(child, 'name') or child.name is None:
-            continue
-        
-        classes = child.get('class', [])
-        
-        # Skip the ANNEX header itself (oj-doc-ti)
-        if child.name == 'p' and 'oj-doc-ti' in classes:
-            text = clean_text(child.get_text())
-            if text.upper().startswith('ANNEX'):
-                continue
-        
-        # oj-ti-grseq-1: Annex title or numbered section heading
-        if child.name == 'p' and 'oj-ti-grseq-1' in classes:
-            text = clean_text(child.get_text())
-            if not text:
-                continue
-            
-            # Check for numbered section: "1.   Section title"
-            num_section_match = re.match(r'^(\d+)\.\s+(.+)$', text)
-            if num_section_match:
-                num, section_title = num_section_match.groups()
-                lines.append(f"**{num}. {section_title}**")
-                lines.append("")
-            else:
-                # It's the annex title (bold for distinction)
-                lines.append(f"**{text}**")
-                lines.append("")
-            continue
-        
-        # Tables contain points (a), (b), etc. - output as list items for gutter icons
-        if child.name == 'table':
-            for row in child.find_all('tr'):
-                cells = row.find_all('td')
-                if len(cells) >= 2:
-                    point = clean_text(cells[0].get_text())
-                    content_text = clean_text(cells[1].get_text())
-                    if point and content_text:
-                        # Use list format so rehype assigns IDs for gutter icons
-                        lines.append(f"- {point} {content_text}")
-            continue
-        
-        # Regular paragraphs (oj-normal) - intro text etc.
-        if child.name == 'p' and 'oj-normal' in classes:
-            # Skip if this p is inside a table (already handled)
-            if child.find_parent('table'):
-                continue
-            text = clean_text(child.get_text())
-            if text:
-                lines.append(text)
-                lines.append("")
-            continue
 
 
 def extract_signatories(soup: BeautifulSoup) -> list[str]:
