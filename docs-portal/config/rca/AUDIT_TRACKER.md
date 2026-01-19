@@ -313,7 +313,7 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| All | Full regulation | ⬜ | | Commission duties |
+| All | Full regulation | ➖ | | Member State notification duties |
 
 ---
 
@@ -323,19 +323,19 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Regulation | Title | Status | RP Requirements | Notes |
 |------------|-------|--------|-----------------|-------|
-| 2025/1566 | Registered Delivery | ⬜ | | ERDS standards |
-| 2025/1567 | Certificate Formats | ⬜ | | |
-| 2025/1568 | Remote Signing | ⬜ | | |
-| 2025/1569 | Sign Creation Devices | ⬜ | | |
-| 2025/1570 | Certified Creation Devices | ⬜ | | |
-| 2025/1571 | Seal Standards | ⬜ | | |
-| 2025/1572 | E-Signature Standards | ⬜ | | |
-| 2025/1929 | Electronic Timestamps | ⬜ | | |
-| 2025/1942 | Validation Services | ⬜ | | May have RP validation requirements |
-| 2025/1943 | Signature Standards | ⬜ | | |
-| 2025/1944 | Preservation Standards | ⬜ | | |
-| 2025/1945 | Wallet Attributes | ⬜ | | |
-| 2025/1946 | Wallet Reference Issuer | ⬜ | | |
+| 2025/1566 | Registered Delivery | ➖ | | QERDSP standards |
+| 2025/1567 | Certificate Formats | ➖ | | QTSP standards |
+| 2025/1568 | Remote Signing | ➖ | | QSCD management |
+| 2025/1569 | EAA/Attributes | ➖ | | EAA issuance (Art 4.5 has RP-adjacent provision) |
+| 2025/1570 | Certified Creation Devices | ➖ | | QSCD certification |
+| 2025/1571 | Seal Standards | ➖ | | Seal formats |
+| 2025/1572 | E-Signature Standards | ➖ | | Signature formats |
+| 2025/1929 | Electronic Timestamps | ➖ | | Timestamp standards |
+| 2025/1942 | Validation Services | ➖ | | QVSP standards |
+| 2025/1943 | Signature Standards | ➖ | | Certificate formats |
+| 2025/1944 | Preservation Standards | ➖ | | QERDS/preservation |
+| 2025/1945 | Wallet Attributes | ➖ | | Sig validation standards |
+| 2025/1946 | Wallet Reference Issuer | ➖ | | Preservation services |
 
 ---
 
@@ -343,13 +343,13 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Regulation | Title | Status | RP Requirements | Notes |
 |------------|-------|--------|-----------------|-------|
-| 2025/2160 | Supervisory Data | ⬜ | | |
-| 2025/2162 | CAB Accreditation | ⬜ | | |
-| 2025/2164 | Trusted Lists | ⬜ | | May have RP trust anchor requirements |
-| 2025/2527 | Website Auth Certs | ⬜ | | QWAC requirements |
-| 2025/2530 | QTSP Requirements | ⬜ | | |
-| 2025/2531 | Electronic Ledgers | ⬜ | | |
-| 2025/2532 | Archiving Services | ⬜ | | |
+| 2025/2160 | Supervisory Data | ➖ | | TSP risk management |
+| 2025/2162 | CAB Accreditation | ➖ | | Accreditation standards |
+| 2025/2164 | Trusted Lists | ➖ | | Trusted list format |
+| 2025/2527 | Website Auth Certs | ➖ | | QWAC standards |
+| 2025/2530 | QTSP Requirements | ➖ | | QTSP standards |
+| 2025/2531 | Electronic Ledgers | ➖ | | Ledger standards |
+| 2025/2532 | Archiving Services | ➖ | | Archive standards |
 
 ---
 
@@ -448,8 +448,9 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 
 ### Implementing Acts Coverage
 - **Total Implementing Acts:** 29
-- **Reviewed for RP Requirements:** 4
-- **Pending Review:** 25
+- **Reviewed with RP Requirements:** 6 (2024/2977, 2024/2979, 2024/2982, 2025/846, 2025/847, 2025/848)
+- **Reviewed - No Direct RP Requirements:** 21 (TSP/infrastructure-focused)
+- **Pending Review:** 2 (2024/2980, 2024/2981 - may have indirect relevance)
 
 ### Current Requirements
 - **Total in relying-party.yaml:** 87
