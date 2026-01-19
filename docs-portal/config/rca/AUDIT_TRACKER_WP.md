@@ -204,12 +204,13 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | |
-| Art. 3 | Issuance of PID to wallet units | ⬜ | | **Wallet must accept PID** |
-| Art. 4 | Issuance of EAA to wallet units | ⬜ | | **Wallet must accept EAA** |
-| Art. 5 | Revocation of PID | ⬜ | | |
-| Annex | PID attribute schemas | ⬜ | | |
+| Art. 1 | Subject matter and scope | ➖ | | PID/EAA issuance rules |
+| Art. 2 | Definitions | ➖ | | Term definitions |
+| Art. 3 | Issuance of PID to wallet units | ➖ | | **PID Provider duties**, not WP |
+| Art. 4 | Issuance of EAA to wallet units | ➖ | | **EAA Provider duties**, not WP |
+| Art. 5 | Revocation of PID | ➖ | | **PID Provider duties** |
+| Art. 6 | Entry into force | ➖ | | Dates |
+| Annex | PID attribute schemas | ➖ | | Data schema definitions |
 
 ### 2024/2979 - Integrity and Core Functionalities
 
@@ -239,12 +240,14 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | |
-| Art. 3 | Notification system | ⬜ | | |
-| Art. 4 | Notifications by Member States | ⬜ | | |
-| Art. 5 | Publications by the Commission | ⬜ | | |
-| Art. 6 | Entry into force | ⬜ | | |
+| Art. 1 | Subject matter and scope | ➖ | | MS notification obligations |
+| Art. 2 | Definitions | ➖ | | Term definitions |
+| Art. 3 | Notification system | ➖ | | Commission system |
+| Art. 4 | Notifications by Member States | ➖ | | MS duties |
+| Art. 5 | Publications by the Commission | ➖ | | Commission duties |
+| Art. 6 | Entry into force | ➖ | | Dates |
+| Annex I | Technical requirements | ➖ | | System infrastructure |
+| Annex II | Notified information | ➖ | | MS provides info ABOUT WP, not WP duties |
 
 ### 2024/2981 - Certification of EUDI Wallets
 
