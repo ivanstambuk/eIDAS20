@@ -112,12 +112,17 @@ const categoryList = Object.entries(categories).map(([id, cat]) => {
     };
 }).sort((a, b) => a.order - b.order);
 
-// Build roles list (only enabled)
+// Build roles list (only enabled) with profiles
 const roles = Object.entries(rolesConfig.roles)
     .filter(([_, role]) => role.enabled)
     .map(([id, role]) => ({
         id,
-        ...role
+        label: role.label,
+        shortLabel: role.shortLabel,
+        description: role.description,
+        icon: role.icon,
+        enabled: role.enabled,
+        profiles: role.profiles || []
     }));
 
 // Build legal sources lookup
@@ -182,6 +187,10 @@ for (const req of allRequirements) {
         }
     }
 
+    // Process profile filters (if requirement specifies profileFilter, it only applies to those profiles)
+    // If no profileFilter, requirement applies to ALL profiles of the role
+    const profileFilter = req.profileFilter || null;
+
     // Create processed requirement
     const processed = {
         id: req.id,
@@ -196,7 +205,9 @@ for (const req of allRequirements) {
         relatedRegulation: req.relatedRegulation,
         applicableRoles,
         applicableUseCases,
-        appliesToAllUseCases: req.useCases === 'all'
+        appliesToAllUseCases: req.useCases === 'all',
+        profileFilter,  // null = applies to all profiles, array = specific profiles only
+        appliesToAllProfiles: profileFilter === null
     };
 
     processedRequirements.push(processed);

@@ -1,5 +1,6 @@
 # RCA Configuration: Roles
 # Entities that interact with the EUDI Wallet ecosystem
+# Each role can have optional "profiles" for more specific requirement filtering
 
 roles:
   relying_party:
@@ -8,6 +9,15 @@ roles:
     description: "Entity accepting wallet credentials for authentication/verification"
     icon: "🏢"
     enabled: true
+    profiles:
+      - id: public_sector
+        label: "Public Sector"
+        description: "Government bodies, public administration, public services"
+        icon: "🏛️"
+      - id: private_sector
+        label: "Private Sector"
+        description: "Commercial entities, banks, private service providers"
+        icon: "🏪"
 
   issuer:
     label: "EAA Issuer"
@@ -15,6 +25,19 @@ roles:
     description: "Entity issuing electronic attestations of attributes"
     icon: "📜"
     enabled: true
+    profiles:
+      - id: qualified
+        label: "Qualified TSP (QEAA)"
+        description: "Qualified Trust Service Provider issuing qualified attestations"
+        icon: "✅"
+      - id: non_qualified
+        label: "Non-Qualified Provider"
+        description: "Any entity issuing non-qualified attestations"
+        icon: "📋"
+      - id: public_authentic
+        label: "Public Sector (Authentic Source)"
+        description: "Public body issuing attestations from authentic sources"
+        icon: "🏛️"
 
   wallet_provider:
     label: "Wallet Provider"
@@ -22,6 +45,19 @@ roles:
     description: "Entity providing the wallet application"
     icon: "📱"
     enabled: true
+    profiles:
+      - id: member_state
+        label: "Member State Direct"
+        description: "Wallet provided directly by a Member State"
+        icon: "🇪🇺"
+      - id: mandated
+        label: "Mandated Provider"
+        description: "Wallet provided under mandate from a Member State"
+        icon: "📝"
+      - id: independent
+        label: "Independent (Recognised)"
+        description: "Independent provider recognised by a Member State"
+        icon: "🔓"
 
   pid_provider:
     label: "PID Provider"
@@ -29,3 +65,4 @@ roles:
     description: "Member State entity issuing Person Identification Data"
     icon: "🏛️"
     enabled: false  # Future - not yet implemented
+    profiles: []  # To be defined when role is implemented

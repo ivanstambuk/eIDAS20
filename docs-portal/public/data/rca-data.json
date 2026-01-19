@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T21:31:09.107Z",
+  "generatedAt": "2026-01-19T21:54:08.351Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -253,7 +253,21 @@
       "shortLabel": "RP",
       "description": "Entity accepting wallet credentials for authentication/verification",
       "icon": "🏢",
-      "enabled": true
+      "enabled": true,
+      "profiles": [
+        {
+          "id": "public_sector",
+          "label": "Public Sector",
+          "description": "Government bodies, public administration, public services",
+          "icon": "🏛️"
+        },
+        {
+          "id": "private_sector",
+          "label": "Private Sector",
+          "description": "Commercial entities, banks, private service providers",
+          "icon": "🏪"
+        }
+      ]
     },
     {
       "id": "issuer",
@@ -261,7 +275,27 @@
       "shortLabel": "Issuer",
       "description": "Entity issuing electronic attestations of attributes",
       "icon": "📜",
-      "enabled": true
+      "enabled": true,
+      "profiles": [
+        {
+          "id": "qualified",
+          "label": "Qualified TSP (QEAA)",
+          "description": "Qualified Trust Service Provider issuing qualified attestations",
+          "icon": "✅"
+        },
+        {
+          "id": "non_qualified",
+          "label": "Non-Qualified Provider",
+          "description": "Any entity issuing non-qualified attestations",
+          "icon": "📋"
+        },
+        {
+          "id": "public_authentic",
+          "label": "Public Sector (Authentic Source)",
+          "description": "Public body issuing attestations from authentic sources",
+          "icon": "🏛️"
+        }
+      ]
     },
     {
       "id": "wallet_provider",
@@ -269,7 +303,27 @@
       "shortLabel": "WP",
       "description": "Entity providing the wallet application",
       "icon": "📱",
-      "enabled": true
+      "enabled": true,
+      "profiles": [
+        {
+          "id": "member_state",
+          "label": "Member State Direct",
+          "description": "Wallet provided directly by a Member State",
+          "icon": "🇪🇺"
+        },
+        {
+          "id": "mandated",
+          "label": "Mandated Provider",
+          "description": "Wallet provided under mandate from a Member State",
+          "icon": "📝"
+        },
+        {
+          "id": "independent",
+          "label": "Independent (Recognised)",
+          "description": "Independent provider recognised by a Member State",
+          "icon": "🔓"
+        }
+      ]
     }
   ],
   "legalSources": {
@@ -492,7 +546,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-002",
@@ -531,7 +587,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-003",
@@ -570,7 +628,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-004",
@@ -609,7 +669,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-005",
@@ -648,7 +710,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-006",
@@ -670,7 +734,9 @@
         "pseudonym",
         "age-verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-001",
@@ -709,7 +775,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-OPS-004",
@@ -748,7 +816,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-007",
@@ -787,7 +857,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-008",
@@ -826,7 +898,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-009",
@@ -865,7 +939,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-010",
@@ -904,7 +980,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-011",
@@ -943,7 +1021,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-012",
@@ -982,7 +1062,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-REG-013",
@@ -1021,7 +1103,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-001",
@@ -1072,7 +1156,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-002",
@@ -1111,7 +1197,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-003",
@@ -1150,7 +1238,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-004",
@@ -1183,7 +1273,9 @@
       "applicableUseCases": [
         "pseudonym"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-005",
@@ -1217,7 +1309,9 @@
         "pseudonym",
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-006",
@@ -1256,7 +1350,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-007",
@@ -1295,7 +1391,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-008",
@@ -1334,7 +1432,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ACCEPT-001",
@@ -1356,7 +1456,9 @@
         "pid-online",
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ACCEPT-002",
@@ -1379,7 +1481,9 @@
         "open-bank-account",
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ACCEPT-003",
@@ -1400,7 +1504,9 @@
       "applicableUseCases": [
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-SCA-001",
@@ -1426,7 +1532,9 @@
         "payment-auth",
         "open-bank-account"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-001",
@@ -1447,7 +1555,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-002",
@@ -1468,7 +1578,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-003",
@@ -1489,7 +1601,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-004",
@@ -1511,7 +1625,9 @@
         "esignature",
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-005",
@@ -1532,7 +1648,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-006",
@@ -1553,7 +1671,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-007",
@@ -1574,7 +1694,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-007a",
@@ -1595,7 +1717,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-008",
@@ -1616,7 +1740,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-009",
@@ -1638,7 +1764,9 @@
         "esignature",
         "eseal"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-010",
@@ -1660,7 +1788,9 @@
         "esignature",
         "eseal"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-011",
@@ -1682,7 +1812,9 @@
         "esignature",
         "eseal"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-012",
@@ -1705,7 +1837,9 @@
         "eseal",
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-013",
@@ -1727,7 +1861,9 @@
         "esignature",
         "eseal"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-014",
@@ -1749,7 +1885,9 @@
         "esignature",
         "timestamp"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-015",
@@ -1771,7 +1909,9 @@
         "esignature",
         "timestamp"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-016",
@@ -1793,7 +1933,9 @@
         "esignature",
         "timestamp"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-017",
@@ -1815,7 +1957,9 @@
         "esignature",
         "registered-delivery"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-018",
@@ -1837,7 +1981,9 @@
         "esignature",
         "registered-delivery"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-019",
@@ -1859,7 +2005,9 @@
         "esignature",
         "website-auth"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-020",
@@ -1880,7 +2028,9 @@
       "applicableUseCases": [
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-021",
@@ -1901,7 +2051,9 @@
       "applicableUseCases": [
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-022",
@@ -1922,7 +2074,9 @@
       "applicableUseCases": [
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-023",
@@ -1944,7 +2098,9 @@
         "esignature",
         "archiving"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-024",
@@ -1966,7 +2122,9 @@
         "esignature",
         "archiving"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-025",
@@ -1988,7 +2146,9 @@
         "esignature",
         "ledger"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-026",
@@ -2010,7 +2170,9 @@
         "esignature",
         "ledger"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-005",
@@ -2032,7 +2194,9 @@
         "pid-online",
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-002",
@@ -2054,7 +2218,9 @@
         "pid-online",
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-003",
@@ -2076,7 +2242,9 @@
         "pid-online",
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-004",
@@ -2098,7 +2266,9 @@
         "esignature",
         "all"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-001",
@@ -2137,7 +2307,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-002",
@@ -2176,7 +2348,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-003",
@@ -2215,7 +2389,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-004",
@@ -2237,7 +2413,9 @@
         "age-verification",
         "pseudonym"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-005",
@@ -2259,7 +2437,9 @@
         "pseudonym",
         "age-verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-DP-006",
@@ -2302,7 +2482,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-OPS-001",
@@ -2341,7 +2523,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-OPS-002",
@@ -2380,7 +2564,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-INFO-001",
@@ -2419,7 +2605,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-INFO-002",
@@ -2458,7 +2646,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-INFO-003",
@@ -2497,7 +2687,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-INFO-004",
@@ -2536,7 +2728,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-INFO-005",
@@ -2575,7 +2769,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-009",
@@ -2609,7 +2805,9 @@
         "pid-online",
         "pid-proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-010",
@@ -2642,7 +2840,9 @@
       "applicableUseCases": [
         "pid-online"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-011",
@@ -2676,7 +2876,9 @@
         "pid-online",
         "pid-proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-012",
@@ -2710,7 +2912,9 @@
         "pid-online",
         "pid-proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-013",
@@ -2744,7 +2948,9 @@
         "pid-online",
         "pid-proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-014",
@@ -2777,7 +2983,9 @@
       "applicableUseCases": [
         "business-kyc"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-015",
@@ -2811,7 +3019,9 @@
         "pid-online",
         "pid-proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-016",
@@ -2862,7 +3072,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-017",
@@ -2896,7 +3108,9 @@
         "pseudonym",
         "age-verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-TECH-018",
@@ -2947,7 +3161,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-ESIG-027",
@@ -2980,7 +3196,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-SEC-001",
@@ -3019,7 +3237,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-SEC-002",
@@ -3058,7 +3278,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-SEC-003",
@@ -3097,7 +3319,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-009",
@@ -3118,7 +3342,9 @@
       "applicableUseCases": [
         "public_service"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-010",
@@ -3140,7 +3366,9 @@
         "public_service",
         "identity_verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-011",
@@ -3162,7 +3390,9 @@
         "public_service",
         "identity_verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-012",
@@ -3183,7 +3413,9 @@
       "applicableUseCases": [
         "public_service"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-AUTH-013",
@@ -3204,7 +3436,9 @@
       "applicableUseCases": [
         "public_service"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "RP-OPS-003",
@@ -3225,7 +3459,9 @@
       "applicableUseCases": [
         "public_service"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROV-001",
@@ -3264,7 +3500,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROV-002",
@@ -3303,7 +3541,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-001",
@@ -3342,7 +3582,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-002",
@@ -3381,7 +3623,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-003",
@@ -3402,7 +3646,9 @@
       "applicableUseCases": [
         "pseudonym"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-004",
@@ -3441,7 +3687,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-005",
@@ -3480,7 +3728,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-006",
@@ -3519,7 +3769,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-007",
@@ -3558,7 +3810,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-008",
@@ -3579,7 +3833,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-009",
@@ -3618,7 +3874,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FUNC-010",
@@ -3657,7 +3915,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-001",
@@ -3696,7 +3956,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-002",
@@ -3735,7 +3997,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-003",
@@ -3774,7 +4038,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-004",
@@ -3813,7 +4079,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-005",
@@ -3852,7 +4120,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-006",
@@ -3891,7 +4161,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-007",
@@ -3930,7 +4202,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-008",
@@ -3969,7 +4243,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-009",
@@ -4008,7 +4284,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-010",
@@ -4047,7 +4325,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INTER-011",
@@ -4068,7 +4348,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-001",
@@ -4107,7 +4389,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-002",
@@ -4146,7 +4430,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-003",
@@ -4185,7 +4471,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-004",
@@ -4224,7 +4512,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-005",
@@ -4246,7 +4536,9 @@
         "pseudonym",
         "age-verification"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-DP-006",
@@ -4285,7 +4577,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SEC-001",
@@ -4324,7 +4618,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SEC-002",
@@ -4363,7 +4659,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SEC-003",
@@ -4402,7 +4700,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SEC-004",
@@ -4441,7 +4741,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-001",
@@ -4480,7 +4782,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-002",
@@ -4501,7 +4805,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-003",
@@ -4540,7 +4846,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-004",
@@ -4579,7 +4887,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-005",
@@ -4618,7 +4928,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-006",
@@ -4657,7 +4969,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-007",
@@ -4696,7 +5010,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-008",
@@ -4735,7 +5051,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-009",
@@ -4774,7 +5092,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-OPS-010",
@@ -4813,7 +5133,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CERT-001",
@@ -4852,7 +5174,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CERT-002",
@@ -4891,7 +5215,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CERT-003",
@@ -4930,7 +5256,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INT-001",
@@ -4980,7 +5308,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INT-002",
@@ -5030,7 +5360,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INT-003",
@@ -5080,7 +5412,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INT-004",
@@ -5130,7 +5464,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-INT-005",
@@ -5180,7 +5516,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-001",
@@ -5230,7 +5568,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-002",
@@ -5280,7 +5620,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-003",
@@ -5330,7 +5672,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-004",
@@ -5380,7 +5724,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-005",
@@ -5430,7 +5776,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-006",
@@ -5480,7 +5828,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-007",
@@ -5530,7 +5880,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-008",
@@ -5580,7 +5932,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WSCA-009",
@@ -5630,7 +5984,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WUA-001",
@@ -5680,7 +6036,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WUA-002",
@@ -5730,7 +6088,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WUA-003",
@@ -5780,7 +6140,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WUA-004",
@@ -5830,7 +6192,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-WUA-005",
@@ -5880,7 +6244,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REV-001",
@@ -5930,7 +6296,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REV-002",
@@ -5980,7 +6348,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REV-003",
@@ -6030,7 +6400,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REV-004",
@@ -6080,7 +6452,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-FMT-001",
@@ -6130,7 +6504,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-001",
@@ -6180,7 +6556,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-002",
@@ -6230,7 +6608,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-003",
@@ -6280,7 +6660,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-004",
@@ -6330,7 +6712,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-005",
@@ -6380,7 +6764,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-006",
@@ -6430,7 +6816,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-LOG-007",
@@ -6480,7 +6868,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-EDP-001",
@@ -6530,7 +6920,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-EDP-002",
@@ -6580,7 +6972,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-EDP-003",
@@ -6630,7 +7024,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SIG-001",
@@ -6662,7 +7058,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SIG-002",
@@ -6694,7 +7092,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SIG-003",
@@ -6726,7 +7126,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SCA-001",
@@ -6758,7 +7160,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-SCA-002",
@@ -6790,7 +7194,9 @@
       "applicableUseCases": [
         "esignature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PORT-001",
@@ -6840,7 +7246,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PSEU-001",
@@ -6872,7 +7280,9 @@
       "applicableUseCases": [
         "pseudonym"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PSEU-002",
@@ -6904,7 +7314,9 @@
       "applicableUseCases": [
         "pseudonym"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-001",
@@ -6954,7 +7366,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-002",
@@ -7004,7 +7418,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-003",
@@ -7054,7 +7470,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-004",
@@ -7104,7 +7522,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-005",
@@ -7154,7 +7574,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-006",
@@ -7204,7 +7626,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-VULN-007",
@@ -7254,7 +7678,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CSEC-001",
@@ -7304,7 +7730,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CSEC-002",
@@ -7354,7 +7782,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CSEC-003",
@@ -7404,7 +7834,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CSEC-004",
@@ -7454,7 +7886,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CSEC-005",
@@ -7504,7 +7938,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REC-001",
@@ -7554,7 +7990,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-REC-002",
@@ -7604,7 +8042,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-CONF-001",
@@ -7654,7 +8094,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PUB-001",
@@ -7704,7 +8146,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PUB-002",
@@ -7754,7 +8198,9 @@
         "proximity-id",
         "representation"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": true,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-001",
@@ -7775,7 +8221,9 @@
         "authentication",
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-002",
@@ -7796,7 +8244,9 @@
         "presentation",
         "proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-003",
@@ -7817,7 +8267,9 @@
         "presentation",
         "authentication"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-004",
@@ -7837,7 +8289,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-005",
@@ -7857,7 +8311,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-006",
@@ -7877,7 +8333,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-007",
@@ -7897,7 +8355,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-008",
@@ -7918,7 +8378,9 @@
         "presentation",
         "authentication"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-009",
@@ -7938,7 +8400,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-010",
@@ -7959,7 +8423,9 @@
         "presentation",
         "privacy"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-011",
@@ -7979,7 +8445,9 @@
       "applicableUseCases": [
         "issuance"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-012",
@@ -7999,7 +8467,9 @@
       "applicableUseCases": [
         "issuance"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-013",
@@ -8019,7 +8489,9 @@
       "applicableUseCases": [
         "issuance"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-014",
@@ -8040,7 +8512,9 @@
         "issuance",
         "authentication"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-015",
@@ -8060,7 +8534,9 @@
       "applicableUseCases": [
         "issuance"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-016",
@@ -8080,7 +8556,9 @@
       "applicableUseCases": [
         "issuance"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-017",
@@ -8101,7 +8579,9 @@
         "presentation",
         "proximity"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-018",
@@ -8121,7 +8601,9 @@
       "applicableUseCases": [
         "presentation"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-019",
@@ -8142,7 +8624,9 @@
         "presentation",
         "signature"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-020",
@@ -8163,7 +8647,9 @@
         "presentation",
         "privacy"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-021",
@@ -8183,7 +8669,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-022",
@@ -8203,7 +8691,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-023",
@@ -8223,7 +8713,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-024",
@@ -8243,7 +8735,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-025",
@@ -8263,7 +8757,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     },
     {
       "id": "WP-PROT-026",
@@ -8283,7 +8779,9 @@
       "applicableUseCases": [
         "data_management"
       ],
-      "appliesToAllUseCases": false
+      "appliesToAllUseCases": false,
+      "profileFilter": null,
+      "appliesToAllProfiles": true
     }
   ],
   "requirementIndex": {

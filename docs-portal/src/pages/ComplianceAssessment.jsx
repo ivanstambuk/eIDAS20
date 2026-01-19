@@ -248,6 +248,49 @@ function RoleSelector({ roles, selectedRole, onSelect }) {
     );
 }
 
+function ProfileSelector({ role, selectedProfiles, onToggleProfile }) {
+    // If role has no profiles, don't render anything
+    if (!role?.profiles || role.profiles.length === 0) {
+        return null;
+    }
+
+    const allSelected = selectedProfiles.length === 0 || selectedProfiles.length === role.profiles.length;
+
+    return (
+        <div className="rca-profile-selector">
+            <h3>Step 1b: Select Your Profile(s) <span className="rca-optional">(optional)</span></h3>
+            <p className="rca-selector-hint">
+                Filter requirements based on your organization's specific context. Select all that apply.
+            </p>
+            <div className="rca-profile-options">
+                <label className="rca-profile-option all-profiles">
+                    <input
+                        type="checkbox"
+                        checked={allSelected}
+                        onChange={() => onToggleProfile('all')}
+                    />
+                    <span className="rca-profile-icon">📋</span>
+                    <span className="rca-profile-label">All Profiles</span>
+                    <span className="rca-profile-desc">Show requirements for all profile types</span>
+                </label>
+                {role.profiles.map(profile => (
+                    <label key={profile.id} className="rca-profile-option">
+                        <input
+                            type="checkbox"
+                            checked={selectedProfiles.includes(profile.id) || allSelected}
+                            disabled={allSelected}
+                            onChange={() => onToggleProfile(profile.id)}
+                        />
+                        <span className="rca-profile-icon">{profile.icon}</span>
+                        <span className="rca-profile-label">{profile.label}</span>
+                        <span className="rca-profile-desc">{profile.description}</span>
+                    </label>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function CategoryFilter({ categories, activeCategories, onToggle }) {
     return (
         <div className="rca-category-filter">
@@ -514,11 +557,39 @@ export default function ComplianceAssessment() {
 
     // Selection state
     const [selectedRole, setSelectedRole] = useState('relying_party');
+    const [selectedProfiles, setSelectedProfiles] = useState([]); // Empty = all profiles
     const [selectedUseCases, setSelectedUseCases] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [assessments, setAssessments] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [exportHistory, setExportHistory] = useState([]);
+
+    // Get the currently selected role object
+    const selectedRoleObj = useMemo(() => {
+        return data?.roles?.find(r => r.id === selectedRole) || null;
+    }, [data, selectedRole]);
+
+    // Reset profiles when role changes
+    const handleRoleChange = useCallback((roleId) => {
+        setSelectedRole(roleId);
+        setSelectedProfiles([]); // Reset to "all profiles" when role changes
+        setShowResults(false);
+    }, []);
+
+    // Toggle profile selection
+    const handleToggleProfile = useCallback((profileId) => {
+        if (profileId === 'all') {
+            setSelectedProfiles([]);
+        } else {
+            setSelectedProfiles(prev => {
+                if (prev.includes(profileId)) {
+                    return prev.filter(id => id !== profileId);
+                } else {
+                    return [...prev, profileId];
+                }
+            });
+        }
+    }, []);
 
     // Load saved assessments and export history from localStorage
     useEffect(() => {
@@ -606,7 +677,7 @@ export default function ComplianceAssessment() {
         }));
     }, []);
 
-    // Get applicable requirements based on selection
+    // Get applicable requirements based on selection (role, profiles, use cases)
     const applicableRequirements = useMemo(() => {
         if (!data || !selectedRole || selectedUseCases.length === 0) return [];
 
@@ -620,9 +691,29 @@ export default function ComplianceAssessment() {
             if (reqs) reqs.forEach(id => reqIds.add(id));
         }
 
-        // Return full requirement objects
-        return data.requirements.filter(r => reqIds.has(r.id));
-    }, [data, selectedRole, selectedUseCases]);
+        // Get requirements and filter by profiles
+        return data.requirements.filter(r => {
+            // Must be in the use case set
+            if (!reqIds.has(r.id)) return false;
+
+            // Profile filtering:
+            // - If selectedProfiles is empty, show ALL requirements (all profiles)
+            // - If requirement has no profileFilter (appliesToAllProfiles), always show
+            // - If requirement has profileFilter, only show if at least one selected profile matches
+            if (selectedProfiles.length === 0) {
+                // All profiles selected - show everything
+                return true;
+            }
+
+            if (r.appliesToAllProfiles || !r.profileFilter) {
+                // Requirement applies to all profiles - always show
+                return true;
+            }
+
+            // Check if any selected profile matches
+            return r.profileFilter.some(pf => selectedProfiles.includes(pf));
+        });
+    }, [data, selectedRole, selectedProfiles, selectedUseCases]);
 
     // Get role label
     const getRoleLabel = useCallback(() => {
@@ -748,7 +839,13 @@ export default function ComplianceAssessment() {
                     <RoleSelector
                         roles={data.roles}
                         selectedRole={selectedRole}
-                        onSelect={setSelectedRole}
+                        onSelect={handleRoleChange}
+                    />
+
+                    <ProfileSelector
+                        role={selectedRoleObj}
+                        selectedProfiles={selectedProfiles}
+                        onToggleProfile={handleToggleProfile}
                     />
 
                     <div className="rca-usecase-section">

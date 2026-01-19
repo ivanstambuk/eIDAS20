@@ -118,6 +118,125 @@
 }
 
 /* ============================================================================
+   Profile Selector
+   ============================================================================ */
+
+.rca-profile-selector {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.rca-profile-selector h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.rca-optional {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.rca-profile-options {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.rca-profile-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    flex: 1;
+    max-width: 280px;
+}
+
+.rca-profile-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(34, 211, 238, 0.3);
+}
+
+.rca-profile-option:has(input:checked) {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.5);
+}
+
+.rca-profile-option:has(input:disabled) {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.rca-profile-option.all-profiles {
+    background: rgba(255, 255, 255, 0.06);
+    border-style: dashed;
+}
+
+.rca-profile-option.all-profiles:has(input:checked) {
+    background: rgba(34, 211, 238, 0.15);
+    border-style: solid;
+    border-color: #22d3ee;
+}
+
+.rca-profile-option input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #22d3ee;
+}
+
+.rca-profile-option input:disabled {
+    cursor: default;
+}
+
+.rca-profile-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.rca-profile-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.rca-profile-desc {
+    display: none; /* Hide by default for compact view */
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Show description on larger screens */
+@media (min-width: 1024px) {
+    .rca-profile-option {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    
+    .rca-profile-option > input {
+        position: absolute;
+        margin-left: auto;
+    }
+    
+    .rca-profile-desc {
+        display: block;
+    }
+}
+
+/* ============================================================================
    Category Filter (Pill Buttons)
    ============================================================================ */
 
