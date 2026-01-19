@@ -15,7 +15,7 @@
 # AUDIT: 2026-01-19 - Initial file created. Pending systematic audit.
 # Schema version 1 - Initial structure
 
-schemaVersion: 4
+schemaVersion: 5
 
 # Requirement categories for grouping in the UI
 categories:
@@ -2220,4 +2220,533 @@ requirements:
     roles:
       - wallet_provider
     useCases: all
+
+  # ============================================================================
+  # PROTOCOL AND INTERFACE REQUIREMENTS (from 2024/2982)
+  # Source: Implementing Regulation (EU) 2024/2982
+  # ============================================================================
+
+  - id: WP-PROT-001
+    category: interoperability
+    requirement: "Authenticate and validate wallet-relying party access certificates"
+    explanation: |
+      Wallet units must authenticate and validate wallet-relying party access 
+      certificates when interacting with wallet-relying parties.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Regarding the protocols and interfaces referred to in Articles 4 and 5, 
+      wallet providers shall ensure that wallet units: (1) authenticate and 
+      validate the wallet-relying party access certificates where interacting 
+      with wallet-relying parties.
+    roles:
+      - wallet_provider
+    useCases:
+      - authentication
+      - presentation
+
+  - id: WP-PROT-002
+    category: interoperability
+    requirement: "Authenticate and validate wallet unit attestations of other wallets"
+    explanation: |
+      Wallet units must authenticate and validate the wallet unit attestations 
+      of other wallet units when interacting with them.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "2"
+    legalText: |
+      [...] (2) authenticate and validate the wallet unit attestations of 
+      other wallet units where interacting with other wallet units.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - proximity
+
+  - id: WP-PROT-003
+    category: interoperability
+    requirement: "Authenticate and validate requests using RP certificates or WUA"
+    explanation: |
+      Wallet units must authenticate and validate requests made using 
+      wallet-relying party access certificates or wallet unit attestations.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "3"
+    legalText: |
+      [...] (3) authenticate and validate requests made using wallet-relying 
+      party access certificates or wallet unit attestations from other wallet 
+      units, where applicable.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - authentication
+
+  - id: WP-PROT-004
+    category: interoperability
+    requirement: "Authenticate and validate wallet-relying party registration certificate"
+    explanation: |
+      Wallet units must authenticate and validate the wallet-relying party 
+      registration certificate where applicable.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "4"
+    legalText: |
+      [...] (4) authenticate and validate the wallet-relying party 
+      registration certificate, where applicable.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-005
+    category: transparency
+    requirement: "Display RP access certificate information to users"
+    explanation: |
+      Wallet units must display to wallet users information contained in 
+      wallet-relying party access certificates or wallet unit attestations.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "5"
+    legalText: |
+      [...] (5) display to wallet users information contained in the 
+      wallet-relying party access certificates or in the wallet unit attestations.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-006
+    category: transparency
+    requirement: "Display requested attributes to users"
+    explanation: |
+      Wallet units must display to wallet users the attributes they are 
+      requested to present.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "6"
+    legalText: |
+      [...] (6) display to wallet users, where applicable, the attributes 
+      that wallet users are requested to present.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-007
+    category: transparency
+    requirement: "Display RP registration certificate information to users"
+    explanation: |
+      Wallet units must display to wallet users information contained in 
+      the wallet-relying party registration certificate.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "7"
+    legalText: |
+      [...] (7) display to wallet users, where applicable, information 
+      contained in the wallet-relying party registration certificate.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-008
+    category: interoperability
+    requirement: "Present wallet unit attestations to requesting parties"
+    explanation: |
+      Wallet units must present wallet unit attestations to wallet-relying 
+      parties or other wallet units that request it.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "8"
+    legalText: |
+      [...] (8) present wallet unit attestations of the wallet unit to 
+      wallet-relying parties or wallet units that request it.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - authentication
+
+  - id: WP-PROT-009
+    category: security
+    requirement: "Verify prerequisites before presenting attributes"
+    explanation: |
+      Wallet units must not present any requested attributes until: 
+      (a) WSCA has authenticated user identity, (b) embedded disclosure 
+      policies processed, (c) user has approved the presentation.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "9"
+    legalText: |
+      [...] (9) do not present any requested attributes to wallet-relying 
+      parties or wallet units until the following requirements are met: 
+      (a) verify the wallet secure cryptographic application has authenticated 
+      the identity of the wallet user; (b) verify embedded disclosure policies 
+      have been processed within the wallet unit in accordance with Article 11 
+      of Implementing Regulation (EU) 2024/2979, where applicable; (c) verify 
+      wallet users have partially or in full approved the presentation.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-010
+    category: privacy
+    requirement: "Enable privacy-preserving unlinkability for attestations"
+    explanation: |
+      Wallet units must enable privacy preserving techniques ensuring 
+      unlinkability when presenting attestations across different relying 
+      parties where user identification is not required.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "10"
+    legalText: |
+      [...] (10) enable privacy preserving techniques which ensure 
+      unlinkability where the electronic attestations of attributes do not 
+      require the identification of the wallet user, when presenting 
+      attestations or person identification data across different 
+      wallet-relying parties.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - privacy
+
+  - id: WP-PROT-011
+    category: interoperability
+    requirement: "Support protocols for PID and EAA issuance"
+    explanation: |
+      Wallet providers must ensure wallet solutions support protocols and 
+      interfaces for the issuance of person identification data and 
+      electronic attestations of attributes.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols 
+      and interfaces for the issuance of person identification data and 
+      electronic attestations of attributes to wallet units.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+
+  - id: WP-PROT-012
+    category: security
+    requirement: "Request issuance only from parties with valid access certificates"
+    explanation: |
+      Wallet units must request issuance of PID and EAA only from parties 
+      having authentic and valid wallet-relying party access certificates 
+      attesting them as authorized providers.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall ensure that wallet units request issuance of 
+      person identification data and electronic attestations of attributes 
+      only from parties having an authentic and valid wallet-relying party 
+      access certificate attesting them as: (a) a provider of person 
+      identification data; (b) a provider of a qualified electronic 
+      attestation of attributes; (c) a provider of an electronic attestation 
+      of attributes issued by or on behalf of a public sector body 
+      responsible for an authentic source; or (d) a provider of non-qualified 
+      electronic attestations of attributes.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+
+  - id: WP-PROT-013
+    category: interoperability
+    requirement: "Request attestations in all available formats"
+    explanation: |
+      When providers enable issuance in multiple formats, wallet units must 
+      request PID/EAA in all formats per Article 8 of 2024/2979.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "3(a)"
+    legalText: |
+      [...] (a) where wallet users use their wallet unit to request the 
+      issuance of person identification data or of electronic attestations 
+      of attributes from providers [...] that enable issuance of person 
+      identification data or electronic attestations in more than one format, 
+      the wallet unit shall request it in all formats referred to in 
+      Article 8 of Implementing Regulation (EU) 2024/2979.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+
+  - id: WP-PROT-014
+    category: interoperability
+    requirement: "Enable wallet unit authentication to PID/EAA providers"
+    explanation: |
+      Wallet units must enable authentication and validation of wallet unit 
+      components by presenting WUA to PID/EAA providers upon request.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "3(b)"
+    legalText: |
+      [...] (b) where wallet users use their wallet unit to interact with 
+      providers of person identification data or electronic attestations of 
+      attributes, wallet units shall enable authentication and validation of 
+      the wallet unit components by presenting the wallet unit attestations 
+      to those providers upon their request.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+      - authentication
+
+  - id: WP-PROT-015
+    category: security
+    requirement: "Support high assurance verification for PID issuance"
+    explanation: |
+      Wallet solutions must support mechanisms enabling PID providers to 
+      verify issuance, delivery and activation at assurance level high.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "3(c)"
+    legalText: |
+      [...] (c) wallet solutions shall support mechanisms that enable 
+      providers of person identification data to verify issuance, delivery 
+      and activation in compliance with assurance level high requirements 
+      set out in Commission Implementing Regulation (EU) 2015/1502.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+
+  - id: WP-PROT-016
+    category: security
+    requirement: "Verify authenticity and validity of PID and EAA"
+    explanation: |
+      Wallet units must verify the authenticity and validity of person 
+      identification data and electronic attestations of attributes.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 4"
+      paragraph: "3(d)"
+    legalText: |
+      [...] (d) wallet units shall verify the authenticity and validity 
+      of person identification data and electronic attestations of attributes.
+    roles:
+      - wallet_provider
+    useCases:
+      - issuance
+
+  - id: WP-PROT-017
+    category: interoperability
+    requirement: "Support presentation protocols per ISO standards"
+    explanation: |
+      Wallet solutions must support protocols and interfaces for presenting 
+      attributes to wallet-relying parties remotely and in proximity per 
+      ISO/IEC 18013-5:2021 and ISO/IEC TS 18013-7:2024.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols 
+      and interfaces for the presentation of attributes to wallet-relying 
+      parties, remotely, and where appropriate in proximity, in accordance 
+      with the standards set out in the Annex.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - proximity
+
+  - id: WP-PROT-018
+    category: interoperability
+    requirement: "Respond to authenticated and validated RP requests"
+    explanation: |
+      At user request, wallet units must respond to successfully authenticated 
+      and validated requests from wallet-relying parties per ISO standards.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall ensure that, at the request of users, wallet 
+      units respond to successfully authenticated and validated requests 
+      from wallet-relying parties referred to in Article 3, in accordance 
+      with the standards set out in the Annex.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+
+  - id: WP-PROT-019
+    category: security
+    requirement: "Support proof of private key possession for cryptographic bindings"
+    explanation: |
+      Wallet units must support proving possession of private keys 
+      corresponding to public keys used in cryptographic bindings.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure that wallet units support proving the 
+      possession of private keys corresponding to public keys used in 
+      cryptographic bindings.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - signature
+
+  - id: WP-PROT-020
+    category: privacy
+    requirement: "Support selective disclosure of attributes"
+    explanation: |
+      Wallet solutions must support the selective disclosure of attributes 
+      from personal identification data and electronic attestations.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "4"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the 
+      selective disclosure of attributes of personal identification data 
+      and of electronic attestations of attributes.
+    roles:
+      - wallet_provider
+    useCases:
+      - presentation
+      - privacy
+
+  - id: WP-PROT-021
+    category: data_protection
+    requirement: "Support data erasure request protocols"
+    explanation: |
+      Wallet units must support protocols allowing users to request 
+      erasure of personal data from wallet-relying parties per GDPR Art.17.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 6"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units support protocols and 
+      interfaces allowing wallet users to request from wallet-relying parties, 
+      with whom they have interacted through those wallet units, the erasure 
+      of their personal data provided through those wallet units, in 
+      accordance with Article 17 of Regulation (EU) 2016/679.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
+
+  - id: WP-PROT-022
+    category: data_protection
+    requirement: "Allow user selection of RPs for erasure requests"
+    explanation: |
+      The data erasure protocols must allow wallet users to select which 
+      wallet-relying parties should receive erasure requests.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 6"
+      paragraph: "2"
+    legalText: |
+      The protocols and interfaces referred to in paragraph 1 shall allow 
+      wallet users to select the wallet-relying parties to which data 
+      erasure requests are to be submitted.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
+
+  - id: WP-PROT-023
+    category: transparency
+    requirement: "Display previously submitted erasure requests"
+    explanation: |
+      Wallet units must display to wallet users previously submitted 
+      data erasure requests made through those wallet units.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 6"
+      paragraph: "3"
+    legalText: |
+      Wallet units shall display to the wallet user previously submitted 
+      data erasure requests made through those wallet units.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
+
+  - id: WP-PROT-024
+    category: data_protection
+    requirement: "Enable easy reporting of RPs to DPAs"
+    explanation: |
+      Wallet units must allow users to easily report wallet-relying parties 
+      to supervisory authorities under GDPR Article 51.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 7"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units allow wallet users to 
+      easily report wallet-relying parties to supervisory authorities 
+      established under Article 51 of Regulation (EU) 2016/679.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
+
+  - id: WP-PROT-025
+    category: interoperability
+    requirement: "Implement RP reporting per national procedural laws"
+    explanation: |
+      Wallet providers must implement RP reporting protocols in compliance 
+      with national procedural laws of Member States.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 7"
+      paragraph: "2"
+    legalText: |
+      Wallet providers shall implement the protocols and interfaces for 
+      reporting wallet-relying parties in compliance with national 
+      procedural laws of the Member States.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
+
+  - id: WP-PROT-026
+    category: data_protection
+    requirement: "Allow users to substantiate RP reports with attachments"
+    explanation: |
+      Wallet units must allow users to substantiate reports by attaching 
+      relevant information to identify RPs and claims in machine-readable format.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 7"
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure that wallet units allow wallet users to 
+      substantiate the reports, including by attaching relevant information 
+      to identify the wallet-relying parties, and the wallet users' claims 
+      in machine-readable format.
+    roles:
+      - wallet_provider
+    useCases:
+      - data_management
 

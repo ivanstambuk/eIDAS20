@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Wallet Provider requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 105
-**Schema Version:** 4
+**Current Requirements Count:** 131
+**Schema Version:** 5
 **Verification Status:** 🔍 AUDIT IN PROGRESS
 
 ---
@@ -286,14 +286,15 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | |
-| Art. 3 | General provisions | ⬜ | | **PRIMARY SOURCE** - wallet authentication |
-| Art. 4 | Issuance of PID and EAA | ⬜ | | **PRIMARY SOURCE** - wallet interface |
-| Art. 5 | Presentation of attributes | ⬜ | | **PRIMARY SOURCE** - wallet presentation |
-| Art. 6 | Data erasure requests | ⬜ | | **PRIMARY SOURCE** - wallet data rights |
-| Art. 7 | Reporting to supervisory authorities | ⬜ | | **PRIMARY SOURCE** - user reporting |
-| Annex | Protocol standards | ⬜ | | **PRIMARY SOURCE** |
+| Art. 1 | Subject matter and scope | ➖ | | Scope definition |
+| Art. 2 | Definitions | ➖ | | Term definitions |
+| Art. 3 | General provisions | ✅ | WP-PROT-001 to WP-PROT-010 | 10 authentication/validation requirements |
+| Art. 4 | Issuance of PID and EAA | ✅ | WP-PROT-011 to WP-PROT-016 | 6 issuance protocol requirements |
+| Art. 5 | Presentation of attributes | ✅ | WP-PROT-017 to WP-PROT-020 | 4 presentation requirements |
+| Art. 6 | Data erasure requests | ✅ | WP-PROT-021 to WP-PROT-023 | 3 erasure protocol requirements |
+| Art. 7 | Reporting to supervisory authorities | ✅ | WP-PROT-024 to WP-PROT-026 | 3 DPA reporting requirements |
+| Art. 8 | Entry into force | ➖ | | Dates |
+| Annex | Protocol standards | ✅ | Referenced by Art. 5 | ISO/IEC 18013-5:2021, ISO/IEC TS 18013-7:2024 |
 
 ---
 
