@@ -1499,6 +1499,116 @@ class TestGrSeqExtraction(unittest.TestCase):
         self.assertEqual(len(lines), 0)
 
 
+class TestConsAnnexExtraction(unittest.TestCase):
+    """Test CONS.ANNEX content extraction for consolidated documents.
+    
+    CONS.ANNEX (consolidated annex) elements are used in consolidated documents
+    like the main eIDAS Regulation (02014R0910-20241018). They have a different
+    structure from regular ANNEX elements:
+    
+    Regular ANNEX:  CONTENTS > LIST > ITEM
+    CONS.ANNEX:     CONTENTS > P > LIST > ITEM  (LIST inside P!)
+    
+    This was discovered in Jan 2026 when Annex V content was missing.
+    """
+    
+    def test_cons_annex_list_inside_p_extracted(self):
+        """
+        BUG FIX: CONS.ANNEX elements have LIST nested inside P elements,
+        not as direct children of CONTENTS. The converter must handle both:
+          - CONTENTS > LIST (direct)
+          - CONTENTS > P > LIST (inside P - CONS.ANNEX structure)
+        """
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Simulate CONS.ANNEX structure from consolidated eIDAS Regulation
+        # This is the structure of Annex V with LIST inside P
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <CONS.ACT>
+            <CONS.ANNEX>
+                <TITLE>
+                    <TI><P>ANNEX V</P></TI>
+                    <STI><P>REQUIREMENTS FOR QUALIFIED ELECTRONIC ATTESTATION OF ATTRIBUTES</P></STI>
+                </TITLE>
+                <CONTENTS>
+                    <P>Qualified electronic attestation of attributes shall contain:</P>
+                    <P>
+                        <LIST TYPE="alpha">
+                            <ITEM><NP><NO.P>(a)</NO.P><TXT>an indication, at least in a form suitable for automated processing;</TXT></NP></ITEM>
+                            <ITEM><NP><NO.P>(b)</NO.P><TXT>a set of data unambiguously representing the provider;</TXT></NP></ITEM>
+                            <ITEM><NP><NO.P>(c)</NO.P><TXT>a set of data unambiguously representing the entity;</TXT></NP></ITEM>
+                        </LIST>
+                    </P>
+                </CONTENTS>
+            </CONS.ANNEX>
+        </CONS.ACT>'''
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # All list items must be extracted
+            self.assertIn("(a)", result, "List item (a) should be extracted from P/LIST")
+            self.assertIn("(b)", result, "List item (b) should be extracted from P/LIST")
+            self.assertIn("(c)", result, "List item (c) should be extracted from P/LIST")
+            
+            # The intro text should also be present
+            self.assertIn("Qualified electronic attestation", result,
+                "Intro paragraph should be extracted")
+            
+            # Verify the content text is present
+            self.assertIn("automated processing", result,
+                "Item (a) content should be extracted")
+            self.assertIn("unambiguously representing the provider", result,
+                "Item (b) content should be extracted")
+        finally:
+            os.unlink(temp_path)
+    
+    def test_regular_annex_structure_still_works(self):
+        """
+        Regression test: Regular ANNEX structure (LIST as direct child of CONTENTS)
+        should still work after the CONS.ANNEX fix.
+        """
+        from formex_to_md_v3 import convert_formex_to_md
+        import tempfile
+        import os
+        
+        # Regular ANNEX structure (LIST directly under CONTENTS)
+        xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
+        <ACT>
+            <TITLE><TI><P>Test</P></TI></TITLE>
+            <ANNEX>
+                <TI.ANNEX>ANNEX I</TI.ANNEX>
+                <CONTENTS>
+                    <LIST TYPE="arabic">
+                        <ITEM><NP><NO.P>1.</NO.P><TXT>First requirement;</TXT></NP></ITEM>
+                        <ITEM><NP><NO.P>2.</NO.P><TXT>Second requirement;</TXT></NP></ITEM>
+                    </LIST>
+                </CONTENTS>
+            </ANNEX>
+        </ACT>'''
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(xml_content)
+            temp_path = f.name
+        
+        try:
+            result = convert_formex_to_md(temp_path, None)
+            
+            # List items should be extracted
+            self.assertIn("1.", result, "List item 1 should be extracted")
+            self.assertIn("2.", result, "List item 2 should be extracted")
+            self.assertIn("First requirement", result)
+            self.assertIn("Second requirement", result)
+        finally:
+            os.unlink(temp_path)
+
+
 if __name__ == '__main__':
     # Run with verbose output
     unittest.main(verbosity=2)

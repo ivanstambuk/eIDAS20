@@ -408,6 +408,25 @@ See `.agent/workflows/` for detailed instructions.
 
 **See:** [Content Rules 33-38](.agent/docs/rules/content-rules.md) for full import protocols.
 
+### ⚠️ Check Source Field Before Debugging Converters
+
+**BEFORE touching any converter code**, check which converter is actually used:
+
+```bash
+grep -A2 "celex: <CELEX_NUMBER>" scripts/documents.yaml
+```
+
+The `source:` field tells you which converter generates the document:
+- `source: formex` → `formex_to_md_v3.py` (most documents)
+- `source: html` → `eurlex_html_to_md.py` (older documents without Formex)
+- `source: manual` → No converter, manually maintained
+
+**Anti-pattern:**
+- ❌ See issue in Markdown → Check EUR-Lex HTML → Modify HTML converter → Discover document uses Formex
+
+**Correct pattern:**
+- ✅ Check `documents.yaml` source field FIRST → Modify correct converter
+
 ### Formex Multi-Part Document Handling
 
 When importing EUR-Lex documents via `eurlex_formex.py`, the script handles multi-part Formex ZIP archives:

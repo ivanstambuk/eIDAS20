@@ -1461,7 +1461,11 @@ def convert_formex_to_md(xml_path, output_path=None):
                     md_lines.extend(list_lines)
                     if list_lines:
                         md_lines.append("")
-                # Also process LIST elements inside P elements (CONS.ANNEX structure)
+                # ⚠️ CONS.ANNEX STRUCTURE: Consolidated documents (e.g., 02014R0910-20241018)
+                # use CONS.ANNEX elements where LIST is nested INSIDE P elements:
+                #   CONTENTS > P > LIST  (not CONTENTS > LIST)
+                # This differs from regular ANNEX which uses direct LIST children.
+                # Only the consolidated eIDAS regulation currently uses CONS.ANNEX.
                 for list_elem in contents.findall('P/LIST'):
                     list_lines = process_list_nested(list_elem, base_indent="", level=0)
                     md_lines.extend(list_lines)
