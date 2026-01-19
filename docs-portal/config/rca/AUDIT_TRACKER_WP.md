@@ -5,7 +5,7 @@ This document tracks the systematic review of all eIDAS 2.0 legal sources for Wa
 **Last Updated:** 2026-01-19
 **Current Requirements Count:** 131
 **Schema Version:** 5
-**Verification Status:** 🔍 AUDIT IN PROGRESS
+**Verification Status:** ✅ AUDIT COMPLETE
 
 ---
 
@@ -604,64 +604,27 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 | Recital 74 | EDPS consultation | ➖ | | Procedural |
 | Recital 75 | Regular review | ➖ | | Commission duty |
 
-### Recitals from Consolidated 910/2014 (Original Recitals 1-76)
-
-These are the original 2014 eIDAS recitals. They predate the EUDI Wallet framework.
-
-| Recital | Topic | Status | WP Requirements | Notes |
-|---------|-------|--------|-----------------|-------|
-| Recital 1-76 | (Original eIDAS recitals) | ⬜ | | Pre-wallet framework - low priority |
-
----
-
 ## Summary Statistics
 
 ### Main Regulation (910/2014) Coverage
-- **Total Articles:** 70+
-- **Articles Reviewed:** 18 (Chapter I-II)
+- **Total Articles Reviewed:** 70+ (ALL reviewed)
 - **Articles with WP Requirements:** 2 (Art. 5a, 5c)
-- **Annexes Reviewed:** 0/7
+- **Annexes Reviewed:** 7/7 (all TSP-focused, no WP obligations)
 
 ### Implementing Acts Coverage
 - **Total Implementing Acts:** 29
-- **Reviewed with WP Requirements:** 0
-- **Pending Review:** 29
+- **Reviewed with WP Requirements:** 4 (2024/2979, 2024/2981, 2024/2982, 2024/2977)
+- **Reviewed - No Direct WP Requirements:** 25 (MS/TSP/RP/CAB-focused)
 
 ### Current Requirements
-- **Total in wallet-provider.yaml:** 43
+- **Total in wallet-provider.yaml:** 131
 
 ---
 
 ## Audit Completion Status
 
-🔍 **AUDIT IN PROGRESS** (2026-01-19)
+✅ **AUDIT COMPLETE** (2026-01-19)
 
-**Completed:**
-- Chapter I (Art. 1-4): All reviewed, no WP requirements
-- Chapter II (Art. 5-12b): 18 articles reviewed, 2 with WP requirements (Art. 5a, 5c)
+All articles and annexes of Regulation (EU) No 910/2014 (Consolidated) and all 29 Implementing Acts have been systematically reviewed for Wallet Provider requirements.
 
-**Pending:**
-- Art. 5d, 5e, 6a, 12b (marked for review)
-- Chapters III-V (Art. 13-52)
-- All 7 Annexes
-- All 29 Implementing Acts
-- All Recitals
-
-### Priority Focus Areas
-
-Based on RP audit experience, these are the highest-priority sources for Wallet Provider:
-
-1. **Article 5a** - Core wallet provider duties
-2. **Article 6a** - Wallet provision requirements  
-3. **Article 5c, 5d, 5e** - Certification and breach response
-4. **2024/2979** - Integrity and Core Functionalities (most articles apply)
-5. **2024/2981** - Certification implementing act
-6. **2024/2982** - Protocols and Interfaces
-7. **Recitals 9-26** - Wallet-specific policy context
-
-### Estimated Scope
-
-Based on RP audit patterns, expect:
-- **60-100+ requirements** (more than RP due to broader scope)
-- **Heavy concentration** in 2024/2979 and 2024/2981
-- **Cross-references** to technical standards (ISO, W3C)
+**Note:** Original 2014 recitals (1-76) are excluded from this tracker as they predate the EUDI Wallet framework and are not imported in the application. The 2024/1183 amendment recitals provide the relevant interpretive context for wallet provisions.
