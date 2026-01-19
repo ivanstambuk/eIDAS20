@@ -168,7 +168,7 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             >
                 <span className="rca-legal-ref">
                     {legalBasis?.article}
-                    {legalBasis?.paragraph && `, ${legalBasis.paragraph}`}
+                    {legalBasis?.paragraph && `(${legalBasis.paragraph})`}
                 </span>
                 <span className="rca-legal-reg">
                     Reg. {legalBasis?.regulation}
