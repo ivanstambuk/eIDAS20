@@ -7,9 +7,10 @@
     "dev": "vite",
     "validate:config": "node scripts/validate-documents.js",
     "validate:css": "node scripts/validate-css-classes.js",
-    "build": "npm run validate:config && npm run validate:css && node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
+    "build": "npm run validate:config && npm run validate:css && node scripts/build-content.js && node scripts/build-terminology.js && node scripts/build-rca.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:content": "node scripts/build-content.js",
     "build:terminology": "node scripts/build-terminology.js",
+    "build:rca": "node scripts/build-rca.js",
     "build:search": "node scripts/build-search-index.js",
     "build:embeddings": "node scripts/build-embeddings.js",
     "build:citations": "node scripts/build-citations.js",
@@ -32,7 +33,8 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "unified": "^11.0.5",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

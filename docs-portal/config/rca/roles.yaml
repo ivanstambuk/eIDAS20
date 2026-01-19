@@ -1,0 +1,31 @@
+# RCA Configuration: Roles
+# Entities that interact with the EUDI Wallet ecosystem
+
+roles:
+  relying_party:
+    label: "Relying Party"
+    shortLabel: "RP"
+    description: "Entity accepting wallet credentials for authentication/verification"
+    icon: "🏢"
+    enabled: true
+
+  issuer:
+    label: "EAA Issuer"
+    shortLabel: "Issuer"
+    description: "Entity issuing electronic attestations of attributes"
+    icon: "📜"
+    enabled: true
+
+  wallet_provider:
+    label: "Wallet Provider"
+    shortLabel: "WP"
+    description: "Entity providing the wallet application"
+    icon: "📱"
+    enabled: false  # Future - not yet implemented
+
+  pid_provider:
+    label: "PID Provider"
+    shortLabel: "PID"
+    description: "Member State entity issuing Person Identification Data"
+    icon: "🏛️"
+    enabled: false  # Future - not yet implemented

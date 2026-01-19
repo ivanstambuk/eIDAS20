@@ -1,0 +1,174 @@
+# RCA Configuration: Use Cases
+# Source: EC Use Case Manuals
+# https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals
+
+categories:
+  core:
+    label: "Core functionality"
+    order: 1
+  banking:
+    label: "Banking & payment"
+    order: 2
+  travel:
+    label: "Travel"
+    order: 3
+  health:
+    label: "Health & social security"
+    order: 4
+  consumer:
+    label: "Consumer"
+    order: 5
+  education:
+    label: "Education"
+    order: 6
+  identification:
+    label: "Identification"
+    order: 7
+  legal:
+    label: "Legal representation"
+    order: 8
+
+useCases:
+  # === Core functionality ===
+  pid-online:
+    name: "PID-based identification in online services"
+    description: "Secure identification to an online service using the PID stored in an EUDI Wallet."
+    category: core
+    status: coming_soon
+    ecManualUrl: null
+
+  pseudonym:
+    name: "Use of a pseudonym in online services"
+    description: "Interact with digital platforms without revealing your full identity, unless legally or functionally required to."
+    category: core
+    status: coming_soon
+    ecManualUrl: null
+
+  esignature:
+    name: "eSignature"
+    description: "Create advanced electronic signatures with the same legal validity as a handwritten signature."
+    category: core
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Banking & payment ===
+  payment-auth:
+    name: "Online payment authorisation"
+    description: "Enables online payments to be authorised via an EUDI Wallet."
+    category: banking
+    status: coming_soon
+    ecManualUrl: null
+    # Links to TS12 for PSD2 SCA requirements
+    technicalSpecs:
+      - TS12
+
+  open-bank-account:
+    name: "Open bank account"
+    description: "Enables individuals to open a bank account online using their EUDI Wallet."
+    category: banking
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Travel ===
+  mdl:
+    name: "Mobile Driving Licence (mDL)"
+    description: "Proof of an individual's right to drive a certain kind of vehicle."
+    category: travel
+    status: published
+    ecManualUrl: "https://ec.europa.eu/digital-building-blocks/sites/display/EUDIGITALIDENTITYWALLET/The+mobile+Driving+License+manual"
+
+  dtc:
+    name: "Digital Travel Credential (DTC)"
+    description: "A digital representation of the user's identity document such as an identity card, passport or another travel document."
+    category: travel
+    status: coming_soon
+    ecManualUrl: null
+
+  epc:
+    name: "European Parking Card (EPC)"
+    description: "Issued to persons with disabilities, recognising the right to certain reserved parking conditions and facilities."
+    category: travel
+    status: coming_soon
+    ecManualUrl: null
+
+  vrc:
+    name: "Vehicle Registration Certificate (VRC)"
+    description: "Proves the registration and legal compliance of a vehicle with national and European road transport regulations."
+    category: travel
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Health & social security ===
+  disability-card:
+    name: "European Disability Card"
+    description: "Serves as proof of recognised disability status/entitlement to disability services."
+    category: health
+    status: coming_soon
+    ecManualUrl: null
+
+  eprescription:
+    name: "e-Prescription"
+    description: "Identify yourself in order to access e-prescriptions stored and presented via an EUDI Wallet."
+    category: health
+    status: coming_soon
+    ecManualUrl: null
+
+  ehic:
+    name: "European Health Insurance Card (EHIC)"
+    description: "Grants access to necessary healthcare when in another Member State."
+    category: health
+    status: coming_soon
+    ecManualUrl: null
+
+  public-warnings:
+    name: "Public warnings"
+    description: "Enables trusted public authorities to issue real-time or scheduled warnings and alerts, like for natural disasters."
+    category: health
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Consumer ===
+  age-verification:
+    name: "Age verification"
+    description: "Prove you are above a specific age threshold (e.g., over 16, 18, or 21) using a verifiable digital credential."
+    category: consumer
+    status: coming_soon
+    ecManualUrl: null
+
+  ticket-pass:
+    name: "Ticket or pass"
+    description: "Store, manage, and present digital tickets and access passes, like boarding passes or event tickets."
+    category: consumer
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Education ===
+  edu-credentials:
+    name: "Educational credentials"
+    description: "Store, manage, and present digitally verifiable education-related credentials, like diplomas and certificates."
+    category: education
+    status: coming_soon
+    ecManualUrl: null
+
+  student-card:
+    name: "European student card"
+    description: "Enables students to store and present their student status."
+    category: education
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Identification ===
+  proximity-id:
+    name: "Identification in proximity scenarios"
+    description: "Secure in-person identification for services where the transaction requires strong assurance of identity."
+    category: identification
+    status: coming_soon
+    ecManualUrl: null
+
+  # === Legal representation ===
+  representation:
+    name: "Natural or legal person representation"
+    description: "Enables users to act on behalf of another individual or an organisation using digitally verifiable credentials."
+    category: legal
+    status: coming_soon
+    ecManualUrl: null

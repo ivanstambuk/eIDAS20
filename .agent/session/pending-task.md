@@ -1,219 +1,365 @@
-# Terminology Filtering System (DEC-086)
+# Pending Task: Regulatory Compliance Assessment (RCA) Generator
 
-## Current State
+**Created**: 2026-01-19  
+**Status**: ✅ Phase 1, 2 & 3 Complete — Feature ready for use  
+**Focus**: Relying Party role, 30 requirements across 6 categories
 
-- **Focus**: Multi-dimensional terminology filtering
-- **Status**: 🔵 Implementation plan written
-- **Phase**: Design approved, ready for implementation
+---
 
 ## Overview
 
-Add a 3-dimensional filtering system to the Terminology page:
-1. **Document Type**: eIDAS, Implementing Acts, Recommendations, EU Law (extensible)
-2. **Role**: Holder, PID Provider, Wallet Provider, QTSP, Issuers, CABs, etc.
-3. **Semantic Domain**: Cryptography, Identity, Attestation, Governance, Wallet Ecosystem
+Implement an RCA (Regulatory Compliance Assessment) generator that allows users to:
+1. Select a **role** (e.g., Relying Party, EAA Issuer)
+2. Select **use cases** (e.g., User Identification, PSD2 SCA, Credential Issuance)
+3. Generate a compliance assessment table with:
+   - Human-readable requirement explanations
+   - References to legally binding regulations
+   - Compliance status (Compliant / Non-Compliant / Partial)
+   - Explanation/notes column
+4. Export to **Excel (.xlsx)** with professional formatting (colors, borders)
+5. Export to **Markdown** for documentation
 
-## Design Decisions
+---
 
-- **UI Pattern**: Option C — Floating Filter Bar (sticky, below alphabet nav)
-- **Filter Logic**: Multi-select (non-mutually exclusive), terms shown if they match ANY selected filter in each dimension
-- **No badges on cards**: Filters are for filtering only, term definitions remain visually clean
-- **Role tagging**: Exhaustive manual mapping file (Approach A)
-- **Extensibility**: Config-based document types, not hardcoded
+## Regulatory Hierarchy (Important Distinction)
+
+The user explicitly noted that **ARF is NOT legally binding**. The hierarchy is:
+
+| Level | Document Type | Legally Binding? | Example |
+|-------|--------------|------------------|---------|
+| **1. Regulation** | Primary EU law | ✅ Yes | Regulation (EU) 2024/1183 |
+| **2. Implementing Regulation** | Secondary law | ✅ Yes | 2024/2977 (PID/EAA), 2024/2979 (Integrity), 2024/2981 (Certification) |
+| **3. Technical Specifications** | Detailed specs | ✅ Yes (when adopted) | TS01-TS14 (GitHub repo) |
+| **4. ARF** | Reference framework | ❌ No (guidance only) | ARF v1.5 |
+
+**Key Insight**: Technical Specifications (TS01-TS14) will become legally binding when formally adopted as Implementing Acts. Currently in development phase (March-August 2025).
+
+---
+
+## Official EC Use Cases (19 total, 8 categories)
+
+**Source**: [EC Use Case Manuals](https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/896827987/Use+case+manuals)
+
+### Core functionality (3)
+| ID | Name | Description |
+|----|------|-------------|
+| `pid-online` | PID-based identification in online services | Secure identification to an online service using the PID stored in an EUDI Wallet |
+| `pseudonym` | Use of a pseudonym in online services | Interact with digital platforms without revealing your full identity, unless legally or functionally required to |
+| `esignature` | eSignature | Create advanced electronic signatures with the same legal validity as a handwritten signature |
+
+### Banking & payment (2)
+| ID | Name | Description |
+|----|------|-------------|
+| `payment-auth` | Online payment authorisation | Enables online payments to be authorised via an EUDI Wallet |
+| `open-bank-account` | Open bank account | Enables individuals to open a bank account online using their EUDI Wallet |
+
+### Travel (4)
+| ID | Name | Description |
+|----|------|-------------|
+| `mdl` | Mobile Driving Licence (mDL) | Proof of an individual's right to drive a certain kind of vehicle |
+| `dtc` | Digital Travel Credential (DTC) | A digital representation of the user's identity document such as an identity card, passport or another travel document |
+| `epc` | European Parking Card (EPC) | Issued to persons with disabilities, recognising the right to certain reserved parking conditions and facilities |
+| `vrc` | Vehicle Registration Certificate (VRC) | Proves the registration and legal compliance of a vehicle with national and European road transport regulations |
+
+### Health & social security (4)
+| ID | Name | Description |
+|----|------|-------------|
+| `disability-card` | European Disability Card | Serves as proof of recognised disability status/entitlement to disability services |
+| `eprescription` | e-Prescription | Identify yourself in order to access e-prescriptions stored and presented via an EUDI Wallet |
+| `ehic` | European Health Insurance Card (EHIC) | Grants access to necessary healthcare when in another Member State |
+| `public-warnings` | Public warnings | Enables trusted public authorities to issue real-time or scheduled warnings and alerts, like for natural disasters |
+
+### Consumer (2)
+| ID | Name | Description |
+|----|------|-------------|
+| `age-verification` | Age verification | Prove you are above a specific age threshold (e.g., over 16, 18, or 21) using a verifiable digital credential |
+| `ticket-pass` | Ticket or pass | Store, manage, and present digital tickets and access passes, like boarding passes or event tickets |
+
+### Education (2)
+| ID | Name | Description |
+|----|------|-------------|
+| `edu-credentials` | Educational credentials | Store, manage, and present digitally verifiable education-related credentials, like diplomas and certificates |
+| `student-card` | European student card | Enables students to store and present their student status |
+
+### Identification (1)
+| ID | Name | Description |
+|----|------|-------------|
+| `proximity-id` | Identification in proximity scenarios | Secure in-person identification for services where the transaction requires strong assurance of identity |
+
+### Legal representation (1)
+| ID | Name | Description |
+|----|------|-------------|
+| `representation` | Natural or legal person representation | Enables users to act on behalf of another individual or an organisation using digitally verifiable credentials |
+
+---
+
+## Phase 1 Focus
+
+- **Role**: Relying Party
+- **Priority Use Cases**: 
+  - `pid-online` — PID-based identification in online services
+  - `payment-auth` — Online payment authorisation (TS12/PSD2 SCA)
+  - `open-bank-account` — Open bank account
+
+---
+
+## Template Structure
+
+### RCA Table Columns
+
+| Column | Description |
+|--------|-------------|
+| **ID** | Requirement identifier (e.g., RP-ID-001) |
+| **Category** | Grouping (Registration, Onboarding, Authentication, Data Protection) |
+| **Requirement** | Human-readable explanation (short) |
+| **Legal Basis** | Reference to regulation + article |
+| **Legal Text** | Relevant excerpt (collapsible) |
+| **Compliance Status** | Compliant ✅ / Non-Compliant ❌ / Partial ⚠️ / N/A |
+| **Your Status** | Editable field for organization's assessment |
+| **Evidence/Notes** | Editable field for documentation |
+| **Deadline** | Implementation deadline if applicable |
+
+### Requirement Categories (RP - User Identification)
+
+1. **Registration Requirements**
+   - RP registration with supervisory authority
+   - Data minimization declaration
+   - Use case specification
+
+2. **Technical Requirements**
+   - Wallet Unit Attestation validation
+   - Credential format support (SD-JWT VC, mDoc)
+   - Cryptographic requirements (ES256, ECDH-ES)
+
+3. **Authentication Flow**
+   - OpenID4VP implementation
+   - PID verification
+   - Holder binding validation
+
+4. **Data Protection**
+   - Selective disclosure support
+   - GDPR compliance
+   - Data retention limits
+
+5. **Security Requirements**
+   - Replay attack prevention
+   - Secure transport (TLS 1.3)
+   - Key management
+
+---
+
+## UI Design
+
+### New Tab: "Compliance" (or "RCA")
+
+Location: Sidebar, after "AI Chat" tab
+
+### Page Layout
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  REGULATORY COMPLIANCE ASSESSMENT                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────────┐  ┌──────────────────┐  ┌────────────────┐  │
+│  │ Role        │  │ Use Case         │  │ [Generate RCA] │  │
+│  │ ▼ Relying   │  │ ☑ Identification │  │                │  │
+│  │   Party     │  │ ☑ PSD2 SCA       │  │ [Export XLSX]  │  │
+│  │             │  │ ☐ Issuance       │  │ [Export MD]    │  │
+│  └─────────────┘  └──────────────────┘  └────────────────┘  │
+│                                                             │
+│  ─────────────────────────────────────────────────────────  │
+│                                                             │
+│  Generated Assessment Table (filterable, sortable)         │
+│  ┌────┬──────────┬─────────────────┬──────────┬──────────┐ │
+│  │ ID │ Category │ Requirement     │ Legal    │ Status   │ │
+│  ├────┼──────────┼─────────────────┼──────────┼──────────┤ │
+│  │RP01│ Reg.     │ Register with...│ Art 5b   │ ▼ Select │ │
+│  │RP02│ Tech.    │ Validate WUA... │ 2024/2979│ ▼ Select │ │
+│  └────┴──────────┴─────────────────┴──────────┴──────────┘ │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Technical Implementation
+
+### New Dependencies
+
+```json
+{
+  "xlsx-js-style": "^1.2.0"  // Excel export with styling
+}
+```
+
+### File Structure
+
+```
+docs-portal/
+├── config/
+│   └── rca/
+│       ├── roles.yaml                    # Role definitions
+│       ├── use-cases.yaml                # Use case definitions
+│       └── requirements/
+│           ├── rp-identification.yaml    # RP user identification requirements
+│           ├── rp-psd2-sca.yaml         # RP PSD2 SCA requirements
+│           └── issuer-eaa.yaml          # Issuer EAA requirements
+├── src/
+│   ├── pages/
+│   │   └── ComplianceAssessment.jsx      # Main RCA page
+│   ├── components/
+│   │   └── RCA/
+│   │       ├── RoleSelector.jsx          # Role dropdown
+│   │       ├── UseCaseSelector.jsx       # Use case checkboxes
+│   │       ├── RequirementTable.jsx      # Main table component
+│   │       ├── StatusDropdown.jsx        # Compliance status selector
+│   │       ├── LegalBasisPopover.jsx     # Shows legal text on hover
+│   │       └── ExportButtons.jsx         # XLSX + MD export
+│   └── utils/
+│       └── rca/
+│           ├── exportExcel.js            # xlsx-js-style wrapper
+│           └── exportMarkdown.js         # MD export utility
+└── scripts/
+    └── build-rca-data.js                 # Build-time data processing
+```
+
+### YAML Schema for Requirements
+
+```yaml
+# config/rca/requirements/rp-identification.yaml
+id: rp-identification
+name: "Relying Party - User Identification"
+description: "Requirements for accepting EUDI Wallet for user onboarding and identification"
+role: relying_party
+category: identification
+
+requirements:
+  - id: RP-ID-001
+    category: Registration
+    requirement: "Register with national supervisory authority before accepting EUDI Wallet"
+    legal_basis:
+      regulation: "2024/1183"
+      article: "Article 5b"
+      paragraph: "1"
+    legal_text: |
+      Relying parties intending to rely on European Digital Identity Wallets 
+      shall register with the relevant Member State authority.
+    deadline: "2027-11-21"
+    notes: "In NL: Rijksinspectie Digitale Infrastructuur (RDI)"
+
+  - id: RP-ID-002
+    category: Registration
+    requirement: "Specify requested attributes in registration (data minimization)"
+    legal_basis:
+      regulation: "2024/1183"
+      article: "Article 5c"
+      paragraph: "2(a)"
+    legal_text: |
+      Relying parties shall request from users only those attributes that are 
+      necessary and proportionate for the intended service.
+    deadline: "2027-11-21"
+    
+  - id: RP-ID-003
+    category: Technical
+    requirement: "Validate Wallet Unit Attestation before accepting credentials"
+    legal_basis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "1"
+    legal_text: |
+      Before accepting person identification data from a wallet unit, 
+      relying parties shall validate the wallet unit attestation.
+    deadline: "2027-11-21"
+```
+
+---
+
+## Export Formats
+
+### Excel Export (.xlsx)
+
+Using `xlsx-js-style` for rich formatting:
+
+```javascript
+// Example styling
+const headerStyle = {
+  font: { bold: true, color: { rgb: "FFFFFF" } },
+  fill: { fgColor: { rgb: "1E3A5F" } },  // Dark blue
+  border: { /* ... */ }
+};
+
+const compliantStyle = {
+  fill: { fgColor: { rgb: "D4EDDA" } }  // Light green
+};
+
+const nonCompliantStyle = {
+  fill: { fgColor: { rgb: "F8D7DA" } }  // Light red
+};
+
+const partialStyle = {
+  fill: { fgColor: { rgb: "FFF3CD" } }  // Light yellow
+};
+```
+
+### Markdown Export
+
+```markdown
+# Regulatory Compliance Assessment
+## Role: Relying Party
+## Use Cases: User Identification, PSD2 SCA
+
+Generated: 2026-01-19
+
+| ID | Category | Requirement | Legal Basis | Status | Notes |
+|----|----------|-------------|-------------|--------|-------|
+| RP-ID-001 | Registration | Register with supervisory authority | Art 5b, Reg 2024/1183 | ✅ Compliant | Registered with RDI |
+| RP-ID-002 | Registration | Specify requested attributes | Art 5c(2)(a), Reg 2024/1183 | ⚠️ Partial | Under review |
+```
+
+---
 
 ## Implementation Phases
 
-### Phase 1: Configuration Files
+### Phase 1: Core Infrastructure ✅ COMPLETE
+1. ✅ Create YAML schema for requirements
+2. ✅ Build RP requirements file (30 requirements)
+3. ✅ Create build-rca.js script (build-time processing)
+4. ✅ Create ComplianceAssessment.jsx page
+5. ✅ Create ComplianceAssessment.css (dark theme styling)
+6. ✅ Add route and sidebar entry ("RCA" under Tools)
+7. ✅ Implement hierarchical use case selector (8 categories, 19 use cases)
+8. ✅ Implement requirements table with filtering
 
-Create extensible config files for filter dimensions:
+### Phase 2: Interactivity ✅ COMPLETE
+1. ✅ Add compliance status selector (Pending/Compliant/Non-Compliant/Partial/N/A)
+2. ✅ Implement localStorage for user assessments
+3. ✅ Add filtering by category/status
 
-1. **`docs-portal/config/terminology-filters.yaml`** — Document type definitions
-   ```yaml
-   documentTypes:
-     eidas:
-       label: "eIDAS"
-       description: "Core eIDAS Regulation (910/2014)"
-       color: "#22d3ee"  # cyan
-       matchCategories: ["primary"]
-     implementing_acts:
-       label: "Implementing Acts"
-       description: "Commission implementing regulations"
-       matchCategories: ["implementing-act"]
-     recommendations:
-       label: "Recommendations"
-       description: "EU Recommendations and guidance"
-       matchCategories: ["recommendation"]
-     eu_law:
-       label: "EU Law"
-       description: "Referenced foundational EU regulations"
-       matchCategories: ["referenced"]
-     # Future: faq, guidance, etc.
-   ```
+### Phase 3: Export ✅ COMPLETE
+1. ✅ Add xlsx-js-style dependency
+2. ✅ Implement Excel export with professional styling (3 sheets: Summary, Requirements, Legal References)
+3. ✅ Implement Markdown export
+4. ✅ Add export history tracking (stored in localStorage)
 
-2. **`docs-portal/config/term-roles.json`** — Exhaustive role mappings
-   ```json
-   {
-     "$comment": "Role assignments for all 107 terms. Each term can have multiple roles.",
-     "roles": {
-       "holder": { "label": "Holder / User", "icon": "👤" },
-       "pid_provider": { "label": "PID Provider", "icon": "🏛️" },
-       "eaa_provider": { "label": "(Q)EAA Provider", "icon": "📜" },
-       "wallet_provider": { "label": "Wallet Provider", "icon": "📱" },
-       "qtsp": { "label": "QTSP", "icon": "🔐" },
-       "cabs": { "label": "CABs", "icon": "✅" },
-       "supervisory": { "label": "Supervisory Bodies", "icon": "⚖️" },
-       "trusted_list": { "label": "Trusted List Providers", "icon": "📋" },
-       "relying_party": { "label": "Relying Party", "icon": "🏢" }
-     },
-     "mappings": {
-       "electronic-signature": ["holder", "qtsp"],
-       "wallet-provider": ["wallet_provider"],
-       "relying-party": ["relying_party"],
-       "conformity-assessment-body": ["cabs"],
-       "accreditation": ["cabs", "supervisory"],
-       "trust-service-provider": ["qtsp"],
-       "person-identification-data": ["pid_provider", "holder"],
-       // ... all 107 terms
-     }
-   }
-   ```
+### Phase 4: Expand Use Cases & Content (Future)
+1. ☐ Add Issuer-EAA requirements
+2. ☐ Add remaining RP use case requirements
+3. ☐ Link to internal documents (citations integration)
 
-3. **`docs-portal/config/term-domains.json`** — Exhaustive domain mappings
-   ```json
-   {
-     "$comment": "Semantic domain assignments for all 107 terms.",
-     "domains": {
-       "cryptography": { "label": "Cryptography", "icon": "🔑" },
-       "identity": { "label": "Identity", "icon": "🆔" },
-       "attestation": { "label": "Attestation", "icon": "📄" },
-       "governance": { "label": "Governance", "icon": "🏛️" },
-       "wallet_ecosystem": { "label": "Wallet Ecosystem", "icon": "📱" }
-     },
-     "mappings": {
-       "electronic-signature": ["cryptography"],
-       "electronic-seal": ["cryptography"],
-       "authentication": ["identity", "cryptography"],
-       "european-digital-identity-wallet": ["wallet_ecosystem", "identity"],
-       "conformity-assessment": ["governance"],
-       // ... all 107 terms
-     }
-   }
-   ```
-
-### Phase 2: Build Pipeline Updates
-
-Modify `build-terminology.js` to:
-1. Load role and domain config files
-2. Enrich each term with `roles[]` and `domains[]` arrays
-3. Add filter metadata to `terminology.json` output:
-   ```json
-   {
-     "filterMetadata": {
-       "documentTypes": [...],
-       "roles": [...],
-       "domains": [...]
-     },
-     "terms": [
-       {
-         "id": "electronic-signature",
-         "term": "electronic signature",
-         "roles": ["holder", "qtsp"],
-         "domains": ["cryptography"],
-         "sources": [...],
-         // ... existing fields
-       }
-     ]
-   }
-   ```
-
-### Phase 3: UI Components
-
-1. **FilterDropdown component** (`src/components/FilterDropdown.jsx`)
-   - Multi-select dropdown with checkboxes
-   - Shows "X Active" badge when filters selected
-   - Glassmorphism styling matching existing theme
-
-2. **Merge filter bar with alphabet nav** in `Terminology.jsx`
-   - Left: Three FilterDropdown components (Document Type, Role, Domain)
-   - Right: Alphabet letters (overflow to second row on mobile)
-   - Both sticky below header
-
-3. **Filter logic**
-   ```javascript
-   // A term matches if:
-   // - ANY of its source documentCategories match selected document types
-   // - AND (if role filters active) ANY of its roles match selected roles
-   // - AND (if domain filters active) ANY of its domains match selected domains
-   const matchesFilters = (term, filters) => {
-     const matchesDocType = filters.documentTypes.length === 0 ||
-       term.sources.some(s => filters.documentTypes.includes(mapCategoryToFilter(s.documentCategory)));
-     const matchesRole = filters.roles.length === 0 ||
-       term.roles?.some(r => filters.roles.includes(r));
-     const matchesDomain = filters.domains.length === 0 ||
-       term.domains?.some(d => filters.domains.includes(d));
-     return matchesDocType && matchesRole && matchesDomain;
-   };
-   ```
-
-### Phase 4: Manual Curation
-
-I will curate all 107 terms with role and domain assignments. This is the bulk of the work.
-
-**Role taxonomy (from user input):**
-| Role ID | Label | Description |
-|---------|-------|-------------|
-| `holder` | Holder / User | Natural or legal person controlling the wallet |
-| `pid_provider` | PID Provider | State entity issuing core identity |
-| `eaa_provider` | (Q)EAA Provider | Issuers of electronic attestations |
-| `wallet_provider` | Wallet Provider | Entity operating the wallet application |
-| `qtsp` | QTSP | Qualified Trust Service Providers |
-| `cabs` | CABs | Conformity Assessment Bodies |
-| `supervisory` | Supervisory Bodies | National oversight agencies |
-| `trusted_list` | Trusted List Providers | Entities maintaining trusted lists |
-| `relying_party` | Relying Party | Entities accepting wallet credentials |
-
-**Domain taxonomy:**
-| Domain ID | Label | Example Terms |
-|-----------|-------|---------------|
-| `cryptography` | Cryptography | electronic signature, seal, creation data |
-| `identity` | Identity | PID, authentication, identification scheme |
-| `attestation` | Attestation | EAA, attributes, certificates |
-| `governance` | Governance | accreditation, conformity, supervisory |
-| `wallet_ecosystem` | Wallet Ecosystem | wallet provider, instance, unit, relying party |
-
-### Phase 5: Validation & Polish
-
-1. Add build-time validation: warn if a term has no role/domain assigned
-2. Show filter counts in dropdown headers (e.g., "Document Type (3)")
-3. URL query param persistence: `?docType=eidas,eu_law&role=holder`
-4. Clear all filters button
-5. Empty state when no terms match
+---
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `config/terminology-filters.yaml` | Document type definitions (extensible) |
-| `config/term-roles.json` | Role assignments for all terms |
-| `config/term-domains.json` | Domain assignments for all terms |
-| `scripts/build-terminology.js` | Enriches terms with filter data |
-| `src/components/FilterDropdown.jsx` | New reusable component |
-| `src/pages/Terminology.jsx` | Filter bar integration |
+| `.agent/session/pending-task.md` | This planning document |
+| `config/rca/requirements/*.yaml` | Requirement definitions |
+| `src/pages/ComplianceAssessment.jsx` | Main page component |
+| `src/utils/rca/exportExcel.js` | Excel export utility |
 
-## Commits Plan
+---
 
-1. `feat: add terminology filter config schema (DEC-086)` — Config files
-2. `feat: enrich terminology with roles and domains` — Build pipeline
-3. `feat: add FilterDropdown component` — UI component
-4. `feat: implement terminology filtering UI` — Integration
-5. `docs: curate all 107 terms with roles and domains` — Manual curation
+## Next Step
 
-## Quick Start (After Implementation)
-
-```bash
-cd ~/dev/eIDAS20/docs-portal
-npm run build:terminology  # Rebuilds with filter data
-npm run dev
-# Open http://localhost:5173/eIDAS20/#/terminology
-# Use filter dropdowns to explore by role/domain
-```
+Create the YAML schema and first requirements file (RP-Identification), then implement the basic page component.

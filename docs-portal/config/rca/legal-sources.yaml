@@ -1,0 +1,103 @@
+# RCA Configuration: Legal Sources
+# Hierarchy of regulations referenced in requirements
+
+# Tier 1: Primary Regulation
+primaryRegulation:
+  id: "2024/1183"
+  celex: "32024R1183"
+  title: "Regulation (EU) 2024/1183 (eIDAS 2.0)"
+  shortTitle: "eIDAS 2.0"
+  eurLexUrl: "https://eur-lex.europa.eu/eli/reg/2024/1183/oj"
+  entryIntoForce: "2024-05-20"
+  binding: true
+
+# Tier 2: Implementing Regulations
+implementingRegulations:
+  - id: "2024/2977"
+    celex: "32024R2977"
+    title: "Commission Implementing Regulation (EU) 2024/2977"
+    shortTitle: "PID and EAA Rules"
+    description: "Rules for person identification data and electronic attestations of attributes"
+    eurLexUrl: "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj"
+    adoptionDate: "2024-11-28"
+    binding: true
+
+  - id: "2024/2979"
+    celex: "32024R2979"
+    title: "Commission Implementing Regulation (EU) 2024/2979"
+    shortTitle: "Integrity and Core Functionalities"
+    description: "Wallet integrity, core functionalities, and trust infrastructure"
+    eurLexUrl: "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj"
+    adoptionDate: "2024-11-28"
+    binding: true
+
+  - id: "2024/2981"
+    celex: "32024R2981"
+    title: "Commission Implementing Regulation (EU) 2024/2981"
+    shortTitle: "Certification"
+    description: "Certification of European Digital Identity Wallets"
+    eurLexUrl: "https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj"
+    adoptionDate: "2024-11-28"
+    binding: true
+
+# Tier 3: Technical Specifications (becoming legally binding when adopted)
+technicalSpecifications:
+  - id: "TS01"
+    title: "Specification of EUDI Wallet Trust Mark"
+    status: "draft"
+    githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
+    binding: false  # Not yet adopted
+
+  - id: "TS03"
+    title: "Specification of Wallet Unit Attestations (WUA)"
+    status: "draft"
+    githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
+    binding: false
+
+  - id: "TS05"
+    title: "Common Formats and API for Relying Party Registration Information"
+    status: "draft"
+    githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
+    binding: false
+
+  - id: "TS06"
+    title: "Common Set of Relying Party Information to be Registered"
+    status: "draft"
+    githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
+    binding: false
+
+  - id: "TS12"
+    title: "Specification of electronic payments Strong Customer Authentication (SCA) implementation with the wallet"
+    status: "draft"
+    githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
+    binding: false
+    # Specific to payment-auth use case
+
+# Tier 4: Non-binding guidance (for context only)
+guidance:
+  - id: "ARF"
+    version: "1.5"
+    title: "Architecture and Reference Framework"
+    description: "Non-binding technical guidance for EUDI Wallet implementation"
+    binding: false
+    note: "Reference for context only - not a legal requirement"
+
+# Related regulations (PSD2, GDPR, etc.)
+relatedRegulations:
+  - id: "PSD2"
+    celex: "32015L2366"
+    title: "Directive (EU) 2015/2366 (PSD2)"
+    shortTitle: "Payment Services Directive"
+    eurLexUrl: "https://eur-lex.europa.eu/eli/dir/2015/2366/oj"
+    binding: true
+    relevantFor:
+      - payment-auth
+      - open-bank-account
+
+  - id: "GDPR"
+    celex: "32016R0679"
+    title: "Regulation (EU) 2016/679 (GDPR)"
+    shortTitle: "General Data Protection Regulation"
+    eurLexUrl: "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+    binding: true
+    relevantFor: all  # Applies to all use cases
