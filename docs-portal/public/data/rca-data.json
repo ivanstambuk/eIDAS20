@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T05:28:06.381Z",
+  "generatedAt": "2026-01-19T05:33:36.953Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -410,7 +410,7 @@
         "article": "Article 5b",
         "paragraph": "1"
       },
-      "legalText": "Relying parties intending to rely on European Digital Identity Wallets shall register \nwith the competent supervisory body in the Member State where they are established.",
+      "legalText": "Where a relying party intends to rely upon European Digital Identity Wallets for the \nprovision of public or private services by means of digital interaction, the relying \nparty shall register in the Member State where it is established.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -442,14 +442,14 @@
     {
       "id": "RP-REG-002",
       "category": "registration",
-      "requirement": "Declare intended service categories and requested attributes",
-      "explanation": "During registration, relying parties must specify the services for which they will use \nthe wallet and which attributes (PID fields, EAAs) they intend to request. This enables \ndata minimization oversight.",
+      "requirement": "Provide registration information including identity and intended data requests",
+      "explanation": "During registration, relying parties must provide specific information including their \nidentity, contact details, and importantly - the data they intend to request from users.\nThis enables oversight of data minimization compliance.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "2"
       },
-      "legalText": "The registration shall include information on the identity of the relying party, \nthe services for which the European Digital Identity Wallet will be used, and the \nperson identification data or electronic attestations of attributes that the relying \nparty intends to request.",
+      "legalText": "The registration process shall be cost-effective and proportionate-to-risk. The relying \nparty shall provide at least: (a) the information necessary to authenticate to European \nDigital Identity Wallets, which as a minimum includes: (i) the Member State in which the \nrelying party is established; and (ii) the name of the relying party and, where applicable, \nits registration number as stated in an official record together with identification data \nof that official record; (b) the contact details of the relying party; (c) the intended \nuse of European Digital Identity Wallets, including an indication of the data to be \nrequested by the relying party from users.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -481,14 +481,14 @@
     {
       "id": "RP-REG-003",
       "category": "registration",
-      "requirement": "Obtain and maintain Relying Party Access Certificate",
-      "explanation": "After successful registration, relying parties receive an access certificate that must \nbe presented to wallet units. The certificate authenticates the RP and contains the \nregistered attribute scope.",
+      "requirement": "Request only data indicated during registration",
+      "explanation": "Relying parties are strictly limited to requesting only the data they declared during \nregistration. Requesting additional data beyond the registered scope is prohibited.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "3"
       },
-      "legalText": "Upon registration, the competent supervisory body shall issue a relying party access \ncertificate enabling the relying party to request person identification data and \nelectronic attestations of attributes from European Digital Identity Wallets.",
+      "legalText": "Relying parties shall not request users to provide any data other than that indicated \npursuant to paragraph 2, point (c).",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -520,14 +520,14 @@
     {
       "id": "RP-REG-004",
       "category": "registration",
-      "requirement": "Update registration when use case or attribute scope changes",
-      "explanation": "If the relying party changes the services or requested attributes beyond the registered \nscope, they must update their registration. Failure to maintain accurate registration \nconstitutes a compliance breach.",
+      "requirement": "Notify changes to registration information without delay",
+      "explanation": "If the relying party's registration information changes (e.g., new data fields requested, \ncontact details updated), they must promptly notify the Member State.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
-        "paragraph": "4"
+        "paragraph": "6"
       },
-      "legalText": "Relying parties shall notify the competent supervisory body of any significant changes \nto the information provided during registration.",
+      "legalText": "Relying parties registered in accordance with this Article shall inform Member States \nwithout delay about any changes to the information provided in the registration \npursuant to paragraph 2.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -555,6 +555,67 @@
         "representation"
       ],
       "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-REG-005",
+      "category": "registration",
+      "requirement": "Identify yourself to wallet users when requesting data",
+      "explanation": "When relying parties request data from wallet users, they must clearly identify \nthemselves. The wallet displays the RP's identity information from their access \ncertificate to enable user trust decisions.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "8"
+      },
+      "legalText": "Where relying parties intend to rely upon European Digital Identity Wallets, they \nshall identify themselves to the user.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-REG-006",
+      "category": "registration",
+      "requirement": "Accept pseudonymous authentication where legal identity is not required",
+      "explanation": "When a user's legal identity is not required by law, relying parties must accept \npseudonymous authentication. Users cannot be forced to reveal their real identity \nwhen pseudonymous access is sufficient.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "9"
+      },
+      "legalText": "Relying parties shall be responsible for carrying out the procedure for authenticating \nand validating person identification data and electronic attestation of attributes \nrequested from European Digital Identity Wallets. Relying parties shall not refuse the \nuse of pseudonyms, where the identification of the user is not required by Union or \nnational law.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pseudonym",
+        "age-verification"
+      ],
+      "appliesToAllUseCases": false
     },
     {
       "id": "RP-TECH-001",
@@ -610,6 +671,84 @@
     {
       "id": "RP-TECH-002",
       "category": "technical",
+      "requirement": "Implement presentation protocols (ISO 18013-5, ISO 18013-7)",
+      "explanation": "For remote and proximity presentation of credentials, relying parties must implement \nthe standardized protocols specified in the Annex to Regulation 2024/2982.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "1-2"
+      },
+      "legalText": "Wallet providers shall ensure that wallet solutions support protocols and interfaces \nfor the presentation of attributes to wallet-relying parties, remotely, and where \nappropriate in proximity, in accordance with the standards set out in the Annex.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-003",
+      "category": "technical",
+      "requirement": "Support selective disclosure of attributes",
+      "explanation": "The technical implementation must support selective disclosure, allowing users to \nshare only specific attributes (e.g., \"over 18\") rather than full credentials.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "4"
+      },
+      "legalText": "Wallet providers shall ensure that wallet solutions support the selective disclosure \nof attributes of personal identification data and of electronic attestations of \nattributes.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-004",
+      "category": "technical",
       "requirement": "Comply with WebAuthn specification for pseudonym generation",
       "explanation": "When accepting pseudonymous authentication from wallet units, relying parties must \nsupport the WebAuthn specification as mandated in Annex V of the Integrity regulation.",
       "legalBasis": {
@@ -641,7 +780,7 @@
       "appliesToAllUseCases": false
     },
     {
-      "id": "RP-TECH-003",
+      "id": "RP-TECH-005",
       "category": "technical",
       "requirement": "Support relying-party-specific pseudonyms",
       "explanation": "Relying parties may request a pseudonym that is unique and specific to them. This \nenables unlinkable authentication across different relying parties while allowing \nthe same RP to recognize returning users.",
@@ -675,6 +814,189 @@
       "appliesToAllUseCases": false
     },
     {
+      "id": "RP-TECH-006",
+      "category": "technical",
+      "requirement": "Verify proof of possession of private keys",
+      "explanation": "When receiving credentials, relying parties must verify that the wallet possesses \nthe private key corresponding to the public key used in the cryptographic binding.\nThis prevents replay attacks and credential theft.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "3"
+      },
+      "legalText": "Wallet providers shall ensure that wallet units support proving the possession of \nprivate keys corresponding to public keys used in cryptographic bindings.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-007",
+      "category": "technical",
+      "requirement": "Use valid Wallet-Relying Party Access Certificate",
+      "explanation": "Relying parties must use a valid wallet-relying party access certificate when \ninteracting with wallet units. This certificate authenticates the RP to the wallet.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalText": "Regarding the protocols and interfaces referred to in Articles 4 and 5, wallet \nproviders shall ensure that wallet units authenticate and validate the wallet-relying \nparty access certificates where interacting with wallet-relying parties.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-008",
+      "category": "technical",
+      "requirement": "Support data erasure request protocol",
+      "explanation": "Relying parties must implement the protocol allowing wallet users to request erasure \nof personal data that was shared through the wallet, supporting GDPR Article 17 rights.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 6",
+        "paragraph": "1"
+      },
+      "legalText": "Wallet providers shall ensure that wallet units support protocols and interfaces \nallowing wallet users to request from wallet-relying parties, with whom they have \ninteracted through those wallet units, the erasure of their personal data provided \nthrough those wallet units, in accordance with Article 17 of Regulation (EU) 2016/679.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-ACCEPT-001",
+      "category": "operational",
+      "requirement": "Public sector: Accept EUDI Wallet for online services requiring e-ID",
+      "explanation": "When a public sector body requires electronic identification to access an online \nservice, they must also accept EUDI Wallets provided in accordance with the regulation.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5f",
+        "paragraph": "1"
+      },
+      "legalText": "Where Member States require electronic identification and authentication to access \nan online service provided by a public sector body, they shall also accept European \nDigital Identity Wallets that are provided in accordance with this Regulation.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ACCEPT-002",
+      "category": "operational",
+      "requirement": "Private sector: Accept EUDI Wallet where strong authentication is mandated",
+      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication is required by law or contract in specified sectors.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5f",
+        "paragraph": "2"
+      },
+      "legalText": "Where private relying parties that provide services, with the exception of \nmicroenterprises and small enterprises [...], are required by Union or national law \nto use strong user authentication for online identification or where strong user \nauthentication for online identification is required by contractual obligation, \nincluding in the areas of transport, energy, banking, financial services, social \nsecurity, health, drinking water, postal services, digital infrastructure, education \nor telecommunications, those private relying parties shall [...] also accept European \nDigital Identity Wallets that are provided in accordance with this Regulation.",
+      "legalSourceInfo": null,
+      "deadline": "2027-12-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "payment-auth",
+        "open-bank-account",
+        "pid-online"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ACCEPT-003",
+      "category": "operational",
+      "requirement": "Very large online platforms: Accept EUDI Wallet for user authentication",
+      "explanation": "Providers of very large online platforms (as defined in DSA Article 33) must accept \nEUDI Wallets for user authentication upon voluntary user request.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5f",
+        "paragraph": "3"
+      },
+      "legalText": "Where providers of very large online platforms as referred to in Article 33 of \nRegulation (EU) 2022/2065 [...] require user authentication for access to online \nservices, they shall also accept and facilitate the use of European Digital Identity \nWallets that are provided in accordance with this Regulation for user authentication \nonly upon the voluntary request of the user and in respect of the minimum data \nnecessary for the specific online service for which authentication is requested.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
       "id": "RP-SCA-001",
       "category": "authentication",
       "requirement": "Support wallet-based Strong Customer Authentication (SCA)",
@@ -682,9 +1004,9 @@
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5f",
-        "paragraph": "1"
+        "paragraph": "2"
       },
-      "legalText": "Private relying parties providing services referred to in Article 97 of Directive \n(EU) 2015/2366 shall accept European Digital Identity Wallets for strong customer \nauthentication.",
+      "legalText": "Where private relying parties that provide services [...] are required by Union or \nnational law to use strong user authentication for online identification [...] \nincluding in the areas of [...] banking, financial services [...] those private \nrelying parties shall [...] also accept European Digital Identity Wallets.",
       "legalSourceInfo": null,
       "deadline": "2027-12-21",
       "relatedRegulation": {
@@ -707,10 +1029,10 @@
       "explanation": "Relying parties shall only request attributes that are necessary and proportionate \nfor the specific service. Over-requesting data violates data minimization principles.",
       "legalBasis": {
         "regulation": "2014/910",
-        "article": "Article 5c",
-        "paragraph": "1"
+        "article": "Article 5b",
+        "paragraph": "3"
       },
-      "legalText": "Relying parties shall request from users only those person identification data and \nelectronic attestations of attributes that are necessary and proportionate for the \nintended service.",
+      "legalText": "Relying parties shall not request users to provide any data other than that indicated \npursuant to paragraph 2, point (c).",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -747,9 +1069,9 @@
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
-        "paragraph": "4(e)"
+        "paragraph": "4(a)"
       },
-      "legalText": "The European Digital Identity Wallet shall enable the user to selectively disclose \nto relying parties person identification data and electronic attestations of \nattributes.",
+      "legalText": "European Digital Identity Wallets shall enable the user, in a manner that is \nuser-friendly, transparent, and traceable by the user, to: (a) securely request, \nobtain, select, combine, store, delete, share and present, under the sole control \nof the user, person identification data and, where applicable, in combination with \nelectronic attestations of attributes, to authenticate to relying parties online \nand, where appropriate, in offline mode, in order to access public and private \nservices, while ensuring that selective disclosure of data is possible.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -781,14 +1103,14 @@
     {
       "id": "RP-DP-003",
       "category": "data-protection",
-      "requirement": "Display registered identity and intended use to wallet user",
-      "explanation": "When requesting credentials, the relying party must display their verified identity \nand the purpose for which data is being requested, enabling informed user consent.",
+      "requirement": "Do not track wallet usage across services (unlinkability)",
+      "explanation": "The technical framework must prevent tracking or correlation of wallet usage \nacross different services, unless the user explicitly consents.",
       "legalBasis": {
         "regulation": "2014/910",
-        "article": "Article 5c",
-        "paragraph": "2"
+        "article": "Article 5a",
+        "paragraph": "16(a)"
       },
-      "legalText": "Relying parties shall provide, to users and to the European Digital Identity Wallet, \ninformation about their identity and the purpose for which the person identification \ndata or electronic attestations of attributes are requested.",
+      "legalText": "The technical framework of the European Digital Identity Wallet shall: (a) not allow \nproviders of electronic attestations of attributes or any other party, after the \nissuance of the attestation of attributes, to obtain data that allows transactions \nor user behaviour to be tracked, linked or correlated, or knowledge of transactions \nor user behaviour to be otherwise obtained, unless explicitly authorised by the user.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -820,53 +1142,58 @@
     {
       "id": "RP-DP-004",
       "category": "data-protection",
-      "requirement": "Do not track wallet usage across services (unlinkability)",
-      "explanation": "Relying parties must not implement mechanisms to track or correlate wallet usage \nacross different transactions or services, preserving user privacy.",
+      "requirement": "Enable privacy preserving unlinkability for non-identified attestations",
+      "explanation": "When attestations don't require user identification, privacy-preserving techniques \nmust ensure unlinkability across different relying parties.",
       "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5a",
-        "paragraph": "4(f)"
+        "regulation": "2024/2982",
+        "article": "Article 3",
+        "paragraph": "10"
       },
-      "legalText": "The European Digital Identity Wallet shall be designed and implemented in such a \nway that it prevents the tracking of users across different relying parties unless \nthe user has given explicit consent.",
+      "legalText": "Wallet providers shall ensure that wallet units [...] enable privacy preserving \ntechniques which ensure unlinkability where the electronic attestations of \nattributes do not require the identification of the wallet user, when presenting \nattestations or person identification data across different wallet-relying parties.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
       ],
       "applicableUseCases": [
-        "pid-online",
-        "pseudonym",
-        "esignature",
-        "payment-auth",
-        "open-bank-account",
-        "mdl",
-        "dtc",
-        "epc",
-        "vrc",
-        "disability-card",
-        "eprescription",
-        "ehic",
-        "public-warnings",
         "age-verification",
-        "ticket-pass",
-        "edu-credentials",
-        "student-card",
-        "proximity-id",
-        "representation"
+        "pseudonym"
       ],
-      "appliesToAllUseCases": true
+      "appliesToAllUseCases": false
     },
     {
       "id": "RP-DP-005",
+      "category": "data-protection",
+      "requirement": "Allow pseudonyms where legal identity is not required",
+      "explanation": "Users cannot be prohibited from using pseudonyms when there is no legal requirement \nfor identity verification.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5",
+        "paragraph": ""
+      },
+      "legalText": "Without prejudice to specific rules of Union or national law requiring users to \nidentify themselves or to the legal effect given to pseudonyms under national law, \nthe use of pseudonyms that are chosen by the user shall not be prohibited.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pseudonym",
+        "age-verification"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-DP-006",
       "category": "data-protection",
       "requirement": "Process data in accordance with GDPR",
       "explanation": "All personal data received from wallets must be processed in full compliance \nwith GDPR, including lawful basis, storage limitation, and data subject rights.",
       "legalBasis": {
         "regulation": "2014/910",
-        "article": "Article 5c",
-        "paragraph": "3"
+        "article": "Article 2",
+        "paragraph": "4"
       },
-      "legalText": "The processing of personal data by relying parties shall comply with Regulation \n(EU) 2016/679.",
+      "legalText": "This Regulation is without prejudice to Regulation (EU) 2016/679 of the European \nParliament and of the Council.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "relatedRegulation": {
@@ -902,14 +1229,14 @@
     {
       "id": "RP-OPS-001",
       "category": "operational",
-      "requirement": "Maintain fallback authentication mechanisms",
-      "explanation": "Relying parties should maintain alternative authentication methods in case of \nEUDI Wallet ecosystem outages (e.g., national infrastructure failures).",
+      "requirement": "Maintain alternative means of identification",
+      "explanation": "Relying parties may maintain alternative authentication methods. EUDI Wallet \nacceptance requirements do not prevent offering other identification means.",
       "legalBasis": {
         "regulation": "2014/910",
-        "article": "Article 5f",
-        "paragraph": "5"
+        "article": "Article 5a",
+        "paragraph": "15"
       },
-      "legalText": "The acceptance requirement shall not prevent relying parties from maintaining \nalternative means of online identification.",
+      "legalText": "The use of European Digital Identity Wallets shall be voluntary. Access to public \nand private services, access to the labour market and freedom to conduct business \nshall not in any way be restricted or made disadvantageous to natural or legal \npersons that do not use European Digital Identity Wallets. It shall remain possible \nto access public and private services by other existing identification and \nauthentication means.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -941,53 +1268,14 @@
     {
       "id": "RP-OPS-002",
       "category": "operational",
-      "requirement": "Report security incidents to supervisory authority",
-      "explanation": "Severe incidents affecting the reliability of EUDI Wallet interfaces must be \nreported to the supervisory authority within mandated timeframes.",
+      "requirement": "Support reporting to data protection authorities",
+      "explanation": "Relying parties must be prepared to be reported to data protection authorities \nthrough the wallet's reporting mechanism if users suspect unlawful data requests.",
       "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5d",
+        "regulation": "2024/2982",
+        "article": "Article 7",
         "paragraph": "1"
       },
-      "legalText": "Relying parties shall notify the competent supervisory body of any breach or \ncompromise of the security of their systems that affects the reliability of the \nacceptance of European Digital Identity Wallets.",
-      "legalSourceInfo": null,
-      "deadline": "2027-11-21",
-      "applicableRoles": [
-        "relying_party"
-      ],
-      "applicableUseCases": [
-        "pid-online",
-        "pseudonym",
-        "esignature",
-        "payment-auth",
-        "open-bank-account",
-        "mdl",
-        "dtc",
-        "epc",
-        "vrc",
-        "disability-card",
-        "eprescription",
-        "ehic",
-        "public-warnings",
-        "age-verification",
-        "ticket-pass",
-        "edu-credentials",
-        "student-card",
-        "proximity-id",
-        "representation"
-      ],
-      "appliesToAllUseCases": true
-    },
-    {
-      "id": "RP-OPS-003",
-      "category": "operational",
-      "requirement": "Provide user support for wallet-based authentication",
-      "explanation": "Users must have access to support channels for issues related to wallet-based \nauthentication at the relying party.",
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5c",
-        "paragraph": "4"
-      },
-      "legalText": "Relying parties shall ensure that appropriate support is available to users for \nthe use of European Digital Identity Wallets in relation to their services.",
+      "legalText": "Wallet providers shall ensure that wallet units allow wallet users to easily report \nwallet-relying parties to supervisory authorities established under Article 51 of \nRegulation (EU) 2016/679.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -1024,299 +1312,387 @@
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
         "RP-TECH-003",
+        "RP-TECH-005",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
+        "RP-ACCEPT-001",
+        "RP-ACCEPT-002",
+        "RP-ACCEPT-003",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "pseudonym": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
+        "RP-REG-006",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
+        "RP-TECH-004",
+        "RP-TECH-005",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
         "RP-DP-004",
         "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "esignature": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
+        "RP-ACCEPT-001",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "payment-auth": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
+        "RP-ACCEPT-002",
         "RP-SCA-001",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "open-bank-account": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
+        "RP-ACCEPT-002",
         "RP-SCA-001",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "mdl": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "dtc": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "epc": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "vrc": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "disability-card": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "eprescription": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "ehic": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "public-warnings": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "age-verification": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
+        "RP-REG-006",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
         "RP-DP-004",
         "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "ticket-pass": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "edu-credentials": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "student-card": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "proximity-id": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ],
       "representation": [
         "RP-REG-001",
         "RP-REG-002",
         "RP-REG-003",
         "RP-REG-004",
+        "RP-REG-005",
         "RP-TECH-001",
+        "RP-TECH-002",
+        "RP-TECH-003",
+        "RP-TECH-006",
+        "RP-TECH-007",
+        "RP-TECH-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
-        "RP-DP-004",
-        "RP-DP-005",
+        "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002",
-        "RP-OPS-003"
+        "RP-OPS-002"
       ]
     }
   },
   "stats": {
-    "totalRequirements": 16,
+    "totalRequirements": 26,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 16
+      "relying_party": 26
     }
   }
 }

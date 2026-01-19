@@ -1,16 +1,19 @@
 # RCA Requirements: Relying Party
 # 
+# Systematic article-by-article review of all RP-applicable requirements from:
+# - Regulation (EU) 2014/910 (consolidated with 2024/1183) - Articles 5, 5a-5f
+# - Implementing Regulation (EU) 2024/2979 - Integrity & Core Functions
+# - Implementing Regulation (EU) 2024/2982 - Protocols & Interfaces  
+# - Implementing Regulation (EU) 2024/2977 - PID and EAA
+#
 # Each requirement is defined ONCE and tagged with applicable:
 # - roles: which roles this applies to
 # - useCases: which use cases this applies to (or "all" for universal)
 #
-# IMPORTANT: All legal citations have been verified against the actual regulation text.
-# See DEC-110 for the audit that identified fabricated citations.
-#
-# The build script will filter and include requirements based on selected role + use cases.
+# AUDIT: 2026-01-19 - All citations verified against actual regulation text
+# Schema version 3 - Complete article-by-article review
 
-# Schema version for future migrations
-schemaVersion: 2  # Bumped after audit - removed fabricated citations
+schemaVersion: 3
 
 # Requirement categories for grouping in the UI
 categories:
@@ -49,7 +52,7 @@ requirements:
 
   # ============================================================================
   # REGISTRATION & AUTHORIZATION
-  # Source: Article 5b of Regulation 2014/910 (consolidated with 2024/1183)
+  # Source: Article 5b of Regulation (EU) 910/2014 (consolidated)
   # ============================================================================
 
   - id: RP-REG-001
@@ -64,29 +67,34 @@ requirements:
       article: "Article 5b"
       paragraph: "1"
     legalText: |
-      Relying parties intending to rely on European Digital Identity Wallets shall register 
-      with the competent supervisory body in the Member State where they are established.
+      Where a relying party intends to rely upon European Digital Identity Wallets for the 
+      provision of public or private services by means of digital interaction, the relying 
+      party shall register in the Member State where it is established.
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases: all  # Applies to ALL use cases for RPs
+    useCases: all
 
   - id: RP-REG-002
     category: registration
-    requirement: "Declare intended service categories and requested attributes"
+    requirement: "Provide registration information including identity and intended data requests"
     explanation: |
-      During registration, relying parties must specify the services for which they will use 
-      the wallet and which attributes (PID fields, EAAs) they intend to request. This enables 
-      data minimization oversight.
+      During registration, relying parties must provide specific information including their 
+      identity, contact details, and importantly - the data they intend to request from users.
+      This enables oversight of data minimization compliance.
     legalBasis:
       regulation: "2014/910"
       article: "Article 5b"
       paragraph: "2"
     legalText: |
-      The registration shall include information on the identity of the relying party, 
-      the services for which the European Digital Identity Wallet will be used, and the 
-      person identification data or electronic attestations of attributes that the relying 
-      party intends to request.
+      The registration process shall be cost-effective and proportionate-to-risk. The relying 
+      party shall provide at least: (a) the information necessary to authenticate to European 
+      Digital Identity Wallets, which as a minimum includes: (i) the Member State in which the 
+      relying party is established; and (ii) the name of the relying party and, where applicable, 
+      its registration number as stated in an official record together with identification data 
+      of that official record; (b) the contact details of the relying party; (c) the intended 
+      use of European Digital Identity Wallets, including an indication of the data to be 
+      requested by the relying party from users.
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -94,19 +102,17 @@ requirements:
 
   - id: RP-REG-003
     category: registration
-    requirement: "Obtain and maintain Relying Party Access Certificate"
+    requirement: "Request only data indicated during registration"
     explanation: |
-      After successful registration, relying parties receive an access certificate that must 
-      be presented to wallet units. The certificate authenticates the RP and contains the 
-      registered attribute scope.
+      Relying parties are strictly limited to requesting only the data they declared during 
+      registration. Requesting additional data beyond the registered scope is prohibited.
     legalBasis:
       regulation: "2014/910"
       article: "Article 5b"
       paragraph: "3"
     legalText: |
-      Upon registration, the competent supervisory body shall issue a relying party access 
-      certificate enabling the relying party to request person identification data and 
-      electronic attestations of attributes from European Digital Identity Wallets.
+      Relying parties shall not request users to provide any data other than that indicated 
+      pursuant to paragraph 2, point (c).
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -114,26 +120,69 @@ requirements:
 
   - id: RP-REG-004
     category: registration
-    requirement: "Update registration when use case or attribute scope changes"
+    requirement: "Notify changes to registration information without delay"
     explanation: |
-      If the relying party changes the services or requested attributes beyond the registered 
-      scope, they must update their registration. Failure to maintain accurate registration 
-      constitutes a compliance breach.
+      If the relying party's registration information changes (e.g., new data fields requested, 
+      contact details updated), they must promptly notify the Member State.
     legalBasis:
       regulation: "2014/910"
       article: "Article 5b"
-      paragraph: "4"
+      paragraph: "6"
     legalText: |
-      Relying parties shall notify the competent supervisory body of any significant changes 
-      to the information provided during registration.
+      Relying parties registered in accordance with this Article shall inform Member States 
+      without delay about any changes to the information provided in the registration 
+      pursuant to paragraph 2.
     deadline: "2027-11-21"
     roles:
       - relying_party
     useCases: all
 
+  - id: RP-REG-005
+    category: registration
+    requirement: "Identify yourself to wallet users when requesting data"
+    explanation: |
+      When relying parties request data from wallet users, they must clearly identify 
+      themselves. The wallet displays the RP's identity information from their access 
+      certificate to enable user trust decisions.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "8"
+    legalText: |
+      Where relying parties intend to rely upon European Digital Identity Wallets, they 
+      shall identify themselves to the user.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-006
+    category: registration
+    requirement: "Accept pseudonymous authentication where legal identity is not required"
+    explanation: |
+      When a user's legal identity is not required by law, relying parties must accept 
+      pseudonymous authentication. Users cannot be forced to reveal their real identity 
+      when pseudonymous access is sufficient.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure for authenticating 
+      and validating person identification data and electronic attestation of attributes 
+      requested from European Digital Identity Wallets. Relying parties shall not refuse the 
+      use of pseudonyms, where the identification of the user is not required by Union or 
+      national law.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+
   # ============================================================================
-  # TECHNICAL REQUIREMENTS
-  # Sources: 2024/2979 (Integrity & Core Functions), 2024/2977 (PID & EAA)
+  # TECHNICAL REQUIREMENTS  
+  # Sources: 2024/2979 (Integrity), 2024/2982 (Protocols), 2014/910 Art 5a
   # ============================================================================
 
   - id: RP-TECH-001
@@ -162,6 +211,48 @@ requirements:
 
   - id: RP-TECH-002
     category: technical
+    requirement: "Implement presentation protocols (ISO 18013-5, ISO 18013-7)"
+    explanation: |
+      For remote and proximity presentation of credentials, relying parties must implement 
+      the standardized protocols specified in the Annex to Regulation 2024/2982.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "1-2"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols and interfaces 
+      for the presentation of attributes to wallet-relying parties, remotely, and where 
+      appropriate in proximity, in accordance with the standards set out in the Annex.
+    annexReference: |
+      Annex to 2024/2982:
+      - ISO/IEC 18013-5:2021
+      - ISO/IEC TS 18013-7:2024
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-TECH-003
+    category: technical
+    requirement: "Support selective disclosure of attributes"
+    explanation: |
+      The technical implementation must support selective disclosure, allowing users to 
+      share only specific attributes (e.g., "over 18") rather than full credentials.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "4"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the selective disclosure 
+      of attributes of personal identification data and of electronic attestations of 
+      attributes.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-TECH-004
+    category: technical
     requirement: "Comply with WebAuthn specification for pseudonym generation"
     explanation: |
       When accepting pseudonymous authentication from wallet units, relying parties must 
@@ -182,7 +273,7 @@ requirements:
     useCases:
       - pseudonym
 
-  - id: RP-TECH-003
+  - id: RP-TECH-005
     category: technical
     requirement: "Support relying-party-specific pseudonyms"
     explanation: |
@@ -206,9 +297,143 @@ requirements:
       - pseudonym
       - pid-online
 
+  - id: RP-TECH-006
+    category: technical
+    requirement: "Verify proof of possession of private keys"
+    explanation: |
+      When receiving credentials, relying parties must verify that the wallet possesses 
+      the private key corresponding to the public key used in the cryptographic binding.
+      This prevents replay attacks and credential theft.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure that wallet units support proving the possession of 
+      private keys corresponding to public keys used in cryptographic bindings.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-TECH-007
+    category: technical
+    requirement: "Use valid Wallet-Relying Party Access Certificate"
+    explanation: |
+      Relying parties must use a valid wallet-relying party access certificate when 
+      interacting with wallet units. This certificate authenticates the RP to the wallet.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Regarding the protocols and interfaces referred to in Articles 4 and 5, wallet 
+      providers shall ensure that wallet units authenticate and validate the wallet-relying 
+      party access certificates where interacting with wallet-relying parties.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-TECH-008
+    category: technical
+    requirement: "Support data erasure request protocol"
+    explanation: |
+      Relying parties must implement the protocol allowing wallet users to request erasure 
+      of personal data that was shared through the wallet, supporting GDPR Article 17 rights.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 6"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units support protocols and interfaces 
+      allowing wallet users to request from wallet-relying parties, with whom they have 
+      interacted through those wallet units, the erasure of their personal data provided 
+      through those wallet units, in accordance with Article 17 of Regulation (EU) 2016/679.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
   # ============================================================================
-  # PSD2 SCA SPECIFIC (payment-auth, open-bank-account)
-  # Source: Article 5f of Regulation 2014/910 (consolidated)
+  # CROSS-BORDER ACCEPTANCE REQUIREMENTS
+  # Source: Article 5f of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: RP-ACCEPT-001
+    category: operational
+    requirement: "Public sector: Accept EUDI Wallet for online services requiring e-ID"
+    explanation: |
+      When a public sector body requires electronic identification to access an online 
+      service, they must also accept EUDI Wallets provided in accordance with the regulation.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5f"
+      paragraph: "1"
+    legalText: |
+      Where Member States require electronic identification and authentication to access 
+      an online service provided by a public sector body, they shall also accept European 
+      Digital Identity Wallets that are provided in accordance with this Regulation.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - esignature
+
+  - id: RP-ACCEPT-002
+    category: operational
+    requirement: "Private sector: Accept EUDI Wallet where strong authentication is mandated"
+    explanation: |
+      Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
+      when strong user authentication is required by law or contract in specified sectors.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5f"
+      paragraph: "2"
+    legalText: |
+      Where private relying parties that provide services, with the exception of 
+      microenterprises and small enterprises [...], are required by Union or national law 
+      to use strong user authentication for online identification or where strong user 
+      authentication for online identification is required by contractual obligation, 
+      including in the areas of transport, energy, banking, financial services, social 
+      security, health, drinking water, postal services, digital infrastructure, education 
+      or telecommunications, those private relying parties shall [...] also accept European 
+      Digital Identity Wallets that are provided in accordance with this Regulation.
+    deadline: "2027-12-21"
+    roles:
+      - relying_party
+    useCases:
+      - payment-auth
+      - open-bank-account
+      - pid-online
+
+  - id: RP-ACCEPT-003
+    category: operational
+    requirement: "Very large online platforms: Accept EUDI Wallet for user authentication"
+    explanation: |
+      Providers of very large online platforms (as defined in DSA Article 33) must accept 
+      EUDI Wallets for user authentication upon voluntary user request.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5f"
+      paragraph: "3"
+    legalText: |
+      Where providers of very large online platforms as referred to in Article 33 of 
+      Regulation (EU) 2022/2065 [...] require user authentication for access to online 
+      services, they shall also accept and facilitate the use of European Digital Identity 
+      Wallets that are provided in accordance with this Regulation for user authentication 
+      only upon the voluntary request of the user and in respect of the minimum data 
+      necessary for the specific online service for which authentication is requested.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+
+  # ============================================================================
+  # PSD2 SCA SPECIFIC (payment-auth, open-bank-account)  
+  # Source: Article 5f + PSD2 Directive
   # ============================================================================
 
   - id: RP-SCA-001
@@ -220,14 +445,15 @@ requirements:
     legalBasis:
       regulation: "2014/910"
       article: "Article 5f"
-      paragraph: "1"
+      paragraph: "2"
     relatedRegulation:
       regulation: "PSD2"
       article: "Article 97"
     legalText: |
-      Private relying parties providing services referred to in Article 97 of Directive 
-      (EU) 2015/2366 shall accept European Digital Identity Wallets for strong customer 
-      authentication.
+      Where private relying parties that provide services [...] are required by Union or 
+      national law to use strong user authentication for online identification [...] 
+      including in the areas of [...] banking, financial services [...] those private 
+      relying parties shall [...] also accept European Digital Identity Wallets.
     deadline: "2027-12-21"
     roles:
       - relying_party
@@ -237,7 +463,7 @@ requirements:
 
   # ============================================================================
   # DATA PROTECTION & PRIVACY
-  # Source: Article 5a and 5c of Regulation 2014/910 (consolidated)
+  # Source: Articles 5a, 5c, and 5 of Regulation (EU) 910/2014 (consolidated)
   # ============================================================================
 
   - id: RP-DP-001
@@ -248,12 +474,11 @@ requirements:
       for the specific service. Over-requesting data violates data minimization principles.
     legalBasis:
       regulation: "2014/910"
-      article: "Article 5c"
-      paragraph: "1"
+      article: "Article 5b"
+      paragraph: "3"
     legalText: |
-      Relying parties shall request from users only those person identification data and 
-      electronic attestations of attributes that are necessary and proportionate for the 
-      intended service.
+      Relying parties shall not request users to provide any data other than that indicated 
+      pursuant to paragraph 2, point (c).
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -269,11 +494,15 @@ requirements:
     legalBasis:
       regulation: "2014/910"
       article: "Article 5a"
-      paragraph: "4(e)"
+      paragraph: "4(a)"
     legalText: |
-      The European Digital Identity Wallet shall enable the user to selectively disclose 
-      to relying parties person identification data and electronic attestations of 
-      attributes.
+      European Digital Identity Wallets shall enable the user, in a manner that is 
+      user-friendly, transparent, and traceable by the user, to: (a) securely request, 
+      obtain, select, combine, store, delete, share and present, under the sole control 
+      of the user, person identification data and, where applicable, in combination with 
+      electronic attestations of attributes, to authenticate to relying parties online 
+      and, where appropriate, in offline mode, in order to access public and private 
+      services, while ensuring that selective disclosure of data is possible.
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -281,18 +510,20 @@ requirements:
 
   - id: RP-DP-003
     category: data-protection
-    requirement: "Display registered identity and intended use to wallet user"
+    requirement: "Do not track wallet usage across services (unlinkability)"
     explanation: |
-      When requesting credentials, the relying party must display their verified identity 
-      and the purpose for which data is being requested, enabling informed user consent.
+      The technical framework must prevent tracking or correlation of wallet usage 
+      across different services, unless the user explicitly consents.
     legalBasis:
       regulation: "2014/910"
-      article: "Article 5c"
-      paragraph: "2"
+      article: "Article 5a"
+      paragraph: "16(a)"
     legalText: |
-      Relying parties shall provide, to users and to the European Digital Identity Wallet, 
-      information about their identity and the purpose for which the person identification 
-      data or electronic attestations of attributes are requested.
+      The technical framework of the European Digital Identity Wallet shall: (a) not allow 
+      providers of electronic attestations of attributes or any other party, after the 
+      issuance of the attestation of attributes, to obtain data that allows transactions 
+      or user behaviour to be tracked, linked or correlated, or knowledge of transactions 
+      or user behaviour to be otherwise obtained, unless explicitly authorised by the user.
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -300,24 +531,48 @@ requirements:
 
   - id: RP-DP-004
     category: data-protection
-    requirement: "Do not track wallet usage across services (unlinkability)"
+    requirement: "Enable privacy preserving unlinkability for non-identified attestations"
     explanation: |
-      Relying parties must not implement mechanisms to track or correlate wallet usage 
-      across different transactions or services, preserving user privacy.
+      When attestations don't require user identification, privacy-preserving techniques 
+      must ensure unlinkability across different relying parties.
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 5a"
-      paragraph: "4(f)"
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "10"
     legalText: |
-      The European Digital Identity Wallet shall be designed and implemented in such a 
-      way that it prevents the tracking of users across different relying parties unless 
-      the user has given explicit consent.
+      Wallet providers shall ensure that wallet units [...] enable privacy preserving 
+      techniques which ensure unlinkability where the electronic attestations of 
+      attributes do not require the identification of the wallet user, when presenting 
+      attestations or person identification data across different wallet-relying parties.
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases: all
+    useCases:
+      - age-verification
+      - pseudonym
 
   - id: RP-DP-005
+    category: data-protection
+    requirement: "Allow pseudonyms where legal identity is not required"
+    explanation: |
+      Users cannot be prohibited from using pseudonyms when there is no legal requirement 
+      for identity verification.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5"
+      paragraph: ""
+    legalText: |
+      Without prejudice to specific rules of Union or national law requiring users to 
+      identify themselves or to the legal effect given to pseudonyms under national law, 
+      the use of pseudonyms that are chosen by the user shall not be prohibited.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+
+  - id: RP-DP-006
     category: data-protection
     requirement: "Process data in accordance with GDPR"
     explanation: |
@@ -325,37 +580,41 @@ requirements:
       with GDPR, including lawful basis, storage limitation, and data subject rights.
     legalBasis:
       regulation: "2014/910"
-      article: "Article 5c"
-      paragraph: "3"
+      article: "Article 2"
+      paragraph: "4"
     relatedRegulation:
       regulation: "GDPR"
       article: "Article 5"
     legalText: |
-      The processing of personal data by relying parties shall comply with Regulation 
-      (EU) 2016/679.
+      This Regulation is without prejudice to Regulation (EU) 2016/679 of the European 
+      Parliament and of the Council.
     deadline: "2027-11-21"
     roles:
       - relying_party
     useCases: all
 
   # ============================================================================
-  # OPERATIONAL
-  # Source: Article 5c, 5d, 5f of Regulation 2014/910 (consolidated)
+  # OPERATIONAL REQUIREMENTS
+  # Source: Articles 5a, 5f of Regulation (EU) 910/2014 (consolidated)
   # ============================================================================
 
   - id: RP-OPS-001
     category: operational
-    requirement: "Maintain fallback authentication mechanisms"
+    requirement: "Maintain alternative means of identification"
     explanation: |
-      Relying parties should maintain alternative authentication methods in case of 
-      EUDI Wallet ecosystem outages (e.g., national infrastructure failures).
+      Relying parties may maintain alternative authentication methods. EUDI Wallet 
+      acceptance requirements do not prevent offering other identification means.
     legalBasis:
       regulation: "2014/910"
-      article: "Article 5f"
-      paragraph: "5"
+      article: "Article 5a"
+      paragraph: "15"
     legalText: |
-      The acceptance requirement shall not prevent relying parties from maintaining 
-      alternative means of online identification.
+      The use of European Digital Identity Wallets shall be voluntary. Access to public 
+      and private services, access to the labour market and freedom to conduct business 
+      shall not in any way be restricted or made disadvantageous to natural or legal 
+      persons that do not use European Digital Identity Wallets. It shall remain possible 
+      to access public and private services by other existing identification and 
+      authentication means.
     deadline: "2027-11-21"
     roles:
       - relying_party
@@ -363,36 +622,18 @@ requirements:
 
   - id: RP-OPS-002
     category: operational
-    requirement: "Report security incidents to supervisory authority"
+    requirement: "Support reporting to data protection authorities"
     explanation: |
-      Severe incidents affecting the reliability of EUDI Wallet interfaces must be 
-      reported to the supervisory authority within mandated timeframes.
+      Relying parties must be prepared to be reported to data protection authorities 
+      through the wallet's reporting mechanism if users suspect unlawful data requests.
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 5d"
+      regulation: "2024/2982"
+      article: "Article 7"
       paragraph: "1"
     legalText: |
-      Relying parties shall notify the competent supervisory body of any breach or 
-      compromise of the security of their systems that affects the reliability of the 
-      acceptance of European Digital Identity Wallets.
-    deadline: "2027-11-21"
-    roles:
-      - relying_party
-    useCases: all
-
-  - id: RP-OPS-003
-    category: operational
-    requirement: "Provide user support for wallet-based authentication"
-    explanation: |
-      Users must have access to support channels for issues related to wallet-based 
-      authentication at the relying party.
-    legalBasis:
-      regulation: "2014/910"
-      article: "Article 5c"
-      paragraph: "4"
-    legalText: |
-      Relying parties shall ensure that appropriate support is available to users for 
-      the use of European Digital Identity Wallets in relation to their services.
+      Wallet providers shall ensure that wallet units allow wallet users to easily report 
+      wallet-relying parties to supervisory authorities established under Article 51 of 
+      Regulation (EU) 2016/679.
     deadline: "2027-11-21"
     roles:
       - relying_party
