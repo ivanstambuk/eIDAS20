@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T05:53:41.811Z",
+  "generatedAt": "2026-01-19T06:07:56.023Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -1198,6 +1198,488 @@
       "appliesToAllUseCases": false
     },
     {
+      "id": "RP-ESIG-009",
+      "category": "esignature",
+      "requirement": "Accept electronic seals regardless of electronic form",
+      "explanation": "Relying parties cannot deny legal effect or admissibility of an electronic seal \nsolely because it is in electronic form.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 35",
+        "paragraph": "1"
+      },
+      "legalText": "An electronic seal shall not be denied legal effect and admissibility as evidence \nin legal proceedings solely on the grounds that it is in an electronic form or that \nit does not meet the requirements for qualified electronic seals.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "eseal"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-010",
+      "category": "esignature",
+      "requirement": "Recognize qualified electronic seals' presumptions",
+      "explanation": "Qualified electronic seals enjoy the presumption of data integrity and origin correctness.\nRPs should rely on these presumptions when verifying sealed data.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 35",
+        "paragraph": "2"
+      },
+      "legalText": "A qualified electronic seal shall enjoy the presumption of integrity of the data and \nof correctness of the origin of that data to which the qualified electronic seal is linked.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "eseal"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-011",
+      "category": "esignature",
+      "requirement": "Recognize qualified electronic seals from all Member States",
+      "explanation": "Cross-border recognition is mandatory. A qualified electronic seal issued in \nany EU Member State must be recognized in all other Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 35",
+        "paragraph": "3"
+      },
+      "legalText": "A qualified electronic seal based on a qualified certificate issued in one Member State \nshall be recognised as a qualified electronic seal in all other Member States.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "eseal"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-012",
+      "category": "esignature",
+      "requirement": "Public sector: Accept advanced seals in defined formats",
+      "explanation": "Public sector relying parties requiring advanced electronic seals must accept \nthem in the formats defined by Commission implementing acts.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 37",
+        "paragraph": "1"
+      },
+      "legalText": "If a Member State requires an advanced electronic seal in order to use an online service \noffered by, or on behalf of, a public sector body, that Member State shall recognise \nadvanced electronic seals, advanced electronic seals based on a qualified certificate \nfor electronic seals and qualified electronic seals at least in the formats or using \nmethods defined in the implementing acts referred to in paragraph 5.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "eseal",
+        "pid-online"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-013",
+      "category": "esignature",
+      "requirement": "Validate qualified electronic seals correctly",
+      "explanation": "Articles 32-34 for signature validation apply mutatis mutandis to electronic seals.\nRPs should validate seals using the same processes as signatures.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 40",
+        "paragraph": "1"
+      },
+      "legalText": "Articles 32, 33 and 34 shall apply mutatis mutandis to the validation and \npreservation of qualified electronic seals.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "eseal"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-014",
+      "category": "esignature",
+      "requirement": "Accept electronic time stamps regardless of electronic form",
+      "explanation": "Relying parties cannot deny legal effect of an electronic time stamp solely \nbecause it is in electronic form.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 41",
+        "paragraph": "1"
+      },
+      "legalText": "An electronic time stamp shall not be denied legal effect and admissibility as \nevidence in legal proceedings solely on the grounds that it is in an electronic \nform or that it does not meet the requirements of the qualified electronic time stamp.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "timestamp"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-015",
+      "category": "esignature",
+      "requirement": "Recognize qualified time stamps' presumptions",
+      "explanation": "Qualified electronic time stamps enjoy the presumption of accuracy of date/time \nand integrity of the bound data. RPs should rely on these presumptions.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 41",
+        "paragraph": "2"
+      },
+      "legalText": "A qualified electronic time stamp shall enjoy the presumption of the accuracy of \nthe date and the time it indicates and the integrity of the data to which the \ndate and time are bound.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "timestamp"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-016",
+      "category": "esignature",
+      "requirement": "Recognize qualified time stamps from all Member States",
+      "explanation": "Cross-border recognition is mandatory. A qualified electronic time stamp issued \nin any EU Member State must be recognized in all other Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 41",
+        "paragraph": "3"
+      },
+      "legalText": "A qualified electronic time stamp issued in one Member State shall be recognised \nas a qualified electronic time stamp in all Member States.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "timestamp"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-017",
+      "category": "esignature",
+      "requirement": "Accept electronic registered delivery data regardless of form",
+      "explanation": "Relying parties cannot deny legal effect of data sent/received using electronic \nregistered delivery services solely because it is electronic.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 43",
+        "paragraph": "1"
+      },
+      "legalText": "Data sent and received using an electronic registered delivery service shall not \nbe denied legal effect and admissibility as evidence in legal proceedings solely \non the grounds that it is in an electronic form or that it does not meet the \nrequirements of the qualified electronic registered delivery service.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "registered-delivery"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-018",
+      "category": "esignature",
+      "requirement": "Recognize qualified registered delivery presumptions",
+      "explanation": "Qualified electronic registered delivery services enjoy presumptions of data integrity,\nsender/addressee identification, and date/time accuracy.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 43",
+        "paragraph": "2"
+      },
+      "legalText": "Data sent and received using a qualified electronic registered delivery service \nshall enjoy the presumption of the integrity of the data, the sending of that data \nby the identified sender, its receipt by the identified addressee and the accuracy \nof the date and time of sending and receipt indicated by the qualified electronic \nregistered delivery service.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "registered-delivery"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-019",
+      "category": "esignature",
+      "requirement": "Recognize qualified certificates for website authentication",
+      "explanation": "Qualified certificates for website authentication issued in any Member State \nmust be recognized in all other Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24a",
+        "paragraph": "7"
+      },
+      "legalText": "A qualified certificate for website authentication issued in one Member State \nshall be recognised as a qualified certificate for website authentication in \nall other Member States.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "website-auth"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-020",
+      "category": "esignature",
+      "requirement": "Accept electronic attestations of attributes regardless of form",
+      "explanation": "Relying parties cannot deny legal effect of an electronic attestation of attributes \nsolely because it is in electronic form.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45b",
+        "paragraph": "1"
+      },
+      "legalText": "An electronic attestation of attributes shall not be denied legal effect or \nadmissibility as evidence in legal proceedings on the sole ground that it is \nin electronic form or that it does not meet the requirements for qualified \nelectronic attestations of attributes.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-021",
+      "category": "esignature",
+      "requirement": "Recognize legal effect of qualified EAA and public sector EAA",
+      "explanation": "Qualified EAA and attestations issued by public sector bodies responsible for \nauthentic sources have the same legal effect as paper attestations.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45b",
+        "paragraph": "2"
+      },
+      "legalText": "A qualified electronic attestation of attributes and attestations of attributes \nissued by, or on behalf of, a public sector body responsible for an authentic \nsource shall have the same legal effect as lawfully issued attestations in paper form.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-022",
+      "category": "esignature",
+      "requirement": "Recognize public sector EAA from all Member States",
+      "explanation": "Cross-border recognition is mandatory. EAA issued by a public sector body in \none Member State must be recognized in all other Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45b",
+        "paragraph": "3"
+      },
+      "legalText": "An attestation of attributes issued by or on behalf of a public sector body \nresponsible for an authentic source in one Member State shall be recognised \nas an attestation of attributes issued by or on behalf of a public sector body \nresponsible for an authentic source in all Member States.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-023",
+      "category": "esignature",
+      "requirement": "Accept electronically archived data regardless of form",
+      "explanation": "Relying parties cannot deny legal effect of electronically preserved data solely \nbecause it is electronic or not preserved using a qualified archiving service.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45i",
+        "paragraph": "1"
+      },
+      "legalText": "Electronic data and electronic documents preserved using an electronic archiving \nservice shall not be denied legal effect or admissibility as evidence in legal \nproceedings on the sole ground that they are in electronic form or that they are \nnot preserved using a qualified electronic archiving service.",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "archiving"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-024",
+      "category": "esignature",
+      "requirement": "Recognize qualified archiving service presumptions",
+      "explanation": "Data preserved using qualified electronic archiving enjoys the presumption of \nintegrity and origin for the duration of preservation.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45i",
+        "paragraph": "2"
+      },
+      "legalText": "Electronic data and electronic documents preserved using a qualified electronic \narchiving service shall enjoy the presumption of their integrity and of their \norigin for the duration of the preservation period by the qualified trust service provider.",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "archiving"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-025",
+      "category": "esignature",
+      "requirement": "Accept electronic ledger records regardless of form",
+      "explanation": "Relying parties cannot deny legal effect of electronic ledger records solely \nbecause they are in electronic form.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45k",
+        "paragraph": "1"
+      },
+      "legalText": "An electronic ledger shall not be denied legal effect or admissibility as evidence \nin legal proceedings solely on the grounds that it is in an electronic form or \nthat it does not meet the requirements for qualified electronic ledgers.",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "ledger"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-026",
+      "category": "esignature",
+      "requirement": "Recognize qualified electronic ledger presumptions",
+      "explanation": "Data records in a qualified electronic ledger enjoy the presumption of unique, \naccurate sequential chronological ordering and integrity.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45k",
+        "paragraph": "2"
+      },
+      "legalText": "Data records contained in a qualified electronic ledger shall enjoy the presumption \nof their unique and accurate sequential chronological ordering and of their integrity.",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "ledger"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-AUTH-001",
+      "category": "authentication",
+      "requirement": "Public sector: Recognize e-ID from other Member States",
+      "explanation": "When requiring electronic identification for online services, public sector RPs \nmust accept notified e-ID means from other Member States at substantial/high levels.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 6",
+        "paragraph": "1"
+      },
+      "legalText": "When an electronic identification using an electronic identification means and \nauthentication is required under national law or by administrative practice to \naccess a service provided by a public sector body online in one Member State, \nthe electronic identification means issued in another Member State shall be \nrecognised in the first Member State for the purposes of cross-border authentication \nfor that service online.",
+      "legalSourceInfo": null,
+      "deadline": "2018-09-29",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-AUTH-002",
+      "category": "authentication",
+      "requirement": "Public sector: Ensure unequivocal identity matching for cross-border",
+      "explanation": "When acting as relying parties for cross-border services, public sector bodies \nmust ensure unequivocal identity matching for users with notified e-ID or EUDI Wallets.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 11a",
+        "paragraph": "1"
+      },
+      "legalText": "When acting as relying parties for cross-border services, Member States shall \nensure unequivocal identity matching for natural persons using notified electronic \nidentification means or European Digital Identity Wallets.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-AUTH-003",
+      "category": "authentication",
+      "requirement": "Protect personal data used for identity matching",
+      "explanation": "For cross-border identity matching, appropriate technical and organisational measures \nmust be in place to protect personal data and prevent user profiling.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 11a",
+        "paragraph": "2"
+      },
+      "legalText": "Member States shall provide for technical and organisational measures to ensure \na high level of protection of personal data used for identity matching and to \nprevent the profiling of users.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-AUTH-004",
+      "category": "authentication",
+      "requirement": "Access certificate revocation status information",
+      "explanation": "Qualified trust service providers must provide RPs with certificate validity/revocation \ninformation. RPs should use this to verify certificate status before relying on them.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "4"
+      },
+      "legalText": "With regard to paragraph 3, qualified trust service providers issuing qualified \ncertificates shall provide to any relying party information on the validity or \nrevocation status of qualified certificates issued by them. This information \nshall be made available at least on a per certificate basis at any time and \nbeyond the validity period of the certificate in an automated manner that is \nreliable, free of charge and efficient.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "all"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
       "id": "RP-DP-001",
       "category": "data-protection",
       "requirement": "Request only necessary and proportionate attributes",
@@ -1478,6 +1960,201 @@
         "representation"
       ],
       "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-INFO-001",
+      "category": "data-protection",
+      "requirement": "Perform data protection impact assessments for wallet data processing",
+      "explanation": "Recital 17 emphasizes that relying parties should comply with GDPR safeguards, \nparticularly by performing data protection impact assessments and consulting \ndata protection authorities prior to processing where there is high risk.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Recital 17",
+        "paragraph": ""
+      },
+      "legalText": "Relying parties should comply with the safeguards offered by Articles 35 and 36 \nof [Regulation (EU) 2016/679], in particular by performing data protection impact \nassessments and by consulting the competent data protection authorities prior to \ndata processing where data protection impact assessments indicate that the \nprocessing would result in a high risk.",
+      "legalSourceInfo": null,
+      "deadline": "2024-05-20",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-INFO-002",
+      "category": "data-protection",
+      "requirement": "Apply data minimization - request only necessary data",
+      "explanation": "Recital 56 emphasizes that any request for information should be necessary, \nproportionate to the intended use, and in line with data minimisation principles.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Recital 56",
+        "paragraph": ""
+      },
+      "legalText": "Any request by the relying party for information from the user of a European \nDigital Identity Wallet should be necessary for, and proportionate to, the \nintended use in a given case, should be in line with the principle of data \nminimisation and should ensure transparency as regards which data is shared \nand for what purposes.",
+      "legalSourceInfo": null,
+      "deadline": "2024-05-20",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-INFO-003",
+      "category": "data-protection",
+      "requirement": "Accept pseudonymous access where identification not legally required",
+      "explanation": "Recital 60 clarifies that unless specific rules require user identification, \naccessing services by using a pseudonym should not be prohibited.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Recital 60",
+        "paragraph": ""
+      },
+      "legalText": "Unless specific rules of Union or national law require users to identify \nthemselves, accessing services by using a pseudonym should not be prohibited.",
+      "legalSourceInfo": null,
+      "deadline": "2024-05-20",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-INFO-004",
+      "category": "operational",
+      "requirement": "Enable selective disclosure of attributes",
+      "explanation": "Recital 59 emphasizes that selective disclosure is a core design feature of \nwallets, allowing users to share only necessary parts of their data.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Recital 59",
+        "paragraph": ""
+      },
+      "legalText": "Selective disclosure is a concept empowering the owner of data to disclose \nonly certain parts of a larger data set, in order for the receiving entity \nto obtain only such information as is necessary for the provision of a \nservice requested by a user. The European Digital Identity Wallet should \ntechnically enable the selective disclosure of attributes to relying parties.",
+      "legalSourceInfo": null,
+      "deadline": "2024-05-20",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-INFO-005",
+      "category": "authentication",
+      "requirement": "Very large online platforms must accept wallet authentication",
+      "explanation": "Recital 57 states that very large online platforms (as defined in DSA) that \nrequire authentication should accept EUDI Wallets upon user request, while \nrespecting data minimisation and pseudonym rights.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Recital 57",
+        "paragraph": ""
+      },
+      "legalText": "Where very large online platforms...require users to be authenticated in order \nto access online services, those platforms should be required to accept the use \nof European Digital Identity Wallets upon the voluntary request of the user. \nUsers should be under no obligation to use a European Digital Identity Wallet \nto access private services... However, if users wish to do so, very large online \nplatforms should accept them for that purpose, while respecting the principle \nof data minimisation and the right of the users to use freely chosen pseudonyms.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
     }
   ],
   "requirementIndex": {
@@ -1499,12 +2176,21 @@
         "RP-ACCEPT-002",
         "RP-ACCEPT-003",
         "RP-ESIG-004",
+        "RP-ESIG-012",
+        "RP-AUTH-001",
+        "RP-AUTH-002",
+        "RP-AUTH-003",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "pseudonym": [
         "RP-REG-001",
@@ -1528,7 +2214,12 @@
         "RP-DP-005",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "esignature": [
         "RP-REG-001",
@@ -1551,12 +2242,33 @@
         "RP-ESIG-006",
         "RP-ESIG-007",
         "RP-ESIG-008",
+        "RP-ESIG-009",
+        "RP-ESIG-010",
+        "RP-ESIG-011",
+        "RP-ESIG-012",
+        "RP-ESIG-013",
+        "RP-ESIG-014",
+        "RP-ESIG-015",
+        "RP-ESIG-016",
+        "RP-ESIG-017",
+        "RP-ESIG-018",
+        "RP-ESIG-019",
+        "RP-ESIG-023",
+        "RP-ESIG-024",
+        "RP-ESIG-025",
+        "RP-ESIG-026",
+        "RP-AUTH-004",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "payment-auth": [
         "RP-REG-001",
@@ -1577,7 +2289,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "open-bank-account": [
         "RP-REG-001",
@@ -1598,7 +2315,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "mdl": [
         "RP-REG-001",
@@ -1617,7 +2339,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "dtc": [
         "RP-REG-001",
@@ -1636,7 +2363,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "epc": [
         "RP-REG-001",
@@ -1655,7 +2387,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "vrc": [
         "RP-REG-001",
@@ -1674,7 +2411,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "disability-card": [
         "RP-REG-001",
@@ -1693,7 +2435,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "eprescription": [
         "RP-REG-001",
@@ -1712,7 +2459,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "ehic": [
         "RP-REG-001",
@@ -1731,7 +2483,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "public-warnings": [
         "RP-REG-001",
@@ -1750,7 +2507,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "age-verification": [
         "RP-REG-001",
@@ -1772,7 +2534,12 @@
         "RP-DP-005",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "ticket-pass": [
         "RP-REG-001",
@@ -1791,7 +2558,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "edu-credentials": [
         "RP-REG-001",
@@ -1810,7 +2582,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "student-card": [
         "RP-REG-001",
@@ -1829,7 +2606,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "proximity-id": [
         "RP-REG-001",
@@ -1848,7 +2630,12 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
       ],
       "representation": [
         "RP-REG-001",
@@ -1867,16 +2654,57 @@
         "RP-DP-003",
         "RP-DP-006",
         "RP-OPS-001",
-        "RP-OPS-002"
+        "RP-OPS-002",
+        "RP-INFO-001",
+        "RP-INFO-002",
+        "RP-INFO-003",
+        "RP-INFO-004",
+        "RP-INFO-005"
+      ],
+      "eseal": [
+        "RP-ESIG-009",
+        "RP-ESIG-010",
+        "RP-ESIG-011",
+        "RP-ESIG-012",
+        "RP-ESIG-013"
+      ],
+      "timestamp": [
+        "RP-ESIG-014",
+        "RP-ESIG-015",
+        "RP-ESIG-016"
+      ],
+      "registered-delivery": [
+        "RP-ESIG-017",
+        "RP-ESIG-018"
+      ],
+      "website-auth": [
+        "RP-ESIG-019"
+      ],
+      "all": [
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
+        "RP-AUTH-001",
+        "RP-AUTH-002",
+        "RP-AUTH-003",
+        "RP-AUTH-004"
+      ],
+      "archiving": [
+        "RP-ESIG-023",
+        "RP-ESIG-024"
+      ],
+      "ledger": [
+        "RP-ESIG-025",
+        "RP-ESIG-026"
       ]
     }
   },
   "stats": {
-    "totalRequirements": 34,
+    "totalRequirements": 61,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 34
+      "relying_party": 61
     }
   }
 }

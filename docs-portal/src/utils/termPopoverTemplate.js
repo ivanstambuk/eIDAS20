@@ -42,23 +42,59 @@ export function generateTermPopoverContent(term) {
     const sources = term.sources || [];
     const hasMultipleSources = sources.length > 1;
 
-    // Limit sources shown to prevent overflow (show first 3)
-    const displaySources = sources.slice(0, 3);
-    const hasMore = sources.length > 3;
+    // Deduplicate sources by definition text (normalized for comparison)
+    // Group sources with identical definitions
+    const definitionGroups = new Map();
+    for (const source of sources) {
+        // Normalize definition for comparison (trim, lowercase, collapse whitespace)
+        const normalizedDef = source.definition.trim().toLowerCase().replace(/\s+/g, ' ');
 
-    const sourcesHtml = displaySources.map(source => `
+        if (!definitionGroups.has(normalizedDef)) {
+            definitionGroups.set(normalizedDef, {
+                definition: source.definition, // Keep original formatting
+                sources: []
+            });
+        }
+        definitionGroups.get(normalizedDef).sources.push(source);
+    }
+
+    // Convert to array of unique definitions
+    const uniqueDefinitions = Array.from(definitionGroups.values());
+
+    // Limit unique definitions shown to prevent overflow (show first 3)
+    const displayDefinitions = uniqueDefinitions.slice(0, 3);
+    const hasMoreDefinitions = uniqueDefinitions.length > 3;
+
+    const sourcesHtml = displayDefinitions.map(group => {
+        // Use first source as representative
+        const source = group.sources[0];
+        const sourceCount = group.sources.length;
+
+        // Build source titles for tooltip (first 3 sources)
+        const sourceTitles = group.sources.slice(0, 3).map(s => s.documentTitle).join(', ');
+        const moreSourcesText = group.sources.length > 3
+            ? ` +${group.sources.length - 3} more`
+            : '';
+
+        return `
         <div class="term-popover-source ${getCategoryClass(source.documentCategory)}">
             <div class="term-popover-source-header">
                 <a href="${getDocumentPath(source)}" class="term-popover-source-title">
                     ${source.documentTitle}
                 </a>
                 <span class="term-popover-article">Art. ${source.articleNumber}</span>
+                ${sourceCount > 1 ? `
+                    <span class="term-popover-source-count" title="${sourceTitles}${moreSourcesText}">
+                        +${sourceCount - 1} identical
+                    </span>
+                ` : ''}
                 ${source.documentCategory === 'referenced' ?
-            '<span class="term-popover-badge-referenced">Referenced</span>' : ''}
+                '<span class="term-popover-badge-referenced">Referenced</span>' : ''}
             </div>
-            <p class="term-popover-definition">${source.definition}</p>
+            <p class="term-popover-definition">${group.definition}</p>
         </div>
-    `).join('');
+    `;
+    }).join('');
 
     const html = `
         <div class="term-popover-header">
@@ -71,9 +107,9 @@ export function generateTermPopoverContent(term) {
         </div>
         <div class="term-popover-sources">
             ${sourcesHtml}
-            ${hasMore ? `
+            ${hasMoreDefinitions ? `
                 <div class="term-popover-more">
-                    +${sources.length - 3} more source${sources.length - 3 > 1 ? 's' : ''}
+                    +${uniqueDefinitions.length - 3} more definition${uniqueDefinitions.length - 3 > 1 ? 's' : ''}
                 </div>
             ` : ''}
         </div>
