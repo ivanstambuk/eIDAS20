@@ -4,11 +4,18 @@ Formex XML to Markdown Converter v3.0
 =====================================
 Enhanced converter for EUR-Lex Formex 4 XML format.
 
-Key improvements over v2:
-- v2 improvements: Proper recital extraction, nested list handling, footnotes
-- v3 FIX: Properly extracts QUOT.S quoted content (replacement text in amendments)
-- v3 FIX: Captures content following list items (amendment instructions)
-- v3 FIX: Better sibling element traversal for ALINEA content
+Key features:
+- Recitals: Proper extraction with numbered formatting
+- Lists: Nested list handling with proper indentation
+- Footnotes: Inline reference formatting
+- Chapters: DIVISION elements extracted as "N. Title" format (for ToC grouping)
+- Tables: TBL elements converted to Markdown tables with ROWSPAN support
+- Annexes: Separate annex XML files merged into single output (via eurlex_formex.py)
+
+v3 History:
+- v3.0: Initial v3 release with QUOT.S quoted content, list sibling traversal
+- v3.1: Added DIVISION/chapter extraction for collapsible ToC support
+- v3.2: Added TBL table conversion and multi-file annex merging
 """
 
 import re
@@ -72,6 +79,9 @@ def get_element_text(elem, include_tail=False):
             elif tag == 'HT':
                 ht_type = child.get('TYPE', '')
                 inner = get_element_text(child)
+                # Add leading space if previous part ends with a number (e.g., "1.1" before "Theft")
+                if parts and parts[-1] and parts[-1][-1].isdigit():
+                    inner = ' ' + inner
                 if ht_type == 'ITALIC':
                     parts.append(f"*{inner}*")
                 elif ht_type == 'BOLD':
@@ -94,13 +104,128 @@ def get_element_text(elem, include_tail=False):
                 parts.append(get_element_text(child))
             # Recursively process other elements
             else:
-                parts.append(get_element_text(child))
+                inner = get_element_text(child)
+                # Add leading space if previous part ends with a number/digit and
+                # this text starts with a formatting marker (e.g., "1.1" then "*Theft*")
+                if inner and parts and parts[-1]:
+                    last_char = parts[-1][-1]
+                    first_char = inner[0]
+                    if last_char.isdigit() and first_char in '*':
+                        inner = ' ' + inner
+                parts.append(inner)
         
         # Include tail text
         if child.tail:
             parts.append(child.tail)
     
     return ''.join(parts)
+
+
+def convert_table_to_markdown(tbl_elem):
+    """
+    Convert a Formex TBL element to Markdown table format.
+    
+    Formex table structure:
+    <TBL COLS="3">
+      <CORPUS>
+        <ROW TYPE="HEADER">
+          <CELL COL="1" TYPE="HEADER">Header 1</CELL>
+          ...
+        </ROW>
+        <ROW>
+          <CELL COL="1" ROWSPAN="2">Cell with rowspan</CELL>
+          <CELL COL="2">Cell 2</CELL>
+          ...
+        </ROW>
+        ...
+      </CORPUS>
+    </TBL>
+    
+    Returns list of Markdown lines.
+    
+    Note: Markdown tables don't support rowspan/colspan natively.
+    We handle this by repeating spanned content or leaving cells empty
+    as appropriate for readability.
+    """
+    lines = []
+    
+    corpus = tbl_elem.find('CORPUS')
+    if corpus is None:
+        return lines
+    
+    rows = corpus.findall('ROW')
+    if not rows:
+        return lines
+    
+    # Determine column count from COLS attribute or first row
+    cols = int(tbl_elem.get('COLS', '0'))
+    if cols == 0:
+        # Count cells in first row
+        first_row = rows[0]
+        cols = len(first_row.findall('CELL'))
+    
+    # Track rowspan state: dict of col_index -> (remaining_span, text)
+    rowspan_state = {}
+    
+    header_row = None
+    data_rows = []
+    
+    for row in rows:
+        row_type = row.get('TYPE', '')
+        cells = row.findall('CELL')
+        
+        # Build row data, handling rowspans
+        row_data = []
+        cell_idx = 0
+        
+        for col_idx in range(cols):
+            # Check if this column has an active rowspan from previous row
+            if col_idx in rowspan_state:
+                remaining, text = rowspan_state[col_idx]
+                # Use the same text for rowspan continuation (or empty for readability)
+                row_data.append('')  # Empty for continuation rows
+                if remaining > 1:
+                    rowspan_state[col_idx] = (remaining - 1, text)
+                else:
+                    del rowspan_state[col_idx]
+            else:
+                # Get the next cell
+                if cell_idx < len(cells):
+                    cell = cells[cell_idx]
+                    cell_text = clean_text(get_element_text(cell))
+                    # Escape pipe characters in cell content
+                    cell_text = cell_text.replace('|', '\\|')
+                    row_data.append(cell_text)
+                    
+                    # Handle ROWSPAN
+                    rowspan = cell.get('ROWSPAN')
+                    if rowspan and int(rowspan) > 1:
+                        rowspan_state[col_idx] = (int(rowspan) - 1, cell_text)
+                    
+                    cell_idx += 1
+                else:
+                    row_data.append('')
+        
+        if row_type == 'HEADER':
+            header_row = row_data
+        else:
+            data_rows.append(row_data)
+    
+    # Build Markdown table
+    if header_row:
+        lines.append('| ' + ' | '.join(header_row) + ' |')
+        lines.append('|' + '|'.join(['---' for _ in header_row]) + '|')
+    elif data_rows:
+        # No header row - create generic headers
+        lines.append('| ' + ' | '.join([f'Column {i+1}' for i in range(cols)]) + ' |')
+        lines.append('|' + '|'.join(['---' for _ in range(cols)]) + '|')
+    
+    for row_data in data_rows:
+        lines.append('| ' + ' | '.join(row_data) + ' |')
+    
+    lines.append('')  # Blank line after table
+    
+    return lines
 
 
 def format_quoted_article(article_elem, indent=""):
@@ -789,12 +914,159 @@ def process_alinea(alinea_elem):
     return lines
 
 
+def extract_divisions_with_articles(root):
+    """Extract DIVISION elements that contain CHAPTER headings and ARTICLE elements.
+    
+    This handles implementing regulations that organize content into chapters:
+    
+    <ENACTING.TERMS>
+      <DIVISION>
+        <TITLE><TI><P>CHAPTER II</P></TI><STI><P><HT TYPE="BOLD">NATIONAL CERTIFICATION SCHEMES</HT></P></STI></TITLE>
+        <ARTICLE>...</ARTICLE>
+        <ARTICLE>...</ARTICLE>
+      </DIVISION>
+      ...
+    </ENACTING.TERMS>
+    
+    Returns:
+        tuple: (lines, processed_articles) where processed_articles is a set of
+               already-processed ARTICLE elements to skip in extract_articles.
+    """
+    lines = []
+    processed_articles = set()
+    
+    # Find ENACTING.TERMS
+    enacting = root.find('.//ENACTING.TERMS')
+    if enacting is None:
+        return lines, processed_articles
+    
+    # Find all DIVISION elements (these contain CHAPTER headings)
+    for division in enacting.findall('DIVISION'):
+        # Extract chapter title from TITLE
+        title_elem = division.find('TITLE')
+        if title_elem is not None:
+            # Main title (e.g., "CHAPTER II" or "CHAPTER I")
+            ti = title_elem.find('TI')
+            if ti is not None:
+                p_elem = ti.find('P')
+                chapter_title = clean_text(get_element_text(p_elem)) if p_elem is not None else clean_text(get_element_text(ti))
+            else:
+                chapter_title = clean_text(get_element_text(title_elem))
+            
+            # Subtitle (e.g., "NATIONAL CERTIFICATION SCHEMES")
+            sti = title_elem.find('STI')
+            if sti is not None:
+                p_elem = sti.find('P')
+                chapter_subtitle = clean_text(get_element_text(p_elem)) if p_elem is not None else clean_text(get_element_text(sti))
+                # Strip existing bold/italic markers to avoid formatting issues
+                chapter_subtitle = re.sub(r'\*+', '', chapter_subtitle).strip()
+            else:
+                chapter_subtitle = ""
+            
+            # Output chapter heading in format "## N. Title" for ToC dynamic extraction
+            # Extract Roman numeral from "CHAPTER I" -> "I"
+            if chapter_title:
+                chapter_match = re.match(r'CHAPTER\s+([IVXLCDM]+)', chapter_title, re.IGNORECASE)
+                if chapter_match and chapter_subtitle:
+                    # Format: "## I. General Provisions" - matches ToC extraction pattern
+                    roman_numeral = chapter_match.group(1)
+                    lines.append(f"## {roman_numeral}. {chapter_subtitle}")
+                elif chapter_match:
+                    # No subtitle, just "## CHAPTER I"  
+                    lines.append(f"## {chapter_title}")
+                else:
+                    # Non-chapter division
+                    lines.append(f"## {chapter_title}")
+                lines.append("")
+        
+        # Process ARTICLE elements within this division
+        # Use h3 (###) for articles - this matches the ToC extraction pattern
+        for article in division.findall('ARTICLE'):
+            processed_articles.add(article)
+            article_lines = extract_single_article(article, set(), heading_level=3)
+            lines.extend(article_lines)
+    
+    return lines, processed_articles
+
+
+def extract_single_article(article, articles_in_quot, heading_level=3):
+    """Extract a single ARTICLE element to Markdown lines.
+    
+    Shared logic used by both extract_articles and extract_divisions_with_articles.
+    
+    Args:
+        article: The ARTICLE XML element
+        articles_in_quot: Set of articles inside QUOT.S blocks to skip
+        heading_level: Markdown heading level (3 = ###, 4 = ####)
+    """
+    lines = []
+    
+    # Skip articles that are inside QUOT.S blocks (replacement content)
+    if article in articles_in_quot:
+        return lines
+    
+    # Article number
+    ti_art = article.find('TI.ART')
+    art_number = clean_text(get_element_text(ti_art)) if ti_art is not None else "Article"
+    
+    # Article title/subject
+    sti_art = article.find('STI.ART')
+    if sti_art is not None:
+        p_elem = sti_art.find('P')
+        art_title = clean_text(get_element_text(p_elem)) if p_elem is not None else clean_text(get_element_text(sti_art))
+    else:
+        art_title = ""
+    
+    # Use appropriate heading level (### for standalone, #### for inside chapters)
+    heading_prefix = '#' * heading_level
+    lines.append(f"{heading_prefix} {art_number}")
+    if art_title:
+        lines.append(f"**{art_title}**")
+    lines.append("")
+    
+    # Process paragraphs with proper nesting
+    for parag in article.findall('PARAG'):
+        no_parag = parag.find('NO.PARAG')
+        para_num = get_element_text(no_parag).strip() if no_parag is not None else ""
+        
+        # Get all ALINEA content using the nested processor
+        for alinea in parag.findall('ALINEA'):
+            intro_text, nested_lines = process_alinea_nested(alinea, base_indent="   ")
+            
+            # Output paragraph: "1. Intro text..."
+            if para_num and intro_text:
+                lines.append(f"{para_num} {intro_text}")
+                para_num = ""  # Only use once
+            elif intro_text:
+                lines.append(intro_text)
+            elif para_num:
+                # Paragraph number with no intro (rare)
+                lines.append(f"{para_num}")
+                para_num = ""
+            
+            # Output nested content (points, subpoints) - already indented
+            if nested_lines:
+                lines.extend(nested_lines)
+            
+            # Add blank line after the complete paragraph structure
+            lines.append("")
+    
+    # Direct ALINEA (without PARAG wrapper) - use legacy processing
+    for alinea in article.findall('ALINEA'):
+        alinea_lines = process_alinea(alinea)
+        lines.extend(alinea_lines)
+    
+    return lines
+
+
 def extract_articles(root):
     """Extract and format articles with proper quote handling.
     
     IMPORTANT: Skip any ARTICLE elements that are nested inside QUOT.S blocks,
     as these are replacement content for amending regulations and should only
     be rendered as blockquoted text within the amendment instruction context.
+    
+    v3.2: Now handles DIVISION/CHAPTER structure first, then processes remaining articles.
     
     v3.1: Uses process_alinea_nested() for proper Markdown list nesting.
     Paragraphs with points are rendered as:
@@ -804,7 +1076,12 @@ def extract_articles(root):
     """
     lines = []
     
-    # First, find all ARTICLE elements that are INSIDE a QUOT.S block
+    # First extract DIVISION elements with chapter headings
+    # This handles implementing regulations with chapter structure
+    division_lines, processed_articles = extract_divisions_with_articles(root)
+    lines.extend(division_lines)
+    
+    # Find all ARTICLE elements that are INSIDE a QUOT.S block
     # These should NOT be extracted as standalone articles
     articles_in_quot = set()
     for quot_s in root.findall('.//QUOT.S'):
@@ -812,59 +1089,16 @@ def extract_articles(root):
             articles_in_quot.add(nested_article)
     
     for article in root.findall('.//ARTICLE'):
+        # Skip articles already processed in DIVISION extraction
+        if article in processed_articles:
+            continue
         # Skip articles that are inside QUOT.S blocks (replacement content)
         if article in articles_in_quot:
             continue
-            
-
-        # Article number
-        ti_art = article.find('TI.ART')
-        art_number = clean_text(get_element_text(ti_art)) if ti_art is not None else "Article"
         
-        # Article title/subject
-        sti_art = article.find('STI.ART')
-        if sti_art is not None:
-            p_elem = sti_art.find('P')
-            art_title = clean_text(get_element_text(p_elem)) if p_elem is not None else clean_text(get_element_text(sti_art))
-        else:
-            art_title = ""
-        
-        lines.append(f"### {art_number}")
-        if art_title:
-            lines.append(f"**{art_title}**")
-        lines.append("")
-        
-        # Process paragraphs with proper nesting
-        for parag in article.findall('PARAG'):
-            no_parag = parag.find('NO.PARAG')
-            para_num = get_element_text(no_parag).strip() if no_parag is not None else ""
-            
-            # Get all ALINEA content using the new nested processor
-            for alinea in parag.findall('ALINEA'):
-                intro_text, nested_lines = process_alinea_nested(alinea, base_indent="   ")
-                
-                # Output paragraph: "1. Intro text..."
-                if para_num and intro_text:
-                    lines.append(f"{para_num} {intro_text}")
-                    para_num = ""  # Only use once
-                elif intro_text:
-                    lines.append(intro_text)
-                elif para_num:
-                    # Paragraph number with no intro (rare)
-                    lines.append(f"{para_num}")
-                    para_num = ""
-                
-                # Output nested content (points, subpoints) - already indented
-                if nested_lines:
-                    lines.extend(nested_lines)
-                
-                # Add blank line after the complete paragraph structure
-                lines.append("")
-        
-        # Direct ALINEA (without PARAG wrapper) - use legacy processing
-        for alinea in article.findall('ALINEA'):
-            alinea_lines = process_alinea(alinea)
-            lines.extend(alinea_lines)
+        # Use shared extraction logic
+        article_lines = extract_single_article(article, articles_in_quot)
+        lines.extend(article_lines)
     
     return lines
 
@@ -1124,13 +1358,26 @@ def convert_formex_to_md(xml_path, output_path=None):
         md_lines.append("")
         
         # Find subtitle if present (GR.SEQ/TITLE)
+        # Note: Use direct children or exclude GR.SEQ inside TBL to avoid duplicate processing
         gr_seqs = annex.findall('.//GR.SEQ')
+        
+        # Filter out GR.SEQ elements that are inside TBL elements (they're processed with tables)
+        tbl_nested_gr_seqs = set()
+        for tbl in annex.findall('.//TBL'):
+            for nested_gr_seq in tbl.findall('.//GR.SEQ'):
+                tbl_nested_gr_seqs.add(nested_gr_seq)
+        
         for gr_seq in gr_seqs:
+            # Skip GR.SEQ elements that are inside tables (processed with table content)
+            if gr_seq in tbl_nested_gr_seqs:
+                continue
+                
             seq_title = gr_seq.find('TITLE/TI')
             if seq_title is not None:
                 subtitle = clean_text(get_element_text(seq_title))
-                # Strip existing formatting to avoid ****double bold****
-                subtitle = subtitle.strip('*')
+                # Strip existing formatting to avoid ****double bold**** or unclosed markers
+                # Also removes internal * markers like "1.1 *Theft*" -> "1.1 Theft"
+                subtitle = re.sub(r'\*+', '', subtitle).strip()
                 if subtitle and subtitle != annex_title:
                     md_lines.append(f"**{subtitle}**")
                     md_lines.append("")
@@ -1157,6 +1404,11 @@ def convert_formex_to_md(xml_path, output_path=None):
                 md_lines.extend(list_lines)
                 if list_lines:
                     md_lines.append("")
+            
+            # Process tables (TBL elements) - convert to Markdown tables
+            for tbl_elem in contents.findall('TBL'):
+                table_lines = convert_table_to_markdown(tbl_elem)
+                md_lines.extend(table_lines)
             
             # Process NP elements directly inside GR.SEQ (numbered paragraphs)
             # Example from ANNEX II: <NP><NO.P>1.</NO.P><TXT>...</TXT><P><LIST>...</LIST></P></NP>
@@ -1209,6 +1461,11 @@ def convert_formex_to_md(xml_path, output_path=None):
                     md_lines.extend(list_lines)
                     if list_lines:
                         md_lines.append("")
+                
+                # Process tables (TBL elements) - convert to Markdown tables
+                for tbl_elem in contents.findall('TBL'):
+                    table_lines = convert_table_to_markdown(tbl_elem)
+                    md_lines.extend(table_lines)
                 
                 # Process NP elements directly inside CONTENTS (numbered paragraphs)
                 # This handles annexes like VII, VIII, IX in 2024/2981 that use

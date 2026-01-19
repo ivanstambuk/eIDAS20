@@ -11,7 +11,7 @@ import './TermPopover.css';
  */
 export function TermPopover({ term, children }) {
     const [isVisible, setIsVisible] = useState(false);
-    const [position, setPosition] = useState({ top: 0, left: 0 });
+    const [position, setPosition] = useState({ top: 0, left: 0, flipped: false });
     const triggerRef = useRef(null);
     const popoverRef = useRef(null);
     const timeoutRef = useRef(null);
@@ -20,6 +20,7 @@ export function TermPopover({ term, children }) {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
             setIsVisible(true);
+            // Initial position, will be refined after render
             updatePosition();
         }, 300); // Small delay before showing
     };
@@ -31,30 +32,44 @@ export function TermPopover({ term, children }) {
         }, 150); // Small delay before hiding
     };
 
+    // Re-calculate position after popover renders (to get actual height)
+    useEffect(() => {
+        if (isVisible && popoverRef.current) {
+            updatePosition();
+        }
+    }, [isVisible]);
+
     const updatePosition = () => {
         if (!triggerRef.current) return;
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
+        // Get actual popover height if rendered, otherwise estimate
+        const popoverHeight = popoverRef.current?.offsetHeight || 250;
+        const popoverWidth = 380; // matches CSS width
+
         // Default: position below and centered
         let top = triggerRect.bottom + 8;
         let left = triggerRect.left + (triggerRect.width / 2);
+        let flipped = false;
 
         // Adjust if would overflow right edge
-        if (left + 200 > viewportWidth) {
-            left = viewportWidth - 220;
+        if (left + (popoverWidth / 2) > viewportWidth - 20) {
+            left = viewportWidth - (popoverWidth / 2) - 20;
         }
         // Adjust if would overflow left edge
-        if (left < 20) {
-            left = 20;
-        }
-        // If would overflow bottom, show above
-        if (top + 200 > viewportHeight) {
-            top = triggerRect.top - 8;
+        if (left - (popoverWidth / 2) < 20) {
+            left = (popoverWidth / 2) + 20;
         }
 
-        setPosition({ top, left });
+        // If would overflow bottom, show above the trigger
+        if (top + popoverHeight > viewportHeight - 20) {
+            top = triggerRect.top - 8; // Position at trigger top
+            flipped = true; // CSS will apply translateY(-100%) to flip upward
+        }
+
+        setPosition({ top, left, flipped });
     };
 
     useEffect(() => {
@@ -103,7 +118,7 @@ export function TermPopover({ term, children }) {
                 <div
                     ref={popoverRef}
                     id={`term-popover-${term.id}`}
-                    className="term-popover"
+                    className={`term-popover${position.flipped ? ' term-popover-flipped' : ''}`}
                     style={{
                         top: `${position.top}px`,
                         left: `${position.left}px`

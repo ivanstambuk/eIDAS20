@@ -496,3 +496,63 @@ Whereas:
 **Why:** Blockquotes have `padding: 16px`. The last `<p>` inside also has `margin-bottom: 16px`. This creates 32px at the bottom vs 16px at the top — visually unbalanced.
 
 **Applies to:** Consolidation notices, amendment blockquotes, any block-level quoted content.
+
+---
+
+## 45. Chapter Extraction from Formex DIVISION Elements (ToC Grouping)
+
+**Some Formex documents contain `DIVISION` elements that represent chapters. These must be extracted with a specific heading format for the portal's collapsible Table of Contents.**
+
+### When This Applies
+
+| Document Type | Has Chapters? | Extraction Required? |
+|---------------|---------------|---------------------|
+| Most implementing acts | No (flat structure) | No |
+| Complex regulations (e.g., 2024/2981 Certification) | Yes (`DIVISION` elements) | **Yes** |
+| Main regulations (eIDAS 910/2014) | Yes (hardcoded in `CollapsibleTOC.jsx`) | N/A |
+
+### Required Markdown Format
+
+The `CollapsibleTOC.jsx` component dynamically extracts chapters using this regex pattern:
+
+```javascript
+const chapterPattern = /^([IVXLCDM]+)\.\s+(.+)$/;  // Matches "I. General Provisions"
+```
+
+**Therefore, the Formex converter must output chapters as:**
+
+```markdown
+## I. GENERAL PROVISIONS       ← h2 with "RomanNumeral. Title"
+
+### Article 1                  ← h3 for articles inside chapters
+**Subject matter and scope**
+```
+
+**NOT this (incorrect — won't trigger ToC grouping):**
+```markdown
+### CHAPTER I                  ← h3 doesn't match pattern
+**GENERAL PROVISIONS**         ← subtitle as bold, not in header
+
+### Article 1                  ← Same level as chapter = no nesting
+```
+
+### How the Formex Converter Handles This
+
+The `extract_divisions_with_articles()` function in `formex_to_md_v3.py`:
+
+1. Finds `DIVISION` elements within `ENACTING.TERMS`
+2. Extracts `TITLE/TI` (e.g., "CHAPTER I") and `TITLE/STI` (e.g., "GENERAL PROVISIONS")
+3. Parses Roman numeral from "CHAPTER X" using regex
+4. Outputs as `## {numeral}. {subtitle}` (e.g., `## I. GENERAL PROVISIONS`)
+5. Articles within divisions use `### ` (h3) level
+
+### Prevention of Recurrence
+
+**This is now handled generically** — any Formex document with `DIVISION` elements will automatically get proper chapter headings. No per-document configuration needed.
+
+**To verify chapter extraction after import:**
+```bash
+grep -E "^## [IVXLCDM]+\." path/to/document.md | head -10
+```
+
+If chapters exist in source but this returns nothing, the converter needs debugging.

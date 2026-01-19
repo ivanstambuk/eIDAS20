@@ -124,18 +124,40 @@ const RegulationViewer = () => {
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
+            // Temporarily add to DOM to measure actual height
+            popover.style.visibility = 'hidden';
+            popover.style.position = 'fixed';
+            document.body.appendChild(popover);
+            const popoverHeight = popover.offsetHeight;
+            const popoverWidth = popover.offsetWidth;
+            popover.style.visibility = '';
+
             let top = rect.bottom + 8;
             let left = rect.left + (rect.width / 2);
+            let flipped = false;
 
-            // Adjust for viewport edges
-            if (left + 200 > viewportWidth) left = viewportWidth - 220;
-            if (left < 20) left = 20;
-            if (top + 200 > viewportHeight) top = rect.top - 8;
+            // Adjust for viewport edges (horizontal)
+            if (left + (popoverWidth / 2) > viewportWidth - 20) {
+                left = viewportWidth - (popoverWidth / 2) - 20;
+            }
+            if (left - (popoverWidth / 2) < 20) {
+                left = (popoverWidth / 2) + 20;
+            }
+
+            // If would overflow bottom, flip to show above
+            if (top + popoverHeight > viewportHeight - 20) {
+                top = rect.top - 8; // Position at trigger's top edge
+                flipped = true;
+            }
 
             popover.style.top = `${top}px`;
             popover.style.left = `${left}px`;
 
-            document.body.appendChild(popover);
+            // Add flipped class for CSS transform
+            if (flipped) {
+                popover.classList.add('citation-popover-flipped');
+            }
+
             activePopover = popover;
 
             // Keep popover alive when hovering over it
@@ -245,18 +267,40 @@ const RegulationViewer = () => {
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
+            // Temporarily add to DOM to measure actual height
+            popover.style.visibility = 'hidden';
+            popover.style.position = 'fixed';
+            document.body.appendChild(popover);
+            const popoverHeight = popover.offsetHeight;
+            const popoverWidth = popover.offsetWidth;
+            popover.style.visibility = '';
+
             let top = rect.bottom + 8;
             let left = rect.left + (rect.width / 2);
+            let flipped = false;
 
-            // Adjust for viewport edges
-            if (left + 200 > viewportWidth) left = viewportWidth - 220;
-            if (left < 20) left = 20;
-            if (top + 200 > viewportHeight) top = rect.top - 8;
+            // Adjust for viewport edges (horizontal)
+            if (left + (popoverWidth / 2) > viewportWidth - 20) {
+                left = viewportWidth - (popoverWidth / 2) - 20;
+            }
+            if (left - (popoverWidth / 2) < 20) {
+                left = (popoverWidth / 2) + 20;
+            }
+
+            // If would overflow bottom, flip to show above
+            if (top + popoverHeight > viewportHeight - 20) {
+                top = rect.top - 8; // Position at trigger's top edge
+                flipped = true;
+            }
 
             popover.style.top = `${top}px`;
             popover.style.left = `${left}px`;
 
-            document.body.appendChild(popover);
+            // Add flipped class for CSS transform
+            if (flipped) {
+                popover.classList.add('term-popover-flipped');
+            }
+
             activeTermPopover = popover;
 
             // Keep popover alive when hovering over it

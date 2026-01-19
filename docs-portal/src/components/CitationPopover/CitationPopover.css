@@ -56,6 +56,24 @@
     }
 }
 
+/* Flipped state: popover appears above the trigger */
+.citation-popover-flipped {
+    transform: translateX(-50%) translateY(-100%);
+    animation: citationPopoverFadeInFlipped 0.2s ease;
+}
+
+@keyframes citationPopoverFadeInFlipped {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(calc(-100% + 4px));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-100%);
+    }
+}
+
 .citation-popover-header {
     display: flex;
     align-items: center;

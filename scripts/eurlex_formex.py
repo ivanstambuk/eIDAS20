@@ -357,13 +357,19 @@ def main():
         zf.extractall(xml_dir)
         print(f"  Extracted {len(zf.namelist())} files to {xml_dir}")
     
-    # Step 4: Find main XML file and convert
+    # Step 4: Find main XML file and all annex XML files, then convert
     print("\nStep 4: Converting to Markdown...")
     main_xml = None
-    for f in xml_dir.iterdir():
-        if f.suffix == '.xml' and '.000' in f.stem:  # Main document
-            main_xml = f
-            break
+    annex_xmls = []
+    
+    for f in sorted(xml_dir.iterdir()):
+        if f.suffix == '.xml':
+            if '.000' in f.stem:  # Main document (e.g., L_202402981EN.000101.fmx.xml)
+                main_xml = f
+            elif '.doc.' in f.stem or '.toc.' in f.stem:  # Skip metadata files
+                continue
+            elif f.stem != main_xml.stem if main_xml else True:  # Annex files
+                annex_xmls.append(f)
     
     if not main_xml:
         # Fallback: use first XML file
@@ -374,8 +380,24 @@ def main():
     
     if main_xml:
         md_path = output_dir / f"{celex}.md"
-        md_content = convert_formex_v3(str(main_xml), str(md_path))
-        print(f"  Created: {md_path} ({len(md_content)} bytes)")
+        
+        # Convert main document
+        md_content = convert_formex_v3(str(main_xml), None)  # Don't write yet
+        print(f"  Converted main document: {main_xml.name} ({len(md_content):,} bytes)")
+        
+        # Convert and append annex files (they are standalone ANNEX elements)
+        for annex_xml in sorted(annex_xmls):
+            try:
+                annex_content = convert_formex_v3(str(annex_xml), None)
+                if annex_content and annex_content.strip():
+                    md_content += "\n\n" + annex_content
+                    print(f"  Converted annex: {annex_xml.name} ({len(annex_content):,} bytes)")
+            except Exception as e:
+                print(f"  Warning: Failed to convert {annex_xml.name}: {e}")
+        
+        # Write combined content
+        md_path.write_text(md_content, encoding='utf-8')
+        print(f"  Created: {md_path} ({len(md_content):,} bytes)")
     else:
         print("ERROR: No XML file found in ZIP")
         sys.exit(1)
