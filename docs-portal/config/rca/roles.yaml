@@ -21,7 +21,7 @@ roles:
     shortLabel: "WP"
     description: "Entity providing the wallet application"
     icon: "📱"
-    enabled: false  # Future - not yet implemented
+    enabled: true
 
   pid_provider:
     label: "PID Provider"

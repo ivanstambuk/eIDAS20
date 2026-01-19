@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T20:51:23.313Z",
+  "generatedAt": "2026-01-19T21:31:09.107Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -261,6 +261,14 @@
       "shortLabel": "Issuer",
       "description": "Entity issuing electronic attestations of attributes",
       "icon": "📜",
+      "enabled": true
+    },
+    {
+      "id": "wallet_provider",
+      "label": "Wallet Provider",
+      "shortLabel": "WP",
+      "description": "Entity providing the wallet application",
+      "icon": "📱",
       "enabled": true
     }
   ],
