@@ -42,11 +42,11 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 | Art. 5a | European Digital Identity Wallets | ✅ | WP-PROV-001/002, WP-FUNC-001-010, WP-INTER-001-011, WP-DP-001-006, WP-SEC-001-004, WP-OPS-001-010 | **PRIMARY SOURCE** - 40 requirements extracted |
 | Art. 5b | Relying parties of EUDI Wallets | ➖ | | RP registration duties only |
 | Art. 5c | Certification of EUDI Wallets | ✅ | WP-CERT-001, WP-CERT-002, WP-CERT-003 | Certification requirements |
-| Art. 5d | Publication of certified EUDI Wallets | ⬜ | | **PENDING** - publication duties |
-| Art. 5e | Security breach of EUDI Wallets | ⬜ | | **PENDING** - breach response |
+| Art. 5d | Publication of certified EUDI Wallets | ➖ | | MS informs Commission - MS duties |
+| Art. 5e | Security breach of EUDI Wallets | ➖ | | MS suspension/withdrawal - MS duties |
 | Art. 5f | Cross-border reliance on EUDI Wallets | ➖ | | RP acceptance duties - not WP |
 | Art. 6 | Mutual recognition | ➖ | | MS eID scheme recognition |
-| Art. 6a | Provision of EUDI Wallets | ⬜ | | **PENDING** - may contain issuance requirements |
+| Art. 6a | *(Does not exist in consolidated text)* | ➖ | | |
 | Art. 7 | Eligibility for notification | ➖ | | eID scheme notification - MS duty |
 | Art. 8 | Assurance levels | ➖ | | Defines levels - referenced in 5a |
 | Art. 9 | Notification | ➖ | | MS notification procedures |
@@ -55,132 +55,132 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 | Art. 11a | Cross-border identity matching | ➖ | | MS duties for identity matching |
 | Art. 12 | Interoperability | ➖ | | eID interoperability framework |
 | Art. 12a | Certification of eID schemes | ➖ | | eID certification - not wallet-specific |
-| Art. 12b | Access to hardware and software features | ⬜ | | **PENDING** - platform access for wallets |
+| Art. 12b | Access to hardware and software | ➖ | | Truncated; references DMA platform access |
 
 ### Chapter III - Trust Services (Articles 13-24a)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 13 | Liability and burden of proof | ⬜ | | |
-| Art. 14 | International aspects | ⬜ | | |
-| Art. 15 | Accessibility | ⬜ | | |
-| Art. 16 | Penalties | ⬜ | | |
-| Art. 17 | Supervisory body | ⬜ | | |
-| Art. 18 | Mutual assistance | ⬜ | | |
-| Art. 19 | Security requirements for TSPs | ⬜ | | |
-| Art. 19a | Requirements for non-qualified TSPs | ⬜ | | |
-| Art. 20 | Supervision of qualified TSPs | ⬜ | | |
-| Art. 21 | Initiation of qualified trust service | ⬜ | | |
-| Art. 22 | Trusted lists | ⬜ | | |
-| Art. 23 | EU trust mark | ⬜ | | |
-| Art. 24 | Requirements for qualified TSPs | ⬜ | | |
-| Art. 24a | Recognition of qualified trust services | ⬜ | | |
+| Art. 13 | Liability and burden of proof | ➖ | | TSP liability - not WP |
+| Art. 14 | International aspects | ➖ | | Third country TSP recognition |
+| Art. 15 | Accessibility | ➖ | | AccessibilityWP covered in Art.5a |
+| Art. 16 | Penalties | ➖ | | Member State penalty rules |
+| Art. 17 | Supervisory body | ➖ | | MS supervisory body setup |
+| Art. 18 | Mutual assistance | ➖ | | Supervisory cooperation |
+| Art. 19 | Security requirements for TSPs | ➖ | | TSP security - not WP |
+| Art. 19a | Requirements for non-qualified TSPs | ➖ | | Non-QTSP duties |
+| Art. 20 | Supervision of qualified TSPs | ➖ | | QTSP supervision |
+| Art. 21 | Initiation of qualified trust service | ➖ | | QTSP startup |
+| Art. 22 | Trusted lists | ➖ | | MS trusted list duties |
+| Art. 23 | EU trust mark | ➖ | | Trust mark use |
+| Art. 24 | Requirements for qualified TSPs | ➖ | | QTSP requirements - not WP |
+| Art. 24a | Recognition of qualified trust services | ➖ | | Cross-border recognition |
 
 ### Chapter III, Section 2 - Electronic Signatures (Articles 25-34)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 25 | Legal effects of electronic signatures | ⬜ | | |
-| Art. 26 | Requirements for advanced e-signatures | ⬜ | | |
-| Art. 27 | Electronic signatures in public services | ⬜ | | |
-| Art. 28 | Qualified certificates for e-signatures | ⬜ | | |
-| Art. 29 | Requirements for qualified e-sig creation devices | ⬜ | | |
-| Art. 29a | Requirements for remote QSCD management | ⬜ | | |
-| Art. 30 | Certification of QSCDs | ⬜ | | |
-| Art. 31 | Publication of certified QSCDs | ⬜ | | |
-| Art. 32 | Validation of qualified e-signatures | ⬜ | | |
-| Art. 32a | Validation of advanced e-signatures | ⬜ | | |
-| Art. 33 | Qualified validation service | ⬜ | | |
-| Art. 34 | Qualified preservation service | ⬜ | | |
+| Art. 25 | Legal effects of electronic signatures | ➖ | | Legal framework |
+| Art. 26 | Requirements for advanced e-signatures | ➖ | | AES requirements |
+| Art. 27 | Electronic signatures in public services | ➖ | | Public sector acceptance |
+| Art. 28 | Qualified certificates for e-signatures | ➖ | | QC requirements |
+| Art. 29 | Requirements for qualified e-sig creation devices | ➖ | | QSCD requirements |
+| Art. 29a | Requirements for remote QSCD management | ➖ | | Remote QSCD TSP duties |
+| Art. 30 | Certification of QSCDs | ➖ | | QSCD certification |
+| Art. 31 | Publication of certified QSCDs | ➖ | | Commission publication |
+| Art. 32 | Validation of qualified e-signatures | ➖ | | QES validation |
+| Art. 32a | Validation of advanced e-signatures | ➖ | | AES validation |
+| Art. 33 | Qualified validation service | ➖ | | Validation service requirements |
+| Art. 34 | Qualified preservation service | ➖ | | Preservation service requirements |
 
 ### Chapter III, Section 3 - Electronic Seals (Articles 35-40a)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 35 | Legal effects of electronic seals | ⬜ | | |
-| Art. 36 | Requirements for advanced e-seals | ⬜ | | |
-| Art. 37 | Electronic seals in public services | ⬜ | | |
-| Art. 38 | Qualified certificates for e-seals | ⬜ | | |
-| Art. 39 | Qualified e-seal creation devices | ⬜ | | |
-| Art. 39a | Requirements for remote QSCD (seals) | ⬜ | | |
-| Art. 40 | Validation and preservation of e-seals | ⬜ | | |
-| Art. 40a | Validation of advanced e-seals | ⬜ | | |
+| Art. 35 | Legal effects of electronic seals | ➖ | | Legal framework |
+| Art. 36 | Requirements for advanced e-seals | ➖ | | AES requirements |
+| Art. 37 | Electronic seals in public services | ➖ | | Public sector acceptance |
+| Art. 38 | Qualified certificates for e-seals | ➖ | | QC requirements |
+| Art. 39 | Qualified e-seal creation devices | ➖ | | QSCD requirements |
+| Art. 39a | Requirements for remote QSCD (seals) | ➖ | | Remote QSCD TSP duties |
+| Art. 40 | Validation and preservation of e-seals | ➖ | | Validation service requirements |
+| Art. 40a | Validation of advanced e-seals | ➖ | | AES validation |
 
 ### Chapter III, Section 4 - Electronic Time Stamps (Articles 41-42)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 41 | Legal effect of e-time stamps | ⬜ | | |
-| Art. 42 | Requirements for qualified e-time stamps | ⬜ | | |
+| Art. 41 | Legal effect of e-time stamps | ➖ | | Legal framework |
+| Art. 42 | Requirements for qualified e-time stamps | ➖ | | QTSP requirements |
 
 ### Chapter III, Section 5 - Electronic Registered Delivery (Articles 43-44)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 43 | Legal effect of ERDS | ⬜ | | |
-| Art. 44 | Requirements for qualified ERDS | ⬜ | | |
+| Art. 43 | Legal effect of ERDS | ➖ | | Legal framework |
+| Art. 44 | Requirements for qualified ERDS | ➖ | | QTSP requirements |
 
 ### Chapter III, Section 6 - Website Authentication (Article 45-45a)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45 | Requirements for QWACs | ⬜ | | |
-| Art. 45a | Cybersecurity precautionary measures | ⬜ | | |
+| Art. 45 | Requirements for QWACs | ➖ | | QWAC provider duties |
+| Art. 45a | Cybersecurity precautionary measures | ➖ | | Browser/OS duties |
 
 ### Chapter III, Section 7 - Electronic Attestation of Attributes (Articles 45b-45h)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45b | Legal effects of EAA | ⬜ | | |
-| Art. 45c | EAA in public services | ⬜ | | |
-| Art. 45d | Requirements for qualified EAA | ⬜ | | |
-| Art. 45e | Verification against authentic sources | ⬜ | | |
-| Art. 45f | Requirements for public sector EAA | ⬜ | | |
-| Art. 45g | Issuing EAA to EUDI Wallets | ⬜ | | |
-| Art. 45h | Additional rules for EAA services | ⬜ | | |
+| Art. 45b | Legal effects of EAA | ➖ | | Legal framework |
+| Art. 45c | EAA in public services | ➖ | | Public sector acceptance |
+| Art. 45d | Requirements for qualified EAA | ➖ | | QEAA provider duties |
+| Art. 45e | Verification against authentic sources | ➖ | | Authentic source access |
+| Art. 45f | Requirements for public sector EAA | ➖ | | Public sector EAA |
+| Art. 45g | Issuing EAA to EUDI Wallets | ➖ | | EAA provider duties to wallet |
+| Art. 45h | Additional rules for EAA services | ➖ | | EAA provider rules |
 
 ### Chapter III, Section 8 - Electronic Archiving (Articles 45i-45j)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45i | Legal effect of e-archiving | ⬜ | | |
-| Art. 45j | Requirements for qualified e-archiving | ⬜ | | |
+| Art. 45i | Legal effect of e-archiving | ➖ | | Legal framework |
+| Art. 45j | Requirements for qualified e-archiving | ➖ | | QTSP requirements |
 
 ### Chapter III, Section 9 - Electronic Ledgers (Articles 45k-45l)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 45k | Legal effects of e-ledgers | ⬜ | | |
-| Art. 45l | Requirements for qualified e-ledgers | ⬜ | | |
+| Art. 45k | Legal effects of e-ledgers | ➖ | | Legal framework |
+| Art. 45l | Requirements for qualified e-ledgers | ➖ | | QTSP requirements |
 
 ### Chapter III, Section 10 - Electronic Documents (Article 46)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 46 | Legal effects of electronic documents | ⬜ | | |
+| Art. 46 | Legal effects of electronic documents | ➖ | | Legal framework |
 
 ### Chapter IV - Supervision (Articles 46a-46f)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 46a | Supervision of EUDI Wallet Framework | ⬜ | | **PRIMARY SOURCE** - supervisory duties |
-| Art. 46b | Supervision of trust services | ⬜ | | |
-| Art. 46c | Single points of contact | ⬜ | | |
-| Art. 46d | Mutual assistance (EUDI Wallet) | ⬜ | | |
-| Art. 46e | European Digital Identity Cooperation Group | ⬜ | | |
-| Art. 46f | ENISA reports | ⬜ | | |
+| Art. 46a | Supervision of EUDI Wallet Framework | ➖ | | Supervisory body duties |
+| Art. 46b | Supervision of trust services | ➖ | | TSP supervision |
+| Art. 46c | Single points of contact | ➖ | | MS designation |
+| Art. 46d | Mutual assistance (EUDI Wallet) | ➖ | | Supervisory cooperation |
+| Art. 46e | European Digital Identity Cooperation Group | ➖ | | Group establishment |
+| Art. 46f | ENISA reports | ➖ | | ENISA duties |
 
 ### Chapter V - Final Provisions (Articles 47-52)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 47 | Exercise of delegation | ⬜ | | |
-| Art. 48 | Committee procedure | ⬜ | | |
-| Art. 48a | Reporting requirements | ⬜ | | |
-| Art. 49 | Review | ⬜ | | |
-| Art. 50 | Repeal | ⬜ | | |
-| Art. 51 | Transitional measures | ⬜ | | |
-| Art. 52 | Entry into force | ⬜ | | |
+| Art. 47 | Exercise of delegation | ➖ | | Commission powers |
+| Art. 48 | Committee procedure | ➖ | | Comitology |
+| Art. 48a | Reporting requirements | ➖ | | Commission reporting |
+| Art. 49 | Review | ➖ | | Periodic review |
+| Art. 50 | Repeal | ➖ | | Directive repeal |
+| Art. 51 | Transitional measures | ➖ | | Transition periods |
+| Art. 52 | Entry into force | ➖ | | Dates |
 
 ---
 
@@ -188,13 +188,13 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Annex | Title | Status | WP Requirements | Notes |
 |-------|-------|--------|-----------------|-------|
-| Annex I | Requirements for qualified certificates for e-signatures | ⬜ | | |
-| Annex II | Requirements for qualified e-signature creation devices | ⬜ | | |
-| Annex III | Requirements for qualified certificates for e-seals | ⬜ | | |
-| Annex IV | Requirements for qualified certificates for website auth | ⬜ | | |
-| Annex V | Requirements for qualified EAA | ⬜ | | **May contain wallet functional requirements** |
-| Annex VI | Minimum list of attributes for authentic sources | ⬜ | | |
-| Annex VII | Requirements for public sector EAA | ⬜ | | |
+| Annex I | Requirements for qualified certificates for e-signatures | ➖ | | Certificate content (TSP) |
+| Annex II | Requirements for qualified e-signature creation devices | ➖ | | QSCD requirements (TSP) |
+| Annex III | Requirements for qualified certificates for e-seals | ➖ | | Certificate content (TSP) |
+| Annex IV | Requirements for qualified certificates for website auth | ➖ | | QWAC content (TSP) |
+| Annex V | Requirements for qualified EAA | ➖ | | QEAA provider requirements |
+| Annex VI | Minimum list of attributes for authentic sources | ➖ | | Authentic source definitions |
+| Annex VII | Requirements for public sector EAA | ➖ | | Public sector EAA rules |
 
 ---
 
