@@ -285,6 +285,28 @@ If a requirement only applies to specific profiles within a role, add `profileFi
 - Use array format: `profileFilter: [profile_id]` or `profileFilter: [id1, id2]`
 - When user selects a profile in UI, only matching requirements are shown
 
+### Mutatis Mutandis Clause Detection
+
+**⚠️ Search for "mutatis mutandis" clauses** — these cross-apply requirements from other articles.
+
+Example from Article 5a(14):
+> "If the European Digital Identity Wallet is provided by **private parties** [...], the provisions of **Article 45h(3)** shall apply *mutatis mutandis*."
+
+This creates a **profile-specific requirement** (mandated/independent only) from a clause that isn't in the main wallet provider article!
+
+**Audit procedure:**
+```bash
+# Search for mutatis mutandis in local regulation files
+grep -i "mutatis mutandis" ~/dev/eIDAS20/01_regulation/**/*.md
+```
+
+For each match:
+1. Identify which article's provisions are being applied
+2. Read that referenced article
+3. Determine if it creates new requirements for your target role
+4. Check if it applies to all profiles or specific profiles only
+5. Add requirements with appropriate `profileFilter` if needed
+
 ---
 
 ## Step 5: Update Audit Tracker

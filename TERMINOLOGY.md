@@ -1,6 +1,6 @@
 # eIDAS 2.0 Documentation Portal — Terminology
 
-> Status: Living Document | Last updated: 2026-01-18
+> Status: Living Document | Last updated: 2026-01-20
 
 Common terms used across the documentation portal project to ensure consistent vocabulary. This is the authoritative source for terminology—any ambiguity in communication should be resolved by consulting this document.
 
@@ -410,6 +410,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **One Row Per Provision** | The mandatory audit tracker rule requiring each article, annex, and recital to have its own row. Prevents accidentally skipping provisions during review. |
 | **Role Profile** | A sub-selection within a role for more granular requirement filtering. Examples: "Public Sector" vs "Private Sector" for Relying Party, "Qualified TSP" vs "Non-Qualified Provider" for EAA Issuer. Profiles allow the same role to have context-specific requirements. Configured in `roles.yaml`. |
 | **Profile Filter** | The `profileFilter` field on requirements that restricts them to specific role profiles. Requirements without `profileFilter` apply to all profiles of the role. Format: `profileFilter: [public_sector]` or `profileFilter: [qualified, non_qualified]`. If a requirement only applies to qualified EAA issuers, add `profileFilter: [qualified]`. |
+| **Mutatis Mutandis** | Latin legal term meaning "with the necessary changes." In EU legislation, used to apply provisions from one article to another context. Example: Article 5a(14) applies Article 45h(3) *mutatis mutandis* to private wallet providers, creating profile-specific obligations. Always search for this phrase during audits — it creates hidden cross-references. |
+| **Functional Separation** | An eIDAS requirement for private wallet providers (mandated/independent) to implement wallet services in a manner organizationally and technically separate from other services they provide. Derived from Article 45h(3) applied via Article 5a(14). Does NOT apply to Member States directly operating wallets. |
 
 ---
 

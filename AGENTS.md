@@ -467,6 +467,24 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 | **WSCA/WSCD** | Wallet Secure Cryptographic Application/Device |
 | **Role Profile** | Sub-selection within an RCA role (e.g., Public/Private Sector for RP) |
 
+### RCA Profile Filter Pattern
+
+**Profile filtering requires BOTH data AND UI:**
+
+1. **Data annotation**: Requirements must have `profileFilter: [profile_id]` in YAML
+2. **Working UI**: `ProfileSelector` component must allow individual profile selection
+
+**Common pitfall:** If requirements don't appear/disappear when selecting profiles:
+- Check `profileFilter` field exists on requirements (data layer)
+- Check `ProfileSelector` allows individual selection (UI layer)
+
+**Testing checklist:**
+1. Select profile A → count requirements
+2. Select profile B → count should differ if profile-specific reqs exist
+3. View assessment → verify only matching requirements appear
+
+**See:** `/rca-audit` workflow for `profileFilter` syntax and `mutatis mutandis` clause detection.
+
 **See:** [TERMINOLOGY.md](TERMINOLOGY.md) for full vocabulary.
 
 ---

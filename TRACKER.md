@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-19 23:50 CET |
-| **Session State** | V3.2.0 — EAA Issuer Audit Complete (42 reqs) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **264 RCA requirements**: 91 RP + 131 WP + 42 Issuer) |
+| **Last Updated** | 2026-01-20 00:45 CET |
+| **Session State** | V3.2.1 — Profile Filtering Complete (265 reqs) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **265 RCA requirements**: 91 RP + 132 WP + 42 Issuer) |
 | **Next Action** | Push to GitHub, verify GitHub Pages deployment |
 
 ---
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 00:45 | **Profile Filtering Complete (V3.2.1)**: (1) Fixed ProfileSelector UI bug — individual profiles were disabled when "All" selected (`disabled={allSelected}` removed), (2) Added `profileFilter` annotations to 7 sector-specific RP requirements (public_sector/private_sector), (3) Researched WP provider profiles — confirmed Article 5a(2) legal basis for member_state/mandated/independent, (4) Found profile-specific WP requirement via Article 5a(14) → Article 45h(3) mutatis mutandis — added WP-DP-003a (functional separation) for mandated/independent only, (5) Added Profile Differentiation Analysis to AUDIT_TRACKER_WP.md, (6) Retro: Added mutatis mutandis audit step to /rca-audit workflow, documented profile filter pattern in AGENTS.md, added Mutatis Mutandis and Functional Separation to TERMINOLOGY.md. |
 | 2026-01-19 23:50 | **EAA Issuer Audit Complete (V3.2.0)**: (1) Fixed Formex converter bug — CONS.ANNEX elements have LIST inside P (not direct children), missing Annex V content now extracted, (2) Completed systematic EAA Issuer audit — 42 requirements across 3 profiles (qualified/non_qualified/public_authentic), (3) Sources: Main regulation Art. 24, 45d-45h, Annexes V-VII + implementing acts 2024/2977, 2025/1569, 2025/2530, (4) Retro: Added test case for CONS.ANNEX, added "check source field" rule to AGENTS.md, reverted unneeded HTML converter changes. |
 | 2026-01-19 23:00 | **WP Audit Complete + Role Profiles (V3.1.0)**: (1) Completed Wallet Provider reverse audit verification — all 131 requirements validated against 4 implementing acts (2024/2979, 2024/2981, 2024/2982, 2025/848), (2) Enabled Wallet Provider in RCA UI (`roles.yaml` enabled: true), (3) Implemented Role Profiles feature for fine-grained requirement filtering — RP has public/private sector, EAA Issuer has qualified/non-qualified/public-authentic, WP has member-state/mandated/independent, (4) Added ProfileSelector component + CSS, (5) Updated build-rca.js to process profiles and profileFilter fields, (6) Browser-verified profile selector UI working. Retro: Added Role Profile and Profile Filter to TERMINOLOGY.md, updated `/rca-audit` workflow with profile guidance, created issuer.yaml stub for next audit. |
 | 2026-01-19 20:00 | **RCA Audit Workflow Overhaul (Schema V13)**: Major workflow improvements: (1) Zero tolerance for ⬜ items — mandatory verification before completion, (2) One row per provision rule — no collapsed ranges (Art. 1-22, Annexes I-IX, etc.), (3) Local regulation paths documented in AGENTS.md, (4) Verification grep command added to workflow. Added RP-REG-013 (privacy policy URL per 2025/848 Art 8(2)(g)). Expanded all collapsed ranges in AUDIT_TRACKER_RP.md. Added "Collapsed Range" and "One Row Per Provision" to TERMINOLOGY.md. |
