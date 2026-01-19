@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 73
-**Schema Version:** 7
+**Current Requirements Count:** 78
+**Schema Version:** 8
 
 ---
 
@@ -212,25 +212,25 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | Key definitions for RPs |
-| Art. 3 | Wallet unit integrity | ⬜ | | |
-| Art. 4 | Wallet instances | ⬜ | | |
-| Art. 5 | Wallet secure cryptographic applications | ⬜ | | |
-| Art. 6 | Wallet unit authenticity and validity | ⬜ | | |
-| Art. 7 | Revocation of wallet unit attestations | ⬜ | | RPs can check validity |
-| Art. 8 | Formats for PID and EAA | ⬜ | | Format support |
-| Art. 9 | Transaction logs | ⬜ | | |
-| Art. 10 | Embedded disclosure | ⬜ | | |
-| Art. 11 | Qualified e-signatures and seals | ⬜ | | |
-| Art. 12 | Signature creation applications | ⬜ | | |
-| Art. 13 | Data export and portability | ⬜ | | |
-| Art. 14 | Pseudonyms | ⬜ | | RP-specific pseudonyms |
-| Annex I | Standards for WSCA | ⬜ | | |
-| Annex II | Data format standards | ⬜ | | ISO 18013-5, W3C VC |
-| Annex III | Embedded disclosure policies | ⬜ | | |
-| Annex IV | Signature formats | ⬜ | | |
-| Annex V | Pseudonym specifications | ⬜ | | WebAuthn |
+| Art. 1 | Subject matter and scope | ✅ | | |
+| Art. 2 | Definitions | ✅ | | Key definitions for RPs |
+| Art. 3 | Wallet unit integrity | ✅ | | Wallet provider duties |
+| Art. 4 | Wallet instances | ✅ | | Wallet provider duties |
+| Art. 5 | Wallet secure cryptographic applications | ✅ | | Wallet provider duties |
+| Art. 6 | Wallet unit authenticity and validity | ✅ | | |
+| Art. 7 | Revocation of wallet unit attestations | ✅ | RP-TECH-015 | RPs can check validity |
+| Art. 8 | Formats for PID and EAA | ✅ | RP-TECH-018 | Format support |
+| Art. 9 | Transaction logs | ✅ | | Wallet provider duties |
+| Art. 10 | Embedded disclosure | ✅ | RP-TECH-016 | RP policy compliance |
+| Art. 11 | Qualified e-signatures and seals | ✅ | | |
+| Art. 12 | Signature creation applications | ✅ | RP-ESIG-027 | Signature formats |
+| Art. 13 | Data export and portability | ✅ | | |
+| Art. 14 | Pseudonyms | ✅ | RP-TECH-017 | RP-specific pseudonyms |
+| Annex I | Standards for WSCA | ✅ | | |
+| Annex II | Data format standards | ✅ | | ISO 18013-5, W3C VC |
+| Annex III | Embedded disclosure policies | ✅ | | |
+| Annex IV | Signature formats | ✅ | | |
+| Annex V | Pseudonym specifications | ✅ | | WebAuthn |
 
 ### 2024/2980 - Notifications to the Commission
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T08:27:41.091Z",
+  "generatedAt": "2026-01-19T08:30:30.511Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -2591,6 +2591,209 @@
         "business-kyc"
       ],
       "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-015",
+      "category": "authentication",
+      "requirement": "Verify wallet unit attestation validity before transactions",
+      "explanation": "Before accepting credentials from a wallet, relying parties should verify the \nvalidity status of the wallet unit attestation. This ensures the wallet unit \nis still valid and not revoked.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 7",
+        "paragraph": "4"
+      },
+      "legalText": "Where wallet providers have revoked wallet unit attestations, they shall make \npublicly available the validity status of the wallet unit attestation in a \nprivacy preserving manner and describe the location of that information in \nthe wallet unit attestation.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2979",
+        "celex": "32024R2979",
+        "title": "Commission Implementing Regulation (EU) 2024/2979",
+        "shortTitle": "Integrity and Core Functionalities",
+        "description": "Wallet integrity, core functionalities, and trust infrastructure",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 7",
+        "paragraph": "4"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pid-proximity"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-016",
+      "category": "data-protection",
+      "requirement": "Comply with embedded disclosure policies in attestations",
+      "explanation": "Electronic attestations of attributes may contain embedded disclosure policies \nthat specify conditions the relying party must meet to access the attestation. \nThe wallet verifies RP compliance and informs the user.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 10",
+        "paragraph": "3"
+      },
+      "legalText": "Wallet instances shall verify whether the wallet-relying party complies with \nthe requirements of the embedded disclosure policy and inform the wallet user \nof the result.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2979",
+        "celex": "32024R2979",
+        "title": "Commission Implementing Regulation (EU) 2024/2979",
+        "shortTitle": "Integrity and Core Functionalities",
+        "description": "Wallet integrity, core functionalities, and trust infrastructure",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 10",
+        "paragraph": "3"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-017",
+      "category": "authentication",
+      "requirement": "Request RP-specific pseudonyms when appropriate",
+      "explanation": "Relying parties may request pseudonyms that are specific and unique to them, \nallowing persistent pseudonymous authentication without requiring full identity \ndisclosure. The pseudonym can be requested standalone or with other data.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 14",
+        "paragraph": "2"
+      },
+      "legalText": "Wallet units shall support the generation, upon the request of a wallet-relying \nparty, of a pseudonym which is specific and unique to that wallet-relying party \nand provide this pseudonym to the wallet-relying party, either standalone or in \ncombination with any person identification data or electronic attribute \nattestation requested by that wallet-relying party.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2979",
+        "celex": "32024R2979",
+        "title": "Commission Implementing Regulation (EU) 2024/2979",
+        "shortTitle": "Integrity and Core Functionalities",
+        "description": "Wallet integrity, core functionalities, and trust infrastructure",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 14",
+        "paragraph": "2"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pseudonym",
+        "age-verification"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-018",
+      "category": "technical",
+      "requirement": "Support mandatory data formats from Annex II",
+      "explanation": "Relying parties must support the data formats specified in Annex II of 2024/2979 \nfor person identification data and electronic attestations of attributes. This \nincludes ISO/IEC 18013-5 and W3C Verifiable Credentials.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "legalText": "Wallet providers shall ensure that wallet solutions support the usage of \nperson identification data and electronic attestations of attributes issued \nin compliance with the list of standards set out in Annex II.\n\nAnnex II: ISO/IEC.18013-5:2021; 'Verifiable Credentials Data Model 1.1', \nW3C Recommendation, 3 March 2022.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2979",
+        "celex": "32024R2979",
+        "title": "Commission Implementing Regulation (EU) 2024/2979",
+        "shortTitle": "Integrity and Core Functionalities",
+        "description": "Wallet integrity, core functionalities, and trust infrastructure",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-ESIG-027",
+      "category": "esignature",
+      "requirement": "Support signature formats from Annex IV when requesting signatures",
+      "explanation": "When relying parties request electronic signatures or seals from wallet users, \nthey must support the mandatory signature formats specified in Annex IV, and \nmay optionally support XAdES, JAdES, CAdES, and ASiC formats.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 12",
+        "paragraph": "2(c)"
+      },
+      "legalText": "Signature creation applications shall have the following functions:\n(c) creating signatures or seals in accordance with at least the mandatory \nformats referred to in Annex IV.\n\nAnnex IV optional formats: XAdES (XML), JAdES (JSON), CAdES (CMS), ASiC (containers).",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2979",
+        "celex": "32024R2979",
+        "title": "Commission Implementing Regulation (EU) 2024/2979",
+        "shortTitle": "Integrity and Core Functionalities",
+        "description": "Wallet integrity, core functionalities, and trust infrastructure",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2979/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 12",
+        "paragraph": "2(c)"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
     }
   ],
   "requirementIndex": {
@@ -2637,7 +2840,10 @@
         "RP-TECH-010",
         "RP-TECH-011",
         "RP-TECH-012",
-        "RP-TECH-013"
+        "RP-TECH-013",
+        "RP-TECH-015",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "pseudonym": [
         "RP-REG-001",
@@ -2672,7 +2878,10 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-017",
+        "RP-TECH-018"
       ],
       "esignature": [
         "RP-REG-001",
@@ -2727,7 +2936,10 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018",
+        "RP-ESIG-027"
       ],
       "payment-auth": [
         "RP-REG-001",
@@ -2759,7 +2971,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "open-bank-account": [
         "RP-REG-001",
@@ -2791,7 +3005,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "mdl": [
         "RP-REG-001",
@@ -2821,7 +3037,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "dtc": [
         "RP-REG-001",
@@ -2851,7 +3069,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "epc": [
         "RP-REG-001",
@@ -2881,7 +3101,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "vrc": [
         "RP-REG-001",
@@ -2911,7 +3133,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "disability-card": [
         "RP-REG-001",
@@ -2941,7 +3165,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "eprescription": [
         "RP-REG-001",
@@ -2971,7 +3197,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "ehic": [
         "RP-REG-001",
@@ -3001,7 +3229,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "public-warnings": [
         "RP-REG-001",
@@ -3031,7 +3261,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "age-verification": [
         "RP-REG-001",
@@ -3064,7 +3296,10 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-017",
+        "RP-TECH-018"
       ],
       "ticket-pass": [
         "RP-REG-001",
@@ -3094,7 +3329,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "edu-credentials": [
         "RP-REG-001",
@@ -3124,7 +3361,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "student-card": [
         "RP-REG-001",
@@ -3154,7 +3393,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "proximity-id": [
         "RP-REG-001",
@@ -3184,7 +3425,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "representation": [
         "RP-REG-001",
@@ -3214,7 +3457,9 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-016",
+        "RP-TECH-018"
       ],
       "eseal": [
         "RP-ESIG-009",
@@ -3256,7 +3501,8 @@
         "RP-TECH-009",
         "RP-TECH-011",
         "RP-TECH-012",
-        "RP-TECH-013"
+        "RP-TECH-013",
+        "RP-TECH-015"
       ],
       "business-kyc": [
         "RP-TECH-014"
@@ -3264,11 +3510,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 73,
+    "totalRequirements": 78,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 73
+      "relying_party": 78
     }
   }
 }

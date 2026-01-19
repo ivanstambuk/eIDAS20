@@ -13,9 +13,9 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 7 - Added 2024/2977 PID data format requirements
+# Schema version 8 - Added 2024/2979 Integrity & Core Functions requirements
 
-schemaVersion: 7
+schemaVersion: 8
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1706,3 +1706,126 @@ requirements:
       - relying_party
     useCases:
       - business-kyc
+
+  # ============================================================================
+  # WALLET INTEGRITY AND CORE FUNCTIONALITIES
+  # Source: Implementing Regulation (EU) 2024/2979 - Integrity and Core Functions
+  # ============================================================================
+
+  - id: RP-TECH-015
+    category: authentication
+    bindingType: mandatory
+    requirement: "Verify wallet unit attestation validity before transactions"
+    explanation: |
+      Before accepting credentials from a wallet, relying parties should verify the 
+      validity status of the wallet unit attestation. This ensures the wallet unit 
+      is still valid and not revoked.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 7"
+      paragraph: "4"
+    legalText: |
+      Where wallet providers have revoked wallet unit attestations, they shall make 
+      publicly available the validity status of the wallet unit attestation in a 
+      privacy preserving manner and describe the location of that information in 
+      the wallet unit attestation.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - pid-proximity
+
+  - id: RP-TECH-016
+    category: data-protection
+    bindingType: mandatory
+    requirement: "Comply with embedded disclosure policies in attestations"
+    explanation: |
+      Electronic attestations of attributes may contain embedded disclosure policies 
+      that specify conditions the relying party must meet to access the attestation. 
+      The wallet verifies RP compliance and informs the user.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 10"
+      paragraph: "3"
+    legalText: |
+      Wallet instances shall verify whether the wallet-relying party complies with 
+      the requirements of the embedded disclosure policy and inform the wallet user 
+      of the result.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-TECH-017
+    category: authentication
+    bindingType: mandatory
+    requirement: "Request RP-specific pseudonyms when appropriate"
+    explanation: |
+      Relying parties may request pseudonyms that are specific and unique to them, 
+      allowing persistent pseudonymous authentication without requiring full identity 
+      disclosure. The pseudonym can be requested standalone or with other data.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 14"
+      paragraph: "2"
+    legalText: |
+      Wallet units shall support the generation, upon the request of a wallet-relying 
+      party, of a pseudonym which is specific and unique to that wallet-relying party 
+      and provide this pseudonym to the wallet-relying party, either standalone or in 
+      combination with any person identification data or electronic attribute 
+      attestation requested by that wallet-relying party.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+
+  - id: RP-TECH-018
+    category: technical
+    bindingType: mandatory
+    requirement: "Support mandatory data formats from Annex II"
+    explanation: |
+      Relying parties must support the data formats specified in Annex II of 2024/2979 
+      for person identification data and electronic attestations of attributes. This 
+      includes ISO/IEC 18013-5 and W3C Verifiable Credentials.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the usage of 
+      person identification data and electronic attestations of attributes issued 
+      in compliance with the list of standards set out in Annex II.
+      
+      Annex II: ISO/IEC.18013-5:2021; 'Verifiable Credentials Data Model 1.1', 
+      W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-ESIG-027
+    category: esignature
+    bindingType: mandatory
+    requirement: "Support signature formats from Annex IV when requesting signatures"
+    explanation: |
+      When relying parties request electronic signatures or seals from wallet users, 
+      they must support the mandatory signature formats specified in Annex IV, and 
+      may optionally support XAdES, JAdES, CAdES, and ASiC formats.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 12"
+      paragraph: "2(c)"
+    legalText: |
+      Signature creation applications shall have the following functions:
+      (c) creating signatures or seals in accordance with at least the mandatory 
+      formats referred to in Annex IV.
+      
+      Annex IV optional formats: XAdES (XML), JAdES (JSON), CAdES (CMS), ASiC (containers).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
