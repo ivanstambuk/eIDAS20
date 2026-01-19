@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T18:16:21.670Z",
+  "generatedAt": "2026-01-19T18:52:10.432Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -913,6 +913,45 @@
         "paragraph": "9"
       },
       "legalText": "For each intended use, a list of the data, including attestations and attributes, \nthat the relying party intends to request, a user-friendly name and a technical \nname, the attestation type and any other syntaxes that the data is grouped under, \nin a machine-readable format for automated processing.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-REG-013",
+      "category": "registration",
+      "requirement": "Provide privacy policy URL for each intended use",
+      "explanation": "In Member States that use wallet-relying party registration certificates, relying \nparties must provide a URL to the privacy policy applicable to each intended use \nof wallet data. This URL is included in the registration certificate and enables \nusers to verify how their data will be processed before sharing.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 8",
+        "paragraph": "2(g)"
+      },
+      "legalText": "Where a Member State authorised the issuance of a wallet-relying party registration \ncertificate, that Member State shall [...] (g) ensure that wallet-relying parties \nprovide a URL to the privacy policy regarding the intended use.",
       "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
@@ -3162,6 +3201,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3215,6 +3255,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3257,6 +3298,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3321,6 +3363,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3360,6 +3403,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3399,6 +3443,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3436,6 +3481,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3473,6 +3519,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3510,6 +3557,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3547,6 +3595,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3584,6 +3633,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3621,6 +3671,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3658,6 +3709,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3696,6 +3748,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3736,6 +3789,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3773,6 +3827,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3810,6 +3865,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3847,6 +3903,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3884,6 +3941,7 @@
         "RP-REG-010",
         "RP-REG-011",
         "RP-REG-012",
+        "RP-REG-013",
         "RP-TECH-001",
         "RP-TECH-002",
         "RP-TECH-003",
@@ -3968,11 +4026,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 90,
+    "totalRequirements": 91,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 90
+      "relying_party": 91
     }
   }
 }

@@ -13,9 +13,10 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Second-pass deep verification complete. Fixed RP-AUTH-001 duplicate ID.
-# Schema version 12 - Fixed duplicate ID (RP-AUTH-001 → RP-AUTH-005 for Art 6(1))
+# AUDIT: 2026-01-19 - Third-pass: Reviewed 2025/848 Art 3-10, 2024/2980, 2024/2981. Added RP-REG-013.
+# Schema version 13 - Added Art 8(2)(g) privacy policy URL requirement
 
-schemaVersion: 12
+schemaVersion: 13
 
 # Requirement categories for grouping in the UI
 categories:
@@ -356,6 +357,32 @@ requirements:
     roles:
       - relying_party
     useCases: all
+
+  - id: RP-REG-013
+    category: registration
+    bindingType: mandatory
+    requirement: "Provide privacy policy URL for each intended use"
+    explanation: |
+      In Member States that use wallet-relying party registration certificates, relying 
+      parties must provide a URL to the privacy policy applicable to each intended use 
+      of wallet data. This URL is included in the registration certificate and enables 
+      users to verify how their data will be processed before sharing.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 8"
+      paragraph: "2(g)"
+    legalText: |
+      Where a Member State authorised the issuance of a wallet-relying party registration 
+      certificate, that Member State shall [...] (g) ensure that wallet-relying parties 
+      provide a URL to the privacy policy regarding the intended use.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+    notes: |
+      This requirement applies conditionally - only in Member States that have authorized 
+      the issuance of wallet-relying party registration certificates. However, providing 
+      a privacy policy URL is good practice regardless.
 
   # ============================================================================
   # TECHNICAL REQUIREMENTS  

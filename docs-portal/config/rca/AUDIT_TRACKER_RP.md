@@ -2,10 +2,10 @@
 
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
-**Last Updated:** 2026-01-19 (Second Pass)
-**Current Requirements Count:** 90
-**Schema Version:** 12 (Fixed duplicate ID: RP-AUTH-001 → RP-AUTH-005)
-**Verification Status:** ✅ SECOND-PASS DEEP AUDIT COMPLETE
+**Last Updated:** 2026-01-19 (Third Pass)
+**Current Requirements Count:** 91
+**Schema Version:** 13 (Added RP-REG-013 for Art 8(2)(g) privacy policy URL)
+**Verification Status:** ✅ THIRD-PASS DEEP AUDIT COMPLETE
 
 ---
 
@@ -238,14 +238,48 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1-5 | All articles | ⬜ | | Commission notification |
+| Art. 1 | Subject matter and scope | ➖ | | Commission notification scope |
+| Art. 2 | Definitions | ➖ | | wallet-relying party defined |
+| Art. 3 | Notification system | ➖ | | Commission shall establish system |
+| Art. 4 | Notifications by Member States | ➖ | | MS notification duties |
+| Art. 5 | Publications by the Commission | ➖ | | Commission publication duties |
+| Art. 6 | Entry into force | ➖ | | |
 
 ### 2024/2981 - Certification of EUDI Wallets
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1-10 | All articles | ⬜ | | Certification framework |
-| Annexes I-IX | All annexes | ⬜ | | Technical requirements |
+| Art. 1 | Subject matter and scope | ➖ | | Certification framework scope |
+| Art. 2 | Definitions | ➖ | | wallet-relying party defined |
+| Art. 3 | Establishment of national certification schemes | ➖ | | MS scheme establishment |
+| Art. 4 | General requirements | ➖ | | Scheme requirements |
+| Art. 5 | Incident and vulnerability management | ➖ | | Wallet provider duties |
+| Art. 6 | Maintenance of national certification schemes | ➖ | | Scheme owner duties |
+| Art. 7 | General requirements (scheme owners) | ➖ | | Scheme owner duties |
+| Art. 8 | General requirements (providers) | ➖ | | Wallet provider duties |
+| Art. 9 | General requirements (CABs) | ➖ | | CAB accreditation |
+| Art. 10 | Subcontracting | ➖ | | CAB subcontracting rules |
+| Art. 11 | Notification to supervisory body | ➖ | | CAB notification duties |
+| Art. 12 | Incident and vulnerability management (CABs) | ➖ | | CAB duties |
+| Art. 13 | Evaluation activities | ➖ | | CAB evaluation procedures |
+| Art. 14 | Certification activities | ➖ | | CAB certification procedures |
+| Art. 15 | Complaints and appeals | ➖ | | Scheme complaint handling |
+| Art. 16 | Surveillance activities | ➖ | | CAB surveillance duties |
+| Art. 17 | Consequences of non-compliance | ➖ | | Non-compliance procedures |
+| Art. 18 | Certification lifecycle | ➖ | | Certificate validity |
+| Art. 19 | Retention of records | ➖ | | CAB recordkeeping |
+| Art. 20 | Protection of information | ➖ | | Confidentiality requirements |
+| Art. 21 | Transition to EU cybersecurity scheme | ➖ | | Scheme transition |
+| Art. 22 | Entry into force | ➖ | | Effective date |
+| Annex I | Risk register | ➖ | | Threat descriptions (RPs as threat actors, not duties) |
+| Annex II | Certification schemes | ➖ | | Certification body requirements |
+| Annex III | Functional requirements | ➖ | | Wallet solution requirements |
+| Annex IV | Evaluation activities | ➖ | | CAB evaluation procedures |
+| Annex V | Public security info | ➖ | | Wallet provider transparency |
+| Annex VI | Dependency analysis | ➖ | | Assurance documentation |
+| Annex VII | Certificate content | ➖ | | Certificate requirements |
+| Annex VIII | Certification reports | ➖ | | Report content requirements |
+| Annex IX | Evaluation requirements | ➖ | | Evaluation schedule |
 
 ### 2024/2982 - Protocols and Interfaces
 
@@ -297,61 +331,193 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 |---------|-------|--------|-----------------|-------|
 | Art. 1 | Subject matter and scope | ✅ | | |
 | Art. 2 | Definitions | ✅ | | wallet-relying party defined |
-| Art. 3 | National registers | ⬜ | | Member State duties |
-| Art. 4 | Registration policies | ⬜ | | Member State duties |
+| Art. 3 | National registers | ➖ | | MS/registrar duties (establishing registers) |
+| Art. 4 | Registration policies | ➖ | | MS policy requirements |
 | Art. 5 | Information to be provided | ✅ | RP-REG-007 to RP-REG-009 | RP obligations |
-| Art. 6 | Registration processes | ✅ | RP-REG-010 | Cessation notification |
-| Art. 7 | Wallet-RP access certificates | ⬜ | | Certificate issuance |
-| Art. 8 | Wallet-RP registration certificates | ⬜ | | Optional certificates |
-| Art. 9 | Suspension and cancellation | ⬜ | | Registrar duties |
-| Art. 10 | Record keeping | ⬜ | | Registrar duties |
+| Art. 6 | Registration processes | ✅ | RP-REG-010 | Cessation notification (Art 6(7)) |
+| Art. 7 | Wallet-RP access certificates | ➖ | | MS/certificate provider duties; RP use covered by RP-REG-005 |
+| Art. 8 | Wallet-RP registration certificates | ✅ | RP-REG-013 | Art 8(2)(g): Privacy policy URL requirement |
+| Art. 9 | Suspension and cancellation | ➖ | | Registrar enforcement powers |
+| Art. 10 | Record keeping | ➖ | | Registrar record-keeping duties |
+| Art. 11 | Entry into force | ➖ | | Applies from 24 Dec 2026 |
 | Annex I | Information requirements | ✅ | RP-REG-011, RP-REG-012 | Data to provide |
-| Annex II | API requirements | ⬜ | | Technical specs |
-| Annex III | Entitlement verification | ⬜ | | |
-| Annex IV | Access certificate requirements | ⬜ | | |
-| Annex V | Registration certificate requirements | ⬜ | | |
+| Annex II | API requirements | ➖ | | Register API technical specs |
+| Annex III | Entitlement verification | ➖ | | Registrar verification procedures |
+| Annex IV | Access certificate requirements | ➖ | | Certificate provider requirements |
+| Annex V | Registration certificate requirements | ➖ | | Certificate provider requirements |
 
 ### 2025/849 - Certified Wallet List
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| All | Full regulation | ➖ | | Member State notification duties |
+| Art. 1 | Subject matter | ➖ | | Scope of notification requirements |
+| Art. 2 | Definitions | ➖ | | Wallet solution defined |
+| Art. 3 | Format and procedure for submissions | ➖ | | MS submission duties |
+| Art. 4 | Entry into force | ➖ | | Effective date |
+| Annex | Information to be submitted | ➖ | | MS submission content |
 
 ---
 
 ## 5. Implementing Acts - Third Batch (July/September 2025)
 
-### Trust Services Implementing Acts
+### 2025/1566 - Registered Delivery
 
-| Regulation | Title | Status | RP Requirements | Notes |
-|------------|-------|--------|-----------------|-------|
-| 2025/1566 | Registered Delivery | ➖ | | QERDSP standards |
-| 2025/1567 | Certificate Formats | ➖ | | QTSP standards |
-| 2025/1568 | Remote Signing | ➖ | | QSCD management |
-| 2025/1569 | EAA/Attributes | ➖ | | EAA issuance (Art 4.5 has RP-adjacent provision) |
-| 2025/1570 | Certified Creation Devices | ➖ | | QSCD certification |
-| 2025/1571 | Seal Standards | ➖ | | Seal formats |
-| 2025/1572 | E-Signature Standards | ➖ | | Signature formats |
-| 2025/1929 | Electronic Timestamps | ➖ | | Timestamp standards |
-| 2025/1942 | Validation Services | ➖ | | QVSP standards |
-| 2025/1943 | Signature Standards | ➖ | | Certificate formats |
-| 2025/1944 | Preservation Standards | ➖ | | QERDS/preservation |
-| 2025/1945 | Wallet Attributes | ➖ | | Sig validation standards |
-| 2025/1946 | Wallet Reference Issuer | ➖ | | Preservation services |
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards | ➖ | | QERDSP standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/1567 - Certificate Formats
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards and specifications | ➖ | | QTSP certificate standards |
+| Art. 2 | Entry into force and applicability | ➖ | | Effective date |
+
+### 2025/1568 - Remote Signing (Peer Review)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | General principles for peer review | ➖ | | Peer review procedures |
+| Art. 2 | Initiation of peer review | ➖ | | MS notification duties |
+| Art. 3 | Preparation of peer review | ➖ | | CAB preparation |
+
+### 2025/1569 - EAA/Attributes (Sign Creation Devices)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Subject matter and scope | ➖ | | QEAA issuance scope |
+| Art. 2 | Definitions | ➖ | | QEAA definitions |
+| Art. 3 | Issuance of QEAA/PUB-EAA | ➖ | | Issuer duties |
+| Art. 4 | Revocation of QEAA/PUB-EAA | ➖ | | Issuer revocation duties |
+
+### 2025/1570 - Certified Creation Devices
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards | ➖ | | QSCD certification |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/1571 - Seal Standards (Annual Reports)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Format and procedures of annual reports | ➖ | | TSP reporting |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/1572 - E-Signature Standards (Supervision)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Verification methodology | ➖ | | Supervisory verification |
+| Art. 2 | Transparency | ➖ | | Supervisory transparency |
+| Art. 3 | Trust service provider notifications | ➖ | | TSP notification duties |
+| Art. 4 | Verifications by supervisory bodies | ➖ | | Supervisory duties |
+| Art. 5 | Entry into force and applicability | ➖ | | Effective date |
+
+### 2025/1929 - Electronic Timestamps
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards | ➖ | | Timestamp standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/1942 - Validation Services
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards and specifications | ➖ | | QVSP standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+| Annex | List of reference standards | ➖ | | Standards list |
+
+### 2025/1943 - Signature/Certificate Standards
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards for qualified certificates | ➖ | | Certificate standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+| Annex | List of reference standards | ➖ | | Standards list |
+
+### 2025/1944 - Preservation/QERDS Standards
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards for QERDS | ➖ | | Registered delivery standards |
+| Art. 2 | Reference standards for QERDS interoperability | ➖ | | Interoperability standards |
+| Art. 3 | Entry into force | ➖ | | Effective date |
+
+### 2025/1945 - Wallet Attributes (Signature Validation)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards and specifications | ➖ | | Signature validation standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/1946 - Wallet Reference Issuer (Preservation)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards and specifications | ➖ | | Preservation standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
 
 ---
 
 ## 6. Implementing Acts - Fourth Batch (October/November 2025)
 
-| Regulation | Title | Status | RP Requirements | Notes |
-|------------|-------|--------|-----------------|-------|
-| 2025/2160 | Supervisory Data | ➖ | | TSP risk management |
-| 2025/2162 | CAB Accreditation | ➖ | | Accreditation standards |
-| 2025/2164 | Trusted Lists | ➖ | | Trusted list format |
-| 2025/2527 | Website Auth Certs | ➖ | | QWAC standards |
-| 2025/2530 | QTSP Requirements | ➖ | | QTSP standards |
-| 2025/2531 | Electronic Ledgers | ➖ | | Ledger standards |
-| 2025/2532 | Archiving Services | ➖ | | Archive standards |
+### 2025/2160 - Supervisory Data (TSP Risk Management)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards | ➖ | | Risk management standards |
+| Art. 2 | Risk management policies | ➖ | | TSP policy requirements |
+| Art. 3 | Identification, documentation and evaluation of risks | ➖ | | Risk assessment |
+| Art. 4 | Risk treatment measures | ➖ | | Risk treatment |
+
+### 2025/2162 - CAB Accreditation
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Definitions | ➖ | | CAB definitions |
+| Art. 2 | Accreditation of conformity assessment bodies | ➖ | | CAB accreditation |
+| Art. 3 | Accreditation certificate | ➖ | | Certificate requirements |
+
+### 2025/2164 - Trusted Lists
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Subject matter | ➖ | | Trusted list scope |
+| Art. 2 | Technical specifications | ➖ | | List format |
+| Annex | Technical specifications | ➖ | | Detailed format |
+
+### 2025/2527 - Website Auth Certs (QWAC)
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards | ➖ | | QWAC standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/2530 - QTSP Requirements
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Notifications to supervisory body | ➖ | | TSP notification duties |
+| Art. 2 | Risk management framework | ➖ | | TSP risk management |
+| Art. 3 | Termination plan | ➖ | | TSP termination requirements |
+
+### 2025/2531 - Electronic Ledgers
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Reference standards and specifications | ➖ | | QERL standards |
+| Art. 2 | Entry into force | ➖ | | Effective date |
+
+### 2025/2532 - Archiving Services
+
+| Article | Title | Status | RP Requirements | Notes |
+|---------|-------|--------|-----------------|-------|
+| Art. 1 | Electronic archiving with qualified signatures/seals | ➖ | | Archive requirements |
+| Art. 2 | Reference standards for qualified archiving | ➖ | | Archive standards |
+| Art. 3 | Entry into force | ➖ | | Effective date |
 
 ---
 
@@ -434,9 +600,86 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 
 ### Recitals from Consolidated 910/2014 (Original Recitals 1-76)
 
+These are the original 2014 eIDAS recitals. They provide historical context for the regulation but predate the EUDI Wallet framework and contain no direct RP obligations.
+
 | Recital | Topic | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Recital 1-76 | Original eIDAS recitals | ➖ | | Historical context - mostly TSP/MS focused |
+| Recital 1 | Digital single market | ➖ | | Policy context |
+| Recital 2 | Cross-border e-ID | ➖ | | Policy context |
+| Recital 3 | Public service access | ➖ | | MS context |
+| Recital 4 | Trust services framework | ➖ | | TSP context |
+| Recital 5 | Legal certainty | ➖ | | Legal framework |
+| Recital 6 | Mutual recognition principles | ➖ | | MS duties |
+| Recital 7 | Assurance levels | ➖ | | Framework context |
+| Recital 8 | Interoperability framework | ➖ | | MS duties |
+| Recital 9 | Private sector use | ➖ | | Voluntary use context |
+| Recital 10 | Notified e-ID schemes | ➖ | | MS notification duties |
+| Recital 11 | Scheme requirements | ➖ | | MS requirements |
+| Recital 12 | Security requirements | ➖ | | Security context |
+| Recital 13 | Notification prerequisites | ➖ | | MS duties |
+| Recital 14 | Cooperation principles | ➖ | | MS cooperation |
+| Recital 15 | TSP liability | ➖ | | TSP context |
+| Recital 16 | Security assessment | ➖ | | MS assessment duties |
+| Recital 17 | Peer review | ➖ | | MS peer review |
+| Recital 18 | Technical specifications | ➖ | | Commission powers |
+| Recital 19 | Internal market | ➖ | | Market context |
+| Recital 20 | Trust service establishment | ➖ | | TSP context |
+| Recital 21 | TSP supervision | ➖ | | Supervisory context |
+| Recital 22 | Supervisory bodies | ➖ | | MS duties |
+| Recital 23 | Mutual assistance | ➖ | | Supervisory cooperation |
+| Recital 24 | TSP security | ➖ | | TSP duties |
+| Recital 25 | Breach notification | ➖ | | TSP duties |
+| Recital 26 | Risk assessment | ➖ | | TSP duties |
+| Recital 27 | Qualified status | ➖ | | QTSP context |
+| Recital 28 | Third country TSPs | ➖ | | International context |
+| Recital 29 | TSP accessibility | ➖ | | Accessibility context |
+| Recital 30 | Trusted lists | ➖ | | MS duties |
+| Recital 31 | EU mark | ➖ | | Trust mark context |
+| Recital 32 | Electronic signatures | ➖ | | Signature context |
+| Recital 33 | Signature legal effect | ➖ | | Legal effect |
+| Recital 34 | Advanced signatures | ➖ | | Advanced sig context |
+| Recital 35 | Qualified signatures | ➖ | | QES context |
+| Recital 36 | Cross-border signatures | ➖ | | MS recognition |
+| Recital 37 | Creation devices | ➖ | | QSCD context |
+| Recital 38 | QSCD assessment | ➖ | | CAB context |
+| Recital 39 | QSCD standards | ➖ | | Technical standards |
+| Recital 40 | Signature validation | ➖ | | Validation context |
+| Recital 41 | Electronic seals | ➖ | | Seal context |
+| Recital 42 | Seal legal effect | ➖ | | Legal effect |
+| Recital 43 | Qualified seals | ➖ | | QESeal context |
+| Recital 44 | Timestamps | ➖ | | Timestamp context |
+| Recital 45 | Qualified timestamps | ➖ | | QTSA context |
+| Recital 46 | Electronic documents | ➖ | | Document context |
+| Recital 47 | Registered delivery | ➖ | | ERDSP context |
+| Recital 48 | QERDS | ➖ | | Qualified delivery context |
+| Recital 49 | Website authentication | ➖ | | Certificate context |
+| Recital 50 | QWAC | ➖ | | QWA certificate context |
+| Recital 51 | Browser recognition | ➖ | | Browser context |
+| Recital 52 | Personal data | ➖ | | Data protection |
+| Recital 53 | GDPR alignment | ➖ | | Privacy framework |
+| Recital 54 | Data processing | ➖ | | Data controller context |
+| Recital 55 | Accessibility | ➖ | | Disability access |
+| Recital 56 | SME impact | ➖ | | Business context |
+| Recital 57 | Consumer protection | ➖ | | Consumer context |
+| Recital 58 | Delegated acts | ➖ | | Commission powers |
+| Recital 59 | Implementing acts | ➖ | | Commission powers |
+| Recital 60 | Committee procedure | ➖ | | Procedure context |
+| Recital 61 | Standards references | ➖ | | Technical standards |
+| Recital 62 | ENISA role | ➖ | | Agency context |
+| Recital 63 | Directive repeal | ➖ | | Transitional |
+| Recital 64 | Transition period | ➖ | | Transitional |
+| Recital 65 | QC certificates | ➖ | | Transitional |
+| Recital 66 | SSCD transition | ➖ | | Transitional |
+| Recital 67 | Device certification | ➖ | | Transitional |
+| Recital 68 | Implementation timeline | ➖ | | Timeline |
+| Recital 69 | Standards timeline | ➖ | | Timeline |
+| Recital 70 | Review clause | ➖ | | Commission review |
+| Recital 71 | Proportionality | ➖ | | Legal basis |
+| Recital 72 | Subsidiarity | ➖ | | Legal basis |
+| Recital 73 | Treaty basis | ➖ | | Legal basis |
+| Recital 74 | EDPS consultation | ➖ | | Procedure |
+| Recital 75 | Committee opinions | ➖ | | Procedure |
+| Recital 76 | Entry into force | ➖ | | Effective date |
 
 ---
 

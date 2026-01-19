@@ -11,6 +11,25 @@ Use this workflow when:
 
 ---
 
+## 🚨 CRITICAL RULE: ZERO TOLERANCE FOR ⬜ ITEMS
+
+**An audit is NOT complete until EVERY article is marked ✅ or ➖.**
+
+Before claiming an audit is complete:
+
+```bash
+# MANDATORY: Run this grep to find any remaining ⬜ items
+# Excludes the legend row that explains what ⬜ means
+grep "| ⬜ |" docs-portal/config/rca/AUDIT_TRACKER_{ROLE}.md | grep -v "Not yet reviewed" | wc -l
+
+# If the output is anything other than 0, THE AUDIT IS NOT COMPLETE
+# You MUST review each ⬜ item before finishing
+```
+
+**If ANY ⬜ remains = AUDIT FAILED. Do not proceed to other steps.**
+
+---
+
 ## Step 0: Specify Target Role
 
 **⚠️ REQUIRED** — Before starting, confirm the target role:
@@ -49,14 +68,91 @@ Create a mental index of:
 
 ---
 
-## Step 2: Read Source Documents
+## Step 1.5: Locate Local Source Files (MANDATORY)
 
-For each article/section:
+**⚠️ ALWAYS use LOCAL Markdown files** — Do NOT fetch from EUR-Lex online.
+
+All regulations are already imported into the repository:
+
+```bash
+# Main regulation (consolidated)
+ls ~/dev/eIDAS20/01_regulation/
+
+# Implementing acts
+ls ~/dev/eIDAS20/02_implementing_acts/
+
+# Find a specific regulation by number
+find ~/dev/eIDAS20 -name "*2025*848*" -type f
+```
+
+**Source file structure:**
+- `01_regulation/` — Consolidated eIDAS Regulation (910/2014)
+- `02_implementing_acts/{YEAR}_{NUMBER}_{Title}/` — Implementing acts
+
+**Example:**
+```bash
+# Read 2025/848 (RP Registration) from local files
+cat ~/dev/eIDAS20/02_implementing_acts/2025_0848_Notified_Wallet_List/32025R0848.md
+```
+
+**Why local files:**
+1. Already converted to consistent Markdown format
+2. No web scraping/chunking noise
+3. Faster and more reliable
+4. Guaranteed to match portal content
+
+---
+
+## Step 2: Read Source Documents — EVERY ARTICLE
+
+**🚨 READ EVERY SINGLE ARTICLE. NO EXCEPTIONS.**
+
+### 🚨 CRITICAL: ONE ROW PER PROVISION
+
+**NEVER use ranges like "Art. 1-22" or "Annexes I-IX". EACH provision gets its OWN row.**
+
+❌ **WRONG:**
+```markdown
+| Art. 1-22 | All articles | ➖ | | Certification framework |
+| Annexes I-IX | All annexes | ➖ | | Technical requirements |
+| All | Full regulation | ➖ | | Member State duties |
+| Recital 1-76 | Original recitals | ➖ | | Historical context |
+| 2025/1946 | Wallet Reference Issuer | ➖ | | Preservation services |
+```
+
+✅ **CORRECT:**
+```markdown
+| Art. 1 | Subject matter | ➖ | | Scope definition |
+| Art. 2 | Definitions | ➖ | | Wallet-relying party defined |
+| Art. 3 | National registers | ➖ | | MS establishment duties |
+| Art. 4 | Registration policies | ➖ | | MS policy requirements |
+...
+| Annex I | Risk register | ➖ | | Threat descriptions |
+| Annex II | Certification schemes | ➖ | | CAB requirements |
+...
+```
+
+**Why individual rows matter:**
+1. Forces you to actually READ each article
+2. Prevents accidentally skipping important provisions
+3. Creates auditable evidence of review
+4. Makes future re-reviews targeted and efficient
+
+**This applies to ALL document types:**
+- Articles
+- Annexes
+- Recitals
+- Sections
+- Chapters
+- Any other structural unit
+
+For EACH article in the regulation (not just some):
 
 1. **Read the actual text** — Never guess from titles
 2. **Identify obligations** — Look for "shall", "must", "is required to"
 3. **Check if role is mentioned** — Does this apply to the target role?
 4. **Cross-reference** — Is this already in the requirements YAML?
+5. **Mark immediately** — Update the tracker with ✅ or ➖ RIGHT AWAY
 
 ### Key Markers for Role Relevance
 
@@ -67,6 +163,22 @@ For each article/section:
 | trust_service_provider | "trust service provider", "TSP", "QTSP", "qualified trust service" |
 | pid_provider | "PID provider", "person identification data provider" |
 | eaa_issuer | "issuer of attestations", "EAA issuer", "attestation issuance" |
+
+### Article Coverage Tracking
+
+**As you read each article, immediately mark it in the tracker:**
+
+```markdown
+| Article | Status | Notes |
+|---------|--------|-------|
+| Art. 1  | ➖     | Scope - no role obligations |
+| Art. 2  | ➖     | Definitions only |
+| Art. 3  | ✅     | RP-XXX-001 added |
+| Art. 4  | ➖     | MS duties only |
+...
+```
+
+**Never leave an article unmarked. Mark it before moving to the next article.**
 
 ---
 
@@ -169,15 +281,34 @@ After adding requirements:
 
 ---
 
-## Step 7: Verify
+## Step 7: MANDATORY Completion Verification
+
+**🚨 DO NOT SKIP THIS STEP. FAILURE TO RUN THIS = AUDIT IS INVALID.**
 
 ```bash
-# Rebuild and check count
+# Step 7a: Check for remaining ⬜ items (excludes legend row)
+echo "=== Checking for unreviewed items ==="
+UNREVIEWED=$(grep "| ⬜ |" docs-portal/config/rca/AUDIT_TRACKER_{ROLE}.md | grep -v "Not yet reviewed" | wc -l)
+echo "Unreviewed items (⬜): $UNREVIEWED"
+
+if [ "$UNREVIEWED" != "0" ]; then
+  echo "❌ AUDIT INCOMPLETE: $UNREVIEWED items not reviewed!"
+  grep "| ⬜ |" docs-portal/config/rca/AUDIT_TRACKER_{ROLE}.md | grep -v "Not yet reviewed"
+  exit 1
+fi
+
+# Step 7b: Rebuild and verify
+echo "=== Building RCA ==="
 cd docs-portal && npm run build:rca
 
-# Should show new requirement count
-# Example output: "📄 Loaded relying-party.yaml: 90 requirements"
+echo "✅ Audit verification complete"
 ```
+
+**If the grep finds ANY ⬜ items:**
+1. STOP
+2. Go back and review those specific items
+3. Mark them ✅ or ➖
+4. Run verification again
 
 ---
 
@@ -191,13 +322,40 @@ cd docs-portal && npm run build:rca
 
 ❌ **Never use generic names** — Files must include role: `AUDIT_TRACKER_RP.md` not `AUDIT_TRACKER.md`
 
+❌ **Never leave ⬜ items** — Every article must be marked ✅ or ➖
+
+❌ **Never claim completion without verification** — ALWAYS run the Step 7 grep check
+
+❌ **Never skip articles "because they look similar"** — Read and verify each one individually
+
 ---
 
 ## Checklist Before Completion
 
-1. All articles marked with ✅ or ➖ (no ⬜ remaining)
-2. All recitals reviewed
-3. Gap analysis performed against existing YAML
-4. Schema version incremented
-5. `npm run build:rca` successful
-6. Commit changes with descriptive message
+**You MUST verify ALL of these before claiming an audit is complete:**
+
+- [ ] `grep -c "⬜" AUDIT_TRACKER_{ROLE}.md` returns **0**
+- [ ] Every regulation section has been individually reviewed
+- [ ] Every article has been individually read (not just title)
+- [ ] Every article is marked with ✅ or ➖ (NO ⬜ remaining)
+- [ ] All recitals reviewed for context
+- [ ] Gap analysis performed against existing YAML
+- [ ] Schema version incremented
+- [ ] `npm run build:rca` successful
+- [ ] Final verification grep shows 0 unreviewed items
+
+---
+
+## Audit Completion Statement
+
+When complete, the response MUST include:
+
+```
+AUDIT VERIFICATION:
+- Unreviewed items (⬜): 0
+- Total requirements: {N}
+- Schema version: {V}
+- Build status: ✅ Successful
+```
+
+**If you cannot provide this statement with "Unreviewed items: 0", the audit is NOT complete.**
