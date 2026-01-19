@@ -2,9 +2,9 @@
 
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Wallet Provider requirements.
 
-**Last Updated:** 2026-01-19
-**Current Requirements Count:** 131
-**Schema Version:** 5
+**Last Updated:** 2026-01-20
+**Current Requirements Count:** 132
+**Schema Version:** 6
 **Verification Status:** ✅ AUDIT COMPLETE
 
 ---
@@ -617,7 +617,54 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 - **Reviewed - No Direct WP Requirements:** 25 (MS/TSP/RP/CAB-focused)
 
 ### Current Requirements
-- **Total in wallet-provider.yaml:** 131
+- **Total in wallet-provider.yaml:** 132
+- **Profile-filtered requirements:** 1 (WP-DP-003a)
+
+---
+
+## Profile Differentiation Analysis
+
+### Legal Basis for Wallet Provider Profiles
+
+Article 5a(2) of Regulation (EU) 910/2014 (consolidated) defines three distinct ways EUDI Wallets can be provided:
+
+| Profile ID | Regulation Text | Description |
+|------------|-----------------|-------------|
+| `member_state` | "(a) directly by a Member State" | Government-operated wallet |
+| `mandated` | "(b) under a mandate from a Member State" | Private entity operating under MS authority |
+| `independent` | "(c) independently of a Member State but recognised by that Member State" | Private entity recognised but not mandated |
+
+### Profile-Specific Requirements
+
+**Only ONE requirement has differentiated obligations by provider type:**
+
+| Requirement | Applies To | Legal Basis | Explanation |
+|-------------|------------|-------------|-------------|
+| **WP-DP-003a** | `mandated`, `independent` | Article 5a(14) → Article 45h(3) *mutatis mutandis* | Private wallet providers must implement wallet services **functionally separate** from other services they provide |
+
+**Article 5a(14) excerpt:**
+> "If the European Digital Identity Wallet is provided by **private parties** in accordance with paragraph 2, **points (b) and (c)**, of this Article, the provisions of **Article 45h(3)** shall apply *mutatis mutandis*."
+
+**Article 45h(3):**
+> "Providers of qualified electronic attestation of attributes' services shall implement the provision of such qualified trust services in a manner that is functionally separate from other services provided by them."
+
+### Universal Requirements (All Profiles)
+
+The remaining 131 requirements apply equally to all three wallet provider types. Key provisions:
+
+- **Article 5a(20)** applies Article 24(2) points (b), (d)-(h) to **all** wallet providers
+- All certification, security, functionality, and data protection requirements are uniform
+- The ARF (Architecture Reference Framework) confirms no other differentiated obligations exist
+
+### Research Verification
+
+**Sources consulted (2026-01-20):**
+1. Regulation (EU) 910/2014 (consolidated with 2024/1183) — Article 5a, 45h
+2. EU Digital Identity Wallet GitHub ARF documentation
+3. europa.eu official guidance
+4. eudi.dev technical specifications
+
+**Conclusion:** The wallet provider profiles are legally grounded and correctly implemented. Only the functional separation requirement (WP-DP-003a) requires profile filtering.
 
 ---
 
