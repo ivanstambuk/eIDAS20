@@ -407,6 +407,29 @@ See `.agent/workflows/` for detailed instructions.
 
 **See:** [Content Rules 33-38](.agent/docs/rules/content-rules.md) for full import protocols.
 
+### Formex Multi-Part Document Handling
+
+When importing EUR-Lex documents via `eurlex_formex.py`, the script handles multi-part Formex ZIP archives:
+
+**File Naming Convention:**
+| Pattern | Description |
+|---------|-------------|
+| `L_XXXXXXEN.000101.fmx.xml` | Main document (preamble, recitals, articles) |
+| `L_XXXXXXEN.000[2-9]XX.fmx.xml` | Annexes (tables, appendices) |
+
+**Processing Logic:**
+1. **Main document detection:** The script explicitly identifies `.000101.fmx.xml` as the main body
+2. **Annex merging:** Files matching `.000[2-9]\d{2}\.` are merged into the main document's Markdown
+3. **Metadata injection:** CELEX header is auto-generated for proper portal badge display
+
+**Anti-patterns:**
+- ❌ Manually running `formex_to_md_v3.py` on individual annex files
+- ❌ Assuming the last `.000` file is the main document
+
+**Correct pattern:**
+- ✅ Use `eurlex_formex.py` which handles multi-part merging automatically
+- ✅ Let the script select `.000101` as main and merge higher-numbered files as annexes
+
 ---
 
 ## Key Terminology
@@ -437,4 +460,4 @@ Uses **conventional commits**:
 
 ---
 
-*Last updated: 2026-01-18*
+*Last updated: 2026-01-19*
