@@ -5,6 +5,7 @@
 # - Implementing Regulation (EU) 2024/2979 - Integrity & Core Functions
 # - Implementing Regulation (EU) 2024/2982 - Protocols & Interfaces  
 # - Implementing Regulation (EU) 2024/2977 - PID and EAA
+# - Implementing Regulation (EU) 2025/848  - Relying Party Registration
 #
 # Each requirement is defined ONCE and tagged with applicable:
 # - roles: which roles this applies to
@@ -12,9 +13,9 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 5 - Added bindingType for recitals, complete trust services coverage
+# Schema version 6 - Added 2025/848 RP Registration implementing act requirements
 
-schemaVersion: 5
+schemaVersion: 6
 
 # Requirement categories for grouping in the UI
 categories:
@@ -185,6 +186,137 @@ requirements:
     useCases:
       - pseudonym
       - age-verification
+
+  # ----------------------------------------------------------------------------
+  # Source: Implementing Regulation (EU) 2025/848 - Relying Party Registration
+  # These requirements specify detailed registration procedures and obligations
+  # ----------------------------------------------------------------------------
+
+  - id: RP-REG-007
+    category: registration
+    bindingType: mandatory
+    requirement: "Provide complete Annex I information to national register"
+    explanation: |
+      When registering, relying parties must provide all required information as specified 
+      in Annex I of 2025/848, including identifiers, contact details, service descriptions, 
+      intended data requests, and entitlement types.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 5"
+      paragraph: "1"
+    legalText: |
+      Wallet-relying parties shall at least provide the information set out in Annex I 
+      to national registers.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-008
+    category: registration
+    bindingType: mandatory
+    requirement: "Ensure registration information accuracy"
+    explanation: |
+      Relying parties are legally responsible for ensuring all information provided 
+      during registration is accurate at the time of registration. Inaccurate information 
+      may lead to registration suspension or cancellation.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      Wallet-relying parties shall ensure that the information provided is accurate 
+      at the time of registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-009
+    category: registration
+    bindingType: mandatory
+    requirement: "Update registration information without undue delay"
+    explanation: |
+      When any registered information changes (contact details, intended data requests, 
+      entitlements, etc.), relying parties must update their registration promptly. 
+      This ensures users and supervisory authorities have accurate information.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      Wallet-relying parties shall update any information previously registered in the 
+      national register of wallet-relying parties without undue delay.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-010
+    category: registration
+    bindingType: mandatory
+    requirement: "Notify registrar when ceasing wallet use"
+    explanation: |
+      When a relying party decides to stop using wallets for service provision under 
+      a specific registration, they must promptly notify the registrar and request 
+      cancellation of that registration.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 6"
+      paragraph: "7"
+    legalText: |
+      When a wallet-relying party no longer intends to rely upon wallet units for the 
+      provision of public or private services under a specific registration, it shall 
+      notify the relevant registrar without undue delay and request the cancellation 
+      of that registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-011
+    category: registration
+    bindingType: mandatory
+    requirement: "Register appropriate entitlement type"
+    explanation: |
+      Relying parties must register with the correct entitlement type(s) as defined 
+      in Annex I, such as 'Service_Provider', 'QEAA_Provider', 'PID_Provider', etc. 
+      This determines what operations the RP is authorized to perform.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Annex I"
+      paragraph: "12"
+    legalText: |
+      The entitlement or entitlements of the wallet-relying party, that shall be 
+      expressed as: (a) 'Service_Provider' to express the entitlement of the 
+      wallet-relying party as a provider of services; (b) 'QEAA_Provider'... 
+      [and other entitlement types as specified in Annex I, point 12]
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-REG-012
+    category: registration
+    bindingType: mandatory  
+    requirement: "Provide machine-readable intended data requests"
+    explanation: |
+      For each intended use, relying parties must provide a detailed list of requested 
+      data including attestations and attributes in both user-friendly and technical 
+      formats for automated processing.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Annex I"
+      paragraph: "9"
+    legalText: |
+      For each intended use, a list of the data, including attestations and attributes, 
+      that the relying party intends to request, a user-friendly name and a technical 
+      name, the attestation type and any other syntaxes that the data is grouped under, 
+      in a machine-readable format for automated processing.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
 
   # ============================================================================
   # TECHNICAL REQUIREMENTS  
