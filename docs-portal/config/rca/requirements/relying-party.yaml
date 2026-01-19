@@ -13,9 +13,9 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 6 - Added 2025/848 RP Registration implementing act requirements
+# Schema version 7 - Added 2024/2977 PID data format requirements
 
-schemaVersion: 6
+schemaVersion: 7
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1560,3 +1560,149 @@ requirements:
     roles:
       - relying_party
     useCases: all
+
+  # ============================================================================
+  # PID AND EAA DATA FORMAT REQUIREMENTS
+  # Source: Implementing Regulation (EU) 2024/2977 - Person Identification Data and EAA
+  # ============================================================================
+
+  - id: RP-TECH-009
+    category: technical
+    bindingType: mandatory
+    requirement: "Support ISO/IEC 18013-5 data format for PID"
+    explanation: |
+      Relying parties must be able to process Person Identification Data presented 
+      in the ISO/IEC 18013-5:2021 format (mDoc). This is one of two mandatory formats 
+      for PID.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "4"
+    legalText: |
+      Person identification data shall be issued in two formats:
+      (1) the format specified in ISO/IEC 18013-5:2021;
+      (2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - pid-proximity
+
+  - id: RP-TECH-010
+    category: technical
+    bindingType: mandatory
+    requirement: "Support W3C Verifiable Credentials data format for PID"
+    explanation: |
+      Relying parties must be able to process Person Identification Data presented 
+      in the W3C Verifiable Credentials Data Model 1.1 format. This is one of two 
+      mandatory formats for PID.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "4"
+    legalText: |
+      Person identification data shall be issued in two formats:
+      (1) the format specified in ISO/IEC 18013-5:2021;
+      (2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+
+  - id: RP-TECH-011
+    category: technical
+    bindingType: mandatory
+    requirement: "Process mandatory PID attributes correctly"
+    explanation: |
+      Relying parties must correctly process the mandatory PID attributes: 
+      family_name, given_name, birth_date, birth_place, and nationality. 
+      These are always present in valid PID credentials.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "1"
+    legalText: |
+      Mandatory attributes: family_name (current last name(s)), given_name 
+      (current first name(s)), birth_date (day, month, year), birth_place 
+      (country/state/city of birth), nationality (alpha-2 country codes).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - pid-proximity
+
+  - id: RP-TECH-012
+    category: technical
+    bindingType: mandatory
+    requirement: "Handle optional PID attributes when present"
+    explanation: |
+      Relying parties should correctly process optional PID attributes when 
+      presented, including: resident_address, personal_administrative_number, 
+      portrait, family_name_birth, given_name_birth, sex, email_address, 
+      and mobile_phone_number.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "1"
+    legalText: |
+      Optional attributes include: resident_address, resident_country, 
+      resident_state, resident_city, resident_postal_code, resident_street, 
+      resident_house_number, personal_administrative_number, portrait, 
+      family_name_birth, given_name_birth, sex, email_address, mobile_phone_number.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - pid-proximity
+
+  - id: RP-TECH-013
+    category: technical
+    bindingType: mandatory
+    requirement: "Verify PID validity status before relying"
+    explanation: |
+      Relying parties must check the validity status of presented PID before 
+      relying on it. The location of validity status information is included 
+      in the PID metadata (location_status attribute).
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "7"
+    legalText: |
+      Where providers of person identification data revoke person identification 
+      data issued to wallet units, they shall make publicly available the validity 
+      status of person identification data they issue, in a privacy preserving 
+      manner, and indicate the location of that information in the person 
+      identification data.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - pid-proximity
+
+  - id: RP-TECH-014
+    category: technical
+    bindingType: mandatory
+    requirement: "Process legal person PID attributes"
+    explanation: |
+      When processing legal person identification data, relying parties must 
+      handle the mandatory attributes (current legal name, unique identifier) 
+      and optional attributes (address, VAT, tax reference, LEI, EORI, etc.).
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "2"
+    legalText: |
+      Legal person mandatory data: current legal name; unique identifier 
+      constructed by the sending Member State. Optional: current address, 
+      VAT registration number, tax reference number, European unique identifier, 
+      Legal Entity Identifier (LEI), EORI, excise number.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - business-kyc

@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 67
-**Schema Version:** 6
+**Current Requirements Count:** 73
+**Schema Version:** 7
 
 ---
 
@@ -201,15 +201,12 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
-| Art. 2 | Definitions | ⬜ | | |
-| Art. 3 | Person identification data schema | ⬜ | | |
-| Art. 4 | Mandatory PID attributes | ⬜ | | |
-| Art. 5 | Optional PID attributes | ⬜ | | |
-| Art. 6 | EAA requirements | ⬜ | | |
-| Art. 7 | Attribute verification | ⬜ | | |
-| Annex I | PID attribute schema | ⬜ | | |
-| Annex II | EAA attribute schema | ⬜ | | |
+| Art. 1 | Subject matter and scope | ✅ | | |
+| Art. 2 | Definitions | ✅ | | Key terms |
+| Art. 3 | Issuance of PID to wallet units | ✅ | | PID provider duties |
+| Art. 4 | Issuance of EAA to wallet units | ✅ | | EAA provider duties |
+| Art. 5 | Revocation of PID | ✅ | RP-TECH-013 | Validity status check |
+| Annex | PID attribute schemas | ✅ | RP-TECH-009 to RP-TECH-014 | Data format requirements |
 
 ### 2024/2979 - Integrity and Core Functionalities
 

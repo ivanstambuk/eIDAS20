@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T06:30:55.405Z",
+  "generatedAt": "2026-01-19T08:27:41.091Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -2389,6 +2389,208 @@
         "representation"
       ],
       "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-TECH-009",
+      "category": "technical",
+      "requirement": "Support ISO/IEC 18013-5 data format for PID",
+      "explanation": "Relying parties must be able to process Person Identification Data presented \nin the ISO/IEC 18013-5:2021 format (mDoc). This is one of two mandatory formats \nfor PID.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex",
+        "paragraph": "4"
+      },
+      "legalText": "Person identification data shall be issued in two formats:\n(1) the format specified in ISO/IEC 18013-5:2021;\n(2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Annex",
+        "paragraph": "4"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pid-proximity"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-010",
+      "category": "technical",
+      "requirement": "Support W3C Verifiable Credentials data format for PID",
+      "explanation": "Relying parties must be able to process Person Identification Data presented \nin the W3C Verifiable Credentials Data Model 1.1 format. This is one of two \nmandatory formats for PID.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex",
+        "paragraph": "4"
+      },
+      "legalText": "Person identification data shall be issued in two formats:\n(1) the format specified in ISO/IEC 18013-5:2021;\n(2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Annex",
+        "paragraph": "4"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-011",
+      "category": "technical",
+      "requirement": "Process mandatory PID attributes correctly",
+      "explanation": "Relying parties must correctly process the mandatory PID attributes: \nfamily_name, given_name, birth_date, birth_place, and nationality. \nThese are always present in valid PID credentials.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex",
+        "paragraph": "1"
+      },
+      "legalText": "Mandatory attributes: family_name (current last name(s)), given_name \n(current first name(s)), birth_date (day, month, year), birth_place \n(country/state/city of birth), nationality (alpha-2 country codes).",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Annex",
+        "paragraph": "1"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pid-proximity"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-012",
+      "category": "technical",
+      "requirement": "Handle optional PID attributes when present",
+      "explanation": "Relying parties should correctly process optional PID attributes when \npresented, including: resident_address, personal_administrative_number, \nportrait, family_name_birth, given_name_birth, sex, email_address, \nand mobile_phone_number.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex",
+        "paragraph": "1"
+      },
+      "legalText": "Optional attributes include: resident_address, resident_country, \nresident_state, resident_city, resident_postal_code, resident_street, \nresident_house_number, personal_administrative_number, portrait, \nfamily_name_birth, given_name_birth, sex, email_address, mobile_phone_number.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Annex",
+        "paragraph": "1"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pid-proximity"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-013",
+      "category": "technical",
+      "requirement": "Verify PID validity status before relying",
+      "explanation": "Relying parties must check the validity status of presented PID before \nrelying on it. The location of validity status information is included \nin the PID metadata (location_status attribute).",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Article 5",
+        "paragraph": "7"
+      },
+      "legalText": "Where providers of person identification data revoke person identification \ndata issued to wallet units, they shall make publicly available the validity \nstatus of person identification data they issue, in a privacy preserving \nmanner, and indicate the location of that information in the person \nidentification data.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Article 5",
+        "paragraph": "7"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pid-proximity"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-TECH-014",
+      "category": "technical",
+      "requirement": "Process legal person PID attributes",
+      "explanation": "When processing legal person identification data, relying parties must \nhandle the mandatory attributes (current legal name, unique identifier) \nand optional attributes (address, VAT, tax reference, LEI, EORI, etc.).",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex",
+        "paragraph": "2"
+      },
+      "legalText": "Legal person mandatory data: current legal name; unique identifier \nconstructed by the sending Member State. Optional: current address, \nVAT registration number, tax reference number, European unique identifier, \nLegal Entity Identifier (LEI), EORI, excise number.",
+      "legalSourceInfo": {
+        "type": "implementing",
+        "id": "2024/2977",
+        "celex": "32024R2977",
+        "title": "Commission Implementing Regulation (EU) 2024/2977",
+        "shortTitle": "PID and EAA Rules",
+        "description": "Rules for person identification data and electronic attestations of attributes",
+        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg_impl/2024/2977/oj",
+        "adoptionDate": "2024-11-28",
+        "binding": true,
+        "article": "Annex",
+        "paragraph": "2"
+      },
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "business-kyc"
+      ],
+      "appliesToAllUseCases": false
     }
   ],
   "requirementIndex": {
@@ -2430,7 +2632,12 @@
         "RP-INFO-002",
         "RP-INFO-003",
         "RP-INFO-004",
-        "RP-INFO-005"
+        "RP-INFO-005",
+        "RP-TECH-009",
+        "RP-TECH-010",
+        "RP-TECH-011",
+        "RP-TECH-012",
+        "RP-TECH-013"
       ],
       "pseudonym": [
         "RP-REG-001",
@@ -3044,15 +3251,24 @@
       "ledger": [
         "RP-ESIG-025",
         "RP-ESIG-026"
+      ],
+      "pid-proximity": [
+        "RP-TECH-009",
+        "RP-TECH-011",
+        "RP-TECH-012",
+        "RP-TECH-013"
+      ],
+      "business-kyc": [
+        "RP-TECH-014"
       ]
     }
   },
   "stats": {
-    "totalRequirements": 67,
+    "totalRequirements": 73,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 67
+      "relying_party": 73
     }
   }
 }
