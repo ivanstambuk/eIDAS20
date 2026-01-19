@@ -14,9 +14,10 @@
 #
 # AUDIT: 2026-01-19 - Second-pass deep verification complete. Fixed RP-AUTH-001 duplicate ID.
 # AUDIT: 2026-01-19 - Third-pass: Reviewed 2025/848 Art 3-10, 2024/2980, 2024/2981. Added RP-REG-013.
-# Schema version 13 - Added Art 8(2)(g) privacy policy URL requirement
+# AUDIT: 2026-01-20 - Added profileFilter annotations for sector-specific requirements
+# Schema version 14 - profileFilter: public_sector/private_sector on 7 requirements
 
-schemaVersion: 13
+schemaVersion: 14
 
 # Requirement categories for grouping in the UI
 categories:
@@ -581,6 +582,7 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
+    profileFilter: [public_sector]
     useCases:
       - pid-online
       - esignature
@@ -607,6 +609,7 @@ requirements:
     deadline: "2027-12-21"
     roles:
       - relying_party
+    profileFilter: [private_sector]
     useCases:
       - payment-auth
       - open-bank-account
@@ -632,6 +635,7 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
+    profileFilter: [private_sector]
     useCases:
       - pid-online
 
@@ -661,6 +665,7 @@ requirements:
     deadline: "2027-12-21"
     roles:
       - relying_party
+    profileFilter: [private_sector]
     useCases:
       - payment-auth
       - open-bank-account
@@ -749,6 +754,7 @@ requirements:
     deadline: "2016-07-01"
     roles:
       - relying_party
+    profileFilter: [public_sector]
     useCases:
       - esignature
       - pid-online
@@ -770,6 +776,7 @@ requirements:
     deadline: "2016-07-01"
     roles:
       - relying_party
+    profileFilter: [public_sector]
     useCases:
       - esignature
 
@@ -950,6 +957,7 @@ requirements:
     deadline: "2016-07-01"
     roles:
       - relying_party
+    profileFilter: [public_sector]
     useCases:
       - esignature
       - eseal
