@@ -358,28 +358,47 @@ def main():
         print(f"  Extracted {len(zf.namelist())} files to {xml_dir}")
     
     # Step 4: Find main XML file and all annex XML files, then convert
+    # Formex file naming convention:
+    #   - 000101.fmx.xml = Main document (articles, preamble, recitals)
+    #   - 000201.fmx.xml, 000301.fmx.xml, etc. = Additional annexes
+    #   - 000701.fmx.xml = Usually the annex with tables
+    #   - .doc.fmx.xml = Document metadata (skip)
+    #   - .toc.fmx.xml = Table of contents (skip)
     print("\nStep 4: Converting to Markdown...")
     main_xml = None
     annex_xmls = []
     
     for f in sorted(xml_dir.iterdir()):
         if f.suffix == '.xml':
-            if '.000' in f.stem:  # Main document (e.g., L_202402981EN.000101.fmx.xml)
-                main_xml = f
-            elif '.doc.' in f.stem or '.toc.' in f.stem:  # Skip metadata files
+            # Skip metadata files
+            if '.doc.' in f.stem or '.toc.' in f.stem:
                 continue
-            elif f.stem != main_xml.stem if main_xml else True:  # Annex files
+            # Main document is specifically 000101 (lowest number = main body)
+            elif '.000101.' in f.name:
+                main_xml = f
+            # Any other .000NNN. files are annexes (000201, 000301, 000701, etc.)
+            elif re.search(r'\.000[2-9]\d{2}\.', f.name):
                 annex_xmls.append(f)
     
     if not main_xml:
-        # Fallback: use first XML file
-        for f in xml_dir.iterdir():
-            if f.suffix == '.xml':
+        # Fallback: use first XML file with .000 in name
+        for f in sorted(xml_dir.iterdir()):
+            if f.suffix == '.xml' and '.000' in f.stem:
                 main_xml = f
                 break
     
     if main_xml:
         md_path = output_dir / f"{celex}.md"
+        
+        # Generate metadata header for proper CELEX badge display
+        doc_config = get_document_config(celex)
+        doc_type = "Implementing Act" if doc_config and doc_config.get('category') == 'implementing_act' else "Regulation"
+        
+        md_header = f"""> **CELEX:** {celex} | **Type:** {doc_type}
+> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex})
+> **Converted:** {datetime.now().strftime('%Y-%m-%d')} via Formex XML Pipeline v3.2
+
+"""
         
         # Convert main document
         md_content = convert_formex_v3(str(main_xml), None)  # Don't write yet
@@ -391,9 +410,12 @@ def main():
                 annex_content = convert_formex_v3(str(annex_xml), None)
                 if annex_content and annex_content.strip():
                     md_content += "\n\n" + annex_content
-                    print(f"  Converted annex: {annex_xml.name} ({len(annex_content):,} bytes)")
+                    print(f"  Merged annex: {annex_xml.name} ({len(annex_content):,} bytes)")
             except Exception as e:
                 print(f"  Warning: Failed to convert {annex_xml.name}: {e}")
+        
+        # Prepend header to content
+        md_content = md_header + md_content
         
         # Write combined content
         md_path.write_text(md_content, encoding='utf-8')
