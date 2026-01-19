@@ -56,7 +56,7 @@ requirements:
       the competent authority in the Member State where they are established. Registration is 
       a prerequisite for accepting wallet-based authentication.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5b"
       paragraph: "1"
     legalText: |
@@ -75,7 +75,7 @@ requirements:
       the wallet and which attributes (PID fields, EAAs) they intend to request. This enables 
       data minimization oversight.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5b"
       paragraph: "2"
     legalText: |
@@ -96,7 +96,7 @@ requirements:
       be presented to wallet units. The certificate authenticates the RP and contains the 
       registered attribute scope.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5b"
       paragraph: "3"
     legalText: |
@@ -116,7 +116,7 @@ requirements:
       scope, they must update their registration. Failure to maintain accurate registration 
       constitutes a compliance breach.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5b"
       paragraph: "4"
     legalText: |
@@ -344,7 +344,7 @@ requirements:
       Payment service providers must accept the EUDI Wallet as a means of performing 
       Strong Customer Authentication for payment transactions and account access.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5f"
       paragraph: "1"
     relatedRegulation:
@@ -370,7 +370,7 @@ requirements:
       linked to a specific amount and payee. The wallet must display these details 
       before the user signs.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5f"
       paragraph: "2"
     relatedRegulation:
@@ -393,7 +393,7 @@ requirements:
       The bank must structure payment details into a Transaction Object and transmit 
       it securely to the wallet. The wallet's signature must cover the hash of this object.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5f"
       paragraph: "3"
     legalText: |
@@ -413,7 +413,7 @@ requirements:
       Relying parties (PSPs) shall accept SCA Attestations issued by authorized 
       providers, which associate a Wallet Unit with a specific payer and account.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5f"
       paragraph: "4"
     legalText: |
@@ -438,7 +438,7 @@ requirements:
       Relying parties shall only request attributes that are necessary and proportionate 
       for the specific service. Over-requesting data violates data minimization principles.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5c"
       paragraph: "1"
     legalText: |
@@ -458,7 +458,7 @@ requirements:
       should not be forced to reveal more data than necessary (e.g., verifying "over 18" 
       without revealing exact birth date).
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5a"
       paragraph: "4(e)"
     legalText: |
@@ -477,7 +477,7 @@ requirements:
       When requesting credentials, the relying party must display their verified identity 
       and the purpose for which data is being requested, enabling informed user consent.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5c"
       paragraph: "2"
     legalText: |
@@ -496,7 +496,7 @@ requirements:
       Relying parties must not implement mechanisms to track or correlate wallet usage 
       across different transactions or services, preserving user privacy.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5a"
       paragraph: "4(f)"
     legalText: |
@@ -515,7 +515,7 @@ requirements:
       All personal data received from wallets must be processed in full compliance 
       with GDPR, including lawful basis, storage limitation, and data subject rights.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5c"
       paragraph: "3"
     relatedRegulation:
@@ -617,7 +617,7 @@ requirements:
       Relying parties should maintain alternative authentication methods in case of 
       EUDI Wallet ecosystem outages (e.g., national infrastructure failures).
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5f"
       paragraph: "5"
     legalText: |
@@ -635,7 +635,7 @@ requirements:
       Severe incidents affecting the reliability of EUDI Wallet interfaces must be 
       reported to the supervisory authority within mandated timeframes.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5d"
       paragraph: "1"
     legalText: |
@@ -654,7 +654,7 @@ requirements:
       Users must have access to support channels for issues related to wallet-based 
       authentication at the relying party.
     legalBasis:
-      regulation: "2024/1183"
+      regulation: "2014/910"
       article: "Article 5c"
       paragraph: "4"
     legalText: |

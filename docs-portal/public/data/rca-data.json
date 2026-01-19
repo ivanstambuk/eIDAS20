@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T04:20:49.637Z",
+  "generatedAt": "2026-01-19T04:37:46.777Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -412,23 +412,12 @@
       "requirement": "Register with competent supervisory authority before accepting EUDI Wallet",
       "explanation": "Relying parties intending to rely on European Digital Identity Wallets must register with \nthe competent authority in the Member State where they are established. Registration is \na prerequisite for accepting wallet-based authentication.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "1"
       },
       "legalText": "Relying parties intending to rely on European Digital Identity Wallets shall register \nwith the competent supervisory body in the Member State where they are established.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5b",
-        "paragraph": "1"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -462,23 +451,12 @@
       "requirement": "Declare intended service categories and requested attributes",
       "explanation": "During registration, relying parties must specify the services for which they will use \nthe wallet and which attributes (PID fields, EAAs) they intend to request. This enables \ndata minimization oversight.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "2"
       },
       "legalText": "The registration shall include information on the identity of the relying party, \nthe services for which the European Digital Identity Wallet will be used, and the \nperson identification data or electronic attestations of attributes that the relying \nparty intends to request.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5b",
-        "paragraph": "2"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -512,23 +490,12 @@
       "requirement": "Obtain and maintain Relying Party Access Certificate",
       "explanation": "After successful registration, relying parties receive an access certificate that must \nbe presented to wallet units. The certificate authenticates the RP and contains the \nregistered attribute scope.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "3"
       },
       "legalText": "Upon registration, the competent supervisory body shall issue a relying party access \ncertificate enabling the relying party to request person identification data and \nelectronic attestations of attributes from European Digital Identity Wallets.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5b",
-        "paragraph": "3"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -562,23 +529,12 @@
       "requirement": "Update registration when use case or attribute scope changes",
       "explanation": "If the relying party changes the services or requested attributes beyond the registered \nscope, they must update their registration. Failure to maintain accurate registration \nconstitutes a compliance breach.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5b",
         "paragraph": "4"
       },
       "legalText": "Relying parties shall notify the competent supervisory body of any significant changes \nto the information provided during registration.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5b",
-        "paragraph": "4"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1094,23 +1050,12 @@
       "requirement": "Support wallet-based Strong Customer Authentication (SCA)",
       "explanation": "Payment service providers must accept the EUDI Wallet as a means of performing \nStrong Customer Authentication for payment transactions and account access.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5f",
         "paragraph": "1"
       },
       "legalText": "Private relying parties providing services referred to in Article 97 of Directive \n(EU) 2015/2366 shall accept European Digital Identity Wallets for strong customer \nauthentication.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5f",
-        "paragraph": "1"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-12-21",
       "technicalSpec": "TS12",
       "relatedRegulation": {
@@ -1132,23 +1077,12 @@
       "requirement": "Implement Dynamic Linking for payment transactions",
       "explanation": "For remote payment transactions, the authentication code must be dynamically \nlinked to a specific amount and payee. The wallet must display these details \nbefore the user signs.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5f",
         "paragraph": "2"
       },
       "legalText": "For remote payment transactions, the authentication shall include elements which \ndynamically link the transaction to a specific amount and a specific payee.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5f",
-        "paragraph": "2"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-12-21",
       "technicalSpec": "TS12",
       "relatedRegulation": {
@@ -1169,23 +1103,12 @@
       "requirement": "Transmit Transaction Object securely to wallet",
       "explanation": "The bank must structure payment details into a Transaction Object and transmit \nit securely to the wallet. The wallet's signature must cover the hash of this object.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5f",
         "paragraph": "3"
       },
       "legalText": "The authentication code generated shall be specific to the amount of the transaction \nand the payee agreed to by the payer.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5f",
-        "paragraph": "3"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-12-21",
       "technicalSpec": "TS12",
       "applicableRoles": [
@@ -1202,23 +1125,12 @@
       "requirement": "Accept SCA Attestation from wallet",
       "explanation": "Relying parties (PSPs) shall accept SCA Attestations issued by authorized \nproviders, which associate a Wallet Unit with a specific payer and account.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5f",
         "paragraph": "4"
       },
       "legalText": "Payment service providers shall accept electronic attestations of attributes \nattesting to the association between a wallet unit and a payment account or \npayment instrument.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5f",
-        "paragraph": "4"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-12-21",
       "technicalSpec": "TS12",
       "applicableRoles": [
@@ -1235,23 +1147,12 @@
       "requirement": "Request only necessary and proportionate attributes",
       "explanation": "Relying parties shall only request attributes that are necessary and proportionate \nfor the specific service. Over-requesting data violates data minimization principles.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5c",
         "paragraph": "1"
       },
       "legalText": "Relying parties shall request from users only those person identification data and \nelectronic attestations of attributes that are necessary and proportionate for the \nintended service.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5c",
-        "paragraph": "1"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1285,23 +1186,12 @@
       "requirement": "Support selective disclosure of attributes",
       "explanation": "Systems must be capable of processing selectively disclosed attributes. Users \nshould not be forced to reveal more data than necessary (e.g., verifying \"over 18\" \nwithout revealing exact birth date).",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "4(e)"
       },
       "legalText": "The European Digital Identity Wallet shall enable the user to selectively disclose \nto relying parties person identification data and electronic attestations of \nattributes.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5a",
-        "paragraph": "4(e)"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1335,23 +1225,12 @@
       "requirement": "Display registered identity and intended use to wallet user",
       "explanation": "When requesting credentials, the relying party must display their verified identity \nand the purpose for which data is being requested, enabling informed user consent.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5c",
         "paragraph": "2"
       },
       "legalText": "Relying parties shall provide, to users and to the European Digital Identity Wallet, \ninformation about their identity and the purpose for which the person identification \ndata or electronic attestations of attributes are requested.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5c",
-        "paragraph": "2"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1385,23 +1264,12 @@
       "requirement": "Do not track wallet usage across services (unlinkability)",
       "explanation": "Relying parties must not implement mechanisms to track or correlate wallet usage \nacross different transactions or services, preserving user privacy.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "4(f)"
       },
       "legalText": "The European Digital Identity Wallet shall be designed and implemented in such a \nway that it prevents the tracking of users across different relying parties unless \nthe user has given explicit consent.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5a",
-        "paragraph": "4(f)"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1435,23 +1303,12 @@
       "requirement": "Process data in accordance with GDPR",
       "explanation": "All personal data received from wallets must be processed in full compliance \nwith GDPR, including lawful basis, storage limitation, and data subject rights.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5c",
         "paragraph": "3"
       },
       "legalText": "The processing of personal data by relying parties shall comply with Regulation \n(EU) 2016/679.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5c",
-        "paragraph": "3"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "relatedRegulation": {
         "regulation": "GDPR",
@@ -1693,23 +1550,12 @@
       "requirement": "Maintain fallback authentication mechanisms",
       "explanation": "Relying parties should maintain alternative authentication methods in case of \nEUDI Wallet ecosystem outages (e.g., national infrastructure failures).",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5f",
         "paragraph": "5"
       },
       "legalText": "The acceptance requirement shall not prevent relying parties from maintaining \nalternative means of online identification.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5f",
-        "paragraph": "5"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1743,23 +1589,12 @@
       "requirement": "Report security incidents to supervisory authority",
       "explanation": "Severe incidents affecting the reliability of EUDI Wallet interfaces must be \nreported to the supervisory authority within mandated timeframes.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5d",
         "paragraph": "1"
       },
       "legalText": "Relying parties shall notify the competent supervisory body of any breach or \ncompromise of the security of their systems that affects the reliability of the \nacceptance of European Digital Identity Wallets.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5d",
-        "paragraph": "1"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
@@ -1793,23 +1628,12 @@
       "requirement": "Provide user support for wallet-based authentication",
       "explanation": "Users must have access to support channels for issues related to wallet-based \nauthentication at the relying party.",
       "legalBasis": {
-        "regulation": "2024/1183",
+        "regulation": "2014/910",
         "article": "Article 5c",
         "paragraph": "4"
       },
       "legalText": "Relying parties shall ensure that appropriate support is available to users for \nthe use of European Digital Identity Wallets in relation to their services.",
-      "legalSourceInfo": {
-        "type": "primary",
-        "id": "2024/1183",
-        "celex": "32024R1183",
-        "title": "Regulation (EU) 2024/1183 (eIDAS 2.0)",
-        "shortTitle": "eIDAS 2.0",
-        "eurLexUrl": "https://eur-lex.europa.eu/eli/reg/2024/1183/oj",
-        "entryIntoForce": "2024-05-20",
-        "binding": true,
-        "article": "Article 5c",
-        "paragraph": "4"
-      },
+      "legalSourceInfo": null,
       "deadline": "2027-11-21",
       "applicableRoles": [
         "relying_party"
