@@ -5,7 +5,7 @@
  * Users select role + use cases, then view/export applicable requirements.
  */
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { exportToExcel, exportToMarkdown } from '../utils/rca';
 import './ComplianceAssessment.css';
 
@@ -30,6 +30,180 @@ function useRCAData() {
     }, []);
 
     return { data, loading, error };
+}
+
+// Load regulations index for metadata (name, status, date)
+function useRegulationsIndex() {
+    const [index, setIndex] = useState({});
+
+    useEffect(() => {
+        fetch(`${import.meta.env.BASE_URL}data/regulations-index.json`)
+            .then(res => res.json())
+            .then(data => {
+                // Create lookup by regulation ID (e.g., "2024/1183" -> metadata)
+                const lookup = {};
+                data.forEach(reg => {
+                    // Match format like "2024/1183" to slug "2024-1183"
+                    const idFromSlug = reg.slug.replace('-', '/');
+                    lookup[idFromSlug] = reg;
+                    lookup[reg.slug] = reg;
+                    // Also add by celex
+                    if (reg.celex) lookup[reg.celex] = reg;
+                });
+                setIndex(lookup);
+            })
+            .catch(console.error);
+    }, []);
+
+    return index;
+}
+
+// ============================================================================
+// LegalBasisLink Component
+// Shows popover on hover, opens in new tab on click
+// ============================================================================
+
+function LegalBasisLink({ legalBasis, regulationsIndex }) {
+    const [showPopover, setShowPopover] = useState(false);
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+    const triggerRef = useRef(null);
+    const popoverRef = useRef(null);
+    const hideTimeoutRef = useRef(null);
+
+    // Get regulation metadata
+    const regId = legalBasis?.regulation;
+    const regMeta = regulationsIndex[regId] || regulationsIndex[regId?.replace('/', '-')];
+
+    // Build URL to article
+    const buildUrl = () => {
+        if (!regMeta) return null;
+        const baseUrl = `${import.meta.env.BASE_URL}#`;
+        const docPath = regMeta.type === 'implementing-act'
+            ? `/implementing-acts/${regMeta.slug}`
+            : `/regulation/${regMeta.slug}`;
+
+        // Try to build section anchor from article
+        let section = '';
+        if (legalBasis?.article) {
+            // Convert "Article 5b" -> "article-5b"
+            section = `?section=${legalBasis.article.toLowerCase().replace(/\s+/g, '-')}`;
+        }
+
+        return `${baseUrl}${docPath}${section}`;
+    };
+
+    const url = buildUrl();
+
+    const handleMouseEnter = () => {
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+        }
+
+        // Calculate position
+        if (triggerRef.current) {
+            const rect = triggerRef.current.getBoundingClientRect();
+            setPopoverPosition({
+                top: rect.bottom + window.scrollY + 8,
+                left: rect.left + window.scrollX
+            });
+        }
+        setShowPopover(true);
+    };
+
+    const handleMouseLeave = () => {
+        hideTimeoutRef.current = setTimeout(() => {
+            setShowPopover(false);
+        }, 150);
+    };
+
+    const handlePopoverMouseEnter = () => {
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+        }
+    };
+
+    const handlePopoverMouseLeave = () => {
+        setShowPopover(false);
+    };
+
+    // Determine status display
+    const getStatusBadge = () => {
+        if (!regMeta) return null;
+        const legalType = regMeta.legalType || regMeta.type;
+
+        switch (legalType) {
+            case 'regulation':
+                return <span className="rca-popover-badge in-force">In Force</span>;
+            case 'implementing_regulation':
+                return <span className="rca-popover-badge in-force">In Force</span>;
+            case 'recommendation':
+                return <span className="rca-popover-badge guidance">Guidance</span>;
+            case 'decision':
+                return <span className="rca-popover-badge decision">Decision</span>;
+            default:
+                return <span className="rca-popover-badge">{legalType}</span>;
+        }
+    };
+
+    return (
+        <>
+            <a
+                ref={triggerRef}
+                href={url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rca-legal-link"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={e => {
+                    if (!url) e.preventDefault();
+                }}
+            >
+                <span className="rca-legal-ref">
+                    {legalBasis?.article}
+                    {legalBasis?.paragraph && `, ${legalBasis.paragraph}`}
+                </span>
+                <span className="rca-legal-reg">
+                    Reg. {legalBasis?.regulation}
+                </span>
+            </a>
+
+            {showPopover && regMeta && (
+                <div
+                    ref={popoverRef}
+                    className="rca-legal-popover"
+                    style={{
+                        position: 'fixed',
+                        top: `${popoverPosition.top}px`,
+                        left: `${popoverPosition.left}px`,
+                    }}
+                    onMouseEnter={handlePopoverMouseEnter}
+                    onMouseLeave={handlePopoverMouseLeave}
+                >
+                    <div className="rca-popover-header">
+                        {getStatusBadge()}
+                        <span className="rca-popover-type">
+                            {regMeta.legalType === 'implementing_regulation' ? 'Implementing Regulation' :
+                                regMeta.legalType === 'regulation' ? 'Regulation' :
+                                    regMeta.legalType}
+                        </span>
+                    </div>
+                    <div className="rca-popover-title">
+                        {regMeta.shortTitle || regMeta.title}
+                    </div>
+                    <div className="rca-popover-meta">
+                        <span>📅 {regMeta.date}</span>
+                        <span>📄 CELEX: {regMeta.celex}</span>
+                    </div>
+                    {url && (
+                        <div className="rca-popover-action">
+                            Opens in new tab →
+                        </div>
+                    )}
+                </div>
+            )}
+        </>
+    );
 }
 
 // ============================================================================
@@ -187,7 +361,7 @@ function UseCaseSelector({
     );
 }
 
-function RequirementTable({ requirements, requirementCategories, onStatusChange, assessments }) {
+function RequirementTable({ requirements, requirementCategories, onStatusChange, assessments, regulationsIndex }) {
     const [filterCategory, setFilterCategory] = useState('all');
     const [filterStatus, setFilterStatus] = useState('all');
 
@@ -286,13 +460,10 @@ function RequirementTable({ requirements, requirementCategories, onStatusChange,
                                                     )}
                                                 </td>
                                                 <td className="col-legal">
-                                                    <span className="rca-legal-ref">
-                                                        {req.legalBasis?.article}
-                                                        {req.legalBasis?.paragraph && `, ${req.legalBasis.paragraph}`}
-                                                    </span>
-                                                    <span className="rca-legal-reg">
-                                                        Reg. {req.legalBasis?.regulation}
-                                                    </span>
+                                                    <LegalBasisLink
+                                                        legalBasis={req.legalBasis}
+                                                        regulationsIndex={regulationsIndex}
+                                                    />
                                                 </td>
                                                 <td className="col-status">
                                                     <select
@@ -325,6 +496,7 @@ function RequirementTable({ requirements, requirementCategories, onStatusChange,
 
 export default function ComplianceAssessment() {
     const { data, loading, error } = useRCAData();
+    const regulationsIndex = useRegulationsIndex();
 
     // Selection state
     const [selectedRole, setSelectedRole] = useState('relying_party');
@@ -614,6 +786,7 @@ export default function ComplianceAssessment() {
                             requirementCategories={data.requirementCategories}
                             onStatusChange={handleStatusChange}
                             assessments={assessments}
+                            regulationsIndex={regulationsIndex}
                         />
                     </section>
                 )}
