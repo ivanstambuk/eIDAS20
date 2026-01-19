@@ -82,10 +82,9 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                         textDecoration: 'none'
                     }}
                 >
-                    <span style={{ color: 'var(--accent-primary)' }}>
-                        — {sources[0].documentTitle}
+                    <span>
+                        — <span style={{ color: 'var(--accent-primary)' }}>{sources[0].documentTitle}</span>, Article {sources[0].articleNumber} →
                     </span>
-                    <span>, Article {sources[0].articleNumber} →</span>
                 </Link>
             ) : (
                 /* Multiple sources: accordion */
