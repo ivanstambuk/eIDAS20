@@ -1,11 +1,11 @@
 {
-  "documentCount": 35,
+  "documentCount": 34,
   "regulationCount": 5,
-  "implementingActCount": 30,
-  "totalWordCount": 179619,
+  "implementingActCount": 29,
+  "totalWordCount": 179284,
   "regulationWordCount": 80735,
-  "implementingActWordCount": 98884,
-  "lastBuildTime": "2026-01-19T04:56:30.894Z",
+  "implementingActWordCount": 98549,
+  "lastBuildTime": "2026-01-19T21:54:07.863Z",
   "buildDate": "Jan 19, 2026",
   "categories": {
     "regulations": {
@@ -20,8 +20,8 @@
       ]
     },
     "implementingActs": {
-      "count": 30,
-      "wordCount": 98884
+      "count": 29,
+      "wordCount": 98549
     }
   }
 }
