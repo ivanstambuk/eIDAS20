@@ -82,11 +82,18 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             ? `/implementing-acts/${regMeta.slug}`
             : `/regulation/${regMeta.slug}`;
 
-        // Try to build section anchor from article
+        // Try to build section anchor from article + paragraph
         let section = '';
         if (legalBasis?.article) {
             // Convert "Article 5b" -> "article-5b"
-            section = `?section=${legalBasis.article.toLowerCase().replace(/\s+/g, '-')}`;
+            let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
+
+            // Append paragraph if present: "9" -> "-para-9", "1-2" -> "-para-1-2"
+            if (legalBasis?.paragraph) {
+                sectionId += `-para-${legalBasis.paragraph}`;
+            }
+
+            section = `?section=${sectionId}`;
         }
 
         return `${baseUrl}${docPath}${section}`;
