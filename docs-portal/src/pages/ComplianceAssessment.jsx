@@ -99,12 +99,19 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             clearTimeout(hideTimeoutRef.current);
         }
 
-        // Calculate position
+        // Calculate position using viewport coordinates (for position: fixed)
         if (triggerRef.current) {
             const rect = triggerRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const popoverHeight = 150; // Approximate height
+
+            // Check if popover would go off bottom of viewport
+            const spaceBelow = viewportHeight - rect.bottom;
+            const showAbove = spaceBelow < popoverHeight + 20;
+
             setPopoverPosition({
-                top: rect.bottom + window.scrollY + 8,
-                left: rect.left + window.scrollX
+                top: showAbove ? rect.top - popoverHeight - 8 : rect.bottom + 8,
+                left: Math.max(8, Math.min(rect.left, window.innerWidth - 320))
             });
         }
         setShowPopover(true);
