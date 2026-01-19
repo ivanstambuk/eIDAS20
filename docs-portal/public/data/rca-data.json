@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T08:30:30.511Z",
+  "generatedAt": "2026-01-19T08:34:38.204Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -397,6 +397,12 @@
       "label": "Data Protection & Privacy",
       "order": 5,
       "icon": "🛡️"
+    },
+    {
+      "id": "security",
+      "label": "Security",
+      "order": 6,
+      "icon": "🔒"
     },
     {
       "id": "operational",
@@ -2794,6 +2800,123 @@
         "esignature"
       ],
       "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-SEC-001",
+      "category": "security",
+      "requirement": "Receive and act on wallet security breach notifications",
+      "explanation": "Registered relying parties will receive notifications within 24 hours when \nwallet solutions they depend on experience security breaches leading to \nsuspension. RPs should have processes to handle such notifications.",
+      "legalBasis": {
+        "regulation": "2025/847",
+        "article": "Article 5",
+        "paragraph": "1(d)"
+      },
+      "legalText": "Information in a clear, comprehensive and easily accessible manner about the \nsuspension of the provision and the use of a wallet solution shall be provided, \nwithout undue delay and no later than 24 hours after the suspension of the \nprovision and the use of the wallet solution, to:\n(d) the wallet-relying parties registered in accordance with Article 5b of \nRegulation (EU) No 910/2014.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-SEC-002",
+      "category": "security",
+      "requirement": "Receive wallet re-establishment notifications",
+      "explanation": "When a previously suspended wallet solution is re-established after remediation, \nrelying parties will receive notifications. RPs should update their systems \nto resume accepting credentials from the re-established wallet.",
+      "legalBasis": {
+        "regulation": "2025/847",
+        "article": "Article 7",
+        "paragraph": "1"
+      },
+      "legalText": "Where a Member State re-establishes a wallet solution, that Member State shall \nensure that information about that fact is provided without undue delay to all \nparties having received information on the suspension of the provision and the \nuse of that wallet solution in accordance with Article 5(1).",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
+    },
+    {
+      "id": "RP-SEC-003",
+      "category": "security",
+      "requirement": "Receive wallet withdrawal notifications",
+      "explanation": "When wallet solutions are withdrawn (either due to severity or failure to \nremedy within 3 months), registered RPs receive notifications within 24 hours. \nRPs must stop accepting credentials from withdrawn wallet solutions.",
+      "legalBasis": {
+        "regulation": "2025/847",
+        "article": "Article 9",
+        "paragraph": "1(d)"
+      },
+      "legalText": "Information in a clear, comprehensive and easily accessible manner about the \nwithdrawal of a wallet solution shall be provided, without undue delay and no \nlater than 24 hours after the withdrawal of the wallet solution, to:\n(d) the wallet-relying parties registered in accordance with Article 5b of \nRegulation (EU) No 910/2014.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true
     }
   ],
   "requirementIndex": {
@@ -2843,7 +2966,10 @@
         "RP-TECH-013",
         "RP-TECH-015",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "pseudonym": [
         "RP-REG-001",
@@ -2881,7 +3007,10 @@
         "RP-INFO-005",
         "RP-TECH-016",
         "RP-TECH-017",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "esignature": [
         "RP-REG-001",
@@ -2939,7 +3068,10 @@
         "RP-INFO-005",
         "RP-TECH-016",
         "RP-TECH-018",
-        "RP-ESIG-027"
+        "RP-ESIG-027",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "payment-auth": [
         "RP-REG-001",
@@ -2973,7 +3105,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "open-bank-account": [
         "RP-REG-001",
@@ -3007,7 +3142,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "mdl": [
         "RP-REG-001",
@@ -3039,7 +3177,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "dtc": [
         "RP-REG-001",
@@ -3071,7 +3212,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "epc": [
         "RP-REG-001",
@@ -3103,7 +3247,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "vrc": [
         "RP-REG-001",
@@ -3135,7 +3282,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "disability-card": [
         "RP-REG-001",
@@ -3167,7 +3317,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "eprescription": [
         "RP-REG-001",
@@ -3199,7 +3352,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "ehic": [
         "RP-REG-001",
@@ -3231,7 +3387,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "public-warnings": [
         "RP-REG-001",
@@ -3263,7 +3422,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "age-verification": [
         "RP-REG-001",
@@ -3299,7 +3461,10 @@
         "RP-INFO-005",
         "RP-TECH-016",
         "RP-TECH-017",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "ticket-pass": [
         "RP-REG-001",
@@ -3331,7 +3496,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "edu-credentials": [
         "RP-REG-001",
@@ -3363,7 +3531,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "student-card": [
         "RP-REG-001",
@@ -3395,7 +3566,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "proximity-id": [
         "RP-REG-001",
@@ -3427,7 +3601,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "representation": [
         "RP-REG-001",
@@ -3459,7 +3636,10 @@
         "RP-INFO-004",
         "RP-INFO-005",
         "RP-TECH-016",
-        "RP-TECH-018"
+        "RP-TECH-018",
+        "RP-SEC-001",
+        "RP-SEC-002",
+        "RP-SEC-003"
       ],
       "eseal": [
         "RP-ESIG-009",
@@ -3510,11 +3690,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 78,
+    "totalRequirements": 81,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 78
+      "relying_party": 81
     }
   }
 }

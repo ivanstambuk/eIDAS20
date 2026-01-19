@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 78
-**Schema Version:** 8
+**Current Requirements Count:** 81
+**Schema Version:** 9
 
 ---
 
@@ -249,13 +249,13 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter and scope | ⬜ | | |
+| Art. 1 | Subject matter and scope | ✅ | | |
 | Art. 2 | Definitions | ✅ | | wallet-relying party defined |
 | Art. 3 | General provisions | ✅ | RP-TECH-001 to RP-TECH-008 | Authentication requirements |
-| Art. 4 | Issuance of PID and EAA | ⬜ | | Issuer duties |
-| Art. 5 | Presentation of attributes | ✅ | RP-TECH-003 | Protocol requirements |
+| Art. 4 | Issuance of PID and EAA | ✅ | | Issuer duties |
+| Art. 5 | Presentation of attributes | ✅ | RP-TECH-002, RP-TECH-003 | Protocol requirements |
 | Art. 6 | Data erasure requests | ✅ | RP-DP-005 | GDPR Art 17 |
-| Art. 7 | Reporting to supervisory authorities | ⬜ | | User reporting mechanism |
+| Art. 7 | Reporting to supervisory authorities | ✅ | | User reporting mechanism |
 | Annex | Protocol standards | ✅ | | ISO 18013-5, 18013-7 |
 
 ---
@@ -272,7 +272,17 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| All | Full regulation | ⬜ | | Incident response |
+| Art. 1 | Subject matter | ✅ | | |
+| Art. 2 | Definitions | ✅ | | |
+| Art. 3 | Establishing a security breach | ✅ | | Member State duties |
+| Art. 4 | Suspension measures | ✅ | | Member State duties |
+| Art. 5 | Information about suspensions | ✅ | RP-SEC-001 | RPs receive notifications |
+| Art. 6 | Re-establishment | ✅ | | Member State duties |
+| Art. 7 | Information about re-establishment | ✅ | RP-SEC-002 | RPs receive notifications |
+| Art. 8 | Withdrawal of wallets | ✅ | | Member State duties |
+| Art. 9 | Information about withdrawal | ✅ | RP-SEC-003 | RPs receive notifications |
+| Art. 10 | Information system | ✅ | | CIRAS system |
+| Annex I | Assessment criteria | ✅ | | |
 
 ### 2025/848 - Relying Party Registration
 

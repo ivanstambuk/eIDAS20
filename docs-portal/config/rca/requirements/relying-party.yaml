@@ -13,9 +13,9 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 8 - Added 2024/2979 Integrity & Core Functions requirements
+# Schema version 9 - Added 2025/847 Security Breach Response + 2024/2982 complete
 
-schemaVersion: 8
+schemaVersion: 9
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1829,3 +1829,77 @@ requirements:
       - relying_party
     useCases:
       - esignature
+
+  # ============================================================================
+  # SECURITY BREACH RESPONSE
+  # Source: Implementing Regulation (EU) 2025/847 - Security Breach Response
+  # ============================================================================
+
+  - id: RP-SEC-001
+    category: security
+    bindingType: mandatory
+    requirement: "Receive and act on wallet security breach notifications"
+    explanation: |
+      Registered relying parties will receive notifications within 24 hours when 
+      wallet solutions they depend on experience security breaches leading to 
+      suspension. RPs should have processes to handle such notifications.
+    legalBasis:
+      regulation: "2025/847"
+      article: "Article 5"
+      paragraph: "1(d)"
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      suspension of the provision and the use of a wallet solution shall be provided, 
+      without undue delay and no later than 24 hours after the suspension of the 
+      provision and the use of the wallet solution, to:
+      (d) the wallet-relying parties registered in accordance with Article 5b of 
+      Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-SEC-002
+    category: security
+    bindingType: mandatory
+    requirement: "Receive wallet re-establishment notifications"
+    explanation: |
+      When a previously suspended wallet solution is re-established after remediation, 
+      relying parties will receive notifications. RPs should update their systems 
+      to resume accepting credentials from the re-established wallet.
+    legalBasis:
+      regulation: "2025/847"
+      article: "Article 7"
+      paragraph: "1"
+    legalText: |
+      Where a Member State re-establishes a wallet solution, that Member State shall 
+      ensure that information about that fact is provided without undue delay to all 
+      parties having received information on the suspension of the provision and the 
+      use of that wallet solution in accordance with Article 5(1).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+
+  - id: RP-SEC-003
+    category: security
+    bindingType: mandatory
+    requirement: "Receive wallet withdrawal notifications"
+    explanation: |
+      When wallet solutions are withdrawn (either due to severity or failure to 
+      remedy within 3 months), registered RPs receive notifications within 24 hours. 
+      RPs must stop accepting credentials from withdrawn wallet solutions.
+    legalBasis:
+      regulation: "2025/847"
+      article: "Article 9"
+      paragraph: "1(d)"
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      withdrawal of a wallet solution shall be provided, without undue delay and no 
+      later than 24 hours after the withdrawal of the wallet solution, to:
+      (d) the wallet-relying parties registered in accordance with Article 5b of 
+      Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
