@@ -50,7 +50,6 @@ function App() {
               <Route path="by-role" element={<PlaceholderPage title="Browse by Role" />} />
               <Route path="cross-references" element={<PlaceholderPage title="Cross-References" />} />
               <Route path="ai-chat" element={<PlaceholderPage title="AI Assistant" />} />
-              <Route path="export" element={<PlaceholderPage title="Export" />} />
 
               {/* 404 */}
               <Route path="*" element={<NotFoundPage />} />
