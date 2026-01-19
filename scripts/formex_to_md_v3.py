@@ -1455,8 +1455,14 @@ def convert_formex_to_md(xml_path, output_path=None):
                         md_lines.append(text)
                         md_lines.append("")
                 
-                # Process lists with nesting
+                # Process lists with nesting (direct children or inside P elements)
                 for list_elem in contents.findall('LIST'):
+                    list_lines = process_list_nested(list_elem, base_indent="", level=0)
+                    md_lines.extend(list_lines)
+                    if list_lines:
+                        md_lines.append("")
+                # Also process LIST elements inside P elements (CONS.ANNEX structure)
+                for list_elem in contents.findall('P/LIST'):
                     list_lines = process_list_nested(list_elem, base_indent="", level=0)
                     md_lines.extend(list_lines)
                     if list_lines:
