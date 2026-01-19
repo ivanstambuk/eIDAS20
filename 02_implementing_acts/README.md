@@ -18,7 +18,6 @@ All converted with Formex v2 pipeline.
 | CELEX | Regulation | Title | Status |
 |-------|------------|-------|--------|
 | 32024R2977 | 2024/2977 | Person identification data and electronic attestations of attributes | ✅ Formex v2 |
-| 32024R2978 | 2024/2978 | Trusted lists publication | ✅ Formex v2 |
 | 32024R2979 | 2024/2979 | Integrity and core functionalities of EUDI Wallets | ✅ Formex v2 |
 | 32024R2980 | 2024/2980 | Notifications to the Commission | ✅ Formex v2 |
 | 32024R2981 | 2024/2981 | Certification of EUDI Wallets | ✅ Formex v2 |
@@ -83,7 +82,6 @@ All converted with Formex v2 pipeline.
 ```
 02_implementing_acts/
 ├── 2024_2977_PID_and_EAA/              # Person ID & Attestations
-├── 2024_2978_TSP_List_Publication/     # Trust Service Provider Lists
 ├── 2024_2979_Integrity_Core_Functions/ # Wallet Integrity
 ├── 2024_2980_Notifications/            # Commission Notifications
 ├── 2024_2981_Certification/            # Wallet Certification
@@ -139,7 +137,6 @@ Each directory contains:
 - **2025/1566**: Identity verification for qualified certificates
 
 ### Trust Services
-- **2024/2978**: Trusted lists publication format
 - **2025/1567**: Remote qualified creation devices
 - **2025/1570**: Certified creation devices notification
 - **2025/1571**: Annual reports by supervisory bodies
@@ -177,4 +174,4 @@ https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}
 ---
 
 *Last updated: 2026-01-13*
-*Total: 30 implementing acts (all adopted acts as of January 2026)*
+*Total: 29 implementing acts (all adopted acts as of January 2026)*
