@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T05:33:36.953Z",
+  "generatedAt": "2026-01-19T05:53:41.811Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -387,15 +387,21 @@
       "icon": "🔐"
     },
     {
+      "id": "esignature",
+      "label": "eSignature & Trust Services",
+      "order": 4,
+      "icon": "✍️"
+    },
+    {
       "id": "data-protection",
       "label": "Data Protection & Privacy",
-      "order": 4,
+      "order": 5,
       "icon": "🛡️"
     },
     {
       "id": "operational",
       "label": "Operational Requirements",
-      "order": 6,
+      "order": 7,
       "icon": "📋"
     }
   ],
@@ -1023,6 +1029,175 @@
       "appliesToAllUseCases": false
     },
     {
+      "id": "RP-ESIG-001",
+      "category": "esignature",
+      "requirement": "Accept electronic signatures regardless of electronic form",
+      "explanation": "Relying parties cannot deny legal effect or admissibility of an electronic signature \nsolely because it is in electronic form or doesn't meet qualified signature requirements.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 25",
+        "paragraph": "1"
+      },
+      "legalText": "An electronic signature shall not be denied legal effect and admissibility as evidence \nin legal proceedings solely on the grounds that it is in an electronic form or that it \ndoes not meet the requirements for qualified electronic signatures.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-002",
+      "category": "esignature",
+      "requirement": "Recognize qualified electronic signatures as equivalent to handwritten",
+      "explanation": "Qualified electronic signatures have the equivalent legal effect of a handwritten \nsignature and must be treated as such by relying parties.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 25",
+        "paragraph": "2"
+      },
+      "legalText": "A qualified electronic signature shall have the equivalent legal effect of a \nhandwritten signature.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-003",
+      "category": "esignature",
+      "requirement": "Recognize qualified signatures from all Member States",
+      "explanation": "Cross-border recognition is mandatory. A qualified electronic signature issued in \nany EU Member State must be recognized in all other Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 25",
+        "paragraph": "3"
+      },
+      "legalText": "A qualified electronic signature based on a qualified certificate issued in one \nMember State shall be recognised as a qualified electronic signature in all other \nMember States.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-004",
+      "category": "esignature",
+      "requirement": "Public sector: Accept advanced signatures in defined formats",
+      "explanation": "Public sector relying parties requiring advanced electronic signatures must accept \nthem in the formats defined by Commission implementing acts, ensuring interoperability.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 27",
+        "paragraph": "1"
+      },
+      "legalText": "If a Member State requires an advanced electronic signature to use an online service \noffered by, or on behalf of, a public sector body, that Member State shall recognise \nadvanced electronic signatures, advanced electronic signatures based on a qualified \ncertificate for electronic signatures, and qualified electronic signatures in at least \nthe formats or using methods defined in the implementing acts referred to in paragraph 5.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature",
+        "pid-online"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-005",
+      "category": "esignature",
+      "requirement": "Public sector: Not require higher than qualified signature for cross-border",
+      "explanation": "For cross-border services, public sector bodies cannot require a security level \nhigher than qualified electronic signature, ensuring accessibility across Member States.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 27",
+        "paragraph": "3"
+      },
+      "legalText": "Member States shall not request for cross-border use in an online service offered by \na public sector body an electronic signature at a higher security level than the \nqualified electronic signature.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-006",
+      "category": "esignature",
+      "requirement": "Validate qualified electronic signatures correctly",
+      "explanation": "Relying parties should use a validation process that confirms the qualified signature's \nvalidity, including checking certificates, revocation status, time of signing, and \ndata integrity.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 32",
+        "paragraph": "1"
+      },
+      "legalText": "The process for the validation of a qualified electronic signature shall confirm \nthe validity of a qualified electronic signature provided that: (a) the certificate \nthat supports the signature was, at the time of signing, a qualified certificate \n[...]; (b) the qualified certificate was issued by a qualified trust service provider \nand was valid at the time of signing; (c) the signature validation data corresponds \nto the data provided to the relying party; (d) the unique set of data representing \nthe signatory in the certificate is correctly provided to the relying party; \n(e) the use of any pseudonym is clearly indicated to the relying party [...].",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-007",
+      "category": "esignature",
+      "requirement": "Validate advanced signatures based on qualified certificates",
+      "explanation": "When receiving advanced electronic signatures based on qualified certificates, relying \nparties should ensure proper validation according to the defined process.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 32a",
+        "paragraph": "1"
+      },
+      "legalText": "The process for the validation of an advanced electronic signature based on a \nqualified certificate shall confirm the validity of an advanced electronic signature \nbased on a qualified certificate, provided that: (a) the certificate that supports \nthe signature was, at the time of signing, a qualified certificate [...]; \n(c) the signature validation data corresponds to the data provided to the relying party; \n(d) the unique set of data representing the signatory in the certificate is correctly \nprovided to the relying party; (e) the use of any pseudonym is clearly indicated to \nthe relying party [...].",
+      "legalSourceInfo": null,
+      "deadline": "2025-05-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
+      "id": "RP-ESIG-008",
+      "category": "esignature",
+      "requirement": "Consider using qualified validation services",
+      "explanation": "Relying parties may use qualified validation services to validate qualified electronic \nsignatures, receiving automated, reliable validation results.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 33",
+        "paragraph": "1"
+      },
+      "legalText": "A qualified validation service for qualified electronic signatures may only be \nprovided by a qualified trust service provider who: (a) provides validation in \ncompliance with Article 32(1); and (b) allows relying parties to receive the result \nof the validation process in an automated manner, which is reliable, efficient and \nbears the advanced electronic signature or advanced electronic seal of the provider \nof the qualified validation service.",
+      "legalSourceInfo": null,
+      "deadline": "2016-07-01",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "esignature"
+      ],
+      "appliesToAllUseCases": false
+    },
+    {
       "id": "RP-DP-001",
       "category": "data-protection",
       "requirement": "Request only necessary and proportionate attributes",
@@ -1323,6 +1498,7 @@
         "RP-ACCEPT-001",
         "RP-ACCEPT-002",
         "RP-ACCEPT-003",
+        "RP-ESIG-004",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -1367,6 +1543,14 @@
         "RP-TECH-007",
         "RP-TECH-008",
         "RP-ACCEPT-001",
+        "RP-ESIG-001",
+        "RP-ESIG-002",
+        "RP-ESIG-003",
+        "RP-ESIG-004",
+        "RP-ESIG-005",
+        "RP-ESIG-006",
+        "RP-ESIG-007",
+        "RP-ESIG-008",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -1688,11 +1872,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 26,
+    "totalRequirements": 34,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "relying_party": 26
+      "relying_party": 34
     }
   }
 }
