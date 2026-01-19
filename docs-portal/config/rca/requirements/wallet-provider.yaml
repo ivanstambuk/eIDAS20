@@ -15,7 +15,7 @@
 # AUDIT: 2026-01-19 - Initial file created. Pending systematic audit.
 # Schema version 1 - Initial structure
 
-schemaVersion: 1
+schemaVersion: 2
 
 # Requirement categories for grouping in the UI
 categories:
@@ -54,14 +54,955 @@ categories:
     order: 7
     icon: "📋"
 
-# Requirements list - TO BE POPULATED AFTER SYSTEMATIC AUDIT
-# Key focus areas for Wallet Provider:
-# - Article 5a (European Digital Identity Wallets - wallet provider duties)
-# - Article 6a (EUDI Wallet issuance)
-# - Article 5c (Certification requirements)
-# - Article 5d (Publication of certified wallets)
-# - Article 5e (Security breach response)
-# - Annex V of Regulation 910/2014 (Functional requirements)
-# - 2024/2981 (Wallet certification implementing act)
-# - 2024/2979 (Integrity and core functionalities)
-requirements: []
+# Requirements list
+# AUDIT: 2026-01-19 - First pass systematic audit in progress
+requirements:
+
+  # ============================================================================
+  # WALLET ISSUANCE & PROVISION
+  # Source: Article 5a of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-PROV-001
+    category: issuance
+    requirement: "Provide at least one European Digital Identity Wallet"
+    explanation: |
+      Each Member State must ensure the provision of at least one EUDI Wallet. 
+      Wallet providers acting on behalf of a Member State inherit this obligation.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "1"
+    legalText: |
+      Each Member State shall provide at least one European Digital Identity Wallet within 
+      24 months of the date of entry into force of the implementing acts referred to in 
+      paragraph 23 of this Article and in Article 5c(6).
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-PROV-002
+    category: issuance
+    requirement: "Publish open-source application software components"
+    explanation: |
+      The source code of wallet application software components must be open-source 
+      licensed. This promotes transparency, security review, and interoperability.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "3"
+    legalText: |
+      The source code of the application software components of European Digital Identity 
+      Wallets shall be open-source licensed. Member States may provide that, for duly 
+      justified reasons, the source code of specific components other than those installed 
+      on user devices shall not be disclosed.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # CORE FUNCTIONALITY
+  # Source: Article 5a(4) of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-FUNC-001
+    category: functionality
+    requirement: "Enable secure storage, management, and presentation of PID and EAA"
+    explanation: |
+      The wallet must enable users to securely request, obtain, select, combine, store, 
+      delete, share and present person identification data and electronic attestations 
+      of attributes, under sole user control.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(a)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user, in a manner that is 
+      user-friendly, transparent, and traceable by the user, to: (a) securely request, 
+      obtain, select, combine, store, delete, share and present, under the sole control 
+      of the user, person identification data and, where applicable, in combination with 
+      electronic attestations of attributes, to authenticate to relying parties online 
+      and, where appropriate, in offline mode, in order to access public and private 
+      services, while ensuring that selective disclosure of data is possible.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-002
+    category: functionality
+    requirement: "Support selective disclosure of data"
+    explanation: |
+      Users must be able to share only specific attributes rather than full credentials.
+      This is essential for privacy-preserving identity verification.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(a)"
+    legalText: |
+      [...] while ensuring that selective disclosure of data is possible.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-003
+    category: functionality
+    requirement: "Support pseudonym generation and encrypted local storage"
+    explanation: |
+      Wallets must allow users to generate pseudonyms and store them encrypted 
+      locally within the wallet for privacy-preserving authentication.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(b)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (b) generate 
+      pseudonyms and store them encrypted and locally within the European Digital 
+      Identity Wallet.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases:
+      - pseudonym
+
+  - id: WP-FUNC-004
+    category: functionality
+    requirement: "Support wallet-to-wallet authentication and data exchange"
+    explanation: |
+      Wallets must support secure peer-to-peer authentication, allowing users to 
+      verify another person's wallet and exchange data directly.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(c)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (c) securely 
+      authenticate another person's European Digital Identity Wallet, and receive and 
+      share person identification data and electronic attestations of attributes in a 
+      secured way between the two European Digital Identity Wallets.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-005
+    category: functionality
+    requirement: "Provide transaction log dashboard with RP list and data exchange history"
+    explanation: |
+      Wallets must provide a dashboard showing all relying parties the user has 
+      connected with and, where applicable, all data exchanged with each.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(d)(i)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (d) access a 
+      log of all transactions carried out through the European Digital Identity Wallet 
+      via a common dashboard enabling the user to: (i) view an up-to-date list of 
+      relying parties with which the user has established a connection and, where 
+      applicable, all data exchanged.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-006
+    category: functionality
+    requirement: "Enable easy data erasure requests to relying parties"
+    explanation: |
+      Wallets must provide a mechanism for users to easily request erasure of 
+      personal data from relying parties (GDPR Article 17 right).
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(d)(ii)"
+    legalText: |
+      [...] via a common dashboard enabling the user to: (ii) easily request the 
+      erasure by a relying party of personal data pursuant to Article 17 of the 
+      Regulation (EU) 2016/679.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-007
+    category: functionality
+    requirement: "Enable easy reporting of suspicious RP requests to DPA"
+    explanation: |
+      Wallets must allow users to easily report relying parties to the competent 
+      national data protection authority when receiving unlawful or suspicious 
+      data requests.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(d)(iii)"
+    legalText: |
+      [...] via a common dashboard enabling the user to: (iii) easily report a 
+      relying party to the competent national data protection authority, where an 
+      allegedly unlawful or suspicious request for data is received.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-008
+    category: functionality
+    requirement: "Support qualified electronic signatures and seals"
+    explanation: |
+      Wallets must enable users to sign by means of qualified electronic signatures 
+      or seal by means of qualified electronic seals.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(e)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (e) sign by 
+      means of qualified electronic signatures or seal by means of qualified 
+      electronic seals.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  - id: WP-FUNC-009
+    category: functionality
+    requirement: "Support data download and export"
+    explanation: |
+      Wallets must allow users to download their data, electronic attestations 
+      of attributes, and configurations to the extent technically feasible.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(f)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (f) download, 
+      to the extent technically feasible, the user's data, electronic attestation of 
+      attributes and configurations.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-FUNC-010
+    category: functionality
+    requirement: "Support data portability rights"
+    explanation: |
+      Wallets must enable users to exercise their rights to data portability 
+      as provided under GDPR.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "4(g)"
+    legalText: |
+      European Digital Identity Wallets shall enable the user [...] to: (g) exercise 
+      the user's rights to data portability.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # INTEROPERABILITY & PROTOCOLS
+  # Source: Article 5a(5) of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-INTER-001
+    category: interoperability
+    requirement: "Support common protocols for PID and EAA issuance"
+    explanation: |
+      Wallets must support common protocols and interfaces for issuance of person 
+      identification data and electronic attestations of attributes.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(i)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: (a) support common 
+      protocols and interfaces: (i) for issuance of person identification data, 
+      qualified and non-qualified electronic attestations of attributes or qualified 
+      and non-qualified certificates to the European Digital Identity Wallet.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-002
+    category: interoperability
+    requirement: "Support common protocols for RP attribute requests and validation"
+    explanation: |
+      Wallets must support protocols allowing relying parties to request and 
+      validate person identification data and electronic attestations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(ii)"
+    legalText: |
+      [...] (ii) for relying parties to request and validate person identification 
+      data and electronic attestations of attributes.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-003
+    category: interoperability
+    requirement: "Support online and offline presentation protocols"
+    explanation: |
+      Wallets must support protocols for sharing and presenting data to relying 
+      parties both online and, where appropriate, in offline mode.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(iii)"
+    legalText: |
+      [...] (iii) for the sharing and presentation to relying parties of person 
+      identification data, electronic attestation of attributes or of selectively 
+      disclosed related data online and, where appropriate, in offline mode.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-004
+    category: interoperability
+    requirement: "Display EU Digital Identity Wallet Trust Mark"
+    explanation: |
+      Wallets must support protocols allowing users to interact with the wallet 
+      and display the EU Digital Identity Wallet Trust Mark.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(iv)"
+    legalText: |
+      [...] (iv) for the user to allow interaction with the European Digital 
+      Identity Wallet and display an EU Digital Identity Wallet Trust Mark.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-005
+    category: interoperability
+    requirement: "Support secure user onboarding via eID means"
+    explanation: |
+      Wallets must support protocols for securely onboarding users using 
+      electronic identification means at the required assurance level.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(v)"
+    legalText: |
+      [...] (v) to securely onboard the user by using an electronic identification 
+      means in accordance with Article 5a(24).
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-006
+    category: interoperability
+    requirement: "Support wallet-to-wallet interaction protocols"
+    explanation: |
+      Wallets must support protocols for secure interaction between two persons' 
+      wallets for receiving, validating and sharing data.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(vi)"
+    legalText: |
+      [...] (vi) for interaction between two persons' European Digital Identity Wallets 
+      for the purpose of receiving, validating and sharing person identification data 
+      and electronic attestations of attributes in a secure manner.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-007
+    category: interoperability
+    requirement: "Implement RP authentication and identification mechanisms"
+    explanation: |
+      Wallets must support protocols for authenticating and identifying relying 
+      parties according to Article 5b mechanisms.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(vii)"
+    legalText: |
+      [...] (vii) for authenticating and identifying relying parties by implementing 
+      authentication mechanisms in accordance with Article 5b.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-008
+    category: interoperability
+    requirement: "Support RP verification of wallet authenticity and validity"
+    explanation: |
+      Wallets must support protocols allowing relying parties to verify the 
+      authenticity and validity of European Digital Identity Wallets.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(viii)"
+    legalText: |
+      [...] (viii) for relying parties to verify the authenticity and validity of 
+      European Digital Identity Wallets.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-009
+    category: interoperability
+    requirement: "Support data erasure request protocols"
+    explanation: |
+      Wallets must support protocols for requesting erasure of personal data 
+      from relying parties pursuant to GDPR Article 17.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(ix)"
+    legalText: |
+      [...] (ix) for requesting a relying party the erasure of personal data 
+      pursuant to Article 17 of Regulation (EU) 2016/679.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-010
+    category: interoperability
+    requirement: "Support DPA reporting protocols"
+    explanation: |
+      Wallets must support protocols for reporting relying parties to national 
+      data protection authorities for suspicious data requests.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(x)"
+    legalText: |
+      [...] (x) for reporting a relying party to the competent national data 
+      protection authority where an allegedly unlawful or suspicious request 
+      for data is received.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-INTER-011
+    category: interoperability
+    requirement: "Support qualified signature and seal creation device protocols"
+    explanation: |
+      Wallets must support protocols for creating qualified electronic signatures 
+      or seals using qualified signature or seal creation devices.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(a)(xi)"
+    legalText: |
+      [...] (xi) for the creation of qualified electronic signatures or electronic 
+      seals by means of qualified electronic signature or electronic seal creation 
+      devices.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  # ============================================================================
+  # DATA PROTECTION & PRIVACY
+  # Source: Article 5a of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-DP-001
+    category: data-protection
+    requirement: "Do not provide EAA usage information to attestation issuers"
+    explanation: |
+      Wallets must not provide any information to trust service providers about 
+      how their electronic attestations of attributes are used after issuance.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(b)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (b) not provide 
+      any information to trust service providers of electronic attestations of 
+      attributes about the use of those electronic attestations.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-DP-002
+    category: data-protection
+    requirement: "Ensure user has full control over wallet use and data"
+    explanation: |
+      Users must have full control of the use of and data in their wallet. 
+      The provider must not collect unnecessary information or combine data 
+      without express user request.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "14"
+    legalText: |
+      Users shall have full control of the use of and of the data in their European 
+      Digital Identity Wallet. The provider of the European Digital Identity Wallet 
+      shall neither collect information about the use of the European Digital Identity 
+      Wallet which is not necessary for the provision of European Digital Identity 
+      Wallet services, nor combine person identification data or any other personal 
+      data stored or relating to the use of the European Digital Identity Wallet with 
+      personal data from any other services offered by that provider or from third-party 
+      services which are not necessary for the provision of European Digital Identity 
+      Wallet services, unless the user has expressly requested otherwise.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-DP-003
+    category: data-protection
+    requirement: "Keep wallet personal data logically separate from other services"
+    explanation: |
+      Personal data relating to the provision of the wallet must be kept logically 
+      separate from any other data held by the wallet provider.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "14"
+    legalText: |
+      Personal data relating to the provision of the European Digital Identity Wallet 
+      shall be kept logically separate from any other data held by the provider of 
+      the European Digital Identity Wallet.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-DP-004
+    category: data-protection
+    requirement: "Prevent tracking and correlation by EAA providers"
+    explanation: |
+      The technical framework must not allow EAA providers to track transactions 
+      or user behaviour after attestation issuance unless explicitly authorized.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "16(a)"
+    legalText: |
+      The technical framework of the European Digital Identity Wallet shall: (a) not 
+      allow providers of electronic attestations of attributes or any other party, 
+      after the issuance of the attestation of attributes, to obtain data that allows 
+      transactions or user behaviour to be tracked, linked or correlated, or knowledge 
+      of transactions or user behaviour to be otherwise obtained, unless explicitly 
+      authorised by the user.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-DP-005
+    category: data-protection
+    requirement: "Enable privacy-preserving techniques for unlinkability"
+    explanation: |
+      The wallet must enable privacy-preserving techniques ensuring unlinkability 
+      where the attestation does not require user identification.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "16(b)"
+    legalText: |
+      The technical framework of the European Digital Identity Wallet shall: [...] 
+      (b) enable privacy preserving techniques which ensure unlinkability, where 
+      the attestation of attributes does not require the identification of the user.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases:
+      - pseudonym
+      - age-verification
+
+  - id: WP-DP-006
+    category: data-protection
+    requirement: "Process personal data in compliance with GDPR"
+    explanation: |
+      Any processing of personal data by wallet providers must comply with 
+      Regulation (EU) 2016/679 and implement appropriate data protection measures.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "17"
+    legalText: |
+      Any processing of personal data carried out by the Member States or on their 
+      behalf by bodies or parties responsible for the provision of European Digital 
+      Identity Wallets as electronic identification means shall be carried out in 
+      accordance with appropriate and effective data protection measures. Compliance 
+      of such processing with Regulation (EU) 2016/679 shall be demonstrated.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # SECURITY
+  # Source: Article 5a of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-SEC-001
+    category: security
+    requirement: "Provide wallets under assurance level high"
+    explanation: |
+      European Digital Identity Wallets must be provided under an electronic 
+      identification scheme with assurance level high.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "11"
+    legalText: |
+      European Digital Identity Wallets shall be provided under an electronic 
+      identification scheme with assurance level high.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-SEC-002
+    category: security
+    requirement: "Ensure security-by-design"
+    explanation: |
+      Wallets must ensure security-by-design, integrating security considerations 
+      throughout the development and operation lifecycle.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "12"
+    legalText: |
+      European Digital Identity Wallets shall ensure security-by-design.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-SEC-003
+    category: security
+    requirement: "Notify users of security breaches without delay"
+    explanation: |
+      Wallet providers must inform users without delay of any security breach that 
+      could have compromised their wallet or its contents.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "6"
+    legalText: |
+      Member State shall inform users, without delay, of any security breach that 
+      could have entirely or partially compromised their European Digital Identity 
+      Wallet or its contents, in particular if their European Digital Identity Wallet 
+      has been suspended or revoked pursuant to Article 5e.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-SEC-004
+    category: security
+    requirement: "Ensure wallet validity can be revoked"
+    explanation: |
+      Wallet providers must ensure revocation capability upon user request, 
+      security compromise, or death/cessation of the user/legal person.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "9"
+    legalText: |
+      Member States shall ensure that the validity of the European Digital Identity 
+      Wallet can be revoked in the following circumstances: (a) upon the explicit 
+      request of the user; (b) where the security of the European Digital Identity 
+      Wallet has been compromised; (c) upon the death of the user or cease of activity 
+      of the legal person.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # OPERATIONAL REQUIREMENTS
+  # Source: Article 5a of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-OPS-001
+    category: operational
+    requirement: "Provide free wallet issuance, use, and revocation to natural persons"
+    explanation: |
+      The issuance, use, and revocation of wallets must be free of charge 
+      to all natural persons.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "13"
+    legalText: |
+      The issuance, use and revocation of the European Digital Identity Wallets 
+      shall be free of charge to all natural persons.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-002
+    category: operational
+    requirement: "Offer free qualified signatures by default to natural persons"
+    explanation: |
+      Wallets must offer all natural persons the ability to sign by means of 
+      qualified electronic signatures by default and free of charge.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(g)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (g) offer all 
+      natural persons the ability to sign by means of qualified electronic signatures 
+      by default and free of charge.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases:
+      - esignature
+
+  - id: WP-OPS-003
+    category: operational
+    requirement: "Provide technical support and incident reporting mechanisms"
+    explanation: |
+      Wallet providers must ensure users can easily request technical support and 
+      report technical problems or incidents affecting wallet use.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "10"
+    legalText: |
+      Providers of European Digital Identity Wallets shall ensure that users can 
+      easily request technical support and report technical problems or any other 
+      incidents having a negative impact on the use of European Digital Identity 
+      Wallets.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-004
+    category: operational
+    requirement: "Provide free validation mechanisms"
+    explanation: |
+      Wallet providers must provide validation mechanisms free of charge to verify 
+      wallet authenticity/validity and allow users to verify RP identity.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "8"
+    legalText: |
+      Member States shall provide validation mechanisms free-of-charge, in order to: 
+      (a) ensure that the authenticity and validity of European Digital Identity 
+      Wallets can be verified; (b) allow users to verify the authenticity and 
+      validity of the identity of relying parties registered in accordance with 
+      Article 5b.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-005
+    category: operational
+    requirement: "Ensure unique PID association"
+    explanation: |
+      Wallet providers must ensure PID uniquely represents the user and is 
+      associated with that wallet.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(f)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (f) ensure that 
+      the person identification data, which is available from the electronic 
+      identification scheme under which the European Digital Identity Wallet is 
+      provided, uniquely represents the natural person, legal person or the natural 
+      person representing the natural or legal person, and is associated with that 
+      European Digital Identity Wallet.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-006
+    category: operational
+    requirement: "Make wallets accessible to persons with disabilities"
+    explanation: |
+      Wallets must be accessible for use by persons with disabilities on an 
+      equal basis with other users, in accordance with Directive 2019/882.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "21"
+    legalText: |
+      European Digital Identity Wallets shall be made accessible for use, by persons 
+      with disabilities, on an equal basis with other users, in accordance with 
+      Directive (EU) 2019/882 of the European Parliament and of the Council.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-007
+    category: operational
+    requirement: "Notify Commission of wallet framework information"
+    explanation: |
+      Wallet providers must ensure required information is notified to the 
+      Commission including responsible bodies and validation mechanisms.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "18"
+    legalText: |
+      Member States shall, without undue delay, notify the Commission of information 
+      about: (a) the body responsible for establishing and maintaining the list of 
+      registered relying parties [...]; (b) the bodies responsible for the provision 
+      of European Digital Identity Wallets [...]; (c) the bodies responsible for 
+      ensuring that the person identification data is associated with the European 
+      Digital Identity Wallet [...]; (d) the mechanism allowing for the validation 
+      of the person identification data [...]; (e) the mechanism by which to validate 
+      the authenticity and validity of European Digital Identity Wallets.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-008
+    category: operational
+    requirement: "Implement embedded disclosure policy mechanisms"
+    explanation: |
+      When EAA has embedded disclosure policies, wallets must implement mechanisms 
+      to inform users when an RP has permission to access such attestations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(e)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (e) in the case 
+      of the electronic attestation of attributes with embedded disclosure policies, 
+      implement the appropriate mechanism to inform the user that the relying party 
+      or the user of the European Digital Identity Wallet requesting that electronic 
+      attestation of attributes has the permission to access such attestation.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-009
+    category: operational
+    requirement: "Meet assurance level high requirements"
+    explanation: |
+      Wallets must meet the requirements set out in Article 8 regarding assurance 
+      level high, particularly for identity proofing, verification, and authentication.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(d)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (d) meet the 
+      requirements set out in Article 8 with regard to assurance level high, in 
+      particular as applied to the requirements for identity proofing and verification, 
+      and electronic identification means management and authentication.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-OPS-010
+    category: operational
+    requirement: "Authenticate and identify relying parties"
+    explanation: |
+      Wallets must ensure relying parties can be authenticated and identified 
+      by implementing authentication mechanisms per Article 5b.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "5(c)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: [...] (c) ensure that 
+      the relying parties can be authenticated and identified by implementing 
+      authentication mechanisms in accordance with Article 5b.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  # ============================================================================
+  # CERTIFICATION
+  # Source: Article 5c of Regulation (EU) 910/2014 (consolidated)
+  # ============================================================================
+
+  - id: WP-CERT-001
+    category: certification
+    requirement: "Obtain conformity certification from designated CAB"
+    explanation: |
+      Wallets must be certified by conformity assessment bodies for compliance 
+      with Article 5a requirements including functionality, protocols, validation, 
+      and data separation.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5c"
+      paragraph: "1"
+    legalText: |
+      The conformity of European Digital Identity Wallets and the electronic 
+      identification scheme under which they are provided with the requirements 
+      laid down in Article 5a(4), (5), (8), the requirement for logical separation 
+      laid down in Article 5a(14) and, where applicable, with the standards and 
+      technical specifications referred to in Article 5a(24), shall be certified 
+      by conformity assessment bodies designated by Member States.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CERT-002
+    category: certification
+    requirement: "Undergo cybersecurity certification"
+    explanation: |
+      Cybersecurity-relevant requirements must be certified under European 
+      cybersecurity certification schemes per Regulation 2019/881.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5c"
+      paragraph: "2"
+    legalText: |
+      Certification of the conformity of European Digital Identity Wallets with 
+      requirements referred to in paragraph 1 of this Article, or parts thereof, 
+      that are relevant for cybersecurity shall be carried out in accordance with 
+      European cybersecurity certification schemes adopted pursuant to Regulation 
+      (EU) 2019/881.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all
+
+  - id: WP-CERT-003
+    category: certification
+    requirement: "Maintain valid certification with biennial vulnerability assessments"
+    explanation: |
+      Certification is valid up to 5 years but requires vulnerability assessment 
+      every 2 years. Certification is cancelled if vulnerabilities aren't remedied timely.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5c"
+      paragraph: "4"
+    legalText: |
+      Certification pursuant to paragraph 1 shall be valid for up to five years, 
+      provided that a vulnerability assessment is carried out every two years. 
+      Where a vulnerability is identified and not remedied in a timely manner, 
+      certification shall be cancelled.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    useCases: all

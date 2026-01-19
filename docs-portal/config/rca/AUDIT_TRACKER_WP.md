@@ -3,9 +3,9 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Wallet Provider requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 0 (pending audit)
-**Schema Version:** 1
-**Verification Status:** 🔍 AUDIT NOT STARTED
+**Current Requirements Count:** 43
+**Schema Version:** 2
+**Verification Status:** 🔍 AUDIT IN PROGRESS
 
 ---
 
@@ -29,33 +29,33 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 1 | Subject matter | ⬜ | | |
-| Art. 2 | Scope | ⬜ | | |
-| Art. 3 | Definitions | ⬜ | | |
-| Art. 4 | Internal market principle | ⬜ | | |
+| Art. 1 | Subject matter | ➖ | | Scope definition only |
+| Art. 2 | Scope | ➖ | | Applicability - no WP-specific duties |
+| Art. 3 | Definitions | ➖ | | Defines terms including 'wallet' - no duties |
+| Art. 4 | Internal market principle | ➖ | | General principle - no WP-specific duties |
 
 ### Chapter II - Electronic Identification (Articles 5-12b)
 
 | Article | Title | Status | WP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| Art. 5 | Pseudonyms in electronic transactions | ⬜ | | |
-| Art. 5a | European Digital Identity Wallets | ⬜ | | **PRIMARY SOURCE** - wallet provider duties |
-| Art. 5b | Relying parties of EUDI Wallets | ⬜ | | |
-| Art. 5c | Certification of EUDI Wallets | ⬜ | | **PRIMARY SOURCE** - certification requirements |
-| Art. 5d | Publication of certified EUDI Wallets | ⬜ | | **PRIMARY SOURCE** - publication duties |
-| Art. 5e | Security breach of EUDI Wallets | ⬜ | | **PRIMARY SOURCE** - breach response |
-| Art. 5f | Cross-border reliance on EUDI Wallets | ⬜ | | |
-| Art. 6 | Mutual recognition | ⬜ | | |
-| Art. 6a | Provision of EUDI Wallets | ⬜ | | **PRIMARY SOURCE** - issuance requirements |
-| Art. 7 | Eligibility for notification | ⬜ | | |
-| Art. 8 | Assurance levels | ⬜ | | |
-| Art. 9 | Notification | ⬜ | | |
-| Art. 10 | Security breach of eID schemes | ⬜ | | |
-| Art. 11 | Liability | ⬜ | | |
-| Art. 11a | Cross-border identity matching | ⬜ | | |
-| Art. 12 | Interoperability | ⬜ | | |
-| Art. 12a | Certification of eID schemes | ⬜ | | |
-| Art. 12b | Access to hardware and software features | ⬜ | | **PRIMARY SOURCE** - platform access |
+| Art. 5 | Pseudonyms in electronic transactions | ➖ | | General pseudonym right - applies to users |
+| Art. 5a | European Digital Identity Wallets | ✅ | WP-PROV-001/002, WP-FUNC-001-010, WP-INTER-001-011, WP-DP-001-006, WP-SEC-001-004, WP-OPS-001-010 | **PRIMARY SOURCE** - 40 requirements extracted |
+| Art. 5b | Relying parties of EUDI Wallets | ➖ | | RP registration duties only |
+| Art. 5c | Certification of EUDI Wallets | ✅ | WP-CERT-001, WP-CERT-002, WP-CERT-003 | Certification requirements |
+| Art. 5d | Publication of certified EUDI Wallets | ⬜ | | **PENDING** - publication duties |
+| Art. 5e | Security breach of EUDI Wallets | ⬜ | | **PENDING** - breach response |
+| Art. 5f | Cross-border reliance on EUDI Wallets | ➖ | | RP acceptance duties - not WP |
+| Art. 6 | Mutual recognition | ➖ | | MS eID scheme recognition |
+| Art. 6a | Provision of EUDI Wallets | ⬜ | | **PENDING** - may contain issuance requirements |
+| Art. 7 | Eligibility for notification | ➖ | | eID scheme notification - MS duty |
+| Art. 8 | Assurance levels | ➖ | | Defines levels - referenced in 5a |
+| Art. 9 | Notification | ➖ | | MS notification procedures |
+| Art. 10 | Security breach of eID schemes | ➖ | | eID breach - not wallet-specific |
+| Art. 11 | Liability | ➖ | | General liability - applies mutatis mutandis via 5a(19) |
+| Art. 11a | Cross-border identity matching | ➖ | | MS duties for identity matching |
+| Art. 12 | Interoperability | ➖ | | eID interoperability framework |
+| Art. 12a | Certification of eID schemes | ➖ | | eID certification - not wallet-specific |
+| Art. 12b | Access to hardware and software features | ⬜ | | **PENDING** - platform access for wallets |
 
 ### Chapter III - Trust Services (Articles 13-24a)
 
@@ -613,8 +613,8 @@ These are the original 2014 eIDAS recitals. They predate the EUDI Wallet framewo
 
 ### Main Regulation (910/2014) Coverage
 - **Total Articles:** 70+
-- **Articles Reviewed:** 0
-- **Articles with WP Requirements:** TBD
+- **Articles Reviewed:** 18 (Chapter I-II)
+- **Articles with WP Requirements:** 2 (Art. 5a, 5c)
 - **Annexes Reviewed:** 0/7
 
 ### Implementing Acts Coverage
@@ -623,13 +623,24 @@ These are the original 2014 eIDAS recitals. They predate the EUDI Wallet framewo
 - **Pending Review:** 29
 
 ### Current Requirements
-- **Total in wallet-provider.yaml:** 0
+- **Total in wallet-provider.yaml:** 43
 
 ---
 
 ## Audit Completion Status
 
-🔍 **AUDIT NOT STARTED** (2026-01-19)
+🔍 **AUDIT IN PROGRESS** (2026-01-19)
+
+**Completed:**
+- Chapter I (Art. 1-4): All reviewed, no WP requirements
+- Chapter II (Art. 5-12b): 18 articles reviewed, 2 with WP requirements (Art. 5a, 5c)
+
+**Pending:**
+- Art. 5d, 5e, 6a, 12b (marked for review)
+- Chapters III-V (Art. 13-52)
+- All 7 Annexes
+- All 29 Implementing Acts
+- All Recitals
 
 ### Priority Focus Areas
 
