@@ -3,55 +3,38 @@
 
 ## Current State
 
-- **Focus**: Expand RCA to include `wallet_provider` and `trust_service_provider` requirements
-- **Next**: Create `wallet-provider.yaml` config file following `relying-party.yaml` structure
-- **Status**: Ready
-- **Phase**: RCA Enhancement - Role Expansion
-
-## Completed RCA Work (RP Requirements)
-
-- **90 RP requirements** extracted (schema v11)
-- **AUDIT_TRACKER_RP.md** fully updated - ALL articles + recitals reviewed
-- Gap analysis found 3 new requirements:
-  - RP-AUTH-001: Art 5b(9) authentication responsibility
-  - RP-OPS-004: Art 5b(10) intermediary data storage prohibition
-  - RP-ESIG-007a: Art 32(2) validation security detection
-- Recitals: 75 reviewed, 18 RP-relevant, 57 non-RP
+- **Focus**: RCA Wallet Provider Audit — Systematic review for WP requirements
+- **Next**: Run `/rca-audit` workflow targeting wallet-provider role  
+- **Status**: Audit scaffolding complete
+- **Phase**: RCA Expansion
 
 ## Key Files
 
-- `docs-portal/config/rca/requirements/relying-party.yaml` — Template (90 reqs)
-- `docs-portal/config/rca/AUDIT_TRACKER_RP.md` — Complete RP audit (renamed)
-- `docs-portal/scripts/build-rca.js` — Build script (multi-role support)
-- `docs-portal/src/pages/ComplianceAssessment.jsx` — UI (role selector exists)
+- `docs-portal/config/rca/requirements/wallet-provider.yaml` — WP requirements file (0 reqs, schema v1)
+- `docs-portal/config/rca/AUDIT_TRACKER_WP.md` — WP audit tracker (all ⬜ not reviewed)
+- `.agent/workflows/rca-audit.md` — Workflow for systematic audits (enforces one-row-per-provision)
+- `01_regulation/2014_910_eIDAS_Consolidated/32014R0910.md` — Primary source
+- `02_implementing_acts/` — Implementing acts directory
 
-## Wallet Provider Requirements Sources
+## Context Notes
 
-Priority for wallet_provider role:
-1. **Art 5a** - Core EUDIW requirements (paras 1-24)
-2. **2024/2979** (Integrity) - Art 3-14 wallet-focused
-3. **2024/2981** (Certification) - Wallet certification
-4. **2024/2977** (PID/EAA) - Art 3-4 issuance
-5. **2024/2982** (Protocols) - Art 4 issuance protocols
-
-## TSP Requirements Sources
-
-Priority for trust_service_provider role:
-1. **Art 19-24a** - TSP/QTSP obligations
-2. **2025/2530** (QTSP Requirements) - Detailed standards
-3. **Trust service acts** (2025/1566-1572, 2025/1929-1946)
-
-## Implementation Pattern
-
-Follow `relying-party.yaml` structure:
-- id: WP-REG-001 / TSP-REG-001
-- category, requirement, explanation, legalBasis, legalText, deadline, roles, useCases
-- Create AUDIT_TRACKER_WP.md / AUDIT_TRACKER_TSP.md
+Things git commits don't capture:
+- **Collapsed ranges are forbidden**: Never use "Art. 1-22" or "Annexes I-IX" — one row per provision
+- **Zero tolerance for ⬜ items**: Run grep verification before claiming completion
+- **WP Priority Focus Areas** (from AUDIT_TRACKER_WP.md):
+  - Article 5a (wallet provider duties)
+  - Article 6a (wallet provision)
+  - Articles 5c, 5d, 5e (certification, publication, breach)
+  - 2024/2979 (Integrity - most articles apply to WP)
+  - 2024/2981 (Certification implementing act)
+  - 2024/2982 (Protocols and Interfaces)
+- **Expected scope**: 60-100+ requirements (more than RP)
+- **Schema versioning**: Increment schemaVersion each time requirements are added
 
 ## Quick Start
 
 ```bash
-cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Visit http://localhost:5177/#/compliance
-npm run build:rca  # Rebuild after adding requirements
+# Review audit workflow
+cat ~/dev/eIDAS20/.agent/workflows/rca-audit.md
+# Start audit with Article 5a (primary WP article)
 ```

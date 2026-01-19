@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-19 19:45 CET |
-| **Session State** | V2.7.1 — Second-Pass RP Verification Complete (Schema V12) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 90 RP requirements) |
+| **Last Updated** | 2026-01-19 20:00 CET |
+| **Session State** | V3.0.0 — RCA Audit Workflow Overhaul + RP-REG-013 (Schema V13) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 91 RP requirements) |
 | **Next Action** | RCA Role Expansion: Add wallet_provider + trust_service_provider requirements |
 
 ---
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-19 20:00 | **RCA Audit Workflow Overhaul (Schema V13)**: Major workflow improvements: (1) Zero tolerance for ⬜ items — mandatory verification before completion, (2) One row per provision rule — no collapsed ranges (Art. 1-22, Annexes I-IX, etc.), (3) Local regulation paths documented in AGENTS.md, (4) Verification grep command added to workflow. Added RP-REG-013 (privacy policy URL per 2025/848 Art 8(2)(g)). Expanded all collapsed ranges in AUDIT_TRACKER_RP.md. Added "Collapsed Range" and "One Row Per Provision" to TERMINOLOGY.md. |
 | 2026-01-19 19:45 | **Second-Pass RP Deep Audit (Schema V12)**: Comprehensive verification of all 90 RP requirements against actual legal text. CRITICAL FIX: Duplicate ID 'RP-AUTH-001' found — Art 6(1) mutual recognition renamed to RP-AUTH-005. Fixed AUDIT_TRACKER_RP.md mapping errors (Art 24 → RP-AUTH-004, Art 32 includes 007a). Created DEEP_AUDIT_RP_PASS2.md with paragraph-level verification. All requirements validated — no gaps. |
 | 2026-01-19 18:50 | **RCA Gap Analysis + Recitals Review**: Cross-referenced articles against existing relying-party.yaml. Found 3 missing requirements: RP-AUTH-001 (Art 5b(9) auth responsibility), RP-OPS-004 (Art 5b(10) intermediary data prohibition), RP-ESIG-007a (Art 32(2) validation security). Reviewed all 75 recitals from 2024/1183 (18 RP-relevant, 57 non-RP). Schema v11, 90 total requirements. Renamed AUDIT_TRACKER.md → AUDIT_TRACKER_RP.md for role-specific tracking. |
 | 2026-01-19 18:30 | **RCA Systematic Audit Complete**: Comprehensive review of all 29 implementing acts + consolidated regulation. Added 20 new RP requirements (67→87), schema version 10. Key acts: 2024/2977 (PID/EAA — 6 reqs), 2024/2979 (Integrity — 5 reqs), 2025/846 (Cross-Border Identity — 6 reqs), 2025/847 (Security — 3 reqs). 21 acts confirmed N/A (TSP/infrastructure). Created AUDIT_TRACKER.md with article-level mapping. Next: Expand to wallet_provider + trust_service_provider roles. |

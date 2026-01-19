@@ -1,0 +1,67 @@
+# RCA Requirements: Wallet Provider
+# 
+# Systematic article-by-article review of all Wallet Provider-applicable requirements from:
+# - Regulation (EU) 2014/910 (consolidated with 2024/1183) - All Articles
+# - Implementing Regulation (EU) 2024/2979 - Integrity & Core Functions
+# - Implementing Regulation (EU) 2024/2982 - Protocols & Interfaces  
+# - Implementing Regulation (EU) 2024/2977 - PID and EAA
+# - Implementing Regulation (EU) 2024/2981 - Certification of EUDI Wallets
+#
+# Each requirement is defined ONCE and tagged with applicable:
+# - roles: which roles this applies to
+# - useCases: which use cases this applies to (or "all" for universal)
+# - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
+#
+# AUDIT: 2026-01-19 - Initial file created. Pending systematic audit.
+# Schema version 1 - Initial structure
+
+schemaVersion: 1
+
+# Requirement categories for grouping in the UI
+categories:
+  issuance:
+    label: "Wallet Issuance & Provision"
+    order: 1
+    icon: "📲"
+  
+  certification:
+    label: "Certification & Compliance"
+    order: 2
+    icon: "✅"
+  
+  security:
+    label: "Security & Integrity"
+    order: 3
+    icon: "🔒"
+  
+  functionality:
+    label: "Core Functionality"
+    order: 4
+    icon: "⚙️"
+  
+  data-protection:
+    label: "Data Protection & Privacy"
+    order: 5
+    icon: "🛡️"
+  
+  interoperability:
+    label: "Interoperability & Standards"
+    order: 6
+    icon: "🔗"
+  
+  operational:
+    label: "Operational Requirements"
+    order: 7
+    icon: "📋"
+
+# Requirements list - TO BE POPULATED AFTER SYSTEMATIC AUDIT
+# Key focus areas for Wallet Provider:
+# - Article 5a (European Digital Identity Wallets - wallet provider duties)
+# - Article 6a (EUDI Wallet issuance)
+# - Article 5c (Certification requirements)
+# - Article 5d (Publication of certified wallets)
+# - Article 5e (Security breach response)
+# - Annex V of Regulation 910/2014 (Functional requirements)
+# - 2024/2981 (Wallet certification implementing act)
+# - 2024/2979 (Integrity and core functionalities)
+requirements: []

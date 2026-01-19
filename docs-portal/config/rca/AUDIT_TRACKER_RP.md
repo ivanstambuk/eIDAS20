@@ -698,8 +698,8 @@ These are the original 2014 eIDAS recitals. They provide historical context for 
 - **Pending Deeper Review:** 2 (2024/2980, 2024/2981 - may have indirect relevance)
 
 ### Current Requirements
-- **Total in relying-party.yaml:** 90
-- **Binding (Article-based):** 85
+- **Total in relying-party.yaml:** 91
+- **Binding (Article-based):** 86
 - **Informative (Recital-based):** 5
 
 ---
