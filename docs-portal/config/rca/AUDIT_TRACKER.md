@@ -3,8 +3,8 @@
 This document tracks the systematic review of all eIDAS 2.0 legal sources for Relying Party requirements.
 
 **Last Updated:** 2026-01-19
-**Current Requirements Count:** 81
-**Schema Version:** 9
+**Current Requirements Count:** 87
+**Schema Version:** 10
 
 ---
 
@@ -266,7 +266,12 @@ Source: `01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md`
 
 | Article | Title | Status | RP Requirements | Notes |
 |---------|-------|--------|-----------------|-------|
-| All | Full regulation | ⬜ | | Identity matching |
+| Art. 1 | Subject matter | ✅ | | |
+| Art. 2 | General requirements | ✅ | RP-AUTH-009 to RP-AUTH-011 | Identity matching process |
+| Art. 3 | Successful matching obligations | ✅ | RP-AUTH-012 | User notification |
+| Art. 4 | Unsuccessful matching obligations | ✅ | RP-AUTH-013 | User notification |
+| Art. 5 | Post-matching obligations | ✅ | RP-OPS-003 | Log retention |
+| Art. 6 | Entry into force | ✅ | | |
 
 ### 2025/847 - Security Breach Response
 
@@ -447,17 +452,20 @@ Recitals provide context and interpretive guidance. While not directly binding, 
 - **Pending Review:** 25
 
 ### Current Requirements
-- **Total in relying-party.yaml:** 67
-- **Binding (Article-based):** 62
+- **Total in relying-party.yaml:** 87
+- **Binding (Article-based):** 82
 - **Informative (Recital-based):** 5
 
 ---
 
 ## Next Steps Priority
 
-1. **HIGH**: Complete review of 2024/2977 (PID/EAA) - data format requirements
-2. **HIGH**: Complete review of 2024/2979 - pseudonym and disclosure policy requirements
-3. **HIGH**: Review 2025/2164 (Trusted Lists) - trust anchor requirements
-4. **MEDIUM**: Review 2025/1942 (Validation Services) - validation requirements
-5. **MEDIUM**: Review Annexes I-VII of main regulation
-6. **LOW**: Review remaining implementing acts for any RP-adjacent requirements
+1. **DONE**: 2024/2977 (PID/EAA) - 6 requirements extracted
+2. **DONE**: 2024/2979 (Integrity) - 5 requirements extracted
+3. **DONE**: 2024/2982 (Protocols) - Already covered
+4. **DONE**: 2025/847 (Security Breach) - 3 requirements extracted
+5. **DONE**: 2025/846 (Cross-Border Identity) - 6 requirements extracted
+6. **DONE**: 2025/2164 (Trusted Lists) - Infrastructure, no direct RP reqs
+7. **DONE**: 2025/1942 (Validation Services) - QVSP standards, no direct RP reqs
+8. **LOW**: Review remaining implementing acts (mainly TSP standards)
+9. **LOW**: Review Annexes I-VII of main regulation

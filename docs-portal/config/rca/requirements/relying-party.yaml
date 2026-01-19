@@ -13,9 +13,9 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Complete article-by-article review of consolidated regulation
-# Schema version 9 - Added 2025/847 Security Breach Response + 2024/2982 complete
+# Schema version 10 - Added 2025/846 Cross-Border Identity Matching
 
-schemaVersion: 9
+schemaVersion: 10
 
 # Requirement categories for grouping in the UI
 categories:
@@ -1903,3 +1903,156 @@ requirements:
     roles:
       - relying_party
     useCases: all
+
+  # ============================================================================
+  # CROSS-BORDER IDENTITY MATCHING
+  # Source: Implementing Regulation (EU) 2025/846 - Cross-Border Identity Matching
+  # ============================================================================
+
+  - id: RP-AUTH-009
+    category: authentication
+    bindingType: mandatory
+    requirement: "Perform unequivocal identity matching for cross-border users"
+    explanation: |
+      Public sector relying parties offering cross-border services must implement 
+      identity matching processes to link wallet credentials or notified eID means 
+      to existing user records or registers.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 2"
+      paragraph: "1-2"
+    legalText: |
+      Where a public sector body acts as a relying party in the context of an online 
+      cross-border service offered by or on behalf of that public sector body, Member 
+      States shall ensure that the process set out in paragraph 2 is used to ensure 
+      unequivocal identity matching of natural persons.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
+
+  - id: RP-AUTH-010
+    category: authentication
+    bindingType: mandatory
+    requirement: "Use mandatory PID attributes for wallet-based identity matching"
+    explanation: |
+      When users authenticate via EUDI Wallet, relying parties must use the mandatory 
+      PID attributes from 2024/2977 Annex Section 1 for identity matching, plus any 
+      optional data needed to ensure uniqueness.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 2"
+      paragraph: "3"
+    legalText: |
+      When reliance is on a wallet, the information to be used for unequivocal identity 
+      matching shall be the mandatory person identification data set out in Section 1 
+      of the Annex to Implementing Regulation (EU) 2024/2977, together with any optional 
+      data that is needed to ensure that the presented dataset is unique.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
+      - identity_verification
+
+  - id: RP-AUTH-011
+    category: authentication
+    bindingType: mandatory
+    requirement: "Handle orthographic variations in identity matching"
+    explanation: |
+      Identity matching must not be affected by differences in transliteration, blank 
+      spaces, hyphenation, concatenation, and similar orthographic variations required 
+      under Union or national law.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 2"
+      paragraph: "6"
+    legalText: |
+      The outcome of the process described in paragraph 5 shall, to the extent possible, 
+      not be affected by differences in transliteration, blank spaces, hyphenation, 
+      concatenation, and similar orthographic variations that are required under Union 
+      law or national law of the Member State.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
+      - identity_verification
+
+  - id: RP-AUTH-012
+    category: authentication
+    bindingType: mandatory
+    requirement: "Inform users of successful identity matching outcomes"
+    explanation: |
+      When identity matching is successful, relying parties must inform users that 
+      they have been granted access, whether they were matched to an existing record 
+      or registered as a new user, and options for reusing the match.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 3"
+      paragraph: "1-2"
+    legalText: |
+      The first time a user performs the identity matching process and it is deemed 
+      successful, the relying party or the party acting on its behalf shall ensure 
+      that the user is informed of the fact that the user has been granted access 
+      to the service to which they requested access.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
+
+  - id: RP-AUTH-013
+    category: authentication
+    bindingType: mandatory
+    requirement: "Inform users when identity matching fails and provide alternatives"
+    explanation: |
+      When identity matching is unsuccessful, relying parties must inform users why 
+      the match failed and provide information about alternative methods or 
+      complementary processes available.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Where an identity matching process is deemed unsuccessful, the relying party 
+      or the party acting on its behalf shall ensure that the user of a notified 
+      electronic identification means or of a wallet is informed if:
+      (a) the data made available was not successfully and unequivocally matched;
+      (b) other options for identity matching or other methods for gaining access 
+      to the service are available.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
+
+  - id: RP-OPS-003
+    category: operational
+    bindingType: mandatory
+    requirement: "Retain identity matching logs for 6-12 months"
+    explanation: |
+      Relying parties must keep logs of identity matching processes including values 
+      used, timestamps, documentation, and outcomes. Retention must be 6-12 months 
+      minimum, or longer if required by law.
+    legalBasis:
+      regulation: "2025/846"
+      article: "Article 5"
+      paragraph: "1-3"
+    legalText: |
+      Where an identity matching process is completed, whether successfully or 
+      unsuccessfully, the relying party shall keep the logs relating to the identity 
+      matching process and its outcome, including:
+      (a) the values provided by the user and the relying party;
+      (b) the date and time of the identity matching process;
+      (c) any relevant documentation provided as part of complementary methods;
+      (d) any identifiers or account numbers used.
+      
+      Relying parties shall retain the logs for a minimum of 6 months and a maximum 
+      of 12 months for security purposes.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - public_service
