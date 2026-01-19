@@ -278,7 +278,6 @@ function ProfileSelector({ role, selectedProfiles, onToggleProfile }) {
                         <input
                             type="checkbox"
                             checked={selectedProfiles.includes(profile.id) || allSelected}
-                            disabled={allSelected}
                             onChange={() => onToggleProfile(profile.id)}
                         />
                         <span className="rca-profile-icon">{profile.icon}</span>
