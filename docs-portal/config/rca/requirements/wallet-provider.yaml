@@ -13,9 +13,10 @@
 # - bindingType: "mandatory" (legal obligation) or "informative" (recitals/guidance)
 #
 # AUDIT: 2026-01-19 - Initial file created. Pending systematic audit.
-# Schema version 1 - Initial structure
+# AUDIT: 2026-01-20 - Added WP-DP-003a with profileFilter for mandated/independent providers (Art 45h(3))
+# Schema version 6 - Added profileFilter for private provider functional separation requirement
 
-schemaVersion: 5
+schemaVersion: 6
 
 # Requirement categories for grouping in the UI
 categories:
@@ -583,6 +584,34 @@ requirements:
     roles:
       - wallet_provider
     useCases: all
+
+  - id: WP-DP-003a
+    category: data-protection
+    requirement: "Private providers: Implement wallet services functionally separate from other services"
+    explanation: |
+      Private wallet providers (mandated or independent) must implement the provision 
+      of wallet services in a manner that is functionally separate from other services 
+      they provide. This goes beyond logical data separation to require organizational 
+      and technical separation of the wallet business unit itself. This requirement 
+      does NOT apply to wallets provided directly by Member States.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a(14) via Article 45h(3)"
+      paragraph: "14"
+    legalText: |
+      If the European Digital Identity Wallet is provided by private parties in 
+      accordance with paragraph 2, points (b) and (c), of this Article, the provisions 
+      of Article 45h(3) shall apply mutatis mutandis.
+      
+      Article 45h(3): Providers of qualified electronic attestation of attributes' 
+      services shall implement the provision of such qualified trust services in a 
+      manner that is functionally separate from other services provided by them.
+    deadline: "2026-11-21"
+    roles:
+      - wallet_provider
+    profileFilter: [mandated, independent]
+    useCases: all
+
 
   - id: WP-DP-004
     category: data-protection
