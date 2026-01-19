@@ -9,7 +9,7 @@
 # Use profileFilter: [profile_id] for profile-specific requirements
 # Omit profileFilter for requirements that apply to ALL profiles
 
-schemaVersion: 2  # Incremented: Added main regulation (45d, 45f, 45g, 45h) and implementing acts requirements
+schemaVersion: 3  # Added Art. 24 QTSP requirements (EAA-QTSP-004 to EAA-QTSP-012)
 
 # UI categories for organizing requirements
 categories:
@@ -802,6 +802,225 @@ requirements:
       of the service or parts thereof, for the purposes of ensuring continuity
       of the service and of providing evidence in legal proceedings...
     deadline: "2025-12-06"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  # ============================================================================
+  # MAIN REGULATION - Article 24 (QTSP Requirements for QEAA)
+  # ============================================================================
+
+  - id: EAA-QTSP-004
+    category: revocation
+    requirement: "Publish revocation status within 24 hours"
+    explanation: |
+      When a qualified trust service provider issuing qualified attestations
+      decides to revoke an attestation, it must register the revocation in its
+      database and publish the revocation status within 24 hours of receipt of
+      the revocation request. The revocation becomes effective immediately upon
+      publication. This is explicitly extended to QEAA by Art. 24(4a).
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "3-4a"
+    legalText: |
+      If a qualified trust service provider issuing qualified certificates
+      decides to revoke a certificate, it shall register such revocation in its
+      certificate database and publish the revocation status of the certificate
+      in a timely manner, and in any event within 24 hours after the receipt of
+      the request. The revocation shall become effective immediately upon its
+      publication... Paragraphs 3 and 4 shall apply accordingly to the revocation
+      of qualified electronic attestations of attributes.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-005
+    category: revocation
+    requirement: "Provide free revocation status checking for relying parties"
+    explanation: |
+      Qualified EAA providers must provide relying parties with the ability to
+      check the validity or revocation status of attestations. This must be
+      available on a per-attestation basis, at any time, beyond the validity
+      period, in an automated manner that is reliable, free of charge, and
+      efficient. This is explicitly extended to QEAA by Art. 24(4a).
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "4-4a"
+    legalText: |
+      Qualified trust service providers issuing qualified certificates shall
+      provide to any relying party information on the validity or revocation
+      status of qualified certificates issued by them. This information shall
+      be made available at least on a per certificate basis at any time and
+      beyond the validity period of the certificate in an automated manner that
+      is reliable, free of charge and efficient... Paragraphs 3 and 4 shall
+      apply accordingly to the revocation of qualified electronic attestations
+      of attributes.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-006
+    category: operational
+    requirement: "Notify supervisory body before starting qualified trust service"
+    explanation: |
+      Before starting to provide a qualified trust service (including QEAA),
+      the provider must notify the supervisory body of the Member State where
+      established with its intention to start the service, along with a
+      conformity assessment report.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "1"
+    legalText: |
+      When trust service providers intend to start the provision of a qualified
+      trust service, they shall notify the supervisory body of the Member State
+      in which they are established... with their intention to start the provision
+      of a qualified trust service. They shall also provide the supervisory body
+      with a conformity assessment report...
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-007
+    category: operational
+    requirement: "Maintain personnel with necessary expertise and reliability"
+    explanation: |
+      Qualified EAA issuers must employ personnel possessing the necessary
+      expertise, reliability, experience, and qualifications to perform the
+      services. Staff must have competence in applicable laws, security, and
+      technical knowledge appropriate to the trust service.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(b)"
+    legalText: |
+      [QTSPs shall] employ personnel and, if applicable, subcontractors possessing
+      the necessary expertise, reliability, experience and qualifications and having
+      received appropriate training regarding security and personal data protection
+      rules and who apply administrative and management procedures that correspond
+      to European or international standards.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-008
+    category: operational
+    requirement: "Maintain sufficient financial resources or liability coverage"
+    explanation: |
+      Qualified EAA issuers must maintain sufficient financial resources or
+      obtain appropriate liability insurance to cover their liabilities arising
+      from the provision of trust services, in accordance with national law on
+      liability.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(c)"
+    legalText: |
+      [QTSPs shall] with regard to point (c), maintain sufficient financial
+      resources or obtain appropriate liability insurance, according to national
+      law on liability, to cover liabilities arising from the provision of
+      qualified trust services.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-009
+    category: verification
+    requirement: "Verify identity of persons or entities to whom attestations are issued"
+    explanation: |
+      Before issuing a qualified electronic attestation of attributes, the
+      provider must verify the identity of the natural or legal person to whom
+      the attestation is issued, using appropriate identity verification methods.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "1-1a"
+    legalText: |
+      When issuing a qualified certificate or a qualified electronic attestation
+      of attributes for the purpose of a trust service, a qualified trust service
+      provider shall verify, by appropriate means and in accordance with national
+      law, the identity and, if applicable, any specific attributes of the natural
+      or legal person to whom the qualified certificate or the qualified electronic
+      attestation of attributes is issued...
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-010
+    category: security
+    requirement: "Take appropriate measures against security threats"
+    explanation: |
+      Qualified EAA issuers must take appropriate measures against forgery,
+      theft, or misappropriation of data, and against unauthorized deletion,
+      alteration, or rendering of data inaccessible.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(g)"
+    legalText: |
+      [QTSPs shall] take appropriate measures against forgery, theft or
+      misappropriation of data or, without right, deleting, altering or
+      rendering data inaccessible.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-011
+    category: operational
+    requirement: "Record and retain relevant information for evidence purposes"
+    explanation: |
+      Qualified EAA issuers must record and keep accessible all relevant
+      information concerning data issued and received, for the purpose of
+      providing evidence in legal proceedings and ensuring continuity of
+      service after the provider ceases activities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(h)"
+    legalText: |
+      [QTSPs shall] record and keep accessible for as long as necessary after
+      the activities of the qualified trust service provider have ceased, all
+      relevant information concerning data issued and received by the qualified
+      trust service provider, for the purpose of providing evidence in legal
+      proceedings and for the purpose of ensuring continuity of the service.
+      Such recording may be done electronically.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter: [qualified]
+
+  - id: EAA-QTSP-012
+    category: data_protection
+    requirement: "Ensure lawful processing of personal data"
+    explanation: |
+      Qualified EAA issuers must ensure lawful processing of personal data
+      in accordance with GDPR requirements.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(j)"
+    legalText: |
+      [QTSPs shall] ensure lawful processing of personal data in accordance
+      with Directive 95/46/EC. [Note: Now GDPR (EU) 2016/679]
+    deadline: "2024-11-21"
     roles:
       - issuer
     useCases: all

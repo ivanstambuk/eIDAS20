@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-19T22:33:23.224Z",
+  "generatedAt": "2026-01-19T22:36:28.612Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -1952,6 +1952,393 @@
       "legalText": "Qualified trust service providers shall establish a termination plan for\neach qualified trust service they provide, that establishes the necessary\nprovisions for the effective and correct application of the termination\nof the service or parts thereof, for the purposes of ensuring continuity\nof the service and of providing evidence in legal proceedings...",
       "legalSourceInfo": null,
       "deadline": "2025-12-06",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-004",
+      "category": "revocation",
+      "requirement": "Publish revocation status within 24 hours",
+      "explanation": "When a qualified trust service provider issuing qualified attestations\ndecides to revoke an attestation, it must register the revocation in its\ndatabase and publish the revocation status within 24 hours of receipt of\nthe revocation request. The revocation becomes effective immediately upon\npublication. This is explicitly extended to QEAA by Art. 24(4a).",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "3-4a"
+      },
+      "legalText": "If a qualified trust service provider issuing qualified certificates\ndecides to revoke a certificate, it shall register such revocation in its\ncertificate database and publish the revocation status of the certificate\nin a timely manner, and in any event within 24 hours after the receipt of\nthe request. The revocation shall become effective immediately upon its\npublication... Paragraphs 3 and 4 shall apply accordingly to the revocation\nof qualified electronic attestations of attributes.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-005",
+      "category": "revocation",
+      "requirement": "Provide free revocation status checking for relying parties",
+      "explanation": "Qualified EAA providers must provide relying parties with the ability to\ncheck the validity or revocation status of attestations. This must be\navailable on a per-attestation basis, at any time, beyond the validity\nperiod, in an automated manner that is reliable, free of charge, and\nefficient. This is explicitly extended to QEAA by Art. 24(4a).",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "4-4a"
+      },
+      "legalText": "Qualified trust service providers issuing qualified certificates shall\nprovide to any relying party information on the validity or revocation\nstatus of qualified certificates issued by them. This information shall\nbe made available at least on a per certificate basis at any time and\nbeyond the validity period of the certificate in an automated manner that\nis reliable, free of charge and efficient... Paragraphs 3 and 4 shall\napply accordingly to the revocation of qualified electronic attestations\nof attributes.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-006",
+      "category": "operational",
+      "requirement": "Notify supervisory body before starting qualified trust service",
+      "explanation": "Before starting to provide a qualified trust service (including QEAA),\nthe provider must notify the supervisory body of the Member State where\nestablished with its intention to start the service, along with a\nconformity assessment report.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "1"
+      },
+      "legalText": "When trust service providers intend to start the provision of a qualified\ntrust service, they shall notify the supervisory body of the Member State\nin which they are established... with their intention to start the provision\nof a qualified trust service. They shall also provide the supervisory body\nwith a conformity assessment report...",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-007",
+      "category": "operational",
+      "requirement": "Maintain personnel with necessary expertise and reliability",
+      "explanation": "Qualified EAA issuers must employ personnel possessing the necessary\nexpertise, reliability, experience, and qualifications to perform the\nservices. Staff must have competence in applicable laws, security, and\ntechnical knowledge appropriate to the trust service.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "2(b)"
+      },
+      "legalText": "[QTSPs shall] employ personnel and, if applicable, subcontractors possessing\nthe necessary expertise, reliability, experience and qualifications and having\nreceived appropriate training regarding security and personal data protection\nrules and who apply administrative and management procedures that correspond\nto European or international standards.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-008",
+      "category": "operational",
+      "requirement": "Maintain sufficient financial resources or liability coverage",
+      "explanation": "Qualified EAA issuers must maintain sufficient financial resources or\nobtain appropriate liability insurance to cover their liabilities arising\nfrom the provision of trust services, in accordance with national law on\nliability.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "2(c)"
+      },
+      "legalText": "[QTSPs shall] with regard to point (c), maintain sufficient financial\nresources or obtain appropriate liability insurance, according to national\nlaw on liability, to cover liabilities arising from the provision of\nqualified trust services.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-009",
+      "category": "verification",
+      "requirement": "Verify identity of persons or entities to whom attestations are issued",
+      "explanation": "Before issuing a qualified electronic attestation of attributes, the\nprovider must verify the identity of the natural or legal person to whom\nthe attestation is issued, using appropriate identity verification methods.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "1-1a"
+      },
+      "legalText": "When issuing a qualified certificate or a qualified electronic attestation\nof attributes for the purpose of a trust service, a qualified trust service\nprovider shall verify, by appropriate means and in accordance with national\nlaw, the identity and, if applicable, any specific attributes of the natural\nor legal person to whom the qualified certificate or the qualified electronic\nattestation of attributes is issued...",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-010",
+      "category": "security",
+      "requirement": "Take appropriate measures against security threats",
+      "explanation": "Qualified EAA issuers must take appropriate measures against forgery,\ntheft, or misappropriation of data, and against unauthorized deletion,\nalteration, or rendering of data inaccessible.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "2(g)"
+      },
+      "legalText": "[QTSPs shall] take appropriate measures against forgery, theft or\nmisappropriation of data or, without right, deleting, altering or\nrendering data inaccessible.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-011",
+      "category": "operational",
+      "requirement": "Record and retain relevant information for evidence purposes",
+      "explanation": "Qualified EAA issuers must record and keep accessible all relevant\ninformation concerning data issued and received, for the purpose of\nproviding evidence in legal proceedings and ensuring continuity of\nservice after the provider ceases activities.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "2(h)"
+      },
+      "legalText": "[QTSPs shall] record and keep accessible for as long as necessary after\nthe activities of the qualified trust service provider have ceased, all\nrelevant information concerning data issued and received by the qualified\ntrust service provider, for the purpose of providing evidence in legal\nproceedings and for the purpose of ensuring continuity of the service.\nSuch recording may be done electronically.",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
+      "applicableRoles": [
+        "issuer"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "EAA-QTSP-012",
+      "category": "data_protection",
+      "requirement": "Ensure lawful processing of personal data",
+      "explanation": "Qualified EAA issuers must ensure lawful processing of personal data\nin accordance with GDPR requirements.",
+      "legalBasis": {
+        "regulation": "910/2014",
+        "article": "Article 24",
+        "paragraph": "2(j)"
+      },
+      "legalText": "[QTSPs shall] ensure lawful processing of personal data in accordance\nwith Directive 95/46/EC. [Note: Now GDPR (EU) 2016/679]",
+      "legalSourceInfo": null,
+      "deadline": "2024-11-21",
       "applicableRoles": [
         "issuer"
       ],
@@ -10292,7 +10679,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "pseudonym": [
         "EAA-QEAA-001",
@@ -10327,7 +10723,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "esignature": [
         "EAA-QEAA-001",
@@ -10362,7 +10767,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "payment-auth": [
         "EAA-QEAA-001",
@@ -10397,7 +10811,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "open-bank-account": [
         "EAA-QEAA-001",
@@ -10432,7 +10855,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "mdl": [
         "EAA-QEAA-001",
@@ -10467,7 +10899,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "dtc": [
         "EAA-QEAA-001",
@@ -10502,7 +10943,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "epc": [
         "EAA-QEAA-001",
@@ -10537,7 +10987,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "vrc": [
         "EAA-QEAA-001",
@@ -10572,7 +11031,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "disability-card": [
         "EAA-QEAA-001",
@@ -10607,7 +11075,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "eprescription": [
         "EAA-QEAA-001",
@@ -10642,7 +11119,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "ehic": [
         "EAA-QEAA-001",
@@ -10677,7 +11163,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "public-warnings": [
         "EAA-QEAA-001",
@@ -10712,7 +11207,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "age-verification": [
         "EAA-QEAA-001",
@@ -10747,7 +11251,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "ticket-pass": [
         "EAA-QEAA-001",
@@ -10782,7 +11295,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "edu-credentials": [
         "EAA-QEAA-001",
@@ -10817,7 +11339,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "student-card": [
         "EAA-QEAA-001",
@@ -10852,7 +11383,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "proximity-id": [
         "EAA-QEAA-001",
@@ -10887,7 +11427,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ],
       "representation": [
         "EAA-QEAA-001",
@@ -10922,7 +11471,16 @@
         "EAA-REV-006",
         "EAA-QTSP-001",
         "EAA-QTSP-002",
-        "EAA-QTSP-003"
+        "EAA-QTSP-003",
+        "EAA-QTSP-004",
+        "EAA-QTSP-005",
+        "EAA-QTSP-006",
+        "EAA-QTSP-007",
+        "EAA-QTSP-008",
+        "EAA-QTSP-009",
+        "EAA-QTSP-010",
+        "EAA-QTSP-011",
+        "EAA-QTSP-012"
       ]
     },
     "relying_party": {
@@ -13634,11 +14192,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 255,
+    "totalRequirements": 264,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
-      "issuer": 33,
+      "issuer": 42,
       "relying_party": 91,
       "wallet_provider": 131
     }
