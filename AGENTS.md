@@ -446,6 +446,7 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 | **QEAA** | Qualified Electronic Attestation of Attributes |
 | **TSP/QTSP** | (Qualified) Trust Service Provider |
 | **WSCA/WSCD** | Wallet Secure Cryptographic Application/Device |
+| **Role Profile** | Sub-selection within an RCA role (e.g., Public/Private Sector for RP) |
 
 **See:** [TERMINOLOGY.md](TERMINOLOGY.md) for full vocabulary.
 

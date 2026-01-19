@@ -254,6 +254,37 @@ For each gap, add to the YAML file:
 ### Category Options
 - registration, technical, authentication, esignature, data-protection, security, operational
 
+### Profile Filtering (Optional)
+
+If a requirement only applies to specific profiles within a role, add `profileFilter`:
+
+```yaml
+- id: RP-PUB-001
+  category: registration
+  requirement: "Accept wallets from all Member States"
+  profileFilter: [public_sector]  # Only for public sector RPs
+  ...
+
+- id: EAA-QUAL-001
+  category: certification
+  requirement: "Meet Annex V requirements"
+  profileFilter: [qualified]  # Only for Qualified TSP issuers
+  ...
+```
+
+**Profile IDs by Role:**
+
+| Role | Profile IDs |
+|------|------------|
+| relying_party | `public_sector`, `private_sector` |
+| issuer (EAA) | `qualified`, `non_qualified`, `public_authentic` |
+| wallet_provider | `member_state`, `mandated`, `independent` |
+
+**Rules:**
+- Omit `profileFilter` if requirement applies to ALL profiles
+- Use array format: `profileFilter: [profile_id]` or `profileFilter: [id1, id2]`
+- When user selects a profile in UI, only matching requirements are shown
+
 ---
 
 ## Step 5: Update Audit Tracker

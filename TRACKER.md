@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-19 20:00 CET |
-| **Session State** | V3.0.0 — RCA Audit Workflow Overhaul + RP-REG-013 (Schema V13) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 91 RP requirements) |
-| **Next Action** | RCA Role Expansion: Add wallet_provider + trust_service_provider requirements |
+| **Last Updated** | 2026-01-19 23:00 CET |
+| **Session State** | V3.1.0 — WP Audit Complete (131 reqs) + Role Profiles Feature |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, 222 RCA requirements: 91 RP + 131 WP) |
+| **Next Action** | RCA EAA Issuer Audit — use `/rca-audit` workflow with issuer.yaml |
 
 ---
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-19 23:00 | **WP Audit Complete + Role Profiles (V3.1.0)**: (1) Completed Wallet Provider reverse audit verification — all 131 requirements validated against 4 implementing acts (2024/2979, 2024/2981, 2024/2982, 2025/848), (2) Enabled Wallet Provider in RCA UI (`roles.yaml` enabled: true), (3) Implemented Role Profiles feature for fine-grained requirement filtering — RP has public/private sector, EAA Issuer has qualified/non-qualified/public-authentic, WP has member-state/mandated/independent, (4) Added ProfileSelector component + CSS, (5) Updated build-rca.js to process profiles and profileFilter fields, (6) Browser-verified profile selector UI working. Retro: Added Role Profile and Profile Filter to TERMINOLOGY.md, updated `/rca-audit` workflow with profile guidance, created issuer.yaml stub for next audit. |
 | 2026-01-19 20:00 | **RCA Audit Workflow Overhaul (Schema V13)**: Major workflow improvements: (1) Zero tolerance for ⬜ items — mandatory verification before completion, (2) One row per provision rule — no collapsed ranges (Art. 1-22, Annexes I-IX, etc.), (3) Local regulation paths documented in AGENTS.md, (4) Verification grep command added to workflow. Added RP-REG-013 (privacy policy URL per 2025/848 Art 8(2)(g)). Expanded all collapsed ranges in AUDIT_TRACKER_RP.md. Added "Collapsed Range" and "One Row Per Provision" to TERMINOLOGY.md. |
 | 2026-01-19 19:45 | **Second-Pass RP Deep Audit (Schema V12)**: Comprehensive verification of all 90 RP requirements against actual legal text. CRITICAL FIX: Duplicate ID 'RP-AUTH-001' found — Art 6(1) mutual recognition renamed to RP-AUTH-005. Fixed AUDIT_TRACKER_RP.md mapping errors (Art 24 → RP-AUTH-004, Art 32 includes 007a). Created DEEP_AUDIT_RP_PASS2.md with paragraph-level verification. All requirements validated — no gaps. |
 | 2026-01-19 18:50 | **RCA Gap Analysis + Recitals Review**: Cross-referenced articles against existing relying-party.yaml. Found 3 missing requirements: RP-AUTH-001 (Art 5b(9) auth responsibility), RP-OPS-004 (Art 5b(10) intermediary data prohibition), RP-ESIG-007a (Art 32(2) validation security). Reviewed all 75 recitals from 2024/1183 (18 RP-relevant, 57 non-RP). Schema v11, 90 total requirements. Renamed AUDIT_TRACKER.md → AUDIT_TRACKER_RP.md for role-specific tracking. |

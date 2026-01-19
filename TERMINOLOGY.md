@@ -408,6 +408,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **Schema Version** | The version number of the requirements YAML structure. Incremented when requirements are added or modified. |
 | **Collapsed Range** | ⚠️ **Anti-pattern**: Using ranges like "Art. 1-22" or "Annex I-IX" in audit trackers instead of individual rows. Hides unreviewed items and prevents systematic review. See `/rca-audit` workflow for correct format. |
 | **One Row Per Provision** | The mandatory audit tracker rule requiring each article, annex, and recital to have its own row. Prevents accidentally skipping provisions during review. |
+| **Role Profile** | A sub-selection within a role for more granular requirement filtering. Examples: "Public Sector" vs "Private Sector" for Relying Party, "Qualified TSP" vs "Non-Qualified Provider" for EAA Issuer. Profiles allow the same role to have context-specific requirements. Configured in `roles.yaml`. |
+| **Profile Filter** | The `profileFilter` field on requirements that restricts them to specific role profiles. Requirements without `profileFilter` apply to all profiles of the role. Format: `profileFilter: [public_sector]` or `profileFilter: [qualified, non_qualified]`. If a requirement only applies to qualified EAA issuers, add `profileFilter: [qualified]`. |
 
 ---
 

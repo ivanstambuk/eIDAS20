@@ -1,0 +1,46 @@
+# EAA Issuer Requirements
+# Electronic Attestation of Attributes Issuers
+#
+# Profiles:
+#   - qualified: Qualified Trust Service Provider issuing QEAAs (Annex V compliance)
+#   - non_qualified: Non-qualified provider issuing EAAs
+#   - public_authentic: Public sector body issuing from authentic sources (Art 45f, Annex VII)
+#
+# Use profileFilter: [profile_id] for profile-specific requirements
+# Omit profileFilter for requirements that apply to ALL profiles
+
+schemaVersion: 1
+
+# UI categories for organizing requirements
+categories:
+  issuance:
+    label: "Attestation Issuance"
+    order: 1
+    icon: "📜"
+  verification:
+    label: "Identity Verification"
+    order: 2
+    icon: "🔍"
+  certification:
+    label: "Certification & Qualification"
+    order: 3
+    icon: "✅"
+  data_protection:
+    label: "Data Protection"
+    order: 4
+    icon: "🔒"
+  revocation:
+    label: "Revocation & Validity"
+    order: 5
+    icon: "🚫"
+  interoperability:
+    label: "Interoperability"
+    order: 6
+    icon: "🔗"
+  operational:
+    label: "Operational Requirements"
+    order: 7
+    icon: "⚙️"
+
+# Requirements - to be populated during EAA Issuer audit
+requirements: []
