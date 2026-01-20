@@ -44,6 +44,7 @@ terms:
       signature can be used, for instance, to electronically indicate that the 
       signatory has written the document, agreed with the content of the document, 
       or that the signatory was present as a witness.
+    sectionTitle: "What is an electronic signature?"
     section: what-is-an-electronic-signature
     note: Plain-language explanation of eIDAS Article 3(10)
 
@@ -56,6 +57,7 @@ terms:
       Electronic seals might serve as evidence that an electronic document was 
       issued by a legal person, ensuring certainty of the document's origin and 
       integrity.
+    sectionTitle: "What is an electronic seal?"
     section: what-is-an-electronic-seal
     note: Plain-language explanation of eIDAS Article 3(25)
 
@@ -67,6 +69,7 @@ terms:
       of data appended to, or a cryptographic transformation of a data unit 
       that allows a recipient of the data unit to prove the source and 
       integrity of the data unit and protect against forgery e.g. by the recipient.
+    sectionTitle: "What is the difference between an electronic signature and a digital signature?"
     section: what-is-the-difference-between-an-electronic-signature-and-a-digital-signature
     note: Technical concept (ETSI) — distinct from legal "electronic signature"
 
@@ -77,6 +80,7 @@ terms:
       additionally: uniquely linked to and capable of identifying the signatory; 
       created in a way that allows the signatory to retain control; linked to 
       the document in a way that any subsequent change of the data is detectable.
+    sectionTitle: "What are the levels of electronic signatures?"
     section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures
     note: Second level (AdES) defined in eIDAS
 
@@ -85,6 +89,7 @@ terms:
       A qualified electronic signature is an advanced electronic signature 
       which is additionally: created by a qualified signature creation device 
       (QSCD); and is based on a qualified certificate for electronic signatures.
+    sectionTitle: "What are the levels of electronic signatures?"
     section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures
     note: Third level (QES) — equivalent legal effect to handwritten signature
 
@@ -97,6 +102,7 @@ terms:
       control, use for electronic seal creation; and linked to the data to 
       which it relates in such a way that any subsequent change in the data 
       is detectable.
+    sectionTitle: "What are the levels of electronic seals?"
     section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals
     note: Second level for legal persons
 
@@ -105,6 +111,7 @@ terms:
       A qualified electronic seal is an advanced electronic seal which is 
       additionally: created by a qualified seal creation device (QSCD); and 
       is based on a qualified certificate for electronic seals.
+    sectionTitle: "What are the levels of electronic seals?"
     section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals
     note: Third level for legal persons
 
@@ -114,6 +121,7 @@ terms:
       Authority (CA), is an electronic attestation which links electronic 
       signature validation data to a natural person and confirms at least 
       the name or the pseudonym of that person.
+    sectionTitle: "What is a certificate for electronic signatures?"
     section: what-is-a-certificate-for-electronic-signatures
     note: Links signature validation data to natural person
 
@@ -122,6 +130,7 @@ terms:
       A certificate for electronic seals, issued by a Certificate Authority 
       (CA), is an electronic attestation that links electronic seal validation 
       data to a legal person and confirms the name of that person.
+    sectionTitle: "What is a certificate for electronic seals?"
     section: what-is-a-certificate-for-electronic-seals
     note: Links seal validation data to legal person
 
@@ -133,6 +142,7 @@ terms:
       electronic signature/seal creation data (such as the private key) and 
       therefore higher legal certainty regarding the created qualified 
       electronic signatures/seals.
+    sectionTitle: "What is a qualified signature/seal creation device (QSCD)?"
     section: what-is-a-qualified-signatureseal-creation-device-qscd
     note: Examples include smartcards, SIM cards, USB sticks
 
@@ -144,6 +154,7 @@ terms:
       electronic signature/seal creation data (such as the private key) and 
       therefore higher legal certainty regarding the created qualified 
       electronic signatures/seals.
+    sectionTitle: "What is a qualified signature/seal creation device (QSCD)?"
     section: what-is-a-qualified-signatureseal-creation-device-qscd
     note: Same requirements as signature creation device, for legal persons
 
@@ -154,6 +165,7 @@ terms:
       provider (QTSP). This kind of QSCD is known as "remote QSCD". Those remote 
       QSCD offer an improved user experience while maintaining the legal certainty 
       offered by qualified electronic signatures/seals.
+    sectionTitle: "What is a qualified signature/seal creation device (QSCD)?"
     section: what-is-a-qualified-signatureseal-creation-device-qscd
     note: Remotely managed QSCD
 
@@ -162,6 +174,7 @@ terms:
       An electronic time stamp is a data in electronic form which binds other 
       data in electronic form to a particular time establishing evidence that 
       the latter data existed at that time.
+    sectionTitle: "What is an electronic time stamp?"
     section: what-is-an-electronic-time-stamp-and-do-i-need-one
     note: Establishes temporal evidence
 
@@ -171,6 +184,7 @@ terms:
       time stamp enjoys the presumption of the accuracy of the date and the time 
       it indicates and the integrity of the data (e.g. signed document) to which 
       the date and time are bound.
+    sectionTitle: "What is an electronic time stamp?"
     section: what-is-an-electronic-time-stamp-and-do-i-need-one
     note: Qualified version with legal presumptions
 
@@ -180,6 +194,7 @@ terms:
       validation process. As part of the EU Trusted List, when validating a 
       qualified certificate, the Trust Anchor is the Service digital identity 
       (Sdi) of a trust service entry (cf. ETSI TS 119 612 v2.1.1).
+    sectionTitle: "What is the related Trust Anchor?"
     section: when-validating-a-qualified-certificate-what-is-the-related-trust-anchor
     note: RFC 5280 definition adapted for EU context
 
@@ -192,6 +207,7 @@ terms:
       XML advanced electronic signature (XAdES), based on XML signatures. 
       XML documents are suggested to be signed/sealed using XAdES signature 
       format (either with enveloped or enveloping packaging).
+    sectionTitle: "Which signature format should I use?"
     section: when-signingsealing-a-document-which-format-of-signature-should-i-use
     note: ETSI standard for XML-based signatures
 
@@ -199,6 +215,7 @@ terms:
     definition: >-
       PDF advanced electronic signature (PAdES), based on PDF signatures. 
       PDF documents are suggested to be signed/sealed using PAdES signature format.
+    sectionTitle: "Which signature format should I use?"
     section: when-signingsealing-a-document-which-format-of-signature-should-i-use
     note: ETSI standard for PDF-based signatures
 
@@ -207,6 +224,7 @@ terms:
       CMS advanced electronic signature (CAdES), based on Cryptographic 
       Message Syntax (CMS). Binary files are suggested to be signed/sealed 
       with XAdES or CAdES signature formats (with enveloping packaging).
+    sectionTitle: "Which signature format should I use?"
     section: when-signingsealing-a-document-which-format-of-signature-should-i-use
     note: ETSI standard for binary/CMS-based signatures
 
@@ -215,6 +233,7 @@ terms:
       Associated Signature Container (ASiC) based on ZIP format and supporting 
       XAdES and CAdES signature formats. When signing/sealing multiple documents, 
       it is suggested to use ASiC containers.
+    sectionTitle: "Which signature format should I use?"
     section: when-signingsealing-a-document-which-format-of-signature-should-i-use
     note: ETSI container format for multiple documents
 
@@ -229,6 +248,7 @@ terms:
       present in the Member States national Trusted Lists (TLs), as well as in 
       the European Commission central list (named List of Trusted Lists (LOTL)). 
       It provides an intuitive interface that is user-friendly and human-readable.
+    sectionTitle: "What is the Trusted List Browser?"
     section: what-is-the-trusted-list-browser
     note: EC tool for browsing TSPs
 
@@ -241,6 +261,7 @@ terms:
       publication of the LOTL are to allow access to the trusted lists of all 
       Member States in an easy way and to provide a way to trust and authenticate 
       those lists.
+    sectionTitle: "What is the List of Trusted Lists (LOTL)?"
     section: what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl
     note: Central EU registry (LOTL)
 
@@ -251,6 +272,7 @@ terms:
       consists of a compiled list of links (pointers) towards all trusted lists 
       from the Member States, together with the certificates used to sign these 
       trusted lists.
+    sectionTitle: "What is the List of Trusted Lists (LOTL)?"
     section: what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl
     note: Acronym for List of Trusted Lists
 
@@ -264,6 +286,7 @@ terms:
       withdrawn) and the status history of the trust services in compliance 
       with the applicable requirements and the relevant provisions of the 
       eIDAS Regulation.
+    sectionTitle: "What is a Trusted List?"
     section: what-is-a-trusted-list
     note: National registry per eIDAS Article 22
 
@@ -276,6 +299,7 @@ terms:
       qualified preservation of qualified electronic signature and qualified 
       electronic seal; (d) Issuing qualified time stamp; (e) Providing qualified 
       electronic registered delivery.
+    sectionTitle: "What is a qualified trust service?"
     section: what-is-a-qualified-trust-service
     note: Types of qualified trust services under eIDAS
 
@@ -284,6 +308,7 @@ terms:
       A trust service provider (TSP) is a natural or a legal person who provides 
       one or more trust services (TS) either as a qualified or as a non-qualified 
       trust service provider.
+    sectionTitle: "What does (Q)TSP/(Q)TS mean?"
     section: what-does-qtspqts-mean
     note: Plain-language explanation from FAQ glossary
 
@@ -296,6 +321,7 @@ terms:
       In this respect, QTSPs are mandatorily listed in the corresponding national 
       Trusted List while TSP could be but are not mandatorily listed in these 
       Trusted Lists.
+    sectionTitle: "What does (Q)TSP/(Q)TS mean?"
     section: what-does-qtspqts-mean
     note: Plain-language explanation from FAQ glossary
 
@@ -309,6 +335,7 @@ terms:
       AdES is the acronym for either an advanced electronic signature or an 
       advanced electronic seal. It is the second level of electronic 
       signatures/seals defined in eIDAS.
+    sectionTitle: "What does AdES mean?"
     section: what-does-ades-mean
     note: Acronym for advanced signature/seal
 
@@ -317,6 +344,7 @@ terms:
       QES is the acronym for either qualified electronic signature or qualified 
       electronic seal. It is the third and most secure level of electronic 
       signature/seal defined in eIDAS.
+    sectionTitle: "What does QES mean?"
     section: what-does-qes-mean
     note: Acronym for qualified signature/seal
 
@@ -326,12 +354,14 @@ terms:
       certificate can either be a: Qualified certificate for electronic signature, 
       Qualified certificate for electronic seal, or Qualified certificate for 
       website authentication.
+    sectionTitle: "What does QC mean?"
     section: what-does-qc-mean
     note: Acronym for qualified certificate
 
   - term: QSCD
     definition: >-
       QSCD stands for a qualified electronic signature/seal creation device.
+    sectionTitle: "What does QSCD mean?"
     section: what-does-qscd-mean
     note: Acronym for qualified creation device
 
@@ -339,5 +369,6 @@ terms:
     definition: >-
       AdES/QC is an advanced electronic signature/seal (AdES) based on a 
       qualified certificate.
+    sectionTitle: "What does AdES/QC mean?"
     section: what-does-adesqc-mean
     note: Advanced signature with qualified certificate

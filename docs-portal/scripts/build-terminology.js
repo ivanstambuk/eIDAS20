@@ -195,7 +195,7 @@ function loadSupplementaryTerms() {
                             slug: source.slug || source.id,
                             type: source.type || 'faq',
                             category: source.category || 'supplementary',
-                            article: currentTerm.section || 'N/A',
+                            article: currentTerm.sectionTitle || currentTerm.section || 'N/A',
                             ordinal: null
                         }
                     });
@@ -205,7 +205,8 @@ function loadSupplementaryTerms() {
                 currentTerm = {
                     term: trimmed.replace('- term:', '').trim(),
                     definition: '',
-                    section: null
+                    section: null,
+                    sectionTitle: null  // Human-readable title for display
                 };
                 inDefinition = false;
                 definitionLines = [];
@@ -247,6 +248,14 @@ function loadSupplementaryTerms() {
             if (trimmed.startsWith('note:')) {
                 continue;
             }
+
+            // sectionTitle field (human-readable title for display)
+            if (trimmed.startsWith('sectionTitle:') && currentTerm) {
+                // Handle quoted strings
+                const titlePart = trimmed.replace('sectionTitle:', '').trim();
+                currentTerm.sectionTitle = titlePart.replace(/^["']|["']$/g, '');
+                continue;
+            }
         }
 
         // Don't forget the last term!
@@ -261,7 +270,7 @@ function loadSupplementaryTerms() {
                     slug: source.slug || source.id,
                     type: source.type || 'faq',
                     category: source.category || 'supplementary',
-                    article: currentTerm.section || 'N/A',
+                    article: currentTerm.sectionTitle || currentTerm.section || 'N/A',
                     ordinal: null
                 }
             });

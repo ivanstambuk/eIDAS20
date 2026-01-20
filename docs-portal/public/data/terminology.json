@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-20T21:46:20.409Z",
+  "generated": "2026-01-20T21:53:08.902Z",
   "statistics": {
     "totalTerms": 127,
     "totalDefinitions": 231,
@@ -9,8 +9,8 @@
       "implementingActs": 128,
       "supplementary": 31
     },
-    "termsWithRoles": 107,
-    "termsWithDomains": 107
+    "termsWithRoles": 127,
+    "termsWithDomains": 127
   },
   "filterMetadata": {
     "documentTypes": [
@@ -396,13 +396,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-ades-mean",
-          "articleNumber": "what-does-ades-mean",
+          "articleId": "article-What does AdES mean?",
+          "articleNumber": "What does AdES mean?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-does-ades-mean",
+      "primaryLinkTarget": "article-What does AdES mean?",
       "definitionGroups": [
         {
           "definition": "AdES is the acronym for either an advanced electronic signature or an advanced electronic seal. It is the second level of electronic signatures/seals defined in eIDAS.",
@@ -414,16 +414,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-ades-mean",
-              "articleNumber": "what-does-ades-mean",
+              "articleId": "article-What does AdES mean?",
+              "articleNumber": "What does AdES mean?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "ades-qc",
@@ -436,13 +441,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-adesqc-mean",
-          "articleNumber": "what-does-adesqc-mean",
+          "articleId": "article-What does AdES/QC mean?",
+          "articleNumber": "What does AdES/QC mean?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-does-adesqc-mean",
+      "primaryLinkTarget": "article-What does AdES/QC mean?",
       "definitionGroups": [
         {
           "definition": "AdES/QC is an advanced electronic signature/seal (AdES) based on a qualified certificate.",
@@ -454,16 +459,22 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-adesqc-mean",
-              "articleNumber": "what-does-adesqc-mean",
+              "articleId": "article-What does AdES/QC mean?",
+              "articleNumber": "What does AdES/QC mean?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography",
+        "attestation"
+      ]
     },
     {
       "id": "advanced-electronic-seal",
@@ -487,8 +498,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
-          "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
+          "articleId": "article-What are the levels of electronic seals?",
+          "articleNumber": "What are the levels of electronic seals?",
           "displayOrder": 4
         }
       ],
@@ -522,8 +533,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
-              "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
+              "articleId": "article-What are the levels of electronic seals?",
+              "articleNumber": "What are the levels of electronic seals?",
               "displayOrder": 4
             }
           ],
@@ -559,8 +570,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
-          "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
+          "articleId": "article-What are the levels of electronic signatures?",
+          "articleNumber": "What are the levels of electronic signatures?",
           "displayOrder": 4
         }
       ],
@@ -594,8 +605,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
-              "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
+              "articleId": "article-What are the levels of electronic signatures?",
+              "articleNumber": "What are the levels of electronic signatures?",
               "displayOrder": 4
             }
           ],
@@ -621,13 +632,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-          "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+          "articleId": "article-Which signature format should I use?",
+          "articleNumber": "Which signature format should I use?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
+      "primaryLinkTarget": "article-Which signature format should I use?",
       "definitionGroups": [
         {
           "definition": "Associated Signature Container (ASiC) based on ZIP format and supporting XAdES and CAdES signature formats. When signing/sealing multiple documents, it is suggested to use ASiC containers.",
@@ -639,16 +650,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-              "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+              "articleId": "article-Which signature format should I use?",
+              "articleNumber": "Which signature format should I use?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "attribute",
@@ -886,13 +901,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-          "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+          "articleId": "article-Which signature format should I use?",
+          "articleNumber": "Which signature format should I use?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
+      "primaryLinkTarget": "article-Which signature format should I use?",
       "definitionGroups": [
         {
           "definition": "CMS advanced electronic signature (CAdES), based on Cryptographic Message Syntax (CMS). Binary files are suggested to be signed/sealed with XAdES or CAdES signature formats (with enveloping packaging).",
@@ -904,16 +919,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-              "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+              "articleId": "article-Which signature format should I use?",
+              "articleNumber": "Which signature format should I use?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "catalogue-of-attributes",
@@ -1107,13 +1126,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-certificate-for-electronic-seals",
-          "articleNumber": "what-is-a-certificate-for-electronic-seals",
+          "articleId": "article-What is a certificate for electronic seals?",
+          "articleNumber": "What is a certificate for electronic seals?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-certificate-for-electronic-seals",
+      "primaryLinkTarget": "article-What is a certificate for electronic seals?",
       "definitionGroups": [
         {
           "definition": "A certificate for electronic seals, issued by a Certificate Authority (CA), is an electronic attestation that links electronic seal validation data to a legal person and confirms the name of that person.",
@@ -1125,16 +1144,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-certificate-for-electronic-seals",
-              "articleNumber": "what-is-a-certificate-for-electronic-seals",
+              "articleId": "article-What is a certificate for electronic seals?",
+              "articleNumber": "What is a certificate for electronic seals?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography",
+        "attestation"
+      ]
     },
     {
       "id": "certificate-for-electronic-signature",
@@ -1193,13 +1217,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-certificate-for-electronic-signatures",
-          "articleNumber": "what-is-a-certificate-for-electronic-signatures",
+          "articleId": "article-What is a certificate for electronic signatures?",
+          "articleNumber": "What is a certificate for electronic signatures?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-certificate-for-electronic-signatures",
+      "primaryLinkTarget": "article-What is a certificate for electronic signatures?",
       "definitionGroups": [
         {
           "definition": "A certificate for electronic signatures, issued by a Certificate Authority (CA), is an electronic attestation which links electronic signature validation data to a natural person and confirms at least the name or the pseudonym of that person.",
@@ -1211,16 +1235,22 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-certificate-for-electronic-signatures",
-              "articleNumber": "what-is-a-certificate-for-electronic-signatures",
+              "articleId": "article-What is a certificate for electronic signatures?",
+              "articleNumber": "What is a certificate for electronic signatures?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography",
+        "attestation"
+      ]
     },
     {
       "id": "certificate-for-website-authentication",
@@ -2014,13 +2044,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-the-difference-between-an-electronic-signature-and-a-digital-signature",
-          "articleNumber": "what-is-the-difference-between-an-electronic-signature-and-a-digital-signature",
+          "articleId": "article-What is the difference between an electronic signature and a digital signature?",
+          "articleNumber": "What is the difference between an electronic signature and a digital signature?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-the-difference-between-an-electronic-signature-and-a-digital-signature",
+      "primaryLinkTarget": "article-What is the difference between an electronic signature and a digital signature?",
       "definitionGroups": [
         {
           "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient.",
@@ -2032,16 +2062,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-the-difference-between-an-electronic-signature-and-a-digital-signature",
-              "articleNumber": "what-is-the-difference-between-an-electronic-signature-and-a-digital-signature",
+              "articleId": "article-What is the difference between an electronic signature and a digital signature?",
+              "articleNumber": "What is the difference between an electronic signature and a digital signature?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "electronic-archiving",
@@ -2469,8 +2504,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-an-electronic-seal",
-          "articleNumber": "what-is-an-electronic-seal",
+          "articleId": "article-What is an electronic seal?",
+          "articleNumber": "What is an electronic seal?",
           "displayOrder": 4
         }
       ],
@@ -2504,8 +2539,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-an-electronic-seal",
-              "articleNumber": "what-is-an-electronic-seal",
+              "articleId": "article-What is an electronic seal?",
+              "articleNumber": "What is an electronic seal?",
               "displayOrder": 4
             }
           ],
@@ -2629,8 +2664,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-an-electronic-signature",
-          "articleNumber": "what-is-an-electronic-signature",
+          "articleId": "article-What is an electronic signature?",
+          "articleNumber": "What is an electronic signature?",
           "displayOrder": 4
         }
       ],
@@ -2664,8 +2699,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-an-electronic-signature",
-              "articleNumber": "what-is-an-electronic-signature",
+              "articleId": "article-What is an electronic signature?",
+              "articleNumber": "What is an electronic signature?",
               "displayOrder": 4
             }
           ],
@@ -2792,8 +2827,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-an-electronic-time-stamp-and-do-i-need-one",
-          "articleNumber": "what-is-an-electronic-time-stamp-and-do-i-need-one",
+          "articleId": "article-What is an electronic time stamp?",
+          "articleNumber": "What is an electronic time stamp?",
           "displayOrder": 4
         }
       ],
@@ -2827,8 +2862,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-an-electronic-time-stamp-and-do-i-need-one",
-              "articleNumber": "what-is-an-electronic-time-stamp-and-do-i-need-one",
+              "articleId": "article-What is an electronic time stamp?",
+              "articleNumber": "What is an electronic time stamp?",
               "displayOrder": 4
             }
           ],
@@ -3216,13 +3251,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
-          "articleNumber": "what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+          "articleId": "article-What is the List of Trusted Lists (LOTL)?",
+          "articleNumber": "What is the List of Trusted Lists (LOTL)?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+      "primaryLinkTarget": "article-What is the List of Trusted Lists (LOTL)?",
       "definitionGroups": [
         {
           "definition": "The European Commission publishes an XML document called the List of Trusted Lists (LOTL), which consists of a compiled list of links (pointers) towards all trusted lists from the Member States, together with the certificates used to sign these trusted lists. The primary goals of the publication of the LOTL are to allow access to the trusted lists of all Member States in an easy way and to provide a way to trust and authenticate those lists.",
@@ -3234,16 +3269,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
-              "articleNumber": "what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+              "articleId": "article-What is the List of Trusted Lists (LOTL)?",
+              "articleNumber": "What is the List of Trusted Lists (LOTL)?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "trusted_list",
+        "supervisory"
+      ],
+      "domains": [
+        "governance"
+      ]
     },
     {
       "id": "lotl",
@@ -3256,13 +3296,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
-          "articleNumber": "what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+          "articleId": "article-What is the List of Trusted Lists (LOTL)?",
+          "articleNumber": "What is the List of Trusted Lists (LOTL)?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+      "primaryLinkTarget": "article-What is the List of Trusted Lists (LOTL)?",
       "definitionGroups": [
         {
           "definition": "LOTL is the acronym for List of Trusted Lists. The European Commission publishes an XML document called the List of Trusted Lists (LOTL), which consists of a compiled list of links (pointers) towards all trusted lists from the Member States, together with the certificates used to sign these trusted lists.",
@@ -3274,16 +3314,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
-              "articleNumber": "what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl",
+              "articleId": "article-What is the List of Trusted Lists (LOTL)?",
+              "articleNumber": "What is the List of Trusted Lists (LOTL)?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "trusted_list",
+        "supervisory"
+      ],
+      "domains": [
+        "governance"
+      ]
     },
     {
       "id": "manufacturer",
@@ -3592,13 +3637,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-          "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+          "articleId": "article-Which signature format should I use?",
+          "articleNumber": "Which signature format should I use?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
+      "primaryLinkTarget": "article-Which signature format should I use?",
       "definitionGroups": [
         {
           "definition": "PDF advanced electronic signature (PAdES), based on PDF signatures. PDF documents are suggested to be signed/sealed using PAdES signature format.",
@@ -3610,16 +3655,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-              "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+              "articleId": "article-Which signature format should I use?",
+              "articleNumber": "Which signature format should I use?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "peer-evaluation",
@@ -4194,13 +4243,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-qc-mean",
-          "articleNumber": "what-does-qc-mean",
+          "articleId": "article-What does QC mean?",
+          "articleNumber": "What does QC mean?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-does-qc-mean",
+      "primaryLinkTarget": "article-What does QC mean?",
       "definitionGroups": [
         {
           "definition": "QC stands for a qualified certificate. As part of eIDAS, a qualified certificate can either be a: Qualified certificate for electronic signature, Qualified certificate for electronic seal, or Qualified certificate for website authentication.",
@@ -4212,16 +4261,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-qc-mean",
-              "articleNumber": "what-does-qc-mean",
+              "articleId": "article-What does QC mean?",
+              "articleNumber": "What does QC mean?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography",
+        "attestation"
+      ]
     },
     {
       "id": "qes",
@@ -4234,13 +4288,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-qes-mean",
-          "articleNumber": "what-does-qes-mean",
+          "articleId": "article-What does QES mean?",
+          "articleNumber": "What does QES mean?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-does-qes-mean",
+      "primaryLinkTarget": "article-What does QES mean?",
       "definitionGroups": [
         {
           "definition": "QES is the acronym for either qualified electronic signature or qualified electronic seal. It is the third and most secure level of electronic signature/seal defined in eIDAS.",
@@ -4252,16 +4306,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-qes-mean",
-              "articleNumber": "what-does-qes-mean",
+              "articleId": "article-What does QES mean?",
+              "articleNumber": "What does QES mean?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "qscd",
@@ -4274,13 +4333,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-qscd-mean",
-          "articleNumber": "what-does-qscd-mean",
+          "articleId": "article-What does QSCD mean?",
+          "articleNumber": "What does QSCD mean?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-does-qscd-mean",
+      "primaryLinkTarget": "article-What does QSCD mean?",
       "definitionGroups": [
         {
           "definition": "QSCD stands for a qualified electronic signature/seal creation device.",
@@ -4292,16 +4351,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-qscd-mean",
-              "articleNumber": "what-does-qscd-mean",
+              "articleId": "article-What does QSCD mean?",
+              "articleNumber": "What does QSCD mean?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "qualified-certificate-for-electronic-seal",
@@ -4638,8 +4702,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
-          "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
+          "articleId": "article-What are the levels of electronic seals?",
+          "articleNumber": "What are the levels of electronic seals?",
           "displayOrder": 4
         }
       ],
@@ -4673,8 +4737,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
-              "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals",
+              "articleId": "article-What are the levels of electronic seals?",
+              "articleNumber": "What are the levels of electronic seals?",
               "displayOrder": 4
             }
           ],
@@ -4754,8 +4818,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
-          "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
+          "articleId": "article-What are the levels of electronic signatures?",
+          "articleNumber": "What are the levels of electronic signatures?",
           "displayOrder": 4
         }
       ],
@@ -4789,8 +4853,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
-              "articleNumber": "what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures",
+              "articleId": "article-What are the levels of electronic signatures?",
+              "articleNumber": "What are the levels of electronic signatures?",
               "displayOrder": 4
             }
           ],
@@ -4872,8 +4936,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-an-electronic-time-stamp-and-do-i-need-one",
-          "articleNumber": "what-is-an-electronic-time-stamp-and-do-i-need-one",
+          "articleId": "article-What is an electronic time stamp?",
+          "articleNumber": "What is an electronic time stamp?",
           "displayOrder": 4
         }
       ],
@@ -4907,8 +4971,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-an-electronic-time-stamp-and-do-i-need-one",
-              "articleNumber": "what-is-an-electronic-time-stamp-and-do-i-need-one",
+              "articleId": "article-What is an electronic time stamp?",
+              "articleNumber": "What is an electronic time stamp?",
               "displayOrder": 4
             }
           ],
@@ -4933,13 +4997,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-          "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+          "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+          "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
+      "primaryLinkTarget": "article-What is a qualified signature/seal creation device (QSCD)?",
       "definitionGroups": [
         {
           "definition": "A qualified signature/seal creation device (QSCD), by following stricter requirements laid down in eIDAS, offers higher guarantees regarding the protection (e.g. mitigating any kind of replication or forgery) of the electronic signature/seal creation data (such as the private key) and therefore higher legal certainty regarding the created qualified electronic signatures/seals.",
@@ -4951,16 +5015,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-              "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+              "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+              "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "qualified-signature-creation-device",
@@ -4973,13 +5041,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-          "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+          "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+          "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
+      "primaryLinkTarget": "article-What is a qualified signature/seal creation device (QSCD)?",
       "definitionGroups": [
         {
           "definition": "A qualified signature/seal creation device (QSCD), by following stricter requirements laid down in eIDAS, offers higher guarantees regarding the protection (e.g. mitigating any kind of replication or forgery) of the electronic signature/seal creation data (such as the private key) and therefore higher legal certainty regarding the created qualified electronic signatures/seals.",
@@ -4991,16 +5059,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-              "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+              "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+              "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "holder"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "qualified-trust-service",
@@ -5024,8 +5097,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-qualified-trust-service",
-          "articleNumber": "what-is-a-qualified-trust-service",
+          "articleId": "article-What is a qualified trust service?",
+          "articleNumber": "What is a qualified trust service?",
           "displayOrder": 4
         }
       ],
@@ -5059,8 +5132,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-qualified-trust-service",
-              "articleNumber": "what-is-a-qualified-trust-service",
+              "articleId": "article-What is a qualified trust service?",
+              "articleNumber": "What is a qualified trust service?",
               "displayOrder": 4
             }
           ],
@@ -5096,8 +5169,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-qtspqts-mean",
-          "articleNumber": "what-does-qtspqts-mean",
+          "articleId": "article-What does (Q)TSP/(Q)TS mean?",
+          "articleNumber": "What does (Q)TSP/(Q)TS mean?",
           "displayOrder": 4
         }
       ],
@@ -5131,8 +5204,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-qtspqts-mean",
-              "articleNumber": "what-does-qtspqts-mean",
+              "articleId": "article-What does (Q)TSP/(Q)TS mean?",
+              "articleNumber": "What does (Q)TSP/(Q)TS mean?",
               "displayOrder": 4
             }
           ],
@@ -5366,13 +5439,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-          "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+          "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+          "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
+      "primaryLinkTarget": "article-What is a qualified signature/seal creation device (QSCD)?",
       "definitionGroups": [
         {
           "definition": "A QSCD is not necessarily in the physical possession of the signatory/creator of the seal but can also be remotely managed by a qualified trust service provider (QTSP). This kind of QSCD is known as \"remote QSCD\". Those remote QSCD offer an improved user experience while maintaining the legal certainty offered by qualified electronic signatures/seals.",
@@ -5384,16 +5457,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-qualified-signatureseal-creation-device-qscd",
-              "articleNumber": "what-is-a-qualified-signatureseal-creation-device-qscd",
+              "articleId": "article-What is a qualified signature/seal creation device (QSCD)?",
+              "articleNumber": "What is a qualified signature/seal creation device (QSCD)?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     },
     {
       "id": "remote-qualified-electronic-seal-creation-device",
@@ -5793,13 +5870,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
-          "articleNumber": "when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
+          "articleId": "article-What is the related Trust Anchor?",
+          "articleNumber": "What is the related Trust Anchor?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
+      "primaryLinkTarget": "article-What is the related Trust Anchor?",
       "definitionGroups": [
         {
           "definition": "As defined by RFC 5280, a Trust Anchor is the end point of a certificate validation process. As part of the EU Trusted List, when validating a qualified certificate, the Trust Anchor is the Service digital identity (Sdi) of a trust service entry (cf. ETSI TS 119 612 v2.1.1).",
@@ -5811,16 +5888,22 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
-              "articleNumber": "when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
+              "articleId": "article-What is the related Trust Anchor?",
+              "articleNumber": "What is the related Trust Anchor?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp",
+        "trusted_list"
+      ],
+      "domains": [
+        "cryptography",
+        "governance"
+      ]
     },
     {
       "id": "trust-service",
@@ -5888,8 +5971,8 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-does-qtspqts-mean",
-          "articleNumber": "what-does-qtspqts-mean",
+          "articleId": "article-What does (Q)TSP/(Q)TS mean?",
+          "articleNumber": "What does (Q)TSP/(Q)TS mean?",
           "displayOrder": 4
         }
       ],
@@ -5923,8 +6006,8 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-does-qtspqts-mean",
-              "articleNumber": "what-does-qtspqts-mean",
+              "articleId": "article-What does (Q)TSP/(Q)TS mean?",
+              "articleNumber": "What does (Q)TSP/(Q)TS mean?",
               "displayOrder": 4
             }
           ],
@@ -5950,13 +6033,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-a-trusted-list",
-          "articleNumber": "what-is-a-trusted-list",
+          "articleId": "article-What is a Trusted List?",
+          "articleNumber": "What is a Trusted List?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-a-trusted-list",
+      "primaryLinkTarget": "article-What is a Trusted List?",
       "definitionGroups": [
         {
           "definition": "Each Member State shall establish, maintain and publish trusted lists, including information related to the qualified trust service providers for which it is responsible, together with information related to the qualified trust services provided by them. The information related to the trust services includes information about the status (e.g. granted, withdrawn) and the status history of the trust services in compliance with the applicable requirements and the relevant provisions of the eIDAS Regulation.",
@@ -5968,16 +6051,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-a-trusted-list",
-              "articleNumber": "what-is-a-trusted-list",
+              "articleId": "article-What is a Trusted List?",
+              "articleNumber": "What is a Trusted List?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "trusted_list",
+        "supervisory"
+      ],
+      "domains": [
+        "governance"
+      ]
     },
     {
       "id": "trusted-list-browser",
@@ -5990,13 +6078,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-what-is-the-trusted-list-browser",
-          "articleNumber": "what-is-the-trusted-list-browser",
+          "articleId": "article-What is the Trusted List Browser?",
+          "articleNumber": "What is the Trusted List Browser?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-what-is-the-trusted-list-browser",
+      "primaryLinkTarget": "article-What is the Trusted List Browser?",
       "definitionGroups": [
         {
           "definition": "Trusted List Browser is a publicly available tool provided by the European Commission. It allows the user to browse through the information present in the Member States national Trusted Lists (TLs), as well as in the European Commission central list (named List of Trusted Lists (LOTL)). It provides an intuitive interface that is user-friendly and human-readable.",
@@ -6008,16 +6096,21 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-what-is-the-trusted-list-browser",
-              "articleNumber": "what-is-the-trusted-list-browser",
+              "articleId": "article-What is the Trusted List Browser?",
+              "articleNumber": "What is the Trusted List Browser?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "trusted_list",
+        "supervisory"
+      ],
+      "domains": [
+        "governance"
+      ]
     },
     {
       "id": "type-of-electronic-attestation-of-attributes",
@@ -8277,13 +8370,13 @@
           "documentCategory": "supplementary",
           "documentType": "faq",
           "celex": null,
-          "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-          "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+          "articleId": "article-Which signature format should I use?",
+          "articleNumber": "Which signature format should I use?",
           "displayOrder": 4
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
+      "primaryLinkTarget": "article-Which signature format should I use?",
       "definitionGroups": [
         {
           "definition": "XML advanced electronic signature (XAdES), based on XML signatures. XML documents are suggested to be signed/sealed using XAdES signature format (either with enveloped or enveloping packaging).",
@@ -8295,16 +8388,20 @@
               "documentCategory": "supplementary",
               "documentType": "faq",
               "celex": null,
-              "articleId": "article-when-signingsealing-a-document-which-format-of-signature-should-i-use",
-              "articleNumber": "when-signingsealing-a-document-which-format-of-signature-should-i-use",
+              "articleId": "article-Which signature format should I use?",
+              "articleNumber": "Which signature format should I use?",
               "displayOrder": 4
             }
           ],
           "isVariant": false
         }
       ],
-      "roles": [],
-      "domains": []
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
     }
   ]
 }

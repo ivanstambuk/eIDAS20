@@ -385,6 +385,71 @@
         "wallet-user": [
             "wallet_ecosystem",
             "identity"
+        ],
+        "ades": [
+            "cryptography"
+        ],
+        "ades-qc": [
+            "cryptography",
+            "attestation"
+        ],
+        "asic": [
+            "cryptography"
+        ],
+        "cades": [
+            "cryptography"
+        ],
+        "certificate-for-electronic-seals": [
+            "cryptography",
+            "attestation"
+        ],
+        "certificate-for-electronic-signatures": [
+            "cryptography",
+            "attestation"
+        ],
+        "digital-signature": [
+            "cryptography"
+        ],
+        "list-of-trusted-lists": [
+            "governance"
+        ],
+        "lotl": [
+            "governance"
+        ],
+        "pades": [
+            "cryptography"
+        ],
+        "qc": [
+            "cryptography",
+            "attestation"
+        ],
+        "qes": [
+            "cryptography"
+        ],
+        "qscd": [
+            "cryptography"
+        ],
+        "qualified-seal-creation-device": [
+            "cryptography"
+        ],
+        "qualified-signature-creation-device": [
+            "cryptography"
+        ],
+        "remote-qscd": [
+            "cryptography"
+        ],
+        "trust-anchor": [
+            "cryptography",
+            "governance"
+        ],
+        "trusted-list": [
+            "governance"
+        ],
+        "trusted-list-browser": [
+            "governance"
+        ],
+        "xades": [
+            "cryptography"
         ]
     }
 }
