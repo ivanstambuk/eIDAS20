@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 02:45 CET |
-| **Session State** | V3.2.6 — Supervisory Body Role Complete (458 reqs) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID + 85 TSP + 36 CAB + 42 SB) |
-| **Next Action** | All 7 roles complete — documentation portal ready for production |
+| **Last Updated** | 2026-01-20 14:40 CET |
+| **Session State** | V3.3.0 — Multi-Role RCA UI Complete |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**, **Multi-role selection**) |
+| **Next Action** | Production-ready — all 7 roles, multi-role selection, Design A cards |
 
 ---
 
@@ -85,8 +85,10 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 16:45 | **Use Case Mapping Methodology (DEC-088)**: Created formal decision and workflow for semantic use-case analysis. Key rules: (1) NO keyword/grep matching — each requirement analyzed in legal context, (2) Escalation mandatory for ambiguous cases, (3) Phased execution by role (WP→RP→TSP→...). Created `/use-case-audit` workflow with decision flowchart, tracker template, and completion checklist. 19 use cases finalized. |
+| 2026-01-20 14:40 | **Multi-Role RCA UI Complete (V3.3.0)**: (1) Implemented multi-role selection — organizations can now select multiple roles (e.g., Bank = RP + Issuer), (2) Design A pattern: big icon cards with checkboxes and inline profile expansion, (3) 4+3 grid layout for 7 role cards with responsive breakpoints, (4) Requirement aggregation with deduplication — shared requirements tracked via `sourceRoles` array, (5) Global use case filtering (not per-role), (6) Summary bar showing \"X roles · Y profiles\" with live requirement count, (7) Retro: Added UX design checklist workflow, component architecture rule to AGENTS.md, new RCA terms to TERMINOLOGY.md. |
 | 2026-01-20 02:45 | **Supervisory Body Role Complete (V3.2.6)**: (1) Created supervisory-body.yaml with 42 requirements from Articles 17-19, 46a-46e, (2) Two profiles: wallet_supervision (26 reqs for Art 46a EUDIW oversight) and trust_service_supervision (30 reqs for Art 46b TSP oversight), (3) 14 shared requirements covering SPOC, mutual assistance, and Cooperation Group participation, (4) Categories: governance (2), supervision (6), enforcement (8), cooperation (10), incident-response (3), notification (3), reporting (2), (5) All 7 RCA roles now complete: RP, WP, Issuer, PID, TSP, CAB, Supervisory Body, (6) Build verified: 458 total requirements. |
-| 2026-01-20 02:25 | **Conformity Assessment Body Role Complete (V3.2.5)**: (1) Created conformity-assessment-body.yaml with 36 requirements from Implementing Regulation 2025/2162 + main regulation Art 20, (2) No profiles — requirements apply uniformly to all accredited CABs, (3) Categories: accreditation (2), transparency (1), operational (8), reporting (19), transition (1), notification (1), (4) Key sources: 2025/2162 Arts 2-9, Annex I (subcontracting standards), Annex III (report specifications — 22 detailed requirements), (5) Enabled CAB role in roles.yaml, (6) Build verified: 416 total requirements across 6 roles. |
+
 | 2026-01-20 02:30 | **TSP Implementing Acts Audit Complete (V3.2.4)**: (1) Reviewed ALL 18 TSP-related implementing acts per Rule 1 (Infinite Time Principle) — no shortcuts, (2) Extracted 44 additional requirements (41→85 TSP requirements), (3) Key acts: 2025/2530 (QTSP requirements — 12 reqs), 2025/2160 (non-qualified risk — 7 reqs), 2025/1569 (QEAA — 6 reqs), 2025/1566 (identity verification — 4 reqs), 2025/1567 (remote QSCD — 4 reqs), 2025/2532 (archiving — 5 reqs), 2025/1572 (service initiation — 1 req), cross-cutting (4 reqs), (4) Added Rule 1 to AGENTS.md: Infinite Time Principle — never downscope due to time/context, (5) Updated AUDIT_TRACKER_TSP.md — 0 unreviewed items, (6) Build verified: 380 total RCA requirements. |
 
 | 2026-01-20 01:38 | **Trust Service Provider Audit Complete (V3.2.3)**: (1) Created trust-service-provider.yaml with 41 requirements from Arts 13-24, 29a + Annexes I-V, (2) Two profiles: qualified (QTSP — higher assurance, EU Trusted Lists) and non_qualified (baseline requirements), (3) Categories: liability (2), accessibility (1), security (5), operational (7), certification (4), transparency (4), identity-verification (2), data-protection (2), data-retention (1), technical (6), (4) Created AUDIT_TRACKER_TSP.md with full provision-level review (0 unreviewed items), (5) Enabled TSP role in roles.yaml, (6) Build verified: 336 total requirements across 5 roles. |

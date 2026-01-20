@@ -1561,3 +1561,119 @@ The 2014 recitals predate the EUDI Wallet framework entirely. They provide conte
 
 **Note:** Both trackers now include an explicit note explaining this exclusion.
 
+---
+
+## DEC-088: Use Case Semantic Mapping Methodology
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Category:** RCA / Methodology
+
+**Context:**
+
+During RCA audits, requirements were assigned `useCases: all` by default without analyzing whether they truly apply to all use cases or only to specific ones. The 19 use cases in `use-cases.yaml` (e.g., `esignature`, `pseudonym`, `mdl`, `payment-auth`) exist specifically for filtering, but ~95% of requirements are currently marked universal.
+
+**Problem:**
+
+| Current State | Issue |
+|---------------|-------|
+| `useCases: all` everywhere | Use case filtering provides no value |
+| No semantic analysis performed | We don't know if requirements are truly universal |
+| Keyword-based assignment considered | Would be inaccurate and superficial |
+
+**Decision:**
+
+Implement a **requirement-by-requirement semantic analysis** for use case mapping with the following rules:
+
+### Mapping Rules
+
+1. **NO keyword/grep-based assignment** — Each requirement must be analyzed in the context of its legal provision (article, paragraph, point).
+
+2. **Semantic question for each requirement:**
+   > "Does this requirement ONLY make sense when implementing a specific use case, or is it a universal obligation regardless of what the wallet/RP/TSP is used for?"
+
+3. **Decision categories:**
+
+| Decision | Meaning | Action |
+|----------|---------|--------|
+| `all` | Truly universal | Keep `useCases: all` |
+| `[specific-list]` | Use-case-specific | Update to `useCases: [id1, id2, ...]` |
+| `escalate` | Ambiguous — agent unsure | Present to user for decision |
+
+4. **Escalation is mandatory for ambiguity** — Never guess. If the mapping is not clear, escalate to the user.
+
+5. **Each mapping decision is recorded** — In the Use Case Mapping Tracker with requirement ID, decision, and rationale.
+
+### Use Case Reference (19 use cases, final)
+
+| ID | Name | Category |
+|----|------|----------|
+| `pid-online` | PID-based identification in online services | core |
+| `pseudonym` | Use of a pseudonym in online services | core |
+| `esignature` | eSignature | core |
+| `payment-auth` | Online payment authorisation | banking |
+| `open-bank-account` | Open bank account | banking |
+| `mdl` | Mobile Driving Licence (mDL) | travel |
+| `dtc` | Digital Travel Credential (DTC) | travel |
+| `epc` | European Parking Card (EPC) | travel |
+| `vrc` | Vehicle Registration Certificate (VRC) | travel |
+| `disability-card` | European Disability Card | health |
+| `eprescription` | e-Prescription | health |
+| `ehic` | European Health Insurance Card (EHIC) | health |
+| `public-warnings` | Public warnings | health |
+| `age-verification` | Age verification | consumer |
+| `ticket-pass` | Ticket or pass | consumer |
+| `edu-credentials` | Educational credentials | education |
+| `student-card` | European student card | education |
+| `proximity-id` | Identification in proximity scenarios | identification |
+| `representation` | Natural or legal person representation | legal |
+
+### Examples of Semantic Analysis
+
+**Example 1: Universal requirement**
+```yaml
+- id: WP-SEC-002
+  requirement: "Ensure security-by-design"
+```
+- **Analysis:** Security-by-design applies regardless of whether the user is signing documents, opening a bank account, or proving age. It's a fundamental architectural principle.
+- **Decision:** `useCases: all` ✓
+
+**Example 2: Use-case-specific requirement**
+```yaml
+- id: WP-FUNC-008
+  requirement: "Support qualified electronic signatures and seals"
+```
+- **Analysis:** QES/QESeal creation is ONLY needed when the user performs a signing operation. A wallet used purely for age verification would not need QES support.
+- **Decision:** `useCases: [esignature]` ✓
+
+**Example 3: Escalation required**
+```yaml
+- id: WP-FUNC-003
+  requirement: "Support pseudonym generation and encrypted local storage"
+```
+- **Analysis:** Pseudonyms are clearly relevant to the `pseudonym` use case. But are they also relevant to `age-verification` (proving you're over 18 without revealing identity)? Unclear.
+- **Decision:** `escalate` — Ask user if `age-verification` should be included.
+
+### Phased Execution
+
+The audit can be performed in phases:
+- Phase 1: Role X (e.g., Wallet Provider — 132 requirements)
+- Phase 2: Role Y (e.g., Relying Party — 91 requirements)
+- ...etc.
+
+Each phase produces:
+1. Updated YAML with refined `useCases` fields
+2. Escalation list for ambiguous cases
+3. Mapping Tracker with decisions and rationale
+
+**Why This Matters:**
+
+1. **Use case filtering becomes useful** — Users selecting "eSignature" see relevant requirements, not everything
+2. **Audit trail** — Each mapping has documented rationale
+3. **No guessing** — Ambiguity escalated to human judgment
+4. **Legal precision** — Mapping based on legal text context, not keywords
+
+**Implementation:**
+
+See `/use-case-audit` workflow in `.agent/workflows/use-case-audit.md`.
+
