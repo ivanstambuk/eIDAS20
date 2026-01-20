@@ -25,18 +25,31 @@ const OUTPUT_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json')
 
 /**
  * Check if any input file is newer than the output file
- * Warns developer if output may be stale
+ * - In CI: Fails the build (prevents deploying stale search indexes)
+ * - In dev: Warns developer so they can rebuild
  */
 function checkStaleness() {
     if (!existsSync(OUTPUT_PATH)) return; // First build, nothing to check
 
     const outputTime = statSync(OUTPUT_PATH).mtime;
     const inputs = [TERMINOLOGY_PATH, INDEX_PATH];
+    const isCI = process.env.CI === 'true' || process.env.CI === '1';
 
     for (const input of inputs) {
         if (existsSync(input) && statSync(input).mtime > outputTime) {
-            console.warn(`⚠️  WARNING: ${input.split('/').pop()} is newer than search-index.json`);
-            console.warn('   The search index may be stale. This build will update it.\n');
+            const inputName = input.split('/').pop();
+
+            if (isCI) {
+                // In CI: Fail the build to prevent deploying stale data
+                console.error(`\n❌ CI FAILURE: ${inputName} is newer than search-index.json`);
+                console.error('   The search index is stale and must be rebuilt before committing.');
+                console.error('   Run: npm run build:all-content\n');
+                process.exit(1);
+            } else {
+                // In dev: Warn and continue (this build will update it)
+                console.warn(`⚠️  WARNING: ${inputName} is newer than search-index.json`);
+                console.warn('   The search index may be stale. This build will update it.\n');
+            }
             return;
         }
     }

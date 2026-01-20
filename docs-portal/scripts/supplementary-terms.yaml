@@ -68,7 +68,9 @@ terms:
       electronic signature. The definition given by ETSI TR 119 100 is that 
       of data appended to, or a cryptographic transformation of a data unit 
       that allows a recipient of the data unit to prove the source and 
-      integrity of the data unit and protect against forgery e.g. by the recipient.
+      integrity of the data unit and protect against forgery e.g. by the 
+      recipient. These two concepts should be distinguished, as all electronic 
+      signatures are not necessarily digital signatures.
     sectionTitle: "What is the difference between an electronic signature and a digital signature?"
     section: what-is-the-difference-between-an-electronic-signature-and-a-digital-signature
     note: Technical concept (ETSI) — distinct from legal "electronic signature"
@@ -375,3 +377,23 @@ terms:
     sectionTitle: "What does AdES/QC mean?"
     section: what-does-adesqc-mean
     note: Advanced signature with qualified certificate
+
+  - term: simple electronic signature
+    definition: >-
+      An electronic signature is defined as "data in electronic form which is 
+      attached to or logically associated with other data in electronic form 
+      and which is used by the signatory to sign". Thus, something as simple 
+      as writing your name under an e-mail might constitute an electronic 
+      signature.
+    sectionTitle: "'Simple' electronic signatures"
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures
+    note: Baseline level — no specific technical requirements
+
+  - term: simple electronic seal
+    definition: >-
+      An electronic seal is defined as "data in electronic form, which is 
+      attached to or logically associated with other data in electronic form 
+      to ensure the latter's origin and integrity".
+    sectionTitle: "'Simple' electronic seals"
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals
+    note: Baseline level — no specific technical requirements

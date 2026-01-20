@@ -375,6 +375,28 @@ npm run dev
 # Opens at http://localhost:5173/eIDAS20/
 ```
 
+### Build Workflow (After Terminology Changes)
+
+**After modifying terminology data**, always run the combined build command:
+
+```bash
+npm run build:all-content
+```
+
+This runs `build:terminology` → `build:search` in sequence.
+
+**Why this matters:** The search index depends on `terminology.json`. If you only run `build:terminology`, the search index becomes stale and terms won't appear in search results.
+
+| Command | What It Does |
+|---------|--------------|
+| `npm run build:terminology` | Extracts terms → `terminology.json` |
+| `npm run build:search` | Builds Orama index → `search-index.json` |
+| `npm run build:all-content` | **Runs both in correct order** ✅ |
+
+**CI Protection:** In CI environments (`CI=true`), the build will **fail** if the search index is stale. This prevents deploying outdated search data.
+
+**Debugging tip:** If search results are wrong or missing terms, first check if the index is stale by running `npm run build:all-content`.
+
 ---
 
 ## 🖥️ WSL Browser Testing

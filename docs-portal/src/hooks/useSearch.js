@@ -113,17 +113,46 @@ export function useSearch() {
             });
 
             // ════════════════════════════════════════════════════════════════════════════
-            // CATEGORY-BASED RANKING: Boost multi-source terms
-            // Terms with multiple sources (e.g., from both 910/2014 and 765/2008) are more
-            // significant and should rank higher in search results.
+            // POST-ORAMA RANKING: Apply exact match and multi-source boosts
+            // 
+            // Orama's tokenized search may rank partial matches higher than exact matches.
+            // For example, searching "digital signature" might rank "electronic signature"
+            // higher because "signature" appears more frequently in the corpus.
+            // 
+            // We fix this by applying post-search boosts:
+            // 1. EXACT MATCH BOOST: If query exactly matches a term name → 100x score
+            // 2. PREFIX MATCH BOOST: If query is a prefix of term name → 10x score
+            // 3. MULTI-SOURCE BOOST: Terms from multiple sources → 1.5x score
             // ════════════════════════════════════════════════════════════════════════════
+            const EXACT_MATCH_BOOST = 100;
+            const PREFIX_MATCH_BOOST = 10;
             const MULTI_SOURCE_BOOST = 1.5;
 
-            // Transform results for display and apply multi-source boost
+            const normalizedQuery = searchQuery.toLowerCase().trim();
+
+            // Transform results for display and apply boosts
             const transformedResults = searchResults.hits.map((hit) => {
                 const sourceCount = hit.document.sourceCount || 1;
                 const isMultiSource = sourceCount > 1;
-                const boostedScore = isMultiSource ? hit.score * MULTI_SOURCE_BOOST : hit.score;
+                let boostedScore = hit.score;
+
+                // Apply exact/prefix match boost for terminology entries
+                if (hit.document.type === 'definition' && hit.document.sectionTitle) {
+                    const termName = hit.document.sectionTitle.toLowerCase();
+
+                    if (termName === normalizedQuery) {
+                        // Exact match: "digital signature" query matches "digital signature" term
+                        boostedScore *= EXACT_MATCH_BOOST;
+                    } else if (termName.startsWith(normalizedQuery)) {
+                        // Prefix match: "digital" query matches "digital signature" term
+                        boostedScore *= PREFIX_MATCH_BOOST;
+                    }
+                }
+
+                // Apply multi-source boost
+                if (isMultiSource) {
+                    boostedScore *= MULTI_SOURCE_BOOST;
+                }
 
                 return {
                     id: hit.document.id,
@@ -139,7 +168,7 @@ export function useSearch() {
                 };
             });
 
-            // Re-sort by adjusted score (multi-source boost may have changed order)
+            // Re-sort by adjusted score (boosts may have changed order)
             transformedResults.sort((a, b) => b.score - a.score);
 
             setResults(transformedResults);

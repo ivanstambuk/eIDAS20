@@ -1,16 +1,16 @@
 {
   "version": "2.0",
-  "generated": "2026-01-20T21:53:08.902Z",
+  "generated": "2026-01-20T22:44:25.214Z",
   "statistics": {
-    "totalTerms": 127,
-    "totalDefinitions": 231,
+    "totalTerms": 129,
+    "totalDefinitions": 233,
     "sources": {
       "regulations": 72,
       "implementingActs": 128,
-      "supplementary": 31
+      "supplementary": 33
     },
-    "termsWithRoles": 127,
-    "termsWithDomains": 127
+    "termsWithRoles": 129,
+    "termsWithDomains": 129
   },
   "filterMetadata": {
     "documentTypes": [
@@ -275,6 +275,8 @@
       "scheme-for-the-attestation-of-attributes",
       "scheme-owner",
       "signatory",
+      "simple-electronic-seal",
+      "simple-electronic-signature",
       "strong-user-authentication"
     ],
     "T": [
@@ -2038,7 +2040,7 @@
       "term": "digital signature",
       "sources": [
         {
-          "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient.",
+          "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient. These two concepts should be distinguished, as all electronic signatures are not necessarily digital signatures.",
           "documentId": "ec-esignature-faq",
           "documentTitle": "EC eSignature FAQ",
           "documentCategory": "supplementary",
@@ -2053,10 +2055,10 @@
       "primaryLinkTarget": "article-What is the difference between an electronic signature and a digital signature?",
       "definitionGroups": [
         {
-          "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient.",
+          "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient. These two concepts should be distinguished, as all electronic signatures are not necessarily digital signatures.",
           "sources": [
             {
-              "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient.",
+              "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient. These two concepts should be distinguished, as all electronic signatures are not necessarily digital signatures.",
               "documentId": "ec-esignature-faq",
               "documentTitle": "EC eSignature FAQ",
               "documentCategory": "supplementary",
@@ -2821,7 +2823,7 @@
           "displayOrder": 1
         },
         {
-          "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time.",
+          "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time. For example, a signatory can use an electronic time stamp to bind a signed document to a particular date and time and prove in the future that the signed document existed at this particular date and time.",
           "documentId": "ec-esignature-faq",
           "documentTitle": "EC eSignature FAQ",
           "documentCategory": "supplementary",
@@ -2853,10 +2855,10 @@
           "isVariant": false
         },
         {
-          "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time.",
+          "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time. For example, a signatory can use an electronic time stamp to bind a signed document to a particular date and time and prove in the future that the signed document existed at this particular date and time.",
           "sources": [
             {
-              "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time.",
+              "definition": "An electronic time stamp is a data in electronic form which binds other data in electronic form to a particular time establishing evidence that the latter data existed at that time. For example, a signatory can use an electronic time stamp to bind a signed document to a particular date and time and prove in the future that the signed document existed at this particular date and time.",
               "documentId": "ec-esignature-faq",
               "documentTitle": "EC eSignature FAQ",
               "documentCategory": "supplementary",
@@ -5767,6 +5769,95 @@
       "domains": [
         "cryptography",
         "identity"
+      ]
+    },
+    {
+      "id": "simple-electronic-seal",
+      "term": "simple electronic seal",
+      "sources": [
+        {
+          "definition": "An electronic seal is defined as \"data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter's origin and integrity\".",
+          "documentId": "ec-esignature-faq",
+          "documentTitle": "EC eSignature FAQ",
+          "documentCategory": "supplementary",
+          "documentType": "faq",
+          "celex": null,
+          "articleId": "article-'Simple' electronic seals",
+          "articleNumber": "'Simple' electronic seals",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-'Simple' electronic seals",
+      "definitionGroups": [
+        {
+          "definition": "An electronic seal is defined as \"data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter's origin and integrity\".",
+          "sources": [
+            {
+              "definition": "An electronic seal is defined as \"data in electronic form, which is attached to or logically associated with other data in electronic form to ensure the latter's origin and integrity\".",
+              "documentId": "ec-esignature-faq",
+              "documentTitle": "EC eSignature FAQ",
+              "documentCategory": "supplementary",
+              "documentType": "faq",
+              "celex": null,
+              "articleId": "article-'Simple' electronic seals",
+              "articleNumber": "'Simple' electronic seals",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
+      ]
+    },
+    {
+      "id": "simple-electronic-signature",
+      "term": "simple electronic signature",
+      "sources": [
+        {
+          "definition": "An electronic signature is defined as \"data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign\". Thus, something as simple as writing your name under an e-mail might constitute an electronic signature.",
+          "documentId": "ec-esignature-faq",
+          "documentTitle": "EC eSignature FAQ",
+          "documentCategory": "supplementary",
+          "documentType": "faq",
+          "celex": null,
+          "articleId": "article-'Simple' electronic signatures",
+          "articleNumber": "'Simple' electronic signatures",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-'Simple' electronic signatures",
+      "definitionGroups": [
+        {
+          "definition": "An electronic signature is defined as \"data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign\". Thus, something as simple as writing your name under an e-mail might constitute an electronic signature.",
+          "sources": [
+            {
+              "definition": "An electronic signature is defined as \"data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign\". Thus, something as simple as writing your name under an e-mail might constitute an electronic signature.",
+              "documentId": "ec-esignature-faq",
+              "documentTitle": "EC eSignature FAQ",
+              "documentCategory": "supplementary",
+              "documentType": "faq",
+              "celex": null,
+              "articleId": "article-'Simple' electronic signatures",
+              "articleNumber": "'Simple' electronic signatures",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [
+        "holder",
+        "qtsp"
+      ],
+      "domains": [
+        "cryptography"
       ]
     },
     {

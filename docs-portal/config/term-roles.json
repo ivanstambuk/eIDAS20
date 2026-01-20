@@ -489,6 +489,13 @@
         ],
         "xades": [
             "qtsp"
+        ],
+        "simple-electronic-signature": [
+            "holder",
+            "qtsp"
+        ],
+        "simple-electronic-seal": [
+            "qtsp"
         ]
     }
 }
