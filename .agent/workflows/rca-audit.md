@@ -103,6 +103,44 @@ cat ~/dev/eIDAS20/02_implementing_acts/2025_0848_Notified_Wallet_List/32025R0848
 
 ---
 
+## 🚨 CRITICAL: MANDATORY IMPLEMENTING ACTS AUDIT
+
+**An audit of the main regulation alone is NEVER complete. You MUST also audit ALL relevant implementing acts.**
+
+### Step 1.6: Identify ALL Implementing Acts for Role
+
+Before proceeding, list ALL implementing acts in `02_implementing_acts/` and **explicitly determine** which are relevant to the role:
+
+```bash
+# List all implementing acts
+ls ~/dev/eIDAS20/02_implementing_acts/
+```
+
+**For EACH implementing act, you MUST:**
+1. Read its title and subject matter
+2. Determine if it imposes obligations on the target role
+3. Add it to the audit tracker with article-by-article breakdown
+4. Mark each article as ✅ or ➖
+
+**Role-to-Implementing-Act Mapping (non-exhaustive):**
+
+| Role | Relevant Acts (MUST AUDIT) |
+|------|---------------------------|
+| `relying_party` | 2024/2977, 2024/2979, 2025/846, 2025/847, 2025/848 |
+| `wallet_provider` | 2024/2979, 2024/2981, 2024/2982, 2025/848, 2025/849 |
+| `trust_service_provider` | 2025/1566-1572, 2025/1929, 2025/1942-1944, 2025/2164, 2025/2527, 2025/2530-2532 |
+| `pid_provider` | 2024/2977 |
+| `eaa_issuer` | 2024/2977, 2025/1569, 2025/2530 |
+
+**⚠️ NEVER assume an implementing act is "probably just specifications".**
+Read the actual text. Extract obligations. Mark in tracker.
+
+### Why This Rule Exists
+
+This rule was added after the TSP audit (2026-01-20) skipped 16 implementing acts 
+by assuming they contained "only technical specifications" without reading them.
+This is unacceptable. Every legal document MUST be systematically reviewed.
+
 ## Step 2: Read Source Documents — EVERY ARTICLE
 
 **🚨 READ EVERY SINGLE ARTICLE. NO EXCEPTIONS.**

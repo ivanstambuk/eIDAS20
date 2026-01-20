@@ -260,11 +260,152 @@
 
 ---
 
-## 3. Other Potentially Relevant Acts
+## 3. Implementing Acts (MANDATORY AUDIT)
+
+### 2025/2530 — QTSP Requirements
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| Art. 1(1) | Notifications — significant changes | ⬜ | | 10 categories of changes to notify |
+| Art. 1(2) | Notification content | ⬜ | | Description, date, reasons, documents |
+| Art. 2 | Risk management framework | ⬜ | | References 2025/2160 |
+| Art. 3(1) | Termination plan establishment | ⬜ | | Per qualified trust service |
+| Art. 3(2) | Termination plan controls | ⬜ | | Document availability |
+| Art. 3(3) | Termination plan procedures | ⬜ | | Keeping plan up to date |
+| Art. 3(4) | Termination plan review | ⬜ | | Every 2 years minimum |
+| Art. 3(5) | Termination risk management | ⬜ | | Specific risk management |
+| Art. 3(6) | Termination financial resources | ⬜ | | Cover termination costs |
+| Art. 3(7) | Termination procedures (9 items) | ⬜ | | (a)-(i) specific procedures |
+| Art. 3(8) | Record accessibility | ⬜ | | Evidence + continuity records |
+| Art. 3(9) | Termination documentation | ⬜ | | 5 types of documentation |
+| Art. 4 | Reference standards per service | ⬜ | | See Annex |
+| Annex (1) | Standards: signature certificates | ⬜ | | ETSI clauses |
+| Annex (2) | Standards: seal certificates | ⬜ | | ETSI clauses |
+| Annex (3) | Standards: website certificates | ⬜ | | ETSI clauses |
+| Annex (4) | Standards: signature validation | ⬜ | | ETSI clauses |
+| Annex (5) | Standards: seal validation | ⬜ | | ETSI clauses |
+| Annex (6) | Standards: signature preservation | ⬜ | | ETSI clauses |
+| Annex (7) | Standards: seal preservation | ⬜ | | ETSI clauses |
+| Annex (8) | Standards: timestamps | ⬜ | | ETSI clauses |
+| Annex (9) | Standards: registered delivery | ⬜ | | ETSI clauses |
+| Annex (10) | Standards: remote signature QSCD | ⬜ | | ETSI clauses |
+| Annex (11) | Standards: remote seal QSCD | ⬜ | | ETSI clauses |
+| Annex (12) | Standards: archiving | ⬜ | | ETSI clauses |
+| Annex (13) | Standards: QEAA issuance | ⬜ | | ETSI standard |
+| Annex (14) | Standards: electronic ledgers | ⬜ | | ETSI standard |
+
+### 2025/1567 — Remote QSCD Management
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| Art. 1 | Reference standards for remote QSCD | ⬜ | | ETSI TS 119 431-1 |
+| Annex (1) | Normative references | ⬜ | | ETSI EN 319 401 |
+| Annex (2) | OVR-6.1-04: Public availability | ⬜ | | Internationally available info |
+| Annex (3) | OVR-6.4.4-02/03: Personnel controls | ⬜ | | Qualifications + 12-month training |
+| Annex (4) | OVR-6.4.9-02: Termination plan | ⬜ | | Compliance with 24(5) acts |
+| Annex (5) | OVR-6.5.5-02/03: Network security | ⬜ | | Quarterly scans, firewall config |
+| Annex (6) | OVR-6.8.5-01/02: Cryptographic controls | ⬜ | | ENISA approved mechanisms |
+| Annex (7) | OVR-A.3-02: Practice statement | ⬜ | | QSCD certification reference |
+
+### 2025/1566 — Identity Verification Standards
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| Art. 1 | Reference standards for identity proofing | ⬜ | | ETSI TS 119 461 |
+| Annex (1) | Normative references | ⬜ | | ETSI EN 319 401 |
+| Annex (2) | QTS-C3-01: Identity verification | ⬜ | | Conditional requirements |
+| Annex (3) | QTS-C.3.4-06A: CAB accreditation | ⬜ | | Assessment certification |
+| Annex (4) | USE-9.2.3.4-04: FAR/FRR targets | ⬜ | | Automated proofing values |
+| Annex (5) | VAL-8.3.3-21: Periodic testing | ⬜ | | Every 2 years by 2027 |
+| Annex (6) | OVR-7.12-02: Termination plan | ⬜ | | Compliance with 24(5) acts |
+
+### 2025/1569 — Sign Creation Devices (Folder mislabeled)
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| Art. 1 | Subject matter | ⬜ | | To be reviewed |
+| Art. 2+ | Other articles | ⬜ | | To be reviewed |
+| Annexes | All annexes | ⬜ | | To be reviewed |
+
+### 2025/1570 — Certified Creation Devices
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1571 — Seal Standards
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1572 — E-Signature Standards
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1929 — Electronic Timestamps
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1942 — Validation Services
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1943 — Signature Standards (Cert formats)
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/1944 — Preservation Standards
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/2164 — Trusted Lists
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/2527 — Website Auth Certificates
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/2531 — Electronic Ledgers
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/2532 — Archiving Services
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed |
+
+### 2025/2160 — Supervisory Data (Non-Qualified Risk Management)
+
+| Provision | Topic | Status | Req IDs | Notes |
+|-----------|-------|--------|---------|-------|
+| All | Full document | ⬜ | | To be reviewed — referenced by 2025/2530 |
+
+---
+
+## 4. Legacy/Other Acts
 
 | Document | Status | Notes |
 |----------|--------|-------|
-| 2015/806 (Trusted List) | ➖ | Commission implementing act for trusted list format (no direct TSP obligation) |
+| 2015/806 (Trusted List) | ➖ | Superseded by 2025/2164 |
 | 2015/1505 (Common EU trust mark) | ➖ | EU trust mark specifications (optional for TSPs) |
 | NIS2 Directive 2022/2555 Art 21 | ➖ | Cybersecurity requirements — referenced by Arts 20-21, covered in main regulation |
 
@@ -274,14 +415,14 @@
 
 ```bash
 # Ran: grep "| ⬜ |" AUDIT_TRACKER_TSP.md | grep -v "Not yet reviewed" | wc -l
-# Result: 0
+# Result: 73 (implementing acts not yet reviewed)
 ```
 
 **AUDIT VERIFICATION:**
-- Unreviewed items (⬜): 0
-- Total requirements: 41
+- ⚠️ **INCOMPLETE** — 73 implementing act provisions unreviewed
+- Total requirements (so far): 41
 - Schema version: 1
-- Build status: ✅ Successful
+- Build status: ✅ Successful (partial)
 
 ---
 
@@ -291,4 +432,5 @@
 |------|--------|
 | 2026-01-20 | Created audit tracker, identified Chapter III structure |
 | 2026-01-20 | Completed initial audit: 41 requirements from Arts 13-24, 29a, Annexes I-V |
+| 2026-01-20 | **CORRECTED**: Added 16 TSP-related implementing acts with ⬜ status per workflow mandate |
 
