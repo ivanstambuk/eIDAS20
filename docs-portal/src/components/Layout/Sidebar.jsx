@@ -18,9 +18,10 @@ const navigation = [
         ]
     },
     {
-        title: 'Referenced Regulations',
+        title: 'Supplementary Documents',
         // Dynamically populated from regulations-index.json
-        // See referencedDocs state below
+        // Includes 'referenced' (legal acts cited by eIDAS) and 'supplementary' (guidance resources)
+        // See DEC-093 in DECISIONS.md for rationale
         isDynamic: true,
         items: []
     },
@@ -131,7 +132,7 @@ const icons = {
 
 const Sidebar = ({ isOpen, onClose }) => {
     const [metadata, setMetadata] = useState(null);
-    const [referencedDocs, setReferencedDocs] = useState([]);
+    const [supplementaryDocs, setSupplementaryDocs] = useState([]);
 
     useEffect(() => {
         const fetchMetadata = async () => {
@@ -146,21 +147,22 @@ const Sidebar = ({ isOpen, onClose }) => {
             }
         };
 
-        // Fetch referenced regulations dynamically from the index
-        const fetchReferencedDocs = async () => {
+        // Fetch supplementary documents dynamically from the index
+        // Includes 'referenced' (legal acts) and 'supplementary' (guidance resources like EC FAQ)
+        const fetchSupplementaryDocs = async () => {
             try {
                 const response = await fetch(`${import.meta.env.BASE_URL}data/regulations-index.json`);
                 if (response.ok) {
                     const data = await response.json();
-                    // Filter for category === 'referenced' documents
-                    const referenced = data
-                        .filter(doc => doc.category === 'referenced')
+                    // Filter for supplementary categories (DEC-093)
+                    const supplementary = data
+                        .filter(doc => doc.category === 'referenced' || doc.category === 'supplementary')
                         .map(doc => ({
                             name: doc.sidebarTitle || doc.shortTitle,  // Prefer sidebarTitle for cleaner nav
                             path: `/regulation/${doc.slug}`,
                             icon: 'external-link'
                         }));
-                    setReferencedDocs(referenced);
+                    setSupplementaryDocs(supplementary);
                 }
             } catch (error) {
                 console.error('Failed to fetch regulations index:', error);
@@ -168,7 +170,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         };
 
         fetchMetadata();
-        fetchReferencedDocs();
+        fetchSupplementaryDocs();
     }, []);
 
     return (
@@ -195,8 +197,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                 aria-label="Main navigation"
             >
                 {navigation.map((section) => {
-                    // Use dynamically fetched items for Referenced Regulations section
-                    const items = section.isDynamic ? referencedDocs : section.items;
+                    // Use dynamically fetched items for Supplementary Documents section
+                    const items = section.isDynamic ? supplementaryDocs : section.items;
 
                     // Don't render dynamic section until data is loaded
                     if (section.isDynamic && items.length === 0) {

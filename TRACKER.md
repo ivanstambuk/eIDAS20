@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 21:17 CET |
-| **Session State** | V3.5.5 — Complete Role Labels Refresh (DONE) |
+| **Last Updated** | 2026-01-20 22:09 CET |
+| **Session State** | V3.5.6 — Hybrid Use Case Selector (DONE) |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 22:09 | **Hybrid Use Case Selector (V3.5.6)**: Redesigned RCA use case selection with hybrid pattern: (1) Domain chips (toggle multi-select) replace filter pills at top, (2) Flat grouped list shows use cases with always-visible descriptions (no accordion collapse), (3) Empty state prompt when no domains selected, (4) "Select all" checkbox per domain header, (5) Glossy cyan styling on selected chips/items. Retro: Added 4 terms to TERMINOLOGY.md (Domain, Requirement Category, Hybrid Selector Pattern, Domain Chip), updated /ux-design workflow with "tabs imply exclusivity" and "check existing UI first" rules. |
 | 2026-01-20 21:11 | **Complete Role Labels Refresh (V3.5.5)**: Second pass over all 7 roles for clarity: (1) Relying Party: action-oriented "Verifies wallet credentials...", (2) Wallet Provider: "Develops and operates the EUDI Wallet solution", profile "Member State Direct" → "Government-Operated" with Art 5a refs, (3) PID Provider: emphasizes "foundational identity credential", (4) **CAB**: Fixed inaccurate scope — now includes "wallet providers, QTSPs, and QEAA issuers" (was only QTSPs), (5) Supervisory Body: shortened to "Authority overseeing...". Browser-verified all changes. |
 | 2026-01-20 21:03 | **EAA/TSP Role Label Improvements (V3.5.4)**: Per DEC-091, improved role tile wording for legal clarity: (1) EAA Issuer profiles now "Qualified (QEAA)", "Non-Qualified EAA", "Public Authentic Source" — removed misleading "TSP" from QEAA label, (2) TSP profiles now "Non-Qualified TSP" for consistency, (3) Updated descriptions to reflect legal relationships (e.g., PAS are NOT TSPs), (4) Browser-verified UI changes. |
 | 2026-01-20 20:27 | **Use Case Mapping Complete + Retro (V3.5.3)**: (1) Completed 7-phase use case mapping audit (458 requirements), (2) Found 15 use-case-specific requirements (3.3%), (3) Discovered "Infrastructure Universalism" pattern — TSP/Issuer/PID/CAB/SB are 100% universal, (4) Added DEC-088 Addendum documenting the pattern, (5) Added 3 terms to TERMINOLOGY.md (Service-Facing Role, Infrastructure Role, Infrastructure Universalism), (6) Created USE_CASE_MAPPING_SUMMARY.md consolidating all 7 tracker files, (7) Added use case mapping guidance to AGENTS.md. |

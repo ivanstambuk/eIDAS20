@@ -1,44 +1,22 @@
 # Session Context
-<!-- MAX 100 LINES -->
+<!-- No pending task — hybrid selector complete -->
 
 ## Current State
 
-- **Focus**: RCA Role Labels Complete — all 7 roles have polished descriptions
-- **Next**: Push to GitHub (ready to deploy)
+- **Focus**: RCA UI improvements complete
+- **Next**: Push to GitHub (no code changes pending)
 - **Status**: Ready
-- **Phase**: RCA V3.5.5 Complete
+- **Phase**: Maintenance
 
-## Key Files
+## Notes
 
-- `docs-portal/config/rca/roles.yaml` — All 7 role definitions with descriptions and profiles
-- `docs-portal/public/data/rca-data.json` — Built RCA data (458 requirements)
-- `TRACKER.md` — Session progress tracker
+V3.5.6 — Hybrid Use Case Selector is complete and committed.
 
-## Context Notes
-
-Things git commits don't capture:
-
-1. **Role Description Pattern Established**:
-   - Service-providing roles (RP, EAA, WP, PID, TSP): Verb-first ("Issues...", "Verifies...")
-   - Oversight roles (CAB, SB): Noun + verb ("Accredited body that...", "Authority overseeing...")
-
-2. **DEC-091 Implementation**: TSP and EAA Issuer kept separate despite QEAA = QTSP legally because:
-   - PAS (Public Authentic Sources) don't fit in TSP category
-   - Service types are orthogonal to provider status
-   - User mental model matches role separation
-
-3. **CAB Scope Fixed**: Updated from "audits QTSPs" to "audits wallet providers, QTSPs, and QEAA issuers"
-
-4. **All Commits Done**:
-   - `5c897b3` — EAA/TSP profile label improvements
-   - `d12a6f3` — Complete role labels refresh (amended)
+No pending implementation work. Ready for GitHub push.
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# RCA page: http://localhost:5173/eIDAS20/#/rca
-
-# To push:
-cd ~/dev/eIDAS20 && git push origin master
+# Test: Navigate to /rca, select domains, verify flat grouped list
 ```

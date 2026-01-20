@@ -2021,4 +2021,140 @@ PAS must meet QTSP-equivalent standards but are **NOT QTSPs**:
 - bundesdruckerei.de, talao.io, luxtrust.com — QEAA/QTSP relationship confirmation
 - eIDAS consolidated text Articles 3, 45d-45h — Primary legal source
 
+---
+
+## DEC-092: Terminology Verbatim Preservation
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Category:** Content Policy / Terminology System
+
+**Context:**
+
+When importing definitions from multiple sources (regulations, implementing acts, external documents like EC FAQ), there's a temptation to:
+1. "Improve" definitions by making them clearer
+2. Merge similar definitions into unified explanations
+3. Paraphrase legal language into plain English
+
+This would corrupt the legal accuracy of the knowledge base.
+
+**Decision:**
+
+**All terminology definitions MUST be preserved verbatim from their source documents.**
+
+**Rules:**
+
+| Principle | Requirement |
+|-----------|-------------|
+| **No adaptation** | Definitions copied exactly as they appear in source documents |
+| **No merging** | Same term defined differently in multiple sources → display ALL definitions separately |
+| **No paraphrasing** | Legal language preserved even if "awkward" to read |
+| **Source attribution** | Every definition shows its source document clearly |
+| **Duplicate allowed** | If 3 regulations define "electronic signature" differently, show all 3 |
+
+**Rationale:**
+
+1. **Legal accuracy** — Definitions are legal instruments; changing them changes their meaning
+2. **Auditability** — Users can verify our definitions against EUR-Lex
+3. **Context matters** — Same term may have different scope in different regulations
+4. **No interpretation** — The portal presents law, not our interpretation of law
+
+**Multi-Source Display:**
+
+When a term has multiple definitions from different sources, display them stacked with clear source badges:
+
+```
+┌─────────────────────────────────────────────────┐
+│ electronic signature                            │
+├─────────────────────────────────────────────────┤
+│ [Primary] eIDAS Regulation 910/2014             │
+│ "'electronic signature' means data in           │
+│ electronic form which is attached to or..."     │
+├─────────────────────────────────────────────────┤
+│ [Supplementary] EC eSignature FAQ               │
+│ "An electronic signature is a data in           │
+│ electronic form which is attached to or..."     │
+└─────────────────────────────────────────────────┘
+```
+
+**Future Extension:**
+
+If custom (portal-authored) definitions are needed, they will:
+1. Be clearly marked as `[Portal Definition]`
+2. Never replace or override legal definitions
+3. Be displayed separately from legal definitions
+
+**Files Affected:**
+
+| File | Implication |
+|------|-------------|
+| `scripts/build-terminology.js` | No merging logic; preserve source separation |
+| `TermPopover.jsx` | Multi-source stacked display (already implemented) |
+| `TERMINOLOGY.md` | Document this policy for future contributors |
+
+---
+
+## DEC-093: Sidebar Section Rename — "Supplementary Documents"
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Category:** UI / Navigation
+
+**Context:**
+
+The portal sidebar has a section called "Referenced Regulations" containing:
+- Regulation 765/2008 (Accreditation) — a binding regulation
+- Recommendation 2021/946 (EUDIW Toolbox) — non-binding
+- Regulation 2015/1501 (Interoperability) — an implementing regulation
+
+We want to add the EC eSignature FAQ, which is:
+- Not a regulation
+- Not referenced by eIDAS
+- Valuable guidance content
+
+**Problems with "Referenced Regulations":**
+
+1. **Too narrow** — FAQ isn't a regulation
+2. **Inaccurate** — 2021/946 is a Recommendation, not a Regulation
+3. **Misleading scope** — implies only documents cited in eIDAS
+
+**Options Evaluated:**
+
+| Option | Verdict |
+|--------|---------|
+| "External Documents" | ❌ Everything is imported, nothing is truly "external" |
+| "Guidance Documents" | ❌ 765/2008 is a binding regulation, not guidance |
+| "Reference Documents" | ⚠️ Vague |
+| "Resources" | ⚠️ Too informal |
+| **"Supplementary Documents"** | ✅ Accurate — all documents supplement the core eIDAS framework |
+
+**Decision:**
+
+Rename sidebar section from **"Referenced Regulations"** to **"Supplementary Documents"**.
+
+**What "Supplementary" captures:**
+
+- ✅ Binding legislation cited by eIDAS (765/2008, 2015/1501)
+- ✅ Non-binding recommendations (2021/946)
+- ✅ Non-legal guidance (EC FAQ)
+- ✅ Any future contextual documents
+
+**Implementation:**
+
+| File | Change |
+|------|--------|
+| `Sidebar.jsx` | Update `sections` array title |
+| `documents.yaml` | Keep `category: referenced`; UI display name is separate |
+| New FAQ import | Use `category: supplementary` or keep `referenced` |
+
+**Category Values:**
+
+| Category | Description | Examples |
+|----------|-------------|----------|
+| `primary` | Core eIDAS legislation | 910/2014, 2024/1183 |
+| `implementing_act` | Commission implementing regulations | 2024/2977, 2025/0846 |
+| `referenced` | Legal acts cited by eIDAS | 765/2008, 2015/1501 |
+| `supplementary` | NEW: Non-legal guidance resources | EC FAQ |
+
+**Note:** The sidebar groups `referenced` + `supplementary` under "Supplementary Documents" header.
 
