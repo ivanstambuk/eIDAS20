@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 20:25 CET |
-| **Session State** | V3.5.2 — Use Case Mapping Complete (All 7 Phases) |
+| **Last Updated** | 2026-01-20 20:27 CET |
+| **Session State** | V3.5.3 — Use Case Mapping + Retro Complete |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
-| **Next Action** | Commit use case mapping work, continue with other RCA improvements |
+| **Next Action** | Continue RCA improvements or start new feature |
 
 ---
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 20:27 | **Use Case Mapping Complete + Retro (V3.5.3)**: (1) Completed 7-phase use case mapping audit (458 requirements), (2) Found 15 use-case-specific requirements (3.3%), (3) Discovered "Infrastructure Universalism" pattern — TSP/Issuer/PID/CAB/SB are 100% universal, (4) Added DEC-088 Addendum documenting the pattern, (5) Added 3 terms to TERMINOLOGY.md (Service-Facing Role, Infrastructure Role, Infrastructure Universalism), (6) Created USE_CASE_MAPPING_SUMMARY.md consolidating all 7 tracker files, (7) Added use case mapping guidance to AGENTS.md. |
 | 2026-01-20 19:45 | **Requirement ID Alignment (DEC-090)**: (1) Renamed all 458 requirement IDs to match atomic categories from DEC-089, (2) New format: `{ROLE}-{CATEGORY_PREFIX}-{NNN}` (e.g., RP-VER-001, WP-SEC-002), (3) Created transformation script `rename-requirement-ids.cjs`, (4) Requirements reordered by category within each file, (5) Added Rule 12 to AGENTS.md: Plans to Files, Not Chat, (6) Migration mapping saved to `id-migration-map.json`, (7) Updated DECISIONS.md examples with new IDs. |
 | 2026-01-20 19:20 | **Atomic Category Taxonomy (DEC-089)**: (1) Implemented 12 atomic categories as global taxonomy — each represents exactly ONE type of legal obligation (registration, certification, issuance, revocation, verification, technical, interoperability, security, privacy, transparency, governance, liability), (2) Created `categories.yaml` as single source of truth, (3) Updated validator to enforce global categories, (4) Updated build-rca.js to load from global file, (5) Remapped 270 requirements across 7 files (accreditation→registration, reporting→transparency, operational→governance, data-protection→privacy, etc.), (6) Removed per-file category sections, (7) Key principle: Categories = obligation TYPE, Use cases = service CONTEXT. |
 | 2026-01-20 17:10 | **RCA Configuration Validator (DEC-088)**: (1) Implemented `validate-rca.js` script that checks all requirements files at build time, (2) Validates useCases against 19 valid IDs from use-cases.yaml, (3) Validates roles against 7 valid IDs from roles.yaml, (4) Validates categories when defined in file, (5) Added to build pipeline (`npm run validate:rca`), (6) Fixed ~50 pre-existing data quality issues across RP/WP/Issuer files (invalid use case IDs like `pid-proximity`, `eseal`, `timestamp`, duplicate entries, category typos), (7) All 458 requirements now pass validation — prevents future invalid mappings. |

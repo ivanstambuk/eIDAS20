@@ -1937,4 +1937,88 @@ Historical mapping of old→new IDs preserved in:
 | `.agent/session/id-migration-map.json` | NEW: Old→new ID mapping |
 | `DECISIONS.md` | Updated examples to use new IDs |
 
+---
+
+## DEC-091: TSP vs EAA Issuer Role Separation
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Category:** RCA Architecture / Legal Analysis
+
+**Context:**
+
+During the RCA implementation, a question arose: Should EAA Issuer be merged into Trust Service Provider, given that QEAA issuers are legally QTSPs by definition?
+
+Analysis of Article 3(16)(f), 3(19), and 3(20) confirms:
+- Issuing QEAA = providing a qualified trust service = being a QTSP
+- QEAA issuers are **legally identical** to QTSPs
+
+However, web research and legal text analysis revealed a more nuanced picture.
+
+**Key Finding: Three Categories of Attribute Issuers**
+
+| Type | Is a TSP? | Is a QTSP? | Legal Basis |
+|------|-----------|------------|-------------|
+| **QEAA Issuer** | ✅ Yes | ✅ Yes | Article 45d — must appear on Trusted Lists |
+| **Non-qualified EAA Issuer** | ✅ Yes | ❌ No | Article 45e — TSP but not qualified |
+| **Public Authentic Source (PAS)** | ❌ **No** | ❌ No | Article 45f — government bodies, separate notification mechanism |
+
+**Critical Insight — Article 45f(2):**
+
+> "The Member State where public sector bodies... are established shall ensure that the public sector bodies that issue electronic attestations of attributes meet a level of reliability and trustworthiness **equivalent to** qualified trust service providers in accordance with Article 24."
+
+PAS must meet QTSP-equivalent standards but are **NOT QTSPs**:
+- Different notification mechanism (Commission list, not Trusted Lists)
+- Not subject to TSP supervision under Articles 17-21
+- Government entities, not commercial providers
+
+**Decision:**
+
+**Keep TSP and EAA Issuer as separate roles** with the following structure:
+
+| Role | What It Covers | Who Selects It |
+|------|----------------|----------------|
+| **Trust Service Provider** | Base TSP/QTSP obligations (Articles 13-24) | Any trust service provider |
+| **EAA Issuer** | QEAA-specific + PAS obligations (Articles 45d-45h) | Entities issuing attributes to wallets |
+
+**Rationale:**
+
+1. **Service types are orthogonal** — A QTSP providing only e-signatures shouldn't have QEAA requirements (Articles 45d-45h). A QTSP providing QEAA should.
+
+2. **PAS doesn't fit in TSP** — Government authentic sources (Article 45f) are not TSPs. They need a separate role category.
+
+3. **User mental model** — Organizations self-identify as "attribute issuer" or "certificate authority", not by the legal definition of TSP.
+
+4. **Multi-role aggregation handles overlap** — QEAA providers can select TSP (qualified) + EAA Issuer (qualified); the UI deduplicates.
+
+**Acceptable Duplication:**
+
+`issuer.yaml` contains ~17 requirements that duplicate `trust-service-provider.yaml` (Article 24 obligations, 2025/2530 requirements). This is intentional:
+- A QEAA provider selecting only "EAA Issuer (qualified)" gets complete requirements
+- They don't need to understand they're "really" a QTSP
+- User simplicity over data purity
+
+**Role Selection Examples:**
+
+| Organization | Roles to Select | Profiles |
+|--------------|-----------------|----------|
+| Government DMV | EAA Issuer | `public_authentic` |
+| Certificate Authority (signatures only) | TSP | `qualified` |
+| Certificate Authority + QEAA | TSP + EAA Issuer | Both: `qualified` |
+| University issuing diplomas | EAA Issuer | `qualified` or `non_qualified` |
+| Startup issuing gym memberships | EAA Issuer | `non_qualified` |
+
+**Files:**
+
+| File | Purpose |
+|------|---------|
+| `.agent/docs/architecture/rca-role-architecture.md` | Full rationale document |
+| `TERMINOLOGY.md` | New terms: QEAA Issuer, Public Authentic Source |
+
+**External Sources Consulted:**
+
+- europa.eu, european-digital-identity-regulation.com — Article 45f interpretation
+- bundesdruckerei.de, talao.io, luxtrust.com — QEAA/QTSP relationship confirmation
+- eIDAS consolidated text Articles 3, 45d-45h — Primary legal source
+
 
