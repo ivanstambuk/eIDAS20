@@ -66,3 +66,19 @@ roles:
     icon: "🏛️"
     enabled: true
     profiles: []  # No profile differentiation - requirements apply uniformly per Art 5a(5)
+
+  trust_service_provider:
+    label: "Trust Service Provider"
+    shortLabel: "TSP"
+    description: "Provider of trust services (e-signatures, e-seals, timestamps, etc.)"
+    icon: "🔏"
+    enabled: false  # Disabled until audit complete
+    profiles:
+      - id: qualified
+        label: "Qualified (QTSP)"
+        description: "Qualified Trust Service Provider on EU Trusted Lists"
+        icon: "✅"
+      - id: non_qualified
+        label: "Non-Qualified"
+        description: "Standard trust service provider with baseline requirements"
+        icon: "📋"

@@ -1,0 +1,19 @@
+# Trust Service Provider Requirements
+# Providers of trust services (e-signatures, e-seals, timestamps, etc.)
+#
+# Legal basis: Chapter III of Regulation 910/2014 (consolidated)
+#              - Section 2 (Arts 13-18): All Trust Service Providers
+#              - Section 3 (Arts 19-24): Qualified Trust Service Providers
+#              - Annexes I-III: Qualified certificate requirements
+#
+# Profiles:
+#   - qualified: QTSP — higher assurance, on EU Trusted Lists
+#   - non_qualified: Standard TSP — baseline requirements only
+
+schemaVersion: 1
+
+requirements: []
+# To be populated by systematic audit using /rca-audit workflow
+# Primary sources:
+#   - Chapter III of consolidated 910/2014 (Trust Services)
+#   - Implementing acts for trust services (2015/806, etc.)

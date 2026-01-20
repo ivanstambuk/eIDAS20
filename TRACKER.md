@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 00:55 CET |
+| **Last Updated** | 2026-01-20 01:16 CET |
 | **Session State** | V3.2.2 — PID Provider Audit Complete (295 reqs) |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **295 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID) |
-| **Next Action** | Push to GitHub, verify GitHub Pages deployment |
+| **Next Action** | Push to GitHub (`git push`), verify GitHub Pages deployment |
 
 ---
 
