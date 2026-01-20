@@ -3,49 +3,50 @@
 
 ## Current State
 
-- **Focus**: RCA Role Profiles feature complete; EAA Issuer audit next
-- **Next**: Run `/rca-audit` for `issuer` role using issuer.yaml stub
+- **Focus**: RCA now has all 4 roles implemented
+- **Next**: Browser-test the PID Provider in RCA, then push to GitHub
 - **Status**: Ready
-- **Phase**: RCA Expansion
+- **Phase**: RCA Complete
 
 ## Key Files
 
-- `docs-portal/config/rca/roles.yaml` — Role definitions with profiles array
-- `docs-portal/config/rca/requirements/issuer.yaml` — Empty stub for EAA Issuer audit
-- `docs-portal/scripts/build-rca.js` — Processes profiles and profileFilter
-- `docs-portal/src/pages/ComplianceAssessment.jsx` — ProfileSelector component
-- `.agent/workflows/rca-audit.md` — Audit workflow with Profile Filtering section
+- `docs-portal/config/rca/roles.yaml` — 4 roles enabled (RP, WP, Issuer, PID)
+- `docs-portal/config/rca/requirements/pid-provider.yaml` — 30 PID Provider requirements
+- `docs-portal/config/rca/AUDIT_TRACKER_PID.md` — Provision-level audit log
+- `docs-portal/public/data/rca-data.json` — Built RCA data (295 requirements)
 
 ## Context Notes
 
 Things git commits don't capture:
 
-1. **Profile Filtering Logic**: Requirements without `profileFilter` apply to ALL profiles. Requirements with `profileFilter: [id]` only show when that profile is selected in UI.
+1. **PID Provider Role**: No profiles — requirements apply uniformly regardless of whether the Member State issues directly or designates someone. Legal basis: Art 5a(5).
 
-2. **EAA Issuer Profiles**:
-   - `qualified` — Qualified TSP issuing QEAAs (Annex V compliance)
-   - `non_qualified` — Non-qualified provider issuing EAAs
-   - `public_authentic` — Public sector body issuing from authentic sources (Art 45f, Annex VII)
+2. **PID Provider Sources**:
+   - 2024/2977 (PID and EAA) — primary implementing act
+   - Main regulation Art 5a (European Digital Identity Wallets)
+   - NOT Annex I of consolidated reg (that's for e-signature certificates!)
 
-3. **How to Add Profile-Specific Requirements**:
-   ```yaml
-   - id: EAA-QUAL-001
-     requirement: "Meet Annex V requirements"
-     profileFilter: [qualified]  # Only for Qualified TSP
-   ```
+3. **Requirement Categories**:
+   | Category | Count |
+   |----------|-------|
+   | issuance (PID-ISS) | 9 |
+   | revocation (PID-REV) | 10 |
+   | data-quality/technical (PID-DATA) | 5 |
+   | regulatory (PID-REG) | 6 |
 
-4. **WP Audit Source Files**: 
-   - 2024/2979 (Integrity & Core Functions)
-   - 2024/2981 (Certification)
-   - 2024/2982 (Protocols & Interfaces)
-   - 2025/848 (Notified Wallet List)
+4. **Total RCA Coverage Now**:
+   | Role | Requirements | Version |
+   |------|--------------|---------|
+   | Relying Party | 91 | V14 |
+   | Wallet Provider | 132 | V6 |
+   | EAA Issuer | 42 | V3 |
+   | PID Provider | 30 | V1 |
+   | **Total** | **295** | |
 
-5. **Profile IDs Lookup**:
-   | Role | Profile IDs |
-   |------|-------------|
-   | relying_party | `public_sector`, `private_sector` |
-   | issuer | `qualified`, `non_qualified`, `public_authentic` |
-   | wallet_provider | `member_state`, `mandated`, `independent` |
+5. **Potential Future Roles**:
+   - Trust Service Provider (QTSP) — Arts 19-24, Annex I
+   - Conformity Assessment Body (CAB) — Art 5a(11), Annex IV
+   - Supervisory Body — Arts 17, 46a
 
 ## Quick Start
 
@@ -53,8 +54,9 @@ Things git commits don't capture:
 cd ~/dev/eIDAS20/docs-portal && npm run dev
 # RCA page: http://localhost:5173/eIDAS20/#/rca
 
-# For EAA Issuer audit:
-# 1. Read /rca-audit workflow
-# 2. Source files in ~/dev/eIDAS20/02_implementing_acts/
-# 3. Output to docs-portal/config/rca/requirements/issuer.yaml
+# Verify PID Provider in UI:
+# 1. Navigate to RCA
+# 2. Select "PID Provider" role
+# 3. Should see 30 requirements
+# 4. No profile selector (no profiles defined)
 ```

@@ -556,3 +556,35 @@ grep -E "^## [IVXLCDM]+\." path/to/document.md | head -10
 ```
 
 If chapters exist in source but this returns nothing, the converter needs debugging.
+
+---
+
+## 46. PID Dataset Location Clarification (Common Confusion)
+
+**⚠️ The PID dataset is NOT in Annex I of the main eIDAS Regulation (910/2014).**
+
+**Common confusion:**
+- **Annex I of 910/2014** → Requirements for **qualified certificates for electronic signatures** (QTSP content)
+- **Annex V-VII of 910/2014** (added by 2024/1183) → Requirements for **Electronic Attestations of Attributes** (EAA Issuer content)
+- **Annex of 2024/2977** → The actual **PID dataset** (natural/legal person attributes, metadata, encoding formats)
+
+**When auditing PID Provider requirements:**
+```bash
+# Primary source for PID technical specs:
+~/dev/eIDAS20/02_implementing_acts/2024_2977_PID_and_EAA/32024R2977.md
+
+# Main regulation provisions about PID (Article 5a(5)(f)):
+~/dev/eIDAS20/01_regulation/2014_910_eIDAS_Consolidated/02014R0910-20241018.md
+```
+
+**Annex structure summary:**
+| Regulation | Annex | Contains |
+|------------|-------|----------|
+| 910/2014 | Annex I | Qualified certificates for e-signatures |
+| 910/2014 | Annex II | QESCD requirements |
+| 910/2014 | Annex III | Qualified certificates for e-seals |
+| 910/2014 | Annex IV | Web auth certificates |
+| 910/2014 | Annex V | EAA provider info |
+| 910/2014 | Annex VI | EAA content |
+| 910/2014 | Annex VII | EAA authentication |
+| **2024/2977** | **Annex** | **PID attributes + metadata + encoding** |

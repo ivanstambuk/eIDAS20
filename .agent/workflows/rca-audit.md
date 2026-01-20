@@ -243,12 +243,27 @@ For each gap, add to the YAML file:
   useCases: all  # or specific list
 ```
 
+### ⚠️ Verify Requirement Count
+
+**After creating the YAML file, verify the count matches your tracker:**
+
+```bash
+# Count requirements in YAML file
+grep "^  - id:" docs-portal/config/rca/requirements/{role}.yaml | wc -l
+
+# The output should match the count in your AUDIT_TRACKER_{ROLE}.md
+```
+
+**Why this matters:** Manual counting during YAML creation often produces mismatches. Always verify with grep before updating the tracker's summary statistics.
+
 ### ID Conventions
 
 | Role | Prefix | Example |
 |------|--------|---------|
 | relying_party | RP- | RP-REG-001, RP-AUTH-003 |
 | wallet_provider | WP- | WP-CERT-001, WP-SEC-005 |
+| issuer (EAA) | EAA- | EAA-QUAL-001, EAA-REQ-002 |
+| pid_provider | PID- | PID-ISS-001, PID-REV-003 |
 | trust_service_provider | TSP- | TSP-QUAL-001, TSP-AUD-002 |
 
 ### Category Options
