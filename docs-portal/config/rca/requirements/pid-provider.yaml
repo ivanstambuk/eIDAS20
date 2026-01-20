@@ -1,0 +1,637 @@
+# PID Provider Requirements
+# Member State entities (or designees) issuing Person Identification Data
+#
+# Legal basis: Article 5a(5)(f) of Regulation 2024/1183
+#              Implementing Regulation 2024/2977
+# No profiles - requirements apply uniformly to all PID Providers
+
+schemaVersion: 1
+
+requirements:
+  # ============================================
+  # ISSUANCE REQUIREMENTS
+  # Source: 2024/2977 Article 3
+  # ============================================
+
+  - id: PID-ISS-001
+    category: issuance
+    requirement: "Issue PID according to eID scheme"
+    explanation: |
+      PID Providers must issue person identification data to wallet units
+      in accordance with the electronic identification schemes under which
+      wallet solutions are provided.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Providers of person identification data shall issue person identification
+      data to wallet units in accordance with the electronic identification
+      schemes under which wallet solutions are provided.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-002
+    category: issuance
+    requirement: "Include authentication and validation information"
+    explanation: |
+      Each PID issued must contain all information necessary for relying parties
+      to authenticate and validate the person identification data.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "2"
+    legalText: |
+      Providers of person identification data shall ensure that person
+      identification data issued to wallet units contains the information
+      necessary for authentication and validation of the person identification data.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-003
+    category: technical
+    requirement: "Comply with Annex technical specifications"
+    explanation: |
+      All PID issued must comply with the technical specifications set out
+      in the Annex to 2024/2977, including mandatory and optional attributes,
+      metadata, and encoding formats.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "3"
+    legalText: |
+      Providers of person identification data shall ensure that person
+      identification data issued to wallet units comply with the technical
+      specifications set out in the Annex.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-004
+    category: data-quality
+    requirement: "Ensure PID uniqueness within Member State"
+    explanation: |
+      The PID issued to any given wallet user must be unique within that
+      Member State. This prevents identity collision and supports reliable
+      cross-border identification.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "4"
+    legalText: |
+      Member States shall ensure that the person identification data issued
+      to a given wallet user is unique for the Member State.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-005
+    category: security
+    requirement: "Cryptographically bind PID to wallet unit"
+    explanation: |
+      The PID must be cryptographically bound to the specific wallet unit
+      to which it is issued. This prevents copying or transfer of credentials
+      to unauthorized devices.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "5"
+    legalText: |
+      Providers of person identification data shall ensure that person
+      identification data that they issue is cryptographically bound to the
+      wallet unit to which it is issued.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-006
+    category: transparency
+    requirement: "Publish list of supported wallet solutions"
+    explanation: |
+      Member States must make publicly available a list of wallet solutions
+      that are supported by their PID providers as part of electronic
+      identification schemes.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "6"
+    legalText: |
+      Member States shall make publicly available a list of wallet solutions
+      that are supported by providers of person identification data that is
+      part of electronic identification schemes of that Member State.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-007
+    category: identity-verification
+    requirement: "Enroll users at assurance level high"
+    explanation: |
+      Wallet users must be enrolled in accordance with assurance level high
+      requirements from 2015/1502. PID Providers must perform identity
+      verification of the wallet user before issuing PID.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "7"
+    legalText: |
+      Member States shall enroll wallet users in accordance with the requirements
+      relating to enrolment at assurance level high, as set out in Commission
+      Implementing Regulation (EU) 2015/1502. In the context of the enrolment
+      process, providers of person identification data shall perform identity
+      verification of the wallet user in accordance with the requirements related
+      to identity proofing and verification before issuing the person identification
+      data to the wallet unit of the corresponding wallet user.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-008
+    category: authentication
+    requirement: "Identify self to wallet unit during issuance"
+    explanation: |
+      When issuing PID, the provider must authenticate itself to the wallet
+      unit using wallet-relying party access certificates or another mechanism
+      compliant with assurance level high.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "8"
+    legalText: |
+      When issuing person identification data to wallet units, providers of
+      person identification data shall identify themselves to wallet units
+      using their wallet-relying party access certificate or by using another
+      authentication mechanism in accordance with an electronic identity scheme
+      notified at assurance level high.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-ISS-009
+    category: authentication
+    requirement: "Validate wallet unit before issuance"
+    explanation: |
+      Before issuing PID, providers must authenticate and validate the wallet
+      unit attestation and verify the wallet unit belongs to an accepted solution.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 3"
+      paragraph: "9"
+    legalText: |
+      Before issuing person identification data to a wallet unit, providers
+      of person identification data shall authenticate and validate the wallet
+      unit attestation of the wallet unit and verify that the wallet unit
+      belongs to a wallet solution the provider of person identification data
+      accepts or use another authentication mechanism in accordance with an
+      electronic identity scheme notified at assurance level high.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  # ============================================
+  # REVOCATION REQUIREMENTS
+  # Source: 2024/2977 Article 5
+  # ============================================
+
+  - id: PID-REV-001
+    category: operational
+    requirement: "Maintain public revocation policies"
+    explanation: |
+      PID Providers must maintain written, publicly accessible policies
+      relating to validity status management, including conditions for
+      immediate revocation.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "1"
+    legalText: |
+      Providers of person identification data issued to a wallet unit shall
+      have written and publicly accessible policies relating to validity
+      status management, including, where applicable, the conditions under
+      which such person identification data can be revoked without delay.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-002
+    category: operational
+    requirement: "Exclusive revocation authority"
+    explanation: |
+      Only the provider that issued PID can revoke it. No other entity
+      may revoke person identification data.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      Only providers of person identification data or electronic attestation
+      of attributes can revoke the person identification data or electronic
+      attestations of attributes issued by them.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-003
+    category: operational
+    requirement: "Notify user within 24 hours of revocation"
+    explanation: |
+      When PID is revoked, the provider must inform the wallet user within
+      24 hours through secure channels, stating the reasons clearly.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      Where providers of person identification data have revoked person
+      identification data, they shall, through dedicated and secure channels,
+      inform wallet users subject of those person identification data within
+      24 hours of the revocation and of the reasons for the revocation. This
+      shall be done in a manner that is concise, easily accessible and using
+      clear and plain language.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-004
+    category: operational
+    requirement: "Revoke upon user request"
+    explanation: |
+      PID must be revoked upon the explicit request of the wallet user.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "4(a)"
+    legalText: |
+      Where providers of person identification data revoke person identification
+      data issued to wallet units, they shall do so in each of the following
+      circumstances: (a) upon the explicit request of the wallet user to whose
+      wallet unit the person identification data or electronic attestation of
+      attributes were issued to.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-005
+    category: operational
+    requirement: "Revoke when wallet attestation revoked"
+    explanation: |
+      PID must be revoked when the underlying wallet unit attestation is revoked.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "4(b)"
+    legalText: |
+      Where providers of person identification data revoke person identification
+      data issued to wallet units, they shall do so in each of the following
+      circumstances: (b) where the wallet unit attestation to which the person
+      identification data was issued to has been revoked.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-006
+    category: operational
+    requirement: "Revoke per policy conditions"
+    explanation: |
+      PID must be revoked in situations determined by the provider's own policies.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "4(c)"
+    legalText: |
+      Where providers of person identification data revoke person identification
+      data issued to wallet units, they shall do so in each of the following
+      circumstances: (c) in other situations determined by the providers of
+      person identification data or electronic attestations of attributes in
+      their policies referred to in paragraph 1.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-007
+    category: security
+    requirement: "Ensure revocations are irreversible"
+    explanation: |
+      Once PID is revoked, the revocation cannot be reversed.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "5"
+    legalText: |
+      Providers of person identification data issued to a wallet unit shall
+      ensure that revocations cannot be reverted.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-008
+    category: data-retention
+    requirement: "Retain revoked PID as required by law"
+    explanation: |
+      Revoked PID must remain accessible for as long as required by
+      applicable EU or national law.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "6"
+    legalText: |
+      The revoked person identification data shall remain accessible for as
+      long as required by Union law or national law.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-009
+    category: transparency
+    requirement: "Publish validity status in privacy-preserving manner"
+    explanation: |
+      When PID is revoked, providers must make validity status publicly
+      available in a privacy-preserving manner and indicate its location
+      in the PID itself.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "7"
+    legalText: |
+      Where providers of person identification data revoke person identification
+      data issued to wallet units, they shall make publicly available the
+      validity status of person identification data they issue, in a privacy
+      preserving manner, and indicate the location of that information in
+      the person identification data.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REV-010
+    category: data-protection
+    requirement: "Enable privacy-preserving unlinkability"
+    explanation: |
+      PID Providers must enable privacy preserving techniques that ensure
+      unlinkability where attestations do not require user identification.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Article 5"
+      paragraph: "8"
+    legalText: |
+      Providers of person identification data shall enable privacy preserving
+      techniques which ensure unlinkability where the electronic attestations
+      of attributes do not require the identification of the user.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  # ============================================
+  # DATA REQUIREMENTS
+  # Source: 2024/2977 Annex
+  # ============================================
+
+  - id: PID-DATA-001
+    category: data-quality
+    requirement: "Include mandatory natural person attributes"
+    explanation: |
+      PID for natural persons must include mandatory attributes: family_name,
+      given_name, birth_date, birth_place, and nationality.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "Section 1"
+    legalText: |
+      Set of natural person identification data - mandatory attributes:
+      family_name (Current last name(s) or surname(s)), given_name (Current
+      first name(s), including middle name(s)), birth_date (Day, month, and
+      year of birth), birth_place (country, state, or municipality of birth),
+      nationality (alpha-2 country code representing nationality).
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-DATA-002
+    category: technical
+    requirement: "Include mandatory metadata"
+    explanation: |
+      All PID must include mandatory metadata: expiry_date, issuing_authority,
+      and issuing_country.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "Section 3"
+    legalText: |
+      Set of metadata about person identification data - mandatory:
+      expiry_date (Date and if possible time when PID will expire),
+      issuing_authority (Name of the administrative authority that issued
+      the PID, or ISO 3166 alpha-2 country code),
+      issuing_country (Alpha-2 country code of the provider).
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-DATA-003
+    category: technical
+    requirement: "Issue PID in required formats"
+    explanation: |
+      PID must be issued in both required formats: ISO/IEC 18013-5:2021
+      (mDL format) and W3C Verifiable Credentials Data Model 1.1.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "Section 4"
+    legalText: |
+      Person identification data shall be issued in two formats:
+      (1) the format specified in ISO/IEC 18013-5:2021;
+      (2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-DATA-004
+    category: data-quality
+    requirement: "Include mandatory legal person attributes"
+    explanation: |
+      PID for legal persons must include mandatory attributes: current legal
+      name and a unique identifier constructed for cross-border identification.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "Section 2"
+    legalText: |
+      Set of legal person identification data - mandatory:
+      current legal name (mandatory),
+      a unique identifier constructed by the sending Member State in accordance
+      with the technical specifications for the purposes of cross-border
+      identification and which is as persistent as possible in time (mandatory).
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-DATA-005
+    category: data-quality
+    requirement: "Handle unknown attribute values appropriately"
+    explanation: |
+      Where an attribute value is not known or cannot be issued, Member States
+      must use an attribute value appropriate to the situation instead.
+    legalBasis:
+      regulation: "2024/2977"
+      article: "Annex"
+      paragraph: "Section 1 preamble"
+    legalText: |
+      Where an attribute value is not known for the person or cannot otherwise
+      be issued as part of the person identification dataset, Member States
+      shall use an attribute value appropriate to the situation instead.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  # ============================================
+  # MAIN REGULATION REQUIREMENTS
+  # Source: Regulation 910/2014 (consolidated) Article 5a
+  # ============================================
+
+  - id: PID-REG-001
+    category: operational
+    requirement: "Associate PID with wallet ensuring unique representation"
+    explanation: |
+      PID Providers must ensure that the person identification data uniquely
+      represents the natural person, legal person, or representative, and is
+      associated with the European Digital Identity Wallet.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "5(f)"
+    legalText: |
+      European Digital Identity Wallets shall, in particular: (f) ensure that
+      the person identification data, which is available from the electronic
+      identification scheme under which the European Digital Identity Wallet
+      is provided, uniquely represents the natural person, legal person or the
+      natural person representing the natural or legal person, and is associated
+      with that European Digital Identity Wallet.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REG-002
+    category: transparency
+    requirement: "Notify Commission of PID association bodies"
+    explanation: |
+      Member States must notify the Commission of the bodies responsible for
+      ensuring that PID is associated with the wallet.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "18(c)"
+    legalText: |
+      Member States shall, without undue delay, notify the Commission of
+      information about: (c) the bodies responsible for ensuring that the
+      person identification data is associated with the European Digital
+      Identity Wallet in accordance with Article 5a(5), point (f).
+    deadline: "2024-11-21"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REG-003
+    category: transparency
+    requirement: "Notify Commission of PID validation mechanism"
+    explanation: |
+      Member States must notify the Commission of the mechanism allowing
+      validation of person identification data.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "18(d)"
+    legalText: |
+      Member States shall, without undue delay, notify the Commission of
+      information about: (d) the mechanism allowing for the validation of
+      the person identification data referred to in Article 5a(5), point (f),
+      and of the identity of the relying parties.
+    deadline: "2024-11-21"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REG-004
+    category: data-protection
+    requirement: "Comply with GDPR for personal data processing"
+    explanation: |
+      All personal data processing by PID Providers must comply with GDPR
+      and demonstrate such compliance.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "17"
+    legalText: |
+      Any processing of personal data carried out by the Member States or
+      on their behalf by bodies or parties responsible for the provision of
+      European Digital Identity Wallets as electronic identification means
+      shall be carried out in accordance with appropriate and effective data
+      protection measures. Compliance of such processing with Regulation (EU)
+      2016/679 shall be demonstrated.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REG-005
+    category: liability
+    requirement: "Accept liability per Article 11 (mutatis mutandis)"
+    explanation: |
+      PID Providers, through Article 5a(19), are subject to the liability
+      provisions of Article 11, which assigns liability for failures in
+      cross-border transactions.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "19"
+    legalText: |
+      Without prejudice to paragraph 22 of this Article, Article 11 shall
+      apply mutatis mutandis to the European Digital Identity Wallet.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all
+
+  - id: PID-REG-006
+    category: accessibility
+    requirement: "Make services accessible for persons with disabilities"
+    explanation: |
+      PID issuance must be accessible to persons with disabilities on an
+      equal basis with other users, per Directive 2019/882.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 5a"
+      paragraph: "21"
+    legalText: |
+      European Digital Identity Wallets shall be made accessible for use,
+      by persons with disabilities, on an equal basis with other users, in
+      accordance with Directive (EU) 2019/882 of the European Parliament and
+      of the Council.
+    deadline: "2026-11-20"
+    roles:
+      - pid_provider
+    useCases: all

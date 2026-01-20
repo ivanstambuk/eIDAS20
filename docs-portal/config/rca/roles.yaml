@@ -62,7 +62,7 @@ roles:
   pid_provider:
     label: "PID Provider"
     shortLabel: "PID"
-    description: "Member State entity issuing Person Identification Data"
+    description: "Member State entity (or designee) issuing Person Identification Data"
     icon: "🏛️"
-    enabled: false  # Future - not yet implemented
-    profiles: []  # To be defined when role is implemented
+    enabled: true
+    profiles: []  # No profile differentiation - requirements apply uniformly per Art 5a(5)
