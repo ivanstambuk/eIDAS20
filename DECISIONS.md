@@ -1677,3 +1677,108 @@ Each phase produces:
 
 See `/use-case-audit` workflow in `.agent/workflows/use-case-audit.md`.
 
+---
+
+## DEC-089: Atomic Category Taxonomy
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Category:** RCA / Data Model
+
+**Context:**
+
+The original RCA category system had problems:
+1. **Combined concerns** — Categories like "eSignature & Trust Services" mixed service types with obligation types
+2. **Scattered definitions** — Each requirements file defined its own categories
+3. **No validation** — Invalid categories could be committed without error
+4. **Role-specific** — Some categories only applied to 1-2 roles
+
+**Problem:**
+
+```yaml
+# OLD: Combined concerns
+categories:
+  esignature:
+    label: "eSignature & Trust Services"  # ← Service type + trust + legal effect
+
+  operational:
+    label: "Operational & Business"  # ← Operations + business + insurance + liability
+```
+
+**Decision:**
+
+Implement **12 atomic categories**, where each represents exactly ONE type of legal obligation:
+
+| # | ID | Icon | Label | Single Concern |
+|---|-----|------|-------|----------------|
+| 1 | `registration` | 📋 | Registration | Notification, authorization to operate |
+| 2 | `certification` | ✅ | Certification | Conformity assessment, audits |
+| 3 | `issuance` | 📤 | Issuance | Creating and provisioning credentials |
+| 4 | `revocation` | 🚫 | Revocation | Suspension and invalidation |
+| 5 | `verification` | 🔍 | Verification | Identity proofing, authentication |
+| 6 | `technical` | ⚙️ | Technical | Formats, protocols, APIs |
+| 7 | `interoperability` | 🌐 | Interoperability | Cross-border, standards |
+| 8 | `security` | 🔒 | Security | Cybersecurity, cryptography |
+| 9 | `privacy` | 🛡️ | Privacy | Data protection, GDPR |
+| 10 | `transparency` | 👁️ | Transparency | Public disclosure, policies |
+| 11 | `governance` | 🏛️ | Governance | Staffing, procedures |
+| 12 | `liability` | ⚖️ | Liability | Insurance, legal effects |
+
+**Architecture:**
+
+```
+config/rca/categories.yaml     ← SINGLE SOURCE OF TRUTH
+        │
+        ├── validate-rca.js    (loads global categories)
+        └── build-rca.js       (loads global categories)
+        
+requirements/*.yaml            ← NO per-file categories
+```
+
+**Key Design Principle:**
+
+Categories represent **OBLIGATION TYPE** (what kind of requirement), not **SERVICE CONTEXT** (what service it relates to). Service context is handled by the `useCases` field:
+
+| Field | Question It Answers | Examples |
+|-------|---------------------|----------|
+| `category` | What TYPE of obligation? | technical, privacy, security |
+| `useCases` | In what SERVICE CONTEXT? | esignature, pseudonym, mdl |
+
+**Example Mapping:**
+
+A requirement about "signature validation format requirements":
+- **OLD:** `category: esignature` ← Mixed service + technical
+- **NEW:** `category: technical` + `useCases: [esignature]` ← Separated concerns
+
+**Remapping Statistics:**
+
+| Old Category | → New Category | Count |
+|--------------|----------------|-------|
+| `accreditation` | → `registration` | 2 |
+| `notification` | → `registration` | 15 |
+| `reporting` | → `transparency` | 35 |
+| `operational` | → `governance` | 60+ |
+| `data-protection` | → `privacy` | 40+ |
+| `authentication` | → `verification` | 25+ |
+| `functionality` | → `technical` | 50+ |
+| `esignature` | → `technical` | 25+ |
+
+**Total:** 270 requirements remapped across 7 files.
+
+**Benefits:**
+
+1. **Single source of truth** — All categories in one file
+2. **Build-time validation** — Invalid categories fail the build
+3. **Role-agnostic** — Same 12 categories work for all 7 roles
+4. **Clear semantics** — Each category has one meaning
+5. **UI consistency** — Same category icons/labels everywhere
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `config/rca/categories.yaml` | NEW: Global category definitions |
+| `scripts/validate-rca.js` | Loads categories from global file |
+| `scripts/build-rca.js` | Loads categories from global file |
+| `requirements/*.yaml` | Removed per-file categories, remapped all requirements |
+

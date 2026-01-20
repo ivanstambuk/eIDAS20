@@ -504,6 +504,41 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 
 **See:** `/rca-audit` workflow for `profileFilter` syntax and `mutatis mutandis` clause detection.
 
+### RCA Category Taxonomy (12 Atomic Categories)
+
+**Categories are globally defined** in `config/rca/categories.yaml` — the single source of truth.
+
+| ID | Icon | Label | Single Concern |
+|-----|------|-------|----------------|
+| `registration` | 📋 | Registration | Notification, authorization |
+| `certification` | ✅ | Certification | Audits, conformity assessment |
+| `issuance` | 📤 | Issuance | Creating credentials |
+| `revocation` | 🚫 | Revocation | Suspension, invalidation |
+| `verification` | 🔍 | Verification | Identity proofing, auth |
+| `technical` | ⚙️ | Technical | Formats, protocols, APIs |
+| `interoperability` | 🌐 | Interoperability | Cross-border, standards |
+| `security` | 🔒 | Security | Cybersecurity, crypto |
+| `privacy` | 🛡️ | Privacy | GDPR, data protection |
+| `transparency` | 👁️ | Transparency | Disclosure, policies |
+| `governance` | 🏛️ | Governance | Staffing, procedures |
+| `liability` | ⚖️ | Liability | Insurance, legal effects |
+
+**Key principle:** Categories = obligation TYPE, Use cases = service CONTEXT
+
+**Anti-pattern:**
+- ❌ `category: esignature` (mixes service type with obligation type)
+
+**Correct pattern:**
+- ✅ `category: technical` + `useCases: [esignature]` (separated concerns)
+
+### YAML Format Gotcha: `useCases: all` vs `useCases: [all]`
+
+**These are NOT the same:**
+- `useCases: all` → String "all" (VALID — means universal)
+- `useCases: [all]` → Array with one item "all" (INVALID — validator rejects)
+
+**The validator enforces:** If you use `all`, it must be scalar, not array.
+
 **See:** [TERMINOLOGY.md](TERMINOLOGY.md) for full vocabulary.
 
 ---
@@ -518,4 +553,4 @@ Uses **conventional commits**:
 
 ---
 
-*Last updated: 2026-01-19*
+*Last updated: 2026-01-20*

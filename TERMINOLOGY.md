@@ -423,6 +423,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **Role Configuration** | The state model for multi-role selection in the RCA tool. Stored as `Map<roleId, profileIds[]>` where an empty profile array means "all profiles selected." Allows organizations to select multiple roles (e.g., Bank = Relying Party + EAA Issuer) and configure profiles per role. |
 | **Source Roles** | An array on each requirement tracking which roles contributed that requirement during multi-role aggregation. Used for deduplication — a requirement shared by multiple roles appears once with `sourceRoles: ['relying_party', 'issuer']`. Enables requirement badges showing applicability. |
 | **Design A (Multi-Role UI)** | The approved UX pattern for multi-role selection: rich icon cards with checkboxes and inline profile expansion. When a role card is selected, profile options appear directly within the card. Chosen over Design B (config panel below) for its direct visual connection between role and configuration. |
+| **Atomic Category** | A requirement category representing exactly ONE type of legal obligation (e.g., `security`, `privacy`, `technical`). Contrast with combined categories like "eSignature & Trust Services" which mix service types with obligation types. The 12 atomic categories are defined in `categories.yaml`. See DEC-089. |
+| **Category Taxonomy** | The fixed set of 12 atomic categories used to classify all 458 RCA requirements. Categories answer "what TYPE of obligation?" while use cases answer "in what SERVICE CONTEXT?" Defined globally in `config/rca/categories.yaml` — the single source of truth. |
 
 ---
 
