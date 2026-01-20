@@ -88,5 +88,21 @@ roles:
     shortLabel: "CAB"
     description: "Accredited body that audits and certifies qualified trust service providers"
     icon: "🔍"
-    enabled: true  # Audit complete — 31 requirements
+    enabled: true  # Audit complete — 36 requirements
     profiles: []  # No profile differentiation - requirements apply uniformly to all CABs
+
+  supervisory_body:
+    label: "Supervisory Body"
+    shortLabel: "SB"
+    description: "National authority supervising EUDIW providers and/or trust service providers"
+    icon: "⚖️"
+    enabled: true  # Audit complete — 40 requirements
+    profiles:
+      - id: wallet_supervision
+        label: "EUDIW Supervision"
+        description: "Supervisory body for European Digital Identity Wallet providers (Art 46a)"
+        icon: "📱"
+      - id: trust_service_supervision
+        label: "Trust Service Supervision"
+        description: "Supervisory body for qualified/non-qualified trust service providers (Art 46b)"
+        icon: "🔏"

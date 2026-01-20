@@ -1,0 +1,973 @@
+# Supervisory Body Requirements
+# National authorities designated to supervise EUDIW and trust service providers
+#
+# Legal basis:
+#   - Article 17 of Regulation 910/2014 (original supervisory body)
+#   - Article 46a (Supervision of EUDIW Framework) — NEW in eIDAS 2.0
+#   - Article 46b (Supervision of trust services) — replaces original Article 17
+#   - Article 46c (Single points of contact)
+#   - Article 46d (Mutual assistance)
+#   - Article 46e (Cooperation Group)
+#
+# Note: Member States may designate separate bodies for wallet and trust service
+# supervision, or use the same body for both. Profile differentiation reflects this.
+
+schemaVersion: 1
+
+requirements:
+  # ============================================
+  # SECTION 1: DESIGNATION AND RESOURCES
+  # Based on Articles 46a(1-2) and 46b(1-2)
+  # ============================================
+
+  - id: SB-DES-001
+    category: governance
+    requirement: "Member States shall designate one or more supervisory bodies for EUDIW"
+    explanation: |
+      Member States must designate one or more supervisory bodies established in
+      their territory for the EUDIW framework. These bodies must be given necessary
+      powers and adequate resources for effective, efficient and independent operation.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "1"
+    legalText: |
+      Member States shall designate one or more supervisory bodies established in
+      their territory. The supervisory bodies designated pursuant to the first
+      subparagraph shall be given the necessary powers and adequate resources for
+      the exercise of their tasks in an effective, efficient and independent manner.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-DES-002
+    category: governance
+    requirement: "Member States shall designate a supervisory body for trust services"
+    explanation: |
+      Member States must designate a supervisory body for trust service supervision,
+      either in their own territory or upon mutual agreement, in another Member State.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "1"
+    legalText: |
+      Member States shall designate a supervisory body established in their territory
+      or designate, upon mutual agreement with another Member State, a supervisory
+      body established in that other Member State. That supervisory body shall be
+      responsible for supervisory tasks in the designating Member State as regards
+      trust services. The supervisory bodies designated pursuant to the first
+      subparagraph shall be given the necessary powers and adequate resources for
+      the exercise of their tasks.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-DES-003
+    category: notification
+    requirement: "Notify Commission of designated supervisory bodies"
+    explanation: |
+      Member States must notify the Commission of their designated supervisory
+      bodies' names and addresses, and any subsequent changes.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Articles 46a(2), 46b(2)"
+      paragraph: "2"
+    legalText: |
+      Member States shall notify to the Commission the names and the addresses of
+      their supervisory bodies designated pursuant to paragraph 1 and any subsequent
+      changes thereto. The Commission shall publish a list of the notified
+      supervisory bodies.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 2: WALLET SUPERVISION ROLE
+  # Based on Article 46a(3-4)
+  # ============================================
+
+  - id: SB-WALL-001
+    category: supervision
+    requirement: "Supervise EUDIW providers through ex ante and ex post activities"
+    explanation: |
+      Supervisory bodies must supervise EUDIW providers to ensure they and their
+      wallets meet all regulatory requirements through both preventive (ex ante)
+      and reactive (ex post) supervisory activities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "3(a)"
+    legalText: |
+      The role of the supervisory bodies shall be: (a) to supervise providers of
+      European Digital Identity Wallets established in the designating Member State
+      and to ensure, by means of ex ante and ex post supervisory activities, that
+      those providers and European Digital Identity Wallets they provide meet the
+      requirements laid down in this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-002
+    category: enforcement
+    requirement: "Take action on EUDIW provider infringements"
+    explanation: |
+      When informed that EUDIW providers or their wallets infringe the regulation,
+      supervisory bodies must take necessary action through ex post supervision.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "3(b)"
+    legalText: |
+      To take action, if necessary, in relation to providers of European Digital
+      Identity Wallets established in the territory of the designating Member State,
+      by means of ex post supervisory activities, when informed that providers or
+      European Digital Identity Wallets that they provide infringe this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-003
+    category: cooperation
+    requirement: "Cooperate with other supervisory bodies per Articles 46c and 46e"
+    explanation: |
+      Supervisory bodies must cooperate with their counterparts in other Member
+      States and provide assistance in accordance with the single point of contact
+      and Cooperation Group mechanisms.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(a)"
+    legalText: |
+      The tasks of the supervisory bodies shall include, in particular, the following:
+      (a) to cooperate with other supervisory bodies and to provide them with
+      assistance in accordance with Articles 46c and 46e.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-004
+    category: supervision
+    requirement: "Request information to monitor EUDIW compliance"
+    explanation: |
+      Supervisory bodies have the power to request any information necessary
+      to monitor compliance with the regulation from EUDIW providers.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(b)"
+    legalText: |
+      To request information necessary to monitor compliance with this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-005
+    category: incident-response
+    requirement: "Inform NIS2 authorities of significant security breaches"
+    explanation: |
+      When aware of significant security breaches or loss of integrity, supervisory
+      bodies must inform the relevant NIS2 competent authorities and single points
+      of contact, and may require public disclosure.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(c)"
+    legalText: |
+      To inform the relevant competent authorities designated or established pursuant
+      to Article 8(1) of Directive (EU) 2022/2555 of the Member States concerned of
+      any significant security breaches or loss of integrity of which they become
+      aware in the performance of their tasks and, in the case of a significant
+      security breach or loss of integrity which concerns other Member States, to
+      inform the single point of contact designated or established pursuant to
+      Article 8(3) of Directive (EU) 2022/2555 of the Member State concerned and
+      the single points of contact designated pursuant to Article 46c(1) of this
+      Regulation in the other Member States concerned, and to inform the public or
+      require providers of European Digital Identity Wallet to do so where the
+      supervisory body determines that disclosure of the security breach or of the
+      loss of integrity would be in the public interest.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-006
+    category: supervision
+    requirement: "Carry out on-site inspections and off-site supervision"
+    explanation: |
+      Supervisory bodies have the power to conduct both on-site inspections
+      and off-site supervision of EUDIW providers.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(d)"
+    legalText: |
+      To carry out on-site inspections and off-site supervision.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-007
+    category: enforcement
+    requirement: "Require EUDIW providers to remedy non-compliance"
+    explanation: |
+      Supervisory bodies can require EUDIW providers to remedy any failure
+      to fulfil regulatory requirements.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(e)"
+    legalText: |
+      To require that providers of European Digital Identity Wallets remedy any
+      failure to fulfil the requirements laid down in this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-008
+    category: enforcement
+    requirement: "Suspend or cancel relying party registrations for fraud"
+    explanation: |
+      Supervisory bodies can suspend or cancel the relying party registration
+      in cases of illegal or fraudulent use of the EUDIW.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(f)"
+    legalText: |
+      To suspend or cancel the registration and inclusion of relying parties in
+      the mechanism referred to in Article 5b(7) in the case of illegal or
+      fraudulent use of the European Digital Identity Wallet.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-009
+    category: cooperation
+    requirement: "Cooperate with data protection authorities on breaches"
+    explanation: |
+      Supervisory bodies must cooperate with data protection authorities,
+      informing them of personal data protection infringements and breaches.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "4(g)"
+    legalText: |
+      To cooperate with competent supervisory authorities established pursuant
+      to Article 51 of Regulation (EU) 2016/679, in particular, by informing them
+      without undue delay, where personal data protection rules appear to have
+      been infringed and about security breaches which appear to constitute
+      personal data breaches.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-010
+    category: enforcement
+    requirement: "Order suspension or cessation of non-compliant EUDIW provision"
+    explanation: |
+      If an EUDIW provider fails to remedy non-compliance, the supervisory body
+      may order suspension or cessation of wallet provision, notifying other
+      bodies, the Commission, relying parties and users.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "5"
+    legalText: |
+      Where the supervisory body requires the provider of a European Digital
+      Identity Wallet to remedy any failure to fulfil requirements and that
+      provider does not act accordingly and, if applicable, within a time limit
+      set by that supervisory body, the supervisory body may, taking into account,
+      in particular, the extent, duration and consequences of that failure, order
+      the provider to suspend or to cease the provision of the European Digital
+      Identity Wallet. The supervisory body shall inform the supervisory bodies
+      of other Member States, the Commission, relying parties and users of the
+      European Digital Identity Wallet without undue delay of the decision to
+      require the suspension or cessation of the provision.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-WALL-011
+    category: reporting
+    requirement: "Submit annual activity report to Commission by 31 March"
+    explanation: |
+      Each supervisory body must submit an annual report on its main activities
+      to the Commission by 31 March each year.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46a"
+      paragraph: "6"
+    legalText: |
+      By 31 March each year, each supervisory body designated pursuant to
+      paragraph 1 shall submit to the Commission a report on its main activities
+      in the previous calendar year. The Commission shall make those annual
+      reports available to the European Parliament and the Council.
+    deadline: "2024-10-18"
+    profileFilter:
+      - wallet_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 3: TRUST SERVICE SUPERVISION ROLE  
+  # Based on Article 46b(3-4)
+  # ============================================
+
+  - id: SB-TSP-001
+    category: supervision
+    requirement: "Supervise QTSPs through ex ante and ex post activities"
+    explanation: |
+      Supervisory bodies must supervise qualified trust service providers to
+      ensure they and their services meet all regulatory requirements through
+      both preventive and reactive supervision.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "3(a)"
+    legalText: |
+      The role of the supervisory bodies shall be: (a) to supervise qualified
+      trust service providers established in the territory of the designating
+      Member State and to ensure, by means of ex ante and ex post supervisory
+      activities, that those qualified trust service providers and the qualified
+      trust services that they provide meet the requirements laid down in this
+      Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-002
+    category: enforcement
+    requirement: "Take action on non-qualified TSP non-compliance"
+    explanation: |
+      When informed that non-qualified TSPs allegedly do not meet requirements,
+      supervisory bodies must take necessary action through ex post supervision.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "3(b)"
+    legalText: |
+      To take action, if necessary, in relation to non-qualified trust service
+      providers established in the territory of the designating Member State, by
+      means of ex post supervisory activities, when informed that those non-qualified
+      trust service providers or the trust services they provide allegedly do not
+      meet the requirements laid down in this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-003
+    category: incident-response
+    requirement: "Inform NIS2 authorities of trust service security breaches"
+    explanation: |
+      When aware of significant security breaches or loss of integrity affecting
+      trust services, supervisory bodies must inform the relevant NIS2 authorities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(a)"
+    legalText: |
+      To inform the relevant competent authorities designated or established
+      pursuant to Article 8(1) of Directive (EU) 2022/2555 of the Member States
+      concerned of any significant security breach or loss of integrity of which
+      it becomes aware in the performance of its tasks and, in the case of a
+      significant security breach or loss of integrity which concerns other Member
+      States, to inform the single point of contact...and to inform the public or
+      require the trust service provider to do so where the supervisory body
+      determines that disclosure of the breach of security or loss of integrity
+      would be in the public interest.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-004
+    category: cooperation
+    requirement: "Cooperate with other supervisory bodies per Articles 46c and 46e"
+    explanation: |
+      Trust service supervisory bodies must cooperate with their counterparts
+      in other Member States through the single point of contact and Cooperation
+      Group mechanisms.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(b)"
+    legalText: |
+      To cooperate with other supervisory bodies and to provide them with
+      assistance in accordance with Articles 46c and 46e.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-005
+    category: supervision
+    requirement: "Analyse conformity assessment reports from CABs"
+    explanation: |
+      Supervisory bodies must analyse the conformity assessment reports
+      submitted by QTSPs per Articles 20(1) and 21(1).
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(c)"
+    legalText: |
+      To analyse the conformity assessment reports referred to in Article 20(1)
+      and Article 21(1).
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-006
+    category: reporting
+    requirement: "Submit annual activity report to Commission by 31 March"
+    explanation: |
+      Each trust service supervisory body must submit an annual report on
+      its main activities to the Commission by 31 March each year.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(d), 6"
+    legalText: |
+      To report to the Commission about its main activities in accordance with
+      paragraph 6 of this Article. By 31 March each year, each supervisory body
+      shall submit to the Commission a report on its main activities in the
+      previous calendar year.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-007
+    category: supervision
+    requirement: "Carry out audits or request CAB conformity assessments"
+    explanation: |
+      Supervisory bodies can audit QTSPs directly or request a CAB to perform
+      a conformity assessment at the QTSP's expense.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(e)"
+    legalText: |
+      To carry out audits or request a conformity assessment body to perform a
+      conformity assessment of the qualified trust service providers in accordance
+      with Article 20(2).
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-008
+    category: cooperation
+    requirement: "Cooperate with data protection authorities on TSP breaches"
+    explanation: |
+      Trust service supervisory bodies must cooperate with data protection
+      authorities, informing them of personal data violations and security breaches.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(f)"
+    legalText: |
+      To cooperate with competent supervisory authorities established pursuant
+      to Article 51 of Regulation (EU) 2016/679, in particular, by informing them,
+      without undue delay, where personal data protection rules appear to have
+      been breached and about security breaches which appear to constitute personal
+      data breaches.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-009
+    category: enforcement
+    requirement: "Grant qualified status to TSPs and services per Arts 20/21"
+    explanation: |
+      Supervisory bodies have exclusive authority to grant qualified status
+      to trust service providers and their services.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(g)"
+    legalText: |
+      To grant qualified status to trust service providers and to the services
+      they provide, and to withdraw that status in accordance with Articles 20
+      and 21.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-010
+    category: notification
+    requirement: "Inform trusted list body of qualified status decisions"
+    explanation: |
+      When granting or withdrawing qualified status, supervisory bodies must
+      inform the body responsible for the national trusted list.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(h)"
+    legalText: |
+      To inform the body responsible for the national trusted list referred to
+      in Article 22(3) of its decisions to grant or withdraw qualified status,
+      unless that body is also the supervisory body designated pursuant to
+      paragraph 1 of this Article.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-011
+    category: supervision
+    requirement: "Verify QTSP termination plans per Article 24(2)(h)"
+    explanation: |
+      Supervisory bodies must verify that QTSPs have proper termination plans
+      and that information remains accessible when they cease activities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(i)"
+    legalText: |
+      To verify the existence and correct application of provisions on termination
+      plans where the qualified trust service provider ceases its activities,
+      including how information is kept accessible in accordance with Article 24(2),
+      point (h).
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-012
+    category: enforcement
+    requirement: "Require TSPs to remedy non-compliance with regulation"
+    explanation: |
+      Supervisory bodies can require trust service providers to remedy any
+      failure to fulfil regulatory requirements.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(j)"
+    legalText: |
+      To require that trust service providers remedy any failure to fulfil the
+      requirements laid down in this Regulation.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-013
+    category: enforcement
+    requirement: "Investigate web-browser claims on QWAC certificates"
+    explanation: |
+      Supervisory bodies must investigate claims made by web browser providers
+      regarding qualified website authentication certificates.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "4(k)"
+    legalText: |
+      To investigate claims made by providers of web-browsers pursuant to
+      Article 45a and to take action if necessary.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-TSP-014
+    category: governance
+    requirement: "May establish and maintain trust infrastructure per national law"
+    explanation: |
+      Member States may require their supervisory body to establish, maintain
+      and update a trust infrastructure in accordance with national law.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46b"
+      paragraph: "5"
+    legalText: |
+      Member States may require the supervisory body designated pursuant to
+      paragraph 1 to establish, maintain and update a trust infrastructure in
+      accordance with national law.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 4: SINGLE POINTS OF CONTACT
+  # Based on Article 46c
+  # ============================================
+
+  - id: SB-SPOC-001
+    category: cooperation
+    requirement: "Member States shall designate a single point of contact"
+    explanation: |
+      Each Member State must designate a single point of contact for trust
+      services, EUDIW, and notified electronic identification schemes.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46c"
+      paragraph: "1"
+    legalText: |
+      Each Member State shall designate a single point of contact for trust
+      services, European Digital Identity Wallets and notified electronic
+      identification schemes.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-SPOC-002
+    category: cooperation
+    requirement: "SPOC exercises liaison function for cross-border cooperation"
+    explanation: |
+      The single point of contact facilitates cross-border cooperation between
+      supervisory bodies for TSPs and EUDIW providers, and with the Commission,
+      ENISA, and other competent authorities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46c"
+      paragraph: "2"
+    legalText: |
+      Each single point of contact shall exercise a liaison function to facilitate
+      cross-border cooperation between the supervisory bodies for trust service
+      providers and between the supervisory bodies for the providers of European
+      Digital Identity Wallets and, where appropriate, with the Commission and
+      European Union Agency for Cybersecurity (ENISA) and with other competent
+      authorities within its Member State.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-SPOC-003
+    category: notification
+    requirement: "Make SPOC contact details public and notify Commission"
+    explanation: |
+      Member States must make their single point of contact details public
+      and notify the Commission of any changes.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46c"
+      paragraph: "3"
+    legalText: |
+      Each Member State shall make public and, without undue delay, notify to
+      the Commission the names and the addresses of the single point of contact
+      designated pursuant to paragraph 1 and any subsequent change thereto.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 5: MUTUAL ASSISTANCE
+  # Based on Article 46d
+  # ============================================
+
+  - id: SB-MA-001
+    category: cooperation
+    requirement: "May seek mutual assistance from other Member States' supervisory bodies"
+    explanation: |
+      Supervisory bodies may seek mutual assistance from their counterparts
+      in other Member States for supervision and enforcement of obligations.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46d"
+      paragraph: "1"
+    legalText: |
+      In order to facilitate the supervision and enforcement of obligations under
+      this Regulation, the supervisory bodies designated pursuant to Article 46a(1)
+      and Article 46b(1) may seek, including through the Cooperation Group
+      established pursuant to Article 46e(1), mutual assistance from the supervisory
+      bodies of another Member State where the provider of the European Digital
+      Identity Wallet or the trust service provider is established, or where its
+      network and information systems are located or its services are provided.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-MA-002
+    category: cooperation
+    requirement: "Inform and consult supervisory body in other Member State"
+    explanation: |
+      When applying supervisory and enforcement measures, bodies must inform
+      and consult the supervisory body from the other Member State concerned.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46d"
+      paragraph: "2(a)"
+    legalText: |
+      The mutual assistance shall at least entail that: (a) the supervisory body
+      applying supervisory and enforcement measures in one Member State shall
+      inform and consult the supervisory body from the other Member State concerned.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-MA-003
+    category: cooperation
+    requirement: "May request another supervisory body to take supervisory measures"
+    explanation: |
+      A supervisory body may request another Member State's body to take
+      supervisory or enforcement measures, including conformity assessment
+      inspections.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46d"
+      paragraph: "2(b)"
+    legalText: |
+      A supervisory body may request the supervisory body of another Member State
+      concerned to take supervisory or enforcement measures, including, for instance,
+      requests to carry out inspections related to the conformity assessment reports
+      as referred to in Articles 20 and 21 regarding the provision of trust services.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-MA-004
+    category: cooperation
+    requirement: "May carry out joint investigations with other Member States"
+    explanation: |
+      Where appropriate, supervisory bodies may conduct joint investigations
+      with their counterparts in other Member States.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46d"
+      paragraph: "2(c)"
+    legalText: |
+      Where appropriate, supervisory bodies may carry out joint investigations
+      with the supervisory bodies of other Member States. The arrangements and
+      procedures for joint actions under the first subparagraph shall be agreed
+      upon and established by the Member States concerned in accordance with
+      their national law.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-MA-005
+    category: cooperation
+    requirement: "May refuse assistance on proportionality or competence grounds"
+    explanation: |
+      A supervisory body may refuse a request for assistance if it is
+      disproportionate, outside their competence, or incompatible with the regulation.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46d"
+      paragraph: "3"
+    legalText: |
+      A supervisory body to which a request for assistance is addressed may refuse
+      that request on any of the following grounds: (a) the assistance requested
+      is not proportionate to the supervisory activities carried out in accordance
+      with Articles 46a and 46b; (b) the supervisory body is not competent to
+      provide the requested assistance; (c) providing the requested assistance
+      would be incompatible with this Regulation.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 6: COOPERATION GROUP PARTICIPATION
+  # Based on Article 46e
+  # ============================================
+
+  - id: SB-COOP-001
+    category: cooperation
+    requirement: "Participate in European Digital Identity Cooperation Group"
+    explanation: |
+      Member States must appoint representatives to the Cooperation Group
+      which supports cross-border cooperation on trust services, EUDIW, and
+      electronic identification schemes.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46e"
+      paragraph: "2"
+    legalText: |
+      The Cooperation Group shall be composed of representatives appointed by
+      the Member States and of the Commission. The Cooperation Group shall be
+      chaired by the Commission. The Commission shall provide the Cooperation
+      Group's Secretariat.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-COOP-002
+    category: cooperation
+    requirement: "Exchange best practices on policy implementation"
+    explanation: |
+      Through the Cooperation Group, supervisory bodies exchange best practices
+      and information about implementing the regulation, assess sector developments,
+      and discuss cybersecurity aspects.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46e"
+      paragraph: "5(c)"
+    legalText: |
+      The Cooperation Group shall have the following tasks: (c) in order to support
+      the supervisory bodies in the implementation of the provisions of this
+      Regulation: (i) exchange best practices and information regarding the
+      implementation of the provisions of this Regulation; (ii) assess the relevant
+      developments in the digital identity wallet, electronic identification and
+      trust services sectors; (iv) with the support of ENISA, exchange views,
+      best practices and information on relevant cybersecurity aspects concerning
+      European Digital Identity Wallets, electronic identification schemes and
+      trust services.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-COOP-003
+    category: cooperation
+    requirement: "Organise joint meetings with NIS Cooperation Group"
+    explanation: |
+      The Cooperation Group organizes joint meetings with the NIS Cooperation
+      Group to exchange information on cyber threats, incidents, and standards.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46e"
+      paragraph: "5(c)(vi)"
+    legalText: |
+      Organise joint meetings with the NIS Cooperation Group established pursuant
+      to Article 14(1) of Directive (EU) 2022/2555 to exchange relevant information
+      in relation to trust services and electronic identification related cyber
+      threats, incidents, vulnerabilities, awareness raising initiatives, trainings,
+      exercises and skills, capacity building, standards and technical specifications.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-COOP-004
+    category: cooperation
+    requirement: "Participate in peer reviews of eID schemes to be notified"
+    explanation: |
+      Through the Cooperation Group, supervisory bodies participate in
+      peer reviews of electronic identification schemes before notification.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46e"
+      paragraph: "5(d)"
+    legalText: |
+      The Cooperation Group shall have the following tasks: (d) organise peer
+      reviews of electronic identification schemes to be notified under this
+      Regulation.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  - id: SB-COOP-005
+    category: cooperation
+    requirement: "Ensure effective and efficient cooperation in Cooperation Group"
+    explanation: |
+      Member States must ensure their designated representatives participate
+      effectively and efficiently in the Cooperation Group.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 46e"
+      paragraph: "6"
+    legalText: |
+      Member States shall ensure effective and efficient cooperation of their
+      designated representatives in the Cooperation Group.
+    deadline: "2024-10-18"
+    roles:
+      - supervisory_body
+    useCases: all
+
+  # ============================================
+  # SECTION 7: ORIGINAL ART 17/18 PROVISIONS
+  # (Legacy, mostly replaced by 46a-46e but some still apply)
+  # ============================================
+
+  - id: SB-SEC-001
+    category: incident-response
+    requirement: "Provide annual breach summary to ENISA"
+    explanation: |
+      The supervisory body must provide ENISA once a year with a summary
+      of breach of security and loss of integrity notifications received
+      from trust service providers.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19"
+      paragraph: "3"
+    legalText: |
+      The supervisory body shall provide ENISA once a year with a summary of
+      notifications of breach of security and loss of integrity received from
+      trust service providers.
+    deadline: "2024-10-18"
+    profileFilter:
+      - trust_service_supervision
+    roles:
+      - supervisory_body
+    useCases: all
