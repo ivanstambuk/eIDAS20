@@ -16,7 +16,7 @@
 # AUDIT: 2026-01-20 - Added WP-DP-003a with profileFilter for mandated/independent providers (Art 45h(3))
 # Schema version 6 - Added profileFilter for private provider functional separation requirement
 
-schemaVersion: 6
+schemaVersion: 7
 
 # Requirement categories for grouping in the UI
 categories:
@@ -2272,9 +2272,7 @@ requirements:
       with wallet-relying parties.
     roles:
       - wallet_provider
-    useCases:
-      - authentication
-      - presentation
+    useCases: all
 
   - id: WP-PROT-002
     category: interoperability
@@ -2291,9 +2289,7 @@ requirements:
       other wallet units where interacting with other wallet units.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - proximity
+    useCases: all
 
   - id: WP-PROT-003
     category: interoperability
@@ -2311,9 +2307,7 @@ requirements:
       units, where applicable.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - authentication
+    useCases: all
 
   - id: WP-PROT-004
     category: interoperability
@@ -2330,8 +2324,7 @@ requirements:
       registration certificate, where applicable.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-005
     category: transparency
@@ -2348,8 +2341,7 @@ requirements:
       wallet-relying party access certificates or in the wallet unit attestations.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-006
     category: transparency
@@ -2366,8 +2358,7 @@ requirements:
       that wallet users are requested to present.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-007
     category: transparency
@@ -2384,8 +2375,7 @@ requirements:
       contained in the wallet-relying party registration certificate.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-008
     category: interoperability
@@ -2402,9 +2392,7 @@ requirements:
       wallet-relying parties or wallet units that request it.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - authentication
+    useCases: all
 
   - id: WP-PROT-009
     category: security
@@ -2427,8 +2415,7 @@ requirements:
       wallet users have partially or in full approved the presentation.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-010
     category: privacy
@@ -2449,9 +2436,7 @@ requirements:
       wallet-relying parties.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - privacy
+    useCases: all
 
   - id: WP-PROT-011
     category: interoperability
@@ -2470,8 +2455,7 @@ requirements:
       electronic attestations of attributes to wallet units.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
+    useCases: all
 
   - id: WP-PROT-012
     category: security
@@ -2496,8 +2480,7 @@ requirements:
       electronic attestations of attributes.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
+    useCases: all
 
   - id: WP-PROT-013
     category: interoperability
@@ -2518,8 +2501,7 @@ requirements:
       Article 8 of Implementing Regulation (EU) 2024/2979.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
+    useCases: all
 
   - id: WP-PROT-014
     category: interoperability
@@ -2539,9 +2521,7 @@ requirements:
       to those providers upon their request.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
-      - authentication
+    useCases: all
 
   - id: WP-PROT-015
     category: security
@@ -2560,8 +2540,7 @@ requirements:
       set out in Commission Implementing Regulation (EU) 2015/1502.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
+    useCases: all
 
   - id: WP-PROT-016
     category: security
@@ -2578,8 +2557,7 @@ requirements:
       of person identification data and electronic attestations of attributes.
     roles:
       - wallet_provider
-    useCases:
-      - issuance
+    useCases: all
 
   - id: WP-PROT-017
     category: interoperability
@@ -2599,9 +2577,7 @@ requirements:
       with the standards set out in the Annex.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - proximity
+    useCases: all
 
   - id: WP-PROT-018
     category: interoperability
@@ -2620,8 +2596,7 @@ requirements:
       with the standards set out in the Annex.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
+    useCases: all
 
   - id: WP-PROT-019
     category: security
@@ -2639,9 +2614,7 @@ requirements:
       cryptographic bindings.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - signature
+    useCases: all
 
   - id: WP-PROT-020
     category: privacy
@@ -2659,9 +2632,7 @@ requirements:
       and of electronic attestations of attributes.
     roles:
       - wallet_provider
-    useCases:
-      - presentation
-      - privacy
+    useCases: all
 
   - id: WP-PROT-021
     category: data_protection
@@ -2681,8 +2652,7 @@ requirements:
       accordance with Article 17 of Regulation (EU) 2016/679.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
   - id: WP-PROT-022
     category: data_protection
@@ -2700,8 +2670,7 @@ requirements:
       erasure requests are to be submitted.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
   - id: WP-PROT-023
     category: transparency
@@ -2718,8 +2687,7 @@ requirements:
       data erasure requests made through those wallet units.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
   - id: WP-PROT-024
     category: data_protection
@@ -2737,8 +2705,7 @@ requirements:
       established under Article 51 of Regulation (EU) 2016/679.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
   - id: WP-PROT-025
     category: interoperability
@@ -2756,8 +2723,7 @@ requirements:
       procedural laws of the Member States.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
   - id: WP-PROT-026
     category: data_protection
@@ -2776,6 +2742,5 @@ requirements:
       in machine-readable format.
     roles:
       - wallet_provider
-    useCases:
-      - data_management
+    useCases: all
 
