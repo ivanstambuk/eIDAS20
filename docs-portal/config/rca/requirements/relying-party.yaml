@@ -361,7 +361,8 @@ requirements:
     deadline: "2024-05-20"
     roles:
       - relying_party
-    useCases: all
+    useCases:
+      - pseudonym
   - id: RP-PRV-010
     category: privacy
     bindingType: mandatory
