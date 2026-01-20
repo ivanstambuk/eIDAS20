@@ -9,7 +9,7 @@
 #   - qualified: QTSP — higher assurance, on EU Trusted Lists
 #   - non_qualified: Standard TSP — baseline requirements only
 
-schemaVersion: 1
+schemaVersion: 2
 
 requirements:
   # ============================================
@@ -1558,6 +1558,409 @@ requirements:
       they have issued in a manner that ensures the integrity and authenticity
       of that information.
     deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 11: IMPLEMENTING REGULATION 2025/1566
+  # Identity Verification Standards for QTSPs
+  # ============================================
+
+  - id: TSP-IA-IDPROOF-001
+    category: operational
+    requirement: "Comply with ETSI identity verification standards"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs issuing qualified certificates or QEAAs must verify identity
+      in conformance with ETSI TS 119 461 and its adaptations.
+    legalBasis:
+      regulation: "2025/1566"
+      article: "Article 1"
+      paragraph: "1"
+    legalText: |
+      The reference standards and specifications referred to in Article 24(1c)
+      of Regulation (EU) No 910/2014 are set out in the Annex (ETSI TS 119 461).
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-IDPROOF-002
+    category: assessment
+    requirement: "Use accredited CABs for biometric verification assessment"
+    profileFilter: [qualified]
+    explanation: |
+      When using automated identity proofing, CABs assessing the process must
+      be accredited per Article 3(18) of 910/2014, with formal certification
+      based on security evaluation per eID LoA or EUDI Wallet standards.
+    legalBasis:
+      regulation: "2025/1566"
+      article: "Annex"
+      paragraph: "(3) QTS-C.3.4-06A"
+    legalText: |
+      The independent conformity assessment body shall be accredited as per
+      Article 3(18) of 910/2014, and the assessment should result in a
+      certificate of compliance based on certification audit with rigorous
+      security testing against potential threats.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-IDPROOF-003
+    category: operational
+    requirement: "Establish FAR/FRR targets for automated identity proofing"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs using fully automated identity proofing must establish target
+      values for False Acceptance Rate and False Rejection Rate based on
+      risk analysis and threat intelligence, using ENISA methodology.
+    legalBasis:
+      regulation: "2025/1566"
+      article: "Annex"
+      paragraph: "(4) USE-9.2.3.4-04"
+    legalText: |
+      The IPSP shall establish target values for the FAR and FRR, based on
+      a risk analysis and its threats intelligence procedure, by following
+      the methodology established in the ENISA report 'Methodology for
+      sectoral cybersecurity assessments' or equivalent methodology.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-IDPROOF-004
+    category: assessment
+    requirement: "Test identity document validation measures every 2 years"
+    profileFilter: [qualified]
+    explanation: |
+      Effectiveness of identity document validation measures must be tested
+      by an accredited laboratory or national competent authority by
+      August 2027 and then repeated every two years.
+    legalBasis:
+      regulation: "2025/1566"
+      article: "Annex"
+      paragraph: "(5) VAL-8.3.3-21"
+    legalText: |
+      The effectiveness of measures for complying with identity document
+      validation requirements shall be tested by an accredited laboratory
+      or national competent authority, at latest by 19 August 2027 and
+      then be repeated every second year.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 12: IMPLEMENTING REGULATION 2025/1567
+  # Remote QSCD Management Standards
+  # ============================================
+
+  - id: TSP-IA-RQSCD-001
+    category: technical
+    requirement: "Comply with ETSI remote QSCD management standards"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs providing remote QSCD management services must comply with
+      ETSI TS 119 431-1 (EU Server Signing Application Service v2 Policy).
+    legalBasis:
+      regulation: "2025/1567"
+      article: "Article 1"
+      paragraph: "1"
+    legalText: |
+      The reference standards and specifications for the management of remote
+      qualified electronic signature creation devices and remote qualified
+      electronic seal creation devices are set out in the Annex (ETSI TS 119 431-1).
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-RQSCD-002
+    category: transparency
+    requirement: "Make service information publicly and internationally available"
+    profileFilter: [qualified]
+    explanation: |
+      Remote QSCD management service providers must make required information
+      (practice statements, policies) publicly and internationally available.
+    legalBasis:
+      regulation: "2025/1567"
+      article: "Annex"
+      paragraph: "(2) OVR-6.1-04"
+    legalText: |
+      The information identified in OVR-6.1-01 above shall be publicly and
+      internationally available.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-RQSCD-003
+    category: technical
+    requirement: "Use ENISA-compliant cryptographic techniques"
+    profileFilter: [qualified]
+    explanation: |
+      Remote QSCD management providers must use cryptographic techniques
+      compliant with ENISA Agreed Cryptographic Mechanisms.
+    legalBasis:
+      regulation: "2025/1567"
+      article: "Annex"
+      paragraph: "(6) OVR-6.8.5-02"
+    legalText: |
+      The SSASP shall select and use suitable cryptographic techniques
+      compliant with the Agreed Cryptographic Mechanisms endorsed by the
+      European Cybersecurity Certification Group and published by ENISA.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-RQSCD-004
+    category: transparency
+    requirement: "Include QSCD certification reference in practice statement"
+    profileFilter: [qualified]
+    explanation: |
+      Remote QSCD management providers must include in their practice
+      statement the reference to the certification of the employed QSCD.
+    legalBasis:
+      regulation: "2025/1567"
+      article: "Annex"
+      paragraph: "(7) OVR-A.3-02"
+    legalText: |
+      The TSP's practice statement shall include the reference to the
+      certification of the employed QSCD in accordance with the requirements
+      of Regulation (EU) No 910/2014, Annex II.
+    deadline: "2027-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 13: IMPLEMENTING REGULATION 2025/1572  
+  # Qualified Service Initiation Requirements
+  # ============================================
+
+  - id: TSP-IA-INIT-001
+    category: notification
+    requirement: "Provide 8 mandatory information items when notifying intention"
+    profileFilter: [qualified]
+    explanation: |
+      TSPs intending to start qualified services must provide comprehensive
+      information in their notification including legal entity details,
+      contact info, URIs, risk analysis, service types, and termination plan.
+    legalBasis:
+      regulation: "2025/1572"
+      article: "Article 3"
+      paragraph: "1-8"
+    legalText: |
+      Trust service providers shall provide at least: (1) legal person name/
+      registration; (2) natural person ID; (3) contact details; (4) URIs for
+      policies and statements; (5) risk analysis per Art. 24(2)(fa) and
+      NIS2 Art. 21; (6) each qualified trust service intended; (7) service
+      details; (8) termination plan per Art. 24(2)(i).
+    deadline: "2026-08-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 14: IMPLEMENTING REGULATION 2025/2532
+  # Qualified Electronic Archiving Services
+  # ============================================
+
+  - id: TSP-IA-ARCHIVE-001
+    category: technical
+    requirement: "Maintain signature/seal trustworthiness beyond validity period"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified archiving providers must ensure qualified signatures/seals
+      remain trustworthy beyond their technological validity period,
+      maintaining integrity and accuracy of origin throughout preservation.
+    legalBasis:
+      regulation: "2025/2532"
+      article: "Article 1"
+      paragraph: "1"
+    legalText: |
+      Providers of qualified electronic archiving services shall ensure that
+      the trustworthiness of qualified electronic signatures or seals is
+      maintained, including beyond their technological validity period, and
+      that integrity and accuracy of origin is maintained, at least until
+      the end of the legal or contractual preservation period.
+    deadline: "2026-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-ARCHIVE-002
+    category: technical
+    requirement: "Comply with CEN/TS 18170 archiving standards"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified archiving providers must comply with CEN/TS 18170 standard
+      with specified adaptations, including OAIS reference model.
+    legalBasis:
+      regulation: "2025/2532"
+      article: "Article 2"
+      paragraph: "1 / Annex"
+    legalText: |
+      The reference standards and specifications are set out in the Annex:
+      CEN/TS 18170:2025 applies with adaptations including references to
+      ETSI EN 319401, ETSI EN 319421, ISO 14721:2025 (OAIS), and ENISA
+      Agreed Cryptographic Mechanisms.
+    deadline: "2026-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-ARCHIVE-003
+    category: transparency
+    requirement: "Inform subscribers clearly before entering contractual relationship"
+    profileFilter: [qualified]
+    explanation: |
+      Archiving providers must inform subscribers and relying parties
+      of terms and conditions in a clear, comprehensive, and easily
+      accessible manner before entering into a contractual relationship.
+    legalBasis:
+      regulation: "2025/2532"
+      article: "Annex"
+      paragraph: "(c)"
+    legalText: |
+      Subscribers and parties relying on the electronic archiving trust
+      service shall be informed, in a clear, comprehensive and easily
+      accessible manner, in a publicly accessible space and individually,
+      of precise terms and conditions, before entering into a contractual
+      relationship.
+    deadline: "2026-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-ARCHIVE-004
+    category: technical
+    requirement: "Use qualified signatures/seals when establishing data origin"
+    profileFilter: [qualified]
+    explanation: |
+      When establishing the origin of data to be archived, if archiving
+      providers use electronic signatures or seals, those must be qualified.
+    legalBasis:
+      regulation: "2025/2532"
+      article: "Annex"
+      paragraph: "(e)"
+    legalText: |
+      The origin of the data to be archived in the electronic archiving
+      system shall be established by the EATSP. If they use electronic
+      signatures or electronic seals to do so, those electronic signatures
+      or electronic seals shall be qualified.
+    deadline: "2026-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-ARCHIVE-005
+    category: technical
+    requirement: "Use qualified timestamps for archiving events"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified archiving providers must use qualified timestamps
+      when timestamping archiving events.
+    legalBasis:
+      regulation: "2025/2532"
+      article: "Annex"
+      paragraph: "(i)"
+    legalText: |
+      When using timestamps the EATSP shall use a qualified timestamp.
+    deadline: "2026-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 15: CROSS-CUTTING NETWORK SECURITY
+  # Common requirements across multiple implementing acts
+  # ============================================
+
+  - id: TSP-IA-SEC-001
+    category: security
+    requirement: "Perform quarterly vulnerability scans"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must perform vulnerability scans at least quarterly. This
+      requirement appears in implementing acts for timestamps, validation,
+      certificates, registered delivery, archiving, and remote QSCD.
+    legalBasis:
+      regulation: "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567"
+      article: "Various Annexes"
+      paragraph: "OVR/REQ network security clauses"
+    legalText: |
+      The vulnerability scan requested by REQ-7.8-13 of ETSI EN 319401
+      shall be performed at least once per quarter.
+    deadline: "2025-10-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-SEC-002
+    category: security
+    requirement: "Perform annual penetration tests"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must perform penetration tests at least annually. This
+      requirement appears in implementing acts for timestamps, validation,
+      certificates, registered delivery, archiving, and remote QSCD.
+    legalBasis:
+      regulation: "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532"
+      article: "Various Annexes"
+      paragraph: "OVR/REQ network security clauses"
+    legalText: |
+      The penetration test requested by REQ-7.8-17X of ETSI EN 319401
+      shall be performed at least once per year.
+    deadline: "2025-10-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-SEC-003
+    category: security
+    requirement: "Configure firewalls to prevent unnecessary access"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must configure firewalls to prevent all protocols and accesses
+      not required for the operation of the TSP. This is a common
+      requirement across multiple service-specific implementing acts.
+    legalBasis:
+      regulation: "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567"
+      article: "Various Annexes"
+      paragraph: "OVR/REQ network security clauses"
+    legalText: |
+      Firewalls shall be configured to prevent all protocols and accesses
+      not required for the operation of the TSP.
+    deadline: "2025-10-19"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 16: CROSS-CUTTING PERSONNEL REQUIREMENTS
+  # Common requirements across multiple implementing acts
+  # ============================================
+
+  - id: TSP-IA-PERS-001
+    category: operational
+    requirement: "Provide annual security training updates to personnel"
+    profileFilter: [qualified]
+    explanation: |
+      QTSP personnel in trusted roles must receive regular updates
+      (at least every 12 months) on new threats and current security
+      practices. This is a common requirement across all service types.
+    legalBasis:
+      regulation: "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567"
+      article: "Various Annexes"
+      paragraph: "OVR/REQ personnel security clauses"
+    legalText: |
+      Compliance shall include regular updates (at least every 12 months)
+      on new threats and current security practices.
+    deadline: "2025-10-19"
     roles:
       - trust_service_provider
     useCases: all

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T00:54:07.369Z",
+  "generatedAt": "2026-01-20T00:59:50.395Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -561,6 +561,16 @@
     {
       "id": "accessibility",
       "label": "accessibility",
+      "order": 999
+    },
+    {
+      "id": "assessment",
+      "label": "assessment",
+      "order": 999
+    },
+    {
+      "id": "notification",
+      "label": "notification",
       "order": 999
     },
     {
@@ -9781,6 +9791,780 @@
       "appliesToAllProfiles": false
     },
     {
+      "id": "TSP-IA-IDPROOF-001",
+      "category": "operational",
+      "requirement": "Comply with ETSI identity verification standards",
+      "explanation": "QTSPs issuing qualified certificates or QEAAs must verify identity\nin conformance with ETSI TS 119 461 and its adaptations.",
+      "legalBasis": {
+        "regulation": "2025/1566",
+        "article": "Article 1",
+        "paragraph": "1"
+      },
+      "legalText": "The reference standards and specifications referred to in Article 24(1c)\nof Regulation (EU) No 910/2014 are set out in the Annex (ETSI TS 119 461).",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-IDPROOF-002",
+      "category": "assessment",
+      "requirement": "Use accredited CABs for biometric verification assessment",
+      "explanation": "When using automated identity proofing, CABs assessing the process must\nbe accredited per Article 3(18) of 910/2014, with formal certification\nbased on security evaluation per eID LoA or EUDI Wallet standards.",
+      "legalBasis": {
+        "regulation": "2025/1566",
+        "article": "Annex",
+        "paragraph": "(3) QTS-C.3.4-06A"
+      },
+      "legalText": "The independent conformity assessment body shall be accredited as per\nArticle 3(18) of 910/2014, and the assessment should result in a\ncertificate of compliance based on certification audit with rigorous\nsecurity testing against potential threats.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-IDPROOF-003",
+      "category": "operational",
+      "requirement": "Establish FAR/FRR targets for automated identity proofing",
+      "explanation": "QTSPs using fully automated identity proofing must establish target\nvalues for False Acceptance Rate and False Rejection Rate based on\nrisk analysis and threat intelligence, using ENISA methodology.",
+      "legalBasis": {
+        "regulation": "2025/1566",
+        "article": "Annex",
+        "paragraph": "(4) USE-9.2.3.4-04"
+      },
+      "legalText": "The IPSP shall establish target values for the FAR and FRR, based on\na risk analysis and its threats intelligence procedure, by following\nthe methodology established in the ENISA report 'Methodology for\nsectoral cybersecurity assessments' or equivalent methodology.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-IDPROOF-004",
+      "category": "assessment",
+      "requirement": "Test identity document validation measures every 2 years",
+      "explanation": "Effectiveness of identity document validation measures must be tested\nby an accredited laboratory or national competent authority by\nAugust 2027 and then repeated every two years.",
+      "legalBasis": {
+        "regulation": "2025/1566",
+        "article": "Annex",
+        "paragraph": "(5) VAL-8.3.3-21"
+      },
+      "legalText": "The effectiveness of measures for complying with identity document\nvalidation requirements shall be tested by an accredited laboratory\nor national competent authority, at latest by 19 August 2027 and\nthen be repeated every second year.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-RQSCD-001",
+      "category": "technical",
+      "requirement": "Comply with ETSI remote QSCD management standards",
+      "explanation": "QTSPs providing remote QSCD management services must comply with\nETSI TS 119 431-1 (EU Server Signing Application Service v2 Policy).",
+      "legalBasis": {
+        "regulation": "2025/1567",
+        "article": "Article 1",
+        "paragraph": "1"
+      },
+      "legalText": "The reference standards and specifications for the management of remote\nqualified electronic signature creation devices and remote qualified\nelectronic seal creation devices are set out in the Annex (ETSI TS 119 431-1).",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-RQSCD-002",
+      "category": "transparency",
+      "requirement": "Make service information publicly and internationally available",
+      "explanation": "Remote QSCD management service providers must make required information\n(practice statements, policies) publicly and internationally available.",
+      "legalBasis": {
+        "regulation": "2025/1567",
+        "article": "Annex",
+        "paragraph": "(2) OVR-6.1-04"
+      },
+      "legalText": "The information identified in OVR-6.1-01 above shall be publicly and\ninternationally available.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-RQSCD-003",
+      "category": "technical",
+      "requirement": "Use ENISA-compliant cryptographic techniques",
+      "explanation": "Remote QSCD management providers must use cryptographic techniques\ncompliant with ENISA Agreed Cryptographic Mechanisms.",
+      "legalBasis": {
+        "regulation": "2025/1567",
+        "article": "Annex",
+        "paragraph": "(6) OVR-6.8.5-02"
+      },
+      "legalText": "The SSASP shall select and use suitable cryptographic techniques\ncompliant with the Agreed Cryptographic Mechanisms endorsed by the\nEuropean Cybersecurity Certification Group and published by ENISA.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-RQSCD-004",
+      "category": "transparency",
+      "requirement": "Include QSCD certification reference in practice statement",
+      "explanation": "Remote QSCD management providers must include in their practice\nstatement the reference to the certification of the employed QSCD.",
+      "legalBasis": {
+        "regulation": "2025/1567",
+        "article": "Annex",
+        "paragraph": "(7) OVR-A.3-02"
+      },
+      "legalText": "The TSP's practice statement shall include the reference to the\ncertification of the employed QSCD in accordance with the requirements\nof Regulation (EU) No 910/2014, Annex II.",
+      "legalSourceInfo": null,
+      "deadline": "2027-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-INIT-001",
+      "category": "notification",
+      "requirement": "Provide 8 mandatory information items when notifying intention",
+      "explanation": "TSPs intending to start qualified services must provide comprehensive\ninformation in their notification including legal entity details,\ncontact info, URIs, risk analysis, service types, and termination plan.",
+      "legalBasis": {
+        "regulation": "2025/1572",
+        "article": "Article 3",
+        "paragraph": "1-8"
+      },
+      "legalText": "Trust service providers shall provide at least: (1) legal person name/\nregistration; (2) natural person ID; (3) contact details; (4) URIs for\npolicies and statements; (5) risk analysis per Art. 24(2)(fa) and\nNIS2 Art. 21; (6) each qualified trust service intended; (7) service\ndetails; (8) termination plan per Art. 24(2)(i).",
+      "legalSourceInfo": null,
+      "deadline": "2026-08-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-ARCHIVE-001",
+      "category": "technical",
+      "requirement": "Maintain signature/seal trustworthiness beyond validity period",
+      "explanation": "Qualified archiving providers must ensure qualified signatures/seals\nremain trustworthy beyond their technological validity period,\nmaintaining integrity and accuracy of origin throughout preservation.",
+      "legalBasis": {
+        "regulation": "2025/2532",
+        "article": "Article 1",
+        "paragraph": "1"
+      },
+      "legalText": "Providers of qualified electronic archiving services shall ensure that\nthe trustworthiness of qualified electronic signatures or seals is\nmaintained, including beyond their technological validity period, and\nthat integrity and accuracy of origin is maintained, at least until\nthe end of the legal or contractual preservation period.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-ARCHIVE-002",
+      "category": "technical",
+      "requirement": "Comply with CEN/TS 18170 archiving standards",
+      "explanation": "Qualified archiving providers must comply with CEN/TS 18170 standard\nwith specified adaptations, including OAIS reference model.",
+      "legalBasis": {
+        "regulation": "2025/2532",
+        "article": "Article 2",
+        "paragraph": "1 / Annex"
+      },
+      "legalText": "The reference standards and specifications are set out in the Annex:\nCEN/TS 18170:2025 applies with adaptations including references to\nETSI EN 319401, ETSI EN 319421, ISO 14721:2025 (OAIS), and ENISA\nAgreed Cryptographic Mechanisms.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-ARCHIVE-003",
+      "category": "transparency",
+      "requirement": "Inform subscribers clearly before entering contractual relationship",
+      "explanation": "Archiving providers must inform subscribers and relying parties\nof terms and conditions in a clear, comprehensive, and easily\naccessible manner before entering into a contractual relationship.",
+      "legalBasis": {
+        "regulation": "2025/2532",
+        "article": "Annex",
+        "paragraph": "(c)"
+      },
+      "legalText": "Subscribers and parties relying on the electronic archiving trust\nservice shall be informed, in a clear, comprehensive and easily\naccessible manner, in a publicly accessible space and individually,\nof precise terms and conditions, before entering into a contractual\nrelationship.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-ARCHIVE-004",
+      "category": "technical",
+      "requirement": "Use qualified signatures/seals when establishing data origin",
+      "explanation": "When establishing the origin of data to be archived, if archiving\nproviders use electronic signatures or seals, those must be qualified.",
+      "legalBasis": {
+        "regulation": "2025/2532",
+        "article": "Annex",
+        "paragraph": "(e)"
+      },
+      "legalText": "The origin of the data to be archived in the electronic archiving\nsystem shall be established by the EATSP. If they use electronic\nsignatures or electronic seals to do so, those electronic signatures\nor electronic seals shall be qualified.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-ARCHIVE-005",
+      "category": "technical",
+      "requirement": "Use qualified timestamps for archiving events",
+      "explanation": "Qualified archiving providers must use qualified timestamps\nwhen timestamping archiving events.",
+      "legalBasis": {
+        "regulation": "2025/2532",
+        "article": "Annex",
+        "paragraph": "(i)"
+      },
+      "legalText": "When using timestamps the EATSP shall use a qualified timestamp.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-SEC-001",
+      "category": "security",
+      "requirement": "Perform quarterly vulnerability scans",
+      "explanation": "QTSPs must perform vulnerability scans at least quarterly. This\nrequirement appears in implementing acts for timestamps, validation,\ncertificates, registered delivery, archiving, and remote QSCD.",
+      "legalBasis": {
+        "regulation": "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567",
+        "article": "Various Annexes",
+        "paragraph": "OVR/REQ network security clauses"
+      },
+      "legalText": "The vulnerability scan requested by REQ-7.8-13 of ETSI EN 319401\nshall be performed at least once per quarter.",
+      "legalSourceInfo": null,
+      "deadline": "2025-10-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-SEC-002",
+      "category": "security",
+      "requirement": "Perform annual penetration tests",
+      "explanation": "QTSPs must perform penetration tests at least annually. This\nrequirement appears in implementing acts for timestamps, validation,\ncertificates, registered delivery, archiving, and remote QSCD.",
+      "legalBasis": {
+        "regulation": "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532",
+        "article": "Various Annexes",
+        "paragraph": "OVR/REQ network security clauses"
+      },
+      "legalText": "The penetration test requested by REQ-7.8-17X of ETSI EN 319401\nshall be performed at least once per year.",
+      "legalSourceInfo": null,
+      "deadline": "2025-10-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-SEC-003",
+      "category": "security",
+      "requirement": "Configure firewalls to prevent unnecessary access",
+      "explanation": "QTSPs must configure firewalls to prevent all protocols and accesses\nnot required for the operation of the TSP. This is a common\nrequirement across multiple service-specific implementing acts.",
+      "legalBasis": {
+        "regulation": "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567",
+        "article": "Various Annexes",
+        "paragraph": "OVR/REQ network security clauses"
+      },
+      "legalText": "Firewalls shall be configured to prevent all protocols and accesses\nnot required for the operation of the TSP.",
+      "legalSourceInfo": null,
+      "deadline": "2025-10-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-IA-PERS-001",
+      "category": "operational",
+      "requirement": "Provide annual security training updates to personnel",
+      "explanation": "QTSP personnel in trusted roles must receive regular updates\n(at least every 12 months) on new threats and current security\npractices. This is a common requirement across all service types.",
+      "legalBasis": {
+        "regulation": "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567",
+        "article": "Various Annexes",
+        "paragraph": "OVR/REQ personnel security clauses"
+      },
+      "legalText": "Compliance shall include regular updates (at least every 12 months)\non new threats and current security practices.",
+      "legalSourceInfo": null,
+      "deadline": "2025-10-19",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qualified"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
       "id": "WP-PROV-001",
       "category": "issuance",
       "requirement": "Provide at least one European Digital Identity Wallet",
@@ -17500,7 +18284,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "pseudonym": [
         "TSP-LIA-001",
@@ -17569,7 +18371,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "esignature": [
         "TSP-LIA-001",
@@ -17638,7 +18458,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "payment-auth": [
         "TSP-LIA-001",
@@ -17707,7 +18545,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "open-bank-account": [
         "TSP-LIA-001",
@@ -17776,7 +18632,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "mdl": [
         "TSP-LIA-001",
@@ -17845,7 +18719,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "dtc": [
         "TSP-LIA-001",
@@ -17914,7 +18806,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "epc": [
         "TSP-LIA-001",
@@ -17983,7 +18893,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "vrc": [
         "TSP-LIA-001",
@@ -18052,7 +18980,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "disability-card": [
         "TSP-LIA-001",
@@ -18121,7 +19067,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "eprescription": [
         "TSP-LIA-001",
@@ -18190,7 +19154,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "ehic": [
         "TSP-LIA-001",
@@ -18259,7 +19241,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "public-warnings": [
         "TSP-LIA-001",
@@ -18328,7 +19328,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "age-verification": [
         "TSP-LIA-001",
@@ -18397,7 +19415,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "ticket-pass": [
         "TSP-LIA-001",
@@ -18466,7 +19502,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "edu-credentials": [
         "TSP-LIA-001",
@@ -18535,7 +19589,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "student-card": [
         "TSP-LIA-001",
@@ -18604,7 +19676,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "proximity-id": [
         "TSP-LIA-001",
@@ -18673,7 +19763,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ],
       "representation": [
         "TSP-LIA-001",
@@ -18742,7 +19850,25 @@
         "TSP-IA-QEAA-003",
         "TSP-IA-QEAA-004",
         "TSP-IA-QEAA-005",
-        "TSP-IA-QEAA-006"
+        "TSP-IA-QEAA-006",
+        "TSP-IA-IDPROOF-001",
+        "TSP-IA-IDPROOF-002",
+        "TSP-IA-IDPROOF-003",
+        "TSP-IA-IDPROOF-004",
+        "TSP-IA-RQSCD-001",
+        "TSP-IA-RQSCD-002",
+        "TSP-IA-RQSCD-003",
+        "TSP-IA-RQSCD-004",
+        "TSP-IA-INIT-001",
+        "TSP-IA-ARCHIVE-001",
+        "TSP-IA-ARCHIVE-002",
+        "TSP-IA-ARCHIVE-003",
+        "TSP-IA-ARCHIVE-004",
+        "TSP-IA-ARCHIVE-005",
+        "TSP-IA-SEC-001",
+        "TSP-IA-SEC-002",
+        "TSP-IA-SEC-003",
+        "TSP-IA-PERS-001"
       ]
     },
     "wallet_provider": {
@@ -20635,14 +21761,14 @@
     }
   },
   "stats": {
-    "totalRequirements": 362,
+    "totalRequirements": 380,
     "totalUseCases": 19,
     "totalCategories": 8,
     "requirementsByRole": {
       "issuer": 42,
       "pid_provider": 30,
       "relying_party": 91,
-      "trust_service_provider": 67,
+      "trust_service_provider": 85,
       "wallet_provider": 132
     }
   }
