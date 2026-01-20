@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T16:18:27.307Z",
+  "generatedAt": "2026-01-20T18:10:57.800Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -494,166 +494,93 @@
   "requirementCategories": [
     {
       "id": "registration",
-      "label": "Registration & Authorization",
+      "label": "Registration",
+      "description": "Notification and authorization to operate",
       "order": 1,
-      "icon": "📝"
+      "icon": "📋"
+    },
+    {
+      "id": "certification",
+      "label": "Certification",
+      "description": "Conformity assessment and audits",
+      "order": 2,
+      "icon": "✅"
+    },
+    {
+      "id": "issuance",
+      "label": "Issuance",
+      "description": "Creating and provisioning credentials",
+      "order": 3,
+      "icon": "📤"
+    },
+    {
+      "id": "revocation",
+      "label": "Revocation",
+      "description": "Suspension and invalidation",
+      "order": 4,
+      "icon": "🚫"
+    },
+    {
+      "id": "verification",
+      "label": "Verification",
+      "description": "Identity proofing and authentication",
+      "order": 5,
+      "icon": "🔍"
     },
     {
       "id": "technical",
-      "label": "Technical Requirements",
-      "order": 2,
+      "label": "Technical",
+      "description": "Formats, protocols, and APIs",
+      "order": 6,
       "icon": "⚙️"
     },
     {
-      "id": "authentication",
-      "label": "Authentication & Verification",
-      "order": 3,
-      "icon": "🔐"
-    },
-    {
-      "id": "esignature",
-      "label": "eSignature & Trust Services",
-      "order": 4,
-      "icon": "✍️"
-    },
-    {
-      "id": "data-protection",
-      "label": "Data Protection & Privacy",
-      "order": 5,
-      "icon": "🛡️"
+      "id": "interoperability",
+      "label": "Interoperability",
+      "description": "Cross-border and standards",
+      "order": 7,
+      "icon": "🌐"
     },
     {
       "id": "security",
       "label": "Security",
-      "order": 6,
+      "description": "Cybersecurity and cryptography",
+      "order": 8,
       "icon": "🔒"
     },
     {
-      "id": "operational",
-      "label": "Operational Requirements",
-      "order": 7,
-      "icon": "📋"
-    },
-    {
-      "id": "accreditation",
-      "label": "accreditation",
-      "order": 999
+      "id": "privacy",
+      "label": "Privacy",
+      "description": "Data protection and GDPR",
+      "order": 9,
+      "icon": "🛡️"
     },
     {
       "id": "transparency",
-      "label": "transparency",
-      "order": 999
-    },
-    {
-      "id": "reporting",
-      "label": "reporting",
-      "order": 999
-    },
-    {
-      "id": "notification",
-      "label": "notification",
-      "order": 999
-    },
-    {
-      "id": "transition",
-      "label": "transition",
-      "order": 999
-    },
-    {
-      "id": "issuance",
-      "label": "issuance",
-      "order": 999
-    },
-    {
-      "id": "revocation",
-      "label": "revocation",
-      "order": 999
-    },
-    {
-      "id": "certification",
-      "label": "certification",
-      "order": 999
-    },
-    {
-      "id": "interoperability",
-      "label": "interoperability",
-      "order": 999
-    },
-    {
-      "id": "data_protection",
-      "label": "data_protection",
-      "order": 999
-    },
-    {
-      "id": "verification",
-      "label": "verification",
-      "order": 999
-    },
-    {
-      "id": "data-quality",
-      "label": "data-quality",
-      "order": 999
-    },
-    {
-      "id": "identity-verification",
-      "label": "identity-verification",
-      "order": 999
-    },
-    {
-      "id": "data-retention",
-      "label": "data-retention",
-      "order": 999
-    },
-    {
-      "id": "liability",
-      "label": "liability",
-      "order": 999
-    },
-    {
-      "id": "accessibility",
-      "label": "accessibility",
-      "order": 999
+      "label": "Transparency",
+      "description": "Public disclosure and policies",
+      "order": 10,
+      "icon": "👁️"
     },
     {
       "id": "governance",
-      "label": "governance",
-      "order": 999
+      "label": "Governance",
+      "description": "Staffing and procedures",
+      "order": 11,
+      "icon": "🏛️"
     },
     {
-      "id": "supervision",
-      "label": "supervision",
-      "order": 999
-    },
-    {
-      "id": "enforcement",
-      "label": "enforcement",
-      "order": 999
-    },
-    {
-      "id": "cooperation",
-      "label": "cooperation",
-      "order": 999
-    },
-    {
-      "id": "incident-response",
-      "label": "incident-response",
-      "order": 999
-    },
-    {
-      "id": "assessment",
-      "label": "assessment",
-      "order": 999
-    },
-    {
-      "id": "functionality",
-      "label": "functionality",
-      "order": 999
+      "id": "liability",
+      "label": "Liability",
+      "description": "Insurance and legal effects",
+      "order": 12,
+      "icon": "⚖️"
     }
   ],
   "requirements": [
     {
       "id": "CAB-ACC-001",
-      "category": "accreditation",
+      "category": "registration",
       "requirement": "Be accredited per EN ISO/IEC 17065:2012 and ETSI EN 319403-1 v2.3.1",
       "explanation": "CABs must be accredited in accordance with standard EN ISO/IEC 17065:2012\nsupplemented by standard ETSI EN 319403-1 v2.3.1 for the purposes of\nmaking certification decisions.",
       "legalBasis": {
@@ -694,7 +621,7 @@
     },
     {
       "id": "CAB-ACC-002",
-      "category": "accreditation",
+      "category": "registration",
       "requirement": "Undergo accreditation by NABs per EN ISO/IEC 17011:2017",
       "explanation": "CAB accreditation must be performed by a national accreditation body\nthat complies with standard EN ISO/IEC 17011:2017.",
       "legalBasis": {
@@ -776,7 +703,7 @@
     },
     {
       "id": "CAB-CERT-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Ensure subcontractors comply with reference standards",
       "explanation": "When subcontracting conformity assessment activities, CABs must ensure\nsubcontractors comply with the standards set out in Annex I of 2025/2162\nfor the specific activity being subcontracted.",
       "legalBasis": {
@@ -817,7 +744,7 @@
     },
     {
       "id": "CAB-CERT-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Enable QTSPs to submit complete reports to supervisory bodies",
       "explanation": "Upon issuing a certification decision, CABs must ensure that the\nQTSP can submit the complete conformity assessment reports to\nsupervisory bodies.",
       "legalBasis": {
@@ -858,7 +785,7 @@
     },
     {
       "id": "CAB-SCHEME-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Use conformity assessment schemes compliant with ISO/IEC 17067:2013 type 6",
       "explanation": "CABs must use conformity assessment schemes that comply with scheme\ntype 6 of standard EN ISO/IEC 17067:2013 and the requirements of\nthe implementing regulation.",
       "legalBasis": {
@@ -899,7 +826,7 @@
     },
     {
       "id": "CAB-SCHEME-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Include reference standards from Annex II in schemes",
       "explanation": "CABs must use schemes that include at least the standards set out\nin Annex II of 2025/2162, identifying the year and version number.",
       "legalBasis": {
@@ -940,7 +867,7 @@
     },
     {
       "id": "CAB-SCHEME-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Conduct yearly surveillance assessments for each qualified service",
       "explanation": "CABs must conduct at least one surveillance conformity assessment\nannually for every evaluated qualified trust service.",
       "legalBasis": {
@@ -981,7 +908,7 @@
     },
     {
       "id": "CAB-REPORT-001",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Produce conformity assessment reports per Annex III specifications",
       "explanation": "CABs must produce conformity assessment reports that comply with the\ndetailed specifications set out in Annex III of 2025/2162.",
       "legalBasis": {
@@ -1022,7 +949,7 @@
     },
     {
       "id": "CAB-REPORT-002",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include clear certification decision confirming compliance",
       "explanation": "Reports must be accompanied by a clear certification decision\nconfirming whether the assessed QTSP and services meet eIDAS and\nNIS2 requirements.",
       "legalBasis": {
@@ -1063,7 +990,7 @@
     },
     {
       "id": "CAB-REPORT-003",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Specify QTSP identity and all subsidiaries/subcontractors",
       "explanation": "Reports must include the QTSP name, registration number, addresses,\nand the same for all subsidiaries, affiliated entities, contractors\nand subcontractors operating trust service components.",
       "legalBasis": {
@@ -1104,7 +1031,7 @@
     },
     {
       "id": "CAB-REPORT-004",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include detailed assessment scope description",
       "explanation": "Reports must include a detailed description of the scope of assessment,\nincluding the specific qualified trust services covered.",
       "legalBasis": {
@@ -1145,7 +1072,7 @@
     },
     {
       "id": "CAB-REPORT-005",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Contain sufficient evidence demonstrating compliance",
       "explanation": "Reports must contain sufficient evidence to demonstrate that the\nQTSP and services fulfil eIDAS and NIS2 requirements.",
       "legalBasis": {
@@ -1186,7 +1113,7 @@
     },
     {
       "id": "CAB-REPORT-006",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Specify CAB identity and accreditation details",
       "explanation": "Reports must specify the CAB name, registration number, addresses,\nNAB details, assessor names and roles, accreditation certificate link,\nand conformity assessment scheme identification.",
       "legalBasis": {
@@ -1227,7 +1154,7 @@
     },
     {
       "id": "CAB-REPORT-007",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include qualified electronic signature on reports",
       "explanation": "Electronic reports must contain at least one qualified electronic\nsignature identifying the responsible person authorised to adopt\nthe certification decision.",
       "legalBasis": {
@@ -1268,7 +1195,7 @@
     },
     {
       "id": "CAB-REPORT-008",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Identify all service digital identities per trust service type",
       "explanation": "Reports must identify service digital identities per type of qualified\ntrust service, including URIs for non-PKI services and detailed PKI\ncertificate information for PKI-based services.",
       "legalBasis": {
@@ -1309,7 +1236,7 @@
     },
     {
       "id": "CAB-REPORT-009",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Provide detailed PKI hierarchy description",
       "explanation": "For PKI-based services, reports must include a detailed description\nof the public key infrastructure functional hierarchy including\nroot, intermediate, and issuing CAs and certificate policy sets.",
       "legalBasis": {
@@ -1350,7 +1277,7 @@
     },
     {
       "id": "CAB-REPORT-010",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "List all third parties and subcontractors with assessment scope",
       "explanation": "Reports must include an exhaustive list of third parties and\nsubcontractors providing trust service components, indicating\nwhether they were subject to the conformity assessment.",
       "legalBasis": {
@@ -1391,7 +1318,7 @@
     },
     {
       "id": "CAB-REPORT-011",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include exhaustive list of 14 categories of QTSP documentation",
       "explanation": "Reports must include a comprehensive list of all QTSP internal and\npublic documents reviewed, including practice statements, policies,\nterms, termination plans, risk documentation, security breach plans,\nand corporate documents.",
       "legalBasis": {
@@ -1432,7 +1359,7 @@
     },
     {
       "id": "CAB-REPORT-012",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Assess compliance with all applicable implementing acts",
       "explanation": "Reports must contain an assessment of fulfilment of requirements\nfrom all applicable service-specific implementing acts adopted\nunder eIDAS for the specific qualified trust service types.",
       "legalBasis": {
@@ -1473,7 +1400,7 @@
     },
     {
       "id": "CAB-REPORT-013",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Assess compliance with NIS2 Article 21 requirements",
       "explanation": "Reports must contain an assessment of fulfilment of cybersecurity\nrequirements under Article 21 of Directive (EU) 2022/2555 (NIS2).",
       "legalBasis": {
@@ -1514,7 +1441,7 @@
     },
     {
       "id": "CAB-REPORT-014",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Declare absence of non-conformities or provide remediation plan",
       "explanation": "Reports must declare absence of any non-conformities, or if any are\nidentified, include a corrective action plan with timescales and\nplanned evaluation tasks.",
       "legalBasis": {
@@ -1555,7 +1482,7 @@
     },
     {
       "id": "CAB-REPORT-015",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Identify opportunities for improvement where appropriate",
       "explanation": "Reports may contain recommendations for improvement concerning\nthe QTSP's fulfilment of relevant requirements.",
       "legalBasis": {
@@ -1596,7 +1523,7 @@
     },
     {
       "id": "CAB-REPORT-016",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Document assessment period and person-days for each stage",
       "explanation": "Reports must identify the period and time taken (in person-days)\nfor each stage of the conformity assessment including documentation\naudit, implementation assessment, and onsite inspections.",
       "legalBasis": {
@@ -1637,7 +1564,7 @@
     },
     {
       "id": "CAB-REPORT-017",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include test results and production samples assessment",
       "explanation": "Reports must include the scope, description, and results of a\nsignificant set of tests or production samples for all relevant\ntypes of outputs from the assessed qualified trust services.",
       "legalBasis": {
@@ -1678,7 +1605,7 @@
     },
     {
       "id": "CAB-REPORT-018",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Specify surveillance and next assessment deadlines",
       "explanation": "Reports must indicate the deadline for the next surveillance\nconformity assessment and the next full conformity assessment\nper Article 20(1).",
       "legalBasis": {
@@ -1719,7 +1646,7 @@
     },
     {
       "id": "CAB-REPORT-019",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Include declaration that reports are for supervisory body use",
       "explanation": "Reports must contain an explicit declaration that the certification\ndocuments are also intended for use by the competent national\nsupervisory body.",
       "legalBasis": {
@@ -1760,7 +1687,7 @@
     },
     {
       "id": "CAB-CHANGE-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Inform QTSPs of impacts from accreditation reconsideration",
       "explanation": "When a CAB receives a request from the NAB to take measures due to\nscheme changes, it must inform its assessed QTSPs of any impacts\nthe reconsideration may have, including on future certification\ndecisions.",
       "legalBasis": {
@@ -1801,7 +1728,7 @@
     },
     {
       "id": "CAB-SUB-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Use EN ISO/IEC 17025:2017 for subcontracted testing",
       "explanation": "When subcontracting testing activities, CABs must ensure the\nsubcontractor complies with EN ISO/IEC 17025:2017.",
       "legalBasis": {
@@ -1842,7 +1769,7 @@
     },
     {
       "id": "CAB-SUB-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Use EN ISO/IEC 17021-1:2015 for subcontracted management system audits",
       "explanation": "When subcontracting audit activities of management systems, CABs\nmust ensure the subcontractor complies with EN ISO/IEC 17021-1:2015.",
       "legalBasis": {
@@ -1883,7 +1810,7 @@
     },
     {
       "id": "CAB-SUB-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Use EN ISO/IEC 17020:2012 for subcontracted inspections",
       "explanation": "When subcontracting inspection activities, CABs must ensure the\nsubcontractor complies with EN ISO/IEC 17020:2012.",
       "legalBasis": {
@@ -1924,7 +1851,7 @@
     },
     {
       "id": "CAB-SUB-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Use EN ISO/IEC 17065:2012 for subcontracted conformity assessments",
       "explanation": "When subcontracting conformity assessment activities, CABs must\nensure the subcontractor complies with EN ISO/IEC 17065:2012.",
       "legalBasis": {
@@ -1965,7 +1892,7 @@
     },
     {
       "id": "CAB-REG-001",
-      "category": "notification",
+      "category": "registration",
       "requirement": "Member States must notify CAB names, addresses, and accreditation details",
       "explanation": "This is a Member State obligation that affects CABs: their details\nmust be notified to the Commission and made available to all\nMember States.",
       "legalBasis": {
@@ -2006,7 +1933,7 @@
     },
     {
       "id": "CAB-REG-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Audit QTSPs at least every 24 months at QTSP expense",
       "explanation": "CABs perform audits of qualified trust service providers at least\nevery 24 months. The audit confirms that QTSPs and their services\nmeet eIDAS and NIS2 requirements.",
       "legalBasis": {
@@ -2047,7 +1974,7 @@
     },
     {
       "id": "CAB-REG-003",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Issue conformity assessment report for QTSP initiation",
       "explanation": "CABs issue the conformity assessment report that trust service\nproviders must submit to supervisory bodies when they intend to\nstart providing a qualified trust service.",
       "legalBasis": {
@@ -2088,7 +2015,7 @@
     },
     {
       "id": "CAB-TRANS-001",
-      "category": "transition",
+      "category": "governance",
       "requirement": "Existing ETSI EN 319403 v2.2.2 accreditation valid until May 2027",
       "explanation": "CABs accredited before 17 November 2025 under ETSI EN 319403 v2.2.2\nor earlier have their accreditation considered to meet the new\nrequirements until 17 May 2027.",
       "legalBasis": {
@@ -2557,7 +2484,7 @@
     },
     {
       "id": "EAA-DP-001",
-      "category": "data_protection",
+      "category": "privacy",
       "requirement": "Not combine EAA personal data with other services",
       "explanation": "Personal data collected during the provision of electronic attestation of\nattributes services must not be combined with personal data from any other\nservices offered by the provider or their commercial partners. This applies\nto both qualified and non-qualified EAA providers.",
       "legalBasis": {
@@ -2598,7 +2525,7 @@
     },
     {
       "id": "EAA-DP-002",
-      "category": "data_protection",
+      "category": "privacy",
       "requirement": "Keep EAA personal data logically separate",
       "explanation": "Personal data relating to the provision of electronic attestation of attributes\nservices must be kept logically separate from other data held by the provider.\nThis ensures data isolation and limits data processing scope.",
       "legalBasis": {
@@ -2639,7 +2566,7 @@
     },
     {
       "id": "EAA-DP-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement QEAA services functionally separate from other services",
       "explanation": "Providers of qualified electronic attestation of attributes services must\nimplement these services in a manner that is functionally separate from\nother services they provide. This ensures operational isolation of the\ntrust service.",
       "legalBasis": {
@@ -3021,7 +2948,7 @@
     },
     {
       "id": "EAA-STD-005",
-      "category": "data_protection",
+      "category": "privacy",
       "requirement": "Process only minimum necessary attributes",
       "explanation": "Attestation providers must process only the minimum set of attributes\nnecessary for the issuance and management of the attestation, applying\ndata minimization principles.",
       "legalBasis": {
@@ -3464,7 +3391,7 @@
     },
     {
       "id": "EAA-QTSP-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Notify supervisory body of significant changes",
       "explanation": "Qualified EAA issuers must notify the supervisory body at least one month\nbefore implementing significant changes to service descriptions, technical\narchitecture, hosting, cryptographic techniques, registration procedures,\norganizational structure, termination plans, financial resources, trusted\nlist entries, or third-party arrangements.",
       "legalBasis": {
@@ -3507,7 +3434,7 @@
     },
     {
       "id": "EAA-QTSP-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement risk management framework",
       "explanation": "Qualified EAA issuers must implement a risk management framework in\naccordance with Implementing Regulation 2025/2160, which addresses legal,\nbusiness, operational and other direct or indirect risks to the provision\nof the qualified trust service.",
       "legalBasis": {
@@ -3549,7 +3476,7 @@
     },
     {
       "id": "EAA-QTSP-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish and maintain termination plan",
       "explanation": "Qualified EAA issuers must establish a termination plan for each qualified\ntrust service, ensuring continuity of service and evidence provision in\nlegal proceedings. The plan must cover anticipated and unanticipated\ntermination scenarios, be reviewed at least every two years, and be\nbacked by sufficient financial resources or insurance.",
       "legalBasis": {
@@ -3678,7 +3605,7 @@
     },
     {
       "id": "EAA-QTSP-006",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Notify supervisory body before starting qualified trust service",
       "explanation": "Before starting to provide a qualified trust service (including QEAA),\nthe provider must notify the supervisory body of the Member State where\nestablished with its intention to start the service, along with a\nconformity assessment report.",
       "legalBasis": {
@@ -3721,7 +3648,7 @@
     },
     {
       "id": "EAA-QTSP-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain personnel with necessary expertise and reliability",
       "explanation": "Qualified EAA issuers must employ personnel possessing the necessary\nexpertise, reliability, experience, and qualifications to perform the\nservices. Staff must have competence in applicable laws, security, and\ntechnical knowledge appropriate to the trust service.",
       "legalBasis": {
@@ -3764,7 +3691,7 @@
     },
     {
       "id": "EAA-QTSP-008",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain sufficient financial resources or liability coverage",
       "explanation": "Qualified EAA issuers must maintain sufficient financial resources or\nobtain appropriate liability insurance to cover their liabilities arising\nfrom the provision of trust services, in accordance with national law on\nliability.",
       "legalBasis": {
@@ -3850,7 +3777,7 @@
     },
     {
       "id": "EAA-QTSP-010",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Take appropriate measures against security threats",
       "explanation": "Qualified EAA issuers must take appropriate measures against forgery,\ntheft, or misappropriation of data, and against unauthorized deletion,\nalteration, or rendering of data inaccessible.",
       "legalBasis": {
@@ -3893,7 +3820,7 @@
     },
     {
       "id": "EAA-QTSP-011",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Record and retain relevant information for evidence purposes",
       "explanation": "Qualified EAA issuers must record and keep accessible all relevant\ninformation concerning data issued and received, for the purpose of\nproviding evidence in legal proceedings and ensuring continuity of\nservice after the provider ceases activities.",
       "legalBasis": {
@@ -3936,7 +3863,7 @@
     },
     {
       "id": "EAA-QTSP-012",
-      "category": "data_protection",
+      "category": "privacy",
       "requirement": "Ensure lawful processing of personal data",
       "explanation": "Qualified EAA issuers must ensure lawful processing of personal data\nin accordance with GDPR requirements.",
       "legalBasis": {
@@ -4138,7 +4065,7 @@
     },
     {
       "id": "PID-ISS-004",
-      "category": "data-quality",
+      "category": "verification",
       "requirement": "Ensure PID uniqueness within Member State",
       "explanation": "The PID issued to any given wallet user must be unique within that\nMember State. This prevents identity collision and supports reliable\ncross-border identification.",
       "legalBasis": {
@@ -4297,7 +4224,7 @@
     },
     {
       "id": "PID-ISS-007",
-      "category": "identity-verification",
+      "category": "verification",
       "requirement": "Enroll users at assurance level high",
       "explanation": "Wallet users must be enrolled in accordance with assurance level high\nrequirements from 2015/1502. PID Providers must perform identity\nverification of the wallet user before issuing PID.",
       "legalBasis": {
@@ -4350,7 +4277,7 @@
     },
     {
       "id": "PID-ISS-008",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Identify self to wallet unit during issuance",
       "explanation": "When issuing PID, the provider must authenticate itself to the wallet\nunit using wallet-relying party access certificates or another mechanism\ncompliant with assurance level high.",
       "legalBasis": {
@@ -4403,7 +4330,7 @@
     },
     {
       "id": "PID-ISS-009",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Validate wallet unit before issuance",
       "explanation": "Before issuing PID, providers must authenticate and validate the wallet\nunit attestation and verify the wallet unit belongs to an accepted solution.",
       "legalBasis": {
@@ -4456,7 +4383,7 @@
     },
     {
       "id": "PID-REV-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain public revocation policies",
       "explanation": "PID Providers must maintain written, publicly accessible policies\nrelating to validity status management, including conditions for\nimmediate revocation.",
       "legalBasis": {
@@ -4509,7 +4436,7 @@
     },
     {
       "id": "PID-REV-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Exclusive revocation authority",
       "explanation": "Only the provider that issued PID can revoke it. No other entity\nmay revoke person identification data.",
       "legalBasis": {
@@ -4562,7 +4489,7 @@
     },
     {
       "id": "PID-REV-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Notify user within 24 hours of revocation",
       "explanation": "When PID is revoked, the provider must inform the wallet user within\n24 hours through secure channels, stating the reasons clearly.",
       "legalBasis": {
@@ -4615,7 +4542,7 @@
     },
     {
       "id": "PID-REV-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Revoke upon user request",
       "explanation": "PID must be revoked upon the explicit request of the wallet user.",
       "legalBasis": {
@@ -4668,7 +4595,7 @@
     },
     {
       "id": "PID-REV-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Revoke when wallet attestation revoked",
       "explanation": "PID must be revoked when the underlying wallet unit attestation is revoked.",
       "legalBasis": {
@@ -4721,7 +4648,7 @@
     },
     {
       "id": "PID-REV-006",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Revoke per policy conditions",
       "explanation": "PID must be revoked in situations determined by the provider's own policies.",
       "legalBasis": {
@@ -4827,7 +4754,7 @@
     },
     {
       "id": "PID-REV-008",
-      "category": "data-retention",
+      "category": "governance",
       "requirement": "Retain revoked PID as required by law",
       "explanation": "Revoked PID must remain accessible for as long as required by\napplicable EU or national law.",
       "legalBasis": {
@@ -4933,7 +4860,7 @@
     },
     {
       "id": "PID-REV-010",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Enable privacy-preserving unlinkability",
       "explanation": "PID Providers must enable privacy preserving techniques that ensure\nunlinkability where attestations do not require user identification.",
       "legalBasis": {
@@ -4986,7 +4913,7 @@
     },
     {
       "id": "PID-DATA-001",
-      "category": "data-quality",
+      "category": "verification",
       "requirement": "Include mandatory natural person attributes",
       "explanation": "PID for natural persons must include mandatory attributes: family_name,\ngiven_name, birth_date, birth_place, and nationality.",
       "legalBasis": {
@@ -5145,7 +5072,7 @@
     },
     {
       "id": "PID-DATA-004",
-      "category": "data-quality",
+      "category": "verification",
       "requirement": "Include mandatory legal person attributes",
       "explanation": "PID for legal persons must include mandatory attributes: current legal\nname and a unique identifier constructed for cross-border identification.",
       "legalBasis": {
@@ -5198,7 +5125,7 @@
     },
     {
       "id": "PID-DATA-005",
-      "category": "data-quality",
+      "category": "verification",
       "requirement": "Handle unknown attribute values appropriately",
       "explanation": "Where an attribute value is not known or cannot be issued, Member States\nmust use an attribute value appropriate to the situation instead.",
       "legalBasis": {
@@ -5251,7 +5178,7 @@
     },
     {
       "id": "PID-REG-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Associate PID with wallet ensuring unique representation",
       "explanation": "PID Providers must ensure that the person identification data uniquely\nrepresents the natural person, legal person, or representative, and is\nassociated with the European Digital Identity Wallet.",
       "legalBasis": {
@@ -5374,7 +5301,7 @@
     },
     {
       "id": "PID-REG-004",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Comply with GDPR for personal data processing",
       "explanation": "All personal data processing by PID Providers must comply with GDPR\nand demonstrate such compliance.",
       "legalBasis": {
@@ -5456,7 +5383,7 @@
     },
     {
       "id": "PID-REG-006",
-      "category": "accessibility",
+      "category": "governance",
       "requirement": "Make services accessible for persons with disabilities",
       "explanation": "PID issuance must be accessible to persons with disabilities on an\nequal basis with other users, per Directive 2019/882.",
       "legalBasis": {
@@ -5726,7 +5653,7 @@
     },
     {
       "id": "RP-AUTH-001",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Implement and perform authentication and validation procedures",
       "explanation": "Relying parties have the legal responsibility for properly authenticating and validating \nperson identification data and electronic attestations of attributes. This is not optional - \nthe RP must actively perform these procedures correctly.",
       "legalBasis": {
@@ -5767,7 +5694,7 @@
     },
     {
       "id": "RP-OPS-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Intermediaries acting on behalf of RPs must not store transaction content data",
       "explanation": "When an intermediary (e.g., a payment processor, integration platform) acts on behalf \nof a relying party, they are deemed to be relying parties themselves and are prohibited \nfrom storing data about the content of the transaction.",
       "legalBasis": {
@@ -6424,7 +6351,7 @@
     },
     {
       "id": "RP-ACCEPT-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Public sector: Accept EUDI Wallet for online services requiring e-ID",
       "explanation": "When a public sector body requires electronic identification to access an online \nservice, they must also accept EUDI Wallets provided in accordance with the regulation.",
       "legalBasis": {
@@ -6450,7 +6377,7 @@
     },
     {
       "id": "RP-ACCEPT-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Private sector: Accept EUDI Wallet where strong authentication is mandated",
       "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication is required by law or contract in specified sectors.",
       "legalBasis": {
@@ -6477,7 +6404,7 @@
     },
     {
       "id": "RP-ACCEPT-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Very large online platforms: Accept EUDI Wallet for user authentication",
       "explanation": "Providers of very large online platforms (as defined in DSA Article 33) must accept \nEUDI Wallets for user authentication upon voluntary user request.",
       "legalBasis": {
@@ -6502,7 +6429,7 @@
     },
     {
       "id": "RP-SCA-001",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Support wallet-based Strong Customer Authentication (SCA)",
       "explanation": "Payment service providers must accept the EUDI Wallet as a means of performing \nStrong Customer Authentication for payment transactions and account access.",
       "legalBasis": {
@@ -6532,7 +6459,7 @@
     },
     {
       "id": "RP-ESIG-001",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic signatures regardless of electronic form",
       "explanation": "Relying parties cannot deny legal effect or admissibility of an electronic signature \nsolely because it is in electronic form or doesn't meet qualified signature requirements.",
       "legalBasis": {
@@ -6555,7 +6482,7 @@
     },
     {
       "id": "RP-ESIG-002",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified electronic signatures as equivalent to handwritten",
       "explanation": "Qualified electronic signatures have the equivalent legal effect of a handwritten \nsignature and must be treated as such by relying parties.",
       "legalBasis": {
@@ -6578,7 +6505,7 @@
     },
     {
       "id": "RP-ESIG-003",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified signatures from all Member States",
       "explanation": "Cross-border recognition is mandatory. A qualified electronic signature issued in \nany EU Member State must be recognized in all other Member States.",
       "legalBasis": {
@@ -6601,7 +6528,7 @@
     },
     {
       "id": "RP-ESIG-004",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Public sector: Accept advanced signatures in defined formats",
       "explanation": "Public sector relying parties requiring advanced electronic signatures must accept \nthem in the formats defined by Commission implementing acts, ensuring interoperability.",
       "legalBasis": {
@@ -6627,7 +6554,7 @@
     },
     {
       "id": "RP-ESIG-005",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Public sector: Not require higher than qualified signature for cross-border",
       "explanation": "For cross-border services, public sector bodies cannot require a security level \nhigher than qualified electronic signature, ensuring accessibility across Member States.",
       "legalBasis": {
@@ -6652,7 +6579,7 @@
     },
     {
       "id": "RP-ESIG-006",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Validate qualified electronic signatures correctly",
       "explanation": "Relying parties should use a validation process that confirms the qualified signature's \nvalidity, including checking certificates, revocation status, time of signing, and \ndata integrity.",
       "legalBasis": {
@@ -6675,7 +6602,7 @@
     },
     {
       "id": "RP-ESIG-007",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Validate advanced signatures based on qualified certificates",
       "explanation": "When receiving advanced electronic signatures based on qualified certificates, relying \nparties should ensure proper validation according to the defined process.",
       "legalBasis": {
@@ -6698,7 +6625,7 @@
     },
     {
       "id": "RP-ESIG-007a",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Ensure validation system allows detection of security issues",
       "explanation": "When using a validation system for qualified electronic signatures, relying parties \nmust ensure the system provides the correct validation result AND enables them to \ndetect any security-relevant issues that may affect the signature's validity.",
       "legalBasis": {
@@ -6721,7 +6648,7 @@
     },
     {
       "id": "RP-ESIG-008",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Consider using qualified validation services",
       "explanation": "Relying parties may use qualified validation services to validate qualified electronic \nsignatures, receiving automated, reliable validation results.",
       "legalBasis": {
@@ -6744,7 +6671,7 @@
     },
     {
       "id": "RP-ESIG-009",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic seals regardless of electronic form",
       "explanation": "Relying parties cannot deny legal effect or admissibility of an electronic seal \nsolely because it is in electronic form.",
       "legalBasis": {
@@ -6767,7 +6694,7 @@
     },
     {
       "id": "RP-ESIG-010",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified electronic seals' presumptions",
       "explanation": "Qualified electronic seals enjoy the presumption of data integrity and origin correctness.\nRPs should rely on these presumptions when verifying sealed data.",
       "legalBasis": {
@@ -6790,7 +6717,7 @@
     },
     {
       "id": "RP-ESIG-011",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified electronic seals from all Member States",
       "explanation": "Cross-border recognition is mandatory. A qualified electronic seal issued in \nany EU Member State must be recognized in all other Member States.",
       "legalBasis": {
@@ -6813,7 +6740,7 @@
     },
     {
       "id": "RP-ESIG-012",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Public sector: Accept advanced seals in defined formats",
       "explanation": "Public sector relying parties requiring advanced electronic seals must accept \nthem in the formats defined by Commission implementing acts.",
       "legalBasis": {
@@ -6839,7 +6766,7 @@
     },
     {
       "id": "RP-ESIG-013",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Validate qualified electronic seals correctly",
       "explanation": "Articles 32-34 for signature validation apply mutatis mutandis to electronic seals.\nRPs should validate seals using the same processes as signatures.",
       "legalBasis": {
@@ -6862,7 +6789,7 @@
     },
     {
       "id": "RP-ESIG-014",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic time stamps regardless of electronic form",
       "explanation": "Relying parties cannot deny legal effect of an electronic time stamp solely \nbecause it is in electronic form.",
       "legalBasis": {
@@ -6885,7 +6812,7 @@
     },
     {
       "id": "RP-ESIG-015",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified time stamps' presumptions",
       "explanation": "Qualified electronic time stamps enjoy the presumption of accuracy of date/time \nand integrity of the bound data. RPs should rely on these presumptions.",
       "legalBasis": {
@@ -6908,7 +6835,7 @@
     },
     {
       "id": "RP-ESIG-016",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified time stamps from all Member States",
       "explanation": "Cross-border recognition is mandatory. A qualified electronic time stamp issued \nin any EU Member State must be recognized in all other Member States.",
       "legalBasis": {
@@ -6931,7 +6858,7 @@
     },
     {
       "id": "RP-ESIG-017",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic registered delivery data regardless of form",
       "explanation": "Relying parties cannot deny legal effect of data sent/received using electronic \nregistered delivery services solely because it is electronic.",
       "legalBasis": {
@@ -6954,7 +6881,7 @@
     },
     {
       "id": "RP-ESIG-018",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified registered delivery presumptions",
       "explanation": "Qualified electronic registered delivery services enjoy presumptions of data integrity,\nsender/addressee identification, and date/time accuracy.",
       "legalBasis": {
@@ -6977,7 +6904,7 @@
     },
     {
       "id": "RP-ESIG-019",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified certificates for website authentication",
       "explanation": "Qualified certificates for website authentication issued in any Member State \nmust be recognized in all other Member States.",
       "legalBasis": {
@@ -7001,7 +6928,7 @@
     },
     {
       "id": "RP-ESIG-020",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic attestations of attributes regardless of form",
       "explanation": "Relying parties cannot deny legal effect of an electronic attestation of attributes \nsolely because it is in electronic form.",
       "legalBasis": {
@@ -7042,7 +6969,7 @@
     },
     {
       "id": "RP-ESIG-021",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize legal effect of qualified EAA and public sector EAA",
       "explanation": "Qualified EAA and attestations issued by public sector bodies responsible for \nauthentic sources have the same legal effect as paper attestations.",
       "legalBasis": {
@@ -7083,7 +7010,7 @@
     },
     {
       "id": "RP-ESIG-022",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize public sector EAA from all Member States",
       "explanation": "Cross-border recognition is mandatory. EAA issued by a public sector body in \none Member State must be recognized in all other Member States.",
       "legalBasis": {
@@ -7124,7 +7051,7 @@
     },
     {
       "id": "RP-ESIG-023",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronically archived data regardless of form",
       "explanation": "Relying parties cannot deny legal effect of electronically preserved data solely \nbecause it is electronic or not preserved using a qualified archiving service.",
       "legalBasis": {
@@ -7147,7 +7074,7 @@
     },
     {
       "id": "RP-ESIG-024",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified archiving service presumptions",
       "explanation": "Data preserved using qualified electronic archiving enjoys the presumption of \nintegrity and origin for the duration of preservation.",
       "legalBasis": {
@@ -7170,7 +7097,7 @@
     },
     {
       "id": "RP-ESIG-025",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Accept electronic ledger records regardless of form",
       "explanation": "Relying parties cannot deny legal effect of electronic ledger records solely \nbecause they are in electronic form.",
       "legalBasis": {
@@ -7193,7 +7120,7 @@
     },
     {
       "id": "RP-ESIG-026",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Recognize qualified electronic ledger presumptions",
       "explanation": "Data records in a qualified electronic ledger enjoy the presumption of unique, \naccurate sequential chronological ordering and integrity.",
       "legalBasis": {
@@ -7216,7 +7143,7 @@
     },
     {
       "id": "RP-AUTH-005",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Public sector: Recognize e-ID from other Member States",
       "explanation": "When requiring electronic identification for online services, public sector RPs \nmust accept notified e-ID means from other Member States at substantial/high levels.",
       "legalBasis": {
@@ -7239,7 +7166,7 @@
     },
     {
       "id": "RP-AUTH-002",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Public sector: Ensure unequivocal identity matching for cross-border",
       "explanation": "When acting as relying parties for cross-border services, public sector bodies \nmust ensure unequivocal identity matching for users with notified e-ID or EUDI Wallets.",
       "legalBasis": {
@@ -7262,7 +7189,7 @@
     },
     {
       "id": "RP-AUTH-003",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Protect personal data used for identity matching",
       "explanation": "For cross-border identity matching, appropriate technical and organisational measures \nmust be in place to protect personal data and prevent user profiling.",
       "legalBasis": {
@@ -7285,7 +7212,7 @@
     },
     {
       "id": "RP-AUTH-004",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Access certificate revocation status information",
       "explanation": "Qualified trust service providers must provide RPs with certificate validity/revocation \ninformation. RPs should use this to verify certificate status before relying on them.",
       "legalBasis": {
@@ -7308,7 +7235,7 @@
     },
     {
       "id": "RP-DP-001",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Request only necessary and proportionate attributes",
       "explanation": "Relying parties shall only request attributes that are necessary and proportionate \nfor the specific service. Over-requesting data violates data minimization principles.",
       "legalBasis": {
@@ -7349,7 +7276,7 @@
     },
     {
       "id": "RP-DP-002",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Support selective disclosure of attributes",
       "explanation": "Systems must be capable of processing selectively disclosed attributes. Users \nshould not be forced to reveal more data than necessary (e.g., verifying \"over 18\" \nwithout revealing exact birth date).",
       "legalBasis": {
@@ -7390,7 +7317,7 @@
     },
     {
       "id": "RP-DP-003",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Do not track wallet usage across services (unlinkability)",
       "explanation": "The technical framework must prevent tracking or correlation of wallet usage \nacross different services, unless the user explicitly consents.",
       "legalBasis": {
@@ -7431,7 +7358,7 @@
     },
     {
       "id": "RP-DP-004",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Enable privacy preserving unlinkability for non-identified attestations",
       "explanation": "When attestations don't require user identification, privacy-preserving techniques \nmust ensure unlinkability across different relying parties.",
       "legalBasis": {
@@ -7455,7 +7382,7 @@
     },
     {
       "id": "RP-DP-005",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Allow pseudonyms where legal identity is not required",
       "explanation": "Users cannot be prohibited from using pseudonyms when there is no legal requirement \nfor identity verification.",
       "legalBasis": {
@@ -7479,7 +7406,7 @@
     },
     {
       "id": "RP-DP-006",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Process data in accordance with GDPR",
       "explanation": "All personal data received from wallets must be processed in full compliance \nwith GDPR, including lawful basis, storage limitation, and data subject rights.",
       "legalBasis": {
@@ -7524,7 +7451,7 @@
     },
     {
       "id": "RP-OPS-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain alternative means of identification",
       "explanation": "Relying parties may maintain alternative authentication methods. EUDI Wallet \nacceptance requirements do not prevent offering other identification means.",
       "legalBasis": {
@@ -7565,7 +7492,7 @@
     },
     {
       "id": "RP-OPS-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Support reporting to data protection authorities",
       "explanation": "Relying parties must be prepared to be reported to data protection authorities \nthrough the wallet's reporting mechanism if users suspect unlawful data requests.",
       "legalBasis": {
@@ -7606,7 +7533,7 @@
     },
     {
       "id": "RP-INFO-001",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Perform data protection impact assessments for wallet data processing",
       "explanation": "Recital 17 emphasizes that relying parties should comply with GDPR safeguards, \nparticularly by performing data protection impact assessments and consulting \ndata protection authorities prior to processing where there is high risk.",
       "legalBasis": {
@@ -7647,7 +7574,7 @@
     },
     {
       "id": "RP-INFO-002",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Apply data minimization - request only necessary data",
       "explanation": "Recital 56 emphasizes that any request for information should be necessary, \nproportionate to the intended use, and in line with data minimisation principles.",
       "legalBasis": {
@@ -7688,7 +7615,7 @@
     },
     {
       "id": "RP-INFO-003",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Accept pseudonymous access where identification not legally required",
       "explanation": "Recital 60 clarifies that unless specific rules require user identification, \naccessing services by using a pseudonym should not be prohibited.",
       "legalBasis": {
@@ -7729,7 +7656,7 @@
     },
     {
       "id": "RP-INFO-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Enable selective disclosure of attributes",
       "explanation": "Recital 59 emphasizes that selective disclosure is a core design feature of \nwallets, allowing users to share only necessary parts of their data.",
       "legalBasis": {
@@ -7770,7 +7697,7 @@
     },
     {
       "id": "RP-INFO-005",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Very large online platforms must accept wallet authentication",
       "explanation": "Recital 57 states that very large online platforms (as defined in DSA) that \nrequire authentication should accept EUDI Wallets upon user request, while \nrespecting data minimisation and pseudonym rights.",
       "legalBasis": {
@@ -8025,7 +7952,7 @@
     },
     {
       "id": "RP-TECH-015",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Verify wallet unit attestation validity before transactions",
       "explanation": "Before accepting credentials from a wallet, relying parties should verify the \nvalidity status of the wallet unit attestation. This ensures the wallet unit \nis still valid and not revoked.",
       "legalBasis": {
@@ -8061,7 +7988,7 @@
     },
     {
       "id": "RP-TECH-016",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Comply with embedded disclosure policies in attestations",
       "explanation": "Electronic attestations of attributes may contain embedded disclosure policies \nthat specify conditions the relying party must meet to access the attestation. \nThe wallet verifies RP compliance and informs the user.",
       "legalBasis": {
@@ -8114,7 +8041,7 @@
     },
     {
       "id": "RP-TECH-017",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Request RP-specific pseudonyms when appropriate",
       "explanation": "Relying parties may request pseudonyms that are specific and unique to them, \nallowing persistent pseudonymous authentication without requiring full identity \ndisclosure. The pseudonym can be requested standalone or with other data.",
       "legalBasis": {
@@ -8203,7 +8130,7 @@
     },
     {
       "id": "RP-ESIG-027",
-      "category": "esignature",
+      "category": "technical",
       "requirement": "Support signature formats from Annex IV when requesting signatures",
       "explanation": "When relying parties request electronic signatures or seals from wallet users, \nthey must support the mandatory signature formats specified in Annex IV, and \nmay optionally support XAdES, JAdES, CAdES, and ASiC formats.",
       "legalBasis": {
@@ -8361,7 +8288,7 @@
     },
     {
       "id": "RP-AUTH-009",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Perform unequivocal identity matching for cross-border users",
       "explanation": "Public sector relying parties offering cross-border services must implement \nidentity matching processes to link wallet credentials or notified eID means \nto existing user records or registers.",
       "legalBasis": {
@@ -8384,7 +8311,7 @@
     },
     {
       "id": "RP-AUTH-010",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Use mandatory PID attributes for wallet-based identity matching",
       "explanation": "When users authenticate via EUDI Wallet, relying parties must use the mandatory \nPID attributes from 2024/2977 Annex Section 1 for identity matching, plus any \noptional data needed to ensure uniqueness.",
       "legalBasis": {
@@ -8407,7 +8334,7 @@
     },
     {
       "id": "RP-AUTH-011",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Handle orthographic variations in identity matching",
       "explanation": "Identity matching must not be affected by differences in transliteration, blank \nspaces, hyphenation, concatenation, and similar orthographic variations required \nunder Union or national law.",
       "legalBasis": {
@@ -8430,7 +8357,7 @@
     },
     {
       "id": "RP-AUTH-012",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Inform users of successful identity matching outcomes",
       "explanation": "When identity matching is successful, relying parties must inform users that \nthey have been granted access, whether they were matched to an existing record \nor registered as a new user, and options for reusing the match.",
       "legalBasis": {
@@ -8453,7 +8380,7 @@
     },
     {
       "id": "RP-AUTH-013",
-      "category": "authentication",
+      "category": "verification",
       "requirement": "Inform users when identity matching fails and provide alternatives",
       "explanation": "When identity matching is unsuccessful, relying parties must inform users why \nthe match failed and provide information about alternative methods or \ncomplementary processes available.",
       "legalBasis": {
@@ -8476,7 +8403,7 @@
     },
     {
       "id": "RP-OPS-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Retain identity matching logs for 6-12 months",
       "explanation": "Relying parties must keep logs of identity matching processes including values \nused, timestamps, documentation, and outcomes. Retention must be 6-12 months \nminimum, or longer if required by law.",
       "legalBasis": {
@@ -8585,7 +8512,7 @@
     },
     {
       "id": "SB-DES-003",
-      "category": "notification",
+      "category": "registration",
       "requirement": "Notify Commission of designated supervisory bodies",
       "explanation": "Member States must notify the Commission of their designated supervisory\nbodies' names and addresses, and any subsequent changes.",
       "legalBasis": {
@@ -8626,7 +8553,7 @@
     },
     {
       "id": "SB-WALL-001",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Supervise EUDIW providers through ex ante and ex post activities",
       "explanation": "Supervisory bodies must supervise EUDIW providers to ensure they and their\nwallets meet all regulatory requirements through both preventive (ex ante)\nand reactive (ex post) supervisory activities.",
       "legalBasis": {
@@ -8669,7 +8596,7 @@
     },
     {
       "id": "SB-WALL-002",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Take action on EUDIW provider infringements",
       "explanation": "When informed that EUDIW providers or their wallets infringe the regulation,\nsupervisory bodies must take necessary action through ex post supervision.",
       "legalBasis": {
@@ -8712,7 +8639,7 @@
     },
     {
       "id": "SB-WALL-003",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Cooperate with other supervisory bodies per Articles 46c and 46e",
       "explanation": "Supervisory bodies must cooperate with their counterparts in other Member\nStates and provide assistance in accordance with the single point of contact\nand Cooperation Group mechanisms.",
       "legalBasis": {
@@ -8755,7 +8682,7 @@
     },
     {
       "id": "SB-WALL-004",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Request information to monitor EUDIW compliance",
       "explanation": "Supervisory bodies have the power to request any information necessary\nto monitor compliance with the regulation from EUDIW providers.",
       "legalBasis": {
@@ -8798,7 +8725,7 @@
     },
     {
       "id": "SB-WALL-005",
-      "category": "incident-response",
+      "category": "security",
       "requirement": "Inform NIS2 authorities of significant security breaches",
       "explanation": "When aware of significant security breaches or loss of integrity, supervisory\nbodies must inform the relevant NIS2 competent authorities and single points\nof contact, and may require public disclosure.",
       "legalBasis": {
@@ -8841,7 +8768,7 @@
     },
     {
       "id": "SB-WALL-006",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Carry out on-site inspections and off-site supervision",
       "explanation": "Supervisory bodies have the power to conduct both on-site inspections\nand off-site supervision of EUDIW providers.",
       "legalBasis": {
@@ -8884,7 +8811,7 @@
     },
     {
       "id": "SB-WALL-007",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Require EUDIW providers to remedy non-compliance",
       "explanation": "Supervisory bodies can require EUDIW providers to remedy any failure\nto fulfil regulatory requirements.",
       "legalBasis": {
@@ -8927,7 +8854,7 @@
     },
     {
       "id": "SB-WALL-008",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Suspend or cancel relying party registrations for fraud",
       "explanation": "Supervisory bodies can suspend or cancel the relying party registration\nin cases of illegal or fraudulent use of the EUDIW.",
       "legalBasis": {
@@ -8970,7 +8897,7 @@
     },
     {
       "id": "SB-WALL-009",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Cooperate with data protection authorities on breaches",
       "explanation": "Supervisory bodies must cooperate with data protection authorities,\ninforming them of personal data protection infringements and breaches.",
       "legalBasis": {
@@ -9013,7 +8940,7 @@
     },
     {
       "id": "SB-WALL-010",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Order suspension or cessation of non-compliant EUDIW provision",
       "explanation": "If an EUDIW provider fails to remedy non-compliance, the supervisory body\nmay order suspension or cessation of wallet provision, notifying other\nbodies, the Commission, relying parties and users.",
       "legalBasis": {
@@ -9056,7 +8983,7 @@
     },
     {
       "id": "SB-WALL-011",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Submit annual activity report to Commission by 31 March",
       "explanation": "Each supervisory body must submit an annual report on its main activities\nto the Commission by 31 March each year.",
       "legalBasis": {
@@ -9099,7 +9026,7 @@
     },
     {
       "id": "SB-TSP-001",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Supervise QTSPs through ex ante and ex post activities",
       "explanation": "Supervisory bodies must supervise qualified trust service providers to\nensure they and their services meet all regulatory requirements through\nboth preventive and reactive supervision.",
       "legalBasis": {
@@ -9142,7 +9069,7 @@
     },
     {
       "id": "SB-TSP-002",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Take action on non-qualified TSP non-compliance",
       "explanation": "When informed that non-qualified TSPs allegedly do not meet requirements,\nsupervisory bodies must take necessary action through ex post supervision.",
       "legalBasis": {
@@ -9185,7 +9112,7 @@
     },
     {
       "id": "SB-TSP-003",
-      "category": "incident-response",
+      "category": "security",
       "requirement": "Inform NIS2 authorities of trust service security breaches",
       "explanation": "When aware of significant security breaches or loss of integrity affecting\ntrust services, supervisory bodies must inform the relevant NIS2 authorities.",
       "legalBasis": {
@@ -9228,7 +9155,7 @@
     },
     {
       "id": "SB-TSP-004",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Cooperate with other supervisory bodies per Articles 46c and 46e",
       "explanation": "Trust service supervisory bodies must cooperate with their counterparts\nin other Member States through the single point of contact and Cooperation\nGroup mechanisms.",
       "legalBasis": {
@@ -9271,7 +9198,7 @@
     },
     {
       "id": "SB-TSP-005",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Analyse conformity assessment reports from CABs",
       "explanation": "Supervisory bodies must analyse the conformity assessment reports\nsubmitted by QTSPs per Articles 20(1) and 21(1).",
       "legalBasis": {
@@ -9314,7 +9241,7 @@
     },
     {
       "id": "SB-TSP-006",
-      "category": "reporting",
+      "category": "transparency",
       "requirement": "Submit annual activity report to Commission by 31 March",
       "explanation": "Each trust service supervisory body must submit an annual report on\nits main activities to the Commission by 31 March each year.",
       "legalBasis": {
@@ -9357,7 +9284,7 @@
     },
     {
       "id": "SB-TSP-007",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Carry out audits or request CAB conformity assessments",
       "explanation": "Supervisory bodies can audit QTSPs directly or request a CAB to perform\na conformity assessment at the QTSP's expense.",
       "legalBasis": {
@@ -9400,7 +9327,7 @@
     },
     {
       "id": "SB-TSP-008",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Cooperate with data protection authorities on TSP breaches",
       "explanation": "Trust service supervisory bodies must cooperate with data protection\nauthorities, informing them of personal data violations and security breaches.",
       "legalBasis": {
@@ -9443,7 +9370,7 @@
     },
     {
       "id": "SB-TSP-009",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Grant qualified status to TSPs and services per Arts 20/21",
       "explanation": "Supervisory bodies have exclusive authority to grant qualified status\nto trust service providers and their services.",
       "legalBasis": {
@@ -9486,7 +9413,7 @@
     },
     {
       "id": "SB-TSP-010",
-      "category": "notification",
+      "category": "registration",
       "requirement": "Inform trusted list body of qualified status decisions",
       "explanation": "When granting or withdrawing qualified status, supervisory bodies must\ninform the body responsible for the national trusted list.",
       "legalBasis": {
@@ -9529,7 +9456,7 @@
     },
     {
       "id": "SB-TSP-011",
-      "category": "supervision",
+      "category": "governance",
       "requirement": "Verify QTSP termination plans per Article 24(2)(h)",
       "explanation": "Supervisory bodies must verify that QTSPs have proper termination plans\nand that information remains accessible when they cease activities.",
       "legalBasis": {
@@ -9572,7 +9499,7 @@
     },
     {
       "id": "SB-TSP-012",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Require TSPs to remedy non-compliance with regulation",
       "explanation": "Supervisory bodies can require trust service providers to remedy any\nfailure to fulfil regulatory requirements.",
       "legalBasis": {
@@ -9615,7 +9542,7 @@
     },
     {
       "id": "SB-TSP-013",
-      "category": "enforcement",
+      "category": "governance",
       "requirement": "Investigate web-browser claims on QWAC certificates",
       "explanation": "Supervisory bodies must investigate claims made by web browser providers\nregarding qualified website authentication certificates.",
       "legalBasis": {
@@ -9701,7 +9628,7 @@
     },
     {
       "id": "SB-SPOC-001",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Member States shall designate a single point of contact",
       "explanation": "Each Member State must designate a single point of contact for trust\nservices, EUDIW, and notified electronic identification schemes.",
       "legalBasis": {
@@ -9742,7 +9669,7 @@
     },
     {
       "id": "SB-SPOC-002",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "SPOC exercises liaison function for cross-border cooperation",
       "explanation": "The single point of contact facilitates cross-border cooperation between\nsupervisory bodies for TSPs and EUDIW providers, and with the Commission,\nENISA, and other competent authorities.",
       "legalBasis": {
@@ -9783,7 +9710,7 @@
     },
     {
       "id": "SB-SPOC-003",
-      "category": "notification",
+      "category": "registration",
       "requirement": "Make SPOC contact details public and notify Commission",
       "explanation": "Member States must make their single point of contact details public\nand notify the Commission of any changes.",
       "legalBasis": {
@@ -9824,7 +9751,7 @@
     },
     {
       "id": "SB-MA-001",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "May seek mutual assistance from other Member States' supervisory bodies",
       "explanation": "Supervisory bodies may seek mutual assistance from their counterparts\nin other Member States for supervision and enforcement of obligations.",
       "legalBasis": {
@@ -9865,7 +9792,7 @@
     },
     {
       "id": "SB-MA-002",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Inform and consult supervisory body in other Member State",
       "explanation": "When applying supervisory and enforcement measures, bodies must inform\nand consult the supervisory body from the other Member State concerned.",
       "legalBasis": {
@@ -9906,7 +9833,7 @@
     },
     {
       "id": "SB-MA-003",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "May request another supervisory body to take supervisory measures",
       "explanation": "A supervisory body may request another Member State's body to take\nsupervisory or enforcement measures, including conformity assessment\ninspections.",
       "legalBasis": {
@@ -9947,7 +9874,7 @@
     },
     {
       "id": "SB-MA-004",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "May carry out joint investigations with other Member States",
       "explanation": "Where appropriate, supervisory bodies may conduct joint investigations\nwith their counterparts in other Member States.",
       "legalBasis": {
@@ -9988,7 +9915,7 @@
     },
     {
       "id": "SB-MA-005",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "May refuse assistance on proportionality or competence grounds",
       "explanation": "A supervisory body may refuse a request for assistance if it is\ndisproportionate, outside their competence, or incompatible with the regulation.",
       "legalBasis": {
@@ -10029,7 +9956,7 @@
     },
     {
       "id": "SB-COOP-001",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Participate in European Digital Identity Cooperation Group",
       "explanation": "Member States must appoint representatives to the Cooperation Group\nwhich supports cross-border cooperation on trust services, EUDIW, and\nelectronic identification schemes.",
       "legalBasis": {
@@ -10070,7 +9997,7 @@
     },
     {
       "id": "SB-COOP-002",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Exchange best practices on policy implementation",
       "explanation": "Through the Cooperation Group, supervisory bodies exchange best practices\nand information about implementing the regulation, assess sector developments,\nand discuss cybersecurity aspects.",
       "legalBasis": {
@@ -10111,7 +10038,7 @@
     },
     {
       "id": "SB-COOP-003",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Organise joint meetings with NIS Cooperation Group",
       "explanation": "The Cooperation Group organizes joint meetings with the NIS Cooperation\nGroup to exchange information on cyber threats, incidents, and standards.",
       "legalBasis": {
@@ -10152,7 +10079,7 @@
     },
     {
       "id": "SB-COOP-004",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Participate in peer reviews of eID schemes to be notified",
       "explanation": "Through the Cooperation Group, supervisory bodies participate in\npeer reviews of electronic identification schemes before notification.",
       "legalBasis": {
@@ -10193,7 +10120,7 @@
     },
     {
       "id": "SB-COOP-005",
-      "category": "cooperation",
+      "category": "interoperability",
       "requirement": "Ensure effective and efficient cooperation in Cooperation Group",
       "explanation": "Member States must ensure their designated representatives participate\neffectively and efficiently in the Cooperation Group.",
       "legalBasis": {
@@ -10234,7 +10161,7 @@
     },
     {
       "id": "SB-SEC-001",
-      "category": "incident-response",
+      "category": "security",
       "requirement": "Provide annual breach summary to ENISA",
       "explanation": "The supervisory body must provide ENISA once a year with a summary\nof breach of security and loss of integrity notifications received\nfrom trust service providers.",
       "legalBasis": {
@@ -10359,7 +10286,7 @@
     },
     {
       "id": "TSP-ACC-001",
-      "category": "accessibility",
+      "category": "governance",
       "requirement": "Make services accessible to persons with disabilities",
       "explanation": "Trust services and end-user products must be made available in plain\nand intelligible language, in accordance with UNCRPD and Directive 2019/882.",
       "legalBasis": {
@@ -10523,7 +10450,7 @@
     },
     {
       "id": "TSP-NQ-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement risk management policies and measures",
       "explanation": "Non-qualified TSPs must have appropriate policies and take measures\nto manage risks, including registration/onboarding procedures, \nadministrative checks, and service management.",
       "legalBasis": {
@@ -10738,7 +10665,7 @@
     },
     {
       "id": "TSP-AUD-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Remedy non-compliance within set time limit",
       "explanation": "Where a QTSP fails to meet requirements, they must remedy the failure\nwithin the time limit set by the supervisory body, or face withdrawal\nof qualified status.",
       "legalBasis": {
@@ -10824,7 +10751,7 @@
     },
     {
       "id": "TSP-INIT-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Begin qualified services only after trusted list inclusion",
       "explanation": "QTSPs may only begin providing qualified trust services after their\nqualified status has been indicated in the trusted lists.",
       "legalBasis": {
@@ -10910,7 +10837,7 @@
     },
     {
       "id": "TSP-QUAL-001",
-      "category": "identity-verification",
+      "category": "verification",
       "requirement": "Verify identity when issuing qualified certificates/attestations",
       "explanation": "When issuing qualified certificates or attestations, QTSPs must verify\nthe identity and any specific attributes of the person.",
       "legalBasis": {
@@ -10953,7 +10880,7 @@
     },
     {
       "id": "TSP-QUAL-002",
-      "category": "identity-verification",
+      "category": "verification",
       "requirement": "Use approved methods for identity verification",
       "explanation": "Identity verification must be performed using approved methods: EUDI Wallet,\nnotified eID means (LoA high), qualified signature/seal certificate,\nCAB-confirmed methods, or physical presence with evidence.",
       "legalBasis": {
@@ -11039,7 +10966,7 @@
     },
     {
       "id": "TSP-QUAL-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Employ qualified and trained staff",
       "explanation": "QTSPs must employ staff with necessary expertise, reliability, experience,\nand qualifications, who have received appropriate security and data\nprotection training.",
       "legalBasis": {
@@ -11211,7 +11138,7 @@
     },
     {
       "id": "TSP-QUAL-008",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Use secure data storage with access controls",
       "explanation": "QTSPs must use trustworthy systems to store data in verifiable form,\nwith consent-based public retrieval, authorized-only modifications,\nand authenticity checking.",
       "legalBasis": {
@@ -11254,7 +11181,7 @@
     },
     {
       "id": "TSP-QUAL-009",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement comprehensive risk management policies",
       "explanation": "QTSPs must have appropriate policies and measures to manage legal,\nbusiness, operational and other risks, including registration,\nprocedural checks, and service management.",
       "legalBasis": {
@@ -11383,7 +11310,7 @@
     },
     {
       "id": "TSP-QUAL-012",
-      "category": "data-retention",
+      "category": "governance",
       "requirement": "Retain relevant information for evidence and service continuity",
       "explanation": "QTSPs must record and keep accessible all relevant information about\ndata issued and received, for evidence in legal proceedings and\nservice continuity, even after ceasing activities.",
       "legalBasis": {
@@ -11426,7 +11353,7 @@
     },
     {
       "id": "TSP-QUAL-013",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain up-to-date termination plan",
       "explanation": "QTSPs must have an up-to-date termination plan to ensure service\ncontinuity, verified by the supervisory body.",
       "legalBasis": {
@@ -11469,7 +11396,7 @@
     },
     {
       "id": "TSP-QUAL-014",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Ensure lawful processing of personal data",
       "explanation": "QTSPs must ensure lawful processing of personal data in accordance\nwith GDPR.",
       "legalBasis": {
@@ -11512,7 +11439,7 @@
     },
     {
       "id": "TSP-QUAL-015",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish and maintain certificate database",
       "explanation": "QTSPs issuing qualified certificates must establish and keep updated\na certificate database.",
       "legalBasis": {
@@ -11555,7 +11482,7 @@
     },
     {
       "id": "TSP-QUAL-016",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Publish certificate revocation within 24 hours",
       "explanation": "When revoking a qualified certificate, QTSPs must register the revocation\nand publish the status in a timely manner, within 24 hours of receiving\nthe request. Revocation becomes effective immediately upon publication.",
       "legalBasis": {
@@ -11856,7 +11783,7 @@
     },
     {
       "id": "TSP-QSCD-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Only QTSPs may generate/manage signature creation data",
       "explanation": "Generating or managing electronic signature creation data on behalf\nof the signatory may only be done by a qualified trust service provider.",
       "legalBasis": {
@@ -12114,7 +12041,7 @@
     },
     {
       "id": "TSP-IA-RISK-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Apply risk management framework per 2025/2160",
       "explanation": "QTSPs must apply the risk management requirements set out in Articles 2,\n3, and 4 of Implementing Regulation 2025/2160 (non-qualified TSP risk\nmanagement framework applies to QTSPs as well).",
       "legalBasis": {
@@ -12157,7 +12084,7 @@
     },
     {
       "id": "TSP-IA-TERM-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish termination plan for each qualified trust service",
       "explanation": "QTSPs must establish a termination plan for each qualified trust service,\ncovering service continuity, evidence provision, and how information\nis kept accessible.",
       "legalBasis": {
@@ -12200,7 +12127,7 @@
     },
     {
       "id": "TSP-IA-TERM-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish controls for termination plan document availability",
       "explanation": "QTSPs must set up controls and procedures to ensure availability for\ninternal use of documented policies, practices, procedures, third party\narrangements, and other documents required for termination plan effectiveness.",
       "legalBasis": {
@@ -12243,7 +12170,7 @@
     },
     {
       "id": "TSP-IA-TERM-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Keep termination plan and documents up to date",
       "explanation": "QTSPs must set up controls and procedures to ensure their termination\nplan and any associated documents are kept up to date.",
       "legalBasis": {
@@ -12286,7 +12213,7 @@
     },
     {
       "id": "TSP-IA-TERM-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Review termination plan at least every two years",
       "explanation": "QTSPs must review the termination plan and associated documents at\nleast every two years, and as part of implementing any changes to\nthe QTSP or its services, updating the plan accordingly.",
       "legalBasis": {
@@ -12329,7 +12256,7 @@
     },
     {
       "id": "TSP-IA-TERM-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Manage termination-specific risks in risk framework",
       "explanation": "QTSPs must manage the risks specific to termination of their qualified\ntrust services as part of the overall risk management framework.",
       "legalBasis": {
@@ -12415,7 +12342,7 @@
     },
     {
       "id": "TSP-IA-TERM-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Include 9 specific procedures in termination plan",
       "explanation": "Termination plans must specify procedures for: (a) terminating services\nand decommissioning technical components, (b) updating trusted lists,\n(c) certificate revocation, (d) preventing further service output,\n(e) ensuring record accessibility, (f) addressing anticipated/unanticipated\nscenarios, (g) safeguarding subscriber interests, (h) alternative service\narrangements, (i) notifying affected parties.",
       "legalBasis": {
@@ -12458,7 +12385,7 @@
     },
     {
       "id": "TSP-IA-TERM-008",
-      "category": "data-retention",
+      "category": "governance",
       "requirement": "Ensure record accessibility for evidence and continuity",
       "explanation": "Termination plan procedures must ensure accessibility and usability of\nrecords necessary to: (a) provide evidence of compliance with eIDAS and\nGDPR, (b) ensure service continuity regarding validation data and\nverification of previously created trust service outputs.",
       "legalBasis": {
@@ -12501,7 +12428,7 @@
     },
     {
       "id": "TSP-IA-TERM-009",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Maintain 5 types of termination documentation",
       "explanation": "Termination plan and associated records must include: (a) procedures\nfor termination, (b) records of regular plan reviews, (c) audit reports\non termination plan, (d) termination arrangements with third parties,\n(e) T&Cs, practices and policy documents for the services.",
       "legalBasis": {
@@ -12587,7 +12514,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish management-approved risk management policies",
       "explanation": "Non-qualified TSPs must establish risk management policies that \nclearly identify applicable trust services, are service-specific,\nand are approved by the management body.",
       "legalBasis": {
@@ -12630,7 +12557,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Include 6 mandatory elements in risk management policies",
       "explanation": "Risk management policies must include: (a) risk tolerance level,\n(b) risk criteria (likelihood, impact, level), (c) risk identification\napproach, (d) risk evaluation process, (e) risk treatment process,\n(f) continuous monitoring process.",
       "legalBasis": {
@@ -12673,7 +12600,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Identify, document and evaluate all risks",
       "explanation": "Non-qualified TSPs must identify, document and evaluate all risks,\nincluding third-party risks and potential single points of failure.",
       "legalBasis": {
@@ -12716,7 +12643,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Plan, document and implement risk treatment measures",
       "explanation": "Non-qualified TSPs must plan, document and implement risk treatment\nmeasures including prioritisation, approval, documentation in a risk\ntreatment plan, and continuous monitoring.",
       "legalBasis": {
@@ -12802,7 +12729,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-006",
-      "category": "data-retention",
+      "category": "governance",
       "requirement": "Record and retain user registration and authentication data",
       "explanation": "Non-qualified TSPs must record and securely retain: (i) registration/\nonboarding information including identity verification, (ii) authentication\ndata, (iii) status changes of certificates or cryptographic material.",
       "legalBasis": {
@@ -12845,7 +12772,7 @@
     },
     {
       "id": "TSP-IA-NQRISK-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Review and update risk evaluation annually",
       "explanation": "Non-qualified TSPs must review, document, and update risk evaluation\nresults and risk treatment plan at least annually, and whenever\nsignificant changes or incidents occur.",
       "legalBasis": {
@@ -13017,7 +12944,7 @@
     },
     {
       "id": "TSP-IA-QEAA-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Revoke attestations in specified circumstances",
       "explanation": "For attestations with >24h validity, QEAA providers must revoke them\nupon: (a) explicit user request, (b) known security/trustworthiness\ncompromise, (c) as required by law or provider policies.",
       "legalBasis": {
@@ -13060,7 +12987,7 @@
     },
     {
       "id": "TSP-IA-QEAA-005",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Use privacy-preserving revocation techniques",
       "explanation": "QEAA providers must set up revocation techniques and management\nmethods that are privacy preserving and hinder linkability or traceability.",
       "legalBasis": {
@@ -13146,7 +13073,7 @@
     },
     {
       "id": "TSP-IA-IDPROOF-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Comply with ETSI identity verification standards",
       "explanation": "QTSPs issuing qualified certificates or QEAAs must verify identity\nin conformance with ETSI TS 119 461 and its adaptations.",
       "legalBasis": {
@@ -13189,7 +13116,7 @@
     },
     {
       "id": "TSP-IA-IDPROOF-002",
-      "category": "assessment",
+      "category": "certification",
       "requirement": "Use accredited CABs for biometric verification assessment",
       "explanation": "When using automated identity proofing, CABs assessing the process must\nbe accredited per Article 3(18) of 910/2014, with formal certification\nbased on security evaluation per eID LoA or EUDI Wallet standards.",
       "legalBasis": {
@@ -13232,7 +13159,7 @@
     },
     {
       "id": "TSP-IA-IDPROOF-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Establish FAR/FRR targets for automated identity proofing",
       "explanation": "QTSPs using fully automated identity proofing must establish target\nvalues for False Acceptance Rate and False Rejection Rate based on\nrisk analysis and threat intelligence, using ENISA methodology.",
       "legalBasis": {
@@ -13275,7 +13202,7 @@
     },
     {
       "id": "TSP-IA-IDPROOF-004",
-      "category": "assessment",
+      "category": "certification",
       "requirement": "Test identity document validation measures every 2 years",
       "explanation": "Effectiveness of identity document validation measures must be tested\nby an accredited laboratory or national competent authority by\nAugust 2027 and then repeated every two years.",
       "legalBasis": {
@@ -13490,7 +13417,7 @@
     },
     {
       "id": "TSP-IA-INIT-001",
-      "category": "notification",
+      "category": "registration",
       "requirement": "Provide 8 mandatory information items when notifying intention",
       "explanation": "TSPs intending to start qualified services must provide comprehensive\ninformation in their notification including legal entity details,\ncontact info, URIs, risk analysis, service types, and termination plan.",
       "legalBasis": {
@@ -13877,7 +13804,7 @@
     },
     {
       "id": "TSP-IA-PERS-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide annual security training updates to personnel",
       "explanation": "QTSP personnel in trusted roles must receive regular updates\n(at least every 12 months) on new threats and current security\npractices. This is a common requirement across all service types.",
       "legalBasis": {
@@ -14002,7 +13929,7 @@
     },
     {
       "id": "WP-FUNC-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Enable secure storage, management, and presentation of PID and EAA",
       "explanation": "The wallet must enable users to securely request, obtain, select, combine, store, \ndelete, share and present person identification data and electronic attestations \nof attributes, under sole user control.",
       "legalBasis": {
@@ -14043,7 +13970,7 @@
     },
     {
       "id": "WP-FUNC-002",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support selective disclosure of data",
       "explanation": "Users must be able to share only specific attributes rather than full credentials.\nThis is essential for privacy-preserving identity verification.",
       "legalBasis": {
@@ -14084,7 +14011,7 @@
     },
     {
       "id": "WP-FUNC-003",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support pseudonym generation and encrypted local storage",
       "explanation": "Wallets must allow users to generate pseudonyms and store them encrypted \nlocally within the wallet for privacy-preserving authentication.",
       "legalBasis": {
@@ -14107,7 +14034,7 @@
     },
     {
       "id": "WP-FUNC-004",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support wallet-to-wallet authentication and data exchange",
       "explanation": "Wallets must support secure peer-to-peer authentication, allowing users to \nverify another person's wallet and exchange data directly.",
       "legalBasis": {
@@ -14148,7 +14075,7 @@
     },
     {
       "id": "WP-FUNC-005",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Provide transaction log dashboard with RP list and data exchange history",
       "explanation": "Wallets must provide a dashboard showing all relying parties the user has \nconnected with and, where applicable, all data exchanged with each.",
       "legalBasis": {
@@ -14189,7 +14116,7 @@
     },
     {
       "id": "WP-FUNC-006",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Enable easy data erasure requests to relying parties",
       "explanation": "Wallets must provide a mechanism for users to easily request erasure of \npersonal data from relying parties (GDPR Article 17 right).",
       "legalBasis": {
@@ -14230,7 +14157,7 @@
     },
     {
       "id": "WP-FUNC-007",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Enable easy reporting of suspicious RP requests to DPA",
       "explanation": "Wallets must allow users to easily report relying parties to the competent \nnational data protection authority when receiving unlawful or suspicious \ndata requests.",
       "legalBasis": {
@@ -14271,7 +14198,7 @@
     },
     {
       "id": "WP-FUNC-008",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support qualified electronic signatures and seals",
       "explanation": "Wallets must enable users to sign by means of qualified electronic signatures \nor seal by means of qualified electronic seals.",
       "legalBasis": {
@@ -14294,7 +14221,7 @@
     },
     {
       "id": "WP-FUNC-009",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support data download and export",
       "explanation": "Wallets must allow users to download their data, electronic attestations \nof attributes, and configurations to the extent technically feasible.",
       "legalBasis": {
@@ -14335,7 +14262,7 @@
     },
     {
       "id": "WP-FUNC-010",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support data portability rights",
       "explanation": "Wallets must enable users to exercise their rights to data portability \nas provided under GDPR.",
       "legalBasis": {
@@ -14809,7 +14736,7 @@
     },
     {
       "id": "WP-DP-001",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Do not provide EAA usage information to attestation issuers",
       "explanation": "Wallets must not provide any information to trust service providers about \nhow their electronic attestations of attributes are used after issuance.",
       "legalBasis": {
@@ -14850,7 +14777,7 @@
     },
     {
       "id": "WP-DP-002",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Ensure user has full control over wallet use and data",
       "explanation": "Users must have full control of the use of and data in their wallet. \nThe provider must not collect unnecessary information or combine data \nwithout express user request.",
       "legalBasis": {
@@ -14891,7 +14818,7 @@
     },
     {
       "id": "WP-DP-003",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Keep wallet personal data logically separate from other services",
       "explanation": "Personal data relating to the provision of the wallet must be kept logically \nseparate from any other data held by the wallet provider.",
       "legalBasis": {
@@ -14932,7 +14859,7 @@
     },
     {
       "id": "WP-DP-003a",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Private providers: Implement wallet services functionally separate from other services",
       "explanation": "Private wallet providers (mandated or independent) must implement the provision \nof wallet services in a manner that is functionally separate from other services \nthey provide. This goes beyond logical data separation to require organizational \nand technical separation of the wallet business unit itself. This requirement \ndoes NOT apply to wallets provided directly by Member States.",
       "legalBasis": {
@@ -14976,7 +14903,7 @@
     },
     {
       "id": "WP-DP-004",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Prevent tracking and correlation by EAA providers",
       "explanation": "The technical framework must not allow EAA providers to track transactions \nor user behaviour after attestation issuance unless explicitly authorized.",
       "legalBasis": {
@@ -15017,7 +14944,7 @@
     },
     {
       "id": "WP-DP-005",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Enable privacy-preserving techniques for unlinkability",
       "explanation": "The wallet must enable privacy-preserving techniques ensuring unlinkability \nwhere the attestation does not require user identification.",
       "legalBasis": {
@@ -15041,7 +14968,7 @@
     },
     {
       "id": "WP-DP-006",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Process personal data in compliance with GDPR",
       "explanation": "Any processing of personal data by wallet providers must comply with \nRegulation (EU) 2016/679 and implement appropriate data protection measures.",
       "legalBasis": {
@@ -15246,7 +15173,7 @@
     },
     {
       "id": "WP-OPS-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide free wallet issuance, use, and revocation to natural persons",
       "explanation": "The issuance, use, and revocation of wallets must be free of charge \nto all natural persons.",
       "legalBasis": {
@@ -15287,7 +15214,7 @@
     },
     {
       "id": "WP-OPS-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Offer free qualified signatures by default to natural persons",
       "explanation": "Wallets must offer all natural persons the ability to sign by means of \nqualified electronic signatures by default and free of charge.",
       "legalBasis": {
@@ -15310,7 +15237,7 @@
     },
     {
       "id": "WP-OPS-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide technical support and incident reporting mechanisms",
       "explanation": "Wallet providers must ensure users can easily request technical support and \nreport technical problems or incidents affecting wallet use.",
       "legalBasis": {
@@ -15351,7 +15278,7 @@
     },
     {
       "id": "WP-OPS-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide free validation mechanisms",
       "explanation": "Wallet providers must provide validation mechanisms free of charge to verify \nwallet authenticity/validity and allow users to verify RP identity.",
       "legalBasis": {
@@ -15392,7 +15319,7 @@
     },
     {
       "id": "WP-OPS-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Ensure unique PID association",
       "explanation": "Wallet providers must ensure PID uniquely represents the user and is \nassociated with that wallet.",
       "legalBasis": {
@@ -15433,7 +15360,7 @@
     },
     {
       "id": "WP-OPS-006",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Make wallets accessible to persons with disabilities",
       "explanation": "Wallets must be accessible for use by persons with disabilities on an \nequal basis with other users, in accordance with Directive 2019/882.",
       "legalBasis": {
@@ -15474,7 +15401,7 @@
     },
     {
       "id": "WP-OPS-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Notify Commission of wallet framework information",
       "explanation": "Wallet providers must ensure required information is notified to the \nCommission including responsible bodies and validation mechanisms.",
       "legalBasis": {
@@ -15515,7 +15442,7 @@
     },
     {
       "id": "WP-OPS-008",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement embedded disclosure policy mechanisms",
       "explanation": "When EAA has embedded disclosure policies, wallets must implement mechanisms \nto inform users when an RP has permission to access such attestations.",
       "legalBasis": {
@@ -15556,7 +15483,7 @@
     },
     {
       "id": "WP-OPS-009",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Meet assurance level high requirements",
       "explanation": "Wallets must meet the requirements set out in Article 8 regarding assurance \nlevel high, particularly for identity proofing, verification, and authentication.",
       "legalBasis": {
@@ -15597,7 +15524,7 @@
     },
     {
       "id": "WP-OPS-010",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Authenticate and identify relying parties",
       "explanation": "Wallets must ensure relying parties can be authenticated and identified \nby implementing authentication mechanisms per Article 5b.",
       "legalBasis": {
@@ -16489,7 +16416,7 @@
     },
     {
       "id": "WP-WUA-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Ensure each wallet unit contains wallet unit attestations",
       "explanation": "Wallet providers must ensure that each wallet unit contains wallet \nunit attestations for verifying authenticity and validity.",
       "legalBasis": {
@@ -16593,7 +16520,7 @@
     },
     {
       "id": "WP-WUA-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Inform users of rights and obligations for wallet unit",
       "explanation": "Wallet providers must inform wallet users of their rights and \nobligations in relation to their wallet unit.",
       "legalBasis": {
@@ -16697,7 +16624,7 @@
     },
     {
       "id": "WP-WUA-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Enable user-requested revocation of WUA",
       "explanation": "Wallet providers must ensure users can request revocation of their \nwallet unit attestations using the independent authentication mechanisms.",
       "legalBasis": {
@@ -16749,7 +16676,7 @@
     },
     {
       "id": "WP-REV-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Be sole entity capable of revoking own WUAs",
       "explanation": "Wallet providers must be the only entities capable of revoking \nwallet unit attestations for wallet units that they have provided.",
       "legalBasis": {
@@ -16801,7 +16728,7 @@
     },
     {
       "id": "WP-REV-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Publish revocation policy with conditions and timeframe",
       "explanation": "Wallet providers must establish a publicly available policy \nspecifying conditions and timeframe for revocation of WUAs.",
       "legalBasis": {
@@ -16853,7 +16780,7 @@
     },
     {
       "id": "WP-REV-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Notify users of WUA revocation within 24 hours",
       "explanation": "When WUAs are revoked, wallet providers must inform affected users \nwithin 24 hours, including reason and consequences, in clear language.",
       "legalBasis": {
@@ -16905,7 +16832,7 @@
     },
     {
       "id": "WP-REV-004",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Publish WUA validity status in privacy-preserving manner",
       "explanation": "When WUAs are revoked, providers must make validity status publicly \navailable in a privacy-preserving manner and describe its location \nin the WUA.",
       "legalBasis": {
@@ -17009,7 +16936,7 @@
     },
     {
       "id": "WP-LOG-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Log all transactions including incomplete ones",
       "explanation": "Wallet instances must log all transactions with relying parties \nand other wallet units, including signing/sealing, regardless of \ncompletion status.",
       "legalBasis": {
@@ -17061,7 +16988,7 @@
     },
     {
       "id": "WP-LOG-002",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Include mandatory log content (time, RP info, data types)",
       "explanation": "Transaction logs must include time/date, RP name/contact/identifier/\nMember State, data types requested/presented, and reason for \nnon-completion if applicable.",
       "legalBasis": {
@@ -17165,7 +17092,7 @@
     },
     {
       "id": "WP-LOG-004",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Log DPA reports sent via wallet",
       "explanation": "Wallet instances must log reports sent by the wallet user to data \nprotection authorities via their wallet unit.",
       "legalBasis": {
@@ -17217,7 +17144,7 @@
     },
     {
       "id": "WP-LOG-005",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Provider log access only with explicit user consent",
       "explanation": "Transaction logs are accessible to wallet provider only where \nnecessary for wallet services, based on explicit prior user consent.",
       "legalBasis": {
@@ -17269,7 +17196,7 @@
     },
     {
       "id": "WP-LOG-006",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Retain logs as required by law",
       "explanation": "Transaction logs must remain accessible for as long as required \nby Union law or national law.",
       "legalBasis": {
@@ -17321,7 +17248,7 @@
     },
     {
       "id": "WP-LOG-007",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Enable user export of logged information",
       "explanation": "Wallet providers must enable wallet users to export the logged \ntransaction information.",
       "legalBasis": {
@@ -17373,7 +17300,7 @@
     },
     {
       "id": "WP-EDP-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Process Annex III embedded disclosure policies",
       "explanation": "Wallet providers must ensure that EAAs with common embedded \ndisclosure policies (Annex III) can be processed by their wallet units.",
       "legalBasis": {
@@ -17425,7 +17352,7 @@
     },
     {
       "id": "WP-EDP-002",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Present embedded disclosure policies with RP data",
       "explanation": "Wallet instances must be able to process and present embedded \ndisclosure policies in conjunction with data from the requesting RP.",
       "legalBasis": {
@@ -17477,7 +17404,7 @@
     },
     {
       "id": "WP-EDP-003",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Verify RP compliance with embedded disclosure policy",
       "explanation": "Wallet instances must verify whether the relying party complies \nwith the embedded disclosure policy requirements and inform the \nuser of the result.",
       "legalBasis": {
@@ -17529,7 +17456,7 @@
     },
     {
       "id": "WP-SIG-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Enable receipt of qualified certificates linked to QSCD",
       "explanation": "Wallet providers must ensure users can receive qualified certificates \nfor QES/QESeal linked to qualified signature/seal creation devices \n(local, external, or remote).",
       "legalBasis": {
@@ -17563,7 +17490,7 @@
     },
     {
       "id": "WP-SIG-002",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Interface securely with local/external/remote QSCD",
       "explanation": "Wallet solutions must be able to securely interface with at least \none type of qualified signature/seal creation device (local, \nexternal, or remote).",
       "legalBasis": {
@@ -17597,7 +17524,7 @@
     },
     {
       "id": "WP-SIG-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide free signature creation application for natural persons",
       "explanation": "Wallet providers must ensure natural persons have free-of-charge \naccess to signature creation applications for non-professional \npurposes with free QES.",
       "legalBasis": {
@@ -17631,7 +17558,7 @@
     },
     {
       "id": "WP-SCA-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Signature creation applications must support core functions",
       "explanation": "Signature creation applications must sign/seal user/RP provided data, \ncreate signatures per Annex IV formats, and inform users of results.",
       "legalBasis": {
@@ -17699,7 +17626,7 @@
     },
     {
       "id": "WP-PORT-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support secure data export and portability for migration",
       "explanation": "Wallet units must support secure export and portability of user \npersonal data (except critical assets) to allow migration to \ndifferent wallet solutions at assurance level high.",
       "legalBasis": {
@@ -17751,7 +17678,7 @@
     },
     {
       "id": "WP-PSEU-001",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Support pseudonym generation per Annex V specifications",
       "explanation": "Wallet units must support generation of pseudonyms for wallet \nusers in compliance with Annex V (WebAuthn) specifications.",
       "legalBasis": {
@@ -17785,7 +17712,7 @@
     },
     {
       "id": "WP-PSEU-002",
-      "category": "functionality",
+      "category": "technical",
       "requirement": "Generate RP-specific unique pseudonyms on request",
       "explanation": "Wallet units must support generating, on RP request, a pseudonym \nspecific and unique to that RP, optionally combined with PID/EAA.",
       "legalBasis": {
@@ -18131,7 +18058,7 @@
     },
     {
       "id": "WP-VULN-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Disclose and register remediated vulnerabilities publicly",
       "explanation": "Certificate holders must disclose and register any publicly known and \nremediated vulnerability in online repositories (per Annex V).",
       "legalBasis": {
@@ -18287,7 +18214,7 @@
     },
     {
       "id": "WP-CSEC-003",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Implement HR policies for qualified security personnel",
       "explanation": "Wallet providers must establish HR policies including requirements on \nexpertise, reliability, experience, training and qualifications of \npersonnel involved in wallet development/operation.",
       "legalBasis": {
@@ -18391,7 +18318,7 @@
     },
     {
       "id": "WP-CSEC-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Ensure use of currently certified wallet version",
       "explanation": "Wallet providers must establish measures to ensure users are using \na currently certified version of the wallet solution.",
       "legalBasis": {
@@ -18443,7 +18370,7 @@
     },
     {
       "id": "WP-REC-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Retain certification records securely for 5 years",
       "explanation": "Certificate holders must store certification-related records securely \nfor at least 5 years after certificate cancellation or expiry, including \ninformation provided to certification body and hardware specimens.",
       "legalBasis": {
@@ -18495,7 +18422,7 @@
     },
     {
       "id": "WP-REC-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Provide records to certification body/supervisory body on request",
       "explanation": "Certificate holders must make stored information available to the \ncertification body or supervisory body upon request.",
       "legalBasis": {
@@ -18599,7 +18526,7 @@
     },
     {
       "id": "WP-PUB-001",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Publish mandatory security information",
       "explanation": "Wallet providers must publish specified security information including \nlimitations, secure configuration guidance, security support period, \nvulnerability contact info, and vulnerability repository references.",
       "legalBasis": {
@@ -18651,7 +18578,7 @@
     },
     {
       "id": "WP-PUB-002",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Ensure public security information is clear and accessible",
       "explanation": "Published security information must be made available in a clear, \ncomprehensive and easily accessible manner in a publicly accessible space.",
       "legalBasis": {
@@ -18863,7 +18790,7 @@
     },
     {
       "id": "WP-PROT-005",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Display RP access certificate information to users",
       "explanation": "Wallet units must display to wallet users information contained in \nwallet-relying party access certificates or wallet unit attestations.",
       "legalBasis": {
@@ -18903,7 +18830,7 @@
     },
     {
       "id": "WP-PROT-006",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Display requested attributes to users",
       "explanation": "Wallet units must display to wallet users the attributes they are \nrequested to present.",
       "legalBasis": {
@@ -18943,7 +18870,7 @@
     },
     {
       "id": "WP-PROT-007",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Display RP registration certificate information to users",
       "explanation": "Wallet units must display to wallet users information contained in \nthe wallet-relying party registration certificate.",
       "legalBasis": {
@@ -19063,7 +18990,7 @@
     },
     {
       "id": "WP-PROT-010",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Enable privacy-preserving unlinkability for attestations",
       "explanation": "Wallet units must enable privacy preserving techniques ensuring \nunlinkability when presenting attestations across different relying \nparties where user identification is not required.",
       "legalBasis": {
@@ -19463,7 +19390,7 @@
     },
     {
       "id": "WP-PROT-020",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Support selective disclosure of attributes",
       "explanation": "Wallet solutions must support the selective disclosure of attributes \nfrom personal identification data and electronic attestations.",
       "legalBasis": {
@@ -19503,7 +19430,7 @@
     },
     {
       "id": "WP-PROT-021",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Support data erasure request protocols",
       "explanation": "Wallet units must support protocols allowing users to request \nerasure of personal data from wallet-relying parties per GDPR Art.17.",
       "legalBasis": {
@@ -19543,7 +19470,7 @@
     },
     {
       "id": "WP-PROT-022",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Allow user selection of RPs for erasure requests",
       "explanation": "The data erasure protocols must allow wallet users to select which \nwallet-relying parties should receive erasure requests.",
       "legalBasis": {
@@ -19583,7 +19510,7 @@
     },
     {
       "id": "WP-PROT-023",
-      "category": "operational",
+      "category": "governance",
       "requirement": "Display previously submitted erasure requests",
       "explanation": "Wallet units must display to wallet users previously submitted \ndata erasure requests made through those wallet units.",
       "legalBasis": {
@@ -19623,7 +19550,7 @@
     },
     {
       "id": "WP-PROT-024",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Enable easy reporting of RPs to DPAs",
       "explanation": "Wallet units must allow users to easily report wallet-relying parties \nto supervisory authorities under GDPR Article 51.",
       "legalBasis": {
@@ -19703,7 +19630,7 @@
     },
     {
       "id": "WP-PROT-026",
-      "category": "data-protection",
+      "category": "privacy",
       "requirement": "Allow users to substantiate RP reports with attachments",
       "explanation": "Wallet units must allow users to substantiate reports by attaching \nrelevant information to identify RPs and claims in machine-readable format.",
       "legalBasis": {

@@ -18,45 +18,6 @@
 
 schemaVersion: 7
 
-# Requirement categories for grouping in the UI
-categories:
-  issuance:
-    label: "Wallet Issuance & Provision"
-    order: 1
-    icon: "📲"
-  
-  certification:
-    label: "Certification & Compliance"
-    order: 2
-    icon: "✅"
-  
-  security:
-    label: "Security & Integrity"
-    order: 3
-    icon: "🔒"
-  
-  functionality:
-    label: "Core Functionality"
-    order: 4
-    icon: "⚙️"
-  
-  data-protection:
-    label: "Data Protection & Privacy"
-    order: 5
-    icon: "🛡️"
-  
-  interoperability:
-    label: "Interoperability & Standards"
-    order: 6
-    icon: "🔗"
-  
-  operational:
-    label: "Operational Requirements"
-    order: 7
-    icon: "📋"
-
-# Requirements list
-# AUDIT: 2026-01-19 - First pass systematic audit in progress
 requirements:
 
   # ============================================================================
@@ -109,7 +70,7 @@ requirements:
   # ============================================================================
 
   - id: WP-FUNC-001
-    category: functionality
+    category: technical
     requirement: "Enable secure storage, management, and presentation of PID and EAA"
     explanation: |
       The wallet must enable users to securely request, obtain, select, combine, store, 
@@ -133,7 +94,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-002
-    category: functionality
+    category: technical
     requirement: "Support selective disclosure of data"
     explanation: |
       Users must be able to share only specific attributes rather than full credentials.
@@ -150,7 +111,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-003
-    category: functionality
+    category: technical
     requirement: "Support pseudonym generation and encrypted local storage"
     explanation: |
       Wallets must allow users to generate pseudonyms and store them encrypted 
@@ -170,7 +131,7 @@ requirements:
       - pseudonym
 
   - id: WP-FUNC-004
-    category: functionality
+    category: technical
     requirement: "Support wallet-to-wallet authentication and data exchange"
     explanation: |
       Wallets must support secure peer-to-peer authentication, allowing users to 
@@ -190,7 +151,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-005
-    category: functionality
+    category: technical
     requirement: "Provide transaction log dashboard with RP list and data exchange history"
     explanation: |
       Wallets must provide a dashboard showing all relying parties the user has 
@@ -211,7 +172,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-006
-    category: functionality
+    category: technical
     requirement: "Enable easy data erasure requests to relying parties"
     explanation: |
       Wallets must provide a mechanism for users to easily request erasure of 
@@ -230,7 +191,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-007
-    category: functionality
+    category: technical
     requirement: "Enable easy reporting of suspicious RP requests to DPA"
     explanation: |
       Wallets must allow users to easily report relying parties to the competent 
@@ -250,7 +211,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-008
-    category: functionality
+    category: technical
     requirement: "Support qualified electronic signatures and seals"
     explanation: |
       Wallets must enable users to sign by means of qualified electronic signatures 
@@ -270,7 +231,7 @@ requirements:
       - esignature
 
   - id: WP-FUNC-009
-    category: functionality
+    category: technical
     requirement: "Support data download and export"
     explanation: |
       Wallets must allow users to download their data, electronic attestations 
@@ -289,7 +250,7 @@ requirements:
     useCases: all
 
   - id: WP-FUNC-010
-    category: functionality
+    category: technical
     requirement: "Support data portability rights"
     explanation: |
       Wallets must enable users to exercise their rights to data portability 
@@ -522,7 +483,7 @@ requirements:
   # ============================================================================
 
   - id: WP-DP-001
-    category: data-protection
+    category: privacy
     requirement: "Do not provide EAA usage information to attestation issuers"
     explanation: |
       Wallets must not provide any information to trust service providers about 
@@ -541,7 +502,7 @@ requirements:
     useCases: all
 
   - id: WP-DP-002
-    category: data-protection
+    category: privacy
     requirement: "Ensure user has full control over wallet use and data"
     explanation: |
       Users must have full control of the use of and data in their wallet. 
@@ -567,7 +528,7 @@ requirements:
     useCases: all
 
   - id: WP-DP-003
-    category: data-protection
+    category: privacy
     requirement: "Keep wallet personal data logically separate from other services"
     explanation: |
       Personal data relating to the provision of the wallet must be kept logically 
@@ -586,7 +547,7 @@ requirements:
     useCases: all
 
   - id: WP-DP-003a
-    category: data-protection
+    category: privacy
     requirement: "Private providers: Implement wallet services functionally separate from other services"
     explanation: |
       Private wallet providers (mandated or independent) must implement the provision 
@@ -614,7 +575,7 @@ requirements:
 
 
   - id: WP-DP-004
-    category: data-protection
+    category: privacy
     requirement: "Prevent tracking and correlation by EAA providers"
     explanation: |
       The technical framework must not allow EAA providers to track transactions 
@@ -636,7 +597,7 @@ requirements:
     useCases: all
 
   - id: WP-DP-005
-    category: data-protection
+    category: privacy
     requirement: "Enable privacy-preserving techniques for unlinkability"
     explanation: |
       The wallet must enable privacy-preserving techniques ensuring unlinkability 
@@ -657,7 +618,7 @@ requirements:
       - age-verification
 
   - id: WP-DP-006
-    category: data-protection
+    category: privacy
     requirement: "Process personal data in compliance with GDPR"
     explanation: |
       Any processing of personal data by wallet providers must comply with 
@@ -764,7 +725,7 @@ requirements:
   # ============================================================================
 
   - id: WP-OPS-001
-    category: operational
+    category: governance
     requirement: "Provide free wallet issuance, use, and revocation to natural persons"
     explanation: |
       The issuance, use, and revocation of wallets must be free of charge 
@@ -782,7 +743,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-002
-    category: operational
+    category: governance
     requirement: "Offer free qualified signatures by default to natural persons"
     explanation: |
       Wallets must offer all natural persons the ability to sign by means of 
@@ -802,7 +763,7 @@ requirements:
       - esignature
 
   - id: WP-OPS-003
-    category: operational
+    category: governance
     requirement: "Provide technical support and incident reporting mechanisms"
     explanation: |
       Wallet providers must ensure users can easily request technical support and 
@@ -822,7 +783,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-004
-    category: operational
+    category: governance
     requirement: "Provide free validation mechanisms"
     explanation: |
       Wallet providers must provide validation mechanisms free of charge to verify 
@@ -843,7 +804,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-005
-    category: operational
+    category: governance
     requirement: "Ensure unique PID association"
     explanation: |
       Wallet providers must ensure PID uniquely represents the user and is 
@@ -865,7 +826,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-006
-    category: operational
+    category: governance
     requirement: "Make wallets accessible to persons with disabilities"
     explanation: |
       Wallets must be accessible for use by persons with disabilities on an 
@@ -884,7 +845,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-007
-    category: operational
+    category: governance
     requirement: "Notify Commission of wallet framework information"
     explanation: |
       Wallet providers must ensure required information is notified to the 
@@ -908,7 +869,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-008
-    category: operational
+    category: governance
     requirement: "Implement embedded disclosure policy mechanisms"
     explanation: |
       When EAA has embedded disclosure policies, wallets must implement mechanisms 
@@ -929,7 +890,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-009
-    category: operational
+    category: governance
     requirement: "Meet assurance level high requirements"
     explanation: |
       Wallets must meet the requirements set out in Article 8 regarding assurance 
@@ -949,7 +910,7 @@ requirements:
     useCases: all
 
   - id: WP-OPS-010
-    category: operational
+    category: governance
     requirement: "Authenticate and identify relying parties"
     explanation: |
       Wallets must ensure relying parties can be authenticated and identified 
@@ -1312,7 +1273,7 @@ requirements:
   # ============================================================================
 
   - id: WP-WUA-001
-    category: operational
+    category: governance
     requirement: "Ensure each wallet unit contains wallet unit attestations"
     explanation: |
       Wallet providers must ensure that each wallet unit contains wallet 
@@ -1348,7 +1309,7 @@ requirements:
     useCases: all
 
   - id: WP-WUA-003
-    category: operational
+    category: governance
     requirement: "Inform users of rights and obligations for wallet unit"
     explanation: |
       Wallet providers must inform wallet users of their rights and 
@@ -1382,7 +1343,7 @@ requirements:
     useCases: all
 
   - id: WP-WUA-005
-    category: operational
+    category: governance
     requirement: "Enable user-requested revocation of WUA"
     explanation: |
       Wallet providers must ensure users can request revocation of their 
@@ -1405,7 +1366,7 @@ requirements:
   # ============================================================================
 
   - id: WP-REV-001
-    category: operational
+    category: governance
     requirement: "Be sole entity capable of revoking own WUAs"
     explanation: |
       Wallet providers must be the only entities capable of revoking 
@@ -1422,7 +1383,7 @@ requirements:
     useCases: all
 
   - id: WP-REV-002
-    category: operational
+    category: governance
     requirement: "Publish revocation policy with conditions and timeframe"
     explanation: |
       Wallet providers must establish a publicly available policy 
@@ -1440,7 +1401,7 @@ requirements:
     useCases: all
 
   - id: WP-REV-003
-    category: operational
+    category: governance
     requirement: "Notify users of WUA revocation within 24 hours"
     explanation: |
       When WUAs are revoked, wallet providers must inform affected users 
@@ -1461,7 +1422,7 @@ requirements:
     useCases: all
 
   - id: WP-REV-004
-    category: operational
+    category: governance
     requirement: "Publish WUA validity status in privacy-preserving manner"
     explanation: |
       When WUAs are revoked, providers must make validity status publicly 
@@ -1510,7 +1471,7 @@ requirements:
   # ============================================================================
 
   - id: WP-LOG-001
-    category: functionality
+    category: technical
     requirement: "Log all transactions including incomplete ones"
     explanation: |
       Wallet instances must log all transactions with relying parties 
@@ -1530,7 +1491,7 @@ requirements:
     useCases: all
 
   - id: WP-LOG-002
-    category: functionality
+    category: technical
     requirement: "Include mandatory log content (time, RP info, data types)"
     explanation: |
       Transaction logs must include time/date, RP name/contact/identifier/
@@ -1571,7 +1532,7 @@ requirements:
     useCases: all
 
   - id: WP-LOG-004
-    category: functionality
+    category: technical
     requirement: "Log DPA reports sent via wallet"
     explanation: |
       Wallet instances must log reports sent by the wallet user to data 
@@ -1588,7 +1549,7 @@ requirements:
     useCases: all
 
   - id: WP-LOG-005
-    category: data-protection
+    category: privacy
     requirement: "Provider log access only with explicit user consent"
     explanation: |
       Transaction logs are accessible to wallet provider only where 
@@ -1607,7 +1568,7 @@ requirements:
     useCases: all
 
   - id: WP-LOG-006
-    category: operational
+    category: governance
     requirement: "Retain logs as required by law"
     explanation: |
       Transaction logs must remain accessible for as long as required 
@@ -1624,7 +1585,7 @@ requirements:
     useCases: all
 
   - id: WP-LOG-007
-    category: functionality
+    category: technical
     requirement: "Enable user export of logged information"
     explanation: |
       Wallet providers must enable wallet users to export the logged 
@@ -1646,7 +1607,7 @@ requirements:
   # ============================================================================
 
   - id: WP-EDP-001
-    category: functionality
+    category: technical
     requirement: "Process Annex III embedded disclosure policies"
     explanation: |
       Wallet providers must ensure that EAAs with common embedded 
@@ -1664,7 +1625,7 @@ requirements:
     useCases: all
 
   - id: WP-EDP-002
-    category: functionality
+    category: technical
     requirement: "Present embedded disclosure policies with RP data"
     explanation: |
       Wallet instances must be able to process and present embedded 
@@ -1682,7 +1643,7 @@ requirements:
     useCases: all
 
   - id: WP-EDP-003
-    category: functionality
+    category: technical
     requirement: "Verify RP compliance with embedded disclosure policy"
     explanation: |
       Wallet instances must verify whether the relying party complies 
@@ -1706,7 +1667,7 @@ requirements:
   # ============================================================================
 
   - id: WP-SIG-001
-    category: functionality
+    category: technical
     requirement: "Enable receipt of qualified certificates linked to QSCD"
     explanation: |
       Wallet providers must ensure users can receive qualified certificates 
@@ -1728,7 +1689,7 @@ requirements:
       - esignature
 
   - id: WP-SIG-002
-    category: functionality
+    category: technical
     requirement: "Interface securely with local/external/remote QSCD"
     explanation: |
       Wallet solutions must be able to securely interface with at least 
@@ -1750,7 +1711,7 @@ requirements:
       - esignature
 
   - id: WP-SIG-003
-    category: operational
+    category: governance
     requirement: "Provide free signature creation application for natural persons"
     explanation: |
       Wallet providers must ensure natural persons have free-of-charge 
@@ -1777,7 +1738,7 @@ requirements:
   # ============================================================================
 
   - id: WP-SCA-001
-    category: functionality
+    category: technical
     requirement: "Signature creation applications must support core functions"
     explanation: |
       Signature creation applications must sign/seal user/RP provided data, 
@@ -1826,7 +1787,7 @@ requirements:
   # ============================================================================
 
   - id: WP-PORT-001
-    category: functionality
+    category: technical
     requirement: "Support secure data export and portability for migration"
     explanation: |
       Wallet units must support secure export and portability of user 
@@ -1853,7 +1814,7 @@ requirements:
   # ============================================================================
 
   - id: WP-PSEU-001
-    category: functionality
+    category: technical
     requirement: "Support pseudonym generation per Annex V specifications"
     explanation: |
       Wallet units must support generation of pseudonyms for wallet 
@@ -1872,7 +1833,7 @@ requirements:
       - pseudonym
 
   - id: WP-PSEU-002
-    category: functionality
+    category: technical
     requirement: "Generate RP-specific unique pseudonyms on request"
     explanation: |
       Wallet units must support generating, on RP request, a pseudonym 
@@ -2022,7 +1983,7 @@ requirements:
     useCases: all
 
   - id: WP-VULN-007
-    category: operational
+    category: governance
     requirement: "Disclose and register remediated vulnerabilities publicly"
     explanation: |
       Certificate holders must disclose and register any publicly known and 
@@ -2080,7 +2041,7 @@ requirements:
     useCases: all
 
   - id: WP-CSEC-003
-    category: operational
+    category: governance
     requirement: "Implement HR policies for qualified security personnel"
     explanation: |
       Wallet providers must establish HR policies including requirements on 
@@ -2121,7 +2082,7 @@ requirements:
     useCases: all
 
   - id: WP-CSEC-005
-    category: operational
+    category: governance
     requirement: "Ensure use of currently certified wallet version"
     explanation: |
       Wallet providers must establish measures to ensure users are using 
@@ -2138,7 +2099,7 @@ requirements:
     useCases: all
 
   - id: WP-REC-001
-    category: operational
+    category: governance
     requirement: "Retain certification records securely for 5 years"
     explanation: |
       Certificate holders must store certification-related records securely 
@@ -2162,7 +2123,7 @@ requirements:
     useCases: all
 
   - id: WP-REC-002
-    category: operational
+    category: governance
     requirement: "Provide records to certification body/supervisory body on request"
     explanation: |
       Certificate holders must make stored information available to the 
@@ -2205,7 +2166,7 @@ requirements:
     useCases: all
 
   - id: WP-PUB-001
-    category: operational
+    category: governance
     requirement: "Publish mandatory security information"
     explanation: |
       Wallet providers must publish specified security information including 
@@ -2233,7 +2194,7 @@ requirements:
     useCases: all
 
   - id: WP-PUB-002
-    category: operational
+    category: governance
     requirement: "Ensure public security information is clear and accessible"
     explanation: |
       Published security information must be made available in a clear, 
@@ -2327,7 +2288,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-005
-    category: operational
+    category: governance
     requirement: "Display RP access certificate information to users"
     explanation: |
       Wallet units must display to wallet users information contained in 
@@ -2344,7 +2305,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-006
-    category: operational
+    category: governance
     requirement: "Display requested attributes to users"
     explanation: |
       Wallet units must display to wallet users the attributes they are 
@@ -2361,7 +2322,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-007
-    category: operational
+    category: governance
     requirement: "Display RP registration certificate information to users"
     explanation: |
       Wallet units must display to wallet users information contained in 
@@ -2418,7 +2379,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-010
-    category: data-protection
+    category: privacy
     requirement: "Enable privacy-preserving unlinkability for attestations"
     explanation: |
       Wallet units must enable privacy preserving techniques ensuring 
@@ -2617,7 +2578,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-020
-    category: data-protection
+    category: privacy
     requirement: "Support selective disclosure of attributes"
     explanation: |
       Wallet solutions must support the selective disclosure of attributes 
@@ -2635,7 +2596,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-021
-    category: data-protection
+    category: privacy
     requirement: "Support data erasure request protocols"
     explanation: |
       Wallet units must support protocols allowing users to request 
@@ -2655,7 +2616,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-022
-    category: data-protection
+    category: privacy
     requirement: "Allow user selection of RPs for erasure requests"
     explanation: |
       The data erasure protocols must allow wallet users to select which 
@@ -2673,7 +2634,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-023
-    category: operational
+    category: governance
     requirement: "Display previously submitted erasure requests"
     explanation: |
       Wallet units must display to wallet users previously submitted 
@@ -2690,7 +2651,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-024
-    category: data-protection
+    category: privacy
     requirement: "Enable easy reporting of RPs to DPAs"
     explanation: |
       Wallet units must allow users to easily report wallet-relying parties 
@@ -2726,7 +2687,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-026
-    category: data-protection
+    category: privacy
     requirement: "Allow users to substantiate RP reports with attachments"
     explanation: |
       Wallet units must allow users to substantiate reports by attaching 

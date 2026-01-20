@@ -7,35 +7,6 @@
 
 schemaVersion: 1
 
-# Requirement categories for grouping in the UI
-categories:
-  accessibility:
-    label: "Accessibility"
-  authentication:
-    label: "Authentication"
-  data-protection:
-    label: "Data Protection"
-  data-quality:
-    label: "Data Quality"
-  data-retention:
-    label: "Data Retention"
-  identity-verification:
-    label: "Identity Verification"
-  issuance:
-    label: "Issuance"
-  liability:
-    label: "Liability"
-  operational:
-    label: "Operational"
-  security:
-    label: "Security"
-  technical:
-    label: "Technical"
-  transparency:
-    label: "Transparency"
-
-
-
 requirements:
   # ============================================
   # ISSUANCE REQUIREMENTS
@@ -102,7 +73,7 @@ requirements:
     useCases: all
 
   - id: PID-ISS-004
-    category: data-quality
+    category: verification
     requirement: "Ensure PID uniqueness within Member State"
     explanation: |
       The PID issued to any given wallet user must be unique within that
@@ -161,7 +132,7 @@ requirements:
     useCases: all
 
   - id: PID-ISS-007
-    category: identity-verification
+    category: verification
     requirement: "Enroll users at assurance level high"
     explanation: |
       Wallet users must be enrolled in accordance with assurance level high
@@ -185,7 +156,7 @@ requirements:
     useCases: all
 
   - id: PID-ISS-008
-    category: authentication
+    category: verification
     requirement: "Identify self to wallet unit during issuance"
     explanation: |
       When issuing PID, the provider must authenticate itself to the wallet
@@ -207,7 +178,7 @@ requirements:
     useCases: all
 
   - id: PID-ISS-009
-    category: authentication
+    category: verification
     requirement: "Validate wallet unit before issuance"
     explanation: |
       Before issuing PID, providers must authenticate and validate the wallet
@@ -234,7 +205,7 @@ requirements:
   # ============================================
 
   - id: PID-REV-001
-    category: operational
+    category: governance
     requirement: "Maintain public revocation policies"
     explanation: |
       PID Providers must maintain written, publicly accessible policies
@@ -255,7 +226,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-002
-    category: operational
+    category: governance
     requirement: "Exclusive revocation authority"
     explanation: |
       Only the provider that issued PID can revoke it. No other entity
@@ -274,7 +245,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-003
-    category: operational
+    category: governance
     requirement: "Notify user within 24 hours of revocation"
     explanation: |
       When PID is revoked, the provider must inform the wallet user within
@@ -296,7 +267,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-004
-    category: operational
+    category: governance
     requirement: "Revoke upon user request"
     explanation: |
       PID must be revoked upon the explicit request of the wallet user.
@@ -316,7 +287,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-005
-    category: operational
+    category: governance
     requirement: "Revoke when wallet attestation revoked"
     explanation: |
       PID must be revoked when the underlying wallet unit attestation is revoked.
@@ -335,7 +306,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-006
-    category: operational
+    category: governance
     requirement: "Revoke per policy conditions"
     explanation: |
       PID must be revoked in situations determined by the provider's own policies.
@@ -372,7 +343,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-008
-    category: data-retention
+    category: governance
     requirement: "Retain revoked PID as required by law"
     explanation: |
       Revoked PID must remain accessible for as long as required by
@@ -412,7 +383,7 @@ requirements:
     useCases: all
 
   - id: PID-REV-010
-    category: data-protection
+    category: privacy
     requirement: "Enable privacy-preserving unlinkability"
     explanation: |
       PID Providers must enable privacy preserving techniques that ensure
@@ -436,7 +407,7 @@ requirements:
   # ============================================
 
   - id: PID-DATA-001
-    category: data-quality
+    category: verification
     requirement: "Include mandatory natural person attributes"
     explanation: |
       PID for natural persons must include mandatory attributes: family_name,
@@ -497,7 +468,7 @@ requirements:
     useCases: all
 
   - id: PID-DATA-004
-    category: data-quality
+    category: verification
     requirement: "Include mandatory legal person attributes"
     explanation: |
       PID for legal persons must include mandatory attributes: current legal
@@ -518,7 +489,7 @@ requirements:
     useCases: all
 
   - id: PID-DATA-005
-    category: data-quality
+    category: verification
     requirement: "Handle unknown attribute values appropriately"
     explanation: |
       Where an attribute value is not known or cannot be issued, Member States
@@ -542,7 +513,7 @@ requirements:
   # ============================================
 
   - id: PID-REG-001
-    category: operational
+    category: governance
     requirement: "Associate PID with wallet ensuring unique representation"
     explanation: |
       PID Providers must ensure that the person identification data uniquely
@@ -605,7 +576,7 @@ requirements:
     useCases: all
 
   - id: PID-REG-004
-    category: data-protection
+    category: privacy
     requirement: "Comply with GDPR for personal data processing"
     explanation: |
       All personal data processing by PID Providers must comply with GDPR
@@ -646,7 +617,7 @@ requirements:
     useCases: all
 
   - id: PID-REG-006
-    category: accessibility
+    category: governance
     requirement: "Make services accessible for persons with disabilities"
     explanation: |
       PID issuance must be accessible to persons with disabilities on an

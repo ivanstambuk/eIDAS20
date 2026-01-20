@@ -54,6 +54,11 @@ function validate() {
     const validRoleIds = new Set(Object.keys(rolesConfig.roles));
     console.log(`   👥 Found ${validRoleIds.size} valid role IDs`);
 
+    // 3. Load valid categories from global categories.yaml (single source of truth)
+    const categoriesConfig = loadYaml(join(CONFIG_DIR, 'categories.yaml'));
+    const validCategories = new Set(Object.keys(categoriesConfig.categories || {}));
+    console.log(`   🏷️  Found ${validCategories.size} valid category IDs`);
+
     // ====================
     // Validate each requirements file
     // ====================
@@ -66,9 +71,6 @@ function validate() {
         const config = loadYaml(filePath);
 
         if (!config.requirements) continue;
-
-        // Get valid categories from this file
-        const validCategories = new Set(Object.keys(config.categories || {}));
 
         for (const req of config.requirements) {
             const reqId = req.id;
@@ -100,23 +102,15 @@ function validate() {
                 });
             }
 
-            // Validate category (MANDATORY - file must define categories)
-            if (validCategories.size === 0) {
-                errors.push({
-                    file,
-                    reqId,
-                    field: 'categories',
-                    value: 'MISSING',
-                    message: `File is missing 'categories:' section. Every requirements file must define its valid categories.`
-                });
-            } else if (req.category) {
+            // Validate category (MANDATORY - must be from global categories.yaml)
+            if (req.category) {
                 if (!validCategories.has(req.category)) {
                     errors.push({
                         file,
                         reqId,
                         field: 'category',
                         value: req.category,
-                        message: `Invalid category: "${req.category}". Valid categories in this file: ${[...validCategories].join(', ')}`
+                        message: `Invalid category: "${req.category}". Valid categories: ${[...validCategories].sort().join(', ')}`
                     });
                 }
             } else {
@@ -125,7 +119,7 @@ function validate() {
                     reqId,
                     field: 'category',
                     value: 'MISSING',
-                    message: `Requirement is missing 'category:' field. Every requirement must have a category.`
+                    message: `Requirement is missing 'category:' field. Valid categories: ${[...validCategories].sort().join(', ')}`
                 });
             }
 

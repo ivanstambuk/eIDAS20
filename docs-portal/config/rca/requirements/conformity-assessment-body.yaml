@@ -11,23 +11,6 @@
 
 schemaVersion: 1
 
-# Requirement categories for grouping in the UI
-categories:
-  accreditation:
-    label: "Accreditation"
-  notification:
-    label: "Notification"
-  operational:
-    label: "Operational"
-  reporting:
-    label: "Reporting"
-  transition:
-    label: "Transition"
-  transparency:
-    label: "Transparency"
-
-
-
 requirements:
   # ============================================
   # SECTION 1: ACCREDITATION REQUIREMENTS
@@ -35,7 +18,7 @@ requirements:
   # ============================================
 
   - id: CAB-ACC-001
-    category: accreditation
+    category: registration
     requirement: "Be accredited per EN ISO/IEC 17065:2012 and ETSI EN 319403-1 v2.3.1"
     explanation: |
       CABs must be accredited in accordance with standard EN ISO/IEC 17065:2012
@@ -56,7 +39,7 @@ requirements:
     useCases: all
 
   - id: CAB-ACC-002
-    category: accreditation
+    category: registration
     requirement: "Undergo accreditation by NABs per EN ISO/IEC 17011:2017"
     explanation: |
       CAB accreditation must be performed by a national accreditation body
@@ -99,7 +82,7 @@ requirements:
     useCases: all
 
   - id: CAB-CERT-002
-    category: operational
+    category: governance
     requirement: "Ensure subcontractors comply with reference standards"
     explanation: |
       When subcontracting conformity assessment activities, CABs must ensure
@@ -121,7 +104,7 @@ requirements:
     useCases: all
 
   - id: CAB-CERT-003
-    category: operational
+    category: governance
     requirement: "Enable QTSPs to submit complete reports to supervisory bodies"
     explanation: |
       Upon issuing a certification decision, CABs must ensure that the
@@ -147,7 +130,7 @@ requirements:
   # ============================================
 
   - id: CAB-SCHEME-001
-    category: operational
+    category: governance
     requirement: "Use conformity assessment schemes compliant with ISO/IEC 17067:2013 type 6"
     explanation: |
       CABs must use conformity assessment schemes that comply with scheme
@@ -167,7 +150,7 @@ requirements:
     useCases: all
 
   - id: CAB-SCHEME-002
-    category: operational
+    category: governance
     requirement: "Include reference standards from Annex II in schemes"
     explanation: |
       CABs must use schemes that include at least the standards set out
@@ -186,7 +169,7 @@ requirements:
     useCases: all
 
   - id: CAB-SCHEME-003
-    category: operational
+    category: governance
     requirement: "Conduct yearly surveillance assessments for each qualified service"
     explanation: |
       CABs must conduct at least one surveillance conformity assessment
@@ -210,7 +193,7 @@ requirements:
   # ============================================
 
   - id: CAB-REPORT-001
-    category: reporting
+    category: transparency
     requirement: "Produce conformity assessment reports per Annex III specifications"
     explanation: |
       CABs must produce conformity assessment reports that comply with the
@@ -229,7 +212,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-002
-    category: reporting
+    category: transparency
     requirement: "Include clear certification decision confirming compliance"
     explanation: |
       Reports must be accompanied by a clear certification decision
@@ -252,7 +235,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-003
-    category: reporting
+    category: transparency
     requirement: "Specify QTSP identity and all subsidiaries/subcontractors"
     explanation: |
       Reports must include the QTSP name, registration number, addresses,
@@ -275,7 +258,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-004
-    category: reporting
+    category: transparency
     requirement: "Include detailed assessment scope description"
     explanation: |
       Reports must include a detailed description of the scope of assessment,
@@ -294,7 +277,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-005
-    category: reporting
+    category: transparency
     requirement: "Contain sufficient evidence demonstrating compliance"
     explanation: |
       Reports must contain sufficient evidence to demonstrate that the
@@ -314,7 +297,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-006
-    category: reporting
+    category: transparency
     requirement: "Specify CAB identity and accreditation details"
     explanation: |
       Reports must specify the CAB name, registration number, addresses,
@@ -337,7 +320,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-007
-    category: reporting
+    category: transparency
     requirement: "Include qualified electronic signature on reports"
     explanation: |
       Electronic reports must contain at least one qualified electronic
@@ -359,7 +342,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-008
-    category: reporting
+    category: transparency
     requirement: "Identify all service digital identities per trust service type"
     explanation: |
       Reports must identify service digital identities per type of qualified
@@ -381,7 +364,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-009
-    category: reporting
+    category: transparency
     requirement: "Provide detailed PKI hierarchy description"
     explanation: |
       For PKI-based services, reports must include a detailed description
@@ -404,7 +387,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-010
-    category: reporting
+    category: transparency
     requirement: "List all third parties and subcontractors with assessment scope"
     explanation: |
       Reports must include an exhaustive list of third parties and
@@ -426,7 +409,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-011
-    category: reporting
+    category: transparency
     requirement: "Include exhaustive list of 14 categories of QTSP documentation"
     explanation: |
       Reports must include a comprehensive list of all QTSP internal and
@@ -452,7 +435,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-012
-    category: reporting
+    category: transparency
     requirement: "Assess compliance with all applicable implementing acts"
     explanation: |
       Reports must contain an assessment of fulfilment of requirements
@@ -475,7 +458,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-013
-    category: reporting
+    category: transparency
     requirement: "Assess compliance with NIS2 Article 21 requirements"
     explanation: |
       Reports must contain an assessment of fulfilment of cybersecurity
@@ -496,7 +479,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-014
-    category: reporting
+    category: transparency
     requirement: "Declare absence of non-conformities or provide remediation plan"
     explanation: |
       Reports must declare absence of any non-conformities, or if any are
@@ -520,7 +503,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-015
-    category: reporting
+    category: transparency
     requirement: "Identify opportunities for improvement where appropriate"
     explanation: |
       Reports may contain recommendations for improvement concerning
@@ -540,7 +523,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-016
-    category: reporting
+    category: transparency
     requirement: "Document assessment period and person-days for each stage"
     explanation: |
       Reports must identify the period and time taken (in person-days)
@@ -562,7 +545,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-017
-    category: reporting
+    category: transparency
     requirement: "Include test results and production samples assessment"
     explanation: |
       Reports must include the scope, description, and results of a
@@ -583,7 +566,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-018
-    category: reporting
+    category: transparency
     requirement: "Specify surveillance and next assessment deadlines"
     explanation: |
       Reports must indicate the deadline for the next surveillance
@@ -605,7 +588,7 @@ requirements:
     useCases: all
 
   - id: CAB-REPORT-019
-    category: reporting
+    category: transparency
     requirement: "Include declaration that reports are for supervisory body use"
     explanation: |
       Reports must contain an explicit declaration that the certification
@@ -630,7 +613,7 @@ requirements:
   # ============================================
 
   - id: CAB-CHANGE-001
-    category: operational
+    category: governance
     requirement: "Inform QTSPs of impacts from accreditation reconsideration"
     explanation: |
       When a CAB receives a request from the NAB to take measures due to
@@ -660,7 +643,7 @@ requirements:
   # ============================================
 
   - id: CAB-SUB-001
-    category: operational
+    category: governance
     requirement: "Use EN ISO/IEC 17025:2017 for subcontracted testing"
     explanation: |
       When subcontracting testing activities, CABs must ensure the
@@ -678,7 +661,7 @@ requirements:
     useCases: all
 
   - id: CAB-SUB-002
-    category: operational
+    category: governance
     requirement: "Use EN ISO/IEC 17021-1:2015 for subcontracted management system audits"
     explanation: |
       When subcontracting audit activities of management systems, CABs
@@ -697,7 +680,7 @@ requirements:
     useCases: all
 
   - id: CAB-SUB-003
-    category: operational
+    category: governance
     requirement: "Use EN ISO/IEC 17020:2012 for subcontracted inspections"
     explanation: |
       When subcontracting inspection activities, CABs must ensure the
@@ -715,7 +698,7 @@ requirements:
     useCases: all
 
   - id: CAB-SUB-004
-    category: operational
+    category: governance
     requirement: "Use EN ISO/IEC 17065:2012 for subcontracted conformity assessments"
     explanation: |
       When subcontracting conformity assessment activities, CABs must
@@ -738,7 +721,7 @@ requirements:
   # ============================================
 
   - id: CAB-REG-001
-    category: notification
+    category: registration
     requirement: "Member States must notify CAB names, addresses, and accreditation details"
     explanation: |
       This is a Member State obligation that affects CABs: their details
@@ -760,7 +743,7 @@ requirements:
     useCases: all
 
   - id: CAB-REG-002
-    category: operational
+    category: governance
     requirement: "Audit QTSPs at least every 24 months at QTSP expense"
     explanation: |
       CABs perform audits of qualified trust service providers at least
@@ -783,7 +766,7 @@ requirements:
     useCases: all
 
   - id: CAB-REG-003
-    category: reporting
+    category: transparency
     requirement: "Issue conformity assessment report for QTSP initiation"
     explanation: |
       CABs issue the conformity assessment report that trust service
@@ -811,7 +794,7 @@ requirements:
   # ============================================
 
   - id: CAB-TRANS-001
-    category: transition
+    category: governance
     requirement: "Existing ETSI EN 319403 v2.2.2 accreditation valid until May 2027"
     explanation: |
       CABs accredited before 17 November 2025 under ETSI EN 319403 v2.2.2

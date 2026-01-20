@@ -14,25 +14,6 @@
 
 schemaVersion: 1
 
-# Requirement categories for grouping in the UI
-categories:
-  cooperation:
-    label: "Cooperation"
-  enforcement:
-    label: "Enforcement"
-  governance:
-    label: "Governance"
-  incident-response:
-    label: "Incident Response"
-  notification:
-    label: "Notification"
-  reporting:
-    label: "Reporting"
-  supervision:
-    label: "Supervision"
-
-
-
 requirements:
   # ============================================
   # SECTION 1: DESIGNATION AND RESOURCES
@@ -88,7 +69,7 @@ requirements:
     useCases: all
 
   - id: SB-DES-003
-    category: notification
+    category: registration
     requirement: "Notify Commission of designated supervisory bodies"
     explanation: |
       Member States must notify the Commission of their designated supervisory
@@ -113,7 +94,7 @@ requirements:
   # ============================================
 
   - id: SB-WALL-001
-    category: supervision
+    category: governance
     requirement: "Supervise EUDIW providers through ex ante and ex post activities"
     explanation: |
       Supervisory bodies must supervise EUDIW providers to ensure they and their
@@ -137,7 +118,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-002
-    category: enforcement
+    category: governance
     requirement: "Take action on EUDIW provider infringements"
     explanation: |
       When informed that EUDIW providers or their wallets infringe the regulation,
@@ -159,7 +140,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-003
-    category: cooperation
+    category: interoperability
     requirement: "Cooperate with other supervisory bodies per Articles 46c and 46e"
     explanation: |
       Supervisory bodies must cooperate with their counterparts in other Member
@@ -181,7 +162,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-004
-    category: supervision
+    category: governance
     requirement: "Request information to monitor EUDIW compliance"
     explanation: |
       Supervisory bodies have the power to request any information necessary
@@ -200,7 +181,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-005
-    category: incident-response
+    category: security
     requirement: "Inform NIS2 authorities of significant security breaches"
     explanation: |
       When aware of significant security breaches or loss of integrity, supervisory
@@ -231,7 +212,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-006
-    category: supervision
+    category: governance
     requirement: "Carry out on-site inspections and off-site supervision"
     explanation: |
       Supervisory bodies have the power to conduct both on-site inspections
@@ -250,7 +231,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-007
-    category: enforcement
+    category: governance
     requirement: "Require EUDIW providers to remedy non-compliance"
     explanation: |
       Supervisory bodies can require EUDIW providers to remedy any failure
@@ -270,7 +251,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-008
-    category: enforcement
+    category: governance
     requirement: "Suspend or cancel relying party registrations for fraud"
     explanation: |
       Supervisory bodies can suspend or cancel the relying party registration
@@ -291,7 +272,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-009
-    category: cooperation
+    category: interoperability
     requirement: "Cooperate with data protection authorities on breaches"
     explanation: |
       Supervisory bodies must cooperate with data protection authorities,
@@ -314,7 +295,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-010
-    category: enforcement
+    category: governance
     requirement: "Order suspension or cessation of non-compliant EUDIW provision"
     explanation: |
       If an EUDIW provider fails to remedy non-compliance, the supervisory body
@@ -343,7 +324,7 @@ requirements:
     useCases: all
 
   - id: SB-WALL-011
-    category: reporting
+    category: transparency
     requirement: "Submit annual activity report to Commission by 31 March"
     explanation: |
       Each supervisory body must submit an annual report on its main activities
@@ -370,7 +351,7 @@ requirements:
   # ============================================
 
   - id: SB-TSP-001
-    category: supervision
+    category: governance
     requirement: "Supervise QTSPs through ex ante and ex post activities"
     explanation: |
       Supervisory bodies must supervise qualified trust service providers to
@@ -395,7 +376,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-002
-    category: enforcement
+    category: governance
     requirement: "Take action on non-qualified TSP non-compliance"
     explanation: |
       When informed that non-qualified TSPs allegedly do not meet requirements,
@@ -418,7 +399,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-003
-    category: incident-response
+    category: security
     requirement: "Inform NIS2 authorities of trust service security breaches"
     explanation: |
       When aware of significant security breaches or loss of integrity affecting
@@ -445,7 +426,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-004
-    category: cooperation
+    category: interoperability
     requirement: "Cooperate with other supervisory bodies per Articles 46c and 46e"
     explanation: |
       Trust service supervisory bodies must cooperate with their counterparts
@@ -466,7 +447,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-005
-    category: supervision
+    category: governance
     requirement: "Analyse conformity assessment reports from CABs"
     explanation: |
       Supervisory bodies must analyse the conformity assessment reports
@@ -486,7 +467,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-006
-    category: reporting
+    category: transparency
     requirement: "Submit annual activity report to Commission by 31 March"
     explanation: |
       Each trust service supervisory body must submit an annual report on
@@ -508,7 +489,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-007
-    category: supervision
+    category: governance
     requirement: "Carry out audits or request CAB conformity assessments"
     explanation: |
       Supervisory bodies can audit QTSPs directly or request a CAB to perform
@@ -529,7 +510,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-008
-    category: cooperation
+    category: interoperability
     requirement: "Cooperate with data protection authorities on TSP breaches"
     explanation: |
       Trust service supervisory bodies must cooperate with data protection
@@ -552,7 +533,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-009
-    category: enforcement
+    category: governance
     requirement: "Grant qualified status to TSPs and services per Arts 20/21"
     explanation: |
       Supervisory bodies have exclusive authority to grant qualified status
@@ -573,7 +554,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-010
-    category: notification
+    category: registration
     requirement: "Inform trusted list body of qualified status decisions"
     explanation: |
       When granting or withdrawing qualified status, supervisory bodies must
@@ -595,7 +576,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-011
-    category: supervision
+    category: governance
     requirement: "Verify QTSP termination plans per Article 24(2)(h)"
     explanation: |
       Supervisory bodies must verify that QTSPs have proper termination plans
@@ -617,7 +598,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-012
-    category: enforcement
+    category: governance
     requirement: "Require TSPs to remedy non-compliance with regulation"
     explanation: |
       Supervisory bodies can require trust service providers to remedy any
@@ -637,7 +618,7 @@ requirements:
     useCases: all
 
   - id: SB-TSP-013
-    category: enforcement
+    category: governance
     requirement: "Investigate web-browser claims on QWAC certificates"
     explanation: |
       Supervisory bodies must investigate claims made by web browser providers
@@ -683,7 +664,7 @@ requirements:
   # ============================================
 
   - id: SB-SPOC-001
-    category: cooperation
+    category: interoperability
     requirement: "Member States shall designate a single point of contact"
     explanation: |
       Each Member State must designate a single point of contact for trust
@@ -702,7 +683,7 @@ requirements:
     useCases: all
 
   - id: SB-SPOC-002
-    category: cooperation
+    category: interoperability
     requirement: "SPOC exercises liaison function for cross-border cooperation"
     explanation: |
       The single point of contact facilitates cross-border cooperation between
@@ -725,7 +706,7 @@ requirements:
     useCases: all
 
   - id: SB-SPOC-003
-    category: notification
+    category: registration
     requirement: "Make SPOC contact details public and notify Commission"
     explanation: |
       Member States must make their single point of contact details public
@@ -749,7 +730,7 @@ requirements:
   # ============================================
 
   - id: SB-MA-001
-    category: cooperation
+    category: interoperability
     requirement: "May seek mutual assistance from other Member States' supervisory bodies"
     explanation: |
       Supervisory bodies may seek mutual assistance from their counterparts
@@ -772,7 +753,7 @@ requirements:
     useCases: all
 
   - id: SB-MA-002
-    category: cooperation
+    category: interoperability
     requirement: "Inform and consult supervisory body in other Member State"
     explanation: |
       When applying supervisory and enforcement measures, bodies must inform
@@ -791,7 +772,7 @@ requirements:
     useCases: all
 
   - id: SB-MA-003
-    category: cooperation
+    category: interoperability
     requirement: "May request another supervisory body to take supervisory measures"
     explanation: |
       A supervisory body may request another Member State's body to take
@@ -812,7 +793,7 @@ requirements:
     useCases: all
 
   - id: SB-MA-004
-    category: cooperation
+    category: interoperability
     requirement: "May carry out joint investigations with other Member States"
     explanation: |
       Where appropriate, supervisory bodies may conduct joint investigations
@@ -833,7 +814,7 @@ requirements:
     useCases: all
 
   - id: SB-MA-005
-    category: cooperation
+    category: interoperability
     requirement: "May refuse assistance on proportionality or competence grounds"
     explanation: |
       A supervisory body may refuse a request for assistance if it is
@@ -860,7 +841,7 @@ requirements:
   # ============================================
 
   - id: SB-COOP-001
-    category: cooperation
+    category: interoperability
     requirement: "Participate in European Digital Identity Cooperation Group"
     explanation: |
       Member States must appoint representatives to the Cooperation Group
@@ -881,7 +862,7 @@ requirements:
     useCases: all
 
   - id: SB-COOP-002
-    category: cooperation
+    category: interoperability
     requirement: "Exchange best practices on policy implementation"
     explanation: |
       Through the Cooperation Group, supervisory bodies exchange best practices
@@ -907,7 +888,7 @@ requirements:
     useCases: all
 
   - id: SB-COOP-003
-    category: cooperation
+    category: interoperability
     requirement: "Organise joint meetings with NIS Cooperation Group"
     explanation: |
       The Cooperation Group organizes joint meetings with the NIS Cooperation
@@ -928,7 +909,7 @@ requirements:
     useCases: all
 
   - id: SB-COOP-004
-    category: cooperation
+    category: interoperability
     requirement: "Participate in peer reviews of eID schemes to be notified"
     explanation: |
       Through the Cooperation Group, supervisory bodies participate in
@@ -947,7 +928,7 @@ requirements:
     useCases: all
 
   - id: SB-COOP-005
-    category: cooperation
+    category: interoperability
     requirement: "Ensure effective and efficient cooperation in Cooperation Group"
     explanation: |
       Member States must ensure their designated representatives participate
@@ -970,7 +951,7 @@ requirements:
   # ============================================
 
   - id: SB-SEC-001
-    category: incident-response
+    category: security
     requirement: "Provide annual breach summary to ENISA"
     explanation: |
       The supervisory body must provide ENISA once a year with a summary

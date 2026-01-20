@@ -11,35 +11,6 @@
 
 schemaVersion: 2
 
-# Requirement categories for grouping in the UI
-categories:
-  accessibility:
-    label: "Accessibility"
-  assessment:
-    label: "Assessment"
-  certification:
-    label: "Certification"
-  data-protection:
-    label: "Data Protection"
-  data-retention:
-    label: "Data Retention"
-  identity-verification:
-    label: "Identity Verification"
-  liability:
-    label: "Liability"
-  notification:
-    label: "Notification"
-  operational:
-    label: "Operational"
-  security:
-    label: "Security"
-  technical:
-    label: "Technical"
-  transparency:
-    label: "Transparency"
-
-
-
 requirements:
   # ============================================
   # SECTION 1: ALL TRUST SERVICE PROVIDERS
@@ -91,7 +62,7 @@ requirements:
 
   # --- Article 15: Accessibility ---
   - id: TSP-ACC-001
-    category: accessibility
+    category: governance
     requirement: "Make services accessible to persons with disabilities"
     explanation: |
       Trust services and end-user products must be made available in plain
@@ -183,7 +154,7 @@ requirements:
 
   # --- Article 19a: Non-Qualified TSP Requirements ---
   - id: TSP-NQ-001
-    category: operational
+    category: governance
     requirement: "Implement risk management policies and measures"
     profileFilter: [non_qualified]
     explanation: |
@@ -300,7 +271,7 @@ requirements:
     useCases: all
 
   - id: TSP-AUD-004
-    category: operational
+    category: governance
     requirement: "Remedy non-compliance within set time limit"
     profileFilter: [qualified]
     explanation: |
@@ -347,7 +318,7 @@ requirements:
     useCases: all
 
   - id: TSP-INIT-002
-    category: operational
+    category: governance
     requirement: "Begin qualified services only after trusted list inclusion"
     profileFilter: [qualified]
     explanation: |
@@ -389,7 +360,7 @@ requirements:
 
   # --- Article 24: Core QTSP Requirements ---
   - id: TSP-QUAL-001
-    category: identity-verification
+    category: verification
     requirement: "Verify identity when issuing qualified certificates/attestations"
     profileFilter: [qualified]
     explanation: |
@@ -411,7 +382,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-002
-    category: identity-verification
+    category: verification
     requirement: "Use approved methods for identity verification"
     profileFilter: [qualified]
     explanation: |
@@ -457,7 +428,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-004
-    category: operational
+    category: governance
     requirement: "Employ qualified and trained staff"
     profileFilter: [qualified]
     explanation: |
@@ -544,7 +515,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-008
-    category: data-protection
+    category: privacy
     requirement: "Use secure data storage with access controls"
     profileFilter: [qualified]
     explanation: |
@@ -566,7 +537,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-009
-    category: operational
+    category: governance
     requirement: "Implement comprehensive risk management policies"
     profileFilter: [qualified]
     explanation: |
@@ -633,7 +604,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-012
-    category: data-retention
+    category: governance
     requirement: "Retain relevant information for evidence and service continuity"
     profileFilter: [qualified]
     explanation: |
@@ -656,7 +627,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-013
-    category: operational
+    category: governance
     requirement: "Maintain up-to-date termination plan"
     profileFilter: [qualified]
     explanation: |
@@ -676,7 +647,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-014
-    category: data-protection
+    category: privacy
     requirement: "Ensure lawful processing of personal data"
     profileFilter: [qualified]
     explanation: |
@@ -695,7 +666,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-015
-    category: operational
+    category: governance
     requirement: "Establish and maintain certificate database"
     profileFilter: [qualified]
     explanation: |
@@ -714,7 +685,7 @@ requirements:
     useCases: all
 
   - id: TSP-QUAL-016
-    category: operational
+    category: governance
     requirement: "Publish certificate revocation within 24 hours"
     profileFilter: [qualified]
     explanation: |
@@ -884,7 +855,7 @@ requirements:
     useCases: all
 
   - id: TSP-QSCD-003
-    category: operational
+    category: governance
     requirement: "Only QTSPs may generate/manage signature creation data"
     profileFilter: [qualified]
     explanation: |
@@ -1043,7 +1014,7 @@ requirements:
 
   # --- Article 2: Risk Management Framework ---
   - id: TSP-IA-RISK-001
-    category: operational
+    category: governance
     requirement: "Apply risk management framework per 2025/2160"
     profileFilter: [qualified]
     explanation: |
@@ -1064,7 +1035,7 @@ requirements:
 
   # --- Article 3: Termination Plan ---
   - id: TSP-IA-TERM-001
-    category: operational
+    category: governance
     requirement: "Establish termination plan for each qualified trust service"
     profileFilter: [qualified]
     explanation: |
@@ -1087,7 +1058,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-002
-    category: operational
+    category: governance
     requirement: "Establish controls for termination plan document availability"
     profileFilter: [qualified]
     explanation: |
@@ -1109,7 +1080,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-003
-    category: operational
+    category: governance
     requirement: "Keep termination plan and documents up to date"
     profileFilter: [qualified]
     explanation: |
@@ -1129,7 +1100,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-004
-    category: operational
+    category: governance
     requirement: "Review termination plan at least every two years"
     profileFilter: [qualified]
     explanation: |
@@ -1152,7 +1123,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-005
-    category: operational
+    category: governance
     requirement: "Manage termination-specific risks in risk framework"
     profileFilter: [qualified]
     explanation: |
@@ -1194,7 +1165,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-007
-    category: operational
+    category: governance
     requirement: "Include 9 specific procedures in termination plan"
     profileFilter: [qualified]
     explanation: |
@@ -1224,7 +1195,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-008
-    category: data-retention
+    category: governance
     requirement: "Ensure record accessibility for evidence and continuity"
     profileFilter: [qualified]
     explanation: |
@@ -1251,7 +1222,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-TERM-009
-    category: operational
+    category: governance
     requirement: "Maintain 5 types of termination documentation"
     profileFilter: [qualified]
     explanation: |
@@ -1305,7 +1276,7 @@ requirements:
   # ============================================
 
   - id: TSP-IA-NQRISK-001
-    category: operational
+    category: governance
     requirement: "Establish management-approved risk management policies"
     profileFilter: [non_qualified]
     explanation: |
@@ -1327,7 +1298,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-NQRISK-002
-    category: operational
+    category: governance
     requirement: "Include 6 mandatory elements in risk management policies"
     profileFilter: [non_qualified]
     explanation: |
@@ -1352,7 +1323,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-NQRISK-003
-    category: operational
+    category: governance
     requirement: "Identify, document and evaluate all risks"
     profileFilter: [non_qualified]
     explanation: |
@@ -1374,7 +1345,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-NQRISK-004
-    category: operational
+    category: governance
     requirement: "Plan, document and implement risk treatment measures"
     profileFilter: [non_qualified]
     explanation: |
@@ -1417,7 +1388,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-NQRISK-006
-    category: data-retention
+    category: governance
     requirement: "Record and retain user registration and authentication data"
     profileFilter: [non_qualified]
     explanation: |
@@ -1439,7 +1410,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-NQRISK-007
-    category: operational
+    category: governance
     requirement: "Review and update risk evaluation annually"
     profileFilter: [non_qualified]
     explanation: |
@@ -1529,7 +1500,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-QEAA-004
-    category: operational
+    category: governance
     requirement: "Revoke attestations in specified circumstances"
     profileFilter: [qualified]
     explanation: |
@@ -1551,7 +1522,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-QEAA-005
-    category: data-protection
+    category: privacy
     requirement: "Use privacy-preserving revocation techniques"
     profileFilter: [qualified]
     explanation: |
@@ -1597,7 +1568,7 @@ requirements:
   # ============================================
 
   - id: TSP-IA-IDPROOF-001
-    category: operational
+    category: governance
     requirement: "Comply with ETSI identity verification standards"
     profileFilter: [qualified]
     explanation: |
@@ -1616,7 +1587,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-IDPROOF-002
-    category: assessment
+    category: certification
     requirement: "Use accredited CABs for biometric verification assessment"
     profileFilter: [qualified]
     explanation: |
@@ -1638,7 +1609,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-IDPROOF-003
-    category: operational
+    category: governance
     requirement: "Establish FAR/FRR targets for automated identity proofing"
     profileFilter: [qualified]
     explanation: |
@@ -1660,7 +1631,7 @@ requirements:
     useCases: all
 
   - id: TSP-IA-IDPROOF-004
-    category: assessment
+    category: certification
     requirement: "Test identity document validation measures every 2 years"
     profileFilter: [qualified]
     explanation: |
@@ -1771,7 +1742,7 @@ requirements:
   # ============================================
 
   - id: TSP-IA-INIT-001
-    category: notification
+    category: registration
     requirement: "Provide 8 mandatory information items when notifying intention"
     profileFilter: [qualified]
     explanation: |
@@ -1975,7 +1946,7 @@ requirements:
   # ============================================
 
   - id: TSP-IA-PERS-001
-    category: operational
+    category: governance
     requirement: "Provide annual security training updates to personnel"
     profileFilter: [qualified]
     explanation: |

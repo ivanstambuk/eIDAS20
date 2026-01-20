@@ -227,25 +227,15 @@ for (const req of allRequirements) {
     }
 }
 
-// Get unique requirement categories from the first requirements file
-const requirementCategories = [];
-const seenCategories = new Set();
-
-for (const req of processedRequirements) {
-    if (!seenCategories.has(req.category)) {
-        seenCategories.add(req.category);
-        // Find category metadata from any requirements file
-        const reqFile = loadYaml('requirements/relying-party.yaml');
-        const catInfo = reqFile.categories?.[req.category];
-        requirementCategories.push({
-            id: req.category,
-            label: catInfo?.label || req.category,
-            order: catInfo?.order || 999,
-            icon: catInfo?.icon
-        });
-    }
-}
-requirementCategories.sort((a, b) => a.order - b.order);
+// Load requirement categories from global categories.yaml (single source of truth)
+const reqCategoriesConfig = loadYaml('categories.yaml');
+const requirementCategories = Object.entries(reqCategoriesConfig.categories).map(([id, cat]) => ({
+    id,
+    label: cat.label,
+    description: cat.description,
+    order: cat.order,
+    icon: cat.icon
+})).sort((a, b) => a.order - b.order);
 
 // ============================================================================
 // Build final output

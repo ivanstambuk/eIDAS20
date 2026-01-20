@@ -12,37 +12,6 @@
 schemaVersion: 3  # Added Art. 24 QTSP requirements (EAA-QTSP-004 to EAA-QTSP-012)
 
 # UI categories for organizing requirements
-categories:
-  issuance:
-    label: "Attestation Issuance"
-    order: 1
-    icon: "📜"
-  verification:
-    label: "Identity Verification"
-    order: 2
-    icon: "🔍"
-  certification:
-    label: "Certification & Qualification"
-    order: 3
-    icon: "✅"
-  data_protection:
-    label: "Data Protection"
-    order: 4
-    icon: "🔒"
-  revocation:
-    label: "Revocation & Validity"
-    order: 5
-    icon: "🚫"
-  interoperability:
-    label: "Interoperability"
-    order: 6
-    icon: "🔗"
-  operational:
-    label: "Operational Requirements"
-    order: 7
-    icon: "⚙️"
-
-# Requirements extracted during EAA Issuer audit
 requirements:
   # ============================================================================
   # MAIN REGULATION - Article 45d (Requirements for QEAA)
@@ -282,7 +251,7 @@ requirements:
   # ============================================================================
 
   - id: EAA-DP-001
-    category: data_protection
+    category: privacy
     requirement: "Not combine EAA personal data with other services"
     explanation: |
       Personal data collected during the provision of electronic attestation of
@@ -304,7 +273,7 @@ requirements:
     useCases: all
 
   - id: EAA-DP-002
-    category: data_protection
+    category: privacy
     requirement: "Keep EAA personal data logically separate"
     explanation: |
       Personal data relating to the provision of electronic attestation of attributes
@@ -324,7 +293,7 @@ requirements:
     useCases: all
 
   - id: EAA-DP-003
-    category: operational
+    category: governance
     requirement: "Implement QEAA services functionally separate from other services"
     explanation: |
       Providers of qualified electronic attestation of attributes services must
@@ -509,7 +478,7 @@ requirements:
     profileFilter: [qualified, public_authentic]
 
   - id: EAA-STD-005
-    category: data_protection
+    category: privacy
     requirement: "Process only minimum necessary attributes"
     explanation: |
       Attestation providers must process only the minimum set of attributes
@@ -738,7 +707,7 @@ requirements:
   # ============================================================================
 
   - id: EAA-QTSP-001
-    category: operational
+    category: governance
     requirement: "Notify supervisory body of significant changes"
     explanation: |
       Qualified EAA issuers must notify the supervisory body at least one month
@@ -763,7 +732,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-002
-    category: operational
+    category: governance
     requirement: "Implement risk management framework"
     explanation: |
       Qualified EAA issuers must implement a risk management framework in
@@ -783,7 +752,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-003
-    category: operational
+    category: governance
     requirement: "Establish and maintain termination plan"
     explanation: |
       Qualified EAA issuers must establish a termination plan for each qualified
@@ -867,7 +836,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-006
-    category: operational
+    category: governance
     requirement: "Notify supervisory body before starting qualified trust service"
     explanation: |
       Before starting to provide a qualified trust service (including QEAA),
@@ -891,7 +860,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-007
-    category: operational
+    category: governance
     requirement: "Maintain personnel with necessary expertise and reliability"
     explanation: |
       Qualified EAA issuers must employ personnel possessing the necessary
@@ -915,7 +884,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-008
-    category: operational
+    category: governance
     requirement: "Maintain sufficient financial resources or liability coverage"
     explanation: |
       Qualified EAA issuers must maintain sufficient financial resources or
@@ -962,7 +931,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-010
-    category: operational
+    category: governance
     requirement: "Take appropriate measures against security threats"
     explanation: |
       Qualified EAA issuers must take appropriate measures against forgery,
@@ -983,7 +952,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-011
-    category: operational
+    category: governance
     requirement: "Record and retain relevant information for evidence purposes"
     explanation: |
       Qualified EAA issuers must record and keep accessible all relevant
@@ -1008,7 +977,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-012
-    category: data_protection
+    category: privacy
     requirement: "Ensure lawful processing of personal data"
     explanation: |
       Qualified EAA issuers must ensure lawful processing of personal data

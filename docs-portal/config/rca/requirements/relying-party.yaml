@@ -19,44 +19,6 @@
 
 schemaVersion: 14
 
-# Requirement categories for grouping in the UI
-categories:
-  registration:
-    label: "Registration & Authorization"
-    order: 1
-    icon: "📝"
-  
-  technical:
-    label: "Technical Requirements"
-    order: 2
-    icon: "⚙️"
-  
-  authentication:
-    label: "Authentication & Verification"
-    order: 3
-    icon: "🔐"
-  
-  esignature:
-    label: "eSignature & Trust Services"
-    order: 4
-    icon: "✍️"
-  
-  data-protection:
-    label: "Data Protection & Privacy"
-    order: 5
-    icon: "🛡️"
-  
-  security:
-    label: "Security"
-    order: 6
-    icon: "🔒"
-  
-  operational:
-    label: "Operational Requirements"
-    order: 7
-    icon: "📋"
-
-# Requirements list
 requirements:
 
   # ============================================================================
@@ -190,7 +152,7 @@ requirements:
       - age-verification
 
   - id: RP-AUTH-001
-    category: authentication
+    category: verification
     requirement: "Implement and perform authentication and validation procedures"
     explanation: |
       Relying parties have the legal responsibility for properly authenticating and validating 
@@ -210,7 +172,7 @@ requirements:
     useCases: all
 
   - id: RP-OPS-004
-    category: operational
+    category: governance
     requirement: "Intermediaries acting on behalf of RPs must not store transaction content data"
     explanation: |
       When an intermediary (e.g., a payment processor, integration platform) acts on behalf 
@@ -566,7 +528,7 @@ requirements:
   # ============================================================================
 
   - id: RP-ACCEPT-001
-    category: operational
+    category: governance
     requirement: "Public sector: Accept EUDI Wallet for online services requiring e-ID"
     explanation: |
       When a public sector body requires electronic identification to access an online 
@@ -588,7 +550,7 @@ requirements:
       - esignature
 
   - id: RP-ACCEPT-002
-    category: operational
+    category: governance
     requirement: "Private sector: Accept EUDI Wallet where strong authentication is mandated"
     explanation: |
       Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
@@ -616,7 +578,7 @@ requirements:
       - pid-online
 
   - id: RP-ACCEPT-003
-    category: operational
+    category: governance
     requirement: "Very large online platforms: Accept EUDI Wallet for user authentication"
     explanation: |
       Providers of very large online platforms (as defined in DSA Article 33) must accept 
@@ -645,7 +607,7 @@ requirements:
   # ============================================================================
 
   - id: RP-SCA-001
-    category: authentication
+    category: verification
     requirement: "Support wallet-based Strong Customer Authentication (SCA)"
     explanation: |
       Payment service providers must accept the EUDI Wallet as a means of performing 
@@ -677,7 +639,7 @@ requirements:
   # ============================================================================
 
   - id: RP-ESIG-001
-    category: esignature
+    category: technical
     requirement: "Accept electronic signatures regardless of electronic form"
     explanation: |
       Relying parties cannot deny legal effect or admissibility of an electronic signature 
@@ -697,7 +659,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-002
-    category: esignature
+    category: technical
     requirement: "Recognize qualified electronic signatures as equivalent to handwritten"
     explanation: |
       Qualified electronic signatures have the equivalent legal effect of a handwritten 
@@ -716,7 +678,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-003
-    category: esignature
+    category: technical
     requirement: "Recognize qualified signatures from all Member States"
     explanation: |
       Cross-border recognition is mandatory. A qualified electronic signature issued in 
@@ -736,7 +698,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-004
-    category: esignature
+    category: technical
     requirement: "Public sector: Accept advanced signatures in defined formats"
     explanation: |
       Public sector relying parties requiring advanced electronic signatures must accept 
@@ -760,7 +722,7 @@ requirements:
       - pid-online
 
   - id: RP-ESIG-005
-    category: esignature
+    category: technical
     requirement: "Public sector: Not require higher than qualified signature for cross-border"
     explanation: |
       For cross-border services, public sector bodies cannot require a security level 
@@ -781,7 +743,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-006
-    category: esignature
+    category: technical
     requirement: "Validate qualified electronic signatures correctly"
     explanation: |
       Relying parties should use a validation process that confirms the qualified signature's 
@@ -807,7 +769,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-007
-    category: esignature
+    category: technical
     requirement: "Validate advanced signatures based on qualified certificates"
     explanation: |
       When receiving advanced electronic signatures based on qualified certificates, relying 
@@ -832,7 +794,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-007a
-    category: esignature
+    category: technical
     requirement: "Ensure validation system allows detection of security issues"
     explanation: |
       When using a validation system for qualified electronic signatures, relying parties 
@@ -853,7 +815,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-008
-    category: esignature
+    category: technical
     requirement: "Consider using qualified validation services"
     explanation: |
       Relying parties may use qualified validation services to validate qualified electronic 
@@ -878,7 +840,7 @@ requirements:
   # --- Electronic Seals (Art 35-40) ---
 
   - id: RP-ESIG-009
-    category: esignature
+    category: technical
     requirement: "Accept electronic seals regardless of electronic form"
     explanation: |
       Relying parties cannot deny legal effect or admissibility of an electronic seal 
@@ -898,7 +860,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-010
-    category: esignature
+    category: technical
     requirement: "Recognize qualified electronic seals' presumptions"
     explanation: |
       Qualified electronic seals enjoy the presumption of data integrity and origin correctness.
@@ -917,7 +879,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-011
-    category: esignature
+    category: technical
     requirement: "Recognize qualified electronic seals from all Member States"
     explanation: |
       Cross-border recognition is mandatory. A qualified electronic seal issued in 
@@ -936,7 +898,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-012
-    category: esignature
+    category: technical
     requirement: "Public sector: Accept advanced seals in defined formats"
     explanation: |
       Public sector relying parties requiring advanced electronic seals must accept 
@@ -960,7 +922,7 @@ requirements:
       - pid-online
 
   - id: RP-ESIG-013
-    category: esignature
+    category: technical
     requirement: "Validate qualified electronic seals correctly"
     explanation: |
       Articles 32-34 for signature validation apply mutatis mutandis to electronic seals.
@@ -981,7 +943,7 @@ requirements:
   # --- Electronic Time Stamps (Art 41-42) ---
 
   - id: RP-ESIG-014
-    category: esignature
+    category: technical
     requirement: "Accept electronic time stamps regardless of electronic form"
     explanation: |
       Relying parties cannot deny legal effect of an electronic time stamp solely 
@@ -1001,7 +963,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-015
-    category: esignature
+    category: technical
     requirement: "Recognize qualified time stamps' presumptions"
     explanation: |
       Qualified electronic time stamps enjoy the presumption of accuracy of date/time 
@@ -1021,7 +983,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-016
-    category: esignature
+    category: technical
     requirement: "Recognize qualified time stamps from all Member States"
     explanation: |
       Cross-border recognition is mandatory. A qualified electronic time stamp issued 
@@ -1042,7 +1004,7 @@ requirements:
   # --- Electronic Registered Delivery (Art 43-44) ---
 
   - id: RP-ESIG-017
-    category: esignature
+    category: technical
     requirement: "Accept electronic registered delivery data regardless of form"
     explanation: |
       Relying parties cannot deny legal effect of data sent/received using electronic 
@@ -1063,7 +1025,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-018
-    category: esignature
+    category: technical
     requirement: "Recognize qualified registered delivery presumptions"
     explanation: |
       Qualified electronic registered delivery services enjoy presumptions of data integrity,
@@ -1087,7 +1049,7 @@ requirements:
   # --- Website Authentication Certificates (Art 45) ---
 
   - id: RP-ESIG-019
-    category: esignature
+    category: technical
     requirement: "Recognize qualified certificates for website authentication"
     explanation: |
       Qualified certificates for website authentication issued in any Member State 
@@ -1110,7 +1072,7 @@ requirements:
   # --- Electronic Attestation of Attributes (Art 45b) ---
 
   - id: RP-ESIG-020
-    category: esignature
+    category: technical
     requirement: "Accept electronic attestations of attributes regardless of form"
     explanation: |
       Relying parties cannot deny legal effect of an electronic attestation of attributes 
@@ -1130,7 +1092,7 @@ requirements:
     useCases: all
 
   - id: RP-ESIG-021
-    category: esignature
+    category: technical
     requirement: "Recognize legal effect of qualified EAA and public sector EAA"
     explanation: |
       Qualified EAA and attestations issued by public sector bodies responsible for 
@@ -1149,7 +1111,7 @@ requirements:
     useCases: all
 
   - id: RP-ESIG-022
-    category: esignature
+    category: technical
     requirement: "Recognize public sector EAA from all Member States"
     explanation: |
       Cross-border recognition is mandatory. EAA issued by a public sector body in 
@@ -1171,7 +1133,7 @@ requirements:
   # --- Electronic Archiving Services (Art 45i-45j) ---
 
   - id: RP-ESIG-023
-    category: esignature
+    category: technical
     requirement: "Accept electronically archived data regardless of form"
     explanation: |
       Relying parties cannot deny legal effect of electronically preserved data solely 
@@ -1192,7 +1154,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-024
-    category: esignature
+    category: technical
     requirement: "Recognize qualified archiving service presumptions"
     explanation: |
       Data preserved using qualified electronic archiving enjoys the presumption of 
@@ -1214,7 +1176,7 @@ requirements:
   # --- Electronic Ledgers (Art 45k-45l) ---
 
   - id: RP-ESIG-025
-    category: esignature
+    category: technical
     requirement: "Accept electronic ledger records regardless of form"
     explanation: |
       Relying parties cannot deny legal effect of electronic ledger records solely 
@@ -1234,7 +1196,7 @@ requirements:
       - esignature
 
   - id: RP-ESIG-026
-    category: esignature
+    category: technical
     requirement: "Recognize qualified electronic ledger presumptions"
     explanation: |
       Data records in a qualified electronic ledger enjoy the presumption of unique, 
@@ -1255,7 +1217,7 @@ requirements:
   # --- Mutual Recognition & Cross-Border (Art 6, 11a) ---
 
   - id: RP-AUTH-005
-    category: authentication
+    category: verification
     requirement: "Public sector: Recognize e-ID from other Member States"
     explanation: |
       When requiring electronic identification for online services, public sector RPs 
@@ -1278,7 +1240,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-002
-    category: authentication
+    category: verification
     requirement: "Public sector: Ensure unequivocal identity matching for cross-border"
     explanation: |
       When acting as relying parties for cross-border services, public sector bodies 
@@ -1298,7 +1260,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-003
-    category: authentication
+    category: verification
     requirement: "Protect personal data used for identity matching"
     explanation: |
       For cross-border identity matching, appropriate technical and organisational measures 
@@ -1320,7 +1282,7 @@ requirements:
   # --- Certificate Revocation Information Access (Art 24) ---
 
   - id: RP-AUTH-004
-    category: authentication
+    category: verification
     requirement: "Access certificate revocation status information"
     explanation: |
       Qualified trust service providers must provide RPs with certificate validity/revocation 
@@ -1346,7 +1308,7 @@ requirements:
   # DATA PROTECTION & PRIVACY
 
   - id: RP-DP-001
-    category: data-protection
+    category: privacy
     requirement: "Request only necessary and proportionate attributes"
     explanation: |
       Relying parties shall only request attributes that are necessary and proportionate 
@@ -1364,7 +1326,7 @@ requirements:
     useCases: all
 
   - id: RP-DP-002
-    category: data-protection
+    category: privacy
     requirement: "Support selective disclosure of attributes"
     explanation: |
       Systems must be capable of processing selectively disclosed attributes. Users 
@@ -1388,7 +1350,7 @@ requirements:
     useCases: all
 
   - id: RP-DP-003
-    category: data-protection
+    category: privacy
     requirement: "Do not track wallet usage across services (unlinkability)"
     explanation: |
       The technical framework must prevent tracking or correlation of wallet usage 
@@ -1409,7 +1371,7 @@ requirements:
     useCases: all
 
   - id: RP-DP-004
-    category: data-protection
+    category: privacy
     requirement: "Enable privacy preserving unlinkability for non-identified attestations"
     explanation: |
       When attestations don't require user identification, privacy-preserving techniques 
@@ -1431,7 +1393,7 @@ requirements:
       - pseudonym
 
   - id: RP-DP-005
-    category: data-protection
+    category: privacy
     requirement: "Allow pseudonyms where legal identity is not required"
     explanation: |
       Users cannot be prohibited from using pseudonyms when there is no legal requirement 
@@ -1452,7 +1414,7 @@ requirements:
       - age-verification
 
   - id: RP-DP-006
-    category: data-protection
+    category: privacy
     requirement: "Process data in accordance with GDPR"
     explanation: |
       All personal data received from wallets must be processed in full compliance 
@@ -1478,7 +1440,7 @@ requirements:
   # ============================================================================
 
   - id: RP-OPS-001
-    category: operational
+    category: governance
     requirement: "Maintain alternative means of identification"
     explanation: |
       Relying parties may maintain alternative authentication methods. EUDI Wallet 
@@ -1500,7 +1462,7 @@ requirements:
     useCases: all
 
   - id: RP-OPS-002
-    category: operational
+    category: governance
     requirement: "Support reporting to data protection authorities"
     explanation: |
       Relying parties must be prepared to be reported to data protection authorities 
@@ -1525,7 +1487,7 @@ requirements:
   # ============================================================================
 
   - id: RP-INFO-001
-    category: data-protection
+    category: privacy
     bindingType: informative
     requirement: "Perform data protection impact assessments for wallet data processing"
     explanation: |
@@ -1548,7 +1510,7 @@ requirements:
     useCases: all
 
   - id: RP-INFO-002
-    category: data-protection
+    category: privacy
     bindingType: informative
     requirement: "Apply data minimization - request only necessary data"
     explanation: |
@@ -1570,7 +1532,7 @@ requirements:
     useCases: all
 
   - id: RP-INFO-003
-    category: data-protection
+    category: privacy
     bindingType: informative
     requirement: "Accept pseudonymous access where identification not legally required"
     explanation: |
@@ -1589,7 +1551,7 @@ requirements:
     useCases: all
 
   - id: RP-INFO-004
-    category: operational
+    category: governance
     bindingType: informative
     requirement: "Enable selective disclosure of attributes"
     explanation: |
@@ -1611,7 +1573,7 @@ requirements:
     useCases: all
 
   - id: RP-INFO-005
-    category: authentication
+    category: verification
     bindingType: informative
     requirement: "Very large online platforms must accept wallet authentication"
     explanation: |
@@ -1787,7 +1749,7 @@ requirements:
   # ============================================================================
 
   - id: RP-TECH-015
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Verify wallet unit attestation validity before transactions"
     explanation: |
@@ -1811,7 +1773,7 @@ requirements:
       - proximity-id
 
   - id: RP-TECH-016
-    category: data-protection
+    category: privacy
     bindingType: mandatory
     requirement: "Comply with embedded disclosure policies in attestations"
     explanation: |
@@ -1832,7 +1794,7 @@ requirements:
     useCases: all
 
   - id: RP-TECH-017
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Request RP-specific pseudonyms when appropriate"
     explanation: |
@@ -1881,7 +1843,7 @@ requirements:
     useCases: all
 
   - id: RP-ESIG-027
-    category: esignature
+    category: technical
     bindingType: mandatory
     requirement: "Support signature formats from Annex IV when requesting signatures"
     explanation: |
@@ -1984,7 +1946,7 @@ requirements:
   # ============================================================================
 
   - id: RP-AUTH-009
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Perform unequivocal identity matching for cross-border users"
     explanation: |
@@ -2007,7 +1969,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-010
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Use mandatory PID attributes for wallet-based identity matching"
     explanation: |
@@ -2030,7 +1992,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-011
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Handle orthographic variations in identity matching"
     explanation: |
@@ -2053,7 +2015,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-012
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Inform users of successful identity matching outcomes"
     explanation: |
@@ -2076,7 +2038,7 @@ requirements:
       - pid-online
 
   - id: RP-AUTH-013
-    category: authentication
+    category: verification
     bindingType: mandatory
     requirement: "Inform users when identity matching fails and provide alternatives"
     explanation: |
@@ -2101,7 +2063,7 @@ requirements:
       - pid-online
 
   - id: RP-OPS-003
-    category: operational
+    category: governance
     bindingType: mandatory
     requirement: "Retain identity matching logs for 6-12 months"
     explanation: |
