@@ -1,22 +1,25 @@
 # Session Context
-<!-- No pending task — hybrid selector complete -->
+<!-- No pending task — eSignature FAQ complete -->
 
 ## Current State
 
-- **Focus**: RCA UI improvements complete
+- **Focus**: eSignature FAQ import complete
 - **Next**: Push to GitHub (no code changes pending)
 - **Status**: Ready
 - **Phase**: Maintenance
 
 ## Notes
 
-V3.5.6 — Hybrid Use Case Selector is complete and committed.
+V3.6.0 — EC eSignature FAQ imported:
+- 5,788 words of practical guidance
+- Sidebar renamed: "Referenced Regulations" → "Supplementary Documents"
+- Decisions: DEC-092 (verbatim preservation), DEC-093 (sidebar rename)
 
-No pending implementation work. Ready for GitHub push.
+Portal: 35 docs, 185,357 words
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Test: Navigate to /rca, select domains, verify flat grouped list
+# Test: Navigate to Supplementary Documents → eSignature FAQ
 ```

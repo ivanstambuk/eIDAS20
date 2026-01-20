@@ -8,16 +8,16 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 22:09 CET |
-| **Session State** | V3.5.6 — Hybrid Use Case Selector (DONE) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
+| **Last Updated** | 2026-01-20 22:35 CET |
+| **Session State** | V3.6.0 — EC eSignature FAQ Import |
+| **Portal Status** | ✅ Fully functional (185,357 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
 ---
 
 ## Portal Features (Complete)
 
-- **35 documents** (5 regulations: 910/2014, 2024/1183, 765/2008, 2021/946 Recommendation, **2015/1501 Interoperability Framework** + 30 implementing acts)
+- **35 documents** (6 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, **eSignature FAQ** + 29 implementing acts)
 - **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 22:35 | **EC eSignature FAQ Import (V3.6.0)**: (1) Imported EC Digital Building Blocks eSignature FAQ (5,788 words) — covers electronic signatures/seals, certificates, QSCD, timestamps, Trusted List Browser, (2) New `supplementary` document category for non-legal guidance resources, (3) Renamed sidebar section "Referenced Regulations" → "Supplementary Documents" (DEC-093), (4) Documented terminology verbatim preservation policy (DEC-092) — definitions must be copied exactly from sources, no merging/adapting, (5) Portal now 35 docs, 185,357 words. |
 | 2026-01-20 22:09 | **Hybrid Use Case Selector (V3.5.6)**: Redesigned RCA use case selection with hybrid pattern: (1) Domain chips (toggle multi-select) replace filter pills at top, (2) Flat grouped list shows use cases with always-visible descriptions (no accordion collapse), (3) Empty state prompt when no domains selected, (4) "Select all" checkbox per domain header, (5) Glossy cyan styling on selected chips/items. Retro: Added 4 terms to TERMINOLOGY.md (Domain, Requirement Category, Hybrid Selector Pattern, Domain Chip), updated /ux-design workflow with "tabs imply exclusivity" and "check existing UI first" rules. |
 | 2026-01-20 21:11 | **Complete Role Labels Refresh (V3.5.5)**: Second pass over all 7 roles for clarity: (1) Relying Party: action-oriented "Verifies wallet credentials...", (2) Wallet Provider: "Develops and operates the EUDI Wallet solution", profile "Member State Direct" → "Government-Operated" with Art 5a refs, (3) PID Provider: emphasizes "foundational identity credential", (4) **CAB**: Fixed inaccurate scope — now includes "wallet providers, QTSPs, and QEAA issuers" (was only QTSPs), (5) Supervisory Body: shortened to "Authority overseeing...". Browser-verified all changes. |
 | 2026-01-20 21:03 | **EAA/TSP Role Label Improvements (V3.5.4)**: Per DEC-091, improved role tile wording for legal clarity: (1) EAA Issuer profiles now "Qualified (QEAA)", "Non-Qualified EAA", "Public Authentic Source" — removed misleading "TSP" from QEAA label, (2) TSP profiles now "Non-Qualified TSP" for consistency, (3) Updated descriptions to reflect legal relationships (e.g., PAS are NOT TSPs), (4) Browser-verified UI changes. |
