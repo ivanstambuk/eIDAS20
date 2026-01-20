@@ -83,7 +83,11 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                     }}
                 >
                     <span>
-                        — <span style={{ color: 'var(--accent-primary)' }}>{sources[0].documentTitle}</span>, Article {sources[0].articleNumber} →
+                        — <span style={{ color: 'var(--accent-primary)' }}>{sources[0].documentTitle}</span>,{' '}
+                        {sources[0].documentCategory === 'supplementary'
+                            ? <em>"{sources[0].articleNumber}"</em>
+                            : `Article ${sources[0].articleNumber}`
+                        } →
                     </span>
                 </Link>
             ) : (
@@ -131,7 +135,11 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                                         textDecoration: 'none'
                                     }}
                                 >
-                                    {source.documentTitle}, Article {source.articleNumber} →
+                                    {source.documentTitle},{' '}
+                                    {source.documentCategory === 'supplementary'
+                                        ? <em>"{source.articleNumber}"</em>
+                                        : `Article ${source.articleNumber}`
+                                    } →
                                 </Link>
                             ))}
                         </div>

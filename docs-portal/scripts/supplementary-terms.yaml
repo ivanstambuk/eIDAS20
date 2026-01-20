@@ -173,7 +173,10 @@ terms:
     definition: >-
       An electronic time stamp is a data in electronic form which binds other 
       data in electronic form to a particular time establishing evidence that 
-      the latter data existed at that time.
+      the latter data existed at that time. For example, a signatory can use an 
+      electronic time stamp to bind a signed document to a particular date and 
+      time and prove in the future that the signed document existed at this 
+      particular date and time.
     sectionTitle: "What is an electronic time stamp?"
     section: what-is-an-electronic-time-stamp-and-do-i-need-one
     note: Establishes temporal evidence
