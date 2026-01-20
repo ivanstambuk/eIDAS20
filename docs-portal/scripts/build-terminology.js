@@ -36,6 +36,10 @@ const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' }
 ];
 
+// Supplementary terminology file (DEC-092: verbatim definitions from non-legal sources)
+// This YAML file contains manually curated definitions from sources like EC FAQ
+const SUPPLEMENTARY_TERMS_FILE = join(__dirname, 'supplementary-terms.yaml');
+
 /**
  * Load role mappings from config file
  */
@@ -117,6 +121,156 @@ function loadFilterConfig() {
     } catch (err) {
         console.warn('⚠️  Could not load terminology-filters.yaml:', err.message);
         return { documentTypes: {} };
+    }
+}
+
+/**
+ * Load supplementary terminology from YAML file
+ * Per DEC-092: These definitions are preserved verbatim from non-legal sources
+ * 
+ * Returns array of term objects compatible with the main extraction pipeline
+ */
+function loadSupplementaryTerms() {
+    if (!existsSync(SUPPLEMENTARY_TERMS_FILE)) {
+        return [];
+    }
+
+    try {
+        const content = readFileSync(SUPPLEMENTARY_TERMS_FILE, 'utf-8');
+        const terms = [];
+        let source = {};
+        let currentTerm = null;
+        let inTerms = false;
+        let inDefinition = false;
+        let definitionLines = [];
+
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim();
+
+            // Skip comments and empty lines (unless we're in a multi-line definition)
+            if (trimmed.startsWith('#')) continue;
+            if (!trimmed && !inDefinition) continue;
+
+            // Parse source metadata
+            if (line.startsWith('  id:') && !inTerms) {
+                source.id = trimmed.split(':')[1].trim();
+                continue;
+            }
+            if (line.startsWith('  slug:') && !inTerms) {
+                source.slug = trimmed.split(':')[1].trim();
+                continue;
+            }
+            if (line.startsWith('  shortRef:') && !inTerms) {
+                source.shortRef = trimmed.split(':')[1].trim();
+                continue;
+            }
+            if (line.startsWith('  category:') && !inTerms) {
+                source.category = trimmed.split(':')[1].trim();
+                continue;
+            }
+            if (line.startsWith('  type:') && !inTerms) {
+                source.type = trimmed.split(':')[1].trim();
+                continue;
+            }
+
+            // Start of terms section
+            if (trimmed === 'terms:') {
+                inTerms = true;
+                continue;
+            }
+
+            if (!inTerms) continue;
+
+            // New term entry (starts with "- term:")
+            if (trimmed.startsWith('- term:')) {
+                // Save previous term if exists
+                if (currentTerm && currentTerm.definition) {
+                    terms.push({
+                        term: currentTerm.term,
+                        definition: currentTerm.definition.trim(),
+                        source: {
+                            celex: null,
+                            title: source.shortRef || 'Supplementary Source',
+                            shortRef: source.shortRef || 'Supplementary',
+                            slug: source.slug || source.id,
+                            type: source.type || 'faq',
+                            category: source.category || 'supplementary',
+                            article: currentTerm.section || 'N/A',
+                            ordinal: null
+                        }
+                    });
+                }
+
+                // Start new term
+                currentTerm = {
+                    term: trimmed.replace('- term:', '').trim(),
+                    definition: '',
+                    section: null
+                };
+                inDefinition = false;
+                definitionLines = [];
+                continue;
+            }
+
+            // Multi-line definition (starts with "definition: >-" or continues with indented text)
+            if (trimmed.startsWith('definition:')) {
+                const defStart = trimmed.replace('definition:', '').trim();
+                if (defStart === '>-') {
+                    inDefinition = true;
+                    definitionLines = [];
+                } else {
+                    // Single-line definition
+                    currentTerm.definition = defStart.replace(/^["']|["']$/g, '').trim();
+                }
+                continue;
+            }
+
+            // Continuation of multi-line definition
+            if (inDefinition && line.startsWith('      ')) {
+                definitionLines.push(trimmed);
+                currentTerm.definition = definitionLines.join(' ').replace(/\s+/g, ' ').trim();
+                continue;
+            }
+
+            // End of multi-line definition (found a new field)
+            if (inDefinition && (trimmed.startsWith('section:') || trimmed.startsWith('note:') || trimmed.startsWith('- term:'))) {
+                inDefinition = false;
+            }
+
+            // Section ID
+            if (trimmed.startsWith('section:') && currentTerm) {
+                currentTerm.section = trimmed.split(':')[1].trim();
+                continue;
+            }
+
+            // Note field (informational, not stored in terminology.json)
+            if (trimmed.startsWith('note:')) {
+                continue;
+            }
+        }
+
+        // Don't forget the last term!
+        if (currentTerm && currentTerm.definition) {
+            terms.push({
+                term: currentTerm.term,
+                definition: currentTerm.definition.trim(),
+                source: {
+                    celex: null,
+                    title: source.shortRef || 'Supplementary Source',
+                    shortRef: source.shortRef || 'Supplementary',
+                    slug: source.slug || source.id,
+                    type: source.type || 'faq',
+                    category: source.category || 'supplementary',
+                    article: currentTerm.section || 'N/A',
+                    ordinal: null
+                }
+            });
+        }
+
+        return terms;
+    } catch (err) {
+        console.warn('⚠️  Could not load supplementary-terms.yaml:', err.message);
+        return [];
     }
 }
 
@@ -389,11 +543,13 @@ function scanDirectory(sourceDir, type, docConfig) {
 function mergeTerms(allTerms) {
     const termMap = new Map();
 
-    // Display order mapping
+    // Display order mapping (lower = higher priority)
+    // DEC-092: supplementary (FAQ definitions) display after legal definitions
     const DISPLAY_ORDER = {
         'primary': 1,
         'implementing-act': 2,
-        'referenced': 3
+        'referenced': 3,
+        'supplementary': 4
     };
 
     // Helper function to get display order
@@ -534,6 +690,18 @@ function build() {
         console.log(`ℹ️  Skipped ${allSkipped.length} document(s): ${allSkipped.join(', ')}\n`);
     }
 
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Load supplementary terms from YAML (DEC-092)
+    // ═══════════════════════════════════════════════════════════════════════════
+    console.log('📎 Loading supplementary terminology (FAQ definitions)...');
+    const supplementaryTerms = loadSupplementaryTerms();
+    if (supplementaryTerms.length > 0) {
+        console.log(`   Found ${supplementaryTerms.length} supplementary definitions\n`);
+        allTerms.push(...supplementaryTerms);
+    } else {
+        console.log('   No supplementary terms found\n');
+    }
+
     // Merge terms from multiple sources
     const mergedTerms = mergeTerms(allTerms);
 
@@ -609,7 +777,8 @@ function build() {
             totalDefinitions: allTerms.length,
             sources: {
                 regulations: allTerms.filter(t => t.source.type === 'regulation').length,
-                implementingActs: allTerms.filter(t => t.source.type === 'implementing-act').length
+                implementingActs: allTerms.filter(t => t.source.type === 'implementing-act').length,
+                supplementary: allTerms.filter(t => t.source.category === 'supplementary').length
             },
             termsWithRoles,
             termsWithDomains

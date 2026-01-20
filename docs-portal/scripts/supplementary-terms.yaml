@@ -1,0 +1,343 @@
+# Supplementary Terminology Definitions
+# ═══════════════════════════════════════════════════════════════════════════════
+# 
+# This file contains definitions extracted from non-legal sources (e.g., EC FAQ)
+# that complement the legal definitions from eIDAS regulations.
+#
+# These definitions are loaded by build-terminology.js and merged with
+# legal definitions, appearing as additional sources when displaying terms.
+#
+# Per DEC-092: Definitions are preserved VERBATIM from source documents.
+# Do NOT paraphrase, merge, or adapt these definitions.
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+version: '1.0'
+last_updated: '2026-01-20'
+
+# Source metadata (used for all terms in this file)
+source:
+  id: ec-esignature-faq
+  slug: ec-esignature-faq
+  shortRef: EC eSignature FAQ
+  title: EC eSignature FAQ
+  category: supplementary
+  type: faq
+  celex: null  # Not a legal document
+  url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TERMS: Each entry has a term name, definition (verbatim), and section ID
+# ─────────────────────────────────────────────────────────────────────────────
+terms:
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Core Concepts (from "General Questions" section)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: electronic signature
+    definition: >-
+      An electronic signature is a data in electronic form which is attached to 
+      or logically associated with other data in electronic form and which is 
+      used by the signatory to sign, where the signatory is a natural person. 
+      Like its handwritten counterpart in the offline world, an electronic 
+      signature can be used, for instance, to electronically indicate that the 
+      signatory has written the document, agreed with the content of the document, 
+      or that the signatory was present as a witness.
+    section: what-is-an-electronic-signature
+    note: Plain-language explanation of eIDAS Article 3(10)
+
+  - term: electronic seal
+    definition: >-
+      An electronic seal is a data in electronic form, which is attached to or 
+      logically associated with other data in electronic form to ensure the 
+      latter's origin and integrity, where the creator of a seal is a legal 
+      person (unlike the electronic signature that is issued by a natural person). 
+      Electronic seals might serve as evidence that an electronic document was 
+      issued by a legal person, ensuring certainty of the document's origin and 
+      integrity.
+    section: what-is-an-electronic-seal
+    note: Plain-language explanation of eIDAS Article 3(25)
+
+  - term: digital signature
+    definition: >-
+      A digital signature refers to a mathematical and cryptographic concept 
+      that is widely used to provide concrete and practical instances of 
+      electronic signature. The definition given by ETSI TR 119 100 is that 
+      of data appended to, or a cryptographic transformation of a data unit 
+      that allows a recipient of the data unit to prove the source and 
+      integrity of the data unit and protect against forgery e.g. by the recipient.
+    section: what-is-the-difference-between-an-electronic-signature-and-a-digital-signature
+    note: Technical concept (ETSI) — distinct from legal "electronic signature"
+
+
+  - term: advanced electronic signature
+    definition: >-
+      An advanced electronic signature is an electronic signature which is 
+      additionally: uniquely linked to and capable of identifying the signatory; 
+      created in a way that allows the signatory to retain control; linked to 
+      the document in a way that any subsequent change of the data is detectable.
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures
+    note: Second level (AdES) defined in eIDAS
+
+  - term: qualified electronic signature
+    definition: >-
+      A qualified electronic signature is an advanced electronic signature 
+      which is additionally: created by a qualified signature creation device 
+      (QSCD); and is based on a qualified certificate for electronic signatures.
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-signatures
+    note: Third level (QES) — equivalent legal effect to handwritten signature
+
+  - term: advanced electronic seal
+    definition: >-
+      An advanced electronic seal is an electronic seal which is additionally: 
+      uniquely linked to the creator of the seal; capable of identifying the 
+      creator of the seal; created using electronic seal creation data that 
+      the creator of the seal can, with a high level of confidence under its 
+      control, use for electronic seal creation; and linked to the data to 
+      which it relates in such a way that any subsequent change in the data 
+      is detectable.
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals
+    note: Second level for legal persons
+
+  - term: qualified electronic seal
+    definition: >-
+      A qualified electronic seal is an advanced electronic seal which is 
+      additionally: created by a qualified seal creation device (QSCD); and 
+      is based on a qualified certificate for electronic seals.
+    section: what-are-the-levels-simple-advanced-and-qualified-of-electronic-seals
+    note: Third level for legal persons
+
+  - term: certificate for electronic signatures
+    definition: >-
+      A certificate for electronic signatures, issued by a Certificate 
+      Authority (CA), is an electronic attestation which links electronic 
+      signature validation data to a natural person and confirms at least 
+      the name or the pseudonym of that person.
+    section: what-is-a-certificate-for-electronic-signatures
+    note: Links signature validation data to natural person
+
+  - term: certificate for electronic seals
+    definition: >-
+      A certificate for electronic seals, issued by a Certificate Authority 
+      (CA), is an electronic attestation that links electronic seal validation 
+      data to a legal person and confirms the name of that person.
+    section: what-is-a-certificate-for-electronic-seals
+    note: Links seal validation data to legal person
+
+  - term: qualified signature creation device
+    definition: >-
+      A qualified signature/seal creation device (QSCD), by following stricter 
+      requirements laid down in eIDAS, offers higher guarantees regarding the 
+      protection (e.g. mitigating any kind of replication or forgery) of the 
+      electronic signature/seal creation data (such as the private key) and 
+      therefore higher legal certainty regarding the created qualified 
+      electronic signatures/seals.
+    section: what-is-a-qualified-signatureseal-creation-device-qscd
+    note: Examples include smartcards, SIM cards, USB sticks
+
+  - term: qualified seal creation device
+    definition: >-
+      A qualified signature/seal creation device (QSCD), by following stricter 
+      requirements laid down in eIDAS, offers higher guarantees regarding the 
+      protection (e.g. mitigating any kind of replication or forgery) of the 
+      electronic signature/seal creation data (such as the private key) and 
+      therefore higher legal certainty regarding the created qualified 
+      electronic signatures/seals.
+    section: what-is-a-qualified-signatureseal-creation-device-qscd
+    note: Same requirements as signature creation device, for legal persons
+
+  - term: remote QSCD
+    definition: >-
+      A QSCD is not necessarily in the physical possession of the signatory/creator 
+      of the seal but can also be remotely managed by a qualified trust service 
+      provider (QTSP). This kind of QSCD is known as "remote QSCD". Those remote 
+      QSCD offer an improved user experience while maintaining the legal certainty 
+      offered by qualified electronic signatures/seals.
+    section: what-is-a-qualified-signatureseal-creation-device-qscd
+    note: Remotely managed QSCD
+
+  - term: electronic time stamp
+    definition: >-
+      An electronic time stamp is a data in electronic form which binds other 
+      data in electronic form to a particular time establishing evidence that 
+      the latter data existed at that time.
+    section: what-is-an-electronic-time-stamp-and-do-i-need-one
+    note: Establishes temporal evidence
+
+  - term: qualified electronic time stamp
+    definition: >-
+      Following stricter requirements laid down in eIDAS, a qualified electronic 
+      time stamp enjoys the presumption of the accuracy of the date and the time 
+      it indicates and the integrity of the data (e.g. signed document) to which 
+      the date and time are bound.
+    section: what-is-an-electronic-time-stamp-and-do-i-need-one
+    note: Qualified version with legal presumptions
+
+  - term: Trust Anchor
+    definition: >-
+      As defined by RFC 5280, a Trust Anchor is the end point of a certificate 
+      validation process. As part of the EU Trusted List, when validating a 
+      qualified certificate, the Trust Anchor is the Service digital identity 
+      (Sdi) of a trust service entry (cf. ETSI TS 119 612 v2.1.1).
+    section: when-validating-a-qualified-certificate-what-is-the-related-trust-anchor
+    note: RFC 5280 definition adapted for EU context
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Signature Formats (from "Which format" section)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: XAdES
+    definition: >-
+      XML advanced electronic signature (XAdES), based on XML signatures. 
+      XML documents are suggested to be signed/sealed using XAdES signature 
+      format (either with enveloped or enveloping packaging).
+    section: when-signingsealing-a-document-which-format-of-signature-should-i-use
+    note: ETSI standard for XML-based signatures
+
+  - term: PAdES
+    definition: >-
+      PDF advanced electronic signature (PAdES), based on PDF signatures. 
+      PDF documents are suggested to be signed/sealed using PAdES signature format.
+    section: when-signingsealing-a-document-which-format-of-signature-should-i-use
+    note: ETSI standard for PDF-based signatures
+
+  - term: CAdES
+    definition: >-
+      CMS advanced electronic signature (CAdES), based on Cryptographic 
+      Message Syntax (CMS). Binary files are suggested to be signed/sealed 
+      with XAdES or CAdES signature formats (with enveloping packaging).
+    section: when-signingsealing-a-document-which-format-of-signature-should-i-use
+    note: ETSI standard for binary/CMS-based signatures
+
+  - term: ASiC
+    definition: >-
+      Associated Signature Container (ASiC) based on ZIP format and supporting 
+      XAdES and CAdES signature formats. When signing/sealing multiple documents, 
+      it is suggested to use ASiC containers.
+    section: when-signingsealing-a-document-which-format-of-signature-should-i-use
+    note: ETSI container format for multiple documents
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Trusted Lists (from "Trusted List Browser" section)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Trusted List Browser
+    definition: >-
+      Trusted List Browser is a publicly available tool provided by the 
+      European Commission. It allows the user to browse through the information 
+      present in the Member States national Trusted Lists (TLs), as well as in 
+      the European Commission central list (named List of Trusted Lists (LOTL)). 
+      It provides an intuitive interface that is user-friendly and human-readable.
+    section: what-is-the-trusted-list-browser
+    note: EC tool for browsing TSPs
+
+  - term: List of Trusted Lists
+    definition: >-
+      The European Commission publishes an XML document called the List of 
+      Trusted Lists (LOTL), which consists of a compiled list of links (pointers) 
+      towards all trusted lists from the Member States, together with the 
+      certificates used to sign these trusted lists. The primary goals of the 
+      publication of the LOTL are to allow access to the trusted lists of all 
+      Member States in an easy way and to provide a way to trust and authenticate 
+      those lists.
+    section: what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl
+    note: Central EU registry (LOTL)
+
+  - term: LOTL
+    definition: >-
+      LOTL is the acronym for List of Trusted Lists. The European Commission 
+      publishes an XML document called the List of Trusted Lists (LOTL), which 
+      consists of a compiled list of links (pointers) towards all trusted lists 
+      from the Member States, together with the certificates used to sign these 
+      trusted lists.
+    section: what-is-the-list-of-member-states-trusted-lists-also-named-list-of-trusted-lists-lotl
+    note: Acronym for List of Trusted Lists
+
+  - term: Trusted List
+    definition: >-
+      Each Member State shall establish, maintain and publish trusted lists, 
+      including information related to the qualified trust service providers 
+      for which it is responsible, together with information related to the 
+      qualified trust services provided by them. The information related to 
+      the trust services includes information about the status (e.g. granted, 
+      withdrawn) and the status history of the trust services in compliance 
+      with the applicable requirements and the relevant provisions of the 
+      eIDAS Regulation.
+    section: what-is-a-trusted-list
+    note: National registry per eIDAS Article 22
+
+  - term: qualified trust service
+    definition: >-
+      Qualified trust services are subject to strict requirements that consist 
+      of: (a) Issuing qualified certificates for electronic signature, electronic 
+      seal, and website authentication; (b) Providing qualified validation of 
+      qualified electronic signature and qualified electronic seal; (c) Providing 
+      qualified preservation of qualified electronic signature and qualified 
+      electronic seal; (d) Issuing qualified time stamp; (e) Providing qualified 
+      electronic registered delivery.
+    section: what-is-a-qualified-trust-service
+    note: Types of qualified trust services under eIDAS
+
+  - term: trust service provider
+    definition: >-
+      A trust service provider (TSP) is a natural or a legal person who provides 
+      one or more trust services (TS) either as a qualified or as a non-qualified 
+      trust service provider.
+    section: what-does-qtspqts-mean
+    note: Plain-language explanation from FAQ glossary
+
+  - term: qualified trust service provider
+    definition: >-
+      A qualified trust service provider (QTSP) is a TSP who provides one or more 
+      qualified trust services (QTS) and is granted the qualified status by the 
+      national supervisory body. The decision of the supervisory body to grant the 
+      qualified status is reflected in the corresponding national Trusted List. 
+      In this respect, QTSPs are mandatorily listed in the corresponding national 
+      Trusted List while TSP could be but are not mandatorily listed in these 
+      Trusted Lists.
+    section: what-does-qtspqts-mean
+    note: Plain-language explanation from FAQ glossary
+
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Acronyms (from "Glossary" section)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: AdES
+    definition: >-
+      AdES is the acronym for either an advanced electronic signature or an 
+      advanced electronic seal. It is the second level of electronic 
+      signatures/seals defined in eIDAS.
+    section: what-does-ades-mean
+    note: Acronym for advanced signature/seal
+
+  - term: QES
+    definition: >-
+      QES is the acronym for either qualified electronic signature or qualified 
+      electronic seal. It is the third and most secure level of electronic 
+      signature/seal defined in eIDAS.
+    section: what-does-qes-mean
+    note: Acronym for qualified signature/seal
+
+  - term: QC
+    definition: >-
+      QC stands for a qualified certificate. As part of eIDAS, a qualified 
+      certificate can either be a: Qualified certificate for electronic signature, 
+      Qualified certificate for electronic seal, or Qualified certificate for 
+      website authentication.
+    section: what-does-qc-mean
+    note: Acronym for qualified certificate
+
+  - term: QSCD
+    definition: >-
+      QSCD stands for a qualified electronic signature/seal creation device.
+    section: what-does-qscd-mean
+    note: Acronym for qualified creation device
+
+  - term: AdES/QC
+    definition: >-
+      AdES/QC is an advanced electronic signature/seal (AdES) based on a 
+      qualified certificate.
+    section: what-does-adesqc-mean
+    note: Advanced signature with qualified certificate
