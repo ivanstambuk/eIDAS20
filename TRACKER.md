@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 22:35 CET |
-| **Session State** | V3.6.0 — EC eSignature FAQ Import |
-| **Portal Status** | ✅ Fully functional (185,357 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
+| **Last Updated** | 2026-01-20 22:50 CET |
+| **Session State** | V3.6.0 — FAQ Terminology Expansion |
+| **Portal Status** | ✅ Fully functional (185,357 words, **127 terms**, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
 ---
@@ -22,7 +22,7 @@
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
 - **Terminology cross-linking** (DEC-085: Auto-highlight defined terms in running text with hover popovers — definitions articles exempted)
-- **Terminology system** (107 terms from 3 sources, multi-source display, hover popovers, cross-refs)
+- **Terminology system** (**127 terms** from 4 sources, multi-source display, hover popovers, cross-refs)
 - **Terminology filtering** (DEC-086: 3-dimensional filtering by Document Type, Role, and Semantic Domain — exhaustive manual curation of all 107 terms)
 - **Multi-source terminology** (DEC-039: Stacked definitions from primary + referenced regulations, e.g., 'conformity assessment body' from both 910/2014 and 765/2008)
 - **Complete Reg 765/2008** (Full HTML extraction: 48 recitals, 44 articles, 2 annexes, 11,566 words — replaces partial version)
@@ -85,7 +85,7 @@
 
 | Date | Summary |
 |------|------------|
-| 2026-01-20 22:35 | **EC eSignature FAQ Import (V3.6.0)**: (1) Imported EC Digital Building Blocks eSignature FAQ (5,788 words) — covers electronic signatures/seals, certificates, QSCD, timestamps, Trusted List Browser, (2) New `supplementary` document category for non-legal guidance resources, (3) Renamed sidebar section "Referenced Regulations" → "Supplementary Documents" (DEC-093), (4) Documented terminology verbatim preservation policy (DEC-092) — definitions must be copied exactly from sources, no merging/adapting, (5) Portal now 35 docs, 185,357 words. |
+| 2026-01-20 22:50 | **FAQ Terminology Expansion (V3.6.0)**: (1) Imported EC eSignature FAQ (5,788 words) as new 'supplementary' document category, (2) Created `supplementary-terms.yaml` with 31 verbatim FAQ definitions (DEC-092), (3) Updated build-terminology.js with `loadSupplementaryTerms()` function, (4) 127 unique terms now (was 107) with 231 total definitions, (5) Core terms like "electronic signature" now have 2 sources (legal + plain-language), (6) Added role/domain mappings for all new terms, (7) Renamed sidebar section "Referenced Regulations" → "Supplementary Documents" (DEC-093), (8) Fixed FAQ section titles to show human-readable questions instead of URL slugs. |
 | 2026-01-20 22:09 | **Hybrid Use Case Selector (V3.5.6)**: Redesigned RCA use case selection with hybrid pattern: (1) Domain chips (toggle multi-select) replace filter pills at top, (2) Flat grouped list shows use cases with always-visible descriptions (no accordion collapse), (3) Empty state prompt when no domains selected, (4) "Select all" checkbox per domain header, (5) Glossy cyan styling on selected chips/items. Retro: Added 4 terms to TERMINOLOGY.md (Domain, Requirement Category, Hybrid Selector Pattern, Domain Chip), updated /ux-design workflow with "tabs imply exclusivity" and "check existing UI first" rules. |
 | 2026-01-20 21:11 | **Complete Role Labels Refresh (V3.5.5)**: Second pass over all 7 roles for clarity: (1) Relying Party: action-oriented "Verifies wallet credentials...", (2) Wallet Provider: "Develops and operates the EUDI Wallet solution", profile "Member State Direct" → "Government-Operated" with Art 5a refs, (3) PID Provider: emphasizes "foundational identity credential", (4) **CAB**: Fixed inaccurate scope — now includes "wallet providers, QTSPs, and QEAA issuers" (was only QTSPs), (5) Supervisory Body: shortened to "Authority overseeing...". Browser-verified all changes. |
 | 2026-01-20 21:03 | **EAA/TSP Role Label Improvements (V3.5.4)**: Per DEC-091, improved role tile wording for legal clarity: (1) EAA Issuer profiles now "Qualified (QEAA)", "Non-Qualified EAA", "Public Authentic Source" — removed misleading "TSP" from QEAA label, (2) TSP profiles now "Non-Qualified TSP" for consistency, (3) Updated descriptions to reflect legal relationships (e.g., PAS are NOT TSPs), (4) Browser-verified UI changes. |
