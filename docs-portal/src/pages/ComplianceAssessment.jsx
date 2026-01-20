@@ -224,25 +224,64 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
 // Components
 // ============================================================================
 
-function RoleSelector({ roles, selectedRole, onSelect }) {
+/**
+ * MultiRoleSelector - Multi-select role cards with inline profile expansion
+ * Design A: Rich cards with big icons, descriptions, and profile checkboxes
+ */
+function MultiRoleSelector({ roles, roleConfigurations, onToggleRole, onToggleProfile }) {
     return (
         <div className="rca-role-selector">
-            <h3>Step 1: Select Your Role</h3>
-            <div className="rca-role-options">
-                {roles.map(role => (
-                    <label key={role.id} className="rca-role-option">
-                        <input
-                            type="radio"
-                            name="role"
-                            value={role.id}
-                            checked={selectedRole === role.id}
-                            onChange={() => onSelect(role.id)}
-                        />
-                        <span className="rca-role-icon">{role.icon}</span>
-                        <span className="rca-role-label">{role.label}</span>
-                        <span className="rca-role-desc">{role.description}</span>
-                    </label>
-                ))}
+            <h3>Select Your Role(s)</h3>
+            <p className="rca-selector-hint">
+                Select all roles that apply to your organization. Configure profiles for each selected role.
+            </p>
+            <div className="rca-role-grid">
+                {roles.map(role => {
+                    const isSelected = roleConfigurations.has(role.id);
+                    const selectedProfiles = roleConfigurations.get(role.id) || [];
+                    const hasProfiles = role.profiles && role.profiles.length > 0;
+
+                    return (
+                        <div
+                            key={role.id}
+                            className={`rca-role-card ${isSelected ? 'selected' : ''}`}
+                        >
+                            <label className="rca-role-header">
+                                <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    onChange={() => onToggleRole(role.id)}
+                                    className="rca-role-checkbox"
+                                />
+                                <span className="rca-role-icon">{role.icon}</span>
+                                <span className="rca-role-label">{role.label}</span>
+                            </label>
+                            <p className="rca-role-desc">{role.description}</p>
+
+                            {/* Profile selection - shown when role is selected and has profiles */}
+                            {isSelected && hasProfiles && (
+                                <div className="rca-role-profiles">
+                                    <span className="rca-profiles-label">Profiles:</span>
+                                    {role.profiles.map(profile => (
+                                        <label key={profile.id} className="rca-profile-checkbox">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedProfiles.length === 0 || selectedProfiles.includes(profile.id)}
+                                                onChange={() => onToggleProfile(role.id, profile.id)}
+                                            />
+                                            <span className="rca-profile-label-text">{profile.label}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* Requirement count badge */}
+                            {isSelected && role.requirementCount && (
+                                <span className="rca-role-req-count">{role.requirementCount} requirements</span>
+                            )}
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
@@ -392,10 +431,6 @@ function UseCaseSelector({
 
     return (
         <div className="rca-usecase-selector">
-            <h3>Step 2: Select Use Cases</h3>
-            <p className="rca-selector-hint">
-                Select the use cases relevant to your implementation. Requirements will be filtered accordingly.
-            </p>
 
             <div className="rca-category-cards">
                 {visibleCategories.map(cat => (
@@ -554,41 +589,63 @@ export default function ComplianceAssessment() {
     const { data, loading, error } = useRCAData();
     const regulationsIndex = useRegulationsIndex();
 
-    // Selection state
-    const [selectedRole, setSelectedRole] = useState('relying_party');
-    const [selectedProfiles, setSelectedProfiles] = useState([]); // Empty = all profiles
+    // Selection state - Multi-role support
+    // roleConfigurations: Map<roleId, profileIds[]> where empty array = all profiles
+    const [roleConfigurations, setRoleConfigurations] = useState(new Map());
     const [selectedUseCases, setSelectedUseCases] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [assessments, setAssessments] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [exportHistory, setExportHistory] = useState([]);
 
-    // Get the currently selected role object
-    const selectedRoleObj = useMemo(() => {
-        return data?.roles?.find(r => r.id === selectedRole) || null;
-    }, [data, selectedRole]);
+    // Get array of selected role objects
+    const selectedRoleObjs = useMemo(() => {
+        if (!data) return [];
+        return data.roles.filter(r => roleConfigurations.has(r.id));
+    }, [data, roleConfigurations]);
 
-    // Reset profiles when role changes
-    const handleRoleChange = useCallback((roleId) => {
-        setSelectedRole(roleId);
-        setSelectedProfiles([]); // Reset to "all profiles" when role changes
+    // Toggle role selection (add/remove from configurations)
+    const handleToggleRole = useCallback((roleId) => {
+        setRoleConfigurations(prev => {
+            const next = new Map(prev);
+            if (next.has(roleId)) {
+                next.delete(roleId);
+            } else {
+                next.set(roleId, []); // Empty array = all profiles selected
+            }
+            return next;
+        });
         setShowResults(false);
     }, []);
 
-    // Toggle profile selection
-    const handleToggleProfile = useCallback((profileId) => {
-        if (profileId === 'all') {
-            setSelectedProfiles([]);
-        } else {
-            setSelectedProfiles(prev => {
-                if (prev.includes(profileId)) {
-                    return prev.filter(id => id !== profileId);
-                } else {
-                    return [...prev, profileId];
+    // Toggle profile for a specific role
+    const handleToggleProfile = useCallback((roleId, profileId) => {
+        setRoleConfigurations(prev => {
+            const next = new Map(prev);
+            const currentProfiles = next.get(roleId) || [];
+
+            if (currentProfiles.length === 0) {
+                // Currently "all profiles" - switch to only this one unselected
+                // Get the role to know all profile IDs
+                const role = data?.roles?.find(r => r.id === roleId);
+                if (role?.profiles) {
+                    // Toggle off means all except this one
+                    const allExceptThis = role.profiles
+                        .filter(p => p.id !== profileId)
+                        .map(p => p.id);
+                    next.set(roleId, allExceptThis);
                 }
-            });
-        }
-    }, []);
+            } else {
+                // Some profiles selected - toggle this one
+                if (currentProfiles.includes(profileId)) {
+                    next.set(roleId, currentProfiles.filter(id => id !== profileId));
+                } else {
+                    next.set(roleId, [...currentProfiles, profileId]);
+                }
+            }
+            return next;
+        });
+    }, [data]);
 
     // Load saved assessments and export history from localStorage
     useEffect(() => {
@@ -676,50 +733,71 @@ export default function ComplianceAssessment() {
         }));
     }, []);
 
-    // Get applicable requirements based on selection (role, profiles, use cases)
+    // Get applicable requirements based on selection (multi-role, profiles, use cases)
+    // Aggregates across all selected roles with deduplication
     const applicableRequirements = useMemo(() => {
-        if (!data || !selectedRole || selectedUseCases.length === 0) return [];
+        if (!data || roleConfigurations.size === 0) return [];
 
-        const reqIds = new Set();
-        const index = data.requirementIndex[selectedRole];
-        if (!index) return [];
+        const reqMap = new Map(); // reqId -> { ...req, sourceRoles: [roleId, ...] }
 
-        // Collect requirement IDs for selected use cases
-        for (const ucId of selectedUseCases) {
-            const reqs = index[ucId];
-            if (reqs) reqs.forEach(id => reqIds.add(id));
+        // Get use case IDs to filter by (empty = all use cases)
+        const useCaseFilter = selectedUseCases.length > 0
+            ? selectedUseCases
+            : Object.keys(data.useCases);
+
+        // For each selected role and its profiles
+        for (const [roleId, selectedProfiles] of roleConfigurations) {
+            const index = data.requirementIndex[roleId];
+            if (!index) continue;
+
+            // Collect requirement IDs for selected use cases
+            const reqIds = new Set();
+            for (const ucId of useCaseFilter) {
+                const reqs = index[ucId];
+                if (reqs) reqs.forEach(id => reqIds.add(id));
+            }
+
+            // Filter requirements by role and profiles
+            for (const req of data.requirements) {
+                if (!reqIds.has(req.id)) continue;
+
+                // Profile filtering
+                if (selectedProfiles.length > 0 && req.profileFilter && !req.appliesToAllProfiles) {
+                    if (!req.profileFilter.some(pf => selectedProfiles.includes(pf))) {
+                        continue;
+                    }
+                }
+
+                // Add or update in map
+                if (reqMap.has(req.id)) {
+                    // Requirement already added - add this role to sourceRoles
+                    const existing = reqMap.get(req.id);
+                    if (!existing.sourceRoles.includes(roleId)) {
+                        existing.sourceRoles.push(roleId);
+                    }
+                } else {
+                    // New requirement
+                    reqMap.set(req.id, {
+                        ...req,
+                        sourceRoles: [roleId]
+                    });
+                }
+            }
         }
 
-        // Get requirements and filter by profiles
-        return data.requirements.filter(r => {
-            // Must be in the use case set
-            if (!reqIds.has(r.id)) return false;
+        return Array.from(reqMap.values());
+    }, [data, roleConfigurations, selectedUseCases]);
 
-            // Profile filtering:
-            // - If selectedProfiles is empty, show ALL requirements (all profiles)
-            // - If requirement has no profileFilter (appliesToAllProfiles), always show
-            // - If requirement has profileFilter, only show if at least one selected profile matches
-            if (selectedProfiles.length === 0) {
-                // All profiles selected - show everything
-                return true;
-            }
-
-            if (r.appliesToAllProfiles || !r.profileFilter) {
-                // Requirement applies to all profiles - always show
-                return true;
-            }
-
-            // Check if any selected profile matches
-            return r.profileFilter.some(pf => selectedProfiles.includes(pf));
-        });
-    }, [data, selectedRole, selectedProfiles, selectedUseCases]);
-
-    // Get role label
-    const getRoleLabel = useCallback(() => {
-        if (!data) return '';
-        const role = data.roles.find(r => r.id === selectedRole);
-        return role?.label || selectedRole;
-    }, [data, selectedRole]);
+    // Get role labels (multi-role support)
+    const getRoleLabels = useCallback(() => {
+        if (!data || roleConfigurations.size === 0) return '';
+        const labels = [];
+        for (const roleId of roleConfigurations.keys()) {
+            const role = data.roles.find(r => r.id === roleId);
+            if (role) labels.push(role.label);
+        }
+        return labels.join(', ');
+    }, [data, roleConfigurations]);
 
     // Get selected use case names
     const getUseCaseNames = useCallback(() => {
@@ -729,12 +807,12 @@ export default function ComplianceAssessment() {
 
     // Generate assessment
     const handleGenerate = useCallback(() => {
-        if (selectedUseCases.length === 0) {
-            alert('Please select at least one use case.');
+        if (roleConfigurations.size === 0) {
+            alert('Please select at least one role.');
             return;
         }
         setShowResults(true);
-    }, [selectedUseCases]);
+    }, [roleConfigurations]);
 
     // Export to Excel
     const handleExportExcel = useCallback(() => {
@@ -747,7 +825,7 @@ export default function ComplianceAssessment() {
             const result = exportToExcel({
                 requirements: applicableRequirements,
                 assessments,
-                role: getRoleLabel(),
+                role: getRoleLabels(),
                 useCases: getUseCaseNames(),
                 requirementCategories: data.requirementCategories
             });
@@ -758,7 +836,7 @@ export default function ComplianceAssessment() {
                     filename: result.filename,
                     format: 'xlsx',
                     date: result.date,
-                    role: getRoleLabel(),
+                    role: getRoleLabels(),
                     useCaseCount: selectedUseCases.length,
                     requirementCount: applicableRequirements.length
                 },
@@ -768,7 +846,7 @@ export default function ComplianceAssessment() {
             console.error('Export failed:', err);
             alert('Export failed. Please try again.');
         }
-    }, [applicableRequirements, assessments, data, getRoleLabel, getUseCaseNames, selectedUseCases]);
+    }, [applicableRequirements, assessments, data, getRoleLabels, getUseCaseNames, selectedUseCases, roleConfigurations]);
 
     // Export to Markdown
     const handleExportMarkdown = useCallback(() => {
@@ -781,7 +859,7 @@ export default function ComplianceAssessment() {
             const result = exportToMarkdown({
                 requirements: applicableRequirements,
                 assessments,
-                role: getRoleLabel(),
+                role: getRoleLabels(),
                 useCases: getUseCaseNames(),
                 requirementCategories: data.requirementCategories
             });
@@ -792,7 +870,7 @@ export default function ComplianceAssessment() {
                     filename: result.filename,
                     format: 'md',
                     date: result.date,
-                    role: getRoleLabel(),
+                    role: getRoleLabels(),
                     useCaseCount: selectedUseCases.length,
                     requirementCount: applicableRequirements.length
                 },
@@ -802,7 +880,7 @@ export default function ComplianceAssessment() {
             console.error('Export failed:', err);
             alert('Export failed. Please try again.');
         }
-    }, [applicableRequirements, assessments, data, getRoleLabel, getUseCaseNames, selectedUseCases]);
+    }, [applicableRequirements, assessments, data, getRoleLabels, getUseCaseNames, selectedUseCases, roleConfigurations]);
 
     // Loading state
     if (loading) {
@@ -829,25 +907,27 @@ export default function ComplianceAssessment() {
             <header className="rca-header">
                 <h1>Regulatory Compliance Assessment</h1>
                 <p className="rca-subtitle">
-                    Generate a compliance checklist based on your role and selected EUDI Wallet use cases.
+                    Generate a compliance checklist based on your roles and selected EUDI Wallet use cases.
                 </p>
             </header>
 
             <div className="rca-content">
                 <section className="rca-configuration">
-                    <RoleSelector
+                    {/* Step 1: Multi-role selection with inline profile configuration */}
+                    <MultiRoleSelector
                         roles={data.roles}
-                        selectedRole={selectedRole}
-                        onSelect={handleRoleChange}
-                    />
-
-                    <ProfileSelector
-                        role={selectedRoleObj}
-                        selectedProfiles={selectedProfiles}
+                        roleConfigurations={roleConfigurations}
+                        onToggleRole={handleToggleRole}
                         onToggleProfile={handleToggleProfile}
                     />
 
+                    {/* Step 2: Use case selection (global filter) */}
                     <div className="rca-usecase-section">
+                        <h3>Select Use Case</h3>
+                        <p className="rca-selector-hint">
+                            Filter requirements by domain. Select categories to narrow down the use cases.
+                        </p>
+
                         <CategoryFilter
                             categories={data.categories}
                             activeCategories={categoryFilter}
@@ -864,13 +944,26 @@ export default function ComplianceAssessment() {
                         />
                     </div>
 
+                    {/* Summary bar */}
+                    {roleConfigurations.size > 0 && (
+                        <div className="rca-selection-summary-bar">
+                            <span className="rca-summary-stats">
+                                {roleConfigurations.size} role{roleConfigurations.size !== 1 ? 's' : ''} selected
+                                {selectedUseCases.length > 0 && ` · ${selectedUseCases.length} use case${selectedUseCases.length !== 1 ? 's' : ''}`}
+                            </span>
+                            <span className="rca-summary-req-count">
+                                {applicableRequirements.length} requirements
+                            </span>
+                        </div>
+                    )}
+
                     <div className="rca-actions">
                         <button
                             className="rca-btn primary"
                             onClick={handleGenerate}
-                            disabled={selectedUseCases.length === 0}
+                            disabled={roleConfigurations.size === 0}
                         >
-                            📊 Generate Assessment ({applicableRequirements.length} requirements)
+                            📊 View Requirements ({applicableRequirements.length})
                         </button>
                         <button
                             className="rca-btn secondary"

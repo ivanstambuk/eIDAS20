@@ -50,7 +50,7 @@
 }
 
 /* ============================================================================
-   Role Selector
+   Role Selector (Multi-role with cards)
    ============================================================================ */
 
 .rca-role-selector {
@@ -58,63 +58,163 @@
 }
 
 .rca-role-selector h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.rca-role-options {
-    display: flex;
+/* Grid layout for role cards - 4 columns for 4+3 arrangement */
+.rca-role-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
-.rca-role-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid transparent;
+@media (max-width: 1200px) {
+    .rca-role-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .rca-role-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .rca-role-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Individual role card */
+.rca-role-card {
+    position: relative;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    cursor: pointer;
     transition: all 0.2s ease;
-    flex: 1;
-    min-width: 200px;
-    max-width: 300px;
+    cursor: pointer;
 }
 
-.rca-role-option:hover {
+.rca-role-card:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(34, 211, 238, 0.3);
 }
 
-.rca-role-option:has(input:checked) {
-    background: rgba(34, 211, 238, 0.1);
+.rca-role-card.selected {
+    background: rgba(34, 211, 238, 0.08);
     border-color: #22d3ee;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
 }
 
-.rca-role-option input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+/* Role card header with checkbox */
+.rca-role-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.rca-role-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #22d3ee;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .rca-role-icon {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    flex-shrink: 0;
 }
 
 .rca-role-label {
     font-weight: 600;
     color: var(--text-primary);
+    font-size: 1rem;
 }
 
 .rca-role-desc {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Profile selection (shown when role selected) */
+.rca-role-profiles {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rca-profiles-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.rca-profile-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.rca-profile-checkbox input {
+    width: 14px;
+    height: 14px;
+    accent-color: #22d3ee;
+    cursor: pointer;
+}
+
+.rca-profile-label-text {
+    color: var(--text-primary);
+}
+
+/* Requirement count badge */
+.rca-role-req-count {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #22d3ee;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 4px;
+}
+
+/* Selection summary bar */
+.rca-selection-summary-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.rca-summary-stats {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.rca-summary-req-count {
+    font-weight: 600;
+    color: #22d3ee;
+    font-size: 1.1rem;
 }
 
 /* ============================================================================
@@ -213,7 +313,8 @@
 }
 
 .rca-profile-desc {
-    display: none; /* Hide by default for compact view */
+    display: none;
+    /* Hide by default for compact view */
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
@@ -225,12 +326,12 @@
         align-items: flex-start;
         padding: 1rem;
     }
-    
-    .rca-profile-option > input {
+
+    .rca-profile-option>input {
         position: absolute;
         margin-left: auto;
     }
-    
+
     .rca-profile-desc {
         display: block;
     }
