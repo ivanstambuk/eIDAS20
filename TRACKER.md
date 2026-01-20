@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 01:16 CET |
-| **Session State** | V3.2.2 — PID Provider Audit Complete (295 reqs) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **295 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID) |
+| **Last Updated** | 2026-01-20 01:38 CET |
+| **Session State** | V3.2.3 — TSP Audit Complete (336 reqs) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **336 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID + 41 TSP) |
 | **Next Action** | Push to GitHub (`git push`), verify GitHub Pages deployment |
 
 ---
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 01:38 | **Trust Service Provider Audit Complete (V3.2.3)**: (1) Created trust-service-provider.yaml with 41 requirements from Arts 13-24, 29a + Annexes I-V, (2) Two profiles: qualified (QTSP — higher assurance, EU Trusted Lists) and non_qualified (baseline requirements), (3) Categories: liability (2), accessibility (1), security (5), operational (7), certification (4), transparency (4), identity-verification (2), data-protection (2), data-retention (1), technical (6), (4) Created AUDIT_TRACKER_TSP.md with full provision-level review (0 unreviewed items), (5) Enabled TSP role in roles.yaml, (6) Build verified: 336 total requirements across 5 roles. |
 | 2026-01-20 00:55 | **PID Provider Audit Complete (V3.2.2)**: (1) Enabled PID Provider role in roles.yaml (no profiles — requirements apply uniformly per Art 5a(5)), (2) Created pid-provider.yaml with 30 requirements from 2024/2977 Articles 3, 5, Annex + main regulation, (3) Categories: issuance (9), revocation (10), data-quality (5), regulatory (6), (4) Created AUDIT_TRACKER_PID.md with full provision-level review, (5) Build verified: 295 total requirements across 4 roles. |
 | 2026-01-20 00:45 | **Profile Filtering Complete (V3.2.1)**: (1) Fixed ProfileSelector UI bug — individual profiles were disabled when "All" selected (`disabled={allSelected}` removed), (2) Added `profileFilter` annotations to 7 sector-specific RP requirements (public_sector/private_sector), (3) Researched WP provider profiles — confirmed Article 5a(2) legal basis for member_state/mandated/independent, (4) Found profile-specific WP requirement via Article 5a(14) → Article 45h(3) mutatis mutandis — added WP-DP-003a (functional separation) for mandated/independent only, (5) Added Profile Differentiation Analysis to AUDIT_TRACKER_WP.md, (6) Retro: Added mutatis mutandis audit step to /rca-audit workflow, documented profile filter pattern in AGENTS.md, added Mutatis Mutandis and Functional Separation to TERMINOLOGY.md. |
 | 2026-01-19 23:50 | **EAA Issuer Audit Complete (V3.2.0)**: (1) Fixed Formex converter bug — CONS.ANNEX elements have LIST inside P (not direct children), missing Annex V content now extracted, (2) Completed systematic EAA Issuer audit — 42 requirements across 3 profiles (qualified/non_qualified/public_authentic), (3) Sources: Main regulation Art. 24, 45d-45h, Annexes V-VII + implementing acts 2024/2977, 2025/1569, 2025/2530, (4) Retro: Added test case for CONS.ANNEX, added "check source field" rule to AGENTS.md, reverted unneeded HTML converter changes. |

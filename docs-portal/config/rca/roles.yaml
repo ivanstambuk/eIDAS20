@@ -72,7 +72,7 @@ roles:
     shortLabel: "TSP"
     description: "Provider of trust services (e-signatures, e-seals, timestamps, etc.)"
     icon: "🔏"
-    enabled: false  # Disabled until audit complete
+    enabled: true  # Audit complete — 41 requirements
     profiles:
       - id: qualified
         label: "Qualified (QTSP)"

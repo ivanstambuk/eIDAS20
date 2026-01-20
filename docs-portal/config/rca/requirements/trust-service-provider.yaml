@@ -2,9 +2,8 @@
 # Providers of trust services (e-signatures, e-seals, timestamps, etc.)
 #
 # Legal basis: Chapter III of Regulation 910/2014 (consolidated)
-#              - Section 2 (Arts 13-18): All Trust Service Providers
-#              - Section 3 (Arts 19-24): Qualified Trust Service Providers
-#              - Annexes I-III: Qualified certificate requirements
+#              - Arts 13-24: Core TSP provisions
+#              - Annexes I-V: Qualified certificate requirements
 #
 # Profiles:
 #   - qualified: QTSP — higher assurance, on EU Trusted Lists
@@ -12,8 +11,947 @@
 
 schemaVersion: 1
 
-requirements: []
-# To be populated by systematic audit using /rca-audit workflow
-# Primary sources:
-#   - Chapter III of consolidated 910/2014 (Trust Services)
-#   - Implementing acts for trust services (2015/806, etc.)
+requirements:
+  # ============================================
+  # SECTION 1: ALL TRUST SERVICE PROVIDERS
+  # These apply to both qualified and non-qualified TSPs
+  # ============================================
+
+  # --- Article 13: Liability ---
+  - id: TSP-LIA-001
+    category: liability
+    requirement: "Accept liability for damage caused by non-compliance"
+    explanation: |
+      Trust service providers are liable for damage caused intentionally or
+      negligently to any natural or legal person due to failure to comply
+      with the obligations under eIDAS.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 13"
+      paragraph: "1"
+    legalText: |
+      Trust service providers shall be liable for damage caused intentionally
+      or negligently to any natural or legal person due to a failure to comply
+      with the obligations under this Regulation.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-LIA-002
+    category: liability
+    requirement: "Limit liability through advance customer notification"
+    explanation: |
+      TSPs may limit their liability where they duly inform customers in
+      advance of usage limitations and those limitations are recognisable
+      to third parties.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 13"
+      paragraph: "2"
+    legalText: |
+      Where trust service providers duly inform their customers in advance of
+      the limitations on the use of the services they provide and where those
+      limitations are recognisable to third parties, trust service providers
+      shall not be liable for damages arising from the use of services
+      exceeding the indicated limitations.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 15: Accessibility ---
+  - id: TSP-ACC-001
+    category: accessibility
+    requirement: "Make services accessible to persons with disabilities"
+    explanation: |
+      Trust services and end-user products must be made available in plain
+      and intelligible language, in accordance with UNCRPD and Directive 2019/882.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 15"
+      paragraph: "1"
+    legalText: |
+      The provision of electronic identification means, trust services and
+      end-user products that are used in the provision of those services
+      shall be made available in plain and intelligible language, in accordance
+      with the United Nations Convention on the Rights of Persons with
+      Disabilities and with the accessibility requirements of Directive (EU) 2019/882.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 19: Security Requirements ---
+  - id: TSP-SEC-001
+    category: security
+    requirement: "Implement appropriate technical and organisational security measures"
+    explanation: |
+      TSPs must take measures to manage risks to the security of trust services,
+      ensuring security level is commensurate with risk, and take measures to
+      prevent and minimise impact of security incidents.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19"
+      paragraph: "1"
+    legalText: |
+      Qualified and non-qualified trust service providers shall take appropriate
+      technical and organisational measures to manage the risks posed to the
+      security of the trust services they provide. Having regard to the latest
+      technological developments, those measures shall ensure that the level
+      of security is commensurate to the degree of risk. In particular, measures
+      shall be taken to prevent and minimise the impact of security incidents
+      and inform stakeholders of the adverse effects of any such incidents.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-SEC-002
+    category: security
+    requirement: "Notify security breaches within 24 hours"
+    explanation: |
+      TSPs must notify the supervisory body and relevant authorities of any
+      breach of security or loss of integrity within 24 hours of becoming aware.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19"
+      paragraph: "2"
+    legalText: |
+      Qualified and non-qualified trust service providers shall, without undue
+      delay but in any event within 24 hours after having become aware of it,
+      notify the supervisory body and, where applicable, other relevant bodies,
+      such as the competent national body for information security or the data
+      protection authority, of any breach of security or loss of integrity that
+      has a significant impact on the trust service provided or on the personal
+      data maintained therein.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-SEC-003
+    category: transparency
+    requirement: "Notify affected persons of security breaches"
+    explanation: |
+      Where a breach is likely to adversely affect a person to whom the
+      trust service has been provided, the TSP must notify that person
+      without undue delay.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19"
+      paragraph: "2"
+    legalText: |
+      Where the breach of security or loss of integrity is likely to adversely
+      affect a natural or legal person to whom the trusted service has been
+      provided, the trust service provider shall also notify the natural or
+      legal person of the breach of security or loss of integrity without
+      undue delay.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 19a: Non-Qualified TSP Requirements ---
+  - id: TSP-NQ-001
+    category: operational
+    requirement: "Implement risk management policies and measures"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must have appropriate policies and take measures
+      to manage risks, including registration/onboarding procedures, 
+      administrative checks, and service management.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19a"
+      paragraph: "1(a)"
+    legalText: |
+      A non-qualified trust service provider providing non-qualified trust
+      services shall have appropriate policies and take corresponding measures
+      to manage legal, business, operational and other direct or indirect risks
+      to the provision of the non-qualified trust service, which shall include
+      at least measures relating to: (i) registration and onboarding procedures;
+      (ii) procedural or administrative checks; (iii) management and implementation.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-NQ-002
+    category: security
+    requirement: "Notify security breaches and disruptions within 24 hours"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must notify the supervisory body, affected individuals,
+      the public (if public interest), and other authorities of any significant
+      security breaches or service disruptions within 24 hours.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 19a"
+      paragraph: "1(b)"
+    legalText: |
+      Notifying the supervisory body, the identifiable affected individuals,
+      the public if it is of public interest and, where applicable, other
+      relevant competent authorities, of any security breaches or disruptions
+      in the provision of the service or the implementation of the measures...
+      that have a significant impact on the trust service provided or on the
+      personal data maintained therein, without undue delay and in any case
+      no later than 24 hours of having become aware.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 2: QUALIFIED TRUST SERVICE PROVIDERS
+  # Profile: qualified only
+  # ============================================
+
+  # --- Article 20: Supervision and Auditing ---
+  - id: TSP-AUD-001
+    category: certification
+    requirement: "Submit to conformity assessment audit every 24 months"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must be audited at their own expense at least every 24 months
+      by a conformity assessment body, confirming compliance with eIDAS
+      and NIS2 Directive Article 21.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall be audited at their own expense
+      at least every 24 months by a conformity assessment body. The audit shall
+      confirm that the qualified trust service providers and the qualified trust
+      services provided by them fulfil the requirements laid down in this
+      Regulation and in Article 21 of Directive (EU) 2022/2555.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-AUD-002
+    category: certification
+    requirement: "Submit conformity assessment report within 3 working days"
+    profileFilter: [qualified]
+    explanation: |
+      After each audit, QTSPs must submit the conformity assessment report
+      to the supervisory body within three working days of receipt.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall submit the resulting conformity
+      assessment report to the supervisory body within three working days of receipt.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-AUD-003
+    category: transparency
+    requirement: "Notify supervisory body one month before planned audits"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must inform the supervisory body at least one month before any
+      planned audits and allow the body to participate as an observer.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "1a"
+    legalText: |
+      Qualified trust service providers shall inform the supervisory body at
+      the latest one month before any planned audits and shall allow the
+      supervisory body to participate as an observer upon request.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-AUD-004
+    category: operational
+    requirement: "Remedy non-compliance within set time limit"
+    profileFilter: [qualified]
+    explanation: |
+      Where a QTSP fails to meet requirements, they must remedy the failure
+      within the time limit set by the supervisory body, or face withdrawal
+      of qualified status.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "3"
+    legalText: |
+      Where the qualified trust service provider fails to fulfil any of the
+      requirements set out by this Regulation, the supervisory body shall
+      require it to provide a remedy within a set time limit, if applicable.
+      Where that provider does not provide a remedy... the supervisory body
+      shall withdraw the qualified status.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 21: Initiation of Qualified Status ---
+  - id: TSP-INIT-001
+    category: certification
+    requirement: "Submit CAR to supervisory body before starting qualified services"
+    profileFilter: [qualified]
+    explanation: |
+      Before providing qualified trust services, a TSP must notify the
+      supervisory body with a conformity assessment report confirming
+      compliance with eIDAS and NIS2.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 21"
+      paragraph: "1"
+    legalText: |
+      Where trust service providers intend to start providing a qualified
+      trust service, they shall notify the supervisory body of their intention
+      together with a conformity assessment report issued by a conformity
+      assessment body confirming the fulfilment of the requirements laid down
+      in this Regulation and in Article 21 of Directive (EU) 2022/2555.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-INIT-002
+    category: operational
+    requirement: "Begin qualified services only after trusted list inclusion"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs may only begin providing qualified trust services after their
+      qualified status has been indicated in the trusted lists.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 21"
+      paragraph: "3"
+    legalText: |
+      Qualified trust service providers may begin to provide the qualified
+      trust service after the qualified status has been indicated in the
+      trusted lists referred to in Article 22(1).
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 23: EU Trust Mark ---
+  - id: TSP-TM-001
+    category: transparency
+    requirement: "Provide link to trusted list when using EU trust mark"
+    profileFilter: [qualified]
+    explanation: |
+      When using the EU trust mark, QTSPs must ensure a link to the relevant
+      trusted list is made available on their website.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 23"
+      paragraph: "2"
+    legalText: |
+      When using the EU trust mark for the qualified trust services referred
+      to in paragraph 1, qualified trust service providers shall ensure that
+      a link to the relevant trusted list is made available on their website.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 24: Core QTSP Requirements ---
+  - id: TSP-QUAL-001
+    category: identity-verification
+    requirement: "Verify identity when issuing qualified certificates/attestations"
+    profileFilter: [qualified]
+    explanation: |
+      When issuing qualified certificates or attestations, QTSPs must verify
+      the identity and any specific attributes of the person.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "1"
+    legalText: |
+      When issuing a qualified certificate or a qualified electronic attestation
+      of attributes, a qualified trust service provider shall verify the identity
+      and, if applicable, any specific attributes of the natural or legal person
+      to whom the qualified certificate or the qualified electronic attestation
+      of attributes is to be issued.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-002
+    category: identity-verification
+    requirement: "Use approved methods for identity verification"
+    profileFilter: [qualified]
+    explanation: |
+      Identity verification must be performed using approved methods: EUDI Wallet,
+      notified eID means (LoA high), qualified signature/seal certificate,
+      CAB-confirmed methods, or physical presence with evidence.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "1a"
+    legalText: |
+      The verification of the identity shall be performed by the qualified
+      trust service provider on the basis of one of the following methods:
+      (a) by means of the European Digital Identity Wallet or a notified
+      electronic identification means which meets LoA high; (b) by means of
+      a certificate of a qualified electronic signature or seal; (c) using
+      other identification methods confirmed by a conformity assessment body;
+      (d) through physical presence with appropriate evidence and procedures.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-003
+    category: transparency
+    requirement: "Notify supervisory body 1 month before changes, 3 months before cessation"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must inform the supervisory body at least one month before any
+      change to qualified services, or three months before ceasing activities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(a)"
+    legalText: |
+      A qualified trust service provider providing qualified trust services
+      shall inform the supervisory body at least one month before implementing
+      any change in the provision of its qualified trust services or at least
+      three months in case of an intention to cease those activities.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-004
+    category: operational
+    requirement: "Employ qualified and trained staff"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must employ staff with necessary expertise, reliability, experience,
+      and qualifications, who have received appropriate security and data
+      protection training.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(b)"
+    legalText: |
+      Employ staff and, if applicable, subcontractors who possess the necessary
+      expertise, reliability, experience, and qualifications and who have
+      received appropriate training regarding security and personal data
+      protection rules and shall apply administrative and management procedures
+      which correspond to European or international standards.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-005
+    category: liability
+    requirement: "Maintain sufficient financial resources or liability insurance"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must maintain sufficient financial resources and/or appropriate
+      liability insurance to cover potential damages.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(c)"
+    legalText: |
+      With regard to the risk of liability for damages in accordance with
+      Article 13, maintain sufficient financial resources and/or obtain
+      appropriate liability insurance, in accordance with national law.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-006
+    category: transparency
+    requirement: "Publish clear terms and conditions before contractual relationship"
+    profileFilter: [qualified]
+    explanation: |
+      Before entering into a contractual relationship, QTSPs must inform
+      persons seeking to use a qualified service of the precise terms and
+      conditions, including any limitations.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(d)"
+    legalText: |
+      Before entering into a contractual relationship, inform, in a clear,
+      comprehensive and easily accessible manner, in a publicly accessible
+      space and individually any person seeking to use a qualified trust
+      service of the precise terms and conditions regarding the use of that
+      service, including any limitations on its use.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-007
+    category: technical
+    requirement: "Use trustworthy systems and products with suitable cryptography"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must use trustworthy systems protected against modification,
+      ensuring technical security and using suitable cryptographic techniques.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(e)"
+    legalText: |
+      Use trustworthy systems and products that are protected against
+      modification and ensure the technical security and reliability of
+      the processes supported by them, including using suitable cryptographic
+      techniques.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-008
+    category: data-protection
+    requirement: "Use secure data storage with access controls"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must use trustworthy systems to store data in verifiable form,
+      with consent-based public retrieval, authorized-only modifications,
+      and authenticity checking.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(f)"
+    legalText: |
+      Use trustworthy systems to store data provided to it, in a verifiable
+      form so that: (i) they are publicly available for retrieval only where
+      consent has been obtained, (ii) only authorised persons can make entries
+      and changes to the stored data, (iii) the data can be checked for authenticity.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-009
+    category: operational
+    requirement: "Implement comprehensive risk management policies"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must have appropriate policies and measures to manage legal,
+      business, operational and other risks, including registration,
+      procedural checks, and service management.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(fa)"
+    legalText: |
+      Have appropriate policies and take corresponding measures to manage
+      legal, business, operational and other direct or indirect risks to the
+      provision of the qualified trust service, including at least measures
+      related to: (i) registration and onboarding procedures; (ii) procedural
+      or administrative checks; (iii) management and implementation of services.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-010
+    category: security
+    requirement: "Notify security breaches and service disruptions within 24 hours"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must notify the supervisory body, affected individuals, and
+      (upon request) the public of security breaches or service disruptions
+      with significant impact, within 24 hours.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(fb)"
+    legalText: |
+      Notify the supervisory body, the identifiable affected individuals,
+      other relevant competent bodies where applicable and, at the request
+      of the supervisory body, the public if it is of public interest, of
+      any security breaches or disruptions in the provision of the service...
+      that have a significant impact on the trust service provided or on the
+      personal data maintained therein, without undue delay and in any event
+      within 24 hours of the incident.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-011
+    category: security
+    requirement: "Protect against forgery, theft and data alteration"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must take appropriate measures against forgery, theft,
+      misappropriation, or unauthorized deletion/alteration of data.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(g)"
+    legalText: |
+      Take appropriate measures against forgery, theft or misappropriation
+      of data or, without right, deleting, altering or rendering data inaccessible.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-012
+    category: data-retention
+    requirement: "Retain relevant information for evidence and service continuity"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must record and keep accessible all relevant information about
+      data issued and received, for evidence in legal proceedings and
+      service continuity, even after ceasing activities.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(h)"
+    legalText: |
+      Record and keep accessible for as long as necessary after the activities
+      of the qualified trust service provider have ceased, all relevant
+      information concerning data issued and received by the qualified trust
+      service provider, for the purpose of providing evidence in legal
+      proceedings and for the purpose of ensuring continuity of the service.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-013
+    category: operational
+    requirement: "Maintain up-to-date termination plan"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must have an up-to-date termination plan to ensure service
+      continuity, verified by the supervisory body.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(i)"
+    legalText: |
+      Have an up-to-date termination plan to ensure the continuity of service
+      in accordance with provisions that are verified by the supervisory body
+      pursuant to Article 46b(4), point (i).
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-014
+    category: data-protection
+    requirement: "Ensure lawful processing of personal data"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must ensure lawful processing of personal data in accordance
+      with GDPR.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(j)"
+    legalText: |
+      Ensure lawful processing of personal data in accordance with
+      Directive 95/46/EC [now Regulation (EU) 2016/679 - GDPR].
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-015
+    category: operational
+    requirement: "Establish and maintain certificate database"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs issuing qualified certificates must establish and keep updated
+      a certificate database.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "2(k)"
+    legalText: |
+      In case of qualified trust service providers issuing qualified
+      certificates, establish and keep updated a certificate database.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-016
+    category: operational
+    requirement: "Publish certificate revocation within 24 hours"
+    profileFilter: [qualified]
+    explanation: |
+      When revoking a qualified certificate, QTSPs must register the revocation
+      and publish the status in a timely manner, within 24 hours of receiving
+      the request. Revocation becomes effective immediately upon publication.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "3"
+    legalText: |
+      If a qualified trust service provider issuing qualified certificates
+      decides to revoke a certificate, it shall register such revocation in
+      its certificate database and publish the revocation status of the
+      certificate in a timely manner, and in any event within 24 hours after
+      the receipt of the request. The revocation shall become effective
+      immediately upon its publication.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QUAL-017
+    category: transparency
+    requirement: "Provide free certificate validity status information"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must provide relying parties with certificate validity/revocation
+      status information, available per-certificate, at any time beyond
+      validity period, automated, reliable, and free of charge.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 24"
+      paragraph: "4"
+    legalText: |
+      Qualified trust service providers issuing qualified certificates shall
+      provide to any relying party information on the validity or revocation
+      status of qualified certificates issued by them. This information shall
+      be made available at least on a per certificate basis at any time and
+      beyond the validity period of the certificate in an automated manner
+      that is reliable, free of charge and efficient.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 29a: Remote QSCD Management ---
+  - id: TSP-RSCD-001
+    category: technical
+    requirement: "Only generate/manage signature creation data on behalf of signatory"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs providing remote QSCD management must only generate or manage
+      electronic signature creation data on behalf of the signatory.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 29a"
+      paragraph: "1(a)"
+    legalText: |
+      The management of remote qualified electronic signature creation devices
+      as a qualified service shall be carried out only by a qualified trust
+      service provider that generates or manages electronic signature creation
+      data on behalf of the signatory.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-RSCD-002
+    category: security
+    requirement: "Limit data duplication to minimum needed for service continuity"
+    profileFilter: [qualified]
+    explanation: |
+      When duplicating signature creation data for backup, QTSPs must ensure
+      same security level as originals and limit copies to minimum needed
+      for service continuity.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 29a"
+      paragraph: "1(b)"
+    legalText: |
+      Duplicates the electronic signature creation data for back-up purposes
+      only, provided that: (i) the security of the duplicated datasets must
+      be at the same level as for the original datasets; (ii) the number of
+      duplicated datasets must not exceed the minimum needed to ensure
+      continuity of the service.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 3: ANNEX I — Qualified Certificates for E-Signatures
+  # ============================================
+
+  - id: TSP-CERT-SIG-001
+    category: technical
+    requirement: "Include all required elements in qualified signature certificates"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified certificates for electronic signatures must contain all
+      elements specified in Annex I: qualified certificate indication,
+      provider identification, signatory name, validation data, validity
+      period, unique identity code, advanced signature/seal of issuer,
+      certificate location, status service location, and QSCD indication.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex I"
+      paragraph: "points (a)-(j)"
+    legalText: |
+      Qualified certificates for electronic signatures shall contain:
+      (a) indication as qualified certificate; (b) provider identification;
+      (c) signatory name or pseudonym; (d) validation data; (e) validity
+      period; (f) unique identity code; (g) advanced signature/seal of issuer;
+      (h) certificate location; (i) status service location; (j) QSCD indication.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 4: ANNEX II — Qualified E-Signature Creation Devices
+  # ============================================
+
+  - id: TSP-QSCD-001
+    category: technical
+    requirement: "Ensure QSCD meets security requirements"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must ensure qualified signature creation devices meet
+      requirements: confidentiality of creation data, single-use occurrence,
+      protection against derivation, and protection against unauthorized use.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex II"
+      paragraph: "point 1"
+    legalText: |
+      Qualified electronic signature creation devices shall ensure that:
+      (a) confidentiality of creation data is reasonably assured;
+      (b) creation data can practically occur only once;
+      (c) creation data cannot be derived and signature is protected against forgery;
+      (d) creation data can be reliably protected against use by others.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QSCD-002
+    category: technical
+    requirement: "Ensure QSCD does not alter data to be signed"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified signature creation devices must not alter the data to be
+      signed or prevent such data from being presented to the signatory
+      prior to signing.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex II"
+      paragraph: "point 2"
+    legalText: |
+      Qualified electronic signature creation devices shall not alter the
+      data to be signed or prevent such data from being presented to the
+      signatory prior to signing.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-QSCD-003
+    category: operational
+    requirement: "Only QTSPs may generate/manage signature creation data"
+    profileFilter: [qualified]
+    explanation: |
+      Generating or managing electronic signature creation data on behalf
+      of the signatory may only be done by a qualified trust service provider.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex II"
+      paragraph: "point 3"
+    legalText: |
+      Generating or managing electronic signature creation data on behalf
+      of the signatory may only be done by a qualified trust service provider.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 5: ANNEX III — Qualified Certificates for E-Seals
+  # ============================================
+
+  - id: TSP-CERT-SEAL-001
+    category: technical
+    requirement: "Include all required elements in qualified seal certificates"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified certificates for electronic seals must contain all elements
+      specified in Annex III, paralleling requirements for signature
+      certificates but for legal persons creating seals.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex III"
+      paragraph: "points (a)-(j)"
+    legalText: |
+      Qualified certificates for electronic seals shall contain:
+      (a) indication as qualified certificate; (b) provider identification;
+      (c) seal creator name; (d) validation data; (e) validity period;
+      (f) unique identity code; (g) advanced signature/seal of issuer;
+      (h) certificate location; (i) status service location; (j) QSCD indication.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 6: ANNEX IV — Qualified Certificates for Website Authentication
+  # ============================================
+
+  - id: TSP-CERT-WEB-001
+    category: technical
+    requirement: "Include all required elements in qualified website certificates"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified certificates for website authentication must contain all
+      elements specified in Annex IV, including domain names and address.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex IV"
+      paragraph: "points (a)-(j)"
+    legalText: |
+      Qualified certificates for website authentication shall contain:
+      (a) indication as qualified certificate; (b) provider identification;
+      (c) natural person name/pseudonym; (ca) legal person identification;
+      (d) address; (e) domain names; (f) validity period; (g) unique identity
+      code; (h) advanced signature/seal of issuer; (i) certificate location;
+      (j) status service location.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 7: ANNEX V — Qualified Electronic Attestations of Attributes
+  # ============================================
+
+  - id: TSP-QEAA-001
+    category: technical
+    requirement: "Include all required elements in qualified attestations of attributes"
+    profileFilter: [qualified]
+    explanation: |
+      Qualified electronic attestations of attributes must contain all
+      elements specified in Annex V, including attestation indication,
+      provider identification, entity identification, attested attributes,
+      validity period, unique identity code, qualified signature/seal,
+      certificate location, and status service location.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Annex V"
+      paragraph: "points (a)-(i)"
+    legalText: |
+      Qualified electronic attestation of attributes shall contain:
+      (a) indication as qualified attestation; (b) provider identification;
+      (c) entity identification; (d) attested attributes; (e) validity period;
+      (f) unique identity code; (g) qualified signature/seal of issuer;
+      (h) certificate location; (i) status service location.
+    deadline: "2026-11-20"
+    roles:
+      - trust_service_provider
+    useCases: all
