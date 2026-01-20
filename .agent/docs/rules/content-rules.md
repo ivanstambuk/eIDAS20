@@ -1,4 +1,4 @@
-# Content Rules (Rules 26-44)
+# Content Rules (Rules 26-47)
 
 Formex/HTML conversion, legal document handling, build pipeline, and content-specific rules.
 
@@ -588,3 +588,38 @@ If chapters exist in source but this returns nothing, the converter needs debugg
 | 910/2014 | Annex VI | EAA content |
 | 910/2014 | Annex VII | EAA authentication |
 | **2024/2977** | **Annex** | **PID attributes + metadata + encoding** |
+
+---
+
+## 47. Consolidated Regulation Article Numbering (GOTCHA)
+
+**The consolidated eIDAS 2.0 Regulation (910/2014) contains articles from TWO sources with a non-sequential numbering scheme.**
+
+**Common confusion when auditing:**
+```
+Article 1 ... Article 12   ← Original 910/2014 provisions
+Article 5a, 5b, 5c         ← INSERTED by 2024/1183 (EUDI Wallet)
+Article 45a, 45b...45l     ← INSERTED by 2024/1183 (new trust services)
+Article 13 ... Article 52  ← Original 910/2014 provisions
+```
+
+**What this means for auditing:**
+- Articles with **letter suffixes** (5a, 45b, etc.) are **2024/1183 additions**
+- Articles with **plain numbers** (5, 13, 45) are **original 910/2014**
+- The amending act (2024/1183) doesn't have its own articles — its content is merged into 910/2014
+
+**Why this matters:**
+1. When searching for wallet requirements, look for **Art. 5a-5c** (not a separate regulation)
+2. Legal basis citations should reference "Article X of Regulation 910/2014" even for new content
+3. The Formex XML doesn't distinguish origin — all articles appear under 910/2014
+
+**Example citation:**
+```yaml
+legalBasis:
+  regulation: "910/2014"          # Always the base regulation
+  article: "Article 5a"           # Even though inserted by 2024/1183
+  paragraph: "2"
+```
+
+**Pro tip:** When auditing consolidated documents, check EUR-Lex "Different document view" to see the original 2024/1183 text before consolidation.
+
