@@ -7,6 +7,35 @@
 
 schemaVersion: 1
 
+# Requirement categories for grouping in the UI
+categories:
+  accessibility:
+    label: "Accessibility"
+  authentication:
+    label: "Authentication"
+  data-protection:
+    label: "Data Protection"
+  data-quality:
+    label: "Data Quality"
+  data-retention:
+    label: "Data Retention"
+  identity-verification:
+    label: "Identity Verification"
+  issuance:
+    label: "Issuance"
+  liability:
+    label: "Liability"
+  operational:
+    label: "Operational"
+  security:
+    label: "Security"
+  technical:
+    label: "Technical"
+  transparency:
+    label: "Transparency"
+
+
+
 requirements:
   # ============================================
   # ISSUANCE REQUIREMENTS

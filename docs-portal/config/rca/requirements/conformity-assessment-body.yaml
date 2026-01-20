@@ -11,6 +11,23 @@
 
 schemaVersion: 1
 
+# Requirement categories for grouping in the UI
+categories:
+  accreditation:
+    label: "Accreditation"
+  notification:
+    label: "Notification"
+  operational:
+    label: "Operational"
+  reporting:
+    label: "Reporting"
+  transition:
+    label: "Transition"
+  transparency:
+    label: "Transparency"
+
+
+
 requirements:
   # ============================================
   # SECTION 1: ACCREDITATION REQUIREMENTS

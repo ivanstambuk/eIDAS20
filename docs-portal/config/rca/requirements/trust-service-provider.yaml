@@ -11,6 +11,35 @@
 
 schemaVersion: 2
 
+# Requirement categories for grouping in the UI
+categories:
+  accessibility:
+    label: "Accessibility"
+  assessment:
+    label: "Assessment"
+  certification:
+    label: "Certification"
+  data-protection:
+    label: "Data Protection"
+  data-retention:
+    label: "Data Retention"
+  identity-verification:
+    label: "Identity Verification"
+  liability:
+    label: "Liability"
+  notification:
+    label: "Notification"
+  operational:
+    label: "Operational"
+  security:
+    label: "Security"
+  technical:
+    label: "Technical"
+  transparency:
+    label: "Transparency"
+
+
+
 requirements:
   # ============================================
   # SECTION 1: ALL TRUST SERVICE PROVIDERS

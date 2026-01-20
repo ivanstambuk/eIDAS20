@@ -73,7 +73,7 @@ function validate() {
         for (const req of config.requirements) {
             const reqId = req.id;
 
-            // Validate useCases
+            // Validate useCases (MANDATORY - every requirement must have useCases)
             if (req.useCases) {
                 if (req.useCases !== 'all') {
                     // It's an array of use case IDs
@@ -90,10 +90,26 @@ function validate() {
                         }
                     }
                 }
+            } else {
+                errors.push({
+                    file,
+                    reqId,
+                    field: 'useCases',
+                    value: 'MISSING',
+                    message: `Requirement is missing 'useCases:' field. Use 'useCases: all' for universal requirements or list specific IDs.`
+                });
             }
 
-            // Validate category (warning only if no categories defined in file)
-            if (req.category && validCategories.size > 0) {
+            // Validate category (MANDATORY - file must define categories)
+            if (validCategories.size === 0) {
+                errors.push({
+                    file,
+                    reqId,
+                    field: 'categories',
+                    value: 'MISSING',
+                    message: `File is missing 'categories:' section. Every requirements file must define its valid categories.`
+                });
+            } else if (req.category) {
                 if (!validCategories.has(req.category)) {
                     errors.push({
                         file,
@@ -103,6 +119,14 @@ function validate() {
                         message: `Invalid category: "${req.category}". Valid categories in this file: ${[...validCategories].join(', ')}`
                     });
                 }
+            } else {
+                errors.push({
+                    file,
+                    reqId,
+                    field: 'category',
+                    value: 'MISSING',
+                    message: `Requirement is missing 'category:' field. Every requirement must have a category.`
+                });
             }
 
             // Validate roles

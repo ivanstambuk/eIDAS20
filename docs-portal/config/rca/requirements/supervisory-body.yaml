@@ -14,6 +14,25 @@
 
 schemaVersion: 1
 
+# Requirement categories for grouping in the UI
+categories:
+  cooperation:
+    label: "Cooperation"
+  enforcement:
+    label: "Enforcement"
+  governance:
+    label: "Governance"
+  incident-response:
+    label: "Incident Response"
+  notification:
+    label: "Notification"
+  reporting:
+    label: "Reporting"
+  supervision:
+    label: "Supervision"
+
+
+
 requirements:
   # ============================================
   # SECTION 1: DESIGNATION AND RESOURCES
