@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 02:30 CET |
+| **Last Updated** | 2026-01-20 02:18 CET |
 | **Session State** | V3.2.4 — TSP IA Audit Complete (380 reqs) |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **380 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID + 85 TSP) |
-| **Next Action** | Commit changes, verify build |
+| **Next Action** | Push to GitHub (`git push`), consider CAB or Supervisory Body role audit |
 
 ---
 
