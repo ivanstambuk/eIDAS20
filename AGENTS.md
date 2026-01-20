@@ -140,6 +140,10 @@ At the END of every response:
 
 **Why:** Text descriptions of UI are ambiguous. Users MUST see visual mockups to make informed decisions.
 
+**UX Design Checklist:** Before generating mockups, run through `.agent/workflows/ux-design.md` to avoid iteration.
+
+**Component Architecture Rule:** Section headings belong in parent containers, NOT inside child components. If a heading describes content from multiple sibling components, it should render BEFORE those siblings in the parent.
+
 ---
 
 ### 6. Proactive Prevention Protocol (MANDATORY — After Any Bug Fix)
