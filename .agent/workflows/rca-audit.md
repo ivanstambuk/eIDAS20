@@ -294,6 +294,57 @@ grep "^  - id:" docs-portal/config/rca/requirements/{role}.yaml | wc -l
 
 **Why this matters:** Manual counting during YAML creation often produces mismatches. Always verify with grep before updating the tracker's summary statistics.
 
+### Cross-Cutting Requirement Consolidation
+
+**When the SAME requirement appears in multiple implementing acts, consolidate into a single entry.**
+
+**Pattern recognition:** These requirements repeat across service-type implementing acts:
+- Quarterly vulnerability scans (REQ-7.8-13)
+- Annual penetration tests (REQ-7.8-17X)
+- Firewall configuration (prevent unnecessary access)
+- 12-month personnel training updates
+- Termination plan compliance (per Art. 24(5))
+- ENISA-approved cryptographic mechanisms
+
+**Consolidation format:**
+```yaml
+- id: TSP-IA-SEC-001
+  category: security
+  requirement: "Perform quarterly vulnerability scans"
+  profileFilter: [qualified]
+  explanation: |
+    QTSPs must perform vulnerability scans at least quarterly. This
+    requirement appears in implementing acts for timestamps, validation,
+    certificates, registered delivery, archiving, and remote QSCD.
+  legalBasis:
+    regulation: "2025/1929, 2025/1942, 2025/1943, 2025/1944, 2025/2532, 2025/1567"
+    article: "Various Annexes"
+    paragraph: "OVR/REQ network security clauses"
+  legalText: |
+    The vulnerability scan requested by REQ-7.8-13 of ETSI EN 319401
+    shall be performed at least once per quarter.
+  deadline: "2025-10-19"
+  roles:
+    - trust_service_provider
+  useCases: all
+```
+
+**Key format notes:**
+- `regulation`: Comma-separated list of ALL implementing acts containing this requirement
+- `article`: Use "Various Annexes" when the requirement appears in ETSI adaptations across acts
+- `paragraph`: Reference the common ETSI clause (e.g., "OVR/REQ network security clauses")
+
+**Benefits of consolidation:**
+1. Avoids 24+ duplicate requirements (4 consolidated vs 24 individual)
+2. Single place to update if ETSI standard changes
+3. Clear audit trail showing which acts require compliance
+
+**When NOT to consolidate:**
+- Requirements with different thresholds (e.g., 24h vs 48h notification)
+- Requirements with different scopes (e.g., applies to different service types)
+- Requirements with different legal effects (e.g., mandatory vs recommended)
+
+
 ### ID Conventions
 
 | Role | Prefix | Example |

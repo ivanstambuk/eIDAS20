@@ -1,5 +1,5 @@
 version: '1.0'
-last_updated: '2026-01-19'
+last_updated: '2026-01-20'
 # Document Model:
 #   legalType: What the document IS under EU law (regulation, recommendation, decision, directive)
 #   category:  How it relates to the eIDAS project (primary, implementing_act, referenced)
@@ -7,6 +7,12 @@ last_updated: '2026-01-19'
 #              - formex: Formex XML from EUR-Lex cellar (preferred for 2020+ documents)
 #              - html:   EUR-Lex HTML parser (fallback for older documents without Formex)
 #              - manual: Manually created/merged (special cases like consolidated versions)
+#
+# ⚠️ FOLDER NAMING WARNING:
+#   Some output_dir folder names don't match the actual document content.
+#   Example: 2025_1944_Preservation_Standards actually contains QERDS content.
+#   Always check the document title field, NOT the folder name, for accurate content.
+#
 documents:
 - celex: 02014R0910-20241018
   title: Consolidated eIDAS Regulation
@@ -189,12 +195,12 @@ documents:
   cellar_id: c3d31ae8-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1943_Signature_Standards
 - celex: 32025R1944
-  title: Qualified Electronic Preservation Services
+  title: Qualified Electronic Registered Delivery Services  # ⚠️ ACTUAL CONTENT (not preservation!)
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: d8575546-9d97-11f0-97c8-01aa75ed71a1.0006.02
-  output_dir: 02_implementing_acts/2025_1944_Preservation_Standards
+  output_dir: 02_implementing_acts/2025_1944_Preservation_Standards  # ⚠️ MISLEADING NAME: Contains QERDS, not preservation
 - celex: 32025R1945
   title: Wallet Trust Evidence Issuance
   legalType: regulation
