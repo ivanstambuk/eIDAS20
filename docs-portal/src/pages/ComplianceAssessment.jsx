@@ -329,91 +329,39 @@ function ProfileSelector({ role, selectedProfiles, onToggleProfile }) {
     );
 }
 
-function CategoryFilter({ categories, activeCategories, onToggle }) {
+/**
+ * DomainChips - Toggle chips for multi-select domain filtering
+ * Selected domains glow cyan; unselected are muted
+ * Clicking a chip toggles it on/off (multi-select, not exclusive)
+ */
+function DomainChips({ categories, activeCategories, onToggle }) {
     return (
-        <div className="rca-category-filter">
-            <button
-                className={`rca-filter-pill ${activeCategories.length === 0 ? 'active' : ''}`}
-                onClick={() => onToggle(null)}
-            >
-                All
-            </button>
-            {categories.map(cat => (
-                <button
-                    key={cat.id}
-                    className={`rca-filter-pill ${activeCategories.includes(cat.id) ? 'active' : ''}`}
-                    onClick={() => onToggle(cat.id)}
-                >
-                    {cat.label} ({cat.useCaseCount})
-                </button>
-            ))}
+        <div className="rca-domain-chips">
+            {categories.map(cat => {
+                const isActive = activeCategories.includes(cat.id);
+                return (
+                    <button
+                        key={cat.id}
+                        className={`rca-domain-chip ${isActive ? 'active' : ''}`}
+                        onClick={() => onToggle(cat.id)}
+                    >
+                        <span className="rca-domain-chip-checkbox">
+                            {isActive && <span className="rca-domain-chip-check">✓</span>}
+                        </span>
+                        {cat.label}
+                    </button>
+                );
+            })}
         </div>
     );
 }
 
-function UseCaseCategoryCard({
-    category,
-    useCases,
-    selectedUseCases,
-    onToggleUseCase,
-    onToggleCategory
-}) {
-    const categoryUseCases = useCases.filter(uc => uc.category === category.id);
-    const selectedCount = categoryUseCases.filter(uc => selectedUseCases.includes(uc.id)).length;
-    const isAllSelected = selectedCount === categoryUseCases.length;
-    const isPartiallySelected = selectedCount > 0 && selectedCount < categoryUseCases.length;
-    const [isExpanded, setIsExpanded] = useState(true);
-
-    return (
-        <div className="rca-category-card">
-            <div className="rca-category-header">
-                <label className="rca-category-checkbox">
-                    <input
-                        type="checkbox"
-                        checked={isAllSelected}
-                        ref={el => {
-                            if (el) el.indeterminate = isPartiallySelected;
-                        }}
-                        onChange={() => onToggleCategory(category.id, !isAllSelected)}
-                    />
-                    <span className="rca-category-title">{category.label}</span>
-                    <span className="rca-category-count">
-                        {selectedCount}/{categoryUseCases.length}
-                    </span>
-                </label>
-                <button
-                    className="rca-expand-btn"
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    aria-label={isExpanded ? 'Collapse' : 'Expand'}
-                >
-                    {isExpanded ? '▼' : '▶'}
-                </button>
-            </div>
-
-            {isExpanded && (
-                <div className="rca-usecase-list">
-                    {categoryUseCases.map(uc => (
-                        <label key={uc.id} className="rca-usecase-item">
-                            <input
-                                type="checkbox"
-                                checked={selectedUseCases.includes(uc.id)}
-                                onChange={() => onToggleUseCase(uc.id)}
-                            />
-                            <div className="rca-usecase-content">
-                                <span className="rca-usecase-name">{uc.name}</span>
-                                <span className="rca-usecase-desc">{uc.description}</span>
-                            </div>
-                            {uc.status === 'published' && (
-                                <span className="rca-usecase-badge published">Published</span>
-                            )}
-                        </label>
-                    ))}
-                </div>
-            )}
-        </div>
-    );
-}
-
+/**
+ * UseCaseSelector - Hybrid design: flat list with domain headers
+ * Shows all use cases from selected domains, grouped by domain header
+ * No accordion collapse - all items visible with descriptions
+ * "Select all" link per domain header
+ */
 function UseCaseSelector({
     categories,
     useCases,
@@ -422,27 +370,75 @@ function UseCaseSelector({
     onToggleCategory,
     categoryFilter
 }) {
-    // Filter categories to show
-    const visibleCategories = categoryFilter.length > 0
-        ? categories.filter(c => categoryFilter.includes(c.id))
-        : categories;
+    // If no domains selected, show prompt
+    if (categoryFilter.length === 0) {
+        return (
+            <div className="rca-usecase-selector">
+                <div className="rca-usecase-empty">
+                    <span className="rca-usecase-empty-icon">🎯</span>
+                    <p>Select one or more domains above to see available use cases</p>
+                </div>
+            </div>
+        );
+    }
 
+    // Filter categories to show based on selected domains
+    const visibleCategories = categories.filter(c => categoryFilter.includes(c.id));
     const useCaseArray = Object.values(useCases);
 
     return (
         <div className="rca-usecase-selector">
+            <div className="rca-usecase-groups">
+                {visibleCategories.map(cat => {
+                    const categoryUseCases = useCaseArray.filter(uc => uc.category === cat.id);
+                    const selectedCount = categoryUseCases.filter(uc => selectedUseCases.includes(uc.id)).length;
+                    const isAllSelected = selectedCount === categoryUseCases.length && categoryUseCases.length > 0;
 
-            <div className="rca-category-cards">
-                {visibleCategories.map(cat => (
-                    <UseCaseCategoryCard
-                        key={cat.id}
-                        category={cat}
-                        useCases={useCaseArray}
-                        selectedUseCases={selectedUseCases}
-                        onToggleUseCase={onToggleUseCase}
-                        onToggleCategory={onToggleCategory}
-                    />
-                ))}
+                    return (
+                        <div key={cat.id} className="rca-usecase-group">
+                            {/* Domain header with "Select all" */}
+                            <div className="rca-usecase-group-header">
+                                <label className="rca-usecase-group-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={isAllSelected}
+                                        ref={el => {
+                                            if (el) el.indeterminate = selectedCount > 0 && selectedCount < categoryUseCases.length;
+                                        }}
+                                        onChange={() => onToggleCategory(cat.id, !isAllSelected)}
+                                    />
+                                    <span className="rca-usecase-group-title">{cat.label}</span>
+                                </label>
+                                <span className="rca-usecase-group-count">
+                                    {selectedCount}/{categoryUseCases.length}
+                                </span>
+                            </div>
+
+                            {/* Use cases flat list */}
+                            <div className="rca-usecase-list-flat">
+                                {categoryUseCases.map(uc => (
+                                    <label
+                                        key={uc.id}
+                                        className={`rca-usecase-item-flat ${selectedUseCases.includes(uc.id) ? 'selected' : ''}`}
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedUseCases.includes(uc.id)}
+                                            onChange={() => onToggleUseCase(uc.id)}
+                                        />
+                                        <div className="rca-usecase-content">
+                                            <span className="rca-usecase-name">{uc.name}</span>
+                                            <span className="rca-usecase-desc">{uc.description}</span>
+                                        </div>
+                                        {uc.status === 'published' && (
+                                            <span className="rca-usecase-badge published">Published</span>
+                                        )}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
             <div className="rca-selection-summary">
@@ -709,17 +705,13 @@ export default function ComplianceAssessment() {
         });
     }, [data]);
 
-    // Toggle category filter
+    // Toggle domain filter (simple toggle - no "all" case)
     const handleToggleCategoryFilter = useCallback((categoryId) => {
-        if (categoryId === null) {
-            setCategoryFilter([]);
-        } else {
-            setCategoryFilter(prev =>
-                prev.includes(categoryId)
-                    ? prev.filter(id => id !== categoryId)
-                    : [...prev, categoryId]
-            );
-        }
+        setCategoryFilter(prev =>
+            prev.includes(categoryId)
+                ? prev.filter(id => id !== categoryId)
+                : [...prev, categoryId]
+        );
     }, []);
 
     // Update assessment status
@@ -921,14 +913,14 @@ export default function ComplianceAssessment() {
                         onToggleProfile={handleToggleProfile}
                     />
 
-                    {/* Step 2: Use case selection (global filter) */}
+                    {/* Step 2: Use case selection - Hybrid design */}
                     <div className="rca-usecase-section">
-                        <h3>Select Use Case</h3>
+                        <h3>Select Use Case(s)</h3>
                         <p className="rca-selector-hint">
-                            Filter requirements by domain. Select categories to narrow down the use cases.
+                            Select one or more domains, then choose the specific use cases within each.
                         </p>
 
-                        <CategoryFilter
+                        <DomainChips
                             categories={data.categories}
                             activeCategories={categoryFilter}
                             onToggle={handleToggleCategoryFilter}

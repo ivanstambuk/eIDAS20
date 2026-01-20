@@ -50,6 +50,18 @@ Ask/verify these questions for EACH interactive element:
 ❌ Putting headings inside child components when siblings render first
 ❌ Using `auto-fill` grid when exact column count matters
 ❌ Showing per-item config UI before item is selected
+❌ **Using tabs for multi-select contexts** — Tabs imply exclusivity (one active at a time). For multi-select filtering, use toggle chips or checkboxes instead.
+❌ **Proposing designs without checking existing UI** — Always view the current implementation first to understand existing patterns and user expectations.
+
+## Before Starting ANY Design
+
+**⚠️ MANDATORY**: Before generating mockups, you MUST:
+
+1. **View the current implementation** — Use browser to see what exists now
+2. **Understand the data model** — Check YAML/JSON config files for structure
+3. **Clarify terminology** — Ensure you're using the same terms as the user (e.g., "domain" vs "use case" vs "category" have specific meanings in RCA)
+
+Skipping these steps leads to multiple mockup iterations due to misunderstandings.
 
 ## Mockup Iteration
 
@@ -57,3 +69,4 @@ After first mockup, verify:
 1. Does selection behavior match expected pattern?
 2. Are elements in correct reading order?
 3. Does the layout handle edge cases (0 selected, all selected)?
+

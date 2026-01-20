@@ -338,39 +338,64 @@
 }
 
 /* ============================================================================
-   Category Filter (Pill Buttons)
+   Domain Chips (Toggle Multi-Select) - Hybrid Design
    ============================================================================ */
 
-.rca-category-filter {
+.rca-domain-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
+    margin-bottom: 1.25rem;
 }
 
-.rca-filter-pill {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
+.rca-domain-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
 }
 
-.rca-filter-pill:hover {
+.rca-domain-chip:hover {
     background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(34, 211, 238, 0.4);
     color: var(--text-primary);
 }
 
-.rca-filter-pill.active {
-    background: rgba(34, 211, 238, 0.2);
+.rca-domain-chip.active {
+    background: rgba(34, 211, 238, 0.15);
     border-color: #22d3ee;
     color: #22d3ee;
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.2);
+}
+
+.rca-domain-chip-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    transition: all 0.15s ease;
+}
+
+.rca-domain-chip.active .rca-domain-chip-checkbox {
+    background: #22d3ee;
+    border-color: #22d3ee;
+}
+
+.rca-domain-chip-check {
+    color: #0f172a;
+    font-weight: 700;
 }
 
 /* ============================================================================
@@ -519,6 +544,131 @@
     font-weight: 500;
     margin-top: 1rem;
     text-align: center;
+}
+
+/* ============================================================================
+   Hybrid Design: Flat Use Case List with Domain Headers
+   ============================================================================ */
+
+/* Empty state when no domains selected */
+.rca-usecase-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.rca-usecase-empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.rca-usecase-empty p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Use case groups container */
+.rca-usecase-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Individual domain group */
+.rca-usecase-group {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Domain header with select-all checkbox */
+.rca-usecase-group-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.02));
+    border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+.rca-usecase-group-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.rca-usecase-group-checkbox input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #22d3ee;
+}
+
+.rca-usecase-group-title {
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.rca-usecase-group-count {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-left: auto;
+}
+
+/* Flat use case list (no accordion) */
+.rca-usecase-list-flat {
+    padding: 0.5rem;
+}
+
+/* Individual use case item - flat design */
+.rca-usecase-item-flat {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1.5px solid transparent;
+}
+
+.rca-usecase-item-flat:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rca-usecase-item-flat.selected {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.25);
+}
+
+.rca-usecase-item-flat input {
+    margin-top: 0.25rem;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #22d3ee;
+    flex-shrink: 0;
+}
+
+.rca-usecase-item-flat .rca-usecase-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.rca-usecase-item-flat.selected .rca-usecase-name {
+    color: #22d3ee;
 }
 
 /* ============================================================================
