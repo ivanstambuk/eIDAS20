@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T20:02:50.969Z",
+  "generatedAt": "2026-01-20T20:14:52.643Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -251,20 +251,20 @@
       "id": "relying_party",
       "label": "Relying Party",
       "shortLabel": "RP",
-      "description": "Entity accepting wallet credentials for authentication/verification",
+      "description": "Verifies wallet credentials to authenticate users or validate attributes",
       "icon": "🏢",
       "enabled": true,
       "profiles": [
         {
           "id": "public_sector",
           "label": "Public Sector",
-          "description": "Government bodies, public administration, public services",
+          "description": "Government, public services, regulated bodies",
           "icon": "🏛️"
         },
         {
           "id": "private_sector",
           "label": "Private Sector",
-          "description": "Commercial entities, banks, private service providers",
+          "description": "Commercial services, finance, healthcare, retail",
           "icon": "🏪"
         }
       ]
@@ -273,7 +273,7 @@
       "id": "issuer",
       "label": "EAA Issuer",
       "shortLabel": "Issuer",
-      "description": "Entity issuing attribute credentials to EUDI Wallets",
+      "description": "Issues attribute credentials to EUDI Wallets",
       "icon": "📜",
       "enabled": true,
       "profiles": [
@@ -301,26 +301,26 @@
       "id": "wallet_provider",
       "label": "Wallet Provider",
       "shortLabel": "WP",
-      "description": "Entity providing the wallet application",
+      "description": "Develops and operates the EUDI Wallet solution",
       "icon": "📱",
       "enabled": true,
       "profiles": [
         {
           "id": "member_state",
-          "label": "Member State Direct",
-          "description": "Wallet provided directly by a Member State",
+          "label": "Government-Operated",
+          "description": "Wallet operated directly by government (Art 5a(2)(a)). Full liability by Member State.",
           "icon": "🇪🇺"
         },
         {
           "id": "mandated",
           "label": "Mandated Provider",
-          "description": "Wallet provided under mandate from a Member State",
+          "description": "Entity contracted by Member State under formal mandate (Art 5a(2)(b)).",
           "icon": "📝"
         },
         {
           "id": "independent",
           "label": "Independent (Recognised)",
-          "description": "Independent provider recognised by a Member State",
+          "description": "Private provider recognised by Member State (Art 5a(2)(c)). Subject to functional separation.",
           "icon": "🔓"
         }
       ]
@@ -329,7 +329,7 @@
       "id": "pid_provider",
       "label": "PID Provider",
       "shortLabel": "PID",
-      "description": "Member State entity (or designee) issuing Person Identification Data",
+      "description": "Issues Person Identification Data (PID) — the foundational identity credential",
       "icon": "🏛️",
       "enabled": true,
       "profiles": []
@@ -360,7 +360,7 @@
       "id": "conformity_assessment_body",
       "label": "Conformity Assessment Body",
       "shortLabel": "CAB",
-      "description": "Accredited body that audits and certifies qualified trust service providers",
+      "description": "Accredited body that audits wallet providers, QTSPs, and QEAA issuers",
       "icon": "🔍",
       "enabled": true,
       "profiles": []
@@ -369,7 +369,7 @@
       "id": "supervisory_body",
       "label": "Supervisory Body",
       "shortLabel": "SB",
-      "description": "National authority supervising EUDIW providers and/or trust service providers",
+      "description": "Authority overseeing EUDIW providers and trust service providers",
       "icon": "⚖️",
       "enabled": true,
       "profiles": [

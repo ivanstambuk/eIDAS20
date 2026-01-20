@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 21:03 CET |
-| **Session State** | V3.5.4 — EAA/TSP Role Label Improvements |
+| **Last Updated** | 2026-01-20 21:11 CET |
+| **Session State** | V3.5.5 — Complete Role Labels Refresh |
 | **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 21:11 | **Complete Role Labels Refresh (V3.5.5)**: Second pass over all 7 roles for clarity: (1) Relying Party: action-oriented "Verifies wallet credentials...", (2) Wallet Provider: "Develops and operates the EUDI Wallet solution", profile "Member State Direct" → "Government-Operated" with Art 5a refs, (3) PID Provider: emphasizes "foundational identity credential", (4) **CAB**: Fixed inaccurate scope — now includes "wallet providers, QTSPs, and QEAA issuers" (was only QTSPs), (5) Supervisory Body: shortened to "Authority overseeing...". Browser-verified all changes. |
 | 2026-01-20 21:03 | **EAA/TSP Role Label Improvements (V3.5.4)**: Per DEC-091, improved role tile wording for legal clarity: (1) EAA Issuer profiles now "Qualified (QEAA)", "Non-Qualified EAA", "Public Authentic Source" — removed misleading "TSP" from QEAA label, (2) TSP profiles now "Non-Qualified TSP" for consistency, (3) Updated descriptions to reflect legal relationships (e.g., PAS are NOT TSPs), (4) Browser-verified UI changes. |
 | 2026-01-20 20:27 | **Use Case Mapping Complete + Retro (V3.5.3)**: (1) Completed 7-phase use case mapping audit (458 requirements), (2) Found 15 use-case-specific requirements (3.3%), (3) Discovered "Infrastructure Universalism" pattern — TSP/Issuer/PID/CAB/SB are 100% universal, (4) Added DEC-088 Addendum documenting the pattern, (5) Added 3 terms to TERMINOLOGY.md (Service-Facing Role, Infrastructure Role, Infrastructure Universalism), (6) Created USE_CASE_MAPPING_SUMMARY.md consolidating all 7 tracker files, (7) Added use case mapping guidance to AGENTS.md. |
 | 2026-01-20 19:45 | **Requirement ID Alignment (DEC-090)**: (1) Renamed all 458 requirement IDs to match atomic categories from DEC-089, (2) New format: `{ROLE}-{CATEGORY_PREFIX}-{NNN}` (e.g., RP-VER-001, WP-SEC-002), (3) Created transformation script `rename-requirement-ids.cjs`, (4) Requirements reordered by category within each file, (5) Added Rule 12 to AGENTS.md: Plans to Files, Not Chat, (6) Migration mapping saved to `id-migration-map.json`, (7) Updated DECISIONS.md examples with new IDs. |
