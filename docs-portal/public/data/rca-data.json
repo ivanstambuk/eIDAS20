@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T15:57:21.728Z",
+  "generatedAt": "2026-01-20T16:13:31.074Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -647,11 +647,6 @@
     {
       "id": "functionality",
       "label": "functionality",
-      "order": 999
-    },
-    {
-      "id": "privacy",
-      "label": "privacy",
       "order": 999
     }
   ],
@@ -3855,7 +3850,7 @@
     },
     {
       "id": "EAA-QTSP-010",
-      "category": "security",
+      "category": "operational",
       "requirement": "Take appropriate measures against security threats",
       "explanation": "Qualified EAA issuers must take appropriate measures against forgery,\ntheft, or misappropriation of data, and against unauthorized deletion,\nalteration, or rendering of data inaccessible.",
       "legalBasis": {
@@ -6764,8 +6759,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "eseal"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6788,8 +6782,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "eseal"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6812,8 +6805,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "eseal"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6837,7 +6829,6 @@
       ],
       "applicableUseCases": [
         "esignature",
-        "eseal",
         "pid-online"
       ],
       "appliesToAllUseCases": false,
@@ -6863,8 +6854,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "eseal"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6887,8 +6877,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "timestamp"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6911,8 +6900,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "timestamp"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6935,8 +6923,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "timestamp"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6959,8 +6946,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "registered-delivery"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -6983,8 +6969,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "registered-delivery"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7008,7 +6993,7 @@
       ],
       "applicableUseCases": [
         "esignature",
-        "website-auth"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7031,9 +7016,27 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "all"
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
       ],
-      "appliesToAllUseCases": false,
+      "appliesToAllUseCases": true,
       "profileFilter": null,
       "appliesToAllProfiles": true
     },
@@ -7054,9 +7057,27 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "all"
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
       ],
-      "appliesToAllUseCases": false,
+      "appliesToAllUseCases": true,
       "profileFilter": null,
       "appliesToAllProfiles": true
     },
@@ -7077,9 +7098,27 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "all"
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
       ],
-      "appliesToAllUseCases": false,
+      "appliesToAllUseCases": true,
       "profileFilter": null,
       "appliesToAllProfiles": true
     },
@@ -7100,8 +7139,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "archiving"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7124,8 +7162,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "archiving"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7148,8 +7185,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "ledger"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7172,8 +7208,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "ledger"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7196,8 +7231,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "pid-online",
-        "all"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7220,8 +7254,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "pid-online",
-        "all"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7244,8 +7277,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "pid-online",
-        "all"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7268,8 +7300,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "esignature",
-        "all"
+        "esignature"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7808,7 +7839,7 @@
       ],
       "applicableUseCases": [
         "pid-online",
-        "pid-proximity"
+        "proximity-id"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7879,7 +7910,7 @@
       ],
       "applicableUseCases": [
         "pid-online",
-        "pid-proximity"
+        "proximity-id"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7915,7 +7946,7 @@
       ],
       "applicableUseCases": [
         "pid-online",
-        "pid-proximity"
+        "proximity-id"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7951,7 +7982,7 @@
       ],
       "applicableUseCases": [
         "pid-online",
-        "pid-proximity"
+        "proximity-id"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -7986,7 +8017,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "business-kyc"
+        "open-bank-account"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8022,7 +8053,7 @@
       ],
       "applicableUseCases": [
         "pid-online",
-        "pid-proximity"
+        "proximity-id"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8345,7 +8376,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8368,8 +8399,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service",
-        "identity_verification"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8392,8 +8422,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service",
-        "identity_verification"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8416,7 +8445,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8439,7 +8468,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -8462,7 +8491,7 @@
         "relying_party"
       ],
       "applicableUseCases": [
-        "public_service"
+        "pid-online"
       ],
       "appliesToAllUseCases": false,
       "profileFilter": null,
@@ -18834,7 +18863,7 @@
     },
     {
       "id": "WP-PROT-005",
-      "category": "transparency",
+      "category": "operational",
       "requirement": "Display RP access certificate information to users",
       "explanation": "Wallet units must display to wallet users information contained in \nwallet-relying party access certificates or wallet unit attestations.",
       "legalBasis": {
@@ -18874,7 +18903,7 @@
     },
     {
       "id": "WP-PROT-006",
-      "category": "transparency",
+      "category": "operational",
       "requirement": "Display requested attributes to users",
       "explanation": "Wallet units must display to wallet users the attributes they are \nrequested to present.",
       "legalBasis": {
@@ -18914,7 +18943,7 @@
     },
     {
       "id": "WP-PROT-007",
-      "category": "transparency",
+      "category": "operational",
       "requirement": "Display RP registration certificate information to users",
       "explanation": "Wallet units must display to wallet users information contained in \nthe wallet-relying party registration certificate.",
       "legalBasis": {
@@ -19034,7 +19063,7 @@
     },
     {
       "id": "WP-PROT-010",
-      "category": "privacy",
+      "category": "data-protection",
       "requirement": "Enable privacy-preserving unlinkability for attestations",
       "explanation": "Wallet units must enable privacy preserving techniques ensuring \nunlinkability when presenting attestations across different relying \nparties where user identification is not required.",
       "legalBasis": {
@@ -19434,7 +19463,7 @@
     },
     {
       "id": "WP-PROT-020",
-      "category": "privacy",
+      "category": "data-protection",
       "requirement": "Support selective disclosure of attributes",
       "explanation": "Wallet solutions must support the selective disclosure of attributes \nfrom personal identification data and electronic attestations.",
       "legalBasis": {
@@ -19474,7 +19503,7 @@
     },
     {
       "id": "WP-PROT-021",
-      "category": "data_protection",
+      "category": "data-protection",
       "requirement": "Support data erasure request protocols",
       "explanation": "Wallet units must support protocols allowing users to request \nerasure of personal data from wallet-relying parties per GDPR Art.17.",
       "legalBasis": {
@@ -19514,7 +19543,7 @@
     },
     {
       "id": "WP-PROT-022",
-      "category": "data_protection",
+      "category": "data-protection",
       "requirement": "Allow user selection of RPs for erasure requests",
       "explanation": "The data erasure protocols must allow wallet users to select which \nwallet-relying parties should receive erasure requests.",
       "legalBasis": {
@@ -19554,7 +19583,7 @@
     },
     {
       "id": "WP-PROT-023",
-      "category": "transparency",
+      "category": "operational",
       "requirement": "Display previously submitted erasure requests",
       "explanation": "Wallet units must display to wallet users previously submitted \ndata erasure requests made through those wallet units.",
       "legalBasis": {
@@ -19594,7 +19623,7 @@
     },
     {
       "id": "WP-PROT-024",
-      "category": "data_protection",
+      "category": "data-protection",
       "requirement": "Enable easy reporting of RPs to DPAs",
       "explanation": "Wallet units must allow users to easily report wallet-relying parties \nto supervisory authorities under GDPR Article 51.",
       "legalBasis": {
@@ -19674,7 +19703,7 @@
     },
     {
       "id": "WP-PROT-026",
-      "category": "data_protection",
+      "category": "data-protection",
       "requirement": "Allow users to substantiate RP reports with attachments",
       "explanation": "Wallet units must allow users to substantiate reports by attaching \nrelevant information to identify RPs and claims in machine-readable format.",
       "legalBasis": {
@@ -21914,6 +21943,10 @@
         "RP-ACCEPT-003",
         "RP-ESIG-004",
         "RP-ESIG-012",
+        "RP-ESIG-019",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-AUTH-005",
         "RP-AUTH-002",
         "RP-AUTH-003",
@@ -21938,7 +21971,13 @@
         "RP-TECH-018",
         "RP-SEC-001",
         "RP-SEC-002",
-        "RP-SEC-003"
+        "RP-SEC-003",
+        "RP-AUTH-009",
+        "RP-AUTH-010",
+        "RP-AUTH-011",
+        "RP-AUTH-012",
+        "RP-AUTH-013",
+        "RP-OPS-003"
       ],
       "pseudonym": [
         "RP-REG-001",
@@ -21964,6 +22003,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22026,6 +22068,9 @@
         "RP-ESIG-017",
         "RP-ESIG-018",
         "RP-ESIG-019",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-ESIG-023",
         "RP-ESIG-024",
         "RP-ESIG-025",
@@ -22072,6 +22117,9 @@
         "RP-TECH-008",
         "RP-ACCEPT-002",
         "RP-SCA-001",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22112,6 +22160,9 @@
         "RP-TECH-008",
         "RP-ACCEPT-002",
         "RP-SCA-001",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22123,6 +22174,7 @@
         "RP-INFO-003",
         "RP-INFO-004",
         "RP-INFO-005",
+        "RP-TECH-014",
         "RP-TECH-016",
         "RP-TECH-018",
         "RP-SEC-001",
@@ -22150,6 +22202,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22188,6 +22243,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22226,6 +22284,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22264,6 +22325,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22302,6 +22366,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22340,6 +22407,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22378,6 +22448,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22416,6 +22489,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22455,6 +22531,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22496,6 +22575,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22534,6 +22616,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22572,6 +22657,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22610,6 +22698,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22621,6 +22712,11 @@
         "RP-INFO-003",
         "RP-INFO-004",
         "RP-INFO-005",
+        "RP-TECH-009",
+        "RP-TECH-011",
+        "RP-TECH-012",
+        "RP-TECH-013",
+        "RP-TECH-015",
         "RP-TECH-016",
         "RP-TECH-018",
         "RP-SEC-001",
@@ -22648,6 +22744,9 @@
         "RP-TECH-006",
         "RP-TECH-007",
         "RP-TECH-008",
+        "RP-ESIG-020",
+        "RP-ESIG-021",
+        "RP-ESIG-022",
         "RP-DP-001",
         "RP-DP-002",
         "RP-DP-003",
@@ -22664,64 +22763,6 @@
         "RP-SEC-001",
         "RP-SEC-002",
         "RP-SEC-003"
-      ],
-      "eseal": [
-        "RP-ESIG-009",
-        "RP-ESIG-010",
-        "RP-ESIG-011",
-        "RP-ESIG-012",
-        "RP-ESIG-013"
-      ],
-      "timestamp": [
-        "RP-ESIG-014",
-        "RP-ESIG-015",
-        "RP-ESIG-016"
-      ],
-      "registered-delivery": [
-        "RP-ESIG-017",
-        "RP-ESIG-018"
-      ],
-      "website-auth": [
-        "RP-ESIG-019"
-      ],
-      "all": [
-        "RP-ESIG-020",
-        "RP-ESIG-021",
-        "RP-ESIG-022",
-        "RP-AUTH-005",
-        "RP-AUTH-002",
-        "RP-AUTH-003",
-        "RP-AUTH-004"
-      ],
-      "archiving": [
-        "RP-ESIG-023",
-        "RP-ESIG-024"
-      ],
-      "ledger": [
-        "RP-ESIG-025",
-        "RP-ESIG-026"
-      ],
-      "pid-proximity": [
-        "RP-TECH-009",
-        "RP-TECH-011",
-        "RP-TECH-012",
-        "RP-TECH-013",
-        "RP-TECH-015"
-      ],
-      "business-kyc": [
-        "RP-TECH-014"
-      ],
-      "public_service": [
-        "RP-AUTH-009",
-        "RP-AUTH-010",
-        "RP-AUTH-011",
-        "RP-AUTH-012",
-        "RP-AUTH-013",
-        "RP-OPS-003"
-      ],
-      "identity_verification": [
-        "RP-AUTH-010",
-        "RP-AUTH-011"
       ]
     },
     "supervisory_body": {

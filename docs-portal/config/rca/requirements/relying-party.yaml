@@ -896,7 +896,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - eseal
 
   - id: RP-ESIG-010
     category: esignature
@@ -916,7 +915,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - eseal
 
   - id: RP-ESIG-011
     category: esignature
@@ -936,7 +934,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - eseal
 
   - id: RP-ESIG-012
     category: esignature
@@ -960,7 +957,6 @@ requirements:
     profileFilter: [public_sector]
     useCases:
       - esignature
-      - eseal
       - pid-online
 
   - id: RP-ESIG-013
@@ -981,7 +977,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - eseal
 
   # --- Electronic Time Stamps (Art 41-42) ---
 
@@ -1004,7 +999,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - timestamp
 
   - id: RP-ESIG-015
     category: esignature
@@ -1025,7 +1019,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - timestamp
 
   - id: RP-ESIG-016
     category: esignature
@@ -1045,7 +1038,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - timestamp
 
   # --- Electronic Registered Delivery (Art 43-44) ---
 
@@ -1069,7 +1061,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - registered-delivery
 
   - id: RP-ESIG-018
     category: esignature
@@ -1092,7 +1083,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - registered-delivery
 
   # --- Website Authentication Certificates (Art 45) ---
 
@@ -1115,7 +1105,7 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - website-auth
+      - pid-online
 
   # --- Electronic Attestation of Attributes (Art 45b) ---
 
@@ -1137,8 +1127,7 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases:
-      - all
+    useCases: all
 
   - id: RP-ESIG-021
     category: esignature
@@ -1157,8 +1146,7 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases:
-      - all
+    useCases: all
 
   - id: RP-ESIG-022
     category: esignature
@@ -1178,8 +1166,7 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
-    useCases:
-      - all
+    useCases: all
 
   # --- Electronic Archiving Services (Art 45i-45j) ---
 
@@ -1203,7 +1190,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - archiving
 
   - id: RP-ESIG-024
     category: esignature
@@ -1224,7 +1210,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - archiving
 
   # --- Electronic Ledgers (Art 45k-45l) ---
 
@@ -1247,7 +1232,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - ledger
 
   - id: RP-ESIG-026
     category: esignature
@@ -1267,7 +1251,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - ledger
 
   # --- Mutual Recognition & Cross-Border (Art 6, 11a) ---
 
@@ -1293,7 +1276,6 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - all
 
   - id: RP-AUTH-002
     category: authentication
@@ -1314,7 +1296,6 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - all
 
   - id: RP-AUTH-003
     category: authentication
@@ -1335,7 +1316,6 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - all
 
   # --- Certificate Revocation Information Access (Art 24) ---
 
@@ -1361,7 +1341,6 @@ requirements:
       - relying_party
     useCases:
       - esignature
-      - all
 
   # ============================================================================
   # DATA PROTECTION & PRIVACY
@@ -1682,7 +1661,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - pid-proximity
+      - proximity-id
 
   - id: RP-TECH-010
     category: technical
@@ -1727,7 +1706,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - pid-proximity
+      - proximity-id
 
   - id: RP-TECH-012
     category: technical
@@ -1752,7 +1731,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - pid-proximity
+      - proximity-id
 
   - id: RP-TECH-013
     category: technical
@@ -1777,7 +1756,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - pid-proximity
+      - proximity-id
 
   - id: RP-TECH-014
     category: technical
@@ -1800,7 +1779,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - business-kyc
+      - open-bank-account
 
   # ============================================================================
   # WALLET INTEGRITY AND CORE FUNCTIONALITIES
@@ -1829,7 +1808,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-      - pid-proximity
+      - proximity-id
 
   - id: RP-TECH-016
     category: data-protection
@@ -2025,7 +2004,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
+      - pid-online
 
   - id: RP-AUTH-010
     category: authentication
@@ -2048,8 +2027,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
-      - identity_verification
+      - pid-online
 
   - id: RP-AUTH-011
     category: authentication
@@ -2072,8 +2050,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
-      - identity_verification
+      - pid-online
 
   - id: RP-AUTH-012
     category: authentication
@@ -2096,7 +2073,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
+      - pid-online
 
   - id: RP-AUTH-013
     category: authentication
@@ -2121,7 +2098,7 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
+      - pid-online
 
   - id: RP-OPS-003
     category: operational
@@ -2150,4 +2127,4 @@ requirements:
     roles:
       - relying_party
     useCases:
-      - public_service
+      - pid-online

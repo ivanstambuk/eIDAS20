@@ -2327,7 +2327,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-005
-    category: transparency
+    category: operational
     requirement: "Display RP access certificate information to users"
     explanation: |
       Wallet units must display to wallet users information contained in 
@@ -2344,7 +2344,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-006
-    category: transparency
+    category: operational
     requirement: "Display requested attributes to users"
     explanation: |
       Wallet units must display to wallet users the attributes they are 
@@ -2361,7 +2361,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-007
-    category: transparency
+    category: operational
     requirement: "Display RP registration certificate information to users"
     explanation: |
       Wallet units must display to wallet users information contained in 
@@ -2418,7 +2418,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-010
-    category: privacy
+    category: data-protection
     requirement: "Enable privacy-preserving unlinkability for attestations"
     explanation: |
       Wallet units must enable privacy preserving techniques ensuring 
@@ -2617,7 +2617,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-020
-    category: privacy
+    category: data-protection
     requirement: "Support selective disclosure of attributes"
     explanation: |
       Wallet solutions must support the selective disclosure of attributes 
@@ -2635,7 +2635,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-021
-    category: data_protection
+    category: data-protection
     requirement: "Support data erasure request protocols"
     explanation: |
       Wallet units must support protocols allowing users to request 
@@ -2655,7 +2655,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-022
-    category: data_protection
+    category: data-protection
     requirement: "Allow user selection of RPs for erasure requests"
     explanation: |
       The data erasure protocols must allow wallet users to select which 
@@ -2673,7 +2673,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-023
-    category: transparency
+    category: operational
     requirement: "Display previously submitted erasure requests"
     explanation: |
       Wallet units must display to wallet users previously submitted 
@@ -2690,7 +2690,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-024
-    category: data_protection
+    category: data-protection
     requirement: "Enable easy reporting of RPs to DPAs"
     explanation: |
       Wallet units must allow users to easily report wallet-relying parties 
@@ -2726,7 +2726,7 @@ requirements:
     useCases: all
 
   - id: WP-PROT-026
-    category: data_protection
+    category: data-protection
     requirement: "Allow users to substantiate RP reports with attachments"
     explanation: |
       Wallet units must allow users to substantiate reports by attaching 

@@ -962,7 +962,7 @@ requirements:
     profileFilter: [qualified]
 
   - id: EAA-QTSP-010
-    category: security
+    category: operational
     requirement: "Take appropriate measures against security threats"
     explanation: |
       Qualified EAA issuers must take appropriate measures against forgery,
