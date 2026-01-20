@@ -1632,7 +1632,7 @@ Implement a **requirement-by-requirement semantic analysis** for use case mappin
 
 **Example 1: Universal requirement**
 ```yaml
-- id: WP-SEC-002
+- id: WP-SEC-002  # Stayed the same after DEC-090 ID alignment
   requirement: "Ensure security-by-design"
 ```
 - **Analysis:** Security-by-design applies regardless of whether the user is signing documents, opening a bank account, or proving age. It's a fundamental architectural principle.
@@ -1640,7 +1640,7 @@ Implement a **requirement-by-requirement semantic analysis** for use case mappin
 
 **Example 2: Use-case-specific requirement**
 ```yaml
-- id: WP-FUNC-008
+- id: WP-TEC-008  # Was WP-FUNC-008 before DEC-090 ID alignment
   requirement: "Support qualified electronic signatures and seals"
 ```
 - **Analysis:** QES/QESeal creation is ONLY needed when the user performs a signing operation. A wallet used purely for age verification would not need QES support.
@@ -1648,7 +1648,7 @@ Implement a **requirement-by-requirement semantic analysis** for use case mappin
 
 **Example 3: Escalation required**
 ```yaml
-- id: WP-FUNC-003
+- id: WP-TEC-003  # Was WP-FUNC-003 before DEC-090 ID alignment
   requirement: "Support pseudonym generation and encrypted local storage"
 ```
 - **Analysis:** Pseudonyms are clearly relevant to the `pseudonym` use case. But are they also relevant to `age-verification` (proving you're over 18 without revealing identity)? Unclear.
@@ -1781,4 +1781,112 @@ A requirement about "signature validation format requirements":
 | `scripts/validate-rca.js` | Loads categories from global file |
 | `scripts/build-rca.js` | Loads categories from global file |
 | `requirements/*.yaml` | Removed per-file categories, remapped all requirements |
+
+---
+
+## DEC-090: Requirement ID Alignment with Atomic Categories
+
+**Date:** 2026-01-20  
+**Status:** Implemented  
+**Category:** RCA / Data Model
+
+**Context:**
+
+After DEC-089 established 12 atomic categories, a mismatch existed between requirement IDs and their categories:
+
+```yaml
+# Example mismatch
+- id: RP-TECH-015     # ← Prefix suggests "Technical"
+  category: verification  # ← But actual category is "Verification"
+```
+
+The original ID scheme `{ROLE}-{CATEGORY}-{NNN}` encoded the category in the prefix. After reclassifying ~270 requirements to the new taxonomy, the prefixes no longer matched the categories.
+
+**Decision:**
+
+Rename all 458 requirement IDs to align prefixes with their atomic categories.
+
+**New ID Format:** `{ROLE}-{CATEGORY_PREFIX}-{NNN}`
+
+**Category Prefix Mapping:**
+
+| Category | Prefix | Mnemonic |
+|----------|--------|----------|
+| registration | REG | Standard |
+| certification | CRT | Cert- |
+| issuance | ISS | Issue |
+| revocation | REV | Revoke |
+| verification | VER | Verify |
+| technical | TEC | Tech |
+| interoperability | IOP | I/O Protocol |
+| security | SEC | Secure |
+| privacy | PRV | Private |
+| transparency | TRN | Trans- |
+| governance | GOV | Govern |
+| liability | LIA | Liable |
+
+**Role Prefixes:**
+
+| Role | Prefix |
+|------|--------|
+| Relying Party | RP |
+| Wallet Provider | WP |
+| EAA Issuer | EAA |
+| PID Provider | PID |
+| Trust Service Provider | TSP |
+| Conformity Assessment Body | CAB |
+| Supervisory Body | SB |
+
+**Note:** EAA Issuer uses `EAA-` prefix (not `ISS-`) to avoid collision with the issuance category prefix `ISS`.
+
+**Example Transformations:**
+
+| Old ID | Category | New ID |
+|--------|----------|--------|
+| RP-TECH-015 | verification | RP-VER-003 |
+| WP-FUNC-008 | technical | WP-TEC-008 |
+| CAB-REPORT-001 | transparency | CAB-TRN-001 |
+
+**Implementation:**
+
+1. Created `scripts/rename-requirement-ids.cjs` transformation script
+2. Groups requirements by category within each role file
+3. Assigns sequential IDs per category: `{ROLE}-{CAT_PREFIX}-{001, 002, ...}`
+4. Requirements reordered by category alphabetically
+5. Mapping saved to `.agent/session/id-migration-map.json`
+
+**Statistics:**
+
+| Role | Requirements |
+|------|--------------|
+| Relying Party | 91 |
+| Wallet Provider | 132 |
+| EAA Issuer | 42 |
+| PID Provider | 30 |
+| Trust Service Provider | 85 |
+| Conformity Assessment Body | 36 |
+| Supervisory Body | 42 |
+| **Total** | **458** |
+
+**Benefits:**
+
+1. **Semantic clarity** — ID prefix immediately indicates category
+2. **Discoverability** — `grep RP-VER-*` finds all RP verification requirements
+3. **Consistency** — All IDs follow same pattern
+4. **Logical grouping** — Requirements ordered by category in files
+
+**Migration Reference:**
+
+Historical mapping of old→new IDs preserved in:
+`.agent/session/id-migration-map.json`
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `requirements/*.yaml` | All 458 IDs renamed, reordered by category |
+| `scripts/rename-requirement-ids.cjs` | NEW: Transformation script |
+| `.agent/session/id-migration-map.json` | NEW: Old→new ID mapping |
+| `DECISIONS.md` | Updated examples to use new IDs |
+
 

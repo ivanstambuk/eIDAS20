@@ -292,6 +292,30 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 12. Plans to Files, Not Chat (MANDATORY)
+
+**NEVER write detailed implementation plans directly in chat. Always write them to a file.**
+
+**When asked to create a plan:**
+1. Write the plan to `.agent/session/plan-{descriptive-name}.md`
+2. In chat, provide ONLY:
+   - Brief 1-2 sentence summary
+   - Link/path to the plan file
+   - Ask if user wants to proceed
+
+**Why:** Detailed plans in chat waste context window, are hard to reference later, and cannot be versioned or updated. Plans in files can be reviewed, modified, and tracked.
+
+**Anti-patterns:**
+- ❌ Writing 50+ line plans directly in chat
+- ❌ Dumping tables, phase breakdowns, and execution steps in messages
+- ❌ "Here's my comprehensive plan: [wall of text]"
+
+**Correct pattern:**
+- ✅ Write plan to `.agent/session/plan-id-renumbering.md`
+- ✅ Chat: "I've written a comprehensive plan to `.agent/session/plan-id-renumbering.md`. Ready to proceed?"
+
+---
+
 ## Project Structure
 
 ```
