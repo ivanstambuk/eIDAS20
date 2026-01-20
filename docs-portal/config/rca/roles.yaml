@@ -72,7 +72,7 @@ roles:
     shortLabel: "TSP"
     description: "Provider of trust services (e-signatures, e-seals, timestamps, etc.)"
     icon: "🔏"
-    enabled: true  # Audit complete — 41 requirements
+    enabled: true  # Audit complete — 85 requirements
     profiles:
       - id: qualified
         label: "Qualified (QTSP)"
@@ -82,3 +82,11 @@ roles:
         label: "Non-Qualified"
         description: "Standard trust service provider with baseline requirements"
         icon: "📋"
+
+  conformity_assessment_body:
+    label: "Conformity Assessment Body"
+    shortLabel: "CAB"
+    description: "Accredited body that audits and certifies qualified trust service providers"
+    icon: "🔍"
+    enabled: true  # Audit complete — 31 requirements
+    profiles: []  # No profile differentiation - requirements apply uniformly to all CABs

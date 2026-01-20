@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 02:18 CET |
-| **Session State** | V3.2.4 — TSP IA Audit Complete (380 reqs) |
-| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **380 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID + 85 TSP) |
-| **Next Action** | Push to GitHub (`git push`), consider CAB or Supervisory Body role audit |
+| **Last Updated** | 2026-01-20 02:25 CET |
+| **Session State** | V3.2.5 — CAB Role Complete (416 reqs) |
+| **Portal Status** | ✅ Fully functional (172,232 words, 107 terms, **416 RCA requirements**: 91 RP + 132 WP + 42 Issuer + 30 PID + 85 TSP + 36 CAB) |
+| **Next Action** | Browser-test CAB, push to GitHub |
 
 ---
 
@@ -85,7 +85,9 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 02:25 | **Conformity Assessment Body Role Complete (V3.2.5)**: (1) Created conformity-assessment-body.yaml with 36 requirements from Implementing Regulation 2025/2162 + main regulation Art 20, (2) No profiles — requirements apply uniformly to all accredited CABs, (3) Categories: accreditation (2), transparency (1), operational (8), reporting (19), transition (1), notification (1), (4) Key sources: 2025/2162 Arts 2-9, Annex I (subcontracting standards), Annex III (report specifications — 22 detailed requirements), (5) Enabled CAB role in roles.yaml, (6) Build verified: 416 total requirements across 6 roles. |
 | 2026-01-20 02:30 | **TSP Implementing Acts Audit Complete (V3.2.4)**: (1) Reviewed ALL 18 TSP-related implementing acts per Rule 1 (Infinite Time Principle) — no shortcuts, (2) Extracted 44 additional requirements (41→85 TSP requirements), (3) Key acts: 2025/2530 (QTSP requirements — 12 reqs), 2025/2160 (non-qualified risk — 7 reqs), 2025/1569 (QEAA — 6 reqs), 2025/1566 (identity verification — 4 reqs), 2025/1567 (remote QSCD — 4 reqs), 2025/2532 (archiving — 5 reqs), 2025/1572 (service initiation — 1 req), cross-cutting (4 reqs), (4) Added Rule 1 to AGENTS.md: Infinite Time Principle — never downscope due to time/context, (5) Updated AUDIT_TRACKER_TSP.md — 0 unreviewed items, (6) Build verified: 380 total RCA requirements. |
+
 | 2026-01-20 01:38 | **Trust Service Provider Audit Complete (V3.2.3)**: (1) Created trust-service-provider.yaml with 41 requirements from Arts 13-24, 29a + Annexes I-V, (2) Two profiles: qualified (QTSP — higher assurance, EU Trusted Lists) and non_qualified (baseline requirements), (3) Categories: liability (2), accessibility (1), security (5), operational (7), certification (4), transparency (4), identity-verification (2), data-protection (2), data-retention (1), technical (6), (4) Created AUDIT_TRACKER_TSP.md with full provision-level review (0 unreviewed items), (5) Enabled TSP role in roles.yaml, (6) Build verified: 336 total requirements across 5 roles. |
 | 2026-01-20 00:55 | **PID Provider Audit Complete (V3.2.2)**: (1) Enabled PID Provider role in roles.yaml (no profiles — requirements apply uniformly per Art 5a(5)), (2) Created pid-provider.yaml with 30 requirements from 2024/2977 Articles 3, 5, Annex + main regulation, (3) Categories: issuance (9), revocation (10), data-quality (5), regulatory (6), (4) Created AUDIT_TRACKER_PID.md with full provision-level review, (5) Build verified: 295 total requirements across 4 roles. |
 | 2026-01-20 00:45 | **Profile Filtering Complete (V3.2.1)**: (1) Fixed ProfileSelector UI bug — individual profiles were disabled when "All" selected (`disabled={allSelected}` removed), (2) Added `profileFilter` annotations to 7 sector-specific RP requirements (public_sector/private_sector), (3) Researched WP provider profiles — confirmed Article 5a(2) legal basis for member_state/mandated/independent, (4) Found profile-specific WP requirement via Article 5a(14) → Article 45h(3) mutatis mutandis — added WP-DP-003a (functional separation) for mandated/independent only, (5) Added Profile Differentiation Analysis to AUDIT_TRACKER_WP.md, (6) Retro: Added mutatis mutandis audit step to /rca-audit workflow, documented profile filter pattern in AGENTS.md, added Mutatis Mutandis and Functional Separation to TERMINOLOGY.md. |

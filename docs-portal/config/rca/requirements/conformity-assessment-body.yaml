@@ -1,0 +1,818 @@
+# Conformity Assessment Body (CAB) Requirements
+# Bodies accredited to audit and certify qualified trust service providers
+#
+# Legal basis: 
+#   - Article 20 of Regulation 910/2014 (consolidated)
+#   - Implementing Regulation 2025/2162 (CAB Accreditation)
+#
+# Note: CABs are distinct from TSPs. They are the auditors who verify
+# that QTSPs meet eIDAS requirements. CABs must themselves be accredited
+# by National Accreditation Bodies (NABs).
+
+schemaVersion: 1
+
+requirements:
+  # ============================================
+  # SECTION 1: ACCREDITATION REQUIREMENTS
+  # Based on Article 2 of 2025/2162
+  # ============================================
+
+  - id: CAB-ACC-001
+    category: accreditation
+    requirement: "Be accredited per EN ISO/IEC 17065:2012 and ETSI EN 319403-1 v2.3.1"
+    explanation: |
+      CABs must be accredited in accordance with standard EN ISO/IEC 17065:2012
+      supplemented by standard ETSI EN 319403-1 v2.3.1 for the purposes of
+      making certification decisions.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 2"
+      paragraph: "1"
+    legalText: |
+      For the purposes of making certification decisions in accordance with a
+      specific conformity assessment scheme, conformity assessment bodies shall
+      be accredited in accordance with standard EN ISO/IEC 17065:2012 supplemented
+      by standard ETSI EN 319403-1 v2.3.1.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-ACC-002
+    category: accreditation
+    requirement: "Undergo accreditation by NABs per EN ISO/IEC 17011:2017"
+    explanation: |
+      CAB accreditation must be performed by a national accreditation body
+      that complies with standard EN ISO/IEC 17011:2017.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 2"
+      paragraph: "2"
+    legalText: |
+      The accreditation of conformity assessment bodies referred to in paragraph 1
+      shall be performed by a national accreditation body in compliance with
+      standard EN ISO/IEC 17011:2017.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 2: CERTIFICATE OF CONFORMITY
+  # Based on Article 5 of 2025/2162
+  # ============================================
+
+  - id: CAB-CERT-001
+    category: transparency
+    requirement: "Make certificates of conformity publicly available"
+    explanation: |
+      CABs must publish all certificates of conformity they issue in a
+      public repository maintained by that CAB for that purpose.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 5"
+      paragraph: "1"
+    legalText: |
+      Conformity assessment bodies shall make the certificates of conformity
+      they issue available in a public repository maintained by that conformity
+      assessment body for that purpose.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-CERT-002
+    category: operational
+    requirement: "Ensure subcontractors comply with reference standards"
+    explanation: |
+      When subcontracting conformity assessment activities, CABs must ensure
+      subcontractors comply with the standards set out in Annex I of 2025/2162
+      for the specific activity being subcontracted.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 5"
+      paragraph: "2"
+    legalText: |
+      Any subcontracting by the conformity assessment body of the performance
+      of conformity assessment activities shall duly consider the nature of the
+      activity to be performed. The conformity assessment body shall ensure that
+      the subcontractor complies with the standards set out in Annex I for the
+      specific activity being subcontracted.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-CERT-003
+    category: operational
+    requirement: "Enable QTSPs to submit complete reports to supervisory bodies"
+    explanation: |
+      Upon issuing a certification decision, CABs must ensure that the
+      QTSP can submit the complete conformity assessment reports to
+      supervisory bodies.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 5"
+      paragraph: "3"
+    legalText: |
+      Conformity assessment bodies shall ensure, upon issuing a certification
+      decision, that the qualified trust services provider to whom the decision
+      relates, is able to submit the complete conformity assessment reports
+      corresponding to that decision to the supervisory bodies.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 3: CONFORMITY ASSESSMENT SCHEMES
+  # Based on Article 6 of 2025/2162
+  # ============================================
+
+  - id: CAB-SCHEME-001
+    category: operational
+    requirement: "Use conformity assessment schemes compliant with ISO/IEC 17067:2013 type 6"
+    explanation: |
+      CABs must use conformity assessment schemes that comply with scheme
+      type 6 of standard EN ISO/IEC 17067:2013 and the requirements of
+      the implementing regulation.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 6"
+      paragraph: "2"
+    legalText: |
+      A conformity assessment scheme shall comply with scheme type 6 of
+      standard EN ISO/IEC 17067:2013 and with the requirements laid down
+      in this Article.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-SCHEME-002
+    category: operational
+    requirement: "Include reference standards from Annex II in schemes"
+    explanation: |
+      CABs must use schemes that include at least the standards set out
+      in Annex II of 2025/2162, identifying the year and version number.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 6"
+      paragraph: "3"
+    legalText: |
+      Scheme owners shall ensure that their conformity assessment schemes
+      include at least the standards, as applicable, set out in Annex II
+      by indicating the year and version number of these standards.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-SCHEME-003
+    category: operational
+    requirement: "Conduct yearly surveillance assessments for each qualified service"
+    explanation: |
+      CABs must conduct at least one surveillance conformity assessment
+      annually for every evaluated qualified trust service.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 6"
+      paragraph: "11"
+    legalText: |
+      Scheme owners shall ensure that their conformity assessment schemes
+      require that at least one surveillance conformity assessment is
+      conducted annually for every evaluated qualified trust service.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 4: CONFORMITY ASSESSMENT REPORTS
+  # Based on Article 7 and Annex III of 2025/2162
+  # ============================================
+
+  - id: CAB-REPORT-001
+    category: reporting
+    requirement: "Produce conformity assessment reports per Annex III specifications"
+    explanation: |
+      CABs must produce conformity assessment reports that comply with the
+      detailed specifications set out in Annex III of 2025/2162.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 7"
+      paragraph: "1"
+    legalText: |
+      The conformity assessment report referred to in Article 20(1) of
+      Regulation (EU) No 910/2014, shall comply with the specifications
+      set out in Annex III.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-002
+    category: reporting
+    requirement: "Include clear certification decision confirming compliance"
+    explanation: |
+      Reports must be accompanied by a clear certification decision
+      confirming whether the assessed QTSP and services meet eIDAS and
+      NIS2 requirements.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(1)"
+    legalText: |
+      The conformity assessment report shall be accompanied by a clear
+      certification decision in accordance with clause 7.6 of standard
+      ETSI EN 319403-1 v2.3.1, confirming whether the assessed trust service
+      provider and the assessed qualified trust services it provides or aims
+      to provide meet the requirements laid down in Regulation (EU) No 910/2014
+      and in Article 21 of Directive (EU) 2022/2555.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-003
+    category: reporting
+    requirement: "Specify QTSP identity and all subsidiaries/subcontractors"
+    explanation: |
+      Reports must include the QTSP name, registration number, addresses,
+      and the same for all subsidiaries, affiliated entities, contractors
+      and subcontractors operating trust service components.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(2)"
+    legalText: |
+      The report shall specify the name of the qualified trust service
+      provider and, where applicable, its registration number, its official
+      postal address, and its electronic address as well as, where applicable,
+      the same information for all subsidiaries, affiliated legal entities,
+      contractors and subcontractors that are operating trust service
+      components in the scope of the provision of the qualified trust services.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-004
+    category: reporting
+    requirement: "Include detailed assessment scope description"
+    explanation: |
+      Reports must include a detailed description of the scope of assessment,
+      including the specific qualified trust services covered.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(3)"
+    legalText: |
+      The report shall include a detailed description of the scope of the
+      assessment of the qualified trust service provider, including the
+      specific qualified trust services covered by the assessment.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-005
+    category: reporting
+    requirement: "Contain sufficient evidence demonstrating compliance"
+    explanation: |
+      Reports must contain sufficient evidence to demonstrate that the
+      QTSP and services fulfil eIDAS and NIS2 requirements.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(4)"
+    legalText: |
+      The report shall contain sufficient evidence to demonstrate that
+      the qualified trust service provider and the qualified trust services
+      it provides fulfil the requirements laid down in Regulation (EU)
+      No 910/2014 and in Article 21 of Directive (EU) 2022/2555.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-006
+    category: reporting
+    requirement: "Specify CAB identity and accreditation details"
+    explanation: |
+      Reports must specify the CAB name, registration number, addresses,
+      NAB details, assessor names and roles, accreditation certificate link,
+      and conformity assessment scheme identification.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(5)-(6)"
+    legalText: |
+      The report shall specify the name of the conformity assessment body,
+      registration number, addresses, the name and country of the national
+      accreditation body, the names of natural persons involved and their
+      respective role, the link to the official website containing the
+      accreditation certificate, and the conformity assessment scheme for
+      which the body has been accredited.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-007
+    category: reporting
+    requirement: "Include qualified electronic signature on reports"
+    explanation: |
+      Electronic reports must contain at least one qualified electronic
+      signature identifying the responsible person authorised to adopt
+      the certification decision.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(7)"
+    legalText: |
+      The report shall contain at least one qualified electronic signature,
+      where the report is provided in an electronic form, or handwritten
+      signature, identifying the name and title of the responsible person
+      or persons that authorised to adopt the certification decision on
+      behalf of the conformity assessment body.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-008
+    category: reporting
+    requirement: "Identify all service digital identities per trust service type"
+    explanation: |
+      Reports must identify service digital identities per type of qualified
+      trust service, including URIs for non-PKI services and detailed PKI
+      certificate information for PKI-based services.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(9)"
+    legalText: |
+      The report shall identify, in accordance with clause 5.5.3 of standard
+      ETSI TS 119612 v.2.4.1, the service digital identities per type of
+      qualified trust service, providing URI identifiers for non-PKI services
+      and Subject Key Identifier, Base64 PEM certificate representation,
+      inclusion/exclusion criteria, and hierarchy information for PKI services.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-009
+    category: reporting
+    requirement: "Provide detailed PKI hierarchy description"
+    explanation: |
+      For PKI-based services, reports must include a detailed description
+      of the public key infrastructure functional hierarchy including
+      root, intermediate, and issuing CAs and certificate policy sets.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(10)"
+    legalText: |
+      The report shall provide, where applicable, a detailed description
+      of the public key infrastructure functional hierarchy, per type of
+      qualified trust service, including illustration of hierarchy, Subject
+      Key Identifiers, and for each issuing CA the list of certificate
+      policy sets with identification criteria and qualified/non-qualified
+      and purpose indicators.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-010
+    category: reporting
+    requirement: "List all third parties and subcontractors with assessment scope"
+    explanation: |
+      Reports must include an exhaustive list of third parties and
+      subcontractors providing trust service components, indicating
+      whether they were subject to the conformity assessment.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(11)"
+    legalText: |
+      The report shall include an exhaustive list of third parties, including
+      subcontractors, which provide qualified trust service components or
+      service components by indicating their name, location of sites, and
+      an indication whether those third parties and sites have been subject
+      to the conformity assessment and to which extent.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-011
+    category: reporting
+    requirement: "Include exhaustive list of 14 categories of QTSP documentation"
+    explanation: |
+      Reports must include a comprehensive list of all QTSP internal and
+      public documents reviewed, including practice statements, policies,
+      terms, termination plans, risk documentation, security breach plans,
+      and corporate documents.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(13)"
+    legalText: |
+      The report shall include an exhaustive list of public and qualified
+      trust service providers' internal documents which have been part of
+      the conformity assessment, including: practice statements, qualified
+      trust service policies, terms and conditions, termination plan, risk
+      documentation, security breach notification plan, supporting internal
+      documents, memorandum and articles of incorporation, evidence of
+      financial resources and insurance, list of standards claimed, list
+      of certified devices, and list of HSMs used.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-012
+    category: reporting
+    requirement: "Assess compliance with all applicable implementing acts"
+    explanation: |
+      Reports must contain an assessment of fulfilment of requirements
+      from all applicable service-specific implementing acts adopted
+      under eIDAS for the specific qualified trust service types.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(14)"
+    legalText: |
+      The report shall contain an assessment of the fulfilment of the
+      requirements that apply to the relevant qualified trust services
+      pursuant to Regulation (EU) No 910/2014 and the implementing and
+      delegated acts that apply to that qualified trust service as adopted
+      in accordance with Articles 24, 28, 33, 34, 38, 42, 44, 45, 29a, 45d,
+      and 45l of Regulation (EU) No 910/2014.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-013
+    category: reporting
+    requirement: "Assess compliance with NIS2 Article 21 requirements"
+    explanation: |
+      Reports must contain an assessment of fulfilment of cybersecurity
+      requirements under Article 21 of Directive (EU) 2022/2555 (NIS2).
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(15)"
+    legalText: |
+      The report shall contain an assessment of the fulfilment of the
+      requirements that apply to qualified trust service provider and to
+      the relevant qualified trust services pursuant to Article 21 of
+      Directive (EU) 2022/2555, and under the implementing acts adopted
+      in accordance with Article 21(5) of that Directive.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-014
+    category: reporting
+    requirement: "Declare absence of non-conformities or provide remediation plan"
+    explanation: |
+      Reports must declare absence of any non-conformities, or if any are
+      identified, include a corrective action plan with timescales and
+      planned evaluation tasks.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(16)"
+    legalText: |
+      The report shall contain a statement declaring, where applicable, the
+      absence of any non-conformities, irrespective of their level of
+      criticality; where any non-conformity is identified, the report shall
+      provide a plan of corrective actions and their timescale, provided by
+      the qualified trust service provider and agreed by the conformity
+      assessment body, together with the description of planned evaluation
+      tasks to verify correction.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-015
+    category: reporting
+    requirement: "Identify opportunities for improvement where appropriate"
+    explanation: |
+      Reports may contain recommendations for improvement concerning
+      the QTSP's fulfilment of relevant requirements.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(17)"
+    legalText: |
+      The report shall contain, where appropriate and necessary, an indication
+      of opportunities for improvement concerning the fulfilment by the
+      qualified trust service provider and the qualified trust services it
+      provides of relevant requirements.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-016
+    category: reporting
+    requirement: "Document assessment period and person-days for each stage"
+    explanation: |
+      Reports must identify the period and time taken (in person-days)
+      for each stage of the conformity assessment including documentation
+      audit, implementation assessment, and onsite inspections.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(18)"
+    legalText: |
+      The report shall identify, for each stage of the conformity assessment,
+      including documentation audit, implementation assessment and onsite
+      inspections, the period in relation to which the assessment has been
+      conducted and the time taken by the conformity assessment body in
+      person-days to conduct the assessment.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-017
+    category: reporting
+    requirement: "Include test results and production samples assessment"
+    explanation: |
+      Reports must include the scope, description, and results of a
+      significant set of tests or production samples for all relevant
+      types of outputs from the assessed qualified trust services.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(20)"
+    legalText: |
+      The report shall include the scope, the description, and the results
+      of a significant set of tests or production samples and their assessment
+      for all relevant and applicable types of outputs from the assessed
+      qualified trust services.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-018
+    category: reporting
+    requirement: "Specify surveillance and next assessment deadlines"
+    explanation: |
+      Reports must indicate the deadline for the next surveillance
+      conformity assessment and the next full conformity assessment
+      per Article 20(1).
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(21)"
+    legalText: |
+      The report shall indicate the following deadlines: (a) the deadline
+      within which the next surveillance conformity assessment must be
+      conducted; (b) the deadline within which the next conformity assessment
+      must be conducted in accordance with Article 20(1) of Regulation
+      (EU) No 910/2014.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REPORT-019
+    category: reporting
+    requirement: "Include declaration that reports are for supervisory body use"
+    explanation: |
+      Reports must contain an explicit declaration that the certification
+      documents are also intended for use by the competent national
+      supervisory body.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex III"
+      paragraph: "(22)"
+    legalText: |
+      The report shall contain an explicit declaration stating that the
+      certification documents, including the conformity assessment report,
+      are also intended for the use by the competent national supervisory body.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 5: RECONSIDERATION AND CHANGES
+  # Based on Article 4 of 2025/2162
+  # ============================================
+
+  - id: CAB-CHANGE-001
+    category: operational
+    requirement: "Inform QTSPs of impacts from accreditation reconsideration"
+    explanation: |
+      When a CAB receives a request from the NAB to take measures due to
+      scheme changes, it must inform its assessed QTSPs of any impacts
+      the reconsideration may have, including on future certification
+      decisions.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 4"
+      paragraph: "8"
+    legalText: |
+      Where a conformity assessment body receives a request pursuant to
+      paragraph 4, it shall, in a timely manner, inform any qualified
+      trust service providers that it has previously assessed under the
+      relevant conformity assessment scheme of any impacts that the
+      reconsideration of the conformity assessment body's accreditation
+      may have on those qualified trust service providers, including with
+      respect to future certification decisions made under that scheme.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 6: SUBCONTRACTING STANDARDS
+  # Based on Annex I of 2025/2162
+  # ============================================
+
+  - id: CAB-SUB-001
+    category: operational
+    requirement: "Use EN ISO/IEC 17025:2017 for subcontracted testing"
+    explanation: |
+      When subcontracting testing activities, CABs must ensure the
+      subcontractor complies with EN ISO/IEC 17025:2017.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex I"
+      paragraph: "(1)"
+    legalText: |
+      Reference standards for the subcontracting of conformity assessment
+      activities: EN ISO/IEC 17025:2017 for testing activities.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-SUB-002
+    category: operational
+    requirement: "Use EN ISO/IEC 17021-1:2015 for subcontracted management system audits"
+    explanation: |
+      When subcontracting audit activities of management systems, CABs
+      must ensure the subcontractor complies with EN ISO/IEC 17021-1:2015.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex I"
+      paragraph: "(2)"
+    legalText: |
+      Reference standards for the subcontracting of conformity assessment
+      activities: EN ISO/IEC 17021-1:2015 for audit activities of
+      management systems.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-SUB-003
+    category: operational
+    requirement: "Use EN ISO/IEC 17020:2012 for subcontracted inspections"
+    explanation: |
+      When subcontracting inspection activities, CABs must ensure the
+      subcontractor complies with EN ISO/IEC 17020:2012.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex I"
+      paragraph: "(3)"
+    legalText: |
+      Reference standards for the subcontracting of conformity assessment
+      activities: EN ISO/IEC 17020:2012 for inspection activities.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-SUB-004
+    category: operational
+    requirement: "Use EN ISO/IEC 17065:2012 for subcontracted conformity assessments"
+    explanation: |
+      When subcontracting conformity assessment activities, CABs must
+      ensure the subcontractor complies with EN ISO/IEC 17065:2012.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Annex I"
+      paragraph: "(4)"
+    legalText: |
+      Reference standards for the subcontracting of conformity assessment
+      activities: EN ISO/IEC 17065:2012 for conformity assessments activities.
+    deadline: "2025-12-07"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 7: MAIN REGULATION REQUIREMENTS
+  # Based on Article 20 of 910/2014 (consolidated)
+  # ============================================
+
+  - id: CAB-REG-001
+    category: notification
+    requirement: "Member States must notify CAB names, addresses, and accreditation details"
+    explanation: |
+      This is a Member State obligation that affects CABs: their details
+      must be notified to the Commission and made available to all
+      Member States.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "1b"
+    legalText: |
+      Member States shall, without undue delay, notify to the Commission
+      the names, addresses and accreditation details of the conformity
+      assessment bodies referred to in paragraph 1 and any subsequent
+      changes thereto. The Commission shall make that information
+      available to all Member States.
+    deadline: "2026-05-21"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REG-002
+    category: operational
+    requirement: "Audit QTSPs at least every 24 months at QTSP expense"
+    explanation: |
+      CABs perform audits of qualified trust service providers at least
+      every 24 months. The audit confirms that QTSPs and their services
+      meet eIDAS and NIS2 requirements.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 20"
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall be audited at their own
+      expense at least every 24 months by a conformity assessment body.
+      The audit shall confirm that the qualified trust service providers
+      and the qualified trust services provided by them fulfil the
+      requirements laid down in this Regulation and in Article 21 of
+      Directive (EU) 2022/2555.
+    deadline: "2024-10-18"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  - id: CAB-REG-003
+    category: reporting
+    requirement: "Issue conformity assessment report for QTSP initiation"
+    explanation: |
+      CABs issue the conformity assessment report that trust service
+      providers must submit to supervisory bodies when they intend to
+      start providing a qualified trust service.
+    legalBasis:
+      regulation: "910/2014"
+      article: "Article 21"
+      paragraph: "1"
+    legalText: |
+      Where trust service providers intend to start providing a qualified
+      trust service, they shall notify the supervisory body of their
+      intention together with a conformity assessment report issued by a
+      conformity assessment body confirming the fulfilment of the
+      requirements laid down in this Regulation and in Article 21 of
+      Directive (EU) 2022/2555.
+    deadline: "2024-10-18"
+    roles:
+      - conformity_assessment_body
+    useCases: all
+
+  # ============================================
+  # SECTION 8: GRANDFATHERING PROVISIONS
+  # Based on Article 9 of 2025/2162
+  # ============================================
+
+  - id: CAB-TRANS-001
+    category: transition
+    requirement: "Existing ETSI EN 319403 v2.2.2 accreditation valid until May 2027"
+    explanation: |
+      CABs accredited before 17 November 2025 under ETSI EN 319403 v2.2.2
+      or earlier have their accreditation considered to meet the new
+      requirements until 17 May 2027.
+    legalBasis:
+      regulation: "2025/2162"
+      article: "Article 9"
+      paragraph: "1"
+    legalText: |
+      Conformity assessment bodies that have, before 17 November 2025,
+      been accredited with reference to standard ETSI EN 319403 version 2.2.2,
+      or earlier version, for the purposes of the assessment of conformity
+      with Regulation (EU) No 910/2014 of qualified trust service providers
+      and the qualified trust services they provide shall have their
+      accreditation be considered to meet the requirements of Article 2(1)
+      until 17 May 2027.
+    deadline: "2027-05-17"
+    roles:
+      - conformity_assessment_body
+    useCases: all
