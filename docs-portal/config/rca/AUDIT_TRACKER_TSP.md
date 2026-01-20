@@ -266,33 +266,21 @@
 
 | Provision | Topic | Status | Req IDs | Notes |
 |-----------|-------|--------|---------|-------|
-| Art. 1(1) | Notifications — significant changes | ⬜ | | 10 categories of changes to notify |
-| Art. 1(2) | Notification content | ⬜ | | Description, date, reasons, documents |
-| Art. 2 | Risk management framework | ⬜ | | References 2025/2160 |
-| Art. 3(1) | Termination plan establishment | ⬜ | | Per qualified trust service |
-| Art. 3(2) | Termination plan controls | ⬜ | | Document availability |
-| Art. 3(3) | Termination plan procedures | ⬜ | | Keeping plan up to date |
-| Art. 3(4) | Termination plan review | ⬜ | | Every 2 years minimum |
-| Art. 3(5) | Termination risk management | ⬜ | | Specific risk management |
-| Art. 3(6) | Termination financial resources | ⬜ | | Cover termination costs |
-| Art. 3(7) | Termination procedures (9 items) | ⬜ | | (a)-(i) specific procedures |
-| Art. 3(8) | Record accessibility | ⬜ | | Evidence + continuity records |
-| Art. 3(9) | Termination documentation | ⬜ | | 5 types of documentation |
-| Art. 4 | Reference standards per service | ⬜ | | See Annex |
-| Annex (1) | Standards: signature certificates | ⬜ | | ETSI clauses |
-| Annex (2) | Standards: seal certificates | ⬜ | | ETSI clauses |
-| Annex (3) | Standards: website certificates | ⬜ | | ETSI clauses |
-| Annex (4) | Standards: signature validation | ⬜ | | ETSI clauses |
-| Annex (5) | Standards: seal validation | ⬜ | | ETSI clauses |
-| Annex (6) | Standards: signature preservation | ⬜ | | ETSI clauses |
-| Annex (7) | Standards: seal preservation | ⬜ | | ETSI clauses |
-| Annex (8) | Standards: timestamps | ⬜ | | ETSI clauses |
-| Annex (9) | Standards: registered delivery | ⬜ | | ETSI clauses |
-| Annex (10) | Standards: remote signature QSCD | ⬜ | | ETSI clauses |
-| Annex (11) | Standards: remote seal QSCD | ⬜ | | ETSI clauses |
-| Annex (12) | Standards: archiving | ⬜ | | ETSI clauses |
-| Annex (13) | Standards: QEAA issuance | ⬜ | | ETSI standard |
-| Annex (14) | Standards: electronic ledgers | ⬜ | | ETSI standard |
+| Art. 1(1) | Notifications — significant changes | ✅ | TSP-IA-NOTIF-001 | 10 categories of changes to notify |
+| Art. 1(2) | Notification content | ✅ | TSP-IA-NOTIF-002 | Description, date, reasons, documents |
+| Art. 2 | Risk management framework | ✅ | TSP-IA-RISK-001 | References 2025/2160 |
+| Art. 3(1) | Termination plan establishment | ✅ | TSP-IA-TERM-001 | Per qualified trust service |
+| Art. 3(2) | Termination plan controls | ✅ | TSP-IA-TERM-002 | Document availability |
+| Art. 3(3) | Termination plan procedures | ✅ | TSP-IA-TERM-003 | Keeping plan up to date |
+| Art. 3(4) | Termination plan review | ✅ | TSP-IA-TERM-004 | Every 2 years minimum |
+| Art. 3(5) | Termination risk management | ✅ | TSP-IA-TERM-005 | Specific risk management |
+| Art. 3(6) | Termination financial resources | ✅ | TSP-IA-TERM-006 | Cover termination costs |
+| Art. 3(7) | Termination procedures (9 items) | ✅ | TSP-IA-TERM-007 | (a)-(i) specific procedures |
+| Art. 3(8) | Record accessibility | ✅ | TSP-IA-TERM-008 | Evidence + continuity records |
+| Art. 3(9) | Termination documentation | ✅ | TSP-IA-TERM-009 | 5 types of documentation |
+| Art. 4 | Reference standards per service | ✅ | TSP-IA-STD-001 | References Annex for each service type |
+| Annex (1)-(14) | Service-specific ETSI standards | ➖ | | Covered by TSP-IA-STD-001 — ETSI standards are compliance mechanisms, not separate TSP obligations |
+
 
 ### 2025/1567 — Remote QSCD Management
 

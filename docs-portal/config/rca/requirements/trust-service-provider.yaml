@@ -955,3 +955,609 @@ requirements:
     roles:
       - trust_service_provider
     useCases: all
+
+  # ============================================
+  # SECTION 8: IMPLEMENTING REGULATION 2025/2530
+  # QTSP Requirements — Notifications, Risk Management, Termination
+  # ============================================
+
+  # --- Article 1: Notifications to Supervisory Body ---
+  - id: TSP-IA-NOTIF-001
+    category: transparency
+    requirement: "Notify supervisory body of significant changes (10 categories)"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must notify supervisory bodies of significant changes to:
+      (a) service descriptions/policies/T&Cs, (b) technical architecture,
+      (c) hosting, (d) cryptography, (e) registration/identification,
+      (f) organisation/governance, (g) termination plan, (h) financial/insurance,
+      (i) trusted list content, (j) third parties/subcontractors.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 1"
+      paragraph: "1"
+    legalText: |
+      In notifications referred to in Article 24(2), point (a), of Regulation
+      (EU) No 910/2014, qualified trust service providers shall cover at least
+      significant changes to: (a) service descriptions, policies, practice 
+      statements or associated terms and conditions; (b) technical architecture;
+      (c) hosting; (d) cryptographic techniques; (e) registration and 
+      identification procedures; (f) organisational structure or governance;
+      (g) termination plan; (h) financial resources and liability insurance;
+      (i) trusted list content; (j) third parties and subcontractors.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NOTIF-002
+    category: transparency
+    requirement: "Include required content in change notifications"
+    profileFilter: [qualified]
+    explanation: |
+      Notifications of changes must include: description of the change,
+      planned date and time, reasons for the change with evidence (if applicable),
+      and updated documents where applicable.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 1"
+      paragraph: "2"
+    legalText: |
+      Notifications referred to in paragraph 1 shall include:
+      (a) description of the change; (b) planned date and time of the change;
+      (c) reasons for the change and, where applicable, evidence for the reasons;
+      (d) where applicable, updated documents.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 2: Risk Management Framework ---
+  - id: TSP-IA-RISK-001
+    category: operational
+    requirement: "Apply risk management framework per 2025/2160"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must apply the risk management requirements set out in Articles 2,
+      3, and 4 of Implementing Regulation 2025/2160 (non-qualified TSP risk
+      management framework applies to QTSPs as well).
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 2"
+      paragraph: "1"
+    legalText: |
+      The requirements laid down in Article 2, Article 3 and Article 4 of
+      Commission Implementing Regulation 2025/2160 shall apply.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 3: Termination Plan ---
+  - id: TSP-IA-TERM-001
+    category: operational
+    requirement: "Establish termination plan for each qualified trust service"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must establish a termination plan for each qualified trust service,
+      covering service continuity, evidence provision, and how information
+      is kept accessible.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall establish a termination plan for
+      each qualified trust service they provide, that establishes the necessary
+      provisions for the effective and correct application of the termination
+      of the service or parts thereof, for the purposes of ensuring continuity
+      of the service and of providing evidence in legal proceedings.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-002
+    category: operational
+    requirement: "Establish controls for termination plan document availability"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must set up controls and procedures to ensure availability for
+      internal use of documented policies, practices, procedures, third party
+      arrangements, and other documents required for termination plan effectiveness.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "2"
+    legalText: |
+      Qualified trust service providers shall set up controls and procedures to
+      ensure the availability for internal use of documented policies, practices,
+      procedures, third party arrangements and any other documents required to
+      ensure the effectiveness of the termination plan.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-003
+    category: operational
+    requirement: "Keep termination plan and documents up to date"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must set up controls and procedures to ensure their termination
+      plan and any associated documents are kept up to date.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "3"
+    legalText: |
+      Qualified trust service providers shall set up controls and procedures
+      to ensure that their termination plan and any document associated with
+      it are up to date.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-004
+    category: operational
+    requirement: "Review termination plan at least every two years"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must review the termination plan and associated documents at
+      least every two years, and as part of implementing any changes to
+      the QTSP or its services, updating the plan accordingly.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "4"
+    legalText: |
+      Qualified trust service providers shall review the termination plan,
+      and any associated documents, at least every two years and as part
+      of the implementation of any changes to the qualified trust service
+      provider or to the qualified trust services it provides and update
+      the termination plan accordingly.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-005
+    category: operational
+    requirement: "Manage termination-specific risks in risk framework"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must manage the risks specific to termination of their qualified
+      trust services as part of the overall risk management framework.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "5"
+    legalText: |
+      Qualified trust service providers shall manage the risks that are
+      specific to the termination of the provision of their qualified trust
+      services as part of the risk management framework referred to in Article 2.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-006
+    category: liability
+    requirement: "Maintain financial resources to cover termination costs"
+    profileFilter: [qualified]
+    explanation: |
+      QTSPs must ensure maintenance of sufficient financial resources or
+      appropriate insurance to cover the costs required to effectively execute
+      the termination plan, including in case of unanticipated termination.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "6"
+    legalText: |
+      Qualified trust service providers shall ensure maintenance of sufficient
+      financial resources or obtain appropriate insurance to cover the costs
+      required to effectively execute the termination plan, including in case
+      of unanticipated termination.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-007
+    category: operational
+    requirement: "Include 9 specific procedures in termination plan"
+    profileFilter: [qualified]
+    explanation: |
+      Termination plans must specify procedures for: (a) terminating services
+      and decommissioning technical components, (b) updating trusted lists,
+      (c) certificate revocation, (d) preventing further service output,
+      (e) ensuring record accessibility, (f) addressing anticipated/unanticipated
+      scenarios, (g) safeguarding subscriber interests, (h) alternative service
+      arrangements, (i) notifying affected parties.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "7"
+    legalText: |
+      Qualified trust service providers shall ensure that the termination plan
+      specifies appropriate procedures and arrangements for at least the following:
+      (a) termination of qualified trust services including decommissioning;
+      (b) timely update of trusted list entries; (c) revocation of certificates
+      unless obligations are transferred; (d) ensuring no further service output
+      after termination; (e) ensuring record accessibility; (f) addressing
+      anticipated, unanticipated, partial and complete termination scenarios;
+      (g) safeguarding subscriber interests; (h) alternative service arrangements;
+      (i) providing notices to affected parties.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-008
+    category: data-retention
+    requirement: "Ensure record accessibility for evidence and continuity"
+    profileFilter: [qualified]
+    explanation: |
+      Termination plan procedures must ensure accessibility and usability of
+      records necessary to: (a) provide evidence of compliance with eIDAS and
+      GDPR, (b) ensure service continuity regarding validation data and
+      verification of previously created trust service outputs.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "8"
+    legalText: |
+      The procedures and arrangements referred to in paragraph 7, point (e)
+      shall ensure the accessibility and usability of the records necessary to:
+      (a) provide evidence in relation to the compliance of the qualified trust
+      services with Regulation (EU) No 910/2014 and Regulation (EU) 2016/679;
+      (b) ensure continuity of the qualified trust services, as regards the
+      signature or seal validation data of the qualified trust service provider
+      and as regards enabling continued maintenance of information required to
+      verify the correctness of previously created trust service outputs.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-TERM-009
+    category: operational
+    requirement: "Maintain 5 types of termination documentation"
+    profileFilter: [qualified]
+    explanation: |
+      Termination plan and associated records must include: (a) procedures
+      for termination, (b) records of regular plan reviews, (c) audit reports
+      on termination plan, (d) termination arrangements with third parties,
+      (e) T&Cs, practices and policy documents for the services.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 3"
+      paragraph: "9"
+    legalText: |
+      Qualified trust service providers shall ensure that the termination plan
+      and records associated with it include at least the following documentation:
+      (a) procedures for the termination of qualified trust services;
+      (b) procedures for and records of regular review of the termination plan;
+      (c) audit reports relating to the termination plan;
+      (d) termination arrangements with third parties;
+      (e) terms and conditions, practices and policy documents.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # --- Article 4: Reference Standards per Service Type ---
+  - id: TSP-IA-STD-001
+    category: technical
+    requirement: "Comply with service-specific ETSI standards per Annex"
+    profileFilter: [qualified]
+    explanation: |
+      In addition to Arts 1-3 requirements, QTSPs must comply with the
+      reference standards and specifications for their specific qualified
+      trust service type(s) as set out in the Annex to 2025/2530.
+    legalBasis:
+      regulation: "2025/2530"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      In addition to the requirements set out in Article 1, Article 2 and
+      Article 3, the reference standards and specifications referred to in
+      Article 24(5) of Regulation (EU) No 910/2014 are set out in the Annex
+      to this Regulation.
+    deadline: "2027-01-05"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 9: IMPLEMENTING REGULATION 2025/2160
+  # Non-Qualified TSP Risk Management
+  # ============================================
+
+  - id: TSP-IA-NQRISK-001
+    category: operational
+    requirement: "Establish management-approved risk management policies"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must establish risk management policies that 
+      clearly identify applicable trust services, are service-specific,
+      and are approved by the management body.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 2"
+      paragraph: "1"
+    legalText: |
+      The risk management policies referred to in Article 19a(1) of Regulation
+      (EU) No 910/2014 shall clearly identify the trust services they apply to,
+      shall be specific to the trust services concerned and shall be approved
+      by the management body of the non-qualified trust service provider.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-002
+    category: operational
+    requirement: "Include 6 mandatory elements in risk management policies"
+    profileFilter: [non_qualified]
+    explanation: |
+      Risk management policies must include: (a) risk tolerance level,
+      (b) risk criteria (likelihood, impact, level), (c) risk identification
+      approach, (d) risk evaluation process, (e) risk treatment process,
+      (f) continuous monitoring process.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 2"
+      paragraph: "2"
+    legalText: |
+      The risk management policies shall include at least: (a) overall risk
+      tolerance level; (b) relevant risk criteria including likelihood, impact
+      and level; (c) approach for identification and documentation of risks;
+      (d) process for evaluation of identified risks; (e) process for 
+      identification, prioritisation and monitoring of risk treatment measures;
+      (f) process for continuous monitoring of policy implementation.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-003
+    category: operational
+    requirement: "Identify, document and evaluate all risks"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must identify, document and evaluate all risks,
+      including third-party risks and potential single points of failure.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Non-qualified trust service providers shall identify, document and
+      evaluate all risks in accordance with the risk management policies,
+      and shall in particular: (a) identify risks in relation to third parties;
+      (b) identify potential single point of failure; (c) evaluate risks
+      based on risk criteria.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-004
+    category: operational
+    requirement: "Plan, document and implement risk treatment measures"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must plan, document and implement risk treatment
+      measures including prioritisation, approval, documentation in a risk
+      treatment plan, and continuous monitoring.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Non-qualified trust service providers shall plan, document and implement
+      risk treatment measures, and shall: (a) identify and prioritise appropriate
+      measures; (b) select, approve and document measures in a risk treatment
+      plan; (c) continuously monitor implementation.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-005
+    category: transparency
+    requirement: "Publish identity verification methods used"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must verify user identity (directly or via third party)
+      and publish information on the identity verification methods used.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 4"
+      paragraph: "3(a)"
+    legalText: |
+      As part of risk treatment measures, non-qualified trust service providers
+      shall verify, where applicable, the identity of the users of the trust
+      service directly or by means of a third party and publish information
+      on the identity verification methods used.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-006
+    category: data-retention
+    requirement: "Record and retain user registration and authentication data"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must record and securely retain: (i) registration/
+      onboarding information including identity verification, (ii) authentication
+      data, (iii) status changes of certificates or cryptographic material.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 4"
+      paragraph: "3(b)"
+    legalText: |
+      Non-qualified trust service providers shall record and securely retain
+      for as long as necessary: all relevant information collected in registration
+      and onboarding, authentication data assigned to users, and any change
+      of status of public key certificates or cryptographic material.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-NQRISK-007
+    category: operational
+    requirement: "Review and update risk evaluation annually"
+    profileFilter: [non_qualified]
+    explanation: |
+      Non-qualified TSPs must review, document, and update risk evaluation
+      results and risk treatment plan at least annually, and whenever
+      significant changes or incidents occur.
+    legalBasis:
+      regulation: "2025/2160"
+      article: "Article 4"
+      paragraph: "6"
+    legalText: |
+      Non-qualified trust service providers shall review, document and, where
+      appropriate, update the risk evaluation results and the risk treatment
+      plan at planned intervals, and at least annually, and when significant
+      changes to infrastructure, operations or risks, or significant incidents, occur.
+    deadline: "2025-11-16"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  # ============================================
+  # SECTION 10: IMPLEMENTING REGULATION 2025/1569
+  # QEAA Issuance and Revocation
+  # ============================================
+
+  - id: TSP-IA-QEAA-001
+    category: technical
+    requirement: "Comply with ETSI EN 319 401 for attestation issuance"
+    profileFilter: [qualified]
+    explanation: |
+      Providers of qualified electronic attestations of attributes must
+      comply with ETSI EN 319 401 specifications for trust service providers.
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Article 3"
+      paragraph: "1 / Annex I"
+    legalText: |
+      Providers of qualified electronic attestations of attributes shall issue
+      their attestations to natural or legal persons according to the 
+      specifications for trust service providers established in standard
+      ETSI EN 319 401 v3.1.1 (2024-06).
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-QEAA-002
+    category: technical
+    requirement: "Issue attestations in specified formats per 2024/2979"
+    profileFilter: [qualified]
+    explanation: |
+      QEAA providers must issue attestations in formats according to the
+      standards listed in Annex II of 2024/2979 (wallet integrity).
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Annex II"
+      paragraph: "1"
+    legalText: |
+      Providers of qualified electronic attestations of attributes shall issue
+      their attestations in a format according to one of the standards listed
+      in Annex II of Commission Implementing Regulation (EU) 2024/2979.
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-QEAA-003
+    category: transparency
+    requirement: "Maintain public revocation policies"
+    profileFilter: [qualified]
+    explanation: |
+      QEAA providers must have written, publicly accessible policies for
+      validity/revocation status management, including revocation conditions
+      and measures for status information availability.
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Providers of qualified electronic attestations of attributes shall have
+      written and publicly accessible policies relating to validity or 
+      revocation status management, including conditions for revocation
+      and measures for ensuring availability of validity status information.
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-QEAA-004
+    category: operational
+    requirement: "Revoke attestations in specified circumstances"
+    profileFilter: [qualified]
+    explanation: |
+      For attestations with >24h validity, QEAA providers must revoke them
+      upon: (a) explicit user request, (b) known security/trustworthiness
+      compromise, (c) as required by law or provider policies.
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Article 4"
+      paragraph: "3"
+    legalText: |
+      Providers of QEAAs, for attestations with validity >24 hours, shall
+      revoke them in at least: (a) upon explicit request of the person;
+      (b) where known compromise of security or trustworthiness; (c) as
+      required by Union or national law, or as determined in their policies.
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-QEAA-005
+    category: data-protection
+    requirement: "Use privacy-preserving revocation techniques"
+    profileFilter: [qualified]
+    explanation: |
+      QEAA providers must set up revocation techniques and management
+      methods that are privacy preserving and hinder linkability or traceability.
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Article 4"
+      paragraph: "4"
+    legalText: |
+      Providers of QEAAs shall set up revocation techniques and management
+      methods that are privacy preserving and hindering linkability or 
+      traceability.
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all
+
+  - id: TSP-IA-QEAA-006
+    category: transparency
+    requirement: "Provide integrity-assured validity status information"
+    profileFilter: [qualified]
+    explanation: |
+      QEAA providers must make validity/revocation status information
+      available to relying parties with integrity and authenticity assurance.
+    legalBasis:
+      regulation: "2025/1569"
+      article: "Article 4"
+      paragraph: "5"
+    legalText: |
+      Providers of QEAAs shall make available to relying parties information
+      on the validity or revocation status of the electronic attestations
+      they have issued in a manner that ensures the integrity and authenticity
+      of that information.
+    deadline: "2025-08-18"
+    roles:
+      - trust_service_provider
+    useCases: all

@@ -20,11 +20,40 @@ This project is an **eIDAS 2.0 Knowledge Base** containing primary source docume
 
 ---
 
-## ⚠️ Critical Rules (1-10) — Always Enforce
+## ⚠️ Critical Rules (1-11) — Always Enforce
 
 These rules are session-critical and must remain in the main AGENTS.md file.
 
-### 1. Notification + Context Report
+### 1. Infinite Time Principle (ABSOLUTE — THE MOST IMPORTANT RULE)
+
+**You have INFINITE time. Never downscope, eliminate, or take shortcuts due to time, context, or token considerations.**
+
+This is NON-NEGOTIABLE. Violations of this rule are UNACCEPTABLE.
+
+- Work as if you have **unlimited time** to complete every task perfectly
+- Context window consumption does NOT affect solution quality or scope
+- Token usage is NEVER a reason to reduce thoroughness
+- "Time constraints" do NOT exist — never mention them as justification
+- Every task deserves COMPLETE, THOROUGH execution — no exceptions
+- If a task requires reviewing 100 documents, review ALL 100 documents
+- If a task requires extracting 500 requirements, extract ALL 500 requirements
+
+**FORBIDDEN phrases (using any of these is a VIOLATION):**
+- ❌ "Given time constraints..."
+- ❌ "Given the scope..."
+- ❌ "Since context is running low..."
+- ❌ "To save time..."
+- ❌ "For efficiency..."
+- ❌ "In the interest of time..."
+- ❌ "Due to the magnitude of this task..."
+- ❌ "Let me process this in batches to be efficient..."
+
+**Why this is Rule 1:** Time and resource pressure causes shortcuts. Shortcuts cause incomplete work. Incomplete work is ALWAYS worse than thorough work that takes longer. The user explicitly forbids any consideration of time or resources when deciding how to complete work.
+
+---
+
+### 2. Notification + Context Report
+
 
 At the END of every response:
 
@@ -53,7 +82,7 @@ At the END of every response:
 
 ---
 
-### 2. Auto-commit Protocol (MANDATORY)
+### 3. Auto-commit Protocol (MANDATORY)
 
 - **Auto-commit IMMEDIATELY** after each logical increment that is tested and working
 - Use **conventional commit** format: `type: brief description`
@@ -64,7 +93,7 @@ At the END of every response:
 
 ---
 
-### 3. Clean Chrome Tabs Before browser_subagent (MANDATORY)
+### 4. Clean Chrome Tabs Before browser_subagent (MANDATORY)
 
 **BEFORE calling `browser_subagent`**, clean up accumulated tabs:
 ```bash
@@ -78,7 +107,7 @@ At the END of every response:
 
 ---
 
-### 4. UI/UX Proposals (MANDATORY — Visual Mockups FIRST)
+### 5. UI/UX Proposals (MANDATORY — Visual Mockups FIRST)
 
 **🚨 TRIGGER CONDITION: Whenever you present 2+ options for ANY visual/UI change, you MUST generate a mockup BEFORE the text explanation.**
 
@@ -113,7 +142,7 @@ At the END of every response:
 
 ---
 
-### 5. Proactive Prevention Protocol (MANDATORY — After Any Bug Fix)
+### 6. Proactive Prevention Protocol (MANDATORY — After Any Bug Fix)
 
 After fixing ANY bug or issue, you MUST:
 
@@ -153,7 +182,7 @@ When the bug involves a **build pipeline**:
 
 ---
 
-### 6. Route Path Verification (When Generating URLs)
+### 7. Route Path Verification (When Generating URLs)
 
 Before generating any portal URL (deep links, navigation, etc.):
 
@@ -169,7 +198,7 @@ Before generating any portal URL (deep links, navigation, etc.):
 
 ---
 
-### 7. Systematic Solutions Only (MANDATORY — No Workarounds)
+### 8. Systematic Solutions Only (MANDATORY — No Workarounds)
 
 When fixing any issue, follow this hierarchy:
 
@@ -193,21 +222,7 @@ When fixing any issue, follow this hierarchy:
 
 ---
 
-### 8. Infinite Time Principle (MANDATORY)
 
-**Never consider time constraints, context limits, or tokens when making technical decisions.**
-
-- Work as if you have **infinite time** to complete tasks
-- Do NOT let context window consumption affect solution quality
-- Do NOT take shortcuts due to perceived time pressure
-- Do NOT mention "given time constraints" as justification
-
-**Anti-patterns:**
-- ❌ "Given the time constraints, let me take a pragmatic approach..."
-- ❌ "Since context is running low, I'll simplify..."
-- ❌ "To save time, let's skip the full validation..."
-
----
 
 ### 9. AGENTS.md Requires Explicit Approval (MANDATORY)
 
