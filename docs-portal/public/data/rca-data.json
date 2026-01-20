@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T19:02:18.656Z",
+  "generatedAt": "2026-01-20T20:02:50.969Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -273,26 +273,26 @@
       "id": "issuer",
       "label": "EAA Issuer",
       "shortLabel": "Issuer",
-      "description": "Entity issuing electronic attestations of attributes",
+      "description": "Entity issuing attribute credentials to EUDI Wallets",
       "icon": "📜",
       "enabled": true,
       "profiles": [
         {
           "id": "qualified",
-          "label": "Qualified TSP (QEAA)",
-          "description": "Qualified Trust Service Provider issuing qualified attestations",
+          "label": "Qualified (QEAA)",
+          "description": "Appears on Trusted Lists. Legally a QTSP — see TSP role if providing other trust services.",
           "icon": "✅"
         },
         {
           "id": "non_qualified",
-          "label": "Non-Qualified Provider",
-          "description": "Any entity issuing non-qualified attestations",
+          "label": "Non-Qualified EAA",
+          "description": "Not listed on Trusted Lists. Still a trust service provider legally.",
           "icon": "📋"
         },
         {
           "id": "public_authentic",
-          "label": "Public Sector (Authentic Source)",
-          "description": "Public body issuing attestations from authentic sources",
+          "label": "Public Authentic Source",
+          "description": "Government or designated entity (e.g., DMV). NOT a TSP — separate notification.",
           "icon": "🏛️"
         }
       ]
@@ -338,7 +338,7 @@
       "id": "trust_service_provider",
       "label": "Trust Service Provider",
       "shortLabel": "TSP",
-      "description": "Provider of trust services (e-signatures, e-seals, timestamps, etc.)",
+      "description": "Provides trust services: signatures, seals, timestamps, certificates",
       "icon": "🔏",
       "enabled": true,
       "profiles": [
@@ -350,8 +350,8 @@
         },
         {
           "id": "non_qualified",
-          "label": "Non-Qualified",
-          "description": "Standard trust service provider with baseline requirements",
+          "label": "Non-Qualified TSP",
+          "description": "Trust service provider with baseline requirements only",
           "icon": "📋"
         }
       ]
