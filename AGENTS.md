@@ -563,6 +563,22 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 
 **The validator enforces:** If you use `all`, it must be scalar, not array.
 
+### Use Case Mapping Guidance (DEC-088)
+
+**When auditing requirements for use case mapping:**
+
+| Role Type | Roles | Action |
+|-----------|-------|--------|
+| **Service-Facing** | Wallet Provider, Relying Party | Full semantic analysis required |
+| **Infrastructure** | TSP, Issuer, PID, CAB, SB | Assume `useCases: all` unless legal text explicitly mentions use cases |
+
+**Why Infrastructure Roles are Universal:**
+- Their obligations govern HOW to operate (certification, auditing, oversight)
+- Not WHAT services are provided
+- A TSP's security requirements apply whether they issue signatures, seals, or timestamps
+
+**Reference:** See DEC-088 Addendum in DECISIONS.md and `USE_CASE_MAPPING_SUMMARY.md` in `config/rca/`.
+
 **See:** [TERMINOLOGY.md](TERMINOLOGY.md) for full vocabulary.
 
 ---

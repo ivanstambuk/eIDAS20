@@ -1679,6 +1679,54 @@ See `/use-case-audit` workflow in `.agent/workflows/use-case-audit.md`.
 
 ---
 
+### DEC-088 Addendum: Infrastructure Universalism Pattern
+
+**Date:** 2026-01-20  
+**Status:** Accepted  
+**Context:** Discovery from complete 7-phase use case mapping audit
+
+**Key Finding:**
+
+During the comprehensive audit of all 458 requirements across 7 roles, a fundamental pattern emerged:
+
+| Role Type | Roles | Use Case Specificity |
+|-----------|-------|----------------------|
+| **Service-Facing** | Wallet Provider, Relying Party | ~15% requirements are use-case-specific |
+| **Infrastructure** | TSP, Issuer, PID, CAB, SB | 100% universal — obligations don't depend on services |
+
+**Why Infrastructure Roles Are Always Universal:**
+
+1. **Trust Service Providers (TSP):** Obligations govern HOW to operate (certification, security, governance), not WHAT services are provided. A TSP's requirement to maintain qualified staff applies whether they issue e-signatures, timestamps, or seals.
+
+2. **EAA Issuers:** Obligations cover credential issuance mechanics (format, revocation, privacy). Whether the attestation is for age, education, or driving license doesn't change the issuance requirements.
+
+3. **PID Providers:** PID is the foundational identity layer. It's a PREREQUISITE for virtually all use cases, not specific to any single one.
+
+4. **Conformity Assessment Bodies (CAB):** CABs audit service providers, not end-user services. Their requirements define HOW to conduct audits, which is service-agnostic.
+
+5. **Supervisory Bodies (SB):** Regulatory oversight requirements define HOW to supervise, not WHAT is being supervised.
+
+**Practical Implication:**
+
+Future audits only need deep semantic analysis for **Wallet Provider** and **Relying Party** roles. For infrastructure roles, requirements can be assumed universal unless the legal text explicitly mentions specific use cases.
+
+**Audit Results Summary (458 total requirements):**
+
+| Phase | Role | Requirements | Use-Case-Specific | Changes Made |
+|-------|------|--------------|-------------------|--------------|
+| 1 | Wallet Provider | 132 | 14 (10.6%) | 14 → specific |
+| 2 | Relying Party | 91 | 1 (1.1%) | 1 → `pseudonym` |
+| 3 | Trust Service Provider | 85 | 0 | ✅ All correct |
+| 4 | EAA Issuer | 42 | 0 | ✅ All correct |
+| 5 | PID Provider | 30 | 0 | ✅ All correct |
+| 6 | CAB | 36 | 0 | ✅ All correct |
+| 7 | Supervisory Body | 42 | 0 | ✅ All correct |
+| **Total** | | **458** | **15 (3.3%)** | |
+
+**Tracker Documents:** See `USE_CASE_MAPPING_*.md` files in `docs-portal/config/rca/`.
+
+---
+
 ## DEC-089: Atomic Category Taxonomy
 
 **Date:** 2026-01-20  

@@ -425,6 +425,9 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **Design A (Multi-Role UI)** | The approved UX pattern for multi-role selection: rich icon cards with checkboxes and inline profile expansion. When a role card is selected, profile options appear directly within the card. Chosen over Design B (config panel below) for its direct visual connection between role and configuration. |
 | **Atomic Category** | A requirement category representing exactly ONE type of legal obligation (e.g., `security`, `privacy`, `technical`). Contrast with combined categories like "eSignature & Trust Services" which mix service types with obligation types. The 12 atomic categories are defined in `categories.yaml`. See DEC-089. |
 | **Category Taxonomy** | The fixed set of 12 atomic categories used to classify all 458 RCA requirements. Categories answer "what TYPE of obligation?" while use cases answer "in what SERVICE CONTEXT?" Defined globally in `config/rca/categories.yaml` — the single source of truth. |
+| **Service-Facing Role** | An RCA role with direct exposure to end-user use cases, resulting in ~15% use-case-specific requirements. Includes Wallet Provider and Relying Party. These roles require semantic analysis during use case mapping. See DEC-088 Addendum. |
+| **Infrastructure Role** | An RCA role whose obligations are independent of the services being provided — always 100% universal. Includes TSP, EAA Issuer, PID Provider, CAB, and Supervisory Body. Future use case audits can assume these roles are universal unless legal text explicitly mentions use cases. |
+| **Infrastructure Universalism** | The pattern explaining why Infrastructure Roles have no use-case-specific requirements. Their obligations govern HOW to operate (certification, auditing, oversight), not WHAT services are provided. Key insight from the 7-phase use case mapping audit. |
 
 ---
 
