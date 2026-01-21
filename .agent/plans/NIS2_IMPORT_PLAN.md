@@ -58,10 +58,11 @@ NIS2 returns a ZIP file, not raw XML. Our script needs to handle ZIP extraction.
 
 ## Implementation Steps
 
-### Phase 0: Converter Update (10 min)
-1. Update CELEX validation in `eurlex_html_to_md.py`:
-   - Change: `r'^3\d{4}R\d{3,4}$'` → `r'^3\d{4}[RL]\d{3,5}$'`
-2. Add "dir" type detection for Directives
+### Phase 0: Converter Update
+**NOT NEEDED** — The Formex pipeline (`eurlex_formex.py` + `formex_to_md_v3.py`) already:
+- Handles ZIP packages with multiple XML files
+- Works with any CELEX format (no validation regex)
+- Merges annex files automatically
 
 ### Phase 1: Configuration (5 min)
 1. Add NIS2 entry to `documents.yaml`:
@@ -95,10 +96,9 @@ NIS2 returns a ZIP file, not raw XML. Our script needs to handle ZIP extraction.
 
 | Phase | Time |
 |-------|------|
-| Converter update | 10 min |
 | Configuration | 5 min |
 | Conversion & build | 7 min |
-| **Total** | **~22 min** |
+| **Total** | **~12 min** |
 
 ---
 

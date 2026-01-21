@@ -8,16 +8,16 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-21 11:10 CET |
-| **Session State** | V3.6.39 — Intermediary Profile Implementation |
-| **Portal Status** | ✅ Fully functional (239,136 words, **151 terms**, **470 RCA requirements**, **12 atomic categories**) |
+| **Last Updated** | 2026-01-21 13:00 CET |
+| **Session State** | V3.6.41 — NIS2 Directive Import Complete |
+| **Portal Status** | ✅ Fully functional (279,377 words, **182 terms**, **470 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Ready for next task |
 
 ---
 
 ## Portal Features (Complete)
 
-- **36 documents** (7 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, 2016/679 GDPR, **eSignature FAQ** + 29 implementing acts)
+- **37 documents** (8 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, 2016/679 GDPR, **2022/2555 NIS2**, eSignature FAQ + 29 implementing acts)
 - **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
@@ -83,7 +83,7 @@
 | Regulation | Citations | Format | Status | Plan |
 |------------|-----------|--------|--------|------|
 | ~~GDPR (2016/679)~~ | 44 | ~~Formex (DOC_2)~~ | ~~Done~~ | [GDPR_IMPORT_PLAN.md](.agent/plans/GDPR_IMPORT_PLAN.md) |
-| **NIS2 Directive (2022/2555)** | 30 | Formex (ZIP) | ✅ Ready | [NIS2_IMPORT_PLAN.md](.agent/plans/NIS2_IMPORT_PLAN.md) |
+| ~~NIS2 Directive (2022/2555)~~ | 30 | ~~Formex (ZIP)~~ | ~~Done~~ | [NIS2_IMPORT_PLAN.md](.agent/plans/NIS2_IMPORT_PLAN.md) |
 | **Cybersecurity Act (2019/881)** | 13 | Formex (DOC_2) | ✅ Ready | [CYBERSECURITY_ACT_IMPORT_PLAN.md](.agent/plans/CYBERSECURITY_ACT_IMPORT_PLAN.md) |
 | ePrivacy Directive (2002/58) | 30 | HTML only | ⚠️ Converter update | [EPRIVACY_IMPORT_PLAN.md](.agent/plans/EPRIVACY_IMPORT_PLAN.md) |
 | EU Standardisation Reg (1025/2012) | 2 | HTML only | ✅ Ready | [STANDARDISATION_REG_IMPORT_PLAN.md](.agent/plans/STANDARDISATION_REG_IMPORT_PLAN.md) |
@@ -107,6 +107,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-21 13:00 | **NIS2 Directive Import (V3.6.41)**: (1) Imported NIS2 Directive (2022/2555) via Formex XML — 40,241 words, 46 articles, 3 annexes, (2) Added 38 new terminology definitions from NIS2 Article 6, (3) Updated `eurlex_formex.py` to use `cellar_id` from documents.yaml when auto-discovery fails, (4) Updated file detection to handle new Formex naming pattern (L_YYYYNNN.PPPPPPPP.xml), (5) Added `legalType: directive` support to doc_type labels. Portal now has 37 documents, 279,377 words, 182 terms. |
+| 2026-01-21 12:41 | **Intermediary Profile Implementation (V3.6.40)**: Comprehensive Article 5b(10) legal analysis — intermediaries are deemed RPs with "no-storage" mandate. (1) Added `uses_intermediary` and `acts_as_intermediary` profiles to RP role, (2) Created 12 new profile-specific requirements, (3) Updated RP-GOV-001 with profileFilter, (4) Created research document `docs/research/INTERMEDIARY_ROLE_ANALYSIS.md` with SaaS vs self-hosted regulatory analysis (GDPR, DORA), (5) Added DORA import and Financial RP profile to backlog, (6) Added 5 new terms to TERMINOLOGY.md (Verification Intermediary, No-Storage Mandate, Access/Registration Certificates). Total RCA requirements: 470. |
 | 2026-01-21 05:15 | **Dynamic Homepage Stats (V3.6.38)**: Replaced hardcoded hero stats with dynamic values from build-time metadata. (1) Extended `generateMetadata()` in build-content.js to include `terminologyCount` and `totalArticles`, (2) Updated Home.jsx to fetch metadata.json and display real values (7 regulations, 29 IAs, 151 terms, 633 articles), (3) Replaced fake "Browse by Role" badges with functional "Compliance Assessment" section linking to real RCA tool, (4) Browser-verified all stat cards show correct dynamic values. |
 | 2026-01-21 05:06 | **Subtitle Validation + Data Cleanup (V3.6.37)**: (1) Fixed parseDescription to prioritize title over preamble extraction, (2) Fixed 2015/1501 markdown H1 to include complete legal title, (3) Created `validate-subtitles.js` validator — catches preamble extraction, min length, valid format, (4) Integrated into build pipeline (`npm run validate:subtitles`), (5) Removed incorrect 32024R2978 entry (was Turkish coffee PDO, NOT eIDAS RP registration), (6) Fixed Terminology stats to show all 3 sources (regulations + implementing acts + supplementary = 256), (7) Confirmed no missing eIDAS implementing acts — RP registration covered by 32025R0848. |
 | 2026-01-21 02:15 | **RCA Stats Bar (V3.6.5)**: Added framework scope info bar to RCA page: "📊 458 requirements across 7 roles and 19 use cases" with "393 universal • 65 use-case specific" breakdown. Build-time computed stats (totalRoles, universalRequirements, useCaseSpecificRequirements). Glassmorphism styling with responsive layout. |

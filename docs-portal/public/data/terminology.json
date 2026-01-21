@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T04:38:37.381Z",
+  "generated": "2026-01-21T11:57:29.093Z",
   "statistics": {
-    "totalTerms": 151,
-    "totalDefinitions": 256,
+    "totalTerms": 182,
+    "totalDefinitions": 294,
     "sources": {
-      "regulations": 95,
+      "regulations": 133,
       "implementingActs": 128,
       "supplementary": 33
     },
@@ -171,25 +171,33 @@
       "certificate-of-conformity",
       "certification-body",
       "certification-decision",
+      "cloud-computing-service",
       "community-harmonisation-legislation",
       "conformity-assessment",
       "conformity-assessment-body",
       "conformity-assessment-report",
       "conformity-assessment-scheme",
+      "content-delivery-network",
       "controller",
       "creator-of-a-seal",
       "critical-assets",
-      "cryptographic-binding"
+      "cryptographic-binding",
+      "cyber-threat",
+      "cybersecurity"
     ],
     "D": [
+      "data-centre-service",
       "data-concerning-health",
       "data-record",
-      "digital-signature"
+      "digital-service",
+      "digital-signature",
+      "dns-service-provider"
     ],
     "E": [
       "electronic-archiving",
       "electronic-attestation-of-attributes",
       "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
+      "electronic-communications-service",
       "electronic-document",
       "electronic-identification",
       "electronic-identification-means",
@@ -205,6 +213,8 @@
       "electronic-time-stamp",
       "embedded-disclosure-policy",
       "enterprise",
+      "entity",
+      "entity-providing-domain-name-registration-services",
       "eu-digital-identity-wallet-trust-mark",
       "european-digital-identity-wallet"
     ],
@@ -220,25 +230,37 @@
       "harmonised-standard"
     ],
     "I": [
+      "ict-process",
+      "ict-product",
+      "ict-service",
       "identity-matching",
       "incident",
+      "incident-handling",
       "information-society-service",
-      "international-organisation"
+      "international-organisation",
+      "internet-exchange-point"
     ],
     "L": [
+      "large-scale-cybersecurity-incident",
       "list-of-trusted-lists",
       "lotl"
     ],
     "M": [
+      "managed-security-service-provider",
+      "managed-service-provider",
       "manufacturer"
     ],
     "N": [
       "national-accreditation-body",
-      "national-register-of-wallet-relying-parties"
+      "national-cybersecurity-strategy",
+      "national-register-of-wallet-relying-parties",
+      "near-miss"
     ],
     "O": [
       "object-of-certification",
       "offline-mode",
+      "online-marketplace",
+      "online-search-engine",
       "owner-of-a-scheme-for-the-attestation-of-attributes"
     ],
     "P": [
@@ -255,6 +277,8 @@
       "provider-of-wallet-relying-party-access-certificates",
       "provider-of-wallet-relying-party-registration-certificates",
       "pseudonymisation",
+      "public-administration-entity",
+      "public-electronic-communications-network",
       "public-sector-body"
     ],
     "Q": [
@@ -289,15 +313,21 @@
       "remote-qualified-electronic-seal-creation-device",
       "remote-qualified-electronic-signature-creation-device",
       "representative",
+      "research-organisation",
       "restriction-of-processing",
+      "risk",
       "risk-register"
     ],
     "S": [
       "scheme-for-the-attestation-of-attributes",
       "scheme-owner",
+      "security-of-network-and-information-systems",
       "signatory",
+      "significant-cyber-threat",
       "simple-electronic-seal",
       "simple-electronic-signature",
+      "social-networking-services-platform",
+      "standard",
       "strong-user-authentication",
       "supervisory-authority",
       "supervisory-authority-concerned"
@@ -317,7 +347,8 @@
     ],
     "V": [
       "validation",
-      "validation-data"
+      "validation-data",
+      "vulnerability"
     ],
     "W": [
       "wallet-cryptographic-operation",
@@ -1537,6 +1568,46 @@
       ]
     },
     {
+      "id": "cloud-computing-service",
+      "term": "cloud computing service",
+      "sources": [
+        {
+          "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-30",
+          "articleNumber": "6(30)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-30",
+      "definitionGroups": [
+        {
+          "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
+          "sources": [
+            {
+              "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-30",
+              "articleNumber": "6(30)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "community-harmonisation-legislation",
       "term": "Community harmonisation legislation",
       "sources": [
@@ -1783,6 +1854,46 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "content-delivery-network",
+      "term": "content delivery network",
+      "sources": [
+        {
+          "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-32",
+          "articleNumber": "6(32)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-32",
+      "definitionGroups": [
+        {
+          "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
+          "sources": [
+            {
+              "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-32",
+              "articleNumber": "6(32)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "controller",
@@ -2136,6 +2247,126 @@
       ]
     },
     {
+      "id": "cyber-threat",
+      "term": "cyber threat",
+      "sources": [
+        {
+          "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-10",
+          "articleNumber": "6(10)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-10",
+      "definitionGroups": [
+        {
+          "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
+          "sources": [
+            {
+              "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-10",
+              "articleNumber": "6(10)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "cybersecurity",
+      "term": "cybersecurity",
+      "sources": [
+        {
+          "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-3",
+          "articleNumber": "6(3)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-3",
+      "definitionGroups": [
+        {
+          "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
+          "sources": [
+            {
+              "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-3",
+              "articleNumber": "6(3)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "data-centre-service",
+      "term": "data centre service",
+      "sources": [
+        {
+          "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-31",
+          "articleNumber": "6(31)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-31",
+      "definitionGroups": [
+        {
+          "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
+          "sources": [
+            {
+              "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-31",
+              "articleNumber": "6(31)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "data-concerning-health",
       "term": "data concerning health",
       "sources": [
@@ -2220,6 +2451,46 @@
       ]
     },
     {
+      "id": "digital-service",
+      "term": "digital service",
+      "sources": [
+        {
+          "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-23",
+          "articleNumber": "6(23)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-23",
+      "definitionGroups": [
+        {
+          "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
+          "sources": [
+            {
+              "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-23",
+              "articleNumber": "6(23)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "digital-signature",
       "term": "digital signature",
       "sources": [
@@ -2263,6 +2534,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "dns-service-provider",
+      "term": "DNS service provider",
+      "sources": [
+        {
+          "definition": "an entity that provides:",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-20",
+          "articleNumber": "6(20)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-20",
+      "definitionGroups": [
+        {
+          "definition": "an entity that provides:",
+          "sources": [
+            {
+              "definition": "an entity that provides:",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-20",
+              "articleNumber": "6(20)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "electronic-archiving",
@@ -2398,6 +2709,46 @@
         "attestation",
         "identity"
       ]
+    },
+    {
+      "id": "electronic-communications-service",
+      "term": "electronic communications service",
+      "sources": [
+        {
+          "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-37",
+          "articleNumber": "6(37)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-37",
+      "definitionGroups": [
+        {
+          "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
+          "sources": [
+            {
+              "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-37",
+              "articleNumber": "6(37)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "electronic-document",
@@ -3194,6 +3545,86 @@
       "domains": []
     },
     {
+      "id": "entity",
+      "term": "entity",
+      "sources": [
+        {
+          "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-38",
+          "articleNumber": "6(38)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-38",
+      "definitionGroups": [
+        {
+          "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
+          "sources": [
+            {
+              "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-38",
+              "articleNumber": "6(38)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "entity-providing-domain-name-registration-services",
+      "term": "entity providing domain name registration services",
+      "sources": [
+        {
+          "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-22",
+          "articleNumber": "6(22)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-22",
+      "definitionGroups": [
+        {
+          "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
+          "sources": [
+            {
+              "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-22",
+              "articleNumber": "6(22)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "eu-digital-identity-wallet-trust-mark",
       "term": "EU Digital Identity Wallet Trust Mark",
       "sources": [
@@ -3495,6 +3926,126 @@
       ]
     },
     {
+      "id": "ict-process",
+      "term": "ICT process",
+      "sources": [
+        {
+          "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-14",
+          "articleNumber": "6(14)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-14",
+      "definitionGroups": [
+        {
+          "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
+          "sources": [
+            {
+              "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-14",
+              "articleNumber": "6(14)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "ict-product",
+      "term": "ICT product",
+      "sources": [
+        {
+          "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-12",
+          "articleNumber": "6(12)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-12",
+      "definitionGroups": [
+        {
+          "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
+          "sources": [
+            {
+              "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-12",
+              "articleNumber": "6(12)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "ict-service",
+      "term": "ICT service",
+      "sources": [
+        {
+          "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-13",
+          "articleNumber": "6(13)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-13",
+      "definitionGroups": [
+        {
+          "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
+          "sources": [
+            {
+              "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-13",
+              "articleNumber": "6(13)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "identity-matching",
       "term": "identity matching",
       "sources": [
@@ -3544,6 +4095,17 @@
       "term": "incident",
       "sources": [
         {
+          "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-6",
+          "articleNumber": "6(6)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
           "documentId": "2024-2981",
           "documentTitle": "Certification",
@@ -3555,9 +4117,26 @@
           "displayOrder": 2
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-13",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-6-para-6",
       "definitionGroups": [
+        {
+          "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
+          "sources": [
+            {
+              "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-6",
+              "articleNumber": "6(6)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
           "sources": [
@@ -3573,7 +4152,7 @@
               "displayOrder": 2
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [
@@ -3585,6 +4164,46 @@
         "governance",
         "wallet_ecosystem"
       ]
+    },
+    {
+      "id": "incident-handling",
+      "term": "incident handling",
+      "sources": [
+        {
+          "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-8",
+          "articleNumber": "6(8)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-8",
+      "definitionGroups": [
+        {
+          "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
+          "sources": [
+            {
+              "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-8",
+              "articleNumber": "6(8)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "information-society-service",
@@ -3658,6 +4277,86 @@
               "articleId": "article-4-para-26",
               "articleNumber": "4(26)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "internet-exchange-point",
+      "term": "internet exchange point",
+      "sources": [
+        {
+          "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-18",
+          "articleNumber": "6(18)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-18",
+      "definitionGroups": [
+        {
+          "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
+          "sources": [
+            {
+              "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-18",
+              "articleNumber": "6(18)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "large-scale-cybersecurity-incident",
+      "term": "large-scale cybersecurity incident",
+      "sources": [
+        {
+          "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-7",
+          "articleNumber": "6(7)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-7",
+      "definitionGroups": [
+        {
+          "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
+          "sources": [
+            {
+              "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-7",
+              "articleNumber": "6(7)",
+              "displayOrder": 1
             }
           ],
           "isVariant": false
@@ -3755,6 +4454,86 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "managed-security-service-provider",
+      "term": "managed security service provider",
+      "sources": [
+        {
+          "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-40",
+          "articleNumber": "6(40)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-40",
+      "definitionGroups": [
+        {
+          "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
+          "sources": [
+            {
+              "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-40",
+              "articleNumber": "6(40)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "managed-service-provider",
+      "term": "managed service provider",
+      "sources": [
+        {
+          "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-39",
+          "articleNumber": "6(39)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-39",
+      "definitionGroups": [
+        {
+          "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
+          "sources": [
+            {
+              "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-39",
+              "articleNumber": "6(39)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "manufacturer",
@@ -3874,6 +4653,46 @@
       ]
     },
     {
+      "id": "national-cybersecurity-strategy",
+      "term": "national cybersecurity strategy",
+      "sources": [
+        {
+          "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-4",
+          "articleNumber": "6(4)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
+          "sources": [
+            {
+              "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-4",
+              "articleNumber": "6(4)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "national-register-of-wallet-relying-parties",
       "term": "national register of wallet-relying parties",
       "sources": [
@@ -3918,6 +4737,46 @@
         "wallet_ecosystem",
         "governance"
       ]
+    },
+    {
+      "id": "near-miss",
+      "term": "near miss",
+      "sources": [
+        {
+          "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-5",
+          "articleNumber": "6(5)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-5",
+      "definitionGroups": [
+        {
+          "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
+          "sources": [
+            {
+              "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-5",
+              "articleNumber": "6(5)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "object-of-certification",
@@ -4007,6 +4866,86 @@
       "domains": [
         "wallet_ecosystem"
       ]
+    },
+    {
+      "id": "online-marketplace",
+      "term": "online marketplace",
+      "sources": [
+        {
+          "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-28",
+          "articleNumber": "6(28)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-28",
+      "definitionGroups": [
+        {
+          "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
+          "sources": [
+            {
+              "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-28",
+              "articleNumber": "6(28)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "online-search-engine",
+      "term": "online search engine",
+      "sources": [
+        {
+          "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-29",
+          "articleNumber": "6(29)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-29",
+      "definitionGroups": [
+        {
+          "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
+          "sources": [
+            {
+              "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-29",
+              "articleNumber": "6(29)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "owner-of-a-scheme-for-the-attestation-of-attributes",
@@ -4833,6 +5772,86 @@
               "articleId": "article-4-para-5",
               "articleNumber": "4(5)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "public-administration-entity",
+      "term": "public administration entity",
+      "sources": [
+        {
+          "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-35",
+          "articleNumber": "6(35)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-35",
+      "definitionGroups": [
+        {
+          "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
+          "sources": [
+            {
+              "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-35",
+              "articleNumber": "6(35)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "public-electronic-communications-network",
+      "term": "public electronic communications network",
+      "sources": [
+        {
+          "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-36",
+          "articleNumber": "6(36)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-36",
+      "definitionGroups": [
+        {
+          "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
+          "sources": [
+            {
+              "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-36",
+              "articleNumber": "6(36)",
+              "displayOrder": 1
             }
           ],
           "isVariant": false
@@ -5745,6 +6764,17 @@
           "displayOrder": 1
         },
         {
+          "definition": "a qualified trust service as defined in Article 3, point (17), of Regulation (EU) No 910/2014",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-26",
+          "articleNumber": "6(26)",
+          "displayOrder": 1
+        },
+        {
           "definition": "Qualified trust services are subject to strict requirements that consist of: (a) Issuing qualified certificates for electronic signature, electronic seal, and website authentication; (b) Providing qualified validation of qualified electronic signature and qualified electronic seal; (c) Providing qualified preservation of qualified electronic signature and qualified electronic seal; (d) Issuing qualified time stamp; (e) Providing qualified electronic registered delivery.",
           "documentId": "ec-esignature-faq",
           "documentTitle": "eSignature FAQ",
@@ -5775,6 +6805,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a qualified trust service as defined in Article 3, point (17), of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "a qualified trust service as defined in Article 3, point (17), of Regulation (EU) No 910/2014",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-26",
+              "articleNumber": "6(26)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": true
         },
         {
           "definition": "Qualified trust services are subject to strict requirements that consist of: (a) Issuing qualified certificates for electronic signature, electronic seal, and website authentication; (b) Providing qualified validation of qualified electronic signature and qualified electronic seal; (c) Providing qualified preservation of qualified electronic signature and qualified electronic seal; (d) Issuing qualified time stamp; (e) Providing qualified electronic registered delivery.",
@@ -5817,6 +6864,17 @@
           "displayOrder": 1
         },
         {
+          "definition": "a qualified trust service provider as defined in Article 3, point (20), of Regulation (EU) No 910/2014",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-27",
+          "articleNumber": "6(27)",
+          "displayOrder": 1
+        },
+        {
           "definition": "A qualified trust service provider (QTSP) is a TSP who provides one or more qualified trust services (QTS) and is granted the qualified status by the national supervisory body. The decision of the supervisory body to grant the qualified status is reflected in the corresponding national Trusted List. In this respect, QTSPs are mandatorily listed in the corresponding national Trusted List while TSP could be but are not mandatorily listed in these Trusted Lists.",
           "documentId": "ec-esignature-faq",
           "documentTitle": "eSignature FAQ",
@@ -5847,6 +6905,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a qualified trust service provider as defined in Article 3, point (20), of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "a qualified trust service provider as defined in Article 3, point (20), of Regulation (EU) No 910/2014",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-27",
+              "articleNumber": "6(27)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": true
         },
         {
           "definition": "A qualified trust service provider (QTSP) is a TSP who provides one or more qualified trust services (QTS) and is granted the qualified status by the national supervisory body. The decision of the supervisory body to grant the qualified status is reflected in the corresponding national Trusted List. In this respect, QTSPs are mandatorily listed in the corresponding national Trusted List while TSP could be but are not mandatorily listed in these Trusted Lists.",
@@ -6300,6 +7375,17 @@
       "term": "representative",
       "sources": [
         {
+          "definition": "a natural or legal person established in the Union explicitly designated to act on behalf of a DNS service provider, a TLD name registry, an entity providing domain name registration services, a cloud computing service provider, a data centre service provider, a content delivery network provider, a managed service provider, a managed security service provider, or a provider of an online marketplace, of an online search engine or of a social networking services platform that is not established in the Union, which may be addressed by a competent authority or a CSIRT in the place of the entity itself with regard to the obligations of that entity under this Directive",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-34",
+          "articleNumber": "6(34)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a natural or legal person established in the Union who, designated by the controller or processor in writing pursuant to Article 27, represents the controller or processor with regard to their respective obligations under this Regulation",
           "documentId": "2016-679",
           "documentTitle": "GDPR (Consolidated)",
@@ -6311,9 +7397,26 @@
           "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-4-para-17",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-6-para-34",
       "definitionGroups": [
+        {
+          "definition": "a natural or legal person established in the Union explicitly designated to act on behalf of a DNS service provider, a TLD name registry, an entity providing domain name registration services, a cloud computing service provider, a data centre service provider, a content delivery network provider, a managed service provider, a managed security service provider, or a provider of an online marketplace, of an online search engine or of a social networking services platform that is not established in the Union, which may be addressed by a competent authority or a CSIRT in the place of the entity itself with regard to the obligations of that entity under this Directive",
+          "sources": [
+            {
+              "definition": "a natural or legal person established in the Union explicitly designated to act on behalf of a DNS service provider, a TLD name registry, an entity providing domain name registration services, a cloud computing service provider, a data centre service provider, a content delivery network provider, a managed service provider, a managed security service provider, or a provider of an online marketplace, of an online search engine or of a social networking services platform that is not established in the Union, which may be addressed by a competent authority or a CSIRT in the place of the entity itself with regard to the obligations of that entity under this Directive",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-34",
+              "articleNumber": "6(34)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a natural or legal person established in the Union who, designated by the controller or processor in writing pursuant to Article 27, represents the controller or processor with regard to their respective obligations under this Regulation",
           "sources": [
@@ -6327,6 +7430,46 @@
               "articleId": "article-4-para-17",
               "articleNumber": "4(17)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": true
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "research-organisation",
+      "term": "research organisation",
+      "sources": [
+        {
+          "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-41",
+          "articleNumber": "6(41)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-41",
+      "definitionGroups": [
+        {
+          "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
+          "sources": [
+            {
+              "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-41",
+              "articleNumber": "6(41)",
+              "displayOrder": 1
             }
           ],
           "isVariant": false
@@ -6367,6 +7510,46 @@
               "articleId": "article-4-para-3",
               "articleNumber": "4(3)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "risk",
+      "term": "risk",
+      "sources": [
+        {
+          "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-9",
+          "articleNumber": "6(9)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-9",
+      "definitionGroups": [
+        {
+          "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
+          "sources": [
+            {
+              "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-9",
+              "articleNumber": "6(9)",
+              "displayOrder": 1
             }
           ],
           "isVariant": false
@@ -6539,6 +7722,46 @@
       ]
     },
     {
+      "id": "security-of-network-and-information-systems",
+      "term": "security of network and information systems",
+      "sources": [
+        {
+          "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-2",
+          "articleNumber": "6(2)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-2",
+      "definitionGroups": [
+        {
+          "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
+          "sources": [
+            {
+              "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-2",
+              "articleNumber": "6(2)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "signatory",
       "term": "signatory",
       "sources": [
@@ -6582,6 +7805,46 @@
         "cryptography",
         "identity"
       ]
+    },
+    {
+      "id": "significant-cyber-threat",
+      "term": "significant cyber threat",
+      "sources": [
+        {
+          "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-11",
+          "articleNumber": "6(11)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-11",
+      "definitionGroups": [
+        {
+          "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
+          "sources": [
+            {
+              "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-11",
+              "articleNumber": "6(11)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "simple-electronic-seal",
@@ -6671,6 +7934,86 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "social-networking-services-platform",
+      "term": "social networking services platform",
+      "sources": [
+        {
+          "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-33",
+          "articleNumber": "6(33)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-33",
+      "definitionGroups": [
+        {
+          "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
+          "sources": [
+            {
+              "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-33",
+              "articleNumber": "6(33)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "standard",
+      "term": "standard",
+      "sources": [
+        {
+          "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-16",
+          "articleNumber": "6(16)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-16",
+      "definitionGroups": [
+        {
+          "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
+          "sources": [
+            {
+              "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-16",
+              "articleNumber": "6(16)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "strong-user-authentication",
@@ -6803,6 +8146,17 @@
       "term": "technical specification",
       "sources": [
         {
+          "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-17",
+          "articleNumber": "6(17)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
           "documentId": "2008-765",
           "documentTitle": "Accreditation Regulation (Consolidated)",
@@ -6814,9 +8168,26 @@
           "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-8",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-6-para-17",
       "definitionGroups": [
+        {
+          "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
+          "sources": [
+            {
+              "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-17",
+              "articleNumber": "6(17)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
           "sources": [
@@ -6832,7 +8203,7 @@
               "displayOrder": 3
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [
@@ -6942,9 +8313,20 @@
           "articleId": "article-3-para-16",
           "articleNumber": "3(16)",
           "displayOrder": 1
+        },
+        {
+          "definition": "a trust service as defined in Article 3, point (16), of Regulation (EU) No 910/2014",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-24",
+          "articleNumber": "6(24)",
+          "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-16",
       "definitionGroups": [
         {
@@ -6963,6 +8345,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a trust service as defined in Article 3, point (16), of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "a trust service as defined in Article 3, point (16), of Regulation (EU) No 910/2014",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-24",
+              "articleNumber": "6(24)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -6985,6 +8384,17 @@
           "celex": "02014R0910-20241018",
           "articleId": "article-3-para-19",
           "articleNumber": "3(19)",
+          "displayOrder": 1
+        },
+        {
+          "definition": "a trust service provider as defined in Article 3, point (19), of Regulation (EU) No 910/2014",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-25",
+          "articleNumber": "6(25)",
           "displayOrder": 1
         },
         {
@@ -7018,6 +8428,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a trust service provider as defined in Article 3, point (19), of Regulation (EU) No 910/2014",
+          "sources": [
+            {
+              "definition": "a trust service provider as defined in Article 3, point (19), of Regulation (EU) No 910/2014",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-25",
+              "articleNumber": "6(25)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": true
         },
         {
           "definition": "A trust service provider (TSP) is a natural or a legal person who provides one or more trust services (TS) either as a qualified or as a non-qualified trust service provider.",
@@ -7312,6 +8739,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "vulnerability",
+      "term": "vulnerability",
+      "sources": [
+        {
+          "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
+          "documentId": "2022-2555",
+          "documentTitle": "NIS2 Directive",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32022L2555",
+          "articleId": "article-6-para-15",
+          "articleNumber": "6(15)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-6-para-15",
+      "definitionGroups": [
+        {
+          "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
+          "sources": [
+            {
+              "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
+              "documentId": "2022-2555",
+              "documentTitle": "NIS2 Directive",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32022L2555",
+              "articleId": "article-6-para-15",
+              "articleNumber": "6(15)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "wallet-cryptographic-operation",

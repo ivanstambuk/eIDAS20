@@ -327,13 +327,23 @@ def main():
     # =========================================================
     print(f"\n=== EUR-Lex Formex Download: {celex} ===\n")
     
-    # Step 1: Get Formex URL
+    # Step 1: Get Formex URL (prefer cellar_id from config, fallback to discovery)
     print("Step 1: Finding Formex URL...")
-    cellar_url = get_formex_url(celex)
+    doc_config = get_document_config(celex)
+    cellar_url = None
+    
+    # Check if documents.yaml has a pre-configured cellar_id
+    if doc_config and doc_config.get('cellar_id'):
+        cellar_id = doc_config['cellar_id']
+        cellar_url = f"http://publications.europa.eu/resource/cellar/{cellar_id}"
+        print(f"  Using cellar_id from documents.yaml: {cellar_id}")
+    else:
+        # Fall back to auto-discovery
+        cellar_url = get_formex_url(celex)
     
     if not cellar_url:
         print("ERROR: Could not find Formex URL.")
-        print("  TIP: Add 'source: html' in documents.yaml for this CELEX to use HTML fallback.")
+        print("  TIP: Add 'cellar_id' or 'source: html' in documents.yaml for this CELEX.")
         sys.exit(1)
     
     print(f"  Found: {cellar_url}")
@@ -358,41 +368,63 @@ def main():
         print(f"  Extracted {len(zf.namelist())} files to {xml_dir}")
     
     # Step 4: Find main XML file and all annex XML files, then convert
-    # Formex file naming convention:
-    #   - 000101.fmx.xml = Main document (articles, preamble, recitals)
-    #   - 000201.fmx.xml, 000301.fmx.xml, etc. = Additional annexes
-    #   - 000701.fmx.xml = Usually the annex with tables
-    #   - .doc.fmx.xml = Document metadata (skip)
-    #   - .toc.fmx.xml = Table of contents (skip)
+    # Formex file naming conventions:
+    #   OLD PATTERN (Implementing Acts):
+    #     - .000101.fmx.xml = Main document
+    #     - .000201., .000301., etc. = Annexes
+    #   NEW PATTERN (NIS2, newer Directives):
+    #     - L_YYYYNNN.PPPPPPPP.xml where PPPPPPPP is a page number
+    #     - Lowest page number = main document
+    #     - Higher page numbers = annexes
+    #   SKIP: .doc.xml = Document metadata, .toc.xml = Table of contents
     print("\nStep 4: Converting to Markdown...")
     main_xml = None
     annex_xmls = []
     
+    # Collect all content XML files (exclude .doc. and .toc.)
+    content_xmls = []
     for f in sorted(xml_dir.iterdir()):
         if f.suffix == '.xml':
             # Skip metadata files
             if '.doc.' in f.stem or '.toc.' in f.stem:
                 continue
-            # Main document is specifically 000101 (lowest number = main body)
-            elif '.000101.' in f.name:
-                main_xml = f
-            # Any other .000NNN. files are annexes (000201, 000301, 000701, etc.)
-            elif re.search(r'\.000[2-9]\d{2}\.', f.name):
-                annex_xmls.append(f)
+            content_xmls.append(f)
     
-    if not main_xml:
-        # Fallback: use first XML file with .000 in name
-        for f in sorted(xml_dir.iterdir()):
-            if f.suffix == '.xml' and '.000' in f.stem:
-                main_xml = f
-                break
+    # Detect file naming convention and extract main/annexes
+    if content_xmls:
+        # Check if OLD pattern (.000NNN.)
+        old_pattern_main = [f for f in content_xmls if '.000101.' in f.name]
+        if old_pattern_main:
+            main_xml = old_pattern_main[0]
+            annex_xmls = [f for f in content_xmls if re.search(r'\.000[2-9]\d{2}\.', f.name)]
+        else:
+            # NEW pattern: sort by page number and use first as main
+            # E.g., L_2022333EN.01008001.xml → page 01008001
+            def extract_page_num(f):
+                match = re.search(r'\.(\d{8})\.xml$', f.name)
+                return int(match.group(1)) if match else 999999999
+            
+            content_xmls.sort(key=extract_page_num)
+            main_xml = content_xmls[0]
+            annex_xmls = content_xmls[1:]
     
     if main_xml:
         md_path = output_dir / f"{celex}.md"
         
         # Generate metadata header for proper CELEX badge display
         doc_config = get_document_config(celex)
-        doc_type = "Implementing Act" if doc_config and doc_config.get('category') == 'implementing_act' else "Regulation"
+        # Determine document type label from legalType
+        legal_type = doc_config.get('legalType', 'regulation') if doc_config else 'regulation'
+        doc_type_labels = {
+            'regulation': 'Regulation',
+            'implementing_regulation': 'Implementing Regulation',
+            'directive': 'Directive',
+            'decision': 'Decision',
+            'recommendation': 'Recommendation'
+        }
+        doc_type = doc_type_labels.get(legal_type, 'Regulation')
+        if doc_config and doc_config.get('category') == 'implementing_act' and legal_type == 'regulation':
+            doc_type = "Implementing Act"
         
         md_header = f"""> **CELEX:** {celex} | **Type:** {doc_type}
 > **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex})
