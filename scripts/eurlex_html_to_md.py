@@ -44,14 +44,22 @@ def celex_to_eli(celex: str) -> tuple[str, str]:
         32008R0765 → ('2008', '765')
         32014R0910 → ('2014', '910')
         32015R1501 → ('2015', '1501')  # Implementing Regulation
+        02019R0881-20250204 → ('2019', '881')  # Consolidated version
     
     Returns (year, number) tuple.
     """
-    # CELEX format: 3YYYYRNNNN (3=sector, YYYY=year, R=regulation/impl reg, NNNN=number)
+    # Standard CELEX format: 3YYYYRNNNN (3=sector, YYYY=year, R=regulation, NNNN=number)
     match = re.match(r'3(\d{4})R(\d+)', celex)
     if match:
         year, num = match.groups()
         return (year, str(int(num)))  # int() removes leading zeros
+    
+    # Consolidated CELEX format: 0YYYYRNNNN-YYYYMMDD (0=consolidated)
+    match = re.match(r'0(\d{4})R(\d+)-\d{8}', celex)
+    if match:
+        year, num = match.groups()
+        return (year, str(int(num)))
+    
     raise ValueError(f"Invalid CELEX format: {celex}")
 
 
@@ -823,10 +831,13 @@ def main():
     celex = sys.argv[1]
     output_dir = Path(sys.argv[2])
     
-    # Validate CELEX format
-    if not re.match(r'^3\d{4}R\d+$', celex):
+    # Validate CELEX format (standard or consolidated)
+    # Standard: 3YYYYRNNNN (e.g., 32008R0765)
+    # Consolidated: 0YYYYRNNNN-YYYYMMDD (e.g., 02019R0881-20250204)
+    if not re.match(r'^(3\d{4}R\d+|0\d{4}R\d+-\d{8})$', celex):
         print(f"Error: Invalid CELEX format: {celex}")
         print("Expected format: 3YYYYRNNNN (e.g., 32008R0765)")
+        print("            or: 0YYYYRNNNN-YYYYMMDD (e.g., 02019R0881-20250204)")
         sys.exit(1)
     
     print(f"Converting {celex} to Markdown...")

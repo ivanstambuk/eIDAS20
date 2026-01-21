@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T12:11:25.961Z",
+  "generated": "2026-01-21T12:48:55.938Z",
   "statistics": {
-    "totalTerms": 182,
-    "totalDefinitions": 294,
+    "totalTerms": 191,
+    "totalDefinitions": 316,
     "sources": {
-      "regulations": 133,
+      "regulations": 155,
       "implementingActs": 128,
       "supplementary": 33
     },
@@ -148,6 +148,7 @@
       "advanced-electronic-seal",
       "advanced-electronic-signature",
       "asic",
+      "assurance-level",
       "attribute",
       "authentic-source",
       "authentication",
@@ -177,6 +178,7 @@
       "conformity-assessment-body",
       "conformity-assessment-report",
       "conformity-assessment-scheme",
+      "conformity-self-assessment",
       "content-delivery-network",
       "controller",
       "creator-of-a-seal",
@@ -190,6 +192,7 @@
       "data-concerning-health",
       "data-record",
       "digital-service",
+      "digital-service-provider",
       "digital-signature",
       "dns-service-provider"
     ],
@@ -216,6 +219,8 @@
       "entity",
       "entity-providing-domain-name-registration-services",
       "eu-digital-identity-wallet-trust-mark",
+      "european-cybersecurity-certificate",
+      "european-cybersecurity-certification-scheme",
       "european-digital-identity-wallet"
     ],
     "F": [
@@ -252,15 +257,19 @@
     ],
     "N": [
       "national-accreditation-body",
+      "national-cybersecurity-certification-scheme",
       "national-cybersecurity-strategy",
       "national-register-of-wallet-relying-parties",
-      "near-miss"
+      "national-strategy-on-the-security-of-network-and-information-systems",
+      "near-miss",
+      "network-and-information-system"
     ],
     "O": [
       "object-of-certification",
       "offline-mode",
       "online-marketplace",
       "online-search-engine",
+      "operator-of-essential-services",
       "owner-of-a-scheme-for-the-attestation-of-attributes"
     ],
     "P": [
@@ -374,6 +383,17 @@
       "term": "accreditation",
       "sources": [
         {
+          "definition": "accreditation as defined in point (10) of Article 2 of Regulation (EC) No 765/2008",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-15",
+          "articleNumber": "2(15)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
           "documentId": "2025-2162",
           "documentTitle": "CAB Accreditation",
@@ -397,8 +417,25 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-para-6",
+      "primaryLinkTarget": "article-2-para-15",
       "definitionGroups": [
+        {
+          "definition": "accreditation as defined in point (10) of Article 2 of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "accreditation as defined in point (10) of Article 2 of Regulation (EC) No 765/2008",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-15",
+              "articleNumber": "2(15)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
           "sources": [
@@ -414,7 +451,7 @@
               "displayOrder": 2
             }
           ],
-          "isVariant": false
+          "isVariant": true
         },
         {
           "definition": "an attestation by a national accreditation body that a conformity assessment body meets the requirements set by harmonised standards and, where applicable, any additional requirements including those set out in relevant sectoral schemes, to carry out a specific conformity assessment activity",
@@ -721,6 +758,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "assurance-level",
+      "term": "assurance level",
+      "sources": [
+        {
+          "definition": "a basis for confidence that an ICT product, ICT service or ICT process meets the security requirements of a specific European cybersecurity certification scheme, indicates the level at which an ICT product, ICT service or ICT process has been evaluated but as such does not measure the security of the ICT product, ICT service or ICT process concerned",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-21",
+          "articleNumber": "2(21)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-21",
+      "definitionGroups": [
+        {
+          "definition": "a basis for confidence that an ICT product, ICT service or ICT process meets the security requirements of a specific European cybersecurity certification scheme, indicates the level at which an ICT product, ICT service or ICT process has been evaluated but as such does not measure the security of the ICT product, ICT service or ICT process concerned",
+          "sources": [
+            {
+              "definition": "a basis for confidence that an ICT product, ICT service or ICT process meets the security requirements of a specific European cybersecurity certification scheme, indicates the level at which an ICT product, ICT service or ICT process has been evaluated but as such does not measure the security of the ICT product, ICT service or ICT process concerned",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-21",
+              "articleNumber": "2(21)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "attribute",
@@ -1574,7 +1651,7 @@
         {
           "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -1592,7 +1669,7 @@
             {
               "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -1656,6 +1733,17 @@
       "term": "conformity assessment",
       "sources": [
         {
+          "definition": "a conformity assessment as defined in point (12) of Article 2 of Regulation (EC) No 765/2008",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-17",
+          "articleNumber": "2(17)",
+          "displayOrder": 1
+        },
+        {
           "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
           "documentId": "2008-765",
           "documentTitle": "Accreditation Regulation (Consolidated)",
@@ -1667,9 +1755,26 @@
           "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-2-para-12",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-17",
       "definitionGroups": [
+        {
+          "definition": "a conformity assessment as defined in point (12) of Article 2 of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "a conformity assessment as defined in point (12) of Article 2 of Regulation (EC) No 765/2008",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-17",
+              "articleNumber": "2(17)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
           "sources": [
@@ -1685,7 +1790,7 @@
               "displayOrder": 3
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [
@@ -1708,6 +1813,17 @@
           "celex": "02014R0910-20241018",
           "articleId": "article-3-para-18",
           "articleNumber": "3(18)",
+          "displayOrder": 1
+        },
+        {
+          "definition": "a conformity assessment body as defined in point (13) of Article 2 of Regulation (EC) No 765/2008",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-18",
+          "articleNumber": "2(18)",
           "displayOrder": 1
         },
         {
@@ -1741,6 +1857,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a conformity assessment body as defined in point (13) of Article 2 of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "a conformity assessment body as defined in point (13) of Article 2 of Regulation (EC) No 765/2008",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-18",
+              "articleNumber": "2(18)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": true
         },
         {
           "definition": "a body that performs conformity assessment activities including calibration, testing, certification and inspection",
@@ -1856,13 +1989,53 @@
       ]
     },
     {
+      "id": "conformity-self-assessment",
+      "term": "conformity self-assessment",
+      "sources": [
+        {
+          "definition": "an action carried out by a manufacturer or provider of ICT products, ICT services or ICT processes, which evaluates whether those ICT products, ICT services or ICT processes meet the requirements of a specific European cybersecurity certification scheme",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-22",
+          "articleNumber": "2(22)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-22",
+      "definitionGroups": [
+        {
+          "definition": "an action carried out by a manufacturer or provider of ICT products, ICT services or ICT processes, which evaluates whether those ICT products, ICT services or ICT processes meet the requirements of a specific European cybersecurity certification scheme",
+          "sources": [
+            {
+              "definition": "an action carried out by a manufacturer or provider of ICT products, ICT services or ICT processes, which evaluates whether those ICT products, ICT services or ICT processes meet the requirements of a specific European cybersecurity certification scheme",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-22",
+              "articleNumber": "2(22)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "content-delivery-network",
       "term": "content delivery network",
       "sources": [
         {
           "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -1880,7 +2053,7 @@
             {
               "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -2251,9 +2424,20 @@
       "term": "cyber threat",
       "sources": [
         {
+          "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-8",
+          "articleNumber": "2(8)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2262,16 +2446,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-10",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-8",
       "definitionGroups": [
+        {
+          "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
+          "sources": [
+            {
+              "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
           "sources": [
             {
               "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -2280,7 +2481,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -2291,9 +2492,20 @@
       "term": "cybersecurity",
       "sources": [
         {
+          "definition": "the activities necessary to protect network and information systems, the users of such systems, and other persons affected by cyber threats",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-1",
+          "articleNumber": "2(1)",
+          "displayOrder": 1
+        },
+        {
           "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2302,16 +2514,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-3",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-1",
       "definitionGroups": [
+        {
+          "definition": "the activities necessary to protect network and information systems, the users of such systems, and other persons affected by cyber threats",
+          "sources": [
+            {
+              "definition": "the activities necessary to protect network and information systems, the users of such systems, and other persons affected by cyber threats",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
           "sources": [
             {
               "definition": "cybersecurity as defined in Article 2, point (1), of Regulation (EU) 2019/881",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -2320,7 +2549,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -2333,7 +2562,7 @@
         {
           "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2351,7 +2580,7 @@
             {
               "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -2457,7 +2686,7 @@
         {
           "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2475,12 +2704,52 @@
             {
               "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
               "articleId": "article-6-para-23",
               "articleNumber": "6(23)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "digital-service-provider",
+      "term": "digital service provider",
+      "sources": [
+        {
+          "definition": "a digital service provider as defined in point (6) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-5",
+          "articleNumber": "2(5)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-5",
+      "definitionGroups": [
+        {
+          "definition": "a digital service provider as defined in point (6) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "a digital service provider as defined in point (6) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
               "displayOrder": 1
             }
           ],
@@ -2542,7 +2811,7 @@
         {
           "definition": "an entity that provides:",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2560,7 +2829,7 @@
             {
               "definition": "an entity that provides:",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -2717,7 +2986,7 @@
         {
           "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -2735,7 +3004,7 @@
             {
               "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -3551,7 +3820,7 @@
         {
           "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -3569,7 +3838,7 @@
             {
               "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -3591,7 +3860,7 @@
         {
           "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -3609,7 +3878,7 @@
             {
               "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -3669,6 +3938,86 @@
         "wallet_ecosystem",
         "governance"
       ]
+    },
+    {
+      "id": "european-cybersecurity-certificate",
+      "term": "European cybersecurity certificate",
+      "sources": [
+        {
+          "definition": "a document issued by a relevant body, attesting that a given ICT product, ICT service or ICT process has been evaluated for compliance with specific security requirements laid down in a European cybersecurity certification scheme",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-11",
+          "articleNumber": "2(11)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-11",
+      "definitionGroups": [
+        {
+          "definition": "a document issued by a relevant body, attesting that a given ICT product, ICT service or ICT process has been evaluated for compliance with specific security requirements laid down in a European cybersecurity certification scheme",
+          "sources": [
+            {
+              "definition": "a document issued by a relevant body, attesting that a given ICT product, ICT service or ICT process has been evaluated for compliance with specific security requirements laid down in a European cybersecurity certification scheme",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-11",
+              "articleNumber": "2(11)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "european-cybersecurity-certification-scheme",
+      "term": "European cybersecurity certification scheme",
+      "sources": [
+        {
+          "definition": "a comprehensive set of rules, technical requirements, standards and procedures that are established at Union level and that apply to the certification or conformity assessment of specific ICT products, ICT services or ICT processes",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-9",
+          "articleNumber": "2(9)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "a comprehensive set of rules, technical requirements, standards and procedures that are established at Union level and that apply to the certification or conformity assessment of specific ICT products, ICT services or ICT processes",
+          "sources": [
+            {
+              "definition": "a comprehensive set of rules, technical requirements, standards and procedures that are established at Union level and that apply to the certification or conformity assessment of specific ICT products, ICT services or ICT processes",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "european-digital-identity-wallet",
@@ -3930,9 +4279,20 @@
       "term": "ICT process",
       "sources": [
         {
+          "definition": "a set of activities performed to design, develop, deliver or maintain an ICT product or ICT service",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-14",
+          "articleNumber": "2(14)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -3941,16 +4301,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-14",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-14",
       "definitionGroups": [
+        {
+          "definition": "a set of activities performed to design, develop, deliver or maintain an ICT product or ICT service",
+          "sources": [
+            {
+              "definition": "a set of activities performed to design, develop, deliver or maintain an ICT product or ICT service",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-14",
+              "articleNumber": "2(14)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
           "sources": [
             {
               "definition": "an ICT process as defined in Article 2, point (14), of Regulation (EU) 2019/881",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -3959,7 +4336,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -3970,9 +4347,20 @@
       "term": "ICT product",
       "sources": [
         {
+          "definition": "an element or a group of elements of a network or information system",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-12",
+          "articleNumber": "2(12)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -3981,16 +4369,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-12",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-12",
       "definitionGroups": [
+        {
+          "definition": "an element or a group of elements of a network or information system",
+          "sources": [
+            {
+              "definition": "an element or a group of elements of a network or information system",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-12",
+              "articleNumber": "2(12)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
           "sources": [
             {
               "definition": "an ICT product as defined in Article 2, point (12), of Regulation (EU) 2019/881",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -3999,7 +4404,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -4010,9 +4415,20 @@
       "term": "ICT service",
       "sources": [
         {
+          "definition": "a service consisting fully or mainly in the transmission, storing, retrieving or processing of information by means of network and information systems",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-13",
+          "articleNumber": "2(13)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4021,16 +4437,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-13",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-13",
       "definitionGroups": [
+        {
+          "definition": "a service consisting fully or mainly in the transmission, storing, retrieving or processing of information by means of network and information systems",
+          "sources": [
+            {
+              "definition": "a service consisting fully or mainly in the transmission, storing, retrieving or processing of information by means of network and information systems",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-13",
+              "articleNumber": "2(13)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
           "sources": [
             {
               "definition": "an ICT service as defined in Article 2, point (13), of Regulation (EU) 2019/881",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4039,7 +4472,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -4095,9 +4528,20 @@
       "term": "incident",
       "sources": [
         {
+          "definition": "an incident as defined in point (7) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-6",
+          "articleNumber": "2(6)",
+          "displayOrder": 1
+        },
+        {
           "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4118,15 +4562,32 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-6-para-6",
+      "primaryLinkTarget": "article-2-para-6",
       "definitionGroups": [
+        {
+          "definition": "an incident as defined in point (7) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "an incident as defined in point (7) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
           "sources": [
             {
               "definition": "an event compromising the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4135,7 +4596,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         },
         {
           "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
@@ -4170,9 +4631,20 @@
       "term": "incident handling",
       "sources": [
         {
+          "definition": "incident handling as defined in point (8) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-7",
+          "articleNumber": "2(7)",
+          "displayOrder": 1
+        },
+        {
           "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4181,16 +4653,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-8",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-7",
       "definitionGroups": [
+        {
+          "definition": "incident handling as defined in point (8) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "incident handling as defined in point (8) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
           "sources": [
             {
               "definition": "any actions and procedures aiming to prevent, detect, analyse, and contain or to respond to and recover from an incident",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4199,7 +4688,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -4292,7 +4781,7 @@
         {
           "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4310,7 +4799,7 @@
             {
               "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4332,7 +4821,7 @@
         {
           "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4350,7 +4839,7 @@
             {
               "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4462,7 +4951,7 @@
         {
           "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4480,7 +4969,7 @@
             {
               "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4502,7 +4991,7 @@
         {
           "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4520,7 +5009,7 @@
             {
               "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4584,6 +5073,17 @@
       "term": "national accreditation body",
       "sources": [
         {
+          "definition": "a national accreditation body as defined in point (11) of Article 2 of Regulation (EC) No 765/2008",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-16",
+          "articleNumber": "2(16)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008",
           "documentId": "2025-2162",
           "documentTitle": "CAB Accreditation",
@@ -4607,8 +5107,25 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-1-para-8",
+      "primaryLinkTarget": "article-2-para-16",
       "definitionGroups": [
+        {
+          "definition": "a national accreditation body as defined in point (11) of Article 2 of Regulation (EC) No 765/2008",
+          "sources": [
+            {
+              "definition": "a national accreditation body as defined in point (11) of Article 2 of Regulation (EC) No 765/2008",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-16",
+              "articleNumber": "2(16)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a national accreditation body as defined in Article 2, point 11, of Regulation (EC) No 765/2008",
           "sources": [
@@ -4624,7 +5141,7 @@
               "displayOrder": 2
             }
           ],
-          "isVariant": false
+          "isVariant": true
         },
         {
           "definition": "the sole body in a Member State that performs accreditation with authority derived from the State",
@@ -4653,13 +5170,53 @@
       ]
     },
     {
+      "id": "national-cybersecurity-certification-scheme",
+      "term": "national cybersecurity certification scheme",
+      "sources": [
+        {
+          "definition": "a comprehensive set of rules, technical requirements, standards and procedures developed and adopted by a national public authority and that apply to the certification or conformity assessment of ICT products, ICT services and ICT processes falling under the scope of the specific scheme",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-10",
+          "articleNumber": "2(10)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-10",
+      "definitionGroups": [
+        {
+          "definition": "a comprehensive set of rules, technical requirements, standards and procedures developed and adopted by a national public authority and that apply to the certification or conformity assessment of ICT products, ICT services and ICT processes falling under the scope of the specific scheme",
+          "sources": [
+            {
+              "definition": "a comprehensive set of rules, technical requirements, standards and procedures developed and adopted by a national public authority and that apply to the certification or conformity assessment of ICT products, ICT services and ICT processes falling under the scope of the specific scheme",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "national-cybersecurity-strategy",
       "term": "national cybersecurity strategy",
       "sources": [
         {
           "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4677,7 +5234,7 @@
             {
               "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4739,13 +5296,53 @@
       ]
     },
     {
+      "id": "national-strategy-on-the-security-of-network-and-information-systems",
+      "term": "national strategy on the security of network and information systems",
+      "sources": [
+        {
+          "definition": "a national strategy on the security of network and information systems as defined in point (3) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-3",
+          "articleNumber": "2(3)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a national strategy on the security of network and information systems as defined in point (3) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "a national strategy on the security of network and information systems as defined in point (3) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "near-miss",
       "term": "near miss",
       "sources": [
         {
           "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4763,12 +5360,52 @@
             {
               "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
               "articleId": "article-6-para-5",
               "articleNumber": "6(5)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "network-and-information-system",
+      "term": "network and information system",
+      "sources": [
+        {
+          "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-2",
+          "articleNumber": "2(2)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-2",
+      "definitionGroups": [
+        {
+          "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
               "displayOrder": 1
             }
           ],
@@ -4874,7 +5511,7 @@
         {
           "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4892,7 +5529,7 @@
             {
               "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -4914,7 +5551,7 @@
         {
           "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -4932,12 +5569,52 @@
             {
               "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
               "articleId": "article-6-para-29",
               "articleNumber": "6(29)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "operator-of-essential-services",
+      "term": "operator of essential services",
+      "sources": [
+        {
+          "definition": "an operator of essential services as defined in point (4) of Article 4 of Directive (EU) 2016/1148",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-4",
+          "articleNumber": "2(4)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-4",
+      "definitionGroups": [
+        {
+          "definition": "an operator of essential services as defined in point (4) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "an operator of essential services as defined in point (4) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
               "displayOrder": 1
             }
           ],
@@ -5787,7 +6464,7 @@
         {
           "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -5805,7 +6482,7 @@
             {
               "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -5827,7 +6504,7 @@
         {
           "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -5845,7 +6522,7 @@
             {
               "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -6766,7 +7443,7 @@
         {
           "definition": "a qualified trust service as defined in Article 3, point (17), of Regulation (EU) No 910/2014",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -6812,7 +7489,7 @@
             {
               "definition": "a qualified trust service as defined in Article 3, point (17), of Regulation (EU) No 910/2014",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -6866,7 +7543,7 @@
         {
           "definition": "a qualified trust service provider as defined in Article 3, point (20), of Regulation (EU) No 910/2014",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -6912,7 +7589,7 @@
             {
               "definition": "a qualified trust service provider as defined in Article 3, point (20), of Regulation (EU) No 910/2014",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7377,7 +8054,7 @@
         {
           "definition": "a natural or legal person established in the Union explicitly designated to act on behalf of a DNS service provider, a TLD name registry, an entity providing domain name registration services, a cloud computing service provider, a data centre service provider, a content delivery network provider, a managed service provider, a managed security service provider, or a provider of an online marketplace, of an online search engine or of a social networking services platform that is not established in the Union, which may be addressed by a competent authority or a CSIRT in the place of the entity itself with regard to the obligations of that entity under this Directive",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7406,7 +8083,7 @@
             {
               "definition": "a natural or legal person established in the Union explicitly designated to act on behalf of a DNS service provider, a TLD name registry, an entity providing domain name registration services, a cloud computing service provider, a data centre service provider, a content delivery network provider, a managed service provider, a managed security service provider, or a provider of an online marketplace, of an online search engine or of a social networking services platform that is not established in the Union, which may be addressed by a competent authority or a CSIRT in the place of the entity itself with regard to the obligations of that entity under this Directive",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7445,7 +8122,7 @@
         {
           "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7463,7 +8140,7 @@
             {
               "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7525,7 +8202,7 @@
         {
           "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7543,7 +8220,7 @@
             {
               "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7728,7 +8405,7 @@
         {
           "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7746,7 +8423,7 @@
             {
               "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7813,7 +8490,7 @@
         {
           "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7831,7 +8508,7 @@
             {
               "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7942,7 +8619,7 @@
         {
           "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7960,7 +8637,7 @@
             {
               "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -7980,9 +8657,20 @@
       "term": "standard",
       "sources": [
         {
+          "definition": "a standard as defined in point (1) of Article 2 of Regulation (EU) No 1025/2012",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-19",
+          "articleNumber": "2(19)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -7991,16 +8679,33 @@
           "displayOrder": 1
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-6-para-16",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-19",
       "definitionGroups": [
+        {
+          "definition": "a standard as defined in point (1) of Article 2 of Regulation (EU) No 1025/2012",
+          "sources": [
+            {
+              "definition": "a standard as defined in point (1) of Article 2 of Regulation (EU) No 1025/2012",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-19",
+              "articleNumber": "2(19)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
           "sources": [
             {
               "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -8009,7 +8714,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -8146,9 +8851,20 @@
       "term": "technical specification",
       "sources": [
         {
+          "definition": "a document that prescribes the technical requirements to be met by, or conformity assessment procedures relating to, an ICT product, ICT service or ICT process",
+          "documentId": "2019-881",
+          "documentTitle": "Regulation 2019/881",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "02019R0881-20250204",
+          "articleId": "article-2-para-20",
+          "articleNumber": "2(20)",
+          "displayOrder": 1
+        },
+        {
           "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -8169,15 +8885,32 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-6-para-17",
+      "primaryLinkTarget": "article-2-para-20",
       "definitionGroups": [
+        {
+          "definition": "a document that prescribes the technical requirements to be met by, or conformity assessment procedures relating to, an ICT product, ICT service or ICT process",
+          "sources": [
+            {
+              "definition": "a document that prescribes the technical requirements to be met by, or conformity assessment procedures relating to, an ICT product, ICT service or ICT process",
+              "documentId": "2019-881",
+              "documentTitle": "Regulation 2019/881",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-20",
+              "articleNumber": "2(20)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
           "sources": [
             {
               "definition": "a technical specification as defined in Article 2, point (4), of Regulation (EU) No 1025/2012",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -8186,7 +8919,7 @@
               "displayOrder": 1
             }
           ],
-          "isVariant": false
+          "isVariant": true
         },
         {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
@@ -8317,7 +9050,7 @@
         {
           "definition": "a trust service as defined in Article 3, point (16), of Regulation (EU) No 910/2014",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -8352,7 +9085,7 @@
             {
               "definition": "a trust service as defined in Article 3, point (16), of Regulation (EU) No 910/2014",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -8389,7 +9122,7 @@
         {
           "definition": "a trust service provider as defined in Article 3, point (19), of Regulation (EU) No 910/2014",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -8435,7 +9168,7 @@
             {
               "definition": "a trust service provider as defined in Article 3, point (19), of Regulation (EU) No 910/2014",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",
@@ -8747,7 +9480,7 @@
         {
           "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
           "documentId": "2022-2555",
-          "documentTitle": "NIS2 Directive",
+          "documentTitle": "NIS2 Directive (Consolidated)",
           "documentCategory": "primary",
           "documentType": "regulation",
           "celex": "32022L2555",
@@ -8765,7 +9498,7 @@
             {
               "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
               "documentId": "2022-2555",
-              "documentTitle": "NIS2 Directive",
+              "documentTitle": "NIS2 Directive (Consolidated)",
               "documentCategory": "primary",
               "documentType": "regulation",
               "celex": "32022L2555",

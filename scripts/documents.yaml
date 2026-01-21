@@ -71,6 +71,15 @@ documents:
   source: manual  # Formex import + Corrigendum R(04) applied manually — DO NOT REGENERATE
   cellar_id: 9b84d482-85bd-11ed-9887-01aa75ed71a1.0006.02  # Original Formex source
   output_dir: 01_regulation/2022_2555_NIS2
+- celex: 02019R0881-20250204
+  title: Cybersecurity Act (ENISA and ICT Certification)
+  shortTitle: Cybersecurity Act (Consolidated)
+  sidebarTitle: Cybersecurity Act
+  legalType: regulation
+  category: referenced
+  source: manual  # Formex import from base CELEX + M1 (2025/37) noted — DO NOT REGENERATE
+  cellar_id: 35e93bb4-8905-11e9-9369-01aa75ed71a1.0006.02  # Original Formex source
+  output_dir: 01_regulation/2019_881_Cybersecurity
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)
 - id: ec-esignature-faq
