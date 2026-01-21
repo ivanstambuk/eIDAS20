@@ -204,14 +204,14 @@ For organizations providing intermediary services to other RPs:
 
 | ID | Category | Requirement | Legal Source |
 |----|----------|-------------|--------------|
-| RP-PRV-012 | privacy | Do not store transaction content data (No-Storage Mandate) | 910/2014 Art. 5b(10) |
+| RP-GOV-001 | governance | Do not store transaction content data (No-Storage Mandate) | 910/2014 Art. 5b(10) |
 | RP-REG-016 | registration | Register as RP with appropriate entitlement for intermediary services | 2025/848 Annex I(12) |
-| RP-TEC-015 | technical | Obtain and manage Wallet-Relying Party Access Certificates | 2025/848 Art. 7 + Annex IV |
-| RP-TEC-016 | technical | Orchestrate Registration Certificates for downstream RPs | 2025/848 Art. 8 + Annex V |
-| RP-TEC-017 | technical | Present both intermediary and end-RP identity to wallet users | 2025/848 Annex V(3)(j) |
+| RP-TEC-019 | technical | Obtain and manage Wallet-Relying Party Access Certificates | 2025/848 Art. 7 + Annex IV |
+| RP-TEC-020 | technical | Orchestrate Registration Certificates for downstream RPs | 2025/848 Art. 8 + Annex V |
+| RP-TRN-001 | transparency | Present both intermediary and end-RP identity to wallet users | 2025/848 Annex V(3)(j) |
 | RP-SEC-005 | security | Implement stateless transaction processing architecture | Best Practice (Art. 5b(10)) |
 | RP-GOV-010 | governance | Maintain audit trail demonstrating data non-storage | Best Practice |
-| RP-TRN-001 | transparency | Provide transparent identity chain to end-users | ARF v1.5 |
+| RP-TEC-021 | technical | Support multi-wallet interoperability (informative) | 2024/2982 Art. 5 |
 
 ---
 
