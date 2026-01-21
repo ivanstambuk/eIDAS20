@@ -64,7 +64,7 @@ documents:
   output_dir: 01_regulation/2016_679_GDPR
 - celex: 32022L2555
   title: Directive on measures for a high common level of cybersecurity across the Union (NIS2)
-  shortTitle: NIS2 Directive
+  shortTitle: NIS2 Directive (Consolidated)
   sidebarTitle: NIS2 Directive
   legalType: directive
   category: referenced
