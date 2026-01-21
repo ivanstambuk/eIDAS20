@@ -259,6 +259,26 @@ function loadDocumentsConfig() {
 }
 
 /**
+ * Get title for a document from documents.yaml.
+ * 
+ * Matches by output_dir (folder name) since CELEX format varies.
+ * Returns null if not found or no title defined.
+ * 
+ * @param {string} dirName - Directory name (e.g., "2015_1501_eIDAS_Interoperability")
+ * @returns {string|null} - The title from documents.yaml or null
+ */
+function getTitleFromConfig(dirName) {
+    const config = loadDocumentsConfig();
+    if (!config?.documents) return null;
+
+    const doc = config.documents.find(d =>
+        d.output_dir && d.output_dir.endsWith(dirName)
+    );
+
+    return doc?.title || null;
+}
+
+/**
  * Get shortTitle for a document from documents.yaml.
  * 
  * Matches by output_dir (folder name) since CELEX format varies.
@@ -962,9 +982,9 @@ function processMarkdownFile(filePath, dirName, type) {
     // Parse metadata and title from raw content (before stripping)
     const metadata = parseMetadata(rawContent);
 
-    // For supplementary content with YAML front matter, use metadata.title
-    // For regulations, extract title from H1 heading
-    const title = metadata.title || parseTitle(rawContent);
+    // Title priority: documents.yaml > YAML front matter > H1 heading
+    // documents.yaml is authoritative for full legal titles
+    const title = getTitleFromConfig(dirName) || metadata.title || parseTitle(rawContent);
 
     // Strip front matter for all content-related processing
     let content = stripFrontMatter(rawContent);
