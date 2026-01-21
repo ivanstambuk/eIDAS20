@@ -65,9 +65,9 @@
         "2012-1025": {
             "label": "Standardisation Regulation",
             "ragEnabled": true,
-            "terminologySource": false,
+            "terminologySource": true,
             "category": "referenced",
-            "comment": "European Standardisation framework. Only 2 citations in eIDAS. Definitions are for standardisation bodies, not eIDAS ecosystem."
+            "comment": "European Standardisation framework. Article 2 contains 10 definitions for standards and standardisation bodies."
         }
     },
     "defaults": {

@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T17:36:32.253Z",
+  "generated": "2026-01-21T17:46:24.928Z",
   "statistics": {
-    "totalTerms": 198,
-    "totalDefinitions": 325,
+    "totalTerms": 208,
+    "totalDefinitions": 339,
     "sources": {
-      "regulations": 164,
+      "regulations": 178,
       "implementingActs": 128,
       "supplementary": 33
     },
@@ -195,7 +195,8 @@
       "digital-service",
       "digital-service-provider",
       "digital-signature",
-      "dns-service-provider"
+      "dns-service-provider",
+      "draft-standard"
     ],
     "E": [
       "electronic-archiving",
@@ -223,7 +224,10 @@
       "eu-digital-identity-wallet-trust-mark",
       "european-cybersecurity-certificate",
       "european-cybersecurity-certification-scheme",
-      "european-digital-identity-wallet"
+      "european-digital-identity-wallet",
+      "european-standard",
+      "european-standardisation-deliverable",
+      "european-standardisation-organisation"
     ],
     "F": [
       "filing-system",
@@ -240,11 +244,14 @@
       "ict-process",
       "ict-product",
       "ict-service",
+      "ict-technical-specification",
       "identity-matching",
       "incident",
       "incident-handling",
       "information-society-service",
       "international-organisation",
+      "international-standard",
+      "international-standardisation-body",
       "internet-exchange-point"
     ],
     "L": [
@@ -263,6 +270,8 @@
       "national-cybersecurity-certification-scheme",
       "national-cybersecurity-strategy",
       "national-register-of-wallet-relying-parties",
+      "national-standard",
+      "national-standardisation-body",
       "national-strategy-on-the-security-of-network-and-information-systems",
       "near-miss",
       "network-and-information-system",
@@ -336,6 +345,7 @@
       "scheme-for-the-attestation-of-attributes",
       "scheme-owner",
       "security-of-network-and-information-systems",
+      "service",
       "signatory",
       "significant-cyber-threat",
       "simple-electronic-seal",
@@ -2892,6 +2902,46 @@
       "domains": []
     },
     {
+      "id": "draft-standard",
+      "term": "draft standard",
+      "sources": [
+        {
+          "definition": "a document containing the text of the technical specifications concerning a given subject, which is being considered for adoption in accordance with the relevant standards procedure, as that document stands after the preparatory work and as circulated for public comment or scrutiny",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-3",
+          "articleNumber": "2(3)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-3",
+      "definitionGroups": [
+        {
+          "definition": "a document containing the text of the technical specifications concerning a given subject, which is being considered for adoption in accordance with the relevant standards procedure, as that document stands after the preparatory work and as circulated for public comment or scrutiny",
+          "sources": [
+            {
+              "definition": "a document containing the text of the technical specifications concerning a given subject, which is being considered for adoption in accordance with the relevant standards procedure, as that document stands after the preparatory work and as circulated for public comment or scrutiny",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-3",
+              "articleNumber": "2(3)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "electronic-archiving",
       "term": "electronic archiving",
       "sources": [
@@ -4153,6 +4203,126 @@
       ]
     },
     {
+      "id": "european-standard",
+      "term": "European standard",
+      "sources": [
+        {
+          "definition": "a standard adopted by a European standardisation organisation",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-b",
+          "articleNumber": "2(b)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-b",
+      "definitionGroups": [
+        {
+          "definition": "a standard adopted by a European standardisation organisation",
+          "sources": [
+            {
+              "definition": "a standard adopted by a European standardisation organisation",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-b",
+              "articleNumber": "2(b)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "european-standardisation-deliverable",
+      "term": "European standardisation deliverable",
+      "sources": [
+        {
+          "definition": "any other technical specification than a European standard, adopted by a European standardisation organisation for repeated or continuous application and with which compliance is not compulsory",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-2",
+          "articleNumber": "2(2)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-2",
+      "definitionGroups": [
+        {
+          "definition": "any other technical specification than a European standard, adopted by a European standardisation organisation for repeated or continuous application and with which compliance is not compulsory",
+          "sources": [
+            {
+              "definition": "any other technical specification than a European standard, adopted by a European standardisation organisation for repeated or continuous application and with which compliance is not compulsory",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "european-standardisation-organisation",
+      "term": "European standardisation organisation",
+      "sources": [
+        {
+          "definition": "an organisation listed in Annex I",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-8",
+          "articleNumber": "2(8)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-8",
+      "definitionGroups": [
+        {
+          "definition": "an organisation listed in Annex I",
+          "sources": [
+            {
+              "definition": "an organisation listed in Annex I",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "filing-system",
       "term": "filing system",
       "sources": [
@@ -4330,9 +4500,20 @@
           "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a European standard adopted on the basis of a request made by the Commission for the application of Union harmonisation legislation",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-c",
+          "articleNumber": "2(c)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-2-para-9",
       "definitionGroups": [
         {
@@ -4351,6 +4532,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a European standard adopted on the basis of a request made by the Commission for the application of Union harmonisation legislation",
+          "sources": [
+            {
+              "definition": "a European standard adopted on the basis of a request made by the Commission for the application of Union harmonisation legislation",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-c",
+              "articleNumber": "2(c)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -4560,6 +4758,46 @@
             }
           ],
           "isVariant": true
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "ict-technical-specification",
+      "term": "ICT technical specification",
+      "sources": [
+        {
+          "definition": "a technical specification in the field of information and communication technologies",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-5",
+          "articleNumber": "2(5)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-5",
+      "definitionGroups": [
+        {
+          "definition": "a technical specification in the field of information and communication technologies",
+          "sources": [
+            {
+              "definition": "a technical specification in the field of information and communication technologies",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-5",
+              "articleNumber": "2(5)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
         }
       ],
       "roles": [],
@@ -4852,6 +5090,86 @@
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-26",
               "articleNumber": "4(26)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "international-standard",
+      "term": "international standard",
+      "sources": [
+        {
+          "definition": "a standard adopted by an international standardisation body",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-a",
+          "articleNumber": "2(a)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-a",
+      "definitionGroups": [
+        {
+          "definition": "a standard adopted by an international standardisation body",
+          "sources": [
+            {
+              "definition": "a standard adopted by an international standardisation body",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-a",
+              "articleNumber": "2(a)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "international-standardisation-body",
+      "term": "international standardisation body",
+      "sources": [
+        {
+          "definition": "the International Organisation for Standardisation (ISO), the International Electrotechnical Commission (IEC) and the International Telecommunication Union (ITU)",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-9",
+          "articleNumber": "2(9)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-9",
+      "definitionGroups": [
+        {
+          "definition": "the International Organisation for Standardisation (ISO), the International Electrotechnical Commission (IEC) and the International Telecommunication Union (ITU)",
+          "sources": [
+            {
+              "definition": "the International Organisation for Standardisation (ISO), the International Electrotechnical Commission (IEC) and the International Telecommunication Union (ITU)",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-9",
+              "articleNumber": "2(9)",
               "displayOrder": 3
             }
           ],
@@ -5421,6 +5739,86 @@
         "wallet_ecosystem",
         "governance"
       ]
+    },
+    {
+      "id": "national-standard",
+      "term": "national standard",
+      "sources": [
+        {
+          "definition": "a standard adopted by a national standardisation body",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-d",
+          "articleNumber": "2(d)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-d",
+      "definitionGroups": [
+        {
+          "definition": "a standard adopted by a national standardisation body",
+          "sources": [
+            {
+              "definition": "a standard adopted by a national standardisation body",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-d",
+              "articleNumber": "2(d)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "national-standardisation-body",
+      "term": "national standardisation body",
+      "sources": [
+        {
+          "definition": "a body notified to the Commission by a Member State in accordance with Article 27 of this Regulation",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-10",
+          "articleNumber": "2(10)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-10",
+      "definitionGroups": [
+        {
+          "definition": "a body notified to the Commission by a Member State in accordance with Article 27 of this Regulation",
+          "sources": [
+            {
+              "definition": "a body notified to the Commission by a Member State in accordance with Article 27 of this Regulation",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-10",
+              "articleNumber": "2(10)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "national-strategy-on-the-security-of-network-and-information-systems",
@@ -6242,9 +6640,20 @@
           "articleId": "article-3-para-21",
           "articleNumber": "3(21)",
           "displayOrder": 1
+        },
+        {
+          "definition": "any industrially manufactured product and any agricultural product, including fish products",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-6",
+          "articleNumber": "2(6)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-21",
       "definitionGroups": [
         {
@@ -6263,6 +6672,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "any industrially manufactured product and any agricultural product, including fish products",
+          "sources": [
+            {
+              "definition": "any industrially manufactured product and any agricultural product, including fish products",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-6",
+              "articleNumber": "2(6)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -8674,6 +9100,46 @@
       "domains": []
     },
     {
+      "id": "service",
+      "term": "service",
+      "sources": [
+        {
+          "definition": "any self-employed economic activity normally provided for remuneration, as defined in Article 57 TFEU",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-7",
+          "articleNumber": "2(7)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-7",
+      "definitionGroups": [
+        {
+          "definition": "any self-employed economic activity normally provided for remuneration, as defined in Article 57 TFEU",
+          "sources": [
+            {
+              "definition": "any self-employed economic activity normally provided for remuneration, as defined in Article 57 TFEU",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-7",
+              "articleNumber": "2(7)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "signatory",
       "term": "signatory",
       "sources": [
@@ -8892,6 +9358,17 @@
       "term": "standard",
       "sources": [
         {
+          "definition": "a technical specification, adopted by a recognised standardisation body, for repeated or continuous application, with which compliance is not compulsory, and which is one of the following: (a) ‘international standard’ means a standard adopted by an international standardisation body",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-1",
+          "articleNumber": "2(1)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a standard as defined in point (1) of Article 2 of Regulation (EU) No 1025/2012",
           "documentId": "2019-881",
           "documentTitle": "Cybersecurity Act (Consolidated)",
@@ -8915,8 +9392,25 @@
         }
       ],
       "hasMultipleSources": true,
-      "primaryLinkTarget": "article-2-para-19",
+      "primaryLinkTarget": "article-2-para-1",
       "definitionGroups": [
+        {
+          "definition": "a technical specification, adopted by a recognised standardisation body, for repeated or continuous application, with which compliance is not compulsory, and which is one of the following: (a) ‘international standard’ means a standard adopted by an international standardisation body",
+          "sources": [
+            {
+              "definition": "a technical specification, adopted by a recognised standardisation body, for repeated or continuous application, with which compliance is not compulsory, and which is one of the following: (a) ‘international standard’ means a standard adopted by an international standardisation body",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a standard as defined in point (1) of Article 2 of Regulation (EU) No 1025/2012",
           "sources": [
@@ -8932,7 +9426,7 @@
               "displayOrder": 3
             }
           ],
-          "isVariant": false
+          "isVariant": true
         },
         {
           "definition": "a standard as defined in Article 2, point (1), of Regulation (EU) No 1025/2012 of the European Parliament and of the Council \\[Regulation (EU) No 1025/2012 of the European Parliament and of the Council of 25 October 2012 on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council (OJ L 316, 14",
@@ -9097,6 +9591,17 @@
           "displayOrder": 3
         },
         {
+          "definition": "a document that prescribes technical requirements to be fulfilled by a product, process, service or system and which lays down one or more of the following: (a) the characteristics required of a product including levels of quality, performance, interoperability, environmental protection, health, safety or dimensions, and including the requirements applicable to the product as regards the name under which the product is sold, terminology, symbols, testing and test methods, packaging, marking or labelling and conformity assessment procedures",
+          "documentId": "2012-1025",
+          "documentTitle": "Standardisation Regulation (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02012R1025-20241213",
+          "articleId": "article-2-para-4",
+          "articleNumber": "2(4)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a document that prescribes the technical requirements to be met by, or conformity assessment procedures relating to, an ICT product, ICT service or ICT process",
           "documentId": "2019-881",
           "documentTitle": "Cybersecurity Act (Consolidated)",
@@ -9138,6 +9643,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "a document that prescribes technical requirements to be fulfilled by a product, process, service or system and which lays down one or more of the following: (a) the characteristics required of a product including levels of quality, performance, interoperability, environmental protection, health, safety or dimensions, and including the requirements applicable to the product as regards the name under which the product is sold, terminology, symbols, testing and test methods, packaging, marking or labelling and conformity assessment procedures",
+          "sources": [
+            {
+              "definition": "a document that prescribes technical requirements to be fulfilled by a product, process, service or system and which lays down one or more of the following: (a) the characteristics required of a product including levels of quality, performance, interoperability, environmental protection, health, safety or dimensions, and including the requirements applicable to the product as regards the name under which the product is sold, terminology, symbols, testing and test methods, packaging, marking or labelling and conformity assessment procedures",
+              "documentId": "2012-1025",
+              "documentTitle": "Standardisation Regulation (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02012R1025-20241213",
+              "articleId": "article-2-para-4",
+              "articleNumber": "2(4)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
         },
         {
           "definition": "a document that prescribes the technical requirements to be met by, or conformity assessment procedures relating to, an ICT product, ICT service or ICT process",
