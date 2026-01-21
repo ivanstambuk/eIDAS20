@@ -10,7 +10,7 @@
 |-------|---------|
 | **Last Updated** | 2026-01-21 15:15 CET |
 | **Session State** | V3.7.44 — ePrivacy Directive Import Complete |
-| **Portal Status** | ✅ Fully functional (315,615 words, **191 terms**, **470 RCA requirements**, **12 atomic categories**) |
+| **Portal Status** | ✅ Fully functional (320,481 words, **191 terms**, **470 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Ready for next task (see Import Queue in backlog) |
 
 ---
