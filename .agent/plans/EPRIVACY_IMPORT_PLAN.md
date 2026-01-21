@@ -2,11 +2,16 @@
 
 ## Executive Summary
 
-**Status: ⚠️ REQUIRES CONVERTER UPDATE + CONSOLIDATED VERSION**
+**Status: ✅ IMPORTED & FORMATTED**
 
-The ePrivacy Directive is an older document (2002) that has been amended multiple times. The consolidated version should be imported, and the converter needs to support Directives.
+The ePrivacy Directive has been successfully imported via HTML fallback and manually formatted to match EUR-Lex styling. Key formatting fixes applied:
+- Alphanumeric paragraphs (1a, 1b) converted to `- (1a)` format for deep linking
+- Article 4(1a) restructured with nested em-dash bullets
+- All articles have proper numbered paragraph spacing
+- Recitals formatted as `- (N)` for gutter icons
 
 ---
+
 
 ## Document Analysis
 

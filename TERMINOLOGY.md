@@ -33,6 +33,9 @@ Common terms used across the documentation portal project to ensure consistent v
 | **Annex** | Supplementary material at the end of a regulation, often containing technical specifications. **Annexes use "point" (not "paragraph")** for subdivisions. Format: `Annex I, point 3`, `Annex I, point 3(a)`. Note: Unlike articles where paragraphs use parentheses (e.g., `Article 5(1)`), annexes explicitly spell out "point" before the number. |
 | **Chapter** | A grouping of related articles (e.g., `Chapter III — Electronic Identification`). |
 | **Section** | A subdivision within a chapter. |
+| **Alphanumeric Paragraph** | A paragraph numbered with a letter suffix (1a, 1b, 2a). Common in EU legislation that has been amended to insert content between existing paragraphs. In markdown, must use `- (1a)` format for deep linking. |
+| **Em-dash Bullet** | The `—` character (U+2014) used in EU legal documents for unnumbered sub-items within paragraphs. Not to be confused with hyphen `-` (U+002D). Appears as nested bullets under paragraphs. |
+
 
 ### Document Identifiers
 

@@ -671,3 +671,45 @@ cd ~/dev/eIDAS20/docs-portal && npm run build:terminology
 | `referenced` | Foundational regs (GDPR, NIS2, Cybersecurity Act, 765/2008) |
 | `implementing-act` | Commission implementing regulations |
 
+---
+
+## 49. Alphanumeric Paragraph Format (1a, 1b → Deep Linking)
+
+**Sub-paragraphs with letter suffixes (1a, 1b, 2a) require specific markdown formatting for gutter icons to appear.**
+
+**Background:** EU legislation amendments often insert paragraphs between existing ones using letter suffixes (e.g., "paragraph 1a" inserted between 1 and 2). These appear in EUR-Lex as `1a.` but this format is NOT recognized by markdown parsers or the `rehype-paragraph-ids.js` plugin.
+
+**Problem:**
+```markdown
+1a. Text here...  ← Renders as plain paragraph <p>, NO gutter icons
+```
+
+**Solution:**
+```markdown
+- (1a) Text here...  ← Renders as list item <li> with ID, gets gutter icons
+```
+
+**Why this works:**
+- The `-` creates a list item (`<li>`)
+- The `(1a)` format matches the plugin's regex: `\((\d+\w?)\)`
+- The plugin assigns ID `article-X-para-1a` with class `linkable-paragraph`
+
+**EUR-Lex nested structures (em-dash bullets):**
+```markdown
+- (1a) The measures shall at least:
+   - — ensure that personal data...
+   - — protect personal data stored...
+   - — ensure the implementation of...
+
+   Concluding paragraph text here.
+```
+
+**Affected patterns:**
+| Source Format | Markdown Format |
+|---------------|-----------------|
+| `1a.` | `- (1a)` |
+| `1b.` | `- (1b)` |
+| `2a.` | `- (2a)` |
+
+**When to apply:** During manual review of imported regulations that use alphanumeric paragraph numbering (common in amended older directives like ePrivacy 2002/58).
+
