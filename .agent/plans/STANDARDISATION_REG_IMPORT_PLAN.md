@@ -2,9 +2,11 @@
 
 ## Executive Summary
 
-**Status: ✅ FEASIBLE — Ready to implement**
+**Status: ✅ DONE** (Completed 2026-01-21)
 
-The EU Standardisation Regulation can be imported immediately using the existing HTML converter. Test conversion was successful.
+**Final Stats:** 13,516 words, 30 articles, 7 chapters, 4 annexes
+
+The EU Standardisation Regulation was imported via HTML converter. Fixed `is_consolidated_format()` detection to properly handle hybrid OJ/ELI format documents.
 
 ---
 
