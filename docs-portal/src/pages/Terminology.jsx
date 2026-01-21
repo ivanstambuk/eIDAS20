@@ -343,18 +343,12 @@ const Terminology = () => {
                 <p className="text-lg text-muted">
                     Legal definitions from eIDAS 2.0 Regulation and Implementing Acts
                 </p>
-                <div className="flex gap-4 mt-4" style={{ flexWrap: 'wrap' }}>
-                    <span className="badge badge-secondary">
-                        {terminology.statistics.totalTerms} terms
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '2rem', marginTop: 'var(--space-4)' }}>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
+                        📚 {terminology.statistics.totalTerms} terms · 📖 {terminology.statistics.totalDefinitions} definitions
                     </span>
-                    <span className="badge badge-secondary">
-                        {terminology.statistics.totalDefinitions} definitions
-                    </span>
-                    <span className="badge badge-primary">
-                        {terminology.statistics.sources.regulations} from Regulations
-                    </span>
-                    <span className="badge">
-                        {terminology.statistics.sources.implementingActs} from Implementing Acts
+                    <span style={{ color: 'var(--text-secondary)' }}>
+                        (📜 {terminology.statistics.sources.regulations} from regulations · 📋 {terminology.statistics.sources.implementingActs} from implementing acts)
                     </span>
                 </div>
             </header>

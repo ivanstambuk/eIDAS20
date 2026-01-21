@@ -32,30 +32,41 @@
 }
 
 /* ============================================================================
-   Stats Chips - Grouped badge layout (matching Terminology page)
+   Stats Row - Inline parenthetical notation
    ============================================================================ */
 
-.rca-stats-chips {
+.rca-stats-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 1.5rem;
+    align-items: baseline;
+    gap: 2rem;
     margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
 }
 
-.rca-stats-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.rca-stat-primary {
+    display: inline-flex;
+    align-items: baseline;
     gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
-/* Responsive: stack groups on mobile */
+.rca-stat-breakdown {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.rca-stat-scope {
+    color: var(--text-secondary);
+}
+
+/* Responsive: stack on mobile */
 @media (max-width: 768px) {
-    .rca-stats-chips {
+    .rca-stats-row {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
+        gap: 0.5rem;
     }
 }
 

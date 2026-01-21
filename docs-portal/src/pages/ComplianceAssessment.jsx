@@ -903,30 +903,20 @@ export default function ComplianceAssessment() {
                 </p>
             </header>
 
-            {/* Stats Chips - Grouped by semantic category */}
-            <div className="rca-stats-chips">
-                {/* Requirements group */}
-                <div className="rca-stats-group">
-                    <span className="badge badge-secondary">
-                        {data.stats.totalRequirements} REQUIREMENTS
+            {/* Stats - Inline parenthetical notation with icons */}
+            <div className="rca-stats-row">
+                <span className="rca-stat-primary">
+                    📋 {data.stats.totalRequirements} requirements
+                    <span className="rca-stat-breakdown">
+                        (✅ {data.stats.universalRequirements} universal · 🔀 {data.stats.useCaseSpecificRequirements} use-case specific)
                     </span>
-                    <span className="badge badge-primary">
-                        {data.stats.universalRequirements} universal
-                    </span>
-                    <span className="badge">
-                        {data.stats.useCaseSpecificRequirements} use-case specific
-                    </span>
-                </div>
-
-                {/* Scope group */}
-                <div className="rca-stats-group">
-                    <span className="badge badge-secondary">
-                        {data.stats.totalRoles} ROLES
-                    </span>
-                    <span className="badge badge-secondary">
-                        {data.stats.totalUseCases} USE CASES
-                    </span>
-                </div>
+                </span>
+                <span className="rca-stat-scope">
+                    👤 {data.stats.totalRoles} roles
+                </span>
+                <span className="rca-stat-scope">
+                    🎯 {data.stats.totalUseCases} use cases
+                </span>
             </div>
 
             <div className="rca-content">
