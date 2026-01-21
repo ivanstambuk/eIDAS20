@@ -29,10 +29,11 @@ The GDPR can be successfully imported using the existing `eurlex_html_to_md.py` 
 | **Annexes** | 0 (GDPR has no annexes) |
 
 ### Note on Consolidated Version
-- **Corrigendum R(02)** published 23.5.2018 contains minor text corrections
-- Current import uses original CELEX (32016R0679)
-- Consolidated version (02016R0679-20160504) should be used for full accuracy
-- **TODO**: Update HTML converter to support consolidated CELEX format |
+- **Corrigendum R(02)** published 23.5.2018 — **APPLIED** ✅
+- Corrections applied:
+  - Article 37(1)(c): "and personal data" → "or personal data"
+  - Article 41(3): "criteria" → "requirements"
+- EUR-Lex link updated to consolidated version
 
 ### Chapters
 1. I — General provisions (Art 1-4)

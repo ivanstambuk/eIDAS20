@@ -60,7 +60,7 @@ documents:
   sidebarTitle: GDPR
   legalType: regulation
   category: referenced
-  source: html  # Note: GDPR hasn't been amended, original = consolidated
+  source: manual  # HTML import + Corrigendum R(02) applied manually — DO NOT REGENERATE
   output_dir: 01_regulation/2016_679_GDPR
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)

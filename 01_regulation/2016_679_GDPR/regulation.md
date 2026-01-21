@@ -1,9 +1,9 @@
-> **CELEX:** 32016R0679 | **Document:** Regulation (EC) No 679/2016
+> **CELEX:** 02016R0679-20160504 | **Document:** Regulation (EU) 2016/679 (Consolidated)
 > 
-> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679)
+> **Source:** [EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02016R0679-20160504)
 > **Official Journal:** OJ L 119/1
 > **ELI:** http://data.europa.eu/eli/reg/2016/679/oj
-> **In force:** Current consolidated version: 21/01/2026
+> **In force:** Consolidated version includes Corrigendum R(02) of 23.5.2018
 > **EEA Relevance:** Yes
 
 # REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL
@@ -1107,7 +1107,7 @@ The controller and the processor and, where applicable, their representatives, s
 
 - (a) the processing is carried out by a public authority or body, except for courts acting in their judicial capacity;
 - (b) the core activities of the controller or the processor consist of processing operations which, by virtue of their nature, their scope and/or their purposes, require regular and systematic monitoring of data subjects on a large scale; or
-- (c) the core activities of the controller or the processor consist of processing on a large scale of special categories of data pursuant to Article 9 and personal data relating to criminal convictions and offences referred to in Article 10.
+- (c) the core activities of the controller or the processor consist of processing on a large scale of special categories of data pursuant to Article 9 or personal data relating to criminal convictions and offences referred to in Article 10.
 2. A group of undertakings may appoint a single data protection officer provided that a data protection officer is easily accessible from each establishment.
 
 3. Where the controller or the processor is a public authority or body, a single data protection officer may be designated for several such authorities or bodies, taking account of their organisational structure and size.
@@ -1200,7 +1200,7 @@ The controller and the processor and, where applicable, their representatives, s
 - (b) established procedures which allow it to assess the eligibility of controllers and processors concerned to apply the code, to monitor their compliance with its provisions and to periodically review its operation;
 - (c) established procedures and structures to handle complaints about infringements of the code or the manner in which the code has been, or is being, implemented by a controller or processor, and to make those procedures and structures transparent to data subjects and the public; and
 - (d) demonstrated to the satisfaction of the competent supervisory authority that its tasks and duties do not result in a conflict of interests.
-3. The competent supervisory authority shall submit the draft criteria for accreditation of a body as referred to in paragraph 1 of this Article to the Board pursuant to the consistency mechanism referred to in Article 63.
+3. The competent supervisory authority shall submit the draft requirements for accreditation of a body as referred to in paragraph 1 of this Article to the Board pursuant to the consistency mechanism referred to in Article 63.
 
 4. Without prejudice to the tasks and powers of the competent supervisory authority and the provisions of Chapter VIII, a body as referred to in paragraph 1 of this Article shall, subject to appropriate safeguards, take appropriate action in cases of infringement of the code by a controller or processor, including suspension or exclusion of the controller or processor concerned from the code. It shall inform the competent supervisory authority of such actions and the reasons for taking them.
 
