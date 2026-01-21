@@ -6,11 +6,7 @@
 > **Consolidated:** This is a consolidated text incorporating all amendments
 > **Note:** Enacting terms from consolidated version (02002L0058-20091219). Preamble merged from base version (32002L0058).
 
-# DIRECTIVE 2002/58/EC OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL
-
-*of 12 July 2002*
-
-*concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)*
+# Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications)
 
 ## Preamble
 
