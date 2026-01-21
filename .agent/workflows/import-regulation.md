@@ -107,6 +107,28 @@ npm run build:all-content
 - Check terminology definitions extracted
 - Verify ToC structure
 
+### Step 4.5: Update document-config.json (for terminology sources)
+**⚠️ REQUIRED if the document contains Article 2/3 definitions!**
+
+Add entry to `docs-portal/scripts/document-config.json`:
+```json
+"<slug>": {
+    "label": "<ShortName>",
+    "ragEnabled": true,
+    "terminologySource": true,
+    "category": "referenced",  // primary | referenced | implementing-act
+    "comment": "<Description of document purpose>"
+}
+```
+
+**Why this matters:** Without explicit `category`, terminology build falls back to `'primary'` and technical titles like "Regulation 2019/881" appear in popovers instead of human-friendly names.
+
+Then rebuild terminology:
+```bash
+cd ~/dev/eIDAS20/docs-portal
+npm run build:terminology
+```
+
 ---
 
 ## Phase 5: Documentation
@@ -138,5 +160,7 @@ If amendments not applied:
 - [ ] Set source to `manual`
 - [ ] Updated markdown metadata with note
 - [ ] Built and verified in browser
+- [ ] **Updated document-config.json** (if terminology source)
+- [ ] Rebuilt terminology (`npm run build:terminology`)
 - [ ] Updated TRACKER.md
 - [ ] Documented any amendment gaps

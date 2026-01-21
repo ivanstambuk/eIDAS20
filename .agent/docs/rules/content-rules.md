@@ -623,3 +623,51 @@ legalBasis:
 
 **Pro tip:** When auditing consolidated documents, check EUR-Lex "Different document view" to see the original 2024/1183 text before consolidation.
 
+---
+
+## 48. document-config.json Required for Terminology Sources (GOTCHA)
+
+**⚠️ When importing a new regulation that contains definition articles (Article 2/3 with `'term' means` patterns), you MUST add an entry to `document-config.json`.**
+
+**Problem:**
+```javascript
+// In build-terminology.js line 493
+const category = config.category || (type === 'implementing-act' ? 'implementing-act' : 'primary');
+// Without explicit config, regulations default to 'primary' → WRONG for referenced docs!
+```
+
+**Consequence of missing config:**
+- Category defaults to `'primary'` instead of `'referenced'`
+- Terminology popover shows technical name: `"Regulation 2019/881"`
+- Should show human-friendly name: `"Cybersecurity Act (Consolidated)"`
+
+**Solution — add to `docs-portal/scripts/document-config.json`:**
+```json
+"2019-881": {
+    "label": "Cybersecurity Act",
+    "ragEnabled": true,
+    "terminologySource": true,
+    "category": "referenced",
+    "comment": "ENISA and ICT cybersecurity certification. Article 2 contains 22 definitions."
+}
+```
+
+**Then rebuild:**
+```bash
+cd ~/dev/eIDAS20/docs-portal && npm run build:terminology
+```
+
+**Files involved:**
+| File | Purpose |
+|------|---------|
+| `documents.yaml` | EUR-Lex metadata, shortTitle (for display) |
+| `document-config.json` | Build-time config: category, RAG flags, terminology source |
+| `regulations-index.json` | Generated from `documents.yaml`, provides shortTitle to terminology build |
+
+**Category values:**
+| Category | When to use |
+|----------|-------------|
+| `primary` | eIDAS core regulations (910/2014, 2024/1183) |
+| `referenced` | Foundational regs (GDPR, NIS2, Cybersecurity Act, 765/2008) |
+| `implementing-act` | Commission implementing regulations |
+

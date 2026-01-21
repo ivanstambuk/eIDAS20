@@ -490,6 +490,11 @@ function processFile(filePath, dirName, type, docConfig) {
     }
 
     // Get category for display ordering (DEC-039)
+    // ⚠️ IMPORTANT: If document is not in document-config.json, this falls back to 'primary'
+    // which is WRONG for referenced regulations (2019-881, 2022-2555, etc.)
+    // Without explicit category, mergeTerms() will use shortRef ("Regulation 2019/881")
+    // instead of the human-friendly shortTitle ("Cybersecurity Act (Consolidated)")
+    // See: /import-regulation workflow Step 4.5 for the required config update
     const category = config.category || (type === 'implementing-act' ? 'implementing-act' : 'primary');
 
     const definitionArticle = findDefinitionArticle(content);
