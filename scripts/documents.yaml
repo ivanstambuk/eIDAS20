@@ -54,13 +54,13 @@ documents:
   category: referenced
   source: html  # Imported via eurlex_html_to_md.py (no Formex available for 2015 document)
   output_dir: 01_regulation/2015_1501_eIDAS_Interoperability
-- celex: 32016R0679
-  title: General Data Protection Regulation
+- celex: 02016R0679-20160504
+  title: General Data Protection Regulation (Consolidated)
   shortTitle: GDPR
   sidebarTitle: GDPR
   legalType: regulation
   category: referenced
-  source: html  # Formex available at DOC_2 but using HTML for now
+  source: html  # Note: GDPR hasn't been amended, original = consolidated
   output_dir: 01_regulation/2016_679_GDPR
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)

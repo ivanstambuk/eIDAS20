@@ -28,6 +28,12 @@ The GDPR can be successfully imported using the existing `eurlex_html_to_md.py` 
 | **Total Words** | ~55,000 |
 | **Annexes** | 0 (GDPR has no annexes) |
 
+### Note on Consolidated Version
+- **Corrigendum R(02)** published 23.5.2018 contains minor text corrections
+- Current import uses original CELEX (32016R0679)
+- Consolidated version (02016R0679-20160504) should be used for full accuracy
+- **TODO**: Update HTML converter to support consolidated CELEX format |
+
 ### Chapters
 1. I — General provisions (Art 1-4)
 2. II — Principles (Art 5-11)
