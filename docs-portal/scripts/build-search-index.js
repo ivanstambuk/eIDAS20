@@ -11,6 +11,7 @@
 
 import { create, insertMultiple, save } from '@orama/orama';
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
+import { execSync } from 'child_process';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,31 +26,56 @@ const OUTPUT_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json')
 
 /**
  * Check if any input file is newer than the output file
- * - In CI: Fails the build (prevents deploying stale search indexes)
+ * Uses git commit times (not filesystem times) to detect stale committed files.
+ * - In CI: Fails if committed search-index.json is older than committed terminology.json
  * - In dev: Warns developer so they can rebuild
  */
 function checkStaleness() {
     if (!existsSync(OUTPUT_PATH)) return; // First build, nothing to check
 
+    const isCI = process.env.CI === 'true' || process.env.CI === '1';
+
+    // In CI, use git to check if the committed search-index.json is older than terminology.json
+    // This avoids false positives from filesystem timestamps during regeneration
+    if (isCI) {
+        try {
+            // Get git commit times for both files
+            const getGitTime = (file) => {
+                try {
+                    const time = execSync(`git log -1 --format=%ct -- "${file}"`, { encoding: 'utf-8' }).trim();
+                    return parseInt(time, 10) || 0;
+                } catch {
+                    return 0; // File not in git or git error
+                }
+            };
+
+            const termTime = getGitTime('docs-portal/public/data/terminology.json');
+            const indexTime = getGitTime('docs-portal/public/data/search-index.json');
+
+            // If terminology was committed more recently than search-index, it's stale
+            if (termTime > indexTime && termTime > 0 && indexTime > 0) {
+                console.error(`\n❌ CI FAILURE: terminology.json was committed after search-index.json`);
+                console.error('   The search index is stale and must be rebuilt before committing.');
+                console.error('   Run: npm run build:all-content');
+                console.error('   Then commit both files together.\n');
+                process.exit(1);
+            }
+        } catch (err) {
+            // If git check fails, skip staleness check (e.g., not a git repo)
+            console.warn('⚠️  Could not check git commit times, skipping staleness check');
+        }
+        return;
+    }
+
+    // In dev: use filesystem timestamps (existing behavior)
     const outputTime = statSync(OUTPUT_PATH).mtime;
     const inputs = [TERMINOLOGY_PATH, INDEX_PATH];
-    const isCI = process.env.CI === 'true' || process.env.CI === '1';
 
     for (const input of inputs) {
         if (existsSync(input) && statSync(input).mtime > outputTime) {
             const inputName = input.split('/').pop();
-
-            if (isCI) {
-                // In CI: Fail the build to prevent deploying stale data
-                console.error(`\n❌ CI FAILURE: ${inputName} is newer than search-index.json`);
-                console.error('   The search index is stale and must be rebuilt before committing.');
-                console.error('   Run: npm run build:all-content\n');
-                process.exit(1);
-            } else {
-                // In dev: Warn and continue (this build will update it)
-                console.warn(`⚠️  WARNING: ${inputName} is newer than search-index.json`);
-                console.warn('   The search index may be stale. This build will update it.\n');
-            }
+            console.warn(`⚠️  WARNING: ${inputName} is newer than search-index.json`);
+            console.warn('   The search index may be stale. This build will update it.\n');
             return;
         }
     }
