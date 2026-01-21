@@ -1,0 +1,106 @@
+# Protected Source Files Configuration
+# =====================================
+#
+# This file defines content invariants for critical source files.
+# Build-time validation will FAIL if any invariant is violated.
+#
+# Purpose: Prevent silent data corruption (e.g., Articles 5a-45 going missing)
+#
+# See: TRACKER.md V3.6.3 (2026-01-21) - Critical Regression Fix
+# See: AGENTS.md - Content validation rules
+
+# Minimum word count threshold for total content
+# If total words drop below this, build fails
+minimumTotalWords: 150000
+
+# Critical documents with mandatory validation
+documents:
+  # The consolidated eIDAS regulation is the most critical document
+  # It contains the full eIDAS 2.0 framework with all amendments
+  - slug: "2014-910"
+    name: "eIDAS 2.0 Regulation (Consolidated)"
+    
+    # Minimum word count for this document
+    minWords: 35000
+    
+    # Articles that MUST exist in the TOC
+    # If any are missing, build fails immediately
+    requiredArticles:
+      # Chapter I: General Provisions
+      - "1"    # Subject matter
+      - "2"    # Scope
+      - "3"    # Definitions
+      - "4"    # Internal market principle
+      - "5"    # Pseudonyms
+      # New eIDAS 2.0 articles (wallet framework)
+      - "5a"   # European Digital Identity Wallets
+      - "5b"   # Relying parties
+      - "5c"   # Wallet attestation
+      - "5d"   # User authentication
+      - "5e"   # Verification of signatures/seals
+      - "5f"   # Validation of signatures/seals
+      # Chapter II: Electronic Identification
+      - "6"    # Mutual recognition
+      - "7"    # Notification requirements
+      - "8"    # Assurance levels
+      - "9"    # Notification conditions
+      - "10"   # Security breach
+      - "11"   # Liability
+      - "12"   # Cooperation
+      # Chapter III: Trust Services (key articles)
+      - "13"   # Liability trust service providers
+      - "17"   # Supervisory body
+      - "19"   # Security requirements
+      - "20"   # Assessment of QTSPs
+      - "21"   # Initiation of qualified trust services
+      - "24"   # QTSP requirements
+      - "25"   # Electronic signatures
+      - "26"   # Advanced electronic signatures
+      - "27"   # Electronic signatures in public services
+      - "28"   # Qualified certificates
+      - "29"   # QSCD requirements
+      - "32"   # Validation of QES
+      - "34"   # Electronic seals
+      - "40"   # Electronic time stamps
+      - "42"   # Qualified electronic time stamps
+      - "43"   # Electronic registered delivery
+      - "44"   # Qualified electronic registered delivery
+      - "45"   # Website authentication
+      # Chapter IV: Electronic Documents
+      - "46"   # Legal effects
+      # Governance Framework
+      - "46a"  # Supervision of wallets
+      - "46b"  # Supervision of trust services
+      # Final provisions
+      - "47"   # Delegated acts
+      - "48"   # Committee procedure
+      - "52"   # Entry into force
+
+    # Minimum number of TOC items (prevents catastrophic content loss)
+    minTocItems: 80
+    
+    # Critical text patterns that must exist in the content
+    # Use sparingly - these are last-resort checks
+    requiredPatterns:
+      - "European Digital Identity Wallet"
+      - "qualified trust service provider"
+      - "electronic identification means"
+
+  # Amendment regulation (source for preamble injection)
+  - slug: "2024-1183"
+    name: "eIDAS 2.0 Amendment Regulation"
+    minWords: 8000
+    requiredArticles:
+      - "1"    # Amendments to 910/2014
+      - "2"    # Entry into force
+    minTocItems: 5
+
+  # Market surveillance regulation (referenced)
+  - slug: "2008-765"
+    name: "Market Surveillance Regulation"
+    minWords: 8000
+    requiredArticles:
+      - "1"
+      - "2"
+      - "43"   # Final article
+    minTocItems: 38

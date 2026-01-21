@@ -49,6 +49,169 @@ const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '03_supplementary'), type: 'supplementary' }
 ];
 
+// Protected Sources Configuration
+// Loaded from config/protected-sources.yaml
+// See: TRACKER.md V3.6.3 — Critical Regression Prevention
+const PROTECTED_SOURCES_PATH = join(__dirname, '..', 'config', 'protected-sources.yaml');
+let protectedSourcesConfig = null;
+
+/**
+ * Load protected sources configuration.
+ * 
+ * This defines content invariants for critical documents to prevent
+ * silent data corruption (e.g., Articles 5a-45 going missing).
+ * 
+ * @returns {Object} Protected sources configuration
+ */
+function loadProtectedSourcesConfig() {
+    if (protectedSourcesConfig) return protectedSourcesConfig;
+
+    if (!existsSync(PROTECTED_SOURCES_PATH)) {
+        console.warn('  ⚠️  Protected sources config not found — validation skipped');
+        return null;
+    }
+
+    try {
+        const content = readFileSync(PROTECTED_SOURCES_PATH, 'utf-8');
+        protectedSourcesConfig = yaml.load(content);
+        return protectedSourcesConfig;
+    } catch (err) {
+        console.error('  ❌ Error loading protected sources config:', err.message);
+        return null;
+    }
+}
+
+/**
+ * Validate content integrity for protected documents.
+ * 
+ * CRITICAL: This function catches regressions like commit a7a8dbb
+ * where Articles 5a-45 silently vanished from the eIDAS regulation.
+ * 
+ * Checks:
+ * 1. Required articles exist in TOC
+ * 2. Word count meets minimum threshold
+ * 3. TOC has minimum number of items
+ * 4. Required patterns exist in content
+ * 
+ * @param {Array} regulations - All processed regulation objects
+ * @throws {Error} If any critical validation fails
+ */
+function validateProtectedSources(regulations) {
+    const config = loadProtectedSourcesConfig();
+    if (!config) return;
+
+    console.log('\n🛡️  Validating protected sources...');
+
+    // Check total word count threshold
+    const totalWords = regulations.reduce((sum, r) => sum + r.wordCount, 0);
+    if (totalWords < config.minimumTotalWords) {
+        throw new Error(
+            `❌ BUILD FAILED: Total word count (${totalWords.toLocaleString()}) is below minimum threshold!\n` +
+            `\n` +
+            `   Minimum required: ${config.minimumTotalWords.toLocaleString()} words\n` +
+            `   This indicates significant content loss.\n` +
+            `\n` +
+            `   Check git diff to identify what content was removed.\n`
+        );
+    }
+
+    // Validate each protected document
+    for (const doc of config.documents || []) {
+        const regulation = regulations.find(r => r.slug === doc.slug);
+
+        if (!regulation) {
+            throw new Error(
+                `❌ BUILD FAILED: Protected document "${doc.name}" (${doc.slug}) not found!\n` +
+                `\n` +
+                `   This document is listed in protected-sources.yaml but wasn't built.\n` +
+                `   Check if the source file exists and is being processed.\n`
+            );
+        }
+
+        console.log(`   📄 Checking ${doc.name} (${doc.slug})...`);
+
+        // Check word count
+        if (doc.minWords && regulation.wordCount < doc.minWords) {
+            throw new Error(
+                `❌ BUILD FAILED: "${doc.name}" word count (${regulation.wordCount.toLocaleString()}) is below minimum!\n` +
+                `\n` +
+                `   Minimum required: ${doc.minWords.toLocaleString()} words\n` +
+                `   This indicates content was truncated or corrupted.\n` +
+                `\n` +
+                `   Check git diff to identify what content was removed.\n`
+            );
+        }
+
+        // Check TOC item count
+        if (doc.minTocItems && regulation.toc.length < doc.minTocItems) {
+            throw new Error(
+                `❌ BUILD FAILED: "${doc.name}" TOC has only ${regulation.toc.length} items!\n` +
+                `\n` +
+                `   Minimum required: ${doc.minTocItems} items\n` +
+                `   This indicates document structure was corrupted.\n` +
+                `\n` +
+                `   Check git diff to identify what content was removed.\n`
+            );
+        }
+
+        // Check required articles
+        if (doc.requiredArticles && doc.requiredArticles.length > 0) {
+            // Extract article numbers from TOC
+            // TOC titles are like "Article 5a", "Article 46b", etc.
+            const tocArticles = regulation.toc
+                .filter(item => item.title.startsWith('Article '))
+                .map(item => {
+                    const match = item.title.match(/^Article\s+(.+)$/);
+                    return match ? match[1] : null;
+                })
+                .filter(Boolean);
+
+            const missingArticles = doc.requiredArticles.filter(
+                required => !tocArticles.includes(required)
+            );
+
+            if (missingArticles.length > 0) {
+                throw new Error(
+                    `❌ BUILD FAILED: "${doc.name}" is missing required articles!\n` +
+                    `\n` +
+                    `   Missing: ${missingArticles.join(', ')}\n` +
+                    `   Found: ${tocArticles.length} articles in TOC\n` +
+                    `\n` +
+                    `   This is a CRITICAL regression — content structure is corrupted.\n` +
+                    `   The source markdown file may have been damaged.\n` +
+                    `\n` +
+                    `   To fix: Restore from git history:\n` +
+                    `   git log -10 -- 01_regulation/2014_910_eIDAS_Consolidated/\n` +
+                    `   git checkout <commit>~1 -- <file>\n`
+                );
+            }
+        }
+
+        // Check required patterns
+        if (doc.requiredPatterns && doc.requiredPatterns.length > 0) {
+            const content = regulation.contentMarkdown;
+            const missingPatterns = doc.requiredPatterns.filter(
+                pattern => !content.includes(pattern)
+            );
+
+            if (missingPatterns.length > 0) {
+                throw new Error(
+                    `❌ BUILD FAILED: "${doc.name}" is missing required content patterns!\n` +
+                    `\n` +
+                    `   Missing patterns:\n` +
+                    missingPatterns.map(p => `     - "${p}"`).join('\n') + '\n' +
+                    `\n` +
+                    `   This indicates key terminology is missing from the document.\n`
+                );
+            }
+        }
+
+        console.log(`      ✅ ${regulation.toc.length} TOC items, ${regulation.wordCount.toLocaleString()} words`);
+    }
+
+    console.log('   ✅ All protected sources validated');
+}
+
 /**
  * Load terminology data for term linking.
  * DEC-085: Terminology Cross-Linking
@@ -1180,6 +1343,10 @@ function build() {
     writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
     console.log(`   ✅ Metadata written: metadata.json`);
     console.log(`   📈 Stats: ${metadata.documentCount} docs, ${metadata.totalWordCount.toLocaleString()} words`);
+
+    // CRITICAL: Validate protected sources BEFORE completing build
+    // This catches regressions like missing Articles 5a-45 (V3.6.3 fix)
+    validateProtectedSources(allRegulations);
 
     // Validate: Check for missing annexes
     const { warnings: annexWarnings, knownCount } = validateAnnexes(allRegulations);

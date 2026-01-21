@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-21 01:35 CET |
-| **Session State** | V3.6.3 — Critical Regression Fix (eIDAS Articles Restored) |
+| **Last Updated** | 2026-01-21 02:10 CET |
+| **Session State** | V3.6.4 — Regression Prevention Validation System |
 | **Portal Status** | ✅ Fully functional (190,860 words, **129 terms**, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-21 02:10 | **Regression Prevention Validation (V3.6.4)**: Implemented P0 measures to prevent silent content corruption. (1) Created `config/protected-sources.yaml` manifest defining content invariants for critical documents (eIDAS 2014-910, 2024-1183, 765/2008), (2) Added `validateProtectedSources()` to build-content.js — checks required articles, min word counts, min TOC items, and required patterns, (3) Build now FAILS if any protected document is damaged. Root cause analysis: commit a7a8dbb scrambled eIDAS source but tests passed silently. Prevention: Fail fast at build time. |
 | 2026-01-21 01:35 | **Critical Regression Fix (V3.6.3)**: Restored eIDAS consolidated regulation (2014-910) — Articles 5a through 45 were missing from rendered content. Root cause: Commit `a7a8dbb` (CONS.ANNEX fix) accidentally scrambled the markdown source file, jumping from Article 5 directly to Article 46. Fixed by restoring source from `a7a8dbb~1` and rebuilding. Browser-verified all articles now present in TOC and content. |
 | 2026-01-21 01:30 | **Supplementary Content Pipeline + Term-Link Fixes (V3.6.2)**: (1) Created `03_supplementary/` directory with FAQ markdown source, (2) Updated `build-content.js` to process supplementary content type with YAML front matter parsing, (3) FAQ now goes through same pipeline as regulations (auto term-links, heading IDs, etc.), (4) Fixed term-link bug: `parts.length > 0` not `> 1` for single-term text nodes like `<li>Electronic signature</li>`, (5) Human-friendly document titles in terminology popovers ("eIDAS 2.0 Regulation (Consolidated)" not "Regulation 910/2014"), (6) Fixed FAQ source field — now proper URL instead of descriptive text, (7) Documented term-link fix in Rule 26 of development-rules.md. |
 | 2026-01-20 23:49 | **Search Improvements + Build Workflow (V3.6.1)**: (1) Added 'simple electronic signature' and 'simple electronic seal' terms (129 terms now), (2) Fixed search ranking for 'digital signature' — was missing due to stale index, (3) Added `npm run build:all-content` combined command (runs terminology + search together), (4) CI now fails if search index is stale (`CI=true` environment detection), (5) Documented build workflow in AGENTS.md, (6) Retro: Identified staleness as root cause, implemented preventive measures. |
