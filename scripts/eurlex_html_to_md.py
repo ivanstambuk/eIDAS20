@@ -157,6 +157,12 @@ def clean_text(text: str) -> str:
     if not text:
         return ""
     
+    # Remove EUR-Lex consolidation markers (►M1, ►M2, ►B, ◄, ▼, etc.)
+    # These indicate which amendment inserted text - we don't use them in our consolidated docs
+    text = re.sub(r'►[A-Z]\d*\s*', '', text)  # Matches ►M1, ►M2, ►B, etc.
+    text = re.sub(r'◄', '', text)  # Closing marker
+    text = re.sub(r'▼[A-Z]\d*', '', text)  # Alternative marker style
+    
     # Normalize whitespace (collapse multiple spaces/newlines)
     text = ' '.join(text.split())
     

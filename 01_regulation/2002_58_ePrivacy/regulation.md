@@ -169,7 +169,7 @@ This Directive shall apply to the processing of personal data in connection with
 
 ### Article 4
 
-**►M2 Security of processing ◄**
+**Security of processing**
 
 1.The provider of a publicly available electronic communications service must take appropriate technical and organisational measures to safeguard security of its services, if necessary in conjunction with the provider of the public communications network with respect to network security. Having regard to the state of the art and the cost of their implementation, these measures shall ensure a level of security appropriate to the risk presented.
 
