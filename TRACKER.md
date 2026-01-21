@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-21 18:25 CET |
+| **Last Updated** | 2026-01-21 18:38 CET |
 | **Version** | V3.7.46 |
-| **Portal Stats** | 40 docs, 335K words, 198 terms, 470 RCA reqs |
+| **Portal Stats** | 40 docs, 340K words, 198 terms, 470 RCA reqs |
 | **Next Action** | Ready — see backlog for remaining imports |
 
 ---
