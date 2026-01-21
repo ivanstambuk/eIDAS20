@@ -744,6 +744,9 @@ function buildTableOfContents(content) {
 
 /**
  * Parse a description from the title or preamble
+ * 
+ * For regulations: Use the full title as description (displayed as subtitle)
+ * For supplementary content: Extract from preamble if available
  */
 function parseDescription(content, title) {
     // Try to find description after the title in the same paragraph or preamble
@@ -754,10 +757,10 @@ function parseDescription(content, title) {
         if (firstSentence) return firstSentence[0].trim();
     }
 
-    // Extract from title if it contains "on" or "laying down"
-    const onMatch = title.match(/(?:on|laying down rules for)\s+(.+)/i);
-    if (onMatch) {
-        return onMatch[1].substring(0, 200);
+    // For regulation titles: use the full title as description
+    // This displays properly as the subtitle in the portal header
+    if (title) {
+        return title;
     }
 
     return '';

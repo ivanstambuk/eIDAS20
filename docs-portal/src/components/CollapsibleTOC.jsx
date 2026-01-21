@@ -100,16 +100,23 @@ const EIDAS_CHAPTERS = {
 /**
  * Dynamically extract chapter structure from TOC.
  * 
- * Looks for level-2 headings matching "N. Title" pattern (Roman numerals)
- * and groups subsequent level-3 "Article N" headings under them.
+ * Supports two heading formats:
+ * 1. "I. General Provisions" (eIDAS style)
+ * 2. "CHAPTER I — General provisions" (GDPR style)
+ * 
+ * Groups subsequent level-3 "Article N" headings under each chapter.
+ * Skips Section headings (they're subgroups within chapters).
  * 
  * @param {Array} toc - Array of {id, title, level} objects
  * @returns {Array|null} - Array of chapter objects or null if no chapters found
  */
 function extractChaptersFromTOC(toc) {
-    // Pattern: Roman numeral followed by period and title (e.g., "I. General Provisions")
-    const chapterPattern = /^([IVXLCDM]+)\.\s+(.+)$/;
+    // Pattern 1: Roman numeral followed by period (e.g., "I. General Provisions")
+    const romanPattern = /^([IVXLCDM]+)\.\s+(.+)$/;
+    // Pattern 2: CHAPTER + Roman numeral + em dash + title (e.g., "CHAPTER I — General provisions")
+    const chapterPattern = /^CHAPTER\s+([IVXLCDM]+)\s*[—–-]\s*(.+)$/i;
     const articlePattern = /^Article\s+(\d+[a-z]?)$/i;
+    const sectionPattern = /^Section\s+\d+/i;  // Skip sections - they're subgroups
 
     const chapters = [];
     let currentChapter = null;
@@ -117,22 +124,47 @@ function extractChaptersFromTOC(toc) {
     for (const item of toc) {
         // Level 2 = chapter headings (## in markdown)
         if (item.level === 2) {
-            const match = item.title.match(chapterPattern);
-            if (match) {
+            let romanNum = null;
+            let title = null;
+
+            // Try pattern 1: "I. General Provisions"
+            const romanMatch = item.title.match(romanPattern);
+            if (romanMatch) {
+                romanNum = romanMatch[1];
+                title = romanMatch[2];
+            }
+
+            // Try pattern 2: "CHAPTER I — General provisions"
+            if (!romanNum) {
+                const chapterMatch = item.title.match(chapterPattern);
+                if (chapterMatch) {
+                    romanNum = chapterMatch[1];
+                    title = chapterMatch[2];
+                }
+            }
+
+            // If we found a chapter heading
+            if (romanNum && title) {
                 // Save previous chapter if exists
                 if (currentChapter && currentChapter.articles.length > 0) {
                     chapters.push(currentChapter);
                 }
-                // Start new chapter
+                // Start new chapter - convert to display format "I. Title"
+                // Capitalize first letter of title
+                const displayTitle = title.charAt(0).toUpperCase() + title.slice(1);
                 currentChapter = {
                     id: item.id,
-                    title: item.title,
+                    title: `${romanNum}. ${displayTitle}`,
                     articles: []
                 };
             }
         }
-        // Level 3 = article headings (### in markdown)
+        // Level 3 = article/section headings (### in markdown)
         else if (item.level === 3 && currentChapter) {
+            // Skip section headings - they're subgroups within chapters
+            if (sectionPattern.test(item.title)) {
+                continue;
+            }
             const match = item.title.match(articlePattern);
             if (match) {
                 currentChapter.articles.push(item.id);
