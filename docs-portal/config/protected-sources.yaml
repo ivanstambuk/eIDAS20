@@ -79,6 +79,21 @@ documents:
     # Minimum number of TOC items (prevents catastrophic content loss)
     minTocItems: 80
     
+    # Article order validation (prevents regression like 522e0bc)
+    # Validates that these article sequences appear in correct order in TOC
+    # Format: list of [preceding, following] pairs that must appear in order
+    articleOrderCheck:
+      - ["5", "5a"]      # Article 5 must be followed by 5a (not jump to 46)
+      - ["5a", "5b"]
+      - ["5b", "5c"]
+      - ["5c", "5d"]
+      - ["5d", "5e"]
+      - ["5e", "5f"]
+      - ["5f", "6"]      # Article 5f must be followed by 6 (not jump to Chapter III)
+      - ["6", "7"]
+      - ["44", "45"]
+      - ["45", "45a"]    # Check 45 series order too
+    
     # Critical text patterns that must exist in the content
     # Use sparingly - these are last-resort checks
     requiredPatterns:

@@ -206,6 +206,48 @@ function validateProtectedSources(regulations) {
             }
         }
 
+        // Check article order (prevents regression like 522e0bc where 5→46→5a happened)
+        if (doc.articleOrderCheck && doc.articleOrderCheck.length > 0) {
+            // Extract article numbers from TOC in order
+            const tocArticles = regulation.toc
+                .filter(item => item.title.startsWith('Article '))
+                .map(item => {
+                    const match = item.title.match(/^Article\s+(.+)$/);
+                    return match ? match[1] : null;
+                })
+                .filter(Boolean);
+
+            for (const [preceding, following] of doc.articleOrderCheck) {
+                const precedingIdx = tocArticles.indexOf(preceding);
+                const followingIdx = tocArticles.indexOf(following);
+
+                if (precedingIdx === -1 || followingIdx === -1) {
+                    // One of the articles is missing - already caught by requiredArticles
+                    continue;
+                }
+
+                if (followingIdx !== precedingIdx + 1) {
+                    // Articles are out of order!
+                    const actualNext = tocArticles[precedingIdx + 1];
+                    throw new Error(
+                        `❌ BUILD FAILED: "${doc.name}" has SCRAMBLED article order!\n` +
+                        `\n` +
+                        `   Expected: Article ${preceding} → Article ${following}\n` +
+                        `   Actual:   Article ${preceding} → Article ${actualNext}\n` +
+                        `\n` +
+                        `   This is the 522e0bc regression pattern!\n` +
+                        `   The Formex converter was likely re-run, scrambling article order.\n` +
+                        `\n` +
+                        `   FIX: DO NOT re-run the converter. Instead:\n` +
+                        `   1. Find a commit with correct article order:\n` +
+                        `      git log -10 -- 01_regulation/2014_910_eIDAS_Consolidated/\n` +
+                        `   2. Restore from that commit:\n` +
+                        `      git show <commit>:01_regulation/.../02014R0910-20241018.md > 01_regulation/.../02014R0910-20241018.md\n`
+                    );
+                }
+            }
+        }
+
         console.log(`      ✅ ${regulation.toc.length} TOC items, ${regulation.wordCount.toLocaleString()} words`);
     }
 

@@ -184,6 +184,7 @@ Different legal act types use different ELI path segments:
 | **Formex XML** | The official EUR-Lex structured format for EU legislation. Primary source for conversion. |
 | **EUR-Lex HTML** | The web format of EU legislation. Fallback source when Formex unavailable. |
 | **ALINEA** | A Formex XML element representing the content block within an article paragraph. Contains the actual text, lists, and inline elements (e.g., `<DATE>`, `<QUOT.START>`). Plural: ALINEA (same). Processed by `process_alinea_nested()` in the converter. |
+| **Markdown Source of Truth** | The project decision (DEC-095) that markdown files in `/01_regulation/` are the authoritative editable source. Converters (Formex, HTML) are import-only tools; re-importing overwrites manual corrections. Fixes should be applied directly to markdown, never by re-running converters on existing documents. |
 
 ---
 

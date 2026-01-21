@@ -333,7 +333,6 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 │   └── package.json
 ├── scripts/                            # Conversion & validation utilities
 │   ├── eurlex_formex.py                # EUR-Lex Formex XML downloader
-│   ├── formex_to_md_v3.py              # Formex XML → Markdown converter (v3)
 │   ├── eurlex_html_to_md.py            # EUR-Lex HTML → Markdown converter
 │   ├── pipeline.py                     # Unified import pipeline
 │   ├── test_formex_converter.py        # Unit tests for converter
@@ -341,6 +340,8 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 │   ├── restart-chrome.sh               # Start Chrome with CDP (WSL → Windows)
 │   ├── cleanup-chrome-tabs.sh          # Clean stale browser tabs
 │   └── agent-done.sh                   # End-of-response notification + context
+├── .legacy/                            # ARCHIVED: Do not use for existing docs
+│   └── formex_to_md_v3.py              # ⚠️ ARCHIVED Formex converter (see DEC-095)
 ├── .agent/                             # Agent configuration
 │   ├── docs/                           # 📚 Extended documentation
 │   │   ├── rules/                      # Development & content rules
@@ -489,6 +490,28 @@ See `.agent/workflows/` for detailed instructions.
 - ✅ Widespread converter bug affecting future imports → Fix converter
 
 **See:** DEC-095 in DECISIONS.md for full rationale.
+
+### ⚠️ Formex Converter ARCHIVED (2026-01-21)
+
+**The Formex XML → Markdown converter has been archived to `.legacy/formex_to_md_v3.py`.**
+
+**DO NOT re-run the converter on existing regulations.** This has caused regressions twice:
+- 2026-01-21: Commit `522e0bc` re-imported eIDAS via converter, scrambling article order (5a-45 appeared after Article 52)
+- The same regression was fixed in `13a906c` but reintroduced when re-running converter
+
+**The converter may be used in the future for importing NEW Formex-based documents, but existing markdown files are the authoritative source.**
+
+### ⚠️ Known Pitfall: eIDAS Article Order Regression
+
+**Symptom:** Articles 5a through 45 appear to be "missing" from the portal's Table of Contents.
+
+**Actual cause:** Articles are present but out of order in the markdown file (5 → 46 → 47 → ... → 52 → 5a → 5b → ... → 45).
+
+**Root cause:** Re-running the Formex converter produces articles in the wrong order for consolidated eIDAS.
+
+**Fix:** Restore correct article order from a known-good git commit. Do NOT re-run the converter.
+
+**Prevention:** The converter is now archived. Edit markdown directly for fixes.
 
 ### Formex Multi-Part Document Handling
 
