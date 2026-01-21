@@ -87,9 +87,19 @@
 | **Cybersecurity Act (2019/881)** | 13 | Formex (DOC_2) | ✅ Ready | [CYBERSECURITY_ACT_IMPORT_PLAN.md](.agent/plans/CYBERSECURITY_ACT_IMPORT_PLAN.md) |
 | ePrivacy Directive (2002/58) | 30 | HTML only | ⚠️ Converter update | [EPRIVACY_IMPORT_PLAN.md](.agent/plans/EPRIVACY_IMPORT_PLAN.md) |
 | EU Standardisation Reg (1025/2012) | 2 | HTML only | ✅ Ready | [STANDARDISATION_REG_IMPORT_PLAN.md](.agent/plans/STANDARDISATION_REG_IMPORT_PLAN.md) |
+| **DORA (2022/2554)** | TBD | Formex | 📋 Backlog | For Financial RP profile — ICT third-party risk requirements |
 
 **Key finding**: Formex XML IS available for newer regulations (2016+). Script needs DOC_2/ZIP handling.
 **Total estimated effort**: ~75 min (with script fixes)
+
+### Intermediary Profile Enhancements (Backlog)
+
+| Enhancement | Description | Profile | Priority |
+|------------|-------------|---------|----------|
+| ARF Technical Standards | Add 2-3 informative requirements for HAIP compliance, DCQL support | `acts_as_intermediary` | Medium |
+| Trust List Monitoring | Add informative requirement for verifying intermediary's continued registration | `uses_intermediary` | Medium |
+| Financial RP Profile | New profile with DORA Art. 28-30 cross-references for financial entities | `relying_party` | Low |
+| Vendor Evaluation Checklist | Practical checklist for evaluating third-party intermediary vendors | N/A (docs) | Low |
 
 ---
 
