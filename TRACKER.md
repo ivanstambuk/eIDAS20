@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-21 22:10 CET |
-| **Version** | V3.7.50 |
-| **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs |
+| **Last Updated** | 2026-01-21 22:55 CET |
+| **Version** | V3.7.51 |
+| **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs |
 | **Next Action** | Ready — import queue clear |
 
 ---
@@ -27,7 +27,7 @@
 
 | Date | Summary |
 |------|---------|
-| 2026-01-21 22:10 | Fix: terminology linking now matches hyphen↔space variants (e.g., "wallet relying party" ↔ "wallet-relying party") |
+| 2026-01-21 22:55 | Feat: abbreviation aliases for terminology (QEAA→qualified-electronic-attestation-of-attributes, etc.) + hyphen↔space fix |
 | 2026-01-21 21:59 | Fixes: eIDAS article order (5a-45), Article 7(f) blockquotes, dynamic requirements count. Retro: archived Formex converter, added article order validation |
 | 2026-01-21 20:40 | DORA Import — 46K words, 64 articles, 65 terminology definitions (Financial RP profile) |
 | 2026-01-21 17:50 | DEC-095: Markdown-First Import Strategy — all 39 docs now source:manual |
