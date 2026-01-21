@@ -1,6 +1,4 @@
-> **Source:** EC Digital Building Blocks — eSignature FAQ
->
-> **External URL:** https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
+> **Source:** [EC Digital Building Blocks — eSignature FAQ](https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ)
 >
 > **Last Updated:** 2026-01 (import date)
 >
