@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T19:54:48.234Z",
+  "generated": "2026-01-21T19:58:03.702Z",
   "statistics": {
     "totalTerms": 268,
-    "totalDefinitions": 404,
+    "totalDefinitions": 469,
     "sources": {
-      "regulations": 243,
+      "regulations": 308,
       "implementingActs": 128,
       "supplementary": 33
     },
@@ -471,14 +471,36 @@
           "articleId": "article-3-para-37",
           "articleNumber": "3(37)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an account information service provider as referred to in Article 33(1) of Directive (EU) 2015/2366",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-37",
+          "articleNumber": "3(37)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-37",
       "definitionGroups": [
         {
           "definition": "an account information service provider as referred to in Article 33(1) of Directive (EU) 2015/2366",
           "sources": [
+            {
+              "definition": "an account information service provider as referred to in Article 33(1) of Directive (EU) 2015/2366",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-37",
+              "articleNumber": "3(37)",
+              "displayOrder": 3
+            },
             {
               "definition": "an account information service provider as referred to in Article 33(1) of Directive (EU) 2015/2366",
               "documentId": "2022-2554",
@@ -703,14 +725,36 @@
           "articleId": "article-3-para-57",
           "articleNumber": "3(57)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an administrator of ‘critical benchmarks’ as defined in Article 3(1), point (25), of Regulation (EU) 2016/1011",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-57",
+          "articleNumber": "3(57)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-57",
       "definitionGroups": [
         {
           "definition": "an administrator of ‘critical benchmarks’ as defined in Article 3(1), point (25), of Regulation (EU) 2016/1011",
           "sources": [
+            {
+              "definition": "an administrator of ‘critical benchmarks’ as defined in Article 3(1), point (25), of Regulation (EU) 2016/1011",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-57",
+              "articleNumber": "3(57)",
+              "displayOrder": 3
+            },
             {
               "definition": "an administrator of ‘critical benchmarks’ as defined in Article 3(1), point (25), of Regulation (EU) 2016/1011",
               "documentId": "2022-2554",
@@ -888,14 +932,36 @@
           "articleId": "article-3-para-50",
           "articleNumber": "3(50)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ancillary insurance intermediary as defined in Article 2(1), point (4), of Directive (EU) 2016/97",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-50",
+          "articleNumber": "3(50)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-50",
       "definitionGroups": [
         {
           "definition": "an ancillary insurance intermediary as defined in Article 2(1), point (4), of Directive (EU) 2016/97",
           "sources": [
+            {
+              "definition": "an ancillary insurance intermediary as defined in Article 2(1), point (4), of Directive (EU) 2016/97",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-50",
+              "articleNumber": "3(50)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ancillary insurance intermediary as defined in Article 2(1), point (4), of Directive (EU) 2016/97",
               "documentId": "2022-2554",
@@ -1497,14 +1563,36 @@
           "articleId": "article-3-para-40",
           "articleNumber": "3(40)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a central counterparty as defined in Article 2, point (1), of Regulation (EU) No 648/2012",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-40",
+          "articleNumber": "3(40)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-40",
       "definitionGroups": [
         {
           "definition": "a central counterparty as defined in Article 2, point (1), of Regulation (EU) No 648/2012",
           "sources": [
+            {
+              "definition": "a central counterparty as defined in Article 2, point (1), of Regulation (EU) No 648/2012",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-40",
+              "articleNumber": "3(40)",
+              "displayOrder": 3
+            },
             {
               "definition": "a central counterparty as defined in Article 2, point (1), of Regulation (EU) No 648/2012",
               "documentId": "2022-2554",
@@ -1537,14 +1625,36 @@
           "articleId": "article-3-para-42",
           "articleNumber": "3(42)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a central securities depository as defined in Article 2(1), point (1), of Regulation (EU) No 909/2014",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-42",
+          "articleNumber": "3(42)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-42",
       "definitionGroups": [
         {
           "definition": "a central securities depository as defined in Article 2(1), point (1), of Regulation (EU) No 909/2014",
           "sources": [
+            {
+              "definition": "a central securities depository as defined in Article 2(1), point (1), of Regulation (EU) No 909/2014",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-42",
+              "articleNumber": "3(42)",
+              "displayOrder": 3
+            },
             {
               "definition": "a central securities depository as defined in Article 2(1), point (1), of Regulation (EU) No 909/2014",
               "documentId": "2022-2554",
@@ -2485,14 +2595,36 @@
           "articleId": "article-3-para-31",
           "articleNumber": "3(31)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a credit institution as defined in Article 4(1), point (1), of Regulation (EU) No 575/2013 of the European Parliament and of the Council (32)",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-31",
+          "articleNumber": "3(31)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-31",
       "definitionGroups": [
         {
           "definition": "a credit institution as defined in Article 4(1), point (1), of Regulation (EU) No 575/2013 of the European Parliament and of the Council (32)",
           "sources": [
+            {
+              "definition": "a credit institution as defined in Article 4(1), point (1), of Regulation (EU) No 575/2013 of the European Parliament and of the Council (32)",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-31",
+              "articleNumber": "3(31)",
+              "displayOrder": 3
+            },
             {
               "definition": "a credit institution as defined in Article 4(1), point (1), of Regulation (EU) No 575/2013 of the European Parliament and of the Council (32)",
               "documentId": "2022-2554",
@@ -2525,14 +2657,36 @@
           "articleId": "article-3-para-54",
           "articleNumber": "3(54)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a credit rating agency as defined in Article 3(1), point (b), of Regulation (EC) No 1060/2009",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-54",
+          "articleNumber": "3(54)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-54",
       "definitionGroups": [
         {
           "definition": "a credit rating agency as defined in Article 3(1), point (b), of Regulation (EC) No 1060/2009",
           "sources": [
+            {
+              "definition": "a credit rating agency as defined in Article 3(1), point (b), of Regulation (EC) No 1060/2009",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-54",
+              "articleNumber": "3(54)",
+              "displayOrder": 3
+            },
             {
               "definition": "a credit rating agency as defined in Article 3(1), point (b), of Regulation (EC) No 1060/2009",
               "documentId": "2022-2554",
@@ -2786,14 +2940,36 @@
           "articleId": "article-3-para-23",
           "articleNumber": "3(23)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT third-party service provider designated as critical in accordance with Article 31",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-23",
+          "articleNumber": "3(23)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-23",
       "definitionGroups": [
         {
           "definition": "an ICT third-party service provider designated as critical in accordance with Article 31",
           "sources": [
+            {
+              "definition": "an ICT third-party service provider designated as critical in accordance with Article 31",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-23",
+              "articleNumber": "3(23)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT third-party service provider designated as critical in accordance with Article 31",
               "documentId": "2022-2554",
@@ -2826,14 +3002,36 @@
           "articleId": "article-3-para-22",
           "articleNumber": "3(22)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a function, the disruption of which would materially impair the financial performance of a financial entity, or the soundness or continuity of its services and activities, or the discontinued, defective or failed performance of that function would materially impair the continuing compliance of a financial entity with the conditions and obligations of its authorisation, or with its other obligations under applicable financial services law",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-22",
+          "articleNumber": "3(22)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-22",
       "definitionGroups": [
         {
           "definition": "a function, the disruption of which would materially impair the financial performance of a financial entity, or the soundness or continuity of its services and activities, or the discontinued, defective or failed performance of that function would materially impair the continuing compliance of a financial entity with the conditions and obligations of its authorisation, or with its other obligations under applicable financial services law",
           "sources": [
+            {
+              "definition": "a function, the disruption of which would materially impair the financial performance of a financial entity, or the soundness or continuity of its services and activities, or the discontinued, defective or failed performance of that function would materially impair the continuing compliance of a financial entity with the conditions and obligations of its authorisation, or with its other obligations under applicable financial services law",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-22",
+              "articleNumber": "3(22)",
+              "displayOrder": 3
+            },
             {
               "definition": "a function, the disruption of which would materially impair the financial performance of a financial entity, or the soundness or continuity of its services and activities, or the discontinued, defective or failed performance of that function would materially impair the continuing compliance of a financial entity with the conditions and obligations of its authorisation, or with its other obligations under applicable financial services law",
               "documentId": "2022-2554",
@@ -2866,14 +3064,36 @@
           "articleId": "article-3-para-58",
           "articleNumber": "3(58)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a crowdfunding service provider as defined in Article 2(1), point (e), of Regulation (EU) 2020/1503 of the European Parliament and of the Council (35)",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-58",
+          "articleNumber": "3(58)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-58",
       "definitionGroups": [
         {
           "definition": "a crowdfunding service provider as defined in Article 2(1), point (e), of Regulation (EU) 2020/1503 of the European Parliament and of the Council (35)",
           "sources": [
+            {
+              "definition": "a crowdfunding service provider as defined in Article 2(1), point (e), of Regulation (EU) 2020/1503 of the European Parliament and of the Council (35)",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-58",
+              "articleNumber": "3(58)",
+              "displayOrder": 3
+            },
             {
               "definition": "a crowdfunding service provider as defined in Article 2(1), point (e), of Regulation (EU) 2020/1503 of the European Parliament and of the Council (35)",
               "documentId": "2022-2554",
@@ -2906,14 +3126,36 @@
           "articleId": "article-3-para-55",
           "articleNumber": "3(55)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a crypto-asset service provider as defined in the relevant provision of the Regulation on markets in crypto-assets",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-55",
+          "articleNumber": "3(55)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-55",
       "definitionGroups": [
         {
           "definition": "a crypto-asset service provider as defined in the relevant provision of the Regulation on markets in crypto-assets",
           "sources": [
+            {
+              "definition": "a crypto-asset service provider as defined in the relevant provision of the Regulation on markets in crypto-assets",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-55",
+              "articleNumber": "3(55)",
+              "displayOrder": 3
+            },
             {
               "definition": "a crypto-asset service provider as defined in the relevant provision of the Regulation on markets in crypto-assets",
               "documentId": "2022-2554",
@@ -3005,6 +3247,17 @@
           "displayOrder": 3
         },
         {
+          "definition": "‘cyber threat’ as defined in Article 2, point (8), of Regulation (EU) 2019/881",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-12",
+          "articleNumber": "3(12)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a cyber threat as defined in Article 2, point (8), of Regulation (EU) 2019/881",
           "documentId": "2022-2555",
           "documentTitle": "NIS2 Directive (Consolidated)",
@@ -3020,23 +3273,6 @@
       "primaryLinkTarget": "article-2-para-8",
       "definitionGroups": [
         {
-          "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
-          "sources": [
-            {
-              "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
-              "documentId": "2019-881",
-              "documentTitle": "Cybersecurity Act (Consolidated)",
-              "documentCategory": "referenced",
-              "documentType": "regulation",
-              "celex": "02019R0881-20250204",
-              "articleId": "article-2-para-8",
-              "articleNumber": "2(8)",
-              "displayOrder": 3
-            }
-          ],
-          "isVariant": false
-        },
-        {
           "definition": "‘cyber threat’ as defined in Article 2, point (8), of Regulation (EU) 2019/881",
           "sources": [
             {
@@ -3048,6 +3284,34 @@
               "celex": "32022R2554",
               "articleId": "article-3-para-12",
               "articleNumber": "3(12)",
+              "displayOrder": 3
+            },
+            {
+              "definition": "‘cyber threat’ as defined in Article 2, point (8), of Regulation (EU) 2019/881",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-12",
+              "articleNumber": "3(12)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
+          "sources": [
+            {
+              "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
+              "documentId": "2019-881",
+              "documentTitle": "Cybersecurity Act (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-8",
+              "articleNumber": "2(8)",
               "displayOrder": 3
             }
           ],
@@ -3088,14 +3352,36 @@
           "articleId": "article-3-para-14",
           "articleNumber": "3(14)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a malicious ICT-related incident caused by means of an attempt perpetrated by any threat actor to destroy, expose, alter, disable, steal or gain unauthorised access to, or make unauthorised use of, an asset",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-14",
+          "articleNumber": "3(14)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-14",
       "definitionGroups": [
         {
           "definition": "a malicious ICT-related incident caused by means of an attempt perpetrated by any threat actor to destroy, expose, alter, disable, steal or gain unauthorised access to, or make unauthorised use of, an asset",
           "sources": [
+            {
+              "definition": "a malicious ICT-related incident caused by means of an attempt perpetrated by any threat actor to destroy, expose, alter, disable, steal or gain unauthorised access to, or make unauthorised use of, an asset",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-14",
+              "articleNumber": "3(14)",
+              "displayOrder": 3
+            },
             {
               "definition": "a malicious ICT-related incident caused by means of an attempt perpetrated by any threat actor to destroy, expose, alter, disable, steal or gain unauthorised access to, or make unauthorised use of, an asset",
               "documentId": "2022-2554",
@@ -3320,14 +3606,36 @@
           "articleId": "article-3-para-46",
           "articleNumber": "3(46)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a data reporting service provider within the meaning of Regulation (EU) No 600/2014, as referred to in Article 2(1), points (34) to (36) thereof",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-46",
+          "articleNumber": "3(46)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-46",
       "definitionGroups": [
         {
           "definition": "a data reporting service provider within the meaning of Regulation (EU) No 600/2014, as referred to in Article 2(1), points (34) to (36) thereof",
           "sources": [
+            {
+              "definition": "a data reporting service provider within the meaning of Regulation (EU) No 600/2014, as referred to in Article 2(1), points (34) to (36) thereof",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-46",
+              "articleNumber": "3(46)",
+              "displayOrder": 3
+            },
             {
               "definition": "a data reporting service provider within the meaning of Regulation (EU) No 600/2014, as referred to in Article 2(1), points (34) to (36) thereof",
               "documentId": "2022-2554",
@@ -3360,14 +3668,36 @@
           "articleId": "article-3-para-1",
           "articleNumber": "3(1)",
           "displayOrder": 3
+        },
+        {
+          "definition": "the ability of a financial entity to build, assure and review its operational integrity and reliability by ensuring, either directly or indirectly through the use of services provided by ICT third-party service providers, the full range of ICT-related capabilities needed to address the security of the network and information systems which a financial entity uses, and which support the continued provision of financial services and their quality, including throughout disruptions",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-1",
+          "articleNumber": "3(1)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-1",
       "definitionGroups": [
         {
           "definition": "the ability of a financial entity to build, assure and review its operational integrity and reliability by ensuring, either directly or indirectly through the use of services provided by ICT third-party service providers, the full range of ICT-related capabilities needed to address the security of the network and information systems which a financial entity uses, and which support the continued provision of financial services and their quality, including throughout disruptions",
           "sources": [
+            {
+              "definition": "the ability of a financial entity to build, assure and review its operational integrity and reliability by ensuring, either directly or indirectly through the use of services provided by ICT third-party service providers, the full range of ICT-related capabilities needed to address the security of the network and information systems which a financial entity uses, and which support the continued provision of financial services and their quality, including throughout disruptions",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-1",
+              "articleNumber": "3(1)",
+              "displayOrder": 3
+            },
             {
               "definition": "the ability of a financial entity to build, assure and review its operational integrity and reliability by ensuring, either directly or indirectly through the use of services provided by ICT third-party service providers, the full range of ICT-related capabilities needed to address the security of the network and information systems which a financial entity uses, and which support the continued provision of financial services and their quality, including throughout disruptions",
               "documentId": "2022-2554",
@@ -4045,14 +4375,36 @@
           "articleId": "article-3-para-38",
           "articleNumber": "3(38)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an electronic money institution as defined in Article 2, point (1), of Directive 2009/110/EC of the European Parliament and of the Council",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-38",
+          "articleNumber": "3(38)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-38",
       "definitionGroups": [
         {
           "definition": "an electronic money institution as defined in Article 2, point (1), of Directive 2009/110/EC of the European Parliament and of the Council",
           "sources": [
+            {
+              "definition": "an electronic money institution as defined in Article 2, point (1), of Directive 2009/110/EC of the European Parliament and of the Council",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-38",
+              "articleNumber": "3(38)",
+              "displayOrder": 3
+            },
             {
               "definition": "an electronic money institution as defined in Article 2, point (1), of Directive 2009/110/EC of the European Parliament and of the Council",
               "documentId": "2022-2554",
@@ -4085,14 +4437,36 @@
           "articleId": "article-3-para-39",
           "articleNumber": "3(39)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an electronic money institution benefitting from a waiver as referred to in Article 9(1) of Directive 2009/110/EC",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-39",
+          "articleNumber": "3(39)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-39",
       "definitionGroups": [
         {
           "definition": "an electronic money institution benefitting from a waiver as referred to in Article 9(1) of Directive 2009/110/EC",
           "sources": [
+            {
+              "definition": "an electronic money institution benefitting from a waiver as referred to in Article 9(1) of Directive 2009/110/EC",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-39",
+              "articleNumber": "3(39)",
+              "displayOrder": 3
+            },
             {
               "definition": "an electronic money institution benefitting from a waiver as referred to in Article 9(1) of Directive 2009/110/EC",
               "documentId": "2022-2554",
@@ -5190,14 +5564,36 @@
           "articleId": "article-3-para-26",
           "articleNumber": "3(26)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a group as defined in Article 2, point (11), of Directive 2013/34/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-26",
+          "articleNumber": "3(26)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-26",
       "definitionGroups": [
         {
           "definition": "a group as defined in Article 2, point (11), of Directive 2013/34/EU",
           "sources": [
+            {
+              "definition": "a group as defined in Article 2, point (11), of Directive 2013/34/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-26",
+              "articleNumber": "3(26)",
+              "displayOrder": 3
+            },
             {
               "definition": "a group as defined in Article 2, point (11), of Directive 2013/34/EU",
               "documentId": "2022-2554",
@@ -5343,14 +5739,36 @@
           "articleId": "article-3-para-7",
           "articleNumber": "3(7)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a software or hardware asset in the network and information systems used by the financial entity",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-7",
+          "articleNumber": "3(7)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-7",
       "definitionGroups": [
         {
           "definition": "a software or hardware asset in the network and information systems used by the financial entity",
           "sources": [
+            {
+              "definition": "a software or hardware asset in the network and information systems used by the financial entity",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-7",
+              "articleNumber": "3(7)",
+              "displayOrder": 3
+            },
             {
               "definition": "a software or hardware asset in the network and information systems used by the financial entity",
               "documentId": "2022-2554",
@@ -5383,14 +5801,36 @@
           "articleId": "article-3-para-29",
           "articleNumber": "3(29)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an exposure to individual or multiple related critical ICT third-party service providers creating a degree of dependency on such providers so that the unavailability, failure or other type of shortfall of such provider may potentially endanger the ability of a financial entity to deliver critical or important functions, or cause it to suffer other types of adverse effects, including large losses, or endanger the financial stability of the Union as a whole",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-29",
+          "articleNumber": "3(29)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-29",
       "definitionGroups": [
         {
           "definition": "an exposure to individual or multiple related critical ICT third-party service providers creating a degree of dependency on such providers so that the unavailability, failure or other type of shortfall of such provider may potentially endanger the ability of a financial entity to deliver critical or important functions, or cause it to suffer other types of adverse effects, including large losses, or endanger the financial stability of the Union as a whole",
           "sources": [
+            {
+              "definition": "an exposure to individual or multiple related critical ICT third-party service providers creating a degree of dependency on such providers so that the unavailability, failure or other type of shortfall of such provider may potentially endanger the ability of a financial entity to deliver critical or important functions, or cause it to suffer other types of adverse effects, including large losses, or endanger the financial stability of the Union as a whole",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-29",
+              "articleNumber": "3(29)",
+              "displayOrder": 3
+            },
             {
               "definition": "an exposure to individual or multiple related critical ICT third-party service providers creating a degree of dependency on such providers so that the unavailability, failure or other type of shortfall of such provider may potentially endanger the ability of a financial entity to deliver critical or important functions, or cause it to suffer other types of adverse effects, including large losses, or endanger the financial stability of the Union as a whole",
               "documentId": "2022-2554",
@@ -5423,14 +5863,36 @@
           "articleId": "article-3-para-20",
           "articleNumber": "3(20)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an undertaking that is part of a financial group and that provides predominantly ICT services to financial entities within the same group or to financial entities belonging to the same institutional protection scheme, including to their parent undertakings, subsidiaries, branches or other entities that are under common ownership or control",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-20",
+          "articleNumber": "3(20)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-20",
       "definitionGroups": [
         {
           "definition": "an undertaking that is part of a financial group and that provides predominantly ICT services to financial entities within the same group or to financial entities belonging to the same institutional protection scheme, including to their parent undertakings, subsidiaries, branches or other entities that are under common ownership or control",
           "sources": [
+            {
+              "definition": "an undertaking that is part of a financial group and that provides predominantly ICT services to financial entities within the same group or to financial entities belonging to the same institutional protection scheme, including to their parent undertakings, subsidiaries, branches or other entities that are under common ownership or control",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-20",
+              "articleNumber": "3(20)",
+              "displayOrder": 3
+            },
             {
               "definition": "an undertaking that is part of a financial group and that provides predominantly ICT services to financial entities within the same group or to financial entities belonging to the same institutional protection scheme, including to their parent undertakings, subsidiaries, branches or other entities that are under common ownership or control",
               "documentId": "2022-2554",
@@ -5599,14 +6061,36 @@
           "articleId": "article-3-para-5",
           "articleNumber": "3(5)",
           "displayOrder": 3
+        },
+        {
+          "definition": "any reasonably identifiable circumstance in relation to the use of network and information systems which, if materialised, may compromise the security of the network and information systems, of any technology dependent tool or process, of operations and processes, or of the provision of services by producing adverse effects in the digital or physical environment",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-5",
+          "articleNumber": "3(5)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-5",
       "definitionGroups": [
         {
           "definition": "any reasonably identifiable circumstance in relation to the use of network and information systems which, if materialised, may compromise the security of the network and information systems, of any technology dependent tool or process, of operations and processes, or of the provision of services by producing adverse effects in the digital or physical environment",
           "sources": [
+            {
+              "definition": "any reasonably identifiable circumstance in relation to the use of network and information systems which, if materialised, may compromise the security of the network and information systems, of any technology dependent tool or process, of operations and processes, or of the provision of services by producing adverse effects in the digital or physical environment",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-5",
+              "articleNumber": "3(5)",
+              "displayOrder": 3
+            },
             {
               "definition": "any reasonably identifiable circumstance in relation to the use of network and information systems which, if materialised, may compromise the security of the network and information systems, of any technology dependent tool or process, of operations and processes, or of the provision of services by producing adverse effects in the digital or physical environment",
               "documentId": "2022-2554",
@@ -5707,14 +6191,36 @@
           "articleId": "article-3-para-21",
           "articleNumber": "3(21)",
           "displayOrder": 3
+        },
+        {
+          "definition": "digital and data services provided through ICT systems to one or more internal or external users on an ongoing basis, including hardware as a service and hardware services which includes the provision of technical support via software or firmware updates by the hardware provider, excluding traditional analogue telephone services",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-21",
+          "articleNumber": "3(21)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-21",
       "definitionGroups": [
         {
           "definition": "digital and data services provided through ICT systems to one or more internal or external users on an ongoing basis, including hardware as a service and hardware services which includes the provision of technical support via software or firmware updates by the hardware provider, excluding traditional analogue telephone services",
           "sources": [
+            {
+              "definition": "digital and data services provided through ICT systems to one or more internal or external users on an ongoing basis, including hardware as a service and hardware services which includes the provision of technical support via software or firmware updates by the hardware provider, excluding traditional analogue telephone services",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-21",
+              "articleNumber": "3(21)",
+              "displayOrder": 3
+            },
             {
               "definition": "digital and data services provided through ICT systems to one or more internal or external users on an ongoing basis, including hardware as a service and hardware services which includes the provision of technical support via software or firmware updates by the hardware provider, excluding traditional analogue telephone services",
               "documentId": "2022-2554",
@@ -5747,14 +6253,36 @@
           "articleId": "article-3-para-28",
           "articleNumber": "3(28)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT subcontractor that is a legal person established in a third-country and that has entered into a contractual arrangement either with an ICT third-party service provider, or with an ICT third-party service provider established in a third country",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-28",
+          "articleNumber": "3(28)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-28",
       "definitionGroups": [
         {
           "definition": "an ICT subcontractor that is a legal person established in a third-country and that has entered into a contractual arrangement either with an ICT third-party service provider, or with an ICT third-party service provider established in a third country",
           "sources": [
+            {
+              "definition": "an ICT subcontractor that is a legal person established in a third-country and that has entered into a contractual arrangement either with an ICT third-party service provider, or with an ICT third-party service provider established in a third country",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-28",
+              "articleNumber": "3(28)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT subcontractor that is a legal person established in a third-country and that has entered into a contractual arrangement either with an ICT third-party service provider, or with an ICT third-party service provider established in a third country",
               "documentId": "2022-2554",
@@ -5827,14 +6355,36 @@
           "articleId": "article-3-para-18",
           "articleNumber": "3(18)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT risk that may arise for a financial entity in relation to its use of ICT services provided by ICT third-party service providers or by subcontractors of the latter, including through outsourcing arrangements",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-18",
+          "articleNumber": "3(18)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-18",
       "definitionGroups": [
         {
           "definition": "an ICT risk that may arise for a financial entity in relation to its use of ICT services provided by ICT third-party service providers or by subcontractors of the latter, including through outsourcing arrangements",
           "sources": [
+            {
+              "definition": "an ICT risk that may arise for a financial entity in relation to its use of ICT services provided by ICT third-party service providers or by subcontractors of the latter, including through outsourcing arrangements",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-18",
+              "articleNumber": "3(18)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT risk that may arise for a financial entity in relation to its use of ICT services provided by ICT third-party service providers or by subcontractors of the latter, including through outsourcing arrangements",
               "documentId": "2022-2554",
@@ -5867,14 +6417,36 @@
           "articleId": "article-3-para-19",
           "articleNumber": "3(19)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an undertaking providing ICT services",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-19",
+          "articleNumber": "3(19)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-19",
       "definitionGroups": [
         {
           "definition": "an undertaking providing ICT services",
           "sources": [
+            {
+              "definition": "an undertaking providing ICT services",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-19",
+              "articleNumber": "3(19)",
+              "displayOrder": 3
+            },
             {
               "definition": "an undertaking providing ICT services",
               "documentId": "2022-2554",
@@ -5907,14 +6479,36 @@
           "articleId": "article-3-para-24",
           "articleNumber": "3(24)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT third-party service provider that is a legal person established in a third-country and that has entered into a contractual arrangement with a financial entity for the provision of ICT services",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-24",
+          "articleNumber": "3(24)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-24",
       "definitionGroups": [
         {
           "definition": "an ICT third-party service provider that is a legal person established in a third-country and that has entered into a contractual arrangement with a financial entity for the provision of ICT services",
           "sources": [
+            {
+              "definition": "an ICT third-party service provider that is a legal person established in a third-country and that has entered into a contractual arrangement with a financial entity for the provision of ICT services",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-24",
+              "articleNumber": "3(24)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT third-party service provider that is a legal person established in a third-country and that has entered into a contractual arrangement with a financial entity for the provision of ICT services",
               "documentId": "2022-2554",
@@ -5947,14 +6541,36 @@
           "articleId": "article-3-para-8",
           "articleNumber": "3(8)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a single event or a series of linked events unplanned by the financial entity that compromises the security of the network and information systems, and have an adverse impact on the availability, authenticity, integrity or confidentiality of data, or on the services provided by the financial entity",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-8",
+          "articleNumber": "3(8)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-8",
       "definitionGroups": [
         {
           "definition": "a single event or a series of linked events unplanned by the financial entity that compromises the security of the network and information systems, and have an adverse impact on the availability, authenticity, integrity or confidentiality of data, or on the services provided by the financial entity",
           "sources": [
+            {
+              "definition": "a single event or a series of linked events unplanned by the financial entity that compromises the security of the network and information systems, and have an adverse impact on the availability, authenticity, integrity or confidentiality of data, or on the services provided by the financial entity",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-8",
+              "articleNumber": "3(8)",
+              "displayOrder": 3
+            },
             {
               "definition": "a single event or a series of linked events unplanned by the financial entity that compromises the security of the network and information systems, and have an adverse impact on the availability, authenticity, integrity or confidentiality of data, or on the services provided by the financial entity",
               "documentId": "2022-2554",
@@ -6203,14 +6819,36 @@
           "articleId": "article-3-para-6",
           "articleNumber": "3(6)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a collection of information, either tangible or intangible, that is worth protecting",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-6",
+          "articleNumber": "3(6)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-6",
       "definitionGroups": [
         {
           "definition": "a collection of information, either tangible or intangible, that is worth protecting",
           "sources": [
+            {
+              "definition": "a collection of information, either tangible or intangible, that is worth protecting",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-6",
+              "articleNumber": "3(6)",
+              "displayOrder": 3
+            },
             {
               "definition": "a collection of information, either tangible or intangible, that is worth protecting",
               "documentId": "2022-2554",
@@ -6283,14 +6921,36 @@
           "articleId": "article-3-para-32",
           "articleNumber": "3(32)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an entity as referred to in Article 2(5), points (4) to (23), of Directive 2013/36/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-32",
+          "articleNumber": "3(32)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-32",
       "definitionGroups": [
         {
           "definition": "an entity as referred to in Article 2(5), points (4) to (23), of Directive 2013/36/EU",
           "sources": [
+            {
+              "definition": "an entity as referred to in Article 2(5), points (4) to (23), of Directive 2013/36/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-32",
+              "articleNumber": "3(32)",
+              "displayOrder": 3
+            },
             {
               "definition": "an entity as referred to in Article 2(5), points (4) to (23), of Directive 2013/36/EU",
               "documentId": "2022-2554",
@@ -6323,14 +6983,36 @@
           "articleId": "article-3-para-52",
           "articleNumber": "3(52)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an institution for occupational retirement provision as defined in Article 6, point (1), of Directive (EU) 2016/2341",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-52",
+          "articleNumber": "3(52)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-52",
       "definitionGroups": [
         {
           "definition": "an institution for occupational retirement provision as defined in Article 6, point (1), of Directive (EU) 2016/2341",
           "sources": [
+            {
+              "definition": "an institution for occupational retirement provision as defined in Article 6, point (1), of Directive (EU) 2016/2341",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-52",
+              "articleNumber": "3(52)",
+              "displayOrder": 3
+            },
             {
               "definition": "an institution for occupational retirement provision as defined in Article 6, point (1), of Directive (EU) 2016/2341",
               "documentId": "2022-2554",
@@ -6363,14 +7045,36 @@
           "articleId": "article-3-para-49",
           "articleNumber": "3(49)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an insurance intermediary as defined in Article 2(1), point (3), of Directive (EU) 2016/97 of the European Parliament and of the Council (34)",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-49",
+          "articleNumber": "3(49)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-49",
       "definitionGroups": [
         {
           "definition": "an insurance intermediary as defined in Article 2(1), point (3), of Directive (EU) 2016/97 of the European Parliament and of the Council (34)",
           "sources": [
+            {
+              "definition": "an insurance intermediary as defined in Article 2(1), point (3), of Directive (EU) 2016/97 of the European Parliament and of the Council (34)",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-49",
+              "articleNumber": "3(49)",
+              "displayOrder": 3
+            },
             {
               "definition": "an insurance intermediary as defined in Article 2(1), point (3), of Directive (EU) 2016/97 of the European Parliament and of the Council (34)",
               "documentId": "2022-2554",
@@ -6403,14 +7107,36 @@
           "articleId": "article-3-para-47",
           "articleNumber": "3(47)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an insurance undertaking as defined in Article 13, point (1), of Directive 2009/138/EC",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-47",
+          "articleNumber": "3(47)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-47",
       "definitionGroups": [
         {
           "definition": "an insurance undertaking as defined in Article 13, point (1), of Directive 2009/138/EC",
           "sources": [
+            {
+              "definition": "an insurance undertaking as defined in Article 13, point (1), of Directive 2009/138/EC",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-47",
+              "articleNumber": "3(47)",
+              "displayOrder": 3
+            },
             {
               "definition": "an insurance undertaking as defined in Article 13, point (1), of Directive 2009/138/EC",
               "documentId": "2022-2554",
@@ -6603,14 +7329,36 @@
           "articleId": "article-3-para-33",
           "articleNumber": "3(33)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an investment firm as defined in Article 4(1), point (1), of Directive 2014/65/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-33",
+          "articleNumber": "3(33)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-33",
       "definitionGroups": [
         {
           "definition": "an investment firm as defined in Article 4(1), point (1), of Directive 2014/65/EU",
           "sources": [
+            {
+              "definition": "an investment firm as defined in Article 4(1), point (1), of Directive 2014/65/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-33",
+              "articleNumber": "3(33)",
+              "displayOrder": 3
+            },
             {
               "definition": "an investment firm as defined in Article 4(1), point (1), of Directive 2014/65/EU",
               "documentId": "2022-2554",
@@ -6643,14 +7391,36 @@
           "articleId": "article-3-para-56",
           "articleNumber": "3(56)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an issuer of asset-referenced tokens as defined in the relevant provision of the Regulation on markets in crypto-assets",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-56",
+          "articleNumber": "3(56)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-56",
       "definitionGroups": [
         {
           "definition": "an issuer of asset-referenced tokens as defined in the relevant provision of the Regulation on markets in crypto-assets",
           "sources": [
+            {
+              "definition": "an issuer of asset-referenced tokens as defined in the relevant provision of the Regulation on markets in crypto-assets",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-56",
+              "articleNumber": "3(56)",
+              "displayOrder": 3
+            },
             {
               "definition": "an issuer of asset-referenced tokens as defined in the relevant provision of the Regulation on markets in crypto-assets",
               "documentId": "2022-2554",
@@ -6683,14 +7453,36 @@
           "articleId": "article-3-para-62",
           "articleNumber": "3(62)",
           "displayOrder": 3
+        },
+        {
+          "definition": "the committee referred to in Article 54 of Regulations (EU) No 1093/2010, (EU) No 1094/2010 and (EU) No 1095/2010",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-62",
+          "articleNumber": "3(62)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-62",
       "definitionGroups": [
         {
           "definition": "the committee referred to in Article 54 of Regulations (EU) No 1093/2010, (EU) No 1094/2010 and (EU) No 1095/2010",
           "sources": [
+            {
+              "definition": "the committee referred to in Article 54 of Regulations (EU) No 1093/2010, (EU) No 1094/2010 and (EU) No 1095/2010",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-62",
+              "articleNumber": "3(62)",
+              "displayOrder": 3
+            },
             {
               "definition": "the committee referred to in Article 54 of Regulations (EU) No 1093/2010, (EU) No 1094/2010 and (EU) No 1095/2010",
               "documentId": "2022-2554",
@@ -6763,14 +7555,36 @@
           "articleId": "article-3-para-61",
           "articleNumber": "3(61)",
           "displayOrder": 3
+        },
+        {
+          "definition": "the European Supervisory Authority appointed in accordance with Article 31(1), point (b) of this Regulation",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-61",
+          "articleNumber": "3(61)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-61",
       "definitionGroups": [
         {
           "definition": "the European Supervisory Authority appointed in accordance with Article 31(1), point (b) of this Regulation",
           "sources": [
+            {
+              "definition": "the European Supervisory Authority appointed in accordance with Article 31(1), point (b) of this Regulation",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-61",
+              "articleNumber": "3(61)",
+              "displayOrder": 3
+            },
             {
               "definition": "the European Supervisory Authority appointed in accordance with Article 31(1), point (b) of this Regulation",
               "documentId": "2022-2554",
@@ -6803,14 +7617,36 @@
           "articleId": "article-3-para-3",
           "articleNumber": "3(3)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT system that has reached the end of its lifecycle (end-of-life), that is not suitable for upgrades or fixes, for technological or commercial reasons, or is no longer supported by its supplier or by an ICT third-party service provider, but that is still in use and supports the functions of the financial entity",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-3",
+          "articleNumber": "3(3)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-3",
       "definitionGroups": [
         {
           "definition": "an ICT system that has reached the end of its lifecycle (end-of-life), that is not suitable for upgrades or fixes, for technological or commercial reasons, or is no longer supported by its supplier or by an ICT third-party service provider, but that is still in use and supports the functions of the financial entity",
           "sources": [
+            {
+              "definition": "an ICT system that has reached the end of its lifecycle (end-of-life), that is not suitable for upgrades or fixes, for technological or commercial reasons, or is no longer supported by its supplier or by an ICT third-party service provider, but that is still in use and supports the functions of the financial entity",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-3",
+              "articleNumber": "3(3)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT system that has reached the end of its lifecycle (end-of-life), that is not suitable for upgrades or fixes, for technological or commercial reasons, or is no longer supported by its supplier or by an ICT third-party service provider, but that is still in use and supports the functions of the financial entity",
               "documentId": "2022-2554",
@@ -6973,14 +7809,36 @@
           "articleId": "article-3-para-10",
           "articleNumber": "3(10)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an ICT-related incident that has a high adverse impact on the network and information systems that support critical or important functions of the financial entity",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-10",
+          "articleNumber": "3(10)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-10",
       "definitionGroups": [
         {
           "definition": "an ICT-related incident that has a high adverse impact on the network and information systems that support critical or important functions of the financial entity",
           "sources": [
+            {
+              "definition": "an ICT-related incident that has a high adverse impact on the network and information systems that support critical or important functions of the financial entity",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-10",
+              "articleNumber": "3(10)",
+              "displayOrder": 3
+            },
             {
               "definition": "an ICT-related incident that has a high adverse impact on the network and information systems that support critical or important functions of the financial entity",
               "documentId": "2022-2554",
@@ -7013,14 +7871,36 @@
           "articleId": "article-3-para-11",
           "articleNumber": "3(11)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an operational or security payment-related incident that has a high adverse impact on the payment-related services provided",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-11",
+          "articleNumber": "3(11)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-11",
       "definitionGroups": [
         {
           "definition": "an operational or security payment-related incident that has a high adverse impact on the payment-related services provided",
           "sources": [
+            {
+              "definition": "an operational or security payment-related incident that has a high adverse impact on the payment-related services provided",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-11",
+              "articleNumber": "3(11)",
+              "displayOrder": 3
+            },
             {
               "definition": "an operational or security payment-related incident that has a high adverse impact on the payment-related services provided",
               "documentId": "2022-2554",
@@ -7133,14 +8013,36 @@
           "articleId": "article-3-para-30",
           "articleNumber": "3(30)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a management body as defined in Article 4(1), point (36), of Directive 2014/65/EU, Article 3(1), point (7), of Directive 2013/36/EU, Article 2(1), point (s), of Directive 2009/65/EC of the European Parliament and of the Council (31), Article 2(1), point (45), of Regulation (EU) No 909/2014, Article 3(1), point (20), of Regulation (EU) 2016/1011, and in the relevant provision of the Regulation on markets in crypto-assets, or the equivalent persons who effectively run the entity or have key functions in accordance with relevant Union or national law",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-30",
+          "articleNumber": "3(30)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-30",
       "definitionGroups": [
         {
           "definition": "a management body as defined in Article 4(1), point (36), of Directive 2014/65/EU, Article 3(1), point (7), of Directive 2013/36/EU, Article 2(1), point (s), of Directive 2009/65/EC of the European Parliament and of the Council (31), Article 2(1), point (45), of Regulation (EU) No 909/2014, Article 3(1), point (20), of Regulation (EU) 2016/1011, and in the relevant provision of the Regulation on markets in crypto-assets, or the equivalent persons who effectively run the entity or have key functions in accordance with relevant Union or national law",
           "sources": [
+            {
+              "definition": "a management body as defined in Article 4(1), point (36), of Directive 2014/65/EU, Article 3(1), point (7), of Directive 2013/36/EU, Article 2(1), point (s), of Directive 2009/65/EC of the European Parliament and of the Council (31), Article 2(1), point (45), of Regulation (EU) No 909/2014, Article 3(1), point (20), of Regulation (EU) 2016/1011, and in the relevant provision of the Regulation on markets in crypto-assets, or the equivalent persons who effectively run the entity or have key functions in accordance with relevant Union or national law",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-30",
+              "articleNumber": "3(30)",
+              "displayOrder": 3
+            },
             {
               "definition": "a management body as defined in Article 4(1), point (36), of Directive 2014/65/EU, Article 3(1), point (7), of Directive 2013/36/EU, Article 2(1), point (s), of Directive 2009/65/EC of the European Parliament and of the Council (31), Article 2(1), point (45), of Regulation (EU) No 909/2014, Article 3(1), point (20), of Regulation (EU) 2016/1011, and in the relevant provision of the Regulation on markets in crypto-assets, or the equivalent persons who effectively run the entity or have key functions in accordance with relevant Union or national law",
               "documentId": "2022-2554",
@@ -7173,14 +8075,36 @@
           "articleId": "article-3-para-45",
           "articleNumber": "3(45)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a management company as defined in Article 2(1), point (b), of Directive 2009/65/EC",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-45",
+          "articleNumber": "3(45)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-45",
       "definitionGroups": [
         {
           "definition": "a management company as defined in Article 2(1), point (b), of Directive 2009/65/EC",
           "sources": [
+            {
+              "definition": "a management company as defined in Article 2(1), point (b), of Directive 2009/65/EC",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-45",
+              "articleNumber": "3(45)",
+              "displayOrder": 3
+            },
             {
               "definition": "a management company as defined in Article 2(1), point (b), of Directive 2009/65/EC",
               "documentId": "2022-2554",
@@ -7213,14 +8137,36 @@
           "articleId": "article-3-para-44",
           "articleNumber": "3(44)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a manager of alternative investment funds as defined in Article 4(1), point (b), of Directive 2011/61/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-44",
+          "articleNumber": "3(44)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-44",
       "definitionGroups": [
         {
           "definition": "a manager of alternative investment funds as defined in Article 4(1), point (b), of Directive 2011/61/EU",
           "sources": [
+            {
+              "definition": "a manager of alternative investment funds as defined in Article 4(1), point (b), of Directive 2011/61/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-44",
+              "articleNumber": "3(44)",
+              "displayOrder": 3
+            },
             {
               "definition": "a manager of alternative investment funds as defined in Article 4(1), point (b), of Directive 2011/61/EU",
               "documentId": "2022-2554",
@@ -7297,14 +8243,36 @@
           "articleId": "article-3-para-64",
           "articleNumber": "3(64)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a financial entity that is not a small enterprise and employs fewer than 250 persons and has an annual turnover that does not exceed EUR 50 million and/or an annual balance sheet that does not exceed EUR 43 million",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-64",
+          "articleNumber": "3(64)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-64",
       "definitionGroups": [
         {
           "definition": "a financial entity that is not a small enterprise and employs fewer than 250 persons and has an annual turnover that does not exceed EUR 50 million and/or an annual balance sheet that does not exceed EUR 43 million",
           "sources": [
+            {
+              "definition": "a financial entity that is not a small enterprise and employs fewer than 250 persons and has an annual turnover that does not exceed EUR 50 million and/or an annual balance sheet that does not exceed EUR 43 million",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-64",
+              "articleNumber": "3(64)",
+              "displayOrder": 3
+            },
             {
               "definition": "a financial entity that is not a small enterprise and employs fewer than 250 persons and has an annual turnover that does not exceed EUR 50 million and/or an annual balance sheet that does not exceed EUR 43 million",
               "documentId": "2022-2554",
@@ -7337,14 +8305,36 @@
           "articleId": "article-3-para-60",
           "articleNumber": "3(60)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a financial entity, other than a trading venue, a central counterparty, a trade repository or a central securities depository, which employs fewer than 10 persons and has an annual turnover and/or annual balance sheet total that does not exceed EUR 2 million",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-60",
+          "articleNumber": "3(60)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-60",
       "definitionGroups": [
         {
           "definition": "a financial entity, other than a trading venue, a central counterparty, a trade repository or a central securities depository, which employs fewer than 10 persons and has an annual turnover and/or annual balance sheet total that does not exceed EUR 2 million",
           "sources": [
+            {
+              "definition": "a financial entity, other than a trading venue, a central counterparty, a trade repository or a central securities depository, which employs fewer than 10 persons and has an annual turnover and/or annual balance sheet total that does not exceed EUR 2 million",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-60",
+              "articleNumber": "3(60)",
+              "displayOrder": 3
+            },
             {
               "definition": "a financial entity, other than a trading venue, a central counterparty, a trade repository or a central securities depository, which employs fewer than 10 persons and has an annual turnover and/or annual balance sheet total that does not exceed EUR 2 million",
               "documentId": "2022-2554",
@@ -7775,28 +8765,22 @@
           "articleId": "article-3-para-2",
           "articleNumber": "3(2)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a network and information system as defined in Article 6, point 1, of Directive (EU) 2022/2555",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-2",
+          "articleNumber": "3(2)",
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": true,
       "primaryLinkTarget": "article-2-para-2",
       "definitionGroups": [
-        {
-          "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
-          "sources": [
-            {
-              "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
-              "documentId": "2019-881",
-              "documentTitle": "Cybersecurity Act (Consolidated)",
-              "documentCategory": "referenced",
-              "documentType": "regulation",
-              "celex": "02019R0881-20250204",
-              "articleId": "article-2-para-2",
-              "articleNumber": "2(2)",
-              "displayOrder": 3
-            }
-          ],
-          "isVariant": false
-        },
         {
           "definition": "a network and information system as defined in Article 6, point 1, of Directive (EU) 2022/2555",
           "sources": [
@@ -7809,6 +8793,34 @@
               "celex": "32022R2554",
               "articleId": "article-3-para-2",
               "articleNumber": "3(2)",
+              "displayOrder": 3
+            },
+            {
+              "definition": "a network and information system as defined in Article 6, point 1, of Directive (EU) 2022/2555",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-2",
+              "articleNumber": "3(2)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        },
+        {
+          "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
+          "sources": [
+            {
+              "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
+              "documentId": "2019-881",
+              "documentTitle": "Cybersecurity Act (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02019R0881-20250204",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
               "displayOrder": 3
             }
           ],
@@ -8081,14 +9093,36 @@
           "articleId": "article-3-para-9",
           "articleNumber": "3(9)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a single event or a series of linked events unplanned by the financial entities referred to in Article 2(1), points (a) to (d), whether ICT-related or not, that has an adverse impact on the availability, authenticity, integrity or confidentiality of payment-related data, or on the payment-related services provided by the financial entity",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-9",
+          "articleNumber": "3(9)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-9",
       "definitionGroups": [
         {
           "definition": "a single event or a series of linked events unplanned by the financial entities referred to in Article 2(1), points (a) to (d), whether ICT-related or not, that has an adverse impact on the availability, authenticity, integrity or confidentiality of payment-related data, or on the payment-related services provided by the financial entity",
           "sources": [
+            {
+              "definition": "a single event or a series of linked events unplanned by the financial entities referred to in Article 2(1), points (a) to (d), whether ICT-related or not, that has an adverse impact on the availability, authenticity, integrity or confidentiality of payment-related data, or on the payment-related services provided by the financial entity",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-9",
+              "articleNumber": "3(9)",
+              "displayOrder": 3
+            },
             {
               "definition": "a single event or a series of linked events unplanned by the financial entities referred to in Article 2(1), points (a) to (d), whether ICT-related or not, that has an adverse impact on the availability, authenticity, integrity or confidentiality of payment-related data, or on the payment-related services provided by the financial entity",
               "documentId": "2022-2554",
@@ -8249,14 +9283,36 @@
           "articleId": "article-3-para-27",
           "articleNumber": "3(27)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a parent undertaking within the meaning of Article 2, point (9), and Article 22 of Directive 2013/34/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-27",
+          "articleNumber": "3(27)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-27",
       "definitionGroups": [
         {
           "definition": "a parent undertaking within the meaning of Article 2, point (9), and Article 22 of Directive 2013/34/EU",
           "sources": [
+            {
+              "definition": "a parent undertaking within the meaning of Article 2, point (9), and Article 22 of Directive 2013/34/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-27",
+              "articleNumber": "3(27)",
+              "displayOrder": 3
+            },
             {
               "definition": "a parent undertaking within the meaning of Article 2, point (9), and Article 22 of Directive 2013/34/EU",
               "documentId": "2022-2554",
@@ -8289,14 +9345,36 @@
           "articleId": "article-3-para-35",
           "articleNumber": "3(35)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a payment institution as defined in Article 4, point (4), of Directive (EU) 2015/2366",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-35",
+          "articleNumber": "3(35)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-35",
       "definitionGroups": [
         {
           "definition": "a payment institution as defined in Article 4, point (4), of Directive (EU) 2015/2366",
           "sources": [
+            {
+              "definition": "a payment institution as defined in Article 4, point (4), of Directive (EU) 2015/2366",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-35",
+              "articleNumber": "3(35)",
+              "displayOrder": 3
+            },
             {
               "definition": "a payment institution as defined in Article 4, point (4), of Directive (EU) 2015/2366",
               "documentId": "2022-2554",
@@ -8329,14 +9407,36 @@
           "articleId": "article-3-para-36",
           "articleNumber": "3(36)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a payment institution exempted pursuant to Article 32(1) of Directive (EU) 2015/2366",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-36",
+          "articleNumber": "3(36)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-36",
       "definitionGroups": [
         {
           "definition": "a payment institution exempted pursuant to Article 32(1) of Directive (EU) 2015/2366",
           "sources": [
+            {
+              "definition": "a payment institution exempted pursuant to Article 32(1) of Directive (EU) 2015/2366",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-36",
+              "articleNumber": "3(36)",
+              "displayOrder": 3
+            },
             {
               "definition": "a payment institution exempted pursuant to Article 32(1) of Directive (EU) 2015/2366",
               "documentId": "2022-2554",
@@ -9210,14 +10310,36 @@
           "articleId": "article-3-para-65",
           "articleNumber": "3(65)",
           "displayOrder": 3
+        },
+        {
+          "definition": "any government or other public administration entity, including national central banks",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-65",
+          "articleNumber": "3(65)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-65",
       "definitionGroups": [
         {
           "definition": "any government or other public administration entity, including national central banks",
           "sources": [
+            {
+              "definition": "any government or other public administration entity, including national central banks",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-65",
+              "articleNumber": "3(65)",
+              "displayOrder": 3
+            },
             {
               "definition": "any government or other public administration entity, including national central banks",
               "documentId": "2022-2554",
@@ -10539,14 +11661,36 @@
           "articleId": "article-3-para-51",
           "articleNumber": "3(51)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a reinsurance intermediary as defined in Article 2(1), point (5), of Directive (EU) 2016/97",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-51",
+          "articleNumber": "3(51)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-51",
       "definitionGroups": [
         {
           "definition": "a reinsurance intermediary as defined in Article 2(1), point (5), of Directive (EU) 2016/97",
           "sources": [
+            {
+              "definition": "a reinsurance intermediary as defined in Article 2(1), point (5), of Directive (EU) 2016/97",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-51",
+              "articleNumber": "3(51)",
+              "displayOrder": 3
+            },
             {
               "definition": "a reinsurance intermediary as defined in Article 2(1), point (5), of Directive (EU) 2016/97",
               "documentId": "2022-2554",
@@ -10579,14 +11723,36 @@
           "articleId": "article-3-para-48",
           "articleNumber": "3(48)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a reinsurance undertaking as defined in Article 13, point (4), of Directive 2009/138/EC",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-48",
+          "articleNumber": "3(48)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-48",
       "definitionGroups": [
         {
           "definition": "a reinsurance undertaking as defined in Article 13, point (4), of Directive 2009/138/EC",
           "sources": [
+            {
+              "definition": "a reinsurance undertaking as defined in Article 13, point (4), of Directive 2009/138/EC",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-48",
+              "articleNumber": "3(48)",
+              "displayOrder": 3
+            },
             {
               "definition": "a reinsurance undertaking as defined in Article 13, point (4), of Directive 2009/138/EC",
               "documentId": "2022-2554",
@@ -11231,14 +12397,36 @@
           "articleId": "article-3-para-59",
           "articleNumber": "3(59)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a securitisation repository as defined in Article 2, point (23), of Regulation (EU) 2017/2402 of the European Parliament and of the Council (36)",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-59",
+          "articleNumber": "3(59)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-59",
       "definitionGroups": [
         {
           "definition": "a securitisation repository as defined in Article 2, point (23), of Regulation (EU) 2017/2402 of the European Parliament and of the Council (36)",
           "sources": [
+            {
+              "definition": "a securitisation repository as defined in Article 2, point (23), of Regulation (EU) 2017/2402 of the European Parliament and of the Council (36)",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-59",
+              "articleNumber": "3(59)",
+              "displayOrder": 3
+            },
             {
               "definition": "a securitisation repository as defined in Article 2, point (23), of Regulation (EU) 2017/2402 of the European Parliament and of the Council (36)",
               "documentId": "2022-2554",
@@ -11273,6 +12461,17 @@
           "displayOrder": 3
         },
         {
+          "definition": "security of network and information systems as defined in Article 6, point 2, of Directive (EU) 2022/2555",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-4",
+          "articleNumber": "3(4)",
+          "displayOrder": 3
+        },
+        {
           "definition": "the ability of network and information systems to resist, at a given level of confidence, any event that may compromise the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, those network and information systems",
           "documentId": "2022-2555",
           "documentTitle": "NIS2 Directive (Consolidated)",
@@ -11290,6 +12489,17 @@
         {
           "definition": "security of network and information systems as defined in Article 6, point 2, of Directive (EU) 2022/2555",
           "sources": [
+            {
+              "definition": "security of network and information systems as defined in Article 6, point 2, of Directive (EU) 2022/2555",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-4",
+              "articleNumber": "3(4)",
+              "displayOrder": 3
+            },
             {
               "definition": "security of network and information systems as defined in Article 6, point 2, of Directive (EU) 2022/2555",
               "documentId": "2022-2554",
@@ -11426,6 +12636,17 @@
           "displayOrder": 3
         },
         {
+          "definition": "a cyber threat the technical characteristics of which indicate that it could have the potential to result in a major ICT-related incident or a major operational or security payment-related incident",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-13",
+          "articleNumber": "3(13)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a cyber threat which, based on its technical characteristics, can be assumed to have the potential to have a severe impact on the network and information systems of an entity or the users of the entity’s services by causing considerable material or non-material damage",
           "documentId": "2022-2555",
           "documentTitle": "NIS2 Directive (Consolidated)",
@@ -11443,6 +12664,17 @@
         {
           "definition": "a cyber threat the technical characteristics of which indicate that it could have the potential to result in a major ICT-related incident or a major operational or security payment-related incident",
           "sources": [
+            {
+              "definition": "a cyber threat the technical characteristics of which indicate that it could have the potential to result in a major ICT-related incident or a major operational or security payment-related incident",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-13",
+              "articleNumber": "3(13)",
+              "displayOrder": 3
+            },
             {
               "definition": "a cyber threat the technical characteristics of which indicate that it could have the potential to result in a major ICT-related incident or a major operational or security payment-related incident",
               "documentId": "2022-2554",
@@ -11581,14 +12813,36 @@
           "articleId": "article-3-para-34",
           "articleNumber": "3(34)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an investment firm that meets the conditions laid out in Article 12(1) of Regulation (EU) 2019/2033 of the European Parliament and of the Council (33)",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-34",
+          "articleNumber": "3(34)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-34",
       "definitionGroups": [
         {
           "definition": "an investment firm that meets the conditions laid out in Article 12(1) of Regulation (EU) 2019/2033 of the European Parliament and of the Council (33)",
           "sources": [
+            {
+              "definition": "an investment firm that meets the conditions laid out in Article 12(1) of Regulation (EU) 2019/2033 of the European Parliament and of the Council (33)",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-34",
+              "articleNumber": "3(34)",
+              "displayOrder": 3
+            },
             {
               "definition": "an investment firm that meets the conditions laid out in Article 12(1) of Regulation (EU) 2019/2033 of the European Parliament and of the Council (33)",
               "documentId": "2022-2554",
@@ -11621,14 +12875,36 @@
           "articleId": "article-3-para-63",
           "articleNumber": "3(63)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a financial entity that employs 10 or more persons, but fewer than 50 persons, and has an annual turnover and/or annual balance sheet total that exceeds EUR 2 million, but does not exceed EUR 10 million",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-63",
+          "articleNumber": "3(63)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-63",
       "definitionGroups": [
         {
           "definition": "a financial entity that employs 10 or more persons, but fewer than 50 persons, and has an annual turnover and/or annual balance sheet total that exceeds EUR 2 million, but does not exceed EUR 10 million",
           "sources": [
+            {
+              "definition": "a financial entity that employs 10 or more persons, but fewer than 50 persons, and has an annual turnover and/or annual balance sheet total that exceeds EUR 2 million, but does not exceed EUR 10 million",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-63",
+              "articleNumber": "3(63)",
+              "displayOrder": 3
+            },
             {
               "definition": "a financial entity that employs 10 or more persons, but fewer than 50 persons, and has an annual turnover and/or annual balance sheet total that exceeds EUR 2 million, but does not exceed EUR 10 million",
               "documentId": "2022-2554",
@@ -11661,14 +12937,36 @@
           "articleId": "article-3-para-53",
           "articleNumber": "3(53)",
           "displayOrder": 3
+        },
+        {
+          "definition": "an institution for occupational retirement provision which operates pension schemes which together have less than 100 members in total",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-53",
+          "articleNumber": "3(53)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-53",
       "definitionGroups": [
         {
           "definition": "an institution for occupational retirement provision which operates pension schemes which together have less than 100 members in total",
           "sources": [
+            {
+              "definition": "an institution for occupational retirement provision which operates pension schemes which together have less than 100 members in total",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-53",
+              "articleNumber": "3(53)",
+              "displayOrder": 3
+            },
             {
               "definition": "an institution for occupational retirement provision which operates pension schemes which together have less than 100 members in total",
               "documentId": "2022-2554",
@@ -11883,14 +13181,36 @@
           "articleId": "article-3-para-25",
           "articleNumber": "3(25)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a subsidiary undertaking within the meaning of Article 2, point (10), and Article 22 of Directive 2013/34/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-25",
+          "articleNumber": "3(25)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-25",
       "definitionGroups": [
         {
           "definition": "a subsidiary undertaking within the meaning of Article 2, point (10), and Article 22 of Directive 2013/34/EU",
           "sources": [
+            {
+              "definition": "a subsidiary undertaking within the meaning of Article 2, point (10), and Article 22 of Directive 2013/34/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-25",
+              "articleNumber": "3(25)",
+              "displayOrder": 3
+            },
             {
               "definition": "a subsidiary undertaking within the meaning of Article 2, point (10), and Article 22 of Directive 2013/34/EU",
               "documentId": "2022-2554",
@@ -12171,14 +13491,36 @@
           "articleId": "article-3-para-15",
           "articleNumber": "3(15)",
           "displayOrder": 3
+        },
+        {
+          "definition": "information that has been aggregated, transformed, analysed, interpreted or enriched to provide the necessary context for decision-making and to enable relevant and sufficient understanding in order to mitigate the impact of an ICT-related incident or of a cyber threat, including the technical details of a cyber-attack, those responsible for the attack and their modus operandi and motivations",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-15",
+          "articleNumber": "3(15)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-15",
       "definitionGroups": [
         {
           "definition": "information that has been aggregated, transformed, analysed, interpreted or enriched to provide the necessary context for decision-making and to enable relevant and sufficient understanding in order to mitigate the impact of an ICT-related incident or of a cyber threat, including the technical details of a cyber-attack, those responsible for the attack and their modus operandi and motivations",
           "sources": [
+            {
+              "definition": "information that has been aggregated, transformed, analysed, interpreted or enriched to provide the necessary context for decision-making and to enable relevant and sufficient understanding in order to mitigate the impact of an ICT-related incident or of a cyber threat, including the technical details of a cyber-attack, those responsible for the attack and their modus operandi and motivations",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-15",
+              "articleNumber": "3(15)",
+              "displayOrder": 3
+            },
             {
               "definition": "information that has been aggregated, transformed, analysed, interpreted or enriched to provide the necessary context for decision-making and to enable relevant and sufficient understanding in order to mitigate the impact of an ICT-related incident or of a cyber threat, including the technical details of a cyber-attack, those responsible for the attack and their modus operandi and motivations",
               "documentId": "2022-2554",
@@ -12211,14 +13553,36 @@
           "articleId": "article-3-para-17",
           "articleNumber": "3(17)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a framework that mimics the tactics, techniques and procedures of real-life threat actors perceived as posing a genuine cyber threat, that delivers a controlled, bespoke, intelligence-led (red team) test of the financial entity’s critical live production systems",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-17",
+          "articleNumber": "3(17)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-17",
       "definitionGroups": [
         {
           "definition": "a framework that mimics the tactics, techniques and procedures of real-life threat actors perceived as posing a genuine cyber threat, that delivers a controlled, bespoke, intelligence-led (red team) test of the financial entity’s critical live production systems",
           "sources": [
+            {
+              "definition": "a framework that mimics the tactics, techniques and procedures of real-life threat actors perceived as posing a genuine cyber threat, that delivers a controlled, bespoke, intelligence-led (red team) test of the financial entity’s critical live production systems",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-17",
+              "articleNumber": "3(17)",
+              "displayOrder": 3
+            },
             {
               "definition": "a framework that mimics the tactics, techniques and procedures of real-life threat actors perceived as posing a genuine cyber threat, that delivers a controlled, bespoke, intelligence-led (red team) test of the financial entity’s critical live production systems",
               "documentId": "2022-2554",
@@ -12251,14 +13615,36 @@
           "articleId": "article-3-para-41",
           "articleNumber": "3(41)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a trade repository as defined in Article 2, point (2), of Regulation (EU) No 648/2012",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-41",
+          "articleNumber": "3(41)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-41",
       "definitionGroups": [
         {
           "definition": "a trade repository as defined in Article 2, point (2), of Regulation (EU) No 648/2012",
           "sources": [
+            {
+              "definition": "a trade repository as defined in Article 2, point (2), of Regulation (EU) No 648/2012",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-41",
+              "articleNumber": "3(41)",
+              "displayOrder": 3
+            },
             {
               "definition": "a trade repository as defined in Article 2, point (2), of Regulation (EU) No 648/2012",
               "documentId": "2022-2554",
@@ -12291,14 +13677,36 @@
           "articleId": "article-3-para-43",
           "articleNumber": "3(43)",
           "displayOrder": 3
+        },
+        {
+          "definition": "a trading venue as defined in Article 4(1), point (24), of Directive 2014/65/EU",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-43",
+          "articleNumber": "3(43)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-43",
       "definitionGroups": [
         {
           "definition": "a trading venue as defined in Article 4(1), point (24), of Directive 2014/65/EU",
           "sources": [
+            {
+              "definition": "a trading venue as defined in Article 4(1), point (24), of Directive 2014/65/EU",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-43",
+              "articleNumber": "3(43)",
+              "displayOrder": 3
+            },
             {
               "definition": "a trading venue as defined in Article 4(1), point (24), of Directive 2014/65/EU",
               "documentId": "2022-2554",
@@ -12928,6 +14336,17 @@
           "displayOrder": 3
         },
         {
+          "definition": "a weakness, susceptibility or flaw of an asset, system, process or control that can be exploited",
+          "documentId": "2022-2554",
+          "documentTitle": "DORA",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "32022R2554",
+          "articleId": "article-3-para-16",
+          "articleNumber": "3(16)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a weakness, susceptibility or flaw of ICT products or ICT services that can be exploited by a cyber threat",
           "documentId": "2022-2555",
           "documentTitle": "NIS2 Directive (Consolidated)",
@@ -12945,6 +14364,17 @@
         {
           "definition": "a weakness, susceptibility or flaw of an asset, system, process or control that can be exploited",
           "sources": [
+            {
+              "definition": "a weakness, susceptibility or flaw of an asset, system, process or control that can be exploited",
+              "documentId": "2022-2554",
+              "documentTitle": "DORA",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "32022R2554",
+              "articleId": "article-3-para-16",
+              "articleNumber": "3(16)",
+              "displayOrder": 3
+            },
             {
               "definition": "a weakness, susceptibility or flaw of an asset, system, process or control that can be exploited",
               "documentId": "2022-2554",
