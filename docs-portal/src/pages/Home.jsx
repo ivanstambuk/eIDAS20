@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 const Home = () => {
     const [stats, setStats] = useState(null);
+    const [rcaStats, setRcaStats] = useState(null);
 
     useEffect(() => {
         // Fetch build-time computed stats from metadata.json
@@ -10,6 +11,12 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setStats(data))
             .catch(err => console.error('Failed to load metadata:', err));
+
+        // Fetch RCA stats for requirements count
+        fetch(`${import.meta.env.BASE_URL}data/rca-data.json`)
+            .then(res => res.json())
+            .then(data => setRcaStats(data.stats))
+            .catch(err => console.error('Failed to load RCA data:', err));
     }, []);
 
     return (
@@ -124,7 +131,7 @@ const Home = () => {
                             fontWeight: 'var(--font-semibold)'
                         }}
                     >
-                        458 requirements
+                        {rcaStats?.totalRequirements ?? '—'} requirements
                     </span>
                 </Link>
             </section>
