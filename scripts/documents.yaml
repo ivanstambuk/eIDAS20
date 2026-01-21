@@ -56,7 +56,7 @@ documents:
   output_dir: 01_regulation/2015_1501_eIDAS_Interoperability
 - celex: 02016R0679-20160504
   title: General Data Protection Regulation (Consolidated)
-  shortTitle: GDPR
+  shortTitle: GDPR (Consolidated)
   sidebarTitle: GDPR
   legalType: regulation
   category: referenced
