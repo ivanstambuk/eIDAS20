@@ -2,9 +2,13 @@
 
 ## Executive Summary
 
-**Status: ✅ FEASIBLE — Ready to implement**
+**Status: ✅ COMPLETE — Imported 2026-01-21**
 
-The Cybersecurity Act can be imported immediately using the existing HTML converter. Test conversion was successful.
+- **31,287 words**, 69 articles, 110 recitals, 3 annexes
+- Imported from base Formex (cellar_id: 35e93bb4-8905-11e9)
+- EUR-Lex link points to consolidated version (02019R0881-20250204)
+- M1 amendment (Regulation 2025/37 - managed security services) NOT applied
+- Source set to `manual` to protect from overwrite
 
 ---
 
