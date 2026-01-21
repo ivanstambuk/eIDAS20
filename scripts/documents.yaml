@@ -91,7 +91,7 @@ documents:
 - celex: 32012R1025
   title: European Standardisation Regulation
   shortTitle: Standardisation Regulation
-  sidebarTitle: Standardisation Reg
+  sidebarTitle: Standardisation Regulation
   legalType: regulation
   category: referenced
   source: manual  # HTML import — markdown is now source of truth
