@@ -543,6 +543,31 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 
 **Applied to:** GDPR, NIS2, Cybersecurity Act
 
+### CELEX Format Guide
+
+| Prefix | Meaning | Example |
+|--------|---------|---------|
+| `3` | Base/original act | `32012R1025` (Standardisation Regulation) |
+| `0` | Consolidated version | `02012R1025-20241213` (with amendments applied) |
+| `C` | Corrigendum | `32014R0910R(01)` |
+
+**Pattern:** `[Prefix][Year][Type][Number][-ConsolidationDate]`
+
+**For consolidated imports:**
+- EUR-Lex link should use `0xxxx` (consolidated CELEX) so users see latest version
+- If consolidated version lacks preamble/recitals, merge from base version (see below)
+
+### Preamble Merge Pattern (Consolidated Documents)
+
+**EUR-Lex consolidated versions often omit preamble and recitals.** When this happens:
+
+1. **Import consolidated version** (`0xxxx` CELEX) for enacting terms
+2. **Import base version** (`3xxxx` CELEX) for preamble/recitals
+3. **Merge:** Base preamble/recitals + Consolidated enacting terms
+4. **Add note to metadata:** `> **Note:** Enacting terms from consolidated version (0xxxxx). Preamble merged from base version (3xxxxx).`
+
+**Applied to:** Standardisation Regulation (1025/2012)
+
 ---
 
 ## Key Terminology

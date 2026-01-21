@@ -1004,8 +1004,13 @@ def convert_consolidated_html(soup: BeautifulSoup, celex: str, doc_type_str: str
                     content_text = clean_text(elem.get_text())
                     # Remove the number prefix
                     content_text = content_text.replace(num_text, '', 1).strip()
-                
-                lines.append(f"{num_text}{content_text}")
+                # Check if this is a sub-paragraph (2a., 3b., etc.) - should be bullet
+                if re.match(r'^\d+[a-z]\.$', num_text):
+                    lines.append(f"- ({num_text.rstrip('.')}) {content_text}")
+                else:
+                    # Normal paragraph: ensure space after number
+                    # num_text is like "1." - we need "1. content" not "1.content"
+                    lines.append(f"{num_text} {content_text}")
                 lines.append("")
             else:
                 text = clean_text(elem.get_text())

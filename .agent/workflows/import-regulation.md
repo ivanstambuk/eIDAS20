@@ -78,6 +78,22 @@ Manually edit markdown for each corrigendum:
 - Apply exact text change
 - Document in `.agent/docs/pitfalls/amendment-gaps.md`
 
+### Step 3.4: Merge Preamble (if consolidated lacks it)
+
+**EUR-Lex consolidated versions often omit preamble and recitals.** If so:
+
+1. **Check if Preamble/Recitals exist** in consolidated output
+2. If missing, **import base version** separately:
+   ```bash
+   python scripts/eurlex_html_to_md.py <base_celex> /tmp/base_version
+   ```
+3. **Extract preamble + recitals** from base version (lines from `## Preamble` to `## Enacting Terms`)
+4. **Merge** into consolidated markdown before `## Enacting Terms`
+5. **Add metadata note:**
+   ```markdown
+   > **Note:** Enacting terms from consolidated version (0xxxxx). Preamble merged from base version (3xxxxx).
+   ```
+
 ---
 
 ## Phase 4: Finalize Configuration
