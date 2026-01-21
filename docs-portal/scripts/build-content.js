@@ -982,9 +982,10 @@ function processMarkdownFile(filePath, dirName, type) {
     // Parse metadata and title from raw content (before stripping)
     const metadata = parseMetadata(rawContent);
 
-    // Title priority: documents.yaml > YAML front matter > H1 heading
-    // documents.yaml is authoritative for full legal titles
-    const title = getTitleFromConfig(dirName) || metadata.title || parseTitle(rawContent);
+    // Title priority: YAML front matter (supplementary) > H1 heading (regulations)
+    // The H1 heading in markdown IS the authoritative full legal title
+    // documents.yaml 'title' is for display/navigation purposes only
+    const title = metadata.title || parseTitle(rawContent);
 
     // Strip front matter for all content-related processing
     let content = stripFrontMatter(rawContent);
