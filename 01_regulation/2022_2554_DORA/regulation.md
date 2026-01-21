@@ -406,7 +406,7 @@ HAVE ADOPTED THIS REGULATION:
 
 ## Enacting Terms
 
-## CHAPTER I — General provisions
+## I. General Provisions
 
 ### Article 1
 
@@ -625,7 +625,7 @@ For the purposes of this Regulation, the following definitions shall apply:
 
 3. The competent authorities shall consider the application of the proportionality principle by financial entities when reviewing the consistency of the ICT risk management framework on the basis of the reports submitted upon the request of competent authorities pursuant to Article 6(5) and Article 16(2).
 
-## CHAPTER II — ICT risk management
+## II. ICT Risk Management
 
 ### Article 5
 
@@ -911,7 +911,7 @@ The ESAs shall submit those draft regulatory technical standards to the Commissi
 
 Power is delegated to the Commission to supplement this Regulation by adopting the regulatory technical standards referred to in the first subparagraph in accordance with Articles 10 to 14 of Regulations (EU) No 1093/2010, (EU) No 1094/2010 and (EU) No 1095/2010.
 
-## CHAPTER III — ICT-related incident management, classification and reporting
+## III. ICT-related Incident Management, Classification and Reporting
 
 ### Article 17
 
@@ -1056,7 +1056,7 @@ The ESAs shall issue warnings and produce high-level statistics to support ICT t
 
 The requirements laid down in this Chapter shall also apply to operational or security payment-related incidents and to major operational or security payment-related incidents, where they concern credit institutions, payment institutions, account information service providers, and electronic money institutions.
 
-## CHAPTER IV — Digital operational resilience testing
+## IV. Digital Operational Resilience Testing
 
 ### Article 24
 
@@ -1164,7 +1164,7 @@ Power is delegated to the Commission to supplement this Regulation by adopting t
 - (c) the threat intelligence provider is external to the financial entity.
 3. Financial entities shall ensure that contracts concluded with external testers require a sound management of the TLPT results and that any data processing thereof, including any generation, store, aggregation, draft, report, communication or destruction, do not create risks to the financial entity.
 
-## CHAPTER V — Managing of ICT third-party risk
+## V. Managing of ICT Third-party Risk
 
 ### Section I — Key principles for a sound management of ICT third-party risk
 
@@ -1720,7 +1720,7 @@ The amount of a fee charged to a critical ICT third-party service provider shall
 
 2. The ESAs shall, through the Joint Committee, submit every five years a joint confidential report to the European Parliament, to the Council and to the Commission, summarising the findings of relevant discussions held with the third countries’ authorities referred to in paragraph 1, focusing on the evolution of ICT third-party risk and the implications for financial stability, market integrity, investor protection and the functioning of the internal market.
 
-## CHAPTER VI — Information-sharing arrangements
+## VI. Information-sharing Arrangements
 
 ### Article 45
 
@@ -1735,7 +1735,7 @@ The amount of a fee charged to a critical ICT third-party service provider shall
 
 3. Financial entities shall notify competent authorities of their participation in the information-sharing arrangements referred to in paragraph 1, upon validation of their membership, or, as applicable, of the cessation of their membership, once it takes effect.
 
-## CHAPTER VII — Competent authorities
+## VII. Competent Authorities
 
 ### Article 46
 
@@ -1895,7 +1895,7 @@ Member States shall notify the laws, regulations and administrative provisions i
 
 2. Except where otherwise provided in other sectoral acts, the personal data referred to in paragraph 1 shall be retained until the discharge of the applicable supervisory duties and in any case for a maximum period of 15 years, except in the event of pending court proceedings requiring further retention of such data.
 
-## CHAPTER VIII — Delegated acts
+## VIII. Delegated Acts
 
 ### Article 57
 
@@ -1913,7 +1913,7 @@ Member States shall notify the laws, regulations and administrative provisions i
 
 6. A delegated act adopted pursuant to Articles 31(6) and 43(2) shall enter into force only if no objection has been expressed either by the European Parliament or by the Council within a period of three months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by three months at the initiative of the European Parliament or of the Council.
 
-## CHAPTER IX — Transitional and final provisions
+## IX. Transitional and Final Provisions
 
 ### Article 58
 
