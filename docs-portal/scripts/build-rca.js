@@ -270,6 +270,10 @@ const output = {
         totalRequirements: processedRequirements.length,
         totalUseCases: Object.keys(useCases).length,
         totalCategories: categoryList.length,
+        totalRoles: roles.length,
+        // Universal vs use-case specific breakdown
+        universalRequirements: processedRequirements.filter(r => r.appliesToAllUseCases).length,
+        useCaseSpecificRequirements: processedRequirements.filter(r => !r.appliesToAllUseCases).length,
         requirementsByRole: Object.fromEntries(
             Object.entries(requirementsByRoleAndUseCase).map(([role, useCases]) => {
                 const uniqueReqs = new Set();

@@ -903,6 +903,23 @@ export default function ComplianceAssessment() {
                 </p>
             </header>
 
+            {/* Stats Bar - Framework scope at a glance */}
+            <div className="rca-stats-bar">
+                <div className="rca-stats-primary">
+                    <span className="rca-stats-icon">📊</span>
+                    <span className="rca-stats-text">
+                        <strong>{data.stats.totalRequirements}</strong> requirements across{' '}
+                        <strong>{data.stats.totalRoles}</strong> roles and{' '}
+                        <strong>{data.stats.totalUseCases}</strong> use cases
+                    </span>
+                </div>
+                <div className="rca-stats-secondary">
+                    <span className="rca-stats-universal">{data.stats.universalRequirements} universal</span>
+                    <span className="rca-stats-divider">•</span>
+                    <span className="rca-stats-specific">{data.stats.useCaseSpecificRequirements} use-case specific</span>
+                </div>
+            </div>
+
             <div className="rca-content">
                 <section className="rca-configuration">
                     {/* Step 1: Multi-role selection with inline profile configuration */}

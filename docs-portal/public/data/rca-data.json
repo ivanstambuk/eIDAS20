@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-20T20:14:52.643Z",
+  "generatedAt": "2026-01-21T01:16:37.241Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -27487,6 +27487,9 @@
     "totalRequirements": 458,
     "totalUseCases": 19,
     "totalCategories": 8,
+    "totalRoles": 7,
+    "universalRequirements": 393,
+    "useCaseSpecificRequirements": 65,
     "requirementsByRole": {
       "conformity_assessment_body": 36,
       "issuer": 42,
