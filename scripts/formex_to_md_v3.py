@@ -555,11 +555,25 @@ def process_list_with_quotes(list_elem, parent_elem, indent_level=0):
                     lines.append("")
                     continue
                 
-                # Case 3: Plain P without nested structures - blockquote its content
+                # Case 3: Plain P without nested structures or QUOT.S
+                # Only blockquote if this is amendment replacement text (instruction contains "replaced", etc.)
+                # Otherwise, treat as continuation paragraph (like Article 7(f) sub-paragraphs)
                 p_text = clean_text(get_element_text(p_elem))
                 if p_text:
-                    lines.append(f"{bullet_indent}> {p_text}")
-                    lines.append("")  # Add blank line after blockquote
+                    # Check if instruction indicates amendment replacement context
+                    is_amendment_context = instruction_text and any(
+                        keyword in instruction_text.lower() 
+                        for keyword in ['replaced', 'inserted', 'added', 'deleted', 'amended as follows']
+                    )
+                    
+                    if is_amendment_context:
+                        # Blockquote for amendment replacement text
+                        lines.append(f"{bullet_indent}> {p_text}")
+                        lines.append("")  # Add blank line after blockquote
+                    else:
+                        # Regular continuation paragraph - indent under the list item
+                        lines.append(f"{bullet_indent}{p_text}")
+                        lines.append("")
             
             # Process nested lists that are direct children of NP (outside P)
             for nested_list in np_elem.findall('LIST'):
