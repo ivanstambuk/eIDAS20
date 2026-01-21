@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T20:11:49.941Z",
+  "generated": "2026-01-21T21:45:10.481Z",
   "statistics": {
     "totalTerms": 268,
     "totalDefinitions": 404,
@@ -2217,6 +2217,9 @@
       ],
       "domains": [
         "governance"
+      ],
+      "aliases": [
+        "CAB"
       ]
     },
     {
@@ -3678,6 +3681,9 @@
       ],
       "domains": [
         "attestation"
+      ],
+      "aliases": [
+        "EAA"
       ]
     },
     {
@@ -3724,6 +3730,9 @@
       "domains": [
         "attestation",
         "identity"
+      ],
+      "aliases": [
+        "PuB-EAA"
       ]
     },
     {
@@ -4930,6 +4939,11 @@
       "domains": [
         "wallet_ecosystem",
         "identity"
+      ],
+      "aliases": [
+        "EUDIW",
+        "EUDI Wallet",
+        "wallet"
       ]
     },
     {
@@ -7462,6 +7476,9 @@
       ],
       "domains": [
         "governance"
+      ],
+      "aliases": [
+        "NAB"
       ]
     },
     {
@@ -8442,6 +8459,9 @@
       ],
       "domains": [
         "identity"
+      ],
+      "aliases": [
+        "PID"
       ]
     },
     {
@@ -9679,6 +9699,9 @@
       ],
       "domains": [
         "attestation"
+      ],
+      "aliases": [
+        "QEAA"
       ]
     },
     {
@@ -9956,6 +9979,9 @@
       ],
       "domains": [
         "cryptography"
+      ],
+      "aliases": [
+        "QES"
       ]
     },
     {
@@ -10117,6 +10143,9 @@
       ],
       "domains": [
         "cryptography"
+      ],
+      "aliases": [
+        "QSealCD"
       ]
     },
     {
@@ -10162,6 +10191,9 @@
       ],
       "domains": [
         "cryptography"
+      ],
+      "aliases": [
+        "QSCD"
       ]
     },
     {
@@ -10363,6 +10395,9 @@
       "domains": [
         "attestation",
         "governance"
+      ],
+      "aliases": [
+        "QTSP"
       ]
     },
     {
@@ -10819,6 +10854,9 @@
       ],
       "domains": [
         "cryptography"
+      ],
+      "aliases": [
+        "rQSealCD"
       ]
     },
     {
@@ -10864,6 +10902,9 @@
       ],
       "domains": [
         "cryptography"
+      ],
+      "aliases": [
+        "rQSCD"
       ]
     },
     {
@@ -12574,6 +12615,9 @@
       "domains": [
         "attestation",
         "governance"
+      ],
+      "aliases": [
+        "TSP"
       ]
     },
     {
@@ -13691,6 +13735,9 @@
       "domains": [
         "wallet_ecosystem",
         "cryptography"
+      ],
+      "aliases": [
+        "WSCA"
       ]
     },
     {
@@ -13912,6 +13959,9 @@
       "domains": [
         "wallet_ecosystem",
         "cryptography"
+      ],
+      "aliases": [
+        "WSCD"
       ]
     },
     {
@@ -14464,6 +14514,9 @@
       "domains": [
         "wallet_ecosystem",
         "attestation"
+      ],
+      "aliases": [
+        "WUA"
       ]
     },
     {

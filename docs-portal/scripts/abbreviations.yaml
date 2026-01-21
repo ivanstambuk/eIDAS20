@@ -1,0 +1,87 @@
+# Terminology Abbreviations
+# ==========================
+# Maps common abbreviations to their canonical term IDs.
+# These abbreviations become lookup aliases for terminology linking,
+# allowing "QEAA" in text to link to "qualified electronic attestation of attributes".
+#
+# Format: ABBREVIATION: term-id
+#
+# The term-id must match an existing entry in terminology.json.
+# Abbreviations are case-sensitive in this file but matched case-insensitively.
+#
+# Sources:
+# - eIDAS 2.0 Regulation and Implementing Acts
+# - ARF Annex 1 Definitions (https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)
+#
+# Note: This file is loaded by build-terminology.js and merged into
+# the terminology data as aliases. The rehype-term-links.js plugin
+# then uses these aliases for text matching.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Electronic Attestations of Attributes
+# ═══════════════════════════════════════════════════════════════════════════════
+EAA: electronic-attestation-of-attributes
+QEAA: qualified-electronic-attestation-of-attributes
+PuB-EAA: electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Trust Service Providers
+# ═══════════════════════════════════════════════════════════════════════════════
+TSP: trust-service-provider
+QTSP: qualified-trust-service-provider
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Person Identification Data
+# ═══════════════════════════════════════════════════════════════════════════════
+PID: person-identification-data
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# European Digital Identity Wallet
+# ═══════════════════════════════════════════════════════════════════════════════
+EUDIW: european-digital-identity-wallet
+EUDI Wallet: european-digital-identity-wallet
+wallet: european-digital-identity-wallet
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Wallet Components (ARF terminology)
+# ═══════════════════════════════════════════════════════════════════════════════
+WSCD: wallet-secure-cryptographic-device
+WSCA: wallet-secure-cryptographic-application
+WUA: wallet-unit-attestation
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Electronic Signatures and Seals
+# ═══════════════════════════════════════════════════════════════════════════════
+QES: qualified-electronic-signature
+QSCD: qualified-signature-creation-device
+QSealCD: qualified-seal-creation-device
+rQSCD: remote-qualified-electronic-signature-creation-device
+rQSealCD: remote-qualified-electronic-seal-creation-device
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Levels of Assurance
+# ═══════════════════════════════════════════════════════════════════════════════
+LoA: level-of-assurance
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PKI and Certificates (from ARF)
+# ═══════════════════════════════════════════════════════════════════════════════
+CA: certificate-authority
+PKI: public-key-infrastructure
+CP: certificate-policy
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# National Bodies
+# ═══════════════════════════════════════════════════════════════════════════════
+NAB: national-accreditation-body
+CAB: conformity-assessment-body
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Advanced Electronic Signature formats
+# Note: AdES, CAdES, XAdES, PAdES, JAdES are already defined as terms themselves
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DORA/ICT terminology
+# ═══════════════════════════════════════════════════════════════════════════════
+# ICT: ict-services  # Commented: too generic, may cause false matches

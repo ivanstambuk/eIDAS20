@@ -121,6 +121,20 @@ function buildTermMap(terminology) {
                 });
             }
         }
+
+        // Add abbreviation aliases (QEAA, TSP, etc.)
+        // These are loaded from abbreviations.yaml and attached to terms by build-terminology.js
+        if (term.aliases && Array.isArray(term.aliases)) {
+            for (const alias of term.aliases) {
+                const normalizedAlias = alias.toLowerCase();
+                addVariant(normalizedAlias, {
+                    id: term.id,
+                    originalTerm: term.term,
+                    isAlias: true,
+                    aliasFrom: alias
+                });
+            }
+        }
     }
 
     return map;

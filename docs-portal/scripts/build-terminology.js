@@ -41,6 +41,10 @@ const SOURCE_DIRS = [
 // This YAML file contains manually curated definitions from sources like EC FAQ
 const SUPPLEMENTARY_TERMS_FILE = join(__dirname, 'supplementary-terms.yaml');
 
+// Abbreviations file: Maps abbreviations (QEAA, TSP, etc.) to canonical term IDs
+// These become lookup aliases for terminology linking
+const ABBREVIATIONS_FILE = join(__dirname, 'abbreviations.yaml');
+
 /**
  * Load human-friendly document titles from regulations-index.json
  * This provides shortTitle (e.g., "eIDAS 2.0 Regulation (Consolidated)") 
@@ -306,6 +310,47 @@ function loadSupplementaryTerms() {
     } catch (err) {
         console.warn('⚠️  Could not load supplementary-terms.yaml:', err.message);
         return [];
+    }
+}
+
+/**
+ * Load abbreviation mappings from YAML file
+ * Maps abbreviations (QEAA, TSP, etc.) to canonical term IDs
+ * 
+ * Returns: Map<abbreviation, termId>
+ */
+function loadAbbreviations() {
+    if (!existsSync(ABBREVIATIONS_FILE)) {
+        return new Map();
+    }
+
+    try {
+        const content = readFileSync(ABBREVIATIONS_FILE, 'utf-8');
+        const abbreviations = new Map();
+
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim();
+
+            // Skip comments, empty lines, and section dividers
+            if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('═')) continue;
+
+            // Parse "ABBREV: term-id" format
+            const colonIndex = trimmed.indexOf(':');
+            if (colonIndex > 0) {
+                const abbrev = trimmed.substring(0, colonIndex).trim();
+                const termId = trimmed.substring(colonIndex + 1).trim();
+
+                // Valid entries have non-empty abbrev and termId
+                if (abbrev && termId) {
+                    abbreviations.set(abbrev, termId);
+                }
+            }
+        }
+
+        return abbreviations;
+    } catch (err) {
+        console.warn('⚠️  Could not load abbreviations.yaml:', err.message);
+        return new Map();
     }
 }
 
@@ -808,6 +853,45 @@ function build() {
     if (unmappedTerms.length > 0) {
         console.warn(`   ⚠️  Terms without role OR domain mapping: ${unmappedTerms.length}`);
         console.warn(`      ${unmappedTerms.slice(0, 5).join(', ')}${unmappedTerms.length > 5 ? '...' : ''}`);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Abbreviation Aliases: Add lookup aliases for terms (QEAA → qualified-electronic-attestation-of-attributes)
+    // ═══════════════════════════════════════════════════════════════════════════
+    console.log('\n🔤 Loading abbreviation aliases...');
+    const abbreviations = loadAbbreviations();
+    let termsWithAliases = 0;
+    let unmappedAbbreviations = [];
+
+    // Build term ID → term index for quick lookup
+    const termIdMap = new Map();
+    for (const term of mergedTerms) {
+        termIdMap.set(term.id, term);
+    }
+
+    // Assign abbreviations as aliases to their target terms
+    for (const [abbrev, termId] of abbreviations) {
+        const term = termIdMap.get(termId);
+        if (term) {
+            // Initialize aliases array if not exists
+            if (!term.aliases) {
+                term.aliases = [];
+                termsWithAliases++;
+            }
+            term.aliases.push(abbrev);
+        } else {
+            unmappedAbbreviations.push(`${abbrev} → ${termId}`);
+        }
+    }
+
+    console.log(`   📎 Loaded ${abbreviations.size} abbreviations`);
+    console.log(`   ✅ Terms with aliases: ${termsWithAliases}`);
+
+    if (unmappedAbbreviations.length > 0) {
+        console.warn(`   ⚠️  Abbreviations pointing to non-existent terms:`);
+        for (const unmapped of unmappedAbbreviations) {
+            console.warn(`      - ${unmapped}`);
+        }
     }
 
     // Build filter metadata for UI dropdowns
