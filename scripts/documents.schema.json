@@ -27,16 +27,31 @@
         "document": {
             "type": "object",
             "required": [
-                "celex",
                 "title",
                 "legalType",
                 "category",
                 "output_dir"
             ],
+            "oneOf": [
+                {
+                    "required": [
+                        "celex"
+                    ]
+                },
+                {
+                    "required": [
+                        "id"
+                    ]
+                }
+            ],
             "properties": {
                 "celex": {
                     "type": "string",
-                    "description": "CELEX identifier"
+                    "description": "CELEX identifier for EU legal documents"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Custom identifier for supplementary (non-legal) documents"
                 },
                 "title": {
                     "type": "string",
@@ -57,22 +72,28 @@
                         "implementing_regulation",
                         "decision",
                         "recommendation",
-                        "directive"
+                        "directive",
+                        "faq"
                     ],
-                    "description": "What the document IS under EU law"
+                    "description": "What the document IS under EU law (or 'faq' for supplementary guidance)"
                 },
                 "category": {
                     "type": "string",
                     "enum": [
                         "primary",
                         "implementing_act",
-                        "referenced"
+                        "referenced",
+                        "supplementary"
                     ],
                     "description": "How the document relates to the eIDAS project"
                 },
                 "cellar_id": {
                     "type": "string",
                     "description": "EU Cellar identifier for Formex download"
+                },
+                "external_url": {
+                    "type": "string",
+                    "description": "External URL for non-legal documents"
                 },
                 "source": {
                     "type": "string",

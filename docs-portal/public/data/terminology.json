@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T02:58:53.178Z",
+  "generated": "2026-01-21T04:38:37.381Z",
   "statistics": {
     "totalTerms": 151,
     "totalDefinitions": 256,
@@ -879,13 +879,13 @@
         {
           "definition": "personal data protection policies which are adhered to by a controller or processor established on the territory of a Member State for transfers or a set of transfers of personal data to a controller or processor in one or more third countries within a group of undertakings, or group of enterprises engaged in a joint economic activity",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-20",
           "articleNumber": "4(20)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -897,13 +897,13 @@
             {
               "definition": "personal data protection policies which are adhered to by a controller or processor established on the territory of a Member State for transfers or a set of transfers of personal data to a controller or processor in one or more third countries within a group of undertakings, or group of enterprises engaged in a joint economic activity",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-20",
               "articleNumber": "4(20)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -919,13 +919,13 @@
         {
           "definition": "personal data resulting from specific technical processing relating to the physical, physiological or behavioural characteristics of a natural person, which allow or confirm the unique identification of that natural person, such as facial images or dactyloscopic data",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-14",
           "articleNumber": "4(14)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -937,13 +937,13 @@
             {
               "definition": "personal data resulting from specific technical processing relating to the physical, physiological or behavioural characteristics of a natural person, which allow or confirm the unique identification of that natural person, such as facial images or dactyloscopic data",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-14",
               "articleNumber": "4(14)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -1047,7 +1047,7 @@
         {
           "definition": "a digital repository of attributes that is maintained and published online by the Commission",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -1065,7 +1065,7 @@
             {
               "definition": "a digital repository of attributes that is maintained and published online by the Commission",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -1093,7 +1093,7 @@
         {
           "definition": "a digital repository listing schemes for the attestation of attributes registered in accordance with this Regulation and that is maintained [and published online] by the Commission",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -1111,7 +1111,7 @@
             {
               "definition": "a digital repository listing schemes for the attestation of attributes registered in accordance with this Regulation and that is maintained [and published online] by the Commission",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -1791,13 +1791,13 @@
         {
           "definition": "the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-7",
           "articleNumber": "4(7)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -1809,13 +1809,13 @@
             {
               "definition": "the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-7",
               "articleNumber": "4(7)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -1941,7 +1941,7 @@
         {
           "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -1963,7 +1963,7 @@
         {
           "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -2047,7 +2047,7 @@
             {
               "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -2069,7 +2069,7 @@
             {
               "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -2142,13 +2142,13 @@
         {
           "definition": "personal data related to the physical or mental health of a natural person, including the provision of health care services, which reveal information about his or her health status",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-15",
           "articleNumber": "4(15)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -2160,13 +2160,13 @@
             {
               "definition": "personal data related to the physical or mental health of a natural person, including the provision of health care services, which reveal information about his or her health status",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-15",
               "articleNumber": "4(15)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3160,13 +3160,13 @@
         {
           "definition": "a natural or legal person engaged in an economic activity, irrespective of its legal form, including partnerships or associations regularly engaged in an economic activity",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-18",
           "articleNumber": "4(18)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3178,13 +3178,13 @@
             {
               "definition": "a natural or legal person engaged in an economic activity, irrespective of its legal form, including partnerships or associations regularly engaged in an economic activity",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-18",
               "articleNumber": "4(18)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3292,13 +3292,13 @@
         {
           "definition": "any structured set of personal data which are accessible according to specific criteria, whether centralised, decentralised or dispersed on a functional or geographical basis",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-6",
           "articleNumber": "4(6)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3310,13 +3310,13 @@
             {
               "definition": "any structured set of personal data which are accessible according to specific criteria, whether centralised, decentralised or dispersed on a functional or geographical basis",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-6",
               "articleNumber": "4(6)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3376,13 +3376,13 @@
         {
           "definition": "personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-13",
           "articleNumber": "4(13)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3394,13 +3394,13 @@
             {
               "definition": "personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-13",
               "articleNumber": "4(13)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3416,13 +3416,13 @@
         {
           "definition": "a controlling undertaking and its controlled undertakings",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-19",
           "articleNumber": "4(19)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3434,13 +3434,13 @@
             {
               "definition": "a controlling undertaking and its controlled undertakings",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-19",
               "articleNumber": "4(19)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3593,13 +3593,13 @@
         {
           "definition": "a service as defined in point (b) of Article 1(1) of Directive (EU) 2015/1535 of the European Parliament and of the Council (19)",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-25",
           "articleNumber": "4(25)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3611,13 +3611,13 @@
             {
               "definition": "a service as defined in point (b) of Article 1(1) of Directive (EU) 2015/1535 of the European Parliament and of the Council (19)",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-25",
               "articleNumber": "4(25)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3633,13 +3633,13 @@
         {
           "definition": "an organisation and its subordinate bodies governed by public international law, or any other body which is set up by, or on the basis of, an agreement between two or more countries",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-26",
           "articleNumber": "4(26)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -3651,13 +3651,13 @@
             {
               "definition": "an organisation and its subordinate bodies governed by public international law, or any other body which is set up by, or on the basis of, an agreement between two or more countries",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-26",
               "articleNumber": "4(26)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -3880,7 +3880,7 @@
         {
           "definition": "a national electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -3898,7 +3898,7 @@
             {
               "definition": "a national electronic register used by a Member State to make information on wallet-relying parties registered in that Member State publicly available as set out in Article 5b(5) of Regulation (EU) No 910/2014",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -4015,7 +4015,7 @@
         {
           "definition": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -4033,7 +4033,7 @@
             {
               "definition": "an entity responsible for establishing and maintaining a scheme for the attestation of attributes",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -4203,13 +4203,13 @@
         {
           "definition": "any information relating to an identified or identifiable natural person ('data subject')",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-1",
           "articleNumber": "4(1)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": true,
@@ -4238,13 +4238,13 @@
             {
               "definition": "any information relating to an identified or identifiable natural person ('data subject')",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-1",
               "articleNumber": "4(1)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": true
@@ -4264,13 +4264,13 @@
         {
           "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-12",
           "articleNumber": "4(12)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -4282,13 +4282,13 @@
             {
               "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-12",
               "articleNumber": "4(12)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -4304,13 +4304,13 @@
         {
           "definition": "any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-2",
           "articleNumber": "4(2)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -4322,13 +4322,13 @@
             {
               "definition": "any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-2",
               "articleNumber": "4(2)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -4344,13 +4344,13 @@
         {
           "definition": "a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-8",
           "articleNumber": "4(8)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -4362,13 +4362,13 @@
             {
               "definition": "a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-8",
               "articleNumber": "4(8)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -4428,13 +4428,13 @@
         {
           "definition": "any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person's performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-4",
           "articleNumber": "4(4)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -4446,13 +4446,13 @@
             {
               "definition": "any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person's performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-4",
               "articleNumber": "4(4)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -4512,7 +4512,7 @@
         {
           "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -4585,7 +4585,7 @@
             {
               "definition": "a natural or legal person responsible for issuing and revoking the person identification data and ensuring that the person identification data of a user is cryptographically bound to a wallet unit",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -4666,7 +4666,7 @@
         {
           "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party access certificates to wallet-relying parties registered in that Member State",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -4734,7 +4734,7 @@
             {
               "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party access certificates to wallet-relying parties registered in that Member State",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -4762,7 +4762,7 @@
         {
           "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -4780,7 +4780,7 @@
             {
               "definition": "a natural or legal person mandated by a Member State to issue wallet-relying party registration certificates to wallet-relying parties registered in that Member State",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -4808,13 +4808,13 @@
         {
           "definition": "the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-5",
           "articleNumber": "4(5)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -4826,13 +4826,13 @@
             {
               "definition": "the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-5",
               "articleNumber": "4(5)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -5881,13 +5881,13 @@
         {
           "definition": "a natural or legal person, public authority, agency or another body, to which the personal data are disclosed, whether a third party or not",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-9",
           "articleNumber": "4(9)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -5899,13 +5899,13 @@
             {
               "definition": "a natural or legal person, public authority, agency or another body, to which the personal data are disclosed, whether a third party or not",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-9",
               "articleNumber": "4(9)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -5978,7 +5978,7 @@
         {
           "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory and who has been designated by a Member State",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -6013,7 +6013,7 @@
             {
               "definition": "the body responsible for establishing and maintaining the list of registered wallet-relying parties established in their territory and who has been designated by a Member State",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -6085,13 +6085,13 @@
         {
           "definition": "an objection to a draft decision as to whether there is an infringement of this Regulation, or whether envisaged action in relation to the controller or processor complies with this Regulation, which clearly demonstrates the significance of the risks posed by the draft decision as regards the fundamental rights and freedoms of data subjects and, where applicable, the free flow of personal data within the Union",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-24",
           "articleNumber": "4(24)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6103,13 +6103,13 @@
             {
               "definition": "an objection to a draft decision as to whether there is an infringement of this Regulation, or whether envisaged action in relation to the controller or processor complies with this Regulation, which clearly demonstrates the significance of the risks posed by the draft decision as regards the fundamental rights and freedoms of data subjects and, where applicable, the free flow of personal data within the Union",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-24",
               "articleNumber": "4(24)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -6302,13 +6302,13 @@
         {
           "definition": "a natural or legal person established in the Union who, designated by the controller or processor in writing pursuant to Article 27, represents the controller or processor with regard to their respective obligations under this Regulation",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-17",
           "articleNumber": "4(17)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6320,13 +6320,13 @@
             {
               "definition": "a natural or legal person established in the Union who, designated by the controller or processor in writing pursuant to Article 27, represents the controller or processor with regard to their respective obligations under this Regulation",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-17",
               "articleNumber": "4(17)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -6342,13 +6342,13 @@
         {
           "definition": "the marking of stored personal data with the aim of limiting their processing in the future",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-3",
           "articleNumber": "4(3)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6360,13 +6360,13 @@
             {
               "definition": "the marking of stored personal data with the aim of limiting their processing in the future",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-3",
               "articleNumber": "4(3)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -6428,7 +6428,7 @@
         {
           "definition": "a set of rules applicable to one or more types of electronic attestation of attributes",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -6446,7 +6446,7 @@
             {
               "definition": "a set of rules applicable to one or more types of electronic attestation of attributes",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -6725,13 +6725,13 @@
         {
           "definition": "an independent public authority which is established by a Member State pursuant to Article 51",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-21",
           "articleNumber": "4(21)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6743,13 +6743,13 @@
             {
               "definition": "an independent public authority which is established by a Member State pursuant to Article 51",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-21",
               "articleNumber": "4(21)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -6765,13 +6765,13 @@
         {
           "definition": "a supervisory authority which is concerned by the processing of personal data because:",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-22",
           "articleNumber": "4(22)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6783,13 +6783,13 @@
             {
               "definition": "a supervisory authority which is concerned by the processing of personal data because:",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-22",
               "articleNumber": "4(22)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -6849,13 +6849,13 @@
         {
           "definition": "a natural or legal person, public authority, agency or body other than the data subject, controller, processor and persons who, under the direct authority of the controller or processor, are authorised to process personal data",
           "documentId": "2016-679",
-          "documentTitle": "GDPR",
-          "documentCategory": "primary",
+          "documentTitle": "GDPR (Consolidated)",
+          "documentCategory": "referenced",
           "documentType": "regulation",
           "celex": "02016R0679-20160504",
           "articleId": "article-4-para-10",
           "articleNumber": "4(10)",
-          "displayOrder": 1
+          "displayOrder": 3
         }
       ],
       "hasMultipleSources": false,
@@ -6867,13 +6867,13 @@
             {
               "definition": "a natural or legal person, public authority, agency or body other than the data subject, controller, processor and persons who, under the direct authority of the controller or processor, are authorised to process personal data",
               "documentId": "2016-679",
-              "documentTitle": "GDPR",
-              "documentCategory": "primary",
+              "documentTitle": "GDPR (Consolidated)",
+              "documentCategory": "referenced",
               "documentType": "regulation",
               "celex": "02016R0679-20160504",
               "articleId": "article-4-para-10",
               "articleNumber": "4(10)",
-              "displayOrder": 1
+              "displayOrder": 3
             }
           ],
           "isVariant": false
@@ -7142,7 +7142,7 @@
         {
           "definition": "a specifically named and semantically described group of electronic attestation of attributes",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -7160,7 +7160,7 @@
             {
               "definition": "a specifically named and semantically described group of electronic attestation of attributes",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -7431,7 +7431,7 @@
         {
           "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -7453,7 +7453,7 @@
         {
           "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and which the wallet user uses to interact with the wallet unit",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -7537,7 +7537,7 @@
             {
               "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and that the wallet user uses to interact with the wallet unit",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -7565,7 +7565,7 @@
             {
               "definition": "the application installed and configured on a wallet user’s device or environment, which is part of a wallet unit, and which the wallet user uses to interact with the wallet unit",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -7658,7 +7658,7 @@
         {
           "definition": "a natural or legal person who provides wallet solutions",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -7680,7 +7680,7 @@
         {
           "definition": "a natural or legal person who provides wallet solutions",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -7764,7 +7764,7 @@
             {
               "definition": "a natural or legal person who provides wallet solutions",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -7786,7 +7786,7 @@
             {
               "definition": "a natural or legal person who provides wallet solutions",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -7878,7 +7878,7 @@
         {
           "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -7900,7 +7900,7 @@
         {
           "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -7984,7 +7984,7 @@
             {
               "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -8006,7 +8006,7 @@
             {
               "definition": "an application that manages critical assets by being linked to and using the cryptographic and non-cryptographic functions provided by the wallet secure cryptographic device",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -8099,7 +8099,7 @@
         {
           "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -8121,7 +8121,7 @@
         {
           "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -8205,7 +8205,7 @@
             {
               "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -8227,7 +8227,7 @@
             {
               "definition": "a tamper-resistant device that provides an environment that is linked to and used by the wallet secure cryptographic application to protect critical assets and provide cryptographic functions for the secure execution of critical operations",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -8320,7 +8320,7 @@
         {
           "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -8342,7 +8342,7 @@
         {
           "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -8426,7 +8426,7 @@
             {
               "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -8448,7 +8448,7 @@
             {
               "definition": "a combination of software, hardware, services, settings, and configurations, including wallet instances, one or more wallet secure cryptographic applications and one or more wallet secure cryptographic devices",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -8540,7 +8540,7 @@
         {
           "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -8562,7 +8562,7 @@
         {
           "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -8646,7 +8646,7 @@
             {
               "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -8668,7 +8668,7 @@
             {
               "definition": "a unique configuration of a wallet solution that includes wallet instances, wallet secure cryptographic applications and wallet secure cryptographic devices provided by a wallet provider to an individual wallet user",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -8872,7 +8872,7 @@
         {
           "definition": "a user who is in control of the wallet unit",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -8894,7 +8894,7 @@
         {
           "definition": "a user who is in control of the wallet unit",
           "documentId": "2025-1569",
-          "documentTitle": "Sign Creation Devices",
+          "documentTitle": "Public Sector EAA",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R1569",
@@ -8978,7 +8978,7 @@
             {
               "definition": "a user who is in control of the wallet unit",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -9000,7 +9000,7 @@
             {
               "definition": "a user who is in control of the wallet unit",
               "documentId": "2025-1569",
-              "documentTitle": "Sign Creation Devices",
+              "documentTitle": "Public Sector EAA",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R1569",
@@ -9082,7 +9082,7 @@
         {
           "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -9155,7 +9155,7 @@
             {
               "definition": "a relying party that intends to rely upon wallet units for the provision of public or private services by means of digital interaction",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -9225,7 +9225,7 @@
         {
           "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -9287,7 +9287,7 @@
             {
               "definition": "a certificate for electronic seals or signatures authenticating and validating the wallet-relying party issued by a provider of wallet-relying party access certificates",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
@@ -9326,7 +9326,7 @@
         {
           "definition": "a data object that describes the intended use of the relying party and indicates the attributes the relying party has registered to intend to request from users",
           "documentId": "2025-0848",
-          "documentTitle": "Notified Wallet List",
+          "documentTitle": "Wallet RP Registration",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
           "celex": "32025R0848",
@@ -9361,7 +9361,7 @@
             {
               "definition": "a data object that describes the intended use of the relying party and indicates the attributes the relying party has registered to intend to request from users",
               "documentId": "2025-0848",
-              "documentTitle": "Notified Wallet List",
+              "documentTitle": "Wallet RP Registration",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
               "celex": "32025R0848",
