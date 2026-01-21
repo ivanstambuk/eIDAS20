@@ -415,24 +415,12 @@ HAVE ADOPTED THIS REGULATION:
 1. In order to achieve a high common level of digital operational resilience, this Regulation lays down uniform requirements concerning the security of network and information systems supporting the business processes of financial entities as follows:
 
 - (a) requirements applicable to financial entities in relation to:
-- (i) information and communication technology (ICT) risk management;
-(ii)
-
-reporting of major ICT-related incidents and notifying, on a voluntary basis, significant cyber threats to the competent authorities;
-
-(iii)
-
-reporting of major operational or security payment-related incidents to the competent authorities by financial entities referred to in Article 2(1), points (a) to (d);
-
-(iv)
-
-digital operational resilience testing;
-
-- (v) information and intelligence sharing in relation to cyber threats and vulnerabilities;
-(vi)
-
-measures for the sound management of ICT third-party risk;
-
+   - (i) information and communication technology (ICT) risk management;
+   - (ii) reporting of major ICT-related incidents and notifying, on a voluntary basis, significant cyber threats to the competent authorities;
+   - (iii) reporting of major operational or security payment-related incidents to the competent authorities by financial entities referred to in Article 2(1), points (a) to (d);
+   - (iv) digital operational resilience testing;
+   - (v) information and intelligence sharing in relation to cyber threats and vulnerabilities;
+   - (vi) measures for the sound management of ICT third-party risk;
 - (b) requirements in relation to the contractual arrangements concluded between ICT third-party service providers and financial entities;
 - (c) rules for the establishment and conduct of the Oversight Framework for critical ICT third-party service providers when providing services to financial entities;
 - (d) rules on cooperation among competent authorities, and rules on supervision and enforcement by competent authorities in relation to all matters covered by this Regulation.
@@ -647,13 +635,9 @@ For the purposes of the first subparagraph, the management body shall:
 - (h) approve and periodically review the financial entity’s policy on arrangements regarding the use of ICT services provided by ICT third-party service providers;
 - (i) put in place, at corporate level, reporting channels enabling it to be duly informed of the following:
 - (i) arrangements concluded with ICT third-party service providers on the use of ICT services,
-(ii)
+   - (ii) any relevant planned material changes regarding the ICT third-party service providers,
 
-any relevant planned material changes regarding the ICT third-party service providers,
-
-(iii)
-
-the potential impact of such changes on the critical or important functions subject to those arrangements, including a risk analysis summary to assess the impact of those changes, and at least major ICT-related incidents and their impact, as well as response, recovery and corrective measures.
+   - (iii) the potential impact of such changes on the critical or important functions subject to those arrangements, including a risk analysis summary to assess the impact of those changes, and at least major ICT-related incidents and their impact, as well as response, recovery and corrective measures.
 
 3. Financial entities, other than microenterprises, shall establish a role in order to monitor the arrangements concluded with ICT third-party service providers on the use of ICT services, or shall designate a member of senior management as responsible for overseeing the related risk exposure and relevant documentation.
 
@@ -1006,13 +990,9 @@ The ESAs, through the Joint Committee, and in consultation with ENISA and the EC
 
 - (a) common draft regulatory technical standards in order to:
 - (i) establish the content of the reports for major ICT-related incidents in order to reflect the criteria laid down in Article 18(1) and incorporate further elements, such as details for establishing the relevance of the reporting for other Member States and whether it constitutes a major operational or security payment-related incident or not;
-(ii)
+   - (ii) determine the time limits for the initial notification and for each report referred to in Article 19(4);
 
-determine the time limits for the initial notification and for each report referred to in Article 19(4);
-
-(iii)
-
-establish the content of the notification for significant cyber threats.
+   - (iii) establish the content of the notification for significant cyber threats.
 
 When developing those draft regulatory technical standards, the ESAs shall take into account the size and the overall risk profile of the financial entity, and the nature, scale and complexity of its services, activities and operations, and in particular, with a view to ensuring that, for the purposes of this paragraph, point (a), point (ii), different time limits may reflect, as appropriate, specificities of financial sectors, without prejudice to maintaining a consistent approach to ICT-related incident reporting pursuant to this Regulation and to Directive (EU) 2022/2555. The ESAs shall, as applicable, provide justification when deviating from the approaches taken in the context of that Directive;
 
@@ -1131,13 +1111,9 @@ Competent authorities shall identify financial entities that are required to per
 - (b) the requirements and standards governing the use of internal testers;
 - (c) the requirements in relation to:
 - (i) the scope of TLPT referred to in paragraph 2;
-(ii)
+   - (ii) the testing methodology and approach to be followed for each specific phase of the testing process;
 
-the testing methodology and approach to be followed for each specific phase of the testing process;
-
-(iii)
-
-the results, closure and remediation stages of the testing;
+   - (iii) the results, closure and remediation stages of the testing;
 
 - (d) the type of supervisory and other relevant cooperation which are needed for the implementation of TLPT, and for the facilitation of mutual recognition of that testing, in the context of financial entities that operate in more than one Member State, to allow an appropriate level of supervisory involvement and a flexible implementation to cater for specificities of financial sub-sectors or local financial markets.
 When developing those draft regulatory technical standards, the ESAs shall give due consideration to any specific feature arising from the distinct nature of activities across different financial services sectors.
@@ -1177,9 +1153,7 @@ Power is delegated to the Commission to supplement this Regulation by adopting t
 - (a) financial entities that have in place contractual arrangements for the use of ICT services to run their business operations shall, at all times, remain fully responsible for compliance with, and the discharge of, all obligations under this Regulation and applicable financial services law;
 - (b) financial entities’ management of ICT third-party risk shall be implemented in light of the principle of proportionality, taking into account:
 - (i) the nature, scale, complexity and importance of ICT-related dependencies,
-(ii)
-
-the risks arising from contractual arrangements on the use of ICT services concluded with ICT third-party service providers, taking into account the criticality or importance of the respective service, process or function, and the potential impact on the continuity and availability of financial services and activities, at individual and at group level.
+   - (ii) the risks arising from contractual arrangements on the use of ICT services concluded with ICT third-party service providers, taking into account the criticality or importance of the respective service, process or function, and the potential impact on the continuity and availability of financial services and activities, at individual and at group level.
 
 2. As part of their ICT risk management framework, financial entities, other than entities referred to in Article 16(1), first subparagraph, and other than microenterprises, shall adopt, and regularly review, a strategy on ICT third-party risk, taking into account the multi-vendor strategy referred to in Article 6(9), where applicable. The strategy on ICT third-party risk shall include a policy on the use of ICT services supporting critical or important functions provided by ICT third-party service providers and shall apply on an individual basis and, where relevant, on a sub-consolidated and consolidated basis. The management body shall, on the basis of an assessment of the overall risk profile of the financial entity and the scale and complexity of the business services, regularly review the risks identified in respect to contractual arrangements on the use of ICT services supporting critical or important functions.
 
@@ -1278,23 +1252,15 @@ Where the contractual arrangements on the use of ICT services supporting critica
 - (d) the obligation of the ICT third-party service provider to participate and fully cooperate in the financial entity’s TLPT as referred to in Articles 26 and 27;
 - (e) the right to monitor, on an ongoing basis, the ICT third-party service provider’s performance, which entails the following:
 - (i) unrestricted rights of access, inspection and audit by the financial entity, or an appointed third party, and by the competent authority, and the right to take copies of relevant documentation on-site if they are critical to the operations of the ICT third-party service provider, the effective exercise of which is not impeded or limited by other contractual arrangements or implementation policies;
-(ii)
+   - (ii) the right to agree on alternative assurance levels if other clients’ rights are affected;
 
-the right to agree on alternative assurance levels if other clients’ rights are affected;
+   - (iii) the obligation of the ICT third-party service provider to fully cooperate during the onsite inspections and audits performed by the competent authorities, the Lead Overseer, financial entity or an appointed third party; and
 
-(iii)
-
-the obligation of the ICT third-party service provider to fully cooperate during the onsite inspections and audits performed by the competent authorities, the Lead Overseer, financial entity or an appointed third party; and
-
-(iv)
-
-the obligation to provide details on the scope, procedures to be followed and frequency of such inspections and audits;
+   - (iv) the obligation to provide details on the scope, procedures to be followed and frequency of such inspections and audits;
 
 - (f) exit strategies, in particular the establishment of a mandatory adequate transition period:
 - (i) during which the ICT third-party service provider will continue providing the respective functions, or ICT services, with a view to reducing the risk of disruption at the financial entity or to ensure its effective resolution and restructuring;
-(ii)
-
-allowing the financial entity to migrate to another ICT third-party service provider or change to in-house solutions consistent with the complexity of the service provided.
+   - (ii) allowing the financial entity to migrate to another ICT third-party service provider or change to in-house solutions consistent with the complexity of the service provided.
 
 By way of derogation from point (e), the ICT third-party service provider and the financial entity that is a microenterprise may agree that the financial entity’s rights of access, inspection and audit can be delegated to an independent third party, appointed by the ICT third-party service provider, and that the financial entity is able to request information and assurance on the ICT third-party service provider’s performance from the third party at any time.
 
@@ -1323,16 +1289,12 @@ Power is delegated to the Commission to supplement this Regulation by adopting t
 - (a) the systemic impact on the stability, continuity or quality of the provision of financial services in the event that the relevant ICT third-party service provider would face a large scale operational failure to provide its services, taking into account the number of financial entities and the total value of assets of financial entities to which the relevant ICT third-party service provider provides services;
 - (b) the systemic character or importance of the financial entities that rely on the relevant ICT third-party service provider, assessed in accordance with the following parameters:
 - (i) the number of global systemically important institutions (G-SIIs) or other systemically important institutions (O-SIIs) that rely on the respective ICT third-party service provider;
-(ii)
-
-the interdependence between the G-SIIs or O-SIIs referred to in point (i) and other financial entities, including situations where the G-SIIs or O-SIIs provide financial infrastructure services to other financial entities;
+   - (ii) the interdependence between the G-SIIs or O-SIIs referred to in point (i) and other financial entities, including situations where the G-SIIs or O-SIIs provide financial infrastructure services to other financial entities;
 
 - (c) the reliance of financial entities on the services provided by the relevant ICT third-party service provider in relation to critical or important functions of financial entities that ultimately involve the same ICT third-party service provider, irrespective of whether financial entities rely on those services directly or indirectly, through subcontracting arrangements;
 - (d) the degree of substitutability of the ICT third-party service provider, taking into account the following parameters:
 - (i) the lack of real alternatives, even partial, due to the limited number of ICT third-party service providers active on a specific market, or the market share of the relevant ICT third-party service provider, or the technical complexity or sophistication involved, including in relation to any proprietary technology, or the specific features of the ICT third-party service provider’s organisation or activity;
-(ii)
-
-difficulties in relation to partially or fully migrating the relevant data and workloads from the relevant ICT third-party service provider to another ICT third-party service provider, due either to significant financial costs, time or other resources that the migration process may entail, or to increased ICT risk or other operational risks to which the financial entity may be exposed through such migration.
+   - (ii) difficulties in relation to partially or fully migrating the relevant data and workloads from the relevant ICT third-party service provider to another ICT third-party service provider, due either to significant financial costs, time or other resources that the migration process may entail, or to increased ICT risk or other operational risks to which the financial entity may be exposed through such migration.
 
 3. Where the ICT third-party service provider belongs to a group, the criteria referred to in paragraph 2 shall be considered in relation to the ICT services provided by the group as a whole.
 
@@ -1349,17 +1311,11 @@ After designating an ICT third-party service provider as critical, the ESAs, thr
 8. The designation referred to in paragraph 1, point (a), shall not apply to the following:
 
 - (i) financial entities providing ICT services to other financial entities;
-(ii)
+   - (ii) ICT third-party service providers that are subject to oversight frameworks established for the purposes of supporting the tasks referred to in Article 127(2) of the Treaty on the Functioning of the European Union;
 
-ICT third-party service providers that are subject to oversight frameworks established for the purposes of supporting the tasks referred to in Article 127(2) of the Treaty on the Functioning of the European Union;
+   - (iii) ICT intra-group service providers;
 
-(iii)
-
-ICT intra-group service providers;
-
-(iv)
-
-ICT third-party service providers providing ICT services solely in one Member State to financial entities that are only active in that Member State.
+   - (iv) ICT third-party service providers providing ICT services solely in one Member State to financial entities that are only active in that Member State.
 
 9. The ESAs, through the Joint Committee, shall establish, publish and update yearly the list of critical ICT third-party service providers at Union level.
 
@@ -1460,17 +1416,11 @@ Upon receipt of the draft oversight plan, the critical ICT third-party service p
 - (c) to request, after the completion of the oversight activities, reports specifying the actions that have been taken or the remedies that have been implemented by the critical ICT third-party service providers in relation to the recommendations referred to in point (d) of this paragraph;
 - (d) to issue recommendations on the areas referred to in Article 33(3), in particular concerning the following:
 - (i) the use of specific ICT security and quality requirements or processes, in particular in relation to the roll-out of patches, updates, encryption and other security measures which the Lead Overseer deems relevant for ensuring the ICT security of services provided to financial entities;
-(ii)
+   - (ii) the use of conditions and terms, including their technical implementation, under which the critical ICT third-party service providers provide ICT services to financial entities, which the Lead Overseer deems relevant for preventing the generation of single points of failure, the amplification thereof, or for minimising the possible systemic impact across the Union’s financial sector in the event of ICT concentration risk;
 
-the use of conditions and terms, including their technical implementation, under which the critical ICT third-party service providers provide ICT services to financial entities, which the Lead Overseer deems relevant for preventing the generation of single points of failure, the amplification thereof, or for minimising the possible systemic impact across the Union’s financial sector in the event of ICT concentration risk;
+   - (iii) any planned subcontracting, where the Lead Overseer deems that further subcontracting, including subcontracting arrangements which the critical ICT third-party service providers plan to enter into with ICT third-party service providers or with ICT subcontractors established in a third country, may trigger risks for the provision of services by the financial entity, or risks to the financial stability, based on the examination of the information gathered in accordance with Articles 37 and 38;
 
-(iii)
-
-any planned subcontracting, where the Lead Overseer deems that further subcontracting, including subcontracting arrangements which the critical ICT third-party service providers plan to enter into with ICT third-party service providers or with ICT subcontractors established in a third country, may trigger risks for the provision of services by the financial entity, or risks to the financial stability, based on the examination of the information gathered in accordance with Articles 37 and 38;
-
-(iv)
-
-refraining from entering into a further subcontracting arrangement, where the following cumulative conditions are met:
+   - (iv) refraining from entering into a further subcontracting arrangement, where the following cumulative conditions are met:
 
 —
 
@@ -1529,17 +1479,11 @@ The rights of the defence of the persons subject to the proceedings shall be ful
 The powers referred to in the first subparagraph may be exercised subject to all of the following conditions:
 
 - (i) the conduct of an inspection in a third-country is deemed necessary by the Lead Overseer to allow it to fully and effectively perform its duties under this Regulation;
-(ii)
+   - (ii) the inspection in a third-country is directly related to the provision of ICT services to financial entities in the Union;
 
-the inspection in a third-country is directly related to the provision of ICT services to financial entities in the Union;
+   - (iii) the critical ICT third-party service provider concerned consents to the conduct of an inspection in a third-country; and
 
-(iii)
-
-the critical ICT third-party service provider concerned consents to the conduct of an inspection in a third-country; and
-
-(iv)
-
-the relevant authority of the third-country concerned has been officially notified by the Lead Overseer and raised no objection thereto.
+   - (iv) the relevant authority of the third-country concerned has been officially notified by the Lead Overseer and raised no objection thereto.
 
 2. Without prejudice to the respective competences of the Union institutions and of Member States, for the purposes of paragraph 1, EBA, ESMA or EIOPA shall conclude administrative cooperation arrangements with the relevant authority of the third country in order to enable the smooth conduct of inspections in the third country concerned by the Lead Overseer and its designated team for its mission in that third country. Those cooperation arrangements shall not create legal obligations in respect of the Union and its Member States nor shall they prevent Member States and their competent authorities from concluding bilateral or multilateral arrangements with those third countries and their relevant authorities.
 
@@ -1803,9 +1747,7 @@ Those exercises may, as appropriate, also test the financial sector’s dependen
 - (a) have access to any document or data held in any form that the competent authority considers relevant for the performance of its duties and receive or take a copy of it;
 - (b) carry out on-site inspections or investigations, which shall include but shall not be limited to;
 - (i) summoning representatives of the financial entities for oral or written explanations on facts or documents relating to the subject matter and purpose of the investigation and to record the answers;
-(ii)
-
-interviewing any other natural or legal person who consents to be interviewed for the purpose of collecting information relating to the subject matter of an investigation;
+   - (ii) interviewing any other natural or legal person who consents to be interviewed for the purpose of collecting information relating to the subject matter of an investigation;
 
 - (c) require corrective and remedial measures for breaches of the requirements of this Regulation.
 3. Without prejudice to the right of Member States to impose criminal penalties in accordance with Article 52, Member States shall lay down rules establishing appropriate administrative penalties and remedial measures for breaches of this Regulation and shall ensure their effective implementation.
@@ -2001,9 +1943,7 @@ Annex III is amended as follows:
 
 a Tier 2 CCP infringes Article 26(3) by not maintaining or operating an organisational structure that ensures continuity and orderly functioning in the performance of its services and activities or by not employing appropriate and proportionate systems, resources or procedures including ICT systems managed in accordance with Regulation (EU) 2022/2554;’;
 
-(ii)
-
-point (f) is deleted.
+   - (ii) point (f) is deleted.
 
 - (b) in Section III, point (a) is replaced by the following:
 ‘(a)
