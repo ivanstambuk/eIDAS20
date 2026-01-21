@@ -18,6 +18,14 @@ roles:
         label: "Private Sector"
         description: "Commercial services, finance, healthcare, retail"
         icon: "🏪"
+      - id: uses_intermediary
+        label: "Uses Intermediary"
+        description: "Delegates wallet interaction to a third-party intermediary (SaaS or external connector)"
+        icon: "🔗"
+      - id: acts_as_intermediary
+        label: "Acts as Intermediary"
+        description: "Provides intermediary services to other RPs per Article 5b(10)"
+        icon: "🌉"
 
   issuer:
     label: "EAA Issuer"

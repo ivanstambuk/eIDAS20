@@ -1,4 +1,4 @@
-schemaVersion: 14
+schemaVersion: 15
 requirements:
   - id: RP-GOV-001
     category: governance
@@ -6,7 +6,8 @@ requirements:
     explanation: |
       When an intermediary (e.g., a payment processor, integration platform) acts on behalf 
       of a relying party, they are deemed to be relying parties themselves and are prohibited 
-      from storing data about the content of the transaction.
+      from storing data about the content of the transaction. This is the core "no-storage" 
+      mandate that distinguishes intermediaries from standard relying parties.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -17,6 +18,8 @@ requirements:
     deadline: "2027-11-21"
     roles:
       - relying_party
+    profileFilter:
+      - acts_as_intermediary
     useCases: all
   - id: RP-GOV-002
     category: governance
@@ -1904,3 +1907,332 @@ requirements:
       - relying_party
     useCases:
       - pid-online
+
+  # =====================================================
+  # INTERMEDIARY-SPECIFIC REQUIREMENTS
+  # Profile: uses_intermediary - For RPs delegating to intermediaries
+  # Profile: acts_as_intermediary - For organizations providing intermediary services
+  # =====================================================
+
+  # --- Profile: uses_intermediary ---
+  - id: RP-REG-014
+    category: registration
+    bindingType: mandatory
+    requirement: Indicate reliance on intermediary in national register
+    explanation: |
+      Relying parties that delegate wallet interaction to a third-party intermediary 
+      must declare this in their national registration. This creates a formal record 
+      of the dependency chain for supervisory oversight.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "14"
+    legalText: |
+      Where applicable, an indication that the wallet-relying party relies upon an 
+      intermediary acting on behalf of the relying party who intends to rely upon 
+      the wallet.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  - id: RP-REG-015
+    category: registration
+    bindingType: mandatory
+    requirement: Provide formal association to specific intermediary
+    explanation: |
+      When using an intermediary, relying parties must provide a formal association 
+      mapping to that specific intermediary in the national register. This enables 
+      supervisory bodies and users to trace the complete trust chain.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "15"
+    legalText: |
+      Where applicable, an association to the intermediary that the wallet-relying 
+      party is relying upon that is acting on behalf of the relying party who intends 
+      to rely upon the wallet.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  - id: RP-GOV-009
+    category: governance
+    bindingType: mandatory
+    requirement: Verify intermediary's registered and certified status
+    explanation: |
+      Before delegating wallet interactions, relying parties should verify that their 
+      chosen intermediary is properly registered as an RP and holds valid Access 
+      Certificates. This due diligence ensures the trust chain is intact.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 5
+      paragraph: "1-2"
+    legalText: |
+      Wallet-relying parties shall at least provide the information set out in Annex I 
+      to national registers. Wallet-relying parties shall ensure that the information 
+      provided is accurate at the time of registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+    notes: |
+      Best practice requirement. While not explicitly mandated, due diligence on 
+      intermediary status is implied by the registration and association requirements.
+
+  - id: RP-PRV-011
+    category: privacy
+    bindingType: mandatory
+    requirement: Establish Data Processing Agreement with intermediary
+    explanation: |
+      When using a SaaS intermediary service, the intermediary processes personal data 
+      on behalf of the relying party. Under GDPR Article 28, a Data Processing Agreement 
+      (DPA) is mandatory, specifying processing purposes, categories, deletion obligations, 
+      and audit rights.
+    legalBasis:
+      regulation: GDPR
+      article: Article 28
+      paragraph: "3"
+    relatedRegulation:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    legalText: |
+      Processing by a processor shall be governed by a contract or other legal act 
+      under Union or Member State law, that is binding on the processor with regard 
+      to the controller and that sets out the subject-matter and duration of the 
+      processing, the nature and purpose of the processing, the type of personal data 
+      and categories of data subjects and the obligations and rights of the controller.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+    notes: |
+      Applies primarily to SaaS intermediary deployments where the vendor processes 
+      data on behalf of the RP. Self-hosted connector deployments may not require 
+      a DPA for the wallet data flow itself.
+
+  - id: RP-SEC-004
+    category: security
+    bindingType: mandatory
+    requirement: Monitor and act on intermediary breach notifications
+    explanation: |
+      Relying parties using intermediaries must have processes to receive and respond 
+      to security breach notifications from their intermediary. When an intermediary 
+      is suspended or breached, downstream RPs must assess impact on their services.
+    legalBasis:
+      regulation: 2025/847
+      article: Article 5
+      paragraph: 1(d)
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      suspension of the provision and the use of a wallet solution shall be provided, 
+      without undue delay and no later than 24 hours after the suspension of the 
+      provision and the use of the wallet solution, to the wallet-relying parties 
+      registered in accordance with Article 5b of Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  # --- Profile: acts_as_intermediary ---
+  - id: RP-REG-016
+    category: registration
+    bindingType: mandatory
+    requirement: Register with appropriate entitlement for intermediary services
+    explanation: |
+      Organizations acting as intermediaries must register as wallet-relying parties 
+      with the appropriate entitlement type. The Service_Provider entitlement is 
+      the typical classification for intermediaries providing connection services.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "12"
+    legalText: |
+      The entitlement or entitlements of the wallet-relying party, that shall be 
+      expressed as: (a) 'Service_Provider' to express the entitlement of the 
+      wallet-relying party as a provider of services.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-TEC-019
+    category: technical
+    bindingType: mandatory
+    requirement: Obtain and manage Wallet-Relying Party Access Certificates
+    explanation: |
+      Intermediaries must obtain wallet-relying party access certificates to 
+      authenticate to wallet units. These certificates identify the intermediary 
+      to the wallet ecosystem and must be managed through proper lifecycle processes.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 7
+      paragraph: "1-2"
+    legalText: |
+      Member States shall authorise at least one certificate authority to issue 
+      wallet-relying party access certificates. Member States shall ensure that 
+      providers of wallet-relying party access certificates issue wallet-relying 
+      party access certificates exclusively to registered wallet-relying parties.
+    annexReference: |
+      Annex IV details requirements for access certificate policies and practices.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-TEC-020
+    category: technical
+    bindingType: mandatory
+    requirement: Orchestrate Registration Certificates for downstream RPs
+    explanation: |
+      Intermediaries must manage wallet-relying party registration certificates on 
+      behalf of their client RPs. Each client and use case requires a distinct 
+      registration certificate expressing the intended use and requested data.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 8
+      paragraph: "1-2"
+    legalText: |
+      Where a Member State authorised the issuance of a wallet-relying party 
+      registration certificate, that Member State shall require providers of 
+      wallet-relying party registration certificates to issue wallet-relying party 
+      registration certificates exclusively to registered wallet-relying parties; 
+      ensure that each intended use is expressed in the wallet-relying party 
+      registration certificates.
+    annexReference: |
+      Annex V details requirements for registration certificate policies and practices.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Applies in Member States that have authorized registration certificates. 
+      Multi-tenancy support is a key technical capability for intermediaries.
+
+  - id: RP-TRN-001
+    category: transparency
+    bindingType: mandatory
+    requirement: Present both intermediary and end-RP identity to wallet users
+    explanation: |
+      When acting as an intermediary, both the intermediary's identity (via Access 
+      Certificate) and the end-RP's identity and intended use (via Registration 
+      Certificate) must be presented to wallet users. This ensures users can make 
+      informed consent decisions.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex V
+      paragraph: 3(j)
+    legalText: |
+      The obligation for the wallet-relying party registration certificates to 
+      include the information referred to in Annex I, points 1, 2, 3, 5, 6 and 8, 
+      9, 10, 11, 12, 13, 14 and 15.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-SEC-005
+    category: security
+    bindingType: mandatory
+    requirement: Implement stateless transaction processing architecture
+    explanation: |
+      To comply with the Article 5b(10) "no-storage" mandate, intermediaries must 
+      implement a stateless processing architecture where transaction content data 
+      is purged immediately after forwarding. This requires technical measures to 
+      prevent any persistence of user data.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      relying parties and shall not store data about the content of the transaction.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Technical implementation should include memory-only processing, secure deletion, 
+      and audit mechanisms to demonstrate non-storage. Log retention for operational 
+      purposes (without transaction content) may still be permitted.
+
+  - id: RP-GOV-010
+    category: governance
+    bindingType: mandatory
+    requirement: Maintain audit trail demonstrating data non-storage
+    explanation: |
+      Intermediaries must maintain evidence that they comply with the no-storage 
+      mandate. This includes technical audits, SOC2 reports, and architectural 
+      documentation demonstrating stateless processing.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    relatedRegulation:
+      regulation: 2025/848
+      article: Article 10
+    legalText: |
+      Registrars shall keep records of the information provided by wallet-relying 
+      parties and registered in accordance with Annex I for the registration of a 
+      wallet-relying party and the issuance of the wallet-relying party access 
+      certificates and the wallet-relying party registration certificates, and of 
+      any subsequent changes to this information, for 10 years.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Best practice to support supervisory oversight and client due diligence. 
+      Third-party audits (SOC2, ISO 27001) can provide independent verification.
+
+  - id: RP-TEC-021
+    category: technical
+    bindingType: informative
+    requirement: Support multi-wallet interoperability
+    explanation: |
+      Intermediaries should support interoperability with all certified EUDI Wallets 
+      across Member States. This includes handling protocol variations, semantic 
+      normalization, and trust list monitoring for all national implementations.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 5
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols and 
+      interfaces for the presentation of attributes to wallet-relying parties, 
+      remotely, and where appropriate in proximity, in accordance with the 
+      standards set out in the Annex.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      While the legal requirement targets wallet providers, intermediaries acting 
+      as "connectors" take on the interoperability burden for their clients. 
+      Industry best practice is to test against multiple wallet implementations.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-21T04:36:25.312Z",
+  "generatedAt": "2026-01-21T10:09:36.916Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -266,6 +266,18 @@
           "label": "Private Sector",
           "description": "Commercial services, finance, healthcare, retail",
           "icon": "🏪"
+        },
+        {
+          "id": "uses_intermediary",
+          "label": "Uses Intermediary",
+          "description": "Delegates wallet interaction to a third-party intermediary (SaaS or external connector)",
+          "icon": "🔗"
+        },
+        {
+          "id": "acts_as_intermediary",
+          "label": "Acts as Intermediary",
+          "description": "Provides intermediary services to other RPs per Article 5b(10)",
+          "icon": "🌉"
         }
       ]
     },
@@ -5426,7 +5438,7 @@
       "id": "RP-GOV-001",
       "category": "governance",
       "requirement": "Intermediaries acting on behalf of RPs must not store transaction content data",
-      "explanation": "When an intermediary (e.g., a payment processor, integration platform) acts on behalf \nof a relying party, they are deemed to be relying parties themselves and are prohibited \nfrom storing data about the content of the transaction.",
+      "explanation": "When an intermediary (e.g., a payment processor, integration platform) acts on behalf \nof a relying party, they are deemed to be relying parties themselves and are prohibited \nfrom storing data about the content of the transaction. This is the core \"no-storage\" \nmandate that distinguishes intermediaries from standard relying parties.",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -5460,8 +5472,10 @@
         "representation"
       ],
       "appliesToAllUseCases": true,
-      "profileFilter": null,
-      "appliesToAllProfiles": true
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
     },
     {
       "id": "RP-GOV-002",
@@ -8405,6 +8419,531 @@
       "appliesToAllUseCases": false,
       "profileFilter": null,
       "appliesToAllProfiles": true
+    },
+    {
+      "id": "RP-REG-014",
+      "category": "registration",
+      "requirement": "Indicate reliance on intermediary in national register",
+      "explanation": "Relying parties that delegate wallet interaction to a third-party intermediary \nmust declare this in their national registration. This creates a formal record \nof the dependency chain for supervisory oversight.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Annex I",
+        "paragraph": "14"
+      },
+      "legalText": "Where applicable, an indication that the wallet-relying party relies upon an \nintermediary acting on behalf of the relying party who intends to rely upon \nthe wallet.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "uses_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-REG-015",
+      "category": "registration",
+      "requirement": "Provide formal association to specific intermediary",
+      "explanation": "When using an intermediary, relying parties must provide a formal association \nmapping to that specific intermediary in the national register. This enables \nsupervisory bodies and users to trace the complete trust chain.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Annex I",
+        "paragraph": "15"
+      },
+      "legalText": "Where applicable, an association to the intermediary that the wallet-relying \nparty is relying upon that is acting on behalf of the relying party who intends \nto rely upon the wallet.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "uses_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-GOV-009",
+      "category": "governance",
+      "requirement": "Verify intermediary's registered and certified status",
+      "explanation": "Before delegating wallet interactions, relying parties should verify that their \nchosen intermediary is properly registered as an RP and holds valid Access \nCertificates. This due diligence ensures the trust chain is intact.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 5",
+        "paragraph": "1-2"
+      },
+      "legalText": "Wallet-relying parties shall at least provide the information set out in Annex I \nto national registers. Wallet-relying parties shall ensure that the information \nprovided is accurate at the time of registration.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "uses_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-PRV-011",
+      "category": "privacy",
+      "requirement": "Establish Data Processing Agreement with intermediary",
+      "explanation": "When using a SaaS intermediary service, the intermediary processes personal data \non behalf of the relying party. Under GDPR Article 28, a Data Processing Agreement \n(DPA) is mandatory, specifying processing purposes, categories, deletion obligations, \nand audit rights.",
+      "legalBasis": {
+        "regulation": "GDPR",
+        "article": "Article 28",
+        "paragraph": "3"
+      },
+      "legalText": "Processing by a processor shall be governed by a contract or other legal act \nunder Union or Member State law, that is binding on the processor with regard \nto the controller and that sets out the subject-matter and duration of the \nprocessing, the nature and purpose of the processing, the type of personal data \nand categories of data subjects and the obligations and rights of the controller.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "relatedRegulation": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "uses_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-SEC-004",
+      "category": "security",
+      "requirement": "Monitor and act on intermediary breach notifications",
+      "explanation": "Relying parties using intermediaries must have processes to receive and respond \nto security breach notifications from their intermediary. When an intermediary \nis suspended or breached, downstream RPs must assess impact on their services.",
+      "legalBasis": {
+        "regulation": "2025/847",
+        "article": "Article 5",
+        "paragraph": "1(d)"
+      },
+      "legalText": "Information in a clear, comprehensive and easily accessible manner about the \nsuspension of the provision and the use of a wallet solution shall be provided, \nwithout undue delay and no later than 24 hours after the suspension of the \nprovision and the use of the wallet solution, to the wallet-relying parties \nregistered in accordance with Article 5b of Regulation (EU) No 910/2014.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "uses_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-REG-016",
+      "category": "registration",
+      "requirement": "Register with appropriate entitlement for intermediary services",
+      "explanation": "Organizations acting as intermediaries must register as wallet-relying parties \nwith the appropriate entitlement type. The Service_Provider entitlement is \nthe typical classification for intermediaries providing connection services.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Annex I",
+        "paragraph": "12"
+      },
+      "legalText": "The entitlement or entitlements of the wallet-relying party, that shall be \nexpressed as: (a) 'Service_Provider' to express the entitlement of the \nwallet-relying party as a provider of services.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-TEC-019",
+      "category": "technical",
+      "requirement": "Obtain and manage Wallet-Relying Party Access Certificates",
+      "explanation": "Intermediaries must obtain wallet-relying party access certificates to \nauthenticate to wallet units. These certificates identify the intermediary \nto the wallet ecosystem and must be managed through proper lifecycle processes.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 7",
+        "paragraph": "1-2"
+      },
+      "legalText": "Member States shall authorise at least one certificate authority to issue \nwallet-relying party access certificates. Member States shall ensure that \nproviders of wallet-relying party access certificates issue wallet-relying \nparty access certificates exclusively to registered wallet-relying parties.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-TEC-020",
+      "category": "technical",
+      "requirement": "Orchestrate Registration Certificates for downstream RPs",
+      "explanation": "Intermediaries must manage wallet-relying party registration certificates on \nbehalf of their client RPs. Each client and use case requires a distinct \nregistration certificate expressing the intended use and requested data.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 8",
+        "paragraph": "1-2"
+      },
+      "legalText": "Where a Member State authorised the issuance of a wallet-relying party \nregistration certificate, that Member State shall require providers of \nwallet-relying party registration certificates to issue wallet-relying party \nregistration certificates exclusively to registered wallet-relying parties; \nensure that each intended use is expressed in the wallet-relying party \nregistration certificates.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-TRN-001",
+      "category": "transparency",
+      "requirement": "Present both intermediary and end-RP identity to wallet users",
+      "explanation": "When acting as an intermediary, both the intermediary's identity (via Access \nCertificate) and the end-RP's identity and intended use (via Registration \nCertificate) must be presented to wallet users. This ensures users can make \ninformed consent decisions.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Annex V",
+        "paragraph": "3(j)"
+      },
+      "legalText": "The obligation for the wallet-relying party registration certificates to \ninclude the information referred to in Annex I, points 1, 2, 3, 5, 6 and 8, \n9, 10, 11, 12, 13, 14 and 15.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-SEC-005",
+      "category": "security",
+      "requirement": "Implement stateless transaction processing architecture",
+      "explanation": "To comply with the Article 5b(10) \"no-storage\" mandate, intermediaries must \nimplement a stateless processing architecture where transaction content data \nis purged immediately after forwarding. This requires technical measures to \nprevent any persistence of user data.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-GOV-010",
+      "category": "governance",
+      "requirement": "Maintain audit trail demonstrating data non-storage",
+      "explanation": "Intermediaries must maintain evidence that they comply with the no-storage \nmandate. This includes technical audits, SOC2 reports, and architectural \ndocumentation demonstrating stateless processing.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalText": "Registrars shall keep records of the information provided by wallet-relying \nparties and registered in accordance with Annex I for the registration of a \nwallet-relying party and the issuance of the wallet-relying party access \ncertificates and the wallet-relying party registration certificates, and of \nany subsequent changes to this information, for 10 years.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "relatedRegulation": {
+        "regulation": "2025/848",
+        "article": "Article 10"
+      },
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "RP-TEC-021",
+      "category": "technical",
+      "requirement": "Support multi-wallet interoperability",
+      "explanation": "Intermediaries should support interoperability with all certified EUDI Wallets \nacross Member States. This includes handling protocol variations, semantic \nnormalization, and trust list monitoring for all national implementations.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "1"
+      },
+      "legalText": "Wallet providers shall ensure that wallet solutions support protocols and \ninterfaces for the presentation of attributes to wallet-relying parties, \nremotely, and where appropriate in proximity, in accordance with the \nstandards set out in the Annex.",
+      "legalSourceInfo": null,
+      "deadline": "2027-11-21",
+      "applicableRoles": [
+        "relying_party"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "acts_as_intermediary"
+      ],
+      "appliesToAllProfiles": false
     },
     {
       "id": "SB-GOV-001",
@@ -21885,7 +22424,19 @@
         "RP-VER-011",
         "RP-VER-012",
         "RP-VER-013",
-        "RP-VER-014"
+        "RP-VER-014",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "pseudonym": [
         "RP-GOV-001",
@@ -21932,7 +22483,19 @@
         "RP-TEC-042",
         "RP-VER-001",
         "RP-VER-007",
-        "RP-VER-009"
+        "RP-VER-009",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "esignature": [
         "RP-GOV-001",
@@ -21999,7 +22562,19 @@
         "RP-TEC-043",
         "RP-VER-001",
         "RP-VER-006",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "payment-auth": [
         "RP-GOV-001",
@@ -22041,7 +22616,19 @@
         "RP-TEC-042",
         "RP-VER-001",
         "RP-VER-002",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "open-bank-account": [
         "RP-GOV-001",
@@ -22084,7 +22671,19 @@
         "RP-TEC-042",
         "RP-VER-001",
         "RP-VER-002",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "mdl": [
         "RP-GOV-001",
@@ -22124,7 +22723,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "dtc": [
         "RP-GOV-001",
@@ -22164,7 +22775,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "epc": [
         "RP-GOV-001",
@@ -22204,7 +22827,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "vrc": [
         "RP-GOV-001",
@@ -22244,7 +22879,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "disability-card": [
         "RP-GOV-001",
@@ -22284,7 +22931,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "eprescription": [
         "RP-GOV-001",
@@ -22324,7 +22983,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "ehic": [
         "RP-GOV-001",
@@ -22364,7 +23035,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "public-warnings": [
         "RP-GOV-001",
@@ -22404,7 +23087,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "age-verification": [
         "RP-GOV-001",
@@ -22448,7 +23143,19 @@
         "RP-TEC-042",
         "RP-VER-001",
         "RP-VER-007",
-        "RP-VER-009"
+        "RP-VER-009",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "ticket-pass": [
         "RP-GOV-001",
@@ -22488,7 +23195,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "edu-credentials": [
         "RP-GOV-001",
@@ -22528,7 +23247,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "student-card": [
         "RP-GOV-001",
@@ -22568,7 +23299,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "proximity-id": [
         "RP-GOV-001",
@@ -22613,7 +23356,19 @@
         "RP-TEC-042",
         "RP-VER-001",
         "RP-VER-007",
-        "RP-VER-008"
+        "RP-VER-008",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ],
       "representation": [
         "RP-GOV-001",
@@ -22653,7 +23408,19 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007"
+        "RP-VER-007",
+        "RP-REG-014",
+        "RP-REG-015",
+        "RP-GOV-009",
+        "RP-PRV-011",
+        "RP-SEC-004",
+        "RP-REG-016",
+        "RP-TEC-019",
+        "RP-TEC-020",
+        "RP-TRN-001",
+        "RP-SEC-005",
+        "RP-GOV-010",
+        "RP-TEC-021"
       ]
     },
     "supervisory_body": {
@@ -27484,17 +28251,17 @@
     }
   },
   "stats": {
-    "totalRequirements": 458,
+    "totalRequirements": 470,
     "totalUseCases": 19,
     "totalCategories": 8,
     "totalRoles": 7,
-    "universalRequirements": 393,
+    "universalRequirements": 405,
     "useCaseSpecificRequirements": 65,
     "requirementsByRole": {
       "conformity_assessment_body": 36,
       "issuer": 42,
       "pid_provider": 30,
-      "relying_party": 91,
+      "relying_party": 100,
       "supervisory_body": 42,
       "trust_service_provider": 85,
       "wallet_provider": 132
