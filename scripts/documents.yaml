@@ -68,8 +68,9 @@ documents:
   sidebarTitle: NIS2 Directive
   legalType: directive
   category: referenced
-  source: formex
+  source: manual  # Formex import + Corrigendum R(04) applied manually — DO NOT REGENERATE
   cellar_id: 9b84d482-85bd-11ed-9887-01aa75ed71a1.0006.02
+  consolidated_celex: 02022L2555-20221227  # Note: corrigendum R(04) dated 22.12.2023 applied manually
   output_dir: 01_regulation/2022_2555_NIS2
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)
