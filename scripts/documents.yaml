@@ -124,7 +124,8 @@ documents:
   cellar_id: 574269fb-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0847_Security_Breach_Response
 - celex: 32025R0848
-  title: Notified European Digital Identity Wallets List
+  title: Wallet Relying Party Registration
+  shortTitle: Wallet RP Registration
   legalType: regulation
   category: implementing_act
   source: formex
@@ -138,49 +139,56 @@ documents:
   cellar_id: 6cc3a1f7-2adb-11f0-8a44-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_0849_Certified_Wallet_List
 - celex: 32025R1566
-  title: Registered Electronic Delivery Services
+  title: Identity Verification Standards
+  shortTitle: Identity Verification Standards
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: 9738ce8b-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1566_Registered_Delivery
 - celex: 32025R1567
-  title: Certificate Formats
+  title: Remote QSCD Management
+  shortTitle: Remote QSCD Management
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: 8a505cff-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1567_Certificate_Formats
 - celex: 32025R1568
-  title: Remote Qualified Electronic Signature Creation
+  title: eID Scheme Peer Review
+  shortTitle: eID Scheme Peer Review
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: e85cbfd7-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1568_Remote_Signing
 - celex: 32025R1569
-  title: Signature and Seal Creation Devices
+  title: Public Sector EAA
+  shortTitle: Public Sector EAA
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: 990be0dd-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1569_Sign_Creation_Devices
 - celex: 32025R1570
-  title: Certified Qualified Electronic Signature Creation Devices
+  title: QSCD Notification
+  shortTitle: QSCD Notification
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: fdc40733-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1570_Certified_Creation_Devices
 - celex: 32025R1571
-  title: Electronic Seal Standards
+  title: Supervisory Annual Reports
+  shortTitle: Supervisory Annual Reports
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: 3dd3fad4-6cdd-11f0-bf4e-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1571_Seal_Standards
 - celex: 32025R1572
-  title: Electronic Signature Standards
+  title: QTS Initiation Notification
+  shortTitle: QTS Initiation Notification
   legalType: regulation
   category: implementing_act
   source: formex
@@ -215,21 +223,24 @@ documents:
   cellar_id: d8575546-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1944_Preservation_Standards  # ⚠️ MISLEADING NAME: Contains QERDS, not preservation
 - celex: 32025R1945
-  title: Wallet Trust Evidence Issuance
+  title: Signature and Seal Validation
+  shortTitle: Signature Validation
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: dead57ac-9d97-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1945_Wallet_Attributes
 - celex: 32025R1946
-  title: Wallet Reference Issuer
+  title: Qualified Preservation Services
+  shortTitle: Preservation Services
   legalType: regulation
   category: implementing_act
   source: formex
   cellar_id: 2fa94e9a-9d98-11f0-97c8-01aa75ed71a1.0006.02
   output_dir: 02_implementing_acts/2025_1946_Wallet_Reference_Issuer
 - celex: 32025R2160
-  title: Supervisory Data Exchange
+  title: Non-Qualified TSP Risk Management
+  shortTitle: Non-Qualified TSP Risks
   legalType: regulation
   category: implementing_act
   source: formex
