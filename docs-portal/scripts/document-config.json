@@ -27,6 +27,13 @@
                 "originalEurlexUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014R0910"
             }
         },
+        "2016-679": {
+            "label": "GDPR",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "General Data Protection Regulation - foundational data protection law. Article 4 contains 26 key definitions for personal data processing."
+        },
         "2008-765": {
             "label": "Referenced Regulation",
             "ragEnabled": true,
