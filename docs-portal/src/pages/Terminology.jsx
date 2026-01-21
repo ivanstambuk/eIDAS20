@@ -348,7 +348,7 @@ const Terminology = () => {
                         📚 {terminology.statistics.totalTerms} terms · 📖 {terminology.statistics.totalDefinitions} definitions
                     </span>
                     <span style={{ color: 'var(--text-secondary)' }}>
-                        (📜 {terminology.statistics.sources.regulations} from regulations · 📋 {terminology.statistics.sources.implementingActs} from implementing acts)
+                        (📜 {terminology.statistics.sources.regulations} from regulations · 📋 {terminology.statistics.sources.implementingActs} from implementing acts · 📄 {terminology.statistics.sources.supplementary} from supplementary)
                     </span>
                 </div>
             </header>
