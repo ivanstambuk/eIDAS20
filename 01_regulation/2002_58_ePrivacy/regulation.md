@@ -173,7 +173,12 @@ This Directive shall apply to the processing of personal data in connection with
 
 1. The provider of a publicly available electronic communications service must take appropriate technical and organisational measures to safeguard security of its services, if necessary in conjunction with the provider of the public communications network with respect to network security. Having regard to the state of the art and the cost of their implementation, these measures shall ensure a level of security appropriate to the risk presented.
 
-- (1a) Without prejudice to Directive 95/46/EC, the measures referred to in paragraph 1 shall at least: — ensure that personal data can be accessed only by authorised personnel for legally authorised purposes, — protect personal data stored or transmitted against accidental or unlawful destruction, accidental loss or alteration, and unauthorised or unlawful storage, processing, access or disclosure, and, — ensure the implementation of a security policy with respect to the processing of personal data, Relevant national authorities shall be able to audit the measures taken by providers of publicly available electronic communication services and to issue recommendations about best practices concerning the level of security which those measures should achieve.
+- (1a) Without prejudice to Directive 95/46/EC, the measures referred to in paragraph 1 shall at least:
+   - — ensure that personal data can be accessed only by authorised personnel for legally authorised purposes,
+   - — protect personal data stored or transmitted against accidental or unlawful destruction, accidental loss or alteration, and unauthorised or unlawful storage, processing, access or disclosure, and,
+   - — ensure the implementation of a security policy with respect to the processing of personal data,
+
+   Relevant national authorities shall be able to audit the measures taken by providers of publicly available electronic communication services and to issue recommendations about best practices concerning the level of security which those measures should achieve.
 
 2. In case of a particular risk of a breach of the security of the network, the provider of a publicly available electronic communications service must inform the subscribers concerning such risk and, where the risk lies outside the scope of the measures to be taken by the service provider, of any possible remedies, including an indication of the likely costs involved.
 
