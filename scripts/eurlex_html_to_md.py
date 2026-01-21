@@ -101,9 +101,22 @@ def detect_document_type(soup: BeautifulSoup) -> str:
 
 
 def is_consolidated_format(soup: BeautifulSoup) -> bool:
-    """Check if this is consolidated HTML format (vs standard EUR-Lex format)."""
-    # Consolidated format uses 'eli-main-title' div and 'title-doc-first' class
-    return soup.find('div', class_='eli-main-title') is not None
+    """Check if this is consolidated HTML format (vs standard EUR-Lex format).
+    
+    EUR-Lex has two HTML formats:
+    1. Official Journal format: Uses oj-ti-art, oj-sti-art, oj-normal classes
+    2. Consolidated format: Uses title-article-norm, stitle-article-norm, norm classes
+    
+    Both may have eli-main-title and eli-subdivision, so we need to check for
+    format-specific article content classes to distinguish them.
+    """
+    # Must have eli-main-title (both formats have this)
+    if not soup.find('div', class_='eli-main-title'):
+        return False
+    
+    # True consolidated format uses 'title-article-norm' for article headers
+    # OJ format uses 'oj-ti-art' instead — should use standard parser
+    return soup.find('p', class_='title-article-norm') is not None
 
 
 def download_html(celex: str, max_retries: int = 10) -> str:

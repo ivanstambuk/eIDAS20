@@ -61,6 +61,13 @@
             "terminologySource": true,
             "category": "referenced",
             "comment": "Privacy in Electronic Communications Directive. Article 2 contains 9 definitions. Referenced by eIDAS for consent and tracking requirements."
+        },
+        "2012-1025": {
+            "label": "Standardisation Regulation",
+            "ragEnabled": true,
+            "terminologySource": false,
+            "category": "referenced",
+            "comment": "European Standardisation framework. Only 2 citations in eIDAS. Definitions are for standardisation bodies, not eIDAS ecosystem."
         }
     },
     "defaults": {
