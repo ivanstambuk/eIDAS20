@@ -877,7 +877,12 @@ def process_alinea(alinea_elem):
                 lines.append("")
         
         elif child.tag in ('QUOT.S', 'QUOT.START'):
-            # Start of quoted block - collect until QUOT.E
+            # Determine if this is an inline quote or a blockquote:
+            # - INLINE: QUOT.START has tail text followed immediately by QUOT.END
+            #   Example: (the <QUOT.START/>Cooperation Group<QUOT.END/>)
+            # - BLOCKQUOTE: QUOT.START is followed by P elements (replacement content)
+            #   Example: <QUOT.START/><P>Replacement text...</P><QUOT.END/>
+            
             quote_parts = []
             code = child.get('CODE', '')
             if code in ('2018', '2019'):
@@ -885,22 +890,44 @@ def process_alinea(alinea_elem):
             if child.tail:
                 quote_parts.append(child.tail)
             
-            i += 1
-            while i < len(children):
-                inner = children[i]
+            # Look ahead to determine if we have P content (blockquote) or just inline text
+            has_p_content = False
+            j = i + 1
+            while j < len(children):
+                inner = children[j]
                 if inner.tag in ('QUOT.E', 'QUOT.END'):
                     code = inner.get('CODE', '')
                     if code in ('2018', '2019'):
                         quote_parts.append("'")
                     break
                 elif inner.tag == 'P':
+                    has_p_content = True
                     quote_parts.append(clean_text(get_element_text(inner)))
-                i += 1
+                j += 1
+            
+            # Skip to end of quote block
+            i = j
             
             if quote_parts:
                 quoted_text = ' '.join(quote_parts)
-                lines.append(f"> {quoted_text}")
-                lines.append("")
+                if has_p_content:
+                    # Blockquote: P content found - render as markdown blockquote
+                    lines.append(f"> {quoted_text}")
+                    lines.append("")
+                else:
+                    # Inline quote - just add the quoted text inline
+                    # This typically becomes part of the preceding content
+                    # Check if we already have content to append to
+                    if lines and lines[-1] and not lines[-1].startswith('>'):
+                        # Append to previous line (removing trailing empty line first)
+                        while lines and lines[-1] == "":
+                            lines.pop()
+                        if lines:
+                            lines[-1] += quoted_text
+                        else:
+                            lines.append(quoted_text)
+                    else:
+                        lines.append(quoted_text)
         
         i += 1
     
