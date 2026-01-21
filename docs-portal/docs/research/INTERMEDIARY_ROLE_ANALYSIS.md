@@ -223,7 +223,7 @@ From industry research (Lissi), organizations well-positioned to become intermed
 |-------------|---------------------|
 | **Qualified Trust Service Providers (QTSPs)** | Already operate trust infrastructure; familiar with PKI and certification |
 | **Identity Verification (IDV) Platforms** | Existing customer onboarding flows; KYC expertise |
-| **Payment Providers & Hubs** | High transaction volumes; established bank relationships |
+| **Payment Providers & Hubs** | High transaction volumes; established relationships |
 | **Public Sector Service Providers** | National-level trust; strategic positioning |
 | **Telecommunications Providers** | Identity infrastructure (SIM-based); large customer bases |
 
