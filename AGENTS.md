@@ -458,39 +458,37 @@ See `.agent/workflows/` for detailed instructions.
 
 ## Conversion Guidelines
 
-### 🚨 MANDATORY: Converter-First Rule + TDD Workflow
+### 🚨 MANDATORY: Markdown-First Import Strategy (DEC-095)
 
-**When a formatting issue is detected in generated Markdown:**
+**All imported documents are `source: manual`.** The markdown IS the source of truth.
 
-1. **NEVER edit the `.md` file directly** — it will be overwritten when regenerated
-2. **ALWAYS fix the root cause in the converter** (`formex_to_md_v3.py` or `eurlex_html_to_md.py`)
-3. **ALWAYS add or improve a test case** in `test_formex_converter.py`
+**For EXISTING documents (the normal case):**
+- Fix formatting issues **directly in the markdown file**
+- Never re-run the converter on existing documents
+- No need to debug converter for single-document fixes
+
+**For NEW document imports only:**
+1. Use converter (`eurlex_formex.py`) for initial import
+2. Validate the output in the portal
+3. Set `source: manual` in `documents.yaml` immediately
+4. Fix any remaining issues in markdown
 
 **Why this matters:**
-- Generated markdown files are **outputs**, not sources
-- Running the converter again will **overwrite any manual fixes**
-- Test cases prevent **regression** when the converter is modified
+- Converters are **import tools**, not regeneration pipelines
+- Re-importing overwrites manual corrections
+- Debugging converter bugs for existing documents wastes time
 
-**See:** [Content Rules 33-38](.agent/docs/rules/content-rules.md) for full import protocols.
+**Anti-patterns:**
+- ❌ Re-running converter to "fix" an existing document
+- ❌ Spending hours debugging converter for a one-document issue
+- ❌ Assuming markdown can be regenerated (it can't without losing corrections)
 
-### ⚠️ Check Source Field Before Debugging Converters
+**Correct patterns:**
+- ✅ See issue in existing document → Fix markdown directly
+- ✅ Importing NEW document → Use converter → Mark `source: manual`
+- ✅ Widespread converter bug affecting future imports → Fix converter
 
-**BEFORE touching any converter code**, check which converter is actually used:
-
-```bash
-grep -A2 "celex: <CELEX_NUMBER>" scripts/documents.yaml
-```
-
-The `source:` field tells you which converter generates the document:
-- `source: formex` → `formex_to_md_v3.py` (most documents)
-- `source: html` → `eurlex_html_to_md.py` (older documents without Formex)
-- `source: manual` → No converter, manually maintained
-
-**Anti-pattern:**
-- ❌ See issue in Markdown → Check EUR-Lex HTML → Modify HTML converter → Discover document uses Formex
-
-**Correct pattern:**
-- ✅ Check `documents.yaml` source field FIRST → Modify correct converter
+**See:** DEC-095 in DECISIONS.md for full rationale.
 
 ### Formex Multi-Part Document Handling
 

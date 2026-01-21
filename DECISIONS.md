@@ -2158,3 +2158,48 @@ Rename sidebar section from **"Referenced Regulations"** to **"Supplementary Doc
 
 **Note:** The sidebar groups `referenced` + `supplementary` under "Supplementary Documents" header.
 
+
+---
+
+## DEC-095: Markdown-First Import Strategy
+
+**Date:** 2026-01-21  
+**Status:** Adopted  
+**Context:** Converter bugs
+
+**Problem:**
+
+We've been treating the Formex/HTML converters as a "regenerable pipeline" — fixing converter bugs then re-importing documents. This causes:
+- Significant time debugging XML edge cases (QUOT handling, P blockquotes)
+- Lost manual corrections on re-import
+- Maintenance burden for two converters (Formex + HTML)
+- Thrash between "fix converter" vs "fix markdown directly"
+
+**Analysis:**
+
+The converters are actually **import tools**, not continuous pipelines. Once a document is imported:
+- The markdown becomes the source of truth
+- Re-importing would overwrite any manual corrections
+- EUR-Lex rarely updates existing documents
+
+**Decision:**
+
+1. **Converters = one-way import ramp** — Use for initial import of NEW documents only
+2. **Markdown = source of truth** — All documents set to `source: manual` immediately after import
+3. **Fix issues in markdown** — Don't try to fix converter bugs for existing documents
+4. **Keep converters** — Still needed for importing new implementing acts
+
+**Implementation:**
+
+All 39 documents in `documents.yaml` now have `source: manual`.
+
+**Future bug fixes:**
+- **New documents:** Can fix converter if the bug affects new imports
+- **Existing documents:** Fix directly in markdown (faster, no re-validation needed)
+
+**Anti-patterns after this decision:**
+- ❌ Re-running converter to "regenerate" an existing document
+- ❌ Spending hours debugging converter for a one-document fix
+- ❌ Losing manual corrections via re-import
+
+**This replaces:** The "Converter-First Rule" in AGENTS.md (now applies only to NEW imports)
