@@ -9,6 +9,7 @@
     "validate:css": "node scripts/validate-css-classes.js",
     "validate:rca": "node scripts/validate-rca.js",
     "validate:subtitles": "node scripts/validate-subtitles.js",
+    "validate:ci": "npm run validate:config && npm run validate:css && npm run validate:rca && npm run validate:subtitles",
     "build": "npm run validate:config && npm run validate:css && npm run validate:rca && node scripts/build-content.js && npm run validate:subtitles && node scripts/build-terminology.js && node scripts/build-rca.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:documents": "node scripts/build-content.js",
     "build:terminology": "node scripts/build-terminology.js",

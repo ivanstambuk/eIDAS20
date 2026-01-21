@@ -1,0 +1,22 @@
+#!/bin/bash
+# Pre-push hook - runs CI validation before allowing push
+# Install: cp .githooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+
+set -e
+
+echo "🔍 Running pre-push validation..."
+
+cd docs-portal
+
+# Run the same checks as CI
+echo "📋 Validating config..."
+npm run validate:config
+
+echo "🎨 Validating CSS..."
+npm run validate:css
+
+echo "📊 Validating RCA..."
+npm run validate:rca
+
+echo "✅ Pre-push validation passed!"
+echo "   (Full build will run in CI)"
