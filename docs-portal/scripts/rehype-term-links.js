@@ -37,7 +37,9 @@ function getTextContent(node) {
  * Build a map of terms for quick lookup.
  * Key: normalized term (lowercase), Value: term object with id
  * 
- * Also generates plural variants for each term.
+ * Also generates:
+ * - Plural variants for each term
+ * - Hyphen↔space variants (EU legal uses both "wallet-relying party" and "wallet relying party")
  */
 function buildTermMap(terminology) {
     const map = new Map();
@@ -46,14 +48,45 @@ function buildTermMap(terminology) {
         return map;
     }
 
+    /**
+     * Helper: Add a term variant to the map if not already present.
+     * @param {string} variant - The normalized variant string
+     * @param {object} data - The term data to associate
+     */
+    function addVariant(variant, data) {
+        if (!map.has(variant)) {
+            map.set(variant, data);
+        }
+    }
+
+    /**
+     * Helper: Generate hyphen↔space variant.
+     * EU legal documents use both forms interchangeably:
+     * - "wallet-relying party" (compound modifier, hyphenated)
+     * - "wallet relying party" (prose context, spaced)
+     */
+    function getHyphenSpaceVariant(term) {
+        if (term.includes('-')) {
+            return term.replace(/-/g, ' ');
+        }
+        return null; // No variant needed for non-hyphenated terms
+    }
+
     for (const term of terminology.terms) {
         const normalizedTerm = term.term.toLowerCase();
-
-        // Store the base term
-        map.set(normalizedTerm, {
+        const termData = {
             id: term.id,
             originalTerm: term.term
-        });
+        };
+
+        // Store the base term
+        map.set(normalizedTerm, termData);
+
+        // Add hyphen→space variant for base term
+        const spaceVariant = getHyphenSpaceVariant(normalizedTerm);
+        if (spaceVariant) {
+            addVariant(spaceVariant, { ...termData, isHyphenVariant: true });
+        }
 
         // Generate plural variant
         // Simple English pluralization: add 's' or 'es'
@@ -69,13 +102,24 @@ function buildTermMap(terminology) {
             plural = normalizedTerm + 's';
         }
 
-        // Only add plural if it's different and not already a term
-        if (plural !== normalizedTerm && !map.has(plural)) {
-            map.set(plural, {
+        // Add plural if different and not already a term
+        if (plural !== normalizedTerm) {
+            addVariant(plural, {
                 id: term.id,
                 originalTerm: term.term,
                 isPlural: true
             });
+
+            // Also add hyphen→space variant for plural
+            const pluralSpaceVariant = getHyphenSpaceVariant(plural);
+            if (pluralSpaceVariant) {
+                addVariant(pluralSpaceVariant, {
+                    id: term.id,
+                    originalTerm: term.term,
+                    isPlural: true,
+                    isHyphenVariant: true
+                });
+            }
         }
     }
 
