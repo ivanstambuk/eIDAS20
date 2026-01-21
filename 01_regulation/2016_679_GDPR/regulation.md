@@ -6,7 +6,7 @@
 > **In force:** Consolidated version includes Corrigendum R(02) of 23.5.2018
 > **EEA Relevance:** Yes
 
-# REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL
+# Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)
 
 ## Preamble
 
