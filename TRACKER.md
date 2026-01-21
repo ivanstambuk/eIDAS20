@@ -77,7 +77,7 @@
 | ~~Terminology highlighting~~ | ~~Auto-highlight defined terms in content with hover popovers~~ | ~~Done (DEC-085)~~ |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | ~~eIDAS 2.0 (2024/1183) chapters~~ | ~~Amending regulation has no chapters; consolidated 910/2014 already has chapter structure~~ | ~~N/A~~ |
-| Fix Formex annex nesting | Converter produces sibling structure — ideal fix is nested Markdown | Low |
+| ~~Fix Formex annex nesting~~ | ~~Verified: Sub-points properly nested with indentation and different bullet styles~~ | ~~Done~~ |
 
 ---
 
