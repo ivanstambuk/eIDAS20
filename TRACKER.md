@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-21 13:50 CET |
-| **Session State** | V3.6.42 — Cybersecurity Act Import Complete |
+| **Last Updated** | 2026-01-21 14:25 CET |
+| **Session State** | V3.6.43 — Terminology Title Fix |
 | **Portal Status** | ✅ Fully functional (310,664 words, **191 terms**, **470 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Ready for next task |
 
@@ -107,6 +107,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-21 14:25 | **Terminology Title Fix (V3.6.43)**: Fixed human-friendly document titles for Cybersecurity Act and NIS2 in terminology popovers. (1) Added `document-config.json` entries for 2019-881 and 2022-2555 with `category: "referenced"`, (2) Previously missing config caused fallback to "primary" category and technical titles like "Regulation 2019/881", (3) Now correctly shows "Cybersecurity Act (Consolidated)" and "NIS2 Directive (Consolidated)" in all cross-linked term popovers, (4) Rebuilt terminology.json to pick up shortTitle mappings from regulations-index. |
 | 2026-01-21 13:50 | **Cybersecurity Act Import (V3.6.42)**: (1) Imported Cybersecurity Act (2019/881) via Formex XML — 31,287 words, 69 articles, 110 recitals, 3 annexes, (2) Added 22 terminology definitions from Article 2, (3) Note: Base version imported; consolidated version (02019R0881-20250204) includes M1 amendment (2025/37 - managed security services) not applied, (4) Fixed NIS2 EUR-Lex link to use consolidated CELEX, (5) Fixed eSignature FAQ "View Source" link mapping (PIT-240), (6) Added consolidated CELEX support to HTML converter. Portal now has 38 documents, 310,664 words, 191 terms. |
 | 2026-01-21 13:00 | **NIS2 Directive Import (V3.6.41)**: (1) Imported NIS2 Directive (2022/2555) via Formex XML — 40,241 words, 46 articles, 3 annexes, (2) Added 38 new terminology definitions from NIS2 Article 6, (3) Updated `eurlex_formex.py` to use `cellar_id` from documents.yaml when auto-discovery fails, (4) Updated file detection to handle new Formex naming pattern (L_YYYYNNN.PPPPPPPP.xml), (5) Added `legalType: directive` support to doc_type labels. Portal now has 37 documents, 279,377 words, 182 terms. |
 | 2026-01-21 12:41 | **Intermediary Profile Implementation (V3.6.40)**: Comprehensive Article 5b(10) legal analysis — intermediaries are deemed RPs with "no-storage" mandate. (1) Added `uses_intermediary` and `acts_as_intermediary` profiles to RP role, (2) Created 12 new profile-specific requirements, (3) Updated RP-GOV-001 with profileFilter, (4) Created research document `docs/research/INTERMEDIARY_ROLE_ANALYSIS.md` with SaaS vs self-hosted regulatory analysis (GDPR, DORA), (5) Added DORA import and Financial RP profile to backlog, (6) Added 5 new terms to TERMINOLOGY.md (Verification Intermediary, No-Storage Mandate, Access/Registration Certificates). Total RCA requirements: 470. |
