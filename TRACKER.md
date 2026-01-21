@@ -75,9 +75,21 @@
 | ~~GitHub Pages deploy~~ | ~~Push to master to trigger workflow~~ | ~~Done~~ |
 | ~~Provision Citations~~ | ~~Deep-link references to specific provisions~~ | ~~Done (DEC-064)~~ |
 | ~~Terminology highlighting~~ | ~~Auto-highlight defined terms in content with hover popovers~~ | ~~Done (DEC-085)~~ |
-| **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
 | ~~eIDAS 2.0 (2024/1183) chapters~~ | ~~Amending regulation has no chapters; consolidated 910/2014 already has chapter structure~~ | ~~N/A~~ |
 | ~~Fix Formex annex nesting~~ | ~~Verified: Sub-points properly nested with indentation and different bullet styles~~ | ~~Done~~ |
+
+### Referenced Regulations Import Queue
+
+| Regulation | Citations | Format | Status | Plan |
+|------------|-----------|--------|--------|------|
+| ~~GDPR (2016/679)~~ | 44 | ~~Formex (DOC_2)~~ | ~~Done~~ | [GDPR_IMPORT_PLAN.md](.agent/plans/GDPR_IMPORT_PLAN.md) |
+| **NIS2 Directive (2022/2555)** | 30 | Formex (ZIP) | ✅ Ready | [NIS2_IMPORT_PLAN.md](.agent/plans/NIS2_IMPORT_PLAN.md) |
+| **Cybersecurity Act (2019/881)** | 13 | Formex (DOC_2) | ✅ Ready | [CYBERSECURITY_ACT_IMPORT_PLAN.md](.agent/plans/CYBERSECURITY_ACT_IMPORT_PLAN.md) |
+| ePrivacy Directive (2002/58) | 30 | HTML only | ⚠️ Converter update | [EPRIVACY_IMPORT_PLAN.md](.agent/plans/EPRIVACY_IMPORT_PLAN.md) |
+| EU Standardisation Reg (1025/2012) | 2 | HTML only | ✅ Ready | [STANDARDISATION_REG_IMPORT_PLAN.md](.agent/plans/STANDARDISATION_REG_IMPORT_PLAN.md) |
+
+**Key finding**: Formex XML IS available for newer regulations (2016+). Script needs DOC_2/ZIP handling.
+**Total estimated effort**: ~75 min (with script fixes)
 
 ---
 
