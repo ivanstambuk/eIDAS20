@@ -19,7 +19,6 @@
 
 | Regulation | Citations | Status | Plan |
 |------------|-----------|--------|------|
-| ePrivacy Directive (2002/58) | 30 | ⚠️ Formatting check | [EPRIVACY_IMPORT_PLAN.md](.agent/plans/EPRIVACY_IMPORT_PLAN.md) |
 | EU Standardisation Reg (1025/2012) | 2 | ✅ Ready | [STANDARDISATION_REG_IMPORT_PLAN.md](.agent/plans/STANDARDISATION_REG_IMPORT_PLAN.md) |
 | DORA (2022/2554) | TBD | 📋 Backlog | For Financial RP profile |
 

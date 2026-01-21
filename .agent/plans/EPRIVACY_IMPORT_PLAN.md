@@ -2,9 +2,13 @@
 
 ## Executive Summary
 
-**Status: ✅ IMPORTED & FORMATTED**
+**Status: ✅ DONE** (Completed 2026-01-21)
 
-The ePrivacy Directive has been successfully imported via HTML fallback and manually formatted to match EUR-Lex styling. Key formatting fixes applied:
+The ePrivacy Directive has been successfully imported via HTML fallback and manually formatted to match EUR-Lex styling.
+
+**Final Stats:** 9,926 words, 23 articles (incl. 14a, 15a), 62 recitals
+
+Key formatting fixes applied:
 - Alphanumeric paragraphs (1a, 1b) converted to `- (1a)` format for deep linking
 - Article 4(1a) restructured with nested em-dash bullets
 - All articles have proper numbered paragraph spacing
