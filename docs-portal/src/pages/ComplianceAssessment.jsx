@@ -903,20 +903,29 @@ export default function ComplianceAssessment() {
                 </p>
             </header>
 
-            {/* Stats Bar - Framework scope at a glance */}
-            <div className="rca-stats-bar">
-                <div className="rca-stats-primary">
-                    <span className="rca-stats-icon">📊</span>
-                    <span className="rca-stats-text">
-                        <strong>{data.stats.totalRequirements}</strong> requirements across{' '}
-                        <strong>{data.stats.totalRoles}</strong> roles and{' '}
-                        <strong>{data.stats.totalUseCases}</strong> use cases
+            {/* Stats Chips - Grouped by semantic category */}
+            <div className="rca-stats-chips">
+                {/* Requirements group */}
+                <div className="rca-stats-group">
+                    <span className="badge badge-secondary">
+                        {data.stats.totalRequirements} REQUIREMENTS
+                    </span>
+                    <span className="badge badge-primary">
+                        {data.stats.universalRequirements} universal
+                    </span>
+                    <span className="badge">
+                        {data.stats.useCaseSpecificRequirements} use-case specific
                     </span>
                 </div>
-                <div className="rca-stats-secondary">
-                    <span className="rca-stats-universal">{data.stats.universalRequirements} universal</span>
-                    <span className="rca-stats-divider">•</span>
-                    <span className="rca-stats-specific">{data.stats.useCaseSpecificRequirements} use-case specific</span>
+
+                {/* Scope group */}
+                <div className="rca-stats-group">
+                    <span className="badge badge-secondary">
+                        {data.stats.totalRoles} ROLES
+                    </span>
+                    <span className="badge badge-secondary">
+                        {data.stats.totalUseCases} USE CASES
+                    </span>
                 </div>
             </div>
 
