@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "generated": "2026-01-21T14:27:53.428Z",
+  "generated": "2026-01-21T14:52:25.754Z",
   "statistics": {
-    "totalTerms": 191,
-    "totalDefinitions": 316,
+    "totalTerms": 198,
+    "totalDefinitions": 325,
     "sources": {
-      "regulations": 155,
+      "regulations": 164,
       "implementingActs": 128,
       "supplementary": 33
     },
@@ -173,6 +173,7 @@
       "certification-body",
       "certification-decision",
       "cloud-computing-service",
+      "communication",
       "community-harmonisation-legislation",
       "conformity-assessment",
       "conformity-assessment-body",
@@ -206,6 +207,7 @@
       "electronic-identification-means",
       "electronic-identification-scheme",
       "electronic-ledger",
+      "electronic-mail",
       "electronic-registered-delivery-service",
       "electronic-seal",
       "electronic-seal-creation-data",
@@ -248,6 +250,7 @@
     "L": [
       "large-scale-cybersecurity-incident",
       "list-of-trusted-lists",
+      "location-data",
       "lotl"
     ],
     "M": [
@@ -262,7 +265,9 @@
       "national-register-of-wallet-relying-parties",
       "national-strategy-on-the-security-of-network-and-information-systems",
       "near-miss",
-      "network-and-information-system"
+      "network-and-information-system",
+      "node",
+      "node-operator"
     ],
     "O": [
       "object-of-certification",
@@ -344,6 +349,7 @@
     "T": [
       "technical-specification",
       "third-party",
+      "traffic-data",
       "trust-anchor",
       "trust-service",
       "trust-service-provider",
@@ -357,6 +363,7 @@
     "V": [
       "validation",
       "validation-data",
+      "value-added-service",
       "vulnerability"
     ],
     "W": [
@@ -1675,6 +1682,46 @@
               "celex": "32022L2555",
               "articleId": "article-6-para-30",
               "articleNumber": "6(30)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "communication",
+      "term": "communication",
+      "sources": [
+        {
+          "definition": "any information exchanged or conveyed between a finite number of parties by means of a publicly available electronic communications service",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-d",
+          "articleNumber": "2(d)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-d",
+      "definitionGroups": [
+        {
+          "definition": "any information exchanged or conveyed between a finite number of parties by means of a publicly available electronic communications service",
+          "sources": [
+            {
+              "definition": "any information exchanged or conveyed between a finite number of parties by means of a publicly available electronic communications service",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-d",
+              "articleNumber": "2(d)",
               "displayOrder": 3
             }
           ],
@@ -3243,6 +3290,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "electronic-mail",
+      "term": "electronic mail",
+      "sources": [
+        {
+          "definition": "any text, voice, sound or image message sent over a public communications network which can be stored in the network or in the recipient's terminal equipment until it is collected by the recipient",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-h",
+          "articleNumber": "2(h)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-h",
+      "definitionGroups": [
+        {
+          "definition": "any text, voice, sound or image message sent over a public communications network which can be stored in the network or in the recipient's terminal equipment until it is collected by the recipient",
+          "sources": [
+            {
+              "definition": "any text, voice, sound or image message sent over a public communications network which can be stored in the network or in the recipient's terminal equipment until it is collected by the recipient",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-h",
+              "articleNumber": "2(h)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "electronic-registered-delivery-service",
@@ -4900,6 +4987,46 @@
       ]
     },
     {
+      "id": "location-data",
+      "term": "location data",
+      "sources": [
+        {
+          "definition": "any data processed in an electronic communications network or by an electronic communications service, indicating the geographic position of the terminal equipment of a user of a publicly available electronic communications service",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-c",
+          "articleNumber": "2(c)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-c",
+      "definitionGroups": [
+        {
+          "definition": "any data processed in an electronic communications network or by an electronic communications service, indicating the geographic position of the terminal equipment of a user of a publicly available electronic communications service",
+          "sources": [
+            {
+              "definition": "any data processed in an electronic communications network or by an electronic communications service, indicating the geographic position of the terminal equipment of a user of a publicly available electronic communications service",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-c",
+              "articleNumber": "2(c)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "lotl",
       "term": "LOTL",
       "sources": [
@@ -5416,6 +5543,86 @@
       "domains": []
     },
     {
+      "id": "node",
+      "term": "node",
+      "sources": [
+        {
+          "definition": "a connection point which is part of the electronic identification interoperability architecture and is involved in cross-border authentication of persons and which has the capability to recognise and process or forward transmissions to other nodes by enabling the national electronic identification infrastructure of one Member State to interface with national electronic identification infrastructures of other Member States",
+          "documentId": "2015-1501",
+          "documentTitle": "eIDAS Interoperability Framework",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32015R1501",
+          "articleId": "article-2-para-1",
+          "articleNumber": "2(1)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-1",
+      "definitionGroups": [
+        {
+          "definition": "a connection point which is part of the electronic identification interoperability architecture and is involved in cross-border authentication of persons and which has the capability to recognise and process or forward transmissions to other nodes by enabling the national electronic identification infrastructure of one Member State to interface with national electronic identification infrastructures of other Member States",
+          "sources": [
+            {
+              "definition": "a connection point which is part of the electronic identification interoperability architecture and is involved in cross-border authentication of persons and which has the capability to recognise and process or forward transmissions to other nodes by enabling the national electronic identification infrastructure of one Member State to interface with national electronic identification infrastructures of other Member States",
+              "documentId": "2015-1501",
+              "documentTitle": "eIDAS Interoperability Framework",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32015R1501",
+              "articleId": "article-2-para-1",
+              "articleNumber": "2(1)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "node-operator",
+      "term": "node operator",
+      "sources": [
+        {
+          "definition": "the entity responsible for ensuring that the node performs correctly and reliably its functions as a connection point",
+          "documentId": "2015-1501",
+          "documentTitle": "eIDAS Interoperability Framework",
+          "documentCategory": "primary",
+          "documentType": "regulation",
+          "celex": "32015R1501",
+          "articleId": "article-2-para-2",
+          "articleNumber": "2(2)",
+          "displayOrder": 1
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-2",
+      "definitionGroups": [
+        {
+          "definition": "the entity responsible for ensuring that the node performs correctly and reliably its functions as a connection point",
+          "sources": [
+            {
+              "definition": "the entity responsible for ensuring that the node performs correctly and reliably its functions as a connection point",
+              "documentId": "2015-1501",
+              "documentTitle": "eIDAS Interoperability Framework",
+              "documentCategory": "primary",
+              "documentType": "regulation",
+              "celex": "32015R1501",
+              "articleId": "article-2-para-2",
+              "articleNumber": "2(2)",
+              "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "object-of-certification",
       "term": "object of certification",
       "sources": [
@@ -5878,6 +6085,17 @@
       "term": "personal data breach",
       "sources": [
         {
+          "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed in connection with the provision of a publicly available electronic communications service in the Community",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-i",
+          "articleNumber": "2(i)",
+          "displayOrder": 3
+        },
+        {
           "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed",
           "documentId": "2016-679",
           "documentTitle": "GDPR (Consolidated)",
@@ -5889,9 +6107,26 @@
           "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
-      "primaryLinkTarget": "article-4-para-12",
+      "hasMultipleSources": true,
+      "primaryLinkTarget": "article-2-para-i",
       "definitionGroups": [
+        {
+          "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed in connection with the provision of a publicly available electronic communications service in the Community",
+          "sources": [
+            {
+              "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed in connection with the provision of a publicly available electronic communications service in the Community",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-i",
+              "articleNumber": "2(i)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        },
         {
           "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed",
           "sources": [
@@ -5907,7 +6142,7 @@
               "displayOrder": 3
             }
           ],
-          "isVariant": false
+          "isVariant": true
         }
       ],
       "roles": [],
@@ -8987,6 +9222,46 @@
       "domains": []
     },
     {
+      "id": "traffic-data",
+      "term": "traffic data",
+      "sources": [
+        {
+          "definition": "any data processed for the purpose of the conveyance of a communication on an electronic communications network or for the billing thereof",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-b",
+          "articleNumber": "2(b)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-b",
+      "definitionGroups": [
+        {
+          "definition": "any data processed for the purpose of the conveyance of a communication on an electronic communications network or for the billing thereof",
+          "sources": [
+            {
+              "definition": "any data processed for the purpose of the conveyance of a communication on an electronic communications network or for the billing thereof",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-b",
+              "articleNumber": "2(b)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "trust-anchor",
       "term": "Trust Anchor",
       "sources": [
@@ -9353,9 +9628,20 @@
           "articleId": "article-3-para-5a",
           "articleNumber": "3(5a)",
           "displayOrder": 1
+        },
+        {
+          "definition": "any natural person using a publicly available electronic communications service, for private or business purposes, without necessarily having subscribed to this service",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-a",
+          "articleNumber": "2(a)",
+          "displayOrder": 3
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-5a",
       "definitionGroups": [
         {
@@ -9374,6 +9660,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "any natural person using a publicly available electronic communications service, for private or business purposes, without necessarily having subscribed to this service",
+          "sources": [
+            {
+              "definition": "any natural person using a publicly available electronic communications service, for private or business purposes, without necessarily having subscribed to this service",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-a",
+              "articleNumber": "2(a)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -9472,6 +9775,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "value-added-service",
+      "term": "value added service",
+      "sources": [
+        {
+          "definition": "any service which requires the processing of traffic data or location data other than traffic data beyond what is necessary for the transmission of a communication or the billing thereof",
+          "documentId": "2002-58",
+          "documentTitle": "ePrivacy Directive (Consolidated)",
+          "documentCategory": "referenced",
+          "documentType": "regulation",
+          "celex": "02002L0058-20091219",
+          "articleId": "article-2-para-g",
+          "articleNumber": "2(g)",
+          "displayOrder": 3
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-2-para-g",
+      "definitionGroups": [
+        {
+          "definition": "any service which requires the processing of traffic data or location data other than traffic data beyond what is necessary for the transmission of a communication or the billing thereof",
+          "sources": [
+            {
+              "definition": "any service which requires the processing of traffic data or location data other than traffic data beyond what is necessary for the transmission of a communication or the billing thereof",
+              "documentId": "2002-58",
+              "documentTitle": "ePrivacy Directive (Consolidated)",
+              "documentCategory": "referenced",
+              "documentType": "regulation",
+              "celex": "02002L0058-20091219",
+              "articleId": "article-2-para-g",
+              "articleNumber": "2(g)",
+              "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "vulnerability",

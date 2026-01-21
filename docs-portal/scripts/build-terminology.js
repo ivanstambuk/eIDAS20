@@ -401,6 +401,7 @@ function extractDefinitions(content) {
 
     // Pattern 1: eIDAS format - (N) 'term' means definition
     // Also handles: (Na) 'term' for numbered variants like (5a)
+    // Also handles: (a), (b), (c) for letter-based ordinals (used in ePrivacy Directive 2002/58)
     // Handles markdown list format: "- (N) 'term' means..."
     // Captures: ordinal, term, definition
     //
@@ -408,7 +409,8 @@ function extractDefinitions(content) {
     //   - Stops at: semicolon (;), period (.), or newline (\n)
     //   - This prevents greedy capture of subsequent articles
     //   - See DEC-055 for rationale
-    const defPatternParens = /^(?:-\s*)?\((\d+\w?)\)\s*'([^']+)'\s*means,?\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
+    // NOTE: Supports both ASCII quotes (') and Unicode curly quotes (U+2018, U+2019) - EUR-Lex uses curly quotes
+    const defPatternParens = /^(?:-\s*)?\((\d+\w?|[a-z])\)\s*[\u0027\u2018\u2019]([^\u0027\u2018\u2019]+)[\u0027\u2018\u2019]\s*means,?\s+([^;.\n]+)(?:[;.]|\n|$)/gm;
 
     // Pattern 2: EU numbered list format - N. 'term' means definition
     // Used in older regulations like 765/2008 (Article 2: Definitions)
@@ -422,7 +424,8 @@ function extractDefinitions(content) {
     //   - Definition 21 in 765/2008 ends with period, not semicolon
     //   - Without period termination, regex captures entire rest of document
     //   - See DEC-055 for the greedy regex bug this fixes
-    const defPatternNumbered = /(?:^|>)(\d+)\.\s+'([^']+)'\s*means\s+([^;.<\n]+)(?:[;.]|<|\n|$)/gm;
+    // NOTE: Supports both ASCII quotes (') and Unicode curly quotes (U+2018, U+2019) - EUR-Lex uses curly quotes
+    const defPatternNumbered = /(?:^|>)(\d+)\.\s+[\u0027\u2018\u2019]([^\u0027\u2018\u2019]+)[\u0027\u2018\u2019]\s*means\s+([^;.<\n]+)(?:[;.]|<|\n|$)/gm;
 
     // Try pattern 1 (parenthesized)
     let match;
