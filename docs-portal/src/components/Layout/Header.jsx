@@ -78,7 +78,7 @@ const Header = ({ onMenuToggle }) => {
                     </button>
 
                     <a
-                        href="https://github.com"
+                        href="https://github.com/ivanstambuk/eIDAS20"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-ghost"

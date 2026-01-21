@@ -71,8 +71,8 @@
 
 | Feature | Description | Priority |
 |---------|-------------|----------|
-| GitHub header link | Update placeholder `https://github.com` to actual repo URL once published | High |
-| GitHub Pages deploy | Push to master to trigger workflow | High |
+| ~~GitHub header link~~ | ~~Update placeholder to actual repo URL~~ | ~~Done~~ |
+| ~~GitHub Pages deploy~~ | ~~Push to master to trigger workflow~~ | ~~Done~~ |
 | ~~Provision Citations~~ | ~~Deep-link references to specific provisions~~ | ~~Done (DEC-064)~~ |
 | ~~Terminology highlighting~~ | ~~Auto-highlight defined terms in content with hover popovers~~ | ~~Done (DEC-085)~~ |
 | **Additional referenced regulations** | **Import foundational EU regs: 768/2008 (product marketing), 1025/2012 (standardisation), GDPR (2016/679), Services Directive (2006/123/EC)** | **Medium** |
