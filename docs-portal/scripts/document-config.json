@@ -40,6 +40,20 @@
             "terminologySource": true,
             "category": "referenced",
             "comment": "Foundational regulation defining conformity assessment, accreditation, and market surveillance frameworks. Referenced by eIDAS 910/2014."
+        },
+        "2019-881": {
+            "label": "Cybersecurity Act",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "ENISA and ICT cybersecurity certification framework. Article 2 contains 22 definitions. Referenced by eIDAS wallet certification requirements."
+        },
+        "2022-2555": {
+            "label": "NIS2 Directive",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "Network and Information Security Directive. Article 6 contains 38 definitions for cybersecurity entities and services. Referenced by eIDAS for incident response and security requirements."
         }
     },
     "defaults": {
