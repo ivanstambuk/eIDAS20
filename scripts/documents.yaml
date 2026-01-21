@@ -80,6 +80,14 @@ documents:
   source: manual  # Formex import from base CELEX + M1 (2025/37) noted — DO NOT REGENERATE
   cellar_id: 35e93bb4-8905-11e9-9369-01aa75ed71a1.0006.02  # Original Formex source
   output_dir: 01_regulation/2019_881_Cybersecurity
+- celex: 02002L0058-20091219
+  title: ePrivacy Directive (Privacy in Electronic Communications)
+  shortTitle: ePrivacy Directive (Consolidated)
+  sidebarTitle: ePrivacy Directive
+  legalType: directive
+  category: referenced
+  source: manual  # Browser-extracted consolidated HTML (EUR-Lex 202 handling) — DO NOT REGENERATE
+  output_dir: 01_regulation/2002_58_ePrivacy
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)
 - id: ec-esignature-faq

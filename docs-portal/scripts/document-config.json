@@ -54,6 +54,13 @@
             "terminologySource": true,
             "category": "referenced",
             "comment": "Network and Information Security Directive. Article 6 contains 38 definitions for cybersecurity entities and services. Referenced by eIDAS for incident response and security requirements."
+        },
+        "2002-58": {
+            "label": "ePrivacy Directive",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "Privacy in Electronic Communications Directive. Article 2 contains 9 definitions. Referenced by eIDAS for consent and tracking requirements."
         }
     },
     "defaults": {

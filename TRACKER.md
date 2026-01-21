@@ -8,16 +8,16 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-21 14:25 CET |
-| **Session State** | V3.6.43 — Terminology Title Fix |
-| **Portal Status** | ✅ Fully functional (310,664 words, **191 terms**, **470 RCA requirements**, **12 atomic categories**) |
-| **Next Action** | Ready for next task |
+| **Last Updated** | 2026-01-21 15:15 CET |
+| **Session State** | V3.7.44 — ePrivacy Directive Import Complete |
+| **Portal Status** | ✅ Fully functional (315,615 words, **191 terms**, **470 RCA requirements**, **12 atomic categories**) |
+| **Next Action** | Ready for next task (see Import Queue in backlog) |
 
 ---
 
 ## Portal Features (Complete)
 
-- **38 documents** (9 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, 2016/679 GDPR, 2022/2555 NIS2, **2019/881 Cybersecurity Act**, eSignature FAQ + 29 implementing acts)
+- **39 documents** (10 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, 2016/679 GDPR, 2022/2555 NIS2, 2019/881 Cybersecurity Act, **2002/58 ePrivacy Directive**, eSignature FAQ + 29 implementing acts)
 - **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)

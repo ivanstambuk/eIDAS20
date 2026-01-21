@@ -41,21 +41,23 @@ def celex_to_eli(celex: str) -> tuple[str, str]:
     Convert CELEX to ELI path segment.
     
     Examples:
-        32008R0765 → ('2008', '765')
-        32014R0910 → ('2014', '910')
-        32015R1501 → ('2015', '1501')  # Implementing Regulation
-        02019R0881-20250204 → ('2019', '881')  # Consolidated version
+        32008R0765 → ('2008', '765')          # Regulation
+        32014R0910 → ('2014', '910')          # Regulation
+        32015R1501 → ('2015', '1501')          # Implementing Regulation
+        02019R0881-20250204 → ('2019', '881')  # Consolidated Regulation
+        32002L0058 → ('2002', '58')            # Directive
+        02002L0058-20091219 → ('2002', '58')   # Consolidated Directive
     
     Returns (year, number) tuple.
     """
-    # Standard CELEX format: 3YYYYRNNNN (3=sector, YYYY=year, R=regulation, NNNN=number)
-    match = re.match(r'3(\d{4})R(\d+)', celex)
+    # Standard CELEX format: 3YYYY[R|L]NNNN (3=sector, YYYY=year, R=regulation/L=directive, NNNN=number)
+    match = re.match(r'3(\d{4})[RL](\d+)', celex)
     if match:
         year, num = match.groups()
         return (year, str(int(num)))  # int() removes leading zeros
     
-    # Consolidated CELEX format: 0YYYYRNNNN-YYYYMMDD (0=consolidated)
-    match = re.match(r'0(\d{4})R(\d+)-\d{8}', celex)
+    # Consolidated CELEX format: 0YYYY[R|L]NNNN-YYYYMMDD (0=consolidated)
+    match = re.match(r'0(\d{4})[RL](\d+)-\d{8}', celex)
     if match:
         year, num = match.groups()
         return (year, str(int(num)))
@@ -63,19 +65,33 @@ def celex_to_eli(celex: str) -> tuple[str, str]:
     raise ValueError(f"Invalid CELEX format: {celex}")
 
 
-def detect_regulation_type(soup: BeautifulSoup) -> str:
+def detect_document_type(soup: BeautifulSoup) -> str:
     """
-    Detect if this is a regular Regulation or an Implementing Regulation.
+    Detect the document type from the HTML content.
     
     Returns:
+        'dir' for Directives
         'reg_impl' for Implementing Regulations
-        'reg' for regular Regulations
+        'reg_del' for Delegated Regulations
+        'reg' for regular Regulations (default)
     """
-    content = soup.find(id='document1') or soup
+    content = soup.find(id='document1') or soup.find(id='docHtml') or soup
     
-    # Check the main title for "IMPLEMENTING REGULATION"
+    # Check standard EUR-Lex format (oj-doc-ti class)
     for p in content.find_all('p', class_='oj-doc-ti'):
         text = p.get_text().strip().upper()
+        if 'DIRECTIVE' in text:
+            return 'dir'
+        if 'IMPLEMENTING REGULATION' in text:
+            return 'reg_impl'
+        if 'DELEGATED REGULATION' in text:
+            return 'reg_del'
+    
+    # Check consolidated HTML format (title-doc-first class)
+    for p in content.find_all('p', class_='title-doc-first'):
+        text = p.get_text().strip().upper()
+        if 'DIRECTIVE' in text:
+            return 'dir'
         if 'IMPLEMENTING REGULATION' in text:
             return 'reg_impl'
         if 'DELEGATED REGULATION' in text:
@@ -84,23 +100,56 @@ def detect_regulation_type(soup: BeautifulSoup) -> str:
     return 'reg'
 
 
-def download_html(celex: str, reg_type: str = 'reg') -> str:
+def is_consolidated_format(soup: BeautifulSoup) -> bool:
+    """Check if this is consolidated HTML format (vs standard EUR-Lex format)."""
+    # Consolidated format uses 'eli-main-title' div and 'title-doc-first' class
+    return soup.find('div', class_='eli-main-title') is not None
+
+
+def download_html(celex: str, max_retries: int = 10) -> str:
     """
-    Download regulation HTML from EUR-Lex CELEX endpoint.
+    Download regulation/directive HTML from EUR-Lex CELEX endpoint.
     
     Args:
-        celex: CELEX number (e.g., '32015R1501')
-        reg_type: Regulation type ('reg', 'reg_impl', 'reg_del')
+        celex: CELEX number (e.g., '32015R1501', '02002L0058-20091219')
+        max_retries: Maximum retry attempts for 202 responses
         
-    Note: We use the CELEX-based URL which works for all regulation types,
-    rather than the ELI URL which requires knowing the type in advance.
+    Note: We use the CELEX-based URL which works for all document types.
+    EUR-Lex returns HTTP 202 (Accepted) for consolidated documents while 
+    generating them on-demand. We MUST use a Session to persist cookies,
+    otherwise each retry starts a new generation job.
     """
+    import time
+    
     url = f"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{celex}"
     
     print(f"  Downloading from {url}...")
-    response = requests.get(url, timeout=30)
-    response.raise_for_status()
-    return response.text
+    
+    # Use a Session to persist cookies across retries (CRITICAL for 202 handling)
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    })
+    
+    for attempt in range(max_retries):
+        response = session.get(url, timeout=60)
+        
+        # Check for successful response with content
+        if response.status_code == 200 and len(response.text) > 100:
+            return response.text
+        
+        # 202 means "Accepted but processing" - EUR-Lex is generating the document
+        if response.status_code == 202 or len(response.text) < 100:
+            if attempt < max_retries - 1:
+                # Check for Retry-After header, otherwise use progressive backoff
+                wait_time = int(response.headers.get("Retry-After", 3 + (attempt * 2)))
+                print(f"    EUR-Lex returned {response.status_code} (generating document), retrying in {wait_time}s... (attempt {attempt + 1}/{max_retries})")
+                time.sleep(wait_time)
+                continue
+        
+        response.raise_for_status()
+    
+    raise RuntimeError(f"Failed to download {celex} after {max_retries} retries (EUR-Lex may be unavailable)")
 
 
 def clean_text(text: str) -> str:
@@ -119,14 +168,14 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> dict:
+def extract_metadata(soup: BeautifulSoup, celex: str, doc_type: str = 'reg') -> dict:
     """
     Extract document metadata.
     
     Args:
         soup: Parsed HTML
         celex: CELEX number
-        reg_type: Regulation type ('reg', 'reg_impl', 'reg_del')
+        doc_type: Document type ('dir', 'reg', 'reg_impl', 'reg_del')
     """
     content = soup.find(id='document1') or soup
     
@@ -140,7 +189,7 @@ def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> 
         title_parts.append(text)
     
     # Main title is typically the first oj-doc-ti
-    main_title = title_parts[0] if title_parts else f"Regulation {celex}"
+    main_title = title_parts[0] if title_parts else f"Document {celex}"
     
     # Document date (e.g., "of 9 July 2008")
     date_str = ""
@@ -155,7 +204,7 @@ def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> 
     for p in content.find_all('p', class_='oj-doc-ti'):
         text = clean_text(p.get_text())
         # Subject is the long descriptive part (contains words like "setting", "laying", etc.)
-        if len(text) > 80 and not text.upper().startswith('REGULATION') and not text.upper().startswith('IMPLEMENTING') and not text.upper().startswith('COMMISSION'):
+        if len(text) > 80 and not text.upper().startswith('REGULATION') and not text.upper().startswith('IMPLEMENTING') and not text.upper().startswith('COMMISSION') and not text.upper().startswith('DIRECTIVE'):
             subject = text
             break
     
@@ -175,16 +224,17 @@ def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> 
     
     year, num = celex_to_eli(celex)
     
-    # Build ELI URL based on regulation type
-    eli_path = reg_type  # 'reg', 'reg_impl', or 'reg_del'
+    # Build ELI URL based on document type
+    eli_path = doc_type  # 'dir', 'reg', 'reg_impl', or 'reg_del'
     
     # Determine document type label
     doc_type_labels = {
+        'dir': 'Directive (EC)',
         'reg': 'Regulation (EC)',
         'reg_impl': 'Implementing Regulation (EU)',
         'reg_del': 'Delegated Regulation (EU)'
     }
-    doc_type = doc_type_labels.get(reg_type, 'Regulation')
+    doc_type_label = doc_type_labels.get(doc_type, 'Regulation')
     
     return {
         'celex': celex,
@@ -196,8 +246,8 @@ def extract_metadata(soup: BeautifulSoup, celex: str, reg_type: str = 'reg') -> 
         'eli': f"http://data.europa.eu/eli/{eli_path}/{year}/{num}/oj",
         'year': year,
         'number': num,
-        'reg_type': reg_type,
         'doc_type': doc_type,
+        'doc_type_label': doc_type_label,
         'eurlex_url': f"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex}"
     }
 
@@ -721,9 +771,9 @@ def format_markdown(metadata: dict, preamble: list[str], chapters: list[str],
     
     # 1. Metadata header (blockquote format - matches Formex output)
     year, num = metadata['year'], metadata['number']
-    doc_type = metadata.get('doc_type', 'Regulation (EC)')
+    doc_type_label = metadata.get('doc_type_label', 'Regulation (EC)')
     
-    lines.append(f"> **CELEX:** {metadata['celex']} | **Document:** {doc_type} No {num}/{year}")
+    lines.append(f"> **CELEX:** {metadata['celex']} | **Document:** {doc_type_label} No {num}/{year}")
     lines.append("> ")
     lines.append(f"> **Source:** [EUR-Lex]({metadata['eurlex_url']})")
     if metadata.get('oj_reference'):
@@ -792,13 +842,19 @@ def convert_html_to_markdown(celex: str, html_content: Optional[str] = None) -> 
     print("  Parsing HTML...")
     soup = BeautifulSoup(html_content, 'lxml')
     
-    # Detect regulation type (regular, implementing, delegated)
-    reg_type = detect_regulation_type(soup)
-    print(f"  Detected regulation type: {reg_type}")
+    # Detect document type (directive, regular regulation, implementing, delegated)
+    doc_type_str = detect_document_type(soup)
+    print(f"  Detected document type: {doc_type_str}")
     
-    # Extract components
+    # Check if this is consolidated HTML format
+    is_consolidated = is_consolidated_format(soup)
+    if is_consolidated:
+        print("  Detected consolidated HTML format — using specialized parser")
+        return convert_consolidated_html(soup, celex, doc_type_str)
+    
+    # Standard EUR-Lex format extraction
     print("  Extracting metadata...")
-    metadata = extract_metadata(soup, celex, reg_type)
+    metadata = extract_metadata(soup, celex, doc_type_str)
     
     print("  Extracting preamble and recitals...")
     preamble = extract_preamble(soup)
@@ -819,6 +875,147 @@ def convert_html_to_markdown(celex: str, html_content: Optional[str] = None) -> 
     return markdown
 
 
+def convert_consolidated_html(soup: BeautifulSoup, celex: str, doc_type_str: str) -> str:
+    """
+    Convert consolidated EUR-Lex HTML format to Markdown.
+    
+    Consolidated documents have a different structure:
+    - eli-main-title div with title-doc-first/title-doc-last classes
+    - eli-subdivision divs for articles (id="art_1", "art_2", etc.)
+    - title-article-norm for article numbers
+    - stitle-article-norm for article titles  
+    - div.norm or p.norm for paragraph content
+    - modref class for amendment markers (►B, ►M1, ►M2)
+    """
+    lines = []
+    
+    content = soup.find(id='docHtml') or soup
+    
+    # Extract metadata
+    year, num = celex_to_eli(celex)
+    
+    # Get title from title-doc-first elements
+    title_parts = []
+    main_title = content.find('div', class_='eli-main-title')
+    if main_title:
+        for p in main_title.find_all('p', class_=['title-doc-first', 'title-doc-last']):
+            text = clean_text(p.get_text())
+            if text:
+                title_parts.append(text)
+    
+    doc_title = title_parts[0] if title_parts else f"Document {celex}"
+    
+    # Document type label
+    doc_type_labels = {
+        'dir': 'Directive (EC)',
+        'reg': 'Regulation (EC)',
+        'reg_impl': 'Implementing Regulation (EU)',
+        'reg_del': 'Delegated Regulation (EU)'
+    }
+    doc_type_label = doc_type_labels.get(doc_type_str, 'Regulation')
+    
+    # Get OJ reference
+    oj_ref = ""
+    oj_elem = content.find('p', class_='title-doc-oj-reference')
+    if oj_elem:
+        oj_ref = clean_text(oj_elem.get_text())
+    
+    # Build ELI URL
+    eli_path = doc_type_str
+    eli_url = f"http://data.europa.eu/eli/{eli_path}/{year}/{num}/oj"
+    eurlex_url = f"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:{celex}"
+    
+    # Metadata header
+    lines.append(f"> **CELEX:** {celex} | **Document:** {doc_type_label} No {num}/{year}")
+    lines.append("> ")
+    lines.append(f"> **Source:** [EUR-Lex]({eurlex_url})")
+    if oj_ref:
+        lines.append(f"> **Official Journal:** {oj_ref}")
+    lines.append(f"> **ELI:** {eli_url}")
+    lines.append(f"> **Consolidated:** This is a consolidated text incorporating all amendments")
+    lines.append("")
+    
+    # Document title
+    lines.append(f"# {doc_title}")
+    lines.append("")
+    
+    # Add subtitle if available
+    if len(title_parts) > 1:
+        for part in title_parts[1:]:
+            if not part.startswith('(OJ'):  # Skip OJ reference
+                lines.append(f"*{part}*")
+                lines.append("")
+    
+    # Extract articles from eli-subdivision elements
+    lines.append("## Enacting Terms")
+    lines.append("")
+    
+    for article_div in content.find_all('div', class_='eli-subdivision', id=re.compile(r'^art_')):
+        article_id = article_div.get('id', '')
+        
+        # Get article number
+        article_num_elem = article_div.find('p', class_='title-article-norm')
+        if article_num_elem:
+            article_num = clean_text(article_num_elem.get_text())
+            lines.append(f"### {article_num}")
+            lines.append("")
+        
+        # Get article title
+        article_title_elem = article_div.find('p', class_='stitle-article-norm')
+        if article_title_elem:
+            article_title = clean_text(article_title_elem.get_text())
+            lines.append(f"**{article_title}**")
+            lines.append("")
+        
+        # Process article content
+        for elem in article_div.find_all(['p', 'div'], class_='norm', recursive=False):
+            # Skip amendment markers (modref class)
+            if 'modref' in elem.get('class', []):
+                continue
+            
+            # Check for paragraph numbers (no-parag class)
+            para_num = elem.find('span', class_='no-parag')
+            if para_num:
+                num_text = clean_text(para_num.get_text())
+                # Get the content (inline-element div or remaining text)
+                content_elem = elem.find('div', class_='inline-element')
+                if content_elem:
+                    content_text = clean_text(content_elem.get_text())
+                else:
+                    content_text = clean_text(elem.get_text())
+                    # Remove the number prefix
+                    content_text = content_text.replace(num_text, '', 1).strip()
+                
+                lines.append(f"{num_text}{content_text}")
+                lines.append("")
+            else:
+                text = clean_text(elem.get_text())
+                if text and '►' not in text and '▼' not in text:  # Skip amendment markers
+                    lines.append(text)
+                    lines.append("")
+        
+        # Process definition lists (grid-container grid-list)
+        for grid in article_div.find_all('div', class_='grid-container'):
+            if 'grid-list' in grid.get('class', []):
+                # Get the letter/number (point indicator)
+                point_elem = grid.find('div', class_='list')
+                point_text = clean_text(point_elem.get_text()) if point_elem else ""
+                
+                # Get the content
+                content_elem = grid.find('div', class_='grid-list-column-2')
+                if content_elem:
+                    content_text = clean_text(content_elem.get_text())
+                    if content_text:
+                        lines.append(f"- {point_text} {content_text}")
+        
+        lines.append("")  # Blank line between articles
+    
+    # Note: Consolidated documents typically don't have preamble in the consolidated view
+    # They reference the original document for recitals
+    
+    return '\n'.join(lines)
+
+
 def main():
     """CLI entry point."""
     if len(sys.argv) < 3:
@@ -831,13 +1028,13 @@ def main():
     celex = sys.argv[1]
     output_dir = Path(sys.argv[2])
     
-    # Validate CELEX format (standard or consolidated)
-    # Standard: 3YYYYRNNNN (e.g., 32008R0765)
-    # Consolidated: 0YYYYRNNNN-YYYYMMDD (e.g., 02019R0881-20250204)
-    if not re.match(r'^(3\d{4}R\d+|0\d{4}R\d+-\d{8})$', celex):
+    # Validate CELEX format (standard or consolidated, regulation or directive)
+    # Standard: 3YYYY[R|L]NNNN (e.g., 32008R0765 for regulation, 32002L0058 for directive)
+    # Consolidated: 0YYYY[R|L]NNNN-YYYYMMDD (e.g., 02019R0881-20250204, 02002L0058-20091219)
+    if not re.match(r'^(3\d{4}[RL]\d+|0\d{4}[RL]\d+-\d{8})$', celex):
         print(f"Error: Invalid CELEX format: {celex}")
-        print("Expected format: 3YYYYRNNNN (e.g., 32008R0765)")
-        print("            or: 0YYYYRNNNN-YYYYMMDD (e.g., 02019R0881-20250204)")
+        print("Expected format: 3YYYY[R|L]NNNN (e.g., 32008R0765 or 32002L0058)")
+        print("            or: 0YYYY[R|L]NNNN-YYYYMMDD (e.g., 02019R0881-20250204)")
         sys.exit(1)
     
     print(f"Converting {celex} to Markdown...")
