@@ -68,6 +68,13 @@
             "terminologySource": true,
             "category": "referenced",
             "comment": "European Standardisation framework. Article 2 contains 10 definitions for standards and standardisation bodies."
+        },
+        "2022-2554": {
+            "label": "DORA",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "referenced",
+            "comment": "Digital Operational Resilience Act. Article 3 contains 65 definitions for ICT risk and digital operational resilience in the financial sector."
         }
     },
     "defaults": {
