@@ -116,10 +116,12 @@ const Home = () => {
                     <span>Open RCA Tool</span>
                     <span
                         style={{
-                            background: 'rgba(255, 255, 255, 0.2)',
-                            padding: '2px 8px',
+                            background: '#064e5c',
+                            color: 'white',
+                            padding: '4px 12px',
                             borderRadius: 'var(--border-radius-full)',
-                            fontSize: 'var(--text-xs)'
+                            fontSize: 'var(--text-xs)',
+                            fontWeight: 'var(--font-semibold)'
                         }}
                     >
                         458 requirements

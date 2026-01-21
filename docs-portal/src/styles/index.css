@@ -540,8 +540,13 @@ pre code {
 }
 
 .btn-primary:hover:not(:disabled) {
-  filter: brightness(1.1);
-  box-shadow: 0 0 12px var(--accent-primary-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--accent-primary-glow), 0 0 20px var(--accent-primary-glow);
+}
+
+a.btn-primary:hover {
+  color: var(--bg-primary);
+  text-decoration: none;
 }
 
 .btn-secondary {
