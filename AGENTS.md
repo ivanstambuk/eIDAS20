@@ -515,6 +515,36 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 - ✅ Use `eurlex_formex.py` which handles multi-part merging automatically
 - ✅ Let the script select `.000101` as main and merge higher-numbered files as annexes
 
+### Consolidated Import Strategy
+
+**When the consolidated Formex is unavailable but amendments exist:**
+
+| Step | Action |
+|------|--------|
+| 1. Check consolidated Formex | Try consolidated CELEX (0YYYYRNNNN-DATE) on EUR-Lex |
+| 2. If unavailable | Fall back to base CELEX (3YYYYRNNNN) |
+| 3. Import via Formex | Use `eurlex_formex.py` with base CELEX |
+| 4. Apply corrigenda | Manually apply any corrigenda (R01, R02, etc.) |
+| 5. Update documents.yaml | Set `celex` to consolidated, `source: manual`, add comments |
+| 6. Add note to markdown | Add **Note:** line about amendment status |
+
+**Example (Cybersecurity Act):**
+```yaml
+# documents.yaml
+- celex: 02019R0881-20250204              # Consolidated CELEX for EUR-Lex link
+  source: manual                           # Protects from overwrite
+  cellar_id: 35e93bb4-8905-11e9...        # Original Formex source
+  # NOTE: Imported from base CELEX, M1 (2025/37) not applied
+```
+
+**Why this pattern:**
+- EUR-Lex link shows users the **latest consolidated text**
+- `source: manual` prevents accidental overwrites
+- Comments document what amendments are/aren't applied
+- Original `cellar_id` preserves provenance
+
+**Applied to:** GDPR, NIS2, Cybersecurity Act
+
 ---
 
 ## Key Terminology

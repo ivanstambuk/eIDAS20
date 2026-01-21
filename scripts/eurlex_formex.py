@@ -36,6 +36,10 @@ def get_document_config(celex: str) -> dict | None:
     """
     Check documents.yaml for document configuration.
     
+    Supports two lookup patterns:
+    1. Exact match on 'celex' field
+    2. Match on 'base_celex' field (for when celex is consolidated but import is from base)
+    
     Returns the document config dict if found, None otherwise.
     """
     documents_yaml = Path(__file__).parent / 'documents.yaml'
@@ -47,7 +51,11 @@ def get_document_config(celex: str) -> dict | None:
         config = yaml.safe_load(f)
     
     for doc in config.get('documents', []):
+        # Primary lookup: exact celex match
         if doc.get('celex') == celex:
+            return doc
+        # Secondary lookup: base_celex match (for consolidated->base imports)
+        if doc.get('base_celex') == celex:
             return doc
     
     return None

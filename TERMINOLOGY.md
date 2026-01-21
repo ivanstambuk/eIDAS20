@@ -39,6 +39,10 @@ Common terms used across the documentation portal project to ensure consistent v
 | Term | Description |
 |------|-------------|
 | **CELEX** | The unique identifier for EU legal documents in EUR-Lex. Format examples: `32014R0910` (Regulation 910/2014), `32024R1183` (Regulation 2024/1183). The first digit indicates document type (3=Regulation). |
+| **Base CELEX** | The original act CELEX starting with `3` (e.g., `32019R0881`). Used for Formex import when consolidated version unavailable. |
+| **Consolidated CELEX** | A CELEX representing the consolidated version of a text including all amendments. Format: `0YYYYRNNNN-YYYYMMDD` (e.g., `02019R0881-20250204`). Used for EUR-Lex links even when importing from base. |
+| **Corrigendum** | An official correction to typos or errors in published legislation. Identified by R(01), R(02), etc. suffix. Corrigenda should be applied manually if substantive. |
+| **M1 Amendment** | A modification to a regulation made by subsequent legislation. Numbered M1, M2, etc. in EUR-Lex. May require manual surgery or waiting for consolidated Formex. |
 | **ELI** | European Legislation Identifier. A standardized URI for citing EU law. Base format: `http://data.europa.eu/eli/{type}/{year}/{number}/oj`. |
 | **Slug** | The internal identifier used in the portal's URL routing. Format: `{year}-{number}` (e.g., `2014-910`, `2024-1183`, `2008-765`). Standardized in DEC-083 to always use year-first format, matching ELI URIs. |
 
