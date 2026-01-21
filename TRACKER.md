@@ -8,16 +8,16 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-21 02:15 CET |
-| **Session State** | V3.6.5 — RCA Stats Bar |
-| **Portal Status** | ✅ Fully functional (190,860 words, **129 terms**, **458 RCA requirements**, **12 atomic categories**) |
+| **Last Updated** | 2026-01-21 05:15 CET |
+| **Session State** | V3.6.38 — Dynamic Homepage Stats |
+| **Portal Status** | ✅ Fully functional (239,136 words, **151 terms**, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Ready for next task |
 
 ---
 
 ## Portal Features (Complete)
 
-- **35 documents** (6 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, **eSignature FAQ** + 29 implementing acts)
+- **36 documents** (7 regulations/supplementary: 910/2014, 2024/1183, 765/2008, 2021/946, 2015/1501, 2016/679 GDPR, **eSignature FAQ** + 29 implementing acts)
 - **eIDAS Interoperability Framework** (2015/1501 imported via HTML parser — establishes technical requirements for cross-border eID interoperability)
 - **EUDIW Toolbox Recommendation** (32021H0946 imported via extended Formex converter — foundational document establishing Member State cooperation for European Digital Identity Framework)
 - **Full-text + semantic search** (Orama + Transformers.js embeddings)
@@ -97,6 +97,8 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-21 05:15 | **Dynamic Homepage Stats (V3.6.38)**: Replaced hardcoded hero stats with dynamic values from build-time metadata. (1) Extended `generateMetadata()` in build-content.js to include `terminologyCount` and `totalArticles`, (2) Updated Home.jsx to fetch metadata.json and display real values (7 regulations, 29 IAs, 151 terms, 633 articles), (3) Replaced fake "Browse by Role" badges with functional "Compliance Assessment" section linking to real RCA tool, (4) Browser-verified all stat cards show correct dynamic values. |
+| 2026-01-21 05:06 | **Subtitle Validation + Data Cleanup (V3.6.37)**: (1) Fixed parseDescription to prioritize title over preamble extraction, (2) Fixed 2015/1501 markdown H1 to include complete legal title, (3) Created `validate-subtitles.js` validator — catches preamble extraction, min length, valid format, (4) Integrated into build pipeline (`npm run validate:subtitles`), (5) Removed incorrect 32024R2978 entry (was Turkish coffee PDO, NOT eIDAS RP registration), (6) Fixed Terminology stats to show all 3 sources (regulations + implementing acts + supplementary = 256), (7) Confirmed no missing eIDAS implementing acts — RP registration covered by 32025R0848. |
 | 2026-01-21 02:15 | **RCA Stats Bar (V3.6.5)**: Added framework scope info bar to RCA page: "📊 458 requirements across 7 roles and 19 use cases" with "393 universal • 65 use-case specific" breakdown. Build-time computed stats (totalRoles, universalRequirements, useCaseSpecificRequirements). Glassmorphism styling with responsive layout. |
 | 2026-01-21 02:10 | **Regression Prevention Validation (V3.6.4)**: Implemented P0 measures to prevent silent content corruption. (1) Created `config/protected-sources.yaml` manifest defining content invariants for critical documents (eIDAS 2014-910, 2024-1183, 765/2008), (2) Added `validateProtectedSources()` to build-content.js — checks required articles, min word counts, min TOC items, and required patterns, (3) Build now FAILS if any protected document is damaged. Root cause analysis: commit a7a8dbb scrambled eIDAS source but tests passed silently. Prevention: Fail fast at build time. |
 | 2026-01-21 01:35 | **Critical Regression Fix (V3.6.3)**: Restored eIDAS consolidated regulation (2014-910) — Articles 5a through 45 were missing from rendered content. Root cause: Commit `a7a8dbb` (CONS.ANNEX fix) accidentally scrambled the markdown source file, jumping from Article 5 directly to Article 46. Fixed by restoring source from `a7a8dbb~1` and rebuilding. Browser-verified all articles now present in TOC and content. |

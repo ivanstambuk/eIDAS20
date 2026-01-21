@@ -1200,7 +1200,7 @@ function validateAnnexes(regulations) {
  * 
  * Build-time validation ensures data integrity (Defense in Depth, AGENTS.md Rule 5).
  * 
- * @param {Array<{type: string, wordCount: number, slug: string}>} regulations - Array of all processed regulation objects
+ * @param {Array<{type: string, wordCount: number, slug: string, toc: Array}>} regulations - Array of all processed regulation objects
  * @returns {{
  *   documentCount: number,
  *   regulationCount: number,
@@ -1208,6 +1208,8 @@ function validateAnnexes(regulations) {
  *   totalWordCount: number,
  *   regulationWordCount: number,
  *   implementingActWordCount: number,
+ *   terminologyCount: number,
+ *   totalArticles: number,
  *   lastBuildTime: string,
  *   buildDate: string,
  *   categories: {
@@ -1264,6 +1266,20 @@ function generateMetadata(regulations) {
         );
     }
 
+    // Load terminology count from terminology.json
+    let terminologyCount = 0;
+    try {
+        if (existsSync(TERMINOLOGY_PATH)) {
+            const terminologyData = JSON.parse(readFileSync(TERMINOLOGY_PATH, 'utf-8'));
+            terminologyCount = terminologyData.terms?.length || 0;
+        }
+    } catch (err) {
+        console.warn(`   ⚠️  Could not load terminology count: ${err.message}`);
+    }
+
+    // Calculate total articles/sections (sum of all TOC items)
+    const totalArticles = regulations.reduce((sum, r) => sum + (r.toc?.length || 0), 0);
+
     const metadata = {
         // Document counts
         documentCount,
@@ -1276,6 +1292,10 @@ function generateMetadata(regulations) {
         regulationWordCount,
         implementingActWordCount,
         supplementaryWordCount,
+
+        // Homepage stats
+        terminologyCount,
+        totalArticles,
 
         // Build info
         lastBuildTime: new Date().toISOString(),

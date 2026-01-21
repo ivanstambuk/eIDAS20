@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+    const [stats, setStats] = useState(null);
+
+    useEffect(() => {
+        // Fetch build-time computed stats from metadata.json
+        fetch(`${import.meta.env.BASE_URL}data/metadata.json`)
+            .then(res => res.json())
+            .then(data => setStats(data))
+            .catch(err => console.error('Failed to load metadata:', err));
+    }, []);
+
     return (
         <div className="animate-fadeIn">
             {/* Hero Section */}
@@ -22,7 +33,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Stats Cards */}
+            {/* Stats Cards - Now Dynamic! */}
             <section style={{ marginBottom: 'var(--space-12)' }}>
                 <div style={{
                     display: 'grid',
@@ -31,25 +42,25 @@ const Home = () => {
                 }}>
                     <StatCard
                         label="Regulations"
-                        value="2"
-                        description="Core + Amending"
+                        value={stats?.regulationCount ?? '—'}
+                        description="Core + Referenced"
                         accent="var(--accent-primary)"
                     />
                     <StatCard
                         label="Implementing Acts"
-                        value="30"
+                        value={stats?.implementingActCount ?? '—'}
                         description="Commission Acts"
                         accent="var(--accent-secondary)"
                     />
                     <StatCard
                         label="Definitions"
-                        value="57"
+                        value={stats?.terminologyCount ?? '—'}
                         description="Legal Terms"
                         accent="var(--accent-warning)"
                     />
                     <StatCard
                         label="Articles"
-                        value="50+"
+                        value={stats?.totalArticles ?? '—'}
                         description="Regulatory Provisions"
                         accent="var(--accent-info)"
                     />
@@ -91,19 +102,29 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Role-Based Navigation */}
+            {/* Compliance Assessment - Links to real RCA tool */}
             <section style={{ marginTop: 'var(--space-12)' }}>
-                <h2 style={{ marginBottom: 'var(--space-4)' }}>Browse by Role</h2>
+                <h2 style={{ marginBottom: 'var(--space-4)' }}>Compliance Assessment</h2>
                 <p className="text-muted" style={{ marginBottom: 'var(--space-6)' }}>
-                    Find relevant provisions for your specific role in the eIDAS ecosystem.
+                    Check requirements for your specific role in the eIDAS ecosystem.
                 </p>
-                <div className="flex gap-3" style={{ flexWrap: 'wrap' }}>
-                    <RoleBadge role="Relying Party" count={12} />
-                    <RoleBadge role="Wallet Provider" count={18} />
-                    <RoleBadge role="QTSP" count={24} />
-                    <RoleBadge role="Conformity Assessment Body" count={8} />
-                    <RoleBadge role="Member State Authority" count={15} />
-                </div>
+                <Link to="/compliance" className="btn btn-primary" style={{ gap: 'var(--space-2)' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M9 11l3 3L22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                    <span>Open RCA Tool</span>
+                    <span
+                        style={{
+                            background: 'rgba(255, 255, 255, 0.2)',
+                            padding: '2px 8px',
+                            borderRadius: 'var(--border-radius-full)',
+                            fontSize: 'var(--text-xs)'
+                        }}
+                    >
+                        458 requirements
+                    </span>
+                </Link>
             </section>
         </div>
     );
@@ -142,27 +163,6 @@ const QuickLinkCard = ({ title, description, path, badge }) => (
             <h4 style={{ marginBottom: 'var(--space-2)', color: 'var(--text-primary)' }}>{title}</h4>
             <p className="text-sm text-muted">{description}</p>
         </div>
-    </Link>
-);
-
-const RoleBadge = ({ role, count }) => (
-    <Link
-        to={`/by-role?role=${encodeURIComponent(role)}`}
-        className="btn btn-secondary"
-        style={{ gap: 'var(--space-2)' }}
-    >
-        <span>{role}</span>
-        <span
-            style={{
-                background: 'var(--accent-primary-dim)',
-                color: 'var(--accent-primary)',
-                padding: '2px 8px',
-                borderRadius: 'var(--border-radius-full)',
-                fontSize: 'var(--text-xs)'
-            }}
-        >
-            {count}
-        </span>
     </Link>
 );
 
