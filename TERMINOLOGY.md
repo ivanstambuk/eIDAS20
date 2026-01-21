@@ -191,7 +191,7 @@ Different legal act types use different ELI path segments:
 
 | Term | Description |
 |------|-------------|
-| **Content Build** | The process of converting source markdown to JSON. Command: `npm run build:content`. |
+| **Content Build** | The process of converting source markdown to JSON. Command: `npm run build:documents`. |
 | **rehype Plugin** | A unified.js plugin that processes HTML AST. Used for adding IDs, transforming citations. |
 | **Paragraph ID Plugin** | The `rehype-paragraph-ids.js` plugin that assigns linkable IDs to articles, paragraphs, points, and recitals. |
 | **Citation Extraction** | The process of finding and cataloging legislation references in document content. |

@@ -251,7 +251,7 @@ async function generateEmbeddings() {
 
     // Check for regulations index
     if (!fs.existsSync(INDEX_FILE)) {
-        console.error('❌ regulations-index.json not found. Run build:content first.');
+        console.error('❌ regulations-index.json not found. Run build:documents first.');
         process.exit(1);
     }
 
