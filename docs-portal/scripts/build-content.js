@@ -45,7 +45,8 @@ const TERMINOLOGY_PATH = join(__dirname, '..', 'public', 'data', 'terminology.js
 // Source directories
 const SOURCE_DIRS = [
     { path: join(PROJECT_ROOT, '01_regulation'), type: 'regulation' },
-    { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' }
+    { path: join(PROJECT_ROOT, '02_implementing_acts'), type: 'implementing-act' },
+    { path: join(PROJECT_ROOT, '03_supplementary'), type: 'supplementary' }
 ];
 
 /**
@@ -276,7 +277,11 @@ function transformCitationsInMarkdown(content, citations) {
 }
 
 /**
- * Parse CELEX and metadata from the first line blockquote
+ * Parse CELEX and metadata from the first line blockquote OR YAML front matter
+ * 
+ * Supports two formats:
+ * 1. Blockquote format (regulations): > **CELEX:** xxx | **Document:** yyy
+ * 2. YAML front matter (supplementary): ---\ntitle: xxx\nshortTitle: yyy\n---
  */
 function parseMetadata(content) {
     const metadata = {
@@ -284,9 +289,40 @@ function parseMetadata(content) {
         documentType: null,
         source: null,
         version: null,
-        subject: null
+        subject: null,
+        // New fields from YAML front matter
+        title: null,
+        shortTitle: null,
+        description: null,
+        category: null,
+        type: null
     };
 
+    // Check for YAML front matter first (supplementary content)
+    const yamlMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    if (yamlMatch) {
+        const yaml = yamlMatch[1];
+
+        // Simple YAML parsing for our known fields
+        const parseYamlField = (field) => {
+            const match = yaml.match(new RegExp(`^${field}:\\s*(.+)$`, 'm'));
+            return match ? match[1].trim() : null;
+        };
+
+        metadata.title = parseYamlField('title');
+        metadata.shortTitle = parseYamlField('shortTitle');
+        metadata.description = parseYamlField('description');
+        metadata.source = parseYamlField('source');
+        metadata.type = parseYamlField('type');
+        metadata.category = parseYamlField('category');
+
+        // If we found YAML front matter, return early
+        if (metadata.title || metadata.shortTitle) {
+            return metadata;
+        }
+    }
+
+    // Fallback to blockquote format (regulations)
     // Match first blockquote line: > **CELEX:** 32024R2977 | **Document:** Commission Implementing Regulation
     const celexMatch = content.match(/>\s*\*\*CELEX:\*\*\s*(\S+)/);
     if (celexMatch) {
@@ -324,9 +360,10 @@ function parseMetadata(content) {
  * Strip front matter that is redundant in the portal UI.
  * 
  * This includes:
- * 1. Metadata blockquote: CELEX, Document type, Source URL (shown in header badges)
- * 2. Amendment History table: Only in consolidated regulations, renders as raw markdown
- * 3. Main H1 title: Already displayed in the header component
+ * 1. YAML front matter (supplementary): ---\ntitle: xxx\n---
+ * 2. Metadata blockquote: CELEX, Document type, Source URL (shown in header badges)
+ * 3. Amendment History table: Only in consolidated regulations, renders as raw markdown
+ * 4. Main H1 title: Already displayed in the header component
  * 
  * Decision: 2026-01-14 - Metadata stripped from rendered content.
  * The original markdown files retain this data for archival purposes.
@@ -334,6 +371,11 @@ function parseMetadata(content) {
  */
 function stripFrontMatter(content) {
     let result = content;
+
+    // 0. Strip YAML front matter (supplementary content)
+    // Pattern: ---\n...yaml content...\n---
+    const yamlFrontMatterPattern = /^---\n[\s\S]*?\n---\n*/;
+    result = result.replace(yamlFrontMatterPattern, '');
 
     // 1. Strip metadata blockquote at start of document
     // Pattern: All consecutive lines starting with > at the beginning
@@ -750,13 +792,19 @@ function processMarkdownFile(filePath, dirName, type) {
 
     // Parse metadata and title from raw content (before stripping)
     const metadata = parseMetadata(rawContent);
-    const title = parseTitle(rawContent);  // Extract title BEFORE stripping H1
+
+    // For supplementary content with YAML front matter, use metadata.title
+    // For regulations, extract title from H1 heading
+    const title = metadata.title || parseTitle(rawContent);
 
     // Strip front matter for all content-related processing
     let content = stripFrontMatter(rawContent);
 
     const slug = generateSlug(dirName, type);
-    const shortTitle = extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
+
+    // For supplementary content with YAML front matter, use metadata.shortTitle
+    // For regulations, use extractShortTitle with its priority chain
+    const shortTitle = metadata.shortTitle || extractShortTitle(title, metadata.celex, type, dirName, metadata.subject);
     const sidebarTitle = getSidebarTitleFromConfig(dirName);  // May be null (uses shortTitle fallback)
 
     // Get document typing from documents.yaml (legalType + category)
@@ -776,7 +824,9 @@ function processMarkdownFile(filePath, dirName, type) {
 
     // Build TOC after potential preamble injection so recitals appear in TOC
     const toc = buildTableOfContents(content);
-    const description = parseDescription(rawContent, title);  // Use raw for preamble extraction
+    // For supplementary content, use metadata.description from YAML
+    // For regulations, extract from preamble
+    const description = metadata.description || parseDescription(rawContent, title);
     const date = extractDate(rawContent, dirName, metadata.celex);
 
     // Transform citations BEFORE markdown → HTML conversion
@@ -982,32 +1032,39 @@ function generateMetadata(regulations) {
     // Count documents by type
     const regulationDocs = regulations.filter(r => r.type === 'regulation');
     const implementingActDocs = regulations.filter(r => r.type === 'implementing-act');
+    const supplementaryDocs = regulations.filter(r => r.type === 'supplementary');
 
     // Calculate word counts
     const totalWordCount = regulations.reduce((sum, r) => sum + r.wordCount, 0);
     const regulationWordCount = regulationDocs.reduce((sum, r) => sum + r.wordCount, 0);
     const implementingActWordCount = implementingActDocs.reduce((sum, r) => sum + r.wordCount, 0);
+    const supplementaryWordCount = supplementaryDocs.reduce((sum, r) => sum + r.wordCount, 0);
 
     // Build-time validation (Defense in Depth)
     const documentCount = regulations.length;
     const regulationCount = regulationDocs.length;
     const implementingActCount = implementingActDocs.length;
+    const supplementaryCount = supplementaryDocs.length;
 
     // Validation 1: Sum of categories must equal total
-    if (regulationCount + implementingActCount !== documentCount) {
+    if (regulationCount + implementingActCount + supplementaryCount !== documentCount) {
         throw new Error(
             `Data integrity error: Document type mismatch!\n` +
             `  Total documents: ${documentCount}\n` +
             `  Regulations: ${regulationCount}\n` +
             `  Implementing acts: ${implementingActCount}\n` +
-            `  Sum: ${regulationCount + implementingActCount}\n` +
-            `  Expected: Total = Regulations + Implementing Acts`
+            `  Supplementary: ${supplementaryCount}\n` +
+            `  Sum: ${regulationCount + implementingActCount + supplementaryCount}\n` +
+            `  Expected: Total = Regulations + Implementing Acts + Supplementary`
         );
     }
 
     // Note: Regulation count is no longer hardcoded—it's derived from documents.yaml
     // Log for reference (not an error or warning)
     console.log(`   Regulations (type=regulation): ${regulationDocs.map(r => r.slug).join(', ')}`);
+    if (supplementaryCount > 0) {
+        console.log(`   Supplementary (type=supplementary): ${supplementaryDocs.map(r => r.slug).join(', ')}`);
+    }
 
     // Validation 3: Word count sanity check (total should be reasonable)
     if (totalWordCount < 10000) {
@@ -1022,11 +1079,13 @@ function generateMetadata(regulations) {
         documentCount,
         regulationCount,
         implementingActCount,
+        supplementaryCount,
 
         // Word counts
         totalWordCount,
         regulationWordCount,
         implementingActWordCount,
+        supplementaryWordCount,
 
         // Build info
         lastBuildTime: new Date().toISOString(),
@@ -1046,6 +1105,11 @@ function generateMetadata(regulations) {
             implementingActs: {
                 count: implementingActCount,
                 wordCount: implementingActWordCount
+            },
+            supplementary: {
+                count: supplementaryCount,
+                wordCount: supplementaryWordCount,
+                slugs: supplementaryDocs.map(r => r.slug)
             }
         }
     };

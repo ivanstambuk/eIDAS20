@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|---------|
-| **Last Updated** | 2026-01-20 22:50 CET |
-| **Session State** | V3.6.0 — FAQ Terminology Expansion |
-| **Portal Status** | ✅ Fully functional (185,357 words, **127 terms**, **458 RCA requirements**, **12 atomic categories**) |
+| **Last Updated** | 2026-01-20 23:49 CET |
+| **Session State** | V3.6.1 — Search Improvements + Build Workflow |
+| **Portal Status** | ✅ Fully functional (185,357 words, **129 terms**, **458 RCA requirements**, **12 atomic categories**) |
 | **Next Action** | Push to GitHub |
 
 ---
@@ -85,6 +85,7 @@
 
 | Date | Summary |
 |------|------------|
+| 2026-01-20 23:49 | **Search Improvements + Build Workflow (V3.6.1)**: (1) Added 'simple electronic signature' and 'simple electronic seal' terms (129 terms now), (2) Fixed search ranking for 'digital signature' — was missing due to stale index, (3) Added `npm run build:all-content` combined command (runs terminology + search together), (4) CI now fails if search index is stale (`CI=true` environment detection), (5) Documented build workflow in AGENTS.md, (6) Retro: Identified staleness as root cause, implemented preventive measures. |
 | 2026-01-20 22:50 | **FAQ Terminology Expansion (V3.6.0)**: (1) Imported EC eSignature FAQ (5,788 words) as new 'supplementary' document category, (2) Created `supplementary-terms.yaml` with 31 verbatim FAQ definitions (DEC-092), (3) Updated build-terminology.js with `loadSupplementaryTerms()` function, (4) 127 unique terms now (was 107) with 231 total definitions, (5) Core terms like "electronic signature" now have 2 sources (legal + plain-language), (6) Added role/domain mappings for all new terms, (7) Renamed sidebar section "Referenced Regulations" → "Supplementary Documents" (DEC-093), (8) Fixed FAQ section titles to show human-readable questions instead of URL slugs. |
 | 2026-01-20 22:09 | **Hybrid Use Case Selector (V3.5.6)**: Redesigned RCA use case selection with hybrid pattern: (1) Domain chips (toggle multi-select) replace filter pills at top, (2) Flat grouped list shows use cases with always-visible descriptions (no accordion collapse), (3) Empty state prompt when no domains selected, (4) "Select all" checkbox per domain header, (5) Glossy cyan styling on selected chips/items. Retro: Added 4 terms to TERMINOLOGY.md (Domain, Requirement Category, Hybrid Selector Pattern, Domain Chip), updated /ux-design workflow with "tabs imply exclusivity" and "check existing UI first" rules. |
 | 2026-01-20 21:11 | **Complete Role Labels Refresh (V3.5.5)**: Second pass over all 7 roles for clarity: (1) Relying Party: action-oriented "Verifies wallet credentials...", (2) Wallet Provider: "Develops and operates the EUDI Wallet solution", profile "Member State Direct" → "Government-Operated" with Art 5a refs, (3) PID Provider: emphasizes "foundational identity credential", (4) **CAB**: Fixed inaccurate scope — now includes "wallet providers, QTSPs, and QEAA issuers" (was only QTSPs), (5) Supervisory Body: shortened to "Authority overseeing...". Browser-verified all changes. |

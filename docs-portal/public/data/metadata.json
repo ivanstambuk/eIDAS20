@@ -1,12 +1,14 @@
 {
-  "documentCount": 35,
+  "documentCount": 36,
   "regulationCount": 6,
   "implementingActCount": 29,
-  "totalWordCount": 185357,
+  "supplementaryCount": 1,
+  "totalWordCount": 191145,
   "regulationWordCount": 86808,
   "implementingActWordCount": 98549,
-  "lastBuildTime": "2026-01-20T21:28:37.239Z",
-  "buildDate": "Jan 20, 2026",
+  "supplementaryWordCount": 5788,
+  "lastBuildTime": "2026-01-21T00:26:59.250Z",
+  "buildDate": "Jan 21, 2026",
   "categories": {
     "regulations": {
       "count": 6,
@@ -23,6 +25,13 @@
     "implementingActs": {
       "count": 29,
       "wordCount": 98549
+    },
+    "supplementary": {
+      "count": 1,
+      "wordCount": 5788,
+      "slugs": [
+        "ec-esignature-faq"
+      ]
     }
   }
 }

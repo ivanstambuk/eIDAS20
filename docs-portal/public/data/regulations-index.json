@@ -488,5 +488,19 @@
     "date": "16 December 2025",
     "wordCount": 2009,
     "tocCount": 6
+  },
+  {
+    "slug": "ec-esignature-faq",
+    "type": "supplementary",
+    "legalType": null,
+    "category": null,
+    "title": "eSignature FAQ",
+    "shortTitle": "eSignature FAQ",
+    "sidebarTitle": null,
+    "description": "Discover how eSignature enables secure cross-border data and document exchange.",
+    "celex": null,
+    "date": null,
+    "wordCount": 5788,
+    "tocCount": 50
   }
 ]

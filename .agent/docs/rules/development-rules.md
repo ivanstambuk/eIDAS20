@@ -553,3 +553,38 @@ requestAnimationFrame(() => requestAnimationFrame(checkAndScroll));
 | `all` | Enable all modes |
 
 **See also:** `src/utils/debugCSS.js` for implementation details.
+
+---
+
+## 26. Rehype Term-Link Single-Term Text Nodes (PITFALL)
+
+**Problem:** When wrapping matched terms with `<span>` elements in rehype plugins, the replacement condition must handle single-term text nodes.
+
+**Example of the bug (from 2026-01-21):**
+```javascript
+// ❌ BUG: parts.length > 1 excludes single-term text nodes
+const parts = processTextNode(node, termPattern, termMap);
+if (parts && parts.length > 1) {  // ← Wrong condition!
+    replacements.push({ node, parent, parts });
+}
+
+// Text node: "Electronic signature" (entire content is one term)
+// After processing: parts = [<span>Electronic signature</span>]
+// parts.length === 1, so condition fails → term not linked!
+```
+
+**Solution:**
+```javascript
+// ✅ CORRECT: parts.length > 0 includes single-term text nodes
+const parts = processTextNode(node, termPattern, termMap);
+if (parts && parts.length > 0) {  // ← Correct condition
+    replacements.push({ node, parent, parts });
+}
+```
+
+**When this occurs:**
+- List items containing only a term: `<li>Electronic signature</li>`
+- Definition terms in bold: `<strong>trust service</strong>`
+- Any text node where the ENTIRE content matches a term
+
+**Why it's subtle:** In most cases, terms appear within sentences, so splitting produces multiple parts (text + term + text). The bug only manifests when terms are standalone.

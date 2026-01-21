@@ -29,6 +29,7 @@ const CONFIG_DIR = join(__dirname, '..', 'config');
 const TERM_ROLES_FILE = join(CONFIG_DIR, 'term-roles.json');
 const TERM_DOMAINS_FILE = join(CONFIG_DIR, 'term-domains.json');
 const FILTERS_CONFIG_FILE = join(CONFIG_DIR, 'terminology-filters.yaml');
+const REGULATIONS_INDEX_FILE = join(OUTPUT_DIR, 'regulations-index.json');
 
 // Source directories
 const SOURCE_DIRS = [
@@ -39,6 +40,26 @@ const SOURCE_DIRS = [
 // Supplementary terminology file (DEC-092: verbatim definitions from non-legal sources)
 // This YAML file contains manually curated definitions from sources like EC FAQ
 const SUPPLEMENTARY_TERMS_FILE = join(__dirname, 'supplementary-terms.yaml');
+
+/**
+ * Load human-friendly document titles from regulations-index.json
+ * This provides shortTitle (e.g., "eIDAS 2.0 Regulation (Consolidated)") 
+ * instead of formal references (e.g., "Regulation 910/2014")
+ */
+function loadDocumentTitles() {
+    try {
+        const data = JSON.parse(readFileSync(REGULATIONS_INDEX_FILE, 'utf-8'));
+        const titleMap = {};
+        for (const doc of data) {
+            titleMap[doc.slug] = doc.shortTitle || doc.title;
+        }
+        return titleMap;
+    } catch (err) {
+        console.warn('⚠️  Could not load regulations-index.json:', err.message);
+        console.warn('   This is normal on first build. Using fallback titles.');
+        return {};
+    }
+}
 
 /**
  * Load role mappings from config file
@@ -196,6 +217,9 @@ function loadSupplementaryTerms() {
                             type: source.type || 'faq',
                             category: source.category || 'supplementary',
                             article: currentTerm.sectionTitle || currentTerm.section || 'N/A',
+                            // sectionId: The actual HTML element ID for deep linking (slug form)
+                            // article: Human-readable display text for the article number
+                            sectionId: currentTerm.section || null,
                             ordinal: null
                         }
                     });
@@ -271,6 +295,8 @@ function loadSupplementaryTerms() {
                     type: source.type || 'faq',
                     category: source.category || 'supplementary',
                     article: currentTerm.sectionTitle || currentTerm.section || 'N/A',
+                    // sectionId: The actual HTML element ID for deep linking (slug form)
+                    sectionId: currentTerm.section || null,
                     ordinal: null
                 }
             });
@@ -548,8 +574,11 @@ function scanDirectory(sourceDir, type, docConfig) {
  *   1. primary (eIDAS 910/2014, 2024/1183)
  *   2. implementing-act (technical specifications)
  *   3. referenced (765/2008, foundational regulations)
+ * 
+ * @param {Array} allTerms - All extracted terms
+ * @param {Object} documentTitles - Map of slug -> human-friendly shortTitle
  */
-function mergeTerms(allTerms) {
+function mergeTerms(allTerms, documentTitles = {}) {
     const termMap = new Map();
 
     // Display order mapping (lower = higher priority)
@@ -580,14 +609,25 @@ function mergeTerms(allTerms) {
         const entry = termMap.get(normalizedTerm);
 
         // Build source entry with display order
+        // For supplementary sources (FAQ), use sectionId for deep linking if available
+        // sectionId is the slug-form ID (e.g., "what-is-an-electronic-signature")
+        // article is for display (e.g., "What is an electronic signature?")
+        const linkTarget = term.source.sectionId || term.source.article;
+
+        // Use human-friendly title from regulations-index.json if available,
+        // otherwise fall back to shortRef (for supplementary sources or first build)
+        const humanTitle = documentTitles[term.source.slug] || term.source.shortRef;
+
         const sourceEntry = {
             definition: term.definition,
             documentId: term.source.slug,
-            documentTitle: term.source.shortRef,
+            documentTitle: humanTitle,
             documentCategory: term.source.category,
             documentType: term.source.type,
             celex: term.source.celex,
-            articleId: `article-${term.source.article}${term.source.ordinal ? `-para-${term.source.ordinal}` : ''}`,
+            articleId: term.source.sectionId
+                ? linkTarget  // Use section ID directly (already slug form)
+                : `article-${linkTarget}${term.source.ordinal ? `-para-${term.source.ordinal}` : ''}`,
             articleNumber: term.source.ordinal ? `${term.source.article}(${term.source.ordinal})` : term.source.article,
             displayOrder: getDisplayOrder(term.source.category)
         };
@@ -711,8 +751,16 @@ function build() {
         console.log('   No supplementary terms found\n');
     }
 
+    // Load human-friendly document titles for display
+    // This uses shortTitle from regulations-index.json (e.g., "eIDAS 2.0 Regulation (Consolidated)")
+    // instead of formal refs like "Regulation 910/2014"
+    const documentTitles = loadDocumentTitles();
+    if (Object.keys(documentTitles).length > 0) {
+        console.log(`📋 Loaded ${Object.keys(documentTitles).length} document titles for display\n`);
+    }
+
     // Merge terms from multiple sources
-    const mergedTerms = mergeTerms(allTerms);
+    const mergedTerms = mergeTerms(allTerms, documentTitles);
 
     // Group sources by identical definition (DEC-058: Accordion Collapse UI)
     for (const term of mergedTerms) {

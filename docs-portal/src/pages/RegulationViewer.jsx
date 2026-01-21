@@ -565,9 +565,12 @@ const RegulationViewer = () => {
                 <h1 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--text-2xl)' }}>
                     {regulation.shortTitle}
                 </h1>
-                <p className="text-lg text-muted" style={{ lineHeight: '1.5' }}>
-                    {regulation.title}
-                </p>
+                {/* Show description as subtitle, or title if different from shortTitle */}
+                {(regulation.description || (regulation.title !== regulation.shortTitle)) && (
+                    <p className="text-lg text-muted" style={{ lineHeight: '1.5' }}>
+                        {regulation.description || regulation.title}
+                    </p>
+                )}
                 <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
                     <span>📅 {regulation.date}</span>
                     <span>📖 {regulation.wordCount?.toLocaleString()} words</span>
@@ -581,7 +584,7 @@ const RegulationViewer = () => {
                             rel="noopener noreferrer"
                             style={{ color: 'var(--accent-primary)' }}
                         >
-                            🔗 View on EUR-Lex
+                            🔗 {regulation.source.includes('eur-lex.europa.eu') ? 'View on EUR-Lex' : 'View Source'}
                         </a>
                     )}
                 </div>

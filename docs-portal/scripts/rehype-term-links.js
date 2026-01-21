@@ -331,7 +331,10 @@ export default function rehypeTermLinks(options = {}) {
 
             // Process the text node
             const parts = processTextNode(node, termPattern, termMap);
-            if (parts && parts.length > 1) {
+            // parts.length > 0 means we found matches
+            // parts.length === 1 means the entire text is a single term
+            // parts.length > 1 means we have mixed text and terms
+            if (parts && parts.length > 0) {
                 // Mark for replacement
                 const parent = ancestors[ancestors.length - 1];
                 replacements.push({ node, parent, parts });
