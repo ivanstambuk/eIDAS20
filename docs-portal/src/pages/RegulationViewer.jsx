@@ -553,15 +553,23 @@ const RegulationViewer = () => {
 
             {/* Header */}
             <header style={{ marginBottom: 'var(--space-8)' }}>
-                <div className="flex items-center gap-3" style={{ marginBottom: 'var(--space-3)' }}>
-                    <span className="badge badge-primary">
-                        {regulation.legalType === 'recommendation' ? 'Recommendation' :
-                            regulation.legalType === 'decision' ? 'Decision' :
-                                regulation.legalType === 'implementing_regulation' ? 'Impl. Regulation' :
-                                    regulation.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
-                    </span>
-                    <span className="badge badge-info">CELEX: {regulation.celex}</span>
-                </div>
+                {/* Only show regulation badges if legalType or celex exists */}
+                {(regulation.legalType || regulation.celex) && (
+                    <div className="flex items-center gap-3" style={{ marginBottom: 'var(--space-3)' }}>
+                        {regulation.legalType && (
+                            <span className="badge badge-primary">
+                                {regulation.legalType === 'recommendation' ? 'Recommendation' :
+                                    regulation.legalType === 'decision' ? 'Decision' :
+                                        regulation.legalType === 'implementing_regulation' ? 'Impl. Regulation' :
+                                            regulation.legalType === 'faq' ? 'FAQ' :
+                                                regulation.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
+                            </span>
+                        )}
+                        {regulation.celex && (
+                            <span className="badge badge-info">CELEX: {regulation.celex}</span>
+                        )}
+                    </div>
+                )}
                 <h1 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--text-2xl)' }}>
                     {regulation.shortTitle}
                 </h1>
@@ -572,7 +580,7 @@ const RegulationViewer = () => {
                     </p>
                 )}
                 <div className="flex gap-4 text-sm text-muted" style={{ marginTop: 'var(--space-3)' }}>
-                    <span>📅 {regulation.date}</span>
+                    {regulation.date && <span>📅 {regulation.date}</span>}
                     <span>📖 {regulation.wordCount?.toLocaleString()} words</span>
                     {regulation.wordCount && (
                         <span>⏱️ {calculateReadingTime(regulation.wordCount)}</span>

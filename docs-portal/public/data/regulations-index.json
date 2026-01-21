@@ -506,8 +506,8 @@
   {
     "slug": "ec-esignature-faq",
     "type": "supplementary",
-    "legalType": null,
-    "category": null,
+    "legalType": "faq",
+    "category": "supplementary",
     "title": "eSignature FAQ",
     "shortTitle": "eSignature FAQ",
     "sidebarTitle": null,

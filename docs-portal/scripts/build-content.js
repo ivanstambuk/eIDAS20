@@ -316,8 +316,10 @@ function getDocumentTypingFromConfig(dirName) {
     const config = loadDocumentsConfig();
     if (!config?.documents) return { legalType: null, category: null };
 
+    // Match by output_dir or by id (for supplementary documents like FAQ)
     const doc = config.documents.find(d =>
-        d.output_dir && d.output_dir.endsWith(dirName)
+        (d.output_dir && d.output_dir.endsWith(dirName)) ||
+        (d.id && (d.id === dirName || dirName.includes(d.id.replace(/-/g, '_'))))
     );
 
     return {
