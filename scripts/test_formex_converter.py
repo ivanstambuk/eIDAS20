@@ -255,6 +255,116 @@ class TestInlineQuotesVsBlockquotes(unittest.TestCase):
         # The key validation is that inline quotes work correctly (other test)
         # Skip this specific assertion as standalone QUOT.S is handled elsewhere
         self.skipTest("Standalone QUOT.S blockquotes are handled by process_list_with_quotes")
+    
+    def test_cooperation_group_inline_quote(self):
+        """
+        BUG FIX (2026-01-21): The "Cooperation Group" abbreviation pattern was
+        being rendered as a blockquote instead of inline text.
+        
+        Pattern: ...established pursuant to Article 46e(1) (the 'Cooperation Group')...
+        XML: ...Article 46e(1) (the <QUOT.START/>'Cooperation Group<QUOT.END/>')...
+        
+        Wrong: ...Article 46e(1) (the
+               > Cooperation Group
+               )
+        Correct: ...Article 46e(1) (the 'Cooperation Group')...
+        """
+        # Simulated XML from Article 5c(3) - Cooperation Group reference
+        xml = '''<ALINEA>Member States shall transmit their draft national certification schemes to the European Digital Identity Cooperation Group established pursuant to Article 46e(1) (the <QUOT.START CODE="2018"/><QUOT.END CODE="2019"/>Cooperation Group<QUOT.START CODE="2018"/><QUOT.END CODE="2019"/>).</ALINEA>'''
+        
+        elem = ET.fromstring(xml)
+        intro_text, nested_lines = process_alinea_nested(elem)
+        
+        # The full text should be inline, not split into blockquotes
+        self.assertIn("Cooperation Group", intro_text,
+            "Cooperation Group should be in intro_text (inline), not in nested_lines")
+        
+        # Should NOT have any blockquote lines
+        blockquote_lines = [l for l in nested_lines if l.strip().startswith('>')]
+        self.assertEqual(len(blockquote_lines), 0,
+            f"Inline quote patterns should NOT generate blockquotes. Got: {nested_lines}")
+
+
+class TestContinuationParagraphsNotBlockquoted(unittest.TestCase):
+    """Test that continuation P elements in non-amendment context are NOT blockquoted.
+    
+    BUG FIX (2026-01-21): Article 7(f) sub-paragraphs were incorrectly rendered
+    as blockquotes because process_list_with_quotes treated ALL P elements as
+    blockquotes. Now, P elements are only blockquoted if the instruction text
+    contains amendment keywords like 'replaced', 'inserted', etc.
+    """
+    
+    def test_article_7f_continuation_paragraphs(self):
+        """
+        Article 7(f) has continuation P elements that describe access terms
+        for authentication. These should NOT be blockquoted.
+        
+        XML pattern:
+        <ITEM>
+          <NP>
+            <NO.P>(f)</NO.P>
+            <TXT>the notifying Member State ensures the availability of authentication...</TXT>
+            <P>For relying parties other than public sector bodies...</P>
+            <P>Member States shall not impose any specific disproportionate...</P>
+          </NP>
+        </ITEM>
+        """
+        xml = '''<LIST>
+            <ITEM>
+                <NP>
+                    <NO.P>(f)</NO.P>
+                    <TXT>the notifying Member State ensures the availability of authentication online.</TXT>
+                    <P>For relying parties other than public sector bodies the notifying Member State may define terms of access.</P>
+                    <P>Member States shall not impose any specific disproportionate technical requirements.</P>
+                </NP>
+            </ITEM>
+        </LIST>'''
+        
+        elem = ET.fromstring(xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # The continuation paragraphs should NOT be blockquoted
+        self.assertNotIn('> For relying parties', output,
+            "Continuation P should NOT be blockquoted")
+        self.assertNotIn('> Member States shall not impose', output,
+            "Continuation P should NOT be blockquoted")
+        
+        # The content SHOULD still be present (as indented text)
+        self.assertIn('For relying parties', output,
+            "Continuation P content should still be present")
+        self.assertIn('Member States shall not impose', output,
+            "Continuation P content should still be present")
+    
+    def test_amendment_context_still_blockquotes(self):
+        """
+        P elements should still be blockquoted when the instruction contains
+        amendment keywords like 'replaced by the following'.
+        """
+        xml = '''<LIST>
+            <ITEM>
+                <NP>
+                    <NO.P>(a)</NO.P>
+                    <TXT>paragraph 1 is replaced by the following:</TXT>
+                    <P>This is replacement text that should be blockquoted.</P>
+                </NP>
+            </ITEM>
+        </LIST>'''
+        
+        elem = ET.fromstring(xml)
+        parent = ET.Element('ALINEA')
+        parent.append(elem)
+        
+        lines = process_list_with_quotes(elem, parent, 0)
+        output = '\n'.join(lines)
+        
+        # When instruction contains "replaced", P SHOULD be blockquoted
+        self.assertIn('> This is replacement text', output,
+            "P following 'replaced by following' SHOULD be blockquoted")
+
 
 
 class TestAmendmentListProcessing(unittest.TestCase):

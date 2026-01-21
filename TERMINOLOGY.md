@@ -458,3 +458,4 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 - [DECISIONS.md](DECISIONS.md) - Architectural and design decisions
 - [AGENTS.md](AGENTS.md) - AI agent guidelines
 - [TRACKER.md](TRACKER.md) - Implementation progress tracking
+| **Amendment Context Detection** | The pattern used by `process_list_with_quotes` to determine when P elements should be blockquoted. P content is blockquoted only when the instruction text (from TXT element) contains amendment keywords: 'replaced', 'inserted', 'added', 'deleted', 'amended as follows'. Otherwise P is rendered as regular continuation paragraph. This prevents consolidated regulation content (like Article 7(f) sub-paragraphs) from being incorrectly blockquoted. See DEC-095 and 2026-01-21 converter fixes. |

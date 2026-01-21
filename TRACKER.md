@@ -187,6 +187,10 @@
 | 2026-01-15 23:28 | Defense in Depth: downstream validation, staleness checks, fixed build chain; search UX improvements (clear on close, no hover underline) |
 | 2026-01-15 22:55 | Removed redundant Terminology search box; added build-time validation (invariants) to prevent extraction failures |
 | 2026-01-15 22:43 | Retro: Added Rule 10 (Clarify Before Acting), cleaned stale directories, renamed to "eIDAS 2.0 Regulation" |
+| 2026-01-21 17:50 | DEC-095: Markdown-First Import Strategy - all 39 docs now source:manual, converters for new imports only |
+| 2026-01-21 17:45 | Fixed Article 7(f) blockquote bug - continuation P in non-amendment context no longer blockquoted |
+| 2026-01-21 17:40 | Fixed Annexes I-VII in 2024/1183 - added missing replacement content from EUR-Lex |
+| 2026-01-21 17:35 | Fixed inline QUOT.START blockquoting (Cooperation Group pattern) - inline quotes now render as text |
 | 2026-01-15 22:24 | Cleaned 13 stale legacy directories (fixed duplicate document count 43→30 IAs) |
 | 2026-01-15 22:21 | Annex processing complete: CONS.ANNEX support, intro paragraphs, nested lists, NP in GR.SEQ |
 | 2026-01-15 19:56 | DEC-011 Phase 3: Roman numeral subpoints (i), (ii), (iii) - 30 additional IDs |
