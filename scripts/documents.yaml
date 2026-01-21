@@ -88,13 +88,13 @@ documents:
   category: referenced
   source: manual  # Browser-extracted consolidated HTML (EUR-Lex 202 handling) — DO NOT REGENERATE
   output_dir: 01_regulation/2002_58_ePrivacy
-- celex: 32012R1025
-  title: European Standardisation Regulation
-  shortTitle: Standardisation Regulation
+- celex: 02012R1025-20241213
+  title: European Standardisation Regulation (Consolidated)
+  shortTitle: Standardisation Regulation (Consolidated)
   sidebarTitle: Standardisation Regulation
   legalType: regulation
   category: referenced
-  source: manual  # HTML import — markdown is now source of truth
+  source: manual  # HTML consolidated import — markdown is now source of truth
   output_dir: 01_regulation/2012_1025_Standardisation
 # ── Supplementary Documents ─────────────────────────────────────────────────
 # Non-legal guidance resources (DEC-093)
