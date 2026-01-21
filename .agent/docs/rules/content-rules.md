@@ -713,3 +713,50 @@ cd ~/dev/eIDAS20/docs-portal && npm run build:terminology
 
 **When to apply:** During manual review of imported regulations that use alphanumeric paragraph numbering (common in amended older directives like ePrivacy 2002/58).
 
+---
+
+## 50. Force Browser Refresh After Content Rebuilds (MANDATORY)
+
+**After running `npm run build:documents` or `npm run build:all-content`, ALWAYS force a browser hard refresh before showing changes to the user.**
+
+**Problem:**
+```
+Agent: I fixed Article 1 formatting
+User: It still looks the same?!
+Agent: Oh, the browser was showing cached content...
+```
+
+**This confuses users and wastes time debugging non-issues.**
+
+**Solution - use browser_subagent to hard refresh:**
+```javascript
+// After rebuilding content:
+browser_subagent({
+  Task: "Navigate to the page and perform a hard refresh (Ctrl+Shift+R) to clear cache",
+  TaskName: "Hard Refresh Portal",
+  RecordingName: "cache_clear"
+})
+```
+
+**Alternative - keyboard shortcut simulation:**
+```javascript
+// If already on the page, just hard refresh
+browser_subagent({
+  Task: "Press Ctrl+Shift+R to hard refresh the current page and clear cache",
+  ...
+})
+```
+
+**When this applies:**
+| Scenario | Action Required |
+|----------|-----------------|
+| After `npm run build:documents` | Hard refresh before verification |
+| After `npm run build:terminology` | Hard refresh before verification |
+| After `npm run build:all-content` | Hard refresh before verification |
+| After editing markdown source | Rebuild + hard refresh |
+
+**Why Vite HMR doesn't help:**
+- Vite's Hot Module Replacement works for **code changes** (React components, CSS)
+- It does NOT auto-reload **static data files** in `public/data/*.json`
+- The browser caches these JSON files even when they change on disk
+

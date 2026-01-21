@@ -159,6 +159,7 @@ Then wait for the user's instructions.
 - **Update TRACKER.md:** Keep progress summary current
 - **Browser testing:** Use /browser-testing workflow for visual validation
 - **Formex converter:** Use /formex-converter workflow for XML→MD changes
+- **Force browser refresh after content changes:** After running `npm run build:documents` or `npm run build:all-content`, always use browser_subagent to hard-refresh the page (Ctrl+Shift+R) before showing changes to the user. Prevents showing cached/obsolete content.
 
 ---
 
