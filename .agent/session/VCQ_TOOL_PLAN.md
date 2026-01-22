@@ -40,7 +40,7 @@ A Relying Party (e.g., a bank) considering outsourcing wallet interaction to a t
 - **Route:** `/vcq`
 - **Position:** After "RCA Tool", before other tools
 
-### 3.2 User Flow
+### 3.2 User Flow (Simplified)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -48,7 +48,7 @@ A Relying Party (e.g., a bank) considering outsourcing wallet interaction to a t
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
 │  ┌─────────────────────────────────────────────────────────────┐   │
-│  │           Select Intermediary Type(s)                        │   │
+│  │  ① Select Intermediary Type(s)                              │   │
 │  │                                                              │   │
 │  │  ☐ Presentation Intermediary (PIF)                          │   │
 │  │     Receives and forwards wallet presentations               │   │
@@ -59,26 +59,17 @@ A Relying Party (e.g., a bank) considering outsourcing wallet interaction to a t
 │  └─────────────────────────────────────────────────────────────┘   │
 │                                                                     │
 │  ┌─────────────────────────────────────────────────────────────┐   │
-│  │           Regulatory Scope                                   │   │
+│  │  ② Source Selection                                         │   │
+│  │     Selecting DORA includes ICT third-party provisions       │   │
 │  │                                                              │   │
-│  │  ☑ Core eIDAS 2.0 Requirements (always on)                  │   │
-│  │  ☐ Extended: DORA ICT Third-Party Provisions                │   │
-│  │  ☐ Extended: GDPR Data Processor Requirements               │   │
-│  │                                                              │   │
-│  └─────────────────────────────────────────────────────────────┘   │
-│                                                                     │
-│  ┌─────────────────────────────────────────────────────────────┐   │
-│  │           Source Selection                                   │   │
-│  │                                                              │   │
-│  │  ☑ eIDAS 2.0 Regulation (2024/1183)                         │   │
-│  │  ☑ GDPR (2016/679)                                          │   │
-│  │  ☐ DORA (2022/2554)                                         │   │
-│  │  ☐ ARF High-Level Requirements                              │   │
-│  │  ☐ Technical Specifications                                  │   │
+│  │  Primary (eIDAS 2.0)    Implementing Acts    Related Regs   │   │
+│  │  ☑ eIDAS 2.0            ☐ Integrity Reg      ☐ GDPR         │   │
+│  │  ☑ eIDAS Amendment      ☐ Protocols Reg      ☐ DORA (+12)   │   │
+│  │                         ☐ Registration Reg                   │   │
 │  │                                                              │   │
 │  └─────────────────────────────────────────────────────────────┘   │
 │                                                                     │
-│                    [ Generate Questionnaire ]                       │
+│                    [ Generate Questionnaire (N) ]                   │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -440,11 +431,12 @@ notes?: string                # Optional implementation notes
 - [x] Implement applicability filtering
 - [x] Add RCA linkage display ("See also: RP-XXX" links in UI)
 
-### Phase 3: Extended Scope & Source Selection ✅ COMPLETE
+### Phase 3: Source Selection ✅ COMPLETE (Simplified from 3 to 2 steps)
 - [x] Add DORA ICT requirements (VEND-ICT-*) - 12 requirements
-- [x] Implement scope toggle (ScopeExtensionSelector)
+- [x] ~~Implement scope toggle (ScopeExtensionSelector)~~ - Removed (consolidated into Source Selection)
 - [x] Complete legal basis linking (LegalBasisLink component)
-- [x] Implement Source Selection (Step 3) - filter by regulation source
+- [x] Implement Source Selection (Step 2) - filter by regulation source
+- [x] DORA selection auto-includes ICT third-party requirements (+12)
 - [x] Dynamic requirement counting based on source selection
 
 ### Phase 4: Output Views ⏳ PARTIAL
