@@ -511,6 +511,15 @@ const Terminology = () => {
                                         <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-4)' }}>
                                             <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>
                                                 {term.term}
+                                                {term.aliases?.length > 0 && (
+                                                    <span style={{
+                                                        color: 'var(--text-secondary)',
+                                                        fontWeight: 400,
+                                                        fontSize: 'var(--text-base)'
+                                                    }}>
+                                                        {' '}({term.aliases.join(', ')})
+                                                    </span>
+                                                )}
                                             </h3>
                                             <span
                                                 className={`badge ${sourceCount > 1 ? 'badge-secondary' : ''}`}

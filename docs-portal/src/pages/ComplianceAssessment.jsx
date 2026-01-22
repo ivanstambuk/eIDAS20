@@ -47,6 +47,14 @@ function useRegulationsIndex() {
                     const idFromSlug = reg.slug.replace('-', '/');
                     lookup[idFromSlug] = reg;
                     lookup[reg.slug] = reg;
+
+                    // Also add normalized version without leading zeros
+                    // e.g., "2025/0848" -> "2025/848" for lookups like "2025/848"
+                    const normalizedId = idFromSlug.replace(/\/0+(\d)/, '/$1');
+                    if (normalizedId !== idFromSlug) {
+                        lookup[normalizedId] = reg;
+                    }
+
                     // Also add by celex
                     if (reg.celex) lookup[reg.celex] = reg;
                 });

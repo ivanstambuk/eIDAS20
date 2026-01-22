@@ -96,9 +96,14 @@ export function generateTermPopoverContent(term) {
     `;
     }).join('');
 
+    // Generate aliases display if present
+    const aliasesHtml = term.aliases?.length > 0
+        ? `<span class="term-popover-aliases"> (${term.aliases.join(', ')})</span>`
+        : '';
+
     const html = `
         <div class="term-popover-header">
-            <span class="term-popover-title">${term.term}</span>
+            <span class="term-popover-title">${term.term}${aliasesHtml}</span>
             ${hasMultipleSources ? `
                 <span class="term-popover-count">
                     ${sources.length} source${sources.length > 1 ? 's' : ''}

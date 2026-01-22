@@ -203,15 +203,24 @@ function loadTerminology() {
                 .map(src => src.definition)
                 .join(' | ');
 
+            // Include abbreviation aliases in searchable content
+            // e.g., "WSCD", "QEAA" should find the full term
+            const aliasesText = term.aliases ? term.aliases.join(' ') : '';
+            const termField = term.aliases
+                ? `${term.term} ${term.aliases.join(' ')}`  // "wallet-secure-cryptographic-device WSCD"
+                : term.term;
+
             termSections.push({
                 id: `term-${term.id}`,
                 slug: 'terminology',
                 type: 'definition',  // Special type for boosting
-                term: term.term,     // Dedicated field for 10x boost
+                term: termField,     // Dedicated field for 10x boost - now includes aliases
                 docTitle: 'Terminology',
                 section: `Art. ${primarySource.articleNumber}`,
                 sectionTitle: term.term,
-                content: allDefinitions,  // Include all sources for better matching
+                content: aliasesText
+                    ? `${aliasesText} ${allDefinitions}`  // Include aliases in content too
+                    : allDefinitions,
                 sourceCount: term.sources.length,  // Number of sources (for multi-source boost)
             });
         }

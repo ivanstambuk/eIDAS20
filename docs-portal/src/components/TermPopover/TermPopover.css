@@ -105,6 +105,11 @@
     color: var(--accent-primary);
 }
 
+.term-popover-aliases {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
 .term-popover-count {
     font-size: var(--text-xs);
     padding: var(--space-1) var(--space-2);

@@ -398,6 +398,33 @@ This runs `build:terminology` → `build:search` in sequence.
 
 **Debugging tip:** If search results are wrong or missing terms, first check if the index is stale by running `npm run build:all-content`.
 
+### 🔧 Portal Architecture Gotchas
+
+#### Dual Popover Implementations (Keep in Sync)
+
+The portal has **TWO term popover implementations** that must stay synchronized:
+
+| File | Used By | Type |
+|------|---------|------|
+| `src/components/TermPopover/TermPopover.jsx` | Terminology page | React component |
+| `src/utils/termPopoverTemplate.js` | RegulationViewer.jsx | Template string generator |
+
+**Why two implementations?** The Terminology page uses React components, but the RegulationViewer injects popovers into statically-rendered HTML content via template strings.
+
+**When modifying popover features** (e.g., adding alias display), update BOTH files.
+
+#### Regulation ID Format Variation (Leading Zeros)
+
+Document slugs use format `YYYY-NNNN` with **leading zeros** for the number portion, but legal references often omit them:
+
+| Source | Format | Example |
+|--------|--------|---------|
+| **Document slugs** | `YYYY-0NNN` | `2025-0848` |
+| **Legal refs in RCA** | `YYYY/NNN` | `2025/848` |
+| **CELEX numbers** | Full year format | `32025R0848` |
+
+**The lookup normalizes these automatically** (see `useRegulationsIndex` in `ComplianceAssessment.jsx`), but be aware of this variation when debugging link issues.
+
 ---
 
 ## 🖥️ WSL Browser Testing

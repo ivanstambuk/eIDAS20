@@ -130,7 +130,12 @@ export function TermPopover({ term, children }) {
                     role="tooltip"
                 >
                     <div className="term-popover-header">
-                        <span className="term-popover-title">{term.term}</span>
+                        <span className="term-popover-title">
+                            {term.term}
+                            {term.aliases?.length > 0 && (
+                                <span className="term-popover-aliases"> ({term.aliases.join(', ')})</span>
+                            )}
+                        </span>
                         {hasMultipleSources && (
                             <span className="term-popover-count">
                                 {sources.length} sources
