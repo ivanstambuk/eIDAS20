@@ -396,7 +396,132 @@ function SourceSelector({ legalSources, selectedSources, onToggle }) {
 }
 
 // ============================================================================
-// RequirementsTable Component
+// SummaryView Component (View A: Dashboard)
+// ============================================================================
+
+function SummaryView({ requirements, categories, answers }) {
+    // Calculate stats per category
+    const categoryStats = useMemo(() => {
+        const stats = {};
+
+        categories.forEach(cat => {
+            stats[cat.id] = {
+                ...cat,
+                total: 0,
+                critical: 0,
+                high: 0,
+                answered: 0,
+                compliant: 0,
+                nonCompliant: 0
+            };
+        });
+
+        requirements.forEach(req => {
+            const cat = stats[req.category];
+            if (!cat) return;
+
+            cat.total++;
+            if (req.criticality === 'critical') cat.critical++;
+            if (req.criticality === 'high') cat.high++;
+
+            const answer = answers[req.id]?.value;
+            if (answer && answer !== 'pending') {
+                cat.answered++;
+                if (answer === 'yes') cat.compliant++;
+                if (answer === 'no') cat.nonCompliant++;
+            }
+        });
+
+        return Object.values(stats).filter(s => s.total > 0);
+    }, [requirements, categories, answers]);
+
+    // Overall criticality breakdown
+    const criticalityBreakdown = useMemo(() => {
+        const breakdown = { critical: 0, high: 0, medium: 0, low: 0 };
+        requirements.forEach(req => {
+            if (breakdown[req.criticality] !== undefined) {
+                breakdown[req.criticality]++;
+            }
+        });
+        return breakdown;
+    }, [requirements]);
+
+    return (
+        <div className="vcq-summary-view">
+            <h3 className="vcq-summary-view-title">📊 Compliance Overview</h3>
+
+            {/* Criticality Breakdown */}
+            <div className="vcq-criticality-summary">
+                <div className="vcq-crit-card critical">
+                    <span className="vcq-crit-count">{criticalityBreakdown.critical}</span>
+                    <span className="vcq-crit-label">Critical</span>
+                </div>
+                <div className="vcq-crit-card high">
+                    <span className="vcq-crit-count">{criticalityBreakdown.high}</span>
+                    <span className="vcq-crit-label">High</span>
+                </div>
+                <div className="vcq-crit-card medium">
+                    <span className="vcq-crit-count">{criticalityBreakdown.medium}</span>
+                    <span className="vcq-crit-label">Medium</span>
+                </div>
+                <div className="vcq-crit-card low">
+                    <span className="vcq-crit-count">{criticalityBreakdown.low}</span>
+                    <span className="vcq-crit-label">Low</span>
+                </div>
+            </div>
+
+            {/* Category Cards */}
+            <div className="vcq-category-cards">
+                {categoryStats.map(cat => {
+                    const progressPercent = cat.total > 0
+                        ? Math.round((cat.answered / cat.total) * 100)
+                        : 0;
+
+                    return (
+                        <div key={cat.id} className="vcq-category-card">
+                            <div className="vcq-category-card-header">
+                                <span className="vcq-category-icon">{cat.icon}</span>
+                                <span className="vcq-category-name">{cat.label}</span>
+                            </div>
+                            <div className="vcq-category-card-body">
+                                <div className="vcq-category-stat-row">
+                                    <span>Total Requirements</span>
+                                    <span className="vcq-stat-value">{cat.total}</span>
+                                </div>
+                                {cat.critical > 0 && (
+                                    <div className="vcq-category-stat-row critical">
+                                        <span>🔴 Critical</span>
+                                        <span className="vcq-stat-value">{cat.critical}</span>
+                                    </div>
+                                )}
+                                {cat.high > 0 && (
+                                    <div className="vcq-category-stat-row high">
+                                        <span>🟠 High Priority</span>
+                                        <span className="vcq-stat-value">{cat.high}</span>
+                                    </div>
+                                )}
+                                <div className="vcq-category-progress">
+                                    <div className="vcq-progress-bar">
+                                        <div
+                                            className="vcq-progress-fill"
+                                            style={{ width: `${progressPercent}%` }}
+                                        />
+                                    </div>
+                                    <span className="vcq-progress-text">
+                                        {cat.answered}/{cat.total} answered ({progressPercent}%)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// RequirementsTable Component (View B: Detailed Table)
 // ============================================================================
 
 function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex }) {
@@ -651,6 +776,7 @@ export default function VendorQuestionnaire() {
     const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
+    const [activeView, setActiveView] = useState('summary'); // 'summary' or 'table'
 
     // Load saved answers from localStorage
     useEffect(() => {
@@ -859,14 +985,38 @@ export default function VendorQuestionnaire() {
                         </div>
                     </div>
 
-                    {/* Requirements Table */}
-                    <RequirementsTable
-                        requirements={applicableRequirements}
-                        categories={data.categories}
-                        onAnswerChange={handleAnswerChange}
-                        answers={answers}
-                        regulationsIndex={regulationsIndex}
-                    />
+                    {/* View Toggle */}
+                    <div className="vcq-view-toggle">
+                        <button
+                            className={`vcq-view-btn ${activeView === 'summary' ? 'active' : ''}`}
+                            onClick={() => setActiveView('summary')}
+                        >
+                            📊 Overview
+                        </button>
+                        <button
+                            className={`vcq-view-btn ${activeView === 'table' ? 'active' : ''}`}
+                            onClick={() => setActiveView('table')}
+                        >
+                            📋 Details
+                        </button>
+                    </div>
+
+                    {/* View Content */}
+                    {activeView === 'summary' ? (
+                        <SummaryView
+                            requirements={applicableRequirements}
+                            categories={data.categories}
+                            answers={answers}
+                        />
+                    ) : (
+                        <RequirementsTable
+                            requirements={applicableRequirements}
+                            categories={data.categories}
+                            onAnswerChange={handleAnswerChange}
+                            answers={answers}
+                            regulationsIndex={regulationsIndex}
+                        />
+                    )}
 
                     {/* Export Panel */}
                     <ExportPanel
