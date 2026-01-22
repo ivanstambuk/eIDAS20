@@ -268,55 +268,6 @@ function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirements
 }
 
 // ============================================================================
-// ScopeExtensionSelector Component
-// ============================================================================
-
-function ScopeExtensionSelector({ extensions, selectedExtensions, onToggle, requirementsByType }) {
-    return (
-        <div className="vcq-step">
-            <h3>
-                <span className="vcq-step-number">2</span>
-                Extended Regulatory Scope
-                <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-secondary)', fontWeight: 'normal', marginLeft: 'var(--space-2)' }}>
-                    (Optional)
-                </span>
-            </h3>
-            <p className="vcq-step-hint">
-                If your organization is subject to additional regulations, enable extended scope to include those requirements.
-            </p>
-            <div className="vcq-scope-grid">
-                {extensions.map(ext => {
-                    const isSelected = selectedExtensions.includes(ext.id);
-                    const reqCount = requirementsByType?.[ext.id]?.length || 0;
-
-                    return (
-                        <label
-                            key={ext.id}
-                            className={`vcq-scope-card ${isSelected ? 'selected' : ''}`}
-                        >
-                            <input
-                                type="checkbox"
-                                checked={isSelected}
-                                onChange={() => onToggle(ext.id)}
-                                className="vcq-scope-checkbox"
-                            />
-                            <span className="vcq-scope-icon">{ext.icon}</span>
-                            <div className="vcq-scope-content">
-                                <span className="vcq-scope-label">{ext.label}</span>
-                                <p className="vcq-scope-desc">{ext.description}</p>
-                            </div>
-                            <span className="vcq-scope-badge">
-                                +{reqCount} requirements
-                            </span>
-                        </label>
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
-
-// ============================================================================
 // SourceSelector Component (Step 3)
 // Filter requirements by legal source
 // ============================================================================
@@ -360,11 +311,11 @@ function SourceSelector({ legalSources, selectedSources, onToggle }) {
     return (
         <div className="vcq-step">
             <h3>
-                <span className="vcq-step-number">3</span>
+                <span className="vcq-step-number">2</span>
                 Source Selection
             </h3>
             <p className="vcq-step-hint">
-                Select which regulatory sources to include in the questionnaire. Primary eIDAS sources are enabled by default.
+                Select which regulatory sources to include. Selecting DORA includes ICT third-party provisions (+12 requirements).
             </p>
             <div className="vcq-source-grid">
                 {/* Primary Sources - eIDAS */}
@@ -611,7 +562,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
 // ExportPanel Component
 // ============================================================================
 
-function ExportPanel({ requirements, answers, selectedTypes, selectedExtensions, data }) {
+function ExportPanel({ requirements, answers, selectedTypes, selectedSources, data }) {
     const handleExportMarkdown = () => {
         const typeLabels = selectedTypes.map(id =>
             data.intermediaryTypes.find(t => t.id === id)?.label || id
@@ -620,12 +571,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedExtensions,
         let md = `# Vendor Compliance Questionnaire\n\n`;
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
         md += `**Intermediary Type(s):** ${typeLabels}\n\n`;
-        if (selectedExtensions.length > 0) {
-            const extLabels = selectedExtensions.map(id =>
-                data.scopeExtensions.find(e => e.id === id)?.label || id
-            ).join(', ');
-            md += `**Extended Scope:** ${extLabels}\n\n`;
-        }
+        md += `**Regulatory Sources:** ${selectedSources.join(', ')}\n\n`;
         md += `**Total Requirements:** ${requirements.length}\n\n`;
         md += `---\n\n`;
 
@@ -702,7 +648,6 @@ export default function VendorQuestionnaire() {
 
     // Selection state
     const [selectedTypes, setSelectedTypes] = useState([]);
-    const [selectedExtensions, setSelectedExtensions] = useState([]);
     const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
@@ -732,16 +677,6 @@ export default function VendorQuestionnaire() {
             prev.includes(typeId)
                 ? prev.filter(id => id !== typeId)
                 : [...prev, typeId]
-        );
-        setShowResults(false);
-    }, []);
-
-    // Toggle scope extension selection
-    const handleToggleExtension = useCallback((extId) => {
-        setSelectedExtensions(prev =>
-            prev.includes(extId)
-                ? prev.filter(id => id !== extId)
-                : [...prev, extId]
         );
         setShowResults(false);
     }, []);
@@ -781,12 +716,12 @@ export default function VendorQuestionnaire() {
             data.requirementsByType?.[typeId]?.forEach(id => reqIds.add(id));
         });
 
-        // Add extension requirements
-        selectedExtensions.forEach(extId => {
-            data.requirementsByType?.[extId]?.forEach(id => reqIds.add(id));
-        });
+        // If DORA is selected in sources, include DORA ICT (extended) requirements
+        if (selectedSources.includes('2022/2554')) {
+            data.requirementsByType?.dora_ict?.forEach(id => reqIds.add(id));
+        }
 
-        // Filter by type/extension first
+        // Filter by type first
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
         // Then filter by selected sources (if any sources are selected)
@@ -800,7 +735,7 @@ export default function VendorQuestionnaire() {
         }
 
         return filtered;
-    }, [data, selectedTypes, selectedExtensions, selectedSources]);
+    }, [data, selectedTypes, selectedSources]);
 
     // Calculate summary stats
     const summaryStats = useMemo(() => {
@@ -863,17 +798,7 @@ export default function VendorQuestionnaire() {
                 requirementsByType={data.requirementsByType}
             />
 
-            {/* Step 2: Scope Extensions (only show if types selected) */}
-            {selectedTypes.length > 0 && data.scopeExtensions?.length > 0 && (
-                <ScopeExtensionSelector
-                    extensions={data.scopeExtensions}
-                    selectedExtensions={selectedExtensions}
-                    onToggle={handleToggleExtension}
-                    requirementsByType={data.requirementsByType}
-                />
-            )}
-
-            {/* Step 3: Source Selection (only show if types selected) */}
+            {/* Step 2: Source Selection (only show if types selected) */}
             {selectedTypes.length > 0 && data.legalSources && (
                 <SourceSelector
                     legalSources={data.legalSources}
@@ -948,7 +873,7 @@ export default function VendorQuestionnaire() {
                         requirements={applicableRequirements}
                         answers={answers}
                         selectedTypes={selectedTypes}
-                        selectedExtensions={selectedExtensions}
+                        selectedSources={selectedSources}
                         data={data}
                     />
                 </>
