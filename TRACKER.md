@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-22 08:05 CET |
-| **Version** | V3.7.54 |
-| **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs |
-| **Next Action** | Ready — import queue clear |
+| **Last Updated** | 2026-01-22 20:00 CET |
+| **Version** | V3.7.55 |
+| **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs, 35 VCQ reqs |
+| **Next Action** | Ready — VCQ Phases 1-4 complete |
 
 ---
 
@@ -27,6 +27,9 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-22 20:00 | Feat: VCQ Summary View (View A) — Dashboard with criticality breakdown, category cards, view toggle |
+| 2026-01-22 19:00 | Refactor: VCQ simplified to 2-step UI — removed Extended Scope step, DORA auto-includes ICT reqs |
+| 2026-01-22 09:30 | Feat: VCQ Source Selection + RCA linkage display in requirements table |
 | 2026-01-22 07:59 | Fix: RCA legal basis links — normalized regulation ID lookup (2025/848 → 2025-0848) |
 | 2026-01-21 23:58 | UI: abbreviation display in Terminology page + popovers (e.g., "person identification data (PID)") |
 | 2026-01-21 23:10 | Feat: abbreviation search indexing — WSCD/QEAA/TSP etc. now searchable |

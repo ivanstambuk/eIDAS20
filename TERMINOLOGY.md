@@ -454,6 +454,20 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 
 ---
 
+## Vendor Compliance Questionnaire (VCQ)
+
+| Term | Description |
+|------|-------------|
+| **VCQ** | Vendor Compliance Questionnaire. A portal tool that generates due diligence checklists for organizations procuring wallet ecosystem services from vendors. Based on intermediary type (PIF/VIF) and regulatory scope, produces tailored compliance questions. |
+| **PIF** | Presentation Intermediary Function. An intermediary type that **receives and forwards** wallet presentations between wallet holders and relying parties. PIFs do NOT perform cryptographic verification — they act as conduits. Key characteristic: does not modify request attributes, subject to no-storage mandate. Requirements prefix: `VEND-PIF-*`. |
+| **VIF** | Verification Intermediary Function. An intermediary type that **performs cryptographic verification** of received wallet presentations before forwarding results. VIFs maintain trust anchor lists, verify signatures, and validate attestation status. More technically complex than PIFs. Requirements prefix: `VEND-VIF-*`. |
+| **ICT Third-Party** | Information and Communication Technology Third-Party Service Provider. Under DORA (2022/2554), ICT third-party providers supporting financial entities have additional oversight requirements. When a VCQ user selects DORA source, +12 ICT requirements are automatically included. Requirements prefix: `VEND-ICT-*`. |
+| **Criticality (VCQ)** | Priority classification for VCQ requirements: `critical` (must address immediately), `high` (address soon), `medium` (standard timeline), `low` (address when possible). Displayed in Summary View with color-coded cards. |
+| **Source Selection** | VCQ Step 2 where users select which regulatory sources to include in the questionnaire. Grouped into Primary (eIDAS), Implementing Acts, Related Regulations (DORA/GDPR), and Architecture (ARF). Selecting DORA auto-includes ICT third-party provisions. |
+| **Applicability (VCQ)** | Indicates which intermediary types a requirement applies to: `PIF`, `VIF`, or `Both`. Displayed as a badge in the requirements table. |
+
+---
+
 ## See Also
 
 - [DECISIONS.md](DECISIONS.md) - Architectural and design decisions

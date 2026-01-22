@@ -220,9 +220,16 @@ When fixing any issue, follow this hierarchy:
 2. Remove ALL workarounds that the systematic fix replaces
 3. Simplify downstream code that was compensating
 
+**When removing a React component:**
+1. Delete the component file/function
+2. **Run `grep -r "ComponentName" src/`** to find all usages
+3. Remove all imports, JSX usage, and related state/handlers
+4. Verify build succeeds before committing
+
 **Anti-patterns:**
 - ❌ "Fixed the converter but keeping the JS workaround just in case"
 - ❌ "Applied the fix to one document, will do others later"
+- ❌ Deleting a component without grepping for orphan references
 
 ---
 

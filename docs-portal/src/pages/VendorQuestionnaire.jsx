@@ -776,7 +776,11 @@ export default function VendorQuestionnaire() {
     const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
-    const [activeView, setActiveView] = useState('summary'); // 'summary' or 'table'
+    const [activeView, setActiveView] = useState(() => {
+        // Load saved view preference
+        const saved = localStorage.getItem('vcq-active-view');
+        return saved === 'table' ? 'table' : 'summary';
+    });
 
     // Load saved answers from localStorage
     useEffect(() => {
@@ -796,6 +800,11 @@ export default function VendorQuestionnaire() {
             localStorage.setItem('vcq-answers', JSON.stringify(answers));
         }
     }, [answers]);
+
+    // Save view preference to localStorage
+    useEffect(() => {
+        localStorage.setItem('vcq-active-view', activeView);
+    }, [activeView]);
 
     // Toggle intermediary type selection
     const handleToggleType = useCallback((typeId) => {

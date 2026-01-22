@@ -11,6 +11,11 @@
  * 
  * Output:
  *   - public/data/vcq-data.json
+ * 
+ * ⚠️ Field Mapping (must match React components in VendorQuestionnaire.jsx):
+ *   - `requirement` (NOT `question`) - the requirement statement text
+ *   - `explanation` (NOT `guidance`) - the explanatory details
+ *   - `requirementsByType.dora_ict` - key must match scopeExtensions.id in config
  */
 
 import fs from 'fs';

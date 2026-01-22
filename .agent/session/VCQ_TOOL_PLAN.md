@@ -446,11 +446,14 @@ notes?: string                # Optional implementation notes
 - [ ] PDF generation - placeholder added, functionality pending
 - [x] Markdown export - functional
 
-### Phase 5: Polish 🔲 PENDING
+### Phase 5: Polish ⏳ PARTIAL
 - [ ] ARF requirement linking (with external URL fallback)
 - [ ] Technical specification references
 - [x] UI polish and responsive design
-- [ ] Documentation
+- [x] View persistence (localStorage saves Overview/Details preference)
+- [x] Snippets extracted to `.agent/snippets/vcq-patterns.md`
+- [x] Terminology updated (VCQ, PIF, VIF, ICT Third-Party)
+- [ ] PDF generation (placeholder exists)
 
 ---
 
