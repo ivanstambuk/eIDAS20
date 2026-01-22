@@ -93,13 +93,11 @@
 
 .vcq-type-card.selected {
     border-color: var(--accent-primary);
-    background: linear-gradient(
-        135deg,
-        rgba(0, 200, 200, 0.05) 0%,
-        rgba(0, 200, 200, 0.02) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(0, 200, 200, 0.05) 0%,
+            rgba(0, 200, 200, 0.02) 100%);
     box-shadow: 0 0 0 1px var(--accent-primary),
-                0 4px 20px rgba(0, 200, 200, 0.15);
+        0 4px 20px rgba(0, 200, 200, 0.15);
 }
 
 .vcq-type-header {
@@ -208,11 +206,9 @@
 
 .vcq-scope-card.selected {
     border-color: var(--accent-secondary);
-    background: linear-gradient(
-        135deg,
-        rgba(136, 57, 239, 0.05) 0%,
-        rgba(136, 57, 239, 0.02) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(136, 57, 239, 0.05) 0%,
+            rgba(136, 57, 239, 0.02) 100%);
 }
 
 .vcq-scope-checkbox {
@@ -249,6 +245,109 @@
     padding: 2px 8px;
     border-radius: var(--radius-full);
     flex-shrink: 0;
+}
+
+/* ============================================================================
+   Source Selector (Step 3)
+   ============================================================================ */
+
+.vcq-source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+}
+
+.vcq-source-group {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+}
+
+.vcq-source-group-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.vcq-source-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.vcq-source-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.vcq-source-option:hover {
+    background: var(--bg-tertiary);
+}
+
+.vcq-source-option.selected {
+    background: rgba(0, 200, 200, 0.1);
+}
+
+.vcq-source-option input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.vcq-source-name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.vcq-source-id {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+/* ============================================================================
+   RCA Linkage Display
+   ============================================================================ */
+
+.vcq-rca-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    background: rgba(136, 57, 239, 0.08);
+    border-radius: var(--radius-sm);
+    flex-wrap: wrap;
+}
+
+.vcq-rca-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.vcq-rca-ref {
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    color: var(--accent-secondary);
+    background: rgba(136, 57, 239, 0.15);
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.vcq-rca-ref:hover {
+    background: rgba(136, 57, 239, 0.25);
+    color: #a855f7;
 }
 
 /* ============================================================================

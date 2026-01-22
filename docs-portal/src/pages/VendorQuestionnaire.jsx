@@ -317,6 +317,134 @@ function ScopeExtensionSelector({ extensions, selectedExtensions, onToggle, requ
 }
 
 // ============================================================================
+// SourceSelector Component (Step 3)
+// Filter requirements by legal source
+// ============================================================================
+
+function SourceSelector({ legalSources, selectedSources, onToggle }) {
+    // Flatten all sources into a single list with categories
+    const allSources = useMemo(() => {
+        const sources = [];
+
+        // Primary eIDAS sources - always show first
+        if (legalSources?.primary) {
+            legalSources.primary.forEach(src => {
+                sources.push({ ...src, category: 'primary', icon: '📜' });
+            });
+        }
+
+        // Implementing acts
+        if (legalSources?.implementing) {
+            legalSources.implementing.forEach(src => {
+                sources.push({ ...src, category: 'implementing', icon: '📋' });
+            });
+        }
+
+        // Related regulations (GDPR, DORA)
+        if (legalSources?.related) {
+            legalSources.related.forEach(src => {
+                sources.push({ ...src, category: 'related', icon: '🔗' });
+            });
+        }
+
+        // Architecture (ARF)
+        if (legalSources?.architecture) {
+            legalSources.architecture.forEach(src => {
+                sources.push({ ...src, category: 'architecture', icon: '🏗️' });
+            });
+        }
+
+        return sources;
+    }, [legalSources]);
+
+    return (
+        <div className="vcq-step">
+            <h3>
+                <span className="vcq-step-number">3</span>
+                Source Selection
+            </h3>
+            <p className="vcq-step-hint">
+                Select which regulatory sources to include in the questionnaire. Primary eIDAS sources are enabled by default.
+            </p>
+            <div className="vcq-source-grid">
+                {/* Primary Sources - eIDAS */}
+                <div className="vcq-source-group">
+                    <h4 className="vcq-source-group-title">📜 Primary (eIDAS 2.0)</h4>
+                    <div className="vcq-source-options">
+                        {allSources.filter(s => s.category === 'primary').map(src => (
+                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedSources.includes(src.id)}
+                                    onChange={() => onToggle(src.id)}
+                                />
+                                <span className="vcq-source-name">{src.shortName}</span>
+                                <span className="vcq-source-id">({src.id})</span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Implementing Acts */}
+                <div className="vcq-source-group">
+                    <h4 className="vcq-source-group-title">📋 Implementing Acts</h4>
+                    <div className="vcq-source-options">
+                        {allSources.filter(s => s.category === 'implementing').map(src => (
+                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedSources.includes(src.id)}
+                                    onChange={() => onToggle(src.id)}
+                                />
+                                <span className="vcq-source-name">{src.shortName}</span>
+                                <span className="vcq-source-id">({src.id})</span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Related Regulations */}
+                <div className="vcq-source-group">
+                    <h4 className="vcq-source-group-title">🔗 Related Regulations</h4>
+                    <div className="vcq-source-options">
+                        {allSources.filter(s => s.category === 'related').map(src => (
+                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedSources.includes(src.id)}
+                                    onChange={() => onToggle(src.id)}
+                                />
+                                <span className="vcq-source-name">{src.shortName}</span>
+                                <span className="vcq-source-id">({src.id})</span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Architecture Reference */}
+                {allSources.filter(s => s.category === 'architecture').length > 0 && (
+                    <div className="vcq-source-group">
+                        <h4 className="vcq-source-group-title">🏗️ Architecture</h4>
+                        <div className="vcq-source-options">
+                            {allSources.filter(s => s.category === 'architecture').map(src => (
+                                <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedSources.includes(src.id)}
+                                        onChange={() => onToggle(src.id)}
+                                    />
+                                    <span className="vcq-source-name">{src.shortName}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
 // RequirementsTable Component
 // ============================================================================
 
@@ -425,6 +553,22 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                                 </blockquote>
                                                             )}
                                                         </details>
+                                                    )}
+                                                    {/* RCA Linkage - show linked RP requirements */}
+                                                    {req.linkedRCA && req.linkedRCA.length > 0 && (
+                                                        <div className="vcq-rca-link">
+                                                            <span className="vcq-rca-label">See also:</span>
+                                                            {req.linkedRCA.map((rcaId, idx) => (
+                                                                <a
+                                                                    key={rcaId}
+                                                                    href={`${import.meta.env.BASE_URL}#/rca?req=${rcaId}`}
+                                                                    className="vcq-rca-ref"
+                                                                    title={`View ${rcaId} in RCA Tool`}
+                                                                >
+                                                                    {rcaId}
+                                                                </a>
+                                                            ))}
+                                                        </div>
                                                     )}
                                                 </td>
                                                 <td className="col-criticality">
@@ -559,6 +703,7 @@ export default function VendorQuestionnaire() {
     // Selection state
     const [selectedTypes, setSelectedTypes] = useState([]);
     const [selectedExtensions, setSelectedExtensions] = useState([]);
+    const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
 
@@ -601,6 +746,16 @@ export default function VendorQuestionnaire() {
         setShowResults(false);
     }, []);
 
+    // Toggle source selection
+    const handleToggleSource = useCallback((sourceId) => {
+        setSelectedSources(prev =>
+            prev.includes(sourceId)
+                ? prev.filter(id => id !== sourceId)
+                : [...prev, sourceId]
+        );
+        setShowResults(false);
+    }, []);
+
     // Update answer
     const handleAnswerChange = useCallback((reqId, value) => {
         setAnswers(prev => ({
@@ -631,8 +786,21 @@ export default function VendorQuestionnaire() {
             data.requirementsByType?.[extId]?.forEach(id => reqIds.add(id));
         });
 
-        return data.requirements.filter(req => reqIds.has(req.id));
-    }, [data, selectedTypes, selectedExtensions]);
+        // Filter by type/extension first
+        let filtered = data.requirements.filter(req => reqIds.has(req.id));
+
+        // Then filter by selected sources (if any sources are selected)
+        if (selectedSources.length > 0) {
+            filtered = filtered.filter(req => {
+                // Check if the requirement's legal basis matches any selected source
+                const regId = req.legalBasis?.regulation;
+                if (!regId) return true; // Include requirements without explicit source
+                return selectedSources.includes(regId);
+            });
+        }
+
+        return filtered;
+    }, [data, selectedTypes, selectedExtensions, selectedSources]);
 
     // Calculate summary stats
     const summaryStats = useMemo(() => {
@@ -702,6 +870,15 @@ export default function VendorQuestionnaire() {
                     selectedExtensions={selectedExtensions}
                     onToggle={handleToggleExtension}
                     requirementsByType={data.requirementsByType}
+                />
+            )}
+
+            {/* Step 3: Source Selection (only show if types selected) */}
+            {selectedTypes.length > 0 && data.legalSources && (
+                <SourceSelector
+                    legalSources={data.legalSources}
+                    selectedSources={selectedSources}
+                    onToggle={handleToggleSource}
                 />
             )}
 

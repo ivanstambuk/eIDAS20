@@ -438,12 +438,14 @@ notes?: string                # Optional implementation notes
 - [x] Extract PIF-specific requirements (VEND-PIF-*) - 9 requirements
 - [x] Extract VIF-specific requirements (VEND-VIF-*) - 13 requirements
 - [x] Implement applicability filtering
-- [x] Add RCA linkage display (via linkedRCA field in YAML)
+- [x] Add RCA linkage display ("See also: RP-XXX" links in UI)
 
-### Phase 3: Extended Scope ✅ COMPLETE
+### Phase 3: Extended Scope & Source Selection ✅ COMPLETE
 - [x] Add DORA ICT requirements (VEND-ICT-*) - 12 requirements
 - [x] Implement scope toggle (ScopeExtensionSelector)
 - [x] Complete legal basis linking (LegalBasisLink component)
+- [x] Implement Source Selection (Step 3) - filter by regulation source
+- [x] Dynamic requirement counting based on source selection
 
 ### Phase 4: Output Views ⏳ PARTIAL
 - [ ] Implement Summary View (View A) - Dashboard cards
