@@ -2,8 +2,9 @@
 
 **Version:** 1.0  
 **Created:** 2026-01-22  
-**Status:** Planning  
-**Decision ID:** DEC-222 (pending)
+**Status:** ✅ Implemented (Phase 1-3 Complete)  
+**Decision ID:** DEC-222  
+**Commit:** `c15ba5f`
 
 ---
 
@@ -424,36 +425,36 @@ notes?: string                # Optional implementation notes
 
 ## 10. Implementation Phases
 
-### Phase 1: Core Framework (MVP)
-- [ ] Create data directory structure
-- [ ] Define YAML schemas
-- [ ] Extract and document core requirements (VEND-CORE-*)
-- [ ] Build validation script
-- [ ] Create basic UI route `/vcq`
-- [ ] Implement selector component
-- [ ] Implement requirements table (View B)
+### Phase 1: Core Framework (MVP) ✅ COMPLETE
+- [x] Create data directory structure (`config/vcq/`)
+- [x] Define YAML schemas
+- [x] Extract and document core requirements (VEND-CORE-*)
+- [x] Build validation script (`scripts/validate-vcq.js`)
+- [x] Create basic UI route `/vcq`
+- [x] Implement selector component (IntermediaryTypeSelector)
+- [x] Implement requirements table (RequirementsTable)
 
-### Phase 2: Intermediary Specifics
-- [ ] Extract PIF-specific requirements (VEND-PIF-*)
-- [ ] Extract VIF-specific requirements (VEND-VIF-*)
-- [ ] Implement applicability filtering
-- [ ] Add RCA linkage display
+### Phase 2: Intermediary Specifics ✅ COMPLETE
+- [x] Extract PIF-specific requirements (VEND-PIF-*) - 9 requirements
+- [x] Extract VIF-specific requirements (VEND-VIF-*) - 13 requirements
+- [x] Implement applicability filtering
+- [x] Add RCA linkage display (via linkedRCA field in YAML)
 
-### Phase 3: Extended Scope
-- [ ] Add DORA ICT requirements (VEND-ICT-*)
-- [ ] Implement scope toggle
-- [ ] Complete legal basis linking
+### Phase 3: Extended Scope ✅ COMPLETE
+- [x] Add DORA ICT requirements (VEND-ICT-*) - 12 requirements
+- [x] Implement scope toggle (ScopeExtensionSelector)
+- [x] Complete legal basis linking (LegalBasisLink component)
 
-### Phase 4: Output Views
-- [ ] Implement Summary View (View A)
-- [ ] Implement Export functionality (View C)
-- [ ] PDF generation
-- [ ] Markdown export
+### Phase 4: Output Views ⏳ PARTIAL
+- [ ] Implement Summary View (View A) - Dashboard cards
+- [x] Implement Export functionality (View C)
+- [ ] PDF generation - placeholder added
+- [x] Markdown export - functional
 
-### Phase 5: Polish
+### Phase 5: Polish 🔲 PENDING
 - [ ] ARF requirement linking (with external URL fallback)
 - [ ] Technical specification references
-- [ ] UI polish and responsive design
+- [x] UI polish and responsive design
 - [ ] Documentation
 
 ---
@@ -484,11 +485,11 @@ These sources are not imported but should be referenced:
 
 ## 13. Success Criteria
 
-- [ ] RP can select intermediary type(s) and generate relevant questionnaire
-- [ ] All requirements link to authoritative legal sources
-- [ ] Export produces professional, vendor-ready document
-- [ ] Requirements accurately reflect current regulatory landscape
-- [ ] Tool integrates visually with existing portal design
+- [x] RP can select intermediary type(s) and generate relevant questionnaire
+- [x] All requirements link to authoritative legal sources
+- [x] Export produces professional, vendor-ready document (Markdown)
+- [x] Requirements accurately reflect current regulatory landscape (48 total)
+- [x] Tool integrates visually with existing portal design
 
 ---
 
@@ -500,4 +501,36 @@ These sources are not imported but should be referenced:
 
 ---
 
-*This document will be updated as implementation progresses.*
+## 15. Implementation Summary
+
+**Completed:** 2026-01-22
+
+| Metric | Value |
+|--------|-------|
+| Total Requirements | 48 |
+| Core (both PIF & VIF) | 14 |
+| PIF-specific | 9 |
+| VIF-specific | 13 |
+| DORA ICT Extended | 12 |
+| Critical Criticality | 24 |
+| High Criticality | 18 |
+
+**Files Created:**
+- `config/vcq/vcq-config.yaml`
+- `config/vcq/categories.yaml`
+- `config/vcq/requirements/core.yaml`
+- `config/vcq/requirements/pif.yaml`
+- `config/vcq/requirements/vif.yaml`
+- `config/vcq/requirements/ict.yaml`
+- `scripts/validate-vcq.js`
+- `scripts/build-vcq.js`
+- `src/pages/VendorQuestionnaire.jsx`
+- `src/pages/VendorQuestionnaire.css`
+- `public/data/vcq-data.json`
+
+**Commit:** `c15ba5f` - `feat(vcq): implement Vendor Compliance Questionnaire tool`
+
+---
+
+*Document updated 2026-01-22 after initial implementation.*
+
