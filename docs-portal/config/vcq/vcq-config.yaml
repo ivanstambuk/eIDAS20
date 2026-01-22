@@ -1,0 +1,165 @@
+# VCQ (Vendor Compliance Questionnaire) Configuration
+# 
+# This file configures the VCQ tool for assessing third-party intermediary vendors
+# in the EUDIW ecosystem.
+#
+# Created: 2026-01-22
+# Decision: DEC-222 (pending)
+
+schemaVersion: 1
+
+# Tool metadata
+tool:
+  name: "Vendor Compliance Questionnaire"
+  shortName: "VCQ"
+  description: |
+    Generate role-specific compliance questionnaires for Relying Parties evaluating
+    third-party intermediaries in the EUDIW ecosystem.
+  version: "1.0.0"
+
+# Intermediary Types
+# RPs can select one or both types depending on the vendor's role
+intermediaryTypes:
+  pif:
+    id: "pif"
+    label: "Presentation Intermediary (PIF)"
+    shortLabel: "PIF"
+    description: |
+      Entity that receives wallet presentations on behalf of an RP and forwards them.
+      Does not perform cryptographic verification - acts as a conduit between wallet and RP.
+    icon: "📨"
+    prefix: "VEND-PIF"
+    arfTopics:
+      - "Topic 45: RP Intermediaries"
+    keyCharacteristics:
+      - "Receives and forwards wallet presentations"
+      - "Displays both own and RP identity to wallet users"
+      - "Does not verify signatures (forwarding only)"
+      - "Subject to no-storage mandate"
+  
+  vif:
+    id: "vif"
+    label: "Verification Intermediary (VIF)"
+    shortLabel: "VIF"
+    description: |
+      Entity that performs cryptographic verification of attestations on behalf of an RP.
+      Maintains trust anchor lists and validates signatures before forwarding results.
+    icon: "🔐"
+    prefix: "VEND-VIF"
+    arfTopics:
+      - "Topic 45: RP Intermediaries"
+      - "Topic 6: RP Authentication"
+    keyCharacteristics:
+      - "Performs cryptographic signature validation"
+      - "Maintains up-to-date Trusted Lists"
+      - "Verifies attestation revocation status"
+      - "Secure key management required"
+      - "Subject to no-storage mandate"
+
+# Scope Extensions
+# Additional regulatory scopes that can be toggled on
+scopeExtensions:
+  dora_ict:
+    id: "dora_ict"
+    label: "Extended: DORA ICT Third-Party Provisions"
+    shortLabel: "DORA ICT"
+    description: |
+      For RPs that are financial entities under DORA (banks, investment firms, insurers),
+      intermediary vendors qualify as ICT third-party service providers with additional
+      contractual and oversight requirements.
+    icon: "🏦"
+    prefix: "VEND-ICT"
+    applicableWhen: "RP is a financial entity subject to DORA"
+    primaryRegulation:
+      id: "2022/2554"
+      articles: ["28", "29", "30", "31"]
+  
+  gdpr_processor:
+    id: "gdpr_processor"
+    label: "Extended: GDPR Data Processor Requirements"
+    shortLabel: "GDPR Processor"
+    description: |
+      When intermediaries process personal data on behalf of the RP, they act as
+      data processors under GDPR and must meet Art. 28 requirements.
+    icon: "🛡️"
+    enabled: false  # Already covered in core requirements, but can add detailed breakdown
+    prefix: "VEND-GDP"
+    primaryRegulation:
+      id: "2016/679"
+      articles: ["28", "32", "33", "34"]
+
+# Legal Sources for VCQ
+# Regulations and documents from which requirements are derived
+legalSources:
+  primary:
+    - id: "2014/910"
+      name: "eIDAS Regulation (Consolidated)"
+      shortName: "eIDAS 2.0"
+      portalPath: "/regulation/2014-910"
+    - id: "2024/1183"
+      name: "Amending Regulation"
+      shortName: "eIDAS Amendment"
+      portalPath: "/regulation/2024-1183"
+  
+  implementing:
+    - id: "2024/2979"
+      name: "Integrity & Functionality Regulation"
+      shortName: "Integrity Reg"
+      portalPath: "/regulation/2024-2979"
+    - id: "2024/2982"
+      name: "Protocols & Interfaces Regulation"
+      shortName: "Protocols Reg"
+      portalPath: "/regulation/2024-2982"
+    - id: "2025/847"
+      name: "Suspension & Withdrawal Regulation"
+      shortName: "Suspension Reg"
+      portalPath: "/regulation/2025-847"
+    - id: "2025/848"
+      name: "Registration Regulation"  
+      shortName: "Registration Reg"
+      portalPath: "/regulation/2025-848"
+  
+  related:
+    - id: "2016/679"
+      name: "General Data Protection Regulation"
+      shortName: "GDPR"
+      portalPath: "/regulation/2016-679"
+    - id: "2022/2554"
+      name: "Digital Operational Resilience Act"
+      shortName: "DORA"
+      portalPath: "/regulation/2022-2554"
+  
+  architecture:
+    - id: "ARF_1.5"
+      name: "Architecture Reference Framework v1.5"
+      shortName: "ARF"
+      externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+      topics:
+        - id: "Topic45"
+          name: "Relying Party Intermediaries"
+          hlrPrefix: "RPI_"
+
+# Output Configuration
+output:
+  views:
+    - id: "summary"
+      label: "Summary"
+      description: "High-level compliance domains with requirement counts"
+      icon: "📊"
+    - id: "table"
+      label: "Requirements Table"
+      description: "Structured table with all requirements"
+      icon: "📋"
+      default: true
+    - id: "questionnaire"
+      label: "Questionnaire Export"
+      description: "Exportable document for vendors"
+      icon: "📤"
+  
+  exportFormats:
+    - id: "markdown"
+      label: "Markdown"
+      extension: ".md"
+    - id: "pdf"
+      label: "PDF Document"
+      extension: ".pdf"

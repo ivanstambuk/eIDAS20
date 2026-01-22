@@ -8,7 +8,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-22 07:59 CET |
+| **Last Updated** | 2026-01-22 08:05 CET |
 | **Version** | V3.7.54 |
 | **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs |
 | **Next Action** | Ready — import queue clear |

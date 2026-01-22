@@ -1,0 +1,81 @@
+# VCQ Configuration: Global Categories
+# 
+# Reuses the same 12 categories from RCA to maintain consistency.
+# Each category represents a single type of legal obligation.
+# 
+# Decision: DEC-089 (Category Taxonomy)
+# Extended for: DEC-222 (VCQ Tool)
+# Date: 2026-01-22
+
+categories:
+  registration:
+    label: "Registration"
+    description: "Notification and authorization to operate"
+    icon: "📋"
+    order: 1
+
+  certification:
+    label: "Certification"
+    description: "Conformity assessment and audits"
+    icon: "✅"
+    order: 2
+
+  issuance:
+    label: "Issuance"
+    description: "Creating and provisioning credentials"
+    icon: "📤"
+    order: 3
+
+  revocation:
+    label: "Revocation"
+    description: "Suspension and invalidation"
+    icon: "🚫"
+    order: 4
+
+  verification:
+    label: "Verification"
+    description: "Identity proofing and authentication"
+    icon: "🔍"
+    order: 5
+
+  technical:
+    label: "Technical"
+    description: "Formats, protocols, and APIs"
+    icon: "⚙️"
+    order: 6
+
+  interoperability:
+    label: "Interoperability"
+    description: "Cross-border and standards"
+    icon: "🌐"
+    order: 7
+
+  security:
+    label: "Security"
+    description: "Cybersecurity and cryptography"
+    icon: "🔒"
+    order: 8
+
+  privacy:
+    label: "Privacy"
+    description: "Data protection and GDPR"
+    icon: "🛡️"
+    order: 9
+
+  transparency:
+    label: "Transparency"
+    description: "Public disclosure and policies"
+    icon: "👁️"
+    order: 10
+
+  governance:
+    label: "Governance"
+    description: "Staffing and procedures"
+    icon: "🏛️"
+    order: 11
+
+  liability:
+    label: "Liability"
+    description: "Insurance and legal effects"
+    icon: "⚖️"
+    order: 12

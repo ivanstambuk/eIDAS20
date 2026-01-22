@@ -1,0 +1,1548 @@
+{
+  "generatedAt": "2026-01-22T08:06:34.131Z",
+  "schemaVersion": 1,
+  "tool": {
+    "name": "Vendor Compliance Questionnaire",
+    "shortName": "VCQ",
+    "description": "Generate role-specific compliance questionnaires for Relying Parties evaluating\nthird-party intermediaries in the EUDIW ecosystem.\n",
+    "version": "1.0.0"
+  },
+  "intermediaryTypes": [
+    {
+      "id": "pif",
+      "label": "Presentation Intermediary (PIF)",
+      "shortLabel": "PIF",
+      "description": "Entity that receives wallet presentations on behalf of an RP and forwards them.\nDoes not perform cryptographic verification - acts as a conduit between wallet and RP.\n",
+      "icon": "📨",
+      "prefix": "VEND-PIF",
+      "keyCharacteristics": [
+        "Receives and forwards wallet presentations",
+        "Displays both own and RP identity to wallet users",
+        "Does not verify signatures (forwarding only)",
+        "Subject to no-storage mandate"
+      ]
+    },
+    {
+      "id": "vif",
+      "label": "Verification Intermediary (VIF)",
+      "shortLabel": "VIF",
+      "description": "Entity that performs cryptographic verification of attestations on behalf of an RP.\nMaintains trust anchor lists and validates signatures before forwarding results.\n",
+      "icon": "🔐",
+      "prefix": "VEND-VIF",
+      "keyCharacteristics": [
+        "Performs cryptographic signature validation",
+        "Maintains up-to-date Trusted Lists",
+        "Verifies attestation revocation status",
+        "Secure key management required",
+        "Subject to no-storage mandate"
+      ]
+    }
+  ],
+  "scopeExtensions": [
+    {
+      "id": "dora_ict",
+      "label": "Extended: DORA ICT Third-Party Provisions",
+      "shortLabel": "DORA ICT",
+      "description": "For RPs that are financial entities under DORA (banks, investment firms, insurers),\nintermediary vendors qualify as ICT third-party service providers with additional\ncontractual and oversight requirements.\n",
+      "icon": "🏦",
+      "prefix": "VEND-ICT",
+      "enabled": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "registration",
+      "label": "Registration",
+      "description": "Notification and authorization to operate",
+      "icon": "📋",
+      "order": 1
+    },
+    {
+      "id": "certification",
+      "label": "Certification",
+      "description": "Conformity assessment and audits",
+      "icon": "✅",
+      "order": 2
+    },
+    {
+      "id": "issuance",
+      "label": "Issuance",
+      "description": "Creating and provisioning credentials",
+      "icon": "📤",
+      "order": 3
+    },
+    {
+      "id": "revocation",
+      "label": "Revocation",
+      "description": "Suspension and invalidation",
+      "icon": "🚫",
+      "order": 4
+    },
+    {
+      "id": "verification",
+      "label": "Verification",
+      "description": "Identity proofing and authentication",
+      "icon": "🔍",
+      "order": 5
+    },
+    {
+      "id": "technical",
+      "label": "Technical",
+      "description": "Formats, protocols, and APIs",
+      "icon": "⚙️",
+      "order": 6
+    },
+    {
+      "id": "interoperability",
+      "label": "Interoperability",
+      "description": "Cross-border and standards",
+      "icon": "🌐",
+      "order": 7
+    },
+    {
+      "id": "security",
+      "label": "Security",
+      "description": "Cybersecurity and cryptography",
+      "icon": "🔒",
+      "order": 8
+    },
+    {
+      "id": "privacy",
+      "label": "Privacy",
+      "description": "Data protection and GDPR",
+      "icon": "🛡️",
+      "order": 9
+    },
+    {
+      "id": "transparency",
+      "label": "Transparency",
+      "description": "Public disclosure and policies",
+      "icon": "👁️",
+      "order": 10
+    },
+    {
+      "id": "governance",
+      "label": "Governance",
+      "description": "Staffing and procedures",
+      "icon": "🏛️",
+      "order": 11
+    },
+    {
+      "id": "liability",
+      "label": "Liability",
+      "description": "Insurance and legal effects",
+      "icon": "⚖️",
+      "order": 12
+    }
+  ],
+  "legalSources": {
+    "primary": [
+      {
+        "id": "2014/910",
+        "name": "eIDAS Regulation (Consolidated)",
+        "shortName": "eIDAS 2.0",
+        "portalPath": "/regulation/2014-910"
+      },
+      {
+        "id": "2024/1183",
+        "name": "Amending Regulation",
+        "shortName": "eIDAS Amendment",
+        "portalPath": "/regulation/2024-1183"
+      }
+    ],
+    "implementing": [
+      {
+        "id": "2024/2979",
+        "name": "Integrity & Functionality Regulation",
+        "shortName": "Integrity Reg",
+        "portalPath": "/regulation/2024-2979"
+      },
+      {
+        "id": "2024/2982",
+        "name": "Protocols & Interfaces Regulation",
+        "shortName": "Protocols Reg",
+        "portalPath": "/regulation/2024-2982"
+      },
+      {
+        "id": "2025/847",
+        "name": "Suspension & Withdrawal Regulation",
+        "shortName": "Suspension Reg",
+        "portalPath": "/regulation/2025-847"
+      },
+      {
+        "id": "2025/848",
+        "name": "Registration Regulation",
+        "shortName": "Registration Reg",
+        "portalPath": "/regulation/2025-848"
+      }
+    ],
+    "related": [
+      {
+        "id": "2016/679",
+        "name": "General Data Protection Regulation",
+        "shortName": "GDPR",
+        "portalPath": "/regulation/2016-679"
+      },
+      {
+        "id": "2022/2554",
+        "name": "Digital Operational Resilience Act",
+        "shortName": "DORA",
+        "portalPath": "/regulation/2022-2554"
+      }
+    ],
+    "architecture": [
+      {
+        "id": "ARF_1.5",
+        "name": "Architecture Reference Framework v1.5",
+        "shortName": "ARF",
+        "externalUrl": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
+        "topics": [
+          {
+            "id": "Topic45",
+            "name": "Relying Party Intermediaries",
+            "hlrPrefix": "RPI_"
+          }
+        ]
+      }
+    ]
+  },
+  "output": {
+    "views": [
+      {
+        "id": "summary",
+        "label": "Summary",
+        "description": "High-level compliance domains with requirement counts",
+        "icon": "📊"
+      },
+      {
+        "id": "table",
+        "label": "Requirements Table",
+        "description": "Structured table with all requirements",
+        "icon": "📋",
+        "default": true
+      },
+      {
+        "id": "questionnaire",
+        "label": "Questionnaire Export",
+        "description": "Exportable document for vendors",
+        "icon": "📤"
+      }
+    ],
+    "exportFormats": [
+      {
+        "id": "markdown",
+        "label": "Markdown",
+        "extension": ".md"
+      },
+      {
+        "id": "pdf",
+        "label": "PDF Document",
+        "extension": ".pdf"
+      }
+    ]
+  },
+  "requirements": [
+    {
+      "id": "VEND-CORE-001",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Intermediaries shall not store data about the content of transactions",
+      "explanation": "The no-storage mandate is the central privacy protection for wallet users \nwhen interacting through intermediaries. Vendors acting on behalf of RPs \nare deemed to be relying parties themselves and must not retain any data \nfrom wallet presentations beyond what is strictly necessary for immediate \ntransaction completion.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-GOV-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-002",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Implement a Data Processing Agreement meeting GDPR Article 28 requirements",
+      "explanation": "When intermediaries process personal data on behalf of the RP, they act as \ndata processors. A written contract (DPA) must exist specifying processing \ninstructions, confidentiality, security measures, sub-processor conditions, \ndata subject request assistance, and audit rights.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "Processing by a processor shall be governed by a contract or other legal act \nunder Union or Member State law, that is binding on the processor with regard \nto the controller and that sets out the subject-matter and duration of the \nprocessing, the nature and purpose of the processing, the type of personal \ndata and categories of data subjects and the obligations and rights of the \ncontroller.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-PRV-006"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-003",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Provide audit rights to the Relying Party",
+      "explanation": "The RP must be able to verify the vendor's compliance with processing \ninstructions and security requirements. This includes rights to conduct \naudits and inspections, or to mandate that an independent auditor \nperforms such verification.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(h)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "The processor shall make available to the controller all information \nnecessary to demonstrate compliance with the obligations laid down in \nthis Article and allow for and contribute to audits, including inspections, \nconducted by the controller or another auditor mandated by the controller.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-004",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Be registered as an intermediary with the competent supervisory authority",
+      "explanation": "Intermediaries acting on behalf of RPs must themselves register with \nMember State authorities. Registration establishes the legal basis for \ntheir operation and enables oversight.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "5"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Member States shall publish the lists and shall make them available to \nall wallet providers and relying parties in a clearly identifiable and \nmachine-readable way.",
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "Reg_23"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-005",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Maintain a valid Relying Party Access Certificate",
+      "explanation": "Intermediaries must obtain and maintain access certificates from a \nnotified Access Certificate Authority. This certificate authenticates \nthe intermediary to wallet units and enables trust verification.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 8",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-8",
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_02"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-006",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement appropriate technical and organizational security measures",
+      "explanation": "Vendors must implement security measures appropriate to the risk, \nincluding encryption, pseudonymization, confidentiality assurance, \navailability and resilience, and regular testing.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 32",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-32",
+      "legalText": "Taking into account the state of the art, the costs of implementation \nand the nature, scope, context and purposes of processing as well as \nthe risk of varying likelihood and severity for the rights and freedoms \nof natural persons, the controller and processor shall implement appropriate \ntechnical and organisational measures to ensure a level of security \nappropriate to the risk.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-SEC-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-007",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Notify the RP of data breaches without undue delay",
+      "explanation": "When a personal data breach occurs at the intermediary, they must \nnotify the RP (as controller) without undue delay so the RP can \nfulfill its obligations to supervisory authorities and data subjects.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 33",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-33",
+      "legalText": "The processor shall notify the controller without undue delay after \nbecoming aware of a personal data breach.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-008",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Ensure personnel authorized to process data are bound by confidentiality",
+      "explanation": "All staff with access to wallet transaction data must be contractually \nor legally bound to maintain confidentiality.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(b)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "The processor shall ensure that persons authorised to process the \npersonal data have committed themselves to confidentiality or are \nunder an appropriate statutory obligation of confidentiality.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-009",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Process personal data only on documented instructions from the RP",
+      "explanation": "The vendor must not process wallet data for their own purposes. \nAll processing must be based on the RP's documented instructions, \nincluding with regard to transfers of data to third countries.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(a)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "The processor shall process the personal data only on documented \ninstructions from the controller, including with regard to transfers \nof personal data to a third country or an international organisation.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-PRV-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-010",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Support data subject rights requests",
+      "explanation": "The vendor must assist the RP in responding to data subject requests \n(access, rectification, erasure, restriction, portability, objection) \nto the extent the vendor has relevant data.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(e)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "The processor shall assist the controller by appropriate technical \nand organisational measures, insofar as this is possible, for the \nfulfilment of the controller's obligation to respond to requests for \nexercising the data subject's rights.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-011",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Display both intermediary and RP identity to wallet users",
+      "explanation": "When requesting data from wallets, the intermediary must ensure that \nwallet users can see both their own identity and the identity of the \nRP on whose behalf they are acting. This enables informed consent.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_07"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-005"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-012",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Inform the RP of any legal requirement to process data beyond instructions",
+      "explanation": "If the vendor is legally required (e.g., by law enforcement) to process \ndata beyond the RP's instructions, they must inform the RP before doing \nso (unless prohibited by law from disclosing).",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(a)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-013",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Obtain RP authorization before engaging sub-processors",
+      "explanation": "The vendor must not engage another processor (sub-processor) without \nprior written authorization from the RP. This can be specific or general \nauthorization with notification of changes.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "The processor shall not engage another processor without prior specific \nor general written authorisation of the controller. In the case of \ngeneral written authorisation, the processor shall inform the controller \nof any intended changes concerning the addition or replacement of other \nprocessors.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-014",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Delete or return personal data at end of contract",
+      "explanation": "Upon termination of the service contract, the vendor must delete or \nreturn all personal data to the RP and certify deletion, unless EU or \nMember State law requires storage.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 28",
+        "paragraph": "3(g)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalText": "At the choice of the controller, the processor shall delete or return \nall the personal data to the controller after the end of the provision \nof services relating to processing.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-ICT-001",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Include mandatory contractual provisions per DORA Article 30",
+      "explanation": "When the RP is a DORA-regulated financial entity, the contract with the \nICT third-party (intermediary) must include all provisions specified in \nDORA Article 30(2), covering service descriptions, locations, security \nrequirements, data protection, and termination rights.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "Contractual arrangements on the use of ICT services shall include at \nleast the following: (a) a clear and complete description of all \nfunctions and ICT services to be provided; (b) the locations where \nfunctions and ICT services are to be provided and data processed; \n(c) provisions on availability, authenticity, integrity and \nconfidentiality in relation to data protection...",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "critical",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-002",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Provide audit rights as required by DORA Article 30(2)(e)",
+      "explanation": "The contract must grant the financial entity (and its supervisory \nauthority) full rights of access, inspection, and audit of the ICT \nthird-party service provider.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2(e)"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "The rights of the financial entity and, where applicable, the relevant \ncompetent authority in relation to access, inspection and audit of the \nICT third-party service provider.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "critical",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-003",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Support exit strategies and transition planning",
+      "explanation": "The vendor must support the financial entity's exit strategy with \nmandatory transition periods, data migration, and continuity of service \nduring transitions to alternative providers.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2(j)"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "Provisions on exit strategies, including a mandatory adequate transition \nperiod during which the ICT third-party service provider will continue \nproviding the respective functions or ICT services.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "critical",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-004",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Participate in the financial entity's ICT risk management framework",
+      "explanation": "The intermediary must cooperate with the financial entity's overall ICT \nrisk management program, including risk assessments, control testing, \nand remediation activities.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 28",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-005",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Provide information required for the financial entity's Register of ICT TPPs",
+      "explanation": "Financial entities must maintain a register of all ICT third-party \nproviders. The intermediary must provide all required information \nincluding entity details, services provided, criticality assessments, \nand contractual terms.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 28",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-006",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Support due diligence assessment before contract signing",
+      "explanation": "Before entering into a contractual arrangement, the financial entity \nmust conduct due diligence on the ICT TPP. The vendor must provide \ninformation on their financial stability, ICT risk management \ncapabilities, and compliance posture.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 29",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-29",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-007",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Notify the financial entity of ICT-related incidents",
+      "explanation": "The intermediary must notify the financial entity without undue delay \nof any ICT-related incidents that may impact the service, enabling \nthe financial entity to fulfill its own incident reporting obligations.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2(f)"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "The obligation of the ICT third-party service provider to provide \nassistance in case of an ICT incident at no additional cost or at a \ncost that is determined ex-ante.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "critical",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-008",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Participate in threat-led penetration testing if required",
+      "explanation": "If the financial entity is required to conduct threat-led penetration \ntesting (TLPT), the ICT TPP must cooperate with such testing when \nrelevant to the services provided.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 26",
+        "paragraph": "4"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-26",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "medium",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-009",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Maintain business continuity arrangements for ICT services",
+      "explanation": "The intermediary must maintain adequate business continuity and disaster \nrecovery arrangements to ensure service availability meets the financial \nentity's requirements.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2(g)"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "Provisions on the implementation and testing of business continuity \nmeasures and on the establishment of contingency plans.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-010",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Obtain approval for subcontracting of critical functions",
+      "explanation": "If the intermediary subcontracts any part of the ICT service that \nsupports critical or important functions, prior approval from the \nfinancial entity is required. The subcontractor must meet equivalent \nrequirements.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 30",
+        "paragraph": "2(d)"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalText": "Provisions on the possibility, conditions and modalities of subcontracting \nby the ICT third-party service provider, and in particular for \nsubcontracting ICT services supporting critical or important functions.",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-011",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Provide information for concentration risk assessment",
+      "explanation": "The intermediary must provide information enabling the financial entity \nto assess ICT concentration risk, including data on other financial \nentities served and interdependencies with other ICT providers.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 28",
+        "paragraph": "4"
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "medium",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-ICT-012",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Comply with enhanced oversight if designated as Critical ICT TPP",
+      "explanation": "If the ESAs designate the intermediary as a Critical ICT Third-Party \nProvider (CTPP), they become subject to enhanced oversight including \ndirect supervision by the Lead Overseer, regular assessments, and \nadditional reporting requirements.",
+      "legalBasis": {
+        "regulation": "2022/2554",
+        "article": "Article 31",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2022-2554#article-31",
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": true,
+      "scope": "extended",
+      "linkedRCA": [],
+      "deadline": "2025-01-17",
+      "criticality": "high",
+      "notes": "This requirement is conditional - it only applies if the ESAs designate \nthe vendor as Critical based on systemic importance criteria (Art. 31(2)).\nMost intermediaries will NOT be designated as Critical ICT TPPs.",
+      "_sourceFile": "ict.yaml"
+    },
+    {
+      "id": "VEND-PIF-001",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Display both intermediary and RP identity before requesting attestations",
+      "explanation": "When a PIF requests attestations from a wallet user, the wallet must display \nboth the PIF's identity (as the direct requester) and the identity of the \nultimate Relying Party on whose behalf the PIF is acting. This ensures \ninformed consent.",
+      "legalBasisLink": null,
+      "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_07"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-002",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Ensure RP's intended data requests are accurately communicated to wallet",
+      "explanation": "The PIF must not modify, expand, or alter the RP's registered data request \nwhen forwarding to wallets. Only the attributes registered by the RP may \nbe requested.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_11"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-003",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Forward presentation requests without modification of requested attributes",
+      "explanation": "The PIF must accurately relay the RP's attribute request to the wallet \nwithout adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_11"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-004",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Forward wallet presentations to RP without modification",
+      "explanation": "The PIF must relay the wallet's presentation to the RP exactly as received, \nwithout altering, extracting, or processing the credential data. The \npresentation integrity must be preserved.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_13"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-005",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Support both remote and proximity presentation protocols",
+      "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the PIF must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "1-2"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-TEC-002"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-006",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Ensure secure channel for transmission to RP",
+      "explanation": "The PIF must establish and maintain a secure, encrypted channel when \nforwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_13"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-007",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement measures to prevent replay attacks",
+      "explanation": "The PIF must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_14"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-008",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Do not extract or log individual attribute values from presentations",
+      "explanation": "Beyond the no-storage mandate, PIFs must not extract, log, or analyze \nindividual attribute values from wallet presentations. The presentation \nshould be treated as an opaque payload for forwarding.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-009",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Do not correlate or link user presentations across different RPs",
+      "explanation": "PIFs serving multiple RPs must not correlate wallet user activity across \ndifferent RP interactions. Each RP relationship must be treated \nindependently to preserve user unlinkability.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "16(a)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-PRV-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-VIF-001",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
+      "explanation": "VIFs must maintain current copies of the Trusted Lists containing PID \nProvider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": "OIA_12"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-TEC-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-002",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
+      "explanation": "VIFs must maintain current copies of Trusted Lists for qualified and \nnon-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": "OIA_13"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-003",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Obtain trust anchors only from official Trusted List sources",
+      "explanation": "Trust anchors for verification must be obtained exclusively from official \nEU and Member State Trusted Lists, not from third-party aggregators or \nunofficial sources. This ensures the authenticity of verification keys.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 32",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-32",
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": "OIA_14"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-004",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Validate attestation signatures using official trust anchors",
+      "explanation": "The VIF must verify the cryptographic signatures on attestations and PIDs \nusing the public keys from official Trusted Lists. Invalid or untrusted \nsignatures must result in rejection.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": "RPA_05"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-005",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify attestation revocation status before acceptance",
+      "explanation": "Before accepting a presentation as valid, the VIF must check the revocation \nstatus of the attestation. This may involve checking validity status lists, \nOCSP responses, or other revocation mechanisms as specified by the issuer.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 8",
+        "hlr": "VCR_13"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-006",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify the wallet unit's device binding",
+      "explanation": "The VIF must verify that the presentation is bound to the wallet unit's \nsecure cryptographic device (WSCD), confirming that the presenter controls \nthe private key associated with the attestations.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": "RPA_07"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-007",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify presentation freshness (anti-replay)",
+      "explanation": "The VIF must verify that presentations are fresh and not replayed by \nchecking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": "RPA_08"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-008",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement secure key management for verification operations",
+      "explanation": "The VIF must implement secure storage and handling of any cryptographic \nmaterial used in verification operations. Keys must be protected against \nunauthorized access, modification, and extraction.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-009",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Protect verification results integrity",
+      "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the VIF's verification \noutcome is authentic and unmodified.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 45",
+        "hlr": "RPI_15"
+      },
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-010",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Maintain audit logs of verification operations",
+      "explanation": "The VIF should maintain logs of verification operations including \nverification timestamps, outcomes, and any errors. These logs support \ndispute resolution and compliance auditing while respecting privacy \n(no attestation content should be logged).",
+      "legalBasisLink": null,
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "notes": "Logs must not contain attestation content (due to no-storage mandate) \nbut may contain verification metadata (pass/fail, timestamp, error codes).",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-011",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Support mandatory credential formats (ISO 18013-5 and W3C VC)",
+      "explanation": "The VIF must be capable of verifying attestations in both mandated formats: \nISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data Model 1.1. \nThis ensures interoperability across the EUDIW ecosystem.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "annexReference": "Annex II of 2024/2979:\n- ISO/IEC.18013-5:2021\n- 'Verifiable Credentials Data Model 1.1', W3C Recommendation",
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-TEC-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-012",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Support selective disclosure in both credential formats",
+      "explanation": "The VIF's verification implementation must correctly handle selectively \ndisclosed attributes in both mDoc and VC formats. Verification must \nsucceed even when only a subset of attributes is presented.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "4"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-TEC-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "vif.yaml"
+    },
+    {
+      "id": "VEND-VIF-013",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Consider certification for cryptographic components",
+      "explanation": "Depending on the assurance level required by the RP, the VIF may need to \ndemonstrate that its cryptographic implementations meet recognized standards \n(e.g., FIPS 140-2/3, Common Criteria). This is especially relevant for \nhigh-assurance use cases.",
+      "legalBasis": {
+        "regulation": "2019/881",
+        "article": "Article 47",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2019-881#article-47",
+      "applicability": [
+        "vif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all VIFs will require certification.",
+      "_sourceFile": "vif.yaml"
+    }
+  ],
+  "requirementsByType": {
+    "pif": [
+      "VEND-PIF-001",
+      "VEND-PIF-002",
+      "VEND-PIF-003",
+      "VEND-PIF-004",
+      "VEND-PIF-005",
+      "VEND-PIF-006",
+      "VEND-PIF-007",
+      "VEND-PIF-008",
+      "VEND-PIF-009"
+    ],
+    "vif": [
+      "VEND-VIF-001",
+      "VEND-VIF-002",
+      "VEND-VIF-003",
+      "VEND-VIF-004",
+      "VEND-VIF-005",
+      "VEND-VIF-006",
+      "VEND-VIF-007",
+      "VEND-VIF-008",
+      "VEND-VIF-009",
+      "VEND-VIF-010",
+      "VEND-VIF-011",
+      "VEND-VIF-012",
+      "VEND-VIF-013"
+    ],
+    "core": [
+      "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
+      "VEND-CORE-004",
+      "VEND-CORE-005",
+      "VEND-CORE-006",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
+      "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014"
+    ],
+    "dora_ict": [
+      "VEND-ICT-001",
+      "VEND-ICT-002",
+      "VEND-ICT-003",
+      "VEND-ICT-004",
+      "VEND-ICT-005",
+      "VEND-ICT-006",
+      "VEND-ICT-007",
+      "VEND-ICT-008",
+      "VEND-ICT-009",
+      "VEND-ICT-010",
+      "VEND-ICT-011",
+      "VEND-ICT-012"
+    ]
+  },
+  "stats": {
+    "totalRequirements": 48,
+    "byType": {
+      "core": 14,
+      "pif": 9,
+      "vif": 13,
+      "dora_ict": 12
+    },
+    "byCategory": {
+      "governance": 11,
+      "registration": 4,
+      "security": 11,
+      "privacy": 4,
+      "transparency": 4,
+      "certification": 2,
+      "technical": 6,
+      "verification": 4,
+      "interoperability": 2
+    },
+    "byCriticality": {
+      "critical": 24,
+      "high": 18,
+      "medium": 6,
+      "low": 0
+    }
+  }
+}

@@ -1,0 +1,346 @@
+# VCQ Requirements: Core (VEND-CORE-*)
+# 
+# These requirements apply to ALL intermediary types (PIF and VIF).
+# They represent the baseline legal obligations for any vendor acting
+# as an intermediary in the EUDIW ecosystem.
+#
+# Schema Version: 1
+# Created: 2026-01-22
+# Decision: DEC-222
+
+schemaVersion: 1
+
+requirements:
+  # ============================================================================
+  # GOVERNANCE
+  # ============================================================================
+  
+  - id: VEND-CORE-001
+    category: governance
+    requirement: "Intermediaries shall not store data about the content of transactions"
+    explanation: |
+      The no-storage mandate is the central privacy protection for wallet users 
+      when interacting through intermediaries. Vendors acting on behalf of RPs 
+      are deemed to be relying parties themselves and must not retain any data 
+      from wallet presentations beyond what is strictly necessary for immediate 
+      transaction completion.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      relying parties and shall not store data about the content of the transaction.
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-GOV-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-002
+    category: governance
+    requirement: "Implement a Data Processing Agreement meeting GDPR Article 28 requirements"
+    explanation: |
+      When intermediaries process personal data on behalf of the RP, they act as 
+      data processors. A written contract (DPA) must exist specifying processing 
+      instructions, confidentiality, security measures, sub-processor conditions, 
+      data subject request assistance, and audit rights.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3"
+    legalText: |
+      Processing by a processor shall be governed by a contract or other legal act 
+      under Union or Member State law, that is binding on the processor with regard 
+      to the controller and that sets out the subject-matter and duration of the 
+      processing, the nature and purpose of the processing, the type of personal 
+      data and categories of data subjects and the obligations and rights of the 
+      controller.
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-PRV-006
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-003
+    category: governance
+    requirement: "Provide audit rights to the Relying Party"
+    explanation: |
+      The RP must be able to verify the vendor's compliance with processing 
+      instructions and security requirements. This includes rights to conduct 
+      audits and inspections, or to mandate that an independent auditor 
+      performs such verification.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(h)"
+    legalText: |
+      The processor shall make available to the controller all information 
+      necessary to demonstrate compliance with the obligations laid down in 
+      this Article and allow for and contribute to audits, including inspections, 
+      conducted by the controller or another auditor mandated by the controller.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # REGISTRATION
+  # ============================================================================
+  
+  - id: VEND-CORE-004
+    category: registration
+    requirement: "Be registered as an intermediary with the competent supervisory authority"
+    explanation: |
+      Intermediaries acting on behalf of RPs must themselves register with 
+      Member State authorities. Registration establishes the legal basis for 
+      their operation and enables oversight.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "5"
+    legalText: |
+      Member States shall publish the lists and shall make them available to 
+      all wallet providers and relying parties in a clearly identifiable and 
+      machine-readable way.
+    arfReference:
+      topic: "Topic 45"
+      hlr: "Reg_23"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-REG-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-005
+    category: registration
+    requirement: "Maintain a valid Relying Party Access Certificate"
+    explanation: |
+      Intermediaries must obtain and maintain access certificates from a 
+      notified Access Certificate Authority. This certificate authenticates 
+      the intermediary to wallet units and enables trust verification.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 8"
+      paragraph: "1"
+    arfReference:
+      topic: "Topic 45"
+      hlr: "RPI_02"
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  # ============================================================================
+  # SECURITY
+  # ============================================================================
+  
+  - id: VEND-CORE-006
+    category: security
+    requirement: "Implement appropriate technical and organizational security measures"
+    explanation: |
+      Vendors must implement security measures appropriate to the risk, 
+      including encryption, pseudonymization, confidentiality assurance, 
+      availability and resilience, and regular testing.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 32"
+      paragraph: "1"
+    legalText: |
+      Taking into account the state of the art, the costs of implementation 
+      and the nature, scope, context and purposes of processing as well as 
+      the risk of varying likelihood and severity for the rights and freedoms 
+      of natural persons, the controller and processor shall implement appropriate 
+      technical and organisational measures to ensure a level of security 
+      appropriate to the risk.
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-SEC-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-007
+    category: security
+    requirement: "Notify the RP of data breaches without undue delay"
+    explanation: |
+      When a personal data breach occurs at the intermediary, they must 
+      notify the RP (as controller) without undue delay so the RP can 
+      fulfill its obligations to supervisory authorities and data subjects.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 33"
+      paragraph: "2"
+    legalText: |
+      The processor shall notify the controller without undue delay after 
+      becoming aware of a personal data breach.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-008
+    category: security
+    requirement: "Ensure personnel authorized to process data are bound by confidentiality"
+    explanation: |
+      All staff with access to wallet transaction data must be contractually 
+      or legally bound to maintain confidentiality.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(b)"
+    legalText: |
+      The processor shall ensure that persons authorised to process the 
+      personal data have committed themselves to confidentiality or are 
+      under an appropriate statutory obligation of confidentiality.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # PRIVACY
+  # ============================================================================
+  
+  - id: VEND-CORE-009
+    category: privacy
+    requirement: "Process personal data only on documented instructions from the RP"
+    explanation: |
+      The vendor must not process wallet data for their own purposes. 
+      All processing must be based on the RP's documented instructions, 
+      including with regard to transfers of data to third countries.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(a)"
+    legalText: |
+      The processor shall process the personal data only on documented 
+      instructions from the controller, including with regard to transfers 
+      of personal data to a third country or an international organisation.
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-PRV-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-010
+    category: privacy
+    requirement: "Support data subject rights requests"
+    explanation: |
+      The vendor must assist the RP in responding to data subject requests 
+      (access, rectification, erasure, restriction, portability, objection) 
+      to the extent the vendor has relevant data.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(e)"
+    legalText: |
+      The processor shall assist the controller by appropriate technical 
+      and organisational measures, insofar as this is possible, for the 
+      fulfilment of the controller's obligation to respond to requests for 
+      exercising the data subject's rights.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # TRANSPARENCY
+  # ============================================================================
+  
+  - id: VEND-CORE-011
+    category: transparency
+    requirement: "Display both intermediary and RP identity to wallet users"
+    explanation: |
+      When requesting data from wallets, the intermediary must ensure that 
+      wallet users can see both their own identity and the identity of the 
+      RP on whose behalf they are acting. This enables informed consent.
+    arfReference:
+      topic: "Topic 45"
+      hlr: "RPI_07"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-REG-005
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-CORE-012
+    category: transparency
+    requirement: "Inform the RP of any legal requirement to process data beyond instructions"
+    explanation: |
+      If the vendor is legally required (e.g., by law enforcement) to process 
+      data beyond the RP's instructions, they must inform the RP before doing 
+      so (unless prohibited by law from disclosing).
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(a)"
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: medium
+  
+  # ============================================================================
+  # OPERATIONAL
+  # ============================================================================
+  
+  - id: VEND-CORE-013
+    category: governance
+    requirement: "Obtain RP authorization before engaging sub-processors"
+    explanation: |
+      The vendor must not engage another processor (sub-processor) without 
+      prior written authorization from the RP. This can be specific or general 
+      authorization with notification of changes.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "2"
+    legalText: |
+      The processor shall not engage another processor without prior specific 
+      or general written authorisation of the controller. In the case of 
+      general written authorisation, the processor shall inform the controller 
+      of any intended changes concerning the addition or replacement of other 
+      processors.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-CORE-014
+    category: governance
+    requirement: "Delete or return personal data at end of contract"
+    explanation: |
+      Upon termination of the service contract, the vendor must delete or 
+      return all personal data to the RP and certify deletion, unless EU or 
+      Member State law requires storage.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 28"
+      paragraph: "3(g)"
+    legalText: |
+      At the choice of the controller, the processor shall delete or return 
+      all the personal data to the controller after the end of the provision 
+      of services relating to processing.
+    applicability:
+      - pif
+      - vif
+    deadline: "2027-11-21"
+    criticality: high

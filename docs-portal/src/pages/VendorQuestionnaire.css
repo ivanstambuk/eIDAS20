@@ -1,0 +1,704 @@
+/**
+ * VendorQuestionnaire (VCQ) Page Styles
+ * 
+ * Vendor Compliance Questionnaire generator for evaluating third-party
+ * intermediaries in the EUDIW ecosystem.
+ */
+
+/* ============================================================================
+   Page Header
+   ============================================================================ */
+
+.vcq-header {
+    margin-bottom: var(--space-8);
+}
+
+.vcq-header h1 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+}
+
+.vcq-header-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   Step Sections
+   ============================================================================ */
+
+.vcq-step {
+    margin-bottom: var(--space-8);
+    padding: var(--space-6);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-primary);
+}
+
+.vcq-step h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.vcq-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.vcq-step-hint {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+/* ============================================================================
+   Intermediary Type Selector
+   ============================================================================ */
+
+.vcq-type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.vcq-type-card {
+    position: relative;
+    padding: var(--space-5);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vcq-type-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 200, 200, 0.1);
+}
+
+.vcq-type-card.selected {
+    border-color: var(--accent-primary);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 200, 200, 0.05) 0%,
+        rgba(0, 200, 200, 0.02) 100%
+    );
+    box-shadow: 0 0 0 1px var(--accent-primary),
+                0 4px 20px rgba(0, 200, 200, 0.15);
+}
+
+.vcq-type-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+}
+
+.vcq-type-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vcq-type-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.vcq-type-label {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.vcq-type-short {
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-left: var(--space-2);
+    padding: 2px 6px;
+    background: rgba(0, 200, 200, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.vcq-type-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-2);
+    line-height: 1.5;
+}
+
+.vcq-type-characteristics {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+}
+
+.vcq-type-characteristics ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-type-characteristics li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
+}
+
+.vcq-type-characteristics li::before {
+    content: '•';
+    color: var(--accent-primary);
+}
+
+.vcq-type-req-count {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+    background: rgba(0, 200, 200, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+/* ============================================================================
+   Scope Extensions
+   ============================================================================ */
+
+.vcq-scope-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.vcq-scope-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vcq-scope-card:hover {
+    border-color: var(--accent-secondary);
+}
+
+.vcq-scope-card.selected {
+    border-color: var(--accent-secondary);
+    background: linear-gradient(
+        135deg,
+        rgba(136, 57, 239, 0.05) 0%,
+        rgba(136, 57, 239, 0.02) 100%
+    );
+}
+
+.vcq-scope-checkbox {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.vcq-scope-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.vcq-scope-content {
+    flex: 1;
+}
+
+.vcq-scope-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.vcq-scope-desc {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+    line-height: 1.5;
+}
+
+.vcq-scope-badge {
+    font-size: var(--text-xs);
+    color: var(--accent-secondary);
+    background: rgba(136, 57, 239, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+/* ============================================================================
+   Summary Panel
+   ============================================================================ */
+
+.vcq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+}
+
+.vcq-summary-stats {
+    display: flex;
+    gap: var(--space-6);
+}
+
+.vcq-summary-stat {
+    text-align: center;
+}
+
+.vcq-summary-stat-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.vcq-summary-stat-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.vcq-summary-actions {
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* ============================================================================
+   Generate Button
+   ============================================================================ */
+
+.vcq-generate-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-8);
+}
+
+.vcq-generate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, #00a8a8 100%);
+    color: var(--bg-primary);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 200, 200, 0.3);
+}
+
+.vcq-generate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 200, 200, 0.4);
+}
+
+.vcq-generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ============================================================================
+   Requirements Table
+   ============================================================================ */
+
+.vcq-requirements {
+    margin-top: var(--space-8);
+}
+
+.vcq-requirements-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.vcq-requirements-header h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.vcq-requirements-filters {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.vcq-filter-select {
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+}
+
+.vcq-req-category-group {
+    margin-bottom: var(--space-6);
+}
+
+.vcq-req-category-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-primary);
+}
+
+.vcq-req-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.vcq-req-table th,
+.vcq-req-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.vcq-req-table th {
+    background: var(--bg-tertiary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.vcq-req-table tbody tr:hover {
+    background: var(--bg-tertiary);
+}
+
+.vcq-req-table .col-id {
+    width: 120px;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+}
+
+.vcq-req-table .col-requirement {
+    min-width: 300px;
+}
+
+.vcq-req-table .col-criticality {
+    width: 100px;
+    text-align: center;
+}
+
+.vcq-req-table .col-legal {
+    width: 160px;
+}
+
+.vcq-req-table .col-answer {
+    width: 180px;
+}
+
+.vcq-req-text {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.vcq-req-details {
+    margin-top: var(--space-2);
+}
+
+.vcq-req-details summary {
+    cursor: pointer;
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+    user-select: none;
+}
+
+.vcq-req-details p {
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.vcq-legal-text {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-style: italic;
+    border-left: 2px solid var(--accent-primary);
+    padding-left: var(--space-3);
+    margin-top: var(--space-2);
+}
+
+/* Criticality badges */
+.vcq-criticality-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 500;
+}
+
+.vcq-criticality-badge.critical {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.vcq-criticality-badge.high {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.vcq-criticality-badge.medium {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.vcq-criticality-badge.low {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+/* Answer select */
+.vcq-answer-select {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    cursor: pointer;
+}
+
+.vcq-answer-select.status-yes {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.vcq-answer-select.status-no {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.vcq-answer-select.status-partial {
+    border-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.vcq-answer-select.status-na {
+    border-color: var(--border-primary);
+    background: var(--bg-tertiary);
+}
+
+/* ============================================================================
+   Legal Basis Link (reused from RCA styles)
+   ============================================================================ */
+
+.vcq-legal-link {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+}
+
+.vcq-legal-link:hover {
+    background: rgba(0, 200, 200, 0.1);
+}
+
+.vcq-legal-ref {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+.vcq-legal-reg {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-legal-popover {
+    position: fixed;
+    z-index: 1000;
+    width: 300px;
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.vcq-popover-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.vcq-popover-badge {
+    font-size: var(--text-xs);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.vcq-popover-badge.in-force {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.vcq-popover-type {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-popover-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.vcq-popover-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-popover-action {
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-primary);
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+}
+
+/* ============================================================================
+   Export Panel
+   ============================================================================ */
+
+.vcq-export-panel {
+    padding: var(--space-6);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-primary);
+    margin-top: var(--space-6);
+}
+
+.vcq-export-panel h3 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+}
+
+.vcq-export-options {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.vcq-export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.vcq-export-btn:hover {
+    border-color: var(--accent-primary);
+    background: rgba(0, 200, 200, 0.05);
+}
+
+.vcq-export-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .vcq-type-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vcq-summary {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .vcq-summary-stats {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .vcq-requirements-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vcq-requirements-filters {
+        width: 100%;
+    }
+
+    .vcq-filter-select {
+        flex: 1;
+    }
+
+    .vcq-req-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
