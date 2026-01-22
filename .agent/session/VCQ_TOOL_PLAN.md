@@ -439,10 +439,11 @@ notes?: string                # Optional implementation notes
 - [x] DORA selection auto-includes ICT third-party requirements (+12)
 - [x] Dynamic requirement counting based on source selection
 
-### Phase 4: Output Views ⏳ PARTIAL
-- [ ] Implement Summary View (View A) - Dashboard cards
+### Phase 4: Output Views ✅ COMPLETE (PDF pending)
+- [x] Implement Summary View (View A) - Dashboard cards with criticality breakdown & category progress
+- [x] Implement view toggle (Overview/Details buttons)
 - [x] Implement Export functionality (View C)
-- [ ] PDF generation - placeholder added
+- [ ] PDF generation - placeholder added, functionality pending
 - [x] Markdown export - functional
 
 ### Phase 5: Polish 🔲 PENDING
