@@ -1,16 +1,34 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+// Section order: Overview → Tools → Regulations → Supplementary (DEC-224 revised)
+// Supplementary Documents collapsed by default to reduce scroll
 const navigation = [
     {
         title: 'Overview',
+        id: 'overview',
+        defaultExpanded: true,
         items: [
             { name: 'Home', path: '/', icon: 'home' },
             { name: 'Quick Start', path: '/quickstart', icon: 'zap' },
+            { name: 'Terminology', path: '/terminology', icon: 'book' },
+        ]
+    },
+    {
+        title: 'Tools',
+        id: 'tools',
+        defaultExpanded: true,
+        items: [
+            { name: 'RCA', path: '/rca', icon: 'clipboard-check' },
+            { name: 'VCQ', path: '/vcq', icon: 'clipboard-list' },
+            { name: 'All Requirements', path: '/requirements', icon: 'layers' },
+            { name: 'AI Assistant', path: '/ai-chat', icon: 'message-circle' },
         ]
     },
     {
         title: 'Regulations',
+        id: 'regulations',
+        defaultExpanded: true,
         items: [
             { name: 'eIDAS 2.0 Regulation', path: '/regulation/2014-910', icon: 'file-text' },
             { name: 'Amending Regulation', path: '/regulation/2024-1183', icon: 'file-plus' },
@@ -19,29 +37,14 @@ const navigation = [
     },
     {
         title: 'Supplementary Documents',
+        id: 'supplementary',
         // Dynamically populated from regulations-index.json
         // Includes 'referenced' (legal acts cited by eIDAS) and 'supplementary' (guidance resources)
         // See DEC-093 in DECISIONS.md for rationale
         isDynamic: true,
+        defaultExpanded: false, // Collapsed by default to improve discoverability
         items: []
     },
-    {
-        title: 'Reference',
-        items: [
-            { name: 'Terminology', path: '/terminology', icon: 'book' },
-            { name: 'By Role', path: '/by-role', icon: 'users' },
-            { name: 'Cross-References', path: '/cross-references', icon: 'link' },
-        ]
-    },
-    {
-        title: 'Tools',
-        items: [
-            { name: 'Requirements', path: '/requirements', icon: 'layers' },
-            { name: 'RCA', path: '/rca', icon: 'clipboard-check' },
-            { name: 'VCQ Tool', path: '/vcq', icon: 'clipboard-list' },
-            { name: 'AI Assistant', path: '/ai-chat', icon: 'message-circle' },
-        ]
-    }
 ];
 
 const icons = {
@@ -127,6 +130,11 @@ const icons = {
             <line x1="8" y1="16" x2="16" y2="16" />
         </svg>
     ),
+    'chevron-down': (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <polyline points="6,9 12,15 18,9" />
+        </svg>
+    ),
 };
 
 /**
@@ -143,6 +151,36 @@ const icons = {
 const Sidebar = ({ isOpen, onClose }) => {
     const [metadata, setMetadata] = useState(null);
     const [supplementaryDocs, setSupplementaryDocs] = useState([]);
+
+    // Collapsible section state with localStorage persistence
+    const [expandedSections, setExpandedSections] = useState(() => {
+        // Try to load from localStorage first
+        const saved = localStorage.getItem('sidebar-expanded-sections');
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch {
+                // Fall through to defaults
+            }
+        }
+        // Initialize from navigation defaults
+        return navigation.reduce((acc, section) => {
+            acc[section.id] = section.defaultExpanded ?? true;
+            return acc;
+        }, {});
+    });
+
+    // Persist expanded state to localStorage
+    useEffect(() => {
+        localStorage.setItem('sidebar-expanded-sections', JSON.stringify(expandedSections));
+    }, [expandedSections]);
+
+    const toggleSection = (sectionId) => {
+        setExpandedSections(prev => ({
+            ...prev,
+            [sectionId]: !prev[sectionId]
+        }));
+    };
 
     useEffect(() => {
         const fetchMetadata = async () => {
@@ -209,6 +247,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                 {navigation.map((section) => {
                     // Use dynamically fetched items for Supplementary Documents section
                     const items = section.isDynamic ? supplementaryDocs : section.items;
+                    const isExpanded = expandedSections[section.id] ?? true;
 
                     // Don't render dynamic section until data is loaded
                     if (section.isDynamic && items.length === 0) {
@@ -216,25 +255,41 @@ const Sidebar = ({ isOpen, onClose }) => {
                     }
 
                     return (
-                        <div key={section.title} className="sidebar-section" role="group" aria-labelledby={`nav-${section.title.toLowerCase()}`}>
-                            <span id={`nav-${section.title.toLowerCase()}`} className="sidebar-section-title">{section.title}</span>
-                            <ul className="sidebar-nav" role="list">
-                                {items.map((item) => (
-                                    <li key={item.path} className="sidebar-nav-item">
-                                        <NavLink
-                                            to={item.path}
-                                            className={({ isActive }) =>
-                                                `sidebar-nav-link ${isActive ? 'active' : ''}`
-                                            }
-                                            onClick={onClose}
-                                            aria-current={({ isActive }) => isActive ? 'page' : undefined}
-                                        >
-                                            {icons[item.icon]}
-                                            <span>{item.name}</span>
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div key={section.id} className="sidebar-section" role="group" aria-labelledby={`nav-${section.id}`}>
+                            <button
+                                id={`nav-${section.id}`}
+                                className="sidebar-section-header"
+                                onClick={() => toggleSection(section.id)}
+                                aria-expanded={isExpanded}
+                                aria-controls={`nav-items-${section.id}`}
+                            >
+                                <span className="sidebar-section-title">{section.title}</span>
+                                <span className="sidebar-section-meta">
+                                    {!isExpanded && <span className="sidebar-section-count">({items.length})</span>}
+                                    <span className={`sidebar-chevron ${isExpanded ? 'expanded' : ''}`}>
+                                        {icons['chevron-down']}
+                                    </span>
+                                </span>
+                            </button>
+                            {isExpanded && (
+                                <ul id={`nav-items-${section.id}`} className="sidebar-nav" role="list">
+                                    {items.map((item) => (
+                                        <li key={item.path} className="sidebar-nav-item">
+                                            <NavLink
+                                                to={item.path}
+                                                className={({ isActive }) =>
+                                                    `sidebar-nav-link ${isActive ? 'active' : ''}`
+                                                }
+                                                onClick={onClose}
+                                                aria-current={({ isActive }) => isActive ? 'page' : undefined}
+                                            >
+                                                {icons[item.icon]}
+                                                <span>{item.name}</span>
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                     );
                 })}

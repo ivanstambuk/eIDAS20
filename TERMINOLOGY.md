@@ -77,6 +77,8 @@ Different legal act types use different ELI path segments:
 | **Collapsible ToC** | The expandable/collapsible hierarchy in the ToC (chapters → articles). |
 | **Document Switcher** | The section of the sidebar listing available regulations and implementing acts. |
 | **Sticky Alphabet Nav** | The A-Z letter bar on the Terminology page that sticks below the header while scrolling. Clicking a letter jumps to that section. Uses glassmorphism effect. |
+| **Collapsible Section** | A sidebar section that can be expanded/collapsed by clicking its header. Uses chevron icon that rotates 180° when expanded. State persisted in localStorage under `sidebar-expanded-sections`. |
+| **Accordion** | A UI pattern where multiple sections can be independently expanded/collapsed. Each section has a clickable header with visual indicator (chevron). Unlike tabs, multiple sections can be open simultaneously. |
 
 ### Content Display
 

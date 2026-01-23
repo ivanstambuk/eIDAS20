@@ -383,3 +383,107 @@ li.linkable-recital>.copy-gutter {  /* ← ADD */
 - [ ] Test in browser: hover over new element type
 
 **Real example:** `linkable-recital` (Phase 4, 2026-01-17)
+
+---
+
+## Collapsible Section with LocalStorage Pattern
+
+**Problem:** Need collapsible/expandable UI sections that remember their state across page refreshes and sessions.
+
+**Solution:** Combine React state with localStorage for persistence, using lazy initialization and a useEffect sync.
+
+### Implementation
+
+```jsx
+import { useState, useEffect } from 'react';
+
+// Configuration with default expand states
+const sections = [
+    { id: 'overview', title: 'Overview', defaultExpanded: true },
+    { id: 'tools', title: 'Tools', defaultExpanded: true },
+    { id: 'supplementary', title: 'Supplementary', defaultExpanded: false },
+];
+
+function CollapsibleNav() {
+    // Lazy initialization: load from localStorage or use defaults
+    const [expandedSections, setExpandedSections] = useState(() => {
+        const saved = localStorage.getItem('nav-expanded-sections');
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch {
+                // Invalid JSON, fall through to defaults
+            }
+        }
+        // Initialize from config defaults
+        return sections.reduce((acc, section) => {
+            acc[section.id] = section.defaultExpanded ?? true;
+            return acc;
+        }, {});
+    });
+
+    // Persist to localStorage on every change
+    useEffect(() => {
+        localStorage.setItem('nav-expanded-sections', JSON.stringify(expandedSections));
+    }, [expandedSections]);
+
+    const toggleSection = (sectionId) => {
+        setExpandedSections(prev => ({
+            ...prev,
+            [sectionId]: !prev[sectionId]
+        }));
+    };
+
+    return (
+        <nav>
+            {sections.map(section => {
+                const isExpanded = expandedSections[section.id] ?? true;
+                return (
+                    <div key={section.id}>
+                        <button
+                            onClick={() => toggleSection(section.id)}
+                            aria-expanded={isExpanded}
+                            aria-controls={`section-${section.id}`}
+                        >
+                            <span>{section.title}</span>
+                            <span className={`chevron ${isExpanded ? 'expanded' : ''}`}>
+                                ▼
+                            </span>
+                        </button>
+                        {isExpanded && (
+                            <ul id={`section-${section.id}`}>
+                                {/* Section items */}
+                            </ul>
+                        )}
+                    </div>
+                );
+            })}
+        </nav>
+    );
+}
+```
+
+### CSS for Chevron Rotation
+
+```css
+.chevron {
+    display: inline-flex;
+    transition: transform 0.15s ease;
+}
+
+.chevron.expanded {
+    transform: rotate(180deg);
+}
+```
+
+### Key Points
+
+1. **Lazy initialization** — useState callback only runs on first render, avoiding localStorage read on every render
+2. **Try/catch JSON parse** — Handles corrupted localStorage gracefully
+3. **Default fallback** — Uses config defaults if localStorage is empty or invalid
+4. **Nullish coalescing** — `?? true` ensures undefined values default to expanded
+5. **Aria attributes** — `aria-expanded` and `aria-controls` for accessibility
+6. **Conditional rendering** — Only renders content when expanded (better performance than CSS hide)
+
+**Real example:** `Sidebar.jsx` (DEC-224, 2026-01-23)
+

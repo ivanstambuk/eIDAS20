@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-23 08:32 CET |
-| **Version** | V3.9.0 |
+| **Last Updated** | 2026-01-23 13:25 CET |
+| **Version** | V3.9.2 |
 | **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1084 total reqs |
-| **Next Action** | Requirements Browser complete — Backlog items in VCQ_TOOL_PLAN.md §17 |
+| **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 ---
 
@@ -27,6 +27,9 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-23 13:25 | **Retro: Sidebar redesign** — DEC-224, TERMINOLOGY.md updates (Collapsible Section, Accordion), react-patterns.md snippet, squashed commits |
+| 2026-01-23 12:25 | **Feat: Sidebar Tools-First Redesign** — Tools section promoted to top for discoverability, collapsible accordion sections, localStorage persistence, Supplementary Documents collapsed by default (DEC-224) |
+| 2026-01-23 09:15 | **Retro: Rule 27 + 6 improvements** — Commit checkpoint requirement, YAML parser extraction, RegulationsIndex, terminology updates |
 | 2026-01-23 08:32 | **Feat: Unified Requirements Browser** — 1084 total reqs (559 ARF + 470 RCA + 55 VCQ), Legal Basis filtering, CSV/JSON/PDF exports, URL state sync |
 | 2026-01-23 05:09 | **Retro: Phase 6 polish** — validate-vcq.js ARF checking, ARF search styling, AGENTS.md + TERMINOLOGY.md updates |
 | 2026-01-23 03:55 | **Feat: Phase 6 ARF Database Integration** — 143 HLRs imported, search index (129), 7 new VCQ reqs, deep linking with popovers |

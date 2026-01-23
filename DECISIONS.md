@@ -2203,3 +2203,58 @@ All 39 documents in `documents.yaml` now have `source: manual`.
 - ❌ Losing manual corrections via re-import
 
 **This replaces:** The "Converter-First Rule" in AGENTS.md (now applies only to NEW imports)
+
+---
+
+## DEC-224: Sidebar Section Order and Collapsible Accordion
+
+**Date:** 2026-01-23  
+**Status:** Implemented  
+**Category:** UX / Navigation  
+
+**Context:**
+
+The sidebar had two usability issues:
+1. **Tools buried** — The Tools section (RCA, VCQ, Requirements Browser) was at the bottom, requiring scrolling past 11 supplementary documents
+2. **Long list** — Supplementary Documents (10+ items) pushed everything below it off-screen
+
+**Options Evaluated:**
+
+| Option | Description | Verdict |
+|--------|-------------|---------|
+| A: Collapse middle | All collapsible, Supplementary collapsed by default | Partial fix — still requires scrolling |
+| B: Tools first | Reorder + collapsible, Tools at top | ✅ Chosen — matches workflow |
+| C: Sticky toolbar | Icon bar for tools, always visible | Overhead — requires icon recognition |
+
+**Decision:**
+
+Implement **Option B with refinement** — after user feedback, final order became:
+
+1. **Overview** (Home, Quick Start, Terminology)
+2. **Tools** (RCA, VCQ, All Requirements, AI Assistant)
+3. **Regulations** (Primary legal texts)
+4. **Supplementary Documents** (Collapsed by default)
+
+**Key Implementation Details:**
+
+1. **Collapsible sections** — All sections have clickable headers with chevron icons
+2. **LocalStorage persistence** — Expand/collapse state saved across sessions
+3. **Count badges** — Collapsed sections show `(N)` item count
+4. **Merged Reference section** — Single-item section (Terminology) merged into Overview
+
+**Rationale:**
+
+1. **Workflow alignment** — Users typically: orient (Overview) → analyze (Tools) → reference (Regulations) → deep dive (Supplementary)
+2. **Discoverability** — Tools are now visible without scrolling
+3. **Reduced clutter** — 10+ supplementary docs hidden by default
+4. **User control** — Preferences remembered via localStorage
+
+**Files Changed:**
+
+| File | Changes |
+|------|---------|
+| `Sidebar.jsx` | Section reorder, collapsible state, chevron icons |
+| `index.css` | `.sidebar-section-header`, `.sidebar-chevron`, rotation animation |
+
+**Pattern Extracted:** Collapsible Section with localStorage — see `.agent/snippets/react-patterns.md`
+
