@@ -969,4 +969,78 @@ The following items were identified during Phase 6 implementation but deferred:
 
 ---
 
+## 19. Phase 7: RCA Integration (DRAFT)
+
+**Status:** 📋 SCOPE DRAFT — Not yet approved  
+**Created:** 2026-01-23  
+**Last Reviewed:** 2026-01-23
+
+### 19.1 Current State
+
+| Feature | Status | Implementation |
+|---------|--------|----------------|
+| `linkedRCA` field in VCQ YAML | ✅ Done | 17 VCQ requirements have linkedRCA references |
+| "See also" links in VCQ UI | ✅ Done | VendorQuestionnaire.jsx lines 767-781 |
+| Link target format | ✅ Done | Links to `#/rca?req=RP-XXX-NNN` |
+
+**Current linked requirements:**
+- `core.yaml`: 10 requirements with linkedRCA
+- `pif.yaml`: 4 requirements with linkedRCA
+- `vif.yaml`: 3 requirements with linkedRCA
+- `ict.yaml`: 0 (no RCA links yet)
+
+### 19.2 Potential Scope Options
+
+#### Option A: Enhance Outbound Links (VCQ → RCA) — LOW EFFORT
+
+| Task | Description | Effort |
+|------|-------------|--------|
+| **RCA link popovers** | Hover to preview RCA requirement text (like ARF popovers) | 2h |
+| **RCA ?req= handling** | RCA tool highlights/scrolls to specific requirement when linked | 1h |
+| **Increase linkedRCA coverage** | Audit VCQ reqs missing links, add more mappings | 2h |
+
+**Total: ~5h**
+
+#### Option B: Add Reverse Links (RCA → VCQ) — MEDIUM EFFORT
+
+| Task | Description | Effort |
+|------|-------------|--------|
+| **VCQ mentions in RCA** | When viewing RP-SEC-001 in RCA, show "Related VCQ: VEND-CORE-001" | 3h |
+| **RCA profile awareness** | VCQ auto-selects requirements based on saved RCA profile | 4h |
+
+**Total: ~7h**
+
+#### Option C: Cross-Tool Dashboard — HIGHER EFFORT
+
+| Task | Description | Effort |
+|------|-------------|--------|
+| **Unified compliance view** | Dashboard showing RCA + VCQ status together | 6h |
+| **Profile-based VCQ generation** | If RCA profile = "uses_intermediary", auto-include PIF | 4h |
+
+**Total: ~10h**
+
+### 19.3 Recommended MVP (Option A)
+
+Start with Option A to validate usefulness before deeper integration:
+
+1. **Fix RCA ?req= handling** — Make deep links work (highlight requirement)
+2. **Add RCA popovers** — Like ARF, show requirement text on hover
+3. **Audit linkedRCA coverage** — Add missing links to ICT requirements
+
+### 19.4 Open Questions
+
+1. Should RCA profiles automatically influence VCQ generation?
+2. Is a unified dashboard needed, or are separate tools sufficient?
+3. How to handle RCA requirements that have no VCQ equivalent?
+
+### 19.5 Dependencies
+
+- RCA tool must support `?req=` URL parameter
+- RCA data must be accessible from VCQ component
+- Shared popover component pattern (reuse from ARF)
+
+---
+
 *Phase 6 completed 2026-01-23. Backlog updated same date.*
+*Phase 7 scope drafted 2026-01-23 — awaiting decision.*
+
