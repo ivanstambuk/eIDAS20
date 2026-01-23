@@ -89,6 +89,23 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
     const regId = legalBasis?.regulation;
     const regMeta = regulationsIndex[regId] || regulationsIndex[regId?.replace('/', '-')];
 
+    // Parse compound paragraph formats like "1(b)", "1(a)(i)", "1-2", "2(g)"
+    const parseParagraph = (paragraph) => {
+        if (!paragraph) return { para: null, point: null, subpoint: null };
+        const str = String(paragraph);
+        const match = str.match(/^(\d+[a-z]?(?:\s*[-–—]\s*\d+[a-z]?)?)(?:\s*\(\s*([a-z])\s*\))?(?:\s*\(\s*([ivxlcdm]+)\s*\))?$/i);
+        if (match) {
+            return {
+                para: match[1] ? match[1].split(/[-–—]/)[0].trim() : null,
+                point: match[2] ? match[2].toLowerCase() : null,
+                subpoint: match[3] ? match[3].toLowerCase() : null
+            };
+        }
+        return { para: str.split(/[-–—]/)[0].trim(), point: null, subpoint: null };
+    };
+
+    const parsedParagraph = parseParagraph(legalBasis?.paragraph);
+
     const buildUrl = () => {
         if (!regMeta) return null;
         const baseUrl = `${import.meta.env.BASE_URL}#`;
@@ -99,13 +116,30 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
         let section = '';
         if (legalBasis?.article) {
             let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
-            if (legalBasis?.paragraph) {
-                sectionId += `-para-${legalBasis.paragraph}`;
+            if (parsedParagraph.para) {
+                sectionId += `-para-${parsedParagraph.para}`;
+            }
+            if (parsedParagraph.point) {
+                sectionId += `-point-${parsedParagraph.point}`;
+            }
+            if (parsedParagraph.subpoint) {
+                sectionId += `-subpoint-${parsedParagraph.subpoint}`;
             }
             section = `?section=${sectionId}`;
         }
 
         return `${baseUrl}${docPath}${section}`;
+    };
+
+    // Format paragraph for display
+    const formatParagraphDisplay = () => {
+        if (!legalBasis?.paragraph) return '';
+        const { para, point, subpoint } = parsedParagraph;
+        let display = '';
+        if (para) display += `(${para})`;
+        if (point) display += `(${point})`;
+        if (subpoint) display += `(${subpoint})`;
+        return display;
     };
 
     const url = buildUrl();
@@ -175,7 +209,7 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             >
                 <span className="vcq-legal-ref">
                     {legalBasis?.article}
-                    {legalBasis?.paragraph && `(${legalBasis.paragraph})`}
+                    {formatParagraphDisplay()}
                 </span>
                 <span className="vcq-legal-reg">
                     Reg. {legalBasis?.regulation}
