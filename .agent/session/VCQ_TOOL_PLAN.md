@@ -455,6 +455,18 @@ notes?: string                # Optional implementation notes
 - [x] Terminology updated (VCQ, PIF, VIF, ICT Third-Party)
 - [x] PDF generation (browser print-to-PDF)
 
+### Phase 6: ARF Database Integration ⏳ PLANNED
+- [ ] Import ARF CSV (617 HLRs across 55 topics)
+- [ ] Validate VCQ arfReference fields against official ARF
+- [ ] Fix invalid HLR references (RPI_11, RPI_13, RPI_14, RPI_15)
+- [ ] Enhanced deep linking with topic anchors
+- [ ] HLR popovers with official specification text
+- [ ] Add missing Topic 52 requirements (RPI_01, RPI_03, RPI_08, RPI_09, RPI_10)
+- [ ] Search integration for ARF HLRs
+- [ ] Weekly sync mechanism
+
+**See Section 16 for detailed Phase 6 design.**
+
 ---
 
 ## 11. External References (To Link Later)
@@ -531,4 +543,394 @@ These sources are not imported but should be referenced:
 ---
 
 *Document updated 2026-01-22 after initial implementation.*
+
+---
+
+## 16. Phase 6: ARF Database Integration (Detailed Design)
+
+**Status:** 📋 PLANNED  
+**Priority:** High  
+**Created:** 2026-01-23  
+**Decision:** DEC-223  
+
+### 16.1 Executive Summary
+
+The Architecture and Reference Framework (ARF) provides the technical specifications for the EUDIW ecosystem via **617 High-Level Requirements (HLRs)** across 55 topics. This phase integrates the ARF as a first-class data source in our portal, enabling:
+
+1. **Authoritative HLR references** — Replace manual VCQ ARF references with official data
+2. **Deep linking** — Click-through to specific HLRs with anchor fragments
+3. **Full-text search** — Search requirement text across all 617 HLRs
+4. **Validation** — Auto-detect stale/invalid HLR references
+5. **Popovers** — Show official requirement text on hover
+
+### 16.2 Data Source
+
+#### Primary Source (Machine-readable)
+```
+https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/refs/heads/main/hltr/high-level-requirements.csv
+```
+
+#### Human-readable Links (for UI deep linking)
+| Document | Purpose |
+|----------|---------|
+| `annex-2.01-high-level-requirements.md` | Canonical list with all HLRs |
+| `annex-2.02-high-level-requirements-by-topic.md` | Organized by topic (preferred for Topic 52 links) |
+| `annex-2.03-high-level-requirements-by-category.md` | Organized by category |
+
+#### CSV Schema
+```
+Delimiter: Semicolon (;)
+Encoding: UTF-8 with BOM
+
+Columns:
+1. Harmonized_ID    - Unique ID (e.g., "AS-RP-51-001")
+2. Part             - "Ecosystem-Wide Rules" | "Actor-Specific Requirements"
+3. Category         - "Relying Parties", "Wallet Providers", etc.
+4. Topic            - Full topic string with number
+5. Topic_Number     - Numeric (1-55)
+6. Topic_Title      - Human-readable title
+7. Subsection       - Optional grouping within topic
+8. Index            - HLR ID (e.g., "RPI_07") — KEY FIELD
+9. Requirement_specification - Full requirement text
+10. Notes           - Implementation notes/guidance
+```
+
+### 16.3 Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           ARF Integration Architecture                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────────┐     ┌────────────────┐     ┌─────────────────────┐   │
+│  │ GitHub CSV       │────▶│ import-arf.js  │────▶│ arf-hlr-data.json   │   │
+│  │ (Source of Truth)│     │ (Parse/Process)│     │ (Build Artifact)    │   │
+│  └──────────────────┘     └────────────────┘     └─────────────────────┘   │
+│                                  │                          │               │
+│                                  ▼                          ▼               │
+│                           ┌────────────────┐     ┌─────────────────────┐   │
+│                           │ validate-vcq.js│     │ VCQ/RCA/Portal      │   │
+│                           │ (Check refs)   │     │ (Consume data)      │   │
+│                           └────────────────┘     └─────────────────────┘   │
+│                                                                              │
+│  New Components:                                                             │
+│  ├── scripts/import-arf.js          # Download + parse CSV                  │
+│  ├── config/arf/arf-config.yaml     # Topics to import, URL, refresh        │
+│  ├── public/data/arf-hlr-data.json  # Processed HLR database                │
+│  └── src/components/HLRPopover.jsx  # Reusable HLR display component        │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 16.4 Data Model
+
+#### 16.4.1 ARF Config (`config/arf/arf-config.yaml`)
+```yaml
+schemaVersion: 1
+source:
+  csvUrl: "https://raw.githubusercontent.com/.../hltr/high-level-requirements.csv"
+  baseUrl: "https://github.com/.../blob/main/docs/annexes/annex-2"
+  byTopicDoc: "annex-2.02-high-level-requirements-by-topic.md"
+  
+# Topics relevant to VCQ/RCA tools
+relevantTopics:
+  - 1   # Accessing Online Services
+  - 6   # Relying Party Authentication
+  - 14  # Validity and Revocation
+  - 27  # Registration
+  - 44  # Registration Certificates
+  - 45  # (Legacy - now 52)
+  - 52  # Relying Party Intermediaries
+  
+# Actor categories to filter
+relevantActors:
+  - "Relying Parties"
+  - "Member States & Registrars"
+  
+# Mapping from our arfReference.topic to Topic_Number
+topicMapping:
+  "Topic 45": 52  # ARF renamed Topic 45 to Topic 52
+```
+
+#### 16.4.2 Processed HLR Record
+```typescript
+interface ARFRequirement {
+  // Identity
+  harmonizedId: string;     // "AS-RP-51-001"
+  hlrId: string;            // "RPI_07" (Index column)
+  
+  // Classification
+  part: "ecosystem" | "actor-specific";
+  category: string;         // "Relying Parties"
+  topicNumber: number;      // 52
+  topicTitle: string;       // "Relying Party intermediaries"
+  subsection?: string;
+  
+  // Content
+  specification: string;    // Full requirement text
+  notes?: string;           // Implementation notes
+  
+  // Generated
+  isEmpty: boolean;         // True if specification === "Empty"
+  deepLink: string;         // Full GitHub URL with anchor
+  searchText: string;       // Normalized lowercase for search
+}
+```
+
+#### 16.4.3 Output JSON Structure (`public/data/arf-hlr-data.json`)
+```json
+{
+  "generatedAt": "2026-01-23T02:40:00Z",
+  "sourceCommit": "abc123",
+  "stats": {
+    "totalHLRs": 617,
+    "nonEmptyHLRs": 580,
+    "topics": 55,
+    "importedTopics": 7
+  },
+  "requirements": [ /* ARFRequirement[] */ ],
+  "byHlrId": {
+    "RPI_07": { /* ARFRequirement */ },
+    "OIA_12": { /* ARFRequirement */ }
+  },
+  "byTopic": {
+    "52": [ /* ARFRequirement[] */ ]
+  },
+  "topicMetadata": {
+    "52": {
+      "number": 52,
+      "title": "Relying Party intermediaries",
+      "anchor": "a2330-topic-52-relying-party-intermediaries",
+      "hlrCount": 13
+    }
+  }
+}
+```
+
+### 16.5 Implementation Tasks
+
+#### Phase 6.1: Data Import Pipeline (Day 1)
+
+- [ ] **6.1.1** Create `config/arf/arf-config.yaml` with source URLs and topic filters
+- [ ] **6.1.2** Create `scripts/import-arf.js`:
+  - Fetch CSV from GitHub raw URL
+  - Parse CSV with semicolon delimiter, handle BOM
+  - Filter to relevant topics/actors
+  - Generate deep links with topic anchors
+  - Output `public/data/arf-hlr-data.json`
+- [ ] **6.1.3** Add npm script: `"build:arf": "node scripts/import-arf.js"`
+- [ ] **6.1.4** Integrate into `build:all-content` pipeline
+- [ ] **6.1.5** Add to CI validation (check JSON exists and is valid)
+
+#### Phase 6.2: VCQ Reference Validation (Day 1-2)
+
+- [ ] **6.2.1** Audit all `arfReference.hlr` values in VCQ YAML files
+- [ ] **6.2.2** Update `validate-vcq.js` to:
+  - Load `arf-hlr-data.json`
+  - Check each `arfReference.hlr` exists in ARF data
+  - Report invalid/missing HLR references
+  - Suggest corrections for renamed HLRs
+- [ ] **6.2.3** Fix invalid references:
+  - `RPI_11` → Map to correct HLR or remove
+  - `RPI_13` → Map to correct HLR or remove
+  - `RPI_14` → Map to correct HLR or remove
+  - `RPI_15` → Map to correct HLR or remove
+- [ ] **6.2.4** Update `arfReference.topic` from "Topic 45" → "Topic 52"
+
+#### Phase 6.3: Deep Linking Enhancement (Day 2)
+
+- [ ] **6.3.1** Update `ARFReferenceLink` component:
+  - Load ARF data via hook `useARFData()`
+  - Look up HLR by ID
+  - Generate deep link with topic anchor fragment
+  - Handle missing HLRs gracefully
+- [ ] **6.3.2** URL pattern:
+  ```
+  https://github.com/.../annex-2.02-high-level-requirements-by-topic.md#rpi_07
+  ```
+- [ ] **6.3.3** Add fallback for HLRs without anchors (link to topic section)
+
+#### Phase 6.4: HLR Popover Component (Day 2-3)
+
+- [ ] **6.4.1** Create `src/components/HLRPopover.jsx`:
+  ```jsx
+  <HLRPopover hlrId="RPI_07">
+    <ARFReferenceLink ... />
+  </HLRPopover>
+  ```
+- [ ] **6.4.2** Popover content:
+  - HLR ID with badge
+  - Topic title
+  - Requirement specification (truncated if long)
+  - Notes (if available)
+  - "View in ARF →" link
+- [ ] **6.4.3** Reuse popover pattern from `LegalBasisLink`
+- [ ] **6.4.4** Add CSS styles in `VendorQuestionnaire.css`
+
+#### Phase 6.5: Add Missing VCQ Requirements (Day 3-4)
+
+Based on ARF Topic 52 analysis, add missing intermediary requirements:
+
+| HLR | Priority | VCQ Requirement to Add |
+|-----|----------|------------------------|
+| RPI_01 | High | Intermediary registration |
+| RPI_03 | High | Register each intermediated RP |
+| RPI_04 | Medium | Legal evidence of relationship |
+| RPI_05 | Medium | RP details in requests |
+| RPI_08 | High | Forward only to specified RP |
+| RPI_09 | High | Verification obligations |
+| RPI_10 | Critical | Delete data after forwarding |
+
+- [ ] **6.5.1** Add new requirements to `requirements/core.yaml` or `requirements/pif.yaml`
+- [ ] **6.5.2** Map to appropriate categories
+- [ ] **6.5.3** Set criticality based on ARF language (SHALL = Critical/High)
+- [ ] **6.5.4** Run validation, rebuild, test
+
+#### Phase 6.6: Search Integration (Day 4)
+
+- [ ] **6.6.1** Extend Orama search index to include ARF HLRs
+- [ ] **6.6.2** Index fields: `hlrId`, `specification`, `topicTitle`, `notes`
+- [ ] **6.6.3** Add search result type "ARF Requirement"
+- [ ] **6.6.4** Link search results to deep-linked ARF pages
+
+#### Phase 6.7: Sync & Maintenance (Day 5)
+
+- [ ] **6.7.1** Document ARF sync process in `AGENTS.md`
+- [ ] **6.7.2** Add GitHub Actions workflow to check for ARF updates weekly
+- [ ] **6.7.3** Create script to diff local vs remote ARF
+- [ ] **6.7.4** Add ARF version/commit hash to portal footer or about page
+
+### 16.6 UI/UX Design
+
+#### ARF Reference Link (Enhanced)
+```
+┌─────────────────────────────────────────────┐
+│ 📐 RPI_07 (Topic 52)                        │ ← Orange badge, clickable
+└─────────────────────────────────────────────┘
+                    │
+                    ▼ (hover)
+┌─────────────────────────────────────────────┐
+│ ┌───────────────────────────────────────┐   │
+│ │ 📐 RPI_07                             │   │ ← HLR ID
+│ │ Topic 52: Relying Party intermediaries│   │ ← Topic
+│ └───────────────────────────────────────┘   │
+│                                             │
+│ In case a Wallet Unit receives a            │
+│ presentation request from an intermediary   │ ← Spec text
+│ on behalf of an intermediated Relying       │
+│ Party, it SHALL display the names and       │
+│ identifiers of both...                      │
+│                                             │
+│ ─────────────────────────────────────────   │
+│ Note: In this case, the name and            │ ← Notes (if any)
+│ identifier of the intermediary are...       │
+│                                             │
+│ View in ARF →                               │ ← Deep link
+└─────────────────────────────────────────────┘
+```
+
+#### Search Result Card
+```
+┌─────────────────────────────────────────────┐
+│ 📐 ARF High-Level Requirement               │
+│ RPI_07 - Relying Party intermediaries       │
+│                                             │
+│ "...it SHALL display the names and          │
+│ identifiers of both the intermediary..."    │
+│                                             │
+│ Topic 52 • Relying Parties                  │
+└─────────────────────────────────────────────┘
+```
+
+### 16.7 Validation Rules
+
+Add to `scripts/validate-vcq.js`:
+
+```javascript
+// ARF Reference Validation
+function validateARFReferences(requirements, arfData) {
+  const errors = [];
+  const warnings = [];
+  
+  for (const req of requirements) {
+    if (req.arfReference?.hlr) {
+      const hlrId = req.arfReference.hlr;
+      const arfReq = arfData.byHlrId[hlrId];
+      
+      if (!arfReq) {
+        errors.push(`${req.id}: Invalid HLR reference '${hlrId}' - not found in ARF`);
+      } else if (arfReq.isEmpty) {
+        warnings.push(`${req.id}: HLR '${hlrId}' is marked as Empty in ARF`);
+      }
+      
+      // Check topic consistency
+      if (req.arfReference.topic) {
+        const expectedTopic = `Topic ${arfReq.topicNumber}`;
+        if (req.arfReference.topic !== expectedTopic) {
+          warnings.push(`${req.id}: Topic mismatch - expected '${expectedTopic}', got '${req.arfReference.topic}'`);
+        }
+      }
+    }
+  }
+  
+  return { errors, warnings };
+}
+```
+
+### 16.8 Success Criteria
+
+- [ ] All 617 ARF HLRs are imported and searchable
+- [ ] All VCQ `arfReference.hlr` values validated against official ARF
+- [ ] Zero invalid HLR references
+- [ ] Deep links work (no 404s, correct anchors)
+- [ ] HLR popovers show official specification text
+- [ ] ARF search results appear alongside regulation search
+- [ ] Sync mechanism documented and automated
+
+### 16.9 Dependencies
+
+- Orama search index (existing)
+- CSV parser (`csv-parse` or manual split on `;`)
+- GitHub raw content access (no auth needed for public repo)
+
+### 16.10 Risks & Mitigations
+
+| Risk | Mitigation |
+|------|------------|
+| ARF structure changes | Compare hash on import, alert on schema changes |
+| HLR IDs renamed | Map old→new in config, validate on build |
+| Large JSON size | Filter to relevant topics only, lazy-load full data |
+| GitHub rate limits | Cache locally, refresh weekly not per-build |
+| Anchor fragments change | Test links in CI with headless browser |
+
+### 16.11 Estimated Effort
+
+| Phase | Tasks | Effort |
+|-------|-------|--------|
+| 6.1 Data Import | 5 | 3h |
+| 6.2 Validation | 4 | 2h |
+| 6.3 Deep Linking | 3 | 1h |
+| 6.4 HLR Popover | 4 | 2h |
+| 6.5 Missing Requirements | 4 | 3h |
+| 6.6 Search Integration | 4 | 2h |
+| 6.7 Sync & Maintenance | 4 | 2h |
+| **Total** | **28** | **15h** |
+
+---
+
+## 17. Appendix: ARF Topic Reference
+
+| Topic # | Title | VCQ Relevance |
+|---------|-------|---------------|
+| 1 | Accessing Online Services with a Wallet Unit | OIA_* requirements |
+| 6 | Relying Party Authentication and User Approval | RPA_* requirements |
+| 14 | Validity, Authenticity and Revocation Checks | VCR_* requirements |
+| 27 | Registration of Providers and Relying Parties | Reg_* requirements |
+| 44 | Registration Certificates | RPRC_* requirements |
+| **52** | **Relying Party Intermediaries** | **RPI_* requirements (PRIMARY)** |
+| 53 | Zero-Knowledge Proofs | ZKP_* (future) |
+
+---
+
+*Phase 6 design added 2026-01-23.*
 
