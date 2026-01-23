@@ -104,6 +104,20 @@ async function loadRegulationsIndex() {
 }
 
 /**
+ * Extract first item from a range (e.g., "1-2" → "1", "1 and 2" → "1")
+ * Used for paragraph and point ranges in legal citations.
+ */
+function extractFirstFromRange(value) {
+    if (!value) return null;
+    // Handle ranges: "1-2", "1–2" (en-dash), "1—2" (em-dash), "1 and 2"
+    const rangeMatch = value.match(/^(\d+[a-z]?|[a-z])(?:\s*[-–—]\s*|\s+and\s+)/i);
+    if (rangeMatch) {
+        return rangeMatch[1];
+    }
+    return value.trim();
+}
+
+/**
  * Parse a citation query into structured components
  * 
  * Examples:
@@ -160,7 +174,8 @@ function parseCitation(query) {
     // "article 5(1)(a)(i)"
 
     // Standard format: Article X(Y)(z)(roman)
-    const standardPattern = /^(?:article|art\.?)\s*(\d+[a-z]?)(?:\s*\(\s*(\d+[a-z]?)\s*\))?(?:\s*\(\s*([a-z])\s*\))?(?:\s*\(\s*([ivxlcdm]+)\s*\))?$/i;
+    // Supports ranges like (1-2) or (1 and 2) - we'll extract the first item for navigation
+    const standardPattern = /^(?:article|art\.?)\s*(\d+[a-z]?)(?:\s*\(\s*(\d+[a-z]?(?:\s*[-–—]\s*\d+[a-z]?)?(?:\s+and\s+\d+[a-z]?)?)\s*\))?(?:\s*\(\s*([a-z](?:\s*[-–—]\s*[a-z])?)\s*\))?(?:\s*\(\s*([ivxlcdm]+)\s*\))?$/i;
     const standardMatch = citationPart.match(standardPattern);
 
     if (standardMatch) {
@@ -168,8 +183,9 @@ function parseCitation(query) {
         return {
             document: documentSlug,
             article: article.toLowerCase(),
-            paragraph: paragraph || null,
-            point: point ? point.toLowerCase() : null,
+            // Extract first item from ranges: "1-2" → "1", "1 and 2" → "1"
+            paragraph: paragraph ? extractFirstFromRange(paragraph) : null,
+            point: point ? extractFirstFromRange(point).toLowerCase() : null,
             subpoint: subpoint ? subpoint.toLowerCase() : null,
         };
     }
