@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-23 02:25 CET |
-| **Version** | V3.7.57 |
-| **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs, 35 VCQ reqs |
-| **Next Action** | VCQ Complete — Ready for next feature |
+| **Last Updated** | 2026-01-23 03:55 CET |
+| **Version** | V3.8.0 |
+| **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 129 ARF HLRs |
+| **Next Action** | User testing of Phase 6 ARF integration |
 
 ---
 
@@ -27,6 +27,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-23 03:55 | **Feat: Phase 6 ARF Database Integration** — 143 HLRs imported, search index (129), 7 new VCQ reqs, deep linking with popovers |
 | 2026-01-23 02:25 | Feat: VCQ ARF external links — GitHub links to ARF HLRs with styled badges |
 | 2026-01-23 02:20 | Feat: VCQ PDF export — browser print-to-PDF with styled document template |
 | 2026-01-22 20:00 | Feat: VCQ Summary View (View A) — Dashboard with criticality breakdown, category cards, view toggle |
