@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-23 05:09 CET |
-| **Version** | V3.8.1 |
-| **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 129 ARF HLRs |
-| **Next Action** | Phase 6 complete — Backlog items in VCQ_TOOL_PLAN.md §17 |
+| **Last Updated** | 2026-01-23 08:32 CET |
+| **Version** | V3.9.0 |
+| **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1084 total reqs |
+| **Next Action** | Requirements Browser complete — Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 ---
 
@@ -27,6 +27,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-23 08:32 | **Feat: Unified Requirements Browser** — 1084 total reqs (559 ARF + 470 RCA + 55 VCQ), Legal Basis filtering, CSV/JSON/PDF exports, URL state sync |
 | 2026-01-23 05:09 | **Retro: Phase 6 polish** — validate-vcq.js ARF checking, ARF search styling, AGENTS.md + TERMINOLOGY.md updates |
 | 2026-01-23 03:55 | **Feat: Phase 6 ARF Database Integration** — 143 HLRs imported, search index (129), 7 new VCQ reqs, deep linking with popovers |
 | 2026-01-23 02:25 | Feat: VCQ ARF external links — GitHub links to ARF HLRs with styled badges |

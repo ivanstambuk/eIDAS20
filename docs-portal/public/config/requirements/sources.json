@@ -48,6 +48,84 @@
             "count": null
         }
     },
+    "regulationsIndex": {
+        "$comment": "Maps regulation IDs (from legalBasis.regulation) to display labels for the Legal Basis filter",
+        "2014/910": {
+            "label": "eIDAS (2014/910)",
+            "shortName": "eIDAS 1.0",
+            "icon": "⚖️"
+        },
+        "2024/1183": {
+            "label": "eIDAS 2.0 Amendment (2024/1183)",
+            "shortName": "eIDAS 2.0",
+            "icon": "⚖️"
+        },
+        "2016/679": {
+            "label": "GDPR (2016/679)",
+            "shortName": "GDPR",
+            "icon": "🔐"
+        },
+        "2022/2554": {
+            "label": "DORA (2022/2554)",
+            "shortName": "DORA",
+            "icon": "🏦"
+        },
+        "2019/881": {
+            "label": "Cybersecurity Act (2019/881)",
+            "shortName": "CSA",
+            "icon": "🛡️"
+        },
+        "2024/2977": {
+            "label": "LoA IA (2024/2977)",
+            "shortName": "LoA IA",
+            "icon": "🔏"
+        },
+        "2024/2979": {
+            "label": "Integrity IA (2024/2979)",
+            "shortName": "Integrity IA",
+            "icon": "📐"
+        },
+        "2024/2980": {
+            "label": "TSL IA (2024/2980)",
+            "shortName": "TSL IA",
+            "icon": "📋"
+        },
+        "2024/2981": {
+            "label": "PID IA (2024/2981)",
+            "shortName": "PID IA",
+            "icon": "🆔"
+        },
+        "2024/2982": {
+            "label": "Protocols IA (2024/2982)",
+            "shortName": "Protocols IA",
+            "icon": "🔐"
+        },
+        "2025/846": {
+            "label": "Identity Matching (2025/846)",
+            "shortName": "ID Match",
+            "icon": "🔍"
+        },
+        "2025/847": {
+            "label": "Suspension/Withdrawal (2025/847)",
+            "shortName": "Suspend IA",
+            "icon": "🛡️"
+        },
+        "2025/848": {
+            "label": "RP Registration (2025/848)",
+            "shortName": "RP Reg IA",
+            "icon": "📝"
+        },
+        "2025/1566": {
+            "label": "CAB Designation (2025/1566)",
+            "shortName": "CAB IA",
+            "icon": "🏛️"
+        },
+        "2025/1567": {
+            "label": "Certification Schemes (2025/1567)",
+            "shortName": "Cert IA",
+            "icon": "📜"
+        }
+    },
     "technicalSpecifications": {
         "$comment": "Reference-only: Technical Specifications are not extracted but referenced from requirements",
         "basePath": "../../../04_technical_specs/docs/technical-specifications/",

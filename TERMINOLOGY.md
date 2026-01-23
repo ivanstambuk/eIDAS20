@@ -470,6 +470,21 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 
 ---
 
+## Requirements Browser
+
+| Term | Description |
+|------|-------------|
+| **Requirements Browser** | The `/requirements` route that provides a unified, searchable view of all compliance requirements across ARF HLRs, RCA, and VCQ sources. Features multi-dimensional filtering, export options, and shareable URLs. |
+| **Legal Basis** | A structured reference linking a requirement to its source legislation. Contains `regulation` (e.g., "2014/910"), `article` (e.g., "Article 5b"), and `paragraph`. Used for the Legal Basis filter dimension. |
+| **ARF Topic** | A numbered grouping within the ARF High-Level Requirements (1-55). Each topic covers a specific area (e.g., Topic 52 = Relying Party Intermediaries). Topics are filterable in the Requirements Browser. |
+| **Compliance Level** | Classification of how binding a requirement is: `mandatory` (SHALL — must implement), `recommended` (SHOULD — implement unless justified), `optional` (MAY — discretionary). Derived from legal verb analysis. |
+| **Harmonized ID** | The portal's normalized identifier format for ARF HLRs. Format: `HLR-{TOPIC_CODE}-{NUMBER}` (e.g., `HLR-WTE-01.01` for Wallet Trust Evidence topic). Differs from source IDs like `WTE_01`. |
+| **Source (Requirements)** | The origin system for a requirement: `arf-hlr` (EC Architecture Framework), `rca` (Role Compliance Assessment), `vcq` (Vendor Compliance Questionnaire). Each source has its own data format and loading mechanism. |
+| **Filter State URL** | A URL encoding the current filter selections via query parameters. Format: `?sources=rca&roles=relying_party&regulations=2014%2F910`. Enables bookmarking and sharing specific filtered views. |
+| **Copy Link** | A button that copies the current filtered URL to the clipboard, allowing users to share or bookmark the exact filter state. |
+
+---
+
 ## See Also
 
 - [DECISIONS.md](DECISIONS.md) - Architectural and design decisions
