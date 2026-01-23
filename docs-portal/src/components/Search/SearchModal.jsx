@@ -84,10 +84,21 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
             return `/terminology${section}`;
         }
 
+        // Handle ARF HLRs - link to VCQ tool
+        if (result.type === 'arf-hlr') {
+            return `/vcq`;  // Navigate to VCQ where ARF HLRs are displayed
+        }
+
         // Handle regulations and implementing acts
         const baseType = result.type === 'regulation' ? 'regulation' : 'implementing-acts';
         const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
         return `/${baseType}/${result.slug}${hash}`;
+    };
+
+    const getIcon = () => {
+        if (result.type === 'definition') return '📖';
+        if (result.type === 'arf-hlr') return '📐';
+        return result.type === 'regulation' ? '📜' : '📋';
     };
 
     const similarityPercent = isSemanticMode && result.score
@@ -97,12 +108,12 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
     return (
         <Link
             to={getDocUrl()}
-            className="search-result"
+            className={`search-result ${result.type === 'arf-hlr' ? 'search-result-arf' : ''}`}
             onClick={onClick}
         >
             <div className="search-result-header">
                 <span className={`search-result-type ${result.type}`}>
-                    {result.type === 'regulation' ? '📜' : '📋'} {result.docTitle}
+                    {getIcon()} {result.docTitle}
                 </span>
                 <div className="search-result-meta">
                     {similarityPercent && (

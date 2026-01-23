@@ -326,6 +326,20 @@
     color: var(--accent-secondary);
 }
 
+.search-result-type.arf-hlr {
+    color: #d97706;
+    /* Orange for ARF - matches VCQ */
+}
+
+/* ARF search result card */
+.search-result-arf {
+    border-left: 3px solid #d97706;
+}
+
+.search-result-arf:hover {
+    border-color: #d97706;
+}
+
 .search-result-section {
     color: var(--text-muted);
     background: var(--bg-secondary);
@@ -520,10 +534,9 @@
 .quick-jump-section {
     margin: var(--space-2);
     padding: var(--space-3);
-    background: linear-gradient(135deg, 
-        rgba(var(--accent-primary-rgb), 0.1) 0%,
-        rgba(var(--accent-secondary-rgb, 147, 51, 234), 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(var(--accent-primary-rgb), 0.1) 0%,
+            rgba(var(--accent-secondary-rgb, 147, 51, 234), 0.05) 100%);
     border: 1px solid rgba(var(--accent-primary-rgb), 0.3);
     border-radius: var(--radius-lg);
 }

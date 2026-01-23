@@ -711,6 +711,25 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 
 **Reference:** See DEC-088 Addendum in DECISIONS.md and `USE_CASE_MAPPING_SUMMARY.md` in `config/rca/`.
 
+### ARF Integration Notes (Phase 6)
+
+**Topic Renumbering:** ARF v1.5 renumbered "Relying Party Intermediaries" from **Topic 45 → Topic 52**. All VCQ YAML files and `arf-config.yaml` use Topic 52.
+
+**HLR Validation One-liner:**
+```bash
+# Compare VCQ HLR references against imported ARF data
+grep -rh "hlr:" docs-portal/config/vcq/requirements/*.yaml | \
+  sed 's/.*hlr: *//' | sed 's/"//g' | sort -u | \
+  while read hlr; do grep -q "\"$hlr\"" docs-portal/public/data/arf-hlr-data.json && echo "✅ $hlr" || echo "❌ $hlr NOT FOUND"; done
+```
+
+**Build Pipeline:** ARF is integrated into the main build:
+- `npm run build:arf` — Import ARF CSV → `arf-hlr-data.json` (143 HLRs)
+- `npm run build:search` — Includes ARF HLRs in search index (129 non-empty)
+- `npm run build` — Runs both automatically
+
+**ARF Topics Imported:** 1 (OIA_*), 6 (RPA_*), 7 (VCR_*), 27 (Reg_*), 44 (RPRC_*), 52 (RPI_*)
+
 **See:** [TERMINOLOGY.md](TERMINOLOGY.md) for full vocabulary.
 
 ---

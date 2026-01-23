@@ -218,6 +218,26 @@ function validate() {
                 }
             }
 
+            // Validate ARF reference if present
+            if (req.arfReference) {
+                if (!req.arfReference.hlr) {
+                    warnings.push({
+                        file,
+                        reqId,
+                        field: 'arfReference',
+                        message: `arfReference is present but missing 'hlr' field`
+                    });
+                }
+                if (!req.arfReference.topic) {
+                    warnings.push({
+                        file,
+                        reqId,
+                        field: 'arfReference',
+                        message: `arfReference is present but missing 'topic' field`
+                    });
+                }
+            }
+
             // Validate criticality if present
             const validCriticalities = ['critical', 'high', 'medium', 'low'];
             if (req.criticality && !validCriticalities.includes(req.criticality)) {
@@ -231,6 +251,67 @@ function validate() {
         }
 
         console.log(`   ✓ Validated ${file}: ${config.requirements.length} requirements`);
+    }
+
+    // ====================
+    // Validate ARF references against arf-hlr-data.json
+    // ====================
+
+    const arfDataPath = join(__dirname, '..', 'public', 'data', 'arf-hlr-data.json');
+    let arfValidation = { checked: false, valid: 0, invalid: [], empty: [] };
+
+    if (existsSync(arfDataPath)) {
+        try {
+            const arfData = JSON.parse(readFileSync(arfDataPath, 'utf-8'));
+            const validHlrIds = new Set(Object.keys(arfData.byHlrId || {}));
+            arfValidation.checked = true;
+
+            console.log(`\n   📐 Validating ARF references against ${validHlrIds.size} HLRs`);
+
+            // Re-scan all requirements for arfReference
+            for (const file of requirementFiles) {
+                const filePath = join(REQUIREMENTS_DIR, file);
+                const config = loadYaml(filePath);
+
+                if (!config.requirements) continue;
+
+                for (const req of config.requirements) {
+                    if (req.arfReference?.hlr) {
+                        const hlrId = req.arfReference.hlr;
+
+                        if (!validHlrIds.has(hlrId)) {
+                            arfValidation.invalid.push({ file, reqId: req.id, hlr: hlrId });
+                            errors.push({
+                                file,
+                                reqId: req.id,
+                                field: 'arfReference.hlr',
+                                value: hlrId,
+                                message: `HLR "${hlrId}" not found in ARF data. Run: npm run build:arf`
+                            });
+                        } else {
+                            arfValidation.valid++;
+                            // Check if HLR is marked as empty
+                            const hlrData = arfData.byHlrId[hlrId];
+                            if (hlrData?.isEmpty) {
+                                arfValidation.empty.push({ file, reqId: req.id, hlr: hlrId });
+                                warnings.push({
+                                    file,
+                                    reqId: req.id,
+                                    field: 'arfReference.hlr',
+                                    message: `HLR "${hlrId}" exists but has no specification text in ARF (marked as Empty)`
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+            console.log(`   ✓ ARF validation: ${arfValidation.valid} valid, ${arfValidation.invalid.length} invalid, ${arfValidation.empty.length} empty`);
+        } catch (e) {
+            console.warn(`   ⚠️  Could not validate ARF references: ${e.message}`);
+        }
+    } else {
+        console.log('\n   ⚠️  Skipping ARF validation (arf-hlr-data.json not found). Run: npm run build:arf');
     }
 
     // ====================
@@ -258,7 +339,12 @@ function validate() {
     console.log('\n✅ VCQ configuration is valid and consistent!');
     console.log(`   📄 ${requirementFiles.length} requirement files validated`);
     console.log(`   📋 ${totalRequirements} total requirements`);
-    console.log(`   🔗 All categories and applicability values are valid\n`);
+    console.log(`   🔗 All categories and applicability values are valid`);
+    if (arfValidation.checked) {
+        console.log(`   📐 ${arfValidation.valid} ARF HLR references validated\n`);
+    } else {
+        console.log('');
+    }
 }
 
 validate();
