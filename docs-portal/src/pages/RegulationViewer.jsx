@@ -39,9 +39,22 @@ function calculateReadingTime(wordCount) {
 
 /**
  * Scroll to element with header offset (same logic as CollapsibleTOC)
+ * Supports hierarchical fallback: if target ID doesn't exist, tries parent IDs.
+ * E.g., "article-5-para-1-point-a" → "article-5-para-1" → "article-5"
  */
 function scrollToSection(elementId) {
-    const element = document.getElementById(elementId);
+    let element = document.getElementById(elementId);
+
+    // Fallback: try progressively shorter IDs if exact target doesn't exist
+    // article-5-para-1-point-a → article-5-para-1 → article-5
+    if (!element && elementId) {
+        const fallbackIds = generateFallbackIds(elementId);
+        for (const fallbackId of fallbackIds) {
+            element = document.getElementById(fallbackId);
+            if (element) break;
+        }
+    }
+
     if (!element) return;
 
     const headerOffset = 64 + 16; // header height + padding
@@ -50,6 +63,30 @@ function scrollToSection(elementId) {
     // Use instant scroll for initial page load (no animation needed)
     window.scrollTo(0, targetPosition);
     element.focus({ preventScroll: true });
+}
+
+/**
+ * Generate fallback IDs by progressively removing hierarchy levels
+ * @example "article-5-para-1-point-a" → ["article-5-para-1", "article-5"]
+ */
+function generateFallbackIds(elementId) {
+    const fallbacks = [];
+    // Patterns to strip from right to left
+    const patterns = [
+        /-subpoint-[ivxlcdm]+$/i,  // roman numeral subpoints
+        /-point-[a-z]$/i,          // lettered points
+        /-para-\d+$/,              // numbered paragraphs
+    ];
+
+    let current = elementId;
+    for (const pattern of patterns) {
+        if (pattern.test(current)) {
+            current = current.replace(pattern, '');
+            fallbacks.push(current);
+        }
+    }
+
+    return fallbacks;
 }
 
 const RegulationViewer = () => {

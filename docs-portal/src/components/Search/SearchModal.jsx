@@ -11,6 +11,7 @@ import { useSearch } from '../../hooks/useSearch';
 import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
 import { useQuickJump } from '../../hooks/useQuickJump';
+import { useCitationJump } from '../../hooks/useCitationJump';
 import './Search.css';
 
 /**
@@ -242,6 +243,9 @@ export function SearchModal({ isOpen, onClose }) {
     // Quick jump: detect document references (CELEX, slugs, ELI)
     const quickJump = useQuickJump(query);
 
+    // Citation jump: detect article references (Article 5(1)(a))
+    const citationJump = useCitationJump(query);
+
     // Focus input when modal opens
     useEffect(() => {
         if (isOpen && inputRef.current) {
@@ -470,6 +474,44 @@ export function SearchModal({ isOpen, onClose }) {
                                                         doc.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
                                             </span>
                                             <span className="quick-jump-item-date">{doc.date}</span>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Citation Jump: Direct navigation to articles by legal citation */}
+                    {!isLoading && citationJump.hasCitation && (
+                        <div className="citation-jump-section">
+                            <div className="citation-jump-header">
+                                <span className="citation-jump-icon">📍</span>
+                                <span className="citation-jump-title">
+                                    Jump to {citationJump.citation}
+                                </span>
+                            </div>
+                            <div className="citation-jump-results">
+                                {citationJump.matches.map((doc) => (
+                                    <Link
+                                        key={doc.slug}
+                                        to={`/regulation/${doc.slug}?section=${doc.targetHash}`}
+                                        className="citation-jump-item"
+                                        onClick={onClose}
+                                    >
+                                        <div className="citation-jump-item-header">
+                                            <span className="citation-jump-item-title">
+                                                {doc.shortTitle}
+                                            </span>
+                                            <span className="citation-jump-item-article">
+                                                {doc.displayCitation}
+                                            </span>
+                                        </div>
+                                        <div className="citation-jump-item-meta">
+                                            <span className="citation-jump-item-type">
+                                                {doc.legalType === 'recommendation' ? 'Recommendation' :
+                                                    doc.legalType === 'decision' ? 'Decision' :
+                                                        doc.type === 'regulation' ? 'Regulation' : 'Implementing Regulation'}
+                                            </span>
                                         </div>
                                     </Link>
                                 ))}
