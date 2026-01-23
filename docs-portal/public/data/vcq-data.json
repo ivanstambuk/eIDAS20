@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-23T01:51:39.173Z",
+  "generatedAt": "2026-01-23T02:54:33.176Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -623,6 +623,110 @@
       "_sourceFile": "core.yaml"
     },
     {
+      "id": "VEND-CORE-015",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Register as a Relying Party indicating intermediary status",
+      "explanation": "Any entity acting as an intermediary must register as a Relying Party \naccording to Topic 27 requirements, while explicitly indicating its \nintent to act as an intermediary. This enables the intermediary to \nobtain an access certificate containing its own name and unique ID.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_01"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-016",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Register each intermediated RP at the appropriate Registrar",
+      "explanation": "The intermediary must register each RP it acts on behalf of at a \nRegistrar in the Member State where that RP is established. If the \nRegistrar issues registration certificates, the intermediary must \nobtain a certificate for each registered intended use.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_03"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-017",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Provide legal evidence of RP relationship when registering",
+      "explanation": "When registering an intermediated RP, the intermediary must provide \nlegally valid evidence (e.g., a contract) that the RP will use the \nintermediary's services. The Registrar must verify this evidence \nbefore registering the relationship.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_04"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-006"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-018",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Perform verification of attestations as agreed with RP",
+      "explanation": "The intermediary must verify the authenticity, revocation status, \ndevice binding, and user binding of PIDs and attestations received \nfrom wallet units, as well as wallet unit authenticity, according to \nwhat has been agreed with the Relying Party.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_09"
+      },
+      "applicability": [
+        "pif",
+        "vif"
+      ],
+      "isCore": true,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-TEC-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "core.yaml"
+    },
+    {
       "id": "VEND-ICT-001",
       "category": "governance",
       "categoryLabel": "Governance",
@@ -1148,6 +1252,82 @@
       "_sourceFile": "pif.yaml"
     },
     {
+      "id": "VEND-PIF-010",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Specify RP details in each presentation request to wallet",
+      "explanation": "When requesting attestations from a wallet, the PIF must include complete \ninformation about the intermediated RP: user-friendly name, unique identifier, \nRegistrar URL, intended use identifier, and description. This enables the \nwallet to display accurate RP information to the user.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_05"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-011",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Forward attributes only to the requesting RP after verification",
+      "explanation": "After receiving attestation data from a wallet and verifying it (or delegating \nverification to a VIF), the PIF must forward the attributes ONLY to the \nspecific RP on whose behalf the request was made. If verification fails, \nno attributes may be forwarded.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_08"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
+      "id": "VEND-PIF-012",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Delete attestation data immediately after forwarding to RP",
+      "explanation": "The PIF must completely delete all PIDs, attestations, and user attributes \nimmediately after sending them to the intermediated RP. If forwarding fails \nor is not performed (e.g., due to verification failure), deletion must still \noccur immediately after completing all necessary verifications.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_10"
+      },
+      "applicability": [
+        "pif"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "pif.yaml"
+    },
+    {
       "id": "VEND-VIF-001",
       "category": "technical",
       "categoryLabel": "Technical",
@@ -1471,7 +1651,10 @@
       "VEND-PIF-006",
       "VEND-PIF-007",
       "VEND-PIF-008",
-      "VEND-PIF-009"
+      "VEND-PIF-009",
+      "VEND-PIF-010",
+      "VEND-PIF-011",
+      "VEND-PIF-012"
     ],
     "vif": [
       "VEND-VIF-001",
@@ -1502,7 +1685,11 @@
       "VEND-CORE-011",
       "VEND-CORE-012",
       "VEND-CORE-013",
-      "VEND-CORE-014"
+      "VEND-CORE-014",
+      "VEND-CORE-015",
+      "VEND-CORE-016",
+      "VEND-CORE-017",
+      "VEND-CORE-018"
     ],
     "dora_ict": [
       "VEND-ICT-001",
@@ -1520,27 +1707,27 @@
     ]
   },
   "stats": {
-    "totalRequirements": 48,
+    "totalRequirements": 55,
     "byType": {
-      "core": 14,
-      "pif": 9,
+      "core": 18,
+      "pif": 12,
       "vif": 13,
       "dora_ict": 12
     },
     "byCategory": {
-      "governance": 11,
+      "governance": 15,
       "registration": 4,
       "security": 11,
-      "privacy": 4,
+      "privacy": 5,
       "transparency": 4,
+      "verification": 5,
       "certification": 2,
-      "technical": 6,
-      "verification": 4,
+      "technical": 7,
       "interoperability": 2
     },
     "byCriticality": {
-      "critical": 24,
-      "high": 18,
+      "critical": 29,
+      "high": 20,
       "medium": 6,
       "low": 0
     }

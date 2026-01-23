@@ -344,3 +344,83 @@ requirements:
       - vif
     deadline: "2027-11-21"
     criticality: high
+  
+  # ============================================================================
+  # ARF TOPIC 52 - Registration Requirements (Phase 6.5)
+  # ============================================================================
+  
+  - id: VEND-CORE-015
+    category: governance
+    requirement: "Register as a Relying Party indicating intermediary status"
+    explanation: |
+      Any entity acting as an intermediary must register as a Relying Party 
+      according to Topic 27 requirements, while explicitly indicating its 
+      intent to act as an intermediary. This enables the intermediary to 
+      obtain an access certificate containing its own name and unique ID.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_01"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-REG-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-016
+    category: governance
+    requirement: "Register each intermediated RP at the appropriate Registrar"
+    explanation: |
+      The intermediary must register each RP it acts on behalf of at a 
+      Registrar in the Member State where that RP is established. If the 
+      Registrar issues registration certificates, the intermediary must 
+      obtain a certificate for each registered intended use.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_03"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-REG-003
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-CORE-017
+    category: governance
+    requirement: "Provide legal evidence of RP relationship when registering"
+    explanation: |
+      When registering an intermediated RP, the intermediary must provide 
+      legally valid evidence (e.g., a contract) that the RP will use the 
+      intermediary's services. The Registrar must verify this evidence 
+      before registering the relationship.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_04"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-REG-006
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-CORE-018
+    category: verification
+    requirement: "Perform verification of attestations as agreed with RP"
+    explanation: |
+      The intermediary must verify the authenticity, revocation status, 
+      device binding, and user binding of PIDs and attestations received 
+      from wallet units, as well as wallet unit authenticity, according to 
+      what has been agreed with the Relying Party.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_09"
+    applicability:
+      - pif
+      - vif
+    linkedRCA:
+      - RP-TEC-003
+    deadline: "2027-11-21"
+    criticality: critical

@@ -179,3 +179,61 @@ requirements:
       - RP-PRV-003
     deadline: "2027-11-21"
     criticality: critical
+  
+  # ============================================================================
+  # ARF TOPIC 52 - Additional Requirements (Phase 6.5)
+  # ============================================================================
+  
+  - id: VEND-PIF-010
+    category: governance
+    requirement: "Specify RP details in each presentation request to wallet"
+    explanation: |
+      When requesting attestations from a wallet, the PIF must include complete 
+      information about the intermediated RP: user-friendly name, unique identifier, 
+      Registrar URL, intended use identifier, and description. This enables the 
+      wallet to display accurate RP information to the user.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_05"
+    applicability:
+      - pif
+    linkedRCA:
+      - RP-REG-003
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-PIF-011
+    category: technical
+    requirement: "Forward attributes only to the requesting RP after verification"
+    explanation: |
+      After receiving attestation data from a wallet and verifying it (or delegating 
+      verification to a VIF), the PIF must forward the attributes ONLY to the 
+      specific RP on whose behalf the request was made. If verification fails, 
+      no attributes may be forwarded.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_08"
+    applicability:
+      - pif
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-PIF-012
+    category: privacy
+    requirement: "Delete attestation data immediately after forwarding to RP"
+    explanation: |
+      The PIF must completely delete all PIDs, attestations, and user attributes 
+      immediately after sending them to the intermediated RP. If forwarding fails 
+      or is not performed (e.g., due to verification failure), deletion must still 
+      occur immediately after completing all necessary verifications.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_10"
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    applicability:
+      - pif
+    deadline: "2027-11-21"
+    criticality: critical

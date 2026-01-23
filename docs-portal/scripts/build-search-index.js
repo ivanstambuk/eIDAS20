@@ -1,8 +1,9 @@
 /**
  * Build-time script: Generate Orama search index
  * 
- * This script processes all regulation JSON files and creates a serialized
- * Orama search index that can be loaded at runtime for instant search.
+ * This script processes all regulation JSON files, terminology, and ARF HLRs
+ * and creates a serialized Orama search index that can be loaded at runtime 
+ * for instant search.
  * 
  * Usage: node scripts/build-search-index.js
  * 
@@ -22,6 +23,7 @@ const __dirname = dirname(__filename);
 const REGULATIONS_DIR = join(__dirname, '..', 'public', 'data', 'regulations');
 const INDEX_PATH = join(__dirname, '..', 'public', 'data', 'regulations-index.json');
 const TERMINOLOGY_PATH = join(__dirname, '..', 'public', 'data', 'terminology.json');
+const ARF_PATH = join(__dirname, '..', 'public', 'data', 'arf-hlr-data.json');
 const OUTPUT_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json');
 
 /**
@@ -236,6 +238,46 @@ function loadTerminology() {
 }
 
 /**
+ * Load ARF High-Level Requirements and create search documents
+ */
+function loadARFHLRs() {
+    console.log('\n📐 Loading ARF HLRs...');
+
+    try {
+        if (!existsSync(ARF_PATH)) {
+            console.warn('  ⚠️  ARF data not found, skipping. Run: npm run build:arf');
+            return [];
+        }
+
+        const arfData = JSON.parse(readFileSync(ARF_PATH, 'utf-8'));
+        const arfSections = [];
+
+        for (const req of arfData.requirements) {
+            // Skip empty requirements
+            if (req.isEmpty) continue;
+
+            arfSections.push({
+                id: `arf-${req.hlrId}`,
+                slug: 'arf',
+                type: 'arf-hlr',  // Special type for ARF requirements
+                term: req.hlrId,  // Searchable by HLR ID
+                docTitle: 'ARF High-Level Requirements',
+                section: `Topic ${req.topicNumber}`,
+                sectionTitle: `${req.hlrId} - ${req.topicTitle}`,
+                content: req.specification + (req.notes ? ` ${req.notes}` : ''),
+                sourceCount: 1,
+            });
+        }
+
+        console.log(`  📐 ${arfSections.length} ARF HLRs loaded`);
+        return arfSections;
+    } catch (err) {
+        console.warn('  ⚠️  Could not load ARF HLRs:', err.message);
+        return [];
+    }
+}
+
+/**
  * Build the Orama search index
  */
 async function buildIndex() {
@@ -265,6 +307,9 @@ async function buildIndex() {
     // Load terminology
     const termSections = loadTerminology();
 
+    // Load ARF HLRs
+    const arfSections = loadARFHLRs();
+
     // ════════════════════════════════════════════════════════════════════════════
     // VALIDATION: Fail if terminology is missing or empty
     // This catches cases where terminology.json exists but has 0 terms
@@ -279,8 +324,11 @@ async function buildIndex() {
     }
 
     // Combine all sections
-    const allSections = [...termSections, ...regulationSections];
-    console.log(`\n📊 Total sections: ${allSections.length} (${termSections.length} terms + ${regulationSections.length} articles}`);
+    const allSections = [...termSections, ...regulationSections, ...arfSections];
+    console.log(`\n📊 Total sections: ${allSections.length}`);
+    console.log(`   ✓ ${termSections.length} terms`);
+    console.log(`   ✓ ${regulationSections.length} regulation articles`);
+    console.log(`   ✓ ${arfSections.length} ARF HLRs`);
 
     // Insert documents into Orama
     console.log('\n⚡ Inserting into Orama...');
@@ -295,6 +343,7 @@ async function buildIndex() {
     const sizeKB = (readFileSync(OUTPUT_PATH).length / 1024).toFixed(1);
     console.log(`\n✅ Search index written: search-index.json (${sizeKB} KB)`);
     console.log(`   ✓ Includes ${termSections.length} terminology definitions (boosted 10x)`);
+    console.log(`   ✓ Includes ${arfSections.length} ARF HLRs`);
 
     return db;
 }
