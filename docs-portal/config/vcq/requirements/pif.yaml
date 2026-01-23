@@ -24,7 +24,7 @@ requirements:
       ultimate Relying Party on whose behalf the PIF is acting. This ensures 
       informed consent.
     arfReference:
-      topic: "Topic 45"
+      topic: "Topic 52"
       hlr: "RPI_07"
     legalText: |
       When an intermediary requests attestations from a wallet unit, the wallet 
@@ -43,8 +43,8 @@ requirements:
       when forwarding to wallets. Only the attributes registered by the RP may 
       be requested.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_11"
+      topic: "Topic 52"
+      hlr: "RPI_06"
     applicability:
       - pif
     linkedRCA:
@@ -64,8 +64,8 @@ requirements:
       without adding, removing, or modifying the requested attributes. The 
       request must match what the RP registered with supervisory authorities.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_11"
+      topic: "Topic 52"
+      hlr: "RPI_06"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -79,8 +79,8 @@ requirements:
       without altering, extracting, or processing the credential data. The 
       presentation integrity must be preserved.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_13"
+      topic: "Topic 52"
+      hlr: "RPI_08"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -120,8 +120,8 @@ requirements:
       forwarding wallet presentations to the RP. Transport layer security 
       (TLS 1.3 or equivalent) is required.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_13"
+      topic: "Topic 52"
+      hlr: "RPI_08"
     applicability:
       - pif
     deadline: "2027-11-21"
@@ -135,8 +135,8 @@ requirements:
       previously received wallet presentations. Nonce-based challenge-response 
       and session binding are typical approaches.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_14"
+      topic: "Topic 52"
+      hlr: "RPI_09"
     applicability:
       - pif
     deadline: "2027-11-21"

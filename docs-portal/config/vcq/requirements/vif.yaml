@@ -94,7 +94,7 @@ requirements:
       status of the attestation. This may involve checking validity status lists, 
       OCSP responses, or other revocation mechanisms as specified by the issuer.
     arfReference:
-      topic: "Topic 8"
+      topic: "Topic 7"
       hlr: "VCR_13"
     applicability:
       - vif
@@ -159,8 +159,8 @@ requirements:
       tampering. The RP must be able to trust that the VIF's verification 
       outcome is authentic and unmodified.
     arfReference:
-      topic: "Topic 45"
-      hlr: "RPI_15"
+      topic: "Topic 52"
+      hlr: "RPI_08"
     applicability:
       - vif
     deadline: "2027-11-21"

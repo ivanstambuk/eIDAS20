@@ -109,7 +109,7 @@ requirements:
       all wallet providers and relying parties in a clearly identifiable and 
       machine-readable way.
     arfReference:
-      topic: "Topic 45"
+      topic: "Topic 52"
       hlr: "Reg_23"
     applicability:
       - pif
@@ -131,7 +131,7 @@ requirements:
       article: "Article 8"
       paragraph: "1"
     arfReference:
-      topic: "Topic 45"
+      topic: "Topic 52"
       hlr: "RPI_02"
     applicability:
       - pif
@@ -270,7 +270,7 @@ requirements:
       wallet users can see both their own identity and the identity of the 
       RP on whose behalf they are acting. This enables informed consent.
     arfReference:
-      topic: "Topic 45"
+      topic: "Topic 52"
       hlr: "RPI_07"
     applicability:
       - pif

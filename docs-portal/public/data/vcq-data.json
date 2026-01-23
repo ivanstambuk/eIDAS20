@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-22T08:17:48.922Z",
+  "generatedAt": "2026-01-23T01:51:39.173Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -339,7 +339,7 @@
       "legalBasisLink": "/regulation/2014-910#article-5b",
       "legalText": "Member States shall publish the lists and shall make them available to \nall wallet providers and relying parties in a clearly identifiable and \nmachine-readable way.",
       "arfReference": {
-        "topic": "Topic 45",
+        "topic": "Topic 52",
         "hlr": "Reg_23"
       },
       "applicability": [
@@ -370,7 +370,7 @@
       },
       "legalBasisLink": "/regulation/2025-848#article-8",
       "arfReference": {
-        "topic": "Topic 45",
+        "topic": "Topic 52",
         "hlr": "RPI_02"
       },
       "applicability": [
@@ -528,7 +528,7 @@
       "explanation": "When requesting data from wallets, the intermediary must ensure that \nwallet users can see both their own identity and the identity of the \nRP on whose behalf they are acting. This enables informed consent.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
+        "topic": "Topic 52",
         "hlr": "RPI_07"
       },
       "applicability": [
@@ -939,7 +939,7 @@
       "legalBasisLink": null,
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
-        "topic": "Topic 45",
+        "topic": "Topic 52",
         "hlr": "RPI_07"
       },
       "applicability": [
@@ -962,8 +962,8 @@
       "explanation": "The PIF must not modify, expand, or alter the RP's registered data request \nwhen forwarding to wallets. Only the attributes registered by the RP may \nbe requested.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_11"
+        "topic": "Topic 52",
+        "hlr": "RPI_06"
       },
       "applicability": [
         "pif"
@@ -987,8 +987,8 @@
       "explanation": "The PIF must accurately relay the RP's attribute request to the wallet \nwithout adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_11"
+        "topic": "Topic 52",
+        "hlr": "RPI_06"
       },
       "applicability": [
         "pif"
@@ -1010,8 +1010,8 @@
       "explanation": "The PIF must relay the wallet's presentation to the RP exactly as received, \nwithout altering, extracting, or processing the credential data. The \npresentation integrity must be preserved.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_13"
+        "topic": "Topic 52",
+        "hlr": "RPI_08"
       },
       "applicability": [
         "pif"
@@ -1060,8 +1060,8 @@
       "explanation": "The PIF must establish and maintain a secure, encrypted channel when \nforwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_13"
+        "topic": "Topic 52",
+        "hlr": "RPI_08"
       },
       "applicability": [
         "pif"
@@ -1083,8 +1083,8 @@
       "explanation": "The PIF must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_14"
+        "topic": "Topic 52",
+        "hlr": "RPI_09"
       },
       "applicability": [
         "pif"
@@ -1255,7 +1255,7 @@
       "explanation": "Before accepting a presentation as valid, the VIF must check the revocation \nstatus of the attestation. This may involve checking validity status lists, \nOCSP responses, or other revocation mechanisms as specified by the issuer.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 8",
+        "topic": "Topic 7",
         "hlr": "VCR_13"
       },
       "applicability": [
@@ -1348,8 +1348,8 @@
       "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the VIF's verification \noutcome is authentic and unmodified.",
       "legalBasisLink": null,
       "arfReference": {
-        "topic": "Topic 45",
-        "hlr": "RPI_15"
+        "topic": "Topic 52",
+        "hlr": "RPI_08"
       },
       "applicability": [
         "vif"

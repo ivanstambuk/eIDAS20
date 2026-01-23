@@ -1,0 +1,65 @@
+# ARF Data Import Configuration
+# 
+# This file configures how we import the Architecture and Reference Framework
+# High-Level Requirements (HLRs) from the official EU Digital Identity Wallet
+# GitHub repository.
+#
+# Schema Version: 1
+# Created: 2026-01-23
+# Decision: DEC-223
+
+schemaVersion: 1
+
+# Data source configuration
+source:
+  # Machine-readable CSV (semicolon-delimited, UTF-8 with BOM)
+  csvUrl: "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/refs/heads/main/hltr/high-level-requirements.csv"
+  
+  # Base URL for human-readable links
+  baseUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2"
+  
+  # Preferred document for deep linking (organized by topic)
+  byTopicDoc: "annex-2.02-high-level-requirements-by-topic.md"
+
+# Topics relevant to VCQ and RCA tools
+# Only HLRs from these topics will be imported (set to null to import all)
+relevantTopics:
+  - 1   # Accessing Online Services with a Wallet Unit (OIA_*)
+  - 6   # Relying Party Authentication and User Approval (RPA_*)
+  - 7   # Attestation revocation and revocation checking (VCR_*)
+  - 14  # Validity, Authenticity and Revocation Checks (VAL_*)
+  - 27  # Registration of Providers and Relying Parties (Reg_*)
+  - 44  # Registration Certificates (RPRC_*)
+  - 52  # Relying Party Intermediaries (RPI_*) - PRIMARY for VCQ
+
+# Actor categories to include (set to null to include all)
+# Note: Filtering by topics is usually sufficient
+relevantActors: null
+
+# Legacy topic mapping (ARF renamed some topics)
+# Maps old topic references to current topic numbers
+topicMapping:
+  "Topic 45": 52  # RP Intermediaries was renumbered
+
+# Topic anchor slugs for deep linking
+# These are the HTML anchors in annex-2.02-high-level-requirements-by-topic.md
+topicAnchors:
+  1: "a231-topic-1---accessing-online-services-with-a-wallet-unit"
+  6: "a234-topic-6---relying-party-authentication-and-user-approval"
+  7: "a235-topic-7---attestation-revocation-and-revocation-checking"
+  14: "a239-topic-14---validity-authenticity-and-revocation-checks"
+  27: "a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
+  44: "a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
+  52: "a2330-topic-52-relying-party-intermediaries"
+
+# Output configuration
+output:
+  file: "public/data/arf-hlr-data.json"
+  
+# Import settings
+settings:
+  # Include HLRs marked as "Empty" in the output
+  includeEmpty: true
+  
+  # Generate searchText field for full-text search
+  generateSearchText: true

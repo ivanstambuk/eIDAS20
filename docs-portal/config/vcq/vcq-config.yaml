@@ -30,7 +30,7 @@ intermediaryTypes:
     icon: "📨"
     prefix: "VEND-PIF"
     arfTopics:
-      - "Topic 45: RP Intermediaries"
+      - "Topic 52: RP Intermediaries"
     keyCharacteristics:
       - "Receives and forwards wallet presentations"
       - "Displays both own and RP identity to wallet users"
@@ -47,7 +47,7 @@ intermediaryTypes:
     icon: "🔐"
     prefix: "VEND-VIF"
     arfTopics:
-      - "Topic 45: RP Intermediaries"
+      - "Topic 52: RP Intermediaries"
       - "Topic 6: RP Authentication"
     keyCharacteristics:
       - "Performs cryptographic signature validation"
