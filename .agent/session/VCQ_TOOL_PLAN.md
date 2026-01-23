@@ -483,7 +483,7 @@ These sources are not imported but should be referenced:
 
 ## 12. Open Questions
 
-1. **ARF Integration:** Should we import ARF high-level requirements into a searchable format, or link externally?
+1. ~~**ARF Integration:** Should we import ARF high-level requirements into a searchable format, or link externally?~~ ✅ **ANSWERED (Phase 6):** Imported 143 HLRs, added to search, deep linking implemented.
 
 2. **Vendor Response Tracking:** Future feature - allow RPs to track vendor responses to questionnaire?
 
@@ -513,17 +513,18 @@ These sources are not imported but should be referenced:
 
 ## 15. Implementation Summary
 
-**Completed:** 2026-01-22
+**Completed:** 2026-01-22 (Initial), 2026-01-23 (Phase 6 ARF)
 
 | Metric | Value |
 |--------|-------|
-| Total Requirements | 48 |
-| Core (both PIF & VIF) | 14 |
-| PIF-specific | 9 |
+| Total Requirements | 55 |
+| Core (both PIF & VIF) | 18 |
+| PIF-specific | 12 |
 | VIF-specific | 13 |
 | DORA ICT Extended | 12 |
-| Critical Criticality | 24 |
-| High Criticality | 18 |
+| Critical Criticality | 29 |
+| High Criticality | 20 |
+| ARF HLRs Indexed | 129 |
 
 **Files Created:**
 - `config/vcq/vcq-config.yaml`
@@ -913,13 +914,53 @@ function validateARFReferences(requirements, arfData) {
 
 ---
 
-## 17. Appendix: ARF Topic Reference
+## 17. Phase 6 Backlog (Deferred Items)
+
+**Created:** 2026-01-23
+
+The following items were identified during Phase 6 implementation but deferred:
+
+### 17.1 Validation Enhancements
+
+| Task | Priority | Description |
+|------|----------|-------------|
+| **ARF reference validation in validate-vcq.js** | Medium | Load `arf-hlr-data.json` and check each `arfReference.hlr` exists. Report invalid/missing HLRs with suggestions. |
+| **Empty HLR warning** | Low | Flag requirements that reference HLRs marked as "Empty" in ARF (e.g., RPI_02, Reg_23) |
+| **CI validation** | Low | Add step to CI to verify `arf-hlr-data.json` exists and is valid |
+
+### 17.2 Maintenance & Sync
+
+| Task | Priority | Description |
+|------|----------|-------------|
+| **Weekly ARF sync GitHub Action** | Low | Workflow that checks for ARF CSV updates and creates PR if changes detected |
+| **ARF diff script** | Low | Compare local vs remote ARF, output changes report |
+| **ARF version in footer** | Low | Display ARF commit hash or version in portal footer |
+
+### 17.3 UI/UX Polish
+
+| Task | Priority | Description |
+|------|----------|-------------|
+| **ARF popover testing** | Medium | Browser test showed popover may not be rendering. Requires manual verification. |
+| **Search result styling for ARF HLRs** | Low | Different card style for ARF search results vs regulations/terminology |
+
+### 17.4 Coverage Extensions
+
+| Task | Priority | Description |
+|------|----------|-------------|
+| **Topic 14 (VAL_*) VCQ requirements** | Low | Currently imported but no VCQ requirements use VAL_* HLRs yet |
+| **RPI_06 integration** | Low | "Include access cert + registration cert" - may warrant a VCQ requirement |
+| **RPI_07a integration** | Low | "Wallet verify contractual relationship" - may warrant a VCQ requirement |
+
+---
+
+## 18. Appendix: ARF Topic Reference
 
 | Topic # | Title | VCQ Relevance |
 |---------|-------|---------------|
 | 1 | Accessing Online Services with a Wallet Unit | OIA_* requirements |
 | 6 | Relying Party Authentication and User Approval | RPA_* requirements |
-| 14 | Validity, Authenticity and Revocation Checks | VCR_* requirements |
+| 7 | Attestation revocation and revocation checking | VCR_* requirements |
+| 14 | Validity, Authenticity and Revocation Checks | VAL_* (imported, not used) |
 | 27 | Registration of Providers and Relying Parties | Reg_* requirements |
 | 44 | Registration Certificates | RPRC_* requirements |
 | **52** | **Relying Party Intermediaries** | **RPI_* requirements (PRIMARY)** |
@@ -927,5 +968,4 @@ function validateARFReferences(requirements, arfData) {
 
 ---
 
-*Phase 6 design added 2026-01-23.*
-
+*Phase 6 completed 2026-01-23. Backlog updated same date.*
