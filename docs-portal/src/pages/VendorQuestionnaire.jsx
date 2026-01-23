@@ -218,8 +218,8 @@ function ARFReferenceLink({ arfReference }) {
     const { topic, hlr } = arfReference;
 
     // The ARF is structured with topics in the main README and annex documents
-    // Topic 45 (RP Intermediaries) is in Annex 2: High-Level Requirements
-    const arfUrl = `${ARF_GITHUB_BASE}/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md`;
+    // annex-2.02 contains requirements organized by topic (Topic 45 = RP Intermediaries)
+    const arfUrl = `${ARF_GITHUB_BASE}/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md`;
 
     return (
         <a
