@@ -1012,3 +1012,26 @@
         overflow-x: auto;
     }
 }
+
+/* ============================================================================
+   Print Styles (PDF Export)
+   ============================================================================ */
+
+/* Hide print container from normal view */
+#vcq-print-container {
+    display: none;
+}
+
+@media print {
+
+    /* Hide the main app when printing */
+    #root {
+        display: none !important;
+    }
+
+    /* Make sure the print container is visible and properly positioned */
+    #vcq-print-container {
+        display: block !important;
+        position: static !important;
+    }
+}

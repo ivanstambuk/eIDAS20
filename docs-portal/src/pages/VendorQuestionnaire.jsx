@@ -740,6 +740,252 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSources, da
         URL.revokeObjectURL(url);
     };
 
+    const handleExportPDF = () => {
+        const typeLabels = selectedTypes.map(id =>
+            data.intermediaryTypes.find(t => t.id === id)?.label || id
+        ).join(', ');
+
+        // Group requirements by category
+        const grouped = {};
+        requirements.forEach(req => {
+            if (!grouped[req.category]) grouped[req.category] = [];
+            grouped[req.category].push(req);
+        });
+
+        // Create print content
+        const printContent = document.createElement('div');
+        printContent.id = 'vcq-print-container';
+        printContent.innerHTML = `
+            <style>
+                @media print {
+                    body * { visibility: hidden; }
+                    #vcq-print-container, #vcq-print-container * { visibility: visible; }
+                    #vcq-print-container {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                        font-size: 11pt;
+                        line-height: 1.4;
+                        color: #1a1a1a;
+                    }
+                }
+                #vcq-print-container {
+                    padding: 20px;
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                .vcq-pdf-header {
+                    text-align: center;
+                    margin-bottom: 24px;
+                    padding-bottom: 16px;
+                    border-bottom: 2px solid #00c8c8;
+                }
+                .vcq-pdf-title {
+                    font-size: 24pt;
+                    font-weight: 700;
+                    color: #0a2a3a;
+                    margin: 0 0 8px 0;
+                }
+                .vcq-pdf-subtitle {
+                    font-size: 10pt;
+                    color: #666;
+                }
+                .vcq-pdf-meta {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 12px;
+                    margin-bottom: 24px;
+                    padding: 16px;
+                    background: #f8fafc;
+                    border-radius: 8px;
+                }
+                .vcq-pdf-meta-item {
+                    font-size: 10pt;
+                }
+                .vcq-pdf-meta-label {
+                    font-weight: 600;
+                    color: #374151;
+                }
+                .vcq-pdf-meta-value {
+                    color: #1f2937;
+                }
+                .vcq-pdf-category {
+                    margin-bottom: 20px;
+                    page-break-inside: avoid;
+                }
+                .vcq-pdf-category-title {
+                    font-size: 14pt;
+                    font-weight: 600;
+                    color: #0a2a3a;
+                    margin: 0 0 12px 0;
+                    padding: 8px 12px;
+                    background: linear-gradient(90deg, #e0f7fa, #ffffff);
+                    border-left: 4px solid #00c8c8;
+                }
+                .vcq-pdf-req {
+                    margin-bottom: 16px;
+                    padding: 12px;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 6px;
+                    page-break-inside: avoid;
+                }
+                .vcq-pdf-req-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                }
+                .vcq-pdf-req-id {
+                    font-family: 'Consolas', 'Monaco', monospace;
+                    font-size: 10pt;
+                    color: #00a8a8;
+                    font-weight: 600;
+                }
+                .vcq-pdf-criticality {
+                    font-size: 9pt;
+                    font-weight: 500;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                }
+                .vcq-pdf-criticality.critical {
+                    background: #fee2e2;
+                    color: #dc2626;
+                }
+                .vcq-pdf-criticality.high {
+                    background: #fef3c7;
+                    color: #d97706;
+                }
+                .vcq-pdf-criticality.medium {
+                    background: #dbeafe;
+                    color: #2563eb;
+                }
+                .vcq-pdf-criticality.low {
+                    background: #dcfce7;
+                    color: #16a34a;
+                }
+                .vcq-pdf-req-text {
+                    font-size: 11pt;
+                    color: #1f2937;
+                    margin-bottom: 8px;
+                }
+                .vcq-pdf-req-details {
+                    font-size: 9pt;
+                    color: #6b7280;
+                }
+                .vcq-pdf-legal {
+                    font-size: 9pt;
+                    color: #4b5563;
+                    font-style: italic;
+                }
+                .vcq-pdf-response {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-top: 8px;
+                    padding-top: 8px;
+                    border-top: 1px dashed #e5e7eb;
+                }
+                .vcq-pdf-response-label {
+                    font-size: 9pt;
+                    font-weight: 600;
+                    color: #374151;
+                }
+                .vcq-pdf-response-value {
+                    font-size: 10pt;
+                    font-weight: 500;
+                }
+                .vcq-pdf-response-value.yes { color: #16a34a; }
+                .vcq-pdf-response-value.no { color: #dc2626; }
+                .vcq-pdf-response-value.partial { color: #d97706; }
+                .vcq-pdf-response-value.na { color: #6b7280; }
+                .vcq-pdf-response-value.pending { color: #9ca3af; }
+                .vcq-pdf-footer {
+                    margin-top: 24px;
+                    padding-top: 16px;
+                    border-top: 1px solid #e5e7eb;
+                    font-size: 9pt;
+                    color: #9ca3af;
+                    text-align: center;
+                }
+            </style>
+            <div class="vcq-pdf-header">
+                <h1 class="vcq-pdf-title">📋 Vendor Compliance Questionnaire</h1>
+                <p class="vcq-pdf-subtitle">EUDIW Intermediary Assessment</p>
+            </div>
+            <div class="vcq-pdf-meta">
+                <div class="vcq-pdf-meta-item">
+                    <span class="vcq-pdf-meta-label">Generated:</span>
+                    <span class="vcq-pdf-meta-value">${new Date().toLocaleDateString('en-GB', {
+            day: 'numeric', month: 'long', year: 'numeric'
+        })}</span>
+                </div>
+                <div class="vcq-pdf-meta-item">
+                    <span class="vcq-pdf-meta-label">Total Requirements:</span>
+                    <span class="vcq-pdf-meta-value">${requirements.length}</span>
+                </div>
+                <div class="vcq-pdf-meta-item">
+                    <span class="vcq-pdf-meta-label">Intermediary Type(s):</span>
+                    <span class="vcq-pdf-meta-value">${typeLabels}</span>
+                </div>
+                <div class="vcq-pdf-meta-item">
+                    <span class="vcq-pdf-meta-label">Regulatory Sources:</span>
+                    <span class="vcq-pdf-meta-value">${selectedSources.join(', ')}</span>
+                </div>
+            </div>
+            ${data.categories.map(cat => {
+            const reqs = grouped[cat.id];
+            if (!reqs || reqs.length === 0) return '';
+            return `
+                    <div class="vcq-pdf-category">
+                        <h2 class="vcq-pdf-category-title">${cat.icon} ${cat.label} (${reqs.length})</h2>
+                        ${reqs.map(req => {
+                const answer = answers[req.id]?.value || 'pending';
+                const answerDisplay = {
+                    yes: '✅ Yes',
+                    no: '❌ No',
+                    partial: '⚠️ Partial',
+                    na: '➖ N/A',
+                    pending: '⏳ Pending'
+                }[answer] || answer;
+                return `
+                                <div class="vcq-pdf-req">
+                                    <div class="vcq-pdf-req-header">
+                                        <span class="vcq-pdf-req-id">${req.id}</span>
+                                        <span class="vcq-pdf-criticality ${req.criticality}">${req.criticality.charAt(0).toUpperCase() + req.criticality.slice(1)}</span>
+                                    </div>
+                                    <p class="vcq-pdf-req-text">${req.requirement}</p>
+                                    ${req.explanation ? `<p class="vcq-pdf-req-details">${req.explanation}</p>` : ''}
+                                    <p class="vcq-pdf-legal">Legal Basis: ${req.legalBasis?.article || 'N/A'} (${req.legalBasis?.regulation || 'N/A'})</p>
+                                    <div class="vcq-pdf-response">
+                                        <span class="vcq-pdf-response-label">Response:</span>
+                                        <span class="vcq-pdf-response-value ${answer}">${answerDisplay}</span>
+                                    </div>
+                                </div>
+                            `;
+            }).join('')}
+                    </div>
+                `;
+        }).join('')}
+            <div class="vcq-pdf-footer">
+                Generated by eIDAS 2.0 Documentation Portal — Vendor Compliance Questionnaire Tool
+            </div>
+        `;
+
+        // Add to document and print
+        document.body.appendChild(printContent);
+
+        // Small delay to ensure styles are applied
+        setTimeout(() => {
+            window.print();
+            // Clean up after print dialog closes
+            setTimeout(() => {
+                document.body.removeChild(printContent);
+            }, 1000);
+        }, 100);
+    };
+
     return (
         <div className="vcq-export-panel">
             <h3>📥 Export Questionnaire</h3>
@@ -751,7 +997,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSources, da
                     </svg>
                     Export as Markdown
                 </button>
-                <button className="vcq-export-btn" disabled title="Coming soon">
+                <button className="vcq-export-btn" onClick={handleExportPDF}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                         <polyline points="14,2 14,8 20,8" />

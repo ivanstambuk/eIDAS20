@@ -439,11 +439,11 @@ notes?: string                # Optional implementation notes
 - [x] DORA selection auto-includes ICT third-party requirements (+12)
 - [x] Dynamic requirement counting based on source selection
 
-### Phase 4: Output Views ✅ COMPLETE (PDF pending)
+### Phase 4: Output Views ✅ COMPLETE
 - [x] Implement Summary View (View A) - Dashboard cards with criticality breakdown & category progress
 - [x] Implement view toggle (Overview/Details buttons)
 - [x] Implement Export functionality (View C)
-- [ ] PDF generation - placeholder added, functionality pending
+- [x] PDF generation - browser print-to-PDF with custom styling
 - [x] Markdown export - functional
 
 ### Phase 5: Polish ⏳ PARTIAL
@@ -453,7 +453,7 @@ notes?: string                # Optional implementation notes
 - [x] View persistence (localStorage saves Overview/Details preference)
 - [x] Snippets extracted to `.agent/snippets/vcq-patterns.md`
 - [x] Terminology updated (VCQ, PIF, VIF, ICT Third-Party)
-- [ ] PDF generation (placeholder exists)
+- [x] PDF generation (browser print-to-PDF)
 
 ---
 

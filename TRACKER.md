@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-22 20:00 CET |
-| **Version** | V3.7.55 |
+| **Last Updated** | 2026-01-23 02:20 CET |
+| **Version** | V3.7.56 |
 | **Portal Stats** | 41 docs, 377K words, 268 terms (23 aliases), 470 RCA reqs, 35 VCQ reqs |
-| **Next Action** | Ready — VCQ Phases 1-4 complete |
+| **Next Action** | VCQ Phase 5: ARF external links |
 
 ---
 
@@ -27,6 +27,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-23 02:20 | Feat: VCQ PDF export — browser print-to-PDF with styled document template |
 | 2026-01-22 20:00 | Feat: VCQ Summary View (View A) — Dashboard with criticality breakdown, category cards, view toggle |
 | 2026-01-22 19:00 | Refactor: VCQ simplified to 2-step UI — removed Extended Scope step, DORA auto-includes ICT reqs |
 | 2026-01-22 09:30 | Feat: VCQ Source Selection + RCA linkage display in requirements table |
