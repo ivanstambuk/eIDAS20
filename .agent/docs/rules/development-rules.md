@@ -588,3 +588,70 @@ if (parts && parts.length > 0) {  // ← Correct condition
 - Any text node where the ENTIRE content matches a term
 
 **Why it's subtle:** In most cases, terms appear within sentences, so splitting produces multiple parts (text + term + text). The bug only manifests when terms are standalone.
+
+---
+
+## 27. Implementation Plans MUST Include Commit Checkpoints (MANDATORY)
+
+**All implementation plans created in `.agent/session/*_PLAN.md` MUST include explicit 🔒 COMMIT tasks at the end of each phase.**
+
+### Required Structure
+
+```markdown
+## Phase 1: [Phase Name]
+- [ ] Task 1.1
+- [ ] Task 1.2
+- [ ] Task 1.3
+- [ ] 🔒 COMMIT: "feat: brief description of phase deliverable"
+
+## Phase 2: [Phase Name]
+- [ ] Task 2.1
+- [ ] Task 2.2
+- [ ] 🔒 COMMIT: "feat: brief description"
+```
+
+### Commit Message Format
+
+Use conventional commits:
+- `feat: ...` — New feature
+- `fix: ...` — Bug fix
+- `refactor: ...` — Code restructure without behavior change
+- `docs: ...` — Documentation only
+- `chore: ...` — Build, tooling, config changes
+
+### Rationale
+
+This prevents the anti-pattern of:
+1. Implementing 5+ features in one continuous flow
+2. Finishing all work, then realizing 30+ files are modified
+3. Creating a single monolithic commit that's hard to review or revert
+
+### Enforcement
+
+When starting implementation from a plan:
+1. Check that each phase has a 🔒 COMMIT task
+2. If missing, add them before starting
+3. Execute the commit immediately after completing each phase
+
+### Example from This Session (What Went Wrong)
+
+```markdown
+## REQUIREMENTS_BROWSER_PLAN.md (INCORRECT — missing commits)
+- [ ] Phase 1: Data Pipeline
+- [ ] Phase 2: Core Components
+- [ ] Phase 3: Filtering
+- [ ] Phase 4: Detail View
+- [ ] Phase 5: Polish
+
+## CORRECT version:
+- [ ] Phase 1: Data Pipeline
+- [ ] 🔒 COMMIT: "feat: add ARF HLR import pipeline"
+- [ ] Phase 2: Core Components
+- [ ] 🔒 COMMIT: "feat: add requirements browser page scaffold"
+- [ ] Phase 3: Filtering
+- [ ] 🔒 COMMIT: "feat: add multi-dimensional filtering"
+...
+```
+
+**Result**: ~30 files were batched into one commit instead of 5 logical commits.
+

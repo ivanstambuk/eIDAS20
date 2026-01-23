@@ -155,7 +155,42 @@ Then wait for the user's instructions.
 
 ## Key Rules Summary
 
-- **Auto-commit:** Commit IMMEDIATELY after each working increment
+### 🔴 MANDATORY: Incremental Commits
+
+**Commit IMMEDIATELY after ANY of these triggers:**
+- ✅ New file created and working
+- ✅ Feature tested and confirmed working (via browser or terminal)
+- ✅ Bug fixed and verified
+- ✅ User confirms something works ("looks good", "continue", etc.)
+- ✅ Before switching to a different task/feature
+- ✅ At the end of each implementation plan phase
+
+**Commit command:**
+```bash
+git add -A && git commit -m "feat/fix/chore: description"
+```
+
+**DO NOT** batch 30+ files into one commit. If you find yourself with >10 unstaged files, you've waited too long.
+
+### 📋 Implementation Plans MUST Include Commit Checkpoints
+
+When creating `.agent/session/*_PLAN.md` files, include explicit `🔒 COMMIT` tasks:
+
+```markdown
+## Phase 1: Data Pipeline
+- [ ] Create import script
+- [ ] Parse CSV data
+- [ ] Generate JSON output
+- [ ] 🔒 COMMIT: "feat: add data import pipeline"
+
+## Phase 2: Core Components  
+- [ ] Create main page component
+- [ ] Add route to App.jsx
+- [ ] Test rendering
+- [ ] 🔒 COMMIT: "feat: add page scaffold"
+```
+
+### Other Rules
 - **Update TRACKER.md:** Keep progress summary current
 - **Browser testing:** Use /browser-testing workflow for visual validation
 - **Formex converter:** Use /formex-converter workflow for XML→MD changes
