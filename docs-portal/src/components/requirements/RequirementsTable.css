@@ -1,0 +1,206 @@
+/**
+ * Requirements Table Styles
+ */
+
+.requirements-table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: var(--bg-primary, white);
+}
+
+.requirements-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+/* Headers */
+.requirements-table thead {
+    background: var(--bg-secondary, #f9fafb);
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.requirements-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.requirements-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease;
+}
+
+.requirements-table th.sortable:hover {
+    color: var(--primary-color, #3b82f6);
+}
+
+.requirements-table th.sorted {
+    color: var(--primary-color, #3b82f6);
+}
+
+.sort-indicator {
+    font-size: 0.875rem;
+}
+
+/* Rows */
+.requirements-table tbody tr {
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.requirements-table tbody tr:hover {
+    background: var(--bg-hover, #f3f4f6);
+}
+
+.requirements-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.requirements-table td {
+    padding: 1rem;
+    vertical-align: top;
+}
+
+/* Cell: ID */
+.cell-id code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.8rem;
+    background: var(--bg-secondary, #f3f4f6);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: var(--primary-color, #3b82f6);
+}
+
+/* Cell: Source */
+.source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    background: color-mix(in srgb, var(--source-color, #6b7280) 10%, transparent);
+    color: var(--source-color, #6b7280);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Cell: Requirement */
+.cell-requirement {
+    max-width: 400px;
+    color: var(--text-primary, #374151);
+    line-height: 1.5;
+}
+
+/* Cell: Roles */
+.role-badges {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--bg-secondary, #f3f4f6);
+    border-radius: 50%;
+    font-size: 0.875rem;
+}
+
+.role-badge.more {
+    width: auto;
+    padding: 0 0.5rem;
+    border-radius: 14px;
+    font-size: 0.625rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+/* Cell: Compliance */
+.compliance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.compliance-badge.mandatory {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.compliance-badge.recommended {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.compliance-badge.optional {
+    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+/* Cell: Criticality */
+.criticality-badge {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: white;
+    text-transform: capitalize;
+}
+
+/* Empty State */
+.requirements-table-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary, #6b7280);
+    background: var(--bg-secondary, #f9fafb);
+    border-radius: 12px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .requirements-table-container {
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-hover: #1f2937;
+        --border-color: #374151;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+    }
+
+    .cell-id code {
+        background: #374151;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .requirements-table th:nth-child(4),
+    .requirements-table td:nth-child(4),
+    .requirements-table th:nth-child(5),
+    .requirements-table td:nth-child(5) {
+        display: none;
+    }
+
+    .cell-requirement {
+        max-width: 200px;
+    }
+}

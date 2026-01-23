@@ -1,0 +1,956 @@
+schemaVersion: 3
+requirements:
+  - id: EAA-CRT-001
+    category: certification
+    requirement: Use qualified certificate with authentic source indication
+    explanation: |
+      The qualified certificate supporting the electronic signature or seal must
+      contain specific certified attributes indicating the issuing body is established
+      under Union or national law as responsible for the authentic source, provide
+      data representing the authentic source, and identify the relevant law.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: 1(b)
+    legalText: |
+      The qualified certificate supporting the qualified electronic signature or
+      qualified electronic seal of the public sector body... containing a specific
+      set of certified attributes in a form suitable for automated processing and:
+      (i) indicating that the issuing body is established in accordance with Union
+      or national law as the responsible for the authentic source...
+      (ii) providing a set of data unambiguously representing the authentic source...
+      (iii) identifying the Union or national law referred to in point (i).
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-CRT-002
+    category: certification
+    requirement: Meet QTSP-equivalent reliability and trustworthiness
+    explanation: |
+      Public sector bodies issuing electronic attestations of attributes must
+      meet a level of reliability and trustworthiness equivalent to qualified
+      trust service providers as defined in Article 24 of the regulation.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: "2"
+    legalText: |
+      The Member State where public sector bodies... are established shall ensure
+      that the public sector bodies that issue electronic attestations of attributes
+      meet a level of reliability and trustworthiness equivalent to qualified trust
+      service providers in accordance with Article 24.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-CRT-003
+    category: certification
+    requirement: Be notified by Member State with conformity assessment
+    explanation: |
+      Public sector bodies must be notified to the Commission by their Member State,
+      including a conformity assessment report from a conformity assessment body
+      confirming compliance with Article 45f requirements.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: "3"
+    legalText: |
+      Member States shall notify public sector bodies... to the Commission. That
+      notification shall include a conformity assessment report issued by a
+      conformity assessment body confirming that the requirements set out in
+      paragraphs 1, 2 and 6 of this Article are met.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-CRT-004
+    category: certification
+    requirement: Comply with ETSI EN 319 401 standard
+    explanation: |
+      Providers of qualified electronic attestations of attributes and public
+      sector body attestation providers must issue their attestations according
+      to the specifications for trust service providers established in standard
+      ETSI EN 319 401 v3.1.1 (2024-06).
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex I
+    legalText: |
+      Providers of qualified electronic attestations of attributes and providers
+      of electronic attestation of attributes issued by or on behalf of a public
+      sector body responsible for an authentic source shall issue their attestations
+      to natural or legal persons according to the specifications for trust service
+      providers established in standard ETSI EN 319 401 v3.1.1 (2024-06).
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-GOV-001
+    category: governance
+    requirement: Implement QEAA services functionally separate from other services
+    explanation: |
+      Providers of qualified electronic attestation of attributes services must
+      implement these services in a manner that is functionally separate from
+      other services they provide. This ensures operational isolation of the
+      trust service.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45h
+      paragraph: "3"
+    legalText: |
+      Providers of qualified electronic attestation of attributes' services shall
+      implement the provision of such qualified trust services in a manner that
+      is functionally separate from other services provided by them.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-002
+    category: governance
+    requirement: Notify supervisory body of significant changes
+    explanation: |
+      Qualified EAA issuers must notify the supervisory body at least one month
+      before implementing significant changes to service descriptions, technical
+      architecture, hosting, cryptographic techniques, registration procedures,
+      organizational structure, termination plans, financial resources, trusted
+      list entries, or third-party arrangements.
+    legalBasis:
+      regulation: 2025/2530
+      article: Article 1
+      paragraph: "1"
+    legalText: |
+      In notifications referred to in Article 24(2), point (a), of Regulation
+      (EU) No 910/2014, qualified trust service providers shall cover at least
+      significant changes to all of the following elements: (a) the service
+      descriptions, policies, practice statements or associated terms and
+      conditions; (b) the technical architecture... [etc.]
+    deadline: "2025-12-06"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-003
+    category: governance
+    requirement: Implement risk management framework
+    explanation: |
+      Qualified EAA issuers must implement a risk management framework in
+      accordance with Implementing Regulation 2025/2160, which addresses legal,
+      business, operational and other direct or indirect risks to the provision
+      of the qualified trust service.
+    legalBasis:
+      regulation: 2025/2530
+      article: Article 2
+    legalText: |
+      The requirements laid down in Article 2, Article 3 and Article 4 of
+      Commission Implementing Regulation 2025/2160 shall apply.
+    deadline: "2025-12-06"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-004
+    category: governance
+    requirement: Establish and maintain termination plan
+    explanation: |
+      Qualified EAA issuers must establish a termination plan for each qualified
+      trust service, ensuring continuity of service and evidence provision in
+      legal proceedings. The plan must cover anticipated and unanticipated
+      termination scenarios, be reviewed at least every two years, and be
+      backed by sufficient financial resources or insurance.
+    legalBasis:
+      regulation: 2025/2530
+      article: Article 3
+      paragraph: 1-9
+    legalText: |
+      Qualified trust service providers shall establish a termination plan for
+      each qualified trust service they provide, that establishes the necessary
+      provisions for the effective and correct application of the termination
+      of the service or parts thereof, for the purposes of ensuring continuity
+      of the service and of providing evidence in legal proceedings...
+    deadline: "2025-12-06"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-005
+    category: governance
+    requirement: Notify supervisory body before starting qualified trust service
+    explanation: |
+      Before starting to provide a qualified trust service (including QEAA),
+      the provider must notify the supervisory body of the Member State where
+      established with its intention to start the service, along with a
+      conformity assessment report.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: "1"
+    legalText: |
+      When trust service providers intend to start the provision of a qualified
+      trust service, they shall notify the supervisory body of the Member State
+      in which they are established... with their intention to start the provision
+      of a qualified trust service. They shall also provide the supervisory body
+      with a conformity assessment report...
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-006
+    category: governance
+    requirement: Maintain personnel with necessary expertise and reliability
+    explanation: |
+      Qualified EAA issuers must employ personnel possessing the necessary
+      expertise, reliability, experience, and qualifications to perform the
+      services. Staff must have competence in applicable laws, security, and
+      technical knowledge appropriate to the trust service.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 2(b)
+    legalText: |
+      [QTSPs shall] employ personnel and, if applicable, subcontractors possessing
+      the necessary expertise, reliability, experience and qualifications and having
+      received appropriate training regarding security and personal data protection
+      rules and who apply administrative and management procedures that correspond
+      to European or international standards.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-007
+    category: governance
+    requirement: Maintain sufficient financial resources or liability coverage
+    explanation: |
+      Qualified EAA issuers must maintain sufficient financial resources or
+      obtain appropriate liability insurance to cover their liabilities arising
+      from the provision of trust services, in accordance with national law on
+      liability.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 2(c)
+    legalText: |
+      [QTSPs shall] with regard to point (c), maintain sufficient financial
+      resources or obtain appropriate liability insurance, according to national
+      law on liability, to cover liabilities arising from the provision of
+      qualified trust services.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-008
+    category: governance
+    requirement: Take appropriate measures against security threats
+    explanation: |
+      Qualified EAA issuers must take appropriate measures against forgery,
+      theft, or misappropriation of data, and against unauthorized deletion,
+      alteration, or rendering of data inaccessible.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 2(g)
+    legalText: |
+      [QTSPs shall] take appropriate measures against forgery, theft or
+      misappropriation of data or, without right, deleting, altering or
+      rendering data inaccessible.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-GOV-009
+    category: governance
+    requirement: Record and retain relevant information for evidence purposes
+    explanation: |
+      Qualified EAA issuers must record and keep accessible all relevant
+      information concerning data issued and received, for the purpose of
+      providing evidence in legal proceedings and ensuring continuity of
+      service after the provider ceases activities.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 2(h)
+    legalText: |
+      [QTSPs shall] record and keep accessible for as long as necessary after
+      the activities of the qualified trust service provider have ceased, all
+      relevant information concerning data issued and received by the qualified
+      trust service provider, for the purpose of providing evidence in legal
+      proceedings and for the purpose of ensuring continuity of the service.
+      Such recording may be done electronically.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-IOP-001
+    category: interoperability
+    requirement: Provide interface with European Digital Identity Wallets
+    explanation: |
+      Public sector bodies issuing electronic attestations of attributes must
+      provide an interface that allows integration with European Digital Identity
+      Wallets provided in accordance with Article 5a.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: "8"
+    legalText: |
+      Public sector bodies... issuing electronic attestation of attributes shall
+      provide an interface with European Digital Identity Wallets that are provided
+      in accordance with Article 5a.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-IOP-002
+    category: interoperability
+    requirement: Allow users to request, obtain, store and manage EAA from any MS wallet
+    explanation: |
+      All providers of electronic attestations of attributes must enable wallet
+      users to request, obtain, store, and manage their attestations regardless
+      of which Member State provided the European Digital Identity Wallet. This
+      ensures cross-border interoperability for all EAA issuers.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45g
+      paragraph: "1"
+    legalText: |
+      Providers of electronic attestations of attributes shall provide European
+      Digital Identity Wallet users with the possibility to request, obtain, store
+      and manage the electronic attestation of attributes irrespective of the
+      Member State where the European Digital Identity Wallet is provided.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-IOP-003
+    category: interoperability
+    requirement: Provide interface with EUDI Wallets (QEAA)
+    explanation: |
+      Providers of qualified electronic attestations of attributes must provide
+      an interface that enables integration with European Digital Identity Wallets.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45g
+      paragraph: "2"
+    legalText: |
+      Providers of qualified electronic attestations of attributes shall provide
+      an interface with European Digital Identity Wallets that are provided in
+      accordance in Article 5a.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-ISS-001
+    category: issuance
+    requirement: Meet Annex V content requirements
+    explanation: |
+      Qualified electronic attestations of attributes must contain all elements
+      specified in Annex V of the regulation. This includes automated processing
+      indicators, unique issuer identification, attestation identity codes,
+      qualified signatures/seals, certificate locations, and validity status info.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45d
+      paragraph: "1"
+    legalText: |
+      Qualified electronic attestation of attributes shall meet the requirements
+      laid down in Annex V.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-ISS-002
+    category: issuance
+    requirement: Meet Annex VII content requirements
+    explanation: |
+      Electronic attestations of attributes issued by or on behalf of a public
+      sector body responsible for an authentic source must contain all elements
+      specified in Annex VII, including indication of authentic source origin,
+      unique public body identification, subject identification, attested
+      attributes, validity period, unique identity code, qualified signature/seal,
+      certificate location, and validity status services.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: 1(a)
+    legalText: |
+      An electronic attestation of attributes issued by or on behalf of a public
+      sector body responsible for an authentic source shall meet the following
+      requirements: (a) those set out in Annex VII.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-ISS-003
+    category: issuance
+    requirement: Issue EAA in compliant format per Annex I of 2024/2979
+    explanation: |
+      Electronic attestations of attributes issued to wallet units must comply
+      with at least one of the standards listed in Annex I of Implementing
+      Regulation 2024/2979 (Integrity and Core Functions). This ensures
+      interoperability across the wallet ecosystem.
+    legalBasis:
+      regulation: 2024/2977
+      article: Article 4
+      paragraph: "1"
+    legalText: |
+      Electronic attestations of attributes issued to wallet units shall comply
+      with at least one of the standards in the list set out in Annex I of
+      Implementing Regulation (EU) 2024/2979.
+    deadline: "2024-12-04"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-ISS-004
+    category: issuance
+    requirement: Identify to wallet using wallet-relying party access certificate
+    explanation: |
+      When issuing electronic attestations of attributes to wallet units, the
+      provider must identify itself to the wallet unit using its wallet-relying
+      party access certificate. This ensures the wallet can verify the issuer's
+      authenticity.
+    legalBasis:
+      regulation: 2024/2977
+      article: Article 4
+      paragraph: "2"
+    legalText: |
+      Providers of electronic attestations of attributes shall identify themselves
+      to wallet units using their wallet-relying party access certificate.
+    deadline: "2024-12-04"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-ISS-005
+    category: issuance
+    requirement: Include authentication and validation information in EAA
+    explanation: |
+      Electronic attestations of attributes issued to wallet units must contain
+      the information necessary for authentication and validation of those
+      attestations, enabling relying parties to verify their authenticity and
+      validity.
+    legalBasis:
+      regulation: 2024/2977
+      article: Article 4
+      paragraph: "3"
+    legalText: |
+      Providers of electronic attestations of attributes shall ensure that
+      electronic attestations of attributes issued to wallet units contain the
+      information necessary for authentication and validation of those electronic
+      attestations of attributes.
+    deadline: "2024-12-04"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-ISS-006
+    category: issuance
+    requirement: Issue attestations in compliant format per Annex II of 2024/2979
+    explanation: |
+      Attestations must be issued in a format according to one of the standards
+      listed in Annex II of Implementing Regulation 2024/2979, ensuring technical
+      interoperability across the wallet ecosystem.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 1
+    legalText: |
+      Providers... shall issue their attestations in a format according to one
+      of the standards listed in Annex II of Commission Implementing Regulation
+      (EU) 2024/2979.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-ISS-007
+    category: issuance
+    requirement: Authenticate to wallet unit before issuance
+    explanation: |
+      When issuing attestations to a European Digital Identity Wallet, the
+      attestation provider must authenticate to the wallet unit, establishing
+      a verified identity before transferring the attestation.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 3(a)
+    legalText: |
+      In addition, where the attestation is issued to a European Digital Identity
+      Wallet, the attestation provider shall: (a) authenticate to the wallet unit.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-ISS-008
+    category: issuance
+    requirement: Verify wallet unit is not revoked or suspended
+    explanation: |
+      Before issuing an attestation to a wallet, the provider must verify that
+      the wallet unit has not been revoked or suspended, ensuring attestations
+      are only issued to valid wallet units.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 3(b)
+    legalText: |
+      In addition, where the attestation is issued to a European Digital Identity
+      Wallet, the attestation provider shall: (b) verify that the wallet unit is
+      not revoked or suspended.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-ISS-009
+    category: issuance
+    requirement: Comply with attestation scheme requirements if applicable
+    explanation: |
+      When issuing attestations that are included in schemes registered in the
+      catalogue of schemes for attestation of attributes, providers must comply
+      with the requirements of the corresponding scheme. Compliance with scheme
+      requirements must be part of conformity assessment.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "2"
+    legalText: |
+      Where providers... issue electronic attestations of attributes which are
+      included in schemes registered in the catalogue of schemes for the
+      attestation of attributes, they shall comply with the requirements of the
+      corresponding scheme for the attestation of attributes. Policies and
+      procedures established by the issuers... shall be part of the conformity
+      assessment established in Regulation (EU) No 910/2014.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-PRV-001
+    category: privacy
+    requirement: Not combine EAA personal data with other services
+    explanation: |
+      Personal data collected during the provision of electronic attestation of
+      attributes services must not be combined with personal data from any other
+      services offered by the provider or their commercial partners. This applies
+      to both qualified and non-qualified EAA providers.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45h
+      paragraph: "1"
+    legalText: |
+      Providers of qualified and non-qualified electronic attestation of attributes
+      services shall not combine personal data relating to the provision of those
+      services with personal data from any other services offered by them or their
+      commercial partners.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-PRV-002
+    category: privacy
+    requirement: Keep EAA personal data logically separate
+    explanation: |
+      Personal data relating to the provision of electronic attestation of attributes
+      services must be kept logically separate from other data held by the provider.
+      This ensures data isolation and limits data processing scope.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45h
+      paragraph: "2"
+    legalText: |
+      Personal data relating to the provision of electronic attestation of attributes
+      services shall be kept logically separate from other data held by the provider
+      of electronic attestation of attributes.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+  - id: EAA-PRV-003
+    category: privacy
+    requirement: Process only minimum necessary attributes
+    explanation: |
+      Attestation providers must process only the minimum set of attributes
+      necessary for the issuance and management of the attestation, applying
+      data minimization principles.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 2(c)
+    legalText: |
+      For the issuance of attestations to natural or legal persons, providers...
+      shall: (c) process only the minimum set of attributes necessary for the
+      issuance and management of the attestation.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-PRV-004
+    category: privacy
+    requirement: Ensure lawful processing of personal data
+    explanation: |
+      Qualified EAA issuers must ensure lawful processing of personal data
+      in accordance with GDPR requirements.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 2(j)
+    legalText: |
+      [QTSPs shall] ensure lawful processing of personal data in accordance
+      with Directive 95/46/EC. [Note: Now GDPR (EU) 2016/679]
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-REV-001
+    category: revocation
+    requirement: Revoked QEAA loses validity immediately and irreversibly
+    explanation: |
+      Once a qualified electronic attestation of attributes is revoked after
+      initial issuance, it immediately loses its legal validity. The revocation
+      cannot be undone or reversed under any circumstances.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45d
+      paragraph: "4"
+    legalText: |
+      Where a qualified electronic attestation of attributes has been revoked
+      after initial issuance, it shall lose its validity from the moment of
+      its revocation and its status shall not in any circumstances be reverted.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-REV-002
+    category: revocation
+    requirement: Revoked attestation loses validity immediately and irreversibly
+    explanation: |
+      When an electronic attestation of attributes issued by a public sector body
+      is revoked, it immediately loses its validity and the revocation cannot be
+      reversed.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 45f
+      paragraph: "4"
+    legalText: |
+      Where an electronic attestation of attributes issued by or on behalf of a
+      public sector body responsible for an authentic source has been revoked
+      after initial issuance, it shall lose its validity from the moment of its
+      revocation and its status shall not be reverted.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - public_authentic
+  - id: EAA-REV-003
+    category: revocation
+    requirement: Maintain public revocation/validity status policies
+    explanation: |
+      Attestation providers must have written and publicly accessible policies
+      relating to validity or revocation status management, including conditions
+      for revocation without delay and measures for ensuring validity status
+      information availability.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: "1"
+    legalText: |
+      Providers... shall have written and publicly accessible policies relating
+      to validity or revocation status management. These policies shall include,
+      where applicable, the conditions under which electronic attestations of
+      attributes can be revoked without delay and measures for ensuring the
+      availability of the validity status information.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-004
+    category: revocation
+    requirement: Only issuer can revoke its own attestations
+    explanation: |
+      Only the provider that issued an electronic attestation of attributes
+      has the authority to revoke it. No other party can revoke an attestation.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: "2"
+    legalText: |
+      Providers... shall be the only entities able to revoke the electronic
+      attestations of attributes they issue.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-005
+    category: revocation
+    requirement: Revoke on user request
+    explanation: |
+      For attestations with validity periods over 24 hours, providers must revoke
+      upon explicit request from the person to whom the attestation was issued
+      or, where applicable, the subject of the attestation.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: 3(a)
+    legalText: |
+      Providers... whenever those attestations are issued with a validity period
+      of more than 24 hours, shall revoke them in at least the following
+      circumstances: (a) upon the explicit request of the person to whom the
+      electronic attestation of attributes was issued or, where applicable, of
+      the subject of the attestation.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-006
+    category: revocation
+    requirement: Revoke on security or trustworthiness compromise
+    explanation: |
+      Providers must revoke attestations when they become aware of any compromise
+      to the security or trustworthiness of the attestations, protecting relying
+      parties from untrustworthy information.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: 3(b)
+    legalText: |
+      Providers... shall revoke them in at least the following circumstances:
+      (b) where it is known to the provider that there has been a compromise
+      of the security or trustworthiness of the qualified electronic attestations
+      of attributes or electronic attestations of attributes issued by or on
+      behalf of a public sector body responsible for an authentic source.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-007
+    category: revocation
+    requirement: Use privacy-preserving revocation techniques
+    explanation: |
+      Providers must set up revocation techniques and management methods that
+      are privacy preserving and hinder linkability or traceability, protecting
+      user privacy even during revocation processes.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: "4"
+    legalText: |
+      Providers... shall set up revocation techniques and management methods
+      that are privacy preserving and hindering linkability or traceability.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-008
+    category: revocation
+    requirement: Provide validity status information to relying parties
+    explanation: |
+      Providers must make validity or revocation status information available
+      to relying parties in a manner that ensures the integrity and authenticity
+      of that information.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 4
+      paragraph: "5"
+    legalText: |
+      Providers... shall make available to relying parties information on the
+      validity or revocation status of the electronic attestations of attributes
+      they have issued in a manner that ensures the integrity and authenticity
+      of that information.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-REV-009
+    category: revocation
+    requirement: Publish revocation status within 24 hours
+    explanation: |
+      When a qualified trust service provider issuing qualified attestations
+      decides to revoke an attestation, it must register the revocation in its
+      database and publish the revocation status within 24 hours of receipt of
+      the revocation request. The revocation becomes effective immediately upon
+      publication. This is explicitly extended to QEAA by Art. 24(4a).
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 3-4a
+    legalText: |
+      If a qualified trust service provider issuing qualified certificates
+      decides to revoke a certificate, it shall register such revocation in its
+      certificate database and publish the revocation status of the certificate
+      in a timely manner, and in any event within 24 hours after the receipt of
+      the request. The revocation shall become effective immediately upon its
+      publication... Paragraphs 3 and 4 shall apply accordingly to the revocation
+      of qualified electronic attestations of attributes.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-REV-010
+    category: revocation
+    requirement: Provide free revocation status checking for relying parties
+    explanation: |
+      Qualified EAA providers must provide relying parties with the ability to
+      check the validity or revocation status of attestations. This must be
+      available on a per-attestation basis, at any time, beyond the validity
+      period, in an automated manner that is reliable, free of charge, and
+      efficient. This is explicitly extended to QEAA by Art. 24(4a).
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 4-4a
+    legalText: |
+      Qualified trust service providers issuing qualified certificates shall
+      provide to any relying party information on the validity or revocation
+      status of qualified certificates issued by them. This information shall
+      be made available at least on a per certificate basis at any time and
+      beyond the validity period of the certificate in an automated manner that
+      is reliable, free of charge and efficient... Paragraphs 3 and 4 shall
+      apply accordingly to the revocation of qualified electronic attestations
+      of attributes.
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+  - id: EAA-VER-001
+    category: verification
+    requirement: Verify requester has right to act on behalf of subject
+    explanation: |
+      When applicable, attestation providers must verify that the requester of
+      the attestation has the right to act on behalf of the person that is the
+      subject of the attestation before issuance.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 2(a)
+    legalText: |
+      For the issuance of attestations to natural or legal persons, providers...
+      shall: (a) where applicable, verify that the requester of the attestation
+      has the right to act on behalf of the person that is the subject of the
+      attestation.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-VER-002
+    category: verification
+    requirement: Verify identity of authentic source used
+    explanation: |
+      When applicable, attestation providers must verify the identity of the
+      authentic source used as a source for the attributes included in the
+      attestation.
+    legalBasis:
+      regulation: 2025/1569
+      article: Article 3
+      paragraph: "1"
+      reference: Annex II point 2(b)
+    legalText: |
+      For the issuance of attestations to natural or legal persons, providers...
+      shall: (b) where applicable, verify the identity of the authentic source
+      used as a source for the attributes included in the attestation.
+    deadline: "2025-08-18"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified
+      - public_authentic
+  - id: EAA-VER-003
+    category: verification
+    requirement: Verify identity of persons or entities to whom attestations are issued
+    explanation: |
+      Before issuing a qualified electronic attestation of attributes, the
+      provider must verify the identity of the natural or legal person to whom
+      the attestation is issued, using appropriate identity verification methods.
+    legalBasis:
+      regulation: 910/2014
+      article: Article 24
+      paragraph: 1-1a
+    legalText: |
+      When issuing a qualified certificate or a qualified electronic attestation
+      of attributes for the purpose of a trust service, a qualified trust service
+      provider shall verify, by appropriate means and in accordance with national
+      law, the identity and, if applicable, any specific attributes of the natural
+      or legal person to whom the qualified certificate or the qualified electronic
+      attestation of attributes is issued...
+    deadline: "2024-11-21"
+    roles:
+      - issuer
+    useCases: all
+    profileFilter:
+      - qualified

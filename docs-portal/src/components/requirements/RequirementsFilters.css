@@ -1,0 +1,198 @@
+/**
+ * Requirements Filters Styles
+ */
+
+.requirements-filters {
+    background: var(--bg-secondary, #f9fafb);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Search */
+.filter-search {
+    margin-bottom: 1rem;
+}
+
+.filter-search input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-primary, white);
+    color: var(--text-primary, #111827);
+    transition: border-color 0.15s ease;
+}
+
+.filter-search input::placeholder {
+    color: var(--text-secondary, #9ca3af);
+}
+
+.filter-search input:focus {
+    outline: none;
+    border-color: var(--primary-color, #3b82f6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Filter Groups */
+.filter-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.filter-group h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #6b7280);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-options.scrollable {
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for filter options */
+.filter-options.scrollable::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filter-options.scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.filter-options.scrollable::-webkit-scrollbar-thumb {
+    background: var(--border-color, #d1d5db);
+    border-radius: 2px;
+}
+
+/* Wide filter group for topics */
+.filter-group-wide {
+    grid-column: span 2;
+}
+
+.filter-group-wide .filter-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem 1rem;
+}
+
+/* Topic number badge */
+.topic-number {
+    display: inline-block;
+    min-width: 28px;
+    padding: 0 4px;
+    background: var(--primary-color, #3b82f6);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    margin-right: 6px;
+}
+
+/* Checkbox Labels */
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border-color, #d1d5db);
+    cursor: pointer;
+    accent-color: var(--primary-color, #3b82f6);
+}
+
+.checkbox-label {
+    font-size: 0.875rem;
+    color: var(--text-primary, #374151);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+/* Criticality Dot */
+.criticality-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Filter Actions */
+.filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.clear-filters-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-secondary, #6b7280);
+    transition: all 0.15s ease;
+}
+
+.clear-filters-btn:hover {
+    background: var(--bg-tertiary, #e5e7eb);
+    color: var(--text-primary, #374151);
+}
+
+.active-filter-count {
+    font-size: 0.875rem;
+    color: var(--primary-color, #3b82f6);
+    font-weight: 500;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .requirements-filters {
+        --bg-secondary: #1f2937;
+        --bg-primary: #111827;
+        --border-color: #374151;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+    }
+
+    .filter-search input {
+        background: #111827;
+        color: #f9fafb;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-groups {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-groups {
+        grid-template-columns: 1fr;
+    }
+}

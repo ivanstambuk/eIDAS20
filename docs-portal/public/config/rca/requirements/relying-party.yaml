@@ -1,0 +1,2238 @@
+schemaVersion: 15
+requirements:
+  - id: RP-GOV-001
+    category: governance
+    requirement: Intermediaries acting on behalf of RPs must not store transaction content data
+    explanation: |
+      When an intermediary (e.g., a payment processor, integration platform) acts on behalf 
+      of a relying party, they are deemed to be relying parties themselves and are prohibited 
+      from storing data about the content of the transaction. This is the core "no-storage" 
+      mandate that distinguishes intermediaries from standard relying parties.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be relying 
+      parties and shall not store data about the content of the transaction.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+  - id: RP-GOV-002
+    category: governance
+    requirement: "Public sector: Accept EUDI Wallet for online services requiring e-ID"
+    explanation: |
+      When a public sector body requires electronic identification to access an online 
+      service, they must also accept EUDI Wallets provided in accordance with the regulation.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5f
+      paragraph: "1"
+    legalText: |
+      Where Member States require electronic identification and authentication to access 
+      an online service provided by a public sector body, they shall also accept European 
+      Digital Identity Wallets that are provided in accordance with this Regulation.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - public_sector
+    useCases:
+      - pid-online
+      - esignature
+  - id: RP-GOV-003
+    category: governance
+    requirement: "Private sector: Accept EUDI Wallet where strong authentication is mandated"
+    explanation: |
+      Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
+      when strong user authentication is required by law or contract in specified sectors.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5f
+      paragraph: "2"
+    legalText: |
+      Where private relying parties that provide services, with the exception of 
+      microenterprises and small enterprises [...], are required by Union or national law 
+      to use strong user authentication for online identification or where strong user 
+      authentication for online identification is required by contractual obligation, 
+      including in the areas of transport, energy, banking, financial services, social 
+      security, health, drinking water, postal services, digital infrastructure, education 
+      or telecommunications, those private relying parties shall [...] also accept European 
+      Digital Identity Wallets that are provided in accordance with this Regulation.
+    deadline: "2027-12-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - private_sector
+    useCases:
+      - payment-auth
+      - open-bank-account
+      - pid-online
+  - id: RP-GOV-004
+    category: governance
+    requirement: "Very large online platforms: Accept EUDI Wallet for user authentication"
+    explanation: |
+      Providers of very large online platforms (as defined in DSA Article 33) must accept 
+      EUDI Wallets for user authentication upon voluntary user request.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5f
+      paragraph: "3"
+    legalText: |
+      Where providers of very large online platforms as referred to in Article 33 of 
+      Regulation (EU) 2022/2065 [...] require user authentication for access to online 
+      services, they shall also accept and facilitate the use of European Digital Identity 
+      Wallets that are provided in accordance with this Regulation for user authentication 
+      only upon the voluntary request of the user and in respect of the minimum data 
+      necessary for the specific online service for which authentication is requested.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - private_sector
+    useCases:
+      - pid-online
+  - id: RP-GOV-005
+    category: governance
+    requirement: Maintain alternative means of identification
+    explanation: |
+      Relying parties may maintain alternative authentication methods. EUDI Wallet 
+      acceptance requirements do not prevent offering other identification means.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5a
+      paragraph: "15"
+    legalText: |
+      The use of European Digital Identity Wallets shall be voluntary. Access to public 
+      and private services, access to the labour market and freedom to conduct business 
+      shall not in any way be restricted or made disadvantageous to natural or legal 
+      persons that do not use European Digital Identity Wallets. It shall remain possible 
+      to access public and private services by other existing identification and 
+      authentication means.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-GOV-006
+    category: governance
+    requirement: Support reporting to data protection authorities
+    explanation: |
+      Relying parties must be prepared to be reported to data protection authorities 
+      through the wallet's reporting mechanism if users suspect unlawful data requests.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 7
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units allow wallet users to easily report 
+      wallet-relying parties to supervisory authorities established under Article 51 of 
+      Regulation (EU) 2016/679.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-GOV-007
+    category: governance
+    bindingType: informative
+    requirement: Enable selective disclosure of attributes
+    explanation: |
+      Recital 59 emphasizes that selective disclosure is a core design feature of 
+      wallets, allowing users to share only necessary parts of their data.
+    legalBasis:
+      regulation: 2014/910
+      article: Recital 59
+      paragraph: ""
+    legalText: |
+      Selective disclosure is a concept empowering the owner of data to disclose 
+      only certain parts of a larger data set, in order for the receiving entity 
+      to obtain only such information as is necessary for the provision of a 
+      service requested by a user. The European Digital Identity Wallet should 
+      technically enable the selective disclosure of attributes to relying parties.
+    deadline: "2024-05-20"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-GOV-008
+    category: governance
+    bindingType: mandatory
+    requirement: Retain identity matching logs for 6-12 months
+    explanation: |
+      Relying parties must keep logs of identity matching processes including values 
+      used, timestamps, documentation, and outcomes. Retention must be 6-12 months 
+      minimum, or longer if required by law.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 5
+      paragraph: 1-3
+    legalText: |
+      Where an identity matching process is completed, whether successfully or 
+      unsuccessfully, the relying party shall keep the logs relating to the identity 
+      matching process and its outcome, including:
+      (a) the values provided by the user and the relying party;
+      (b) the date and time of the identity matching process;
+      (c) any relevant documentation provided as part of complementary methods;
+      (d) any identifiers or account numbers used.
+
+      Relying parties shall retain the logs for a minimum of 6 months and a maximum 
+      of 12 months for security purposes.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-PRV-001
+    category: privacy
+    requirement: Request only necessary and proportionate attributes
+    explanation: |
+      Relying parties shall only request attributes that are necessary and proportionate 
+      for the specific service. Over-requesting data violates data minimization principles.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "3"
+    legalText: |
+      Relying parties shall not request users to provide any data other than that indicated 
+      pursuant to paragraph 2, point (c).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-002
+    category: privacy
+    requirement: Support selective disclosure of attributes
+    explanation: |
+      Systems must be capable of processing selectively disclosed attributes. Users 
+      should not be forced to reveal more data than necessary (e.g., verifying "over 18" 
+      without revealing exact birth date).
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5a
+      paragraph: 4(a)
+    legalText: |
+      European Digital Identity Wallets shall enable the user, in a manner that is 
+      user-friendly, transparent, and traceable by the user, to: (a) securely request, 
+      obtain, select, combine, store, delete, share and present, under the sole control 
+      of the user, person identification data and, where applicable, in combination with 
+      electronic attestations of attributes, to authenticate to relying parties online 
+      and, where appropriate, in offline mode, in order to access public and private 
+      services, while ensuring that selective disclosure of data is possible.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-003
+    category: privacy
+    requirement: Do not track wallet usage across services (unlinkability)
+    explanation: |
+      The technical framework must prevent tracking or correlation of wallet usage 
+      across different services, unless the user explicitly consents.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5a
+      paragraph: 16(a)
+    legalText: |
+      The technical framework of the European Digital Identity Wallet shall: (a) not allow 
+      providers of electronic attestations of attributes or any other party, after the 
+      issuance of the attestation of attributes, to obtain data that allows transactions 
+      or user behaviour to be tracked, linked or correlated, or knowledge of transactions 
+      or user behaviour to be otherwise obtained, unless explicitly authorised by the user.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-004
+    category: privacy
+    requirement: Enable privacy preserving unlinkability for non-identified attestations
+    explanation: |
+      When attestations don't require user identification, privacy-preserving techniques 
+      must ensure unlinkability across different relying parties.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 3
+      paragraph: "10"
+    legalText: |
+      Wallet providers shall ensure that wallet units [...] enable privacy preserving 
+      techniques which ensure unlinkability where the electronic attestations of 
+      attributes do not require the identification of the wallet user, when presenting 
+      attestations or person identification data across different wallet-relying parties.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - age-verification
+      - pseudonym
+  - id: RP-PRV-005
+    category: privacy
+    requirement: Allow pseudonyms where legal identity is not required
+    explanation: |
+      Users cannot be prohibited from using pseudonyms when there is no legal requirement 
+      for identity verification.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5
+      paragraph: ""
+    legalText: |
+      Without prejudice to specific rules of Union or national law requiring users to 
+      identify themselves or to the legal effect given to pseudonyms under national law, 
+      the use of pseudonyms that are chosen by the user shall not be prohibited.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+  - id: RP-PRV-006
+    category: privacy
+    requirement: Process data in accordance with GDPR
+    explanation: |
+      All personal data received from wallets must be processed in full compliance 
+      with GDPR, including lawful basis, storage limitation, and data subject rights.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 2
+      paragraph: "4"
+    relatedRegulation:
+      regulation: GDPR
+      article: Article 5
+    legalText: |
+      This Regulation is without prejudice to Regulation (EU) 2016/679 of the European 
+      Parliament and of the Council.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-007
+    category: privacy
+    bindingType: informative
+    requirement: Perform data protection impact assessments for wallet data processing
+    explanation: |
+      Recital 17 emphasizes that relying parties should comply with GDPR safeguards, 
+      particularly by performing data protection impact assessments and consulting 
+      data protection authorities prior to processing where there is high risk.
+    legalBasis:
+      regulation: 2014/910
+      article: Recital 17
+      paragraph: ""
+    legalText: |
+      Relying parties should comply with the safeguards offered by Articles 35 and 36 
+      of [Regulation (EU) 2016/679], in particular by performing data protection impact 
+      assessments and by consulting the competent data protection authorities prior to 
+      data processing where data protection impact assessments indicate that the 
+      processing would result in a high risk.
+    deadline: "2024-05-20"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-008
+    category: privacy
+    bindingType: informative
+    requirement: Apply data minimization - request only necessary data
+    explanation: |
+      Recital 56 emphasizes that any request for information should be necessary, 
+      proportionate to the intended use, and in line with data minimisation principles.
+    legalBasis:
+      regulation: 2014/910
+      article: Recital 56
+      paragraph: ""
+    legalText: |
+      Any request by the relying party for information from the user of a European 
+      Digital Identity Wallet should be necessary for, and proportionate to, the 
+      intended use in a given case, should be in line with the principle of data 
+      minimisation and should ensure transparency as regards which data is shared 
+      and for what purposes.
+    deadline: "2024-05-20"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-PRV-009
+    category: privacy
+    bindingType: informative
+    requirement: Accept pseudonymous access where identification not legally required
+    explanation: |
+      Recital 60 clarifies that unless specific rules require user identification, 
+      accessing services by using a pseudonym should not be prohibited.
+    legalBasis:
+      regulation: 2014/910
+      article: Recital 60
+      paragraph: ""
+    legalText: |
+      Unless specific rules of Union or national law require users to identify 
+      themselves, accessing services by using a pseudonym should not be prohibited.
+    deadline: "2024-05-20"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+  - id: RP-PRV-010
+    category: privacy
+    bindingType: mandatory
+    requirement: Comply with embedded disclosure policies in attestations
+    explanation: |
+      Electronic attestations of attributes may contain embedded disclosure policies 
+      that specify conditions the relying party must meet to access the attestation. 
+      The wallet verifies RP compliance and informs the user.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 10
+      paragraph: "3"
+    legalText: |
+      Wallet instances shall verify whether the wallet-relying party complies with 
+      the requirements of the embedded disclosure policy and inform the wallet user 
+      of the result.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-001
+    category: registration
+    requirement: Register with competent supervisory authority before accepting EUDI Wallet
+    explanation: |
+      Relying parties intending to rely on European Digital Identity Wallets must register with 
+      the competent authority in the Member State where they are established. Registration is 
+      a prerequisite for accepting wallet-based authentication.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "1"
+    legalText: |
+      Where a relying party intends to rely upon European Digital Identity Wallets for the 
+      provision of public or private services by means of digital interaction, the relying 
+      party shall register in the Member State where it is established.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-002
+    category: registration
+    requirement: Provide registration information including identity and intended data requests
+    explanation: |
+      During registration, relying parties must provide specific information including their 
+      identity, contact details, and importantly - the data they intend to request from users.
+      This enables oversight of data minimization compliance.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "2"
+    legalText: |
+      The registration process shall be cost-effective and proportionate-to-risk. The relying 
+      party shall provide at least: (a) the information necessary to authenticate to European 
+      Digital Identity Wallets, which as a minimum includes: (i) the Member State in which the 
+      relying party is established; and (ii) the name of the relying party and, where applicable, 
+      its registration number as stated in an official record together with identification data 
+      of that official record; (b) the contact details of the relying party; (c) the intended 
+      use of European Digital Identity Wallets, including an indication of the data to be 
+      requested by the relying party from users.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-003
+    category: registration
+    requirement: Request only data indicated during registration
+    explanation: |
+      Relying parties are strictly limited to requesting only the data they declared during 
+      registration. Requesting additional data beyond the registered scope is prohibited.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "3"
+    legalText: |
+      Relying parties shall not request users to provide any data other than that indicated 
+      pursuant to paragraph 2, point (c).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-004
+    category: registration
+    requirement: Notify changes to registration information without delay
+    explanation: |
+      If the relying party's registration information changes (e.g., new data fields requested, 
+      contact details updated), they must promptly notify the Member State.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "6"
+    legalText: |
+      Relying parties registered in accordance with this Article shall inform Member States 
+      without delay about any changes to the information provided in the registration 
+      pursuant to paragraph 2.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-005
+    category: registration
+    requirement: Identify yourself to wallet users when requesting data
+    explanation: |
+      When relying parties request data from wallet users, they must clearly identify 
+      themselves. The wallet displays the RP's identity information from their access 
+      certificate to enable user trust decisions.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "8"
+    legalText: |
+      Where relying parties intend to rely upon European Digital Identity Wallets, they 
+      shall identify themselves to the user.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-006
+    category: registration
+    requirement: Accept pseudonymous authentication where legal identity is not required
+    explanation: |
+      When a user's legal identity is not required by law, relying parties must accept 
+      pseudonymous authentication. Users cannot be forced to reveal their real identity 
+      when pseudonymous access is sufficient.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure for authenticating 
+      and validating person identification data and electronic attestation of attributes 
+      requested from European Digital Identity Wallets. Relying parties shall not refuse the 
+      use of pseudonyms, where the identification of the user is not required by Union or 
+      national law.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+  - id: RP-REG-007
+    category: registration
+    bindingType: mandatory
+    requirement: Provide complete Annex I information to national register
+    explanation: |
+      When registering, relying parties must provide all required information as specified 
+      in Annex I of 2025/848, including identifiers, contact details, service descriptions, 
+      intended data requests, and entitlement types.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 5
+      paragraph: "1"
+    legalText: |
+      Wallet-relying parties shall at least provide the information set out in Annex I 
+      to national registers.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-008
+    category: registration
+    bindingType: mandatory
+    requirement: Ensure registration information accuracy
+    explanation: |
+      Relying parties are legally responsible for ensuring all information provided 
+      during registration is accurate at the time of registration. Inaccurate information 
+      may lead to registration suspension or cancellation.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 5
+      paragraph: "2"
+    legalText: |
+      Wallet-relying parties shall ensure that the information provided is accurate 
+      at the time of registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-009
+    category: registration
+    bindingType: mandatory
+    requirement: Update registration information without undue delay
+    explanation: |
+      When any registered information changes (contact details, intended data requests, 
+      entitlements, etc.), relying parties must update their registration promptly. 
+      This ensures users and supervisory authorities have accurate information.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 5
+      paragraph: "3"
+    legalText: |
+      Wallet-relying parties shall update any information previously registered in the 
+      national register of wallet-relying parties without undue delay.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-010
+    category: registration
+    bindingType: mandatory
+    requirement: Notify registrar when ceasing wallet use
+    explanation: |
+      When a relying party decides to stop using wallets for service provision under 
+      a specific registration, they must promptly notify the registrar and request 
+      cancellation of that registration.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 6
+      paragraph: "7"
+    legalText: |
+      When a wallet-relying party no longer intends to rely upon wallet units for the 
+      provision of public or private services under a specific registration, it shall 
+      notify the relevant registrar without undue delay and request the cancellation 
+      of that registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-011
+    category: registration
+    bindingType: mandatory
+    requirement: Register appropriate entitlement type
+    explanation: |
+      Relying parties must register with the correct entitlement type(s) as defined 
+      in Annex I, such as 'Service_Provider', 'QEAA_Provider', 'PID_Provider', etc. 
+      This determines what operations the RP is authorized to perform.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "12"
+    legalText: |
+      The entitlement or entitlements of the wallet-relying party, that shall be 
+      expressed as: (a) 'Service_Provider' to express the entitlement of the 
+      wallet-relying party as a provider of services; (b) 'QEAA_Provider'... 
+      [and other entitlement types as specified in Annex I, point 12]
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-012
+    category: registration
+    bindingType: mandatory
+    requirement: Provide machine-readable intended data requests
+    explanation: |
+      For each intended use, relying parties must provide a detailed list of requested 
+      data including attestations and attributes in both user-friendly and technical 
+      formats for automated processing.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "9"
+    legalText: |
+      For each intended use, a list of the data, including attestations and attributes, 
+      that the relying party intends to request, a user-friendly name and a technical 
+      name, the attestation type and any other syntaxes that the data is grouped under, 
+      in a machine-readable format for automated processing.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-REG-013
+    category: registration
+    bindingType: mandatory
+    requirement: Provide privacy policy URL for each intended use
+    explanation: |
+      In Member States that use wallet-relying party registration certificates, relying 
+      parties must provide a URL to the privacy policy applicable to each intended use 
+      of wallet data. This URL is included in the registration certificate and enables 
+      users to verify how their data will be processed before sharing.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 8
+      paragraph: 2(g)
+    legalText: |
+      Where a Member State authorised the issuance of a wallet-relying party registration 
+      certificate, that Member State shall [...] (g) ensure that wallet-relying parties 
+      provide a URL to the privacy policy regarding the intended use.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+    notes: |
+      This requirement applies conditionally - only in Member States that have authorized 
+      the issuance of wallet-relying party registration certificates. However, providing 
+      a privacy policy URL is good practice regardless.
+  - id: RP-SEC-001
+    category: security
+    bindingType: mandatory
+    requirement: Receive and act on wallet security breach notifications
+    explanation: |
+      Registered relying parties will receive notifications within 24 hours when 
+      wallet solutions they depend on experience security breaches leading to 
+      suspension. RPs should have processes to handle such notifications.
+    legalBasis:
+      regulation: 2025/847
+      article: Article 5
+      paragraph: 1(d)
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      suspension of the provision and the use of a wallet solution shall be provided, 
+      without undue delay and no later than 24 hours after the suspension of the 
+      provision and the use of the wallet solution, to:
+      (d) the wallet-relying parties registered in accordance with Article 5b of 
+      Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-SEC-002
+    category: security
+    bindingType: mandatory
+    requirement: Receive wallet re-establishment notifications
+    explanation: |
+      When a previously suspended wallet solution is re-established after remediation, 
+      relying parties will receive notifications. RPs should update their systems 
+      to resume accepting credentials from the re-established wallet.
+    legalBasis:
+      regulation: 2025/847
+      article: Article 7
+      paragraph: "1"
+    legalText: |
+      Where a Member State re-establishes a wallet solution, that Member State shall 
+      ensure that information about that fact is provided without undue delay to all 
+      parties having received information on the suspension of the provision and the 
+      use of that wallet solution in accordance with Article 5(1).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-SEC-003
+    category: security
+    bindingType: mandatory
+    requirement: Receive wallet withdrawal notifications
+    explanation: |
+      When wallet solutions are withdrawn (either due to severity or failure to 
+      remedy within 3 months), registered RPs receive notifications within 24 hours. 
+      RPs must stop accepting credentials from withdrawn wallet solutions.
+    legalBasis:
+      regulation: 2025/847
+      article: Article 9
+      paragraph: 1(d)
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      withdrawal of a wallet solution shall be provided, without undue delay and no 
+      later than 24 hours after the withdrawal of the wallet solution, to:
+      (d) the wallet-relying parties registered in accordance with Article 5b of 
+      Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-001
+    category: technical
+    requirement: Support mandated credential formats (ISO 18013-5 and W3C VC)
+    explanation: |
+      Wallet solutions must support person identification data in both ISO/IEC 18013-5:2021 
+      (mDL/mDoc) format and W3C Verifiable Credentials Data Model 1.1. Relying parties 
+      accepting PID must be able to process at least one of these formats.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 8
+      paragraph: ""
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the usage of person 
+      identification data and electronic attestations of attributes issued in compliance 
+      with the list of standards set out in Annex II.
+    annexReference: |
+      Annex II of 2024/2979:
+      - ISO/IEC.18013-5:2021
+      - 'Verifiable Credentials Data Model 1.1', W3C Recommendation, 3 March 2022
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-002
+    category: technical
+    requirement: Implement presentation protocols (ISO 18013-5, ISO 18013-7)
+    explanation: |
+      For remote and proximity presentation of credentials, relying parties must implement 
+      the standardized protocols specified in the Annex to Regulation 2024/2982.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 5
+      paragraph: 1-2
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols and interfaces 
+      for the presentation of attributes to wallet-relying parties, remotely, and where 
+      appropriate in proximity, in accordance with the standards set out in the Annex.
+    annexReference: |
+      Annex to 2024/2982:
+      - ISO/IEC 18013-5:2021
+      - ISO/IEC TS 18013-7:2024
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-003
+    category: technical
+    requirement: Support selective disclosure of attributes
+    explanation: |
+      The technical implementation must support selective disclosure, allowing users to 
+      share only specific attributes (e.g., "over 18") rather than full credentials.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 5
+      paragraph: "4"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the selective disclosure 
+      of attributes of personal identification data and of electronic attestations of 
+      attributes.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-004
+    category: technical
+    requirement: Comply with WebAuthn specification for pseudonym generation
+    explanation: |
+      When accepting pseudonymous authentication from wallet units, relying parties must 
+      support the WebAuthn specification as mandated in Annex V of the Integrity regulation.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 14
+      paragraph: "1"
+    legalText: |
+      Wallet units shall support the generation of pseudonyms for wallet users in compliance 
+      with the technical specifications set out in Annex V.
+    annexReference: |
+      Annex V of 2024/2979:
+      - WebAuthn – W3C Recommendation, 8 April 2021, Level 2
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+  - id: RP-TEC-005
+    category: technical
+    requirement: Support relying-party-specific pseudonyms
+    explanation: |
+      Relying parties may request a pseudonym that is unique and specific to them. This 
+      enables unlinkable authentication across different relying parties while allowing 
+      the same RP to recognize returning users.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 14
+      paragraph: "2"
+    legalText: |
+      Wallet units shall support the generation, upon the request of a wallet-relying party, 
+      of a pseudonym which is specific and unique to that wallet-relying party and provide 
+      this pseudonym to the wallet-relying party, either standalone or in combination with 
+      any person identification data or electronic attribute attestation requested by that 
+      wallet-relying party.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - pid-online
+  - id: RP-TEC-006
+    category: technical
+    requirement: Verify proof of possession of private keys
+    explanation: |
+      When receiving credentials, relying parties must verify that the wallet possesses 
+      the private key corresponding to the public key used in the cryptographic binding.
+      This prevents replay attacks and credential theft.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 5
+      paragraph: "3"
+    legalText: |
+      Wallet providers shall ensure that wallet units support proving the possession of 
+      private keys corresponding to public keys used in cryptographic bindings.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-007
+    category: technical
+    requirement: Use valid Wallet-Relying Party Access Certificate
+    explanation: |
+      Relying parties must use a valid wallet-relying party access certificate when 
+      interacting with wallet units. This certificate authenticates the RP to the wallet.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 3
+      paragraph: "1"
+    legalText: |
+      Regarding the protocols and interfaces referred to in Articles 4 and 5, wallet 
+      providers shall ensure that wallet units authenticate and validate the wallet-relying 
+      party access certificates where interacting with wallet-relying parties.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-008
+    category: technical
+    requirement: Support data erasure request protocol
+    explanation: |
+      Relying parties must implement the protocol allowing wallet users to request erasure 
+      of personal data that was shared through the wallet, supporting GDPR Article 17 rights.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 6
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units support protocols and interfaces 
+      allowing wallet users to request from wallet-relying parties, with whom they have 
+      interacted through those wallet units, the erasure of their personal data provided 
+      through those wallet units, in accordance with Article 17 of Regulation (EU) 2016/679.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-009
+    category: technical
+    requirement: Accept electronic signatures regardless of electronic form
+    explanation: |
+      Relying parties cannot deny legal effect or admissibility of an electronic signature 
+      solely because it is in electronic form or doesn't meet qualified signature requirements.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 25
+      paragraph: "1"
+    legalText: |
+      An electronic signature shall not be denied legal effect and admissibility as evidence 
+      in legal proceedings solely on the grounds that it is in an electronic form or that it 
+      does not meet the requirements for qualified electronic signatures.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-010
+    category: technical
+    requirement: Recognize qualified electronic signatures as equivalent to handwritten
+    explanation: |
+      Qualified electronic signatures have the equivalent legal effect of a handwritten 
+      signature and must be treated as such by relying parties.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 25
+      paragraph: "2"
+    legalText: |
+      A qualified electronic signature shall have the equivalent legal effect of a 
+      handwritten signature.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-011
+    category: technical
+    requirement: Recognize qualified signatures from all Member States
+    explanation: |
+      Cross-border recognition is mandatory. A qualified electronic signature issued in 
+      any EU Member State must be recognized in all other Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 25
+      paragraph: "3"
+    legalText: |
+      A qualified electronic signature based on a qualified certificate issued in one 
+      Member State shall be recognised as a qualified electronic signature in all other 
+      Member States.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-012
+    category: technical
+    requirement: "Public sector: Accept advanced signatures in defined formats"
+    explanation: |
+      Public sector relying parties requiring advanced electronic signatures must accept 
+      them in the formats defined by Commission implementing acts, ensuring interoperability.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 27
+      paragraph: "1"
+    legalText: |
+      If a Member State requires an advanced electronic signature to use an online service 
+      offered by, or on behalf of, a public sector body, that Member State shall recognise 
+      advanced electronic signatures, advanced electronic signatures based on a qualified 
+      certificate for electronic signatures, and qualified electronic signatures in at least 
+      the formats or using methods defined in the implementing acts referred to in paragraph 5.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    profileFilter:
+      - public_sector
+    useCases:
+      - esignature
+      - pid-online
+  - id: RP-TEC-013
+    category: technical
+    requirement: "Public sector: Not require higher than qualified signature for cross-border"
+    explanation: |
+      For cross-border services, public sector bodies cannot require a security level 
+      higher than qualified electronic signature, ensuring accessibility across Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 27
+      paragraph: "3"
+    legalText: |
+      Member States shall not request for cross-border use in an online service offered by 
+      a public sector body an electronic signature at a higher security level than the 
+      qualified electronic signature.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    profileFilter:
+      - public_sector
+    useCases:
+      - esignature
+  - id: RP-TEC-014
+    category: technical
+    requirement: Validate qualified electronic signatures correctly
+    explanation: |
+      Relying parties should use a validation process that confirms the qualified signature's 
+      validity, including checking certificates, revocation status, time of signing, and 
+      data integrity.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 32
+      paragraph: "1"
+    legalText: |
+      The process for the validation of a qualified electronic signature shall confirm 
+      the validity of a qualified electronic signature provided that: (a) the certificate 
+      that supports the signature was, at the time of signing, a qualified certificate 
+      [...]; (b) the qualified certificate was issued by a qualified trust service provider 
+      and was valid at the time of signing; (c) the signature validation data corresponds 
+      to the data provided to the relying party; (d) the unique set of data representing 
+      the signatory in the certificate is correctly provided to the relying party; 
+      (e) the use of any pseudonym is clearly indicated to the relying party [...].
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-015
+    category: technical
+    requirement: Validate advanced signatures based on qualified certificates
+    explanation: |
+      When receiving advanced electronic signatures based on qualified certificates, relying 
+      parties should ensure proper validation according to the defined process.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 32a
+      paragraph: "1"
+    legalText: |
+      The process for the validation of an advanced electronic signature based on a 
+      qualified certificate shall confirm the validity of an advanced electronic signature 
+      based on a qualified certificate, provided that: (a) the certificate that supports 
+      the signature was, at the time of signing, a qualified certificate [...]; 
+      (c) the signature validation data corresponds to the data provided to the relying party; 
+      (d) the unique set of data representing the signatory in the certificate is correctly 
+      provided to the relying party; (e) the use of any pseudonym is clearly indicated to 
+      the relying party [...].
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-016
+    category: technical
+    requirement: Ensure validation system allows detection of security issues
+    explanation: |
+      When using a validation system for qualified electronic signatures, relying parties 
+      must ensure the system provides the correct validation result AND enables them to 
+      detect any security-relevant issues that may affect the signature's validity.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 32
+      paragraph: "2"
+    legalText: |
+      The system used for validating the qualified electronic signature shall provide to 
+      the relying party the correct result of the validation process and shall allow the 
+      relying party to detect any security relevant issues.
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-017
+    category: technical
+    requirement: Consider using qualified validation services
+    explanation: |
+      Relying parties may use qualified validation services to validate qualified electronic 
+      signatures, receiving automated, reliable validation results.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 33
+      paragraph: "1"
+    legalText: |
+      A qualified validation service for qualified electronic signatures may only be 
+      provided by a qualified trust service provider who: (a) provides validation in 
+      compliance with Article 32(1); and (b) allows relying parties to receive the result 
+      of the validation process in an automated manner, which is reliable, efficient and 
+      bears the advanced electronic signature or advanced electronic seal of the provider 
+      of the qualified validation service.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-018
+    category: technical
+    requirement: Accept electronic seals regardless of electronic form
+    explanation: |
+      Relying parties cannot deny legal effect or admissibility of an electronic seal 
+      solely because it is in electronic form.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 35
+      paragraph: "1"
+    legalText: |
+      An electronic seal shall not be denied legal effect and admissibility as evidence 
+      in legal proceedings solely on the grounds that it is in an electronic form or that 
+      it does not meet the requirements for qualified electronic seals.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-019
+    category: technical
+    requirement: Recognize qualified electronic seals' presumptions
+    explanation: |
+      Qualified electronic seals enjoy the presumption of data integrity and origin correctness.
+      RPs should rely on these presumptions when verifying sealed data.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 35
+      paragraph: "2"
+    legalText: |
+      A qualified electronic seal shall enjoy the presumption of integrity of the data and 
+      of correctness of the origin of that data to which the qualified electronic seal is linked.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-020
+    category: technical
+    requirement: Recognize qualified electronic seals from all Member States
+    explanation: |
+      Cross-border recognition is mandatory. A qualified electronic seal issued in 
+      any EU Member State must be recognized in all other Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 35
+      paragraph: "3"
+    legalText: |
+      A qualified electronic seal based on a qualified certificate issued in one Member State 
+      shall be recognised as a qualified electronic seal in all other Member States.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-021
+    category: technical
+    requirement: "Public sector: Accept advanced seals in defined formats"
+    explanation: |
+      Public sector relying parties requiring advanced electronic seals must accept 
+      them in the formats defined by Commission implementing acts.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 37
+      paragraph: "1"
+    legalText: |
+      If a Member State requires an advanced electronic seal in order to use an online service 
+      offered by, or on behalf of, a public sector body, that Member State shall recognise 
+      advanced electronic seals, advanced electronic seals based on a qualified certificate 
+      for electronic seals and qualified electronic seals at least in the formats or using 
+      methods defined in the implementing acts referred to in paragraph 5.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    profileFilter:
+      - public_sector
+    useCases:
+      - esignature
+      - pid-online
+  - id: RP-TEC-022
+    category: technical
+    requirement: Validate qualified electronic seals correctly
+    explanation: |
+      Articles 32-34 for signature validation apply mutatis mutandis to electronic seals.
+      RPs should validate seals using the same processes as signatures.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 40
+      paragraph: "1"
+    legalText: |
+      Articles 32, 33 and 34 shall apply mutatis mutandis to the validation and 
+      preservation of qualified electronic seals.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-023
+    category: technical
+    requirement: Accept electronic time stamps regardless of electronic form
+    explanation: |
+      Relying parties cannot deny legal effect of an electronic time stamp solely 
+      because it is in electronic form.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 41
+      paragraph: "1"
+    legalText: |
+      An electronic time stamp shall not be denied legal effect and admissibility as 
+      evidence in legal proceedings solely on the grounds that it is in an electronic 
+      form or that it does not meet the requirements of the qualified electronic time stamp.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-024
+    category: technical
+    requirement: Recognize qualified time stamps' presumptions
+    explanation: |
+      Qualified electronic time stamps enjoy the presumption of accuracy of date/time 
+      and integrity of the bound data. RPs should rely on these presumptions.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 41
+      paragraph: "2"
+    legalText: |
+      A qualified electronic time stamp shall enjoy the presumption of the accuracy of 
+      the date and the time it indicates and the integrity of the data to which the 
+      date and time are bound.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-025
+    category: technical
+    requirement: Recognize qualified time stamps from all Member States
+    explanation: |
+      Cross-border recognition is mandatory. A qualified electronic time stamp issued 
+      in any EU Member State must be recognized in all other Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 41
+      paragraph: "3"
+    legalText: |
+      A qualified electronic time stamp issued in one Member State shall be recognised 
+      as a qualified electronic time stamp in all Member States.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-026
+    category: technical
+    requirement: Accept electronic registered delivery data regardless of form
+    explanation: |
+      Relying parties cannot deny legal effect of data sent/received using electronic 
+      registered delivery services solely because it is electronic.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 43
+      paragraph: "1"
+    legalText: |
+      Data sent and received using an electronic registered delivery service shall not 
+      be denied legal effect and admissibility as evidence in legal proceedings solely 
+      on the grounds that it is in an electronic form or that it does not meet the 
+      requirements of the qualified electronic registered delivery service.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-027
+    category: technical
+    requirement: Recognize qualified registered delivery presumptions
+    explanation: |
+      Qualified electronic registered delivery services enjoy presumptions of data integrity,
+      sender/addressee identification, and date/time accuracy.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 43
+      paragraph: "2"
+    legalText: |
+      Data sent and received using a qualified electronic registered delivery service 
+      shall enjoy the presumption of the integrity of the data, the sending of that data 
+      by the identified sender, its receipt by the identified addressee and the accuracy 
+      of the date and time of sending and receipt indicated by the qualified electronic 
+      registered delivery service.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-028
+    category: technical
+    requirement: Recognize qualified certificates for website authentication
+    explanation: |
+      Qualified certificates for website authentication issued in any Member State 
+      must be recognized in all other Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 24a
+      paragraph: "7"
+    legalText: |
+      A qualified certificate for website authentication issued in one Member State 
+      shall be recognised as a qualified certificate for website authentication in 
+      all other Member States.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+      - pid-online
+  - id: RP-TEC-029
+    category: technical
+    requirement: Accept electronic attestations of attributes regardless of form
+    explanation: |
+      Relying parties cannot deny legal effect of an electronic attestation of attributes 
+      solely because it is in electronic form.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45b
+      paragraph: "1"
+    legalText: |
+      An electronic attestation of attributes shall not be denied legal effect or 
+      admissibility as evidence in legal proceedings on the sole ground that it is 
+      in electronic form or that it does not meet the requirements for qualified 
+      electronic attestations of attributes.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-030
+    category: technical
+    requirement: Recognize legal effect of qualified EAA and public sector EAA
+    explanation: |
+      Qualified EAA and attestations issued by public sector bodies responsible for 
+      authentic sources have the same legal effect as paper attestations.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45b
+      paragraph: "2"
+    legalText: |
+      A qualified electronic attestation of attributes and attestations of attributes 
+      issued by, or on behalf of, a public sector body responsible for an authentic 
+      source shall have the same legal effect as lawfully issued attestations in paper form.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-031
+    category: technical
+    requirement: Recognize public sector EAA from all Member States
+    explanation: |
+      Cross-border recognition is mandatory. EAA issued by a public sector body in 
+      one Member State must be recognized in all other Member States.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45b
+      paragraph: "3"
+    legalText: |
+      An attestation of attributes issued by or on behalf of a public sector body 
+      responsible for an authentic source in one Member State shall be recognised 
+      as an attestation of attributes issued by or on behalf of a public sector body 
+      responsible for an authentic source in all Member States.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-032
+    category: technical
+    requirement: Accept electronically archived data regardless of form
+    explanation: |
+      Relying parties cannot deny legal effect of electronically preserved data solely 
+      because it is electronic or not preserved using a qualified archiving service.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45i
+      paragraph: "1"
+    legalText: |
+      Electronic data and electronic documents preserved using an electronic archiving 
+      service shall not be denied legal effect or admissibility as evidence in legal 
+      proceedings on the sole ground that they are in electronic form or that they are 
+      not preserved using a qualified electronic archiving service.
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-033
+    category: technical
+    requirement: Recognize qualified archiving service presumptions
+    explanation: |
+      Data preserved using qualified electronic archiving enjoys the presumption of 
+      integrity and origin for the duration of preservation.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45i
+      paragraph: "2"
+    legalText: |
+      Electronic data and electronic documents preserved using a qualified electronic 
+      archiving service shall enjoy the presumption of their integrity and of their 
+      origin for the duration of the preservation period by the qualified trust service provider.
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-034
+    category: technical
+    requirement: Accept electronic ledger records regardless of form
+    explanation: |
+      Relying parties cannot deny legal effect of electronic ledger records solely 
+      because they are in electronic form.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45k
+      paragraph: "1"
+    legalText: |
+      An electronic ledger shall not be denied legal effect or admissibility as evidence 
+      in legal proceedings solely on the grounds that it is in an electronic form or 
+      that it does not meet the requirements for qualified electronic ledgers.
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-035
+    category: technical
+    requirement: Recognize qualified electronic ledger presumptions
+    explanation: |
+      Data records in a qualified electronic ledger enjoy the presumption of unique, 
+      accurate sequential chronological ordering and integrity.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45k
+      paragraph: "2"
+    legalText: |
+      Data records contained in a qualified electronic ledger shall enjoy the presumption 
+      of their unique and accurate sequential chronological ordering and of their integrity.
+    deadline: "2025-05-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-TEC-036
+    category: technical
+    bindingType: mandatory
+    requirement: Support ISO/IEC 18013-5 data format for PID
+    explanation: |
+      Relying parties must be able to process Person Identification Data presented 
+      in the ISO/IEC 18013-5:2021 format (mDoc). This is one of two mandatory formats 
+      for PID.
+    legalBasis:
+      regulation: 2024/2977
+      article: Annex
+      paragraph: "4"
+    legalText: |
+      Person identification data shall be issued in two formats:
+      (1) the format specified in ISO/IEC 18013-5:2021;
+      (2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - proximity-id
+  - id: RP-TEC-037
+    category: technical
+    bindingType: mandatory
+    requirement: Support W3C Verifiable Credentials data format for PID
+    explanation: |
+      Relying parties must be able to process Person Identification Data presented 
+      in the W3C Verifiable Credentials Data Model 1.1 format. This is one of two 
+      mandatory formats for PID.
+    legalBasis:
+      regulation: 2024/2977
+      article: Annex
+      paragraph: "4"
+    legalText: |
+      Person identification data shall be issued in two formats:
+      (1) the format specified in ISO/IEC 18013-5:2021;
+      (2) 'Verifiable Credentials Data Model 1.1.', W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-TEC-038
+    category: technical
+    bindingType: mandatory
+    requirement: Process mandatory PID attributes correctly
+    explanation: |
+      Relying parties must correctly process the mandatory PID attributes: 
+      family_name, given_name, birth_date, birth_place, and nationality. 
+      These are always present in valid PID credentials.
+    legalBasis:
+      regulation: 2024/2977
+      article: Annex
+      paragraph: "1"
+    legalText: |
+      Mandatory attributes: family_name (current last name(s)), given_name 
+      (current first name(s)), birth_date (day, month, year), birth_place 
+      (country/state/city of birth), nationality (alpha-2 country codes).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - proximity-id
+  - id: RP-TEC-039
+    category: technical
+    bindingType: mandatory
+    requirement: Handle optional PID attributes when present
+    explanation: |
+      Relying parties should correctly process optional PID attributes when 
+      presented, including: resident_address, personal_administrative_number, 
+      portrait, family_name_birth, given_name_birth, sex, email_address, 
+      and mobile_phone_number.
+    legalBasis:
+      regulation: 2024/2977
+      article: Annex
+      paragraph: "1"
+    legalText: |
+      Optional attributes include: resident_address, resident_country, 
+      resident_state, resident_city, resident_postal_code, resident_street, 
+      resident_house_number, personal_administrative_number, portrait, 
+      family_name_birth, given_name_birth, sex, email_address, mobile_phone_number.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - proximity-id
+  - id: RP-TEC-040
+    category: technical
+    bindingType: mandatory
+    requirement: Verify PID validity status before relying
+    explanation: |
+      Relying parties must check the validity status of presented PID before 
+      relying on it. The location of validity status information is included 
+      in the PID metadata (location_status attribute).
+    legalBasis:
+      regulation: 2024/2977
+      article: Article 5
+      paragraph: "7"
+    legalText: |
+      Where providers of person identification data revoke person identification 
+      data issued to wallet units, they shall make publicly available the validity 
+      status of person identification data they issue, in a privacy preserving 
+      manner, and indicate the location of that information in the person 
+      identification data.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - proximity-id
+  - id: RP-TEC-041
+    category: technical
+    bindingType: mandatory
+    requirement: Process legal person PID attributes
+    explanation: |
+      When processing legal person identification data, relying parties must 
+      handle the mandatory attributes (current legal name, unique identifier) 
+      and optional attributes (address, VAT, tax reference, LEI, EORI, etc.).
+    legalBasis:
+      regulation: 2024/2977
+      article: Annex
+      paragraph: "2"
+    legalText: |
+      Legal person mandatory data: current legal name; unique identifier 
+      constructed by the sending Member State. Optional: current address, 
+      VAT registration number, tax reference number, European unique identifier, 
+      Legal Entity Identifier (LEI), EORI, excise number.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - open-bank-account
+  - id: RP-TEC-042
+    category: technical
+    bindingType: mandatory
+    requirement: Support mandatory data formats from Annex II
+    explanation: |
+      Relying parties must support the data formats specified in Annex II of 2024/2979 
+      for person identification data and electronic attestations of attributes. This 
+      includes ISO/IEC 18013-5 and W3C Verifiable Credentials.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 8
+      paragraph: ""
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support the usage of 
+      person identification data and electronic attestations of attributes issued 
+      in compliance with the list of standards set out in Annex II.
+
+      Annex II: ISO/IEC.18013-5:2021; 'Verifiable Credentials Data Model 1.1', 
+      W3C Recommendation, 3 March 2022.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-TEC-043
+    category: technical
+    bindingType: mandatory
+    requirement: Support signature formats from Annex IV when requesting signatures
+    explanation: |
+      When relying parties request electronic signatures or seals from wallet users, 
+      they must support the mandatory signature formats specified in Annex IV, and 
+      may optionally support XAdES, JAdES, CAdES, and ASiC formats.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 12
+      paragraph: 2(c)
+    legalText: |
+      Signature creation applications shall have the following functions:
+      (c) creating signatures or seals in accordance with at least the mandatory 
+      formats referred to in Annex IV.
+
+      Annex IV optional formats: XAdES (XML), JAdES (JSON), CAdES (CMS), ASiC (containers).
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-VER-001
+    category: verification
+    requirement: Implement and perform authentication and validation procedures
+    explanation: |
+      Relying parties have the legal responsibility for properly authenticating and validating 
+      person identification data and electronic attestations of attributes. This is not optional - 
+      the RP must actively perform these procedures correctly.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure for authenticating 
+      and validating person identification data and electronic attestation of attributes 
+      requested from European Digital Identity Wallets.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-VER-002
+    category: verification
+    requirement: Support wallet-based Strong Customer Authentication (SCA)
+    explanation: |
+      Payment service providers must accept the EUDI Wallet as a means of performing 
+      Strong Customer Authentication for payment transactions and account access.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5f
+      paragraph: "2"
+    relatedRegulation:
+      regulation: PSD2
+      article: Article 97
+    legalText: |
+      Where private relying parties that provide services [...] are required by Union or 
+      national law to use strong user authentication for online identification [...] 
+      including in the areas of [...] banking, financial services [...] those private 
+      relying parties shall [...] also accept European Digital Identity Wallets.
+    deadline: "2027-12-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - private_sector
+    useCases:
+      - payment-auth
+      - open-bank-account
+  - id: RP-VER-003
+    category: verification
+    requirement: "Public sector: Recognize e-ID from other Member States"
+    explanation: |
+      When requiring electronic identification for online services, public sector RPs 
+      must accept notified e-ID means from other Member States at substantial/high levels.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 6
+      paragraph: "1"
+    legalText: |
+      When an electronic identification using an electronic identification means and 
+      authentication is required under national law or by administrative practice to 
+      access a service provided by a public sector body online in one Member State, 
+      the electronic identification means issued in another Member State shall be 
+      recognised in the first Member State for the purposes of cross-border authentication 
+      for that service online.
+    deadline: "2018-09-29"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-004
+    category: verification
+    requirement: "Public sector: Ensure unequivocal identity matching for cross-border"
+    explanation: |
+      When acting as relying parties for cross-border services, public sector bodies 
+      must ensure unequivocal identity matching for users with notified e-ID or EUDI Wallets.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 11a
+      paragraph: "1"
+    legalText: |
+      When acting as relying parties for cross-border services, Member States shall 
+      ensure unequivocal identity matching for natural persons using notified electronic 
+      identification means or European Digital Identity Wallets.
+    deadline: "2024-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-005
+    category: verification
+    requirement: Protect personal data used for identity matching
+    explanation: |
+      For cross-border identity matching, appropriate technical and organisational measures 
+      must be in place to protect personal data and prevent user profiling.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 11a
+      paragraph: "2"
+    legalText: |
+      Member States shall provide for technical and organisational measures to ensure 
+      a high level of protection of personal data used for identity matching and to 
+      prevent the profiling of users.
+    deadline: "2024-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-006
+    category: verification
+    requirement: Access certificate revocation status information
+    explanation: |
+      Qualified trust service providers must provide RPs with certificate validity/revocation 
+      information. RPs should use this to verify certificate status before relying on them.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 24
+      paragraph: "4"
+    legalText: |
+      With regard to paragraph 3, qualified trust service providers issuing qualified 
+      certificates shall provide to any relying party information on the validity or 
+      revocation status of qualified certificates issued by them. This information 
+      shall be made available at least on a per certificate basis at any time and 
+      beyond the validity period of the certificate in an automated manner that is 
+      reliable, free of charge and efficient.
+    deadline: "2016-07-01"
+    roles:
+      - relying_party
+    useCases:
+      - esignature
+  - id: RP-VER-007
+    category: verification
+    bindingType: informative
+    requirement: Very large online platforms must accept wallet authentication
+    explanation: |
+      Recital 57 states that very large online platforms (as defined in DSA) that 
+      require authentication should accept EUDI Wallets upon user request, while 
+      respecting data minimisation and pseudonym rights.
+    legalBasis:
+      regulation: 2014/910
+      article: Recital 57
+      paragraph: ""
+    legalText: |
+      Where very large online platforms...require users to be authenticated in order 
+      to access online services, those platforms should be required to accept the use 
+      of European Digital Identity Wallets upon the voluntary request of the user. 
+      Users should be under no obligation to use a European Digital Identity Wallet 
+      to access private services... However, if users wish to do so, very large online 
+      platforms should accept them for that purpose, while respecting the principle 
+      of data minimisation and the right of the users to use freely chosen pseudonyms.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases: all
+  - id: RP-VER-008
+    category: verification
+    bindingType: mandatory
+    requirement: Verify wallet unit attestation validity before transactions
+    explanation: |
+      Before accepting credentials from a wallet, relying parties should verify the 
+      validity status of the wallet unit attestation. This ensures the wallet unit 
+      is still valid and not revoked.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 7
+      paragraph: "4"
+    legalText: |
+      Where wallet providers have revoked wallet unit attestations, they shall make 
+      publicly available the validity status of the wallet unit attestation in a 
+      privacy preserving manner and describe the location of that information in 
+      the wallet unit attestation.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+      - proximity-id
+  - id: RP-VER-009
+    category: verification
+    bindingType: mandatory
+    requirement: Request RP-specific pseudonyms when appropriate
+    explanation: |
+      Relying parties may request pseudonyms that are specific and unique to them, 
+      allowing persistent pseudonymous authentication without requiring full identity 
+      disclosure. The pseudonym can be requested standalone or with other data.
+    legalBasis:
+      regulation: 2024/2979
+      article: Article 14
+      paragraph: "2"
+    legalText: |
+      Wallet units shall support the generation, upon the request of a wallet-relying 
+      party, of a pseudonym which is specific and unique to that wallet-relying party 
+      and provide this pseudonym to the wallet-relying party, either standalone or in 
+      combination with any person identification data or electronic attribute 
+      attestation requested by that wallet-relying party.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pseudonym
+      - age-verification
+  - id: RP-VER-010
+    category: verification
+    bindingType: mandatory
+    requirement: Perform unequivocal identity matching for cross-border users
+    explanation: |
+      Public sector relying parties offering cross-border services must implement 
+      identity matching processes to link wallet credentials or notified eID means 
+      to existing user records or registers.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 2
+      paragraph: 1-2
+    legalText: |
+      Where a public sector body acts as a relying party in the context of an online 
+      cross-border service offered by or on behalf of that public sector body, Member 
+      States shall ensure that the process set out in paragraph 2 is used to ensure 
+      unequivocal identity matching of natural persons.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-011
+    category: verification
+    bindingType: mandatory
+    requirement: Use mandatory PID attributes for wallet-based identity matching
+    explanation: |
+      When users authenticate via EUDI Wallet, relying parties must use the mandatory 
+      PID attributes from 2024/2977 Annex Section 1 for identity matching, plus any 
+      optional data needed to ensure uniqueness.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 2
+      paragraph: "3"
+    legalText: |
+      When reliance is on a wallet, the information to be used for unequivocal identity 
+      matching shall be the mandatory person identification data set out in Section 1 
+      of the Annex to Implementing Regulation (EU) 2024/2977, together with any optional 
+      data that is needed to ensure that the presented dataset is unique.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-012
+    category: verification
+    bindingType: mandatory
+    requirement: Handle orthographic variations in identity matching
+    explanation: |
+      Identity matching must not be affected by differences in transliteration, blank 
+      spaces, hyphenation, concatenation, and similar orthographic variations required 
+      under Union or national law.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 2
+      paragraph: "6"
+    legalText: |
+      The outcome of the process described in paragraph 5 shall, to the extent possible, 
+      not be affected by differences in transliteration, blank spaces, hyphenation, 
+      concatenation, and similar orthographic variations that are required under Union 
+      law or national law of the Member State.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-013
+    category: verification
+    bindingType: mandatory
+    requirement: Inform users of successful identity matching outcomes
+    explanation: |
+      When identity matching is successful, relying parties must inform users that 
+      they have been granted access, whether they were matched to an existing record 
+      or registered as a new user, and options for reusing the match.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 3
+      paragraph: 1-2
+    legalText: |
+      The first time a user performs the identity matching process and it is deemed 
+      successful, the relying party or the party acting on its behalf shall ensure 
+      that the user is informed of the fact that the user has been granted access 
+      to the service to which they requested access.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+  - id: RP-VER-014
+    category: verification
+    bindingType: mandatory
+    requirement: Inform users when identity matching fails and provide alternatives
+    explanation: |
+      When identity matching is unsuccessful, relying parties must inform users why 
+      the match failed and provide information about alternative methods or 
+      complementary processes available.
+    legalBasis:
+      regulation: 2025/846
+      article: Article 4
+      paragraph: "1"
+    legalText: |
+      Where an identity matching process is deemed unsuccessful, the relying party 
+      or the party acting on its behalf shall ensure that the user of a notified 
+      electronic identification means or of a wallet is informed if:
+      (a) the data made available was not successfully and unequivocally matched;
+      (b) other options for identity matching or other methods for gaining access 
+      to the service are available.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    useCases:
+      - pid-online
+
+  # =====================================================
+  # INTERMEDIARY-SPECIFIC REQUIREMENTS
+  # Profile: uses_intermediary - For RPs delegating to intermediaries
+  # Profile: acts_as_intermediary - For organizations providing intermediary services
+  # =====================================================
+
+  # --- Profile: uses_intermediary ---
+  - id: RP-REG-014
+    category: registration
+    bindingType: mandatory
+    requirement: Indicate reliance on intermediary in national register
+    explanation: |
+      Relying parties that delegate wallet interaction to a third-party intermediary 
+      must declare this in their national registration. This creates a formal record 
+      of the dependency chain for supervisory oversight.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "14"
+    legalText: |
+      Where applicable, an indication that the wallet-relying party relies upon an 
+      intermediary acting on behalf of the relying party who intends to rely upon 
+      the wallet.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  - id: RP-REG-015
+    category: registration
+    bindingType: mandatory
+    requirement: Provide formal association to specific intermediary
+    explanation: |
+      When using an intermediary, relying parties must provide a formal association 
+      mapping to that specific intermediary in the national register. This enables 
+      supervisory bodies and users to trace the complete trust chain.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "15"
+    legalText: |
+      Where applicable, an association to the intermediary that the wallet-relying 
+      party is relying upon that is acting on behalf of the relying party who intends 
+      to rely upon the wallet.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  - id: RP-GOV-009
+    category: governance
+    bindingType: mandatory
+    requirement: Verify intermediary's registered and certified status
+    explanation: |
+      Before delegating wallet interactions, relying parties should verify that their 
+      chosen intermediary is properly registered as an RP and holds valid Access 
+      Certificates. This due diligence ensures the trust chain is intact.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 5
+      paragraph: "1-2"
+    legalText: |
+      Wallet-relying parties shall at least provide the information set out in Annex I 
+      to national registers. Wallet-relying parties shall ensure that the information 
+      provided is accurate at the time of registration.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+    notes: |
+      Best practice requirement. While not explicitly mandated, due diligence on 
+      intermediary status is implied by the registration and association requirements.
+
+  - id: RP-PRV-011
+    category: privacy
+    bindingType: mandatory
+    requirement: Establish Data Processing Agreement with intermediary
+    explanation: |
+      When using a SaaS intermediary service, the intermediary processes personal data 
+      on behalf of the relying party. Under GDPR Article 28, a Data Processing Agreement 
+      (DPA) is mandatory, specifying processing purposes, categories, deletion obligations, 
+      and audit rights.
+    legalBasis:
+      regulation: GDPR
+      article: Article 28
+      paragraph: "3"
+    relatedRegulation:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    legalText: |
+      Processing by a processor shall be governed by a contract or other legal act 
+      under Union or Member State law, that is binding on the processor with regard 
+      to the controller and that sets out the subject-matter and duration of the 
+      processing, the nature and purpose of the processing, the type of personal data 
+      and categories of data subjects and the obligations and rights of the controller.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+    notes: |
+      Applies primarily to SaaS intermediary deployments where the vendor processes 
+      data on behalf of the RP. Self-hosted connector deployments may not require 
+      a DPA for the wallet data flow itself.
+
+  - id: RP-SEC-004
+    category: security
+    bindingType: mandatory
+    requirement: Monitor and act on intermediary breach notifications
+    explanation: |
+      Relying parties using intermediaries must have processes to receive and respond 
+      to security breach notifications from their intermediary. When an intermediary 
+      is suspended or breached, downstream RPs must assess impact on their services.
+    legalBasis:
+      regulation: 2025/847
+      article: Article 5
+      paragraph: 1(d)
+    legalText: |
+      Information in a clear, comprehensive and easily accessible manner about the 
+      suspension of the provision and the use of a wallet solution shall be provided, 
+      without undue delay and no later than 24 hours after the suspension of the 
+      provision and the use of the wallet solution, to the wallet-relying parties 
+      registered in accordance with Article 5b of Regulation (EU) No 910/2014.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - uses_intermediary
+    useCases: all
+
+  # --- Profile: acts_as_intermediary ---
+  - id: RP-REG-016
+    category: registration
+    bindingType: mandatory
+    requirement: Register with appropriate entitlement for intermediary services
+    explanation: |
+      Organizations acting as intermediaries must register as wallet-relying parties 
+      with the appropriate entitlement type. The Service_Provider entitlement is 
+      the typical classification for intermediaries providing connection services.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex I
+      paragraph: "12"
+    legalText: |
+      The entitlement or entitlements of the wallet-relying party, that shall be 
+      expressed as: (a) 'Service_Provider' to express the entitlement of the 
+      wallet-relying party as a provider of services.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-TEC-019
+    category: technical
+    bindingType: mandatory
+    requirement: Obtain and manage Wallet-Relying Party Access Certificates
+    explanation: |
+      Intermediaries must obtain wallet-relying party access certificates to 
+      authenticate to wallet units. These certificates identify the intermediary 
+      to the wallet ecosystem and must be managed through proper lifecycle processes.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 7
+      paragraph: "1-2"
+    legalText: |
+      Member States shall authorise at least one certificate authority to issue 
+      wallet-relying party access certificates. Member States shall ensure that 
+      providers of wallet-relying party access certificates issue wallet-relying 
+      party access certificates exclusively to registered wallet-relying parties.
+    annexReference: |
+      Annex IV details requirements for access certificate policies and practices.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-TEC-020
+    category: technical
+    bindingType: mandatory
+    requirement: Orchestrate Registration Certificates for downstream RPs
+    explanation: |
+      Intermediaries must manage wallet-relying party registration certificates on 
+      behalf of their client RPs. Each client and use case requires a distinct 
+      registration certificate expressing the intended use and requested data.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 8
+      paragraph: "1-2"
+    legalText: |
+      Where a Member State authorised the issuance of a wallet-relying party 
+      registration certificate, that Member State shall require providers of 
+      wallet-relying party registration certificates to issue wallet-relying party 
+      registration certificates exclusively to registered wallet-relying parties; 
+      ensure that each intended use is expressed in the wallet-relying party 
+      registration certificates.
+    annexReference: |
+      Annex V details requirements for registration certificate policies and practices.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Applies in Member States that have authorized registration certificates. 
+      Multi-tenancy support is a key technical capability for intermediaries.
+
+  - id: RP-TRN-001
+    category: transparency
+    bindingType: mandatory
+    requirement: Present both intermediary and end-RP identity to wallet users
+    explanation: |
+      When acting as an intermediary, both the intermediary's identity (via Access 
+      Certificate) and the end-RP's identity and intended use (via Registration 
+      Certificate) must be presented to wallet users. This ensures users can make 
+      informed consent decisions.
+    legalBasis:
+      regulation: 2025/848
+      article: Annex V
+      paragraph: 3(j)
+    legalText: |
+      The obligation for the wallet-relying party registration certificates to 
+      include the information referred to in Annex I, points 1, 2, 3, 5, 6 and 8, 
+      9, 10, 11, 12, 13, 14 and 15.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+
+  - id: RP-SEC-005
+    category: security
+    bindingType: mandatory
+    requirement: Implement stateless transaction processing architecture
+    explanation: |
+      To comply with the Article 5b(10) "no-storage" mandate, intermediaries must 
+      implement a stateless processing architecture where transaction content data 
+      is purged immediately after forwarding. This requires technical measures to 
+      prevent any persistence of user data.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      relying parties and shall not store data about the content of the transaction.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Technical implementation should include memory-only processing, secure deletion, 
+      and audit mechanisms to demonstrate non-storage. Log retention for operational 
+      purposes (without transaction content) may still be permitted.
+
+  - id: RP-GOV-010
+    category: governance
+    bindingType: mandatory
+    requirement: Maintain audit trail demonstrating data non-storage
+    explanation: |
+      Intermediaries must maintain evidence that they comply with the no-storage 
+      mandate. This includes technical audits, SOC2 reports, and architectural 
+      documentation demonstrating stateless processing.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "10"
+    relatedRegulation:
+      regulation: 2025/848
+      article: Article 10
+    legalText: |
+      Registrars shall keep records of the information provided by wallet-relying 
+      parties and registered in accordance with Annex I for the registration of a 
+      wallet-relying party and the issuance of the wallet-relying party access 
+      certificates and the wallet-relying party registration certificates, and of 
+      any subsequent changes to this information, for 10 years.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      Best practice to support supervisory oversight and client due diligence. 
+      Third-party audits (SOC2, ISO 27001) can provide independent verification.
+
+  - id: RP-TEC-021
+    category: technical
+    bindingType: informative
+    requirement: Support multi-wallet interoperability
+    explanation: |
+      Intermediaries should support interoperability with all certified EUDI Wallets 
+      across Member States. This includes handling protocol variations, semantic 
+      normalization, and trust list monitoring for all national implementations.
+    legalBasis:
+      regulation: 2024/2982
+      article: Article 5
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols and 
+      interfaces for the presentation of attributes to wallet-relying parties, 
+      remotely, and where appropriate in proximity, in accordance with the 
+      standards set out in the Annex.
+    deadline: "2027-11-21"
+    roles:
+      - relying_party
+    profileFilter:
+      - acts_as_intermediary
+    useCases: all
+    notes: |
+      While the legal requirement targets wallet providers, intermediaries acting 
+      as "connectors" take on the interoperability burden for their clients. 
+      Industry best practice is to test against multiple wallet implementations.

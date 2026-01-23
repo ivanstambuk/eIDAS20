@@ -227,6 +227,9 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
 
 function ARFReferenceLink({ arfReference, arfData }) {
     const [showPopover, setShowPopover] = useState(false);
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+    const triggerRef = useRef(null);
+    const hideTimeoutRef = useRef(null);
 
     if (!arfReference) return null;
 
@@ -246,16 +249,53 @@ function ARFReferenceLink({ arfReference, arfData }) {
     const notes = arfReq?.notes;
     const isEmpty = arfReq?.isEmpty;
 
+    const handleMouseEnter = () => {
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+        }
+
+        if (triggerRef.current) {
+            const rect = triggerRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const popoverHeight = 200; // Approximate height
+            const spaceAbove = rect.top;
+            const showBelow = spaceAbove < popoverHeight + 20;
+
+            setPopoverPosition({
+                top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
+                left: Math.max(8, Math.min(rect.left, window.innerWidth - 420))
+            });
+        }
+        setShowPopover(true);
+    };
+
+    const handleMouseLeave = () => {
+        hideTimeoutRef.current = setTimeout(() => {
+            setShowPopover(false);
+        }, 150);
+    };
+
+    const handlePopoverMouseEnter = () => {
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+        }
+    };
+
+    const handlePopoverMouseLeave = () => {
+        setShowPopover(false);
+    };
+
     return (
         <span className="vcq-arf-wrapper">
             <a
+                ref={triggerRef}
                 href={arfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
                 title={specification ? specification.substring(0, 200) + '...' : `View ${topic} in ARF on GitHub`}
-                onMouseEnter={() => setShowPopover(true)}
-                onMouseLeave={() => setShowPopover(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
                 <span className="vcq-arf-icon">📐</span>
                 <span className="vcq-arf-ref">{hlr}</span>
@@ -263,7 +303,16 @@ function ARFReferenceLink({ arfReference, arfData }) {
             </a>
 
             {showPopover && arfReq && !isEmpty && (
-                <div className="vcq-arf-popover">
+                <div
+                    className="vcq-arf-popover"
+                    style={{
+                        position: 'fixed',
+                        top: `${popoverPosition.top}px`,
+                        left: `${popoverPosition.left}px`,
+                    }}
+                    onMouseEnter={handlePopoverMouseEnter}
+                    onMouseLeave={handlePopoverMouseLeave}
+                >
                     <div className="vcq-arf-popover-header">
                         <span className="vcq-arf-popover-id">{hlr}</span>
                         <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
@@ -1333,6 +1382,13 @@ export default function VendorQuestionnaire() {
                             >
                                 ← Modify Selection
                             </button>
+                            <a
+                                href={`${import.meta.env.BASE_URL}#/requirements?sources=vcq&roles=${selectedTypes.join(',')}`}
+                                className="btn btn-secondary"
+                                style={{ textDecoration: 'none' }}
+                            >
+                                🔍 Browse All Requirements
+                            </a>
                         </div>
                     </div>
 

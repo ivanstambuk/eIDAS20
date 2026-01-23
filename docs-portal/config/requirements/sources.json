@@ -1,0 +1,262 @@
+{
+    "$schema": "./sources.schema.json",
+    "$comment": "Metadata for all requirements sources in the Unified Requirements Browser",
+    "sources": {
+        "arf-hlr": {
+            "id": "arf-hlr",
+            "name": "ARF High-Level Requirements",
+            "shortName": "ARF HLRs",
+            "description": "Official high-level requirements from the EUDI Wallet Architecture and Reference Framework",
+            "icon": "📐",
+            "color": "#3B82F6",
+            "authority": "European Commission",
+            "url": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
+            "dataFile": "arf-hlr.json",
+            "count": null
+        },
+        "vcq": {
+            "id": "vcq",
+            "name": "VCQ Requirements",
+            "shortName": "VCQ",
+            "description": "Vendor Compliance Questionnaire requirements for EUDIW intermediaries and vendors",
+            "icon": "📦",
+            "color": "#10B981",
+            "authority": "Internal",
+            "dataPath": "../vcq/requirements/",
+            "count": null
+        },
+        "rca": {
+            "id": "rca",
+            "name": "RCA Requirements",
+            "shortName": "RCA",
+            "description": "Relying Party Compliance Assessment requirements for organizations using the EUDIW",
+            "icon": "🏢",
+            "color": "#F59E0B",
+            "authority": "Internal",
+            "dataPath": "../rca/requirements/",
+            "count": null
+        },
+        "regulation": {
+            "id": "regulation",
+            "name": "Regulatory Requirements",
+            "shortName": "Regulations",
+            "description": "Requirements extracted from eIDAS 2.0, GDPR, and other applicable regulations",
+            "icon": "⚖️",
+            "color": "#8B5CF6",
+            "authority": "EU Official Journal",
+            "dataPath": "../regulations/",
+            "count": null
+        }
+    },
+    "technicalSpecifications": {
+        "$comment": "Reference-only: Technical Specifications are not extracted but referenced from requirements",
+        "basePath": "../../../04_technical_specs/docs/technical-specifications/",
+        "specifications": [
+            {
+                "id": "TS1",
+                "title": "EUDI Wallet Trust Mark",
+                "file": "ts1-eudi-wallet-trust-mark.md"
+            },
+            {
+                "id": "TS2",
+                "title": "Notification & Publication of Provider Information",
+                "file": "ts2-notification-publication-provider-information.md"
+            },
+            {
+                "id": "TS3",
+                "title": "Wallet Unit Attestation",
+                "file": "ts3-wallet-unit-attestation.md"
+            },
+            {
+                "id": "TS4",
+                "title": "Zero-Knowledge Proofs",
+                "file": "ts4-zkp.md"
+            },
+            {
+                "id": "TS5",
+                "title": "Common Formats and API for RP Registration",
+                "file": "ts5-common-formats-and-api-for-rp-registration-information.md"
+            },
+            {
+                "id": "TS6",
+                "title": "Common Set of RP Information to be Registered",
+                "file": "ts6-common-set-of-rp-information-to-be-registered.md"
+            },
+            {
+                "id": "TS7",
+                "title": "Common Interface for Data Deletion Request",
+                "file": "ts7-common-interface-for-data-deletion-request.md"
+            },
+            {
+                "id": "TS8",
+                "title": "Common Interface for Reporting of WRP to DPA",
+                "file": "ts8-common-interface-for-reporting-of-wrp-to-dpa.md"
+            },
+            {
+                "id": "TS9",
+                "title": "Wallet-to-Wallet Interactions",
+                "file": "ts9-wallet-to-wallet-interactions.md"
+            },
+            {
+                "id": "TS10",
+                "title": "Data Portability and Download (Export)",
+                "file": "ts10-data-portability-and-download-(export).md"
+            },
+            {
+                "id": "TS11",
+                "title": "Interfaces and Formats for Catalogue of Attributes and Schemes",
+                "file": "ts11-interfaces-and-formats-for-catalogue-of-attributes-and-catalogue-of-schemes.md"
+            },
+            {
+                "id": "TS12",
+                "title": "Electronic Payments SCA Implementation with Wallet",
+                "file": "ts12-electronic-payments-SCA-implementation-with-wallet.md"
+            },
+            {
+                "id": "TS13",
+                "title": "ZK-SNARKs",
+                "file": "ts13-zksnarks.md"
+            },
+            {
+                "id": "TS14",
+                "title": "ZKPs from MMS",
+                "file": "ts14-zkps-from-mms.md"
+            }
+        ]
+    },
+    "roles": {
+        "$comment": "Role definitions aligned with term-roles.json",
+        "wallet_provider": {
+            "label": "Wallet Provider",
+            "icon": "📱"
+        },
+        "relying_party": {
+            "label": "Relying Party",
+            "icon": "🏢"
+        },
+        "pid_provider": {
+            "label": "PID Provider",
+            "icon": "🏛️"
+        },
+        "eaa_provider": {
+            "label": "(Q)EAA Provider",
+            "icon": "📜"
+        },
+        "qtsp": {
+            "label": "QTSP",
+            "icon": "🔐"
+        },
+        "holder": {
+            "label": "Holder / User",
+            "icon": "👤"
+        },
+        "supervisory": {
+            "label": "Supervisory Bodies",
+            "icon": "⚖️"
+        },
+        "trusted_list": {
+            "label": "Trusted List Providers",
+            "icon": "📋"
+        },
+        "intermediary": {
+            "label": "Intermediary",
+            "icon": "🔄"
+        },
+        "pif": {
+            "label": "PIF (Presentation Intermediary Forwarder)",
+            "icon": "➡️"
+        },
+        "vif": {
+            "label": "VIF (Verifiable Information Forwarder)",
+            "icon": "⬅️"
+        }
+    },
+    "categories": {
+        "protocols": {
+            "label": "Protocols & Interoperability",
+            "icon": "🔗"
+        },
+        "data-models": {
+            "label": "Data Models & Attestation Rules",
+            "icon": "📊"
+        },
+        "security": {
+            "label": "Security",
+            "icon": "🔒"
+        },
+        "privacy": {
+            "label": "Privacy",
+            "icon": "🔏"
+        },
+        "governance": {
+            "label": "Governance",
+            "icon": "⚙️"
+        },
+        "registration": {
+            "label": "Registration",
+            "icon": "📝"
+        },
+        "transparency": {
+            "label": "Transparency",
+            "icon": "👁️"
+        },
+        "verification": {
+            "label": "Verification",
+            "icon": "✅"
+        },
+        "wallet-provider": {
+            "label": "Wallet Provider Requirements",
+            "icon": "📱"
+        },
+        "relying-party": {
+            "label": "Relying Party Requirements",
+            "icon": "🏢"
+        },
+        "attestation-provider": {
+            "label": "Attestation Provider Requirements",
+            "icon": "📜"
+        }
+    },
+    "complianceLevels": {
+        "mandatory": {
+            "label": "Mandatory",
+            "description": "Must be implemented (derived from SHALL)",
+            "icon": "⚠️",
+            "color": "#EF4444"
+        },
+        "recommended": {
+            "label": "Recommended",
+            "description": "Should be implemented unless justified (derived from SHOULD)",
+            "icon": "💡",
+            "color": "#F59E0B"
+        },
+        "optional": {
+            "label": "Optional",
+            "description": "May be implemented (derived from MAY)",
+            "icon": "ℹ️",
+            "color": "#6B7280"
+        }
+    },
+    "criticalities": {
+        "critical": {
+            "label": "Critical",
+            "description": "Security, authentication, or trust-related requirement",
+            "color": "#DC2626"
+        },
+        "high": {
+            "label": "High",
+            "description": "Important for compliance",
+            "color": "#F97316"
+        },
+        "medium": {
+            "label": "Medium",
+            "description": "Standard requirement",
+            "color": "#EAB308"
+        },
+        "low": {
+            "label": "Low",
+            "description": "Minor or optional enhancement",
+            "color": "#22C55E"
+        }
+    }
+}

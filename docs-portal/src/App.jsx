@@ -11,6 +11,7 @@ const ImplementingActs = lazy(() => import('./pages/ImplementingActs'));
 const RegulationViewer = lazy(() => import('./pages/RegulationViewer'));
 const ComplianceAssessment = lazy(() => import('./pages/ComplianceAssessment'));
 const VendorQuestionnaire = lazy(() => import('./pages/VendorQuestionnaire'));
+const RequirementsBrowser = lazy(() => import('./pages/RequirementsBrowser'));
 
 // Loading fallback component
 function PageLoader() {
@@ -44,6 +45,7 @@ function App() {
               <Route path="implementing-acts" element={<ImplementingActs />} />
               <Route path="rca" element={<ComplianceAssessment />} />
               <Route path="vcq" element={<VendorQuestionnaire />} />
+              <Route path="requirements" element={<RequirementsBrowser />} />
 
               {/* Document viewers */}
               <Route path="regulation/:id" element={<RegulationViewer />} />

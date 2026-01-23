@@ -1,0 +1,293 @@
+# VCQ Requirements: ICT Third-Party / DORA Extended Scope (VEND-ICT-*)
+# 
+# These requirements apply when the RP is a DORA-regulated financial entity
+# and the intermediary qualifies as an ICT third-party service provider.
+# 
+# DORA-Subject Entities (Art. 2):
+# - Credit institutions, payment institutions, investment firms
+# - Insurance/reinsurance undertakings
+# - Crypto-asset service providers
+# - Central securities depositories
+# - Trading venues, central counterparties
+#
+# Schema Version: 1
+# Created: 2026-01-22
+# Decision: DEC-222
+
+schemaVersion: 1
+
+requirements:
+  # ============================================================================
+  # GOVERNANCE - Contractual Requirements
+  # ============================================================================
+  
+  - id: VEND-ICT-001
+    category: governance
+    requirement: "Include mandatory contractual provisions per DORA Article 30"
+    explanation: |
+      When the RP is a DORA-regulated financial entity, the contract with the 
+      ICT third-party (intermediary) must include all provisions specified in 
+      DORA Article 30(2), covering service descriptions, locations, security 
+      requirements, data protection, and termination rights.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2"
+    legalText: |
+      Contractual arrangements on the use of ICT services shall include at 
+      least the following: (a) a clear and complete description of all 
+      functions and ICT services to be provided; (b) the locations where 
+      functions and ICT services are to be provided and data processed; 
+      (c) provisions on availability, authenticity, integrity and 
+      confidentiality in relation to data protection...
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: critical
+  
+  - id: VEND-ICT-002
+    category: governance
+    requirement: "Provide audit rights as required by DORA Article 30(2)(e)"
+    explanation: |
+      The contract must grant the financial entity (and its supervisory 
+      authority) full rights of access, inspection, and audit of the ICT 
+      third-party service provider.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2(e)"
+    legalText: |
+      The rights of the financial entity and, where applicable, the relevant 
+      competent authority in relation to access, inspection and audit of the 
+      ICT third-party service provider.
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: critical
+  
+  - id: VEND-ICT-003
+    category: governance
+    requirement: "Support exit strategies and transition planning"
+    explanation: |
+      The vendor must support the financial entity's exit strategy with 
+      mandatory transition periods, data migration, and continuity of service 
+      during transitions to alternative providers.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2(j)"
+    legalText: |
+      Provisions on exit strategies, including a mandatory adequate transition 
+      period during which the ICT third-party service provider will continue 
+      providing the respective functions or ICT services.
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: critical
+  
+  - id: VEND-ICT-004
+    category: governance
+    requirement: "Participate in the financial entity's ICT risk management framework"
+    explanation: |
+      The intermediary must cooperate with the financial entity's overall ICT 
+      risk management program, including risk assessments, control testing, 
+      and remediation activities.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 28"
+      paragraph: "1"
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+  
+  # ============================================================================
+  # REGISTRATION & DUE DILIGENCE
+  # ============================================================================
+  
+  - id: VEND-ICT-005
+    category: registration
+    requirement: "Provide information required for the financial entity's Register of ICT TPPs"
+    explanation: |
+      Financial entities must maintain a register of all ICT third-party 
+      providers. The intermediary must provide all required information 
+      including entity details, services provided, criticality assessments, 
+      and contractual terms.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 28"
+      paragraph: "3"
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+  
+  - id: VEND-ICT-006
+    category: registration
+    requirement: "Support due diligence assessment before contract signing"
+    explanation: |
+      Before entering into a contractual arrangement, the financial entity 
+      must conduct due diligence on the ICT TPP. The vendor must provide 
+      information on their financial stability, ICT risk management 
+      capabilities, and compliance posture.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 29"
+      paragraph: "1"
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+  
+  # ============================================================================
+  # SECURITY & RESILIENCE
+  # ============================================================================
+  
+  - id: VEND-ICT-007
+    category: security
+    requirement: "Notify the financial entity of ICT-related incidents"
+    explanation: |
+      The intermediary must notify the financial entity without undue delay 
+      of any ICT-related incidents that may impact the service, enabling 
+      the financial entity to fulfill its own incident reporting obligations.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2(f)"
+    legalText: |
+      The obligation of the ICT third-party service provider to provide 
+      assistance in case of an ICT incident at no additional cost or at a 
+      cost that is determined ex-ante.
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: critical
+  
+  - id: VEND-ICT-008
+    category: security
+    requirement: "Participate in threat-led penetration testing if required"
+    explanation: |
+      If the financial entity is required to conduct threat-led penetration 
+      testing (TLPT), the ICT TPP must cooperate with such testing when 
+      relevant to the services provided.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 26"
+      paragraph: "4"
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: medium
+  
+  - id: VEND-ICT-009
+    category: security
+    requirement: "Maintain business continuity arrangements for ICT services"
+    explanation: |
+      The intermediary must maintain adequate business continuity and disaster 
+      recovery arrangements to ensure service availability meets the financial 
+      entity's requirements.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2(g)"
+    legalText: |
+      Provisions on the implementation and testing of business continuity 
+      measures and on the establishment of contingency plans.
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+  
+  # ============================================================================
+  # SUBCONTRACTING
+  # ============================================================================
+  
+  - id: VEND-ICT-010
+    category: governance
+    requirement: "Obtain approval for subcontracting of critical functions"
+    explanation: |
+      If the intermediary subcontracts any part of the ICT service that 
+      supports critical or important functions, prior approval from the 
+      financial entity is required. The subcontractor must meet equivalent 
+      requirements.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 30"
+      paragraph: "2(d)"
+    legalText: |
+      Provisions on the possibility, conditions and modalities of subcontracting 
+      by the ICT third-party service provider, and in particular for 
+      subcontracting ICT services supporting critical or important functions.
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+  
+  # ============================================================================
+  # CONCENTRATION RISK
+  # ============================================================================
+  
+  - id: VEND-ICT-011
+    category: governance
+    requirement: "Provide information for concentration risk assessment"
+    explanation: |
+      The intermediary must provide information enabling the financial entity 
+      to assess ICT concentration risk, including data on other financial 
+      entities served and interdependencies with other ICT providers.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 28"
+      paragraph: "4"
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: medium
+  
+  # ============================================================================
+  # CRITICAL ICT THIRD-PARTY PROVISIONS
+  # ============================================================================
+  
+  - id: VEND-ICT-012
+    category: certification
+    requirement: "Comply with enhanced oversight if designated as Critical ICT TPP"
+    explanation: |
+      If the ESAs designate the intermediary as a Critical ICT Third-Party 
+      Provider (CTPP), they become subject to enhanced oversight including 
+      direct supervision by the Lead Overseer, regular assessments, and 
+      additional reporting requirements.
+    legalBasis:
+      regulation: "2022/2554"
+      article: "Article 31"
+      paragraph: ""
+    applicability:
+      - pif
+      - vif
+    scope: extended
+    deadline: "2025-01-17"
+    criticality: high
+    notes: |
+      This requirement is conditional - it only applies if the ESAs designate 
+      the vendor as Critical based on systemic importance criteria (Art. 31(2)).
+      Most intermediaries will NOT be designated as Critical ICT TPPs.

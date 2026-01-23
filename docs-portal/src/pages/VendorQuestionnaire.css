@@ -978,10 +978,6 @@
 }
 
 .vcq-arf-popover {
-    position: absolute;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
     width: 400px;
     max-width: 90vw;
     padding: var(--space-3);
@@ -991,26 +987,6 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     font-size: var(--text-sm);
-}
-
-.vcq-arf-popover::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 8px solid transparent;
-    border-top-color: var(--border-primary);
-}
-
-.vcq-arf-popover::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 7px solid transparent;
-    border-top-color: var(--bg-primary);
 }
 
 .vcq-arf-popover-header {

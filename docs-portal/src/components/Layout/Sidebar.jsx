@@ -36,6 +36,7 @@ const navigation = [
     {
         title: 'Tools',
         items: [
+            { name: 'Requirements', path: '/requirements', icon: 'layers' },
             { name: 'RCA', path: '/rca', icon: 'clipboard-check' },
             { name: 'VCQ Tool', path: '/vcq', icon: 'clipboard-list' },
             { name: 'AI Assistant', path: '/ai-chat', icon: 'message-circle' },
