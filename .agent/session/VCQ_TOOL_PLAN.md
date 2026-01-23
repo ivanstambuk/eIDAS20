@@ -920,13 +920,14 @@ function validateARFReferences(requirements, arfData) {
 
 The following items were identified during Phase 6 implementation but deferred:
 
-### 17.1 Validation Enhancements
+### 17.1 Validation Enhancements ✅ COMPLETE
 
-| Task | Priority | Description |
-|------|----------|-------------|
-| **ARF reference validation in validate-vcq.js** | Medium | Load `arf-hlr-data.json` and check each `arfReference.hlr` exists. Report invalid/missing HLRs with suggestions. |
-| **Empty HLR warning** | Low | Flag requirements that reference HLRs marked as "Empty" in ARF (e.g., RPI_02, Reg_23) |
-| **CI validation** | Low | Add step to CI to verify `arf-hlr-data.json` exists and is valid |
+| Task | Status | Notes |
+|------|--------|-------|
+| ~~ARF reference validation~~ | ✅ Done | Already implemented in validate-vcq.js lines 256-315. Checks HLR existence. |
+| ~~Empty HLR warning~~ | ✅ Done | Already implemented. Currently warns on Reg_23, RPI_02. |
+| ~~CI validation~~ | ✅ Done | Added 2026-01-23. `npm run validate:vcq` runs before build in deploy.yml. |
+
 
 ### 17.2 Maintenance & Sync
 
