@@ -940,7 +940,7 @@ The following items were identified during Phase 6 implementation but deferred:
 
 | Task | Priority | Description |
 |------|----------|-------------|
-| **ARF popover testing** | Medium | Browser test showed popover may not be rendering. Requires manual verification. |
+| ~~ARF popover testing~~ | ✅ Done | Verified 2026-01-23. Popovers render correctly: HLR ID, Topic badge, specification text, notes, "View in ARF →" link. |
 | **Search result styling for ARF HLRs** | Low | Different card style for ARF search results vs regulations/terminology |
 
 ### 17.4 Coverage Extensions
