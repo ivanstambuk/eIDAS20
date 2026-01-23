@@ -446,9 +446,9 @@ notes?: string                # Optional implementation notes
 - [x] PDF generation - browser print-to-PDF with custom styling
 - [x] Markdown export - functional
 
-### Phase 5: Polish ⏳ PARTIAL
-- [ ] ARF requirement linking (with external URL fallback)
-- [ ] Technical specification references
+### Phase 5: Polish ✅ COMPLETE
+- [x] ARF requirement linking (external GitHub URLs)
+- [ ] Technical specification references (optional - deferred)
 - [x] UI polish and responsive design
 - [x] View persistence (localStorage saves Overview/Details preference)
 - [x] Snippets extracted to `.agent/snippets/vcq-patterns.md`

@@ -206,6 +206,37 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
 }
 
 // ============================================================================
+// ARFReferenceLink Component
+// Links to the official Architecture and Reference Framework on GitHub
+// ============================================================================
+
+const ARF_GITHUB_BASE = 'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework';
+
+function ARFReferenceLink({ arfReference }) {
+    if (!arfReference) return null;
+
+    const { topic, hlr } = arfReference;
+
+    // The ARF is structured with topics in the main README and annex documents
+    // Topic 45 (RP Intermediaries) is in Annex 2: High-Level Requirements
+    const arfUrl = `${ARF_GITHUB_BASE}/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md`;
+
+    return (
+        <a
+            href={arfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vcq-arf-link"
+            title={`View ${topic} in ARF on GitHub`}
+        >
+            <span className="vcq-arf-icon">📐</span>
+            <span className="vcq-arf-ref">{hlr}</span>
+            <span className="vcq-arf-topic">({topic})</span>
+        </a>
+    );
+}
+
+// ============================================================================
 // IntermediaryTypeSelector Component
 // ============================================================================
 
@@ -653,10 +684,20 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                     </span>
                                                 </td>
                                                 <td className="col-legal">
-                                                    <LegalBasisLink
-                                                        legalBasis={req.legalBasis}
-                                                        regulationsIndex={regulationsIndex}
-                                                    />
+                                                    {req.legalBasis && (
+                                                        <LegalBasisLink
+                                                            legalBasis={req.legalBasis}
+                                                            regulationsIndex={regulationsIndex}
+                                                        />
+                                                    )}
+                                                    {req.arfReference && (
+                                                        <ARFReferenceLink
+                                                            arfReference={req.arfReference}
+                                                        />
+                                                    )}
+                                                    {!req.legalBasis && !req.arfReference && (
+                                                        <span className="vcq-no-basis">—</span>
+                                                    )}
                                                 </td>
                                                 <td className="col-answer">
                                                     <select

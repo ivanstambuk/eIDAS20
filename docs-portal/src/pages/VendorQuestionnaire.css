@@ -927,6 +927,47 @@
 }
 
 /* ============================================================================
+   ARF Reference Links
+   ============================================================================ */
+
+.vcq-arf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 2px 6px;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    margin-top: var(--space-1);
+}
+
+.vcq-arf-link:hover {
+    background: rgba(245, 158, 11, 0.2);
+}
+
+.vcq-arf-icon {
+    font-size: 0.75rem;
+}
+
+.vcq-arf-ref {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: #d97706;
+}
+
+.vcq-arf-topic {
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+}
+
+.vcq-no-basis {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ============================================================================
    Export Panel
    ============================================================================ */
 
