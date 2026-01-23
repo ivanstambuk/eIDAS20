@@ -967,6 +967,104 @@
     font-style: italic;
 }
 
+/* ARF Popover */
+.vcq-arf-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.vcq-arf-empty {
+    opacity: 0.6;
+}
+
+.vcq-arf-popover {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 90vw;
+    padding: var(--space-3);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-size: var(--text-sm);
+}
+
+.vcq-arf-popover::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: var(--border-primary);
+}
+
+.vcq-arf-popover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: var(--bg-primary);
+}
+
+.vcq-arf-popover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.vcq-arf-popover-id {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: #d97706;
+    font-size: var(--text-base);
+}
+
+.vcq-arf-popover-topic {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    background: rgba(245, 158, 11, 0.1);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.vcq-arf-popover-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.vcq-arf-popover-spec {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-2);
+}
+
+.vcq-arf-popover-notes {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+}
+
+.vcq-arf-popover-action {
+    font-size: var(--text-xs);
+    color: #d97706;
+    font-weight: 500;
+}
+
 /* ============================================================================
    Export Panel
    ============================================================================ */

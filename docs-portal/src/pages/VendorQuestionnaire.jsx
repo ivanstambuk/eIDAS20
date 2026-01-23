@@ -62,6 +62,20 @@ function useRegulationsIndex() {
     return index;
 }
 
+// Load ARF HLR data for deep linking and popovers
+function useARFData() {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch(`${import.meta.env.BASE_URL}data/arf-hlr-data.json`)
+            .then(res => res.ok ? res.json() : null)
+            .then(setData)
+            .catch(() => setData(null)); // Graceful fallback if file doesn't exist
+    }, []);
+
+    return data;
+}
+
 // ============================================================================
 // LegalBasisLink Component
 // ============================================================================
@@ -208,31 +222,70 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
 // ============================================================================
 // ARFReferenceLink Component
 // Links to the official Architecture and Reference Framework on GitHub
+// Now enhanced with deep linking via imported ARF data
 // ============================================================================
 
-const ARF_GITHUB_BASE = 'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework';
+function ARFReferenceLink({ arfReference, arfData }) {
+    const [showPopover, setShowPopover] = useState(false);
 
-function ARFReferenceLink({ arfReference }) {
     if (!arfReference) return null;
 
     const { topic, hlr } = arfReference;
 
-    // The ARF is structured with topics in the main README and annex documents
-    // annex-2.02 contains requirements organized by topic (Topic 45 = RP Intermediaries)
-    const arfUrl = `${ARF_GITHUB_BASE}/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md`;
+    // Look up HLR in imported ARF data for deep link and metadata
+    const arfReq = arfData?.byHlrId?.[hlr];
+
+    // Use deep link from ARF data if available, otherwise fallback
+    const arfUrl = arfReq?.deepLink ||
+        'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
+
+    // Get display info
+    const topicTitle = arfReq?.topicTitle || topic;
+    const topicNumber = arfReq?.topicNumber || topic.replace('Topic ', '');
+    const specification = arfReq?.specification;
+    const notes = arfReq?.notes;
+    const isEmpty = arfReq?.isEmpty;
 
     return (
-        <a
-            href={arfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="vcq-arf-link"
-            title={`View ${topic} in ARF on GitHub`}
-        >
-            <span className="vcq-arf-icon">📐</span>
-            <span className="vcq-arf-ref">{hlr}</span>
-            <span className="vcq-arf-topic">({topic})</span>
-        </a>
+        <span className="vcq-arf-wrapper">
+            <a
+                href={arfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
+                title={specification ? specification.substring(0, 200) + '...' : `View ${topic} in ARF on GitHub`}
+                onMouseEnter={() => setShowPopover(true)}
+                onMouseLeave={() => setShowPopover(false)}
+            >
+                <span className="vcq-arf-icon">📐</span>
+                <span className="vcq-arf-ref">{hlr}</span>
+                <span className="vcq-arf-topic">(Topic {topicNumber})</span>
+            </a>
+
+            {showPopover && arfReq && !isEmpty && (
+                <div className="vcq-arf-popover">
+                    <div className="vcq-arf-popover-header">
+                        <span className="vcq-arf-popover-id">{hlr}</span>
+                        <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
+                    </div>
+                    <div className="vcq-arf-popover-title">{topicTitle}</div>
+                    <div className="vcq-arf-popover-spec">
+                        {specification?.length > 300
+                            ? specification.substring(0, 300) + '...'
+                            : specification
+                        }
+                    </div>
+                    {notes && (
+                        <div className="vcq-arf-popover-notes">
+                            <strong>Note:</strong> {notes.substring(0, 150)}...
+                        </div>
+                    )}
+                    <div className="vcq-arf-popover-action">
+                        View in ARF →
+                    </div>
+                </div>
+            )}
+        </span>
     );
 }
 
@@ -555,7 +608,7 @@ function SummaryView({ requirements, categories, answers }) {
 // RequirementsTable Component (View B: Detailed Table)
 // ============================================================================
 
-function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex }) {
+function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData }) {
     const [filterCategory, setFilterCategory] = useState('all');
     const [filterCriticality, setFilterCriticality] = useState('all');
 
@@ -693,6 +746,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                     {req.arfReference && (
                                                         <ARFReferenceLink
                                                             arfReference={req.arfReference}
+                                                            arfData={arfData}
                                                         />
                                                     )}
                                                     {!req.legalBasis && !req.arfReference && (
@@ -1057,6 +1111,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSources, da
 export default function VendorQuestionnaire() {
     const { data, loading, error } = useVCQData();
     const regulationsIndex = useRegulationsIndex();
+    const arfData = useARFData();
 
     // Selection state
     const [selectedTypes, setSelectedTypes] = useState([]);
@@ -1311,6 +1366,7 @@ export default function VendorQuestionnaire() {
                             onAnswerChange={handleAnswerChange}
                             answers={answers}
                             regulationsIndex={regulationsIndex}
+                            arfData={arfData}
                         />
                     )}
 
