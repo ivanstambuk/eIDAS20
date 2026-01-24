@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useSearchParams, useNavigationType } from 'react-router-dom';
 import CollapsibleTOC from '../components/CollapsibleTOC';
 import { useIsMobile } from '../hooks/useMediaQuery';
@@ -607,17 +607,20 @@ const RegulationViewer = () => {
             return false;
         }
 
-        // Choose which match to scroll to: prefer section match, fallback to anywhere
-        const scrollTarget = firstMatchInSection || firstMatchAnywhere;
-
         // Scroll to match with slight delay for DOM updates
-        if (scrollTarget) {
+        // IMPORTANT: Only scroll to a highlight if we found one IN the target section.
+        // If no match is in the section, don't scroll - let the ?section= handler scroll to the article.
+        // This prevents the highlight feature from hijacking navigation when the search term
+        // appears in the Preamble/Recitals but not in the target article.
+        if (firstMatchInSection) {
             requestAnimationFrame(() => {
                 const headerOffset = 64 + 32; // header height + extra padding
-                const targetPosition = scrollTarget.getBoundingClientRect().top + window.scrollY - headerOffset;
+                const targetPosition = firstMatchInSection.getBoundingClientRect().top + window.scrollY - headerOffset;
                 window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             });
         }
+        // Note: If no section was specified (just ?highlight=), we could scroll to firstMatchAnywhere,
+        // but that's a rare use case. For now, we prioritize respecting ?section= navigation.
 
         // Cleanup function: remove highlights when navigating away or params change
         return () => {
@@ -631,6 +634,38 @@ const RegulationViewer = () => {
             });
         };
     }, [loading, regulation, searchParams, shouldRestoreScroll]);
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Escape Key: Clear highlights when user presses Escape
+    // ═══════════════════════════════════════════════════════════════════════════
+    useEffect(() => {
+        const highlight = searchParams.get('highlight');
+        if (!highlight) return; // Only listen if highlights are active
+
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                // Remove all highlight marks from DOM
+                const marks = document.querySelectorAll('mark.search-highlight');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                        parent.normalize();
+                    }
+                });
+
+                // Remove ?highlight= from URL (keep other params like ?section=)
+                const newParams = new URLSearchParams(searchParams);
+                newParams.delete('highlight');
+                const newSearch = newParams.toString();
+                const newUrl = `${window.location.pathname}${window.location.hash.split('?')[0]}${newSearch ? `?${newSearch}` : ''}`;
+                window.history.replaceState(null, '', newUrl);
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [searchParams]);
 
     // Copy Reference Gutter Icons: Hydrate headings with copy buttons (DEC-011)
     useEffect(() => {
