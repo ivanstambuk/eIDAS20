@@ -75,6 +75,13 @@
             "terminologySource": true,
             "category": "referenced",
             "comment": "Digital Operational Resilience Act. Article 3 contains 65 definitions for ICT risk and digital operational resilience in the financial sector."
+        },
+        "2020-67": {
+            "label": "Digital Future Communication",
+            "ragEnabled": true,
+            "terminologySource": false,
+            "category": "supplementary",
+            "comment": "COM(2020)67 - Policy Communication setting strategic vision for European digital transformation. Referenced in eIDAS 2.0 preamble. No formal definitions but establishes policy context."
         }
     },
     "defaults": {

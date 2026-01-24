@@ -115,6 +115,15 @@ documents:
   source: manual  # One-time import from EC Digital Building Blocks (DEC-092)
   external_url: https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/880312429/eSignature+FAQ
   output_dir: 01_regulation/ec_esignature_faq
+- celex: 52020DC0067
+  title: "Communication: Shaping Europe's Digital Future"
+  shortTitle: Digital Future Communication
+  sidebarTitle: Digital Future
+  legalType: communication
+  category: supplementary
+  source: manual  # Manual import from EUR-Lex — DO NOT REGENERATE
+  external_url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52020DC0067
+  output_dir: 01_regulation/2020_67_Digital_Future_Communication
 
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes

@@ -622,3 +622,22 @@ terms:
       or layered arrangements.
     source: EU legal drafting convention
     note: 12 occurrences; prevents circumvention through indirection
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # EU Document Types
+  # Formal categories of EU legal and policy instruments
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Commission Communication
+    definition: >-
+      A non-binding policy document issued by the European Commission to outline 
+      strategic intentions, policy priorities, or interpretive guidance. Unlike 
+      Regulations (directly binding) or Directives (require transposition), 
+      Communications are "soft law" instruments that signal the Commission's 
+      policy direction without creating legal obligations. Examples include 
+      "Shaping Europe's Digital Future" (COM(2020)67) which set the strategic 
+      vision for the European Digital Identity Framework. While not legally 
+      binding, Communications heavily influence subsequent legislation and 
+      the interpretation of existing EU law.
+    source: TFEU Article 288 (by exclusion), EU institutional practice
+    note: Distinct from "electronic communication" - this is a document type

@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T11:54:38.709Z",
+  "generated": "2026-01-24T12:10:15.556Z",
   "statistics": {
-    "totalTerms": 337,
-    "totalDefinitions": 474,
+    "totalTerms": 338,
+    "totalDefinitions": 475,
     "sources": {
       "regulations": 243,
       "implementingActs": 143,
@@ -189,6 +189,7 @@
       "certification-body",
       "certification-decision",
       "cloud-computing-service",
+      "commission-communication",
       "communication",
       "community-harmonisation-legislation",
       "conformity-assessment",
@@ -2474,6 +2475,46 @@
               "articleId": "article-6-para-30",
               "articleNumber": "6(30)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "commission-communication",
+      "term": "Commission Communication",
+      "sources": [
+        {
+          "definition": "A non-binding policy document issued by the European Commission to outline strategic intentions, policy priorities, or interpretive guidance. Unlike Regulations (directly binding) or Directives (require transposition), Communications are \"soft law\" instruments that signal the Commission's policy direction without creating legal obligations. Examples include \"Shaping Europe's Digital Future\" (COM(2020)67) which set the strategic vision for the European Digital Identity Framework. While not legally binding, Communications heavily influence subsequent legislation and the interpretation of existing EU law.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-TFEU Article 288 (by exclusion), EU institutional practice",
+          "articleNumber": "TFEU Article 288 (by exclusion), EU institutional practice",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-TFEU Article 288 (by exclusion), EU institutional practice",
+      "definitionGroups": [
+        {
+          "definition": "A non-binding policy document issued by the European Commission to outline strategic intentions, policy priorities, or interpretive guidance. Unlike Regulations (directly binding) or Directives (require transposition), Communications are \"soft law\" instruments that signal the Commission's policy direction without creating legal obligations. Examples include \"Shaping Europe's Digital Future\" (COM(2020)67) which set the strategic vision for the European Digital Identity Framework. While not legally binding, Communications heavily influence subsequent legislation and the interpretation of existing EU law.",
+          "sources": [
+            {
+              "definition": "A non-binding policy document issued by the European Commission to outline strategic intentions, policy priorities, or interpretive guidance. Unlike Regulations (directly binding) or Directives (require transposition), Communications are \"soft law\" instruments that signal the Commission's policy direction without creating legal obligations. Examples include \"Shaping Europe's Digital Future\" (COM(2020)67) which set the strategic vision for the European Digital Identity Framework. While not legally binding, Communications heavily influence subsequent legislation and the interpretation of existing EU law.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-TFEU Article 288 (by exclusion), EU institutional practice",
+              "articleNumber": "TFEU Article 288 (by exclusion), EU institutional practice",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
