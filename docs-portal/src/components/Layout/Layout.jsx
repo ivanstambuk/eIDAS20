@@ -53,7 +53,6 @@ const Layout = () => {
                 isOpen={sidebarOpen}
                 isCollapsed={sidebarCollapsed}
                 onClose={closeSidebar}
-                onToggle={toggleSidebar}
             />
 
             <main className="main-content" id="main-content" tabIndex={-1}>
