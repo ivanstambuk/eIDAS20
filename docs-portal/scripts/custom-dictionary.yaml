@@ -657,3 +657,41 @@ terms:
       the interpretation of existing EU law.
     source: TFEU Article 288 (by exclusion), EU institutional practice
     note: Distinct from "electronic communication" - this is a document type
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # W3C / Technical Standards Terminology
+  # Terms from technical standards used in the EUDI Wallet ecosystem
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: verifiable credential
+    definition: >-
+      A tamper-evident credential that has authorship that can be 
+      cryptographically verified. Verifiable credentials can be used to 
+      represent information found in physical credentials such as passports, 
+      licenses, and diplomas. In the EUDI Wallet ecosystem, PIDs and 
+      attestations are issued as verifiable credentials following the 
+      W3C Verifiable Credentials Data Model or ISO mDL standards.
+    source: W3C Verifiable Credentials Data Model v2.0
+    note: ARF supports both SD-JWT VC and mDL (ISO 18013-5) credential formats
+
+  - term: hardware security module
+    definition: >-
+      A physical computing device that safeguards and manages cryptographic 
+      keys, performs encryption and decryption functions, and provides 
+      strong authentication. HSMs are used in the EUDI Wallet ecosystem 
+      for secure key storage in remote signing services, as part of 
+      WSCD implementations, and by trust service providers for 
+      cryptographic operations.
+    source: NIST SP 800-57, CIR 2024/2981 (WSCD requirements)
+    note: ARF references HSMs as one option for implementing WSCD functionality
+
+  - term: data protection authority
+    definition: >-
+      An independent public authority established by a Member State 
+      responsible for monitoring the application of data protection 
+      legislation, handling complaints, and promoting awareness of 
+      data subjects' rights. Under the EUDI Wallet framework, DPAs 
+      supervise the processing of personal data by Wallet Providers, 
+      Relying Parties, and other ecosystem participants.
+    source: GDPR Article 51
+    note: Users can report Relying Parties to their DPA via the wallet dashboard

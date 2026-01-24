@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T17:43:24.983Z",
+  "generated": "2026-01-24T18:02:07.613Z",
   "statistics": {
-    "totalTerms": 348,
-    "totalDefinitions": 485,
+    "totalTerms": 351,
+    "totalDefinitions": 488,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -221,6 +221,7 @@
       "data-centre-service",
       "data-concerning-health",
       "data-minimisation",
+      "data-protection-authority",
       "data-record",
       "data-reporting-service-provider",
       "digital-intensity",
@@ -285,6 +286,7 @@
       "group-of-undertakings"
     ],
     "H": [
+      "hardware-security-module",
       "harmonised-standard",
       "holder",
       "holder-wallet-unit"
@@ -511,6 +513,7 @@
       "validation",
       "validation-data",
       "value-added-service",
+      "verifiable-credential",
       "verifier",
       "verifier-wallet-unit",
       "vulnerability"
@@ -4076,6 +4079,49 @@
       "domains": []
     },
     {
+      "id": "data-protection-authority",
+      "term": "data protection authority",
+      "sources": [
+        {
+          "definition": "An independent public authority established by a Member State responsible for monitoring the application of data protection legislation, handling complaints, and promoting awareness of data subjects' rights. Under the EUDI Wallet framework, DPAs supervise the processing of personal data by Wallet Providers, Relying Parties, and other ecosystem participants.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-GDPR Article 51",
+          "articleNumber": "GDPR Article 51",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-GDPR Article 51",
+      "definitionGroups": [
+        {
+          "definition": "An independent public authority established by a Member State responsible for monitoring the application of data protection legislation, handling complaints, and promoting awareness of data subjects' rights. Under the EUDI Wallet framework, DPAs supervise the processing of personal data by Wallet Providers, Relying Parties, and other ecosystem participants.",
+          "sources": [
+            {
+              "definition": "An independent public authority established by a Member State responsible for monitoring the application of data protection legislation, handling complaints, and promoting awareness of data subjects' rights. Under the EUDI Wallet framework, DPAs supervise the processing of personal data by Wallet Providers, Relying Parties, and other ecosystem participants.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-GDPR Article 51",
+              "articleNumber": "GDPR Article 51",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "DPA"
+      ]
+    },
+    {
       "id": "data-record",
       "term": "data record",
       "sources": [
@@ -6559,6 +6605,49 @@
       ],
       "roles": [],
       "domains": []
+    },
+    {
+      "id": "hardware-security-module",
+      "term": "hardware security module",
+      "sources": [
+        {
+          "definition": "A physical computing device that safeguards and manages cryptographic keys, performs encryption and decryption functions, and provides strong authentication. HSMs are used in the EUDI Wallet ecosystem for secure key storage in remote signing services, as part of WSCD implementations, and by trust service providers for cryptographic operations.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-NIST SP 800-57, CIR 2024/2981 (WSCD requirements)",
+          "articleNumber": "NIST SP 800-57, CIR 2024/2981 (WSCD requirements)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-NIST SP 800-57, CIR 2024/2981 (WSCD requirements)",
+      "definitionGroups": [
+        {
+          "definition": "A physical computing device that safeguards and manages cryptographic keys, performs encryption and decryption functions, and provides strong authentication. HSMs are used in the EUDI Wallet ecosystem for secure key storage in remote signing services, as part of WSCD implementations, and by trust service providers for cryptographic operations.",
+          "sources": [
+            {
+              "definition": "A physical computing device that safeguards and manages cryptographic keys, performs encryption and decryption functions, and provides strong authentication. HSMs are used in the EUDI Wallet ecosystem for secure key storage in remote signing services, as part of WSCD implementations, and by trust service providers for cryptographic operations.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-NIST SP 800-57, CIR 2024/2981 (WSCD requirements)",
+              "articleNumber": "NIST SP 800-57, CIR 2024/2981 (WSCD requirements)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "HSM"
+      ]
     },
     {
       "id": "harmonised-standard",
@@ -13940,7 +14029,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "SD"
+      ]
     },
     {
       "id": "service",
@@ -16008,6 +16100,49 @@
       ],
       "roles": [],
       "domains": []
+    },
+    {
+      "id": "verifiable-credential",
+      "term": "verifiable credential",
+      "sources": [
+        {
+          "definition": "A tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to represent information found in physical credentials such as passports, licenses, and diplomas. In the EUDI Wallet ecosystem, PIDs and attestations are issued as verifiable credentials following the W3C Verifiable Credentials Data Model or ISO mDL standards.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-W3C Verifiable Credentials Data Model v2.0",
+          "articleNumber": "W3C Verifiable Credentials Data Model v2.0",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-W3C Verifiable Credentials Data Model v2.0",
+      "definitionGroups": [
+        {
+          "definition": "A tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to represent information found in physical credentials such as passports, licenses, and diplomas. In the EUDI Wallet ecosystem, PIDs and attestations are issued as verifiable credentials following the W3C Verifiable Credentials Data Model or ISO mDL standards.",
+          "sources": [
+            {
+              "definition": "A tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to represent information found in physical credentials such as passports, licenses, and diplomas. In the EUDI Wallet ecosystem, PIDs and attestations are issued as verifiable credentials following the W3C Verifiable Credentials Data Model or ISO mDL standards.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-W3C Verifiable Credentials Data Model v2.0",
+              "articleNumber": "W3C Verifiable Credentials Data Model v2.0",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "VC"
+      ]
     },
     {
       "id": "verifier",
