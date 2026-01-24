@@ -189,3 +189,76 @@ The Digital Compass Communication maps out a clear path towards a common vision 
 The involvement and commitment of the public and of all stakeholders is crucial to achieve a successful digital transformation. In this context, the Commission, shortly after this Communication, will start a wide consultation process on the digital principles. It will engage with the Member States, the European Parliament, regional and economic and social partners, businesses and citizens, on specific elements of the Communication during 2021, including the compass framework with specific targets and governance.
 
 The Commission will propose the Digital Policy Programme to the co-legislators by the third quarter of 2021, and hopes to achieve decisive progress with the other institutions on a Declaration of Digital Principles by the end of 2021.
+
+---
+
+## ANNEX
+
+### Proposal of Common Targets to Mobilise Public and Private Actors
+
+When selecting targets, the Commission looked at existing Key Performance Indicators (KPIs), having in mind that targets need to be measurable in order to be monitored. The choice of lead KPIs was made based partly on existing KPIs which are monitored in the Digital Economy and Society Index (DESI) monitoring system set up by the Commission since 2014.
+
+---
+
+### Cardinal Point 1: A Digitally Skilled Population and Highly Skilled Digital Professionals
+
+**EU Objective for 2030:** *"A tech savvy continent where all are digitally empowered"*
+
+| Dimension | 2030 EU Target | 2020 Baseline | Source |
+|-----------|----------------|---------------|--------|
+| **Basic digital skills** | 80% of adults aged 16-74 | 58.3% | DESI |
+| **ICT specialists** | 20 million employed, with gender convergence | 7.8 million (18% women) | DESI, Eurostat |
+
+---
+
+### Cardinal Point 2: Secure, Resilient, Performant and Sustainable Digital Infrastructures
+
+**EU Objective for 2030:** *"Top-notch trustworthy and secure Digital Infrastructures"*
+
+| Dimension | 2030 EU Target | 2020 Baseline | Source |
+|-----------|----------------|---------------|--------|
+| **Connectivity — Gigabit** | All households covered by Gigabit network | 59% VHCN coverage | DESI |
+| **Connectivity — 5G** | All populated areas covered by 5G | 14% (2021) | Broadband Study |
+| **Semiconductors** | 20% of world production in value (below 5nm) | 10% | TBC in policy programme |
+| **Edge computing** | 10,000 climate-neutral secure edge nodes | 0 (technology emerging) | CEF2 annual study |
+| **Quantum computing** | First quantum-accelerated computer by 2025 | 0 | TBC |
+
+*Note: Edge node target based on vision of 80% data processing at the edge by 2025. A mesh with a node every 100km requires 8-10,000 edge nodes to achieve few-millisecond latency.*
+
+---
+
+### Cardinal Point 3: Digital Transformation of Businesses
+
+**EU Objective for 2030:** *"The continent with a high share of digitalised businesses"*
+
+| Dimension | 2030 EU Target | 2020 Baseline | Source |
+|-----------|----------------|---------------|--------|
+| **Cloud computing** | 75% of enterprises using cloud | 26% | Eurostat |
+| **Big data** | 75% of enterprises using big data | 14% | Eurostat |
+| **Artificial Intelligence** | 75% of enterprises using AI | 25% | IPSOS |
+| **SME digital intensity** | 90% of SMEs at basic level (DII ≥ 4) | 60.6% (2019) | DII, Eurostat |
+| **Unicorns** | Double the number | 122 (2021) | Dealroom |
+
+*Note: Digital Intensity Index (DII) measures 12 digital technologies at firm level, including: internet access, ICT specialists, fast broadband (30+ Mbps), mobile devices, website, social media, cloud, eInvoices, eCommerce.*
+
+---
+
+### Cardinal Point 4: Digitalisation of Public Services
+
+**EU Objective for 2030:** *"Modernised public services responding to society's needs"*
+
+| Dimension | 2030 EU Target | 2020 Baseline | Source |
+|-----------|----------------|---------------|--------|
+| **Key public services online** | 100% online provision | 75/100 (citizens), 84/100 (businesses) | eGov Benchmark |
+| **Electronic health records** | 100% of citizens have access | N/A | TBC |
+| **Digital ID adoption** | **80% of citizens using digital ID** | N/A (no baseline) | TBC |
+
+---
+
+### Notes on Data Sources
+
+**DESI (Digital Economy and Society Index):** Composite index summarising indicators on Europe's digital performance across five dimensions: Connectivity, Human Capital, Use of Internet, Integration of Digital Technology, and Digital Public Services. Published annually since 2014.
+
+**DII (Digital Intensity Index):** Micro-based index measuring 12 digital technologies at firm level. Firms scoring 4 or more are considered to have "basic level" of digital intensity.
+
+**eGovernment Benchmark:** Measures online availability and usability of public services provided to citizens and businesses.

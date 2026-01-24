@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T12:55:40.449Z",
+  "generated": "2026-01-24T14:16:28.784Z",
   "statistics": {
     "totalTerms": 347,
     "totalDefinitions": 484,
@@ -859,7 +859,7 @@
         {
           "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -877,7 +877,7 @@
             {
               "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -1589,7 +1589,7 @@
         {
           "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -1607,7 +1607,7 @@
             {
               "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -4165,7 +4165,7 @@
         {
           "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -4183,7 +4183,7 @@
             {
               "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -4650,7 +4650,7 @@
         {
           "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -4668,7 +4668,7 @@
             {
               "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -8259,7 +8259,7 @@
         {
           "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -8277,7 +8277,7 @@
             {
               "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -9153,7 +9153,7 @@
         {
           "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -9171,7 +9171,7 @@
             {
               "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -10512,7 +10512,7 @@
         {
           "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -10530,7 +10530,7 @@
             {
               "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -10972,7 +10972,7 @@
         {
           "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -10990,7 +10990,7 @@
             {
               "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
@@ -14483,7 +14483,7 @@
         {
           "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
           "documentId": "2022-2481",
-          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentTitle": "Digital Decade Programme",
           "documentCategory": "supplementary",
           "documentType": "regulation",
           "celex": "32022D2481",
@@ -14501,7 +14501,7 @@
             {
               "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
               "documentId": "2022-2481",
-              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentTitle": "Digital Decade Programme",
               "documentCategory": "supplementary",
               "documentType": "regulation",
               "celex": "32022D2481",
