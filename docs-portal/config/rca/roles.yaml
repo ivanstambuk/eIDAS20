@@ -94,6 +94,10 @@ roles:
         label: "Qualified Electronic Ledger"
         description: "Provider of qualified electronic ledger services per Article 45l (blockchain/DLT)"
         icon: "⛓️"
+      - id: qwac_issuer
+        label: "QWAC Issuer"
+        description: "Issues qualified certificates for website authentication per Article 45a"
+        icon: "🌐"
 
 
   conformity_assessment_body:
