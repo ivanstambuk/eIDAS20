@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T17:36:22.777Z",
+  "generated": "2026-01-24T17:43:24.983Z",
   "statistics": {
     "totalTerms": 348,
     "totalDefinitions": 485,
@@ -13259,6 +13259,9 @@
       ],
       "domains": [
         "wallet_ecosystem"
+      ],
+      "aliases": [
+        "RP"
       ]
     },
     {
@@ -15550,6 +15553,9 @@
       ],
       "domains": [
         "governance"
+      ],
+      "aliases": [
+        "TL"
       ]
     },
     {
@@ -18022,6 +18028,9 @@
       ],
       "domains": [
         "wallet_ecosystem"
+      ],
+      "aliases": [
+        "WRP"
       ]
     },
     {
@@ -18474,7 +18483,10 @@
         }
       ],
       "roles": [],
-      "domains": []
+      "domains": [],
+      "aliases": [
+        "ZKP"
+      ]
     }
   ]
 }
