@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { buildDocumentLink } from '../utils/linkBuilder';
 
 const Home = () => {
     const [stats, setStats] = useState(null);
@@ -85,25 +86,25 @@ const Home = () => {
                     <QuickLinkCard
                         title="European Digital Identity Wallet"
                         description="Article 5a - Core requirements for EUDI Wallets"
-                        path="/regulation/2014-910#article-5a"
+                        path={buildDocumentLink('2014-910', { section: 'article-5a' })}
                         badge="Core"
                     />
                     <QuickLinkCard
                         title="Qualified Trust Services"
                         description="Chapter III - Requirements for QTSPs"
-                        path="/regulation/2014-910#chapter-iii"
+                        path={buildDocumentLink('2014-910', { section: 'chapter-iii' })}
                         badge="Trust Services"
                     />
                     <QuickLinkCard
                         title="Relying Party Registration"
                         description="2025/0848 - Registration requirements for RPs"
-                        path="/implementing-acts/2025-0848"
+                        path={buildDocumentLink('2025-0848', { type: 'implementing-act' })}
                         badge="Implementing Act"
                     />
                     <QuickLinkCard
                         title="Electronic Attestations"
                         description="Articles 45d-45g - Attestation of Attributes"
-                        path="/regulation/2014-910#article-45d"
+                        path={buildDocumentLink('2014-910', { section: 'article-45d' })}
                         badge="Attestations"
                     />
                 </div>

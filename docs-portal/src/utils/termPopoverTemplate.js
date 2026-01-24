@@ -12,6 +12,8 @@
  * @param {Array} term.sources - Array of source definitions
  */
 
+import { buildDocumentLink, buildTerminologyLink, toHref } from './linkBuilder';
+
 /**
  * Get CSS class for source category coloring
  */
@@ -25,11 +27,14 @@ function getCategoryClass(category) {
 }
 
 /**
- * Get document route path for linking
+ * Get document route path for linking (using centralized link builder)
  */
 function getDocumentPath(source) {
-    const basePath = source.documentType === 'regulation' ? 'regulation' : 'implementing-acts';
-    return `#/${basePath}/${source.documentId}?section=${source.articleId}`;
+    const internalPath = buildDocumentLink(source.documentId, {
+        section: source.articleId,
+        type: source.documentType
+    });
+    return toHref(internalPath);
 }
 
 /**
@@ -119,7 +124,7 @@ export function generateTermPopoverContent(term) {
             ` : ''}
         </div>
         <div class="term-popover-footer">
-            <a href="#/terminology?term=${term.id}" class="term-popover-link">
+            <a href="${toHref(buildTerminologyLink({ termId: term.id }))}" class="term-popover-link">
                 View in Terminology →
             </a>
         </div>

@@ -474,6 +474,53 @@ When building deep links to legal content, use these ID patterns:
 - `-para-` is for standard content references (used 99% of the time)
 - `-section-` is ONLY for numbered section headers in annexes (e.g., "1. Set of data...")
 
+#### Centralized Link Builder (DEC-226 — MANDATORY)
+
+**All portal URL generation MUST use the centralized link builder utility.**
+
+Location: `docs-portal/src/utils/linkBuilder.js`
+
+**Why this exists:** URL generation was scattered across 10+ files with inconsistent formats, causing recurring deep-link bugs.
+
+**HashRouter URL Format:**
+
+| Context | Format | Example |
+|---------|--------|---------|
+| **Internal** (`<Link to=...>`) | `/regulation/{slug}?section={id}` | `/regulation/2014-910?section=article-5a` |
+| **External/Href** (templates) | `#/regulation/{slug}?section={id}` | `#/regulation/2014-910?section=article-5a` |
+| **Full URL** (clipboard) | `{origin}/#/regulation/{slug}?section={id}` | `https://example.com/#/regulation/2014-910?section=article-5a` |
+
+**⚠️ NEVER use HTML fragment anchors:**
+- ❌ WRONG: `/regulation/2014-910#article-5a` (breaks with HashRouter)
+- ✅ CORRECT: `/regulation/2014-910?section=article-5a`
+
+**Available functions:**
+
+| Function | Purpose | Returns |
+|----------|---------|---------|
+| `buildDocumentLink(slug, options)` | Regulation/IA links | `/regulation/{slug}?section=...` |
+| `buildTerminologyLink(options)` | Terminology links | `/terminology?section=term-...` |
+| `buildRCALink(options)` | RCA tool links | `/rca?role=...&profile=...` |
+| `buildSectionId(article, paragraph)` | Build anchor ID | `article-5a-para-1-point-b` |
+| `toHref(internalPath)` | For template strings | `#/regulation/...` |
+| `toExternalUrl(internalPath)` | For clipboard | `https://.../#/regulation/...` |
+
+**Anti-patterns:**
+- ❌ Building URLs inline: `` `/${type}/${slug}#article-5a` ``
+- ❌ Concatenating paths manually without the utility
+- ❌ Using `#article-*` anchors instead of `?section=`
+
+**Correct pattern:**
+```javascript
+import { buildDocumentLink, buildSectionId, toHref } from '../utils/linkBuilder';
+
+// For React Router <Link>
+<Link to={buildDocumentLink('2014-910', { section: 'article-5a' })} />
+
+// For template strings (href in HTML)
+const href = toHref(buildDocumentLink('2014-910', { section: 'article-5a' }));
+```
+
 ---
 
 ## 🖥️ WSL Browser Testing

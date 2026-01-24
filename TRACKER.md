@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-24 10:20 | **Refactor: Centralized Link Builder (DEC-226)** — Created `linkBuilder.js` as single source of truth for URL generation. Refactored 8 files. Fixed Home page Quick Links using broken `#article-*` format. Added mandatory usage documentation to AGENTS.md. |
 | 2026-01-24 09:55 | **Feat: Search Highlight Navigation** — Clicking search results now highlights matching text with yellow and scrolls to the first match within the target article (not preamble). Added `?highlight=` URL param, section-aware scrolling, CSS pulse animation. |
 | 2026-01-24 03:52 | **Retro: Annex Fix Session** — Added `validate-annex-content.js` (empty annex detection), ETSI REQ-* extraction policy in AGENTS.md, ETSI Standard in TERMINOLOGY.md, updated /import-regulation workflow with Step 4.5 for ETSI check. |
 | 2026-01-24 03:55 | **Feat: QWAC Issuer RCA Requirements** — Extracted 3 requirements from 2025/2527 annex (ETSI EN 319 411-2, TS 119 495, TS 119 411-5). New `qwac_issuer` profile for TSP. TSP reqs: 100→103. |

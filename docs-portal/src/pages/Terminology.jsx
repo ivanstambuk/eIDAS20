@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useScrollRestoration } from '../hooks/useScrollRestoration';
+import { buildDocumentLink } from '../utils/linkBuilder';
 import FilterDropdown from '../components/FilterDropdown';
 
 /**
@@ -308,10 +309,12 @@ const Terminology = () => {
 
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    // Get document route path using the new source format
+    // Get document route path using centralized link builder
     const getDocumentPath = (source) => {
-        const basePath = source.documentType === 'regulation' ? 'regulation' : 'implementing-acts';
-        return `/${basePath}/${source.documentId}?section=${source.articleId}`;
+        return buildDocumentLink(source.documentId, {
+            section: source.articleId,
+            type: source.documentType
+        });
     };
 
     if (loading) {

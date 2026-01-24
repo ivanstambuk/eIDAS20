@@ -16,6 +16,7 @@
  */
 
 import { useCallback } from 'react';
+import { generateDeepLink as generateDeepLinkFromBuilder } from '../utils/linkBuilder';
 
 /**
  * Extract regulation number from CELEX code or title.
@@ -256,18 +257,14 @@ export function generateEUReference(headingId, regulation) {
 /**
  * Generate the deep link URL for a section.
  * 
+ * Uses centralized linkBuilder utility.
+ * 
  * @param {string} headingId - The heading ID
  * @param {string} slug - Document slug
  * @returns {string} - Full URL
  */
 export function generateDeepLink(headingId, slug) {
-    // Get the base URL (works in browser)
-    const baseUrl = typeof window !== 'undefined'
-        ? `${window.location.origin}${window.location.pathname}`
-        : '';
-
-    // HashRouter format: /#/regulation/slug?section=id
-    return `${baseUrl}#/regulation/${slug}?section=${headingId}`;
+    return generateDeepLinkFromBuilder(headingId, slug);
 }
 
 /**

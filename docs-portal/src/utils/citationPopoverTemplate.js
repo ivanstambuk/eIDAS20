@@ -7,6 +7,8 @@
  * Part of DEC-059 (Citation Enhancement) and DEC-060 (Smart Consolidation)
  */
 
+import { buildDocumentLink, toHref } from './linkBuilder';
+
 /**
  * Format the formal name for display in the popover.
  * DEC-064: Prepends "Implementing" for implementing regulations to distinguish
@@ -119,12 +121,13 @@ export function generateStandardPopoverHtml(citation) {
         // Convert CELEX to display: 32024R1183 -> 2024/1183
         const amendingDisplay = amendingCelex.replace(/^3/, '').replace(/R/, '/');
 
-        // Build notice with linked regulation
+        // Build notice with linked regulation using centralized link builder
+        const amendingLink = toHref(buildDocumentLink(amendingSlug));
         let noticeText = '⚠️ Amended';
         if (amendmentDateFormatted) {
             noticeText += ` on ${amendmentDateFormatted}`;
         }
-        noticeText += ` by <a href="#/regulation/${amendingSlug}" class="citation-popover-amendment-link">Regulation ${amendingDisplay}</a>`;
+        noticeText += ` by <a href="${amendingLink}" class="citation-popover-amendment-link">Regulation ${amendingDisplay}</a>`;
 
         amendmentNotice = `<p class="citation-popover-amendment-notice">${noticeText}</p>`;
     }
@@ -143,9 +146,10 @@ export function generateStandardPopoverHtml(citation) {
 
     let actionButtons;
     if (citation.isAmended && citation.consolidatedSlug) {
-        // Consolidated document available in portal
+        // Consolidated document available in portal - use centralized link builder
+        const consolidatedLink = toHref(buildDocumentLink(citation.consolidatedSlug));
         actionButtons = `
-            <a href="#/regulation/${citation.consolidatedSlug}" class="citation-popover-link citation-popover-link--primary">View Consolidated →</a>
+            <a href="${consolidatedLink}" class="citation-popover-link citation-popover-link--primary">View Consolidated →</a>
             <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:${citation.celex}" target="_blank" rel="noopener noreferrer" class="citation-popover-link citation-popover-link--secondary">EUR-Lex ↗</a>
         `;
     } else if (citation.isInternal) {

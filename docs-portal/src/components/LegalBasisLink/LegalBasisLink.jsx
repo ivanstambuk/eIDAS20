@@ -15,27 +15,8 @@
  */
 
 import { useState, useRef } from 'react';
+import { buildDocumentLink, buildSectionId, parseParagraph, toHref } from '../../utils/linkBuilder';
 import './LegalBasisLink.css';
-
-// Parse compound paragraph formats like "1(b)", "1(a)(i)", "1-2", "2(g)"
-// Returns { para, point, subpoint } for URL building
-function parseParagraph(paragraph) {
-    if (!paragraph) return { para: null, point: null, subpoint: null };
-    const str = String(paragraph);
-
-    // Match: optional number, optional letter point, optional roman subpoint
-    // e.g., "1", "1(b)", "2(g)", "1(a)(ii)", "1-2"
-    const match = str.match(/^(\d+[a-z]?(?:\s*[-–—]\s*\d+[a-z]?)?)(?:\s*\(\s*([a-z])\s*\))?(?:\s*\(\s*([ivxlcdm]+)\s*\))?$/i);
-    if (match) {
-        return {
-            para: match[1] ? match[1].split(/[-–—]/)[0].trim() : null,
-            point: match[2] ? match[2].toLowerCase() : null,
-            subpoint: match[3] ? match[3].toLowerCase() : null
-        };
-    }
-    // Fallback: treat whole string as paragraph
-    return { para: str.split(/[-–—]/)[0].trim(), point: null, subpoint: null };
-}
 
 export function LegalBasisLink({ legalBasis, regulationsIndex }) {
     const [showPopover, setShowPopover] = useState(false);
@@ -50,37 +31,23 @@ export function LegalBasisLink({ legalBasis, regulationsIndex }) {
 
     const parsedParagraph = parseParagraph(legalBasis?.paragraph);
 
-    // Build URL to article
+    // Build URL to article using centralized link builder
     const buildUrl = () => {
         if (!regMeta) return null;
-        const baseUrl = `${import.meta.env.BASE_URL}#`;
-        const docPath = regMeta.type === 'implementing-act'
-            ? `/implementing-acts/${regMeta.slug}`
-            : `/regulation/${regMeta.slug}`;
 
-        // Build section anchor from article + parsed paragraph components
-        let section = '';
-        if (legalBasis?.article) {
-            // Convert "Article 5b" -> "article-5b", "Annex I" -> "annex-i"
-            let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
+        // Build section ID from article + paragraph
+        const section = legalBasis?.article
+            ? buildSectionId(legalBasis.article, parsedParagraph)
+            : undefined;
 
-            // Build anchor - use -para- for paragraph references (including annexes)
-            // Note: -section- is only used for annex numbered section headers like "1. Set of data..."
-            // Standard annex paragraph/point references use -para- like articles
-            if (parsedParagraph.para) {
-                sectionId += `-para-${parsedParagraph.para}`;
-            }
-            if (parsedParagraph.point) {
-                sectionId += `-point-${parsedParagraph.point}`;
-            }
-            if (parsedParagraph.subpoint) {
-                sectionId += `-subpoint-${parsedParagraph.subpoint}`;
-            }
+        // Get internal path then convert to external href (with # prefix for HashRouter)
+        const internalPath = buildDocumentLink(regMeta.slug, {
+            section,
+            type: regMeta.type
+        });
 
-            section = `?section=${sectionId}`;
-        }
-
-        return `${baseUrl}${docPath}${section}`;
+        // Use toHref to add the # prefix and BASE_URL for external links
+        return `${import.meta.env.BASE_URL}${toHref(internalPath)}`;
     };
 
     // Format paragraph for display: "1(b)" -> "(1)(b)", "1" -> "(1)"

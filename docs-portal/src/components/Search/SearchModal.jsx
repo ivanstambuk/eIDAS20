@@ -12,6 +12,7 @@ import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useSearchSuggestions } from '../../hooks/useSearchSuggestions';
 import { useQuickJump } from '../../hooks/useQuickJump';
 import { useCitationJump } from '../../hooks/useCitationJump';
+import { buildDocumentLink, buildTerminologyLink, buildVCQLink, buildSectionId } from '../../utils/linkBuilder';
 import './Search.css';
 
 /**
@@ -77,28 +78,25 @@ function getSnippet(content, query, maxLength = 200) {
  */
 function SearchResult({ result, query, onClick, isSemanticMode }) {
     const getDocUrl = () => {
-        // Handle terminology definitions specially
+        // Handle terminology definitions - use centralized link builder
         if (result.type === 'definition') {
             // result.id is already "term-{id}", which matches the DOM element ID in Terminology.jsx
-            // Use ?section= query param because HashRouter already uses # for routing
-            const section = result.id ? `?section=${result.id}` : '';
-            return `/terminology${section}`;
+            return buildTerminologyLink({ section: result.id });
         }
 
         // Handle ARF HLRs - link to VCQ tool
         if (result.type === 'arf-hlr') {
-            return `/vcq`;  // Navigate to VCQ where ARF HLRs are displayed
+            return buildVCQLink();
         }
 
-        // Handle regulations and implementing acts
-        // Pass the search query as ?highlight= so RegulationViewer can highlight and scroll to the match
-        const baseType = result.type === 'regulation' ? 'regulation' : 'implementing-acts';
-        const section = result.section ? result.section.toLowerCase().replace(/\s+/g, '-') : '';
-        const params = new URLSearchParams();
-        if (section) params.set('section', section);
-        if (query && query.trim()) params.set('highlight', query.trim());
-        const queryString = params.toString();
-        return `/${baseType}/${result.slug}${queryString ? `?${queryString}` : ''}`;
+        // Handle regulations and implementing acts - use centralized link builder
+        const section = result.section ? buildSectionId(result.section) : '';
+        const highlight = query?.trim() || '';
+        return buildDocumentLink(result.slug, {
+            section: section || undefined,
+            highlight: highlight || undefined,
+            type: result.type
+        });
     };
 
     const getIcon = () => {
@@ -464,7 +462,7 @@ export function SearchModal({ isOpen, onClose }) {
                                 {quickJump.matches.map((doc) => (
                                     <Link
                                         key={doc.slug}
-                                        to={`/regulation/${doc.slug}`}
+                                        to={buildDocumentLink(doc.slug, { type: doc.type })}
                                         className="quick-jump-item"
                                         onClick={onClose}
                                     >
@@ -499,7 +497,7 @@ export function SearchModal({ isOpen, onClose }) {
                                 {citationJump.matches.map((doc) => (
                                     <Link
                                         key={doc.slug}
-                                        to={`/regulation/${doc.slug}?section=${doc.targetHash}`}
+                                        to={buildDocumentLink(doc.slug, { section: doc.targetHash, type: doc.type })}
                                         className="citation-jump-item"
                                         onClick={onClose}
                                     >
