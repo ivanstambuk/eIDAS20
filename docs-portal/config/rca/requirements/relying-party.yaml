@@ -1621,10 +1621,7 @@ requirements:
     roles:
       - relying_party
     useCases: all
-  # NOTE: RP-VER-002 (SCA requirement) deleted per DEC-252.
-  # Strong Customer Authentication (SCA) is covered by RP-GOV-003,
-  # which now includes the PSD2 Article 97 cross-reference.
-  - id: RP-VER-003
+  - id: RP-VER-002
     category: verification
     requirement: "Public sector: Recognize e-ID from other Member States"
     explanation: |
@@ -1646,7 +1643,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-004
+  - id: RP-VER-003
     category: verification
     requirement: "Public sector: Ensure unequivocal identity matching for cross-border"
     explanation: |
@@ -1665,7 +1662,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-005
+  - id: RP-VER-004
     category: verification
     requirement: Protect personal data used for identity matching
     explanation: |
@@ -1684,7 +1681,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-006
+  - id: RP-VER-005
     category: verification
     requirement: Access certificate revocation status information
     explanation: |
@@ -1706,7 +1703,7 @@ requirements:
       - relying_party
     useCases:
       - esignature
-  - id: RP-VER-007
+  - id: RP-VER-006
     category: verification
     bindingType: informative
     requirement: Very large online platforms must accept wallet authentication
@@ -1730,7 +1727,7 @@ requirements:
     roles:
       - relying_party
     useCases: all
-  - id: RP-VER-008
+  - id: RP-VER-007
     category: verification
     bindingType: mandatory
     requirement: Verify wallet unit attestation validity before transactions
@@ -1753,7 +1750,7 @@ requirements:
     useCases:
       - pid-online
       - proximity-id
-  - id: RP-VER-009
+  - id: RP-VER-008
     category: verification
     bindingType: mandatory
     requirement: Request RP-specific pseudonyms when appropriate
@@ -1777,7 +1774,7 @@ requirements:
     useCases:
       - pseudonym
       - age-verification
-  - id: RP-VER-010
+  - id: RP-VER-009
     category: verification
     bindingType: mandatory
     requirement: Perform unequivocal identity matching for cross-border users
@@ -1799,7 +1796,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-011
+  - id: RP-VER-010
     category: verification
     bindingType: mandatory
     requirement: Use mandatory PID attributes for wallet-based identity matching
@@ -1821,7 +1818,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-012
+  - id: RP-VER-011
     category: verification
     bindingType: mandatory
     requirement: Handle orthographic variations in identity matching
@@ -1843,7 +1840,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-013
+  - id: RP-VER-012
     category: verification
     bindingType: mandatory
     requirement: Inform users of successful identity matching outcomes
@@ -1865,7 +1862,7 @@ requirements:
       - relying_party
     useCases:
       - pid-online
-  - id: RP-VER-014
+  - id: RP-VER-013
     category: verification
     bindingType: mandatory
     requirement: Inform users when identity matching fails and provide alternatives
