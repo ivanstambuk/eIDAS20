@@ -21,6 +21,7 @@
     "build:embeddings": "node scripts/build-embeddings.js",
     "build:citations": "node scripts/build-citations.js",
     "build:arf": "node scripts/import-arf.js",
+    "normalize:regulation-ids": "node scripts/normalize-regulation-ids.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

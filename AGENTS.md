@@ -85,11 +85,19 @@ At the END of every response:
 ### 3. Auto-commit Protocol (MANDATORY)
 
 - **Auto-commit IMMEDIATELY** after each logical increment that is tested and working
+- **Do NOT batch commits** — each completed feature/fix gets its own commit
 - Use **conventional commit** format: `type: brief description`
 - Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `test`
 - **Bundle TRACKER.md updates in the SAME commit** as the change they document
   - ❌ WRONG: Commit change → Commit TRACKER update (creates noise)
   - ✅ CORRECT: Edit files + edit TRACKER.md → Single commit
+
+**Commit checkpoints:**
+- ✅ Fixed a bug → Commit
+- ✅ Added a feature → Commit
+- ✅ Created a script → Commit
+- ✅ Updated documentation → Commit
+- ❌ Waiting to finish "all the work" → Anti-pattern
 
 ---
 
@@ -430,7 +438,41 @@ Document slugs use format `YYYY-NNNN` with **leading zeros** for the number port
 | **Legal refs in RCA** | `YYYY/NNN` | `2025/848` |
 | **CELEX numbers** | Full year format | `32025R0848` |
 
-**The lookup normalizes these automatically** (see `useRegulationsIndex` in `ComplianceAssessment.jsx`), but be aware of this variation when debugging link issues.
+**The lookup normalizes these automatically** (see `useRegulationsIndex` hook), but be aware of this variation when debugging link issues.
+
+#### Regulation ID Canonical Format (DEC-225)
+
+**All YAML files MUST use YEAR/NUMBER format** for regulation IDs:
+
+| ✅ CORRECT | ❌ WRONG |
+|------------|----------|
+| `regulation: "2014/910"` | `regulation: "910/2014"` |
+| `regulation: 2024/2977` | `regulation: 2977/2024` |
+
+**Why:** The NUMBER/YEAR format (e.g., `910/2014`) is a legacy EU convention that caused repeated lookup failures. All source files have been normalized to YEAR/NUMBER.
+
+**Normalization tool:** If you encounter NUMBER/YEAR format in YAML:
+```bash
+npm run normalize:regulation-ids -- --dry-run  # Preview
+npm run normalize:regulation-ids               # Apply
+```
+
+#### Deep Link Anchor ID Convention
+
+When building deep links to legal content, use these ID patterns:
+
+| Element | Anchor Format | Example |
+|---------|---------------|---------|
+| **Article** | `article-{num}` | `article-5a` |
+| **Paragraph** | `...-para-{num}` | `article-5a-para-1` |
+| **Point** | `...-point-{letter}` | `article-5a-para-1-point-a` |
+| **Subpoint** | `...-subpoint-{roman}` | `article-5a-para-1-point-a-subpoint-i` |
+| **Annex paragraph** | `annex-{id}-para-{num}` | `annex-v-para-3` |
+| **Annex section header** | `annex-{id}-section-{num}` | `annex-para-section-1` |
+
+**Key distinction:**
+- `-para-` is for standard content references (used 99% of the time)
+- `-section-` is ONLY for numbered section headers in annexes (e.g., "1. Set of data...")
 
 ---
 
