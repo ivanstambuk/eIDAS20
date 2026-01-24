@@ -331,6 +331,38 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 13. Confirm Feature UX Before Building (MANDATORY)
+
+**Before implementing any significant new UI feature, confirm the desired behavior with the user.**
+
+**Trigger:** When you're about to add a new user-visible feature (not fixing bugs or refactoring):
+1. **Describe** the proposed behavior in 1-2 sentences
+2. **Ask** if this is what the user wants
+3. **Wait** for confirmation before writing code
+
+**Why this matters:** Complex features can take 30+ minutes to build. If the UX isn't what the user wanted, that time is wasted (and reverting creates git noise).
+
+**Examples requiring confirmation:**
+- Adding visual effects (highlighting, animations)
+- New keyboard shortcuts
+- Changing navigation behavior
+- Adding new UI sections or panels
+
+**Examples NOT requiring confirmation:**
+- Fixing bugs
+- Refactoring existing code
+- Following explicit user instructions
+
+**Anti-patterns:**
+- ❌ "I'll add search term highlighting to make it easier to find matches" → builds feature → user says "remove it"
+- ❌ Assuming what the user wants based on partial context
+
+**Correct pattern:**
+- ✅ "Should I highlight the search term on the destination page when clicking search results? This would add yellow markers around matching text."
+- ✅ [Wait for yes/no before implementing]
+
+---
+
 ## Project Structure
 
 ```
