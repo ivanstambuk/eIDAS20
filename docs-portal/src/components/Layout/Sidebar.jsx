@@ -148,7 +148,7 @@ const icons = {
  * See DEC-012 in DECISIONS.md for full rationale and architecture.
  */
 
-const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
+const Sidebar = ({ isOpen, isCollapsed, onClose, onToggle }) => {
     const [metadata, setMetadata] = useState(null);
     const [supplementaryDocs, setSupplementaryDocs] = useState([]);
 
@@ -239,11 +239,39 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
                 />
             )}
 
+            {/* Floating expand tab (shown when sidebar collapsed on desktop) */}
+            {isCollapsed && (
+                <button
+                    className="sidebar-expand-tab"
+                    onClick={onToggle}
+                    aria-label="Show sidebar"
+                    title="Show sidebar"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <polyline points="9,18 15,12 9,6" />
+                    </svg>
+                </button>
+            )}
+
             <aside
                 className={`sidebar ${isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}
                 role="navigation"
                 aria-label="Main navigation"
             >
+                {/* Sidebar collapse header */}
+                <div className="sidebar-collapse-header">
+                    <span className="sidebar-collapse-title">Navigation</span>
+                    <button
+                        className="sidebar-collapse-btn"
+                        onClick={onToggle}
+                        aria-label="Collapse sidebar"
+                        title="Collapse sidebar"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <polyline points="15,18 9,12 15,6" />
+                        </svg>
+                    </button>
+                </div>
                 {navigation.map((section) => {
                     // Use dynamically fetched items for Supplementary Documents section
                     const items = section.isDynamic ? supplementaryDocs : section.items;

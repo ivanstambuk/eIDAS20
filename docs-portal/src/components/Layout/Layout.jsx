@@ -49,7 +49,12 @@ const Layout = () => {
             </a>
 
             <Header onMenuToggle={toggleSidebar} sidebarCollapsed={sidebarCollapsed} />
-            <Sidebar isOpen={sidebarOpen} isCollapsed={sidebarCollapsed} onClose={closeSidebar} />
+            <Sidebar
+                isOpen={sidebarOpen}
+                isCollapsed={sidebarCollapsed}
+                onClose={closeSidebar}
+                onToggle={toggleSidebar}
+            />
 
             <main className="main-content" id="main-content" tabIndex={-1}>
                 <div className="main-content-inner">

@@ -749,6 +749,80 @@ a.btn-primary:hover {
   transition: transform var(--transition-base);
 }
 
+/* --- Sidebar Collapse Header --- */
+.sidebar-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-1);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.sidebar-collapse-title {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-collapse-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* --- Floating Expand Tab (when sidebar collapsed) --- */
+.sidebar-expand-tab {
+  position: fixed;
+  top: calc(var(--header-height) + var(--space-4));
+  left: 0;
+  width: 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-left: none;
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  transition: all var(--transition-fast);
+}
+
+.sidebar-expand-tab:hover {
+  width: 32px;
+  background: var(--bg-hover);
+  color: var(--accent-primary);
+}
+
+/* Hide expand tab on mobile (sidebar uses overlay there) */
+@media (max-width: 1024px) {
+  .sidebar-expand-tab {
+    display: none;
+  }
+
+  .sidebar-collapse-header {
+    display: none;
+  }
+}
+
 .sidebar-section {
   margin-bottom: var(--space-6);
 }
