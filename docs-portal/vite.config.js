@@ -1,5 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { spawn } from 'child_process'
+import { watch } from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Custom plugin to disable caching for JSON data files during development
 // This prevents needing hard refresh when rebuilding terminology/search
@@ -20,9 +26,77 @@ function noCacheJsonPlugin() {
   };
 }
 
+/**
+ * Auto-rebuild plugin for config files
+ * Watches RCA and VCQ YAML files and automatically rebuilds JSON when they change
+ * Prevents serving stale data during development (DEC-252 lesson learned)
+ */
+function autoRebuildPlugin() {
+  let isRebuilding = false;
+  const debounceMs = 500;
+  let debounceTimer = null;
+
+  const rebuild = (type, scriptPath) => {
+    if (isRebuilding) return;
+    isRebuilding = true;
+
+    console.log(`\n🔄 ${type} config changed, rebuilding...`);
+    const child = spawn('node', [scriptPath], {
+      cwd: __dirname,
+      stdio: 'inherit'
+    });
+
+    child.on('close', (code) => {
+      isRebuilding = false;
+      if (code === 0) {
+        console.log(`✅ ${type} data rebuilt successfully\n`);
+      } else {
+        console.error(`❌ ${type} rebuild failed with code ${code}\n`);
+      }
+    });
+  };
+
+  return {
+    name: 'auto-rebuild-config',
+    configureServer() {
+      // Watch RCA requirements directory
+      const rcaDir = join(__dirname, 'config/rca/requirements');
+      const rcaScript = join(__dirname, 'scripts/build-rca.js');
+
+      try {
+        watch(rcaDir, { recursive: true }, (eventType, filename) => {
+          if (filename?.endsWith('.yaml')) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => rebuild('RCA', rcaScript), debounceMs);
+          }
+        });
+        console.log('👀 Watching RCA config files for changes');
+      } catch (err) {
+        console.warn('⚠️  Could not watch RCA directory:', err.message);
+      }
+
+      // Watch VCQ requirements directory
+      const vcqDir = join(__dirname, 'config/vcq');
+      const vcqScript = join(__dirname, 'scripts/build-vcq.js');
+
+      try {
+        watch(vcqDir, { recursive: true }, (eventType, filename) => {
+          if (filename?.endsWith('.yaml')) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => rebuild('VCQ', vcqScript), debounceMs);
+          }
+        });
+        console.log('👀 Watching VCQ config files for changes');
+      } catch (err) {
+        console.warn('⚠️  Could not watch VCQ directory:', err.message);
+      }
+    }
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [noCacheJsonPlugin(), react()],
+  plugins: [noCacheJsonPlugin(), autoRebuildPlugin(), react()],
 
   // GitHub Pages deployment configuration
   // Change 'eIDAS20' to your actual repo name if different

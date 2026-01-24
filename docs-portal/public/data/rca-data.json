@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-24T10:52:09.321Z",
+  "generatedAt": "2026-01-24T17:22:34.551Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -5518,8 +5518,8 @@
     {
       "id": "RP-GOV-003",
       "category": "governance",
-      "requirement": "Private sector: Accept EUDI Wallet where strong authentication is mandated",
-      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication is required by law or contract in specified sectors.",
+      "requirement": "Private sector: Accept EUDI Wallet where strong user authentication is mandated",
+      "explanation": "Private relying parties (except micro/small enterprises) must accept EUDI Wallets \nwhen strong user authentication (SUA) is required by law or contract in specified sectors.\nFor payment services, this implements \"Strong Customer Authentication\" (SCA) under\nPSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389).",
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5f",
@@ -5528,6 +5528,10 @@
       "legalText": "Where private relying parties that provide services, with the exception of \nmicroenterprises and small enterprises [...], are required by Union or national law \nto use strong user authentication for online identification or where strong user \nauthentication for online identification is required by contractual obligation, \nincluding in the areas of transport, energy, banking, financial services, social \nsecurity, health, drinking water, postal services, digital infrastructure, education \nor telecommunications, those private relying parties shall [...] also accept European \nDigital Identity Wallets that are provided in accordance with this Regulation.",
       "legalSourceInfo": null,
       "deadline": "2027-12-21",
+      "relatedRegulation": {
+        "regulation": "PSD2",
+        "article": "Article 97"
+      },
       "applicableRoles": [
         "relying_party"
       ],
@@ -8085,36 +8089,6 @@
     {
       "id": "RP-VER-002",
       "category": "verification",
-      "requirement": "Support wallet-based Strong Customer Authentication (SCA)",
-      "explanation": "Payment service providers must accept the EUDI Wallet as a means of performing \nStrong Customer Authentication for payment transactions and account access.",
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5f",
-        "paragraph": "2"
-      },
-      "legalText": "Where private relying parties that provide services [...] are required by Union or \nnational law to use strong user authentication for online identification [...] \nincluding in the areas of [...] banking, financial services [...] those private \nrelying parties shall [...] also accept European Digital Identity Wallets.",
-      "legalSourceInfo": null,
-      "deadline": "2027-12-21",
-      "relatedRegulation": {
-        "regulation": "PSD2",
-        "article": "Article 97"
-      },
-      "applicableRoles": [
-        "relying_party"
-      ],
-      "applicableUseCases": [
-        "payment-auth",
-        "open-bank-account"
-      ],
-      "appliesToAllUseCases": false,
-      "profileFilter": [
-        "private_sector"
-      ],
-      "appliesToAllProfiles": false
-    },
-    {
-      "id": "RP-VER-003",
-      "category": "verification",
       "requirement": "Public sector: Recognize e-ID from other Member States",
       "explanation": "When requiring electronic identification for online services, public sector RPs \nmust accept notified e-ID means from other Member States at substantial/high levels.",
       "legalBasis": {
@@ -8136,7 +8110,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-004",
+      "id": "RP-VER-003",
       "category": "verification",
       "requirement": "Public sector: Ensure unequivocal identity matching for cross-border",
       "explanation": "When acting as relying parties for cross-border services, public sector bodies \nmust ensure unequivocal identity matching for users with notified e-ID or EUDI Wallets.",
@@ -8159,7 +8133,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-005",
+      "id": "RP-VER-004",
       "category": "verification",
       "requirement": "Protect personal data used for identity matching",
       "explanation": "For cross-border identity matching, appropriate technical and organisational measures \nmust be in place to protect personal data and prevent user profiling.",
@@ -8182,7 +8156,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-006",
+      "id": "RP-VER-005",
       "category": "verification",
       "requirement": "Access certificate revocation status information",
       "explanation": "Qualified trust service providers must provide RPs with certificate validity/revocation \ninformation. RPs should use this to verify certificate status before relying on them.",
@@ -8205,7 +8179,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-007",
+      "id": "RP-VER-006",
       "category": "verification",
       "requirement": "Very large online platforms must accept wallet authentication",
       "explanation": "Recital 57 states that very large online platforms (as defined in DSA) that \nrequire authentication should accept EUDI Wallets upon user request, while \nrespecting data minimisation and pseudonym rights.",
@@ -8246,7 +8220,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-008",
+      "id": "RP-VER-007",
       "category": "verification",
       "requirement": "Verify wallet unit attestation validity before transactions",
       "explanation": "Before accepting credentials from a wallet, relying parties should verify the \nvalidity status of the wallet unit attestation. This ensures the wallet unit \nis still valid and not revoked.",
@@ -8282,7 +8256,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-009",
+      "id": "RP-VER-008",
       "category": "verification",
       "requirement": "Request RP-specific pseudonyms when appropriate",
       "explanation": "Relying parties may request pseudonyms that are specific and unique to them, \nallowing persistent pseudonymous authentication without requiring full identity \ndisclosure. The pseudonym can be requested standalone or with other data.",
@@ -8318,7 +8292,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-010",
+      "id": "RP-VER-009",
       "category": "verification",
       "requirement": "Perform unequivocal identity matching for cross-border users",
       "explanation": "Public sector relying parties offering cross-border services must implement \nidentity matching processes to link wallet credentials or notified eID means \nto existing user records or registers.",
@@ -8341,7 +8315,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-011",
+      "id": "RP-VER-010",
       "category": "verification",
       "requirement": "Use mandatory PID attributes for wallet-based identity matching",
       "explanation": "When users authenticate via EUDI Wallet, relying parties must use the mandatory \nPID attributes from 2024/2977 Annex Section 1 for identity matching, plus any \noptional data needed to ensure uniqueness.",
@@ -8364,7 +8338,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-012",
+      "id": "RP-VER-011",
       "category": "verification",
       "requirement": "Handle orthographic variations in identity matching",
       "explanation": "Identity matching must not be affected by differences in transliteration, blank \nspaces, hyphenation, concatenation, and similar orthographic variations required \nunder Union or national law.",
@@ -8387,7 +8361,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-013",
+      "id": "RP-VER-012",
       "category": "verification",
       "requirement": "Inform users of successful identity matching outcomes",
       "explanation": "When identity matching is successful, relying parties must inform users that \nthey have been granted access, whether they were matched to an existing record \nor registered as a new user, and options for reusing the match.",
@@ -8410,7 +8384,7 @@
       "appliesToAllProfiles": true
     },
     {
-      "id": "RP-VER-014",
+      "id": "RP-VER-013",
       "category": "verification",
       "requirement": "Inform users when identity matching fails and provide alternatives",
       "explanation": "When identity matching is unsuccessful, relying parties must inform users why \nthe match failed and provide information about alternative methods or \ncomplementary processes available.",
@@ -23201,16 +23175,16 @@
         "RP-TEC-040",
         "RP-TEC-042",
         "RP-VER-001",
+        "RP-VER-002",
         "RP-VER-003",
         "RP-VER-004",
-        "RP-VER-005",
+        "RP-VER-006",
         "RP-VER-007",
-        "RP-VER-008",
+        "RP-VER-009",
         "RP-VER-010",
         "RP-VER-011",
         "RP-VER-012",
         "RP-VER-013",
-        "RP-VER-014",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23268,8 +23242,8 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
-        "RP-VER-009",
+        "RP-VER-006",
+        "RP-VER-008",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23347,8 +23321,8 @@
         "RP-TEC-042",
         "RP-TEC-043",
         "RP-VER-001",
+        "RP-VER-005",
         "RP-VER-006",
-        "RP-VER-007",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23401,8 +23375,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-002",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23456,8 +23429,7 @@
         "RP-TEC-041",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-002",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23509,7 +23481,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23561,7 +23533,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23613,7 +23585,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23665,7 +23637,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23717,7 +23689,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23769,7 +23741,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23821,7 +23793,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23873,7 +23845,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23928,8 +23900,8 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
-        "RP-VER-009",
+        "RP-VER-006",
+        "RP-VER-008",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -23981,7 +23953,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -24033,7 +24005,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -24085,7 +24057,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -24141,8 +24113,8 @@
         "RP-TEC-040",
         "RP-TEC-042",
         "RP-VER-001",
+        "RP-VER-006",
         "RP-VER-007",
-        "RP-VER-008",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -24194,7 +24166,7 @@
         "RP-TEC-031",
         "RP-TEC-042",
         "RP-VER-001",
-        "RP-VER-007",
+        "RP-VER-006",
         "RP-REG-014",
         "RP-REG-015",
         "RP-GOV-009",
@@ -29379,17 +29351,17 @@
     }
   },
   "stats": {
-    "totalRequirements": 488,
+    "totalRequirements": 487,
     "totalUseCases": 19,
     "totalCategories": 8,
     "totalRoles": 7,
     "universalRequirements": 423,
-    "useCaseSpecificRequirements": 65,
+    "useCaseSpecificRequirements": 64,
     "requirementsByRole": {
       "conformity_assessment_body": 36,
       "issuer": 42,
       "pid_provider": 30,
-      "relying_party": 100,
+      "relying_party": 99,
       "supervisory_body": 42,
       "trust_service_provider": 103,
       "wallet_provider": 132
