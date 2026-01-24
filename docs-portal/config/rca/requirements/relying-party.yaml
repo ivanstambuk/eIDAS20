@@ -45,7 +45,7 @@ requirements:
       - esignature
   - id: RP-GOV-003
     category: governance
-    requirement: "Private sector: Accept EUDI Wallet where strong authentication is mandated"
+    requirement: "Private sector: Accept EUDI Wallet where strong user authentication is mandated"
     explanation: |
       Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
       when strong user authentication is required by law or contract in specified sectors.
