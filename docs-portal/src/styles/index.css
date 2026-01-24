@@ -841,7 +841,7 @@ a.btn-primary:hover {
 .main-content {
   margin-left: var(--sidebar-width);
   margin-top: var(--header-height);
-  padding: var(--space-8);
+  padding: var(--space-6);
   flex: 1;
   min-height: calc(100vh - var(--header-height));
   /* Smooth reflow when sidebar collapses */

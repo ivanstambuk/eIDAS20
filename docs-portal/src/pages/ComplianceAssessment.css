@@ -5,9 +5,8 @@
  */
 
 .rca-page {
-    padding: 0.5rem 2rem 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 0.5rem 1rem 1.5rem;
+    max-width: none;
 }
 
 /* ============================================================================
@@ -850,23 +849,24 @@
 }
 
 .col-id {
-    width: 100px;
+    width: 75px;
     font-family: 'Roboto Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #22d3ee;
+    white-space: nowrap;
 }
 
 .col-requirement {
-    min-width: 300px;
+    /* No min-width - let it expand to fill available space */
 }
 
 .col-legal {
-    width: 220px;
+    width: 180px;
     white-space: nowrap;
 }
 
 .col-status {
-    width: 150px;
+    width: 130px;
 }
 
 .rca-req-text {
@@ -979,7 +979,7 @@
 
 @media (max-width: 768px) {
     .rca-page {
-        padding: 1rem;
+        padding: 0.75rem;
     }
 
     .rca-role-options {
