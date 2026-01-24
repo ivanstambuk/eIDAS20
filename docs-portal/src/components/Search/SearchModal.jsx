@@ -91,9 +91,14 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
         }
 
         // Handle regulations and implementing acts
+        // Pass the search query as ?highlight= so RegulationViewer can highlight and scroll to the match
         const baseType = result.type === 'regulation' ? 'regulation' : 'implementing-acts';
-        const hash = result.section ? `#${result.section.toLowerCase().replace(/\s+/g, '-')}` : '';
-        return `/${baseType}/${result.slug}${hash}`;
+        const section = result.section ? result.section.toLowerCase().replace(/\s+/g, '-') : '';
+        const params = new URLSearchParams();
+        if (section) params.set('section', section);
+        if (query && query.trim()) params.set('highlight', query.trim());
+        const queryString = params.toString();
+        return `/${baseType}/${result.slug}${queryString ? `?${queryString}` : ''}`;
     };
 
     const getIcon = () => {

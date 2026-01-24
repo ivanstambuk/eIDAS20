@@ -438,6 +438,200 @@ const RegulationViewer = () => {
         }
     }, [loading, regulation, searchParams, shouldRestoreScroll]);
 
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Search Highlight: Highlight search terms and scroll to match
+    //
+    // When coming from search results (?highlight=term&section=article-15a), we:
+    // 1. Find matching text in the document content
+    // 2. Wrap matches in <mark class="search-highlight">
+    // 3. Scroll to the first match WITHIN the target section (not just first in doc)
+    //
+    // This provides precise navigation to WHERE the search term was found,
+    // not just the article it's in.
+    // ═══════════════════════════════════════════════════════════════════════════
+    useEffect(() => {
+        if (loading || !regulation || shouldRestoreScroll) return;
+
+        const highlight = searchParams.get('highlight');
+        if (!highlight || !highlight.trim()) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        // Get the target section for prioritized scrolling
+        const section = searchParams.get('section');
+        const targetSectionEl = section ? document.getElementById(section) : null;
+
+        // Clean up any previous highlights first
+        contentEl.querySelectorAll('mark.search-highlight').forEach(mark => {
+            const parent = mark.parentNode;
+            parent.replaceChild(document.createTextNode(mark.textContent), mark);
+            parent.normalize(); // Merge adjacent text nodes
+        });
+
+        // Split search query into individual terms (words)
+        const terms = highlight.toLowerCase().split(/\s+/).filter(t => t.length > 2);
+        if (terms.length === 0) return;
+
+        // Create regex pattern for all terms
+        const pattern = terms.map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+        const regex = new RegExp(`(${pattern})`, 'gi');
+
+        let firstMatchInSection = null;  // Priority: match within target section
+        let firstMatchAnywhere = null;   // Fallback: first match in document
+
+        // Walk the text nodes and wrap matches
+        const walker = document.createTreeWalker(
+            contentEl,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: (node) => {
+                    // Skip script, style, and already-marked content
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    const tagName = parent.tagName.toLowerCase();
+                    if (tagName === 'script' || tagName === 'style' || tagName === 'mark') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
+        const nodesToProcess = [];
+        while (walker.nextNode()) {
+            if (regex.test(walker.currentNode.textContent)) {
+                nodesToProcess.push(walker.currentNode);
+                regex.lastIndex = 0; // Reset regex state
+            }
+        }
+
+        // Process matches (limit to prevent performance issues)
+        const MAX_HIGHLIGHTS = 50;
+        let highlightCount = 0;
+
+        for (const textNode of nodesToProcess) {
+            if (highlightCount >= MAX_HIGHLIGHTS) break;
+
+            const text = textNode.textContent;
+            const parts = text.split(regex);
+
+            if (parts.length > 1) {
+                const fragment = document.createDocumentFragment();
+
+                for (let i = 0; i < parts.length; i++) {
+                    if (i % 2 === 0) {
+                        // Regular text
+                        fragment.appendChild(document.createTextNode(parts[i]));
+                    } else {
+                        // Matched text - wrap in mark
+                        const mark = document.createElement('mark');
+                        mark.className = 'search-highlight';
+                        mark.textContent = parts[i];
+                        fragment.appendChild(mark);
+
+                        // Track first match for scrolling
+                        if (highlightCount < MAX_HIGHLIGHTS) {
+                            // Priority: match within target section
+                            if (!firstMatchInSection && targetSectionEl) {
+                                // Check if this match's original node was inside the target section
+                                if (targetSectionEl.contains(textNode) ||
+                                    // Also check article/chapter containers (siblings of the h3/h2)
+                                    isWithinSection(textNode, targetSectionEl)) {
+                                    firstMatchInSection = mark;
+                                }
+                            }
+                            // Fallback: first match anywhere
+                            if (!firstMatchAnywhere) {
+                                firstMatchAnywhere = mark;
+                            }
+                        }
+                        highlightCount++;
+                    }
+                }
+
+                textNode.parentNode.replaceChild(fragment, textNode);
+            }
+        }
+
+        // Helper: Check if a node is within a section (walking up DOM until next heading)
+        function isWithinSection(node, sectionHeading) {
+            // Walk up from the node to see if we pass through the section
+            let current = node.parentElement;
+            const sectionLevel = sectionHeading.tagName?.toLowerCase();
+
+            while (current && current !== contentEl) {
+                // If we hit our target section, we're inside it
+                if (current === sectionHeading || current.id === sectionHeading.id) {
+                    return true;
+                }
+
+                // If we hit another heading of same or higher level, we've left the section
+                const tagName = current.tagName?.toLowerCase();
+                if ((tagName === 'h2' || tagName === 'h3') && current !== sectionHeading) {
+                    // Check if this is a LATER section (by document order)
+                    if (current.compareDocumentPosition(sectionHeading) & Node.DOCUMENT_POSITION_PRECEDING) {
+                        return false; // We're past the target section
+                    }
+                }
+
+                current = current.parentElement;
+            }
+
+            // Fallback: check document order relative to section heading
+            if (sectionHeading) {
+                const position = node.compareDocumentPosition(sectionHeading);
+                // Node comes after section heading
+                if (position & Node.DOCUMENT_POSITION_PRECEDING) {
+                    // Check if there's another heading between section and node
+                    const allHeadings = contentEl.querySelectorAll('h2[id], h3[id]');
+                    let inSection = false;
+                    for (const heading of allHeadings) {
+                        if (heading === sectionHeading || heading.id === sectionHeading.id) {
+                            inSection = true;
+                            continue;
+                        }
+                        if (inSection) {
+                            // Next heading after our section - is node before it?
+                            const nodePos = node.compareDocumentPosition(heading);
+                            if (nodePos & Node.DOCUMENT_POSITION_FOLLOWING) {
+                                return true; // Node is between section heading and next heading
+                            }
+                            return false; // Node is after next heading
+                        }
+                    }
+                    return inSection; // No next heading, so node is in last section
+                }
+            }
+
+            return false;
+        }
+
+        // Choose which match to scroll to: prefer section match, fallback to anywhere
+        const scrollTarget = firstMatchInSection || firstMatchAnywhere;
+
+        // Scroll to match with slight delay for DOM updates
+        if (scrollTarget) {
+            requestAnimationFrame(() => {
+                const headerOffset = 64 + 32; // header height + extra padding
+                const targetPosition = scrollTarget.getBoundingClientRect().top + window.scrollY - headerOffset;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            });
+        }
+
+        // Cleanup function: remove highlights when navigating away or params change
+        return () => {
+            const marks = document.querySelectorAll('mark.search-highlight');
+            marks.forEach(mark => {
+                const parent = mark.parentNode;
+                if (parent) {
+                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                    parent.normalize();
+                }
+            });
+        };
+    }, [loading, regulation, searchParams, shouldRestoreScroll]);
+
     // Copy Reference Gutter Icons: Hydrate headings with copy buttons (DEC-011)
     useEffect(() => {
         if (!regulation || loading) return;
