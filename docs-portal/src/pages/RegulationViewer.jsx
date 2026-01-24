@@ -505,6 +505,14 @@ const RegulationViewer = () => {
             addGutter(recital, recital.id, `recital (${recitalNum})`);
         });
 
+        // Create gutter icons for annex sections (numbered sections within annexes)
+        // These are <p> elements with class linkable-annex-section
+        const annexSections = contentEl.querySelectorAll('p.linkable-annex-section[id]');
+        annexSections.forEach(section => {
+            const sectionNum = section.dataset.annexSection || '';
+            addGutter(section, section.id, `Annex section ${sectionNum}`);
+        });
+
         // Event delegation for gutter button clicks
         const handleClick = async (e) => {
             const btn = e.target.closest('.copy-gutter-btn');

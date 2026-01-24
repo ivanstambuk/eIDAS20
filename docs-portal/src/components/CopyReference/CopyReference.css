@@ -11,7 +11,8 @@
 .regulation-content li.linkable-paragraph,
 .regulation-content li.linkable-point,
 .regulation-content li.linkable-subpoint,
-.regulation-content li.linkable-recital {
+.regulation-content li.linkable-recital,
+.regulation-content p.linkable-annex-section {
     position: relative;
 }
 
@@ -41,6 +42,13 @@ li.linkable-recital>.copy-gutter {
     transform: none;
 }
 
+/* Annex sections are <p> elements, same positioning as list items */
+p.linkable-annex-section>.copy-gutter {
+    left: -80px;
+    top: 2px;
+    transform: none;
+}
+
 /* Show gutter on heading/paragraph hover */
 .regulation-content h2[id]:hover .copy-gutter,
 .regulation-content h3[id]:hover .copy-gutter,
@@ -48,6 +56,7 @@ li.linkable-recital>.copy-gutter {
 .regulation-content li.linkable-point:hover>.copy-gutter,
 .regulation-content li.linkable-subpoint:hover>.copy-gutter,
 .regulation-content li.linkable-recital:hover>.copy-gutter,
+.regulation-content p.linkable-annex-section:hover>.copy-gutter,
 .copy-gutter:hover {
     opacity: 1;
 }
