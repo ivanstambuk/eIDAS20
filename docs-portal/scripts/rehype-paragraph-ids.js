@@ -60,6 +60,32 @@ function matchLetterPoint(text) {
 }
 
 /**
+ * Normalize spacing in annex section headers.
+ * Converts "1.Set of..." to "1. Set of..." for consistent formatting.
+ * Recursively searches for the first text node that matches the pattern.
+ */
+function normalizeAnnexSectionSpacing(node) {
+    if (node.type === 'text' && node.value) {
+        // Match patterns like "1.X" where there's no space after the dot
+        const match = node.value.match(/^(\d+\.)(\S)/);
+        if (match) {
+            // Insert a space after the dot
+            node.value = node.value.replace(/^(\d+\.)(\S)/, '$1 $2');
+            return true; // Stop recursion, we found and fixed it
+        }
+    }
+    // Recursively check children
+    if (node.children) {
+        for (const child of node.children) {
+            if (normalizeAnnexSectionSpacing(child)) {
+                return true; // Stop if we found and fixed it
+            }
+        }
+    }
+    return false;
+}
+
+/**
  * Find the nearest ancestor article context from the parent chain.
  */
 function findArticleContext(ancestors) {
@@ -177,6 +203,10 @@ function rehypeParagraphIds() {
                             ...(node.properties.className || []),
                             'linkable-annex-section'
                         ];
+
+                        // Normalize spacing: ensure "1.Title" becomes "1. Title"
+                        // Find and fix the first text node that starts with "N."
+                        normalizeAnnexSectionSpacing(firstChild);
 
                         // Track this section for potential nested content
                         lastParagraphInContext = { id: sectionId, num: sectionNum };
