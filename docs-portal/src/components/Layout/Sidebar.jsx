@@ -148,7 +148,7 @@ const icons = {
  * See DEC-012 in DECISIONS.md for full rationale and architecture.
  */
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
     const [metadata, setMetadata] = useState(null);
     const [supplementaryDocs, setSupplementaryDocs] = useState([]);
 
@@ -240,7 +240,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             )}
 
             <aside
-                className={`sidebar ${isOpen ? 'open' : ''}`}
+                className={`sidebar ${isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}
                 role="navigation"
                 aria-label="Main navigation"
             >

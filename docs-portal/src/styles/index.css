@@ -745,6 +745,8 @@ a.btn-primary:hover {
   overflow-y: auto;
   padding: var(--space-4);
   z-index: var(--z-sticky);
+  /* Smooth collapse animation for desktop */
+  transition: transform var(--transition-base);
 }
 
 .sidebar-section {
@@ -842,6 +844,19 @@ a.btn-primary:hover {
   padding: var(--space-8);
   flex: 1;
   min-height: calc(100vh - var(--header-height));
+  /* Smooth reflow when sidebar collapses */
+  transition: margin-left var(--transition-base);
+}
+
+/* --- Desktop Sidebar Collapse --- */
+@media (min-width: 1025px) {
+  .app-layout.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .app-layout.sidebar-collapsed .main-content {
+    margin-left: 0;
+  }
 }
 
 .main-content-inner {
@@ -1152,13 +1167,8 @@ a.btn-primary:hover {
    11. RESPONSIVE DESIGN
    ============================================ */
 
-/* Hide hamburger menu on desktop - sidebar is always visible */
-/* Using !important to override .btn { display: flex } from accessibility rules */
-@media (min-width: 1025px) {
-  .menu-toggle {
-    display: none !important;
-  }
-}
+/* Hamburger menu visible on all screen sizes for sidebar toggle (DEC-227) */
+/* Desktop: toggles sidebar collapse; Mobile: opens sidebar overlay */
 
 @media (max-width: 1024px) {
   .sidebar {
