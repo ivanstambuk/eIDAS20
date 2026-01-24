@@ -355,36 +355,12 @@ export default function rehypeTermLinks(options = {}) {
         // Track nodes to replace (can't modify during traversal)
         const replacements = [];
 
-        // Track current section during traversal
-        let currentSection = null;
-        let skipUntilNextSection = false;
-
         // Second pass: find and mark term matches
         visitParents(tree, (node, ancestors) => {
-            // Track section changes via headings
-            if (node.type === 'element' && node.tagName === 'h3' &&
-                node.properties?.id?.startsWith('article-')) {
-                currentSection = node.properties.id;
-                const info = sectionInfo.get(currentSection);
-                skipUntilNextSection = info?.isDefinitions || false;
-                return;
-            }
-
-            // Also track h2 for chapter/section boundaries
-            if (node.type === 'element' && node.tagName === 'h2') {
-                // h2 resets article context
-                currentSection = node.properties?.id || null;
-                skipUntilNextSection = false;
-                return;
-            }
-
             // Only process text nodes
             if (node.type !== 'text') return;
 
-            // Skip if in definitions section
-            if (skipUntilNextSection) return;
-
-            // Skip if in exempt node types
+            // Skip if in exempt node types (headings, code, etc.)
             if (shouldSkipNode(ancestors)) return;
 
             // Process the text node
