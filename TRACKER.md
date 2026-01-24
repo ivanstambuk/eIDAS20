@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-24 03:45 CET |
-| **Version** | V3.9.4 |
-| **Portal Stats** | 41 docs, 380K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1084 total reqs |
+| **Last Updated** | 2026-01-24 03:50 CET |
+| **Version** | V3.9.5 |
+| **Portal Stats** | 41 docs, 380K words, 283 terms, 485 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1099 total reqs |
 | **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 
@@ -28,7 +28,8 @@
 
 | Date | Summary |
 |------|---------|
-| 2026-01-24 03:45 | **Fix: Missing Annex Content** — Audited all 29 implementing acts, fixed 3 with empty annexes (2025/2531 Electronic Ledgers, 2025/1570 QSCD Notification, 2025/2527 QWAC Standards). Cause: Formex truncation. No RCA/VCQ impact. |
+| 2026-01-24 03:50 | **Feat: Electronic Ledger RCA Requirements** — Extracted 15 REQ-* requirements from 2025/2531 annex into RCA tool. New `electronic_ledger` profile for TSP. Covers ETSI EN 319 401 adaptations for DLT trust services. TSP reqs: 85→100. |
+| 2026-01-24 03:45 | **Fix: Missing Annex Content** — Audited all 29 implementing acts, fixed 3 with empty annexes (2025/2531 Electronic Ledgers, 2025/1570 QSCD Notification, 2025/2527 QWAC Standards). Rebuilt terminology (268→283 terms) + search. |
 | 2026-01-24 03:20 | **Retro: Regulation ID Standardization** — DEC-225, normalized 114 YAML IDs (910/2014→2014/910), extracted LegalBasisLink + useRegulationsIndex to shared modules, AGENTS.md docs for anchor IDs + auto-commit protocol |
 | 2026-01-24 01:30 | **Fix: RCA Legal Basis Display** — Human-friendly regulation names, wider column, auto-select use cases on domain toggle, annex deep link fix |
 | 2026-01-23 13:25 | **Retro: Sidebar redesign** — DEC-224, TERMINOLOGY.md updates (Collapsible Section, Accordion), react-patterns.md snippet, squashed commits |
