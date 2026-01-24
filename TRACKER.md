@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-24 16:15 | **Feat: Hybrid Sidebar Toggle (DEC-227)** — Hamburger button now visible on desktop, collapses/expands sidebar with smooth animation. State persisted in localStorage. Mobile keeps overlay behavior. |
 | 2026-01-24 15:30 | **Feat: Policy Document Imports** — Added 3 policy documents: Digital Future Communication (COM(2020)67, 4.9K words), 2030 Digital Compass (COM(2021)118, 3.7K words + Annex), Digital Decade Decision (2022/2481, 2.7K words). Completes policy context chain for EUDIW. |
 | 2026-01-24 10:48 | **Revert: Removed Search Highlight Feature** — Removed the `?highlight=` search highlighting feature (added earlier this session) per user request. Reverted ~250 lines of JS, ~45 lines of CSS. Link builder now simpler. |
 | 2026-01-24 10:20 | **Refactor: Centralized Link Builder (DEC-226)** — Created `linkBuilder.js` as single source of truth for URL generation. Refactored 8 files. Fixed Home page Quick Links using broken `#article-*` format. Added mandatory usage documentation to AGENTS.md. |
