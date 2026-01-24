@@ -45,6 +45,11 @@ const SUPPLEMENTARY_TERMS_FILE = join(__dirname, 'supplementary-terms.yaml');
 // These become lookup aliases for terminology linking
 const ABBREVIATIONS_FILE = join(__dirname, 'abbreviations.yaml');
 
+// Custom internal dictionary file
+// Contains curated definitions for terms commonly used but not formally defined in regulations
+// These terms blend into the terminology without "View Source" links
+const CUSTOM_DICTIONARY_FILE = join(__dirname, 'custom-dictionary.yaml');
+
 /**
  * Load human-friendly document titles from regulations-index.json
  * This provides shortTitle (e.g., "eIDAS 2.0 Regulation (Consolidated)") 
@@ -309,6 +314,137 @@ function loadSupplementaryTerms() {
         return terms;
     } catch (err) {
         console.warn('⚠️  Could not load supplementary-terms.yaml:', err.message);
+        return [];
+    }
+}
+
+/**
+ * Load custom internal dictionary terms from YAML file
+ * These are curated definitions for terms commonly used but not formally defined.
+ * They blend into the terminology WITHOUT "View Source" links.
+ * 
+ * Returns array of term objects compatible with the main extraction pipeline
+ */
+function loadCustomDictionary() {
+    if (!existsSync(CUSTOM_DICTIONARY_FILE)) {
+        return [];
+    }
+
+    try {
+        const content = readFileSync(CUSTOM_DICTIONARY_FILE, 'utf-8');
+        const terms = [];
+        let currentTerm = null;
+        let inTerms = false;
+        let inDefinition = false;
+        let definitionLines = [];
+
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim();
+
+            // Skip comments and empty lines (unless we're in a multi-line definition)
+            if (trimmed.startsWith('#')) continue;
+            if (!trimmed && !inDefinition) continue;
+
+            // Start of terms section
+            if (trimmed === 'terms:') {
+                inTerms = true;
+                continue;
+            }
+
+            if (!inTerms) continue;
+
+            // New term entry (starts with "- term:")
+            if (trimmed.startsWith('- term:')) {
+                // Save previous term if exists
+                if (currentTerm && currentTerm.definition) {
+                    terms.push({
+                        term: currentTerm.term,
+                        definition: currentTerm.definition.trim(),
+                        source: {
+                            celex: null,
+                            title: 'Internal Definition',
+                            shortRef: 'Internal',
+                            slug: null,  // No slug = no View Source link
+                            type: 'internal',
+                            category: 'internal',
+                            article: currentTerm.source || 'N/A',
+                            sectionId: null,  // No sectionId = no deep linking
+                            ordinal: null
+                        }
+                    });
+                }
+
+                // Start new term
+                currentTerm = {
+                    term: trimmed.replace('- term:', '').trim(),
+                    definition: '',
+                    source: null,
+                    note: null
+                };
+                inDefinition = false;
+                definitionLines = [];
+                continue;
+            }
+
+            // Multi-line definition (starts with "definition: >-" or continues with indented text)
+            if (trimmed.startsWith('definition:')) {
+                const defStart = trimmed.replace('definition:', '').trim();
+                if (defStart === '>-') {
+                    inDefinition = true;
+                    definitionLines = [];
+                } else {
+                    // Single-line definition
+                    currentTerm.definition = defStart.replace(/^["']|["']$/g, '').trim();
+                }
+                continue;
+            }
+
+            // Continuation of multi-line definition
+            if (inDefinition && line.startsWith('      ')) {
+                definitionLines.push(trimmed);
+                currentTerm.definition = definitionLines.join(' ').replace(/\s+/g, ' ').trim();
+                continue;
+            }
+
+            // End of multi-line definition (found a new field)
+            if (inDefinition && (trimmed.startsWith('source:') || trimmed.startsWith('note:') || trimmed.startsWith('- term:'))) {
+                inDefinition = false;
+            }
+
+            // Source field (for documentation, stored in article field for display)
+            if (trimmed.startsWith('source:') && currentTerm) {
+                currentTerm.source = trimmed.replace('source:', '').trim();
+                continue;
+            }
+
+            // Note field (informational, not stored in terminology.json)
+            if (trimmed.startsWith('note:')) {
+                continue;
+            }
+        }
+
+        // Don't forget the last term!
+        if (currentTerm && currentTerm.definition) {
+            terms.push({
+                term: currentTerm.term,
+                definition: currentTerm.definition.trim(),
+                source: {
+                    celex: null,
+                    title: 'Internal Definition',
+                    shortRef: 'Internal',
+                    slug: null,
+                    type: 'internal',
+                    category: 'internal',
+                    article: currentTerm.source || 'N/A',
+                    sectionId: null,
+                    ordinal: null
+                }
+            });
+        }
+
+        return terms;
+    } catch (err) {
+        console.warn('⚠️  Could not load custom-dictionary.yaml:', err.message);
         return [];
     }
 }
@@ -636,11 +772,13 @@ function mergeTerms(allTerms, documentTitles = {}) {
 
     // Display order mapping (lower = higher priority)
     // DEC-092: supplementary (FAQ definitions) display after legal definitions
+    // Custom internal dictionary terms display last (no external source)
     const DISPLAY_ORDER = {
         'primary': 1,
         'implementing-act': 2,
         'referenced': 3,
-        'supplementary': 4
+        'supplementary': 4,
+        'internal': 5
     };
 
     // Helper function to get display order
@@ -802,6 +940,19 @@ function build() {
         allTerms.push(...supplementaryTerms);
     } else {
         console.log('   No supplementary terms found\n');
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Load custom internal dictionary terms
+    // These are curated definitions that blend in without "View Source" links
+    // ═══════════════════════════════════════════════════════════════════════════
+    console.log('📖 Loading custom internal dictionary...');
+    const customDictionaryTerms = loadCustomDictionary();
+    if (customDictionaryTerms.length > 0) {
+        console.log(`   Found ${customDictionaryTerms.length} custom definitions\n`);
+        allTerms.push(...customDictionaryTerms);
+    } else {
+        console.log('   No custom dictionary terms found\n');
     }
 
     // Load human-friendly document titles for display

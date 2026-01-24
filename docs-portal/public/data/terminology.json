@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T09:51:20.289Z",
+  "generated": "2026-01-24T11:25:15.532Z",
   "statistics": {
-    "totalTerms": 283,
-    "totalDefinitions": 419,
+    "totalTerms": 318,
+    "totalDefinitions": 455,
     "sources": {
       "regulations": 243,
       "implementingActs": 143,
@@ -146,12 +146,19 @@
       "accreditation",
       "ades",
       "ades-qc",
+      "administrative-validity-period",
       "administrator-of-critical-benchmarks",
       "advanced-electronic-seal",
       "advanced-electronic-signature",
       "ancillary-insurance-intermediary",
       "asic",
       "assurance-level",
+      "attestation",
+      "attestation-provider",
+      "attestation-revocation-list",
+      "attestation-rulebook",
+      "attestation-status-list",
+      "attestation-type",
       "attribute",
       "authentic-source",
       "authentication",
@@ -169,12 +176,14 @@
       "ce-marking",
       "central-counterparty",
       "central-securities-depository",
+      "certificate-authority",
       "certificate-for-electronic-seal",
       "certificate-for-electronic-seals",
       "certificate-for-electronic-signature",
       "certificate-for-electronic-signatures",
       "certificate-for-website-authentication",
       "certificate-of-conformity",
+      "certificate-policy",
       "certification-body",
       "certification-decision",
       "cloud-computing-service",
@@ -206,6 +215,7 @@
     "D": [
       "data-centre-service",
       "data-concerning-health",
+      "data-minimisation",
       "data-record",
       "data-reporting-service-provider",
       "digital-operational-resilience",
@@ -250,7 +260,9 @@
       "european-digital-identity-wallet",
       "european-standard",
       "european-standardisation-deliverable",
-      "european-standardisation-organisation"
+      "european-standardisation-organisation",
+      "ex-ante",
+      "ex-post"
     ],
     "F": [
       "filing-system",
@@ -264,7 +276,9 @@
       "group-of-undertakings"
     ],
     "H": [
-      "harmonised-standard"
+      "harmonised-standard",
+      "holder",
+      "holder-wallet-unit"
     ],
     "I": [
       "ict-asset",
@@ -290,6 +304,9 @@
       "institution-for-occupational-retirement-provision",
       "insurance-intermediary",
       "insurance-undertaking",
+      "inter-alia",
+      "intermediary",
+      "intermediated-relying-party",
       "international-organisation",
       "international-standard",
       "international-standardisation-body",
@@ -299,6 +316,9 @@
     ],
     "J": [
       "joint-committee"
+    ],
+    "K": [
+      "keystore"
     ],
     "L": [
       "large-scale-cybersecurity-incident",
@@ -318,10 +338,14 @@
       "management-company",
       "manager-of-alternative-investment-funds",
       "manufacturer",
+      "mdl-rulebook",
       "medium-sized-enterprise",
-      "microenterprise"
+      "member-state",
+      "microenterprise",
+      "mutatis-mutandis"
     ],
     "N": [
+      "namespace",
       "national-accreditation-body",
       "national-cybersecurity-certification-scheme",
       "national-cybersecurity-strategy",
@@ -332,7 +356,8 @@
       "near-miss",
       "network-and-information-system",
       "node",
-      "node-operator"
+      "node-operator",
+      "notification"
     ],
     "O": [
       "object-of-certification",
@@ -352,6 +377,7 @@
       "person-identification-data",
       "personal-data",
       "personal-data-breach",
+      "pid-rulebook",
       "processing",
       "processor",
       "product",
@@ -360,10 +386,12 @@
       "provider-of-qualified-electronic-ledger",
       "provider-of-wallet-relying-party-access-certificates",
       "provider-of-wallet-relying-party-registration-certificates",
+      "pseudonym",
       "pseudonymisation",
       "public-administration-entity",
       "public-authority",
       "public-electronic-communications-network",
+      "public-key-infrastructure",
       "public-sector-body"
     ],
     "Q": [
@@ -397,6 +425,7 @@
       "release-for-free-circulation",
       "relevant-and-reasoned-objection",
       "relying-party",
+      "relying-party-instance",
       "remote-qscd",
       "remote-qualified-electronic-seal-creation-device",
       "remote-qualified-electronic-signature-creation-device",
@@ -411,6 +440,7 @@
       "scheme-owner",
       "securitisation-repository",
       "security-of-network-and-information-systems",
+      "selective-disclosure",
       "service",
       "signatory",
       "significant-cyber-threat",
@@ -422,12 +452,15 @@
       "social-networking-services-platform",
       "standard",
       "strong-user-authentication",
+      "sua-attestation",
       "subsidiary",
       "supervisory-authority",
       "supervisory-authority-concerned"
     ],
     "T": [
       "technical-specification",
+      "technical-validity-period",
+      "third-country",
       "third-party",
       "threat-intelligence",
       "threat-led-penetration-testing-tlpt-",
@@ -443,6 +476,7 @@
       "type-of-electronic-attestation-of-attributes"
     ],
     "U": [
+      "unlinkability",
       "user"
     ],
     "V": [
@@ -450,6 +484,8 @@
       "validation",
       "validation-data",
       "value-added-service",
+      "verifier",
+      "verifier-wallet-unit",
       "vulnerability"
     ],
     "W": [
@@ -469,6 +505,9 @@
     ],
     "X": [
       "xades"
+    ],
+    "Z": [
+      "zero-knowledge-proof"
     ]
   },
   "terms": [
@@ -703,6 +742,46 @@
         "cryptography",
         "attestation"
       ]
+    },
+    {
+      "id": "administrative-validity-period",
+      "term": "Administrative Validity Period",
+      "sources": [
+        {
+          "definition": "The date(s) from and/or up to which the attributes in an attestation are valid, represented as attribute(s) in the attestation. Some attestations (e.g., diplomas) do not have an administrative validity period.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "The date(s) from and/or up to which the attributes in an attestation are valid, represented as attribute(s) in the attestation. Some attestations (e.g., diplomas) do not have an administrative validity period.",
+          "sources": [
+            {
+              "definition": "The date(s) from and/or up to which the attributes in an attestation are valid, represented as attribute(s) in the attestation. Some attestations (e.g., diplomas) do not have an administrative validity period.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "administrator-of-critical-benchmarks",
@@ -1005,6 +1084,246 @@
               "articleId": "article-2-para-21",
               "articleNumber": "2(21)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation",
+      "term": "attestation",
+      "sources": [
+        {
+          "definition": "A collective term for a QEAA (Qualified Electronic Attestation of Attributes), PuB-EAA (Public Sector Body EAA), or non-qualified EAA.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A collective term for a QEAA (Qualified Electronic Attestation of Attributes), PuB-EAA (Public Sector Body EAA), or non-qualified EAA.",
+          "sources": [
+            {
+              "definition": "A collective term for a QEAA (Qualified Electronic Attestation of Attributes), PuB-EAA (Public Sector Body EAA), or non-qualified EAA.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation-provider",
+      "term": "attestation provider",
+      "sources": [
+        {
+          "definition": "A collective term for QEAA Provider, PuB-EAA Provider, or non-qualified EAA Provider—entities that issue electronic attestations of attributes.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A collective term for QEAA Provider, PuB-EAA Provider, or non-qualified EAA Provider—entities that issue electronic attestations of attributes.",
+          "sources": [
+            {
+              "definition": "A collective term for QEAA Provider, PuB-EAA Provider, or non-qualified EAA Provider—entities that issue electronic attestations of attributes.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation-revocation-list",
+      "term": "Attestation Revocation List",
+      "sources": [
+        {
+          "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing a list of identifiers of revoked PIDs or attestations.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing a list of identifiers of revoked PIDs or attestations.",
+          "sources": [
+            {
+              "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing a list of identifiers of revoked PIDs or attestations.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation-rulebook",
+      "term": "Attestation Rulebook",
+      "sources": [
+        {
+          "definition": "A document describing the attestation type, namespace(s), and other features for a specific attestation type within the EUDIW ecosystem.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A document describing the attestation type, namespace(s), and other features for a specific attestation type within the EUDIW ecosystem.",
+          "sources": [
+            {
+              "definition": "A document describing the attestation type, namespace(s), and other features for a specific attestation type within the EUDIW ecosystem.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation-status-list",
+      "term": "Attestation Status List",
+      "sources": [
+        {
+          "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing status information (Valid or Invalid) for all relevant PIDs or attestations. The list may contain all PIDs or attestations whose validity period is not over yet at the time of publication.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing status information (Valid or Invalid) for all relevant PIDs or attestations. The list may contain all PIDs or attestations whose validity period is not over yet at the time of publication.",
+          "sources": [
+            {
+              "definition": "A mechanism provided by a PID Provider or an Attestation Provider (or a trusted party acting on its behalf) for communicating the revocation status of PIDs and attestations, by publishing status information (Valid or Invalid) for all relevant PIDs or attestations. The list may contain all PIDs or attestations whose validity period is not over yet at the time of publication.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "attestation-type",
+      "term": "attestation type",
+      "sources": [
+        {
+          "definition": "An identifier for a type of attestation that is unique within the context of the EUDI Wallet ecosystem. Attestation types are used to categorize and identify different kinds of attestations, enabling Relying Parties to request specific types of credentials.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "An identifier for a type of attestation that is unique within the context of the EUDI Wallet ecosystem. Attestation types are used to categorize and identify different kinds of attestations, enabling Relying Parties to request specific types of credentials.",
+          "sources": [
+            {
+              "definition": "An identifier for a type of attestation that is unique within the context of the EUDI Wallet ecosystem. Attestation types are used to categorize and identify different kinds of attestations, enabling Relying Parties to request specific types of credentials.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -1579,6 +1898,49 @@
       "domains": []
     },
     {
+      "id": "certificate-authority",
+      "term": "Certificate Authority",
+      "sources": [
+        {
+          "definition": "An entity which is trusted by one or more parties in the EUDI Wallet ecosystem to create and seal certificates. Certificate Authorities issue digital certificates that bind public keys to the identities of entities within the trust framework.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "An entity which is trusted by one or more parties in the EUDI Wallet ecosystem to create and seal certificates. Certificate Authorities issue digital certificates that bind public keys to the identities of entities within the trust framework.",
+          "sources": [
+            {
+              "definition": "An entity which is trusted by one or more parties in the EUDI Wallet ecosystem to create and seal certificates. Certificate Authorities issue digital certificates that bind public keys to the identities of entities within the trust framework.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "CA"
+      ]
+    },
+    {
       "id": "certificate-for-electronic-seal",
       "term": "certificate for electronic seal",
       "sources": [
@@ -1848,6 +2210,49 @@
       ],
       "domains": [
         "governance"
+      ]
+    },
+    {
+      "id": "certificate-policy",
+      "term": "Certificate Policy",
+      "sources": [
+        {
+          "definition": "A named set of rules that indicates the applicability of a certificate to a particular community and/or class of application with common security requirements. Certificate policies define how certificates may be used and under what conditions.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A named set of rules that indicates the applicability of a certificate to a particular community and/or class of application with common security requirements. Certificate policies define how certificates may be used and under what conditions.",
+          "sources": [
+            {
+              "definition": "A named set of rules that indicates the applicability of a certificate to a particular community and/or class of application with common security requirements. Certificate policies define how certificates may be used and under what conditions.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "CP"
       ]
     },
     {
@@ -3392,6 +3797,46 @@
               "articleId": "article-4-para-15",
               "articleNumber": "4(15)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "data-minimisation",
+      "term": "data minimisation",
+      "sources": [
+        {
+          "definition": "The principle that personal data collected and processed shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-GDPR Article 5(1)(c)",
+          "articleNumber": "GDPR Article 5(1)(c)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-GDPR Article 5(1)(c)",
+      "definitionGroups": [
+        {
+          "definition": "The principle that personal data collected and processed shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed.",
+          "sources": [
+            {
+              "definition": "The principle that personal data collected and processed shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-GDPR Article 5(1)(c)",
+              "articleNumber": "GDPR Article 5(1)(c)",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -5362,6 +5807,86 @@
       "domains": []
     },
     {
+      "id": "ex-ante",
+      "term": "ex ante",
+      "sources": [
+        {
+          "definition": "Latin: \"from before.\" Refers to actions, assessments, or controls performed before an event or activity takes place. In regulatory contexts, ex ante supervision means proactive oversight conducted before potential harm occurs, such as pre-approval requirements or preventive audits.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "Latin: \"from before.\" Refers to actions, assessments, or controls performed before an event or activity takes place. In regulatory contexts, ex ante supervision means proactive oversight conducted before potential harm occurs, such as pre-approval requirements or preventive audits.",
+          "sources": [
+            {
+              "definition": "Latin: \"from before.\" Refers to actions, assessments, or controls performed before an event or activity takes place. In regulatory contexts, ex ante supervision means proactive oversight conducted before potential harm occurs, such as pre-approval requirements or preventive audits.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "ex-post",
+      "term": "ex post",
+      "sources": [
+        {
+          "definition": "Latin: \"from after.\" Refers to actions, assessments, or controls performed after an event or activity has occurred. In regulatory contexts, ex post supervision means reactive oversight triggered by evidence of non-compliance, incidents, or complaints received after the fact.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "Latin: \"from after.\" Refers to actions, assessments, or controls performed after an event or activity has occurred. In regulatory contexts, ex post supervision means reactive oversight triggered by evidence of non-compliance, incidents, or complaints received after the fact.",
+          "sources": [
+            {
+              "definition": "Latin: \"from after.\" Refers to actions, assessments, or controls performed after an event or activity has occurred. In regulatory contexts, ex post supervision means reactive oversight triggered by evidence of non-compliance, incidents, or complaints received after the fact.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "filing-system",
       "term": "filing system",
       "sources": [
@@ -5717,6 +6242,86 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "holder",
+      "term": "holder",
+      "sources": [
+        {
+          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+          "sources": [
+            {
+              "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "holder-wallet-unit",
+      "term": "Holder Wallet Unit",
+      "sources": [
+        {
+          "definition": "A Wallet Unit used by a Holder in the context of Wallet-to-Wallet interactions. The Holder Wallet Unit presents PIDs or attestations to a Verifier Wallet Unit.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A Wallet Unit used by a Holder in the context of Wallet-to-Wallet interactions. The Holder Wallet Unit presents PIDs or attestations to a Verifier Wallet Unit.",
+          "sources": [
+            {
+              "definition": "A Wallet Unit used by a Holder in the context of Wallet-to-Wallet interactions. The Holder Wallet Unit presents PIDs or attestations to a Verifier Wallet Unit.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "ict-asset",
@@ -6819,6 +7424,126 @@
       "domains": []
     },
     {
+      "id": "inter-alia",
+      "term": "inter alia",
+      "sources": [
+        {
+          "definition": "Latin: \"among other things.\" Used in legal texts to indicate that the listed items are examples or part of a larger set, not an exhaustive enumeration. When legislation mentions \"inter alia\" before a list, there may be additional relevant items not explicitly mentioned.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "Latin: \"among other things.\" Used in legal texts to indicate that the listed items are examples or part of a larger set, not an exhaustive enumeration. When legislation mentions \"inter alia\" before a list, there may be additional relevant items not explicitly mentioned.",
+          "sources": [
+            {
+              "definition": "Latin: \"among other things.\" Used in legal texts to indicate that the listed items are examples or part of a larger set, not an exhaustive enumeration. When legislation mentions \"inter alia\" before a list, there may be additional relevant items not explicitly mentioned.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "intermediary",
+      "term": "intermediary",
+      "sources": [
+        {
+          "definition": "A Relying Party that offers services to other (intermediated) Relying Parties to, on their behalf, connect to Wallet Units and request the User attributes that these intermediated Relying Parties need.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A Relying Party that offers services to other (intermediated) Relying Parties to, on their behalf, connect to Wallet Units and request the User attributes that these intermediated Relying Parties need.",
+          "sources": [
+            {
+              "definition": "A Relying Party that offers services to other (intermediated) Relying Parties to, on their behalf, connect to Wallet Units and request the User attributes that these intermediated Relying Parties need.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "intermediated-relying-party",
+      "term": "Intermediated Relying Party",
+      "sources": [
+        {
+          "definition": "A Relying Party that uses an Intermediary to connect to Wallet Units on its behalf, rather than connecting directly to the Wallet.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ARF Topic 52",
+          "articleNumber": "Synthesized from ARF Topic 52",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ARF Topic 52",
+      "definitionGroups": [
+        {
+          "definition": "A Relying Party that uses an Intermediary to connect to Wallet Units on its behalf, rather than connecting directly to the Wallet.",
+          "sources": [
+            {
+              "definition": "A Relying Party that uses an Intermediary to connect to Wallet Units on its behalf, rather than connecting directly to the Wallet.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ARF Topic 52",
+              "articleNumber": "Synthesized from ARF Topic 52",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "international-organisation",
       "term": "international organisation",
       "sources": [
@@ -7090,6 +7815,46 @@
               "articleId": "article-3-para-62",
               "articleNumber": "3(62)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "keystore",
+      "term": "keystore",
+      "sources": [
+        {
+          "definition": "A hardware-backed repository and service in which non-critical cryptographic assets are generated, stored, and used exclusively inside a dedicated hardware security boundary. Examples include Secure Elements, TPMs, TEEs, secure enclaves, or remote HSMs.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A hardware-backed repository and service in which non-critical cryptographic assets are generated, stored, and used exclusively inside a dedicated hardware security boundary. Examples include Secure Elements, TPMs, TEEs, secure enclaves, or remote HSMs.",
+          "sources": [
+            {
+              "definition": "A hardware-backed repository and service in which non-critical cryptographic assets are generated, stored, and used exclusively inside a dedicated hardware security boundary. Examples include Secure Elements, TPMs, TEEs, secure enclaves, or remote HSMs.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -7713,6 +8478,46 @@
       ]
     },
     {
+      "id": "mdl-rulebook",
+      "term": "mDL Rulebook",
+      "sources": [
+        {
+          "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for mobile Driving Licences (mDL) used within the EUDI Wallet ecosystem, compliant with ISO/IEC 18013-5.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 3.2",
+          "articleNumber": "ARF Annex 3.2",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 3.2",
+      "definitionGroups": [
+        {
+          "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for mobile Driving Licences (mDL) used within the EUDI Wallet ecosystem, compliant with ISO/IEC 18013-5.",
+          "sources": [
+            {
+              "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for mobile Driving Licences (mDL) used within the EUDI Wallet ecosystem, compliant with ISO/IEC 18013-5.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 3.2",
+              "articleNumber": "ARF Annex 3.2",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "medium-sized-enterprise",
       "term": "medium-sized enterprise",
       "sources": [
@@ -7753,6 +8558,46 @@
       "domains": []
     },
     {
+      "id": "member-state",
+      "term": "Member State",
+      "sources": [
+        {
+          "definition": "A country that is a member of the European Union. In the context of eIDAS 2.0, Member States are responsible for designating PID Providers, certifying Wallet Solutions, maintaining Trusted Lists, and ensuring the cross-border interoperability of European Digital Identity Wallets.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Treaty on European Union, Article 1",
+          "articleNumber": "Treaty on European Union, Article 1",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Treaty on European Union, Article 1",
+      "definitionGroups": [
+        {
+          "definition": "A country that is a member of the European Union. In the context of eIDAS 2.0, Member States are responsible for designating PID Providers, certifying Wallet Solutions, maintaining Trusted Lists, and ensuring the cross-border interoperability of European Digital Identity Wallets.",
+          "sources": [
+            {
+              "definition": "A country that is a member of the European Union. In the context of eIDAS 2.0, Member States are responsible for designating PID Providers, certifying Wallet Solutions, maintaining Trusted Lists, and ensuring the cross-border interoperability of European Digital Identity Wallets.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Treaty on European Union, Article 1",
+              "articleNumber": "Treaty on European Union, Article 1",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "microenterprise",
       "term": "microenterprise",
       "sources": [
@@ -7784,6 +8629,86 @@
               "articleId": "article-3-para-60",
               "articleNumber": "3(60)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "mutatis-mutandis",
+      "term": "mutatis mutandis",
+      "sources": [
+        {
+          "definition": "Latin: \"with the necessary changes having been made.\" A legal term indicating that a provision or requirement from one context applies to another context with the necessary adaptations. When legislation states that Article X applies \"mutatis mutandis\" to another situation, it means the same rules apply with appropriate modifications for the different context.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "Latin: \"with the necessary changes having been made.\" A legal term indicating that a provision or requirement from one context applies to another context with the necessary adaptations. When legislation states that Article X applies \"mutatis mutandis\" to another situation, it means the same rules apply with appropriate modifications for the different context.",
+          "sources": [
+            {
+              "definition": "Latin: \"with the necessary changes having been made.\" A legal term indicating that a provision or requirement from one context applies to another context with the necessary adaptations. When legislation states that Article X applies \"mutatis mutandis\" to another situation, it means the same rules apply with appropriate modifications for the different context.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "namespace",
+      "term": "namespace",
+      "sources": [
+        {
+          "definition": "A specification of the attribute identifier, syntax and semantics of attributes that can be used in an attestation, having an identifier that is unique within the EUDI Wallet ecosystem.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A specification of the attribute identifier, syntax and semantics of attributes that can be used in an attestation, having an identifier that is unique within the EUDI Wallet ecosystem.",
+          "sources": [
+            {
+              "definition": "A specification of the attribute identifier, syntax and semantics of attributes that can be used in an attestation, having an identifier that is unique within the EUDI Wallet ecosystem.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -8322,6 +9247,46 @@
               "articleId": "article-2-para-2",
               "articleNumber": "2(2)",
               "displayOrder": 1
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "notification",
+      "term": "notification",
+      "sources": [
+        {
+          "definition": "The act of transferring information to the European Commission, typically in the context of Member States notifying the Commission about their designated PID Providers, Wallet Providers, Attestation Providers, and Access Certificate Authorities.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "The act of transferring information to the European Commission, typically in the context of Member States notifying the Commission about their designated PID Providers, Wallet Providers, Attestation Providers, and Access Certificate Authorities.",
+          "sources": [
+            {
+              "definition": "The act of transferring information to the European Commission, typically in the context of Member States notifying the Commission about their designated PID Providers, Wallet Providers, Attestation Providers, and Access Certificate Authorities.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -9020,6 +9985,46 @@
       "domains": []
     },
     {
+      "id": "pid-rulebook",
+      "term": "PID Rulebook",
+      "sources": [
+        {
+          "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for Person Identification Data (PID) within the EUDI Wallet ecosystem. All PIDs and PID Providers must comply with its requirements.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 3.1, Topic 3",
+          "articleNumber": "ARF Annex 3.1, Topic 3",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 3.1, Topic 3",
+      "definitionGroups": [
+        {
+          "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for Person Identification Data (PID) within the EUDI Wallet ecosystem. All PIDs and PID Providers must comply with its requirements.",
+          "sources": [
+            {
+              "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for Person Identification Data (PID) within the EUDI Wallet ecosystem. All PIDs and PID Providers must comply with its requirements.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 3.1, Topic 3",
+              "articleNumber": "ARF Annex 3.1, Topic 3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "processing",
       "term": "processing",
       "sources": [
@@ -9592,6 +10597,46 @@
       ]
     },
     {
+      "id": "pseudonym",
+      "term": "pseudonym",
+      "sources": [
+        {
+          "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+          "sources": [
+            {
+              "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "pseudonymisation",
       "term": "pseudonymisation",
       "sources": [
@@ -9750,6 +10795,49 @@
       ],
       "roles": [],
       "domains": []
+    },
+    {
+      "id": "public-key-infrastructure",
+      "term": "Public Key Infrastructure",
+      "sources": [
+        {
+          "definition": "Systems, software, and communication protocols that are used by EUDI Wallet ecosystem components to distribute, manage, and control public keys. A PKI publishes public keys and establishes trust within an environment by validating and verifying the public keys mapping to an entity.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "Systems, software, and communication protocols that are used by EUDI Wallet ecosystem components to distribute, manage, and control public keys. A PKI publishes public keys and establishes trust within an environment by validating and verifying the public keys mapping to an entity.",
+          "sources": [
+            {
+              "definition": "Systems, software, and communication protocols that are used by EUDI Wallet ecosystem components to distribute, manage, and control public keys. A PKI publishes public keys and establishes trust within an environment by validating and verifying the public keys mapping to an entity.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "PKI"
+      ]
     },
     {
       "id": "public-sector-body",
@@ -11264,6 +12352,46 @@
       ]
     },
     {
+      "id": "relying-party-instance",
+      "term": "Relying Party Instance",
+      "sources": [
+        {
+          "definition": "A software and/or hardware module with the capability to interact with a Wallet Unit and to perform Relying Party authentication, that is controlled by a Relying Party.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A software and/or hardware module with the capability to interact with a Wallet Unit and to perform Relying Party authentication, that is controlled by a Relying Party.",
+          "sources": [
+            {
+              "definition": "A software and/or hardware module with the capability to interact with a Wallet Unit and to perform Relying Party authentication, that is controlled by a Relying Party.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "remote-qscd",
       "term": "remote QSCD",
       "sources": [
@@ -11862,6 +12990,46 @@
       "domains": []
     },
     {
+      "id": "selective-disclosure",
+      "term": "selective disclosure",
+      "sources": [
+        {
+          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+          "sources": [
+            {
+              "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "service",
       "term": "service",
       "sources": [
@@ -12406,6 +13574,46 @@
       ]
     },
     {
+      "id": "sua-attestation",
+      "term": "SUA Attestation",
+      "sources": [
+        {
+          "definition": "An attestation used for strong user authentication in the context of electronic payments, such that when a Relying Party sends a presentation request to a Wallet Unit, it includes transactional data in the request.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "An attestation used for strong user authentication in the context of electronic payments, such that when a Relying Party sends a presentation request to a Wallet Unit, it includes transactional data in the request.",
+          "sources": [
+            {
+              "definition": "An attestation used for strong user authentication in the context of electronic payments, such that when a Relying Party sends a presentation request to a Wallet Unit, it includes transactional data in the request.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "subsidiary",
       "term": "subsidiary",
       "sources": [
@@ -12652,6 +13860,86 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "technical-validity-period",
+      "term": "Technical Validity Period",
+      "sources": [
+        {
+          "definition": "The dates (and possibly times) from and up to which an attestation is technically valid, represented as metadata of the attestation. All PIDs and attestations have a technical validity period, which is typically much shorter than the administrative validity period.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "The dates (and possibly times) from and up to which an attestation is technically valid, represented as metadata of the attestation. All PIDs and attestations have a technical validity period, which is typically much shorter than the administrative validity period.",
+          "sources": [
+            {
+              "definition": "The dates (and possibly times) from and up to which an attestation is technically valid, represented as metadata of the attestation. All PIDs and attestations have a technical validity period, which is typically much shorter than the administrative validity period.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "third-country",
+      "term": "Third Country",
+      "sources": [
+        {
+          "definition": "A country that is not a member of the European Union. Third countries are relevant in the context of cross-border data transfers, recognition of trust services, and potential mutual recognition agreements for electronic identification.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A country that is not a member of the European Union. Third countries are relevant in the context of cross-border data transfers, recognition of trust services, and potential mutual recognition agreements for electronic identification.",
+          "sources": [
+            {
+              "definition": "A country that is not a member of the European Union. Third countries are relevant in the context of cross-border data transfers, recognition of trust services, and potential mutual recognition agreements for electronic identification.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "third-party",
@@ -12947,9 +14235,20 @@
           "articleId": "when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
           "articleNumber": "What is the related Trust Anchor?",
           "displayOrder": 4
+        },
+        {
+          "definition": "An authoritative entity represented by a public key and associated data. Trust anchors are the root of trust in a trust hierarchy, used to validate certificate chains and establish the authenticity of entities within the EUDI Wallet ecosystem.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4 (RFC 5914)",
+          "articleNumber": "ARF Annex 1, Section A.4 (RFC 5914)",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "when-validating-a-qualified-certificate-what-is-the-related-trust-anchor",
       "definitionGroups": [
         {
@@ -12968,6 +14267,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "An authoritative entity represented by a public key and associated data. Trust anchors are the root of trust in a trust hierarchy, used to validate certificate chains and establish the authenticity of entities within the EUDI Wallet ecosystem.",
+          "sources": [
+            {
+              "definition": "An authoritative entity represented by a public key and associated data. Trust anchors are the root of trust in a trust hierarchy, used to validate certificate chains and establish the authenticity of entities within the EUDI Wallet ecosystem.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4 (RFC 5914)",
+              "articleNumber": "ARF Annex 1, Section A.4 (RFC 5914)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -13290,6 +14606,46 @@
       ]
     },
     {
+      "id": "unlinkability",
+      "term": "unlinkability",
+      "sources": [
+        {
+          "definition": "A privacy-preserving property ensuring that an observer cannot sufficiently determine whether multiple items of interest (such as transactions, presentations, or actions) are related or originate from the same user. This prevents tracking and profiling of user behaviour across different relying parties.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)",
+          "articleNumber": "Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)",
+      "definitionGroups": [
+        {
+          "definition": "A privacy-preserving property ensuring that an observer cannot sufficiently determine whether multiple items of interest (such as transactions, presentations, or actions) are related or originate from the same user. This prevents tracking and profiling of user behaviour across different relying parties.",
+          "sources": [
+            {
+              "definition": "A privacy-preserving property ensuring that an observer cannot sufficiently determine whether multiple items of interest (such as transactions, presentations, or actions) are related or originate from the same user. This prevents tracking and profiling of user behaviour across different relying parties.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)",
+              "articleNumber": "Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "user",
       "term": "user",
       "sources": [
@@ -13523,6 +14879,86 @@
               "articleId": "article-2-para-g",
               "articleNumber": "2(g)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "verifier",
+      "term": "verifier",
+      "sources": [
+        {
+          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+          "sources": [
+            {
+              "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "verifier-wallet-unit",
+      "term": "Verifier Wallet Unit",
+      "sources": [
+        {
+          "definition": "A Wallet Unit used by a Verifier in the context of Wallet-to-Wallet interactions. The Verifier Wallet Unit requests and receives PIDs or attestations from a Holder Wallet Unit.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-ARF Annex 1, Section A.4",
+          "articleNumber": "ARF Annex 1, Section A.4",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "definitionGroups": [
+        {
+          "definition": "A Wallet Unit used by a Verifier in the context of Wallet-to-Wallet interactions. The Verifier Wallet Unit requests and receives PIDs or attestations from a Holder Wallet Unit.",
+          "sources": [
+            {
+              "definition": "A Wallet Unit used by a Verifier in the context of Wallet-to-Wallet interactions. The Verifier Wallet Unit requests and receives PIDs or attestations from a Holder Wallet Unit.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-ARF Annex 1, Section A.4",
+              "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -15760,6 +17196,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "zero-knowledge-proof",
+      "term": "zero knowledge proof",
+      "sources": [
+        {
+          "definition": "A cryptographic method by which one party (the prover) can prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself. In the EUDIW context, ZKPs can enable proving properties about attributes (e.g., \"age is over 18\") without disclosing the actual attribute value.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Privacy research; cryptographic literature",
+          "articleNumber": "Privacy research; cryptographic literature",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Privacy research; cryptographic literature",
+      "definitionGroups": [
+        {
+          "definition": "A cryptographic method by which one party (the prover) can prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself. In the EUDIW context, ZKPs can enable proving properties about attributes (e.g., \"age is over 18\") without disclosing the actual attribute value.",
+          "sources": [
+            {
+              "definition": "A cryptographic method by which one party (the prover) can prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself. In the EUDIW context, ZKPs can enable proving properties about attributes (e.g., \"age is over 18\") without disclosing the actual attribute value.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Privacy research; cryptographic literature",
+              "articleNumber": "Privacy research; cryptographic literature",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     }
   ]
 }

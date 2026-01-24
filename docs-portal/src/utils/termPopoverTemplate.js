@@ -81,13 +81,22 @@ export function generateTermPopoverContent(term) {
             ? ` +${group.sources.length - 3} more`
             : '';
 
+        // Check if this is an internal/custom dictionary term (no documentId = no View Source link)
+        const isInternal = !source.documentId || source.documentCategory === 'internal';
+
+        // For internal terms: show source attribution as plain text, not a link
+        // articleNumber contains the source attribution (e.g., "ARF Annex 1, Section A.4")
+        const sourceHeaderContent = isInternal
+            ? `<span class="term-popover-source-title term-popover-source-internal">${source.articleNumber}</span>`
+            : `<a href="${getDocumentPath(source)}" class="term-popover-source-title">
+                    ${source.documentTitle}
+                </a>
+                <span class="term-popover-article">Art. ${source.articleNumber}</span>`;
+
         return `
         <div class="term-popover-source ${getCategoryClass(source.documentCategory)}">
             <div class="term-popover-source-header">
-                <a href="${getDocumentPath(source)}" class="term-popover-source-title">
-                    ${source.documentTitle}
-                </a>
-                <span class="term-popover-article">Art. ${source.articleNumber}</span>
+                ${sourceHeaderContent}
                 ${sourceCount > 1 ? `
                     <span class="term-popover-source-count" title="${sourceTitles}${moreSourcesText}">
                         +${sourceCount - 1} identical

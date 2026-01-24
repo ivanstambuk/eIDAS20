@@ -364,6 +364,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 
 | Term | Description |
 |------|-------------|
+| **Search Modal** | The global search interface invoked via `Ctrl+K` (or `Cmd+K` on Mac). Searches the **search index**, which includes terminology, regulations, and ARF HLRs. Note: This is separate from the Terminology page's filter — adding terms to `terminology.json` also requires rebuilding the search index via `npm run build:search`. |
+| **Search Index** | The pre-built JSON file (`search-index.json`) containing all searchable content: terminology definitions, regulation articles, and ARF HLRs. Built by `npm run build:search`. Separate from `terminology.json` — both must be rebuilt when adding new terms. Now auto-rebuilt when running `npm run build:terminology`. |
 | **Full-Text Search** | Keyword-based search using Orama index. Matches exact words in document content. |
 | **Semantic Search** | AI-powered search using Transformers.js embeddings. Finds conceptually similar content even without exact word matches. |
 | **Two-Tier Search** | The portal's search strategy: full-text for speed and precision, semantic for conceptual discovery. |

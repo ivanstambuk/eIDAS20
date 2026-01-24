@@ -1,9 +1,28 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// Custom plugin to disable caching for JSON data files during development
+// This prevents needing hard refresh when rebuilding terminology/search
+function noCacheJsonPlugin() {
+  return {
+    name: 'no-cache-json',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        // Disable caching for JSON files in /data/ folder
+        if (req.url?.includes('/data/') && req.url?.endsWith('.json')) {
+          res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+          res.setHeader('Pragma', 'no-cache');
+          res.setHeader('Expires', '0');
+        }
+        next();
+      });
+    }
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [noCacheJsonPlugin(), react()],
 
   // GitHub Pages deployment configuration
   // Change 'eIDAS20' to your actual repo name if different

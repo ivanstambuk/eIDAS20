@@ -177,6 +177,17 @@
     color: var(--accent-primary);
 }
 
+/* Internal/custom dictionary terms: source attribution without link */
+.term-popover-source-internal {
+    font-style: italic;
+    color: var(--text-muted);
+    cursor: default;
+}
+
+.term-popover-source-internal:hover {
+    color: var(--text-muted);  /* No hover effect - not clickable */
+}
+
 .term-popover-article {
     font-size: var(--text-xs);
     color: var(--text-muted);

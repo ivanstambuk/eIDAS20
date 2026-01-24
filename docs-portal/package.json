@@ -14,7 +14,7 @@
     "validate:ci": "npm run validate:config && npm run validate:css && npm run validate:rca && npm run validate:vcq && npm run validate:subtitles && npm run validate:annex",
     "build": "npm run validate:config && npm run validate:css && npm run validate:rca && npm run validate:vcq && node scripts/build-content.js && npm run validate:subtitles && node scripts/build-terminology.js && node scripts/build-rca.js && node scripts/build-vcq.js && node scripts/import-arf.js && node scripts/build-search-index.js && node scripts/build-embeddings.js && vite build",
     "build:documents": "node scripts/build-content.js",
-    "build:terminology": "node scripts/build-terminology.js",
+    "build:terminology": "node scripts/build-terminology.js && npm run build:search && npm run build:documents",
     "build:all-content": "npm run build:terminology && npm run build:search",
     "build:rca": "node scripts/build-rca.js",
     "build:vcq": "node scripts/build-vcq.js",

@@ -145,32 +145,47 @@ export function TermPopover({ term, children }) {
 
                     {/* Display all sources in stacked layout */}
                     <div className="term-popover-sources">
-                        {sources.map((source, index) => (
-                            <div
-                                key={`${source.documentId}-${source.articleId}`}
-                                className={`term-popover-source ${getCategoryClass(source.documentCategory)}`}
-                            >
-                                <div className="term-popover-source-header">
-                                    <Link
-                                        to={getDocumentPath(source)}
-                                        className="term-popover-source-title"
-                                    >
-                                        {source.documentTitle}
-                                    </Link>
-                                    <span className="term-popover-article">
-                                        Art. {source.articleNumber}
-                                    </span>
-                                    {source.documentCategory === 'referenced' && (
-                                        <span className="term-popover-badge-referenced">
-                                            Referenced
-                                        </span>
-                                    )}
+                        {sources.map((source, index) => {
+                            // Check if this is an internal/custom dictionary term
+                            const isInternal = !source.documentId || source.documentCategory === 'internal';
+
+                            return (
+                                <div
+                                    key={`${source.documentId || 'internal'}-${source.articleId || index}`}
+                                    className={`term-popover-source ${getCategoryClass(source.documentCategory)}`}
+                                >
+                                    <div className="term-popover-source-header">
+                                        {isInternal ? (
+                                            // Internal terms: show source attribution as plain text
+                                            <span className="term-popover-source-title term-popover-source-internal">
+                                                {source.articleNumber}
+                                            </span>
+                                        ) : (
+                                            // Regular terms: show linked document title + article
+                                            <>
+                                                <Link
+                                                    to={getDocumentPath(source)}
+                                                    className="term-popover-source-title"
+                                                >
+                                                    {source.documentTitle}
+                                                </Link>
+                                                <span className="term-popover-article">
+                                                    Art. {source.articleNumber}
+                                                </span>
+                                            </>
+                                        )}
+                                        {source.documentCategory === 'referenced' && (
+                                            <span className="term-popover-badge-referenced">
+                                                Referenced
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="term-popover-definition">
+                                        {source.definition}
+                                    </p>
                                 </div>
-                                <p className="term-popover-definition">
-                                    {source.definition}
-                                </p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
                     <div className="term-popover-footer">

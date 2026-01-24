@@ -1,0 +1,417 @@
+# Custom Internal Dictionary
+# ═══════════════════════════════════════════════════════════════════════════════
+# 
+# This file contains curated terminology definitions for concepts that are
+# commonly used in eIDAS 2.0 regulations but are NOT formally defined in
+# the legal texts (i.e., not in a "Definitions" article).
+#
+# These terms are integrated into the terminology system WITHOUT "View Source"
+# links - they blend in seamlessly with other terminology definitions.
+#
+# GUIDELINES:
+#   1. Only add terms that are NOT already defined in regulations/implementing acts
+#   2. Mark source inspiration for documentation purposes (not displayed in UI)
+#   3. Use clear, concise definitions aligned with regulatory context
+#   4. Verify no duplicates before adding new terms
+#
+# SOURCE TAGS (for internal documentation only):
+#   - arf: Definition adapted from ARF Annex 1 Section A.4
+#   - synthesized: Definition synthesized from regulatory context  
+#   - gdpr: Definition adapted from GDPR (with article reference)
+#   - enisa: Definition adapted from ENISA terminology
+#   - privacy-research: Definition from academic privacy literature
+#
+# CAPITALIZATION RULES:
+#   Use LOWERCASE for common nouns and technical terms:
+#     ✓ attestation, attestation provider, attestation type
+#     ✓ intermediary, holder, verifier, notification
+#     ✓ selective disclosure, unlinkability, data minimisation
+#     ✓ namespace, keystore, pseudonym, zero knowledge proof
+#     ✓ Latin terms: mutatis mutandis, inter alia, ex ante, ex post
+#
+#   Use CAPITALIZED for proper nouns & named entities:
+#     ✓ Official EU terms: Member State, Third Country
+#     ✓ Formal eIDAS terms: Relying Party, Wallet Unit
+#     ✓ Named documents: PID Rulebook, mDL Rulebook, Attestation Rulebook  
+#     ✓ PKI formal terms: Certificate Authority, Certificate Policy, 
+#       Public Key Infrastructure, Trust Anchor
+#     ✓ Formal ARF terms: Attestation Revocation List, Attestation Status List,
+#       Technical Validity Period, Administrative Validity Period
+#     ✓ Compound terms with formal parts: Relying Party Instance, 
+#       Holder Wallet Unit, Verifier Wallet Unit
+#     ✓ Acronym expansions: SUA Attestation (Strong User Authentication)
+#
+#   Rule of thumb: If unsure, check how the term is written in the ARF or 
+#   EU legal texts. Common technical terms should be lowercase.
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+version: '1.0'
+created: '2026-01-24'
+last_updated: '2026-01-24'
+
+terms:
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Wallet Ecosystem Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: intermediary
+    definition: >-
+      A Relying Party that offers services to other (intermediated) Relying 
+      Parties to, on their behalf, connect to Wallet Units and request the 
+      User attributes that these intermediated Relying Parties need.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 52 - Relying Party intermediaries
+
+  - term: Intermediated Relying Party
+    definition: >-
+      A Relying Party that uses an Intermediary to connect to Wallet Units 
+      on its behalf, rather than connecting directly to the Wallet.
+    source: Synthesized from ARF Topic 52
+    note: Derived from ARF Topic 52 context
+
+  - term: selective disclosure
+    definition: >-
+      The capability enabling the User to present a subset of the attributes 
+      included in a PID or attestation, rather than disclosing the entire 
+      credential. This feature reinforces the protection of personal data 
+      and the principle of data minimisation.
+    source: ARF Annex 1, Section A.4
+    note: Core privacy feature of EUDIW, referenced in eIDAS Recital 59
+
+  - term: attestation
+    definition: >-
+      A collective term for a QEAA (Qualified Electronic Attestation of 
+      Attributes), PuB-EAA (Public Sector Body EAA), or non-qualified EAA.
+    source: ARF Annex 1, Section A.4
+    note: Generic term for credential types
+
+  - term: attestation provider
+    definition: >-
+      A collective term for QEAA Provider, PuB-EAA Provider, or non-qualified 
+      EAA Provider—entities that issue electronic attestations of attributes.
+    source: ARF Annex 1, Section A.4
+    note: Generic term for issuer roles
+
+  - term: Relying Party Instance
+    definition: >-
+      A software and/or hardware module with the capability to interact with 
+      a Wallet Unit and to perform Relying Party authentication, that is 
+      controlled by a Relying Party.
+    source: ARF Annex 1, Section A.4
+    note: Technical component of RP infrastructure
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Privacy & Security Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: pseudonym
+    definition: >-
+      Data uniquely representing a User which in itself does not allow 
+      inference of the User's attributes or person identification data, 
+      without additional information kept separately by the issuer of 
+      the data.
+    source: ARF Annex 1, Section A.4
+    note: Distinct from GDPR pseudonymisation; see eIDAS Article 5a(4)(b)
+
+  - term: unlinkability
+    definition: >-
+      A privacy-preserving property ensuring that an observer cannot 
+      sufficiently determine whether multiple items of interest (such as 
+      transactions, presentations, or actions) are related or originate 
+      from the same user. This prevents tracking and profiling of user 
+      behaviour across different relying parties.
+    source: Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)
+    note: Core privacy goal of EUDIW design
+
+  - term: data minimisation
+    definition: >-
+      The principle that personal data collected and processed shall be 
+      adequate, relevant and limited to what is necessary in relation to 
+      the purposes for which they are processed.
+    source: GDPR Article 5(1)(c)
+    note: Frequently referenced in eIDAS 2.0 context
+
+  - term: keystore
+    definition: >-
+      A hardware-backed repository and service in which non-critical 
+      cryptographic assets are generated, stored, and used exclusively 
+      inside a dedicated hardware security boundary. Examples include 
+      Secure Elements, TPMs, TEEs, secure enclaves, or remote HSMs.
+    source: ARF Annex 1, Section A.4
+    note: Distinct from WSCA/WSCD which handle critical cryptographic assets
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Attestation Technical Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Attestation Rulebook
+    definition: >-
+      A document describing the attestation type, namespace(s), and other 
+      features for a specific attestation type within the EUDIW ecosystem.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 12 - Attestation rulebooks
+
+  - term: namespace
+    definition: >-
+      A specification of the attribute identifier, syntax and semantics of 
+      attributes that can be used in an attestation, having an identifier 
+      that is unique within the EUDI Wallet ecosystem.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 12 - Attestation rulebooks
+
+  - term: Technical Validity Period
+    definition: >-
+      The dates (and possibly times) from and up to which an attestation is 
+      technically valid, represented as metadata of the attestation. All 
+      PIDs and attestations have a technical validity period, which is 
+      typically much shorter than the administrative validity period.
+    source: ARF Annex 1, Section A.4
+    note: Related to cryptographic binding expiry; chosen based on risk analysis
+
+  - term: Administrative Validity Period
+    definition: >-
+      The date(s) from and/or up to which the attributes in an attestation 
+      are valid, represented as attribute(s) in the attestation. Some 
+      attestations (e.g., diplomas) do not have an administrative validity 
+      period.
+    source: ARF Annex 1, Section A.4
+    note: Reflects real-world attribute validity, distinct from technical validity
+
+  - term: SUA Attestation
+    definition: >-
+      An attestation used for strong user authentication in the context of 
+      electronic payments, such that when a Relying Party sends a 
+      presentation request to a Wallet Unit, it includes transactional 
+      data in the request.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 20 - Strong User Authentication for electronic payments
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Rulebooks & Governance Documents
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: PID Rulebook
+    definition: >-
+      A technical specification document that describes the attestation scheme, 
+      namespace, attribute definitions, encoding formats, and other detailed 
+      requirements for Person Identification Data (PID) within the EUDI Wallet 
+      ecosystem. All PIDs and PID Providers must comply with its requirements.
+    source: ARF Annex 3.1, Topic 3
+    note: Specifies ISO/IEC 18013-5 mdoc and SD-JWT VC formats for PIDs
+
+  - term: mDL Rulebook
+    definition: >-
+      A technical specification document that describes the attestation scheme, 
+      namespace, attribute definitions, encoding formats, and other detailed 
+      requirements for mobile Driving Licences (mDL) used within the EUDI Wallet 
+      ecosystem, compliant with ISO/IEC 18013-5.
+    source: ARF Annex 3.2
+    note: Specifies mobile Driving Licence attributes and formats
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Infrastructure & PKI Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Certificate Authority
+    definition: >-
+      An entity which is trusted by one or more parties in the EUDI Wallet 
+      ecosystem to create and seal certificates. Certificate Authorities 
+      issue digital certificates that bind public keys to the identities 
+      of entities within the trust framework.
+    source: ARF Annex 1, Section A.4
+    note: Abbreviated as CA; foundational element of the EUDIW trust infrastructure
+
+  - term: Public Key Infrastructure
+    definition: >-
+      Systems, software, and communication protocols that are used by EUDI 
+      Wallet ecosystem components to distribute, manage, and control public 
+      keys. A PKI publishes public keys and establishes trust within an 
+      environment by validating and verifying the public keys mapping to 
+      an entity.
+    source: ARF Annex 1, Section A.4
+    note: Abbreviated as PKI; essential for the cryptographic trust model
+
+  - term: Certificate Policy
+    definition: >-
+      A named set of rules that indicates the applicability of a certificate 
+      to a particular community and/or class of application with common 
+      security requirements. Certificate policies define how certificates 
+      may be used and under what conditions.
+    source: ARF Annex 1, Section A.4
+    note: Abbreviated as CP; based on X.509 and RFC 3647
+
+  - term: Trust Anchor
+    definition: >-
+      An authoritative entity represented by a public key and associated data. 
+      Trust anchors are the root of trust in a trust hierarchy, used to 
+      validate certificate chains and establish the authenticity of 
+      entities within the EUDI Wallet ecosystem.
+    source: ARF Annex 1, Section A.4 (RFC 5914)
+    note: Foundational concept for trust chain validation
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Revocation & Status Mechanisms
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Attestation Revocation List
+    definition: >-
+      A mechanism provided by a PID Provider or an Attestation Provider 
+      (or a trusted party acting on its behalf) for communicating the 
+      revocation status of PIDs and attestations, by publishing a list 
+      of identifiers of revoked PIDs or attestations.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 7 - Attestation revocation and revocation checking
+
+  - term: Attestation Status List
+    definition: >-
+      A mechanism provided by a PID Provider or an Attestation Provider 
+      (or a trusted party acting on its behalf) for communicating the 
+      revocation status of PIDs and attestations, by publishing status 
+      information (Valid or Invalid) for all relevant PIDs or attestations. 
+      The list may contain all PIDs or attestations whose validity period 
+      is not over yet at the time of publication.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 7 - Alternative to Revocation Lists with explicit status
+
+  - term: attestation type
+    definition: >-
+      An identifier for a type of attestation that is unique within the 
+      context of the EUDI Wallet ecosystem. Attestation types are used 
+      to categorize and identify different kinds of attestations, enabling 
+      Relying Parties to request specific types of credentials.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 12 - Attestation rulebooks
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Wallet-to-Wallet Interaction Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: holder
+    definition: >-
+      In the context of Wallet-to-Wallet interactions, a User wishing to 
+      use their Wallet Unit to present attributes from a PID or attestation 
+      to the User of another Wallet Unit. The Holder initiates the 
+      presentation of credentials to a Verifier.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 30 - Interaction between Wallet Units
+
+  - term: verifier
+    definition: >-
+      In the context of Wallet-to-Wallet interactions, a User wishing to 
+      use their Wallet Unit to request attributes from a PID or attestation 
+      from the User of another Wallet Unit. The Verifier receives and 
+      validates credentials presented by a Holder.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 30 - Interaction between Wallet Units
+
+  - term: Holder Wallet Unit
+    definition: >-
+      A Wallet Unit used by a Holder in the context of Wallet-to-Wallet 
+      interactions. The Holder Wallet Unit presents PIDs or attestations 
+      to a Verifier Wallet Unit.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 30 - Presentation side of W2W flow
+
+  - term: Verifier Wallet Unit
+    definition: >-
+      A Wallet Unit used by a Verifier in the context of Wallet-to-Wallet 
+      interactions. The Verifier Wallet Unit requests and receives PIDs 
+      or attestations from a Holder Wallet Unit.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 30 - Verification side of W2W flow
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Governance & Notification
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: notification
+    definition: >-
+      The act of transferring information to the European Commission, 
+      typically in the context of Member States notifying the Commission 
+      about their designated PID Providers, Wallet Providers, Attestation 
+      Providers, and Access Certificate Authorities.
+    source: ARF Annex 1, Section A.4
+    note: See ARF Topic 31 - Provider notification and publication
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # EU & Institutional Concepts
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: Member State
+    definition: >-
+      A country that is a member of the European Union. In the context of 
+      eIDAS 2.0, Member States are responsible for designating PID Providers, 
+      certifying Wallet Solutions, maintaining Trusted Lists, and ensuring 
+      the cross-border interoperability of European Digital Identity Wallets.
+    source: Treaty on European Union, Article 1
+    note: Currently 27 EU countries; eIDAS also applies to EEA states
+
+  - term: Third Country
+    definition: >-
+      A country that is not a member of the European Union. Third countries 
+      are relevant in the context of cross-border data transfers, recognition 
+      of trust services, and potential mutual recognition agreements for 
+      electronic identification.
+    source: EU legal terminology
+    note: Relevant for GDPR adequacy decisions and trust service recognition
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Advanced Privacy Technologies
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: zero knowledge proof
+    definition: >-
+      A cryptographic method by which one party (the prover) can prove to 
+      another party (the verifier) that a statement is true, without 
+      revealing any information beyond the validity of the statement itself. 
+      In the EUDIW context, ZKPs can enable proving properties about 
+      attributes (e.g., "age is over 18") without disclosing the actual 
+      attribute value.
+    source: Privacy research; cryptographic literature
+    note: Abbreviated as ZKP; enables advanced privacy-preserving presentations
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Latin Legal Terms
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: mutatis mutandis
+    definition: >-
+      Latin: "with the necessary changes having been made." A legal term 
+      indicating that a provision or requirement from one context applies 
+      to another context with the necessary adaptations. When legislation 
+      states that Article X applies "mutatis mutandis" to another situation, 
+      it means the same rules apply with appropriate modifications for the 
+      different context.
+    source: EU legal terminology
+    note: Used 15+ times in eIDAS 2.0 to apply signature rules to seals, etc.
+
+  - term: inter alia
+    definition: >-
+      Latin: "among other things." Used in legal texts to indicate that the 
+      listed items are examples or part of a larger set, not an exhaustive 
+      enumeration. When legislation mentions "inter alia" before a list, 
+      there may be additional relevant items not explicitly mentioned.
+    source: EU legal terminology
+    note: Common in GDPR, ePrivacy, and other EU regulations
+
+  - term: ex ante
+    definition: >-
+      Latin: "from before." Refers to actions, assessments, or controls 
+      performed before an event or activity takes place. In regulatory 
+      contexts, ex ante supervision means proactive oversight conducted 
+      before potential harm occurs, such as pre-approval requirements 
+      or preventive audits.
+    source: EU legal terminology
+    note: Used in eIDAS for supervisory activities; contrasts with ex post
+
+  - term: ex post
+    definition: >-
+      Latin: "from after." Refers to actions, assessments, or controls 
+      performed after an event or activity has occurred. In regulatory 
+      contexts, ex post supervision means reactive oversight triggered 
+      by evidence of non-compliance, incidents, or complaints received 
+      after the fact.
+    source: EU legal terminology
+    note: Used in eIDAS/NIS2 for reactive supervisory activities

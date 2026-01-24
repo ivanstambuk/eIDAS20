@@ -2258,3 +2258,63 @@ Implement **Option B with refinement** — after user feedback, final order beca
 
 **Pattern Extracted:** Collapsible Section with localStorage — see `.agent/snippets/react-patterns.md`
 
+---
+
+## DEC-246: Data File Caching Strategy
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+**Category:** Infrastructure / Performance
+
+**Context:**
+
+JSON data files in `public/data/` (terminology.json, search-index.json, etc.) are fetched at runtime. During development and on GitHub Pages, browser caching was causing stale data issues:
+- After rebuilding terminology, users had to hard refresh (Ctrl+Shift+R) to see new terms
+- The issue occurred both locally and on production (GitHub Pages)
+
+**Options Evaluated:**
+
+| Option | Description | Verdict |
+|--------|-------------|---------|
+| A: No-cache dev plugin | Vite plugin disables cache for dev server | ✅ Chosen for dev |
+| B: Cache-busting query params | Append `?v=<buildTimestamp>` to all data URLs | Deferred — requires updating 10+ files |
+| C: Move JSON to src/ | Import JSON as modules; Vite hashes them | Breaks lazy loading pattern |
+| D: Accept GitHub 10-min cache | GitHub Pages default ~10 minute cache | ✅ Chosen for prod |
+
+**Decision:**
+
+Implement a **two-tier caching strategy**:
+
+| Environment | Strategy | Implementation |
+|-------------|----------|----------------|
+| **Local development** | No caching | `noCacheJsonPlugin()` in `vite.config.js` sets `Cache-Control: no-store` headers |
+| **GitHub Pages (production)** | Accept 10-minute cache | No change — GitHub's default cache is acceptable |
+
+**Rationale for accepting 10-minute cache:**
+
+1. **Documentation site** — Users don't need real-time updates; 10 minutes is acceptable
+2. **Rare updates** — Terminology/search index changes are infrequent (typically during development)
+3. **Implementation cost** — Cache-busting would require modifying 10+ files that fetch data
+4. **Tradeoff** — Simplicity over perfect freshness
+
+**Future Option (if needed):**
+
+A `fetchData.js` utility was created but not integrated:
+- Located at `src/utils/fetchData.js`
+- Appends `?v=<buildTimestamp>` to data URLs
+- Can be integrated if real-time freshness becomes critical
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `vite.config.js` | Added `noCacheJsonPlugin()` for development server |
+| `src/utils/fetchData.js` | NEW: Cache-busting utility (not yet integrated) |
+
+**Testing:**
+
+After this change, during local development:
+1. Run `npm run build:terminology`
+2. Normal refresh (F5) shows new terms — no hard refresh needed
+
+

@@ -69,28 +69,46 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
             {/* Source(s) - shown below definition */}
             {isSingleSource ? (
                 /* Single source: direct display */
-                <Link
-                    to={getDocumentPath(sources[0])}
-                    className="source-link"
-                    onClick={handleSaveScroll}
-                    style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 'var(--space-1)',
-                        marginTop: 'var(--space-2)',
-                        fontSize: 'var(--text-sm)',
-                        color: 'var(--text-secondary)',
-                        textDecoration: 'none'
-                    }}
-                >
-                    <span>
-                        — <span style={{ color: 'var(--accent-primary)' }}>{sources[0].documentTitle}</span>,{' '}
-                        {sources[0].documentCategory === 'supplementary'
-                            ? <em>"{sources[0].articleNumber}"</em>
-                            : `Article ${sources[0].articleNumber}`
-                        } →
+                /* Check if internal term (no documentId = no link) */
+                (!sources[0].documentId || sources[0].documentCategory === 'internal') ? (
+                    <span
+                        className="source-attribution"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 'var(--space-1)',
+                            marginTop: 'var(--space-2)',
+                            fontSize: 'var(--text-sm)',
+                            color: 'var(--text-secondary)'
+                        }}
+                    >
+                        — <span style={{ color: 'var(--text-tertiary)' }}>Internal</span>,{' '}
+                        {sources[0].articleNumber}
                     </span>
-                </Link>
+                ) : (
+                    <Link
+                        to={getDocumentPath(sources[0])}
+                        className="source-link"
+                        onClick={handleSaveScroll}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 'var(--space-1)',
+                            marginTop: 'var(--space-2)',
+                            fontSize: 'var(--text-sm)',
+                            color: 'var(--text-secondary)',
+                            textDecoration: 'none'
+                        }}
+                    >
+                        <span>
+                            — <span style={{ color: 'var(--accent-primary)' }}>{sources[0].documentTitle}</span>,{' '}
+                            {sources[0].documentCategory === 'supplementary'
+                                ? <em>"{sources[0].articleNumber}"</em>
+                                : `Article ${sources[0].articleNumber}`
+                            } →
+                        </span>
+                    </Link>
+                )
             ) : (
                 /* Multiple sources: accordion */
                 <div style={{ marginTop: 'var(--space-2)' }}>
@@ -125,24 +143,40 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                             flexDirection: 'column',
                             gap: 'var(--space-1)'
                         }}>
-                            {sources.map((source, idx) => (
-                                <Link
-                                    key={idx}
-                                    to={getDocumentPath(source)}
-                                    onClick={handleSaveScroll}
-                                    style={{
-                                        fontSize: 'var(--text-sm)',
-                                        color: 'var(--accent-primary)',
-                                        textDecoration: 'none'
-                                    }}
-                                >
-                                    {source.documentTitle},{' '}
-                                    {source.documentCategory === 'supplementary'
-                                        ? <em>"{source.articleNumber}"</em>
-                                        : `Article ${source.articleNumber}`
-                                    } →
-                                </Link>
-                            ))}
+                            {sources.map((source, idx) => {
+                                // Check if internal term (no documentId = no link)
+                                const isInternal = !source.documentId || source.documentCategory === 'internal';
+
+                                return isInternal ? (
+                                    <span
+                                        key={idx}
+                                        style={{
+                                            fontSize: 'var(--text-sm)',
+                                            color: 'var(--text-secondary)'
+                                        }}
+                                    >
+                                        <span style={{ color: 'var(--text-tertiary)' }}>Internal</span>,{' '}
+                                        {source.articleNumber}
+                                    </span>
+                                ) : (
+                                    <Link
+                                        key={idx}
+                                        to={getDocumentPath(source)}
+                                        onClick={handleSaveScroll}
+                                        style={{
+                                            fontSize: 'var(--text-sm)',
+                                            color: 'var(--accent-primary)',
+                                            textDecoration: 'none'
+                                        }}
+                                    >
+                                        {source.documentTitle},{' '}
+                                        {source.documentCategory === 'supplementary'
+                                            ? <em>"{source.articleNumber}"</em>
+                                            : `Article ${source.articleNumber}`
+                                        } →
+                                    </Link>
+                                );
+                            })}
                         </div>
                     )}
                 </div>
