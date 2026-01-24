@@ -262,20 +262,15 @@ function UseCaseSelector({
     );
 }
 
-function RequirementTable({ requirements, requirementCategories, onStatusChange, assessments, regulationsIndex }) {
+function RequirementTable({ requirements, requirementCategories, regulationsIndex }) {
     const [filterCategory, setFilterCategory] = useState('all');
-    const [filterStatus, setFilterStatus] = useState('all');
 
     const filteredRequirements = useMemo(() => {
         return requirements.filter(req => {
             if (filterCategory !== 'all' && req.category !== filterCategory) return false;
-            if (filterStatus !== 'all') {
-                const status = assessments[req.id]?.status || 'pending';
-                if (filterStatus !== status) return false;
-            }
             return true;
         });
-    }, [requirements, filterCategory, filterStatus, assessments]);
+    }, [requirements, filterCategory]);
 
     // Group by category
     const groupedRequirements = useMemo(() => {
@@ -286,14 +281,6 @@ function RequirementTable({ requirements, requirementCategories, onStatusChange,
         }
         return groups;
     }, [filteredRequirements]);
-
-    const statusOptions = [
-        { value: 'pending', label: 'Pending', icon: '⏳' },
-        { value: 'compliant', label: 'Compliant', icon: '✅' },
-        { value: 'non_compliant', label: 'Non-Compliant', icon: '❌' },
-        { value: 'partial', label: 'Partial', icon: '⚠️' },
-        { value: 'na', label: 'N/A', icon: '➖' }
-    ];
 
     return (
         <div className="rca-requirements">
@@ -308,16 +295,6 @@ function RequirementTable({ requirements, requirementCategories, onStatusChange,
                         <option value="all">All Categories</option>
                         {requirementCategories.map(cat => (
                             <option key={cat.id} value={cat.id}>{cat.icon} {cat.label}</option>
-                        ))}
-                    </select>
-                    <select
-                        value={filterStatus}
-                        onChange={e => setFilterStatus(e.target.value)}
-                        className="rca-filter-select"
-                    >
-                        <option value="all">All Statuses</option>
-                        {statusOptions.map(opt => (
-                            <option key={opt.value} value={opt.value}>{opt.icon} {opt.label}</option>
                         ))}
                     </select>
                 </div>
@@ -337,51 +314,34 @@ function RequirementTable({ requirements, requirementCategories, onStatusChange,
                                         <th className="col-id">ID</th>
                                         <th className="col-requirement">Requirement</th>
                                         <th className="col-legal">Legal Basis</th>
-                                        <th className="col-status">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {groupedRequirements[cat.id].map(req => {
-                                        const assessment = assessments[req.id] || { status: 'pending' };
-                                        return (
-                                            <tr key={req.id} className={`status-${assessment.status}`}>
-                                                <td className="col-id">{req.id}</td>
-                                                <td className="col-requirement">
-                                                    <div className="rca-req-text">{req.requirement}</div>
-                                                    {req.explanation && (
-                                                        <details className="rca-req-details">
-                                                            <summary>Details</summary>
-                                                            <p>{req.explanation}</p>
-                                                            {req.legalText && (
-                                                                <blockquote className="rca-legal-text">
-                                                                    {req.legalText}
-                                                                </blockquote>
-                                                            )}
-                                                        </details>
-                                                    )}
-                                                </td>
-                                                <td className="col-legal">
-                                                    <LegalBasisLink
-                                                        legalBasis={req.legalBasis}
-                                                        regulationsIndex={regulationsIndex}
-                                                    />
-                                                </td>
-                                                <td className="col-status">
-                                                    <select
-                                                        value={assessment.status}
-                                                        onChange={e => onStatusChange(req.id, e.target.value)}
-                                                        className={`rca-status-select status-${assessment.status}`}
-                                                    >
-                                                        {statusOptions.map(opt => (
-                                                            <option key={opt.value} value={opt.value}>
-                                                                {opt.icon} {opt.label}
-                                                            </option>
-                                                        ))}
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {groupedRequirements[cat.id].map(req => (
+                                        <tr key={req.id}>
+                                            <td className="col-id">{req.id}</td>
+                                            <td className="col-requirement">
+                                                <div className="rca-req-text">{req.requirement}</div>
+                                                {req.explanation && (
+                                                    <details className="rca-req-details">
+                                                        <summary>Details</summary>
+                                                        <p>{req.explanation}</p>
+                                                        {req.legalText && (
+                                                            <blockquote className="rca-legal-text">
+                                                                {req.legalText}
+                                                            </blockquote>
+                                                        )}
+                                                    </details>
+                                                )}
+                                            </td>
+                                            <td className="col-legal">
+                                                <LegalBasisLink
+                                                    legalBasis={req.legalBasis}
+                                                    regulationsIndex={regulationsIndex}
+                                                />
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
@@ -404,7 +364,6 @@ export default function ComplianceAssessment() {
     const [roleConfigurations, setRoleConfigurations] = useState(new Map());
     const [selectedUseCases, setSelectedUseCases] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
-    const [assessments, setAssessments] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [exportHistory, setExportHistory] = useState([]);
 
@@ -457,17 +416,8 @@ export default function ComplianceAssessment() {
         });
     }, [data]);
 
-    // Load saved assessments and export history from localStorage
+    // Load export history from localStorage
     useEffect(() => {
-        const savedAssessments = localStorage.getItem('rca-assessments');
-        if (savedAssessments) {
-            try {
-                setAssessments(JSON.parse(savedAssessments));
-            } catch (e) {
-                console.error('Failed to load saved assessments:', e);
-            }
-        }
-
         const savedHistory = localStorage.getItem('rca-export-history');
         if (savedHistory) {
             try {
@@ -477,13 +427,6 @@ export default function ComplianceAssessment() {
             }
         }
     }, []);
-
-    // Save assessments to localStorage
-    useEffect(() => {
-        if (Object.keys(assessments).length > 0) {
-            localStorage.setItem('rca-assessments', JSON.stringify(assessments));
-        }
-    }, [assessments]);
 
     // Save export history to localStorage
     useEffect(() => {
@@ -541,16 +484,7 @@ export default function ComplianceAssessment() {
         });
     }, [data]);
 
-    // Update assessment status
-    const handleStatusChange = useCallback((reqId, status) => {
-        setAssessments(prev => ({
-            ...prev,
-            [reqId]: {
-                status,
-                updated: new Date().toISOString()
-            }
-        }));
-    }, []);
+
 
     // Get applicable requirements based on selection (multi-role, profiles, use cases)
     // Aggregates across all selected roles with deduplication
@@ -643,7 +577,7 @@ export default function ComplianceAssessment() {
         try {
             const result = exportToExcel({
                 requirements: applicableRequirements,
-                assessments,
+                assessments: {}, // All items export as 'Pending'
                 role: getRoleLabels(),
                 useCases: getUseCaseNames(),
                 requirementCategories: data.requirementCategories
@@ -665,7 +599,7 @@ export default function ComplianceAssessment() {
             console.error('Export failed:', err);
             alert('Export failed. Please try again.');
         }
-    }, [applicableRequirements, assessments, data, getRoleLabels, getUseCaseNames, selectedUseCases, roleConfigurations]);
+    }, [applicableRequirements, data, getRoleLabels, getUseCaseNames, selectedUseCases]);
 
     // Export to Markdown
     const handleExportMarkdown = useCallback(() => {
@@ -677,7 +611,7 @@ export default function ComplianceAssessment() {
         try {
             const result = exportToMarkdown({
                 requirements: applicableRequirements,
-                assessments,
+                assessments: {}, // All items export as 'Pending'
                 role: getRoleLabels(),
                 useCases: getUseCaseNames(),
                 requirementCategories: data.requirementCategories
@@ -699,7 +633,7 @@ export default function ComplianceAssessment() {
             console.error('Export failed:', err);
             alert('Export failed. Please try again.');
         }
-    }, [applicableRequirements, assessments, data, getRoleLabels, getUseCaseNames, selectedUseCases, roleConfigurations]);
+    }, [applicableRequirements, data, getRoleLabels, getUseCaseNames, selectedUseCases]);
 
     // Loading state
     if (loading) {
@@ -822,8 +756,6 @@ export default function ComplianceAssessment() {
                         <RequirementTable
                             requirements={applicableRequirements}
                             requirementCategories={data.requirementCategories}
-                            onStatusChange={handleStatusChange}
-                            assessments={assessments}
                             regulationsIndex={regulationsIndex}
                         />
                     </section>
