@@ -1,13 +1,13 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T12:38:12.888Z",
+  "generated": "2026-01-24T12:55:40.449Z",
   "statistics": {
-    "totalTerms": 338,
-    "totalDefinitions": 475,
+    "totalTerms": 347,
+    "totalDefinitions": 484,
     "sources": {
-      "regulations": 243,
+      "regulations": 252,
       "implementingActs": 143,
-      "supplementary": 33
+      "supplementary": 42
     },
     "termsWithRoles": 129,
     "termsWithDomains": 129
@@ -148,6 +148,7 @@
       "ades-qc",
       "administrative-validity-period",
       "administrator-of-critical-benchmarks",
+      "advanced-digital-skills",
       "advanced-electronic-seal",
       "advanced-electronic-signature",
       "ancillary-insurance-intermediary",
@@ -165,6 +166,7 @@
       "authorised-representative"
     ],
     "B": [
+      "basic-digital-skill",
       "binding-corporate-rules",
       "biometric-data",
       "body-governed-by-public-law",
@@ -221,6 +223,7 @@
       "data-minimisation",
       "data-record",
       "data-reporting-service-provider",
+      "digital-intensity",
       "digital-operational-resilience",
       "digital-service",
       "digital-service-provider",
@@ -234,6 +237,7 @@
       "draft-standard"
     ],
     "E": [
+      "edge-nodes",
       "electronic-archiving",
       "electronic-attestation-of-attributes",
       "electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source",
@@ -324,6 +328,7 @@
       "joint-committee"
     ],
     "K": [
+      "key-public-services",
       "keystore"
     ],
     "L": [
@@ -349,6 +354,7 @@
       "medium-sized-enterprise",
       "member-state",
       "microenterprise",
+      "multi-country-projects",
       "mutatis-mutandis"
     ],
     "N": [
@@ -385,6 +391,7 @@
       "payment-institution",
       "payment-institution-exempted-pursuant-to-directive-eu-2015-2366",
       "peer-evaluation",
+      "peer-review-process",
       "person-identification-data",
       "personal-data",
       "personal-data-breach",
@@ -393,6 +400,7 @@
       "processor",
       "product",
       "profiling",
+      "projected-trajectory",
       "provider-of-person-identification-data",
       "provider-of-qualified-electronic-ledger",
       "provider-of-wallet-relying-party-access-certificates",
@@ -466,6 +474,7 @@
       "small-institution-for-occupational-retirement-provision",
       "social-networking-services-platform",
       "standard",
+      "statistics",
       "strong-user-authentication",
       "sua-attestation",
       "subsidiary",
@@ -835,6 +844,46 @@
               "articleId": "article-3-para-57",
               "articleNumber": "3(57)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "advanced-digital-skills",
+      "term": "advanced digital skills",
+      "sources": [
+        {
+          "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-9",
+          "articleNumber": "N/A(9)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-9",
+      "definitionGroups": [
+        {
+          "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
+          "sources": [
+            {
+              "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-9",
+              "articleNumber": "N/A(9)",
+              "displayOrder": 4
             }
           ],
           "isVariant": false
@@ -1532,6 +1581,46 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "basic-digital-skill",
+      "term": "basic digital skill",
+      "sources": [
+        {
+          "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-10",
+          "articleNumber": "N/A(10)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-10",
+      "definitionGroups": [
+        {
+          "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
+          "sources": [
+            {
+              "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-10",
+              "articleNumber": "N/A(10)",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "binding-corporate-rules",
@@ -4070,6 +4159,46 @@
       "domains": []
     },
     {
+      "id": "digital-intensity",
+      "term": "digital intensity",
+      "sources": [
+        {
+          "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-7",
+          "articleNumber": "N/A(7)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-7",
+      "definitionGroups": [
+        {
+          "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
+          "sources": [
+            {
+              "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-7",
+              "articleNumber": "N/A(7)",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "digital-operational-resilience",
       "term": "digital operational resilience",
       "sources": [
@@ -4506,6 +4635,46 @@
               "articleId": "article-2-para-3",
               "articleNumber": "2(3)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "edge-nodes",
+      "term": "edge nodes",
+      "sources": [
+        {
+          "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-6",
+          "articleNumber": "N/A(6)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-6",
+      "definitionGroups": [
+        {
+          "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
+          "sources": [
+            {
+              "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-6",
+              "articleNumber": "N/A(6)",
+              "displayOrder": 4
             }
           ],
           "isVariant": false
@@ -8084,6 +8253,46 @@
       "domains": []
     },
     {
+      "id": "key-public-services",
+      "term": "key public services",
+      "sources": [
+        {
+          "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-8",
+          "articleNumber": "N/A(8)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-8",
+      "definitionGroups": [
+        {
+          "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
+          "sources": [
+            {
+              "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-8",
+              "articleNumber": "N/A(8)",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "keystore",
       "term": "keystore",
       "sources": [
@@ -8929,6 +9138,46 @@
               "articleId": "article-3-para-60",
               "articleNumber": "3(60)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "multi-country-projects",
+      "term": "multi-country projects",
+      "sources": [
+        {
+          "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-2",
+          "articleNumber": "N/A(2)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-2",
+      "definitionGroups": [
+        {
+          "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
+          "sources": [
+            {
+              "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-2",
+              "articleNumber": "N/A(2)",
+              "displayOrder": 4
             }
           ],
           "isVariant": false
@@ -10257,6 +10506,46 @@
       ]
     },
     {
+      "id": "peer-review-process",
+      "term": "peer review process",
+      "sources": [
+        {
+          "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-4",
+          "articleNumber": "N/A(4)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-4",
+      "definitionGroups": [
+        {
+          "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
+          "sources": [
+            {
+              "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-4",
+              "articleNumber": "N/A(4)",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "person-identification-data",
       "term": "person identification data",
       "sources": [
@@ -10668,6 +10957,46 @@
               "articleId": "article-4-para-4",
               "articleNumber": "4(4)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "projected-trajectory",
+      "term": "projected trajectory",
+      "sources": [
+        {
+          "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-5",
+          "articleNumber": "N/A(5)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-5",
+      "definitionGroups": [
+        {
+          "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
+          "sources": [
+            {
+              "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-5",
+              "articleNumber": "N/A(5)",
+              "displayOrder": 4
             }
           ],
           "isVariant": false
@@ -14142,6 +14471,46 @@
             }
           ],
           "isVariant": true
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "statistics",
+      "term": "statistics",
+      "sources": [
+        {
+          "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
+          "documentId": "2022-2481",
+          "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+          "documentCategory": "supplementary",
+          "documentType": "regulation",
+          "celex": "32022D2481",
+          "articleId": "article-N/A-para-3",
+          "articleNumber": "N/A(3)",
+          "displayOrder": 4
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-3",
+      "definitionGroups": [
+        {
+          "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
+          "sources": [
+            {
+              "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
+              "documentId": "2022-2481",
+              "documentTitle": "Decision (EU) 2022/2481: Digital Decade ",
+              "documentCategory": "supplementary",
+              "documentType": "regulation",
+              "celex": "32022D2481",
+              "articleId": "article-N/A-para-3",
+              "articleNumber": "N/A(3)",
+              "displayOrder": 4
+            }
+          ],
+          "isVariant": false
         }
       ],
       "roles": [],

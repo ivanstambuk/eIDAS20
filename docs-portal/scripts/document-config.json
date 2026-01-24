@@ -89,6 +89,13 @@
             "terminologySource": false,
             "category": "supplementary",
             "comment": "COM(2021)118 - Sets 80% digital identity adoption target for 2030. Establishes four cardinal points of EU digital transformation."
+        },
+        "2022-2481": {
+            "label": "Digital Decade Programme",
+            "ragEnabled": true,
+            "terminologySource": true,
+            "category": "supplementary",
+            "comment": "Decision (EU) 2022/2481 - Legally binding implementation of Digital Decade. Contains 100% eID access target (Art 4(4)(c)) and 12 formal definitions."
         }
     },
     "defaults": {

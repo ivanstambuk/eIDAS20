@@ -133,6 +133,15 @@ documents:
   source: manual  # Manual import from EUR-Lex — DO NOT REGENERATE
   external_url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021DC0118
   output_dir: 01_regulation/2021_118_Digital_Compass
+- celex: 32022D2481
+  title: "Decision: Digital Decade Policy Programme 2030"
+  shortTitle: Digital Decade Programme
+  sidebarTitle: Digital Decade
+  legalType: decision
+  category: supplementary
+  source: manual  # Manual import from EUR-Lex — DO NOT REGENERATE
+  external_url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022D2481
+  output_dir: 01_regulation/2022_2481_Digital_Decade
 
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
