@@ -410,6 +410,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **References Section** | A section at the bottom of each regulation listing all external citations. **Mobile-only** — hidden on desktop where popovers provide the same information inline. |
 | **Abbreviation Badge** | A badge showing the common abbreviation for a regulation in citation popovers (e.g., "GDPR", "eIDAS 1.0"). |
 | **Reading Time Estimate** | The estimated reading duration shown in document headers. Uses 150 WPM (slower than typical 265 WPM due to legal text density). |
+| **High-Density Layout** | A compact layout pattern for interactive compliance tools (RCA, VCQ) with reduced padding, narrower columns, and no max-width constraints. Optimized for expert users scanning 200+ requirements. Contrast with reading-focused regulation pages that use generous spacing. Formalized in DEC-251. |
+| **Generator Tool** | A tool that creates output for external use (e.g., Excel export) rather than maintaining in-browser state. RCA and VCQ are generator tools — users configure options, generate checklists, and export. Status tracking happens externally in compliance management systems, not in the browser. |
 
 ---
 

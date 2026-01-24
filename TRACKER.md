@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-24 17:00 | **UI: High-Density Layout + Status Column Removal (DEC-250, DEC-251)** — Simplified sidebar toggle to header-only hamburger. Reduced main-content padding (2rem→1.5rem). RCA: removed Status column + assessments state; now a pure generator tool. VCQ: similar column adjustments. |
 | 2026-01-24 16:15 | **Feat: Hybrid Sidebar Toggle (DEC-227)** — Hamburger button now visible on desktop, collapses/expands sidebar with smooth animation. State persisted in localStorage. Mobile keeps overlay behavior. |
 | 2026-01-24 15:30 | **Feat: Policy Document Imports** — Added 3 policy documents: Digital Future Communication (COM(2020)67, 4.9K words), 2030 Digital Compass (COM(2021)118, 3.7K words + Annex), Digital Decade Decision (2022/2481, 2.7K words). Completes policy context chain for EUDIW. |
 | 2026-01-24 10:48 | **Revert: Removed Search Highlight Feature** — Removed the `?highlight=` search highlighting feature (added earlier this session) per user request. Reverted ~250 lines of JS, ~45 lines of CSS. Link builder now simpler. |

@@ -2351,3 +2351,88 @@ Options considered:
 - `directly or indirectly` (12 occurrences)
 
 **When to reconsider:** If new common compound patterns emerge, add them manually to the custom dictionary.
+
+---
+
+## DEC-250: Hybrid Sidebar Pattern (Unified Toggle)
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+
+**Context:**  
+The sidebar required a collapse/expand mechanism for desktop users who want more horizontal space. Initial implementation included:
+1. A hamburger button in the global header
+2. A chevron button inside the sidebar header
+3. A floating "expand" tab on the left edge when collapsed
+
+User feedback: Too complex. Three controls for one action is confusing.
+
+**Decision:** Use **header-only unified toggle** — the hamburger button (☰) in the global header is the sole mechanism for sidebar visibility on all viewports.
+
+**Architecture:**
+
+| Viewport | Sidebar Default | Toggle Mechanism | Behavior |
+|----------|-----------------|------------------|----------|
+| Desktop (≥1025px) | Expanded | ☰ Header button | Collapse/expand with animation |
+| Mobile (<1025px) | Hidden | ☰ Header button | Overlay with backdrop |
+
+**Rationale:**
+1. **One control, one action** — Eliminates confusion about which button to use
+2. **Familiar pattern** — Users expect hamburger = navigation toggle
+3. **Persistent state** — Desktop collapse state saved to localStorage
+4. **Clean sidebar** — No in-sidebar chrome; all space for navigation
+5. **Accessibility** — `aria-expanded` + `aria-label` update dynamically
+
+**Supersedes:** DEC-004 (which said hamburger hidden on desktop). The new desktop behavior is collapse/expand, not hide.
+
+**Files modified:**
+- `Layout.jsx` — Added `sidebarCollapsed` state with localStorage persistence
+- `Header.jsx` — Hamburger always visible, dynamic aria attributes
+- `Sidebar.jsx` — Accepts `isCollapsed` prop, applies CSS class
+- `index.css` — Added `.sidebar-collapsed` media query rules
+
+---
+
+## DEC-251: High-Density Layout Pattern
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+
+**Context:**  
+The RCA tool displayed compliance requirements in a table with generous padding suitable for reading-focused regulation pages. User feedback: too much horizontal padding, status column unused, inefficient vertical space usage.
+
+**Decision:** Implement **high-density layout** for interactive compliance tools (RCA, VCQ) that differs from reading-focused regulation pages.
+
+**Key Changes:**
+
+| Element | Before | After |
+|---------|--------|-------|
+| Main content padding | 2rem (32px) | 1.5rem (24px) |
+| RCA page padding | 2rem sides | 1rem sides |
+| RCA max-width | 1400px | None |
+| ID column | 100px | 75px |
+| Legal column | 220px | 180px |
+| Requirement column | min-width: 300px | Expands to fill |
+| Status column | Interactive dropdown | **Removed** |
+
+**Generator vs Tracker Philosophy:**
+- RCA is a **generator** — users configure options, generate checklist, export
+- Status tracking happens in external systems (Excel, compliance platforms)
+- Removing in-browser status tracking saves ~60 lines of CSS, simplifies state
+
+**Exports unchanged:**
+- Excel/Markdown exports still include Status column
+- All items export as "⏳ Pending" for users to fill in externally
+
+**Rationale:**
+1. **Information density** — Compliance analysts scan 200+ requirements; vertical space matters
+2. **Focus on content** — Requirement text is what matters; less chrome around it
+3. **Export-first workflow** — Real work happens in spreadsheets, not browser
+4. **Consistency** — VCQ table columns adjusted similarly
+
+**Files modified:**
+- `ComplianceAssessment.css` — Reduced padding, removed status CSS
+- `ComplianceAssessment.jsx` — Removed status column, assessments state
+- `VendorQuestionnaire.css` — Similar column adjustments
+- `index.css` — Reduced global `--space-8` to `--space-6` for main-content
+
