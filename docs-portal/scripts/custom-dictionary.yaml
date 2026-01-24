@@ -509,3 +509,72 @@ terms:
       are met, even without further verification.
     source: EU legal terminology
     note: Creates legal presumptions and fictions
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Fundamental EU Legal Concepts
+  # Core terms used extensively but not formally defined in eIDAS
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: natural person
+    definition: >-
+      An individual human being, as opposed to a legal person (organization or 
+      entity). In EU law, natural persons are the subjects of fundamental rights 
+      protections, including data protection under GDPR. The term distinguishes 
+      human individuals who can hold rights and bear obligations from artificial 
+      legal entities. GDPR explicitly protects "personal data" relating to 
+      identified or identifiable natural persons.
+    source: GDPR Article 4(1), TFEU
+    note: Fundamental EU concept; foundation of GDPR data subject definition
+
+  - term: legal person
+    definition: >-
+      An entity that has legal personality under applicable law, such as a 
+      company, corporation, association, or other organization. Legal persons 
+      can enter into contracts, own property, sue and be sued, independent of 
+      their members or shareholders. In EU law, legal persons are typically 
+      excluded from GDPR's personal data protections but can be controllers, 
+      processors, relying parties, or trust service providers.
+    source: TFEU Article 263(4), various EU directives
+    note: Contrasts with natural person; includes companies and organizations
+
+  - term: Union law
+    definition: >-
+      The legal framework of the European Union, comprising primary law 
+      (founding treaties) and secondary law (regulations, directives, decisions). 
+      Union law has supremacy over conflicting national law in areas where 
+      Member States have transferred competence to the EU. Regulations apply 
+      directly, while directives require transposition into national law.
+    source: CJEU jurisprudence (Costa v. ENEL), EU Treaties
+    note: Supranational law with primacy principle over national law
+
+  - term: national law
+    definition: >-
+      The domestic legal system of each individual EU Member State, created 
+      and enforced by that state's legislative, executive, and judicial bodies. 
+      Where EU law applies, national law must conform to it (supremacy principle). 
+      However, Member States retain competence in areas not transferred to the 
+      EU. Many EU directives require implementation through national law.
+    source: EU constitutional principles
+    note: Member State domestic law; must conform to Union law where applicable
+
+  - term: certification
+    definition: >-
+      The formal process by which an authorized body (conformity assessment body 
+      or certification body) attests that a product, service, process, or 
+      organization meets specified requirements or standards. In eIDAS context, 
+      certification confirms that trust services, wallets, or devices comply with 
+      regulatory requirements. Certification typically involves conformity 
+      assessment, documentation review, and ongoing surveillance.
+    source: eIDAS, Cybersecurity Act, EU product legislation
+    note: Distinct from "certificate" (the document) and "certification body" (the entity)
+
+  - term: recertification
+    definition: >-
+      The process of renewing or revalidating a certification after it expires, 
+      or when significant changes occur that may affect compliance. Recertification 
+      ensures continued adherence to applicable requirements over time. In eIDAS, 
+      qualified electronic signature creation devices must be recertified 
+      periodically (typically every 5 years, with vulnerability assessments 
+      every 2 years per Article 30).
+    source: eIDAS Article 30, general EU certification practice
+    note: Required when certifications expire or significant changes occur

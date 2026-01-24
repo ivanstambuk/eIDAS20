@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T11:38:22.520Z",
+  "generated": "2026-01-24T11:48:49.788Z",
   "statistics": {
-    "totalTerms": 327,
-    "totalDefinitions": 464,
+    "totalTerms": 333,
+    "totalDefinitions": 470,
     "sources": {
       "regulations": 243,
       "implementingActs": 143,
@@ -185,6 +185,7 @@
       "certificate-for-website-authentication",
       "certificate-of-conformity",
       "certificate-policy",
+      "certification",
       "certification-body",
       "certification-decision",
       "cloud-computing-service",
@@ -328,6 +329,7 @@
       "lead-overseer",
       "ledger-report",
       "legacy-ict-system",
+      "legal-person",
       "list-of-trusted-lists",
       "location-data",
       "lotl"
@@ -352,10 +354,12 @@
       "national-accreditation-body",
       "national-cybersecurity-certification-scheme",
       "national-cybersecurity-strategy",
+      "national-law",
       "national-register-of-wallet-relying-parties",
       "national-standard",
       "national-standardisation-body",
       "national-strategy-on-the-security-of-network-and-information-systems",
+      "natural-person",
       "near-miss",
       "network-and-information-system",
       "node",
@@ -422,6 +426,7 @@
       "qualified-trust-service-provider"
     ],
     "R": [
+      "recertification",
       "recipient",
       "register-of-wallet-relying-parties",
       "registrar-of-wallet-relying-parties",
@@ -482,6 +487,7 @@
       "type-of-electronic-attestation-of-attributes"
     ],
     "U": [
+      "union-law",
       "unlinkability",
       "user"
     ],
@@ -2303,6 +2309,46 @@
       "aliases": [
         "CP"
       ]
+    },
+    {
+      "id": "certification",
+      "term": "certification",
+      "sources": [
+        {
+          "definition": "The formal process by which an authorized body (conformity assessment body or certification body) attests that a product, service, process, or organization meets specified requirements or standards. In eIDAS context, certification confirms that trust services, wallets, or devices comply with regulatory requirements. Certification typically involves conformity assessment, documentation review, and ongoing surveillance.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-eIDAS, Cybersecurity Act, EU product legislation",
+          "articleNumber": "eIDAS, Cybersecurity Act, EU product legislation",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-eIDAS, Cybersecurity Act, EU product legislation",
+      "definitionGroups": [
+        {
+          "definition": "The formal process by which an authorized body (conformity assessment body or certification body) attests that a product, service, process, or organization meets specified requirements or standards. In eIDAS context, certification confirms that trust services, wallets, or devices comply with regulatory requirements. Certification typically involves conformity assessment, documentation review, and ongoing surveillance.",
+          "sources": [
+            {
+              "definition": "The formal process by which an authorized body (conformity assessment body or certification body) attests that a product, service, process, or organization meets specified requirements or standards. In eIDAS context, certification confirms that trust services, wallets, or devices comply with regulatory requirements. Certification typically involves conformity assessment, documentation review, and ongoing surveillance.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-eIDAS, Cybersecurity Act, EU product legislation",
+              "articleNumber": "eIDAS, Cybersecurity Act, EU product legislation",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "certification-body",
@@ -8153,6 +8199,46 @@
       "domains": []
     },
     {
+      "id": "legal-person",
+      "term": "legal person",
+      "sources": [
+        {
+          "definition": "An entity that has legal personality under applicable law, such as a company, corporation, association, or other organization. Legal persons can enter into contracts, own property, sue and be sued, independent of their members or shareholders. In EU law, legal persons are typically excluded from GDPR's personal data protections but can be controllers, processors, relying parties, or trust service providers.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-TFEU Article 263(4), various EU directives",
+          "articleNumber": "TFEU Article 263(4), various EU directives",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-TFEU Article 263(4), various EU directives",
+      "definitionGroups": [
+        {
+          "definition": "An entity that has legal personality under applicable law, such as a company, corporation, association, or other organization. Legal persons can enter into contracts, own property, sue and be sued, independent of their members or shareholders. In EU law, legal persons are typically excluded from GDPR's personal data protections but can be controllers, processors, relying parties, or trust service providers.",
+          "sources": [
+            {
+              "definition": "An entity that has legal personality under applicable law, such as a company, corporation, association, or other organization. Legal persons can enter into contracts, own property, sue and be sued, independent of their members or shareholders. In EU law, legal persons are typically excluded from GDPR's personal data protections but can be controllers, processors, relying parties, or trust service providers.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-TFEU Article 263(4), various EU directives",
+              "articleNumber": "TFEU Article 263(4), various EU directives",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "list-of-trusted-lists",
       "term": "List of Trusted Lists",
       "sources": [
@@ -9031,6 +9117,46 @@
       "domains": []
     },
     {
+      "id": "national-law",
+      "term": "national law",
+      "sources": [
+        {
+          "definition": "The domestic legal system of each individual EU Member State, created and enforced by that state's legislative, executive, and judicial bodies. Where EU law applies, national law must conform to it (supremacy principle). However, Member States retain competence in areas not transferred to the EU. Many EU directives require implementation through national law.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU constitutional principles",
+          "articleNumber": "EU constitutional principles",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU constitutional principles",
+      "definitionGroups": [
+        {
+          "definition": "The domestic legal system of each individual EU Member State, created and enforced by that state's legislative, executive, and judicial bodies. Where EU law applies, national law must conform to it (supremacy principle). However, Member States retain competence in areas not transferred to the EU. Many EU directives require implementation through national law.",
+          "sources": [
+            {
+              "definition": "The domestic legal system of each individual EU Member State, created and enforced by that state's legislative, executive, and judicial bodies. Where EU law applies, national law must conform to it (supremacy principle). However, Member States retain competence in areas not transferred to the EU. Many EU directives require implementation through national law.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU constitutional principles",
+              "articleNumber": "EU constitutional principles",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "national-register-of-wallet-relying-parties",
       "term": "national register of wallet-relying parties",
       "sources": [
@@ -9188,6 +9314,46 @@
               "articleId": "article-2-para-3",
               "articleNumber": "2(3)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "natural-person",
+      "term": "natural person",
+      "sources": [
+        {
+          "definition": "An individual human being, as opposed to a legal person (organization or entity). In EU law, natural persons are the subjects of fundamental rights protections, including data protection under GDPR. The term distinguishes human individuals who can hold rights and bear obligations from artificial legal entities. GDPR explicitly protects \"personal data\" relating to identified or identifiable natural persons.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-GDPR Article 4(1), TFEU",
+          "articleNumber": "GDPR Article 4(1), TFEU",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-GDPR Article 4(1), TFEU",
+      "definitionGroups": [
+        {
+          "definition": "An individual human being, as opposed to a legal person (organization or entity). In EU law, natural persons are the subjects of fundamental rights protections, including data protection under GDPR. The term distinguishes human individuals who can hold rights and bear obligations from artificial legal entities. GDPR explicitly protects \"personal data\" relating to identified or identifiable natural persons.",
+          "sources": [
+            {
+              "definition": "An individual human being, as opposed to a legal person (organization or entity). In EU law, natural persons are the subjects of fundamental rights protections, including data protection under GDPR. The term distinguishes human individuals who can hold rights and bear obligations from artificial legal entities. GDPR explicitly protects \"personal data\" relating to identified or identifiable natural persons.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-GDPR Article 4(1), TFEU",
+              "articleNumber": "GDPR Article 4(1), TFEU",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -12193,6 +12359,46 @@
       ]
     },
     {
+      "id": "recertification",
+      "term": "recertification",
+      "sources": [
+        {
+          "definition": "The process of renewing or revalidating a certification after it expires, or when significant changes occur that may affect compliance. Recertification ensures continued adherence to applicable requirements over time. In eIDAS, qualified electronic signature creation devices must be recertified periodically (typically every 5 years, with vulnerability assessments every 2 years per Article 30).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-eIDAS Article 30, general EU certification practice",
+          "articleNumber": "eIDAS Article 30, general EU certification practice",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-eIDAS Article 30, general EU certification practice",
+      "definitionGroups": [
+        {
+          "definition": "The process of renewing or revalidating a certification after it expires, or when significant changes occur that may affect compliance. Recertification ensures continued adherence to applicable requirements over time. In eIDAS, qualified electronic signature creation devices must be recertified periodically (typically every 5 years, with vulnerability assessments every 2 years per Article 30).",
+          "sources": [
+            {
+              "definition": "The process of renewing or revalidating a certification after it expires, or when significant changes occur that may affect compliance. Recertification ensures continued adherence to applicable requirements over time. In eIDAS, qualified electronic signature creation devices must be recertified periodically (typically every 5 years, with vulnerability assessments every 2 years per Article 30).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-eIDAS Article 30, general EU certification practice",
+              "articleNumber": "eIDAS Article 30, general EU certification practice",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "recipient",
       "term": "recipient",
       "sources": [
@@ -14853,6 +15059,46 @@
       "domains": [
         "attestation"
       ]
+    },
+    {
+      "id": "union-law",
+      "term": "Union law",
+      "sources": [
+        {
+          "definition": "The legal framework of the European Union, comprising primary law (founding treaties) and secondary law (regulations, directives, decisions). Union law has supremacy over conflicting national law in areas where Member States have transferred competence to the EU. Regulations apply directly, while directives require transposition into national law.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+          "articleNumber": "CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+      "definitionGroups": [
+        {
+          "definition": "The legal framework of the European Union, comprising primary law (founding treaties) and secondary law (regulations, directives, decisions). Union law has supremacy over conflicting national law in areas where Member States have transferred competence to the EU. Regulations apply directly, while directives require transposition into national law.",
+          "sources": [
+            {
+              "definition": "The legal framework of the European Union, comprising primary law (founding treaties) and secondary law (regulations, directives, decisions). Union law has supremacy over conflicting national law in areas where Member States have transferred competence to the EU. Regulations apply directly, while directives require transposition into national law.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+              "articleNumber": "CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "unlinkability",
