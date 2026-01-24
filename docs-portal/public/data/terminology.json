@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T11:25:15.532Z",
+  "generated": "2026-01-24T11:38:22.520Z",
   "statistics": {
-    "totalTerms": 318,
-    "totalDefinitions": 455,
+    "totalTerms": 327,
+    "totalDefinitions": 464,
     "sources": {
       "regulations": 243,
       "implementingActs": 143,
@@ -167,7 +167,8 @@
     "B": [
       "binding-corporate-rules",
       "biometric-data",
-      "body-governed-by-public-law"
+      "body-governed-by-public-law",
+      "by-way-of-derogation"
     ],
     "C": [
       "cades",
@@ -267,7 +268,8 @@
     "F": [
       "filing-system",
       "finality",
-      "flexible-scope-accreditation"
+      "flexible-scope-accreditation",
+      "for-the-purposes-of"
     ],
     "G": [
       "genetic-data",
@@ -300,6 +302,7 @@
       "incident-handling",
       "information-asset",
       "information-society-service",
+      "insofar-as",
       "institution-exempted-pursuant-to-directive-2013-36-eu",
       "institution-for-occupational-retirement-provision",
       "insurance-intermediary",
@@ -357,7 +360,8 @@
       "network-and-information-system",
       "node",
       "node-operator",
-      "notification"
+      "notification",
+      "notwithstanding"
     ],
     "O": [
       "object-of-certification",
@@ -392,7 +396,8 @@
       "public-authority",
       "public-electronic-communications-network",
       "public-key-infrastructure",
-      "public-sector-body"
+      "public-sector-body",
+      "pursuant-to"
     ],
     "Q": [
       "qc",
@@ -442,6 +447,7 @@
       "security-of-network-and-information-systems",
       "selective-disclosure",
       "service",
+      "shall-be-deemed",
       "signatory",
       "significant-cyber-threat",
       "simple-electronic-seal",
@@ -501,6 +507,9 @@
       "wallet-relying-party",
       "wallet-relying-party-access-certificate",
       "wallet-relying-party-registration-certificate",
+      "where-applicable",
+      "without-prejudice-to",
+      "without-undue-delay",
       "work-process"
     ],
     "X": [
@@ -1636,6 +1645,46 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "by-way-of-derogation",
+      "term": "by way of derogation",
+      "sources": [
+        {
+          "definition": "A legal phrase introducing an exception or deviation from a general rule. It signals that the provision temporarily or conditionally sets aside the normal rules under specific circumstances. Unlike \"notwithstanding,\" a derogation is typically a formally recognized exception with specific conditions for its application.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase introducing an exception or deviation from a general rule. It signals that the provision temporarily or conditionally sets aside the normal rules under specific circumstances. Unlike \"notwithstanding,\" a derogation is typically a formally recognized exception with specific conditions for its application.",
+          "sources": [
+            {
+              "definition": "A legal phrase introducing an exception or deviation from a general rule. It signals that the provision temporarily or conditionally sets aside the normal rules under specific circumstances. Unlike \"notwithstanding,\" a derogation is typically a formally recognized exception with specific conditions for its application.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "cades",
@@ -6011,6 +6060,46 @@
       ]
     },
     {
+      "id": "for-the-purposes-of",
+      "term": "for the purposes of",
+      "sources": [
+        {
+          "definition": "A legal phrase that introduces a definition or scope limitation specific to a particular context. It signals that the meaning or application of a term is limited to the specific article, section, or regulation being discussed. Example: \"For the purposes of this Article, 'provider' means...\"",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase that introduces a definition or scope limitation specific to a particular context. It signals that the meaning or application of a term is limited to the specific article, section, or regulation being discussed. Example: \"For the purposes of this Article, 'provider' means...\"",
+          "sources": [
+            {
+              "definition": "A legal phrase that introduces a definition or scope limitation specific to a particular context. It signals that the meaning or application of a term is limited to the specific article, section, or regulation being discussed. Example: \"For the purposes of this Article, 'provider' means...\"",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "genetic-data",
       "term": "genetic data",
       "sources": [
@@ -7255,6 +7344,46 @@
               "articleId": "article-4-para-25",
               "articleNumber": "4(25)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "insofar-as",
+      "term": "insofar as",
+      "sources": [
+        {
+          "definition": "A legal phrase meaning \"to the extent that\" or \"in so far as.\" It creates a proportional or conditional scope, indicating that a provision applies only to the degree that certain conditions are met. Example: \"insofar as necessary for the provision of the service\" limits the scope to what is strictly needed.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase meaning \"to the extent that\" or \"in so far as.\" It creates a proportional or conditional scope, indicating that a provision applies only to the degree that certain conditions are met. Example: \"insofar as necessary for the provision of the service\" limits the scope to what is strictly needed.",
+          "sources": [
+            {
+              "definition": "A legal phrase meaning \"to the extent that\" or \"in so far as.\" It creates a proportional or conditional scope, indicating that a provision applies only to the degree that certain conditions are met. Example: \"insofar as necessary for the provision of the service\" limits the scope to what is strictly needed.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -9296,6 +9425,46 @@
       "domains": []
     },
     {
+      "id": "notwithstanding",
+      "term": "notwithstanding",
+      "sources": [
+        {
+          "definition": "A legal phrase meaning \"despite\" or \"regardless of.\" It creates an exception to a general rule, signaling that the provision it introduces applies even though it may conflict with another provision. Example: \"Notwithstanding Article 5\" means this provision applies even if Article 5 would otherwise prevent it.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase meaning \"despite\" or \"regardless of.\" It creates an exception to a general rule, signaling that the provision it introduces applies even though it may conflict with another provision. Example: \"Notwithstanding Article 5\" means this provision applies even if Article 5 would otherwise prevent it.",
+          "sources": [
+            {
+              "definition": "A legal phrase meaning \"despite\" or \"regardless of.\" It creates an exception to a general rule, signaling that the provision it introduces applies even though it may conflict with another provision. Example: \"Notwithstanding Article 5\" means this provision applies even if Article 5 would otherwise prevent it.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "object-of-certification",
       "term": "object of certification",
       "sources": [
@@ -10883,6 +11052,46 @@
       "domains": [
         "governance"
       ]
+    },
+    {
+      "id": "pursuant-to",
+      "term": "pursuant to",
+      "sources": [
+        {
+          "definition": "A legal phrase meaning \"in accordance with\" or \"as authorized by.\" It indicates that an action is taken based on the authority granted by a specific legal provision. Example: \"pursuant to Article 24\" means the action is authorized or required by that article.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase meaning \"in accordance with\" or \"as authorized by.\" It indicates that an action is taken based on the authority granted by a specific legal provision. Example: \"pursuant to Article 24\" means the action is authorized or required by that article.",
+          "sources": [
+            {
+              "definition": "A legal phrase meaning \"in accordance with\" or \"as authorized by.\" It indicates that an action is taken based on the authority granted by a specific legal provision. Example: \"pursuant to Article 24\" means the action is authorized or required by that article.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "qc",
@@ -13061,6 +13270,46 @@
               "articleId": "article-2-para-7",
               "articleNumber": "2(7)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "shall-be-deemed",
+      "term": "shall be deemed",
+      "sources": [
+        {
+          "definition": "A legal phrase creating a legal fiction or presumption. It establishes that something is legally treated as true or equivalent to something else, regardless of actual facts. Example: \"shall be deemed to comply\" means the entity is legally presumed compliant if certain conditions are met, even without further verification.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase creating a legal fiction or presumption. It establishes that something is legally treated as true or equivalent to something else, regardless of actual facts. Example: \"shall be deemed to comply\" means the entity is legally presumed compliant if certain conditions are met, even without further verification.",
+          "sources": [
+            {
+              "definition": "A legal phrase creating a legal fiction or presumption. It establishes that something is legally treated as true or equivalent to something else, regardless of actual facts. Example: \"shall be deemed to comply\" means the entity is legally presumed compliant if certain conditions are met, even without further verification.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
             }
           ],
           "isVariant": false
@@ -17112,6 +17361,126 @@
         "wallet_ecosystem",
         "attestation"
       ]
+    },
+    {
+      "id": "where-applicable",
+      "term": "where applicable",
+      "sources": [
+        {
+          "definition": "A legal phrase indicating that a provision applies only in certain circumstances or to certain entities. It creates conditional applicability, meaning the requirement only takes effect when the relevant conditions are met. Used to provide flexibility for diverse situations across Member States.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase indicating that a provision applies only in certain circumstances or to certain entities. It creates conditional applicability, meaning the requirement only takes effect when the relevant conditions are met. Used to provide flexibility for diverse situations across Member States.",
+          "sources": [
+            {
+              "definition": "A legal phrase indicating that a provision applies only in certain circumstances or to certain entities. It creates conditional applicability, meaning the requirement only takes effect when the relevant conditions are met. Used to provide flexibility for diverse situations across Member States.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "without-prejudice-to",
+      "term": "without prejudice to",
+      "sources": [
+        {
+          "definition": "A legal phrase meaning \"this provision applies, but it does not affect, override, or diminish the rights, obligations, or provisions established by [the referenced provision].\" It signals that both rules coexist and the referenced provision maintains its full force. Example: \"Without prejudice to paragraph 1\" means paragraph 1 still fully applies.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase meaning \"this provision applies, but it does not affect, override, or diminish the rights, obligations, or provisions established by [the referenced provision].\" It signals that both rules coexist and the referenced provision maintains its full force. Example: \"Without prejudice to paragraph 1\" means paragraph 1 still fully applies.",
+          "sources": [
+            {
+              "definition": "A legal phrase meaning \"this provision applies, but it does not affect, override, or diminish the rights, obligations, or provisions established by [the referenced provision].\" It signals that both rules coexist and the referenced provision maintains its full force. Example: \"Without prejudice to paragraph 1\" means paragraph 1 still fully applies.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "without-undue-delay",
+      "term": "without undue delay",
+      "sources": [
+        {
+          "definition": "A legal phrase requiring action as soon as reasonably possible under the circumstances, without unnecessary or unjustified postponement. It imposes a flexible but enforceable time obligation, allowing for reasonable delays caused by circumstances beyond control. Often paired with a maximum deadline: \"without undue delay and in any event within 24 hours.\"",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal terminology",
+          "articleNumber": "EU legal terminology",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal terminology",
+      "definitionGroups": [
+        {
+          "definition": "A legal phrase requiring action as soon as reasonably possible under the circumstances, without unnecessary or unjustified postponement. It imposes a flexible but enforceable time obligation, allowing for reasonable delays caused by circumstances beyond control. Often paired with a maximum deadline: \"without undue delay and in any event within 24 hours.\"",
+          "sources": [
+            {
+              "definition": "A legal phrase requiring action as soon as reasonably possible under the circumstances, without unnecessary or unjustified postponement. It imposes a flexible but enforceable time obligation, allowing for reasonable delays caused by circumstances beyond control. Often paired with a maximum deadline: \"without undue delay and in any event within 24 hours.\"",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal terminology",
+              "articleNumber": "EU legal terminology",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "work-process",

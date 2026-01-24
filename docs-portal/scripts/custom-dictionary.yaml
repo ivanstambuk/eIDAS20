@@ -415,3 +415,97 @@ terms:
       after the fact.
     source: EU legal terminology
     note: Used in eIDAS/NIS2 for reactive supervisory activities
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # EU Legal Phrases
+  # Common formulaic expressions used throughout EU legislation
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: without prejudice to
+    definition: >-
+      A legal phrase meaning "this provision applies, but it does not affect, 
+      override, or diminish the rights, obligations, or provisions established 
+      by [the referenced provision]." It signals that both rules coexist and 
+      the referenced provision maintains its full force. Example: "Without 
+      prejudice to paragraph 1" means paragraph 1 still fully applies.
+    source: EU legal terminology
+    note: Used 81 times across eIDAS 2.0 regulations
+
+  - term: pursuant to
+    definition: >-
+      A legal phrase meaning "in accordance with" or "as authorized by." 
+      It indicates that an action is taken based on the authority granted 
+      by a specific legal provision. Example: "pursuant to Article 24" 
+      means the action is authorized or required by that article.
+    source: EU legal terminology
+    note: Used 612 times across eIDAS 2.0 regulations
+
+  - term: notwithstanding
+    definition: >-
+      A legal phrase meaning "despite" or "regardless of." It creates an 
+      exception to a general rule, signaling that the provision it introduces 
+      applies even though it may conflict with another provision. Example: 
+      "Notwithstanding Article 5" means this provision applies even if 
+      Article 5 would otherwise prevent it.
+    source: EU legal terminology
+    note: Creates explicit exceptions to general rules
+
+  - term: for the purposes of
+    definition: >-
+      A legal phrase that introduces a definition or scope limitation specific 
+      to a particular context. It signals that the meaning or application of 
+      a term is limited to the specific article, section, or regulation being 
+      discussed. Example: "For the purposes of this Article, 'provider' means..."
+    source: EU legal terminology
+    note: Used 93 times to scope definitions contextually
+
+  - term: without undue delay
+    definition: >-
+      A legal phrase requiring action as soon as reasonably possible under 
+      the circumstances, without unnecessary or unjustified postponement. 
+      It imposes a flexible but enforceable time obligation, allowing for 
+      reasonable delays caused by circumstances beyond control. Often paired 
+      with a maximum deadline: "without undue delay and in any event within 
+      24 hours."
+    source: EU legal terminology
+    note: Used 119 times; key for incident notification deadlines
+
+  - term: where applicable
+    definition: >-
+      A legal phrase indicating that a provision applies only in certain 
+      circumstances or to certain entities. It creates conditional 
+      applicability, meaning the requirement only takes effect when the 
+      relevant conditions are met. Used to provide flexibility for diverse 
+      situations across Member States.
+    source: EU legal terminology
+    note: Used 200 times for conditional requirements
+
+  - term: insofar as
+    definition: >-
+      A legal phrase meaning "to the extent that" or "in so far as." It 
+      creates a proportional or conditional scope, indicating that a 
+      provision applies only to the degree that certain conditions are 
+      met. Example: "insofar as necessary for the provision of the service" 
+      limits the scope to what is strictly needed.
+    source: EU legal terminology
+    note: Creates proportional/conditional scope limitations
+
+  - term: by way of derogation
+    definition: >-
+      A legal phrase introducing an exception or deviation from a general 
+      rule. It signals that the provision temporarily or conditionally sets 
+      aside the normal rules under specific circumstances. Unlike "notwithstanding," 
+      a derogation is typically a formally recognized exception with specific 
+      conditions for its application.
+    source: EU legal terminology
+    note: Used for formal exceptions to general provisions
+
+  - term: shall be deemed
+    definition: >-
+      A legal phrase creating a legal fiction or presumption. It establishes 
+      that something is legally treated as true or equivalent to something 
+      else, regardless of actual facts. Example: "shall be deemed to comply" 
+      means the entity is legally presumed compliant if certain conditions 
+      are met, even without further verification.
+    source: EU legal terminology
+    note: Creates legal presumptions and fictions
