@@ -73,6 +73,7 @@
                         "decision",
                         "recommendation",
                         "directive",
+                        "communication",
                         "faq"
                     ],
                     "description": "What the document IS under EU law (or 'faq' for supplementary guidance)"
