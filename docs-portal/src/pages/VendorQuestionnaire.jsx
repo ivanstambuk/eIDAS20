@@ -115,9 +115,15 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
 
         let section = '';
         if (legalBasis?.article) {
+            // Convert "Article 5b" -> "article-5b", "Annex I" -> "annex-i"
             let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
+
+            // Determine if this is an annex reference (uses -section- instead of -para-)
+            const isAnnexRef = /^annex/i.test(legalBasis.article);
+            const paraPrefix = isAnnexRef ? '-section-' : '-para-';
+
             if (parsedParagraph.para) {
-                sectionId += `-para-${parsedParagraph.para}`;
+                sectionId += `${paraPrefix}${parsedParagraph.para}`;
             }
             if (parsedParagraph.point) {
                 sectionId += `-point-${parsedParagraph.point}`;

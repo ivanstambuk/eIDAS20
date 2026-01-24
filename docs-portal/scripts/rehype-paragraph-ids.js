@@ -143,12 +143,46 @@ function rehypeParagraphIds() {
             }
 
             // Track Annex section - annexes get similar treatment to articles
-            if ((node.tagName === 'h2') && node.properties?.id?.startsWith('annex-')) {
+            // Match both 'annex' (single annex) and 'annex-i', 'annex-ii' etc.
+            if ((node.tagName === 'h2') &&
+                (node.properties?.id === 'annex' || node.properties?.id?.startsWith('annex-'))) {
                 currentAnnexId = node.properties.id;
                 currentArticleId = null;  // Exit article context
                 inRecitalsSection = false;
                 lastParagraphInContext = null;  // Reset paragraph tracking
                 return;
+            }
+
+            // Process numbered section headers within annexes
+            // These are formatted as: <p><strong>1.Set of natural person identification data</strong></p>
+            // The strong element may contain nested elements like term-links
+            // We add IDs like "annex-section-1" to enable deep linking
+            if (currentAnnexId && node.tagName === 'p') {
+                // Find the first element child (should be a <strong>)
+                const firstChild = node.children?.find(c => c.type === 'element');
+                if (firstChild?.tagName === 'strong') {
+                    // Get full text content from the strong element (works with nested elements)
+                    const strongText = getTextContent(firstChild);
+                    // Match patterns like "1.Title" or "2. Title" (number followed by dot)
+                    const sectionMatch = strongText.match(/^(\d+)\.\s*/);
+                    if (sectionMatch) {
+                        const sectionNum = sectionMatch[1];
+                        const sectionId = `${currentAnnexId}-section-${sectionNum}`;
+
+                        node.properties = node.properties || {};
+                        node.properties.id = sectionId;
+                        node.properties['data-annex-section'] = sectionNum;
+                        node.properties['data-context'] = currentAnnexId;
+                        node.properties.className = [
+                            ...(node.properties.className || []),
+                            'linkable-annex-section'
+                        ];
+
+                        // Track this section for potential nested content
+                        lastParagraphInContext = { id: sectionId, num: sectionNum };
+                        return;
+                    }
+                }
             }
 
             // Track Recitals section
@@ -166,12 +200,14 @@ function rehypeParagraphIds() {
                 node.properties?.id &&
                 !node.properties.id.startsWith('article-') &&
                 !node.properties.id.startsWith('annex-') &&
+                node.properties.id !== 'annex' && // Single annex case
                 node.properties.id !== 'recitals') {
                 currentArticleId = null;
                 currentAnnexId = null;
                 inRecitalsSection = false;
                 return;
             }
+
 
             // Determine current context (article or annex)
             const currentContextId = currentArticleId || currentAnnexId;
