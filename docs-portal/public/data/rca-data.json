@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-24T02:16:10.023Z",
+  "generatedAt": "2026-01-24T02:43:39.791Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -365,6 +365,18 @@
           "label": "Non-Qualified TSP",
           "description": "Trust service provider with baseline requirements only",
           "icon": "📋"
+        },
+        {
+          "id": "electronic_ledger",
+          "label": "Qualified Electronic Ledger",
+          "description": "Provider of qualified electronic ledger services per Article 45l (blockchain/DLT)",
+          "icon": "⛓️"
+        },
+        {
+          "id": "qwac_issuer",
+          "label": "QWAC Issuer",
+          "description": "Issues qualified certificates for website authentication per Article 45a",
+          "icon": "🌐"
         }
       ]
     },
@@ -14367,6 +14379,780 @@
       "appliesToAllProfiles": false
     },
     {
+      "id": "TSP-LEDGER-001",
+      "category": "governance",
+      "requirement": "Include comprehensive information in electronic ledger practice statement",
+      "explanation": "Qualified electronic ledger providers must document in their practice statement:\nfunctional/technical capabilities, data origin authentication, chronological ordering,\ncryptographic links, consensus mechanisms, and data integrity mechanisms.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-6.1-12"
+      },
+      "legalText": "The electronic ledger practice statement shall include at least the following information:\n— the functional and technical capabilities of the electronic ledger platform;\n— the specific data origin authentication mechanisms used;\n— the specific sequential chronological ordering mechanisms used;\n— where applicable, the cryptographic link used to ensure the sequence of data records;\n— where applicable, the consensus mechanism ensuring finality and integrity of data records;\n— the specific data integrity mechanisms used when providing the service.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-002",
+      "category": "governance",
+      "requirement": "Inform subscribers of terms and conditions before contract",
+      "explanation": "Qualified electronic ledger providers must inform subscribers and relying parties\nof precise terms and conditions in a clear, comprehensive manner before\nentering a contractual relationship.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-6.2-03"
+      },
+      "legalText": "Subscribers and parties relying on the trust service shall be informed, in a\nclear, comprehensive and easily accessible manner, in a publicly accessible\nspace and individually, of precise terms and conditions, including the items\nlisted above, before entering into a contractual relationship.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-003",
+      "category": "governance",
+      "requirement": "Notify supervisory body of service changes in advance",
+      "explanation": "Electronic ledger providers must notify their supervisory body at least one month\nbefore implementing any changes to the service, and at least three months before\nplanned cessation of service.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-6.3-04X"
+      },
+      "legalText": "The TSP shall establish procedures to notify any changes in the provision of\nthe trust service to the supervisory body, in accordance with business requirements\nand relevant laws and regulations. The TSP shall notify the supervisory body at least:\n— one month before implementing any change;\n— three months before the planned cessation of a trust service provision.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-004",
+      "category": "governance",
+      "requirement": "Ensure personnel have expert knowledge and qualifications",
+      "explanation": "TSP personnel in trusted roles must possess expert knowledge, experience and\nqualifications through formal training, credentials, actual experience, or a\ncombination thereof.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.2-04X"
+      },
+      "legalText": "TSP's personnel in trusted role shall be able to fulfil the requirement of\n\"expert knowledge, experience and qualifications\" through formal training and\ncredentials, or actual experience, or a combination of the two.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-005",
+      "category": "governance",
+      "requirement": "Provide annual security training updates to trusted personnel",
+      "explanation": "Personnel in trusted roles must receive regular updates (at least every 12 months)\non new threats and current security practices related to electronic ledger services.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.2-05X"
+      },
+      "legalText": "This shall include regular (at least every 12 months) updates on new threats\nand current security practices.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-006",
+      "category": "security",
+      "requirement": "Implement cryptographic key lifecycle security controls",
+      "explanation": "Appropriate security controls must be in place for managing cryptographic keys,\nalgorithms, and devices throughout their lifecycle, following cryptographic\nagility principles where appropriate.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-01X"
+      },
+      "legalText": "Appropriate security controls shall be in place for the management of any\ncryptographic keys, cryptographic algorithms, and cryptographic devices\nthroughout their lifecycle, following, where appropriate, a cryptographic\nagility approach.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-007",
+      "category": "security",
+      "requirement": "Use ENISA-approved cryptographic mechanisms",
+      "explanation": "Electronic ledger providers must use cryptographic techniques compliant with\nthe Agreed Cryptographic Mechanisms endorsed by the European Cybersecurity\nCertification Group and published by ENISA.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-02"
+      },
+      "legalText": "For the purpose of the provision of its trust services, the TSP shall select\nand use suitable cryptographic techniques compliant with the Agreed Cryptographic\nMechanisms endorsed by the European Cybersecurity Certification Group and\npublished by ENISA.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-008",
+      "category": "security",
+      "requirement": "Establish data origin using qualified signatures or seals",
+      "explanation": "Providers must establish the origin of data records using advanced electronic\nsignatures or seals based on qualified certificates, conforming to ETSI CAdES,\nXAdES, or JAdES standards.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-03"
+      },
+      "legalText": "Providers of qualified electronic ledgers shall establish the origin of data\nrecords in the electronic ledger. They shall use advanced electronic signatures\nbased on qualified certificates or advanced electronic seals based on qualified\ncertificates created by users, in accordance with ETSI EN 319 122-1 (CAdES),\nETSI EN 319 132-1 (XAdES), or ETSI TS 119 182-1 (JAdES).",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-009",
+      "category": "security",
+      "requirement": "Ensure sequential chronological ordering via cryptographic links",
+      "explanation": "Providers must ensure unique sequential chronological ordering of data records\nusing cryptographic links (hash lists/trees) with SHA-256/SHA3-256 or higher,\nor alternatively using qualified timestamps.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-04"
+      },
+      "legalText": "Providers of qualified electronic ledgers shall ensure the unique sequential\nchronological ordering of data records using cryptographic links, based in hash\nlists or hash trees, using SHA-256 or SHA3-256 or higher output hash size compliant\nwith ENISA Agreed Cryptographic Mechanisms. Alternatively, qualified timestamps\nmay be used for time recording.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-010",
+      "category": "security",
+      "requirement": "Ensure data record integrity and immediate change detectability",
+      "explanation": "Providers must ensure integrity of data records using qualified signatures/seals\nwith ENISA-compliant algorithms (SHA-256/SHA3-256), and ensure any subsequent\nchange to data is immediately detectable.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-05"
+      },
+      "legalText": "Providers of qualified electronic ledgers shall ensure the integrity of data\nrecords recorded in a qualified electronic ledger using advanced electronic\nsignatures/seals based on qualified certificates, with signature/seal formats\ncompliant with ENISA Agreed Cryptographic Mechanisms. Providers shall ensure\nthe immediate detectability of any subsequent change to data recorded.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-011",
+      "category": "security",
+      "requirement": "Use EAL 4+ certified secure cryptographic devices for signing keys",
+      "explanation": "Signing private keys must be held in secure cryptographic devices certified to\nEAL 4 or higher per ISO/IEC 15408 (Common Criteria), EUCC, or FIPS 140-3 Level 3\n(until Dec 2030).",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.5-06"
+      },
+      "legalText": "Where digital signature mechanisms are used, signing private keys of the provider\nshall be held and used within a secure cryptographic device certified to EAL 4+\nper: (a) ISO/IEC 15408 or CC:2022; (b) EUCC; or (c) until 31.12.2030, FIPS 140-3 Level 3.\nCertification shall be to a security target or protection profile meeting\nrequirements based on risk analysis.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-012",
+      "category": "security",
+      "requirement": "Perform quarterly vulnerability scans and annual penetration tests",
+      "explanation": "Electronic ledger providers must perform vulnerability scans at least quarterly\nand penetration tests at least annually. Firewalls must prevent all protocols\nnot required for TSP operation.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "REQ-7.8-14X/18X/21X"
+      },
+      "legalText": "REQ-7.8-14X: Vulnerability scan shall be performed at least once per quarter.\nREQ-7.8-18X: Penetration test shall be performed at least once per year.\nREQ-7.8-21X: Firewalls shall be configured to prevent all protocols and accesses\nnot required for the operation of the TSP.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-013",
+      "category": "governance",
+      "requirement": "Produce ledger reports in an automated manner",
+      "explanation": "Where the qualified trust service provider needs to produce a ledger report\n(structured presentation of verifiable information from the ledger), it must\nbe produced in an automated manner.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "Point 2"
+      },
+      "legalText": "Where the qualified trust service provider needs to produce a ledger report,\nit shall be produced in an automated manner.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-014",
+      "category": "governance",
+      "requirement": "Comply with ISO 23257 for distributed ledger architecture (if using DLT)",
+      "explanation": "Providers using distributed electronic ledger technologies must comply with\nISO 23257:2022 for reference architecture documentation, describing the DLT\nsystem, network, and nodes.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "Point 3(b)(1)"
+      },
+      "legalText": "For providers making use of distributed electronic ledger technologies:\nISO 23257:2022 Blockchain and distributed ledger technologies – Reference architecture,\nclause 9, providing a complete description of the distributed electronic ledger\ntechnology system, network and nodes.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-LEDGER-015",
+      "category": "governance",
+      "requirement": "Comply with ISO/TS 23635 for distributed ledger governance (if using DLT)",
+      "explanation": "Providers using distributed electronic ledger technologies must comply with\nISO/TS 23635:2022 for governance guidelines, with written and publicly accessible\npolicies and practices related to their governance structure.",
+      "legalBasis": {
+        "regulation": "2025/2531",
+        "article": "Annex",
+        "paragraph": "Point 3(b)(2)"
+      },
+      "legalText": "For providers making use of distributed electronic ledger technologies:\nISO/TS 23635:2022 Blockchain and distributed ledger technologies – Guidelines for\ngovernance, with respect to written and publicly accessible policies and practices\nrelated to the governance structure for the electronic ledger service they provide.",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-06",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "electronic_ledger"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-QWAC-001",
+      "category": "certification",
+      "requirement": "Issue QWACs according to ETSI EN 319 411-2 certificate policies",
+      "explanation": "QTSPs issuing qualified certificates for website authentication (QWACs)\nmust follow ETSI EN 319 411-2 using one of the approved certificate policies:\nQNCP-w-gen, QEVCP-w, or QNCP-w.",
+      "legalBasis": {
+        "regulation": "2025/2527",
+        "article": "Annex",
+        "paragraph": "Point 1"
+      },
+      "legalText": "The issuance and revocation of qualified certificates for website authentication\nshall be based on the following standards:\n— ETSI EN 319 411-2 V2.6.1 (2025-06); these certificates shall be issued in\naccordance with the QNCP-w-gen certificate policy, with the QEVCP-w certificate\npolicy, or with QNCP-w certificate policy, as specified in that standard; or\n— ETSI TS 119 495 V1.7.1 (2024-07).",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qwac_issuer"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-QWAC-002",
+      "category": "certification",
+      "requirement": "Use ETSI TS 119 495 for PSD2 website authentication certificates",
+      "explanation": "As an alternative to ETSI EN 319 411-2, QTSPs may issue QWACs for\npayment services (PSD2) using ETSI TS 119 495/119 496 standards for\nqualified certificates in the payment services industry.",
+      "legalBasis": {
+        "regulation": "2025/2527",
+        "article": "Annex",
+        "paragraph": "Point 1"
+      },
+      "legalText": "The issuance and revocation of qualified certificates for website authentication\nshall be based on the following standards:\n— ETSI EN 319 411-2 V2.6.1 (2025-06); or\n— ETSI TS 119 495 V1.7.1 (2024-07).",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qwac_issuer"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
+      "id": "TSP-QWAC-003",
+      "category": "certification",
+      "requirement": "Undergo conformity assessment per ETSI TS 119 411-5",
+      "explanation": "Before obtaining qualified status for QWAC issuance, trust service providers\nmust undergo conformity assessment based on ETSI TS 119 411-5.",
+      "legalBasis": {
+        "regulation": "2025/2527",
+        "article": "Annex",
+        "paragraph": "Point 2"
+      },
+      "legalText": "For the granting of qualified status to a trust service provider as regards\nits qualified certificates for website authentication, the conformity\nassessment shall be based on the following standard:\n— ETSI TS 119 411-5 V2.1.1 (2025-02).",
+      "legalSourceInfo": null,
+      "deadline": "2026-01-05",
+      "applicableRoles": [
+        "trust_service_provider"
+      ],
+      "applicableUseCases": [
+        "pid-online",
+        "pseudonym",
+        "esignature",
+        "payment-auth",
+        "open-bank-account",
+        "mdl",
+        "dtc",
+        "epc",
+        "vrc",
+        "disability-card",
+        "eprescription",
+        "ehic",
+        "public-warnings",
+        "age-verification",
+        "ticket-pass",
+        "edu-credentials",
+        "student-card",
+        "proximity-id",
+        "representation"
+      ],
+      "appliesToAllUseCases": true,
+      "profileFilter": [
+        "qwac_issuer"
+      ],
+      "appliesToAllProfiles": false
+    },
+    {
       "id": "WP-CRT-001",
       "category": "certification",
       "requirement": "Obtain conformity certification from designated CAB",
@@ -24347,7 +25133,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "pseudonym": [
         "TSP-CRT-001",
@@ -24434,7 +25238,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "esignature": [
         "TSP-CRT-001",
@@ -24521,7 +25343,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "payment-auth": [
         "TSP-CRT-001",
@@ -24608,7 +25448,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "open-bank-account": [
         "TSP-CRT-001",
@@ -24695,7 +25553,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "mdl": [
         "TSP-CRT-001",
@@ -24782,7 +25658,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "dtc": [
         "TSP-CRT-001",
@@ -24869,7 +25763,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "epc": [
         "TSP-CRT-001",
@@ -24956,7 +25868,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "vrc": [
         "TSP-CRT-001",
@@ -25043,7 +25973,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "disability-card": [
         "TSP-CRT-001",
@@ -25130,7 +26078,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "eprescription": [
         "TSP-CRT-001",
@@ -25217,7 +26183,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "ehic": [
         "TSP-CRT-001",
@@ -25304,7 +26288,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "public-warnings": [
         "TSP-CRT-001",
@@ -25391,7 +26393,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "age-verification": [
         "TSP-CRT-001",
@@ -25478,7 +26498,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "ticket-pass": [
         "TSP-CRT-001",
@@ -25565,7 +26603,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "edu-credentials": [
         "TSP-CRT-001",
@@ -25652,7 +26708,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "student-card": [
         "TSP-CRT-001",
@@ -25739,7 +26813,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "proximity-id": [
         "TSP-CRT-001",
@@ -25826,7 +26918,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ],
       "representation": [
         "TSP-CRT-001",
@@ -25913,7 +27023,25 @@
         "TSP-TRN-013",
         "TSP-TRN-014",
         "TSP-VER-001",
-        "TSP-VER-002"
+        "TSP-VER-002",
+        "TSP-LEDGER-001",
+        "TSP-LEDGER-002",
+        "TSP-LEDGER-003",
+        "TSP-LEDGER-004",
+        "TSP-LEDGER-005",
+        "TSP-LEDGER-006",
+        "TSP-LEDGER-007",
+        "TSP-LEDGER-008",
+        "TSP-LEDGER-009",
+        "TSP-LEDGER-010",
+        "TSP-LEDGER-011",
+        "TSP-LEDGER-012",
+        "TSP-LEDGER-013",
+        "TSP-LEDGER-014",
+        "TSP-LEDGER-015",
+        "TSP-QWAC-001",
+        "TSP-QWAC-002",
+        "TSP-QWAC-003"
       ]
     },
     "wallet_provider": {
@@ -28251,11 +29379,11 @@
     }
   },
   "stats": {
-    "totalRequirements": 470,
+    "totalRequirements": 488,
     "totalUseCases": 19,
     "totalCategories": 8,
     "totalRoles": 7,
-    "universalRequirements": 405,
+    "universalRequirements": 423,
     "useCaseSpecificRequirements": 65,
     "requirementsByRole": {
       "conformity_assessment_body": 36,
@@ -28263,7 +29391,7 @@
       "pid_provider": 30,
       "relying_party": 100,
       "supervisory_body": 42,
-      "trust_service_provider": 85,
+      "trust_service_provider": 103,
       "wallet_provider": 132
     }
   }

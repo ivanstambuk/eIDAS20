@@ -250,6 +250,12 @@ How the document relates to the eIDAS project:
 | `D` | Decision | 32025**D**2164 |
 | `L` | Directive | 32006**L**0123 |
 
+### Referenced Standards
+
+| Term | Description |
+|------|-------------|
+| **ETSI Standard** | European Telecommunications Standards Institute technical specification. Referenced by eIDAS implementing acts for trust service requirements. Common standards: ETSI EN 319 401 (general TSP requirements), ETSI EN 319 411-2 (certificate policies for web authentication), ETSI TS 119 461 (identity proofing). Standards with REQ-* identifiers in implementing act annexes should be extracted as RCA requirements. |
+
 ---
 
 ## Formex XML Structures

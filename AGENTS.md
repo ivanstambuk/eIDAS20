@@ -753,6 +753,27 @@ When importing EUR-Lex documents via `eurlex_formex.py`, the script handles mult
 
 **Reference:** See DEC-088 Addendum in DECISIONS.md and `USE_CASE_MAPPING_SUMMARY.md` in `config/rca/`.
 
+### ETSI Requirement Extraction Policy
+
+**When implementing act annexes contain ETSI-style requirements (REQ-*, USE-*, VAL-*, etc.), these should be extracted as RCA requirements with profile filters.**
+
+**Pattern:**
+1. **Identify REQ-* patterns** in implementing act annexes
+2. **Create new TSP profile** if requirements target a specific service type (e.g., `electronic_ledger`, `qwac_issuer`)
+3. **Extract each REQ-* as an RCA requirement** with:
+   - `profileFilter: [new_profile]`
+   - `legalBasis.regulation: "YYYY/NNNN"`
+   - `legalBasis.article: "Annex"`
+   - `legalBasis.paragraph: "REQ-X.X-XX"`
+
+**Examples applied:**
+- **2025/2531** (Electronic Ledgers) → 15 requirements → `electronic_ledger` profile
+- **2025/2527** (QWAC Standards) → 3 requirements → `qwac_issuer` profile
+
+**Exclusions:**
+- Notification/procedural annexes targeting Member States (e.g., 2025/1570 QSCD notification)
+- Pure informational content without REQ-* patterns
+
 ### ARF Integration Notes (Phase 6)
 
 **Topic Renumbering:** ARF v1.5 renumbered "Relying Party Intermediaries" from **Topic 45 → Topic 52**. All VCQ YAML files and `arf-config.yaml` use Topic 52.

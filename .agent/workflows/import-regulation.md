@@ -123,7 +123,23 @@ npm run build:all-content
 - Check terminology definitions extracted
 - Verify ToC structure
 
-### Step 4.5: Update document-config.json (for terminology sources)
+### Step 4.5: Check Annex for ETSI Requirements
+**⚠️ REQUIRED for implementing acts!**
+
+Check if the annex contains ETSI-style requirement patterns:
+```bash
+grep -E "REQ-|USE-|VAL-|OVR-" 02_implementing_acts/<dir>/*.md
+```
+
+If patterns found:
+1. Create a new TSP profile in `roles.yaml` (e.g., `electronic_ledger`, `qwac_issuer`)
+2. Extract each REQ-* as an RCA requirement in `trust-service-provider.yaml`
+3. Use `profileFilter: [new_profile]` to scope requirements
+4. Run `npm run validate:rca && npm run build:rca`
+
+See AGENTS.md → "ETSI Requirement Extraction Policy" for full details.
+
+### Step 4.6: Update document-config.json (for terminology sources)
 **⚠️ REQUIRED if the document contains Article 2/3 definitions!**
 
 Add entry to `docs-portal/scripts/document-config.json`:

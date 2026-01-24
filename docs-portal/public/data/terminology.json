@@ -1,12 +1,12 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T02:16:09.954Z",
+  "generated": "2026-01-24T02:29:51.824Z",
   "statistics": {
-    "totalTerms": 268,
-    "totalDefinitions": 404,
+    "totalTerms": 283,
+    "totalDefinitions": 419,
     "sources": {
       "regulations": 243,
-      "implementingActs": 128,
+      "implementingActs": 143,
       "supplementary": 33
     },
     "termsWithRoles": 129,
@@ -185,6 +185,8 @@
       "conformity-assessment-report",
       "conformity-assessment-scheme",
       "conformity-self-assessment",
+      "consensus",
+      "consensus-mechanism",
       "content-delivery-network",
       "controller",
       "creator-of-a-seal",
@@ -196,6 +198,7 @@
       "crowdfunding-service-provider",
       "crypto-asset-service-provider",
       "cryptographic-binding",
+      "cryptographic-link",
       "cyber-threat",
       "cyber-attack",
       "cybersecurity"
@@ -209,6 +212,10 @@
       "digital-service",
       "digital-service-provider",
       "digital-signature",
+      "distributed-electronic-ledger",
+      "distributed-electronic-ledger-network",
+      "distributed-electronic-ledger-node",
+      "distributed-electronic-ledger-system",
       "dns-service-provider",
       "draft-standard"
     ],
@@ -247,10 +254,12 @@
     ],
     "F": [
       "filing-system",
+      "finality",
       "flexible-scope-accreditation"
     ],
     "G": [
       "genetic-data",
+      "governing-rules",
       "group",
       "group-of-undertakings"
     ],
@@ -294,6 +303,7 @@
     "L": [
       "large-scale-cybersecurity-incident",
       "lead-overseer",
+      "ledger-report",
       "legacy-ict-system",
       "list-of-trusted-lists",
       "location-data",
@@ -347,6 +357,7 @@
       "product",
       "profiling",
       "provider-of-person-identification-data",
+      "provider-of-qualified-electronic-ledger",
       "provider-of-wallet-relying-party-access-certificates",
       "provider-of-wallet-relying-party-registration-certificates",
       "pseudonymisation",
@@ -362,6 +373,7 @@
       "qualified-certificate-for-electronic-seal",
       "qualified-certificate-for-electronic-signature",
       "qualified-certificate-for-website-authentication",
+      "qualified-distributed-electronic-ledger",
       "qualified-electronic-archiving-service",
       "qualified-electronic-attestation-of-attributes",
       "qualified-electronic-ledger",
@@ -422,6 +434,7 @@
       "trade-repository",
       "trading-venue",
       "traffic-data",
+      "transaction",
       "trust-anchor",
       "trust-service",
       "trust-service-provider",
@@ -433,6 +446,7 @@
       "user"
     ],
     "V": [
+      "validated-transaction",
       "validation",
       "validation-data",
       "value-added-service",
@@ -450,7 +464,8 @@
       "wallet-user",
       "wallet-relying-party",
       "wallet-relying-party-access-certificate",
-      "wallet-relying-party-registration-certificate"
+      "wallet-relying-party-registration-certificate",
+      "work-process"
     ],
     "X": [
       "xades"
@@ -2351,6 +2366,86 @@
       "domains": []
     },
     {
+      "id": "consensus",
+      "term": "consensus",
+      "sources": [
+        {
+          "definition": "an agreement among distributed electronic ledger nodes on the validity of transactions and the maintenance of a consistent and ordered set of validated transactions across the distributed electronic ledger system",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-f",
+          "articleNumber": "N/A(f)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-f",
+      "definitionGroups": [
+        {
+          "definition": "an agreement among distributed electronic ledger nodes on the validity of transactions and the maintenance of a consistent and ordered set of validated transactions across the distributed electronic ledger system",
+          "sources": [
+            {
+              "definition": "an agreement among distributed electronic ledger nodes on the validity of transactions and the maintenance of a consistent and ordered set of validated transactions across the distributed electronic ledger system",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-f",
+              "articleNumber": "N/A(f)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "consensus-mechanism",
+      "term": "consensus mechanism",
+      "sources": [
+        {
+          "definition": "the set of rules and procedures by which consensus is reached",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-g",
+          "articleNumber": "N/A(g)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-g",
+      "definitionGroups": [
+        {
+          "definition": "the set of rules and procedures by which consensus is reached",
+          "sources": [
+            {
+              "definition": "the set of rules and procedures by which consensus is reached",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-g",
+              "articleNumber": "N/A(g)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "content-delivery-network",
       "term": "content delivery network",
       "sources": [
@@ -2982,6 +3077,46 @@
       ]
     },
     {
+      "id": "cryptographic-link",
+      "term": "cryptographic link",
+      "sources": [
+        {
+          "definition": "a reference to data that is established using suitable cryptographic techniques to ensure the integrity, authenticity, or traceability of the referenced data and the correct sequence of data records",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-l",
+          "articleNumber": "N/A(l)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-l",
+      "definitionGroups": [
+        {
+          "definition": "a reference to data that is established using suitable cryptographic techniques to ensure the integrity, authenticity, or traceability of the referenced data and the correct sequence of data records",
+          "sources": [
+            {
+              "definition": "a reference to data that is established using suitable cryptographic techniques to ensure the integrity, authenticity, or traceability of the referenced data and the correct sequence of data records",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-l",
+              "articleNumber": "N/A(l)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "cyber-threat",
       "term": "cyber threat",
       "sources": [
@@ -3513,6 +3648,166 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "distributed-electronic-ledger",
+      "term": "distributed electronic ledger",
+      "sources": [
+        {
+          "definition": "an electronic ledger that is shared across a set of distributed electronic ledger nodes and which is synchronized between the distributed electronic ledger nodes using a consensus mechanism",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-b",
+          "articleNumber": "N/A(b)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-b",
+      "definitionGroups": [
+        {
+          "definition": "an electronic ledger that is shared across a set of distributed electronic ledger nodes and which is synchronized between the distributed electronic ledger nodes using a consensus mechanism",
+          "sources": [
+            {
+              "definition": "an electronic ledger that is shared across a set of distributed electronic ledger nodes and which is synchronized between the distributed electronic ledger nodes using a consensus mechanism",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-b",
+              "articleNumber": "N/A(b)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "distributed-electronic-ledger-network",
+      "term": "distributed electronic ledger network",
+      "sources": [
+        {
+          "definition": "a network of distributed electronic ledger nodes which makes up a distributed electronic ledger system",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-d",
+          "articleNumber": "N/A(d)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-d",
+      "definitionGroups": [
+        {
+          "definition": "a network of distributed electronic ledger nodes which makes up a distributed electronic ledger system",
+          "sources": [
+            {
+              "definition": "a network of distributed electronic ledger nodes which makes up a distributed electronic ledger system",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-d",
+              "articleNumber": "N/A(d)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "distributed-electronic-ledger-node",
+      "term": "distributed electronic ledger node",
+      "sources": [
+        {
+          "definition": "a device or process that is part of a distributed electronic ledger network and stores a complete or partial copy of the data records of an electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-c",
+          "articleNumber": "N/A(c)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-c",
+      "definitionGroups": [
+        {
+          "definition": "a device or process that is part of a distributed electronic ledger network and stores a complete or partial copy of the data records of an electronic ledger",
+          "sources": [
+            {
+              "definition": "a device or process that is part of a distributed electronic ledger network and stores a complete or partial copy of the data records of an electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-c",
+              "articleNumber": "N/A(c)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "distributed-electronic-ledger-system",
+      "term": "distributed electronic ledger system",
+      "sources": [
+        {
+          "definition": "a system that implements a distributed electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-e",
+          "articleNumber": "N/A(e)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-e",
+      "definitionGroups": [
+        {
+          "definition": "a system that implements a distributed electronic ledger",
+          "sources": [
+            {
+              "definition": "a system that implements a distributed electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-e",
+              "articleNumber": "N/A(e)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "dns-service-provider",
@@ -5107,6 +5402,46 @@
       "domains": []
     },
     {
+      "id": "finality",
+      "term": "finality",
+      "sources": [
+        {
+          "definition": "the state of a data record of an electronic ledger wherein it has become irreversible and cannot be modified or removed",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-a",
+          "articleNumber": "N/A(a)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-a",
+      "definitionGroups": [
+        {
+          "definition": "the state of a data record of an electronic ledger wherein it has become irreversible and cannot be modified or removed",
+          "sources": [
+            {
+              "definition": "the state of a data record of an electronic ledger wherein it has become irreversible and cannot be modified or removed",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-a",
+              "articleNumber": "N/A(a)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "flexible-scope-accreditation",
       "term": "flexible scope accreditation",
       "sources": [
@@ -5182,6 +5517,46 @@
               "articleId": "article-4-para-13",
               "articleNumber": "4(13)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "governing-rules",
+      "term": "governing rules",
+      "sources": [
+        {
+          "definition": "the set of protocols, policies, and mechanisms that dictates how the distributed electronic ledger system operates, how data is validated and added to an electronic ledger, and how participants interact",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-h",
+          "articleNumber": "N/A(h)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-h",
+      "definitionGroups": [
+        {
+          "definition": "the set of protocols, policies, and mechanisms that dictates how the distributed electronic ledger system operates, how data is validated and added to an electronic ledger, and how participants interact",
+          "sources": [
+            {
+              "definition": "the set of protocols, policies, and mechanisms that dictates how the distributed electronic ledger system operates, how data is validated and added to an electronic ledger, and how participants interact",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-h",
+              "articleNumber": "N/A(h)",
+              "displayOrder": 2
             }
           ],
           "isVariant": false
@@ -6795,6 +7170,46 @@
               "articleId": "article-3-para-61",
               "articleNumber": "3(61)",
               "displayOrder": 3
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "ledger-report",
+      "term": "ledger report",
+      "sources": [
+        {
+          "definition": "a structured presentation of verifiable information extracted from the data records of an electronic ledger, and providing insights into specific activities, states, or compliance with predefined rules",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-m",
+          "articleNumber": "N/A(m)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-m",
+      "definitionGroups": [
+        {
+          "definition": "a structured presentation of verifiable information extracted from the data records of an electronic ledger, and providing insights into specific activities, states, or compliance with predefined rules",
+          "sources": [
+            {
+              "definition": "a structured presentation of verifiable information extracted from the data records of an electronic ledger, and providing insights into specific activities, states, or compliance with predefined rules",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-m",
+              "articleNumber": "N/A(m)",
+              "displayOrder": 2
             }
           ],
           "isVariant": false
@@ -8951,6 +9366,46 @@
       ]
     },
     {
+      "id": "provider-of-qualified-electronic-ledger",
+      "term": "provider of qualified electronic ledger",
+      "sources": [
+        {
+          "definition": "a qualified trust service provider that provides a qualified trust service consisting in the recording of data in a qualified electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-n",
+          "articleNumber": "N/A(n)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-n",
+      "definitionGroups": [
+        {
+          "definition": "a qualified trust service provider that provides a qualified trust service consisting in the recording of data in a qualified electronic ledger",
+          "sources": [
+            {
+              "definition": "a qualified trust service provider that provides a qualified trust service consisting in the recording of data in a qualified electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-n",
+              "articleNumber": "N/A(n)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "provider-of-wallet-relying-party-access-certificates",
       "term": "provider of wallet-relying party access certificates",
       "sources": [
@@ -9612,6 +10067,46 @@
         "cryptography",
         "attestation"
       ]
+    },
+    {
+      "id": "qualified-distributed-electronic-ledger",
+      "term": "qualified distributed electronic ledger",
+      "sources": [
+        {
+          "definition": "a distributed electronic ledger that meets the requirements of a qualified electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-o",
+          "articleNumber": "N/A(o)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-o",
+      "definitionGroups": [
+        {
+          "definition": "a distributed electronic ledger that meets the requirements of a qualified electronic ledger",
+          "sources": [
+            {
+              "definition": "a distributed electronic ledger that meets the requirements of a qualified electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-o",
+              "articleNumber": "N/A(o)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "qualified-electronic-archiving-service",
@@ -12399,6 +12894,46 @@
       "domains": []
     },
     {
+      "id": "transaction",
+      "term": "transaction",
+      "sources": [
+        {
+          "definition": "the smallest unit of a work process within an electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-i",
+          "articleNumber": "N/A(i)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-i",
+      "definitionGroups": [
+        {
+          "definition": "the smallest unit of a work process within an electronic ledger",
+          "sources": [
+            {
+              "definition": "the smallest unit of a work process within an electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-i",
+              "articleNumber": "N/A(i)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "trust-anchor",
       "term": "Trust Anchor",
       "sources": [
@@ -12826,6 +13361,46 @@
         "identity",
         "wallet_ecosystem"
       ]
+    },
+    {
+      "id": "validated-transaction",
+      "term": "validated transaction",
+      "sources": [
+        {
+          "definition": "a transaction for which the required integrity, authenticity, and protocol-specific conditions have been checked in accordance with the governing rules of the distributed electronic ledger system",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-k",
+          "articleNumber": "N/A(k)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-k",
+      "definitionGroups": [
+        {
+          "definition": "a transaction for which the required integrity, authenticity, and protocol-specific conditions have been checked in accordance with the governing rules of the distributed electronic ledger system",
+          "sources": [
+            {
+              "definition": "a transaction for which the required integrity, authenticity, and protocol-specific conditions have been checked in accordance with the governing rules of the distributed electronic ledger system",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-k",
+              "articleNumber": "N/A(k)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "validation",
@@ -15101,6 +15676,46 @@
         "wallet_ecosystem",
         "attestation"
       ]
+    },
+    {
+      "id": "work-process",
+      "term": "work process",
+      "sources": [
+        {
+          "definition": "one or more sequences of actions required to produce an outcome that complies with governing rules of an electronic ledger",
+          "documentId": "2025-2531",
+          "documentTitle": "Electronic Ledgers",
+          "documentCategory": "implementing-act",
+          "documentType": "implementing-act",
+          "celex": "32025R2531",
+          "articleId": "article-N/A-para-j",
+          "articleNumber": "N/A(j)",
+          "displayOrder": 2
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-N/A-para-j",
+      "definitionGroups": [
+        {
+          "definition": "one or more sequences of actions required to produce an outcome that complies with governing rules of an electronic ledger",
+          "sources": [
+            {
+              "definition": "one or more sequences of actions required to produce an outcome that complies with governing rules of an electronic ledger",
+              "documentId": "2025-2531",
+              "documentTitle": "Electronic Ledgers",
+              "documentCategory": "implementing-act",
+              "documentType": "implementing-act",
+              "celex": "32025R2531",
+              "articleId": "article-N/A-para-j",
+              "articleNumber": "N/A(j)",
+              "displayOrder": 2
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "xades",
