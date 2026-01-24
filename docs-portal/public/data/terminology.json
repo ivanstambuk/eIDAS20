@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T17:35:09.652Z",
+  "generated": "2026-01-24T17:36:22.777Z",
   "statistics": {
     "totalTerms": 348,
     "totalDefinitions": 485,
@@ -17530,6 +17530,9 @@
       ],
       "domains": [
         "wallet_ecosystem"
+      ],
+      "aliases": [
+        "WU"
       ]
     },
     {

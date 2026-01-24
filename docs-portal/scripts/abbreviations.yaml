@@ -94,3 +94,8 @@ SCA: strong-customer-authentication
 # SCA (Strong Customer Authentication) is PSD2-specific terminology.
 # See TERMINOLOGY.md for distinction between SUA (eIDAS) and SCA (PSD2).
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# Wallet Architecture
+# ═══════════════════════════════════════════════════════════════════════════════
+WU: wallet-unit
+WUA: wallet-unit-attestation
