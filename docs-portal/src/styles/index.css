@@ -949,51 +949,6 @@ a.btn-primary:hover {
   background: var(--accent-primary-dim);
 }
 
-/* --- Search Highlight (from search results) --- */
-/* Applied when navigating from search results to highlight matching text */
-mark.search-highlight {
-  background: linear-gradient(to bottom, 
-    rgba(251, 191, 36, 0.3) 0%, 
-    rgba(251, 191, 36, 0.5) 100%);
-  color: inherit;
-  padding: 0.05em 0.15em;
-  border-radius: 2px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  /* Initial fade-in animation */
-  animation: searchHighlightPulse 2s ease-out;
-}
-
-/* First match gets extra emphasis */
-mark.search-highlight:first-of-type {
-  background: linear-gradient(to bottom, 
-    rgba(251, 191, 36, 0.5) 0%, 
-    rgba(251, 191, 36, 0.7) 100%);
-  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
-}
-
-@keyframes searchHighlightPulse {
-  0% {
-    background: rgba(251, 191, 36, 0.8);
-    box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
-  }
-  50% {
-    background: rgba(251, 191, 36, 0.6);
-    box-shadow: 0 0 4px rgba(251, 191, 36, 0.4);
-  }
-  100% {
-    background: rgba(251, 191, 36, 0.3);
-    box-shadow: none;
-  }
-}
-
-/* Print: don't show search highlights */
-@media print {
-  mark.search-highlight {
-    background: none !important;
-    box-shadow: none !important;
-  }
-}
 
 /* ============================================
    8. AI CHAT WIDGET

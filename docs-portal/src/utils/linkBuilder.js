@@ -57,7 +57,6 @@ const DOC_TYPE_TO_PATH = {
  * @param {string} slug - Document slug (e.g., '2014-910', '2024-1183')
  * @param {Object} [options] - Link options
  * @param {string} [options.section] - Section ID to scroll to (e.g., 'article-5a')
- * @param {string} [options.highlight] - Search term to highlight on page
  * @param {string} [options.type='regulation'] - Document type for correct path
  * @returns {string} Relative URL for React Router <Link to={...}>
  * 
@@ -68,19 +67,15 @@ const DOC_TYPE_TO_PATH = {
  * buildDocumentLink('2014-910', { section: 'article-5a' })
  * // => '/regulation/2014-910?section=article-5a'
  * 
- * buildDocumentLink('2014-910', { section: 'article-5a', highlight: 'wallet' })
- * // => '/regulation/2014-910?section=article-5a&highlight=wallet'
- * 
  * buildDocumentLink('2024-1183', { type: 'implementing-act' })
  * // => '/implementing-acts/2024-1183'
  */
 export function buildDocumentLink(slug, options = {}) {
-    const { section, highlight, type = 'regulation' } = options;
+    const { section, type = 'regulation' } = options;
     const basePath = DOC_TYPE_TO_PATH[type] || 'regulation';
 
     const params = new URLSearchParams();
     if (section) params.set('section', section);
-    if (highlight) params.set('highlight', highlight);
 
     const queryString = params.toString();
     return `/${basePath}/${slug}${queryString ? `?${queryString}` : ''}`;
@@ -310,7 +305,7 @@ export function buildSectionId(article, paragraph = null) {
  * @param {string} slug - Document slug
  * @param {string} article - Article reference
  * @param {string} [paragraph] - Paragraph number
- * @param {Object} [options] - Additional options (type, highlight)
+ * @param {Object} [options] - Additional options (type)
  * @returns {string} Complete relative URL
  * 
  * @example

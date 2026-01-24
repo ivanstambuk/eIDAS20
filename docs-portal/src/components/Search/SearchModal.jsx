@@ -91,10 +91,8 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
 
         // Handle regulations and implementing acts - use centralized link builder
         const section = result.section ? buildSectionId(result.section) : '';
-        const highlight = query?.trim() || '';
         return buildDocumentLink(result.slug, {
             section: section || undefined,
-            highlight: highlight || undefined,
             type: result.type
         });
     };
