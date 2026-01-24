@@ -578,3 +578,47 @@ terms:
       every 2 years per Article 30).
     source: eIDAS Article 30, general EU certification practice
     note: Required when certifications expire or significant changes occur
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Fixed Legal Formulas (Compound Phrases)
+  # Common EU legislative compound phrases that appear as fixed units (DEC-247)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  - term: natural or legal person
+    definition: >-
+      A fixed legal phrase indicating that a provision applies to any person, 
+      whether an individual human being (natural person) or an entity with 
+      legal personality such as a company or organization (legal person). 
+      This formulation ensures universal applicability of rights, obligations, 
+      or eligibility criteria to both individuals and organizations.
+    source: EU legal drafting convention
+    note: 131 occurrences; fundamental EU legislative formula
+
+  - term: Union or national law
+    definition: >-
+      A fixed legal phrase indicating that provisions from either EU-level 
+      legislation (Union law) or Member State domestic legislation (national 
+      law) may apply to a given situation. This formulation acknowledges the 
+      dual-layer legal structure of the EU, where both supranational and 
+      national rules may govern the same subject matter.
+    source: EU legal drafting convention
+    note: 50 occurrences; signals dual legal source applicability
+
+  - term: public or private
+    definition: >-
+      A fixed legal phrase indicating that a provision applies regardless of 
+      whether the entity or sector involved is part of government/public 
+      administration (public) or commercial/non-governmental (private). 
+      Used to ensure equal treatment and applicability across all sectors.
+    source: EU legal drafting convention
+    note: 19 occurrences; sector-neutral applicability formula
+
+  - term: directly or indirectly
+    definition: >-
+      A fixed legal phrase extending the scope of a provision to cover both 
+      immediate effects (direct) and consequential or mediated effects 
+      (indirect). In regulatory contexts, this ensures that obligations or 
+      prohibitions cannot be circumvented through intermediaries, subsidiaries, 
+      or layered arrangements.
+    source: EU legal drafting convention
+    note: 12 occurrences; prevents circumvention through indirection

@@ -2318,3 +2318,36 @@ After this change, during local development:
 2. Normal refresh (F5) shows new terms — no hard refresh needed
 
 
+
+---
+
+## DEC-247: Fixed Legal Formulas as Compound Dictionary Entries
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+
+**Context:**  
+EU legislation uses fixed compound phrases like "natural or legal person" and "Union or national law" extensively. These phrases:
+- Appear frequently (131 and 50 occurrences respectively)
+- Have distinct legal meaning beyond their components
+- Cannot be matched by adding base terms separately (e.g., "natural person" doesn't match "natural" in "natural or legal persons")
+
+Options considered:
+1. **Partial/fuzzy matching** - Make "natural" link to "natural person" when in context
+2. **Compound phrase entries** - Add the full phrase as its own dictionary entry
+
+**Decision:** Add common compound phrases as separate dictionary entries.
+
+**Rationale:**
+1. **Semantic fidelity** - Compound phrases have distinct meaning (e.g., "applies to both humans and entities")
+2. **Clean UX** - Single hover explains the complete phrase vs. multiple adjacent links
+3. **No false positives** - Avoids "natural resources" → "natural person" mismatches
+4. **Low maintenance** - These are fixed legal formulae that don't change
+
+**Compound phrases added:**
+- `natural or legal person` (131 occurrences)
+- `Union or national law` (50 occurrences)
+- `public or private` (19 occurrences)
+- `directly or indirectly` (12 occurrences)
+
+**When to reconsider:** If new common compound patterns emerge, add them manually to the custom dictionary.

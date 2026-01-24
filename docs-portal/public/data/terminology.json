@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T11:48:49.788Z",
+  "generated": "2026-01-24T11:54:38.709Z",
   "statistics": {
-    "totalTerms": 333,
-    "totalDefinitions": 470,
+    "totalTerms": 337,
+    "totalDefinitions": 474,
     "sources": {
       "regulations": 243,
       "implementingActs": 143,
@@ -224,6 +224,7 @@
       "digital-service",
       "digital-service-provider",
       "digital-signature",
+      "directly-or-indirectly",
       "distributed-electronic-ledger",
       "distributed-electronic-ledger-network",
       "distributed-electronic-ledger-node",
@@ -359,6 +360,7 @@
       "national-standard",
       "national-standardisation-body",
       "national-strategy-on-the-security-of-network-and-information-systems",
+      "natural-or-legal-person",
       "natural-person",
       "near-miss",
       "network-and-information-system",
@@ -400,6 +402,7 @@
       "public-authority",
       "public-electronic-communications-network",
       "public-key-infrastructure",
+      "public-or-private",
       "public-sector-body",
       "pursuant-to"
     ],
@@ -488,6 +491,7 @@
     ],
     "U": [
       "union-law",
+      "union-or-national-law",
       "unlinkability",
       "user"
     ],
@@ -4188,6 +4192,46 @@
       "domains": [
         "cryptography"
       ]
+    },
+    {
+      "id": "directly-or-indirectly",
+      "term": "directly or indirectly",
+      "sources": [
+        {
+          "definition": "A fixed legal phrase extending the scope of a provision to cover both immediate effects (direct) and consequential or mediated effects (indirect). In regulatory contexts, this ensures that obligations or prohibitions cannot be circumvented through intermediaries, subsidiaries, or layered arrangements.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal drafting convention",
+          "articleNumber": "EU legal drafting convention",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal drafting convention",
+      "definitionGroups": [
+        {
+          "definition": "A fixed legal phrase extending the scope of a provision to cover both immediate effects (direct) and consequential or mediated effects (indirect). In regulatory contexts, this ensures that obligations or prohibitions cannot be circumvented through intermediaries, subsidiaries, or layered arrangements.",
+          "sources": [
+            {
+              "definition": "A fixed legal phrase extending the scope of a provision to cover both immediate effects (direct) and consequential or mediated effects (indirect). In regulatory contexts, this ensures that obligations or prohibitions cannot be circumvented through intermediaries, subsidiaries, or layered arrangements.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal drafting convention",
+              "articleNumber": "EU legal drafting convention",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "distributed-electronic-ledger",
@@ -9323,6 +9367,46 @@
       "domains": []
     },
     {
+      "id": "natural-or-legal-person",
+      "term": "natural or legal person",
+      "sources": [
+        {
+          "definition": "A fixed legal phrase indicating that a provision applies to any person, whether an individual human being (natural person) or an entity with legal personality such as a company or organization (legal person). This formulation ensures universal applicability of rights, obligations, or eligibility criteria to both individuals and organizations.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal drafting convention",
+          "articleNumber": "EU legal drafting convention",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal drafting convention",
+      "definitionGroups": [
+        {
+          "definition": "A fixed legal phrase indicating that a provision applies to any person, whether an individual human being (natural person) or an entity with legal personality such as a company or organization (legal person). This formulation ensures universal applicability of rights, obligations, or eligibility criteria to both individuals and organizations.",
+          "sources": [
+            {
+              "definition": "A fixed legal phrase indicating that a provision applies to any person, whether an individual human being (natural person) or an entity with legal personality such as a company or organization (legal person). This formulation ensures universal applicability of rights, obligations, or eligibility criteria to both individuals and organizations.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal drafting convention",
+              "articleNumber": "EU legal drafting convention",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "natural-person",
       "term": "natural person",
       "sources": [
@@ -11173,6 +11257,46 @@
       "aliases": [
         "PKI"
       ]
+    },
+    {
+      "id": "public-or-private",
+      "term": "public or private",
+      "sources": [
+        {
+          "definition": "A fixed legal phrase indicating that a provision applies regardless of whether the entity or sector involved is part of government/public administration (public) or commercial/non-governmental (private). Used to ensure equal treatment and applicability across all sectors.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal drafting convention",
+          "articleNumber": "EU legal drafting convention",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal drafting convention",
+      "definitionGroups": [
+        {
+          "definition": "A fixed legal phrase indicating that a provision applies regardless of whether the entity or sector involved is part of government/public administration (public) or commercial/non-governmental (private). Used to ensure equal treatment and applicability across all sectors.",
+          "sources": [
+            {
+              "definition": "A fixed legal phrase indicating that a provision applies regardless of whether the entity or sector involved is part of government/public administration (public) or commercial/non-governmental (private). Used to ensure equal treatment and applicability across all sectors.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal drafting convention",
+              "articleNumber": "EU legal drafting convention",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "public-sector-body",
@@ -15091,6 +15215,46 @@
               "celex": null,
               "articleId": "article-CJEU jurisprudence (Costa v. ENEL), EU Treaties",
               "articleNumber": "CJEU jurisprudence (Costa v. ENEL), EU Treaties",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "union-or-national-law",
+      "term": "Union or national law",
+      "sources": [
+        {
+          "definition": "A fixed legal phrase indicating that provisions from either EU-level legislation (Union law) or Member State domestic legislation (national law) may apply to a given situation. This formulation acknowledges the dual-layer legal structure of the EU, where both supranational and national rules may govern the same subject matter.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-EU legal drafting convention",
+          "articleNumber": "EU legal drafting convention",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-EU legal drafting convention",
+      "definitionGroups": [
+        {
+          "definition": "A fixed legal phrase indicating that provisions from either EU-level legislation (Union law) or Member State domestic legislation (national law) may apply to a given situation. This formulation acknowledges the dual-layer legal structure of the EU, where both supranational and national rules may govern the same subject matter.",
+          "sources": [
+            {
+              "definition": "A fixed legal phrase indicating that provisions from either EU-level legislation (Union law) or Member State domestic legislation (national law) may apply to a given situation. This formulation acknowledges the dual-layer legal structure of the EU, where both supranational and national rules may govern the same subject matter.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-EU legal drafting convention",
+              "articleNumber": "EU legal drafting convention",
               "displayOrder": 5
             }
           ],
