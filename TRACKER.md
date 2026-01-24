@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-24 03:52 CET |
-| **Version** | V3.9.5 |
-| **Portal Stats** | 41 docs, 380K words, 283 terms, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1102 total reqs |
+| **Last Updated** | 2026-01-24 15:50 CET |
+| **Version** | V3.9.6 |
+| **Portal Stats** | 44 docs, 391K words, 338 terms, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1102 total reqs |
 | **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 
@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-24 15:30 | **Feat: Policy Document Imports** — Added 3 policy documents: Digital Future Communication (COM(2020)67, 4.9K words), 2030 Digital Compass (COM(2021)118, 3.7K words + Annex), Digital Decade Decision (2022/2481, 2.7K words). Completes policy context chain for EUDIW. |
 | 2026-01-24 10:48 | **Revert: Removed Search Highlight Feature** — Removed the `?highlight=` search highlighting feature (added earlier this session) per user request. Reverted ~250 lines of JS, ~45 lines of CSS. Link builder now simpler. |
 | 2026-01-24 10:20 | **Refactor: Centralized Link Builder (DEC-226)** — Created `linkBuilder.js` as single source of truth for URL generation. Refactored 8 files. Fixed Home page Quick Links using broken `#article-*` format. Added mandatory usage documentation to AGENTS.md. |
 | 2026-01-24 03:52 | **Retro: Annex Fix Session** — Added `validate-annex-content.js` (empty annex detection), ETSI REQ-* extraction policy in AGENTS.md, ETSI Standard in TERMINOLOGY.md, updated /import-regulation workflow with Step 4.5 for ETSI check. |

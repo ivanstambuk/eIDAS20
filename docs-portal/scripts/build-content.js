@@ -1178,6 +1178,7 @@ function validateAnnexes(regulations) {
     // TODO: Run batch_fix_annexes.py to download complete versions with annexes  
     // Once fixed, remove slugs from this list
     const KNOWN_MISSING_ANNEXES = new Set([
+        '2022-2481', // Annex embedded in main text (multi-country project areas)
         '2024-1183', '2024-2977', '2024-2982', '2025-0847', '2025-0848', '2025-0849',
         '2025-1566', '2025-1567', '2025-1570', '2025-1929', '2025-1942', '2025-1943',
         '2025-1944', '2025-1946', '2025-2160', '2025-2164', '2025-2527', '2025-2530',
