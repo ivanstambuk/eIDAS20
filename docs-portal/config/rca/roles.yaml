@@ -90,6 +90,11 @@ roles:
         label: "Non-Qualified TSP"
         description: "Trust service provider with baseline requirements only"
         icon: "📋"
+      - id: electronic_ledger
+        label: "Qualified Electronic Ledger"
+        description: "Provider of qualified electronic ledger services per Article 45l (blockchain/DLT)"
+        icon: "⛓️"
+
 
   conformity_assessment_body:
     label: "Conformity Assessment Body"

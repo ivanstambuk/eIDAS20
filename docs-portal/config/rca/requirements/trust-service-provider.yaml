@@ -1859,3 +1859,340 @@ requirements:
     roles:
       - trust_service_provider
     useCases: all
+  # ============================================================================
+  # ELECTRONIC LEDGER REQUIREMENTS (2025/2531)
+  # Per Article 45l - Qualified trust service for recording data in a qualified electronic ledger
+  # Annex contains ETSI EN 319 401 adaptations for DLT/blockchain-based trust services
+  # ============================================================================
+  - id: TSP-LEDGER-001
+    category: governance
+    requirement: Include comprehensive information in electronic ledger practice statement
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Qualified electronic ledger providers must document in their practice statement:
+      functional/technical capabilities, data origin authentication, chronological ordering,
+      cryptographic links, consensus mechanisms, and data integrity mechanisms.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-6.1-12"
+    legalText: |
+      The electronic ledger practice statement shall include at least the following information:
+      — the functional and technical capabilities of the electronic ledger platform;
+      — the specific data origin authentication mechanisms used;
+      — the specific sequential chronological ordering mechanisms used;
+      — where applicable, the cryptographic link used to ensure the sequence of data records;
+      — where applicable, the consensus mechanism ensuring finality and integrity of data records;
+      — the specific data integrity mechanisms used when providing the service.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-002
+    category: governance
+    requirement: Inform subscribers of terms and conditions before contract
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Qualified electronic ledger providers must inform subscribers and relying parties
+      of precise terms and conditions in a clear, comprehensive manner before
+      entering a contractual relationship.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-6.2-03"
+    legalText: |
+      Subscribers and parties relying on the trust service shall be informed, in a
+      clear, comprehensive and easily accessible manner, in a publicly accessible
+      space and individually, of precise terms and conditions, including the items
+      listed above, before entering into a contractual relationship.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-003
+    category: governance
+    requirement: Notify supervisory body of service changes in advance
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Electronic ledger providers must notify their supervisory body at least one month
+      before implementing any changes to the service, and at least three months before
+      planned cessation of service.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-6.3-04X"
+    legalText: |
+      The TSP shall establish procedures to notify any changes in the provision of
+      the trust service to the supervisory body, in accordance with business requirements
+      and relevant laws and regulations. The TSP shall notify the supervisory body at least:
+      — one month before implementing any change;
+      — three months before the planned cessation of a trust service provision.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-004
+    category: governance
+    requirement: Ensure personnel have expert knowledge and qualifications
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      TSP personnel in trusted roles must possess expert knowledge, experience and
+      qualifications through formal training, credentials, actual experience, or a
+      combination thereof.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.2-04X"
+    legalText: |
+      TSP's personnel in trusted role shall be able to fulfil the requirement of
+      "expert knowledge, experience and qualifications" through formal training and
+      credentials, or actual experience, or a combination of the two.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-005
+    category: governance
+    requirement: Provide annual security training updates to trusted personnel
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Personnel in trusted roles must receive regular updates (at least every 12 months)
+      on new threats and current security practices related to electronic ledger services.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.2-05X"
+    legalText: |
+      This shall include regular (at least every 12 months) updates on new threats
+      and current security practices.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-006
+    category: security
+    requirement: Implement cryptographic key lifecycle security controls
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Appropriate security controls must be in place for managing cryptographic keys,
+      algorithms, and devices throughout their lifecycle, following cryptographic
+      agility principles where appropriate.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-01X"
+    legalText: |
+      Appropriate security controls shall be in place for the management of any
+      cryptographic keys, cryptographic algorithms, and cryptographic devices
+      throughout their lifecycle, following, where appropriate, a cryptographic
+      agility approach.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-007
+    category: security
+    requirement: Use ENISA-approved cryptographic mechanisms
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Electronic ledger providers must use cryptographic techniques compliant with
+      the Agreed Cryptographic Mechanisms endorsed by the European Cybersecurity
+      Certification Group and published by ENISA.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-02"
+    legalText: |
+      For the purpose of the provision of its trust services, the TSP shall select
+      and use suitable cryptographic techniques compliant with the Agreed Cryptographic
+      Mechanisms endorsed by the European Cybersecurity Certification Group and
+      published by ENISA.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-008
+    category: security
+    requirement: Establish data origin using qualified signatures or seals
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Providers must establish the origin of data records using advanced electronic
+      signatures or seals based on qualified certificates, conforming to ETSI CAdES,
+      XAdES, or JAdES standards.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-03"
+    legalText: |
+      Providers of qualified electronic ledgers shall establish the origin of data
+      records in the electronic ledger. They shall use advanced electronic signatures
+      based on qualified certificates or advanced electronic seals based on qualified
+      certificates created by users, in accordance with ETSI EN 319 122-1 (CAdES),
+      ETSI EN 319 132-1 (XAdES), or ETSI TS 119 182-1 (JAdES).
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-009
+    category: security
+    requirement: Ensure sequential chronological ordering via cryptographic links
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Providers must ensure unique sequential chronological ordering of data records
+      using cryptographic links (hash lists/trees) with SHA-256/SHA3-256 or higher,
+      or alternatively using qualified timestamps.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-04"
+    legalText: |
+      Providers of qualified electronic ledgers shall ensure the unique sequential
+      chronological ordering of data records using cryptographic links, based in hash
+      lists or hash trees, using SHA-256 or SHA3-256 or higher output hash size compliant
+      with ENISA Agreed Cryptographic Mechanisms. Alternatively, qualified timestamps
+      may be used for time recording.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-010
+    category: security
+    requirement: Ensure data record integrity and immediate change detectability
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Providers must ensure integrity of data records using qualified signatures/seals
+      with ENISA-compliant algorithms (SHA-256/SHA3-256), and ensure any subsequent
+      change to data is immediately detectable.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-05"
+    legalText: |
+      Providers of qualified electronic ledgers shall ensure the integrity of data
+      records recorded in a qualified electronic ledger using advanced electronic
+      signatures/seals based on qualified certificates, with signature/seal formats
+      compliant with ENISA Agreed Cryptographic Mechanisms. Providers shall ensure
+      the immediate detectability of any subsequent change to data recorded.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-011
+    category: security
+    requirement: Use EAL 4+ certified secure cryptographic devices for signing keys
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Signing private keys must be held in secure cryptographic devices certified to
+      EAL 4 or higher per ISO/IEC 15408 (Common Criteria), EUCC, or FIPS 140-3 Level 3
+      (until Dec 2030).
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.5-06"
+    legalText: |
+      Where digital signature mechanisms are used, signing private keys of the provider
+      shall be held and used within a secure cryptographic device certified to EAL 4+
+      per: (a) ISO/IEC 15408 or CC:2022; (b) EUCC; or (c) until 31.12.2030, FIPS 140-3 Level 3.
+      Certification shall be to a security target or protection profile meeting
+      requirements based on risk analysis.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-012
+    category: security
+    requirement: Perform quarterly vulnerability scans and annual penetration tests
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Electronic ledger providers must perform vulnerability scans at least quarterly
+      and penetration tests at least annually. Firewalls must prevent all protocols
+      not required for TSP operation.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "REQ-7.8-14X/18X/21X"
+    legalText: |
+      REQ-7.8-14X: Vulnerability scan shall be performed at least once per quarter.
+      REQ-7.8-18X: Penetration test shall be performed at least once per year.
+      REQ-7.8-21X: Firewalls shall be configured to prevent all protocols and accesses
+      not required for the operation of the TSP.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-013
+    category: governance
+    requirement: Produce ledger reports in an automated manner
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Where the qualified trust service provider needs to produce a ledger report
+      (structured presentation of verifiable information from the ledger), it must
+      be produced in an automated manner.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "Point 2"
+    legalText: |
+      Where the qualified trust service provider needs to produce a ledger report,
+      it shall be produced in an automated manner.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-014
+    category: governance
+    requirement: Comply with ISO 23257 for distributed ledger architecture (if using DLT)
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Providers using distributed electronic ledger technologies must comply with
+      ISO 23257:2022 for reference architecture documentation, describing the DLT
+      system, network, and nodes.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "Point 3(b)(1)"
+    legalText: |
+      For providers making use of distributed electronic ledger technologies:
+      ISO 23257:2022 Blockchain and distributed ledger technologies – Reference architecture,
+      clause 9, providing a complete description of the distributed electronic ledger
+      technology system, network and nodes.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
+  - id: TSP-LEDGER-015
+    category: governance
+    requirement: Comply with ISO/TS 23635 for distributed ledger governance (if using DLT)
+    profileFilter:
+      - electronic_ledger
+    explanation: |
+      Providers using distributed electronic ledger technologies must comply with
+      ISO/TS 23635:2022 for governance guidelines, with written and publicly accessible
+      policies and practices related to their governance structure.
+    legalBasis:
+      regulation: "2025/2531"
+      article: Annex
+      paragraph: "Point 3(b)(2)"
+    legalText: |
+      For providers making use of distributed electronic ledger technologies:
+      ISO/TS 23635:2022 Blockchain and distributed ledger technologies – Guidelines for
+      governance, with respect to written and publicly accessible policies and practices
+      related to the governance structure for the electronic ledger service they provide.
+    deadline: "2026-01-06"
+    roles:
+      - trust_service_provider
+    useCases: all
