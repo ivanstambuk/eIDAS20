@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-23 13:25 CET |
-| **Version** | V3.9.2 |
+| **Last Updated** | 2026-01-24 03:20 CET |
+| **Version** | V3.9.3 |
 | **Portal Stats** | 41 docs, 377K words, 268 terms, 470 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1084 total reqs |
 | **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
@@ -27,6 +27,8 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-24 03:20 | **Retro: Regulation ID Standardization** — DEC-225, normalized 114 YAML IDs (910/2014→2014/910), extracted LegalBasisLink + useRegulationsIndex to shared modules, AGENTS.md docs for anchor IDs + auto-commit protocol |
+| 2026-01-24 01:30 | **Fix: RCA Legal Basis Display** — Human-friendly regulation names, wider column, auto-select use cases on domain toggle, annex deep link fix |
 | 2026-01-23 13:25 | **Retro: Sidebar redesign** — DEC-224, TERMINOLOGY.md updates (Collapsible Section, Accordion), react-patterns.md snippet, squashed commits |
 | 2026-01-23 12:25 | **Feat: Sidebar Tools-First Redesign** — Tools section promoted to top for discoverability, collapsible accordion sections, localStorage persistence, Supplementary Documents collapsed by default (DEC-224) |
 | 2026-01-23 09:15 | **Retro: Rule 27 + 6 improvements** — Commit checkpoint requirement, YAML parser extraction, RegulationsIndex, terminology updates |

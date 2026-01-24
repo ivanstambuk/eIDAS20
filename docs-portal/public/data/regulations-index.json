@@ -360,7 +360,7 @@
     "description": "Commission Implementing Regulation (EU) 2025/1570 of 29 July 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards notification of information on certified qualified electronic signature creation devices and certified qualified electronic seal creation devices",
     "celex": "32025R1570",
     "date": "29 July 2025",
-    "wordCount": 547,
+    "wordCount": 1076,
     "tocCount": 5
   },
   {
@@ -528,7 +528,7 @@
     "description": "Commission Implementing Regulation (EU) 2025/2527 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards for qualified certificates for website authentication",
     "celex": "32025R2527",
     "date": "16 December 2025",
-    "wordCount": 755,
+    "wordCount": 862,
     "tocCount": 5
   },
   {
@@ -556,8 +556,8 @@
     "description": "Commission Implementing Regulation (EU) 2025/2531 of 16 December 2025 laying down rules for the application of Regulation (EU) No 910/2014 of the European Parliament and of the Council as regards reference standards and specifications for qualified electronic ledgers",
     "celex": "32025R2531",
     "date": "16 December 2025",
-    "wordCount": 810,
-    "tocCount": 5
+    "wordCount": 2653,
+    "tocCount": 8
   },
   {
     "slug": "2025-2532",
