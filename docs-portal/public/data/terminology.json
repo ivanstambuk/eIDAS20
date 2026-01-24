@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T14:16:28.784Z",
+  "generated": "2026-01-24T17:18:12.028Z",
   "statistics": {
-    "totalTerms": 347,
-    "totalDefinitions": 484,
+    "totalTerms": 348,
+    "totalDefinitions": 485,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -475,6 +475,7 @@
       "social-networking-services-platform",
       "standard",
       "statistics",
+      "strong-customer-authentication",
       "strong-user-authentication",
       "sua-attestation",
       "subsidiary",
@@ -14517,6 +14518,49 @@
       "domains": []
     },
     {
+      "id": "strong-customer-authentication",
+      "term": "Strong Customer Authentication",
+      "sources": [
+        {
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+          "articleNumber": "PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+      "definitionGroups": [
+        {
+          "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+          "sources": [
+            {
+              "definition": "Authentication based on the use of two or more elements categorised as knowledge (something only the user knows), possession (something only the user possesses), and inherence (something the user is) that are independent, in that the breach of one does not compromise the reliability of the others, and is designed in such a way as to protect the confidentiality of the authentication data. Abbreviated as SCA. This is the PSD2-specific term for strong authentication in payment services, functionally equivalent to Strong User Authentication (SUA) in eIDAS.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+              "articleNumber": "PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "SCA"
+      ]
+    },
+    {
       "id": "strong-user-authentication",
       "term": "strong user authentication",
       "sources": [
@@ -14560,6 +14604,9 @@
       "domains": [
         "identity",
         "wallet_ecosystem"
+      ],
+      "aliases": [
+        "SUA"
       ]
     },
     {

@@ -188,6 +188,19 @@ terms:
     source: ARF Annex 1, Section A.4
     note: See ARF Topic 20 - Strong User Authentication for electronic payments
 
+  - term: Strong Customer Authentication
+    definition: >-
+      Authentication based on the use of two or more elements categorised as 
+      knowledge (something only the user knows), possession (something only 
+      the user possesses), and inherence (something the user is) that are 
+      independent, in that the breach of one does not compromise the reliability 
+      of the others, and is designed in such a way as to protect the 
+      confidentiality of the authentication data. Abbreviated as SCA. This is 
+      the PSD2-specific term for strong authentication in payment services, 
+      functionally equivalent to Strong User Authentication (SUA) in eIDAS.
+    source: PSD2 Article 4(30), Commission Delegated Regulation (EU) 2018/389
+    note: PSD2 term; distinct from eIDAS "strong user authentication" (see DEC-252)
+
   # ═══════════════════════════════════════════════════════════════════════════
   # Rulebooks & Governance Documents
   # ═══════════════════════════════════════════════════════════════════════════
