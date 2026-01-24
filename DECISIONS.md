@@ -2491,3 +2491,46 @@ These are **legally distinct terms from different regulations** with nearly iden
 - `TERMINOLOGY.md` — Added SUA and SCA entries
 - `DECISIONS.md` — This decision record
 
+---
+
+## DEC-253: Do Not Import PSD2/PSD2-RTS Documents
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+
+**Context:**  
+Considered importing PSD2 (Directive 2015/2366) and PSD2-RTS (Commission Delegated Regulation 2018/389) into the documentation portal. The primary touchpoint between PSD2 and eIDAS 2.0 is Strong Customer Authentication (SCA), which is referenced in:
+- eIDAS Article 5f(2): Mandates EUDI Wallet acceptance where "strong user authentication" is required
+- RP-GOV-003: Cross-references PSD2 Article 97 for banking use cases
+- TS12: Technical specification for SCA implementation with the wallet
+
+**Decision:** **Do NOT import PSD2 or PSD2-RTS** into the documentation portal.
+
+**Rationale:**
+
+1. **Scope containment** — This portal is for eIDAS 2.0 (identity/trust services). PSD2 is a 100+ page payment services regulation, with 90%+ content irrelevant to EUDI Wallet (banking licenses, payment institutions, fees, passporting, etc.).
+
+2. **TS12 is the translation layer** — The ARF explicitly created TS12 to translate PSD2 SCA requirements into wallet-specific implementation guidance. PSD2 requirements are implemented *through* TS12, not directly as wallet requirements.
+
+3. **Reference-only approach is sufficient** — The current approach adequately captures the relationship:
+   - `Strong Customer Authentication` term defined in custom-dictionary with PSD2 Article 4(30) source
+   - RP-GOV-003 includes `relatedRegulation: PSD2 Article 97` cross-reference
+   - DEC-252 documents the SUA/SCA terminology distinction
+
+4. **Avoid regulatory domain creep** — Importing PSD2 would expand scope into banking law, potentially confusing users seeking identity/trust services guidance.
+
+**Alternatives Considered:**
+
+| Approach | Rejected Reason |
+|----------|-----------------|
+| Full import | 100+ pages of mostly irrelevant content |
+| Excerpt (Articles 4, 97 only) | Fragments context; TS12 already provides wallet-specific translation |
+| Import as "referenced" | Still adds maintenance burden for marginal value |
+
+**Current Implementation:**
+- SCA term with PSD2 source citation ✅
+- RP-GOV-003 with PSD2 cross-reference ✅  
+- TS12 as the wallet-specific SCA implementation guide ✅
+
+**Files unchanged** — This is a "do nothing" decision.
+
