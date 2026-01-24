@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T17:18:12.028Z",
+  "generated": "2026-01-24T17:35:09.652Z",
   "statistics": {
     "totalTerms": 348,
     "totalDefinitions": 485,
@@ -2455,7 +2455,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-9",
           "articleNumber": "2(9)",
           "displayOrder": 2
@@ -2473,7 +2473,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-9",
               "articleNumber": "2(9)",
               "displayOrder": 2
@@ -3327,7 +3327,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
@@ -3433,7 +3433,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-11",
               "articleNumber": "2(11)",
               "displayOrder": 2
@@ -5670,7 +5670,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-14",
           "articleNumber": "2(14)",
           "displayOrder": 2
@@ -5710,7 +5710,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-14",
               "articleNumber": "2(14)",
               "displayOrder": 2
@@ -6638,32 +6638,32 @@
       "term": "holder",
       "sources": [
         {
-          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+          "definition": "An entity that possesses one or more verifiable credentials, stores them in a digital wallet, and has sole authority over when, where, and with whom those credentials are shared. The Holder generates verifiable presentations from their credentials when requested by a Verifier. In the EUDI Wallet ecosystem, the Holder is the Wallet User.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-ARF Annex 1, Section A.4",
-          "articleNumber": "ARF Annex 1, Section A.4",
+          "articleId": "article-W3C Verifiable Credentials Data Model",
+          "articleNumber": "W3C Verifiable Credentials Data Model",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "primaryLinkTarget": "article-W3C Verifiable Credentials Data Model",
       "definitionGroups": [
         {
-          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+          "definition": "An entity that possesses one or more verifiable credentials, stores them in a digital wallet, and has sole authority over when, where, and with whom those credentials are shared. The Holder generates verifiable presentations from their credentials when requested by a Verifier. In the EUDI Wallet ecosystem, the Holder is the Wallet User.",
           "sources": [
             {
-              "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to present attributes from a PID or attestation to the User of another Wallet Unit. The Holder initiates the presentation of credentials to a Verifier.",
+              "definition": "An entity that possesses one or more verifiable credentials, stores them in a digital wallet, and has sole authority over when, where, and with whom those credentials are shared. The Holder generates verifiable presentations from their credentials when requested by a Verifier. In the EUDI Wallet ecosystem, the Holder is the Wallet User.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-ARF Annex 1, Section A.4",
-              "articleNumber": "ARF Annex 1, Section A.4",
+              "articleId": "article-W3C Verifiable Credentials Data Model",
+              "articleNumber": "W3C Verifiable Credentials Data Model",
               "displayOrder": 5
             }
           ],
@@ -7412,7 +7412,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-13",
           "articleNumber": "2(13)",
           "displayOrder": 2
@@ -7452,7 +7452,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-13",
               "articleNumber": "2(13)",
               "displayOrder": 2
@@ -10015,7 +10015,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-3",
           "articleNumber": "2(3)",
           "displayOrder": 2
@@ -10033,7 +10033,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-3",
               "articleNumber": "2(3)",
               "displayOrder": 2
@@ -13638,7 +13638,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-7",
           "articleNumber": "2(7)",
           "displayOrder": 2
@@ -13656,7 +13656,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-7",
               "articleNumber": "2(7)",
               "displayOrder": 2
@@ -13728,7 +13728,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
@@ -13757,7 +13757,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-2",
               "articleNumber": "2(2)",
               "displayOrder": 2
@@ -16008,32 +16008,32 @@
       "term": "verifier",
       "sources": [
         {
-          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+          "definition": "An entity that requests and receives verifiable credentials or presentations from a Holder, then validates the cryptographic proofs and attribute claims. In the EUDI Wallet ecosystem, Verifiers are typically Relying Parties, but in wallet-to-wallet interactions, another Wallet User can act as a Verifier.",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-ARF Annex 1, Section A.4",
-          "articleNumber": "ARF Annex 1, Section A.4",
+          "articleId": "article-W3C Verifiable Credentials Data Model",
+          "articleNumber": "W3C Verifiable Credentials Data Model",
           "displayOrder": 5
         }
       ],
       "hasMultipleSources": false,
-      "primaryLinkTarget": "article-ARF Annex 1, Section A.4",
+      "primaryLinkTarget": "article-W3C Verifiable Credentials Data Model",
       "definitionGroups": [
         {
-          "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+          "definition": "An entity that requests and receives verifiable credentials or presentations from a Holder, then validates the cryptographic proofs and attribute claims. In the EUDI Wallet ecosystem, Verifiers are typically Relying Parties, but in wallet-to-wallet interactions, another Wallet User can act as a Verifier.",
           "sources": [
             {
-              "definition": "In the context of Wallet-to-Wallet interactions, a User wishing to use their Wallet Unit to request attributes from a PID or attestation from the User of another Wallet Unit. The Verifier receives and validates credentials presented by a Holder.",
+              "definition": "An entity that requests and receives verifiable credentials or presentations from a Holder, then validates the cryptographic proofs and attribute claims. In the EUDI Wallet ecosystem, Verifiers are typically Relying Parties, but in wallet-to-wallet interactions, another Wallet User can act as a Verifier.",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-ARF Annex 1, Section A.4",
-              "articleNumber": "ARF Annex 1, Section A.4",
+              "articleId": "article-W3C Verifiable Credentials Data Model",
+              "articleNumber": "W3C Verifiable Credentials Data Model",
               "displayOrder": 5
             }
           ],
@@ -16239,7 +16239,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-5",
           "articleNumber": "2(5)",
           "displayOrder": 2
@@ -16345,7 +16345,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-5",
               "articleNumber": "2(5)",
               "displayOrder": 2
@@ -16466,7 +16466,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
@@ -16572,7 +16572,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-8",
               "articleNumber": "2(8)",
               "displayOrder": 2
@@ -16686,7 +16686,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-4",
           "articleNumber": "2(4)",
           "displayOrder": 2
@@ -16792,7 +16792,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-4",
               "articleNumber": "2(4)",
               "displayOrder": 2
@@ -16910,7 +16910,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-6",
           "articleNumber": "2(6)",
           "displayOrder": 2
@@ -17016,7 +17016,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-6",
               "articleNumber": "2(6)",
               "displayOrder": 2
@@ -17134,7 +17134,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-1",
           "articleNumber": "2(1)",
           "displayOrder": 2
@@ -17240,7 +17240,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-1",
               "articleNumber": "2(1)",
               "displayOrder": 2
@@ -17354,7 +17354,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
@@ -17460,7 +17460,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-10",
               "articleNumber": "2(10)",
               "displayOrder": 2
@@ -17689,7 +17689,7 @@
           "documentTitle": "Certification",
           "documentCategory": "implementing-act",
           "documentType": "implementing-act",
-          "celex": null,
+          "celex": "32024R2981",
           "articleId": "article-2-para-12",
           "articleNumber": "2(12)",
           "displayOrder": 2
@@ -17795,7 +17795,7 @@
               "documentTitle": "Certification",
               "documentCategory": "implementing-act",
               "documentType": "implementing-act",
-              "celex": null,
+              "celex": "32024R2981",
               "articleId": "article-2-para-12",
               "articleNumber": "2(12)",
               "displayOrder": 2

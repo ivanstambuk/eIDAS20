@@ -298,26 +298,28 @@ terms:
     note: See ARF Topic 12 - Attestation rulebooks
 
   # ═══════════════════════════════════════════════════════════════════════════
-  # Wallet-to-Wallet Interaction Concepts
+  # Credential Ecosystem Roles
   # ═══════════════════════════════════════════════════════════════════════════
 
   - term: holder
     definition: >-
-      In the context of Wallet-to-Wallet interactions, a User wishing to 
-      use their Wallet Unit to present attributes from a PID or attestation 
-      to the User of another Wallet Unit. The Holder initiates the 
-      presentation of credentials to a Verifier.
-    source: ARF Annex 1, Section A.4
-    note: See ARF Topic 30 - Interaction between Wallet Units
+      An entity that possesses one or more verifiable credentials, stores 
+      them in a digital wallet, and has sole authority over when, where, 
+      and with whom those credentials are shared. The Holder generates 
+      verifiable presentations from their credentials when requested by 
+      a Verifier. In the EUDI Wallet ecosystem, the Holder is the Wallet User.
+    source: W3C Verifiable Credentials Data Model
+    note: ARF Annex 1 uses this term specifically for wallet-to-wallet interactions (Topic 30)
 
   - term: verifier
     definition: >-
-      In the context of Wallet-to-Wallet interactions, a User wishing to 
-      use their Wallet Unit to request attributes from a PID or attestation 
-      from the User of another Wallet Unit. The Verifier receives and 
-      validates credentials presented by a Holder.
-    source: ARF Annex 1, Section A.4
-    note: See ARF Topic 30 - Interaction between Wallet Units
+      An entity that requests and receives verifiable credentials or 
+      presentations from a Holder, then validates the cryptographic proofs 
+      and attribute claims. In the EUDI Wallet ecosystem, Verifiers are 
+      typically Relying Parties, but in wallet-to-wallet interactions, 
+      another Wallet User can act as a Verifier.
+    source: W3C Verifiable Credentials Data Model
+    note: ARF Annex 1 uses this term specifically for wallet-to-wallet interactions (Topic 30)
 
   - term: Holder Wallet Unit
     definition: >-
@@ -334,6 +336,7 @@ terms:
       or attestations from a Holder Wallet Unit.
     source: ARF Annex 1, Section A.4
     note: See ARF Topic 30 - Verification side of W2W flow
+
 
   # ═══════════════════════════════════════════════════════════════════════════
   # Governance & Notification
