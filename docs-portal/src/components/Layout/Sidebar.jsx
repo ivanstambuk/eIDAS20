@@ -258,9 +258,8 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggle }) => {
                 role="navigation"
                 aria-label="Main navigation"
             >
-                {/* Sidebar collapse header */}
+                {/* Sidebar collapse button */}
                 <div className="sidebar-collapse-header">
-                    <span className="sidebar-collapse-title">Navigation</span>
                     <button
                         className="sidebar-collapse-btn"
                         onClick={onToggle}
