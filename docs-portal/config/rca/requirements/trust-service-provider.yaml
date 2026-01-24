@@ -10,7 +10,7 @@ requirements:
       by a conformity assessment body, confirming compliance with eIDAS
       and NIS2 Directive Article 21.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: "1"
     legalText: |
@@ -32,7 +32,7 @@ requirements:
       After each audit, QTSPs must submit the conformity assessment report
       to the supervisory body within three working days of receipt.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: "1"
     legalText: |
@@ -52,7 +52,7 @@ requirements:
       supervisory body with a conformity assessment report confirming
       compliance with eIDAS and NIS2.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 21
       paragraph: "1"
     legalText: |
@@ -116,7 +116,7 @@ requirements:
       Trust services and end-user products must be made available in plain
       and intelligible language, in accordance with UNCRPD and Directive 2019/882.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 15
       paragraph: "1"
     legalText: |
@@ -139,7 +139,7 @@ requirements:
       to manage risks, including registration/onboarding procedures, 
       administrative checks, and service management.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19a
       paragraph: 1(a)
     legalText: |
@@ -163,7 +163,7 @@ requirements:
       within the time limit set by the supervisory body, or face withdrawal
       of qualified status.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: "3"
     legalText: |
@@ -185,7 +185,7 @@ requirements:
       QTSPs may only begin providing qualified trust services after their
       qualified status has been indicated in the trusted lists.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 21
       paragraph: "3"
     legalText: |
@@ -206,7 +206,7 @@ requirements:
       and qualifications, who have received appropriate security and data
       protection training.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(b)
     legalText: |
@@ -229,7 +229,7 @@ requirements:
       business, operational and other risks, including registration,
       procedural checks, and service management.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(fa)
     legalText: |
@@ -252,7 +252,7 @@ requirements:
       data issued and received, for evidence in legal proceedings and
       service continuity, even after ceasing activities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(h)
     legalText: |
@@ -274,7 +274,7 @@ requirements:
       QTSPs must have an up-to-date termination plan to ensure service
       continuity, verified by the supervisory body.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(i)
     legalText: |
@@ -294,7 +294,7 @@ requirements:
       QTSPs issuing qualified certificates must establish and keep updated
       a certificate database.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(k)
     legalText: |
@@ -314,7 +314,7 @@ requirements:
       and publish the status in a timely manner, within 24 hours of receiving
       the request. Revocation becomes effective immediately upon publication.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: "3"
     legalText: |
@@ -337,7 +337,7 @@ requirements:
       Generating or managing electronic signature creation data on behalf
       of the signatory may only be done by a qualified trust service provider.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex II
       paragraph: point 3
     legalText: |
@@ -784,7 +784,7 @@ requirements:
       negligently to any natural or legal person due to failure to comply
       with the obligations under eIDAS.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 13
       paragraph: "1"
     legalText: |
@@ -803,7 +803,7 @@ requirements:
       advance of usage limitations and those limitations are recognisable
       to third parties.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 13
       paragraph: "2"
     legalText: |
@@ -825,7 +825,7 @@ requirements:
       QTSPs must maintain sufficient financial resources and/or appropriate
       liability insurance to cover potential damages.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(c)
     legalText: |
@@ -868,7 +868,7 @@ requirements:
       with consent-based public retrieval, authorized-only modifications,
       and authenticity checking.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(f)
     legalText: |
@@ -889,7 +889,7 @@ requirements:
       QTSPs must ensure lawful processing of personal data in accordance
       with GDPR.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(j)
     legalText: |
@@ -950,7 +950,7 @@ requirements:
       ensuring security level is commensurate with risk, and take measures to
       prevent and minimise impact of security incidents.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19
       paragraph: "1"
     legalText: |
@@ -972,7 +972,7 @@ requirements:
       TSPs must notify the supervisory body and relevant authorities of any
       breach of security or loss of integrity within 24 hours of becoming aware.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19
       paragraph: "2"
     legalText: |
@@ -997,7 +997,7 @@ requirements:
       the public (if public interest), and other authorities of any significant
       security breaches or service disruptions within 24 hours.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19a
       paragraph: 1(b)
     legalText: |
@@ -1022,7 +1022,7 @@ requirements:
       (upon request) the public of security breaches or service disruptions
       with significant impact, within 24 hours.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(fb)
     legalText: |
@@ -1046,7 +1046,7 @@ requirements:
       QTSPs must take appropriate measures against forgery, theft,
       misappropriation, or unauthorized deletion/alteration of data.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(g)
     legalText: |
@@ -1066,7 +1066,7 @@ requirements:
       same security level as originals and limit copies to minimum needed
       for service continuity.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 29a
       paragraph: 1(b)
     legalText: |
@@ -1148,7 +1148,7 @@ requirements:
       QTSPs must use trustworthy systems protected against modification,
       ensuring technical security and using suitable cryptographic techniques.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(e)
     legalText: |
@@ -1169,7 +1169,7 @@ requirements:
       QTSPs providing remote QSCD management must only generate or manage
       electronic signature creation data on behalf of the signatory.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 29a
       paragraph: 1(a)
     legalText: |
@@ -1193,7 +1193,7 @@ requirements:
       period, unique identity code, advanced signature/seal of issuer,
       certificate location, status service location, and QSCD indication.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex I
       paragraph: points (a)-(j)
     legalText: |
@@ -1216,7 +1216,7 @@ requirements:
       requirements: confidentiality of creation data, single-use occurrence,
       protection against derivation, and protection against unauthorized use.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex II
       paragraph: point 1
     legalText: |
@@ -1239,7 +1239,7 @@ requirements:
       signed or prevent such data from being presented to the signatory
       prior to signing.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex II
       paragraph: point 2
     legalText: |
@@ -1260,7 +1260,7 @@ requirements:
       specified in Annex III, paralleling requirements for signature
       certificates but for legal persons creating seals.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex III
       paragraph: points (a)-(j)
     legalText: |
@@ -1282,7 +1282,7 @@ requirements:
       Qualified certificates for website authentication must contain all
       elements specified in Annex IV, including domain names and address.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex IV
       paragraph: points (a)-(j)
     legalText: |
@@ -1308,7 +1308,7 @@ requirements:
       validity period, unique identity code, qualified signature/seal,
       certificate location, and status service location.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Annex V
       paragraph: points (a)-(i)
     legalText: |
@@ -1515,7 +1515,7 @@ requirements:
       trust service has been provided, the TSP must notify that person
       without undue delay.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19
       paragraph: "2"
     legalText: |
@@ -1537,7 +1537,7 @@ requirements:
       QTSPs must inform the supervisory body at least one month before any
       planned audits and allow the body to participate as an observer.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: 1a
     legalText: |
@@ -1557,7 +1557,7 @@ requirements:
       When using the EU trust mark, QTSPs must ensure a link to the relevant
       trusted list is made available on their website.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 23
       paragraph: "2"
     legalText: |
@@ -1577,7 +1577,7 @@ requirements:
       QTSPs must inform the supervisory body at least one month before any
       change to qualified services, or three months before ceasing activities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(a)
     legalText: |
@@ -1599,7 +1599,7 @@ requirements:
       persons seeking to use a qualified service of the precise terms and
       conditions, including any limitations.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(d)
     legalText: |
@@ -1622,7 +1622,7 @@ requirements:
       status information, available per-certificate, at any time beyond
       validity period, automated, reliable, and free of charge.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: "4"
     legalText: |
@@ -1821,7 +1821,7 @@ requirements:
       When issuing qualified certificates or attestations, QTSPs must verify
       the identity and any specific attributes of the person.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: "1"
     legalText: |
@@ -1844,7 +1844,7 @@ requirements:
       notified eID means (LoA high), qualified signature/seal certificate,
       CAB-confirmed methods, or physical presence with evidence.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 1a
     legalText: |

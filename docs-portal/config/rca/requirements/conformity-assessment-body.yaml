@@ -197,7 +197,7 @@ requirements:
       every 24 months. The audit confirms that QTSPs and their services
       meet eIDAS and NIS2 requirements.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: "1"
     legalText: |
@@ -280,7 +280,7 @@ requirements:
       must be notified to the Commission and made available to all
       Member States.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 20
       paragraph: 1b
     legalText: |
@@ -715,7 +715,7 @@ requirements:
       providers must submit to supervisory bodies when they intend to
       start providing a qualified trust service.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 21
       paragraph: "1"
     legalText: |

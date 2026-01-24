@@ -861,7 +861,8 @@
 }
 
 .col-legal {
-    width: 150px;
+    width: 220px;
+    white-space: nowrap;
 }
 
 .col-status {

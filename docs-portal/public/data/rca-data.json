@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-21T10:09:36.916Z",
+  "generatedAt": "2026-01-24T01:33:16.124Z",
   "schemaVersion": 1,
   "categories": [
     {
@@ -1006,7 +1006,7 @@
       "requirement": "Audit QTSPs at least every 24 months at QTSP expense",
       "explanation": "CABs perform audits of qualified trust service providers at least\nevery 24 months. The audit confirms that QTSPs and their services\nmeet eIDAS and NIS2 requirements.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "1"
       },
@@ -1170,7 +1170,7 @@
       "requirement": "Member States must notify CAB names, addresses, and accreditation details",
       "explanation": "This is a Member State obligation that affects CABs: their details\nmust be notified to the Commission and made available to all\nMember States.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "1b"
       },
@@ -2031,7 +2031,7 @@
       "requirement": "Issue conformity assessment report for QTSP initiation",
       "explanation": "CABs issue the conformity assessment report that trust service\nproviders must submit to supervisory bodies when they intend to\nstart providing a qualified trust service.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 21",
         "paragraph": "1"
       },
@@ -2072,7 +2072,7 @@
       "requirement": "Use qualified certificate with authentic source indication",
       "explanation": "The qualified certificate supporting the electronic signature or seal must\ncontain specific certified attributes indicating the issuing body is established\nunder Union or national law as responsible for the authentic source, provide\ndata representing the authentic source, and identify the relevant law.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "1(b)"
       },
@@ -2115,7 +2115,7 @@
       "requirement": "Meet QTSP-equivalent reliability and trustworthiness",
       "explanation": "Public sector bodies issuing electronic attestations of attributes must\nmeet a level of reliability and trustworthiness equivalent to qualified\ntrust service providers as defined in Article 24 of the regulation.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "2"
       },
@@ -2158,7 +2158,7 @@
       "requirement": "Be notified by Member State with conformity assessment",
       "explanation": "Public sector bodies must be notified to the Commission by their Member State,\nincluding a conformity assessment report from a conformity assessment body\nconfirming compliance with Article 45f requirements.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "3"
       },
@@ -2246,7 +2246,7 @@
       "requirement": "Implement QEAA services functionally separate from other services",
       "explanation": "Providers of qualified electronic attestation of attributes services must\nimplement these services in a manner that is functionally separate from\nother services they provide. This ensures operational isolation of the\ntrust service.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45h",
         "paragraph": "3"
       },
@@ -2417,7 +2417,7 @@
       "requirement": "Notify supervisory body before starting qualified trust service",
       "explanation": "Before starting to provide a qualified trust service (including QEAA),\nthe provider must notify the supervisory body of the Member State where\nestablished with its intention to start the service, along with a\nconformity assessment report.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "1"
       },
@@ -2460,7 +2460,7 @@
       "requirement": "Maintain personnel with necessary expertise and reliability",
       "explanation": "Qualified EAA issuers must employ personnel possessing the necessary\nexpertise, reliability, experience, and qualifications to perform the\nservices. Staff must have competence in applicable laws, security, and\ntechnical knowledge appropriate to the trust service.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(b)"
       },
@@ -2503,7 +2503,7 @@
       "requirement": "Maintain sufficient financial resources or liability coverage",
       "explanation": "Qualified EAA issuers must maintain sufficient financial resources or\nobtain appropriate liability insurance to cover their liabilities arising\nfrom the provision of trust services, in accordance with national law on\nliability.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(c)"
       },
@@ -2546,7 +2546,7 @@
       "requirement": "Take appropriate measures against security threats",
       "explanation": "Qualified EAA issuers must take appropriate measures against forgery,\ntheft, or misappropriation of data, and against unauthorized deletion,\nalteration, or rendering of data inaccessible.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(g)"
       },
@@ -2589,7 +2589,7 @@
       "requirement": "Record and retain relevant information for evidence purposes",
       "explanation": "Qualified EAA issuers must record and keep accessible all relevant\ninformation concerning data issued and received, for the purpose of\nproviding evidence in legal proceedings and ensuring continuity of\nservice after the provider ceases activities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(h)"
       },
@@ -2632,7 +2632,7 @@
       "requirement": "Provide interface with European Digital Identity Wallets",
       "explanation": "Public sector bodies issuing electronic attestations of attributes must\nprovide an interface that allows integration with European Digital Identity\nWallets provided in accordance with Article 5a.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "8"
       },
@@ -2675,7 +2675,7 @@
       "requirement": "Allow users to request, obtain, store and manage EAA from any MS wallet",
       "explanation": "All providers of electronic attestations of attributes must enable wallet\nusers to request, obtain, store, and manage their attestations regardless\nof which Member State provided the European Digital Identity Wallet. This\nensures cross-border interoperability for all EAA issuers.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45g",
         "paragraph": "1"
       },
@@ -2716,7 +2716,7 @@
       "requirement": "Provide interface with EUDI Wallets (QEAA)",
       "explanation": "Providers of qualified electronic attestations of attributes must provide\nan interface that enables integration with European Digital Identity Wallets.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45g",
         "paragraph": "2"
       },
@@ -2759,7 +2759,7 @@
       "requirement": "Meet Annex V content requirements",
       "explanation": "Qualified electronic attestations of attributes must contain all elements\nspecified in Annex V of the regulation. This includes automated processing\nindicators, unique issuer identification, attestation identity codes,\nqualified signatures/seals, certificate locations, and validity status info.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45d",
         "paragraph": "1"
       },
@@ -2802,7 +2802,7 @@
       "requirement": "Meet Annex VII content requirements",
       "explanation": "Electronic attestations of attributes issued by or on behalf of a public\nsector body responsible for an authentic source must contain all elements\nspecified in Annex VII, including indication of authentic source origin,\nunique public body identification, subject identification, attested\nattributes, validity period, unique identity code, qualified signature/seal,\ncertificate location, and validity status services.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "1(a)"
       },
@@ -3183,7 +3183,7 @@
       "requirement": "Not combine EAA personal data with other services",
       "explanation": "Personal data collected during the provision of electronic attestation of\nattributes services must not be combined with personal data from any other\nservices offered by the provider or their commercial partners. This applies\nto both qualified and non-qualified EAA providers.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45h",
         "paragraph": "1"
       },
@@ -3224,7 +3224,7 @@
       "requirement": "Keep EAA personal data logically separate",
       "explanation": "Personal data relating to the provision of electronic attestation of attributes\nservices must be kept logically separate from other data held by the provider.\nThis ensures data isolation and limits data processing scope.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45h",
         "paragraph": "2"
       },
@@ -3310,7 +3310,7 @@
       "requirement": "Ensure lawful processing of personal data",
       "explanation": "Qualified EAA issuers must ensure lawful processing of personal data\nin accordance with GDPR requirements.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(j)"
       },
@@ -3353,7 +3353,7 @@
       "requirement": "Revoked QEAA loses validity immediately and irreversibly",
       "explanation": "Once a qualified electronic attestation of attributes is revoked after\ninitial issuance, it immediately loses its legal validity. The revocation\ncannot be undone or reversed under any circumstances.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45d",
         "paragraph": "4"
       },
@@ -3396,7 +3396,7 @@
       "requirement": "Revoked attestation loses validity immediately and irreversibly",
       "explanation": "When an electronic attestation of attributes issued by a public sector body\nis revoked, it immediately loses its validity and the revocation cannot be\nreversed.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 45f",
         "paragraph": "4"
       },
@@ -3703,7 +3703,7 @@
       "requirement": "Publish revocation status within 24 hours",
       "explanation": "When a qualified trust service provider issuing qualified attestations\ndecides to revoke an attestation, it must register the revocation in its\ndatabase and publish the revocation status within 24 hours of receipt of\nthe revocation request. The revocation becomes effective immediately upon\npublication. This is explicitly extended to QEAA by Art. 24(4a).",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "3-4a"
       },
@@ -3746,7 +3746,7 @@
       "requirement": "Provide free revocation status checking for relying parties",
       "explanation": "Qualified EAA providers must provide relying parties with the ability to\ncheck the validity or revocation status of attestations. This must be\navailable on a per-attestation basis, at any time, beyond the validity\nperiod, in an automated manner that is reliable, free of charge, and\nefficient. This is explicitly extended to QEAA by Art. 24(4a).",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "4-4a"
       },
@@ -3879,7 +3879,7 @@
       "requirement": "Verify identity of persons or entities to whom attestations are issued",
       "explanation": "Before issuing a qualified electronic attestation of attributes, the\nprovider must verify the identity of the natural or legal person to whom\nthe attestation is issued, using appropriate identity verification methods.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "1-1a"
       },
@@ -4293,7 +4293,7 @@
       "requirement": "Associate PID with wallet ensuring unique representation",
       "explanation": "PID Providers must ensure that the person identification data uniquely\nrepresents the natural person, legal person, or representative, and is\nassociated with the European Digital Identity Wallet.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "5(f)"
       },
@@ -4334,7 +4334,7 @@
       "requirement": "Make services accessible for persons with disabilities",
       "explanation": "PID issuance must be accessible to persons with disabilities on an\nequal basis with other users, per Directive 2019/882.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "21"
       },
@@ -4481,7 +4481,7 @@
       "requirement": "Accept liability per Article 11 (mutatis mutandis)",
       "explanation": "PID Providers, through Article 5a(19), are subject to the liability\nprovisions of Article 11, which assigns liability for failures in\ncross-border transactions.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "19"
       },
@@ -4575,7 +4575,7 @@
       "requirement": "Comply with GDPR for personal data processing",
       "explanation": "All personal data processing by PID Providers must comply with GDPR\nand demonstrate such compliance.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "17"
       },
@@ -4987,7 +4987,7 @@
       "requirement": "Notify Commission of PID association bodies",
       "explanation": "Member States must notify the Commission of the bodies responsible for\nensuring that PID is associated with the wallet.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "18(c)"
       },
@@ -5028,7 +5028,7 @@
       "requirement": "Notify Commission of PID validation mechanism",
       "explanation": "Member States must notify the Commission of the mechanism allowing\nvalidation of person identification data.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 5a",
         "paragraph": "18(d)"
       },
@@ -8951,7 +8951,7 @@
       "requirement": "Member States shall designate one or more supervisory bodies for EUDIW",
       "explanation": "Member States must designate one or more supervisory bodies established in\ntheir territory for the EUDIW framework. These bodies must be given necessary\npowers and adequate resources for effective, efficient and independent operation.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "1"
       },
@@ -8994,7 +8994,7 @@
       "requirement": "Member States shall designate a supervisory body for trust services",
       "explanation": "Member States must designate a supervisory body for trust service supervision,\neither in their own territory or upon mutual agreement, in another Member State.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "1"
       },
@@ -9037,7 +9037,7 @@
       "requirement": "Supervise EUDIW providers through ex ante and ex post activities",
       "explanation": "Supervisory bodies must supervise EUDIW providers to ensure they and their\nwallets meet all regulatory requirements through both preventive (ex ante)\nand reactive (ex post) supervisory activities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "3(a)"
       },
@@ -9080,7 +9080,7 @@
       "requirement": "Take action on EUDIW provider infringements",
       "explanation": "When informed that EUDIW providers or their wallets infringe the regulation,\nsupervisory bodies must take necessary action through ex post supervision.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "3(b)"
       },
@@ -9123,7 +9123,7 @@
       "requirement": "Request information to monitor EUDIW compliance",
       "explanation": "Supervisory bodies have the power to request any information necessary\nto monitor compliance with the regulation from EUDIW providers.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(b)"
       },
@@ -9166,7 +9166,7 @@
       "requirement": "Carry out on-site inspections and off-site supervision",
       "explanation": "Supervisory bodies have the power to conduct both on-site inspections\nand off-site supervision of EUDIW providers.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(d)"
       },
@@ -9209,7 +9209,7 @@
       "requirement": "Require EUDIW providers to remedy non-compliance",
       "explanation": "Supervisory bodies can require EUDIW providers to remedy any failure\nto fulfil regulatory requirements.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(e)"
       },
@@ -9252,7 +9252,7 @@
       "requirement": "Suspend or cancel relying party registrations for fraud",
       "explanation": "Supervisory bodies can suspend or cancel the relying party registration\nin cases of illegal or fraudulent use of the EUDIW.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(f)"
       },
@@ -9295,7 +9295,7 @@
       "requirement": "Order suspension or cessation of non-compliant EUDIW provision",
       "explanation": "If an EUDIW provider fails to remedy non-compliance, the supervisory body\nmay order suspension or cessation of wallet provision, notifying other\nbodies, the Commission, relying parties and users.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "5"
       },
@@ -9338,7 +9338,7 @@
       "requirement": "Supervise QTSPs through ex ante and ex post activities",
       "explanation": "Supervisory bodies must supervise qualified trust service providers to\nensure they and their services meet all regulatory requirements through\nboth preventive and reactive supervision.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "3(a)"
       },
@@ -9381,7 +9381,7 @@
       "requirement": "Take action on non-qualified TSP non-compliance",
       "explanation": "When informed that non-qualified TSPs allegedly do not meet requirements,\nsupervisory bodies must take necessary action through ex post supervision.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "3(b)"
       },
@@ -9424,7 +9424,7 @@
       "requirement": "Analyse conformity assessment reports from CABs",
       "explanation": "Supervisory bodies must analyse the conformity assessment reports\nsubmitted by QTSPs per Articles 20(1) and 21(1).",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(c)"
       },
@@ -9467,7 +9467,7 @@
       "requirement": "Carry out audits or request CAB conformity assessments",
       "explanation": "Supervisory bodies can audit QTSPs directly or request a CAB to perform\na conformity assessment at the QTSP's expense.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(e)"
       },
@@ -9510,7 +9510,7 @@
       "requirement": "Grant qualified status to TSPs and services per Arts 20/21",
       "explanation": "Supervisory bodies have exclusive authority to grant qualified status\nto trust service providers and their services.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(g)"
       },
@@ -9553,7 +9553,7 @@
       "requirement": "Verify QTSP termination plans per Article 24(2)(h)",
       "explanation": "Supervisory bodies must verify that QTSPs have proper termination plans\nand that information remains accessible when they cease activities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(i)"
       },
@@ -9596,7 +9596,7 @@
       "requirement": "Require TSPs to remedy non-compliance with regulation",
       "explanation": "Supervisory bodies can require trust service providers to remedy any\nfailure to fulfil regulatory requirements.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(j)"
       },
@@ -9639,7 +9639,7 @@
       "requirement": "Investigate web-browser claims on QWAC certificates",
       "explanation": "Supervisory bodies must investigate claims made by web browser providers\nregarding qualified website authentication certificates.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(k)"
       },
@@ -9682,7 +9682,7 @@
       "requirement": "May establish and maintain trust infrastructure per national law",
       "explanation": "Member States may require their supervisory body to establish, maintain\nand update a trust infrastructure in accordance with national law.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "5"
       },
@@ -9725,7 +9725,7 @@
       "requirement": "Cooperate with other supervisory bodies per Articles 46c and 46e",
       "explanation": "Supervisory bodies must cooperate with their counterparts in other Member\nStates and provide assistance in accordance with the single point of contact\nand Cooperation Group mechanisms.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(a)"
       },
@@ -9768,7 +9768,7 @@
       "requirement": "Cooperate with data protection authorities on breaches",
       "explanation": "Supervisory bodies must cooperate with data protection authorities,\ninforming them of personal data protection infringements and breaches.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(g)"
       },
@@ -9811,7 +9811,7 @@
       "requirement": "Cooperate with other supervisory bodies per Articles 46c and 46e",
       "explanation": "Trust service supervisory bodies must cooperate with their counterparts\nin other Member States through the single point of contact and Cooperation\nGroup mechanisms.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(b)"
       },
@@ -9854,7 +9854,7 @@
       "requirement": "Cooperate with data protection authorities on TSP breaches",
       "explanation": "Trust service supervisory bodies must cooperate with data protection\nauthorities, informing them of personal data violations and security breaches.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(f)"
       },
@@ -9897,7 +9897,7 @@
       "requirement": "Member States shall designate a single point of contact",
       "explanation": "Each Member State must designate a single point of contact for trust\nservices, EUDIW, and notified electronic identification schemes.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46c",
         "paragraph": "1"
       },
@@ -9938,7 +9938,7 @@
       "requirement": "SPOC exercises liaison function for cross-border cooperation",
       "explanation": "The single point of contact facilitates cross-border cooperation between\nsupervisory bodies for TSPs and EUDIW providers, and with the Commission,\nENISA, and other competent authorities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46c",
         "paragraph": "2"
       },
@@ -9979,7 +9979,7 @@
       "requirement": "May seek mutual assistance from other Member States' supervisory bodies",
       "explanation": "Supervisory bodies may seek mutual assistance from their counterparts\nin other Member States for supervision and enforcement of obligations.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46d",
         "paragraph": "1"
       },
@@ -10020,7 +10020,7 @@
       "requirement": "Inform and consult supervisory body in other Member State",
       "explanation": "When applying supervisory and enforcement measures, bodies must inform\nand consult the supervisory body from the other Member State concerned.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46d",
         "paragraph": "2(a)"
       },
@@ -10061,7 +10061,7 @@
       "requirement": "May request another supervisory body to take supervisory measures",
       "explanation": "A supervisory body may request another Member State's body to take\nsupervisory or enforcement measures, including conformity assessment\ninspections.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46d",
         "paragraph": "2(b)"
       },
@@ -10102,7 +10102,7 @@
       "requirement": "May carry out joint investigations with other Member States",
       "explanation": "Where appropriate, supervisory bodies may conduct joint investigations\nwith their counterparts in other Member States.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46d",
         "paragraph": "2(c)"
       },
@@ -10143,7 +10143,7 @@
       "requirement": "May refuse assistance on proportionality or competence grounds",
       "explanation": "A supervisory body may refuse a request for assistance if it is\ndisproportionate, outside their competence, or incompatible with the regulation.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46d",
         "paragraph": "3"
       },
@@ -10184,7 +10184,7 @@
       "requirement": "Participate in European Digital Identity Cooperation Group",
       "explanation": "Member States must appoint representatives to the Cooperation Group\nwhich supports cross-border cooperation on trust services, EUDIW, and\nelectronic identification schemes.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46e",
         "paragraph": "2"
       },
@@ -10225,7 +10225,7 @@
       "requirement": "Exchange best practices on policy implementation",
       "explanation": "Through the Cooperation Group, supervisory bodies exchange best practices\nand information about implementing the regulation, assess sector developments,\nand discuss cybersecurity aspects.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46e",
         "paragraph": "5(c)"
       },
@@ -10266,7 +10266,7 @@
       "requirement": "Organise joint meetings with NIS Cooperation Group",
       "explanation": "The Cooperation Group organizes joint meetings with the NIS Cooperation\nGroup to exchange information on cyber threats, incidents, and standards.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46e",
         "paragraph": "5(c)(vi)"
       },
@@ -10307,7 +10307,7 @@
       "requirement": "Participate in peer reviews of eID schemes to be notified",
       "explanation": "Through the Cooperation Group, supervisory bodies participate in\npeer reviews of electronic identification schemes before notification.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46e",
         "paragraph": "5(d)"
       },
@@ -10348,7 +10348,7 @@
       "requirement": "Ensure effective and efficient cooperation in Cooperation Group",
       "explanation": "Member States must ensure their designated representatives participate\neffectively and efficiently in the Cooperation Group.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46e",
         "paragraph": "6"
       },
@@ -10389,7 +10389,7 @@
       "requirement": "Notify Commission of designated supervisory bodies",
       "explanation": "Member States must notify the Commission of their designated supervisory\nbodies' names and addresses, and any subsequent changes.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Articles 46a(2), 46b(2)",
         "paragraph": "2"
       },
@@ -10430,7 +10430,7 @@
       "requirement": "Inform trusted list body of qualified status decisions",
       "explanation": "When granting or withdrawing qualified status, supervisory bodies must\ninform the body responsible for the national trusted list.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(h)"
       },
@@ -10473,7 +10473,7 @@
       "requirement": "Make SPOC contact details public and notify Commission",
       "explanation": "Member States must make their single point of contact details public\nand notify the Commission of any changes.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46c",
         "paragraph": "3"
       },
@@ -10514,7 +10514,7 @@
       "requirement": "Inform NIS2 authorities of significant security breaches",
       "explanation": "When aware of significant security breaches or loss of integrity, supervisory\nbodies must inform the relevant NIS2 competent authorities and single points\nof contact, and may require public disclosure.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "4(c)"
       },
@@ -10557,7 +10557,7 @@
       "requirement": "Inform NIS2 authorities of trust service security breaches",
       "explanation": "When aware of significant security breaches or loss of integrity affecting\ntrust services, supervisory bodies must inform the relevant NIS2 authorities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(a)"
       },
@@ -10600,7 +10600,7 @@
       "requirement": "Provide annual breach summary to ENISA",
       "explanation": "The supervisory body must provide ENISA once a year with a summary\nof breach of security and loss of integrity notifications received\nfrom trust service providers.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19",
         "paragraph": "3"
       },
@@ -10643,7 +10643,7 @@
       "requirement": "Submit annual activity report to Commission by 31 March",
       "explanation": "Each supervisory body must submit an annual report on its main activities\nto the Commission by 31 March each year.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46a",
         "paragraph": "6"
       },
@@ -10686,7 +10686,7 @@
       "requirement": "Submit annual activity report to Commission by 31 March",
       "explanation": "Each trust service supervisory body must submit an annual report on\nits main activities to the Commission by 31 March each year.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 46b",
         "paragraph": "4(d), 6"
       },
@@ -10729,7 +10729,7 @@
       "requirement": "Submit to conformity assessment audit every 24 months",
       "explanation": "QTSPs must be audited at their own expense at least every 24 months\nby a conformity assessment body, confirming compliance with eIDAS\nand NIS2 Directive Article 21.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "1"
       },
@@ -10772,7 +10772,7 @@
       "requirement": "Submit conformity assessment report within 3 working days",
       "explanation": "After each audit, QTSPs must submit the conformity assessment report\nto the supervisory body within three working days of receipt.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "1"
       },
@@ -10815,7 +10815,7 @@
       "requirement": "Submit CAR to supervisory body before starting qualified services",
       "explanation": "Before providing qualified trust services, a TSP must notify the\nsupervisory body with a conformity assessment report confirming\ncompliance with eIDAS and NIS2.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 21",
         "paragraph": "1"
       },
@@ -10944,7 +10944,7 @@
       "requirement": "Make services accessible to persons with disabilities",
       "explanation": "Trust services and end-user products must be made available in plain\nand intelligible language, in accordance with UNCRPD and Directive 2019/882.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 15",
         "paragraph": "1"
       },
@@ -10985,7 +10985,7 @@
       "requirement": "Implement risk management policies and measures",
       "explanation": "Non-qualified TSPs must have appropriate policies and take measures\nto manage risks, including registration/onboarding procedures, \nadministrative checks, and service management.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19a",
         "paragraph": "1(a)"
       },
@@ -11028,7 +11028,7 @@
       "requirement": "Remedy non-compliance within set time limit",
       "explanation": "Where a QTSP fails to meet requirements, they must remedy the failure\nwithin the time limit set by the supervisory body, or face withdrawal\nof qualified status.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "3"
       },
@@ -11071,7 +11071,7 @@
       "requirement": "Begin qualified services only after trusted list inclusion",
       "explanation": "QTSPs may only begin providing qualified trust services after their\nqualified status has been indicated in the trusted lists.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 21",
         "paragraph": "3"
       },
@@ -11114,7 +11114,7 @@
       "requirement": "Employ qualified and trained staff",
       "explanation": "QTSPs must employ staff with necessary expertise, reliability, experience,\nand qualifications, who have received appropriate security and data\nprotection training.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(b)"
       },
@@ -11157,7 +11157,7 @@
       "requirement": "Implement comprehensive risk management policies",
       "explanation": "QTSPs must have appropriate policies and measures to manage legal,\nbusiness, operational and other risks, including registration,\nprocedural checks, and service management.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(fa)"
       },
@@ -11200,7 +11200,7 @@
       "requirement": "Retain relevant information for evidence and service continuity",
       "explanation": "QTSPs must record and keep accessible all relevant information about\ndata issued and received, for evidence in legal proceedings and\nservice continuity, even after ceasing activities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(h)"
       },
@@ -11243,7 +11243,7 @@
       "requirement": "Maintain up-to-date termination plan",
       "explanation": "QTSPs must have an up-to-date termination plan to ensure service\ncontinuity, verified by the supervisory body.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(i)"
       },
@@ -11286,7 +11286,7 @@
       "requirement": "Establish and maintain certificate database",
       "explanation": "QTSPs issuing qualified certificates must establish and keep updated\na certificate database.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(k)"
       },
@@ -11329,7 +11329,7 @@
       "requirement": "Publish certificate revocation within 24 hours",
       "explanation": "When revoking a qualified certificate, QTSPs must register the revocation\nand publish the status in a timely manner, within 24 hours of receiving\nthe request. Revocation becomes effective immediately upon publication.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "3"
       },
@@ -11372,7 +11372,7 @@
       "requirement": "Only QTSPs may generate/manage signature creation data",
       "explanation": "Generating or managing electronic signature creation data on behalf\nof the signatory may only be done by a qualified trust service provider.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex II",
         "paragraph": "point 3"
       },
@@ -12232,7 +12232,7 @@
       "requirement": "Accept liability for damage caused by non-compliance",
       "explanation": "Trust service providers are liable for damage caused intentionally or\nnegligently to any natural or legal person due to failure to comply\nwith the obligations under eIDAS.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 13",
         "paragraph": "1"
       },
@@ -12273,7 +12273,7 @@
       "requirement": "Limit liability through advance customer notification",
       "explanation": "TSPs may limit their liability where they duly inform customers in\nadvance of usage limitations and those limitations are recognisable\nto third parties.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 13",
         "paragraph": "2"
       },
@@ -12314,7 +12314,7 @@
       "requirement": "Maintain sufficient financial resources or liability insurance",
       "explanation": "QTSPs must maintain sufficient financial resources and/or appropriate\nliability insurance to cover potential damages.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(c)"
       },
@@ -12400,7 +12400,7 @@
       "requirement": "Use secure data storage with access controls",
       "explanation": "QTSPs must use trustworthy systems to store data in verifiable form,\nwith consent-based public retrieval, authorized-only modifications,\nand authenticity checking.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(f)"
       },
@@ -12443,7 +12443,7 @@
       "requirement": "Ensure lawful processing of personal data",
       "explanation": "QTSPs must ensure lawful processing of personal data in accordance\nwith GDPR.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(j)"
       },
@@ -12572,7 +12572,7 @@
       "requirement": "Implement appropriate technical and organisational security measures",
       "explanation": "TSPs must take measures to manage risks to the security of trust services,\nensuring security level is commensurate with risk, and take measures to\nprevent and minimise impact of security incidents.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19",
         "paragraph": "1"
       },
@@ -12613,7 +12613,7 @@
       "requirement": "Notify security breaches within 24 hours",
       "explanation": "TSPs must notify the supervisory body and relevant authorities of any\nbreach of security or loss of integrity within 24 hours of becoming aware.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19",
         "paragraph": "2"
       },
@@ -12654,7 +12654,7 @@
       "requirement": "Notify security breaches and disruptions within 24 hours",
       "explanation": "Non-qualified TSPs must notify the supervisory body, affected individuals,\nthe public (if public interest), and other authorities of any significant\nsecurity breaches or service disruptions within 24 hours.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19a",
         "paragraph": "1(b)"
       },
@@ -12697,7 +12697,7 @@
       "requirement": "Notify security breaches and service disruptions within 24 hours",
       "explanation": "QTSPs must notify the supervisory body, affected individuals, and\n(upon request) the public of security breaches or service disruptions\nwith significant impact, within 24 hours.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(fb)"
       },
@@ -12740,7 +12740,7 @@
       "requirement": "Protect against forgery, theft and data alteration",
       "explanation": "QTSPs must take appropriate measures against forgery, theft,\nmisappropriation, or unauthorized deletion/alteration of data.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(g)"
       },
@@ -12783,7 +12783,7 @@
       "requirement": "Limit data duplication to minimum needed for service continuity",
       "explanation": "When duplicating signature creation data for backup, QTSPs must ensure\nsame security level as originals and limit copies to minimum needed\nfor service continuity.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 29a",
         "paragraph": "1(b)"
       },
@@ -12955,7 +12955,7 @@
       "requirement": "Use trustworthy systems and products with suitable cryptography",
       "explanation": "QTSPs must use trustworthy systems protected against modification,\nensuring technical security and using suitable cryptographic techniques.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(e)"
       },
@@ -12998,7 +12998,7 @@
       "requirement": "Only generate/manage signature creation data on behalf of signatory",
       "explanation": "QTSPs providing remote QSCD management must only generate or manage\nelectronic signature creation data on behalf of the signatory.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 29a",
         "paragraph": "1(a)"
       },
@@ -13041,7 +13041,7 @@
       "requirement": "Include all required elements in qualified signature certificates",
       "explanation": "Qualified certificates for electronic signatures must contain all\nelements specified in Annex I: qualified certificate indication,\nprovider identification, signatory name, validation data, validity\nperiod, unique identity code, advanced signature/seal of issuer,\ncertificate location, status service location, and QSCD indication.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex I",
         "paragraph": "points (a)-(j)"
       },
@@ -13084,7 +13084,7 @@
       "requirement": "Ensure QSCD meets security requirements",
       "explanation": "QTSPs must ensure qualified signature creation devices meet\nrequirements: confidentiality of creation data, single-use occurrence,\nprotection against derivation, and protection against unauthorized use.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex II",
         "paragraph": "point 1"
       },
@@ -13127,7 +13127,7 @@
       "requirement": "Ensure QSCD does not alter data to be signed",
       "explanation": "Qualified signature creation devices must not alter the data to be\nsigned or prevent such data from being presented to the signatory\nprior to signing.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex II",
         "paragraph": "point 2"
       },
@@ -13170,7 +13170,7 @@
       "requirement": "Include all required elements in qualified seal certificates",
       "explanation": "Qualified certificates for electronic seals must contain all elements\nspecified in Annex III, paralleling requirements for signature\ncertificates but for legal persons creating seals.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex III",
         "paragraph": "points (a)-(j)"
       },
@@ -13213,7 +13213,7 @@
       "requirement": "Include all required elements in qualified website certificates",
       "explanation": "Qualified certificates for website authentication must contain all\nelements specified in Annex IV, including domain names and address.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex IV",
         "paragraph": "points (a)-(j)"
       },
@@ -13256,7 +13256,7 @@
       "requirement": "Include all required elements in qualified attestations of attributes",
       "explanation": "Qualified electronic attestations of attributes must contain all\nelements specified in Annex V, including attestation indication,\nprovider identification, entity identification, attested attributes,\nvalidity period, unique identity code, qualified signature/seal,\ncertificate location, and status service location.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Annex V",
         "paragraph": "points (a)-(i)"
       },
@@ -13686,7 +13686,7 @@
       "requirement": "Notify affected persons of security breaches",
       "explanation": "Where a breach is likely to adversely affect a person to whom the\ntrust service has been provided, the TSP must notify that person\nwithout undue delay.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 19",
         "paragraph": "2"
       },
@@ -13727,7 +13727,7 @@
       "requirement": "Notify supervisory body one month before planned audits",
       "explanation": "QTSPs must inform the supervisory body at least one month before any\nplanned audits and allow the body to participate as an observer.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 20",
         "paragraph": "1a"
       },
@@ -13770,7 +13770,7 @@
       "requirement": "Provide link to trusted list when using EU trust mark",
       "explanation": "When using the EU trust mark, QTSPs must ensure a link to the relevant\ntrusted list is made available on their website.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 23",
         "paragraph": "2"
       },
@@ -13813,7 +13813,7 @@
       "requirement": "Notify supervisory body 1 month before changes, 3 months before cessation",
       "explanation": "QTSPs must inform the supervisory body at least one month before any\nchange to qualified services, or three months before ceasing activities.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(a)"
       },
@@ -13856,7 +13856,7 @@
       "requirement": "Publish clear terms and conditions before contractual relationship",
       "explanation": "Before entering into a contractual relationship, QTSPs must inform\npersons seeking to use a qualified service of the precise terms and\nconditions, including any limitations.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "2(d)"
       },
@@ -13899,7 +13899,7 @@
       "requirement": "Provide free certificate validity status information",
       "explanation": "QTSPs must provide relying parties with certificate validity/revocation\nstatus information, available per-certificate, at any time beyond\nvalidity period, automated, reliable, and free of charge.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "4"
       },
@@ -14286,7 +14286,7 @@
       "requirement": "Verify identity when issuing qualified certificates/attestations",
       "explanation": "When issuing qualified certificates or attestations, QTSPs must verify\nthe identity and any specific attributes of the person.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "1"
       },
@@ -14329,7 +14329,7 @@
       "requirement": "Use approved methods for identity verification",
       "explanation": "Identity verification must be performed using approved methods: EUDI Wallet,\nnotified eID means (LoA high), qualified signature/seal certificate,\nCAB-confirmed methods, or physical presence with evidence.",
       "legalBasis": {
-        "regulation": "910/2014",
+        "regulation": "2014/910",
         "article": "Article 24",
         "paragraph": "1a"
       },

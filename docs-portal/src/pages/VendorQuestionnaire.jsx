@@ -118,12 +118,11 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             // Convert "Article 5b" -> "article-5b", "Annex I" -> "annex-i"
             let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
 
-            // Determine if this is an annex reference (uses -section- instead of -para-)
-            const isAnnexRef = /^annex/i.test(legalBasis.article);
-            const paraPrefix = isAnnexRef ? '-section-' : '-para-';
-
+            // Build anchor - use -para- for paragraph references (including annexes)
+            // Note: -section- is only for annex numbered section headers like "1. Set of data..."
+            // Standard annex paragraph/point references use -para- like articles
             if (parsedParagraph.para) {
-                sectionId += `${paraPrefix}${parsedParagraph.para}`;
+                sectionId += `-para-${parsedParagraph.para}`;
             }
             if (parsedParagraph.point) {
                 sectionId += `-point-${parsedParagraph.point}`;

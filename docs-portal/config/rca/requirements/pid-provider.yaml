@@ -140,7 +140,7 @@ requirements:
       represents the natural person, legal person, or representative, and is
       associated with the European Digital Identity Wallet.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: 5(f)
     legalText: |
@@ -161,7 +161,7 @@ requirements:
       PID issuance must be accessible to persons with disabilities on an
       equal basis with other users, per Directive 2019/882.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: "21"
     legalText: |
@@ -218,7 +218,7 @@ requirements:
       provisions of Article 11, which assigns liability for failures in
       cross-border transactions.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: "19"
     legalText: |
@@ -253,7 +253,7 @@ requirements:
       All personal data processing by PID Providers must comply with GDPR
       and demonstrate such compliance.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: "17"
     legalText: |
@@ -406,7 +406,7 @@ requirements:
       Member States must notify the Commission of the bodies responsible for
       ensuring that PID is associated with the wallet.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: 18(c)
     legalText: |
@@ -425,7 +425,7 @@ requirements:
       Member States must notify the Commission of the mechanism allowing
       validation of person identification data.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 5a
       paragraph: 18(d)
     legalText: |

@@ -55,9 +55,41 @@ function useRegulationsIndex() {
                         lookup[normalizedId] = reg;
                     }
 
+                    // Add reversed format (NUMBER/YEAR like "910/2014" instead of "2014/910")
+                    // Many YAML files use this legacy EU regulation numbering format
+                    const parts = reg.slug.split('-');
+                    if (parts.length === 2) {
+                        const reversedId = `${parts[1]}/${parts[0]}`; // "910/2014"
+                        lookup[reversedId] = reg;
+                        // Also without leading zeros
+                        const reversedNormalized = reversedId.replace(/^0+(\d)/, '$1');
+                        if (reversedNormalized !== reversedId) {
+                            lookup[reversedNormalized] = reg;
+                        }
+                    }
+
                     // Also add by celex
                     if (reg.celex) lookup[reg.celex] = reg;
                 });
+
+                // Add common shorthand aliases for regulations
+                // These map human-readable names to their actual regulation entries
+                const aliases = {
+                    'GDPR': '2016-679',           // General Data Protection Regulation
+                    'PSD2': '2015-2366',          // Payment Services Directive 2
+                    'DORA': '2022-2554',          // Digital Operational Resilience Act
+                    'NIS2': '2022-2555',          // Network and Information Security Directive
+                    'eIDAS': '2014-910',          // eIDAS Regulation
+                    'DSA': '2022-2065',           // Digital Services Act
+                    'DMA': '2022-1925',           // Digital Markets Act
+                    'AI Act': '2024-1689',        // AI Act
+                };
+                for (const [alias, slug] of Object.entries(aliases)) {
+                    if (lookup[slug]) {
+                        lookup[alias] = lookup[slug];
+                    }
+                }
+
                 setIndex(lookup);
             })
             .catch(console.error);
@@ -118,12 +150,11 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
             // Convert "Article 5b" -> "article-5b", "Annex I" -> "annex-i"
             let sectionId = legalBasis.article.toLowerCase().replace(/\s+/g, '-');
 
-            // Determine if this is an annex reference (uses -section- instead of -para-)
-            const isAnnexRef = /^annex/i.test(legalBasis.article);
-            const paraPrefix = isAnnexRef ? '-section-' : '-para-';
-
+            // Build anchor - use -para- for paragraph references (including annexes)
+            // Note: -section- is only used for annex numbered section headers like "1. Set of data..."
+            // Standard annex paragraph/point references use -para- like articles
             if (parsedParagraph.para) {
-                sectionId += `${paraPrefix}${parsedParagraph.para}`;
+                sectionId += `-para-${parsedParagraph.para}`;
             }
             if (parsedParagraph.point) {
                 sectionId += `-point-${parsedParagraph.point}`;
@@ -228,7 +259,7 @@ function LegalBasisLink({ legalBasis, regulationsIndex }) {
                     {formatParagraphDisplay()}
                 </span>
                 <span className="rca-legal-reg">
-                    Reg. {legalBasis?.regulation}
+                    {regMeta?.sidebarTitle || regMeta?.shortTitle || `Reg. ${legalBasis?.regulation}`}
                 </span>
             </a>
 
@@ -755,14 +786,27 @@ export default function ComplianceAssessment() {
         });
     }, [data]);
 
-    // Toggle domain filter (simple toggle - no "all" case)
+    // Toggle domain filter - also auto-selects/deselects use cases in that domain
     const handleToggleCategoryFilter = useCallback((categoryId) => {
-        setCategoryFilter(prev =>
-            prev.includes(categoryId)
-                ? prev.filter(id => id !== categoryId)
-                : [...prev, categoryId]
-        );
-    }, []);
+        if (!data) return;
+
+        const categoryUseCases = Object.values(data.useCases)
+            .filter(uc => uc.category === categoryId)
+            .map(uc => uc.id);
+
+        setCategoryFilter(prev => {
+            const isRemoving = prev.includes(categoryId);
+            if (isRemoving) {
+                // Removing domain - also deselect its use cases
+                setSelectedUseCases(prevUc => prevUc.filter(id => !categoryUseCases.includes(id)));
+                return prev.filter(id => id !== categoryId);
+            } else {
+                // Adding domain - auto-select all its use cases
+                setSelectedUseCases(prevUc => [...new Set([...prevUc, ...categoryUseCases])]);
+                return [...prev, categoryId];
+            }
+        });
+    }, [data]);
 
     // Update assessment status
     const handleStatusChange = useCallback((reqId, status) => {

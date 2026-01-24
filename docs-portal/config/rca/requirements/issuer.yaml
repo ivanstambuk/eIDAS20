@@ -9,7 +9,7 @@ requirements:
       under Union or national law as responsible for the authentic source, provide
       data representing the authentic source, and identify the relevant law.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: 1(b)
     legalText: |
@@ -34,7 +34,7 @@ requirements:
       meet a level of reliability and trustworthiness equivalent to qualified
       trust service providers as defined in Article 24 of the regulation.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: "2"
     legalText: |
@@ -56,7 +56,7 @@ requirements:
       including a conformity assessment report from a conformity assessment body
       confirming compliance with Article 45f requirements.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: "3"
     legalText: |
@@ -105,7 +105,7 @@ requirements:
       other services they provide. This ensures operational isolation of the
       trust service.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45h
       paragraph: "3"
     legalText: |
@@ -197,7 +197,7 @@ requirements:
       established with its intention to start the service, along with a
       conformity assessment report.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: "1"
     legalText: |
@@ -221,7 +221,7 @@ requirements:
       services. Staff must have competence in applicable laws, security, and
       technical knowledge appropriate to the trust service.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(b)
     legalText: |
@@ -245,7 +245,7 @@ requirements:
       from the provision of trust services, in accordance with national law on
       liability.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(c)
     legalText: |
@@ -267,7 +267,7 @@ requirements:
       theft, or misappropriation of data, and against unauthorized deletion,
       alteration, or rendering of data inaccessible.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(g)
     legalText: |
@@ -289,7 +289,7 @@ requirements:
       providing evidence in legal proceedings and ensuring continuity of
       service after the provider ceases activities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(h)
     legalText: |
@@ -313,7 +313,7 @@ requirements:
       provide an interface that allows integration with European Digital Identity
       Wallets provided in accordance with Article 5a.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: "8"
     legalText: |
@@ -335,7 +335,7 @@ requirements:
       of which Member State provided the European Digital Identity Wallet. This
       ensures cross-border interoperability for all EAA issuers.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45g
       paragraph: "1"
     legalText: |
@@ -354,7 +354,7 @@ requirements:
       Providers of qualified electronic attestations of attributes must provide
       an interface that enables integration with European Digital Identity Wallets.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45g
       paragraph: "2"
     legalText: |
@@ -376,7 +376,7 @@ requirements:
       indicators, unique issuer identification, attestation identity codes,
       qualified signatures/seals, certificate locations, and validity status info.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45d
       paragraph: "1"
     legalText: |
@@ -399,7 +399,7 @@ requirements:
       attributes, validity period, unique identity code, qualified signature/seal,
       certificate location, and validity status services.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: 1(a)
     legalText: |
@@ -575,7 +575,7 @@ requirements:
       services offered by the provider or their commercial partners. This applies
       to both qualified and non-qualified EAA providers.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45h
       paragraph: "1"
     legalText: |
@@ -595,7 +595,7 @@ requirements:
       services must be kept logically separate from other data held by the provider.
       This ensures data isolation and limits data processing scope.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45h
       paragraph: "2"
     legalText: |
@@ -636,7 +636,7 @@ requirements:
       Qualified EAA issuers must ensure lawful processing of personal data
       in accordance with GDPR requirements.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 2(j)
     legalText: |
@@ -656,7 +656,7 @@ requirements:
       initial issuance, it immediately loses its legal validity. The revocation
       cannot be undone or reversed under any circumstances.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45d
       paragraph: "4"
     legalText: |
@@ -677,7 +677,7 @@ requirements:
       is revoked, it immediately loses its validity and the revocation cannot be
       reversed.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 45f
       paragraph: "4"
     legalText: |
@@ -838,7 +838,7 @@ requirements:
       the revocation request. The revocation becomes effective immediately upon
       publication. This is explicitly extended to QEAA by Art. 24(4a).
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 3-4a
     legalText: |
@@ -865,7 +865,7 @@ requirements:
       period, in an automated manner that is reliable, free of charge, and
       efficient. This is explicitly extended to QEAA by Art. 24(4a).
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 4-4a
     legalText: |
@@ -938,7 +938,7 @@ requirements:
       provider must verify the identity of the natural or legal person to whom
       the attestation is issued, using appropriate identity verification methods.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 24
       paragraph: 1-1a
     legalText: |

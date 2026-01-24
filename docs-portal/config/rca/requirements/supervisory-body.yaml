@@ -8,7 +8,7 @@ requirements:
       their territory for the EUDIW framework. These bodies must be given necessary
       powers and adequate resources for effective, efficient and independent operation.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: "1"
     legalText: |
@@ -29,7 +29,7 @@ requirements:
       Member States must designate a supervisory body for trust service supervision,
       either in their own territory or upon mutual agreement, in another Member State.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: "1"
     legalText: |
@@ -54,7 +54,7 @@ requirements:
       wallets meet all regulatory requirements through both preventive (ex ante)
       and reactive (ex post) supervisory activities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 3(a)
     legalText: |
@@ -76,7 +76,7 @@ requirements:
       When informed that EUDIW providers or their wallets infringe the regulation,
       supervisory bodies must take necessary action through ex post supervision.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 3(b)
     legalText: |
@@ -97,7 +97,7 @@ requirements:
       Supervisory bodies have the power to request any information necessary
       to monitor compliance with the regulation from EUDIW providers.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(b)
     legalText: |
@@ -115,7 +115,7 @@ requirements:
       Supervisory bodies have the power to conduct both on-site inspections
       and off-site supervision of EUDIW providers.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(d)
     legalText: |
@@ -133,7 +133,7 @@ requirements:
       Supervisory bodies can require EUDIW providers to remedy any failure
       to fulfil regulatory requirements.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(e)
     legalText: |
@@ -152,7 +152,7 @@ requirements:
       Supervisory bodies can suspend or cancel the relying party registration
       in cases of illegal or fraudulent use of the EUDIW.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(f)
     legalText: |
@@ -173,7 +173,7 @@ requirements:
       may order suspension or cessation of wallet provision, notifying other
       bodies, the Commission, relying parties and users.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: "5"
     legalText: |
@@ -201,7 +201,7 @@ requirements:
       ensure they and their services meet all regulatory requirements through
       both preventive and reactive supervision.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 3(a)
     legalText: |
@@ -224,7 +224,7 @@ requirements:
       When informed that non-qualified TSPs allegedly do not meet requirements,
       supervisory bodies must take necessary action through ex post supervision.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 3(b)
     legalText: |
@@ -246,7 +246,7 @@ requirements:
       Supervisory bodies must analyse the conformity assessment reports
       submitted by QTSPs per Articles 20(1) and 21(1).
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(c)
     legalText: |
@@ -265,7 +265,7 @@ requirements:
       Supervisory bodies can audit QTSPs directly or request a CAB to perform
       a conformity assessment at the QTSP's expense.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(e)
     legalText: |
@@ -285,7 +285,7 @@ requirements:
       Supervisory bodies have exclusive authority to grant qualified status
       to trust service providers and their services.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(g)
     legalText: |
@@ -305,7 +305,7 @@ requirements:
       Supervisory bodies must verify that QTSPs have proper termination plans
       and that information remains accessible when they cease activities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(i)
     legalText: |
@@ -326,7 +326,7 @@ requirements:
       Supervisory bodies can require trust service providers to remedy any
       failure to fulfil regulatory requirements.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(j)
     legalText: |
@@ -345,7 +345,7 @@ requirements:
       Supervisory bodies must investigate claims made by web browser providers
       regarding qualified website authentication certificates.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(k)
     legalText: |
@@ -364,7 +364,7 @@ requirements:
       Member States may require their supervisory body to establish, maintain
       and update a trust infrastructure in accordance with national law.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: "5"
     legalText: |
@@ -385,7 +385,7 @@ requirements:
       States and provide assistance in accordance with the single point of contact
       and Cooperation Group mechanisms.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(a)
     legalText: |
@@ -405,7 +405,7 @@ requirements:
       Supervisory bodies must cooperate with data protection authorities,
       informing them of personal data protection infringements and breaches.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(g)
     legalText: |
@@ -428,7 +428,7 @@ requirements:
       in other Member States through the single point of contact and Cooperation
       Group mechanisms.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(b)
     legalText: |
@@ -447,7 +447,7 @@ requirements:
       Trust service supervisory bodies must cooperate with data protection
       authorities, informing them of personal data violations and security breaches.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(f)
     legalText: |
@@ -469,7 +469,7 @@ requirements:
       Each Member State must designate a single point of contact for trust
       services, EUDIW, and notified electronic identification schemes.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46c
       paragraph: "1"
     legalText: |
@@ -488,7 +488,7 @@ requirements:
       supervisory bodies for TSPs and EUDIW providers, and with the Commission,
       ENISA, and other competent authorities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46c
       paragraph: "2"
     legalText: |
@@ -509,7 +509,7 @@ requirements:
       Supervisory bodies may seek mutual assistance from their counterparts
       in other Member States for supervision and enforcement of obligations.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46d
       paragraph: "1"
     legalText: |
@@ -531,7 +531,7 @@ requirements:
       When applying supervisory and enforcement measures, bodies must inform
       and consult the supervisory body from the other Member State concerned.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46d
       paragraph: 2(a)
     legalText: |
@@ -550,7 +550,7 @@ requirements:
       supervisory or enforcement measures, including conformity assessment
       inspections.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46d
       paragraph: 2(b)
     legalText: |
@@ -569,7 +569,7 @@ requirements:
       Where appropriate, supervisory bodies may conduct joint investigations
       with their counterparts in other Member States.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46d
       paragraph: 2(c)
     legalText: |
@@ -589,7 +589,7 @@ requirements:
       A supervisory body may refuse a request for assistance if it is
       disproportionate, outside their competence, or incompatible with the regulation.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46d
       paragraph: "3"
     legalText: |
@@ -611,7 +611,7 @@ requirements:
       which supports cross-border cooperation on trust services, EUDIW, and
       electronic identification schemes.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46e
       paragraph: "2"
     legalText: |
@@ -631,7 +631,7 @@ requirements:
       and information about implementing the regulation, assess sector developments,
       and discuss cybersecurity aspects.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46e
       paragraph: 5(c)
     legalText: |
@@ -655,7 +655,7 @@ requirements:
       The Cooperation Group organizes joint meetings with the NIS Cooperation
       Group to exchange information on cyber threats, incidents, and standards.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46e
       paragraph: 5(c)(vi)
     legalText: |
@@ -675,7 +675,7 @@ requirements:
       Through the Cooperation Group, supervisory bodies participate in
       peer reviews of electronic identification schemes before notification.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46e
       paragraph: 5(d)
     legalText: |
@@ -693,7 +693,7 @@ requirements:
       Member States must ensure their designated representatives participate
       effectively and efficiently in the Cooperation Group.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46e
       paragraph: "6"
     legalText: |
@@ -710,7 +710,7 @@ requirements:
       Member States must notify the Commission of their designated supervisory
       bodies' names and addresses, and any subsequent changes.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Articles 46a(2), 46b(2)
       paragraph: "2"
     legalText: |
@@ -729,7 +729,7 @@ requirements:
       When granting or withdrawing qualified status, supervisory bodies must
       inform the body responsible for the national trusted list.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(h)
     legalText: |
@@ -750,7 +750,7 @@ requirements:
       Member States must make their single point of contact details public
       and notify the Commission of any changes.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46c
       paragraph: "3"
     legalText: |
@@ -769,7 +769,7 @@ requirements:
       bodies must inform the relevant NIS2 competent authorities and single points
       of contact, and may require public disclosure.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: 4(c)
     legalText: |
@@ -798,7 +798,7 @@ requirements:
       When aware of significant security breaches or loss of integrity affecting
       trust services, supervisory bodies must inform the relevant NIS2 authorities.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(a)
     legalText: |
@@ -825,7 +825,7 @@ requirements:
       of breach of security and loss of integrity notifications received
       from trust service providers.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 19
       paragraph: "3"
     legalText: |
@@ -845,7 +845,7 @@ requirements:
       Each supervisory body must submit an annual report on its main activities
       to the Commission by 31 March each year.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46a
       paragraph: "6"
     legalText: |
@@ -866,7 +866,7 @@ requirements:
       Each trust service supervisory body must submit an annual report on
       its main activities to the Commission by 31 March each year.
     legalBasis:
-      regulation: 910/2014
+      regulation: "2014/910"
       article: Article 46b
       paragraph: 4(d), 6
     legalText: |
