@@ -2436,3 +2436,58 @@ The RCA tool displayed compliance requirements in a table with generous padding 
 - `VendorQuestionnaire.css` — Similar column adjustments
 - `index.css` — Reduced global `--space-8` to `--space-6` for main-content
 
+---
+
+## DEC-252: Consolidate RP-VER-002 into RP-GOV-003 (SCA/SUA Terminology)
+
+**Date:** 2026-01-24  
+**Status:** Accepted  
+
+**Context:**  
+Two RCA requirements addressed similar strong authentication obligations for the Relying Party role:
+
+| Aspect | RP-GOV-003 | RP-VER-002 |
+|--------|-----------|------------|
+| **Category** | governance | verification |
+| **Requirement Title** | "Accept EUDI Wallet where strong user authentication is mandated" | "Support wallet-based Strong Customer Authentication (SCA)" |
+| **Legal Basis** | Article 5f(2) | Article 5f(2) |
+| **Related Regulation** | None | PSD2 Article 97 |
+| **Use Cases** | payment-auth, open-bank-account, pid-online | payment-auth, open-bank-account |
+
+Both requirements cited **the same legal basis** (eIDAS 2.0 Article 5f(2)) but used different terminology:
+- **"Strong User Authentication" (SUA)** — eIDAS 2.0 term (Article 3(51))
+- **"Strong Customer Authentication" (SCA)** — PSD2 term (Article 4(30), RTS 2018/389)
+
+These are **legally distinct terms from different regulations** with nearly identical definitions (2+ factors from knowledge/possession/inherence):
+- **SUA** is the broader eIDAS term applicable to all sectors
+- **SCA** is the PSD2-specific term for payment services only
+
+**Decision:**  
+1. **Delete RP-VER-002** — It is redundant with RP-GOV-003
+2. **Enhance RP-GOV-003** by:
+   - Adding `relatedRegulation` reference to PSD2 Article 97
+   - Expanding explanation to mention PSD2 Strong Customer Authentication (SCA)
+3. **Terminology standardization rule**:
+   - Use **"strong user authentication" (SUA)** when referencing eIDAS 2.0
+   - Use **"Strong Customer Authentication (SCA)"** only when specifically discussing PSD2/RTS compliance
+   - **Never abbreviate** in requirement titles — spell out the full term
+
+**Rationale:**
+
+1. **Redundancy elimination** — RP-GOV-003 already covers Article 5f(2) for banking use cases
+2. **Misleading terminology** — RP-VER-002 used "SCA" (PSD2 term) but cited eIDAS Article 5f(2), which uses "strong user authentication" (SUA)
+3. **Scope inclusion** — RP-GOV-003 correctly includes `pid-online` because Article 5f(2) applies to ALL sectors requiring SUA, not just banking
+4. **PSD2 context preserved** — The valuable PSD2 Article 97 cross-reference moves to RP-GOV-003's `relatedRegulation` field
+
+**Terminology Clarification (added to TERMINOLOGY.md):**
+
+| Term | Abbreviation | Source | Scope |
+|------|--------------|--------|-------|
+| Strong User Authentication | SUA | eIDAS 2.0 Article 3(51) | All sectors (generic) |
+| Strong Customer Authentication | SCA | PSD2 Article 4(30), RTS 2018/389 | Payment services only |
+
+**Files modified:**
+- `config/rca/requirements/relying-party.yaml` — Deleted RP-VER-002, enhanced RP-GOV-003
+- `TERMINOLOGY.md` — Added SUA and SCA entries
+- `DECISIONS.md` — This decision record
+

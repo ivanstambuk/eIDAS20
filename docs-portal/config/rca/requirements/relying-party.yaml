@@ -1,4 +1,4 @@
-schemaVersion: 15
+schemaVersion: 16
 requirements:
   - id: RP-GOV-001
     category: governance
@@ -48,11 +48,16 @@ requirements:
     requirement: "Private sector: Accept EUDI Wallet where strong user authentication is mandated"
     explanation: |
       Private relying parties (except micro/small enterprises) must accept EUDI Wallets 
-      when strong user authentication is required by law or contract in specified sectors.
+      when strong user authentication (SUA) is required by law or contract in specified sectors.
+      For payment services, this implements "Strong Customer Authentication" (SCA) under
+      PSD2 Article 97 and the RTS (Commission Delegated Regulation (EU) 2018/389).
     legalBasis:
       regulation: 2014/910
       article: Article 5f
       paragraph: "2"
+    relatedRegulation:
+      regulation: PSD2
+      article: Article 97
     legalText: |
       Where private relying parties that provide services, with the exception of 
       microenterprises and small enterprises [...], are required by Union or national law 
@@ -1616,32 +1621,9 @@ requirements:
     roles:
       - relying_party
     useCases: all
-  - id: RP-VER-002
-    category: verification
-    requirement: Support wallet-based Strong Customer Authentication (SCA)
-    explanation: |
-      Payment service providers must accept the EUDI Wallet as a means of performing 
-      Strong Customer Authentication for payment transactions and account access.
-    legalBasis:
-      regulation: 2014/910
-      article: Article 5f
-      paragraph: "2"
-    relatedRegulation:
-      regulation: PSD2
-      article: Article 97
-    legalText: |
-      Where private relying parties that provide services [...] are required by Union or 
-      national law to use strong user authentication for online identification [...] 
-      including in the areas of [...] banking, financial services [...] those private 
-      relying parties shall [...] also accept European Digital Identity Wallets.
-    deadline: "2027-12-21"
-    roles:
-      - relying_party
-    profileFilter:
-      - private_sector
-    useCases:
-      - payment-auth
-      - open-bank-account
+  # NOTE: RP-VER-002 (SCA requirement) deleted per DEC-252.
+  # Strong Customer Authentication (SCA) is covered by RP-GOV-003,
+  # which now includes the PSD2 Article 97 cross-reference.
   - id: RP-VER-003
     category: verification
     requirement: "Public sector: Recognize e-ID from other Member States"
