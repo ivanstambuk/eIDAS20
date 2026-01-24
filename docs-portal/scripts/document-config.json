@@ -82,6 +82,13 @@
             "terminologySource": false,
             "category": "supplementary",
             "comment": "COM(2020)67 - Policy Communication setting strategic vision for European digital transformation. Referenced in eIDAS 2.0 preamble. No formal definitions but establishes policy context."
+        },
+        "2021-118": {
+            "label": "2030 Digital Compass",
+            "ragEnabled": true,
+            "terminologySource": false,
+            "category": "supplementary",
+            "comment": "COM(2021)118 - Sets 80% digital identity adoption target for 2030. Establishes four cardinal points of EU digital transformation."
         }
     },
     "defaults": {

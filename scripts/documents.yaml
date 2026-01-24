@@ -124,6 +124,15 @@ documents:
   source: manual  # Manual import from EUR-Lex — DO NOT REGENERATE
   external_url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52020DC0067
   output_dir: 01_regulation/2020_67_Digital_Future_Communication
+- celex: 52021DC0118
+  title: "Communication: 2030 Digital Compass"
+  shortTitle: 2030 Digital Compass
+  sidebarTitle: 2030 Digital Compass
+  legalType: communication
+  category: supplementary
+  source: manual  # Manual import from EUR-Lex — DO NOT REGENERATE
+  external_url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021DC0118
+  output_dir: 01_regulation/2021_118_Digital_Compass
 
 - celex: 32024R2977
   title: Person Identification Data and Electronic Attestations of Attributes
