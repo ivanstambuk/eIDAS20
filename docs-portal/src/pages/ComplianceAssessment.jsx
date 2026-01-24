@@ -50,22 +50,10 @@ function useRegulationsIndex() {
 
                     // Also add normalized version without leading zeros
                     // e.g., "2025/0848" -> "2025/848" for lookups like "2025/848"
+                    // (slugs have leading zeros: 2025-0848, but YAMLs use: 2025/848)
                     const normalizedId = idFromSlug.replace(/\/0+(\d)/, '/$1');
                     if (normalizedId !== idFromSlug) {
                         lookup[normalizedId] = reg;
-                    }
-
-                    // Add reversed format (NUMBER/YEAR like "910/2014" instead of "2014/910")
-                    // Many YAML files use this legacy EU regulation numbering format
-                    const parts = reg.slug.split('-');
-                    if (parts.length === 2) {
-                        const reversedId = `${parts[1]}/${parts[0]}`; // "910/2014"
-                        lookup[reversedId] = reg;
-                        // Also without leading zeros
-                        const reversedNormalized = reversedId.replace(/^0+(\d)/, '$1');
-                        if (reversedNormalized !== reversedId) {
-                            lookup[reversedNormalized] = reg;
-                        }
                     }
 
                     // Also add by celex
