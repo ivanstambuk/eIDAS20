@@ -52,29 +52,24 @@ This is NON-NEGOTIABLE. Violations of this rule are UNACCEPTABLE.
 
 ---
 
-### 2. Notification + Context Report
+### 2. Notification + Context Report (EXECUTE — Not Display)
 
+At the END of every response, **EXECUTE this script using `run_command`**:
 
-At the END of every response:
-
-**Use the helper script** (combines context calculation + notification):
-```bash
+```
 ~/dev/eIDAS20/scripts/agent-done.sh <ctx_remaining> "[Gemini] Brief summary"
 ```
 
-- `<ctx_remaining>` = the `<ctx_window>` value from your MOST RECENT system feedback
+**⚠️ You must INVOKE `run_command` to execute this script. Do NOT just display this in a markdown code block.**
+
+**Parameters:**
+- `<ctx_remaining>` = the number from the MOST RECENT `<ctx_window>X tokens left</ctx_window>` system feedback
 - Example: `<ctx_window>89133 tokens left</ctx_window>` → use `89133`
 - ⚠️ **NEVER hardcode or reuse a previous value** — always read fresh from the last XML response
 
-**After running, include the script output:**
-```
-📊 Context: XX% consumed
-```
-
-**At 75%+**, the script also outputs:
-```
-⚠️ Context at XX% consumed — recommend /retro then /handover for clean session
-```
+**After execution, the script outputs:**
+- `📊 Context: XX% consumed` — include this in your response
+- At 75%+: `⚠️ Context at XX% consumed — recommend /retro then /handover`
 
 **Why 75%:** Research shows LLM quality degrades around 60-70% due to "lost in the middle" problem. 75% is a safe handoff point.
 
