@@ -557,6 +557,43 @@ const RegulationViewer = () => {
         };
     }, [regulation, loading]);
 
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Article Link Click Handler (Intra-Document Navigation)
+    // 
+    // Article links are injected at build-time by rehype-article-links.js.
+    // They have href="#article-N" format which conflicts with HashRouter.
+    // This handler intercepts clicks and scrolls to the target instead.
+    // ═══════════════════════════════════════════════════════════════════════════
+    useEffect(() => {
+        if (!regulation || loading) return;
+
+        const contentEl = document.querySelector('.regulation-content');
+        if (!contentEl) return;
+
+        const handleArticleLinkClick = (e) => {
+            const link = e.target.closest('.article-link');
+            if (!link) return;
+
+            // Get the section ID from the href or data attribute
+            const href = link.getAttribute('href');
+            const sectionId = link.dataset.section || (href && href.startsWith('#') ? href.slice(1) : null);
+
+            if (!sectionId) return;
+
+            // Prevent default navigation (which would break HashRouter)
+            e.preventDefault();
+
+            // Scroll to the target section
+            scrollToSection(sectionId);
+        };
+
+        contentEl.addEventListener('click', handleArticleLinkClick);
+
+        return () => {
+            contentEl.removeEventListener('click', handleArticleLinkClick);
+        };
+    }, [regulation, loading]);
+
     // Loading state
     if (loading) {
         return (

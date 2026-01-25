@@ -60,6 +60,29 @@
     vertical-align: super;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Intra-Document Article Links
+ * 
+ * These are injected at build-time by rehype-article-links.js.
+ * They link to articles, annexes, and recitals within the same document.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+.article-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--accent-primary);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.article-link:hover,
+.article-link:focus {
+    color: var(--accent-primary);
+    text-decoration-style: solid;
+    outline: none;
+}
+
 .term-trigger {
     color: var(--accent-primary);
     text-decoration: underline;

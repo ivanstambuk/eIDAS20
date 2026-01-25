@@ -373,6 +373,28 @@ terms:
     source: EU legal terminology
     note: Relevant for GDPR adequacy decisions and trust service recognition
 
+  - term: TFEU
+    definition: >-
+      Treaty on the Functioning of the European Union. One of the two core 
+      treaties of the EU (together with TEU), establishing the constitutional 
+      basis for EU law. The TFEU lays down the competences, procedures, and 
+      institutions through which the EU exercises its powers. Key provisions 
+      include Article 114 (single market harmonisation, basis for eIDAS) and 
+      Article 218 (international agreements). Entered into force in 2009 with 
+      the Treaty of Lisbon.
+    source: Treaty of Lisbon, 2009
+    note: Referenced 4 times in eIDAS 2.0; formerly the EC Treaty (TEC)
+
+  - term: TEU
+    definition: >-
+      Treaty on European Union. One of the two core treaties of the EU (together 
+      with TFEU), establishing the fundamental principles, values, and objectives 
+      of the European Union. The TEU sets out the EU's institutional framework 
+      and provisions on common foreign and security policy. Article 4(3) establishes 
+      the principle of sincere cooperation between the EU and Member States.
+    source: Maastricht Treaty (1992), as amended by Lisbon (2009)
+    note: Foundational treaty; complements the more detailed TFEU
+
   # ═══════════════════════════════════════════════════════════════════════════
   # Advanced Privacy Technologies
   # ═══════════════════════════════════════════════════════════════════════════

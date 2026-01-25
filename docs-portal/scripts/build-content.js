@@ -27,6 +27,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeParagraphIds from './rehype-paragraph-ids.js';
 import rehypeTermLinks from './rehype-term-links.js';
 import rehypeExternalLinks from './rehype-external-links.js';
+import rehypeArticleLinks from './rehype-article-links.js';
 import rehypeStringify from 'rehype-stringify';
 
 // Use the same slugger as rehype-slug for consistent IDs
@@ -1045,6 +1046,9 @@ function createMarkdownProcessor() {
         .use(rehypeSlug)
         .use(rehypeParagraphIds)  // DEC-011 Phase 2: Add IDs to paragraphs/points
         .use(rehypeTermLinks, { terminology })  // DEC-085: Link defined terms
+        .use(rehypeArticleLinks, {              // Intra-document article cross-links
+            overridesPath: join(__dirname, '..', 'config', 'article-link-overrides.yaml')
+        })
         .use(rehypeExternalLinks, {  // EUR-Lex Deep Linking
             externalDocs: loadExternalDocs(),
             importedDocs: getImportedDocIds()
@@ -1454,10 +1458,15 @@ function build() {
     }
 
     // Write individual regulation files (without full content for smaller index)
+    let totalArticleLinks = 0;
     for (const reg of allRegulations) {
         const outputPath = join(OUTPUT_DIR, `${reg.slug}.json`);
         writeFileSync(outputPath, JSON.stringify(reg, null, 2));
-        console.log(`  ✅ ${reg.slug}.json (${reg.wordCount} words)`);
+        // Count article links in this document
+        const articleLinkCount = (reg.contentHtml?.match(/class="article-link"/g) || []).length;
+        totalArticleLinks += articleLinkCount;
+        const linkSuffix = articleLinkCount > 0 ? `, ${articleLinkCount} article links` : '';
+        console.log(`  ✅ ${reg.slug}.json (${reg.wordCount} words${linkSuffix})`);
     }
 
     // Create index file (without content, just metadata for listing)
@@ -1557,6 +1566,7 @@ function build() {
     console.log('\n✨ Build complete!');
     console.log(`   📄 Documents: ${metadata.documentCount} (${metadata.regulationCount} regulations + ${metadata.implementingActCount} implementing acts)`);
     console.log(`   📝 Total words: ${metadata.totalWordCount.toLocaleString()}`);
+    console.log(`   🔗 Article links: ${totalArticleLinks.toLocaleString()}`);
     console.log(`   🕒 Built: ${metadata.buildDate}`);
 }
 

@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-24T18:02:07.613Z",
+  "generated": "2026-01-25T22:41:36.967Z",
   "statistics": {
-    "totalTerms": 351,
-    "totalDefinitions": 488,
+    "totalTerms": 353,
+    "totalDefinitions": 490,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -487,6 +487,8 @@
     "T": [
       "technical-specification",
       "technical-validity-period",
+      "teu",
+      "tfeu",
       "third-country",
       "third-party",
       "threat-intelligence",
@@ -15023,6 +15025,86 @@
               "celex": null,
               "articleId": "article-ARF Annex 1, Section A.4",
               "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "teu",
+      "term": "TEU",
+      "sources": [
+        {
+          "definition": "Treaty on European Union. One of the two core treaties of the EU (together with TFEU), establishing the fundamental principles, values, and objectives of the European Union. The TEU sets out the EU's institutional framework and provisions on common foreign and security policy. Article 4(3) establishes the principle of sincere cooperation between the EU and Member States.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Maastricht Treaty (1992), as amended by Lisbon (2009)",
+          "articleNumber": "Maastricht Treaty (1992), as amended by Lisbon (2009)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Maastricht Treaty (1992), as amended by Lisbon (2009)",
+      "definitionGroups": [
+        {
+          "definition": "Treaty on European Union. One of the two core treaties of the EU (together with TFEU), establishing the fundamental principles, values, and objectives of the European Union. The TEU sets out the EU's institutional framework and provisions on common foreign and security policy. Article 4(3) establishes the principle of sincere cooperation between the EU and Member States.",
+          "sources": [
+            {
+              "definition": "Treaty on European Union. One of the two core treaties of the EU (together with TFEU), establishing the fundamental principles, values, and objectives of the European Union. The TEU sets out the EU's institutional framework and provisions on common foreign and security policy. Article 4(3) establishes the principle of sincere cooperation between the EU and Member States.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Maastricht Treaty (1992), as amended by Lisbon (2009)",
+              "articleNumber": "Maastricht Treaty (1992), as amended by Lisbon (2009)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "tfeu",
+      "term": "TFEU",
+      "sources": [
+        {
+          "definition": "Treaty on the Functioning of the European Union. One of the two core treaties of the EU (together with TEU), establishing the constitutional basis for EU law. The TFEU lays down the competences, procedures, and institutions through which the EU exercises its powers. Key provisions include Article 114 (single market harmonisation, basis for eIDAS) and Article 218 (international agreements). Entered into force in 2009 with the Treaty of Lisbon.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Treaty of Lisbon, 2009",
+          "articleNumber": "Treaty of Lisbon, 2009",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Treaty of Lisbon, 2009",
+      "definitionGroups": [
+        {
+          "definition": "Treaty on the Functioning of the European Union. One of the two core treaties of the EU (together with TEU), establishing the constitutional basis for EU law. The TFEU lays down the competences, procedures, and institutions through which the EU exercises its powers. Key provisions include Article 114 (single market harmonisation, basis for eIDAS) and Article 218 (international agreements). Entered into force in 2009 with the Treaty of Lisbon.",
+          "sources": [
+            {
+              "definition": "Treaty on the Functioning of the European Union. One of the two core treaties of the EU (together with TEU), establishing the constitutional basis for EU law. The TFEU lays down the competences, procedures, and institutions through which the EU exercises its powers. Key provisions include Article 114 (single market harmonisation, basis for eIDAS) and Article 218 (international agreements). Entered into force in 2009 with the Treaty of Lisbon.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Treaty of Lisbon, 2009",
+              "articleNumber": "Treaty of Lisbon, 2009",
               "displayOrder": 5
             }
           ],

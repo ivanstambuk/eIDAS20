@@ -1,0 +1,75 @@
+# Article Link Overrides
+# 
+# Manual overrides for complex article references that regex patterns can't handle.
+# These take precedence over automatic pattern matching.
+#
+# Format:
+#   "document-slug":
+#     - text: "exact text to match"
+#       links:
+#         - target: "#article-X-para-N"   # Target anchor
+#           text: "linked portion"        # Substring to link
+#           title: "optional tooltip"     # Optional hover text
+#
+# Use Cases:
+#   - Compound ranges: "Articles 15 to 22"
+#   - Complex enumerations: "Articles 8(3), 9(5), 12(2) to (9)"
+#   - Unusual formatting not covered by regex
+#
+# Workflow:
+#   1. Run build and review for unlinked references
+#   2. Add override entry here for complex cases
+#   3. Rebuild to apply
+
+# ═══════════════════════════════════════════════════════════════════════════
+# eIDAS Regulation (Consolidated)
+# ═══════════════════════════════════════════════════════════════════════════
+"2014-910":
+  # Example: compound article range
+  - text: "Articles 15 to 22"
+    links:
+      - target: "#article-15"
+        text: "15"
+      - target: "#article-22"
+        text: "22"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GDPR
+# ═══════════════════════════════════════════════════════════════════════════
+"2016-679":
+  # Example: complex point enumeration
+  - text: "Article 6(1), points (a), (c) and (f)"
+    links:
+      - target: "#article-6-para-1-point-a"
+        text: "(a)"
+      - target: "#article-6-para-1-point-c"
+        text: "(c)"
+      - target: "#article-6-para-1-point-f"
+        text: "(f)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Add more overrides as needed
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════
+# NIS2 Directive
+# ═══════════════════════════════════════════════════════════════════════════
+"2022-2555":
+  # Common compound reference in NIS2
+  - text: "Articles 21 and 23"
+    links:
+      - target: "#article-21"
+        text: "21"
+      - target: "#article-23"
+        text: "23"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DORA
+# ═══════════════════════════════════════════════════════════════════════════
+"2022-2554":
+  - text: "Articles 5 to 15"
+    links:
+      - target: "#article-5"
+        text: "5"
+      - target: "#article-15"
+        text: "15"
