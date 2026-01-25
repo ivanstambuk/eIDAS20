@@ -104,6 +104,14 @@ function getDocumentType(type, title) {
  * 
  * @param {string} headingId - The heading ID from HTML
  * @returns {string} - Formatted reference part
+ * 
+ * ⚠️ COORDINATED UPDATE REQUIRED:
+ * Multiple regex patterns below match paragraph IDs. If adding new paragraph formats
+ * (e.g., alphanumeric like 1a, 1b), update ALL patterns that contain `-para-`:
+ *   - fullHierarchyMatch (para-point-subpoint)
+ *   - pointWithParaMatch (para-point)
+ *   - paraMatch (para only)
+ * Pattern: Use `\d+[a-z]?` to match both numeric (1) and alphanumeric (1a) paragraphs.
  */
 function formatHeadingReference(headingId) {
     if (!headingId) return '';

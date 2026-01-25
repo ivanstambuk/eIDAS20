@@ -549,6 +549,22 @@ When building deep links to legal content, use these ID patterns:
 - `-para-` is for standard content references (used 99% of the time)
 - `-section-` is ONLY for numbered section headers in annexes (e.g., "1. Set of data...")
 
+**Alphanumeric Paragraphs (1a, 1b, 1c):**
+
+EU legislation uses alphanumeric paragraphs when amendments insert content between existing paragraphs.
+
+| Format | Works? | Why |
+|--------|--------|-----|
+| `- (1a) Text...` | ✅ | Recognized as list item with paragraph identifier |
+| `1a. Text...` | ❌ | Rendered as plain paragraph, no deep-link anchor |
+
+**The markdown source MUST use `- (1a)` list format** for `rehype-paragraph-ids.js` to generate anchors.
+
+**If you see missing gutter icons on alphanumeric paragraphs:**
+1. Check markdown source — is it `1a.` or `- (1a)`?
+2. Fix the format in the markdown file
+3. Rebuild with `npm run build:documents`
+
 #### Centralized Link Builder (DEC-226 — MANDATORY)
 
 **All portal URL generation MUST use the centralized link builder utility.**
