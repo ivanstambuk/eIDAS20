@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-25T22:41:36.967Z",
+  "generated": "2026-01-25T22:56:30.771Z",
   "statistics": {
-    "totalTerms": 353,
-    "totalDefinitions": 490,
+    "totalTerms": 354,
+    "totalDefinitions": 491,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -266,6 +266,7 @@
       "eu-digital-identity-wallet-trust-mark",
       "european-cybersecurity-certificate",
       "european-cybersecurity-certification-scheme",
+      "european-digital-identity-cooperation-group",
       "european-digital-identity-wallet",
       "european-standard",
       "european-standardisation-deliverable",
@@ -6032,6 +6033,49 @@
       ],
       "roles": [],
       "domains": []
+    },
+    {
+      "id": "european-digital-identity-cooperation-group",
+      "term": "European Digital Identity Cooperation Group",
+      "sources": [
+        {
+          "definition": "A group established by the Commission pursuant to Article 46e(1) of the eIDAS Regulation to support and facilitate Member States' cross-border cooperation and exchange of information on trust services, European Digital Identity Wallets, and notified electronic identification schemes. The Cooperation Group is composed of representatives appointed by Member States and the Commission, and has tasks including issuing opinions on national certification schemes, organising peer reviews, and coordinating with the NIS Cooperation Group on cybersecurity matters.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-eIDAS Regulation Article 46e",
+          "articleNumber": "eIDAS Regulation Article 46e",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-eIDAS Regulation Article 46e",
+      "definitionGroups": [
+        {
+          "definition": "A group established by the Commission pursuant to Article 46e(1) of the eIDAS Regulation to support and facilitate Member States' cross-border cooperation and exchange of information on trust services, European Digital Identity Wallets, and notified electronic identification schemes. The Cooperation Group is composed of representatives appointed by Member States and the Commission, and has tasks including issuing opinions on national certification schemes, organising peer reviews, and coordinating with the NIS Cooperation Group on cybersecurity matters.",
+          "sources": [
+            {
+              "definition": "A group established by the Commission pursuant to Article 46e(1) of the eIDAS Regulation to support and facilitate Member States' cross-border cooperation and exchange of information on trust services, European Digital Identity Wallets, and notified electronic identification schemes. The Cooperation Group is composed of representatives appointed by Member States and the Commission, and has tasks including issuing opinions on national certification schemes, organising peer reviews, and coordinating with the NIS Cooperation Group on cybersecurity matters.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-eIDAS Regulation Article 46e",
+              "articleNumber": "eIDAS Regulation Article 46e",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": [],
+      "aliases": [
+        "Cooperation Group"
+      ]
     },
     {
       "id": "european-digital-identity-wallet",

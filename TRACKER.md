@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-24 15:50 CET |
-| **Version** | V3.9.6 |
-| **Portal Stats** | 44 docs, 391K words, 338 terms, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs, 1102 total reqs |
+| **Last Updated** | 2026-01-25 23:50 CET |
+| **Version** | V3.9.7 |
+| **Portal Stats** | 44 docs, 391K words, 353 terms, 2,341 article links, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs |
 | **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 
@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-25 23:50 | **Feat: Article Cross-Linking (DEC-N/A)** — Implemented `rehype-article-links.js` plugin for intra-document navigation. 2,341 links generated (Article N, Annex I, Recital N patterns). Fixed Article 218 TFEU false positive. Added TFEU/TEU to terminology. HashRouter-compatible click handler. Override system for compound refs. |
 | 2026-01-24 17:00 | **UI: High-Density Layout + Status Column Removal (DEC-250, DEC-251)** — Simplified sidebar toggle to header-only hamburger. Reduced main-content padding (2rem→1.5rem). RCA: removed Status column + assessments state; now a pure generator tool. VCQ: similar column adjustments. |
 | 2026-01-24 16:15 | **Feat: Hybrid Sidebar Toggle (DEC-227)** — Hamburger button now visible on desktop, collapses/expands sidebar with smooth animation. State persisted in localStorage. Mobile keeps overlay behavior. |
 | 2026-01-24 15:30 | **Feat: Policy Document Imports** — Added 3 policy documents: Digital Future Communication (COM(2020)67, 4.9K words), 2030 Digital Compass (COM(2021)118, 3.7K words + Annex), Digital Decade Decision (2022/2481, 2.7K words). Completes policy context chain for EUDIW. |

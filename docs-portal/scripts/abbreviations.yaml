@@ -127,3 +127,8 @@ HSM: hardware-security-module
 # Data Protection
 # ═══════════════════════════════════════════════════════════════════════════════
 DPA: data-protection-authority
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EU Cooperation Bodies
+# ═══════════════════════════════════════════════════════════════════════════════
+Cooperation Group: european-digital-identity-cooperation-group

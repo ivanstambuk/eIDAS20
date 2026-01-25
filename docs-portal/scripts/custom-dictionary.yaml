@@ -395,6 +395,19 @@ terms:
     source: Maastricht Treaty (1992), as amended by Lisbon (2009)
     note: Foundational treaty; complements the more detailed TFEU
 
+  - term: European Digital Identity Cooperation Group
+    definition: >-
+      A group established by the Commission pursuant to Article 46e(1) of the 
+      eIDAS Regulation to support and facilitate Member States' cross-border 
+      cooperation and exchange of information on trust services, European Digital 
+      Identity Wallets, and notified electronic identification schemes. The 
+      Cooperation Group is composed of representatives appointed by Member States 
+      and the Commission, and has tasks including issuing opinions on national 
+      certification schemes, organising peer reviews, and coordinating with the 
+      NIS Cooperation Group on cybersecurity matters.
+    source: eIDAS Regulation Article 46e
+    note: Often abbreviated as "Cooperation Group" in legislation
+
   # ═══════════════════════════════════════════════════════════════════════════
   # Advanced Privacy Technologies
   # ═══════════════════════════════════════════════════════════════════════════
