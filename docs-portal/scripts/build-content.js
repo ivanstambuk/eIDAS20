@@ -26,6 +26,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeParagraphIds from './rehype-paragraph-ids.js';
 import rehypeTermLinks from './rehype-term-links.js';
+import rehypeExternalLinks from './rehype-external-links.js';
 import rehypeStringify from 'rehype-stringify';
 
 // Use the same slugger as rehype-slug for consistent IDs
@@ -259,6 +260,64 @@ function validateProtectedSources(regulations) {
  * DEC-085: Terminology Cross-Linking
  */
 let terminologyData = null;
+
+/**
+ * Load external documents registry for EUR-Lex deep linking.
+ * DEC-XXX: EUR-Lex Deep Linking
+ */
+const EXTERNAL_DOCS_PATH = join(__dirname, '..', 'config', 'external-documents.yaml');
+let externalDocsData = null;
+
+/**
+ * Load external documents configuration.
+ */
+function loadExternalDocs() {
+    if (externalDocsData) return externalDocsData;
+
+    try {
+        if (existsSync(EXTERNAL_DOCS_PATH)) {
+            const content = readFileSync(EXTERNAL_DOCS_PATH, 'utf-8');
+            externalDocsData = yaml.load(content);
+            console.log(`   📚 Loaded ${externalDocsData?.documents?.length || 0} external documents for EUR-Lex linking`);
+        }
+    } catch (err) {
+        console.warn(`   ⚠️  Could not load external documents: ${err.message}`);
+        externalDocsData = { documents: [] };
+    }
+
+    return externalDocsData || { documents: [] };
+}
+
+/**
+ * Build set of imported document IDs to exclude from external linking.
+ * These are documents in the portal that should use internal links.
+ */
+function getImportedDocIds() {
+    // Document IDs we have imported (should NOT link externally)
+    // Format: year/number or number/year
+    return new Set([
+        // Regulations
+        '2002/58', '58/2002',          // ePrivacy
+        '2008/765', '765/2008',        // Market Surveillance
+        '2012/1025', '1025/2012',      // Standardisation
+        '2014/910', '910/2014',        // eIDAS
+        '2015/1501', '1501/2015',      // eIDAS Interoperability
+        '2015/1502', '1502/2015',      // Assurance Levels
+        '2016/679', '679/2016',        // GDPR
+        '2019/881', '881/2019',        // Cybersecurity Act
+        '2022/2481', '2481/2022',      // Digital Decade
+        '2022/2554', '2554/2022',      // DORA
+        '2022/2555', '2555/2022',      // NIS2
+        '2024/1183', '1183/2024',      // eIDAS2 Amending
+        // Implementing acts (2024-2025)
+        '2024/2977', '2024/2979', '2024/2980', '2024/2981', '2024/2982',
+        '2025/846', '2025/847', '2025/848', '2025/849',
+        '2025/1566', '2025/1567', '2025/1568', '2025/1569', '2025/1570',
+        '2025/1571', '2025/1572', '2025/1929', '2025/1942', '2025/1943',
+        '2025/1944', '2025/1945', '2025/1946', '2025/2160', '2025/2162',
+        '2025/2164', '2025/2527', '2025/2530', '2025/2531', '2025/2532'
+    ]);
+}
 
 function loadTerminology() {
     if (terminologyData) return terminologyData;
@@ -986,6 +1045,10 @@ function createMarkdownProcessor() {
         .use(rehypeSlug)
         .use(rehypeParagraphIds)  // DEC-011 Phase 2: Add IDs to paragraphs/points
         .use(rehypeTermLinks, { terminology })  // DEC-085: Link defined terms
+        .use(rehypeExternalLinks, {  // EUR-Lex Deep Linking
+            externalDocs: loadExternalDocs(),
+            importedDocs: getImportedDocIds()
+        })
         .use(rehypeStringify, { allowDangerousHtml: true });
 }
 

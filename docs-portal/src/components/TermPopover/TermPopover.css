@@ -28,6 +28,38 @@
     text-decoration-style: solid;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+ * External Law Links (EUR-Lex Deep Linking)
+ * 
+ * These are injected at build-time by rehype-external-links.js.
+ * They link to external EU documents on EUR-Lex.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+.external-law-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--accent-secondary);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.external-law-link:hover,
+.external-law-link:focus {
+    color: var(--accent-secondary);
+    text-decoration-style: solid;
+    text-decoration-color: var(--accent-secondary);
+    outline: none;
+}
+
+/* External link indicator: small ↗ arrow */
+.external-law-link::after {
+    content: " ↗";
+    font-size: 0.7em;
+    opacity: 0.6;
+    vertical-align: super;
+}
+
 .term-trigger {
     color: var(--accent-primary);
     text-decoration: underline;
@@ -185,7 +217,8 @@
 }
 
 .term-popover-source-internal:hover {
-    color: var(--text-muted);  /* No hover effect - not clickable */
+    color: var(--text-muted);
+    /* No hover effect - not clickable */
 }
 
 .term-popover-article {
