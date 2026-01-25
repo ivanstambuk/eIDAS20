@@ -10,9 +10,44 @@
  * - EU legal citation format (e.g., "910/2014", "1501/2015")
  * - ELI URIs (e.g., "eli/reg/2014/910", "http://data.europa.eu/eli/reg_impl/2015/1501/oj")
  * - Partial CELEX (e.g., "1501", "2977")
+ * - Document abbreviations (e.g., "GDPR", "DORA", "NIS2", "eIDAS")
+ * - Sidebar/short titles (e.g., "Cybersecurity Act", "ePrivacy")
  */
 
 import { useState, useEffect, useMemo } from 'react';
+
+// ════════════════════════════════════════════════════════════════════════════════
+// Document Abbreviation Aliases
+// Maps common abbreviations to their document slugs
+// These are in addition to sidebarTitle/shortTitle matching
+// ════════════════════════════════════════════════════════════════════════════════
+const DOCUMENT_ALIASES = {
+    // Primary regulations
+    'eidas': '2014-910',
+    'eidas2': '2014-910',
+    'eidas 2': '2014-910',
+    'eidas2.0': '2014-910',
+    'eidas 2.0': '2014-910',
+
+    // Referenced regulations
+    'gdpr': '2016-679',
+    'dora': '2022-2554',
+    'nis2': '2022-2555',
+    'nis 2': '2022-2555',
+    'cybersecurity': '2019-881',
+    'csa': '2019-881',  // Cybersecurity Act
+    'eprivacy': '2002-58',
+    'e-privacy': '2002-58',
+
+    // Common short names
+    'accreditation': '2008-765',
+    'standardisation': '2012-1025',
+    'standardization': '2012-1025',
+    'toolbox': '2021-946',
+    'eudiw toolbox': '2021-946',
+    'digital decade': '2022-2481',
+    'digital compass': '2021-118',
+};
 
 // Singleton for the regulations index
 let regulationsIndex = null;
@@ -55,9 +90,11 @@ function normalizeForMatch(str) {
 
 /**
  * Check if a query looks like a document reference
+ * Now includes abbreviations and title matches
  */
 function looksLikeDocRef(query) {
     const trimmed = query.trim();
+    const normalizedQuery = trimmed.toLowerCase();
 
     // CELEX format: NYYYYXNNNN (e.g., 32015R1501, 32024R2977)
     if (/^\d{5}[A-Z]\d{4}$/i.test(trimmed)) return true;
@@ -81,6 +118,27 @@ function looksLikeDocRef(query) {
     // Full: http://data.europa.eu/eli/reg/2014/910/oj
     // Partial: eli/reg/2014/910 or eli/reg_impl/2015/1501
     if (/eli\/(reg|reg_impl|dec|reco?)\/\d{4}\/\d+/i.test(trimmed)) return true;
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // NEW: Abbreviation-based matching
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Check if query matches a known abbreviation alias
+    if (DOCUMENT_ALIASES[normalizedQuery]) return true;
+
+    // Check if query starts like a known abbreviation (prefix match)
+    // e.g., "gd" should match "gdpr", "eid" should match "eidas"
+    if (trimmed.length >= 3) {
+        for (const alias of Object.keys(DOCUMENT_ALIASES)) {
+            if (alias.startsWith(normalizedQuery)) return true;
+        }
+    }
+
+    // Allow text-based queries that start with letters (for title matching)
+    // Minimum 4 chars to avoid false matches, must start with a letter
+    if (trimmed.length >= 4 && /^[a-zA-Z]/.test(trimmed)) {
+        return true;
+    }
 
     return false;
 }
@@ -115,17 +173,21 @@ function convertLegalCitation(query) {
 
 /**
  * Find matching documents for a query
+ * Supports numeric identifiers, abbreviations, and title matching
  */
 function findMatches(query, index) {
     if (!query || !index || query.length < 3) return [];
 
+    const trimmedQuery = query.trim();
+    const queryLower = trimmedQuery.toLowerCase();
+
     // Check if this is an ELI URI and extract the slug
-    const eliSlug = extractFromELI(query);
+    const eliSlug = extractFromELI(trimmedQuery);
 
     // Check if this is EU legal citation format (910/2014)
-    const legalCitationSlug = convertLegalCitation(query);
+    const legalCitationSlug = convertLegalCitation(trimmedQuery);
 
-    const normalizedQuery = eliSlug || legalCitationSlug || query;
+    const normalizedQuery = eliSlug || legalCitationSlug || trimmedQuery;
 
     // For ELI, also try reversed format (2014-910 vs 910-2014)
     let reversedEliSlug = null;
@@ -136,13 +198,39 @@ function findMatches(query, index) {
 
     const normalized = normalizeForMatch(normalizedQuery);
     const normalizedReversed = reversedEliSlug ? normalizeForMatch(reversedEliSlug) : null;
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // NEW: Check for direct alias match first (highest priority for abbreviations)
+    // ═══════════════════════════════════════════════════════════════════════
+    const aliasSlug = DOCUMENT_ALIASES[queryLower];
+
     const matches = [];
 
     for (const doc of index) {
         const celexNorm = normalizeForMatch(doc.celex || '');
         const slugNorm = normalizeForMatch(doc.slug || '');
+        const sidebarTitleLower = (doc.sidebarTitle || '').toLowerCase();
+        const shortTitleLower = (doc.shortTitle || '').toLowerCase();
 
-        // Exact CELEX match (highest priority)
+        // ═══════════════════════════════════════════════════════════════════════
+        // Priority 1: Exact alias match (GDPR → 2016-679)
+        // ═══════════════════════════════════════════════════════════════════════
+        if (aliasSlug && doc.slug === aliasSlug) {
+            matches.push({ ...doc, matchType: 'alias', matchScore: 105 });
+            continue;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // Priority 2: Exact sidebarTitle match (e.g., "GDPR" = sidebarTitle)
+        // ═══════════════════════════════════════════════════════════════════════
+        if (sidebarTitleLower === queryLower) {
+            matches.push({ ...doc, matchType: 'sidebar-exact', matchScore: 102 });
+            continue;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // Priority 3: Exact CELEX match 
+        // ═══════════════════════════════════════════════════════════════════════
         if (celexNorm === normalized) {
             matches.push({ ...doc, matchType: 'celex', matchScore: 100 });
             continue;
@@ -157,6 +245,26 @@ function findMatches(query, index) {
         // Reversed ELI slug match (handles 910-2014 vs 2014-910 format)
         if (normalizedReversed && slugNorm === normalizedReversed) {
             matches.push({ ...doc, matchType: 'eli', matchScore: 95 });
+            continue;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // Priority 4: Title starts with query (e.g., "cyber" → "Cybersecurity Act")
+        // ═══════════════════════════════════════════════════════════════════════
+        if (queryLower.length >= 3 && sidebarTitleLower.startsWith(queryLower)) {
+            matches.push({ ...doc, matchType: 'sidebar-prefix', matchScore: 85 });
+            continue;
+        }
+
+        // Title contains query (e.g., "privacy" in "ePrivacy Directive")
+        if (queryLower.length >= 4 && sidebarTitleLower.includes(queryLower)) {
+            matches.push({ ...doc, matchType: 'sidebar-partial', matchScore: 75 });
+            continue;
+        }
+
+        // Short title contains query
+        if (queryLower.length >= 4 && shortTitleLower.includes(queryLower)) {
+            matches.push({ ...doc, matchType: 'short-partial', matchScore: 72 });
             continue;
         }
 
