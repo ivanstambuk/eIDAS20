@@ -120,9 +120,9 @@ function formatHeadingReference(headingId) {
     }
 
     // Phase 3: Handle full hierarchy - article-19a-para-1-point-a-subpoint-i
-    // Matches: article-{num}-para-{n}-point-{letter}-subpoint-{roman}
+    // Matches: article-{num}-para-{n or na}-point-{letter}-subpoint-{roman}
     const fullHierarchyMatch = headingId.match(
-        /^article-([^-]+(?:-[a-z])?)-para-(\d+)-point-([a-z])-subpoint-([ivx]+)$/
+        /^article-([^-]+(?:-[a-z])?)-para-(\d+[a-z]?)-point-([a-z])-subpoint-([ivx]+)$/
     );
     if (fullHierarchyMatch) {
         const articleNum = formatArticleNumber(fullHierarchyMatch[1]);
@@ -132,9 +132,9 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}(${paraNum})(${pointLetter})(${romanNumeral})`;
     }
 
-    // Phase 2+: Handle point with paragraph context - article-5a-para-1-point-a
+    // Phase 2+: Handle point with paragraph context - article-5a-para-1a-point-a
     const pointWithParaMatch = headingId.match(
-        /^article-([^-]+(?:-[a-z])?)-para-(\d+)-point-([a-z])$/
+        /^article-([^-]+(?:-[a-z])?)-para-(\d+[a-z]?)-point-([a-z])$/
     );
     if (pointWithParaMatch) {
         const articleNum = formatArticleNumber(pointWithParaMatch[1]);
@@ -143,8 +143,8 @@ function formatHeadingReference(headingId) {
         return `Article ${articleNum}(${paraNum})(${pointLetter})`;
     }
 
-    // Phase 2: Handle paragraphs - article-5a-para-1 → Article 5a(1)
-    const paraMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-para-(\d+)$/);
+    // Phase 2: Handle paragraphs - article-5a-para-1a → Article 5a(1a)
+    const paraMatch = headingId.match(/^article-([^-]+(?:-[a-z])?)-para-(\d+[a-z]?)$/);
     if (paraMatch) {
         const articleNum = formatArticleNumber(paraMatch[1]);
         const paraNum = paraMatch[2];
