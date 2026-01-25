@@ -336,27 +336,29 @@ function rehypeParagraphIds() {
 
                     for (const child of node.children) {
                         if (child.type === 'element' && child.tagName === 'li') {
-                            // Skip if this <li> is just a wrapper for a nested list
-                            // (the nested list's <li> will get the ID instead)
+                            // Check if this <li> has meaningful paragraph-starting text
+                            // This handles alphanumeric paragraphs like (1a), (1b) that have nested lists
+                            const textContent = getTextContent(child);
+
+                            // Check if text starts with a paragraph pattern
+                            // Pattern 1: eIDAS format "(18)" or "(23a)" 
+                            // Pattern 2: EU numbered format "10. 'term'" (used in 765/2008)
+                            const parenMatch = textContent.match(/^\s*\((\d+\w?)\)/);
+                            const numDotMatch = textContent.match(/^\s*(\d+)\.\s/);
+                            const hasParagraphPattern = parenMatch || numDotMatch;
+
+                            // Check if this <li> is just a wrapper for a nested list without paragraph text
                             const hasNestedList = child.children?.some(
                                 c => c.type === 'element' && (c.tagName === 'ol' || c.tagName === 'ul')
                             );
-                            // Check if there's meaningful text BEFORE the nested list
-                            const firstChild = child.children?.[0];
-                            const hasTextBeforeList = firstChild?.type === 'text' && firstChild.value?.trim();
 
-                            if (hasNestedList && !hasTextBeforeList) {
-                                // This is just a wrapper <li> - skip it
+                            if (hasNestedList && !hasParagraphPattern) {
+                                // This is just a wrapper <li> with no paragraph identifier - skip it
                                 liIndex++;
                                 continue;
                             }
 
-                            // Extract ordinal from text content
-                            // Pattern 1: eIDAS format "(18)" or "(23a)"
-                            // Pattern 2: EU numbered format "10. 'term'" (used in 765/2008)
-                            const textContent = getTextContent(child);
-                            const parenMatch = textContent.match(/^\s*\((\d+\w?)\)/);
-                            const numDotMatch = textContent.match(/^\s*(\d+)\.\s/);
+                            // Use the already-extracted paragraph number
                             const paragraphNum = parenMatch ? parenMatch[1] :
                                 numDotMatch ? numDotMatch[1] :
                                     (liIndex + 1);

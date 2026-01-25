@@ -3,18 +3,18 @@
   "regulationCount": 15,
   "implementingActCount": 29,
   "supplementaryCount": 0,
-  "totalWordCount": 391298,
-  "regulationWordCount": 290229,
+  "totalWordCount": 391316,
+  "regulationWordCount": 290247,
   "implementingActWordCount": 101069,
   "supplementaryWordCount": 0,
   "terminologyCount": 354,
   "totalArticles": 974,
-  "lastBuildTime": "2026-01-25T22:56:08.079Z",
-  "buildDate": "Jan 25, 2026",
+  "lastBuildTime": "2026-01-25T23:05:07.293Z",
+  "buildDate": "Jan 26, 2026",
   "categories": {
     "regulations": {
       "count": 15,
-      "wordCount": 290229,
+      "wordCount": 290247,
       "slugs": [
         "2002-58",
         "2008-765",
