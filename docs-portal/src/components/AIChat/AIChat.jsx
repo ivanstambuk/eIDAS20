@@ -808,7 +808,7 @@ export function AIChat() {
     };
 
     return (
-        <div className="ai-chat-widget">
+        <div className={`ai-chat-widget ${isOpen ? 'chat-open' : ''}`}>
             {isOpen && (
                 <div
                     className="chat-panel"
