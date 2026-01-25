@@ -440,6 +440,54 @@ This runs `build:terminology` → `build:search` in sequence.
 
 **Debugging tip:** If search results are wrong or missing terms, first check if the index is stale by running `npm run build:all-content`.
 
+### Build Workflow (After Content/Terminology Changes for AI Chat)
+
+**The AI Chat RAG system uses pre-computed embeddings.** After modifying:
+- Terminology (`terminology.json`)
+- Regulation content (markdown files)
+- Implementing act content
+
+Run:
+
+```bash
+npm run build:embeddings
+```
+
+**What it does:**
+1. Computes vector embeddings for all regulation articles and terminology
+2. Stores them in `public/data/embeddings.json` (~8MB)
+3. Uses hash-based invalidation (skips if sources unchanged)
+
+| Command | What It Does |
+|---------|--------------|
+| `npm run build:embeddings` | Generates embeddings → `embeddings.json` |
+| `npm run build` | Full build (includes embeddings automatically) |
+
+**When embeddings are stale:**
+- AI Chat returns irrelevant or no context for user queries
+- Terms you added won't appear in RAG retrieval
+- Console shows no warning (embeddings are loaded successfully, just outdated)
+
+**Debugging tip:** If AI Chat gives wrong answers about recent content, check:
+1. Is `embeddings.json` older than `terminology.json`? → Run `build:embeddings`
+2. Is the terminology correctly extracted? → Run `build:all-content` first
+
+### Mobile Breakpoints Reference
+
+The portal uses 4 standard breakpoints for responsive design:
+
+| Breakpoint | Width | Usage |
+|------------|-------|-------|
+| **Tablet** | `≤1024px` | Sidebar collapses, single-column layout |
+| **Mobile** | `≤640px` | Full mobile layout, typography scales down |
+| **Small Mobile** | `≤480px` | Horizontal scroll tables, tighter padding |
+| **Tiny** | `≤380px` | Minimum viable layout, reduced font sizes |
+
+**Key CSS locations:**
+- `src/styles/index.css` — Core responsive rules (Section 11)
+- `src/components/AIChat/AIChat.css` — Fullscreen chat on mobile
+- `src/components/requirements/RequirementsTable.css` — Table scroll
+
 ### 🔧 Portal Architecture Gotchas
 
 #### Dual Popover Implementations (Keep in Sync)

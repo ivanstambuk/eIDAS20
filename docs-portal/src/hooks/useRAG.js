@@ -37,7 +37,6 @@ export function useRAG() {
     const [model, setModel] = useState(null);
 
     const pipelineRef = useRef(null);
-
     /**
      * Load the pre-computed embeddings from the public folder
      */
@@ -54,6 +53,43 @@ export function useRAG() {
             }
 
             const data = await response.json();
+
+            // Dev-time staleness check: warn if embeddings might be outdated
+            if (import.meta.env.DEV && data.generatedAt) {
+                const embeddingsAge = Date.now() - new Date(data.generatedAt).getTime();
+                const hoursOld = Math.floor(embeddingsAge / (1000 * 60 * 60));
+
+                // Warn if embeddings are older than 24 hours in dev mode
+                if (hoursOld > 24) {
+                    console.warn(
+                        `⚠️ RAG embeddings are ${hoursOld} hours old (generated: ${data.generatedAt}).\n` +
+                        `If AI Chat gives wrong answers about recent content, run:\n` +
+                        `  npm run build:embeddings`
+                    );
+                }
+
+                // Also check terminology freshness by comparing counts
+                // (crude heuristic: if terminology count doesn't match, might be stale)
+                try {
+                    const termResponse = await fetch('/eIDAS20/data/terminology.json');
+                    if (termResponse.ok) {
+                        const termData = await termResponse.json();
+                        const embeddedTermCount = data.embeddings.filter(e => e.type === 'definition').length;
+                        const actualTermCount = termData.terms?.length || 0;
+
+                        if (actualTermCount > embeddedTermCount) {
+                            console.warn(
+                                `⚠️ RAG embeddings may be stale: terminology has ${actualTermCount} terms, ` +
+                                `but embeddings only index ${embeddedTermCount}.\n` +
+                                `Run: npm run build:embeddings`
+                            );
+                        }
+                    }
+                } catch {
+                    // Ignore terminology check errors
+                }
+            }
+
             setEmbeddings(data);
             setIsLoading(false);
             return data;
