@@ -290,33 +290,33 @@ function loadExternalDocs() {
 
 /**
  * Build set of imported document IDs to exclude from external linking.
- * These are documents in the portal that should use internal links.
+ * Loaded from documents.yaml - the Single Source of Truth.
+ * 
+ * These are documents in the portal that should use internal links,
+ * not EUR-Lex external links.
  */
 function getImportedDocIds() {
-    // Document IDs we have imported (should NOT link externally)
-    // Format: year/number or number/year
-    return new Set([
-        // Regulations
-        '2002/58', '58/2002',          // ePrivacy
-        '2008/765', '765/2008',        // Market Surveillance
-        '2012/1025', '1025/2012',      // Standardisation
-        '2014/910', '910/2014',        // eIDAS
-        '2015/1501', '1501/2015',      // eIDAS Interoperability
-        '2015/1502', '1502/2015',      // Assurance Levels
-        '2016/679', '679/2016',        // GDPR
-        '2019/881', '881/2019',        // Cybersecurity Act
-        '2022/2481', '2481/2022',      // Digital Decade
-        '2022/2554', '2554/2022',      // DORA
-        '2022/2555', '2555/2022',      // NIS2
-        '2024/1183', '1183/2024',      // eIDAS2 Amending
-        // Implementing acts (2024-2025)
-        '2024/2977', '2024/2979', '2024/2980', '2024/2981', '2024/2982',
-        '2025/846', '2025/847', '2025/848', '2025/849',
-        '2025/1566', '2025/1567', '2025/1568', '2025/1569', '2025/1570',
-        '2025/1571', '2025/1572', '2025/1929', '2025/1942', '2025/1943',
-        '2025/1944', '2025/1945', '2025/1946', '2025/2160', '2025/2162',
-        '2025/2164', '2025/2527', '2025/2530', '2025/2531', '2025/2532'
-    ]);
+    const ids = new Set();
+
+    // Load from documents.yaml (SSOT)
+    const docsConfig = loadDocumentsConfig();
+    if (docsConfig && docsConfig.documents) {
+        for (const doc of docsConfig.documents) {
+            // Extract year/number from CELEX
+            // CELEX formats: 32014R0910, 02014R0910-20241018, 32024R1183
+            const celexMatch = doc.celex?.match(/[03](\d{4})[RDHL](\d+)/);
+            if (celexMatch) {
+                const year = celexMatch[1];
+                const number = celexMatch[2];
+                // Add both formats for matching
+                ids.add(`${year}/${number}`);
+                ids.add(`${number}/${year}`);
+            }
+        }
+    }
+
+    console.log(`   📋 Loaded ${ids.size / 2} imported documents to exclude from external linking`);
+    return ids;
 }
 
 function loadTerminology() {

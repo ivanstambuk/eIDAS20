@@ -596,6 +596,31 @@ import { buildDocumentLink, buildSectionId, toHref } from '../utils/linkBuilder'
 const href = toHref(buildDocumentLink('2014-910', { section: 'article-5a' }));
 ```
 
+#### EUR-Lex Deep Link Anchors
+
+When linking to **external** EU documents on EUR-Lex, use these anchor patterns:
+
+| Target | Anchor Format | Example |
+|--------|---------------|---------|
+| **Article** | `#art_{N}` | `#art_5` |
+| **Article + Paragraph** | `#{NNN}.{MMM}` (zero-padded) | `#005.001` for Art 5(1) |
+| **Recital** | `#rct_{N}` | `#rct_26` |
+| **Chapter** | `#cpt_{N}` | `#cpt_II` |
+
+**⚠️ LIMITATION:** Definition points `(a)`, `(b)` and numbered lists `(1)`, `(2)` within articles do NOT have individual anchors. You can only link to the article itself.
+
+**URL format:**
+```
+https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}#{anchor}
+```
+
+**Example URLs:**
+- Article 5 of Comitology: `...CELEX:32011R0182#art_5`
+- Article 33(1) of DSA: `...CELEX:32022R2065#033.001`
+- DMA Article 2: `...CELEX:32022R1925#art_2`
+
+**Registry:** External documents are listed in `docs-portal/config/external-documents.yaml`.
+
 ---
 
 ## 🖥️ WSL Browser Testing

@@ -196,7 +196,10 @@ Different legal act types use different ELI path segments:
 |------|-------------|
 | **Content Build** | The process of converting source markdown to JSON. Command: `npm run build:documents`. |
 | **rehype Plugin** | A unified.js plugin that processes HTML AST. Used for adding IDs, transforming citations. |
+| **HAST** | HTML Abstract Syntax Tree. The intermediate representation used by rehype plugins to process HTML structure before serialization. Plugins walk HAST nodes to transform content (add IDs, inject links). |
 | **Paragraph ID Plugin** | The `rehype-paragraph-ids.js` plugin that assigns linkable IDs to articles, paragraphs, points, and recitals. |
+| **External Links Plugin** | The `rehype-external-links.js` plugin that auto-links references to external EU documents (not imported) to EUR-Lex with provision anchors. |
+| **External Document** | An EU regulation/directive referenced in imported documents but NOT in the portal itself. These are linked to EUR-Lex. Registry: `config/external-documents.yaml`. |
 | **Citation Extraction** | The process of finding and cataloging legislation references in document content. |
 | **Citation Transformation** | Converting citation text to interactive `<span>` elements with popover triggers. |
 | **CSS Specificity Cascade** | The CSS rule priority mechanism where the LAST matching rule wins when specificity is equal. Critical for understanding why accessibility rules at the bottom of `index.css` override earlier styling. Solution: use higher specificity or place rules after accessibility declarations. |
