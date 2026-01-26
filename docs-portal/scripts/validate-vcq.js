@@ -98,14 +98,15 @@ function validate() {
             }
 
             // Validate ID format (VEND-TYPE-NNN)
-            const idPattern = /^VEND-(CORE|PIF|VIF|ICT|GDP)-\d{3}$/;
+            // DEC-254: Added INT for consolidated intermediary requirements
+            const idPattern = /^VEND-(CORE|INT|ICT|GDP|PIF|VIF)-\d{3}$/;
             if (!idPattern.test(reqId)) {
                 errors.push({
                     file,
                     reqId,
                     field: 'id',
                     value: reqId,
-                    message: `Invalid ID format. Expected: VEND-{CORE|PIF|VIF|ICT|GDP}-NNN`
+                    message: `Invalid ID format. Expected: VEND-{CORE|INT|ICT|GDP}-NNN`
                 });
             }
 
@@ -142,6 +143,9 @@ function validate() {
             }
 
             // Validate applicability (MANDATORY for VCQ)
+            // DEC-254: Map legacy pif/vif to consolidated 'intermediary'
+            const legacyTypes = new Set(['pif', 'vif']);
+
             if (req.applicability) {
                 if (!Array.isArray(req.applicability)) {
                     errors.push({
@@ -149,11 +153,12 @@ function validate() {
                         reqId,
                         field: 'applicability',
                         value: req.applicability,
-                        message: `'applicability' must be an array, e.g. [pif, vif]`
+                        message: `'applicability' must be an array, e.g. [intermediary]`
                     });
                 } else {
                     for (const type of req.applicability) {
-                        if (!validIntermediaryTypes.has(type)) {
+                        // Accept legacy pif/vif (maps to intermediary) or new intermediary
+                        if (!validIntermediaryTypes.has(type) && !legacyTypes.has(type)) {
                             errors.push({
                                 file,
                                 reqId,
