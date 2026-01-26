@@ -333,10 +333,12 @@
 
 /* Tile description */
 .vcq-tile-description {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     color: var(--text-secondary);
     line-height: 1.5;
     margin-bottom: var(--space-3);
+    min-height: 3em;
+    /* Align dividing lines across tiles */
 }
 
 /* Includes list (for eIDAS tile) */
@@ -363,18 +365,18 @@
 }
 
 .vcq-tile-includes-list li {
-    font-size: 10px;
+    font-size: var(--text-xs);
     color: var(--text-secondary);
     background: var(--bg-tertiary);
-    padding: 2px 6px;
+    padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-1);
 }
 
 .vcq-includes-type {
-    font-size: 9px;
+    font-size: var(--text-xs);
     color: var(--accent-secondary);
     font-weight: 600;
 }
@@ -384,6 +386,9 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
 }
 
 .vcq-tile-option {
@@ -395,7 +400,6 @@
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all 0.15s ease;
-    flex-wrap: wrap;
 }
 
 .vcq-tile-option:hover {
@@ -413,14 +417,15 @@
 
 .vcq-option-name {
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
+    white-space: nowrap;
 }
 
 .vcq-option-hint {
     font-size: var(--text-xs);
-    color: var(--text-secondary);
-    flex: 1;
+    color: var(--text-tertiary);
+    margin-left: var(--space-1);
 }
 
 .vcq-option-extra {
@@ -1436,6 +1441,411 @@
         display: block;
         overflow-x: auto;
     }
+}
+
+/* ============================================================================
+   Organisation Role Selector (Step 1 - DEC-256)
+   ============================================================================ */
+
+.vcq-role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-4);
+}
+
+.vcq-role-card {
+    position: relative;
+    padding: var(--space-5);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vcq-role-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 200, 200, 0.1);
+}
+
+.vcq-role-card.selected {
+    border-color: var(--accent-primary);
+    background: linear-gradient(135deg,
+            rgba(0, 200, 200, 0.05) 0%,
+            rgba(0, 200, 200, 0.02) 100%);
+    box-shadow: 0 0 0 1px var(--accent-primary),
+        0 4px 20px rgba(0, 200, 200, 0.15);
+}
+
+.vcq-role-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+}
+
+.vcq-role-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vcq-role-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.vcq-role-label {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.vcq-role-short {
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-left: var(--space-2);
+    padding: 2px 6px;
+    background: rgba(0, 200, 200, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.vcq-role-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-2);
+    line-height: 1.5;
+}
+
+.vcq-role-capabilities {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+}
+
+.vcq-role-capabilities ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-role-capabilities li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
+}
+
+.vcq-role-capabilities li::before {
+    content: '✓';
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.vcq-role-specs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+    flex-wrap: wrap;
+}
+
+.vcq-specs-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.vcq-spec-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: rgba(0, 200, 200, 0.15);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+}
+
+/* ============================================================================
+   Product Category Selector (Step 2 - DEC-256)
+   ============================================================================ */
+
+.vcq-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.vcq-category-card {
+    position: relative;
+    padding: var(--space-5);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vcq-category-card:hover {
+    border-color: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(136, 57, 239, 0.1);
+}
+
+.vcq-category-card.selected {
+    border-color: var(--accent-secondary);
+    background: linear-gradient(135deg,
+            rgba(136, 57, 239, 0.05) 0%,
+            rgba(136, 57, 239, 0.02) 100%);
+    box-shadow: 0 0 0 1px var(--accent-secondary),
+        0 4px 20px rgba(136, 57, 239, 0.15);
+}
+
+.vcq-category-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+}
+
+.vcq-category-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vcq-category-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.vcq-category-label {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.vcq-category-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-2);
+    line-height: 1.5;
+    min-height: 6em;
+    /* Align dividing lines across cards */
+}
+
+.vcq-category-capabilities {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+}
+
+.vcq-category-capabilities ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-category-capabilities li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
+}
+
+.vcq-category-capabilities li::before {
+    content: '•';
+    color: var(--accent-secondary);
+}
+
+.vcq-category-role-note {
+    margin-top: var(--space-3);
+    padding: var(--space-2);
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+.vcq-category-specs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+    flex-wrap: wrap;
+}
+
+/* ============================================================================
+   Disabled Step State
+   ============================================================================ */
+
+.vcq-step-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.vcq-step-hint-disabled {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* ============================================================================
+   Selection Summary (DEC-256)
+   ============================================================================ */
+
+.vcq-selection-summary {
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: linear-gradient(135deg,
+            rgba(0, 200, 200, 0.08) 0%,
+            rgba(136, 57, 239, 0.08) 100%);
+    border: 1px solid rgba(0, 200, 200, 0.3);
+    border-radius: var(--radius-lg);
+}
+
+.vcq-selection-summary h4 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+}
+
+.vcq-summary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.vcq-summary-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-2);
+}
+
+.vcq-summary-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 140px;
+}
+
+.vcq-summary-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.vcq-summary-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+}
+
+.vcq-summary-badge.role {
+    background: rgba(0, 200, 200, 0.15);
+    color: var(--accent-primary);
+    border: 1px solid rgba(0, 200, 200, 0.3);
+}
+
+.vcq-summary-badge.category {
+    background: rgba(136, 57, 239, 0.15);
+    color: var(--accent-secondary);
+    border: 1px solid rgba(136, 57, 239, 0.3);
+}
+
+.vcq-summary-badge.spec {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-primary);
+    font-family: var(--font-mono);
+}
+
+/* ============================================================================
+   Tech Spec Badge in Architecture Tile
+   ============================================================================ */
+
+.vcq-tile-specs {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+}
+
+.vcq-tile-specs-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.vcq-tile-specs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.vcq-tech-spec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: rgba(0, 200, 200, 0.1);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+}
+
+.vcq-tech-spec-title {
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-family: var(--font-base);
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ============================================================================
+   Generate Button States
+   ============================================================================ */
+
+.vcq-generate-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.vcq-generate-hint {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-2);
+    text-align: center;
+}
+
+/* ============================================================================
+   Includes More (for truncated lists)
+   ============================================================================ */
+
+.vcq-includes-more {
+    font-style: italic;
+    color: var(--text-muted);
 }
 
 /* ============================================================================

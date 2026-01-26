@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-26 11:45 CET |
-| **Version** | V3.9.12 |
-| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 61 VCQ reqs, 559 ARF HLRs |
+| **Last Updated** | 2026-01-26 16:13 CET |
+| **Version** | V3.9.13 |
+| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 64 VCQ reqs, 559 ARF HLRs |
 | **Next Action** | Session complete. Backlog items available. |
 
 
@@ -28,7 +28,7 @@
 
 | Date | Summary |
 |------|---------|
-| 2026-01-26 11:45 | **Feat: VCQ Legal Primacy Audit (DEC-256)** — Complete audit ensuring 100% legislative backing for VCQ requirements (61 total, +6 new from gap analysis). Created RCA-VCQ mapping document showing coverage relationship. Clarified filter semantics: additive (union), source separation (Legal vs Architecture are orthogonal). Added linkedRCA validation to validate-vcq.js. Python snippets: vcq-coverage-analysis.py, rca-vcq-gap.py. 4 new TERMINOLOGY.md entries. |
+| 2026-01-26 16:13 | **Feat: RFC 2119 Obligation Levels (VCQ)** — Replaced subjective "criticality" (Critical/High/Medium/Low) with RFC 2119 obligation levels (MUST/SHOULD/MAY) derived from modal verbs in requirement text. Added `deriveObligation()` to build-vcq.js, updated UI summary cards and table badges. Fixed ARF version (1.5→2.7.3). Recategorized VEND-CORE-015/016/017 from governance→registration. Retro: documented category semantics, added RFC 2119 terms to TERMINOLOGY.md. |
 | 2026-01-26 10:28 | **Feat: VCQ Source Selection Simplification (DEC-255)** — Simplified VCQ UI from 5 toggle cards to 3-tile model: Primary (eIDAS + Implementing Acts bundled), Related Regulations (GDPR/DORA checkboxes), Architecture (ARF as checkbox item). Added "Implementation guidance" description, requirement count badges. Fixed validator for DEC-254 (VEND-INT-* format + legacy pif/vif acceptance). GitHub Pages CDN caching diagnosed as deployment issue. |
 | 2026-01-26 09:17 | **Refactor: VCQ Intermediary Consolidation (DEC-254)** — Discovered PIF/VIF were invented terms, not official regulatory terminology. ARF RPI_09 includes verification in unified RP Intermediary role. Merged pif.yaml+vif.yaml→intermediary.yaml (25 reqs, VEND-INT-*). Removed type selection from VCQ UI. Updated TERMINOLOGY.md with deprecation notices. Added AGENTS.md Rules 14-15 (terminology verification + source citation). Research docs: INTERMEDIARY_ROLE_ANALYSIS.md, VCQ_INTERMEDIARY_CONSOLIDATION.md. |
 | 2026-01-26 08:18 | **Feat: EDPS Document Analysis + Terminology** — Analyzed 5 EDPS documents (2021-2025), extracted terminology: enhanced unlinkability with 4 dimensions (w.r.t. RPs, IdPs, revocation managers, colluding parties); added 5 new terms (anonymous credentials, device binding, secure element, TEE, level of assurance). AGENTS.md: documented .agent/research/ folder, RCA = legislation only rule. Total terms: 354→359. |

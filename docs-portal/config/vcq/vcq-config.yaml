@@ -1,27 +1,32 @@
 # VCQ (Vendor Compliance Questionnaire) Configuration
 # 
-# This file configures the VCQ tool for assessing third-party intermediary vendors
-# in the EUDIW ecosystem.
+# This file configures the VCQ tool for assessing third-party products
+# that organizations use to integrate with the EUDIW ecosystem.
 #
 # Created: 2026-01-22
-# Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
-# Decisions: DEC-222 (original), DEC-254 (consolidation)
+# Updated: 2026-01-26 (DEC-256: Added Organisation Role and Product Category selection)
+# Decisions: DEC-222 (original), DEC-254 (consolidation), DEC-256 (role/category structure)
 
-schemaVersion: 1
+schemaVersion: 2
 
 # Tool metadata
 tool:
   name: "Vendor Compliance Questionnaire"
   shortName: "VCQ"
   description: |
-    Generate compliance questionnaires for Relying Parties evaluating
-    third-party RP Intermediaries in the EUDIW ecosystem.
-  version: "2.0.0"
+    Generate compliance questionnaires for organizations evaluating third-party 
+    products to integrate with the EUDIW ecosystem. Select your organisation's 
+    role, the product category you're evaluating, and the regulatory sources 
+    to include.
+  version: "3.0.0"
 
-# Intermediary Types
-# DEC-254: Consolidated from separate PIF/VIF types into a single RP Intermediary.
-# The previous distinction was not based on official regulatory terminology.
-# ARF Topic 52 treats verification as part of the unified RP Intermediary role (RPI_09).
+# =============================================================================
+# LEGACY: Intermediary Types (kept for build-vcq.js compatibility)
+# =============================================================================
+# DEC-254: This is maintained for backward compatibility with the build script
+# and existing requirements files. The new UI uses organisationRoles and 
+# productCategories instead.
+
 intermediaryTypes:
   intermediary:
     id: "intermediary"
@@ -30,69 +35,336 @@ intermediaryTypes:
     description: |
       An entity that acts on behalf of Relying Parties to interact with EUDI Wallets.
       Per Article 5b(10), intermediaries are legally deemed Relying Parties and must not 
-      store transaction content. Per ARF RPI_09, intermediaries perform both forwarding 
-      AND verification functions as a single unified role.
+      store transaction content.
     icon: "🔗"
     prefix: "VEND-INT"
-    arfTopics:
-      - "Topic 52: RP Intermediaries"
-      - "Topic 6: RP Authentication"
-      - "Topic 1: Trust Infrastructure"
-      - "Topic 7: Validity Status"
     keyCharacteristics:
       - "Receives and forwards wallet presentations"
-      - "Displays both own and RP identity to wallet users"
       - "Performs cryptographic signature validation"
       - "Maintains up-to-date Trusted Lists"
-      - "Verifies attestation revocation status"
-      - "Subject to no-storage mandate (Art. 5b(10))"
     legalBasis:
       regulation: "2014/910"
       article: "Article 5b"
       paragraph: "10"
 
-# Scope Extensions
-# Additional regulatory scopes that can be toggled on
+# Legacy scope extensions for DORA
 scopeExtensions:
   dora_ict:
     id: "dora_ict"
     label: "Extended: DORA ICT Third-Party Provisions"
     shortLabel: "DORA ICT"
     description: |
-      For RPs that are financial entities under DORA (banks, investment firms, insurers),
-      intermediary vendors qualify as ICT third-party service providers with additional
-      contractual and oversight requirements.
+      For RPs that are financial entities under DORA, intermediary vendors qualify 
+      as ICT third-party service providers with additional requirements.
     icon: "🏦"
     prefix: "VEND-ICT"
     applicableWhen: "RP is a financial entity subject to DORA"
     primaryRegulation:
       id: "2022/2554"
       articles: ["28", "29", "30", "31"]
-  
-  gdpr_processor:
-    id: "gdpr_processor"
-    label: "Extended: GDPR Data Processor Requirements"
-    shortLabel: "GDPR Processor"
-    description: |
-      When intermediaries process personal data on behalf of the RP, they act as
-      data processors under GDPR and must meet Art. 28 requirements.
-    icon: "🛡️"
-    enabled: false  # Already covered in core requirements, but can add detailed breakdown
-    prefix: "VEND-GDP"
-    primaryRegulation:
-      id: "2016/679"
-      articles: ["28", "32", "33", "34"]
 
-# Legal Sources for VCQ
+
+# =============================================================================
+# STEP 1: Organisation Roles
+# =============================================================================
+# The role(s) an organisation plays in the EUDIW ecosystem.
+# An organisation can have multiple roles (e.g., a bank is both RP and Issuer).
+
+organisationRoles:
+  relying_party:
+    id: "relying_party"
+    label: "Relying Party"
+    shortLabel: "RP"
+    description: |
+      Accept and verify credentials from EUDI Wallets. Banks, e-commerce platforms,
+      and public services must accept EUDI Wallets for authentication by Dec 2027.
+    icon: "🏢"
+    keyCapabilities:
+      - "Accept user authentication via EUDI Wallet"
+      - "Verify PID and attestations from wallets"
+      - "Strong Customer Authentication (SCA) for payments"
+      - "KYC/AML identity verification"
+    technicalSpecs:
+      - "TS5"   # RP Registration Information
+      - "TS7"   # Data Deletion Request Interface
+      - "TS12"  # Electronic Payments SCA (as RP verifier)
+    arfTopics:
+      - 6   # RP Authentication
+      - 14  # Online Presentation
+      - 27  # RP Registration
+      - 52  # RP Intermediaries
+    regulations:
+      - regulation: "2014/910"
+        articles: ["5b(10)", "6b", "6c"]
+      - regulation: "2025/848"
+        articles: ["Article 1", "Article 2", "Article 3"]
+
+  issuer:
+    id: "issuer"
+    label: "Attestation Issuer"
+    shortLabel: "Issuer"
+    description: |
+      Issue attestations into EUDI Wallets. Any entity that is an "authentic source" 
+      for data can issue attestations — banks (account ownership, SCA), universities 
+      (diplomas), employers (employment proof), healthcare providers, etc.
+    icon: "📝"
+    keyCapabilities:
+      - "Issue Electronic Attestations of Attributes (EAAs)"
+      - "Issue SCA Attestations for payment authentication (TS12)"
+      - "Credential lifecycle management (issuance, revocation)"
+      - "Integration with organisational authentic data sources"
+    technicalSpecs:
+      - "TS2"   # Notification & Publication of Provider Information
+      - "TS6"   # EUDI Wallet Issuance Protocol
+      - "TS11"  # Catalogue of Attributes and Attestations
+      - "TS12"  # Electronic Payments SCA (as issuer)
+    arfTopics:
+      - 10  # Issuing PID/Attestation
+      - 7   # Validity Status (revocation)
+      - 31  # Provider Notification/Publication
+    regulations:
+      - regulation: "2014/910"
+        articles: ["45d", "45e", "45f", "45g"]
+      - regulation: "2024/2981"
+        articles: ["Article 3", "Article 4"]
+
+# =============================================================================
+# STEP 2: Product Categories
+# =============================================================================
+# The type of third-party product being evaluated.
+# Each category maps to organisation roles and has specific requirements.
+
+productCategories:
+  connector:
+    id: "connector"
+    label: "Connector"
+    shortLabel: "Connector"
+    description: |
+      Integration API/middleware for EUDI Wallet interactions. Handles credential 
+      verification, identity verification, and RP authentication against multiple 
+      wallet providers across Member States.
+    icon: "🔌"
+    applicableRoles:
+      - "relying_party"
+    keyCapabilities:
+      - "Single API to interact with multiple EUDI Wallets"
+      - "Credential verification and signature validation"
+      - "Identity verification"
+      - "RP authentication against wallet"
+      - "Trusted List integration"
+    technicalSpecs:
+      - "TS5"   # RP Registration
+      - "TS7"   # Data Deletion Interface
+    vendorExamples: []  # Vendor-agnostic
+
+  issuance_platform:
+    id: "issuance_platform"
+    label: "Issuance Platform"
+    shortLabel: "Issuance"
+    description: |
+      Platform for creating and issuing attestations into EUDI Wallets. Provides 
+      credential management, signing infrastructure, and integration with authentic 
+      data sources.
+    icon: "📤"
+    applicableRoles:
+      - "issuer"
+    keyCapabilities:
+      - "Attestation creation and signing"
+      - "OpenID4VCI protocol implementation"
+      - "Credential lifecycle management"
+      - "Revocation management"
+      - "Integration with authentic data sources"
+    technicalSpecs:
+      - "TS2"   # Provider Information
+      - "TS6"   # Issuance Protocol
+      - "TS11"  # Catalogue of Attributes
+      - "TS12"  # SCA Attestations
+    vendorExamples: []  # Vendor-agnostic
+
+  trust_services:
+    id: "trust_services"
+    label: "Trust Services (QTSP)"
+    shortLabel: "Trust/QTSP"
+    description: |
+      Qualified Trust Service Provider capabilities including qualified signatures 
+      (QES), qualified certificates, and qualified electronic attestations (QEAAs). 
+      Required for legally binding signatures and high-assurance attestations.
+    icon: "🔐"
+    applicableRoles:
+      - "relying_party"
+      - "issuer"
+    keyCapabilities:
+      - "Qualified Electronic Signatures (QES)"
+      - "Qualified Certificates for electronic signatures"
+      - "Qualified Electronic Attestations of Attributes (QEAAs)"
+      - "Secure Cryptographic Device (QSCD)"
+      - "Remote signing services"
+    technicalSpecs:
+      - "TS3"   # Wallet Unit Attestation
+      - "TS8"   # Remote QES Protocol
+    arfTopics:
+      - 23  # Trust Services
+      - 32  # eSignatures
+    vendorExamples: []  # Vendor-agnostic
+
+# =============================================================================
+# Technical Specifications Reference
+# =============================================================================
+# Complete list of Technical Specifications for the Architecture tile
+
+technicalSpecifications:
+  TS1:
+    id: "TS1"
+    title: "Open Standards for Use with EUDI Wallet Solutions"
+    shortTitle: "Open Standards"
+    description: "Maps regulatory requirements to open industry standards"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform", "trust_services"]
+    
+  TS2:
+    id: "TS2"
+    title: "Notification and Publication of Provider Information"
+    shortTitle: "Provider Info"
+    description: "Data models for PID/QEAA/Pub-EAA Provider Information"
+    status: "published"
+    version: "1.0"
+    roles: ["issuer"]
+    categories: ["issuance_platform"]
+    
+  TS3:
+    id: "TS3"
+    title: "Wallet Unit Attestation (WUA)"
+    shortTitle: "WUA"
+    description: "Wallet Unit Attestation structure, issuance, and device binding"
+    status: "published"
+    version: "1.0"
+    roles: ["issuer"]
+    categories: ["trust_services"]
+    
+  TS4:
+    id: "TS4"
+    title: "Zero-Knowledge Proofs Overview"
+    shortTitle: "ZKP Overview"
+    description: "High-level requirements for ZKP implementation"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+    
+  TS5:
+    id: "TS5"
+    title: "Common Formats and API for RP Registration Information"
+    shortTitle: "RP Registration"
+    description: "Relying Party registration formats and APIs"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party"]
+    categories: ["connector"]
+    
+  TS6:
+    id: "TS6"
+    title: "EUDI Wallet Issuance Protocols"
+    shortTitle: "Issuance Protocol"
+    description: "OpenID4VCI-based PID and attestation issuance flows"
+    status: "published"
+    version: "1.0"
+    roles: ["issuer"]
+    categories: ["issuance_platform"]
+    
+  TS7:
+    id: "TS7"
+    title: "Common Interface for Data Deletion Request"
+    shortTitle: "Data Deletion"
+    description: "GDPR Article 17 compliant deletion request interface"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party"]
+    categories: ["connector"]
+    
+  TS8:
+    id: "TS8"
+    title: "Remote Qualified Electronic Signature/Seal Protocol"
+    shortTitle: "Remote QES"
+    description: "Remote signing with EUDI Wallet via QTSP"
+    status: "published"
+    version: "1.0"
+    roles: ["issuer"]
+    categories: ["trust_services"]
+    
+  TS9:
+    id: "TS9"
+    title: "Pseudonym Attestations"
+    shortTitle: "Pseudonyms"
+    description: "User Pseudonym and Wallet-RP Pseudonym attestations"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+    
+  TS10:
+    id: "TS10"
+    title: "Data Portability and Download (Export)"
+    shortTitle: "Data Export"
+    description: "Transaction logs, backup, recovery, and migration"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+    
+  TS11:
+    id: "TS11"
+    title: "Catalogue of Attributes and Attestations"
+    shortTitle: "Catalogue"
+    description: "Data model for catalogue of attributes and attestation rulebooks"
+    status: "published"
+    version: "1.0"
+    roles: ["issuer"]
+    categories: ["issuance_platform"]
+    
+  TS12:
+    id: "TS12"
+    title: "Electronic Payments SCA Implementation"
+    shortTitle: "Payments SCA"
+    description: "Strong Customer Authentication with EUDI Wallet for PSD2"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+    keyCapabilities:
+      - "SCA Attestation issuance (Issuer)"
+      - "SCA verification for payments (RP)"
+      - "Dynamic linking for transactions"
+      - "KB-JWT for payment authentication"
+    
+  TS13:
+    id: "TS13"
+    title: "ZKPs from Arithmetic Circuits (zkSNARKs)"
+    shortTitle: "zkSNARKs"
+    description: "Circuit-based zero-knowledge proofs"
+    status: "published"
+    version: "1.0"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+    
+  TS14:
+    id: "TS14"
+    title: "ZKPs from Multi-Message Signatures"
+    shortTitle: "MMS/BBS"
+    description: "BBS and PS signature schemes for selective disclosure"
+    status: "draft"
+    version: "0.1"
+    roles: ["relying_party", "issuer"]
+    categories: ["connector", "issuance_platform"]
+
+# =============================================================================
+# STEP 3: Legal Sources
+# =============================================================================
 # Regulations and documents from which requirements are derived
-#
-# DEC-255: Simplified to 3-tile model
-# - eidas: Core regulation + ALL implementing acts (bundled, legally inseparable)
-# - related: Situational regulations (GDPR, DORA)
-# - architecture: Technical specifications (ARF)
+
 legalSources:
-  # Primary eIDAS Framework — always comes as a package
-  # Implementing acts ARE the regulation, not optional additions
+  # Primary eIDAS Framework
   eidas:
     id: "eidas"
     label: "eIDAS Framework"
@@ -131,7 +403,7 @@ legalSources:
         portalPath: "/regulation/2025-848"
         type: "implementing_act"
 
-  # Related Regulations — situational, depends on business context
+  # Related Regulations
   related:
     id: "related"
     label: "Related Regulations"
@@ -152,26 +424,53 @@ legalSources:
         hint: "If serving financial sector entities"
         extraRequirements: 12
 
-  # Architecture — technical specifications (non-binding but practically essential)
+  # Architecture — Technical Specifications
   architecture:
     id: "architecture"
-    label: "Architecture"
-    shortLabel: "Architecture"
-    description: "Technical specifications for implementation"
+    label: "Technical Specifications"
+    shortLabel: "Tech Specs"
+    description: "EUDIW Technical Specifications for implementation guidance"
     icon: "🏗️"
     items:
       - id: "ARF_2.7.3"
-        name: "Architecture Reference Framework v2.7.3"
+        name: "Architecture Reference Framework"
         shortName: "ARF"
         version: "2.7.3"
         externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
-        extraRequirements: 20
-        topics:
-          - id: "Topic52"
-            name: "Relying Party Intermediaries"
-            hlrPrefix: "RPI_"
+      - id: "TS_all"
+        name: "Technical Specifications (TS1-TS14)"
+        shortName: "Tech Specs"
+        description: "All 14 Technical Specifications"
+        note: "Filtered by selected Role and Product Category"
 
+# =============================================================================
+# Categories for Requirements
+# =============================================================================
+
+categories:
+  - id: "protocols"
+    label: "Protocols & Interoperability"
+    icon: "🔗"
+  - id: "data_handling"
+    label: "Data Handling & Privacy"
+    icon: "🔒"
+  - id: "security"
+    label: "Security"
+    icon: "🛡️"
+  - id: "registration"
+    label: "Registration & Notification"
+    icon: "📝"
+  - id: "trust"
+    label: "Trust Infrastructure"
+    icon: "✅"
+  - id: "payments"
+    label: "Payments & SCA"
+    icon: "💳"
+
+# =============================================================================
 # Output Configuration
+# =============================================================================
+
 output:
   views:
     - id: "summary"
@@ -196,17 +495,22 @@ output:
       label: "PDF Document"
       extension: ".pdf"
 
-# Migration Notes (DEC-254)
+# =============================================================================
+# Migration Notes (DEC-256)
+# =============================================================================
 # 
-# Previous structure (v1):
-#   - intermediaryTypes.pif (12 requirements, VEND-PIF-*)
-#   - intermediaryTypes.vif (13 requirements, VEND-VIF-*)
-#   - Step 1: Select PIF and/or VIF
-#   - Step 2: Source Selection
+# Previous structure (v2 - DEC-254):
+#   - Step 1: Source Selection only
+#   - Single RP Intermediary type
 #
-# New structure (v2):
-#   - intermediaryTypes.intermediary (25 requirements, VEND-INT-*)
-#   - Step 1: Source Selection (no type selection needed)
+# New structure (v3 - DEC-256):
+#   - Step 1: Organisation Role Selection (Relying Party, Issuer)
+#   - Step 2: Product Category Selection (Connector, Issuance Platform, Trust Services)
+#   - Step 3: Source Selection (eIDAS, Related, Architecture/Tech Specs)
 #
-# Rationale: ARF RPI_09 explicitly includes verification as part of the 
-# RP Intermediary role. The PIF/VIF distinction was not official terminology.
+# Role → Product Category Mapping:
+#   - Relying Party → Connector, Trust Services
+#   - Issuer → Issuance Platform, Trust Services
+#
+# Technical Specifications are now included in the Architecture tile,
+# filtered by the selected Role and Product Category.

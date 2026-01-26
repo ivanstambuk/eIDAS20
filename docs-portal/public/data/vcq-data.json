@@ -1,27 +1,24 @@
 {
-  "generatedAt": "2026-01-26T15:10:49.092Z",
-  "schemaVersion": 1,
+  "generatedAt": "2026-01-26T18:03:59.307Z",
+  "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
     "shortName": "VCQ",
-    "description": "Generate compliance questionnaires for Relying Parties evaluating\nthird-party RP Intermediaries in the EUDIW ecosystem.\n",
-    "version": "2.0.0"
+    "description": "Generate compliance questionnaires for organizations evaluating third-party \nproducts to integrate with the EUDIW ecosystem. Select your organisation's \nrole, the product category you're evaluating, and the regulatory sources \nto include.\n",
+    "version": "3.0.0"
   },
   "intermediaryTypes": [
     {
       "id": "intermediary",
       "label": "RP Intermediary",
       "shortLabel": "Intermediary",
-      "description": "An entity that acts on behalf of Relying Parties to interact with EUDI Wallets.\nPer Article 5b(10), intermediaries are legally deemed Relying Parties and must not \nstore transaction content. Per ARF RPI_09, intermediaries perform both forwarding \nAND verification functions as a single unified role.\n",
+      "description": "An entity that acts on behalf of Relying Parties to interact with EUDI Wallets.\nPer Article 5b(10), intermediaries are legally deemed Relying Parties and must not \nstore transaction content.\n",
       "icon": "🔗",
       "prefix": "VEND-INT",
       "keyCharacteristics": [
         "Receives and forwards wallet presentations",
-        "Displays both own and RP identity to wallet users",
         "Performs cryptographic signature validation",
-        "Maintains up-to-date Trusted Lists",
-        "Verifies attestation revocation status",
-        "Subject to no-storage mandate (Art. 5b(10))"
+        "Maintains up-to-date Trusted Lists"
       ],
       "legalBasis": {
         "regulation": "2014/910",
@@ -35,7 +32,7 @@
       "id": "dora_ict",
       "label": "Extended: DORA ICT Third-Party Provisions",
       "shortLabel": "DORA ICT",
-      "description": "For RPs that are financial entities under DORA (banks, investment firms, insurers),\nintermediary vendors qualify as ICT third-party service providers with additional\ncontractual and oversight requirements.\n",
+      "description": "For RPs that are financial entities under DORA, intermediary vendors qualify \nas ICT third-party service providers with additional requirements.\n",
       "icon": "🏦",
       "prefix": "VEND-ICT",
       "enabled": true
@@ -206,25 +203,24 @@
     },
     "architecture": {
       "id": "architecture",
-      "label": "Architecture",
-      "shortLabel": "Architecture",
-      "description": "Technical specifications for implementation",
+      "label": "Technical Specifications",
+      "shortLabel": "Tech Specs",
+      "description": "EUDIW Technical Specifications for implementation guidance",
       "icon": "🏗️",
       "items": [
         {
           "id": "ARF_2.7.3",
-          "name": "Architecture Reference Framework v2.7.3",
+          "name": "Architecture Reference Framework",
           "shortName": "ARF",
           "version": "2.7.3",
-          "externalUrl": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
-          "extraRequirements": 20,
-          "topics": [
-            {
-              "id": "Topic52",
-              "name": "Relying Party Intermediaries",
-              "hlrPrefix": "RPI_"
-            }
-          ]
+          "externalUrl": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+        },
+        {
+          "id": "TS_all",
+          "name": "Technical Specifications (TS1-TS14)",
+          "shortName": "Tech Specs",
+          "description": "All 14 Technical Specifications",
+          "note": "Filtered by selected Role and Product Category"
         }
       ]
     }

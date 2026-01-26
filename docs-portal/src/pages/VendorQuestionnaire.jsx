@@ -1,19 +1,124 @@
 /**
  * VendorQuestionnaire (VCQ) Page
  * 
- * Vendor Compliance Questionnaire generator for Relying Parties evaluating
- * third-party RP Intermediaries in the EUDIW ecosystem.
+ * Vendor Compliance Questionnaire generator for organizations evaluating
+ * third-party products to integrate with the EUDIW ecosystem.
  * 
- * Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
- * - Removed Intermediary Type selection step (was Step 1)
- * - Now auto-selects the single "intermediary" type
- * - Source Selection is now the only configuration step
+ * Updated: 2026-01-26 (DEC-256: Added Organisation Role and Product Category selection)
+ * - Step 1: Organisation Role Selection (Relying Party, Issuer)
+ * - Step 2: Product Category Selection (Connector, Issuance Platform, Trust Services)
+ * - Step 3: Source Selection (eIDAS, Related Regulations, Tech Specs)
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
 import { LegalBasisLink } from '../components/LegalBasisLink';
 import './VendorQuestionnaire.css';
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const ORGANISATION_ROLES = {
+    relying_party: {
+        id: 'relying_party',
+        label: 'Relying Party',
+        shortLabel: 'RP',
+        description: 'Accept and verify credentials from EUDI Wallets. Banks, e-commerce platforms, and public services must accept EUDI Wallets for authentication by Dec 2027.',
+        icon: '🏢',
+        keyCapabilities: [
+            'Accept user authentication via EUDI Wallet',
+            'Verify PID and attestations from wallets',
+            'Strong Customer Authentication (SCA) for payments',
+            'KYC/AML identity verification'
+        ],
+        technicalSpecs: ['TS5', 'TS7', 'TS12'],
+        applicableCategories: ['connector', 'trust_services']
+    },
+    issuer: {
+        id: 'issuer',
+        label: 'Attestation Issuer',
+        shortLabel: 'Issuer',
+        description: 'Issue attestations into EUDI Wallets. Any entity that is an "authentic source" for data can issue attestations — banks (account ownership, SCA), universities (diplomas), employers (employment proof), etc.',
+        icon: '📝',
+        keyCapabilities: [
+            'Issue Electronic Attestations of Attributes (EAAs)',
+            'Issue SCA Attestations for payment authentication (TS12)',
+            'Credential lifecycle management (issuance, revocation)',
+            'Integration with organisational authentic data sources'
+        ],
+        technicalSpecs: ['TS2', 'TS6', 'TS11', 'TS12'],
+        applicableCategories: ['issuance_platform', 'trust_services']
+    }
+};
+
+const PRODUCT_CATEGORIES = {
+    connector: {
+        id: 'connector',
+        label: 'Connector',
+        shortLabel: 'Connector',
+        description: 'Integration API/middleware for EUDI Wallet interactions. Handles credential verification, identity verification, and RP authentication.',
+        icon: '🔌',
+        applicableRoles: ['relying_party'],
+        keyCapabilities: [
+            'Single API to interact with multiple EUDI Wallets',
+            'Credential verification and signature validation',
+            'Identity verification',
+            'RP authentication against wallet',
+            'Trusted List integration'
+        ],
+        technicalSpecs: ['TS5', 'TS7', 'TS12']
+    },
+    issuance_platform: {
+        id: 'issuance_platform',
+        label: 'Issuance Platform',
+        shortLabel: 'Issuance',
+        description: 'Platform for creating and issuing attestations into EUDI Wallets. Provides credential management, signing infrastructure, and data source integration.',
+        icon: '📤',
+        applicableRoles: ['issuer'],
+        keyCapabilities: [
+            'Attestation creation and signing',
+            'OpenID4VCI protocol implementation',
+            'Credential lifecycle management',
+            'Revocation management',
+            'Integration with authentic data sources'
+        ],
+        technicalSpecs: ['TS2', 'TS6', 'TS11', 'TS12']
+    },
+    trust_services: {
+        id: 'trust_services',
+        label: 'Trust Services (QTSP)',
+        shortLabel: 'Trust/QTSP',
+        description: 'Qualified Trust Service Provider capabilities including qualified signatures (QES), qualified certificates, and qualified electronic attestations (QEAAs).',
+        icon: '🔐',
+        applicableRoles: ['relying_party', 'issuer'],
+        keyCapabilities: [
+            'Qualified Electronic Signatures (QES)',
+            'Qualified Certificates for electronic signatures',
+            'Qualified Electronic Attestations of Attributes (QEAAs)',
+            'Secure Cryptographic Device (QSCD)',
+            'Remote signing services'
+        ],
+        technicalSpecs: ['TS3', 'TS8']
+    }
+};
+
+const TECHNICAL_SPECIFICATIONS = {
+    TS1: { id: 'TS1', title: 'Open Standards', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform', 'trust_services'] },
+    TS2: { id: 'TS2', title: 'Provider Information', roles: ['issuer'], categories: ['issuance_platform'] },
+    TS3: { id: 'TS3', title: 'Wallet Unit Attestation', roles: ['issuer'], categories: ['trust_services'] },
+    TS4: { id: 'TS4', title: 'ZKP Overview', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] },
+    TS5: { id: 'TS5', title: 'RP Registration', roles: ['relying_party'], categories: ['connector'] },
+    TS6: { id: 'TS6', title: 'Issuance Protocol', roles: ['issuer'], categories: ['issuance_platform'] },
+    TS7: { id: 'TS7', title: 'Data Deletion', roles: ['relying_party'], categories: ['connector'] },
+    TS8: { id: 'TS8', title: 'Remote QES', roles: ['issuer'], categories: ['trust_services'] },
+    TS9: { id: 'TS9', title: 'Pseudonyms', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] },
+    TS10: { id: 'TS10', title: 'Data Export', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] },
+    TS11: { id: 'TS11', title: 'Catalogue', roles: ['issuer'], categories: ['issuance_platform'] },
+    TS12: { id: 'TS12', title: 'Payments SCA', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] },
+    TS13: { id: 'TS13', title: 'zkSNARKs', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] },
+    TS14: { id: 'TS14', title: 'MMS/BBS', roles: ['relying_party', 'issuer'], categories: ['connector', 'issuance_platform'] }
+};
 
 // ============================================================================
 // Data Loading
@@ -38,7 +143,6 @@ function useVCQData() {
     return { data, loading, error };
 }
 
-// Load ARF HLR data for deep linking and popovers
 function useARFData() {
     const [data, setData] = useState(null);
 
@@ -46,187 +150,58 @@ function useARFData() {
         fetch(`${import.meta.env.BASE_URL}data/arf-hlr-data.json`)
             .then(res => res.ok ? res.json() : null)
             .then(setData)
-            .catch(() => setData(null)); // Graceful fallback if file doesn't exist
+            .catch(() => setData(null));
     }, []);
 
     return data;
 }
 
 // ============================================================================
-// ARFReferenceLink Component
-// Links to the official Architecture and Reference Framework on GitHub
-// Now enhanced with deep linking via imported ARF data
+// Step 1: Organisation Role Selector
 // ============================================================================
 
-function ARFReferenceLink({ arfReference, arfData }) {
-    const [showPopover, setShowPopover] = useState(false);
-    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
-    const triggerRef = useRef(null);
-    const hideTimeoutRef = useRef(null);
-
-    if (!arfReference) return null;
-
-    const { topic, hlr } = arfReference;
-
-    // Look up HLR in imported ARF data for deep link and metadata
-    const arfReq = arfData?.byHlrId?.[hlr];
-
-    // Use deep link from ARF data if available, otherwise fallback
-    const arfUrl = arfReq?.deepLink ||
-        'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
-
-    // Get display info
-    const topicTitle = arfReq?.topicTitle || topic;
-    const topicNumber = arfReq?.topicNumber || topic.replace('Topic ', '');
-    const specification = arfReq?.specification;
-    const notes = arfReq?.notes;
-    const isEmpty = arfReq?.isEmpty;
-
-    const handleMouseEnter = () => {
-        if (hideTimeoutRef.current) {
-            clearTimeout(hideTimeoutRef.current);
-        }
-
-        if (triggerRef.current) {
-            const rect = triggerRef.current.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const popoverHeight = 200; // Approximate height
-            const spaceAbove = rect.top;
-            const showBelow = spaceAbove < popoverHeight + 20;
-
-            setPopoverPosition({
-                top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
-                left: Math.max(8, Math.min(rect.left, window.innerWidth - 420))
-            });
-        }
-        setShowPopover(true);
-    };
-
-    const handleMouseLeave = () => {
-        hideTimeoutRef.current = setTimeout(() => {
-            setShowPopover(false);
-        }, 150);
-    };
-
-    const handlePopoverMouseEnter = () => {
-        if (hideTimeoutRef.current) {
-            clearTimeout(hideTimeoutRef.current);
-        }
-    };
-
-    const handlePopoverMouseLeave = () => {
-        setShowPopover(false);
-    };
-
-    return (
-        <span className="vcq-arf-wrapper">
-            <a
-                ref={triggerRef}
-                href={arfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
-                title={specification ? specification.substring(0, 200) + '...' : `View ${topic} in ARF on GitHub`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
-                <span className="vcq-arf-icon">📐</span>
-                <span className="vcq-arf-ref">{hlr}</span>
-                <span className="vcq-arf-topic">(Topic {topicNumber})</span>
-            </a>
-
-            {showPopover && arfReq && !isEmpty && (
-                <div
-                    className="vcq-arf-popover"
-                    style={{
-                        position: 'fixed',
-                        top: `${popoverPosition.top}px`,
-                        left: `${popoverPosition.left}px`,
-                    }}
-                    onMouseEnter={handlePopoverMouseEnter}
-                    onMouseLeave={handlePopoverMouseLeave}
-                >
-                    <div className="vcq-arf-popover-header">
-                        <span className="vcq-arf-popover-id">{hlr}</span>
-                        <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
-                    </div>
-                    <div className="vcq-arf-popover-title">{topicTitle}</div>
-                    <div className="vcq-arf-popover-spec">
-                        {specification?.length > 300
-                            ? specification.substring(0, 300) + '...'
-                            : specification
-                        }
-                    </div>
-                    {notes && (
-                        <div className="vcq-arf-popover-notes">
-                            <strong>Note:</strong> {notes.substring(0, 150)}...
-                        </div>
-                    )}
-                    <div className="vcq-arf-popover-action">
-                        View in ARF →
-                    </div>
-                </div>
-            )}
-        </span>
-    );
-}
-
-// ============================================================================
-// IntermediaryTypeSelector Component
-// DEC-254: This component is deprecated. The VCQ now auto-selects the single
-// RP Intermediary type. Kept for reference during transition.
-// ============================================================================
-
-function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirementsByType }) {
+function OrganisationRoleSelector({ selectedRoles, onToggle }) {
     return (
         <div className="vcq-step">
             <h3>
                 <span className="vcq-step-number">1</span>
-                Select Intermediary Type(s)
+                Select Organisation Role(s)
             </h3>
             <p className="vcq-step-hint">
-                Choose the type(s) of intermediary you are evaluating. Each type has specific compliance requirements.
+                What role(s) does your organisation play in the EUDIW ecosystem?
+                Select all that apply – many organisations (e.g., banks) act as both.
             </p>
-            <div className="vcq-type-grid">
-                {types.map(type => {
-                    const isSelected = selectedTypes.includes(type.id);
-                    const reqCount = (requirementsByType?.core?.length || 0) +
-                        (requirementsByType?.[type.id]?.length || 0);
-
+            <div className="vcq-role-grid">
+                {Object.values(ORGANISATION_ROLES).map(role => {
+                    const isSelected = selectedRoles.includes(role.id);
                     return (
                         <div
-                            key={type.id}
-                            className={`vcq-type-card ${isSelected ? 'selected' : ''}`}
-                            onClick={() => onToggle(type.id)}
+                            key={role.id}
+                            className={`vcq-role-card ${isSelected ? 'selected' : ''}`}
+                            onClick={() => onToggle(role.id)}
                         >
-                            <label className="vcq-type-header">
+                            <label className="vcq-role-header">
                                 <input
                                     type="checkbox"
                                     checked={isSelected}
-                                    onChange={() => onToggle(type.id)}
-                                    className="vcq-type-checkbox"
+                                    onChange={() => onToggle(role.id)}
+                                    className="vcq-role-checkbox"
                                 />
-                                <span className="vcq-type-icon">{type.icon}</span>
+                                <span className="vcq-role-icon">{role.icon}</span>
                                 <div>
-                                    <span className="vcq-type-label">{type.label}</span>
-                                    <span className="vcq-type-short">{type.shortLabel}</span>
+                                    <span className="vcq-role-label">{role.label}</span>
+                                    <span className="vcq-role-short">{role.shortLabel}</span>
                                 </div>
                             </label>
-                            <p className="vcq-type-desc">{type.description}</p>
-                            {type.keyCharacteristics && (
-                                <div className="vcq-type-characteristics">
-                                    <ul>
-                                        {type.keyCharacteristics.slice(0, 4).map((char, idx) => (
-                                            <li key={idx}>{char}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                            {isSelected && (
-                                <span className="vcq-type-req-count">
-                                    {reqCount} requirements
-                                </span>
-                            )}
+                            <p className="vcq-role-desc">{role.description}</p>
+                            <div className="vcq-role-capabilities">
+                                <ul>
+                                    {role.keyCapabilities.slice(0, 4).map((cap, idx) => (
+                                        <li key={idx}>{cap}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
                         </div>
                     );
                 })}
@@ -236,12 +211,121 @@ function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirements
 }
 
 // ============================================================================
-// SourceSelector Component (DEC-255: Simplified to 3-tile model)
-// Filter requirements by source group, not individual regulations
+// Step 2: Product Category Selector
 // ============================================================================
 
-function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, stats }) {
-    // Get counts from stats if available
+function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }) {
+    // Filter categories based on selected roles
+    const availableCategories = useMemo(() => {
+        if (selectedRoles.length === 0) return [];
+
+        return Object.values(PRODUCT_CATEGORIES).filter(cat =>
+            cat.applicableRoles.some(role => selectedRoles.includes(role))
+        );
+    }, [selectedRoles]);
+
+    if (selectedRoles.length === 0) {
+        return (
+            <div className="vcq-step vcq-step-disabled">
+                <h3>
+                    <span className="vcq-step-number">2</span>
+                    Select Product Category
+                </h3>
+                <p className="vcq-step-hint vcq-step-hint-disabled">
+                    ⬆️ First, select your organisation role(s) above.
+                </p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="vcq-step">
+            <h3>
+                <span className="vcq-step-number">2</span>
+                Select Product Category
+            </h3>
+            <p className="vcq-step-hint">
+                What type of third-party product are you evaluating?
+                Categories are filtered based on your selected role(s).
+            </p>
+            <div className="vcq-category-grid">
+                {availableCategories.map(cat => {
+                    const isSelected = selectedCategories.includes(cat.id);
+
+                    return (
+                        <div
+                            key={cat.id}
+                            className={`vcq-category-card ${isSelected ? 'selected' : ''}`}
+                            onClick={() => onToggle(cat.id)}
+                        >
+                            <label className="vcq-category-header">
+                                <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    onChange={() => onToggle(cat.id)}
+                                    className="vcq-category-checkbox"
+                                />
+                                <span className="vcq-category-icon">{cat.icon}</span>
+                                <div>
+                                    <span className="vcq-category-label">{cat.label}</span>
+                                </div>
+                            </label>
+                            <p className="vcq-category-desc">{cat.description}</p>
+                            <div className="vcq-category-capabilities">
+                                <ul>
+                                    {cat.keyCapabilities.slice(0, 4).map((cap, idx) => (
+                                        <li key={idx}>{cap}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// Step 3: Source Selector
+// ============================================================================
+
+function SourceSelector({
+    selectedRoles,
+    selectedCategories,
+    selectedSourceGroups,
+    onToggleGroup,
+    legalSources,
+    stats
+}) {
+    // Get applicable Technical Specifications based on role + category
+    const applicableTechSpecs = useMemo(() => {
+        if (selectedRoles.length === 0 || selectedCategories.length === 0) return [];
+
+        return Object.values(TECHNICAL_SPECIFICATIONS).filter(ts =>
+            ts.roles.some(role => selectedRoles.includes(role)) &&
+            ts.categories.some(cat => selectedCategories.includes(cat))
+        );
+    }, [selectedRoles, selectedCategories]);
+
+    const isDisabled = selectedRoles.length === 0 || selectedCategories.length === 0;
+
+    if (isDisabled) {
+        return (
+            <div className="vcq-step vcq-step-disabled">
+                <h3>
+                    <span className="vcq-step-number">3</span>
+                    Source Selection
+                </h3>
+                <p className="vcq-step-hint vcq-step-hint-disabled">
+                    ⬆️ First, select your organisation role(s) and product category above.
+                </p>
+            </div>
+        );
+    }
+
     const eidasCount = stats?.bySourceGroup?.eidas || 0;
     const gdprCount = stats?.bySourceGroup?.gdpr || 0;
     const doraCount = stats?.bySourceGroup?.dora || 0;
@@ -250,14 +334,15 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
     return (
         <div className="vcq-step">
             <h3>
-                <span className="vcq-step-number">1</span>
+                <span className="vcq-step-number">3</span>
                 Source Selection
             </h3>
             <p className="vcq-step-hint">
-                Filter requirements by regulatory source. These are <strong>filters</strong>, not opt-outs — select sources to analyze their requirements.
+                Filter requirements by regulatory source. These are <strong>filters</strong>,
+                not opt-outs — select sources to analyze their requirements.
             </p>
             <div className="vcq-source-grid vcq-source-grid-3">
-                {/* Primary Sources - eIDAS Framework (bundled) */}
+                {/* Primary Sources - eIDAS Framework */}
                 <div className={`vcq-source-tile ${selectedSourceGroups.eidas ? 'selected' : ''}`}>
                     <label className="vcq-tile-header">
                         <input
@@ -273,21 +358,20 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                         {legalSources?.eidas?.description || 'Core eIDAS Regulation and all Implementing Acts'}
                     </p>
                     <div className="vcq-tile-includes">
-                        <span className="vcq-tile-includes-label">Includes (RP-relevant acts):</span>
                         <ul className="vcq-tile-includes-list">
                             {legalSources?.eidas?.items?.map(item => (
                                 <li key={item.id}>
-                                    <span className="vcq-includes-name">{item.shortName}</span>
                                     {item.type === 'implementing_act' && (
                                         <span className="vcq-includes-type">IA</span>
                                     )}
+                                    <span className="vcq-includes-name">{item.shortName}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
 
-                {/* Related Regulations (GDPR, DORA) */}
+                {/* Related Regulations */}
                 <div className={`vcq-source-tile ${(selectedSourceGroups.gdpr || selectedSourceGroups.dora) ? 'selected' : ''}`}>
                     <div className="vcq-tile-header vcq-tile-header-multi">
                         <span className="vcq-tile-icon">{legalSources?.related?.icon || '🔗'}</span>
@@ -295,11 +379,10 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                         <span className="vcq-tile-count">{gdprCount + doraCount} reqs</span>
                     </div>
                     <p className="vcq-tile-description">
-                        {legalSources?.related?.description || 'Additional legal requirements based on your context'}
+                        {legalSources?.related?.description || 'Additional requirements based on context'}
                     </p>
                     <div className="vcq-tile-options">
                         {legalSources?.related?.items?.map(item => {
-                            // Map regulation IDs to source groups
                             const groupId = item.id === '2016/679' ? 'gdpr' : 'dora';
                             const isSelected = selectedSourceGroups[groupId];
 
@@ -315,42 +398,50 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                                     />
                                     <span className="vcq-option-name">{item.shortName}</span>
                                     {item.hint && <span className="vcq-option-hint">{item.hint}</span>}
-                                    {item.extraRequirements && (
-                                        <span className="vcq-option-extra">+{item.extraRequirements} reqs</span>
-                                    )}
                                 </label>
                             );
                         })}
                     </div>
                 </div>
 
-                {/* Architecture — technical specifications (category with items) */}
-                <div className={`vcq-source-tile ${selectedSourceGroups.arf ? 'selected' : ''}`}>
+                {/* Architecture - Non-binding sources */}
+                <div className={`vcq-source-tile ${(selectedSourceGroups.arf || selectedSourceGroups.techSpecs || selectedSourceGroups.ruleBooks) ? 'selected' : ''}`}>
                     <div className="vcq-tile-header vcq-tile-header-multi">
-                        <span className="vcq-tile-icon">{legalSources?.architecture?.icon || '🏗️'}</span>
+                        <span className="vcq-tile-icon">🏗️</span>
                         <span className="vcq-tile-title">Architecture</span>
                         <span className="vcq-tile-count">{arfCount} reqs</span>
                     </div>
                     <p className="vcq-tile-description">
-                        Implementation guidance
-                        <span className="vcq-tile-note-inline"> · Non-binding but practically essential</span>
+                        Non-binding implementation guidance, essential for interoperability
                     </p>
                     <div className="vcq-tile-options">
-                        {legalSources?.architecture?.items?.map(item => (
-                            <label
-                                key={item.id}
-                                className={`vcq-tile-option ${selectedSourceGroups.arf ? 'selected' : ''}`}
-                            >
-                                <input
-                                    type="checkbox"
-                                    checked={selectedSourceGroups.arf}
-                                    onChange={() => onToggleGroup('arf')}
-                                />
-                                <span className="vcq-option-name">{item.shortName}</span>
-                                {item.version && <span className="vcq-option-hint">v{item.version}</span>}
-                                <span className="vcq-option-extra">+{arfCount} reqs</span>
-                            </label>
-                        ))}
+                        <label className={`vcq-tile-option ${selectedSourceGroups.arf ? 'selected' : ''}`}>
+                            <input
+                                type="checkbox"
+                                checked={selectedSourceGroups.arf}
+                                onChange={() => onToggleGroup('arf')}
+                            />
+                            <span className="vcq-option-name">ARF</span>
+                            <span className="vcq-option-hint">Architecture Reference Framework</span>
+                        </label>
+                        <label className={`vcq-tile-option ${selectedSourceGroups.techSpecs ? 'selected' : ''}`}>
+                            <input
+                                type="checkbox"
+                                checked={selectedSourceGroups.techSpecs}
+                                onChange={() => onToggleGroup('techSpecs')}
+                            />
+                            <span className="vcq-option-name">Tech Specs</span>
+                            <span className="vcq-option-hint">TS1–TS14</span>
+                        </label>
+                        <label className={`vcq-tile-option ${selectedSourceGroups.ruleBooks ? 'selected' : ''}`}>
+                            <input
+                                type="checkbox"
+                                checked={selectedSourceGroups.ruleBooks}
+                                onChange={() => onToggleGroup('ruleBooks')}
+                            />
+                            <span className="vcq-option-name">Rulebooks</span>
+                            <span className="vcq-option-hint">PID & mDL</span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -359,34 +450,148 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
 }
 
 // ============================================================================
-// SummaryView Component (View A: Dashboard)
+// Selection Summary Component
+// ============================================================================
+
+function SelectionSummary({ selectedRoles, selectedCategories, applicableTechSpecs }) {
+    if (selectedRoles.length === 0) return null;
+
+    return (
+        <div className="vcq-selection-summary">
+            <h4>📋 Your Selection</h4>
+            <div className="vcq-summary-grid">
+                <div className="vcq-summary-item">
+                    <span className="vcq-summary-label">Organisation Role(s):</span>
+                    <div className="vcq-summary-badges">
+                        {selectedRoles.map(roleId => {
+                            const role = ORGANISATION_ROLES[roleId];
+                            return (
+                                <span key={roleId} className="vcq-summary-badge role">
+                                    {role.icon} {role.label}
+                                </span>
+                            );
+                        })}
+                    </div>
+                </div>
+                {selectedCategories.length > 0 && (
+                    <div className="vcq-summary-item">
+                        <span className="vcq-summary-label">Product Category:</span>
+                        <div className="vcq-summary-badges">
+                            {selectedCategories.map(catId => {
+                                const cat = PRODUCT_CATEGORIES[catId];
+                                return (
+                                    <span key={catId} className="vcq-summary-badge category">
+                                        {cat.icon} {cat.label}
+                                    </span>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// ARF Reference Link Component
+// ============================================================================
+
+function ARFReferenceLink({ arfReference, arfData }) {
+    const [showPopover, setShowPopover] = useState(false);
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+    const triggerRef = useRef(null);
+    const hideTimeoutRef = useRef(null);
+
+    if (!arfReference) return null;
+
+    const { topic, hlr } = arfReference;
+    const arfReq = arfData?.byHlrId?.[hlr];
+    const arfUrl = arfReq?.deepLink ||
+        'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
+    const topicTitle = arfReq?.topicTitle || topic;
+    const topicNumber = arfReq?.topicNumber || topic.replace('Topic ', '');
+    const specification = arfReq?.specification;
+    const notes = arfReq?.notes;
+    const isEmpty = arfReq?.isEmpty;
+
+    const handleMouseEnter = () => {
+        if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+        if (triggerRef.current) {
+            const rect = triggerRef.current.getBoundingClientRect();
+            const popoverHeight = 200;
+            const showBelow = rect.top < popoverHeight + 20;
+            setPopoverPosition({
+                top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
+                left: Math.max(8, Math.min(rect.left, window.innerWidth - 420))
+            });
+        }
+        setShowPopover(true);
+    };
+
+    const handleMouseLeave = () => {
+        hideTimeoutRef.current = setTimeout(() => setShowPopover(false), 150);
+    };
+
+    return (
+        <span className="vcq-arf-wrapper">
+            <a
+                ref={triggerRef}
+                href={arfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
+                title={specification ? specification.substring(0, 200) + '...' : `View ${topic} in ARF`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                <span className="vcq-arf-icon">📐</span>
+                <span className="vcq-arf-ref">{hlr}</span>
+                <span className="vcq-arf-topic">(Topic {topicNumber})</span>
+            </a>
+            {showPopover && arfReq && !isEmpty && (
+                <div
+                    className="vcq-arf-popover"
+                    style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
+                    onMouseEnter={() => hideTimeoutRef.current && clearTimeout(hideTimeoutRef.current)}
+                    onMouseLeave={() => setShowPopover(false)}
+                >
+                    <div className="vcq-arf-popover-header">
+                        <span className="vcq-arf-popover-id">{hlr}</span>
+                        <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
+                    </div>
+                    <div className="vcq-arf-popover-title">{topicTitle}</div>
+                    <div className="vcq-arf-popover-spec">
+                        {specification?.length > 300 ? specification.substring(0, 300) + '...' : specification}
+                    </div>
+                    {notes && (
+                        <div className="vcq-arf-popover-notes">
+                            <strong>Note:</strong> {notes.substring(0, 150)}...
+                        </div>
+                    )}
+                    <div className="vcq-arf-popover-action">View in ARF →</div>
+                </div>
+            )}
+        </span>
+    );
+}
+
+// ============================================================================
+// Summary View Component
 // ============================================================================
 
 function SummaryView({ requirements, categories, answers }) {
-    // Calculate stats per category
     const categoryStats = useMemo(() => {
         const stats = {};
-
         categories.forEach(cat => {
-            stats[cat.id] = {
-                ...cat,
-                total: 0,
-                critical: 0,
-                high: 0,
-                answered: 0,
-                compliant: 0,
-                nonCompliant: 0
-            };
+            stats[cat.id] = { ...cat, total: 0, critical: 0, high: 0, answered: 0, compliant: 0, nonCompliant: 0 };
         });
-
         requirements.forEach(req => {
             const cat = stats[req.category];
             if (!cat) return;
-
             cat.total++;
             if (req.criticality === 'critical') cat.critical++;
             if (req.criticality === 'high') cat.high++;
-
             const answer = answers[req.id]?.value;
             if (answer && answer !== 'pending') {
                 cat.answered++;
@@ -394,11 +599,9 @@ function SummaryView({ requirements, categories, answers }) {
                 if (answer === 'no') cat.nonCompliant++;
             }
         });
-
         return Object.values(stats).filter(s => s.total > 0);
     }, [requirements, categories, answers]);
 
-    // Overall RFC 2119 obligation breakdown
     const obligationBreakdown = useMemo(() => {
         const breakdown = { 'MUST': 0, 'MUST NOT': 0, 'SHOULD': 0, 'SHOULD NOT': 0, 'MAY': 0 };
         requirements.forEach(req => {
@@ -412,8 +615,6 @@ function SummaryView({ requirements, categories, answers }) {
     return (
         <div className="vcq-summary-view">
             <h3 className="vcq-summary-view-title">📊 Compliance Overview</h3>
-
-            {/* RFC 2119 Obligation Breakdown */}
             <div className="vcq-obligation-summary">
                 <div className="vcq-obl-card must">
                     <span className="vcq-obl-count">{obligationBreakdown['MUST']}</span>
@@ -428,14 +629,9 @@ function SummaryView({ requirements, categories, answers }) {
                     <span className="vcq-obl-label">MAY</span>
                 </div>
             </div>
-
-            {/* Category Cards */}
             <div className="vcq-category-cards">
                 {categoryStats.map(cat => {
-                    const progressPercent = cat.total > 0
-                        ? Math.round((cat.answered / cat.total) * 100)
-                        : 0;
-
+                    const progressPercent = cat.total > 0 ? Math.round((cat.answered / cat.total) * 100) : 0;
                     return (
                         <div key={cat.id} className="vcq-category-card">
                             <div className="vcq-category-card-header">
@@ -453,18 +649,9 @@ function SummaryView({ requirements, categories, answers }) {
                                         <span className="vcq-stat-value">{cat.critical}</span>
                                     </div>
                                 )}
-                                {cat.high > 0 && (
-                                    <div className="vcq-category-stat-row high">
-                                        <span>🟠 High Priority</span>
-                                        <span className="vcq-stat-value">{cat.high}</span>
-                                    </div>
-                                )}
                                 <div className="vcq-category-progress">
                                     <div className="vcq-progress-bar">
-                                        <div
-                                            className="vcq-progress-fill"
-                                            style={{ width: `${progressPercent}%` }}
-                                        />
+                                        <div className="vcq-progress-fill" style={{ width: `${progressPercent}%` }} />
                                     </div>
                                     <span className="vcq-progress-text">
                                         {cat.answered}/{cat.total} answered ({progressPercent}%)
@@ -480,7 +667,7 @@ function SummaryView({ requirements, categories, answers }) {
 }
 
 // ============================================================================
-// RequirementsTable Component (View B: Detailed Table)
+// Requirements Table Component
 // ============================================================================
 
 function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData }) {
@@ -495,7 +682,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
         });
     }, [requirements, filterCategory, filterObligation]);
 
-    // Group by category
     const groupedRequirements = useMemo(() => {
         const groups = {};
         for (const req of filteredRequirements) {
@@ -513,7 +699,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
         { value: 'na', label: 'N/A', icon: '➖' }
     ];
 
-    // RFC 2119 obligation class mapping
     const getObligationClass = (obligation) => {
         switch (obligation) {
             case 'MUST': return 'must';
@@ -530,21 +715,13 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
             <div className="vcq-requirements-header">
                 <h3>Questionnaire Requirements ({filteredRequirements.length})</h3>
                 <div className="vcq-requirements-filters">
-                    <select
-                        value={filterCategory}
-                        onChange={e => setFilterCategory(e.target.value)}
-                        className="vcq-filter-select"
-                    >
+                    <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)} className="vcq-filter-select">
                         <option value="all">All Categories</option>
                         {categories.map(cat => (
                             <option key={cat.id} value={cat.id}>{cat.icon} {cat.label}</option>
                         ))}
                     </select>
-                    <select
-                        value={filterObligation}
-                        onChange={e => setFilterObligation(e.target.value)}
-                        className="vcq-filter-select"
-                    >
+                    <select value={filterObligation} onChange={e => setFilterObligation(e.target.value)} className="vcq-filter-select">
                         <option value="all">All Obligations</option>
                         <option value="MUST">🔴 MUST</option>
                         <option value="SHOULD">🟠 SHOULD</option>
@@ -552,15 +729,12 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                     </select>
                 </div>
             </div>
-
             <div className="vcq-requirements-table">
                 {categories
                     .filter(cat => groupedRequirements[cat.id]?.length > 0)
                     .map(cat => (
                         <div key={cat.id} className="vcq-req-category-group">
-                            <h4 className="vcq-req-category-title">
-                                {cat.icon} {cat.label}
-                            </h4>
+                            <h4 className="vcq-req-category-title">{cat.icon} {cat.label}</h4>
                             <table className="vcq-req-table">
                                 <thead>
                                     <tr>
@@ -583,28 +757,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                         <details className="vcq-req-details">
                                                             <summary>Details</summary>
                                                             <p>{req.explanation}</p>
-                                                            {req.legalText && (
-                                                                <blockquote className="vcq-legal-text">
-                                                                    {req.legalText}
-                                                                </blockquote>
-                                                            )}
                                                         </details>
-                                                    )}
-                                                    {/* RCA Linkage - show linked RP requirements */}
-                                                    {req.linkedRCA && req.linkedRCA.length > 0 && (
-                                                        <div className="vcq-rca-link">
-                                                            <span className="vcq-rca-label">See also:</span>
-                                                            {req.linkedRCA.map((rcaId, idx) => (
-                                                                <a
-                                                                    key={rcaId}
-                                                                    href={`${import.meta.env.BASE_URL}#/rca?req=${rcaId}`}
-                                                                    className="vcq-rca-ref"
-                                                                    title={`View ${rcaId} in RCA Tool`}
-                                                                >
-                                                                    {rcaId}
-                                                                </a>
-                                                            ))}
-                                                        </div>
                                                     )}
                                                 </td>
                                                 <td className="col-obligation">
@@ -614,16 +767,10 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                 </td>
                                                 <td className="col-legal">
                                                     {req.legalBasis && (
-                                                        <LegalBasisLink
-                                                            legalBasis={req.legalBasis}
-                                                            regulationsIndex={regulationsIndex}
-                                                        />
+                                                        <LegalBasisLink legalBasis={req.legalBasis} regulationsIndex={regulationsIndex} />
                                                     )}
                                                     {req.arfReference && (
-                                                        <ARFReferenceLink
-                                                            arfReference={req.arfReference}
-                                                            arfData={arfData}
-                                                        />
+                                                        <ARFReferenceLink arfReference={req.arfReference} arfData={arfData} />
                                                     )}
                                                     {!req.legalBasis && !req.arfReference && (
                                                         <span className="vcq-no-basis">—</span>
@@ -655,16 +802,13 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
 }
 
 // ============================================================================
-// ExportPanel Component
+// Export Panel Component
 // ============================================================================
 
-function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroups, data }) {
+function ExportPanel({ requirements, answers, selectedRoles, selectedCategories, selectedSourceGroups, data }) {
     const handleExportMarkdown = () => {
-        const typeLabels = selectedTypes.map(id =>
-            data.intermediaryTypes.find(t => t.id === id)?.label || id
-        ).join(', ');
-
-        // DEC-255: Format source groups for display
+        const roleLabels = selectedRoles.map(id => ORGANISATION_ROLES[id]?.label || id).join(', ');
+        const categoryLabels = selectedCategories.map(id => PRODUCT_CATEGORIES[id]?.label || id).join(', ');
         const activeSources = Object.entries(selectedSourceGroups)
             .filter(([_, isSelected]) => isSelected)
             .map(([group]) => group.toUpperCase())
@@ -672,12 +816,12 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
 
         let md = `# Vendor Compliance Questionnaire\n\n`;
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
-        md += `**Intermediary Type(s):** ${typeLabels}\n\n`;
+        md += `**Organisation Role(s):** ${roleLabels}\n\n`;
+        md += `**Product Category:** ${categoryLabels}\n\n`;
         md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
         md += `**Total Requirements:** ${requirements.length}\n\n`;
         md += `---\n\n`;
 
-        // Group by category
         const grouped = {};
         requirements.forEach(req => {
             if (!grouped[req.category]) grouped[req.category] = [];
@@ -698,16 +842,14 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
                 md += `### ${req.id}\n\n`;
                 md += `**Requirement:** ${req.requirement}\n\n`;
                 md += `**Obligation:** ${req.obligation}\n\n`;
-                md += `**Legal Basis:** ${req.legalBasis?.article} (Reg. ${req.legalBasis?.regulation})\n\n`;
-                md += `**Response:** ${answerIcon} ${answer}\n\n`;
-                if (req.explanation) {
-                    md += `**Details:** ${req.explanation}\n\n`;
+                if (req.legalBasis) {
+                    md += `**Legal Basis:** ${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})\n\n`;
                 }
+                md += `**Response:** ${answerIcon} ${answer}\n\n`;
                 md += `---\n\n`;
             });
         });
 
-        // Download
         const blob = new Blob([md], { type: 'text/markdown' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -717,266 +859,12 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
         URL.revokeObjectURL(url);
     };
 
-    const handleExportPDF = () => {
-        const typeLabels = selectedTypes.map(id =>
-            data.intermediaryTypes.find(t => t.id === id)?.label || id
-        ).join(', ');
-
-        // Group requirements by category
-        const grouped = {};
-        requirements.forEach(req => {
-            if (!grouped[req.category]) grouped[req.category] = [];
-            grouped[req.category].push(req);
-        });
-
-        // Create print content
-        const printContent = document.createElement('div');
-        printContent.id = 'vcq-print-container';
-        printContent.innerHTML = `
-            <style>
-                @media print {
-                    body * { visibility: hidden; }
-                    #vcq-print-container, #vcq-print-container * { visibility: visible; }
-                    #vcq-print-container {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                        font-size: 11pt;
-                        line-height: 1.4;
-                        color: #1a1a1a;
-                    }
-                }
-                #vcq-print-container {
-                    padding: 20px;
-                    max-width: 800px;
-                    margin: 0 auto;
-                }
-                .vcq-pdf-header {
-                    text-align: center;
-                    margin-bottom: 24px;
-                    padding-bottom: 16px;
-                    border-bottom: 2px solid #00c8c8;
-                }
-                .vcq-pdf-title {
-                    font-size: 24pt;
-                    font-weight: 700;
-                    color: #0a2a3a;
-                    margin: 0 0 8px 0;
-                }
-                .vcq-pdf-subtitle {
-                    font-size: 10pt;
-                    color: #666;
-                }
-                .vcq-pdf-meta {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 12px;
-                    margin-bottom: 24px;
-                    padding: 16px;
-                    background: #f8fafc;
-                    border-radius: 8px;
-                }
-                .vcq-pdf-meta-item {
-                    font-size: 10pt;
-                }
-                .vcq-pdf-meta-label {
-                    font-weight: 600;
-                    color: #374151;
-                }
-                .vcq-pdf-meta-value {
-                    color: #1f2937;
-                }
-                .vcq-pdf-category {
-                    margin-bottom: 20px;
-                    page-break-inside: avoid;
-                }
-                .vcq-pdf-category-title {
-                    font-size: 14pt;
-                    font-weight: 600;
-                    color: #0a2a3a;
-                    margin: 0 0 12px 0;
-                    padding: 8px 12px;
-                    background: linear-gradient(90deg, #e0f7fa, #ffffff);
-                    border-left: 4px solid #00c8c8;
-                }
-                .vcq-pdf-req {
-                    margin-bottom: 16px;
-                    padding: 12px;
-                    border: 1px solid #e5e7eb;
-                    border-radius: 6px;
-                    page-break-inside: avoid;
-                }
-                .vcq-pdf-req-header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 8px;
-                }
-                .vcq-pdf-req-id {
-                    font-family: 'Consolas', 'Monaco', monospace;
-                    font-size: 10pt;
-                    color: #00a8a8;
-                    font-weight: 600;
-                }
-                .vcq-pdf-obligation {
-                    font-size: 9pt;
-                    font-weight: 600;
-                    font-family: 'Consolas', 'Monaco', monospace;
-                    padding: 2px 8px;
-                    border-radius: 12px;
-                }
-                .vcq-pdf-obligation.must {
-                    background: #fee2e2;
-                    color: #dc2626;
-                }
-                .vcq-pdf-obligation.should {
-                    background: #fef3c7;
-                    color: #d97706;
-                }
-                .vcq-pdf-obligation.may {
-                    background: #dcfce7;
-                    color: #16a34a;
-                }
-                .vcq-pdf-req-text {
-                    font-size: 11pt;
-                    color: #1f2937;
-                    margin-bottom: 8px;
-                }
-                .vcq-pdf-req-details {
-                    font-size: 9pt;
-                    color: #6b7280;
-                }
-                .vcq-pdf-legal {
-                    font-size: 9pt;
-                    color: #4b5563;
-                    font-style: italic;
-                }
-                .vcq-pdf-response {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    margin-top: 8px;
-                    padding-top: 8px;
-                    border-top: 1px dashed #e5e7eb;
-                }
-                .vcq-pdf-response-label {
-                    font-size: 9pt;
-                    font-weight: 600;
-                    color: #374151;
-                }
-                .vcq-pdf-response-value {
-                    font-size: 10pt;
-                    font-weight: 500;
-                }
-                .vcq-pdf-response-value.yes { color: #16a34a; }
-                .vcq-pdf-response-value.no { color: #dc2626; }
-                .vcq-pdf-response-value.partial { color: #d97706; }
-                .vcq-pdf-response-value.na { color: #6b7280; }
-                .vcq-pdf-response-value.pending { color: #9ca3af; }
-                .vcq-pdf-footer {
-                    margin-top: 24px;
-                    padding-top: 16px;
-                    border-top: 1px solid #e5e7eb;
-                    font-size: 9pt;
-                    color: #9ca3af;
-                    text-align: center;
-                }
-            </style>
-            <div class="vcq-pdf-header">
-                <h1 class="vcq-pdf-title">📋 Vendor Compliance Questionnaire</h1>
-                <p class="vcq-pdf-subtitle">EUDIW Intermediary Assessment</p>
-            </div>
-            <div class="vcq-pdf-meta">
-                <div class="vcq-pdf-meta-item">
-                    <span class="vcq-pdf-meta-label">Generated:</span>
-                    <span class="vcq-pdf-meta-value">${new Date().toLocaleDateString('en-GB', {
-            day: 'numeric', month: 'long', year: 'numeric'
-        })}</span>
-                </div>
-                <div class="vcq-pdf-meta-item">
-                    <span class="vcq-pdf-meta-label">Total Requirements:</span>
-                    <span class="vcq-pdf-meta-value">${requirements.length}</span>
-                </div>
-                <div class="vcq-pdf-meta-item">
-                    <span class="vcq-pdf-meta-label">Intermediary Type(s):</span>
-                    <span class="vcq-pdf-meta-value">${typeLabels}</span>
-                </div>
-                <div class="vcq-pdf-meta-item">
-                    <span class="vcq-pdf-meta-label">Regulatory Sources:</span>
-                    <span class="vcq-pdf-meta-value">${selectedSources.join(', ')}</span>
-                </div>
-            </div>
-            ${data.categories.map(cat => {
-            const reqs = grouped[cat.id];
-            if (!reqs || reqs.length === 0) return '';
-            return `
-                    <div class="vcq-pdf-category">
-                        <h2 class="vcq-pdf-category-title">${cat.icon} ${cat.label} (${reqs.length})</h2>
-                        ${reqs.map(req => {
-                const answer = answers[req.id]?.value || 'pending';
-                const answerDisplay = {
-                    yes: '✅ Yes',
-                    no: '❌ No',
-                    partial: '⚠️ Partial',
-                    na: '➖ N/A',
-                    pending: '⏳ Pending'
-                }[answer] || answer;
-                return `
-                                <div class="vcq-pdf-req">
-                                    <div class="vcq-pdf-req-header">
-                                        <span class="vcq-pdf-req-id">${req.id}</span>
-                                        <span class="vcq-pdf-obligation ${req.obligation?.toLowerCase().replace(' ', '-') || 'should'}">${req.obligation}</span>
-                                    </div>
-                                    <p class="vcq-pdf-req-text">${req.requirement}</p>
-                                    ${req.explanation ? `<p class="vcq-pdf-req-details">${req.explanation}</p>` : ''}
-                                    <p class="vcq-pdf-legal">Legal Basis: ${req.legalBasis?.article || 'N/A'} (${req.legalBasis?.regulation || 'N/A'})</p>
-                                    <div class="vcq-pdf-response">
-                                        <span class="vcq-pdf-response-label">Response:</span>
-                                        <span class="vcq-pdf-response-value ${answer}">${answerDisplay}</span>
-                                    </div>
-                                </div>
-                            `;
-            }).join('')}
-                    </div>
-                `;
-        }).join('')}
-            <div class="vcq-pdf-footer">
-                Generated by eIDAS 2.0 Documentation Portal — Vendor Compliance Questionnaire Tool
-            </div>
-        `;
-
-        // Add to document and print
-        document.body.appendChild(printContent);
-
-        // Small delay to ensure styles are applied
-        setTimeout(() => {
-            window.print();
-            // Clean up after print dialog closes
-            setTimeout(() => {
-                document.body.removeChild(printContent);
-            }, 1000);
-        }, 100);
-    };
-
     return (
         <div className="vcq-export-panel">
-            <h3>📥 Export Questionnaire</h3>
-            <div className="vcq-export-options">
-                <button className="vcq-export-btn" onClick={handleExportMarkdown}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14,2 14,8 20,8" />
-                    </svg>
-                    Export as Markdown
-                </button>
-                <button className="vcq-export-btn" onClick={handleExportPDF}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14,2 14,8 20,8" />
-                    </svg>
-                    Export as PDF
+            <h4>📤 Export Questionnaire</h4>
+            <div className="vcq-export-buttons">
+                <button className="btn btn-secondary" onClick={handleExportMarkdown}>
+                    📝 Export Markdown
                 </button>
             </div>
         </div>
@@ -984,7 +872,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
 }
 
 // ============================================================================
-// Main Page Component
+// Main Component
 // ============================================================================
 
 export default function VendorQuestionnaire() {
@@ -992,60 +880,76 @@ export default function VendorQuestionnaire() {
     const regulationsIndex = useRegulationsIndex();
     const arfData = useARFData();
 
-    // Selection state
-    // DEC-254: Auto-select the single intermediary type when data loads
-    const [selectedTypes, setSelectedTypes] = useState(['intermediary']);
-    // DEC-255: Source groups instead of individual source IDs
+    // Step 1: Organisation Roles
+    const [selectedRoles, setSelectedRoles] = useState([]);
+
+    // Step 2: Product Categories
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    // Step 3: Source Groups
     const [selectedSourceGroups, setSelectedSourceGroups] = useState({
-        eidas: true,  // Primary eIDAS framework
-        gdpr: true,   // GDPR requirements (separate toggle)
-        dora: false,  // DORA ICT requirements
-        arf: true     // ARF-sourced requirements
+        eidas: true,
+        gdpr: true,
+        dora: true,
+        arf: true,
+        techSpecs: true,
+        ruleBooks: true
     });
+
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [activeView, setActiveView] = useState(() => {
-        // Load saved view preference
         const saved = localStorage.getItem('vcq-active-view');
         return saved === 'table' ? 'table' : 'summary';
     });
 
-    // Load saved answers from localStorage
+    // Load/save answers
     useEffect(() => {
         const savedAnswers = localStorage.getItem('vcq-answers');
         if (savedAnswers) {
-            try {
-                setAnswers(JSON.parse(savedAnswers));
-            } catch (e) {
-                console.error('Failed to load saved answers:', e);
-            }
+            try { setAnswers(JSON.parse(savedAnswers)); } catch { }
         }
     }, []);
 
-    // Save answers to localStorage
     useEffect(() => {
         if (Object.keys(answers).length > 0) {
             localStorage.setItem('vcq-answers', JSON.stringify(answers));
         }
     }, [answers]);
 
-    // Save view preference to localStorage
     useEffect(() => {
         localStorage.setItem('vcq-active-view', activeView);
     }, [activeView]);
 
-    // DEC-254: Intermediary type is now auto-selected, no toggle needed
-    // Kept for backwards compatibility if we ever need multiple types again
-    const handleToggleType = useCallback((typeId) => {
-        setSelectedTypes(prev =>
-            prev.includes(typeId)
-                ? prev.filter(id => id !== typeId)
-                : [...prev, typeId]
+    // Handlers
+    const handleToggleRole = useCallback((roleId) => {
+        setSelectedRoles(prev => {
+            const newRoles = prev.includes(roleId)
+                ? prev.filter(id => id !== roleId)
+                : [...prev, roleId];
+
+            // Clear categories that are no longer applicable
+            if (!newRoles.includes(roleId)) {
+                setSelectedCategories(prev => prev.filter(catId => {
+                    const cat = PRODUCT_CATEGORIES[catId];
+                    return cat.applicableRoles.some(r => newRoles.includes(r));
+                }));
+            }
+
+            return newRoles;
+        });
+        setShowResults(false);
+    }, []);
+
+    const handleToggleCategory = useCallback((catId) => {
+        setSelectedCategories(prev =>
+            prev.includes(catId)
+                ? prev.filter(id => id !== catId)
+                : [...prev, catId]
         );
         setShowResults(false);
     }, []);
 
-    // DEC-255: Toggle source group selection
     const handleToggleSourceGroup = useCallback((groupId) => {
         setSelectedSourceGroups(prev => ({
             ...prev,
@@ -1054,68 +958,59 @@ export default function VendorQuestionnaire() {
         setShowResults(false);
     }, []);
 
-    // Update answer
     const handleAnswerChange = useCallback((reqId, value) => {
         setAnswers(prev => ({
             ...prev,
-            [reqId]: {
-                value,
-                updated: new Date().toISOString()
-            }
+            [reqId]: { value, updated: new Date().toISOString() }
         }));
     }, []);
 
-    // Get applicable requirements based on selection
-    // DEC-254: Now always includes 'intermediary' type requirements
-    // DEC-255: Filter by sourceGroup instead of individual regulation IDs
+    // Compute applicable tech specs
+    const applicableTechSpecs = useMemo(() => {
+        if (selectedRoles.length === 0 || selectedCategories.length === 0) return [];
+        return Object.values(TECHNICAL_SPECIFICATIONS).filter(ts =>
+            ts.roles.some(role => selectedRoles.includes(role)) &&
+            ts.categories.some(cat => selectedCategories.includes(cat))
+        );
+    }, [selectedRoles, selectedCategories]);
+
+    // Get applicable requirements
     const applicableRequirements = useMemo(() => {
         if (!data) return [];
 
         const reqIds = new Set();
 
-        // Always include core requirements
+        // Include core requirements
         data.requirementsByType?.core?.forEach(id => reqIds.add(id));
 
-        // Add type-specific requirements
-        selectedTypes.forEach(typeId => {
-            data.requirementsByType?.[typeId]?.forEach(id => reqIds.add(id));
-        });
+        // Include intermediary requirements (legacy compatibility)
+        data.requirementsByType?.intermediary?.forEach(id => reqIds.add(id));
 
-        // If DORA is selected, include DORA ICT (extended) requirements
+        // Include DORA if selected
         if (selectedSourceGroups.dora) {
             data.requirementsByType?.dora_ict?.forEach(id => reqIds.add(id));
         }
 
-        // Filter by type first
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
-        // DEC-255: Filter by source group using the pre-computed sourceGroup field
-        // Build array of active source groups
+        // Filter by source group
         const activeGroups = Object.entries(selectedSourceGroups)
             .filter(([_, isSelected]) => isSelected)
             .map(([group]) => group);
 
-        // If at least one source group is selected, filter by it
         if (activeGroups.length > 0) {
-            filtered = filtered.filter(req => {
-                // Use the sourceGroup field computed by build-vcq.js
-                // Note: GDPR requirements are tagged as 'eidas' since they're part of core compliance
-                return activeGroups.includes(req.sourceGroup);
-            });
+            filtered = filtered.filter(req => activeGroups.includes(req.sourceGroup));
         } else {
-            // No source groups selected = show nothing (valid filter state)
             filtered = [];
         }
 
         return filtered;
-    }, [data, selectedTypes, selectedSourceGroups]);
+    }, [data, selectedSourceGroups]);
 
-    // Calculate summary stats
+    // Summary stats
     const summaryStats = useMemo(() => {
         const total = applicableRequirements.length;
-        let answered = 0;
-        let compliant = 0;
-        let nonCompliant = 0;
+        let answered = 0, compliant = 0, nonCompliant = 0;
 
         applicableRequirements.forEach(req => {
             const answer = answers[req.id]?.value;
@@ -1142,13 +1037,13 @@ export default function VendorQuestionnaire() {
     if (error) {
         return (
             <div className="animate-fadeIn" style={{ textAlign: 'center', padding: 'var(--space-16)' }}>
-                <p className="text-lg" style={{ color: 'var(--status-error)' }}>
-                    Failed to load VCQ data
-                </p>
+                <p className="text-lg" style={{ color: 'var(--status-error)' }}>Failed to load VCQ data</p>
                 <p className="text-muted">{error.message}</p>
             </div>
         );
     }
+
+    const canGenerate = selectedRoles.length > 0 && selectedCategories.length > 0;
 
     return (
         <div className="animate-fadeIn">
@@ -1156,38 +1051,53 @@ export default function VendorQuestionnaire() {
             <div className="vcq-header">
                 <h1>📋 Vendor Compliance Questionnaire</h1>
                 <p className="vcq-header-subtitle">
-                    Generate compliance questionnaires for evaluating third-party RP Intermediary
-                    vendors in the EUDIW ecosystem. Select the regulatory sources to include,
-                    and generate a structured questionnaire with guidance on each requirement.
+                    Generate compliance questionnaires for evaluating third-party products
+                    to integrate your organisation with the EUDIW ecosystem. Select your role,
+                    product category, and regulatory sources.
                 </p>
             </div>
 
-            {/* DEC-254: Removed Intermediary Type Selection step */}
-            {/* The tool now auto-selects the single RP Intermediary type */}
-            {/* Previously: <IntermediaryTypeSelector ... /> */}
+            {/* Step 1: Organisation Role Selection */}
+            <OrganisationRoleSelector
+                selectedRoles={selectedRoles}
+                onToggle={handleToggleRole}
+            />
 
-            {/* Step 1: Source Selection (DEC-255: 3-tile model) */}
-            {data.legalSources && (
-                <SourceSelector
-                    legalSources={data.legalSources}
-                    selectedSourceGroups={selectedSourceGroups}
-                    onToggleGroup={handleToggleSourceGroup}
-                    stats={data.stats}
-                />
-            )}
+            {/* Step 2: Product Category Selection */}
+            <ProductCategorySelector
+                selectedRoles={selectedRoles}
+                selectedCategories={selectedCategories}
+                onToggle={handleToggleCategory}
+            />
+
+            {/* Step 3: Source Selection */}
+            <SourceSelector
+                selectedRoles={selectedRoles}
+                selectedCategories={selectedCategories}
+                selectedSourceGroups={selectedSourceGroups}
+                onToggleGroup={handleToggleSourceGroup}
+                legalSources={data.legalSources}
+                stats={data.stats}
+            />
 
             {/* Generate Button */}
             {!showResults && (
                 <div className="vcq-generate-section">
                     <button
-                        className="vcq-generate-btn"
-                        onClick={() => setShowResults(true)}
+                        className={`vcq-generate-btn ${!canGenerate ? 'disabled' : ''}`}
+                        onClick={() => canGenerate && setShowResults(true)}
+                        disabled={!canGenerate}
                     >
                         Generate Questionnaire
                         <span style={{ fontSize: 'var(--text-sm)', opacity: 0.8 }}>
                             ({applicableRequirements.length} requirements)
                         </span>
                     </button>
+                    {!canGenerate && (
+                        <p className="vcq-generate-hint">
+                            Select at least one organisation role and product category to generate.
+                        </p>
+                    )}
                 </div>
             )}
 
@@ -1219,19 +1129,9 @@ export default function VendorQuestionnaire() {
                             </div>
                         </div>
                         <div className="vcq-summary-actions">
-                            <button
-                                className="btn btn-secondary"
-                                onClick={() => setShowResults(false)}
-                            >
+                            <button className="btn btn-secondary" onClick={() => setShowResults(false)}>
                                 ← Modify Selection
                             </button>
-                            <a
-                                href={`${import.meta.env.BASE_URL}#/requirements?sources=vcq&roles=${selectedTypes.join(',')}`}
-                                className="btn btn-secondary"
-                                style={{ textDecoration: 'none' }}
-                            >
-                                🔍 Browse All Requirements
-                            </a>
                         </div>
                     </div>
 
@@ -1273,7 +1173,8 @@ export default function VendorQuestionnaire() {
                     <ExportPanel
                         requirements={applicableRequirements}
                         answers={answers}
-                        selectedTypes={selectedTypes}
+                        selectedRoles={selectedRoles}
+                        selectedCategories={selectedCategories}
                         selectedSourceGroups={selectedSourceGroups}
                         data={data}
                     />
