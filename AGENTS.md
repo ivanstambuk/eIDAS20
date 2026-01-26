@@ -390,6 +390,8 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 │   │   └── architecture/               # Technical architecture docs
 │   ├── workflows/                      # Human-invoked workflows
 │   ├── snippets/                       # Reusable code patterns
+│   ├── research/                       # Research materials (not imported to portal)
+│   │   └── edps/                       # EDPS position papers & opinions
 │   └── session/                        # Session state
 ├── AGENTS.md                           # This file (AI context)
 ├── TERMINOLOGY.md                      # Project vocabulary
@@ -397,6 +399,10 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 ├── TRACKER.md                          # Work session tracker
 └── README.md                           # Project overview
 ```
+
+**Research Folder Note:** `.agent/research/` contains reference materials (e.g., EDPS opinions, academic papers) that inform the project but are NOT directly imported. Use for terminology extraction and background understanding.
+
+**RCA Extraction Rule:** RCA requirements come ONLY from binding legislation (eIDAS Regulation, Implementing Acts). Never extract RCA requirements from opinions, recommendations, or position papers (e.g., EDPS formal comments). These documents may inform understanding but do not create legal obligations.
 
 ---
 

@@ -1,0 +1,250 @@
+
+
+--- PAGE 1 ---
+
+ 
+ 
+ 
+ 
+ EDPS Formal comments on the draft Commission Implementing  Regulation  (EU) 
+laying down rules for the application of Regulation  (EU) No 910/2014 of the 
+European Parliament and of the Council as regards protocols and interfaces to be 
+supported by the European Digital Identity Wallets  
+  THE EUROPEAN DATA PROTECTION SUPERVISOR,  
+Having regard to the Treaty on the Functioning of the Eu ropean Union,  
+Having regard to Regulation  (EU) No 2018/1725 of the European Parliament and of the 
+Council of 23 October  2018 on the protection of individuals with regard to the processing of 
+personal data by the Union institutions , bodies , offices and agencies  and on the free 
+movement of such data , and repealing Regulation  (EC) No 45/2001 and Decision No 
+1247/2002/EC  (‘EUDPR’)
+1, and in particular Article 42(1) thereof,  
+ 
+HAS ADOPTED THE FOLLOWING FORMAL COMMENTS:  
+ 
+ 1. Introduction and background 
+ 
+1. On 13 August 2024 , the European Commission consulted the EDPS  on the draft 
+Commission Implementing  Regulation  (EU) laying down rules for the application of 
+Regulation  (EU) No 910/2014 of the European Parliament and of the Council as 
+regards protocols and interfa ces to be supported by the European Digital Identity 
+Wallets  (‘the draft Implementing  Regulation ’). 
+2. The draft Implementing  Regulation  is accompanied by an annex
+2. 
+3. The objective of the draft Implementing  Regulation  is to lay down rules on the 
+interfaces and protocols of the wallet solutions3. 
+4. The draft Implementing  Regulation  is adopted pursuant to Article 5a(23) of 
+Regulation  (EU) No 910/20144, as amended by Regulation  (EU) 2024/1183 amending 
+Regulation  (EU) No 910 /2014 as regards establishing the European Digital Identity 
+Framework  (‘the EDIW Regulation ’)5. 
+                                                      
+1 OJ L 295, 21.11.2018, p. 39.  
+2 The draft Implementing Regulation  is accompanied by an a nnex specifying the standard referred to in Article 5(1) and 
+(2). 
+3 Article 1 of the draft Implementing  Regulation .  
+4 Regulation  (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification 
+and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC , OJ L 257, 28.8.2014, 
+p. 73 –114. 
+5 Regulation  (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation  (EU) No 
+910/2014 as regards establishing the European Digital Identity Framework , OJ L, 2024/1183, 30.4.2024.  
+
+--- PAGE 2 ---
+
+2 
+ 5. The EDPS previously issued formal comments on the proposal for the EDIW 
+Regulation6. As stated in the EDPS formal comments7, the envisaged technical 
+implementation will ultimately determine whether all necessary data protection 
+safeguards have been integrated in the EDIW Regulation or not. Indeed, the EDPS highlights that the technical architecture of the European Digital Identity Wallet cannot be fully assessed until all the relevant Implementing  acts aiming at laying 
+down technical specifications and reference standards are finalised. 
+6. The EDPS further highlights that different aspects covered by the Implementing  
+Regulation s interact with and influence each other. For instance, aspects related to 
+the core functionalities are related to the aspects concerning the interfaces of the European Digital Identity Wallet. The EDPS is concerned that the complexity of the overall architec ture, combined with a multiplicity  of Implementing  acts, make it 
+impossible to fully assess the impact at this stage. 
+7. These formal comments therefore do not preclude any additional comments by the EDPS in the future, in particular if further issues are identified or new information becomes available, for example as a result of the adoption of other related 
+Implementing  or delegated acts
+8. 
+8. The present formal comments of the EDPS are issued in response to a consultation 
+by the European Commission pursuant to Article 42(1) of EUDPR. 
+9. Furthermore, these formal comments are without prejudice to any future action that may be taken by the EDPS in the exercise of his powers pursuant to Article 58 of the EUDPR and are limited to the provisions of the draft Implementing  Regulation that 
+are relevant from a data protection perspective. 
+ 
+2. Comments  
+ 
+2.1. General comments  
+ 
+10. Recital (1) of the draft Implementing  Regulation recalls that the European Digital 
+Identity Wallets (‘wallets’) aim at facilitating access to services across Member States, for natural and legal persons, while ensuring the protection of personal data and privacy. For the sake of completeness, the EDPS recommends adding a recital 
+                                                      
+6 EDPS F ormal comments on the Proposal for a Regulation  of the European Parliament and of the C ouncil amending 
+Regulation  (EU) No 910/2014 as regards establishing a framework for a European Digital Identity , issued on 28 July 2021.  
+7 EDPS Formal comments on the Proposal for a Regulation  of the European Parliament and of the Council amending 
+Regulation  (EU) No 910/2014 as regards establishing a framework for a European Digital Identity , page 2.  
+8 In case of other Implementing or delegated acts with an impact on the protection of individuals’ rights and freedoms with 
+regard to the processing of personal data, the EDPS would like to remind that he needs to be consulted on those acts as 
+well. The same applies in case of future amendments that would introduce new or modify existing provisions that directly 
+or indirectly concern the processing of personal data.  
+
+--- PAGE 3 ---
+
+3 
+ explicitly recalling the applicability of the EU data protection legal framework  when 
+processing personal data within the scope of the draft Implementing  Regulation9.  
+ 
+11. The EDPS notes the absence of a reference to this consultation in a recital of the draft 
+Implementing  Regulation . Therefore, the EDPS recommends inserting such a 
+reference in a recital of the draft Implementing  Regulation . 
+ 
+ 
+2.1.1. The EDIW Regulation  and data protection by design and by default  
+ 
+12. The EDPS welcomes that the EDIW Regulation  contains provisions10 enabling the 
+implementation of the wallet in accordance with the principle of data protection by 
+design and by default11. The draft Implementing  Regulation , in turn, should also foster 
+the implementation of this principle, taking into account in particular the state of the 
+art of technology. 
+13. In the following paragraphs, the EDPS recalls provisions of the EDIW Regulation  that 
+are important under a p rivacy and data protection viewpoint, having regard in 
+particular to the principle of data protection by design and by default. 
+14. Article 5  of the EDIW  Regulation  provides that “ [w]ithout prejudice to specific rules of 
+Union or national law requiring users t o identify themselves or to the legal effect given 
+to pseudonyms under national law, the use of pseudonyms that are chosen by the user 
+shall not be prohibited”12. Article 5a(4)(b) of the EDIW Regulation  further specifies that 
+wallets must enable the users t o generate pseudonyms and store them encrypted and 
+locally within the  wallet, in a manner that is  user -friendly, transparent, and traceable 
+by the user . This means that users should be able to use the wallet in such a way that 
+a relying party can, when thi s is necessary, have visibility on multiple transactions 
+carried out by a specific user without having access to the legal identity of the user. 
+15. Article 5a(4)(a) of the EDIW Regulation  provides that the wallet must ensure that 
+selective disclosure of data to relying parties is possible. 
+16. Article 5a(4) and (5) of the EDIW Regulation  establish in particular the requirements 
+for the security and integrity  of the wallet . The latter  needs to be uniquely  and 
+securely  linked to a user,  whose personal identification  data and attributes must  not 
+be at risk of being transferred to a wallet belonging to another user.  
+                                                      
+9 The EDPS notes that the accompanying Annex outlines the technical specifications for person identification data to be 
+issued by providers of person identification data9. This person identification data must include certain mandatory attributes 
+which constitute personal data: family name; given name; birth date; family name at birth; given name at birth; birth place; 
+sex; nationality; issuance date of person identification data. Additionally, the person identification data may include 
+optional attributes, which also constitute personal data, among which: age in years; birth country; resident address; personal 
+administrative number; portrait (facial image of the wallet user)  (Annex of the draft Implementing Regulation , Tables 1 and 
+2). 
+10 Notably, under A rticle 5; Article 5a(4), letter (a); Article 5a(14); Article 5a(16), letter (a) and (b)  of the EDIW Regulation . 
+11 Article 25 of Regulation  (EU) 2016/679 (‘the GDPR’).  
+12 Article 5b(9) of the EDIW Regulation  further provides that relying parties shall not re fuse the use of pseudonyms, where 
+the identification of the user is not required by Union or national law. 
+
+--- PAGE 4 ---
+
+4 
+ 17. The EDIW Regulation  provides in Article 5a(14) that the users shall have full control 
+of the use and of the data in their wallet . 
+18. Article 5a(14) of the EDI W Regulation  provides that the provider of the wallet  must 
+neither collect information about the use of the wallet  which is not necessary for the 
+provision of wallet  services, nor combine person identification data or any other 
+personal data stored or relating to the use of the wallet  with personal data from any 
+other services offered by that provider or from third- party services which are not 
+necessary for the provis ion of wallet  services, unless the user has expressly requested 
+other wise.  
+19. Article 5a(16)(a) of the EDIW Regulation  provides that the technical framework of the 
+European Digital Identity Wallet must not allow “ providers of electronic attestations 
+of attributes or any other party, after the issuance of the attestation of attributes, to 
+obtain data that allows transactions or user behaviour to be tracked, linked or correlated, 
+or knowledge of transactions or user behaviour to be otherwise obtained, unle ss explicitly 
+authorised by the user ”. Although the EDIW Regulation  does not expressly mention 
+identity providers, the EDPS considers that the same limitation would also extend to identity providers  (as “any other party”).  
+20. Article 5a(16)(b) of the EDIW Regulation  requires that the technical framework of the 
+European Digital Identity Wallet “ enable [s] privacy preserving techniques which ensure 
+unlinkability, where the attestation of attributes does not require the identification of the user. ” This unlinkability should prevent the identification of a user when the user 
+needs to present some of their attributes to relying parties in the context of a transaction and identification is not necessary (e.g. to be authorised to the purchase of a product or service for adults only). The EDPS notes that the unlinkability should 
+also apply:  
+- among different transactions of the same user against the same relying party (when 
+this is not necessary  for the use -case); 
+- between data held by the  provider of personal  identification data and attestation of 
+attributes , on the one hand, and data held by the parties relying on those attributes , 
+on the other hand. 
+21. Article 5b(3) of the EDIW Regulation  provides that relying parties must not request 
+users to provide any data other than in dicated in Article 5b(2)(c) (i.e. the indication 
+of the data to be requested by the relying party from users  included in the registration 
+of the relying party with the Member State where it is established). 
+ 
+ 
+2.1.2. The d raft Implementing  Regulation  and data protection by design and by 
+default  
+22. The EDPS considers that, in order to implement data protection by design and by 
+default , the technical framework of the European Digital Identity Wallet should make 
+reference to available ‘state of the art’ privacy -enhancing techniques  (PETs) as 
+
+--- PAGE 5 ---
+
+5 
+ mandatory measures. The EDPS recommends that the draft Implementing  Regulation  
+refer s to the use of PETs  and include specifications on when (for which specific 
+aspects) an d how these PETs must be implemented. 
+ 
+2.2. Specific comments  
+ 
+23. The draft Implementing  Regulation  provides that wallet providers13 must ensure that 
+wallet units support protocols and interfaces  that enable the communication of data 
+erasure requests pursuant to Article 17 GDPR to wallet relying parties  in accordance 
+with Article 614. This is an important and welcome specification. 
+ 
+24. The EDPS welcomes that, among the required functionalities, wallet providers must 
+ensure the reporting [by users] of wallet relying parties to da ta protection authorities  
+in accordance with Article 7 of  the draft Implementing  Regulation . Wallet  providers 
+should ensure that wallet solutions provide mechanisms for the easy reporting by 
+users of a relying party to the competent national data protection authority, where 
+an allegedly unlawful or suspicious request for data is made. It should be possible in 
+particular for the user to check if the relying party requests the user to provide any 
+data  other that indicated pursuant to Article 5b(2)(c) of the EDIW Regulation , thus in 
+breach of Article 5b(3) of the EDIW Regulation . 
+ 
+25. The draft Implementing  Regulation  provides a tool for users to report abuses by 
+relying parties15. This reporting functionality needs to be developed by wallet 
+providers . For the implementation of this functionality, there is a need for a user 
+interface mechanism , which would allow the  user to submit the reporting 
+(notification) of wallet relying parties to the competent national data protection authority . The wallet should also log  all these actions. 
+ 
+26. Having regard to the possibility to submit reports and claims in a machine -readable 
+format
+16, the EDP S recommends that the  draft Implementing  act provides for the 
+development of a standard form , to be defined in close cooperation with the European 
+Data Protection Board. Such standard form  should include claim s related to excessive 
+data requests by a relyi ng party  (e.g., a relying party requesting data not in line with 
+the registered intended use of the wallet by the relying party  or a relying party 
+requesting an excessive amount of data in relation to the purposes pursued). 
+                                                      
+13 According to Article 2(4) of the  draft Implementing Regulation , ‘wallet provider’ means a natural or legal person who 
+provides wallet solutions.  
+14 Artic le 3(1)(c) and Article 6 of the  draft Implementing Regulation . 
+15 Article 3(1)(d) of the draft Implementing Regulation . As noted in the EDPS Formal comments on the draft Commission 
+Implementing Regulation  (EU) laying down rules for the application of Regulation  (EU) No 910/2014 of the European 
+Parliament and of the Council, as regards the integrity and core functionalities of European Digital Identity Wallets , the 
+EDPS also recommends to consider the addition of a functionality that would ensure  automa ted detection and blocking of 
+excessive access requests  in the future.  
+16 Article 7(3) of the  draft Implementing Regulation . 
+
+--- PAGE 6 ---
+
+6 
+  
+27. The EDPS recommends that the  draft Implementing  Regulation  provides that wallet 
+units  should support standardised protocols  enabling users to receive from relying 
+parties the information to which they are entitled (as data subjects) under Article 12, 
+13 and 14 GDPR when relying parti es request access to personal identification data 
+or attributes.  
+ 
+28. The EDPS welcomes Article 6  of the  draft Implementing  Regulation , which provides 
+for wallet functionalities to manage the communication of requests of erasure of 
+personal data to relying parties . However, the EDPS recommends integrating this 
+functionality with: ◦ a functionality to record the result of the erasure request; and 
+◦ a functionality to request erasure of the personal data provided through the wallet 
+units to multiple relying pa rties  at the same time . 
+ 
+ 
+Brussels, 30 September 2024  
+ 
+ 
+ 
+      (e -signed)
+ 
+Wojciech Rafał WIEWIÓROWSKI  
+ 

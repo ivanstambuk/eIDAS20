@@ -1,0 +1,160 @@
+
+
+--- PAGE 1 ---
+
+ 
+ 
+ 
+ 
+ EDPS Formal comments on the draft Commission Implementing Regulation (EU) for 
+the application of Regulation (EU) No 910/2014 of the European Parliament and of 
+the Council as regards notifications to the Commission concerning the European Digital Identity Wallet Ecosystem  
+  THE EUROPEAN DA TA PROTECTION SUPERVISOR,  
+Having regard to the Treaty on the Functioning of the European Union,  
+Having regard to Regulation (E U) No 2018/1725 of the European Parliament and of the 
+Council of 23 October  2018 on the protection of individuals with regard to the processing of 
+personal data by the Union institutions , bodies , offices and agencies  and on the free 
+movement of such data , and repealing Regulation  (EC) No 45/2001 and Decision No 
+1247/2002/EC  (‘EUDPR’)
+1, and in particular Article 42(1) thereof,  
+ HAS ADOPTED THE FOLLOWING FORMAL COMMENTS:  
+ 
+ 1. Introduction and background 
+ 
+1. On 13 August 2024, the European Commission consulted the EDPS on draft 
+Commission Implementing  Regulation  (EU) for the application of Regulation  (EU) No 
+910/2014 of the European Parliament and of the Council as regards notifications to 
+the Commission concerning the European Digital Identity Wallet Ecosystem  (‘the 
+draft Implementing  Regulation ’). 
+2. The draft Implementing  Regulation  is accompanied by annexes
+2. 
+3. The objective of the draft Implementing  Regulation  is to is to establish the trust 
+framework for the validation of: (1) the electronic registers used by a Member State 
+to publish information on wallet relying parties registered in that Member State in 
+accordance with Article 5b(5) of Regulation  (EU) No 910/2014 (‘registers’), the location 
+of the registers, and the identification of the registrars;  (2) the identity of the 
+registered wallet relying parties;  (3) the authenticity and validity of wallet units; (4) 
+the identification of the wallet providers; (5) the authenticity of person identification 
+data;  (6) the identification of the providers of person identification data3. 
+                                                      
+1 OJ L 295, 21.11.2018, p. 39.  
+2 The draft implementing regulation is accompanied by two a nnexes specifying the requirements for the Commission’s 
+notifications system and the requirements for Member States’ notifications, respectively . 
+3 Article 1 of the draft implementing regulation.  
+
+--- PAGE 2 ---
+
+2 
+ 4. The draft Implementing  Regulation  is adopted pursuant to Article 5a(23) of 
+Regulation  (EU) No 910/20144, as amended by Regulation  (EU) 2024/1183 amending 
+Regulation  (EU) No 910/2014 as regards establishing the European Digital Identity 
+Framework  (‘the EDIW Regulation ’)5. 
+5. The EDPS previously issued formal comments on the proposal for the EDIW 
+Regulation6. As stated in the E DPS formal comments7, the envisaged technical 
+implementation will ultimately determine whether all necessary data protection 
+safeguards have been integrated in the EDIW Regulation  or not. Indeed, the EDPS 
+highlights that the technical architecture of the E uropean Digital Identity Wallet 
+cannot be fully assessed until all the relevant Implementing  acts aiming at laying 
+down technical specifications and reference standards are finalised.  
+6. The EDPS further highlights that different aspects covered by the Imple menting  
+Regulation s interact with and influence each other. For instance, aspects related to 
+the core functionalities are related to the aspects concerning the interfaces of the European Digital Identity Wallet. The EDPS is concerned that the complexity of  the 
+overall architecture, combined with a  multiplicity  of Implementing  acts, make it 
+impossible to fully assess the impact at this stage.  
+7. These formal comments therefore do not preclude any additional comments by the EDPS in the future, in particular if further issues are identified or new information becomes available, for example as a result of the adoption of other related Implementing  or delegated acts
+8. 
+ 
+8. The present formal comments of the EDPS are issued in response to a consultation by the European Commission pursuant to Article 42(1) of EUDPR.  
+9. Furthermore, these formal comments are without prejudice to any future action that may be taken by the EDPS in the exercise of his powers pursuant to Article 58 of the EUDPR and are limited to the provisions of the draft Implementing  Regulation  that 
+are re levant from a data protection perspective.  
+                                                      
+4 Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification 
+and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC , OJ L 257, 28.8.2014, 
+p. 73 –114. 
+5 Regulation (EU) 2024/1183 of the European Parliament and of the Council of 11 April 2024 amending Regulation (EU) No 
+910/2014 as regards establishing the European Digital Identity Framework , OJ L, 2024/1183, 30.4.2024.  
+6 EDPS F ormal comments on the Proposal for a Regulation of the European Parliament and of the Council amending 
+Regulation (EU) No 910/2014 as regards est ablishing a framework for a European Digital Identity , issued on 28 July 2021.  
+7 EDPS Formal comments on the Proposal  for a Regulation of the European Parliament and of the Council amending 
+Regulation (EU) No 910/2014 as regards establishing a framework for a European Digital Identity , page 2.  
+8 In case of other implementing or delegated acts with an impact on the protec tion of individuals’ rights and freedoms with 
+regard to the processing of personal data, the EDPS would like to remind that he needs to be consulted on those acts as 
+well. The same applies in case of future amendments that would introduce new or modify exi sting provisions that directly 
+or indirectly concern the processing of personal data.  
+
+--- PAGE 3 ---
+
+3 
+ 2. Comments  
+ 
+2.1. General comments  
+ 
+10. The  draft Implementing  Regulation  provides that the Commission must make 
+available to Member States a secure electronic notification system, enabling Member 
+States to notify the information on the bodies and mechanisms referred to in Article 
+5a(18) of the EDIW Regulation9. The  Commission may request additional information 
+from the member States to verify the notified information10. Member States must  
+submit , through a secure electronic notification system , at least the information 
+specified in Annex II of the draft Implementing  Regulation11. In this regard, the EDPS 
+notes that some of the information required in Annex II may constitute  personal data 
+within the meaning of Article 4, point (1), GDPR and Article 3, point (1), EUDPR. This 
+may be the case for instance of names, contact emails and phone numbers of 
+registrars12, of providers of wallet relying party access certificates13. 
+ 
+11. Against this background , the EDPS recommends adding a recital referring to the 
+applicability of the EU data protection legal framework (GDPR, EUDPR, as well as 
+ePrivacy Directive) to the processing of personal data  in the context of the draft 
+Implementing  Regulation . 
+ 
+12. The EDPS also notes the absence of the reference to this consultation in a rec ital of 
+the draft Implementing  Regulation . Hence, the EDPS recommends inserting such a 
+reference in a recital of the draft Implementing  Regulation . 
+ 
+ 
+ 
+ 
+                                                      
+9 Article 3(1) of the draft implementing regulation; according to Article 5a(18) of Regulation (EU) No 910/2014 “ Member 
+States shall, without undue delay, notify the Commission of information about:  
+(a) the body responsible for establishing and maintaining the list of registered relying parties that rely on European Digital 
+Identity Wallets in accordance with Article 5b(5) and the location of that list;  
+(b) the bodies responsible for the provision of European Digital Identity Wallets in accordance with Article 5a(1);  
+(c) the bodies responsible for ensuring that the person identification data is associated with the European Digital Identity Wall et 
+in accor dance with Arti cle 5a(5) (f); 
+(d) the mechanism allowing for the validation of the person identification data refe rred to in Article 5a(5) (f), and of the identity 
+of the relying parties;  
+(e) the mechanism by which to validate the authenticity and validity of European Digi tal Identity Wallets .” 
+10 Article 4(3) of the  draft implementing regulation.  
+11 Article 4(1) of the draft implementing regulation.  
+12 According to Article 2(13) of the draft implementing regulation ‘registrar’ means a natural or legal person mandated by a 
+Member State to establish a register.  
+13 According to Article 2(14) of the draft implementing regulation, ‘provider of wallet relying party access certificate’ means 
+a natural or legal person mandated by a Member State to issue relying party access certifica tes to wallet relying parties 
+registered in that Member State.  
+
+--- PAGE 4 ---
+
+4 
+ 2.2. Specific comments  
+ 
+13. The EDPS notes that Annex I  to the  draft Implementing  Regulation  provides 
+requirements for the secure electronic notification system and integrate a 
+requirement to “ support appropriate access controls and access control management , 
+delegating to the Member  States the power to grant access to competent 
+representatives as regards the notifications”. Moreover, Article 5(3)(c) of the  draft 
+Implementing  Regulation  provides the obligation to ensure that lists referred to in 
+Article 5(2) and (3) can be accessed se curely by using state of the art transport layer 
+encryption.  
+ 
+14. Given the subject matter and the provisions of the draft Implementing  Regulation , 
+which do not raise significant issues having regard to the protection of personal data, the EDPS has no comments  on the draft Implementing  Regulation . 
+ 
+Brussels, 30 September 2024  
+ 
+ 
+ 
+      (e -signed)
+ 
+Wojciech Rafał WIEWIÓROWSKI  
+ 
+ 

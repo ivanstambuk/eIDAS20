@@ -48,7 +48,7 @@
 
 version: '1.0'
 created: '2026-01-24'
-last_updated: '2026-01-24'
+last_updated: '2026-01-26'
 
 terms:
 
@@ -121,9 +121,19 @@ terms:
       sufficiently determine whether multiple items of interest (such as 
       transactions, presentations, or actions) are related or originate 
       from the same user. This prevents tracking and profiling of user 
-      behaviour across different relying parties.
-    source: Privacy research (Pfitzmann/Hansen terminology); eIDAS Article 5a(3)(b)
-    note: Core privacy goal of EUDIW design
+      behaviour. EDPS identifies four dimensions of unlinkability:
+      (1) Unlinkability w.r.t. Relying Parties - RPs should not be able 
+      to determine whether multiple presentations correspond to the same 
+      user, even when colluding with other RPs;
+      (2) Unlinkability w.r.t. Identity Providers - IdPs should not learn 
+      about wallet transactions (also called 'unobservability');
+      (3) Unlinkability w.r.t. Revocation Managers - entities managing 
+      credential status should not learn which RPs the wallet interacts 
+      with and when;
+      (4) Unlinkability w.r.t. Colluding IdPs and RPs - transactions 
+      should remain unlinkable even when IdPs and RPs share information.
+    source: Privacy research (Pfitzmann/Hansen terminology); EDPS TechDispatch #3/2025; eIDAS Article 5a(16)(b)
+    note: Core privacy goal of EUDIW design; see EDPS 2024 comments flagging ISO/IEC 18013-5 limitations
 
   - term: data minimisation
     definition: >-
@@ -422,6 +432,78 @@ terms:
       attribute value.
     source: Privacy research; cryptographic literature
     note: Abbreviated as ZKP; enables advanced privacy-preserving presentations
+    aliases:
+      - ZKP
+
+  - term: anonymous credentials
+    definition: >-
+      A family of privacy-preserving cryptographic mechanisms that support 
+      both selective disclosure and unlinkability requirements. Anonymous 
+      credentials enable authentication without identification when 
+      identification is not strictly necessary, using advanced cryptographic 
+      techniques such as Camenisch-Lysyanskaya (CL) signatures or BBS+ 
+      signatures to provide mathematical proof of a claim without disclosing 
+      any additional information. The term 'anonymous' refers to the ability 
+      to minimise data disclosure, not necessarily full anonymity in the 
+      broader context.
+    source: EDPS TechDispatch #3/2025; cryptographic literature (Chaum, Camenisch)
+    note: Not yet adopted in EUDIW first implementation; EDPS recommends adoption for full unlinkability
+
+  - term: device binding
+    definition: >-
+      A security feature ensuring that credentials are cryptographically 
+      tied to the specific wallet device that requests their issuance or 
+      verification. Device binding prevents credentials from being 
+      transferred to unauthorised devices, protecting against theft or 
+      cloning. High assurance is achieved by cryptographically linking a 
+      device's public key to a private key stored in a secure element.
+    source: EDPS TechDispatch #3/2025; ARF WSCD requirements
+    note: Essential for WSCD security; implements eIDAS High LoA requirements
+
+  - term: secure element
+    definition: >-
+      A microprocessor chip engineered to store sensitive data and perform 
+      critical cryptographic operations while offering lower exposure to 
+      threats. Secure elements act as hardware vaults, protecting 
+      applications and cryptographic key material from malware attacks on 
+      the host operating system. Examples include SIM cards, embedded SIMs 
+      (eSIMs), embedded secure elements (eSEs), and external security tokens 
+      or smart cards.
+    source: EDPS TechDispatch #3/2025; ARF Annex 1
+    note: Abbreviated as SE; core component for implementing WSCD with High LoA
+    aliases:
+      - SE
+
+  - term: trusted execution environment
+    definition: >-
+      An isolated environment within a device's main processor designed to 
+      protect sensitive operations and data from the rest of the device's 
+      processing components, including the operating system and other 
+      applications. TEEs are often used in combination with secure elements 
+      to provide cryptographic isolation for wallet operations. While TEEs 
+      offer improved security over general-purpose environments, research 
+      has demonstrated that incorrectly designed TEEs may remain vulnerable 
+      to side-channel attacks.
+    source: EDPS TechDispatch #3/2025; cryptographic literature
+    note: Abbreviated as TEE; software-based alternative to hardware secure elements
+    aliases:
+      - TEE
+
+  - term: level of assurance
+    definition: >-
+      The degree of confidence in the claimed identity of a person when 
+      using electronic identification. In the eIDAS framework, three levels 
+      are defined: (1) Low - provides limited confidence, suitable for 
+      reducing risk of misuse or alteration; (2) Substantial - provides 
+      substantial confidence, suitable for controlling access to 
+      medium-value services; (3) High - provides high confidence in the 
+      claimed identity, suitable for high-value or high-risk services. 
+      The EUDIW must comply with High LoA standards for storing and 
+      presenting qualified attestations.
+    source: eIDAS Regulation Article 8, Implementing Regulation 2015/1502; EDPS TechDispatch #3/2025
+    note: Abbreviated as LoA; determines security requirements for wallets and trust services
+    aliases:
+      - LoA
 
   # ═══════════════════════════════════════════════════════════════════════════
   # Latin Legal Terms
