@@ -1044,3 +1044,73 @@ Start with Option A to validate usefulness before deeper integration:
 *Phase 6 completed 2026-01-23. Backlog updated same date.*
 *Phase 7 scope drafted 2026-01-23 — awaiting decision.*
 
+---
+
+## 20. Legal Primacy Audit — DEC-256 (2026-01-26)
+
+### 20.1 Summary
+
+Completed audit to ensure all VCQ requirements have proper legislative backing (`legalBasis`), not just ARF references.
+
+**Before audit:**
+- 39 of 55 requirements (71%) had `legalBasis`
+- 16 requirements had ARF references only
+- 1 requirement had neither source
+
+**After audit:**
+- 55 of 55 requirements (100%) have `legalBasis`
+- 24 requirements have both `legalBasis` AND `arfReference`
+- 0 requirements have ARF-only or no source
+
+See: `.agent/session/VCQ_LEGAL_PRIMACY_AUDIT.md` for full mapping.
+
+### 20.2 Filter Design Decision
+
+Two **orthogonal, additive** filter dimensions:
+
+| Filter | Sources | Display Content |
+|--------|---------|-----------------|
+| **Legal** | Regulation + Implementing Acts | Legal text, Article citations |
+| **Architecture** | ARF, ISO, W3C, ETSI specs | Technical specification text |
+
+**Filter logic (additive/union):**
+- Legal ON + Arch OFF: Show requirements with `legalBasis` → display legal content
+- Legal OFF + Arch ON: Show requirements with `arfReference` → display technical content
+- **Both ON: UNION** — show all requirements with either source
+
+**Key principles:**
+1. Sources are **independent** — Architecture doesn't "derive from" Legal in UI
+2. Content display is **source-specific** — no mixing legal text with ARF text
+3. Requirements may have both sources but display is separated by filter
+4. Semantic equivalence is irrelevant to filtering — just source presence matters
+
+### 20.3 Outcome
+
+**No UI changes required.** The existing VCQ filter tiles already support this behavior:
+- **First tile (Legal):** Uses `legalBasis` field presence for filtering
+- **Third tile (Architecture):** Uses `arfReference` field presence for filtering
+- **Both filters active:** Union of requirements matching either condition
+
+The work completed today ensures **data completeness** — all requirements that stem from legally binding sources now have `legalBasis` populated. The existing UI now correctly filters based on the corrected data.
+
+### 20.4 Gap Analysis: RCA-VCQ Coverage (2026-01-26)
+
+Identified coverage gaps between RCA RP requirements and VCQ:
+
+**Added 6 new VCQ requirements:**
+- VEND-INT-026: Embedded disclosure policies (Art 10, 2024/2979)
+- VEND-INT-027: WebAuthn pseudonym support (Art 14, 2024/2979)
+- VEND-INT-028: RP-specific pseudonyms (Art 14(2), 2024/2979)
+- VEND-INT-029: Access certificate requirement (Art 3, 2024/2982)
+- VEND-INT-030: Data erasure protocol (Art 6, 2024/2982)
+- VEND-INT-031: DPA reporting support (Art 7, 2024/2982)
+
+**VCQ now has 61 requirements** (up from 55).
+
+**Created mapping document:** `.agent/session/RCA_VCQ_MAPPING.md`
+
+This document clarifies:
+- Direct coverage (RCA → VCQ mapping)
+- RP-only requirements (not delegatable)
+- VCQ-specific requirements (GDPR processor, DORA)
+

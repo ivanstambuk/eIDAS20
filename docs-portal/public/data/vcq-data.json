@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T09:07:04.591Z",
+  "generatedAt": "2026-01-26T10:30:12.288Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -559,7 +559,13 @@
       "categoryIcon": "👁️",
       "requirement": "Display both intermediary and RP identity to wallet users",
       "explanation": "When requesting data from wallets, the intermediary must ensure that \nwallet users can see both their own identity and the identity of the \nRP on whose behalf they are acting. This enables informed consent.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "8"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Where relying parties intend to rely upon European Digital Identity \nWallets, they shall identify themselves to the user.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_07"
@@ -571,7 +577,7 @@
       "isCore": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-005"
       ],
@@ -666,7 +672,13 @@
       "categoryIcon": "🏛️",
       "requirement": "Register as a Relying Party indicating intermediary status",
       "explanation": "Any entity acting as an intermediary must register as a Relying Party \naccording to Topic 27 requirements, while explicitly indicating its \nintent to act as an intermediary. This enables the intermediary to \nobtain an access certificate containing its own name and unique ID.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Where a relying party intends to rely upon European Digital Identity \nWallets for the provision of public or private services by means of \ndigital interaction, the relying party shall register in the Member \nState where it is established.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_01"
@@ -678,7 +690,7 @@
       "isCore": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-001"
       ],
@@ -693,7 +705,13 @@
       "categoryIcon": "🏛️",
       "requirement": "Register each intermediated RP at the appropriate Registrar",
       "explanation": "The intermediary must register each RP it acts on behalf of at a \nRegistrar in the Member State where that RP is established. If the \nRegistrar issues registration certificates, the intermediary must \nobtain a certificate for each registered intended use.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 5",
+        "paragraph": "1-3"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-5",
+      "legalText": "Wallet-relying parties shall at least provide the information set out \nin Annex I to national registers. Annex I(14-15) requires indication \nof intermediary status and association to intermediated RPs.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_03"
@@ -705,7 +723,7 @@
       "isCore": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-003"
       ],
@@ -720,7 +738,13 @@
       "categoryIcon": "🏛️",
       "requirement": "Provide legal evidence of RP relationship when registering",
       "explanation": "When registering an intermediated RP, the intermediary must provide \nlegally valid evidence (e.g., a contract) that the RP will use the \nintermediary's services. The Registrar must verify this evidence \nbefore registering the relationship.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 6",
+        "paragraph": "3-4"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-6",
+      "legalText": "Registrars shall verify the accuracy, validity, authenticity and \nintegrity of the information required, including the power of \nattorney of representatives of the wallet-relying parties.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_04"
@@ -732,7 +756,7 @@
       "isCore": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-006"
       ],
@@ -747,7 +771,13 @@
       "categoryIcon": "🔍",
       "requirement": "Perform verification of attestations as agreed with RP",
       "explanation": "The intermediary must verify the authenticity, revocation status, \ndevice binding, and user binding of PIDs and attestations received \nfrom wallet units, as well as wallet unit authenticity, according to \nwhat has been agreed with the Relying Party.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "9"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Relying parties shall be responsible for carrying out the procedure \nfor authenticating and validating person identification data and \nelectronic attestation of attributes requested from European Digital \nIdentity Wallets.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_09"
@@ -759,7 +789,7 @@
       "isCore": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-TEC-003"
       ],
@@ -1093,7 +1123,12 @@
       "categoryIcon": "👁️",
       "requirement": "Display both intermediary and RP identity before requesting attestations",
       "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "8"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
         "topic": "Topic 52",
@@ -1105,7 +1140,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
@@ -1118,7 +1153,13 @@
       "categoryIcon": "👁️",
       "requirement": "Ensure RP's intended data requests are accurately communicated to wallet",
       "explanation": "The intermediary must not modify, expand, or alter the RP's registered data \nrequest when forwarding to wallets. Only the attributes registered by the RP \nmay be requested.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Relying parties shall not request users to provide any data other than \nthat indicated pursuant to paragraph 2, point (c).",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_06"
@@ -1129,7 +1170,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-003"
       ],
@@ -1144,7 +1185,12 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward presentation requests without modification of requested attributes",
       "explanation": "The intermediary must accurately relay the RP's attribute request to the \nwallet without adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_06"
@@ -1155,7 +1201,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
@@ -1168,7 +1214,13 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward wallet presentations to RP without modification",
       "explanation": "The intermediary must relay the wallet's presentation to the RP exactly as \nreceived, without altering, extracting, or processing the credential data. \nThe presentation integrity must be preserved.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -1179,7 +1231,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1220,7 +1272,12 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward attributes only to the requesting RP after verification",
       "explanation": "After receiving attestation data from a wallet and verifying it, the \nintermediary must forward the attributes ONLY to the specific RP on whose \nbehalf the request was made. If verification fails, no attributes may be \nforwarded.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -1231,7 +1288,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1244,7 +1301,13 @@
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
       "explanation": "The intermediary must maintain current copies of the Trusted Lists containing \nPID Provider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 22",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-22",
+      "legalText": "Each Member State shall establish, maintain and publish trusted lists, \nincluding information related to the qualified trust service providers \nfor which it is responsible.",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_12"
@@ -1255,7 +1318,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-TEC-001"
       ],
@@ -1270,7 +1333,12 @@
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
       "explanation": "The intermediary must maintain current copies of Trusted Lists for qualified \nand non-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 22",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-22",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_13"
@@ -1281,7 +1349,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1323,7 +1391,13 @@
       "categoryIcon": "🔍",
       "requirement": "Validate attestation signatures using official trust anchors",
       "explanation": "The intermediary must verify the cryptographic signatures on attestations \nand PIDs using the public keys from official Trusted Lists. Invalid or \nuntrusted signatures must result in rejection.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalText": "The validity of attestations shall be verified using the trust anchors \npublished in official Trusted Lists.",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_05"
@@ -1334,7 +1408,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1347,7 +1421,12 @@
       "categoryIcon": "🔍",
       "requirement": "Verify attestation revocation status before acceptance",
       "explanation": "Before accepting a presentation as valid, the intermediary must check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_13"
@@ -1358,7 +1437,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1371,7 +1450,12 @@
       "categoryIcon": "🔍",
       "requirement": "Verify the wallet unit's device binding",
       "explanation": "The intermediary must verify that the presentation is bound to the wallet \nunit's secure cryptographic device (WSCD), confirming that the presenter \ncontrols the private key associated with the attestations.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_07"
@@ -1382,7 +1466,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1395,7 +1479,12 @@
       "categoryIcon": "🔍",
       "requirement": "Verify presentation freshness (anti-replay)",
       "explanation": "The intermediary must verify that presentations are fresh and not replayed \nby checking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_08"
@@ -1406,7 +1495,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
@@ -1419,7 +1508,12 @@
       "categoryIcon": "🔒",
       "requirement": "Ensure secure channel for transmission to RP",
       "explanation": "The intermediary must establish and maintain a secure, encrypted channel \nwhen forwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -1430,7 +1524,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1443,7 +1537,12 @@
       "categoryIcon": "🔒",
       "requirement": "Implement measures to prevent replay attacks",
       "explanation": "The intermediary must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "9"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_09"
@@ -1454,7 +1553,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
@@ -1492,7 +1591,12 @@
       "categoryIcon": "🔒",
       "requirement": "Protect verification results integrity",
       "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the intermediary's verification \noutcome is authentic and unmodified.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -1503,7 +1607,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
@@ -1516,14 +1620,20 @@
       "categoryIcon": "🔒",
       "requirement": "Maintain audit logs of verification operations",
       "explanation": "The intermediary should maintain logs of verification operations including \nverification timestamps, outcomes, and any errors. These logs support \ndispute resolution and compliance auditing while respecting privacy \n(no attestation content should be logged).",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 32",
+        "paragraph": "1(d)"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-32",
+      "legalText": "The controller and processor shall implement measures to ensure a process \nfor regularly testing, assessing and evaluating the effectiveness of \ntechnical and organisational measures for ensuring the security of processing.",
       "applicability": [
         "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroup": "gdpr",
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
@@ -1618,7 +1728,13 @@
       "categoryIcon": "🏛️",
       "requirement": "Specify RP details in each presentation request to wallet",
       "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP: user-friendly name, unique \nidentifier, Registrar URL, intended use identifier, and description. This \nenables the wallet to display accurate RP information to the user.",
-      "legalBasisLink": null,
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Annex I",
+        "paragraph": "9-10"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-annex i",
+      "legalText": "For each intended use, a list of the data, including attestations and \nattributes, that the relying party intends to request, a user-friendly \nname and a technical name, the attestation type and a description of \nintended use of the data.",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_05"
@@ -1629,7 +1745,7 @@
       "isCore": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "arf",
+      "sourceGroup": "eidas",
       "linkedRCA": [
         "RP-REG-003"
       ],
@@ -1717,6 +1833,175 @@
       "criticality": "medium",
       "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all intermediaries will require \ncertification.",
       "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-026",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Comply with embedded disclosure policies in attestations",
+      "explanation": "Electronic attestations of attributes may contain embedded disclosure \npolicies that specify conditions the relying party must meet to access \nthe attestation. The intermediary must verify RP compliance with these \npolicies and ensure the wallet can inform the user of the result.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 10",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-10",
+      "legalText": "Wallet instances shall verify whether the wallet-relying party complies \nwith the requirements of the embedded disclosure policy and inform the \nwallet user of the result.",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-PRV-010"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-027",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Support WebAuthn specification for pseudonym generation",
+      "explanation": "When the intermediary supports pseudonymous authentication from wallet \nunits, it must support the WebAuthn specification as mandated in \nAnnex V of the Integrity regulation. This enables privacy-preserving \nauthentication without revealing user identity.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 14",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-14",
+      "legalText": "Wallet units shall support the generation of pseudonyms for wallet users \nin compliance with the technical specifications set out in Annex V.",
+      "annexReference": "Annex V of 2024/2979:\n- 'Web Authentication', W3C Recommendation",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-004"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-028",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Support relying-party-specific pseudonyms",
+      "explanation": "Wallet units generate unique pseudonyms per relying party, ensuring \nunlinkability across different RPs. The intermediary must correctly \nhandle these RP-specific pseudonyms in verification flows.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 14",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-14",
+      "legalText": "A pseudonym shall be relying-party specific, meaning that only wallets \nand relying parties can link different transactions to the same pseudonym.",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-005"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-029",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Use valid Wallet-Relying Party Access Certificate",
+      "explanation": "The intermediary must use a valid Wallet-Relying Party Access Certificate \n(issued by its Registrar) when interacting with wallet units. The \ncertificate identifies the intermediary and enables the wallet to verify \nits registration status.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-3",
+      "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow wallet-relying parties to present a valid \nwallet-relying party access certificate.",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-007"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-030",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Support data erasure request protocol",
+      "explanation": "The intermediary must support the protocol for data erasure requests \nfrom wallet users. When a user requests erasure of their data from \nan RP (via the wallet), the intermediary must correctly relay or \nsupport this request.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 6",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-6",
+      "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow users to request erasure of their personal \ndata from wallet-relying parties.",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-008"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-031",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Support user reporting to data protection authorities",
+      "explanation": "Wallet units allow users to report RPs to data protection authorities \nif they suspect unlawful data requests. The intermediary's identity \n(as the entity making the request on behalf of the RP) will be visible \nto users and may be included in such reports.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 7",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-7",
+      "legalText": "Wallet providers shall ensure that wallet units allow wallet users to \neasily report wallet-relying parties to supervisory authorities \nestablished under Article 51 of Regulation (EU) 2016/679.",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-GOV-006"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "_sourceFile": "intermediary.yaml"
     }
   ],
   "requirementsByType": {
@@ -1745,7 +2030,13 @@
       "VEND-INT-022",
       "VEND-INT-023",
       "VEND-INT-024",
-      "VEND-INT-025"
+      "VEND-INT-025",
+      "VEND-INT-026",
+      "VEND-INT-027",
+      "VEND-INT-028",
+      "VEND-INT-029",
+      "VEND-INT-030",
+      "VEND-INT-031"
     ],
     "core": [
       "VEND-CORE-001",
@@ -1787,16 +2078,41 @@
       "VEND-CORE-001",
       "VEND-CORE-004",
       "VEND-CORE-005",
+      "VEND-CORE-011",
+      "VEND-CORE-015",
+      "VEND-CORE-016",
+      "VEND-CORE-017",
+      "VEND-CORE-018",
+      "VEND-INT-001",
+      "VEND-INT-002",
+      "VEND-INT-003",
+      "VEND-INT-004",
       "VEND-INT-005",
+      "VEND-INT-006",
+      "VEND-INT-007",
+      "VEND-INT-008",
       "VEND-INT-009",
+      "VEND-INT-010",
+      "VEND-INT-011",
+      "VEND-INT-012",
+      "VEND-INT-013",
+      "VEND-INT-014",
+      "VEND-INT-015",
       "VEND-INT-016",
-      "VEND-INT-018",
+      "VEND-INT-017",
       "VEND-INT-019",
       "VEND-INT-020",
       "VEND-INT-021",
+      "VEND-INT-022",
       "VEND-INT-023",
       "VEND-INT-024",
-      "VEND-INT-025"
+      "VEND-INT-025",
+      "VEND-INT-026",
+      "VEND-INT-027",
+      "VEND-INT-028",
+      "VEND-INT-029",
+      "VEND-INT-030",
+      "VEND-INT-031"
     ],
     "gdpr": [
       "VEND-CORE-002",
@@ -1808,7 +2124,8 @@
       "VEND-CORE-010",
       "VEND-CORE-012",
       "VEND-CORE-013",
-      "VEND-CORE-014"
+      "VEND-CORE-014",
+      "VEND-INT-018"
     ],
     "dora": [
       "VEND-ICT-001",
@@ -1824,57 +2141,36 @@
       "VEND-ICT-011",
       "VEND-ICT-012"
     ],
-    "arf": [
-      "VEND-CORE-011",
-      "VEND-CORE-015",
-      "VEND-CORE-016",
-      "VEND-CORE-017",
-      "VEND-CORE-018",
-      "VEND-INT-001",
-      "VEND-INT-002",
-      "VEND-INT-003",
-      "VEND-INT-004",
-      "VEND-INT-006",
-      "VEND-INT-007",
-      "VEND-INT-008",
-      "VEND-INT-010",
-      "VEND-INT-011",
-      "VEND-INT-012",
-      "VEND-INT-013",
-      "VEND-INT-014",
-      "VEND-INT-015",
-      "VEND-INT-017",
-      "VEND-INT-022"
-    ]
+    "arf": []
   },
   "stats": {
-    "totalRequirements": 55,
+    "totalRequirements": 61,
     "byType": {
       "core": 18,
-      "intermediary": 25,
+      "intermediary": 31,
       "dora_ict": 12
     },
     "bySourceGroup": {
-      "eidas": 13,
-      "gdpr": 10,
+      "eidas": 38,
+      "gdpr": 11,
       "dora": 12,
-      "arf": 20
+      "arf": 0
     },
     "byCategory": {
-      "governance": 15,
+      "governance": 16,
       "registration": 4,
       "security": 11,
-      "privacy": 5,
+      "privacy": 6,
       "transparency": 4,
       "verification": 5,
       "certification": 2,
-      "technical": 7,
+      "technical": 11,
       "interoperability": 2
     },
     "byCriticality": {
-      "critical": 29,
-      "high": 20,
-      "medium": 6,
+      "critical": 30,
+      "high": 22,
+      "medium": 9,
       "low": 0
     }
   }

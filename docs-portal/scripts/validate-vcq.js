@@ -320,6 +320,65 @@ function validate() {
     }
 
     // ====================
+    // Validate linkedRCA references against RCA requirements
+    // ====================
+
+    const rcaDir = join(__dirname, '..', 'config', 'rca', 'requirements');
+    let rcaValidation = { checked: false, valid: 0, invalid: [] };
+
+    if (existsSync(rcaDir)) {
+        try {
+            // Load all RCA requirement IDs
+            const rcaFiles = readdirSync(rcaDir).filter(f => f.endsWith('.yaml'));
+            const validRcaIds = new Set();
+
+            for (const file of rcaFiles) {
+                const rcaConfig = loadYaml(join(rcaDir, file));
+                if (rcaConfig.requirements) {
+                    for (const req of rcaConfig.requirements) {
+                        validRcaIds.add(req.id);
+                    }
+                }
+            }
+
+            rcaValidation.checked = true;
+            console.log(`\n   🔗 Validating linkedRCA references against ${validRcaIds.size} RCA IDs`);
+
+            // Check all VCQ linkedRCA references
+            for (const file of requirementFiles) {
+                const filePath = join(REQUIREMENTS_DIR, file);
+                const config = loadYaml(filePath);
+
+                if (!config.requirements) continue;
+
+                for (const req of config.requirements) {
+                    if (req.linkedRCA && Array.isArray(req.linkedRCA)) {
+                        for (const rcaId of req.linkedRCA) {
+                            if (!validRcaIds.has(rcaId)) {
+                                rcaValidation.invalid.push({ file, reqId: req.id, rcaId });
+                                warnings.push({
+                                    file,
+                                    reqId: req.id,
+                                    field: 'linkedRCA',
+                                    message: `RCA ID "${rcaId}" not found in RCA requirements`
+                                });
+                            } else {
+                                rcaValidation.valid++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            console.log(`   ✓ linkedRCA validation: ${rcaValidation.valid} valid, ${rcaValidation.invalid.length} invalid`);
+        } catch (e) {
+            console.warn(`   ⚠️  Could not validate linkedRCA references: ${e.message}`);
+        }
+    } else {
+        console.log('\n   ⚠️  Skipping linkedRCA validation (RCA directory not found)');
+    }
+
+    // ====================
     // Report results
     // ====================
 

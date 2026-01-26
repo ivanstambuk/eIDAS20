@@ -269,6 +269,13 @@ requirements:
       When requesting data from wallets, the intermediary must ensure that 
       wallet users can see both their own identity and the identity of the 
       RP on whose behalf they are acting. This enables informed consent.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "8"
+    legalText: |
+      Where relying parties intend to rely upon European Digital Identity 
+      Wallets, they shall identify themselves to the user.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_07"
@@ -357,6 +364,15 @@ requirements:
       according to Topic 27 requirements, while explicitly indicating its 
       intent to act as an intermediary. This enables the intermediary to 
       obtain an access certificate containing its own name and unique ID.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "1"
+    legalText: |
+      Where a relying party intends to rely upon European Digital Identity 
+      Wallets for the provision of public or private services by means of 
+      digital interaction, the relying party shall register in the Member 
+      State where it is established.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_01"
@@ -376,6 +392,14 @@ requirements:
       Registrar in the Member State where that RP is established. If the 
       Registrar issues registration certificates, the intermediary must 
       obtain a certificate for each registered intended use.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 5"
+      paragraph: "1-3"
+    legalText: |
+      Wallet-relying parties shall at least provide the information set out 
+      in Annex I to national registers. Annex I(14-15) requires indication 
+      of intermediary status and association to intermediated RPs.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_03"
@@ -395,6 +419,14 @@ requirements:
       legally valid evidence (e.g., a contract) that the RP will use the 
       intermediary's services. The Registrar must verify this evidence 
       before registering the relationship.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 6"
+      paragraph: "3-4"
+    legalText: |
+      Registrars shall verify the accuracy, validity, authenticity and 
+      integrity of the information required, including the power of 
+      attorney of representatives of the wallet-relying parties.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_04"
@@ -414,6 +446,15 @@ requirements:
       device binding, and user binding of PIDs and attestations received 
       from wallet units, as well as wallet unit authenticity, according to 
       what has been agreed with the Relying Party.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure 
+      for authenticating and validating person identification data and 
+      electronic attestation of attributes requested from European Digital 
+      Identity Wallets.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_09"
@@ -424,3 +465,4 @@ requirements:
       - RP-TEC-003
     deadline: "2027-11-21"
     criticality: critical
+

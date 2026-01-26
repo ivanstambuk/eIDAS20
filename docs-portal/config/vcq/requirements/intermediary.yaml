@@ -28,6 +28,10 @@ requirements:
       must display both the intermediary's identity (as the direct requester) and 
       the identity of the ultimate Relying Party on whose behalf the intermediary 
       is acting. This ensures informed consent.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "8"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_07"
@@ -47,6 +51,13 @@ requirements:
       The intermediary must not modify, expand, or alter the RP's registered data 
       request when forwarding to wallets. Only the attributes registered by the RP 
       may be requested.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "3"
+    legalText: |
+      Relying parties shall not request users to provide any data other than 
+      that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_06"
@@ -68,6 +79,10 @@ requirements:
       The intermediary must accurately relay the RP's attribute request to the 
       wallet without adding, removing, or modifying the requested attributes. The 
       request must match what the RP registered with supervisory authorities.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "3"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_06"
@@ -83,6 +98,13 @@ requirements:
       The intermediary must relay the wallet's presentation to the RP exactly as 
       received, without altering, extracting, or processing the credential data. 
       The presentation integrity must be preserved.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      relying parties and shall not store data about the content of the transaction.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
@@ -121,6 +143,10 @@ requirements:
       intermediary must forward the attributes ONLY to the specific RP on whose 
       behalf the request was made. If verification fails, no attributes may be 
       forwarded.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
@@ -141,6 +167,14 @@ requirements:
       PID Provider trust anchors (public keys/certificates). These lists are 
       published by Member States and the Commission and must be refreshed 
       regularly to capture additions, modifications, and revocations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 22"
+      paragraph: "1"
+    legalText: |
+      Each Member State shall establish, maintain and publish trusted lists, 
+      including information related to the qualified trust service providers 
+      for which it is responsible.
     arfReference:
       topic: "Topic 1"
       hlr: "OIA_12"
@@ -158,6 +192,10 @@ requirements:
       The intermediary must maintain current copies of Trusted Lists for qualified 
       and non-qualified electronic attestation of attributes (QEAA/EAA) providers. 
       These trust anchors are essential for validating attestation signatures.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 22"
+      paragraph: "1"
     arfReference:
       topic: "Topic 1"
       hlr: "OIA_13"
@@ -196,6 +234,13 @@ requirements:
       The intermediary must verify the cryptographic signatures on attestations 
       and PIDs using the public keys from official Trusted Lists. Invalid or 
       untrusted signatures must result in rejection.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    legalText: |
+      The validity of attestations shall be verified using the trust anchors 
+      published in official Trusted Lists.
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_05"
@@ -212,6 +257,10 @@ requirements:
       revocation status of the attestation. This may involve checking validity 
       status lists, OCSP responses, or other revocation mechanisms as specified 
       by the issuer.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
     arfReference:
       topic: "Topic 7"
       hlr: "VCR_13"
@@ -227,6 +276,10 @@ requirements:
       The intermediary must verify that the presentation is bound to the wallet 
       unit's secure cryptographic device (WSCD), confirming that the presenter 
       controls the private key associated with the attestations.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_07"
@@ -242,6 +295,10 @@ requirements:
       The intermediary must verify that presentations are fresh and not replayed 
       by checking nonces, timestamps, or session binding. Stale or replayed 
       presentations must be rejected.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_08"
@@ -261,6 +318,10 @@ requirements:
       The intermediary must establish and maintain a secure, encrypted channel 
       when forwarding wallet presentations to the RP. Transport layer security 
       (TLS 1.3 or equivalent) is required.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
@@ -276,6 +337,10 @@ requirements:
       The intermediary must implement mechanisms to detect and prevent replay of 
       previously received wallet presentations. Nonce-based challenge-response 
       and session binding are typical approaches.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "9"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_09"
@@ -307,6 +372,10 @@ requirements:
       The verification result communicated to the RP must be protected against 
       tampering. The RP must be able to trust that the intermediary's verification 
       outcome is authentic and unmodified.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
@@ -323,6 +392,14 @@ requirements:
       verification timestamps, outcomes, and any errors. These logs support 
       dispute resolution and compliance auditing while respecting privacy 
       (no attestation content should be logged).
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 32"
+      paragraph: "1(d)"
+    legalText: |
+      The controller and processor shall implement measures to ensure a process 
+      for regularly testing, assessing and evaluating the effectiveness of 
+      technical and organisational measures for ensuring the security of processing.
     applicability:
       - intermediary
     deadline: "2027-11-21"
@@ -402,6 +479,15 @@ requirements:
       complete information about the intermediated RP: user-friendly name, unique 
       identifier, Registrar URL, intended use identifier, and description. This 
       enables the wallet to display accurate RP information to the user.
+    legalBasis:
+      regulation: "2025/848"
+      article: "Annex I"
+      paragraph: "9-10"
+    legalText: |
+      For each intended use, a list of the data, including attestations and 
+      attributes, that the relying party intends to request, a user-friendly 
+      name and a technical name, the attestation type and a description of 
+      intended use of the data.
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_05"
@@ -480,3 +566,145 @@ requirements:
       This is a conditional requirement based on the RP's risk assessment and 
       the sensitivity of the use case. Not all intermediaries will require 
       certification.
+  
+  # ============================================================================
+  # PROTOCOL SUPPORT (Gap Analysis 2026-01-26)
+  # ============================================================================
+  
+  - id: VEND-INT-026
+    category: technical
+    requirement: "Comply with embedded disclosure policies in attestations"
+    explanation: |
+      Electronic attestations of attributes may contain embedded disclosure 
+      policies that specify conditions the relying party must meet to access 
+      the attestation. The intermediary must verify RP compliance with these 
+      policies and ensure the wallet can inform the user of the result.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 10"
+      paragraph: "3"
+    legalText: |
+      Wallet instances shall verify whether the wallet-relying party complies 
+      with the requirements of the embedded disclosure policy and inform the 
+      wallet user of the result.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-PRV-010
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-INT-027
+    category: technical
+    requirement: "Support WebAuthn specification for pseudonym generation"
+    explanation: |
+      When the intermediary supports pseudonymous authentication from wallet 
+      units, it must support the WebAuthn specification as mandated in 
+      Annex V of the Integrity regulation. This enables privacy-preserving 
+      authentication without revealing user identity.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 14"
+      paragraph: "1"
+    legalText: |
+      Wallet units shall support the generation of pseudonyms for wallet users 
+      in compliance with the technical specifications set out in Annex V.
+    annexReference: |
+      Annex V of 2024/2979:
+      - 'Web Authentication', W3C Recommendation
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-004
+    deadline: "2027-11-21"
+    criticality: medium
+  
+  - id: VEND-INT-028
+    category: technical
+    requirement: "Support relying-party-specific pseudonyms"
+    explanation: |
+      Wallet units generate unique pseudonyms per relying party, ensuring 
+      unlinkability across different RPs. The intermediary must correctly 
+      handle these RP-specific pseudonyms in verification flows.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 14"
+      paragraph: "2"
+    legalText: |
+      A pseudonym shall be relying-party specific, meaning that only wallets 
+      and relying parties can link different transactions to the same pseudonym.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-005
+    deadline: "2027-11-21"
+    criticality: medium
+  
+  - id: VEND-INT-029
+    category: technical
+    requirement: "Use valid Wallet-Relying Party Access Certificate"
+    explanation: |
+      The intermediary must use a valid Wallet-Relying Party Access Certificate 
+      (issued by its Registrar) when interacting with wallet units. The 
+      certificate identifies the intermediary and enables the wallet to verify 
+      its registration status.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols 
+      and interfaces which allow wallet-relying parties to present a valid 
+      wallet-relying party access certificate.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-007
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-030
+    category: privacy
+    requirement: "Support data erasure request protocol"
+    explanation: |
+      The intermediary must support the protocol for data erasure requests 
+      from wallet users. When a user requests erasure of their data from 
+      an RP (via the wallet), the intermediary must correctly relay or 
+      support this request.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 6"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols 
+      and interfaces which allow users to request erasure of their personal 
+      data from wallet-relying parties.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-008
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-INT-031
+    category: governance
+    requirement: "Support user reporting to data protection authorities"
+    explanation: |
+      Wallet units allow users to report RPs to data protection authorities 
+      if they suspect unlawful data requests. The intermediary's identity 
+      (as the entity making the request on behalf of the RP) will be visible 
+      to users and may be included in such reports.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 7"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units allow wallet users to 
+      easily report wallet-relying parties to supervisory authorities 
+      established under Article 51 of Regulation (EU) 2016/679.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-GOV-006
+    deadline: "2027-11-21"
+    criticality: medium
