@@ -2,7 +2,12 @@
  * VendorQuestionnaire (VCQ) Page
  * 
  * Vendor Compliance Questionnaire generator for Relying Parties evaluating
- * third-party intermediaries in the EUDIW ecosystem.
+ * third-party RP Intermediaries in the EUDIW ecosystem.
+ * 
+ * Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
+ * - Removed Intermediary Type selection step (was Step 1)
+ * - Now auto-selects the single "intermediary" type
+ * - Source Selection is now the only configuration step
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
@@ -168,6 +173,8 @@ function ARFReferenceLink({ arfReference, arfData }) {
 
 // ============================================================================
 // IntermediaryTypeSelector Component
+// DEC-254: This component is deprecated. The VCQ now auto-selects the single
+// RP Intermediary type. Kept for reference during transition.
 // ============================================================================
 
 function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirementsByType }) {
@@ -229,7 +236,7 @@ function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirements
 }
 
 // ============================================================================
-// SourceSelector Component (Step 3)
+// SourceSelector Component (Now Step 1 after DEC-254)
 // Filter requirements by legal source
 // ============================================================================
 
@@ -272,7 +279,7 @@ function SourceSelector({ legalSources, selectedSources, onToggle }) {
     return (
         <div className="vcq-step">
             <h3>
-                <span className="vcq-step-number">2</span>
+                <span className="vcq-step-number">1</span>
                 Source Selection
             </h3>
             <p className="vcq-step-hint">
@@ -991,7 +998,8 @@ export default function VendorQuestionnaire() {
     const arfData = useARFData();
 
     // Selection state
-    const [selectedTypes, setSelectedTypes] = useState([]);
+    // DEC-254: Auto-select the single intermediary type when data loads
+    const [selectedTypes, setSelectedTypes] = useState(['intermediary']);
     const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
@@ -1025,7 +1033,8 @@ export default function VendorQuestionnaire() {
         localStorage.setItem('vcq-active-view', activeView);
     }, [activeView]);
 
-    // Toggle intermediary type selection
+    // DEC-254: Intermediary type is now auto-selected, no toggle needed
+    // Kept for backwards compatibility if we ever need multiple types again
     const handleToggleType = useCallback((typeId) => {
         setSelectedTypes(prev =>
             prev.includes(typeId)
@@ -1057,8 +1066,9 @@ export default function VendorQuestionnaire() {
     }, []);
 
     // Get applicable requirements based on selection
+    // DEC-254: Now always includes 'intermediary' type requirements
     const applicableRequirements = useMemo(() => {
-        if (!data || selectedTypes.length === 0) return [];
+        if (!data) return [];
 
         const reqIds = new Set();
 
@@ -1137,23 +1147,18 @@ export default function VendorQuestionnaire() {
             <div className="vcq-header">
                 <h1>📋 Vendor Compliance Questionnaire</h1>
                 <p className="vcq-header-subtitle">
-                    Generate role-specific compliance questionnaires for evaluating third-party
-                    intermediaries in the EUDIW ecosystem. Select the intermediary type(s) you are
-                    assessing, configure any extended regulatory scope, and generate a structured
-                    questionnaire with guidance on each requirement.
+                    Generate compliance questionnaires for evaluating third-party RP Intermediary
+                    vendors in the EUDIW ecosystem. Select the regulatory sources to include,
+                    and generate a structured questionnaire with guidance on each requirement.
                 </p>
             </div>
 
-            {/* Step 1: Intermediary Type Selection */}
-            <IntermediaryTypeSelector
-                types={data.intermediaryTypes}
-                selectedTypes={selectedTypes}
-                onToggle={handleToggleType}
-                requirementsByType={data.requirementsByType}
-            />
+            {/* DEC-254: Removed Intermediary Type Selection step */}
+            {/* The tool now auto-selects the single RP Intermediary type */}
+            {/* Previously: <IntermediaryTypeSelector ... /> */}
 
-            {/* Step 2: Source Selection (only show if types selected) */}
-            {selectedTypes.length > 0 && data.legalSources && (
+            {/* Step 1: Source Selection (was Step 2 before DEC-254) */}
+            {data.legalSources && (
                 <SourceSelector
                     legalSources={data.legalSources}
                     selectedSources={selectedSources}
@@ -1162,7 +1167,7 @@ export default function VendorQuestionnaire() {
             )}
 
             {/* Generate Button */}
-            {selectedTypes.length > 0 && !showResults && (
+            {!showResults && (
                 <div className="vcq-generate-section">
                     <button
                         className="vcq-generate-btn"

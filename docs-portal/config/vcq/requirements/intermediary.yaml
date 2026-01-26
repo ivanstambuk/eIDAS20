@@ -1,0 +1,482 @@
+# VCQ Requirements: RP Intermediary (VEND-INT-*)
+# 
+# These requirements apply to Relying Party Intermediaries as defined in
+# Article 5b(10) and ARF Topic 52. An RP Intermediary acts on behalf of
+# Relying Parties to interact with EUDI Wallets, performing both:
+# - Presentation forwarding (receiving and relaying wallet presentations)
+# - Verification operations (signature validation, revocation checking)
+#
+# NOTE: Per DEC-254, the previous PIF/VIF distinction has been retired.
+# The ARF (RPI_09) treats verification as part of the unified RP Intermediary role.
+#
+# Schema Version: 1
+# Created: 2026-01-26
+# Decision: DEC-254 (Consolidated from DEC-222 PIF/VIF split)
+
+schemaVersion: 1
+
+requirements:
+  # ============================================================================
+  # TRANSPARENCY (from PIF)
+  # ============================================================================
+  
+  - id: VEND-INT-001
+    category: transparency
+    requirement: "Display both intermediary and RP identity before requesting attestations"
+    explanation: |
+      When the intermediary requests attestations from a wallet user, the wallet 
+      must display both the intermediary's identity (as the direct requester) and 
+      the identity of the ultimate Relying Party on whose behalf the intermediary 
+      is acting. This ensures informed consent.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_07"
+    legalText: |
+      When an intermediary requests attestations from a wallet unit, the wallet 
+      unit shall display both the identity of the intermediary and the identity 
+      of the relying party on whose behalf the intermediary is acting.
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-INT-002
+    category: transparency
+    requirement: "Ensure RP's intended data requests are accurately communicated to wallet"
+    explanation: |
+      The intermediary must not modify, expand, or alter the RP's registered data 
+      request when forwarding to wallets. Only the attributes registered by the RP 
+      may be requested.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_06"
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-REG-003
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # TECHNICAL - Forwarding (from PIF)
+  # ============================================================================
+  
+  - id: VEND-INT-003
+    category: technical
+    requirement: "Forward presentation requests without modification of requested attributes"
+    explanation: |
+      The intermediary must accurately relay the RP's attribute request to the 
+      wallet without adding, removing, or modifying the requested attributes. The 
+      request must match what the RP registered with supervisory authorities.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_06"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-INT-004
+    category: technical
+    requirement: "Forward wallet presentations to RP without modification"
+    explanation: |
+      The intermediary must relay the wallet's presentation to the RP exactly as 
+      received, without altering, extracting, or processing the credential data. 
+      The presentation integrity must be preserved.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_08"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-005
+    category: technical
+    requirement: "Support both remote and proximity presentation protocols"
+    explanation: |
+      If the RP requires both remote and proximity (offline) presentation 
+      scenarios, the intermediary must support the relevant ISO/IEC 18013-5 and 
+      ISO/IEC TS 18013-7 protocols.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "1-2"
+    annexReference: |
+      Annex to 2024/2982:
+      - ISO/IEC 18013-5:2021 (proximity)
+      - ISO/IEC TS 18013-7:2024 (remote)
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-002
+    deadline: "2027-11-21"
+    criticality: medium
+  
+  - id: VEND-INT-006
+    category: technical
+    requirement: "Forward attributes only to the requesting RP after verification"
+    explanation: |
+      After receiving attestation data from a wallet and verifying it, the 
+      intermediary must forward the attributes ONLY to the specific RP on whose 
+      behalf the request was made. If verification fails, no attributes may be 
+      forwarded.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_08"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  # ============================================================================
+  # TECHNICAL - Trust Anchor Management (from VIF)
+  # ============================================================================
+  
+  - id: VEND-INT-007
+    category: technical
+    requirement: "Maintain up-to-date Trusted Lists for PID Providers"
+    explanation: |
+      The intermediary must maintain current copies of the Trusted Lists containing 
+      PID Provider trust anchors (public keys/certificates). These lists are 
+      published by Member States and the Commission and must be refreshed 
+      regularly to capture additions, modifications, and revocations.
+    arfReference:
+      topic: "Topic 1"
+      hlr: "OIA_12"
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-008
+    category: technical
+    requirement: "Maintain up-to-date Trusted Lists for Attestation Providers"
+    explanation: |
+      The intermediary must maintain current copies of Trusted Lists for qualified 
+      and non-qualified electronic attestation of attributes (QEAA/EAA) providers. 
+      These trust anchors are essential for validating attestation signatures.
+    arfReference:
+      topic: "Topic 1"
+      hlr: "OIA_13"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-009
+    category: technical
+    requirement: "Obtain trust anchors only from official Trusted List sources"
+    explanation: |
+      Trust anchors for verification must be obtained exclusively from official 
+      EU and Member State Trusted Lists, not from third-party aggregators or 
+      unofficial sources. This ensures the authenticity of verification keys.
+    arfReference:
+      topic: "Topic 1"
+      hlr: "OIA_14"
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 32"
+      paragraph: ""
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  # ============================================================================
+  # VERIFICATION (from VIF — per ARF RPI_09)
+  # ============================================================================
+  
+  - id: VEND-INT-010
+    category: verification
+    requirement: "Validate attestation signatures using official trust anchors"
+    explanation: |
+      The intermediary must verify the cryptographic signatures on attestations 
+      and PIDs using the public keys from official Trusted Lists. Invalid or 
+      untrusted signatures must result in rejection.
+    arfReference:
+      topic: "Topic 6"
+      hlr: "RPA_05"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-011
+    category: verification
+    requirement: "Verify attestation revocation status before acceptance"
+    explanation: |
+      Before accepting a presentation as valid, the intermediary must check the 
+      revocation status of the attestation. This may involve checking validity 
+      status lists, OCSP responses, or other revocation mechanisms as specified 
+      by the issuer.
+    arfReference:
+      topic: "Topic 7"
+      hlr: "VCR_13"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-012
+    category: verification
+    requirement: "Verify the wallet unit's device binding"
+    explanation: |
+      The intermediary must verify that the presentation is bound to the wallet 
+      unit's secure cryptographic device (WSCD), confirming that the presenter 
+      controls the private key associated with the attestations.
+    arfReference:
+      topic: "Topic 6"
+      hlr: "RPA_07"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-013
+    category: verification
+    requirement: "Verify presentation freshness (anti-replay)"
+    explanation: |
+      The intermediary must verify that presentations are fresh and not replayed 
+      by checking nonces, timestamps, or session binding. Stale or replayed 
+      presentations must be rejected.
+    arfReference:
+      topic: "Topic 6"
+      hlr: "RPA_08"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # SECURITY (merged from PIF and VIF)
+  # ============================================================================
+  
+  - id: VEND-INT-014
+    category: security
+    requirement: "Ensure secure channel for transmission to RP"
+    explanation: |
+      The intermediary must establish and maintain a secure, encrypted channel 
+      when forwarding wallet presentations to the RP. Transport layer security 
+      (TLS 1.3 or equivalent) is required.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_08"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-015
+    category: security
+    requirement: "Implement measures to prevent replay attacks"
+    explanation: |
+      The intermediary must implement mechanisms to detect and prevent replay of 
+      previously received wallet presentations. Nonce-based challenge-response 
+      and session binding are typical approaches.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_09"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: high
+  
+  - id: VEND-INT-016
+    category: security
+    requirement: "Implement secure key management for verification operations"
+    explanation: |
+      The intermediary must implement secure storage and handling of any 
+      cryptographic material used in verification operations. Keys must be 
+      protected against unauthorized access, modification, and extraction.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-017
+    category: security
+    requirement: "Protect verification results integrity"
+    explanation: |
+      The verification result communicated to the RP must be protected against 
+      tampering. The RP must be able to trust that the intermediary's verification 
+      outcome is authentic and unmodified.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_08"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-018
+    category: security
+    requirement: "Maintain audit logs of verification operations"
+    explanation: |
+      The intermediary should maintain logs of verification operations including 
+      verification timestamps, outcomes, and any errors. These logs support 
+      dispute resolution and compliance auditing while respecting privacy 
+      (no attestation content should be logged).
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: medium
+    notes: |
+      Logs must not contain attestation content (due to no-storage mandate) 
+      but may contain verification metadata (pass/fail, timestamp, error codes).
+  
+  # ============================================================================
+  # PRIVACY (from PIF)
+  # ============================================================================
+  
+  - id: VEND-INT-019
+    category: privacy
+    requirement: "Do not extract or log individual attribute values from presentations"
+    explanation: |
+      Beyond the no-storage mandate, intermediaries must not extract, log, or 
+      analyze individual attribute values from wallet presentations. The 
+      presentation should be treated as an opaque payload for forwarding.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    applicability:
+      - intermediary
+    criticality: critical
+    deadline: "2027-11-21"
+  
+  - id: VEND-INT-020
+    category: privacy
+    requirement: "Do not correlate or link user presentations across different RPs"
+    explanation: |
+      Intermediaries serving multiple RPs must not correlate wallet user activity 
+      across different RP interactions. Each RP relationship must be treated 
+      independently to preserve user unlinkability.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "16(a)"
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-PRV-003
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-021
+    category: privacy
+    requirement: "Delete attestation data immediately after forwarding to RP"
+    explanation: |
+      The intermediary must completely delete all PIDs, attestations, and user 
+      attributes immediately after sending them to the intermediated RP. If 
+      forwarding fails or is not performed (e.g., due to verification failure), 
+      deletion must still occur immediately after completing all necessary 
+      verifications.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_10"
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  # ============================================================================
+  # GOVERNANCE (from PIF)
+  # ============================================================================
+  
+  - id: VEND-INT-022
+    category: governance
+    requirement: "Specify RP details in each presentation request to wallet"
+    explanation: |
+      When requesting attestations from a wallet, the intermediary must include 
+      complete information about the intermediated RP: user-friendly name, unique 
+      identifier, Registrar URL, intended use identifier, and description. This 
+      enables the wallet to display accurate RP information to the user.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_05"
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-REG-003
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # INTEROPERABILITY (from VIF)
+  # ============================================================================
+  
+  - id: VEND-INT-023
+    category: interoperability
+    requirement: "Support mandatory credential formats (ISO 18013-5 and W3C VC)"
+    explanation: |
+      The intermediary must be capable of verifying attestations in both mandated 
+      formats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data 
+      Model 1.1. This ensures interoperability across the EUDIW ecosystem.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    annexReference: |
+      Annex II of 2024/2979:
+      - ISO/IEC.18013-5:2021
+      - 'Verifiable Credentials Data Model 1.1', W3C Recommendation
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-001
+    deadline: "2027-11-21"
+    criticality: critical
+  
+  - id: VEND-INT-024
+    category: interoperability
+    requirement: "Support selective disclosure in both credential formats"
+    explanation: |
+      The intermediary's verification implementation must correctly handle 
+      selectively disclosed attributes in both mDoc and VC formats. Verification 
+      must succeed even when only a subset of attributes is presented.
+    legalBasis:
+      regulation: "2024/2982"
+      article: "Article 5"
+      paragraph: "4"
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-003
+    deadline: "2027-11-21"
+    criticality: high
+  
+  # ============================================================================
+  # CERTIFICATION (from VIF)
+  # ============================================================================
+  
+  - id: VEND-INT-025
+    category: certification
+    requirement: "Consider certification for cryptographic components"
+    explanation: |
+      Depending on the assurance level required by the RP, the intermediary may 
+      need to demonstrate that its cryptographic implementations meet recognized 
+      standards (e.g., FIPS 140-2/3, Common Criteria). This is especially relevant 
+      for high-assurance use cases.
+    legalBasis:
+      regulation: "2019/881"
+      article: "Article 47"
+      paragraph: ""
+    applicability:
+      - intermediary
+    deadline: "2027-11-21"
+    criticality: medium
+    notes: |
+      This is a conditional requirement based on the RP's risk assessment and 
+      the sensitivity of the use case. Not all intermediaries will require 
+      certification.

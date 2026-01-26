@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-26 00:17 CET |
-| **Version** | V3.9.8 |
-| **Portal Stats** | 44 docs, 391K words, 353 terms, 2,384 article links, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs |
+| **Last Updated** | 2026-01-26 08:18 CET |
+| **Version** | V3.9.9 |
+| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs |
 | **Next Action** | Backlog items in VCQ_TOOL_PLAN.md §17 |
 
 
@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-26 08:18 | **Feat: EDPS Document Analysis + Terminology** — Analyzed 5 EDPS documents (2021-2025), extracted terminology: enhanced unlinkability with 4 dimensions (w.r.t. RPs, IdPs, revocation managers, colluding parties); added 5 new terms (anonymous credentials, device binding, secure element, TEE, level of assurance). AGENTS.md: documented .agent/research/ folder, RCA = legislation only rule. Total terms: 354→359. |
 | 2026-01-26 00:17 | **Fix: Alphanumeric Paragraph Deep Linking** — Fixed missing gutter icons for paragraphs 1a, 1b, 1c in eIDAS. Two-part fix: (1) markdown format `1a.` → `- (1a)` for 18 instances, (2) `rehype-paragraph-ids.js` now detects paragraph patterns in list items with nested sublists. Also fixed EU reference format (`Article 24para1a` → `Article 24(1a)`). Retro: added AGENTS.md rule + code warning. |
 | 2026-01-25 23:50 | **Feat: Article Cross-Linking (DEC-N/A)** — Implemented `rehype-article-links.js` plugin for intra-document navigation. 2,341 links generated (Article N, Annex I, Recital N patterns). Fixed Article 218 TFEU false positive. Added TFEU/TEU to terminology. HashRouter-compatible click handler. Override system for compound refs. |
 | 2026-01-24 17:00 | **UI: High-Density Layout + Status Column Removal (DEC-250, DEC-251)** — Simplified sidebar toggle to header-only hamburger. Reduced main-content padding (2rem→1.5rem). RCA: removed Status column + assessments state; now a pure generator tool. VCQ: similar column adjustments. |

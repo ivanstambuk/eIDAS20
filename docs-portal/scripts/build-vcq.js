@@ -16,6 +16,8 @@
  *   - `requirement` (NOT `question`) - the requirement statement text
  *   - `explanation` (NOT `guidance`) - the explanatory details
  *   - `requirementsByType.dora_ict` - key must match scopeExtensions.id in config
+ * 
+ * Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
  */
 
 import fs from 'fs';
@@ -35,7 +37,7 @@ if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
 }
 
-console.log('🔧 Building VCQ data...\n');
+console.log('🔧 Building VCQ data...\\n');
 
 // ============================================================================
 // Load YAML files
@@ -61,7 +63,11 @@ function loadRequirementsDir() {
     const files = fs.readdirSync(reqDir).filter(f => f.endsWith('.yaml'));
     const allRequirements = [];
 
-    for (const file of files) {
+    // DEC-254: Skip deprecated pif.yaml and vif.yaml files
+    const deprecatedFiles = ['pif.yaml', 'vif.yaml'];
+    const activeFiles = files.filter(f => !deprecatedFiles.includes(f));
+
+    for (const file of activeFiles) {
         const filepath = path.join(reqDir, file);
         const content = fs.readFileSync(filepath, 'utf-8');
         const data = yaml.load(content);
@@ -77,6 +83,13 @@ function loadRequirementsDir() {
         console.log(`  📄 Loaded ${file}: ${data.requirements?.length || 0} requirements`);
     }
 
+    // Warn about deprecated files
+    for (const f of deprecatedFiles) {
+        if (files.includes(f)) {
+            console.log(`  ⚠️  Skipped ${f} (deprecated per DEC-254)`);
+        }
+    }
+
     return allRequirements;
 }
 
@@ -85,7 +98,7 @@ const vcqConfig = loadYaml('vcq-config.yaml');
 const categoriesConfig = loadYaml('categories.yaml');
 const allRequirements = loadRequirementsDir();
 
-console.log(`\n📊 Total requirements loaded: ${allRequirements.length}`);
+console.log(`\\n📊 Total requirements loaded: ${allRequirements.length}`);
 
 // ============================================================================
 // Process and structure data
@@ -101,6 +114,7 @@ const categories = Object.entries(categoriesConfig.categories).map(([id, cat]) =
 })).sort((a, b) => a.order - b.order);
 
 // Build intermediary types list
+// DEC-254: Now contains a single RP Intermediary type instead of PIF/VIF
 const intermediaryTypes = Object.entries(vcqConfig.intermediaryTypes).map(([id, type]) => ({
     id,
     label: type.label,
@@ -108,7 +122,8 @@ const intermediaryTypes = Object.entries(vcqConfig.intermediaryTypes).map(([id, 
     description: type.description,
     icon: type.icon,
     prefix: type.prefix,
-    keyCharacteristics: type.keyCharacteristics || []
+    keyCharacteristics: type.keyCharacteristics || [],
+    legalBasis: type.legalBasis || null
 }));
 
 // Build scope extensions list
@@ -129,17 +144,16 @@ const scopeExtensions = Object.entries(vcqConfig.scopeExtensions || {}).map(([id
 const processedRequirements = [];
 
 // Indexes for quick lookup
+// DEC-254: Simplified structure - single 'intermediary' type instead of pif/vif
 const requirementsByType = {
-    pif: [],
-    vif: [],
-    core: [],  // requirements that apply to both
-    dora_ict: [] // DORA ICT extended scope (matches scopeExtensions.id)
+    intermediary: [],  // All RP Intermediary requirements
+    core: [],          // Requirements from core.yaml (apply to all)
+    dora_ict: []       // DORA ICT extended scope (matches scopeExtensions.id)
 };
 
 for (const req of allRequirements) {
-    // Determine if this is core (applies to both) or type-specific
+    // Determine applicability
     const applicability = req.applicability || [];
-    const isCore = applicability.includes('pif') && applicability.includes('vif');
     const isExtended = req.scope === 'extended';
 
     // Build deep link for legal basis
@@ -164,7 +178,7 @@ for (const req of allRequirements) {
         arfReference: req.arfReference,
         annexReference: req.annexReference?.trim(),
         applicability: applicability,
-        isCore,
+        isCore: applicability.length === 0 || req._sourceFile === 'core.yaml',
         isExtended,
         scope: req.scope || 'core',
         linkedRCA: req.linkedRCA || [],
@@ -176,18 +190,16 @@ for (const req of allRequirements) {
 
     processedRequirements.push(processed);
 
-    // Build indexes
-    if (isCore && !isExtended) {
-        requirementsByType.core.push(req.id);
-    }
-    if (applicability.includes('pif') && !isCore && !isExtended) {
-        requirementsByType.pif.push(req.id);
-    }
-    if (applicability.includes('vif') && !isCore && !isExtended) {
-        requirementsByType.vif.push(req.id);
-    }
+    // Build indexes (DEC-254: simplified)
     if (isExtended) {
         requirementsByType.dora_ict.push(req.id);
+    } else if (req._sourceFile === 'core.yaml') {
+        requirementsByType.core.push(req.id);
+    } else if (applicability.includes('intermediary') || req._sourceFile === 'intermediary.yaml') {
+        requirementsByType.intermediary.push(req.id);
+    } else {
+        // Default to intermediary for any unspecified requirements
+        requirementsByType.intermediary.push(req.id);
     }
 }
 
@@ -199,8 +211,7 @@ const stats = {
     totalRequirements: processedRequirements.length,
     byType: {
         core: requirementsByType.core.length,
-        pif: requirementsByType.pif.length,
-        vif: requirementsByType.vif.length,
+        intermediary: requirementsByType.intermediary.length,
         dora_ict: requirementsByType.dora_ict.length
     },
     byCategory: {},
@@ -230,7 +241,7 @@ const output = {
     // Tool configuration
     tool: vcqConfig.tool,
 
-    // Intermediary types (PIF, VIF)
+    // Intermediary types (DEC-254: single RP Intermediary)
     intermediaryTypes,
 
     // Extended scope options (DORA, etc.)
@@ -261,13 +272,12 @@ const output = {
 
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
 
-console.log(`\n✅ VCQ data built successfully!`);
+console.log(`\\n✅ VCQ data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${stats.totalRequirements} total requirements`);
-console.log(`      - ${stats.byType.core} core (apply to both PIF & VIF)`);
-console.log(`      - ${stats.byType.pif} PIF-specific`);
-console.log(`      - ${stats.byType.vif} VIF-specific`);
+console.log(`      - ${stats.byType.core} core requirements`);
+console.log(`      - ${stats.byType.intermediary} RP Intermediary requirements`);
 console.log(`      - ${stats.byType.dora_ict} extended scope (DORA ICT)`);
 console.log(`      - Criticality: ${stats.byCriticality.critical} critical, ${stats.byCriticality.high} high`);
 console.log('');

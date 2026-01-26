@@ -1,41 +1,33 @@
 {
-  "generatedAt": "2026-01-24T10:52:09.375Z",
+  "generatedAt": "2026-01-26T07:55:02.408Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
     "shortName": "VCQ",
-    "description": "Generate role-specific compliance questionnaires for Relying Parties evaluating\nthird-party intermediaries in the EUDIW ecosystem.\n",
-    "version": "1.0.0"
+    "description": "Generate compliance questionnaires for Relying Parties evaluating\nthird-party RP Intermediaries in the EUDIW ecosystem.\n",
+    "version": "2.0.0"
   },
   "intermediaryTypes": [
     {
-      "id": "pif",
-      "label": "Presentation Intermediary (PIF)",
-      "shortLabel": "PIF",
-      "description": "Entity that receives wallet presentations on behalf of an RP and forwards them.\nDoes not perform cryptographic verification - acts as a conduit between wallet and RP.\n",
-      "icon": "📨",
-      "prefix": "VEND-PIF",
+      "id": "intermediary",
+      "label": "RP Intermediary",
+      "shortLabel": "Intermediary",
+      "description": "An entity that acts on behalf of Relying Parties to interact with EUDI Wallets.\nPer Article 5b(10), intermediaries are legally deemed Relying Parties and must not \nstore transaction content. Per ARF RPI_09, intermediaries perform both forwarding \nAND verification functions as a single unified role.\n",
+      "icon": "🔗",
+      "prefix": "VEND-INT",
       "keyCharacteristics": [
         "Receives and forwards wallet presentations",
         "Displays both own and RP identity to wallet users",
-        "Does not verify signatures (forwarding only)",
-        "Subject to no-storage mandate"
-      ]
-    },
-    {
-      "id": "vif",
-      "label": "Verification Intermediary (VIF)",
-      "shortLabel": "VIF",
-      "description": "Entity that performs cryptographic verification of attestations on behalf of an RP.\nMaintains trust anchor lists and validates signatures before forwarding results.\n",
-      "icon": "🔐",
-      "prefix": "VEND-VIF",
-      "keyCharacteristics": [
         "Performs cryptographic signature validation",
         "Maintains up-to-date Trusted Lists",
         "Verifies attestation revocation status",
-        "Secure key management required",
-        "Subject to no-storage mandate"
-      ]
+        "Subject to no-storage mandate (Art. 5b(10))"
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      }
     }
   ],
   "scopeExtensions": [
@@ -198,7 +190,7 @@
         "externalUrl": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
         "topics": [
           {
-            "id": "Topic45",
+            "id": "Topic52",
             "name": "Relying Party Intermediaries",
             "hlrPrefix": "RPI_"
           }
@@ -744,7 +736,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -770,7 +762,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -796,7 +788,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -821,7 +813,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -846,7 +838,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -871,7 +863,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -897,7 +889,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -922,7 +914,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -948,7 +940,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -974,7 +966,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -999,7 +991,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -1024,7 +1016,7 @@
         "pif",
         "vif"
       ],
-      "isCore": true,
+      "isCore": false,
       "isExtended": true,
       "scope": "extended",
       "linkedRCA": [],
@@ -1034,12 +1026,12 @@
       "_sourceFile": "ict.yaml"
     },
     {
-      "id": "VEND-PIF-001",
+      "id": "VEND-INT-001",
       "category": "transparency",
       "categoryLabel": "Transparency",
       "categoryIcon": "👁️",
       "requirement": "Display both intermediary and RP identity before requesting attestations",
-      "explanation": "When a PIF requests attestations from a wallet user, the wallet must display \nboth the PIF's identity (as the direct requester) and the identity of the \nultimate Relying Party on whose behalf the PIF is acting. This ensures \ninformed consent.",
+      "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.",
       "legalBasisLink": null,
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
@@ -1047,7 +1039,7 @@
         "hlr": "RPI_07"
       },
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1055,22 +1047,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-002",
+      "id": "VEND-INT-002",
       "category": "transparency",
       "categoryLabel": "Transparency",
       "categoryIcon": "👁️",
       "requirement": "Ensure RP's intended data requests are accurately communicated to wallet",
-      "explanation": "The PIF must not modify, expand, or alter the RP's registered data request \nwhen forwarding to wallets. Only the attributes registered by the RP may \nbe requested.",
+      "explanation": "The intermediary must not modify, expand, or alter the RP's registered data \nrequest when forwarding to wallets. Only the attributes registered by the RP \nmay be requested.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_06"
       },
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1080,22 +1072,22 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-003",
+      "id": "VEND-INT-003",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Forward presentation requests without modification of requested attributes",
-      "explanation": "The PIF must accurately relay the RP's attribute request to the wallet \nwithout adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
+      "explanation": "The intermediary must accurately relay the RP's attribute request to the \nwallet without adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_06"
       },
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1103,22 +1095,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-004",
+      "id": "VEND-INT-004",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Forward wallet presentations to RP without modification",
-      "explanation": "The PIF must relay the wallet's presentation to the RP exactly as received, \nwithout altering, extracting, or processing the credential data. The \npresentation integrity must be preserved.",
+      "explanation": "The intermediary must relay the wallet's presentation to the RP exactly as \nreceived, without altering, extracting, or processing the credential data. \nThe presentation integrity must be preserved.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1126,15 +1118,15 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-005",
+      "id": "VEND-INT-005",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Support both remote and proximity presentation protocols",
-      "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the PIF must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
+      "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the intermediary must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 5",
@@ -1143,7 +1135,7 @@
       "legalBasisLink": "/regulation/2024-2982#article-5",
       "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1153,143 +1145,22 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "medium",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-006",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Ensure secure channel for transmission to RP",
-      "explanation": "The PIF must establish and maintain a secure, encrypted channel when \nforwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
-      "legalBasisLink": null,
-      "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_08"
-      },
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-PIF-007",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Implement measures to prevent replay attacks",
-      "explanation": "The PIF must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
-      "legalBasisLink": null,
-      "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_09"
-      },
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-PIF-008",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
-      "requirement": "Do not extract or log individual attribute values from presentations",
-      "explanation": "Beyond the no-storage mandate, PIFs must not extract, log, or analyze \nindividual attribute values from wallet presentations. The presentation \nshould be treated as an opaque payload for forwarding.",
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5b",
-        "paragraph": "10"
-      },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-PIF-009",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
-      "requirement": "Do not correlate or link user presentations across different RPs",
-      "explanation": "PIFs serving multiple RPs must not correlate wallet user activity across \ndifferent RP interactions. Each RP relationship must be treated \nindependently to preserve user unlinkability.",
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5a",
-        "paragraph": "16(a)"
-      },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [
-        "RP-PRV-003"
-      ],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-PIF-010",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
-      "requirement": "Specify RP details in each presentation request to wallet",
-      "explanation": "When requesting attestations from a wallet, the PIF must include complete \ninformation about the intermediated RP: user-friendly name, unique identifier, \nRegistrar URL, intended use identifier, and description. This enables the \nwallet to display accurate RP information to the user.",
-      "legalBasisLink": null,
-      "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_05"
-      },
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [
-        "RP-REG-003"
-      ],
-      "deadline": "2027-11-21",
-      "criticality": "high",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-PIF-011",
+      "id": "VEND-INT-006",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Forward attributes only to the requesting RP after verification",
-      "explanation": "After receiving attestation data from a wallet and verifying it (or delegating \nverification to a VIF), the PIF must forward the attributes ONLY to the \nspecific RP on whose behalf the request was made. If verification fails, \nno attributes may be forwarded.",
+      "explanation": "After receiving attestation data from a wallet and verifying it, the \nintermediary must forward the attributes ONLY to the specific RP on whose \nbehalf the request was made. If verification fails, no attributes may be \nforwarded.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
       "applicability": [
-        "pif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1297,50 +1168,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "pif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-PIF-012",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
-      "requirement": "Delete attestation data immediately after forwarding to RP",
-      "explanation": "The PIF must completely delete all PIDs, attestations, and user attributes \nimmediately after sending them to the intermediated RP. If forwarding fails \nor is not performed (e.g., due to verification failure), deletion must still \noccur immediately after completing all necessary verifications.",
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5b",
-        "paragraph": "10"
-      },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
-      "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_10"
-      },
-      "applicability": [
-        "pif"
-      ],
-      "isCore": false,
-      "isExtended": false,
-      "scope": "core",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "_sourceFile": "pif.yaml"
-    },
-    {
-      "id": "VEND-VIF-001",
+      "id": "VEND-INT-007",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
-      "explanation": "VIFs must maintain current copies of the Trusted Lists containing PID \nProvider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
+      "explanation": "The intermediary must maintain current copies of the Trusted Lists containing \nPID Provider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_12"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1350,22 +1193,22 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-002",
+      "id": "VEND-INT-008",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
-      "explanation": "VIFs must maintain current copies of Trusted Lists for qualified and \nnon-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
+      "explanation": "The intermediary must maintain current copies of Trusted Lists for qualified \nand non-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_13"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1373,10 +1216,10 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-003",
+      "id": "VEND-INT-009",
       "category": "technical",
       "categoryLabel": "Technical",
       "categoryIcon": "⚙️",
@@ -1393,7 +1236,7 @@
         "hlr": "OIA_14"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1401,22 +1244,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-004",
+      "id": "VEND-INT-010",
       "category": "verification",
       "categoryLabel": "Verification",
       "categoryIcon": "🔍",
       "requirement": "Validate attestation signatures using official trust anchors",
-      "explanation": "The VIF must verify the cryptographic signatures on attestations and PIDs \nusing the public keys from official Trusted Lists. Invalid or untrusted \nsignatures must result in rejection.",
+      "explanation": "The intermediary must verify the cryptographic signatures on attestations \nand PIDs using the public keys from official Trusted Lists. Invalid or \nuntrusted signatures must result in rejection.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_05"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1424,22 +1267,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-005",
+      "id": "VEND-INT-011",
       "category": "verification",
       "categoryLabel": "Verification",
       "categoryIcon": "🔍",
       "requirement": "Verify attestation revocation status before acceptance",
-      "explanation": "Before accepting a presentation as valid, the VIF must check the revocation \nstatus of the attestation. This may involve checking validity status lists, \nOCSP responses, or other revocation mechanisms as specified by the issuer.",
+      "explanation": "Before accepting a presentation as valid, the intermediary must check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_13"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1447,22 +1290,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-006",
+      "id": "VEND-INT-012",
       "category": "verification",
       "categoryLabel": "Verification",
       "categoryIcon": "🔍",
       "requirement": "Verify the wallet unit's device binding",
-      "explanation": "The VIF must verify that the presentation is bound to the wallet unit's \nsecure cryptographic device (WSCD), confirming that the presenter controls \nthe private key associated with the attestations.",
+      "explanation": "The intermediary must verify that the presentation is bound to the wallet \nunit's secure cryptographic device (WSCD), confirming that the presenter \ncontrols the private key associated with the attestations.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_07"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1470,22 +1313,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-007",
+      "id": "VEND-INT-013",
       "category": "verification",
       "categoryLabel": "Verification",
       "categoryIcon": "🔍",
       "requirement": "Verify presentation freshness (anti-replay)",
-      "explanation": "The VIF must verify that presentations are fresh and not replayed by \nchecking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
+      "explanation": "The intermediary must verify that presentations are fresh and not replayed \nby checking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_08"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1493,15 +1336,61 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-008",
+      "id": "VEND-INT-014",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Ensure secure channel for transmission to RP",
+      "explanation": "The intermediary must establish and maintain a secure, encrypted channel \nwhen forwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_08"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-015",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement measures to prevent replay attacks",
+      "explanation": "The intermediary must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_09"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-016",
       "category": "security",
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Implement secure key management for verification operations",
-      "explanation": "The VIF must implement secure storage and handling of any cryptographic \nmaterial used in verification operations. Keys must be protected against \nunauthorized access, modification, and extraction.",
+      "explanation": "The intermediary must implement secure storage and handling of any \ncryptographic material used in verification operations. Keys must be \nprotected against unauthorized access, modification, and extraction.",
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -1509,7 +1398,7 @@
       },
       "legalBasisLink": "/regulation/2024-2979#article-3",
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1517,22 +1406,22 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-009",
+      "id": "VEND-INT-017",
       "category": "security",
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Protect verification results integrity",
-      "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the VIF's verification \noutcome is authentic and unmodified.",
+      "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the intermediary's verification \noutcome is authentic and unmodified.",
       "legalBasisLink": null,
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1540,18 +1429,18 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-010",
+      "id": "VEND-INT-018",
       "category": "security",
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Maintain audit logs of verification operations",
-      "explanation": "The VIF should maintain logs of verification operations including \nverification timestamps, outcomes, and any errors. These logs support \ndispute resolution and compliance auditing while respecting privacy \n(no attestation content should be logged).",
+      "explanation": "The intermediary should maintain logs of verification operations including \nverification timestamps, outcomes, and any errors. These logs support \ndispute resolution and compliance auditing while respecting privacy \n(no attestation content should be logged).",
       "legalBasisLink": null,
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1560,15 +1449,118 @@
       "deadline": "2027-11-21",
       "criticality": "medium",
       "notes": "Logs must not contain attestation content (due to no-storage mandate) \nbut may contain verification metadata (pass/fail, timestamp, error codes).",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-011",
+      "id": "VEND-INT-019",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Do not extract or log individual attribute values from presentations",
+      "explanation": "Beyond the no-storage mandate, intermediaries must not extract, log, or \nanalyze individual attribute values from wallet presentations. The \npresentation should be treated as an opaque payload for forwarding.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-020",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Do not correlate or link user presentations across different RPs",
+      "explanation": "Intermediaries serving multiple RPs must not correlate wallet user activity \nacross different RP interactions. Each RP relationship must be treated \nindependently to preserve user unlinkability.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "16(a)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-PRV-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-021",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Delete attestation data immediately after forwarding to RP",
+      "explanation": "The intermediary must completely delete all PIDs, attestations, and user \nattributes immediately after sending them to the intermediated RP. If \nforwarding fails or is not performed (e.g., due to verification failure), \ndeletion must still occur immediately after completing all necessary \nverifications.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "10"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_10"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-022",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Specify RP details in each presentation request to wallet",
+      "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP: user-friendly name, unique \nidentifier, Registrar URL, intended use identifier, and description. This \nenables the wallet to display accurate RP information to the user.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_05"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "linkedRCA": [
+        "RP-REG-003"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-023",
       "category": "interoperability",
       "categoryLabel": "Interoperability",
       "categoryIcon": "🌐",
       "requirement": "Support mandatory credential formats (ISO 18013-5 and W3C VC)",
-      "explanation": "The VIF must be capable of verifying attestations in both mandated formats: \nISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data Model 1.1. \nThis ensures interoperability across the EUDIW ecosystem.",
+      "explanation": "The intermediary must be capable of verifying attestations in both mandated \nformats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data \nModel 1.1. This ensures interoperability across the EUDIW ecosystem.",
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -1577,7 +1569,7 @@
       "legalBasisLink": "/regulation/2024-2979#article-8",
       "annexReference": "Annex II of 2024/2979:\n- ISO/IEC.18013-5:2021\n- 'Verifiable Credentials Data Model 1.1', W3C Recommendation",
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1587,15 +1579,15 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-012",
+      "id": "VEND-INT-024",
       "category": "interoperability",
       "categoryLabel": "Interoperability",
       "categoryIcon": "🌐",
       "requirement": "Support selective disclosure in both credential formats",
-      "explanation": "The VIF's verification implementation must correctly handle selectively \ndisclosed attributes in both mDoc and VC formats. Verification must \nsucceed even when only a subset of attributes is presented.",
+      "explanation": "The intermediary's verification implementation must correctly handle \nselectively disclosed attributes in both mDoc and VC formats. Verification \nmust succeed even when only a subset of attributes is presented.",
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 5",
@@ -1603,7 +1595,7 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-5",
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1613,15 +1605,15 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "_sourceFile": "vif.yaml"
+      "_sourceFile": "intermediary.yaml"
     },
     {
-      "id": "VEND-VIF-013",
+      "id": "VEND-INT-025",
       "category": "certification",
       "categoryLabel": "Certification",
       "categoryIcon": "✅",
       "requirement": "Consider certification for cryptographic components",
-      "explanation": "Depending on the assurance level required by the RP, the VIF may need to \ndemonstrate that its cryptographic implementations meet recognized standards \n(e.g., FIPS 140-2/3, Common Criteria). This is especially relevant for \nhigh-assurance use cases.",
+      "explanation": "Depending on the assurance level required by the RP, the intermediary may \nneed to demonstrate that its cryptographic implementations meet recognized \nstandards (e.g., FIPS 140-2/3, Common Criteria). This is especially relevant \nfor high-assurance use cases.",
       "legalBasis": {
         "regulation": "2019/881",
         "article": "Article 47",
@@ -1629,7 +1621,7 @@
       },
       "legalBasisLink": "/regulation/2019-881#article-47",
       "applicability": [
-        "vif"
+        "intermediary"
       ],
       "isCore": false,
       "isExtended": false,
@@ -1637,39 +1629,37 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
-      "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all VIFs will require certification.",
-      "_sourceFile": "vif.yaml"
+      "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all intermediaries will require \ncertification.",
+      "_sourceFile": "intermediary.yaml"
     }
   ],
   "requirementsByType": {
-    "pif": [
-      "VEND-PIF-001",
-      "VEND-PIF-002",
-      "VEND-PIF-003",
-      "VEND-PIF-004",
-      "VEND-PIF-005",
-      "VEND-PIF-006",
-      "VEND-PIF-007",
-      "VEND-PIF-008",
-      "VEND-PIF-009",
-      "VEND-PIF-010",
-      "VEND-PIF-011",
-      "VEND-PIF-012"
-    ],
-    "vif": [
-      "VEND-VIF-001",
-      "VEND-VIF-002",
-      "VEND-VIF-003",
-      "VEND-VIF-004",
-      "VEND-VIF-005",
-      "VEND-VIF-006",
-      "VEND-VIF-007",
-      "VEND-VIF-008",
-      "VEND-VIF-009",
-      "VEND-VIF-010",
-      "VEND-VIF-011",
-      "VEND-VIF-012",
-      "VEND-VIF-013"
+    "intermediary": [
+      "VEND-INT-001",
+      "VEND-INT-002",
+      "VEND-INT-003",
+      "VEND-INT-004",
+      "VEND-INT-005",
+      "VEND-INT-006",
+      "VEND-INT-007",
+      "VEND-INT-008",
+      "VEND-INT-009",
+      "VEND-INT-010",
+      "VEND-INT-011",
+      "VEND-INT-012",
+      "VEND-INT-013",
+      "VEND-INT-014",
+      "VEND-INT-015",
+      "VEND-INT-016",
+      "VEND-INT-017",
+      "VEND-INT-018",
+      "VEND-INT-019",
+      "VEND-INT-020",
+      "VEND-INT-021",
+      "VEND-INT-022",
+      "VEND-INT-023",
+      "VEND-INT-024",
+      "VEND-INT-025"
     ],
     "core": [
       "VEND-CORE-001",
@@ -1710,8 +1700,7 @@
     "totalRequirements": 55,
     "byType": {
       "core": 18,
-      "pif": 12,
-      "vif": 13,
+      "intermediary": 25,
       "dora_ict": 12
     },
     "byCategory": {

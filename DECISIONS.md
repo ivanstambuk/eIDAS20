@@ -2534,3 +2534,54 @@ Considered importing PSD2 (Directive 2015/2366) and PSD2-RTS (Commission Delegat
 
 **Files unchanged** — This is a "do nothing" decision.
 
+---
+
+## DEC-254: VCQ Intermediary Type Consolidation (PIF/VIF → RP Intermediary)
+
+**Date:** 2026-01-26  
+**Status:** Implementing  
+**Category:** VCQ Tool / Regulatory Alignment
+
+**Context:**  
+The VCQ tool was originally designed with two intermediary types:
+- **PIF (Presentation Intermediary Function)** — Receive and forward wallet presentations
+- **VIF (Verification Intermediary Function)** — Perform cryptographic verification
+
+Web research and detailed regulatory analysis revealed:
+1. **PIF/VIF are not official terms** — Neither eIDAS, ARF, nor any implementing act uses these terms
+2. **ARF Topic 52 (RPI_09) includes verification as part of the RP Intermediary role** — No separate "verification intermediary" exists
+3. **2025/1569 Art. 9 "designated intermediary" is a different concept** — Refers to national-level gateways for QTSPs verifying attributes against authentic sources during *issuance*, not RP-side wallet presentation verification
+
+**Decision:** **Collapse PIF and VIF into a single "RP Intermediary" category.**
+
+**Changes:**
+
+| Component | Before | After |
+|-----------|--------|-------|
+| Requirement files | `pif.yaml` + `vif.yaml` | `intermediary.yaml` |
+| Requirement IDs | `VEND-PIF-*`, `VEND-VIF-*` | `VEND-INT-*` |
+| VCQ UI Step 1 | Intermediary Type checkboxes | Removed |
+| Terminology | PIF, VIF definitions | "RP Intermediary" definition |
+
+**Rationale:**
+
+1. **Regulatory accuracy** — Aligns with official eIDAS Art. 5b(10) and ARF Topic 52 terminology
+2. **Removes terminology conflict** — Eliminates confusion with 2025/1569 "designated intermediary"
+3. **Simplifies UX** — One less decision point for users
+4. **Reflects operational reality** — Vendors provide unified products, not separate "forwarding" vs "verification" modules
+
+**ARF Evidence (RPI_09):**
+> "The intermediary SHALL verify the authenticity of the PID or attestation, its revocation status, device binding, and User binding..."
+
+This confirms verification is part of the RP Intermediary role, not a separate function.
+
+**Implementation:**
+- See full rationale: `docs-portal/docs/research/VCQ_INTERMEDIARY_CONSOLIDATION.md`
+- Merged requirements file: `config/vcq/requirements/intermediary.yaml`
+- TERMINOLOGY.md updated to remove PIF/VIF
+- INTERMEDIARY_ROLE_ANALYSIS.md updated to reflect corrected understanding
+
+**Related Decisions:**
+- DEC-222: VCQ Tool Implementation (original design)
+- DEC-223: ARF Database Integration
+

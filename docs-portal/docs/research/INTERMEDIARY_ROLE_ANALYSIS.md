@@ -62,20 +62,28 @@ Implementing Regulation 2025/848 (Registration of Wallet-Relying Parties) explic
 - Creates a formal dependency chain in the trust infrastructure
 - Supervisory bodies can trace issues through the intermediary relationship
 
-### 2.3 A Second Type of Intermediary: Verification Intermediaries (2025/1569)
+### 2.3 A DIFFERENT Concept: Designated Intermediaries for QTSP Issuance (2025/1569)
+
+> **⚠️ IMPORTANT CLARIFICATION (DEC-254, 2026-01-26):**  
+> The "designated intermediary" in 2025/1569 Article 9 is a **completely different concept** from the RP Intermediary in Art. 5b(10). These should NOT be conflated.
 
 Article 9 of Implementing Regulation 2025/1569 introduces a distinct concept:
 
 > "The verification mechanism shall provide an access point where qualified trust service providers issuing qualified electronic attestations of attributes can electronically request the verification against authentic sources **or designated intermediaries recognised at national level**..."
 
-This creates two distinct "intermediary" concepts:
+| Aspect | RP Intermediary (Art. 5b(10)) | Designated Intermediary (2025/1569 Art. 9) |
+|--------|-------------------------------|-------------------------------------------|
+| **Purpose** | Interact with wallets on behalf of RPs | Verify attributes against authentic sources |
+| **Who uses it** | Relying Parties | QTSPs (attribute issuers) |
+| **When** | At **presentation** time (consumption) | At **issuance** time |
+| **Who provides it** | Commercial vendors (e.g., Lissi) | Government/national infrastructure |
+| **Legal basis** | Art. 5b(10) | Art. 45e(1) |
+| **Workflow** | RP → Intermediary → Wallet | QTSP → Intermediary → Authentic Source |
 
-| Type | Context | Legal Basis | Primary Actor |
-|------|---------|-------------|---------------|
-| **Wallet Presentation Intermediary** | Acting on behalf of RPs to interact with wallets | Art. 5b(10) | Relying Parties |
-| **Verification Intermediary** | Proxying verification requests to authentic sources | 2025/1569 Art. 9 | EAA Issuers (QTSPs) |
+**For this analysis and the VCQ tool, we focus exclusively on RP Intermediaries (Art. 5b(10)).**
 
-For this analysis, we focus on **Wallet Presentation Intermediaries** (Art. 5b(10)).
+The original VCQ design incorrectly created separate "PIF" and "VIF" categories, with VIF implying a connection to 2025/1569. This has been corrected per DEC-254 — there is only **one** type of RP intermediary, which performs both forwarding AND verification as part of a single role (per ARF RPI_09).
+
 
 ---
 

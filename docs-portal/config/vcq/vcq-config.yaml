@@ -4,7 +4,8 @@
 # in the EUDIW ecosystem.
 #
 # Created: 2026-01-22
-# Decision: DEC-222 (pending)
+# Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
+# Decisions: DEC-222 (original), DEC-254 (consolidation)
 
 schemaVersion: 1
 
@@ -13,48 +14,42 @@ tool:
   name: "Vendor Compliance Questionnaire"
   shortName: "VCQ"
   description: |
-    Generate role-specific compliance questionnaires for Relying Parties evaluating
-    third-party intermediaries in the EUDIW ecosystem.
-  version: "1.0.0"
+    Generate compliance questionnaires for Relying Parties evaluating
+    third-party RP Intermediaries in the EUDIW ecosystem.
+  version: "2.0.0"
 
 # Intermediary Types
-# RPs can select one or both types depending on the vendor's role
+# DEC-254: Consolidated from separate PIF/VIF types into a single RP Intermediary.
+# The previous distinction was not based on official regulatory terminology.
+# ARF Topic 52 treats verification as part of the unified RP Intermediary role (RPI_09).
 intermediaryTypes:
-  pif:
-    id: "pif"
-    label: "Presentation Intermediary (PIF)"
-    shortLabel: "PIF"
+  intermediary:
+    id: "intermediary"
+    label: "RP Intermediary"
+    shortLabel: "Intermediary"
     description: |
-      Entity that receives wallet presentations on behalf of an RP and forwards them.
-      Does not perform cryptographic verification - acts as a conduit between wallet and RP.
-    icon: "📨"
-    prefix: "VEND-PIF"
-    arfTopics:
-      - "Topic 52: RP Intermediaries"
-    keyCharacteristics:
-      - "Receives and forwards wallet presentations"
-      - "Displays both own and RP identity to wallet users"
-      - "Does not verify signatures (forwarding only)"
-      - "Subject to no-storage mandate"
-  
-  vif:
-    id: "vif"
-    label: "Verification Intermediary (VIF)"
-    shortLabel: "VIF"
-    description: |
-      Entity that performs cryptographic verification of attestations on behalf of an RP.
-      Maintains trust anchor lists and validates signatures before forwarding results.
-    icon: "🔐"
-    prefix: "VEND-VIF"
+      An entity that acts on behalf of Relying Parties to interact with EUDI Wallets.
+      Per Article 5b(10), intermediaries are legally deemed Relying Parties and must not 
+      store transaction content. Per ARF RPI_09, intermediaries perform both forwarding 
+      AND verification functions as a single unified role.
+    icon: "🔗"
+    prefix: "VEND-INT"
     arfTopics:
       - "Topic 52: RP Intermediaries"
       - "Topic 6: RP Authentication"
+      - "Topic 1: Trust Infrastructure"
+      - "Topic 7: Validity Status"
     keyCharacteristics:
+      - "Receives and forwards wallet presentations"
+      - "Displays both own and RP identity to wallet users"
       - "Performs cryptographic signature validation"
       - "Maintains up-to-date Trusted Lists"
       - "Verifies attestation revocation status"
-      - "Secure key management required"
-      - "Subject to no-storage mandate"
+      - "Subject to no-storage mandate (Art. 5b(10))"
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5b"
+      paragraph: "10"
 
 # Scope Extensions
 # Additional regulatory scopes that can be toggled on
@@ -135,7 +130,7 @@ legalSources:
       shortName: "ARF"
       externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
       topics:
-        - id: "Topic45"
+        - id: "Topic52"
           name: "Relying Party Intermediaries"
           hlrPrefix: "RPI_"
 
@@ -163,3 +158,18 @@ output:
     - id: "pdf"
       label: "PDF Document"
       extension: ".pdf"
+
+# Migration Notes (DEC-254)
+# 
+# Previous structure (v1):
+#   - intermediaryTypes.pif (12 requirements, VEND-PIF-*)
+#   - intermediaryTypes.vif (13 requirements, VEND-VIF-*)
+#   - Step 1: Select PIF and/or VIF
+#   - Step 2: Source Selection
+#
+# New structure (v2):
+#   - intermediaryTypes.intermediary (25 requirements, VEND-INT-*)
+#   - Step 1: Source Selection (no type selection needed)
+#
+# Rationale: ARF RPI_09 explicitly includes verification as part of the 
+# RP Intermediary role. The PIF/VIF distinction was not official terminology.
