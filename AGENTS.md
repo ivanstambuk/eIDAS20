@@ -358,6 +358,57 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 14. Verify Terminology Before Creating (MANDATORY — Before New Terms)
+
+**Before creating ANY new role, entity type, or acronym for use in documentation or code, verify it exists in official sources.**
+
+**This applies when:**
+- Creating new YAML ID prefixes (e.g., `VEND-PIF-*`)
+- Adding new role/entity terminology to TERMINOLOGY.md
+- Designing features around specific actor types
+
+**Required verification steps:**
+1. **Web search** the proposed term + "eIDAS" or "ARF" or "EUDIW"
+2. **Check ARF** Topic headings and HLR IDs
+3. **Check implementing acts** for official role definitions
+
+**If term doesn't exist officially:**
+- ❌ DO NOT invent official-sounding acronyms
+- ✅ Use descriptive names and mark as "portal convention" in TERMINOLOGY.md
+
+**Why this matters:** DEC-254 required refactoring because "PIF" and "VIF" were invented terms that sounded official but weren't. The ARF uses "RP Intermediary" without the PIF/VIF split.
+
+**Anti-patterns:**
+- ❌ "I'll call this a Presentation Intermediary Function (PIF)" → creates ID prefix → later discovered term doesn't exist
+- ❌ Assuming a logical decomposition exists in official sources
+
+**Correct pattern:**
+- ✅ Web search "presentation intermediary eIDAS" → no results → use official term "RP Intermediary"
+
+---
+
+### 15. Terminology Source Citation (MANDATORY — When Adding to TERMINOLOGY.md)
+
+**Every term added to TERMINOLOGY.md MUST include its source OR be explicitly marked as a portal convention.**
+
+**Format for official terms:**
+```markdown
+| **Term** | Description... Defined in **Article X** of Regulation Y. |
+```
+
+**Format for portal conventions:**
+```markdown
+| **Term** | ⚙️ *Portal convention*. Description... |
+```
+
+**Why this matters:** Terms without sources can spread as if they're official when they're not. DEC-254 revealed that PIF/VIF were portal inventions mistakenly treated as official terminology.
+
+**Anti-patterns:**
+- ❌ Adding a term without any source citation
+- ❌ Implying a term is official when it's not
+
+---
+
 ## Project Structure
 
 ```

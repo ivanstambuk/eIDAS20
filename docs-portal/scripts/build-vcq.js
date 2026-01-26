@@ -37,7 +37,7 @@ if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
 }
 
-console.log('🔧 Building VCQ data...\\n');
+console.log('🔧 Building VCQ data...\n');
 
 // ============================================================================
 // Load YAML files
@@ -98,7 +98,7 @@ const vcqConfig = loadYaml('vcq-config.yaml');
 const categoriesConfig = loadYaml('categories.yaml');
 const allRequirements = loadRequirementsDir();
 
-console.log(`\\n📊 Total requirements loaded: ${allRequirements.length}`);
+console.log(`\n📊 Total requirements loaded: ${allRequirements.length}`);
 
 // ============================================================================
 // Process and structure data
@@ -272,7 +272,7 @@ const output = {
 
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
 
-console.log(`\\n✅ VCQ data built successfully!`);
+console.log(`\n✅ VCQ data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${stats.totalRequirements} total requirements`);
