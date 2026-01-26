@@ -160,10 +160,10 @@ legalSources:
     description: "Technical specifications for implementation"
     icon: "🏗️"
     items:
-      - id: "ARF_1.5"
-        name: "Architecture Reference Framework v1.5"
+      - id: "ARF_2.7.3"
+        name: "Architecture Reference Framework v2.7.3"
         shortName: "ARF"
-        version: "1.5"
+        version: "2.7.3"
         externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
         extraRequirements: 20
         topics:
