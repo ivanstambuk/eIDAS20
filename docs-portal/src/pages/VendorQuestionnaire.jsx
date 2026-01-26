@@ -273,7 +273,7 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                         {legalSources?.eidas?.description || 'Core eIDAS Regulation and all Implementing Acts'}
                     </p>
                     <div className="vcq-tile-includes">
-                        <span className="vcq-tile-includes-label">Includes:</span>
+                        <span className="vcq-tile-includes-label">Includes (RP-relevant acts):</span>
                         <ul className="vcq-tile-includes-list">
                             {legalSources?.eidas?.items?.map(item => (
                                 <li key={item.id}>
