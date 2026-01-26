@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T14:44:46.481Z",
+  "generatedAt": "2026-01-26T14:51:43.420Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -681,9 +681,9 @@
     },
     {
       "id": "VEND-CORE-015",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Register as a Relying Party indicating intermediary status",
       "explanation": "Any entity acting as an intermediary must register as a Relying Party \naccording to Topic 27 requirements, while explicitly indicating its \nintent to act as an intermediary. This enables the intermediary to \nobtain an access certificate containing its own name and unique ID.",
       "legalBasis": {
@@ -715,9 +715,9 @@
     },
     {
       "id": "VEND-CORE-016",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Register each intermediated RP at the appropriate Registrar",
       "explanation": "The intermediary must register each RP it acts on behalf of at a \nRegistrar in the Member State where that RP is established. If the \nRegistrar issues registration certificates, the intermediary must \nobtain a certificate for each registered intended use.",
       "legalBasis": {
@@ -749,9 +749,9 @@
     },
     {
       "id": "VEND-CORE-017",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Provide legal evidence of RP relationship when registering",
       "explanation": "When registering an intermediated RP, the intermediary must provide \nlegally valid evidence (e.g., a contract) that the RP will use the \nintermediary's services. The Registrar must verify this evidence \nbefore registering the relationship.",
       "legalBasis": {
@@ -2327,8 +2327,8 @@
       "arf": 0
     },
     "byCategory": {
-      "governance": 17,
-      "registration": 4,
+      "governance": 14,
+      "registration": 7,
       "security": 11,
       "privacy": 6,
       "transparency": 4,

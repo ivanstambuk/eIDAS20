@@ -357,7 +357,7 @@ requirements:
   # ============================================================================
   
   - id: VEND-CORE-015
-    category: governance
+    category: registration
     requirement: "Register as a Relying Party indicating intermediary status"
     explanation: |
       Any entity acting as an intermediary must register as a Relying Party 
@@ -385,7 +385,7 @@ requirements:
     criticality: critical
   
   - id: VEND-CORE-016
-    category: governance
+    category: registration
     requirement: "Register each intermediated RP at the appropriate Registrar"
     explanation: |
       The intermediary must register each RP it acts on behalf of at a 
@@ -412,7 +412,7 @@ requirements:
     criticality: critical
   
   - id: VEND-CORE-017
-    category: governance
+    category: registration
     requirement: "Provide legal evidence of RP relationship when registering"
     explanation: |
       When registering an intermediated RP, the intermediary must provide 
