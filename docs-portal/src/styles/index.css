@@ -846,6 +846,8 @@ a.btn-primary:hover {
   min-height: calc(100vh - var(--header-height));
   /* Smooth reflow when sidebar collapses */
   transition: margin-left var(--transition-base);
+  /* Prevent content from overflowing horizontally */
+  overflow-x: hidden;
 }
 
 /* --- Desktop Sidebar Collapse --- */
@@ -1198,15 +1200,18 @@ a.btn-primary:hover {
      MOBILE TYPOGRAPHY - Scale down headings
      ============================================ */
   h1 {
-    font-size: var(--text-2xl); /* 24px instead of 36px */
+    font-size: var(--text-2xl);
+    /* 24px instead of 36px */
   }
 
   h2 {
-    font-size: var(--text-xl); /* 20px instead of 30px */
+    font-size: var(--text-xl);
+    /* 20px instead of 30px */
   }
 
   h3 {
-    font-size: var(--text-lg); /* 18px instead of 24px */
+    font-size: var(--text-lg);
+    /* 18px instead of 24px */
   }
 
   /* ============================================
@@ -1230,13 +1235,13 @@ a.btn-primary:hover {
      MOBILE HERO - CTA buttons stack vertically
      ============================================ */
   .hero-actions,
-  section > .flex.gap-3 {
+  section>.flex.gap-3 {
     flex-direction: column;
     gap: var(--space-3);
   }
 
   .hero-actions .btn,
-  section > .flex.gap-3 > .btn {
+  section>.flex.gap-3>.btn {
     width: 100%;
     justify-content: center;
   }
