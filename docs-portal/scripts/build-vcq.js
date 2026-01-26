@@ -151,6 +151,45 @@ const requirementsByType = {
     dora_ict: []       // DORA ICT extended scope (matches scopeExtensions.id)
 };
 
+// DEC-255: Build source group index for 3-tile filtering
+const requirementsBySourceGroup = {
+    eidas: [],    // Core eIDAS + all implementing acts
+    gdpr: [],     // GDPR requirements
+    dora: [],     // DORA ICT requirements
+    arf: []       // ARF-sourced requirements
+};
+
+// Build lookup for which regulation IDs map to which source group
+const eidasRegulationIds = new Set([
+    '2014/910', '2024/1183',  // Primary regulations
+    '2024/2979', '2024/2982', '2025/847', '2025/848'  // Implementing acts
+]);
+const gdprRegulationIds = new Set(['2016/679']);
+const doraRegulationIds = new Set(['2022/2554']);
+
+function determineSourceGroup(req) {
+    // Check if it's an ARF-sourced requirement
+    if (req.arfReference && !req.legalBasis) {
+        return 'arf';
+    }
+
+    // Check legal basis regulation
+    if (req.legalBasis?.regulation) {
+        const regId = req.legalBasis.regulation;
+        if (eidasRegulationIds.has(regId)) return 'eidas';
+        if (gdprRegulationIds.has(regId)) return 'gdpr';
+        if (doraRegulationIds.has(regId)) return 'dora';
+    }
+
+    // Extended scope requirements are DORA
+    if (req.scope === 'extended') {
+        return 'dora';
+    }
+
+    // Default to eidas for core requirements
+    return 'eidas';
+}
+
 for (const req of allRequirements) {
     // Determine applicability
     const applicability = req.applicability || [];
@@ -163,6 +202,9 @@ for (const req of allRequirements) {
         const articleNum = req.legalBasis.article.replace('Article ', '').toLowerCase();
         legalBasisLink = `/regulation/${regId}#article-${articleNum}`;
     }
+
+    // DEC-255: Determine source group for 3-tile filtering
+    const sourceGroup = determineSourceGroup(req);
 
     // Create processed requirement
     const processed = {
@@ -181,6 +223,7 @@ for (const req of allRequirements) {
         isCore: applicability.length === 0 || req._sourceFile === 'core.yaml',
         isExtended,
         scope: req.scope || 'core',
+        sourceGroup,  // DEC-255: For 3-tile filtering
         linkedRCA: req.linkedRCA || [],
         deadline: req.deadline,
         criticality: req.criticality || 'medium',
@@ -189,6 +232,9 @@ for (const req of allRequirements) {
     };
 
     processedRequirements.push(processed);
+
+    // Build source group index (DEC-255)
+    requirementsBySourceGroup[sourceGroup].push(req.id);
 
     // Build indexes (DEC-254: simplified)
     if (isExtended) {
@@ -213,6 +259,13 @@ const stats = {
         core: requirementsByType.core.length,
         intermediary: requirementsByType.intermediary.length,
         dora_ict: requirementsByType.dora_ict.length
+    },
+    // DEC-255: Stats by source group for 3-tile model
+    bySourceGroup: {
+        eidas: requirementsBySourceGroup.eidas.length,
+        gdpr: requirementsBySourceGroup.gdpr.length,
+        dora: requirementsBySourceGroup.dora.length,
+        arf: requirementsBySourceGroup.arf.length
     },
     byCategory: {},
     byCriticality: {
@@ -250,7 +303,7 @@ const output = {
     // Categories for filtering
     categories,
 
-    // Legal sources for reference
+    // Legal sources for reference (DEC-255: restructured for 3-tile model)
     legalSources: vcqConfig.legalSources,
 
     // Output configuration
@@ -261,6 +314,9 @@ const output = {
 
     // Indexes for quick lookup
     requirementsByType,
+
+    // DEC-255: Index by source group for 3-tile filtering
+    requirementsBySourceGroup,
 
     // Statistics
     stats
@@ -279,5 +335,10 @@ console.log(`      - ${stats.totalRequirements} total requirements`);
 console.log(`      - ${stats.byType.core} core requirements`);
 console.log(`      - ${stats.byType.intermediary} RP Intermediary requirements`);
 console.log(`      - ${stats.byType.dora_ict} extended scope (DORA ICT)`);
+console.log(`   📦 By Source Group (DEC-255):`);
+console.log(`      - eIDAS: ${stats.bySourceGroup.eidas}`);
+console.log(`      - GDPR: ${stats.bySourceGroup.gdpr}`);
+console.log(`      - DORA: ${stats.bySourceGroup.dora}`);
+console.log(`      - ARF: ${stats.bySourceGroup.arf}`);
 console.log(`      - Criticality: ${stats.byCriticality.critical} critical, ${stats.byCriticality.high} high`);
 console.log('');

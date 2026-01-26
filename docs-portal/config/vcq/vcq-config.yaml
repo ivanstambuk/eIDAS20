@@ -85,54 +85,89 @@ scopeExtensions:
 
 # Legal Sources for VCQ
 # Regulations and documents from which requirements are derived
+#
+# DEC-255: Simplified to 3-tile model
+# - eidas: Core regulation + ALL implementing acts (bundled, legally inseparable)
+# - related: Situational regulations (GDPR, DORA)
+# - architecture: Technical specifications (ARF)
 legalSources:
-  primary:
-    - id: "2014/910"
-      name: "eIDAS Regulation (Consolidated)"
-      shortName: "eIDAS 2.0"
-      portalPath: "/regulation/2014-910"
-    - id: "2024/1183"
-      name: "Amending Regulation"
-      shortName: "eIDAS Amendment"
-      portalPath: "/regulation/2024-1183"
-  
-  implementing:
-    - id: "2024/2979"
-      name: "Integrity & Functionality Regulation"
-      shortName: "Integrity Reg"
-      portalPath: "/regulation/2024-2979"
-    - id: "2024/2982"
-      name: "Protocols & Interfaces Regulation"
-      shortName: "Protocols Reg"
-      portalPath: "/regulation/2024-2982"
-    - id: "2025/847"
-      name: "Suspension & Withdrawal Regulation"
-      shortName: "Suspension Reg"
-      portalPath: "/regulation/2025-847"
-    - id: "2025/848"
-      name: "Registration Regulation"  
-      shortName: "Registration Reg"
-      portalPath: "/regulation/2025-848"
-  
+  # Primary eIDAS Framework — always comes as a package
+  # Implementing acts ARE the regulation, not optional additions
+  eidas:
+    id: "eidas"
+    label: "eIDAS Framework"
+    shortLabel: "Primary"
+    description: "Core eIDAS Regulation and all binding Implementing Acts"
+    icon: "📜"
+    items:
+      - id: "2014/910"
+        name: "eIDAS Regulation (Consolidated)"
+        shortName: "eIDAS 2.0"
+        portalPath: "/regulation/2014-910"
+        type: "regulation"
+      - id: "2024/1183"
+        name: "Amending Regulation"
+        shortName: "eIDAS Amendment"
+        portalPath: "/regulation/2024-1183"
+        type: "regulation"
+      - id: "2024/2979"
+        name: "Integrity & Functionality Regulation"
+        shortName: "Integrity Reg"
+        portalPath: "/regulation/2024-2979"
+        type: "implementing_act"
+      - id: "2024/2982"
+        name: "Protocols & Interfaces Regulation"
+        shortName: "Protocols Reg"
+        portalPath: "/regulation/2024-2982"
+        type: "implementing_act"
+      - id: "2025/847"
+        name: "Suspension & Withdrawal Regulation"
+        shortName: "Suspension Reg"
+        portalPath: "/regulation/2025-847"
+        type: "implementing_act"
+      - id: "2025/848"
+        name: "Registration Regulation"
+        shortName: "Registration Reg"
+        portalPath: "/regulation/2025-848"
+        type: "implementing_act"
+
+  # Related Regulations — situational, depends on business context
   related:
-    - id: "2016/679"
-      name: "General Data Protection Regulation"
-      shortName: "GDPR"
-      portalPath: "/regulation/2016-679"
-    - id: "2022/2554"
-      name: "Digital Operational Resilience Act"
-      shortName: "DORA"
-      portalPath: "/regulation/2022-2554"
-  
+    id: "related"
+    label: "Related Regulations"
+    shortLabel: "Related"
+    description: "Additional legal requirements based on your context"
+    icon: "🔗"
+    items:
+      - id: "2016/679"
+        name: "General Data Protection Regulation"
+        shortName: "GDPR"
+        portalPath: "/regulation/2016-679"
+        hint: "If processing personal data"
+        extraRequirements: 10
+      - id: "2022/2554"
+        name: "Digital Operational Resilience Act"
+        shortName: "DORA"
+        portalPath: "/regulation/2022-2554"
+        hint: "If serving financial sector entities"
+        extraRequirements: 12
+
+  # Architecture — technical specifications (non-binding but practically essential)
   architecture:
-    - id: "ARF_1.5"
-      name: "Architecture Reference Framework v1.5"
-      shortName: "ARF"
-      externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
-      topics:
-        - id: "Topic52"
-          name: "Relying Party Intermediaries"
-          hlrPrefix: "RPI_"
+    id: "architecture"
+    label: "Architecture"
+    shortLabel: "Architecture"
+    description: "Technical specifications for implementation"
+    icon: "🏗️"
+    items:
+      - id: "ARF_1.5"
+        name: "Architecture Reference Framework v1.5"
+        shortName: "ARF"
+        externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+        topics:
+          - id: "Topic52"
+            name: "Relying Party Intermediaries"
+            hlrPrefix: "RPI_"
 
 # Output Configuration
 output:

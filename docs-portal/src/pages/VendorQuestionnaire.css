@@ -248,7 +248,7 @@
 }
 
 /* ============================================================================
-   Source Selector (Step 3)
+   Source Selector (DEC-255: 3-Tile Model)
    ============================================================================ */
 
 .vcq-source-grid {
@@ -257,6 +257,205 @@
     gap: var(--space-4);
 }
 
+/* 3-tile specific layout */
+.vcq-source-grid.vcq-source-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+    .vcq-source-grid.vcq-source-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tile container */
+.vcq-source-tile {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: all 0.2s ease;
+}
+
+.vcq-source-tile:hover {
+    border-color: var(--accent-primary);
+}
+
+.vcq-source-tile.selected {
+    border-color: var(--accent-primary);
+    background: linear-gradient(135deg,
+            rgba(0, 200, 200, 0.08) 0%,
+            rgba(0, 200, 200, 0.02) 100%);
+    box-shadow: 0 0 0 1px var(--accent-primary),
+        0 4px 20px rgba(0, 200, 200, 0.1);
+}
+
+/* Tile header (with checkbox) */
+.vcq-tile-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    margin-bottom: var(--space-2);
+}
+
+.vcq-tile-header input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-primary);
+}
+
+.vcq-tile-header-multi {
+    cursor: default;
+}
+
+.vcq-tile-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.vcq-tile-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.vcq-tile-count {
+    font-size: var(--text-xs);
+    color: var(--accent-primary);
+    background: rgba(0, 200, 200, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+}
+
+/* Tile description */
+.vcq-tile-description {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-3);
+}
+
+/* Includes list (for eIDAS tile) */
+.vcq-tile-includes {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-primary);
+}
+
+.vcq-tile-includes-label {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.vcq-tile-includes-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.vcq-tile-includes-list li {
+    font-size: 10px;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.vcq-includes-type {
+    font-size: 9px;
+    color: var(--accent-secondary);
+    font-weight: 600;
+}
+
+/* Tile options (for Related Regulations tile) */
+.vcq-tile-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.vcq-tile-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-wrap: wrap;
+}
+
+.vcq-tile-option:hover {
+    background: var(--bg-secondary);
+}
+
+.vcq-tile-option.selected {
+    background: rgba(0, 200, 200, 0.1);
+    outline: 1px solid rgba(0, 200, 200, 0.3);
+}
+
+.vcq-tile-option input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.vcq-option-name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.vcq-option-hint {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.vcq-option-extra {
+    font-size: var(--text-xs);
+    color: var(--accent-secondary);
+    background: rgba(136, 57, 239, 0.1);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+/* Tile note (for Architecture tile) */
+.vcq-tile-note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: rgba(245, 158, 11, 0.08);
+    border-radius: var(--radius-md);
+    border-left: 2px solid rgba(245, 158, 11, 0.5);
+    margin-top: var(--space-3);
+}
+
+.vcq-note-icon {
+    font-size: var(--text-sm);
+    line-height: 1.4;
+}
+
+.vcq-tile-note span:last-child {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Legacy styles (keep for backward compatibility) */
 .vcq-source-group {
     background: var(--bg-primary);
     border: 1px solid var(--border-primary);

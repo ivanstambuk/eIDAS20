@@ -236,45 +236,16 @@ function IntermediaryTypeSelector({ types, selectedTypes, onToggle, requirements
 }
 
 // ============================================================================
-// SourceSelector Component (Now Step 1 after DEC-254)
-// Filter requirements by legal source
+// SourceSelector Component (DEC-255: Simplified to 3-tile model)
+// Filter requirements by source group, not individual regulations
 // ============================================================================
 
-function SourceSelector({ legalSources, selectedSources, onToggle }) {
-    // Flatten all sources into a single list with categories
-    const allSources = useMemo(() => {
-        const sources = [];
-
-        // Primary eIDAS sources - always show first
-        if (legalSources?.primary) {
-            legalSources.primary.forEach(src => {
-                sources.push({ ...src, category: 'primary', icon: '📜' });
-            });
-        }
-
-        // Implementing acts
-        if (legalSources?.implementing) {
-            legalSources.implementing.forEach(src => {
-                sources.push({ ...src, category: 'implementing', icon: '📋' });
-            });
-        }
-
-        // Related regulations (GDPR, DORA)
-        if (legalSources?.related) {
-            legalSources.related.forEach(src => {
-                sources.push({ ...src, category: 'related', icon: '🔗' });
-            });
-        }
-
-        // Architecture (ARF)
-        if (legalSources?.architecture) {
-            legalSources.architecture.forEach(src => {
-                sources.push({ ...src, category: 'architecture', icon: '🏗️' });
-            });
-        }
-
-        return sources;
-    }, [legalSources]);
+function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, stats }) {
+    // Get counts from stats if available
+    const eidasCount = stats?.bySourceGroup?.eidas || 0;
+    const gdprCount = stats?.bySourceGroup?.gdpr || 0;
+    const doraCount = stats?.bySourceGroup?.dora || 0;
+    const arfCount = stats?.bySourceGroup?.arf || 0;
 
     return (
         <div className="vcq-step">
@@ -283,81 +254,95 @@ function SourceSelector({ legalSources, selectedSources, onToggle }) {
                 Source Selection
             </h3>
             <p className="vcq-step-hint">
-                Select which regulatory sources to include. Selecting DORA includes ICT third-party provisions (+12 requirements).
+                Filter requirements by regulatory source. These are <strong>filters</strong>, not opt-outs — select sources to analyze their requirements.
             </p>
-            <div className="vcq-source-grid">
-                {/* Primary Sources - eIDAS */}
-                <div className="vcq-source-group">
-                    <h4 className="vcq-source-group-title">📜 Primary (eIDAS 2.0)</h4>
-                    <div className="vcq-source-options">
-                        {allSources.filter(s => s.category === 'primary').map(src => (
-                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
-                                <input
-                                    type="checkbox"
-                                    checked={selectedSources.includes(src.id)}
-                                    onChange={() => onToggle(src.id)}
-                                />
-                                <span className="vcq-source-name">{src.shortName}</span>
-                                <span className="vcq-source-id">({src.id})</span>
-                            </label>
-                        ))}
+            <div className="vcq-source-grid vcq-source-grid-3">
+                {/* Primary Sources - eIDAS Framework (bundled) */}
+                <div className={`vcq-source-tile ${selectedSourceGroups.eidas ? 'selected' : ''}`}>
+                    <label className="vcq-tile-header">
+                        <input
+                            type="checkbox"
+                            checked={selectedSourceGroups.eidas}
+                            onChange={() => onToggleGroup('eidas')}
+                        />
+                        <span className="vcq-tile-icon">{legalSources?.eidas?.icon || '📜'}</span>
+                        <span className="vcq-tile-title">Primary (eIDAS Framework)</span>
+                        <span className="vcq-tile-count">{eidasCount} reqs</span>
+                    </label>
+                    <p className="vcq-tile-description">
+                        {legalSources?.eidas?.description || 'Core eIDAS Regulation and all Implementing Acts'}
+                    </p>
+                    <div className="vcq-tile-includes">
+                        <span className="vcq-tile-includes-label">Includes:</span>
+                        <ul className="vcq-tile-includes-list">
+                            {legalSources?.eidas?.items?.map(item => (
+                                <li key={item.id}>
+                                    <span className="vcq-includes-name">{item.shortName}</span>
+                                    {item.type === 'implementing_act' && (
+                                        <span className="vcq-includes-type">IA</span>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
-                {/* Implementing Acts */}
-                <div className="vcq-source-group">
-                    <h4 className="vcq-source-group-title">📋 Implementing Acts</h4>
-                    <div className="vcq-source-options">
-                        {allSources.filter(s => s.category === 'implementing').map(src => (
-                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
-                                <input
-                                    type="checkbox"
-                                    checked={selectedSources.includes(src.id)}
-                                    onChange={() => onToggle(src.id)}
-                                />
-                                <span className="vcq-source-name">{src.shortName}</span>
-                                <span className="vcq-source-id">({src.id})</span>
-                            </label>
-                        ))}
+                {/* Related Regulations (GDPR, DORA) */}
+                <div className={`vcq-source-tile ${(selectedSourceGroups.gdpr || selectedSourceGroups.dora) ? 'selected' : ''}`}>
+                    <div className="vcq-tile-header vcq-tile-header-multi">
+                        <span className="vcq-tile-icon">{legalSources?.related?.icon || '🔗'}</span>
+                        <span className="vcq-tile-title">Related Regulations</span>
                     </div>
-                </div>
+                    <p className="vcq-tile-description">
+                        {legalSources?.related?.description || 'Additional legal requirements based on your context'}
+                    </p>
+                    <div className="vcq-tile-options">
+                        {legalSources?.related?.items?.map(item => {
+                            // Map regulation IDs to source groups
+                            const groupId = item.id === '2016/679' ? 'gdpr' : 'dora';
+                            const isSelected = selectedSourceGroups[groupId];
 
-                {/* Related Regulations */}
-                <div className="vcq-source-group">
-                    <h4 className="vcq-source-group-title">🔗 Related Regulations</h4>
-                    <div className="vcq-source-options">
-                        {allSources.filter(s => s.category === 'related').map(src => (
-                            <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
-                                <input
-                                    type="checkbox"
-                                    checked={selectedSources.includes(src.id)}
-                                    onChange={() => onToggle(src.id)}
-                                />
-                                <span className="vcq-source-name">{src.shortName}</span>
-                                <span className="vcq-source-id">({src.id})</span>
-                            </label>
-                        ))}
+                            return (
+                                <label
+                                    key={item.id}
+                                    className={`vcq-tile-option ${isSelected ? 'selected' : ''}`}
+                                >
+                                    <input
+                                        type="checkbox"
+                                        checked={isSelected}
+                                        onChange={() => onToggleGroup(groupId)}
+                                    />
+                                    <span className="vcq-option-name">{item.shortName}</span>
+                                    {item.hint && <span className="vcq-option-hint">{item.hint}</span>}
+                                    {item.extraRequirements && (
+                                        <span className="vcq-option-extra">+{item.extraRequirements} reqs</span>
+                                    )}
+                                </label>
+                            );
+                        })}
                     </div>
                 </div>
 
                 {/* Architecture Reference */}
-                {allSources.filter(s => s.category === 'architecture').length > 0 && (
-                    <div className="vcq-source-group">
-                        <h4 className="vcq-source-group-title">🏗️ Architecture</h4>
-                        <div className="vcq-source-options">
-                            {allSources.filter(s => s.category === 'architecture').map(src => (
-                                <label key={src.id} className={`vcq-source-option ${selectedSources.includes(src.id) ? 'selected' : ''}`}>
-                                    <input
-                                        type="checkbox"
-                                        checked={selectedSources.includes(src.id)}
-                                        onChange={() => onToggle(src.id)}
-                                    />
-                                    <span className="vcq-source-name">{src.shortName}</span>
-                                </label>
-                            ))}
-                        </div>
+                <div className={`vcq-source-tile ${selectedSourceGroups.arf ? 'selected' : ''}`}>
+                    <label className="vcq-tile-header">
+                        <input
+                            type="checkbox"
+                            checked={selectedSourceGroups.arf}
+                            onChange={() => onToggleGroup('arf')}
+                        />
+                        <span className="vcq-tile-icon">{legalSources?.architecture?.icon || '🏗️'}</span>
+                        <span className="vcq-tile-title">Architecture</span>
+                        <span className="vcq-tile-count">{arfCount} reqs</span>
+                    </label>
+                    <p className="vcq-tile-description">
+                        {legalSources?.architecture?.description || 'Technical specifications for implementation'}
+                    </p>
+                    <div className="vcq-tile-note">
+                        <span className="vcq-note-icon">ℹ️</span>
+                        <span>Non-binding but practically essential for implementation</span>
                     </div>
-                )}
+                </div>
             </div>
         </div>
     );
@@ -666,16 +651,22 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
 // ExportPanel Component
 // ============================================================================
 
-function ExportPanel({ requirements, answers, selectedTypes, selectedSources, data }) {
+function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroups, data }) {
     const handleExportMarkdown = () => {
         const typeLabels = selectedTypes.map(id =>
             data.intermediaryTypes.find(t => t.id === id)?.label || id
         ).join(', ');
 
+        // DEC-255: Format source groups for display
+        const activeSources = Object.entries(selectedSourceGroups)
+            .filter(([_, isSelected]) => isSelected)
+            .map(([group]) => group.toUpperCase())
+            .join(', ');
+
         let md = `# Vendor Compliance Questionnaire\n\n`;
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
         md += `**Intermediary Type(s):** ${typeLabels}\n\n`;
-        md += `**Regulatory Sources:** ${selectedSources.join(', ')}\n\n`;
+        md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
         md += `**Total Requirements:** ${requirements.length}\n\n`;
         md += `---\n\n`;
 
@@ -1000,7 +991,13 @@ export default function VendorQuestionnaire() {
     // Selection state
     // DEC-254: Auto-select the single intermediary type when data loads
     const [selectedTypes, setSelectedTypes] = useState(['intermediary']);
-    const [selectedSources, setSelectedSources] = useState(['2014/910', '2024/1183']); // Default: eIDAS sources
+    // DEC-255: Source groups instead of individual source IDs
+    const [selectedSourceGroups, setSelectedSourceGroups] = useState({
+        eidas: true,  // Primary eIDAS framework
+        gdpr: true,   // GDPR requirements (separate toggle)
+        dora: false,  // DORA ICT requirements
+        arf: true     // ARF-sourced requirements
+    });
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [activeView, setActiveView] = useState(() => {
@@ -1044,13 +1041,12 @@ export default function VendorQuestionnaire() {
         setShowResults(false);
     }, []);
 
-    // Toggle source selection
-    const handleToggleSource = useCallback((sourceId) => {
-        setSelectedSources(prev =>
-            prev.includes(sourceId)
-                ? prev.filter(id => id !== sourceId)
-                : [...prev, sourceId]
-        );
+    // DEC-255: Toggle source group selection
+    const handleToggleSourceGroup = useCallback((groupId) => {
+        setSelectedSourceGroups(prev => ({
+            ...prev,
+            [groupId]: !prev[groupId]
+        }));
         setShowResults(false);
     }, []);
 
@@ -1067,6 +1063,7 @@ export default function VendorQuestionnaire() {
 
     // Get applicable requirements based on selection
     // DEC-254: Now always includes 'intermediary' type requirements
+    // DEC-255: Filter by sourceGroup instead of individual regulation IDs
     const applicableRequirements = useMemo(() => {
         if (!data) return [];
 
@@ -1080,26 +1077,34 @@ export default function VendorQuestionnaire() {
             data.requirementsByType?.[typeId]?.forEach(id => reqIds.add(id));
         });
 
-        // If DORA is selected in sources, include DORA ICT (extended) requirements
-        if (selectedSources.includes('2022/2554')) {
+        // If DORA is selected, include DORA ICT (extended) requirements
+        if (selectedSourceGroups.dora) {
             data.requirementsByType?.dora_ict?.forEach(id => reqIds.add(id));
         }
 
         // Filter by type first
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
-        // Then filter by selected sources (if any sources are selected)
-        if (selectedSources.length > 0) {
+        // DEC-255: Filter by source group using the pre-computed sourceGroup field
+        // Build array of active source groups
+        const activeGroups = Object.entries(selectedSourceGroups)
+            .filter(([_, isSelected]) => isSelected)
+            .map(([group]) => group);
+
+        // If at least one source group is selected, filter by it
+        if (activeGroups.length > 0) {
             filtered = filtered.filter(req => {
-                // Check if the requirement's legal basis matches any selected source
-                const regId = req.legalBasis?.regulation;
-                if (!regId) return true; // Include requirements without explicit source
-                return selectedSources.includes(regId);
+                // Use the sourceGroup field computed by build-vcq.js
+                // Note: GDPR requirements are tagged as 'eidas' since they're part of core compliance
+                return activeGroups.includes(req.sourceGroup);
             });
+        } else {
+            // No source groups selected = show nothing (valid filter state)
+            filtered = [];
         }
 
         return filtered;
-    }, [data, selectedTypes, selectedSources]);
+    }, [data, selectedTypes, selectedSourceGroups]);
 
     // Calculate summary stats
     const summaryStats = useMemo(() => {
@@ -1157,12 +1162,13 @@ export default function VendorQuestionnaire() {
             {/* The tool now auto-selects the single RP Intermediary type */}
             {/* Previously: <IntermediaryTypeSelector ... /> */}
 
-            {/* Step 1: Source Selection (was Step 2 before DEC-254) */}
+            {/* Step 1: Source Selection (DEC-255: 3-tile model) */}
             {data.legalSources && (
                 <SourceSelector
                     legalSources={data.legalSources}
-                    selectedSources={selectedSources}
-                    onToggle={handleToggleSource}
+                    selectedSourceGroups={selectedSourceGroups}
+                    onToggleGroup={handleToggleSourceGroup}
+                    stats={data.stats}
                 />
             )}
 
@@ -1264,7 +1270,7 @@ export default function VendorQuestionnaire() {
                         requirements={applicableRequirements}
                         answers={answers}
                         selectedTypes={selectedTypes}
-                        selectedSources={selectedSources}
+                        selectedSourceGroups={selectedSourceGroups}
                         data={data}
                     />
                 </>
