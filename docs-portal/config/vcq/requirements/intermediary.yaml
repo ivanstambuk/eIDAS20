@@ -708,3 +708,103 @@ requirements:
       - RP-GOV-006
     deadline: "2027-11-21"
     criticality: medium
+  
+  # ============================================================================
+  # COVERAGE GAP ADDITIONS (2026-01-26)
+  # ============================================================================
+  
+  - id: VEND-INT-032
+    category: technical
+    requirement: "Include intermediary access certificate and RP registration certificate in requests"
+    explanation: |
+      When requesting attestations from a wallet on behalf of an intermediated RP, the 
+      intermediary must include both: (1) its own access certificate (proving its identity 
+      as a registered intermediary), and (2) the registration certificate of the 
+      intermediated RP, if the RP has one. This enables the wallet to verify both 
+      the intermediary and the ultimate service provider.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_06"
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 8"
+      paragraph: "2"
+    legalText: |
+      When requested by an intermediated Relying Party, an intermediary SHALL request 
+      a presentation of attributes from a specific Wallet Unit. In the request, the 
+      intermediary SHALL include the intermediary's access certificate and the 
+      registration certificate of the Relying Party, if available.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-007
+    deadline: "2027-11-21"
+    criticality: critical
+    notes: |
+      This is the technical implementation of RPI_06. The access certificate comes from 
+      the intermediary's own registration. The RP registration certificate is obtained 
+      during the intermediary's registration of each intermediated RP (per RPI_03).
+  
+  - id: VEND-INT-033
+    category: governance
+    requirement: "Ensure intermediary-RP contractual relationship is registered"
+    explanation: |
+      Before the intermediary can act on behalf of an RP, the contractual relationship 
+      between them must be registered with the relevant Registrar. The wallet verifies 
+      this registration when processing requests (per RPI_07a). If the relationship 
+      is not registered, the wallet will warn the user that the intermediary's 
+      authority to act for the RP cannot be verified.
+    arfReference:
+      topic: "Topic 52"
+      hlr: "RPI_04"
+    legalBasis:
+      regulation: "2025/848"
+      article: "Article 6"
+      paragraph: "5"
+    legalText: |
+      When registering an intermediated Relying Party, an intermediary SHALL provide 
+      legally valid evidence that this Relying Party will indeed use the services of 
+      this intermediary to interact with Wallet Units. The Registrar SHALL verify 
+      this evidence and register the relationship between the intermediary and the 
+      intermediated Relying Party.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-REG-001
+    deadline: "2027-11-21"
+    criticality: high
+    notes: |
+      This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. 
+      The intermediary must ensure this registration is complete BEFORE accepting 
+      intermediation requests from an RP, otherwise wallet users will see verification 
+      failures.
+  
+  - id: VEND-INT-034
+    category: verification
+    requirement: "Support attestation status list verification mechanisms"
+    explanation: |
+      The intermediary must support attestation status verification using the mechanisms 
+      specified in ARF Topic 7 (Attestation Revocation). This includes checking 
+      Attestation Status Lists or Attestation Revocation Lists published by PID/EAA 
+      providers to verify that attestations have not been revoked.
+    arfReference:
+      topic: "Topic 7"
+      hlr: "VCR_13"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
+    legalText: |
+      Wallet providers shall ensure that wallet units support mechanisms for 
+      checking the revocation status of attestations in accordance with the 
+      methods specified by the issuing PID Provider or Attestation Provider.
+    applicability:
+      - intermediary
+    linkedRCA:
+      - RP-TEC-001
+    deadline: "2027-11-21"
+    criticality: critical
+    notes: |
+      This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. 
+      Attestation Status Lists (VCR_11) are the primary mechanism for efficient 
+      batch revocation checking without per-credential queries.

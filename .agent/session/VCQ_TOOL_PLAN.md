@@ -513,18 +513,18 @@ These sources are not imported but should be referenced:
 
 ## 15. Implementation Summary
 
-**Completed:** 2026-01-22 (Initial), 2026-01-23 (Phase 6 ARF)
+**Completed:** 2026-01-22 (Initial), 2026-01-23 (Phase 6 ARF), 2026-01-26 (Coverage Extensions)
 
 | Metric | Value |
 |--------|-------|
-| Total Requirements | 55 |
-| Core (both PIF & VIF) | 18 |
-| PIF-specific | 12 |
-| VIF-specific | 13 |
+| Total Requirements | 64 |
+| Core Requirements | 18 |
+| RP Intermediary | 34 |
 | DORA ICT Extended | 12 |
-| Critical Criticality | 29 |
-| High Criticality | 20 |
+| Critical Criticality | 32 |
+| High Criticality | 23 |
 | ARF HLRs Indexed | 129 |
+| linkedRCA Coverage | 26 |
 
 **Files Created:**
 - `config/vcq/vcq-config.yaml`
@@ -948,9 +948,9 @@ The following items were identified during Phase 6 implementation but deferred:
 
 | Task | Priority | Description |
 |------|----------|-------------|
-| **Topic 14 (VAL_*) VCQ requirements** | Low | Currently imported but no VCQ requirements use VAL_* HLRs yet |
-| **RPI_06 integration** | Low | "Include access cert + registration cert" - may warrant a VCQ requirement |
-| **RPI_07a integration** | Low | "Wallet verify contractual relationship" - may warrant a VCQ requirement |
+| ~~Topic 7/14 (VCR_*/VAL_*) VCQ requirements~~ | ✅ Done | Added VEND-INT-034: Support attestation status list verification mechanisms (VCR_13) |
+| ~~RPI_06 integration~~ | ✅ Done | Added VEND-INT-032: Include access cert + registration cert in requests |
+| ~~RPI_07a integration~~ | ✅ Done | Added VEND-INT-033: Ensure contractual relationship is registered (supports RPI_04/RPI_07a) |
 
 ---
 

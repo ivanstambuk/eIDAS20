@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T10:30:12.288Z",
+  "generatedAt": "2026-01-26T10:52:33.295Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -822,6 +822,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "critical",
+      "notes": "DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.\nWhen the RP is a DORA-regulated financial entity, both sets apply.",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -2002,6 +2003,105 @@
       "deadline": "2027-11-21",
       "criticality": "medium",
       "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-032",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Include intermediary access certificate and RP registration certificate in requests",
+      "explanation": "When requesting attestations from a wallet on behalf of an intermediated RP, the \nintermediary must include both: (1) its own access certificate (proving its identity \nas a registered intermediary), and (2) the registration certificate of the \nintermediated RP, if the RP has one. This enables the wallet to verify both \nthe intermediary and the ultimate service provider.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 8",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-8",
+      "legalText": "When requested by an intermediated Relying Party, an intermediary SHALL request \na presentation of attributes from a specific Wallet Unit. In the request, the \nintermediary SHALL include the intermediary's access certificate and the \nregistration certificate of the Relying Party, if available.",
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_06"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-007"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "notes": "This is the technical implementation of RPI_06. The access certificate comes from \nthe intermediary's own registration. The RP registration certificate is obtained \nduring the intermediary's registration of each intermediated RP (per RPI_03).",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-033",
+      "category": "governance",
+      "categoryLabel": "Governance",
+      "categoryIcon": "🏛️",
+      "requirement": "Ensure intermediary-RP contractual relationship is registered",
+      "explanation": "Before the intermediary can act on behalf of an RP, the contractual relationship \nbetween them must be registered with the relevant Registrar. The wallet verifies \nthis registration when processing requests (per RPI_07a). If the relationship \nis not registered, the wallet will warn the user that the intermediary's \nauthority to act for the RP cannot be verified.",
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 6",
+        "paragraph": "5"
+      },
+      "legalBasisLink": "/regulation/2025-848#article-6",
+      "legalText": "When registering an intermediated Relying Party, an intermediary SHALL provide \nlegally valid evidence that this Relying Party will indeed use the services of \nthis intermediary to interact with Wallet Units. The Registrar SHALL verify \nthis evidence and register the relationship between the intermediary and the \nintermediated Relying Party.",
+      "arfReference": {
+        "topic": "Topic 52",
+        "hlr": "RPI_04"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-REG-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "notes": "This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. \nThe intermediary must ensure this registration is complete BEFORE accepting \nintermediation requests from an RP, otherwise wallet users will see verification \nfailures.",
+      "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-INT-034",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Support attestation status list verification mechanisms",
+      "explanation": "The intermediary must support attestation status verification using the mechanisms \nspecified in ARF Topic 7 (Attestation Revocation). This includes checking \nAttestation Status Lists or Attestation Revocation Lists published by PID/EAA \nproviders to verify that attestations have not been revoked.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalText": "Wallet providers shall ensure that wallet units support mechanisms for \nchecking the revocation status of attestations in accordance with the \nmethods specified by the issuing PID Provider or Attestation Provider.",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": "VCR_13"
+      },
+      "applicability": [
+        "intermediary"
+      ],
+      "isCore": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "RP-TEC-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "notes": "This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. \nAttestation Status Lists (VCR_11) are the primary mechanism for efficient \nbatch revocation checking without per-credential queries.",
+      "_sourceFile": "intermediary.yaml"
     }
   ],
   "requirementsByType": {
@@ -2036,7 +2136,10 @@
       "VEND-INT-028",
       "VEND-INT-029",
       "VEND-INT-030",
-      "VEND-INT-031"
+      "VEND-INT-031",
+      "VEND-INT-032",
+      "VEND-INT-033",
+      "VEND-INT-034"
     ],
     "core": [
       "VEND-CORE-001",
@@ -2112,7 +2215,10 @@
       "VEND-INT-028",
       "VEND-INT-029",
       "VEND-INT-030",
-      "VEND-INT-031"
+      "VEND-INT-031",
+      "VEND-INT-032",
+      "VEND-INT-033",
+      "VEND-INT-034"
     ],
     "gdpr": [
       "VEND-CORE-002",
@@ -2144,32 +2250,32 @@
     "arf": []
   },
   "stats": {
-    "totalRequirements": 61,
+    "totalRequirements": 64,
     "byType": {
       "core": 18,
-      "intermediary": 31,
+      "intermediary": 34,
       "dora_ict": 12
     },
     "bySourceGroup": {
-      "eidas": 38,
+      "eidas": 41,
       "gdpr": 11,
       "dora": 12,
       "arf": 0
     },
     "byCategory": {
-      "governance": 16,
+      "governance": 17,
       "registration": 4,
       "security": 11,
       "privacy": 6,
       "transparency": 4,
-      "verification": 5,
+      "verification": 6,
       "certification": 2,
-      "technical": 11,
+      "technical": 12,
       "interoperability": 2
     },
     "byCriticality": {
-      "critical": 30,
-      "high": 22,
+      "critical": 32,
+      "high": 23,
       "medium": 9,
       "low": 0
     }

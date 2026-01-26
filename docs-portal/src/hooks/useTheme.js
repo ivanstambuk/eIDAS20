@@ -13,17 +13,14 @@ import { useState, useEffect, useCallback } from 'react';
  */
 export function useTheme() {
     const [theme, setThemeState] = useState(() => {
-        // Check localStorage first
+        // Check localStorage for explicitly saved user preference
         if (typeof window !== 'undefined') {
             const stored = localStorage.getItem('eidas-theme');
             if (stored === 'light' || stored === 'dark') {
                 return stored;
             }
-            // Fall back to system preference
-            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                return 'light';
-            }
         }
+        // Always default to dark (ignore system preference)
         return 'dark';
     });
 
@@ -47,21 +44,7 @@ export function useTheme() {
         localStorage.setItem('eidas-theme', theme);
     }, [theme]);
 
-    // Listen for system preference changes
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
 
-        const handleChange = (e) => {
-            // Only auto-switch if user hasn't explicitly set a preference
-            const stored = localStorage.getItem('eidas-theme');
-            if (!stored) {
-                setThemeState(e.matches ? 'light' : 'dark');
-            }
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-        return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []);
 
     const toggleTheme = useCallback(() => {
         setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));

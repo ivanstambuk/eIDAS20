@@ -46,6 +46,9 @@ requirements:
     scope: extended
     deadline: "2025-01-17"
     criticality: critical
+    notes: |
+      DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.
+      When the RP is a DORA-regulated financial entity, both sets apply.
   
   - id: VEND-ICT-002
     category: governance
