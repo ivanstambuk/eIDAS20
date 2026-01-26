@@ -163,7 +163,9 @@ legalSources:
       - id: "ARF_1.5"
         name: "Architecture Reference Framework v1.5"
         shortName: "ARF"
+        version: "1.5"
         externalUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+        extraRequirements: 20
         topics:
           - id: "Topic52"
             name: "Relying Party Intermediaries"

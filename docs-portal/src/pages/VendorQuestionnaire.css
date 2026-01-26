@@ -455,6 +455,13 @@
     line-height: 1.4;
 }
 
+/* Inline note (appears in description line) */
+.vcq-tile-note-inline {
+    color: var(--text-muted);
+    font-style: italic;
+    opacity: 0.8;
+}
+
 /* Legacy styles (keep for backward compatibility) */
 .vcq-source-group {
     background: var(--bg-primary);

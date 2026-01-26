@@ -324,24 +324,33 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                     </div>
                 </div>
 
-                {/* Architecture Reference */}
+                {/* Architecture — technical specifications (category with items) */}
                 <div className={`vcq-source-tile ${selectedSourceGroups.arf ? 'selected' : ''}`}>
-                    <label className="vcq-tile-header">
-                        <input
-                            type="checkbox"
-                            checked={selectedSourceGroups.arf}
-                            onChange={() => onToggleGroup('arf')}
-                        />
+                    <div className="vcq-tile-header vcq-tile-header-multi">
                         <span className="vcq-tile-icon">{legalSources?.architecture?.icon || '🏗️'}</span>
                         <span className="vcq-tile-title">Architecture</span>
                         <span className="vcq-tile-count">{arfCount} reqs</span>
-                    </label>
+                    </div>
                     <p className="vcq-tile-description">
-                        {legalSources?.architecture?.description || 'Technical specifications for implementation'}
+                        Technical specifications for implementation
+                        <span className="vcq-tile-note-inline"> · Non-binding but practically essential</span>
                     </p>
-                    <div className="vcq-tile-note">
-                        <span className="vcq-note-icon">ℹ️</span>
-                        <span>Non-binding but practically essential for implementation</span>
+                    <div className="vcq-tile-options">
+                        {legalSources?.architecture?.items?.map(item => (
+                            <label
+                                key={item.id}
+                                className={`vcq-tile-option ${selectedSourceGroups.arf ? 'selected' : ''}`}
+                            >
+                                <input
+                                    type="checkbox"
+                                    checked={selectedSourceGroups.arf}
+                                    onChange={() => onToggleGroup('arf')}
+                                />
+                                <span className="vcq-option-name">{item.shortName}</span>
+                                {item.version && <span className="vcq-option-hint">v{item.version}</span>}
+                                <span className="vcq-option-extra">+{arfCount} reqs</span>
+                            </label>
+                        ))}
                     </div>
                 </div>
             </div>
