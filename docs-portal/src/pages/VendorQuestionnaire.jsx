@@ -332,7 +332,7 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                         <span className="vcq-tile-count">{arfCount} reqs</span>
                     </div>
                     <p className="vcq-tile-description">
-                        Technical specifications for implementation
+                        Implementation guidance
                         <span className="vcq-tile-note-inline"> · Non-binding but practically essential</span>
                     </p>
                     <div className="vcq-tile-options">
