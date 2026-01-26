@@ -11,6 +11,7 @@ categories:
   registration:
     label: "Registration"
     description: "Notification and authorization to operate"
+    usage: "Registrar interactions — submitting to registries, obtaining access/registration certificates, maintaining registration status"
     icon: "📋"
     order: 1
 
@@ -71,6 +72,7 @@ categories:
   governance:
     label: "Governance"
     description: "Staffing and procedures"
+    usage: "Organizational/contractual matters — DPAs, sub-processors, audit rights, data handling policies, contract lifecycle"
     icon: "🏛️"
     order: 11
 

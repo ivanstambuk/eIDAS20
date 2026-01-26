@@ -203,6 +203,10 @@ function determineSourceGroup(req) {
  * Priority: MUST > MUST NOT > SHOULD > SHOULD NOT > MAY
  * If no modal verb found, defaults to SHOULD (recommendation without explicit mandate)
  * 
+ * ⚠️ EXPECTED DISTRIBUTION: EU regulatory text overwhelmingly uses "shall" language,
+ * resulting in ~87% of requirements being classified as MUST. This is correct behavior —
+ * EU legislation is intentionally prescriptive. Low SHOULD/MAY counts are normal.
+ * 
  * @param {Object} req - The requirement object
  * @returns {string} RFC 2119 obligation level
  */
