@@ -398,12 +398,12 @@ function SummaryView({ requirements, categories, answers }) {
         return Object.values(stats).filter(s => s.total > 0);
     }, [requirements, categories, answers]);
 
-    // Overall criticality breakdown
-    const criticalityBreakdown = useMemo(() => {
-        const breakdown = { critical: 0, high: 0, medium: 0, low: 0 };
+    // Overall RFC 2119 obligation breakdown
+    const obligationBreakdown = useMemo(() => {
+        const breakdown = { 'MUST': 0, 'MUST NOT': 0, 'SHOULD': 0, 'SHOULD NOT': 0, 'MAY': 0 };
         requirements.forEach(req => {
-            if (breakdown[req.criticality] !== undefined) {
-                breakdown[req.criticality]++;
+            if (req.obligation && breakdown[req.obligation] !== undefined) {
+                breakdown[req.obligation]++;
             }
         });
         return breakdown;
@@ -413,23 +413,19 @@ function SummaryView({ requirements, categories, answers }) {
         <div className="vcq-summary-view">
             <h3 className="vcq-summary-view-title">📊 Compliance Overview</h3>
 
-            {/* Criticality Breakdown */}
-            <div className="vcq-criticality-summary">
-                <div className="vcq-crit-card critical">
-                    <span className="vcq-crit-count">{criticalityBreakdown.critical}</span>
-                    <span className="vcq-crit-label">Critical</span>
+            {/* RFC 2119 Obligation Breakdown */}
+            <div className="vcq-obligation-summary">
+                <div className="vcq-obl-card must">
+                    <span className="vcq-obl-count">{obligationBreakdown['MUST']}</span>
+                    <span className="vcq-obl-label">MUST</span>
                 </div>
-                <div className="vcq-crit-card high">
-                    <span className="vcq-crit-count">{criticalityBreakdown.high}</span>
-                    <span className="vcq-crit-label">High</span>
+                <div className="vcq-obl-card should">
+                    <span className="vcq-obl-count">{obligationBreakdown['SHOULD']}</span>
+                    <span className="vcq-obl-label">SHOULD</span>
                 </div>
-                <div className="vcq-crit-card medium">
-                    <span className="vcq-crit-count">{criticalityBreakdown.medium}</span>
-                    <span className="vcq-crit-label">Medium</span>
-                </div>
-                <div className="vcq-crit-card low">
-                    <span className="vcq-crit-count">{criticalityBreakdown.low}</span>
-                    <span className="vcq-crit-label">Low</span>
+                <div className="vcq-obl-card may">
+                    <span className="vcq-obl-count">{obligationBreakdown['MAY']}</span>
+                    <span className="vcq-obl-label">MAY</span>
                 </div>
             </div>
 
@@ -489,15 +485,15 @@ function SummaryView({ requirements, categories, answers }) {
 
 function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData }) {
     const [filterCategory, setFilterCategory] = useState('all');
-    const [filterCriticality, setFilterCriticality] = useState('all');
+    const [filterObligation, setFilterObligation] = useState('all');
 
     const filteredRequirements = useMemo(() => {
         return requirements.filter(req => {
             if (filterCategory !== 'all' && req.category !== filterCategory) return false;
-            if (filterCriticality !== 'all' && req.criticality !== filterCriticality) return false;
+            if (filterObligation !== 'all' && req.obligation !== filterObligation) return false;
             return true;
         });
-    }, [requirements, filterCategory, filterCriticality]);
+    }, [requirements, filterCategory, filterObligation]);
 
     // Group by category
     const groupedRequirements = useMemo(() => {
@@ -517,13 +513,15 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
         { value: 'na', label: 'N/A', icon: '➖' }
     ];
 
-    const getCriticalityLabel = (criticality) => {
-        switch (criticality) {
-            case 'critical': return 'Critical';
-            case 'high': return 'High';
-            case 'medium': return 'Medium';
-            case 'low': return 'Low';
-            default: return criticality;
+    // RFC 2119 obligation class mapping
+    const getObligationClass = (obligation) => {
+        switch (obligation) {
+            case 'MUST': return 'must';
+            case 'MUST NOT': return 'must-not';
+            case 'SHOULD': return 'should';
+            case 'SHOULD NOT': return 'should-not';
+            case 'MAY': return 'may';
+            default: return 'should';
         }
     };
 
@@ -543,15 +541,14 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                         ))}
                     </select>
                     <select
-                        value={filterCriticality}
-                        onChange={e => setFilterCriticality(e.target.value)}
+                        value={filterObligation}
+                        onChange={e => setFilterObligation(e.target.value)}
                         className="vcq-filter-select"
                     >
-                        <option value="all">All Criticality</option>
-                        <option value="critical">🔴 Critical</option>
-                        <option value="high">🟠 High</option>
-                        <option value="medium">🔵 Medium</option>
-                        <option value="low">🟢 Low</option>
+                        <option value="all">All Obligations</option>
+                        <option value="MUST">🔴 MUST</option>
+                        <option value="SHOULD">🟠 SHOULD</option>
+                        <option value="MAY">🟢 MAY</option>
                     </select>
                 </div>
             </div>
@@ -569,7 +566,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                     <tr>
                                         <th className="col-id">ID</th>
                                         <th className="col-requirement">Requirement</th>
-                                        <th className="col-criticality">Criticality</th>
+                                        <th className="col-obligation">Obligation</th>
                                         <th className="col-legal">Legal Basis</th>
                                         <th className="col-answer">Response</th>
                                     </tr>
@@ -610,9 +607,9 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="col-criticality">
-                                                    <span className={`vcq-criticality-badge ${req.criticality}`}>
-                                                        {getCriticalityLabel(req.criticality)}
+                                                <td className="col-obligation">
+                                                    <span className={`vcq-obligation-badge ${getObligationClass(req.obligation)}`}>
+                                                        {req.obligation}
                                                     </span>
                                                 </td>
                                                 <td className="col-legal">
@@ -700,7 +697,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
 
                 md += `### ${req.id}\n\n`;
                 md += `**Requirement:** ${req.requirement}\n\n`;
-                md += `**Criticality:** ${req.criticality}\n\n`;
+                md += `**Obligation:** ${req.obligation}\n\n`;
                 md += `**Legal Basis:** ${req.legalBasis?.article} (Reg. ${req.legalBasis?.regulation})\n\n`;
                 md += `**Response:** ${answerIcon} ${answer}\n\n`;
                 if (req.explanation) {
@@ -823,25 +820,22 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
                     color: #00a8a8;
                     font-weight: 600;
                 }
-                .vcq-pdf-criticality {
+                .vcq-pdf-obligation {
                     font-size: 9pt;
-                    font-weight: 500;
+                    font-weight: 600;
+                    font-family: 'Consolas', 'Monaco', monospace;
                     padding: 2px 8px;
                     border-radius: 12px;
                 }
-                .vcq-pdf-criticality.critical {
+                .vcq-pdf-obligation.must {
                     background: #fee2e2;
                     color: #dc2626;
                 }
-                .vcq-pdf-criticality.high {
+                .vcq-pdf-obligation.should {
                     background: #fef3c7;
                     color: #d97706;
                 }
-                .vcq-pdf-criticality.medium {
-                    background: #dbeafe;
-                    color: #2563eb;
-                }
-                .vcq-pdf-criticality.low {
+                .vcq-pdf-obligation.may {
                     background: #dcfce7;
                     color: #16a34a;
                 }
@@ -933,7 +927,7 @@ function ExportPanel({ requirements, answers, selectedTypes, selectedSourceGroup
                                 <div class="vcq-pdf-req">
                                     <div class="vcq-pdf-req-header">
                                         <span class="vcq-pdf-req-id">${req.id}</span>
-                                        <span class="vcq-pdf-criticality ${req.criticality}">${req.criticality.charAt(0).toUpperCase() + req.criticality.slice(1)}</span>
+                                        <span class="vcq-pdf-obligation ${req.obligation?.toLowerCase().replace(' ', '-') || 'should'}">${req.obligation}</span>
                                     </div>
                                     <p class="vcq-pdf-req-text">${req.requirement}</p>
                                     ${req.explanation ? `<p class="vcq-pdf-req-details">${req.explanation}</p>` : ''}

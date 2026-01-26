@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T14:29:43.393Z",
+  "generatedAt": "2026-01-26T14:44:46.481Z",
   "schemaVersion": 1,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -292,6 +292,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
     {
@@ -321,6 +322,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -348,6 +350,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -381,6 +384,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -411,6 +415,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -440,6 +445,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -467,6 +473,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -494,6 +501,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -523,6 +531,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
     {
@@ -550,6 +559,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -583,6 +593,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -609,6 +620,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -636,6 +648,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
     {
@@ -663,6 +676,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -696,6 +710,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -729,6 +744,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -762,6 +778,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -795,6 +812,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
     {
@@ -822,6 +840,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "critical",
+      "obligation": "MUST",
       "notes": "DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.\nWhen the RP is a DORA-regulated financial entity, both sets apply.",
       "_sourceFile": "ict.yaml"
     },
@@ -850,6 +869,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -877,6 +897,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -903,6 +924,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -929,6 +951,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -955,6 +978,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -982,6 +1006,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -1008,6 +1033,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -1035,6 +1061,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -1062,6 +1089,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -1088,6 +1116,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -1114,6 +1143,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
+      "obligation": "SHOULD",
       "notes": "This requirement is conditional - it only applies if the ESAs designate \nthe vendor as Critical based on systemic importance criteria (Art. 31(2)).\nMost intermediaries will NOT be designated as Critical ICT TPPs.",
       "_sourceFile": "ict.yaml"
     },
@@ -1145,6 +1175,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1177,6 +1208,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1206,6 +1238,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1236,6 +1269,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1264,6 +1298,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1293,6 +1328,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1325,6 +1361,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1354,6 +1391,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1383,6 +1421,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1413,6 +1452,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1442,6 +1482,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1471,6 +1512,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1500,6 +1542,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1529,6 +1572,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1558,6 +1602,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1583,6 +1628,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1612,6 +1658,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1638,6 +1685,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate) \nbut may contain verification metadata (pass/fail, timestamp, error codes).",
       "_sourceFile": "intermediary.yaml"
     },
@@ -1664,6 +1712,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1691,6 +1740,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1720,6 +1770,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1752,6 +1803,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1780,6 +1832,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1807,6 +1860,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1832,6 +1886,7 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all intermediaries will require \ncertification.",
       "_sourceFile": "intermediary.yaml"
     },
@@ -1861,6 +1916,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1890,6 +1946,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1918,6 +1975,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1946,6 +2004,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -1974,6 +2033,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -2002,6 +2062,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "medium",
+      "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -2034,6 +2095,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "notes": "This is the technical implementation of RPI_06. The access certificate comes from \nthe intermediary's own registration. The RP registration certificate is obtained \nduring the intermediary's registration of each intermediated RP (per RPI_03).",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2067,6 +2129,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "high",
+      "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. \nThe intermediary must ensure this registration is complete BEFORE accepting \nintermediation requests from an RP, otherwise wallet users will see verification \nfailures.",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2100,6 +2163,7 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
       "notes": "This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. \nAttestation Status Lists (VCR_11) are the primary mechanism for efficient \nbatch revocation checking without per-credential queries.",
       "_sourceFile": "intermediary.yaml"
     }
@@ -2278,6 +2342,13 @@
       "high": 23,
       "medium": 9,
       "low": 0
+    },
+    "byObligation": {
+      "MUST": 56,
+      "MUST NOT": 7,
+      "SHOULD": 1,
+      "SHOULD NOT": 0,
+      "MAY": 0
     }
   }
 }
