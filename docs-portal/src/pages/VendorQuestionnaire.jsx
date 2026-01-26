@@ -292,6 +292,7 @@ function SourceSelector({ legalSources, selectedSourceGroups, onToggleGroup, sta
                     <div className="vcq-tile-header vcq-tile-header-multi">
                         <span className="vcq-tile-icon">{legalSources?.related?.icon || '🔗'}</span>
                         <span className="vcq-tile-title">Related Regulations</span>
+                        <span className="vcq-tile-count">{gdprCount + doraCount} reqs</span>
                     </div>
                     <p className="vcq-tile-description">
                         {legalSources?.related?.description || 'Additional legal requirements based on your context'}
