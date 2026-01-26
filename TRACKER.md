@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-26 09:17 CET |
-| **Version** | V3.9.10 |
+| **Last Updated** | 2026-01-26 10:28 CET |
+| **Version** | V3.9.11 |
 | **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 488 RCA reqs, 55 VCQ reqs, 559 ARF HLRs |
 | **Next Action** | Backlog items (see TRACKER.md) |
 
@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-26 10:28 | **Feat: VCQ Source Selection Simplification (DEC-255)** — Simplified VCQ UI from 5 toggle cards to 3-tile model: Primary (eIDAS + Implementing Acts bundled), Related Regulations (GDPR/DORA checkboxes), Architecture (ARF as checkbox item). Added "Implementation guidance" description, requirement count badges. Fixed validator for DEC-254 (VEND-INT-* format + legacy pif/vif acceptance). GitHub Pages CDN caching diagnosed as deployment issue. |
 | 2026-01-26 09:17 | **Refactor: VCQ Intermediary Consolidation (DEC-254)** — Discovered PIF/VIF were invented terms, not official regulatory terminology. ARF RPI_09 includes verification in unified RP Intermediary role. Merged pif.yaml+vif.yaml→intermediary.yaml (25 reqs, VEND-INT-*). Removed type selection from VCQ UI. Updated TERMINOLOGY.md with deprecation notices. Added AGENTS.md Rules 14-15 (terminology verification + source citation). Research docs: INTERMEDIARY_ROLE_ANALYSIS.md, VCQ_INTERMEDIARY_CONSOLIDATION.md. |
 | 2026-01-26 08:18 | **Feat: EDPS Document Analysis + Terminology** — Analyzed 5 EDPS documents (2021-2025), extracted terminology: enhanced unlinkability with 4 dimensions (w.r.t. RPs, IdPs, revocation managers, colluding parties); added 5 new terms (anonymous credentials, device binding, secure element, TEE, level of assurance). AGENTS.md: documented .agent/research/ folder, RCA = legislation only rule. Total terms: 354→359. |
 | 2026-01-26 00:17 | **Fix: Alphanumeric Paragraph Deep Linking** — Fixed missing gutter icons for paragraphs 1a, 1b, 1c in eIDAS. Two-part fix: (1) markdown format `1a.` → `- (1a)` for 18 instances, (2) `rehype-paragraph-ids.js` now detects paragraph patterns in list items with nested sublists. Also fixed EU reference format (`Article 24para1a` → `Article 24(1a)`). Retro: added AGENTS.md rule + code warning. |

@@ -740,6 +740,46 @@ curl -s http://localhost:5173/eIDAS20/ > /dev/null && echo "✅ Dev server runni
 
 ---
 
+## 🌐 GitHub Pages Deployment
+
+### CDN Caching Gotcha
+
+After deploying to GitHub Pages, changes may not appear immediately due to CDN caching.
+
+**Symptoms:**
+- Build logs show correct data, but live site shows old UI/data
+- "0 reqs" on VCQ despite successful `build-vcq.js` output
+
+**Solutions:**
+1. **Hard refresh**: `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
+2. **Incognito window**: Test in private/incognito mode
+3. **Cache-busting URL**: Add `?v=2` to the URL
+4. **Wait**: CDN propagation can take 1-5 minutes
+
+---
+
+## 🔧 Validator Update Rule (MANDATORY)
+
+**When changing data models, update validators in the SAME commit.**
+
+| Data Change | Validator to Update |
+|-------------|---------------------|
+| VCQ requirement YAML structure | `scripts/validate-vcq.js` |
+| RCA requirement YAML structure | `scripts/validate-rca.js` |
+| New ID format prefix | Add to regex in validator |
+| New applicability type | Add to `validIntermediaryTypes` |
+
+**Why this matters:** DEC-254 changed the VCQ data model (VEND-INT-* IDs, `intermediary` type), but the validator wasn't updated in the same commit. Result: CI failures on subsequent push.
+
+**Anti-patterns:**
+- ❌ Change data model → Commit → Later update validator
+- ❌ "The validator is for the old model, I'll fix it later"
+
+**Correct pattern:**
+- ✅ Change data model + update validator → Single commit
+
+---
+
 ## Workflows
 
 | Workflow | Trigger | Description |

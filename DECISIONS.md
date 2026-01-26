@@ -2585,3 +2585,54 @@ This confirms verification is part of the RP Intermediary role, not a separate f
 - DEC-222: VCQ Tool Implementation (original design)
 - DEC-223: ARF Database Integration
 
+
+
+---
+
+## DEC-255: VCQ Source Selection Simplification (3-Tile Model)
+
+**Date:** 2026-01-26  
+**Status:** Implemented  
+**Category:** VCQ Tool / UX Simplification
+
+**Context:**  
+The VCQ source selection UI had 5 toggle cards (eIDAS, IAs, GDPR, DORA, ARF), but user research indicated:
+1. **Title confusion** — "eIDAS 2.0 Regulation" and "Implementing Acts" appear as siblings, but IAs derive from eIDAS
+2. **No visible RP context** — Primary source didn't indicate which implementing acts apply to RPs
+3. **ARF presented as regulatory source** — ARF is non-binding guidance, not regulation
+
+**Decision:** **Consolidate to 3 semantically-distinct tiles:**
+
+| Tile | Description | Requirements |
+|------|-------------|--------------|
+| **Primary (eIDAS Framework)** | Core regulation + binding IAs (bundled) | 13 reqs |
+| **Related Regulations** | Additional legal requirements (optional checkboxes: GDPR, DORA) | 22 reqs (variable) |
+| **Architecture** | Implementation guidance (optional checkbox: ARF) | 20 reqs |
+
+**Key Design Changes:**
+
+1. **Bundled Primary** — eIDAS + 4 RP-relevant implementing acts are always selected together (no user choice)
+2. **Checkboxes within tiles** — GDPR, DORA, ARF appear as checkable items within their parent tiles
+3. **Description updates** — "Implementation guidance - Non-binding but practically essential"
+4. **Requirement count badges** — Each tile and item shows "X reqs" for transparency
+
+**Implementation:**
+
+| Component | Change |
+|-----------|--------|
+| VCQ config | New `sourceGroup` field on each requirement (eidas, gdpr, dora, arf) |
+| build-vcq.js | Generates `bySourceGroup` stats |
+| VendorQuestionnaire.jsx | Complete tile redesign |
+| VendorQuestionnaire.css | New `.vcq-source-tile` styling |
+
+**Rationale:**
+
+1. **Semantic clarity** — Three categories answer "what kind of source?": binding primary, binding related, non-binding guidance
+2. **Reduced cognitive load** — 3 decisions instead of 5
+3. **Correct mental model** — IAs are part of eIDAS framework, not separate sources
+4. **Transparency** — Visible requirement counts help users understand selection impact
+
+**Related Decisions:**
+- DEC-254: VCQ Intermediary Consolidation (same session)
+- DEC-222: VCQ Tool Implementation (original design)
+
