@@ -148,16 +148,15 @@ p.linkable-annex-section>.copy-gutter {
     }
 }
 
-/* Ensure content doesn't get cut off on left */
+/* Ensure content doesn't get cut off on left - space for gutter icons */
 .regulation-content {
     padding-left: 80px;
-    /* Increased to accommodate gutter icons further left */
-    margin-left: -80px;
+    /* Note: gutter icons are positioned absolutely to the left of their
+       parent elements, so they appear in this padding area */
 }
 
 @media (max-width: 768px) {
     .regulation-content {
         padding-left: 0;
-        margin-left: 0;
     }
 }
