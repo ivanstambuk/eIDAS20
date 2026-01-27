@@ -824,19 +824,126 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Change notification
+#### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code invalidation on change
 
-> "(d) any change to the amount or the payee results in the generation of a different authentication code."
+> "(d) any change to the amount or the payee results in the invalidation of the authentication code generated."
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | TS12 §3.6 | Different transaction data → different hash → different signature |
+**Core Requirement**: This is the final pillar of dynamic linking—ensuring that authentication codes cannot be reused, replayed, or applied to modified transactions. Unlike Art. 5(1)(c) which is PSP-verified, this requirement is **cryptographically enforced** by the wallet's signature mechanism.
 
-**Status**: ✅ Cryptographically Enforced
+| Protection Type | Fulfillment | Reference | Implementation |
+|-----------------|-------------|-----------|----------------|
+| **Change Invalidation** | ✅ Wallet | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | SHA-256 hash of transaction data in KB-JWT |
+| **Replay Protection** | ✅ Wallet | TS12 §3.6 | Unique `jti` claim per presentation |
+| **Time-Bound Validity** | ⚠️ PSP | TS12 §3.6 | PSP MAY reject stale `iat` timestamps |
+| **Nonce Binding** | ✅ Wallet | OID4VP | `nonce` from request echoed in KB-JWT |
 
-**Context**: If the amount or payee changes, the SHA-256 hash changes, and therefore the KB-JWT (and its signature) must be different. Reusing a previous authentication code would fail verification.
+**Status**: ✅ **Cryptographically Enforced** with multiple defense layers
 
 ---
+
+**Deep Dive: How Change Invalidation Works**
+
+The guarantee is achieved through **cryptographic hash binding**:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Original Transaction                                           │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ payload: { amount: "€150.00", payee: "ACME Corp" }       │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│           SHA-256(canonical_json(payload))                      │
+│                           ▼                                     │
+│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"          │
+│                           │                                     │
+│                 Signed in KB-JWT                                │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ { "transaction_data_hashes": ["OJcnQQ..."], ... }        │   │
+│  │  ← ECDSA signature with WSCA private key                 │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│  Modified Transaction (attacker changes €150 → €1500)          │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ payload: { amount: "€1500.00", payee: "ACME Corp" }      │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│           SHA-256(canonical_json(payload))                      │
+│                           ▼                                     │
+│  hash = "7xK2mNp4ZQwL3vRtYhBn9dFgJsE...completely different"   │
+│                           │                                     │
+│  ❌ Does NOT match "OJcnQQ..." in signed KB-JWT                │
+│  ❌ PSP verification FAILS → Transaction REJECTED              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Cryptographic Security Properties**:
+
+| Property | Requirement | SHA-256 Status | Impact |
+|----------|-------------|----------------|--------|
+| **Collision Resistance** | Attacker cannot find two different payloads with same hash | ✅ 128-bit security | Cannot forge matching transaction |
+| **Pre-image Resistance** | Attacker cannot reverse hash to find payload | ✅ 256-bit security | Cannot deduce transaction from leaked hash |
+| **Second Pre-image Resistance** | Given one payload, cannot find another with same hash | ✅ 128-bit security | Cannot substitute transactions |
+
+---
+
+**Multi-Layer Replay Protection**
+
+Art. 5(1)(d) implicitly requires that old authentication codes cannot be replayed. TS12 provides **four independent mechanisms**:
+
+| Layer | Claim | Protection |
+|-------|-------|------------|
+| **1. Transaction Hash** | `transaction_data_hashes` | Different transaction → different hash → different signature |
+| **2. Unique ID** | `jti` | Fresh cryptographically random value per presentation |
+| **3. Timestamp** | `iat` | PSP MAY reject presentations older than threshold (e.g., 5 min) |
+| **4. Nonce** | `nonce` | RP-provided value echoed in KB-JWT; prevents cross-session replay |
+
+**TS12 §3.6 Specification**:
+> "**`jti`**: **REQUIRED** A fresh, cryptographically random value with sufficient entropy, as defined in [RFC7519]. This value **SHALL** be unique for each presentation. Once verified, it serves as the Authentication Code required by [PSD2]."
+
+**Industry Comparison** (EMV ARQC):
+EMV chip cards use a similar approach—the Authorization Request Cryptogram (ARQC) is computed by hashing transaction data (amount, currency, merchant ID) and signing with the card's private key. Any modification invalidates the cryptogram.
+
+---
+
+**Edge Case: JSON Canonicalization**
+
+**Potential Issue**: The `transaction_data_hashes` is computed over the JSON payload. If wallet and PSP serialize JSON differently (key order, whitespace), hash verification could fail even for legitimate transactions.
+
+**TS12 Approach**: The hash is computed over the **base64url-encoded** `transaction_data` string as received in the request. This means:
+- The wallet hashes the *exact bytes* received from the PSP
+- No canonicalization is applied (like JCS)
+- PSP must preserve the exact byte sequence when verifying
+
+**Risk**: If a TPP or intermediary re-serializes the JSON differently, the hash will not match.
+
+**Recommendation**: PSPs should:
+1. Store the original base64url-encoded `transaction_data` string
+2. Compare hash against that exact string, not re-serialized JSON
+
+---
+
+**Time-Bound Validity Gap**
+
+While `iat` (issued-at) is included in the KB-JWT, **TS12 does not mandate a maximum validity period**. Industry practice suggests 5 minutes for payment authentication codes.
+
+**Current TS12 §3.6**:
+> "The `iat` (issued at) claim of the KB-JWT **MAY** be used by a Relying Party to restrict the timeframe."
+
+| Aspect | Specification | Industry Practice |
+|--------|--------------|-------------------|
+| Maximum validity | ❌ Not specified | 5 minutes typical |
+| Clock skew tolerance | ❌ Not specified | ±30 seconds typical |
+| Expiry (`exp`) claim | ❌ Not required | Some PSPs use this |
+
+**Recommendation**: SCA Attestation Rulebooks SHOULD specify:
+- Maximum `iat` age (e.g., 300 seconds)
+- Clock skew tolerance (e.g., 60 seconds)
+
+---
+
+
 
 #### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Security measures for dynamic linking (CIA triad)
 
@@ -1924,4 +2031,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.6** | 2026-01-27 | AI Analysis | **PSC definition expansion**: Clarified that PSCs include ALL SCA elements (PIN, biometric, AND private key + attestation) per PSD2 Art. 4(31). Updated Art. 22(1), 23, 26, 27 contexts to explicitly reference all PSC types. |
 | **4.7** | 2026-01-27 | AI Analysis | **Critical gap: PIN lockout missing**: Identified that reference implementation has NO PIN lockout mechanism (Art. 4(3)(b)). Unlimited PIN retries allowed. OS biometric is compliant (5 attempts), but wallet PIN bypasses this. Added detailed evidence from `QuickPinInteractor.kt` (Android) and `QuickPinInteractor.swift` (iOS). Provided remediation code pattern. |
 | **4.8** | 2026-01-27 | AI Analysis | **Art. 5(2) WYSIWYS deep-dive**: Complete rewrite of Art. 5(2) section with phase-by-phase CIA analysis (Generation, Transmission, Display, Use). Added WYSIWYS principle explanation, overlay attack gap analysis, industry best practices table (RASP, secure display, overlay detection). Identified at-rest confidentiality gap for transaction data. TS12 §3.3.1 display hierarchy levels documented. |
+| **4.9** | 2026-01-27 | AI Analysis | **Art. 5(1)(d) cryptographic deep-dive**: Complete rewrite with SHA-256 hash binding diagram, cryptographic security properties table (collision/pre-image resistance), 4-layer replay protection (hash, jti, iat, nonce). Added EMV ARQC comparison, JSON canonicalization edge case, time-bound validity gap analysis. Recommendation for SCA Attestation Rulebooks to specify max `iat` age. |
 
