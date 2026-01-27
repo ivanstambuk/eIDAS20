@@ -3082,6 +3082,179 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 **Status**: ✅ Delegated to Certified OS Components
 
+<details>
+<summary><strong>🔍 Deep-Dive: Biometric Resistance Against Unauthorized Use</strong></summary>
+
+##### Core Requirement: Device and Software Resistance
+
+Article 8(2) focuses on protecting biometric systems from unauthorized access at the **device and software level**. Even if an attacker gains physical access to a device, the biometric system must resist spoofing and unauthorized authentication.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              Biometric Resistance Against Unauthorized Use                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     ATTACK SURFACE                                  │   │
+│  │                                                                     │   │
+│  │   PRESENTATION         SOFTWARE             HARDWARE               │   │
+│  │   ────────────         ────────             ────────               │   │
+│  │   • Fake fingerprint   • Inject auth result • Sensor bypass        │   │
+│  │   • Photo/video face   • Tampered app       • Debug interface      │   │
+│  │   • 3D mask            • Rooted device      • Template extraction  │   │
+│  │   • Voice recording    • API hooking        • Sensor spoofing      │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                  RESISTANCE MEASURES                                │   │
+│  │                                                                     │   │
+│  │   PRESENTATION ATTACK DETECTION (PAD)                              │   │
+│  │   • Liveness detection — verify live human                         │   │
+│  │   • Depth sensing — 3D face scan, IR                               │   │
+│  │   • Texture analysis — skin vs. silicone                           │   │
+│  │                                                                     │   │
+│  │   SOFTWARE INTEGRITY                                                │   │
+│  │   • App attestation — verify app not tampered                      │   │
+│  │   • OS integrity check — detect rooting/jailbreak                  │   │
+│  │   • Secure path — sensor → Secure Enclave (no app access)          │   │
+│  │                                                                     │   │
+│  │   HARDWARE SECURITY                                                 │   │
+│  │   • Secure Enclave — biometric match in isolated hardware          │   │
+│  │   • Certified sensors — manufacturer attestation                   │   │
+│  │   • Template encryption — biometric data encrypted at rest         │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Presentation Attack Detection (PAD) — ISO 30107 Framework
+
+ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
+
+| ISO 30107 Component | Purpose | EUDI Wallet Alignment |
+|--------------------|---------|-----------------------|
+| **Part 1: Framework** | Defines PAD terminology | Terminology alignment |
+| **Part 3: Testing** | Test methodology for PAD | OS vendors obtain certification |
+| **Part 4: Profile** | Application profiles | Mobile device profiles |
+
+##### PAD Metrics
+
+| Metric | Definition | Target |
+|--------|------------|--------|
+| **APCER** | Attack Presentation Classification Error Rate | < 1% (Level 1), < 0.1% (Level 2) |
+| **BPCER** | Bona Fide Presentation Classification Error Rate | < 3% (usability balance) |
+| **PAD Decision** | Binary: genuine or attack | Per-transaction decision |
+
+> **ISO 30107-3 Testing**: Leading OS vendors (Apple, Google) submit their biometric sensors for ISO 30107-3 certification, ensuring standardized resistance to presentation attacks.
+
+##### Anti-Spoofing Layers
+
+| Layer | Technology | Attack Mitigated |
+|-------|------------|------------------|
+| **Sensor** | IR/depth camera, ultrasonic fingerprint | Photo, flat fingerprint |
+| **Algorithm** | Liveness detection, motion analysis | Static images, masks |
+| **Processing** | Secure Enclave match | Result injection |
+| **OS** | BiometricPrompt / LocalAuthentication | App-level bypass |
+
+##### Platform Anti-Spoofing Implementation
+
+| Platform | Component | Anti-Spoofing Feature |
+|----------|-----------|----------------------|
+| **iOS Face ID** | TrueDepth camera | 30,000 IR dots + flood illuminator + liveness |
+| **iOS Touch ID** | Capacitive sensor | Sub-dermal ridge detection + liveness |
+| **Android Class 3** | Certified sensors | Hardware-backed anti-spoofing required |
+| **Android Strong** | Biometric HAL | `setAttestationChallengeIfNeeded()` for HW attestation |
+
+##### Secure Architecture: Result Integrity
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                  Biometric Authentication Secure Path                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────┐                      ┌─────────────────────────────────┐ │
+│   │   SENSOR    │  ───────────────────►│        SECURE ENCLAVE           │ │
+│   │  (Hardware) │     Raw biometric    │                                 │ │
+│   └─────────────┘     (encrypted path) │   1. Decrypt sample             │ │
+│                                        │   2. Extract features           │ │
+│                                        │   3. Match against template     │ │
+│                                        │   4. Liveness check             │ │
+│                                        │   5. Return: auth success/fail  │ │
+│                                        │                                 │ │
+│   ┌─────────────┐                      │   ❌ Template NEVER leaves SE   │ │
+│   │  WALLET APP │  ◄───────────────────│   ❌ App gets ONLY result       │ │
+│   │             │     Boolean result   │                                 │ │
+│   └─────────────┘                      └─────────────────────────────────┘ │
+│                                                                             │
+│   GUARANTEE: Even if app is compromised, biometric template is safe       │
+│              App cannot inject fake "success" — OS enforces path           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### EBA Guidance on Inherence Resistance
+
+| EBA Requirement | Implementation |
+|-----------------|----------------|
+| "Devices and software guarantee resistance" | OS hardware-backed biometric subsystem |
+| "Unauthorized access to devices" | Device unlock required before biometric prompt |
+| "Unauthorized use of elements" | Liveness detection prevents replays |
+| "Quality of implementation" | Rely on certified OS, not custom implementation |
+
+> **EBA Key Insight**: "The quality of the implementation, rather than the biometric feature itself, determines its suitability for SCA." This is why EUDI Wallet delegates to OS-certified biometric APIs.
+
+##### Template Protection
+
+| Protection | Mechanism | Status |
+|------------|-----------|--------|
+| **Encryption at rest** | Templates encrypted with device-unique key | ✅ iOS/Android |
+| **Hardware isolation** | Templates stored in Secure Enclave | ✅ iOS/Android |
+| **No export** | Templates cannot be extracted via any API | ✅ iOS/Android |
+| **Match in SE** | Comparison happens inside secure hardware | ✅ iOS/Android |
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Resistance Feature |
+|----------|-----------|-------------------|
+| **iOS** | LocalAuthentication | `LAPolicy.deviceOwnerAuthenticationWithBiometrics` enforces SE path |
+| **iOS** | Face ID | TrueDepth anti-spoofing (attention detection, 3D depth) |
+| **Android** | BiometricPrompt | `setAllowedAuthenticators(BIOMETRIC_STRONG)` enforces HW-backed |
+| **Android** | Biometric HAL 2.0+ | Hardware-backed anti-spoofing attestation |
+
+##### Threat Model: Unauthorized Biometric Use
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Photo attack** | Print or display victim's photo | Liveness + depth sensing | ✅ Mitigated |
+| **Video attack** | Play video of victim | Motion analysis + randomized challenge | ✅ Mitigated |
+| **3D mask** | Silicone face mask | Texture analysis + IR sensing | ✅ Mitigated |
+| **Lifted fingerprint** | Reconstruct from latent print | Liveness detection (pulse, sweat) | ✅ Mitigated |
+| **Voice replay** | Play recorded voice | Challenge-response, anti-replay | ✅ Mitigated |
+| **Software bypass** | Inject auth result | OS secure path, SE-only match | ✅ Mitigated |
+| **Template theft** | Extract biometric template | Non-extractable in SE | ✅ Mitigated |
+| **Rooted device** | Bypass OS protections | WUA integrity check | ⚠️ OS-dependent |
+
+##### Gap Analysis: Biometric Resistance
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **BR-1** | No minimum PAD certification level mandated | Medium | Reference ISO 30107-3 Level 2 as minimum |
+| **BR-2** | Behavioral biometrics (keystroke dynamics) not standardized | Low | Clarify acceptable behavioral modalities |
+| **BR-3** | No requirement for attention detection (face) | Low | Recommend attention detection for face auth |
+| **BR-4** | Hybrid attacks (social + technical) not addressed | Medium | Document multi-factor requirement as defense |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **PAD Certification**: Reference ISO 30107-3 as the standard for PAD testing
+2. **Hardware Requirement**: Mandate Class 3 (Android) or equivalent for biometrics
+3. **Template Protection**: Confirm templates must be hardware-protected
+4. **OS Delegation**: Document that wallet MUST use OS biometric APIs (not custom)
+5. **Fallback Policy**: Define behavior when biometric fails (PIN fallback)
+6. **Attention Detection**: Recommend for face authentication
+
+</details>
 
 ---
 

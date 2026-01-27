@@ -135,7 +135,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 8(1) | Low probability of unauthorized auth | ✅ Yes |
-| Art. 8(2) | Resistance against unauthorized use | ❌ No |
+| Art. 8(2) | Resistance against unauthorized use | ✅ Yes |
 
 ### Article 9 — Independence of Elements
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 30 |
-| ❌ Not Done | 17 |
+| ✅ Done | 31 |
+| ❌ Not Done | 16 |
 | **Total** | 47 |
 
 ---
@@ -177,6 +177,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 9(2) | Deep-dive: Smartphone security architecture, isolation layers, FIDO alignment, gaps MPD-1 to MPD-4 |
 | 2026-01-28 | Art. 6(2) | Deep-dive: Disclosure prevention arch, secure keyboard, NIST 800-63B, phishing, gaps DP-1 to DP-4 |
 | 2026-01-28 | Art. 7(2) | Deep-dive: Anti-cloning architecture, hardware security levels, FIDO alignment, gaps RP-1 to RP-4 |
+| 2026-01-28 | Art. 8(2) | Deep-dive: PAD architecture, ISO 30107 alignment, anti-spoofing layers, gaps BR-1 to BR-4 |
 
 ---
 
