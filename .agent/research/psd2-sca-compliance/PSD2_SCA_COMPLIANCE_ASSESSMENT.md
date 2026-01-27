@@ -1,6 +1,6 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 2.7  
+> **Version**: 3.2  
 > **Date**: 2026-01-27  
 > **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
@@ -37,6 +37,13 @@ This document is designed for **legal counsel, compliance officers, and regulato
 | TS12 v1.0 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) |
 | ARF Topic 20 | [HLRs for SCA](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) |
 
+**Reference Implementations** (commit-pinned):
+
+| Platform | Repository | Commit |
+|----------|-----------|--------|
+| iOS | [`eudi-app-ios-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) | [`055bdda8`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/tree/055bdda8b2a74d9df4892e7cf702479ac75f6ca6) |
+| Android | [`eudi-app-android-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) | [`48311b4d`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/tree/48311b4de1a0d2be57874824ea68a5e0914765e4) |
+
 ---
 
 ## Executive Summary
@@ -67,7 +74,7 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 > *PSD2 Directive Article 97 establishes the legal basis for SCA. The technical details are in RTS 2018/389.*
 
-### [Article 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#art_97) — SCA Triggers
+### [Article 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) — SCA Triggers
 
 > "Member States shall ensure that a payment service provider applies strong customer authentication where the payer:
 > (a) accesses its payment account online;
@@ -77,7 +84,7 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [SUA_01](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet Units process transactional data per Attestation Rulebook |
-| ✅ **Wallet** | [TS12 §4.3](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#43-transaction-data-types) | Four use case URNs: `payment:1`, `login_risk_transaction:1`, `account_access:1`, `emandate:1` |
+| ✅ **Wallet** | [TS12 §4.3](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#43-payload-object) | Four use case URNs: `payment:1`, `login_risk_transaction:1`, `account_access:1`, `emandate:1` |
 | ⚠️ **Shared** | — | PSP determines when to trigger SCA (all three scenarios) |
 
 **Status**: ✅ Supported
@@ -96,7 +103,7 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 ---
 
-### [Article 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#art_97) — Dynamic Linking
+### [Article 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002) — Dynamic Linking
 
 > "With regard to the initiation of electronic payment transactions as referred to in paragraph 1(b), Member States shall ensure that, for electronic remote payment transactions, the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
 
@@ -104,22 +111,24 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [SUA_04](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet includes transactional data representation in response |
 | ✅ **Wallet** | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Transactional data included in device binding signature (KB-JWT) |
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt) | `transaction_data_hashes` in KB-JWT cryptographically binds amount + payee |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | `transaction_data_hashes` in KB-JWT cryptographically binds amount + payee |
 
 **Status**: ✅ Fully Supported
 
 **Context**: The OID4VP `transaction_data` parameter allows the PSP to pass payment details (amount, payee, IBAN). These are hashed and included in the KB-JWT's `transaction_data_hashes` array. The user sees the transaction on-screen before approving with biometric/PIN. The signature over this hash constitutes the dynamic link.
 
-**Technical Detail** ([TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt)):
+**Technical Detail** ([TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)):
 ```
 KB-JWT contains:
   "transaction_data_hashes": ["sha-256 hash of transaction details"],
   "transaction_data_hashes_alg": "sha-256"
 ```
 
+> ⚠️ **Format Note**: Dynamic linking via `transaction_data_hashes` is **OID4VP / SD-JWT-VC only**. TS12 v1.0 does not specify mDOC (ISO 18013-5) transaction binding. See RTS Art. 5(1)(b) for details.
+
 ---
 
-### [Article 97(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#art_97) — Delegated Act
+### [Article 97(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.003) — Delegated Act
 
 > "The Commission shall adopt, in accordance with Article 98, RTS specifying: (a) the requirements of strong customer authentication... (b) the exemptions..."
 
@@ -127,7 +136,7 @@ KB-JWT contains:
 
 ---
 
-### [Article 97(4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#art_97) — Exemptions for Low-Risk/Low-Value
+### [Article 97(4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.004) — Exemptions for Low-Risk/Low-Value
 
 > "The EBA shall...issue guidelines...addressed to payment service providers...on the application of paragraph 1, aimed at enhancing, where appropriate, the exemptions established in the RTS..."
 
@@ -149,7 +158,7 @@ KB-JWT contains:
 
 ### [Article 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2) — General authentication requirements
 
-#### [Article 2(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2)
+#### [Article 2(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
 
 > "Payment service providers shall have **transaction monitoring mechanisms** in place that enable them to detect unauthorised or fraudulent payment transactions..."
 
@@ -169,7 +178,7 @@ KB-JWT contains:
 
 ---
 
-#### [Article 2(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2)
+#### [Article 2(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
 
 > "The transaction monitoring mechanisms shall be based on the analysis of payment transactions taking into account elements which are typical for the payment service user..."
 
@@ -184,7 +193,7 @@ KB-JWT contains:
 
 ---
 
-#### [Article 2(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2)
+#### [Article 2(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
 
 > "...the paying attention to any of the following criteria as a minimum: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios..."
 
@@ -194,7 +203,7 @@ KB-JWT contains:
 
 ### [Article 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3) — Review of security measures
 
-#### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3)
+#### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.001)
 
 > "The security measures referred to in Article 1 shall be **documented, periodically tested, evaluated and audited** in accordance with the applicable audit framework..."
 
@@ -213,7 +222,7 @@ KB-JWT contains:
 
 ---
 
-#### [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3)
+#### [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.002)
 
 > "The audit referred to in paragraph 1 shall be carried out during a period of time appropriate for achieving its objectives..."
 
@@ -221,7 +230,7 @@ KB-JWT contains:
 
 ---
 
-#### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3)
+#### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.003)
 
 > "Payment service providers making use of the exemption referred to in Article 18 shall **monitor and make available to competent authorities**, at least on an annual basis, a report on: (a) the total value and number of payment transactions... (b) the fraud rate..."
 
@@ -233,7 +242,7 @@ KB-JWT contains:
 
 ### [Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Authentication code
 
-#### [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Two or more elements generating an authentication code
+#### [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.001) — Two or more elements generating an authentication code
 
 > "Where payment service providers apply strong customer authentication in accordance with Article 97(1) and (2) of Directive (EU) 2015/2366, the authentication shall be based on **two or more elements** categorised as knowledge, possession and inherence and **shall result in the generation of an authentication code**."
 
@@ -242,7 +251,7 @@ KB-JWT contains:
 | ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | WSCA/WSCD authenticates User (knowledge/inherence) before crypto ops |
 | ✅ **Wallet** | [WUA_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | Private key in WSCA/WSCD = possession element |
 | ✅ **Wallet** | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Device binding signature = **authentication code** |
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt) | `amr` array reports authentication factors used |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | `amr` array reports authentication factors used |
 
 **Status**: ✅ Fully Supported
 
@@ -262,17 +271,25 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 "amr": ["pin", "hwk"]   // PIN + hardware key = knowledge + possession
 ```
 
+**Reference Implementation Evidence**:
+| Platform | Source File |
+|----------|-------------|
+| iOS | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift) |
+| Android | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt) |
+
 > 📌 **Community Validation**: The `amr` claim was [proposed by community member senexi](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15133961) (Dec 2025) to align with OIDC standards — and was **adopted in TS12 v1.0**.
+
+> ⚠️ **Format Note**: The `amr` claim is **SD-JWT-VC only** (via KB-JWT). TS12 v1.0 does not specify an equivalent mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC support should monitor TS12 updates.
 
 ---
 
-#### [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — One-time use
+#### [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — One-time use
 
 > "The authentication code referred to in paragraph 1 shall be **only accepted once** by the payment service provider..."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt) | Fresh `nonce` + `jti` + `iat` in each response |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | Fresh `nonce` + `jti` + `iat` in each response |
 | ⚠️ **PSP** | — | PSP must track accepted codes and reject replays |
 
 **Status**: ⚠️ Shared Responsibility
@@ -302,16 +319,18 @@ TS12 §3.6 states the `jti` "serves as the Authentication Code". However, RTS Re
 - iOS: [`PresentationSession.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-presentation/Sources/Interactor/PresentationInteractor.swift) — generates unique response per presentation
 - Android: [`PresentationInteractor.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/interactor/PresentationControllerInteractor.kt) — VP Token assembly
 
+> ⚠️ **Format Note**: The `jti`, `nonce`, and `iat` claims are in the **KB-JWT (SD-JWT-VC only)**. For **mDOC**, the DeviceResponse signature provides cryptographic uniqueness, but TS12 v1.0 does not specify mDOC-specific claim equivalents.
+
 ---
 
-#### [Article 4(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Factor derivation protection
+#### [Article 4(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Factor derivation protection
 
 > "Security measures for the authentication elements shall ensure that: (a) no information on any of the elements may be derived from the disclosure of the authentication code;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key never leaves WSCA/WSCD |
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt) | Only `amr` (factor names) disclosed, not factor values |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | Only `amr` (factor names) disclosed, not factor values |
 
 **Status**: ✅ Fully Supported
 
@@ -324,7 +343,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — No code re-generation
+#### [Article 4(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — No code re-generation
 
 > "(b) it shall not be possible to generate a new authentication code on the basis of the knowledge of any other authentication code previously generated;"
 
@@ -342,7 +361,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(3)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Forgery resistance
+#### [Article 4(3)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Forgery resistance
 
 > "(c) the authentication code shall not be forged."
 
@@ -350,7 +369,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [WUA_12](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | WU can prove possession of private key |
 | ✅ **Wallet** | WSCA/WSCD security | Secure Enclave / StrongBox provides hardware protection |
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-key-binding-jwt-kb-jwt) | PSP verifies signature against trusted attestation public key |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | PSP verifies signature against trusted attestation public key |
 
 **Status**: ✅ Fully Supported
 
@@ -361,7 +380,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(4)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Non-disclosure of incorrect element
+#### [Article 4(4)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Non-disclosure of incorrect element
 
 > "Payment service providers shall have measures in place ensuring that: (a) where any of the elements referred to in paragraph 1 have failed, it shall not be possible to identify which of those elements was incorrect;"
 
@@ -378,7 +397,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(4)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Maximum attempts and lockout
+#### [Article 4(4)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Maximum attempts and lockout
 
 > "(b) the number of failed authentication attempts that can take place consecutively, ..., shall not exceed five within a given period of time before those personalised security credentials are temporarily or permanently blocked;"
 
@@ -399,7 +418,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(4)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Session protection
+#### [Article 4(4)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session protection
 
 > "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties..."
 
@@ -415,7 +434,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(4)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Session timeout
+#### [Article 4(4)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session timeout
 
 > "(d) the maximum time without activity by the payer... shall not exceed 5 minutes."
 
@@ -432,7 +451,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ### [Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Dynamic linking
 
-#### [Article 5(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — General requirement
+#### [Article 5(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — General requirement
 
 > "Where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366, in addition to the requirements of Article 4 of this Regulation, they shall also adopt security measures that meet each of the following requirements..."
 
@@ -440,14 +459,14 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Payer awareness
+#### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Payer awareness
 
 > "(a) the payer is made aware of the amount of the payment transaction and of the payee;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [SUA_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet adapts dialogue to display transaction details |
-| ✅ **Wallet** | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-authentication) | Payment confirmation screen shows amount, currency, payee |
+| ✅ **Wallet** | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) | Payment confirmation screen shows amount, currency, payee |
 
 **Status**: ✅ Fully Supported
 
@@ -501,7 +520,7 @@ This dual display ensures user awareness of who is requesting access.
 
 ---
 
-#### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Code linked to amount and payee
+#### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code linked to amount and payee
 
 > "(b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction;"
 
@@ -527,9 +546,11 @@ This dual display ensures user awareness of who is requesting access.
 
 The signature over this JWT (using the SCA attestation private key) cryptographically binds the authentication to the specific amount and payee.
 
+> ⚠️ **Format Note**: `transaction_data_hashes` is a **KB-JWT claim (SD-JWT-VC only)**. TS12 v1.0 does not specify an equivalent dynamic linking mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC-based SCA should monitor TS12 updates or implement custom solutions.
+
 ---
 
-#### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Code acceptance
+#### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code acceptance
 
 > "(c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer;"
 
@@ -548,7 +569,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Change notification
+#### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Change notification
 
 > "(d) any change to the amount or the payee results in the generation of a different authentication code."
 
@@ -562,7 +583,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Corresponding acceptance
+#### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Corresponding acceptance
 
 > "Payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication..."
 
@@ -575,7 +596,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Batch file payment exception
+#### [Article 5(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch file payment exception
 
 > "...in relation to batch file payments: (a) the payment service user initiating a batch... shall be made aware of the total amount and of the number of the payment transactions;"
 
@@ -595,7 +616,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Batch authentication code
+#### [Article 5(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch authentication code
 
 > "(b) the authentication code shall be specific to the total amount of the batch payment and to the payees specified."
 
@@ -636,7 +657,7 @@ Breach of one does not expose the others:
 
 ### [Article 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7) — Requirements of elements categorised as possession
 
-#### [Article 7(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7)
+#### [Article 7(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.001)
 
 > "Payment service providers shall adopt security measures to mitigate the risk of the elements... referred to in point (b) of Article 4(1)... being used fraudulently following their **loss, theft or copying**."
 
@@ -666,14 +687,14 @@ This means the old possession element (lost device's key) is permanently invalid
 
 ---
 
-#### [Article 7(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7)
+#### [Article 7(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.002)
 
 > "The measures referred to in paragraph 1 shall include each of the following: (a) the use of elements which are not replicable... (b) the use of algorithms which are secure against the risk of the elements being read, copied or reverse-engineered..."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key protected, non-exportable |
-| ✅ **Wallet** | [TS12 §3.2](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#32-cryptographic-algorithms) | ES256 (ECDSA P-256) algorithm specified |
+| ✅ **Wallet** | [OID4VP/HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | ES256 (ECDSA P-256) algorithm specified |
 | ✅ **Wallet** | App integrity | WUA contains app attestation (Play Integrity / App Attest) |
 
 **Status**: ✅ Fully Supported
@@ -682,7 +703,7 @@ This means the old possession element (lost device's key) is permanently invalid
 
 ### [Article 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8) — Requirements of elements categorised as knowledge
 
-#### [Article 8(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8)
+#### [Article 8(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.001)
 
 > "Payment service providers shall adopt security measures to mitigate the risk of the elements... referred to in point (a) of Article 4(1)... being **uncovered by, or disclosed to, unauthorised parties**."
 
@@ -699,9 +720,15 @@ This means the old possession element (lost device's key) is permanently invalid
 - Never transmitted to PSP or Wallet Provider
 - Not stored in plaintext
 
+**Reference Implementation Evidence**:
+| Platform | Source File |
+|----------|-------------|
+| iOS | [`QuickPinViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/QuickPin/QuickPinViewModel.swift) (6-digit PIN) |
+| Android | [`PinInteractor.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/PinInteractor.kt) |
+
 ---
 
-#### [Article 8(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8)
+#### [Article 8(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.002)
 
 > "The measures ...shall include each of the following: (a) ensuring that the length of each of the elements...and any complexity and character set rules taken into account during their generation are compliant with relevant and applicable regulatory and industry standards; (b) ensuring that algorithms which protect the elements from disclosure... are effective against methods which are widely available in the security community..."
 
@@ -716,7 +743,7 @@ This means the old possession element (lost device's key) is permanently invalid
 
 ### [Article 9](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9) — Requirements of elements categorised as inherence
 
-#### [Article 9(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9)
+#### [Article 9(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.001)
 
 > "Payment service providers shall adopt security measures to mitigate the risk of the authentication elements... referred to in point (c) of Article 4(1)... being used fraudulently..."
 
@@ -733,9 +760,13 @@ This means the old possession element (lost device's key) is permanently invalid
 
 The Wallet does NOT store or have access to biometric templates — this is managed by the OS Secure Enclave / TEE.
 
+**Reference Implementation Evidence**:
+- iOS: `LAContext.evaluatePolicy` — liveness detection built into Face ID / Touch ID
+- Android: `BiometricPrompt` (Class 3) — hardware-backed anti-spoofing
+
 ---
 
-#### [Article 9(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9)
+#### [Article 9(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.002)
 
 > "The measures ...shall include each of the following: (a) ensuring that reading devices and software used for authentication minimise the risk of unauthorised reading... (b) ensuring that algorithms... are well protected against attacks..."
 
@@ -836,38 +867,7 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 ---
 
-## Appendix B: Authentication Code Interpretation
-
-> 📌 **Note**: This analysis is now integrated into [Article 4(2)](#article-42--one-time-use) in the main compliance matrix.
-
-### The `jti` vs VP Token Question
-
-**TS12 §3.6 states**:
-
-> "`jti`: **REQUIRED**. ... Once verified, it serves as the Authentication Code required by [PSD2] for electronic payments."
-
-**RTS Recital (4) states**:
-
-> "authentication codes should be based on solutions such as generating and validating **one-time passwords, digital signatures or other cryptographically underpinned validity assertions** using keys or cryptographic material stored in the authentication elements"
-
-### Analysis
-
-The `jti` claim is a **unique identifier** within the KB-JWT. However, the **authentication code** per the RTS definition is the entire cryptographic construct:
-
-| Interpretation | What Constitutes Auth Code | Regulatory Fit |
-|---------------|---------------------------|----------------|
-| Narrow (TS12) | `jti` claim alone | Provides unique ID for replay prevention |
-| Broad (RTS-aligned) | Complete VP Token (SD-JWT + KB-JWT signature) | Satisfies "digital signatures" definition |
-
-**Conclusion**: Both interpretations are valid for different purposes:
-- For **replay prevention**: Track `jti` values
-- For **regulatory compliance**: The complete signed VP Token is the "authentication code"
-
-The device binding signature in the KB-JWT, generated using the SCA attestation private key after user authentication, is the cryptographic proof that satisfies RTS Art. 4(1).
-
----
-
-## Appendix C: mDOC Protocol Gap Analysis
+## Appendix B: mDOC Protocol Gap Analysis
 
 ### Current Status
 
@@ -890,7 +890,7 @@ A future TS12 version is expected to add mDOC support. The compliance mapping in
 
 ---
 
-## Appendix D: TPP Scenario Coverage
+## Appendix C: TPP Scenario Coverage
 
 > 📌 **Note**: This analysis is now integrated into [Article 5(1)(a)](#article-51a--payer-awareness) in the main compliance matrix.
 
@@ -936,7 +936,7 @@ This ensures user awareness per RTS Art. 5(1)(a).
 
 ---
 
-## Appendix E: Accessibility Requirements
+## Appendix D: Accessibility Requirements
 
 *Note: Wallet recovery procedures are documented inline at [Article 7(1)](#article-71) since they directly address the RTS requirement for loss/theft mitigation.*
 
@@ -952,7 +952,7 @@ For SCA specifically, SUA_06 mandates adaptable dialogue elements (font size, co
 
 ---
 
-## Appendix F: GitHub Discussion Analysis
+## Appendix E: GitHub Discussion Analysis
 
 ### TS12 Discussion #439
 
@@ -1064,38 +1064,7 @@ Identified technical issues in TS12 v1.0:
 
 ---
 
-## Appendix G: Reference Implementation Evidence
-
-### Repository Links
-
-| Platform | Repository | Commit SHA |
-|----------|-----------|------------|
-| iOS | [`eudi-app-ios-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) | [`055bdda8`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/tree/055bdda8b2a74d9df4892e7cf702479ac75f6ca6) |
-| Android | [`eudi-app-android-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) | [`48311b4d`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/tree/48311b4de1a0d2be57874824ea68a5e0914765e4) |
-
-### Key Implementation Patterns
-
-| Aspect | iOS | Android |
-|--------|-----|---------|
-| Biometric API | `LAContext` | `BiometricPrompt` |
-| Key Storage | Secure Enclave | StrongBox / TEE |
-| Transaction Display | `SCAConfirmation.swift` | `SCAConfirmationScreen.kt` |
-| Factor Reporting | `amr` array population | `amr` array population |
-
-### Evidence for Specific RTS Articles
-
-| RTS Article | iOS Evidence | Android Evidence |
-|-------------|--------------|------------------|
-| Art. 4(1) Two factors | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift) | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt) |
-| Art. 4(2) One-time code | [`PresentationInteractor.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-presentation/Sources/Interactor/PresentationInteractor.swift) | [`PresentationControllerInteractor.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/interactor/PresentationControllerInteractor.kt) |
-| Art. 4(4)(b) Lockout | OS-level biometric lockout (5 attempts) | OS-level biometric lockout (StrongBox) |
-| Art. 5(1)(a) Display | [`BaseRequestViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/Request/BaseRequestViewModel.swift) | [`RequestDataUi.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/ui/request/model/RequestDataUi.kt) |
-| Art. 8 Knowledge | [`QuickPinViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/QuickPin/QuickPinViewModel.swift) (6-digit PIN) | [`PinInteractor.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/PinInteractor.kt) |
-| Art. 9 Inherence | `LAContext.evaluatePolicy` (liveness detection) | `BiometricPrompt` (liveness detection) |
-
----
-
-## Appendix H: SCA Attestation Rulebook Status
+## Appendix F: SCA Attestation Rulebook Status
 
 ### Current Status (January 2026)
 
@@ -1176,4 +1145,9 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **2.5** | 2026-01-27 | AI Analysis | **Community evidence integrated into articles**: Art. 4(1) `amr` validation, Art. 97(1) AISP consent gap, Art. 5(1)(a) ETPPA industry validation, Art. 5(1)(c) TPP verification open issue. |
 | **2.6** | 2026-01-27 | AI Analysis | **Deep linking**: All article headers now link directly to EUR-Lex (PSD2 + RTS). All TS12 references link to commit-specific GitHub source (§3.2, §3.6, §4.3, §4.3.1). |
 | **2.7** | 2026-01-27 | AI Analysis | **EUR-Lex link fix**: Updated all anchors from `#d1eXXX-XX-1` to working `#art_X` format (verified via browser). Removed historical annotations (`*(integrated from Appendix X)*`). |
+| **2.8** | 2026-01-27 | AI Analysis | **Paragraph-level deep links**: Updated paragraph references to use `#XXX.YYY` format (e.g., Art. 97(2) → `#097.002`). Article-level headers retain `#art_X` format. |
+| **2.9** | 2026-01-27 | AI Analysis | **TS12 anchor fix**: Corrected guessed anchors to actual section names (`#36-presentation-response`, `#43-payload-object`, `#431-payment-confirmation`). Fixed misattributed ES256 ref to OID4VP/HAIP. |
+| **3.0** | 2026-01-27 | AI Analysis | **Appendix G removal**: Inlined all reference implementation evidence into respective article sections. Moved repository links to header. Renumbered Appendix H → G. |
+| **3.1** | 2026-01-27 | AI Analysis | **mDOC format notes**: Added warnings to Art. 97(2), 4(1), 4(2), 5(1)(b) that KB-JWT claims (`amr`, `jti`, `transaction_data_hashes`) are SD-JWT-VC only. TS12 v1.0 does not specify mDOC equivalents. |
+| **3.2** | 2026-01-27 | AI Analysis | **Appendix B removal**: Deleted Auth Code Interpretation appendix (content inline in Art. 4(2)). Renumbered C→B, D→C, E→D, F→E, G→F. Now 6 appendixes (A-F). |
 
