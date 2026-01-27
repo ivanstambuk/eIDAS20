@@ -30,10 +30,10 @@ Transform the assessment from a single-focus document (SCA usage) into a compreh
 | **9** | Add Article 25 (Delivery) | ✅ Done | — |
 | **10** | Add Article 26 (Renewal) | ✅ Done | — |
 | **11** | Add Article 27 (Revocation/Deactivation) | ✅ Done | — |
-| **12** | 🔒 COMMIT Part III complete | ⬜ Pending | — |
-| **13** | Update version history | ✅ Done | — |
-| **14** | Update pending-task.md | ⬜ Pending | — |
-| **15** | 🔒 FINAL COMMIT | ⬜ Pending | — |
+| **12** | 🔒 COMMIT Part III complete | ✅ Done | 1f47249 |
+| **13** | Update version history | ✅ Done | 1f47249 |
+| **14** | Update pending-task.md | ✅ Done | e342bac |
+| **15** | 🔒 FINAL COMMIT | ✅ Done | e342bac |
 
 ---
 
