@@ -33,7 +33,7 @@ This document is designed for **legal counsel, compliance officers, and regulato
 |----------|------|
 | PSD2 Directive | [EUR-Lex 2015/2366](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) |
 | PSD2 RTS | [EUR-Lex 2018/389](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389) |
-| ARF v2.7.2 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework) |
+| ARF v2.7.3 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework) |
 | TS12 v1.0 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) |
 | ARF Topic 20 | [HLRs for SCA](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) |
 
@@ -1199,7 +1199,7 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | 1.2 | 2026-01-27 | AI Analysis | Corrected authentication code definition |
 | 1.3 | 2026-01-27 | AI Analysis | Added mDOC, SIOP, TPP, batch payment, recovery appendices |
 | **2.0** | 2026-01-27 | AI Analysis | **Major restructure**: Regulation-first compliance matrix format. All provisions now have dedicated sections with consolidated evidence. ARF HLRs embedded per provision. |
-| **2.1** | 2026-01-27 | AI Analysis | Added Appendix H: SCA Attestation Rulebook status. Updated ARF reference to v2.7.2. |
+| **2.1** | 2026-01-27 | AI Analysis | Added Appendix H: SCA Attestation Rulebook status. Updated ARF reference to v2.7.3. |
 | **2.2** | 2026-01-27 | AI Analysis | **Consolidated appendices**: Removed duplicate Batch Payments appendix (content in Art 5(3)). Inlined wallet recovery into Art 7(1). Renumbered appendices E-H. |
 | **2.3** | 2026-01-27 | AI Analysis | **Appendix integration**: Auth Code interpretation (Appendix B) → Art. 4(2). TPP scenarios (Appendix D) → Art. 5(1)(a). Reference implementation deep links (Appendix G) now point to commit-specific source files. |
 | **2.4** | 2026-01-27 | AI Analysis | **GitHub Discussion #439 analysis**: Comprehensive review of 105 comments. Added stakeholder feedback (Mastercard, ETPPA, Fime). Documented `amr` claim adoption, AISP consent request, TPP flow verification concerns. |
