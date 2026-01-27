@@ -141,7 +141,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 9(1) | Breach of one doesn't compromise others | ❌ No |
+| Art. 9(1) | Breach of one doesn't compromise others | ✅ Yes |
 | Art. 9(2) | Multi-purpose device risk mitigation | ❌ No |
 | Art. 9(3) | Mitigating measures (TEE, attestation, revocation) | ✅ Yes |
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 19 |
-| ❌ Not Done | 28 |
+| ✅ Done | 20 |
+| ❌ Not Done | 27 |
 | **Total** | 47 |
 
 ---
@@ -166,6 +166,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 8(1) | Deep-dive: FAR thresholds, ISO 30107-3 PAD, FIDO cert, biometric classes, gaps I-1 to I-5 |
 | 2026-01-27 | Art. 7(1) | Deep-dive: WSCD/WSCA architecture, hardware security, key attestation, gaps P-1 to P-5 |
 | 2026-01-27 | Art. 22(1) | Deep-dive: PSC lifecycle phases, NIST/ENISA alignment, threat model, gaps PSC-1 to PSC-4 |
+| 2026-01-27 | Art. 9(1) | Deep-dive: Breach isolation, attack scenarios, multi-purpose device risks, gaps IND-1 to IND-4 |
 
 ---
 

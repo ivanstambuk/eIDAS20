@@ -1910,6 +1910,138 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Independence of SCA Elements</strong></summary>
+
+##### Core Requirement: Breach Isolation
+
+Article 9(1) mandates that the compromise of one SCA element must NOT compromise the others. This is the **defense-in-depth** principle applied to multi-factor authentication:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Independence of SCA Elements                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                     │
+│  │  KNOWLEDGE  │    │ POSSESSION  │    │  INHERENCE  │                     │
+│  │   (PIN)     │    │   (Key)     │    │ (Biometric) │                     │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                     │
+│         │                  │                  │                            │
+│         ▼                  ▼                  ▼                            │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                     │
+│  │ Validated by│    │ Protected in│    │ Managed by  │                     │
+│  │ WSCA/WSCD   │    │ WSCD HW     │    │ OS Enclave  │                     │
+│  │ (not stored)│    │ (non-export)│    │ (no access) │                     │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                     │
+│         │                  │                  │                            │
+│         └────────────┬─────┴──────────────────┘                            │
+│                      │                                                     │
+│                      ▼                                                     │
+│           ┌─────────────────────┐                                          │
+│           │   INDEPENDENCE      │                                          │
+│           │   GUARANTEE         │                                          │
+│           │                     │                                          │
+│           │  Breach of ONE  ══╱╲══  Does NOT expose OTHERS                │
+│           └─────────────────────┘                                          │
+│                                                                             │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                             │
+│  SEPARATION MECHANISMS:                                                    │
+│  • Knowledge:   Hashed/encrypted, never stored plaintext                   │
+│  • Possession:  Hardware-isolated, non-extractable keys                    │
+│  • Inherence:   OS-managed, wallet has no template access                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### EBA Interpretation: "Technology, Algorithms, and Parameters"
+
+The EBA clarifies that independence requires separation across:
+
+| Dimension | Requirement | EUDI Wallet Implementation |
+|-----------|-------------|---------------------------|
+| **Technology** | Different hardware/software paths | PIN → encrypted in Keystore; Key → in SE; Biometric → in TEE |
+| **Algorithms** | No shared cryptographic key material | PIN encryption key ≠ signing key ≠ biometric comparison |
+| **Parameters** | Breach of one doesn't reveal clues about others | PIN failure doesn't change biometric threshold |
+
+##### Breach Scenario Analysis
+
+| Breach Scenario | What Attacker Gains | What Attacker Still Needs | Independence Preserved? |
+|-----------------|--------------------|--------------------------|-----------------------|
+| **Device stolen** (Possession breach) | Physical access to hardware | PIN + biometric | ✅ Yes |
+| **PIN shoulder-surfed** (Knowledge breach) | PIN value | Device + biometric | ✅ Yes |
+| **Fingerprint lifted** (Inherence breach) | Biometric replica | Device + PIN (5 fails → PIN required) | ✅ Yes |
+| **Device rooted/jailbroken** | OS access | Keys still in SE (hardware-protected) | ⚠️ Partial |
+| **PIN + Device stolen** | Both | Biometric (or fallback lockout) | ✅ Yes |
+| **All three compromised** | Full access | — | ❌ Game over |
+
+> **Key Insight**: The architecture ensures that an attacker must compromise **all** elements simultaneously, not sequentially exploit one to reach another.
+
+##### Architectural Separation in EUDI Wallet
+
+| SCA Element | Storage Location | Access Control | Shares Data With Others? |
+|-------------|------------------|----------------|-------------------------|
+| **Knowledge (PIN)** | WSCD (encrypted) | User entry required | ❌ No |
+| **Possession (Key)** | WSCD (Secure Enclave/StrongBox) | PIN or biometric unlock | ❌ No (uses, doesn't share) |
+| **Inherence (Biometric)** | OS TEE/Secure Enclave | Sensor + neural network | ❌ No |
+
+##### Why Independence is Preserved
+
+1. **PIN is not stored plaintext**: Even if device memory is dumped, attacker gets encrypted/hashed data
+2. **Private key never leaves hardware**: WSCD performs signing internally; key material is non-extractable
+3. **Biometric template not accessible**: OS Secure Enclave/TEE compares biometric internally; wallet app only sees success/failure boolean
+4. **No shared secrets**: Knowledge, possession, and inherence use completely separate cryptographic material
+
+##### Threat Model: Independence Violations
+
+| Threat | Attack Vector | Mitigation | EUDI Wallet Status |
+|--------|---------------|------------|-------------------|
+| **PIN derived from key** | Side-channel attack on signing | Keys in SE; constant-time algorithms | ✅ Hardware-protected |
+| **Biometric derived from PIN** | Correlation attack | PIN and biometric in separate hardware | ✅ Architecturally separate |
+| **Key derived from biometric** | Template extraction | Templates never leave OS enclave | ✅ OS-enforced |
+| **Rooted device exposes all** | OS compromise | WUA attestation detects root; key in SE survives | ⚠️ SE survives; WUA revoked |
+| **Shared memory attack** | RAM dump | PIN wiped after use; key in SE not in RAM | ✅ PIN volatile; key hardware |
+
+##### Multi-Purpose Device Context (Art. 9(2) link)
+
+Article 9(2-3) extends this to **multi-purpose devices** (smartphones). The independence requirement is especially critical here because:
+
+| Multi-Purpose Device Risk | Why It Matters | Mitigation |
+|--------------------------|----------------|------------|
+| Malware can observe PIN entry | Shoulder-surfing via screen capture | Secure keyboard (OS-level), `FLAG_SECURE` |
+| Malware can access keystore | Key extraction | Hardware-backed keystore (SE/StrongBox) |
+| Malware can intercept biometric | Fake biometric injection | BiometricPrompt + system UI, attestation |
+| User installs malicious app | Privilege escalation | WUA attestation, Play Integrity |
+
+##### Reference Implementation Evidence
+
+| Platform | Separation Mechanism | Source |
+|----------|---------------------|--------|
+| **iOS** | PIN: Encrypted in Keychain | `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` |
+| **iOS** | Key: In Secure Enclave | `kSecAttrTokenIDSecureEnclave` |
+| **iOS** | Biometric: LAContext (no template access) | `evaluatePolicy` returns Bool only |
+| **Android** | PIN: Encrypted with Keystore key | `Cipher.getInstance("AES/GCM/NoPadding")` |
+| **Android** | Key: In StrongBox/TEE | `setIsStrongBoxBacked(true)` |
+| **Android** | Biometric: BiometricPrompt (no template access) | `AuthenticationResult` returns success only |
+
+##### Gap Analysis: Independence of Elements
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **IND-1** | PIN and key both protected by WSCD | Low | Clarify: PIN encryption key is distinct from signing key (different key purposes) |
+| **IND-2** | Biometric fallback to PIN after 5 failures | Low | By design: Creates alternative path, but still requires knowledge |
+| **IND-3** | Rooted/jailbroken device risk | Medium | WUA attestation should fail on compromised devices; clarify behavior |
+| **IND-4** | Software WSCD mode (fallback) may have weaker isolation | Medium | TS12 should mandate hardware WSCD for SCA; document fallback limitations |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Document Separation**: Explicitly state that PIN encryption, signing keys, and biometric templates use separate key material
+2. **Hardware Requirement**: Mandate hardware-backed WSCD for SCA compliance; software-only as fallback with reduced LoA
+3. **Attestation on Compromise**: Specify that WUA attestation should fail on rooted/jailbroken devices
+4. **Independence Testing**: Recommend PSPs verify that compromise of one element in testing doesn't reveal others
+
+</details>
+
 **Context**: Independence is ensured by architectural separation:
 - **Knowledge** (PIN): Never stored in plaintext; validated by WSCA/WSCD
 - **Inherence** (biometric): Managed by OS (Face ID / BiometricPrompt), not accessible to wallet app
