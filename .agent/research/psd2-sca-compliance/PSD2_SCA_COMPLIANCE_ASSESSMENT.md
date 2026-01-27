@@ -266,11 +266,11 @@ KB-JWT contains:
 
 ---
 
-### [Article 97(4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.004) — EBA Guidelines on Exemptions
+### ~~Article 97(4)~~ — *Phantom Reference (Removed)*
 
-> **Note**: Article 97 has only **3 paragraphs** in PSD2. The previous reference to "97(4)" was an error. This section should reference **Article 98** or the RTS exemption articles (10-18).
+> **Note**: PSD2 Article 97 has only **3 paragraphs**. Previous references to "97(4)" in this assessment were errors — likely misattributed from Article 98 (EBA RTS mandate) or the RTS exemption articles (10-18).
 
-**Status**: ➖ Removed — PSD2 Article 97 has no paragraph 4. Exemption requirements are in RTS Articles 10-18.
+**Status**: ➖ Removed — no such paragraph exists in EUR-Lex.
 
 ---
 
