@@ -51,6 +51,51 @@ This document is designed for **legal counsel, compliance officers, and regulato
 | iOS | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-ios-wallet-ui` |
 | Android | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-android-wallet-ui` |
 
+**Local Regulatory Sources** (full markdown — DO NOT look up EUR-Lex):
+
+| Document | Local Path |
+|----------|------------|
+| PSD2 Directive (2015/2366) | `.agent/research/psd2-sca-compliance/sources/32015L2366.md` |
+| PSD2 RTS (2018/389) | `.agent/research/psd2-sca-compliance/sources/32018R0389.md` |
+
+---
+
+## Scope: Two SCA Use Cases
+
+This assessment covers **two distinct use cases** in the SCA attestation lifecycle:
+
+| Use Case | Phase | Protocol | RTS Chapter | Wallet Role |
+|----------|-------|----------|-------------|-------------|
+| **Issuance/Binding** | PSP issues SCA attestation to wallet | OID4VCI | Chapter IV (Art. 22-27) | Key generation, secure storage, user auth for binding |
+| **Usage/Authentication** | User authenticates during payment | OID4VP | Chapter II (Art. 4-9) | SCA execution, factor validation, auth code generation |
+
+### Use Case 1: Issuance/Binding
+
+The PSP (as **Issuer**) creates an SCA attestation and binds it to the user:
+
+1. User requests SCA attestation from PSP (e.g., during onboarding)
+2. Wallet generates key pair in WSCA/WSCD (Secure Enclave / StrongBox)
+3. User authenticates to prove identity (SCA required for remote binding per Art. 24(2)(b))
+4. PSP issues attestation bound to wallet's public key
+5. Wallet stores attestation securely in WSCD
+
+**Relevant RTS Articles**: 22, 23, 24, 25, 26, 27  
+**Covered in**: [Part III: SCA Attestation Lifecycle](#part-iii-sca-attestation-lifecycle-issuancebinding)
+
+### Use Case 2: Usage/Authentication
+
+The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
+
+1. PSP sends OID4VP authorization request with transaction data
+2. Wallet displays transaction details to user (amount, payee)
+3. User authenticates (PIN/biometric) via WSCA/WSCD
+4. Wallet generates KB-JWT with `transaction_data_hashes` (dynamic linking)
+5. Wallet returns VP Token (the "authentication code")
+6. PSP verifies signature and processes payment
+
+**Relevant RTS Articles**: 4, 5, 6, 7, 8, 9  
+**Covered in**: [Part II: SCA Authentication (Usage)](#part-ii-sca-authentication-usage)
+
 ---
 
 ## Executive Summary
@@ -72,6 +117,13 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 - **RPA_01–RPA_08** (Topic 6): Relying Party authentication and user approval
 
 > ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix E](#appendix-e-sca-attestation-rulebook-status) for details.
+
+**Use Case Coverage**:
+
+| Use Case | RTS Articles | Document Part |
+|----------|--------------|---------------|
+| **Issuance/Binding** | 22, 23, 24, 25, 26, 27 | Part III |
+| **Usage/Authentication** | 1, 2, 3, 4, 5, 6, 7, 8, 9 | Part II |
 
 ---
 
@@ -183,7 +235,9 @@ KB-JWT contains:
 
 ---
 
-# Part II: PSD2 RTS (2018/389)
+# Part II: SCA Authentication (Usage)
+
+> *RTS 2018/389 Articles 1-9: Security measures for SCA execution during payments (Use Case 2)*
 
 ## Chapter I — General Provisions
 
