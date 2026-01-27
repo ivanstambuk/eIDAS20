@@ -121,7 +121,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 6(1) | Mitigate uncovering/disclosure | ✅ Yes |
-| Art. 6(2) | Mitigation measures | ❌ No |
+| Art. 6(2) | Mitigation measures | ✅ Yes |
 
 ### Article 7 — Possession Elements
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 28 |
-| ❌ Not Done | 19 |
+| ✅ Done | 29 |
+| ❌ Not Done | 18 |
 | **Total** | 47 |
 
 ---
@@ -175,6 +175,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 4(3)(d) | Deep-dive: EBA exemptions, OWASP alignment, wallet vs PSP responsibility, gaps ST-1 to ST-4 |
 | 2026-01-27 | Art. 2(2) | Deep-dive: Mandated risk factors (a-e), wallet data contributions, ML enhancement, gaps RF-1 to RF-4 |
 | 2026-01-27 | Art. 9(2) | Deep-dive: Smartphone security architecture, isolation layers, FIDO alignment, gaps MPD-1 to MPD-4 |
+| 2026-01-28 | Art. 6(2) | Deep-dive: Disclosure prevention arch, secure keyboard, NIST 800-63B, phishing, gaps DP-1 to DP-4 |
 
 ---
 

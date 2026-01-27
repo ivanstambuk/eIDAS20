@@ -2300,6 +2300,191 @@ Legend:
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Knowledge Element Disclosure Prevention</strong></summary>
+
+##### Core Requirement: Mitigation Measures Against Disclosure
+
+Article 6(2) mandates that PSPs implement **mitigation measures** to prevent knowledge elements (PINs, passwords) from being disclosed to unauthorized parties. This covers both technical and procedural protections.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│             Knowledge Element Disclosure Prevention Architecture            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      DISCLOSURE THREATS                             │   │
+│  │                                                                     │   │
+│  │   OBSERVATION          INTERCEPTION           DECEPTION            │   │
+│  │   ────────────         ────────────           ─────────            │   │
+│  │   • Shoulder surfing   • Keylogger            • Phishing           │   │
+│  │   • Screen recording   • Screen capture       • Fake app overlay   │   │
+│  │   • Camera recording   • Accessibility abuse  • Social engineering │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    MITIGATION MEASURES                              │   │
+│  │                                                                     │   │
+│  │   TECHNICAL                PROCEDURAL              ARCHITECTURAL   │   │
+│  │   ─────────               ───────────              ─────────────   │   │
+│  │   • Masked input          • User education         • Local-only    │   │
+│  │   • Secure keyboard       • Phishing warnings      • TEE/SE hash   │   │
+│  │   • FLAG_SECURE           • Lockout policies       • Never transmit│   │
+│  │   • Overlay detection     • No verbal disclosure   • Attempt limits│   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Categories of Disclosure Threats
+
+| Threat Category | Examples | Mitigation Strategy |
+|-----------------|----------|---------------------|
+| **Physical observation** | Shoulder surfing, camera | Masked input, privacy screens |
+| **Technical interception** | Keylogger, screen capture | Secure keyboard, FLAG_SECURE |
+| **Social engineering** | Phishing, pretexting | User education, never transmit PIN |
+| **Malware** | Accessibility abuse, overlay | OS protections, TEE validation |
+| **Brute force** | Guessing, credential stuffing | Attempt limits, lockout |
+
+##### EUDI Wallet Mitigation Architecture
+
+| Mitigation Measure | Implementation | Platform |
+|--------------------|----------------|----------|
+| **Masked input** | PIN digits replaced with `•` | iOS/Android native |
+| **Secure keyboard** | System keyboard with FLAG_SECURE | Android |
+| **Local validation only** | PIN validated in WSCA/WSCD | Both |
+| **Never transmitted** | PIN/biometric never sent to server | Both |
+| **Hash storage** | PIN hash only, with salt | TEE/SE |
+| **Attempt limiting** | Lockout after failed attempts | WSCA/OS |
+| **Overlay protection** | OS-level overlay detection | Android 10+ |
+
+##### Secure Keyboard Protections
+
+| Protection | Description | Threat Mitigated |
+|------------|-------------|------------------|
+| **FLAG_SECURE** | Prevents screenshots/recordings | Screen capture malware |
+| **Randomized layout** | PIN pad positions shuffled | Keylogger position inference |
+| **No accessibility** | Blocks accessibility services | Automation abuse |
+| **System keyboard** | Uses OS-provided secure input | Third-party keyboard malware |
+| **No clipboard** | Disables copy/paste for secrets | Clipboard monitoring |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Secure PIN Entry Flow (EUDI Wallet)                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌───────────────────────────────────────────────────────────────────┐    │
+│   │                 PIN ENTRY SCREEN (FLAG_SECURE)                    │    │
+│   │                                                                   │    │
+│   │     Enter your 6-digit PIN                                        │    │
+│   │                                                                   │    │
+│   │        ┌─────────────────────────────┐                           │    │
+│   │        │    • • • • • •              │  ← Masked display          │    │
+│   │        └─────────────────────────────┘                           │    │
+│   │                                                                   │    │
+│   │        ┌───┬───┬───┐                                             │    │
+│   │        │ 3 │ 7 │ 2 │  ← Randomized (optional)                    │    │
+│   │        ├───┼───┼───┤                                             │    │
+│   │        │ 9 │ 0 │ 5 │                                             │    │
+│   │        ├───┼───┼───┤                                             │    │
+│   │        │ 1 │ 6 │ 8 │                                             │    │
+│   │        ├───┼───┼───┤                                             │    │
+│   │        │ ⌫ │ 4 │ ✓ │                                             │    │
+│   │        └───┴───┴───┘                                             │    │
+│   │                                                                   │    │
+│   │  🔒 3 attempts remaining                                         │    │
+│   │                                                                   │    │
+│   └───────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│   PIN Flow: Input → WSCA hash → WSCD compare → Auth result                 │
+│             (PIN value never leaves secure environment)                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### NIST 800-63B Alignment
+
+NIST guidelines inform best practices for knowledge element protection:
+
+| NIST Recommendation | PSD2 Art. 6(2) Alignment | EUDI Wallet |
+|---------------------|-------------------------|-------------|
+| **Minimum 8 chars (passwords)** | PIN: min 6 digits | ✅ 6-digit PIN (low entropy, but combined with possession) |
+| **No complexity mandates** | Not specified | ✅ Simple numeric PIN allowed |
+| **No forced rotation** | Not specified | ✅ No mandatory PIN change |
+| **Blocklist for common** | Recommended | ⚠️ Implementation-dependent |
+| **Secure hashing (Argon2id)** | Implied | ✅ TEE/SE uses hardware-backed hash |
+| **Rate limiting** | Required | ✅ Lockout after N failures |
+
+> **NIST Insight**: NIST discourages overly complex password rules as they lead to predictable patterns. For PINs combined with other SCA factors, simplicity is acceptable because possession provides additional security.
+
+##### EBA Guidance on Disclosure Prevention
+
+The EBA has clarified Article 6(2) requirements:
+
+| EBA Guidance | Implementation Approach |
+|--------------|------------------------|
+| "Integrity during authentication" | PIN validated locally, never transmitted |
+| "Phishing addressed by fraud monitoring" | Art. 2 TRA covers phishing-induced disclosure |
+| "Mitigate risk of disclosure" | Masked input, secure keyboard, attempt limits |
+| "Not about voluntary disclosure" | User education complementary |
+
+> **EBA Q&A 4039**: "The focus of Article 6(2) is on the integrity of the knowledge element during the authentication process itself." Broader risks like phishing-induced disclosure are addressed by transaction monitoring (Art. 2).
+
+##### Phishing Countermeasures
+
+While phishing is primarily a PSP/TRA concern, the wallet can provide supporting measures:
+
+| Countermeasure | Responsibility | Wallet Contribution |
+|----------------|---------------|---------------------|
+| **Phishing-resistant auth** | Wallet | Origin-bound keys (FIDO-like) |
+| **Visual confirmation** | Wallet | Display PSP identity before PIN entry |
+| **No remote PIN entry** | Architecture | PIN entered only on device, never on web |
+| **User education** | PSP/Wallet | Security hints in UI |
+| **Credential monitoring** | PSP | Transaction monitoring (Art. 2) |
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Protection |
+|----------|-----------|------------|
+| **iOS** | LocalAuthentication | Secure PIN/passcode entry |
+| **iOS** | Secure Enclave | Hardware-backed hash comparison |
+| **Android** | BiometricPrompt | System-managed PIN fallback |
+| **Android** | FLAG_SECURE | Prevents screen capture |
+| **Android** | StrongBox/TEE | Hardware hash storage |
+
+##### Threat Model: Knowledge Disclosure
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Shoulder surfing** | Watch user enter PIN | Masked input, privacy screens | ✅ Mitigated |
+| **Keylogger** | Capture keystrokes | System keyboard, TEE validation | ✅ Mitigated |
+| **Screen capture** | Malware screenshots | FLAG_SECURE | ✅ Mitigated |
+| **Phishing** | Fake site solicits PIN | PIN never requested remotely | ✅ Mitigated |
+| **Brute force** | Guess PIN | Attempt limits, lockout | ✅ Mitigated |
+| **Social engineering** | Convince user to share | User education | ⚠️ Partial |
+| **Overlay attack** | Fake UI over real app | OS overlay detection | ⚠️ Platform-dependent |
+
+##### Gap Analysis: Disclosure Prevention
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **DP-1** | No minimum PIN length mandated in TS12 | Low | Reference 6-digit minimum in rulebook |
+| **DP-2** | Randomized PIN pad not required | Low | Consider recommendation for high-value transactions |
+| **DP-3** | Blocklist for common PINs not specified | Medium | Recommend blocklist (0000, 1234, etc.) |
+| **DP-4** | Overlay protection varies by Android version | Medium | Document minimum Android version requirements |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **PIN Length**: Mandate minimum 6-digit PIN (or equivalent entropy)
+2. **Masked Input**: Require masked display of all knowledge elements
+3. **Local Validation**: Confirm PIN must be validated locally (never transmitted)
+4. **Attempt Limits**: Specify lockout thresholds (e.g., 5 failed attempts → temporary lockout)
+5. **Common PIN Blocklist**: Recommend blocking trivially guessable PINs
+6. **FLAG_SECURE**: Mandate screenshot/recording protection during PIN entry
+
+</details>
 
 
 ---
