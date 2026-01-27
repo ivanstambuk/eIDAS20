@@ -838,18 +838,136 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Corresponding acceptance
+#### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Security measures for dynamic linking (CIA triad)
 
 > "For the purpose of paragraph 1, payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication; (b) the information displayed to the payer throughout all of the phases of the authentication including the generation, transmission and use of the authentication code."
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS for confidentiality in transit |
-| ✅ **Wallet** | TS12 §3.6 | Signature for integrity/authenticity |
+**Core Requirement**: This article mandates the **CIA triad** (Confidentiality, Authenticity, Integrity) across **all phases** of SCA:
 
-**Status**: ✅ Fully Supported
+| Phase | Description | Key Security Concern |
+|-------|-------------|---------------------|
+| **Generation** | Transaction data created by PSP/RP | Data origin authenticity |
+| **Transmission** | Data sent to wallet via network | Man-in-the-middle attacks |
+| **Display** | User reviews amount/payee on screen | Overlay attacks, display manipulation |
+| **Use** | User confirms and signs transaction | Transaction tampering |
+
+**Compliance Matrix**:
+
+| Security Property | Phase | Fulfillment | Reference | Implementation |
+|-------------------|-------|-------------|-----------|----------------|
+| **Confidentiality** | Transmission | ✅ Wallet | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS 1.2+ for all communications |
+| **Confidentiality** | Transmission | ✅ Wallet | [TS12 §3.5](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | Encrypted presentation requests (JAR) RECOMMENDED |
+| **Confidentiality** | At-rest | ⚠️ Gap | — | Transaction data in memory; no explicit secure storage requirement |
+| **Authenticity** | Generation | ✅ Wallet | [OID4VP §6](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | RP must sign request (JAR); wallet verifies signature |
+| **Authenticity** | Response | ✅ Wallet | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | KB-JWT signed by WSCA-protected key |
+| **Integrity** | Transmission | ✅ Wallet | TLS | HMAC/AEAD integrity via TLS record layer |
+| **Integrity** | Display→Sign | ✅ Wallet | [TS12 §3.3](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | `transaction_data_hashes` binds displayed data to signature |
+| **Integrity** | Display | ⚠️ Device | — | **Overlay attack protection** delegated to OS/device security |
+
+**Status**: ⚠️ **Mostly Supported** — Display integrity (WYSIWYS) depends on device security
 
 ---
+
+**Deep Dive: "What You See Is What You Sign" (WYSIWYS)**
+
+The EBA introduced dynamic linking specifically to prevent **social engineering attacks** where attackers manipulate what users see vs. what they sign. Art. 5(2)(b) requires that "the information displayed to the payer" maintains CIA **throughout all phases**.
+
+**TS12 Implementation of WYSIWYS**:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  PSP/RP (Backend)                                               │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ transaction_data: {                                      │   │
+│  │   type: "payment_confirmation",                          │   │
+│  │   payload: { amount: "€150.00", payee: "ACME Corp" }     │   │
+│  │ }                                                        │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│                    (1) Generation                               │
+│                    ✅ Signed JAR                                │
+└───────────────────────────┼─────────────────────────────────────┘
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Network (TLS 1.2+)                                             │
+│                    (2) Transmission                             │
+│                    ✅ Encrypted + Integrity                     │
+└───────────────────────────┼─────────────────────────────────────┘
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Wallet Unit                                                    │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ (3) Display Phase                                        │   │
+│  │ ┌─────────────────────────────────────────────────────┐ │   │
+│  │ │  ┌───────────────────────────────────────────────┐  │ │   │
+│  │ │  │  Amount: €150.00  │  Payee: ACME Corp         │  │ │   │
+│  │ │  │  [Confirm Payment]   [Cancel]                 │  │ │   │
+│  │ │  └───────────────────────────────────────────────┘  │ │   │
+│  │ │  ⚠️ Vulnerable to overlay attacks?                  │ │   │
+│  │ └─────────────────────────────────────────────────────┘ │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│                    (4) Use Phase                                │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ KB-JWT: { transaction_data_hashes: [SHA256(payload)] }   │   │
+│  │ ✅ Cryptographically binds displayed data to signature   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└───────────────────────────┼─────────────────────────────────────┘
+                            ▼
+       PSP verifies: SHA256(received_payload) == hash_in_signature
+```
+
+**TS12 §3.3.1 Display Rendering Requirements**:
+- Wallet MUST display transactional data in "clear, understandable and accurate manner"
+- Hierarchy levels (1-4) control prominence of amount/payee display
+- Level 1 = "MUST be _prominently_ displayed on the main transaction confirmation screen"
+- `affirmative_action_label` and `denial_action_label` controlled by Attestation Provider
+
+**ARF HLR Coverage**:
+- **SUA_02**: Rulebook specifies "displaying the data to the User when obtaining consent for signing"
+- **SUA_06**: Wallet can customize dialogue messages (font, color, position) per Rulebook
+
+---
+
+**Gap Analysis: Overlay Attack Protection**
+
+**The Problem**: Android overlay attacks (e.g., banking trojans like GM Bot, Godfather) can draw fake UI elements over the wallet's transaction screen, showing "€15.00" while the actual transaction is "€1,500.00".
+
+**Industry Best Practices** (from security vendors):
+
+| Mitigation | Description | EUDI Wallet Status |
+|------------|-------------|-------------------|
+| **RASP (Runtime Application Self-Protection)** | Detects if app window is obscured | ❌ Not in reference implementation |
+| **Overlay detection API** | Android `FLAG_WINDOW_IS_PARTIALLY_OBSCURED` | ❌ Not explicitly required |
+| **Secure display mode** | TEE-rendered transaction confirmation | ❌ Not in ARF/TS12 |
+| **Certificate pinning** | Prevents MitM on transmission | ✅ Implicit via TLS best practices |
+| **Device integrity checks** | Detect rooted/jailbroken devices | ⚠️ Wallet attestation covers this |
+
+**EBA Guidance**: The EBA has clarified that SMS-based dynamic linking is insufficient because "confidentiality and integrity of payment information cannot be adequately protected through this channel." The same principle applies to device displays vulnerable to overlay attacks.
+
+**Recommendation**: Wallet implementations for PSD2-regulated payments SHOULD:
+1. Detect screen overlay conditions and refuse to process transactions
+2. Consider TEE-based secure display for high-value transactions
+3. Implement app shielding/RASP for production deployments
+
+---
+
+**At-Rest Confidentiality Gap**
+
+Art. 5(2)(a) requires confidentiality "throughout all phases." However:
+
+- Transaction data received in presentation request is processed in memory
+- No explicit requirement for encrypted storage of pending transaction data
+- If device is compromised, transaction details could be extracted before user approval
+
+**Mitigation**: This is partially addressed by:
+- Short transaction lifecycle (data only exists during approval flow)
+- Device-level encryption (FDE/FBE on iOS/Android)
+- WSCA/WSCD isolation protects signing keys, not transaction display data
+
+---
+
+
 
 #### [Article 5(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch file payment exception
 
@@ -1805,4 +1923,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.5** | 2026-01-27 | AI Analysis | **Terminology cross-reference**: Added PSD2→EUDIW mapping table explaining PSC, Authentication Code, Dynamic Linking equivalents. Visual diagram of VP Token structure as Authentication Code. |
 | **4.6** | 2026-01-27 | AI Analysis | **PSC definition expansion**: Clarified that PSCs include ALL SCA elements (PIN, biometric, AND private key + attestation) per PSD2 Art. 4(31). Updated Art. 22(1), 23, 26, 27 contexts to explicitly reference all PSC types. |
 | **4.7** | 2026-01-27 | AI Analysis | **Critical gap: PIN lockout missing**: Identified that reference implementation has NO PIN lockout mechanism (Art. 4(3)(b)). Unlimited PIN retries allowed. OS biometric is compliant (5 attempts), but wallet PIN bypasses this. Added detailed evidence from `QuickPinInteractor.kt` (Android) and `QuickPinInteractor.swift` (iOS). Provided remediation code pattern. |
+| **4.8** | 2026-01-27 | AI Analysis | **Art. 5(2) WYSIWYS deep-dive**: Complete rewrite of Art. 5(2) section with phase-by-phase CIA analysis (Generation, Transmission, Display, Use). Added WYSIWYS principle explanation, overlay attack gap analysis, industry best practices table (RASP, secure display, overlay detection). Identified at-rest confidentiality gap for transaction data. TS12 §3.3.1 display hierarchy levels documented. |
 
