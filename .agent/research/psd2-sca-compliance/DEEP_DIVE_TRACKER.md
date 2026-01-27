@@ -128,7 +128,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 7(1) | Mitigate unauthorized use | ✅ Yes |
-| Art. 7(2) | Prevent replication | ❌ No |
+| Art. 7(2) | Prevent replication | ✅ Yes |
 
 ### Article 8 — Inherence Elements
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 29 |
-| ❌ Not Done | 18 |
+| ✅ Done | 30 |
+| ❌ Not Done | 17 |
 | **Total** | 47 |
 
 ---
@@ -176,6 +176,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 2(2) | Deep-dive: Mandated risk factors (a-e), wallet data contributions, ML enhancement, gaps RF-1 to RF-4 |
 | 2026-01-27 | Art. 9(2) | Deep-dive: Smartphone security architecture, isolation layers, FIDO alignment, gaps MPD-1 to MPD-4 |
 | 2026-01-28 | Art. 6(2) | Deep-dive: Disclosure prevention arch, secure keyboard, NIST 800-63B, phishing, gaps DP-1 to DP-4 |
+| 2026-01-28 | Art. 7(2) | Deep-dive: Anti-cloning architecture, hardware security levels, FIDO alignment, gaps RP-1 to RP-4 |
 
 ---
 

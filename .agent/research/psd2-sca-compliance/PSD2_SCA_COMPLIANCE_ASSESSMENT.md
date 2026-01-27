@@ -2701,6 +2701,189 @@ This means the old possession element (lost device's key) is permanently invalid
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Possession Element Anti-Cloning Protection</strong></summary>
+
+##### Core Requirement: Prevent Replication
+
+Article 7(2) mandates that possession elements must be protected against **replication** — unauthorized copying of the cryptographic key or token that proves device possession. This is critical because a cloned possession element would defeat SCA entirely.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Anti-Cloning Protection Architecture                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     CLONING THREAT MODEL                            │   │
+│  │                                                                     │   │
+│  │   EXTRACTION            INTERCEPTION          PHYSICAL             │   │
+│  │   ────────────          ────────────          ────────             │   │
+│  │   • Malware reads key   • Key during transit  • SIM cloning        │   │
+│  │   • App decompilation   • Memory dumping      • Device theft       │   │
+│  │   • Rooted device       • Debug interface     • Hardware attack    │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                  ANTI-CLONING MEASURES                              │   │
+│  │                                                                     │   │
+│  │   HARDWARE                                                          │   │
+│  │   • Secure Element (SE) — tamper-resistant chip                    │   │
+│  │   • TEE/StrongBox — hardware-isolated key storage                  │   │
+│  │   • Non-extractable key flag — OS enforced                         │   │
+│  │                                                                     │   │
+│  │   CRYPTOGRAPHIC                                                     │   │
+│  │   • Key generated inside SE — never leaves hardware                │   │
+│  │   • Sign operations happen in SE — key never in app memory         │   │
+│  │   • Key attestation — proves key is hardware-bound                 │   │
+│  │                                                                     │   │
+│  │   OPERATIONAL                                                       │   │
+│  │   • Device binding — key tied to specific device                   │   │
+│  │   • Counter verification — detect cloned authenticators            │   │
+│  │   • Revocation — invalidate compromised keys                       │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Hardware Security Levels
+
+| Level | Technology | Non-Extractable? | Cloning Resistance |
+|-------|------------|------------------|-------------------|
+| **SE (Secure Element)** | Dedicated chip (CC EAL5+) | ✅ Yes | Very High |
+| **StrongBox (Android)** | SE-backed Keymaster | ✅ Yes | Very High |
+| **TEE (TrustZone)** | ARM TrustZone | ✅ Yes | High |
+| **Software Keystore** | OS-protected file | ⚠️ Partial | Medium |
+| **Plaintext storage** | Unprotected file | ❌ No | None |
+
+> **EBA Guidance**: "Data used as a possession element can be copied unless held within a secure element." The RTS requires hardware protection for high assurance.
+
+##### EUDI Wallet Anti-Cloning Implementation
+
+| Protection | Implementation | WSCD Type |
+|------------|----------------|-----------|
+| **Non-extractable key** | `kSecAttrTokenIDSecureEnclave` (iOS) / `setIsStrongBoxBacked(true)` (Android) | SE/StrongBox |
+| **Key generated in hardware** | ECDSA P-256 keypair created inside SE | All |
+| **Signing in hardware** | Private key never leaves WSCD for signing | All |
+| **Key attestation** | Hardware-signed proof that key is SE-bound | SE/StrongBox |
+| **Device binding** | Key tied to device hardware ID | All |
+
+##### Key Non-Extractability Verification
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      Key Lifecycle: Non-Extractable                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   GENERATION                                                                │
+│   ──────────                                                               │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
+│   │   Wallet App        │  request  │        WSCD (Secure Element)    │   │
+│   │                     │ ────────► │                                 │   │
+│   │   "Generate key"    │           │   1. RNG → private key Kp      │   │
+│   │                     │           │   2. Compute public key Kpub    │   │
+│   │                     │ ◄──────── │   3. Return Kpub ONLY           │   │
+│   │   Receives: Kpub    │  pubkey   │   4. Kp NEVER leaves SE         │   │
+│   └─────────────────────┘           └─────────────────────────────────┘   │
+│                                                                             │
+│   SIGNING                                                                   │
+│   ───────                                                                  │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
+│   │   Wallet App        │   hash    │        WSCD (Secure Element)    │   │
+│   │                     │ ────────► │                                 │   │
+│   │   "Sign this hash"  │           │   1. User auth (PIN/bio)        │   │
+│   │                     │           │   2. Sign with Kp               │   │
+│   │                     │ ◄──────── │   3. Return signature           │   │
+│   │   Receives: sig     │  signature│   4. Kp STAYS in SE             │   │
+│   └─────────────────────┘           └─────────────────────────────────┘   │
+│                                                                             │
+│   EXPORT ATTEMPT                                                            │
+│   ─────────────                                                            │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
+│   │   Malware           │  "export" │        WSCD (Secure Element)    │   │
+│   │                     │ ────────► │                                 │   │
+│   │   "Give me Kp"      │           │   ❌ DENIED                     │   │
+│   │                     │ ◄──────── │   (non-extractable policy)      │   │
+│   │   Receives: ERROR   │   error   │                                 │   │
+│   └─────────────────────┘           └─────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### FIDO Credential Protection Alignment
+
+FIDO standards provide proven anti-cloning mechanisms:
+
+| FIDO Feature | PSD2 Art. 7(2) Alignment | EUDI Wallet |
+|--------------|-------------------------|-------------|
+| **Private key in authenticator** | Key never leaves device | WSCD non-extractable |
+| **Origin-bound credentials** | Key tied to specific RP | SCA Attestation bound to PSP |
+| **Signature counter** | Detects cloned authenticators | KB-JWT `iat` freshness |
+| **Attestation** | Proves hardware security level | WUA contains key attestation |
+| **Cloning detection** | Counter mismatch = cloned | PSP can track signature patterns |
+
+> **FIDO Insight**: FIDO authenticators prevent cloning by generating keys internally and never exposing them. The counter mechanism allows relying parties to detect if an authenticator has been cloned (counter value divergence).
+
+##### EBA Guidance on Possession Element Protection
+
+| EBA Requirement | Implementation |
+|-----------------|----------------|
+| "Reliable method to confirm possession" | Hardware-bound key + user verification |
+| "Dynamic validation element" | Freshly signed KB-JWT for each transaction |
+| "Secret keys adequately protected" | SE/TEE storage, non-extractable |
+| "Robust enrollment process" | PSP-supervised SCA Attestation issuance |
+
+##### Cloning Detection Mechanisms
+
+| Mechanism | How It Works | Implementation |
+|-----------|--------------|----------------|
+| **Signature counter** | Counter increments on each use; clone would have stale counter | FIDO2 authenticators |
+| **Timestamp freshness** | `iat` claim must be recent; old JWT = suspicious | KB-JWT validation |
+| **Device attestation** | WUA proves device identity; clone would have different WUA | WUA verification |
+| **Behavior analysis** | Same key used from different locations/devices = alert | PSP transaction monitoring |
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Anti-Cloning Property |
+|----------|-----------|----------------------|
+| **iOS** | Secure Enclave | Key marked with `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` |
+| **iOS** | Key attestation | Apple-signed proof that key is SE-bound |
+| **Android** | StrongBox | Dedicated SE chip with key isolation |
+| **Android** | Key attestation | Google-signed certificate chain proving hardware binding |
+| **Android** | TEE | ARM TrustZone isolation from Rich OS |
+
+##### Threat Model: Replication Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Key extraction** | Malware reads private key | Non-extractable SE key | ✅ Mitigated |
+| **Memory dumping** | Debug interface exposes key | Key never in app memory | ✅ Mitigated |
+| **App repackaging** | Clone app with key inside | Key bound to device, not app | ✅ Mitigated |
+| **SIM cloning** | Copy SIM to new device | SCA key not on SIM | ✅ Mitigated |
+| **Device theft** | Steal device with key | User verification required | ✅ Mitigated |
+| **Rooted device** | Bypass OS protections | SE isolation + WUA integrity check | ✅ Mitigated |
+| **Hardware attack** | Physical chip probing | SE tamper resistance (CC EAL5+) | ⚠️ Very difficult |
+
+##### Gap Analysis: Replication Prevention
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **RP-1** | No minimum hardware security level mandated | Medium | Require SE or StrongBox for SCA keys |
+| **RP-2** | Software TEE (some Android) may be extractable | Medium | WUA should attest to SE vs TEE |
+| **RP-3** | No signature counter mechanism in KB-JWT | Low | Consider counter claim for clone detection |
+| **RP-4** | Key attestation format not standardized | Low | Align with W3C WebAuthn attestation |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Hardware Requirement**: Mandate SE or hardware-backed TEE for SCA keys
+2. **Key Attestation**: Require hardware-signed attestation proving key non-extractability
+3. **WUA Content**: Include WSCD type (SE/TEE/software) for PSP risk assessment
+4. **Counter Mechanism**: Consider adding signature counter for clone detection
+5. **Recovery Protocol**: Document that recovery requires key regeneration (not transfer)
+6. **Minimum Certification**: Reference CC EAL4+ for SE components
+
+</details>
 
 ---
 
