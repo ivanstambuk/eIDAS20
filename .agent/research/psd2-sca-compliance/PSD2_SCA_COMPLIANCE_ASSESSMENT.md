@@ -3095,6 +3095,177 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 
 **Status**: ❌ PSP Obligation
 
+<details>
+<summary><strong>🔍 Deep-Dive: Transaction Monitoring Mechanisms</strong></summary>
+
+##### Core Requirement: Fraud Detection Infrastructure
+
+Article 2(1) mandates that PSPs build and maintain fraud detection systems. This is a **PSP-side obligation**, but the EUDI Wallet contributes valuable signals:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Transaction Monitoring Architecture                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌───────────────┐         ┌───────────────┐         ┌───────────────┐      │
+│  │   WALLET      │         │     PSP       │         │   REPORTING   │      │
+│  │   SIGNALS     │   ──►   │   MONITORING  │   ──►   │   & ACTION    │      │
+│  │               │         │   SYSTEM      │         │               │      │
+│  └───────┬───────┘         └───────┬───────┘         └───────────────┘      │
+│          │                         │                                        │
+│          ▼                         ▼                                        │
+│  ┌───────────────┐         ┌───────────────┐                                │
+│  │ WUA metadata  │         │ Real-time     │                                │
+│  │ Device ID     │         │ Risk Engine   │                                │
+│  │ WSCD type     │         │               │                                │
+│  │ amr claims    │         │ ┌───────────┐ │                                │
+│  │ Transaction   │         │ │ ML/AI     │ │                                │
+│  │ hash (KB-JWT) │         │ │ Model     │ │                                │
+│  └───────────────┘         │ └───────────┘ │                                │
+│                            │               │                                │
+│                            │ ┌───────────┐ │                                │
+│                            │ │ Rules     │ │                                │
+│                            │ │ Engine    │ │                                │
+│                            │ └───────────┘ │                                │
+│                            │               │                                │
+│                            │ ┌───────────┐ │                                │
+│                            │ │ Behavioral│ │                                │
+│                            │ │ Analytics │ │                                │
+│                            │ └───────────┘ │                                │
+│                            └───────────────┘                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Art. 2(2) — Minimum Risk Factors
+
+Article 2(2) specifies the **minimum** risk factors that monitoring systems must incorporate:
+
+| Risk Factor (Art. 2(2)) | Description | Wallet Contribution |
+|------------------------|-------------|---------------------|
+| **(a) Compromised/stolen elements** | Blacklists of known compromised credentials | WUA revocation status (Wallet Provider → PSP) |
+| **(b) Transaction amount** | Deviation from normal spending patterns | Transaction amount in `transaction_data` |
+| **(c) Known fraud scenarios** | Pattern matching against fraud typologies | — (PSP knowledge base) |
+| **(d) Malware infection signs** | Device integrity assessment | WUA attestation (Play Integrity / App Attest) |
+| **(e) Device/software usage logs** | Abnormal access patterns | WUA device properties, `amr` claims |
+
+##### Wallet Contributions to PSP Monitoring
+
+The EUDI Wallet provides several signals that PSPs can incorporate into their monitoring:
+
+| Wallet Signal | Source | Use in Monitoring |
+|---------------|--------|-------------------|
+| **WUA attestation** | VP Token | Device integrity, app authenticity |
+| **Device properties** | WUA claims | Device fingerprinting, model identification |
+| **WSCD type** | WUA | Hardware security level (SE/StrongBox/TEE/software) |
+| **`amr` claim** | KB-JWT | Authentication method used (pin, face, fpt, hwk) |
+| **`iat` timestamp** | KB-JWT | Transaction timing anomalies |
+| **`transaction_data_hashes`** | KB-JWT | Proof of what user saw and signed |
+| **Dashboard logs** | DASH_02 | User-side audit trail for dispute resolution |
+
+##### Transaction Risk Analysis (TRA) Link — Art. 18
+
+Article 2's monitoring is **prerequisite** for TRA exemptions under Art. 18:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              Art. 2 Monitoring ──► Art. 18 TRA Exemption                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. PSP has Art. 2-compliant monitoring in place                            │
+│  2. PSP calculates fraud rate per Art. 18 thresholds                        │
+│  3. For each transaction, PSP performs real-time risk analysis              │
+│  4. If low-risk + fraud rate below threshold → SCA exemption eligible       │
+│                                                                             │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │  TRA Fraud Rate Thresholds (Art. 18)                               │    │
+│  │  ─────────────────────────────────────────────────────────────     │    │
+│  │  Transaction Amount    Max Fraud Rate                              │    │
+│  │  ≤ €100                0.13%                                       │    │
+│  │  ≤ €250                0.06%                                       │    │
+│  │  ≤ €500                0.01%                                       │    │
+│  └────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Real-Time vs. Batch Monitoring
+
+| Monitoring Type | When Required | Application |
+|-----------------|---------------|-------------|
+| **Real-time** | Art. 18 TRA exemption | Run risk analysis before each transaction approval |
+| **Batch/Post-hoc** | Art. 2(1) general | Fraud detection for reporting, pattern learning |
+| **Continuous** | Art. 2(2)(d) malware | Device integrity signals via WUA attestation |
+
+##### Industry Best Practices: AI/ML Fraud Detection
+
+Modern PSP fraud detection incorporates:
+
+| Technology | Application | PSD2 Relevance |
+|------------|-------------|----------------|
+| **Machine Learning** | Pattern detection, anomaly scoring | Improves fraud detection beyond static rules |
+| **Behavioral Analytics** | User profiling, spending patterns | Art. 2(1): "typical of the payment service user" |
+| **Device Fingerprinting** | Device identification, session linking | Art. 2(2)(e): device/software usage logs |
+| **Velocity Checking** | Transaction frequency limits | Art. 2(2)(b): amount analysis |
+| **Graph Analytics** | Link analysis for organized fraud | Art. 2(2)(c): known fraud scenarios |
+| **Real-time Scoring** | Sub-second risk decisions | Art. 18 TRA exemption requirement |
+
+##### Wallet Dashboard Integration (DASH_02–05)
+
+While monitoring is PSP-side, the Wallet provides user transparency:
+
+| HLR | Requirement | Implementation |
+|-----|-------------|----------------|
+| **DASH_02** | Transaction history accessible | User can view all VP Token presentations |
+| **DASH_03** | Relying party identification | RP name and purpose displayed |
+| **DASH_04** | Timestamp logging | All transactions timestamped |
+| **DASH_05** | Attribute disclosure logging | Which attributes were shared |
+
+This creates an audit trail that can support PSP investigations and user dispute resolution.
+
+##### Threat Model: Monitoring Evasion
+
+| Threat | Attack Vector | Mitigation |
+|--------|---------------|------------|
+| **Low-and-slow** | Many small transactions below detection | Velocity checks, cumulative monitoring |
+| **Account takeover** | Legitimate credentials, fraudulent intent | Behavioral deviation detection |
+| **Device spoofing** | Fake device fingerprint | WUA attestation (hardware-backed) |
+| **WUA replay** | Reusing valid attestation | `iat` freshness check, nonce binding |
+| **Distributed fraud** | Multiple devices, same fraud pattern | Graph analytics, cross-account linking |
+| **Synthetic identity** | Fabricated identity passes KYC | Not directly RTS scope; handled at onboarding |
+
+##### PSP Implementation Requirements
+
+For a PSP to comply with Art. 2(1):
+
+| Requirement | Implementation | Evidence |
+|-------------|----------------|----------|
+| **Monitoring system** | Real-time fraud engine | System documentation, vendor contracts |
+| **Risk rules** | Rule engine with Art. 2(2) factors | Rule repository, version control |
+| **ML models** | Trained on historical fraud data | Model documentation, accuracy metrics |
+| **Integration** | Consume wallet signals (WUA, amr, etc.) | API documentation, integration tests |
+| **Audit trail** | Log all decisions for Art. 3 audits | Log retention policy, SIEM integration |
+| **Reporting** | Semi-annual fraud statistics | EBA reporting templates |
+
+##### Gap Analysis: Transaction Monitoring
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **TM-1** | Wallet doesn't actively push device risk signals | Low | WUA attestation is pull-based (on request); consider periodic heartbeat option |
+| **TM-2** | No standard API for PSP to query WUA revocation status | Medium | Define revocation status endpoint in TS12 or Wallet Provider API spec |
+| **TM-3** | `amr` claim doesn't indicate biometric modality (face vs. fingerprint) | Low | Extend `amr` vocabulary: `face`, `fpt`, `iris` (as suggested in I-5) |
+| **TM-4** | No standardized risk score exchange format | Low | Consider STIX/TAXII or custom format for threat intelligence sharing |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Define Wallet Signals**: Specify which WUA claims PSPs should use for risk assessment
+2. **Attestation Freshness**: Recommend maximum age for WUA (e.g., 24 hours, refreshed on each SCA)
+3. **Revocation Propagation**: Mandate Wallet Provider publish revocation status endpoint for PSP queries
+4. **Fraud Reporting Taxonomy**: Align wallet-related fraud categories with EBA reporting guidelines
+5. **TRA Eligibility**: Document that wallet-based SCA is compatible with Art. 18 TRA exemption
+
+</details>
+
 **Context**: Transaction monitoring is a PSP-side function. The Wallet provides transaction logs (per DASH_02) that could be used as supplementary evidence in dispute resolution, but the real-time fraud detection must be implemented by the PSP.
 
 **PSP Action Required**:

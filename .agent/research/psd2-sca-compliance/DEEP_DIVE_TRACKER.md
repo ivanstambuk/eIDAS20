@@ -79,7 +79,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 2(1) | Transaction monitoring mechanisms | ❌ No |
+| Art. 2(1) | Transaction monitoring mechanisms | ✅ Yes |
 | Art. 2(2) | Risk-based factors for monitoring | ❌ No |
 
 ### Article 3 — Review of Security Measures
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 20 |
-| ❌ Not Done | 27 |
+| ✅ Done | 21 |
+| ❌ Not Done | 26 |
 | **Total** | 47 |
 
 ---
@@ -167,6 +167,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 7(1) | Deep-dive: WSCD/WSCA architecture, hardware security, key attestation, gaps P-1 to P-5 |
 | 2026-01-27 | Art. 22(1) | Deep-dive: PSC lifecycle phases, NIST/ENISA alignment, threat model, gaps PSC-1 to PSC-4 |
 | 2026-01-27 | Art. 9(1) | Deep-dive: Breach isolation, attack scenarios, multi-purpose device risks, gaps IND-1 to IND-4 |
+| 2026-01-27 | Art. 2(1) | Deep-dive: Fraud detection architecture, TRA link, wallet signals, gaps TM-1 to TM-4 |
 
 ---
 
