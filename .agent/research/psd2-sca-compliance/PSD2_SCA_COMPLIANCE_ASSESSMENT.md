@@ -213,27 +213,201 @@ The most important mapping is understanding that the **authentication code** (RT
 > (b) initiates an electronic payment transaction;
 > (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [SUA_01](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet Units process transactional data per Attestation Rulebook |
-| ✅ **Wallet** | [TS12 §4.3](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#43-payload-object) | Four use case URNs: `payment:1`, `login_risk_transaction:1`, `account_access:1`, `emandate:1` |
-| ⚠️ **Shared** | — | PSP determines when to trigger SCA (all three scenarios) |
+**Core Requirement**: Article 97(1) defines the **three mandatory triggers** for SCA. When any of these scenarios occurs, the PSP **must** apply SCA unless a specific exemption applies.
 
-**Status**: ✅ Supported
+| SCA Trigger | Description | Primary Use Case |
+|-------------|-------------|------------------|
+| **Art. 97(1)(a)** | Access payment account online | Login to mobile/online banking |
+| **Art. 97(1)(b)** | Initiate electronic payment | SEPA transfer, card payment, standing order |
+| **Art. 97(1)(c)** | High-risk action via remote channel | Change PIN, add trusted beneficiary, modify limits |
 
-**Context**: TS12 defines four standardised transaction types corresponding to the three PSD2 triggers:
+**Status**: ✅ **Supported** — TS12 provides transaction types for all three triggers
 
-| PSD2 Trigger | TS12 URN | Use Case |
-|--------------|----------|----------|
-| [Art. 97(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:login_risk_transaction:1` | Access payment account online |
-| [Art. 97(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:account_access:1` | AISP account information access |
-| [Art. 97(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:payment:1` | Initiate electronic payment |
-| [Art. 97(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:login_risk_transaction:1` | High-risk actions (e.g., change limits) |
-| (extension) | `urn:eudi:sca:emandate:1` | E-mandate setup |
+---
+
+**Deep Dive: Trigger-to-URN Mapping**
+
+TS12 defines four standardized transaction types corresponding to the three PSD2 triggers:
+
+| PSD2 Trigger | TS12 Transaction Type | JSON URN | Wallet Display |
+|--------------|----------------------|----------|----------------|
+| **Art. 97(1)(a)** | Login & Risk-based | `urn:eudi:sca:login_risk_transaction:1` | "Log in to Online Banking" |
+| **Art. 97(1)(a)** | Account Information Access | `urn:eudi:sca:account_access:1` | "View account balances" |
+| **Art. 97(1)(b)** | Payment Confirmation | `urn:eudi:sca:payment:1` | "Pay €150 to ACME Corp" |
+| **Art. 97(1)(c)** | Login & Risk-based | `urn:eudi:sca:login_risk_transaction:1` | "Change daily limit to €5,000" |
+| **(extension)** | E-mandate Setup | `urn:eudi:sca:emandate:1` | "Set up Direct Debit" |
+
+```
+┌───────────────────────────────────────────────────────────────────────┐
+│                    PSD2 SCA Trigger Decision Tree                     │
+├───────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│                        User Action                                    │
+│                            │                                          │
+│              ┌─────────────┼─────────────┐                           │
+│              ▼             ▼             ▼                           │
+│         Access         Payment        High-Risk                      │
+│         Account          Init          Action                        │
+│         Online                                                        │
+│              │             │             │                           │
+│              ▼             ▼             ▼                           │
+│       Art. 97(1)(a)  Art. 97(1)(b)  Art. 97(1)(c)                    │
+│              │             │             │                           │
+│       ┌──────┴──────┐      │             │                          │
+│       ▼             ▼      ▼             ▼                          │
+│  login_risk    account_   payment:1   login_risk                    │
+│  _transaction  access:1              _transaction                    │
+│       :1                              :1                             │
+│                                                                       │
+│       ╔════════════════════════════════════════════════════╗         │
+│       ║  Check: Does an SCA Exemption Apply? (RTS Ch. III) ║         │
+│       ╚════════════════════════════════════════════════════╝         │
+│                            │                                          │
+│              ┌─────────────┴─────────────┐                           │
+│              ▼                           ▼                           │
+│          Yes: Skip SCA               No: Require SCA                 │
+│          (PSP decision)              → Wallet SCA flow               │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+**Art. 97(1)(c) High-Risk Action Examples**
+
+UK Finance and EBA guidance identify specific actions that trigger SCA under Article 97(1)(c):
+
+| High-Risk Action | Description | TS12 Type |
+|------------------|-------------|-----------|
+| **Trusted beneficiary management** | Adding/modifying payees on whitelist | `login_risk_transaction:1` |
+| **Standing order setup** | Creating recurring payment instructions | `emandate:1` |
+| **E-mandate/Direct Debit** | Authorizing creditor to initiate debits | `emandate:1` |
+| **PIN/password change** | Modifying PSC via remote channel | `login_risk_transaction:1` |
+| **Transaction limit modification** | Changing daily/monthly spending limits | `login_risk_transaction:1` |
+| **Address/contact change** | Updating personal details | `login_risk_transaction:1` |
+| **Digital token provisioning** | Adding card to mobile wallet | `login_risk_transaction:1` |
+
+---
+
+**Responsibility Matrix: Who Does What**
+
+| Responsibility | Party | Notes |
+|---------------|-------|-------|
+| **Determine when SCA is required** | PSP | Based on Art. 97(1) triggers |
+| **Apply exemption (if eligible)** | PSP | Based on RTS Ch. III (Arts. 10-18) |
+| **Send SCA request** | PSP/RP | Via OpenID4VP with `transaction_data` |
+| **Display transaction details** | Wallet | Per TS12 §3.3.1 visualization levels |
+| **Perform SCA elements (PIN/biometric)** | Wallet | Knowledge + Possession/Inherence |
+| **Sign transaction hash** | Wallet | WSCA-protected key signs KB-JWT |
+| **Verify authentication code** | PSP | Validate VP Token + transaction_data_hashes |
+| **Authorize transaction** | PSP | Based on successful verification |
+| **Liability for unauthorized tx** | PSP | Per PSD2 Arts. 73-74 |
+
+> **Key Insight**: While the **Wallet executes SCA**, the **PSP retains liability** and decides whether to require it. TS12 enables "Embedded SCA" where authentication happens in the Wallet, but liability cannot be delegated.
+
+---
+
+**SCA Exemptions Overview (RTS Chapter III)**
+
+The PSP may choose **not** to trigger Wallet-based SCA if an exemption applies:
+
+| RTS Article | Exemption Type | Threshold/Condition | Applies to TS12? |
+|-------------|----------------|---------------------|------------------|
+| **Art. 10** | Account info access | Balance/90-day history, every 90 days | ✅ `account_access:1` |
+| **Art. 11** | Contactless payments | ≤ €50, max €150 or 5 tx cumulative | ❌ In-person only |
+| **Art. 12** | Unattended terminals | Transport/parking | ❌ In-person only |
+| **Art. 13** | Trusted beneficiaries | Payee on PSP-maintained whitelist | ✅ Skips `payment:1` |
+| **Art. 14** | Recurring transactions | Same amount + same payee (after 1st) | ✅ MIT after `emandate:1` |
+| **Art. 15** | Same-person transfers | Own accounts at same PSP | ✅ Skips `payment:1` |
+| **Art. 16** | Low-value remote | ≤ €30, max €100 or 5 tx cumulative | ✅ PSP discretion |
+| **Art. 17** | Secure corporate | Dedicated B2B protocols | ✅ Not consumer |
+| **Art. 18** | Transaction Risk Analysis | Fraud rate thresholds (0.13%/0.06%/0.01%) | ✅ PSP discretion |
+
+> **Note**: Even when an exemption is available, the **PSP may still choose to require SCA**. The issuer always has final authority.
+
+---
+
+**TRA Fraud Rate Thresholds (Art. 18)**
+
+| Transaction Amount | Maximum Fraud Rate |
+|--------------------|--------------------|
+| ≤ €100 | 0.13% |
+| ≤ €250 | 0.06% |
+| ≤ €500 | 0.01% |
+
+If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applied.
+
+---
+
+**EUDI Wallet Flow: Who Triggers SCA**
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                                                                        │
+│  ┌──────────┐         ┌──────────┐         ┌──────────┐              │
+│  │  User    │         │  PSP/RP  │         │  Wallet  │              │
+│  │          │         │ (Bank/   │         │ (EUDI)   │              │
+│  │          │         │  TPP)    │         │          │              │
+│  └────┬─────┘         └────┬─────┘         └────┬─────┘              │
+│       │                    │                    │                     │
+│       │ 1. Initiate action │                    │                     │
+│       │ (login/payment)    │                    │                     │
+│       │ ─────────────────► │                    │                     │
+│       │                    │                    │                     │
+│       │                    │ 2. PSP evaluates:  │                     │
+│       │                    │    - Art. 97(1)    │                     │
+│       │                    │      trigger?      │                     │
+│       │                    │    - Exemption     │                     │
+│       │                    │      applies?      │                     │
+│       │                    │                    │                     │
+│       │                    │ 3. If SCA needed:  │                     │
+│       │                    │    OID4VP request  │                     │
+│       │                    │ ─────────────────► │                     │
+│       │                    │                    │                     │
+│       │                    │                    │ 4. Wallet displays  │
+│       │◄──────────────────────────────────────────  transaction      │
+│       │                    │                    │                     │
+│       │ 5. User confirms   │                    │                     │
+│       │    (PIN/biometric) │                    │                     │
+│       │ ──────────────────────────────────────► │                     │
+│       │                    │                    │                     │
+│       │                    │ 6. Wallet returns  │                     │
+│       │                    │    VP Token +      │                     │
+│       │                    │◄───────────────────│ KB-JWT with        │
+│       │                    │                    │ transaction_data    │
+│       │                    │                    │ _hashes             │
+│       │                    │                    │                     │
+│       │                    │ 7. PSP verifies &  │                     │
+│       │                    │    authorizes      │                     │
+│       │                    │                    │                     │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+**Gap Analysis: Missing Transaction Types**
+
+| Gap | Description | Impact | Status |
+|-----|-------------|--------|--------|
+| **`urn:eudi:sca:consents:1`** | AISP consent capture | TPPs cannot perform Embedded SCA for PSD2 consent | ⚠️ Requested by ETPPA |
+| **Card payment specifics** | EMV/3DS integration | Card-based flows may need additional schemas | 🔄 Monitored |
+| **Bulk payments** | Batch authorization | Corporate use case not fully addressed | 🔄 Art. 17 exemption |
 
 > ⚠️ **Gap Identified**: The [ETPPA](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15045566) (European Third Party Provider Association) has requested a dedicated **`urn:eudi:sca:consents:1`** transaction type for AISP consent capture. This is **not yet in TS12 v1.0**. TPPs seeking to perform Embedded SCA for account information consent should monitor future TS12 versions.
 
 ---
+
+**Reference Implementation Coverage**
+
+| Trigger | TS12 Support | Reference |
+|---------|--------------|-----------|
+| **Art. 97(1)(a)** Access | ✅ | [SUA_01](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) |
+| **Art. 97(1)(b)** Payment | ✅ | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) |
+| **Art. 97(1)(c)** High-risk | ✅ | [TS12 §4.3.2](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#432-login-and-risk-based-authentication) |
+
+---
+
+
 
 ### [Article 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002) — Dynamic Linking
 
@@ -2537,4 +2711,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.10** | 2026-01-27 | AI Analysis | **Art. 5(1)(c) PSP verification deep-dive**: Complete rewrite with 5-step verification algorithm diagram, Python pseudocode implementation, Issuer-Requested vs TPP flow comparison table with ASCII diagrams. Documented TPP verification gap from GitHub Discussion #439 with community feedback. Added PSD2 Art. 73-74 liability framework table and PSP risk mitigation recommendations. |
 | **4.11** | 2026-01-27 | AI Analysis | **Art. 5(1)(b) dynamic linking deep-dive**: Complete rewrite with cryptographic binding architecture (hash-then-sign) diagram showing full flow from PSP request to ECDSA signature. Added complete TS12 §4.3.1 `urn:eudi:sca:payment:1` schema table with all fields. Documented the 4 supported transaction types. Added visualization hierarchy levels table (TS12 §3.3.1). References EBA Q&A 2018_4039 on technology neutrality. Critical gap analysis for mDOC (ISO 18013-5) format — no equivalent to `transaction_data_hashes` exists, with mitigation options. |
 | **4.12** | 2026-01-27 | AI Analysis | **Art. 5(1)(a) payer awareness deep-dive**: Complete rewrite with WYSIWYS principle diagram and explanation, 5-threat model table (social engineering, MITM, overlay, APP fraud, transaction substitution). Added TS12 §3.3.1 conformant UI mockup. Documented visualization hierarchy with rationale column. Added localization requirements (TS12 §3.3.3) with JSON example and string length limits. TPP dual identity disclosure table with PISP schema. Accessibility considerations table referencing WCAG 2.1 and ARF Topic 53. Gap analysis for trust assumptions (user fatigue, display duration). Recommendation for minimum display duration in SCA Attestation Rulebooks. |
+| **4.13** | 2026-01-27 | AI Analysis | **Art. 97(1) SCA triggers deep-dive**: Complete rewrite with trigger summary table, trigger-to-URN mapping with wallet display examples, ASCII decision tree diagram. Added Art. 97(1)(c) high-risk action examples table (7 actions). Responsibility matrix table (9 rows) clarifying PSP vs Wallet roles. SCA exemptions overview table covering all RTS Chapter III exemptions (Articles 10-18) with TS12 applicability. TRA fraud rate thresholds table. ASCII sequence diagram showing "Who Triggers SCA" flow. Gap analysis table for missing transaction types including `urn:eudi:sca:consents:1`. |
 
