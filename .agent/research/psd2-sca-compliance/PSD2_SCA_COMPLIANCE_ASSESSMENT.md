@@ -1,6 +1,6 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 3.2  
+> **Version**: 3.3  
 > **Date**: 2026-01-27  
 > **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
@@ -64,7 +64,39 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 - **WUA_09–WUA_12** (Topic 9): Wallet Unit Attestation key binding
 - **RPA_01–RPA_08** (Topic 6): Relying Party authentication and user approval
 
-> ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix H](#appendix-h-sca-attestation-rulebook-status) for details.
+> ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix E](#appendix-e-sca-attestation-rulebook-status) for details.
+
+---
+
+## Terminology
+
+### Key Terms from PSD2 RTS
+
+| Term | Definition | Source |
+|------|------------|--------|
+| **Strong Customer Authentication (SCA)** | Authentication based on two or more elements from knowledge, possession, and inherence categories | RTS Art. 4(1) |
+| **Personalised Security Credentials (PSC)** | Personalised features provided by PSP for authentication purposes | PSD2 Art. 4(31) |
+| **Authentication Code** | Digital signatures or other cryptographically underpinned validity assertions generated from authentication elements | RTS Recital (4) |
+| **Dynamic Linking** | SCA that includes elements dynamically linking the transaction to a specific amount and payee | RTS Art. 5 |
+
+### EUDI Wallet Terminology
+
+| Term | Definition | Source |
+|------|------------|--------|
+| **WSCA** | Wallet Secure Cryptographic Application | ARF Glossary |
+| **WSCD** | Wallet Secure Cryptographic Device (hardware security module) | ARF Glossary |
+| **WUA** | Wallet Unit Attestation | ARF Topic 9 |
+| **PID** | Person Identification Data | ARF Glossary |
+| **SUA** | Strong User Authentication (attestation type for payments) | ARF Topic 20 |
+| **KB-JWT** | Key Binding JWT (signature proving possession) | SD-JWT-VC Spec |
+
+### Authentication Factor Mapping
+
+| RTS Category | EUDI Wallet Implementation |
+|--------------|---------------------------|
+| **Knowledge** | User PIN or passphrase validated by WSCA/WSCD |
+| **Possession** | Private key stored in WSCA/WSCD (Secure Enclave / StrongBox) |
+| **Inherence** | Biometric validated by OS (Face ID / BiometricPrompt) |
 
 ---
 
@@ -93,10 +125,10 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 | PSD2 Trigger | TS12 URN | Use Case |
 |--------------|----------|----------|
-| Art. 97(1)(a) | `urn:eudi:sca:login_risk_transaction:1` | Access payment account online |
-| Art. 97(1)(a) | `urn:eudi:sca:account_access:1` | AISP account information access |
-| Art. 97(1)(b) | `urn:eudi:sca:payment:1` | Initiate electronic payment |
-| Art. 97(1)(c) | `urn:eudi:sca:login_risk_transaction:1` | High-risk actions (e.g., change limits) |
+| [Art. 97(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:login_risk_transaction:1` | Access payment account online |
+| [Art. 97(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:account_access:1` | AISP account information access |
+| [Art. 97(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:payment:1` | Initiate electronic payment |
+| [Art. 97(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) | `urn:eudi:sca:login_risk_transaction:1` | High-risk actions (e.g., change limits) |
 | (extension) | `urn:eudi:sca:emandate:1` | E-mandate setup |
 
 > ⚠️ **Gap Identified**: The [ETPPA](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15045566) (European Third Party Provider Association) has requested a dedicated **`urn:eudi:sca:consents:1`** transaction type for AISP consent capture. This is **not yet in TS12 v1.0**. TPPs seeking to perform Embedded SCA for account information consent should monitor future TS12 versions.
@@ -386,14 +418,16 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | [RPA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a234-topic-6---relying-party-authentication-and-user-approval) | Generic failure message on auth failure |
+| ✅ **Wallet/OS** | iOS/Android APIs | OS biometric APIs return generic "failed" — not which factor failed |
 | ⚠️ **PSP** | — | PSP must also not disclose element in error responses |
 
 **Status**: ⚠️ Shared Responsibility
 
 **Context**: 
-- **Wallet side**: If biometric fails, wallet shows generic "Authentication failed" — not "Fingerprint not recognized"
+- **Wallet side**: If biometric fails, OS APIs return generic failure — the wallet cannot distinguish "wrong finger" from "sensor error"
 - **PSP side**: If signature verification fails, PSP should return generic error — not specify which check failed
+
+> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. This is achieved through OS-level API design (iOS `LAContext` and Android `BiometricPrompt` return only success/failure, not factor-specific errors).
 
 ---
 
@@ -835,39 +869,7 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 *The following appendices provide additional technical context. The compliance mapping in Parts I and II is authoritative.*
 
-## Appendix A: Terminology and Definitions
-
-### Key Terms from PSD2 RTS
-
-| Term | Definition | Source |
-|------|------------|--------|
-| **Strong Customer Authentication (SCA)** | Authentication based on two or more elements from knowledge, possession, and inherence categories | RTS Art. 4(1) |
-| **Personalised Security Credentials (PSC)** | Personalised features provided by PSP for authentication purposes | PSD2 Art. 4(31) |
-| **Authentication Code** | Digital signatures or other cryptographically underpinned validity assertions generated from authentication elements | RTS Recital (4) |
-| **Dynamic Linking** | SCA that includes elements dynamically linking the transaction to a specific amount and payee | RTS Art. 5 |
-
-### EUDI Wallet Terminology
-
-| Term | Definition | Source |
-|------|------------|--------|
-| **WSCA** | Wallet Secure Cryptographic Application | ARF Glossary |
-| **WSCD** | Wallet Secure Cryptographic Device (hardware security module) | ARF Glossary |
-| **WUA** | Wallet Unit Attestation | ARF Topic 9 |
-| **PID** | Person Identification Data | ARF Glossary |
-| **SUA** | Strong User Authentication (attestation type for payments) | ARF Topic 20 |
-| **KB-JWT** | Key Binding JWT (signature proving possession) | SD-JWT-VC Spec |
-
-### Authentication Factor Mapping
-
-| RTS Category | EUDI Wallet Implementation |
-|--------------|---------------------------|
-| **Knowledge** | User PIN or passphrase validated by WSCA/WSCD |
-| **Possession** | Private key stored in WSCA/WSCD (Secure Enclave / StrongBox) |
-| **Inherence** | Biometric validated by OS (Face ID / BiometricPrompt) |
-
----
-
-## Appendix B: mDOC Protocol Gap Analysis
+## Appendix A: mDOC Protocol Gap Analysis
 
 ### Current Status
 
@@ -890,7 +892,7 @@ A future TS12 version is expected to add mDOC support. The compliance mapping in
 
 ---
 
-## Appendix C: TPP Scenario Coverage
+## Appendix B: TPP Scenario Coverage
 
 > 📌 **Note**: This analysis is now integrated into [Article 5(1)(a)](#article-51a--payer-awareness) in the main compliance matrix.
 
@@ -936,7 +938,7 @@ This ensures user awareness per RTS Art. 5(1)(a).
 
 ---
 
-## Appendix D: Accessibility Requirements
+## Appendix C: Accessibility Requirements
 
 *Note: Wallet recovery procedures are documented inline at [Article 7(1)](#article-71) since they directly address the RTS requirement for loss/theft mitigation.*
 
@@ -952,7 +954,7 @@ For SCA specifically, SUA_06 mandates adaptable dialogue elements (font size, co
 
 ---
 
-## Appendix E: GitHub Discussion Analysis
+## Appendix D: GitHub Discussion Analysis
 
 ### TS12 Discussion #439
 
@@ -1064,7 +1066,7 @@ Identified technical issues in TS12 v1.0:
 
 ---
 
-## Appendix F: SCA Attestation Rulebook Status
+## Appendix E: SCA Attestation Rulebook Status
 
 ### Current Status (January 2026)
 
@@ -1150,4 +1152,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **3.0** | 2026-01-27 | AI Analysis | **Appendix G removal**: Inlined all reference implementation evidence into respective article sections. Moved repository links to header. Renumbered Appendix H → G. |
 | **3.1** | 2026-01-27 | AI Analysis | **mDOC format notes**: Added warnings to Art. 97(2), 4(1), 4(2), 5(1)(b) that KB-JWT claims (`amr`, `jti`, `transaction_data_hashes`) are SD-JWT-VC only. TS12 v1.0 does not specify mDOC equivalents. |
 | **3.2** | 2026-01-27 | AI Analysis | **Appendix B removal**: Deleted Auth Code Interpretation appendix (content inline in Art. 4(2)). Renumbered C→B, D→C, E→D, F→E, G→F. Now 6 appendixes (A-F). |
+| **3.3** | 2026-01-27 | AI Analysis | **Terminology moved to top**: Moved definitions from Appendix A to after Executive Summary. Removed Appendix A, renumbered B→A through F→E. Now 5 appendixes (A-E). |
 
