@@ -19,19 +19,19 @@ Transform the assessment from a single-focus document (SCA usage) into a compreh
 
 | Phase | Task | Status | Commit |
 |-------|------|--------|--------|
-| **1** | Add "Scope: Two SCA Use Cases" section | ⬜ Pending | — |
-| **2** | Add use case summary table to Executive Summary | ⬜ Pending | — |
-| **3** | Rename Part II → "Part II: SCA Authentication (Usage)" | ⬜ Pending | — |
-| **4** | 🔒 COMMIT Phase 1-3 | ⬜ Pending | — |
-| **5** | Add Part III header and introduction | ⬜ Pending | — |
-| **6** | Add Article 22 (General PSC requirements) | ⬜ Pending | — |
-| **7** | Add Article 23 (Credential creation) | ⬜ Pending | — |
-| **8** | Add Article 24 (User association/binding) | ⬜ Pending | — |
-| **9** | Add Article 25 (Delivery) | ⬜ Pending | — |
-| **10** | Add Article 26 (Renewal) | ⬜ Pending | — |
-| **11** | Add Article 27 (Revocation/Deactivation) | ⬜ Pending | — |
+| **1** | Add "Scope: Two SCA Use Cases" section | ✅ Done | 4969e86 |
+| **2** | Add use case summary table to Executive Summary | ✅ Done | 4969e86 |
+| **3** | Rename Part II → "Part II: SCA Authentication (Usage)" | ✅ Done | 4969e86 |
+| **4** | 🔒 COMMIT Phase 1-3 | ✅ Done | 4969e86 |
+| **5** | Add Part III header and introduction | ✅ Done | — |
+| **6** | Add Article 22 (General PSC requirements) | ✅ Done | — |
+| **7** | Add Article 23 (Credential creation) | ✅ Done | — |
+| **8** | Add Article 24 (User association/binding) | ✅ Done | — |
+| **9** | Add Article 25 (Delivery) | ✅ Done | — |
+| **10** | Add Article 26 (Renewal) | ✅ Done | — |
+| **11** | Add Article 27 (Revocation/Deactivation) | ✅ Done | — |
 | **12** | 🔒 COMMIT Part III complete | ⬜ Pending | — |
-| **13** | Update version history | ⬜ Pending | — |
+| **13** | Update version history | ✅ Done | — |
 | **14** | Update pending-task.md | ⬜ Pending | — |
 | **15** | 🔒 FINAL COMMIT | ⬜ Pending | — |
 
