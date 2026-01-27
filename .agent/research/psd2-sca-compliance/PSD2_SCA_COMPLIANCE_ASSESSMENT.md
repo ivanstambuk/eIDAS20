@@ -266,14 +266,6 @@ KB-JWT contains:
 
 ---
 
-### ~~Article 97(4)~~ — *Phantom Reference (Removed)*
-
-> **Note**: PSD2 Article 97 has only **3 paragraphs**. Previous references to "97(4)" in this assessment were errors — likely misattributed from Article 98 (EBA RTS mandate) or the RTS exemption articles (10-18).
-
-**Status**: ➖ Removed — no such paragraph exists in EUR-Lex.
-
----
-
 # Part II: SCA Authentication (Usage)
 
 > *RTS 2018/389 Articles 1-9: Security measures for SCA execution during payments (Use Case 2)*
