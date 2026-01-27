@@ -1,186 +1,242 @@
-# PSD2 SCA Assessment Restructure Plan
+# PSD2 SCA Compliance Assessment — Restructure Plan
 
-> **Created**: 2026-01-27  
-> **Purpose**: Add Issuance/Binding use case and clarify document scope  
-> **Target**: `PSD2_SCA_COMPLIANCE_ASSESSMENT.md`
+**Created**: 2026-01-27
+**Status**: Approved
+**Version**: 1.0
 
 ---
 
 ## Objective
 
-Transform the assessment from a single-focus document (SCA usage) into a comprehensive two-phase compliance matrix covering:
-
-1. **Issuance/Binding** — How SCA attestations are created and bound to users
-2. **Usage/Authentication** — How SCA attestations are used during payments
+Consolidate the `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` document from a **regulation-first** structure (PSD2 Directive → RTS Chapter II → RTS Chapter IV) to a **topic-first** structure organized by compliance topic and SCA lifecycle phase.
 
 ---
 
-## Phase Tracker
+## Approved Design Decisions
 
-| Phase | Task | Status | Commit |
-|-------|------|--------|--------|
-| **1** | Add "Scope: Two SCA Use Cases" section | ✅ Done | 4969e86 |
-| **2** | Add use case summary table to Executive Summary | ✅ Done | 4969e86 |
-| **3** | Rename Part II → "Part II: SCA Authentication (Usage)" | ✅ Done | 4969e86 |
-| **4** | 🔒 COMMIT Phase 1-3 | ✅ Done | 4969e86 |
-| **5** | Add Part III header and introduction | ✅ Done | — |
-| **6** | Add Article 22 (General PSC requirements) | ✅ Done | — |
-| **7** | Add Article 23 (Credential creation) | ✅ Done | — |
-| **8** | Add Article 24 (User association/binding) | ✅ Done | — |
-| **9** | Add Article 25 (Delivery) | ✅ Done | — |
-| **10** | Add Article 26 (Renewal) | ✅ Done | — |
-| **11** | Add Article 27 (Revocation/Deactivation) | ✅ Done | — |
-| **12** | 🔒 COMMIT Part III complete | ✅ Done | 1f47249 |
-| **13** | Update version history | ✅ Done | 1f47249 |
-| **14** | Update pending-task.md | ✅ Done | e342bac |
-| **15** | 🔒 FINAL COMMIT | ✅ Done | e342bac |
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Numbering style** | Numeric only (1, 2, 3...) | Clean, simple, topic-focused |
+| **Gap analysis** | Both inline + consolidated | Context-preserving + audit-friendly |
+| **Appendices** | Keep as appendices | Reference material stays separate |
+| **Dual reference format** | Blockquote style | Clear, consistent, allows quoted text |
+| **Dynamic linking granularity** | Keep sub-article structure | Preserves regulatory traceability |
 
 ---
 
-## Phase 1-4: Document Structure (Scaffolding)
+## Approved New Structure
 
-### Task 1: Add "Scope: Two SCA Use Cases" Section
-
-**Location**: After "How to Use This Document" section, before "Executive Summary"
-
-**Content to add**:
-```markdown
-## Scope: Two SCA Use Cases
-
-This assessment covers **two distinct use cases** in the SCA attestation lifecycle:
-
-| Use Case | Phase | Protocol | RTS Chapter | Wallet Role |
-|----------|-------|----------|-------------|-------------|
-| **Issuance/Binding** | PSP issues SCA attestation to wallet | OID4VCI | Chapter IV (Art. 22-27) | Key generation, secure storage, user authentication for binding |
-| **Usage/Authentication** | User authenticates during payment | OID4VP | Chapter II (Art. 4-9) | SCA execution, factor validation, authentication code generation |
-
-### Use Case 1: Issuance/Binding
-
-The PSP (as **Issuer**) creates an SCA attestation and binds it to the user:
-
-1. User requests SCA attestation from PSP
-2. Wallet generates key pair in WSCA/WSCD (Secure Enclave)
-3. User authenticates to prove identity (SCA required for remote binding)
-4. PSP issues attestation bound to wallet's public key
-5. Wallet stores attestation securely
-
-**Relevant RTS Articles**: 22, 23, 24, 25, 26, 27
-**ARF Topics**: PSP_* (attestation issuance), WIAM_* (wallet management)
-
-### Use Case 2: Usage/Authentication
-
-The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
-
-1. PSP sends authorization request with transaction data
-2. Wallet displays transaction to user
-3. User authenticates (PIN/biometric)
-4. Wallet generates KB-JWT with transaction_data_hashes
-5. Wallet returns VP Token (authentication code)
-6. PSP verifies and processes payment
-
-**Relevant RTS Articles**: 4, 5, 6, 7, 8, 9
-**ARF Topics**: SUA_* (strong user authentication), RPA_* (relying party)
 ```
+1. Executive Summary
+2. Terminology & Definitions
+3. Scope: Two SCA Lifecycle Phases
+   3.1 Phase 1: Credential Issuance (OID4VCI)
+   3.2 Phase 2: Transaction Authentication (OID4VP)
 
-### Task 2: Update Executive Summary
+═══════════════════════════════════════════════════════════════════
+PART A: SCA CREDENTIAL ISSUANCE (Binding Phase)
+═══════════════════════════════════════════════════════════════════
 
-**Add after existing summary table**:
-```markdown
-**Use Case Coverage**:
+4. PSC Creation & Protection
+   4.1 Credential Creation [RTS Art. 22]
+   4.2 Association with User [RTS Art. 23]
+   4.3 Secure Delivery [RTS Art. 24]
+   4.4 Renewal [RTS Art. 26]
+   4.5 Revocation [RTS Art. 27]
 
-| Use Case | Coverage | Part |
-|----------|----------|------|
-| **Issuance/Binding** | Articles 22-27 | Part III |
-| **Usage/Authentication** | Articles 4-9 | Part II |
-```
+═══════════════════════════════════════════════════════════════════
+PART B: TRANSACTION AUTHENTICATION (Usage Phase)
+═══════════════════════════════════════════════════════════════════
 
-### Task 3: Rename Part II Header
+5. SCA Triggers & Exemptions
+   5.1 When SCA is Required [PSD2 Art. 97(1) + RTS Art. 1]
+   5.2 SCA Exemptions [PSD2 Art. 98 + RTS Arts. 10-18]
+   5.3 Responsibility Matrix (PSP vs Wallet)
 
-**Change**:
-```markdown
-# Part II: PSD2 RTS (2018/389)
-```
+6. SCA Elements & Independence
+   6.1 Authentication Code Requirements [RTS Art. 4]
+   6.2 Knowledge Element [RTS Art. 6]
+   6.3 Possession Element [RTS Art. 7]
+   6.4 Inherence Element [RTS Art. 8]
+   6.5 Independence of Elements [RTS Art. 9]
 
-**To**:
-```markdown
-# Part II: SCA Authentication (Usage)
+7. Dynamic Linking
+   7.1 Payer Awareness [PSD2 Art. 97(2) + RTS Art. 5(1)(a)]
+   7.2 Cryptographic Binding [PSD2 Art. 97(2) + RTS Art. 5(1)(b)]
+   7.3 PSP Verification [RTS Art. 5(1)(c)]
+   7.4 Change Notification (Replay Protection) [RTS Art. 5(1)(d)]
+   7.5 Display Integrity (WYSIWYS) [RTS Art. 5(2)]
+   7.6 Batch Payments [RTS Art. 5(3)]
 
-> *This part covers RTS Articles 1-9: the security measures for SCA execution during payments.*
+8. General Security Requirements
+   8.1 Security Measures [RTS Art. 2]
+   8.2 Periodic Review [RTS Art. 3]
+
+═══════════════════════════════════════════════════════════════════
+PART C: GAP ANALYSIS & RECOMMENDATIONS
+═══════════════════════════════════════════════════════════════════
+
+9. Consolidated Gap Analysis
+   9.1 Critical Gaps (Action Required)
+   9.2 Moderate Gaps (Monitor)
+   9.3 Low-Risk Gaps (Acceptable)
+
+10. Recommendations for SCA Attestation Rulebook
+
+═══════════════════════════════════════════════════════════════════
+PART D: APPENDICES
+═══════════════════════════════════════════════════════════════════
+
+Appendix A: mDOC Format Considerations
+Appendix B: Wallet Recovery Scenarios
+Appendix C: Dutch PA Gap Analysis
+Appendix D: Stakeholder Feedback (GitHub #439)
+Appendix E: SCA Attestation Rulebook Status
+
+═══════════════════════════════════════════════════════════════════
+
+Version History
 ```
 
 ---
 
-## Phase 5-12: Part III Content (Issuance/Binding)
+## Content Migration Map
 
-### Part III Structure
+### From Part I (PSD2 Directive)
+
+| Current | New Location | Action |
+|---------|--------------|--------|
+| Art. 97(1) — SCA Triggers (200+ lines deep-dive) | §5.1 | Move, split exemptions to §5.2 |
+| Art. 97(2) — Dynamic Linking (22 lines) | §7 intro | Merge into Dynamic Linking header |
+| Art. 97(3) — Delegated Act | Delete | Brief note only (delegation to RTS) |
+
+### From Part II (RTS Chapter II)
+
+| Current | New Location | Action |
+|---------|--------------|--------|
+| Art. 1 — Subject matter | §5.1 | Merge with Art. 97(1) content |
+| Art. 2 — General auth requirements | §8.1 | Move |
+| Art. 3 — Review of security measures | §8.2 | Move |
+| Art. 4 — Authentication code | §6.1 | Move |
+| Art. 5(1)(a) — Payer awareness (210 lines) | §7.1 | Move (keep deep-dive) |
+| Art. 5(1)(b) — Code linked (190 lines) | §7.2 | Move (keep deep-dive) |
+| Art. 5(1)(c) — PSP verification | §7.3 | Move (keep deep-dive) |
+| Art. 5(1)(d) — Change notification | §7.4 | Move (keep deep-dive) |
+| Art. 5(2) — Display integrity | §7.5 | Move (keep deep-dive) |
+| Art. 5(3) — Batch payments | §7.6 | Move |
+| Art. 6 — Knowledge | §6.2 | Move |
+| Art. 7 — Possession | §6.3 | Move |
+| Art. 8 — Inherence | §6.4 | Move |
+| Art. 9 — Independence | §6.5 | Move |
+
+### From Part III (RTS Chapter IV)
+
+| Current | New Location | Action |
+|---------|--------------|--------|
+| Art. 22 — Credential creation | §4.1 | Move |
+| Art. 23 — Association | §4.2 | Move |
+| Art. 24 — Delivery | §4.3 | Move |
+| Art. 26 — Renewal | §4.4 | Move |
+| Art. 27 — Revocation | §4.5 | Move |
+
+### From Part IV (Appendices)
+
+| Current | New Location | Action |
+|---------|--------------|--------|
+| Appendix A-E | Part D | Keep, renumber as needed |
+
+---
+
+## Dual Reference Format
+
+For sections with PSD2 + RTS overlap:
 
 ```markdown
-# Part III: SCA Attestation Lifecycle (Issuance/Binding)
+## 7.1 Payer Awareness
 
-> *This part covers RTS Articles 22-27: the security requirements for credential creation, association, delivery, and management.*
+> **Regulatory Basis**:
+> - [PSD2 Directive Art. 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002): "...dynamically link the transaction to a specific amount and a specific payee"
+> - [RTS Art. 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001): "the payer is made aware of the amount of the payment transaction and of the payee"
 
-## Chapter IV — Confidentiality and Integrity of PSC
-
-### [Article 22] — General requirements
-### [Article 23] — Creation and transmission of credentials
-### [Article 24] — Association with the payment service user
-### [Article 25] — Delivery of credentials
-### [Article 26] — Renewal of personalised security credentials
-### [Article 27] — Destruction, deactivation and revocation
+[Deep-dive content follows]
 ```
 
-### Article Mapping Reference
+For sections with RTS-only:
 
-| RTS Article | Wallet Responsibility | ARF HLR | Evidence |
-|-------------|----------------------|---------|----------|
-| **22(1)** | Confidentiality of PSC during auth | WIAM_14, WIAM_20 | WSCA/WSCD isolation |
-| **22(2)(a)** | Masked credential input | Device PIN entry | iOS/Android secure keyboard |
-| **22(2)(b)** | No plaintext storage | WIAM_20 | Keychain/KeyStore encryption |
-| **22(2)(c)** | Protected crypto material | WUA_09 | Non-extractable keys |
-| **22(3)** | Documented key management | — | PSP responsibility |
-| **22(4)** | Secure processing environment | WSCD certification | CIR 2024/2981 |
-| **23** | Secure credential creation | WUA_09, WIAM_20 | Key gen in Secure Enclave |
-| **24(1)** | User-only association | WIAM_09 | Per-Wallet Unit isolation |
-| **24(2)(a)** | Secure binding environment | WIA_*, PSP_* | OID4VCI over TLS |
-| **24(2)(b)** | SCA for remote binding | WIAM_14 | User auth before issuance |
-| **25** | Secure delivery | OID4VCI | TLS + attestation activation |
-| **26** | Secure renewal | — | Re-issuance flow |
-| **27(a-c)** | Revocation | WURevocation_* | Wallet Provider revocation |
+```markdown
+## 6.2 Knowledge Element
+
+> **Regulatory Basis**:
+> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6)
+
+[Content follows]
+```
 
 ---
 
-## Source References
+## Execution Phases
 
-**RTS Full Text**: `.agent/research/psd2-sca-compliance/sources/32018R0389.md`
+### Phase 1: Preparation ✅
+- [x] Create detailed implementation plan
+- [x] User review and approval
+- [x] Document decisions in RESTRUCTURE_PLAN.md
 
-**Key Line Numbers** (for extraction):
-- Article 22: Lines 348-361
-- Article 23: Lines 363-369
-- Article 24: Lines 371-380
-- Article 25: Lines 381-397
-- Article 26: Lines 398-402
-- Article 27: Lines 404-412
+### Phase 2: Skeleton Creation
+1. Create new section headers in document
+2. Add placeholder "[TO BE MIGRATED]" notes
+3. Keep old content below skeleton temporarily
+4. **Checkpoint**: Commit "Restructure: Create topic-first skeleton"
+
+### Phase 3: Part A Migration (Issuance)
+1. Move RTS Arts. 22-27 content to §4
+2. Add regulatory basis blockquotes
+3. **Checkpoint**: Commit "Restructure: Migrate Part A (Issuance)"
+
+### Phase 4: Part B Migration (Authentication)
+1. Move SCA Triggers (Art. 97(1) + Art. 1) to §5
+2. Move SCA Elements (Arts. 4, 6-9) to §6
+3. Move Dynamic Linking (Art. 97(2) + Art. 5) to §7
+4. Move General Security (Arts. 2-3) to §8
+5. Add dual references to each header
+6. **Checkpoint**: Commit "Restructure: Migrate Part B (Authentication)"
+
+### Phase 5: Part C Creation (Gap Analysis)
+1. Extract all `⚠️ Gap Identified` notes
+2. Categorize by severity
+3. Create consolidated summary
+4. **Checkpoint**: Commit "Restructure: Create Part C (Gap Analysis)"
+
+### Phase 6: Cleanup
+1. Remove old Part I, II, III section headers
+2. Verify all content migrated
+3. Update version history (→ v5.0)
+4. **Checkpoint**: Commit "Restructure: Complete v5.0"
+
+### Phase 7: Verification
+1. Verify all EUR-Lex links work
+2. Verify all TS12/ARF links work
+3. Word count comparison (ensure no content loss)
+4. Final review
 
 ---
 
-## Validation Checklist
+## Success Criteria
 
-Before marking complete:
-
-- [ ] All 6 articles (22-27) have dedicated sections
-- [ ] Each article has: quote, fulfillment table, status, context
-- [ ] ARF HLR references are linked (GitHub URLs)
-- [ ] Reference implementation evidence where applicable
-- [ ] No EUR-Lex lookups (use local sources only)
-- [ ] Version history updated
-- [ ] Pending task cleared
+- [ ] All deep-dive content preserved
+- [ ] All regulatory references (EUR-Lex) working
+- [ ] All TS12/ARF links working
+- [ ] Dual references present where overlap exists
+- [ ] Gap analysis consolidated in Part C
+- [ ] Version history updated to 5.0
+- [ ] No content loss (line count ≥ current)
 
 ---
 
-## Risk Notes
+## Rollback Plan
 
-1. **Articles 22-27 are less wallet-specific** than Articles 4-9. Some requirements (e.g., Art. 22(3) documentation) are purely PSP obligations.
+If issues encountered:
+```bash
+git checkout HEAD~1 -- PSD2_SCA_COMPLIANCE_ASSESSMENT.md
+```
 
-2. **OID4VCI issuance flow** is less detailed in TS12 v1.0 compared to OID4VP presentation flow. Evidence may be thinner.
-
-3. **Reference implementation** may not have issuance-specific code — the reference apps are primarily presentation-focused.
+Each phase has a checkpoint commit for granular rollback.
