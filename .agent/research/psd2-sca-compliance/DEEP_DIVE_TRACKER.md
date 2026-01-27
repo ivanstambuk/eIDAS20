@@ -27,7 +27,7 @@ A real deep-dive must include **at least 3** of:
 | Art. 22(2)(a) | Masked credential input | ✅ Yes |
 | Art. 22(2)(b) | No plaintext storage | ✅ Yes |
 | Art. 22(2)(c) | Protected cryptographic material | ✅ Yes |
-| Art. 22(3) | Documented key management | ❌ No |
+| Art. 22(3) | Documented key management | ✅ Yes |
 | Art. 22(4) | Secure processing environment | ❌ No |
 
 ### Article 23 — Creation and Transmission
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 32 |
-| ❌ Not Done | 15 |
+| ✅ Done | 33 |
+| ❌ Not Done | 14 |
 | **Total** | 47 |
 
 ---
@@ -179,6 +179,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 7(2) | Deep-dive: Anti-cloning architecture, hardware security levels, FIDO alignment, gaps RP-1 to RP-4 |
 | 2026-01-28 | Art. 8(2) | Deep-dive: PAD architecture, ISO 30107 alignment, anti-spoofing layers, gaps BR-1 to BR-4 |
 | 2026-01-28 | Art. 22(2)(a) | Deep-dive: Masking architecture, platform implementation, NIST alignment, gaps MI-1 to MI-3 |
+| 2026-01-28 | Art. 22(3) | Deep-dive: Key lifecycle documentation, NIST 800-57 alignment, audit requirements, gaps KM-1 to KM-4 |
 
 ---
 

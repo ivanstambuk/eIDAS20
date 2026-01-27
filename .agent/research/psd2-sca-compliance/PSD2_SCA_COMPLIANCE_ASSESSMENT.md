@@ -653,7 +653,141 @@ try self.keyChain
 
 **Status**: ❌ PSP Obligation (with Wallet Certification Evidence)
 
-**Context**: The PSP (as attestation issuer) must document their key management. They can reference Wallet Provider/Solution certification as evidence for the wallet-side key management.
+<details>
+<summary><strong>🔍 Deep-Dive: Key Management Documentation Requirements</strong></summary>
+
+##### Core Requirement: Full Documentation
+
+Article 22(3) requires PSPs to **fully document** the cryptographic material management process. This creates an audit trail and enables security reviews. For EUDI Wallet SCA, this involves both PSP-side and Wallet-side key management.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Key Management Documentation Scope                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                   KEY LIFECYCLE PHASES                              │   │
+│  │                                                                     │   │
+│  │   GENERATION        STORAGE           USAGE            DESTRUCTION │   │
+│  │   ─────────        ────────          ─────            ────────────│   │
+│  │   • Algorithm      • Location        • Permitted ops  • Revocation│   │
+│  │   • Key size       • Access control  • Auth required  • Archival  │   │
+│  │   • Entropy source • Backup/recovery • Rate limits    • Sanitization│   │
+│  │   • Hardware/SW    • Encryption      • Audit logging  • Completeness│   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                  DOCUMENTATION REQUIREMENTS                         │   │
+│  │                                                                     │   │
+│  │   • Policy documents (who, what, when)                              │   │
+│  │   • Procedural guides (step-by-step processes)                      │   │
+│  │   • Inventory (all keys, attributes, locations)                     │   │
+│  │   • Audit logs (all operations, timestamps)                         │   │
+│  │   • Incident response (breach procedures)                           │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Key Lifecycle Phases (NIST SP 800-57)
+
+NIST SP 800-57 defines the gold standard for key management documentation:
+
+| Phase | Documentation Required | EUDI Wallet Scope |
+|-------|----------------------|-------------------|
+| **Generation** | Algorithm, size, entropy, hardware | WSCA/WSCD generates in SE |
+| **Registration** | Key binding to identity | WUA links key to device |
+| **Distribution** | How key material is transported | Public key in attestation |
+| **Storage** | Location, protection, backup | SE non-extractable |
+| **Use** | Permitted operations, auth | Signing after user verification |
+| **Rotation** | Renewal triggers, process | PSP-initiated re-attestation |
+| **Archival** | Long-term storage policy | N/A (keys not archived) |
+| **Destruction** | Revocation, sanitization | Wallet reset, revocation |
+
+##### EUDI Wallet Key Management Responsibilities
+
+| Component | Owner | Documentation Source |
+|-----------|-------|---------------------|
+| **Wallet private keys** | Wallet Provider | Wallet Solution certification (CIR 2024/2981) |
+| **SCA Attestation signing key** | PSP | PSP internal documentation |
+| **WUA signing key** | Wallet Provider | Wallet certification |
+| **TLS certificates** | PSP | Certificate management policy |
+
+##### Documentation Content Requirements
+
+| Document Type | Content | Owner |
+|---------------|---------|-------|
+| **Key Management Policy** | Roles, responsibilities, approvals | PSP |
+| **Key Inventory** | All keys, algorithms, expiry, location | Both |
+| **Operational Procedures** | Generation, rotation, revocation steps | Both |
+| **Incident Response** | Breach detection, response, notification | PSP |
+| **Audit Log Specification** | What events logged, retention period | Both |
+
+##### NIST SP 800-57 Alignment
+
+| NIST Requirement | PSD2 Art. 22(3) | EUDI Wallet |
+|------------------|-----------------|-------------|
+| **Document key types and algorithms** | Implied | P-256 (ECDSA) documented in HAIP |
+| **Define key lifetime** | Implied | SCA Attestation has `exp` claim |
+| **Specify access controls** | Implied | User verification required |
+| **Audit key operations** | "Fully document process" | PSP logs attestation issuance |
+| **Training and awareness** | EBA best practice | PSP staff training |
+
+##### Wallet Provider Certification Evidence
+
+Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-side key management:
+
+| Certification Aspect | Coverage |
+|---------------------|----------|
+| **WSCD evaluation** | Hardware security, key non-extractability |
+| **Key generation audit** | Entropy, algorithm compliance |
+| **Access control** | User verification enforcement |
+| **API security** | WSCA interface protection |
+
+> **PSP Evidence**: PSPs can reference Wallet Solution certification as evidence for wallet-side key management documentation, supplementing their own server-side documentation.
+
+##### Common Audit Findings
+
+| Finding | Recommendation |
+|---------|----------------|
+| **No key inventory** | Create complete list with attributes |
+| **Missing rotation procedure** | Document when and how keys rotate |
+| **Inadequate access logs** | Log all key operations with timestamps |
+| **No incident response** | Create breach response procedure |
+| **Undocumented algorithms** | Specify all cryptographic choices |
+
+##### Reference Implementation Evidence
+
+| Actor | Documentation Artifact |
+|-------|----------------------|
+| **PSP** | SCA Attestation issuance procedure |
+| **PSP** | Key ceremony records |
+| **PSP** | Certificate management policy |
+| **Wallet Provider** | WSCD security evaluation report |
+| **Wallet Provider** | Key generation audit log specification |
+| **OS Vendor** | SE/StrongBox security certification |
+
+##### Gap Analysis: Key Management Documentation
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **KM-1** | No template for PSP key management documentation | Medium | SCA Attestation Rulebook should provide template |
+| **KM-2** | Wallet-side documentation not directly accessible to PSP | Low | Reference Wallet Solution certification |
+| **KM-3** | Key rotation procedures not specified | Medium | Define rotation triggers and process |
+| **KM-4** | Incident response for key compromise not standardized | Medium | Include in SCA Attestation Rulebook |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Documentation Template**: Provide key management documentation template for PSPs
+2. **NIST Reference**: Reference NIST SP 800-57 for key management best practices
+3. **Certification Cross-Reference**: Document how to reference Wallet Solution certification
+4. **Audit Requirements**: Specify minimum audit log retention (e.g., 5 years)
+5. **Incident Response**: Define breach notification and key revocation procedures
+6. **Key Inventory**: Require PSPs to maintain key inventory with attributes
+
+</details>
 
 ---
 
