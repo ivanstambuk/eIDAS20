@@ -127,7 +127,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 7(1) | Mitigate unauthorized use | ❌ No |
+| Art. 7(1) | Mitigate unauthorized use | ✅ Yes |
 | Art. 7(2) | Prevent replication | ❌ No |
 
 ### Article 8 — Inherence Elements
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 17 |
-| ❌ Not Done | 30 |
+| ✅ Done | 18 |
+| ❌ Not Done | 29 |
 | **Total** | 47 |
 
 ---
@@ -164,6 +164,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | — | Created paragraph-level tracker |
 | 2026-01-27 | Art. 6(1) | Deep-dive: EBA guidance, threat model, NIST comparison, ASCII flow, gaps K-1 to K-4 |
 | 2026-01-27 | Art. 8(1) | Deep-dive: FAR thresholds, ISO 30107-3 PAD, FIDO cert, biometric classes, gaps I-1 to I-5 |
+| 2026-01-27 | Art. 7(1) | Deep-dive: WSCD/WSCA architecture, hardware security, key attestation, gaps P-1 to P-5 |
 
 ---
 

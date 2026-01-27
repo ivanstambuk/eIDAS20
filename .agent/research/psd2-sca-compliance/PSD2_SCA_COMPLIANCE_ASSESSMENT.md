@@ -1372,6 +1372,170 @@ Legend:
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Possession Element (Cryptographic Key) Protection</strong></summary>
+
+##### What Qualifies as a Possession Element (EBA Opinion 2019)
+
+The EBA clarifies that "possession" means "something only the user possesses." A device qualifies if it reliably confirms possession through:
+
+| ✅ Compliant Possession | ❌ NOT Compliant |
+|------------------------|------------------|
+| Device with hardware-protected key | Card number (PAN) |
+| OTP generator (hardware or software) | CVV/CVC printed on card |
+| Smart card / SIM | Static card data |
+| Mobile app with protected key in TEE/SE | App without hardware key protection |
+| FIDO authenticator | Email-based OTP (possession of email, not device) |
+
+> **EBA Key Insight**: Mobile apps can serve as possession elements **only if** authentication data is encrypted with a key held in a hardware secure element (TEE/SE), preventing malware from copying the credential.
+
+##### EUDI Wallet Secure Architecture: WSCD & WSCA
+
+The EUDI Wallet uses a layered security architecture:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    EUDI Wallet Security Architecture            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │              Wallet Instance (User App)                  │   │
+│  │  ┌─────────────────────────────────────────────────────┐│   │
+│  │  │                    WSCA                              ││   │
+│  │  │     Wallet Secure Cryptographic Application         ││   │
+│  │  │  ┌───────────────────────────────────────────────┐  ││   │
+│  │  │  │           WSCD (Hardware)                     │  ││   │
+│  │  │  │  ┌─────────────────────────────────────────┐  │  ││   │
+│  │  │  │  │         Private Keys                    │  │  ││   │
+│  │  │  │  │  • SCA Attestation Key                  │  │  ││   │
+│  │  │  │  │  • Device Binding Key                   │  │  ││   │
+│  │  │  │  │  • Credential Private Keys              │  │  ││   │
+│  │  │  │  │                                         │  │  ││   │
+│  │  │  │  │  🔒 NON-EXTRACTABLE                     │  │  ││   │
+│  │  │  │  │  🔒 Hardware-Protected                  │  │  ││   │
+│  │  │  │  │  🔒 User-Auth Required                  │  │  ││   │
+│  │  │  │  └─────────────────────────────────────────┘  │  ││   │
+│  │  │  │                                               │  ││   │
+│  │  │  │  iOS: Secure Enclave  │  Android: StrongBox   │  ││   │
+│  │  │  │                       │  or TEE Keymaster     │  ││   │
+│  │  │  └───────────────────────────────────────────────┘  ││   │
+│  │  └─────────────────────────────────────────────────────┘│   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+WSCD = Wallet Secure Cryptographic Device (tamper-resistant hardware)
+WSCA = Wallet Secure Cryptographic Application (manages key operations)
+```
+
+##### WSCD Implementation Options
+
+| WSCD Type | Example | Security Level | Pros | Cons |
+|-----------|---------|----------------|------|------|
+| **Remote HSM** | Cloud HSM service | Highest | Tamper-proof, certified | Requires network, latency |
+| **Local Secure Element** | eSE, SIM-based SE | Very High | Dedicated chip, certified | Device-specific support |
+| **Local StrongBox** | Android StrongBox | High | Dedicated secure processor | Not all devices support |
+| **Local TEE** | ARM TrustZone | Medium-High | Wide device support | Software isolation, not dedicated chip |
+| **Software-only** | Encrypted keystore | Low | Universal support | Vulnerable to OS compromise |
+
+> **EUDI Wallet ARF Requirement (WIAM_20)**: Private keys MUST be non-extractable and protected by WSCD. Software-only WSCD is permitted only as fallback with reduced LoA.
+
+##### Hardware Security Comparison: iOS vs Android
+
+| Feature | iOS Secure Enclave | Android StrongBox | Android TEE |
+|---------|-------------------|-------------------|-------------|
+| **Hardware** | Dedicated SEP chip | Dedicated SE chip | ARM TrustZone (shared CPU) |
+| **Key Non-Extractability** | ✅ Hardware-enforced | ✅ Hardware-enforced | ✅ Software-enforced |
+| **Certification** | FIPS 140-2/3 | Varies by vendor | Varies by vendor |
+| **Common Criteria** | PP_MD certified | Some devices | Some devices |
+| **Tamper Resistance** | Physical | Physical | Logical (software isolation) |
+| **Key Attestation** | ✅ DeviceCheck, App Attest | ✅ Key Attestation API | ✅ Key Attestation API |
+| **Availability** | All iOS devices (A7+) | High-end Android (API 28+) | All Android (API 23+) |
+
+##### Key Attestation: Proving Possession
+
+Key attestation cryptographically proves that a key is:
+1. Generated in secure hardware (not importable)
+2. Non-extractable
+3. Protected by user authentication (PIN/biometric)
+4. On an uncompromised device
+
+| Platform | Attestation Method | Verifiable Properties |
+|----------|-------------------|----------------------|
+| **iOS** | App Attest + DeviceCheck | App integrity, device validity |
+| **Android** | Key Attestation (Keymaster) | Key properties, device state, boot chain |
+| **FIDO** | Attestation Certificate | Authenticator model, certification level |
+
+**Android Key Attestation Chain**:
+```
+Google Root CA
+    └── Intermediate CA
+        └── Attestation Key (in device TEE/SE)
+            └── App Key Attestation Certificate
+                ├── Key properties (non-exportable)
+                ├── Security level (StrongBox/TEE)
+                ├── Boot state (verified/unverified)
+                └── OS version, patch level
+```
+
+##### Threat Model: Possession Element Attacks
+
+| Threat | Attack Vector | Mitigation | EUDI Wallet Status |
+|--------|---------------|------------|-------------------|
+| **Device theft** | Physical access to device | Device lock + biometric/PIN required for key use | ✅ WIAM_14 |
+| **Device loss** | Uncontrolled key access | Remote revocation via WUA invalidation | ✅ WURevocation_09 |
+| **Key extraction** | Malware attempts to export key | Non-extractable keys in WSCD | ✅ WIAM_20 |
+| **Key cloning** | Copy key to another device | Keys generated in WSCD, never leave | ✅ WIAM_20 |
+| **OS compromise** | Root/jailbreak exposes keys | WUA attestation detects compromise | ✅ App Attest / Play Integrity |
+| **App compromise** | Malicious app impersonates wallet | App attestation, code signing | ✅ WUA |
+| **Relay attack** | Forward signing requests remotely | User presence required (biometric/PIN) | ✅ WIAM_14 |
+| **Backup extraction** | Restore key from device backup | Keys excluded from backup (SE/TEE) | ✅ OS-level |
+
+##### FIDO Alignment
+
+EUDI Wallet's possession element architecture aligns with FIDO2/WebAuthn:
+
+| FIDO Concept | EUDI Wallet Equivalent |
+|--------------|------------------------|
+| Authenticator | WSCD (Secure Element / TEE) |
+| Private Key | SCA Attestation Key |
+| Attestation | WUA (Wallet Unit Attestation) |
+| User Verification | PIN (knowledge) or biometric (inherence) |
+| Cryptographic Proof | KB-JWT signature on VP Token |
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Source | Property |
+|----------|-----------|--------|----------|
+| **iOS** | Key Generation | `SecKeyCreateRandomKey(.secureEnclave)` | Non-extractable in SEP |
+| **iOS** | Key Protection | `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` | User auth required |
+| **iOS** | Attestation | `DCAppAttestService.generateKey()` | App integrity proof |
+| **Android** | Key Generation | `KeyGenParameterSpec.Builder.setIsStrongBoxBacked(true)` | StrongBox required |
+| **Android** | Key Protection | `setUserAuthenticationRequired(true)` | Biometric/PIN gate |
+| **Android** | Attestation | `setAttestationChallenge(nonce)` | Key attestation cert |
+| **Android** | Security Check | `BiometricManager.Authenticators.BIOMETRIC_STRONG` | Class 3 biometric |
+
+##### Gap Analysis: Possession Element
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **P-1** | Not all Android devices have StrongBox | Medium | TS12 should define minimum WSCD requirements; TEE acceptable, software-only not for SCA |
+| **P-2** | Key attestation verification not mandated for PSPs | Medium | Recommend PSPs optionally verify key attestation in VP Token |
+| **P-3** | Remote HSM WSCD latency concerns | Low | Document acceptable latency thresholds for user experience |
+| **P-4** | Device migration doesn't transfer keys | N/A (by design) | Clarify in documentation: migration = re-issuance, not key transfer |
+| **P-5** | `amr` claim doesn't indicate hardware security level | Low | Consider `hwk` (hardware key) in `amr` array for transparency |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Minimum WSCD Level**: Mandate TEE or higher for SCA; define fallback for legacy devices
+2. **Key Non-Extractability**: Require hardware-enforced non-extractability (not just software flag)
+3. **Key Attestation**: Recommend (not require) PSPs verify key attestation for high-value transactions
+4. **Revocation SLA**: Define maximum time for WUA revocation to propagate (e.g., < 1 hour)
+5. **Recovery Documentation**: Explicitly state that wallet recovery does NOT transfer private keys
+6. **`hwk` AMR Claim**: Adopt OIDC `hwk` (hardware key) AMR value when possession is StrongBox/SE-backed
+
+</details>
+
 **Context**:
 - **Loss**: User contacts Wallet Provider (or PSP) to revoke SCA attestation → key becomes invalid
 - **Theft**: Device lock + biometric required; remote wipe available
