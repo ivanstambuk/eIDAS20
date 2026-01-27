@@ -23,7 +23,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 22(1) | PSC confidentiality during all phases | ❌ No |
+| Art. 22(1) | PSC confidentiality during all phases | ✅ Yes |
 | Art. 22(2)(a) | Masked credential input | ❌ No |
 | Art. 22(2)(b) | No plaintext storage | ✅ Yes |
 | Art. 22(2)(c) | Protected cryptographic material | ✅ Yes |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 18 |
-| ❌ Not Done | 29 |
+| ✅ Done | 19 |
+| ❌ Not Done | 28 |
 | **Total** | 47 |
 
 ---
@@ -165,6 +165,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 6(1) | Deep-dive: EBA guidance, threat model, NIST comparison, ASCII flow, gaps K-1 to K-4 |
 | 2026-01-27 | Art. 8(1) | Deep-dive: FAR thresholds, ISO 30107-3 PAD, FIDO cert, biometric classes, gaps I-1 to I-5 |
 | 2026-01-27 | Art. 7(1) | Deep-dive: WSCD/WSCA architecture, hardware security, key attestation, gaps P-1 to P-5 |
+| 2026-01-27 | Art. 22(1) | Deep-dive: PSC lifecycle phases, NIST/ENISA alignment, threat model, gaps PSC-1 to PSC-4 |
 
 ---
 

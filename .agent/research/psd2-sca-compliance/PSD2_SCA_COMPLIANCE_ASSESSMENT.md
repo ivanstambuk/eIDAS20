@@ -235,6 +235,133 @@ The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: PSC Confidentiality and Integrity Across All Phases</strong></summary>
+
+##### What are Personalised Security Credentials (PSCs)?
+
+The RTS defines PSCs as "personalised features provided by the PSP for authentication purposes." In the EUDI Wallet context:
+
+| PSC Type | SCA Element | Storage Location | Protection Mechanism |
+|----------|-------------|------------------|---------------------|
+| **PIN/Passphrase** | Knowledge | WSCD (encrypted) | AES-256-GCM, hardware key |
+| **Biometric Template** | Inherence | OS Secure Enclave/TEE | OS-managed, never exported |
+| **Private Key** | Possession | WSCD (Secure Enclave/StrongBox) | Non-extractable, hardware-bound |
+| **SCA Attestation** | N/A (proof) | WUA certificate | Cryptographically signed by Wallet Provider |
+| **Authentication Code** | N/A (dynamic) | RAM only | One-time use, time-bound |
+
+##### "All Phases" — PSC Lifecycle Coverage
+
+Article 22(1) requires protection during **all phases**. The full lifecycle includes:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    PSC Lifecycle Phases (Art. 22-27)                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. CREATION         2. DELIVERY        3. ASSOCIATION      4. USE         │
+│  (Art. 23)           (Art. 24)          (Art. 25)           (Art. 4-9)     │
+│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐      │
+│  │ Generate│   ──►  │ Transmit│   ──►  │ Bind to │   ──►  │Authenti-│      │
+│  │ PSC     │        │ Securely│        │ User    │        │  cate   │      │
+│  └─────────┘        └─────────┘        └─────────┘        └─────────┘      │
+│       │                  │                  │                  │           │
+│       ▼                  ▼                  ▼                  ▼           │
+│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐      │
+│  │ Entropy │        │ TLS 1.3 │        │Identity │        │ SCA per │      │
+│  │ ≥ 256   │        │ / E2E   │        │ Proofing│        │ Art. 4  │      │
+│  └─────────┘        └─────────┘        └─────────┘        └─────────┘      │
+│                                                                             │
+│  5. RENEWAL          6. REVOCATION                                          │
+│  (Art. 26)           (Art. 27)                                              │
+│  ┌─────────┐        ┌─────────┐                                             │
+│  │ Replace │   ──►  │Invalidate│                                            │
+│  │ PSC     │        │ PSC      │                                            │
+│  └─────────┘        └─────────┘                                             │
+│       │                  │                                                  │
+│       ▼                  ▼                                                  │
+│  ┌─────────┐        ┌─────────┐                                             │
+│  │ SCA for │        │ Immediate│                                            │
+│  │ renewal │        │ effect   │                                            │
+│  └─────────┘        └─────────┘                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Security Controls Per Lifecycle Phase
+
+| Phase | RTS Article | Security Control | EUDI Wallet Implementation |
+|-------|-------------|------------------|---------------------------|
+| **Creation** | Art. 23 | Cryptographic key generation in secure environment | Keys generated in WSCD (Secure Enclave/StrongBox) |
+| **Delivery** | Art. 24 | Secure channel, one-time use | TLS 1.3, mTLS for attestation delivery |
+| **Association** | Art. 25 | SCA required for binding | User completes identity proofing + SCA before credential binding |
+| **Use** | Art. 4-22 | SCA with independence of elements | PIN/biometric unlocks WSCD key for KB-JWT signing |
+| **Renewal** | Art. 26 | SCA required for renewal | Re-issuance requires full SCA |
+| **Revocation** | Art. 27 | Immediate invalidation | WUA revocation propagates via Wallet Provider |
+
+##### NIST SP 800-63 Alignment
+
+NIST SP 800-63-4 (2025) provides complementary guidance:
+
+| NIST Requirement | RTS Equivalent | EUDI Wallet Status |
+|------------------|----------------|-------------------|
+| **AAL2+**: Possession of authenticator + second factor | Art. 4: Two-factor SCA | ✅ Key + PIN/biometric |
+| **Phishing-resistant MFA**: FIDO2/passkeys recommended | Art. 5: Dynamic linking | ✅ KB-JWT binds transaction |
+| **Verifier impersonation resistance** | Art. 22: PSC confidentiality | ✅ mTLS, app attestation |
+| **No email OTP for high assurance** | Art. 6-8: Element requirements | ✅ Hardware-bound elements |
+
+##### ENISA Digital Identity Security Goals
+
+ENISA's Digital Identity Standards report defines four primary security goals:
+
+| ENISA Goal | Description | EUDI Wallet Implementation |
+|------------|-------------|---------------------------|
+| **Protection against forgery** | PSC cannot be fabricated | Private keys non-extractable; WUA signed by Wallet Provider |
+| **Protection against cloning** | PSC cannot be duplicated | Keys generated in WSCD, never leave hardware |
+| **Protection against eavesdropping** | PSC not exposed in transit | TLS 1.3 + app attestation; KB-JWT contains no PSC |
+| **Protection against unauthorized access** | PSC requires user authentication | WIAM_14: Biometric/PIN before any key operation |
+
+##### Threat Model: PSC Confidentiality and Integrity
+
+| Threat | Lifecycle Phase | Attack Vector | Mitigation | EUDI Wallet Status |
+|--------|----------------|---------------|------------|-------------------|
+| **Creation compromise** | Creation | Weak RNG, predictable keys | WSCD uses hardware TRNG | ✅ Secure Enclave/StrongBox |
+| **Interception in transit** | Delivery | MITM during attestation | mTLS, certificate pinning | ✅ WUA delivery over mTLS |
+| **Credential replay** | Use | Reuse of authentication code | One-time nonce in KB-JWT | ✅ `nonce` binding |
+| **PIN brute force** | Use | Offline guessing | Attempt limits, entropy requirements | ⚠️ See K-1, K-2 |
+| **Key extraction** | All phases | Malware reads key material | Non-extractable keys in WSCD | ✅ WIAM_20 |
+| **Unauthorized revocation** | Revocation | DoS via false revocation | User authentication for revocation | ✅ WIAM_06 |
+| **Stale revocation** | Revocation | Revoked key still accepted | Real-time status check | ⚠️ Depends on RP implementation |
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Source | Security Level |
+|----------|-----------|--------|----------------|
+| **iOS** | PIN storage | iOS Keychain with `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` | Device-bound, encrypted |
+| **iOS** | Key storage | Secure Enclave via `kSecAttrTokenIDSecureEnclave` | Hardware, non-extractable |
+| **Android** | PIN storage | Android Keystore + AES-GCM (see Art. 22(2)(b) deep-dive) | Encrypted with hardware key |
+| **Android** | Key storage | `setIsStrongBoxBacked(true)` or TEE | Hardware, non-extractable |
+| **Both** | Authentication code | RAM-only, single-use | Not persisted |
+
+##### Gap Analysis: PSC Confidentiality
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **PSC-1** | Revocation propagation delay not specified | Medium | Define SLA for WUA revocation propagation (e.g., < 1 hour) |
+| **PSC-2** | Renewal SCA requirements not detailed | Low | Clarify: full SCA required for renewal, or can existing session suffice? |
+| **PSC-3** | PIN entropy covered separately (K-1) | See K-1 | Cross-reference: PIN entropy requirements in SCA Attestation Rulebook |
+| **PSC-4** | Authentication code lifetime not specified | Low | Define max validity for KB-JWT (e.g., 5 minutes) |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **PSC Inventory**: Document all PSC types in SCA Attestation context (PIN, biometric template reference, private key, WUA)
+2. **Phase-by-Phase Compliance**: Map each lifecycle phase (Art. 22-27) to EUDI Wallet controls
+3. **ENISA Alignment**: Reference ENISA's four security goals as compliance targets
+4. **Revocation SLA**: Mandate maximum propagation delay for WUA revocation
+5. **Authentication Code TTL**: Specify maximum validity for KB-JWT signatures (e.g., 5 minutes)
+
+</details>
+
 **Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
 - **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
 - **Biometric template** (inherence): OS-managed, never exported
