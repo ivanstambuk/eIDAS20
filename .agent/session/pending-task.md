@@ -1,51 +1,78 @@
-# Session Context
-<!-- MAX 100 LINES -->
+# Session Context: PSD2 SCA Compliance Assessment
 
 ## Current State
 
-- **Focus**: VCQ tool complete — all phases finished
-- **Next**: Ready for next feature (backlog review)
-- **Status**: ✅ VCQ complete
-- **Phase**: N/A
+- **Focus**: Completed v2.0 major restructure of PSD2 SCA Compliance Assessment
+- **Status**: Regulation-First Compliance Matrix — ready for review
+- **Phase**: Research (`.agent/research/psd2-sca-compliance/`)
+- **Lines**: 976
 
-## Key Files
+---
 
-- `docs-portal/src/pages/VendorQuestionnaire.jsx` — main VCQ component
-- `docs-portal/src/pages/VendorQuestionnaire.css` — VCQ styles
-- `.agent/session/VCQ_TOOL_PLAN.md` — implementation plan (complete)
-- `docs-portal/config/vcq/requirements/*.yaml` — requirement definitions
+## Version 2.0 Restructure (This Session)
 
-## VCQ Status Summary
+### New Structure
 
-| Phase | Status |
-|-------|--------|
-| Phase 1: Core Framework | ✅ Complete |
-| Phase 2: Intermediary Specifics | ✅ Complete |
-| Phase 3: Source Selection | ✅ Complete |
-| Phase 4: Output Views | ✅ Complete |
-| Phase 5: Polish | ✅ Complete |
+**Part I: PSD2 Directive (2015/2366)**
+- Article 97 — Authentication (triggers, dynamic linking)
 
-## Completed in This Session
+**Part II: PSD2 RTS (2018/389)**
+- Article 2 — General authentication requirements
+- Article 3 — Review of security measures  
+- Article 4 — Authentication code (with all sub-provisions)
+- Article 5 — Dynamic linking (with all sub-provisions)
+- Article 6 — Independence of elements
+- Article 7 — Requirements for possession elements
+- Article 8 — Requirements for knowledge elements
+- Article 9 — Requirements for inherence elements
+- Article 18 — TRA exemption
+- Article 22 — PSC confidentiality
+- Article 24 — Secure execution environment
 
-1. **PDF Export** — Browser print-to-PDF with styled document template
-2. **ARF External Links** — GitHub links to ARF HLRs with styled badges
+**Part III: Appendices**
+- A: Terminology and Definitions
+- B: Authentication Code Interpretation
+- C: mDOC Protocol Gap Analysis
+- D: TPP Scenario Coverage
+- E: Batch Payments Gap Analysis
+- F: Wallet Recovery and Accessibility
+- G: GitHub Discussion Analysis
+- H: Reference Implementation Evidence
 
-## Context Notes
+### Key Features
 
-Things git commits don't capture:
-- UI was simplified from 3 steps to 2 steps (removed redundant Extended Scope toggle)
-- DORA ICT requirements (+12) now auto-include when DORA source is selected
-- Field names in build output must match React components: `requirement` not `question`, `explanation` not `guidance`
-- View toggle (Overview/Details) state now persists in localStorage
-- PDF export uses browser print (window.print()) with embedded styles
-- ARF links point to official GitHub repository annex-2-high-level-requirements.md
+1. **Each provision has its own heading** → deep-linkable on GitHub
+2. **Consolidated evidence per provision** → ARF HLRs + TS12 + implementation status in one place
+3. **Clear status indicators** → ✅ Wallet / ⚠️ Partial / ❌ PSP / 🔶 Rulebook
+4. **Fuller context** → explanatory notes for regulators/legal counsel
 
-## Quick Start
+---
 
-```bash
-cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Navigate to http://localhost:5173/eIDAS20/#/vcq
-# Test: Select PIF → Select DORA → Generate → Verify 23 requirements
-# Test: Export as PDF → Browser print dialog opens
-# Test: VIF + ARF → Check orange ARF badges in legal basis column
+## ARF HLRs Covered
+
+| Topic | HLRs | Purpose |
+|-------|------|---------|
+| Topic 20 | SUA_01–SUA_06 | Strong User Authentication for payments |
+| Topic 40 | WIAM_06, WIAM_08, WIAM_09, WIAM_13, WIAM_14–14c, WIAM_17, WIAM_19, WIAM_20 | Wallet Unit management |
+| Topic 9 | WUA_09–WUA_16 | Wallet Unit Attestation |
+| Topic 6 | RPA_01–RPA_12 | Relying Party authentication |
+| Topic 38 | WURevocation_09 | Wallet revocation |
+| Topic 54 | AS-WP-54-001/002 | Accessibility |
+
+---
+
+## Uncommitted Files
+
 ```
+ M .agent/session/pending-task.md
+ M TRACKER.md
+ M .agent/research/psd2-sca-compliance/PSD2_SCA_COMPLIANCE_ASSESSMENT.md (v2.0)
+```
+
+---
+
+## Next Actions
+
+1. **User Review**: Review the new regulation-first structure
+2. **Commit**: Stage and commit the v2.0 assessment
+3. **Optional**: Further refinements based on feedback

@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-26 16:13 CET |
-| **Version** | V3.9.13 |
+| **Last Updated** | 2026-01-27 17:26 CET |
+| **Version** | V3.9.14 |
 | **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 64 VCQ reqs, 559 ARF HLRs |
-| **Next Action** | Session complete. Backlog items available. |
+| **Next Action** | PSD2 SCA Compliance Assessment complete (v1.2). Ready for GitHub sharing. |
 
 
 ---
@@ -28,6 +28,8 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-27 17:26 | **Research: PSD2 SCA Compliance Assessment (v1.2)** — Complete article-by-article assessment of EUDI Wallet TS12 vs PSD2 RTS 2018/389. Imported RTS full text, cloned iOS/Android reference implementations (pinned commits). Analyzed Dutch PA report. **CRITICAL FIX**: Corrected authentication code definition (VP Token, not `jti`). Deliverables: `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` (734 lines), KI updated. 49 requirements mapped: 18 compliant, 6 partial, 9 PSP-required, 2 impl-specific. |
+| 2026-01-26 20:52 | **Feat: VCQ Architecture Tile + Layout Fixes** — Redesigned Architecture source to 3 checkboxes (ARF, Tech Specs, Rulebooks) with TS1–TS14, PID & mDL, ARF hints. DORA now default-on. Removed "Your Selection" summary panel. Fixed regulation page sidebar overlap caused by `margin-left: -80px` in CopyReference.css gutter icon styling. |
 | 2026-01-26 16:13 | **Feat: RFC 2119 Obligation Levels (VCQ)** — Replaced subjective "criticality" (Critical/High/Medium/Low) with RFC 2119 obligation levels (MUST/SHOULD/MAY) derived from modal verbs in requirement text. Added `deriveObligation()` to build-vcq.js, updated UI summary cards and table badges. Fixed ARF version (1.5→2.7.3). Recategorized VEND-CORE-015/016/017 from governance→registration. Retro: documented category semantics, added RFC 2119 terms to TERMINOLOGY.md. |
 | 2026-01-26 10:28 | **Feat: VCQ Source Selection Simplification (DEC-255)** — Simplified VCQ UI from 5 toggle cards to 3-tile model: Primary (eIDAS + Implementing Acts bundled), Related Regulations (GDPR/DORA checkboxes), Architecture (ARF as checkbox item). Added "Implementation guidance" description, requirement count badges. Fixed validator for DEC-254 (VEND-INT-* format + legacy pif/vif acceptance). GitHub Pages CDN caching diagnosed as deployment issue. |
 | 2026-01-26 09:17 | **Refactor: VCQ Intermediary Consolidation (DEC-254)** — Discovered PIF/VIF were invented terms, not official regulatory terminology. ARF RPI_09 includes verification in unified RP Intermediary role. Merged pif.yaml+vif.yaml→intermediary.yaml (25 reqs, VEND-INT-*). Removed type selection from VCQ UI. Updated TERMINOLOGY.md with deprecation notices. Added AGENTS.md Rules 14-15 (terminology verification + source citation). Research docs: INTERMEDIARY_ROLE_ANALYSIS.md, VCQ_INTERMEDIARY_CONSOLIDATION.md. |
