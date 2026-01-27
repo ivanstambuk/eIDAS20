@@ -775,35 +775,194 @@ This dual display ensures user awareness of who is requesting access.
 
 ---
 
-#### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code linked to amount and payee
+#### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code linked to amount and payee
 
 > "(b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction;"
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Transactional data in device binding signature |
-| ✅ **Wallet** | TS12 §3.6 | `transaction_data_hashes` in KB-JWT |
+**Core Requirement**: This is the heart of **dynamic linking**—the authentication code must be cryptographically bound to the exact transaction details (amount + payee) that the user agreed to. This prevents an attacker from taking a valid authentication code and applying it to a different transaction.
 
-**Status**: ✅ Fully Supported
+| Binding Mechanism | Fulfillment | Reference | Implementation |
+|-------------------|-------------|-----------|----------------|
+| **Transaction Hash in Signature** | ✅ Wallet | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | `transaction_data_hashes` in KB-JWT |
+| **Payload Schema Validation** | ✅ Wallet | TS12 §4.3 | JSON Schema validation of amount/payee |
+| **User Consent Display** | ✅ Wallet | TS12 §3.3.1 | Amount/payee shown before signature |
+| **Device Binding Signature** | ✅ Wallet | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | WSCA-protected key signs KB-JWT |
 
-**Technical Detail**: The KB-JWT contains:
+**Status**: ✅ **Fully Supported** via cryptographic hash binding
+
+---
+
+**Deep Dive: Cryptographic Binding Architecture**
+
+The binding between authentication code and transaction is achieved through a **hash-then-sign** mechanism:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  PSP/RP Request                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ transaction_data: {                                      │   │
+│  │   type: "urn:eudi:sca:payment:1",                        │   │
+│  │   payload: {                                             │   │
+│  │     transaction_id: "TX-2025-001234",                    │   │
+│  │     payee: {                                             │   │
+│  │       name: "ACME Corporation",                          │   │
+│  │       id: "DE89370400440532013000"   ← IBAN              │   │
+│  │     },                                                   │   │
+│  │     currency: "EUR",                                     │   │
+│  │     amount: 150.00                                       │   │
+│  │   }                                                      │   │
+│  │ }                                                        │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│            Base64url encode + SHA-256                           │
+│                           ▼                                     │
+│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"          │
+└─────────────────────────────────────────────────────────────────┘
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  Wallet Unit                                                    │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ 1. Display to User:                                      │   │
+│  │    ┌───────────────────────────────────────────────────┐ │   │
+│  │    │  Payment Confirmation                             │ │   │
+│  │    │  ─────────────────────────────────────────────────│ │   │
+│  │    │  Amount:  €150.00                     [Level 1]   │ │   │
+│  │    │  Payee:   ACME Corporation            [Level 1]   │ │   │
+│  │    │  IBAN:    DE89 3704 0044 0532 0130 00 [Level 2]   │ │   │
+│  │    │                                                   │ │   │
+│  │    │  [Confirm Payment]      [Cancel Payment]          │ │   │
+│  │    └───────────────────────────────────────────────────┘ │   │
+│  │                                                          │   │
+│  │ 2. User confirms → SCA (PIN/biometric)                   │   │
+│  │                                                          │   │
+│  │ 3. Generate KB-JWT with transaction hash:                │   │
+│  │    {                                                     │   │
+│  │      "aud": "x509_san_dns:psp.example.com",              │   │
+│  │      "iat": 1741269093,                                  │   │
+│  │      "jti": "deeec2b0-3bea-4477-...",   ← Auth Code      │   │
+│  │      "nonce": "bUtJdjJESWdm...",                         │   │
+│  │      "transaction_data_hashes": [                        │   │
+│  │        "OJcnQQByvV1i..."    ← BINDS to €150/ACME         │   │
+│  │      ],                                                  │   │
+│  │      "transaction_data_hashes_alg": "sha-256",           │   │
+│  │      "amr": [                                            │   │
+│  │        {"knowledge": "pin_6_or_more_digits"},            │   │
+│  │        {"inherence": "fingerprint_device"}               │   │
+│  │      ]                                                   │   │
+│  │    }                                                     │   │
+│  │                                                          │   │
+│  │ 4. Sign KB-JWT with WSCA-protected private key           │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+                            ▼
+              ECDSA Signature = Authentication Code
+              Cryptographically bound to €150.00 + ACME Corp
+```
+
+---
+
+**TS12 Transaction Data Schema (Payment Confirmation)**
+
+TS12 §4.3.1 defines the complete `urn:eudi:sca:payment:1` payload schema:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| **`transaction_id`** | string | ✅ | Unique identifier of RP's interaction |
+| **`date_time`** | string (ISO8601) | ❌ | Timestamp of interaction |
+| **`payee.name`** | string | ✅ | Name of payee/merchant |
+| **`payee.id`** | string | ✅ | IBAN or other payment identifier |
+| **`payee.logo`** | string (URL) | ❌ | Payee logo for display |
+| **`payee.website`** | string (URL) | ❌ | Payee website |
+| **`currency`** | string (ISO4217) | ✅ | `"EUR"`, `"USD"`, etc. |
+| **`amount`** | number | ✅ | Major.minor format (e.g., `150.00`) |
+| **`amount_estimated`** | boolean | ❌ | For MITs where amount may vary |
+| **`execution_date`** | string (ISO8601) | ❌ | When payment executes |
+| **`sct_inst`** | boolean | ❌ | Request SEPA Instant Transfer |
+| **`pisp.*`** | object | ❌ | TPP details if PISP-facilitated |
+| **`recurrence.*`** | object | ❌ | For recurring payments |
+
+**Complete JSON Example** (SEPA Credit Transfer):
+
 ```json
 {
-  "nonce": "[from PSP request]",
-  "iat": 1706380800,
-  "jti": "[unique ID]",
-  "transaction_data_hashes": [
-    "sha-256 hash of: {amount, currency, payee, ...}"
-  ],
-  "transaction_data_hashes_alg": "sha-256"
+  "type": "urn:eudi:sca:payment:1",
+  "credential_ids": ["SCA_ATT_ACME_BANK_001"],
+  "transaction_data_hashes_alg": "sha-256",
+  "payload": {
+    "transaction_id": "TX-2025-001234",
+    "date_time": "2025-01-27T15:30:00Z",
+    "payee": {
+      "name": "ACME Corporation",
+      "id": "DE89370400440532013000",
+      "logo": "https://acme.com/logo.png",
+      "website": "https://acme.com"
+    },
+    "currency": "EUR",
+    "amount": 150.00,
+    "execution_date": "2025-01-28",
+    "sct_inst": true
+  }
 }
 ```
 
-The signature over this JWT (using the SCA attestation private key) cryptographically binds the authentication to the specific amount and payee.
+---
 
-> ⚠️ **Format Note**: `transaction_data_hashes` is a **KB-JWT claim (SD-JWT-VC only)**. TS12 v1.0 does not specify an equivalent dynamic linking mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC-based SCA should monitor TS12 updates or implement custom solutions.
+**Supported Transaction Types**
+
+TS12 defines four built-in transaction data types:
+
+| Type URN | Use Case | Key Fields |
+|----------|----------|------------|
+| `urn:eudi:sca:payment:1` | Payment confirmation (SEPA, cards) | amount, payee, currency |
+| `urn:eudi:sca:login_risk_transaction:1` | Login + risk-based auth | action, service |
+| `urn:eudi:sca:account_access:1` | AIS consent | aisp, description |
+| `urn:eudi:sca:emandate:1` | E-mandate creation | creditor, amount bounds |
+
+SCA Attestation Rulebooks may define additional transaction types with custom schemas.
 
 ---
+
+**Visualization Hierarchy (TS12 §3.3.1)**
+
+TS12 mandates that amount and payee are **prominently displayed**:
+
+| Level | Requirement | Typical Fields |
+|-------|-------------|----------------|
+| **1** | MUST be _prominently_ displayed on main screen | Amount, Payee name |
+| **2** | MUST be displayed on main screen | IBAN, Execution date |
+| **3** | MAY be on supplementary screen | Transaction ID, Timestamp |
+| **4** | MAY be omitted from display | Internal reference |
+
+> **EBA Technology Neutrality**: PSD2 RTS Article 5 does not prescribe specific cryptographic methods. The EBA clarified: "Payment service providers shall have flexibility to decide on the technology used for implementing strong customer authentication, including dynamic linking" ([EBA Q&A 2018_4039](https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2018_4039)). TS12's hash-then-sign approach is one compliant implementation.
+
+---
+
+**Gap Analysis: mDOC (ISO 18013-5) Format**
+
+> ⚠️ **Critical Format Gap**: TS12 v1.0 only specifies `transaction_data_hashes` for **SD-JWT-VC** (Selective Disclosure JSON Web Token). There is **no equivalent mechanism for mDOC (ISO 18013-5)** credential format.
+
+| Aspect | SD-JWT-VC | mDOC (ISO 18013-5) |
+|--------|-----------|-------------------|
+| Transaction binding claim | `transaction_data_hashes` in KB-JWT | ❌ Not specified |
+| Hash algorithm indicator | `transaction_data_hashes_alg` | ❌ N/A |
+| Signature mechanism | KB-JWT signature (ECDSA/EdDSA) | Mobile Security Object (MSO) |
+| TS12 support | ✅ Full | ❌ None |
+
+**Why This Matters**:
+- EUDI Wallet supports both SD-JWT-VC and mDOC formats
+- Some PSPs may prefer mDOC for consistency with mDL use cases
+- Without dynamic linking, mDOC-based SCA cannot comply with Art. 5(1)(b)
+
+**Mitigation Options**:
+1. **Use SD-JWT-VC only for SCA**: Current TS12 approach
+2. **Custom mDOC extension**: Define `transactionDataDigests` in MSO
+3. **Wait for TS12 v2.0**: May include mDOC dynamic linking
+
+**Recommendation**: PSPs requiring mDOC-based SCA should engage with the EUDI standardization process or implement custom solutions aligned with ISO 18013-5 `DeviceSignedDocument` extensions.
+
+---
+
+
 
 #### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code acceptance verification
 
@@ -2226,4 +2385,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.8** | 2026-01-27 | AI Analysis | **Art. 5(2) WYSIWYS deep-dive**: Complete rewrite of Art. 5(2) section with phase-by-phase CIA analysis (Generation, Transmission, Display, Use). Added WYSIWYS principle explanation, overlay attack gap analysis, industry best practices table (RASP, secure display, overlay detection). Identified at-rest confidentiality gap for transaction data. TS12 §3.3.1 display hierarchy levels documented. |
 | **4.9** | 2026-01-27 | AI Analysis | **Art. 5(1)(d) cryptographic deep-dive**: Complete rewrite with SHA-256 hash binding diagram, cryptographic security properties table (collision/pre-image resistance), 4-layer replay protection (hash, jti, iat, nonce). Added EMV ARQC comparison, JSON canonicalization edge case, time-bound validity gap analysis. Recommendation for SCA Attestation Rulebooks to specify max `iat` age. |
 | **4.10** | 2026-01-27 | AI Analysis | **Art. 5(1)(c) PSP verification deep-dive**: Complete rewrite with 5-step verification algorithm diagram, Python pseudocode implementation, Issuer-Requested vs TPP flow comparison table with ASCII diagrams. Documented TPP verification gap from GitHub Discussion #439 with community feedback. Added PSD2 Art. 73-74 liability framework table and PSP risk mitigation recommendations. |
+| **4.11** | 2026-01-27 | AI Analysis | **Art. 5(1)(b) dynamic linking deep-dive**: Complete rewrite with cryptographic binding architecture (hash-then-sign) diagram showing full flow from PSP request to ECDSA signature. Added complete TS12 §4.3.1 `urn:eudi:sca:payment:1` schema table with all fields. Documented the 4 supported transaction types. Added visualization hierarchy levels table (TS12 §3.3.1). References EBA Q&A 2018_4039 on technology neutrality. Critical gap analysis for mDOC (ISO 18013-5) format — no equivalent to `transaction_data_hashes` exists, with mitigation options. |
 
