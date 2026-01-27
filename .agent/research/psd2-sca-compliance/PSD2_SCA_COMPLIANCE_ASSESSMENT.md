@@ -1795,6 +1795,186 @@ class PinLockoutController {
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Session Protection</strong></summary>
+
+##### Core Requirement: End-to-End Session Security
+
+Article 4(3)(c) mandates protection against **capture** (eavesdropping) and **manipulation** (tampering) of authentication data during the communication session. This covers both transport-layer and application-layer security.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       Session Protection Architecture                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌───────────────┐        OID4VP Request/Response         ┌──────────────┐ │
+│  │    WALLET     │ ◄══════════════════════════════════════► │     PSP     │ │
+│  │  (Verifier)   │                                         │  (Relying   │ │
+│  └───────────────┘                                         │   Party)    │ │
+│         │                                                   └──────────────┘ │
+│         │                                                                   │
+│  ┌──────┴──────────────────────────────────────────────────────────────────┐│
+│  │                      PROTECTION LAYERS                                  ││
+│  ├─────────────────────────────────────────────────────────────────────────┤│
+│  │                                                                         ││
+│  │  Layer 1: TRANSPORT (TLS 1.2+/1.3)                                      ││
+│  │  ─────────────────────────────────                                     ││
+│  │  • Encryption: AES-GCM-256 / ChaCha20-Poly1305                          ││
+│  │  • Integrity: HMAC / AEAD                                               ││
+│  │  • Authentication: X.509 certificates                                   ││
+│  │                                                                         ││
+│  │  Layer 2: APPLICATION (JAR/JWE)                                         ││
+│  │  ───────────────────────────────                                       ││
+│  │  • Request encryption: JWT Secured Authorization Request (JAR)          ││
+│  │  • Response signing: KB-JWT signature                                   ││
+│  │  • Nonce binding: Prevents replay                                       ││
+│  │                                                                         ││
+│  │  Layer 3: SESSION BINDING                                               ││
+│  │  ────────────────────────────                                          ││
+│  │  • Nonce: Fresh per request                                             ││
+│  │  • Audience: Binds to specific verifier                                 ││
+│  │  • Transaction hash: Binds to specific transaction                      ││
+│  │                                                                         ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Protection Against Capture (Eavesdropping)
+
+| Protection Mechanism | Layer | Implementation |
+|---------------------|-------|----------------|
+| **TLS 1.2+ encryption** | Transport | All OID4VP communications over HTTPS |
+| **Forward secrecy** | Transport | ECDHE key exchange (ephemeral keys) |
+| **JAR encryption** | Application | Authorization Request can be JWE-encrypted |
+| **Credential encryption** | Application | SD-JWT-VC with selective disclosure |
+
+##### Protection Against Manipulation (Tampering)
+
+| Protection Mechanism | Layer | What It Protects |
+|---------------------|-------|-----------------|
+| **TLS AEAD** | Transport | Tamper detection at transport layer |
+| **KB-JWT signature** | Application | Response integrity |
+| **Nonce binding** | Application | Request-response correlation |
+| **Transaction hash** | Application | Dynamic linking integrity |
+| **Audience restriction** | Application | Prevents redirect to wrong verifier |
+
+##### OID4VP Session Binding Mechanisms
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       OID4VP Session Binding                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  AUTHORIZATION REQUEST (PSP → Wallet)                                       │
+│  ─────────────────────────────────────                                     │
+│  {                                                                          │
+│    "nonce": "abc123...",        ◄── Fresh per request                       │
+│    "client_id": "psp.example",  ◄── PSP identifier                         │
+│    "response_uri": "https://...",◄── Where to send response                │
+│    "presentation_definition": {...}                                         │
+│  }                                                                          │
+│                                                                             │
+│  VP TOKEN RESPONSE (Wallet → PSP)                                           │
+│  ─────────────────────────────────                                         │
+│  KB-JWT contains:                                                           │
+│  {                                                                          │
+│    "nonce": "abc123...",        ◄── MUST match request nonce               │
+│    "aud": "psp.example",        ◄── MUST match client_id                   │
+│    "iat": 1706...,              ◄── Timestamp for freshness                │
+│    "transaction_data_hashes": [...]  ◄── Dynamic linking                   │
+│  }                                                                          │
+│                                                                             │
+│  VERIFICATION:                                                              │
+│  • nonce mismatch → REJECT (replay/confusion attack)                       │
+│  • aud mismatch → REJECT (redirect attack)                                 │
+│  • iat > 5 min → REJECT (stale presentation)                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### TLS Requirements Analysis
+
+| Requirement | PSD2 RTS Ref | Implementation |
+|-------------|-------------|----------------|
+| **TLS version** | Chapter V | TLS 1.2+ (TLS 1.3 preferred) |
+| **Cipher suites** | Best practice | AEAD ciphers (AES-GCM, ChaCha20) |
+| **Certificate validation** | Art. 29 | PSP certificate verified by wallet |
+| **Forward secrecy** | Best practice | ECDHE key exchange |
+| **HSTS** | Best practice | Enforced on PSP endpoints |
+| **Certificate pinning** | Optional | Recommended for high-value transactions |
+
+##### Session Hijacking Prevention
+
+| Attack Vector | OID4VP Countermeasure | Status |
+|---------------|----------------------|--------|
+| **Man-in-the-middle** | TLS + certificate validation | ✅ Mitigated |
+| **Session fixation** | Nonce generated by PSP | ✅ Mitigated |
+| **Replay attack** | Unique nonce per request | ✅ Mitigated |
+| **Response redirect** | Audience (`aud`) claim | ✅ Mitigated |
+| **Cross-device attack** | Device binding + nonce | ✅ Mitigated |
+| **Downgrade attack** | TLS 1.2+ only | ✅ Mitigated |
+
+##### Same-Device vs Cross-Device Flows
+
+| Flow Type | Session Protection | Additional Considerations |
+|-----------|-------------------|--------------------------|
+| **Same-device** | Direct app-to-app communication | Intent/Universal Link security |
+| **Cross-device (QR)** | Encrypted channel establishment | Device proximity not verified |
+| **Cross-device (BLE)** | Encrypted BLE channel | Requires BLE security mode 1 level 4 |
+
+> **Note**: Cross-device flows (e.g., QR code scanned from desktop) have additional attack surface. The session binding via nonce/aud helps, but device proximity is not cryptographically verified.
+
+##### Encrypted Authorization Request (JAR)
+
+TS12 §3.5 supports encrypted requests for additional protection:
+
+| JAR Property | Security Benefit |
+|--------------|-----------------|
+| **JWE encryption** | Request contents hidden from intermediaries |
+| **Signed + encrypted** | Integrity + confidentiality |
+| **Ephemeral keys** | Forward secrecy for request content |
+
+##### Reference Implementation Evidence
+
+| Platform | Session Protection | Implementation |
+|----------|-------------------|----------------|
+| **iOS** | TLS enforcement | `NSAppTransportSecurity` requires TLS |
+| **iOS** | Certificate validation | `URLSession` default behavior |
+| **Android** | TLS enforcement | `NetworkSecurityConfig` |
+| **Android** | Certificate pinning | `network_security_config.xml` |
+| **Both** | Nonce/aud verification | OID4VP library validation |
+
+##### Threat Model: Session Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Packet sniffing** | Unencrypted traffic | TLS 1.2+ mandatory | ✅ Mitigated |
+| **MITM (network)** | Rogue access point | Certificate validation | ✅ Mitigated |
+| **MITM (DNS)** | DNS spoofing | DNSSEC, cert validation | ⚠️ Partial (DNSSEC optional) |
+| **Request interception** | Capture authorization request | JAR encryption (optional) | ⚠️ Partial |
+| **Response tampering** | Modify VP Token | KB-JWT signature | ✅ Mitigated |
+| **Session token theft** | Steal auth code | Audience binding, short validity | ✅ Mitigated |
+
+##### Gap Analysis: Session Protection
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **SP-1** | JAR encryption not mandatory | Medium | Consider mandatory JAR encryption for high-value transactions |
+| **SP-2** | TLS 1.3 not mandated | Low | TS12 should encourage TLS 1.3 for improved performance and security |
+| **SP-3** | Cross-device proximity not verified | Medium | Explore Bluetooth/NFC proximity verification for cross-device flows |
+| **SP-4** | Certificate pinning not required | Low | Consider mandatory pinning for PSP certificate in wallet |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **TLS Version**: Mandate TLS 1.2 minimum, recommend TLS 1.3
+2. **JAR for Sensitive Requests**: Require encrypted JAR for transactions above TRA threshold
+3. **Nonce Requirements**: Specify minimum entropy (128 bits) and single-use enforcement
+4. **Session Validity**: Specify maximum session lifetime (e.g., 5 minutes from nonce generation)
+5. **Cross-Device Security**: Document additional risks and mitigations for QR-initiated flows
+
+</details>
+
 **Context**: OID4VP inherits security from HTTPS (TLS 1.2+). Additionally, TS12 allows optional encryption of request/response payloads for additional protection.
 
 ---

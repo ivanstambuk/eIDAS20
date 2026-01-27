@@ -100,7 +100,7 @@ A real deep-dive must include **at least 3** of:
 | Art. 4(2)(c) | Forgery resistance | ✅ Yes |
 | Art. 4(3)(a) | Non-disclosure of which element was incorrect | ✅ Yes |
 | Art. 4(3)(b) | Maximum attempts and lockout | ✅ Yes |
-| Art. 4(3)(c) | Session protection | ❌ No |
+| Art. 4(3)(c) | Session protection | ✅ Yes |
 | Art. 4(3)(d) | Session timeout (5 min) | ❌ No |
 
 ### Article 5 — Dynamic Linking
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 24 |
-| ❌ Not Done | 23 |
+| ✅ Done | 25 |
+| ❌ Not Done | 22 |
 | **Total** | 47 |
 
 ---
@@ -171,6 +171,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 4(2)(a) | Deep-dive: Disclosed vs. protected, SD-JWT selective disclosure, amr analysis, gaps FD-1 to FD-3 |
 | 2026-01-27 | Art. 4(2)(b) | Deep-dive: ECDSA random nonce, jti uniqueness, replay prevention, gaps CR-1 to CR-3 |
 | 2026-01-27 | Art. 4(2)(c) | Deep-dive: Trust chain, ECDLP hardness, verification flow, hardware security, gaps FR-1 to FR-3 |
+| 2026-01-27 | Art. 4(3)(c) | Deep-dive: OID4VP session binding, TLS layers, hijacking prevention, gaps SP-1 to SP-4 |
 
 ---
 
