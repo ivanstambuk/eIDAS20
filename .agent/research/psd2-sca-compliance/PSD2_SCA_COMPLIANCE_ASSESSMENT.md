@@ -1223,6 +1223,177 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Code Re-generation Prevention</strong></summary>
+
+##### Core Requirement: Cryptographic Unpredictability
+
+Article 4(2)(b) mandates that knowing previous authentication codes provides **zero advantage** for generating new ones. This is achieved through multiple layers of cryptographic unpredictability:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Authentication Code Unpredictability                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     VP Token (Auth Code)                             │   │
+│  ├─────────────────────────────────────────────────────────────────────┤   │
+│  │                                                                     │   │
+│  │   ┌─────────────────────┐   ┌─────────────────────┐                │   │
+│  │   │   KB-JWT Header     │   │   KB-JWT Payload    │                │   │
+│  │   └─────────────────────┘   │                     │                │   │
+│  │                             │  jti: "a7f2c9..."   │◄── UNIQUE      │   │
+│  │                             │  iat: 1706xxx       │◄── TIMESTAMPED │   │
+│  │                             │  nonce: "xyz..."    │◄── RP-PROVIDED │   │
+│  │                             └─────────────────────┘                │   │
+│  │                                                                     │   │
+│  │   ┌─────────────────────────────────────────────────────────────┐  │   │
+│  │   │                    ECDSA Signature                          │  │   │
+│  │   │   (r, s) = Sign(privateKey, message, randomNonce_k)        │  │   │
+│  │   │                                                             │  │   │
+│  │   │   k = cryptographically random ◄── DIFFERENT EVERY TIME    │  │   │
+│  │   │   Even same message → different (r, s) each signature      │  │   │
+│  │   └─────────────────────────────────────────────────────────────┘  │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                             │
+│  Knowing previous (jti, nonce, iat, signature) reveals NOTHING about:      │
+│  • Next jti (random UUID)                                                   │
+│  • Next signature (random k in ECDSA)                                       │
+│  • Private key (ECDLP hard problem)                                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Unpredictability Mechanisms
+
+| Mechanism | Location | Entropy Source | Uniqueness Guarantee |
+|-----------|----------|----------------|---------------------|
+| **`jti` claim** | KB-JWT payload | UUID v4 (122 bits entropy) | Cryptographically random |
+| **`nonce`** | KB-JWT payload | RP-provided challenge | Fresh per request |
+| **`iat`** | KB-JWT payload | System clock | Monotonically increasing |
+| **ECDSA k-value** | Signature | Hardware RNG (SE/StrongBox) | Random per signature |
+| **Transaction hash** | `transaction_data_hashes` | SHA-256 of transaction | Unique per transaction |
+
+##### ECDSA Non-Deterministic Signature Analysis
+
+ECDSA signatures include a random nonce `k`:
+
+```
+Signature(m) = (r, s) where:
+  - k ← random from [1, n-1]
+  - r = (k × G).x mod n
+  - s = k⁻¹ × (H(m) + r × privateKey) mod n
+```
+
+| Property | Implication for Art. 4(2)(b) |
+|----------|------------------------------|
+| **Different k each time** | Same message, same key → different signature |
+| **k is secret** | Even with (r, s), cannot determine k without breaking ECDLP |
+| **k from hardware RNG** | iOS/Android SE uses certified TRNG |
+| **k never reused** | Reuse would leak private key — hardware prevents this |
+
+> **Critical Security Note**: If `k` is ever reused or predictable, the private key can be extracted (Sony PlayStation 3 hack, 2010). iOS Secure Enclave and Android StrongBox hardware ensure k is always freshly random.
+
+##### JWT ID (`jti`) Uniqueness
+
+The `jti` claim provides **token-level uniqueness**:
+
+| `jti` Property | Value | Security Implication |
+|----------------|-------|---------------------|
+| **Format** | UUID v4 | 122 bits of randomness |
+| **Collision probability** | 2⁻¹²² | Negligible (heat death of universe) |
+| **Generated by** | Wallet (WSCA) | Not predictable by RP |
+| **Used for** | Replay detection | PSP can reject same `jti` twice |
+
+##### Replay Prevention Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       Replay Attack Prevention                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Attacker captures:     VP Token₁ (jti="abc123", nonce="xyz", sig₁)        │
+│                                                                             │
+│  Replay attempt 1: Use same VP Token₁ again                                │
+│  ────────────────────────────────────────                                  │
+│  → PSP checks: Is jti="abc123" in used-jti database?                       │
+│  → YES → REJECT (jti already used)                                          │
+│                                                                             │
+│  Replay attempt 2: Use VP Token₁ for different transaction                 │
+│  ────────────────────────────────────────────────────                      │
+│  → PSP checks: Does transaction_data_hash match current transaction?       │
+│  → NO → REJECT (hash mismatch)                                              │
+│                                                                             │
+│  Replay attempt 3: Modify jti/nonce and re-sign                            │
+│  ────────────────────────────────────────────────                          │
+│  → Attacker needs private key to create valid signature                    │
+│  → Private key is non-extractable from WSCD                                │
+│  → IMPOSSIBLE                                                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Why Prior Codes Don't Help
+
+| What Attacker Learns from Previous Code | Why It Doesn't Help |
+|----------------------------------------|---------------------|
+| Previous `jti` values | Next `jti` is random UUID — no sequence |
+| Previous signatures (r, s) | Next k is random — no pattern |
+| Public key | Cannot derive private key (ECDLP) |
+| Message structure | Structure is known anyway; signature is the barrier |
+| Timing patterns | `iat` is clock-based; doesn't reveal signing secrets |
+
+##### Deterministic Nonces (RFC 6979) Consideration
+
+Some implementations use **deterministic nonces** (RFC 6979) to avoid RNG failures:
+
+| Approach | Pros | Cons | EUDI Wallet Status |
+|----------|------|------|-------------------|
+| **Random k** | Standard, simple | Requires good RNG | ✅ Used (hardware RNG) |
+| **Deterministic k (RFC 6979)** | No RNG dependency | Same message → same sig (linkability) | ❌ Not used |
+
+EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the preferred approach for privacy (each signature is unique even for same message).
+
+##### Threat Model: Re-generation Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Signature pattern analysis** | Collect many signatures, find pattern | Random k from hardware RNG | ✅ Mitigated |
+| **jti prediction** | Guess next jti | UUID v4 has 122 bits entropy | ✅ Mitigated |
+| **Nonce replay** | Reuse RP-provided nonce | PSP provides fresh nonce per request | ✅ Mitigated |
+| **Time-based prediction** | Predict iat to forge timestamp | iat alone is not sufficient for validity | ✅ Mitigated |
+| **Private key extraction** | Side-channel on SE/StrongBox | Certified hardware, constant-time operations | ✅ Mitigated |
+
+##### Reference Implementation Evidence
+
+| Platform | Mechanism | Evidence |
+|----------|-----------|----------|
+| **iOS** | Random k from Secure Enclave | `SecKeyCreateSignature` uses SE's hardware RNG |
+| **iOS** | jti generation | `UUID().uuidString` — system UUID v4 generator |
+| **Android** | Random k from StrongBox/TEE | `Signature.sign()` with hardware Keystore |
+| **Android** | jti generation | `java.util.UUID.randomUUID()` — crypto-secure |
+| **Both** | Nonce from RP | `nonce` claim in authorization request |
+
+##### Gap Analysis: Code Re-generation Prevention
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **CR-1** | No explicit jti registry requirement in TS12 | Medium | PSPs should maintain jti cache with TTL equal to token validity |
+| **CR-2** | RFC 6979 not mandated (good, but worth documenting) | Low | Document that random k is preferred for privacy |
+| **CR-3** | mDOC equivalent of jti not specified | Low | mDOC DeviceResponse has session-bound nonce; document equivalence |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **jti Registry**: Mandate PSPs maintain a short-lived cache of used `jti` values to detect replay
+2. **Hardware RNG**: Require hardware-backed random nonce generation for ECDSA signatures
+3. **Nonce Freshness**: Specify that RP-provided `nonce` must be cryptographically random and single-use
+4. **mDOC Equivalence**: Document that mDOC DeviceResponse provides equivalent replay protection
+
+</details>
+
 **Context**: Even with knowledge of a previous VP Token:
 - The `jti` is fresh (cryptographically random)
 - The ECDSA signature contains a random nonce (k value)

@@ -96,7 +96,7 @@ A real deep-dive must include **at least 3** of:
 |-----------|-------------|-------|
 | Art. 4(1) | Two+ elements generating auth code, one-time use | ✅ Yes |
 | Art. 4(2)(a) | No info derivable from auth code | ✅ Yes |
-| Art. 4(2)(b) | No code re-generation from prior code | ❌ No |
+| Art. 4(2)(b) | No code re-generation from prior code | ✅ Yes |
 | Art. 4(2)(c) | Forgery resistance | ❌ No |
 | Art. 4(3)(a) | Non-disclosure of which element was incorrect | ✅ Yes |
 | Art. 4(3)(b) | Maximum attempts and lockout | ✅ Yes |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 22 |
-| ❌ Not Done | 25 |
+| ✅ Done | 23 |
+| ❌ Not Done | 24 |
 | **Total** | 47 |
 
 ---
@@ -169,6 +169,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 9(1) | Deep-dive: Breach isolation, attack scenarios, multi-purpose device risks, gaps IND-1 to IND-4 |
 | 2026-01-27 | Art. 2(1) | Deep-dive: Fraud detection architecture, TRA link, wallet signals, gaps TM-1 to TM-4 |
 | 2026-01-27 | Art. 4(2)(a) | Deep-dive: Disclosed vs. protected, SD-JWT selective disclosure, amr analysis, gaps FD-1 to FD-3 |
+| 2026-01-27 | Art. 4(2)(b) | Deep-dive: ECDSA random nonce, jti uniqueness, replay prevention, gaps CR-1 to CR-3 |
 
 ---
 
