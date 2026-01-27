@@ -24,7 +24,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 22(1) | PSC confidentiality during all phases | ✅ Yes |
-| Art. 22(2)(a) | Masked credential input | ❌ No |
+| Art. 22(2)(a) | Masked credential input | ✅ Yes |
 | Art. 22(2)(b) | No plaintext storage | ✅ Yes |
 | Art. 22(2)(c) | Protected cryptographic material | ✅ Yes |
 | Art. 22(3) | Documented key management | ❌ No |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 31 |
-| ❌ Not Done | 16 |
+| ✅ Done | 32 |
+| ❌ Not Done | 15 |
 | **Total** | 47 |
 
 ---
@@ -178,6 +178,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 6(2) | Deep-dive: Disclosure prevention arch, secure keyboard, NIST 800-63B, phishing, gaps DP-1 to DP-4 |
 | 2026-01-28 | Art. 7(2) | Deep-dive: Anti-cloning architecture, hardware security levels, FIDO alignment, gaps RP-1 to RP-4 |
 | 2026-01-28 | Art. 8(2) | Deep-dive: PAD architecture, ISO 30107 alignment, anti-spoofing layers, gaps BR-1 to BR-4 |
+| 2026-01-28 | Art. 22(2)(a) | Deep-dive: Masking architecture, platform implementation, NIST alignment, gaps MI-1 to MI-3 |
 
 ---
 

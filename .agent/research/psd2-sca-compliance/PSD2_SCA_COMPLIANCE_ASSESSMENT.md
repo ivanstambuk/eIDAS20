@@ -379,7 +379,129 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 **Status**: ✅ Fully Supported
 
-**Context**: Both iOS and Android provide secure keyboard input for PIN entry with masking (dots/asterisks). The wallet apps use these native secure input methods.
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Masking During Input</strong></summary>
+
+##### Core Requirement: Masked Display and Input
+
+Article 22(2)(a) mandates that PSCs must be **masked when displayed** and **not readable in full** during input. This protects against visual observation ("shoulder surfing") and screen recording.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      Credential Masking Architecture                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     USER INPUT FLOW                                 │   │
+│  │                                                                     │   │
+│  │    User types:        1  2  3  4  5  6                             │   │
+│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │   │
+│  │                                                                     │   │
+│  │    Display shows:     •  •  •  •  •  6   (brief character reveal)  │   │
+│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │   │
+│  │                                                                     │   │
+│  │    After ~300ms:      •  •  •  •  •  •   (fully masked)            │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     MASKING PROPERTIES                              │   │
+│  │                                                                     │   │
+│  │   • Each digit replaced with mask character (•, *, ○)              │   │
+│  │   • Brief reveal on input (optional, for usability)                 │   │
+│  │   • No clipboard access for masked fields                           │   │
+│  │   • FLAG_SECURE prevents screenshots                                │   │
+│  │   • Accessibility services restricted                               │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Masking Requirements
+
+| Requirement | Description | Implementation |
+|-------------|-------------|----------------|
+| **Masked display** | Characters replaced with mask (•) | Native SecureTextField |
+| **Not readable in full** | Full PIN never visible at once | Immediate or delayed masking |
+| **Protected from capture** | Screenshots/recordings blocked | FLAG_SECURE (Android) |
+| **Protected from observation** | Physical viewing mitigated | Mask + optional blur |
+
+##### Platform Implementation
+
+| Platform | Component | Masking Behavior |
+|----------|-----------|------------------|
+| **iOS** | `UITextField.isSecureTextEntry = true` | Immediate masking (no brief reveal) |
+| **iOS** | `SecureField` (SwiftUI) | System-managed secure input |
+| **Android** | `android:inputType="textPassword"` | Brief character reveal, then mask |
+| **Android** | `android:textPassword` + FLAG_SECURE | No screenshots during input |
+
+##### Reference Implementation Evidence
+
+**iOS SecureField Usage**:
+```swift
+// From EUDI Wallet iOS UI
+SecureField("Enter PIN", text: $pinInput)
+    .keyboardType(.numberPad)
+    .textContentType(.oneTimeCode)
+    .disabled(isLoading)
+```
+
+**Android Masked Input**:
+```kotlin
+// From EUDI Wallet Android UI
+TextField(
+    value = pin,
+    onValueChange = { pin = it },
+    visualTransformation = PasswordVisualTransformation(),
+    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+)
+```
+
+##### Additional Protections
+
+| Protection | Platform | Purpose |
+|------------|----------|---------|
+| **FLAG_SECURE** | Android | Prevents window capture |
+| **Secure keyboard mode** | Both | Disables autocomplete/suggestions |
+| **No clipboard** | Both | Copy disabled for secure fields |
+| **Accessibility restrictions** | Both | Screen readers don't announce characters |
+
+##### NIST Alignment
+
+| NIST SP 800-63B | PSD2 Art. 22(2)(a) | EUDI Wallet |
+|-----------------|-------------------|-------------|
+| "Hide characters as they are typed" | "Masked when displayed" | ✅ Native secure fields |
+| "Allow paste into password field" | Not specified | ⚠️ Typically disabled for PINs |
+| "Allow show/hide toggle" | "Not readable in full" | ❌ Not applicable for 6-digit PIN |
+
+##### Threat Model: Credential Observation
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Shoulder surfing** | Watch user type PIN | Masked characters | ✅ Mitigated |
+| **Screen recording** | Capture screen during input | FLAG_SECURE | ✅ Mitigated |
+| **Screenshot** | Take screenshot of PIN screen | FLAG_SECURE | ✅ Mitigated |
+| **Accessibility abuse** | Screen reader announces chars | Restricted for secure fields | ✅ Mitigated |
+| **Clipboard theft** | Copy PIN to clipboard | Copy disabled | ✅ Mitigated |
+
+##### Gap Analysis: Masked Input
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **MI-1** | Brief character reveal on some Android keyboards | Low | Document as acceptable (300ms) |
+| **MI-2** | No explicit requirement for FLAG_SECURE | Medium | Mandate FLAG_SECURE for PIN entry |
+| **MI-3** | Accessibility screen readers vary by device | Low | Document accessibility behavior |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Native Secure Input**: Mandate use of platform secure input components
+2. **FLAG_SECURE**: Require screenshot/recording protection during PIN entry
+3. **Mask Character**: Specify standard mask character (• or *)
+4. **No Clipboard**: Confirm PIN fields must disable copy/paste
+5. **Brief Reveal**: Document acceptable brief character reveal duration
+
+</details>
 
 ---
 
