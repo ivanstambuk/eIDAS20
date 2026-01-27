@@ -95,7 +95,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 4(1) | Two+ elements generating auth code, one-time use | ✅ Yes |
-| Art. 4(2)(a) | Factor derivation protection | ❌ No |
+| Art. 4(2)(a) | No info derivable from auth code | ✅ Yes |
 | Art. 4(2)(b) | No code re-generation from prior code | ❌ No |
 | Art. 4(2)(c) | Forgery resistance | ❌ No |
 | Art. 4(3)(a) | Non-disclosure of which element was incorrect | ✅ Yes |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 21 |
-| ❌ Not Done | 26 |
+| ✅ Done | 22 |
+| ❌ Not Done | 25 |
 | **Total** | 47 |
 
 ---
@@ -168,6 +168,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 22(1) | Deep-dive: PSC lifecycle phases, NIST/ENISA alignment, threat model, gaps PSC-1 to PSC-4 |
 | 2026-01-27 | Art. 9(1) | Deep-dive: Breach isolation, attack scenarios, multi-purpose device risks, gaps IND-1 to IND-4 |
 | 2026-01-27 | Art. 2(1) | Deep-dive: Fraud detection architecture, TRA link, wallet signals, gaps TM-1 to TM-4 |
+| 2026-01-27 | Art. 4(2)(a) | Deep-dive: Disclosed vs. protected, SD-JWT selective disclosure, amr analysis, gaps FD-1 to FD-3 |
 
 ---
 

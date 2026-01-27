@@ -1072,6 +1072,137 @@ TS12 §3.6 states the `jti` "serves as the Authentication Code". However, RTS Re
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Factor Derivation Protection</strong></summary>
+
+##### Core Requirement: Zero Information Leakage
+
+Article 4(2)(a) mandates that an attacker who obtains the authentication code must NOT be able to derive ANY information about the authentication elements (PIN, biometric, private key).
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Factor Derivation Protection Architecture                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  SCA ELEMENTS (NEVER DISCLOSED)                AUTHENTICATION CODE         │
+│  ─────────────────────────────────            ───────────────────────      │
+│                                                                             │
+│  ┌─────────────┐                              ┌─────────────────────┐      │
+│  │   PIN       │   ═══════╲                   │   VP Token          │      │
+│  │  "1234"     │           ╲                  │   ┌───────────────┐ │      │
+│  └─────────────┘            ╲                 │   │ SD-JWT-VC     │ │      │
+│                              ╲                │   │ (credentials) │ │      │
+│  ┌─────────────┐              ══►   WSCD  ══► │   ├───────────────┤ │      │
+│  │  BIOMETRIC  │              ══►  SIGNS  ══► │   │ KB-JWT        │ │      │
+│  │  Template   │             ╱                │   │ (auth proof)  │ │      │
+│  └─────────────┘            ╱                 │   │ - amr: [...]  │ │      │
+│                            ╱                  │   │ - signature   │ │      │
+│  ┌─────────────┐         ╱                   │   └───────────────┘ │      │
+│  │ PRIVATE KEY │═════════                     └─────────────────────┘      │
+│  │  (in WSCD)  │                                                           │
+│  └─────────────┘                                                           │
+│                                                                             │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                             │
+│  ❌ PIN value: NEVER in auth code                                           │
+│  ❌ Biometric template: NEVER in auth code                                  │
+│  ❌ Private key: NEVER in auth code (only public key in attestation)       │
+│  ✅ Only: Factor NAMES (amr), signatures, hashes                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### What is Disclosed vs. Protected
+
+| Information Type | Disclosed in Auth Code? | Protection Mechanism |
+|------------------|------------------------|---------------------|
+| **PIN value** | ❌ Never | Not included in any claim; validated locally by WSCD |
+| **PIN hash** | ❌ Never | Not included; WSCD compares internally |
+| **Biometric template** | ❌ Never | Stored in OS Secure Enclave; wallet has no access |
+| **Biometric match score** | ❌ Never | OS returns boolean only |
+| **Private key** | ❌ Never | Non-extractable from WSCD (WIAM_20) |
+| **Public key** | ✅ Yes (in SCA Attestation) | Intended for signature verification |
+| **Factor names (`amr`)** | ✅ Yes (e.g., "pin", "face") | Names only; reveals which method, not the secret |
+| **Signature** | ✅ Yes (KB-JWT signature) | Proves possession, doesn't reveal key |
+| **Transaction hash** | ✅ Yes (`transaction_data_hashes`) | Hash of what user authorized |
+
+##### SD-JWT Selective Disclosure Alignment
+
+SD-JWT-VC (Selective Disclosure JWT) ensures **minimum disclosure**:
+
+| SD-JWT Feature | PSD2 Art. 4(2)(a) Relevance |
+|----------------|---------------------------|
+| **Holder-controlled disclosure** | Only consented attributes included |
+| **Hash-based placeholders** | Undisclosed claims replaced with hashes |
+| **Issuer signature integrity** | Signature covers all (including non-disclosed) |
+| **KB-JWT binding** | Proves holder controls the key, doesn't reveal key |
+
+The authentication code (VP Token) contains:
+1. **SD-JWT-VC**: The SCA Attestation with disclosed claims (SCA Level, user binding)
+2. **KB-JWT**: Proof of key possession + authentication method (`amr`) + transaction binding
+
+Neither contains the actual authentication element values.
+
+##### Cryptographic Analysis: Why No Derivation is Possible
+
+| Attack Vector | Why It Fails |
+|---------------|-------------|
+| **Derive PIN from signature** | ECDSA signatures don't encode input; only prove key possession |
+| **Derive biometric from amr** | `amr: ["face"]` is a label, not the biometric template |
+| **Derive private key from public key** | Elliptic curve discrete logarithm problem (computationally infeasible) |
+| **Derive PIN from multiple signatures** | Each signature uses random nonce; no correlation possible |
+| **Brute-force PIN from locked device** | Device lockout after 5 attempts (Art. 4(3)(b)) |
+
+##### The `amr` Claim: What It Reveals
+
+The `amr` (Authentication Methods References) claim in KB-JWT is the **only element-related information** disclosed:
+
+| Disclosed `amr` Value | What It Reveals | What It Does NOT Reveal |
+|----------------------|-----------------|------------------------|
+| `"pin"` | User entered a PIN | The PIN value |
+| `"face"` | User used face recognition | The face template |
+| `"fpt"` | User used fingerprint | The fingerprint minutiae |
+| `"hwk"` | Hardware key was used | The private key material |
+
+> **Privacy Consideration**: The `amr` claim reveals which authentication method was used. This is intentional — PSPs need to know that valid SCA elements were used. However, it could be considered a minor privacy leakage (e.g., revealing that user has Face ID capability).
+
+##### Threat Model: Derivation Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **PIN inference from timing** | Side-channel on PIN entry | OS secure keyboard, constant-time comparison in WSCD | ✅ Mitigated |
+| **Biometric inference from failure rate** | Multiple attempts reveal FAR | Generic failure message, lockout | ✅ Mitigated |
+| **Key inference from signatures** | Collect many signatures, cryptanalyze | ECDSA with random k; hardware RNG | ✅ Mitigated |
+| **Correlation attack** | Link different sessions via amr | `amr` is categorical; no unique identifier | ✅ Mitigated |
+| **Template reconstruction** | Infer biometric from accept/reject | OS returns boolean only; no detailed feedback | ✅ Mitigated |
+
+##### Reference Implementation Evidence
+
+| Platform | Protection Mechanism | Source |
+|----------|---------------------|--------|
+| **iOS** | PIN validated by WSCD, never in JWT | `LAContext` validates, returns boolean |
+| **iOS** | Private key operations in Secure Enclave | `SecKeyCreateSignature` — key never leaves SE |
+| **Android** | PIN validated by cryptographic comparison | `Cipher.doFinal` with AES-GCM in Keystore |
+| **Android** | Private key operations in StrongBox/TEE | `Signature.sign()` — key never in app memory |
+| **Both** | `amr` claim contains method names only | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) |
+
+##### Gap Analysis: Factor Derivation Protection
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **FD-1** | `amr` reveals authentication method type | Low | By design; PSP needs this. Document as acceptable disclosure |
+| **FD-2** | WUA device properties could fingerprint user | Low | Minimize device-specific claims; use categorical values |
+| **FD-3** | No formal proof of zero-knowledge property | Low | Consider ZKP-based authentication for future versions |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Document Non-Derivation**: Explicitly state that PIN, biometric templates, and private keys are NEVER included in any claim
+2. **amr Vocabulary**: Define allowed `amr` values and confirm they reveal method type only
+3. **WSCD Isolation**: Reference WIAM_20 as the mechanism ensuring private key non-extractability
+4. **Audit Evidence**: PSPs can cite VP Token structure as evidence that no element values are disclosed
+
+</details>
+
 **Context**: The VP Token reveals:
 - Factor names in `amr` (e.g., "pin", "face", "hwk") — **not** the PIN value or biometric template
 - Public key in the SCA attestation — **not** the private key
