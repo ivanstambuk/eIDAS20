@@ -1,10 +1,10 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 3.3  
+> **Version**: 3.4  
 > **Date**: 2026-01-27  
 > **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
-> **Status**: Comprehensive Assessment with Full Deep Linking
+> **Status**: Cross-Validated Assessment (5 reference corrections applied)
 
 ---
 
@@ -458,8 +458,8 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | TS12 §2.3 | OID4VP uses TLS 1.2+ for all communications |
-| ✅ **Wallet** | TS12 §3.4 | Request/response encryption options available |
+| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | OID4VP uses TLS 1.2+ for all communications |
+| ✅ **Wallet** | [TS12 §3.5](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#35-presentation-request-encryption) | Encrypted presentation requests supported (JAR) |
 | ⚠️ **PSP** | — | PSP must enforce TLS, certificate pinning as appropriate |
 
 **Status**: ✅ Fully Supported
@@ -623,7 +623,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | TS12 §2.3 | TLS for confidentiality in transit |
+| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS for confidentiality in transit |
 | ✅ **Wallet** | TS12 §3.6 | Signature for integrity/authenticity |
 
 **Status**: ✅ Fully Supported
@@ -636,7 +636,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ⚠️ **Gap** | TS12 §4.3.2 | `recurrence.mit_options` for recurring totals, but no batch payees |
+| ⚠️ **Gap** | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) | `recurrence.mit_options` for recurring totals, but no batch payees |
 
 **Status**: ⚠️ Partial (Single Payee Only)
 
@@ -821,7 +821,7 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private keys never leave WSCA/WSCD |
-| ✅ **Wallet** | TS12 §2.3 | TLS for transit protection |
+| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS for transit protection |
 | ✅ **Wallet** | Device encryption | At-rest encryption by iOS/Android |
 
 **Status**: ✅ Fully Supported
