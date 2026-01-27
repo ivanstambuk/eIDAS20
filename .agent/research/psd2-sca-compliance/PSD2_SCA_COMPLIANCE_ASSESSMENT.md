@@ -1,6 +1,6 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 4.4  
+> **Version**: 4.5  
 > **Date**: 2026-01-27  
 > **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
@@ -156,6 +156,45 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 | **Knowledge** | User PIN or passphrase validated by WSCA/WSCD |
 | **Possession** | Private key stored in WSCA/WSCD (Secure Enclave / StrongBox) |
 | **Inherence** | Biometric validated by OS (Face ID / BiometricPrompt) |
+
+### PSD2 → EUDI Wallet Terminology Cross-Reference
+
+This table maps PSD2/RTS terminology to their EUDI Wallet equivalents:
+
+| PSD2/RTS Term | EUDI Wallet Equivalent | Explanation |
+|---------------|------------------------|-------------|
+| **Personalised Security Credentials (PSC)** | SCA Attestation + Private Key | The PSC in EUDIW context is the combination of: (1) the attestation issued by the PSP containing user's payment entitlements, and (2) the private key in the WSCA/WSCD used to sign responses |
+| **Authentication Code** | VP Token (KB-JWT signature) | RTS Recital 4 defines this as "digital signatures or other cryptographically underpinned validity assertions." In EUDIW, this is the signed VP Token containing the KB-JWT with `transaction_data_hashes` |
+| **Authentication Device** | Wallet Unit (WSCA/WSCD) | The user's device running the Wallet Instance with its associated Wallet Unit Attestation and secure hardware |
+| **PIN** | User PIN / Passphrase | Same concept — validated locally by WSCA/WSCD (never transmitted) |
+| **Biometric** | OS Biometric (Face ID / BiometricPrompt) | Same concept — validated by OS secure biometric API with liveness detection |
+| **Dynamic Linking** | `transaction_data_hashes` in KB-JWT | The cryptographic binding of amount + payee to the authentication code via hashing and signing |
+| **One-time use** | `jti` + `nonce` claims | Each VP Token has unique `jti` (JWT ID) and must respond to a fresh `nonce` from the verifier |
+| **Secure Channel** | TLS 1.2+ (OID4VP) | Mutually authenticated encrypted channel between wallet and PSP |
+| **Authentication elements** | SCA Factors | Knowledge (PIN), Possession (private key), Inherence (biometric) |
+| **Payment Service Provider (PSP)** | Relying Party (Verifier) + Attestation Provider (Issuer) | PSP has dual role: issues SCA attestation (OID4VCI) and verifies authentication (OID4VP) |
+| **Payer** | User / Wallet Holder | The natural person using the EUDI Wallet |
+
+### Key Insight: Authentication Code = VP Token
+
+The most important mapping is understanding that the **authentication code** (RTS Art. 4) is the **VP Token**:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    AUTHENTICATION CODE (RTS Art. 4)             │
+├─────────────────────────────────────────────────────────────────┤
+│   VP Token                                                      │
+│   ├── SD-JWT-VC (the SCA attestation)                          │
+│   └── KB-JWT (Key Binding JWT)                                  │
+│       ├── aud: PSP's client_id                                  │
+│       ├── nonce: from PSP's request (one-time use)              │
+│       ├── iat: timestamp                                        │
+│       ├── jti: unique token ID (additional one-time protection)│
+│       ├── amr: ["pin", "hwk"] (factor evidence)                │
+│       └── transaction_data_hashes: SHA-256 of amount+payee     │
+│           (DYNAMIC LINKING per Art. 5)                          │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -1667,4 +1706,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.2** | 2026-01-27 | AI Analysis | **ARF v2.7.3 update**: Updated ARF reference to v2.7.3. Added local regulatory source paths. |
 | **4.3** | 2026-01-27 | AI Analysis | **Part III: Issuance/Binding**: Added Chapter IV coverage (Articles 22-27). Credential creation, user association, delivery, renewal, revocation. Appendices renumbered to Part IV. |
 | **4.4** | 2026-01-27 | AI Analysis | **Deep-dive evidence**: Art. 22(2)(b) PIN storage with code samples (Android AES-GCM, iOS Keychain). Art. 22(2)(c) private key non-extractability with WIAM_20/WUA_09 HLR quotes. |
+| **4.5** | 2026-01-27 | AI Analysis | **Terminology cross-reference**: Added PSD2→EUDIW mapping table explaining PSC, Authentication Code, Dynamic Linking equivalents. Visual diagram of VP Token structure as Authentication Code. |
 
