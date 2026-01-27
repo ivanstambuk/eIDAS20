@@ -468,7 +468,7 @@ guard previousPin == uiPinInputField else {
 
 #### [Article 4(4)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Maximum attempts and lockout
 
-> "(b) the number of failed authentication attempts that can take place consecutively, ..., shall not exceed five within a given period of time before those personalised security credentials are temporarily or permanently blocked;"
+> "(b) the number of failed authentication attempts that can take place consecutively, after which the actions referred to in Article 97(1) of Directive (EU) 2015/2366 shall be temporarily or permanently blocked, shall not exceed five within a given period of time;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -489,7 +489,7 @@ guard previousPin == uiPinInputField else {
 
 #### [Article 4(4)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session protection
 
-> "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties..."
+> "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties in accordance with the requirements in Chapter V;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -505,7 +505,7 @@ guard previousPin == uiPinInputField else {
 
 #### [Article 4(4)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session timeout
 
-> "(d) the maximum time without activity by the payer... shall not exceed 5 minutes."
+> "(d) the maximum time without activity by the payer after being authenticated for accessing its payment account online shall not exceed 5 minutes."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -522,7 +522,7 @@ guard previousPin == uiPinInputField else {
 
 #### [Article 5(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — General requirement
 
-> "Where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366, in addition to the requirements of Article 4 of this Regulation, they shall also adopt security measures that meet each of the following requirements..."
+> "Where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366, in addition to the requirements of Article 4 of this Regulation, they shall also adopt security measures that meet each of the following requirements: (a) the payer is made aware of the amount of the payment transaction and of the payee; (b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction; (c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer; (d) any change to the amount or the payee results in the invalidation of the authentication code generated."
 
 **Status**: ➖ Prelude to sub-requirements. See Article 5(1)(a–d) and 5(2–3) below.
 
@@ -654,7 +654,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 #### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Corresponding acceptance
 
-> "Payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication..."
+> "For the purpose of paragraph 1, payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication; (b) the information displayed to the payer throughout all of the phases of the authentication including the generation, transmission and use of the authentication code."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -667,7 +667,7 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 #### [Article 5(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch file payment exception
 
-> "...in relation to batch file payments: (a) the payment service user initiating a batch... shall be made aware of the total amount and of the number of the payment transactions;"
+> "For the purpose of paragraph 1(b) and where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366 the following requirements for the authentication code shall apply: (a) in relation to a card-based payment transaction for which the payer has given consent to the exact amount of the funds to be blocked pursuant to Article 75(1) of that Directive, the authentication code shall be specific to the amount that the payer has given consent to be blocked and agreed to by the payer when initiating the transaction; (b) in relation to payment transactions for which the payer has given consent to execute a batch of remote electronic payment transactions to one or several payees, the authentication code shall be specific to the total amount of the batch of payment transactions and to the specified payees."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
