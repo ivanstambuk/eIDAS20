@@ -163,11 +163,11 @@ This table maps PSD2/RTS terminology to their EUDI Wallet equivalents:
 
 | PSD2/RTS Term | EUDI Wallet Equivalent | Explanation |
 |---------------|------------------------|-------------|
-| **Personalised Security Credentials (PSC)** | SCA Attestation + Private Key | The PSC in EUDIW context is the combination of: (1) the attestation issued by the PSP containing user's payment entitlements, and (2) the private key in the WSCA/WSCD used to sign responses |
+| **Personalised Security Credentials (PSC)** | All SCA Elements | Per PSD2 Art. 4(31), PSCs are "personalised features provided by the PSP for authentication." In EUDIW, this encompasses **all three SCA element types**: (1) **PIN/Passphrase** (knowledge), (2) **Biometric template** (inherence), and (3) **SCA Attestation + Private Key** (possession). The PIN/biometric unlocks access to the private key, and together they enable generation of the authentication code. |
 | **Authentication Code** | VP Token (KB-JWT signature) | RTS Recital 4 defines this as "digital signatures or other cryptographically underpinned validity assertions." In EUDIW, this is the signed VP Token containing the KB-JWT with `transaction_data_hashes` |
 | **Authentication Device** | Wallet Unit (WSCA/WSCD) | The user's device running the Wallet Instance with its associated Wallet Unit Attestation and secure hardware |
-| **PIN** | User PIN / Passphrase | Same concept — validated locally by WSCA/WSCD (never transmitted) |
-| **Biometric** | OS Biometric (Face ID / BiometricPrompt) | Same concept — validated by OS secure biometric API with liveness detection |
+| **PIN** | User PIN / Passphrase | **PSC (Knowledge element)** — validated locally by WSCA/WSCD (never transmitted). Protected per RTS Art. 6 & Art. 22. |
+| **Biometric** | OS Biometric (Face ID / BiometricPrompt) | **PSC (Inherence element)** — validated by OS secure biometric API with liveness detection. Protected per RTS Art. 8 & Art. 22. |
 | **Dynamic Linking** | `transaction_data_hashes` in KB-JWT | The cryptographic binding of amount + payee to the authentication code via hashing and signing |
 | **One-time use** | `jti` + `nonce` claims | Each VP Token has unique `jti` (JWT ID) and must respond to a fresh `nonce` from the verifier |
 | **Secure Channel** | TLS 1.2+ (OID4VP) | Mutually authenticated encrypted channel between wallet and PSP |
@@ -1057,7 +1057,10 @@ This part covers the **issuance phase** of SCA attestations — when the PSP cre
 
 **Status**: ✅ Fully Supported
 
-**Context**: The WSCA/WSCD (Secure Enclave / TEE) provides hardware isolation for all personalised security credentials. The private key (possession element) never leaves the secure environment.
+**Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
+- **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
+- **Biometric template** (inherence): OS-managed, never exported
+- **Private key + SCA Attestation** (possession): Non-extractable from WSCA/WSCD
 
 ---
 
@@ -1256,12 +1259,16 @@ try self.keyChain
 
 **Status**: ✅ Fully Supported
 
-**Context**: In the EUDI Wallet model:
-1. **Secure creation**: The wallet generates the key pair within the WSCA/WSCD (not the PSP)
-2. **PSP role**: PSP signs the attestation binding the public key to the user
-3. **Loss mitigation**: Private key is non-extractable; attestation can be revoked
+**Context**: Art. 23 governs the creation of **all PSC types** in the EUDI Wallet:
 
-This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key.
+| PSC Type | Creation Mechanism | Secure Environment |
+|----------|-------------------|-------------------|
+| **PIN/Passphrase** | User sets during wallet activation | On-device (encrypted storage) |
+| **Biometric** | OS enrollment (pre-existing) | Secure Enclave / TEE |
+| **Private Key** | Generated within WSCA/WSCD | Secure Enclave / TEE |
+| **SCA Attestation** | PSP signs over OID4VCI | PSP backend + TLS |
+
+This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
 
 ---
 
@@ -1348,7 +1355,15 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 
 **Status**: ✅ Fully Supported
 
-**Context**: Renewal follows the same OID4VCI flow as initial issuance. The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
+**Context**: Art. 26 applies to renewal of **all PSC types**:
+
+| PSC Type | Renewal Mechanism |
+|----------|------------------|
+| **PIN/Passphrase** | User-initiated PIN change (wallet provides UI) |
+| **Biometric** | OS-level re-enrollment (Face ID reconfiguration, etc.) |
+| **Private Key + Attestation** | OID4VCI refresh flow (same as initial issuance) |
+
+The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
 
 ---
 
@@ -1366,7 +1381,16 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 
 **Status**: ⚠️ Shared Responsibility
 
-**Context**: 
+**Context**: Art. 27(a) applies to destruction/deactivation of **all PSC types**:
+
+| PSC Type | Destruction/Deactivation Mechanism |
+|----------|-----------------------------------|
+| **PIN/Passphrase** | Deleted from encrypted storage on wallet reset |
+| **Biometric** | OS-level removal (user removes Face ID, etc.) |
+| **Private Key** | Deleted from WSCA/WSCD on wallet uninstall/reset |
+| **SCA Attestation** | PSP revokes status in backend; wallet deletes local copy |
+
+Shared responsibility:
 - **Wallet Provider**: Can revoke WUA, invalidating the device binding
 - **PSP**: Must revoke the SCA attestation status in their backend
 - **User**: Can request revocation via independent account (WIAM_06)
@@ -1699,4 +1723,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.3** | 2026-01-27 | AI Analysis | **Part III: Issuance/Binding**: Added Chapter IV coverage (Articles 22-27). Credential creation, user association, delivery, renewal, revocation. Appendices renumbered to Part IV. |
 | **4.4** | 2026-01-27 | AI Analysis | **Deep-dive evidence**: Art. 22(2)(b) PIN storage with code samples (Android AES-GCM, iOS Keychain). Art. 22(2)(c) private key non-extractability with WIAM_20/WUA_09 HLR quotes. |
 | **4.5** | 2026-01-27 | AI Analysis | **Terminology cross-reference**: Added PSD2→EUDIW mapping table explaining PSC, Authentication Code, Dynamic Linking equivalents. Visual diagram of VP Token structure as Authentication Code. |
+| **4.6** | 2026-01-27 | AI Analysis | **PSC definition expansion**: Clarified that PSCs include ALL SCA elements (PIN, biometric, AND private key + attestation) per PSD2 Art. 4(31). Updated Art. 22(1), 23, 26, 27 contexts to explicitly reference all PSC types. |
 

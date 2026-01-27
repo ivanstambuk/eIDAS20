@@ -3,70 +3,73 @@
 
 ## Current State
 
-- **Focus**: PSD2 SCA Compliance Assessment — Two Use Case Model complete
-- **Next**: Sync to KI OR address remaining refinements
-- **Status**: ✅ Complete (v4.3 — 40/40 requirements)
-- **Phase**: PSD2 SCA Compliance Assessment v4.3
+- **Focus**: PSD2 SCA Compliance Assessment — Deep-dive evidence and terminology
+- **Next**: Continue refinements (review remaining articles or integrate into docs-portal)
+- **Status**: ✅ v4.5 complete (40/40 requirements)
+- **Phase**: PSD2 SCA Compliance Assessment v4.5
 
 ## Key Files
 
-- `.agent/research/psd2-sca-compliance/PSD2_SCA_COMPLIANCE_ASSESSMENT.md` — Main assessment (v4.3, 40/40 validated)
-- `.agent/research/psd2-sca-compliance/RESTRUCTURE_PLAN.md` — Tracker for v4.3 restructure
-- `.agent/research/psd2-sca-compliance/sources/32015L2366.md` — PSD2 Directive (local)
-- `.agent/research/psd2-sca-compliance/sources/32018R0389.md` — PSD2 RTS (local)
-- `.agent/research/psd2-sca-compliance/reference-impl/` — iOS/Android wallet source
+- `.agent/research/psd2-sca-compliance/PSD2_SCA_COMPLIANCE_ASSESSMENT.md` — Main assessment (v4.5, 40/40)
+- `.agent/research/psd2-sca-compliance/sources/32018R0389.md` — PSD2 RTS (local, use for lookups)
+- `.agent/research/psd2-sca-compliance/reference-impl/` — iOS/Android wallet source for evidence
 
 ## What Was Done This Session
 
-1. **COMPLETE — Two Use Case Model**: Added "Scope: Two SCA Use Cases" section
-   - **Issuance/Binding** (OID4VCI): Articles 22-27
-   - **Usage/Authentication** (OID4VP): Articles 1-9
-2. **COMPLETE — Part III**: SCA Attestation Lifecycle (Issuance/Binding)
-   - Article 22: General PSC requirements (22(1), 22(2)(a-c), 22(3), 22(4))
-   - Article 23: Credential creation
-   - Article 24: User association/binding
-   - Article 25: Delivery
-   - Article 26: Renewal
-   - Article 27: Revocation/Deactivation
-3. **COMPLETE — Appendices renumbered**: Part III → Part IV
-4. **COMPLETE — Executive Summary updated**: 26 wallet compliant, 40/40 requirements
-5. **COMPLETE — PIN disclosure remediation**: Art. 4(3)(a) detailed guidance added
+1. **v4.4 — Deep-dive evidence** (Art. 22(2)(b-c)):
+   - PIN storage: Android AES-GCM code samples, iOS Keychain
+   - Private key non-extractability: WIAM_20, WUA_09 HLR quotes
+   - Platform comparison tables
 
-## Document Structure
+2. **v4.5 — Terminology cross-reference**:
+   - PSD2→EUDIW mapping table (PSC, Authentication Code, Dynamic Linking → KB-JWT)
+   - VP Token = Authentication Code visual diagram
+
+3. **EUR-Lex link audit**:
+   - Fixed Art. 2(2) anchor: `#002.001` → `#002.002`
+   - Deleted phantom Art. 97(4) (doesn't exist in PSD2)
+   - Verified all 45 remaining links correct
+
+## Document Structure (v4.5)
 
 | Part | Content | RTS Articles |
 |------|---------|--------------|
-| Part I | PSD2 Directive | Article 97 |
+| Part I | PSD2 Directive | Article 97(1-3) |
 | Part II | SCA Authentication (Usage) | 1-9 |
 | Part III | SCA Attestation Lifecycle (Issuance/Binding) | 22-27 |
 | Part IV | Appendices | — |
 
-## Confirmed Compliance Gaps (Unchanged)
+## Terminology Section
+
+New cross-reference table (lines ~160-198) maps:
+- **PSC** → SCA Attestation + Private Key
+- **Authentication Code** → VP Token (KB-JWT)
+- **Dynamic Linking** → `transaction_data_hashes` in KB-JWT
+
+## Confirmed Gaps (Unchanged)
 
 | Gap | Article | Details |
 |-----|---------|---------|
-| **PIN error disclosure** | Art. 4(3)(a) | Ref impl shows "Pins do not match" — REMEDIATION GUIDANCE ADDED |
+| **PIN error disclosure** | Art. 4(3)(a) | Ref impl shows "Pins do not match" |
 | **Multi-payee batch** | Art. 5(3)(b) | TS12 only supports single payee |
 
-## Commits Made
+## Commits This Session
 
-- `4969e86`: docs: add two SCA use cases scope (Issuance/Binding + Usage/Authentication)
-- `1f47249`: docs: add Part III — SCA Attestation Lifecycle (Articles 22-27)
-
-## Local Source Paths (DO NOT LOOK UP EUR-LEX)
-
-- PSD2 Directive: `.agent/research/psd2-sca-compliance/sources/32015L2366.md`
-- PSD2 RTS: `.agent/research/psd2-sca-compliance/sources/32018R0389.md`
+- `d5c2fda`: docs: add deep-dive evidence for credential storage (Art. 22(2)(b-c))
+- `d8d81bd`: docs: add PSD2→EUDIW terminology cross-reference (v4.5)
+- `abe8653`: fix: correct EUR-Lex anchor for Article 2(2)
+- `a1c63bb`: fix: remove invalid EUR-Lex link for phantom Article 97(4)
+- `8cc49ea`: fix: delete phantom Article 97(4) section entirely
 
 ## Potential Next Actions
 
-1. **Update KI** — Sync finalized v4.3 to `eudi_wallet_banking_compliance` KI
-2. **Cross-link to docs-portal** — Integrate assessment into documentation portal (if in scope)
-3. **Review Articles 10-17** — SCA exemptions (PSP-side, likely out of scope for wallet)
+1. **Remaining articles**: Review if any other article deep-dives needed
+2. **Cross-link to docs-portal**: Integrate into documentation portal
+3. **KI sync**: Update eudi_wallet_banking_compliance if needed
 
 ## Quick Start
 
 ```bash
 cd ~/dev/eIDAS20/docs-portal && npm run dev
-# Assessment is at .agent/research/psd2-sca-compliance/PSD2_SCA_COMPLIANCE_ASSESSMENT.md
+# Assessment at: .agent/research/psd2-sca-compliance/PSD2_SCA_COMPLIANCE_ASSESSMENT.md
 ```
