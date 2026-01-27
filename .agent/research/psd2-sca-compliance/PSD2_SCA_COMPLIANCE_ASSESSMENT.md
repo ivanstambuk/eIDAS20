@@ -802,10 +802,164 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 
 **Status**: ✅ Fully Supported
 
-**Context**: The WSCD (Secure Enclave / StrongBox) meets "widely recognised industry standards":
-- Apple Secure Enclave: Common Criteria EAL4+ certified
-- Android StrongBox: FIPS 140-2 Level 3 certified hardware
+<details>
+<summary><strong>🔍 Deep-Dive: Secure Processing Environment Standards</strong></summary>
 
+##### Core Requirement: Industry-Standard Secure Environments
+
+Article 22(4) mandates that PSC processing and auth code routing occur in environments meeting **"strong and widely recognised industry standards"**. This is a technology-neutral, outcomes-based requirement.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   Secure Processing Environment Hierarchy                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    SECURITY LEVEL HIERARCHY                         │   │
+│  │                                                                     │   │
+│  │   HIGHEST SECURITY                                                  │   │
+│  │   ════════════════                                                  │   │
+│  │                                                                     │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │  SECURE ELEMENT (SE)  │  Separate chip, CC EAL5+/6           │ │   │
+│  │   │  HSM (server-side)    │  FIPS 140-2 Level 3/4                │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                              ▼                                      │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │  STRONGBOX (Android)  │  Integrated SE, FIPS 140-2 Level 3   │ │   │
+│  │   │  SECURE ENCLAVE (iOS) │  Integrated SE, CC EAL4+             │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                              ▼                                      │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │  TEE (ARM TrustZone)  │  Hardware isolation, moderate trust  │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                              ▼                                      │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │  SOFTWARE KEYSTORE    │  OS-protected, software isolation    │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                                                                     │   │
+│  │   LOWEST SECURITY                                                   │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Industry Standards Reference
+
+| Standard | Description | Relevance |
+|----------|-------------|-----------|
+| **Common Criteria (ISO 15408)** | International security evaluation standard | SE/HSM certification |
+| **FIPS 140-2/140-3** | US Federal cryptographic module standard | StrongBox, HSM |
+| **GlobalPlatform TEE** | TEE specification and certification | ARM TrustZone |
+| **PCI DSS** | Payment card industry security | PSP server infrastructure |
+| **SOC 2 Type II** | Service organization controls | Cloud infrastructure |
+
+##### Common Criteria Evaluation Assurance Levels
+
+| EAL | Name | Use Case |
+|-----|------|----------|
+| **EAL4+** | Methodically Designed, Tested, Reviewed | Secure Enclave (Apple) |
+| **EAL5** | Semi-formally Designed and Tested | Smartcard SEs |
+| **EAL5+** | Higher semi-formal | High-value payment cards |
+| **EAL6/EAL7** | Semi-formally/Formally Verified | Government HSMs |
+
+##### FIPS 140-2 Security Levels
+
+| Level | Physical Security | Use Case |
+|-------|-------------------|----------|
+| **Level 1** | Basic | Software crypto |
+| **Level 2** | Tamper-evidence | Smartcards |
+| **Level 3** | Tamper-resistance, identity-based auth | StrongBox, HSMs |
+| **Level 4** | Environmental failure protection | High-security HSMs |
+
+##### EUDI Wallet Secure Environment Mapping
+
+| Component | Environment | Certification | Operations |
+|-----------|-------------|---------------|------------|
+| **Private key storage** | Secure Enclave / StrongBox | CC EAL4+ / FIPS 140-2 L3 | Key protection at rest |
+| **Key generation** | SE/StrongBox | Hardware TRNG | ECDSA P-256 keypair |
+| **Signing operations** | SE/StrongBox | Hardware crypto | SCA Attestation signing |
+| **PIN validation** | WSCA | Platform-dependent | User verification |
+| **Biometric match** | Secure Enclave | OS-certified | Template comparison |
+
+##### PSP Server-Side Requirements
+
+| Component | Requirement | Standard |
+|-----------|-------------|----------|
+| **HSM** | SCA Attestation signing key protection | FIPS 140-2 Level 3+ |
+| **TLS termination** | Certificate management | PCI DSS |
+| **Key ceremony** | Initial key generation | Audited process |
+| **Logging infrastructure** | Tamper-evident logs | SOC 2 Type II |
+
+##### Routing Security
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    PSC and Auth Code Routing Security                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   WALLET                    NETWORK                   PSP                   │
+│   ──────                    ───────                   ───                   │
+│                                                                             │
+│   ┌──────────┐           ┌──────────┐           ┌──────────┐               │
+│   │ Secure   │   TLS 1.3 │ Internet │   TLS 1.3 │ HSM+     │               │
+│   │ Enclave  │──────────►│ (public) │──────────►│ Infra    │               │
+│   └──────────┘           └──────────┘           └──────────┘               │
+│                                                                             │
+│   ┌──────────────────────────────────────────────────────────────────────┐ │
+│   │                    ROUTING SECURITY CONTROLS                         │ │
+│   │                                                                      │ │
+│   │   • End-to-end TLS 1.3 (no plaintext PSC in transit)                │ │
+│   │   • Certificate pinning optional                                     │ │
+│   │   • PSC never leaves secure boundary (PIN validated locally)         │ │
+│   │   • Auth code (signature) generated in SE, sent over TLS             │ │
+│   │                                                                      │ │
+│   └──────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Platform Certification Evidence
+
+| Platform | Component | Certification |
+|----------|-----------|---------------|
+| **Apple** | Secure Enclave | CC EAL4+ (per Apple Platform Security Guide) |
+| **Android** | StrongBox | FIPS 140-2 Level 3 (per manufacturer attestation) |
+| **Android** | TEE (TrustZone) | GlobalPlatform TEE certification |
+| **Google** | Titan M2 chip | CC EAL4+ certified |
+| **Samsung** | Knox Vault SE | CC EAL5+ certified |
+
+##### CIR 2024/2981 Alignment
+
+The Wallet Solution certification under CIR 2024/2981 provides:
+
+| Certification Aspect | Industry Standard Coverage |
+|---------------------|---------------------------|
+| **WSCD evaluation** | CC/CEM methodology |
+| **WSCA certification** | Security functional requirements |
+| **Cryptographic algorithms** | SOG-IS approved list |
+| **Protection profiles** | EN 419211 (smartcards) or equivalent |
+
+##### Gap Analysis: Secure Processing Environment
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **SPE-1** | "Widely recognised" not enumerated | Low | Reference CC, FIPS 140-2, GlobalPlatform |
+| **SPE-2** | Minimum EAL not specified | Medium | Recommend EAL4+ for mobile SE |
+| **SPE-3** | TEE-only security level unclear | Medium | Clarify TEE vs. SE acceptability |
+| **SPE-4** | PSP server-side standards not specified | Low | Reference PCI DSS, SOC 2 |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Standards Enumeration**: List acceptable standards (CC, FIPS 140-2, GlobalPlatform)
+2. **Minimum Security Level**: Specify EAL4+/FIPS 140-2 Level 3 as minimum
+3. **SE vs. TEE**: Clarify when TEE-only is acceptable (if ever)
+4. **PSP Requirements**: Reference PCI DSS for PSP server infrastructure
+5. **Attestation Verification**: Document how PSP verifies wallet security level
+6. **Routing Protection**: Mandate TLS 1.2+ for all PSC/auth code transmission
+
+</details>
 
 ---
 
