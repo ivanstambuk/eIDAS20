@@ -104,10 +104,12 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 | Category | Count | Summary |
 |----------|-------|---------|
-| ✅ Wallet Compliant | 26 | Core SCA mechanics + credential lifecycle |
+| ✅ Wallet Compliant | 25 | Core SCA mechanics + credential lifecycle |
 | ⚠️ Shared Responsibility | 9 | Wallet provides evidence; PSP must verify |
+| ❌ **Gap Identified** | **1** | **PIN lockout NOT implemented** (Art. 4(3)(b)) |
 | ❌ PSP Only | 11 | Risk analysis, audit, key management docs |
 | 🔶 Rulebook Pending | 4 | Deferred to SCA Attestation Rulebook |
+
 | ➖ Not Applicable | 6 | Exemptions, contactless, reusable devices |
 
 **Critical ARF HLRs for SCA**:
@@ -579,17 +581,95 @@ For PSD2-compliant wallet deployments, implementations MUST NOT reveal which aut
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
 | ✅ **Wallet/OS** | iOS/Android | OS biometric lockout after 5 failed attempts |
-| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify additional constraints |
+| ❌ **Wallet** | — | **PIN lockout NOT implemented** (see evidence below) |
+| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify constraints |
 | ❌ **PSP** | — | PSP must implement server-side lockout |
 
-**Status**: ⚠️ Shared Responsibility
+**Status**: ❌ **Gap Identified** — PIN lockout not implemented in reference implementation
 
-**Context**: 
-- **Device level**: iOS and Android enforce lockout after 5 failed biometric attempts (falls back to device PIN)
-- **Wallet level**: Not explicitly in TS12 v1.0; expected in SCA Attestation Rulebook
-- **PSP level**: PSP must track failed authentication attempts server-side
+**Context**: Art. 4(3)(b) applies to **all PSC types** (PIN, biometric, private key). Current status:
 
-**Reference Implementation Evidence**: iOS uses `LAContext` which enforces biometric lockout; Android uses `BiometricPrompt` with similar behavior.
+| PSC Type | Max Attempts | Lockout Behavior | Compliance |
+|----------|-------------|------------------|------------|
+| **Biometric** | 5 | OS-enforced (falls back to device PIN) | ✅ Compliant |
+| **Wallet PIN** | **Unlimited** | **None** | ❌ **Non-compliant** |
+| **Device PIN** | Varies by OEM (typically 5-10) | Device wipe after max | ✅ Compliant |
+
+**Reference Implementation Evidence**:
+
+**Android** — `QuickPinInteractor.kt` (lines 92-109):
+```kotlin
+override fun isCurrentPinValid(pin: String): Flow<QuickPinInteractorPinValidPartialState> =
+    flow {
+        if (pinStorageController.isPinValid(pin)) {
+            emit(QuickPinInteractorPinValidPartialState.Success)
+        } else {
+            emit(
+                QuickPinInteractorPinValidPartialState.Failed(
+                    resourceProvider.getString(R.string.quick_pin_invalid_error)
+                )
+            )
+        }
+    }
+// ⚠️ NO attempt counting, NO lockout state, NO time-based blocking
+```
+
+**iOS** — `QuickPinInteractor.swift` (lines 42-47):
+```swift
+public func isPinValid(pin: String) -> QuickPinPartialState {
+    if self.isCurrentPinValid(pin: pin) {
+        return .success
+    } else {
+        return .failure(AuthenticationError.quickPinInvalid)
+    }
+}
+// ⚠️ NO attempt counting, NO lockout mechanism
+```
+
+**ARF HLR Gap**: No explicit ARF HLR mandates PIN lockout. However:
+- **WIAM_17** references CIR 2015/1502 section 2.2.1 for LoA High compliance
+- **CIR 2015/1502 §2.3.1** requires protection against "guessing" attacks with "high attack potential"
+- **ARF Annex 5.02** Design Guide mentions "e.g., 3 failed attempts" as example lockout behavior
+
+**Remediation Required**:
+
+```kotlin
+// Required implementation pattern:
+class PinLockoutController {
+    companion object {
+        const val MAX_FAILED_ATTEMPTS = 5
+        const val LOCKOUT_DURATION_MS = 120_000L  // 2 minutes
+    }
+    
+    private var failedAttempts = 0
+    private var lockoutUntil: Long = 0
+    
+    fun validatePin(pin: String): PinValidationResult {
+        if (System.currentTimeMillis() < lockoutUntil) {
+            return PinValidationResult.Locked(
+                remainingMs = lockoutUntil - System.currentTimeMillis()
+            )
+        }
+        
+        if (!pinStorageController.isPinValid(pin)) {
+            failedAttempts++
+            if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+                lockoutUntil = System.currentTimeMillis() + LOCKOUT_DURATION_MS
+                failedAttempts = 0
+                return PinValidationResult.Locked(remainingMs = LOCKOUT_DURATION_MS)
+            }
+            return PinValidationResult.Failed(attemptsRemaining = MAX_FAILED_ATTEMPTS - failedAttempts)
+        }
+        
+        failedAttempts = 0
+        return PinValidationResult.Success
+    }
+}
+```
+
+> ⚠️ **Critical**: This gap affects **both** SCA (payment authentication) **and** PID (identification) use cases. The wallet PIN is a PSC under PSD2 Art. 4(31) and must be protected against brute-force attacks per Art. 4(3)(b) and CIR 2015/1502.
+
+
 
 ---
 
@@ -1724,4 +1804,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.4** | 2026-01-27 | AI Analysis | **Deep-dive evidence**: Art. 22(2)(b) PIN storage with code samples (Android AES-GCM, iOS Keychain). Art. 22(2)(c) private key non-extractability with WIAM_20/WUA_09 HLR quotes. |
 | **4.5** | 2026-01-27 | AI Analysis | **Terminology cross-reference**: Added PSD2→EUDIW mapping table explaining PSC, Authentication Code, Dynamic Linking equivalents. Visual diagram of VP Token structure as Authentication Code. |
 | **4.6** | 2026-01-27 | AI Analysis | **PSC definition expansion**: Clarified that PSCs include ALL SCA elements (PIN, biometric, AND private key + attestation) per PSD2 Art. 4(31). Updated Art. 22(1), 23, 26, 27 contexts to explicitly reference all PSC types. |
+| **4.7** | 2026-01-27 | AI Analysis | **Critical gap: PIN lockout missing**: Identified that reference implementation has NO PIN lockout mechanism (Art. 4(3)(b)). Unlimited PIN retries allowed. OS biometric is compliant (5 attempts), but wallet PIN bypasses this. Added detailed evidence from `QuickPinInteractor.kt` (Android) and `QuickPinInteractor.swift` (iOS). Provided remediation code pattern. |
 
