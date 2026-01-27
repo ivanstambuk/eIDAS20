@@ -1213,6 +1213,124 @@ class PinLockoutController {
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Knowledge Element Protection</strong></summary>
+
+##### What Qualifies as a Knowledge Element (EBA Opinion 2019)
+
+The [EBA Opinion on SCA Elements](https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-opinion-elements-strong-customer) (June 2019) clarifies what constitutes a valid knowledge element:
+
+| ✅ Compliant | ❌ Non-Compliant |
+|-------------|-----------------|
+| PIN (Personal Identification Number) | Email address |
+| Password | Username |
+| Passphrase | Card CVV/CVC printed on card |
+| Knowledge-based challenge answer | OTP (is possession, not knowledge) |
+| Memorized swipe pattern | Card number |
+
+> **Key Insight**: The EBA emphasizes that card details (PAN, expiry, CVV) are **NOT** valid SCA elements — they can be easily copied and do not prove "something only the user knows."
+
+##### Threat Model: Knowledge Element Attacks
+
+| Threat | Attack Vector | Mitigation | EUDI Wallet Status |
+|--------|---------------|------------|-------------------|
+| **Shoulder surfing** | Attacker observes PIN entry | Masked input, short character display | ✅ iOS/Android built-in |
+| **Brute force** | Repeated guessing attempts | Lockout after max attempts (Art. 4(3)(b)) | ✅ WSCA enforced |
+| **Social engineering** | User persuaded to disclose PIN | User education, phishing warnings | ⚠️ PSP responsibility |
+| **Malware / keylogger** | Capture keystrokes via malicious app | Secure keyboard, TEE validation, WUA | ✅ App Attest / Play Integrity |
+| **Phishing** | Fake PIN entry UI overlay | WUA attestation, app integrity checks | ✅ WUA revocation |
+| **Memory dump** | Extract PIN from RAM | WSCA validation, no plaintext in memory | ✅ Secure Enclave / TEE |
+| **Weak PIN selection** | User chooses 123456, 000000 | PIN strength check, blocklist | ⚠️ Not enforced by TS12 |
+
+##### PIN/Password Security: Standards Comparison
+
+| Standard | Min Length | Complexity Rules | Lockout | Entropy Guidance |
+|----------|-----------|------------------|---------|------------------|
+| **PSD2 RTS** | Not specified | Not specified | Required (Art. 4(3)(b)) | None |
+| **NIST 800-63B** | 6 digits (PIN) / 8 chars (MFA) | **No** — length > complexity | Recommended | Blocklist common PINs |
+| **EUDI Wallet ARF** | 6 digits | Alphanumeric optional | Required | None |
+| **Apple iOS** | 6 digits (default) | Alphanumeric available | Device-level | Sequential detection |
+| **Android** | 4 digits (min) | Pattern/alphanumeric | Device-level | Pattern complexity score |
+
+> **NIST 800-63B Key Insight**: "Longer passwords contribute more to security than complex ones." NIST explicitly advises **against** composition rules (requiring uppercase, numbers, symbols) as they lead to predictable patterns. Instead, recommend length and blocklist common choices.
+
+##### PIN Validation Flow (EUDI Wallet)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PIN Entry & Validation Flow                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  User        Wallet App         WSCA/WSCD          Verifier     │
+│   │              │                  │               │           │
+│   │ Enter PIN    │                  │               │           │
+│   │──[masked]───►│                  │               │           │
+│   │              │ Validate PIN     │               │           │
+│   │              │─────────────────►│               │           │
+│   │              │                  │               │           │
+│   │              │                  ├──────────────┐│           │
+│   │              │                  │ Compare hash ││           │
+│   │              │                  │ in Secure    ││           │
+│   │              │                  │ Enclave/TEE  ││           │
+│   │              │                  │◄─────────────┘│           │
+│   │              │                  │               │           │
+│   │              │ Success/Lockout  │               │           │
+│   │              │◄─────────────────│               │           │
+│   │              │                  │               │           │
+│   │              │ [If success]     │               │           │
+│   │              │ Sign KB-JWT with │               │           │
+│   │              │ private key      │               │           │
+│   │              │─────────────────►│               │           │
+│   │              │                  │               │           │
+│   │              │ KB-JWT (signed)  │               │           │
+│   │              │◄─────────────────│               │           │
+│   │              │                  │               │           │
+│   │              │ VP Token with KB-JWT             │           │
+│   │              │──────────────────────────────────►           │
+│   │              │                  │               │           │
+│   │              │                  │    ⚠️ PIN NEVER LEAVES    │
+│   │              │                  │       THE DEVICE          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+Legend:
+  ──►  Data flow (PIN never transmitted)
+  WSCA = Wallet Secure Cryptographic Application
+  WSCD = Wallet Secure Cryptographic Device (SE/TEE)
+```
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Source | Implementation |
+|----------|-----------|--------|----------------|
+| **iOS** | PIN Entry | `SecureField` in SwiftUI | Masked input, no clipboard |
+| **iOS** | Secure Keyboard | `UITextField.isSecureTextEntry = true` | Prevents autocomplete/prediction |
+| **iOS** | Screen Protection | `isExcludedFromCapture` | Prevents screenshots during PIN entry |
+| **Android** | PIN Entry | `inputType="textPassword"` | Masked input |
+| **Android** | Secure Window | `FLAG_SECURE` on Activity | Prevents screenshots, screen recording |
+| **Android** | TEE Validation | Keymaster HAL | Hardware-backed key operations |
+
+##### Gap Analysis: Knowledge Element
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **K-1** | PIN entropy not specified in TS12 | Medium | SCA Attestation Rulebook should require 6+ digits, blocklist common PINs (123456, 000000, 111111) |
+| **K-2** | PIN complexity rules undefined | Low | Align with NIST 800-63B: prefer length over complexity, no composition rules |
+| **K-3** | PIN recovery procedure not specified | Medium | Document secure PIN reset flow requiring WSCD re-initialization or issuer-verified recovery |
+| **K-4** | Biometric fallback to PIN not time-limited | Low | Consider requiring PIN re-entry after N biometric failures or 24h timeout |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **PIN Length**: Mandate minimum 6-digit PIN (NIST 800-63B alignment)
+2. **PIN Blocklist**: Require rejection of common/sequential PINs
+3. **No Complexity Rules**: Explicitly permit alphanumeric but do not require mixed case/symbols (NIST guidance)
+4. **Attempt Counter**: Require WSCA to track failed attempts across app reinstalls (tied to WSCD, not app storage)
+5. **Recovery Flow**: Document secure PIN reset requiring:
+   - Device possession + issuer verification, OR
+   - WSCD re-initialization with full re-issuance
+
+</details>
+
 **Context**: The user's PIN (knowledge element) is:
 - Entered locally on the device with masked input
 - Validated by WSCA/WSCD (Secure Enclave / TEE)
@@ -1232,46 +1350,10 @@ class PinLockoutController {
 
 **Status**: ✅ Fully Supported
 
----
-
-## 6.2 Knowledge Element
-
-> **Regulatory Basis**:
-> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6): Requirements of the elements categorised as knowledge
-
-#### [Article 6(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.001)
-
-> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | PIN validated by WSCA/WSCD, never transmitted |
-| ✅ **Wallet** | Device security | PIN entry masked; secure keyboard on iOS/Android |
-| ✅ **Wallet** | — | PIN never stored in plaintext |
-
-**Status**: ✅ Fully Supported
-
-**Context**: The user's PIN (knowledge element) is:
-- Entered locally on the device with masked input
-- Validated by WSCA/WSCD (Secure Enclave / TEE)
-- Never transmitted to PSP or Wallet Provider
-- Not stored in plaintext
-
----
-
-#### [Article 6(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.002)
-
-> "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet/OS** | iOS/Android | Minimum 6-digit PIN; alphanumeric optional |
-| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify additional PIN requirements |
-
-**Status**: ✅ Fully Supported
 
 
 ---
+
 
 ## 6.3 Possession Element
 

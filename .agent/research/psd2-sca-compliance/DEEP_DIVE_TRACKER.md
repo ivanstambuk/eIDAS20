@@ -120,7 +120,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 6(1) | Mitigate uncovering/disclosure | ❌ No |
+| Art. 6(1) | Mitigate uncovering/disclosure | ✅ Yes |
 | Art. 6(2) | Mitigation measures | ❌ No |
 
 ### Article 7 — Possession Elements
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 15 |
-| ❌ Not Done | 32 |
+| ✅ Done | 16 |
+| ❌ Not Done | 31 |
 | **Total** | 47 |
 
 ---
@@ -162,6 +162,7 @@ A real deep-dive must include **at least 3** of:
 | Date | Paragraph | Notes |
 |------|-----------|-------|
 | 2026-01-27 | — | Created paragraph-level tracker |
+| 2026-01-27 | Art. 6(1) | Deep-dive: EBA guidance, threat model, NIST comparison, ASCII flow, gaps K-1 to K-4 |
 | | | |
 
 ---
