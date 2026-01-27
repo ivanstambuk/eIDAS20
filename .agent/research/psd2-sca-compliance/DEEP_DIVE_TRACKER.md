@@ -80,7 +80,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 2(1) | Transaction monitoring mechanisms | ✅ Yes |
-| Art. 2(2) | Risk-based factors for monitoring | ❌ No |
+| Art. 2(2) | Risk-based factors for monitoring | ✅ Yes |
 
 ### Article 3 — Review of Security Measures
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 26 |
-| ❌ Not Done | 21 |
+| ✅ Done | 27 |
+| ❌ Not Done | 20 |
 | **Total** | 47 |
 
 ---
@@ -173,6 +173,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 4(2)(c) | Deep-dive: Trust chain, ECDLP hardness, verification flow, hardware security, gaps FR-1 to FR-3 |
 | 2026-01-27 | Art. 4(3)(c) | Deep-dive: OID4VP session binding, TLS layers, hijacking prevention, gaps SP-1 to SP-4 |
 | 2026-01-27 | Art. 4(3)(d) | Deep-dive: EBA exemptions, OWASP alignment, wallet vs PSP responsibility, gaps ST-1 to ST-4 |
+| 2026-01-27 | Art. 2(2) | Deep-dive: Mandated risk factors (a-e), wallet data contributions, ML enhancement, gaps RF-1 to RF-4 |
 
 ---
 

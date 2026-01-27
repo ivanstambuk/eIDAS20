@@ -4109,9 +4109,170 @@ For a PSP to comply with Art. 2(1):
 
 **Status**: ❌ PSP Obligation
 
+<details>
+<summary><strong>🔍 Deep-Dive: Mandated Risk Factors</strong></summary>
+
+##### Core Requirement: Minimum Risk Factor Set
+
+Article 2(2) specifies **five mandatory risk factors** that every PSP's transaction monitoring system must incorporate. These are the minimum — PSPs can add more.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Article 2(2) Mandatory Risk Factors                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    PSP TRANSACTION MONITORING                       │   │
+│  │                                                                     │   │
+│  │   (a) Compromised/Stolen Elements                                   │   │
+│  │       └── Black lists, credential breach databases                  │   │
+│  │                                                                     │   │
+│  │   (b) Transaction Amount                                            │   │
+│  │       └── Threshold monitoring, TRA exemption tiers                 │   │
+│  │                                                                     │   │
+│  │   (c) Known Fraud Scenarios                                         │   │
+│  │       └── SIM swap, account takeover, social engineering            │   │
+│  │                                                                     │   │
+│  │   (d) Malware Infection Signs                                       │   │
+│  │       └── Device integrity, WUA attestation status                  │   │
+│  │                                                                     │   │
+│  │   (e) Access Device/Software Logging (if PSP-provided)              │   │
+│  │       └── App version, usage patterns, abnormal behavior            │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  + Additional factors (not mandatory but recommended):                      │
+│    • Abnormal location of the payer                                         │
+│    • Abnormal spending/behavioral pattern                                   │
+│    • Device fingerprint consistency                                         │
+│    • Time-of-day patterns                                                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Mandated Factor Analysis
+
+| Factor | RTS Art. 2(2) | What PSP Must Monitor | Data Sources |
+|--------|---------------|----------------------|--------------|
+| **(a) Compromised lists** | Mandatory | Blacklisted cards, leaked credentials | HaveIBeenPwned, card scheme lists |
+| **(b) Transaction amount** | Mandatory | Amount thresholds, TRA tiers | Transaction data |
+| **(c) Known fraud scenarios** | Mandatory | Account takeover, SIM swap, phishing | Threat intelligence feeds |
+| **(d) Malware signs** | Mandatory | Device integrity, suspicious behavior | WUA, device signals |
+| **(e) Device/software logs** | If PSP-provided | App usage, version, abnormal patterns | PSP app telemetry |
+
+##### Wallet Data Contributions Per Factor
+
+The EUDI Wallet can provide evidence supporting several of these factors:
+
+| RTS Factor | Wallet Contribution | Claim/Attestation |
+|------------|--------------------|--------------------|
+| **(a) Compromised lists** | ❌ None | PSP must check externally |
+| **(b) Transaction amount** | ❌ None | Transaction is PSP-side |
+| **(c) Fraud scenarios** | ⚠️ Partial | WUA reveals device type; SCA Attestation shows auth method |
+| **(d) Malware signs** | ✅ **Key contribution** | WUA attests to device integrity, WS attestation confirms wallet validity |
+| **(e) Device/software logs** | ⚠️ Partial | WUA contains device properties; logging is PSP responsibility |
+
+##### Factor (d) Deep-Dive: Malware Detection
+
+The wallet provides critical evidence for malware detection:
+
+| WUA Claim | Malware Indicator | PSP Action |
+|-----------|------------------|------------|
+| `device_integrity` | Device rooted/jailbroken | Flag as high-risk |
+| `os_version` | Outdated, vulnerable OS | Elevated scrutiny |
+| `app_attestation` | Wallet app tampered | Block transaction |
+| `wscd_type` | SE vs TEE vs none | Risk score adjustment |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     Wallet Evidence for Malware Detection                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  WALLET PROVIDES:                                                           │
+│  ─────────────────                                                         │
+│  • WUA (Wallet Unit Attestation) — device and wallet integrity signals      │
+│  • WS Attestation — wallet solution is valid and not revoked               │
+│  • Play Integrity / Device Check — platform attestation                     │
+│                                                                             │
+│  PSP MUST:                                                                  │
+│  ─────────                                                                  │
+│  • Consume and evaluate these signals                                       │
+│  • Integrate into transaction risk scoring                                  │
+│  • Decide on transaction outcome (approve/decline/step-up)                  │
+│                                                                             │
+│  WALLET CANNOT DETECT:                                                      │
+│  ─────────────────────                                                     │
+│  • Network-level attacks (MITM without cert pinning)                        │
+│  • Server-side fraud                                                        │
+│  • User coercion / social engineering                                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Machine Learning Enhancement (EBA Permitted)
+
+The EBA explicitly permits machine learning to enhance TRA:
+
+| ML Application | Use Case | EBA Reference |
+|---------------|----------|---------------|
+| **Behavioral biometrics** | Typing patterns, swipe behavior | EBA Q&A 2018/4039 |
+| **Anomaly detection** | Unusual transaction patterns | EBA Opinion 2019 |
+| **Device fingerprinting** | Consistent device identification | Implicitly allowed |
+| **Location analysis** | Abnormal geolocation | Art. 2(2) factor |
+
+> **EBA Clarification**: "PSD2 and the Delegated Regulation do not restrict PSPs from utilizing additional security measures, including solutions that rely on innovative technologies (such as machine learning)."
+
+##### Additional Risk Factors (Beyond Art. 2(2) Minimum)
+
+| Additional Factor | Source | Wallet Contribution |
+|------------------|--------|---------------------|
+| **Payer location** | IP, GPS | WUA may contain region; PSP network data |
+| **Behavioral pattern** | Historical data | PSP transaction history |
+| **Device consistency** | Device ID | WUA device properties |
+| **Time-of-day** | Transaction timestamp | PSP-side analysis |
+| **Payee reputation** | Merchant databases | PSP / scheme data |
+| **Velocity checks** | Transaction frequency | PSP-side analysis |
+
+##### Reference Implementation Evidence
+
+| Factor | PSP Implementation Pattern | Wallet Data Used |
+|--------|---------------------------|------------------|
+| **Compromised lists** | Query breach databases | None |
+| **Amount monitoring** | Rule engine thresholds | None |
+| **Fraud scenarios** | Threat intelligence + rules | WUA for device context |
+| **Malware detection** | Consume WUA attestation | `device_integrity`, `os_version` |
+| **Device logging** | App telemetry | WUA device properties |
+
+##### Threat Model: Risk Factor Bypass
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Compromised list evasion** | New stolen credentials | Behavioral analysis | ⚠️ Partial |
+| **Amount splitting** | Multiple small transactions | Velocity checks | ✅ Mitigated |
+| **Unknown fraud scenario** | Novel attack vector | ML anomaly detection | ⚠️ Partial |
+| **Malware hiding** | Advanced rootkit | Hardware attestation (SE) | ✅ Mitigated |
+| **Device spoofing** | Fake WUA claims | WUA signature verification | ✅ Mitigated |
+
+##### Gap Analysis: Risk Factors
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **RF-1** | TS12 doesn't specify which WUA claims PSPs should consume | Medium | Define recommended WUA claim set for TRA |
+| **RF-2** | No standard format for wallet-to-PSP risk signals | Medium | Consider standardized risk indicator vocabulary |
+| **RF-3** | Malware detection relies on platform attestation quality | Low | Document SE/TEE attestation verification guidance |
+| **RF-4** | No guidance on ML model validation for TRA | Low | Consider EBA guidance alignment for ML-based TRA |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **WUA Claim Usage**: Document which WUA claims PSPs should evaluate for each Art. 2(2) factor
+2. **Risk Signal Vocabulary**: Define standardized risk indicator terms for wallet-PSP communication
+3. **Attestation Verification**: Provide guidance on verifying WUA signatures and revocation status
+4. **ML Transparency**: Reference EBA's permission of ML while noting validation requirements
+5. **Factor (d) Emphasis**: Highlight wallet's key contribution to malware detection via attestation
+
+</details>
+
 **Context**: Typical elements include: spending patterns, device fingerprint, geographic location. The Wallet Unit Attestation (WUA) contains device properties that can contribute to this analysis, but the PSP must build the monitoring logic.
-
-
 ---
 
 ## 8.2 Periodic Review
