@@ -454,9 +454,36 @@ guard previousPin == uiPinInputField else {
 
 > ❌ **Finding**: Both iOS and Android reference implementations display **"Pins do not match"** — this explicitly reveals that the **PIN** (knowledge element) was incorrect, violating Article 4(3)(a).
 
-> ⚠️ **Recommendation**: For PSD2-compliant deployments, wallet implementations MUST use a generic message (e.g., "Authentication failed") instead of PIN-specific error messages.
+---
 
-> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. OS biometric APIs are compliant by design, but wallet-level PIN validation must also implement this pattern.
+**Remediation Guidance**
+
+For PSD2-compliant wallet deployments, implementations MUST NOT reveal which authentication element failed. The following changes are required:
+
+| Platform | Current (Non-Compliant) | Required (Compliant) |
+|----------|-------------------------|---------------------|
+| **iOS** | `"Pins do not match"` | `"Authentication failed"` |
+| **Android** | `"Pins do not match"` | `"Authentication failed"` |
+| **Biometric** | (OS handles — already compliant) | — |
+
+**Compliant Error Messages** (examples):
+- ✅ `"Authentication failed"`
+- ✅ `"Unable to verify your identity"`
+- ✅ `"Please try again"`
+- ❌ ~~`"Incorrect PIN"`~~
+- ❌ ~~`"Pins do not match"`~~
+- ❌ ~~`"Biometric not recognized"`~~ (if wallet-level)
+
+**Code Changes Required**:
+
+| Platform | File | Key | Change |
+|----------|------|-----|--------|
+| iOS | `Localizable.xcstrings` | `quick_pin_dont_match` | Replace with generic message |
+| Android | `strings.xml` | `quick_pin_non_match` | Replace with generic message |
+
+**Rationale**: Article 4(3)(a) exists to prevent attackers from learning which authentication factor they need to compromise. If a system reveals "PIN incorrect", an attacker who has already cloned the device (possession) now knows they only need to brute-force the PIN. Generic messages provide no such guidance.
+
+> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. OS biometric APIs are compliant by design, but wallet-level PIN validation must also implement this pattern. This gap should be addressed in wallet implementations intended for PSD2-regulated payment use cases.
 
 ---
 
