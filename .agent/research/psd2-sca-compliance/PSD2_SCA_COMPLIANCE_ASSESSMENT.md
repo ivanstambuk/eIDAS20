@@ -1,8 +1,8 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 4.5  
+> **Version**: 5.0  
 > **Date**: 2026-01-27  
-> **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
+> **Purpose**: Topic-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
 > **Status**: Fully Validated (40/40 requirements verified — Articles 1-9, 22-27, 97)
 
@@ -60,45 +60,9 @@ This document is designed for **legal counsel, compliance officers, and regulato
 
 ---
 
-## Scope: Two SCA Use Cases
-
-This assessment covers **two distinct use cases** in the SCA attestation lifecycle:
-
-| Use Case | Phase | Protocol | RTS Chapter | Wallet Role |
-|----------|-------|----------|-------------|-------------|
-| **Issuance/Binding** | PSP issues SCA attestation to wallet | OID4VCI | Chapter IV (Art. 22-27) | Key generation, secure storage, user auth for binding |
-| **Usage/Authentication** | User authenticates during payment | OID4VP | Chapter II (Art. 4-9) | SCA execution, factor validation, auth code generation |
-
-### Use Case 1: Issuance/Binding
-
-The PSP (as **Issuer**) creates an SCA attestation and binds it to the user:
-
-1. User requests SCA attestation from PSP (e.g., during onboarding)
-2. Wallet generates key pair in WSCA/WSCD (Secure Enclave / StrongBox)
-3. User authenticates to prove identity (SCA required for remote binding per Art. 24(2)(b))
-4. PSP issues attestation bound to wallet's public key
-5. Wallet stores attestation securely in WSCD
-
-**Relevant RTS Articles**: 22, 23, 24, 25, 26, 27  
-**Covered in**: [Part III: SCA Attestation Lifecycle](#part-iii-sca-attestation-lifecycle-issuancebinding)
-
-### Use Case 2: Usage/Authentication
-
-The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
-
-1. PSP sends OID4VP authorization request with transaction data
-2. Wallet displays transaction details to user (amount, payee)
-3. User authenticates (PIN/biometric) via WSCA/WSCD
-4. Wallet generates KB-JWT with `transaction_data_hashes` (dynamic linking)
-5. Wallet returns VP Token (the "authentication code")
-6. PSP verifies signature and processes payment
-
-**Relevant RTS Articles**: 4, 5, 6, 7, 8, 9  
-**Covered in**: [Part II: SCA Authentication (Usage)](#part-ii-sca-authentication-usage)
-
 ---
 
-## Executive Summary
+# 1. Executive Summary
 
 EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial coverage** of PSD2 RTS requirements for SCA. Key findings:
 
@@ -129,7 +93,9 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 ---
 
-## Terminology
+---
+
+# 2. Terminology & Definitions
 
 ### Key Terms from PSD2 RTS
 
@@ -198,15 +164,487 @@ The most important mapping is understanding that the **authentication code** (RT
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+
 ---
 
-# Part I: PSD2 Directive (2015/2366)
+# 3. Scope: Two SCA Lifecycle Phases
 
-## [Article 97](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#art_97) — Authentication
+This assessment covers **two distinct phases** in the SCA attestation lifecycle:
 
-> *PSD2 Directive Article 97 establishes the legal basis for SCA. The technical details are in RTS 2018/389.*
+| Phase | Use Case | Protocol | RTS Chapter | Wallet Role |
+|-------|----------|----------|-------------|-------------|
+| **A. Issuance/Binding** | PSP issues SCA attestation to wallet | OID4VCI | Chapter IV (Art. 22-27) | Key generation, secure storage, user auth for binding |
+| **B. Authentication/Usage** | User authenticates during payment | OID4VP | Chapter II (Art. 4-9) | SCA execution, factor validation, auth code generation |
 
-### [Article 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001) — SCA Triggers
+### Use Case 1: Issuance/Binding
+
+The PSP (as **Issuer**) creates an SCA attestation and binds it to the user:
+
+1. User requests SCA attestation from PSP (e.g., during onboarding)
+2. Wallet generates key pair in WSCA/WSCD (Secure Enclave / StrongBox)
+3. User authenticates to prove identity (SCA required for remote binding per Art. 24(2)(b))
+4. PSP issues attestation bound to wallet's public key
+5. Wallet stores attestation securely in WSCD
+
+**Relevant RTS Articles**: 22, 23, 24, 25, 26, 27  
+**Covered in**: [Part III: SCA Attestation Lifecycle](#part-iii-sca-attestation-lifecycle-issuancebinding)
+
+### Use Case 2: Usage/Authentication
+
+The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
+
+1. PSP sends OID4VP authorization request with transaction data
+2. Wallet displays transaction details to user (amount, payee)
+3. User authenticates (PIN/biometric) via WSCA/WSCD
+4. Wallet generates KB-JWT with `transaction_data_hashes` (dynamic linking)
+5. Wallet returns VP Token (the "authentication code")
+6. PSP verifies signature and processes payment
+
+**Relevant RTS Articles**: 4, 5, 6, 7, 8, 9  
+**Covered in**: [Part II: SCA Authentication (Usage)](#part-ii-sca-authentication-usage)
+
+
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+# PART A: SCA CREDENTIAL ISSUANCE (Binding Phase)
+═══════════════════════════════════════════════════════════════════════════════
+
+> *This part covers the **issuance phase** of SCA attestations — when the PSP creates credentials and binds them to the user's wallet.*
+>
+> **RTS Chapter IV** (Articles 22-27): Confidentiality and integrity of personalised security credentials
+
+---
+
+# 4. PSC Creation & Protection
+
+
+## 4.1 General Requirements
+
+> **Regulatory Basis**:
+> - [RTS Art. 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22): Confidentiality and integrity of personalised security credentials
+
+#### [Article 22(1)](sources/32018R0389.md#article-22) — PSC confidentiality and integrity
+
+> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | WSCA/WSCD authenticates User before crypto ops |
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key never leaves WSCA/WSCD |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
+- **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
+- **Biometric template** (inherence): OS-managed, never exported
+- **Private key + SCA Attestation** (possession): Non-extractable from WSCA/WSCD
+
+---
+
+#### [Article 22(2)(a)](sources/32018R0389.md#article-22) — Masked credential input
+
+> "(a) personalised security credentials are masked when displayed and are not readable in their full extent when input by the payment service user during the authentication;"
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet/OS** | iOS/Android | PIN entry uses secure masked input field |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Both iOS and Android provide secure keyboard input for PIN entry with masking (dots/asterisks). The wallet apps use these native secure input methods.
+
+---
+
+#### [Article 22(2)(b)](sources/32018R0389.md#article-22) — No plaintext storage
+
+> "(b) personalised security credentials in data format, as well as cryptographic materials related to the encryption of the personalised security credentials are not stored in plain text;"
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Keys in Secure Enclave/StrongBox (hardware) |
+| ✅ **Wallet** | iOS Keychain / Android Keystore | Encrypted storage for credentials |
+
+**Status**: ✅ Fully Supported
+
+<details>
+<summary><strong>🔍 Deep-Dive: PIN Storage Implementation Evidence</strong></summary>
+
+#### Android: AES-GCM Encryption with Android Keystore
+
+The Android reference implementation encrypts the PIN using **AES/GCM/NoPadding** with a 256-bit key stored in Android Keystore:
+
+**File**: [`PrefsPinStorageProvider.kt`](reference-impl/eudi-app-android-wallet-ui/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt)
+
+```kotlin
+// Lines 57-72: PIN encryption before storage
+private fun encryptAndStore(pin: String) {
+    val cipher = cryptoController.getCipher(
+        encrypt = true,
+        userAuthenticationRequired = false
+    )
+    val encryptedBytes = cryptoController.encryptDecrypt(
+        cipher = cipher,
+        byteArray = pin.toByteArray(Charsets.UTF_8)
+    )
+    val ivBytes = cipher?.iv ?: return
+    prefsController.setString("PinEnc", encryptedBytes.encodeToBase64String())
+    prefsController.setString("PinIv", ivBytes.encodeToBase64String())
+}
+```
+
+**Encryption key source**: [`KeystoreController.kt`](reference-impl/eudi-app-android-wallet-ui/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt)
+
+```kotlin
+// Lines 90-118: Key generation in Android Keystore
+private fun generateSecretKey(alias: String, userAuthenticationRequired: Boolean) {
+    val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+    val builder = KeyGenParameterSpec.Builder(
+        alias,
+        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+    ).apply {
+        setKeySize(256)
+        setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+        setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+        // ...
+    }
+    keyGenerator.init(builder.build())
+    keyGenerator.generateKey()
+}
+```
+
+#### iOS: Keychain with Hardware Encryption
+
+The iOS reference implementation stores the PIN in the **iOS Keychain**, which provides hardware-backed encryption via the Secure Enclave on modern devices:
+
+**File**: [`KeychainPinStorageProvider.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift)
+
+```swift
+// Lines 30-31: PIN stored directly in Keychain (encrypted by iOS)
+func setPin(with pin: String) {
+    keyChainController.storeValue(key: KeyIdentifier.devicePin, value: pin)
+}
+```
+
+**Keychain configuration**: [`KeyChainController.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-business/Sources/Controller/KeyChainController.swift)
+
+```swift
+// Lines 75-80: Biometry-protected items use device-only accessibility
+try self.keyChain
+    .accessibility(
+        .whenPasscodeSetThisDeviceOnly,
+        authenticationPolicy: [.touchIDAny]
+    )
+    .set(UUID().uuidString, key: self.biometryKey)
+```
+
+#### Summary
+
+| Platform | Storage Method | Encryption | Key Location |
+|----------|---------------|------------|--------------|
+| **Android** | SharedPreferences (encrypted) | AES-256-GCM | Android Keystore (hardware-backed) |
+| **iOS** | Keychain | System-managed | Secure Enclave (hardware) |
+
+</details>
+
+---
+
+#### [Article 22(2)(c)](sources/32018R0389.md#article-22) — Protected cryptographic material
+
+> "(c) secret cryptographic material is protected from unauthorised disclosure."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WUA_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | Private key non-extractable from WSCA/WSCD |
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | WSCA/WSCD prevents key extraction |
+| ✅ **Wallet** | Hardware attestation | Secure Enclave / StrongBox certification |
+
+**Status**: ✅ Fully Supported
+
+<details>
+<summary><strong>🔍 Deep-Dive: Private Key Non-Extractability</strong></summary>
+
+#### ARF High-Level Requirement: WIAM_20
+
+> "A WSCA/WSCD **SHALL protect a private key** it generated during the entire lifetime of the key. This protection SHALL at least imply that the WSCA/WSCD **prevents the private key from being extracted in the clear**. If a WSCA/WSCD is able to export a private key in encrypted format, the resulting level of protection SHALL be equivalent to the protection level of the private key when stored in the WSCA."
+
+#### ARF High-Level Requirement: WUA_09
+
+> "A WUA SHALL contain a public key, and the corresponding **private key SHALL be generated by the WSCA/WSCD** described in the WUA."
+
+#### Platform Implementation
+
+| Platform | Secure Hardware | Non-Extractability Guarantee |
+|----------|-----------------|----------------------------|
+| **Android** | StrongBox (FIPS 140-2 L3) or TEE | `KeyProperties.KEY_FLAG_NON_EXTRACTABLE` (system-enforced) |
+| **iOS** | Secure Enclave (CC certified) | Keys never leave the SE; operations occur inside hardware |
+
+**Certification Standards**:
+- Apple Secure Enclave: Common Criteria EAL4+ certified
+- Android StrongBox: FIPS 140-2 Level 3 certified hardware security module
+
+**Key Lifecycle**:
+1. Key pair generated **inside** WSCA/WSCD (never exposed to application layer)
+2. Public key exported to create WUA / attestation
+3. Private key **never leaves** the secure hardware
+4. All signing operations occur within the WSCA/WSCD
+
+</details>
+
+---
+
+#### [Article 22(3)](sources/32018R0389.md#article-22) — Documented key management
+
+> "Payment service providers shall fully document the process related to the management of cryptographic material used to encrypt or otherwise render unreadable the personalised security credentials."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ❌ **PSP** | — | PSP must document their key management processes |
+| ⚠️ **Evidence** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification includes key management review |
+
+**Status**: ❌ PSP Obligation (with Wallet Certification Evidence)
+
+**Context**: The PSP (as attestation issuer) must document their key management. They can reference Wallet Provider/Solution certification as evidence for the wallet-side key management.
+
+---
+
+#### [Article 22(4)](sources/32018R0389.md#article-22) — Secure processing environment
+
+> "Payment service providers shall ensure that the processing and routing of personalised security credentials and of the authentication codes generated in accordance with Chapter II take place in secure environments in accordance with strong and widely recognised industry standards."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | WSCD certification | Secure Enclave (CC EAL4+) / StrongBox (FIPS 140-2) |
+| ✅ **Wallet** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification requirements |
+
+**Status**: ✅ Fully Supported
+
+**Context**: The WSCD (Secure Enclave / StrongBox) meets "widely recognised industry standards":
+- Apple Secure Enclave: Common Criteria EAL4+ certified
+- Android StrongBox: FIPS 140-2 Level 3 certified hardware
+
+
+---
+
+## 4.2 Creation & Transmission of Credentials
+
+> **Regulatory Basis**:
+> - [RTS Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_23): Creation and transmission of credentials
+
+> "Payment service providers shall ensure that the creation of personalised security credentials is performed in a secure environment. They shall mitigate the risks of unauthorised use of the personalised security credentials and of the authentication devices and software following their loss, theft or copying before their delivery to the payer."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WUA_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | Key pair generated within WSCA/WSCD |
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key never exported |
+| ✅ **Wallet** | OID4VCI | Attestation issuance over TLS |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Art. 23 governs the creation of **all PSC types** in the EUDI Wallet:
+
+| PSC Type | Creation Mechanism | Secure Environment |
+|----------|-------------------|-------------------|
+| **PIN/Passphrase** | User sets during wallet activation | On-device (encrypted storage) |
+| **Biometric** | OS enrollment (pre-existing) | Secure Enclave / TEE |
+| **Private Key** | Generated within WSCA/WSCD | Secure Enclave / TEE |
+| **SCA Attestation** | PSP signs over OID4VCI | PSP backend + TLS |
+
+This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
+
+
+---
+
+## 4.3 Association with Payment Service User
+
+> **Regulatory Basis**:
+> - [RTS Art. 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24): Association with the payment service user
+
+#### [Article 24(1)](sources/32018R0389.md#article-24) — Secure association
+
+> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Cryptographic assets isolated per Wallet Unit |
+| ✅ **Wallet** | Device binding | Attestation bound to specific device's WSCD |
+| ⚠️ **PSP** | — | PSP must verify user identity before issuing attestation |
+
+**Status**: ⚠️ Shared Responsibility
+
+**Context**: 
+- **Wallet provides**: Device binding, key isolation, per-user Wallet Unit
+- **PSP must**: Verify user identity (KYC) before issuing SCA attestation
+
+---
+
+#### [Article 24(2)(a)](sources/32018R0389.md#article-24) — Secure binding environment
+
+> "(a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility..."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | OID4VCI | Issuance over TLS 1.2+ |
+| ✅ **Wallet** | [WIA_*](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md) | Wallet Instance Attestation validates app integrity |
+| ⚠️ **PSP** | — | PSP backend security is PSP's responsibility |
+
+**Status**: ⚠️ Shared Responsibility
+
+---
+
+#### [Article 24(2)(b)](sources/32018R0389.md#article-24) — SCA for remote binding
+
+> "(b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User must authenticate (PIN/biometric) to wallet before attestation issuance |
+| ⚠️ **PSP** | — | PSP must trigger SCA during onboarding |
+
+**Status**: ✅ Fully Supported
+
+**Context**: For remote SCA attestation issuance:
+1. User authenticates to wallet (meets SCA requirement)
+2. Wallet generates proof of user authentication
+3. PSP verifies and issues attestation
+
+This is the "bootstrap" SCA — using existing wallet authentication to issue new SCA attestations.
+
+
+---
+
+## 4.4 Secure Delivery of Credentials
+
+> **Regulatory Basis**:
+> - [RTS Art. 25](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_25): Delivery of credentials and authentication tools
+
+> "Payment service providers shall ensure that the delivery of personalised security credentials, authentication devices and software to the payment service user is carried out in a secure manner designed to address the risks related to their unauthorised use due to their loss, theft or copying."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | OID4VCI | Attestation delivered over TLS |
+| ✅ **Wallet** | Credential activation | Attestations require user confirmation before use |
+
+**Status**: ✅ Fully Supported
+
+**Context**: In the EUDI Wallet model:
+- OID4VCI delivers the signed attestation over TLS
+- The attestation is useless without the private key (non-extractable)
+- Interception doesn't enable impersonation
+
+
+---
+
+## 4.5 Renewal of Credentials
+
+> **Regulatory Basis**:
+> - [RTS Art. 26](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_26): Renewal of personalised security credentials
+
+> "Payment service providers shall ensure that the renewal or re-activation of personalised security credentials adhere to the procedures for the creation, association and delivery of the credentials and of the authentication devices in accordance with Articles 23, 24 and 25."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | OID4VCI refresh | Same issuance flow for renewal |
+| ⚠️ **PSP** | — | PSP must implement renewal policy |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Art. 26 applies to renewal of **all PSC types**:
+
+| PSC Type | Renewal Mechanism |
+|----------|------------------|
+| **PIN/Passphrase** | User-initiated PIN change (wallet provides UI) |
+| **Biometric** | OS-level re-enrollment (Face ID reconfiguration, etc.) |
+| **Private Key + Attestation** | OID4VCI refresh flow (same as initial issuance) |
+
+The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
+
+
+---
+
+## 4.6 Destruction, Deactivation & Revocation
+
+> **Regulatory Basis**:
+> - [RTS Art. 27](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_27): Destruction, deactivation and revocation
+
+#### [Article 27(a)](sources/32018R0389.md#article-27) — Secure destruction/deactivation/revocation
+
+> "(a) the secure destruction, deactivation or revocation of the personalised security credentials, authentication devices and software;"
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | Wallet Provider can revoke Wallet Unit |
+| ✅ **Wallet** | [WIAM_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User can request revocation |
+| ⚠️ **PSP** | — | PSP must revoke SCA attestation on their side |
+
+**Status**: ⚠️ Shared Responsibility
+
+**Context**: Art. 27(a) applies to destruction/deactivation of **all PSC types**:
+
+| PSC Type | Destruction/Deactivation Mechanism |
+|----------|-----------------------------------|
+| **PIN/Passphrase** | Deleted from encrypted storage on wallet reset |
+| **Biometric** | OS-level removal (user removes Face ID, etc.) |
+| **Private Key** | Deleted from WSCA/WSCD on wallet uninstall/reset |
+| **SCA Attestation** | PSP revokes status in backend; wallet deletes local copy |
+
+Shared responsibility:
+- **Wallet Provider**: Can revoke WUA, invalidating the device binding
+- **PSP**: Must revoke the SCA attestation status in their backend
+- **User**: Can request revocation via independent account (WIAM_06)
+
+---
+
+#### [Article 27(b)](sources/32018R0389.md#article-27) — Secure re-use
+
+> "(b) where the payment service provider distributes reusable authentication devices and software, the secure re-use of a device or software is established, documented and implemented before making it available to another payment services user;"
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ➖ **N/A** | — | EUDI Wallet attestations are per-user; no re-use |
+
+**Status**: ➖ Not Applicable
+
+**Context**: The EUDI Wallet model issues per-user attestations bound to device-specific keys. There is no "re-use" scenario.
+
+---
+
+#### [Article 27(c)](sources/32018R0389.md#article-27) — Deactivation in systems
+
+> "(c) the deactivation or revocation of information related to personalised security credentials stored in the payment service provider's systems and databases and, where relevant, in public repositories."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ❌ **PSP** | — | PSP must implement revocation in their backend |
+| ⚠️ **Evidence** | Status list / OCSP | Wallet ecosystem provides revocation mechanisms |
+
+**Status**: ❌ PSP Obligation
+
+**Context**: The PSP must:
+1. Mark revoked SCA attestations in their database
+2. Reject VPs using revoked attestations
+3. Optionally publish revocation status (status list / OCSP)
+
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+# PART B: TRANSACTION AUTHENTICATION (Usage Phase)
+═══════════════════════════════════════════════════════════════════════════════
+
+> *This part covers the **usage phase** of SCA attestations — when the user authenticates for payment transactions.*
+>
+> **PSD2 Article 97** + **RTS Chapter II** (Articles 1-9): Strong customer authentication requirements
+
+---
+
+# 5. SCA Triggers & Exemptions
+
+
+## 5.1 When SCA is Required
+
+> **Regulatory Basis**:
+> - [PSD2 Directive Art. 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001): "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online; (b) initiates an electronic payment transaction; (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
+> - [RTS Art. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1): Subject matter
 
 > "Member States shall ensure that a payment service provider applies strong customer authentication where the payer:
 > (a) accesses its payment account online;
@@ -405,134 +843,16 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 | **Art. 97(1)(b)** Payment | ✅ | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) |
 | **Art. 97(1)(c)** High-risk | ✅ | [TS12 §4.3.2](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#432-login-and-risk-based-authentication) |
 
----
-
-
-
-### [Article 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002) — Dynamic Linking
-
-> "With regard to the initiation of electronic payment transactions as referred to in paragraph 1(b), Member States shall ensure that, for electronic remote payment transactions, the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [SUA_04](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet includes transactional data representation in response |
-| ✅ **Wallet** | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Transactional data included in device binding signature (KB-JWT) |
-| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | `transaction_data_hashes` in KB-JWT cryptographically binds amount + payee |
-
-**Status**: ✅ Fully Supported
-
-**Context**: The OID4VP `transaction_data` parameter allows the PSP to pass payment details (amount, payee, IBAN). These are hashed and included in the KB-JWT's `transaction_data_hashes` array. The user sees the transaction on-screen before approving with biometric/PIN. The signature over this hash constitutes the dynamic link.
-
-**Technical Detail** ([TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)):
-```
-KB-JWT contains:
-  "transaction_data_hashes": ["sha-256 hash of transaction details"],
-  "transaction_data_hashes_alg": "sha-256"
-```
-
-> ⚠️ **Format Note**: Dynamic linking via `transaction_data_hashes` is **OID4VP / SD-JWT-VC only**. TS12 v1.0 does not specify mDOC (ISO 18013-5) transaction binding. See RTS Art. 5(1)(b) for details.
 
 ---
 
-### [Article 97(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.003) — Delegated Act
+# 6. SCA Elements & Independence
 
-> "The Commission shall adopt, in accordance with Article 98, regulatory technical standards [RTS] specifying: (a) the requirements of the strong customer authentication referred to in paragraph 1; (b) the exemptions from the application of paragraph 1, based on the criteria established in paragraph 2; (c) the requirements with which security measures have to comply, in accordance with paragraph 3, in order to protect the confidentiality and the integrity of the personalised security credentials of payment service users; and (d) the requirements for common and secure open standards of communication for the purpose of identification, authentication, notification and information, as well as for the implementation of security measures, between account servicing payment service providers, payment initiation service providers, account information service providers, payers, payees and other payment service providers."
 
-**Status**: ➖ Not relevant for compliance mapping — refers to delegation to RTS 2018/389.
+## 6.1 Authentication Code Requirements
 
----
-
-# Part II: SCA Authentication (Usage)
-
-> *RTS 2018/389 Articles 1-9: Security measures for SCA execution during payments (Use Case 2)*
-
-## Chapter I — General Provisions
-
-### [Article 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1) — Subject matter
-
-> "This Regulation establishes the requirements to be complied with by payment service providers for the purpose of implementing security measures which enable them to: (a) apply the procedure of strong customer authentication in accordance with Article 97 of Directive (EU) 2015/2366; (b) exempt the application of the security requirements of strong customer authentication, subject to specified and limited conditions based on the level of risk, the amount and the recurrence of the payment transaction and of the payment channel used for its execution; (c) protect the confidentiality and the integrity of the payment service user's personalised security credentials; (d) establish common and secure open standards for the communication between account servicing payment service providers, payment initiation service providers, account information service providers, payers, payees and other payment service providers in relation to the provision and use of payment services in application of Title IV of Directive (EU) 2015/2366."
-
-**Status**: ➖ Scope statement — no compliance requirement.
-
----
-
-### [Article 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2) — General authentication requirements
-
-#### [Article 2(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
-
-> "Payment service providers shall have transaction monitoring mechanisms in place that enable them to detect unauthorised or fraudulent payment transactions for the purpose of the implementation of the security measures referred to in points (a) and (b) of Article 1. Those mechanisms shall be based on the analysis of payment transactions taking into account elements which are typical of the payment service user in the circumstances of a normal use of the personalised security credentials."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | PSP must implement fraud detection systems |
-| ⚠️ **Wallet Evidence** | [DASH_02–DASH_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirements-dashboard-logs-for-transparency) | Wallet logs all transactions for user dashboard |
-
-**Status**: ❌ PSP Obligation
-
-**Context**: Transaction monitoring is a PSP-side function. The Wallet provides transaction logs (per DASH_02) that could be used as supplementary evidence in dispute resolution, but the real-time fraud detection must be implemented by the PSP.
-
-**PSP Action Required**:
-- ✗ Implement transaction monitoring system
-- ✗ Define risk rules and anomaly detection
-- ✗ Integrate wallet responses into monitoring pipeline
-
----
-
-#### [Article 2(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.002)
-
-> "Payment service providers shall ensure that the transaction monitoring mechanisms take into account, at a minimum, each of the following risk-based factors: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios in the provision of payment services; (d) signs of malware infection in any sessions of the authentication procedure; (e) in case the access device or the software is provided by the payment service provider, a log of the use of the access device or the software provided to the payment service user and the abnormal use of the access device or the software."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | Behavioural analysis, device fingerprinting, etc. |
-| ⚠️ **Wallet Evidence** | WUA attributes | WUA contains device/WSCD properties that PSP can use for fingerprinting |
-
-**Status**: ❌ PSP Obligation
-
-**Context**: Typical elements include: spending patterns, device fingerprint, geographic location. The Wallet Unit Attestation (WUA) contains device properties that can contribute to this analysis, but the PSP must build the monitoring logic.
-
----
-
-### [Article 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3) — Review of security measures
-
-#### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.001)
-
-> "The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | PSP must establish audit framework |
-| ⚠️ **Evidence** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification provides supporting evidence |
-
-**Status**: ❌ PSP Obligation (with Wallet Evidence)
-
-**Context**: PSPs must audit their own SCA implementations. However, they can rely on Wallet Solution certification (per CIR 2024/2981) as evidence that the wallet component meets security requirements. The PSP's audit scope includes:
-- Integration with wallet
-- PSP-side transaction monitoring
-- Exemption handling
-- Session management
-
----
-
-#### [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.002)
-
-> "The period between the audits referred to in paragraph 1 shall be determined taking into account the relevant accounting and statutory audit framework applicable to the payment service provider. However, payment service providers that make use of the exemption referred to in Article 18 shall be subject to an audit of the methodology, the model and the reported fraud rates at a minimum on a yearly basis. The auditor performing this audit shall have expertise in IT security and payments and be operationally independent within or from the payment service provider. During the first year of making use of the exemption under Article 18 and at least every 3 years thereafter, or more frequently at the competent authority's request, this audit shall be carried out by an independent and qualified external auditor."
-
-**Status**: ❌ PSP Obligation — audit scheduling per applicable framework.
-
----
-
-#### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.003)
-
-> "This audit shall present an evaluation and report on the compliance of the payment service provider's security measures with the requirements set out in this Regulation. The entire report shall be made available to competent authorities upon their request."
-
-**Status**: ❌ PSP Obligation — only if using TRA exemption.
-
----
-
-## Chapter II — Security Measures for SCA
-
-### [Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) — Authentication code
+> **Regulatory Basis**:
+> - [RTS Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4): Authentication code
 
 #### [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.001) — Two or more elements generating an authentication code
 
@@ -876,9 +1196,322 @@ class PinLockoutController {
 
 **Context**: TS12 does not specify session timeout. This is a PSP-side implementation requirement. After authentication, the PSP session (not the wallet session) must timeout after 5 minutes of inactivity.
 
+
 ---
 
-### [Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) — Dynamic linking
+## 6.2 Knowledge Element
+
+> **Regulatory Basis**:
+> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6): Requirements of the elements categorised as knowledge
+
+#### [Article 6(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.001)
+
+> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | PIN validated by WSCA/WSCD, never transmitted |
+| ✅ **Wallet** | Device security | PIN entry masked; secure keyboard on iOS/Android |
+| ✅ **Wallet** | — | PIN never stored in plaintext |
+
+**Status**: ✅ Fully Supported
+
+**Context**: The user's PIN (knowledge element) is:
+- Entered locally on the device with masked input
+- Validated by WSCA/WSCD (Secure Enclave / TEE)
+- Never transmitted to PSP or Wallet Provider
+- Not stored in plaintext
+
+---
+
+#### [Article 6(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.002)
+
+> "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet/OS** | iOS/Android | Minimum 6-digit PIN; alphanumeric optional |
+| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify additional PIN requirements |
+
+**Status**: ✅ Fully Supported
+
+---
+
+## 6.2 Knowledge Element
+
+> **Regulatory Basis**:
+> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6): Requirements of the elements categorised as knowledge
+
+#### [Article 6(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.001)
+
+> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | PIN validated by WSCA/WSCD, never transmitted |
+| ✅ **Wallet** | Device security | PIN entry masked; secure keyboard on iOS/Android |
+| ✅ **Wallet** | — | PIN never stored in plaintext |
+
+**Status**: ✅ Fully Supported
+
+**Context**: The user's PIN (knowledge element) is:
+- Entered locally on the device with masked input
+- Validated by WSCA/WSCD (Secure Enclave / TEE)
+- Never transmitted to PSP or Wallet Provider
+- Not stored in plaintext
+
+---
+
+#### [Article 6(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.002)
+
+> "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet/OS** | iOS/Android | Minimum 6-digit PIN; alphanumeric optional |
+| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify additional PIN requirements |
+
+**Status**: ✅ Fully Supported
+
+
+---
+
+## 6.3 Possession Element
+
+> **Regulatory Basis**:
+> - [RTS Art. 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7): Requirements of elements categorised as possession
+
+#### [Article 7(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.001)
+
+> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as possession are used by unauthorised parties."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key non-extractable from WSCA/WSCD |
+| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | Wallet Provider can revoke compromised WUA |
+| ✅ **Wallet** | [WIAM_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User can request revocation via independent account |
+
+**Status**: ✅ Fully Supported
+
+**Context**:
+- **Loss**: User contacts Wallet Provider (or PSP) to revoke SCA attestation → key becomes invalid
+- **Theft**: Device lock + biometric required; remote wipe available
+- **Copying**: Private keys are non-extractable (hardware protection)
+
+**Wallet Recovery Procedure** (ARF Topic N):
+
+After device loss/theft, wallet recovery does NOT transfer private keys. Instead:
+
+1. **Migration Object**: Encrypted blob containing attestation metadata (NOT private keys)
+2. **Key Non-Exportability**: WIAM_20 mandates private keys never leave WSCA/WSCD
+3. **Recovery = Re-issuance**: User must request **new** SCA attestation from PSP on new device
+4. **LoA Maintained**: Migration preserves Level of Assurance High
+
+This means the old possession element (lost device's key) is permanently invalidated, and a fresh key is generated on the new device.
+
+---
+
+#### [Article 7(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.002)
+
+> "The use by the payer of those elements shall be subject to measures designed to prevent replication of the elements."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key protected, non-exportable |
+| ✅ **Wallet** | [OID4VP/HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | ES256 (ECDSA P-256) algorithm specified |
+| ✅ **Wallet** | App integrity | WUA contains app attestation (Play Integrity / App Attest) |
+
+**Status**: ✅ Fully Supported
+
+
+---
+
+## 6.4 Inherence Element
+
+> **Regulatory Basis**:
+> - [RTS Art. 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8): Requirements of devices and software linked to elements categorised as inherence
+
+#### [Article 8(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.001)
+
+> "Payment service providers shall adopt measures to mitigate the risk that the authentication elements categorised as inherence and read by access devices and software provided to the payer are uncovered by unauthorised parties. At a minimum, the payment service providers shall ensure that those access devices and software have a very low probability of an unauthorised party being authenticated as the payer."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet/OS** | Face ID / BiometricPrompt | OS biometric API with liveness detection, anti-spoofing |
+| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Biometric required before crypto operation |
+
+**Status**: ✅ Fully Supported (Delegated to OS)
+
+**Context**: The wallet relies on OS-level biometric protection:
+- **iOS**: `LAContext` with Face ID / Touch ID (includes liveness detection)
+- **Android**: `BiometricPrompt` with Class 3 biometric (certified anti-spoofing)
+
+The Wallet does NOT store or have access to biometric templates — this is managed by the OS Secure Enclave / TEE. The "very low probability" requirement is met by:
+- False Acceptance Rate (FAR) < 1/50,000 for fingerprint
+- FAR < 1/1,000,000 for Face ID (Apple)
+- FIDO UAF certification for Android BiometricPrompt Class 3
+
+**Reference Implementation Evidence**:
+- iOS: `LAContext.evaluatePolicy` — liveness detection built into Face ID / Touch ID
+- Android: `BiometricPrompt` (Class 3) — hardware-backed anti-spoofing
+
+---
+
+#### [Article 8(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.002)
+
+> "The use by the payer of those elements shall be subject to measures ensuring that those devices and the software guarantee resistance against unauthorised use of the elements through access to the devices and the software."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **OS** | Apple / Google | Hardware-backed biometric sensors, certified algorithms |
+| ✅ **Wallet** | App attestation | WUA contains Play Integrity / App Attest |
+
+**Status**: ✅ Delegated to Certified OS Components
+
+
+---
+
+## 6.5 Independence of Elements
+
+> **Regulatory Basis**:
+> - [RTS Art. 9](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9): Independence of the elements
+
+#### [Article 9(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.001)
+
+> "Payment service providers shall ensure that the use of the elements of strong customer authentication referred to in Articles 6, 7 and 8 is subject to measures which ensure that, in terms of technology, algorithms and parameters, the breach of one of the elements does not compromise the reliability of the other elements."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | WSCA/WSCD architecture | Biometric stored in Secure Enclave; PIN validated separately; keys in hardware |
+| ✅ **Wallet** | [WIAM_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Cryptographic assets isolated per Wallet Unit |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Independence is ensured by architectural separation:
+- **Knowledge** (PIN): Never stored in plaintext; validated by WSCA/WSCD
+- **Inherence** (biometric): Managed by OS (Face ID / BiometricPrompt), not accessible to wallet app
+- **Possession** (key): In WSCA/WSCD, protected by biometric/PIN check before use
+
+Breach of one does not expose the others:
+- Stolen device (possession breach) → Still need biometric/PIN
+- Shoulder-surfed PIN (knowledge breach) → Still need device + biometric
+- Lifted fingerprint (inherence breach) → Still need device + PIN fallback
+
+---
+
+#### [Article 9(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.002)
+
+> "Payment service providers shall adopt security measures, where any of the elements of strong customer authentication or the authentication code itself is used through a multi-purpose device, to mitigate the risk which would result from that multi-purpose device being compromised."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | TEE / Secure Enclave | All crypto operations in hardware-isolated environment |
+| ✅ **Wallet** | App integrity | WUA contains app attestation (Play Integrity / App Attest) |
+
+**Status**: ✅ Fully Supported
+
+**Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
+
+---
+
+#### [Article 9(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.003)
+
+> "For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | TEE / Secure Enclave | (a) Separated secure execution environment |
+| ✅ **Wallet** | App attestation (WUA) | (b) Play Integrity / App Attest verifies app integrity |
+| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | (c) Key revocation if compromise detected |
+
+**Status**: ✅ Fully Supported
+
+---
+
+## Chapter III — Confidentiality and Integrity of PSC
+
+### [Article 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22) — Personalised security credentials
+
+> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private keys never leave WSCA/WSCD |
+| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS for transit protection |
+| ✅ **Wallet** | Device encryption | At-rest encryption by iOS/Android |
+
+**Status**: ✅ Fully Supported
+
+**Context**: PSC in wallet context:
+- **Knowledge** (PIN): Validated locally, never transmitted
+- **Possession** (key): Non-extractable, used only for signing
+- **Inherence** (biometric): Managed by OS, never exported
+
+---
+
+### [Article 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24) — Secure execution environment
+
+> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software. For the purpose of paragraph 1, payment service providers shall ensure that each of the following requirements is met: (a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility comprising at least the payment service provider's premises, the internet environment provided by the payment service provider or other similar secure websites used by the payment service provider and its automated teller machine services, and taking into account risks associated with devices and underlying components used during the association process that are not under the responsibility of the payment service provider; (b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | WSCA/WSCD | Secure Enclave (iOS) / StrongBox / TEE (Android) |
+| ✅ **Wallet** | [WIAM_08](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Wallet Provider verifies WSCA/WSCD certification |
+
+**Status**: ✅ Fully Supported
+
+---
+
+## Exemptions (Articles 10-18)
+
+### [Article 18](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_18) — Transaction Risk Analysis (TRA)
+
+> "Payment service providers shall be allowed not to apply strong customer authentication where the payer initiates a remote electronic payment transaction identified by the payment service provider as posing a low level of risk according to the transaction monitoring mechanisms referred to in Article 2 and in paragraph 2(c) of this Article."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ❌ **PSP** | — | PSP implements TRA logic |
+| ⚠️ **Evidence** | TS12 response | Wallet can still be invoked, but PSP decides to exempt |
+
+**Status**: ❌ PSP Decision
+
+**Context**: TRA is a PSP-side decision based on fraud rates, transaction amounts, and risk scoring. The wallet is not involved in exemption decisions. However, the PSP could:
+1. Not invoke wallet SCA at all (silent exemption)
+2. Invoke wallet with reduced requirements (future extension)
+
+---
+
+---
+
+# 7. Dynamic Linking
+
+> **Regulatory Basis**:
+> - [PSD2 Directive Art. 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002): "...the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
+> - [RTS Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5): Dynamic linking
+
+> "With regard to the initiation of electronic payment transactions as referred to in paragraph 1(b), Member States shall ensure that, for electronic remote payment transactions, the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | [SUA_04](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet includes transactional data representation in response |
+| ✅ **Wallet** | [SUA_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Transactional data included in device binding signature (KB-JWT) |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | `transaction_data_hashes` in KB-JWT cryptographically binds amount + payee |
+
+**Status**: ✅ Fully Supported
+
+**Context**: The OID4VP `transaction_data` parameter allows the PSP to pass payment details (amount, payee, IBAN). These are hashed and included in the KB-JWT's `transaction_data_hashes` array. The user sees the transaction on-screen before approving with biometric/PIN. The signature over this hash constitutes the dynamic link.
+
+**Technical Detail** ([TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)):
+```
+KB-JWT contains:
+  "transaction_data_hashes": ["sha-256 hash of transaction details"],
+  "transaction_data_hashes_alg": "sha-256"
+```
+
+> ⚠️ **Format Note**: Dynamic linking via `transaction_data_hashes` is **OID4VP / SD-JWT-VC only**. TS12 v1.0 does not specify mDOC (ISO 18013-5) transaction binding. See RTS Art. 5(1)(b) for details.
+
+
+---
 
 #### [Article 5(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — General requirement
 
@@ -1786,631 +2419,144 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 1. Use individual SCA per payee (fully compliant)
 2. Or request TS12 extension for batch support
 
----
-
-### [Article 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6) — Requirements of the elements categorised as knowledge
-
-#### [Article 6(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.001)
-
-> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | PIN validated by WSCA/WSCD, never transmitted |
-| ✅ **Wallet** | Device security | PIN entry masked; secure keyboard on iOS/Android |
-| ✅ **Wallet** | — | PIN never stored in plaintext |
-
-**Status**: ✅ Fully Supported
-
-**Context**: The user's PIN (knowledge element) is:
-- Entered locally on the device with masked input
-- Validated by WSCA/WSCD (Secure Enclave / TEE)
-- Never transmitted to PSP or Wallet Provider
-- Not stored in plaintext
 
 ---
 
-#### [Article 6(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.002)
+# 8. General Security Requirements
 
-> "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
+## 8.1 Security Measures
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet/OS** | iOS/Android | Minimum 6-digit PIN; alphanumeric optional |
-| 🔶 **Rulebook** | — | SCA Attestation Rulebook may specify additional PIN requirements |
+> **Regulatory Basis**:
+> - [RTS Art. 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2): General authentication requirements
 
-**Status**: ✅ Fully Supported
+#### [Article 2(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
 
----
-
-### [Article 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7) — Requirements of elements categorised as possession
-
-#### [Article 7(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.001)
-
-> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as possession are used by unauthorised parties."
+> "Payment service providers shall have transaction monitoring mechanisms in place that enable them to detect unauthorised or fraudulent payment transactions for the purpose of the implementation of the security measures referred to in points (a) and (b) of Article 1. Those mechanisms shall be based on the analysis of payment transactions taking into account elements which are typical of the payment service user in the circumstances of a normal use of the personalised security credentials."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key non-extractable from WSCA/WSCD |
-| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | Wallet Provider can revoke compromised WUA |
-| ✅ **Wallet** | [WIAM_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User can request revocation via independent account |
-
-**Status**: ✅ Fully Supported
-
-**Context**:
-- **Loss**: User contacts Wallet Provider (or PSP) to revoke SCA attestation → key becomes invalid
-- **Theft**: Device lock + biometric required; remote wipe available
-- **Copying**: Private keys are non-extractable (hardware protection)
-
-**Wallet Recovery Procedure** (ARF Topic N):
-
-After device loss/theft, wallet recovery does NOT transfer private keys. Instead:
-
-1. **Migration Object**: Encrypted blob containing attestation metadata (NOT private keys)
-2. **Key Non-Exportability**: WIAM_20 mandates private keys never leave WSCA/WSCD
-3. **Recovery = Re-issuance**: User must request **new** SCA attestation from PSP on new device
-4. **LoA Maintained**: Migration preserves Level of Assurance High
-
-This means the old possession element (lost device's key) is permanently invalidated, and a fresh key is generated on the new device.
-
----
-
-#### [Article 7(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.002)
-
-> "The use by the payer of those elements shall be subject to measures designed to prevent replication of the elements."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key protected, non-exportable |
-| ✅ **Wallet** | [OID4VP/HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | ES256 (ECDSA P-256) algorithm specified |
-| ✅ **Wallet** | App integrity | WUA contains app attestation (Play Integrity / App Attest) |
-
-**Status**: ✅ Fully Supported
-
----
-
-### [Article 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8) — Requirements of devices and software linked to elements categorised as inherence
-
-#### [Article 8(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.001)
-
-> "Payment service providers shall adopt measures to mitigate the risk that the authentication elements categorised as inherence and read by access devices and software provided to the payer are uncovered by unauthorised parties. At a minimum, the payment service providers shall ensure that those access devices and software have a very low probability of an unauthorised party being authenticated as the payer."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet/OS** | Face ID / BiometricPrompt | OS biometric API with liveness detection, anti-spoofing |
-| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Biometric required before crypto operation |
-
-**Status**: ✅ Fully Supported (Delegated to OS)
-
-**Context**: The wallet relies on OS-level biometric protection:
-- **iOS**: `LAContext` with Face ID / Touch ID (includes liveness detection)
-- **Android**: `BiometricPrompt` with Class 3 biometric (certified anti-spoofing)
-
-The Wallet does NOT store or have access to biometric templates — this is managed by the OS Secure Enclave / TEE. The "very low probability" requirement is met by:
-- False Acceptance Rate (FAR) < 1/50,000 for fingerprint
-- FAR < 1/1,000,000 for Face ID (Apple)
-- FIDO UAF certification for Android BiometricPrompt Class 3
-
-**Reference Implementation Evidence**:
-- iOS: `LAContext.evaluatePolicy` — liveness detection built into Face ID / Touch ID
-- Android: `BiometricPrompt` (Class 3) — hardware-backed anti-spoofing
-
----
-
-#### [Article 8(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.002)
-
-> "The use by the payer of those elements shall be subject to measures ensuring that those devices and the software guarantee resistance against unauthorised use of the elements through access to the devices and the software."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **OS** | Apple / Google | Hardware-backed biometric sensors, certified algorithms |
-| ✅ **Wallet** | App attestation | WUA contains Play Integrity / App Attest |
-
-**Status**: ✅ Delegated to Certified OS Components
-
----
-
-### [Article 9](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9) — Independence of the elements
-
-#### [Article 9(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.001)
-
-> "Payment service providers shall ensure that the use of the elements of strong customer authentication referred to in Articles 6, 7 and 8 is subject to measures which ensure that, in terms of technology, algorithms and parameters, the breach of one of the elements does not compromise the reliability of the other elements."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | WSCA/WSCD architecture | Biometric stored in Secure Enclave; PIN validated separately; keys in hardware |
-| ✅ **Wallet** | [WIAM_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Cryptographic assets isolated per Wallet Unit |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Independence is ensured by architectural separation:
-- **Knowledge** (PIN): Never stored in plaintext; validated by WSCA/WSCD
-- **Inherence** (biometric): Managed by OS (Face ID / BiometricPrompt), not accessible to wallet app
-- **Possession** (key): In WSCA/WSCD, protected by biometric/PIN check before use
-
-Breach of one does not expose the others:
-- Stolen device (possession breach) → Still need biometric/PIN
-- Shoulder-surfed PIN (knowledge breach) → Still need device + biometric
-- Lifted fingerprint (inherence breach) → Still need device + PIN fallback
-
----
-
-#### [Article 9(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.002)
-
-> "Payment service providers shall adopt security measures, where any of the elements of strong customer authentication or the authentication code itself is used through a multi-purpose device, to mitigate the risk which would result from that multi-purpose device being compromised."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | TEE / Secure Enclave | All crypto operations in hardware-isolated environment |
-| ✅ **Wallet** | App integrity | WUA contains app attestation (Play Integrity / App Attest) |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
-
----
-
-#### [Article 9(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.003)
-
-> "For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | TEE / Secure Enclave | (a) Separated secure execution environment |
-| ✅ **Wallet** | App attestation (WUA) | (b) Play Integrity / App Attest verifies app integrity |
-| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | (c) Key revocation if compromise detected |
-
-**Status**: ✅ Fully Supported
-
----
-
-## Chapter III — Confidentiality and Integrity of PSC
-
-### [Article 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22) — Personalised security credentials
-
-> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private keys never leave WSCA/WSCD |
-| ✅ **Wallet** | [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html), [HAIP](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html) | TLS for transit protection |
-| ✅ **Wallet** | Device encryption | At-rest encryption by iOS/Android |
-
-**Status**: ✅ Fully Supported
-
-**Context**: PSC in wallet context:
-- **Knowledge** (PIN): Validated locally, never transmitted
-- **Possession** (key): Non-extractable, used only for signing
-- **Inherence** (biometric): Managed by OS, never exported
-
----
-
-### [Article 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24) — Secure execution environment
-
-> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software. For the purpose of paragraph 1, payment service providers shall ensure that each of the following requirements is met: (a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility comprising at least the payment service provider's premises, the internet environment provided by the payment service provider or other similar secure websites used by the payment service provider and its automated teller machine services, and taking into account risks associated with devices and underlying components used during the association process that are not under the responsibility of the payment service provider; (b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | WSCA/WSCD | Secure Enclave (iOS) / StrongBox / TEE (Android) |
-| ✅ **Wallet** | [WIAM_08](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Wallet Provider verifies WSCA/WSCD certification |
-
-**Status**: ✅ Fully Supported
-
----
-
-## Exemptions (Articles 10-18)
-
-### [Article 18](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_18) — Transaction Risk Analysis (TRA)
-
-> "Payment service providers shall be allowed not to apply strong customer authentication where the payer initiates a remote electronic payment transaction identified by the payment service provider as posing a low level of risk according to the transaction monitoring mechanisms referred to in Article 2 and in paragraph 2(c) of this Article."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | PSP implements TRA logic |
-| ⚠️ **Evidence** | TS12 response | Wallet can still be invoked, but PSP decides to exempt |
-
-**Status**: ❌ PSP Decision
-
-**Context**: TRA is a PSP-side decision based on fraud rates, transaction amounts, and risk scoring. The wallet is not involved in exemption decisions. However, the PSP could:
-1. Not invoke wallet SCA at all (silent exemption)
-2. Invoke wallet with reduced requirements (future extension)
-
----
-
-# Part III: SCA Attestation Lifecycle (Issuance/Binding)
-
-> *RTS 2018/389 Chapter IV (Articles 22-27): Security requirements for credential creation, association, delivery, and management (Use Case 1)*
-
-This part covers the **issuance phase** of SCA attestations — when the PSP creates credentials and binds them to the user's wallet.
-
-## Chapter IV — Confidentiality and Integrity of PSC
-
-### [Article 22](sources/32018R0389.md#article-22) — General requirements
-
-#### [Article 22(1)](sources/32018R0389.md#article-22) — PSC confidentiality and integrity
-
-> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | WSCA/WSCD authenticates User before crypto ops |
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key never leaves WSCA/WSCD |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
-- **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
-- **Biometric template** (inherence): OS-managed, never exported
-- **Private key + SCA Attestation** (possession): Non-extractable from WSCA/WSCD
-
----
-
-#### [Article 22(2)(a)](sources/32018R0389.md#article-22) — Masked credential input
-
-> "(a) personalised security credentials are masked when displayed and are not readable in their full extent when input by the payment service user during the authentication;"
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet/OS** | iOS/Android | PIN entry uses secure masked input field |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Both iOS and Android provide secure keyboard input for PIN entry with masking (dots/asterisks). The wallet apps use these native secure input methods.
-
----
-
-#### [Article 22(2)(b)](sources/32018R0389.md#article-22) — No plaintext storage
-
-> "(b) personalised security credentials in data format, as well as cryptographic materials related to the encryption of the personalised security credentials are not stored in plain text;"
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Keys in Secure Enclave/StrongBox (hardware) |
-| ✅ **Wallet** | iOS Keychain / Android Keystore | Encrypted storage for credentials |
-
-**Status**: ✅ Fully Supported
-
-<details>
-<summary><strong>🔍 Deep-Dive: PIN Storage Implementation Evidence</strong></summary>
-
-#### Android: AES-GCM Encryption with Android Keystore
-
-The Android reference implementation encrypts the PIN using **AES/GCM/NoPadding** with a 256-bit key stored in Android Keystore:
-
-**File**: [`PrefsPinStorageProvider.kt`](reference-impl/eudi-app-android-wallet-ui/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt)
-
-```kotlin
-// Lines 57-72: PIN encryption before storage
-private fun encryptAndStore(pin: String) {
-    val cipher = cryptoController.getCipher(
-        encrypt = true,
-        userAuthenticationRequired = false
-    )
-    val encryptedBytes = cryptoController.encryptDecrypt(
-        cipher = cipher,
-        byteArray = pin.toByteArray(Charsets.UTF_8)
-    )
-    val ivBytes = cipher?.iv ?: return
-    prefsController.setString("PinEnc", encryptedBytes.encodeToBase64String())
-    prefsController.setString("PinIv", ivBytes.encodeToBase64String())
-}
-```
-
-**Encryption key source**: [`KeystoreController.kt`](reference-impl/eudi-app-android-wallet-ui/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt)
-
-```kotlin
-// Lines 90-118: Key generation in Android Keystore
-private fun generateSecretKey(alias: String, userAuthenticationRequired: Boolean) {
-    val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
-    val builder = KeyGenParameterSpec.Builder(
-        alias,
-        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-    ).apply {
-        setKeySize(256)
-        setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-        setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-        // ...
-    }
-    keyGenerator.init(builder.build())
-    keyGenerator.generateKey()
-}
-```
-
-#### iOS: Keychain with Hardware Encryption
-
-The iOS reference implementation stores the PIN in the **iOS Keychain**, which provides hardware-backed encryption via the Secure Enclave on modern devices:
-
-**File**: [`KeychainPinStorageProvider.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift)
-
-```swift
-// Lines 30-31: PIN stored directly in Keychain (encrypted by iOS)
-func setPin(with pin: String) {
-    keyChainController.storeValue(key: KeyIdentifier.devicePin, value: pin)
-}
-```
-
-**Keychain configuration**: [`KeyChainController.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-business/Sources/Controller/KeyChainController.swift)
-
-```swift
-// Lines 75-80: Biometry-protected items use device-only accessibility
-try self.keyChain
-    .accessibility(
-        .whenPasscodeSetThisDeviceOnly,
-        authenticationPolicy: [.touchIDAny]
-    )
-    .set(UUID().uuidString, key: self.biometryKey)
-```
-
-#### Summary
-
-| Platform | Storage Method | Encryption | Key Location |
-|----------|---------------|------------|--------------|
-| **Android** | SharedPreferences (encrypted) | AES-256-GCM | Android Keystore (hardware-backed) |
-| **iOS** | Keychain | System-managed | Secure Enclave (hardware) |
-
-</details>
-
----
-
-#### [Article 22(2)(c)](sources/32018R0389.md#article-22) — Protected cryptographic material
-
-> "(c) secret cryptographic material is protected from unauthorised disclosure."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WUA_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | Private key non-extractable from WSCA/WSCD |
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | WSCA/WSCD prevents key extraction |
-| ✅ **Wallet** | Hardware attestation | Secure Enclave / StrongBox certification |
-
-**Status**: ✅ Fully Supported
-
-<details>
-<summary><strong>🔍 Deep-Dive: Private Key Non-Extractability</strong></summary>
-
-#### ARF High-Level Requirement: WIAM_20
-
-> "A WSCA/WSCD **SHALL protect a private key** it generated during the entire lifetime of the key. This protection SHALL at least imply that the WSCA/WSCD **prevents the private key from being extracted in the clear**. If a WSCA/WSCD is able to export a private key in encrypted format, the resulting level of protection SHALL be equivalent to the protection level of the private key when stored in the WSCA."
-
-#### ARF High-Level Requirement: WUA_09
-
-> "A WUA SHALL contain a public key, and the corresponding **private key SHALL be generated by the WSCA/WSCD** described in the WUA."
-
-#### Platform Implementation
-
-| Platform | Secure Hardware | Non-Extractability Guarantee |
-|----------|-----------------|----------------------------|
-| **Android** | StrongBox (FIPS 140-2 L3) or TEE | `KeyProperties.KEY_FLAG_NON_EXTRACTABLE` (system-enforced) |
-| **iOS** | Secure Enclave (CC certified) | Keys never leave the SE; operations occur inside hardware |
-
-**Certification Standards**:
-- Apple Secure Enclave: Common Criteria EAL4+ certified
-- Android StrongBox: FIPS 140-2 Level 3 certified hardware security module
-
-**Key Lifecycle**:
-1. Key pair generated **inside** WSCA/WSCD (never exposed to application layer)
-2. Public key exported to create WUA / attestation
-3. Private key **never leaves** the secure hardware
-4. All signing operations occur within the WSCA/WSCD
-
-</details>
-
----
-
-#### [Article 22(3)](sources/32018R0389.md#article-22) — Documented key management
-
-> "Payment service providers shall fully document the process related to the management of cryptographic material used to encrypt or otherwise render unreadable the personalised security credentials."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | PSP must document their key management processes |
-| ⚠️ **Evidence** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification includes key management review |
-
-**Status**: ❌ PSP Obligation (with Wallet Certification Evidence)
-
-**Context**: The PSP (as attestation issuer) must document their key management. They can reference Wallet Provider/Solution certification as evidence for the wallet-side key management.
-
----
-
-#### [Article 22(4)](sources/32018R0389.md#article-22) — Secure processing environment
-
-> "Payment service providers shall ensure that the processing and routing of personalised security credentials and of the authentication codes generated in accordance with Chapter II take place in secure environments in accordance with strong and widely recognised industry standards."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | WSCD certification | Secure Enclave (CC EAL4+) / StrongBox (FIPS 140-2) |
-| ✅ **Wallet** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification requirements |
-
-**Status**: ✅ Fully Supported
-
-**Context**: The WSCD (Secure Enclave / StrongBox) meets "widely recognised industry standards":
-- Apple Secure Enclave: Common Criteria EAL4+ certified
-- Android StrongBox: FIPS 140-2 Level 3 certified hardware
-
----
-
-### [Article 23](sources/32018R0389.md#article-23) — Creation and transmission of credentials
-
-> "Payment service providers shall ensure that the creation of personalised security credentials is performed in a secure environment. They shall mitigate the risks of unauthorised use of the personalised security credentials and of the authentication devices and software following their loss, theft or copying before their delivery to the payer."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WUA_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation) | Key pair generated within WSCA/WSCD |
-| ✅ **Wallet** | [WIAM_20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Private key never exported |
-| ✅ **Wallet** | OID4VCI | Attestation issuance over TLS |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Art. 23 governs the creation of **all PSC types** in the EUDI Wallet:
-
-| PSC Type | Creation Mechanism | Secure Environment |
-|----------|-------------------|-------------------|
-| **PIN/Passphrase** | User sets during wallet activation | On-device (encrypted storage) |
-| **Biometric** | OS enrollment (pre-existing) | Secure Enclave / TEE |
-| **Private Key** | Generated within WSCA/WSCD | Secure Enclave / TEE |
-| **SCA Attestation** | PSP signs over OID4VCI | PSP backend + TLS |
-
-This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
-
----
-
-### [Article 24](sources/32018R0389.md#article-24) — Association with the payment service user
-
-#### [Article 24(1)](sources/32018R0389.md#article-24) — Secure association
-
-> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | Cryptographic assets isolated per Wallet Unit |
-| ✅ **Wallet** | Device binding | Attestation bound to specific device's WSCD |
-| ⚠️ **PSP** | — | PSP must verify user identity before issuing attestation |
-
-**Status**: ⚠️ Shared Responsibility
-
-**Context**: 
-- **Wallet provides**: Device binding, key isolation, per-user Wallet Unit
-- **PSP must**: Verify user identity (KYC) before issuing SCA attestation
-
----
-
-#### [Article 24(2)(a)](sources/32018R0389.md#article-24) — Secure binding environment
-
-> "(a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility..."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | OID4VCI | Issuance over TLS 1.2+ |
-| ✅ **Wallet** | [WIA_*](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md) | Wallet Instance Attestation validates app integrity |
-| ⚠️ **PSP** | — | PSP backend security is PSP's responsibility |
-
-**Status**: ⚠️ Shared Responsibility
-
----
-
-#### [Article 24(2)(b)](sources/32018R0389.md#article-24) — SCA for remote binding
-
-> "(b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WIAM_14](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User must authenticate (PIN/biometric) to wallet before attestation issuance |
-| ⚠️ **PSP** | — | PSP must trigger SCA during onboarding |
-
-**Status**: ✅ Fully Supported
-
-**Context**: For remote SCA attestation issuance:
-1. User authenticates to wallet (meets SCA requirement)
-2. Wallet generates proof of user authentication
-3. PSP verifies and issues attestation
-
-This is the "bootstrap" SCA — using existing wallet authentication to issue new SCA attestations.
-
----
-
-### [Article 25](sources/32018R0389.md#article-25) — Delivery of credentials
-
-> "Payment service providers shall ensure that the delivery of personalised security credentials, authentication devices and software to the payment service user is carried out in a secure manner designed to address the risks related to their unauthorised use due to their loss, theft or copying."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | OID4VCI | Attestation delivered over TLS |
-| ✅ **Wallet** | Credential activation | Attestations require user confirmation before use |
-
-**Status**: ✅ Fully Supported
-
-**Context**: In the EUDI Wallet model:
-- OID4VCI delivers the signed attestation over TLS
-- The attestation is useless without the private key (non-extractable)
-- Interception doesn't enable impersonation
-
----
-
-### [Article 26](sources/32018R0389.md#article-26) — Renewal of personalised security credentials
-
-> "Payment service providers shall ensure that the renewal or re-activation of personalised security credentials adhere to the procedures for the creation, association and delivery of the credentials and of the authentication devices in accordance with Articles 23, 24 and 25."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | OID4VCI refresh | Same issuance flow for renewal |
-| ⚠️ **PSP** | — | PSP must implement renewal policy |
-
-**Status**: ✅ Fully Supported
-
-**Context**: Art. 26 applies to renewal of **all PSC types**:
-
-| PSC Type | Renewal Mechanism |
-|----------|------------------|
-| **PIN/Passphrase** | User-initiated PIN change (wallet provides UI) |
-| **Biometric** | OS-level re-enrollment (Face ID reconfiguration, etc.) |
-| **Private Key + Attestation** | OID4VCI refresh flow (same as initial issuance) |
-
-The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
-
----
-
-### [Article 27](sources/32018R0389.md#article-27) — Destruction, deactivation and revocation
-
-#### [Article 27(a)](sources/32018R0389.md#article-27) — Secure destruction/deactivation/revocation
-
-> "(a) the secure destruction, deactivation or revocation of the personalised security credentials, authentication devices and software;"
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | Wallet Provider can revoke Wallet Unit |
-| ✅ **Wallet** | [WIAM_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2323-topic-40---wallet-instance-installation-and-wallet-unit-activation-and-management) | User can request revocation |
-| ⚠️ **PSP** | — | PSP must revoke SCA attestation on their side |
-
-**Status**: ⚠️ Shared Responsibility
-
-**Context**: Art. 27(a) applies to destruction/deactivation of **all PSC types**:
-
-| PSC Type | Destruction/Deactivation Mechanism |
-|----------|-----------------------------------|
-| **PIN/Passphrase** | Deleted from encrypted storage on wallet reset |
-| **Biometric** | OS-level removal (user removes Face ID, etc.) |
-| **Private Key** | Deleted from WSCA/WSCD on wallet uninstall/reset |
-| **SCA Attestation** | PSP revokes status in backend; wallet deletes local copy |
-
-Shared responsibility:
-- **Wallet Provider**: Can revoke WUA, invalidating the device binding
-- **PSP**: Must revoke the SCA attestation status in their backend
-- **User**: Can request revocation via independent account (WIAM_06)
-
----
-
-#### [Article 27(b)](sources/32018R0389.md#article-27) — Secure re-use
-
-> "(b) where the payment service provider distributes reusable authentication devices and software, the secure re-use of a device or software is established, documented and implemented before making it available to another payment services user;"
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ➖ **N/A** | — | EUDI Wallet attestations are per-user; no re-use |
-
-**Status**: ➖ Not Applicable
-
-**Context**: The EUDI Wallet model issues per-user attestations bound to device-specific keys. There is no "re-use" scenario.
-
----
-
-#### [Article 27(c)](sources/32018R0389.md#article-27) — Deactivation in systems
-
-> "(c) the deactivation or revocation of information related to personalised security credentials stored in the payment service provider's systems and databases and, where relevant, in public repositories."
-
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ❌ **PSP** | — | PSP must implement revocation in their backend |
-| ⚠️ **Evidence** | Status list / OCSP | Wallet ecosystem provides revocation mechanisms |
+| ❌ **PSP** | — | PSP must implement fraud detection systems |
+| ⚠️ **Wallet Evidence** | [DASH_02–DASH_05](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirements-dashboard-logs-for-transparency) | Wallet logs all transactions for user dashboard |
 
 **Status**: ❌ PSP Obligation
 
-**Context**: The PSP must:
-1. Mark revoked SCA attestations in their database
-2. Reject VPs using revoked attestations
-3. Optionally publish revocation status (status list / OCSP)
+**Context**: Transaction monitoring is a PSP-side function. The Wallet provides transaction logs (per DASH_02) that could be used as supplementary evidence in dispute resolution, but the real-time fraud detection must be implemented by the PSP.
+
+**PSP Action Required**:
+- ✗ Implement transaction monitoring system
+- ✗ Define risk rules and anomaly detection
+- ✗ Integrate wallet responses into monitoring pipeline
 
 ---
 
-# Part IV: Appendices
+#### [Article 2(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.002)
+
+> "Payment service providers shall ensure that the transaction monitoring mechanisms take into account, at a minimum, each of the following risk-based factors: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios in the provision of payment services; (d) signs of malware infection in any sessions of the authentication procedure; (e) in case the access device or the software is provided by the payment service provider, a log of the use of the access device or the software provided to the payment service user and the abnormal use of the access device or the software."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ❌ **PSP** | — | Behavioural analysis, device fingerprinting, etc. |
+| ⚠️ **Wallet Evidence** | WUA attributes | WUA contains device/WSCD properties that PSP can use for fingerprinting |
+
+**Status**: ❌ PSP Obligation
+
+**Context**: Typical elements include: spending patterns, device fingerprint, geographic location. The Wallet Unit Attestation (WUA) contains device properties that can contribute to this analysis, but the PSP must build the monitoring logic.
+
+
+---
+
+## 8.2 Periodic Review
+
+> **Regulatory Basis**:
+> - [RTS Art. 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3): Review of the security measures
+
+#### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.001)
+
+> "The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ❌ **PSP** | — | PSP must establish audit framework |
+| ⚠️ **Evidence** | [CIR 2024/2981](https://eur-lex.europa.eu/eli/reg_impl/2024/2981/oj/eng) | Wallet Solution certification provides supporting evidence |
+
+**Status**: ❌ PSP Obligation (with Wallet Evidence)
+
+**Context**: PSPs must audit their own SCA implementations. However, they can rely on Wallet Solution certification (per CIR 2024/2981) as evidence that the wallet component meets security requirements. The PSP's audit scope includes:
+- Integration with wallet
+- PSP-side transaction monitoring
+- Exemption handling
+- Session management
+
+---
+
+#### [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.002)
+
+> "The period between the audits referred to in paragraph 1 shall be determined taking into account the relevant accounting and statutory audit framework applicable to the payment service provider. However, payment service providers that make use of the exemption referred to in Article 18 shall be subject to an audit of the methodology, the model and the reported fraud rates at a minimum on a yearly basis. The auditor performing this audit shall have expertise in IT security and payments and be operationally independent within or from the payment service provider. During the first year of making use of the exemption under Article 18 and at least every 3 years thereafter, or more frequently at the competent authority's request, this audit shall be carried out by an independent and qualified external auditor."
+
+**Status**: ❌ PSP Obligation — audit scheduling per applicable framework.
+
+---
+
+#### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.003)
+
+> "This audit shall present an evaluation and report on the compliance of the payment service provider's security measures with the requirements set out in this Regulation. The entire report shall be made available to competent authorities upon their request."
+
+**Status**: ❌ PSP Obligation — only if using TRA exemption.
+
+---
+
+
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+# PART C: GAP ANALYSIS & RECOMMENDATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+# 9. Consolidated Gap Analysis
+
+The following gaps have been identified across the assessment. Items are categorized by severity and linked to their source sections.
+
+## 9.1 Critical Gaps (Action Required)
+
+| Gap ID | Article | Description | Impact | Recommendation |
+|--------|---------|-------------|--------|----------------|
+| **GAP-01** | RTS Art. 4(3)(b) | **PIN lockout NOT implemented** — Reference implementation allows unlimited PIN retries | Regulatory non-compliance | Implement 5-attempt lockout with exponential backoff |
+
+## 9.2 Moderate Gaps (Monitor)
+
+| Gap ID | Article | Description | Impact | Recommendation |
+|--------|---------|-------------|--------|----------------|
+| **GAP-02** | RTS Art. 5(2) | Overlay attack protection limited to OS-level | Sophisticated attacks may bypass | Consider RASP, secure display SDK |
+| **GAP-03** | RTS Art. 5(1)(b) | mDOC format lacks `transaction_data_hashes` | ISO 18013-5 cannot do dynamic linking | Use SD-JWT-VC for payments, or await mDOC extensions |
+| **GAP-04** | RTS Art. 5(1)(c) | TPP verification flow not fully specified | PSP cannot verify TPP identity in current TS12 | Monitor GitHub Discussion #439 |
+| **GAP-05** | PSD2 Art. 97(1) | Missing `urn:eudi:sca:consents:1` transaction type | AISP consent capture not supported | Requested by ETPPA, await TS12 v1.1 |
+
+## 9.3 Low-Risk Gaps (Acceptable)
+
+| Gap ID | Article | Description | Impact | Recommendation |
+|--------|---------|-------------|--------|----------------|
+| **GAP-06** | RTS Art. 5(1)(a) | Display duration not mandated | User may confirm too quickly | Recommend 3s minimum in SCA Attestation Rulebook |
+
+---
+
+# 10. Recommendations for SCA Attestation Rulebook
+
+The following recommendations should be incorporated into future SCA Attestation Rulebooks:
+
+| Recommendation | Priority | Rationale |
+|----------------|----------|-----------|
+| **Minimum display duration** (3s) | High | Prevents accidental confirmation |
+| **PIN lockout policy** (5 attempts) | Critical | RTS Art. 4(3)(b) compliance |
+| **mDOC transaction binding** | Medium | Enables mDOC for payments |
+| **TPP identity verification** | High | Closes PISP/AISP verification gap |
+| **Overlay detection requirement** | Medium | Mitigates display manipulation attacks |
+
+
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+# PART D: APPENDICES
+═══════════════════════════════════════════════════════════════════════════════
 
 *The following appendices provide additional technical context. The compliance mapping in Parts I, II, and III is authoritative.*
 
@@ -2676,6 +2822,10 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 
 ---
 
+---
+
+═══════════════════════════════════════════════════════════════════════════════
+
 ## Document History
 
 | Version | Date | Author | Changes |
@@ -2712,4 +2862,7 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.11** | 2026-01-27 | AI Analysis | **Art. 5(1)(b) dynamic linking deep-dive**: Complete rewrite with cryptographic binding architecture (hash-then-sign) diagram showing full flow from PSP request to ECDSA signature. Added complete TS12 §4.3.1 `urn:eudi:sca:payment:1` schema table with all fields. Documented the 4 supported transaction types. Added visualization hierarchy levels table (TS12 §3.3.1). References EBA Q&A 2018_4039 on technology neutrality. Critical gap analysis for mDOC (ISO 18013-5) format — no equivalent to `transaction_data_hashes` exists, with mitigation options. |
 | **4.12** | 2026-01-27 | AI Analysis | **Art. 5(1)(a) payer awareness deep-dive**: Complete rewrite with WYSIWYS principle diagram and explanation, 5-threat model table (social engineering, MITM, overlay, APP fraud, transaction substitution). Added TS12 §3.3.1 conformant UI mockup. Documented visualization hierarchy with rationale column. Added localization requirements (TS12 §3.3.3) with JSON example and string length limits. TPP dual identity disclosure table with PISP schema. Accessibility considerations table referencing WCAG 2.1 and ARF Topic 53. Gap analysis for trust assumptions (user fatigue, display duration). Recommendation for minimum display duration in SCA Attestation Rulebooks. |
 | **4.13** | 2026-01-27 | AI Analysis | **Art. 97(1) SCA triggers deep-dive**: Complete rewrite with trigger summary table, trigger-to-URN mapping with wallet display examples, ASCII decision tree diagram. Added Art. 97(1)(c) high-risk action examples table (7 actions). Responsibility matrix table (9 rows) clarifying PSP vs Wallet roles. SCA exemptions overview table covering all RTS Chapter III exemptions (Articles 10-18) with TS12 applicability. TRA fraud rate thresholds table. ASCII sequence diagram showing "Who Triggers SCA" flow. Gap analysis table for missing transaction types including `urn:eudi:sca:consents:1`. |
+
+| **5.0** | 2026-01-27 | AI Analysis | **Major restructure: Topic-first consolidation**. Reorganized from regulation-first (PSD2 → RTS Chapter II → RTS Chapter IV) to topic-first structure. New Parts: A (Issuance), B (Authentication), C (Gap Analysis), D (Appendices). Consolidated Art. 97(1) + RTS Art. 1, Art. 97(2) + RTS Art. 5. Added dual regulatory references throughout. Created consolidated gap analysis with severity ratings. |
+
 
