@@ -1,95 +1,176 @@
 # Deep-Dive Tracker: PSD2 SCA Compliance Assessment
 
-**Created**: 2026-01-27
-**Status**: Planning
-**Purpose**: Track which sections have deep-dive analysis vs cursory treatment
+**Created**: 2026-01-27  
+**Purpose**: Track paragraph-level deep-dive completion
 
 ---
 
-## Legend
+## What Qualifies as a Deep-Dive?
 
-| Indicator | Meaning | Line Threshold |
-|-----------|---------|----------------|
-| ✅ **Deep-dive** | Comprehensive analysis with diagrams, tables, code examples, threat models | >150 lines |
-| 🟡 **Moderate** | Basic analysis with tables and implementation evidence | 50-150 lines |
-| 🔴 **Cursory** | Minimal treatment, needs deep-dive | <50 lines |
-
----
-
-## Section Analysis
-
-### PART A: SCA CREDENTIAL ISSUANCE (Binding Phase)
-
-| Section | Article(s) | Lines | Status | Notes |
-|---------|------------|-------|--------|-------|
-| **§4.1 General Requirements** | RTS Art. 22 | 207 | ✅ Deep-dive | Has 🔍 PIN Storage & Key Non-Extractability deep-dives |
-| **§4.2 Creation & Transmission** | RTS Art. 23 | 29 | 🔴 Cursory | Needs deep-dive: OID4VCI flow, threat model |
-| **§4.3 Association with User** | RTS Art. 24 | 58 | 🟡 Moderate | Could add: KYC integration, bootstrap SCA flow |
-| **§4.4 Secure Delivery** | RTS Art. 25 | 22 | 🔴 Cursory | Needs deep-dive: TLS requirements, attestation activation |
-| **§4.5 Renewal** | RTS Art. 26 | 27 | 🔴 Cursory | Needs deep-dive: key rotation, attestation refresh |
-| **§4.6 Destruction/Revocation** | RTS Art. 27 | 75 | 🟡 Moderate | Could add: revocation flows, status list |
+A real deep-dive must include **at least 3** of:
+- [ ] Detailed context explanation (>50 lines)
+- [ ] ASCII diagram or flowchart
+- [ ] Threat model table
+- [ ] Reference implementation code evidence
+- [ ] Gap analysis with recommendations
+- [ ] Collapsible `<details>` section
 
 ---
 
-### PART B: TRANSACTION AUTHENTICATION (Usage Phase)
+## PART A: SCA CREDENTIAL ISSUANCE (RTS Art. 22-27)
 
-| Section | Article(s) | Lines | Status | Notes |
-|---------|------------|-------|--------|-------|
-| **§5.1 When SCA is Required** | PSD2 Art. 97(1) + RTS Art. 1 | 205 | ✅ Deep-dive | Trigger tables, exemption overview, responsibility matrix |
-| **§6.1 Authentication Code** | RTS Art. 4 | 350 | ✅ Deep-dive | Factor validation, lockout, session timeout |
-| **§6.2 Knowledge Element** | RTS Art. 6 | 39 | 🔴 Cursory | Needs deep-dive: PIN complexity, entropy, recovery |
-| **§6.3 Possession Element** | RTS Art. 7 | 50 | 🟡 Moderate | Could add: key lifecycle, migration, revocation |
-| **§6.4 Inherence Element** | RTS Art. 8 | 45 | 🔴 Cursory | Needs deep-dive: biometric FAR/FRR, liveness detection |
-| **§6.5 Independence** | RTS Art. 9 | 112 | ✅ Deep-dive | Multi-purpose device mitigations |
-| **§7 Dynamic Linking** | PSD2 Art. 97(2) + RTS Art. 5 | 939 | ✅ Deep-dive | WYSIWYS, threat model, TPP flows, batch payments |
-| **§8.1 Security Measures** | RTS Art. 2 | 41 | 🔴 Cursory | Needs deep-dive: transaction monitoring signals |
-| **§8.2 Periodic Review** | RTS Art. 3 | 47 | 🔴 Cursory | Needs deep-dive: audit requirements, TRA exemption |
+### Article 22 — Confidentiality and Integrity
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 22(1) | PSC confidentiality during all phases | ❌ No |
+| Art. 22(2)(a) | Masked credential input | ❌ No |
+| Art. 22(2)(b) | No plaintext storage | ✅ Yes |
+| Art. 22(2)(c) | Protected cryptographic material | ✅ Yes |
+| Art. 22(3) | Documented key management | ❌ No |
+| Art. 22(4) | Secure processing environment | ❌ No |
+
+### Article 23 — Creation and Transmission
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 23 | Secure creation, mitigate loss/theft/copying risks | ❌ No |
+
+### Article 24 — Association with User
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 24(1) | Secure association | ❌ No |
+| Art. 24(2)(a) | Secure binding environment | ❌ No |
+| Art. 24(2)(b) | SCA for remote binding | ✅ Yes |
+
+### Article 25 — Delivery
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 25 | Secure delivery | ❌ No |
+
+### Article 26 — Renewal
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 26 | Renewal follows Art. 23-25 procedures | ❌ No |
+
+### Article 27 — Destruction/Revocation
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 27(a) | Secure destruction/deactivation/revocation | ❌ No |
+| Art. 27(b) | Secure re-use | ❌ No |
+| Art. 27(c) | Deactivation in systems | ❌ No |
 
 ---
 
-## Priority Queue for Deep-Dives
+## PART B: TRANSACTION AUTHENTICATION (RTS Art. 1-9, PSD2 Art. 97)
 
-Based on regulatory importance and current coverage gaps:
+### PSD2 Article 97 — Authentication
 
-| Priority | Section | Article | Rationale | Estimated Effort |
-|----------|---------|---------|-----------|------------------|
-| **P1** | §6.2 Knowledge Element | RTS Art. 6 | PIN is critical user-facing element | Medium |
-| **P2** | §6.4 Inherence Element | RTS Art. 8 | Biometric security often under-specified | Medium |
-| **P3** | §4.2 Creation & Transmission | RTS Art. 23 | OID4VCI flow needs documentation | Medium |
-| **P4** | §4.4 Secure Delivery | RTS Art. 25 | Attestation activation often overlooked | Low |
-| **P5** | §4.5 Renewal | RTS Art. 26 | Key rotation important for long-term security | Medium |
-| **P6** | §8.1 Security Measures | RTS Art. 2 | Transaction monitoring is PSP concern but wallet signals matter | Medium |
-| **P7** | §8.2 Periodic Review | RTS Art. 3 | Audit requirements for TRA exemption | Low |
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 97(1) | SCA triggers (account access, payments, high-risk) | ✅ Yes |
+| Art. 97(2) | Dynamic linking requirement | ✅ Yes |
+
+### Article 2 — General Authentication Requirements
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 2(1) | Transaction monitoring mechanisms | ❌ No |
+| Art. 2(2) | Risk-based factors for monitoring | ❌ No |
+
+### Article 3 — Review of Security Measures
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 3(1) | Documented, tested, audited measures | ❌ No |
+| Art. 3(2) | Audit frequency, TRA exemption audit | ❌ No |
+| Art. 3(3) | Audit report availability | ❌ No |
+
+### Article 4 — Authentication Code
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 4(1) | Two+ elements generating auth code, one-time use | ✅ Yes |
+| Art. 4(2)(a) | Factor derivation protection | ❌ No |
+| Art. 4(2)(b) | No code re-generation from prior code | ❌ No |
+| Art. 4(2)(c) | Forgery resistance | ❌ No |
+| Art. 4(3)(a) | Non-disclosure of which element was incorrect | ✅ Yes |
+| Art. 4(3)(b) | Maximum attempts and lockout | ✅ Yes |
+| Art. 4(3)(c) | Session protection | ❌ No |
+| Art. 4(3)(d) | Session timeout (5 min) | ❌ No |
+
+### Article 5 — Dynamic Linking
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 5(1) | General requirement (intro) | ❌ No |
+| Art. 5(1)(a) | Payer awareness of amount + payee | ✅ Yes |
+| Art. 5(1)(b) | Auth code linked to amount + payee | ✅ Yes |
+| Art. 5(1)(c) | PSP verification before acceptance | ✅ Yes |
+| Art. 5(1)(d) | Auth code invalidation on change | ✅ Yes |
+| Art. 5(2) | Security measures (confidentiality, integrity, authenticity) | ✅ Yes |
+| Art. 5(3)(a) | Batch file payment exception intro | ❌ No |
+| Art. 5(3)(b) | Batch authentication code | ❌ No |
+
+### Article 6 — Knowledge Elements
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 6(1) | Mitigate uncovering/disclosure | ❌ No |
+| Art. 6(2) | Mitigation measures | ❌ No |
+
+### Article 7 — Possession Elements
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 7(1) | Mitigate unauthorized use | ❌ No |
+| Art. 7(2) | Prevent replication | ❌ No |
+
+### Article 8 — Inherence Elements
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 8(1) | Low probability of unauthorized auth | ❌ No |
+| Art. 8(2) | Resistance against unauthorized use | ❌ No |
+
+### Article 9 — Independence of Elements
+
+| Paragraph | Description | Done? |
+|-----------|-------------|-------|
+| Art. 9(1) | Breach of one doesn't compromise others | ❌ No |
+| Art. 9(2) | Multi-purpose device risk mitigation | ❌ No |
+| Art. 9(3) | Mitigating measures (TEE, attestation, revocation) | ✅ Yes |
 
 ---
 
-## What a Deep-Dive Should Include
+## Summary
 
-For each section needing enhancement, a full deep-dive should have:
-
-1. **Regulatory Text Quote**: Full legal requirement text
-2. **Implementation Table**: | Fulfillment | Reference | Implementation |
-3. **Status Badge**: ✅ Supported / ⚠️ Partial / ❌ Gap
-4. **Context Section**: Explanation of how EUDI Wallet meets requirement
-5. **ASCII Diagram/Flowchart**: Visual representation of flow
-6. **Threat Model Table**: Attack vectors and mitigations
-7. **Reference Implementation Evidence**: Code snippets or file references
-8. **Gap Analysis**: Any identified gaps with recommendations
-9. **Recommendations**: Suggestions for SCA Attestation Rulebook
+| Status | Count |
+|--------|-------|
+| ✅ Done | 15 |
+| ❌ Not Done | 32 |
+| **Total** | 47 |
 
 ---
 
 ## Execution Log
 
-| Date | Section | Action | Result |
-|------|---------|--------|--------|
-| 2026-01-27 | — | Created tracker | ✅ |
-| | | | |
+| Date | Paragraph | Notes |
+|------|-----------|-------|
+| 2026-01-27 | — | Created paragraph-level tracker |
+| | | |
 
 ---
 
 ## How to Request a Deep-Dive
 
-Say: "Deep-dive into §X.Y [Section Name]"
+Say: **"Deep-dive Art. X(Y)(z)"**
 
-Example: "Deep-dive into §6.2 Knowledge Element"
+Examples:
+- "Deep-dive Art. 6(1)"
+- "Deep-dive Art. 22(3)"
+- "Deep-dive Art. 4(2)(a)"

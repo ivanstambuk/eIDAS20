@@ -644,8 +644,7 @@ Shared responsibility:
 
 > **Regulatory Basis**:
 > - [PSD2 Directive Art. 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001): "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online; (b) initiates an electronic payment transaction; (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
-> - [RTS Art. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1): Subject matter
-
+> - [RTS Art. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1): Subject matter  
 > "Member States shall ensure that a payment service provider applies strong customer authentication where the payer:
 > (a) accesses its payment account online;
 > (b) initiates an electronic payment transaction;
@@ -682,29 +681,29 @@ TS12 defines four standardized transaction types corresponding to the three PSD2
 │                                                                       │
 │                        User Action                                    │
 │                            │                                          │
-│              ┌─────────────┼─────────────┐                           │
-│              ▼             ▼             ▼                           │
-│         Access         Payment        High-Risk                      │
-│         Account          Init          Action                        │
+│              ┌─────────────┼─────────────┐                            │
+│              ▼             ▼             ▼                            │
+│         Access         Payment        High-Risk                       │
+│         Account          Init          Action                         │
 │         Online                                                        │
-│              │             │             │                           │
-│              ▼             ▼             ▼                           │
-│       Art. 97(1)(a)  Art. 97(1)(b)  Art. 97(1)(c)                    │
-│              │             │             │                           │
-│       ┌──────┴──────┐      │             │                          │
-│       ▼             ▼      ▼             ▼                          │
-│  login_risk    account_   payment:1   login_risk                    │
-│  _transaction  access:1              _transaction                    │
-│       :1                              :1                             │
+│              │             │             │                            │
+│              ▼             ▼             ▼                            │
+│       Art. 97(1)(a)  Art. 97(1)(b)  Art. 97(1)(c)                     │
+│              │             │             │                            │
+│       ┌──────┴──────┐      │             │                            │
+│       ▼             ▼      ▼             ▼                            │
+│  login_risk    account_   payment:1   login_risk                      │
+│  _transaction  access:1              _transaction                     │
+│       :1                              :1                              │
 │                                                                       │
-│       ╔════════════════════════════════════════════════════╗         │
-│       ║  Check: Does an SCA Exemption Apply? (RTS Ch. III) ║         │
-│       ╚════════════════════════════════════════════════════╝         │
+│       ╔════════════════════════════════════════════════════╗          │
+│       ║  Check: Does an SCA Exemption Apply? (RTS Ch. III) ║          │
+│       ╚════════════════════════════════════════════════════╝          │
 │                            │                                          │
-│              ┌─────────────┴─────────────┐                           │
-│              ▼                           ▼                           │
-│          Yes: Skip SCA               No: Require SCA                 │
-│          (PSP decision)              → Wallet SCA flow               │
+│              ┌─────────────┴─────────────┐                            │
+│              ▼                           ▼                            │
+│          Yes: Skip SCA               No: Require SCA                  │
+│          (PSP decision)              → Wallet SCA flow                │
 │                                                                       │
 └───────────────────────────────────────────────────────────────────────┘
 ```
@@ -782,42 +781,42 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                                                                        │
-│  ┌──────────┐         ┌──────────┐         ┌──────────┐              │
-│  │  User    │         │  PSP/RP  │         │  Wallet  │              │
-│  │          │         │ (Bank/   │         │ (EUDI)   │              │
-│  │          │         │  TPP)    │         │          │              │
-│  └────┬─────┘         └────┬─────┘         └────┬─────┘              │
-│       │                    │                    │                     │
-│       │ 1. Initiate action │                    │                     │
-│       │ (login/payment)    │                    │                     │
-│       │ ─────────────────► │                    │                     │
-│       │                    │                    │                     │
-│       │                    │ 2. PSP evaluates:  │                     │
-│       │                    │    - Art. 97(1)    │                     │
-│       │                    │      trigger?      │                     │
-│       │                    │    - Exemption     │                     │
-│       │                    │      applies?      │                     │
-│       │                    │                    │                     │
-│       │                    │ 3. If SCA needed:  │                     │
-│       │                    │    OID4VP request  │                     │
-│       │                    │ ─────────────────► │                     │
-│       │                    │                    │                     │
-│       │                    │                    │ 4. Wallet displays  │
-│       │◄──────────────────────────────────────────  transaction      │
-│       │                    │                    │                     │
-│       │ 5. User confirms   │                    │                     │
-│       │    (PIN/biometric) │                    │                     │
-│       │ ──────────────────────────────────────► │                     │
-│       │                    │                    │                     │
-│       │                    │ 6. Wallet returns  │                     │
-│       │                    │    VP Token +      │                     │
-│       │                    │◄───────────────────│ KB-JWT with        │
-│       │                    │                    │ transaction_data    │
-│       │                    │                    │ _hashes             │
-│       │                    │                    │                     │
-│       │                    │ 7. PSP verifies &  │                     │
-│       │                    │    authorizes      │                     │
-│       │                    │                    │                     │
+│  ┌──────────┐         ┌──────────┐         ┌──────────┐                │
+│  │  User    │         │  PSP/RP  │         │  Wallet  │                │
+│  │          │         │ (Bank/   │         │ (EUDI)   │                │
+│  │          │         │  TPP)    │         │          │                │
+│  └────┬─────┘         └────┬─────┘         └────┬─────┘                │
+│       │                    │                    │                      │
+│       │ 1. Initiate action │                    │                      │
+│       │ (login/payment)    │                    │                      │
+│       │ ─────────────────► │                    │                      │
+│       │                    │                    │                      │
+│       │                    │ 2. PSP evaluates:  │                      │
+│       │                    │    - Art. 97(1)    │                      │
+│       │                    │      trigger?      │                      │
+│       │                    │    - Exemption     │                      │
+│       │                    │      applies?      │                      │
+│       │                    │                    │                      │
+│       │                    │ 3. If SCA needed:  │                      │
+│       │                    │    OID4VP request  │                      │
+│       │                    │ ─────────────────► │                      │
+│       │                    │                    │                      │
+│       │                    │                    │ 4. Wallet displays   │
+│       │◄──────────────────────────────────────────  transaction        │
+│       │                    │                    │                      │
+│       │ 5. User confirms   │                    │                      │
+│       │    (PIN/biometric) │                    │                      │
+│       │ ──────────────────────────────────────► │                      │
+│       │                    │                    │                      │
+│       │                    │ 6. Wallet returns  │                      │
+│       │                    │    VP Token +      │                      │
+│       │                    │◄───────────────────│ KB-JWT with          │
+│       │                    │                    │ transaction_data     │
+│       │                    │                    │ _hashes              │
+│       │                    │                    │                      │
+│       │                    │ 7. PSP verifies &  │                      │
+│       │                    │    authorizes      │                      │
+│       │                    │                    │                      │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -888,8 +887,6 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 |----------|-------------|
 | iOS | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift) |
 | Android | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt) |
-
-> 📌 **Community Validation**: The `amr` claim was [proposed by community member senexi](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15133961) (Dec 2025) to align with OIDC standards — and was **adopted in TS12 v1.0**.
 
 > ⚠️ **Format Note**: The `amr` claim is **SD-JWT-VC only** (via KB-JWT). TS12 v1.0 does not specify an equivalent mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC support should monitor TS12 updates.
 
