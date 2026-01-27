@@ -232,14 +232,6 @@ KB-JWT contains:
 
 ---
 
-#### [Article 2(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
-
-> "Payment service providers shall ensure that the transaction monitoring mechanisms take into account, at a minimum, each of the following risk-based factors: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios in the provision of payment services; (d) signs of malware infection in any sessions of the authentication procedure; (e) in case the access device or the software is provided by the payment service provider, a log of the use of the access device or the software provided to the payment service user and the abnormal use of the access device or the software."
-
-**Status**: ❌ PSP Obligation — no wallet involvement.
-
----
-
 ### [Article 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3) — Review of security measures
 
 #### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.001)
@@ -283,7 +275,7 @@ KB-JWT contains:
 
 #### [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.001) — Two or more elements generating an authentication code
 
-> "Where payment service providers apply strong customer authentication in accordance with Article 97(1) and (2) of Directive (EU) 2015/2366, the authentication shall be based on **two or more elements** categorised as knowledge, possession and inherence and **shall result in the generation of an authentication code**."
+> "Where payment service providers apply strong customer authentication in accordance with Article 97(1) of Directive (EU) 2015/2366, the authentication shall be based on two or more elements which are categorised as knowledge, possession and inherence and shall result in the generation of an authentication code."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -322,7 +314,9 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 
 ---
 
-#### [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — One-time use
+#### Article 4(1) continued — One-time use
+
+> **Note**: This is the second paragraph of Article 4(1), not a separate paragraph.
 
 > "The authentication code shall be only accepted once by the payment service provider when the payer uses the authentication code to access its payment account online, to initiate an electronic payment transaction or to carry out any action through a remote channel which may imply a risk of payment fraud or other abuses."
 
@@ -362,9 +356,9 @@ TS12 §3.6 states the `jti` "serves as the Authentication Code". However, RTS Re
 
 ---
 
-#### [Article 4(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Factor derivation protection
+#### [Article 4(2)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — Factor derivation protection
 
-> "Security measures for the authentication elements shall ensure that: (a) no information on any of the elements may be derived from the disclosure of the authentication code;"
+> "For the purpose of paragraph 1, payment service providers shall adopt security measures ensuring that each of the following requirements is met: (a) no information on any of the elements referred to in paragraph 1 can be derived from the disclosure of the authentication code;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -382,9 +376,9 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — No code re-generation
+#### [Article 4(2)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — No code re-generation
 
-> "(b) it shall not be possible to generate a new authentication code on the basis of the knowledge of any other authentication code previously generated;"
+> "(b) it is not possible to generate a new authentication code based on the knowledge of any other authentication code previously generated;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -400,9 +394,9 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(3)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Forgery resistance
+#### [Article 4(2)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — Forgery resistance
 
-> "(c) the authentication code shall not be forged."
+> "(c) the authentication code cannot be forged."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -419,7 +413,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 ---
 
-#### [Article 4(4)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Non-disclosure of incorrect element
+#### [Article 4(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Non-disclosure of incorrect element
 
 > "Payment service providers shall have measures in place ensuring that: (a) where any of the elements referred to in paragraph 1 have failed, it shall not be possible to identify which of those elements was incorrect;"
 
@@ -458,7 +452,7 @@ guard previousPin == uiPinInputField else {
 }
 ```
 
-> ❌ **Finding**: Both iOS and Android reference implementations display **"Pins do not match"** — this explicitly reveals that the **PIN** (knowledge element) was incorrect, violating Article 4(4)(a).
+> ❌ **Finding**: Both iOS and Android reference implementations display **"Pins do not match"** — this explicitly reveals that the **PIN** (knowledge element) was incorrect, violating Article 4(3)(a).
 
 > ⚠️ **Recommendation**: For PSD2-compliant deployments, wallet implementations MUST use a generic message (e.g., "Authentication failed") instead of PIN-specific error messages.
 
@@ -466,7 +460,7 @@ guard previousPin == uiPinInputField else {
 
 ---
 
-#### [Article 4(4)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Maximum attempts and lockout
+#### [Article 4(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Maximum attempts and lockout
 
 > "(b) the number of failed authentication attempts that can take place consecutively, after which the actions referred to in Article 97(1) of Directive (EU) 2015/2366 shall be temporarily or permanently blocked, shall not exceed five within a given period of time;"
 
@@ -487,7 +481,7 @@ guard previousPin == uiPinInputField else {
 
 ---
 
-#### [Article 4(4)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session protection
+#### [Article 4(3)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Session protection
 
 > "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties in accordance with the requirements in Chapter V;"
 
@@ -503,7 +497,7 @@ guard previousPin == uiPinInputField else {
 
 ---
 
-#### [Article 4(4)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.004) — Session timeout
+#### [Article 4(3)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Session timeout
 
 > "(d) the maximum time without activity by the payer after being authenticated for accessing its payment account online shall not exceed 5 minutes."
 
@@ -859,10 +853,21 @@ Breach of one does not expose the others:
 
 **Status**: ✅ Fully Supported
 
-**Context**: Article 9(3) specifies mitigating measures for multi-purpose devices:
-- (a) Use of separated secure execution environments → Secure Enclave / TEE
-- (b) Mechanisms to ensure software/device not altered → App attestation in WUA
-- (c) Mechanisms to mitigate consequences of alterations → Key revocation via WURevocation_09
+**Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
+
+---
+
+#### [Article 9(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.003)
+
+> "For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof."
+
+| Fulfillment | Reference | Implementation |
+|-------------|-----------|----------------|
+| ✅ **Wallet** | TEE / Secure Enclave | (a) Separated secure execution environment |
+| ✅ **Wallet** | App attestation (WUA) | (b) Play Integrity / App Attest verifies app integrity |
+| ✅ **Wallet** | [WURevocation_09](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation) | (c) Key revocation if compromise detected |
+
+**Status**: ✅ Fully Supported
 
 ---
 

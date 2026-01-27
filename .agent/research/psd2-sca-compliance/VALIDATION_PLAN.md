@@ -37,12 +37,16 @@ These articles had **content swapped between them** — highest risk of complian
 
 | # | Article | Title | Quote Status | Assessment Status | Validated |
 |---|---------|-------|--------------|-------------------|-----------|
-| 1 | Art. 6(1) | Requirements... knowledge | 🔄 CHANGED | ⏳ NEEDS REVIEW | ☐ |
-| 2 | Art. 6(2) | Requirements... knowledge | 🆕 NEW | ⏳ NEEDS REVIEW | ☐ |
-| 3 | Art. 8(1) | Requirements... inherence | 🔄 CHANGED | ⏳ NEEDS REVIEW | ☐ |
-| 4 | Art. 8(2) | Requirements... inherence | 🔄 CHANGED | ⏳ NEEDS REVIEW | ☐ |
-| 5 | Art. 9(1) | Independence of elements | 🔄 CHANGED | ⏳ NEEDS REVIEW | ☐ |
-| 6 | Art. 9(2) | Independence (multi-purpose) | 🔄 CHANGED | ⏳ NEEDS REVIEW | ☐ |
+| 1 | Art. 6(1) | Requirements... knowledge | ✅ VERIFIED | ✅ PASS | ☑ |
+| 2 | Art. 6(2) | Requirements... knowledge | ✅ VERIFIED | ✅ PASS | ☑ |
+| 3 | Art. 8(1) | Requirements... inherence | ✅ VERIFIED | ✅ PASS | ☑ |
+| 4 | Art. 8(2) | Requirements... inherence | ✅ VERIFIED | ✅ PASS | ☑ |
+| 5 | Art. 9(1) | Independence of elements | ✅ VERIFIED | ✅ PASS | ☑ |
+| 6 | Art. 9(2) | Independence (multi-purpose) | ✅ VERIFIED | ⚠️ ADD 9(3) | ☑ |
+
+**Validation Notes**:
+- **Art. 6**: PIN storage verified in reference impl: Android uses CryptoController (AES), iOS uses Keychain
+- **Art. 9(3)**: Requirement is mentioned in context but should have explicit quote
 
 ---
 
@@ -52,20 +56,30 @@ These articles had truncated quotes expanded — verification needed.
 
 | # | Article | Title | Quote Status | Assessment Status | Validated |
 |---|---------|-------|--------------|-------------------|-----------|
-| 7 | Art. 1 | Subject matter | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 8 | Art. 2(1) | Transaction monitoring | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 9 | Art. 2(2) | Risk-based factors | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 10 | Art. 2(3) | Risk-based factors (dupe?) | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 11 | Art. 3(1) | Review of security measures | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 12 | Art. 3(2) | Audit period | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 13 | Art. 3(3) | Audit report | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 14 | Art. 4(2) | One-time use | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 15 | Art. 4(4)(b) | Failed attempts | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 16 | Art. 4(4)(c) | Session protection | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 17 | Art. 4(4)(d) | Session timeout | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 18 | Art. 5(2) | Confidentiality/integrity | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 19 | Art. 7(1) | Possession requirements | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 20 | Art. 7(2) | Replication prevention | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
+| 7 | Art. 1 | Subject matter | ✅ VERIFIED | ➖ Scope only | ☑ |
+| 8 | Art. 2(1) | Transaction monitoring | ✅ VERIFIED | ✅ PASS | ☑ |
+| 9 | Art. 2(2) | Risk-based factors | ✅ VERIFIED | ✅ PASS | ☑ |
+| 10 | ~~Art. 2(3)~~ | ~~Risk-based factors~~ | ❌ REMOVED | ❌ PHANTOM | ☑ |
+| 11 | Art. 3(1) | Review of security measures | ✅ VERIFIED | ✅ PASS | ☑ |
+| 12 | Art. 3(2) | Audit period | ✅ VERIFIED | ✅ PASS | ☑ |
+| 13 | Art. 3(3) | Audit report | ✅ VERIFIED | ✅ PASS | ☑ |
+| 14 | Art. 4(1) cont. | One-time use | 🔄 RENUMBERED | ✅ PASS | ☑ |
+| 15 | Art. 4(2)(a) | Factor derivation | 🔄 RENUMBERED + FIXED | ✅ PASS | ☑ |
+| 16 | Art. 4(2)(b) | No code re-generation | 🔄 RENUMBERED + FIXED | ✅ PASS | ☑ |
+| 17 | Art. 4(2)(c) | Forgery resistance | 🔄 RENUMBERED + FIXED | ✅ PASS | ☑ |
+| 18 | Art. 4(3)(a) | Non-disclosure | 🔄 RENUMBERED | ❌ GAP CONFIRMED | ☑ |
+| 19 | Art. 4(3)(b) | 5 attempts | 🔄 RENUMBERED | ✅ PASS | ☑ |
+| 20 | Art. 4(3)(c) | Session protection | 🔄 RENUMBERED | ✅ PASS | ☑ |
+| 21 | Art. 4(3)(d) | Session timeout | 🔄 RENUMBERED | ✅ PASS | ☑ |
+
+**Validation Notes**:
+- **Art. 2(3)**: Removed — phantom article that duplicated 2(2). RTS only has 2(1) and 2(2).
+- **Art. 4(1)**: Fixed quote to match EUR-Lex exactly (removed "(2)" reference, added "which are")
+- **Art. 4 numbering**: CRITICAL FIX — all sub-paragraphs were off by one:
+  - Old 4(2) → Part of 4(1) (one-time use is second paragraph of 4(1))
+  - Old 4(3) → Now 4(2)
+  - Old 4(4) → Now 4(3)
+- **Art. 4(2)(a-c)**: Fixed quotes to match EUR-Lex exactly ("can" not "may", "is not possible" not "shall not be")
 
 ---
 
