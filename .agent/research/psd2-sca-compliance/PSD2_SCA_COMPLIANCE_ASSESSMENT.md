@@ -1413,6 +1413,196 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Forgery Resistance</strong></summary>
+
+##### Core Requirement: Computational Infeasibility of Forgery
+
+Article 4(2)(c) requires that authentication codes **cannot be forged**. In cryptographic terms, this means creating a valid authentication code without the private key must be computationally infeasible.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Forgery Resistance Architecture                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                         TRUST CHAIN                                   │ │
+│  │                                                                       │ │
+│  │   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐         │ │
+│  │   │ Trust Anchor │     │     PSP      │     │ SCA          │         │ │
+│  │   │ (Root CA)    │ ──► │ Issuer Key   │ ──► │ Attestation  │         │ │
+│  │   │ (EUTL/PSP)   │     │              │     │ (SD-JWT-VC)  │         │ │
+│  │   └──────────────┘     └──────────────┘     └──────┬───────┘         │ │
+│  │                                                    │                 │ │
+│  │                                                    ▼                 │ │
+│  │                                            ┌──────────────┐         │ │
+│  │                                            │ Public Key   │         │ │
+│  │                                            │ (in cnf/jwk) │         │ │
+│  │                                            └──────┬───────┘         │ │
+│  │                                                   │                 │ │
+│  └───────────────────────────────────────────────────┼─────────────────┘ │
+│                                                      │                   │
+│                                                      ▼                   │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │                      SIGNATURE VERIFICATION                          │ │
+│  │                                                                       │ │
+│  │   KB-JWT Signature ◄── Created by private key in WSCD                │ │
+│  │         │                                                             │ │
+│  │         ▼                                                             │ │
+│  │   PSP Verifies: signature matches public key in trusted attestation  │ │
+│  │         │                                                             │ │
+│  │         ▼                                                             │ │
+│  │   FORGERY ATTEMPT: Create valid signature without private key        │ │
+│  │         │                                                             │ │
+│  │         ▼                                                             │ │
+│  │   ❌ IMPOSSIBLE: ECDLP is computationally infeasible                  │ │
+│  │                                                                       │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Trust Chain Components
+
+| Component | Role | Trust Verification |
+|-----------|------|-------------------|
+| **Trust Anchor** | Root of trust | EUTL (EU Trust List) or PSP-specific CA |
+| **PSP Issuer Key** | Signs SCA Attestations | Certificate chain verified to trust anchor |
+| **SCA Attestation** | Binds public key to user | Signed by PSP, contains `cnf` with public key |
+| **KB-JWT** | Proves key possession | Signed by user's private key |
+
+##### Why Forgery is Computationally Infeasible
+
+The security rests on the **Elliptic Curve Discrete Logarithm Problem (ECDLP)**:
+
+| Mathematical Basis | Explanation |
+|-------------------|-------------|
+| **Public key** | Q = d × G (where d is private key, G is generator point) |
+| **ECDLP hardness** | Given Q and G, finding d is computationally infeasible |
+| **Signature creation** | Requires knowledge of d |
+| **Best known algorithm** | Pollard's rho: O(√n) operations |
+| **P-256 security level** | ~2¹²⁸ operations (128-bit security) |
+
+> **Practical Interpretation**: Breaking P-256 ECDSA would require more energy than exists in the solar system. This is not a future concern.
+
+##### Multi-Layer Verification Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     PSP Verification of VP Token                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Step 1: Verify SCA Attestation                                             │
+│  ─────────────────────────────────                                         │
+│  • Check issuer signature (PSP's own key)                                   │
+│  • Verify certificate chain to trust anchor                                 │
+│  • Check attestation not expired/revoked                                    │
+│                                                                             │
+│  Step 2: Extract Public Key                                                 │
+│  ────────────────────────────                                              │
+│  • From SCA Attestation `cnf.jwk` claim                                     │
+│  • This is the key the user claims to possess                               │
+│                                                                             │
+│  Step 3: Verify KB-JWT Signature                                            │
+│  ───────────────────────────────                                           │
+│  • Verify KB-JWT signature against extracted public key                     │
+│  • If valid: User possesses the corresponding private key                   │
+│  • If invalid: REJECT (forgery attempt or corruption)                       │
+│                                                                             │
+│  Step 4: Verify Dynamic Linking                                             │
+│  ───────────────────────────────                                           │
+│  • Check `transaction_data_hashes` matches current transaction              │
+│  • If mismatch: REJECT (replay or tampering)                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Hardware Security Protection
+
+The private key is protected by hardware security modules:
+
+| Platform | Hardware Component | Protection Level | Certification |
+|----------|-------------------|------------------|---------------|
+| **iOS** | Secure Enclave | Key never leaves SE | FIPS 140-2/3 |
+| **Android** | StrongBox | Tamper-resistant | CC EAL4+ |
+| **Android** | TEE (fallback) | OS isolation | GlobalPlatform |
+
+These hardware components ensure:
+- **Non-extractability**: Private key cannot be read, only used for signing
+- **Tamper resistance**: Physical attacks are detected and mitigated
+- **Side-channel protection**: Power analysis, timing attacks mitigated
+
+##### Forgery Attack Scenarios
+
+| Attack Vector | Why It Fails | Protection |
+|---------------|-------------|------------|
+| **Guess signature** | 2²⁵⁶ possible signatures | Cryptographic impossibility |
+| **Brute-force private key** | 2¹²⁸ operations for P-256 | Computational infeasibility |
+| **Extract key from WSCD** | Hardware tamper protection | Secure Enclave/StrongBox |
+| **Side-channel attack** | Constant-time operations | Certified hardware |
+| **Forge SCA Attestation** | Need PSP issuer key | HSM-protected at PSP |
+| **Replay old signature** | jti uniqueness, nonce binding | Replay detection |
+| **Man-in-the-middle** | TLS + certificate pinning | Transport security |
+
+##### Key Binding Verification
+
+The `cnf` (confirmation) claim in the SCA Attestation binds the key:
+
+```json
+{
+  "cnf": {
+    "jwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "base64url-encoded-x-coordinate",
+      "y": "base64url-encoded-y-coordinate"
+    }
+  }
+}
+```
+
+This public key is trusted because:
+1. It's inside an attestation signed by the PSP
+2. The PSP issued it after wallet activation (identity-linked)
+3. The corresponding private key is in the user's WSCD
+
+##### Reference Implementation Evidence
+
+| Verification Step | iOS Implementation | Android Implementation |
+|-------------------|-------------------|----------------------|
+| **Attestation verification** | `SecTrustEvaluateWithError` | `TrustManagerFactory` |
+| **Signature verification** | `SecKeyVerifySignature` | `Signature.verify()` |
+| **Key extraction** | `JSONDecoder` for `cnf.jwk` | `JSONObject` parsing |
+| **Certificate chain** | `SecTrustCopyCertificateChain` | `X509Certificate[]` |
+
+##### Threat Model: Forgery Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Quantum computing** | Shor's algorithm breaks ECDLP | Post-quantum migration path needed | ⚠️ Future risk |
+| **Weak RNG** | Predictable k in ECDSA | Hardware RNG (certified) | ✅ Mitigated |
+| **Implementation bugs** | Faulty verification logic | Standard libraries, audits | ✅ Mitigated |
+| **PSP key compromise** | Attacker can issue fake attestations | HSM protection, key rotation | ✅ Mitigated |
+| **Device compromise** | Rooted device exposes key | Key in SE survives; WUA fails | ⚠️ Partial |
+
+##### Gap Analysis: Forgery Resistance
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **FR-1** | Post-quantum transition not specified | Medium | Document migration path to PQC algorithms (ML-DSA) |
+| **FR-2** | HSM requirement for PSP issuer key not explicit | Low | TS12 should mandate HSM for SCA Attestation signing |
+| **FR-3** | Certificate revocation checking not specified | Medium | Mandate OCSP or CRL checking for SCA Attestation issuer |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Algorithm Mandate**: Require P-256 or P-384 ECDSA minimum; document PQC transition timeline
+2. **HSM for Issuers**: Mandate PSP use HSM (FIPS 140-2 Level 3+) for SCA Attestation signing keys
+3. **Revocation Checking**: Require OCSP stapling or CRL for SCA Attestation chains
+4. **Key Rotation Policy**: Specify maximum lifetime for PSP issuer keys
+5. **Verification Guidance**: Provide reference code for PSP signature verification
+
+</details>
+
 **Context**: Forgery prevention relies on:
 1. **Attestation verification**: PSP verifies the SCA attestation was issued by a trusted PSP (itself) and is valid
 2. **Key binding verification**: The KB-JWT signature is verified against the public key in the attestation

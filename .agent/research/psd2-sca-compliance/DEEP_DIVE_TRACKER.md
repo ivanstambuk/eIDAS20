@@ -97,7 +97,7 @@ A real deep-dive must include **at least 3** of:
 | Art. 4(1) | Two+ elements generating auth code, one-time use | ✅ Yes |
 | Art. 4(2)(a) | No info derivable from auth code | ✅ Yes |
 | Art. 4(2)(b) | No code re-generation from prior code | ✅ Yes |
-| Art. 4(2)(c) | Forgery resistance | ❌ No |
+| Art. 4(2)(c) | Forgery resistance | ✅ Yes |
 | Art. 4(3)(a) | Non-disclosure of which element was incorrect | ✅ Yes |
 | Art. 4(3)(b) | Maximum attempts and lockout | ✅ Yes |
 | Art. 4(3)(c) | Session protection | ❌ No |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 23 |
-| ❌ Not Done | 24 |
+| ✅ Done | 24 |
+| ❌ Not Done | 23 |
 | **Total** | 47 |
 
 ---
@@ -170,6 +170,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 2(1) | Deep-dive: Fraud detection architecture, TRA link, wallet signals, gaps TM-1 to TM-4 |
 | 2026-01-27 | Art. 4(2)(a) | Deep-dive: Disclosed vs. protected, SD-JWT selective disclosure, amr analysis, gaps FD-1 to FD-3 |
 | 2026-01-27 | Art. 4(2)(b) | Deep-dive: ECDSA random nonce, jti uniqueness, replay prevention, gaps CR-1 to CR-3 |
+| 2026-01-27 | Art. 4(2)(c) | Deep-dive: Trust chain, ECDLP hardness, verification flow, hardware security, gaps FR-1 to FR-3 |
 
 ---
 
