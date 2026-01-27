@@ -1421,6 +1421,159 @@ This means the old possession element (lost device's key) is permanently invalid
 
 **Status**: ✅ Fully Supported (Delegated to OS)
 
+<details>
+<summary><strong>🔍 Deep-Dive: Inherence Element (Biometric) Security</strong></summary>
+
+##### What Qualifies as an Inherence Element (EBA Opinion 2019)
+
+The EBA clarifies that "inherence" means "something the user is" and includes both **biological** and **behavioral** biometrics:
+
+| ✅ Compliant Inherence | ❌ NOT Compliant |
+|----------------------|------------------|
+| Fingerprint scanning | Device unlock PIN (is knowledge) |
+| Face recognition | Password/passphrase (is knowledge) |
+| Iris/retina scanning | OTP (is possession) |
+| Voice recognition | 3-D Secure protocol alone |
+| Vein recognition | Device location data |
+| Keystroke dynamics | Known answers to questions |
+| Heart rate pattern | Card CVV |
+
+> **EBA Key Concern**: If a device allows multiple users to enroll biometrics (e.g., spouse's fingerprint), and the biometric is not linked to the user's official identity established during onboarding, it may **NOT** qualify as a valid inherence factor under Article 8.
+
+##### "Very Low Probability" — FAR Thresholds
+
+Article 8(1) requires a **"very low probability"** of unauthorized authentication. Industry standards define this through False Acceptance Rate (FAR):
+
+| Platform / Standard | Biometric Type | FAR Threshold | Source |
+|--------------------|--------------|--------------| ------|
+| **Apple Face ID** | Face | 1 in 1,000,000 | [Apple Platform Security](https://support.apple.com/guide/security) |
+| **Apple Touch ID** | Fingerprint | 1 in 50,000 | Apple Platform Security |
+| **Android Class 3** | Any | ≤ 1 in 50,000 (0.002%) | [Android CDD](https://source.android.com/docs/compatibility/cdd) |
+| **FIDO Biometric Cert** | Any | < 1 in 10,000 | [FIDO Alliance](https://fidoalliance.org/certification/biometric-component-certification/) |
+| **FIDO (self-attested)** | Any | 1:25K to 1:100K optional | FIDO Certification Requirements |
+
+##### Key Biometric Metrics
+
+| Metric | Definition | PSD2 Relevance |
+|--------|------------|----------------|
+| **FAR** (False Accept Rate) | Probability of accepting an impostor | Must be "very low" (Art. 8(1)) |
+| **FRR** (False Reject Rate) | Probability of rejecting legitimate user | Affects UX, not security |
+| **APCER** | Attack Presentation Classification Error Rate (ISO 30107-3) | Measures PAD effectiveness |
+| **BPCER** | Bona Fide Presentation Classification Error Rate | Measures PAD false alarms |
+
+##### Presentation Attack Detection (PAD) — ISO 30107-3
+
+**Liveness detection** is critical to prevent spoofing attacks. ISO/IEC 30107-3 defines the testing methodology:
+
+| Attack Type | Description | Mitigation |
+|-------------|-------------|------------|
+| **2D Photo Attack** | Printed photo held to camera | Depth sensing (Face ID TrueDepth) |
+| **Video Replay** | Video of user played on screen | Motion analysis, liveness prompts |
+| **3D Mask Attack** | Silicone or resin mask | IR dot projection, texture analysis |
+| **Deepfake Injection** | AI-generated face injected into stream | Camera attestation, WUA integrity |
+| **Lifted Fingerprint** | Gelatin/silicone mold of fingerprint | Capacitive sensing, pulse detection |
+| **Voice Recording** | Playback of recorded voice | Voice liveness, challenge-response |
+
+**FIDO & ISO Certification**:
+- **FIDO Biometric Certification**: Requires ISO 30107-3 PAD testing by NIST-accredited lab (e.g., iBeta)
+- **Android Class 3**: Requires hardware-backed anti-spoofing in TEE
+- **Apple Face ID**: Neural network trained against known attack types
+
+##### Threat Model: Inherence Element Attacks
+
+| Threat | Attack Vector | Mitigation | EUDI Wallet Status |
+|--------|---------------|------------|-------------------|
+| **Photo spoofing** | 2D printed photo | Face ID depth sensing, BiometricPrompt Class 3 | ✅ OS-level |
+| **Video replay** | Screen with recorded video | Liveness detection, 3D mapping | ✅ OS-level |
+| **3D mask attack** | Silicone mask | IR texture analysis, Face ID neural network | ✅ Face ID; ⚠️ Android varies |
+| **Deepfake injection** | Synthetic face into camera feed | WUA attestation, camera integrity | ✅ App Attest / Play Integrity |
+| **Lifted fingerprint** | Molded fingerprint replica | Capacitive sensing, spoof-resistant sensors | ✅ Class 3 biometric |
+| **Coerced authentication** | User forced to authenticate | Duress gestures, time delays | ⚠️ Not wallet-specific |
+| **Twin/sibling attack** | Biologically similar person | Higher FAR accepted; fallback to PIN | ⚠️ Known limitation |
+
+##### Android Biometric Classes
+
+| Class | Security Level | FAR | TEE Required | PAD Required | SCA Suitable? |
+|-------|---------------|-----|--------------|--------------|---------------|
+| **Class 3 (Strong)** | Highest | ≤ 1:50,000 | Yes | Yes | ✅ Yes |
+| **Class 2 (Weak)** | Medium | > 1:50,000 | Optional | No | ❌ No |
+| **Class 1 (Convenience)** | Low | Any | No | No | ❌ No |
+
+> **Critical**: EUDI Wallet MUST use `BiometricManager.Authenticators.BIOMETRIC_STRONG` (Class 3) for SCA compliance.
+
+##### Biometric Validation Flow (EUDI Wallet)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│               Biometric Authentication Flow                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  User        Wallet App         OS Biometric        WSCA/WSCD   │
+│   │              │                  │                   │       │
+│   │ Present face │                  │                   │       │
+│   │──────────────►                  │                   │       │
+│   │              │ LAContext /      │                   │       │
+│   │              │ BiometricPrompt  │                   │       │
+│   │              │─────────────────►│                   │       │
+│   │              │                  │                   │       │
+│   │              │                  ├──────────────────┐│       │
+│   │              │                  │ 1. Liveness check││       │
+│   │              │                  │ 2. Template match││       │
+│   │              │                  │ 3. In Secure     ││       │
+│   │              │                  │    Enclave/TEE   ││       │
+│   │              │                  │◄─────────────────┘│       │
+│   │              │                  │                   │       │
+│   │              │ Success (no template exposed)        │       │
+│   │              │◄─────────────────│                   │       │
+│   │              │                  │                   │       │
+│   │              │ Unlock private key for signing       │       │
+│   │              │────────────────────────────────────►│       │
+│   │              │                  │                   │       │
+│   │              │ Sign KB-JWT                          │       │
+│   │              │◄────────────────────────────────────│       │
+│   │              │                  │                   │       │
+│   │              │    ⚠️ BIOMETRIC TEMPLATE NEVER       │       │
+│   │              │       LEAVES SECURE ENCLAVE          │       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+Legend:
+  ──►  Data flow
+  Biometric data: Processed only in Secure Enclave / TEE
+  Wallet app: Never receives biometric template, only success/fail
+```
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Source | Security Level |
+|----------|-----------|--------|----------------|
+| **iOS** | Face ID API | `LAContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` | FAR < 1:1,000,000 |
+| **iOS** | Touch ID API | `LAContext.evaluatePolicy` | FAR < 1:50,000 |
+| **iOS** | Secure Enclave | Hardware SEP chip | FIPS 140-2/3 |
+| **Android** | BiometricPrompt | `BiometricManager.Authenticators.BIOMETRIC_STRONG` | Class 3 only |
+| **Android** | TEE Keystore | `setUserAuthenticationRequired(true)` | Hardware-backed |
+| **Android** | Attestation | `KeyGenParameterSpec.Builder.setAttestationChallenge()` | Device integrity |
+
+##### Gap Analysis: Inherence Element
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **I-1** | EBA concern: Device biometrics not linked to user's official identity | High | SCA Attestation Rulebook should clarify that biometric enrollment during wallet activation (after identity proofing) satisfies identity linkage |
+| **I-2** | Multi-user device risk: Spouse/family biometrics could enroll | Medium | Document that SCA attestation is per-user; additional enrolled biometrics do not receive SCA-linked keys |
+| **I-3** | Android Class 2 biometrics could be used if misconfigured | High | TS12 should mandate `BIOMETRIC_STRONG` (Class 3) only |
+| **I-4** | Deepfake injection attacks on camera feed | Medium | WUA attestation + camera integrity checks mitigate; monitor emerging ISO 30107-4 injection attack standards |
+| **I-5** | No `amr` claim for biometric type | Low | Consider adding biometric modality to `amr` (e.g., `face`, `fpt`, `iris`) for relying party transparency |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Mandate Class 3 Biometrics**: Android wallets MUST use `BIOMETRIC_STRONG`; reject Class 2/1
+2. **Identity Linkage**: Clarify that biometric enrolled during wallet activation (post-KYC) satisfies EBA identity linkage requirement
+3. **Single-User Binding**: Document that SCA attestation cryptographic keys are bound to the user who completed identity proofing, not to other device users
+4. **PAD Certification Reference**: Reference ISO 30107-3 and FIDO Biometric Certification as evidence of "very low probability" compliance
+5. **Fallback Policy**: Define maximum biometric failures before PIN fallback (Apple: 5; recommend standardizing)
+
+</details>
+
 **Context**: The wallet relies on OS-level biometric protection:
 - **iOS**: `LAContext` with Face ID / Touch ID (includes liveness detection)
 - **Android**: `BiometricPrompt` with Class 3 biometric (certified anti-spoofing)

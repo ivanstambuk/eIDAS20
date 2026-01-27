@@ -134,7 +134,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 8(1) | Low probability of unauthorized auth | ❌ No |
+| Art. 8(1) | Low probability of unauthorized auth | ✅ Yes |
 | Art. 8(2) | Resistance against unauthorized use | ❌ No |
 
 ### Article 9 — Independence of Elements
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 16 |
-| ❌ Not Done | 31 |
+| ✅ Done | 17 |
+| ❌ Not Done | 30 |
 | **Total** | 47 |
 
 ---
@@ -163,7 +163,7 @@ A real deep-dive must include **at least 3** of:
 |------|-----------|-------|
 | 2026-01-27 | — | Created paragraph-level tracker |
 | 2026-01-27 | Art. 6(1) | Deep-dive: EBA guidance, threat model, NIST comparison, ASCII flow, gaps K-1 to K-4 |
-| | | |
+| 2026-01-27 | Art. 8(1) | Deep-dive: FAR thresholds, ISO 30107-3 PAD, FIDO cert, biometric classes, gaps I-1 to I-5 |
 
 ---
 
