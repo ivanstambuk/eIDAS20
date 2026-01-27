@@ -714,66 +714,216 @@ class PinLockoutController {
 
 ---
 
-#### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Payer awareness
+#### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Payer awareness of transaction details
 
 > "(a) the payer is made aware of the amount of the payment transaction and of the payee;"
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ✅ **Wallet** | [SUA_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | Wallet adapts dialogue to display transaction details |
-| ✅ **Wallet** | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) | Payment confirmation screen shows amount, currency, payee |
+**Core Requirement**: Before authenticating, the payer must be **explicitly shown** the exact transaction details (amount + payee) they are about to authorize. This is the **first pillar** of PSD2 dynamic linking and embodies the **"What You See Is What You Sign" (WYSIWYS)** principle.
 
-**Status**: ✅ Fully Supported
+| Awareness Element | Fulfillment | Reference | Implementation |
+|-------------------|-------------|-----------|----------------|
+| **Amount displayed** | ✅ Wallet | TS12 §3.3.1 | Level 1 (prominent) display |
+| **Currency displayed** | ✅ Wallet | TS12 §4.3.1 | ISO 4217 code + symbol |
+| **Payee name displayed** | ✅ Wallet | TS12 §3.3.1 | Level 1 (prominent) display |
+| **Payee identifier** | ✅ Wallet | [SUA_06](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) | IBAN at Level 2 |
+| **TPP identity (if applicable)** | ✅ Wallet | TS12 §4.3.1 | PISP/AISP details |
+| **Localized labels** | ✅ Wallet | TS12 §3.3.3 | Multi-language UI catalog |
 
-**Context**: The Wallet displays:
-- Payee name and ID (from `payee` object)
-- Amount and currency (from `amount`, `currency` fields)
-- Any PISP information if third-party initiated (from `pisp` object)
+**Status**: ✅ **Fully Supported** via mandatory display requirements
 
-The user must approve (biometric/PIN) after viewing this information.
+---
 
-**TPP Scenario Coverage**:
+**Deep Dive: The WYSIWYS Principle**
 
-TS12 §2.1 defines two SCA flow types:
-1. **Issuer-Requested Flow**: RP = User's PSP (bank initiates SCA for login)
-2. **Third-Party-Requested Flow**: RP = TPP (PISP/AISP initiates SCA)
+"What You See Is What You Sign" (WYSIWYS) is a foundational security principle ensuring:
 
-The TS12 JSON schemas include explicit TPP objects:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│   WYSIWYS Guarantee                                                 │
+│   ─────────────────────────────────────────────────────────────── │
+│                                                                     │
+│   Displayed Content  ══════════════════════  Signed Content         │
+│         ↓                                          ↓                │
+│   ┌─────────────┐                          ┌─────────────┐         │
+│   │ €150.00     │       MUST               │ €150.00     │         │
+│   │ ACME Corp   │  ══════════════════════  │ ACME Corp   │         │
+│   │ DE89...     │       MATCH              │ DE89...     │         │
+│   └─────────────┘                          └─────────────┘         │
+│                                                                     │
+│   If User sees €150.00 to ACME, the signed hash MUST be for        │
+│   exactly €150.00 to ACME — nothing else.                          │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-**PISP Object** (payment initiation):
+**EBA Position**: The EBA emphasizes that even with phishing-resistant authenticators, the display of transaction details in a **PSP-controlled environment** is crucial. A compromised application could mislead users about transaction details even if the authenticator signs correctly.
+
+---
+
+**Threat Model: What Payer Awareness Prevents**
+
+| Attack Vector | Description | How Art. 5(1)(a) Mitigates |
+|---------------|-------------|---------------------------|
+| **Social Engineering** | Attacker convinces user to authorize "refund" that's actually a payment | User sees real amount/payee |
+| **Man-in-the-Middle** | Attacker intercepts and modifies transaction between merchant and bank | Wallet displays actual data from PSP request |
+| **Malware Overlay** | Fake screen overlays real app to hide true transaction | TS12 hierarchy levels + trusted display (see Art. 5(2)) |
+| **Authorized Push Payment (APP) Fraud** | User tricked into authorizing legitimate-looking payment | Explicit payee identity + IBAN visibility |
+| **Transaction Substitution** | TPP shows one amount, sends different to PSP | Hash mismatch detection + separate PISP disclosure |
+
+**Critical Dependency**: Payer awareness only works if the **display itself is trustworthy**. See Article 5(2) for display integrity requirements.
+
+---
+
+**TS12 Display Rendering Requirements (§3.3.1)**
+
+TS12 mandates a structured approach to displaying transaction data:
+
+**UI Mockup** (conformant Wallet display):
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  EUDI Wallet                                          ☰ Menu    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ╔═══════════════════════════════════════════════════════════╗ │
+│  ║                   PAYMENT CONFIRMATION                    ║ │
+│  ║                                                           ║ │
+│  ║   Amount:     €150.00                    [Level 1]       ║ │
+│  ║   Payee:      ACME Corporation           [Level 1]       ║ │
+│  ║                                                           ║ │
+│  ║   ─────────────────────────────────────────────────────  ║ │
+│  ║                                                           ║ │
+│  ║   IBAN:       DE89 3704 0044 0532 0130 00  [Level 2]    ║ │
+│  ║   Date:       2025-01-28                   [Level 2]    ║ │
+│  ║                                                           ║ │
+│  ║   ─────────────────────────────────────────────────────  ║ │
+│  ║                                                           ║ │
+│  ║   ⓘ Initiated by: PaymentApp (PISP)      [Level 2]      ║ │
+│  ║     Domain: paymentapp.example.com                       ║ │
+│  ║                                                           ║ │
+│  ╚═══════════════════════════════════════════════════════════╝ │
+│                                                                 │
+│   ┌─────────────────────┐    ┌─────────────────────┐           │
+│   │   Cancel Payment    │    │  [🔐 Confirm Payment │           │
+│   │                     │    │      Use Face ID]    │           │
+│   └─────────────────────┘    └─────────────────────┘           │
+│                                                                 │
+│   🔒 SCA Attestation: Your Bank AG (Issuer)                    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Visualization Hierarchy** (TS12 §3.3.1):
+
+| Level | Requirement | Typical Fields | Rationale |
+|-------|-------------|----------------|-----------|
+| **1** | MUST be _prominently_ displayed | Amount, Payee name | User must see immediately |
+| **2** | MUST be displayed on main screen | IBAN, Execution date, PISP | Important but secondary |
+| **3** | MAY be on supplementary screen | Transaction ID, Timestamp | Detail for verification |
+| **4** | MAY be omitted from display | Internal reference, Schema URI | Technical metadata only |
+
+> **Default Behavior**: If no `visualisation` level is specified, Wallet applies Level 3 (must display on request).
+
+---
+
+**Localization Requirements (TS12 §3.3.3)**
+
+TS12 mandates multi-language support to ensure all users understand transaction details:
+
+```json
+{
+  "affirmative_action_label": [
+    { "lang": "de", "value": "Zahlung bestätigen" },
+    { "lang": "en", "value": "Confirm Payment" },
+    { "lang": "fr", "value": "Confirmer le paiement" }
+  ],
+  "denial_action_label": [
+    { "lang": "de", "value": "Zahlung abbrechen" },
+    { "lang": "en", "value": "Cancel Payment" }
+  ],
+  "security_hint": [
+    { "lang": "en", "value": "Review payment details carefully before confirming." }
+  ]
+}
+```
+
+**String Length Limits**:
+- `affirmative_action_label`: 30 characters max
+- `denial_action_label`: 30 characters max
+- `transaction_title`: 50 characters max
+- `security_hint`: 250 characters max
+
+**Failure Behavior**: If localized labels are unavailable, Wallet **SHALL cease processing** and inform the user.
+
+---
+
+**TPP Scenario: Dual Identity Disclosure**
+
+When a Third-Party Provider (PISP/AISP) initiates SCA, the Wallet displays **both**:
+
+| Party | Displayed Element | Source | Purpose |
+|-------|------------------|--------|---------|
+| **TPP (PISP)** | Legal name, Brand name, Domain | `pisp` object in transaction_data | User knows who initiated |
+| **PSP (Issuer)** | Attestation issuer name | SCA Attestation metadata | User knows whose credential is used |
+
+**PISP Object Schema** (TS12 §4.3.1):
 ```json
 {
   "pisp": {
-    "name": "PaymentApp",
-    "id": "PISP-ID-123",
-    "bic": "PISPDEFF"
+    "legal_name": "PaymentApp GmbH",
+    "brand_name": "PaymentApp",
+    "domain_name": "paymentapp.example.com"
   }
 }
 ```
 
-**AISP Object** (account access):
-```json
-{
-  "aisp": {
-    "name": "AccountAggregator",
-    "id": "AISP-ID-456"
-  }
-}
-```
+**Security Note**: The `domain_name` is **verified by eIDAS QWAC certificate**, providing cryptographic assurance of the TPP's identity.
 
-**UI Implication**: When a TPP initiates SCA, the Wallet displays **both**:
-- The TPP name (e.g., "PaymentApp")
-- The underlying PSP name (from attestation issuer)
+---
 
-This dual display ensures user awareness of who is requesting access.
+**Accessibility Considerations**
 
-**Reference Implementation**:
-- iOS: [`BaseRequestViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/Request/BaseRequestViewModel.swift) — Transaction detail rendering
-- Android: [`RequestDataUi.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/ui/request/model/RequestDataUi.kt) — Payment confirmation UI model
+For inclusive design, compliant Wallet implementations should support:
+
+| Requirement | Industry Best Practice | WCAG Reference |
+|-------------|----------------------|----------------|
+| **Screen reader compatibility** | All amounts/payees read aloud | WCAG 2.1 Level AA |
+| **Sufficient color contrast** | Min 4.5:1 for text | WCAG 1.4.3 |
+| **Non-color-dependent status** | Icons + text for errors | WCAG 1.4.1 |
+| **Accessible number readout** | Currency symbols spoken correctly | Custom |
+| **Simple language** | Avoid financial jargon | Plain language |
+
+> **Note**: TS12 does not explicitly mandate accessibility standards, but [ARF Topic 53 (Accessibility)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2353-topic-53---accessibility) references EU accessibility requirements (European Accessibility Act).
+
+---
+
+**Reference Implementation**
+
+| Platform | Component | Function |
+|----------|-----------|----------|
+| **iOS** | [`BaseRequestViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/Request/BaseRequestViewModel.swift) | Transaction detail rendering |
+| **Android** | [`RequestDataUi.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/ui/request/model/RequestDataUi.kt) | Payment confirmation UI model |
+
+---
+
+**Gap Analysis: Trust Assumptions**
+
+> ⚠️ **Assumption Gap**: Payer awareness relies on the user **actually reading** the displayed information before confirming. No technical mechanism enforces this.
+
+| Gap | Risk | Mitigation |
+|-----|------|------------|
+| **User fatigue** | Habitual approval without reading | Security hints, unusual amount warnings |
+| **Screen size constraints** | Critical info may require scrolling | TS12 Level 1 ensures prominence |
+| **Cognitive accessibility** | Complex transactions may confuse | Simple language, plain currency formats |
+| **Voice/gesture auth bypass** | Quick biometric may skip review | Mandatory display duration (not specified) |
+
+**Recommendation**: SCA Attestation Rulebooks should consider requiring **minimum display duration** before enabling the confirmation button (similar to consent screens in other regulatory contexts).
+
+---
 
 > 📌 **Industry Validation**: [ETPPA confirmed](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-14850895) (Nov 2025) that TPPs "intend to take full advantage of the EUDIW to support the capture of Embedded SCA" for PSD2 API-initiated payments, citing eIDAS Article 5f(2) requiring ASPSPs to accept Wallet-based SCA.
 
 ---
+
+
 
 #### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code linked to amount and payee
 
@@ -2386,4 +2536,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.9** | 2026-01-27 | AI Analysis | **Art. 5(1)(d) cryptographic deep-dive**: Complete rewrite with SHA-256 hash binding diagram, cryptographic security properties table (collision/pre-image resistance), 4-layer replay protection (hash, jti, iat, nonce). Added EMV ARQC comparison, JSON canonicalization edge case, time-bound validity gap analysis. Recommendation for SCA Attestation Rulebooks to specify max `iat` age. |
 | **4.10** | 2026-01-27 | AI Analysis | **Art. 5(1)(c) PSP verification deep-dive**: Complete rewrite with 5-step verification algorithm diagram, Python pseudocode implementation, Issuer-Requested vs TPP flow comparison table with ASCII diagrams. Documented TPP verification gap from GitHub Discussion #439 with community feedback. Added PSD2 Art. 73-74 liability framework table and PSP risk mitigation recommendations. |
 | **4.11** | 2026-01-27 | AI Analysis | **Art. 5(1)(b) dynamic linking deep-dive**: Complete rewrite with cryptographic binding architecture (hash-then-sign) diagram showing full flow from PSP request to ECDSA signature. Added complete TS12 §4.3.1 `urn:eudi:sca:payment:1` schema table with all fields. Documented the 4 supported transaction types. Added visualization hierarchy levels table (TS12 §3.3.1). References EBA Q&A 2018_4039 on technology neutrality. Critical gap analysis for mDOC (ISO 18013-5) format — no equivalent to `transaction_data_hashes` exists, with mitigation options. |
+| **4.12** | 2026-01-27 | AI Analysis | **Art. 5(1)(a) payer awareness deep-dive**: Complete rewrite with WYSIWYS principle diagram and explanation, 5-threat model table (social engineering, MITM, overlay, APP fraud, transaction substitution). Added TS12 §3.3.1 conformant UI mockup. Documented visualization hierarchy with rationale column. Added localization requirements (TS12 §3.3.3) with JSON example and string length limits. TPP dual identity disclosure table with PISP schema. Accessibility considerations table referencing WCAG 2.1 and ARF Topic 53. Gap analysis for trust assumptions (user fatigue, display duration). Recommendation for minimum display duration in SCA Attestation Rulebooks. |
 
