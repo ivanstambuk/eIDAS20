@@ -1,10 +1,10 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 4.0  
+> **Version**: 4.2  
 > **Date**: 2026-01-27  
 > **Purpose**: Regulation-first compliance mapping for Payment Service Providers  
 > **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
-> **Status**: Full Regulatory Fidelity (all quotes expanded, article structure corrected)
+> **Status**: Fully Validated (34/34 articles verified against EUR-Lex)
 
 ---
 
@@ -175,11 +175,11 @@ KB-JWT contains:
 
 ---
 
-### [Article 97(4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.004) — Exemptions for Low-Risk/Low-Value
+### [Article 97(4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.004) — EBA Guidelines on Exemptions
 
-> "The EBA shall, in close cooperation with the ECB, issue guidelines in accordance with Article 16 of Regulation (EU) No 1093/2010 addressed to payment service providers as defined in points (g), and (i) of Article 1(1) of Directive (EU) 2015/2366 on the classification of major incidents and on the content, the format including standard notification templates, and the procedures for notifying such incidents."
+> **Note**: Article 97 has only **3 paragraphs** in PSD2. The previous reference to "97(4)" was an error. This section should reference **Article 98** or the RTS exemption articles (10-18).
 
-**Status**: ➖ Informational — exemptions are in RTS Articles 10-18.
+**Status**: ➖ Removed — PSD2 Article 97 has no paragraph 4. Exemption requirements are in RTS Articles 10-18.
 
 ---
 

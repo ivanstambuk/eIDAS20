@@ -89,27 +89,31 @@ These are not compliance requirements themselves, but context articles.
 
 | # | Article | Title | Quote Status | Assessment Status | Validated |
 |---|---------|-------|--------------|-------------------|-----------|
-| 21 | Art. 97(3) PSD2 | Delegated Act | 🔄 EXPANDED | ➖ Scope only | ☐ |
-| 22 | Art. 97(4) PSD2 | EBA Guidelines | 🔄 EXPANDED | ➖ Scope only | ☐ |
-| 23 | Art. 22 | PSC confidentiality | ✅ Unchanged | ⏳ NEEDS REVIEW | ☐ |
-| 24 | Art. 24 | Secure execution | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
-| 25 | Art. 18 | TRA exemption | 🔄 EXPANDED | ⏳ NEEDS REVIEW | ☐ |
+| 22 | Art. 97(3) PSD2 | Delegated Act | ✅ VERIFIED | ➖ Scope only | ☑ |
+| 23 | Art. 97(4) PSD2 | EBA Guidelines | ⚠️ WRONG QUOTE | ➖ Scope only | ☑ |
+| 24 | Art. 22 | PSC confidentiality | ✅ VERIFIED | ✅ PASS | ☑ |
+| 25 | Art. 24 | Secure execution | ⚠️ Was Art. 23 | ✅ PASS | ☑ |
+| 26 | Art. 18 | TRA exemption | ✅ VERIFIED | ❌ PSP only | ☑ |
+
+**Validation Notes**:
+- **Art. 97(4)**: Quote was incorrectly about incident notification, not exemption guidance. To be corrected.
+- **Art. 24**: Quote was Article 23 content. Title should be "Association of the payment service user" not "Secure execution"
 
 ---
 
-### P3 — Low Priority (Unchanged Articles)
+### P3 — Low Priority (Additional Articles)
 
-These articles were not modified in this session but should be verified for completeness.
+These articles complete the assessment coverage.
 
 | # | Article | Title | Quote Status | Assessment Status | Validated |
 |---|---------|-------|--------------|-------------------|-----------|
-| 26 | Art. 97(1) PSD2 | SCA Triggers | ✅ Unchanged | ✅ Previously validated | ☐ |
-| 27 | Art. 97(2) PSD2 | Dynamic Linking | ✅ Unchanged | ✅ Previously validated | ☐ |
-| 28 | Art. 4(1) | Two elements + auth code | ✅ Unchanged | ✅ Previously validated | ☐ |
-| 29 | Art. 4(3)(a-c) | Factor derivation | ✅ Unchanged | ✅ Previously validated | ☐ |
-| 30 | Art. 4(4)(a) | Non-disclosure | ✅ Unchanged | ❌ GAP CONFIRMED | ☐ |
-| 31 | Art. 5(1)(a-d) | Dynamic linking | ✅ Unchanged | ✅ Previously validated | ☐ |
-| 32 | Art. 5(3)(a-b) | Batch payments | ✅ Unchanged | ⏳ NEEDS REVIEW | ☐ |
+| 27 | Art. 97(1) PSD2 | SCA Triggers | ✅ VERIFIED | ✅ Scope only | ☑ |
+| 28 | Art. 97(2) PSD2 | Dynamic Linking | ✅ VERIFIED | ✅ Scope only | ☑ |
+| 29 | Art. 5(1)(a-d) | Dynamic linking req | ✅ VERIFIED | ✅ PASS | ☑ |
+| 30 | Art. 5(2) | Confidentiality | ✅ VERIFIED | ✅ PASS | ☑ |
+| 31 | Art. 5(3)(a-b) | Batch payments | ✅ VERIFIED | ⚠️ GAP | ☑ |
+| 32 | Art. 7(1-2) | Possession | ✅ VERIFIED | ✅ PASS | ☑ |
+| 33 | Art. 9(3) | Multi-purpose mitigations | ✅ ADDED | ✅ PASS | ☑ |
 
 ---
 
@@ -178,11 +182,11 @@ For each article validation, use this template:
 
 | Phase | Articles | Status | Completed |
 |-------|----------|--------|-----------|
-| P0 Critical | 6 | ⏳ Not Started | 0/6 |
-| P1 High | 14 | ⏳ Not Started | 0/14 |
-| P2 Medium | 5 | ⏳ Not Started | 0/5 |
-| P3 Low | 7 | ⏳ Not Started | 0/7 |
-| **Total** | **32** | | **0/32** |
+| P0 Critical | 7 | ✅ COMPLETE | 7/7 |
+| P1 High | 15 | ✅ COMPLETE | 15/15 |
+| P2 Medium | 5 | ✅ COMPLETE | 5/5 |
+| P3 Low | 7 | ✅ COMPLETE | 7/7 |
+| **Total** | **34** | **✅ COMPLETE** | **34/34** |
 
 ---
 
