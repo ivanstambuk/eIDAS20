@@ -1,242 +1,294 @@
-# PSD2 SCA Compliance Assessment — Restructure Plan
+# PSD2 SCA Compliance Assessment — Restructure Execution Plan
 
 **Created**: 2026-01-27
-**Status**: Approved
-**Version**: 1.0
+**Status**: In Progress
+**Version**: 2.0
 
 ---
 
-## Objective
+## 1. Objective
 
-Consolidate the `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` document from a **regulation-first** structure (PSD2 Directive → RTS Chapter II → RTS Chapter IV) to a **topic-first** structure organized by compliance topic and SCA lifecycle phase.
-
----
-
-## Approved Design Decisions
-
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| **Numbering style** | Numeric only (1, 2, 3...) | Clean, simple, topic-focused |
-| **Gap analysis** | Both inline + consolidated | Context-preserving + audit-friendly |
-| **Appendices** | Keep as appendices | Reference material stays separate |
-| **Dual reference format** | Blockquote style | Clear, consistent, allows quoted text |
-| **Dynamic linking granularity** | Keep sub-article structure | Preserves regulatory traceability |
+Consolidate `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` from **regulation-first** to **topic-first** structure.
 
 ---
 
-## Approved New Structure
+## 2. Approved Design Decisions
+
+| Decision | Choice |
+|----------|--------|
+| **Numbering** | Numeric only (1, 2, 3...) |
+| **Gap analysis** | Both inline + consolidated |
+| **Appendices** | Keep as appendices |
+| **Dual references** | Blockquote format |
+| **Dynamic linking** | Keep sub-article structure |
+
+---
+
+## 3. Source Document Analysis
+
+**File**: `PSD2_SCA_COMPLIANCE_ASSESSMENT.md`
+**Total Lines**: 2714
+**Total Bytes**: 177,126
+
+### 3.1 Current Section Line Ranges
+
+| Section | Start Line | End Line | Lines | New Location |
+|---------|------------|----------|-------|--------------|
+| **Header + How to Use** | 1 | 61 | 61 | Keep, update version |
+| **Scope: Two SCA Use Cases** | 63 | 98 | 36 | §3 Scope |
+| **Executive Summary** | 101 | 130 | 30 | §1 Executive Summary |
+| **Terminology** | 132 | 200 | 69 | §2 Terminology |
+| **Part I: PSD2 Directive** | 203 | 441 | 239 | Distribute |
+| └─ Art. 97(1) SCA Triggers | 209 | 407 | 199 | §5.1 |
+| └─ Art. 97(2) Dynamic Linking | 410 | 432 | 23 | §7 intro |
+| └─ Art. 97(3) Delegated Act | 435 | 441 | 7 | DELETE |
+| **Part II: RTS Chapter II** | 443 | 2016 | 1574 | Part B |
+| └─ Art. 1 Subject matter | 449 | 454 | 6 | MERGE with §5.1 |
+| └─ Art. 2 General auth req | 457 | 491 | 35 | §8.1 |
+| └─ Art. 3 Review of security | 494 | 530 | 37 | §8.2 |
+| └─ Art. 4 Authentication code | 533 | 876 | 344 | §6.1 |
+| └─ Art. 5 Dynamic linking | 879 | 1786 | 908 | §7 |
+| └─ Art. 6 Knowledge | 1789 | 1821 | 33 | §6.2 |
+| └─ Art. 7 Possession | 1824 | 1867 | 44 | §6.3 |
+| └─ Art. 8 Inherence | 1870 | 1908 | 39 | §6.4 |
+| └─ Art. 9 Independence | 1911 | 2016 | 106 | §6.5 |
+| **Part III: Issuance/Binding** | 2018 | 2409 | 392 | Part A (§4) |
+| └─ Art. 22 General req | 2026 | 2226 | 201 | §4.1 |
+| └─ Art. 23 Creation/transmission | 2229 | 2251 | 23 | §4.2 |
+| └─ Art. 24 Association | 2254 | 2305 | 52 | §4.3 |
+| └─ Art. 25 Delivery | 2308 | 2323 | 16 | §4.4 |
+| └─ Art. 26 Renewal | 2326 | 2346 | 21 | §4.5 |
+| └─ Art. 27 Revocation | 2349 | 2407 | 59 | §4.6 |
+| **Part IV: Appendices** | 2411 | 2675 | 265 | Part D |
+| └─ Appendix A: mDOC | 2415 | 2435 | 21 | Keep |
+| └─ Appendix B: TPP | 2438 | 2481 | 44 | Keep |
+| └─ Appendix C: Accessibility | 2484 | 2497 | 14 | Keep |
+| └─ Appendix D: GitHub | 2500 | 2609 | 110 | Keep |
+| └─ Appendix E: Rulebook | 2612 | 2675 | 64 | Keep |
+| **Document History** | 2677 | 2714 | 38 | Keep, update |
+
+---
+
+## 4. Target Structure
 
 ```
-1. Executive Summary
-2. Terminology & Definitions
-3. Scope: Two SCA Lifecycle Phases
-   3.1 Phase 1: Credential Issuance (OID4VCI)
-   3.2 Phase 2: Transaction Authentication (OID4VP)
+1. Executive Summary                    [from: 101-130]
+2. Terminology & Definitions            [from: 132-200]
+3. Scope: Two SCA Lifecycle Phases      [from: 63-98, enhanced]
 
 ═══════════════════════════════════════════════════════════════════
 PART A: SCA CREDENTIAL ISSUANCE (Binding Phase)
 ═══════════════════════════════════════════════════════════════════
 
 4. PSC Creation & Protection
-   4.1 Credential Creation [RTS Art. 22]
-   4.2 Association with User [RTS Art. 23]
-   4.3 Secure Delivery [RTS Art. 24]
-   4.4 Renewal [RTS Art. 26]
-   4.5 Revocation [RTS Art. 27]
+   4.1 General Requirements             [from: 2026-2226, Art. 22]
+   4.2 Creation & Transmission          [from: 2229-2251, Art. 23]
+   4.3 Association with User            [from: 2254-2305, Art. 24]
+   4.4 Secure Delivery                  [from: 2308-2323, Art. 25]
+   4.5 Renewal                          [from: 2326-2346, Art. 26]
+   4.6 Revocation                       [from: 2349-2407, Art. 27]
 
 ═══════════════════════════════════════════════════════════════════
 PART B: TRANSACTION AUTHENTICATION (Usage Phase)
 ═══════════════════════════════════════════════════════════════════
 
 5. SCA Triggers & Exemptions
-   5.1 When SCA is Required [PSD2 Art. 97(1) + RTS Art. 1]
-   5.2 SCA Exemptions [PSD2 Art. 98 + RTS Arts. 10-18]
-   5.3 Responsibility Matrix (PSP vs Wallet)
+   5.1 When SCA is Required             [from: 209-407, Art. 97(1) + Art. 1]
+   5.2 SCA Exemptions Overview          [EXTRACT from 5.1 deep-dive]
+   5.3 Responsibility Matrix            [EXTRACT from 5.1 deep-dive]
 
 6. SCA Elements & Independence
-   6.1 Authentication Code Requirements [RTS Art. 4]
-   6.2 Knowledge Element [RTS Art. 6]
-   6.3 Possession Element [RTS Art. 7]
-   6.4 Inherence Element [RTS Art. 8]
-   6.5 Independence of Elements [RTS Art. 9]
+   6.1 Authentication Code              [from: 533-876, Art. 4]
+   6.2 Knowledge Element                [from: 1789-1821, Art. 6]
+   6.3 Possession Element               [from: 1824-1867, Art. 7]
+   6.4 Inherence Element                [from: 1870-1908, Art. 8]
+   6.5 Independence of Elements         [from: 1911-2016, Art. 9]
 
 7. Dynamic Linking
-   7.1 Payer Awareness [PSD2 Art. 97(2) + RTS Art. 5(1)(a)]
-   7.2 Cryptographic Binding [PSD2 Art. 97(2) + RTS Art. 5(1)(b)]
-   7.3 PSP Verification [RTS Art. 5(1)(c)]
-   7.4 Change Notification (Replay Protection) [RTS Art. 5(1)(d)]
-   7.5 Display Integrity (WYSIWYS) [RTS Art. 5(2)]
-   7.6 Batch Payments [RTS Art. 5(3)]
+   7.0 Overview                         [from: 410-432, Art. 97(2) - intro]
+   7.1 Payer Awareness                  [from: Art. 5(1)(a) in 879-1786]
+   7.2 Cryptographic Binding            [from: Art. 5(1)(b) in 879-1786]
+   7.3 PSP Verification                 [from: Art. 5(1)(c) in 879-1786]
+   7.4 Change Notification              [from: Art. 5(1)(d) in 879-1786]
+   7.5 Display Integrity                [from: Art. 5(2) in 879-1786]
+   7.6 Batch Payments                   [from: Art. 5(3) in 879-1786]
 
 8. General Security Requirements
-   8.1 Security Measures [RTS Art. 2]
-   8.2 Periodic Review [RTS Art. 3]
+   8.1 Security Measures                [from: 457-491, Art. 2]
+   8.2 Periodic Review                  [from: 494-530, Art. 3]
 
 ═══════════════════════════════════════════════════════════════════
 PART C: GAP ANALYSIS & RECOMMENDATIONS
 ═══════════════════════════════════════════════════════════════════
 
 9. Consolidated Gap Analysis
-   9.1 Critical Gaps (Action Required)
-   9.2 Moderate Gaps (Monitor)
-   9.3 Low-Risk Gaps (Acceptable)
+   9.1 Critical Gaps                    [EXTRACT from inline ⚠️ notes]
+   9.2 Moderate Gaps
+   9.3 Low-Risk Gaps
 
-10. Recommendations for SCA Attestation Rulebook
+10. Recommendations for Rulebook
 
 ═══════════════════════════════════════════════════════════════════
 PART D: APPENDICES
 ═══════════════════════════════════════════════════════════════════
 
-Appendix A: mDOC Format Considerations
-Appendix B: Wallet Recovery Scenarios
-Appendix C: Dutch PA Gap Analysis
-Appendix D: Stakeholder Feedback (GitHub #439)
-Appendix E: SCA Attestation Rulebook Status
+Appendix A: mDOC Format                 [from: 2415-2435]
+Appendix B: TPP Scenarios               [from: 2438-2481]
+Appendix C: Accessibility               [from: 2484-2497]
+Appendix D: GitHub Discussion           [from: 2500-2609]
+Appendix E: Rulebook Status             [from: 2612-2675]
 
 ═══════════════════════════════════════════════════════════════════
 
-Version History
+Document History                        [from: 2677-2714, update to v5.0]
 ```
 
 ---
 
-## Content Migration Map
+## 5. Execution Phases & Tracker
 
-### From Part I (PSD2 Directive)
+### Phase 1: Backup & Prepare
+| Step | Task | Status |
+|------|------|--------|
+| 1.1 | Git commit current state | ⬜ TODO |
+| 1.2 | Create backup copy | ⬜ TODO |
+| 1.3 | Note current line count (2714) | ⬜ TODO |
 
-| Current | New Location | Action |
-|---------|--------------|--------|
-| Art. 97(1) — SCA Triggers (200+ lines deep-dive) | §5.1 | Move, split exemptions to §5.2 |
-| Art. 97(2) — Dynamic Linking (22 lines) | §7 intro | Merge into Dynamic Linking header |
-| Art. 97(3) — Delegated Act | Delete | Brief note only (delegation to RTS) |
+### Phase 2: Restructure Front Matter (§1-3)
+| Step | Task | Lines | Status |
+|------|------|-------|--------|
+| 2.1 | Reorder: Executive Summary → §1 | 101-130 | ⬜ TODO |
+| 2.2 | Reorder: Terminology → §2 | 132-200 | ⬜ TODO |
+| 2.3 | Rename: Scope → §3 Lifecycle Phases | 63-98 | ⬜ TODO |
+| 2.4 | Git commit "Phase 2: Front matter" | — | ⬜ TODO |
 
-### From Part II (RTS Chapter II)
+### Phase 3: Create Part A (Issuance)
+| Step | Task | Source Lines | Status |
+|------|------|--------------|--------|
+| 3.1 | Add Part A header | NEW | ⬜ TODO |
+| 3.2 | Move Art. 22 → §4.1 | 2026-2226 | ⬜ TODO |
+| 3.3 | Move Art. 23 → §4.2 | 2229-2251 | ⬜ TODO |
+| 3.4 | Move Art. 24 → §4.3 | 2254-2305 | ⬜ TODO |
+| 3.5 | Move Art. 25 → §4.4 | 2308-2323 | ⬜ TODO |
+| 3.6 | Move Art. 26 → §4.5 | 2326-2346 | ⬜ TODO |
+| 3.7 | Move Art. 27 → §4.6 | 2349-2407 | ⬜ TODO |
+| 3.8 | Add regulatory basis headers | — | ⬜ TODO |
+| 3.9 | Delete old Part III header | 2018-2025 | ⬜ TODO |
+| 3.10 | Git commit "Phase 3: Part A" | — | ⬜ TODO |
 
-| Current | New Location | Action |
-|---------|--------------|--------|
-| Art. 1 — Subject matter | §5.1 | Merge with Art. 97(1) content |
-| Art. 2 — General auth requirements | §8.1 | Move |
-| Art. 3 — Review of security measures | §8.2 | Move |
-| Art. 4 — Authentication code | §6.1 | Move |
-| Art. 5(1)(a) — Payer awareness (210 lines) | §7.1 | Move (keep deep-dive) |
-| Art. 5(1)(b) — Code linked (190 lines) | §7.2 | Move (keep deep-dive) |
-| Art. 5(1)(c) — PSP verification | §7.3 | Move (keep deep-dive) |
-| Art. 5(1)(d) — Change notification | §7.4 | Move (keep deep-dive) |
-| Art. 5(2) — Display integrity | §7.5 | Move (keep deep-dive) |
-| Art. 5(3) — Batch payments | §7.6 | Move |
-| Art. 6 — Knowledge | §6.2 | Move |
-| Art. 7 — Possession | §6.3 | Move |
-| Art. 8 — Inherence | §6.4 | Move |
-| Art. 9 — Independence | §6.5 | Move |
+### Phase 4: Create Part B - SCA Triggers (§5)
+| Step | Task | Source Lines | Status |
+|------|------|--------------|--------|
+| 4.1 | Add Part B header | NEW | ⬜ TODO |
+| 4.2 | Add §5 header | NEW | ⬜ TODO |
+| 4.3 | Move Art. 97(1) → §5.1 | 209-407 | ⬜ TODO |
+| 4.4 | Merge Art. 1 into §5.1 | 449-454 | ⬜ TODO |
+| 4.5 | Add dual reference (PSD2 + RTS) | — | ⬜ TODO |
+| 4.6 | Extract exemptions → §5.2 | FROM 5.1 | ⬜ TODO |
+| 4.7 | Extract responsibility matrix → §5.3 | FROM 5.1 | ⬜ TODO |
+| 4.8 | Git commit "Phase 4: SCA Triggers" | — | ⬜ TODO |
 
-### From Part III (RTS Chapter IV)
+### Phase 5: Create Part B - SCA Elements (§6)
+| Step | Task | Source Lines | Status |
+|------|------|--------------|--------|
+| 5.1 | Add §6 header | NEW | ⬜ TODO |
+| 5.2 | Move Art. 4 → §6.1 | 533-876 | ⬜ TODO |
+| 5.3 | Move Art. 6 → §6.2 | 1789-1821 | ⬜ TODO |
+| 5.4 | Move Art. 7 → §6.3 | 1824-1867 | ⬜ TODO |
+| 5.5 | Move Art. 8 → §6.4 | 1870-1908 | ⬜ TODO |
+| 5.6 | Move Art. 9 → §6.5 | 1911-2016 | ⬜ TODO |
+| 5.7 | Add regulatory basis headers | — | ⬜ TODO |
+| 5.8 | Git commit "Phase 5: SCA Elements" | — | ⬜ TODO |
 
-| Current | New Location | Action |
-|---------|--------------|--------|
-| Art. 22 — Credential creation | §4.1 | Move |
-| Art. 23 — Association | §4.2 | Move |
-| Art. 24 — Delivery | §4.3 | Move |
-| Art. 26 — Renewal | §4.4 | Move |
-| Art. 27 — Revocation | §4.5 | Move |
+### Phase 6: Create Part B - Dynamic Linking (§7)
+| Step | Task | Source Lines | Status |
+|------|------|--------------|--------|
+| 6.1 | Add §7 header with Art. 97(2) | 410-432 | ⬜ TODO |
+| 6.2 | Move Art. 5 content → §7.1-7.6 | 879-1786 | ⬜ TODO |
+| 6.3 | Add dual references (PSD2 + RTS) | — | ⬜ TODO |
+| 6.4 | Git commit "Phase 6: Dynamic Linking" | — | ⬜ TODO |
 
-### From Part IV (Appendices)
+### Phase 7: Create Part B - General Security (§8)
+| Step | Task | Source Lines | Status |
+|------|------|--------------|--------|
+| 7.1 | Add §8 header | NEW | ⬜ TODO |
+| 7.2 | Move Art. 2 → §8.1 | 457-491 | ⬜ TODO |
+| 7.3 | Move Art. 3 → §8.2 | 494-530 | ⬜ TODO |
+| 7.4 | Git commit "Phase 7: General Security" | — | ⬜ TODO |
 
-| Current | New Location | Action |
-|---------|--------------|--------|
-| Appendix A-E | Part D | Keep, renumber as needed |
+### Phase 8: Create Part C (Gap Analysis)
+| Step | Task | Status |
+|------|------|--------|
+| 8.1 | Add Part C header | ⬜ TODO |
+| 8.2 | Search all "⚠️ Gap" notes | ⬜ TODO |
+| 8.3 | Create §9.1 Critical Gaps | ⬜ TODO |
+| 8.4 | Create §9.2 Moderate Gaps | ⬜ TODO |
+| 8.5 | Create §9.3 Low-Risk Gaps | ⬜ TODO |
+| 8.6 | Create §10 Recommendations | ⬜ TODO |
+| 8.7 | Git commit "Phase 8: Gap Analysis" | — | ⬜ TODO |
 
----
+### Phase 9: Cleanup & Finalize
+| Step | Task | Status |
+|------|------|--------|
+| 9.1 | Delete old Part I header (203-207) | ⬜ TODO |
+| 9.2 | Delete Art. 97(3) (435-441) | ⬜ TODO |
+| 9.3 | Delete old Part II header (443-447) | ⬜ TODO |
+| 9.4 | Rename Part IV → Part D | ⬜ TODO |
+| 9.5 | Update Document History → v5.0 | ⬜ TODO |
+| 9.6 | Update version in header (line 3) | ⬜ TODO |
+| 9.7 | Verify line count ≥ 2714 | ⬜ TODO |
+| 9.8 | Git commit "Phase 9: Complete v5.0" | ⬜ TODO |
 
-## Dual Reference Format
-
-For sections with PSD2 + RTS overlap:
-
-```markdown
-## 7.1 Payer Awareness
-
-> **Regulatory Basis**:
-> - [PSD2 Directive Art. 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002): "...dynamically link the transaction to a specific amount and a specific payee"
-> - [RTS Art. 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001): "the payer is made aware of the amount of the payment transaction and of the payee"
-
-[Deep-dive content follows]
-```
-
-For sections with RTS-only:
-
-```markdown
-## 6.2 Knowledge Element
-
-> **Regulatory Basis**:
-> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6)
-
-[Content follows]
-```
-
----
-
-## Execution Phases
-
-### Phase 1: Preparation ✅
-- [x] Create detailed implementation plan
-- [x] User review and approval
-- [x] Document decisions in RESTRUCTURE_PLAN.md
-
-### Phase 2: Skeleton Creation
-1. Create new section headers in document
-2. Add placeholder "[TO BE MIGRATED]" notes
-3. Keep old content below skeleton temporarily
-4. **Checkpoint**: Commit "Restructure: Create topic-first skeleton"
-
-### Phase 3: Part A Migration (Issuance)
-1. Move RTS Arts. 22-27 content to §4
-2. Add regulatory basis blockquotes
-3. **Checkpoint**: Commit "Restructure: Migrate Part A (Issuance)"
-
-### Phase 4: Part B Migration (Authentication)
-1. Move SCA Triggers (Art. 97(1) + Art. 1) to §5
-2. Move SCA Elements (Arts. 4, 6-9) to §6
-3. Move Dynamic Linking (Art. 97(2) + Art. 5) to §7
-4. Move General Security (Arts. 2-3) to §8
-5. Add dual references to each header
-6. **Checkpoint**: Commit "Restructure: Migrate Part B (Authentication)"
-
-### Phase 5: Part C Creation (Gap Analysis)
-1. Extract all `⚠️ Gap Identified` notes
-2. Categorize by severity
-3. Create consolidated summary
-4. **Checkpoint**: Commit "Restructure: Create Part C (Gap Analysis)"
-
-### Phase 6: Cleanup
-1. Remove old Part I, II, III section headers
-2. Verify all content migrated
-3. Update version history (→ v5.0)
-4. **Checkpoint**: Commit "Restructure: Complete v5.0"
-
-### Phase 7: Verification
-1. Verify all EUR-Lex links work
-2. Verify all TS12/ARF links work
-3. Word count comparison (ensure no content loss)
-4. Final review
+### Phase 10: Verification
+| Step | Task | Status |
+|------|------|--------|
+| 10.1 | Test all EUR-Lex links | ⬜ TODO |
+| 10.2 | Test all GitHub links | ⬜ TODO |
+| 10.3 | Verify all content migrated | ⬜ TODO |
+| 10.4 | Final review | ⬜ TODO |
 
 ---
 
-## Success Criteria
+## 6. Known Gaps to Extract for Part C
 
-- [ ] All deep-dive content preserved
-- [ ] All regulatory references (EUR-Lex) working
-- [ ] All TS12/ARF links working
-- [ ] Dual references present where overlap exists
-- [ ] Gap analysis consolidated in Part C
-- [ ] Version history updated to 5.0
-- [ ] No content loss (line count ≥ current)
+From inline analysis, these gaps exist:
+
+| Gap ID | Article | Description | Severity |
+|--------|---------|-------------|----------|
+| GAP-01 | Art. 4(3)(b) | PIN lockout NOT implemented | 🔴 Critical |
+| GAP-02 | Art. 5(2) | Overlay attack protection limited | 🟡 Moderate |
+| GAP-03 | Art. 5(1)(b) | mDOC format lacks transaction_data_hashes | 🟡 Moderate |
+| GAP-04 | Art. 5(1)(c) | TPP verification not specified | 🟡 Moderate |
+| GAP-05 | Art. 5(1)(a) | Display duration not mandated | 🟢 Low |
+| GAP-06 | Art. 97(1) | urn:eudi:sca:consents:1 missing | 🟡 Moderate |
 
 ---
 
-## Rollback Plan
+## 7. Rollback Commands
 
-If issues encountered:
 ```bash
+# Rollback to last phase checkpoint
 git checkout HEAD~1 -- PSD2_SCA_COMPLIANCE_ASSESSMENT.md
+
+# Rollback to before restructure
+git checkout 74ef25a -- PSD2_SCA_COMPLIANCE_ASSESSMENT.md
+
+# View all checkpoints
+git log --oneline -20
 ```
 
-Each phase has a checkpoint commit for granular rollback.
+---
+
+## 8. Execution Log
+
+| Timestamp | Phase | Action | Result |
+|-----------|-------|--------|--------|
+| 2026-01-27 22:15 | Prep | Created RESTRUCTURE_PLAN.md v1 | ✅ |
+| 2026-01-27 22:18 | Prep | Updated to detailed execution plan v2 | ✅ |
+| | | | |
+
+---
+
+## Next Step
+
+**Execute Phase 1: Backup & Prepare**
