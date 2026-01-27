@@ -805,24 +805,217 @@ The signature over this JWT (using the SCA attestation private key) cryptographi
 
 ---
 
-#### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code acceptance
+#### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code acceptance verification
 
 > "(c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer;"
 
-| Fulfillment | Reference | Implementation |
-|-------------|-----------|----------------|
-| ⚠️ **PSP Verification** | — | PSP must verify `transaction_data_hashes` matches original request |
+**Core Requirement**: Unlike Art. 5(1)(a-b) which are wallet-enforced, this requirement places **verification responsibility on the PSP**. The PSP must actively validate that the authentication code (KB-JWT) matches the original transaction request before executing the payment.
 
-**Status**: ⚠️ PSP Verification Required
+| Verification Step | Responsibility | Reference | Status |
+|-------------------|----------------|-----------|--------|
+| **KB-JWT Signature** | PSP | [OID4VP §6](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | ✅ Cryptographic |
+| **SCA Attestation Validity** | PSP | TS12 §3.1 | ✅ Certificate chain |
+| **`transaction_data_hashes` Match** | PSP | TS12 §3.6 | ⚠️ PSP Implementation |
+| **`nonce` Freshness** | PSP | OID4VP | ⚠️ PSP Implementation |
+| **`aud` Binding** | PSP | OID4VP | ⚠️ PSP Implementation |
+| **`iat` Timestamp Validity** | PSP | TS12 §3.6 | ⚠️ Optional |
 
-**PSP MUST**:
-1. Hash the original transaction data (amount, payee) using the same algorithm
-2. Verify the hash matches the value in `transaction_data_hashes`
-3. Reject if mismatch (indicates tampering or session mismatch)
-
-> ⚠️ **Open Issue — TPP Flow Verification**: In the Third-Party-Requested flow, the PSP (bank) receives the VP Token from the TPP but has no technical means to verify *how* the TPP obtained it. [Community feedback](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15134339) suggests including `response_mode=dc_api.jwt` in the KB-JWT to indicate secure retrieval. This is **under consideration** for future TS12 versions. PSPs should consider this when relying on TPP-provided authentication codes.
+**Status**: ⚠️ **PSP Verification Required** — Wallet generates compliant code; PSP must verify
 
 ---
+
+**Deep Dive: PSP Verification Algorithm**
+
+The PSP receiving a VP Token with KB-JWT MUST perform the following verification steps:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  PSP Backend Verification                                       │
+│                                                                 │
+│  INPUT: VP Token (SD-JWT-VC + KB-JWT)                          │
+│         Original Transaction Request                            │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Step 1: Verify KB-JWT Signature                          │   │
+│  │ ─────────────────────────────────────────────────────── │   │
+│  │ • Extract public key from SCA Attestation                │   │
+│  │ • Verify ECDSA/EdDSA signature over KB-JWT               │   │
+│  │ • ❌ REJECT if signature invalid                         │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Step 2: Verify SCA Attestation Trust Chain               │   │
+│  │ ─────────────────────────────────────────────────────── │   │
+│  │ • Validate issuer signature (PSP's own key for own user) │   │
+│  │ • OR validate against trusted WSCA Provider registry     │   │
+│  │ • Check attestation not revoked                          │   │
+│  │ • ❌ REJECT if issuer untrusted or revoked               │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Step 3: Verify Transaction Data Hash                     │   │
+│  │ ─────────────────────────────────────────────────────── │   │
+│  │ original_hash = SHA256(base64url(transaction_data))     │   │
+│  │ received_hash = KB-JWT.transaction_data_hashes[0]        │   │
+│  │                                                          │   │
+│  │ IF original_hash ≠ received_hash:                        │   │
+│  │   ❌ REJECT — Amount/payee mismatch (Art. 5(1)(c) fail)  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Step 4: Verify Nonce and Audience                        │   │
+│  │ ─────────────────────────────────────────────────────── │   │
+│  │ • KB-JWT.nonce == original_request.nonce                 │   │
+│  │ • KB-JWT.aud matches PSP's identifier                    │   │
+│  │ • ❌ REJECT if session mismatch (replay attempt)         │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           ▼                                     │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Step 5: (Optional) Verify Timestamp                      │   │
+│  │ ─────────────────────────────────────────────────────── │   │
+│  │ • KB-JWT.iat within acceptable window (e.g., 5 minutes)  │   │
+│  │ • ⚠️ WARN if stale; REJECT if clearly expired            │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           ▼                                     │
+│  ✅ ACCEPT — Execute payment                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Pseudocode Implementation**:
+
+```python
+def verify_sca_authentication(vp_token, original_request):
+    """
+    PSP server-side verification per PSD2 Article 5(1)(c)
+    """
+    kb_jwt = extract_kb_jwt(vp_token)
+    sca_attestation = extract_sca_attestation(vp_token)
+    
+    # Step 1: Signature verification
+    if not verify_signature(kb_jwt, sca_attestation.public_key):
+        raise AuthCodeRejected("Invalid KB-JWT signature")
+    
+    # Step 2: Trust chain (varies by flow)
+    if not verify_issuer_trust(sca_attestation):
+        raise AuthCodeRejected("Untrusted SCA Attestation issuer")
+    
+    # Step 3: Transaction data hash — THE CORE Art. 5(1)(c) CHECK
+    expected_hash = sha256(original_request.transaction_data_b64)
+    actual_hash = kb_jwt.claims["transaction_data_hashes"][0]
+    
+    if expected_hash != actual_hash:
+        raise AuthCodeRejected("Transaction data mismatch - Art. 5(1)(c) violation")
+    
+    # Step 4: Session binding
+    if kb_jwt.claims["nonce"] != original_request.nonce:
+        raise AuthCodeRejected("Nonce mismatch - possible replay")
+    
+    if kb_jwt.claims["aud"] != PSP_IDENTIFIER:
+        raise AuthCodeRejected("Audience mismatch")
+    
+    # Step 5: Timestamp (optional but recommended)
+    if time.now() - kb_jwt.claims["iat"] > MAX_AUTH_CODE_AGE:
+        raise AuthCodeRejected("Authentication code expired")
+    
+    return AuthCodeAccepted()
+```
+
+---
+
+**Issuer-Requested vs. Third-Party-Requested Flow**
+
+The verification complexity differs significantly between the two TS12-defined flows:
+
+| Aspect | Issuer-Requested Flow | Third-Party-Requested Flow |
+|--------|----------------------|---------------------------|
+| **Verifier** | PSP = Attestation Issuer | PSP ≠ RP (TPP is RP) |
+| **Trust Model** | PSP trusts its own attestation | PSP must trust TPP + Wallet |
+| **Transaction Origin** | PSP generated `transaction_data` | TPP generated `transaction_data` |
+| **Hash Verification** | PSP compares against own data | PSP must receive TPP's original data |
+| **Liability** | PSP fully responsible | PISP bears proof burden ([PSD2 Art. 73](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#d1e5274-35-1)) |
+
+**Issuer-Requested Flow** (simpler):
+```
+┌──────────┐      ┌────────────┐      ┌──────────────┐
+│   User   │ ──── │   Wallet   │ ──── │     PSP      │
+│          │      │            │      │  (RP=Issuer) │
+└──────────┘      └────────────┘      └──────────────┘
+                        │                    │
+                     VP Token ────────────▶  │
+                                    PSP verifies against
+                                    its OWN original request
+```
+
+**Third-Party-Requested Flow** (complex):
+```
+┌──────────┐      ┌────────────┐      ┌──────────────┐      ┌──────────┐
+│   User   │ ──── │   Wallet   │ ──── │  TPP (PISP)  │ ──── │   PSP    │
+│          │      │            │      │     (RP)     │      │  (Bank)  │
+└──────────┘      └────────────┘      └──────────────┘      └──────────┘
+                        │                    │                    │
+                     VP Token ────────────▶  │                    │
+                                             │                    │
+                                      VP Token + ─────────────▶   │
+                                      transaction_data            │
+                                                         PSP verifies but
+                                                         cannot verify TPP's
+                                                         retrieval method
+```
+
+---
+
+**Gap Analysis: TPP Flow Verification**
+
+> ⚠️ **Critical Open Issue**: In the Third-Party-Requested flow, the PSP receives the VP Token from the TPP but has **no technical means** to verify:
+> 1. How the TPP obtained the VP Token (secure retrieval?)
+> 2. Whether the TPP correctly displayed transaction data to the user
+> 3. Whether the TPP used secure response modes (e.g., `dc_api.jwt`)
+
+**Community Feedback** ([Discussion #439](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15134339)):
+
+> "The ARF describes several challenges that come with remote presentation flows (chapter 4.4.3.1) and how they might be mitigated by the use of the DC-API. However, in the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party [...] it might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
+> — @senexi, Dec 2025
+
+**TS12 Team Response**: "@senexi thank you for this proposal, sounds reasonable, we will think if this could be a new requirement in TS12 possibly." — @tmielnicki
+
+**Proposed Mitigation** (not yet in spec):
+
+```json
+// KB-JWT with response_mode claim (proposed)
+{
+  "aud": "x509_san_dns:psp.example.com",
+  "iat": 1741269093,
+  "jti": "deeec2b0-3bea-4477-bd5d-e3462a709481",
+  "nonce": "bUtJdjJESWdmTWNjb011YQ",
+  "transaction_data_hashes": ["OJcnQQ..."],
+  "response_mode": "dc_api.jwt",  // ← NEW: Indicates secure retrieval
+  "amr": [{"knowledge": "pin_6_or_more_digits"}, {"inherence": "fingerprint_device"}]
+}
+```
+
+---
+
+**Liability Framework (PSD2 Art. 73-74)**
+
+For unauthorized transactions in the TPP flow:
+
+| Scenario | Liable Party | Evidence Burden |
+|----------|--------------|-----------------|
+| Unauthorized by user | ASPSP (bank) | Immediate refund |
+| PISP caused the issue | PISP → compensates ASPSP | PISP bears proof burden |
+| Authentication code valid but user denies | PISP must prove authorization | Transaction logs, consent records |
+
+**PSP Risk Mitigation Recommendations**:
+
+1. **Log Everything**: Store original `transaction_data`, received VP Token, verification results
+2. **Require Signed Requests**: Only accept TPP transactions via JAR (JWT-secured requests)
+3. **Verify TPP Registration**: Check EBA TPP Register before accepting
+4. **Monitor Anomalies**: Flag mismatches between TPP-declared and hash-verified amounts
+5. **Await TS12 Updates**: Implement `response_mode` verification when standardized
+
+---
+
+
 
 #### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code invalidation on change
 
@@ -2032,4 +2225,5 @@ Items marked **🔶 Rulebook** in this assessment cannot be fully evaluated unti
 | **4.7** | 2026-01-27 | AI Analysis | **Critical gap: PIN lockout missing**: Identified that reference implementation has NO PIN lockout mechanism (Art. 4(3)(b)). Unlimited PIN retries allowed. OS biometric is compliant (5 attempts), but wallet PIN bypasses this. Added detailed evidence from `QuickPinInteractor.kt` (Android) and `QuickPinInteractor.swift` (iOS). Provided remediation code pattern. |
 | **4.8** | 2026-01-27 | AI Analysis | **Art. 5(2) WYSIWYS deep-dive**: Complete rewrite of Art. 5(2) section with phase-by-phase CIA analysis (Generation, Transmission, Display, Use). Added WYSIWYS principle explanation, overlay attack gap analysis, industry best practices table (RASP, secure display, overlay detection). Identified at-rest confidentiality gap for transaction data. TS12 §3.3.1 display hierarchy levels documented. |
 | **4.9** | 2026-01-27 | AI Analysis | **Art. 5(1)(d) cryptographic deep-dive**: Complete rewrite with SHA-256 hash binding diagram, cryptographic security properties table (collision/pre-image resistance), 4-layer replay protection (hash, jti, iat, nonce). Added EMV ARQC comparison, JSON canonicalization edge case, time-bound validity gap analysis. Recommendation for SCA Attestation Rulebooks to specify max `iat` age. |
+| **4.10** | 2026-01-27 | AI Analysis | **Art. 5(1)(c) PSP verification deep-dive**: Complete rewrite with 5-step verification algorithm diagram, Python pseudocode implementation, Issuer-Requested vs TPP flow comparison table with ASCII diagrams. Documented TPP verification gap from GitHub Discussion #439 with community feedback. Added PSD2 Art. 73-74 liability framework table and PSP risk mitigation recommendations. |
 
