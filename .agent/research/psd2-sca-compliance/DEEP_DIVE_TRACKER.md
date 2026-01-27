@@ -142,7 +142,7 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 9(1) | Breach of one doesn't compromise others | ✅ Yes |
-| Art. 9(2) | Multi-purpose device risk mitigation | ❌ No |
+| Art. 9(2) | Multi-purpose device risk mitigation | ✅ Yes |
 | Art. 9(3) | Mitigating measures (TEE, attestation, revocation) | ✅ Yes |
 
 ---
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 27 |
-| ❌ Not Done | 20 |
+| ✅ Done | 28 |
+| ❌ Not Done | 19 |
 | **Total** | 47 |
 
 ---
@@ -174,6 +174,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-27 | Art. 4(3)(c) | Deep-dive: OID4VP session binding, TLS layers, hijacking prevention, gaps SP-1 to SP-4 |
 | 2026-01-27 | Art. 4(3)(d) | Deep-dive: EBA exemptions, OWASP alignment, wallet vs PSP responsibility, gaps ST-1 to ST-4 |
 | 2026-01-27 | Art. 2(2) | Deep-dive: Mandated risk factors (a-e), wallet data contributions, ML enhancement, gaps RF-1 to RF-4 |
+| 2026-01-27 | Art. 9(2) | Deep-dive: Smartphone security architecture, isolation layers, FIDO alignment, gaps MPD-1 to MPD-4 |
 
 ---
 

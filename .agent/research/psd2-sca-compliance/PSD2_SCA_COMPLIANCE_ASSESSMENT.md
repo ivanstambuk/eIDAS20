@@ -2888,6 +2888,158 @@ Breach of one does not expose the others:
 
 **Status**: ✅ Fully Supported
 
+<details>
+<summary><strong>🔍 Deep-Dive: Multi-Purpose Device Risk Mitigation</strong></summary>
+
+##### Core Requirement: Smartphone Security for SCA
+
+Article 9(2) acknowledges that smartphones are "multi-purpose devices" that can be used for both transaction initiation AND authentication. This creates unique risks that must be mitigated through security measures.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                  Multi-Purpose Device Security Architecture                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     SMARTPHONE (Multi-Purpose)                      │   │
+│  │                                                                     │   │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │   │
+│  │   │               APPLICATION LAYER (Rich OS)                   │   │   │
+│  │   │   • Banking apps, browsers, third-party apps                │   │   │
+│  │   │   • Malware risk: HIGH                                      │   │   │
+│  │   │   • Data isolation: Process-level only                      │   │   │
+│  │   └─────────────────────────────────────────────────────────────┘   │   │
+│  │                              ▼                                      │   │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │   │
+│  │   │        TRUSTED EXECUTION ENVIRONMENT (TEE/SE)               │   │   │
+│  │   │   • Secure Enclave (iOS) / StrongBox/TEE (Android)          │   │   │
+│  │   │   • Malware risk: VERY LOW                                  │   │   │
+│  │   │   • Hardware isolation from Rich OS                         │   │   │
+│  │   │                                                             │   │   │
+│  │   │   Stores: Private keys, PIN hash, biometric templates       │   │   │
+│  │   │   Operations: Signing, key derivation, biometric match      │   │   │
+│  │   └─────────────────────────────────────────────────────────────┘   │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  RISK: Compromise of Rich OS should NOT compromise SCA elements in TEE    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Why Multi-Purpose Devices Are Risky
+
+| Risk Factor | Description | Mitigation Strategy |
+|-------------|-------------|---------------------|
+| **Malware** | Apps can install malicious code | TEE isolation, app attestation |
+| **Shared memory** | Other apps may access unprotected data | Process isolation, encryption |
+| **Same-device attack** | Transaction initiation + authentication on one device | Channel separation, TEE signatures |
+| **Screen overlay** | Fake UI can mislead user | OS-level overlay detection, trusted display |
+| **Keylogger** | Capture PIN/password input | Secure keyboard, biometric fallback |
+| **Rooting/Jailbreaking** | Bypasses OS security | WUA integrity check, device attestation |
+
+##### EUDI Wallet Mitigation Architecture
+
+| SCA Element | Where Stored | Protection Mechanism |
+|-------------|-------------|---------------------|
+| **Knowledge (PIN)** | TEE/SE (hash only) | Never in app memory; validated in hardware |
+| **Possession (Key)** | WSCD (SE/StrongBox) | Non-extractable; signs in hardware |
+| **Inherence (Biometric)** | OS Secure Enclave | Never exported; match happens in hardware |
+
+##### Isolation Layers on Smartphones
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       SCA Element Isolation on Smartphone                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Layer 5: APPLICATION (Wallet App)                                         │
+│           └── Requests signatures, receives results                        │
+│           └── CANNOT access: Keys, PIN, biometric templates                │
+│                                                                             │
+│  Layer 4: ANDROID KEYSTORE / iOS KEYCHAIN                                  │
+│           └── OS-mediated access to cryptographic operations               │
+│           └── Enforces user authentication before key use                  │
+│                                                                             │
+│  Layer 3: TRUSTED EXECUTION ENVIRONMENT (TEE)                              │
+│           └── Runs Trusted Applications (TAs) in isolated memory           │
+│           └── Hardware-separated from Rich OS                              │
+│                                                                             │
+│  Layer 2: SECURE ELEMENT (SE) / StrongBox                                  │
+│           └── Dedicated security chip (tamper-resistant)                   │
+│           └── CC EAL5+ / FIPS 140-2/3 certified                            │
+│                                                                             │
+│  Layer 1: HARDWARE ROOT OF TRUST                                           │
+│           └── Secure boot, hardware attestation key                        │
+│           └── Unmodifiable by software                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### FIDO Alignment for SCA
+
+FIDO standards provide a proven framework for multi-purpose device security:
+
+| FIDO Principle | PSD2 Art. 9(2) Alignment | EUDI Wallet Implementation |
+|----------------|-------------------------|---------------------------|
+| **Local verification** | Factor never sent over network | PIN validated locally in WSCA |
+| **Proof of possession** | Device key stays on device | WSCD key signs KB-JWT |
+| **Attestation** | Device integrity verified | WUA contains FIDO-style attestation |
+| **Phishing resistance** | Origin-bound keys | Client ID binding in OID4VP |
+
+##### EBA Guidance on Multi-Purpose Devices
+
+The EBA has clarified multi-purpose device requirements:
+
+| EBA Guidance | Implementation |
+|--------------|----------------|
+| "Separate secure execution environment" | TEE/SE mandatory for key storage |
+| "Mechanisms to detect alteration" | Play Integrity / App Attest |
+| "Mitigate consequences of compromise" | Revocation mechanisms per Art. 9(3)(c) |
+| "Independence of elements" | Factor isolation in separate hardware |
+
+> **EBA Q&A 2018/4039**: "The RTS allows transactions and authentication to occur on the same device if all authenticating factors are adequately separated."
+
+##### Reference Implementation Evidence
+
+| Platform | Component | Protection Mechanism |
+|----------|-----------|---------------------|
+| **iOS** | Secure Enclave | Hardware-isolated crypto processor |
+| **iOS** | App Attest | Apple-signed attestation of app integrity |
+| **Android** | StrongBox | Dedicated secure element (when available) |
+| **Android** | TEE | TrustZone-based isolation |
+| **Android** | Play Integrity | Google-signed device/app attestation |
+
+##### Threat Model: Multi-Purpose Device Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Malware on device** | Steal keys from app memory | Keys only in TEE/SE | ✅ Mitigated |
+| **App repackaging** | Modified wallet app | App attestation in WUA | ✅ Mitigated |
+| **Rooted/jailbroken device** | Bypass OS protections | WUA integrity check | ✅ Mitigated |
+| **Screen overlay attack** | Fake UI hides real transaction | OS overlay detection + trusted display | ⚠️ Partial |
+| **Accessibility abuse** | Automation attacks | Limit accessibility access | ⚠️ Platform-dependent |
+| **Same-device phishing** | Malicious app mimics wallet | User education + app store policies | ⚠️ Partial |
+
+##### Gap Analysis: Multi-Purpose Device Security
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **MPD-1** | No minimum TEE/SE requirement specified | Medium | Define minimum hardware security level (e.g., StrongBox for Android) |
+| **MPD-2** | Screen overlay protection varies by OS | Medium | Document platform-specific overlay countermeasures |
+| **MPD-3** | Software-only TEE (some Android devices) | Low | WUA should indicate hardware vs software TEE |
+| **MPD-4** | Accessibility service abuse not addressed | Medium | Guidance on limiting accessibility access during SCA |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Minimum Hardware Requirement**: Mandate SE or hardware-backed TEE (not software-only)
+2. **Attestation Content**: WUA should include TEE type (SE vs TEE vs software)
+3. **Overlay Protection**: Document platform-specific requirements for overlay detection
+4. **FIDO Alignment**: Reference FIDO UAF/FIDO2 as implementation guidance
+5. **Fallback Scenarios**: Define behavior when hardware security is unavailable
+
+</details>
+
 **Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
 
 ---
