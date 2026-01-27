@@ -418,16 +418,38 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet/OS** | iOS/Android APIs | OS biometric APIs return generic "failed" — not which factor failed |
+| ✅ **OS (Biometric)** | iOS/Android APIs | OS biometric APIs return generic "failed" — not which factor failed |
+| ⚠️ **Wallet (PIN)** | See below | iOS reference implementation reveals PIN-specific errors |
 | ⚠️ **PSP** | — | PSP must also not disclose element in error responses |
 
-**Status**: ⚠️ Shared Responsibility
+**Status**: ⚠️ Potential Compliance Gap (iOS PIN Errors)
 
 **Context**: 
-- **Wallet side**: If biometric fails, OS APIs return generic failure — the wallet cannot distinguish "wrong finger" from "sensor error"
+- **Biometric (compliant)**: OS APIs (`LAContext`, `BiometricPrompt`) return generic failure — cannot distinguish "wrong finger" from "sensor error"
+- **PIN (iOS — potential gap)**: Reference implementation reveals PIN-specific messages
 - **PSP side**: If signature verification fails, PSP should return generic error — not specify which check failed
 
-> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. This is achieved through OS-level API design (iOS `LAContext` and Android `BiometricPrompt` return only success/failure, not factor-specific errors).
+**Reference Implementation Evidence**:
+
+| Platform | Source | Behavior | Compliance |
+|----------|--------|----------|------------|
+| **iOS** | [`QuickPinViewModel.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/QuickPin/QuickPinViewModel.swift) | Uses `.quickPinDoNotMatch` error key — reveals PIN was wrong | ⚠️ Gap |
+| **Android** | [`DeviceAuthenticationController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/DeviceAuthenticationController.kt) | Uses generic `onAuthenticationFailure()` callback | ✅ OK |
+
+**iOS Code Evidence** (commit `055bdda8`):
+```swift
+// When PINs don't match during confirmation:
+guard previousPin == uiPinInputField else {
+  setState {
+    $0.copy(pinError: .quickPinDoNotMatch)  // ← PIN-SPECIFIC
+  }
+  return
+}
+```
+
+> ⚠️ **Recommendation**: For PSD2-compliant deployments, the iOS reference implementation should use a generic "Authentication failed" message instead of PIN-specific error messages. This is a **UI-level change** in the wallet application, not in the WSCA/WSCD layer.
+
+> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. OS biometric APIs are compliant by design, but wallet-level PIN validation must also implement this pattern.
 
 ---
 
