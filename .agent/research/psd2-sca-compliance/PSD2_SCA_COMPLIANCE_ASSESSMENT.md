@@ -1990,10 +1990,161 @@ TS12 §3.5 supports encrypted requests for additional protection:
 
 **Status**: ❌ PSP Obligation
 
-**Context**: TS12 does not specify session timeout. This is a PSP-side implementation requirement. After authentication, the PSP session (not the wallet session) must timeout after 5 minutes of inactivity.
+<details>
+<summary><strong>🔍 Deep-Dive: Session Timeout (5 Minutes)</strong></summary>
 
+##### Core Requirement: Inactivity-Based Session Termination
 
----
+Article 4(3)(d) mandates that after SCA, the PSP session must timeout after **5 minutes of inactivity**. This limits the attack window for session hijacking and unattended device scenarios.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     Session Timeout Responsibility Model                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                         SCA FLOW                                    │   │
+│  │                                                                     │   │
+│  │   User ──► Wallet (SCA) ──► VP Token ──► PSP ──► Session Created   │   │
+│  │                                           │                         │   │
+│  │                                           ▼                         │   │
+│  │                                    ┌────────────┐                   │   │
+│  │                                    │ PSP Server │                   │   │
+│  │                                    │  Session   │                   │   │
+│  │                                    │  Timer     │                   │   │
+│  │                                    └─────┬──────┘                   │   │
+│  │                                          │                          │   │
+│  │           Activity? ───► Reset Timer ◄───┘                          │   │
+│  │              │                                                      │   │
+│  │              ▼                                                      │   │
+│  │        5 min inactivity ──► SESSION TERMINATED                      │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│                                                                             │
+│  WALLET RESPONSIBILITY: None (wallet doesn't manage PSP session)           │
+│  PSP RESPONSIBILITY: Enforce 5-minute idle timeout server-side             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Who is Responsible?
+
+| Component | Session Timeout Responsibility | Reason |
+|-----------|-------------------------------|--------|
+| **Wallet** | ❌ Not responsible | Wallet performs SCA, doesn't manage PSP session |
+| **PSP Backend** | ✅ Primary responsibility | Controls session lifecycle |
+| **PSP Frontend** | ⚠️ Partial (UX) | Can warn user, but timeout must be server-enforced |
+
+##### EBA Exemptions to 5-Minute Rule
+
+The EBA has clarified exemptions where the 5-minute timeout may not apply:
+
+| Exemption | Condition | Reference |
+|-----------|-----------|-----------|
+| **Article 10 (AIS 90-day)** | AISP access with SCA within 90 days | RTS Art. 10 |
+| **180-day extension** | AISP with enhanced security | EBA Q&A 2022/6381 |
+| **Legal persons** | Dedicated corporate payment processes | RTS Art. 17 |
+| **Read-only display** | Balance/transaction viewing (Art. 10 exempt) | EBA Q&A 2018/4039 |
+
+> **Important**: The 5-minute rule applies when **accessing a payment account online** after SCA. If the user is in the middle of a transaction (actively inputting data), activity resets the timer.
+
+##### OWASP Session Management Alignment
+
+| OWASP Recommendation | PSD2 Art. 4(3)(d) | Alignment |
+|---------------------|-------------------|-----------|
+| **Idle timeout 2-5 min** (high-value) | 5 minutes | ✅ Aligned |
+| **Absolute timeout** (e.g., 4-8 hours) | Not specified | ⚠️ Not covered |
+| **Server-side enforcement** | Required | ✅ Aligned |
+| **Session ID regeneration** | Not specified | ⚠️ PSP best practice |
+| **Secure cookie flags** | Not specified | ⚠️ PSP best practice |
+
+##### What Constitutes "Activity"?
+
+| Activity Type | Resets Timer? | Notes |
+|---------------|---------------|-------|
+| **Mouse movement** | ⚠️ Depends on PSP | Some PSPs count as activity |
+| **Key press** | ✅ Yes | Typing in form fields |
+| **API request** | ✅ Yes | Any authenticated request to PSP |
+| **Page navigation** | ✅ Yes | Moving between account pages |
+| **Background refresh** | ❌ No (should not) | Auto-refresh doesn't indicate user presence |
+
+##### Wallet vs PSP Session Clarification
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     Session Types in EUDI Wallet + PSD2                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌──────────────────────────────────┐  ┌────────────────────────────────┐  │
+│  │   WALLET SESSION                 │  │   PSP SESSION                  │  │
+│  │   (NOT governed by Art. 4(3)(d)) │  │   (GOVERNED by Art. 4(3)(d))   │  │
+│  │                                  │  │                                │  │
+│  │   • Wallet PIN unlock            │  │   • Created after SCA          │  │
+│  │   • Device-local timeout         │  │   • Server-side tracking       │  │
+│  │   • Biometric re-auth            │  │   • 5-minute idle timeout      │  │
+│  │   • Wallet's own policy          │  │   • PSP's responsibility       │  │
+│  │                                  │  │                                │  │
+│  │   Timeout: Wallet-defined        │  │   Timeout: MAX 5 minutes       │  │
+│  │   (e.g., 2 min, 5 min, etc.)     │  │   (regulatory mandate)         │  │
+│  │                                  │  │                                │  │
+│  └──────────────────────────────────┘  └────────────────────────────────┘  │
+│                                                                             │
+│  After wallet performs SCA → PSP receives VP Token → PSP creates session   │
+│  → Art. 4(3)(d) applies to PSP session ONLY                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Implementation Patterns for PSPs
+
+| Pattern | Description | Security Level |
+|---------|-------------|----------------|
+| **Server-side timer** | Session expires on server after 5 min idle | ✅ High |
+| **Token expiry** | Access token expires; refresh requires activity | ✅ High |
+| **Heartbeat with server** | Client sends heartbeat; server tracks last activity | ⚠️ Medium |
+| **Client-side only** | JavaScript timer with logout | ❌ Low (bypassable) |
+
+> **Best Practice**: Combine server-side enforcement with client-side warning (e.g., "Session expiring in 1 minute").
+
+##### Threat Model: Session Timeout Attacks
+
+| Threat | Attack Vector | Mitigation | Status |
+|--------|---------------|------------|--------|
+| **Unattended device** | Attacker uses open session | 5-min timeout | ✅ Mitigated |
+| **Session extension attack** | Attacker sends fake heartbeats | Server validates activity type | ⚠️ Depends on impl |
+| **Token theft** | Stolen token used after timeout | Token invalidation on timeout | ✅ Mitigated |
+| **Timeout bypass** | Client-side only enforcement | Server-side mandatory | ✅ Mitigated |
+
+##### Reference Implementation Evidence
+
+| Component | Implementation | Notes |
+|-----------|----------------|-------|
+| **Wallet** | Not applicable | Wallet does not manage PSP session |
+| **PSP Backend** | Session manager with 5-min TTL | Industry standard pattern |
+| **TS12** | Silent on timeout | Gap — should reference PSP obligation |
+
+##### Gap Analysis: Session Timeout
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **ST-1** | TS12 does not mention 5-minute timeout | Medium | TS12 should remind PSPs of Art. 4(3)(d) obligation |
+| **ST-2** | No guidance on activity definition | Low | Clarify what constitutes "activity" (API calls, not heartbeats) |
+| **ST-3** | Wallet session timeout not aligned | Low | Consider aligning wallet unlock timeout with PSP session |
+| **ST-4** | Absolute timeout not specified | Medium | Consider recommending max absolute session (e.g., 4 hours) |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **PSP Reminder**: Explicitly reference Art. 4(3)(d) obligation for PSPs
+2. **Activity Definition**: Clarify that automatic refreshes don't count as user activity
+3. **Wallet Alignment**: Recommend wallet PIN timeout ≤ 5 minutes for UX consistency
+4. **Absolute Timeout**: Recommend PSPs implement absolute timeout (e.g., 4 hours regardless of activity)
+5. **Exemption Awareness**: Document Art. 10 / Art. 17 exemptions for PSP implementers
+
+</details>
+
+**Context**: TS12 does not specify session timeout. This is a PSP-side implementation requirement. After authentication, the PSP session (not the wallet session) must timeout after 5 minutes of inactivity.---
 
 ## 6.2 Knowledge Element
 
