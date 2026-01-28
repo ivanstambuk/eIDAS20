@@ -137,8 +137,12 @@ function transformMarkdownLinks(text, baseUrl) {
     // Extract the directory from baseUrl (remove filename)
     const baseDir = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
 
+    // Step 0: Remove newlines inside markdown link brackets (CSV sometimes has wrapped lines)
+    // Fix [\nTopic 27] → [Topic 27]
+    let result = text.replace(/\[\s*\n\s*/g, '[').replace(/\s*\n\s*\]/g, ']');
+
     // Step 1: Normalize double-bracket links [[text](url)] → [text](url)
-    let result = text.replace(/\[\[([^\]]+)\]\(([^)]+)\)\]/g, '[$1]($2)');
+    result = result.replace(/\[\[([^\]]+)\]\(([^)]+)\)\]/g, '[$1]($2)');
 
     // Step 2: Convert relative URLs to absolute
     result = result.replace(
