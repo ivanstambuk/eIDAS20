@@ -54,7 +54,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 26 | Renewal follows Art. 23-25 procedures | ❌ No |
+| Art. 26 | Renewal follows Art. 23-25 procedures | ✅ Yes |
 
 ### Article 27 — Destruction/Revocation
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 44 |
-| ❌ Not Done | 3 |
+| ✅ Done | 45 |
+| ❌ Not Done | 2 |
 | **Total** | 47 |
 
 ---
@@ -190,6 +190,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 23 | Deep-dive: PSC creation flow, hardware security levels, threat model, gaps SC-1 to SC-4 |
 | 2026-01-28 | Art. 24(1), 24(2)(a) | Deep-dive: User association flow, KYC options, device binding layers, gaps UA-1 to UA-4 |
 | 2026-01-28 | Art. 25 | Deep-dive: Secure delivery architecture, OID4VCI security, traditional vs wallet model, gaps SD-1 to SD-4 |
+| 2026-01-28 | Art. 26 | Deep-dive: Credential renewal flow, key rotation strategies, validity management, gaps RN-1 to RN-4 |
 
 ---
 

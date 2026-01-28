@@ -1464,6 +1464,142 @@ Article 25 mandates protection against **three distinct risks**:
 
 The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
 
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Renewal Architecture</strong></summary>
+
+##### Core Requirement: Renewal = Same Security as Creation
+
+Article 26 mandates that renewal/re-activation follows **the same procedures as original issuance**:
+
+| Phase | Required Security (per Art. 26) |
+|-------|--------------------------------|
+| **Creation** | Art. 23 — Secure environment |
+| **Association** | Art. 24 — User identity verification |
+| **Delivery** | Art. 25 — Secure transport |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Credential Renewal Flow (Art. 26)                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  RENEWAL TRIGGERS                                                           │
+│  ════════════════                                                            │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  1. Expiry-based:     Attestation exp claim reached                    │ │
+│  │  2. User-initiated:   User requests new credentials                    │ │
+│  │  3. Security event:   Suspected compromise, key rotation policy        │ │
+│  │  4. PSP policy:       Periodic forced renewal                          │ │
+│  │  5. Device change:    New device, OS upgrade with SE migration         │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  KEY ROTATION DECISION                                                       │
+│  ═════════════════════                                                       │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                                                                        │ │
+│  │           ┌─────────────────────┐                                      │ │
+│  │           │   PSP Policy        │                                      │ │
+│  │           │   Decision          │                                      │ │
+│  │           └──────────┬──────────┘                                      │ │
+│  │                      │                                                 │ │
+│  │         ┌────────────┴────────────┐                                    │ │
+│  │         ▼                         ▼                                    │ │
+│  │  ┌─────────────────┐    ┌─────────────────┐                           │ │
+│  │  │ SAME KEY        │    │ NEW KEY         │                           │ │
+│  │  │ • exp refresh   │    │ • Full rotation │                           │ │
+│  │  │ • Faster        │    │ • New key pair  │                           │ │
+│  │  │ • Same cnf      │    │ • New cnf claim │                           │ │
+│  │  └─────────────────┘    └─────────────────┘                           │ │
+│  │                                                                        │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  OID4VCI RENEWAL FLOW                                                       │
+│  ═════════════════════                                                       │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  1. User authenticates to wallet (SCA — Art. 24(2)(b))                 │ │
+│  │  2. Wallet initiates OID4VCI refresh (same as Art. 23)                 │ │
+│  │  3. PSP verifies user identity, device binding (Art. 24)               │ │
+│  │  4. PSP issues new attestation over TLS (Art. 25)                      │ │
+│  │  5. Wallet stores new attestation, old one invalidated                 │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Renewal Triggers
+
+| Trigger | Initiation | SCA Required? |
+|---------|------------|---------------|
+| **Expiry-based** | Automatic (wallet or PSP) | ✅ Yes |
+| **User-initiated** | User request | ✅ Yes |
+| **Security event** | PSP or wallet provider | ✅ Yes |
+| **PSP policy** | Scheduled (e.g., annual) | ✅ Yes |
+| **Device change** | User action | ✅ Yes (full re-enrollment) |
+
+##### Key Rotation Strategies
+
+| Strategy | When to Use | Impact |
+|----------|-------------|--------|
+| **Attestation-only refresh** | Expiry, policy refresh | Same key, new `exp` claim |
+| **Full key rotation** | Security concern, device change | New key pair, new attestation |
+| **Forced rotation** | Suspected compromise | Revoke old + new key pair |
+
+##### PSC Type Renewal Details
+
+| PSC Type | Renewal Mechanism | SCA Trigger |
+|----------|-------------------|-------------|
+| **PIN** | User changes via wallet UI | Prior SCA (old PIN) |
+| **Biometric** | OS enrollment change | OS verifies identity |
+| **Private Key** | New key in WSCD | Wallet SCA before generation |
+| **SCA Attestation** | OID4VCI refresh | Wallet SCA + PSP verification |
+
+##### Validity and Expiry Management
+
+| Element | Validity Period | Renewal Grace |
+|---------|-----------------|---------------|
+| **SCA Attestation** | PSP-defined (e.g., 1 year) | 30 days before expiry |
+| **Private Key** | Tied to attestation | Rotated if desired |
+| **PIN** | Unlimited (PSP policy may require change) | N/A |
+| **Biometric** | Unlimited (OS-managed) | N/A |
+
+##### Token Renewal vs. SCA Renewal
+
+Per EBA guidance, **technical token replacements** (background updates) differ from **credential renewal**:
+
+| Scenario | SCA Required? | Reason |
+|----------|---------------|--------|
+| **Initial attestation** | ✅ Yes | Art. 24(2)(b) — remote binding |
+| **Attestation renewal (same key)** | ✅ Yes | Art. 26 — follows Art. 23-25 |
+| **Attestation renewal (new key)** | ✅ Yes | Art. 26 — full re-issuance |
+| **Background token refresh** | ❌ No | Technical, no user action |
+
+##### Threat Model: Renewal Phase
+
+| Threat | Vector | Mitigation |
+|--------|--------|------------|
+| **Attacker renews stolen credential** | Compromise old SCA | Require SCA with old credentials |
+| **Expired attestation exploitation** | Use after expiry | PSP rejects expired `exp` |
+| **Key exhaustion** | Overuse of same key | Rotation policy (e.g., 1 year) |
+| **Renewal phishing** | Fake renewal request | OID4VCI via trusted wallet |
+
+##### Gap Analysis: Credential Renewal
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **RN-1** | Attestation validity period not specified | Medium | Define recommended validity (1 year) |
+| **RN-2** | Key rotation policy not defined | Medium | Document rotation triggers |
+| **RN-3** | Renewal grace period not standardized | Low | Define pre-expiry renewal window |
+| **RN-4** | Device migration flow not specified | Medium | Document SE key migration |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Validity Period**: Recommend 1-year attestation validity with 30-day renewal grace
+2. **Key Rotation**: Define when key rotation is mandatory vs. optional
+3. **Renewal SCA**: Clarify SCA is always required for renewal
+4. **Grace Period**: Define behavior when attestation expires mid-session
+5. **Device Migration**: Document key migration for device upgrades
+6. **Audit Trail**: Log all renewal events for compliance
+
+</details>
 
 ---
 
