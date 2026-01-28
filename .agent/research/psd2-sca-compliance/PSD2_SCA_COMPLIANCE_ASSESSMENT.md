@@ -94,21 +94,21 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 
 | Term | Definition | Source |
 |------|------------|--------|
-| **Strong Customer Authentication (SCA)** | Authentication based on two or more elements from knowledge, possession, and inherence categories | RTS Art. 4(1) |
-| **Personalised Security Credentials (PSC)** | Personalised features provided by PSP for authentication purposes | PSD2 Art. 4(31) |
-| **Authentication Code** | Digital signatures or other cryptographically underpinned validity assertions generated from authentication elements | RTS Recital (4) |
-| **Dynamic Linking** | SCA that includes elements dynamically linking the transaction to a specific amount and payee | RTS Art. 5 |
+| **Strong Customer Authentication (SCA)** | Authentication based on two or more elements from knowledge, possession, and inherence categories | [RTS Art. 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4) |
+| **Personalised Security Credentials (PSC)** | Personalised features provided by PSP for authentication purposes | [PSD2 Art. 4(31)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#004.031) |
+| **Authentication Code** | Digital signatures or other cryptographically underpinned validity assertions generated from authentication elements | [RTS Recital (4)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#rct_4) |
+| **Dynamic Linking** | SCA that includes elements dynamically linking the transaction to a specific amount and payee | [RTS Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5) |
 
 ### EUDI Wallet Terminology
 
 | Term | Definition | Source |
 |------|------------|--------|
-| **WSCA** | Wallet Secure Cryptographic Application | ARF Glossary |
-| **WSCD** | Wallet Secure Cryptographic Device (hardware security module) | ARF Glossary |
-| **WUA** | Wallet Unit Attestation | ARF Topic 9 |
-| **PID** | Person Identification Data | ARF Glossary |
-| **SUA** | Strong User Authentication (attestation type for payments) | ARF Topic 20 |
-| **KB-JWT** | Key Binding JWT (signature proving possession) | SD-JWT-VC Spec |
+| **WSCA** | Wallet Secure Cryptographic Application | [ARF Glossary](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md) |
+| **WSCD** | Wallet Secure Cryptographic Device (hardware security module) | [ARF Glossary](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md) |
+| **WUA** | Wallet Unit Attestation | [ARF Topic 9](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#topic-9---wallet-unit-attestation-wua) |
+| **PID** | Person Identification Data | [ARF Glossary](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md) |
+| **SUA** | Strong User Authentication (attestation type for payments) | [ARF Topic 20](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#topic-20---strong-user-authentication-sua) |
+| **KB-JWT** | Key Binding JWT (signature proving possession) | [SD-JWT-VC Spec](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#name-key-binding-jwt) |
 
 ### Authentication Factor Mapping
 
