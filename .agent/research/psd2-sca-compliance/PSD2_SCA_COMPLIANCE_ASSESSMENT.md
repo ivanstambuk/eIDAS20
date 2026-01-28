@@ -7103,6 +7103,193 @@ The following gaps have been identified across the assessment. Items are categor
 
 ---
 
+## 9.4 Gap Controllability Analysis
+
+> **Purpose**: This section categorizes gaps by **who can address them**, helping PSPs understand:
+> - What they **must implement** themselves
+> - What they **depend on the wallet** for (and cannot fix)
+> - What requires **ecosystem-level changes** (neither party alone can fix)
+
+### 9.4.1 Wallet-Controlled Gaps (PSP Cannot Fix)
+
+These gaps reside within the **Wallet/OS/Device layer**. PSPs must **rely on wallet certification** and cannot directly implement solutions.
+
+| Gap ID | Article | Description | Why PSP Cannot Fix | PSP Mitigation |
+|--------|---------|-------------|-------------------|----------------|
+| **K-1** | Art. 6(1) | PIN entropy guidance not specified | Wallet controls PIN UI/validation | Request via SCA Attestation Rulebook |
+| **K-2** | Art. 6(1) | PIN complexity rules vary by wallet | OS/Wallet enforces PIN policy | Rely on wallet certification |
+| **K-3** | Art. 6(2) | Secure keyboard implementation | OS-level secure input | Require certified wallet |
+| **K-4** | Art. 6(2) | Screen capture prevention | OS API (FLAG_SECURE) | Mandate in attestation requirements |
+| **I-1** | Art. 8(1) | FAR threshold not in attestation | Biometric is OS-controlled | Rely on FIDO/OS certification |
+| **I-2** | Art. 8(1) | Multi-modal fusion rules not defined | Wallet/OS decides fusion | Accept wallet's biometric choice |
+| **I-3** | Art. 8(2) | PAD level not disclosed | OS biometric implementation | Require FIDO L2+ certification |
+| **I-4** | Art. 8(2) | Biometric re-enrollment behavior | OS-level enrollment | Document in onboarding flow |
+| **P-1** | Art. 7(1) | Hardware security level varies | Device capability | Define minimum in attestation |
+| **P-2** | Art. 7(1) | Key attestation format differs | Android vs iOS APIs | Abstract via WUA |
+| **P-3** | Art. 7(2) | SE fallback for devices without SE | Device hardware limitation | Reject devices without SE (policy) |
+| **SC-1** | Art. 23 | PIN entropy during creation | Wallet enrollment UI | Specify in SCA Attestation Rulebook |
+| **SC-2** | Art. 23 | Key algorithm flexibility | Wallet/WSCD implementation | Mandate specific algorithms |
+| **SC-3** | Art. 23 | Fallback for devices without SE | Hardware limitation | Policy: require SE-capable devices |
+| **DP-1** | Art. 6(2) | Secure display implementation | Wallet controls display | Require wallet certification |
+| **DP-2** | Art. 6(2) | Overlay attack detection | OS/Wallet security feature | Mandate RASP in wallet requirements |
+| **BR-1** | Art. 8(2) | PAD implementation details | OS biometric system | Rely on FIDO certification |
+| **BR-2** | Art. 8(2) | Liveness detection quality | Device sensors/algorithms | Require FAR < 1:50,000 in policy |
+| **RP-1** | Art. 7(2) | Key export prevention | WSCD/SE hardware | Verify hardware attestation |
+| **RP-2** | Art. 7(2) | Cloning detection mechanism | Wallet/device integrity | Check WUA validity |
+| **MI-1** | Art. 22(2)(a) | PIN masking implementation | Wallet UI layer | Included in wallet certification |
+| **MI-2** | Art. 22(2)(a) | Secure entry keyboard | OS-level feature | Require certified secure keyboard |
+| **SPE-1** | Art. 22(4) | Secure processing environment | Device hardware (SE/TEE) | Mandate hardware security level |
+| **SPE-2** | Art. 22(4) | Certification level required | Wallet Provider certification | Require L2+ in attestation policy |
+
+**PSP Action**: For wallet-controlled gaps, PSPs should:
+1. **Specify requirements** in their SCA Attestation acceptance policy
+2. **Require certification** (FIDO L2+, Common Criteria, etc.)
+3. **Verify attestations** contain required security claims
+4. **Document reliance** on wallet certification for audit purposes
+
+---
+
+### 9.4.2 PSP-Addressable Gaps (PSP Must Implement)
+
+These gaps are **within PSP control** and must be addressed through PSP implementation.
+
+| Gap ID | Article | Description | PSP Implementation Required | Priority |
+|--------|---------|-------------|----------------------------|----------|
+| **TM-1** | Art. 2(1) | Transaction monitoring scope | Implement monitoring for wallet transactions | 🔴 Critical |
+| **TM-2** | Art. 2(1) | Real-time vs batch analysis | Define monitoring architecture | 🟡 High |
+| **TM-3** | Art. 2(2) | Risk factor weighting | Implement ML/rule-based risk scoring | 🟡 High |
+| **TM-4** | Art. 2(2) | Wallet-specific risk signals | Define which wallet signals to consume | 🟡 High |
+| **RF-1** | Art. 2(2) | Risk factor (a-e) implementation | Map PSD2 factors to monitoring rules | 🟡 High |
+| **RF-2** | Art. 2(2) | Historical pattern analysis | Build transaction history analytics | 🟡 High |
+| **ST-1** | Art. 4(3)(d) | Session timeout implementation | Enforce timeout in PSP backend | 🟡 High |
+| **ST-2** | Art. 4(3)(d) | Inactivity detection | Monitor session activity | 🟡 High |
+| **AF-1** | Art. 3(2) | TRA audit scope for wallet PSPs | Define audit scope for wallet integration | 🟡 High |
+| **AF-2** | Art. 3(2) | Fraud rate computation | Implement fraud rate calculation | 🟡 High |
+| **AR-1** | Art. 3(3) | Audit report template | Create standardized report format | 🟡 High |
+| **AR-2** | Art. 3(3) | Wallet certification reliance | Document in audit reports | 🟡 High |
+| **DR-1** | Art. 27(a) | Revocation propagation | Implement status update mechanism | 🔴 Critical |
+| **DR-2** | Art. 27(a) | Status publication | Deploy Status List 2021 endpoint | 🟡 High |
+| **PS-1** | Art. 27(c) | Backend verification check | Implement attestation status check | 🔴 Critical |
+| **PS-2** | Art. 27(c) | Retention period | Define 5+ year retention policy | 🟡 High |
+| **UA-1** | Art. 24 | KYC method selection | Define acceptable KYC for wallet enrollment | 🟡 High |
+| **UA-4** | Art. 24 | Bootstrap SCA requirements | Define minimum SCA for bootstrapping | 🟡 High |
+| **RN-1** | Art. 26 | Attestation validity period | Define renewal policy | 🟡 High |
+| **RN-2** | Art. 26 | Key rotation policy | Define rotation triggers | 🟢 Medium |
+| **SD-3** | Art. 25 | Delivery confirmation | Implement acknowledgment flow | 🟢 Medium |
+| **SMR-1** | Art. 3(1) | Security audit framework | Establish audit procedures | 🔴 Critical |
+| **SMR-2** | Art. 3(1) | Wallet certification reliance | Document certification as evidence | 🟡 High |
+
+**PSP Action**: These gaps require direct PSP implementation:
+1. **Backend systems**: Monitoring, revocation, status publication
+2. **Policies**: KYC, timeout, renewal, retention
+3. **Documentation**: Audit reports, certification reliance
+4. **Integration**: Consume wallet signals, verify attestations
+
+---
+
+### 9.4.3 Ecosystem/Specification Gaps (Neither Party Alone Can Fix)
+
+These gaps require **industry-level changes** to specifications, standards, or regulatory guidance.
+
+| Gap ID | Article | Description | Blocked By | Resolution Path |
+|--------|---------|-------------|------------|-----------------|
+| **GAP-03** | Art. 5(1)(b) | mDOC lacks `transaction_data_hashes` | TS12 specification | Await TS12 v1.1 or mDOC extension |
+| **GAP-04** | Art. 5(1)(c) | TPP verification flow incomplete | TS12 specification | GitHub Discussion #439 |
+| **GAP-05** | Art. 97(1) | Missing `urn:eudi:sca:consents:1` | TS12 specification | Requested by ETPPA |
+| **BP-1** | Art. 5(3)(a) | Batch payment schema not defined | TS12 specification | Request TS12 extension |
+| **BP-2** | Art. 5(3)(a) | Corporate payment use cases | PSD2/PSR scope | Await regulatory guidance |
+| **BAC-1** | Art. 5(3)(b) | Batch authentication code method | TS12 specification | Propose Merkle tree approach |
+| **BAC-2** | Art. 5(3)(b) | H2H exemption not formalized | EBA guidance needed | Monitor EBA Q&A |
+| **DL-1** | Art. 5(1) | Display duration not mandated | SCA Attestation Rulebook | Propose 3s minimum |
+| **DL-2** | Art. 5(1) | WYSIWYS enforcement mechanism | Wallet certification scope | Include in CC profile |
+| **FD-2** | Art. 4(2)(a) | `amr` values not standardized | IANA/OIDF coordination | Participate in standards |
+| **CR-2** | Art. 4(2)(b) | `jti` uniqueness verification guidance | TS12/EBA guidance | Document best practices |
+| **FR-2** | Art. 4(2)(c) | Trust framework discovery | EUDI ecosystem rollout | Await trust registry |
+| **SP-2** | Art. 4(3)(c) | Cross-device session binding | OID4VP specification | Await HAIP profile |
+| **IND-3** | Art. 9(1) | Factor independence verification | Certification scope | Define in CC profile |
+| **MPD-2** | Art. 9(2) | App isolation requirements | OS/Platform standards | Reference Android/iOS docs |
+| **KM-2** | Art. 22(3) | Key lifecycle documentation format | Industry standard needed | Reference NIST 800-57 |
+| **UA-2** | Art. 24 | PID-based enrollment flow | EUDI ecosystem rollout | Await OID4VCI+OID4VP combined spec |
+| **UA-3** | Art. 24 | Device attestation format variance | Android vs iOS divergence | Abstract via WUA standard |
+| **DR-4** | Art. 27(a) | Multi-party revocation protocol | Ecosystem coordination | Define in EUDI governance |
+| **PS-4** | Art. 27(c) | Cross-PSP revocation notification | Ecosystem protocol needed | Propose federated status |
+| **AR-4** | Art. 3(3) | Cross-border audit cooperation | Regulatory harmonization | EBA/ECB coordination |
+| **AF-3** | Art. 3(2) | CA request frequency undefined | Regulatory discretion | Accept national variation |
+
+**PSP Action**: For ecosystem gaps, PSPs should:
+1. **Monitor specifications** (TS12, OID4VP, etc.) for updates
+2. **Participate in industry bodies** (EUDI working groups, OIDF)
+3. **Document workarounds** for current limitations
+4. **Accept residual risk** where no solution exists
+
+---
+
+### 9.4.4 Summary: Gap Controllability Matrix
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        GAP CONTROLLABILITY MATRIX                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  WALLET-CONTROLLED (PSP Cannot Fix)                                 │   │
+│  │  ════════════════════════════════════                                │   │
+│  │  • PIN/Biometric UI and validation                                  │   │
+│  │  • Secure keyboard/display                                          │   │
+│  │  • Hardware security (SE/TEE)                                       │   │
+│  │  • Key generation and storage                                       │   │
+│  │  • PAD/Liveness detection                                           │   │
+│  │                                                                     │   │
+│  │  PSP STRATEGY: Require certification, verify attestations           │   │
+│  │  COUNT: ~24 gaps                                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  PSP-ADDRESSABLE (PSP Must Implement)                               │   │
+│  │  ════════════════════════════════════                                │   │
+│  │  • Transaction monitoring                                           │   │
+│  │  • Risk scoring and TRA                                             │   │
+│  │  • Session management                                               │   │
+│  │  • Revocation and status publication                                │   │
+│  │  • Audit framework and documentation                                │   │
+│  │  • KYC and enrollment policies                                      │   │
+│  │                                                                     │   │
+│  │  PSP STRATEGY: Build systems, define policies, implement controls   │   │
+│  │  COUNT: ~23 gaps                                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  ECOSYSTEM GAPS (Neither Party Alone)                               │   │
+│  │  ════════════════════════════════════                                │   │
+│  │  • TS12 specification extensions                                    │   │
+│  │  • mDOC dynamic linking                                             │   │
+│  │  • Cross-PSP revocation                                             │   │
+│  │  • Trust framework discovery                                        │   │
+│  │  • Regulatory harmonization                                         │   │
+│  │                                                                     │   │
+│  │  PSP STRATEGY: Monitor, participate in standards, accept residual   │   │
+│  │  COUNT: ~22 gaps                                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 9.4.5 Compliance Implications for PSPs
+
+| Category | PSP Liability | Audit Evidence | Risk Acceptance |
+|----------|---------------|----------------|-----------------|
+| **Wallet-Controlled** | Limited (if certified wallet used) | Wallet certification + PSP acceptance policy | Residual risk documented |
+| **PSP-Addressable** | Full | Implementation evidence | Must remediate |
+| **Ecosystem** | Shared/Limited | Industry participation + workarounds | Documented limitation |
+
+**Key Insight**: For **Wallet-Controlled gaps**, PSPs are **not non-compliant** if they:
+1. Use a **certified wallet** (FIDO L2+, Common Criteria, etc.)
+2. **Document their reliance** on wallet certification
+3. **Verify attestations** contain required security claims
+4. **Include this in audit reports** as evidence of due diligence
+
+
+
 # 10. Recommendations for SCA Attestation Rulebook
 
 The following recommendations should be incorporated into future SCA Attestation Rulebooks:
