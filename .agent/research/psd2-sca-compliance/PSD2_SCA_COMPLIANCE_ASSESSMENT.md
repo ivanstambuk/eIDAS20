@@ -761,16 +761,18 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 | **No incident response** | Create breach response procedure |
 | **Undocumented algorithms** | Specify all cryptographic choices |
 
-##### Reference Implementation Evidence
+##### Documentation Requirements (Non-Code)
 
-| Actor | Documentation Artifact |
+► **Note**: Article 22(3) requires documentation, not implementation. These are compliance artifacts, not reference implementation code.
+
+| Actor | Required Documentation |
 |-------|----------------------|
 | **PSP** | SCA Attestation issuance procedure |
-| **PSP** | Key ceremony records |
+| **PSP** | Key ceremony records (if PSP-issued) |
 | **PSP** | Certificate management policy |
-| **Wallet Provider** | WSCD security evaluation report |
-| **Wallet Provider** | Key generation audit log specification |
-| **OS Vendor** | SE/StrongBox security certification |
+| **Wallet Provider** | WSCD security evaluation report (referenced via certification) |
+| **OS Vendor** | SE/StrongBox security certification (CC, FIPS) |
+
 
 ##### Gap Analysis: Key Management Documentation
 
@@ -2412,11 +2414,12 @@ The `amr` (Authentication Methods References) claim in KB-JWT is the **only elem
 
 | Platform | Protection Mechanism | Source |
 |----------|---------------------|--------|
-| **iOS** | PIN validated by WSCD, never in JWT | `LAContext` validates, returns boolean |
-| **iOS** | Private key operations in Secure Enclave | `SecKeyCreateSignature` — key never leaves SE |
-| **Android** | PIN validated by cryptographic comparison | `Cipher.doFinal` with AES-GCM in Keystore |
-| **Android** | Private key operations in StrongBox/TEE | `Signature.sign()` — key never in app memory |
-| **Both** | `amr` claim contains method names only | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) |
+| **iOS** | PIN validation | [`KeychainPinStorageProvider.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift) — Keychain-backed comparison |
+| **iOS** | Key operations | Secure Enclave (via wallet-core SDK) — key never exported |
+| **Android** | PIN validation | [`CryptoController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/CryptoController.kt#L99-L121) (L99-121) — AES-GCM with Keystore key |
+| **Android** | Key operations | StrongBox/TEE (via wallet-core SDK) — key never in app memory |
+| **Both** | `amr` claim | Contains method names only (no factor values) — [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) |
+
 
 ##### Gap Analysis: Factor Derivation Protection
 
@@ -2601,13 +2604,14 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 
 ##### Reference Implementation Evidence
 
-| Platform | Mechanism | Evidence |
-|----------|-----------|----------|
-| **iOS** | Random k from Secure Enclave | `SecKeyCreateSignature` uses SE's hardware RNG |
-| **iOS** | jti generation | `UUID().uuidString` — system UUID v4 generator |
-| **Android** | Random k from StrongBox/TEE | `Signature.sign()` with hardware Keystore |
-| **Android** | jti generation | `java.util.UUID.randomUUID()` — crypto-secure |
-| **Both** | Nonce from RP | `nonce` claim in authorization request |
+| Platform | Mechanism | Source |
+|----------|-----------|--------|
+| **iOS** | UUID generation | System `UUID()` — crypto-secure |
+| **iOS** | Secure random | Secure Enclave hardware RNG (via wallet-core SDK) |
+| **Android** | Code verifier | [`CryptoController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/CryptoController.kt#L91-L97) (L91-97) — `SecureRandom.nextBytes()` |
+| **Android** | Signature nonce | Hardware Keystore RNG (via wallet-core SDK) |
+| **Both** | RP nonce | `nonce` claim bound from authorization request |
+
 
 ##### Gap Analysis: Code Re-generation Prevention
 
@@ -2798,14 +2802,17 @@ This public key is trusted because:
 2. The PSP issued it after wallet activation (identity-linked)
 3. The corresponding private key is in the user's WSCD
 
-##### Reference Implementation Evidence
+##### PSP Verification Procedure (RP-side)
 
-| Verification Step | iOS Implementation | Android Implementation |
-|-------------------|-------------------|----------------------|
-| **Attestation verification** | `SecTrustEvaluateWithError` | `TrustManagerFactory` |
-| **Signature verification** | `SecKeyVerifySignature` | `Signature.verify()` |
-| **Key extraction** | `JSONDecoder` for `cnf.jwk` | `JSONObject` parsing |
-| **Certificate chain** | `SecTrustCopyCertificateChain` | `X509Certificate[]` |
+► **Note**: These are PSP/RP-side operations, not wallet reference implementation code. The wallet produces the signed VP Token; the PSP verifies it.
+
+| Verification Step | Platform APIs | Purpose |
+|-------------------|---------------|---------|
+| **Attestation verification** | iOS: `SecTrustEvaluateWithError`, Android: `TrustManagerFactory` | Validate SCA Attestation from PSP |
+| **Signature verification** | iOS: `SecKeyVerifySignature`, Android: `Signature.verify()` | Verify KB-JWT signature |
+| **Key extraction** | JSON parsing of `cnf.jwk` | Extract public key for verification |
+| **Certificate chain** | Standard X.509 chain validation | Verify attestation issuer trust |
+
 
 ##### Threat Model: Forgery Attacks
 
@@ -3169,13 +3176,13 @@ TS12 §3.5 supports encrypted requests for additional protection:
 
 ##### Reference Implementation Evidence
 
-| Platform | Session Protection | Implementation |
-|----------|-------------------|----------------|
-| **iOS** | TLS enforcement | `NSAppTransportSecurity` requires TLS |
-| **iOS** | Certificate validation | `URLSession` default behavior |
-| **Android** | TLS enforcement | `NetworkSecurityConfig` |
-| **Android** | Certificate pinning | `network_security_config.xml` |
-| **Both** | Nonce/aud verification | OID4VP library validation |
+| Platform | Session Protection | Source |
+|----------|-------------------|--------|
+| **iOS** | TLS enforcement | iOS App Transport Security (ATS) default — cleartext blocked |
+| **iOS** | Session handling | [`RemoteSessionCoordinator.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-core/Sources/Coordinator/RemoteSessionCoordinator.swift) — presentation session management |
+| **Android** | TLS enforcement | [`network_security_config.xml`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/network-logic/src/main/res/xml/network_security_config.xml#L17-L19) — `cleartextTrafficPermitted="false"` |
+| **Both** | Nonce/aud binding | OID4VP library validates authorization request |
+
 
 ##### Threat Model: Session Attacks
 
@@ -3349,13 +3356,16 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 | **Token theft** | Stolen token used after timeout | Token invalidation on timeout | ✅ Mitigated |
 | **Timeout bypass** | Client-side only enforcement | Server-side mandatory | ✅ Mitigated |
 
-##### Reference Implementation Evidence
+##### Implementation Responsibility
 
-| Component | Implementation | Notes |
-|-----------|----------------|-------|
-| **Wallet** | Not applicable | Wallet does not manage PSP session |
-| **PSP Backend** | Session manager with 5-min TTL | Industry standard pattern |
-| **TS12** | Silent on timeout | Gap — should reference PSP obligation |
+► **Note**: Session timeout is a **PSP-side obligation** (Art. 4(3)(d)). The wallet's role is limited to local unlock timeout.
+
+| Component | Responsibility | Implementation |
+|-----------|----------------|----------------|
+| **Wallet** | Local unlock timeout | PIN/biometric re-prompt after inactivity |
+| **PSP Backend** | Session timeout (5 min inactivity) | Server-side session management |
+| **TS12** | Silent on timeout specifics | Gap — should reference PSP obligation |
+
 
 ##### Gap Analysis: Session Timeout
 
@@ -4420,14 +4430,17 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 | **No export** | Templates cannot be extracted via any API | ✅ iOS/Android |
 | **Match in SE** | Comparison happens inside secure hardware | ✅ iOS/Android |
 
-##### Reference Implementation Evidence
+##### OS-Level Biometric Protection
 
-| Platform | Component | Resistance Feature |
-|----------|-----------|-------------------|
-| **iOS** | LocalAuthentication | `LAPolicy.deviceOwnerAuthenticationWithBiometrics` enforces SE path |
-| **iOS** | Face ID | TrueDepth anti-spoofing (attention detection, 3D depth) |
-| **Android** | BiometricPrompt | `setAllowedAuthenticators(BIOMETRIC_STRONG)` enforces HW-backed |
-| **Android** | Biometric HAL 2.0+ | Hardware-backed anti-spoofing attestation |
+► **Note**: Biometric template storage and matching is handled entirely by the OS (iOS LocalAuthentication, Android BiometricManager). The wallet invokes system APIs; it never accesses templates directly.
+
+| Platform | Component | Protection |
+|----------|-----------|------------|
+| **iOS** | LocalAuthentication | `LAPolicy.deviceOwnerAuthenticationWithBiometrics` — Secure Enclave matching |
+| **iOS** | Face ID / Touch ID | Hardware anti-spoofing (depth sensing, attention detection) |
+| **Android** | BiometricPrompt | `BIOMETRIC_STRONG` — hardware-backed matching only |
+| **Android** | Biometric HAL 2.0+ | Hardware-attestable anti-spoofing |
+
 
 ##### Threat Model: Unauthorized Biometric Use
 
@@ -4747,15 +4760,18 @@ The EBA has clarified multi-purpose device requirements:
 
 ► **EBA Q&A 2018/4039**: "The RTS allows transactions and authentication to occur on the same device if all authenticating factors are adequately separated."
 
-##### Reference Implementation Evidence
+##### Platform Hardware Isolation
 
-| Platform | Component | Protection Mechanism |
+► **Note**: Multi-purpose device security relies on OS-level hardware isolation (Secure Enclave, StrongBox/TEE). The wallet leverages these via platform APIs and attestation services.
+
+| Platform | Component | Isolation Mechanism |
 |----------|-----------|---------------------|
-| **iOS** | Secure Enclave | Hardware-isolated crypto processor |
+| **iOS** | Secure Enclave | Hardware-isolated crypto processor, separate from main CPU |
 | **iOS** | App Attest | Apple-signed attestation of app integrity |
-| **Android** | StrongBox | Dedicated secure element (when available) |
-| **Android** | TEE | TrustZone-based isolation |
+| **Android** | StrongBox | Dedicated secure element (discrete chip when available) |
+| **Android** | TEE | TrustZone-based isolation for devices without StrongBox |
 | **Android** | Play Integrity | Google-signed device/app attestation |
+
 
 ##### Threat Model: Multi-Purpose Device Attacks
 
@@ -6591,15 +6607,18 @@ The EBA explicitly permits machine learning to enhance TRA:
 | **Payee reputation** | Merchant databases | PSP / scheme data |
 | **Velocity checks** | Transaction frequency | PSP-side analysis |
 
-##### Reference Implementation Evidence
+##### PSP-Side Risk Monitoring
 
-| Factor | PSP Implementation Pattern | Wallet Data Used |
-|--------|---------------------------|------------------|
-| **Compromised lists** | Query breach databases | None |
-| **Amount monitoring** | Rule engine thresholds | None |
-| **Fraud scenarios** | Threat intelligence + rules | WUA for device context |
-| **Malware detection** | Consume WUA attestation | `device_integrity`, `os_version` |
-| **Device logging** | App telemetry | WUA device properties |
+► **Note**: Transaction risk monitoring (Art. 2) is a **PSP obligation**. The wallet provides device context via WUA claims; risk decisions are made server-side.
+
+| Factor | PSP Responsibility | Wallet Data Used |
+|--------|-------------------|------------------|
+| **Compromised credential lists** | Query breach databases | None (PSP data) |
+| **Amount monitoring** | Rule engine thresholds | None (transaction context) |
+| **Fraud scenario detection** | Threat intelligence + ML | WUA `device_integrity` claim |
+| **Malware detection** | Consume WUA attestation | `os_version`, `app_attestation` |
+| **Behavioral analysis** | Transaction patterns | None (PSP data) |
+
 
 ##### Threat Model: Risk Factor Bypass
 
