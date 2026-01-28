@@ -5148,13 +5148,152 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 
 **Status**: ⚠️ Partial (Single Payee Only)
 
-**Context**: TS12 supports recurring payments to a single payee with:
-- `recurrence.number`: Count of payments
-- `mit_options.total_amount`: Total across all payments
+<details>
+<summary><strong>🔍 Deep-Dive: Batch Payment Dynamic Linking</strong></summary>
 
-**Gap**: Multi-payee batch (e.g., payroll) is NOT supported. TS12 has no `payees[]` array.
+##### Core Concept: Aggregate Authentication
 
-**Workaround**: For multi-payee batches, PSP must trigger individual SCA per payee or display summary ("Payroll: €X to Y employees").
+Article 5(3) addresses **two special cases** of dynamic linking:
+
+| Clause | Scenario | Authentication Requirement |
+|--------|----------|---------------------------|
+| **5(3)(a)** | Card pre-authorization (unknown final amount) | Auth code specific to **blocked amount** |
+| **5(3)(b)** | Batch/bulk payments (multiple payees) | Auth code specific to **total amount + all payees** |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     Batch Payment Dynamic Linking                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    BATCH PAYMENT STRUCTURE                          │   │
+│  │                                                                     │   │
+│  │   BATCH FILE                                                        │   │
+│  │   ══════════                                                        │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │ Payment 1: €1,000 → Employee A (IBAN: DE89...)               │ │   │
+│  │   │ Payment 2: €1,500 → Employee B (IBAN: FR76...)               │ │   │
+│  │   │ Payment 3: €2,000 → Employee C (IBAN: ES91...)               │ │   │
+│  │   │ ...                                                           │ │   │
+│  │   │ Payment N: €X → Employee N (IBAN: XXnn...)                   │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                              ▼                                      │   │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
+│  │   │                  AGGREGATE AUTH CODE                          │ │   │
+│  │   │                                                               │ │   │
+│  │   │   Hash = SHA256(                                              │ │   │
+│  │   │     total_amount: €100,000                                    │ │   │
+│  │   │     payee_count: 50                                           │ │   │
+│  │   │     payee_ids: [IBAN1, IBAN2, ..., IBAN50]                   │ │   │
+│  │   │   )                                                           │ │   │
+│  │   │                                                               │ │   │
+│  │   │   Signature = ECDSA(Hash, PrivateKey)                         │ │   │
+│  │   │                                                               │ │   │
+│  │   └───────────────────────────────────────────────────────────────┘ │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Corporate Use Cases
+
+| Use Case | Description | Batch Size |
+|----------|-------------|------------|
+| **Payroll** | Monthly salary payments to employees | 10-10,000+ |
+| **Supplier payments** | B2B invoice settlements | 10-500 |
+| **Pension disbursements** | Recurring pension to retirees | 100-100,000+ |
+| **Dividend payments** | Shareholder distributions | 100-1,000,000+ |
+| **Tax refunds** | Government-to-citizen | 1,000-10,000,000+ |
+
+##### The UX Challenge
+
+Displaying all payees for large batches is **impractical**:
+
+| Batch Size | Display Approach | User Experience |
+|------------|------------------|-----------------|
+| 1-10 payees | Individual list | ✅ Manageable |
+| 10-50 payees | Scrollable list | ⚠️ Tedious |
+| 50-500 payees | Summary + sample | ⚠️ Abstracted |
+| 500+ payees | Aggregate only | ⚠️ Trust-based |
+
+##### EBA Guidance on Batch Payments
+
+| Requirement | EBA Position |
+|-------------|--------------|
+| All payees must be included | Yes, in hash calculation |
+| All payees must be displayed | **No**, aggregate display acceptable |
+| Total amount must be shown | Yes, always visible |
+| User must explicitly consent | Yes, before signing |
+
+##### EUDI Wallet Current Support
+
+| Feature | TS12 v1.0 Support | Gap |
+|---------|-------------------|-----|
+| Single payee | ✅ Full | — |
+| Recurring payments (single payee) | ✅ `recurrence.*` | — |
+| Recurring with MIT | ✅ `mit_options` | — |
+| **Multi-payee batch** | ❌ None | **GAP** |
+| **Batch with aggregate hash** | ❌ None | **GAP** |
+
+##### Proposed Extension: Batch Payment Schema
+
+```json
+{
+  "transaction_data": {
+    "type": "batch_payment",
+    "batch_metadata": {
+      "total_amount": "100000.00",
+      "currency": "EUR",
+      "payee_count": 50,
+      "batch_reference": "PAYROLL-2026-01"
+    },
+    "payees_hash": "sha256:abc123...",
+    "display_summary": "Payroll: €100,000.00 to 50 employees"
+  },
+  "transaction_data_hashes": [
+    "sha256:def456..."
+  ]
+}
+```
+
+##### Integration with SCA Exemptions
+
+| Exemption (RTS) | Batch Applicability |
+|-----------------|---------------------|
+| **Art. 13 — Trusted Beneficiaries** | Batch payees on whitelist exempted from individual display |
+| **Art. 14 — Recurring Transactions** | Repeat batches to same payees exempted after first SCA |
+| **Art. 16 — Low-Value (Remote)** | Individual payments <€30 exempted (total <€100) |
+| **Art. 17 — Low-Value (Contactless)** | N/A for batch file payments |
+
+##### Security Considerations
+
+| Risk | Mitigation |
+|------|------------|
+| **Payee injection** | Hash includes all IBANs, any change invalidates |
+| **Amount manipulation** | Total in hash, signed by user |
+| **Truncated display** | User consents to aggregate, not individual |
+| **File tampering post-SCA** | Hash computed before display, verified at PSP |
+
+##### Gap Analysis: Batch Payment Support
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **BP-1** | TS12 lacks `payees[]` array for multi-payee batches | High | Extend TS12 with batch_payment type |
+| **BP-2** | No aggregate display guidance for wallets | Medium | Define UX for batch summary |
+| **BP-3** | Hash computation for large batches not specified | Medium | Merkle tree or flat hash guidance |
+| **BP-4** | Exemption integration (Art. 13/14) not documented | Medium | Cross-reference exemption applicability |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Batch Type Extension**: Define `batch_payment` transaction type in TS12
+2. **Payees Hash**: Specify how to compute hash over multiple payees (sorted IBANs)
+3. **Display Guidance**: Document aggregate display requirements ("N payees, €X total")
+4. **Exemption Cross-Reference**: Link to Art. 13/14 for trusted beneficiary batches
+5. **Merkle Tree Option**: For very large batches, allow Merkle root for efficiency
+6. **Corporate Channel**: Define separate flow for corporate batch processing
+
+</details>
 
 ---
 

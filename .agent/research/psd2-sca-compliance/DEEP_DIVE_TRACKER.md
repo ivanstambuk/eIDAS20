@@ -113,7 +113,7 @@ A real deep-dive must include **at least 3** of:
 | Art. 5(1)(c) | PSP verification before acceptance | ✅ Yes |
 | Art. 5(1)(d) | Auth code invalidation on change | ✅ Yes |
 | Art. 5(2) | Security measures (confidentiality, integrity, authenticity) | ✅ Yes |
-| Art. 5(3)(a) | Batch file payment exception intro | ❌ No |
+| Art. 5(3)(a) | Batch file payment exception intro | ✅ Yes |
 | Art. 5(3)(b) | Batch authentication code | ❌ No |
 
 ### Article 6 — Knowledge Elements
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 35 |
-| ❌ Not Done | 12 |
+| ✅ Done | 36 |
+| ❌ Not Done | 11 |
 | **Total** | 47 |
 
 ---
@@ -182,6 +182,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 22(3) | Deep-dive: Key lifecycle documentation, NIST 800-57 alignment, audit requirements, gaps KM-1 to KM-4 |
 | 2026-01-28 | Art. 22(4) | Deep-dive: Industry standards hierarchy, CC/FIPS/GlobalPlatform, routing security, gaps SPE-1 to SPE-4 |
 | 2026-01-28 | Art. 5(1) | Deep-dive: Four Pillars of dynamic linking, WYSIWYS principle, e2e flow, gaps DL-1 to DL-4 |
+| 2026-01-28 | Art. 5(3)(a) | Deep-dive: Batch payment architecture, corporate use cases, exemptions, gaps BP-1 to BP-4 |
 
 ---
 
