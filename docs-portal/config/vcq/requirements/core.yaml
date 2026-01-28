@@ -31,7 +31,7 @@ requirements:
       instructions, confidentiality, security measures, sub-processor conditions, 
       data subject request assistance, and audit rights.
     legalBasis:
-      regulation: 2016/679
+      regulation: "2016/679"
       article: Article 28
       paragraph: "3"
     legalText: |

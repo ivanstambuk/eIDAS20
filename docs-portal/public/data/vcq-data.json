@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T18:48:26.071Z",
+  "generatedAt": "2026-01-28T19:06:05.419Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1933,6 +1933,12 @@
           "article": "Article 30",
           "paragraph": "2(e)",
           "link": "/regulation/2022-2554#article-30"
+        },
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(h)",
+          "link": "/regulation/2016-679#article-28"
         }
       ],
       "legalBasis": {
@@ -1941,7 +1947,7 @@
         "paragraph": "2(e)"
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
-      "legalText": "The rights of the financial entity and, where applicable, the relevant \ncompetent authority in relation to access, inspection and audit of the \nICT third-party service provider.",
+      "legalText": "DORA: The rights of the financial entity and, where applicable, the relevant \ncompetent authority in relation to access, inspection and audit of the \nICT third-party service provider.\nGDPR: The processor shall make available to the controller all information \nnecessary to demonstrate compliance and allow for and contribute to audits.",
       "roles": [
         "relying_party",
         "issuer"
@@ -2115,6 +2121,12 @@
           "article": "Article 30",
           "paragraph": "2(f)",
           "link": "/regulation/2022-2554#article-30"
+        },
+        {
+          "regulation": "2016/679",
+          "article": "Article 33",
+          "paragraph": "2",
+          "link": "/regulation/2016-679#article-33"
         }
       ],
       "legalBasis": {
@@ -2123,7 +2135,7 @@
         "paragraph": "2(f)"
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
-      "legalText": "The obligation of the ICT third-party service provider to provide \nassistance in case of an ICT incident at no additional cost or at a \ncost that is determined ex-ante.",
+      "legalText": "DORA: The obligation of the ICT third-party service provider to provide \nassistance in case of an ICT incident at no additional cost.\nGDPR: The processor shall notify the controller without undue delay after \nbecoming aware of a personal data breach.",
       "roles": [
         "relying_party",
         "issuer"
@@ -2225,6 +2237,12 @@
           "article": "Article 30",
           "paragraph": "2(d)",
           "link": "/regulation/2022-2554#article-30"
+        },
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "2",
+          "link": "/regulation/2016-679#article-28"
         }
       ],
       "legalBasis": {
@@ -2233,7 +2251,7 @@
         "paragraph": "2(d)"
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
-      "legalText": "Provisions on the possibility, conditions and modalities of subcontracting \nby the ICT third-party service provider, and in particular for \nsubcontracting ICT services supporting critical or important functions.",
+      "legalText": "DORA: Provisions on the possibility, conditions and modalities of subcontracting \nby the ICT third-party service provider, and in particular for \nsubcontracting ICT services supporting critical or important functions.\nGDPR: The processor shall not engage another processor without prior specific \nor general written authorisation of the controller.",
       "roles": [
         "relying_party",
         "issuer"
@@ -2246,7 +2264,7 @@
       "linkedRCA": [],
       "deadline": "2025-01-17",
       "criticality": "high",
-      "obligation": "MUST",
+      "obligation": "MUST NOT",
       "_sourceFile": "ict.yaml"
     },
     {
@@ -6683,8 +6701,8 @@
       "low": 0
     },
     "byObligation": {
-      "MUST": 129,
-      "MUST NOT": 8,
+      "MUST": 128,
+      "MUST NOT": 9,
       "SHOULD": 7,
       "SHOULD NOT": 0,
       "MAY": 0

@@ -56,14 +56,24 @@ requirements:
       The contract must grant the financial entity (and its supervisory 
       authority) full rights of access, inspection, and audit of the ICT 
       third-party service provider.
+    # DEC-261 Rationale: DORA and GDPR independently require audit rights.
+    # When the ICT service involves personal data processing:
+    #   - DORA 30(2)(e): Audit rights for financial entity and supervisory authority
+    #   - GDPR 28(3)(h): Controller's right to audit and inspect the processor
+    # Both obligations apply independently to the same service relationship.
     legalBasis:
-      regulation: "2022/2554"
-      article: "Article 30"
-      paragraph: "2(e)"
+      - regulation: "2022/2554"
+        article: "Article 30"
+        paragraph: "2(e)"
+      - regulation: "2016/679"
+        article: "Article 28"
+        paragraph: "3(h)"
     legalText: |
-      The rights of the financial entity and, where applicable, the relevant 
+      DORA: The rights of the financial entity and, where applicable, the relevant 
       competent authority in relation to access, inspection and audit of the 
       ICT third-party service provider.
+      GDPR: The processor shall make available to the controller all information 
+      necessary to demonstrate compliance and allow for and contribute to audits.
     roles: [relying_party, issuer]
     productCategories: []
     scope: extended
@@ -159,14 +169,23 @@ requirements:
       The intermediary must notify the financial entity without undue delay 
       of any ICT-related incidents that may impact the service, enabling 
       the financial entity to fulfill its own incident reporting obligations.
+    # DEC-261 Rationale: DORA and GDPR independently require incident notification.
+    # When an ICT incident involves personal data breach:
+    #   - DORA 30(2)(f): ICT incident assistance/notification to financial entity
+    #   - GDPR 33(2): Processor must notify controller of personal data breach
+    # Both obligations arise independently and must be satisfied.
     legalBasis:
-      regulation: "2022/2554"
-      article: "Article 30"
-      paragraph: "2(f)"
+      - regulation: "2022/2554"
+        article: "Article 30"
+        paragraph: "2(f)"
+      - regulation: "2016/679"
+        article: "Article 33"
+        paragraph: "2"
     legalText: |
-      The obligation of the ICT third-party service provider to provide 
-      assistance in case of an ICT incident at no additional cost or at a 
-      cost that is determined ex-ante.
+      DORA: The obligation of the ICT third-party service provider to provide 
+      assistance in case of an ICT incident at no additional cost.
+      GDPR: The processor shall notify the controller without undue delay after 
+      becoming aware of a personal data breach.
     roles: [relying_party, issuer]
     productCategories: []
     scope: extended
@@ -222,14 +241,24 @@ requirements:
       supports critical or important functions, prior approval from the 
       financial entity is required. The subcontractor must meet equivalent 
       requirements.
+    # DEC-261 Rationale: DORA and GDPR independently require subcontracting controls.
+    # When a subcontractor also processes personal data:
+    #   - DORA 30(2)(d): Prior approval for ICT subcontracting of critical functions
+    #   - GDPR 28(2): Prior authorization for engaging sub-processors
+    # Both obligations arise independently when subcontractor handles personal data.
     legalBasis:
-      regulation: "2022/2554"
-      article: "Article 30"
-      paragraph: "2(d)"
+      - regulation: "2022/2554"
+        article: "Article 30"
+        paragraph: "2(d)"
+      - regulation: "2016/679"
+        article: "Article 28"
+        paragraph: "2"
     legalText: |
-      Provisions on the possibility, conditions and modalities of subcontracting 
+      DORA: Provisions on the possibility, conditions and modalities of subcontracting 
       by the ICT third-party service provider, and in particular for 
       subcontracting ICT services supporting critical or important functions.
+      GDPR: The processor shall not engage another processor without prior specific 
+      or general written authorisation of the controller.
     roles: [relying_party, issuer]
     productCategories: []
     scope: extended
