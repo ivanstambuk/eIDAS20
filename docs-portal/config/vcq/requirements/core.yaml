@@ -1,7 +1,7 @@
 schemaVersion: 1
 requirements:
   - id: VEND-CORE-001
-    category: contracts
+    category: usage
     requirement: Intermediaries shall not store data about the content of transactions
     explanation: |
       The no-storage mandate is the central privacy protection for wallet users 
@@ -70,19 +70,22 @@ requirements:
     criticality: high
   - id: VEND-CORE-004
     category: registration
-    requirement: Be registered as an intermediary with the competent supervisory authority
+    requirement: Register as a Relying Party indicating intermediary status
     explanation: |
-      Intermediaries acting on behalf of RPs must themselves register with 
-      Member State authorities. Registration establishes the legal basis for 
-      their operation and enables oversight.
+      Any entity acting as an intermediary must register as a Relying Party with 
+      Member State authorities according to Topic 27 requirements, while explicitly 
+      indicating its intent to act as an intermediary. This registration establishes 
+      the legal basis for operation, enables oversight, and allows the intermediary 
+      to obtain an access certificate containing its own name and unique ID.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: "5"
+      paragraph: "1"
     legalText: |
-      Member States shall publish the lists and shall make them available to 
-      all wallet providers and relying parties in a clearly identifiable and 
-      machine-readable way.
+      Where a relying party intends to rely upon European Digital Identity 
+      Wallets for the provision of public or private services by means of 
+      digital interaction, the relying party shall register in the Member 
+      State where it is established.
     arfReference:
       topic: Topic 52
       hlr: RPI_01
@@ -171,7 +174,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-009
-    category: usage
+    category: contracts
     requirement: Process personal data only on documented instructions from the RP
     explanation: |
       The vendor must not process wallet data for their own purposes. 
@@ -192,7 +195,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-010
-    category: usage
+    category: contracts
     requirement: Support data subject rights requests
     explanation: |
       The vendor must assist the RP in responding to data subject requests 
@@ -289,32 +292,6 @@ requirements:
     productCategories: []
     deadline: "2027-11-21"
     criticality: high
-  - id: VEND-CORE-015
-    category: registration
-    requirement: Register as a Relying Party indicating intermediary status
-    explanation: |
-      Any entity acting as an intermediary must register as a Relying Party 
-      according to Topic 27 requirements, while explicitly indicating its 
-      intent to act as an intermediary. This enables the intermediary to 
-      obtain an access certificate containing its own name and unique ID.
-    legalBasis:
-      regulation: 2014/910
-      article: Article 5b
-      paragraph: "1"
-    legalText: |
-      Where a relying party intends to rely upon European Digital Identity 
-      Wallets for the provision of public or private services by means of 
-      digital interaction, the relying party shall register in the Member 
-      State where it is established.
-    arfReference:
-      topic: Topic 52
-      hlr: RPI_01
-    roles: []
-    productCategories: []
-    linkedRCA:
-      - RP-REG-001
-    deadline: "2027-11-21"
-    criticality: critical
   - id: VEND-CORE-016
     category: registration
     requirement: Register each intermediated RP at the appropriate Registrar
