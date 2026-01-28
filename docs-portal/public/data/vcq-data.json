@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T23:39:44.530Z",
+  "generatedAt": "2026-01-28T23:46:23.472Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -600,7 +600,7 @@
       "legalText": "Where relying parties intend to rely upon European Digital Identity \nWallets, they shall identify themselves to the user.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_07"
+        "hlr": "RPI_06"
       },
       "roles": [],
       "productCategories": [],

@@ -227,7 +227,7 @@ requirements:
       Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 52
-      hlr: RPI_07
+      hlr: RPI_06
     roles: []
     productCategories: []
     linkedRCA:
