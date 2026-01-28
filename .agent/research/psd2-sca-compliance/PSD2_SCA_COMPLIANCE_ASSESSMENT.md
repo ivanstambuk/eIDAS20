@@ -2016,7 +2016,8 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 
 ---
 
-**Deep Dive: Trigger-to-URN Mapping**
+<details>
+<summary><strong>🔍 Deep-Dive: Trigger-to-URN Mapping</strong></summary>
 
 TS12 defines four standardized transaction types corresponding to the three PSD2 triggers:
 
@@ -2196,6 +2197,7 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 | **Art. 97(1)(b)** Payment | ✅ | [TS12 §4.3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#431-payment-confirmation) |
 | **Art. 97(1)(c)** High-risk | ✅ | [TS12 §4.3.2](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#432-login-and-risk-based-authentication) |
 
+</details>
 
 ---
 
@@ -5096,7 +5098,8 @@ Article 5 **builds upon** Article 4:
 
 ---
 
-**Deep Dive: The WYSIWYS Principle**
+<details>
+<summary><strong>🔍 Deep-Dive: The WYSIWYS Principle</strong></summary>
 
 "What You See Is What You Sign" (WYSIWYS) is a foundational security principle ensuring:
 
@@ -5119,6 +5122,8 @@ Article 5 **builds upon** Article 4:
 ```
 
 **EBA Position**: The EBA emphasizes that even with phishing-resistant authenticators, the display of transaction details in a **PSP-controlled environment** is crucial. A compromised application could mislead users about transaction details even if the authenticator signs correctly.
+
+</details>
 
 ---
 
@@ -5303,9 +5308,9 @@ For inclusive design, compliant Wallet implementations should support:
 
 **Status**: ✅ **Fully Supported** via cryptographic hash binding
 
----
 
-**Deep Dive: Cryptographic Binding Architecture**
+<details>
+<summary><strong>🔍 Deep-Dive: Cryptographic Binding Architecture</strong></summary>
 
 The binding between authentication code and transaction is achieved through a **hash-then-sign** mechanism:
 
@@ -5371,6 +5376,8 @@ The binding between authentication code and transaction is achieved through a **
               ECDSA Signature = Authentication Code
               Cryptographically bound to €150.00 + ACME Corp
 ```
+
+</details>
 
 ---
 
@@ -5496,7 +5503,8 @@ TS12 mandates that amount and payee are **prominently displayed**:
 
 ---
 
-**Deep Dive: PSP Verification Algorithm**
+<details>
+<summary><strong>🔍 Deep-Dive: PSP Verification Algorithm</strong></summary>
 
 The PSP receiving a VP Token with KB-JWT MUST perform the following verification steps:
 
@@ -5591,6 +5599,8 @@ def verify_sca_authentication(vp_token, original_request):
     
     return AuthCodeAccepted()
 ```
+
+</details>
 
 ---
 
@@ -5706,7 +5716,8 @@ For unauthorized transactions in the TPP flow:
 
 ---
 
-**Deep Dive: How Change Invalidation Works**
+<details>
+<summary><strong>🔍 Deep-Dive: How Change Invalidation Works</strong></summary>
 
 The guarantee is achieved through **cryptographic hash binding**:
 
@@ -5750,6 +5761,8 @@ The guarantee is achieved through **cryptographic hash binding**:
 | **Collision Resistance** | Attacker cannot find two different payloads with same hash | ✅ 128-bit security | Cannot forge matching transaction |
 | **Pre-image Resistance** | Attacker cannot reverse hash to find payload | ✅ 256-bit security | Cannot deduce transaction from leaked hash |
 | **Second Pre-image Resistance** | Given one payload, cannot find another with same hash | ✅ 128-bit security | Cannot substitute transactions |
+
+</details>
 
 ---
 
@@ -5840,7 +5853,8 @@ While `iat` (issued-at) is included in the KB-JWT, **TS12 does not mandate a max
 
 ---
 
-**Deep Dive: "What You See Is What You Sign" (WYSIWYS)**
+<details>
+<summary><strong>🔍 Deep-Dive: "What You See Is What You Sign" (WYSIWYS)</strong></summary>
 
 The EBA introduced dynamic linking specifically to prevent **social engineering attacks** where attackers manipulate what users see vs. what they sign. Art. 5(2)(b) requires that "the information displayed to the payer" maintains CIA **throughout all phases**.
 
@@ -5936,6 +5950,8 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 - Short transaction lifecycle (data only exists during approval flow)
 - Device-level encryption (FDE/FBE on iOS/Android)
 - WSCA/WSCD isolation protects signing keys, not transaction display data
+
+</details>
 
 ---
 
