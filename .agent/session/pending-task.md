@@ -3,8 +3,8 @@
 
 ## Current State
 
-- **Focus**: VCQ-ARF Harmonization - FULLY COMPLETE
-- **Status**: All tasks done ✅
+- **Focus**: VCQ-ARF Harmonization - **FULLY COMPLETE** ✅
+- **Status**: All tasks done, no pending work
 - **Phase**: Phase 4 + Cleanup Complete (DEC-260)
 
 ## Session Summary (2026-01-28)
@@ -40,10 +40,13 @@ Resolved all 32 multi-role HLRs that were flagged for manual review:
 
 ## Follow-up Tasks
 
-All VCQ-ARF tasks complete. Possible future enhancements:
-1. Show ARF HLR links in VCQ requirement details UI
-2. Add coverage dashboard widget to VCQ page
-3. Citation system enhancements
+**ALL COMPLETE** — VCQ-ARF work is wrapped up.
+
+| # | Task | Status |
+|---|------|--------|
+| 1 | ARF HLR links in VCQ UI | ✅ Done (DEC-261) |
+| 2 | Coverage dashboard widget | ❌ Skipped |
+| 3 | Citation system enhancements | ❌ Skipped (nothing concrete) |
 
 ## Quick Start
 

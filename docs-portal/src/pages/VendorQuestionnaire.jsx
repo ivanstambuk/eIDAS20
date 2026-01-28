@@ -1063,23 +1063,6 @@ export default function VendorQuestionnaire() {
         return filtered;
     }, [data, selectedRoles, selectedCategories, selectedSourceGroups]);
 
-    // Summary stats
-    const summaryStats = useMemo(() => {
-        const total = applicableRequirements.length;
-        let answered = 0, compliant = 0, nonCompliant = 0;
-
-        applicableRequirements.forEach(req => {
-            const answer = answers[req.id]?.value;
-            if (answer && answer !== 'pending') {
-                answered++;
-                if (answer === 'yes') compliant++;
-                if (answer === 'no') nonCompliant++;
-            }
-        });
-
-        return { total, answered, compliant, nonCompliant };
-    }, [applicableRequirements, answers]);
-
     // Export handlers (inline like RCA)
     const handleExportMarkdown = useCallback(() => {
         const roleLabels = selectedRoles.map(id => ORGANISATION_ROLES[id]?.label || id).join(', ');
@@ -1252,30 +1235,8 @@ export default function VendorQuestionnaire() {
             {/* Results Section */}
             {showResults && (
                 <>
-                    {/* Summary Panel */}
+                    {/* Summary Panel - minimal after DEC-250 removed status tracking */}
                     <div className="vcq-summary">
-                        <div className="vcq-summary-stats">
-                            <div className="vcq-summary-stat">
-                                <div className="vcq-summary-stat-value">{summaryStats.total}</div>
-                                <div className="vcq-summary-stat-label">Total</div>
-                            </div>
-                            <div className="vcq-summary-stat">
-                                <div className="vcq-summary-stat-value">{summaryStats.answered}</div>
-                                <div className="vcq-summary-stat-label">Answered</div>
-                            </div>
-                            <div className="vcq-summary-stat">
-                                <div className="vcq-summary-stat-value" style={{ color: '#22c55e' }}>
-                                    {summaryStats.compliant}
-                                </div>
-                                <div className="vcq-summary-stat-label">Compliant</div>
-                            </div>
-                            <div className="vcq-summary-stat">
-                                <div className="vcq-summary-stat-value" style={{ color: '#ef4444' }}>
-                                    {summaryStats.nonCompliant}
-                                </div>
-                                <div className="vcq-summary-stat-label">Non-Compliant</div>
-                            </div>
-                        </div>
                         <div className="vcq-summary-actions">
                             <button className="btn btn-secondary" onClick={() => setShowResults(false)}>
                                 ← Modify Selection
