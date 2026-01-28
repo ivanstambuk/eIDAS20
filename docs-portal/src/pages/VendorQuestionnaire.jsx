@@ -15,7 +15,7 @@
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
-import { LegalBasisLink } from '../components/LegalBasisLink';
+import { LegalBasisLink, LegalBasesLinks } from '../components/LegalBasisLink';
 import { exportToExcel } from '../utils/vcq/exportExcel';
 import './VendorQuestionnaire.css';
 
@@ -498,10 +498,10 @@ function SelectionSummary({ selectedRoles, selectedCategories, applicableTechSpe
 }
 
 // ============================================================================
-// ARF Reference Link Component
+// ARF Reference Link Component (DEC-261: Multi-HLR Support)
 // ============================================================================
 
-function ARFReferenceLink({ arfReference, arfData }) {
+function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     const [showPopover, setShowPopover] = useState(false);
     const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
     const triggerRef = useRef(null);
@@ -509,21 +509,24 @@ function ARFReferenceLink({ arfReference, arfData }) {
 
     if (!arfReference) return null;
 
-    const { topic, hlr } = arfReference;
-    const arfReq = arfData?.byHlrId?.[hlr];
-    const arfUrl = arfReq?.deepLink ||
-        'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
-    const topicTitle = arfReq?.topicTitle || topic;
-    const topicNumber = arfReq?.topicNumber || topic.replace('Topic ', '');
-    const specification = arfReq?.specification;
-    const notes = arfReq?.notes;
-    const isEmpty = arfReq?.isEmpty;
+    const { topic } = arfReference;
+    // Normalize hlr to array (supports both string and array)
+    const hlrIds = Array.isArray(arfReference.hlr) ? arfReference.hlr : [arfReference.hlr];
+
+    // Get data for all HLRs
+    const hlrDataList = hlrIds.map(hlrId => ({
+        id: hlrId,
+        data: arfData?.byHlrId?.[hlrId] || null
+    }));
+
+    const visibleHlrs = hlrDataList.slice(0, maxVisible);
+    const hiddenCount = hlrDataList.length - maxVisible;
 
     const handleMouseEnter = () => {
         if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
         if (triggerRef.current) {
             const rect = triggerRef.current.getBoundingClientRect();
-            const popoverHeight = 200;
+            const popoverHeight = 250;
             const showBelow = rect.top < popoverHeight + 20;
             setPopoverPosition({
                 top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
@@ -537,61 +540,85 @@ function ARFReferenceLink({ arfReference, arfData }) {
         hideTimeoutRef.current = setTimeout(() => setShowPopover(false), 150);
     };
 
-    return (
-        <span className="vcq-arf-wrapper">
+    // Render a single HLR badge
+    const renderHlrBadge = (hlrId, hlrData, showTopicHint = true) => {
+        const arfUrl = hlrData?.deepLink ||
+            'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
+        const topicNumber = hlrData?.topicNumber || topic?.replace('Topic ', '') || '';
+        const isEmpty = hlrData?.isEmpty;
+
+        return (
             <a
-                ref={triggerRef}
+                key={hlrId}
                 href={arfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
-                title={specification ? specification.substring(0, 200) + '...' : `View ${topic} in ARF`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                title={hlrData?.specification?.substring(0, 200) || `View ${hlrId} in ARF`}
             >
                 <span className="vcq-arf-icon">📐</span>
-                <span className="vcq-arf-ref">{hlr}</span>
-                <span className="vcq-arf-topic">(Topic {topicNumber})</span>
+                <span className="vcq-arf-ref">{hlrId}</span>
+                {showTopicHint && topicNumber && (
+                    <span className="vcq-arf-topic">(Topic {topicNumber})</span>
+                )}
             </a>
-            {showPopover && arfReq && (
+        );
+    };
+
+    return (
+        <span className="vcq-arf-wrapper" ref={triggerRef}>
+            {/* Visible badges */}
+            <span className="vcq-arf-badges">
+                {visibleHlrs.map(({ id, data }) => renderHlrBadge(id, data, hlrDataList.length === 1))}
+                {hiddenCount > 0 && (
+                    <span
+                        className="vcq-arf-more"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        +{hiddenCount}
+                    </span>
+                )}
+            </span>
+
+            {/* Popover showing all HLRs */}
+            {showPopover && hiddenCount > 0 && (
                 <div
-                    className="vcq-arf-popover"
+                    className="vcq-arf-popover vcq-arf-popover-multi"
                     style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
                     onMouseEnter={() => hideTimeoutRef.current && clearTimeout(hideTimeoutRef.current)}
                     onMouseLeave={() => setShowPopover(false)}
                 >
                     <div className="vcq-arf-popover-header">
-                        <span className="vcq-arf-popover-id">{hlr}</span>
-                        <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
+                        <span className="vcq-arf-popover-id">📐 {hlrDataList.length} ARF References</span>
+                        {topic && <span className="vcq-arf-popover-topic">{topic}</span>}
                     </div>
-                    <div className="vcq-arf-popover-title">{topicTitle}</div>
-                    {isEmpty ? (
-                        <div className="vcq-arf-popover-empty">
-                            This HLR slot is reserved but not yet populated in ARF.
-                        </div>
-                    ) : (
-                        <>
-                            <div className="vcq-arf-popover-spec">
-                                {specification?.length > 300 ? specification.substring(0, 300) + '...' : specification}
-                            </div>
-                            {notes && (
-                                <div className="vcq-arf-popover-notes">
-                                    <strong>Note:</strong> {notes.substring(0, 150)}...
-                                </div>
-                            )}
-                        </>
-                    )}
-                    <a
-                        href={arfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="vcq-arf-popover-action"
-                    >View in ARF →</a>
+                    <div className="vcq-arf-popover-list">
+                        {hlrDataList.map(({ id, data }) => {
+                            const arfUrl = data?.deepLink || '#';
+                            return (
+                                <a
+                                    key={id}
+                                    href={arfUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="vcq-arf-popover-item"
+                                >
+                                    <span className="vcq-arf-popover-item-id">{id}</span>
+                                    <span className="vcq-arf-popover-item-spec">
+                                        {data?.specification?.substring(0, 80) || 'No specification'}
+                                        {data?.specification?.length > 80 ? '...' : ''}
+                                    </span>
+                                </a>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
         </span>
     );
 }
+
 
 // ============================================================================
 // Summary View Component
@@ -782,13 +809,14 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                     </span>
                                                 </td>
                                                 <td className="col-legal">
-                                                    {req.legalBasis && (
-                                                        <LegalBasisLink legalBasis={req.legalBasis} regulationsIndex={regulationsIndex} />
+                                                    {/* DEC-261: Multi-article support via legalBases array */}
+                                                    {req.legalBases && req.legalBases.length > 0 && (
+                                                        <LegalBasesLinks legalBases={req.legalBases} regulationsIndex={regulationsIndex} />
                                                     )}
                                                     {req.arfReference && (
                                                         <ARFReferenceLink arfReference={req.arfReference} arfData={arfData} />
                                                     )}
-                                                    {!req.legalBasis && !req.arfReference && (
+                                                    {(!req.legalBases || req.legalBases.length === 0) && !req.arfReference && (
                                                         <span className="vcq-no-basis">—</span>
                                                     )}
                                                 </td>

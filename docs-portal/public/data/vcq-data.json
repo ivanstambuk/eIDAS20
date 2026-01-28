@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T15:33:42.618Z",
+  "generatedAt": "2026-01-28T18:48:26.071Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -275,6 +275,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Intermediaries shall not store data about the content of transactions",
       "explanation": "The no-storage mandate is the central privacy protection for wallet users \nwhen interacting through intermediaries. Vendors acting on behalf of RPs \nare deemed to be relying parties themselves and must not retain any data \nfrom wallet presentations beyond what is strictly necessary for immediate \ntransaction completion.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -303,6 +311,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Implement a Data Processing Agreement meeting GDPR Article 28 requirements",
       "explanation": "When intermediaries process personal data on behalf of the RP, they act as \ndata processors. A written contract (DPA) must exist specifying processing \ninstructions, confidentiality, security measures, sub-processor conditions, \ndata subject request assistance, and audit rights.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -331,6 +347,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Provide audit rights to the Relying Party",
       "explanation": "The RP must be able to verify the vendor's compliance with processing \ninstructions and security requirements. This includes rights to conduct \naudits and inspections, or to mandate that an independent auditor \nperforms such verification.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(h)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -357,6 +381,14 @@
       "categoryIcon": "📋",
       "requirement": "Be registered as an intermediary with the competent supervisory authority",
       "explanation": "Intermediaries acting on behalf of RPs must themselves register with \nMember State authorities. Registration establishes the legal basis for \ntheir operation and enables oversight.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "5",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -389,6 +421,14 @@
       "categoryIcon": "📋",
       "requirement": "Maintain a valid Relying Party Access Certificate",
       "explanation": "Intermediaries must obtain and maintain access certificates from a \nnotified Access Certificate Authority. This certificate authenticates \nthe intermediary to wallet units and enables trust verification.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 8",
+          "paragraph": "1",
+          "link": "/regulation/2025-848#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Article 8",
@@ -418,6 +458,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement appropriate technical and organizational security measures",
       "explanation": "Vendors must implement security measures appropriate to the risk, \nincluding encryption, pseudonymization, confidentiality assurance, \navailability and resilience, and regular testing.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 32",
+          "paragraph": "1",
+          "link": "/regulation/2016-679#article-32"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 32",
@@ -446,6 +494,14 @@
       "categoryIcon": "🔒",
       "requirement": "Notify the RP of data breaches without undue delay",
       "explanation": "When a personal data breach occurs at the intermediary, they must \nnotify the RP (as controller) without undue delay so the RP can \nfulfill its obligations to supervisory authorities and data subjects.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 33",
+          "paragraph": "2",
+          "link": "/regulation/2016-679#article-33"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 33",
@@ -472,6 +528,14 @@
       "categoryIcon": "🔒",
       "requirement": "Ensure personnel authorized to process data are bound by confidentiality",
       "explanation": "All staff with access to wallet transaction data must be contractually \nor legally bound to maintain confidentiality.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(b)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -498,6 +562,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Process personal data only on documented instructions from the RP",
       "explanation": "The vendor must not process wallet data for their own purposes. \nAll processing must be based on the RP's documented instructions, \nincluding with regard to transfers of data to third countries.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(a)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -526,6 +598,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Support data subject rights requests",
       "explanation": "The vendor must assist the RP in responding to data subject requests \n(access, rectification, erasure, restriction, portability, objection) \nto the extent the vendor has relevant data.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(e)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -552,6 +632,14 @@
       "categoryIcon": "👁️",
       "requirement": "Display both intermediary and RP identity to wallet users",
       "explanation": "When requesting data from wallets, the intermediary must ensure that \nwallet users can see both their own identity and the identity of the \nRP on whose behalf they are acting. This enables informed consent.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "8",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -584,6 +672,14 @@
       "categoryIcon": "👁️",
       "requirement": "Inform the RP of any legal requirement to process data beyond instructions",
       "explanation": "If the vendor is legally required (e.g., by law enforcement) to process \ndata beyond the RP's instructions, they must inform the RP before doing \nso (unless prohibited by law from disclosing).",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(a)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -609,6 +705,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Obtain RP authorization before engaging sub-processors",
       "explanation": "The vendor must not engage another processor (sub-processor) without \nprior written authorization from the RP. This can be specific or general \nauthorization with notification of changes.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "2",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -635,6 +739,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Delete or return personal data at end of contract",
       "explanation": "Upon termination of the service contract, the vendor must delete or \nreturn all personal data to the RP and certify deletion, unless EU or \nMember State law requires storage.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 28",
+          "paragraph": "3(g)",
+          "link": "/regulation/2016-679#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 28",
@@ -661,6 +773,14 @@
       "categoryIcon": "📋",
       "requirement": "Register as a Relying Party indicating intermediary status",
       "explanation": "Any entity acting as an intermediary must register as a Relying Party \naccording to Topic 27 requirements, while explicitly indicating its \nintent to act as an intermediary. This enables the intermediary to \nobtain an access certificate containing its own name and unique ID.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -693,6 +813,14 @@
       "categoryIcon": "📋",
       "requirement": "Register each intermediated RP at the appropriate Registrar",
       "explanation": "The intermediary must register each RP it acts on behalf of at a \nRegistrar in the Member State where that RP is established. If the \nRegistrar issues registration certificates, the intermediary must \nobtain a certificate for each registered intended use.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 5",
+          "paragraph": "1-3",
+          "link": "/regulation/2025-848#article-5"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Article 5",
@@ -725,6 +853,14 @@
       "categoryIcon": "📋",
       "requirement": "Provide legal evidence of RP relationship when registering",
       "explanation": "When registering an intermediated RP, the intermediary must provide \nlegally valid evidence (e.g., a contract) that the RP will use the \nintermediary's services. The Registrar must verify this evidence \nbefore registering the relationship.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 6",
+          "paragraph": "3-4",
+          "link": "/regulation/2025-848#article-6"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Article 6",
@@ -757,6 +893,14 @@
       "categoryIcon": "🔍",
       "requirement": "Perform verification of attestations as agreed with RP",
       "explanation": "The intermediary must verify the authenticity, revocation status, \ndevice binding, and user binding of PIDs and attestations received \nfrom wallet units, as well as wallet unit authenticity, according to \nwhat has been agreed with the Relying Party.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "9",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -789,6 +933,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement TS12 for PSD2 Strong Customer Authentication when processing payment transactions",
       "explanation": "Payment Service Providers (PSPs) using EUDI Wallet for Strong Customer \nAuthentication must implement ARF Technical Specification 12 (Electronic \nPayments over SCA). TS12 defines how the wallet's cryptographic binding, \ndynamic linking, and attestation mechanisms satisfy PSD2 RTS requirements \nfor authentication elements (knowledge, possession, inherence), independence \nof elements, and transaction linking.",
+      "legalBases": [
+        {
+          "regulation": "2018/389",
+          "article": "Article 4",
+          "paragraph": "1-3",
+          "link": "/regulation/2018-389#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2018/389",
         "article": "Article 4",
@@ -821,6 +973,14 @@
       "categoryIcon": "🌐",
       "requirement": "Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets",
       "explanation": "Attestation Issuers must implement the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in Technical Specification 6. \nThis ensures interoperability with all compliant EUDI Wallet implementations \nacross Member States. The protocol covers credential offer, authorization, \ntoken exchange, and credential endpoint interactions.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 5",
+          "paragraph": "1",
+          "link": "/regulation/2024-2982#article-5"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 5",
@@ -851,6 +1011,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
       "explanation": "Relying Parties must implement the common data deletion request interface \nspecified in Technical Specification 7. This enables wallet users to exercise \ntheir GDPR Article 17 right to erasure by requesting deletion of any data \nthe RP has collected from wallet presentations. The interface provides a \nstandardized machine-readable format for deletion requests.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 17",
+          "paragraph": "1",
+          "link": "/regulation/2016-679#article-17"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 17",
@@ -881,6 +1049,14 @@
       "categoryIcon": "🌐",
       "requirement": "Register attestation schemas in the catalogue per TS11",
       "explanation": "Attestation Issuers must register their attestation types in the catalogue \nof attributes and attestations as specified in Technical Specification 11. \nThis enables discovery by Relying Parties and ensures attestations follow \nthe common data model. The catalogue defines attribute schemas, rulebooks, \nand the relationship between attestation types.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2024-2981#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 3",
@@ -911,6 +1087,14 @@
       "categoryIcon": "🌐",
       "requirement": "Implement open standards per TS1 for EUDI Wallet interoperability",
       "explanation": "All EUDIW ecosystem participants must implement the open standards mapped \nin Technical Specification 1. TS1 provides the authoritative mapping between \nregulatory requirements and specific open standards (e.g., OpenID4VCI, \nOpenID4VP, SD-JWT, mdoc/mDL). This ensures cross-border interoperability \nand prevents vendor lock-in.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2024-2982#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 3",
@@ -937,6 +1121,14 @@
       "categoryIcon": "📋",
       "requirement": "Publish provider information per TS2 for discovery by wallets and RPs",
       "explanation": "PID Providers, QEAA Providers, and Pub-EAA Providers must publish their \nprovider information according to Technical Specification 2. This includes \nmetadata endpoints, supported credential types, signing algorithms, and \ntrust chain information. Publication enables wallet and RP discovery of \navailable attestation providers.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 4",
+          "paragraph": "1",
+          "link": "/regulation/2024-2981#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 4",
@@ -967,6 +1159,14 @@
       "categoryIcon": "🔒",
       "requirement": "Verify Wallet Unit Attestation (WUA) per TS3 before issuing credentials",
       "explanation": "Before issuing attestations, Issuers must verify the Wallet Unit Attestation \nas specified in Technical Specification 3. The WUA proves that the target \nwallet instance runs on a certified WSCD, has not been revoked, and possesses \nthe cryptographic keys for device binding. This prevents issuance to \ncompromised or non-compliant wallet instances.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 5",
+          "paragraph": "1",
+          "link": "/regulation/2024-2979#article-5"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 5",
@@ -998,6 +1198,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement TS8 remote signing protocol for QES/QESeal via EUDI Wallet",
       "explanation": "Trust service providers offering remote qualified electronic signatures \nmust implement the protocol specified in Technical Specification 8. This \nenables EUDI Wallet users to create legally binding QES using QTSP-managed \nsigning keys while maintaining sole control through wallet-based authorization.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 26",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-26"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 26",
@@ -1028,6 +1236,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Support pseudonym attestations per TS9 for privacy-preserving identification",
       "explanation": "RPs and Issuers should support pseudonym attestations as specified in \nTechnical Specification 9 when full identification is not required. This \nincludes User Pseudonyms (UP) for persistent pseudonymous relationships \nand Wallet-RP Pseudonyms (WRP) for unlinkable transactions. Pseudonyms \nenable data minimization while maintaining accountability.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "4(b)",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -1060,6 +1276,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Provide data export capability per TS10 for GDPR portability compliance",
       "explanation": "RPs and Issuers must provide data export capabilities as specified in \nTechnical Specification 10. This supports GDPR Article 20 data portability \nrights, enabling users to obtain transaction logs, backup credentials, \nand migrate between wallet providers. Export formats must be machine-readable \nand commonly used.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 20",
+          "paragraph": "1",
+          "link": "/regulation/2016-679#article-20"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 20",
@@ -1092,6 +1316,14 @@
       "categoryIcon": "🔍",
       "requirement": "Verify registration certificates presented by counterparties",
       "explanation": "Relying Parties must verify registration certificates presented by PID \nProviders, Attestation Providers, or other RPs to confirm their legitimate \nregistration status. This includes validating certificate signatures and \nchecking against Trusted Lists.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1131,6 +1363,14 @@
       "categoryIcon": "🔍",
       "requirement": "Verify attestation authenticity and validity before acceptance",
       "explanation": "Before accepting an attestation, the RP must verify its cryptographic \nsignature, check it has not expired, and verify its revocation status. \nThis includes verifying the issuer's access certificate chain.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "4",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1167,6 +1407,14 @@
       "categoryIcon": "📋",
       "requirement": "Register intended uses and comply with access certificate policies",
       "explanation": "Relying Parties must register their intended uses for requesting data \nand comply with the access certificate policies established by the \nAccess Certificate Authority. Certificate revocation procedures must \nbe followed.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "3",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1204,6 +1452,14 @@
       "categoryIcon": "🔍",
       "requirement": "Use valid RP Access Certificate for Wallet Unit authentication",
       "explanation": "When initiating a presentation request, the Relying Party must present \na valid RP Access Certificate that allows the Wallet Unit to verify \nthe RP's registration and intended use.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1240,6 +1496,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Support pseudonym-based presentations where applicable",
       "explanation": "Where Users choose to present pseudonymous attestations, the RP \nconnector must correctly process pseudonym presentations and not \nattempt to correlate pseudonyms across transactions.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "16",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -1276,6 +1540,14 @@
       "categoryIcon": "👁️",
       "requirement": "Publish RP trust anchor information for Wallet verification",
       "explanation": "Relying Parties accessing EUDI Wallets must publish trust anchor \ninformation through the Access Certificate Authority notification \nprocess, enabling Wallet Units to verify RP legitimacy.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1312,6 +1584,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Process data deletion requests from Users",
       "explanation": "When Users exercise their right to data deletion, RPs must process \nthese requests according to GDPR requirements and ARF specifications. \nThis includes responding to deletion requests within mandated timeframes.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 17",
+          "paragraph": "",
+          "link": "/regulation/2016-679#article-17"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 17",
@@ -1348,6 +1628,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Handle pseudonym verification requests correctly",
       "explanation": "When a User presents using a pseudonym, the Relying Party must correctly \nprocess the pseudonymous presentation without attempting unlawful \nde-anonymization or cross-correlation.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "16",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -1385,6 +1673,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Respond to User deletion requests within timeframes",
       "explanation": "When processing data deletion requests, the RP must respond within \nthe timeframes specified in GDPR Article 17, providing confirmation \nof deletion or valid grounds for refusal.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 17",
+          "paragraph": "1",
+          "link": "/regulation/2016-679#article-17"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 17",
@@ -1420,6 +1716,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Support W3C Digital Credentials API for presentation requests",
       "explanation": "If the Relying Party supports the W3C Digital Credentials API, presentation \nrequests must conform to the API specification and properly handle the \nbrowser-mediated credential exchange flow.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 2",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-2"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 2",
@@ -1455,6 +1759,14 @@
       "categoryIcon": "🔍",
       "requirement": "Handle revocation status unavailability gracefully",
       "explanation": "When revocation status information is unavailable, the Relying Party \nInstance should not repeatedly request status lists and must implement \nappropriate fallback behavior as specified.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -1490,6 +1802,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Support proximity identification flows",
       "explanation": "Relying Party Instances that support proximity identification must \nimplement the specified BLE or NFC protocols for local credential \npresentation without internet connectivity.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 2",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-2"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 2",
@@ -1525,6 +1845,14 @@
       "categoryIcon": "📋",
       "requirement": "Handle registration certificate updates and renewals",
       "explanation": "Relying Parties must properly handle registration certificate lifecycle \nevents including updates, renewals, and revocations, updating their \nstored certificates accordingly.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1561,6 +1889,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Include mandatory contractual provisions per DORA Article 30",
       "explanation": "When the RP is a DORA-regulated financial entity, the contract with the \nICT third-party (intermediary) must include all provisions specified in \nDORA Article 30(2), covering service descriptions, locations, security \nrequirements, data protection, and termination rights.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1591,6 +1927,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Provide audit rights as required by DORA Article 30(2)(e)",
       "explanation": "The contract must grant the financial entity (and its supervisory \nauthority) full rights of access, inspection, and audit of the ICT \nthird-party service provider.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2(e)",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1620,6 +1964,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Support exit strategies and transition planning",
       "explanation": "The vendor must support the financial entity's exit strategy with \nmandatory transition periods, data migration, and continuity of service \nduring transitions to alternative providers.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2(j)",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1649,6 +2001,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Participate in the financial entity's ICT risk management framework",
       "explanation": "The intermediary must cooperate with the financial entity's overall ICT \nrisk management program, including risk assessments, control testing, \nand remediation activities.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 28",
+          "paragraph": "1",
+          "link": "/regulation/2022-2554#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 28",
@@ -1677,6 +2037,14 @@
       "categoryIcon": "📋",
       "requirement": "Provide information required for the financial entity's Register of ICT TPPs",
       "explanation": "Financial entities must maintain a register of all ICT third-party \nproviders. The intermediary must provide all required information \nincluding entity details, services provided, criticality assessments, \nand contractual terms.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 28",
+          "paragraph": "3",
+          "link": "/regulation/2022-2554#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 28",
@@ -1705,6 +2073,14 @@
       "categoryIcon": "📋",
       "requirement": "Support due diligence assessment before contract signing",
       "explanation": "Before entering into a contractual arrangement, the financial entity \nmust conduct due diligence on the ICT TPP. The vendor must provide \ninformation on their financial stability, ICT risk management \ncapabilities, and compliance posture.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 29",
+          "paragraph": "1",
+          "link": "/regulation/2022-2554#article-29"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 29",
@@ -1733,6 +2109,14 @@
       "categoryIcon": "🔒",
       "requirement": "Notify the financial entity of ICT-related incidents",
       "explanation": "The intermediary must notify the financial entity without undue delay \nof any ICT-related incidents that may impact the service, enabling \nthe financial entity to fulfill its own incident reporting obligations.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2(f)",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1762,6 +2146,14 @@
       "categoryIcon": "🔒",
       "requirement": "Participate in threat-led penetration testing if required",
       "explanation": "If the financial entity is required to conduct threat-led penetration \ntesting (TLPT), the ICT TPP must cooperate with such testing when \nrelevant to the services provided.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 26",
+          "paragraph": "4",
+          "link": "/regulation/2022-2554#article-26"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 26",
@@ -1790,6 +2182,14 @@
       "categoryIcon": "🔒",
       "requirement": "Maintain business continuity arrangements for ICT services",
       "explanation": "The intermediary must maintain adequate business continuity and disaster \nrecovery arrangements to ensure service availability meets the financial \nentity's requirements.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2(g)",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1819,6 +2219,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Obtain approval for subcontracting of critical functions",
       "explanation": "If the intermediary subcontracts any part of the ICT service that \nsupports critical or important functions, prior approval from the \nfinancial entity is required. The subcontractor must meet equivalent \nrequirements.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 30",
+          "paragraph": "2(d)",
+          "link": "/regulation/2022-2554#article-30"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 30",
@@ -1848,6 +2256,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Provide information for concentration risk assessment",
       "explanation": "The intermediary must provide information enabling the financial entity \nto assess ICT concentration risk, including data on other financial \nentities served and interdependencies with other ICT providers.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 28",
+          "paragraph": "4",
+          "link": "/regulation/2022-2554#article-28"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 28",
@@ -1876,6 +2292,14 @@
       "categoryIcon": "✅",
       "requirement": "Comply with enhanced oversight if designated as Critical ICT TPP",
       "explanation": "If the ESAs designate the intermediary as a Critical ICT Third-Party \nProvider (CTPP), they become subject to enhanced oversight including \ndirect supervision by the Lead Overseer, regular assessments, and \nadditional reporting requirements.",
+      "legalBases": [
+        {
+          "regulation": "2022/2554",
+          "article": "Article 31",
+          "paragraph": "",
+          "link": "/regulation/2022-2554#article-31"
+        }
+      ],
       "legalBasis": {
         "regulation": "2022/2554",
         "article": "Article 31",
@@ -1905,6 +2329,14 @@
       "categoryIcon": "👁️",
       "requirement": "Display both intermediary and RP identity before requesting attestations",
       "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "8",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1939,6 +2371,14 @@
       "categoryIcon": "👁️",
       "requirement": "Ensure RP's intended data requests are accurately communicated to wallet",
       "explanation": "The intermediary must not modify, expand, or alter the RP's registered data \nrequest when forwarding to wallets. Only the attributes registered by the RP \nmay be requested.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "3",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -1975,6 +2415,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward presentation requests without modification of requested attributes",
       "explanation": "The intermediary must accurately relay the RP's attribute request to the \nwallet without adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "3",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2008,6 +2456,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward wallet presentations to RP without modification",
       "explanation": "The intermediary must relay the wallet's presentation to the RP exactly as \nreceived, without altering, extracting, or processing the credential data. \nThe presentation integrity must be preserved.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2042,6 +2498,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Support both remote and proximity presentation protocols",
       "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the intermediary must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 5",
+          "paragraph": "1-2",
+          "link": "/regulation/2024-2982#article-5"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 5",
@@ -2081,6 +2545,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Forward attributes only to the requesting RP after verification",
       "explanation": "After receiving attestation data from a wallet and verifying it, the \nintermediary must forward the attributes ONLY to the specific RP on whose \nbehalf the request was made. If verification fails, no attributes may be \nforwarded.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2114,6 +2586,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
       "explanation": "The intermediary must maintain current copies of the Trusted Lists containing \nPID Provider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 22",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-22"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 22",
@@ -2150,6 +2630,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
       "explanation": "The intermediary must maintain current copies of Trusted Lists for qualified \nand non-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 22",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-22"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 22",
@@ -2183,6 +2671,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Obtain trust anchors only from official Trusted List sources",
       "explanation": "Trust anchors for verification must be obtained exclusively from official \nEU and Member State Trusted Lists, not from third-party aggregators or \nunofficial sources. This ensures the authenticity of verification keys.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 32",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-32"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 32",
@@ -2216,6 +2712,14 @@
       "categoryIcon": "🔍",
       "requirement": "Validate attestation signatures using official trust anchors",
       "explanation": "The intermediary must verify the cryptographic signatures on attestations \nand PIDs using the public keys from official Trusted Lists. Invalid or \nuntrusted signatures must result in rejection.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -2250,6 +2754,14 @@
       "categoryIcon": "🔍",
       "requirement": "Verify attestation revocation status before acceptance",
       "explanation": "Before accepting a presentation as valid, the intermediary must check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -2283,6 +2795,14 @@
       "categoryIcon": "🔍",
       "requirement": "Verify the wallet unit's device binding",
       "explanation": "The intermediary must verify that the presentation is bound to the wallet \nunit's secure cryptographic device (WSCD), confirming that the presenter \ncontrols the private key associated with the attestations.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -2316,6 +2836,14 @@
       "categoryIcon": "🔍",
       "requirement": "Verify presentation freshness (anti-replay)",
       "explanation": "The intermediary must verify that presentations are fresh and not replayed \nby checking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -2349,6 +2877,14 @@
       "categoryIcon": "🔒",
       "requirement": "Ensure secure channel for transmission to RP",
       "explanation": "The intermediary must establish and maintain a secure, encrypted channel \nwhen forwarding wallet presentations to the RP. Transport layer security \n(TLS 1.3 or equivalent) is required.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2382,6 +2918,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement measures to prevent replay attacks",
       "explanation": "The intermediary must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "9",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2415,6 +2959,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement secure key management for verification operations",
       "explanation": "The intermediary must implement secure storage and handling of any \ncryptographic material used in verification operations. Keys must be \nprotected against unauthorized access, modification, and extraction.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -2444,6 +2996,14 @@
       "categoryIcon": "🔒",
       "requirement": "Protect verification results integrity",
       "explanation": "The verification result communicated to the RP must be protected against \ntampering. The RP must be able to trust that the intermediary's verification \noutcome is authentic and unmodified.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2477,6 +3037,14 @@
       "categoryIcon": "🔒",
       "requirement": "Maintain audit logs of verification operations",
       "explanation": "The intermediary should maintain logs of verification operations including \nverification timestamps, outcomes, and any errors. These logs support \ndispute resolution and compliance auditing while respecting privacy \n(no attestation content should be logged).",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 32",
+          "paragraph": "1(d)",
+          "link": "/regulation/2016-679#article-32"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 32",
@@ -2508,6 +3076,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Do not extract or log individual attribute values from presentations",
       "explanation": "Beyond the no-storage mandate, intermediaries must not extract, log, or \nanalyze individual attribute values from wallet presentations. The \npresentation should be treated as an opaque payload for forwarding.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2537,6 +3113,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Do not correlate or link user presentations across different RPs",
       "explanation": "Intermediaries serving multiple RPs must not correlate wallet user activity \nacross different RP interactions. Each RP relationship must be treated \nindependently to preserve user unlinkability.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "16(a)",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -2568,6 +3152,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Delete attestation data immediately after forwarding to RP",
       "explanation": "The intermediary must completely delete all PIDs, attestations, and user \nattributes immediately after sending them to the intermediated RP. If \nforwarding fails or is not performed (e.g., due to verification failure), \ndeletion must still occur immediately after completing all necessary \nverifications.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "10",
+          "link": "/regulation/2014-910#article-5b"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5b",
@@ -2601,6 +3193,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Specify RP details in each presentation request to wallet",
       "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP: user-friendly name, unique \nidentifier, Registrar URL, intended use identifier, and description. This \nenables the wallet to display accurate RP information to the user.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Annex I",
+          "paragraph": "9-10",
+          "link": "/regulation/2025-848#article-annex i"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Annex I",
@@ -2637,6 +3237,14 @@
       "categoryIcon": "🌐",
       "requirement": "Support mandatory credential formats (ISO 18013-5 and W3C VC)",
       "explanation": "The intermediary must be capable of verifying attestations in both mandated \nformats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data \nModel 1.1. This ensures interoperability across the EUDIW ecosystem.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -2673,6 +3281,14 @@
       "categoryIcon": "🌐",
       "requirement": "Support selective disclosure in both credential formats",
       "explanation": "The intermediary's verification implementation must correctly handle \nselectively disclosed attributes in both mDoc and VC formats. Verification \nmust succeed even when only a subset of attributes is presented.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 5",
+          "paragraph": "4",
+          "link": "/regulation/2024-2982#article-5"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 5",
@@ -2708,6 +3324,14 @@
       "categoryIcon": "✅",
       "requirement": "Consider certification for cryptographic components",
       "explanation": "Depending on the assurance level required by the RP, the intermediary may \nneed to demonstrate that its cryptographic implementations meet recognized \nstandards (e.g., FIPS 140-2/3, Common Criteria). This is especially relevant \nfor high-assurance use cases.",
+      "legalBases": [
+        {
+          "regulation": "2019/881",
+          "article": "Article 47",
+          "paragraph": "",
+          "link": "/regulation/2019-881#article-47"
+        }
+      ],
       "legalBasis": {
         "regulation": "2019/881",
         "article": "Article 47",
@@ -2738,6 +3362,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Comply with embedded disclosure policies in attestations",
       "explanation": "Electronic attestations of attributes may contain embedded disclosure \npolicies that specify conditions the relying party must meet to access \nthe attestation. The intermediary must verify RP compliance with these \npolicies and ensure the wallet can inform the user of the result.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 10",
+          "paragraph": "3",
+          "link": "/regulation/2024-2979#article-10"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 10",
@@ -2770,6 +3402,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Support WebAuthn specification for pseudonym generation",
       "explanation": "When the intermediary supports pseudonymous authentication from wallet \nunits, it must support the WebAuthn specification as mandated in \nAnnex V of the Integrity regulation. This enables privacy-preserving \nauthentication without revealing user identity.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 14",
+          "paragraph": "1",
+          "link": "/regulation/2024-2979#article-14"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 14",
@@ -2803,6 +3443,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Support relying-party-specific pseudonyms",
       "explanation": "Wallet units generate unique pseudonyms per relying party, ensuring \nunlinkability across different RPs. The intermediary must correctly \nhandle these RP-specific pseudonyms in verification flows.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 14",
+          "paragraph": "2",
+          "link": "/regulation/2024-2979#article-14"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 14",
@@ -2835,6 +3483,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Use valid Wallet-Relying Party Access Certificate",
       "explanation": "The intermediary must use a valid Wallet-Relying Party Access Certificate \n(issued by its Registrar) when interacting with wallet units. The \ncertificate identifies the intermediary and enables the wallet to verify \nits registration status.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2024-2982#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 3",
@@ -2871,6 +3527,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Support data erasure request protocol",
       "explanation": "The intermediary must support the protocol for data erasure requests \nfrom wallet users. When a user requests erasure of their data from \nan RP (via the wallet), the intermediary must correctly relay or \nsupport this request.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 6",
+          "paragraph": "1",
+          "link": "/regulation/2024-2982#article-6"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 6",
@@ -2903,6 +3567,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Support user reporting to data protection authorities",
       "explanation": "Wallet units allow users to report RPs to data protection authorities \nif they suspect unlawful data requests. The intermediary's identity \n(as the entity making the request on behalf of the RP) will be visible \nto users and may be included in such reports.",
+      "legalBases": [
+        {
+          "regulation": "2024/2982",
+          "article": "Article 7",
+          "paragraph": "1",
+          "link": "/regulation/2024-2982#article-7"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2982",
         "article": "Article 7",
@@ -2935,6 +3607,14 @@
       "categoryIcon": "⚙️",
       "requirement": "Include intermediary access certificate and RP registration certificate in requests",
       "explanation": "When requesting attestations from a wallet on behalf of an intermediated RP, the \nintermediary must include both: (1) its own access certificate (proving its identity \nas a registered intermediary), and (2) the registration certificate of the \nintermediated RP, if the RP has one. This enables the wallet to verify both \nthe intermediary and the ultimate service provider.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 8",
+          "paragraph": "2",
+          "link": "/regulation/2025-848#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Article 8",
@@ -2972,6 +3652,14 @@
       "categoryIcon": "🏛️",
       "requirement": "Ensure intermediary-RP contractual relationship is registered",
       "explanation": "Before the intermediary can act on behalf of an RP, the contractual relationship \nbetween them must be registered with the relevant Registrar. The wallet verifies \nthis registration when processing requests (per RPI_07a). If the relationship \nis not registered, the wallet will warn the user that the intermediary's \nauthority to act for the RP cannot be verified.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 6",
+          "paragraph": "5",
+          "link": "/regulation/2025-848#article-6"
+        }
+      ],
       "legalBasis": {
         "regulation": "2025/848",
         "article": "Article 6",
@@ -3009,6 +3697,14 @@
       "categoryIcon": "🔍",
       "requirement": "Support attestation status list verification mechanisms",
       "explanation": "The intermediary must support attestation status verification using the mechanisms \nspecified in ARF Topic 7 (Attestation Revocation). This includes checking \nAttestation Status Lists or Attestation Revocation Lists published by PID/EAA \nproviders to verify that attestations have not been revoked.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -3046,6 +3742,14 @@
       "categoryIcon": "📋",
       "requirement": "Register as an Attestation Provider with the competent authority",
       "explanation": "Any entity issuing electronic attestations of attributes must register \nwith a Member State authority. Registration establishes eligibility to \nissue attestations and enables inclusion in Trusted Lists.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-45d"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45d",
@@ -3080,6 +3784,14 @@
       "categoryIcon": "📋",
       "requirement": "Publish Provider Information according to the standard schema",
       "explanation": "Attestation Providers must publish machine-readable information about \ntheir services, including supported attestation types, data sources, \nand issuance policies. This enables wallets and relying parties to \ndiscover and evaluate providers.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2024-2981#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 3",
@@ -3114,6 +3826,14 @@
       "categoryIcon": "📋",
       "requirement": "Update Provider Information within 24 hours of changes",
       "explanation": "When any information in the published Provider Information changes \n(e.g., new attestation types, policy updates), the provider must \nupdate the published data within 24 hours.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 3",
+          "paragraph": "2",
+          "link": "/regulation/2024-2981#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 3",
@@ -3143,6 +3863,14 @@
       "categoryIcon": "📋",
       "requirement": "Obtain inclusion in national or EU Trusted Lists if issuing qualified attestations",
       "explanation": "Providers of Qualified Electronic Attestations of Attributes (QEAAs) \nmust be included in the national Trusted List as a QTSP. This enables \nrelying parties to verify the qualified status of the attestations.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45f",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-45f"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45f",
@@ -3178,6 +3906,14 @@
       "categoryIcon": "📤",
       "requirement": "Issue attestations in mandated credential formats (mDoc and/or W3C VC)",
       "explanation": "Attestations must be issued in one or both of the mandated formats: \nISO/IEC 18013-5 (mDoc/mdoc) and/or W3C Verifiable Credentials Data Model 1.1. \nThe format(s) supported must be published in Provider Information.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -3208,6 +3944,14 @@
       "categoryIcon": "📤",
       "requirement": "Bind attestations to the Wallet Unit's cryptographic device",
       "explanation": "Attestations must be cryptographically bound to the Wallet Unit's \nsecure cryptographic device (WSCD), ensuring that the attestation \ncan only be presented from the authorised wallet instance.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -3238,6 +3982,14 @@
       "categoryIcon": "📤",
       "requirement": "Implement the OpenID4VCI issuance protocol (TS6)",
       "explanation": "The issuance platform must support the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in TS6, enabling standardised \ncredential issuance to EUDI Wallets across Member States.\nhlr: \"Iss_01\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 6",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-6"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 6",
@@ -3274,6 +4026,14 @@
       "categoryIcon": "📤",
       "requirement": "Support batch issuance for multiple attestations",
       "explanation": "The platform should support efficient batch issuance when a user \nrequests multiple attestations simultaneously, avoiding redundant \nauthentication steps.\nhlr: \"Iss_03\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 6",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-6"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 6",
@@ -3307,6 +4067,14 @@
       "categoryIcon": "📤",
       "requirement": "Verify user identity before issuing attestations",
       "explanation": "Before issuing an attestation, the provider must verify the user's \nidentity to a level of assurance appropriate for the attestation type. \nFor qualified attestations, this requires high assurance identity proofing.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "3",
+          "link": "/regulation/2014-910#article-45d"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45d",
@@ -3337,6 +4105,14 @@
       "categoryIcon": "📤",
       "requirement": "Obtain data from authentic sources with verified provenance",
       "explanation": "Attestation data must be obtained from authentic sources (authoritative \ndatabases, registries) with verified data provenance. The platform must \nmaintain audit trails of data source queries.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45e",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-45e"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45e",
@@ -3367,6 +4143,14 @@
       "categoryIcon": "📤",
       "requirement": "Include attestation validity period and issuance timestamp",
       "explanation": "Each attestation must include a clearly defined validity period \n(valid_from and valid_until) and issuance timestamp. Expired \nattestations must be rejected by wallets.\nhlr: \"Iss_07\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -3400,6 +4184,14 @@
       "categoryIcon": "📤",
       "requirement": "Support attestation renewal and re-issuance workflows",
       "explanation": "The platform must support workflows for renewing attestations before \nexpiry and re-issuing attestations when the underlying data changes. \nUsers should be notified of upcoming expiry.\nhlr: \"Iss_05\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -3436,6 +4228,14 @@
       "categoryIcon": "🚫",
       "requirement": "Publish attestation status lists for revocation checking",
       "explanation": "The issuer must maintain and publish attestation status lists \n(revocation/validity lists) that enable relying parties to verify \nthat attestations have not been revoked since issuance.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "1",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -3473,6 +4273,15 @@
       "categoryIcon": "🚫",
       "requirement": "Update revocation status within defined time limits",
       "explanation": "When an attestation is revoked, the status list must be updated within \nthe defined maximum propagation time (typically 24 hours for standard \nattestations, immediate for critical security revocations).",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "2",
+          "hlr": "VCR_03",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -3510,6 +4319,14 @@
       "categoryIcon": "🚫",
       "requirement": "Notify wallet users when their attestations are revoked",
       "explanation": "When an attestation is revoked, the issuer should notify the affected \nwallet user through available channels, enabling them to take \nappropriate action (e.g., request re-issuance).\nhlr: \"VCR_04\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -3543,6 +4360,14 @@
       "categoryIcon": "🚫",
       "requirement": "Support suspension and reinstatement of attestations",
       "explanation": "Beyond permanent revocation, the platform should support temporary \nsuspension of attestations (e.g., during fraud investigation) with \nthe ability to reinstate if the issue is resolved.\nhlr: \"VCR_02\"",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -3576,6 +4401,14 @@
       "categoryIcon": "🔒",
       "requirement": "Protect attestation signing keys in secure cryptographic devices",
       "explanation": "The private keys used to sign attestations must be stored and used \nwithin secure cryptographic devices (HSMs or equivalent) that prevent \nextraction and ensure key integrity.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "2",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -3614,6 +4447,15 @@
       "categoryIcon": "🔒",
       "requirement": "Use signing algorithms from the approved list",
       "explanation": "Attestation signatures must use cryptographic algorithms from the \napproved list in Annex of the Integrity Regulation (e.g., ECDSA P-256, \nEdDSA Ed25519, RSA-PSS).",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "hlr": "Iss_04",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -3648,6 +4490,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement key rotation procedures",
       "explanation": "The platform must support cryptographic key rotation with documented \nprocedures for transitioning to new signing keys while maintaining \nvalidity of previously issued attestations.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -3681,6 +4531,14 @@
       "categoryIcon": "👁️",
       "requirement": "Publish attestation types to the Common Catalogue (TS11)",
       "explanation": "Attestation types issued by the provider should be registered in the \nCommon Catalogue of Attestation Types, enabling discoverability by \nwallets, relying parties, and users.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2981#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 4",
@@ -3710,6 +4568,14 @@
       "categoryIcon": "👁️",
       "requirement": "Document attestation schema including mandatory and optional attributes",
       "explanation": "Each attestation type must have a published schema defining the \nmandatory and optional attributes, data types, and semantic meaning \nof each field.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2981#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 4",
@@ -3746,6 +4612,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Apply data minimisation principles to attestation content",
       "explanation": "Attestations should contain only the attributes necessary for their \nintended purpose. Issuers should offer selective disclosure-friendly \nattestation designs where possible.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 25",
+          "paragraph": "1",
+          "link": "/regulation/2016-679#article-25"
+        }
+      ],
       "legalBasis": {
         "regulation": "2016/679",
         "article": "Article 25",
@@ -3780,6 +4654,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Do not embed tracking identifiers in attestations",
       "explanation": "Attestations must not contain hidden or overt tracking identifiers \nthat could enable correlation of user presentations across different \nrelying parties.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "16(a)",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -3809,6 +4691,14 @@
       "categoryIcon": "🌐",
       "requirement": "Enable cross-border recognition of attestations",
       "explanation": "Attestations issued in one Member State must be verifiable and \nrecognisable in all other Member States. The platform must ensure \ninteroperability through adherence to common standards.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45g",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-45g"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45g",
@@ -3843,6 +4733,14 @@
       "categoryIcon": "🌐",
       "requirement": "Support both SD-JWT and mDoc credential formats",
       "explanation": "For maximum interoperability, the platform should support issuing \nattestations in both SD-JWT-VC and ISO mDoc formats, allowing \nrelying parties to request their preferred format.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -3872,6 +4770,14 @@
       "categoryIcon": "📤",
       "requirement": "Comply with PID Rulebook format and attribute requirements",
       "explanation": "When issuing Person Identification Data (PIDs), the issuance platform must \ncomply with the PID Rulebook specifications including namespace conventions, \nattribute encoding (CBOR for mDoc), portrait image quality requirements, \nand domestic namespace publication.",
+      "legalBases": [
+        {
+          "regulation": "2024/2977",
+          "article": "Annex I",
+          "paragraph": "",
+          "link": "/regulation/2024-2977#article-annex i"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2977",
         "article": "Annex I",
@@ -3913,6 +4819,14 @@
       "categoryIcon": "📤",
       "requirement": "Support all mandatory attestation formats for the attestation type",
       "explanation": "The issuance platform must offer attestations in all formats required by \nthe applicable Rulebook. For most attestation types, this means supporting \nboth ISO 18013-5 (mDoc) and SD-JWT-VC formats with correct encoding.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 8",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-8"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 8",
@@ -3950,6 +4864,14 @@
       "categoryIcon": "🚫",
       "requirement": "Implement revocation according to applicable Rulebook specifications",
       "explanation": "The platform must implement attestation revocation as specified in the \napplicable Rulebook. This includes publishing revocation status, supporting \nsuspension where required, and ensuring revocation information is available \nwithin defined propagation times.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -3989,6 +4911,14 @@
       "categoryIcon": "📋",
       "requirement": "Maintain accurate registration information and update on changes",
       "explanation": "Attestation providers must maintain accurate information in Member State \nregistries and update this information promptly when changes occur. This \nincludes contact details, supported attestation types, and operational status.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-45d"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45d",
@@ -4025,6 +4955,14 @@
       "categoryIcon": "👁️",
       "requirement": "Publish PID/Attestation Provider trust anchor information",
       "explanation": "PID and Attestation Providers must publish trust anchor information that \nenables Wallet Units and Relying Parties to verify issued attestations. \nThis includes signing certificate publication and Trusted List inclusion.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 2",
+          "paragraph": "",
+          "link": "/regulation/2024-2981#article-2"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 2",
@@ -4062,6 +5000,14 @@
       "categoryIcon": "📤",
       "requirement": "Verify Wallet Unit Attestation during issuance",
       "explanation": "Before issuing a PID or device-bound attestation, the provider must verify \nthe Wallet Unit Attestation (WUA) to ensure the target Wallet Unit is \ngenuine and certified. This includes validating WUA signature and \nchecking revocation status.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -4098,6 +5044,14 @@
       "categoryIcon": "🛡️",
       "requirement": "Include embedded disclosure policies in attestations",
       "explanation": "Where applicable, attestation providers must include embedded disclosure \npolicies in issued attestations. These policies guide Wallet Units on \nappropriate disclosure behavior for the attestation.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5a",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-5a"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 5a",
@@ -4134,6 +5088,14 @@
       "categoryIcon": "📋",
       "requirement": "Use registration certificates for Provider authentication",
       "explanation": "If a registration certificate was issued during registration, the \nprovider must use it for authentication in interactions with Wallet Units \nas specified in the technical specifications.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-45d"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45d",
@@ -4170,6 +5132,14 @@
       "categoryIcon": "📤",
       "requirement": "Comply with SD-JWT VC format requirements for PID issuance",
       "explanation": "When issuing PIDs in SD-JWT VC format, providers must include required \nclaims (vct), encode attributes per specification, ensure proper date \nformatting, and make all claims selectively disclosable.",
+      "legalBases": [
+        {
+          "regulation": "2024/2977",
+          "article": "Annex I",
+          "paragraph": "",
+          "link": "/regulation/2024-2977#article-annex i"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2977",
         "article": "Annex I",
@@ -4210,6 +5180,14 @@
       "categoryIcon": "📤",
       "requirement": "Comply with mDoc format requirements for PID issuance",
       "explanation": "When issuing PIDs in ISO 18013-5 mDoc format, providers must use correct \ndocument types, element identifiers, value encodings, and ensure each \nPID contains at most one attribute with the same identifier.",
+      "legalBases": [
+        {
+          "regulation": "2024/2977",
+          "article": "Annex I",
+          "paragraph": "",
+          "link": "/regulation/2024-2977#article-annex i"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2977",
         "article": "Annex I",
@@ -4250,6 +5228,14 @@
       "categoryIcon": "🚫",
       "requirement": "Support both attestation status mechanisms",
       "explanation": "PID and Attestation Providers must support both the Attestation Status \nList mechanism and Token Status List mechanism for revocation checking \nas specified in the technical specifications.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 4",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 4",
@@ -4285,6 +5271,14 @@
       "categoryIcon": "📤",
       "requirement": "Implement complete OpenID4VCI protocol requirements",
       "explanation": "Attestation Providers must implement all required elements of the \nOpenID4VCI protocol, including credential offer structures, authorization \nflows, and credential response handling.",
+      "legalBases": [
+        {
+          "regulation": "2024/2979",
+          "article": "Article 3",
+          "paragraph": "",
+          "link": "/regulation/2024-2979#article-3"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2979",
         "article": "Article 3",
@@ -4334,6 +5328,14 @@
       "categoryIcon": "👁️",
       "requirement": "Publish trust anchor information in common format",
       "explanation": "PID Providers must publish trust anchor information according to the \ncommon set of information specified by the Commission, enabling \nWallet Units and Relying Parties to verify attestation authenticity.",
+      "legalBases": [
+        {
+          "regulation": "2024/2981",
+          "article": "Article 2",
+          "paragraph": "",
+          "link": "/regulation/2024-2981#article-2"
+        }
+      ],
       "legalBasis": {
         "regulation": "2024/2981",
         "article": "Article 2",
@@ -4370,6 +5372,14 @@
       "categoryIcon": "✅",
       "requirement": "Obtain and maintain qualified trust service provider (QTSP) status",
       "explanation": "To provide qualified trust services, the vendor must obtain QTSP status \nfrom a conformity assessment body in a Member State and be listed on \nthe national Trusted List.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 21",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-21"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 21",
@@ -4398,6 +5408,14 @@
       "categoryIcon": "✅",
       "requirement": "Undergo regular conformity assessment (at least every 24 months)",
       "explanation": "QTSPs must undergo conformity assessment at least every 24 months \nby an accredited conformity assessment body to verify continued \ncompliance with eIDAS requirements.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 20",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-20"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 20",
@@ -4426,6 +5444,14 @@
       "categoryIcon": "✅",
       "requirement": "Notify supervisory body of changes affecting qualified status",
       "explanation": "The QTSP must notify the competent supervisory body of any significant \nchanges that could affect the qualified status, including organizational \nchanges, security incidents, or policy modifications.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "2(i)",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -4453,6 +5479,14 @@
       "categoryIcon": "🔒",
       "requirement": "Use qualified electronic signature/seal creation devices (QSCDs)",
       "explanation": "Qualified signatures and seals must be created using QSCDs that meet \nthe requirements of Annex II of eIDAS, ensuring keys cannot be \nextracted and that the creation environment is secure.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 29",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-29"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 29",
@@ -4483,6 +5517,14 @@
       "categoryIcon": "🔒",
       "requirement": "Protect signature/seal creation data against duplication and theft",
       "explanation": "The QTSP must implement comprehensive security measures to protect \nelectronic signature creation data (private keys) from duplication, \ntheft, or unauthorized access.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "2(e)",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -4511,6 +5553,14 @@
       "categoryIcon": "🔒",
       "requirement": "Maintain disaster recovery and business continuity capabilities",
       "explanation": "The QTSP must have tested disaster recovery procedures and business \ncontinuity plans to ensure service availability and data integrity \neven in adverse circumstances.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "2(h)",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -4539,6 +5589,14 @@
       "categoryIcon": "🔒",
       "requirement": "Notify supervisory body of security breaches within 24 hours",
       "explanation": "The QTSP must notify the supervisory body without undue delay, and \nin any case within 24 hours, of any security breach with significant \nimpact on the trust service or personal data.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 19",
+          "paragraph": "2",
+          "link": "/regulation/2014-910#article-19"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 19",
@@ -4567,6 +5625,14 @@
       "categoryIcon": "🔒",
       "requirement": "Implement secure remote signature creation (TS8) if offering remote QES",
       "explanation": "If providing remote qualified signature services, implement the remote \nsignature creation protocols specified in TS8, ensuring secure \nmanagement of signature creation data on behalf of signatories.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 29",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-29"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 29",
@@ -4595,6 +5661,14 @@
       "categoryIcon": "🔒",
       "requirement": "Obtain sole control assurance for remote signing operations",
       "explanation": "For remote qualified signatures, the QTSP must ensure the signatory \nhas sole control over the signature creation process, typically \nthrough multi-factor authentication and explicit consent.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 26",
+          "paragraph": "1(d)",
+          "link": "/regulation/2014-910#article-26"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 26",
@@ -4623,6 +5697,14 @@
       "categoryIcon": "🔒",
       "requirement": "Support WYSIWYS (What You See Is What You Sign) for document signing",
       "explanation": "When creating signatures on documents, the platform must present \nthe document content to the signer in a way that allows them to \nverify what they are signing before authorization.",
+      "legalBases": [
+        {
+          "regulation": "2018/389",
+          "article": "Article 4",
+          "paragraph": "1",
+          "link": "/regulation/2018-389#article-4"
+        }
+      ],
       "legalBasis": {
         "regulation": "2018/389",
         "article": "Article 4",
@@ -4651,6 +5733,14 @@
       "categoryIcon": "🔒",
       "requirement": "Issue qualified timestamps from a trusted time source",
       "explanation": "If providing timestamp services, qualified timestamps must be derived \nfrom an accurate and reliable time source traceable to Coordinated \nUniversal Time (UTC).",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 42",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-42"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 42",
@@ -4679,6 +5769,14 @@
       "categoryIcon": "📤",
       "requirement": "Issue QEAAs only after verifying data from authentic sources",
       "explanation": "Qualified Electronic Attestations of Attributes must be based on \nverified data from authentic sources. The QTSP must establish \nverified connections to authoritative data sources.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45f",
+          "paragraph": "2(b)",
+          "link": "/regulation/2014-910#article-45f"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45f",
@@ -4709,6 +5807,14 @@
       "categoryIcon": "📤",
       "requirement": "Sign QEAAs with qualified electronic signature or seal",
       "explanation": "Qualified attestations must be signed using the QTSP's qualified \nelectronic signature or seal, providing legally recognized \nauthenticity and integrity assurance.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45f",
+          "paragraph": "2(c)",
+          "link": "/regulation/2014-910#article-45f"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45f",
@@ -4739,6 +5845,14 @@
       "categoryIcon": "🚫",
       "requirement": "Provide QEAA revocation capability through status lists",
       "explanation": "QTSPs issuing QEAAs must maintain revocation infrastructure that \nenables relying parties to verify the current validity status \nof issued QEAAs.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45f",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-45f"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 45f",
@@ -4772,6 +5886,14 @@
       "categoryIcon": "⚖️",
       "requirement": "Maintain sufficient financial resources or liability insurance",
       "explanation": "QTSPs must maintain adequate financial resources or obtain appropriate \nliability insurance to cover damages arising from failure to meet \ntheir obligations.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "2(c)",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",
@@ -4800,6 +5922,14 @@
       "categoryIcon": "⚖️",
       "requirement": "Accept liability for qualified signatures/attestations issued",
       "explanation": "The QTSP is liable for qualified services issued and must accept \nresponsibility for failures in verification, revocation, or \nsecurity of qualified certificates and attestations.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 13",
+          "paragraph": "1",
+          "link": "/regulation/2014-910#article-13"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 13",
@@ -4828,6 +5958,14 @@
       "categoryIcon": "✅",
       "requirement": "Comply with common Access Certificate Policy requirements",
       "explanation": "Access Certificate Authorities must comply with the common Certificate \nPolicy established by the Commission. This includes certificate issuance, \nvalidation, and revocation procedures for all ecosystem participants.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 22",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-22"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 22",
@@ -4862,6 +6000,14 @@
       "categoryIcon": "👁️",
       "requirement": "Handle suspension and cancellation of Trust Services",
       "explanation": "When an Access Certificate Authority or Provider of registration certificates \nis suspended or cancelled, appropriate notification and transition procedures \nmust be followed to maintain ecosystem trust.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 20",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-20"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 20",
@@ -4896,6 +6042,14 @@
       "categoryIcon": "🔍",
       "requirement": "Implement authentic source verification for QTSPs",
       "explanation": "QTSPs accessing Authentic Sources for attribute verification must \nimplement the specified technical interfaces, obtain User consent, \nand process verification responses according to ARF requirements.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 24",
+          "paragraph": "",
+          "link": "/regulation/2014-910#article-24"
+        }
+      ],
       "legalBasis": {
         "regulation": "2014/910",
         "article": "Article 24",

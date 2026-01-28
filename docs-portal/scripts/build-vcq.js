@@ -176,15 +176,28 @@ const eidasRegulationIds = new Set([
 const gdprRegulationIds = new Set(['2016/679']);
 const doraRegulationIds = new Set(['2022/2554']);
 
-function determineSourceGroup(req) {
-    // Check if it's an ARF-sourced requirement
-    if (req.arfReference && !req.legalBasis) {
+/**
+ * Normalize legalBasis to legalBases array.
+ * Supports both single object and array formats for backwards compatibility.
+ * 
+ * @param {Object|Array} legalBasis - Single object or array of legal bases
+ * @returns {Array} Array of legal basis objects
+ */
+function normalizeLegalBases(legalBasis) {
+    if (!legalBasis) return [];
+    if (Array.isArray(legalBasis)) return legalBasis;
+    return [legalBasis]; // Wrap single object in array
+}
+
+function determineSourceGroup(req, legalBases) {
+    // Check if it's an ARF-sourced requirement with no legal basis
+    if (req.arfReference && legalBases.length === 0) {
         return 'arf';
     }
 
-    // Check legal basis regulation
-    if (req.legalBasis?.regulation) {
-        const regId = req.legalBasis.regulation;
+    // Check first legal basis regulation (primary source)
+    if (legalBases.length > 0 && legalBases[0].regulation) {
+        const regId = legalBases[0].regulation;
         if (eidasRegulationIds.has(regId)) return 'eidas';
         if (gdprRegulationIds.has(regId)) return 'gdpr';
         if (doraRegulationIds.has(regId)) return 'dora';
@@ -269,16 +282,22 @@ for (const req of allRequirements) {
     const productCategories = req.productCategories || [];
     const isExtended = req.scope === 'extended';
 
-    // Build deep link for legal basis
-    let legalBasisLink = null;
-    if (req.legalBasis?.regulation && req.legalBasis?.article) {
-        const regId = req.legalBasis.regulation.replace('/', '-');
-        const articleNum = req.legalBasis.article.replace('Article ', '').toLowerCase();
-        legalBasisLink = `/regulation/${regId}#article-${articleNum}`;
-    }
+    // DEC-261: Normalize legalBasis to legalBases array for multi-article support
+    const legalBases = normalizeLegalBases(req.legalBasis);
+
+    // Build deep links for each legal basis
+    const legalBasesWithLinks = legalBases.map(basis => {
+        let link = null;
+        if (basis.regulation && basis.article) {
+            const regId = basis.regulation.replace('/', '-');
+            const articleNum = basis.article.replace('Article ', '').toLowerCase();
+            link = `/regulation/${regId}#article-${articleNum}`;
+        }
+        return { ...basis, link };
+    });
 
     // DEC-255: Determine source group for 3-tile filtering
-    const sourceGroup = determineSourceGroup(req);
+    const sourceGroup = determineSourceGroup(req, legalBases);
 
     // RFC 2119: Derive obligation level from requirement text
     const obligation = deriveObligation(req);
@@ -291,8 +310,11 @@ for (const req of allRequirements) {
         categoryIcon: categoriesConfig.categories[req.category]?.icon || '📋',
         requirement: req.requirement,
         explanation: req.explanation?.trim(),
-        legalBasis: req.legalBasis,
-        legalBasisLink,
+        // DEC-261: Multi-article support - legalBases is always an array
+        legalBases: legalBasesWithLinks,
+        // Backwards compatibility: keep first legal basis as primary
+        legalBasis: legalBases[0] || null,
+        legalBasisLink: legalBasesWithLinks[0]?.link || null,
         legalText: req.legalText?.trim(),
         arfReference: req.arfReference,
         annexReference: req.annexReference?.trim(),

@@ -226,23 +226,31 @@ function validate() {
                 });
             }
 
-            // Validate legal basis structure if present
+            // Validate legal basis structure if present (DEC-261: supports both single object and array)
             if (req.legalBasis) {
-                if (!req.legalBasis.regulation) {
-                    warnings.push({
-                        file,
-                        reqId,
-                        field: 'legalBasis',
-                        message: `legalBasis is present but missing 'regulation' field`
-                    });
-                }
-                if (!req.legalBasis.article) {
-                    warnings.push({
-                        file,
-                        reqId,
-                        field: 'legalBasis',
-                        message: `legalBasis is present but missing 'article' field`
-                    });
+                // Normalize to array for validation
+                const legalBases = Array.isArray(req.legalBasis) ? req.legalBasis : [req.legalBasis];
+
+                for (let i = 0; i < legalBases.length; i++) {
+                    const basis = legalBases[i];
+                    const baseName = legalBases.length > 1 ? `legalBasis[${i}]` : 'legalBasis';
+
+                    if (!basis.regulation) {
+                        warnings.push({
+                            file,
+                            reqId,
+                            field: baseName,
+                            message: `${baseName} is present but missing 'regulation' field`
+                        });
+                    }
+                    if (!basis.article) {
+                        warnings.push({
+                            file,
+                            reqId,
+                            field: baseName,
+                            message: `${baseName} is present but missing 'article' field`
+                        });
+                    }
                 }
             }
 
