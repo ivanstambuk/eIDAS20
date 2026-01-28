@@ -4,9 +4,12 @@
  * 
  * Ensures all VCQ configuration files are internally consistent:
  * - Every category value references valid IDs from categories.yaml
- * - Every applicability value is a valid intermediary type
+ * - roles[] field contains valid role IDs (relying_party, issuer) or empty array
+ * - productCategories[] field contains valid category IDs or empty array
  * - All required fields are present
  * - Legal basis references are syntactically correct
+ * 
+ * Schema v2 (DEC-257): Uses roles[] and productCategories[] instead of applicability
  * 
  * Usage: node scripts/validate-vcq.js
  */
@@ -45,10 +48,14 @@ function validate() {
     const validCategories = new Set(Object.keys(categoriesConfig.categories || {}));
     console.log(`   🏷️  Found ${validCategories.size} valid category IDs`);
 
-    // 2. Load valid intermediary types from vcq-config.yaml
+    // 2. Load valid organisation roles and product categories from vcq-config.yaml
     const vcqConfig = loadYaml(join(CONFIG_DIR, 'vcq-config.yaml'));
-    const validIntermediaryTypes = new Set(Object.keys(vcqConfig.intermediaryTypes || {}));
-    console.log(`   👥 Found ${validIntermediaryTypes.size} valid intermediary types`);
+
+    // DEC-257: Schema v2 - roles and productCategories
+    const validRoles = new Set(Object.keys(vcqConfig.organisationRoles || {}));
+    const validProductCategories = new Set(Object.keys(vcqConfig.productCategories || {}));
+    console.log(`   👤 Found ${validRoles.size} valid organisation roles: ${[...validRoles].join(', ')}`);
+    console.log(`   📦 Found ${validProductCategories.size} valid product categories: ${[...validProductCategories].join(', ')}`);
 
     // 3. Valid scopes
     const validScopes = new Set(['core', 'extended']);
@@ -98,15 +105,15 @@ function validate() {
             }
 
             // Validate ID format (VEND-TYPE-NNN)
-            // DEC-254: Added INT for consolidated intermediary requirements
-            const idPattern = /^VEND-(CORE|INT|ICT|GDP|PIF|VIF)-\d{3}$/;
+            // DEC-257: Added ISS, TSP, SCA for issuer, trust services, payments
+            const idPattern = /^VEND-(CORE|INT|ICT|GDP|ISS|TSP|SCA|PIF|VIF)-\d{3}$/;
             if (!idPattern.test(reqId)) {
                 errors.push({
                     file,
                     reqId,
                     field: 'id',
                     value: reqId,
-                    message: `Invalid ID format. Expected: VEND-{CORE|INT|ICT|GDP}-NNN`
+                    message: `Invalid ID format. Expected: VEND-{CORE|INT|ICT|ISS|TSP|SCA}-NNN`
                 });
             }
 
@@ -142,29 +149,25 @@ function validate() {
                 });
             }
 
-            // Validate applicability (MANDATORY for VCQ)
-            // DEC-254: Map legacy pif/vif to consolidated 'intermediary'
-            const legacyTypes = new Set(['pif', 'vif']);
-
-            if (req.applicability) {
-                if (!Array.isArray(req.applicability)) {
+            // DEC-257: Validate roles field (schema v2)
+            if (req.roles !== undefined) {
+                if (!Array.isArray(req.roles)) {
                     errors.push({
                         file,
                         reqId,
-                        field: 'applicability',
-                        value: req.applicability,
-                        message: `'applicability' must be an array, e.g. [intermediary]`
+                        field: 'roles',
+                        value: req.roles,
+                        message: `'roles' must be an array (empty for universal, or [relying_party, issuer])`
                     });
                 } else {
-                    for (const type of req.applicability) {
-                        // Accept legacy pif/vif (maps to intermediary) or new intermediary
-                        if (!validIntermediaryTypes.has(type) && !legacyTypes.has(type)) {
+                    for (const role of req.roles) {
+                        if (!validRoles.has(role)) {
                             errors.push({
                                 file,
                                 reqId,
-                                field: 'applicability',
-                                value: type,
-                                message: `Invalid intermediary type: "${type}". Valid types: ${[...validIntermediaryTypes].join(', ')}`
+                                field: 'roles',
+                                value: role,
+                                message: `Invalid role: "${role}". Valid roles: ${[...validRoles].join(', ')}`
                             });
                         }
                     }
@@ -173,9 +176,42 @@ function validate() {
                 errors.push({
                     file,
                     reqId,
-                    field: 'applicability',
+                    field: 'roles',
                     value: 'MISSING',
-                    message: `Requirement is missing 'applicability:' field. Specify which intermediary types this applies to.`
+                    message: `Requirement is missing 'roles:' field. Use [] for universal, or [relying_party] / [issuer]`
+                });
+            }
+
+            // DEC-257: Validate productCategories field (schema v2)
+            if (req.productCategories !== undefined) {
+                if (!Array.isArray(req.productCategories)) {
+                    errors.push({
+                        file,
+                        reqId,
+                        field: 'productCategories',
+                        value: req.productCategories,
+                        message: `'productCategories' must be an array (empty for universal)`
+                    });
+                } else {
+                    for (const cat of req.productCategories) {
+                        if (!validProductCategories.has(cat)) {
+                            errors.push({
+                                file,
+                                reqId,
+                                field: 'productCategories',
+                                value: cat,
+                                message: `Invalid product category: "${cat}". Valid: ${[...validProductCategories].join(', ')}`
+                            });
+                        }
+                    }
+                }
+            } else {
+                errors.push({
+                    file,
+                    reqId,
+                    field: 'productCategories',
+                    value: 'MISSING',
+                    message: `Requirement is missing 'productCategories:' field. Use [] for universal.`
                 });
             }
 
@@ -402,8 +438,8 @@ function validate() {
 
     console.log('\n✅ VCQ configuration is valid and consistent!');
     console.log(`   📄 ${requirementFiles.length} requirement files validated`);
-    console.log(`   📋 ${totalRequirements} total requirements`);
-    console.log(`   🔗 All categories and applicability values are valid`);
+    console.log(`   📝 ${totalRequirements} total requirements`);
+    console.log(`   ✅ All categories, roles, and productCategories are valid`);
     if (arfValidation.checked) {
         console.log(`   📐 ${arfValidation.valid} ARF HLR references validated\n`);
     } else {

@@ -10,9 +10,9 @@
 # - Central securities depositories
 # - Trading venues, central counterparties
 #
-# Schema Version: 1
+# Schema Version: 2
 # Created: 2026-01-22
-# Decision: DEC-222
+# Decision: DEC-222, DEC-257
 
 schemaVersion: 1
 
@@ -40,9 +40,8 @@ requirements:
       functions and ICT services are to be provided and data processed; 
       (c) provisions on availability, authenticity, integrity and 
       confidentiality in relation to data protection...
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: critical
@@ -65,9 +64,8 @@ requirements:
       The rights of the financial entity and, where applicable, the relevant 
       competent authority in relation to access, inspection and audit of the 
       ICT third-party service provider.
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: critical
@@ -87,9 +85,8 @@ requirements:
       Provisions on exit strategies, including a mandatory adequate transition 
       period during which the ICT third-party service provider will continue 
       providing the respective functions or ICT services.
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: critical
@@ -105,9 +102,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 28"
       paragraph: "1"
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high
@@ -128,9 +124,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 28"
       paragraph: "3"
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high
@@ -147,9 +142,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 29"
       paragraph: "1"
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high
@@ -173,9 +167,8 @@ requirements:
       The obligation of the ICT third-party service provider to provide 
       assistance in case of an ICT incident at no additional cost or at a 
       cost that is determined ex-ante.
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: critical
@@ -191,9 +184,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 26"
       paragraph: "4"
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: medium
@@ -212,9 +204,8 @@ requirements:
     legalText: |
       Provisions on the implementation and testing of business continuity 
       measures and on the establishment of contingency plans.
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high
@@ -239,9 +230,8 @@ requirements:
       Provisions on the possibility, conditions and modalities of subcontracting 
       by the ICT third-party service provider, and in particular for 
       subcontracting ICT services supporting critical or important functions.
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high
@@ -261,9 +251,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 28"
       paragraph: "4"
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: medium
@@ -284,9 +273,8 @@ requirements:
       regulation: "2022/2554"
       article: "Article 31"
       paragraph: ""
-    applicability:
-      - pif
-      - vif
+    roles: [relying_party, issuer]
+    productCategories: []
     scope: extended
     deadline: "2025-01-17"
     criticality: high

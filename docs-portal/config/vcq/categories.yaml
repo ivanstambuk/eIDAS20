@@ -81,3 +81,11 @@ categories:
     description: "Insurance and legal effects"
     icon: "⚖️"
     order: 12
+
+  # DEC-257: Added for PSD2 SCA requirements
+  payments:
+    label: "Payments & SCA"
+    description: "Strong Customer Authentication for electronic payments"
+    usage: "PSD2/PSD3 compliance — SCA mechanisms, dynamic linking, transaction authentication"
+    icon: "💳"
+    order: 13

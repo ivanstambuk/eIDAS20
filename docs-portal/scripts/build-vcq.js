@@ -12,12 +12,15 @@
  * Output:
  *   - public/data/vcq-data.json
  * 
+ * ⚠️ Schema v2 (DEC-257): Requirements use roles[] and productCategories[] arrays
+ *   - Empty array = universal (applies to all)
+ *   - Array with values = filter by intersection with user selection
+ * 
  * ⚠️ Field Mapping (must match React components in VendorQuestionnaire.jsx):
  *   - `requirement` (NOT `question`) - the requirement statement text
  *   - `explanation` (NOT `guidance`) - the explanatory details
- *   - `requirementsByType.dora_ict` - key must match scopeExtensions.id in config
  * 
- * Updated: 2026-01-26 (DEC-254: Consolidated PIF/VIF into single RP Intermediary)
+ * Updated: 2026-01-28 (DEC-257: Role/Category filtering)
  */
 
 import fs from 'fs';
@@ -143,12 +146,18 @@ const scopeExtensions = Object.entries(vcqConfig.scopeExtensions || {}).map(([id
 
 const processedRequirements = [];
 
-// Indexes for quick lookup
-// DEC-254: Simplified structure - single 'intermediary' type instead of pif/vif
-const requirementsByType = {
-    intermediary: [],  // All RP Intermediary requirements
-    core: [],          // Requirements from core.yaml (apply to all)
-    dora_ict: []       // DORA ICT extended scope (matches scopeExtensions.id)
+// DEC-257: Schema v2 - Role and Product Category indexes
+const requirementsByRole = {
+    relying_party: [],
+    issuer: [],
+    universal: []  // Empty roles array = applies to all
+};
+
+const requirementsByProductCategory = {
+    connector: [],
+    issuance_platform: [],
+    trust_services: [],
+    universal: []  // Empty productCategories array = applies to all
 };
 
 // DEC-255: Build source group index for 3-tile filtering
@@ -255,8 +264,9 @@ function deriveObligation(req) {
 }
 
 for (const req of allRequirements) {
-    // Determine applicability
-    const applicability = req.applicability || [];
+    // DEC-257: Schema v2 - roles and productCategories arrays
+    const roles = req.roles || [];
+    const productCategories = req.productCategories || [];
     const isExtended = req.scope === 'extended';
 
     // Build deep link for legal basis
@@ -286,8 +296,10 @@ for (const req of allRequirements) {
         legalText: req.legalText?.trim(),
         arfReference: req.arfReference,
         annexReference: req.annexReference?.trim(),
-        applicability: applicability,
-        isCore: applicability.length === 0 || req._sourceFile === 'core.yaml',
+        // DEC-257: Schema v2 fields
+        roles,
+        productCategories,
+        isUniversal: roles.length === 0 && productCategories.length === 0,
         isExtended,
         scope: req.scope || 'core',
         sourceGroup,  // DEC-255: For 3-tile filtering
@@ -304,16 +316,26 @@ for (const req of allRequirements) {
     // Build source group index (DEC-255)
     requirementsBySourceGroup[sourceGroup].push(req.id);
 
-    // Build indexes (DEC-254: simplified)
-    if (isExtended) {
-        requirementsByType.dora_ict.push(req.id);
-    } else if (req._sourceFile === 'core.yaml') {
-        requirementsByType.core.push(req.id);
-    } else if (applicability.includes('intermediary') || req._sourceFile === 'intermediary.yaml') {
-        requirementsByType.intermediary.push(req.id);
+    // DEC-257: Build role index
+    if (roles.length === 0) {
+        requirementsByRole.universal.push(req.id);
     } else {
-        // Default to intermediary for any unspecified requirements
-        requirementsByType.intermediary.push(req.id);
+        roles.forEach(role => {
+            if (requirementsByRole[role]) {
+                requirementsByRole[role].push(req.id);
+            }
+        });
+    }
+
+    // DEC-257: Build product category index
+    if (productCategories.length === 0) {
+        requirementsByProductCategory.universal.push(req.id);
+    } else {
+        productCategories.forEach(cat => {
+            if (requirementsByProductCategory[cat]) {
+                requirementsByProductCategory[cat].push(req.id);
+            }
+        });
     }
 }
 
@@ -323,10 +345,18 @@ for (const req of allRequirements) {
 
 const stats = {
     totalRequirements: processedRequirements.length,
-    byType: {
-        core: requirementsByType.core.length,
-        intermediary: requirementsByType.intermediary.length,
-        dora_ict: requirementsByType.dora_ict.length
+    // DEC-257: Stats by role
+    byRole: {
+        relying_party: requirementsByRole.relying_party.length,
+        issuer: requirementsByRole.issuer.length,
+        universal: requirementsByRole.universal.length
+    },
+    // DEC-257: Stats by product category
+    byProductCategory: {
+        connector: requirementsByProductCategory.connector.length,
+        issuance_platform: requirementsByProductCategory.issuance_platform.length,
+        trust_services: requirementsByProductCategory.trust_services.length,
+        universal: requirementsByProductCategory.universal.length
     },
     // DEC-255: Stats by source group for 3-tile model
     bySourceGroup: {
@@ -391,8 +421,9 @@ const output = {
     // All requirements (flat list with resolved metadata)
     requirements: processedRequirements,
 
-    // Indexes for quick lookup
-    requirementsByType,
+    // DEC-257: Indexes for role/category filtering
+    requirementsByRole,
+    requirementsByProductCategory,
 
     // DEC-255: Index by source group for 3-tile filtering
     requirementsBySourceGroup,
@@ -411,15 +442,20 @@ console.log(`\n✅ VCQ data built successfully!`);
 console.log(`   📁 Output: ${OUTPUT_FILE}`);
 console.log(`   📊 Stats:`);
 console.log(`      - ${stats.totalRequirements} total requirements`);
-console.log(`      - ${stats.byType.core} core requirements`);
-console.log(`      - ${stats.byType.intermediary} RP Intermediary requirements`);
-console.log(`      - ${stats.byType.dora_ict} extended scope (DORA ICT)`);
-console.log(`   📦 By Source Group (DEC-255):`);
+console.log(`   👤 By Role (DEC-257):`);
+console.log(`      - Relying Party: ${stats.byRole.relying_party}`);
+console.log(`      - Issuer: ${stats.byRole.issuer}`);
+console.log(`      - Universal: ${stats.byRole.universal}`);
+console.log(`   📦 By Product Category (DEC-257):`);
+console.log(`      - Connector: ${stats.byProductCategory.connector}`);
+console.log(`      - Issuance Platform: ${stats.byProductCategory.issuance_platform}`);
+console.log(`      - Trust Services: ${stats.byProductCategory.trust_services}`);
+console.log(`      - Universal: ${stats.byProductCategory.universal}`);
+console.log(`   🏛️ By Source Group:`);
 console.log(`      - eIDAS: ${stats.bySourceGroup.eidas}`);
 console.log(`      - GDPR: ${stats.bySourceGroup.gdpr}`);
 console.log(`      - DORA: ${stats.bySourceGroup.dora}`);
 console.log(`      - ARF: ${stats.bySourceGroup.arf}`);
-console.log(`      - Criticality: ${stats.byCriticality.critical} critical, ${stats.byCriticality.high} high`);
 console.log(`   📋 RFC 2119 Obligations:`);
 console.log(`      - MUST: ${stats.byObligation['MUST']}, SHOULD: ${stats.byObligation['SHOULD']}, MAY: ${stats.byObligation['MAY']}`);
 console.log('');

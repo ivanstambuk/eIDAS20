@@ -9,9 +9,9 @@
 # NOTE: Per DEC-254, the previous PIF/VIF distinction has been retired.
 # The ARF (RPI_09) treats verification as part of the unified RP Intermediary role.
 #
-# Schema Version: 1
+# Schema Version: 2
 # Created: 2026-01-26
-# Decision: DEC-254 (Consolidated from DEC-222 PIF/VIF split)
+# Decision: DEC-254, DEC-257 (Consolidated from DEC-222 PIF/VIF split)
 
 schemaVersion: 1
 
@@ -39,8 +39,8 @@ requirements:
       When an intermediary requests attestations from a wallet unit, the wallet 
       unit shall display both the identity of the intermediary and the identity 
       of the relying party on whose behalf the intermediary is acting.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: high
   
@@ -61,8 +61,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_06"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-REG-003
     deadline: "2027-11-21"
@@ -86,8 +86,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_06"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: high
   
@@ -108,8 +108,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -128,8 +128,8 @@ requirements:
       Annex to 2024/2982:
       - ISO/IEC 18013-5:2021 (proximity)
       - ISO/IEC TS 18013-7:2024 (remote)
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-002
     deadline: "2027-11-21"
@@ -150,8 +150,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -178,8 +178,8 @@ requirements:
     arfReference:
       topic: "Topic 1"
       hlr: "OIA_12"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-001
     deadline: "2027-11-21"
@@ -199,8 +199,8 @@ requirements:
     arfReference:
       topic: "Topic 1"
       hlr: "OIA_13"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -218,8 +218,8 @@ requirements:
       regulation: "2014/910"
       article: "Article 32"
       paragraph: ""
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -244,8 +244,8 @@ requirements:
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_05"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -264,8 +264,8 @@ requirements:
     arfReference:
       topic: "Topic 7"
       hlr: "VCR_13"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -283,8 +283,8 @@ requirements:
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_07"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -302,8 +302,8 @@ requirements:
     arfReference:
       topic: "Topic 6"
       hlr: "RPA_08"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: high
   
@@ -325,8 +325,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -344,8 +344,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_09"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: high
   
@@ -360,8 +360,8 @@ requirements:
       regulation: "2024/2979"
       article: "Article 3"
       paragraph: ""
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -379,8 +379,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_08"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -400,8 +400,8 @@ requirements:
       The controller and processor shall implement measures to ensure a process 
       for regularly testing, assessing and evaluating the effectiveness of 
       technical and organisational measures for ensuring the security of processing.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: medium
     notes: |
@@ -423,8 +423,8 @@ requirements:
       regulation: "2014/910"
       article: "Article 5b"
       paragraph: "10"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     criticality: critical
     deadline: "2027-11-21"
   
@@ -439,8 +439,8 @@ requirements:
       regulation: "2014/910"
       article: "Article 5a"
       paragraph: "16(a)"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-PRV-003
     deadline: "2027-11-21"
@@ -462,8 +462,8 @@ requirements:
       regulation: "2014/910"
       article: "Article 5b"
       paragraph: "10"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: critical
   
@@ -491,8 +491,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_05"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-REG-003
     deadline: "2027-11-21"
@@ -517,8 +517,8 @@ requirements:
       Annex II of 2024/2979:
       - ISO/IEC.18013-5:2021
       - 'Verifiable Credentials Data Model 1.1', W3C Recommendation
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-001
     deadline: "2027-11-21"
@@ -535,8 +535,8 @@ requirements:
       regulation: "2024/2982"
       article: "Article 5"
       paragraph: "4"
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-003
     deadline: "2027-11-21"
@@ -558,8 +558,8 @@ requirements:
       regulation: "2019/881"
       article: "Article 47"
       paragraph: ""
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     deadline: "2027-11-21"
     criticality: medium
     notes: |
@@ -587,8 +587,8 @@ requirements:
       Wallet instances shall verify whether the wallet-relying party complies 
       with the requirements of the embedded disclosure policy and inform the 
       wallet user of the result.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-PRV-010
     deadline: "2027-11-21"
@@ -612,8 +612,8 @@ requirements:
     annexReference: |
       Annex V of 2024/2979:
       - 'Web Authentication', W3C Recommendation
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-004
     deadline: "2027-11-21"
@@ -633,8 +633,8 @@ requirements:
     legalText: |
       A pseudonym shall be relying-party specific, meaning that only wallets 
       and relying parties can link different transactions to the same pseudonym.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-005
     deadline: "2027-11-21"
@@ -656,8 +656,8 @@ requirements:
       Wallet providers shall ensure that wallet solutions support protocols 
       and interfaces which allow wallet-relying parties to present a valid 
       wallet-relying party access certificate.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-007
     deadline: "2027-11-21"
@@ -679,8 +679,8 @@ requirements:
       Wallet providers shall ensure that wallet solutions support protocols 
       and interfaces which allow users to request erasure of their personal 
       data from wallet-relying parties.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-008
     deadline: "2027-11-21"
@@ -702,8 +702,8 @@ requirements:
       Wallet providers shall ensure that wallet units allow wallet users to 
       easily report wallet-relying parties to supervisory authorities 
       established under Article 51 of Regulation (EU) 2016/679.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-GOV-006
     deadline: "2027-11-21"
@@ -734,8 +734,8 @@ requirements:
       a presentation of attributes from a specific Wallet Unit. In the request, the 
       intermediary SHALL include the intermediary's access certificate and the 
       registration certificate of the Relying Party, if available.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-007
     deadline: "2027-11-21"
@@ -767,8 +767,8 @@ requirements:
       this intermediary to interact with Wallet Units. The Registrar SHALL verify 
       this evidence and register the relationship between the intermediary and the 
       intermediated Relying Party.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-REG-001
     deadline: "2027-11-21"
@@ -798,8 +798,8 @@ requirements:
       Wallet providers shall ensure that wallet units support mechanisms for 
       checking the revocation status of attestations in accordance with the 
       methods specified by the issuing PID Provider or Attestation Provider.
-    applicability:
-      - intermediary
+    roles: [relying_party]
+    productCategories: [connector]
     linkedRCA:
       - RP-TEC-001
     deadline: "2027-11-21"

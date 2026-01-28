@@ -1,12 +1,12 @@
 # VCQ Requirements: Core (VEND-CORE-*)
 # 
-# These requirements apply to ALL intermediary types (PIF and VIF).
+# These requirements apply universally to all roles and product categories.
 # They represent the baseline legal obligations for any vendor acting
 # as an intermediary in the EUDIW ecosystem.
 #
-# Schema Version: 1
+# Schema Version: 2
 # Created: 2026-01-22
-# Decision: DEC-222
+# Decision: DEC-222, DEC-257
 
 schemaVersion: 1
 
@@ -31,9 +31,8 @@ requirements:
     legalText: |
       Intermediaries acting on behalf of relying parties shall be deemed to be 
       relying parties and shall not store data about the content of the transaction.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-GOV-001
     deadline: "2027-11-21"
@@ -58,9 +57,8 @@ requirements:
       processing, the nature and purpose of the processing, the type of personal 
       data and categories of data subjects and the obligations and rights of the 
       controller.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-PRV-006
     deadline: "2027-11-21"
@@ -83,9 +81,8 @@ requirements:
       necessary to demonstrate compliance with the obligations laid down in 
       this Article and allow for and contribute to audits, including inspections, 
       conducted by the controller or another auditor mandated by the controller.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: high
   
@@ -111,9 +108,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "Reg_23"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-REG-001
     deadline: "2027-11-21"
@@ -133,9 +129,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_02"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: critical
   
@@ -161,9 +156,8 @@ requirements:
       of natural persons, the controller and processor shall implement appropriate 
       technical and organisational measures to ensure a level of security 
       appropriate to the risk.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-SEC-001
     deadline: "2027-11-21"
@@ -183,9 +177,8 @@ requirements:
     legalText: |
       The processor shall notify the controller without undue delay after 
       becoming aware of a personal data breach.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: critical
   
@@ -203,9 +196,8 @@ requirements:
       The processor shall ensure that persons authorised to process the 
       personal data have committed themselves to confidentiality or are 
       under an appropriate statutory obligation of confidentiality.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: high
   
@@ -228,9 +220,8 @@ requirements:
       The processor shall process the personal data only on documented 
       instructions from the controller, including with regard to transfers 
       of personal data to a third country or an international organisation.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-PRV-001
     deadline: "2027-11-21"
@@ -252,9 +243,8 @@ requirements:
       and organisational measures, insofar as this is possible, for the 
       fulfilment of the controller's obligation to respond to requests for 
       exercising the data subject's rights.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: high
   
@@ -279,9 +269,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_07"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-REG-005
     deadline: "2027-11-21"
@@ -298,9 +287,8 @@ requirements:
       regulation: "2016/679"
       article: "Article 28"
       paragraph: "3(a)"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: medium
   
@@ -325,9 +313,8 @@ requirements:
       general written authorisation, the processor shall inform the controller 
       of any intended changes concerning the addition or replacement of other 
       processors.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: high
   
@@ -346,9 +333,8 @@ requirements:
       At the choice of the controller, the processor shall delete or return 
       all the personal data to the controller after the end of the provision 
       of services relating to processing.
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     deadline: "2027-11-21"
     criticality: high
   
@@ -376,9 +362,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_01"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-REG-001
     deadline: "2027-11-21"
@@ -403,9 +388,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_03"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-REG-003
     deadline: "2027-11-21"
@@ -430,9 +414,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_04"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-REG-006
     deadline: "2027-11-21"
@@ -458,9 +441,8 @@ requirements:
     arfReference:
       topic: "Topic 52"
       hlr: "RPI_09"
-    applicability:
-      - pif
-      - vif
+    roles: []
+    productCategories: []
     linkedRCA:
       - RP-TEC-003
     deadline: "2027-11-21"

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-26T18:03:59.307Z",
+  "generatedAt": "2026-01-28T03:30:06.383Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -122,6 +122,13 @@
       "description": "Insurance and legal effects",
       "icon": "⚖️",
       "order": 12
+    },
+    {
+      "id": "payments",
+      "label": "Payments & SCA",
+      "description": "Strong Customer Authentication for electronic payments",
+      "icon": "💳",
+      "order": 13
     }
   ],
   "legalSources": {
@@ -275,11 +282,9 @@
       },
       "legalBasisLink": "/regulation/2014-910#article-5b",
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -305,11 +310,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "Processing by a processor shall be governed by a contract or other legal act \nunder Union or Member State law, that is binding on the processor with regard \nto the controller and that sets out the subject-matter and duration of the \nprocessing, the nature and purpose of the processing, the type of personal \ndata and categories of data subjects and the obligations and rights of the \ncontroller.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -335,11 +338,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "The processor shall make available to the controller all information \nnecessary to demonstrate compliance with the obligations laid down in \nthis Article and allow for and contribute to audits, including inspections, \nconducted by the controller or another auditor mandated by the controller.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -367,11 +368,9 @@
         "topic": "Topic 52",
         "hlr": "Reg_23"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -400,11 +399,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_02"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -428,11 +425,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-32",
       "legalText": "Taking into account the state of the art, the costs of implementation \nand the nature, scope, context and purposes of processing as well as \nthe risk of varying likelihood and severity for the rights and freedoms \nof natural persons, the controller and processor shall implement appropriate \ntechnical and organisational measures to ensure a level of security \nappropriate to the risk.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -458,11 +453,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-33",
       "legalText": "The processor shall notify the controller without undue delay after \nbecoming aware of a personal data breach.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -486,11 +479,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "The processor shall ensure that persons authorised to process the \npersonal data have committed themselves to confidentiality or are \nunder an appropriate statutory obligation of confidentiality.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -514,11 +505,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "The processor shall process the personal data only on documented \ninstructions from the controller, including with regard to transfers \nof personal data to a third country or an international organisation.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -544,11 +533,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "The processor shall assist the controller by appropriate technical \nand organisational measures, insofar as this is possible, for the \nfulfilment of the controller's obligation to respond to requests for \nexercising the data subject's rights.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -576,11 +563,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_07"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -605,11 +590,9 @@
         "paragraph": "3(a)"
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -633,11 +616,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "The processor shall not engage another processor without prior specific \nor general written authorisation of the controller. In the case of \ngeneral written authorisation, the processor shall inform the controller \nof any intended changes concerning the addition or replacement of other \nprocessors.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -661,11 +642,9 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-28",
       "legalText": "At the choice of the controller, the processor shall delete or return \nall the personal data to the controller after the end of the provision \nof services relating to processing.",
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -693,11 +672,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_01"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -727,11 +704,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_03"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -761,11 +736,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_04"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -795,11 +768,9 @@
         "topic": "Topic 52",
         "hlr": "RPI_09"
       },
-      "applicability": [
-        "pif",
-        "vif"
-      ],
-      "isCore": true,
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -825,11 +796,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "Contractual arrangements on the use of ICT services shall include at \nleast the following: (a) a clear and complete description of all \nfunctions and ICT services to be provided; (b) the locations where \nfunctions and ICT services are to be provided and data processed; \n(c) provisions on availability, authenticity, integrity and \nconfidentiality in relation to data protection...",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -854,11 +826,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "The rights of the financial entity and, where applicable, the relevant \ncompetent authority in relation to access, inspection and audit of the \nICT third-party service provider.",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -882,11 +855,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "Provisions on exit strategies, including a mandatory adequate transition \nperiod during which the ICT third-party service provider will continue \nproviding the respective functions or ICT services.",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -909,11 +883,12 @@
         "paragraph": "1"
       },
       "legalBasisLink": "/regulation/2022-2554#article-28",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -936,11 +911,12 @@
         "paragraph": "3"
       },
       "legalBasisLink": "/regulation/2022-2554#article-28",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -963,11 +939,12 @@
         "paragraph": "1"
       },
       "legalBasisLink": "/regulation/2022-2554#article-29",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -991,11 +968,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "The obligation of the ICT third-party service provider to provide \nassistance in case of an ICT incident at no additional cost or at a \ncost that is determined ex-ante.",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1018,11 +996,12 @@
         "paragraph": "4"
       },
       "legalBasisLink": "/regulation/2022-2554#article-26",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1046,11 +1025,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "Provisions on the implementation and testing of business continuity \nmeasures and on the establishment of contingency plans.",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1074,11 +1054,12 @@
       },
       "legalBasisLink": "/regulation/2022-2554#article-30",
       "legalText": "Provisions on the possibility, conditions and modalities of subcontracting \nby the ICT third-party service provider, and in particular for \nsubcontracting ICT services supporting critical or important functions.",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1101,11 +1082,12 @@
         "paragraph": "4"
       },
       "legalBasisLink": "/regulation/2022-2554#article-28",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1128,11 +1110,12 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2022-2554#article-31",
-      "applicability": [
-        "pif",
-        "vif"
+      "roles": [
+        "relying_party",
+        "issuer"
       ],
-      "isCore": false,
+      "productCategories": [],
+      "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
       "sourceGroup": "dora",
@@ -1161,10 +1144,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_07"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1192,10 +1178,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_06"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1224,10 +1213,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_06"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1255,10 +1247,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1282,10 +1277,13 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-5",
       "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1314,10 +1312,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1345,10 +1346,13 @@
         "topic": "Topic 1",
         "hlr": "OIA_12"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1377,10 +1381,13 @@
         "topic": "Topic 1",
         "hlr": "OIA_13"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1407,10 +1414,13 @@
         "topic": "Topic 1",
         "hlr": "OIA_14"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1438,10 +1448,13 @@
         "topic": "Topic 6",
         "hlr": "RPA_05"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1468,10 +1481,13 @@
         "topic": "Topic 7",
         "hlr": "VCR_13"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1498,10 +1514,13 @@
         "topic": "Topic 6",
         "hlr": "RPA_07"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1528,10 +1547,13 @@
         "topic": "Topic 6",
         "hlr": "RPA_08"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1558,10 +1580,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1588,10 +1613,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_09"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1614,10 +1642,13 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-3",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1644,10 +1675,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_08"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1671,10 +1705,13 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-32",
       "legalText": "The controller and processor shall implement measures to ensure a process \nfor regularly testing, assessing and evaluating the effectiveness of \ntechnical and organisational measures for ensuring the security of processing.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
@@ -1698,10 +1735,13 @@
         "paragraph": "10"
       },
       "legalBasisLink": "/regulation/2014-910#article-5b",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1724,10 +1764,13 @@
         "paragraph": "16(a)"
       },
       "legalBasisLink": "/regulation/2014-910#article-5a",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1756,10 +1799,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_10"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1787,10 +1833,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_05"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1816,10 +1865,13 @@
       },
       "legalBasisLink": "/regulation/2024-2979#article-8",
       "annexReference": "Annex II of 2024/2979:\n- ISO/IEC.18013-5:2021\n- 'Verifiable Credentials Data Model 1.1', W3C Recommendation",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1844,10 +1896,13 @@
         "paragraph": "4"
       },
       "legalBasisLink": "/regulation/2024-2982#article-5",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1872,10 +1927,13 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2019-881#article-47",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1900,10 +1958,13 @@
       },
       "legalBasisLink": "/regulation/2024-2979#article-10",
       "legalText": "Wallet instances shall verify whether the wallet-relying party complies \nwith the requirements of the embedded disclosure policy and inform the \nwallet user of the result.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1930,10 +1991,13 @@
       "legalBasisLink": "/regulation/2024-2979#article-14",
       "legalText": "Wallet units shall support the generation of pseudonyms for wallet users \nin compliance with the technical specifications set out in Annex V.",
       "annexReference": "Annex V of 2024/2979:\n- 'Web Authentication', W3C Recommendation",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1959,10 +2023,13 @@
       },
       "legalBasisLink": "/regulation/2024-2979#article-14",
       "legalText": "A pseudonym shall be relying-party specific, meaning that only wallets \nand relying parties can link different transactions to the same pseudonym.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -1988,10 +2055,13 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-3",
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow wallet-relying parties to present a valid \nwallet-relying party access certificate.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2017,10 +2087,13 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-6",
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow users to request erasure of their personal \ndata from wallet-relying parties.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2046,10 +2119,13 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-7",
       "legalText": "Wallet providers shall ensure that wallet units allow wallet users to \neasily report wallet-relying parties to supervisory authorities \nestablished under Article 51 of Regulation (EU) 2016/679.",
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2079,10 +2155,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_06"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2113,10 +2192,13 @@
         "topic": "Topic 52",
         "hlr": "RPI_04"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2147,10 +2229,13 @@
         "topic": "Topic 7",
         "hlr": "VCR_13"
       },
-      "applicability": [
-        "intermediary"
+      "roles": [
+        "relying_party"
       ],
-      "isCore": false,
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
@@ -2164,8 +2249,20 @@
       "_sourceFile": "intermediary.yaml"
     }
   ],
-  "requirementsByType": {
-    "intermediary": [
+  "requirementsByRole": {
+    "relying_party": [
+      "VEND-ICT-001",
+      "VEND-ICT-002",
+      "VEND-ICT-003",
+      "VEND-ICT-004",
+      "VEND-ICT-005",
+      "VEND-ICT-006",
+      "VEND-ICT-007",
+      "VEND-ICT-008",
+      "VEND-ICT-009",
+      "VEND-ICT-010",
+      "VEND-ICT-011",
+      "VEND-ICT-012",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -2201,7 +2298,21 @@
       "VEND-INT-033",
       "VEND-INT-034"
     ],
-    "core": [
+    "issuer": [
+      "VEND-ICT-001",
+      "VEND-ICT-002",
+      "VEND-ICT-003",
+      "VEND-ICT-004",
+      "VEND-ICT-005",
+      "VEND-ICT-006",
+      "VEND-ICT-007",
+      "VEND-ICT-008",
+      "VEND-ICT-009",
+      "VEND-ICT-010",
+      "VEND-ICT-011",
+      "VEND-ICT-012"
+    ],
+    "universal": [
       "VEND-CORE-001",
       "VEND-CORE-002",
       "VEND-CORE-003",
@@ -2220,8 +2331,66 @@
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018"
+    ]
+  },
+  "requirementsByProductCategory": {
+    "connector": [
+      "VEND-INT-001",
+      "VEND-INT-002",
+      "VEND-INT-003",
+      "VEND-INT-004",
+      "VEND-INT-005",
+      "VEND-INT-006",
+      "VEND-INT-007",
+      "VEND-INT-008",
+      "VEND-INT-009",
+      "VEND-INT-010",
+      "VEND-INT-011",
+      "VEND-INT-012",
+      "VEND-INT-013",
+      "VEND-INT-014",
+      "VEND-INT-015",
+      "VEND-INT-016",
+      "VEND-INT-017",
+      "VEND-INT-018",
+      "VEND-INT-019",
+      "VEND-INT-020",
+      "VEND-INT-021",
+      "VEND-INT-022",
+      "VEND-INT-023",
+      "VEND-INT-024",
+      "VEND-INT-025",
+      "VEND-INT-026",
+      "VEND-INT-027",
+      "VEND-INT-028",
+      "VEND-INT-029",
+      "VEND-INT-030",
+      "VEND-INT-031",
+      "VEND-INT-032",
+      "VEND-INT-033",
+      "VEND-INT-034"
     ],
-    "dora_ict": [
+    "issuance_platform": [],
+    "trust_services": [],
+    "universal": [
+      "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
+      "VEND-CORE-004",
+      "VEND-CORE-005",
+      "VEND-CORE-006",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
+      "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014",
+      "VEND-CORE-015",
+      "VEND-CORE-016",
+      "VEND-CORE-017",
+      "VEND-CORE-018",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -2311,10 +2480,16 @@
   },
   "stats": {
     "totalRequirements": 64,
-    "byType": {
-      "core": 18,
-      "intermediary": 34,
-      "dora_ict": 12
+    "byRole": {
+      "relying_party": 46,
+      "issuer": 12,
+      "universal": 18
+    },
+    "byProductCategory": {
+      "connector": 34,
+      "issuance_platform": 0,
+      "trust_services": 0,
+      "universal": 30
     },
     "bySourceGroup": {
       "eidas": 41,
