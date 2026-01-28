@@ -88,7 +88,7 @@ A real deep-dive must include **at least 3** of:
 |-----------|-------------|-------|
 | Art. 3(1) | Documented, tested, audited measures | ✅ Yes |
 | Art. 3(2) | Audit frequency, TRA exemption audit | ✅ Yes |
-| Art. 3(3) | Audit report availability | ❌ No |
+| Art. 3(3) | Audit report availability | ✅ Yes |
 
 ### Article 4 — Authentication Code
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 39 |
-| ❌ Not Done | 8 |
+| ✅ Done | 40 |
+| ❌ Not Done | 7 |
 | **Total** | 47 |
 
 ---
@@ -186,6 +186,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 5(3)(b) | Deep-dive: Batch auth code computation, hash methods, Merkle tree, H2H exemption, gaps BAC-1 to BAC-4 |
 | 2026-01-28 | Art. 3(1) | Deep-dive: Four-pillar assurance, certification reliance model, PSP audit scope, gaps SMR-1 to SMR-4 |
 | 2026-01-28 | Art. 3(2) | Deep-dive: Two-tier audit system, TRA thresholds, external auditor requirements, gaps AF-1 to AF-4 |
+| 2026-01-28 | Art. 3(3) | Deep-dive: Audit report structure, regulatory access, CA request scenarios, gaps AR-1 to AR-4 |
 
 ---
 

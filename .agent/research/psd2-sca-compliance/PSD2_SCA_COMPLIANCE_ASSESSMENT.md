@@ -6124,6 +6124,129 @@ The TRA exemption links transaction limits to fraud rate performance:
 
 **Status**: ❌ PSP Obligation — only if using TRA exemption.
 
+<details>
+<summary><strong>🔍 Deep-Dive: Audit Report and Regulatory Access</strong></summary>
+
+##### Core Requirement: Compliance Evaluation Report
+
+Article 3(3) mandates that the audit produce a **comprehensive evaluation** covering:
+
+| Requirement | Description |
+|-------------|-------------|
+| **Evaluation** | Assessment of PSP's security measures |
+| **Full Report** | Complete audit documentation |
+| **Availability** | Must be provided to competent authorities on request |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Audit Report Structure                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. EXECUTIVE SUMMARY                                                       │
+│     ├── Overall compliance assessment                                       │
+│     ├── Key findings                                                        │
+│     └── Recommendations                                                     │
+│                                                                             │
+│  2. SCOPE AND METHODOLOGY                                                   │
+│     ├── RTS requirements covered                                            │
+│     ├── Audit procedures performed                                          │
+│     └── Sampling approach                                                   │
+│                                                                             │
+│  3. SECURITY MEASURES EVALUATION                                            │
+│     ├── Art. 4: Authentication code requirements                           │
+│     ├── Art. 5: Dynamic linking compliance                                  │
+│     ├── Art. 6-8: SCA factor implementation                                │
+│     ├── Art. 9: Independence of elements                                    │
+│     ├── Art. 22: PSC lifecycle management                                   │
+│     └── Art. 23-27: Credential management                                   │
+│                                                                             │
+│  4. TRA EXEMPTION ASSESSMENT (if applicable)                               │
+│     ├── Methodology validation                                              │
+│     ├── Model effectiveness                                                 │
+│     └── Fraud rate accuracy                                                 │
+│                                                                             │
+│  5. FINDINGS AND OBSERVATIONS                                               │
+│     ├── Compliance gaps                                                     │
+│     ├── Control weaknesses                                                  │
+│     └── Remediation recommendations                                         │
+│                                                                             │
+│  6. APPENDICES                                                              │
+│     ├── Technical testing results                                           │
+│     ├── Evidence inventory                                                  │
+│     └── Auditor credentials                                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Regulatory Authority Access
+
+| Authority | Jurisdiction | Access Rights |
+|-----------|--------------|---------------|
+| **National Competent Authority** | Member State | Full report on request |
+| **EBA** | EU-wide | Coordination, guidance |
+| **ECB** | Eurozone banks | Banking supervision |
+| **FCA** | UK (post-Brexit) | Full report on request |
+
+##### Report Availability Requirements
+
+| Aspect | Requirement |
+|--------|-------------|
+| **Timing** | Upon request (no fixed deadline) |
+| **Format** | Complete document (not summary) |
+| **Retention** | Per applicable record-keeping laws |
+| **Language** | Member State official language |
+
+##### EUDI Wallet Integration Considerations
+
+| Audit Area | Wallet Evidence | PSP Audit Responsibility |
+|------------|-----------------|---------------------------|
+| **SCA factors** | Wallet certification (CIR 2024/2981) | Integration verification |
+| **Dynamic linking** | Attestation generation | Verification logic |
+| **PSC lifecycle** | Key management certification | API integration |
+| **Fraud monitoring** | Device risk signals | TRA model effectiveness |
+
+##### Report Content Mapping to RTS
+
+| RTS Article | Report Section | Evaluation Criteria |
+|-------------|----------------|---------------------|
+| Art. 2 | Transaction Monitoring | Fraud detection effectiveness |
+| Art. 3 | Audit Framework | Audit process documentation |
+| Art. 4 | Authentication Code | Cryptographic strength, uniqueness |
+| Art. 5 | Dynamic Linking | Amount/payee binding verification |
+| Art. 6-8 | SCA Factors | Implementation of K/P/I elements |
+| Art. 9 | Independence | Breach isolation verification |
+| Art. 10-18 | Exemptions | Criteria application, fraud rates |
+| Art. 22-27 | PSC Management | Lifecycle security controls |
+
+##### Competent Authority Request Scenarios
+
+| Scenario | Trigger | Timeline |
+|----------|---------|----------|
+| **Routine supervision** | Scheduled review | Standard response |
+| **Incident investigation** | Security breach reported | Expedited response |
+| **Threshold breach** | Fraud rate exceeds limit | Immediate |
+| **Complaint** | Consumer or TPP complaint | Case-dependent |
+
+##### Gap Analysis: Audit Report
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **AR-1** | Report template not standardized | Medium | EBA template publication |
+| **AR-2** | Wallet certification reliance not explicit | Medium | Document in report scope |
+| **AR-3** | Response timeline to CA requests undefined | Low | Define SLA in guidance |
+| **AR-4** | Cross-border cooperation not addressed | Low | Reference EBA cooperation framework |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Report Template**: Provide standard audit report template for wallet-integrated PSPs
+2. **Certification Reliance**: Document how wallet certification satisfies audit evidence
+3. **Response SLA**: Define reasonable response time to competent authority requests
+4. **Evidence Mapping**: Map wallet attestation evidence to RTS requirements
+5. **Cross-border**: Reference EBA cross-border cooperation procedures
+6. **Retention**: Define minimum retention period for audit reports
+
+</details>
+
 ---
 
 
