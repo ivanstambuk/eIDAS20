@@ -2636,3 +2636,46 @@ The VCQ source selection UI had 5 toggle cards (eIDAS, IAs, GDPR, DORA, ARF), bu
 - DEC-254: VCQ Intermediary Consolidation (same session)
 - DEC-222: VCQ Tool Implementation (original design)
 
+
+---
+
+## DEC-256: No Public/Private Sector Toggle for VCQ
+
+**Date:** 2026-01-28  
+**Status:** Decided  
+**Category:** VCQ Tool / Scope Definition
+
+**Context:**  
+Question arose whether the VCQ should include a toggle to filter requirements based on whether the customer (operator) is a public or private sector entity, similar to the RCA which has such a toggle.
+
+**Decision:** **Do NOT add a public/private sector toggle to the VCQ.**
+
+**Analysis Summary:**
+
+After systematic review of eIDAS 2.0, GDPR, DORA, and ARF HLRs, the conclusion is that **technical software requirements are identical** regardless of customer sector. The distinctions found in regulations concern:
+
+| Regulation | Public Sector Provisions | Affects Vendor Software? |
+|------------|-------------------------|-------------------------|
+| **eIDAS Art. 6a(1)** | Public sector MUST accept wallets | ❌ Operator obligation |
+| **eIDAS Art. 45f** | PuB-EAA issuer reliability requirements | ❌ Organizational, not technical |
+| **GDPR Art. 6(1)(f)** | Legitimate interest unavailable to public authorities | ❌ Customer's legal basis choice |
+| **GDPR Art. 37(1)(a)** | DPO mandatory for public authorities | ❌ Customer's org structure |
+| **DORA** | Applies by entity type, not public/private | N/A - uses financial sector filter |
+
+**Key Insight:** The relevant sector distinction is **financial vs non-financial** (DORA filter), not public vs private. DORA requirements translate to actual software capabilities; public/private distinctions do not.
+
+**Exceptions Noted:**
+1. **Accessibility (ACC_01)** — Directive 2016/2102 applies to public sector bodies, but this is covered universally for Wallet requirements
+2. **Authentic Source Integration** — Art. 45e requires public sector authentic sources to provide APIs, but this is an issuer integration feature, not a deployment sector question
+
+**Rationale:**
+1. Technical requirements identical across sectors
+2. Public/private distinctions are organizational (customer responsibility)
+3. Would add complexity without changing software requirements
+4. DORA filter already captures the relevant sector distinction
+
+**Full Analysis:** [.agent/research/vcq-public-private-sector-analysis.md](.agent/research/vcq-public-private-sector-analysis.md)
+
+**Related Decisions:**
+- DEC-222: VCQ Tool Implementation
+- DEC-255: VCQ Source Selection Simplification
