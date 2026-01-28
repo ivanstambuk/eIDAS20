@@ -1824,6 +1824,164 @@ Article 27(a) covers three operations, each with different implications:
 2. Reject VPs using revoked attestations
 3. Optionally publish revocation status (status list / OCSP)
 
+<details>
+<summary><strong>🔍 Deep-Dive: PSP Backend Deactivation & Status Management</strong></summary>
+
+##### Core Requirement: Complete Backend Invalidation
+
+Article 27(b-c) ensures credentials are fully invalidated across all systems:
+
+| Article | Scope | EUDI Wallet Applicability |
+|---------|-------|---------------------------|
+| **27(b)** | Reusable devices | ➖ N/A (per-user binding) |
+| **27(c)** | PSP systems & databases | ❌ PSP Obligation |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                PSP Backend Deactivation Architecture (Art. 27c)              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  PSP BACKEND SYSTEMS                                                        │
+│  ════════════════════                                                        │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                                                                        │ │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │ │
+│  │  │  ATTESTATION REGISTRY                                           │  │ │
+│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │ │
+│  │  │  │  Attestation ID  │  User  │  Status  │  Revoked At       │   │  │ │
+│  │  │  ├──────────────────┼────────┼──────────┼───────────────────┤   │  │ │
+│  │  │  │  att_abc123...   │  U001  │  ACTIVE  │  —                │   │  │ │
+│  │  │  │  att_def456...   │  U001  │  REVOKED │  2026-01-28T02:00 │   │  │ │
+│  │  │  │  att_ghi789...   │  U002  │  ACTIVE  │  —                │   │  │ │
+│  │  │  └──────────────────┴────────┴──────────┴───────────────────┘   │  │ │
+│  │  └─────────────────────────────────────────────────────────────────┘  │ │
+│  │                                                                        │ │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │ │
+│  │  │  VERIFICATION SERVICE                                          │  │ │
+│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │ │
+│  │  │  │  1. Receive VP with attestation                          │   │  │ │
+│  │  │  │  2. Check attestation status in registry                 │   │  │ │
+│  │  │  │  3. If REVOKED → Reject transaction                      │   │  │ │
+│  │  │  │  4. If ACTIVE → Proceed with verification                │   │  │ │
+│  │  │  └──────────────────────────────────────────────────────────┘   │  │ │
+│  │  └─────────────────────────────────────────────────────────────────┘  │ │
+│  │                                                                        │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  PUBLIC REPOSITORIES (Optional)                                             │
+│  ═══════════════════════════════                                             │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Status List 2021 URL: https://psp.example/status/sca-attestations     │ │
+│  │  ┌──────────────────────────────────────────────────────────────────┐  │ │
+│  │  │  Bit array: 0 0 1 0 0 0 1 0 0 1 ...                              │  │ │
+│  │  │  (1 = revoked, 0 = valid)                                        │  │ │
+│  │  └──────────────────────────────────────────────────────────────────┘  │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Why Art. 27(b) is Not Applicable
+
+| Traditional Model | EUDI Wallet Model |
+|-------------------|-------------------|
+| PSP may issue reusable hardware tokens | Attestations bound to device key |
+| Token can be wiped and re-provisioned | Key pair is per-user, non-transferable |
+| Re-use requires secure reset procedure | No re-use scenario exists |
+
+##### PSP Backend Obligations (Art. 27c)
+
+| Obligation | Implementation | Evidence |
+|------------|----------------|----------|
+| **Mark attestation revoked** | Database status field | Audit log entry |
+| **Reject revoked attestations** | Verification service check | Transaction rejection log |
+| **Publish status (optional)** | Status List 2021 endpoint | Public URL |
+| **Retain records** | Compliance database | Retention per AML requirements |
+
+##### Status Management Patterns
+
+| Pattern | Description | Use Case |
+|---------|-------------|----------|
+| **Internal registry** | PSP-only database | Minimum requirement |
+| **Status List 2021** | W3C standard, public URL | Ecosystem interoperability |
+| **OCSP responder** | Real-time status check | High-security transactions |
+| **Credential blacklist** | Deny list of revoked IDs | Legacy integration |
+
+##### Data Retention Requirements
+
+| Data Element | Retention Period | Basis |
+|--------------|------------------|-------|
+| **Attestation ID** | 5+ years | AML Directive |
+| **Revocation timestamp** | 5+ years | PSD2 audit requirements |
+| **Revocation reason** | 5+ years | Fraud investigation |
+| **User identity link** | 5+ years | KYC/AML |
+| **Transaction attempts post-revocation** | 5+ years | Fraud evidence |
+
+##### Verification Flow: Revoked Attestation
+
+```
+┌───────────┐     ┌───────────────┐     ┌───────────────┐
+│  WALLET   │     │  PSP VERIFIER │     │  REGISTRY     │
+└─────┬─────┘     └───────┬───────┘     └───────┬───────┘
+      │                   │                     │
+      │ VP with           │                     │
+      │ attestation       │                     │
+      │──────────────────▶│                     │
+      │                   │                     │
+      │                   │ Check status        │
+      │                   │────────────────────▶│
+      │                   │                     │
+      │                   │ Status: REVOKED     │
+      │                   │◀────────────────────│
+      │                   │                     │
+      │ Reject:           │                     │
+      │ "Attestation      │                     │
+      │  revoked"         │                     │
+      │◀──────────────────│                     │
+      │                   │                     │
+      │                   │ Log: rejected       │
+      │                   │ attempt             │
+      │                   │────────────────────▶│
+      │                   │                     │
+```
+
+##### Public Repository Considerations
+
+| Repository | Content | Privacy |
+|------------|---------|---------|
+| **Status List 2021** | Bit array (no user data) | ✅ Privacy-preserving |
+| **OCSP** | Attestation ID only | ✅ Privacy-preserving |
+| **CRL** | List of revoked IDs | ⚠️ May reveal patterns |
+| **Public ledger** | NOT recommended | ❌ Privacy concern |
+
+##### Gap Analysis: PSP System Deactivation
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **PS-1** | Backend verification check not mandated | High | Require real-time status check |
+| **PS-2** | Retention period not standardized | Medium | Align with AML (5 years) |
+| **PS-3** | Public repository format not specified | Low | Recommend Status List 2021 |
+| **PS-4** | Cross-PSP revocation notification undefined | Medium | Define ecosystem protocol |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Verification Mandate**: Require PSPs to check attestation status before accepting
+2. **Registry Requirement**: Define minimum attestation registry fields
+3. **Status Publication**: Recommend Status List 2021 for interoperability
+4. **Retention Alignment**: Reference AML Directive for retention periods
+5. **Audit Logging**: Require logging of all revocation events and rejection attempts
+6. **Cross-PSP Protocol**: Define notification mechanism for ecosystem-wide revocation
+
+##### Article 27 Complete Summary
+
+| Sub-article | Requirement | EUDI Wallet Status |
+|-------------|-------------|-------------------|
+| **27(a)** | Secure destruction/deactivation/revocation | ✅ Covered (shared responsibility) |
+| **27(b)** | Secure re-use of devices | ➖ N/A (per-user binding) |
+| **27(c)** | Deactivation in PSP systems | ❌ PSP Obligation |
+
+</details>
+
 ---
 
 ═══════════════════════════════════════════════════════════════════════════════

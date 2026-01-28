@@ -61,8 +61,8 @@ A real deep-dive must include **at least 3** of:
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
 | Art. 27(a) | Secure destruction/deactivation/revocation | ✅ Yes |
-| Art. 27(b) | Secure re-use | ❌ No |
-| Art. 27(c) | Deactivation in systems | ❌ No |
+| Art. 27(b) | Secure re-use | ✅ Yes |
+| Art. 27(c) | Deactivation in systems | ✅ Yes |
 
 ---
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 46 |
-| ❌ Not Done | 1 |
+| ✅ Done | 47 |
+| ❌ Not Done | 0 |
 | **Total** | 47 |
 
 ---
@@ -192,6 +192,13 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 25 | Deep-dive: Secure delivery architecture, OID4VCI security, traditional vs wallet model, gaps SD-1 to SD-4 |
 | 2026-01-28 | Art. 26 | Deep-dive: Credential renewal flow, key rotation strategies, validity management, gaps RN-1 to RN-4 |
 | 2026-01-28 | Art. 27(a) | Deep-dive: Destruction/revocation architecture, secure wipe, status publication, gaps DR-1 to DR-4 |
+| 2026-01-28 | Art. 27(b-c) | Deep-dive: PSP backend deactivation, status management, retention, gaps PS-1 to PS-4 |
+
+---
+
+## 🎉 ASSESSMENT COMPLETE
+
+**All 47 paragraphs have been deep-dived.** The PSD2 SCA Compliance Assessment is now 100% complete.
 
 ---
 
