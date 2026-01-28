@@ -613,9 +613,7 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                                         )
                                     }}
                                 >
-                                    {firstHlrData.specification?.length > 300
-                                        ? firstHlrData.specification.substring(0, 300) + '...'
-                                        : firstHlrData.specification}
+                                    {firstHlrData.specification}
                                 </ReactMarkdown>
                             </div>
                             {firstHlrData.notes && (
@@ -629,9 +627,7 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                                             p: ({ children }) => <span>{children}</span>
                                         }}
                                     >
-                                        {firstHlrData.notes.length > 150
-                                            ? firstHlrData.notes.substring(0, 150) + '...'
-                                            : firstHlrData.notes}
+                                        {firstHlrData.notes}
                                     </ReactMarkdown>
                                 </div>
                             )}
