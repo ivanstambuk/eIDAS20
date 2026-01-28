@@ -7443,67 +7443,13 @@ Key points on **TPP (AISP/PISP) integration**:
 
 ---
 
-#### senexi (Dec 2, 2025)
-[Comment](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15133961)
-
-Proposed reusing OIDC **`amr` claim** instead of `authentication_factors`:
-
-► "OpenID Connect Core already defines the claim `amr` (Authentication Methods References)... It would make sense to reuse / reference that claim."
-
-**Status**: TS12 v1.0 uses `amr` array — proposal was adopted.
-
-**Compliance Relevance**: Confirms Art. 4(1) factor reporting via standard OIDC claim.
-
----
-
-#### senexi — DC-API Verification (Dec 2, 2025)
-[Comment](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15134339)
-
-Raised concern about **Third-Party-Requested flow verification**:
-
-► "In the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party... It might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
-
-**Maintainer Response**: "sounds reasonable, we will think if this could be a new requirement in TS12 possibly"
-
-**Compliance Relevance**: Open issue for PSP verification of TPP flow integrity.
-
----
-
-#### Fime / APTITUDE LSP (Dec 4, 2025)
-[Comment](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15157531)
-
-Proposed **PSD3-forward enhancements**:
-
-1. **SCA metadata for expressing authentication strength**: Allow ASPSPs to specify minimum factor requirements
-2. **Required display vs advisory**: Clearer distinction between mandatory display elements and optional hints
-3. **Risk context metadata**: Optional `transaction_context` and `risk_hint` fields for high-risk transaction UI
-
-**Maintainer Response**: "Your proposals are taken for consideration for future versions of TS12"
-
-**Compliance Relevance**: Forward-looking for Art. 18 (risk analysis) integration.
-
----
-
-#### Wicpar — Technical Issues (Jan 4, 2026)
-[Comment](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15405623)
-
-Identified technical issues in TS12 v1.0:
-
-1. **Section 4.1.2**: `transaction_data_types` described as "array" but is JSON object
-2. **#integrity placement**: Proposed that `#integrity` fields should be sibling keys to protected fields (per SD-JWT-VC §7)
-
-**Compliance Relevance**: Technical accuracy for implementers.
-
----
-
-### Unanswered Questions (Open Issues)
+### Open Issues
 
 | Topic | Status | Relevance |
 |-------|--------|-----------|
-| `jti` as authentication code interpretation | **Not explicitly discussed** | Art. 4(2) |
-| mDOC format support | Explicitly deferred to future version | Art. 4 |
-| AISP consent transaction type | **Requested by ETPPA, not yet added** | Art. 97(1)(a) |
-| DC-API mode verification | Under consideration | TPP flow integrity |
+| `jti` as authentication code interpretation | Not explicitly discussed | Art. 4(2) |
+| mDOC format support | Deferred to future TS12 version | Art. 4 |
+| AISP consent transaction type | Requested by ETPPA, not yet added | Art. 97(1)(a) |
 
 ---
 
