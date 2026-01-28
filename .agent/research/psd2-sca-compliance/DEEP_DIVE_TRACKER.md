@@ -86,7 +86,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 3(1) | Documented, tested, audited measures | ❌ No |
+| Art. 3(1) | Documented, tested, audited measures | ✅ Yes |
 | Art. 3(2) | Audit frequency, TRA exemption audit | ❌ No |
 | Art. 3(3) | Audit report availability | ❌ No |
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 37 |
-| ❌ Not Done | 10 |
+| ✅ Done | 38 |
+| ❌ Not Done | 9 |
 | **Total** | 47 |
 
 ---
@@ -184,6 +184,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 5(1) | Deep-dive: Four Pillars of dynamic linking, WYSIWYS principle, e2e flow, gaps DL-1 to DL-4 |
 | 2026-01-28 | Art. 5(3)(a) | Deep-dive: Batch payment architecture, corporate use cases, exemptions, gaps BP-1 to BP-4 |
 | 2026-01-28 | Art. 5(3)(b) | Deep-dive: Batch auth code computation, hash methods, Merkle tree, H2H exemption, gaps BAC-1 to BAC-4 |
+| 2026-01-28 | Art. 3(1) | Deep-dive: Four-pillar assurance, certification reliance model, PSP audit scope, gaps SMR-1 to SMR-4 |
 
 ---
 

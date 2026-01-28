@@ -5853,11 +5853,137 @@ The EBA explicitly permits machine learning to enhance TRA:
 
 **Status**: ❌ PSP Obligation (with Wallet Evidence)
 
-**Context**: PSPs must audit their own SCA implementations. However, they can rely on Wallet Solution certification (per CIR 2024/2981) as evidence that the wallet component meets security requirements. The PSP's audit scope includes:
-- Integration with wallet
-- PSP-side transaction monitoring
-- Exemption handling
-- Session management
+<details>
+<summary><strong>🔍 Deep-Dive: Security Measures Review Framework</strong></summary>
+
+##### Core Requirement: Four-Pillar Assurance
+
+Article 3(1) mandates a **comprehensive assurance lifecycle** for SCA security measures:
+
+| Pillar | Requirement | Frequency |
+|--------|-------------|-----------|
+| **Documentation** | Security measures formally documented | Continuous |
+| **Testing** | Periodic testing of controls | At least annually |
+| **Evaluation** | Assessment of effectiveness | Ongoing |
+| **Audit** | Independent audit by qualified auditors | Per applicable framework |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Security Measures Review Lifecycle                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌──────────┐  │
+│  │ DOCUMENT    │────▶│   TEST      │────▶│  EVALUATE   │────▶│  AUDIT   │  │
+│  │             │     │             │     │             │     │          │  │
+│  │ - Policies  │     │ - Pen tests │     │ - KPIs/KRIs │     │ - IT sec │  │
+│  │ - Procedures│     │ - Vuln scans│     │ - Fraud     │     │ - Payment│  │
+│  │ - Controls  │     │ - Red team  │     │   rates     │     │   expert │  │
+│  │ - Configs   │     │ - Tabletop  │     │ - Incidents │     │ - Indep. │  │
+│  └─────────────┘     └─────────────┘     └─────────────┘     └──────────┘  │
+│         │                                                          │        │
+│         └────────────────── FEEDBACK LOOP ─────────────────────────┘        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Auditor Requirements
+
+| Attribute | Requirement | Example |
+|-----------|-------------|---------|
+| **IT Security expertise** | Knowledge of security controls, cryptography, threats | CISM, CISSP, CEH |
+| **Payments expertise** | Knowledge of payment ecosystem, PSD2, SCA | Payment industry experience |
+| **Operational independence** | No conflicts of interest | Internal audit, external firm |
+
+##### PSP Audit Scope for EUDI Wallet Integration
+
+| Area | Scope | Evidence |
+|------|-------|----------|
+| **Wallet integration** | API implementation, token handling | Code review, config audit |
+| **Transaction monitoring** | Fraud detection, TRA implementation | System logs, rule documentation |
+| **Exemption handling** | Criteria application, tracking | Decision logs, threshold configs |
+| **Session management** | Timeout implementation, binding | Technical configs |
+| **Incident response** | Breach procedures, notification | Incident playbooks |
+
+##### Certification Reliance Model
+
+PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satisfy part of their audit obligations:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         Certification Reliance Model                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  WALLET PROVIDER SCOPE (Covered by CIR 2024/2981 Certification)            │
+│  ═══════════════════════════════════════════════════════════════            │
+│  ✅ WSCD/WSCA security                                                      │
+│  ✅ Key generation and storage                                              │
+│  ✅ Biometric implementation                                                │
+│  ✅ Secure Enclave/StrongBox usage                                          │
+│  ✅ Attestation generation                                                  │
+│  ✅ Presentation attack detection                                           │
+│                                                                             │
+│  PSP SCOPE (Must audit independently)                                       │
+│  ══════════════════════════════════════                                     │
+│  ❌ Integration with wallet APIs                                            │
+│  ❌ Attestation verification logic                                          │
+│  ❌ Transaction monitoring systems                                          │
+│  ❌ Fraud detection rules                                                   │
+│  ❌ Exemption criteria (Art. 10-18)                                         │
+│  ❌ Session management on PSP side                                          │
+│  ❌ Dynamic linking verification                                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Testing Activities
+
+| Test Type | Description | Frequency |
+|-----------|-------------|-----------|
+| **Penetration testing** | External attack simulation | Annually |
+| **Vulnerability scanning** | Automated weakness detection | Quarterly |
+| **Red team exercises** | Adversarial simulation | Annually |
+| **Tabletop exercises** | Incident response rehearsal | Semi-annually |
+| **Control testing** | Verify control effectiveness | Continuous |
+
+##### Documentation Requirements
+
+| Document | Content | Owner |
+|----------|---------|-------|
+| **Security Policy** | High-level security objectives | CISO |
+| **SCA Procedures** | Step-by-step SCA implementation | IT Security |
+| **Control Matrix** | Mapping of controls to requirements | Compliance |
+| **Test Results** | Pen test, vuln scan reports | Security Team |
+| **Audit Trail** | Transaction logs, access logs | Operations |
+
+##### Evaluation Metrics
+
+| Metric | Description | Target |
+|--------|-------------|--------|
+| **Fraud rate** | Fraudulent transactions / total | < 0.01% (TRA threshold) |
+| **SCA success rate** | Successful SCA / attempts | > 95% |
+| **Incident count** | Security incidents per period | Decreasing trend |
+| **Exemption rate** | Exempted transactions / total | Monitored |
+| **Response time** | Time to detect/respond to threats | < 15 min detection |
+
+##### Gap Analysis: Security Measures Review
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **SMR-1** | PSP audit scope for wallet integration not standardized | Medium | EBA guidance on shared audit responsibility |
+| **SMR-2** | Certification reliance boundaries not explicit | Medium | Document reliance model in SCA Rulebook |
+| **SMR-3** | Testing frequency not specified in RTS | Low | Recommend annual minimum in guidance |
+| **SMR-4** | Auditor qualification criteria vague | Low | Reference ISO 27001 auditor standards |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Audit Scope Template**: Provide PSP audit scope template for wallet integration
+2. **Certification Reliance**: Document which wallet aspects PSP can rely on
+3. **Testing Cadence**: Recommend annual pen test, quarterly vuln scan
+4. **Auditor Standards**: Reference ISACA, ISO 27001 auditor qualifications
+5. **Evidence Sharing**: Define how wallet certification evidence transfers to PSP
+6. **Incident Coordination**: Document PSP-Wallet Provider incident response
+
+</details>
 
 ---
 
