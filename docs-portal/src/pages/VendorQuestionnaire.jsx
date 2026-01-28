@@ -833,8 +833,8 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                     <tr>
                                         <th className="col-id">ID</th>
                                         <th className="col-requirement">Requirement</th>
-                                        <th className="col-obligation">Obligation</th>
                                         <th className="col-legal">Legal Basis</th>
+                                        <th className="col-obligation">Obligation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -852,11 +852,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                         </details>
                                                     )}
                                                 </td>
-                                                <td className="col-obligation">
-                                                    <span className={`vcq-obligation-badge ${getObligationClass(req.obligation)}`}>
-                                                        {req.obligation}
-                                                    </span>
-                                                </td>
                                                 <td className="col-legal">
                                                     {/* DEC-261: Multi-article support via legalBases array */}
                                                     {req.legalBases && req.legalBases.length > 0 && (
@@ -868,6 +863,11 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                     {(!req.legalBases || req.legalBases.length === 0) && !req.arfReference && (
                                                         <span className="vcq-no-basis">—</span>
                                                     )}
+                                                </td>
+                                                <td className="col-obligation">
+                                                    <span className={`vcq-obligation-badge ${getObligationClass(req.obligation)}`}>
+                                                        {req.obligation}
+                                                    </span>
                                                 </td>
                                             </tr>
                                         );
