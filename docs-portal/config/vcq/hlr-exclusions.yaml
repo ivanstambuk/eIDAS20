@@ -1,13 +1,14 @@
 schemaVersion: 1
-generatedAt: '2026-01-28T12:00:46.581Z'
+generatedAt: '2026-01-28T16:33:00.000Z'
+# Updated: Resolved all 32 multi_role_review HLRs (DEC-260)
 summary:
   totalExcluded: 315
-  wallet_provider: 171
-  member_state: 43
+  wallet_provider: 182   # +11 from multi_role_review
+  member_state: 50       # +7 from multi_role_review
   user_behavior: 2
-  informative: 5
-  multi_role_review: 32
-  rulebook_author: 23
+  informative: 8         # +3 from multi_role_review
+  multi_role_review: 0   # All resolved ✓
+  rulebook_author: 34    # +11 from multi_role_review
 exclusions:
   wallet_provider:
     reason: Wallet Provider obligation - out of scope for RP/Issuer vendors
@@ -26,12 +27,15 @@ exclusions:
       - GenNot_01
       - GenNot_02
       - GenNot_05
+      - ISSU_04        # Was multi_role_review: Attestation Provider revocation on new issuance
       - ISSU_08
       - ISSU_09
+      - ISSU_10        # Was multi_role_review: PID Provider revocation on data change/death
       - ISSU_11
       - ISSU_11b
       - ISSU_12a
       - ISSU_12b
+      - ISSU_12c       # Was multi_role_review: PID Provider revocation on User request
       - ISSU_13
       - ISSU_19
       - ISSU_19a
@@ -69,15 +73,18 @@ exclusions:
       - ISSU_53
       - ISSU_54
       - ISSU_55
+      - ISSU_56        # Was multi_role_review: Binding between PID and QC
       - ISSU_56a
       - ISSU_57
       - ISSU_57a
       - ISSU_58
       - ISSU_60
       - ISSU_61
+      - ISSU_62        # Was multi_role_review: Certificate activation keys binding
       - ISSU_63
       - ISSU_64
       - ISSU_65
+      - ISSU_66        # Was multi_role_review: Certificate binding to PID holder
       - OIA_01
       - OIA_02
       - OIA_03b
@@ -103,6 +110,7 @@ exclusions:
       - PA_08
       - PA_08a
       - PA_09
+      - PA_12          # Was multi_role_review: Pseudonym+PID binding - Wallet internal flow
       - PA_14
       - PA_16
       - PA_18
@@ -130,10 +138,12 @@ exclusions:
       - QES_15
       - QES_16
       - QES_17
+      - QES_17a        # Was multi_role_review: External SCA returns outcome to Wallet
       - QES_18
       - QES_19
       - QES_23
       - QES_24
+      - QES_24a        # Was multi_role_review: RP providing SCA - edge case, Wallet-side
       - RPA_01a
       - RPA_04
       - RPA_06a
@@ -141,6 +151,7 @@ exclusions:
       - RPA_10
       - RPA_10a
       - RPA_11
+      - RPA_12         # Was multi_role_review: MAY indicate device-bound - optional UI
       - RPI_07a
       - RPRC_16
       - RPRC_17
@@ -156,6 +167,7 @@ exclusions:
       - VCR_06
       - VCR_07
       - VCR_10
+      - VCR_14         # Was multi_role_review: Private Access Tokens - Wallet mechanism
       - VCR_16
       - VCR_17
       - VCR_18
@@ -198,6 +210,8 @@ exclusions:
       - Reg_09
       - Reg_10
       - Reg_11
+      - Reg_16         # Was multi_role_review: Certificate Policy profile spec
+      - Reg_18         # Was multi_role_review: Certificate Policy change history
       - Reg_19
       - Reg_20
       - Reg_20a
@@ -220,6 +234,10 @@ exclusions:
       - RPACANot_01
       - RPACANot_02
       - RPACANot_04
+      - RPACANot_05    # Was multi_role_review: Trusted List format requirements
+      - TLPub_03       # Was multi_role_review: Publication over secure channel
+      - TLPub_04       # Was multi_role_review: No auth required for retrieval
+      - TLPub_05       # Was multi_role_review: Signed/sealed format publication
       - TLPub_07
       - QTSPAS_01
       - QTSPAS_06
@@ -227,6 +245,7 @@ exclusions:
       - EDP_08
       - RPRC_01
       - RPRC_02
+      - RPRC_08        # Was multi_role_review: EU-wide identifier consistency
       - RPRC_09
       - RPRC_13
   user_behavior:
@@ -235,71 +254,53 @@ exclusions:
       - VCR_08
       - ISSU_27a
   informative:
-    reason: Informative requirement - defines terms or provides context, not implementation
+    reason: Informative requirement - defines terms, provides context, or advisory guidance
     hlrs:
       - PID_03
       - RPRC_04
       - RPRC_06
       - RPRC_07
       - RPRC_15
+      - VCR_07a        # Was multi_role_review: SHOULD check revocation - already implied by VEND-CORE-030
+      - VCR_07b        # Was multi_role_review: SHOULD check freshness - already implied by VEND-CORE-030
+      - QTSPAS_07a     # Was multi_role_review: SHOULD align with OOTS - advisory guidance
   multi_role_review:
-    reason: Requires manual review - multi-role HLR
-    hlrs:
-      - RPA_12
-      - VCR_07a
-      - VCR_07b
-      - VCR_14
-      - ISSU_04
-      - ISSU_10
-      - ISSU_12c
-      - ISSU_56
-      - ISSU_62
-      - ISSU_66
-      - PA_12
-      - ARB_07
-      - ARB_08
-      - ARB_15
-      - ARB_17
-      - ARB_19
-      - ARB_21
-      - ARB_26
-      - ARB_27
-      - ARB_29
-      - ARB_31
-      - ARB_32
-      - QES_17a
-      - QES_24a
-      - Reg_16
-      - Reg_18
-      - RPACANot_05
-      - TLPub_03
-      - TLPub_04
-      - TLPub_05
-      - QTSPAS_07a
-      - RPRC_08
+    reason: Requires manual review - multi-role HLR (RESOLVED - all reviewed 2026-01-28)
+    hlrs: []           # All 32 HLRs reclassified to appropriate categories
   rulebook_author:
     reason: Rulebook or Scheme Provider obligation - defines standards, not vendor implementation
     hlrs:
       - ARB_01
       - ARB_01a
+      - ARB_01b
       - ARB_05
       - ARB_06
       - ARB_06a
+      - ARB_06b
+      - ARB_07         # Was multi_role_review: Consider existing attribute catalogue
+      - ARB_08         # Was multi_role_review: Consider existing conventions for attributes
       - ARB_09
+      - ARB_10
       - ARB_11
+      - ARB_12
       - ARB_13
       - ARB_14
+      - ARB_15         # Was multi_role_review: Include Annex V(b) attributes in non-QEAA
       - ARB_16
+      - ARB_17         # Was multi_role_review: Include Annex V(c) attributes in non-QEAA
       - ARB_18
+      - ARB_19         # Was multi_role_review: Include Annex V(e) attributes in non-QEAA
       - ARB_20
+      - ARB_21         # Was multi_role_review: Include trust anchor location in Rulebook
       - ARB_22
       - ARB_23
       - ARB_24
+      - ARB_26         # Was multi_role_review: Define verification mechanisms in Rulebook
+      - ARB_27         # Was multi_role_review: Specify PID binding verification requirement
+      - ARB_28
+      - ARB_29         # Was multi_role_review: Follow Attestation Rulebook template
       - ARB_30
+      - ARB_31         # Was multi_role_review: Define Type Metadata Document for SD-JWT VC
+      - ARB_32         # Was multi_role_review: Define JSON Schema for SD-JWT VC
       - ARB_33
       - ARB_34
-      - ARB_28
-      - ARB_01b
-      - ARB_06b
-      - ARB_10
-      - ARB_12

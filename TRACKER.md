@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-28 04:23 CET |
-| **Version** | V3.9.16 |
-| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 64 VCQ reqs, 559 ARF HLRs |
-| **Next Action** | VCQ Role/Category Expansion — executing plan in `.agent/session/VCQ_ROLE_CATEGORY_EXPANSION_PLAN.md` |
+| **Last Updated** | 2026-01-28 16:35 CET |
+| **Version** | V4.0.1 |
+| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 144 VCQ reqs, 559 ARF HLRs |
+| **Next Action** | All ambiguous HLRs resolved — VCQ 100% disposition |
 
 
 ---
@@ -20,7 +20,7 @@
 
 | Plan | Status | Path |
 |------|--------|------|
-| VCQ Role/Category Expansion (DEC-257) | 🟡 Phase 1 | `.agent/session/VCQ_ROLE_CATEGORY_EXPANSION_PLAN.md` |
+| VCQ-ARF Harmonization (DEC-257/263) | ✅ Complete | `.agent/plans/VCQ_ARF_HARMONIZATION_PLAN.md` |
 
 ---
 
@@ -36,8 +36,9 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-28 16:35 | **DEC-260: Ambiguous HLR Resolution** — Reviewed 32 multi-role HLRs flagged during VCQ-ARF harmonization. All reclassified to definitive categories: 11→rulebook_author (ARB_*), 11→wallet_provider (ISSU_*, QES_*, PA_12, VCR_14, RPA_12), 7→member_state (Reg_*, TLPub_*, RPRC_08), 3→informative (VCR_07a/b, QTSPAS_07a). multi_role_review now empty (0 HLRs). 100% disposition achieved. |
+| 2026-01-28 15:51 | **VCQ-ARF Harmonization Complete (V4.0.0)** — Multi-role schema v2 with 144 requirements (64→144, +125%). 78 ARF references covering 134 unique HLRs. Fixed ARF source group counting (cross-cutting). Professional Excel export with xlsx-js-style (3 sheets, styled). Retro: VCQ Architecture docs in AGENTS.md, topic-HLR validation, 2 new terminology entries (Cross-cutting Reference, HLR Exclusion). 6 commits pushed. |
 | 2026-01-28 04:23 | **Plan: VCQ Role/Category Expansion (DEC-257)** — Deep audit revealed UI Steps 1-2 (Role/Category selection) are cosmetic — `applicableRequirements` ignores `selectedRoles`/`selectedCategories`. New schema v2: `roles[]` and `productCategories[]` arrays replace deprecated `applicability` field. Plan: 4 phases, 11 files. Phase 1 = schema migration (build-vcq, validate-vcq, existing YAML files). Phase 2 = new requirements (issuer.yaml ~25, trust_services.yaml ~15, payments.yaml ~12). Phase 3 = UI filtering logic. Target: 64→116 requirements. |
-| 2026-01-28 04:09 | **Polish: PSD2 SCA Document Cleanup** — Fixed 3 double horizontal rules (artifact from deleted sections). Added 19 EUR-Lex/GitHub hyperlinks to terminology tables (Source columns) and cross-reference table. Standardized all 34 Deep Dives to collapsible `<details>` format (6 were plain bold headers). Converted: Trigger-to-URN Mapping, WYSIWYS Principle, Cryptographic Binding, PSP Verification, Change Invalidation. Fixed FAR threshold table links (Apple, FIDO). |
 | 2026-01-28 03:22 | **Refine: PSD2 SCA Assessment Cleanup** — Removed ~100 lines of process cruft: Document History section deleted (git = source of truth), stakeholder feedback cleaned (kept only substantive gaps). **Code Reference Audit**: Converted all 12 reference implementation links to commit-specific GitHub URLs with line ranges. **Appendix Consolidation**: Deleted Appendix B (Accessibility, too thin), slimmed Appendix C (GitHub Discussion, kept Mastercard proposal only, ETPPA integrated inline). Now 3 appendices (A-C). Total: 7,435 lines. |
 | 2026-01-27 17:26 | **Research: PSD2 SCA Compliance Assessment (v1.2)** — Complete article-by-article assessment of EUDI Wallet TS12 vs PSD2 RTS 2018/389. Imported RTS full text, cloned iOS/Android reference implementations (pinned commits). Analyzed Dutch PA report. **CRITICAL FIX**: Corrected authentication code definition (VP Token, not `jti`). Deliverables: `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` (734 lines), KI updated. 49 requirements mapped: 18 compliant, 6 partial, 9 PSP-required, 2 impl-specific. |
 | 2026-01-26 20:52 | **Feat: VCQ Architecture Tile + Layout Fixes** — Redesigned Architecture source to 3 checkboxes (ARF, Tech Specs, Rulebooks) with TS1–TS14, PID & mDL, ARF hints. DORA now default-on. Removed "Your Selection" summary panel. Fixed regulation page sidebar overlap caused by `margin-left: -80px` in CopyReference.css gutter icon styling. |
