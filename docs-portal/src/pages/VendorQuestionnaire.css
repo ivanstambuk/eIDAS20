@@ -1010,7 +1010,16 @@
 }
 
 .vcq-req-table .col-legal {
-    width: 180px;
+    width: 220px;
+}
+
+/* Spacing between legal bases and ARF HLRs in same cell */
+.vcq-req-table .col-legal .legal-bases-container {
+    margin-bottom: 0.5rem;
+}
+
+.vcq-req-table .col-legal .legal-bases-container:last-child {
+    margin-bottom: 0;
 }
 
 .vcq-req-table .col-answer {

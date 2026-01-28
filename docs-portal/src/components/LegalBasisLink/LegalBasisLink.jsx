@@ -7,6 +7,7 @@
  * Props:
  * - legalBasis: { regulation, article, paragraph }
  * - regulationsIndex: lookup object from useRegulationsIndex hook
+ * - compact: boolean - if true, shows shorter regulation name as pill badge
  * 
  * ID Anchor Convention:
  * - Articles: article-5a-para-1-point-a-subpoint-i
@@ -18,7 +19,7 @@ import { useState, useRef } from 'react';
 import { buildDocumentLink, buildSectionId, parseParagraph, toHref } from '../../utils/linkBuilder';
 import './LegalBasisLink.css';
 
-export function LegalBasisLink({ legalBasis, regulationsIndex }) {
+export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }) {
     const [showPopover, setShowPopover] = useState(false);
     const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
     const triggerRef = useRef(null);
@@ -59,6 +60,19 @@ export function LegalBasisLink({ legalBasis, regulationsIndex }) {
         if (point) display += `(${point})`;
         if (subpoint) display += `(${subpoint})`;
         return display;
+    };
+
+    // Get short regulation name for compact mode (e.g., "eIDAS", "GDPR", "DORA")
+    const getShortRegName = () => {
+        // First try regulationName field (most authoritative)
+        if (regMeta?.regulationName) return regMeta.regulationName;
+        // Fallback to sidebarTitle or derive from shortTitle
+        const title = regMeta?.sidebarTitle || regMeta?.shortTitle || '';
+        // Extract first word if it's a known short name
+        const match = title.match(/^(eIDAS|GDPR|DORA|NIS2|PSD2|MiCA)/i);
+        if (match) return match[1].toUpperCase();
+        // Last fallback: regulation ID
+        return legalBasis?.regulation || '';
     };
 
     const url = buildUrl();
@@ -134,12 +148,16 @@ export function LegalBasisLink({ legalBasis, regulationsIndex }) {
                 }}
             >
                 <span className="rca-legal-ref">
-                    {legalBasis?.article}
+                    {compact ? 'Art. ' : ''}{legalBasis?.article?.replace('Article ', '')}
                     {formatParagraphDisplay()}
                 </span>
-                <span className="rca-legal-reg">
-                    {regMeta?.sidebarTitle || regMeta?.shortTitle || `Reg. ${legalBasis?.regulation}`}
-                </span>
+                {compact ? (
+                    <span className="rca-legal-reg-compact">{getShortRegName()}</span>
+                ) : (
+                    <span className="rca-legal-reg">
+                        {regMeta?.sidebarTitle || regMeta?.shortTitle || `Reg. ${legalBasis?.regulation}`}
+                    </span>
+                )}
             </a>
 
             {showPopover && regMeta && (
