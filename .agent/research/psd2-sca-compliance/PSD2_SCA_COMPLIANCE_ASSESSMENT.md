@@ -5993,6 +5993,129 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 
 **Status**: ❌ PSP Obligation — audit scheduling per applicable framework.
 
+<details>
+<summary><strong>🔍 Deep-Dive: Audit Frequency and TRA Exemption Requirements</strong></summary>
+
+##### Core Requirement: Two-Tier Audit System
+
+Article 3(2) establishes a **two-tier audit framework**:
+
+| Tier | Applicability | Frequency | Auditor Type |
+|------|---------------|-----------|--------------|
+| **General Audit** | All PSPs | Per statutory framework | Internal or external |
+| **TRA Exemption Audit** | PSPs using Art. 18 exemption | **Yearly minimum** | Special requirements |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        TRA Exemption Audit Cadence                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  YEAR 1 (First use of Art. 18 exemption)                                   │
+│  ═══════════════════════════════════════                                    │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  🔴 MANDATORY EXTERNAL AUDITOR                                        │ │
+│  │     • Independent and qualified                                       │ │
+│  │     • IT security + payments expertise                                │ │
+│  │     • Scope: methodology, model, fraud rates                          │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  YEARS 2-3 (Internal audit acceptable)                                     │
+│  ══════════════════════════════════════                                     │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  🟡 ANNUAL AUDIT (Internal or External)                               │ │
+│  │     • Operationally independent                                       │ │
+│  │     • IT security + payments expertise                                │ │
+│  │     • Same scope                                                       │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  YEAR 4 (and every 3 years thereafter)                                     │
+│  ══════════════════════════════════════                                     │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  🔴 MANDATORY EXTERNAL AUDITOR (again)                                │ │
+│  │     • Cycle repeats                                                    │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+│  ⚠️ COMPETENT AUTHORITY may require more frequent external audits         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### TRA Exemption Thresholds (Article 18)
+
+The TRA exemption links transaction limits to fraud rate performance:
+
+| Fraud Rate | Max Transaction Amount | SCA Required? |
+|------------|------------------------|---------------|
+| **< 0.13%** | Up to €100 | ❌ Exempt |
+| **< 0.06%** | Up to €250 | ❌ Exempt |
+| **< 0.01%** | Up to €500 | ❌ Exempt |
+| **Any rate** | > €500 | ✅ Always required |
+
+##### TRA Audit Scope
+
+| Audit Area | Description | Evidence |
+|------------|-------------|----------|
+| **Methodology** | TRA algorithm logic, risk scoring | Technical documentation |
+| **Model** | Statistical model for fraud prediction | Model validation reports |
+| **Reported fraud rates** | Accuracy of submitted rates | Transaction logs, fraud database |
+
+##### Fraud Rate Reporting Schedule
+
+| Reporting Type | Frequency | Recipient |
+|----------------|-----------|-----------|
+| **Fraud statistics** | Semi-annually | Competent authority |
+| **TRA exemption fraud rates** | Quarterly (90 days) | Competent authority |
+| **Incident reports** | As they occur | Competent authority |
+
+##### External Auditor Qualifications
+
+| Requirement | Description |
+|-------------|-------------|
+| **Independent** | No financial/operational ties to PSP |
+| **Qualified** | Recognized audit credentials (e.g., Big 4, ISACA) |
+| **IT security expertise** | CISSP, CISM, ISO 27001 Lead Auditor |
+| **Payments expertise** | PCI-DSS QSA, payment industry experience |
+
+##### EUDI Wallet Integration Impact
+
+| Aspect | PSP Responsibility | Wallet Evidence |
+|--------|-------------------|-----------------|
+| **TRA algorithm** | PSP designs and operates | Wallet provides device risk signals |
+| **Fraud rate calculation** | PSP calculates and reports | Transaction logs accessible |
+| **Model validation** | PSP validates model accuracy | Wallet attestations as data point |
+| **Exemption decisions** | PSP makes final decision | N/A |
+
+##### Implementation Timeline
+
+| Year | Audit Type | Auditor | Scope |
+|------|------------|---------|-------|
+| **Y1** (start of TRA) | Full TRA audit | External | Methodology, model, rates |
+| **Y2** | Annual TRA audit | Internal/External | Same |
+| **Y3** | Annual TRA audit | Internal/External | Same |
+| **Y4** | Full TRA audit | External | Methodology, model, rates |
+| **Y5-Y6** | Annual TRA audit | Internal/External | Same |
+| **Y7** | Full TRA audit | External | Cycle repeats |
+
+##### Gap Analysis: Audit Frequency
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **AF-1** | TRA audit scope for wallet-integrated PSPs not defined | Medium | Clarify wallet data role in TRA |
+| **AF-2** | Fraud rate computation methodology varies | Medium | Standardize denominator/numerator |
+| **AF-3** | Competent authority request frequency undefined | Low | Document escalation criteria |
+| **AF-4** | Internal auditor "operational independence" criteria vague | Low | Reference IIA standards |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Wallet Data in TRA**: Document how wallet signals contribute to TRA decisions
+2. **Fraud Rate Denominator**: Standardize calculation methodology
+3. **Auditor Registry**: Recommend qualified external auditors for TRA
+4. **Reporting Templates**: Provide standard fraud rate reporting format
+5. **Internal Independence**: Reference Institute of Internal Auditors (IIA) standards
+6. **Threshold Monitoring**: Define alert thresholds before breach
+
+</details>
+
 ---
 
 #### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.003)
