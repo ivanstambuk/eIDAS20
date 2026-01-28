@@ -82,7 +82,7 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 - **WUA_09–WUA_12** (Topic 9): Wallet Unit Attestation key binding
 - **RPA_01–RPA_08** (Topic 6): Relying Party authentication and user approval
 
-► ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix E](#appendix-e-sca-attestation-rulebook-status) for details.
+► ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix C](#appendix-c-sca-attestation-rulebook-status) for details.
 
 **Use Case Coverage**:
 
@@ -7336,23 +7336,7 @@ A future TS12 version is expected to add mDOC support. The compliance mapping in
 
 ---
 
-## Appendix B: Accessibility Requirements
-
-*Note: Wallet recovery procedures are documented inline at [Article 7(1)](#article-71) since they directly address the RTS requirement for loss/theft mitigation.*
-
-### EU Accessibility Compliance (ARF Topics 8 & 54)
-
-| Requirement | Standard | ARF HLR |
-|-------------|----------|---------|
-| Web Accessibility Directive | EN 301 549 | AS-WP-54-001 |
-| European Accessibility Act | 2019/882 | AS-WP-54-002 |
-| WCAG Level | 2.2 AA | Chapter 8 |
-
-For SCA specifically, SUA_06 mandates adaptable dialogue elements (font size, colours, button labels) — enabling accessible SCA flows.
-
----
-
-## Appendix C: GitHub Discussion Analysis
+## Appendix B: GitHub Discussion Analysis
 
 ### TS12 Discussion #439
 
@@ -7362,9 +7346,8 @@ For SCA specifically, SUA_06 mandates adaptable dialogue elements (font size, co
 
 ---
 
-### Key Stakeholder Feedback
+### Mastercard / WE BUILD LSP Payee Enhancement Proposal (Nov 27, 2025)
 
-#### Mastercard / WE BUILD LSP (Nov 27, 2025)
 [Comment link](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15096762)
 
 Proposed **payee structure enhancements** relevant to Art. 5(1)(a) (payer awareness):
@@ -7379,38 +7362,13 @@ Proposed **payee structure enhancements** relevant to Art. 5(1)(a) (payer awaren
 | `payment_type` | OPTIONAL | `ONE_OFF` or `RECURRING` |
 | `payment_summary` | OPTIONAL | Human-readable order summary |
 
-**Compliance Relevance**: Enhances Art. 5(1)(a) by providing richer payer awareness UI.
+**Compliance Relevance**: Enhances Art. 5(1)(a) by providing richer payer awareness UI. Not yet in TS12 v1.0.
+
+► **Note**: ETPPA feedback on TPP integration and `consents:1` transaction type is documented inline at [Article 97(1)](#article-971--sca-triggers) and [Gap Analysis](#gap-05).
 
 ---
 
-#### ETPPA - European Third Party Provider Association (Nov 2 & Nov 22, 2025)
-[Comment 1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-14850895) | [Comment 2](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15045566)
-
-Key points on **TPP (AISP/PISP) integration**:
-
-1. **Embedded SCA ("Third-party-requested")**: TPPs intend to initiate signed payment requests via PSD2 APIs (Berlin Group NextGenPSD2 XS2A) with SCA proof from EUDI Wallet
-
-2. **Requested new transaction type**: `urn:eudi:sca:consents:1` for AISP consent capture (in addition to existing `payment`, `login_risk_transaction`, `emandate`)
-
-3. **Non-discrimination principle**: ETPPA emphasizes PSD2 parity — SCA Attestation Providers "must not discriminate between Third-party-requested and Issuer-requested attestation types"
-
-4. **API alignment**: Requested alignment with Berlin Group JSON, ISO 20022 PAIN.001/PAIN.009 formats
-
-**Compliance Relevance**: Direct evidence of industry expectation that Art. 97(1) TPP triggers work via TS12.
-
----
-
-### Open Issues
-
-| Topic | Status | Relevance |
-|-------|--------|-----------|
-| `jti` as authentication code interpretation | Not explicitly discussed | Art. 4(2) |
-| mDOC format support | Deferred to future TS12 version | Art. 4 |
-| AISP consent transaction type | Requested by ETPPA, not yet added | Art. 97(1)(a) |
-
----
-
-## Appendix D: SCA Attestation Rulebook Status
+## Appendix C: SCA Attestation Rulebook Status
 
 ### Current Status (January 2026)
 
