@@ -92,11 +92,18 @@
 }
 
 .rca-popover-action {
+    display: block;
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
     font-size: 0.75rem;
     color: var(--accent-primary, #00d4ff);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rca-popover-action:hover {
+    text-decoration: underline;
 }
 
 /* Compact mode - short regulation name as pill */

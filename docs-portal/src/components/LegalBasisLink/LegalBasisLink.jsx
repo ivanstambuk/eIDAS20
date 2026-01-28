@@ -188,9 +188,14 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                         <span>📄 CELEX: {regMeta.celex}</span>
                     </div>
                     {url && (
-                        <div className="rca-popover-action">
-                            Opens in new tab →
-                        </div>
+                        <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rca-popover-action"
+                        >
+                            View in EUR-Lex →
+                        </a>
                     )}
                 </div>
             )}
