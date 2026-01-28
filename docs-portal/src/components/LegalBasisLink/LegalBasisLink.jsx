@@ -16,6 +16,7 @@
  */
 
 import { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { buildDocumentLink, buildSectionId, parseParagraph, toHref } from '../../utils/linkBuilder';
 import './LegalBasisLink.css';
 
@@ -162,7 +163,7 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                 )}
             </a>
 
-            {showPopover && regMeta && (
+            {showPopover && regMeta && createPortal(
                 <div
                     ref={popoverRef}
                     className="rca-legal-popover"
@@ -199,7 +200,8 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                             View in EUR-Lex →
                         </a>
                     )}
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );
