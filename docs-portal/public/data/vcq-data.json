@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T03:36:02.517Z",
+  "generatedAt": "2026-01-28T12:33:20.901Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -366,7 +366,7 @@
       "legalText": "Member States shall publish the lists and shall make them available to \nall wallet providers and relying parties in a clearly identifiable and \nmachine-readable way.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "Reg_23"
+        "hlr": "RPI_01"
       },
       "roles": [],
       "productCategories": [],
@@ -396,8 +396,8 @@
       },
       "legalBasisLink": "/regulation/2025-848#article-8",
       "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_02"
+        "topic": "Topic 6",
+        "hlr": "RPA_03"
       },
       "roles": [],
       "productCategories": [],
@@ -779,6 +779,778 @@
       ],
       "deadline": "2027-11-21",
       "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-019",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement TS12 for PSD2 Strong Customer Authentication when processing payment transactions",
+      "explanation": "Payment Service Providers (PSPs) using EUDI Wallet for Strong Customer \nAuthentication must implement ARF Technical Specification 12 (Electronic \nPayments over SCA). TS12 defines how the wallet's cryptographic binding, \ndynamic linking, and attestation mechanisms satisfy PSD2 RTS requirements \nfor authentication elements (knowledge, possession, inherence), independence \nof elements, and transaction linking.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 4",
+        "paragraph": "1-3"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalText": "Payment service providers shall apply strong customer authentication where \nthe payer initiates an electronic payment transaction. The authentication \nshall include elements which dynamically link the transaction to a specific \namount and a specific payee.",
+      "roles": [
+        "relying_party",
+        "issuer"
+      ],
+      "productCategories": [
+        "connector",
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-020",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets",
+      "explanation": "Attestation Issuers must implement the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in Technical Specification 6. \nThis ensures interoperability with all compliant EUDI Wallet implementations \nacross Member States. The protocol covers credential offer, authorization, \ntoken exchange, and credential endpoint interactions.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 5",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "legalText": "European Digital Identity Wallets shall use the protocols and interfaces \nset out in this Regulation for the issuance of person identification data \nand electronic attestations of attributes.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-021",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
+      "explanation": "Relying Parties must implement the common data deletion request interface \nspecified in Technical Specification 7. This enables wallet users to exercise \ntheir GDPR Article 17 right to erasure by requesting deletion of any data \nthe RP has collected from wallet presentations. The interface provides a \nstandardized machine-readable format for deletion requests.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 17",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-17",
+      "legalText": "The data subject shall have the right to obtain from the controller the \nerasure of personal data concerning him or her without undue delay and \nthe controller shall have the obligation to erase personal data without \nundue delay.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-022",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Register attestation schemas in the catalogue per TS11",
+      "explanation": "Attestation Issuers must register their attestation types in the catalogue \nof attributes and attestations as specified in Technical Specification 11. \nThis enables discovery by Relying Parties and ensures attestations follow \nthe common data model. The catalogue defines attribute schemas, rulebooks, \nand the relationship between attestation types.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "legalText": "Qualified trust service providers issuing qualified electronic attestations \nof attributes shall ensure that the attestation schemas they use comply \nwith the technical specifications set out in this Regulation.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-023",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Implement open standards per TS1 for EUDI Wallet interoperability",
+      "explanation": "All EUDIW ecosystem participants must implement the open standards mapped \nin Technical Specification 1. TS1 provides the authoritative mapping between \nregulatory requirements and specific open standards (e.g., OpenID4VCI, \nOpenID4VP, SD-JWT, mdoc/mDL). This ensures cross-border interoperability \nand prevents vendor lock-in.",
+      "legalBasis": {
+        "regulation": "2024/2982",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2982#article-3",
+      "legalText": "The protocols and interfaces for European Digital Identity Wallets shall \nbe based on open standards to ensure interoperability across Member States.",
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-024",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Publish provider information per TS2 for discovery by wallets and RPs",
+      "explanation": "PID Providers, QEAA Providers, and Pub-EAA Providers must publish their \nprovider information according to Technical Specification 2. This includes \nmetadata endpoints, supported credential types, signing algorithms, and \ntrust chain information. Publication enables wallet and RP discovery of \navailable attestation providers.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 4",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "legalText": "Providers of qualified electronic attestations of attributes shall notify \ntheir activities to the supervisory body and publish information about \ntheir services in a machine-readable format.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-025",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Verify Wallet Unit Attestation (WUA) per TS3 before issuing credentials",
+      "explanation": "Before issuing attestations, Issuers must verify the Wallet Unit Attestation \nas specified in Technical Specification 3. The WUA proves that the target \nwallet instance runs on a certified WSCD, has not been revoked, and possesses \nthe cryptographic keys for device binding. This prevents issuance to \ncompromised or non-compliant wallet instances.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 5",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-5",
+      "legalText": "Before issuing person identification data or electronic attestations of \nattributes, providers shall verify the authenticity and validity of the \nwallet unit requesting the credential.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform",
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-026",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement TS8 remote signing protocol for QES/QESeal via EUDI Wallet",
+      "explanation": "Trust service providers offering remote qualified electronic signatures \nmust implement the protocol specified in Technical Specification 8. This \nenables EUDI Wallet users to create legally binding QES using QTSP-managed \nsigning keys while maintaining sole control through wallet-based authorization.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 26",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-26",
+      "legalText": "An advanced electronic signature shall meet the requirements of being \nuniquely linked to and capable of identifying the signatory, created \nusing electronic signature creation data that the signatory can use \nunder their sole control.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-027",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Support pseudonym attestations per TS9 for privacy-preserving identification",
+      "explanation": "RPs and Issuers should support pseudonym attestations as specified in \nTechnical Specification 9 when full identification is not required. This \nincludes User Pseudonyms (UP) for persistent pseudonymous relationships \nand Wallet-RP Pseudonyms (WRP) for unlinkable transactions. Pseudonyms \nenable data minimization while maintaining accountability.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "4(b)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalText": "European Digital Identity Wallets shall enable the user to selectively \ndisclose to relying parties person identification data, electronic \nattestation of attributes, or specific data elements of such data or \nattestations, including by means of pseudonyms.",
+      "roles": [
+        "relying_party",
+        "issuer"
+      ],
+      "productCategories": [
+        "connector",
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-028",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Provide data export capability per TS10 for GDPR portability compliance",
+      "explanation": "RPs and Issuers must provide data export capabilities as specified in \nTechnical Specification 10. This supports GDPR Article 20 data portability \nrights, enabling users to obtain transaction logs, backup credentials, \nand migrate between wallet providers. Export formats must be machine-readable \nand commonly used.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 20",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-20",
+      "legalText": "The data subject shall have the right to receive the personal data \nconcerning him or her, which he or she has provided to a controller, \nin a structured, commonly used and machine-readable format and have \nthe right to transmit those data to another controller.",
+      "roles": [
+        "relying_party",
+        "issuer"
+      ],
+      "productCategories": [
+        "connector",
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-029",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify registration certificates presented by counterparties",
+      "explanation": "Relying Parties must verify registration certificates presented by PID \nProviders, Attestation Providers, or other RPs to confirm their legitimate \nregistration status. This includes validating certificate signatures and \nchecking against Trusted Lists.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 44",
+        "hlr": [
+          "RPRC_03",
+          "RPRC_05",
+          "RPRC_10",
+          "RPRC_11",
+          "RPRC_12"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-030",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify attestation authenticity and validity before acceptance",
+      "explanation": "Before accepting an attestation, the RP must verify its cryptographic \nsignature, check it has not expired, and verify its revocation status. \nThis includes verifying the issuer's access certificate chain.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "4"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": [
+          "OIA_15",
+          "OIA_16"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-031",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Register intended uses and comply with access certificate policies",
+      "explanation": "Relying Parties must register their intended uses for requesting data \nand comply with the access certificate policies established by the \nAccess Certificate Authority. Certificate revocation procedures must \nbe followed.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 27",
+        "hlr": [
+          "Reg_15",
+          "Reg_31",
+          "Reg_32"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-032",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Use valid RP Access Certificate for Wallet Unit authentication",
+      "explanation": "When initiating a presentation request, the Relying Party must present \na valid RP Access Certificate that allows the Wallet Unit to verify \nthe RP's registration and intended use.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": [
+          "RPA_02a",
+          "RPA_06"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-033",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Support pseudonym-based presentations where applicable",
+      "explanation": "Where Users choose to present pseudonymous attestations, the RP \nconnector must correctly process pseudonym presentations and not \nattempt to correlate pseudonyms across transactions.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "16"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "arfReference": {
+        "topic": "Topic 11",
+        "hlr": [
+          "PA_13",
+          "PA_15"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-034",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Publish RP trust anchor information for Wallet verification",
+      "explanation": "Relying Parties accessing EUDI Wallets must publish trust anchor \ninformation through the Access Certificate Authority notification \nprocess, enabling Wallet Units to verify RP legitimacy.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 31",
+        "hlr": [
+          "RPACANot_03",
+          "RPACANot_03a"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-035",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Process data deletion requests from Users",
+      "explanation": "When Users exercise their right to data deletion, RPs must process \nthese requests according to GDPR requirements and ARF specifications. \nThis includes responding to deletion requests within mandated timeframes.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 17",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2016-679#article-17",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_03",
+          "DATA_DLT_06"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-036",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Handle pseudonym verification requests correctly",
+      "explanation": "When a User presents using a pseudonym, the Relying Party must correctly \nprocess the pseudonymous presentation without attempting unlawful \nde-anonymization or cross-correlation.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "16"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "arfReference": {
+        "topic": "Topic 11",
+        "hlr": [
+          "PA_10",
+          "PA_11",
+          "PA_17"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-037",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Respond to User deletion requests within timeframes",
+      "explanation": "When processing data deletion requests, the RP must respond within \nthe timeframes specified in GDPR Article 17, providing confirmation \nof deletion or valid grounds for refusal.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 17",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-17",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_07"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-038",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Support W3C Digital Credentials API for presentation requests",
+      "explanation": "If the Relying Party supports the W3C Digital Credentials API, presentation \nrequests must conform to the API specification and properly handle the \nbrowser-mediated credential exchange flow.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 2",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-2",
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": [
+          "OIA_08c"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-039",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Handle revocation status unavailability gracefully",
+      "explanation": "When revocation status information is unavailable, the Relying Party \nInstance should not repeatedly request status lists and must implement \nappropriate fallback behavior as specified.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": [
+          "VCR_15"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-040",
+      "category": "technical",
+      "categoryLabel": "Technical",
+      "categoryIcon": "⚙️",
+      "requirement": "Support proximity identification flows",
+      "explanation": "Relying Party Instances that support proximity identification must \nimplement the specified BLE or NFC protocols for local credential \npresentation without internet connectivity.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 2",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-2",
+      "arfReference": {
+        "topic": "Topic 24",
+        "hlr": [
+          "ProxId_01a"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-041",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Handle registration certificate updates and renewals",
+      "explanation": "Relying Parties must properly handle registration certificate lifecycle \nevents including updates, renewals, and revocations, updating their \nstored certificates accordingly.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "arfReference": {
+        "topic": "Topic 44",
+        "hlr": [
+          "RPRC_19",
+          "RPRC_19a"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1276,6 +2048,13 @@
         "paragraph": "1-2"
       },
       "legalBasisLink": "/regulation/2024-2982#article-5",
+      "arfReference": {
+        "topic": "Topic 1",
+        "hlr": [
+          "OIA_03a",
+          "OIA_04"
+        ]
+      },
       "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
       "roles": [
         "relying_party"
@@ -1864,6 +2643,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-8",
+      "arfReference": {
+        "topic": "Topic 3",
+        "hlr": "PID_02"
+      },
       "annexReference": "Annex II of 2024/2979:\n- ISO/IEC.18013-5:2021\n- 'Verifiable Credentials Data Model 1.1', W3C Recommendation",
       "roles": [
         "relying_party"
@@ -1896,6 +2679,10 @@
         "paragraph": "4"
       },
       "legalBasisLink": "/regulation/2024-2982#article-5",
+      "arfReference": {
+        "topic": "Topic 12",
+        "hlr": "ARB_02"
+      },
       "roles": [
         "relying_party"
       ],
@@ -2055,6 +2842,10 @@
       },
       "legalBasisLink": "/regulation/2024-2982#article-3",
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow wallet-relying parties to present a valid \nwallet-relying party access certificate.",
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": "RPA_01"
+      },
       "roles": [
         "relying_party"
       ],
@@ -2262,6 +3053,10 @@
       },
       "legalBasisLink": "/regulation/2014-910#article-45d",
       "legalText": "Electronic attestation of attributes issued by or on behalf of a public \nsector body responsible for an authentic source shall be issued in \naccordance with the requirements laid down in this Regulation.",
+      "arfReference": {
+        "topic": "Topic 27",
+        "hlr": "Reg_01"
+      },
       "roles": [
         "issuer"
       ],
@@ -2292,6 +3087,10 @@
       },
       "legalBasisLink": "/regulation/2024-2981#article-3",
       "legalText": "Providers issuing attestations to European Digital Identity Wallet units \nshall publish information in accordance with the data model set out in \nAnnex I.",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_29"
+      },
       "roles": [
         "issuer"
       ],
@@ -2350,6 +3149,10 @@
         "paragraph": "1"
       },
       "legalBasisLink": "/regulation/2014-910#article-45f",
+      "arfReference": {
+        "topic": "Topic 42",
+        "hlr": "QTSPAS_02"
+      },
       "roles": [
         "issuer"
       ],
@@ -2441,6 +3244,13 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-6",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "ISSU_01",
+          "ISSU_01a"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2470,6 +3280,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-6",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_03"
+      },
       "roles": [
         "issuer"
       ],
@@ -2559,6 +3373,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-3",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_50"
+      },
       "roles": [
         "issuer"
       ],
@@ -2588,6 +3406,13 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-3",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "ISSU_05",
+          "ISSU_59"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2618,6 +3443,13 @@
       },
       "legalBasisLink": "/regulation/2024-2979#article-4",
       "legalText": "PID Providers and Attestation Providers shall publish validity status \ninformation of revoked or suspended attestations.\nhlr: \"VCR_01\"",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": [
+          "VCR_11",
+          "VCR_12"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2648,6 +3480,13 @@
         "hlr": "VCR_03"
       },
       "legalBasisLink": "/regulation/2024-2979#article-4",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": [
+          "VCR_12",
+          "VCR_19"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2677,6 +3516,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-4",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": "VCR_09"
+      },
       "roles": [
         "issuer"
       ],
@@ -2706,6 +3549,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2979#article-4",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": "VCR_01a"
+      },
       "roles": [
         "issuer"
       ],
@@ -2736,6 +3583,13 @@
       },
       "legalBasisLink": "/regulation/2014-910#article-24",
       "legalText": "Qualified trust service providers shall use trustworthy systems and \nproducts that are protected against modification and ensure the \ntechnical security and reliability of the processes supported by them.",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "ISSU_35",
+          "ISSU_35a"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2767,6 +3621,10 @@
         "hlr": "Iss_04"
       },
       "legalBasisLink": "/regulation/2024-2979#article-8",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_35"
+      },
       "roles": [
         "issuer"
       ],
@@ -2796,6 +3654,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2014-910#article-24",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_17"
+      },
       "roles": [
         "issuer"
       ],
@@ -2854,6 +3716,13 @@
         "paragraph": ""
       },
       "legalBasisLink": "/regulation/2024-2981#article-4",
+      "arfReference": {
+        "topic": "Topic 12",
+        "hlr": [
+          "ARB_03",
+          "ARB_04"
+        ]
+      },
       "roles": [
         "issuer"
       ],
@@ -2884,6 +3753,10 @@
       },
       "legalBasisLink": "/regulation/2016-679#article-25",
       "legalText": "The controller shall implement appropriate technical and organisational \nmeasures for ensuring that, by default, only personal data which are \nnecessary for each specific purpose of the processing are processed.",
+      "arfReference": {
+        "topic": "Topic 43",
+        "hlr": "EDP_01"
+      },
       "roles": [
         "issuer"
       ],
@@ -2943,6 +3816,10 @@
       },
       "legalBasisLink": "/regulation/2014-910#article-45g",
       "legalText": "An electronic attestation of attributes issued in one Member State \nshall be recognised as an electronic attestation of attributes in \nall other Member States.",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_02"
+      },
       "roles": [
         "issuer"
       ],
@@ -2989,54 +3866,34 @@
       "_sourceFile": "issuer.yaml"
     },
     {
-      "id": "VEND-SCA-001",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Ensure SCA elements derive from independent authentication factors",
-      "explanation": "When integrating EUDI Wallet for SCA, the vendor must ensure the \nauthentication derives from at least two independent elements from \nknowledge, possession, and inherence categories. The wallet's \ncryptographic proofs (possession) must be combined with another factor.",
+      "id": "VEND-ISS-026",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Comply with PID Rulebook format and attribute requirements",
+      "explanation": "When issuing Person Identification Data (PIDs), the issuance platform must \ncomply with the PID Rulebook specifications including namespace conventions, \nattribute encoding (CBOR for mDoc), portrait image quality requirements, \nand domestic namespace publication.",
       "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 4",
-        "paragraph": "1"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-4",
-      "legalText": "Payment service providers shall apply strong customer authentication \nas defined in point (30) of Article 4 of Directive (EU) 2015/2366 \nwhere the payer accesses his payment account online, initiates an \nelectronic payment transaction, or carries out any action through \na remote channel.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-002",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Support PIN/biometric entry for the knowledge/inherence factor",
-      "explanation": "The connector must support wallet-based PIN entry or biometric \nverification to satisfy the knowledge or inherence element of SCA, \ncomplementing the possession element from the WSCD.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 6",
+        "regulation": "2024/2977",
+        "article": "Annex I",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2018-389#article-6",
-      "legalText": "The authentication elements categorised as inherence which payment \nservice providers may use shall be based on algorithms that assess \nthe probability that the authentication element derives from the \npayment service user.",
+      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "arfReference": {
+        "topic": "Topic 3",
+        "hlr": [
+          "PID_01",
+          "PID_04",
+          "PID_05",
+          "PID_08",
+          "PID_09",
+          "PID_10"
+        ]
+      },
       "roles": [
-        "relying_party"
+        "issuer"
       ],
       "productCategories": [
-        "connector"
+        "issuance_platform"
       ],
       "isUniversal": false,
       "isExtended": false,
@@ -3046,57 +3903,35 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
+      "notes": "Covers PID-specific format requirements. Non-PID attestation providers \nshould refer to the relevant Attestation Rulebook instead.",
+      "_sourceFile": "issuer.yaml"
     },
     {
-      "id": "VEND-SCA-003",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Preserve breach isolation between SCA elements",
-      "explanation": "The integration must maintain independence such that compromise of \none authentication element does not compromise the other. The wallet's \nWSCD isolation supports this, but the connector must not aggregate \nelements in a way that reduces independence.",
+      "id": "VEND-ISS-027",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Support all mandatory attestation formats for the attestation type",
+      "explanation": "The issuance platform must offer attestations in all formats required by \nthe applicable Rulebook. For most attestation types, this means supporting \nboth ISO 18013-5 (mDoc) and SD-JWT-VC formats with correct encoding.",
       "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 9",
-        "paragraph": "1"
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2018-389#article-9",
-      "legalText": "Payment service providers shall ensure that the use of the elements \nof strong customer authentication is subject to measures to mitigate \nthe risk of fraud due to the compromise of one of the elements.",
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "ISSU_12",
+          "ISSU_12d",
+          "ISSU_27"
+        ]
+      },
       "roles": [
-        "relying_party"
+        "issuer"
       ],
       "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST NOT",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-004",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Implement dynamic linking for remote payment transactions",
-      "explanation": "For remote payments, the connector must request wallet attestations \nthat dynamically link the authentication to the specific transaction \namount and payee. The VP Token must contain these bound elements.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 5",
-        "paragraph": "1"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-5",
-      "legalText": "Payment service providers shall apply strong customer authentication \nthat includes elements which dynamically link the transaction to a \nspecific amount and a specific payee.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
+        "issuance_platform"
       ],
       "isUniversal": false,
       "isExtended": false,
@@ -3106,175 +3941,36 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
+      "_sourceFile": "issuer.yaml"
     },
     {
-      "id": "VEND-SCA-005",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Include transaction amount and payee in authentication request",
-      "explanation": "The OID4VP authentication request must include the transaction amount \n(document_number) and payee identifier in a way that enables the \nwallet to display these to the user and bind them to the VP Token.",
+      "id": "VEND-ISS-028",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Implement revocation according to applicable Rulebook specifications",
+      "explanation": "The platform must implement attestation revocation as specified in the \napplicable Rulebook. This includes publishing revocation status, supporting \nsuspension where required, and ensuring revocation information is available \nwithin defined propagation times.",
       "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 5",
-        "paragraph": "2(a)"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-5",
-      "legalText": "For the purpose of paragraph 1, the payer shall be made aware of \nthe amount of the payment transaction and of the payee.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-006",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Ensure authentication codes are specific and non-reusable",
-      "explanation": "The VP Token serves as the PSD2 authentication code. The connector \nmust ensure each token is bound to the specific transaction context \nand cannot be reused for different transactions.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 5",
-        "paragraph": "3"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-5",
-      "legalText": "The authentication code accepted by the payment service provider \nshall be specific to the amount of the transaction and the payee.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-007",
-      "category": "payments",
-      "categoryLabel": "Payments & SCA",
-      "categoryIcon": "💳",
-      "requirement": "Invalidate authentication codes when transaction details change",
-      "explanation": "If the payer modifies the transaction amount or payee after \nauthentication, the existing VP Token must be invalidated and \nnew SCA must be performed with the correct transaction details.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 5",
-        "paragraph": "3"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-5",
-      "legalText": "Any change to the amount or the payee shall result in the \ninvalidation of the authentication code generated.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-008",
-      "category": "verification",
-      "categoryLabel": "Verification",
-      "categoryIcon": "🔍",
-      "requirement": "Verify VP Token signatures against wallet certificate chain",
-      "explanation": "The connector must verify the cryptographic signatures on VP Tokens \nagainst the wallet's certificate chain, ultimately rooted in the \nPID Provider's trust anchor or Member State Trusted List.",
-      "legalBasis": {
-        "regulation": "2018/389",
+        "regulation": "2024/2979",
         "article": "Article 4",
-        "paragraph": "2(c)"
+        "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2018-389#article-4",
-      "legalText": "The elements of strong customer authentication which are independent \nin the sense that the breach of one does not compromise the \nreliability of the others.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-009",
-      "category": "verification",
-      "categoryLabel": "Verification",
-      "categoryIcon": "🔍",
-      "requirement": "Check attestation revocation status before accepting transactions",
-      "explanation": "Before accepting a wallet presentation for SCA, the connector must \ncheck the revocation status of the attestations presented, using \nthe issuer's published status lists.",
-      "legalBasisLink": null,
+      "legalBasisLink": "/regulation/2024-2979#article-4",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": "VCR_01"
+        "hlr": [
+          "VCR_02",
+          "VCR_03",
+          "VCR_03a",
+          "VCR_04",
+          "VCR_05"
+        ]
       },
       "roles": [
-        "relying_party"
+        "issuer"
       ],
       "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "arf",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-010",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Protect confidentiality of authentication elements in transit",
-      "explanation": "All communication between the connector and wallet, and between the \nconnector and PSP backend, must use encrypted channels (TLS 1.2+) \nto protect authentication elements from interception.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 22",
-        "paragraph": "1"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-22",
-      "legalText": "Payment service providers shall ensure the confidentiality, \nauthenticity and integrity of payment service users' personalised \nsecurity credentials.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
+        "issuance_platform"
       ],
       "isUniversal": false,
       "isExtended": false,
@@ -3284,56 +3980,33 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
+      "_sourceFile": "issuer.yaml"
     },
     {
-      "id": "VEND-SCA-011",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Implement rate limiting and lockout for failed authentications",
-      "explanation": "The connector must implement or support rate limiting and account \nlockout mechanisms after repeated failed authentication attempts, \nprotecting against brute-force attacks.",
+      "id": "VEND-ISS-029",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Maintain accurate registration information and update on changes",
+      "explanation": "Attestation providers must maintain accurate information in Member State \nregistries and update this information promptly when changes occur. This \nincludes contact details, supported attestation types, and operational status.",
       "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 4",
-        "paragraph": "3"
-      },
-      "legalBasisLink": "/regulation/2018-389#article-4",
-      "legalText": "Payment service providers shall adopt strong customer authentication \nprocedures including elements to prevent the use of compromised \nauthentication elements.",
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
-      "obligation": "MUST",
-      "_sourceFile": "payments.yaml"
-    },
-    {
-      "id": "VEND-SCA-012",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Log authentication events for audit and fraud detection",
-      "explanation": "The connector should log authentication events (success, failure, \ntimeout) with sufficient detail to support fraud investigation and \nregulatory audit requirements, while respecting data minimisation.",
-      "legalBasis": {
-        "regulation": "2018/389",
-        "article": "Article 23",
+        "regulation": "2014/910",
+        "article": "Article 45d",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2018-389#article-23",
+      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "arfReference": {
+        "topic": "Topic 27",
+        "hlr": [
+          "Reg_08",
+          "Reg_14"
+        ]
+      },
       "roles": [
-        "relying_party"
+        "issuer"
       ],
       "productCategories": [
-        "connector"
+        "issuance_platform"
       ],
       "isUniversal": false,
       "isExtended": false,
@@ -3342,8 +4015,353 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
-      "obligation": "SHOULD",
-      "_sourceFile": "payments.yaml"
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-030",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Publish PID/Attestation Provider trust anchor information",
+      "explanation": "PID and Attestation Providers must publish trust anchor information that \nenables Wallet Units and Relying Parties to verify issued attestations. \nThis includes signing certificate publication and Trusted List inclusion.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 2",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-2",
+      "arfReference": {
+        "topic": "Topic 31",
+        "hlr": [
+          "PPNot_03",
+          "PPNot_07",
+          "PuBPNot_03"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-031",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Verify Wallet Unit Attestation during issuance",
+      "explanation": "Before issuing a PID or device-bound attestation, the provider must verify \nthe Wallet Unit Attestation (WUA) to ensure the target Wallet Unit is \ngenuine and certified. This includes validating WUA signature and \nchecking revocation status.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "arfReference": {
+        "topic": "Topic 9",
+        "hlr": [
+          "WUA_11a",
+          "WUA_20a"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-032",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Include embedded disclosure policies in attestations",
+      "explanation": "Where applicable, attestation providers must include embedded disclosure \npolicies in issued attestations. These policies guide Wallet Units on \nappropriate disclosure behavior for the attestation.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "arfReference": {
+        "topic": "Topic 43",
+        "hlr": [
+          "EDP_09",
+          "EDP_11"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-033",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Use registration certificates for Provider authentication",
+      "explanation": "If a registration certificate was issued during registration, the \nprovider must use it for authentication in interactions with Wallet Units \nas specified in the technical specifications.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45d",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "arfReference": {
+        "topic": "Topic 44",
+        "hlr": [
+          "RPRC_14",
+          "RPRC_22"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-034",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Comply with SD-JWT VC format requirements for PID issuance",
+      "explanation": "When issuing PIDs in SD-JWT VC format, providers must include required \nclaims (vct), encode attributes per specification, ensure proper date \nformatting, and make all claims selectively disclosable.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex I",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "arfReference": {
+        "topic": "Topic 3",
+        "hlr": [
+          "PID_14",
+          "PID_17",
+          "PID_18",
+          "PID_19",
+          "PID_20",
+          "PID_21"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-035",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Comply with mDoc format requirements for PID issuance",
+      "explanation": "When issuing PIDs in ISO 18013-5 mDoc format, providers must use correct \ndocument types, element identifiers, value encodings, and ensure each \nPID contains at most one attribute with the same identifier.",
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Annex I",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "arfReference": {
+        "topic": "Topic 3",
+        "hlr": [
+          "PID_06",
+          "PID_07",
+          "PID_11",
+          "PID_12",
+          "PID_13",
+          "PID_16"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-036",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Support both attestation status mechanisms",
+      "explanation": "PID and Attestation Providers must support both the Attestation Status \nList mechanism and Token Status List mechanism for revocation checking \nas specified in the technical specifications.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": [
+          "VCR_12a"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-037",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Implement complete OpenID4VCI protocol requirements",
+      "explanation": "Attestation Providers must implement all required elements of the \nOpenID4VCI protocol, including credential offer structures, authorization \nflows, and credential response handling.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "ISSU_06",
+          "ISSU_07",
+          "ISSU_14",
+          "ISSU_15",
+          "ISSU_18",
+          "ISSU_18a",
+          "ISSU_22",
+          "ISSU_22a",
+          "ISSU_22b",
+          "ISSU_25",
+          "ISSU_26",
+          "ISSU_27b",
+          "ISSU_27c",
+          "ISSU_32",
+          "ISSU_32a"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-038",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Publish trust anchor information in common format",
+      "explanation": "PID Providers must publish trust anchor information according to the \ncommon set of information specified by the Commission, enabling \nWallet Units and Relying Parties to verify attestation authenticity.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 2",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-2",
+      "arfReference": {
+        "topic": "Topic 31",
+        "hlr": [
+          "PPNot_02",
+          "PPNot_04"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
     },
     {
       "id": "VEND-TSP-001",
@@ -3802,10 +4820,134 @@
       "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-017",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Comply with common Access Certificate Policy requirements",
+      "explanation": "Access Certificate Authorities must comply with the common Certificate \nPolicy established by the Commission. This includes certificate issuance, \nvalidation, and revocation procedures for all ecosystem participants.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 22",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-22",
+      "arfReference": {
+        "topic": "Topic 27",
+        "hlr": [
+          "Reg_12",
+          "Reg_13"
+        ]
+      },
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-018",
+      "category": "notification",
+      "categoryLabel": "notification",
+      "categoryIcon": "📋",
+      "requirement": "Handle suspension and cancellation of Trust Services",
+      "explanation": "When an Access Certificate Authority or Provider of registration certificates \nis suspended or cancelled, appropriate notification and transition procedures \nmust be followed to maintain ecosystem trust.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 20",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-20",
+      "arfReference": {
+        "topic": "Topic 31",
+        "hlr": [
+          "RPACANot_06",
+          "RPACANot_07"
+        ]
+      },
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-019",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Implement authentic source verification for QTSPs",
+      "explanation": "QTSPs accessing Authentic Sources for attribute verification must \nimplement the specified technical interfaces, obtain User consent, \nand process verification responses according to ARF requirements.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "arfReference": {
+        "topic": "Topic 42",
+        "hlr": [
+          "QTSPAS_03",
+          "QTSPAS_04",
+          "QTSPAS_05",
+          "QTSPAS_08"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "trust_services",
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
     }
   ],
   "requirementsByRole": {
     "relying_party": [
+      "VEND-CORE-019",
+      "VEND-CORE-021",
+      "VEND-CORE-027",
+      "VEND-CORE-028",
+      "VEND-CORE-029",
+      "VEND-CORE-030",
+      "VEND-CORE-031",
+      "VEND-CORE-032",
+      "VEND-CORE-033",
+      "VEND-CORE-034",
+      "VEND-CORE-035",
+      "VEND-CORE-036",
+      "VEND-CORE-037",
+      "VEND-CORE-038",
+      "VEND-CORE-039",
+      "VEND-CORE-040",
+      "VEND-CORE-041",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -3851,21 +4993,17 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034",
-      "VEND-SCA-001",
-      "VEND-SCA-002",
-      "VEND-SCA-003",
-      "VEND-SCA-004",
-      "VEND-SCA-005",
-      "VEND-SCA-006",
-      "VEND-SCA-007",
-      "VEND-SCA-008",
-      "VEND-SCA-009",
-      "VEND-SCA-010",
-      "VEND-SCA-011",
-      "VEND-SCA-012"
+      "VEND-INT-034"
     ],
     "issuer": [
+      "VEND-CORE-019",
+      "VEND-CORE-020",
+      "VEND-CORE-022",
+      "VEND-CORE-024",
+      "VEND-CORE-025",
+      "VEND-CORE-026",
+      "VEND-CORE-027",
+      "VEND-CORE-028",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -3903,9 +5041,23 @@
       "VEND-ISS-023",
       "VEND-ISS-024",
       "VEND-ISS-025",
+      "VEND-ISS-026",
+      "VEND-ISS-027",
+      "VEND-ISS-028",
+      "VEND-ISS-029",
+      "VEND-ISS-030",
+      "VEND-ISS-031",
+      "VEND-ISS-032",
+      "VEND-ISS-033",
+      "VEND-ISS-034",
+      "VEND-ISS-035",
+      "VEND-ISS-036",
+      "VEND-ISS-037",
+      "VEND-ISS-038",
       "VEND-TSP-012",
       "VEND-TSP-013",
-      "VEND-TSP-014"
+      "VEND-TSP-014",
+      "VEND-TSP-019"
     ],
     "universal": [
       "VEND-CORE-001",
@@ -3926,6 +5078,7 @@
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
+      "VEND-CORE-023",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -3938,11 +5091,30 @@
       "VEND-TSP-010",
       "VEND-TSP-011",
       "VEND-TSP-015",
-      "VEND-TSP-016"
+      "VEND-TSP-016",
+      "VEND-TSP-017",
+      "VEND-TSP-018"
     ]
   },
   "requirementsByProductCategory": {
     "connector": [
+      "VEND-CORE-019",
+      "VEND-CORE-021",
+      "VEND-CORE-027",
+      "VEND-CORE-028",
+      "VEND-CORE-029",
+      "VEND-CORE-030",
+      "VEND-CORE-031",
+      "VEND-CORE-032",
+      "VEND-CORE-033",
+      "VEND-CORE-034",
+      "VEND-CORE-035",
+      "VEND-CORE-036",
+      "VEND-CORE-037",
+      "VEND-CORE-038",
+      "VEND-CORE-039",
+      "VEND-CORE-040",
+      "VEND-CORE-041",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -3976,21 +5148,16 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034",
-      "VEND-SCA-001",
-      "VEND-SCA-002",
-      "VEND-SCA-003",
-      "VEND-SCA-004",
-      "VEND-SCA-005",
-      "VEND-SCA-006",
-      "VEND-SCA-007",
-      "VEND-SCA-008",
-      "VEND-SCA-009",
-      "VEND-SCA-010",
-      "VEND-SCA-011",
-      "VEND-SCA-012"
+      "VEND-INT-034"
     ],
     "issuance_platform": [
+      "VEND-CORE-019",
+      "VEND-CORE-020",
+      "VEND-CORE-022",
+      "VEND-CORE-024",
+      "VEND-CORE-025",
+      "VEND-CORE-027",
+      "VEND-CORE-028",
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-003",
@@ -4015,9 +5182,25 @@
       "VEND-ISS-022",
       "VEND-ISS-023",
       "VEND-ISS-024",
-      "VEND-ISS-025"
+      "VEND-ISS-025",
+      "VEND-ISS-026",
+      "VEND-ISS-027",
+      "VEND-ISS-028",
+      "VEND-ISS-029",
+      "VEND-ISS-030",
+      "VEND-ISS-031",
+      "VEND-ISS-032",
+      "VEND-ISS-033",
+      "VEND-ISS-034",
+      "VEND-ISS-035",
+      "VEND-ISS-036",
+      "VEND-ISS-037",
+      "VEND-ISS-038",
+      "VEND-TSP-019"
     ],
     "trust_services": [
+      "VEND-CORE-025",
+      "VEND-CORE-026",
       "VEND-ISS-004",
       "VEND-ISS-017",
       "VEND-TSP-001",
@@ -4035,7 +5218,10 @@
       "VEND-TSP-013",
       "VEND-TSP-014",
       "VEND-TSP-015",
-      "VEND-TSP-016"
+      "VEND-TSP-016",
+      "VEND-TSP-017",
+      "VEND-TSP-018",
+      "VEND-TSP-019"
     ],
     "universal": [
       "VEND-CORE-001",
@@ -4056,6 +5242,7 @@
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
+      "VEND-CORE-023",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -4080,6 +5267,25 @@
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
+      "VEND-CORE-019",
+      "VEND-CORE-020",
+      "VEND-CORE-022",
+      "VEND-CORE-023",
+      "VEND-CORE-024",
+      "VEND-CORE-025",
+      "VEND-CORE-026",
+      "VEND-CORE-027",
+      "VEND-CORE-029",
+      "VEND-CORE-030",
+      "VEND-CORE-031",
+      "VEND-CORE-032",
+      "VEND-CORE-033",
+      "VEND-CORE-034",
+      "VEND-CORE-036",
+      "VEND-CORE-038",
+      "VEND-CORE-039",
+      "VEND-CORE-040",
+      "VEND-CORE-041",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -4137,17 +5343,19 @@
       "VEND-ISS-023",
       "VEND-ISS-024",
       "VEND-ISS-025",
-      "VEND-SCA-001",
-      "VEND-SCA-002",
-      "VEND-SCA-003",
-      "VEND-SCA-004",
-      "VEND-SCA-005",
-      "VEND-SCA-006",
-      "VEND-SCA-007",
-      "VEND-SCA-008",
-      "VEND-SCA-010",
-      "VEND-SCA-011",
-      "VEND-SCA-012",
+      "VEND-ISS-026",
+      "VEND-ISS-027",
+      "VEND-ISS-028",
+      "VEND-ISS-029",
+      "VEND-ISS-030",
+      "VEND-ISS-031",
+      "VEND-ISS-032",
+      "VEND-ISS-033",
+      "VEND-ISS-034",
+      "VEND-ISS-035",
+      "VEND-ISS-036",
+      "VEND-ISS-037",
+      "VEND-ISS-038",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -4163,7 +5371,10 @@
       "VEND-TSP-013",
       "VEND-TSP-014",
       "VEND-TSP-015",
-      "VEND-TSP-016"
+      "VEND-TSP-016",
+      "VEND-TSP-017",
+      "VEND-TSP-018",
+      "VEND-TSP-019"
     ],
     "gdpr": [
       "VEND-CORE-002",
@@ -4176,6 +5387,10 @@
       "VEND-CORE-012",
       "VEND-CORE-013",
       "VEND-CORE-014",
+      "VEND-CORE-021",
+      "VEND-CORE-028",
+      "VEND-CORE-035",
+      "VEND-CORE-037",
       "VEND-INT-018",
       "VEND-ISS-022"
     ],
@@ -4193,54 +5408,52 @@
       "VEND-ICT-011",
       "VEND-ICT-012"
     ],
-    "arf": [
-      "VEND-SCA-009"
-    ]
+    "arf": []
   },
   "stats": {
-    "totalRequirements": 117,
+    "totalRequirements": 144,
     "byRole": {
-      "relying_party": 58,
-      "issuer": 40,
-      "universal": 31
+      "relying_party": 63,
+      "issuer": 62,
+      "universal": 34
     },
     "byProductCategory": {
-      "connector": 46,
-      "issuance_platform": 25,
-      "trust_services": 18,
-      "universal": 30
+      "connector": 51,
+      "issuance_platform": 46,
+      "trust_services": 23,
+      "universal": 31
     },
     "bySourceGroup": {
-      "eidas": 92,
-      "gdpr": 12,
+      "eidas": 116,
+      "gdpr": 16,
       "dora": 12,
-      "arf": 1
+      "arf": 0
     },
     "byCategory": {
       "governance": 14,
-      "registration": 11,
+      "registration": 16,
       "security": 25,
-      "privacy": 8,
-      "transparency": 6,
-      "verification": 8,
-      "certification": 5,
-      "technical": 12,
-      "interoperability": 4,
-      "issuance": 10,
-      "revocation": 5,
-      "payments": 7,
-      "liability": 2
+      "privacy": 16,
+      "transparency": 9,
+      "verification": 11,
+      "interoperability": 7,
+      "technical": 14,
+      "certification": 6,
+      "issuance": 16,
+      "revocation": 7,
+      "liability": 2,
+      "notification": 1
     },
     "byCriticality": {
-      "critical": 64,
-      "high": 42,
-      "medium": 11,
+      "critical": 70,
+      "high": 57,
+      "medium": 17,
       "low": 0
     },
     "byObligation": {
-      "MUST": 100,
-      "MUST NOT": 9,
-      "SHOULD": 8,
+      "MUST": 129,
+      "MUST NOT": 8,
+      "SHOULD": 7,
       "SHOULD NOT": 0,
       "MAY": 0
     }

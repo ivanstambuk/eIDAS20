@@ -4,10 +4,13 @@
  * Vendor Compliance Questionnaire generator for organizations evaluating
  * third-party products to integrate with the EUDIW ecosystem.
  * 
- * Updated: 2026-01-26 (DEC-256: Added Organisation Role and Product Category selection)
+ * Updated: 2026-01-28 (DEC-257: Role/Category filtering now functional)
  * - Step 1: Organisation Role Selection (Relying Party, Issuer)
  * - Step 2: Product Category Selection (Connector, Issuance Platform, Trust Services)
  * - Step 3: Source Selection (eIDAS, Related Regulations, Tech Specs)
+ * 
+ * Note: Role/Category selection now filters requirements using schema v2
+ * requirementsByRole and requirementsByProductCategory indexes.
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
@@ -430,7 +433,7 @@ function SourceSelector({
                                 checked={selectedSourceGroups.techSpecs}
                                 onChange={() => onToggleGroup('techSpecs')}
                             />
-                            <span className="vcq-option-name">Tech Specs</span>
+                            <span className="vcq-option-name">Technical Specifications</span>
                             <span className="vcq-option-hint">TS1–TS14</span>
                         </label>
                         <label className={`vcq-tile-option ${selectedSourceGroups.ruleBooks ? 'selected' : ''}`}>
@@ -549,7 +552,7 @@ function ARFReferenceLink({ arfReference, arfData }) {
                 <span className="vcq-arf-ref">{hlr}</span>
                 <span className="vcq-arf-topic">(Topic {topicNumber})</span>
             </a>
-            {showPopover && arfReq && !isEmpty && (
+            {showPopover && arfReq && (
                 <div
                     className="vcq-arf-popover"
                     style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
@@ -561,15 +564,28 @@ function ARFReferenceLink({ arfReference, arfData }) {
                         <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
                     </div>
                     <div className="vcq-arf-popover-title">{topicTitle}</div>
-                    <div className="vcq-arf-popover-spec">
-                        {specification?.length > 300 ? specification.substring(0, 300) + '...' : specification}
-                    </div>
-                    {notes && (
-                        <div className="vcq-arf-popover-notes">
-                            <strong>Note:</strong> {notes.substring(0, 150)}...
+                    {isEmpty ? (
+                        <div className="vcq-arf-popover-empty">
+                            This HLR slot is reserved but not yet populated in ARF.
                         </div>
+                    ) : (
+                        <>
+                            <div className="vcq-arf-popover-spec">
+                                {specification?.length > 300 ? specification.substring(0, 300) + '...' : specification}
+                            </div>
+                            {notes && (
+                                <div className="vcq-arf-popover-notes">
+                                    <strong>Note:</strong> {notes.substring(0, 150)}...
+                                </div>
+                            )}
+                        </>
                     )}
-                    <div className="vcq-arf-popover-action">View in ARF →</div>
+                    <a
+                        href={arfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="vcq-arf-popover-action"
+                    >View in ARF →</a>
                 </div>
             )}
         </span>
@@ -742,7 +758,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                         <th className="col-requirement">Requirement</th>
                                         <th className="col-obligation">Obligation</th>
                                         <th className="col-legal">Legal Basis</th>
-                                        <th className="col-answer">Response</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -775,19 +790,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                     {!req.legalBasis && !req.arfReference && (
                                                         <span className="vcq-no-basis">—</span>
                                                     )}
-                                                </td>
-                                                <td className="col-answer">
-                                                    <select
-                                                        value={answer}
-                                                        onChange={e => onAnswerChange(req.id, e.target.value)}
-                                                        className={`vcq-answer-select status-${answer}`}
-                                                    >
-                                                        {answerOptions.map(opt => (
-                                                            <option key={opt.value} value={opt.value}>
-                                                                {opt.icon} {opt.label}
-                                                            </option>
-                                                        ))}
-                                                    </select>
                                                 </td>
                                             </tr>
                                         );
@@ -859,12 +861,38 @@ function ExportPanel({ requirements, answers, selectedRoles, selectedCategories,
         URL.revokeObjectURL(url);
     };
 
+    const handleExportExcel = () => {
+        // Build CSV content (Excel-compatible)
+        let csv = 'ID,Category,Requirement,Obligation,Legal Basis,Response\n';
+
+        requirements.forEach(req => {
+            const answer = answers[req.id]?.value || 'pending';
+            const legalBasis = req.legalBasis
+                ? `${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})`
+                : '';
+            // Escape quotes and wrap in quotes for CSV
+            const escapedReq = `"${req.requirement.replace(/"/g, '""')}"`;
+            csv += `${req.id},${req.category},${escapedReq},${req.obligation},${legalBasis},${answer}\n`;
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <div className="vcq-export-panel">
             <h4>📤 Export Questionnaire</h4>
-            <div className="vcq-export-buttons">
-                <button className="btn btn-secondary" onClick={handleExportMarkdown}>
+            <div className="vcq-export-options">
+                <button className="vcq-export-btn" onClick={handleExportMarkdown}>
                     📝 Export Markdown
+                </button>
+                <button className="vcq-export-btn" onClick={handleExportExcel}>
+                    📊 Export Excel (CSV)
                 </button>
             </div>
         </div>
@@ -975,25 +1003,41 @@ export default function VendorQuestionnaire() {
     }, [selectedRoles, selectedCategories]);
 
     // Get applicable requirements
+    // DEC-257: Now properly filters by selectedRoles and selectedCategories
     const applicableRequirements = useMemo(() => {
         if (!data) return [];
+        if (selectedRoles.length === 0 || selectedCategories.length === 0) return [];
 
         const reqIds = new Set();
 
-        // Include core requirements
-        data.requirementsByType?.core?.forEach(id => reqIds.add(id));
+        // DEC-257 Schema v2: Build requirement set from role and category indexes
+        // Universal requirements (empty roles/productCategories) apply to all selections
 
-        // Include intermediary requirements (legacy compatibility)
-        data.requirementsByType?.intermediary?.forEach(id => reqIds.add(id));
+        // Add requirements that match selected roles (or are universal)
+        const roleMatchIds = new Set();
+        data.requirementsByRole?.universal?.forEach(id => roleMatchIds.add(id));
+        selectedRoles.forEach(role => {
+            data.requirementsByRole?.[role]?.forEach(id => roleMatchIds.add(id));
+        });
 
-        // Include DORA if selected
-        if (selectedSourceGroups.dora) {
-            data.requirementsByType?.dora_ict?.forEach(id => reqIds.add(id));
-        }
+        // Add requirements that match selected categories (or are universal)
+        const categoryMatchIds = new Set();
+        data.requirementsByProductCategory?.universal?.forEach(id => categoryMatchIds.add(id));
+        selectedCategories.forEach(cat => {
+            data.requirementsByProductCategory?.[cat]?.forEach(id => categoryMatchIds.add(id));
+        });
+
+        // Requirement must match BOTH role AND category filters
+        // (intersection of role-applicable and category-applicable)
+        roleMatchIds.forEach(id => {
+            if (categoryMatchIds.has(id)) {
+                reqIds.add(id);
+            }
+        });
 
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
-        // Filter by source group
+        // Filter by source group (eIDAS, GDPR, DORA, ARF)
         const activeGroups = Object.entries(selectedSourceGroups)
             .filter(([_, isSelected]) => isSelected)
             .map(([group]) => group);
@@ -1005,7 +1049,7 @@ export default function VendorQuestionnaire() {
         }
 
         return filtered;
-    }, [data, selectedSourceGroups]);
+    }, [data, selectedRoles, selectedCategories, selectedSourceGroups]);
 
     // Summary stats
     const summaryStats = useMemo(() => {

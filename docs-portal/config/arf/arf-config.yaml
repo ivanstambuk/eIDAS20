@@ -23,14 +23,32 @@ source:
 
 # Topics relevant to VCQ and RCA tools
 # Only HLRs from these topics will be imported (set to null to import all)
+# Updated: 2026-01-28 - Expanded for Issuer role and TS coverage
 relevantTopics:
+  # === Relying Party / Connector ===
   - 1   # Accessing Online Services with a Wallet Unit (OIA_*)
   - 6   # Relying Party Authentication and User Approval (RPA_*)
   - 7   # Attestation revocation and revocation checking (VCR_*)
-  - 14  # Validity, Authenticity and Revocation Checks (VAL_*)
+  - 11  # Pseudonyms (TS9 coverage)
+  - 24  # User identification in proximity scenarios
+  - 48  # Data deletion requests (TS7 coverage)
+  - 52  # Relying Party Intermediaries (RPI_*)
+  
+  # === Issuer / Issuance Platform ===
+  - 3   # PID Rulebook
+  - 9   # Wallet Unit Attestation (TS3/WUA)
+  - 10  # Issuing a PID or attestation to a Wallet Unit (CRITICAL)
+  - 12  # Attestation Rulebooks
+  - 43  # Embedded disclosure policies
+  
+  # === Trust Services ===
+  - 16  # Signing documents with a Wallet Unit (TS8/QES)
+  - 42  # QTSPs access to Authentic Sources
+  
+  # === Shared / Registration ===
   - 27  # Registration of Providers and Relying Parties (Reg_*)
+  - 31  # Notification and publication
   - 44  # Registration Certificates (RPRC_*)
-  - 52  # Relying Party Intermediaries (RPI_*) - PRIMARY for VCQ
 
 # Actor categories to include (set to null to include all)
 # Note: Filtering by topics is usually sufficient
@@ -43,14 +61,32 @@ topicMapping:
 
 # Topic anchor slugs for deep linking
 # These are the HTML anchors in annex-2.02-high-level-requirements-by-topic.md
+# Updated: 2026-01-28 - Expanded for all imported topics
 topicAnchors:
+  # RP / Connector
   1: "a231-topic-1---accessing-online-services-with-a-wallet-unit"
   6: "a234-topic-6---relying-party-authentication-and-user-approval"
   7: "a235-topic-7---attestation-revocation-and-revocation-checking"
-  14: "a239-topic-14---validity-authenticity-and-revocation-checks"
-  27: "a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
-  44: "a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
+  11: "a238-topic-11---pseudonyms"
+  24: "a2314-topic-24---user-identification-in-proximity-scenarios"
+  48: "a2327-topic-48---blueprint-for-requesting-data-deletion-to-relying-parties"
   52: "a2330-topic-52-relying-party-intermediaries"
+  
+  # Issuer / Issuance Platform
+  3: "a232-topic-3---pid-rulebook"
+  9: "a236-topic-9---wallet-unit-attestation"
+  10: "a237-topic-10---issuing-a-pid-or-attestation-to-a-wallet-unit"
+  12: "a239-topic-12---attestation-rulebooks"
+  43: "a2325-topic-43---embedded-disclosure-policies"
+  
+  # Trust Services  
+  16: "a2310-topic-16---signing-documents-with-a-wallet-unit"
+  42: "a2324-topic-42---requirements-for-qtsps-to-access-authentic-sources"
+  
+  # Shared / Registration
+  27: "a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
+  31: "a2320-topic-31---notification-and-publication-of-pid-provider-wallet-provider-attestation-provider-access-certificate-authority-and-provider-of-registration-certificates"
+  44: "a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties"
 
 # Output configuration
 output:

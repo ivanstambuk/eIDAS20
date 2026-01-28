@@ -878,7 +878,9 @@
 
 .vcq-generate-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
     margin-bottom: var(--space-8);
 }
 
@@ -1354,6 +1356,21 @@
     font-size: var(--text-xs);
     color: #d97706;
     font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.vcq-arf-popover-action:hover {
+    color: #f59e0b;
+    text-decoration: underline;
+}
+
+.vcq-arf-popover-empty {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-bottom: var(--space-2);
 }
 
 /* ============================================================================
@@ -1361,48 +1378,42 @@
    ============================================================================ */
 
 .vcq-export-panel {
-    padding: var(--space-6);
-    background: var(--bg-secondary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-primary);
-    margin-top: var(--space-6);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.vcq-export-panel h3 {
+.vcq-export-panel h4 {
     font-size: var(--text-base);
     font-weight: 600;
+    color: var(--text-primary);
     margin-bottom: var(--space-4);
 }
 
 .vcq-export-options {
     display: flex;
-    gap: var(--space-3);
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
 .vcq-export-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-4);
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-primary);
-    border-radius: var(--radius-md);
-    color: var(--text-primary);
-    font-size: var(--text-sm);
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
     font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 .vcq-export-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
     border-color: var(--accent-primary);
-    background: rgba(0, 200, 200, 0.05);
-}
-
-.vcq-export-btn svg {
-    width: 16px;
-    height: 16px;
 }
 
 /* ============================================================================

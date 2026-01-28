@@ -9,6 +9,7 @@
     "validate:css": "node scripts/validate-css-classes.js",
     "validate:rca": "node scripts/validate-rca.js",
     "validate:vcq": "node scripts/validate-vcq.js",
+    "validate:vcq-arf": "node scripts/validate-vcq-arf.js",
     "validate:subtitles": "node scripts/validate-subtitles.js",
     "validate:annex": "node scripts/validate-annex-content.js",
     "validate:ci": "npm run validate:config && npm run validate:css && npm run validate:rca && npm run validate:vcq && npm run validate:subtitles && npm run validate:annex",

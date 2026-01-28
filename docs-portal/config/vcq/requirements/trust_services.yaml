@@ -356,3 +356,64 @@ requirements:
     productCategories: [trust_services]
     deadline: "2027-11-21"
     criticality: high
+
+  # ============================================================================
+  # PHASE 3: Consolidated ARF Gap Coverage - Trust Services (2026-01-28)
+  # ============================================================================
+
+  - id: VEND-TSP-017
+    category: certification
+    requirement: "Comply with common Access Certificate Policy requirements"
+    explanation: |
+      Access Certificate Authorities must comply with the common Certificate 
+      Policy established by the Commission. This includes certificate issuance, 
+      validation, and revocation procedures for all ecosystem participants.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 22"
+      paragraph: ""
+    arfReference:
+      topic: "Topic 27"
+      hlr: ["Reg_12", "Reg_13"]
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-018
+    category: notification
+    requirement: "Handle suspension and cancellation of Trust Services"
+    explanation: |
+      When an Access Certificate Authority or Provider of registration certificates 
+      is suspended or cancelled, appropriate notification and transition procedures 
+      must be followed to maintain ecosystem trust.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 20"
+      paragraph: ""
+    arfReference:
+      topic: "Topic 31"
+      hlr: ["RPACANot_06", "RPACANot_07"]
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-019
+    category: verification
+    requirement: "Implement authentic source verification for QTSPs"
+    explanation: |
+      QTSPs accessing Authentic Sources for attribute verification must 
+      implement the specified technical interfaces, obtain User consent, 
+      and process verification responses according to ARF requirements.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: ""
+    arfReference:
+      topic: "Topic 42"
+      hlr: ["QTSPAS_03", "QTSPAS_04", "QTSPAS_05", "QTSPAS_08"]
+    roles: [issuer]
+    productCategories: [trust_services, issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
