@@ -1,6 +1,6 @@
 # eIDAS 2.0 Documentation Portal — Terminology
 
-> Status: Living Document | Last updated: 2026-01-26
+> Status: Living Document | Last updated: 2026-01-28
 
 Common terms used across the documentation portal project to ensure consistent vocabulary. This is the authoritative source for terminology—any ambiguity in communication should be resolved by consulting this document.
 
@@ -491,6 +491,8 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 | **RP-Only Requirement** | An RCA Relying Party requirement that cannot be delegated to an intermediary vendor. Examples: wallet acceptance decisions (Art 5f), identity matching logs (2025/846), security breach notifications (2025/847). These are excluded from VCQ because the RP must fulfill them directly. See RCA-VCQ mapping document for full list. |
 | **Obligation (RFC 2119)** | The normative strength of a requirement, derived from modal verbs in the source text per [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119). Levels: `MUST`/`SHALL` (absolute requirement), `MUST NOT`/`SHALL NOT` (absolute prohibition), `SHOULD`/`RECOMMENDED` (recommended but exceptions exist), `SHOULD NOT` (not recommended), `MAY`/`OPTIONAL` (truly optional). Replaces subjective \"criticality\" levels in VCQ UI. |
 | **Modal Verb** | A keyword in legal/regulatory text indicating requirement strength. Common EU modal verbs: \"shall\" (→MUST), \"must\" (→MUST), \"should\" (→SHOULD), \"may\" (→MAY), \"can\" (→MAY). Used by `deriveObligation()` in `build-vcq.js` to auto-classify requirements. Note: EU legal text heavily uses \"shall\", resulting in ~87% MUST obligations. |
+| **Cross-cutting Reference** | ⚙️ *Portal convention*. A reference type (like ARF) that overlaps with legal source groups. Requirements with `arfReference` are counted in BOTH their legal source (eIDAS/GDPR/DORA) AND the ARF group. This means source group counts (116 + 28 + 78) sum to more than total unique requirements (144) because of overlap. See `determineSourceGroup()` in `build-vcq.js`. |
+| **HLR Exclusion** | An ARF HLR documented as not applicable to vendors in the VCQ context. Stored in `config/vcq/hlr-exclusions.yaml` with reason codes: `member_state_only`, `non_intermediary`, `eu_jurisdiction`, `issuer_scope`, `device_scope`. 244 HLRs are excluded from vendor mapping, leaving 78 VCQ requirements referencing relevant HLRs. |
 
 ---
 

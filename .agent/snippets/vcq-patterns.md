@@ -199,4 +199,33 @@ const handleAnswerChange = useCallback((reqId, value, notes) => {
 
 ---
 
-*Last updated: 2026-01-22*
+## YAML Array Shell Gotcha
+
+When appending to YAML files via shell `cat >>`, you create **strings**, NOT arrays:
+
+```bash
+# ❌ WRONG — creates: hlr: "VCR_01, VCR_02" (a single string with comma)
+cat >> file.yaml << EOF
+  hlr: VCR_01, VCR_02
+EOF
+
+# ❌ ALSO WRONG — creates: hlr: "[VCR_01, VCR_02]" (string literal)
+cat >> file.yaml << EOF
+  hlr: [VCR_01, VCR_02]
+EOF
+
+# ✅ CORRECT — creates proper YAML array
+cat >> file.yaml << EOF
+  hlr:
+    - VCR_01
+    - VCR_02
+EOF
+```
+
+**Why this matters:** Validators and build scripts expecting arrays will fail or produce incorrect data when given strings that look like arrays.
+
+**Detection:** Run `npm run validate:vcq` to check for HLR format issues.
+
+---
+
+*Last updated: 2026-01-28*

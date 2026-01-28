@@ -42,6 +42,12 @@ const arf = JSON.parse(fs.readFileSync(ARF_DATA, 'utf-8'));
 const validHlrIds = new Set(arf.requirements.map(r => r.hlrId));
 const validTopics = new Set(arf.requirements.map(r => `Topic ${r.topicNumber}`));
 
+// Build HLR to topic mapping for consistency checks
+const hlrToTopic = new Map();
+for (const r of arf.requirements) {
+    hlrToTopic.set(r.hlrId, r.topicNumber);
+}
+
 // Validation results
 const errors = [];
 const warnings = [];
@@ -54,13 +60,16 @@ for (const req of vcq.requirements) {
 
     totalWithArfRef++;
 
-    // Validate topic
-    if (req.arfReference.topic && !validTopics.has(req.arfReference.topic)) {
+    const statedTopic = req.arfReference.topic;
+    const statedTopicNum = statedTopic ? parseInt(statedTopic.replace('Topic ', ''), 10) : null;
+
+    // Validate topic exists
+    if (statedTopic && !validTopics.has(statedTopic)) {
         errors.push({
             id: req.id,
             type: 'INVALID_TOPIC',
-            value: req.arfReference.topic,
-            message: `Topic "${req.arfReference.topic}" not found in ARF data`
+            value: statedTopic,
+            message: `Topic "${statedTopic}" not found in ARF data`
         });
     }
 
@@ -88,6 +97,17 @@ for (const req of vcq.requirements) {
             });
         } else {
             coveredHlrs.add(hlrId);
+
+            // Check topic-HLR consistency
+            const actualTopic = hlrToTopic.get(hlrId);
+            if (statedTopicNum && actualTopic && actualTopic !== statedTopicNum) {
+                warnings.push({
+                    id: req.id,
+                    type: 'TOPIC_MISMATCH',
+                    value: hlrId,
+                    message: `HLR "${hlrId}" belongs to Topic ${actualTopic}, but arfReference states Topic ${statedTopicNum}`
+                });
+            }
         }
     }
 }

@@ -1057,6 +1057,103 @@ grep -rh "hlr:" docs-portal/config/vcq/requirements/*.yaml | \
 
 ---
 
+## VCQ Architecture (Vendor Compliance Questionnaire)
+
+### Source Group Counting Logic
+
+**VCQ requirements are counted in source groups based on their `legalBasis.regulation` field.**
+
+| Source Group | Regulations Included |
+|--------------|---------------------|
+| `eidas` | 2014/910, 2024/1183, 2015/1501, 2015/1502, etc. |
+| `gdpr` | 2016/679 |
+| `dora` | 2022/2554 |
+| `arf` | **Cross-cutting** — any requirement with `arfReference` |
+
+**⚠️ ARF is cross-cutting:** Requirements with `arfReference` are counted in BOTH their legal source AND in ARF. This means:
+- A requirement with `legalBasis: 2014/910` AND `arfReference: {topic: "Topic 7", hlr: "VCR_01"}` appears in BOTH eIDAS (116) AND ARF (78)
+- The tile counts (116 + 28 + 78) sum to more than total unique requirements (144) because of this overlap
+
+**Relevant file:** `docs-portal/scripts/build-vcq.js`, function `determineSourceGroup()`
+
+### Valid VCQ Categories (13 total)
+
+Requirements must use one of these category IDs:
+
+| Category ID | Description |
+|-------------|-------------|
+| `data_governance` | Data handling and storage |
+| `identity_verification` | User identity proofing |
+| `interoperability` | Cross-system compatibility |
+| `operational_security` | Runtime security measures |
+| `privacy` | GDPR, data protection |
+| `cryptographic` | Cryptographic operations |
+| `wallet_integration` | EUDIW integration |
+| `credential_management` | Attestation lifecycle |
+| `technical` | Formats, protocols, APIs |
+| `compliance` | Regulatory alignment |
+| `transparency` | Disclosure, policies |
+| `governance` | Staffing, procedures |
+| `liability` | Insurance, legal effects |
+
+**⚠️ Common mistake:** Using `notification` instead of `transparency`. These are equivalent — use `transparency`.
+
+**Validation:** `npm run validate:vcq` checks category validity.
+
+### arfReference Schema
+
+The `arfReference` field links a VCQ requirement to ARF HLRs:
+
+```yaml
+# Single HLR (string format)
+arfReference:
+  topic: "Topic 7"
+  hlr: "VCR_01"
+
+# Multiple HLRs (array format) — preferred for multi-HLR coverage
+arfReference:
+  topic: "Topic 7"
+  hlr: ["VCR_01", "VCR_02", "VCR_03"]
+```
+
+**Both formats are valid.** The build script and validators handle both.
+
+**⚠️ YAML Array Gotcha:** When appending to YAML files via shell `cat >>`, you create strings, NOT arrays:
+
+```bash
+# ❌ WRONG — creates: hlr: "VCR_01, VCR_02" (a single string)
+cat >> file.yaml << EOF
+  hlr: VCR_01, VCR_02
+EOF
+
+# ✅ CORRECT — creates proper array
+cat >> file.yaml << EOF
+  hlr:
+    - VCR_01
+    - VCR_02
+EOF
+```
+
+### VCQ Export Formats
+
+| Format | Button | File Type | Features |
+|--------|--------|-----------|----------|
+| **Markdown** | 📝 Export Markdown | `.md` | Human-readable, includes explanations |
+| **Excel** | 📊 Export Excel | `.xlsx` | 3 sheets (Summary, Requirements, Legal References), styled columns, obligation colors |
+
+**Excel export features:**
+- Summary sheet with status counts and obligation breakdown
+- Requirements sheet with ARF Reference column
+- Legal References sheet with full legal text
+- Color-coded status badges (Compliant/Non-Compliant/Pending)
+- Obligation styling (MUST = red, SHOULD = yellow, MAY = green)
+
+**Relevant files:**
+- `docs-portal/src/utils/vcq/exportExcel.js` — Excel export utility
+- `docs-portal/src/pages/VendorQuestionnaire.jsx` — ExportPanel component
+
+---
+
 ## Git Workflow
 
 Uses **conventional commits**:
@@ -1067,4 +1164,4 @@ Uses **conventional commits**:
 
 ---
 
-*Last updated: 2026-01-20*
+*Last updated: 2026-01-28*
