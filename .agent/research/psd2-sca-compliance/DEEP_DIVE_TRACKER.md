@@ -34,7 +34,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 23 | Secure creation, mitigate loss/theft/copying risks | ❌ No |
+| Art. 23 | Secure creation, mitigate loss/theft/copying risks | ✅ Yes |
 
 ### Article 24 — Association with User
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 40 |
-| ❌ Not Done | 7 |
+| ✅ Done | 41 |
+| ❌ Not Done | 6 |
 | **Total** | 47 |
 
 ---
@@ -187,6 +187,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 3(1) | Deep-dive: Four-pillar assurance, certification reliance model, PSP audit scope, gaps SMR-1 to SMR-4 |
 | 2026-01-28 | Art. 3(2) | Deep-dive: Two-tier audit system, TRA thresholds, external auditor requirements, gaps AF-1 to AF-4 |
 | 2026-01-28 | Art. 3(3) | Deep-dive: Audit report structure, regulatory access, CA request scenarios, gaps AR-1 to AR-4 |
+| 2026-01-28 | Art. 23 | Deep-dive: PSC creation flow, hardware security levels, threat model, gaps SC-1 to SC-4 |
 
 ---
 

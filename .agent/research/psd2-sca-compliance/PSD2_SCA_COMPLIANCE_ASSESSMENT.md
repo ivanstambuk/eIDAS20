@@ -989,6 +989,123 @@ The Wallet Solution certification under CIR 2024/2981 provides:
 
 This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
 
+<details>
+<summary><strong>🔍 Deep-Dive: Secure PSC Creation Architecture</strong></summary>
+
+##### Core Requirement: Secure Environment
+
+Article 23 mandates **two distinct protections**:
+
+| Requirement | Description | EUDI Wallet Implementation |
+|-------------|-------------|----------------------------|
+| **Secure creation** | PSC created in protected environment | WSCD (Secure Enclave/StrongBox) |
+| **Pre-delivery risk mitigation** | Protection before credential reaches user | N/A (credentials never leave device) |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      PSC Creation Flow in EUDI Wallet                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. WALLET ACTIVATION                                                       │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  User installs Wallet App → Wallet Provider verifies app integrity  │ │
+│     │  Wallet Instance Attestation (WIA) issued                           │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  2. KEY PAIR GENERATION                                                     │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  ┌───────────────────────────────────────────────────────────────┐  │ │
+│     │  │               SECURE ELEMENT (WSCD)                          │  │ │
+│     │  │   ┌─────────────────────────────────────────────────────────┐│  │ │
+│     │  │   │  KeyPairGenerator.generateKeyPair()                    ││  │ │
+│     │  │   │  • ECDSA P-256 (ES256) or P-384 (ES384)                ││  │ │
+│     │  │   │  • Private key NEVER EXPORTED                          ││  │ │
+│     │  │   │  • Public key available for attestation                ││  │ │
+│     │  │   └─────────────────────────────────────────────────────────┘│  │ │
+│     │  └───────────────────────────────────────────────────────────────┘  │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  3. PIN/BIOMETRIC ENROLLMENT                                                │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  PIN: User creates → stored encrypted, never transmitted           │ │
+│     │  Biometric: Enrolled via OS → reference stored in TEE              │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  4. SCA ATTESTATION ISSUANCE                                                │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  Wallet → PSP: OID4VCI request (including public key, WUA)         │ │
+│     │  PSP verifies: User identity (KYC), WUA, device binding            │ │
+│     │  PSP → Wallet: Signed SCA Attestation (SD-JWT-VC)                  │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Hardware Security Levels
+
+| Level | Environment | Private Key Protection | Certification |
+|-------|-------------|------------------------|---------------|
+| **L1** | Software-only | OS protection, encrypted storage | None |
+| **L2** | TEE (Trusted Execution Environment) | Isolated execution | GlobalPlatform |
+| **L3** | Secure Element (SE) | Dedicated hardware, tamper-resistant | CC EAL4+/5+ |
+
+##### PSC Type Creation Details
+
+| PSC Type | Creation Source | Entropy Source | Storage Location |
+|----------|-----------------|----------------|------------------|
+| **Cryptographic Key** | WSCD hardware RNG | Hardware TRNG | Secure Element |
+| **PIN** | User input | User-chosen (entropy varies) | Encrypted in WSCD |
+| **Biometric** | OS enrollment | Physical characteristic | TEE / Secure Enclave |
+| **SCA Attestation** | PSP-issued | PSP signing key | Wallet encrypted storage |
+
+##### Pre-Delivery Risk Mitigation
+
+Traditional PSP model vs. EUDI Wallet model:
+
+| Risk | Traditional PSP | EUDI Wallet | Advantage |
+|------|-----------------|-------------|-----------|
+| **Key theft in transit** | Key generated at PSP, transmitted | Key never leaves device | ✅ EUDI eliminates |
+| **Credential interception** | PIN mailed, SMS OTP intercepted | PIN never transmitted | ✅ EUDI eliminates |
+| **Insider threat** | PSP staff can access keys | PSP never sees private key | ✅ EUDI eliminates |
+| **Batch compromise** | Centralized key storage | Distributed per-device keys | ✅ EUDI mitigates |
+
+##### Threat Model: Creation Phase
+
+| Threat | Vector | Mitigation |
+|--------|--------|------------|
+| **Weak RNG** | Predictable key generation | Hardware TRNG in WSCD |
+| **Side-channel attack** | Key extraction during generation | Secure Element isolation |
+| **Malicious wallet app** | Rogue app captures credentials | Wallet Provider certification, WIA |
+| **Rooted device** | OS-level key extraction | StrongBox/Secure Enclave attestation |
+| **Enrollment fraud** | Impersonation at issuance | PSP KYC, SCA during enrollment |
+
+##### Platform Implementation
+
+| Platform | Secure Element | Key Generation API | Certification |
+|----------|----------------|---------------------|---------------|
+| **iOS** | Secure Enclave | SecKeyGeneratePair | Apple security certification |
+| **Android** | StrongBox / TEE | Android Keystore | FIDO, GlobalPlatform |
+| **Desktop** | TPM 2.0 or smartcard | PKCS#11 | CC EAL4+ |
+
+##### Gap Analysis: Secure PSC Creation
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **SC-1** | PIN entropy guidance not specified | Medium | Recommend 6+ digits, complexity score |
+| **SC-2** | Key algorithm flexibility not documented | Low | Document supported curves (P-256, P-384) |
+| **SC-3** | Fallback for devices without SE undefined | Medium | Define minimum security level requirements |
+| **SC-4** | Biometric re-enrollment impact not addressed | Low | Require key rotation on biometric change |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Minimum Security Level**: Mandate L2 (TEE) minimum for production wallets
+2. **Key Algorithm**: Specify P-256 or P-384 with ES256/ES384 signature
+3. **PIN Guidance**: Recommend 6+ digit, no sequential (1234), no repeated (1111)
+4. **Key Attestation**: Require hardware key attestation for production
+5. **Certification Mapping**: Map WSCD certification to CC/FIPS equivalents
+6. **Biometric Binding**: Document behavior when biometric re-enrolled
+
+</details>
 
 ---
 
