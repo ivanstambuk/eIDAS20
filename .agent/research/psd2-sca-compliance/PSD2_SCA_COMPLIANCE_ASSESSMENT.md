@@ -438,23 +438,26 @@ Article 22(2)(a) mandates that PSCs must be **masked when displayed** and **not 
 
 ##### Reference Implementation Evidence
 
-**iOS SecureField Usage**:
+**iOS** — [`PinTextFieldView.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-ui/Sources/DesignSystem/Component/Input/PinTextFieldView.swift#L172-L175) (lines 172-175):
 ```swift
-// From EUDI Wallet iOS UI
-SecureField("Enter PIN", text: $pinInput)
-    .keyboardType(.numberPad)
-    .textContentType(.oneTimeCode)
-    .disabled(isLoading)
+.accentColor(.clear)
+.foregroundColor(.clear)
+.keyboardType(.numberPad)
+.textContentType(.oneTimeCode)
 ```
 
-**Android Masked Input**:
+**Android** — [`PinScreen.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/ui/pin/PinScreen.kt#L282-L292) (lines 282-292):
 ```kotlin
-// From EUDI Wallet Android UI
-TextField(
-    value = pin,
-    onValueChange = { pin = it },
+WrapPinTextField(
+    modifier = modifier,
+    onPinUpdate = onPinInput,
+    length = state.quickPinSize,
+    hasError = !state.quickPinError.isNullOrEmpty(),
+    errorMessage = state.quickPinError,
     visualTransformation = PasswordVisualTransformation(),
-    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+    pinWidth = 42.dp,
+    clearCode = state.resetPin,
+    focusOnCreate = true
 )
 ```
 
