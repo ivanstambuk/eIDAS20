@@ -561,7 +561,6 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
-                title={hlrData?.specification?.substring(0, 200) || `View ${hlrId} in ARF`}
                 onMouseEnter={isInteractive ? handleMouseEnter : undefined}
                 onMouseLeave={isInteractive ? handleMouseLeave : undefined}
             >
