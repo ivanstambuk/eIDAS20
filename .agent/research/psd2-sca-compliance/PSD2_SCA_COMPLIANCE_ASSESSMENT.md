@@ -235,8 +235,8 @@ The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: PSC Confidentiality and Integrity Across All Phases◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: PSC Confidentiality and Integrity Across All Phases</strong></summary>
 
 ##### What are Personalised Security Credentials (PSCs)?
 
@@ -347,7 +347,7 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 | Gap ID | Description | Severity | Recommendation |
 |--------|-------------|----------|----------------|
-| **PSC-1** | Revocation propagation delay not specified | Medium | Define SLA for WUA revocation propagation (e.g., ◄ 1 hour) |
+| **PSC-1** | Revocation propagation delay not specified | Medium | Define SLA for WUA revocation propagation (e.g., < 1 hour) |
 | **PSC-2** | Renewal SCA requirements not detailed | Low | Clarify: full SCA required for renewal, or can existing session suffice? |
 | **PSC-3** | PIN entropy covered separately (K-1) | See K-1 | Cross-reference: PIN entropy requirements in SCA Attestation Rulebook |
 | **PSC-4** | Authentication code lifetime not specified | Low | Define max validity for KB-JWT (e.g., 5 minutes) |
@@ -360,7 +360,7 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 4. **Revocation SLA**: Mandate maximum propagation delay for WUA revocation
 5. **Authentication Code TTL**: Specify maximum validity for KB-JWT signatures (e.g., 5 minutes)
 
-◄/details►
+</details>
 
 **Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
 - **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
@@ -379,8 +379,8 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Credential Masking During Input◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Masking During Input</strong></summary>
 
 ##### Core Requirement: Masked Display and Input
 
@@ -501,7 +501,7 @@ TextField(
 4. **No Clipboard**: Confirm PIN fields must disable copy/paste
 5. **Brief Reveal**: Document acceptable brief character reveal duration
 
-◄/details►
+</details>
 
 ---
 
@@ -516,8 +516,8 @@ TextField(
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: PIN Storage Implementation Evidence◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: PIN Storage Implementation Evidence</strong></summary>
 
 #### Android: AES-GCM Encryption with Android Keystore
 
@@ -594,7 +594,7 @@ try self.keyChain
 | **Android** | SharedPreferences (encrypted) | AES-256-GCM | Android Keystore (hardware-backed) |
 | **iOS** | Keychain | System-managed | Secure Enclave (hardware) |
 
-◄/details►
+</details>
 
 ---
 
@@ -610,8 +610,8 @@ try self.keyChain
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Private Key Non-Extractability◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Private Key Non-Extractability</strong></summary>
 
 #### ARF High-Level Requirement: WIAM_20
 
@@ -638,7 +638,7 @@ try self.keyChain
 3. Private key **never leaves** the secure hardware
 4. All signing operations occur within the WSCA/WSCD
 
-◄/details►
+</details>
 
 ---
 
@@ -653,8 +653,8 @@ try self.keyChain
 
 **Status**: ❌ PSP Obligation (with Wallet Certification Evidence)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Key Management Documentation Requirements◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Key Management Documentation Requirements</strong></summary>
 
 ##### Core Requirement: Full Documentation
 
@@ -787,7 +787,7 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 5. **Incident Response**: Define breach notification and key revocation procedures
 6. **Key Inventory**: Require PSPs to maintain key inventory with attributes
 
-◄/details►
+</details>
 
 ---
 
@@ -802,8 +802,8 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Secure Processing Environment Standards◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Secure Processing Environment Standards</strong></summary>
 
 ##### Core Requirement: Industry-Standard Secure Environments
 
@@ -959,7 +959,7 @@ The Wallet Solution certification under CIR 2024/2981 provides:
 5. **Attestation Verification**: Document how PSP verifies wallet security level
 6. **Routing Protection**: Mandate TLS 1.2+ for all PSC/auth code transmission
 
-◄/details►
+</details>
 
 ---
 
@@ -989,8 +989,8 @@ The Wallet Solution certification under CIR 2024/2981 provides:
 
 This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Secure PSC Creation Architecture◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Secure PSC Creation Architecture</strong></summary>
 
 ##### Core Requirement: Secure Environment
 
@@ -1105,7 +1105,7 @@ Traditional PSP model vs. EUDI Wallet model:
 5. **Certification Mapping**: Map WSCD certification to CC/FIPS equivalents
 6. **Biometric Binding**: Document behavior when biometric re-enrolled
 
-◄/details►
+</details>
 
 ---
 
@@ -1144,8 +1144,8 @@ Traditional PSP model vs. EUDI Wallet model:
 
 **Status**: ⚠️ Shared Responsibility
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Secure User Association Architecture◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Secure User Association Architecture</strong></summary>
 
 ##### Core Requirement: Exclusive User-PSC Binding
 
@@ -1268,7 +1268,7 @@ Article 24 ensures that PSCs are **bound only to the legitimate user**, covering
 5. **Binding Evidence**: Specify required evidence in OID4VCI request
 6. **Audit Requirements**: Define minimum logging for binding events
 
-◄/details►
+</details>
 
 ---
 
@@ -1312,8 +1312,8 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 - The attestation is useless without the private key (non-extractable)
 - Interception doesn't enable impersonation
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Secure Credential Delivery Architecture◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Secure Credential Delivery Architecture</strong></summary>
 
 ##### Core Requirement: Secure Delivery Against Loss, Theft, Copying
 
@@ -1436,7 +1436,7 @@ Article 25 mandates protection against **three distinct risks**:
 5. **Audit Trail**: Log successful deliveries for compliance evidence
 6. **Revocation Check**: Verify PSP certificate status using OCSP/CRL
 
-◄/details►
+</details>
 
 ---
 
@@ -1464,8 +1464,8 @@ Article 25 mandates protection against **three distinct risks**:
 
 The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Credential Renewal Architecture◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Renewal Architecture</strong></summary>
 
 ##### Core Requirement: Renewal = Same Security as Creation
 
@@ -1599,7 +1599,7 @@ Per EBA guidance, **technical token replacements** (background updates) differ f
 5. **Device Migration**: Document key migration for device upgrades
 6. **Audit Trail**: Log all renewal events for compliance
 
-◄/details►
+</details>
 
 ---
 
@@ -1634,8 +1634,8 @@ Shared responsibility:
 - **PSP**: Must revoke the SCA attestation status in their backend
 - **User**: Can request revocation via independent account (WIAM_06)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Credential Destruction & Revocation Architecture◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Destruction & Revocation Architecture</strong></summary>
 
 ##### Core Requirement: Three Distinct Operations
 
@@ -1789,7 +1789,7 @@ Article 27(a) covers three operations, each with different implications:
 5. **User Channels**: Require minimum 2 revocation channels (app + portal)
 6. **Audit Trail**: Log all revocation events with timestamps
 
-◄/details►
+</details>
 
 ---
 
@@ -1823,8 +1823,8 @@ Article 27(a) covers three operations, each with different implications:
 2. Reject VPs using revoked attestations
 3. Optionally publish revocation status (status list / OCSP)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: PSP Backend Deactivation & Status Management◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: PSP Backend Deactivation & Status Management</strong></summary>
 
 ##### Core Requirement: Complete Backend Invalidation
 
@@ -1979,7 +1979,7 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 | **27(b)** | Secure re-use of devices | ➖ N/A (per-user binding) |
 | **27(c)** | Deactivation in PSP systems | ❌ PSP Obligation |
 
-◄/details►
+</details>
 
 ---
 
@@ -2301,8 +2301,8 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Factor Derivation Protection◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Factor Derivation Protection</strong></summary>
 
 ##### Core Requirement: Zero Information Leakage
 
@@ -2430,7 +2430,7 @@ The `amr` (Authentication Methods References) claim in KB-JWT is the **only elem
 3. **WSCD Isolation**: Reference WIAM_20 as the mechanism ensuring private key non-extractability
 4. **Audit Evidence**: PSPs can cite VP Token structure as evidence that no element values are disclosed
 
-◄/details►
+</details>
 
 **Context**: The VP Token reveals:
 - Factor names in `amr` (e.g., "pin", "face", "hwk") — **not** the PIN value or biometric template
@@ -2452,8 +2452,8 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Code Re-generation Prevention◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Code Re-generation Prevention</strong></summary>
 
 ##### Core Requirement: Cryptographic Unpredictability
 
@@ -2621,7 +2621,7 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 3. **Nonce Freshness**: Specify that RP-provided `nonce` must be cryptographically random and single-use
 4. **mDOC Equivalence**: Document that mDOC DeviceResponse provides equivalent replay protection
 
-◄/details►
+</details>
 
 **Context**: Even with knowledge of a previous VP Token:
 - The `jti` is fresh (cryptographically random)
@@ -2642,8 +2642,8 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Forgery Resistance◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Forgery Resistance</strong></summary>
 
 ##### Core Requirement: Computational Infeasibility of Forgery
 
@@ -2830,7 +2830,7 @@ This public key is trusted because:
 4. **Key Rotation Policy**: Specify maximum lifetime for PSP issuer keys
 5. **Verification Guidance**: Provide reference code for PSP signature verification
 
-◄/details►
+</details>
 
 **Context**: Forgery prevention relies on:
 1. **Attestation verification**: PSP verifies the SCA attestation was issued by a trusted PSP (itself) and is valid
@@ -2938,7 +2938,7 @@ For PSD2-compliant wallet deployments, implementations MUST NOT reveal which aut
 
 **Android** — `QuickPinInteractor.kt` (lines 92-109):
 ```kotlin
-override fun isCurrentPinValid(pin: String): Flow◄QuickPinInteractorPinValidPartialState► =
+override fun isCurrentPinValid(pin: String): Flow<QuickPinInteractorPinValidPartialState> =
     flow {
         if (pinStorageController.isPinValid(pin)) {
             emit(QuickPinInteractorPinValidPartialState.Success)
@@ -2984,7 +2984,7 @@ class PinLockoutController {
     private var lockoutUntil: Long = 0
     
     fun validatePin(pin: String): PinValidationResult {
-        if (System.currentTimeMillis() ◄ lockoutUntil) {
+        if (System.currentTimeMillis() < lockoutUntil) {
             return PinValidationResult.Locked(
                 remainingMs = lockoutUntil - System.currentTimeMillis()
             )
@@ -3024,8 +3024,8 @@ class PinLockoutController {
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Session Protection◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Session Protection</strong></summary>
 
 ##### Core Requirement: End-to-End Session Security
 
@@ -3202,7 +3202,7 @@ TS12 §3.5 supports encrypted requests for additional protection:
 4. **Session Validity**: Specify maximum session lifetime (e.g., 5 minutes from nonce generation)
 5. **Cross-Device Security**: Document additional risks and mitigations for QR-initiated flows
 
-◄/details►
+</details>
 
 **Context**: OID4VP inherits security from HTTPS (TLS 1.2+). Additionally, TS12 allows optional encryption of request/response payloads for additional protection.
 
@@ -3219,8 +3219,8 @@ TS12 §3.5 supports encrypted requests for additional protection:
 
 **Status**: ❌ PSP Obligation
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Session Timeout (5 Minutes)◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Session Timeout (5 Minutes)</strong></summary>
 
 ##### Core Requirement: Inactivity-Based Session Termination
 
@@ -3371,7 +3371,7 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 4. **Absolute Timeout**: Recommend PSPs implement absolute timeout (e.g., 4 hours regardless of activity)
 5. **Exemption Awareness**: Document Art. 10 / Art. 17 exemptions for PSP implementers
 
-◄/details►
+</details>
 
 **Context**: TS12 does not specify session timeout. This is a PSP-side implementation requirement. After authentication, the PSP session (not the wallet session) must timeout after 5 minutes of inactivity.---
 
@@ -3392,8 +3392,8 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Knowledge Element Protection◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Knowledge Element Protection</strong></summary>
 
 ##### What Qualifies as a Knowledge Element (EBA Opinion 2019)
 
@@ -3508,7 +3508,7 @@ Legend:
    - Device possession + issuer verification, OR
    - WSCD re-initialization with full re-issuance
 
-◄/details►
+</details>
 
 **Context**: The user's PIN (knowledge element) is:
 - Entered locally on the device with masked input
@@ -3529,8 +3529,8 @@ Legend:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Knowledge Element Disclosure Prevention◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Knowledge Element Disclosure Prevention</strong></summary>
 
 ##### Core Requirement: Mitigation Measures Against Disclosure
 
@@ -3611,19 +3611,19 @@ Article 6(2) mandates that PSPs implement **mitigation measures** to prevent kno
 │   │                                                                   │     │
 │   │        ┌-----------------------------┐                            │     │
 │   │        │    • • • • • •              │  ← Masked display          │     │
-│   │        └-----------------------------┘                           │      │
+│   │        └-----------------------------┘                            │     │
 │   │                                                                   │     │
-│   │        ┌---┬---┬---┐                                             │      │
-│   │        │ 3 │ 7 │ 2 │  ← Randomized (optional)                    │      │
-│   │        ├---┼---┼---┤                                             │      │
-│   │        │ 9 │ 0 │ 5 │                                             │      │
-│   │        ├---┼---┼---┤                                             │      │
-│   │        │ 1 │ 6 │ 8 │                                             │      │
-│   │        ├---┼---┼---┤                                             │      │
-│   │        │ ⌫ │ 4 │ ✓ │                                             │      │
-│   │        └---┴---┴---┘                                             │      │
+│   │        ┌---┬---┬---┐                                              │     │
+│   │        │ 3 │ 7 │ 2 │  ← Randomized (optional)                     │     │
+│   │        ├---┼---┼---┤                                              │     │
+│   │        │ 9 │ 0 │ 5 │                                              │     │
+│   │        ├---┼---┼---┤                                              │     │
+│   │        │ 1 │ 6 │ 8 │                                              │     │
+│   │        ├---┼---┼---┤                                              │     │
+│   │        │ ⌫ │ 4 │ ✓ │                                            │     │
+│   │        └---┴---┴---┘                                              │     │
 │   │                                                                   │     │
-│   │  🔒 3 attempts remaining                                         │       │
+│   │  🔒 3 attempts remaining                                          │    │
 │   │                                                                   │     │
 │   └-------------------------------------------------------------------┘     │
 │                                                                             │
@@ -3713,7 +3713,7 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 5. **Common PIN Blocklist**: Recommend blocking trivially guessable PINs
 6. **FLAG_SECURE**: Mandate screenshot/recording protection during PIN entry
 
-◄/details►
+</details>
 
 
 ---
@@ -3736,8 +3736,8 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Possession Element (Cryptographic Key) Protection◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Possession Element (Cryptographic Key) Protection</strong></summary>
 
 ##### What Qualifies as a Possession Element (EBA Opinion 2019)
 
@@ -3894,11 +3894,11 @@ EUDI Wallet's possession element architecture aligns with FIDO2/WebAuthn:
 1. **Minimum WSCD Level**: Mandate TEE or higher for SCA; define fallback for legacy devices
 2. **Key Non-Extractability**: Require hardware-enforced non-extractability (not just software flag)
 3. **Key Attestation**: Recommend (not require) PSPs verify key attestation for high-value transactions
-4. **Revocation SLA**: Define maximum time for WUA revocation to propagate (e.g., ◄ 1 hour)
+4. **Revocation SLA**: Define maximum time for WUA revocation to propagate (e.g., < 1 hour)
 5. **Recovery Documentation**: Explicitly state that wallet recovery does NOT transfer private keys
 6. **`hwk` AMR Claim**: Adopt OIDC `hwk` (hardware key) AMR value when possession is StrongBox/SE-backed
 
-◄/details►
+</details>
 
 **Context**:
 - **Loss**: User contacts Wallet Provider (or PSP) to revoke SCA attestation → key becomes invalid
@@ -3930,8 +3930,8 @@ This means the old possession element (lost device's key) is permanently invalid
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Possession Element Anti-Cloning Protection◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Possession Element Anti-Cloning Protection</strong></summary>
 
 ##### Core Requirement: Prevent Replication
 
@@ -4112,7 +4112,7 @@ FIDO standards provide proven anti-cloning mechanisms:
 5. **Recovery Protocol**: Document that recovery requires key regeneration (not transfer)
 6. **Minimum Certification**: Reference CC EAL4+ for SE components
 
-◄/details►
+</details>
 
 ---
 
@@ -4132,8 +4132,8 @@ FIDO standards provide proven anti-cloning mechanisms:
 
 **Status**: ✅ Fully Supported (Delegated to OS)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Inherence Element (Biometric) Security◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Inherence Element (Biometric) Security</strong></summary>
 
 ##### What Qualifies as an Inherence Element (EBA Opinion 2019)
 
@@ -4283,7 +4283,7 @@ Legend:
 4. **PAD Certification Reference**: Reference ISO 30107-3 and FIDO Biometric Certification as evidence of "very low probability" compliance
 5. **Fallback Policy**: Define maximum biometric failures before PIN fallback (Apple: 5; recommend standardizing)
 
-◄/details►
+</details>
 
 **Context**: The wallet relies on OS-level biometric protection:
 - **iOS**: `LAContext` with Face ID / Touch ID (includes liveness detection)
@@ -4311,8 +4311,8 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 **Status**: ✅ Delegated to Certified OS Components
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Biometric Resistance Against Unauthorized Use◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Biometric Resistance Against Unauthorized Use</strong></summary>
 
 ##### Core Requirement: Device and Software Resistance
 
@@ -4483,7 +4483,7 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 5. **Fallback Policy**: Define behavior when biometric fails (PIN fallback)
 6. **Attention Detection**: Recommend for face authentication
 
-◄/details►
+</details>
 
 ---
 
@@ -4503,8 +4503,8 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Independence of SCA Elements◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Independence of SCA Elements</strong></summary>
 
 ##### Core Requirement: Breach Isolation
 
@@ -4633,7 +4633,7 @@ Article 9(2-3) extends this to **multi-purpose devices** (smartphones). The inde
 3. **Attestation on Compromise**: Specify that WUA attestation should fail on rooted/jailbroken devices
 4. **Independence Testing**: Recommend PSPs verify that compromise of one element in testing doesn't reveal others
 
-◄/details►
+</details>
 
 **Context**: Independence is ensured by architectural separation:
 - **Knowledge** (PIN): Never stored in plaintext; validated by WSCA/WSCD
@@ -4658,8 +4658,8 @@ Breach of one does not expose the others:
 
 **Status**: ✅ Fully Supported
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Multi-Purpose Device Risk Mitigation◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Multi-Purpose Device Risk Mitigation</strong></summary>
 
 ##### Core Requirement: Smartphone Security for SCA
 
@@ -4808,7 +4808,7 @@ The EBA has clarified multi-purpose device requirements:
 4. **FIDO Alignment**: Reference FIDO UAF/FIDO2 as implementation guidance
 5. **Fallback Scenarios**: Define behavior when hardware security is unavailable
 
-◄/details►
+</details>
 
 **Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
 
@@ -4919,8 +4919,8 @@ KB-JWT contains:
 
 **Status**: ➖ Prelude to sub-requirements. See Article 5(1)(a–d) and 5(2–3) below.
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Dynamic Linking — The Four Pillars◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Dynamic Linking — The Four Pillars</strong></summary>
 
 ##### Core Concept: Transaction-Bound Authentication
 
@@ -5089,7 +5089,7 @@ Article 5 **builds upon** Article 4:
 5. **Error Handling**: Define PSP behavior on hash mismatch (reject + log)
 6. **Batch Payments**: Reference Art. 5(3) for bulk payment handling
 
-◄/details►
+</details>
 
 ---
 
@@ -5967,8 +5967,8 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 
 **Status**: ⚠️ Partial (Single Payee Only)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Batch Payment Dynamic Linking◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Batch Payment Dynamic Linking</strong></summary>
 
 ##### Core Concept: Aggregate Authentication
 
@@ -6112,7 +6112,7 @@ Displaying all payees for large batches is **impractical**:
 5. **Merkle Tree Option**: For very large batches, allow Merkle root for efficiency
 6. **Corporate Channel**: Define separate flow for corporate batch processing
 
-◄/details►
+</details>
 
 ---
 
@@ -6126,8 +6126,8 @@ Displaying all payees for large batches is **impractical**:
 
 **Status**: ❌ Gap for Multi-Payee Batches
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Batch Authentication Code Computation◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Batch Authentication Code Computation</strong></summary>
 
 ##### Core Requirement: Total + All Payees
 
@@ -6277,7 +6277,7 @@ Any change to the batch **must invalidate** the authentication code:
 5. **Verification Spec**: Define PSP-side hash verification procedure
 6. **Error Handling**: Specify rejection behavior for hash mismatch
 
-◄/details►
+</details>
 
 ---
 
@@ -6299,8 +6299,8 @@ Any change to the batch **must invalidate** the authentication code:
 
 **Status**: ❌ PSP Obligation
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Transaction Monitoring Mechanisms◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Transaction Monitoring Mechanisms</strong></summary>
 
 ##### Core Requirement: Fraud Detection Infrastructure
 
@@ -6468,7 +6468,7 @@ For a PSP to comply with Art. 2(1):
 4. **Fraud Reporting Taxonomy**: Align wallet-related fraud categories with EBA reporting guidelines
 5. **TRA Eligibility**: Document that wallet-based SCA is compatible with Art. 18 TRA exemption
 
-◄/details►
+</details>
 
 **Context**: Transaction monitoring is a PSP-side function. The Wallet provides transaction logs (per DASH_02) that could be used as supplementary evidence in dispute resolution, but the real-time fraud detection must be implemented by the PSP.
 
@@ -6490,8 +6490,8 @@ For a PSP to comply with Art. 2(1):
 
 **Status**: ❌ PSP Obligation
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Mandated Risk Factors◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Mandated Risk Factors</strong></summary>
 
 ##### Core Requirement: Minimum Risk Factor Set
 
@@ -6651,7 +6651,7 @@ The EBA explicitly permits machine learning to enhance TRA:
 4. **ML Transparency**: Reference EBA's permission of ML while noting validation requirements
 5. **Factor (d) Emphasis**: Highlight wallet's key contribution to malware detection via attestation
 
-◄/details►
+</details>
 
 **Context**: Typical elements include: spending patterns, device fingerprint, geographic location. The Wallet Unit Attestation (WUA) contains device properties that can contribute to this analysis, but the PSP must build the monitoring logic.
 ---
@@ -6672,8 +6672,8 @@ The EBA explicitly permits machine learning to enhance TRA:
 
 **Status**: ❌ PSP Obligation (with Wallet Evidence)
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Security Measures Review Framework◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Security Measures Review Framework</strong></summary>
 
 ##### Core Requirement: Four-Pillar Assurance
 
@@ -6802,7 +6802,7 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 5. **Evidence Sharing**: Define how wallet certification evidence transfers to PSP
 6. **Incident Coordination**: Document PSP-Wallet Provider incident response
 
-◄/details►
+</details>
 
 ---
 
@@ -6812,8 +6812,8 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 
 **Status**: ❌ PSP Obligation — audit scheduling per applicable framework.
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Audit Frequency and TRA Exemption Requirements◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Audit Frequency and TRA Exemption Requirements</strong></summary>
 
 ##### Core Requirement: Two-Tier Audit System
 
@@ -6933,7 +6933,7 @@ The TRA exemption links transaction limits to fraud rate performance:
 5. **Internal Independence**: Reference Institute of Internal Auditors (IIA) standards
 6. **Threshold Monitoring**: Define alert thresholds before breach
 
-◄/details►
+</details>
 
 ---
 
@@ -6943,8 +6943,8 @@ The TRA exemption links transaction limits to fraud rate performance:
 
 **Status**: ❌ PSP Obligation — only if using TRA exemption.
 
-◄details►
-◄summary►◄strong►🔍 Deep-Dive: Audit Report and Regulatory Access◄/strong►◄/summary►
+<details>
+<summary><strong>🔍 Deep-Dive: Audit Report and Regulatory Access</strong></summary>
 
 ##### Core Requirement: Compliance Evaluation Report
 
@@ -7064,7 +7064,7 @@ Article 3(3) mandates that the audit produce a **comprehensive evaluation** cove
 5. **Cross-border**: Reference EBA cross-border cooperation procedures
 6. **Retention**: Define minimum retention period for audit reports
 
-◄/details►
+</details>
 
 ---
 
