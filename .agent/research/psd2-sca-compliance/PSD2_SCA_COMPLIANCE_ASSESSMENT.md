@@ -1144,6 +1144,132 @@ Traditional PSP model vs. EUDI Wallet model:
 
 **Status**: ⚠️ Shared Responsibility
 
+<details>
+<summary><strong>🔍 Deep-Dive: Secure User Association Architecture</strong></summary>
+
+##### Core Requirement: Exclusive User-PSC Binding
+
+Article 24 ensures that PSCs are **bound only to the legitimate user**, covering three aspects:
+
+| Aspect | Requirement | EUDI Wallet Implementation |
+|--------|-------------|----------------------------|
+| **User identity** | Only legitimate user associated | PSP KYC before attestation issuance |
+| **Secure binding** | Protected association process | OID4VCI over TLS + WSCD key binding |
+| **Remote channel SCA** | SCA required for remote binding | Wallet SCA before attestation issuance |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   User-PSC Association Flow (Art. 24)                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. IDENTITY VERIFICATION (PSP Responsibility)                              │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  Option A: Existing Customer                                        │ │
+│     │     • User logs into PSP portal (existing credentials)              │ │
+│     │     • PSP performs SCA with existing method                         │ │
+│     │                                                                     │ │
+│     │  Option B: New Customer                                             │ │
+│     │     • User completes KYC (ID document, video ident)                 │ │
+│     │     • PSP verifies identity against AML requirements                │ │
+│     │                                                                     │ │
+│     │  Option C: eIDAS-based                                              │ │
+│     │     • User presents PID from EUDI Wallet                            │ │
+│     │     • PSP verifies PID against trust framework                      │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  2. DEVICE BINDING (Wallet Responsibility)                                  │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  ┌─────────────────────────────┐    ┌─────────────────────────────┐ │ │
+│     │  │   WALLET UNIT (User-bound)  │    │   WSCD (Device-bound)       │ │ │
+│     │  │   └─ Wallet Unit ID         │←───│   └─ Private Key            │ │ │
+│     │  │   └─ User partition         │    │   └─ Hardware attestation   │ │ │
+│     │  └─────────────────────────────┘    └─────────────────────────────┘ │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  3. SCA ATTESTATION ISSUANCE (Shared)                                       │
+│     ┌─────────────────────────────────────────────────────────────────────┐ │
+│     │  Wallet → PSP: OID4VCI Request                                      │ │
+│     │     • Public key (cnf claim)                                        │ │
+│     │     • Wallet Unit Attestation (WUA)                                 │ │
+│     │     • Device binding proof                                          │ │
+│     │                                                                     │ │
+│     │  PSP → Wallet: SCA Attestation (SD-JWT-VC)                          │ │
+│     │     • Bound to user identity (sub claim)                            │ │
+│     │     • Bound to device key (cnf claim)                               │ │
+│     │     • Contains PSP-specific payment scopes                          │ │
+│     └─────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### User Identification Methods
+
+| Method | PSD2 Compliance | EUDI Wallet Support | Notes |
+|--------|-----------------|---------------------|-------|
+| **Existing PSP SCA** | ✅ Compliant | ✅ Supported | Bootstraps new SCA attestation |
+| **PID presentation** | ✅ Compliant | ✅ Native | eIDAS 2.0 identity assurance |
+| **Video identification** | ✅ Compliant | ⚠️ External | PSP chooses provider |
+| **Physical ID + in-person** | ✅ Compliant | N/A | Branch-based enrollment |
+| **SMS OTP alone** | ❌ Insufficient | N/A | Not SCA-compliant for binding |
+
+##### Device Binding Layers
+
+| Layer | Binding Element | Purpose |
+|-------|-----------------|---------|
+| **Hardware** | WSCD key pair | Non-exportable device anchor |
+| **Software** | Wallet Instance Attestation | App integrity verification |
+| **User** | Wallet Unit | Per-user isolation |
+| **Session** | TLS client cert / DPoP | Transport protection |
+
+##### Binding Verification by PSP
+
+| Evidence | Source | PSP Verification |
+|----------|--------|------------------|
+| **Public key** | Wallet WSCD | Verify hardware attestation |
+| **WUA** | Wallet Provider | Verify signature chain |
+| **User identity** | KYC or PID | Match against customer record |
+| **Device integrity** | Android/iOS attestation | Verify device not compromised |
+
+##### Threat Model: Association Phase
+
+| Threat | Vector | Mitigation |
+|--------|--------|------------|
+| **Identity theft** | Fraudster uses stolen ID | PSP KYC, liveness detection |
+| **Account takeover** | Attacker binds to victim's account | Require existing SCA for existing customers |
+| **Device cloning** | Attacker copies device | Hardware key attestation, device ID binding |
+| **Man-in-the-middle** | Intercept binding process | TLS pinning, OID4VCI token binding |
+| **Insider attack** | PSP employee creates fake binding | Audit trails, separation of duties |
+
+##### Secure Environment Requirements
+
+| Component | PSP Responsibility | Wallet Responsibility |
+|-----------|-------------------|----------------------|
+| **Backend security** | HSM for signing, network segmentation | N/A |
+| **API security** | Rate limiting, input validation | N/A |
+| **Transport** | TLS 1.2+ | TLS 1.2+ |
+| **Key storage** | N/A | WSCD (Secure Element) |
+| **Audit logging** | All binding events | Wallet-side consent records |
+
+##### Gap Analysis: User Association
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **UA-1** | KYC method selection not specified for wallet enrollment | Medium | Document acceptable KYC methods |
+| **UA-2** | PID-based enrollment flow not fully specified | Medium | Define OID4VP + OID4VCI combined flow |
+| **UA-3** | Device binding attestation format varies by platform | Low | Abstract via WUA standard |
+| **UA-4** | Existing SCA bootstrapping requirements unclear | Medium | Define minimum SCA strength for bootstrap |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **KYC Integration**: Document acceptable KYC methods for wallet-based enrollment
+2. **PID Enrollment**: Specify PID presentation flow for new customer enrollment
+3. **Bootstrap SCA**: Define minimum authentication strength for bootstrapping
+4. **Device Attestation**: Require hardware attestation for production deployments
+5. **Binding Evidence**: Specify required evidence in OID4VCI request
+6. **Audit Requirements**: Define minimum logging for binding events
+
+</details>
+
 ---
 
 #### [Article 24(2)(b)](sources/32018R0389.md#article-24) — SCA for remote binding

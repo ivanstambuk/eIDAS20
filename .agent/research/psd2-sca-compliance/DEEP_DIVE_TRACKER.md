@@ -40,8 +40,8 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 24(1) | Secure association | ❌ No |
-| Art. 24(2)(a) | Secure binding environment | ❌ No |
+| Art. 24(1) | Secure association | ✅ Yes |
+| Art. 24(2)(a) | Secure binding environment | ✅ Yes |
 | Art. 24(2)(b) | SCA for remote binding | ✅ Yes |
 
 ### Article 25 — Delivery
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 41 |
-| ❌ Not Done | 6 |
+| ✅ Done | 43 |
+| ❌ Not Done | 4 |
 | **Total** | 47 |
 
 ---
@@ -188,6 +188,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 3(2) | Deep-dive: Two-tier audit system, TRA thresholds, external auditor requirements, gaps AF-1 to AF-4 |
 | 2026-01-28 | Art. 3(3) | Deep-dive: Audit report structure, regulatory access, CA request scenarios, gaps AR-1 to AR-4 |
 | 2026-01-28 | Art. 23 | Deep-dive: PSC creation flow, hardware security levels, threat model, gaps SC-1 to SC-4 |
+| 2026-01-28 | Art. 24(1), 24(2)(a) | Deep-dive: User association flow, KYC options, device binding layers, gaps UA-1 to UA-4 |
 
 ---
 
