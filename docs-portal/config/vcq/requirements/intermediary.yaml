@@ -1,7 +1,7 @@
 schemaVersion: 1
 requirements:
   - id: VEND-INT-001
-    category: transparency
+    category: contracts
     requirement: Display both intermediary and RP identity before requesting attestations
     explanation: |
       When the intermediary requests attestations from a wallet user, the wallet 
@@ -26,7 +26,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-002
-    category: transparency
+    category: contracts
     requirement: Ensure RP's intended data requests are accurately communicated to wallet
     explanation: |
       The intermediary must not modify, expand, or alter the RP's registered data 
@@ -51,7 +51,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-003
-    category: technical
+    category: issuance
     requirement: Forward presentation requests without modification of requested attributes
     explanation: |
       The intermediary must accurately relay the RP's attribute request to the 
@@ -71,7 +71,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-004
-    category: technical
+    category: issuance
     requirement: Forward wallet presentations to RP without modification
     explanation: |
       The intermediary must relay the wallet's presentation to the RP exactly as 
@@ -94,7 +94,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-005
-    category: technical
+    category: issuance
     requirement: Support both remote and proximity presentation protocols
     explanation: |
       If the RP requires both remote and proximity (offline) presentation 
@@ -122,7 +122,7 @@ requirements:
         - OIA_03a
         - OIA_04
   - id: VEND-INT-006
-    category: technical
+    category: issuance
     requirement: Forward attributes only to the requesting RP after verification
     explanation: |
       After receiving attestation data from a wallet and verifying it, the 
@@ -143,7 +143,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-007
-    category: technical
+    category: issuance
     requirement: Maintain up-to-date Trusted Lists for PID Providers
     explanation: |
       The intermediary must maintain current copies of the Trusted Lists containing 
@@ -170,7 +170,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-008
-    category: technical
+    category: issuance
     requirement: Maintain up-to-date Trusted Lists for Attestation Providers
     explanation: |
       The intermediary must maintain current copies of Trusted Lists for qualified 
@@ -190,7 +190,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-009
-    category: technical
+    category: issuance
     requirement: Obtain trust anchors only from official Trusted List sources
     explanation: |
       Trust anchors for verification must be obtained exclusively from official 
@@ -210,7 +210,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-010
-    category: verification
+    category: usage
     requirement: Validate attestation signatures using official trust anchors
     explanation: |
       The intermediary must verify the cryptographic signatures on attestations 
@@ -233,7 +233,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-011
-    category: verification
+    category: usage
     requirement: Verify attestation revocation status before acceptance
     explanation: |
       Before accepting a presentation as valid, the intermediary must check the 
@@ -254,7 +254,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-012
-    category: verification
+    category: usage
     requirement: Verify the wallet unit's device binding
     explanation: |
       The intermediary must verify that the presentation is bound to the wallet 
@@ -274,7 +274,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-013
-    category: verification
+    category: usage
     requirement: Verify presentation freshness (anti-replay)
     explanation: |
       The intermediary must verify that presentations are fresh and not replayed 
@@ -396,7 +396,7 @@ requirements:
       Logs must not contain attestation content (due to no-storage mandate) 
       but may contain verification metadata (pass/fail, timestamp, error codes).
   - id: VEND-INT-019
-    category: privacy
+    category: usage
     requirement: Do not extract or log individual attribute values from presentations
     explanation: |
       Beyond the no-storage mandate, intermediaries must not extract, log, or 
@@ -413,7 +413,7 @@ requirements:
     criticality: critical
     deadline: "2027-11-21"
   - id: VEND-INT-020
-    category: privacy
+    category: usage
     requirement: Do not correlate or link user presentations across different RPs
     explanation: |
       Intermediaries serving multiple RPs must not correlate wallet user activity 
@@ -432,7 +432,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-021
-    category: privacy
+    category: usage
     requirement: Delete attestation data immediately after forwarding to RP
     explanation: |
       The intermediary must completely delete all PIDs, attestations, and user 
@@ -454,7 +454,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-022
-    category: governance
+    category: contracts
     requirement: Specify RP details in each presentation request to wallet
     explanation: |
       When requesting attestations from a wallet, the intermediary must include 
@@ -482,7 +482,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-023
-    category: interoperability
+    category: usage
     requirement: Support mandatory credential formats (ISO 18013-5 and W3C VC)
     explanation: |
       The intermediary must be capable of verifying attestations in both mandated 
@@ -508,7 +508,7 @@ requirements:
       topic: Topic 3
       hlr: PID_02
   - id: VEND-INT-024
-    category: interoperability
+    category: usage
     requirement: Support selective disclosure in both credential formats
     explanation: |
       The intermediary's verification implementation must correctly handle 
@@ -530,7 +530,7 @@ requirements:
       topic: Topic 12
       hlr: ARB_02
   - id: VEND-INT-025
-    category: certification
+    category: registration
     requirement: Consider certification for cryptographic components
     explanation: |
       Depending on the assurance level required by the RP, the intermediary may 
@@ -552,7 +552,7 @@ requirements:
       the sensitivity of the use case. Not all intermediaries will require 
       certification.
   - id: VEND-INT-026
-    category: technical
+    category: issuance
     requirement: Comply with embedded disclosure policies in attestations
     explanation: |
       Electronic attestations of attributes may contain embedded disclosure 
@@ -576,7 +576,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-027
-    category: technical
+    category: issuance
     requirement: Support WebAuthn specification for pseudonym generation
     explanation: |
       When the intermediary supports pseudonymous authentication from wallet 
@@ -602,7 +602,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-028
-    category: technical
+    category: issuance
     requirement: Support relying-party-specific pseudonyms
     explanation: |
       Wallet units generate unique pseudonyms per relying party, ensuring 
@@ -624,7 +624,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-029
-    category: technical
+    category: issuance
     requirement: Use valid Wallet-Relying Party Access Certificate
     explanation: |
       The intermediary must use a valid Wallet-Relying Party Access Certificate 
@@ -651,7 +651,7 @@ requirements:
       topic: Topic 6
       hlr: RPA_01
   - id: VEND-INT-030
-    category: privacy
+    category: usage
     requirement: Support data erasure request protocol
     explanation: |
       The intermediary must support the protocol for data erasure requests 
@@ -675,7 +675,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-031
-    category: governance
+    category: contracts
     requirement: Support user reporting to data protection authorities
     explanation: |
       Wallet units allow users to report RPs to data protection authorities 
@@ -699,7 +699,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-032
-    category: technical
+    category: issuance
     requirement: Include intermediary access certificate and RP registration certificate in requests
     explanation: |
       When requesting attestations from a wallet on behalf of an intermediated RP, the 
@@ -732,7 +732,7 @@ requirements:
       the intermediary's own registration. The RP registration certificate is obtained 
       during the intermediary's registration of each intermediated RP (per RPI_03).
   - id: VEND-INT-033
-    category: governance
+    category: contracts
     requirement: Ensure intermediary-RP contractual relationship is registered
     explanation: |
       Before the intermediary can act on behalf of an RP, the contractual relationship 
@@ -767,7 +767,7 @@ requirements:
       intermediation requests from an RP, otherwise wallet users will see verification 
       failures.
   - id: VEND-INT-034
-    category: verification
+    category: usage
     requirement: Support attestation status list verification mechanisms
     explanation: |
       The intermediary must support attestation status verification using the mechanisms 

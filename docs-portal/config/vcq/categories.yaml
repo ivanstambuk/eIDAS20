@@ -1,91 +1,51 @@
 # VCQ Configuration: Global Categories
 # 
-# Reuses the same 12 categories from RCA to maintain consistency.
-# Each category represents a single type of legal obligation.
+# Simplified 6-category taxonomy based on first-principles analysis.
+# Categories represent distinct phases/concerns in the vendor relationship.
 # 
-# Decision: DEC-089 (Category Taxonomy)
-# Extended for: DEC-222 (VCQ Tool)
-# Date: 2026-01-22
+# Decision: DEC-277 (Category Consolidation)
+# Consolidates from 13 → 6 categories
+# Date: 2026-01-29
 
 categories:
   registration:
     label: "Registration"
-    description: "Notification and authorization to operate"
-    usage: "Registrar interactions — submitting to registries, obtaining access/registration certificates, maintaining registration status"
+    description: "Authorization to operate in the EUDIW ecosystem"
+    usage: "Register with authorities, obtain certificates, trusted list inclusion, publish provider info"
     icon: "📋"
     order: 1
-
-  certification:
-    label: "Certification"
-    description: "Conformity assessment and audits"
-    icon: "✅"
-    order: 2
 
   issuance:
     label: "Issuance"
     description: "Creating and provisioning credentials"
+    usage: "Issue attestations, device binding, format compliance, catalogue publishing"
     icon: "📤"
+    order: 2
+
+  usage:
+    label: "Usage"
+    description: "Verifying and processing credential presentations"
+    usage: "Verify presentations, check status, process attributes, pseudonym handling, data minimization"
+    icon: "🔍"
     order: 3
 
   revocation:
     label: "Revocation"
-    description: "Suspension and invalidation"
+    description: "Suspension and invalidation of credentials"
+    usage: "Publish status lists, suspend/revoke attestations, notify users"
     icon: "🚫"
     order: 4
 
-  verification:
-    label: "Verification"
-    description: "Identity proofing and authentication"
-    icon: "🔍"
-    order: 5
-
-  technical:
-    label: "Technical"
-    description: "Formats, protocols, and APIs"
-    icon: "⚙️"
-    order: 6
-
-  interoperability:
-    label: "Interoperability"
-    description: "Cross-border and standards"
-    icon: "🌐"
-    order: 7
-
   security:
     label: "Security"
-    description: "Cybersecurity and cryptography"
+    description: "Protecting cryptographic operations and data"
+    usage: "Key management, secure channels, breach notification, anti-replay, business continuity"
     icon: "🔒"
-    order: 8
+    order: 5
 
-  privacy:
-    label: "Privacy"
-    description: "Data protection and GDPR"
-    icon: "🛡️"
-    order: 9
-
-  transparency:
-    label: "Transparency"
-    description: "Public disclosure and policies"
-    icon: "👁️"
-    order: 10
-
-  governance:
-    label: "Governance"
-    description: "Staffing and procedures"
-    usage: "Organizational/contractual matters — DPAs, sub-processors, audit rights, data handling policies, contract lifecycle"
-    icon: "🏛️"
-    order: 11
-
-  liability:
-    label: "Liability"
-    description: "Insurance and legal effects"
-    icon: "⚖️"
-    order: 12
-
-  # DEC-257: Added for PSD2 SCA requirements
-  payments:
-    label: "Payments & SCA"
-    description: "Strong Customer Authentication for electronic payments"
-    usage: "PSD2/PSD3 compliance — SCA mechanisms, dynamic linking, transaction authentication"
-    icon: "💳"
-    order: 13
+  contracts:
+    label: "Contracts"
+    description: "Legal agreements and compliance obligations"
+    usage: "DPAs, audit rights, sub-processors, DORA provisions, liability, transparency"
+    icon: "📜"
+    order: 6

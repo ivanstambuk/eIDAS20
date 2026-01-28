@@ -22,7 +22,7 @@ requirements:
   # ============================================================================
   
   - id: VEND-ICT-001
-    category: governance
+    category: contracts
     requirement: "Include mandatory contractual provisions per DORA Article 30"
     explanation: |
       When the RP is a DORA-regulated financial entity, the contract with the 
@@ -50,7 +50,7 @@ requirements:
       When the RP is a DORA-regulated financial entity, both sets apply.
   
   - id: VEND-ICT-002
-    category: governance
+    category: contracts
     requirement: "Provide audit rights as required by DORA Article 30(2)(e)"
     explanation: |
       The contract must grant the financial entity (and its supervisory 
@@ -81,7 +81,7 @@ requirements:
     criticality: critical
   
   - id: VEND-ICT-003
-    category: governance
+    category: contracts
     requirement: "Support exit strategies and transition planning"
     explanation: |
       The vendor must support the financial entity's exit strategy with 
@@ -102,7 +102,7 @@ requirements:
     criticality: critical
   
   - id: VEND-ICT-004
-    category: governance
+    category: contracts
     requirement: "Participate in the financial entity's ICT risk management framework"
     explanation: |
       The intermediary must cooperate with the financial entity's overall ICT 
@@ -234,7 +234,7 @@ requirements:
   # ============================================================================
   
   - id: VEND-ICT-010
-    category: governance
+    category: contracts
     requirement: "Obtain approval for subcontracting of critical functions"
     explanation: |
       If the intermediary subcontracts any part of the ICT service that 
@@ -270,7 +270,7 @@ requirements:
   # ============================================================================
   
   - id: VEND-ICT-011
-    category: governance
+    category: contracts
     requirement: "Provide information for concentration risk assessment"
     explanation: |
       The intermediary must provide information enabling the financial entity 
@@ -291,7 +291,7 @@ requirements:
   # ============================================================================
   
   - id: VEND-ICT-012
-    category: certification
+    category: registration
     requirement: "Comply with enhanced oversight if designated as Critical ICT TPP"
     explanation: |
       If the ESAs designate the intermediary as a Critical ICT Third-Party 

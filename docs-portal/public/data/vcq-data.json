@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T22:43:01.742Z",
+  "generatedAt": "2026-01-28T23:39:44.530Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -42,93 +42,44 @@
     {
       "id": "registration",
       "label": "Registration",
-      "description": "Notification and authorization to operate",
+      "description": "Authorization to operate in the EUDIW ecosystem",
       "icon": "📋",
       "order": 1
-    },
-    {
-      "id": "certification",
-      "label": "Certification",
-      "description": "Conformity assessment and audits",
-      "icon": "✅",
-      "order": 2
     },
     {
       "id": "issuance",
       "label": "Issuance",
       "description": "Creating and provisioning credentials",
       "icon": "📤",
+      "order": 2
+    },
+    {
+      "id": "usage",
+      "label": "Usage",
+      "description": "Verifying and processing credential presentations",
+      "icon": "🔍",
       "order": 3
     },
     {
       "id": "revocation",
       "label": "Revocation",
-      "description": "Suspension and invalidation",
+      "description": "Suspension and invalidation of credentials",
       "icon": "🚫",
       "order": 4
     },
     {
-      "id": "verification",
-      "label": "Verification",
-      "description": "Identity proofing and authentication",
-      "icon": "🔍",
+      "id": "security",
+      "label": "Security",
+      "description": "Protecting cryptographic operations and data",
+      "icon": "🔒",
       "order": 5
     },
     {
-      "id": "technical",
-      "label": "Technical",
-      "description": "Formats, protocols, and APIs",
-      "icon": "⚙️",
+      "id": "contracts",
+      "label": "Contracts",
+      "description": "Legal agreements and compliance obligations",
+      "icon": "📜",
       "order": 6
-    },
-    {
-      "id": "interoperability",
-      "label": "Interoperability",
-      "description": "Cross-border and standards",
-      "icon": "🌐",
-      "order": 7
-    },
-    {
-      "id": "security",
-      "label": "Security",
-      "description": "Cybersecurity and cryptography",
-      "icon": "🔒",
-      "order": 8
-    },
-    {
-      "id": "privacy",
-      "label": "Privacy",
-      "description": "Data protection and GDPR",
-      "icon": "🛡️",
-      "order": 9
-    },
-    {
-      "id": "transparency",
-      "label": "Transparency",
-      "description": "Public disclosure and policies",
-      "icon": "👁️",
-      "order": 10
-    },
-    {
-      "id": "governance",
-      "label": "Governance",
-      "description": "Staffing and procedures",
-      "icon": "🏛️",
-      "order": 11
-    },
-    {
-      "id": "liability",
-      "label": "Liability",
-      "description": "Insurance and legal effects",
-      "icon": "⚖️",
-      "order": 12
-    },
-    {
-      "id": "payments",
-      "label": "Payments & SCA",
-      "description": "Strong Customer Authentication for electronic payments",
-      "icon": "💳",
-      "order": 13
     }
   ],
   "legalSources": {
@@ -270,9 +221,9 @@
   "requirements": [
     {
       "id": "VEND-CORE-001",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Intermediaries shall not store data about the content of transactions",
       "explanation": "The no-storage mandate is the central privacy protection for wallet users \nwhen interacting through intermediaries. Vendors acting on behalf of RPs \nare deemed to be relying parties themselves and must not retain any data \nfrom wallet presentations beyond what is strictly necessary for immediate \ntransaction completion.",
       "legalBases": [
@@ -306,9 +257,9 @@
     },
     {
       "id": "VEND-CORE-002",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Implement a Data Processing Agreement meeting GDPR Article 28 requirements",
       "explanation": "When intermediaries process personal data on behalf of the RP, they act as \ndata processors. A written contract (DPA) must exist specifying processing \ninstructions, confidentiality, security measures, sub-processor conditions, \ndata subject request assistance, and audit rights.",
       "legalBases": [
@@ -342,9 +293,9 @@
     },
     {
       "id": "VEND-CORE-003",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Provide audit rights to the Relying Party",
       "explanation": "The RP must be able to verify the vendor's compliance with processing \ninstructions and security requirements. This includes rights to conduct \naudits and inspections, or to mandate that an independent auditor \nperforms such verification.",
       "legalBases": [
@@ -557,9 +508,9 @@
     },
     {
       "id": "VEND-CORE-009",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Process personal data only on documented instructions from the RP",
       "explanation": "The vendor must not process wallet data for their own purposes. \nAll processing must be based on the RP's documented instructions, \nincluding with regard to transfers of data to third countries.",
       "legalBases": [
@@ -593,9 +544,9 @@
     },
     {
       "id": "VEND-CORE-010",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support data subject rights requests",
       "explanation": "The vendor must assist the RP in responding to data subject requests \n(access, rectification, erasure, restriction, portability, objection) \nto the extent the vendor has relevant data.",
       "legalBases": [
@@ -627,9 +578,9 @@
     },
     {
       "id": "VEND-CORE-011",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Display both intermediary and RP identity to wallet users",
       "explanation": "When requesting data from wallets, the intermediary must ensure that \nwallet users can see both their own identity and the identity of the \nRP on whose behalf they are acting. This enables informed consent.",
       "legalBases": [
@@ -667,9 +618,9 @@
     },
     {
       "id": "VEND-CORE-012",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Inform the RP of any legal requirement to process data beyond instructions",
       "explanation": "If the vendor is legally required (e.g., by law enforcement) to process \ndata beyond the RP's instructions, they must inform the RP before doing \nso (unless prohibited by law from disclosing).",
       "legalBases": [
@@ -700,9 +651,9 @@
     },
     {
       "id": "VEND-CORE-013",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Obtain RP authorization before engaging sub-processors",
       "explanation": "The vendor must not engage another processor (sub-processor) without \nprior written authorization from the RP. This can be specific or general \nauthorization with notification of changes.",
       "legalBases": [
@@ -734,9 +685,9 @@
     },
     {
       "id": "VEND-CORE-014",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Delete or return personal data at end of contract",
       "explanation": "Upon termination of the service contract, the vendor must delete or \nreturn all personal data to the RP and certify deletion, unless EU or \nMember State law requires storage.",
       "legalBases": [
@@ -888,8 +839,8 @@
     },
     {
       "id": "VEND-CORE-018",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Perform verification of attestations as agreed with RP",
       "explanation": "The intermediary must verify the authenticity, revocation status, \ndevice binding, and user binding of PIDs and attestations received \nfrom wallet units, as well as wallet unit authenticity, according to \nwhat has been agreed with the Relying Party.",
@@ -968,9 +919,9 @@
     },
     {
       "id": "VEND-CORE-020",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets",
       "explanation": "Attestation Issuers must implement the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in Technical Specification 6. \nThis ensures interoperability with all compliant EUDI Wallet implementations \nacross Member States. The protocol covers credential offer, authorization, \ntoken exchange, and credential endpoint interactions.",
       "legalBases": [
@@ -1006,9 +957,9 @@
     },
     {
       "id": "VEND-CORE-021",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
       "explanation": "Relying Parties must implement the common data deletion request interface \nspecified in Technical Specification 7. This enables wallet users to exercise \ntheir GDPR Article 17 right to erasure by requesting deletion of any data \nthe RP has collected from wallet presentations. The interface provides a \nstandardized machine-readable format for deletion requests.",
       "legalBases": [
@@ -1044,9 +995,9 @@
     },
     {
       "id": "VEND-CORE-022",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Register attestation schemas in the catalogue per TS11",
       "explanation": "Attestation Issuers must register their attestation types in the catalogue \nof attributes and attestations as specified in Technical Specification 11. \nThis enables discovery by Relying Parties and ensures attestations follow \nthe common data model. The catalogue defines attribute schemas, rulebooks, \nand the relationship between attestation types.",
       "legalBases": [
@@ -1082,9 +1033,9 @@
     },
     {
       "id": "VEND-CORE-023",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Implement open standards per TS1 for EUDI Wallet interoperability",
       "explanation": "All EUDIW ecosystem participants must implement the open standards mapped \nin Technical Specification 1. TS1 provides the authoritative mapping between \nregulatory requirements and specific open standards (e.g., OpenID4VCI, \nOpenID4VP, SD-JWT, mdoc/mDL). This ensures cross-border interoperability \nand prevents vendor lock-in.",
       "legalBases": [
@@ -1231,9 +1182,9 @@
     },
     {
       "id": "VEND-CORE-027",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support pseudonym attestations per TS9 for privacy-preserving identification",
       "explanation": "RPs and Issuers should support pseudonym attestations as specified in \nTechnical Specification 9 when full identification is not required. This \nincludes User Pseudonyms (UP) for persistent pseudonymous relationships \nand Wallet-RP Pseudonyms (WRP) for unlinkable transactions. Pseudonyms \nenable data minimization while maintaining accountability.",
       "legalBases": [
@@ -1271,9 +1222,9 @@
     },
     {
       "id": "VEND-CORE-028",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Provide data export capability per TS10 for GDPR portability compliance",
       "explanation": "RPs and Issuers must provide data export capabilities as specified in \nTechnical Specification 10. This supports GDPR Article 20 data portability \nrights, enabling users to obtain transaction logs, backup credentials, \nand migrate between wallet providers. Export formats must be machine-readable \nand commonly used.",
       "legalBases": [
@@ -1311,8 +1262,8 @@
     },
     {
       "id": "VEND-CORE-029",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify registration certificates presented by counterparties",
       "explanation": "Relying Parties must verify registration certificates presented by PID \nProviders, Attestation Providers, or other RPs to confirm their legitimate \nregistration status. This includes validating certificate signatures and \nchecking against Trusted Lists.",
@@ -1358,8 +1309,8 @@
     },
     {
       "id": "VEND-CORE-030",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify attestation authenticity and validity before acceptance",
       "explanation": "Before accepting an attestation, the RP must verify its cryptographic \nsignature, check it has not expired, and verify its revocation status. \nThis includes verifying the issuer's access certificate chain.",
@@ -1447,8 +1398,8 @@
     },
     {
       "id": "VEND-CORE-032",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Use valid RP Access Certificate for Wallet Unit authentication",
       "explanation": "When initiating a presentation request, the Relying Party must present \na valid RP Access Certificate that allows the Wallet Unit to verify \nthe RP's registration and intended use.",
@@ -1491,9 +1442,9 @@
     },
     {
       "id": "VEND-CORE-033",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support pseudonym-based presentations where applicable",
       "explanation": "Where Users choose to present pseudonymous attestations, the RP \nconnector must correctly process pseudonym presentations and not \nattempt to correlate pseudonyms across transactions.",
       "legalBases": [
@@ -1535,9 +1486,9 @@
     },
     {
       "id": "VEND-CORE-034",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Publish RP trust anchor information for Wallet verification",
       "explanation": "Relying Parties accessing EUDI Wallets must publish trust anchor \ninformation through the Access Certificate Authority notification \nprocess, enabling Wallet Units to verify RP legitimacy.",
       "legalBases": [
@@ -1579,9 +1530,9 @@
     },
     {
       "id": "VEND-CORE-035",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Process data deletion requests from Users",
       "explanation": "When Users exercise their right to data deletion, RPs must process \nthese requests according to GDPR requirements and ARF specifications. \nThis includes responding to deletion requests within mandated timeframes.",
       "legalBases": [
@@ -1623,9 +1574,9 @@
     },
     {
       "id": "VEND-CORE-036",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Handle pseudonym verification requests correctly",
       "explanation": "When a User presents using a pseudonym, the Relying Party must correctly \nprocess the pseudonymous presentation without attempting unlawful \nde-anonymization or cross-correlation.",
       "legalBases": [
@@ -1668,9 +1619,9 @@
     },
     {
       "id": "VEND-CORE-037",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Respond to User deletion requests within timeframes",
       "explanation": "When processing data deletion requests, the RP must respond within \nthe timeframes specified in GDPR Article 17, providing confirmation \nof deletion or valid grounds for refusal.",
       "legalBases": [
@@ -1711,9 +1662,9 @@
     },
     {
       "id": "VEND-CORE-038",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Support W3C Digital Credentials API for presentation requests",
       "explanation": "If the Relying Party supports the W3C Digital Credentials API, presentation \nrequests must conform to the API specification and properly handle the \nbrowser-mediated credential exchange flow.",
       "legalBases": [
@@ -1754,8 +1705,8 @@
     },
     {
       "id": "VEND-CORE-039",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Handle revocation status unavailability gracefully",
       "explanation": "When revocation status information is unavailable, the Relying Party \nInstance should not repeatedly request status lists and must implement \nappropriate fallback behavior as specified.",
@@ -1797,9 +1748,9 @@
     },
     {
       "id": "VEND-CORE-040",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Support proximity identification flows",
       "explanation": "Relying Party Instances that support proximity identification must \nimplement the specified BLE or NFC protocols for local credential \npresentation without internet connectivity.",
       "legalBases": [
@@ -1884,9 +1835,9 @@
     },
     {
       "id": "VEND-ICT-001",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Include mandatory contractual provisions per DORA Article 30",
       "explanation": "When the RP is a DORA-regulated financial entity, the contract with the \nICT third-party (intermediary) must include all provisions specified in \nDORA Article 30(2), covering service descriptions, locations, security \nrequirements, data protection, and termination rights.",
       "legalBases": [
@@ -1922,9 +1873,9 @@
     },
     {
       "id": "VEND-ICT-002",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Provide audit rights as required by DORA Article 30(2)(e)",
       "explanation": "The contract must grant the financial entity (and its supervisory \nauthority) full rights of access, inspection, and audit of the ICT \nthird-party service provider.",
       "legalBases": [
@@ -1965,9 +1916,9 @@
     },
     {
       "id": "VEND-ICT-003",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Support exit strategies and transition planning",
       "explanation": "The vendor must support the financial entity's exit strategy with \nmandatory transition periods, data migration, and continuity of service \nduring transitions to alternative providers.",
       "legalBases": [
@@ -2002,9 +1953,9 @@
     },
     {
       "id": "VEND-ICT-004",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Participate in the financial entity's ICT risk management framework",
       "explanation": "The intermediary must cooperate with the financial entity's overall ICT \nrisk management program, including risk assessments, control testing, \nand remediation activities.",
       "legalBases": [
@@ -2226,9 +2177,9 @@
     },
     {
       "id": "VEND-ICT-010",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Obtain approval for subcontracting of critical functions",
       "explanation": "If the intermediary subcontracts any part of the ICT service that \nsupports critical or important functions, prior approval from the \nfinancial entity is required. The subcontractor must meet equivalent \nrequirements.",
       "legalBases": [
@@ -2269,9 +2220,9 @@
     },
     {
       "id": "VEND-ICT-011",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Provide information for concentration risk assessment",
       "explanation": "The intermediary must provide information enabling the financial entity \nto assess ICT concentration risk, including data on other financial \nentities served and interdependencies with other ICT providers.",
       "legalBases": [
@@ -2305,9 +2256,9 @@
     },
     {
       "id": "VEND-ICT-012",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Comply with enhanced oversight if designated as Critical ICT TPP",
       "explanation": "If the ESAs designate the intermediary as a Critical ICT Third-Party \nProvider (CTPP), they become subject to enhanced oversight including \ndirect supervision by the Lead Overseer, regular assessments, and \nadditional reporting requirements.",
       "legalBases": [
@@ -2342,9 +2293,9 @@
     },
     {
       "id": "VEND-INT-001",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Display both intermediary and RP identity before requesting attestations",
       "explanation": "When the intermediary requests attestations from a wallet user, the wallet \nmust display both the intermediary's identity (as the direct requester) and \nthe identity of the ultimate Relying Party on whose behalf the intermediary \nis acting. This ensures informed consent.",
       "legalBases": [
@@ -2384,9 +2335,9 @@
     },
     {
       "id": "VEND-INT-002",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Ensure RP's intended data requests are accurately communicated to wallet",
       "explanation": "The intermediary must not modify, expand, or alter the RP's registered data \nrequest when forwarding to wallets. Only the attributes registered by the RP \nmay be requested.",
       "legalBases": [
@@ -2428,9 +2379,9 @@
     },
     {
       "id": "VEND-INT-003",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Forward presentation requests without modification of requested attributes",
       "explanation": "The intermediary must accurately relay the RP's attribute request to the \nwallet without adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
       "legalBases": [
@@ -2469,9 +2420,9 @@
     },
     {
       "id": "VEND-INT-004",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Forward wallet presentations to RP without modification",
       "explanation": "The intermediary must relay the wallet's presentation to the RP exactly as \nreceived, without altering, extracting, or processing the credential data. \nThe presentation integrity must be preserved.",
       "legalBases": [
@@ -2511,9 +2462,9 @@
     },
     {
       "id": "VEND-INT-005",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Support both remote and proximity presentation protocols",
       "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the intermediary must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
       "legalBases": [
@@ -2558,9 +2509,9 @@
     },
     {
       "id": "VEND-INT-006",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Forward attributes only to the requesting RP after verification",
       "explanation": "After receiving attestation data from a wallet and verifying it, the \nintermediary must forward the attributes ONLY to the specific RP on whose \nbehalf the request was made. If verification fails, no attributes may be \nforwarded.",
       "legalBases": [
@@ -2599,9 +2550,9 @@
     },
     {
       "id": "VEND-INT-007",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
       "explanation": "The intermediary must maintain current copies of the Trusted Lists containing \nPID Provider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
       "legalBases": [
@@ -2643,9 +2594,9 @@
     },
     {
       "id": "VEND-INT-008",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
       "explanation": "The intermediary must maintain current copies of Trusted Lists for qualified \nand non-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
       "legalBases": [
@@ -2684,9 +2635,9 @@
     },
     {
       "id": "VEND-INT-009",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Obtain trust anchors only from official Trusted List sources",
       "explanation": "Trust anchors for verification must be obtained exclusively from official \nEU and Member State Trusted Lists, not from third-party aggregators or \nunofficial sources. This ensures the authenticity of verification keys.",
       "legalBases": [
@@ -2725,8 +2676,8 @@
     },
     {
       "id": "VEND-INT-010",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Validate attestation signatures using official trust anchors",
       "explanation": "The intermediary must verify the cryptographic signatures on attestations \nand PIDs using the public keys from official Trusted Lists. Invalid or \nuntrusted signatures must result in rejection.",
@@ -2767,8 +2718,8 @@
     },
     {
       "id": "VEND-INT-011",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify attestation revocation status before acceptance",
       "explanation": "Before accepting a presentation as valid, the intermediary must check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer.",
@@ -2808,8 +2759,8 @@
     },
     {
       "id": "VEND-INT-012",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify the wallet unit's device binding",
       "explanation": "The intermediary must verify that the presentation is bound to the wallet \nunit's secure cryptographic device (WSCD), confirming that the presenter \ncontrols the private key associated with the attestations.",
@@ -2849,8 +2800,8 @@
     },
     {
       "id": "VEND-INT-013",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify presentation freshness (anti-replay)",
       "explanation": "The intermediary must verify that presentations are fresh and not replayed \nby checking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
@@ -3089,9 +3040,9 @@
     },
     {
       "id": "VEND-INT-019",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Do not extract or log individual attribute values from presentations",
       "explanation": "Beyond the no-storage mandate, intermediaries must not extract, log, or \nanalyze individual attribute values from wallet presentations. The \npresentation should be treated as an opaque payload for forwarding.",
       "legalBases": [
@@ -3126,9 +3077,9 @@
     },
     {
       "id": "VEND-INT-020",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Do not correlate or link user presentations across different RPs",
       "explanation": "Intermediaries serving multiple RPs must not correlate wallet user activity \nacross different RP interactions. Each RP relationship must be treated \nindependently to preserve user unlinkability.",
       "legalBases": [
@@ -3165,9 +3116,9 @@
     },
     {
       "id": "VEND-INT-021",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Delete attestation data immediately after forwarding to RP",
       "explanation": "The intermediary must completely delete all PIDs, attestations, and user \nattributes immediately after sending them to the intermediated RP. If \nforwarding fails or is not performed (e.g., due to verification failure), \ndeletion must still occur immediately after completing all necessary \nverifications.",
       "legalBases": [
@@ -3206,9 +3157,9 @@
     },
     {
       "id": "VEND-INT-022",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Specify RP details in each presentation request to wallet",
       "explanation": "When requesting attestations from a wallet, the intermediary must include \ncomplete information about the intermediated RP: user-friendly name, unique \nidentifier, Registrar URL, intended use identifier, and description. This \nenables the wallet to display accurate RP information to the user.",
       "legalBases": [
@@ -3250,9 +3201,9 @@
     },
     {
       "id": "VEND-INT-023",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support mandatory credential formats (ISO 18013-5 and W3C VC)",
       "explanation": "The intermediary must be capable of verifying attestations in both mandated \nformats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data \nModel 1.1. This ensures interoperability across the EUDIW ecosystem.",
       "legalBases": [
@@ -3294,9 +3245,9 @@
     },
     {
       "id": "VEND-INT-024",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support selective disclosure in both credential formats",
       "explanation": "The intermediary's verification implementation must correctly handle \nselectively disclosed attributes in both mDoc and VC formats. Verification \nmust succeed even when only a subset of attributes is presented.",
       "legalBases": [
@@ -3337,9 +3288,9 @@
     },
     {
       "id": "VEND-INT-025",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Consider certification for cryptographic components",
       "explanation": "Depending on the assurance level required by the RP, the intermediary may \nneed to demonstrate that its cryptographic implementations meet recognized \nstandards (e.g., FIPS 140-2/3, Common Criteria). This is especially relevant \nfor high-assurance use cases.",
       "legalBases": [
@@ -3375,9 +3326,9 @@
     },
     {
       "id": "VEND-INT-026",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Comply with embedded disclosure policies in attestations",
       "explanation": "Electronic attestations of attributes may contain embedded disclosure \npolicies that specify conditions the relying party must meet to access \nthe attestation. The intermediary must verify RP compliance with these \npolicies and ensure the wallet can inform the user of the result.",
       "legalBases": [
@@ -3415,9 +3366,9 @@
     },
     {
       "id": "VEND-INT-027",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Support WebAuthn specification for pseudonym generation",
       "explanation": "When the intermediary supports pseudonymous authentication from wallet \nunits, it must support the WebAuthn specification as mandated in \nAnnex V of the Integrity regulation. This enables privacy-preserving \nauthentication without revealing user identity.",
       "legalBases": [
@@ -3456,9 +3407,9 @@
     },
     {
       "id": "VEND-INT-028",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Support relying-party-specific pseudonyms",
       "explanation": "Wallet units generate unique pseudonyms per relying party, ensuring \nunlinkability across different RPs. The intermediary must correctly \nhandle these RP-specific pseudonyms in verification flows.",
       "legalBases": [
@@ -3496,9 +3447,9 @@
     },
     {
       "id": "VEND-INT-029",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Use valid Wallet-Relying Party Access Certificate",
       "explanation": "The intermediary must use a valid Wallet-Relying Party Access Certificate \n(issued by its Registrar) when interacting with wallet units. The \ncertificate identifies the intermediary and enables the wallet to verify \nits registration status.",
       "legalBases": [
@@ -3540,9 +3491,9 @@
     },
     {
       "id": "VEND-INT-030",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support data erasure request protocol",
       "explanation": "The intermediary must support the protocol for data erasure requests \nfrom wallet users. When a user requests erasure of their data from \nan RP (via the wallet), the intermediary must correctly relay or \nsupport this request.",
       "legalBases": [
@@ -3580,9 +3531,9 @@
     },
     {
       "id": "VEND-INT-031",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Support user reporting to data protection authorities",
       "explanation": "Wallet units allow users to report RPs to data protection authorities \nif they suspect unlawful data requests. The intermediary's identity \n(as the entity making the request on behalf of the RP) will be visible \nto users and may be included in such reports.",
       "legalBases": [
@@ -3620,9 +3571,9 @@
     },
     {
       "id": "VEND-INT-032",
-      "category": "technical",
-      "categoryLabel": "Technical",
-      "categoryIcon": "⚙️",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Include intermediary access certificate and RP registration certificate in requests",
       "explanation": "When requesting attestations from a wallet on behalf of an intermediated RP, the \nintermediary must include both: (1) its own access certificate (proving its identity \nas a registered intermediary), and (2) the registration certificate of the \nintermediated RP, if the RP has one. This enables the wallet to verify both \nthe intermediary and the ultimate service provider.",
       "legalBases": [
@@ -3665,9 +3616,9 @@
     },
     {
       "id": "VEND-INT-033",
-      "category": "governance",
-      "categoryLabel": "Governance",
-      "categoryIcon": "🏛️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Ensure intermediary-RP contractual relationship is registered",
       "explanation": "Before the intermediary can act on behalf of an RP, the contractual relationship \nbetween them must be registered with the relevant Registrar. The wallet verifies \nthis registration when processing requests (per RPI_07a). If the relationship \nis not registered, the wallet will warn the user that the intermediary's \nauthority to act for the RP cannot be verified.",
       "legalBases": [
@@ -3710,8 +3661,8 @@
     },
     {
       "id": "VEND-INT-034",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support attestation status list verification mechanisms",
       "explanation": "The intermediary must support attestation status verification using the mechanisms \nspecified in ARF Topic 7 (Attestation Revocation). This includes checking \nAttestation Status Lists or Attestation Revocation Lists published by PID/EAA \nproviders to verify that attestations have not been revoked.",
@@ -4544,9 +4495,9 @@
     },
     {
       "id": "VEND-ISS-020",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Publish attestation types to the Common Catalogue (TS11)",
       "explanation": "Attestation types issued by the provider should be registered in the \nCommon Catalogue of Attestation Types, enabling discoverability by \nwallets, relying parties, and users.",
       "legalBases": [
@@ -4581,9 +4532,9 @@
     },
     {
       "id": "VEND-ISS-021",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Document attestation schema including mandatory and optional attributes",
       "explanation": "Each attestation type must have a published schema defining the \nmandatory and optional attributes, data types, and semantic meaning \nof each field.",
       "legalBases": [
@@ -4625,9 +4576,9 @@
     },
     {
       "id": "VEND-ISS-022",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Apply data minimisation principles to attestation content",
       "explanation": "Attestations should contain only the attributes necessary for their \nintended purpose. Issuers should offer selective disclosure-friendly \nattestation designs where possible.",
       "legalBases": [
@@ -4667,9 +4618,9 @@
     },
     {
       "id": "VEND-ISS-023",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Do not embed tracking identifiers in attestations",
       "explanation": "Attestations must not contain hidden or overt tracking identifiers \nthat could enable correlation of user presentations across different \nrelying parties.",
       "legalBases": [
@@ -4704,9 +4655,9 @@
     },
     {
       "id": "VEND-ISS-024",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Enable cross-border recognition of attestations",
       "explanation": "Attestations issued in one Member State must be verifiable and \nrecognisable in all other Member States. The platform must ensure \ninteroperability through adherence to common standards.",
       "legalBases": [
@@ -4746,9 +4697,9 @@
     },
     {
       "id": "VEND-ISS-025",
-      "category": "interoperability",
-      "categoryLabel": "Interoperability",
-      "categoryIcon": "🌐",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support both SD-JWT and mDoc credential formats",
       "explanation": "For maximum interoperability, the platform should support issuing \nattestations in both SD-JWT-VC and ISO mDoc formats, allowing \nrelying parties to request their preferred format.",
       "legalBases": [
@@ -4968,9 +4919,9 @@
     },
     {
       "id": "VEND-ISS-030",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Publish PID/Attestation Provider trust anchor information",
       "explanation": "PID and Attestation Providers must publish trust anchor information that \nenables Wallet Units and Relying Parties to verify issued attestations. \nThis includes signing certificate publication and Trusted List inclusion.",
       "legalBases": [
@@ -5057,9 +5008,9 @@
     },
     {
       "id": "VEND-ISS-032",
-      "category": "privacy",
-      "categoryLabel": "Privacy",
-      "categoryIcon": "🛡️",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Include embedded disclosure policies in attestations",
       "explanation": "Where applicable, attestation providers must include embedded disclosure \npolicies in issued attestations. These policies guide Wallet Units on \nappropriate disclosure behavior for the attestation.",
       "legalBases": [
@@ -5341,9 +5292,9 @@
     },
     {
       "id": "VEND-ISS-038",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Publish trust anchor information in common format",
       "explanation": "PID Providers must publish trust anchor information according to the \ncommon set of information specified by the Commission, enabling \nWallet Units and Relying Parties to verify attestation authenticity.",
       "legalBases": [
@@ -5385,9 +5336,9 @@
     },
     {
       "id": "VEND-TSP-001",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Obtain and maintain qualified trust service provider (QTSP) status",
       "explanation": "To provide qualified trust services, the vendor must obtain QTSP status \nfrom a conformity assessment body in a Member State and be listed on \nthe national Trusted List.",
       "legalBases": [
@@ -5421,9 +5372,9 @@
     },
     {
       "id": "VEND-TSP-002",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Undergo regular conformity assessment (at least every 24 months)",
       "explanation": "QTSPs must undergo conformity assessment at least every 24 months \nby an accredited conformity assessment body to verify continued \ncompliance with eIDAS requirements.",
       "legalBases": [
@@ -5457,9 +5408,9 @@
     },
     {
       "id": "VEND-TSP-003",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Notify supervisory body of changes affecting qualified status",
       "explanation": "The QTSP must notify the competent supervisory body of any significant \nchanges that could affect the qualified status, including organizational \nchanges, security incidents, or policy modifications.",
       "legalBases": [
@@ -5899,9 +5850,9 @@
     },
     {
       "id": "VEND-TSP-015",
-      "category": "liability",
-      "categoryLabel": "Liability",
-      "categoryIcon": "⚖️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Maintain sufficient financial resources or liability insurance",
       "explanation": "QTSPs must maintain adequate financial resources or obtain appropriate \nliability insurance to cover damages arising from failure to meet \ntheir obligations.",
       "legalBases": [
@@ -5935,9 +5886,9 @@
     },
     {
       "id": "VEND-TSP-016",
-      "category": "liability",
-      "categoryLabel": "Liability",
-      "categoryIcon": "⚖️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Accept liability for qualified signatures/attestations issued",
       "explanation": "The QTSP is liable for qualified services issued and must accept \nresponsibility for failures in verification, revocation, or \nsecurity of qualified certificates and attestations.",
       "legalBases": [
@@ -5971,9 +5922,9 @@
     },
     {
       "id": "VEND-TSP-017",
-      "category": "certification",
-      "categoryLabel": "Certification",
-      "categoryIcon": "✅",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Comply with common Access Certificate Policy requirements",
       "explanation": "Access Certificate Authorities must comply with the common Certificate \nPolicy established by the Commission. This includes certificate issuance, \nvalidation, and revocation procedures for all ecosystem participants.",
       "legalBases": [
@@ -6013,9 +5964,9 @@
     },
     {
       "id": "VEND-TSP-018",
-      "category": "transparency",
-      "categoryLabel": "Transparency",
-      "categoryIcon": "👁️",
+      "category": "contracts",
+      "categoryLabel": "Contracts",
+      "categoryIcon": "📜",
       "requirement": "Handle suspension and cancellation of Trust Services",
       "explanation": "When an Access Certificate Authority or Provider of registration certificates \nis suspended or cancelled, appropriate notification and transition procedures \nmust be followed to maintain ecosystem trust.",
       "legalBases": [
@@ -6055,8 +6006,8 @@
     },
     {
       "id": "VEND-TSP-019",
-      "category": "verification",
-      "categoryLabel": "Verification",
+      "category": "usage",
+      "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Implement authentic source verification for QTSPs",
       "explanation": "QTSPs accessing Authentic Sources for attribute verification must \nimplement the specified technical interfaces, obtain User consent, \nand process verification responses according to ARF requirements.",
@@ -6681,18 +6632,12 @@
       "arf": 78
     },
     "byCategory": {
-      "governance": 14,
-      "registration": 16,
+      "contracts": 26,
+      "registration": 22,
       "security": 25,
-      "privacy": 16,
-      "transparency": 10,
-      "verification": 11,
-      "interoperability": 7,
-      "technical": 14,
-      "certification": 6,
-      "issuance": 16,
-      "revocation": 7,
-      "liability": 2
+      "usage": 34,
+      "issuance": 30,
+      "revocation": 7
     },
     "byCriticality": {
       "critical": 70,

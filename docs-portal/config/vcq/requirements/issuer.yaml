@@ -421,7 +421,7 @@ requirements:
       topic: Topic 10
       hlr: ISSU_17
   - id: VEND-ISS-020
-    category: transparency
+    category: contracts
     requirement: Publish attestation types to the Common Catalogue (TS11)
     explanation: |
       Attestation types issued by the provider should be registered in the 
@@ -438,7 +438,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-ISS-021
-    category: transparency
+    category: contracts
     requirement: Document attestation schema including mandatory and optional attributes
     explanation: |
       Each attestation type must have a published schema defining the 
@@ -460,7 +460,7 @@ requirements:
         - ARB_03
         - ARB_04
   - id: VEND-ISS-022
-    category: privacy
+    category: usage
     requirement: Apply data minimisation principles to attestation content
     explanation: |
       Attestations should contain only the attributes necessary for their 
@@ -484,7 +484,7 @@ requirements:
       topic: Topic 43
       hlr: EDP_01
   - id: VEND-ISS-023
-    category: privacy
+    category: usage
     requirement: Do not embed tracking identifiers in attestations
     explanation: |
       Attestations must not contain hidden or overt tracking identifiers 
@@ -501,7 +501,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-ISS-024
-    category: interoperability
+    category: usage
     requirement: Enable cross-border recognition of attestations
     explanation: |
       Attestations issued in one Member State must be verifiable and 
@@ -525,7 +525,7 @@ requirements:
       topic: Topic 10
       hlr: ISSU_02
   - id: VEND-ISS-025
-    category: interoperability
+    category: usage
     requirement: Support both SD-JWT and mDoc credential formats
     explanation: |
       For maximum interoperability, the platform should support issuing 
@@ -628,7 +628,7 @@ requirements:
     criticality: high
 
   - id: VEND-ISS-030
-    category: transparency
+    category: contracts
     requirement: "Publish PID/Attestation Provider trust anchor information"
     explanation: |
       PID and Attestation Providers must publish trust anchor information that 
@@ -667,7 +667,7 @@ requirements:
     criticality: critical
 
   - id: VEND-ISS-032
-    category: privacy
+    category: usage
     requirement: "Include embedded disclosure policies in attestations"
     explanation: |
       Where applicable, attestation providers must include embedded disclosure 
@@ -789,7 +789,7 @@ requirements:
   # ============================================================================
 
   - id: VEND-ISS-038
-    category: transparency
+    category: contracts
     requirement: "Publish trust anchor information in common format"
     explanation: |
       PID Providers must publish trust anchor information according to the 

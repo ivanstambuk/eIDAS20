@@ -1,7 +1,7 @@
 schemaVersion: 2
 requirements:
   - id: VEND-TSP-001
-    category: certification
+    category: registration
     requirement: Obtain and maintain qualified trust service provider (QTSP) status
     explanation: |
       To provide qualified trust services, the vendor must obtain QTSP status 
@@ -22,7 +22,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-TSP-002
-    category: certification
+    category: registration
     requirement: Undergo regular conformity assessment (at least every 24 months)
     explanation: |
       QTSPs must undergo conformity assessment at least every 24 months 
@@ -41,7 +41,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-TSP-003
-    category: certification
+    category: registration
     requirement: Notify supervisory body of changes affecting qualified status
     explanation: |
       The QTSP must notify the competent supervisory body of any significant 
@@ -280,7 +280,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-TSP-015
-    category: liability
+    category: contracts
     requirement: Maintain sufficient financial resources or liability insurance
     explanation: |
       QTSPs must maintain adequate financial resources or obtain appropriate 
@@ -300,7 +300,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-TSP-016
-    category: liability
+    category: contracts
     requirement: Accept liability for qualified signatures/attestations issued
     explanation: |
       The QTSP is liable for qualified services issued and must accept 
@@ -320,7 +320,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-TSP-017
-    category: certification
+    category: registration
     requirement: Comply with common Access Certificate Policy requirements
     explanation: |
       Access Certificate Authorities must comply with the common Certificate 
@@ -341,7 +341,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-TSP-018
-    category: transparency
+    category: contracts
     requirement: Handle suspension and cancellation of Trust Services
     explanation: |
       When an Access Certificate Authority or Provider of registration certificates 
@@ -362,7 +362,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-TSP-019
-    category: verification
+    category: usage
     requirement: Implement authentic source verification for QTSPs
     explanation: |
       QTSPs accessing Authentic Sources for attribute verification must 

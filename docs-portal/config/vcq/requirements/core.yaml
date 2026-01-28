@@ -1,7 +1,7 @@
 schemaVersion: 1
 requirements:
   - id: VEND-CORE-001
-    category: governance
+    category: contracts
     requirement: Intermediaries shall not store data about the content of transactions
     explanation: |
       The no-storage mandate is the central privacy protection for wallet users 
@@ -23,7 +23,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-002
-    category: governance
+    category: contracts
     requirement: Implement a Data Processing Agreement meeting GDPR Article 28 requirements
     explanation: |
       When intermediaries process personal data on behalf of the RP, they act as 
@@ -48,7 +48,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-003
-    category: governance
+    category: contracts
     requirement: Provide audit rights to the Relying Party
     explanation: |
       The RP must be able to verify the vendor's compliance with processing 
@@ -171,7 +171,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-009
-    category: privacy
+    category: usage
     requirement: Process personal data only on documented instructions from the RP
     explanation: |
       The vendor must not process wallet data for their own purposes. 
@@ -192,7 +192,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-010
-    category: privacy
+    category: usage
     requirement: Support data subject rights requests
     explanation: |
       The vendor must assist the RP in responding to data subject requests 
@@ -212,7 +212,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-011
-    category: transparency
+    category: contracts
     requirement: Display both intermediary and RP identity to wallet users
     explanation: |
       When requesting data from wallets, the intermediary must ensure that 
@@ -235,7 +235,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-012
-    category: transparency
+    category: contracts
     requirement: Inform the RP of any legal requirement to process data beyond instructions
     explanation: |
       If the vendor is legally required (e.g., by law enforcement) to process 
@@ -250,7 +250,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-013
-    category: governance
+    category: contracts
     requirement: Obtain RP authorization before engaging sub-processors
     explanation: |
       The vendor must not engage another processor (sub-processor) without 
@@ -271,7 +271,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-014
-    category: governance
+    category: contracts
     requirement: Delete or return personal data at end of contract
     explanation: |
       Upon termination of the service contract, the vendor must delete or 
@@ -366,7 +366,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-018
-    category: verification
+    category: usage
     requirement: Perform verification of attestations as agreed with RP
     explanation: |
       The intermediary must verify the authenticity, revocation status, 
@@ -419,7 +419,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-020
-    category: interoperability
+    category: usage
     requirement: Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets
     explanation: |
       Attestation Issuers must implement the OpenID for Verifiable Credential 
@@ -442,7 +442,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-021
-    category: privacy
+    category: usage
     requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
       Relying Parties must implement the common data deletion request interface 
@@ -466,7 +466,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-022
-    category: interoperability
+    category: usage
     requirement: Register attestation schemas in the catalogue per TS11
     explanation: |
       Attestation Issuers must register their attestation types in the catalogue 
@@ -489,7 +489,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-023
-    category: interoperability
+    category: usage
     requirement: Implement open standards per TS1 for EUDI Wallet interoperability
     explanation: |
       All EUDIW ecosystem participants must implement the open standards mapped 
@@ -579,7 +579,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-027
-    category: privacy
+    category: usage
     requirement: Support pseudonym attestations per TS9 for privacy-preserving identification
     explanation: |
       RPs and Issuers should support pseudonym attestations as specified in 
@@ -605,7 +605,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-028
-    category: privacy
+    category: usage
     requirement: Provide data export capability per TS10 for GDPR portability compliance
     explanation: |
       RPs and Issuers must provide data export capabilities as specified in 
@@ -631,7 +631,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-029
-    category: verification
+    category: usage
     requirement: Verify registration certificates presented by counterparties
     explanation: |
       Relying Parties must verify registration certificates presented by PID 
@@ -657,7 +657,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-030
-    category: verification
+    category: usage
     requirement: Verify attestation authenticity and validity before acceptance
     explanation: |
       Before accepting an attestation, the RP must verify its cryptographic 
@@ -703,7 +703,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-032
-    category: verification
+    category: usage
     requirement: Use valid RP Access Certificate for Wallet Unit authentication
     explanation: |
       When initiating a presentation request, the Relying Party must present 
@@ -725,7 +725,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-033
-    category: privacy
+    category: usage
     requirement: Support pseudonym-based presentations where applicable
     explanation: |
       Where Users choose to present pseudonymous attestations, the RP 
@@ -747,7 +747,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-034
-    category: transparency
+    category: contracts
     requirement: Publish RP trust anchor information for Wallet verification
     explanation: |
       Relying Parties accessing EUDI Wallets must publish trust anchor 
@@ -769,7 +769,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-035
-    category: privacy
+    category: usage
     requirement: Process data deletion requests from Users
     explanation: |
       When Users exercise their right to data deletion, RPs must process 
@@ -791,7 +791,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-036
-    category: privacy
+    category: usage
     requirement: Handle pseudonym verification requests correctly
     explanation: |
       When a User presents using a pseudonym, the Relying Party must correctly 
@@ -814,7 +814,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-037
-    category: privacy
+    category: usage
     requirement: Respond to User deletion requests within timeframes
     explanation: |
       When processing data deletion requests, the RP must respond within 
@@ -835,7 +835,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-038
-    category: technical
+    category: issuance
     requirement: Support W3C Digital Credentials API for presentation requests
     explanation: |
       If the Relying Party supports the W3C Digital Credentials API, presentation 
@@ -856,7 +856,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-039
-    category: verification
+    category: usage
     requirement: Handle revocation status unavailability gracefully
     explanation: |
       When revocation status information is unavailable, the Relying Party 
@@ -877,7 +877,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-040
-    category: technical
+    category: issuance
     requirement: Support proximity identification flows
     explanation: |
       Relying Party Instances that support proximity identification must 
