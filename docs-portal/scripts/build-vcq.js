@@ -316,6 +316,12 @@ for (const req of allRequirements) {
     // Build source group index (DEC-255)
     requirementsBySourceGroup[sourceGroup].push(req.id);
 
+    // ARF is a cross-cutting reference - count separately if arfReference exists
+    // This ensures requirements appear in BOTH their legal source AND ARF
+    if (req.arfReference) {
+        requirementsBySourceGroup.arf.push(req.id);
+    }
+
     // DEC-257: Build role index
     if (roles.length === 0) {
         requirementsByRole.universal.push(req.id);
