@@ -1,10 +1,10 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-> **Version**: 5.0  
-> **Date**: 2026-01-27  
-> **Purpose**: Topic-first compliance mapping for Payment Service Providers  
-> **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
-> **Status**: Fully Validated (40/40 requirements verified — Articles 1-9, 22-27, 97)
+► **Version**: 5.0  
+► **Date**: 2026-01-27  
+► **Purpose**: Topic-first compliance mapping for Payment Service Providers  
+► **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
+► **Status**: Fully Validated (40/40 requirements verified — Articles 1-9, 22-27, 97)
 
 ---
 
@@ -82,7 +82,7 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 - **WUA_09–WUA_12** (Topic 9): Wallet Unit Attestation key binding
 - **RPA_01–RPA_08** (Topic 6): Relying Party authentication and user approval
 
-> ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix E](#appendix-e-sca-attestation-rulebook-status) for details.
+► ⚠️ **Critical Dependency**: The **SCA Attestation Rulebook** does not yet exist as a published document (as of Jan 2026). TS12 defines the protocol ("pipes"), but delegates the data schemas (what fields to display, IBAN vs card number, etc.) to future rulebooks to be authored by industry bodies (EPC for SEPA, EMVCo/schemes for cards). Items marked 🔶 in this assessment await rulebook publication. See [Appendix E](#appendix-e-sca-attestation-rulebook-status) for details.
 
 **Use Case Coverage**:
 
@@ -210,9 +210,9 @@ The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
 # PART A: SCA CREDENTIAL ISSUANCE (Binding Phase)
 ===============================================================================
 
-> *This part covers the **issuance phase** of SCA attestations — when the PSP creates credentials and binds them to the user's wallet.*
->
-> **RTS Chapter IV** (Articles 22-27): Confidentiality and integrity of personalised security credentials
+► *This part covers the **issuance phase** of SCA attestations — when the PSP creates credentials and binds them to the user's wallet.*
+►
+► **RTS Chapter IV** (Articles 22-27): Confidentiality and integrity of personalised security credentials
 
 ---
 
@@ -221,12 +221,12 @@ The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
 
 ## 4.1 General Requirements
 
-> **Regulatory Basis**:
-> - [RTS Art. 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22): Confidentiality and integrity of personalised security credentials
+► **Regulatory Basis**:
+► - [RTS Art. 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22): Confidentiality and integrity of personalised security credentials
 
 #### [Article 22(1)](sources/32018R0389.md#article-22) — PSC confidentiality and integrity
 
-> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
+► "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -235,8 +235,8 @@ The PSP (as **Relying Party/Verifier**) requests SCA during a payment:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: PSC Confidentiality and Integrity Across All Phases</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: PSC Confidentiality and Integrity Across All Phases◄/strong►◄/summary►
 
 ##### What are Personalised Security Credentials (PSCs)?
 
@@ -347,7 +347,7 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 | Gap ID | Description | Severity | Recommendation |
 |--------|-------------|----------|----------------|
-| **PSC-1** | Revocation propagation delay not specified | Medium | Define SLA for WUA revocation propagation (e.g., < 1 hour) |
+| **PSC-1** | Revocation propagation delay not specified | Medium | Define SLA for WUA revocation propagation (e.g., ◄ 1 hour) |
 | **PSC-2** | Renewal SCA requirements not detailed | Low | Clarify: full SCA required for renewal, or can existing session suffice? |
 | **PSC-3** | PIN entropy covered separately (K-1) | See K-1 | Cross-reference: PIN entropy requirements in SCA Attestation Rulebook |
 | **PSC-4** | Authentication code lifetime not specified | Low | Define max validity for KB-JWT (e.g., 5 minutes) |
@@ -360,7 +360,7 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 4. **Revocation SLA**: Mandate maximum propagation delay for WUA revocation
 5. **Authentication Code TTL**: Specify maximum validity for KB-JWT signatures (e.g., 5 minutes)
 
-</details>
+◄/details►
 
 **Context**: Art. 22(1) applies to **all personalised security credentials**, which in the EUDIW context includes:
 - **PIN/Passphrase** (knowledge): Encrypted at rest, never transmitted
@@ -371,7 +371,7 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 #### [Article 22(2)(a)](sources/32018R0389.md#article-22) — Masked credential input
 
-> "(a) personalised security credentials are masked when displayed and are not readable in their full extent when input by the payment service user during the authentication;"
+► "(a) personalised security credentials are masked when displayed and are not readable in their full extent when input by the payment service user during the authentication;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -379,8 +379,8 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Credential Masking During Input</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Credential Masking During Input◄/strong►◄/summary►
 
 ##### Core Requirement: Masked Display and Input
 
@@ -501,13 +501,13 @@ TextField(
 4. **No Clipboard**: Confirm PIN fields must disable copy/paste
 5. **Brief Reveal**: Document acceptable brief character reveal duration
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 22(2)(b)](sources/32018R0389.md#article-22) — No plaintext storage
 
-> "(b) personalised security credentials in data format, as well as cryptographic materials related to the encryption of the personalised security credentials are not stored in plain text;"
+► "(b) personalised security credentials in data format, as well as cryptographic materials related to the encryption of the personalised security credentials are not stored in plain text;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -516,8 +516,8 @@ TextField(
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: PIN Storage Implementation Evidence</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: PIN Storage Implementation Evidence◄/strong►◄/summary►
 
 #### Android: AES-GCM Encryption with Android Keystore
 
@@ -594,13 +594,13 @@ try self.keyChain
 | **Android** | SharedPreferences (encrypted) | AES-256-GCM | Android Keystore (hardware-backed) |
 | **iOS** | Keychain | System-managed | Secure Enclave (hardware) |
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 22(2)(c)](sources/32018R0389.md#article-22) — Protected cryptographic material
 
-> "(c) secret cryptographic material is protected from unauthorised disclosure."
+► "(c) secret cryptographic material is protected from unauthorised disclosure."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -610,16 +610,16 @@ try self.keyChain
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Private Key Non-Extractability</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Private Key Non-Extractability◄/strong►◄/summary►
 
 #### ARF High-Level Requirement: WIAM_20
 
-> "A WSCA/WSCD **SHALL protect a private key** it generated during the entire lifetime of the key. This protection SHALL at least imply that the WSCA/WSCD **prevents the private key from being extracted in the clear**. If a WSCA/WSCD is able to export a private key in encrypted format, the resulting level of protection SHALL be equivalent to the protection level of the private key when stored in the WSCA."
+► "A WSCA/WSCD **SHALL protect a private key** it generated during the entire lifetime of the key. This protection SHALL at least imply that the WSCA/WSCD **prevents the private key from being extracted in the clear**. If a WSCA/WSCD is able to export a private key in encrypted format, the resulting level of protection SHALL be equivalent to the protection level of the private key when stored in the WSCA."
 
 #### ARF High-Level Requirement: WUA_09
 
-> "A WUA SHALL contain a public key, and the corresponding **private key SHALL be generated by the WSCA/WSCD** described in the WUA."
+► "A WUA SHALL contain a public key, and the corresponding **private key SHALL be generated by the WSCA/WSCD** described in the WUA."
 
 #### Platform Implementation
 
@@ -638,13 +638,13 @@ try self.keyChain
 3. Private key **never leaves** the secure hardware
 4. All signing operations occur within the WSCA/WSCD
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 22(3)](sources/32018R0389.md#article-22) — Documented key management
 
-> "Payment service providers shall fully document the process related to the management of cryptographic material used to encrypt or otherwise render unreadable the personalised security credentials."
+► "Payment service providers shall fully document the process related to the management of cryptographic material used to encrypt or otherwise render unreadable the personalised security credentials."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -653,8 +653,8 @@ try self.keyChain
 
 **Status**: ❌ PSP Obligation (with Wallet Certification Evidence)
 
-<details>
-<summary><strong>🔍 Deep-Dive: Key Management Documentation Requirements</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Key Management Documentation Requirements◄/strong►◄/summary►
 
 ##### Core Requirement: Full Documentation
 
@@ -746,7 +746,7 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 | **Access control** | User verification enforcement |
 | **API security** | WSCA interface protection |
 
-> **PSP Evidence**: PSPs can reference Wallet Solution certification as evidence for wallet-side key management documentation, supplementing their own server-side documentation.
+► **PSP Evidence**: PSPs can reference Wallet Solution certification as evidence for wallet-side key management documentation, supplementing their own server-side documentation.
 
 ##### Common Audit Findings
 
@@ -787,13 +787,13 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 5. **Incident Response**: Define breach notification and key revocation procedures
 6. **Key Inventory**: Require PSPs to maintain key inventory with attributes
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 22(4)](sources/32018R0389.md#article-22) — Secure processing environment
 
-> "Payment service providers shall ensure that the processing and routing of personalised security credentials and of the authentication codes generated in accordance with Chapter II take place in secure environments in accordance with strong and widely recognised industry standards."
+► "Payment service providers shall ensure that the processing and routing of personalised security credentials and of the authentication codes generated in accordance with Chapter II take place in secure environments in accordance with strong and widely recognised industry standards."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -802,8 +802,8 @@ Wallet Solution certification under CIR 2024/2981 provides evidence for wallet-s
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Secure Processing Environment Standards</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Secure Processing Environment Standards◄/strong►◄/summary►
 
 ##### Core Requirement: Industry-Standard Secure Environments
 
@@ -959,16 +959,16 @@ The Wallet Solution certification under CIR 2024/2981 provides:
 5. **Attestation Verification**: Document how PSP verifies wallet security level
 6. **Routing Protection**: Mandate TLS 1.2+ for all PSC/auth code transmission
 
-</details>
+◄/details►
 
 ---
 
 ## 4.2 Creation & Transmission of Credentials
 
-> **Regulatory Basis**:
-> - [RTS Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_23): Creation and transmission of credentials
+► **Regulatory Basis**:
+► - [RTS Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_23): Creation and transmission of credentials
 
-> "Payment service providers shall ensure that the creation of personalised security credentials is performed in a secure environment. They shall mitigate the risks of unauthorised use of the personalised security credentials and of the authentication devices and software following their loss, theft or copying before their delivery to the payer."
+► "Payment service providers shall ensure that the creation of personalised security credentials is performed in a secure environment. They shall mitigate the risks of unauthorised use of the personalised security credentials and of the authentication devices and software following their loss, theft or copying before their delivery to the payer."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -989,8 +989,8 @@ The Wallet Solution certification under CIR 2024/2981 provides:
 
 This is a stronger model than traditional PSP-generated credentials because the PSP never sees the private key or the user's PIN/biometric.
 
-<details>
-<summary><strong>🔍 Deep-Dive: Secure PSC Creation Architecture</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Secure PSC Creation Architecture◄/strong►◄/summary►
 
 ##### Core Requirement: Secure Environment
 
@@ -1105,18 +1105,18 @@ Traditional PSP model vs. EUDI Wallet model:
 5. **Certification Mapping**: Map WSCD certification to CC/FIPS equivalents
 6. **Biometric Binding**: Document behavior when biometric re-enrolled
 
-</details>
+◄/details►
 
 ---
 
 ## 4.3 Association with Payment Service User
 
-> **Regulatory Basis**:
-> - [RTS Art. 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24): Association with the payment service user
+► **Regulatory Basis**:
+► - [RTS Art. 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24): Association with the payment service user
 
 #### [Article 24(1)](sources/32018R0389.md#article-24) — Secure association
 
-> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software."
+► "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1134,7 +1134,7 @@ Traditional PSP model vs. EUDI Wallet model:
 
 #### [Article 24(2)(a)](sources/32018R0389.md#article-24) — Secure binding environment
 
-> "(a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility..."
+► "(a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility..."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1144,8 +1144,8 @@ Traditional PSP model vs. EUDI Wallet model:
 
 **Status**: ⚠️ Shared Responsibility
 
-<details>
-<summary><strong>🔍 Deep-Dive: Secure User Association Architecture</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Secure User Association Architecture◄/strong►◄/summary►
 
 ##### Core Requirement: Exclusive User-PSC Binding
 
@@ -1268,13 +1268,13 @@ Article 24 ensures that PSCs are **bound only to the legitimate user**, covering
 5. **Binding Evidence**: Specify required evidence in OID4VCI request
 6. **Audit Requirements**: Define minimum logging for binding events
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 24(2)(b)](sources/32018R0389.md#article-24) — SCA for remote binding
 
-> "(b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
+► "(b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1295,10 +1295,10 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 
 ## 4.4 Secure Delivery of Credentials
 
-> **Regulatory Basis**:
-> - [RTS Art. 25](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_25): Delivery of credentials and authentication tools
+► **Regulatory Basis**:
+► - [RTS Art. 25](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_25): Delivery of credentials and authentication tools
 
-> "Payment service providers shall ensure that the delivery of personalised security credentials, authentication devices and software to the payment service user is carried out in a secure manner designed to address the risks related to their unauthorised use due to their loss, theft or copying."
+► "Payment service providers shall ensure that the delivery of personalised security credentials, authentication devices and software to the payment service user is carried out in a secure manner designed to address the risks related to their unauthorised use due to their loss, theft or copying."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1312,8 +1312,8 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 - The attestation is useless without the private key (non-extractable)
 - Interception doesn't enable impersonation
 
-<details>
-<summary><strong>🔍 Deep-Dive: Secure Credential Delivery Architecture</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Secure Credential Delivery Architecture◄/strong►◄/summary►
 
 ##### Core Requirement: Secure Delivery Against Loss, Theft, Copying
 
@@ -1333,7 +1333,7 @@ Article 25 mandates protection against **three distinct risks**:
 │  TRADITIONAL MODEL (PSP-generated credentials)                              │
 │  ==============================================                             │
 │  ┌-------------┐    ┌-------------┐    ┌-------------┐    ┌-------------┐   │
-│  │   PSP       │--->│   Mail      │--->│   User      │--->│   Device    │   │
+│  │   PSP       │---►│   Mail      │---►│   User      │---►│   Device    │   │
 │  │   generates │    │   service   │    │   receives  │    │   enters    │   │
 │  │   PIN       │    │             │    │   PIN       │    │   PIN       │   │
 │  └-------------┘    └-------------┘    └-------------┘    └-------------┘   │
@@ -1347,7 +1347,7 @@ Article 25 mandates protection against **three distinct risks**:
 │  ┌----------------------------------------------------------------------┐   │
 │  │                                                                      │   │
 │  │  ┌---------------┐                      ┌-----------------------┐   │    │
-│  │  │   WALLET      │◄----- TLS 1.2+ ----->│   PSP ISSUER          │   │    │
+│  │  │   WALLET      │◄----- TLS 1.2+ -----►│   PSP ISSUER          │   │    │
 │  │  │   ┌---------┐ │  OID4VCI Protocol    │   ┌-----------------┐ │   │    │
 │  │  │   │ WSCD    │ │                      │   │ HSM signs       │ │   │    │
 │  │  │   │ Private │ │  Attestation         │   │ attestation     │ │   │    │
@@ -1436,16 +1436,16 @@ Article 25 mandates protection against **three distinct risks**:
 5. **Audit Trail**: Log successful deliveries for compliance evidence
 6. **Revocation Check**: Verify PSP certificate status using OCSP/CRL
 
-</details>
+◄/details►
 
 ---
 
 ## 4.5 Renewal of Credentials
 
-> **Regulatory Basis**:
-> - [RTS Art. 26](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_26): Renewal of personalised security credentials
+► **Regulatory Basis**:
+► - [RTS Art. 26](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_26): Renewal of personalised security credentials
 
-> "Payment service providers shall ensure that the renewal or re-activation of personalised security credentials adhere to the procedures for the creation, association and delivery of the credentials and of the authentication devices in accordance with Articles 23, 24 and 25."
+► "Payment service providers shall ensure that the renewal or re-activation of personalised security credentials adhere to the procedures for the creation, association and delivery of the credentials and of the authentication devices in accordance with Articles 23, 24 and 25."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1464,8 +1464,8 @@ Article 25 mandates protection against **three distinct risks**:
 
 The wallet may generate a new key pair or reuse the existing one (PSP policy decision).
 
-<details>
-<summary><strong>🔍 Deep-Dive: Credential Renewal Architecture</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Credential Renewal Architecture◄/strong►◄/summary►
 
 ##### Core Requirement: Renewal = Same Security as Creation
 
@@ -1599,18 +1599,18 @@ Per EBA guidance, **technical token replacements** (background updates) differ f
 5. **Device Migration**: Document key migration for device upgrades
 6. **Audit Trail**: Log all renewal events for compliance
 
-</details>
+◄/details►
 
 ---
 
 ## 4.6 Destruction, Deactivation & Revocation
 
-> **Regulatory Basis**:
-> - [RTS Art. 27](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_27): Destruction, deactivation and revocation
+► **Regulatory Basis**:
+► - [RTS Art. 27](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_27): Destruction, deactivation and revocation
 
 #### [Article 27(a)](sources/32018R0389.md#article-27) — Secure destruction/deactivation/revocation
 
-> "(a) the secure destruction, deactivation or revocation of the personalised security credentials, authentication devices and software;"
+► "(a) the secure destruction, deactivation or revocation of the personalised security credentials, authentication devices and software;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1634,8 +1634,8 @@ Shared responsibility:
 - **PSP**: Must revoke the SCA attestation status in their backend
 - **User**: Can request revocation via independent account (WIAM_06)
 
-<details>
-<summary><strong>🔍 Deep-Dive: Credential Destruction & Revocation Architecture</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Credential Destruction & Revocation Architecture◄/strong►◄/summary►
 
 ##### Core Requirement: Three Distinct Operations
 
@@ -1744,20 +1744,20 @@ Article 27(a) covers three operations, each with different implications:
     │               │               │                    │
     │ Request       │               │                    │
     │ Revocation    │               │                    │
-    │-------------->│               │                    │
+    │--------------►│               │                    │
     │               │               │                    │
     │               │ Notify        │                    │
     │               │ Revocation    │                    │
-    │               │-------------->│                    │
+    │               │--------------►│                    │
     │               │               │                    │
     │               │               │ Update Status      │
-    │               │               │------------------->│
+    │               │               │-------------------►│
     │               │               │                    │
     │               │ Local Wipe    │      Mark Revoked  │
-    │               │<--------------│<-------------------│
+    │               │◄--------------│◄-------------------│
     │               │               │                    │
     │ Confirmation  │               │                    │
-    │<--------------│               │                    │
+    │◄--------------│               │                    │
     │               │               │                    │
 ```
 
@@ -1789,13 +1789,13 @@ Article 27(a) covers three operations, each with different implications:
 5. **User Channels**: Require minimum 2 revocation channels (app + portal)
 6. **Audit Trail**: Log all revocation events with timestamps
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 27(b)](sources/32018R0389.md#article-27) — Secure re-use
 
-> "(b) where the payment service provider distributes reusable authentication devices and software, the secure re-use of a device or software is established, documented and implemented before making it available to another payment services user;"
+► "(b) where the payment service provider distributes reusable authentication devices and software, the secure re-use of a device or software is established, documented and implemented before making it available to another payment services user;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1809,7 +1809,7 @@ Article 27(a) covers three operations, each with different implications:
 
 #### [Article 27(c)](sources/32018R0389.md#article-27) — Deactivation in systems
 
-> "(c) the deactivation or revocation of information related to personalised security credentials stored in the payment service provider's systems and databases and, where relevant, in public repositories."
+► "(c) the deactivation or revocation of information related to personalised security credentials stored in the payment service provider's systems and databases and, where relevant, in public repositories."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -1823,8 +1823,8 @@ Article 27(a) covers three operations, each with different implications:
 2. Reject VPs using revoked attestations
 3. Optionally publish revocation status (status list / OCSP)
 
-<details>
-<summary><strong>🔍 Deep-Dive: PSP Backend Deactivation & Status Management</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: PSP Backend Deactivation & Status Management◄/strong►◄/summary►
 
 ##### Core Requirement: Complete Backend Invalidation
 
@@ -1925,22 +1925,22 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
       │                   │                             │
       │ VP with           │                             │
       │ attestation       │                             │
-      │------------------>│                             │
+      │------------------►│                             │
       │                   │                             │
       │                   │ Check status                │
-      │                   │-------------------->        │
+      │                   │--------------------►        │
       │                   │                             │
       │                   │ Status: REVOKED             │
-      │                   │<--------------------        │
+      │                   │◄--------------------        │
       │                   │                             │
       │ Reject:           │                             │
       │ "Attestation      │                             │
       │  revoked"         │                             │
-      │<------------------│                             │
+      │◄------------------│                             │
       │                   │                             │
       │                   │ Log: rejected               │
       │                   │ attempt                     │
-      │                   │-------------------->        │
+      │                   │--------------------►        │
       │                   │                             │
 ```
 
@@ -1979,7 +1979,7 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 | **27(b)** | Secure re-use of devices | ➖ N/A (per-user binding) |
 | **27(c)** | Deactivation in PSP systems | ❌ PSP Obligation |
 
-</details>
+◄/details►
 
 ---
 
@@ -1987,9 +1987,9 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 # PART B: TRANSACTION AUTHENTICATION (Usage Phase)
 ===============================================================================
 
-> *This part covers the **usage phase** of SCA attestations — when the user authenticates for payment transactions.*
->
-> **PSD2 Article 97** + **RTS Chapter II** (Articles 1-9): Strong customer authentication requirements
+► *This part covers the **usage phase** of SCA attestations — when the user authenticates for payment transactions.*
+►
+► **PSD2 Article 97** + **RTS Chapter II** (Articles 1-9): Strong customer authentication requirements
 
 ---
 
@@ -1998,13 +1998,13 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 
 ## 5.1 When SCA is Required
 
-> **Regulatory Basis**:
-> - [PSD2 Directive Art. 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001): "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online; (b) initiates an electronic payment transaction; (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
-> - [RTS Art. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1): Subject matter  
-> "Member States shall ensure that a payment service provider applies strong customer authentication where the payer:
-> (a) accesses its payment account online;
-> (b) initiates an electronic payment transaction;
-> (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
+► **Regulatory Basis**:
+► - [PSD2 Directive Art. 97(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.001): "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online; (b) initiates an electronic payment transaction; (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
+► - [RTS Art. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_1): Subject matter  
+► "Member States shall ensure that a payment service provider applies strong customer authentication where the payer:
+► (a) accesses its payment account online;
+► (b) initiates an electronic payment transaction;
+► (c) carries out any action through a remote channel which may imply a risk of payment fraud or other abuses."
 
 **Core Requirement**: Article 97(1) defines the **three mandatory triggers** for SCA. When any of these scenarios occurs, the PSP **must** apply SCA unless a specific exemption applies.
 
@@ -2096,7 +2096,7 @@ UK Finance and EBA guidance identify specific actions that trigger SCA under Art
 | **Authorize transaction** | PSP | Based on successful verification |
 | **Liability for unauthorized tx** | PSP | Per PSD2 Arts. 73-74 |
 
-> **Key Insight**: While the **Wallet executes SCA**, the **PSP retains liability** and decides whether to require it. TS12 enables "Embedded SCA" where authentication happens in the Wallet, but liability cannot be delegated.
+► **Key Insight**: While the **Wallet executes SCA**, the **PSP retains liability** and decides whether to require it. TS12 enables "Embedded SCA" where authentication happens in the Wallet, but liability cannot be delegated.
 
 ---
 
@@ -2116,7 +2116,7 @@ The PSP may choose **not** to trigger Wallet-based SCA if an exemption applies:
 | **Art. 17** | Secure corporate | Dedicated B2B protocols | ✅ Not consumer |
 | **Art. 18** | Transaction Risk Analysis | Fraud rate thresholds (0.13%/0.06%/0.01%) | ✅ PSP discretion |
 
-> **Note**: Even when an exemption is available, the **PSP may still choose to require SCA**. The issuer always has final authority.
+► **Note**: Even when an exemption is available, the **PSP may still choose to require SCA**. The issuer always has final authority.
 
 ---
 
@@ -2186,7 +2186,7 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 | **Card payment specifics** | EMV/3DS integration | Card-based flows may need additional schemas | 🔄 Monitored |
 | **Bulk payments** | Batch authorization | Corporate use case not fully addressed | 🔄 Art. 17 exemption |
 
-> ⚠️ **Gap Identified**: The [ETPPA](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15045566) (European Third Party Provider Association) has requested a dedicated **`urn:eudi:sca:consents:1`** transaction type for AISP consent capture. This is **not yet in TS12 v1.0**. TPPs seeking to perform Embedded SCA for account information consent should monitor future TS12 versions.
+► ⚠️ **Gap Identified**: The [ETPPA](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15045566) (European Third Party Provider Association) has requested a dedicated **`urn:eudi:sca:consents:1`** transaction type for AISP consent capture. This is **not yet in TS12 v1.0**. TPPs seeking to perform Embedded SCA for account information consent should monitor future TS12 versions.
 
 ---
 
@@ -2206,12 +2206,12 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 
 ## 6.1 Authentication Code Requirements
 
-> **Regulatory Basis**:
-> - [RTS Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4): Authentication code
+► **Regulatory Basis**:
+► - [RTS Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_4): Authentication code
 
 #### [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.001) — Two or more elements generating an authentication code
 
-> "Where payment service providers apply strong customer authentication in accordance with Article 97(1) of Directive (EU) 2015/2366, the authentication shall be based on two or more elements which are categorised as knowledge, possession and inherence and shall result in the generation of an authentication code."
+► "Where payment service providers apply strong customer authentication in accordance with Article 97(1) of Directive (EU) 2015/2366, the authentication shall be based on two or more elements which are categorised as knowledge, possession and inherence and shall result in the generation of an authentication code."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2244,15 +2244,15 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 | iOS | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift) |
 | Android | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt) |
 
-> ⚠️ **Format Note**: The `amr` claim is **SD-JWT-VC only** (via KB-JWT). TS12 v1.0 does not specify an equivalent mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC support should monitor TS12 updates.
+► ⚠️ **Format Note**: The `amr` claim is **SD-JWT-VC only** (via KB-JWT). TS12 v1.0 does not specify an equivalent mechanism for **mDOC (ISO 18013-5)**. PSPs requiring mDOC support should monitor TS12 updates.
 
 ---
 
 #### Article 4(1) continued — One-time use
 
-> **Note**: This is the second paragraph of Article 4(1), not a separate paragraph.
+► **Note**: This is the second paragraph of Article 4(1), not a separate paragraph.
 
-> "The authentication code shall be only accepted once by the payment service provider when the payer uses the authentication code to access its payment account online, to initiate an electronic payment transaction or to carry out any action through a remote channel which may imply a risk of payment fraud or other abuses."
+► "The authentication code shall be only accepted once by the payment service provider when the payer uses the authentication code to access its payment account online, to initiate an electronic payment transaction or to carry out any action through a remote channel which may imply a risk of payment fraud or other abuses."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2286,13 +2286,13 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 - iOS: [`PresentationSession.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-presentation/Sources/Interactor/PresentationInteractor.swift) — generates unique response per presentation
 - Android: [`PresentationInteractor.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/interactor/PresentationControllerInteractor.kt) — VP Token assembly
 
-> ⚠️ **Format Note**: The `jti`, `nonce`, and `iat` claims are in the **KB-JWT (SD-JWT-VC only)**. For **mDOC**, the DeviceResponse signature provides cryptographic uniqueness, but TS12 v1.0 does not specify mDOC-specific claim equivalents.
+► ⚠️ **Format Note**: The `jti`, `nonce`, and `iat` claims are in the **KB-JWT (SD-JWT-VC only)**. For **mDOC**, the DeviceResponse signature provides cryptographic uniqueness, but TS12 v1.0 does not specify mDOC-specific claim equivalents.
 
 ---
 
 #### [Article 4(2)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — Factor derivation protection
 
-> "For the purpose of paragraph 1, payment service providers shall adopt security measures ensuring that each of the following requirements is met: (a) no information on any of the elements referred to in paragraph 1 can be derived from the disclosure of the authentication code;"
+► "For the purpose of paragraph 1, payment service providers shall adopt security measures ensuring that each of the following requirements is met: (a) no information on any of the elements referred to in paragraph 1 can be derived from the disclosure of the authentication code;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2301,8 +2301,8 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Factor Derivation Protection</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Factor Derivation Protection◄/strong►◄/summary►
 
 ##### Core Requirement: Zero Information Leakage
 
@@ -2393,7 +2393,7 @@ The `amr` (Authentication Methods References) claim in KB-JWT is the **only elem
 | `"fpt"` | User used fingerprint | The fingerprint minutiae |
 | `"hwk"` | Hardware key was used | The private key material |
 
-> **Privacy Consideration**: The `amr` claim reveals which authentication method was used. This is intentional — PSPs need to know that valid SCA elements were used. However, it could be considered a minor privacy leakage (e.g., revealing that user has Face ID capability).
+► **Privacy Consideration**: The `amr` claim reveals which authentication method was used. This is intentional — PSPs need to know that valid SCA elements were used. However, it could be considered a minor privacy leakage (e.g., revealing that user has Face ID capability).
 
 ##### Threat Model: Derivation Attacks
 
@@ -2430,7 +2430,7 @@ The `amr` (Authentication Methods References) claim in KB-JWT is the **only elem
 3. **WSCD Isolation**: Reference WIAM_20 as the mechanism ensuring private key non-extractability
 4. **Audit Evidence**: PSPs can cite VP Token structure as evidence that no element values are disclosed
 
-</details>
+◄/details►
 
 **Context**: The VP Token reveals:
 - Factor names in `amr` (e.g., "pin", "face", "hwk") — **not** the PIN value or biometric template
@@ -2443,7 +2443,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 #### [Article 4(2)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — No code re-generation
 
-> "(b) it is not possible to generate a new authentication code based on the knowledge of any other authentication code previously generated;"
+► "(b) it is not possible to generate a new authentication code based on the knowledge of any other authentication code previously generated;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2452,8 +2452,8 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Code Re-generation Prevention</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Code Re-generation Prevention◄/strong►◄/summary►
 
 ##### Core Requirement: Cryptographic Unpredictability
 
@@ -2524,7 +2524,7 @@ Signature(m) = (r, s) where:
 | **k from hardware RNG** | iOS/Android SE uses certified TRNG |
 | **k never reused** | Reuse would leak private key — hardware prevents this |
 
-> **Critical Security Note**: If `k` is ever reused or predictable, the private key can be extracted (Sony PlayStation 3 hack, 2010). iOS Secure Enclave and Android StrongBox hardware ensure k is always freshly random.
+► **Critical Security Note**: If `k` is ever reused or predictable, the private key can be extracted (Sony PlayStation 3 hack, 2010). iOS Secure Enclave and Android StrongBox hardware ensure k is always freshly random.
 
 ##### JWT ID (`jti`) Uniqueness
 
@@ -2621,7 +2621,7 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 3. **Nonce Freshness**: Specify that RP-provided `nonce` must be cryptographically random and single-use
 4. **mDOC Equivalence**: Document that mDOC DeviceResponse provides equivalent replay protection
 
-</details>
+◄/details►
 
 **Context**: Even with knowledge of a previous VP Token:
 - The `jti` is fresh (cryptographically random)
@@ -2632,7 +2632,7 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 
 #### [Article 4(2)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.002) — Forgery resistance
 
-> "(c) the authentication code cannot be forged."
+► "(c) the authentication code cannot be forged."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2642,8 +2642,8 @@ EUDI Wallet uses **random k** from hardware RNG (SE/StrongBox), which is the pre
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Forgery Resistance</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Forgery Resistance◄/strong►◄/summary►
 
 ##### Core Requirement: Computational Infeasibility of Forgery
 
@@ -2712,7 +2712,7 @@ The security rests on the **Elliptic Curve Discrete Logarithm Problem (ECDLP)**:
 | **Best known algorithm** | Pollard's rho: O(√n) operations |
 | **P-256 security level** | ~2¹²⁸ operations (128-bit security) |
 
-> **Practical Interpretation**: Breaking P-256 ECDSA would require more energy than exists in the solar system. This is not a future concern.
+► **Practical Interpretation**: Breaking P-256 ECDSA would require more energy than exists in the solar system. This is not a future concern.
 
 ##### Multi-Layer Verification Flow
 
@@ -2830,7 +2830,7 @@ This public key is trusted because:
 4. **Key Rotation Policy**: Specify maximum lifetime for PSP issuer keys
 5. **Verification Guidance**: Provide reference code for PSP signature verification
 
-</details>
+◄/details►
 
 **Context**: Forgery prevention relies on:
 1. **Attestation verification**: PSP verifies the SCA attestation was issued by a trusted PSP (itself) and is valid
@@ -2841,7 +2841,7 @@ This public key is trusted because:
 
 #### [Article 4(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Non-disclosure of incorrect element
 
-> "Payment service providers shall have measures in place ensuring that: (a) where any of the elements referred to in paragraph 1 have failed, it shall not be possible to identify which of those elements was incorrect;"
+► "Payment service providers shall have measures in place ensuring that: (a) where any of the elements referred to in paragraph 1 have failed, it shall not be possible to identify which of those elements was incorrect;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2878,7 +2878,7 @@ guard previousPin == uiPinInputField else {
 }
 ```
 
-> ❌ **Finding**: Both iOS and Android reference implementations display **"Pins do not match"** — this explicitly reveals that the **PIN** (knowledge element) was incorrect, violating Article 4(3)(a).
+► ❌ **Finding**: Both iOS and Android reference implementations display **"Pins do not match"** — this explicitly reveals that the **PIN** (knowledge element) was incorrect, violating Article 4(3)(a).
 
 ---
 
@@ -2909,13 +2909,13 @@ For PSD2-compliant wallet deployments, implementations MUST NOT reveal which aut
 
 **Rationale**: Article 4(3)(a) exists to prevent attackers from learning which authentication factor they need to compromise. If a system reveals "PIN incorrect", an attacker who has already cloned the device (possession) now knows they only need to brute-force the PIN. Generic messages provide no such guidance.
 
-> ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. OS biometric APIs are compliant by design, but wallet-level PIN validation must also implement this pattern. This gap should be addressed in wallet implementations intended for PSD2-regulated payment use cases.
+► ℹ️ **Note**: There is no explicit ARF HLR requiring generic failure messages. OS biometric APIs are compliant by design, but wallet-level PIN validation must also implement this pattern. This gap should be addressed in wallet implementations intended for PSD2-regulated payment use cases.
 
 ---
 
 #### [Article 4(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Maximum attempts and lockout
 
-> "(b) the number of failed authentication attempts that can take place consecutively, after which the actions referred to in Article 97(1) of Directive (EU) 2015/2366 shall be temporarily or permanently blocked, shall not exceed five within a given period of time;"
+► "(b) the number of failed authentication attempts that can take place consecutively, after which the actions referred to in Article 97(1) of Directive (EU) 2015/2366 shall be temporarily or permanently blocked, shall not exceed five within a given period of time;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -2938,7 +2938,7 @@ For PSD2-compliant wallet deployments, implementations MUST NOT reveal which aut
 
 **Android** — `QuickPinInteractor.kt` (lines 92-109):
 ```kotlin
-override fun isCurrentPinValid(pin: String): Flow<QuickPinInteractorPinValidPartialState> =
+override fun isCurrentPinValid(pin: String): Flow◄QuickPinInteractorPinValidPartialState► =
     flow {
         if (pinStorageController.isPinValid(pin)) {
             emit(QuickPinInteractorPinValidPartialState.Success)
@@ -2955,7 +2955,7 @@ override fun isCurrentPinValid(pin: String): Flow<QuickPinInteractorPinValidPart
 
 **iOS** — `QuickPinInteractor.swift` (lines 42-47):
 ```swift
-public func isPinValid(pin: String) -> QuickPinPartialState {
+public func isPinValid(pin: String) -► QuickPinPartialState {
     if self.isCurrentPinValid(pin: pin) {
         return .success
     } else {
@@ -2984,7 +2984,7 @@ class PinLockoutController {
     private var lockoutUntil: Long = 0
     
     fun validatePin(pin: String): PinValidationResult {
-        if (System.currentTimeMillis() < lockoutUntil) {
+        if (System.currentTimeMillis() ◄ lockoutUntil) {
             return PinValidationResult.Locked(
                 remainingMs = lockoutUntil - System.currentTimeMillis()
             )
@@ -2992,7 +2992,7 @@ class PinLockoutController {
         
         if (!pinStorageController.isPinValid(pin)) {
             failedAttempts++
-            if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+            if (failedAttempts ►= MAX_FAILED_ATTEMPTS) {
                 lockoutUntil = System.currentTimeMillis() + LOCKOUT_DURATION_MS
                 failedAttempts = 0
                 return PinValidationResult.Locked(remainingMs = LOCKOUT_DURATION_MS)
@@ -3006,7 +3006,7 @@ class PinLockoutController {
 }
 ```
 
-> ⚠️ **Critical**: This gap affects **both** SCA (payment authentication) **and** PID (identification) use cases. The wallet PIN is a PSC under PSD2 Art. 4(31) and must be protected against brute-force attacks per Art. 4(3)(b) and CIR 2015/1502.
+► ⚠️ **Critical**: This gap affects **both** SCA (payment authentication) **and** PID (identification) use cases. The wallet PIN is a PSC under PSD2 Art. 4(31) and must be protected against brute-force attacks per Art. 4(3)(b) and CIR 2015/1502.
 
 
 
@@ -3014,7 +3014,7 @@ class PinLockoutController {
 
 #### [Article 4(3)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Session protection
 
-> "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties in accordance with the requirements in Chapter V;"
+► "(c) the communication sessions are protected against the capture of authentication data transmitted during the authentication and against manipulation by unauthorised parties in accordance with the requirements in Chapter V;"
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3024,8 +3024,8 @@ class PinLockoutController {
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Session Protection</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Session Protection◄/strong►◄/summary►
 
 ##### Core Requirement: End-to-End Session Security
 
@@ -3117,7 +3117,7 @@ Article 4(3)(c) mandates protection against **capture** (eavesdropping) and **ma
 │  VERIFICATION:                                                              │
 │  • nonce mismatch → REJECT (replay/confusion attack)                        │
 │  • aud mismatch → REJECT (redirect attack)                                  │
-│  • iat > 5 min → REJECT (stale presentation)                                │
+│  • iat ► 5 min → REJECT (stale presentation)                                │
 │                                                                             │
 └-----------------------------------------------------------------------------┘
 ```
@@ -3152,7 +3152,7 @@ Article 4(3)(c) mandates protection against **capture** (eavesdropping) and **ma
 | **Cross-device (QR)** | Encrypted channel establishment | Device proximity not verified |
 | **Cross-device (BLE)** | Encrypted BLE channel | Requires BLE security mode 1 level 4 |
 
-> **Note**: Cross-device flows (e.g., QR code scanned from desktop) have additional attack surface. The session binding via nonce/aud helps, but device proximity is not cryptographically verified.
+► **Note**: Cross-device flows (e.g., QR code scanned from desktop) have additional attack surface. The session binding via nonce/aud helps, but device proximity is not cryptographically verified.
 
 ##### Encrypted Authorization Request (JAR)
 
@@ -3202,7 +3202,7 @@ TS12 §3.5 supports encrypted requests for additional protection:
 4. **Session Validity**: Specify maximum session lifetime (e.g., 5 minutes from nonce generation)
 5. **Cross-Device Security**: Document additional risks and mitigations for QR-initiated flows
 
-</details>
+◄/details►
 
 **Context**: OID4VP inherits security from HTTPS (TLS 1.2+). Additionally, TS12 allows optional encryption of request/response payloads for additional protection.
 
@@ -3210,7 +3210,7 @@ TS12 §3.5 supports encrypted requests for additional protection:
 
 #### [Article 4(3)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#004.003) — Session timeout
 
-> "(d) the maximum time without activity by the payer after being authenticated for accessing its payment account online shall not exceed 5 minutes."
+► "(d) the maximum time without activity by the payer after being authenticated for accessing its payment account online shall not exceed 5 minutes."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3219,8 +3219,8 @@ TS12 §3.5 supports encrypted requests for additional protection:
 
 **Status**: ❌ PSP Obligation
 
-<details>
-<summary><strong>🔍 Deep-Dive: Session Timeout (5 Minutes)</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Session Timeout (5 Minutes)◄/strong►◄/summary►
 
 ##### Core Requirement: Inactivity-Based Session Termination
 
@@ -3277,7 +3277,7 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 | **Legal persons** | Dedicated corporate payment processes | RTS Art. 17 |
 | **Read-only display** | Balance/transaction viewing (Art. 10 exempt) | EBA Q&A 2018/4039 |
 
-> **Important**: The 5-minute rule applies when **accessing a payment account online** after SCA. If the user is in the middle of a transaction (actively inputting data), activity resets the timer.
+► **Important**: The 5-minute rule applies when **accessing a payment account online** after SCA. If the user is in the middle of a transaction (actively inputting data), activity resets the timer.
 
 ##### OWASP Session Management Alignment
 
@@ -3335,7 +3335,7 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 | **Heartbeat with server** | Client sends heartbeat; server tracks last activity | ⚠️ Medium |
 | **Client-side only** | JavaScript timer with logout | ❌ Low (bypassable) |
 
-> **Best Practice**: Combine server-side enforcement with client-side warning (e.g., "Session expiring in 1 minute").
+► **Best Practice**: Combine server-side enforcement with client-side warning (e.g., "Session expiring in 1 minute").
 
 ##### Threat Model: Session Timeout Attacks
 
@@ -3371,18 +3371,18 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 4. **Absolute Timeout**: Recommend PSPs implement absolute timeout (e.g., 4 hours regardless of activity)
 5. **Exemption Awareness**: Document Art. 10 / Art. 17 exemptions for PSP implementers
 
-</details>
+◄/details►
 
 **Context**: TS12 does not specify session timeout. This is a PSP-side implementation requirement. After authentication, the PSP session (not the wallet session) must timeout after 5 minutes of inactivity.---
 
 ## 6.2 Knowledge Element
 
-> **Regulatory Basis**:
-> - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6): Requirements of the elements categorised as knowledge
+► **Regulatory Basis**:
+► - [RTS Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_6): Requirements of the elements categorised as knowledge
 
 #### [Article 6(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.001)
 
-> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
+► "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as knowledge are uncovered by, or disclosed to, unauthorised parties."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3392,8 +3392,8 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Knowledge Element Protection</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Knowledge Element Protection◄/strong►◄/summary►
 
 ##### What Qualifies as a Knowledge Element (EBA Opinion 2019)
 
@@ -3407,7 +3407,7 @@ The [EBA Opinion on SCA Elements](https://www.eba.europa.eu/publications-and-med
 | Knowledge-based challenge answer | OTP (is possession, not knowledge) |
 | Memorized swipe pattern | Card number |
 
-> **Key Insight**: The EBA emphasizes that card details (PAN, expiry, CVV) are **NOT** valid SCA elements — they can be easily copied and do not prove "something only the user knows."
+► **Key Insight**: The EBA emphasizes that card details (PAN, expiry, CVV) are **NOT** valid SCA elements — they can be easily copied and do not prove "something only the user knows."
 
 ##### Threat Model: Knowledge Element Attacks
 
@@ -3426,12 +3426,12 @@ The [EBA Opinion on SCA Elements](https://www.eba.europa.eu/publications-and-med
 | Standard | Min Length | Complexity Rules | Lockout | Entropy Guidance |
 |----------|-----------|------------------|---------|------------------|
 | **PSD2 RTS** | Not specified | Not specified | Required (Art. 4(3)(b)) | None |
-| **NIST 800-63B** | 6 digits (PIN) / 8 chars (MFA) | **No** — length > complexity | Recommended | Blocklist common PINs |
+| **NIST 800-63B** | 6 digits (PIN) / 8 chars (MFA) | **No** — length ► complexity | Recommended | Blocklist common PINs |
 | **EUDI Wallet ARF** | 6 digits | Alphanumeric optional | Required | None |
 | **Apple iOS** | 6 digits (default) | Alphanumeric available | Device-level | Sequential detection |
 | **Android** | 4 digits (min) | Pattern/alphanumeric | Device-level | Pattern complexity score |
 
-> **NIST 800-63B Key Insight**: "Longer passwords contribute more to security than complex ones." NIST explicitly advises **against** composition rules (requiring uppercase, numbers, symbols) as they lead to predictable patterns. Instead, recommend length and blocklist common choices.
+► **NIST 800-63B Key Insight**: "Longer passwords contribute more to security than complex ones." NIST explicitly advises **against** composition rules (requiring uppercase, numbers, symbols) as they lead to predictable patterns. Instead, recommend length and blocklist common choices.
 
 ##### PIN Validation Flow (EUDI Wallet)
 
@@ -3508,7 +3508,7 @@ Legend:
    - Device possession + issuer verification, OR
    - WSCD re-initialization with full re-issuance
 
-</details>
+◄/details►
 
 **Context**: The user's PIN (knowledge element) is:
 - Entered locally on the device with masked input
@@ -3520,7 +3520,7 @@ Legend:
 
 #### [Article 6(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#006.002)
 
-> "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
+► "The use by the payer of those elements shall be subject to mitigation measures in order to prevent their disclosure to unauthorised parties."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3529,8 +3529,8 @@ Legend:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Knowledge Element Disclosure Prevention</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Knowledge Element Disclosure Prevention◄/strong►◄/summary►
 
 ##### Core Requirement: Mitigation Measures Against Disclosure
 
@@ -3609,7 +3609,7 @@ Article 6(2) mandates that PSPs implement **mitigation measures** to prevent kno
 │   │                                                                   │     │
 │   │     Enter your 6-digit PIN                                        │     │
 │   │                                                                   │     │
-│   │        ┌-----------------------------┐                           │      │
+│   │        ┌-----------------------------┐                            │     │
 │   │        │    • • • • • •              │  ← Masked display          │     │
 │   │        └-----------------------------┘                           │      │
 │   │                                                                   │     │
@@ -3646,7 +3646,7 @@ NIST guidelines inform best practices for knowledge element protection:
 | **Secure hashing (Argon2id)** | Implied | ✅ TEE/SE uses hardware-backed hash |
 | **Rate limiting** | Required | ✅ Lockout after N failures |
 
-> **NIST Insight**: NIST discourages overly complex password rules as they lead to predictable patterns. For PINs combined with other SCA factors, simplicity is acceptable because possession provides additional security.
+► **NIST Insight**: NIST discourages overly complex password rules as they lead to predictable patterns. For PINs combined with other SCA factors, simplicity is acceptable because possession provides additional security.
 
 ##### EBA Guidance on Disclosure Prevention
 
@@ -3659,7 +3659,7 @@ The EBA has clarified Article 6(2) requirements:
 | "Mitigate risk of disclosure" | Masked input, secure keyboard, attempt limits |
 | "Not about voluntary disclosure" | User education complementary |
 
-> **EBA Q&A 4039**: "The focus of Article 6(2) is on the integrity of the knowledge element during the authentication process itself." Broader risks like phishing-induced disclosure are addressed by transaction monitoring (Art. 2).
+► **EBA Q&A 4039**: "The focus of Article 6(2) is on the integrity of the knowledge element during the authentication process itself." Broader risks like phishing-induced disclosure are addressed by transaction monitoring (Art. 2).
 
 ##### Phishing Countermeasures
 
@@ -3713,7 +3713,7 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 5. **Common PIN Blocklist**: Recommend blocking trivially guessable PINs
 6. **FLAG_SECURE**: Mandate screenshot/recording protection during PIN entry
 
-</details>
+◄/details►
 
 
 ---
@@ -3721,12 +3721,12 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 
 ## 6.3 Possession Element
 
-> **Regulatory Basis**:
-> - [RTS Art. 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7): Requirements of elements categorised as possession
+► **Regulatory Basis**:
+► - [RTS Art. 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_7): Requirements of elements categorised as possession
 
 #### [Article 7(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.001)
 
-> "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as possession are used by unauthorised parties."
+► "Payment service providers shall adopt measures to mitigate the risk that the elements of strong customer authentication categorised as possession are used by unauthorised parties."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3736,8 +3736,8 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Possession Element (Cryptographic Key) Protection</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Possession Element (Cryptographic Key) Protection◄/strong►◄/summary►
 
 ##### What Qualifies as a Possession Element (EBA Opinion 2019)
 
@@ -3751,7 +3751,7 @@ The EBA clarifies that "possession" means "something only the user possesses." A
 | Mobile app with protected key in TEE/SE | App without hardware key protection |
 | FIDO authenticator | Email-based OTP (possession of email, not device) |
 
-> **EBA Key Insight**: Mobile apps can serve as possession elements **only if** authentication data is encrypted with a key held in a hardware secure element (TEE/SE), preventing malware from copying the credential.
+► **EBA Key Insight**: Mobile apps can serve as possession elements **only if** authentication data is encrypted with a key held in a hardware secure element (TEE/SE), preventing malware from copying the credential.
 
 ##### EUDI Wallet Secure Architecture: WSCD & WSCA
 
@@ -3802,7 +3802,7 @@ WSCA = Wallet Secure Cryptographic Application (manages key operations)
 | **Local TEE** | ARM TrustZone | Medium-High | Wide device support | Software isolation, not dedicated chip |
 | **Software-only** | Encrypted keystore | Low | Universal support | Vulnerable to OS compromise |
 
-> **EUDI Wallet ARF Requirement (WIAM_20)**: Private keys MUST be non-extractable and protected by WSCD. Software-only WSCD is permitted only as fallback with reduced LoA.
+► **EUDI Wallet ARF Requirement (WIAM_20)**: Private keys MUST be non-extractable and protected by WSCD. Software-only WSCD is permitted only as fallback with reduced LoA.
 
 ##### Hardware Security Comparison: iOS vs Android
 
@@ -3894,11 +3894,11 @@ EUDI Wallet's possession element architecture aligns with FIDO2/WebAuthn:
 1. **Minimum WSCD Level**: Mandate TEE or higher for SCA; define fallback for legacy devices
 2. **Key Non-Extractability**: Require hardware-enforced non-extractability (not just software flag)
 3. **Key Attestation**: Recommend (not require) PSPs verify key attestation for high-value transactions
-4. **Revocation SLA**: Define maximum time for WUA revocation to propagate (e.g., < 1 hour)
+4. **Revocation SLA**: Define maximum time for WUA revocation to propagate (e.g., ◄ 1 hour)
 5. **Recovery Documentation**: Explicitly state that wallet recovery does NOT transfer private keys
 6. **`hwk` AMR Claim**: Adopt OIDC `hwk` (hardware key) AMR value when possession is StrongBox/SE-backed
 
-</details>
+◄/details►
 
 **Context**:
 - **Loss**: User contacts Wallet Provider (or PSP) to revoke SCA attestation → key becomes invalid
@@ -3920,7 +3920,7 @@ This means the old possession element (lost device's key) is permanently invalid
 
 #### [Article 7(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#007.002)
 
-> "The use by the payer of those elements shall be subject to measures designed to prevent replication of the elements."
+► "The use by the payer of those elements shall be subject to measures designed to prevent replication of the elements."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -3930,8 +3930,8 @@ This means the old possession element (lost device's key) is permanently invalid
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Possession Element Anti-Cloning Protection</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Possession Element Anti-Cloning Protection◄/strong►◄/summary►
 
 ##### Core Requirement: Prevent Replication
 
@@ -3986,7 +3986,7 @@ Article 7(2) mandates that possession elements must be protected against **repli
 | **Software Keystore** | OS-protected file | ⚠️ Partial | Medium |
 | **Plaintext storage** | Unprotected file | ❌ No | None |
 
-> **EBA Guidance**: "Data used as a possession element can be copied unless held within a secure element." The RTS requires hardware protection for high assurance.
+► **EBA Guidance**: "Data used as a possession element can be copied unless held within a secure element." The RTS requires hardware protection for high assurance.
 
 ##### EUDI Wallet Anti-Cloning Implementation
 
@@ -4052,7 +4052,7 @@ FIDO standards provide proven anti-cloning mechanisms:
 | **Attestation** | Proves hardware security level | WUA contains key attestation |
 | **Cloning detection** | Counter mismatch = cloned | PSP can track signature patterns |
 
-> **FIDO Insight**: FIDO authenticators prevent cloning by generating keys internally and never exposing them. The counter mechanism allows relying parties to detect if an authenticator has been cloned (counter value divergence).
+► **FIDO Insight**: FIDO authenticators prevent cloning by generating keys internally and never exposing them. The counter mechanism allows relying parties to detect if an authenticator has been cloned (counter value divergence).
 
 ##### EBA Guidance on Possession Element Protection
 
@@ -4112,18 +4112,18 @@ FIDO standards provide proven anti-cloning mechanisms:
 5. **Recovery Protocol**: Document that recovery requires key regeneration (not transfer)
 6. **Minimum Certification**: Reference CC EAL4+ for SE components
 
-</details>
+◄/details►
 
 ---
 
 ## 6.4 Inherence Element
 
-> **Regulatory Basis**:
-> - [RTS Art. 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8): Requirements of devices and software linked to elements categorised as inherence
+► **Regulatory Basis**:
+► - [RTS Art. 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_8): Requirements of devices and software linked to elements categorised as inherence
 
 #### [Article 8(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.001)
 
-> "Payment service providers shall adopt measures to mitigate the risk that the authentication elements categorised as inherence and read by access devices and software provided to the payer are uncovered by unauthorised parties. At a minimum, the payment service providers shall ensure that those access devices and software have a very low probability of an unauthorised party being authenticated as the payer."
+► "Payment service providers shall adopt measures to mitigate the risk that the authentication elements categorised as inherence and read by access devices and software provided to the payer are uncovered by unauthorised parties. At a minimum, the payment service providers shall ensure that those access devices and software have a very low probability of an unauthorised party being authenticated as the payer."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4132,8 +4132,8 @@ FIDO standards provide proven anti-cloning mechanisms:
 
 **Status**: ✅ Fully Supported (Delegated to OS)
 
-<details>
-<summary><strong>🔍 Deep-Dive: Inherence Element (Biometric) Security</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Inherence Element (Biometric) Security◄/strong►◄/summary►
 
 ##### What Qualifies as an Inherence Element (EBA Opinion 2019)
 
@@ -4149,7 +4149,7 @@ The EBA clarifies that "inherence" means "something the user is" and includes bo
 | Keystroke dynamics | Known answers to questions |
 | Heart rate pattern | Card CVV |
 
-> **EBA Key Concern**: If a device allows multiple users to enroll biometrics (e.g., spouse's fingerprint), and the biometric is not linked to the user's official identity established during onboarding, it may **NOT** qualify as a valid inherence factor under Article 8.
+► **EBA Key Concern**: If a device allows multiple users to enroll biometrics (e.g., spouse's fingerprint), and the biometric is not linked to the user's official identity established during onboarding, it may **NOT** qualify as a valid inherence factor under Article 8.
 
 ##### "Very Low Probability" — FAR Thresholds
 
@@ -4160,7 +4160,7 @@ Article 8(1) requires a **"very low probability"** of unauthorized authenticatio
 | **Apple Face ID** | Face | 1 in 1,000,000 | [Apple Platform Security](https://support.apple.com/guide/security) |
 | **Apple Touch ID** | Fingerprint | 1 in 50,000 | Apple Platform Security |
 | **Android Class 3** | Any | ≤ 1 in 50,000 (0.002%) | [Android CDD](https://source.android.com/docs/compatibility/cdd) |
-| **FIDO Biometric Cert** | Any | < 1 in 10,000 | [FIDO Alliance](https://fidoalliance.org/certification/biometric-component-certification/) |
+| **FIDO Biometric Cert** | Any | ◄ 1 in 10,000 | [FIDO Alliance](https://fidoalliance.org/certification/biometric-component-certification/) |
 | **FIDO (self-attested)** | Any | 1:25K to 1:100K optional | FIDO Certification Requirements |
 
 ##### Key Biometric Metrics
@@ -4207,10 +4207,10 @@ Article 8(1) requires a **"very low probability"** of unauthorized authenticatio
 | Class | Security Level | FAR | TEE Required | PAD Required | SCA Suitable? |
 |-------|---------------|-----|--------------|--------------|---------------|
 | **Class 3 (Strong)** | Highest | ≤ 1:50,000 | Yes | Yes | ✅ Yes |
-| **Class 2 (Weak)** | Medium | > 1:50,000 | Optional | No | ❌ No |
+| **Class 2 (Weak)** | Medium | ► 1:50,000 | Optional | No | ❌ No |
 | **Class 1 (Convenience)** | Low | Any | No | No | ❌ No |
 
-> **Critical**: EUDI Wallet MUST use `BiometricManager.Authenticators.BIOMETRIC_STRONG` (Class 3) for SCA compliance.
+► **Critical**: EUDI Wallet MUST use `BiometricManager.Authenticators.BIOMETRIC_STRONG` (Class 3) for SCA compliance.
 
 ##### Biometric Validation Flow (EUDI Wallet)
 
@@ -4258,8 +4258,8 @@ Legend:
 
 | Platform | Component | Source | Security Level |
 |----------|-----------|--------|----------------|
-| **iOS** | Face ID API | `LAContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` | FAR < 1:1,000,000 |
-| **iOS** | Touch ID API | `LAContext.evaluatePolicy` | FAR < 1:50,000 |
+| **iOS** | Face ID API | `LAContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` | FAR ◄ 1:1,000,000 |
+| **iOS** | Touch ID API | `LAContext.evaluatePolicy` | FAR ◄ 1:50,000 |
 | **iOS** | Secure Enclave | Hardware SEP chip | FIPS 140-2/3 |
 | **Android** | BiometricPrompt | `BiometricManager.Authenticators.BIOMETRIC_STRONG` | Class 3 only |
 | **Android** | TEE Keystore | `setUserAuthenticationRequired(true)` | Hardware-backed |
@@ -4283,15 +4283,15 @@ Legend:
 4. **PAD Certification Reference**: Reference ISO 30107-3 and FIDO Biometric Certification as evidence of "very low probability" compliance
 5. **Fallback Policy**: Define maximum biometric failures before PIN fallback (Apple: 5; recommend standardizing)
 
-</details>
+◄/details►
 
 **Context**: The wallet relies on OS-level biometric protection:
 - **iOS**: `LAContext` with Face ID / Touch ID (includes liveness detection)
 - **Android**: `BiometricPrompt` with Class 3 biometric (certified anti-spoofing)
 
 The Wallet does NOT store or have access to biometric templates — this is managed by the OS Secure Enclave / TEE. The "very low probability" requirement is met by:
-- False Acceptance Rate (FAR) < 1/50,000 for fingerprint
-- FAR < 1/1,000,000 for Face ID (Apple)
+- False Acceptance Rate (FAR) ◄ 1/50,000 for fingerprint
+- FAR ◄ 1/1,000,000 for Face ID (Apple)
 - FIDO UAF certification for Android BiometricPrompt Class 3
 
 **Reference Implementation Evidence**:
@@ -4302,7 +4302,7 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 #### [Article 8(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#008.002)
 
-> "The use by the payer of those elements shall be subject to measures ensuring that those devices and the software guarantee resistance against unauthorised use of the elements through access to the devices and the software."
+► "The use by the payer of those elements shall be subject to measures ensuring that those devices and the software guarantee resistance against unauthorised use of the elements through access to the devices and the software."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4311,8 +4311,8 @@ The Wallet does NOT store or have access to biometric templates — this is mana
 
 **Status**: ✅ Delegated to Certified OS Components
 
-<details>
-<summary><strong>🔍 Deep-Dive: Biometric Resistance Against Unauthorized Use</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Biometric Resistance Against Unauthorized Use◄/strong►◄/summary►
 
 ##### Core Requirement: Device and Software Resistance
 
@@ -4372,11 +4372,11 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 
 | Metric | Definition | Target |
 |--------|------------|--------|
-| **APCER** | Attack Presentation Classification Error Rate | < 1% (Level 1), < 0.1% (Level 2) |
-| **BPCER** | Bona Fide Presentation Classification Error Rate | < 3% (usability balance) |
+| **APCER** | Attack Presentation Classification Error Rate | ◄ 1% (Level 1), ◄ 0.1% (Level 2) |
+| **BPCER** | Bona Fide Presentation Classification Error Rate | ◄ 3% (usability balance) |
 | **PAD Decision** | Binary: genuine or attack | Per-transaction decision |
 
-> **ISO 30107-3 Testing**: Leading OS vendors (Apple, Google) submit their biometric sensors for ISO 30107-3 certification, ensuring standardized resistance to presentation attacks.
+► **ISO 30107-3 Testing**: Leading OS vendors (Apple, Google) submit their biometric sensors for ISO 30107-3 certification, ensuring standardized resistance to presentation attacks.
 
 ##### Anti-Spoofing Layers
 
@@ -4432,7 +4432,7 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 | "Unauthorized use of elements" | Liveness detection prevents replays |
 | "Quality of implementation" | Rely on certified OS, not custom implementation |
 
-> **EBA Key Insight**: "The quality of the implementation, rather than the biometric feature itself, determines its suitability for SCA." This is why EUDI Wallet delegates to OS-certified biometric APIs.
+► **EBA Key Insight**: "The quality of the implementation, rather than the biometric feature itself, determines its suitability for SCA." This is why EUDI Wallet delegates to OS-certified biometric APIs.
 
 ##### Template Protection
 
@@ -4483,18 +4483,18 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 5. **Fallback Policy**: Define behavior when biometric fails (PIN fallback)
 6. **Attention Detection**: Recommend for face authentication
 
-</details>
+◄/details►
 
 ---
 
 ## 6.5 Independence of Elements
 
-> **Regulatory Basis**:
-> - [RTS Art. 9](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9): Independence of the elements
+► **Regulatory Basis**:
+► - [RTS Art. 9](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_9): Independence of the elements
 
 #### [Article 9(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.001)
 
-> "Payment service providers shall ensure that the use of the elements of strong customer authentication referred to in Articles 6, 7 and 8 is subject to measures which ensure that, in terms of technology, algorithms and parameters, the breach of one of the elements does not compromise the reliability of the other elements."
+► "Payment service providers shall ensure that the use of the elements of strong customer authentication referred to in Articles 6, 7 and 8 is subject to measures which ensure that, in terms of technology, algorithms and parameters, the breach of one of the elements does not compromise the reliability of the other elements."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4503,8 +4503,8 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Independence of SCA Elements</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Independence of SCA Elements◄/strong►◄/summary►
 
 ##### Core Requirement: Breach Isolation
 
@@ -4568,7 +4568,7 @@ The EBA clarifies that independence requires separation across:
 | **PIN + Device stolen** | Both | Biometric (or fallback lockout) | ✅ Yes |
 | **All three compromised** | Full access | — | ❌ Game over |
 
-> **Key Insight**: The architecture ensures that an attacker must compromise **all** elements simultaneously, not sequentially exploit one to reach another.
+► **Key Insight**: The architecture ensures that an attacker must compromise **all** elements simultaneously, not sequentially exploit one to reach another.
 
 ##### Architectural Separation in EUDI Wallet
 
@@ -4633,7 +4633,7 @@ Article 9(2-3) extends this to **multi-purpose devices** (smartphones). The inde
 3. **Attestation on Compromise**: Specify that WUA attestation should fail on rooted/jailbroken devices
 4. **Independence Testing**: Recommend PSPs verify that compromise of one element in testing doesn't reveal others
 
-</details>
+◄/details►
 
 **Context**: Independence is ensured by architectural separation:
 - **Knowledge** (PIN): Never stored in plaintext; validated by WSCA/WSCD
@@ -4649,7 +4649,7 @@ Breach of one does not expose the others:
 
 #### [Article 9(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.002)
 
-> "Payment service providers shall adopt security measures, where any of the elements of strong customer authentication or the authentication code itself is used through a multi-purpose device, to mitigate the risk which would result from that multi-purpose device being compromised."
+► "Payment service providers shall adopt security measures, where any of the elements of strong customer authentication or the authentication code itself is used through a multi-purpose device, to mitigate the risk which would result from that multi-purpose device being compromised."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4658,8 +4658,8 @@ Breach of one does not expose the others:
 
 **Status**: ✅ Fully Supported
 
-<details>
-<summary><strong>🔍 Deep-Dive: Multi-Purpose Device Risk Mitigation</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Multi-Purpose Device Risk Mitigation◄/strong►◄/summary►
 
 ##### Core Requirement: Smartphone Security for SCA
 
@@ -4768,7 +4768,7 @@ The EBA has clarified multi-purpose device requirements:
 | "Mitigate consequences of compromise" | Revocation mechanisms per Art. 9(3)(c) |
 | "Independence of elements" | Factor isolation in separate hardware |
 
-> **EBA Q&A 2018/4039**: "The RTS allows transactions and authentication to occur on the same device if all authenticating factors are adequately separated."
+► **EBA Q&A 2018/4039**: "The RTS allows transactions and authentication to occur on the same device if all authenticating factors are adequately separated."
 
 ##### Reference Implementation Evidence
 
@@ -4808,7 +4808,7 @@ The EBA has clarified multi-purpose device requirements:
 4. **FIDO Alignment**: Reference FIDO UAF/FIDO2 as implementation guidance
 5. **Fallback Scenarios**: Define behavior when hardware security is unavailable
 
-</details>
+◄/details►
 
 **Context**: Article 9(3) specifies mitigating measures for multi-purpose devices — see below.
 
@@ -4816,7 +4816,7 @@ The EBA has clarified multi-purpose device requirements:
 
 #### [Article 9(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#009.003)
 
-> "For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof."
+► "For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4832,7 +4832,7 @@ The EBA has clarified multi-purpose device requirements:
 
 ### [Article 22](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_22) — Personalised security credentials
 
-> "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
+► "Payment service providers shall ensure the confidentiality and integrity of the personalised security credentials of the payment service user, including authentication codes, during all phases of the authentication."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4851,7 +4851,7 @@ The EBA has clarified multi-purpose device requirements:
 
 ### [Article 24](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_24) — Secure execution environment
 
-> "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software. For the purpose of paragraph 1, payment service providers shall ensure that each of the following requirements is met: (a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility comprising at least the payment service provider's premises, the internet environment provided by the payment service provider or other similar secure websites used by the payment service provider and its automated teller machine services, and taking into account risks associated with devices and underlying components used during the association process that are not under the responsibility of the payment service provider; (b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
+► "Payment service providers shall ensure that only the payment service user is associated, in a secure manner, with the personalised security credentials, the authentication devices and the software. For the purpose of paragraph 1, payment service providers shall ensure that each of the following requirements is met: (a) the association of the payment service user's identity with personalised security credentials, authentication devices and software is carried out in secure environments under the payment service provider's responsibility comprising at least the payment service provider's premises, the internet environment provided by the payment service provider or other similar secure websites used by the payment service provider and its automated teller machine services, and taking into account risks associated with devices and underlying components used during the association process that are not under the responsibility of the payment service provider; (b) the association by means of a remote channel of the payment service user's identity with the personalised security credentials and with authentication devices or software is performed using strong customer authentication."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4866,7 +4866,7 @@ The EBA has clarified multi-purpose device requirements:
 
 ### [Article 18](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_18) — Transaction Risk Analysis (TRA)
 
-> "Payment service providers shall be allowed not to apply strong customer authentication where the payer initiates a remote electronic payment transaction identified by the payment service provider as posing a low level of risk according to the transaction monitoring mechanisms referred to in Article 2 and in paragraph 2(c) of this Article."
+► "Payment service providers shall be allowed not to apply strong customer authentication where the payer initiates a remote electronic payment transaction identified by the payment service provider as posing a low level of risk according to the transaction monitoring mechanisms referred to in Article 2 and in paragraph 2(c) of this Article."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4885,11 +4885,11 @@ The EBA has clarified multi-purpose device requirements:
 
 # 7. Dynamic Linking
 
-> **Regulatory Basis**:
-> - [PSD2 Directive Art. 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002): "...the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
-> - [RTS Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5): Dynamic linking
+► **Regulatory Basis**:
+► - [PSD2 Directive Art. 97(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015L2366#097.002): "...the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
+► - [RTS Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_5): Dynamic linking
 
-> "With regard to the initiation of electronic payment transactions as referred to in paragraph 1(b), Member States shall ensure that, for electronic remote payment transactions, the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
+► "With regard to the initiation of electronic payment transactions as referred to in paragraph 1(b), Member States shall ensure that, for electronic remote payment transactions, the payment service provider applies strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -4908,19 +4908,19 @@ KB-JWT contains:
   "transaction_data_hashes_alg": "sha-256"
 ```
 
-> ⚠️ **Format Note**: Dynamic linking via `transaction_data_hashes` is **OID4VP / SD-JWT-VC only**. TS12 v1.0 does not specify mDOC (ISO 18013-5) transaction binding. See RTS Art. 5(1)(b) for details.
+► ⚠️ **Format Note**: Dynamic linking via `transaction_data_hashes` is **OID4VP / SD-JWT-VC only**. TS12 v1.0 does not specify mDOC (ISO 18013-5) transaction binding. See RTS Art. 5(1)(b) for details.
 
 
 ---
 
 #### [Article 5(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — General requirement
 
-> "Where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366, in addition to the requirements of Article 4 of this Regulation, they shall also adopt security measures that meet each of the following requirements: (a) the payer is made aware of the amount of the payment transaction and of the payee; (b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction; (c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer; (d) any change to the amount or the payee results in the invalidation of the authentication code generated."
+► "Where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366, in addition to the requirements of Article 4 of this Regulation, they shall also adopt security measures that meet each of the following requirements: (a) the payer is made aware of the amount of the payment transaction and of the payee; (b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction; (c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer; (d) any change to the amount or the payee results in the invalidation of the authentication code generated."
 
 **Status**: ➖ Prelude to sub-requirements. See Article 5(1)(a–d) and 5(2–3) below.
 
-<details>
-<summary><strong>🔍 Deep-Dive: Dynamic Linking — The Four Pillars</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Dynamic Linking — The Four Pillars◄/strong►◄/summary►
 
 ##### Core Concept: Transaction-Bound Authentication
 
@@ -5089,13 +5089,13 @@ Article 5 **builds upon** Article 4:
 5. **Error Handling**: Define PSP behavior on hash mismatch (reject + log)
 6. **Batch Payments**: Reference Art. 5(3) for bulk payment handling
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Payer awareness of transaction details
 
-> "(a) the payer is made aware of the amount of the payment transaction and of the payee;"
+► "(a) the payer is made aware of the amount of the payment transaction and of the payee;"
 
 **Core Requirement**: Before authenticating, the payer must be **explicitly shown** the exact transaction details (amount + payee) they are about to authorize. This is the **first pillar** of PSD2 dynamic linking and embodies the **"What You See Is What You Sign" (WYSIWYS)** principle.
 
@@ -5199,7 +5199,7 @@ TS12 mandates a structured approach to displaying transaction data:
 | **3** | MAY be on supplementary screen | Transaction ID, Timestamp | Detail for verification |
 | **4** | MAY be omitted from display | Internal reference, Schema URI | Technical metadata only |
 
-> **Default Behavior**: If no `visualisation` level is specified, Wallet applies Level 3 (must display on request).
+► **Default Behavior**: If no `visualisation` level is specified, Wallet applies Level 3 (must display on request).
 
 ---
 
@@ -5270,7 +5270,7 @@ For inclusive design, compliant Wallet implementations should support:
 | **Accessible number readout** | Currency symbols spoken correctly | Custom |
 | **Simple language** | Avoid financial jargon | Plain language |
 
-> **Note**: TS12 does not explicitly mandate accessibility standards, but [ARF Topic 53 (Accessibility)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2353-topic-53---accessibility) references EU accessibility requirements (European Accessibility Act).
+► **Note**: TS12 does not explicitly mandate accessibility standards, but [ARF Topic 53 (Accessibility)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2353-topic-53---accessibility) references EU accessibility requirements (European Accessibility Act).
 
 ---
 
@@ -5285,7 +5285,7 @@ For inclusive design, compliant Wallet implementations should support:
 
 **Gap Analysis: Trust Assumptions**
 
-> ⚠️ **Assumption Gap**: Payer awareness relies on the user **actually reading** the displayed information before confirming. No technical mechanism enforces this.
+► ⚠️ **Assumption Gap**: Payer awareness relies on the user **actually reading** the displayed information before confirming. No technical mechanism enforces this.
 
 | Gap | Risk | Mitigation |
 |-----|------|------------|
@@ -5298,7 +5298,7 @@ For inclusive design, compliant Wallet implementations should support:
 
 ---
 
-> 📌 **Industry Validation**: [ETPPA confirmed](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-14850895) (Nov 2025) that TPPs "intend to take full advantage of the EUDIW to support the capture of Embedded SCA" for PSD2 API-initiated payments, citing eIDAS Article 5f(2) requiring ASPSPs to accept Wallet-based SCA.
+► 📌 **Industry Validation**: [ETPPA confirmed](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-14850895) (Nov 2025) that TPPs "intend to take full advantage of the EUDIW to support the capture of Embedded SCA" for PSD2 API-initiated payments, citing eIDAS Article 5f(2) requiring ASPSPs to accept Wallet-based SCA.
 
 ---
 
@@ -5306,7 +5306,7 @@ For inclusive design, compliant Wallet implementations should support:
 
 #### [Article 5(1)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code linked to amount and payee
 
-> "(b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction;"
+► "(b) the authentication code generated is specific to the amount of the payment transaction and the payee agreed to by the payer when initiating the transaction;"
 
 **Core Requirement**: This is the heart of **dynamic linking**—the authentication code must be cryptographically bound to the exact transaction details (amount + payee) that the user agreed to. This prevents an attacker from taking a valid authentication code and applying it to a different transaction.
 
@@ -5462,13 +5462,13 @@ TS12 mandates that amount and payee are **prominently displayed**:
 | **3** | MAY be on supplementary screen | Transaction ID, Timestamp |
 | **4** | MAY be omitted from display | Internal reference |
 
-> **EBA Technology Neutrality**: PSD2 RTS Article 5 does not prescribe specific cryptographic methods. The EBA clarified: "Payment service providers shall have flexibility to decide on the technology used for implementing strong customer authentication, including dynamic linking" ([EBA Q&A 2018_4039](https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2018_4039)). TS12's hash-then-sign approach is one compliant implementation.
+► **EBA Technology Neutrality**: PSD2 RTS Article 5 does not prescribe specific cryptographic methods. The EBA clarified: "Payment service providers shall have flexibility to decide on the technology used for implementing strong customer authentication, including dynamic linking" ([EBA Q&A 2018_4039](https://www.eba.europa.eu/single-rule-book-qa/qna/view/publicId/2018_4039)). TS12's hash-then-sign approach is one compliant implementation.
 
 ---
 
 **Gap Analysis: mDOC (ISO 18013-5) Format**
 
-> ⚠️ **Critical Format Gap**: TS12 v1.0 only specifies `transaction_data_hashes` for **SD-JWT-VC** (Selective Disclosure JSON Web Token). There is **no equivalent mechanism for mDOC (ISO 18013-5)** credential format.
+► ⚠️ **Critical Format Gap**: TS12 v1.0 only specifies `transaction_data_hashes` for **SD-JWT-VC** (Selective Disclosure JSON Web Token). There is **no equivalent mechanism for mDOC (ISO 18013-5)** credential format.
 
 | Aspect | SD-JWT-VC | mDOC (ISO 18013-5) |
 |--------|-----------|-------------------|
@@ -5495,7 +5495,7 @@ TS12 mandates that amount and payee are **prominently displayed**:
 
 #### [Article 5(1)(c)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Code acceptance verification
 
-> "(c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer;"
+► "(c) the authentication code accepted by the payment service provider corresponds to the original specific amount of the payment transaction and to the identity of the payee agreed to by the payer;"
 
 **Core Requirement**: Unlike Art. 5(1)(a-b) which are wallet-enforced, this requirement places **verification responsibility on the PSP**. The PSP must actively validate that the authentication code (KB-JWT) matches the original transaction request before executing the payment.
 
@@ -5602,7 +5602,7 @@ def verify_sca_authentication(vp_token, original_request):
         raise AuthCodeRejected("Audience mismatch")
     
     # Step 5: Timestamp (optional but recommended)
-    if time.now() - kb_jwt.claims["iat"] > MAX_AUTH_CODE_AGE:
+    if time.now() - kb_jwt.claims["iat"] ► MAX_AUTH_CODE_AGE:
         raise AuthCodeRejected("Authentication code expired")
     
     return AuthCodeAccepted()
@@ -5629,7 +5629,7 @@ The verification complexity differs significantly between the two TS12-defined f
 │          │      │            │      │  (RP=Issuer) │
 └----------┘      └------------┘      └--------------┘
                         │                            │
-                     VP Token ------------>  │
+                     VP Token ------------►  │
                                     PSP verifies against
                                     its OWN original request
 ```
@@ -5641,9 +5641,9 @@ The verification complexity differs significantly between the two TS12-defined f
 │          │      │            │      │     (RP)     │      │  (Bank)  │
 └----------┘      └------------┘      └--------------┘      └----------┘
                         │                    │                         │
-                     VP Token ------------>  │                    │
+                     VP Token ------------►  │                    │
                                              │                         │
-                                      VP Token + ------------->   │
+                                      VP Token + -------------►   │
                                       transaction_data            │
                                                          PSP verifies but
                                                          cannot verify TPP's
@@ -5654,15 +5654,15 @@ The verification complexity differs significantly between the two TS12-defined f
 
 **Gap Analysis: TPP Flow Verification**
 
-> ⚠️ **Critical Open Issue**: In the Third-Party-Requested flow, the PSP receives the VP Token from the TPP but has **no technical means** to verify:
-> 1. How the TPP obtained the VP Token (secure retrieval?)
-> 2. Whether the TPP correctly displayed transaction data to the user
-> 3. Whether the TPP used secure response modes (e.g., `dc_api.jwt`)
+► ⚠️ **Critical Open Issue**: In the Third-Party-Requested flow, the PSP receives the VP Token from the TPP but has **no technical means** to verify:
+► 1. How the TPP obtained the VP Token (secure retrieval?)
+► 2. Whether the TPP correctly displayed transaction data to the user
+► 3. Whether the TPP used secure response modes (e.g., `dc_api.jwt`)
 
 **Community Feedback** ([Discussion #439](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/439#discussioncomment-15134339)):
 
-> "The ARF describes several challenges that come with remote presentation flows (chapter 4.4.3.1) and how they might be mitigated by the use of the DC-API. However, in the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party [...] it might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
-> — @senexi, Dec 2025
+► "The ARF describes several challenges that come with remote presentation flows (chapter 4.4.3.1) and how they might be mitigated by the use of the DC-API. However, in the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party [...] it might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
+► — @senexi, Dec 2025
 
 **TS12 Team Response**: "@senexi thank you for this proposal, sounds reasonable, we will think if this could be a new requirement in TS12 possibly." — @tmielnicki
 
@@ -5707,7 +5707,7 @@ For unauthorized transactions in the TPP flow:
 
 #### [Article 5(1)(d)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Authentication code invalidation on change
 
-> "(d) any change to the amount or the payee results in the invalidation of the authentication code generated."
+► "(d) any change to the amount or the payee results in the invalidation of the authentication code generated."
 
 **Core Requirement**: This is the final pillar of dynamic linking—ensuring that authentication codes cannot be reused, replayed, or applied to modified transactions. Unlike Art. 5(1)(c) which is PSP-verified, this requirement is **cryptographically enforced** by the wallet's signature mechanism.
 
@@ -5781,7 +5781,7 @@ Art. 5(1)(d) implicitly requires that old authentication codes cannot be replaye
 | **4. Nonce** | `nonce` | RP-provided value echoed in KB-JWT; prevents cross-session replay |
 
 **[TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) Specification**:
-> "**`jti`**: **REQUIRED** A fresh, cryptographically random value with sufficient entropy, as defined in [RFC7519]. This value **SHALL** be unique for each presentation. Once verified, it serves as the Authentication Code required by [PSD2]."
+► "**`jti`**: **REQUIRED** A fresh, cryptographically random value with sufficient entropy, as defined in [RFC7519]. This value **SHALL** be unique for each presentation. Once verified, it serves as the Authentication Code required by [PSD2]."
 
 **Industry Comparison** (EMV ARQC):
 EMV chip cards use a similar approach—the Authorization Request Cryptogram (ARQC) is computed by hashing transaction data (amount, currency, merchant ID) and signing with the card's private key. Any modification invalidates the cryptogram.
@@ -5810,7 +5810,7 @@ EMV chip cards use a similar approach—the Authorization Request Cryptogram (AR
 While `iat` (issued-at) is included in the KB-JWT, **TS12 does not mandate a maximum validity period**. Industry practice suggests 5 minutes for payment authentication codes.
 
 **Current [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)**:
-> "The `iat` (issued at) claim of the KB-JWT **MAY** be used by a Relying Party to restrict the timeframe."
+► "The `iat` (issued at) claim of the KB-JWT **MAY** be used by a Relying Party to restrict the timeframe."
 
 | Aspect | Specification | Industry Practice |
 |--------|--------------|-------------------|
@@ -5828,7 +5828,7 @@ While `iat` (issued-at) is included in the KB-JWT, **TS12 does not mandate a max
 
 #### [Article 5(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.002) — Security measures for dynamic linking (CIA triad)
 
-> "For the purpose of paragraph 1, payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication; (b) the information displayed to the payer throughout all of the phases of the authentication including the generation, transmission and use of the authentication code."
+► "For the purpose of paragraph 1, payment service providers shall adopt security measures which ensure the confidentiality, authenticity and integrity of each of the following: (a) the amount of the transaction and the payee throughout all of the phases of the authentication; (b) the information displayed to the payer throughout all of the phases of the authentication including the generation, transmission and use of the authentication code."
 
 **Core Requirement**: This article mandates the **CIA triad** (Confidentiality, Authenticity, Integrity) across **all phases** of SCA:
 
@@ -5959,7 +5959,7 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 
 #### [Article 5(3)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch file payment exception
 
-> "For the purpose of paragraph 1(b) and where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366 the following requirements for the authentication code shall apply: (a) in relation to a card-based payment transaction for which the payer has given consent to the exact amount of the funds to be blocked pursuant to Article 75(1) of that Directive, the authentication code shall be specific to the amount that the payer has given consent to be blocked and agreed to by the payer when initiating the transaction; (b) in relation to payment transactions for which the payer has given consent to execute a batch of remote electronic payment transactions to one or several payees, the authentication code shall be specific to the total amount of the batch of payment transactions and to the specified payees."
+► "For the purpose of paragraph 1(b) and where payment service providers apply strong customer authentication in accordance with Article 97(2) of Directive (EU) 2015/2366 the following requirements for the authentication code shall apply: (a) in relation to a card-based payment transaction for which the payer has given consent to the exact amount of the funds to be blocked pursuant to Article 75(1) of that Directive, the authentication code shall be specific to the amount that the payer has given consent to be blocked and agreed to by the payer when initiating the transaction; (b) in relation to payment transactions for which the payer has given consent to execute a batch of remote electronic payment transactions to one or several payees, the authentication code shall be specific to the total amount of the batch of payment transactions and to the specified payees."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -5967,8 +5967,8 @@ Art. 5(2)(a) requires confidentiality "throughout all phases." However:
 
 **Status**: ⚠️ Partial (Single Payee Only)
 
-<details>
-<summary><strong>🔍 Deep-Dive: Batch Payment Dynamic Linking</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Batch Payment Dynamic Linking◄/strong►◄/summary►
 
 ##### Core Concept: Aggregate Authentication
 
@@ -6082,7 +6082,7 @@ Displaying all payees for large batches is **impractical**:
 |-----------------|---------------------|
 | **Art. 13 — Trusted Beneficiaries** | Batch payees on whitelist exempted from individual display |
 | **Art. 14 — Recurring Transactions** | Repeat batches to same payees exempted after first SCA |
-| **Art. 16 — Low-Value (Remote)** | Individual payments <€30 exempted (total <€100) |
+| **Art. 16 — Low-Value (Remote)** | Individual payments ◄€30 exempted (total ◄€100) |
 | **Art. 17 — Low-Value (Contactless)** | N/A for batch file payments |
 
 ##### Security Considerations
@@ -6112,13 +6112,13 @@ Displaying all payees for large batches is **impractical**:
 5. **Merkle Tree Option**: For very large batches, allow Merkle root for efficiency
 6. **Corporate Channel**: Define separate flow for corporate batch processing
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 5(3)(b)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.003) — Batch authentication code
 
-> "(b) the authentication code shall be specific to the total amount of the batch payment and to the payees specified."
+► "(b) the authentication code shall be specific to the total amount of the batch payment and to the payees specified."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -6126,8 +6126,8 @@ Displaying all payees for large batches is **impractical**:
 
 **Status**: ❌ Gap for Multi-Payee Batches
 
-<details>
-<summary><strong>🔍 Deep-Dive: Batch Authentication Code Computation</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Batch Authentication Code Computation◄/strong►◄/summary►
 
 ##### Core Requirement: Total + All Payees
 
@@ -6186,8 +6186,8 @@ Article 5(3)(b) specifies the **exact scope** of what the batch authentication c
 
 | Method | Description | Use Case | Pros | Cons |
 |--------|-------------|----------|------|------|
-| **Flat Hash** | Concatenate all data, single SHA-256 | < 1,000 payees | Simple, fast | Large input string |
-| **Merkle Tree** | Hierarchical hash tree | > 1,000 payees | Efficient verification | Complex implementation |
+| **Flat Hash** | Concatenate all data, single SHA-256 | ◄ 1,000 payees | Simple, fast | Large input string |
+| **Merkle Tree** | Hierarchical hash tree | ► 1,000 payees | Efficient verification | Complex implementation |
 | **Sorted IBANs** | Canonical ordering | Any size | Deterministic | Requires sorting |
 
 ##### Canonical Data Format (Proposed)
@@ -6207,7 +6207,7 @@ Article 5(3)(b) specifies the **exact scope** of what the batch authentication c
 }
 ```
 
-> **Critical**: IBANs must be sorted lexicographically to ensure deterministic hash computation on both wallet and PSP sides.
+► **Critical**: IBANs must be sorted lexicographically to ensure deterministic hash computation on both wallet and PSP sides.
 
 ##### PSP Verification Flow
 
@@ -6272,12 +6272,12 @@ Any change to the batch **must invalidate** the authentication code:
 
 1. **Canonical Format**: Define JSON schema for batch hash input
 2. **Hash Algorithm**: Specify SHA-256 with sorted IBAN list
-3. **Merkle Option**: Allow Merkle root for batches > 1,000 payees
+3. **Merkle Option**: Allow Merkle root for batches ► 1,000 payees
 4. **H2H Reference**: Document corporate H2H exemption applicability
 5. **Verification Spec**: Define PSP-side hash verification procedure
 6. **Error Handling**: Specify rejection behavior for hash mismatch
 
-</details>
+◄/details►
 
 ---
 
@@ -6285,12 +6285,12 @@ Any change to the batch **must invalidate** the authentication code:
 
 ## 8.1 Security Measures
 
-> **Regulatory Basis**:
-> - [RTS Art. 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2): General authentication requirements
+► **Regulatory Basis**:
+► - [RTS Art. 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_2): General authentication requirements
 
 #### [Article 2(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.001)
 
-> "Payment service providers shall have transaction monitoring mechanisms in place that enable them to detect unauthorised or fraudulent payment transactions for the purpose of the implementation of the security measures referred to in points (a) and (b) of Article 1. Those mechanisms shall be based on the analysis of payment transactions taking into account elements which are typical of the payment service user in the circumstances of a normal use of the personalised security credentials."
+► "Payment service providers shall have transaction monitoring mechanisms in place that enable them to detect unauthorised or fraudulent payment transactions for the purpose of the implementation of the security measures referred to in points (a) and (b) of Article 1. Those mechanisms shall be based on the analysis of payment transactions taking into account elements which are typical of the payment service user in the circumstances of a normal use of the personalised security credentials."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -6299,8 +6299,8 @@ Any change to the batch **must invalidate** the authentication code:
 
 **Status**: ❌ PSP Obligation
 
-<details>
-<summary><strong>🔍 Deep-Dive: Transaction Monitoring Mechanisms</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Transaction Monitoring Mechanisms◄/strong►◄/summary►
 
 ##### Core Requirement: Fraud Detection Infrastructure
 
@@ -6468,7 +6468,7 @@ For a PSP to comply with Art. 2(1):
 4. **Fraud Reporting Taxonomy**: Align wallet-related fraud categories with EBA reporting guidelines
 5. **TRA Eligibility**: Document that wallet-based SCA is compatible with Art. 18 TRA exemption
 
-</details>
+◄/details►
 
 **Context**: Transaction monitoring is a PSP-side function. The Wallet provides transaction logs (per DASH_02) that could be used as supplementary evidence in dispute resolution, but the real-time fraud detection must be implemented by the PSP.
 
@@ -6481,7 +6481,7 @@ For a PSP to comply with Art. 2(1):
 
 #### [Article 2(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#002.002)
 
-> "Payment service providers shall ensure that the transaction monitoring mechanisms take into account, at a minimum, each of the following risk-based factors: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios in the provision of payment services; (d) signs of malware infection in any sessions of the authentication procedure; (e) in case the access device or the software is provided by the payment service provider, a log of the use of the access device or the software provided to the payment service user and the abnormal use of the access device or the software."
+► "Payment service providers shall ensure that the transaction monitoring mechanisms take into account, at a minimum, each of the following risk-based factors: (a) lists of compromised or stolen authentication elements; (b) the amount of each payment transaction; (c) known fraud scenarios in the provision of payment services; (d) signs of malware infection in any sessions of the authentication procedure; (e) in case the access device or the software is provided by the payment service provider, a log of the use of the access device or the software provided to the payment service user and the abnormal use of the access device or the software."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -6490,8 +6490,8 @@ For a PSP to comply with Art. 2(1):
 
 **Status**: ❌ PSP Obligation
 
-<details>
-<summary><strong>🔍 Deep-Dive: Mandated Risk Factors</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Mandated Risk Factors◄/strong►◄/summary►
 
 ##### Core Requirement: Minimum Risk Factor Set
 
@@ -6601,7 +6601,7 @@ The EBA explicitly permits machine learning to enhance TRA:
 | **Device fingerprinting** | Consistent device identification | Implicitly allowed |
 | **Location analysis** | Abnormal geolocation | Art. 2(2) factor |
 
-> **EBA Clarification**: "PSD2 and the Delegated Regulation do not restrict PSPs from utilizing additional security measures, including solutions that rely on innovative technologies (such as machine learning)."
+► **EBA Clarification**: "PSD2 and the Delegated Regulation do not restrict PSPs from utilizing additional security measures, including solutions that rely on innovative technologies (such as machine learning)."
 
 ##### Additional Risk Factors (Beyond Art. 2(2) Minimum)
 
@@ -6651,19 +6651,19 @@ The EBA explicitly permits machine learning to enhance TRA:
 4. **ML Transparency**: Reference EBA's permission of ML while noting validation requirements
 5. **Factor (d) Emphasis**: Highlight wallet's key contribution to malware detection via attestation
 
-</details>
+◄/details►
 
 **Context**: Typical elements include: spending patterns, device fingerprint, geographic location. The Wallet Unit Attestation (WUA) contains device properties that can contribute to this analysis, but the PSP must build the monitoring logic.
 ---
 
 ## 8.2 Periodic Review
 
-> **Regulatory Basis**:
-> - [RTS Art. 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3): Review of the security measures
+► **Regulatory Basis**:
+► - [RTS Art. 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#art_3): Review of the security measures
 
 #### [Article 3(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.001)
 
-> "The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider."
+► "The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider."
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
@@ -6672,8 +6672,8 @@ The EBA explicitly permits machine learning to enhance TRA:
 
 **Status**: ❌ PSP Obligation (with Wallet Evidence)
 
-<details>
-<summary><strong>🔍 Deep-Dive: Security Measures Review Framework</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Security Measures Review Framework◄/strong►◄/summary►
 
 ##### Core Requirement: Four-Pillar Assurance
 
@@ -6692,7 +6692,7 @@ Article 3(1) mandates a **comprehensive assurance lifecycle** for SCA security m
 ├-----------------------------------------------------------------------------┤
 │                                                                             │
 │  ┌-------------┐     ┌-------------┐     ┌-------------┐     ┌----------┐   │
-│  │ DOCUMENT    │---->│   TEST      │---->│  EVALUATE   │---->│  AUDIT   │   │
+│  │ DOCUMENT    │----►│   TEST      │----►│  EVALUATE   │----►│  AUDIT   │   │
 │  │             │     │             │     │             │     │          │   │
 │  │ - Policies  │     │ - Pen tests │     │ - KPIs/KRIs │     │ - IT sec │   │
 │  │ - Procedures│     │ - Vuln scans│     │ - Fraud     │     │ - Payment│   │
@@ -6778,11 +6778,11 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 
 | Metric | Description | Target |
 |--------|-------------|--------|
-| **Fraud rate** | Fraudulent transactions / total | < 0.01% (TRA threshold) |
-| **SCA success rate** | Successful SCA / attempts | > 95% |
+| **Fraud rate** | Fraudulent transactions / total | ◄ 0.01% (TRA threshold) |
+| **SCA success rate** | Successful SCA / attempts | ► 95% |
 | **Incident count** | Security incidents per period | Decreasing trend |
 | **Exemption rate** | Exempted transactions / total | Monitored |
-| **Response time** | Time to detect/respond to threats | < 15 min detection |
+| **Response time** | Time to detect/respond to threats | ◄ 15 min detection |
 
 ##### Gap Analysis: Security Measures Review
 
@@ -6802,18 +6802,18 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 5. **Evidence Sharing**: Define how wallet certification evidence transfers to PSP
 6. **Incident Coordination**: Document PSP-Wallet Provider incident response
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.002)
 
-> "The period between the audits referred to in paragraph 1 shall be determined taking into account the relevant accounting and statutory audit framework applicable to the payment service provider. However, payment service providers that make use of the exemption referred to in Article 18 shall be subject to an audit of the methodology, the model and the reported fraud rates at a minimum on a yearly basis. The auditor performing this audit shall have expertise in IT security and payments and be operationally independent within or from the payment service provider. During the first year of making use of the exemption under Article 18 and at least every 3 years thereafter, or more frequently at the competent authority's request, this audit shall be carried out by an independent and qualified external auditor."
+► "The period between the audits referred to in paragraph 1 shall be determined taking into account the relevant accounting and statutory audit framework applicable to the payment service provider. However, payment service providers that make use of the exemption referred to in Article 18 shall be subject to an audit of the methodology, the model and the reported fraud rates at a minimum on a yearly basis. The auditor performing this audit shall have expertise in IT security and payments and be operationally independent within or from the payment service provider. During the first year of making use of the exemption under Article 18 and at least every 3 years thereafter, or more frequently at the competent authority's request, this audit shall be carried out by an independent and qualified external auditor."
 
 **Status**: ❌ PSP Obligation — audit scheduling per applicable framework.
 
-<details>
-<summary><strong>🔍 Deep-Dive: Audit Frequency and TRA Exemption Requirements</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Audit Frequency and TRA Exemption Requirements◄/strong►◄/summary►
 
 ##### Core Requirement: Two-Tier Audit System
 
@@ -6865,10 +6865,10 @@ The TRA exemption links transaction limits to fraud rate performance:
 
 | Fraud Rate | Max Transaction Amount | SCA Required? |
 |------------|------------------------|---------------|
-| **< 0.13%** | Up to €100 | ❌ Exempt |
-| **< 0.06%** | Up to €250 | ❌ Exempt |
-| **< 0.01%** | Up to €500 | ❌ Exempt |
-| **Any rate** | > €500 | ✅ Always required |
+| **◄ 0.13%** | Up to €100 | ❌ Exempt |
+| **◄ 0.06%** | Up to €250 | ❌ Exempt |
+| **◄ 0.01%** | Up to €500 | ❌ Exempt |
+| **Any rate** | ► €500 | ✅ Always required |
 
 ##### TRA Audit Scope
 
@@ -6933,18 +6933,18 @@ The TRA exemption links transaction limits to fraud rate performance:
 5. **Internal Independence**: Reference Institute of Internal Auditors (IIA) standards
 6. **Threshold Monitoring**: Define alert thresholds before breach
 
-</details>
+◄/details►
 
 ---
 
 #### [Article 3(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#003.003)
 
-> "This audit shall present an evaluation and report on the compliance of the payment service provider's security measures with the requirements set out in this Regulation. The entire report shall be made available to competent authorities upon their request."
+► "This audit shall present an evaluation and report on the compliance of the payment service provider's security measures with the requirements set out in this Regulation. The entire report shall be made available to competent authorities upon their request."
 
 **Status**: ❌ PSP Obligation — only if using TRA exemption.
 
-<details>
-<summary><strong>🔍 Deep-Dive: Audit Report and Regulatory Access</strong></summary>
+◄details►
+◄summary►◄strong►🔍 Deep-Dive: Audit Report and Regulatory Access◄/strong►◄/summary►
 
 ##### Core Requirement: Compliance Evaluation Report
 
@@ -7064,7 +7064,7 @@ Article 3(3) mandates that the audit produce a **comprehensive evaluation** cove
 5. **Cross-border**: Reference EBA cross-border cooperation procedures
 6. **Retention**: Define minimum retention period for audit reports
 
-</details>
+◄/details►
 
 ---
 
@@ -7104,10 +7104,10 @@ The following gaps have been identified across the assessment. Items are categor
 
 ## 9.4 Gap Controllability Analysis
 
-> **Purpose**: This section categorizes gaps by **who can address them**, helping PSPs understand:
-> - What they **must implement** themselves
-> - What they **depend on the wallet** for (and cannot fix)
-> - What requires **ecosystem-level changes** (neither party alone can fix)
+► **Purpose**: This section categorizes gaps by **who can address them**, helping PSPs understand:
+► - What they **must implement** themselves
+► - What they **depend on the wallet** for (and cannot fix)
+► - What requires **ecosystem-level changes** (neither party alone can fix)
 
 ### 9.4.1 Wallet-Controlled Gaps (PSP Cannot Fix)
 
@@ -7132,7 +7132,7 @@ These gaps reside within the **Wallet/OS/Device layer**. PSPs must **rely on wal
 | **DP-1** | Art. 6(2) | Secure display implementation | Wallet controls display | Require wallet certification |
 | **DP-2** | Art. 6(2) | Overlay attack detection | OS/Wallet security feature | Mandate RASP in wallet requirements |
 | **BR-1** | Art. 8(2) | PAD implementation details | OS biometric system | Rely on FIDO certification |
-| **BR-2** | Art. 8(2) | Liveness detection quality | Device sensors/algorithms | Require FAR < 1:50,000 in policy |
+| **BR-2** | Art. 8(2) | Liveness detection quality | Device sensors/algorithms | Require FAR ◄ 1:50,000 in policy |
 | **RP-1** | Art. 7(2) | Key export prevention | WSCD/SE hardware | Verify hardware attestation |
 | **RP-2** | Art. 7(2) | Cloning detection mechanism | Wallet/device integrity | Check WUA validity |
 | **MI-1** | Art. 22(2)(a) | PIN masking implementation | Wallet UI layer | Included in wallet certification |
@@ -7316,7 +7316,7 @@ The following recommendations should be incorporated into future SCA Attestation
 
 TS12 v1.0 explicitly states (Section 1.2):
 
-> "This version of the document focuses on [SD-JWT-VC] format and [OID4VP] presentation protocol only."
+► "This version of the document focuses on [SD-JWT-VC] format and [OID4VP] presentation protocol only."
 
 ### Implications
 
@@ -7335,7 +7335,7 @@ A future TS12 version is expected to add mDOC support. The compliance mapping in
 
 ## Appendix B: TPP Scenario Coverage
 
-> 📌 **Note**: This analysis is now integrated into [Article 5(1)(a)](#article-51a--payer-awareness) in the main compliance matrix.
+► 📌 **Note**: This analysis is now integrated into [Article 5(1)(a)](#article-51a--payer-awareness) in the main compliance matrix.
 
 ### Two SCA Flow Types
 
@@ -7448,7 +7448,7 @@ Key points on **TPP (AISP/PISP) integration**:
 
 Proposed reusing OIDC **`amr` claim** instead of `authentication_factors`:
 
-> "OpenID Connect Core already defines the claim `amr` (Authentication Methods References)... It would make sense to reuse / reference that claim."
+► "OpenID Connect Core already defines the claim `amr` (Authentication Methods References)... It would make sense to reuse / reference that claim."
 
 **Status**: TS12 v1.0 uses `amr` array — proposal was adopted.
 
@@ -7461,7 +7461,7 @@ Proposed reusing OIDC **`amr` claim** instead of `authentication_factors`:
 
 Raised concern about **Third-Party-Requested flow verification**:
 
-> "In the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party... It might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
+► "In the Third-Party-Requested flow, the final verifier AKA the bank has no information how the VP was obtained by a third party... It might make sense to include relevant request parameters like `response_mode=dc_api.jwt` in the key binding JWT."
 
 **Maintainer Response**: "sounds reasonable, we will think if this could be a new requirement in TS12 possibly"
 
@@ -7529,14 +7529,14 @@ Identified technical issues in TS12 v1.0:
 
 TS12 v1.0 explicitly states:
 
-> "The structures of the SCA Attestations to be used in conjunction with this specification are to be **specified in related SCA Attestation Rulebooks**."
+► "The structures of the SCA Attestations to be used in conjunction with this specification are to be **specified in related SCA Attestation Rulebooks**."
 
 And:
 
-> "This document is complemented by related SCA Attestation Rulebooks, that may specify:
-> - transactional data schema
-> - visualisation hierarchy
-> - ..."
+► "This document is complemented by related SCA Attestation Rulebooks, that may specify:
+► - transactional data schema
+► - visualisation hierarchy
+► - ..."
 
 ### Expected Rulebook Authors
 
