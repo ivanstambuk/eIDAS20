@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T12:33:20.901Z",
+  "generatedAt": "2026-01-28T12:41:39.495Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -4857,9 +4857,9 @@
     },
     {
       "id": "VEND-TSP-018",
-      "category": "notification",
-      "categoryLabel": "notification",
-      "categoryIcon": "📋",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
       "requirement": "Handle suspension and cancellation of Trust Services",
       "explanation": "When an Access Certificate Authority or Provider of registration certificates \nis suspended or cancelled, appropriate notification and transition procedures \nmust be followed to maintain ecosystem trust.",
       "legalBasis": {
@@ -5434,15 +5434,14 @@
       "registration": 16,
       "security": 25,
       "privacy": 16,
-      "transparency": 9,
+      "transparency": 10,
       "verification": 11,
       "interoperability": 7,
       "technical": 14,
       "certification": 6,
       "issuance": 16,
       "revocation": 7,
-      "liability": 2,
-      "notification": 1
+      "liability": 2
     },
     "byCriticality": {
       "critical": 70,

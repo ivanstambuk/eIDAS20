@@ -318,29 +318,34 @@ function validate() {
 
                 for (const req of config.requirements) {
                     if (req.arfReference?.hlr) {
-                        const hlrId = req.arfReference.hlr;
+                        // Support both string and array format for hlr
+                        const hlrIds = Array.isArray(req.arfReference.hlr)
+                            ? req.arfReference.hlr
+                            : [req.arfReference.hlr];
 
-                        if (!validHlrIds.has(hlrId)) {
-                            arfValidation.invalid.push({ file, reqId: req.id, hlr: hlrId });
-                            errors.push({
-                                file,
-                                reqId: req.id,
-                                field: 'arfReference.hlr',
-                                value: hlrId,
-                                message: `HLR "${hlrId}" not found in ARF data. Run: npm run build:arf`
-                            });
-                        } else {
-                            arfValidation.valid++;
-                            // Check if HLR is marked as empty
-                            const hlrData = arfData.byHlrId[hlrId];
-                            if (hlrData?.isEmpty) {
-                                arfValidation.empty.push({ file, reqId: req.id, hlr: hlrId });
-                                warnings.push({
+                        for (const hlrId of hlrIds) {
+                            if (!validHlrIds.has(hlrId)) {
+                                arfValidation.invalid.push({ file, reqId: req.id, hlr: hlrId });
+                                errors.push({
                                     file,
                                     reqId: req.id,
                                     field: 'arfReference.hlr',
-                                    message: `HLR "${hlrId}" exists but has no specification text in ARF (marked as Empty)`
+                                    value: hlrId,
+                                    message: `HLR "${hlrId}" not found in ARF data. Run: npm run build:arf`
                                 });
+                            } else {
+                                arfValidation.valid++;
+                                // Check if HLR is marked as empty
+                                const hlrData = arfData.byHlrId[hlrId];
+                                if (hlrData?.isEmpty) {
+                                    arfValidation.empty.push({ file, reqId: req.id, hlr: hlrId });
+                                    warnings.push({
+                                        file,
+                                        reqId: req.id,
+                                        field: 'arfReference.hlr',
+                                        message: `HLR "${hlrId}" exists but has no specification text in ARF (marked as Empty)`
+                                    });
+                                }
                             }
                         }
                     }
