@@ -148,7 +148,9 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                 }}
             >
                 <span className="rca-legal-ref">
-                    {compact ? 'Art. ' : ''}{legalBasis?.article?.replace('Article ', '')}
+                    {compact
+                        ? `Art. ${legalBasis?.article?.replace('Article ', '')}`
+                        : legalBasis?.article}
                     {formatParagraphDisplay()}
                 </span>
                 {compact ? (
