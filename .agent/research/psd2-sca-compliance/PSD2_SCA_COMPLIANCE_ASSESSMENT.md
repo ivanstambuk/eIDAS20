@@ -2314,29 +2314,29 @@ Article 4(2)(a) mandates that an attacker who obtains the authentication code mu
 │                    Factor Derivation Protection Architecture                │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  SCA ELEMENTS (NEVER DISCLOSED)                AUTHENTICATION CODE         │
-│  ─────────────────────────────────            ───────────────────────      │
+│  SCA ELEMENTS (NEVER DISCLOSED)                AUTHENTICATION CODE          │
+│  ─────────────────────────────────            ───────────────────────       │
 │                                                                             │
-│  ┌─────────────┐                              ┌─────────────────────┐      │
-│  │   PIN       │   ═══════╲                   │   VP Token          │      │
-│  │  "1234"     │           ╲                  │   ┌───────────────┐ │      │
-│  └─────────────┘            ╲                 │   │ SD-JWT-VC     │ │      │
-│                              ╲                │   │ (credentials) │ │      │
-│  ┌─────────────┐              ══►   WSCD  ══► │   ├───────────────┤ │      │
-│  │  BIOMETRIC  │              ══►  SIGNS  ══► │   │ KB-JWT        │ │      │
-│  │  Template   │             ╱                │   │ (auth proof)  │ │      │
-│  └─────────────┘            ╱                 │   │ - amr: [...]  │ │      │
-│                            ╱                  │   │ - signature   │ │      │
-│  ┌─────────────┐         ╱                   │   └───────────────┘ │      │
-│  │ PRIVATE KEY │═════════                     └─────────────────────┘      │
-│  │  (in WSCD)  │                                                           │
-│  └─────────────┘                                                           │
+│  ┌─────────────┐                              ┌─────────────────────┐       │
+│  │   PIN       │   ═══════╲                   │   VP Token          │       │
+│  │  "1234"     │           ╲                  │   ┌───────────────┐ │       │
+│  └─────────────┘            ╲                 │   │ SD-JWT-VC     │ │       │
+│                              ╲                │   │ (credentials) │ │       │
+│  ┌─────────────┐              ══►  WSCD  ══►  │   ├───────────────┤ │       │
+│  │  BIOMETRIC  │              ══► SIGNS  ══►  │   │ KB-JWT        │ │       │
+│  │  Template   │             ╱                │   │ (auth proof)  │ │       │
+│  └─────────────┘            ╱                 │   │ - amr: [...]  │ │       │
+│                            ╱                  │   │ - signature   │ │       │
+│  ┌─────────────┐         ╱                    │   └───────────────┘ │       │
+│  │ PRIVATE KEY │═════════                     └─────────────────────┘       │
+│  │  (in WSCD)  │                                                            │
+│  └─────────────┘                                                            │
 │                                                                             │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
 │                                                                             │
 │  ❌ PIN value: NEVER in auth code                                           │
 │  ❌ Biometric template: NEVER in auth code                                  │
-│  ❌ Private key: NEVER in auth code (only public key in attestation)       │
+│  ❌ Private key: NEVER in auth code (only public key in attestation)        │
 │  ✅ Only: Factor NAMES (amr), signatures, hashes                            │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
