@@ -5307,10 +5307,158 @@ Displaying all payees for large batches is **impractical**:
 
 **Status**: ❌ Gap for Multi-Payee Batches
 
-**Recommendation**: PSPs requiring batch payment SCA should:
-1. Use individual SCA per payee (fully compliant)
-2. Or request TS12 extension for batch support
+<details>
+<summary><strong>🔍 Deep-Dive: Batch Authentication Code Computation</strong></summary>
 
+##### Core Requirement: Total + All Payees
+
+Article 5(3)(b) specifies the **exact scope** of what the batch authentication code must cover:
+
+| Component | Requirement | Implementation |
+|-----------|-------------|----------------|
+| **Total amount** | Sum of all payments in batch | Single aggregate value |
+| **Payees specified** | All beneficiary identifiers | All IBANs/account numbers |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Batch Authentication Code Computation                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  INPUT DATA                                                                 │
+│  ══════════                                                                 │
+│                                                                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  total_amount = €100,000.00                                           │ │
+│  │  currency = "EUR"                                                     │ │
+│  │  payees = [                                                           │ │
+│  │    { iban: "DE89370400440532013000", amount: €1,000 },               │ │
+│  │    { iban: "FR7630006000011234567890189", amount: €1,500 },          │ │
+│  │    { iban: "ES9121000418450200051332", amount: €2,000 },             │ │
+│  │    ... (50 payees)                                                    │ │
+│  │  ]                                                                    │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  HASH COMPUTATION                                                           │
+│  ═════════════════                                                          │
+│                                                                             │
+│  Option A: FLAT HASH                                                        │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  canonical_string = total_amount || currency || sorted(IBANs)         │ │
+│  │  batch_hash = SHA256(canonical_string)                                │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+│  Option B: MERKLE TREE (for very large batches)                            │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  leaf[i] = SHA256(IBAN[i] || amount[i])                               │ │
+│  │  merkle_root = MerkleTree(leaves)                                     │ │
+│  │  batch_hash = SHA256(total_amount || merkle_root)                     │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  SIGNATURE                                                                  │
+│  ═════════                                                                  │
+│  ┌───────────────────────────────────────────────────────────────────────┐ │
+│  │  auth_code = ECDSA.sign(batch_hash, user_private_key)                 │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Hash Computation Methods
+
+| Method | Description | Use Case | Pros | Cons |
+|--------|-------------|----------|------|------|
+| **Flat Hash** | Concatenate all data, single SHA-256 | < 1,000 payees | Simple, fast | Large input string |
+| **Merkle Tree** | Hierarchical hash tree | > 1,000 payees | Efficient verification | Complex implementation |
+| **Sorted IBANs** | Canonical ordering | Any size | Deterministic | Requires sorting |
+
+##### Canonical Data Format (Proposed)
+
+```json
+{
+  "batch_canonical": {
+    "total_amount_cents": 10000000,
+    "currency": "EUR",
+    "payee_count": 50,
+    "payees_sorted": [
+      "DE89370400440532013000",
+      "ES9121000418450200051332",
+      "FR7630006000011234567890189"
+    ]
+  }
+}
+```
+
+> **Critical**: IBANs must be sorted lexicographically to ensure deterministic hash computation on both wallet and PSP sides.
+
+##### PSP Verification Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         PSP Batch Verification                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   1. PSP receives signed batch_hash from wallet                             │
+│   2. PSP has original batch file (all IBANs + amounts)                     │
+│   3. PSP computes: expected_hash = SHA256(batch_canonical)                 │
+│   4. PSP verifies: ECDSA.verify(batch_hash, signature, wallet_public_key)  │
+│   5. PSP compares: expected_hash == batch_hash                              │
+│                                                                             │
+│   If match → ✅ Execute all payments in batch                              │
+│   If mismatch → ❌ Reject entire batch                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Host-to-Host (H2H) Exception
+
+EBA recognizes a special case for **corporate machine-to-machine** payments:
+
+| Scenario | SCA Requirement | Reference |
+|----------|-----------------|-----------|
+| **H2H communication** | Security mechanisms "as effective as SCA" | RTS Art. 97(2) exemption |
+| **Dedicated interface** | Corporate treasury direct connection | EBA Q&A |
+| **TLS mutual auth** | Certificate-based authentication | May substitute for SCA |
+
+##### Implementation Workarounds (Current)
+
+| Approach | Compliance | UX Impact |
+|----------|------------|-----------|
+| **Individual SCA per payee** | ✅ Full | Very poor for large batches |
+| **Aggregate display + single SCA** | ⚠️ Partial | Acceptable |
+| **H2H exemption** | ✅ If architecture qualifies | Corporate only |
+| **Trusted beneficiaries** | ✅ Art. 13 | Pre-whitelisting required |
+
+##### Invalidation Requirement
+
+Any change to the batch **must invalidate** the authentication code:
+
+| Change Type | Effect | Hash Behavior |
+|-------------|--------|---------------|
+| Add payee | Invalidates | Hash changes |
+| Remove payee | Invalidates | Hash changes |
+| Modify amount | Invalidates | Hash changes |
+| Modify IBAN | Invalidates | Hash changes |
+| Reorder payees | No effect (if sorted) | Hash unchanged |
+
+##### Gap Analysis: Batch Authentication Code
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **BAC-1** | TS12 lacks batch hash computation specification | High | Define canonical format |
+| **BAC-2** | Merkle tree option not documented | Medium | Provide for large batch efficiency |
+| **BAC-3** | H2H exemption not referenced in wallet specs | Low | Cross-reference EBA guidance |
+| **BAC-4** | Sorting/canonicalization not specified | Medium | Mandate sorted IBANs |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Canonical Format**: Define JSON schema for batch hash input
+2. **Hash Algorithm**: Specify SHA-256 with sorted IBAN list
+3. **Merkle Option**: Allow Merkle root for batches > 1,000 payees
+4. **H2H Reference**: Document corporate H2H exemption applicability
+5. **Verification Spec**: Define PSP-side hash verification procedure
+6. **Error Handling**: Specify rejection behavior for hash mismatch
+
+</details>
 
 ---
 
