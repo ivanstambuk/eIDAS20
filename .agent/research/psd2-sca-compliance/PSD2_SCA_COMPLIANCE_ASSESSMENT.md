@@ -152,14 +152,14 @@ The most important mapping is understanding that the **authentication code** (RT
 │                    AUTHENTICATION CODE (RTS Art. 4)             │
 ├─────────────────────────────────────────────────────────────────┤
 │   VP Token                                                      │
-│   ├── SD-JWT-VC (the SCA attestation)                          │
+│   ├── SD-JWT-VC (the SCA attestation)                           │
 │   └── KB-JWT (Key Binding JWT)                                  │
 │       ├── aud: PSP's client_id                                  │
 │       ├── nonce: from PSP's request (one-time use)              │
 │       ├── iat: timestamp                                        │
-│       ├── jti: unique token ID (additional one-time protection)│
-│       ├── amr: ["pin", "hwk"] (factor evidence)                │
-│       └── transaction_data_hashes: SHA-256 of amount+payee     │
+│       ├── jti: unique token ID (additional one-time protection) │
+│       ├── amr: ["pin", "hwk"] (factor evidence)                 │
+│       └── transaction_data_hashes: SHA-256 of amount+payee      │
 │           (DYNAMIC LINKING per Art. 5)                          │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -259,18 +259,18 @@ Article 22(1) requires protection during **all phases**. The full lifecycle incl
 │                    PSC Lifecycle Phases (Art. 22-27)                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  1. CREATION         2. DELIVERY        3. ASSOCIATION      4. USE         │
-│  (Art. 23)           (Art. 24)          (Art. 25)           (Art. 4-9)     │
-│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐      │
-│  │ Generate│   ──►  │ Transmit│   ──►  │ Bind to │   ──►  │Authenti-│      │
-│  │ PSC     │        │ Securely│        │ User    │        │  cate   │      │
-│  └─────────┘        └─────────┘        └─────────┘        └─────────┘      │
-│       │                  │                  │                  │           │
-│       ▼                  ▼                  ▼                  ▼           │
-│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐      │
-│  │ Entropy │        │ TLS 1.3 │        │Identity │        │ SCA per │      │
-│  │ ≥ 256   │        │ / E2E   │        │ Proofing│        │ Art. 4  │      │
-│  └─────────┘        └─────────┘        └─────────┘        └─────────┘      │
+│  1. CREATION         2. DELIVERY        3. ASSOCIATION      4. USE          │
+│  (Art. 23)           (Art. 24)          (Art. 25)           (Art. 4-9)      │
+│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐       │
+│  │ Generate│   ──►  │ Transmit│   ──►  │ Bind to │   ──►  │Authenti-│       │
+│  │ PSC     │        │ Securely│        │ User    │        │  cate   │       │
+│  └─────────┘        └─────────┘        └─────────┘        └─────────┘       │
+│       │                  │                  │                  │            │
+│       ▼                  ▼                  ▼                  ▼            │
+│  ┌─────────┐        ┌─────────┐        ┌─────────┐        ┌─────────┐       │
+│  │ Entropy │        │ TLS 1.3 │        │Identity │        │ SCA per │       │
+│  │ ≥ 256   │        │ / E2E   │        │ Proofing│        │ Art. 4  │       │
+│  └─────────┘        └─────────┘        └─────────┘        └─────────┘       │
 │                                                                             │
 │  5. RENEWAL          6. REVOCATION                                          │
 │  (Art. 26)           (Art. 27)                                              │
@@ -391,29 +391,29 @@ Article 22(2)(a) mandates that PSCs must be **masked when displayed** and **not 
 │                      Credential Masking Architecture                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     USER INPUT FLOW                                 │   │
-│  │                                                                     │   │
-│  │    User types:        1  2  3  4  5  6                             │   │
-│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │   │
-│  │                                                                     │   │
-│  │    Display shows:     •  •  •  •  •  6   (brief character reveal)  │   │
-│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │   │
-│  │                                                                     │   │
-│  │    After ~300ms:      •  •  •  •  •  •   (fully masked)            │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     USER INPUT FLOW                                 │    │
+│  │                                                                     │    │
+│  │    User types:        1  2  3  4  5  6                             │     │
+│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │     │
+│  │                                                                     │    │
+│  │    Display shows:     •  •  •  •  •  6   (brief character reveal)  │     │
+│  │                       ▼  ▼  ▼  ▼  ▼  ▼                             │     │
+│  │                                                                     │    │
+│  │    After ~300ms:      •  •  •  •  •  •   (fully masked)            │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     MASKING PROPERTIES                              │   │
-│  │                                                                     │   │
-│  │   • Each digit replaced with mask character (•, *, ○)              │   │
-│  │   • Brief reveal on input (optional, for usability)                 │   │
-│  │   • No clipboard access for masked fields                           │   │
-│  │   • FLAG_SECURE prevents screenshots                                │   │
-│  │   • Accessibility services restricted                               │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     MASKING PROPERTIES                              │    │
+│  │                                                                     │    │
+│  │   • Each digit replaced with mask character (•, *, ○)              │     │
+│  │   • Brief reveal on input (optional, for usability)                 │    │
+│  │   • No clipboard access for masked fields                           │    │
+│  │   • FLAG_SECURE prevents screenshots                                │    │
+│  │   • Accessibility services restricted                               │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -665,28 +665,28 @@ Article 22(3) requires PSPs to **fully document** the cryptographic material man
 │                    Key Management Documentation Scope                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                   KEY LIFECYCLE PHASES                              │   │
-│  │                                                                     │   │
-│  │   GENERATION        STORAGE           USAGE            DESTRUCTION │   │
-│  │   ─────────        ────────          ─────            ────────────│   │
-│  │   • Algorithm      • Location        • Permitted ops  • Revocation│   │
-│  │   • Key size       • Access control  • Auth required  • Archival  │   │
-│  │   • Entropy source • Backup/recovery • Rate limits    • Sanitization│   │
-│  │   • Hardware/SW    • Encryption      • Audit logging  • Completeness│   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                   KEY LIFECYCLE PHASES                              │    │
+│  │                                                                     │    │
+│  │   GENERATION        STORAGE           USAGE            DESTRUCTION │     │
+│  │   ─────────        ────────          ─────            ────────────│      │
+│  │   • Algorithm      • Location        • Permitted ops  • Revocation│      │
+│  │   • Key size       • Access control  • Auth required  • Archival  │      │
+│  │   • Entropy source • Backup/recovery • Rate limits    • Sanitization│    │
+│  │   • Hardware/SW    • Encryption      • Audit logging  • Completeness│    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                  DOCUMENTATION REQUIREMENTS                         │   │
-│  │                                                                     │   │
-│  │   • Policy documents (who, what, when)                              │   │
-│  │   • Procedural guides (step-by-step processes)                      │   │
-│  │   • Inventory (all keys, attributes, locations)                     │   │
-│  │   • Audit logs (all operations, timestamps)                         │   │
-│  │   • Incident response (breach procedures)                           │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                  DOCUMENTATION REQUIREMENTS                         │    │
+│  │                                                                     │    │
+│  │   • Policy documents (who, what, when)                              │    │
+│  │   • Procedural guides (step-by-step processes)                      │    │
+│  │   • Inventory (all keys, attributes, locations)                     │    │
+│  │   • Audit logs (all operations, timestamps)                         │    │
+│  │   • Incident response (breach procedures)                           │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -814,33 +814,33 @@ Article 22(4) mandates that PSC processing and auth code routing occur in enviro
 │                   Secure Processing Environment Hierarchy                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                    SECURITY LEVEL HIERARCHY                         │   │
-│  │                                                                     │   │
-│  │   HIGHEST SECURITY                                                  │   │
-│  │   ════════════════                                                  │   │
-│  │                                                                     │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │  SECURE ELEMENT (SE)  │  Separate chip, CC EAL5+/6           │ │   │
-│  │   │  HSM (server-side)    │  FIPS 140-2 Level 3/4                │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                              ▼                                      │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │  STRONGBOX (Android)  │  Integrated SE, FIPS 140-2 Level 3   │ │   │
-│  │   │  SECURE ENCLAVE (iOS) │  Integrated SE, CC EAL4+             │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                              ▼                                      │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │  TEE (ARM TrustZone)  │  Hardware isolation, moderate trust  │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                              ▼                                      │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │  SOFTWARE KEYSTORE    │  OS-protected, software isolation    │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                                                                     │   │
-│  │   LOWEST SECURITY                                                   │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    SECURITY LEVEL HIERARCHY                         │    │
+│  │                                                                     │    │
+│  │   HIGHEST SECURITY                                                  │    │
+│  │   ════════════════                                                  │    │
+│  │                                                                     │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │  SECURE ELEMENT (SE)  │  Separate chip, CC EAL5+/6           │ │     │
+│  │   │  HSM (server-side)    │  FIPS 140-2 Level 3/4                │ │     │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                              ▼                                      │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │  STRONGBOX (Android)  │  Integrated SE, FIPS 140-2 Level 3   │ │     │
+│  │   │  SECURE ENCLAVE (iOS) │  Integrated SE, CC EAL4+             │ │     │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                              ▼                                      │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │  TEE (ARM TrustZone)  │  Hardware isolation, moderate trust  │ │     │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                              ▼                                      │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │  SOFTWARE KEYSTORE    │  OS-protected, software isolation    │ │     │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                                                                     │    │
+│  │   LOWEST SECURITY                                                   │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -902,20 +902,20 @@ Article 22(4) mandates that PSC processing and auth code routing occur in enviro
 │   WALLET                    NETWORK                   PSP                   │
 │   ──────                    ───────                   ───                   │
 │                                                                             │
-│   ┌──────────┐           ┌──────────┐           ┌──────────┐               │
-│   │ Secure   │   TLS 1.3 │ Internet │   TLS 1.3 │ HSM+     │               │
-│   │ Enclave  │──────────►│ (public) │──────────►│ Infra    │               │
-│   └──────────┘           └──────────┘           └──────────┘               │
+│   ┌──────────┐           ┌──────────┐           ┌──────────┐                │
+│   │ Secure   │   TLS 1.3 │ Internet │   TLS 1.3 │ HSM+     │                │
+│   │ Enclave  │──────────►│ (public) │──────────►│ Infra    │                │
+│   └──────────┘           └──────────┘           └──────────┘                │
 │                                                                             │
-│   ┌──────────────────────────────────────────────────────────────────────┐ │
-│   │                    ROUTING SECURITY CONTROLS                         │ │
-│   │                                                                      │ │
-│   │   • End-to-end TLS 1.3 (no plaintext PSC in transit)                │ │
-│   │   • Certificate pinning optional                                     │ │
-│   │   • PSC never leaves secure boundary (PIN validated locally)         │ │
-│   │   • Auth code (signature) generated in SE, sent over TLS             │ │
-│   │                                                                      │ │
-│   └──────────────────────────────────────────────────────────────────────┘ │
+│   ┌──────────────────────────────────────────────────────────────────────┐  │
+│   │                    ROUTING SECURITY CONTROLS                         │  │
+│   │                                                                      │  │
+│   │   • End-to-end TLS 1.3 (no plaintext PSC in transit)                │   │
+│   │   • Certificate pinning optional                                     │  │
+│   │   • PSC never leaves secure boundary (PIN validated locally)         │  │
+│   │   • Auth code (signature) generated in SE, sent over TLS             │  │
+│   │                                                                      │  │
+│   └──────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -1003,7 +1003,7 @@ Article 23 mandates **two distinct protections**:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                      PSC Creation Flow in EUDI Wallet                        │
+│                      PSC Creation Flow in EUDI Wallet                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  1. WALLET ACTIVATION                                                       │
@@ -1015,27 +1015,27 @@ Article 23 mandates **two distinct protections**:
 │  2. KEY PAIR GENERATION                                                     │
 │     ┌─────────────────────────────────────────────────────────────────────┐ │
 │     │  ┌───────────────────────────────────────────────────────────────┐  │ │
-│     │  │               SECURE ELEMENT (WSCD)                          │  │ │
-│     │  │   ┌─────────────────────────────────────────────────────────┐│  │ │
-│     │  │   │  KeyPairGenerator.generateKeyPair()                    ││  │ │
-│     │  │   │  • ECDSA P-256 (ES256) or P-384 (ES384)                ││  │ │
-│     │  │   │  • Private key NEVER EXPORTED                          ││  │ │
-│     │  │   │  • Public key available for attestation                ││  │ │
-│     │  │   └─────────────────────────────────────────────────────────┘│  │ │
+│     │  │               SECURE ELEMENT (WSCD)                          │  │  │
+│     │  │   ┌─────────────────────────────────────────────────────────┐│  │  │
+│     │  │   │  KeyPairGenerator.generateKeyPair()                    ││  │   │
+│     │  │   │  • ECDSA P-256 (ES256) or P-384 (ES384)                ││  │   │
+│     │  │   │  • Private key NEVER EXPORTED                          ││  │   │
+│     │  │   │  • Public key available for attestation                ││  │   │
+│     │  │   └─────────────────────────────────────────────────────────┘│  │  │
 │     │  └───────────────────────────────────────────────────────────────┘  │ │
 │     └─────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  3. PIN/BIOMETRIC ENROLLMENT                                                │
 │     ┌─────────────────────────────────────────────────────────────────────┐ │
-│     │  PIN: User creates → stored encrypted, never transmitted           │ │
-│     │  Biometric: Enrolled via OS → reference stored in TEE              │ │
+│     │  PIN: User creates → stored encrypted, never transmitted           │  │
+│     │  Biometric: Enrolled via OS → reference stored in TEE              │  │
 │     └─────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  4. SCA ATTESTATION ISSUANCE                                                │
 │     ┌─────────────────────────────────────────────────────────────────────┐ │
-│     │  Wallet → PSP: OID4VCI request (including public key, WUA)         │ │
-│     │  PSP verifies: User identity (KYC), WUA, device binding            │ │
-│     │  PSP → Wallet: Signed SCA Attestation (SD-JWT-VC)                  │ │
+│     │  Wallet → PSP: OID4VCI request (including public key, WUA)         │  │
+│     │  PSP verifies: User identity (KYC), WUA, device binding            │  │
+│     │  PSP → Wallet: Signed SCA Attestation (SD-JWT-VC)                  │  │
 │     └─────────────────────────────────────────────────────────────────────┘ │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -1159,7 +1159,7 @@ Article 24 ensures that PSCs are **bound only to the legitimate user**, covering
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                   User-PSC Association Flow (Art. 24)                        │
+│                   User-PSC Association Flow (Art. 24)                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  1. IDENTITY VERIFICATION (PSP Responsibility)                              │
@@ -1327,37 +1327,37 @@ Article 25 mandates protection against **three distinct risks**:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                  Credential Delivery Flow (Art. 25)                          │
+│                  Credential Delivery Flow (Art. 25)                         │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  TRADITIONAL MODEL (PSP-generated credentials)                              │
-│  ══════════════════════════════════════════════                              │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│  │   PSP       │───▶│   Mail      │───▶│   User      │───▶│   Device    │  │
-│  │   generates │    │   service   │    │   receives  │    │   enters    │  │
-│  │   PIN       │    │             │    │   PIN       │    │   PIN       │  │
-│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘  │
+│  ══════════════════════════════════════════════                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐   │
+│  │   PSP       │───▶│   Mail      │───▶│   User      │───▶│   Device    │   │
+│  │   generates │    │   service   │    │   receives  │    │   enters    │   │
+│  │   PIN       │    │             │    │   PIN       │    │   PIN       │   │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘   │
 │                                                                             │
-│  ⚠️ RISKS: Interception, postal loss, shoulder surfing                     │
+│  ⚠️ RISKS: Interception, postal loss, shoulder surfing                      │
 │                                                                             │
-│  ═══════════════════════════════════════════════════════════════════════   │
+│  ═══════════════════════════════════════════════════════════════════════    │
 │                                                                             │
 │  EUDI WALLET MODEL (User-generated key + PSP-issued attestation)            │
 │  ═════════════════════════════════════════════════════════════════          │
-│  ┌──────────────────────────────────────────────────────────────────────┐  │
-│  │                                                                      │  │
-│  │  ┌───────────────┐                      ┌───────────────────────┐   │  │
-│  │  │   WALLET      │◄───── TLS 1.2+ ─────▶│   PSP ISSUER          │   │  │
-│  │  │   ┌─────────┐ │  OID4VCI Protocol    │   ┌─────────────────┐ │   │  │
-│  │  │   │ WSCD    │ │                      │   │ HSM signs       │ │   │  │
-│  │  │   │ Private │ │  Attestation         │   │ attestation     │ │   │  │
-│  │  │   │ Key     │ │  (SD-JWT-VC)         │   │                 │ │   │  │
-│  │  │   └─────────┘ │  ←────────────────── │   └─────────────────┘ │   │  │
-│  │  └───────────────┘                      └───────────────────────┘   │  │
-│  │                                                                      │  │
-│  │  ✅ ADVANTAGES: Key never transmitted, attestation bound to device   │  │
-│  │                                                                      │  │
-│  └──────────────────────────────────────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────────────────────────────────────┐   │
+│  │                                                                      │   │
+│  │  ┌───────────────┐                      ┌───────────────────────┐   │    │
+│  │  │   WALLET      │◄───── TLS 1.2+ ─────▶│   PSP ISSUER          │   │    │
+│  │  │   ┌─────────┐ │  OID4VCI Protocol    │   ┌─────────────────┐ │   │    │
+│  │  │   │ WSCD    │ │                      │   │ HSM signs       │ │   │    │
+│  │  │   │ Private │ │  Attestation         │   │ attestation     │ │   │    │
+│  │  │   │ Key     │ │  (SD-JWT-VC)         │   │                 │ │   │    │
+│  │  │   └─────────┘ │  ←────────────────── │   └─────────────────┘ │   │    │
+│  │  └───────────────┘                      └───────────────────────┘   │    │
+│  │                                                                      │   │
+│  │  ✅ ADVANTAGES: Key never transmitted, attestation bound to device   │    │
+│  │                                                                      │   │
+│  └──────────────────────────────────────────────────────────────────────┘   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -1479,11 +1479,11 @@ Article 26 mandates that renewal/re-activation follows **the same procedures as 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                    Credential Renewal Flow (Art. 26)                         │
+│                    Credential Renewal Flow (Art. 26)                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  RENEWAL TRIGGERS                                                           │
-│  ════════════════                                                            │
+│  ════════════════                                                           │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │  1. Expiry-based:     Attestation exp claim reached                    │ │
 │  │  2. User-initiated:   User requests new credentials                    │ │
@@ -1492,8 +1492,8 @@ Article 26 mandates that renewal/re-activation follows **the same procedures as 
 │  │  5. Device change:    New device, OS upgrade with SE migration         │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
-│  KEY ROTATION DECISION                                                       │
-│  ═════════════════════                                                       │
+│  KEY ROTATION DECISION                                                      │
+│  ═════════════════════                                                      │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │                                                                        │ │
 │  │           ┌─────────────────────┐                                      │ │
@@ -1503,17 +1503,17 @@ Article 26 mandates that renewal/re-activation follows **the same procedures as 
 │  │                      │                                                 │ │
 │  │         ┌────────────┴────────────┐                                    │ │
 │  │         ▼                         ▼                                    │ │
-│  │  ┌─────────────────┐    ┌─────────────────┐                           │ │
-│  │  │ SAME KEY        │    │ NEW KEY         │                           │ │
-│  │  │ • exp refresh   │    │ • Full rotation │                           │ │
-│  │  │ • Faster        │    │ • New key pair  │                           │ │
-│  │  │ • Same cnf      │    │ • New cnf claim │                           │ │
-│  │  └─────────────────┘    └─────────────────┘                           │ │
+│  │  ┌─────────────────┐    ┌─────────────────┐                           │  │
+│  │  │ SAME KEY        │    │ NEW KEY         │                           │  │
+│  │  │ • exp refresh   │    │ • Full rotation │                           │  │
+│  │  │ • Faster        │    │ • New key pair  │                           │  │
+│  │  │ • Same cnf      │    │ • New cnf claim │                           │  │
+│  │  └─────────────────┘    └─────────────────┘                           │  │
 │  │                                                                        │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  OID4VCI RENEWAL FLOW                                                       │
-│  ═════════════════════                                                       │
+│  ═════════════════════                                                      │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │  1. User authenticates to wallet (SCA — Art. 24(2)(b))                 │ │
 │  │  2. Wallet initiates OID4VCI refresh (same as Art. 23)                 │ │
@@ -1649,39 +1649,39 @@ Article 27(a) covers three operations, each with different implications:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│               Credential Revocation Architecture (Art. 27)                   │
+│               Credential Revocation Architecture (Art. 27)                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  REVOCATION TRIGGERS                                                        │
-│  ═══════════════════                                                         │
+│  ═══════════════════                                                        │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │  1. User-initiated:    User requests revocation (lost device, etc.)   │ │
-│  │  2. PSP-initiated:     Fraud detection, account closure               │ │
-│  │  3. WP-initiated:      Wallet Provider detects compromise             │ │
-│  │  4. Automatic:         Attestation max lifetime reached               │ │
-│  │  5. Regulatory:        Competent authority order                      │ │
+│  │  1. User-initiated:    User requests revocation (lost device, etc.)   │  │
+│  │  2. PSP-initiated:     Fraud detection, account closure               │  │
+│  │  3. WP-initiated:      Wallet Provider detects compromise             │  │
+│  │  4. Automatic:         Attestation max lifetime reached               │  │
+│  │  5. Regulatory:        Competent authority order                      │  │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  MULTI-PARTY REVOCATION                                                     │
-│  ══════════════════════                                                      │
+│  ══════════════════════                                                     │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │                                                                        │ │
-│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────┐    │ │
-│  │  │  USER DEVICE    │  │  WALLET PROVIDER│  │  PSP BACKEND        │    │ │
-│  │  ├─────────────────┤  ├─────────────────┤  ├─────────────────────┤    │ │
-│  │  │ • Delete local  │  │ • Revoke WUA    │  │ • Mark attestation  │    │ │
-│  │  │   attestation   │  │ • Notify wallet │  │   as revoked        │    │ │
-│  │  │ • Secure wipe   │  │ • Update status │  │ • Update status     │    │ │
-│  │  │   of keys       │  │   endpoint      │  │   list/OCSP         │    │ │
-│  │  │ • Clear PIN     │  │                 │  │ • Reject future VPs │    │ │
-│  │  └─────────────────┘  └─────────────────┘  └─────────────────────┘    │ │
+│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────┐    │  │
+│  │  │  USER DEVICE    │  │  WALLET PROVIDER│  │  PSP BACKEND        │    │  │
+│  │  ├─────────────────┤  ├─────────────────┤  ├─────────────────────┤    │  │
+│  │  │ • Delete local  │  │ • Revoke WUA    │  │ • Mark attestation  │    │  │
+│  │  │   attestation   │  │ • Notify wallet │  │   as revoked        │    │  │
+│  │  │ • Secure wipe   │  │ • Update status │  │ • Update status     │    │  │
+│  │  │   of keys       │  │   endpoint      │  │   list/OCSP         │    │  │
+│  │  │ • Clear PIN     │  │                 │  │ • Reject future VPs │    │  │
+│  │  └─────────────────┘  └─────────────────┘  └─────────────────────┘    │  │
 │  │                                                                        │ │
 │  │           All three MUST be synchronized for complete revocation       │ │
 │  │                                                                        │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  STATUS PUBLICATION                                                         │
-│  ══════════════════                                                          │
+│  ══════════════════                                                         │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │  Option A: Status List 2021 (W3C)                                      │ │
 │  │     • Bit array at URL, updated periodically                           │ │
@@ -1741,25 +1741,25 @@ Article 27(a) covers three operations, each with different implications:
 ┌───────┐     ┌───────────┐     ┌───────┐     ┌───────────┐
 │ USER  │     │  WALLET   │     │  WP   │     │   PSP     │
 └───┬───┘     └─────┬─────┘     └───┬───┘     └─────┬─────┘
-    │               │               │               │
-    │ Request       │               │               │
-    │ Revocation    │               │               │
-    │──────────────▶│               │               │
-    │               │               │               │
-    │               │ Notify        │               │
-    │               │ Revocation    │               │
-    │               │──────────────▶│               │
-    │               │               │               │
-    │               │               │ Update        │
-    │               │               │ Status        │
-    │               │               │──────────────▶│
-    │               │               │               │
+    │               │               │                     │
+    │ Request       │               │                     │
+    │ Revocation    │               │                     │
+    │──────────────▶│               │                     │
+    │               │               │                     │
+    │               │ Notify        │                     │
+    │               │ Revocation    │                     │
+    │               │──────────────▶│                     │
+    │               │               │                     │
+    │               │               │ Update              │
+    │               │               │ Status              │
+    │               │               │──────────────▶      │
+    │               │               │                     │
     │               │ Local Wipe    │               │ Mark Revoked
     │               │◀──────────────│               │◀─────────────
-    │               │               │               │
-    │ Confirmation  │               │               │
-    │◀──────────────│               │               │
-    │               │               │               │
+    │               │               │                     │
+    │ Confirmation  │               │                     │
+    │◀──────────────│               │                     │
+    │               │               │                     │
 ```
 
 ##### Threat Model: Revocation Phase
@@ -1838,38 +1838,38 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                PSP Backend Deactivation Architecture (Art. 27c)              │
+│                PSP Backend Deactivation Architecture (Art. 27c)             │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  PSP BACKEND SYSTEMS                                                        │
-│  ════════════════════                                                        │
+│  ════════════════════                                                       │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │                                                                        │ │
-│  │  ┌─────────────────────────────────────────────────────────────────┐  │ │
-│  │  │  ATTESTATION REGISTRY                                           │  │ │
-│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │ │
-│  │  │  │  Attestation ID  │  User  │  Status  │  Revoked At       │   │  │ │
-│  │  │  ├──────────────────┼────────┼──────────┼───────────────────┤   │  │ │
-│  │  │  │  att_abc123...   │  U001  │  ACTIVE  │  —                │   │  │ │
-│  │  │  │  att_def456...   │  U001  │  REVOKED │  2026-01-28T02:00 │   │  │ │
-│  │  │  │  att_ghi789...   │  U002  │  ACTIVE  │  —                │   │  │ │
-│  │  │  └──────────────────┴────────┴──────────┴───────────────────┘   │  │ │
-│  │  └─────────────────────────────────────────────────────────────────┘  │ │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  ATTESTATION REGISTRY                                           │  │  │
+│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │  │
+│  │  │  │  Attestation ID  │  User  │  Status  │  Revoked At       │   │  │  │
+│  │  │  ├──────────────────┼────────┼──────────┼───────────────────┤   │  │  │
+│  │  │  │  att_abc123...   │  U001  │  ACTIVE  │  —                │   │  │  │
+│  │  │  │  att_def456...   │  U001  │  REVOKED │  2026-01-28T02:00 │   │  │  │
+│  │  │  │  att_ghi789...   │  U002  │  ACTIVE  │  —                │   │  │  │
+│  │  │  └──────────────────┴────────┴──────────┴───────────────────┘   │  │  │
+│  │  └─────────────────────────────────────────────────────────────────┘  │  │
 │  │                                                                        │ │
-│  │  ┌─────────────────────────────────────────────────────────────────┐  │ │
-│  │  │  VERIFICATION SERVICE                                          │  │ │
-│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │ │
-│  │  │  │  1. Receive VP with attestation                          │   │  │ │
-│  │  │  │  2. Check attestation status in registry                 │   │  │ │
-│  │  │  │  3. If REVOKED → Reject transaction                      │   │  │ │
-│  │  │  │  4. If ACTIVE → Proceed with verification                │   │  │ │
-│  │  │  └──────────────────────────────────────────────────────────┘   │  │ │
-│  │  └─────────────────────────────────────────────────────────────────┘  │ │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  VERIFICATION SERVICE                                          │  │   │
+│  │  │  ┌──────────────────────────────────────────────────────────┐   │  │  │
+│  │  │  │  1. Receive VP with attestation                          │   │  │  │
+│  │  │  │  2. Check attestation status in registry                 │   │  │  │
+│  │  │  │  3. If REVOKED → Reject transaction                      │   │  │  │
+│  │  │  │  4. If ACTIVE → Proceed with verification                │   │  │  │
+│  │  │  └──────────────────────────────────────────────────────────┘   │  │  │
+│  │  └─────────────────────────────────────────────────────────────────┘  │  │
 │  │                                                                        │ │
 │  └────────────────────────────────────────────────────────────────────────┘ │
 │                              ▼                                              │
 │  PUBLIC REPOSITORIES (Optional)                                             │
-│  ═══════════════════════════════                                             │
+│  ═══════════════════════════════                                            │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
 │  │  Status List 2021 URL: https://psp.example/status/sca-attestations     │ │
 │  │  ┌──────────────────────────────────────────────────────────────────┐  │ │
@@ -1923,26 +1923,26 @@ Article 27(b-c) ensures credentials are fully invalidated across all systems:
 ┌───────────┐     ┌───────────────┐     ┌───────────────┐
 │  WALLET   │     │  PSP VERIFIER │     │  REGISTRY     │
 └─────┬─────┘     └───────┬───────┘     └───────┬───────┘
-      │                   │                     │
-      │ VP with           │                     │
-      │ attestation       │                     │
-      │──────────────────▶│                     │
-      │                   │                     │
-      │                   │ Check status        │
-      │                   │────────────────────▶│
-      │                   │                     │
-      │                   │ Status: REVOKED     │
-      │                   │◀────────────────────│
-      │                   │                     │
-      │ Reject:           │                     │
-      │ "Attestation      │                     │
-      │  revoked"         │                     │
-      │◀──────────────────│                     │
-      │                   │                     │
-      │                   │ Log: rejected       │
-      │                   │ attempt             │
-      │                   │────────────────────▶│
-      │                   │                     │
+      │                   │                             │
+      │ VP with           │                             │
+      │ attestation       │                             │
+      │──────────────────▶│                             │
+      │                   │                             │
+      │                   │ Check status                │
+      │                   │────────────────────▶        │
+      │                   │                             │
+      │                   │ Status: REVOKED             │
+      │                   │◀────────────────────        │
+      │                   │                             │
+      │ Reject:           │                             │
+      │ "Attestation      │                             │
+      │  revoked"         │                             │
+      │◀──────────────────│                             │
+      │                   │                             │
+      │                   │ Log: rejected               │
+      │                   │ attempt                     │
+      │                   │────────────────────▶        │
+      │                   │                             │
 ```
 
 ##### Public Repository Considerations
@@ -2332,12 +2332,12 @@ Article 4(2)(a) mandates that an attacker who obtains the authentication code mu
 │  │  (in WSCD)  │                                                            │
 │  └─────────────┘                                                            │
 │                                                                             │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
 │                                                                             │
-│  ❌ PIN value: NEVER in auth code                                           │
-│  ❌ Biometric template: NEVER in auth code                                  │
-│  ❌ Private key: NEVER in auth code (only public key in attestation)        │
-│  ✅ Only: Factor NAMES (amr), signatures, hashes                            │
+│  ❌ PIN value: NEVER in auth code                                            │
+│  ❌ Biometric template: NEVER in auth code                                   │
+│  ❌ Private key: NEVER in auth code (only public key in attestation)         │
+│  ✅ Only: Factor NAMES (amr), signatures, hashes                             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -2465,31 +2465,31 @@ Article 4(2)(b) mandates that knowing previous authentication codes provides **z
 │                    Authentication Code Unpredictability                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
 │  │                     VP Token (Auth Code)                             │   │
-│  ├─────────────────────────────────────────────────────────────────────┤   │
-│  │                                                                     │   │
-│  │   ┌─────────────────────┐   ┌─────────────────────┐                │   │
-│  │   │   KB-JWT Header     │   │   KB-JWT Payload    │                │   │
-│  │   └─────────────────────┘   │                     │                │   │
-│  │                             │  jti: "a7f2c9..."   │◄── UNIQUE      │   │
-│  │                             │  iat: 1706xxx       │◄── TIMESTAMPED │   │
-│  │                             │  nonce: "xyz..."    │◄── RP-PROVIDED │   │
-│  │                             └─────────────────────┘                │   │
-│  │                                                                     │   │
-│  │   ┌─────────────────────────────────────────────────────────────┐  │   │
-│  │   │                    ECDSA Signature                          │  │   │
-│  │   │   (r, s) = Sign(privateKey, message, randomNonce_k)        │  │   │
-│  │   │                                                             │  │   │
-│  │   │   k = cryptographically random ◄── DIFFERENT EVERY TIME    │  │   │
-│  │   │   Even same message → different (r, s) each signature      │  │   │
-│  │   └─────────────────────────────────────────────────────────────┘  │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ├─────────────────────────────────────────────────────────────────────┤    │
+│  │                                                                     │    │
+│  │   ┌─────────────────────┐   ┌─────────────────────┐                │     │
+│  │   │   KB-JWT Header     │   │   KB-JWT Payload    │                │     │
+│  │   └─────────────────────┘   │                     │                │     │
+│  │                             │  jti: "a7f2c9..."   │◄── UNIQUE      │     │
+│  │                             │  iat: 1706xxx       │◄── TIMESTAMPED │     │
+│  │                             │  nonce: "xyz..."    │◄── RP-PROVIDED │     │
+│  │                             └─────────────────────┘                │     │
+│  │                                                                     │    │
+│  │   ┌─────────────────────────────────────────────────────────────┐  │     │
+│  │   │                    ECDSA Signature                          │  │     │
+│  │   │   (r, s) = Sign(privateKey, message, randomNonce_k)        │  │      │
+│  │   │                                                             │  │     │
+│  │   │   k = cryptographically random ◄── DIFFERENT EVERY TIME    │  │      │
+│  │   │   Even same message → different (r, s) each signature      │  │      │
+│  │   └─────────────────────────────────────────────────────────────┘  │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   │
 │                                                                             │
-│  Knowing previous (jti, nonce, iat, signature) reveals NOTHING about:      │
+│  Knowing previous (jti, nonce, iat, signature) reveals NOTHING about:       │
 │  • Next jti (random UUID)                                                   │
 │  • Next signature (random k in ECDSA)                                       │
 │  • Private key (ECDLP hard problem)                                         │
@@ -2545,22 +2545,22 @@ The `jti` claim provides **token-level uniqueness**:
 │                       Replay Attack Prevention                              │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Attacker captures:     VP Token₁ (jti="abc123", nonce="xyz", sig₁)        │
+│  Attacker captures:     VP Token₁ (jti="abc123", nonce="xyz", sig₁)         │
 │                                                                             │
-│  Replay attempt 1: Use same VP Token₁ again                                │
-│  ────────────────────────────────────────                                  │
-│  → PSP checks: Is jti="abc123" in used-jti database?                       │
+│  Replay attempt 1: Use same VP Token₁ again                                 │
+│  ────────────────────────────────────────                                   │
+│  → PSP checks: Is jti="abc123" in used-jti database?                        │
 │  → YES → REJECT (jti already used)                                          │
 │                                                                             │
-│  Replay attempt 2: Use VP Token₁ for different transaction                 │
-│  ────────────────────────────────────────────────────                      │
-│  → PSP checks: Does transaction_data_hash match current transaction?       │
+│  Replay attempt 2: Use VP Token₁ for different transaction                  │
+│  ────────────────────────────────────────────────────                       │
+│  → PSP checks: Does transaction_data_hash match current transaction?        │
 │  → NO → REJECT (hash mismatch)                                              │
 │                                                                             │
-│  Replay attempt 3: Modify jti/nonce and re-sign                            │
-│  ────────────────────────────────────────────────                          │
-│  → Attacker needs private key to create valid signature                    │
-│  → Private key is non-extractable from WSCD                                │
+│  Replay attempt 3: Modify jti/nonce and re-sign                             │
+│  ────────────────────────────────────────────────                           │
+│  → Attacker needs private key to create valid signature                     │
+│  → Private key is non-extractable from WSCD                                 │
 │  → IMPOSSIBLE                                                               │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -2655,39 +2655,39 @@ Article 4(2)(c) requires that authentication codes **cannot be forged**. In cryp
 │                         Forgery Resistance Architecture                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │                         TRUST CHAIN                                   │ │
-│  │                                                                       │ │
-│  │   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐         │ │
-│  │   │ Trust Anchor │     │     PSP      │     │ SCA          │         │ │
-│  │   │ (Root CA)    │ ──► │ Issuer Key   │ ──► │ Attestation  │         │ │
-│  │   │ (EUTL/PSP)   │     │              │     │ (SD-JWT-VC)  │         │ │
-│  │   └──────────────┘     └──────────────┘     └──────┬───────┘         │ │
-│  │                                                    │                 │ │
-│  │                                                    ▼                 │ │
-│  │                                            ┌──────────────┐         │ │
-│  │                                            │ Public Key   │         │ │
-│  │                                            │ (in cnf/jwk) │         │ │
-│  │                                            └──────┬───────┘         │ │
-│  │                                                   │                 │ │
-│  └───────────────────────────────────────────────────┼─────────────────┘ │
-│                                                      │                   │
-│                                                      ▼                   │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │                      SIGNATURE VERIFICATION                          │ │
-│  │                                                                       │ │
-│  │   KB-JWT Signature ◄── Created by private key in WSCD                │ │
-│  │         │                                                             │ │
-│  │         ▼                                                             │ │
-│  │   PSP Verifies: signature matches public key in trusted attestation  │ │
-│  │         │                                                             │ │
-│  │         ▼                                                             │ │
-│  │   FORGERY ATTEMPT: Create valid signature without private key        │ │
-│  │         │                                                             │ │
-│  │         ▼                                                             │ │
-│  │   ❌ IMPOSSIBLE: ECDLP is computationally infeasible                  │ │
-│  │                                                                       │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                         TRUST CHAIN                                   │  │
+│  │                                                                       │  │
+│  │   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐         │   │
+│  │   │ Trust Anchor │     │     PSP      │     │ SCA          │         │   │
+│  │   │ (Root CA)    │ ──► │ Issuer Key   │ ──► │ Attestation  │         │   │
+│  │   │ (EUTL/PSP)   │     │              │     │ (SD-JWT-VC)  │         │   │
+│  │   └──────────────┘     └──────────────┘     └──────┬───────┘         │   │
+│  │                                                    │                 │   │
+│  │                                                    ▼                 │   │
+│  │                                            ┌──────────────┐         │    │
+│  │                                            │ Public Key   │         │    │
+│  │                                            │ (in cnf/jwk) │         │    │
+│  │                                            └──────┬───────┘         │    │
+│  │                                                   │                 │    │
+│  └───────────────────────────────────────────────────┼─────────────────┘    │
+│                                                      │                      │
+│                                                      ▼                      │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                      SIGNATURE VERIFICATION                          │   │
+│  │                                                                       │  │
+│  │   KB-JWT Signature ◄── Created by private key in WSCD                │   │
+│  │         │                                                             │  │
+│  │         ▼                                                             │  │
+│  │   PSP Verifies: signature matches public key in trusted attestation  │   │
+│  │         │                                                             │  │
+│  │         ▼                                                             │  │
+│  │   FORGERY ATTEMPT: Create valid signature without private key        │   │
+│  │         │                                                             │  │
+│  │         ▼                                                             │  │
+│  │   ❌ IMPOSSIBLE: ECDLP is computationally infeasible                  │   │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -2723,24 +2723,24 @@ The security rests on the **Elliptic Curve Discrete Logarithm Problem (ECDLP)**:
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  Step 1: Verify SCA Attestation                                             │
-│  ─────────────────────────────────                                         │
+│  ─────────────────────────────────                                          │
 │  • Check issuer signature (PSP's own key)                                   │
 │  • Verify certificate chain to trust anchor                                 │
 │  • Check attestation not expired/revoked                                    │
 │                                                                             │
 │  Step 2: Extract Public Key                                                 │
-│  ────────────────────────────                                              │
+│  ────────────────────────────                                               │
 │  • From SCA Attestation `cnf.jwk` claim                                     │
 │  • This is the key the user claims to possess                               │
 │                                                                             │
 │  Step 3: Verify KB-JWT Signature                                            │
-│  ───────────────────────────────                                           │
+│  ───────────────────────────────                                            │
 │  • Verify KB-JWT signature against extracted public key                     │
 │  • If valid: User possesses the corresponding private key                   │
 │  • If invalid: REJECT (forgery attempt or corruption)                       │
 │                                                                             │
 │  Step 4: Verify Dynamic Linking                                             │
-│  ───────────────────────────────                                           │
+│  ───────────────────────────────                                            │
 │  • Check `transaction_data_hashes` matches current transaction              │
 │  • If mismatch: REJECT (replay or tampering)                                │
 │                                                                             │
@@ -3037,30 +3037,30 @@ Article 4(3)(c) mandates protection against **capture** (eavesdropping) and **ma
 │                       Session Protection Architecture                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌───────────────┐        OID4VP Request/Response         ┌──────────────┐ │
+│  ┌───────────────┐        OID4VP Request/Response         ┌──────────────┐  │
 │  │    WALLET     │ ◄══════════════════════════════════════► │     PSP     │ │
-│  │  (Verifier)   │                                         │  (Relying   │ │
-│  └───────────────┘                                         │   Party)    │ │
-│         │                                                   └──────────────┘ │
+│  │  (Verifier)   │                                         │  (Relying   │  │
+│  └───────────────┘                                         │   Party)    │  │
+│         │                                                   └──────────────┘│
 │         │                                                                   │
 │  ┌──────┴──────────────────────────────────────────────────────────────────┐│
 │  │                      PROTECTION LAYERS                                  ││
 │  ├─────────────────────────────────────────────────────────────────────────┤│
 │  │                                                                         ││
 │  │  Layer 1: TRANSPORT (TLS 1.2+/1.3)                                      ││
-│  │  ─────────────────────────────────                                     ││
+│  │  ─────────────────────────────────                                     │ │
 │  │  • Encryption: AES-GCM-256 / ChaCha20-Poly1305                          ││
 │  │  • Integrity: HMAC / AEAD                                               ││
 │  │  • Authentication: X.509 certificates                                   ││
 │  │                                                                         ││
 │  │  Layer 2: APPLICATION (JAR/JWE)                                         ││
-│  │  ───────────────────────────────                                       ││
+│  │  ───────────────────────────────                                       │ │
 │  │  • Request encryption: JWT Secured Authorization Request (JAR)          ││
 │  │  • Response signing: KB-JWT signature                                   ││
 │  │  • Nonce binding: Prevents replay                                       ││
 │  │                                                                         ││
 │  │  Layer 3: SESSION BINDING                                               ││
-│  │  ────────────────────────────                                          ││
+│  │  ────────────────────────────                                          │ │
 │  │  • Nonce: Fresh per request                                             ││
 │  │  • Audience: Binds to specific verifier                                 ││
 │  │  • Transaction hash: Binds to specific transaction                      ││
@@ -3097,28 +3097,28 @@ Article 4(3)(c) mandates protection against **capture** (eavesdropping) and **ma
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  AUTHORIZATION REQUEST (PSP → Wallet)                                       │
-│  ─────────────────────────────────────                                     │
+│  ─────────────────────────────────────                                      │
 │  {                                                                          │
 │    "nonce": "abc123...",        ◄── Fresh per request                       │
-│    "client_id": "psp.example",  ◄── PSP identifier                         │
-│    "response_uri": "https://...",◄── Where to send response                │
+│    "client_id": "psp.example",  ◄── PSP identifier                          │
+│    "response_uri": "https://...",◄── Where to send response                 │
 │    "presentation_definition": {...}                                         │
 │  }                                                                          │
 │                                                                             │
 │  VP TOKEN RESPONSE (Wallet → PSP)                                           │
-│  ─────────────────────────────────                                         │
+│  ─────────────────────────────────                                          │
 │  KB-JWT contains:                                                           │
 │  {                                                                          │
-│    "nonce": "abc123...",        ◄── MUST match request nonce               │
-│    "aud": "psp.example",        ◄── MUST match client_id                   │
-│    "iat": 1706...,              ◄── Timestamp for freshness                │
-│    "transaction_data_hashes": [...]  ◄── Dynamic linking                   │
+│    "nonce": "abc123...",        ◄── MUST match request nonce                │
+│    "aud": "psp.example",        ◄── MUST match client_id                    │
+│    "iat": 1706...,              ◄── Timestamp for freshness                 │
+│    "transaction_data_hashes": [...]  ◄── Dynamic linking                    │
 │  }                                                                          │
 │                                                                             │
 │  VERIFICATION:                                                              │
-│  • nonce mismatch → REJECT (replay/confusion attack)                       │
-│  • aud mismatch → REJECT (redirect attack)                                 │
-│  • iat > 5 min → REJECT (stale presentation)                               │
+│  • nonce mismatch → REJECT (replay/confusion attack)                        │
+│  • aud mismatch → REJECT (redirect attack)                                  │
+│  • iat > 5 min → REJECT (stale presentation)                                │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -3232,29 +3232,29 @@ Article 4(3)(d) mandates that after SCA, the PSP session must timeout after **5 
 │                     Session Timeout Responsibility Model                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                         SCA FLOW                                    │   │
-│  │                                                                     │   │
-│  │   User ──► Wallet (SCA) ──► VP Token ──► PSP ──► Session Created   │   │
-│  │                                           │                         │   │
-│  │                                           ▼                         │   │
-│  │                                    ┌────────────┐                   │   │
-│  │                                    │ PSP Server │                   │   │
-│  │                                    │  Session   │                   │   │
-│  │                                    │  Timer     │                   │   │
-│  │                                    └─────┬──────┘                   │   │
-│  │                                          │                          │   │
-│  │           Activity? ───► Reset Timer ◄───┘                          │   │
-│  │              │                                                      │   │
-│  │              ▼                                                      │   │
-│  │        5 min inactivity ──► SESSION TERMINATED                      │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                         SCA FLOW                                    │    │
+│  │                                                                     │    │
+│  │   User ──► Wallet (SCA) ──► VP Token ──► PSP ──► Session Created   │     │
+│  │                                           │                         │    │
+│  │                                           ▼                         │    │
+│  │                                    ┌────────────┐                   │    │
+│  │                                    │ PSP Server │                   │    │
+│  │                                    │  Session   │                   │    │
+│  │                                    │  Timer     │                   │    │
+│  │                                    └─────┬──────┘                   │    │
+│  │                                          │                          │    │
+│  │           Activity? ───► Reset Timer ◄───┘                          │    │
+│  │              │                                                      │    │
+│  │              ▼                                                      │    │
+│  │        5 min inactivity ──► SESSION TERMINATED                      │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   │
 │                                                                             │
-│  WALLET RESPONSIBILITY: None (wallet doesn't manage PSP session)           │
-│  PSP RESPONSIBILITY: Enforce 5-minute idle timeout server-side             │
+│  WALLET RESPONSIBILITY: None (wallet doesn't manage PSP session)            │
+│  PSP RESPONSIBILITY: Enforce 5-minute idle timeout server-side              │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -3307,22 +3307,22 @@ The EBA has clarified exemptions where the 5-minute timeout may not apply:
 │                     Session Types in EUDI Wallet + PSD2                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌──────────────────────────────────┐  ┌────────────────────────────────┐  │
-│  │   WALLET SESSION                 │  │   PSP SESSION                  │  │
-│  │   (NOT governed by Art. 4(3)(d)) │  │   (GOVERNED by Art. 4(3)(d))   │  │
-│  │                                  │  │                                │  │
-│  │   • Wallet PIN unlock            │  │   • Created after SCA          │  │
-│  │   • Device-local timeout         │  │   • Server-side tracking       │  │
-│  │   • Biometric re-auth            │  │   • 5-minute idle timeout      │  │
-│  │   • Wallet's own policy          │  │   • PSP's responsibility       │  │
-│  │                                  │  │                                │  │
-│  │   Timeout: Wallet-defined        │  │   Timeout: MAX 5 minutes       │  │
-│  │   (e.g., 2 min, 5 min, etc.)     │  │   (regulatory mandate)         │  │
-│  │                                  │  │                                │  │
-│  └──────────────────────────────────┘  └────────────────────────────────┘  │
+│  ┌──────────────────────────────────┐  ┌────────────────────────────────┐   │
+│  │   WALLET SESSION                 │  │   PSP SESSION                  │   │
+│  │   (NOT governed by Art. 4(3)(d)) │  │   (GOVERNED by Art. 4(3)(d))   │   │
+│  │                                  │  │                                │   │
+│  │   • Wallet PIN unlock            │  │   • Created after SCA          │   │
+│  │   • Device-local timeout         │  │   • Server-side tracking       │   │
+│  │   • Biometric re-auth            │  │   • 5-minute idle timeout      │   │
+│  │   • Wallet's own policy          │  │   • PSP's responsibility       │   │
+│  │                                  │  │                                │   │
+│  │   Timeout: Wallet-defined        │  │   Timeout: MAX 5 minutes       │   │
+│  │   (e.g., 2 min, 5 min, etc.)     │  │   (regulatory mandate)         │   │
+│  │                                  │  │                                │   │
+│  └──────────────────────────────────┘  └────────────────────────────────┘   │
 │                                                                             │
-│  After wallet performs SCA → PSP receives VP Token → PSP creates session   │
-│  → Art. 4(3)(d) applies to PSP session ONLY                                │
+│  After wallet performs SCA → PSP receives VP Token → PSP creates session    │
+│  → Art. 4(3)(d) applies to PSP session ONLY                                 │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -3542,28 +3542,28 @@ Article 6(2) mandates that PSPs implement **mitigation measures** to prevent kno
 │             Knowledge Element Disclosure Prevention Architecture            │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                      DISCLOSURE THREATS                             │   │
-│  │                                                                     │   │
-│  │   OBSERVATION          INTERCEPTION           DECEPTION            │   │
-│  │   ────────────         ────────────           ─────────            │   │
-│  │   • Shoulder surfing   • Keylogger            • Phishing           │   │
-│  │   • Screen recording   • Screen capture       • Fake app overlay   │   │
-│  │   • Camera recording   • Accessibility abuse  • Social engineering │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                      DISCLOSURE THREATS                             │    │
+│  │                                                                     │    │
+│  │   OBSERVATION          INTERCEPTION           DECEPTION            │     │
+│  │   ────────────         ────────────           ─────────            │     │
+│  │   • Shoulder surfing   • Keylogger            • Phishing           │     │
+│  │   • Screen recording   • Screen capture       • Fake app overlay   │     │
+│  │   • Camera recording   • Accessibility abuse  • Social engineering │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                    MITIGATION MEASURES                              │   │
-│  │                                                                     │   │
-│  │   TECHNICAL                PROCEDURAL              ARCHITECTURAL   │   │
-│  │   ─────────               ───────────              ─────────────   │   │
-│  │   • Masked input          • User education         • Local-only    │   │
-│  │   • Secure keyboard       • Phishing warnings      • TEE/SE hash   │   │
-│  │   • FLAG_SECURE           • Lockout policies       • Never transmit│   │
-│  │   • Overlay detection     • No verbal disclosure   • Attempt limits│   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    MITIGATION MEASURES                              │    │
+│  │                                                                     │    │
+│  │   TECHNICAL                PROCEDURAL              ARCHITECTURAL   │     │
+│  │   ─────────               ───────────              ─────────────   │     │
+│  │   • Masked input          • User education         • Local-only    │     │
+│  │   • Secure keyboard       • Phishing warnings      • TEE/SE hash   │     │
+│  │   • FLAG_SECURE           • Lockout policies       • Never transmit│     │
+│  │   • Overlay detection     • No verbal disclosure   • Attempt limits│     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -3605,30 +3605,30 @@ Article 6(2) mandates that PSPs implement **mitigation measures** to prevent kno
 │                    Secure PIN Entry Flow (EUDI Wallet)                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│   ┌───────────────────────────────────────────────────────────────────┐    │
-│   │                 PIN ENTRY SCREEN (FLAG_SECURE)                    │    │
-│   │                                                                   │    │
-│   │     Enter your 6-digit PIN                                        │    │
-│   │                                                                   │    │
-│   │        ┌─────────────────────────────┐                           │    │
-│   │        │    • • • • • •              │  ← Masked display          │    │
-│   │        └─────────────────────────────┘                           │    │
-│   │                                                                   │    │
-│   │        ┌───┬───┬───┐                                             │    │
-│   │        │ 3 │ 7 │ 2 │  ← Randomized (optional)                    │    │
-│   │        ├───┼───┼───┤                                             │    │
-│   │        │ 9 │ 0 │ 5 │                                             │    │
-│   │        ├───┼───┼───┤                                             │    │
-│   │        │ 1 │ 6 │ 8 │                                             │    │
-│   │        ├───┼───┼───┤                                             │    │
-│   │        │ ⌫ │ 4 │ ✓ │                                             │    │
-│   │        └───┴───┴───┘                                             │    │
-│   │                                                                   │    │
-│   │  🔒 3 attempts remaining                                         │    │
-│   │                                                                   │    │
-│   └───────────────────────────────────────────────────────────────────┘    │
+│   ┌───────────────────────────────────────────────────────────────────┐     │
+│   │                 PIN ENTRY SCREEN (FLAG_SECURE)                    │     │
+│   │                                                                   │     │
+│   │     Enter your 6-digit PIN                                        │     │
+│   │                                                                   │     │
+│   │        ┌─────────────────────────────┐                           │      │
+│   │        │    • • • • • •              │  ← Masked display          │     │
+│   │        └─────────────────────────────┘                           │      │
+│   │                                                                   │     │
+│   │        ┌───┬───┬───┐                                             │      │
+│   │        │ 3 │ 7 │ 2 │  ← Randomized (optional)                    │      │
+│   │        ├───┼───┼───┤                                             │      │
+│   │        │ 9 │ 0 │ 5 │                                             │      │
+│   │        ├───┼───┼───┤                                             │      │
+│   │        │ 1 │ 6 │ 8 │                                             │      │
+│   │        ├───┼───┼───┤                                             │      │
+│   │        │ ⌫ │ 4 │ ✓ │                                             │      │
+│   │        └───┴───┴───┘                                             │      │
+│   │                                                                   │     │
+│   │  🔒 3 attempts remaining                                         │       │
+│   │                                                                   │     │
+│   └───────────────────────────────────────────────────────────────────┘     │
 │                                                                             │
-│   PIN Flow: Input → WSCA hash → WSCD compare → Auth result                 │
+│   PIN Flow: Input → WSCA hash → WSCD compare → Auth result                  │
 │             (PIN value never leaves secure environment)                     │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -3763,29 +3763,29 @@ The EUDI Wallet uses a layered security architecture:
 │                    EUDI Wallet Security Architecture            │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │              Wallet Instance (User App)                  │   │
-│  │  ┌─────────────────────────────────────────────────────┐│   │
+│  │  ┌─────────────────────────────────────────────────────┐│    │
 │  │  │                    WSCA                              ││   │
-│  │  │     Wallet Secure Cryptographic Application         ││   │
-│  │  │  ┌───────────────────────────────────────────────┐  ││   │
-│  │  │  │           WSCD (Hardware)                     │  ││   │
-│  │  │  │  ┌─────────────────────────────────────────┐  │  ││   │
-│  │  │  │  │         Private Keys                    │  │  ││   │
-│  │  │  │  │  • SCA Attestation Key                  │  │  ││   │
-│  │  │  │  │  • Device Binding Key                   │  │  ││   │
-│  │  │  │  │  • Credential Private Keys              │  │  ││   │
-│  │  │  │  │                                         │  │  ││   │
-│  │  │  │  │  🔒 NON-EXTRACTABLE                     │  │  ││   │
-│  │  │  │  │  🔒 Hardware-Protected                  │  │  ││   │
-│  │  │  │  │  🔒 User-Auth Required                  │  │  ││   │
-│  │  │  │  └─────────────────────────────────────────┘  │  ││   │
-│  │  │  │                                               │  ││   │
-│  │  │  │  iOS: Secure Enclave  │  Android: StrongBox   │  ││   │
-│  │  │  │                       │  or TEE Keymaster     │  ││   │
-│  │  │  └───────────────────────────────────────────────┘  ││   │
-│  │  └─────────────────────────────────────────────────────┘│   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │  │     Wallet Secure Cryptographic Application         ││    │
+│  │  │  ┌───────────────────────────────────────────────┐  ││    │
+│  │  │  │           WSCD (Hardware)                     │  ││    │
+│  │  │  │  ┌─────────────────────────────────────────┐  │  ││    │
+│  │  │  │  │         Private Keys                    │  │  ││    │
+│  │  │  │  │  • SCA Attestation Key                  │  │  ││    │
+│  │  │  │  │  • Device Binding Key                   │  │  ││    │
+│  │  │  │  │  • Credential Private Keys              │  │  ││    │
+│  │  │  │  │                                         │  │  ││    │
+│  │  │  │  │  🔒 NON-EXTRACTABLE                     │  │  ││     │
+│  │  │  │  │  🔒 Hardware-Protected                  │  │  ││     │
+│  │  │  │  │  🔒 User-Auth Required                  │  │  ││     │
+│  │  │  │  └─────────────────────────────────────────┘  │  ││    │
+│  │  │  │                                               │  ││    │
+│  │  │  │  iOS: Secure Enclave  │  Android: StrongBox   │  ││    │
+│  │  │  │                       │  or TEE Keymaster     │  ││    │
+│  │  │  └───────────────────────────────────────────────┘  ││    │
+│  │  └─────────────────────────────────────────────────────┘│    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 
@@ -3943,36 +3943,36 @@ Article 7(2) mandates that possession elements must be protected against **repli
 │                    Anti-Cloning Protection Architecture                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     CLONING THREAT MODEL                            │   │
-│  │                                                                     │   │
-│  │   EXTRACTION            INTERCEPTION          PHYSICAL             │   │
-│  │   ────────────          ────────────          ────────             │   │
-│  │   • Malware reads key   • Key during transit  • SIM cloning        │   │
-│  │   • App decompilation   • Memory dumping      • Device theft       │   │
-│  │   • Rooted device       • Debug interface     • Hardware attack    │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     CLONING THREAT MODEL                            │    │
+│  │                                                                     │    │
+│  │   EXTRACTION            INTERCEPTION          PHYSICAL             │     │
+│  │   ────────────          ────────────          ────────             │     │
+│  │   • Malware reads key   • Key during transit  • SIM cloning        │     │
+│  │   • App decompilation   • Memory dumping      • Device theft       │     │
+│  │   • Rooted device       • Debug interface     • Hardware attack    │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                  ANTI-CLONING MEASURES                              │   │
-│  │                                                                     │   │
-│  │   HARDWARE                                                          │   │
-│  │   • Secure Element (SE) — tamper-resistant chip                    │   │
-│  │   • TEE/StrongBox — hardware-isolated key storage                  │   │
-│  │   • Non-extractable key flag — OS enforced                         │   │
-│  │                                                                     │   │
-│  │   CRYPTOGRAPHIC                                                     │   │
-│  │   • Key generated inside SE — never leaves hardware                │   │
-│  │   • Sign operations happen in SE — key never in app memory         │   │
-│  │   • Key attestation — proves key is hardware-bound                 │   │
-│  │                                                                     │   │
-│  │   OPERATIONAL                                                       │   │
-│  │   • Device binding — key tied to specific device                   │   │
-│  │   • Counter verification — detect cloned authenticators            │   │
-│  │   • Revocation — invalidate compromised keys                       │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                  ANTI-CLONING MEASURES                              │    │
+│  │                                                                     │    │
+│  │   HARDWARE                                                          │    │
+│  │   • Secure Element (SE) — tamper-resistant chip                    │     │
+│  │   • TEE/StrongBox — hardware-isolated key storage                  │     │
+│  │   • Non-extractable key flag — OS enforced                         │     │
+│  │                                                                     │    │
+│  │   CRYPTOGRAPHIC                                                     │    │
+│  │   • Key generated inside SE — never leaves hardware                │     │
+│  │   • Sign operations happen in SE — key never in app memory         │     │
+│  │   • Key attestation — proves key is hardware-bound                 │     │
+│  │                                                                     │    │
+│  │   OPERATIONAL                                                       │    │
+│  │   • Device binding — key tied to specific device                   │     │
+│  │   • Counter verification — detect cloned authenticators            │     │
+│  │   • Revocation — invalidate compromised keys                       │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4007,36 +4007,36 @@ Article 7(2) mandates that possession elements must be protected against **repli
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │   GENERATION                                                                │
-│   ──────────                                                               │
-│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
-│   │   Wallet App        │  request  │        WSCD (Secure Element)    │   │
-│   │                     │ ────────► │                                 │   │
-│   │   "Generate key"    │           │   1. RNG → private key Kp      │   │
-│   │                     │           │   2. Compute public key Kpub    │   │
-│   │                     │ ◄──────── │   3. Return Kpub ONLY           │   │
-│   │   Receives: Kpub    │  pubkey   │   4. Kp NEVER leaves SE         │   │
-│   └─────────────────────┘           └─────────────────────────────────┘   │
+│   ──────────                                                                │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐     │
+│   │   Wallet App        │  request  │        WSCD (Secure Element)    │     │
+│   │                     │ ────────► │                                 │     │
+│   │   "Generate key"    │           │   1. RNG → private key Kp      │      │
+│   │                     │           │   2. Compute public key Kpub    │     │
+│   │                     │ ◄──────── │   3. Return Kpub ONLY           │     │
+│   │   Receives: Kpub    │  pubkey   │   4. Kp NEVER leaves SE         │     │
+│   └─────────────────────┘           └─────────────────────────────────┘     │
 │                                                                             │
 │   SIGNING                                                                   │
-│   ───────                                                                  │
-│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
-│   │   Wallet App        │   hash    │        WSCD (Secure Element)    │   │
-│   │                     │ ────────► │                                 │   │
-│   │   "Sign this hash"  │           │   1. User auth (PIN/bio)        │   │
-│   │                     │           │   2. Sign with Kp               │   │
-│   │                     │ ◄──────── │   3. Return signature           │   │
-│   │   Receives: sig     │  signature│   4. Kp STAYS in SE             │   │
-│   └─────────────────────┘           └─────────────────────────────────┘   │
+│   ───────                                                                   │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐     │
+│   │   Wallet App        │   hash    │        WSCD (Secure Element)    │     │
+│   │                     │ ────────► │                                 │     │
+│   │   "Sign this hash"  │           │   1. User auth (PIN/bio)        │     │
+│   │                     │           │   2. Sign with Kp               │     │
+│   │                     │ ◄──────── │   3. Return signature           │     │
+│   │   Receives: sig     │  signature│   4. Kp STAYS in SE             │     │
+│   └─────────────────────┘           └─────────────────────────────────┘     │
 │                                                                             │
 │   EXPORT ATTEMPT                                                            │
-│   ─────────────                                                            │
-│   ┌─────────────────────┐           ┌─────────────────────────────────┐   │
-│   │   Malware           │  "export" │        WSCD (Secure Element)    │   │
-│   │                     │ ────────► │                                 │   │
-│   │   "Give me Kp"      │           │   ❌ DENIED                     │   │
-│   │                     │ ◄──────── │   (non-extractable policy)      │   │
-│   │   Receives: ERROR   │   error   │                                 │   │
-│   └─────────────────────┘           └─────────────────────────────────┘   │
+│   ─────────────                                                             │
+│   ┌─────────────────────┐           ┌─────────────────────────────────┐     │
+│   │   Malware           │  "export" │        WSCD (Secure Element)    │     │
+│   │                     │ ────────► │                                 │     │
+│   │   "Give me Kp"      │           │   ❌ DENIED                     │      │
+│   │                     │ ◄──────── │   (non-extractable policy)      │     │
+│   │   Receives: ERROR   │   error   │                                 │     │
+│   └─────────────────────┘           └─────────────────────────────────┘     │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4239,10 +4239,10 @@ Article 8(1) requires a **"very low probability"** of unauthorized authenticatio
 │   │              │◄─────────────────│                   │       │
 │   │              │                  │                   │       │
 │   │              │ Unlock private key for signing       │       │
-│   │              │────────────────────────────────────►│       │
+│   │              │────────────────────────────────────►│        │
 │   │              │                  │                   │       │
 │   │              │ Sign KB-JWT                          │       │
-│   │              │◄────────────────────────────────────│       │
+│   │              │◄────────────────────────────────────│        │
 │   │              │                  │                   │       │
 │   │              │    ⚠️ BIOMETRIC TEMPLATE NEVER       │       │
 │   │              │       LEAVES SECURE ENCLAVE          │       │
@@ -4324,37 +4324,37 @@ Article 8(2) focuses on protecting biometric systems from unauthorized access at
 │              Biometric Resistance Against Unauthorized Use                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     ATTACK SURFACE                                  │   │
-│  │                                                                     │   │
-│  │   PRESENTATION         SOFTWARE             HARDWARE               │   │
-│  │   ────────────         ────────             ────────               │   │
-│  │   • Fake fingerprint   • Inject auth result • Sensor bypass        │   │
-│  │   • Photo/video face   • Tampered app       • Debug interface      │   │
-│  │   • 3D mask            • Rooted device      • Template extraction  │   │
-│  │   • Voice recording    • API hooking        • Sensor spoofing      │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     ATTACK SURFACE                                  │    │
+│  │                                                                     │    │
+│  │   PRESENTATION         SOFTWARE             HARDWARE               │     │
+│  │   ────────────         ────────             ────────               │     │
+│  │   • Fake fingerprint   • Inject auth result • Sensor bypass        │     │
+│  │   • Photo/video face   • Tampered app       • Debug interface      │     │
+│  │   • 3D mask            • Rooted device      • Template extraction  │     │
+│  │   • Voice recording    • API hooking        • Sensor spoofing      │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                  RESISTANCE MEASURES                                │   │
-│  │                                                                     │   │
-│  │   PRESENTATION ATTACK DETECTION (PAD)                              │   │
-│  │   • Liveness detection — verify live human                         │   │
-│  │   • Depth sensing — 3D face scan, IR                               │   │
-│  │   • Texture analysis — skin vs. silicone                           │   │
-│  │                                                                     │   │
-│  │   SOFTWARE INTEGRITY                                                │   │
-│  │   • App attestation — verify app not tampered                      │   │
-│  │   • OS integrity check — detect rooting/jailbreak                  │   │
-│  │   • Secure path — sensor → Secure Enclave (no app access)          │   │
-│  │                                                                     │   │
-│  │   HARDWARE SECURITY                                                 │   │
-│  │   • Secure Enclave — biometric match in isolated hardware          │   │
-│  │   • Certified sensors — manufacturer attestation                   │   │
-│  │   • Template encryption — biometric data encrypted at rest         │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                  RESISTANCE MEASURES                                │    │
+│  │                                                                     │    │
+│  │   PRESENTATION ATTACK DETECTION (PAD)                              │     │
+│  │   • Liveness detection — verify live human                         │     │
+│  │   • Depth sensing — 3D face scan, IR                               │     │
+│  │   • Texture analysis — skin vs. silicone                           │     │
+│  │                                                                     │    │
+│  │   SOFTWARE INTEGRITY                                                │    │
+│  │   • App attestation — verify app not tampered                      │     │
+│  │   • OS integrity check — detect rooting/jailbreak                  │     │
+│  │   • Secure path — sensor → Secure Enclave (no app access)          │     │
+│  │                                                                     │    │
+│  │   HARDWARE SECURITY                                                 │    │
+│  │   • Secure Enclave — biometric match in isolated hardware          │     │
+│  │   • Certified sensors — manufacturer attestation                   │     │
+│  │   • Template encryption — biometric data encrypted at rest         │     │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4404,22 +4404,22 @@ ISO/IEC 30107 defines the standard for biometric Presentation Attack Detection:
 │                  Biometric Authentication Secure Path                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│   ┌─────────────┐                      ┌─────────────────────────────────┐ │
-│   │   SENSOR    │  ───────────────────►│        SECURE ENCLAVE           │ │
-│   │  (Hardware) │     Raw biometric    │                                 │ │
-│   └─────────────┘     (encrypted path) │   1. Decrypt sample             │ │
-│                                        │   2. Extract features           │ │
-│                                        │   3. Match against template     │ │
-│                                        │   4. Liveness check             │ │
-│                                        │   5. Return: auth success/fail  │ │
-│                                        │                                 │ │
-│   ┌─────────────┐                      │   ❌ Template NEVER leaves SE   │ │
-│   │  WALLET APP │  ◄───────────────────│   ❌ App gets ONLY result       │ │
-│   │             │     Boolean result   │                                 │ │
-│   └─────────────┘                      └─────────────────────────────────┘ │
+│   ┌─────────────┐                      ┌─────────────────────────────────┐  │
+│   │   SENSOR    │  ───────────────────►│        SECURE ENCLAVE           │  │
+│   │  (Hardware) │     Raw biometric    │                                 │  │
+│   └─────────────┘     (encrypted path) │   1. Decrypt sample             │  │
+│                                        │   2. Extract features           │  │
+│                                        │   3. Match against template     │  │
+│                                        │   4. Liveness check             │  │
+│                                        │   5. Return: auth success/fail  │  │
+│                                        │                                 │  │
+│   ┌─────────────┐                      │   ❌ Template NEVER leaves SE   │   │
+│   │  WALLET APP │  ◄───────────────────│   ❌ App gets ONLY result       │   │
+│   │             │     Boolean result   │                                 │  │
+│   └─────────────┘                      └─────────────────────────────────┘  │
 │                                                                             │
-│   GUARANTEE: Even if app is compromised, biometric template is safe       │
-│              App cannot inject fake "success" — OS enforces path           │
+│   GUARANTEE: Even if app is compromised, biometric template is safe         │
+│              App cannot inject fake "success" — OS enforces path            │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4516,34 +4516,34 @@ Article 9(1) mandates that the compromise of one SCA element must NOT compromise
 │                    Independence of SCA Elements                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                     │
-│  │  KNOWLEDGE  │    │ POSSESSION  │    │  INHERENCE  │                     │
-│  │   (PIN)     │    │   (Key)     │    │ (Biometric) │                     │
-│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                     │
-│         │                  │                  │                            │
-│         ▼                  ▼                  ▼                            │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                     │
-│  │ Validated by│    │ Protected in│    │ Managed by  │                     │
-│  │ WSCA/WSCD   │    │ WSCD HW     │    │ OS Enclave  │                     │
-│  │ (not stored)│    │ (non-export)│    │ (no access) │                     │
-│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                     │
-│         │                  │                  │                            │
-│         └────────────┬─────┴──────────────────┘                            │
-│                      │                                                     │
-│                      ▼                                                     │
-│           ┌─────────────────────┐                                          │
-│           │   INDEPENDENCE      │                                          │
-│           │   GUARANTEE         │                                          │
-│           │                     │                                          │
-│           │  Breach of ONE  ══╱╲══  Does NOT expose OTHERS                │
-│           └─────────────────────┘                                          │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                      │
+│  │  KNOWLEDGE  │    │ POSSESSION  │    │  INHERENCE  │                      │
+│  │   (PIN)     │    │   (Key)     │    │ (Biometric) │                      │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                      │
+│         │                  │                  │                             │
+│         ▼                  ▼                  ▼                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                      │
+│  │ Validated by│    │ Protected in│    │ Managed by  │                      │
+│  │ WSCA/WSCD   │    │ WSCD HW     │    │ OS Enclave  │                      │
+│  │ (not stored)│    │ (non-export)│    │ (no access) │                      │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                      │
+│         │                  │                  │                             │
+│         └────────────┬─────┴──────────────────┘                             │
+│                      │                                                      │
+│                      ▼                                                      │
+│           ┌─────────────────────┐                                           │
+│           │   INDEPENDENCE      │                                           │
+│           │   GUARANTEE         │                                           │
+│           │                     │                                           │
+│           │  Breach of ONE  ══╱╲══  Does NOT expose OTHERS                  │
+│           └─────────────────────┘                                           │
 │                                                                             │
-│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   │
 │                                                                             │
-│  SEPARATION MECHANISMS:                                                    │
-│  • Knowledge:   Hashed/encrypted, never stored plaintext                   │
-│  • Possession:  Hardware-isolated, non-extractable keys                    │
-│  • Inherence:   OS-managed, wallet has no template access                  │
+│  SEPARATION MECHANISMS:                                                     │
+│  • Knowledge:   Hashed/encrypted, never stored plaintext                    │
+│  • Possession:  Hardware-isolated, non-extractable keys                     │
+│  • Inherence:   OS-managed, wallet has no template access                   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4671,29 +4671,29 @@ Article 9(2) acknowledges that smartphones are "multi-purpose devices" that can 
 │                  Multi-Purpose Device Security Architecture                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     SMARTPHONE (Multi-Purpose)                      │   │
-│  │                                                                     │   │
-│  │   ┌─────────────────────────────────────────────────────────────┐   │   │
-│  │   │               APPLICATION LAYER (Rich OS)                   │   │   │
-│  │   │   • Banking apps, browsers, third-party apps                │   │   │
-│  │   │   • Malware risk: HIGH                                      │   │   │
-│  │   │   • Data isolation: Process-level only                      │   │   │
-│  │   └─────────────────────────────────────────────────────────────┘   │   │
-│  │                              ▼                                      │   │
-│  │   ┌─────────────────────────────────────────────────────────────┐   │   │
-│  │   │        TRUSTED EXECUTION ENVIRONMENT (TEE/SE)               │   │   │
-│  │   │   • Secure Enclave (iOS) / StrongBox/TEE (Android)          │   │   │
-│  │   │   • Malware risk: VERY LOW                                  │   │   │
-│  │   │   • Hardware isolation from Rich OS                         │   │   │
-│  │   │                                                             │   │   │
-│  │   │   Stores: Private keys, PIN hash, biometric templates       │   │   │
-│  │   │   Operations: Signing, key derivation, biometric match      │   │   │
-│  │   └─────────────────────────────────────────────────────────────┘   │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     SMARTPHONE (Multi-Purpose)                      │    │
+│  │                                                                     │    │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │    │
+│  │   │               APPLICATION LAYER (Rich OS)                   │   │    │
+│  │   │   • Banking apps, browsers, third-party apps                │   │    │
+│  │   │   • Malware risk: HIGH                                      │   │    │
+│  │   │   • Data isolation: Process-level only                      │   │    │
+│  │   └─────────────────────────────────────────────────────────────┘   │    │
+│  │                              ▼                                      │    │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │    │
+│  │   │        TRUSTED EXECUTION ENVIRONMENT (TEE/SE)               │   │    │
+│  │   │   • Secure Enclave (iOS) / StrongBox/TEE (Android)          │   │    │
+│  │   │   • Malware risk: VERY LOW                                  │   │    │
+│  │   │   • Hardware isolation from Rich OS                         │   │    │
+│  │   │                                                             │   │    │
+│  │   │   Stores: Private keys, PIN hash, biometric templates       │   │    │
+│  │   │   Operations: Signing, key derivation, biometric match      │   │    │
+│  │   └─────────────────────────────────────────────────────────────┘   │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  RISK: Compromise of Rich OS should NOT compromise SCA elements in TEE    │
+│  RISK: Compromise of Rich OS should NOT compromise SCA elements in TEE      │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4724,25 +4724,25 @@ Article 9(2) acknowledges that smartphones are "multi-purpose devices" that can 
 │                       SCA Element Isolation on Smartphone                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Layer 5: APPLICATION (Wallet App)                                         │
-│           └── Requests signatures, receives results                        │
-│           └── CANNOT access: Keys, PIN, biometric templates                │
+│  Layer 5: APPLICATION (Wallet App)                                          │
+│           └── Requests signatures, receives results                         │
+│           └── CANNOT access: Keys, PIN, biometric templates                 │
 │                                                                             │
-│  Layer 4: ANDROID KEYSTORE / iOS KEYCHAIN                                  │
-│           └── OS-mediated access to cryptographic operations               │
-│           └── Enforces user authentication before key use                  │
+│  Layer 4: ANDROID KEYSTORE / iOS KEYCHAIN                                   │
+│           └── OS-mediated access to cryptographic operations                │
+│           └── Enforces user authentication before key use                   │
 │                                                                             │
-│  Layer 3: TRUSTED EXECUTION ENVIRONMENT (TEE)                              │
-│           └── Runs Trusted Applications (TAs) in isolated memory           │
-│           └── Hardware-separated from Rich OS                              │
+│  Layer 3: TRUSTED EXECUTION ENVIRONMENT (TEE)                               │
+│           └── Runs Trusted Applications (TAs) in isolated memory            │
+│           └── Hardware-separated from Rich OS                               │
 │                                                                             │
-│  Layer 2: SECURE ELEMENT (SE) / StrongBox                                  │
-│           └── Dedicated security chip (tamper-resistant)                   │
-│           └── CC EAL5+ / FIPS 140-2/3 certified                            │
+│  Layer 2: SECURE ELEMENT (SE) / StrongBox                                   │
+│           └── Dedicated security chip (tamper-resistant)                    │
+│           └── CC EAL5+ / FIPS 140-2/3 certified                             │
 │                                                                             │
-│  Layer 1: HARDWARE ROOT OF TRUST                                           │
-│           └── Secure boot, hardware attestation key                        │
-│           └── Unmodifiable by software                                     │
+│  Layer 1: HARDWARE ROOT OF TRUST                                            │
+│           └── Secure boot, hardware attestation key                         │
+│           └── Unmodifiable by software                                      │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -4932,52 +4932,52 @@ Dynamic linking is the **cornerstone** of PSD2 SCA for payment transactions. It 
 │                    Dynamic Linking: The Four Pillars                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     PILLAR 1: AWARENESS (5(1)(a))                   │   │
-│  │                                                                     │   │
-│  │   "Payer is made aware of the amount and payee"                    │   │
-│  │                                                                     │   │
-│  │   IMPLEMENTATION: Secure display of transaction details            │   │
-│  │   • Amount: €100.00                                                 │   │
-│  │   • Payee: "ACME Corporation"                                       │   │
-│  │   • IBAN: DE89370400440532013000                                    │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     PILLAR 1: AWARENESS (5(1)(a))                   │    │
+│  │                                                                     │    │
+│  │   "Payer is made aware of the amount and payee"                    │     │
+│  │                                                                     │    │
+│  │   IMPLEMENTATION: Secure display of transaction details            │     │
+│  │   • Amount: €100.00                                                 │    │
+│  │   • Payee: "ACME Corporation"                                       │    │
+│  │   • IBAN: DE89370400440532013000                                    │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     PILLAR 2: BINDING (5(1)(b))                     │   │
-│  │                                                                     │   │
-│  │   "Auth code is SPECIFIC to amount and payee"                      │   │
-│  │                                                                     │   │
-│  │   IMPLEMENTATION: Cryptographic hash inclusion                      │   │
-│  │   • transaction_data_hashes: [hash(amount, payee)]                 │   │
-│  │   • Signed by user's private key in Secure Enclave                  │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     PILLAR 2: BINDING (5(1)(b))                     │    │
+│  │                                                                     │    │
+│  │   "Auth code is SPECIFIC to amount and payee"                      │     │
+│  │                                                                     │    │
+│  │   IMPLEMENTATION: Cryptographic hash inclusion                      │    │
+│  │   • transaction_data_hashes: [hash(amount, payee)]                 │     │
+│  │   • Signed by user's private key in Secure Enclave                  │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     PILLAR 3: VERIFICATION (5(1)(c))                │   │
-│  │                                                                     │   │
-│  │   "PSP verifies code CORRESPONDS to original amount/payee"         │   │
-│  │                                                                     │   │
-│  │   IMPLEMENTATION: Server-side comparison                            │   │
-│  │   • PSP recomputes hash from original request                       │   │
-│  │   • Compares with hash in signed attestation                        │   │
-│  │   • Reject if mismatch                                              │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     PILLAR 3: VERIFICATION (5(1)(c))                │    │
+│  │                                                                     │    │
+│  │   "PSP verifies code CORRESPONDS to original amount/payee"         │     │
+│  │                                                                     │    │
+│  │   IMPLEMENTATION: Server-side comparison                            │    │
+│  │   • PSP recomputes hash from original request                       │    │
+│  │   • Compares with hash in signed attestation                        │    │
+│  │   • Reject if mismatch                                              │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                              ▼                                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                     PILLAR 4: INVALIDATION (5(1)(d))                │   │
-│  │                                                                     │   │
-│  │   "Any CHANGE to amount or payee INVALIDATES the code"             │   │
-│  │                                                                     │   │
-│  │   IMPLEMENTATION: Automatic by cryptographic design                 │   │
-│  │   • Hash changes if amount/payee changes                            │   │
-│  │   • Signature verification fails                                    │   │
-│  │   • Transaction rejected                                            │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     PILLAR 4: INVALIDATION (5(1)(d))                │    │
+│  │                                                                     │    │
+│  │   "Any CHANGE to amount or payee INVALIDATES the code"             │     │
+│  │                                                                     │    │
+│  │   IMPLEMENTATION: Automatic by cryptographic design                 │    │
+│  │   • Hash changes if amount/payee changes                            │    │
+│  │   • Signature verification fails                                    │    │
+│  │   • Transaction rejected                                            │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -5039,13 +5039,13 @@ Dynamic linking is the **cornerstone** of PSD2 SCA for payment transactions. It 
 │   PSP receives signed attestation                                           │
 │   PSP computes: hash(original_request.transaction_data)                     │
 │   PSP compares: computed_hash == attestation.transaction_data_hashes        │
-│   If match: ✅ Accept transaction                                           │
-│   If mismatch: ❌ Reject transaction                                        │
+│   If match: ✅ Accept transaction                                            │
+│   If mismatch: ❌ Reject transaction                                         │
 │                                                                             │
 │   5. INVALIDATION (5(1)(d))                                                 │
 │   ─────────────────────────                                                 │
 │   If attacker modifies amount/payee in transit:                             │
-│   • hash(modified_data) ≠ attestation.transaction_data_hashes              │
+│   • hash(modified_data) ≠ attestation.transaction_data_hashes               │
 │   • Signature verification fails at PSP                                     │
 │   • Transaction rejected                                                    │
 │                                                                             │
@@ -5120,18 +5120,18 @@ Article 5 **builds upon** Article 4:
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │   WYSIWYS Guarantee                                                 │
-│   ─────────────────────────────────────────────────────────────── │
+│   ───────────────────────────────────────────────────────────────   │
 │                                                                     │
 │   Displayed Content  ══════════════════════  Signed Content         │
 │         ↓                                          ↓                │
-│   ┌─────────────┐                          ┌─────────────┐         │
-│   │ €150.00     │       MUST               │ €150.00     │         │
-│   │ ACME Corp   │  ══════════════════════  │ ACME Corp   │         │
-│   │ DE89...     │       MATCH              │ DE89...     │         │
-│   └─────────────┘                          └─────────────┘         │
+│   ┌─────────────┐                          ┌─────────────┐          │
+│   │ €150.00     │       MUST               │ €150.00     │          │
+│   │ ACME Corp   │  ══════════════════════  │ ACME Corp   │          │
+│   │ DE89...     │       MATCH              │ DE89...     │          │
+│   └─────────────┘                          └─────────────┘          │
 │                                                                     │
-│   If User sees €150.00 to ACME, the signed hash MUST be for        │
-│   exactly €150.00 to ACME — nothing else.                          │
+│   If User sees €150.00 to ACME, the signed hash MUST be for         │
+│   exactly €150.00 to ACME — nothing else.                           │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -5164,30 +5164,30 @@ TS12 mandates a structured approach to displaying transaction data:
 │  EUDI Wallet                                          ☰ Menu    │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ╔═══════════════════════════════════════════════════════════╗ │
-│  ║                   PAYMENT CONFIRMATION                    ║ │
-│  ║                                                           ║ │
-│  ║   Amount:     €150.00                    [Level 1]       ║ │
-│  ║   Payee:      ACME Corporation           [Level 1]       ║ │
-│  ║                                                           ║ │
-│  ║   ─────────────────────────────────────────────────────  ║ │
-│  ║                                                           ║ │
-│  ║   IBAN:       DE89 3704 0044 0532 0130 00  [Level 2]    ║ │
-│  ║   Date:       2025-01-28                   [Level 2]    ║ │
-│  ║                                                           ║ │
-│  ║   ─────────────────────────────────────────────────────  ║ │
-│  ║                                                           ║ │
-│  ║   ⓘ Initiated by: PaymentApp (PISP)      [Level 2]      ║ │
-│  ║     Domain: paymentapp.example.com                       ║ │
-│  ║                                                           ║ │
-│  ╚═══════════════════════════════════════════════════════════╝ │
+│  ╔═══════════════════════════════════════════════════════════╗  │
+│  ║                   PAYMENT CONFIRMATION                    ║  │
+│  ║                                                           ║  │
+│  ║   Amount:     €150.00                    [Level 1]       ║   │
+│  ║   Payee:      ACME Corporation           [Level 1]       ║   │
+│  ║                                                           ║  │
+│  ║   ─────────────────────────────────────────────────────  ║   │
+│  ║                                                           ║  │
+│  ║   IBAN:       DE89 3704 0044 0532 0130 00  [Level 2]    ║    │
+│  ║   Date:       2025-01-28                   [Level 2]    ║    │
+│  ║                                                           ║  │
+│  ║   ─────────────────────────────────────────────────────  ║   │
+│  ║                                                           ║  │
+│  ║   ⓘ Initiated by: PaymentApp (PISP)      [Level 2]      ║    │
+│  ║     Domain: paymentapp.example.com                       ║   │
+│  ║                                                           ║  │
+│  ╚═══════════════════════════════════════════════════════════╝  │
 │                                                                 │
-│   ┌─────────────────────┐    ┌─────────────────────┐           │
-│   │   Cancel Payment    │    │  [🔐 Confirm Payment │           │
+│   ┌─────────────────────┐    ┌─────────────────────┐            │
+│   │   Cancel Payment    │    │  [🔐 Confirm Payment │            │
 │   │                     │    │      Use Face ID]    │           │
-│   └─────────────────────┘    └─────────────────────┘           │
+│   └─────────────────────┘    └─────────────────────┘            │
 │                                                                 │
-│   🔒 SCA Attestation: Your Bank AG (Issuer)                    │
+│   🔒 SCA Attestation: Your Bank AG (Issuer)                      │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -5329,7 +5329,7 @@ The binding between authentication code and transaction is achieved through a **
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  PSP/RP Request                                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ transaction_data: {                                      │   │
 │  │   type: "urn:eudi:sca:payment:1",                        │   │
 │  │   payload: {                                             │   │
@@ -5342,16 +5342,16 @@ The binding between authentication code and transaction is achieved through a **
 │  │     amount: 150.00                                       │   │
 │  │   }                                                      │   │
 │  │ }                                                        │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           │                                     │
 │            Base64url encode + SHA-256                           │
 │                           ▼                                     │
-│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"          │
+│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"           │
 └─────────────────────────────────────────────────────────────────┘
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Wallet Unit                                                    │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ 1. Display to User:                                      │   │
 │  │    ┌───────────────────────────────────────────────────┐ │   │
 │  │    │  Payment Confirmation                             │ │   │
@@ -5382,7 +5382,7 @@ The binding between authentication code and transaction is achieved through a **
 │  │    }                                                     │   │
 │  │                                                          │   │
 │  │ 4. Sign KB-JWT with WSCA-protected private key           │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────┘
                             ▼
               ECDSA Signature = Authentication Code
@@ -5521,52 +5521,52 @@ The PSP receiving a VP Token with KB-JWT MUST perform the following verification
 ┌─────────────────────────────────────────────────────────────────┐
 │  PSP Backend Verification                                       │
 │                                                                 │
-│  INPUT: VP Token (SD-JWT-VC + KB-JWT)                          │
+│  INPUT: VP Token (SD-JWT-VC + KB-JWT)                           │
 │         Original Transaction Request                            │
 │                                                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ Step 1: Verify KB-JWT Signature                          │   │
-│  │ ─────────────────────────────────────────────────────── │   │
+│  │ ─────────────────────────────────────────────────────── │    │
 │  │ • Extract public key from SCA Attestation                │   │
 │  │ • Verify ECDSA/EdDSA signature over KB-JWT               │   │
-│  │ • ❌ REJECT if signature invalid                         │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │ • ❌ REJECT if signature invalid                         │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           ▼                                     │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ Step 2: Verify SCA Attestation Trust Chain               │   │
-│  │ ─────────────────────────────────────────────────────── │   │
+│  │ ─────────────────────────────────────────────────────── │    │
 │  │ • Validate issuer signature (PSP's own key for own user) │   │
 │  │ • OR validate against trusted WSCA Provider registry     │   │
 │  │ • Check attestation not revoked                          │   │
-│  │ • ❌ REJECT if issuer untrusted or revoked               │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │ • ❌ REJECT if issuer untrusted or revoked               │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           ▼                                     │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ Step 3: Verify Transaction Data Hash                     │   │
-│  │ ─────────────────────────────────────────────────────── │   │
-│  │ original_hash = SHA256(base64url(transaction_data))     │   │
+│  │ ─────────────────────────────────────────────────────── │    │
+│  │ original_hash = SHA256(base64url(transaction_data))     │    │
 │  │ received_hash = KB-JWT.transaction_data_hashes[0]        │   │
 │  │                                                          │   │
 │  │ IF original_hash ≠ received_hash:                        │   │
-│  │   ❌ REJECT — Amount/payee mismatch (Art. 5(1)(c) fail)  │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │   ❌ REJECT — Amount/payee mismatch (Art. 5(1)(c) fail)  │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           ▼                                     │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ Step 4: Verify Nonce and Audience                        │   │
-│  │ ─────────────────────────────────────────────────────── │   │
+│  │ ─────────────────────────────────────────────────────── │    │
 │  │ • KB-JWT.nonce == original_request.nonce                 │   │
 │  │ • KB-JWT.aud matches PSP's identifier                    │   │
-│  │ • ❌ REJECT if session mismatch (replay attempt)         │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │ • ❌ REJECT if session mismatch (replay attempt)         │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           ▼                                     │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ Step 5: (Optional) Verify Timestamp                      │   │
-│  │ ─────────────────────────────────────────────────────── │   │
+│  │ ─────────────────────────────────────────────────────── │    │
 │  │ • KB-JWT.iat within acceptable window (e.g., 5 minutes)  │   │
 │  │ • ⚠️ WARN if stale; REJECT if clearly expired            │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           ▼                                     │
-│  ✅ ACCEPT — Execute payment                                   │
+│  ✅ ACCEPT — Execute payment                                     │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -5629,7 +5629,7 @@ The verification complexity differs significantly between the two TS12-defined f
 │   User   │ ──── │   Wallet   │ ──── │     PSP      │
 │          │      │            │      │  (RP=Issuer) │
 └──────────┘      └────────────┘      └──────────────┘
-                        │                    │
+                        │                            │
                      VP Token ────────────▶  │
                                     PSP verifies against
                                     its OWN original request
@@ -5641,9 +5641,9 @@ The verification complexity differs significantly between the two TS12-defined f
 │   User   │ ──── │   Wallet   │ ──── │  TPP (PISP)  │ ──── │   PSP    │
 │          │      │            │      │     (RP)     │      │  (Bank)  │
 └──────────┘      └────────────┘      └──────────────┘      └──────────┘
-                        │                    │                    │
+                        │                    │                         │
                      VP Token ────────────▶  │                    │
-                                             │                    │
+                                             │                         │
                                       VP Token + ─────────────▶   │
                                       transaction_data            │
                                                          PSP verifies but
@@ -5730,33 +5730,33 @@ The guarantee is achieved through **cryptographic hash binding**:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Original Transaction                                           │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ payload: { amount: "€150.00", payee: "ACME Corp" }       │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           │                                     │
 │           SHA-256(canonical_json(payload))                      │
 │                           ▼                                     │
-│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"          │
+│  hash = "OJcnQQByvV1iTYxiQQQx4dact-TNnSG-Ku_cs_6g55Q"           │
 │                           │                                     │
 │                 Signed in KB-JWT                                │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ { "transaction_data_hashes": ["OJcnQQ..."], ... }        │   │
 │  │  ← ECDSA signature with WSCA private key                 │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│  Modified Transaction (attacker changes €150 → €1500)          │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  Modified Transaction (attacker changes €150 → €1500)           │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ payload: { amount: "€1500.00", payee: "ACME Corp" }      │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           │                                     │
 │           SHA-256(canonical_json(payload))                      │
 │                           ▼                                     │
-│  hash = "7xK2mNp4ZQwL3vRtYhBn9dFgJsE...completely different"   │
+│  hash = "7xK2mNp4ZQwL3vRtYhBn9dFgJsE...completely different"    │
 │                           │                                     │
-│  ❌ Does NOT match "OJcnQQ..." in signed KB-JWT                │
-│  ❌ PSP verification FAILS → Transaction REJECTED              │
+│  ❌ Does NOT match "OJcnQQ..." in signed KB-JWT                  │
+│  ❌ PSP verification FAILS → Transaction REJECTED                │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -5866,41 +5866,41 @@ The EBA introduced dynamic linking specifically to prevent **social engineering 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  PSP/RP (Backend)                                               │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ transaction_data: {                                      │   │
 │  │   type: "payment_confirmation",                          │   │
 │  │   payload: { amount: "€150.00", payee: "ACME Corp" }     │   │
 │  │ }                                                        │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           │                                     │
 │                    (1) Generation                               │
-│                    ✅ Signed JAR                                │
+│                    ✅ Signed JAR                                 │
 └───────────────────────────┼─────────────────────────────────────┘
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Network (TLS 1.2+)                                             │
 │                    (2) Transmission                             │
-│                    ✅ Encrypted + Integrity                     │
+│                    ✅ Encrypted + Integrity                      │
 └───────────────────────────┼─────────────────────────────────────┘
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Wallet Unit                                                    │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ (3) Display Phase                                        │   │
-│  │ ┌─────────────────────────────────────────────────────┐ │   │
-│  │ │  ┌───────────────────────────────────────────────┐  │ │   │
-│  │ │  │  Amount: €150.00  │  Payee: ACME Corp         │  │ │   │
-│  │ │  │  [Confirm Payment]   [Cancel]                 │  │ │   │
-│  │ │  └───────────────────────────────────────────────┘  │ │   │
-│  │ │  ⚠️ Vulnerable to overlay attacks?                  │ │   │
-│  │ └─────────────────────────────────────────────────────┘ │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │ ┌─────────────────────────────────────────────────────┐ │    │
+│  │ │  ┌───────────────────────────────────────────────┐  │ │    │
+│  │ │  │  Amount: €150.00  │  Payee: ACME Corp         │  │ │    │
+│  │ │  │  [Confirm Payment]   [Cancel]                 │  │ │    │
+│  │ │  └───────────────────────────────────────────────┘  │ │    │
+│  │ │  ⚠️ Vulnerable to overlay attacks?                  │ │    │
+│  │ └─────────────────────────────────────────────────────┘ │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                           │                                     │
 │                    (4) Use Phase                                │
-│  ┌─────────────────────────────────────────────────────────┐   │
+│  ┌─────────────────────────────────────────────────────────┐    │
 │  │ KB-JWT: { transaction_data_hashes: [SHA256(payload)] }   │   │
-│  │ ✅ Cryptographically binds displayed data to signature   │   │
-│  └─────────────────────────────────────────────────────────┘   │
+│  │ ✅ Cryptographically binds displayed data to signature   │    │
+│  └─────────────────────────────────────────────────────────┘    │
 └───────────────────────────┼─────────────────────────────────────┘
                             ▼
        PSP verifies: SHA256(received_payload) == hash_in_signature
@@ -5985,33 +5985,33 @@ Article 5(3) addresses **two special cases** of dynamic linking:
 │                     Batch Payment Dynamic Linking                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                    BATCH PAYMENT STRUCTURE                          │   │
-│  │                                                                     │   │
-│  │   BATCH FILE                                                        │   │
-│  │   ══════════                                                        │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │ Payment 1: €1,000 → Employee A (IBAN: DE89...)               │ │   │
-│  │   │ Payment 2: €1,500 → Employee B (IBAN: FR76...)               │ │   │
-│  │   │ Payment 3: €2,000 → Employee C (IBAN: ES91...)               │ │   │
-│  │   │ ...                                                           │ │   │
-│  │   │ Payment N: €X → Employee N (IBAN: XXnn...)                   │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                              ▼                                      │   │
-│  │   ┌───────────────────────────────────────────────────────────────┐ │   │
-│  │   │                  AGGREGATE AUTH CODE                          │ │   │
-│  │   │                                                               │ │   │
-│  │   │   Hash = SHA256(                                              │ │   │
-│  │   │     total_amount: €100,000                                    │ │   │
-│  │   │     payee_count: 50                                           │ │   │
-│  │   │     payee_ids: [IBAN1, IBAN2, ..., IBAN50]                   │ │   │
-│  │   │   )                                                           │ │   │
-│  │   │                                                               │ │   │
-│  │   │   Signature = ECDSA(Hash, PrivateKey)                         │ │   │
-│  │   │                                                               │ │   │
-│  │   └───────────────────────────────────────────────────────────────┘ │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    BATCH PAYMENT STRUCTURE                          │    │
+│  │                                                                     │    │
+│  │   BATCH FILE                                                        │    │
+│  │   ══════════                                                        │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │ Payment 1: €1,000 → Employee A (IBAN: DE89...)               │ │     │
+│  │   │ Payment 2: €1,500 → Employee B (IBAN: FR76...)               │ │     │
+│  │   │ Payment 3: €2,000 → Employee C (IBAN: ES91...)               │ │     │
+│  │   │ ...                                                           │ │    │
+│  │   │ Payment N: €X → Employee N (IBAN: XXnn...)                   │ │     │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                              ▼                                      │    │
+│  │   ┌───────────────────────────────────────────────────────────────┐ │    │
+│  │   │                  AGGREGATE AUTH CODE                          │ │    │
+│  │   │                                                               │ │    │
+│  │   │   Hash = SHA256(                                              │ │    │
+│  │   │     total_amount: €100,000                                    │ │    │
+│  │   │     payee_count: 50                                           │ │    │
+│  │   │     payee_ids: [IBAN1, IBAN2, ..., IBAN50]                   │ │     │
+│  │   │   )                                                           │ │    │
+│  │   │                                                               │ │    │
+│  │   │   Signature = ECDSA(Hash, PrivateKey)                         │ │    │
+│  │   │                                                               │ │    │
+│  │   └───────────────────────────────────────────────────────────────┘ │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6147,38 +6147,38 @@ Article 5(3)(b) specifies the **exact scope** of what the batch authentication c
 │  INPUT DATA                                                                 │
 │  ══════════                                                                 │
 │                                                                             │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  total_amount = €100,000.00                                           │ │
-│  │  currency = "EUR"                                                     │ │
-│  │  payees = [                                                           │ │
-│  │    { iban: "DE89370400440532013000", amount: €1,000 },               │ │
-│  │    { iban: "FR7630006000011234567890189", amount: €1,500 },          │ │
-│  │    { iban: "ES9121000418450200051332", amount: €2,000 },             │ │
-│  │    ... (50 payees)                                                    │ │
-│  │  ]                                                                    │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  total_amount = €100,000.00                                           │  │
+│  │  currency = "EUR"                                                     │  │
+│  │  payees = [                                                           │  │
+│  │    { iban: "DE89370400440532013000", amount: €1,000 },               │   │
+│  │    { iban: "FR7630006000011234567890189", amount: €1,500 },          │   │
+│  │    { iban: "ES9121000418450200051332", amount: €2,000 },             │   │
+│  │    ... (50 payees)                                                    │  │
+│  │  ]                                                                    │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                              ▼                                              │
 │  HASH COMPUTATION                                                           │
 │  ═════════════════                                                          │
 │                                                                             │
 │  Option A: FLAT HASH                                                        │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  canonical_string = total_amount || currency || sorted(IBANs)         │ │
-│  │  batch_hash = SHA256(canonical_string)                                │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  canonical_string = total_amount || currency || sorted(IBANs)         │  │
+│  │  batch_hash = SHA256(canonical_string)                                │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
-│  Option B: MERKLE TREE (for very large batches)                            │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  leaf[i] = SHA256(IBAN[i] || amount[i])                               │ │
-│  │  merkle_root = MerkleTree(leaves)                                     │ │
-│  │  batch_hash = SHA256(total_amount || merkle_root)                     │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  Option B: MERKLE TREE (for very large batches)                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  leaf[i] = SHA256(IBAN[i] || amount[i])                               │  │
+│  │  merkle_root = MerkleTree(leaves)                                     │  │
+│  │  batch_hash = SHA256(total_amount || merkle_root)                     │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                              ▼                                              │
 │  SIGNATURE                                                                  │
 │  ═════════                                                                  │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  auth_code = ECDSA.sign(batch_hash, user_private_key)                 │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  auth_code = ECDSA.sign(batch_hash, user_private_key)                 │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6218,13 +6218,13 @@ Article 5(3)(b) specifies the **exact scope** of what the batch authentication c
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │   1. PSP receives signed batch_hash from wallet                             │
-│   2. PSP has original batch file (all IBANs + amounts)                     │
-│   3. PSP computes: expected_hash = SHA256(batch_canonical)                 │
-│   4. PSP verifies: ECDSA.verify(batch_hash, signature, wallet_public_key)  │
+│   2. PSP has original batch file (all IBANs + amounts)                      │
+│   3. PSP computes: expected_hash = SHA256(batch_canonical)                  │
+│   4. PSP verifies: ECDSA.verify(batch_hash, signature, wallet_public_key)   │
 │   5. PSP compares: expected_hash == batch_hash                              │
 │                                                                             │
-│   If match → ✅ Execute all payments in batch                              │
-│   If mismatch → ❌ Reject entire batch                                     │
+│   If match → ✅ Execute all payments in batch                                │
+│   If mismatch → ❌ Reject entire batch                                       │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6382,14 +6382,14 @@ Article 2's monitoring is **prerequisite** for TRA exemptions under Art. 18:
 │  3. For each transaction, PSP performs real-time risk analysis              │
 │  4. If low-risk + fraud rate below threshold → SCA exemption eligible       │
 │                                                                             │
-│  ┌────────────────────────────────────────────────────────────────────┐    │
-│  │  TRA Fraud Rate Thresholds (Art. 18)                               │    │
-│  │  ─────────────────────────────────────────────────────────────     │    │
-│  │  Transaction Amount    Max Fraud Rate                              │    │
-│  │  ≤ €100                0.13%                                       │    │
-│  │  ≤ €250                0.06%                                       │    │
-│  │  ≤ €500                0.01%                                       │    │
-│  └────────────────────────────────────────────────────────────────────┘    │
+│  ┌────────────────────────────────────────────────────────────────────┐     │
+│  │  TRA Fraud Rate Thresholds (Art. 18)                               │     │
+│  │  ─────────────────────────────────────────────────────────────     │     │
+│  │  Transaction Amount    Max Fraud Rate                              │     │
+│  │  ≤ €100                0.13%                                       │     │
+│  │  ≤ €250                0.06%                                       │     │
+│  │  ≤ €500                0.01%                                       │     │
+│  └────────────────────────────────────────────────────────────────────┘     │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6503,25 +6503,25 @@ Article 2(2) specifies **five mandatory risk factors** that every PSP's transact
 │                    Article 2(2) Mandatory Risk Factors                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                    PSP TRANSACTION MONITORING                       │   │
-│  │                                                                     │   │
-│  │   (a) Compromised/Stolen Elements                                   │   │
-│  │       └── Black lists, credential breach databases                  │   │
-│  │                                                                     │   │
-│  │   (b) Transaction Amount                                            │   │
-│  │       └── Threshold monitoring, TRA exemption tiers                 │   │
-│  │                                                                     │   │
-│  │   (c) Known Fraud Scenarios                                         │   │
-│  │       └── SIM swap, account takeover, social engineering            │   │
-│  │                                                                     │   │
-│  │   (d) Malware Infection Signs                                       │   │
-│  │       └── Device integrity, WUA attestation status                  │   │
-│  │                                                                     │   │
-│  │   (e) Access Device/Software Logging (if PSP-provided)              │   │
-│  │       └── App version, usage patterns, abnormal behavior            │   │
-│  │                                                                     │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    PSP TRANSACTION MONITORING                       │    │
+│  │                                                                     │    │
+│  │   (a) Compromised/Stolen Elements                                   │    │
+│  │       └── Black lists, credential breach databases                  │    │
+│  │                                                                     │    │
+│  │   (b) Transaction Amount                                            │    │
+│  │       └── Threshold monitoring, TRA exemption tiers                 │    │
+│  │                                                                     │    │
+│  │   (c) Known Fraud Scenarios                                         │    │
+│  │       └── SIM swap, account takeover, social engineering            │    │
+│  │                                                                     │    │
+│  │   (d) Malware Infection Signs                                       │    │
+│  │       └── Device integrity, WUA attestation status                  │    │
+│  │                                                                     │    │
+│  │   (e) Access Device/Software Logging (if PSP-provided)              │    │
+│  │       └── App version, usage patterns, abnormal behavior            │    │
+│  │                                                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 │  + Additional factors (not mandatory but recommended):                      │
 │    • Abnormal location of the payer                                         │
@@ -6571,9 +6571,9 @@ The wallet provides critical evidence for malware detection:
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  WALLET PROVIDES:                                                           │
-│  ─────────────────                                                         │
+│  ─────────────────                                                          │
 │  • WUA (Wallet Unit Attestation) — device and wallet integrity signals      │
-│  • WS Attestation — wallet solution is valid and not revoked               │
+│  • WS Attestation — wallet solution is valid and not revoked                │
 │  • Play Integrity / Device Check — platform attestation                     │
 │                                                                             │
 │  PSP MUST:                                                                  │
@@ -6583,7 +6583,7 @@ The wallet provides critical evidence for malware detection:
 │  • Decide on transaction outcome (approve/decline/step-up)                  │
 │                                                                             │
 │  WALLET CANNOT DETECT:                                                      │
-│  ─────────────────────                                                     │
+│  ─────────────────────                                                      │
 │  • Network-level attacks (MITM without cert pinning)                        │
 │  • Server-side fraud                                                        │
 │  • User coercion / social engineering                                       │
@@ -6692,14 +6692,14 @@ Article 3(1) mandates a **comprehensive assurance lifecycle** for SCA security m
 │                    Security Measures Review Lifecycle                       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌──────────┐  │
-│  │ DOCUMENT    │────▶│   TEST      │────▶│  EVALUATE   │────▶│  AUDIT   │  │
-│  │             │     │             │     │             │     │          │  │
-│  │ - Policies  │     │ - Pen tests │     │ - KPIs/KRIs │     │ - IT sec │  │
-│  │ - Procedures│     │ - Vuln scans│     │ - Fraud     │     │ - Payment│  │
-│  │ - Controls  │     │ - Red team  │     │   rates     │     │   expert │  │
-│  │ - Configs   │     │ - Tabletop  │     │ - Incidents │     │ - Indep. │  │
-│  └─────────────┘     └─────────────┘     └─────────────┘     └──────────┘  │
+│  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌──────────┐   │
+│  │ DOCUMENT    │────▶│   TEST      │────▶│  EVALUATE   │────▶│  AUDIT   │   │
+│  │             │     │             │     │             │     │          │   │
+│  │ - Policies  │     │ - Pen tests │     │ - KPIs/KRIs │     │ - IT sec │   │
+│  │ - Procedures│     │ - Vuln scans│     │ - Fraud     │     │ - Payment│   │
+│  │ - Controls  │     │ - Red team  │     │   rates     │     │   expert │   │
+│  │ - Configs   │     │ - Tabletop  │     │ - Incidents │     │ - Indep. │   │
+│  └─────────────┘     └─────────────┘     └─────────────┘     └──────────┘   │
 │         │                                                          │        │
 │         └────────────────── FEEDBACK LOOP ─────────────────────────┘        │
 │                                                                             │
@@ -6733,24 +6733,24 @@ PSPs can rely on **Wallet Solution certifications** (per CIR 2024/2981) to satis
 │                         Certification Reliance Model                        │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  WALLET PROVIDER SCOPE (Covered by CIR 2024/2981 Certification)            │
+│  WALLET PROVIDER SCOPE (Covered by CIR 2024/2981 Certification)             │
 │  ═══════════════════════════════════════════════════════════════            │
-│  ✅ WSCD/WSCA security                                                      │
-│  ✅ Key generation and storage                                              │
-│  ✅ Biometric implementation                                                │
-│  ✅ Secure Enclave/StrongBox usage                                          │
-│  ✅ Attestation generation                                                  │
-│  ✅ Presentation attack detection                                           │
+│  ✅ WSCD/WSCA security                                                       │
+│  ✅ Key generation and storage                                               │
+│  ✅ Biometric implementation                                                 │
+│  ✅ Secure Enclave/StrongBox usage                                           │
+│  ✅ Attestation generation                                                   │
+│  ✅ Presentation attack detection                                            │
 │                                                                             │
 │  PSP SCOPE (Must audit independently)                                       │
 │  ══════════════════════════════════════                                     │
-│  ❌ Integration with wallet APIs                                            │
-│  ❌ Attestation verification logic                                          │
-│  ❌ Transaction monitoring systems                                          │
-│  ❌ Fraud detection rules                                                   │
-│  ❌ Exemption criteria (Art. 10-18)                                         │
-│  ❌ Session management on PSP side                                          │
-│  ❌ Dynamic linking verification                                            │
+│  ❌ Integration with wallet APIs                                             │
+│  ❌ Attestation verification logic                                           │
+│  ❌ Transaction monitoring systems                                           │
+│  ❌ Fraud detection rules                                                    │
+│  ❌ Exemption criteria (Art. 10-18)                                          │
+│  ❌ Session management on PSP side                                           │
+│  ❌ Dynamic linking verification                                             │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6830,32 +6830,32 @@ Article 3(2) establishes a **two-tier audit framework**:
 │                        TRA Exemption Audit Cadence                          │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  YEAR 1 (First use of Art. 18 exemption)                                   │
+│  YEAR 1 (First use of Art. 18 exemption)                                    │
 │  ═══════════════════════════════════════                                    │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  🔴 MANDATORY EXTERNAL AUDITOR                                        │ │
-│  │     • Independent and qualified                                       │ │
-│  │     • IT security + payments expertise                                │ │
-│  │     • Scope: methodology, model, fraud rates                          │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  🔴 MANDATORY EXTERNAL AUDITOR                                        │   │
+│  │     • Independent and qualified                                       │  │
+│  │     • IT security + payments expertise                                │  │
+│  │     • Scope: methodology, model, fraud rates                          │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                              ▼                                              │
-│  YEARS 2-3 (Internal audit acceptable)                                     │
+│  YEARS 2-3 (Internal audit acceptable)                                      │
 │  ══════════════════════════════════════                                     │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  🟡 ANNUAL AUDIT (Internal or External)                               │ │
-│  │     • Operationally independent                                       │ │
-│  │     • IT security + payments expertise                                │ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  🟡 ANNUAL AUDIT (Internal or External)                               │   │
+│  │     • Operationally independent                                       │  │
+│  │     • IT security + payments expertise                                │  │
 │  │     • Same scope                                                       │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                              ▼                                              │
-│  YEAR 4 (and every 3 years thereafter)                                     │
+│  YEAR 4 (and every 3 years thereafter)                                      │
 │  ══════════════════════════════════════                                     │
-│  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  🔴 MANDATORY EXTERNAL AUDITOR (again)                                │ │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  🔴 MANDATORY EXTERNAL AUDITOR (again)                                │   │
 │  │     • Cycle repeats                                                    │ │
-│  └───────────────────────────────────────────────────────────────────────┘ │
+│  └───────────────────────────────────────────────────────────────────────┘  │
 │                                                                             │
-│  ⚠️ COMPETENT AUTHORITY may require more frequent external audits         │
+│  ⚠️ COMPETENT AUTHORITY may require more frequent external audits           │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -6973,14 +6973,14 @@ Article 3(3) mandates that the audit produce a **comprehensive evaluation** cove
 │     └── Sampling approach                                                   │
 │                                                                             │
 │  3. SECURITY MEASURES EVALUATION                                            │
-│     ├── Art. 4: Authentication code requirements                           │
+│     ├── Art. 4: Authentication code requirements                            │
 │     ├── Art. 5: Dynamic linking compliance                                  │
-│     ├── Art. 6-8: SCA factor implementation                                │
+│     ├── Art. 6-8: SCA factor implementation                                 │
 │     ├── Art. 9: Independence of elements                                    │
 │     ├── Art. 22: PSC lifecycle management                                   │
 │     └── Art. 23-27: Credential management                                   │
 │                                                                             │
-│  4. TRA EXEMPTION ASSESSMENT (if applicable)                               │
+│  4. TRA EXEMPTION ASSESSMENT (if applicable)                                │
 │     ├── Methodology validation                                              │
 │     ├── Model effectiveness                                                 │
 │     └── Fraud rate accuracy                                                 │
@@ -7228,48 +7228,48 @@ These gaps require **industry-level changes** to specifications, standards, or r
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        GAP CONTROLLABILITY MATRIX                            │
+│                        GAP CONTROLLABILITY MATRIX                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │  WALLET-CONTROLLED (PSP Cannot Fix)                                 │   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  WALLET-CONTROLLED (PSP Cannot Fix)                                 │    │
 │  │  ════════════════════════════════════                                │   │
-│  │  • PIN/Biometric UI and validation                                  │   │
-│  │  • Secure keyboard/display                                          │   │
-│  │  • Hardware security (SE/TEE)                                       │   │
-│  │  • Key generation and storage                                       │   │
-│  │  • PAD/Liveness detection                                           │   │
-│  │                                                                     │   │
-│  │  PSP STRATEGY: Require certification, verify attestations           │   │
-│  │  COUNT: ~24 gaps                                                    │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  │  • PIN/Biometric UI and validation                                  │    │
+│  │  • Secure keyboard/display                                          │    │
+│  │  • Hardware security (SE/TEE)                                       │    │
+│  │  • Key generation and storage                                       │    │
+│  │  • PAD/Liveness detection                                           │    │
+│  │                                                                     │    │
+│  │  PSP STRATEGY: Require certification, verify attestations           │    │
+│  │  COUNT: ~24 gaps                                                    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │  PSP-ADDRESSABLE (PSP Must Implement)                               │   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  PSP-ADDRESSABLE (PSP Must Implement)                               │    │
 │  │  ════════════════════════════════════                                │   │
-│  │  • Transaction monitoring                                           │   │
-│  │  • Risk scoring and TRA                                             │   │
-│  │  • Session management                                               │   │
-│  │  • Revocation and status publication                                │   │
-│  │  • Audit framework and documentation                                │   │
-│  │  • KYC and enrollment policies                                      │   │
-│  │                                                                     │   │
-│  │  PSP STRATEGY: Build systems, define policies, implement controls   │   │
-│  │  COUNT: ~23 gaps                                                    │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  │  • Transaction monitoring                                           │    │
+│  │  • Risk scoring and TRA                                             │    │
+│  │  • Session management                                               │    │
+│  │  • Revocation and status publication                                │    │
+│  │  • Audit framework and documentation                                │    │
+│  │  • KYC and enrollment policies                                      │    │
+│  │                                                                     │    │
+│  │  PSP STRATEGY: Build systems, define policies, implement controls   │    │
+│  │  COUNT: ~23 gaps                                                    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │  ECOSYSTEM GAPS (Neither Party Alone)                               │   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ECOSYSTEM GAPS (Neither Party Alone)                               │    │
 │  │  ════════════════════════════════════                                │   │
-│  │  • TS12 specification extensions                                    │   │
-│  │  • mDOC dynamic linking                                             │   │
-│  │  • Cross-PSP revocation                                             │   │
-│  │  • Trust framework discovery                                        │   │
-│  │  • Regulatory harmonization                                         │   │
-│  │                                                                     │   │
-│  │  PSP STRATEGY: Monitor, participate in standards, accept residual   │   │
-│  │  COUNT: ~22 gaps                                                    │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  │  • TS12 specification extensions                                    │    │
+│  │  • mDOC dynamic linking                                             │    │
+│  │  • Cross-PSP revocation                                             │    │
+│  │  • Trust framework discovery                                        │    │
+│  │  • Regulatory harmonization                                         │    │
+│  │                                                                     │    │
+│  │  PSP STRATEGY: Monitor, participate in standards, accept residual   │    │
+│  │  COUNT: ~22 gaps                                                    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
