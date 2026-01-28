@@ -396,7 +396,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-020
-    category: usage
+    category: issuance
     requirement: Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets
     explanation: |
       Attestation Issuers must implement the OpenID for Verifiable Credential 
@@ -443,7 +443,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-022
-    category: usage
+    category: registration
     requirement: Register attestation schemas in the catalogue per TS11
     explanation: |
       Attestation Issuers must register their attestation types in the catalogue 

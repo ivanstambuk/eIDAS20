@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T23:53:25.056Z",
+  "generatedAt": "2026-01-28T23:54:44.290Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -879,9 +879,9 @@
     },
     {
       "id": "VEND-CORE-020",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
       "requirement": "Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets",
       "explanation": "Attestation Issuers must implement the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in Technical Specification 6. \nThis ensures interoperability with all compliant EUDI Wallet implementations \nacross Member States. The protocol covers credential offer, authorization, \ntoken exchange, and credential endpoint interactions.",
       "legalBases": [
@@ -955,9 +955,9 @@
     },
     {
       "id": "VEND-CORE-022",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Register attestation schemas in the catalogue per TS11",
       "explanation": "Attestation Issuers must register their attestation types in the catalogue \nof attributes and attestations as specified in Technical Specification 11. \nThis enables discovery by Relying Parties and ensures attestations follow \nthe common data model. The catalogue defines attribute schemas, rulebooks, \nand the relationship between attestation types.",
       "legalBases": [
@@ -6588,11 +6588,11 @@
       "arf": 77
     },
     "byCategory": {
-      "usage": 33,
+      "usage": 31,
       "contracts": 27,
-      "registration": 21,
+      "registration": 22,
       "security": 25,
-      "issuance": 30,
+      "issuance": 31,
       "revocation": 7
     },
     "byCriticality": {
