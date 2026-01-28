@@ -551,7 +551,6 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     const renderHlrBadge = (hlrId, hlrData, isInteractive = false) => {
         const arfUrl = hlrData?.deepLink ||
             'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
-        const badgeTopicNumber = hlrData?.topicNumber || topic?.replace('Topic ', '') || '';
         const isEmpty = hlrData?.isEmpty;
 
         return (
@@ -567,9 +566,6 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
             >
                 <span className="vcq-arf-icon">📐</span>
                 <span className="vcq-arf-ref">{hlrId}</span>
-                {isSingleHlr && badgeTopicNumber && (
-                    <span className="vcq-arf-topic">(Topic {badgeTopicNumber})</span>
-                )}
             </a>
         );
     };
