@@ -16,6 +16,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
 import { LegalBasisLink } from '../components/LegalBasisLink';
+import { exportToExcel } from '../utils/vcq/exportExcel';
 import './VendorQuestionnaire.css';
 
 // ============================================================================
@@ -862,26 +863,13 @@ function ExportPanel({ requirements, answers, selectedRoles, selectedCategories,
     };
 
     const handleExportExcel = () => {
-        // Build CSV content (Excel-compatible)
-        let csv = 'ID,Category,Requirement,Obligation,Legal Basis,Response\n';
-
-        requirements.forEach(req => {
-            const answer = answers[req.id]?.value || 'pending';
-            const legalBasis = req.legalBasis
-                ? `${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})`
-                : '';
-            // Escape quotes and wrap in quotes for CSV
-            const escapedReq = `"${req.requirement.replace(/"/g, '""')}"`;
-            csv += `${req.id},${req.category},${escapedReq},${req.obligation},${legalBasis},${answer}\n`;
+        exportToExcel({
+            requirements,
+            answers,
+            selectedRoles,
+            selectedCategories,
+            data
         });
-
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.csv`;
-        a.click();
-        URL.revokeObjectURL(url);
     };
 
     return (
@@ -892,7 +880,7 @@ function ExportPanel({ requirements, answers, selectedRoles, selectedCategories,
                     📝 Export Markdown
                 </button>
                 <button className="vcq-export-btn" onClick={handleExportExcel}>
-                    📊 Export Excel (CSV)
+                    📊 Export Excel
                 </button>
             </div>
         </div>
