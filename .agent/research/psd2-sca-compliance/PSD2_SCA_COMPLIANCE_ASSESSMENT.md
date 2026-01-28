@@ -526,7 +526,7 @@ WrapPinTextField(
 
 The Android reference implementation encrypts the PIN using **AES/GCM/NoPadding** with a 256-bit key stored in Android Keystore:
 
-**File**: [`PrefsPinStorageProvider.kt`](reference-impl/eudi-app-android-wallet-ui/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt)
+**Android** — [`PrefsPinStorageProvider.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt#L57-L72) (lines 57-72):
 
 ```kotlin
 // Lines 57-72: PIN encryption before storage
@@ -545,7 +545,7 @@ private fun encryptAndStore(pin: String) {
 }
 ```
 
-**Encryption key source**: [`KeystoreController.kt`](reference-impl/eudi-app-android-wallet-ui/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt)
+**Key generation** — [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt#L90-L118) (lines 90-118):
 
 ```kotlin
 // Lines 90-118: Key generation in Android Keystore
@@ -569,7 +569,7 @@ private fun generateSecretKey(alias: String, userAuthenticationRequired: Boolean
 
 The iOS reference implementation stores the PIN in the **iOS Keychain**, which provides hardware-backed encryption via the Secure Enclave on modern devices:
 
-**File**: [`KeychainPinStorageProvider.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift)
+**iOS** — [`KeychainPinStorageProvider.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift#L30-L31) (lines 30-31):
 
 ```swift
 // Lines 30-31: PIN stored directly in Keychain (encrypted by iOS)
@@ -578,7 +578,7 @@ func setPin(with pin: String) {
 }
 ```
 
-**Keychain configuration**: [`KeyChainController.swift`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-business/Sources/Controller/KeyChainController.swift)
+**Keychain configuration** — [`KeyChainController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-business/Sources/Controller/KeyChainController.swift#L75-L80) (lines 75-80):
 
 ```swift
 // Lines 75-80: Biometry-protected items use device-only accessibility
@@ -2863,8 +2863,8 @@ This public key is trusted because:
 
 | Platform | Source File | User-Visible Message | Compliance |
 |----------|-------------|---------------------|------------|
-| **iOS** | [`Localizable.xcstrings`](reference-impl/eudi-app-ios-wallet-ui/Modules/logic-resources/Sources/Resources/Localizable.xcstrings) | **"Pins do not match"** | ❌ Gap |
-| **Android** | [`strings.xml`](reference-impl/eudi-app-android-wallet-ui/resources-logic/src/main/res/values/strings.xml) | **"Pins do not match"** | ❌ Gap |
+| **iOS** | [`Localizable.xcstrings`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-resources/Sources/Resources/Localizable.xcstrings) | **"Pins do not match"** | ❌ Gap |
+| **Android** | [`strings.xml`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/resources-logic/src/main/res/values/strings.xml) | **"Pins do not match"** | ❌ Gap |
 
 **Localization Keys**:
 - iOS: `quick_pin_dont_match` → `"Pins do not match"`
