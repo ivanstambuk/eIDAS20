@@ -48,7 +48,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 25 | Secure delivery | ❌ No |
+| Art. 25 | Secure delivery | ✅ Yes |
 
 ### Article 26 — Renewal
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 43 |
-| ❌ Not Done | 4 |
+| ✅ Done | 44 |
+| ❌ Not Done | 3 |
 | **Total** | 47 |
 
 ---
@@ -189,6 +189,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 3(3) | Deep-dive: Audit report structure, regulatory access, CA request scenarios, gaps AR-1 to AR-4 |
 | 2026-01-28 | Art. 23 | Deep-dive: PSC creation flow, hardware security levels, threat model, gaps SC-1 to SC-4 |
 | 2026-01-28 | Art. 24(1), 24(2)(a) | Deep-dive: User association flow, KYC options, device binding layers, gaps UA-1 to UA-4 |
+| 2026-01-28 | Art. 25 | Deep-dive: Secure delivery architecture, OID4VCI security, traditional vs wallet model, gaps SD-1 to SD-4 |
 
 ---
 

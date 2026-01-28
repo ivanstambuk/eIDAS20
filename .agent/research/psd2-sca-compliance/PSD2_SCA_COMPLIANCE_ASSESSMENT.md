@@ -1312,6 +1312,131 @@ This is the "bootstrap" SCA — using existing wallet authentication to issue ne
 - The attestation is useless without the private key (non-extractable)
 - Interception doesn't enable impersonation
 
+<details>
+<summary><strong>🔍 Deep-Dive: Secure Credential Delivery Architecture</strong></summary>
+
+##### Core Requirement: Secure Delivery Against Loss, Theft, Copying
+
+Article 25 mandates protection against **three distinct risks**:
+
+| Risk | Traditional Mitigation | EUDI Wallet Mitigation |
+|------|------------------------|------------------------|
+| **Loss** | Activation codes, separate channels | Credential unusable without device key |
+| **Theft** | PIN envelope, secure mail | TLS transport, WUA verification |
+| **Copying** | Physical tamper-evident packaging | Non-exportable private key in WSCD |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                  Credential Delivery Flow (Art. 25)                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  TRADITIONAL MODEL (PSP-generated credentials)                              │
+│  ══════════════════════════════════════════════                              │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
+│  │   PSP       │───▶│   Mail      │───▶│   User      │───▶│   Device    │  │
+│  │   generates │    │   service   │    │   receives  │    │   enters    │  │
+│  │   PIN       │    │             │    │   PIN       │    │   PIN       │  │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘  │
+│                                                                             │
+│  ⚠️ RISKS: Interception, postal loss, shoulder surfing                     │
+│                                                                             │
+│  ═══════════════════════════════════════════════════════════════════════   │
+│                                                                             │
+│  EUDI WALLET MODEL (User-generated key + PSP-issued attestation)            │
+│  ═════════════════════════════════════════════════════════════════          │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                      │  │
+│  │  ┌───────────────┐                      ┌───────────────────────┐   │  │
+│  │  │   WALLET      │◄───── TLS 1.2+ ─────▶│   PSP ISSUER          │   │  │
+│  │  │   ┌─────────┐ │  OID4VCI Protocol    │   ┌─────────────────┐ │   │  │
+│  │  │   │ WSCD    │ │                      │   │ HSM signs       │ │   │  │
+│  │  │   │ Private │ │  Attestation         │   │ attestation     │ │   │  │
+│  │  │   │ Key     │ │  (SD-JWT-VC)         │   │                 │ │   │  │
+│  │  │   └─────────┘ │  ←────────────────── │   └─────────────────┘ │   │  │
+│  │  └───────────────┘                      └───────────────────────┘   │  │
+│  │                                                                      │  │
+│  │  ✅ ADVANTAGES: Key never transmitted, attestation bound to device   │  │
+│  │                                                                      │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Transport Security Requirements
+
+| Layer | Requirement | EUDI Implementation |
+|-------|-------------|---------------------|
+| **TLS Version** | 1.2+ minimum | OID4VCI over HTTPS |
+| **Cipher Suites** | AEAD (AES-GCM, ChaCha20) | Per IETF best practices |
+| **Certificate** | Valid, trusted CA | PSP certificate chain |
+| **HSTS** | Recommended | Enforced |
+| **Certificate Pinning** | Optional | Wallet may implement |
+
+##### OID4VCI Delivery Security
+
+| Security Feature | OID4VCI Mechanism |
+|------------------|-------------------|
+| **Authorization** | Authorization code or pre-authorized code |
+| **Token binding** | DPoP (Demonstrating Proof-of-Possession) |
+| **Credential binding** | `cnf` claim with device public key |
+| **Replay prevention** | Single-use authorization codes |
+| **Integrity** | PSP signature on attestation |
+
+##### Credential Types and Delivery Methods
+
+| PSC Type | Delivery Method | Transport Security |
+|----------|-----------------|---------------------|
+| **SCA Attestation** | OID4VCI | TLS + signed SD-JWT-VC |
+| **PIN** | User-generated locally | N/A (never transmitted) |
+| **Biometric** | OS enrollment | N/A (never transmitted) |
+| **Private Key** | Generated in WSCD | N/A (never transmitted) |
+
+##### Comparison: Traditional vs. EUDI Wallet Delivery
+
+| Aspect | Traditional | EUDI Wallet | Security Benefit |
+|--------|-------------|-------------|------------------|
+| **Private key** | Transmitted (encrypted) | Never leaves device | ✅ Eliminates key theft |
+| **PIN** | Mailed separately | User-created locally | ✅ Eliminates interception |
+| **Activation code** | SMS or email | N/A (key binding) | ✅ No code to intercept |
+| **Credential usability** | Standalone | Bound to device key | ✅ Theft is useless |
+
+##### Threat Model: Delivery Phase
+
+| Threat | Vector | Mitigation |
+|--------|--------|------------|
+| **Network interception** | MITM on delivery channel | TLS 1.2+ with AEAD |
+| **DNS spoofing** | Redirect to fake PSP | Certificate pinning, DNSSEC |
+| **Replay attack** | Reuse authorization code | Single-use codes, nonce |
+| **Credential theft** | Steal delivered attestation | Bound to non-exportable key |
+| **Fake issuer** | PSP impersonation | Trust framework, WUA verification |
+
+##### Activation Requirements
+
+| Activation Step | Purpose | Implementation |
+|-----------------|---------|----------------|
+| **User confirmation** | Consent to receive | Wallet UI prompt |
+| **Credential storage** | Secure persistence | Encrypted wallet storage |
+| **First use SCA** | Verify binding works | PSP may require test transaction |
+
+##### Gap Analysis: Secure Delivery
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **SD-1** | TLS cipher suite requirements not specified | Low | Reference IETF BCP 195 |
+| **SD-2** | Certificate pinning guidance not provided | Low | Document as optional enhancement |
+| **SD-3** | Delivery confirmation mechanism not specified | Medium | Define acknowledgment flow |
+| **SD-4** | Offline delivery fallback not addressed | Low | Document as out-of-scope |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **TLS Requirements**: Reference BSI TR-02102-2 or IETF BCP 195 for cipher suites
+2. **Certificate Pinning**: Document as recommended for high-security deployments
+3. **Delivery Confirmation**: Define OID4VCI acknowledgment mechanism
+4. **Retry Logic**: Specify retry behavior for failed deliveries
+5. **Audit Trail**: Log successful deliveries for compliance evidence
+6. **Revocation Check**: Verify PSP certificate status using OCSP/CRL
+
+</details>
 
 ---
 
