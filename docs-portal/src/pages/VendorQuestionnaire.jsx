@@ -521,12 +521,13 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
 
     const visibleHlrs = hlrDataList.slice(0, maxVisible);
     const hiddenCount = hlrDataList.length - maxVisible;
+    const isSingleHlr = hlrDataList.length === 1;
 
     const handleMouseEnter = () => {
         if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
         if (triggerRef.current) {
             const rect = triggerRef.current.getBoundingClientRect();
-            const popoverHeight = 250;
+            const popoverHeight = isSingleHlr ? 200 : 250;
             const showBelow = rect.top < popoverHeight + 20;
             setPopoverPosition({
                 top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
@@ -540,11 +541,17 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
         hideTimeoutRef.current = setTimeout(() => setShowPopover(false), 150);
     };
 
+    // Get first HLR data for single-item popover
+    const firstHlr = hlrDataList[0];
+    const firstHlrData = firstHlr?.data;
+    const topicTitle = firstHlrData?.topicTitle || topic;
+    const topicNumber = firstHlrData?.topicNumber || topic?.replace('Topic ', '') || '';
+
     // Render a single HLR badge
-    const renderHlrBadge = (hlrId, hlrData, showTopicHint = true) => {
+    const renderHlrBadge = (hlrId, hlrData, isInteractive = false) => {
         const arfUrl = hlrData?.deepLink ||
             'https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md';
-        const topicNumber = hlrData?.topicNumber || topic?.replace('Topic ', '') || '';
+        const badgeTopicNumber = hlrData?.topicNumber || topic?.replace('Topic ', '') || '';
         const isEmpty = hlrData?.isEmpty;
 
         return (
@@ -555,11 +562,13 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                 rel="noopener noreferrer"
                 className={`vcq-arf-link ${isEmpty ? 'vcq-arf-empty' : ''}`}
                 title={hlrData?.specification?.substring(0, 200) || `View ${hlrId} in ARF`}
+                onMouseEnter={isInteractive ? handleMouseEnter : undefined}
+                onMouseLeave={isInteractive ? handleMouseLeave : undefined}
             >
                 <span className="vcq-arf-icon">📐</span>
                 <span className="vcq-arf-ref">{hlrId}</span>
-                {showTopicHint && topicNumber && (
-                    <span className="vcq-arf-topic">(Topic {topicNumber})</span>
+                {isSingleHlr && badgeTopicNumber && (
+                    <span className="vcq-arf-topic">(Topic {badgeTopicNumber})</span>
                 )}
             </a>
         );
@@ -569,7 +578,7 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
         <span className="vcq-arf-wrapper" ref={triggerRef}>
             {/* Visible badges */}
             <span className="vcq-arf-badges">
-                {visibleHlrs.map(({ id, data }) => renderHlrBadge(id, data, hlrDataList.length === 1))}
+                {visibleHlrs.map(({ id, data }) => renderHlrBadge(id, data, isSingleHlr))}
                 {hiddenCount > 0 && (
                     <span
                         className="vcq-arf-more"
@@ -581,7 +590,47 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                 )}
             </span>
 
-            {/* Popover showing all HLRs */}
+            {/* Single-HLR Popover (detailed) */}
+            {showPopover && isSingleHlr && firstHlrData && (
+                <div
+                    className="vcq-arf-popover"
+                    style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
+                    onMouseEnter={() => hideTimeoutRef.current && clearTimeout(hideTimeoutRef.current)}
+                    onMouseLeave={() => setShowPopover(false)}
+                >
+                    <div className="vcq-arf-popover-header">
+                        <span className="vcq-arf-popover-id">{firstHlr.id}</span>
+                        <span className="vcq-arf-popover-topic">Topic {topicNumber}</span>
+                    </div>
+                    <div className="vcq-arf-popover-title">{topicTitle}</div>
+                    {firstHlrData.isEmpty ? (
+                        <div className="vcq-arf-popover-empty">
+                            This HLR slot is reserved but not yet populated in ARF.
+                        </div>
+                    ) : (
+                        <>
+                            <div className="vcq-arf-popover-spec">
+                                {firstHlrData.specification?.length > 300
+                                    ? firstHlrData.specification.substring(0, 300) + '...'
+                                    : firstHlrData.specification}
+                            </div>
+                            {firstHlrData.notes && (
+                                <div className="vcq-arf-popover-notes">
+                                    <strong>Note:</strong> {firstHlrData.notes.substring(0, 150)}...
+                                </div>
+                            )}
+                        </>
+                    )}
+                    <a
+                        href={firstHlrData.deepLink || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="vcq-arf-popover-action"
+                    >View in ARF →</a>
+                </div>
+            )}
+
+            {/* Multi-HLR Popover (list) */}
             {showPopover && hiddenCount > 0 && (
                 <div
                     className="vcq-arf-popover vcq-arf-popover-multi"
