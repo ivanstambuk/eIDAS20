@@ -107,7 +107,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 5(1) | General requirement (intro) | ❌ No |
+| Art. 5(1) | General requirement (intro) | ✅ Yes |
 | Art. 5(1)(a) | Payer awareness of amount + payee | ✅ Yes |
 | Art. 5(1)(b) | Auth code linked to amount + payee | ✅ Yes |
 | Art. 5(1)(c) | PSP verification before acceptance | ✅ Yes |
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 34 |
-| ❌ Not Done | 13 |
+| ✅ Done | 35 |
+| ❌ Not Done | 12 |
 | **Total** | 47 |
 
 ---
@@ -181,6 +181,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 22(2)(a) | Deep-dive: Masking architecture, platform implementation, NIST alignment, gaps MI-1 to MI-3 |
 | 2026-01-28 | Art. 22(3) | Deep-dive: Key lifecycle documentation, NIST 800-57 alignment, audit requirements, gaps KM-1 to KM-4 |
 | 2026-01-28 | Art. 22(4) | Deep-dive: Industry standards hierarchy, CC/FIPS/GlobalPlatform, routing security, gaps SPE-1 to SPE-4 |
+| 2026-01-28 | Art. 5(1) | Deep-dive: Four Pillars of dynamic linking, WYSIWYS principle, e2e flow, gaps DL-1 to DL-4 |
 
 ---
 

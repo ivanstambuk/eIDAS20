@@ -4100,6 +4100,178 @@ KB-JWT contains:
 
 **Status**: ➖ Prelude to sub-requirements. See Article 5(1)(a–d) and 5(2–3) below.
 
+<details>
+<summary><strong>🔍 Deep-Dive: Dynamic Linking — The Four Pillars</strong></summary>
+
+##### Core Concept: Transaction-Bound Authentication
+
+Dynamic linking is the **cornerstone** of PSD2 SCA for payment transactions. It ensures that the authentication code (digital signature) is **cryptographically bound** to the specific transaction details, making it impossible for attackers to reuse authentication for different transactions.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Dynamic Linking: The Four Pillars                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     PILLAR 1: AWARENESS (5(1)(a))                   │   │
+│  │                                                                     │   │
+│  │   "Payer is made aware of the amount and payee"                    │   │
+│  │                                                                     │   │
+│  │   IMPLEMENTATION: Secure display of transaction details            │   │
+│  │   • Amount: €100.00                                                 │   │
+│  │   • Payee: "ACME Corporation"                                       │   │
+│  │   • IBAN: DE89370400440532013000                                    │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     PILLAR 2: BINDING (5(1)(b))                     │   │
+│  │                                                                     │   │
+│  │   "Auth code is SPECIFIC to amount and payee"                      │   │
+│  │                                                                     │   │
+│  │   IMPLEMENTATION: Cryptographic hash inclusion                      │   │
+│  │   • transaction_data_hashes: [hash(amount, payee)]                 │   │
+│  │   • Signed by user's private key in Secure Enclave                  │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     PILLAR 3: VERIFICATION (5(1)(c))                │   │
+│  │                                                                     │   │
+│  │   "PSP verifies code CORRESPONDS to original amount/payee"         │   │
+│  │                                                                     │   │
+│  │   IMPLEMENTATION: Server-side comparison                            │   │
+│  │   • PSP recomputes hash from original request                       │   │
+│  │   • Compares with hash in signed attestation                        │   │
+│  │   • Reject if mismatch                                              │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              ▼                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                     PILLAR 4: INVALIDATION (5(1)(d))                │   │
+│  │                                                                     │   │
+│  │   "Any CHANGE to amount or payee INVALIDATES the code"             │   │
+│  │                                                                     │   │
+│  │   IMPLEMENTATION: Automatic by cryptographic design                 │   │
+│  │   • Hash changes if amount/payee changes                            │   │
+│  │   • Signature verification fails                                    │   │
+│  │   • Transaction rejected                                            │   │
+│  │                                                                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### The WYSIWYS Principle
+
+**"What You See Is What You Sign"** — Dynamic linking enforces this principle:
+
+| Principle Aspect | Requirement | EUDI Wallet Implementation |
+|------------------|-------------|---------------------------|
+| **Display fidelity** | User sees exact transaction details | TS12 Level 1 display |
+| **Signing scope** | Signature covers displayed data | `transaction_data_hashes` |
+| **Tampering detection** | Any modification detected | Hash comparison |
+| **User confirmation** | Explicit consent before signing | Biometric/PIN gate |
+
+##### Why Dynamic Linking Matters
+
+| Attack | Without Dynamic Linking | With Dynamic Linking |
+|--------|------------------------|---------------------|
+| **Man-in-the-Middle** | Attacker changes amount/payee after auth | ❌ Hash mismatch detected |
+| **Replay Attack** | Reuse auth code for different transaction | ❌ Different hash = invalid |
+| **Session Hijacking** | Use session token for unauthorized tx | ❌ Signature tied to specific tx |
+| **Malware injection** | Modify transaction on compromised device | ⚠️ Mitigated by secure display |
+
+##### EUDI Wallet Dynamic Linking Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    Dynamic Linking End-to-End Flow                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   1. PSP REQUEST                                                            │
+│   ──────────────                                                            │
+│   PSP → Wallet:                                                             │
+│   {                                                                         │
+│     "transaction_data": {                                                   │
+│       "amount": "100.00",                                                   │
+│       "currency": "EUR",                                                    │
+│       "payee": "ACME Corp",                                                 │
+│       "iban": "DE89370400440532013000"                                      │
+│     },                                                                      │
+│     "transaction_data_hashes": ["sha256:abc123..."]                         │
+│   }                                                                         │
+│                                                                             │
+│   2. USER AWARENESS (5(1)(a))                                               │
+│   ───────────────────────────                                               │
+│   Wallet displays: "Pay €100.00 to ACME Corp?"                              │
+│   User reviews amount + payee before authenticating                         │
+│                                                                             │
+│   3. CRYPTOGRAPHIC BINDING (5(1)(b))                                        │
+│   ──────────────────────────────────                                        │
+│   User authenticates (biometric/PIN)                                        │
+│   Secure Enclave signs:                                                     │
+│   • SCA Attestation includes transaction_data_hashes                        │
+│   • Signature: ECDSA(nonce || transaction_data_hashes)                      │
+│                                                                             │
+│   4. PSP VERIFICATION (5(1)(c))                                             │
+│   ─────────────────────────────                                             │
+│   PSP receives signed attestation                                           │
+│   PSP computes: hash(original_request.transaction_data)                     │
+│   PSP compares: computed_hash == attestation.transaction_data_hashes        │
+│   If match: ✅ Accept transaction                                           │
+│   If mismatch: ❌ Reject transaction                                        │
+│                                                                             │
+│   5. INVALIDATION (5(1)(d))                                                 │
+│   ─────────────────────────                                                 │
+│   If attacker modifies amount/payee in transit:                             │
+│   • hash(modified_data) ≠ attestation.transaction_data_hashes              │
+│   • Signature verification fails at PSP                                     │
+│   • Transaction rejected                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Relationship to Article 4 (Authentication Code)
+
+Article 5 **builds upon** Article 4:
+
+| Article 4 | Article 5 |
+|-----------|-----------|
+| Auth code from 2+ SCA factors | Same auth code, now **bound** to transaction |
+| One-time use | One-time use **for this specific transaction** |
+| Forgery-resistant | ALSO tamper-evident for transaction data |
+| Elements independent | Transaction data included in signed payload |
+
+##### EBA Guidance on Dynamic Linking
+
+| EBA Statement | EUDI Wallet Alignment |
+|---------------|----------------------|
+| "Information integrity must be protected" | ECDSA signature over transaction hash |
+| "User must be informed of what they authorize" | TS12 Level 1 display |
+| "Code must be linked to specific transaction" | `transaction_data_hashes` in VP |
+| "Change to amount/payee must invalidate" | Hash-based detection |
+
+##### Gap Analysis: Dynamic Linking Overview
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **DL-1** | mDOC format not specified for dynamic linking | Medium | TS12 should define mDOC transaction binding |
+| **DL-2** | Secure display on compromised devices | High | Clarify TEE display requirements |
+| **DL-3** | Hash algorithm not specified in RTS | Low | Document SHA-256 as default |
+| **DL-4** | Multi-transaction (batch) linking complexity | Medium | See Art. 5(3) for batch handling |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Hash Algorithm**: Specify SHA-256 for `transaction_data_hashes`
+2. **Display Security**: Mandate TEE-protected display where available
+3. **mDOC Binding**: Define how ISO 18013-5 mDOC binds to transaction data
+4. **Timeout Integration**: Link Art. 5 to Art. 4(3)(d) session timeout
+5. **Error Handling**: Define PSP behavior on hash mismatch (reject + log)
+6. **Batch Payments**: Reference Art. 5(3) for bulk payment handling
+
+</details>
+
 ---
 
 #### [Article 5(1)(a)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389#005.001) — Payer awareness of transaction details
