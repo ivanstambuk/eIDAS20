@@ -1,10 +1,7 @@
 # PSD2 SCA Compliance Matrix: EUDI Wallet
 
-► **Version**: 5.0  
-► **Date**: 2026-01-27  
 ► **Purpose**: Topic-first compliance mapping for Payment Service Providers  
-► **Scope**: PSD2 Directive + RTS 2018/389 requirements relevant to SCA with EUDI Wallet  
-► **Status**: Fully Validated (40/40 requirements verified — Articles 1-9, 22-27, 97)
+► **Scope**: PSD2 Directive Article 97 + RTS 2018/389 Articles 1-9, 22-27
 
 ---
 
