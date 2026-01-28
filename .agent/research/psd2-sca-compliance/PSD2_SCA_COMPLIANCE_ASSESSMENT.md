@@ -2233,7 +2233,7 @@ If the PSP's fraud rate exceeds these thresholds, TRA exemption cannot be applie
 **Authentication Code**:
 Per RTS Recital (4), authentication codes should be based on "digital signatures or other cryptographically underpinned validity assertions". The **complete VP Token** (SD-JWT with KB-JWT signature) or **mDOC DeviceResponse** constitutes the authentication code. The KB-JWT signature is generated using the SCA attestation private key in the WSCA/WSCD.
 
-**Factor Reporting** (TS12 §3.6):
+**Factor Reporting** ([TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)):
 ```json
 "amr": ["face", "hwk"]  // Face ID + hardware key = inherence + possession
 "amr": ["pin", "hwk"]   // PIN + hardware key = knowledge + possession
@@ -2269,7 +2269,7 @@ Per RTS Recital (4), authentication codes should be based on "digital signatures
 
 **Authentication Code Interpretation**:
 
-TS12 §3.6 states the `jti` "serves as the Authentication Code". However, RTS Recital (4) defines authentication codes as "digital signatures or other cryptographically underpinned validity assertions":
+[TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) states the `jti` "serves as the Authentication Code". However, RTS Recital (4) defines authentication codes as "digital signatures or other cryptographically underpinned validity assertions":
 
 | Interpretation | What Constitutes Auth Code | Recommended Use |
 |---------------|---------------------------|-----------------|
@@ -2448,7 +2448,7 @@ The WSCA/WSCD (Secure Enclave / TEE) ensures private keys are non-extractable (W
 
 | Fulfillment | Reference | Implementation |
 |-------------|-----------|----------------|
-| ✅ **Wallet** | TS12 §3.6 | Each KB-JWT has unique `jti`, fresh signature |
+| ✅ **Wallet** | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | Each KB-JWT has unique `jti`, fresh signature |
 | ✅ **Wallet** | Cryptographic design | ECDSA signature is non-deterministic (contains random nonce) |
 
 **Status**: ✅ Fully Supported
@@ -5503,11 +5503,11 @@ TS12 mandates that amount and payee are **prominently displayed**:
 | Verification Step | Responsibility | Reference | Status |
 |-------------------|----------------|-----------|--------|
 | **KB-JWT Signature** | PSP | [OID4VP §6](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) | ✅ Cryptographic |
-| **SCA Attestation Validity** | PSP | TS12 §3.1 | ✅ Certificate chain |
-| **`transaction_data_hashes` Match** | PSP | TS12 §3.6 | ⚠️ PSP Implementation |
+| **SCA Attestation Validity** | PSP | [TS12 §3.1](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#31-prerequisites) | ✅ Certificate chain |
+| **`transaction_data_hashes` Match** | PSP | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | ⚠️ PSP Implementation |
 | **`nonce` Freshness** | PSP | OID4VP | ⚠️ PSP Implementation |
 | **`aud` Binding** | PSP | OID4VP | ⚠️ PSP Implementation |
-| **`iat` Timestamp Validity** | PSP | TS12 §3.6 | ⚠️ Optional |
+| **`iat` Timestamp Validity** | PSP | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | ⚠️ Optional |
 
 **Status**: ⚠️ **PSP Verification Required** — Wallet generates compliant code; PSP must verify
 
@@ -5715,8 +5715,8 @@ For unauthorized transactions in the TPP flow:
 | Protection Type | Fulfillment | Reference | Implementation |
 |-----------------|-------------|-----------|----------------|
 | **Change Invalidation** | ✅ Wallet | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications) | SHA-256 hash of transaction data in KB-JWT |
-| **Replay Protection** | ✅ Wallet | TS12 §3.6 | Unique `jti` claim per presentation |
-| **Time-Bound Validity** | ⚠️ PSP | TS12 §3.6 | PSP MAY reject stale `iat` timestamps |
+| **Replay Protection** | ✅ Wallet | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | Unique `jti` claim per presentation |
+| **Time-Bound Validity** | ⚠️ PSP | [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) | PSP MAY reject stale `iat` timestamps |
 | **Nonce Binding** | ✅ Wallet | OID4VP | `nonce` from request echoed in KB-JWT |
 
 **Status**: ✅ **Cryptographically Enforced** with multiple defense layers
@@ -5781,7 +5781,7 @@ Art. 5(1)(d) implicitly requires that old authentication codes cannot be replaye
 | **3. Timestamp** | `iat` | PSP MAY reject presentations older than threshold (e.g., 5 min) |
 | **4. Nonce** | `nonce` | RP-provided value echoed in KB-JWT; prevents cross-session replay |
 
-**TS12 §3.6 Specification**:
+**[TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response) Specification**:
 > "**`jti`**: **REQUIRED** A fresh, cryptographically random value with sufficient entropy, as defined in [RFC7519]. This value **SHALL** be unique for each presentation. Once verified, it serves as the Authentication Code required by [PSD2]."
 
 **Industry Comparison** (EMV ARQC):
@@ -5810,7 +5810,7 @@ EMV chip cards use a similar approach—the Authorization Request Cryptogram (AR
 
 While `iat` (issued-at) is included in the KB-JWT, **TS12 does not mandate a maximum validity period**. Industry practice suggests 5 minutes for payment authentication codes.
 
-**Current TS12 §3.6**:
+**Current [TS12 §3.6](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md#36-presentation-response)**:
 > "The `iat` (issued at) claim of the KB-JWT **MAY** be used by a Relying Party to restrict the timeframe."
 
 | Aspect | Specification | Industry Practice |
