@@ -150,8 +150,25 @@ function processRequirements(rawRequirements, config) {
             if (!relevantTopics.includes(topicNumber)) continue;
         }
 
-        // Build deep link
-        const anchor = topicAnchors?.[topicNumber] || '';
+        // Build deep link with subsection precision if available
+        const subsection = raw.Subsection || null;
+        let anchor = topicAnchors?.[topicNumber] || '';
+
+        // If we have a subsection, generate a more precise anchor
+        // GitHub anchor format: lowercase, spaces→hyphens, remove special chars
+        // Example: "D. Requirements on the presentation..." → "d-requirements-on-the-presentation-..."
+        if (subsection) {
+            const subsectionAnchor = subsection
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')  // Remove special chars except hyphens
+                .replace(/\s+/g, '-')       // Spaces to hyphens
+                .replace(/-+/g, '-')        // Collapse multiple hyphens
+                .trim();
+            if (subsectionAnchor) {
+                anchor = subsectionAnchor;
+            }
+        }
+
         const deepLink = anchor ? `${baseUrl}#${anchor}` : baseUrl;
 
         // Process the requirement
@@ -165,7 +182,7 @@ function processRequirements(rawRequirements, config) {
             category: raw.Category,
             topicNumber: topicNumber,
             topicTitle: raw.Topic_Title,
-            subsection: raw.Subsection || null,
+            subsection: subsection,
 
             // Content
             specification: specification,
