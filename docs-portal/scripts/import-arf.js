@@ -121,6 +121,31 @@ function parseCSVLine(line) {
 }
 
 // ============================================================================
+// Transform Markdown Links
+// ============================================================================
+
+/**
+ * Convert relative markdown links to absolute GitHub URLs
+ * Example: [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#anchor)
+ *       → [Topic 27](https://github.com/.../annex-2.02-high-level-requirements-by-topic.md#anchor)
+ */
+function transformMarkdownLinks(text, baseUrl) {
+    if (!text) return text;
+
+    // Match markdown links: [text](url)
+    // Capture relative URLs starting with ./ or just filename
+    return text.replace(
+        /\[([^\]]+)\]\(\.\/([^)]+)\)/g,
+        (match, linkText, relativePath) => {
+            // Extract the directory from baseUrl (remove filename)
+            const baseDir = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
+            const absoluteUrl = `${baseDir}${relativePath}`;
+            return `[${linkText}](${absoluteUrl})`;
+        }
+    );
+}
+
+// ============================================================================
 // Process Requirements
 // ============================================================================
 
@@ -186,9 +211,9 @@ function processRequirements(rawRequirements, config) {
             topicTitle: raw.Topic_Title,
             subsection: subsection,
 
-            // Content
-            specification: specification,
-            notes: raw.Notes || null,
+            // Content (with markdown links transformed to absolute URLs)
+            specification: transformMarkdownLinks(specification, baseUrl),
+            notes: transformMarkdownLinks(raw.Notes || null, baseUrl),
 
             // Generated
             isEmpty: isEmpty,

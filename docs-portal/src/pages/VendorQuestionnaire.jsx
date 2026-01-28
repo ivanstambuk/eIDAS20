@@ -14,6 +14,7 @@
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
 import { LegalBasisLink, LegalBasesLinks } from '../components/LegalBasisLink';
 import { exportToExcel } from '../utils/vcq/exportExcel';
@@ -606,13 +607,33 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                     ) : (
                         <>
                             <div className="vcq-arf-popover-spec">
-                                {firstHlrData.specification?.length > 300
-                                    ? firstHlrData.specification.substring(0, 300) + '...'
-                                    : firstHlrData.specification}
+                                <ReactMarkdown
+                                    components={{
+                                        a: ({ href, children }) => (
+                                            <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+                                        )
+                                    }}
+                                >
+                                    {firstHlrData.specification?.length > 300
+                                        ? firstHlrData.specification.substring(0, 300) + '...'
+                                        : firstHlrData.specification}
+                                </ReactMarkdown>
                             </div>
                             {firstHlrData.notes && (
                                 <div className="vcq-arf-popover-notes">
-                                    <strong>Note:</strong> {firstHlrData.notes.substring(0, 150)}...
+                                    <strong>Note:</strong>{' '}
+                                    <ReactMarkdown
+                                        components={{
+                                            a: ({ href, children }) => (
+                                                <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+                                            ),
+                                            p: ({ children }) => <span>{children}</span>
+                                        }}
+                                    >
+                                        {firstHlrData.notes.length > 150
+                                            ? firstHlrData.notes.substring(0, 150) + '...'
+                                            : firstHlrData.notes}
+                                    </ReactMarkdown>
                                 </div>
                             )}
                         </>
