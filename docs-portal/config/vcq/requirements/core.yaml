@@ -724,7 +724,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-034
-    category: contracts
+    category: registration
     requirement: Publish RP trust anchor information for Wallet verification
     explanation: |
       Relying Parties accessing EUDI Wallets must publish trust anchor 
@@ -759,8 +759,8 @@ requirements:
     arfReference:
       topic: Topic 48
       hlr:
-        - DATA_DLT_03
-        - DATA_DLT_06
+        - DATA_DLT_07
+        - DATA_DLT_08
     roles:
       - relying_party
     productCategories:
@@ -812,7 +812,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-038
-    category: issuance
+    category: usage
     requirement: Support W3C Digital Credentials API for presentation requests
     explanation: |
       If the Relying Party supports the W3C Digital Credentials API, presentation 
@@ -854,7 +854,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-CORE-040
-    category: issuance
+    category: usage
     requirement: Support proximity identification flows
     explanation: |
       Relying Party Instances that support proximity identification must 

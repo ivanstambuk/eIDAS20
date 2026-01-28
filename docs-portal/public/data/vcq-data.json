@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T23:54:44.290Z",
+  "generatedAt": "2026-01-28T23:56:26.302Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1446,9 +1446,9 @@
     },
     {
       "id": "VEND-CORE-034",
-      "category": "contracts",
-      "categoryLabel": "Contracts",
-      "categoryIcon": "📜",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Publish RP trust anchor information for Wallet verification",
       "explanation": "Relying Parties accessing EUDI Wallets must publish trust anchor \ninformation through the Access Certificate Authority notification \nprocess, enabling Wallet Units to verify RP legitimacy.",
       "legalBases": [
@@ -1512,8 +1512,8 @@
       "arfReference": {
         "topic": "Topic 48",
         "hlr": [
-          "DATA_DLT_03",
-          "DATA_DLT_06"
+          "DATA_DLT_07",
+          "DATA_DLT_08"
         ]
       },
       "roles": [
@@ -1622,9 +1622,9 @@
     },
     {
       "id": "VEND-CORE-038",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support W3C Digital Credentials API for presentation requests",
       "explanation": "If the Relying Party supports the W3C Digital Credentials API, presentation \nrequests must conform to the API specification and properly handle the \nbrowser-mediated credential exchange flow.",
       "legalBases": [
@@ -1708,9 +1708,9 @@
     },
     {
       "id": "VEND-CORE-040",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support proximity identification flows",
       "explanation": "Relying Party Instances that support proximity identification must \nimplement the specified BLE or NFC protocols for local credential \npresentation without internet connectivity.",
       "legalBases": [
@@ -6588,11 +6588,11 @@
       "arf": 77
     },
     "byCategory": {
-      "usage": 31,
-      "contracts": 27,
-      "registration": 22,
+      "usage": 33,
+      "contracts": 26,
+      "registration": 23,
       "security": 25,
-      "issuance": 31,
+      "issuance": 29,
       "revocation": 7
     },
     "byCriticality": {
