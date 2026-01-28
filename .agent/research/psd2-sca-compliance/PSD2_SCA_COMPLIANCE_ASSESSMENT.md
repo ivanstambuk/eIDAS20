@@ -4137,12 +4137,12 @@ The EBA clarifies that "inherence" means "something the user is" and includes bo
 Article 8(1) requires a **"very low probability"** of unauthorized authentication. Industry standards define this through False Acceptance Rate (FAR):
 
 | Platform / Standard | Biometric Type | FAR Threshold | Source |
-|--------------------|--------------|--------------| ------|
-| **Apple Face ID** | Face | 1 in 1,000,000 | [Apple Platform Security](https://support.apple.com/guide/security) |
-| **Apple Touch ID** | Fingerprint | 1 in 50,000 | Apple Platform Security |
+|--------------------|--------------|--------------|--------|
+| **Apple Face ID** | Face | 1 in 1,000,000 | [Apple Platform Security](https://support.apple.com/guide/security/face-id-and-touch-id-security-sec067eb0c9e/web) |
+| **Apple Touch ID** | Fingerprint | 1 in 50,000 | [Apple Platform Security](https://support.apple.com/guide/security/face-id-and-touch-id-security-sec067eb0c9e/web) |
 | **Android Class 3** | Any | ≤ 1 in 50,000 (0.002%) | [Android CDD](https://source.android.com/docs/compatibility/cdd) |
-| **FIDO Biometric Cert** | Any | ◄ 1 in 10,000 | [FIDO Alliance](https://fidoalliance.org/certification/biometric-component-certification/) |
-| **FIDO (self-attested)** | Any | 1:25K to 1:100K optional | FIDO Certification Requirements |
+| **FIDO Biometric Cert** | Any | ≤ 1 in 10,000 | [FIDO Alliance](https://fidoalliance.org/certification/biometric-component-certification/) |
+| **FIDO (self-attested)** | Any | 1:25K to 1:100K optional | [FIDO Certification Requirements](https://fidoalliance.org/certification/) |
 
 ##### Key Biometric Metrics
 
