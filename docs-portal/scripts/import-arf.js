@@ -156,16 +156,18 @@ function processRequirements(rawRequirements, config) {
 
         // If we have a subsection, generate a more precise anchor
         // GitHub anchor format: lowercase, spaces→hyphens, remove special chars
-        // Example: "D. Requirements on the presentation..." → "d-requirements-on-the-presentation-..."
+        // Note: GitHub headers often have trailing spaces (before <!-- omit --> comments)
+        //       which become trailing hyphens in the anchor - we must add one
         if (subsection) {
             const subsectionAnchor = subsection
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, '')  // Remove special chars except hyphens
                 .replace(/\s+/g, '-')       // Spaces to hyphens
                 .replace(/-+/g, '-')        // Collapse multiple hyphens
-                .trim();
+                .replace(/^-/, '');         // Remove leading hyphen
             if (subsectionAnchor) {
-                anchor = subsectionAnchor;
+                // Add trailing hyphen - GitHub headers have trailing space before <!-- comments
+                anchor = subsectionAnchor + '-';
             }
         }
 
