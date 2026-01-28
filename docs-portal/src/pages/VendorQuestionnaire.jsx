@@ -621,7 +621,7 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
                             </div>
                             {firstHlrData.notes && (
                                 <div className="vcq-arf-popover-notes">
-                                    <strong>Note:</strong>{' '}
+                                    <span className="vcq-arf-popover-note-chip">Note</span>
                                     <ReactMarkdown
                                         components={{
                                             a: ({ href, children }) => (

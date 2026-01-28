@@ -126,23 +126,30 @@ function parseCSVLine(line) {
 
 /**
  * Convert relative markdown links to absolute GitHub URLs
- * Example: [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#anchor)
+ * Also handles ARF's non-standard double-bracket links: [[Topic 27](url)]
+ * 
+ * Example: [[Topic 27](./annex-2.02-high-level-requirements-by-topic.md#anchor)]
  *       → [Topic 27](https://github.com/.../annex-2.02-high-level-requirements-by-topic.md#anchor)
  */
 function transformMarkdownLinks(text, baseUrl) {
     if (!text) return text;
 
-    // Match markdown links: [text](url)
-    // Capture relative URLs starting with ./ or just filename
-    return text.replace(
+    // Extract the directory from baseUrl (remove filename)
+    const baseDir = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
+
+    // Step 1: Normalize double-bracket links [[text](url)] → [text](url)
+    let result = text.replace(/\[\[([^\]]+)\]\(([^)]+)\)\]/g, '[$1]($2)');
+
+    // Step 2: Convert relative URLs to absolute
+    result = result.replace(
         /\[([^\]]+)\]\(\.\/([^)]+)\)/g,
         (match, linkText, relativePath) => {
-            // Extract the directory from baseUrl (remove filename)
-            const baseDir = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
             const absoluteUrl = `${baseDir}${relativePath}`;
             return `[${linkText}](${absoluteUrl})`;
         }
     );
+
+    return result;
 }
 
 // ============================================================================
