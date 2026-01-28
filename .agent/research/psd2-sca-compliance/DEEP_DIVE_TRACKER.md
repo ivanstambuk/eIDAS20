@@ -60,7 +60,7 @@ A real deep-dive must include **at least 3** of:
 
 | Paragraph | Description | Done? |
 |-----------|-------------|-------|
-| Art. 27(a) | Secure destruction/deactivation/revocation | ❌ No |
+| Art. 27(a) | Secure destruction/deactivation/revocation | ✅ Yes |
 | Art. 27(b) | Secure re-use | ❌ No |
 | Art. 27(c) | Deactivation in systems | ❌ No |
 
@@ -151,8 +151,8 @@ A real deep-dive must include **at least 3** of:
 
 | Status | Count |
 |--------|-------|
-| ✅ Done | 45 |
-| ❌ Not Done | 2 |
+| ✅ Done | 46 |
+| ❌ Not Done | 1 |
 | **Total** | 47 |
 
 ---
@@ -191,6 +191,7 @@ A real deep-dive must include **at least 3** of:
 | 2026-01-28 | Art. 24(1), 24(2)(a) | Deep-dive: User association flow, KYC options, device binding layers, gaps UA-1 to UA-4 |
 | 2026-01-28 | Art. 25 | Deep-dive: Secure delivery architecture, OID4VCI security, traditional vs wallet model, gaps SD-1 to SD-4 |
 | 2026-01-28 | Art. 26 | Deep-dive: Credential renewal flow, key rotation strategies, validity management, gaps RN-1 to RN-4 |
+| 2026-01-28 | Art. 27(a) | Deep-dive: Destruction/revocation architecture, secure wipe, status publication, gaps DR-1 to DR-4 |
 
 ---
 

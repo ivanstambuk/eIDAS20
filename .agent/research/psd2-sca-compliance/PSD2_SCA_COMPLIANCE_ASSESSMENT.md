@@ -1634,6 +1634,164 @@ Shared responsibility:
 - **PSP**: Must revoke the SCA attestation status in their backend
 - **User**: Can request revocation via independent account (WIAM_06)
 
+<details>
+<summary><strong>🔍 Deep-Dive: Credential Destruction & Revocation Architecture</strong></summary>
+
+##### Core Requirement: Three Distinct Operations
+
+Article 27(a) covers three operations, each with different implications:
+
+| Operation | Definition | Reversibility |
+|-----------|------------|---------------|
+| **Destruction** | Complete erasure of credential | ❌ Irreversible |
+| **Deactivation** | Temporary suspension | ✅ Reversible |
+| **Revocation** | Permanent invalidation with audit trail | ❌ Irreversible |
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│               Credential Revocation Architecture (Art. 27)                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  REVOCATION TRIGGERS                                                        │
+│  ═══════════════════                                                         │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  1. User-initiated:    User requests revocation (lost device, etc.)   │ │
+│  │  2. PSP-initiated:     Fraud detection, account closure               │ │
+│  │  3. WP-initiated:      Wallet Provider detects compromise             │ │
+│  │  4. Automatic:         Attestation max lifetime reached               │ │
+│  │  5. Regulatory:        Competent authority order                      │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  MULTI-PARTY REVOCATION                                                     │
+│  ══════════════════════                                                      │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                                                                        │ │
+│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────┐    │ │
+│  │  │  USER DEVICE    │  │  WALLET PROVIDER│  │  PSP BACKEND        │    │ │
+│  │  ├─────────────────┤  ├─────────────────┤  ├─────────────────────┤    │ │
+│  │  │ • Delete local  │  │ • Revoke WUA    │  │ • Mark attestation  │    │ │
+│  │  │   attestation   │  │ • Notify wallet │  │   as revoked        │    │ │
+│  │  │ • Secure wipe   │  │ • Update status │  │ • Update status     │    │ │
+│  │  │   of keys       │  │   endpoint      │  │   list/OCSP         │    │ │
+│  │  │ • Clear PIN     │  │                 │  │ • Reject future VPs │    │ │
+│  │  └─────────────────┘  └─────────────────┘  └─────────────────────┘    │ │
+│  │                                                                        │ │
+│  │           All three MUST be synchronized for complete revocation       │ │
+│  │                                                                        │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                              ▼                                              │
+│  STATUS PUBLICATION                                                         │
+│  ══════════════════                                                          │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │  Option A: Status List 2021 (W3C)                                      │ │
+│  │     • Bit array at URL, updated periodically                           │ │
+│  │     • Wallet checks status before accepting VP                         │ │
+│  │                                                                        │ │
+│  │  Option B: OCSP (Online Certificate Status Protocol)                   │ │
+│  │     • Real-time status check                                           │ │
+│  │     • Higher latency, always current                                   │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Revocation Triggers
+
+| Trigger | Initiator | Urgency | Example |
+|---------|-----------|---------|---------|
+| **Device loss/theft** | User | 🔴 Critical | Phone stolen |
+| **Fraud detected** | PSP | 🔴 Critical | Unauthorized transactions |
+| **Account closure** | PSP/User | 🟡 Normal | User leaves bank |
+| **Compromise suspected** | WP | 🔴 Critical | Wallet integrity failure |
+| **Regulatory order** | Authority | 🔴 Critical | Court order, sanctions |
+| **User request** | User | 🟡 Normal | Cleanup, new device |
+
+##### Secure Wipe Procedures
+
+| Component | Wipe Method | Standard |
+|-----------|-------------|----------|
+| **Private Key** | WSCD secure erase | Hardware-enforced |
+| **PIN hash** | Zero-fill + delete | NIST SP 800-88 |
+| **Attestation** | File deletion | Platform secure delete |
+| **Biometric template** | OS API removal | Platform-specific |
+| **Session tokens** | Memory clear | Process termination |
+
+##### PSC Type Revocation Details
+
+| PSC Type | Local Action | Remote Action |
+|----------|--------------|---------------|
+| **Private Key** | Delete from WSCD | N/A (key never transmitted) |
+| **SCA Attestation** | Delete from wallet storage | Update status list |
+| **PIN** | Clear from encrypted storage | N/A (never stored remotely) |
+| **Biometric** | Request OS to unenroll | N/A (never stored remotely) |
+| **WUA** | Invalidated by WP | WP updates validity endpoint |
+
+##### Status Publication Methods
+
+| Method | Latency | Bandwidth | Use Case |
+|--------|---------|-----------|----------|
+| **Status List 2021** | Minutes (batch) | Low | Standard deployments |
+| **OCSP** | Real-time | Higher | High-security transactions |
+| **CRL** | Hours/Days | Low | Legacy compatibility |
+| **PSP direct check** | Real-time | Per-txn | Custom implementations |
+
+##### Revocation Flow: User-Initiated
+
+```
+┌───────┐     ┌───────────┐     ┌───────┐     ┌───────────┐
+│ USER  │     │  WALLET   │     │  WP   │     │   PSP     │
+└───┬───┘     └─────┬─────┘     └───┬───┘     └─────┬─────┘
+    │               │               │               │
+    │ Request       │               │               │
+    │ Revocation    │               │               │
+    │──────────────▶│               │               │
+    │               │               │               │
+    │               │ Notify        │               │
+    │               │ Revocation    │               │
+    │               │──────────────▶│               │
+    │               │               │               │
+    │               │               │ Update        │
+    │               │               │ Status        │
+    │               │               │──────────────▶│
+    │               │               │               │
+    │               │ Local Wipe    │               │ Mark Revoked
+    │               │◀──────────────│               │◀─────────────
+    │               │               │               │
+    │ Confirmation  │               │               │
+    │◀──────────────│               │               │
+    │               │               │               │
+```
+
+##### Threat Model: Revocation Phase
+
+| Threat | Vector | Mitigation |
+|--------|--------|------------|
+| **Delayed revocation** | User delay in reporting | Promote immediate reporting |
+| **Status list stale** | Batch update delay | Real-time OCSP for high-value |
+| **Local copy persists** | Device offline | Backend always rejects |
+| **Race condition** | VP during revocation | Transaction monitoring |
+| **Revocation denial** | Attacker blocks request | Multiple revocation channels |
+
+##### Gap Analysis: Destruction/Revocation
+
+| Gap ID | Description | Severity | Recommendation |
+|--------|-------------|----------|----------------|
+| **DR-1** | Revocation propagation latency not specified | Medium | Define max latency (e.g., 5 min) |
+| **DR-2** | Status publication method not mandated | Medium | Recommend Status List 2021 |
+| **DR-3** | Secure wipe verification not documented | Low | Define attestation of wipe |
+| **DR-4** | Multi-party revocation coordination undefined | High | Define revocation protocol |
+
+##### Recommendations for SCA Attestation Rulebook
+
+1. **Revocation Protocol**: Define multi-party revocation coordination
+2. **Status Publication**: Mandate Status List 2021 or equivalent
+3. **Propagation Latency**: Define maximum revocation propagation time
+4. **Secure Wipe**: Reference NIST SP 800-88 for key destruction
+5. **User Channels**: Require minimum 2 revocation channels (app + portal)
+6. **Audit Trail**: Log all revocation events with timestamps
+
+</details>
+
 ---
 
 #### [Article 27(b)](sources/32018R0389.md#article-27) — Secure re-use
