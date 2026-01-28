@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-27 17:26 CET |
-| **Version** | V3.9.14 |
+| **Last Updated** | 2026-01-28 03:22 CET |
+| **Version** | V3.9.15 |
 | **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 64 VCQ reqs, 559 ARF HLRs |
-| **Next Action** | PSD2 SCA Compliance Assessment complete (v1.2). Ready for GitHub sharing. |
+| **Next Action** | PSD2 SCA Assessment refined (v6.0). Code links audited. Ready for GitHub sharing. |
 
 
 ---
@@ -28,6 +28,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-28 03:22 | **Refine: PSD2 SCA Assessment Cleanup** — Removed ~100 lines of process cruft: Document History section deleted (git = source of truth), stakeholder feedback cleaned (kept only substantive gaps). **Code Reference Audit**: Converted all 12 reference implementation links to commit-specific GitHub URLs with line ranges. **Appendix Consolidation**: Deleted Appendix B (Accessibility, too thin), slimmed Appendix C (GitHub Discussion, kept Mastercard proposal only, ETPPA integrated inline). Now 3 appendices (A-C). Total: 7,435 lines. |
 | 2026-01-27 17:26 | **Research: PSD2 SCA Compliance Assessment (v1.2)** — Complete article-by-article assessment of EUDI Wallet TS12 vs PSD2 RTS 2018/389. Imported RTS full text, cloned iOS/Android reference implementations (pinned commits). Analyzed Dutch PA report. **CRITICAL FIX**: Corrected authentication code definition (VP Token, not `jti`). Deliverables: `PSD2_SCA_COMPLIANCE_ASSESSMENT.md` (734 lines), KI updated. 49 requirements mapped: 18 compliant, 6 partial, 9 PSP-required, 2 impl-specific. |
 | 2026-01-26 20:52 | **Feat: VCQ Architecture Tile + Layout Fixes** — Redesigned Architecture source to 3 checkboxes (ARF, Tech Specs, Rulebooks) with TS1–TS14, PID & mDL, ARF hints. DORA now default-on. Removed "Your Selection" summary panel. Fixed regulation page sidebar overlap caused by `margin-left: -80px` in CopyReference.css gutter icon styling. |
 | 2026-01-26 16:13 | **Feat: RFC 2119 Obligation Levels (VCQ)** — Replaced subjective "criticality" (Critical/High/Medium/Low) with RFC 2119 obligation levels (MUST/SHOULD/MAY) derived from modal verbs in requirement text. Added `deriveObligation()` to build-vcq.js, updated UI summary cards and table badges. Fixed ARF version (1.5→2.7.3). Recategorized VEND-CORE-015/016/017 from governance→registration. Retro: documented category semantics, added RFC 2119 terms to TERMINOLOGY.md. |

@@ -335,13 +335,13 @@ ENISA's Digital Identity Standards report defines four primary security goals:
 
 ##### Reference Implementation Evidence
 
-| Platform | Component | Source | Security Level |
-|----------|-----------|--------|----------------|
-| **iOS** | PIN storage | iOS Keychain with `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` | Device-bound, encrypted |
-| **iOS** | Key storage | Secure Enclave via `kSecAttrTokenIDSecureEnclave` | Hardware, non-extractable |
-| **Android** | PIN storage | Android Keystore + AES-GCM (see Art. 22(2)(b) deep-dive) | Encrypted with hardware key |
-| **Android** | Key storage | `setIsStrongBoxBacked(true)` or TEE | Hardware, non-extractable |
-| **Both** | Authentication code | RAM-only, single-use | Not persisted |
+| Platform | Component | Source | Security Property |
+|----------|-----------|--------|-------------------|
+| **iOS** | PIN storage | [`KeychainPinStorageProvider.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift#L30-L31) (L30-31) | Keychain with device-only accessibility |
+| **iOS** | Key protection | [`KeyChainController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-business/Sources/Controller/KeyChainController.swift#L75-L80) (L75-80) | `.whenPasscodeSetThisDeviceOnly` + biometric policy |
+| **Android** | PIN storage | [`PrefsPinStorageProvider.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt#L57-L72) (L57-72) | AES-GCM encryption with hardware-backed key |
+| **Android** | Key generation | [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt#L90-L118) (L90-118) | `setUserAuthenticationRequired(true)`, `AUTH_BIOMETRIC_STRONG` |
+
 
 ##### Gap Analysis: PSC Confidentiality
 
@@ -3483,14 +3483,13 @@ Legend:
 
 ##### Reference Implementation Evidence
 
-| Platform | Component | Source | Implementation |
-|----------|-----------|--------|----------------|
-| **iOS** | PIN Entry | `SecureField` in SwiftUI | Masked input, no clipboard |
-| **iOS** | Secure Keyboard | `UITextField.isSecureTextEntry = true` | Prevents autocomplete/prediction |
-| **iOS** | Screen Protection | `isExcludedFromCapture` | Prevents screenshots during PIN entry |
-| **Android** | PIN Entry | `inputType="textPassword"` | Masked input |
-| **Android** | Secure Window | `FLAG_SECURE` on Activity | Prevents screenshots, screen recording |
-| **Android** | TEE Validation | Keymaster HAL | Hardware-backed key operations |
+| Platform | Component | Source | Security Property |
+|----------|-----------|--------|-------------------|
+| **iOS** | PIN entry UI | [`PinTextFieldView.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-ui/Sources/DesignSystem/Component/Input/PinTextFieldView.swift#L172-L175) (L172-175) | `.keyboardType(.numberPad)`, `.textContentType(.oneTimeCode)` |
+| **iOS** | PIN storage | [`KeychainPinStorageProvider.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift#L30-L31) (L30-31) | Keychain storage with device-only accessibility |
+| **Android** | PIN entry UI | [`PinScreen.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/common-feature/src/main/java/eu/europa/ec/commonfeature/ui/pin/PinScreen.kt#L282-L292) (L282-292) | `PasswordVisualTransformation()` masked input |
+| **Android** | PIN storage | [`PrefsPinStorageProvider.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt#L57-L72) (L57-72) | AES-GCM encryption before storage |
+
 
 ##### Gap Analysis: Knowledge Element
 
@@ -3678,13 +3677,13 @@ While phishing is primarily a PSP/TRA concern, the wallet can provide supporting
 
 ##### Reference Implementation Evidence
 
-| Platform | Component | Protection |
-|----------|-----------|------------|
-| **iOS** | LocalAuthentication | Secure PIN/passcode entry |
-| **iOS** | Secure Enclave | Hardware-backed hash comparison |
-| **Android** | BiometricPrompt | System-managed PIN fallback |
-| **Android** | FLAG_SECURE | Prevents screen capture |
-| **Android** | StrongBox/TEE | Hardware hash storage |
+| Platform | Component | Source | Security Property |
+|----------|-----------|--------|-------------------|
+| **iOS** | Biometric check | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift#L97-L126) (L97-126) | `canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` |
+| **iOS** | Keychain biometry | [`KeyChainController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-business/Sources/Controller/KeyChainController.swift#L75-L80) (L75-80) | `.whenPasscodeSetThisDeviceOnly` + touchID policy |
+| **Android** | Biometric availability | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt#L36-L58) (L36-58) | Class 3 (BIOMETRIC_STRONG) requirement |
+| **Android** | User auth keys | [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt#L100-L110) (L100-110) | `setUserAuthenticationRequired(true)` |
+
 
 ##### Threat Model: Knowledge Disclosure
 
@@ -3857,30 +3856,6 @@ Google Root CA
 | **App compromise** | Malicious app impersonates wallet | App attestation, code signing | ✅ WUA |
 | **Relay attack** | Forward signing requests remotely | User presence required (biometric/PIN) | ✅ WIAM_14 |
 | **Backup extraction** | Restore key from device backup | Keys excluded from backup (SE/TEE) | ✅ OS-level |
-
-##### FIDO Alignment
-
-EUDI Wallet's possession element architecture aligns with FIDO2/WebAuthn:
-
-| FIDO Concept | EUDI Wallet Equivalent |
-|--------------|------------------------|
-| Authenticator | WSCD (Secure Element / TEE) |
-| Private Key | SCA Attestation Key |
-| Attestation | WUA (Wallet Unit Attestation) |
-| User Verification | PIN (knowledge) or biometric (inherence) |
-| Cryptographic Proof | KB-JWT signature on VP Token |
-
-##### Reference Implementation Evidence
-
-| Platform | Component | Source | Property |
-|----------|-----------|--------|----------|
-| **iOS** | Key Generation | `SecKeyCreateRandomKey(.secureEnclave)` | Non-extractable in SEP |
-| **iOS** | Key Protection | `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` | User auth required |
-| **iOS** | Attestation | `DCAppAttestService.generateKey()` | App integrity proof |
-| **Android** | Key Generation | `KeyGenParameterSpec.Builder.setIsStrongBoxBacked(true)` | StrongBox required |
-| **Android** | Key Protection | `setUserAuthenticationRequired(true)` | Biometric/PIN gate |
-| **Android** | Attestation | `setAttestationChallenge(nonce)` | Key attestation cert |
-| **Android** | Security Check | `BiometricManager.Authenticators.BIOMETRIC_STRONG` | Class 3 biometric |
 
 ##### Gap Analysis: Possession Element
 
@@ -4077,13 +4052,13 @@ FIDO standards provide proven anti-cloning mechanisms:
 
 ##### Reference Implementation Evidence
 
-| Platform | Component | Anti-Cloning Property |
-|----------|-----------|----------------------|
-| **iOS** | Secure Enclave | Key marked with `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` |
-| **iOS** | Key attestation | Apple-signed proof that key is SE-bound |
-| **Android** | StrongBox | Dedicated SE chip with key isolation |
-| **Android** | Key attestation | Google-signed certificate chain proving hardware binding |
-| **Android** | TEE | ARM TrustZone isolation from Rich OS |
+| Platform | Component | Source | Anti-Cloning Property |
+|----------|-----------|--------|----------------------|
+| **iOS** | Key protection | [`KeyChainController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-business/Sources/Controller/KeyChainController.swift#L75-L80) (L75-80) | `.whenPasscodeSetThisDeviceOnly` — device-bound, non-extractable |
+| **iOS** | Biometry binding | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift#L76-L86) (L76-86) | Keychain biometry validation |
+| **Android** | Key generation | [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt#L90-L118) (L90-118) | Android Keystore with `setUserAuthenticationRequired(true)` |
+| **Android** | StrongBox config | [`WalletCoreConfigImpl.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/core-logic/src/demo/java/eu/europa/ec/corelogic/config/WalletCoreConfigImpl.kt#L41) (L41) | `useStrongBoxForKeys = true` |
+
 
 ##### Threat Model: Replication Attacks
 
@@ -4259,14 +4234,13 @@ Legend:
 
 ##### Reference Implementation Evidence
 
-| Platform | Component | Source | Security Level |
-|----------|-----------|--------|----------------|
-| **iOS** | Face ID API | `LAContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` | FAR ◄ 1:1,000,000 |
-| **iOS** | Touch ID API | `LAContext.evaluatePolicy` | FAR ◄ 1:50,000 |
-| **iOS** | Secure Enclave | Hardware SEP chip | FIPS 140-2/3 |
-| **Android** | BiometricPrompt | `BiometricManager.Authenticators.BIOMETRIC_STRONG` | Class 3 only |
-| **Android** | TEE Keystore | `setUserAuthenticationRequired(true)` | Hardware-backed |
-| **Android** | Attestation | `KeyGenParameterSpec.Builder.setAttestationChallenge()` | Device integrity |
+| Platform | Component | Source | Security Property |
+|----------|-----------|--------|-------------------|
+| **iOS** | Biometric evaluation | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift#L97-L126) (L97-126) | `LAContext.canEvaluate(.deviceOwnerAuthenticationWithBiometrics)` |
+| **iOS** | Biometry UI flow | [`BiometryView.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/feature-common/Sources/UI/Biometry/BiometryView.swift) | User-facing biometric prompt |
+| **Android** | Class 3 check | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt#L36-L58) (L36-58) | `BIOMETRIC_STRONG` requirement |
+| **Android** | User auth binding | [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt#L100-L110) (L100-110) | `AUTH_BIOMETRIC_STRONG` for key operations |
+
 
 ##### Gap Analysis: Inherence Element
 
@@ -4611,14 +4585,14 @@ Article 9(2-3) extends this to **multi-purpose devices** (smartphones). The inde
 
 ##### Reference Implementation Evidence
 
-| Platform | Separation Mechanism | Source |
-|----------|---------------------|--------|
-| **iOS** | PIN: Encrypted in Keychain | `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` |
-| **iOS** | Key: In Secure Enclave | `kSecAttrTokenIDSecureEnclave` |
-| **iOS** | Biometric: LAContext (no template access) | `evaluatePolicy` returns Bool only |
-| **Android** | PIN: Encrypted with Keystore key | `Cipher.getInstance("AES/GCM/NoPadding")` |
-| **Android** | Key: In StrongBox/TEE | `setIsStrongBoxBacked(true)` |
-| **Android** | Biometric: BiometricPrompt (no template access) | `AuthenticationResult` returns success only |
+| Factor | iOS Component | Android Component | Separation Property |
+|--------|--------------|-------------------|-------------------|
+| **Knowledge (PIN)** | [`KeychainPinStorageProvider.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Storage/KeychainPinStorageProvider.swift) | [`PrefsPinStorageProvider.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/storage/PrefsPinStorageProvider.kt) | Separate storage controller |
+| **Inherence (Biometric)** | [`SystemBiometryController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-authentication/Sources/Controller/SystemBiometryController.swift) | [`BiometricsAvailability.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/authentication-logic/src/main/java/eu/europa/ec/authenticationlogic/controller/authentication/BiometricsAvailability.kt) | Separate biometry controller |
+| **Possession (Keys)** | [`KeyChainController.swift`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/blob/055bdda8b2a74d9df4892e7cf702479ac75f6ca6/Modules/logic-business/Sources/Controller/KeyChainController.swift) | [`KeystoreController.kt`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/blob/48311b4de1a0d2be57874824ea68a5e0914765e4/business-logic/src/main/java/eu/europa/ec/businesslogic/controller/crypto/KeystoreController.kt) | Separate crypto controller |
+
+► **Note**: Each SCA factor is managed by an independent controller with dedicated key material, satisfying Article 9 independence requirements.
+
 
 ##### Gap Analysis: Independence of Elements
 
