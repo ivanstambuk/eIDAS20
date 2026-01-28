@@ -57,8 +57,6 @@ This document is designed for **legal counsel, compliance officers, and regulato
 
 ---
 
----
-
 # 1. Executive Summary
 
 EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial coverage** of PSD2 RTS requirements for SCA. Key findings:
@@ -87,8 +85,6 @@ EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial
 |----------|--------------|---------------|
 | **Issuance/Binding** | 22, 23, 24, 25, 26, 27 | Part III |
 | **Usage/Authentication** | 1, 2, 3, 4, 5, 6, 7, 8, 9 | Part II |
-
----
 
 ---
 
@@ -4868,8 +4864,6 @@ The EBA has clarified multi-purpose device requirements:
 **Context**: TRA is a PSP-side decision based on fraud rates, transaction amounts, and risk scoring. The wallet is not involved in exemption decisions. However, the PSP could:
 1. Not invoke wallet SCA at all (silent exemption)
 2. Invoke wallet with reduced requirements (future extension)
-
----
 
 ---
 
