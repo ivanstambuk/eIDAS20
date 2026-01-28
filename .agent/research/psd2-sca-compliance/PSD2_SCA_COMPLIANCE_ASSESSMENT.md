@@ -7336,53 +7336,7 @@ A future TS12 version is expected to add mDOC support. The compliance mapping in
 
 ---
 
-## Appendix B: TPP Scenario Coverage
-
-► 📌 **Note**: This analysis is now integrated into [Article 5(1)(a)](#article-51a--payer-awareness) in the main compliance matrix.
-
-### Two SCA Flow Types
-
-TS12 §2.1 defines two scenarios:
-
-1. **Issuer-Requested Flow**: RP = User's PSP (e.g., bank initiates SCA for login)
-2. **Third-Party-Requested Flow**: RP = TPP (e.g., PISP initiates SCA for payment)
-
-### Schema Support
-
-The TS12 JSON schemas include explicit TPP objects:
-
-**PISP Object** (payment flow):
-```json
-{
-  "pisp": {
-    "name": "PaymentApp",
-    "id": "PISP-ID-123",
-    "bic": "PISPDEFF"
-  }
-}
-```
-
-**AISP Object** (account access flow):
-```json
-{
-  "aisp": {
-    "name": "AccountAggregator",
-    "id": "AISP-ID-456"
-  }
-}
-```
-
-### UI Implications
-
-When a TPP initiates SCA, the Wallet displays both:
-- The TPP name (e.g., "PaymentApp")
-- The underlying PSP name (from attestation issuer)
-
-This ensures user awareness per RTS Art. 5(1)(a).
-
----
-
-## Appendix C: Accessibility Requirements
+## Appendix B: Accessibility Requirements
 
 *Note: Wallet recovery procedures are documented inline at [Article 7(1)](#article-71) since they directly address the RTS requirement for loss/theft mitigation.*
 
@@ -7398,7 +7352,7 @@ For SCA specifically, SUA_06 mandates adaptable dialogue elements (font size, co
 
 ---
 
-## Appendix D: GitHub Discussion Analysis
+## Appendix C: GitHub Discussion Analysis
 
 ### TS12 Discussion #439
 
@@ -7456,7 +7410,7 @@ Key points on **TPP (AISP/PISP) integration**:
 
 ---
 
-## Appendix E: SCA Attestation Rulebook Status
+## Appendix D: SCA Attestation Rulebook Status
 
 ### Current Status (January 2026)
 
