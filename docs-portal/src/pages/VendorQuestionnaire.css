@@ -964,6 +964,8 @@
 
 .vcq-req-table {
     width: 100%;
+    table-layout: fixed;
+    /* DEC-259: Consistent column widths */
     border-collapse: collapse;
     background: var(--bg-secondary);
     border-radius: var(--radius-lg);
@@ -991,7 +993,7 @@
 }
 
 .vcq-req-table .col-id {
-    width: 85px;
+    width: 110px;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--accent-primary);
@@ -999,16 +1001,16 @@
 }
 
 .vcq-req-table .col-requirement {
-    /* No min-width - let it expand */
+    /* Takes remaining space after fixed columns */
 }
 
 .vcq-req-table .col-criticality {
-    width: 90px;
+    width: 100px;
     text-align: center;
 }
 
 .vcq-req-table .col-legal {
-    width: 140px;
+    width: 180px;
 }
 
 .vcq-req-table .col-answer {
@@ -1119,7 +1121,7 @@
 
 /* Obligation column styling */
 .vcq-req-table .col-obligation {
-    width: 90px;
+    width: 100px;
     text-align: center;
 }
 
