@@ -1,0 +1,358 @@
+# VCQ Requirements: Trust Services / QTSP (VEND-TSP-*)
+# 
+# These requirements apply to vendors providing Qualified Trust Service
+# capabilities including qualified signatures (QES), qualified certificates,
+# and qualified electronic attestations of attributes (QEAAs).
+#
+# Legal Framework:
+# - eIDAS Art. 20-24 (Trust Service Provider Obligations)
+# - eIDAS Art. 28-34 (Qualified Signatures)
+# - eIDAS Art. 45f-45g (QEAAs)
+# - TS3 (Wallet Unit Attestation), TS8 (Remote QES)
+#
+# Schema Version: 2
+# Created: 2026-01-28
+# Decision: DEC-257 (VCQ Role/Category Expansion)
+
+schemaVersion: 2
+
+requirements:
+  # ============================================================================
+  # CERTIFICATION - QTSP Status
+  # ============================================================================
+  
+  - id: VEND-TSP-001
+    category: certification
+    requirement: "Obtain and maintain qualified trust service provider (QTSP) status"
+    explanation: |
+      To provide qualified trust services, the vendor must obtain QTSP status 
+      from a conformity assessment body in a Member State and be listed on 
+      the national Trusted List.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 21"
+      paragraph: ""
+    legalText: |
+      A trust service provider may start its activity as a qualified trust 
+      service provider only after the qualified status, and where applicable, 
+      the qualified status of the trust services it provides, has been 
+      verified.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-002
+    category: certification
+    requirement: "Undergo regular conformity assessment (at least every 24 months)"
+    explanation: |
+      QTSPs must undergo conformity assessment at least every 24 months 
+      by an accredited conformity assessment body to verify continued 
+      compliance with eIDAS requirements.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 20"
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall be subject to audits at least 
+      every 24 months by a conformity assessment body.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-003
+    category: certification
+    requirement: "Notify supervisory body of changes affecting qualified status"
+    explanation: |
+      The QTSP must notify the competent supervisory body of any significant 
+      changes that could affect the qualified status, including organizational 
+      changes, security incidents, or policy modifications.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: "2(i)"
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # SECURITY - Technical Requirements
+  # ============================================================================
+
+  - id: VEND-TSP-004
+    category: security
+    requirement: "Use qualified electronic signature/seal creation devices (QSCDs)"
+    explanation: |
+      Qualified signatures and seals must be created using QSCDs that meet 
+      the requirements of Annex II of eIDAS, ensuring keys cannot be 
+      extracted and that the creation environment is secure.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 29"
+      paragraph: ""
+    legalText: |
+      Qualified electronic signatures shall be created by a qualified 
+      electronic signature creation device.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+    linkedRCA:
+      - TSP-SEC-001
+
+  - id: VEND-TSP-005
+    category: security
+    requirement: "Protect signature/seal creation data against duplication and theft"
+    explanation: |
+      The QTSP must implement comprehensive security measures to protect 
+      electronic signature creation data (private keys) from duplication, 
+      theft, or unauthorized access.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: "2(e)"
+    legalText: |
+      Take appropriate measures against falsification and theft of data and 
+      against forgery or unauthorised modification of electronic signature 
+      creation data.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-006
+    category: security
+    requirement: "Maintain disaster recovery and business continuity capabilities"
+    explanation: |
+      The QTSP must have tested disaster recovery procedures and business 
+      continuity plans to ensure service availability and data integrity 
+      even in adverse circumstances.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: "2(h)"
+    legalText: |
+      Have a termination plan to ensure continuity of service, and have a 
+      valid and up-to-date termination plan.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-TSP-007
+    category: security
+    requirement: "Notify supervisory body of security breaches within 24 hours"
+    explanation: |
+      The QTSP must notify the supervisory body without undue delay, and 
+      in any case within 24 hours, of any security breach with significant 
+      impact on the trust service or personal data.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 19"
+      paragraph: "2"
+    legalText: |
+      Where a trust service provider detects a breach of security or loss 
+      of integrity that has a significant impact on the trust service 
+      provided, it shall notify the supervisory body within 24 hours.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  # ============================================================================
+  # REMOTE SIGNING - Remote QES (TS8)
+  # ============================================================================
+
+  - id: VEND-TSP-008
+    category: security
+    requirement: "Implement secure remote signature creation (TS8) if offering remote QES"
+    explanation: |
+      If providing remote qualified signature services, implement the remote 
+      signature creation protocols specified in TS8, ensuring secure 
+      management of signature creation data on behalf of signatories.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 29"
+      paragraph: "1"
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+    notes: |
+      Remote QES allows signatories to create qualified signatures using 
+      keys managed by the QTSP, rather than on a local QSCD.
+
+  - id: VEND-TSP-009
+    category: security
+    requirement: "Obtain sole control assurance for remote signing operations"
+    explanation: |
+      For remote qualified signatures, the QTSP must ensure the signatory 
+      has sole control over the signature creation process, typically 
+      through multi-factor authentication and explicit consent.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 26"
+      paragraph: "1(d)"
+    legalText: |
+      An advanced electronic signature shall meet the following requirements: 
+      (d) it is linked to the data signed therewith in such a way that any 
+      subsequent change in the data is detectable.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-010
+    category: security
+    requirement: "Support WYSIWYS (What You See Is What You Sign) for document signing"
+    explanation: |
+      When creating signatures on documents, the platform must present 
+      the document content to the signer in a way that allows them to 
+      verify what they are signing before authorization.
+    legalBasis:
+      regulation: "2018/389"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      Where the payment service provider applies strong customer authentication, 
+      the authentication shall include elements which dynamically link the 
+      transaction to a specific amount and a specific payee.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # TIMESTAMPING - Qualified Timestamps
+  # ============================================================================
+
+  - id: VEND-TSP-011
+    category: security
+    requirement: "Issue qualified timestamps from a trusted time source"
+    explanation: |
+      If providing timestamp services, qualified timestamps must be derived 
+      from an accurate and reliable time source traceable to Coordinated 
+      Universal Time (UTC).
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 42"
+      paragraph: ""
+    legalText: |
+      A qualified electronic time stamp shall meet the following requirements: 
+      (a) it binds the date and time to data in such a manner as to reasonably 
+      preclude the possibility of the data being changed undetectably.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # QEAA ISSUANCE - Qualified Attestations
+  # ============================================================================
+
+  - id: VEND-TSP-012
+    category: issuance
+    requirement: "Issue QEAAs only after verifying data from authentic sources"
+    explanation: |
+      Qualified Electronic Attestations of Attributes must be based on 
+      verified data from authentic sources. The QTSP must establish 
+      verified connections to authoritative data sources.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45f"
+      paragraph: "2(b)"
+    legalText: |
+      A qualified electronic attestation of attributes shall meet the 
+      following requirements: (b) it is based on data from an authentic 
+      source or on data that has been provided and verified by the person 
+      to whom the attestation was issued.
+    roles: [issuer]
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-013
+    category: issuance
+    requirement: "Sign QEAAs with qualified electronic signature or seal"
+    explanation: |
+      Qualified attestations must be signed using the QTSP's qualified 
+      electronic signature or seal, providing legally recognized 
+      authenticity and integrity assurance.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45f"
+      paragraph: "2(c)"
+    legalText: |
+      A qualified electronic attestation of attributes shall meet the 
+      following requirements: (c) it is issued by a qualified trust 
+      service provider and signed with a qualified electronic signature 
+      or qualified electronic seal.
+    roles: [issuer]
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-TSP-014
+    category: revocation
+    requirement: "Provide QEAA revocation capability through status lists"
+    explanation: |
+      QTSPs issuing QEAAs must maintain revocation infrastructure that 
+      enables relying parties to verify the current validity status 
+      of issued QEAAs.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45f"
+      paragraph: ""
+    arfReference:
+      topic: "Topic 7"
+      hlr: "VCR_01"
+    roles: [issuer]
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  # ============================================================================
+  # LIABILITY - Insurance and Legal
+  # ============================================================================
+
+  - id: VEND-TSP-015
+    category: liability
+    requirement: "Maintain sufficient financial resources or liability insurance"
+    explanation: |
+      QTSPs must maintain adequate financial resources or obtain appropriate 
+      liability insurance to cover damages arising from failure to meet 
+      their obligations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: "2(c)"
+    legalText: |
+      Qualified trust service providers shall use trustworthy systems and 
+      products that are protected against modification, and ensure the 
+      technical security and reliability of the processes supported by them.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-TSP-016
+    category: liability
+    requirement: "Accept liability for qualified signatures/attestations issued"
+    explanation: |
+      The QTSP is liable for qualified services issued and must accept 
+      responsibility for failures in verification, revocation, or 
+      security of qualified certificates and attestations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 13"
+      paragraph: "1"
+    legalText: |
+      Trust service providers shall be liable for damage caused 
+      intentionally or negligently to any natural or legal person due to 
+      a failure to comply with the obligations under this Regulation.
+    roles: []
+    productCategories: [trust_services]
+    deadline: "2027-11-21"
+    criticality: high

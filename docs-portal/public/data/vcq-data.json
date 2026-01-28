@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T03:30:06.383Z",
+  "generatedAt": "2026-01-28T03:36:02.517Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2247,6 +2247,1561 @@
       "obligation": "MUST",
       "notes": "This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. \nAttestation Status Lists (VCR_11) are the primary mechanism for efficient \nbatch revocation checking without per-credential queries.",
       "_sourceFile": "intermediary.yaml"
+    },
+    {
+      "id": "VEND-ISS-001",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Register as an Attestation Provider with the competent authority",
+      "explanation": "Any entity issuing electronic attestations of attributes must register \nwith a Member State authority. Registration establishes eligibility to \nissue attestations and enables inclusion in Trusted Lists.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45d",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalText": "Electronic attestation of attributes issued by or on behalf of a public \nsector body responsible for an authentic source shall be issued in \naccordance with the requirements laid down in this Regulation.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-002",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Publish Provider Information according to the standard schema",
+      "explanation": "Attestation Providers must publish machine-readable information about \ntheir services, including supported attestation types, data sources, \nand issuance policies. This enables wallets and relying parties to \ndiscover and evaluate providers.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "legalText": "Providers issuing attestations to European Digital Identity Wallet units \nshall publish information in accordance with the data model set out in \nAnnex I.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-003",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Update Provider Information within 24 hours of changes",
+      "explanation": "When any information in the published Provider Information changes \n(e.g., new attestation types, policy updates), the provider must \nupdate the published data within 24 hours.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 3",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-004",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "Obtain inclusion in national or EU Trusted Lists if issuing qualified attestations",
+      "explanation": "Providers of Qualified Electronic Attestations of Attributes (QEAAs) \nmust be included in the national Trusted List as a QTSP. This enables \nrelying parties to verify the qualified status of the attestations.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45f",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform",
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "notes": "This requirement only applies to QEAA issuance. Non-qualified EAAs \nmay be issued without QTSP status but must still register.",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-005",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Issue attestations in mandated credential formats (mDoc and/or W3C VC)",
+      "explanation": "Attestations must be issued in one or both of the mandated formats: \nISO/IEC 18013-5 (mDoc/mdoc) and/or W3C Verifiable Credentials Data Model 1.1. \nThe format(s) supported must be published in Provider Information.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalText": "Wallet units shall support the encoding of attestations in accordance \nwith the technical specifications set out in Annex II.\nhlr: \"Iss_02\"",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-006",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Bind attestations to the Wallet Unit's cryptographic device",
+      "explanation": "Attestations must be cryptographically bound to the Wallet Unit's \nsecure cryptographic device (WSCD), ensuring that the attestation \ncan only be presented from the authorised wallet instance.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalText": "Wallet providers shall ensure that wallet units bind attestations to \nthe wallet secure cryptographic device.\nhlr: \"Iss_06\"",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-007",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Implement the OpenID4VCI issuance protocol (TS6)",
+      "explanation": "The issuance platform must support the OpenID for Verifiable Credential \nIssuance (OpenID4VCI) protocol as specified in TS6, enabling standardised \ncredential issuance to EUDI Wallets across Member States.\nhlr: \"Iss_01\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 6",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-6",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-008",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Support batch issuance for multiple attestations",
+      "explanation": "The platform should support efficient batch issuance when a user \nrequests multiple attestations simultaneously, avoiding redundant \nauthentication steps.\nhlr: \"Iss_03\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 6",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-6",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "SHOULD",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-009",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Verify user identity before issuing attestations",
+      "explanation": "Before issuing an attestation, the provider must verify the user's \nidentity to a level of assurance appropriate for the attestation type. \nFor qualified attestations, this requires high assurance identity proofing.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45d",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalText": "Providers of electronic attestation of attributes shall verify the \nidentity of the natural or legal person to whom the electronic \nattestation of attributes is issued.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-010",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Obtain data from authentic sources with verified provenance",
+      "explanation": "Attestation data must be obtained from authentic sources (authoritative \ndatabases, registries) with verified data provenance. The platform must \nmaintain audit trails of data source queries.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45e",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45e",
+      "legalText": "Providers of electronic attestation of attributes shall obtain the \ndata for the attributes from authentic sources.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-011",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Include attestation validity period and issuance timestamp",
+      "explanation": "Each attestation must include a clearly defined validity period \n(valid_from and valid_until) and issuance timestamp. Expired \nattestations must be rejected by wallets.\nhlr: \"Iss_07\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-012",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Support attestation renewal and re-issuance workflows",
+      "explanation": "The platform must support workflows for renewing attestations before \nexpiry and re-issuing attestations when the underlying data changes. \nUsers should be notified of upcoming expiry.\nhlr: \"Iss_05\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 3",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-013",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Publish attestation status lists for revocation checking",
+      "explanation": "The issuer must maintain and publish attestation status lists \n(revocation/validity lists) that enable relying parties to verify \nthat attestations have not been revoked since issuance.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalText": "PID Providers and Attestation Providers shall publish validity status \ninformation of revoked or suspended attestations.\nhlr: \"VCR_01\"",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-014",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Update revocation status within defined time limits",
+      "explanation": "When an attestation is revoked, the status list must be updated within \nthe defined maximum propagation time (typically 24 hours for standard \nattestations, immediate for critical security revocations).",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": "2",
+        "hlr": "VCR_03"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-015",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Notify wallet users when their attestations are revoked",
+      "explanation": "When an attestation is revoked, the issuer should notify the affected \nwallet user through available channels, enabling them to take \nappropriate action (e.g., request re-issuance).\nhlr: \"VCR_04\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "SHOULD",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-016",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Support suspension and reinstatement of attestations",
+      "explanation": "Beyond permanent revocation, the platform should support temporary \nsuspension of attestations (e.g., during fraud investigation) with \nthe ability to reinstate if the issue is resolved.\nhlr: \"VCR_02\"",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "medium",
+      "obligation": "SHOULD",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-017",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Protect attestation signing keys in secure cryptographic devices",
+      "explanation": "The private keys used to sign attestations must be stored and used \nwithin secure cryptographic devices (HSMs or equivalent) that prevent \nextraction and ensure key integrity.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalText": "Qualified trust service providers shall use trustworthy systems and \nproducts that are protected against modification and ensure the \ntechnical security and reliability of the processes supported by them.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform",
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-018",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Use signing algorithms from the approved list",
+      "explanation": "Attestation signatures must use cryptographic algorithms from the \napproved list in Annex of the Integrity Regulation (e.g., ECDSA P-256, \nEdDSA Ed25519, RSA-PSS).",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": "",
+        "hlr": "Iss_04"
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-019",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement key rotation procedures",
+      "explanation": "The platform must support cryptographic key rotation with documented \nprocedures for transitioning to new signing keys while maintaining \nvalidity of previously issued attestations.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-020",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Publish attestation types to the Common Catalogue (TS11)",
+      "explanation": "Attestation types issued by the provider should be registered in the \nCommon Catalogue of Attestation Types, enabling discoverability by \nwallets, relying parties, and users.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "SHOULD",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-021",
+      "category": "transparency",
+      "categoryLabel": "Transparency",
+      "categoryIcon": "👁️",
+      "requirement": "Document attestation schema including mandatory and optional attributes",
+      "explanation": "Each attestation type must have a published schema defining the \nmandatory and optional attributes, data types, and semantic meaning \nof each field.",
+      "legalBasis": {
+        "regulation": "2024/2981",
+        "article": "Article 4",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-022",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Apply data minimisation principles to attestation content",
+      "explanation": "Attestations should contain only the attributes necessary for their \nintended purpose. Issuers should offer selective disclosure-friendly \nattestation designs where possible.",
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 25",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679#article-25",
+      "legalText": "The controller shall implement appropriate technical and organisational \nmeasures for ensuring that, by default, only personal data which are \nnecessary for each specific purpose of the processing are processed.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-023",
+      "category": "privacy",
+      "categoryLabel": "Privacy",
+      "categoryIcon": "🛡️",
+      "requirement": "Do not embed tracking identifiers in attestations",
+      "explanation": "Attestations must not contain hidden or overt tracking identifiers \nthat could enable correlation of user presentations across different \nrelying parties.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5a",
+        "paragraph": "16(a)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST NOT",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-024",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Enable cross-border recognition of attestations",
+      "explanation": "Attestations issued in one Member State must be verifiable and \nrecognisable in all other Member States. The platform must ensure \ninteroperability through adherence to common standards.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45g",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45g",
+      "legalText": "An electronic attestation of attributes issued in one Member State \nshall be recognised as an electronic attestation of attributes in \nall other Member States.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-025",
+      "category": "interoperability",
+      "categoryLabel": "Interoperability",
+      "categoryIcon": "🌐",
+      "requirement": "Support both SD-JWT and mDoc credential formats",
+      "explanation": "For maximum interoperability, the platform should support issuing \nattestations in both SD-JWT-VC and ISO mDoc formats, allowing \nrelying parties to request their preferred format.",
+      "legalBasis": {
+        "regulation": "2024/2979",
+        "article": "Article 8",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "SHOULD",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-SCA-001",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Ensure SCA elements derive from independent authentication factors",
+      "explanation": "When integrating EUDI Wallet for SCA, the vendor must ensure the \nauthentication derives from at least two independent elements from \nknowledge, possession, and inherence categories. The wallet's \ncryptographic proofs (possession) must be combined with another factor.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 4",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalText": "Payment service providers shall apply strong customer authentication \nas defined in point (30) of Article 4 of Directive (EU) 2015/2366 \nwhere the payer accesses his payment account online, initiates an \nelectronic payment transaction, or carries out any action through \na remote channel.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-002",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Support PIN/biometric entry for the knowledge/inherence factor",
+      "explanation": "The connector must support wallet-based PIN entry or biometric \nverification to satisfy the knowledge or inherence element of SCA, \ncomplementing the possession element from the WSCD.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 6",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2018-389#article-6",
+      "legalText": "The authentication elements categorised as inherence which payment \nservice providers may use shall be based on algorithms that assess \nthe probability that the authentication element derives from the \npayment service user.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-003",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Preserve breach isolation between SCA elements",
+      "explanation": "The integration must maintain independence such that compromise of \none authentication element does not compromise the other. The wallet's \nWSCD isolation supports this, but the connector must not aggregate \nelements in a way that reduces independence.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 9",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-9",
+      "legalText": "Payment service providers shall ensure that the use of the elements \nof strong customer authentication is subject to measures to mitigate \nthe risk of fraud due to the compromise of one of the elements.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST NOT",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-004",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Implement dynamic linking for remote payment transactions",
+      "explanation": "For remote payments, the connector must request wallet attestations \nthat dynamically link the authentication to the specific transaction \namount and payee. The VP Token must contain these bound elements.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 5",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-5",
+      "legalText": "Payment service providers shall apply strong customer authentication \nthat includes elements which dynamically link the transaction to a \nspecific amount and a specific payee.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-005",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Include transaction amount and payee in authentication request",
+      "explanation": "The OID4VP authentication request must include the transaction amount \n(document_number) and payee identifier in a way that enables the \nwallet to display these to the user and bind them to the VP Token.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 5",
+        "paragraph": "2(a)"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-5",
+      "legalText": "For the purpose of paragraph 1, the payer shall be made aware of \nthe amount of the payment transaction and of the payee.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-006",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Ensure authentication codes are specific and non-reusable",
+      "explanation": "The VP Token serves as the PSD2 authentication code. The connector \nmust ensure each token is bound to the specific transaction context \nand cannot be reused for different transactions.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 5",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-5",
+      "legalText": "The authentication code accepted by the payment service provider \nshall be specific to the amount of the transaction and the payee.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-007",
+      "category": "payments",
+      "categoryLabel": "Payments & SCA",
+      "categoryIcon": "💳",
+      "requirement": "Invalidate authentication codes when transaction details change",
+      "explanation": "If the payer modifies the transaction amount or payee after \nauthentication, the existing VP Token must be invalidated and \nnew SCA must be performed with the correct transaction details.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 5",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-5",
+      "legalText": "Any change to the amount or the payee shall result in the \ninvalidation of the authentication code generated.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-008",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Verify VP Token signatures against wallet certificate chain",
+      "explanation": "The connector must verify the cryptographic signatures on VP Tokens \nagainst the wallet's certificate chain, ultimately rooted in the \nPID Provider's trust anchor or Member State Trusted List.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 4",
+        "paragraph": "2(c)"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalText": "The elements of strong customer authentication which are independent \nin the sense that the breach of one does not compromise the \nreliability of the others.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-009",
+      "category": "verification",
+      "categoryLabel": "Verification",
+      "categoryIcon": "🔍",
+      "requirement": "Check attestation revocation status before accepting transactions",
+      "explanation": "Before accepting a wallet presentation for SCA, the connector must \ncheck the revocation status of the attestations presented, using \nthe issuer's published status lists.",
+      "legalBasisLink": null,
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": "VCR_01"
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "arf",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-010",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Protect confidentiality of authentication elements in transit",
+      "explanation": "All communication between the connector and wallet, and between the \nconnector and PSP backend, must use encrypted channels (TLS 1.2+) \nto protect authentication elements from interception.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 22",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-22",
+      "legalText": "Payment service providers shall ensure the confidentiality, \nauthenticity and integrity of payment service users' personalised \nsecurity credentials.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-011",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement rate limiting and lockout for failed authentications",
+      "explanation": "The connector must implement or support rate limiting and account \nlockout mechanisms after repeated failed authentication attempts, \nprotecting against brute-force attacks.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 4",
+        "paragraph": "3"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalText": "Payment service providers shall adopt strong customer authentication \nprocedures including elements to prevent the use of compromised \nauthentication elements.",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-SCA-012",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Log authentication events for audit and fraud detection",
+      "explanation": "The connector should log authentication events (success, failure, \ntimeout) with sufficient detail to support fraud investigation and \nregulatory audit requirements, while respecting data minimisation.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 23",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2018-389#article-23",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "SHOULD",
+      "_sourceFile": "payments.yaml"
+    },
+    {
+      "id": "VEND-TSP-001",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Obtain and maintain qualified trust service provider (QTSP) status",
+      "explanation": "To provide qualified trust services, the vendor must obtain QTSP status \nfrom a conformity assessment body in a Member State and be listed on \nthe national Trusted List.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 21",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-21",
+      "legalText": "A trust service provider may start its activity as a qualified trust \nservice provider only after the qualified status, and where applicable, \nthe qualified status of the trust services it provides, has been \nverified.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-002",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Undergo regular conformity assessment (at least every 24 months)",
+      "explanation": "QTSPs must undergo conformity assessment at least every 24 months \nby an accredited conformity assessment body to verify continued \ncompliance with eIDAS requirements.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 20",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-20",
+      "legalText": "Qualified trust service providers shall be subject to audits at least \nevery 24 months by a conformity assessment body.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-003",
+      "category": "certification",
+      "categoryLabel": "Certification",
+      "categoryIcon": "✅",
+      "requirement": "Notify supervisory body of changes affecting qualified status",
+      "explanation": "The QTSP must notify the competent supervisory body of any significant \nchanges that could affect the qualified status, including organizational \nchanges, security incidents, or policy modifications.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "2(i)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-004",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Use qualified electronic signature/seal creation devices (QSCDs)",
+      "explanation": "Qualified signatures and seals must be created using QSCDs that meet \nthe requirements of Annex II of eIDAS, ensuring keys cannot be \nextracted and that the creation environment is secure.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 29",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-29",
+      "legalText": "Qualified electronic signatures shall be created by a qualified \nelectronic signature creation device.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [
+        "TSP-SEC-001"
+      ],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-005",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Protect signature/seal creation data against duplication and theft",
+      "explanation": "The QTSP must implement comprehensive security measures to protect \nelectronic signature creation data (private keys) from duplication, \ntheft, or unauthorized access.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "2(e)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalText": "Take appropriate measures against falsification and theft of data and \nagainst forgery or unauthorised modification of electronic signature \ncreation data.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-006",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Maintain disaster recovery and business continuity capabilities",
+      "explanation": "The QTSP must have tested disaster recovery procedures and business \ncontinuity plans to ensure service availability and data integrity \neven in adverse circumstances.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "2(h)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalText": "Have a termination plan to ensure continuity of service, and have a \nvalid and up-to-date termination plan.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-007",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Notify supervisory body of security breaches within 24 hours",
+      "explanation": "The QTSP must notify the supervisory body without undue delay, and \nin any case within 24 hours, of any security breach with significant \nimpact on the trust service or personal data.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 19",
+        "paragraph": "2"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-19",
+      "legalText": "Where a trust service provider detects a breach of security or loss \nof integrity that has a significant impact on the trust service \nprovided, it shall notify the supervisory body within 24 hours.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-008",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Implement secure remote signature creation (TS8) if offering remote QES",
+      "explanation": "If providing remote qualified signature services, implement the remote \nsignature creation protocols specified in TS8, ensuring secure \nmanagement of signature creation data on behalf of signatories.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 29",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-29",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "SHOULD",
+      "notes": "Remote QES allows signatories to create qualified signatures using \nkeys managed by the QTSP, rather than on a local QSCD.",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-009",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Obtain sole control assurance for remote signing operations",
+      "explanation": "For remote qualified signatures, the QTSP must ensure the signatory \nhas sole control over the signature creation process, typically \nthrough multi-factor authentication and explicit consent.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 26",
+        "paragraph": "1(d)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-26",
+      "legalText": "An advanced electronic signature shall meet the following requirements: \n(d) it is linked to the data signed therewith in such a way that any \nsubsequent change in the data is detectable.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-010",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Support WYSIWYS (What You See Is What You Sign) for document signing",
+      "explanation": "When creating signatures on documents, the platform must present \nthe document content to the signer in a way that allows them to \nverify what they are signing before authorization.",
+      "legalBasis": {
+        "regulation": "2018/389",
+        "article": "Article 4",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalText": "Where the payment service provider applies strong customer authentication, \nthe authentication shall include elements which dynamically link the \ntransaction to a specific amount and a specific payee.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-011",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Issue qualified timestamps from a trusted time source",
+      "explanation": "If providing timestamp services, qualified timestamps must be derived \nfrom an accurate and reliable time source traceable to Coordinated \nUniversal Time (UTC).",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 42",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-42",
+      "legalText": "A qualified electronic time stamp shall meet the following requirements: \n(a) it binds the date and time to data in such a manner as to reasonably \npreclude the possibility of the data being changed undetectably.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-012",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Issue QEAAs only after verifying data from authentic sources",
+      "explanation": "Qualified Electronic Attestations of Attributes must be based on \nverified data from authentic sources. The QTSP must establish \nverified connections to authoritative data sources.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45f",
+        "paragraph": "2(b)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalText": "A qualified electronic attestation of attributes shall meet the \nfollowing requirements: (b) it is based on data from an authentic \nsource or on data that has been provided and verified by the person \nto whom the attestation was issued.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-013",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Sign QEAAs with qualified electronic signature or seal",
+      "explanation": "Qualified attestations must be signed using the QTSP's qualified \nelectronic signature or seal, providing legally recognized \nauthenticity and integrity assurance.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45f",
+        "paragraph": "2(c)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalText": "A qualified electronic attestation of attributes shall meet the \nfollowing requirements: (c) it is issued by a qualified trust \nservice provider and signed with a qualified electronic signature \nor qualified electronic seal.",
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-014",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Provide QEAA revocation capability through status lists",
+      "explanation": "QTSPs issuing QEAAs must maintain revocation infrastructure that \nenables relying parties to verify the current validity status \nof issued QEAAs.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45f",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "arfReference": {
+        "topic": "Topic 7",
+        "hlr": "VCR_01"
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "critical",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-015",
+      "category": "liability",
+      "categoryLabel": "Liability",
+      "categoryIcon": "⚖️",
+      "requirement": "Maintain sufficient financial resources or liability insurance",
+      "explanation": "QTSPs must maintain adequate financial resources or obtain appropriate \nliability insurance to cover damages arising from failure to meet \ntheir obligations.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 24",
+        "paragraph": "2(c)"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalText": "Qualified trust service providers shall use trustworthy systems and \nproducts that are protected against modification, and ensure the \ntechnical security and reliability of the processes supported by them.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
+    },
+    {
+      "id": "VEND-TSP-016",
+      "category": "liability",
+      "categoryLabel": "Liability",
+      "categoryIcon": "⚖️",
+      "requirement": "Accept liability for qualified signatures/attestations issued",
+      "explanation": "The QTSP is liable for qualified services issued and must accept \nresponsibility for failures in verification, revocation, or \nsecurity of qualified certificates and attestations.",
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 13",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910#article-13",
+      "legalText": "Trust service providers shall be liable for damage caused \nintentionally or negligently to any natural or legal person due to \na failure to comply with the obligations under this Regulation.",
+      "roles": [],
+      "productCategories": [
+        "trust_services"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "eidas",
+      "linkedRCA": [],
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST",
+      "_sourceFile": "trust_services.yaml"
     }
   ],
   "requirementsByRole": {
@@ -2296,7 +3851,19 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034"
+      "VEND-INT-034",
+      "VEND-SCA-001",
+      "VEND-SCA-002",
+      "VEND-SCA-003",
+      "VEND-SCA-004",
+      "VEND-SCA-005",
+      "VEND-SCA-006",
+      "VEND-SCA-007",
+      "VEND-SCA-008",
+      "VEND-SCA-009",
+      "VEND-SCA-010",
+      "VEND-SCA-011",
+      "VEND-SCA-012"
     ],
     "issuer": [
       "VEND-ICT-001",
@@ -2310,7 +3877,35 @@
       "VEND-ICT-009",
       "VEND-ICT-010",
       "VEND-ICT-011",
-      "VEND-ICT-012"
+      "VEND-ICT-012",
+      "VEND-ISS-001",
+      "VEND-ISS-002",
+      "VEND-ISS-003",
+      "VEND-ISS-004",
+      "VEND-ISS-005",
+      "VEND-ISS-006",
+      "VEND-ISS-007",
+      "VEND-ISS-008",
+      "VEND-ISS-009",
+      "VEND-ISS-010",
+      "VEND-ISS-011",
+      "VEND-ISS-012",
+      "VEND-ISS-013",
+      "VEND-ISS-014",
+      "VEND-ISS-015",
+      "VEND-ISS-016",
+      "VEND-ISS-017",
+      "VEND-ISS-018",
+      "VEND-ISS-019",
+      "VEND-ISS-020",
+      "VEND-ISS-021",
+      "VEND-ISS-022",
+      "VEND-ISS-023",
+      "VEND-ISS-024",
+      "VEND-ISS-025",
+      "VEND-TSP-012",
+      "VEND-TSP-013",
+      "VEND-TSP-014"
     ],
     "universal": [
       "VEND-CORE-001",
@@ -2330,7 +3925,20 @@
       "VEND-CORE-015",
       "VEND-CORE-016",
       "VEND-CORE-017",
-      "VEND-CORE-018"
+      "VEND-CORE-018",
+      "VEND-TSP-001",
+      "VEND-TSP-002",
+      "VEND-TSP-003",
+      "VEND-TSP-004",
+      "VEND-TSP-005",
+      "VEND-TSP-006",
+      "VEND-TSP-007",
+      "VEND-TSP-008",
+      "VEND-TSP-009",
+      "VEND-TSP-010",
+      "VEND-TSP-011",
+      "VEND-TSP-015",
+      "VEND-TSP-016"
     ]
   },
   "requirementsByProductCategory": {
@@ -2368,10 +3976,67 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034"
+      "VEND-INT-034",
+      "VEND-SCA-001",
+      "VEND-SCA-002",
+      "VEND-SCA-003",
+      "VEND-SCA-004",
+      "VEND-SCA-005",
+      "VEND-SCA-006",
+      "VEND-SCA-007",
+      "VEND-SCA-008",
+      "VEND-SCA-009",
+      "VEND-SCA-010",
+      "VEND-SCA-011",
+      "VEND-SCA-012"
     ],
-    "issuance_platform": [],
-    "trust_services": [],
+    "issuance_platform": [
+      "VEND-ISS-001",
+      "VEND-ISS-002",
+      "VEND-ISS-003",
+      "VEND-ISS-004",
+      "VEND-ISS-005",
+      "VEND-ISS-006",
+      "VEND-ISS-007",
+      "VEND-ISS-008",
+      "VEND-ISS-009",
+      "VEND-ISS-010",
+      "VEND-ISS-011",
+      "VEND-ISS-012",
+      "VEND-ISS-013",
+      "VEND-ISS-014",
+      "VEND-ISS-015",
+      "VEND-ISS-016",
+      "VEND-ISS-017",
+      "VEND-ISS-018",
+      "VEND-ISS-019",
+      "VEND-ISS-020",
+      "VEND-ISS-021",
+      "VEND-ISS-022",
+      "VEND-ISS-023",
+      "VEND-ISS-024",
+      "VEND-ISS-025"
+    ],
+    "trust_services": [
+      "VEND-ISS-004",
+      "VEND-ISS-017",
+      "VEND-TSP-001",
+      "VEND-TSP-002",
+      "VEND-TSP-003",
+      "VEND-TSP-004",
+      "VEND-TSP-005",
+      "VEND-TSP-006",
+      "VEND-TSP-007",
+      "VEND-TSP-008",
+      "VEND-TSP-009",
+      "VEND-TSP-010",
+      "VEND-TSP-011",
+      "VEND-TSP-012",
+      "VEND-TSP-013",
+      "VEND-TSP-014",
+      "VEND-TSP-015",
+      "VEND-TSP-016"
+    ],
     "universal": [
       "VEND-CORE-001",
       "VEND-CORE-002",
@@ -2447,7 +4112,58 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034"
+      "VEND-INT-034",
+      "VEND-ISS-001",
+      "VEND-ISS-002",
+      "VEND-ISS-003",
+      "VEND-ISS-004",
+      "VEND-ISS-005",
+      "VEND-ISS-006",
+      "VEND-ISS-007",
+      "VEND-ISS-008",
+      "VEND-ISS-009",
+      "VEND-ISS-010",
+      "VEND-ISS-011",
+      "VEND-ISS-012",
+      "VEND-ISS-013",
+      "VEND-ISS-014",
+      "VEND-ISS-015",
+      "VEND-ISS-016",
+      "VEND-ISS-017",
+      "VEND-ISS-018",
+      "VEND-ISS-019",
+      "VEND-ISS-020",
+      "VEND-ISS-021",
+      "VEND-ISS-023",
+      "VEND-ISS-024",
+      "VEND-ISS-025",
+      "VEND-SCA-001",
+      "VEND-SCA-002",
+      "VEND-SCA-003",
+      "VEND-SCA-004",
+      "VEND-SCA-005",
+      "VEND-SCA-006",
+      "VEND-SCA-007",
+      "VEND-SCA-008",
+      "VEND-SCA-010",
+      "VEND-SCA-011",
+      "VEND-SCA-012",
+      "VEND-TSP-001",
+      "VEND-TSP-002",
+      "VEND-TSP-003",
+      "VEND-TSP-004",
+      "VEND-TSP-005",
+      "VEND-TSP-006",
+      "VEND-TSP-007",
+      "VEND-TSP-008",
+      "VEND-TSP-009",
+      "VEND-TSP-010",
+      "VEND-TSP-011",
+      "VEND-TSP-012",
+      "VEND-TSP-013",
+      "VEND-TSP-014",
+      "VEND-TSP-015",
+      "VEND-TSP-016"
     ],
     "gdpr": [
       "VEND-CORE-002",
@@ -2460,7 +4176,8 @@
       "VEND-CORE-012",
       "VEND-CORE-013",
       "VEND-CORE-014",
-      "VEND-INT-018"
+      "VEND-INT-018",
+      "VEND-ISS-022"
     ],
     "dora": [
       "VEND-ICT-001",
@@ -2476,48 +4193,54 @@
       "VEND-ICT-011",
       "VEND-ICT-012"
     ],
-    "arf": []
+    "arf": [
+      "VEND-SCA-009"
+    ]
   },
   "stats": {
-    "totalRequirements": 64,
+    "totalRequirements": 117,
     "byRole": {
-      "relying_party": 46,
-      "issuer": 12,
-      "universal": 18
+      "relying_party": 58,
+      "issuer": 40,
+      "universal": 31
     },
     "byProductCategory": {
-      "connector": 34,
-      "issuance_platform": 0,
-      "trust_services": 0,
+      "connector": 46,
+      "issuance_platform": 25,
+      "trust_services": 18,
       "universal": 30
     },
     "bySourceGroup": {
-      "eidas": 41,
-      "gdpr": 11,
+      "eidas": 92,
+      "gdpr": 12,
       "dora": 12,
-      "arf": 0
+      "arf": 1
     },
     "byCategory": {
       "governance": 14,
-      "registration": 7,
-      "security": 11,
-      "privacy": 6,
-      "transparency": 4,
-      "verification": 6,
-      "certification": 2,
+      "registration": 11,
+      "security": 25,
+      "privacy": 8,
+      "transparency": 6,
+      "verification": 8,
+      "certification": 5,
       "technical": 12,
-      "interoperability": 2
+      "interoperability": 4,
+      "issuance": 10,
+      "revocation": 5,
+      "payments": 7,
+      "liability": 2
     },
     "byCriticality": {
-      "critical": 32,
-      "high": 23,
-      "medium": 9,
+      "critical": 64,
+      "high": 42,
+      "medium": 11,
       "low": 0
     },
     "byObligation": {
-      "MUST": 56,
-      "MUST NOT": 7,
-      "SHOULD": 1,
+      "MUST": 100,
+      "MUST NOT": 9,
+      "SHOULD": 8,
       "SHOULD NOT": 0,
       "MAY": 0
     }

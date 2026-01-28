@@ -1,0 +1,497 @@
+# VCQ Requirements: Attestation Issuer (VEND-ISS-*)
+# 
+# These requirements apply to vendors providing Issuance Platform products
+# that enable organisations to issue electronic attestations of attributes
+# (EAAs) into EUDI Wallets.
+#
+# Legal Framework:
+# - eIDAS Art. 45d-45g (Electronic Attestation of Attributes)
+# - 2024/2979 (Integrity Implementing Regulation - attestation binding)
+# - 2024/2981 (Provider Information Regulation)
+# - TS2 (Provider Information), TS6 (Issuance Protocol), TS11 (Catalogue)
+#
+# Schema Version: 2
+# Created: 2026-01-28
+# Decision: DEC-257 (VCQ Role/Category Expansion)
+
+schemaVersion: 2
+
+requirements:
+  # ============================================================================
+  # REGISTRATION - Provider Registration
+  # ============================================================================
+  
+  - id: VEND-ISS-001
+    category: registration
+    requirement: "Register as an Attestation Provider with the competent authority"
+    explanation: |
+      Any entity issuing electronic attestations of attributes must register 
+      with a Member State authority. Registration establishes eligibility to 
+      issue attestations and enables inclusion in Trusted Lists.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45d"
+      paragraph: "1"
+    legalText: |
+      Electronic attestation of attributes issued by or on behalf of a public 
+      sector body responsible for an authentic source shall be issued in 
+      accordance with the requirements laid down in this Regulation.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-002
+    category: registration
+    requirement: "Publish Provider Information according to the standard schema"
+    explanation: |
+      Attestation Providers must publish machine-readable information about 
+      their services, including supported attestation types, data sources, 
+      and issuance policies. This enables wallets and relying parties to 
+      discover and evaluate providers.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Providers issuing attestations to European Digital Identity Wallet units 
+      shall publish information in accordance with the data model set out in 
+      Annex I.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-003
+    category: registration
+    requirement: "Update Provider Information within 24 hours of changes"
+    explanation: |
+      When any information in the published Provider Information changes 
+      (e.g., new attestation types, policy updates), the provider must 
+      update the published data within 24 hours.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 3"
+      paragraph: "2"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-004
+    category: registration
+    requirement: "Obtain inclusion in national or EU Trusted Lists if issuing qualified attestations"
+    explanation: |
+      Providers of Qualified Electronic Attestations of Attributes (QEAAs) 
+      must be included in the national Trusted List as a QTSP. This enables 
+      relying parties to verify the qualified status of the attestations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45f"
+      paragraph: "1"
+    roles: [issuer]
+    productCategories: [issuance_platform, trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+    notes: |
+      This requirement only applies to QEAA issuance. Non-qualified EAAs 
+      may be issued without QTSP status but must still register.
+
+  # ============================================================================
+  # ISSUANCE - Attestation Creation and Binding
+  # ============================================================================
+
+  - id: VEND-ISS-005
+    category: issuance
+    requirement: "Issue attestations in mandated credential formats (mDoc and/or W3C VC)"
+    explanation: |
+      Attestations must be issued in one or both of the mandated formats: 
+      ISO/IEC 18013-5 (mDoc/mdoc) and/or W3C Verifiable Credentials Data Model 1.1. 
+      The format(s) supported must be published in Provider Information.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    legalText: |
+      Wallet units shall support the encoding of attestations in accordance 
+      with the technical specifications set out in Annex II.
+      hlr: "Iss_02"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-006
+    category: issuance
+    requirement: "Bind attestations to the Wallet Unit's cryptographic device"
+    explanation: |
+      Attestations must be cryptographically bound to the Wallet Unit's 
+      secure cryptographic device (WSCD), ensuring that the attestation 
+      can only be presented from the authorised wallet instance.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units bind attestations to 
+      the wallet secure cryptographic device.
+      hlr: "Iss_06"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-007
+    category: issuance
+    requirement: "Implement the OpenID4VCI issuance protocol (TS6)"
+    explanation: |
+      The issuance platform must support the OpenID for Verifiable Credential 
+      Issuance (OpenID4VCI) protocol as specified in TS6, enabling standardised 
+      credential issuance to EUDI Wallets across Member States.
+      hlr: "Iss_01"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-008
+    category: issuance
+    requirement: "Support batch issuance for multiple attestations"
+    explanation: |
+      The platform should support efficient batch issuance when a user 
+      requests multiple attestations simultaneously, avoiding redundant 
+      authentication steps.
+      hlr: "Iss_03"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 6"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: medium
+
+  - id: VEND-ISS-009
+    category: issuance
+    requirement: "Verify user identity before issuing attestations"
+    explanation: |
+      Before issuing an attestation, the provider must verify the user's 
+      identity to a level of assurance appropriate for the attestation type. 
+      For qualified attestations, this requires high assurance identity proofing.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45d"
+      paragraph: "3"
+    legalText: |
+      Providers of electronic attestation of attributes shall verify the 
+      identity of the natural or legal person to whom the electronic 
+      attestation of attributes is issued.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-010
+    category: issuance
+    requirement: "Obtain data from authentic sources with verified provenance"
+    explanation: |
+      Attestation data must be obtained from authentic sources (authoritative 
+      databases, registries) with verified data provenance. The platform must 
+      maintain audit trails of data source queries.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45e"
+      paragraph: "1"
+    legalText: |
+      Providers of electronic attestation of attributes shall obtain the 
+      data for the attributes from authentic sources.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-011
+    category: issuance
+    requirement: "Include attestation validity period and issuance timestamp"
+    explanation: |
+      Each attestation must include a clearly defined validity period 
+      (valid_from and valid_until) and issuance timestamp. Expired 
+      attestations must be rejected by wallets.
+      hlr: "Iss_07"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-012
+    category: issuance
+    requirement: "Support attestation renewal and re-issuance workflows"
+    explanation: |
+      The platform must support workflows for renewing attestations before 
+      expiry and re-issuing attestations when the underlying data changes. 
+      Users should be notified of upcoming expiry.
+      hlr: "Iss_05"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 3"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # REVOCATION - Attestation Status Management
+  # ============================================================================
+
+  - id: VEND-ISS-013
+    category: revocation
+    requirement: "Publish attestation status lists for revocation checking"
+    explanation: |
+      The issuer must maintain and publish attestation status lists 
+      (revocation/validity lists) that enable relying parties to verify 
+      that attestations have not been revoked since issuance.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "1"
+    legalText: |
+      PID Providers and Attestation Providers shall publish validity status 
+      information of revoked or suspended attestations.
+      hlr: "VCR_01"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-014
+    category: revocation
+    requirement: "Update revocation status within defined time limits"
+    explanation: |
+      When an attestation is revoked, the status list must be updated within 
+      the defined maximum propagation time (typically 24 hours for standard 
+      attestations, immediate for critical security revocations).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: "2"
+      hlr: "VCR_03"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-015
+    category: revocation
+    requirement: "Notify wallet users when their attestations are revoked"
+    explanation: |
+      When an attestation is revoked, the issuer should notify the affected 
+      wallet user through available channels, enabling them to take 
+      appropriate action (e.g., request re-issuance).
+      hlr: "VCR_04"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-016
+    category: revocation
+    requirement: "Support suspension and reinstatement of attestations"
+    explanation: |
+      Beyond permanent revocation, the platform should support temporary 
+      suspension of attestations (e.g., during fraud investigation) with 
+      the ability to reinstate if the issue is resolved.
+      hlr: "VCR_02"
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 4"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: medium
+
+  # ============================================================================
+  # SECURITY - Signing and Key Management
+  # ============================================================================
+
+  - id: VEND-ISS-017
+    category: security
+    requirement: "Protect attestation signing keys in secure cryptographic devices"
+    explanation: |
+      The private keys used to sign attestations must be stored and used 
+      within secure cryptographic devices (HSMs or equivalent) that prevent 
+      extraction and ensure key integrity.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: "2"
+    legalText: |
+      Qualified trust service providers shall use trustworthy systems and 
+      products that are protected against modification and ensure the 
+      technical security and reliability of the processes supported by them.
+    roles: [issuer]
+    productCategories: [issuance_platform, trust_services]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-018
+    category: security
+    requirement: "Use signing algorithms from the approved list"
+    explanation: |
+      Attestation signatures must use cryptographic algorithms from the 
+      approved list in Annex of the Integrity Regulation (e.g., ECDSA P-256, 
+      EdDSA Ed25519, RSA-PSS).
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+      hlr: "Iss_04"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-019
+    category: security
+    requirement: "Implement key rotation procedures"
+    explanation: |
+      The platform must support cryptographic key rotation with documented 
+      procedures for transitioning to new signing keys while maintaining 
+      validity of previously issued attestations.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 24"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # TRANSPARENCY - Catalogue Integration
+  # ============================================================================
+
+  - id: VEND-ISS-020
+    category: transparency
+    requirement: "Publish attestation types to the Common Catalogue (TS11)"
+    explanation: |
+      Attestation types issued by the provider should be registered in the 
+      Common Catalogue of Attestation Types, enabling discoverability by 
+      wallets, relying parties, and users.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 4"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-021
+    category: transparency
+    requirement: "Document attestation schema including mandatory and optional attributes"
+    explanation: |
+      Each attestation type must have a published schema defining the 
+      mandatory and optional attributes, data types, and semantic meaning 
+      of each field.
+    legalBasis:
+      regulation: "2024/2981"
+      article: "Article 4"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  # ============================================================================
+  # PRIVACY - Data Minimisation
+  # ============================================================================
+
+  - id: VEND-ISS-022
+    category: privacy
+    requirement: "Apply data minimisation principles to attestation content"
+    explanation: |
+      Attestations should contain only the attributes necessary for their 
+      intended purpose. Issuers should offer selective disclosure-friendly 
+      attestation designs where possible.
+    legalBasis:
+      regulation: "2016/679"
+      article: "Article 25"
+      paragraph: "1"
+    legalText: |
+      The controller shall implement appropriate technical and organisational 
+      measures for ensuring that, by default, only personal data which are 
+      necessary for each specific purpose of the processing are processed.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
+
+  - id: VEND-ISS-023
+    category: privacy
+    requirement: "Do not embed tracking identifiers in attestations"
+    explanation: |
+      Attestations must not contain hidden or overt tracking identifiers 
+      that could enable correlation of user presentations across different 
+      relying parties.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 5a"
+      paragraph: "16(a)"
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  # ============================================================================
+  # INTEROPERABILITY - Cross-border Support
+  # ============================================================================
+
+  - id: VEND-ISS-024
+    category: interoperability
+    requirement: "Enable cross-border recognition of attestations"
+    explanation: |
+      Attestations issued in one Member State must be verifiable and 
+      recognisable in all other Member States. The platform must ensure 
+      interoperability through adherence to common standards.
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45g"
+      paragraph: "1"
+    legalText: |
+      An electronic attestation of attributes issued in one Member State 
+      shall be recognised as an electronic attestation of attributes in 
+      all other Member States.
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: critical
+
+  - id: VEND-ISS-025
+    category: interoperability
+    requirement: "Support both SD-JWT and mDoc credential formats"
+    explanation: |
+      For maximum interoperability, the platform should support issuing 
+      attestations in both SD-JWT-VC and ISO mDoc formats, allowing 
+      relying parties to request their preferred format.
+    legalBasis:
+      regulation: "2024/2979"
+      article: "Article 8"
+      paragraph: ""
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    criticality: high
