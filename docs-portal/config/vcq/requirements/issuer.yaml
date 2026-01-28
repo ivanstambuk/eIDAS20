@@ -556,7 +556,7 @@ requirements:
       and domestic namespace publication.
     legalBasis:
       regulation: "2024/2977"
-      article: "Annex I"
+      article: "Annex"
       paragraph: ""
     arfReference:
       topic: "Topic 3"
@@ -717,7 +717,7 @@ requirements:
       formatting, and make all claims selectively disclosable.
     legalBasis:
       regulation: "2024/2977"
-      article: "Annex I"
+      article: "Annex"
       paragraph: ""
     arfReference:
       topic: "Topic 3"
@@ -736,7 +736,7 @@ requirements:
       PID contains at most one attribute with the same identifier.
     legalBasis:
       regulation: "2024/2977"
-      article: "Annex I"
+      article: "Annex"
       paragraph: ""
     arfReference:
       topic: "Topic 3"

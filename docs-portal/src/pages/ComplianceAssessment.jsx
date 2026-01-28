@@ -8,6 +8,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { exportToExcel, exportToMarkdown } from '../utils/rca';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
+import { useArticleExcerpts } from '../hooks/useArticleExcerpts';
 import { LegalBasisLink } from '../components/LegalBasisLink';
 import './ComplianceAssessment.css';
 
@@ -262,7 +263,7 @@ function UseCaseSelector({
     );
 }
 
-function RequirementTable({ requirements, requirementCategories, regulationsIndex }) {
+function RequirementTable({ requirements, requirementCategories, regulationsIndex, getExcerpt }) {
     const [filterCategory, setFilterCategory] = useState('all');
 
     const filteredRequirements = useMemo(() => {
@@ -338,6 +339,7 @@ function RequirementTable({ requirements, requirementCategories, regulationsInde
                                                 <LegalBasisLink
                                                     legalBasis={req.legalBasis}
                                                     regulationsIndex={regulationsIndex}
+                                                    getExcerpt={getExcerpt}
                                                 />
                                             </td>
                                         </tr>
@@ -358,6 +360,7 @@ function RequirementTable({ requirements, requirementCategories, regulationsInde
 export default function ComplianceAssessment() {
     const { data, loading, error } = useRCAData();
     const regulationsIndex = useRegulationsIndex();
+    const { getExcerpt } = useArticleExcerpts();
 
     // Selection state - Multi-role support
     // roleConfigurations: Map<roleId, profileIds[]> where empty array = all profiles
@@ -715,34 +718,34 @@ export default function ComplianceAssessment() {
 
                     {/* Summary bar */}
                     {roleConfigurations.size > 0 && (
-                        <div className="rca-selection-summary-bar">
-                            <span className="rca-summary-stats">
+                        <div className="tool-selection-summary-bar">
+                            <span className="tool-summary-stats">
                                 {roleConfigurations.size} role{roleConfigurations.size !== 1 ? 's' : ''} selected
                                 {selectedUseCases.length > 0 && ` · ${selectedUseCases.length} use case${selectedUseCases.length !== 1 ? 's' : ''}`}
                             </span>
-                            <span className="rca-summary-req-count">
+                            <span className="tool-summary-req-count">
                                 {applicableRequirements.length} requirements
                             </span>
                         </div>
                     )}
 
-                    <div className="rca-actions">
+                    <div className="tool-actions">
                         <button
-                            className="rca-btn primary"
+                            className="tool-btn primary"
                             onClick={handleGenerate}
                             disabled={roleConfigurations.size === 0}
                         >
                             📊 View Requirements ({applicableRequirements.length})
                         </button>
                         <button
-                            className="rca-btn secondary"
+                            className="tool-btn secondary"
                             onClick={handleExportExcel}
                             disabled={!showResults || applicableRequirements.length === 0}
                         >
                             📥 Export Excel
                         </button>
                         <button
-                            className="rca-btn secondary"
+                            className="tool-btn secondary"
                             onClick={handleExportMarkdown}
                             disabled={!showResults || applicableRequirements.length === 0}
                         >
@@ -757,6 +760,7 @@ export default function ComplianceAssessment() {
                             requirements={applicableRequirements}
                             requirementCategories={data.requirementCategories}
                             regulationsIndex={regulationsIndex}
+                            getExcerpt={getExcerpt}
                         />
                     </section>
                 )}

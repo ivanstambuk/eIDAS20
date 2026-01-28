@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T21:01:35.256Z",
+  "generatedAt": "2026-01-28T22:43:01.742Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -280,7 +280,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -288,7 +288,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
       "roles": [],
       "productCategories": [],
@@ -316,7 +316,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -324,7 +324,7 @@
         "article": "Article 28",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "Processing by a processor shall be governed by a contract or other legal act \nunder Union or Member State law, that is binding on the processor with regard \nto the controller and that sets out the subject-matter and duration of the \nprocessing, the nature and purpose of the processing, the type of personal \ndata and categories of data subjects and the obligations and rights of the \ncontroller.",
       "roles": [],
       "productCategories": [],
@@ -352,7 +352,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(h)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -360,7 +360,7 @@
         "article": "Article 28",
         "paragraph": "3(h)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "The processor shall make available to the controller all information \nnecessary to demonstrate compliance with the obligations laid down in \nthis Article and allow for and contribute to audits, including inspections, \nconducted by the controller or another auditor mandated by the controller.",
       "roles": [],
       "productCategories": [],
@@ -386,7 +386,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "5",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -394,7 +394,7 @@
         "article": "Article 5b",
         "paragraph": "5"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Member States shall publish the lists and shall make them available to \nall wallet providers and relying parties in a clearly identifiable and \nmachine-readable way.",
       "arfReference": {
         "topic": "Topic 52",
@@ -426,7 +426,7 @@
           "regulation": "2025/848",
           "article": "Article 8",
           "paragraph": "1",
-          "link": "/regulation/2025-848#article-8"
+          "link": "/regulation/2025-848?section=article-8"
         }
       ],
       "legalBasis": {
@@ -434,7 +434,7 @@
         "article": "Article 8",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2025-848#article-8",
+      "legalBasisLink": "/regulation/2025-848?section=article-8",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_03"
@@ -463,7 +463,7 @@
           "regulation": "2016/679",
           "article": "Article 32",
           "paragraph": "1",
-          "link": "/regulation/2016-679#article-32"
+          "link": "/regulation/2016-679?section=article-32"
         }
       ],
       "legalBasis": {
@@ -471,7 +471,7 @@
         "article": "Article 32",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2016-679#article-32",
+      "legalBasisLink": "/regulation/2016-679?section=article-32",
       "legalText": "Taking into account the state of the art, the costs of implementation \nand the nature, scope, context and purposes of processing as well as \nthe risk of varying likelihood and severity for the rights and freedoms \nof natural persons, the controller and processor shall implement appropriate \ntechnical and organisational measures to ensure a level of security \nappropriate to the risk.",
       "roles": [],
       "productCategories": [],
@@ -499,7 +499,7 @@
           "regulation": "2016/679",
           "article": "Article 33",
           "paragraph": "2",
-          "link": "/regulation/2016-679#article-33"
+          "link": "/regulation/2016-679?section=article-33"
         }
       ],
       "legalBasis": {
@@ -507,7 +507,7 @@
         "article": "Article 33",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2016-679#article-33",
+      "legalBasisLink": "/regulation/2016-679?section=article-33",
       "legalText": "The processor shall notify the controller without undue delay after \nbecoming aware of a personal data breach.",
       "roles": [],
       "productCategories": [],
@@ -533,7 +533,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(b)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -541,7 +541,7 @@
         "article": "Article 28",
         "paragraph": "3(b)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "The processor shall ensure that persons authorised to process the \npersonal data have committed themselves to confidentiality or are \nunder an appropriate statutory obligation of confidentiality.",
       "roles": [],
       "productCategories": [],
@@ -567,7 +567,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(a)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -575,7 +575,7 @@
         "article": "Article 28",
         "paragraph": "3(a)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "The processor shall process the personal data only on documented \ninstructions from the controller, including with regard to transfers \nof personal data to a third country or an international organisation.",
       "roles": [],
       "productCategories": [],
@@ -603,7 +603,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(e)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -611,7 +611,7 @@
         "article": "Article 28",
         "paragraph": "3(e)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "The processor shall assist the controller by appropriate technical \nand organisational measures, insofar as this is possible, for the \nfulfilment of the controller's obligation to respond to requests for \nexercising the data subject's rights.",
       "roles": [],
       "productCategories": [],
@@ -637,7 +637,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "8",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -645,7 +645,7 @@
         "article": "Article 5b",
         "paragraph": "8"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Where relying parties intend to rely upon European Digital Identity \nWallets, they shall identify themselves to the user.",
       "arfReference": {
         "topic": "Topic 52",
@@ -677,7 +677,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(a)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -685,7 +685,7 @@
         "article": "Article 28",
         "paragraph": "3(a)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "roles": [],
       "productCategories": [],
       "isUniversal": true,
@@ -710,7 +710,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "2",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -718,7 +718,7 @@
         "article": "Article 28",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "The processor shall not engage another processor without prior specific \nor general written authorisation of the controller. In the case of \ngeneral written authorisation, the processor shall inform the controller \nof any intended changes concerning the addition or replacement of other \nprocessors.",
       "roles": [],
       "productCategories": [],
@@ -744,7 +744,7 @@
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(g)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -752,7 +752,7 @@
         "article": "Article 28",
         "paragraph": "3(g)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-28",
+      "legalBasisLink": "/regulation/2016-679?section=article-28",
       "legalText": "At the choice of the controller, the processor shall delete or return \nall the personal data to the controller after the end of the provision \nof services relating to processing.",
       "roles": [],
       "productCategories": [],
@@ -778,7 +778,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -786,7 +786,7 @@
         "article": "Article 5b",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Where a relying party intends to rely upon European Digital Identity \nWallets for the provision of public or private services by means of \ndigital interaction, the relying party shall register in the Member \nState where it is established.",
       "arfReference": {
         "topic": "Topic 52",
@@ -818,7 +818,7 @@
           "regulation": "2025/848",
           "article": "Article 5",
           "paragraph": "1-3",
-          "link": "/regulation/2025-848#article-5"
+          "link": "/regulation/2025-848?section=article-5"
         }
       ],
       "legalBasis": {
@@ -826,7 +826,7 @@
         "article": "Article 5",
         "paragraph": "1-3"
       },
-      "legalBasisLink": "/regulation/2025-848#article-5",
+      "legalBasisLink": "/regulation/2025-848?section=article-5",
       "legalText": "Wallet-relying parties shall at least provide the information set out \nin Annex I to national registers. Annex I(14-15) requires indication \nof intermediary status and association to intermediated RPs.",
       "arfReference": {
         "topic": "Topic 52",
@@ -858,7 +858,7 @@
           "regulation": "2025/848",
           "article": "Article 6",
           "paragraph": "3-4",
-          "link": "/regulation/2025-848#article-6"
+          "link": "/regulation/2025-848?section=article-6"
         }
       ],
       "legalBasis": {
@@ -866,7 +866,7 @@
         "article": "Article 6",
         "paragraph": "3-4"
       },
-      "legalBasisLink": "/regulation/2025-848#article-6",
+      "legalBasisLink": "/regulation/2025-848?section=article-6",
       "legalText": "Registrars shall verify the accuracy, validity, authenticity and \nintegrity of the information required, including the power of \nattorney of representatives of the wallet-relying parties.",
       "arfReference": {
         "topic": "Topic 52",
@@ -898,7 +898,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "9",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -906,7 +906,7 @@
         "article": "Article 5b",
         "paragraph": "9"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Relying parties shall be responsible for carrying out the procedure \nfor authenticating and validating person identification data and \nelectronic attestation of attributes requested from European Digital \nIdentity Wallets.",
       "arfReference": {
         "topic": "Topic 52",
@@ -938,7 +938,7 @@
           "regulation": "2018/389",
           "article": "Article 4",
           "paragraph": "1-3",
-          "link": "/regulation/2018-389#article-4"
+          "link": "/regulation/2018-389?section=article-4"
         }
       ],
       "legalBasis": {
@@ -946,7 +946,7 @@
         "article": "Article 4",
         "paragraph": "1-3"
       },
-      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalBasisLink": "/regulation/2018-389?section=article-4",
       "legalText": "Payment service providers shall apply strong customer authentication where \nthe payer initiates an electronic payment transaction. The authentication \nshall include elements which dynamically link the transaction to a specific \namount and a specific payee.",
       "roles": [
         "relying_party",
@@ -978,7 +978,7 @@
           "regulation": "2024/2982",
           "article": "Article 5",
           "paragraph": "1",
-          "link": "/regulation/2024-2982#article-5"
+          "link": "/implementing-acts/2024-2982?section=article-5"
         }
       ],
       "legalBasis": {
@@ -986,7 +986,7 @@
         "article": "Article 5",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-5",
       "legalText": "European Digital Identity Wallets shall use the protocols and interfaces \nset out in this Regulation for the issuance of person identification data \nand electronic attestations of attributes.",
       "roles": [
         "issuer"
@@ -1016,7 +1016,7 @@
           "regulation": "2016/679",
           "article": "Article 17",
           "paragraph": "1",
-          "link": "/regulation/2016-679#article-17"
+          "link": "/regulation/2016-679?section=article-17"
         }
       ],
       "legalBasis": {
@@ -1024,7 +1024,7 @@
         "article": "Article 17",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2016-679#article-17",
+      "legalBasisLink": "/regulation/2016-679?section=article-17",
       "legalText": "The data subject shall have the right to obtain from the controller the \nerasure of personal data concerning him or her without undue delay and \nthe controller shall have the obligation to erase personal data without \nundue delay.",
       "roles": [
         "relying_party"
@@ -1054,7 +1054,7 @@
           "regulation": "2024/2981",
           "article": "Article 3",
           "paragraph": "1",
-          "link": "/regulation/2024-2981#article-3"
+          "link": "/implementing-acts/2024-2981?section=article-3"
         }
       ],
       "legalBasis": {
@@ -1062,7 +1062,7 @@
         "article": "Article 3",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-3",
       "legalText": "Qualified trust service providers issuing qualified electronic attestations \nof attributes shall ensure that the attestation schemas they use comply \nwith the technical specifications set out in this Regulation.",
       "roles": [
         "issuer"
@@ -1092,7 +1092,7 @@
           "regulation": "2024/2982",
           "article": "Article 3",
           "paragraph": "1",
-          "link": "/regulation/2024-2982#article-3"
+          "link": "/implementing-acts/2024-2982?section=article-3"
         }
       ],
       "legalBasis": {
@@ -1100,7 +1100,7 @@
         "article": "Article 3",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-3",
       "legalText": "The protocols and interfaces for European Digital Identity Wallets shall \nbe based on open standards to ensure interoperability across Member States.",
       "roles": [],
       "productCategories": [],
@@ -1126,7 +1126,7 @@
           "regulation": "2024/2981",
           "article": "Article 4",
           "paragraph": "1",
-          "link": "/regulation/2024-2981#article-4"
+          "link": "/implementing-acts/2024-2981?section=article-4"
         }
       ],
       "legalBasis": {
@@ -1134,7 +1134,7 @@
         "article": "Article 4",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-4",
       "legalText": "Providers of qualified electronic attestations of attributes shall notify \ntheir activities to the supervisory body and publish information about \ntheir services in a machine-readable format.",
       "roles": [
         "issuer"
@@ -1164,7 +1164,7 @@
           "regulation": "2024/2979",
           "article": "Article 5",
           "paragraph": "1",
-          "link": "/regulation/2024-2979#article-5"
+          "link": "/implementing-acts/2024-2979?section=article-5"
         }
       ],
       "legalBasis": {
@@ -1172,7 +1172,7 @@
         "article": "Article 5",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-5",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-5",
       "legalText": "Before issuing person identification data or electronic attestations of \nattributes, providers shall verify the authenticity and validity of the \nwallet unit requesting the credential.",
       "roles": [
         "issuer"
@@ -1203,7 +1203,7 @@
           "regulation": "2014/910",
           "article": "Article 26",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-26"
+          "link": "/regulation/2014-910?section=article-26"
         }
       ],
       "legalBasis": {
@@ -1211,7 +1211,7 @@
         "article": "Article 26",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-26",
+      "legalBasisLink": "/regulation/2014-910?section=article-26",
       "legalText": "An advanced electronic signature shall meet the requirements of being \nuniquely linked to and capable of identifying the signatory, created \nusing electronic signature creation data that the signatory can use \nunder their sole control.",
       "roles": [
         "issuer"
@@ -1241,7 +1241,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "4(b)",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -1249,7 +1249,7 @@
         "article": "Article 5a",
         "paragraph": "4(b)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "European Digital Identity Wallets shall enable the user to selectively \ndisclose to relying parties person identification data, electronic \nattestation of attributes, or specific data elements of such data or \nattestations, including by means of pseudonyms.",
       "roles": [
         "relying_party",
@@ -1281,7 +1281,7 @@
           "regulation": "2016/679",
           "article": "Article 20",
           "paragraph": "1",
-          "link": "/regulation/2016-679#article-20"
+          "link": "/regulation/2016-679?section=article-20"
         }
       ],
       "legalBasis": {
@@ -1289,7 +1289,7 @@
         "article": "Article 20",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2016-679#article-20",
+      "legalBasisLink": "/regulation/2016-679?section=article-20",
       "legalText": "The data subject shall have the right to receive the personal data \nconcerning him or her, which he or she has provided to a controller, \nin a structured, commonly used and machine-readable format and have \nthe right to transmit those data to another controller.",
       "roles": [
         "relying_party",
@@ -1321,7 +1321,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1329,7 +1329,7 @@
         "article": "Article 5b",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
@@ -1368,7 +1368,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "4",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1376,7 +1376,7 @@
         "article": "Article 5b",
         "paragraph": "4"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
@@ -1412,7 +1412,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "3",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1420,7 +1420,7 @@
         "article": "Article 5b",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 27",
         "hlr": [
@@ -1457,7 +1457,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1465,7 +1465,7 @@
         "article": "Article 5b",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": [
@@ -1501,7 +1501,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "16",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -1509,7 +1509,7 @@
         "article": "Article 5a",
         "paragraph": "16"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "arfReference": {
         "topic": "Topic 11",
         "hlr": [
@@ -1545,7 +1545,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1553,7 +1553,7 @@
         "article": "Article 5b",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
@@ -1589,7 +1589,7 @@
           "regulation": "2016/679",
           "article": "Article 17",
           "paragraph": "",
-          "link": "/regulation/2016-679#article-17"
+          "link": "/regulation/2016-679?section=article-17"
         }
       ],
       "legalBasis": {
@@ -1597,7 +1597,7 @@
         "article": "Article 17",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2016-679#article-17",
+      "legalBasisLink": "/regulation/2016-679?section=article-17",
       "arfReference": {
         "topic": "Topic 48",
         "hlr": [
@@ -1633,7 +1633,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "16",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -1641,7 +1641,7 @@
         "article": "Article 5a",
         "paragraph": "16"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "arfReference": {
         "topic": "Topic 11",
         "hlr": [
@@ -1678,7 +1678,7 @@
           "regulation": "2016/679",
           "article": "Article 17",
           "paragraph": "1",
-          "link": "/regulation/2016-679#article-17"
+          "link": "/regulation/2016-679?section=article-17"
         }
       ],
       "legalBasis": {
@@ -1686,7 +1686,7 @@
         "article": "Article 17",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2016-679#article-17",
+      "legalBasisLink": "/regulation/2016-679?section=article-17",
       "arfReference": {
         "topic": "Topic 48",
         "hlr": [
@@ -1721,7 +1721,7 @@
           "regulation": "2024/2979",
           "article": "Article 2",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-2"
+          "link": "/implementing-acts/2024-2979?section=article-2"
         }
       ],
       "legalBasis": {
@@ -1729,7 +1729,7 @@
         "article": "Article 2",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-2",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-2",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
@@ -1764,7 +1764,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -1772,7 +1772,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
@@ -1807,7 +1807,7 @@
           "regulation": "2024/2979",
           "article": "Article 2",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-2"
+          "link": "/implementing-acts/2024-2979?section=article-2"
         }
       ],
       "legalBasis": {
@@ -1815,7 +1815,7 @@
         "article": "Article 2",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-2",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-2",
       "arfReference": {
         "topic": "Topic 24",
         "hlr": [
@@ -1850,7 +1850,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -1858,7 +1858,7 @@
         "article": "Article 5b",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
@@ -1894,7 +1894,7 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         }
       ],
       "legalBasis": {
@@ -1902,7 +1902,7 @@
         "article": "Article 30",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "Contractual arrangements on the use of ICT services shall include at \nleast the following: (a) a clear and complete description of all \nfunctions and ICT services to be provided; (b) the locations where \nfunctions and ICT services are to be provided and data processed; \n(c) provisions on availability, authenticity, integrity and \nconfidentiality in relation to data protection...",
       "roles": [
         "relying_party",
@@ -1932,13 +1932,13 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2(e)",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         },
         {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "3(h)",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -1946,7 +1946,7 @@
         "article": "Article 30",
         "paragraph": "2(e)"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "DORA: The rights of the financial entity and, where applicable, the relevant \ncompetent authority in relation to access, inspection and audit of the \nICT third-party service provider.\nGDPR: The processor shall make available to the controller all information \nnecessary to demonstrate compliance and allow for and contribute to audits.",
       "roles": [
         "relying_party",
@@ -1975,7 +1975,7 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2(j)",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         }
       ],
       "legalBasis": {
@@ -1983,7 +1983,7 @@
         "article": "Article 30",
         "paragraph": "2(j)"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "Provisions on exit strategies, including a mandatory adequate transition \nperiod during which the ICT third-party service provider will continue \nproviding the respective functions or ICT services.",
       "roles": [
         "relying_party",
@@ -2012,7 +2012,7 @@
           "regulation": "2022/2554",
           "article": "Article 28",
           "paragraph": "1",
-          "link": "/regulation/2022-2554#article-28"
+          "link": "/regulation/2022-2554?section=article-28"
         }
       ],
       "legalBasis": {
@@ -2020,7 +2020,7 @@
         "article": "Article 28",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "legalBasisLink": "/regulation/2022-2554?section=article-28",
       "roles": [
         "relying_party",
         "issuer"
@@ -2048,7 +2048,7 @@
           "regulation": "2022/2554",
           "article": "Article 28",
           "paragraph": "3",
-          "link": "/regulation/2022-2554#article-28"
+          "link": "/regulation/2022-2554?section=article-28"
         }
       ],
       "legalBasis": {
@@ -2056,7 +2056,7 @@
         "article": "Article 28",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "legalBasisLink": "/regulation/2022-2554?section=article-28",
       "roles": [
         "relying_party",
         "issuer"
@@ -2084,7 +2084,7 @@
           "regulation": "2022/2554",
           "article": "Article 29",
           "paragraph": "1",
-          "link": "/regulation/2022-2554#article-29"
+          "link": "/regulation/2022-2554?section=article-29"
         }
       ],
       "legalBasis": {
@@ -2092,7 +2092,7 @@
         "article": "Article 29",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-29",
+      "legalBasisLink": "/regulation/2022-2554?section=article-29",
       "roles": [
         "relying_party",
         "issuer"
@@ -2120,13 +2120,13 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2(f)",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         },
         {
           "regulation": "2016/679",
           "article": "Article 33",
           "paragraph": "2",
-          "link": "/regulation/2016-679#article-33"
+          "link": "/regulation/2016-679?section=article-33"
         }
       ],
       "legalBasis": {
@@ -2134,7 +2134,7 @@
         "article": "Article 30",
         "paragraph": "2(f)"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "DORA: The obligation of the ICT third-party service provider to provide \nassistance in case of an ICT incident at no additional cost.\nGDPR: The processor shall notify the controller without undue delay after \nbecoming aware of a personal data breach.",
       "roles": [
         "relying_party",
@@ -2163,7 +2163,7 @@
           "regulation": "2022/2554",
           "article": "Article 26",
           "paragraph": "4",
-          "link": "/regulation/2022-2554#article-26"
+          "link": "/regulation/2022-2554?section=article-26"
         }
       ],
       "legalBasis": {
@@ -2171,7 +2171,7 @@
         "article": "Article 26",
         "paragraph": "4"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-26",
+      "legalBasisLink": "/regulation/2022-2554?section=article-26",
       "roles": [
         "relying_party",
         "issuer"
@@ -2199,7 +2199,7 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2(g)",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         }
       ],
       "legalBasis": {
@@ -2207,7 +2207,7 @@
         "article": "Article 30",
         "paragraph": "2(g)"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "Provisions on the implementation and testing of business continuity \nmeasures and on the establishment of contingency plans.",
       "roles": [
         "relying_party",
@@ -2236,13 +2236,13 @@
           "regulation": "2022/2554",
           "article": "Article 30",
           "paragraph": "2(d)",
-          "link": "/regulation/2022-2554#article-30"
+          "link": "/regulation/2022-2554?section=article-30"
         },
         {
           "regulation": "2016/679",
           "article": "Article 28",
           "paragraph": "2",
-          "link": "/regulation/2016-679#article-28"
+          "link": "/regulation/2016-679?section=article-28"
         }
       ],
       "legalBasis": {
@@ -2250,7 +2250,7 @@
         "article": "Article 30",
         "paragraph": "2(d)"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-30",
+      "legalBasisLink": "/regulation/2022-2554?section=article-30",
       "legalText": "DORA: Provisions on the possibility, conditions and modalities of subcontracting \nby the ICT third-party service provider, and in particular for \nsubcontracting ICT services supporting critical or important functions.\nGDPR: The processor shall not engage another processor without prior specific \nor general written authorisation of the controller.",
       "roles": [
         "relying_party",
@@ -2279,7 +2279,7 @@
           "regulation": "2022/2554",
           "article": "Article 28",
           "paragraph": "4",
-          "link": "/regulation/2022-2554#article-28"
+          "link": "/regulation/2022-2554?section=article-28"
         }
       ],
       "legalBasis": {
@@ -2287,7 +2287,7 @@
         "article": "Article 28",
         "paragraph": "4"
       },
-      "legalBasisLink": "/regulation/2022-2554#article-28",
+      "legalBasisLink": "/regulation/2022-2554?section=article-28",
       "roles": [
         "relying_party",
         "issuer"
@@ -2315,7 +2315,7 @@
           "regulation": "2022/2554",
           "article": "Article 31",
           "paragraph": "",
-          "link": "/regulation/2022-2554#article-31"
+          "link": "/regulation/2022-2554?section=article-31"
         }
       ],
       "legalBasis": {
@@ -2323,7 +2323,7 @@
         "article": "Article 31",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2022-2554#article-31",
+      "legalBasisLink": "/regulation/2022-2554?section=article-31",
       "roles": [
         "relying_party",
         "issuer"
@@ -2352,7 +2352,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "8",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2360,7 +2360,7 @@
         "article": "Article 5b",
         "paragraph": "8"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
         "topic": "Topic 52",
@@ -2394,7 +2394,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "3",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2402,7 +2402,7 @@
         "article": "Article 5b",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Relying parties shall not request users to provide any data other than \nthat indicated pursuant to paragraph 2, point (c).",
       "arfReference": {
         "topic": "Topic 52",
@@ -2438,7 +2438,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "3",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2446,7 +2446,7 @@
         "article": "Article 5b",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_06"
@@ -2479,7 +2479,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2487,7 +2487,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed to be \nrelying parties and shall not store data about the content of the transaction.",
       "arfReference": {
         "topic": "Topic 52",
@@ -2521,7 +2521,7 @@
           "regulation": "2024/2982",
           "article": "Article 5",
           "paragraph": "1-2",
-          "link": "/regulation/2024-2982#article-5"
+          "link": "/implementing-acts/2024-2982?section=article-5"
         }
       ],
       "legalBasis": {
@@ -2529,7 +2529,7 @@
         "article": "Article 5",
         "paragraph": "1-2"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-5",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
@@ -2568,7 +2568,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2576,7 +2576,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -2609,7 +2609,7 @@
           "regulation": "2014/910",
           "article": "Article 22",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-22"
+          "link": "/regulation/2014-910?section=article-22"
         }
       ],
       "legalBasis": {
@@ -2617,7 +2617,7 @@
         "article": "Article 22",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-22",
+      "legalBasisLink": "/regulation/2014-910?section=article-22",
       "legalText": "Each Member State shall establish, maintain and publish trusted lists, \nincluding information related to the qualified trust service providers \nfor which it is responsible.",
       "arfReference": {
         "topic": "Topic 1",
@@ -2653,7 +2653,7 @@
           "regulation": "2014/910",
           "article": "Article 22",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-22"
+          "link": "/regulation/2014-910?section=article-22"
         }
       ],
       "legalBasis": {
@@ -2661,7 +2661,7 @@
         "article": "Article 22",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-22",
+      "legalBasisLink": "/regulation/2014-910?section=article-22",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_13"
@@ -2694,7 +2694,7 @@
           "regulation": "2014/910",
           "article": "Article 32",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-32"
+          "link": "/regulation/2014-910?section=article-32"
         }
       ],
       "legalBasis": {
@@ -2702,7 +2702,7 @@
         "article": "Article 32",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-32",
+      "legalBasisLink": "/regulation/2014-910?section=article-32",
       "arfReference": {
         "topic": "Topic 1",
         "hlr": "OIA_14"
@@ -2735,7 +2735,7 @@
           "regulation": "2024/2979",
           "article": "Article 8",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -2743,7 +2743,7 @@
         "article": "Article 8",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "legalText": "The validity of attestations shall be verified using the trust anchors \npublished in official Trusted Lists.",
       "arfReference": {
         "topic": "Topic 6",
@@ -2777,7 +2777,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -2785,7 +2785,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_13"
@@ -2818,7 +2818,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -2826,7 +2826,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_07"
@@ -2859,7 +2859,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -2867,7 +2867,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 6",
         "hlr": "RPA_08"
@@ -2900,7 +2900,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2908,7 +2908,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -2941,7 +2941,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "9",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2949,7 +2949,7 @@
         "article": "Article 5b",
         "paragraph": "9"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_09"
@@ -2982,7 +2982,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -2990,7 +2990,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "roles": [
         "relying_party"
       ],
@@ -3019,7 +3019,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -3027,7 +3027,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_08"
@@ -3060,7 +3060,7 @@
           "regulation": "2016/679",
           "article": "Article 32",
           "paragraph": "1(d)",
-          "link": "/regulation/2016-679#article-32"
+          "link": "/regulation/2016-679?section=article-32"
         }
       ],
       "legalBasis": {
@@ -3068,7 +3068,7 @@
         "article": "Article 32",
         "paragraph": "1(d)"
       },
-      "legalBasisLink": "/regulation/2016-679#article-32",
+      "legalBasisLink": "/regulation/2016-679?section=article-32",
       "legalText": "The controller and processor shall implement measures to ensure a process \nfor regularly testing, assessing and evaluating the effectiveness of \ntechnical and organisational measures for ensuring the security of processing.",
       "roles": [
         "relying_party"
@@ -3099,7 +3099,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -3107,7 +3107,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "roles": [
         "relying_party"
       ],
@@ -3136,7 +3136,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "16(a)",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -3144,7 +3144,7 @@
         "article": "Article 5a",
         "paragraph": "16(a)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "roles": [
         "relying_party"
       ],
@@ -3175,7 +3175,7 @@
           "regulation": "2014/910",
           "article": "Article 5b",
           "paragraph": "10",
-          "link": "/regulation/2014-910#article-5b"
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -3183,7 +3183,7 @@
         "article": "Article 5b",
         "paragraph": "10"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5b",
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 52",
         "hlr": "RPI_10"
@@ -3216,7 +3216,7 @@
           "regulation": "2025/848",
           "article": "Annex I",
           "paragraph": "9-10",
-          "link": "/regulation/2025-848#article-annex i"
+          "link": "/regulation/2025-848?section=annex-i"
         }
       ],
       "legalBasis": {
@@ -3224,7 +3224,7 @@
         "article": "Annex I",
         "paragraph": "9-10"
       },
-      "legalBasisLink": "/regulation/2025-848#article-annex i",
+      "legalBasisLink": "/regulation/2025-848?section=annex-i",
       "legalText": "For each intended use, a list of the data, including attestations and \nattributes, that the relying party intends to request, a user-friendly \nname and a technical name, the attestation type and a description of \nintended use of the data.",
       "arfReference": {
         "topic": "Topic 52",
@@ -3260,7 +3260,7 @@
           "regulation": "2024/2979",
           "article": "Article 8",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -3268,7 +3268,7 @@
         "article": "Article 8",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "arfReference": {
         "topic": "Topic 3",
         "hlr": "PID_02"
@@ -3304,7 +3304,7 @@
           "regulation": "2024/2982",
           "article": "Article 5",
           "paragraph": "4",
-          "link": "/regulation/2024-2982#article-5"
+          "link": "/implementing-acts/2024-2982?section=article-5"
         }
       ],
       "legalBasis": {
@@ -3312,7 +3312,7 @@
         "article": "Article 5",
         "paragraph": "4"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-5",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-5",
       "arfReference": {
         "topic": "Topic 12",
         "hlr": "ARB_02"
@@ -3347,7 +3347,7 @@
           "regulation": "2019/881",
           "article": "Article 47",
           "paragraph": "",
-          "link": "/regulation/2019-881#article-47"
+          "link": "/regulation/2019-881?section=article-47"
         }
       ],
       "legalBasis": {
@@ -3355,7 +3355,7 @@
         "article": "Article 47",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2019-881#article-47",
+      "legalBasisLink": "/regulation/2019-881?section=article-47",
       "roles": [
         "relying_party"
       ],
@@ -3385,7 +3385,7 @@
           "regulation": "2024/2979",
           "article": "Article 10",
           "paragraph": "3",
-          "link": "/regulation/2024-2979#article-10"
+          "link": "/implementing-acts/2024-2979?section=article-10"
         }
       ],
       "legalBasis": {
@@ -3393,7 +3393,7 @@
         "article": "Article 10",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-10",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-10",
       "legalText": "Wallet instances shall verify whether the wallet-relying party complies \nwith the requirements of the embedded disclosure policy and inform the \nwallet user of the result.",
       "roles": [
         "relying_party"
@@ -3425,7 +3425,7 @@
           "regulation": "2024/2979",
           "article": "Article 14",
           "paragraph": "1",
-          "link": "/regulation/2024-2979#article-14"
+          "link": "/implementing-acts/2024-2979?section=article-14"
         }
       ],
       "legalBasis": {
@@ -3433,7 +3433,7 @@
         "article": "Article 14",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-14",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-14",
       "legalText": "Wallet units shall support the generation of pseudonyms for wallet users \nin compliance with the technical specifications set out in Annex V.",
       "annexReference": "Annex V of 2024/2979:\n- 'Web Authentication', W3C Recommendation",
       "roles": [
@@ -3466,7 +3466,7 @@
           "regulation": "2024/2979",
           "article": "Article 14",
           "paragraph": "2",
-          "link": "/regulation/2024-2979#article-14"
+          "link": "/implementing-acts/2024-2979?section=article-14"
         }
       ],
       "legalBasis": {
@@ -3474,7 +3474,7 @@
         "article": "Article 14",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-14",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-14",
       "legalText": "A pseudonym shall be relying-party specific, meaning that only wallets \nand relying parties can link different transactions to the same pseudonym.",
       "roles": [
         "relying_party"
@@ -3506,7 +3506,7 @@
           "regulation": "2024/2982",
           "article": "Article 3",
           "paragraph": "1",
-          "link": "/regulation/2024-2982#article-3"
+          "link": "/implementing-acts/2024-2982?section=article-3"
         }
       ],
       "legalBasis": {
@@ -3514,7 +3514,7 @@
         "article": "Article 3",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-3",
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow wallet-relying parties to present a valid \nwallet-relying party access certificate.",
       "arfReference": {
         "topic": "Topic 6",
@@ -3550,7 +3550,7 @@
           "regulation": "2024/2982",
           "article": "Article 6",
           "paragraph": "1",
-          "link": "/regulation/2024-2982#article-6"
+          "link": "/implementing-acts/2024-2982?section=article-6"
         }
       ],
       "legalBasis": {
@@ -3558,7 +3558,7 @@
         "article": "Article 6",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-6",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-6",
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow users to request erasure of their personal \ndata from wallet-relying parties.",
       "roles": [
         "relying_party"
@@ -3590,7 +3590,7 @@
           "regulation": "2024/2982",
           "article": "Article 7",
           "paragraph": "1",
-          "link": "/regulation/2024-2982#article-7"
+          "link": "/implementing-acts/2024-2982?section=article-7"
         }
       ],
       "legalBasis": {
@@ -3598,7 +3598,7 @@
         "article": "Article 7",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2982#article-7",
+      "legalBasisLink": "/implementing-acts/2024-2982?section=article-7",
       "legalText": "Wallet providers shall ensure that wallet units allow wallet users to \neasily report wallet-relying parties to supervisory authorities \nestablished under Article 51 of Regulation (EU) 2016/679.",
       "roles": [
         "relying_party"
@@ -3630,7 +3630,7 @@
           "regulation": "2025/848",
           "article": "Article 8",
           "paragraph": "2",
-          "link": "/regulation/2025-848#article-8"
+          "link": "/regulation/2025-848?section=article-8"
         }
       ],
       "legalBasis": {
@@ -3638,7 +3638,7 @@
         "article": "Article 8",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2025-848#article-8",
+      "legalBasisLink": "/regulation/2025-848?section=article-8",
       "legalText": "When requested by an intermediated Relying Party, an intermediary SHALL request \na presentation of attributes from a specific Wallet Unit. In the request, the \nintermediary SHALL include the intermediary's access certificate and the \nregistration certificate of the Relying Party, if available.",
       "arfReference": {
         "topic": "Topic 52",
@@ -3675,7 +3675,7 @@
           "regulation": "2025/848",
           "article": "Article 6",
           "paragraph": "5",
-          "link": "/regulation/2025-848#article-6"
+          "link": "/regulation/2025-848?section=article-6"
         }
       ],
       "legalBasis": {
@@ -3683,7 +3683,7 @@
         "article": "Article 6",
         "paragraph": "5"
       },
-      "legalBasisLink": "/regulation/2025-848#article-6",
+      "legalBasisLink": "/regulation/2025-848?section=article-6",
       "legalText": "When registering an intermediated Relying Party, an intermediary SHALL provide \nlegally valid evidence that this Relying Party will indeed use the services of \nthis intermediary to interact with Wallet Units. The Registrar SHALL verify \nthis evidence and register the relationship between the intermediary and the \nintermediated Relying Party.",
       "arfReference": {
         "topic": "Topic 52",
@@ -3720,7 +3720,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -3728,7 +3728,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "legalText": "Wallet providers shall ensure that wallet units support mechanisms for \nchecking the revocation status of attestations in accordance with the \nmethods specified by the issuing PID Provider or Attestation Provider.",
       "arfReference": {
         "topic": "Topic 7",
@@ -3765,7 +3765,7 @@
           "regulation": "2014/910",
           "article": "Article 45d",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-45d"
+          "link": "/regulation/2014-910?section=article-45d"
         }
       ],
       "legalBasis": {
@@ -3773,7 +3773,7 @@
         "article": "Article 45d",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
       "legalText": "Electronic attestation of attributes issued by or on behalf of a public \nsector body responsible for an authentic source shall be issued in \naccordance with the requirements laid down in this Regulation.",
       "arfReference": {
         "topic": "Topic 27",
@@ -3807,7 +3807,7 @@
           "regulation": "2024/2981",
           "article": "Article 3",
           "paragraph": "1",
-          "link": "/regulation/2024-2981#article-3"
+          "link": "/implementing-acts/2024-2981?section=article-3"
         }
       ],
       "legalBasis": {
@@ -3815,7 +3815,7 @@
         "article": "Article 3",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-3",
       "legalText": "Providers issuing attestations to European Digital Identity Wallet units \nshall publish information in accordance with the data model set out in \nAnnex I.",
       "arfReference": {
         "topic": "Topic 10",
@@ -3849,7 +3849,7 @@
           "regulation": "2024/2981",
           "article": "Article 3",
           "paragraph": "2",
-          "link": "/regulation/2024-2981#article-3"
+          "link": "/implementing-acts/2024-2981?section=article-3"
         }
       ],
       "legalBasis": {
@@ -3857,7 +3857,7 @@
         "article": "Article 3",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2024-2981#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-3",
       "roles": [
         "issuer"
       ],
@@ -3886,7 +3886,7 @@
           "regulation": "2014/910",
           "article": "Article 45f",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-45f"
+          "link": "/regulation/2014-910?section=article-45f"
         }
       ],
       "legalBasis": {
@@ -3894,7 +3894,7 @@
         "article": "Article 45f",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalBasisLink": "/regulation/2014-910?section=article-45f",
       "arfReference": {
         "topic": "Topic 42",
         "hlr": "QTSPAS_02"
@@ -3929,7 +3929,7 @@
           "regulation": "2024/2979",
           "article": "Article 8",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -3937,7 +3937,7 @@
         "article": "Article 8",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "legalText": "Wallet units shall support the encoding of attestations in accordance \nwith the technical specifications set out in Annex II.\nhlr: \"Iss_02\"",
       "roles": [
         "issuer"
@@ -3967,7 +3967,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "1",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -3975,7 +3975,7 @@
         "article": "Article 3",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "legalText": "Wallet providers shall ensure that wallet units bind attestations to \nthe wallet secure cryptographic device.\nhlr: \"Iss_06\"",
       "roles": [
         "issuer"
@@ -4005,7 +4005,7 @@
           "regulation": "2024/2979",
           "article": "Article 6",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-6"
+          "link": "/implementing-acts/2024-2979?section=article-6"
         }
       ],
       "legalBasis": {
@@ -4013,7 +4013,7 @@
         "article": "Article 6",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-6",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-6",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
@@ -4049,7 +4049,7 @@
           "regulation": "2024/2979",
           "article": "Article 6",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-6"
+          "link": "/implementing-acts/2024-2979?section=article-6"
         }
       ],
       "legalBasis": {
@@ -4057,7 +4057,7 @@
         "article": "Article 6",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-6",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-6",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": "ISSU_03"
@@ -4090,7 +4090,7 @@
           "regulation": "2014/910",
           "article": "Article 45d",
           "paragraph": "3",
-          "link": "/regulation/2014-910#article-45d"
+          "link": "/regulation/2014-910?section=article-45d"
         }
       ],
       "legalBasis": {
@@ -4098,7 +4098,7 @@
         "article": "Article 45d",
         "paragraph": "3"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
       "legalText": "Providers of electronic attestation of attributes shall verify the \nidentity of the natural or legal person to whom the electronic \nattestation of attributes is issued.",
       "roles": [
         "issuer"
@@ -4128,7 +4128,7 @@
           "regulation": "2014/910",
           "article": "Article 45e",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-45e"
+          "link": "/regulation/2014-910?section=article-45e"
         }
       ],
       "legalBasis": {
@@ -4136,7 +4136,7 @@
         "article": "Article 45e",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45e",
+      "legalBasisLink": "/regulation/2014-910?section=article-45e",
       "legalText": "Providers of electronic attestation of attributes shall obtain the \ndata for the attributes from authentic sources.",
       "roles": [
         "issuer"
@@ -4166,7 +4166,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -4174,7 +4174,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": "ISSU_50"
@@ -4207,7 +4207,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -4215,7 +4215,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
@@ -4251,7 +4251,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "1",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4259,7 +4259,7 @@
         "article": "Article 4",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "legalText": "PID Providers and Attestation Providers shall publish validity status \ninformation of revoked or suspended attestations.\nhlr: \"VCR_01\"",
       "arfReference": {
         "topic": "Topic 7",
@@ -4297,7 +4297,7 @@
           "article": "Article 4",
           "paragraph": "2",
           "hlr": "VCR_03",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4306,7 +4306,7 @@
         "paragraph": "2",
         "hlr": "VCR_03"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
@@ -4342,7 +4342,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4350,7 +4350,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_09"
@@ -4383,7 +4383,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4391,7 +4391,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_01a"
@@ -4424,7 +4424,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "2",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -4432,7 +4432,7 @@
         "article": "Article 24",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "legalText": "Qualified trust service providers shall use trustworthy systems and \nproducts that are protected against modification and ensure the \ntechnical security and reliability of the processes supported by them.",
       "arfReference": {
         "topic": "Topic 10",
@@ -4471,7 +4471,7 @@
           "article": "Article 8",
           "paragraph": "",
           "hlr": "Iss_04",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -4480,7 +4480,7 @@
         "paragraph": "",
         "hlr": "Iss_04"
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": "ISSU_35"
@@ -4513,7 +4513,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -4521,7 +4521,7 @@
         "article": "Article 24",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": "ISSU_17"
@@ -4554,7 +4554,7 @@
           "regulation": "2024/2981",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2981#article-4"
+          "link": "/implementing-acts/2024-2981?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4562,7 +4562,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-4",
       "roles": [
         "issuer"
       ],
@@ -4591,7 +4591,7 @@
           "regulation": "2024/2981",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2981#article-4"
+          "link": "/implementing-acts/2024-2981?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4599,7 +4599,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2981#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-4",
       "arfReference": {
         "topic": "Topic 12",
         "hlr": [
@@ -4635,7 +4635,7 @@
           "regulation": "2016/679",
           "article": "Article 25",
           "paragraph": "1",
-          "link": "/regulation/2016-679#article-25"
+          "link": "/regulation/2016-679?section=article-25"
         }
       ],
       "legalBasis": {
@@ -4643,7 +4643,7 @@
         "article": "Article 25",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2016-679#article-25",
+      "legalBasisLink": "/regulation/2016-679?section=article-25",
       "legalText": "The controller shall implement appropriate technical and organisational \nmeasures for ensuring that, by default, only personal data which are \nnecessary for each specific purpose of the processing are processed.",
       "arfReference": {
         "topic": "Topic 43",
@@ -4677,7 +4677,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "16(a)",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -4685,7 +4685,7 @@
         "article": "Article 5a",
         "paragraph": "16(a)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "roles": [
         "issuer"
       ],
@@ -4714,7 +4714,7 @@
           "regulation": "2014/910",
           "article": "Article 45g",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-45g"
+          "link": "/regulation/2014-910?section=article-45g"
         }
       ],
       "legalBasis": {
@@ -4722,7 +4722,7 @@
         "article": "Article 45g",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45g",
+      "legalBasisLink": "/regulation/2014-910?section=article-45g",
       "legalText": "An electronic attestation of attributes issued in one Member State \nshall be recognised as an electronic attestation of attributes in \nall other Member States.",
       "arfReference": {
         "topic": "Topic 10",
@@ -4756,7 +4756,7 @@
           "regulation": "2024/2979",
           "article": "Article 8",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -4764,7 +4764,7 @@
         "article": "Article 8",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "roles": [
         "issuer"
       ],
@@ -4791,17 +4791,17 @@
       "legalBases": [
         {
           "regulation": "2024/2977",
-          "article": "Annex I",
+          "article": "Annex",
           "paragraph": "",
-          "link": "/regulation/2024-2977#article-annex i"
+          "link": "/implementing-acts/2024-2977?section=annex"
         }
       ],
       "legalBasis": {
         "regulation": "2024/2977",
-        "article": "Annex I",
+        "article": "Annex",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "legalBasisLink": "/implementing-acts/2024-2977?section=annex",
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
@@ -4842,7 +4842,7 @@
           "regulation": "2024/2979",
           "article": "Article 8",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-8"
+          "link": "/implementing-acts/2024-2979?section=article-8"
         }
       ],
       "legalBasis": {
@@ -4850,7 +4850,7 @@
         "article": "Article 8",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-8",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
@@ -4887,7 +4887,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -4895,7 +4895,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
@@ -4934,7 +4934,7 @@
           "regulation": "2014/910",
           "article": "Article 45d",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-45d"
+          "link": "/regulation/2014-910?section=article-45d"
         }
       ],
       "legalBasis": {
@@ -4942,7 +4942,7 @@
         "article": "Article 45d",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
       "arfReference": {
         "topic": "Topic 27",
         "hlr": [
@@ -4978,7 +4978,7 @@
           "regulation": "2024/2981",
           "article": "Article 2",
           "paragraph": "",
-          "link": "/regulation/2024-2981#article-2"
+          "link": "/implementing-acts/2024-2981?section=article-2"
         }
       ],
       "legalBasis": {
@@ -4986,7 +4986,7 @@
         "article": "Article 2",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2981#article-2",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-2",
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
@@ -5023,7 +5023,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -5031,7 +5031,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 9",
         "hlr": [
@@ -5067,7 +5067,7 @@
           "regulation": "2014/910",
           "article": "Article 5a",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-5a"
+          "link": "/regulation/2014-910?section=article-5a"
         }
       ],
       "legalBasis": {
@@ -5075,7 +5075,7 @@
         "article": "Article 5a",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-5a",
+      "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "arfReference": {
         "topic": "Topic 43",
         "hlr": [
@@ -5111,7 +5111,7 @@
           "regulation": "2014/910",
           "article": "Article 45d",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-45d"
+          "link": "/regulation/2014-910?section=article-45d"
         }
       ],
       "legalBasis": {
@@ -5119,7 +5119,7 @@
         "article": "Article 45d",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-45d",
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
@@ -5153,17 +5153,17 @@
       "legalBases": [
         {
           "regulation": "2024/2977",
-          "article": "Annex I",
+          "article": "Annex",
           "paragraph": "",
-          "link": "/regulation/2024-2977#article-annex i"
+          "link": "/implementing-acts/2024-2977?section=annex"
         }
       ],
       "legalBasis": {
         "regulation": "2024/2977",
-        "article": "Annex I",
+        "article": "Annex",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "legalBasisLink": "/implementing-acts/2024-2977?section=annex",
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
@@ -5201,17 +5201,17 @@
       "legalBases": [
         {
           "regulation": "2024/2977",
-          "article": "Annex I",
+          "article": "Annex",
           "paragraph": "",
-          "link": "/regulation/2024-2977#article-annex i"
+          "link": "/implementing-acts/2024-2977?section=annex"
         }
       ],
       "legalBasis": {
         "regulation": "2024/2977",
-        "article": "Annex I",
+        "article": "Annex",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2977#article-annex i",
+      "legalBasisLink": "/implementing-acts/2024-2977?section=annex",
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
@@ -5251,7 +5251,7 @@
           "regulation": "2024/2979",
           "article": "Article 4",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-4"
+          "link": "/implementing-acts/2024-2979?section=article-4"
         }
       ],
       "legalBasis": {
@@ -5259,7 +5259,7 @@
         "article": "Article 4",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-4",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
@@ -5294,7 +5294,7 @@
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
-          "link": "/regulation/2024-2979#article-3"
+          "link": "/implementing-acts/2024-2979?section=article-3"
         }
       ],
       "legalBasis": {
@@ -5302,7 +5302,7 @@
         "article": "Article 3",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2979#article-3",
+      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
@@ -5351,7 +5351,7 @@
           "regulation": "2024/2981",
           "article": "Article 2",
           "paragraph": "",
-          "link": "/regulation/2024-2981#article-2"
+          "link": "/implementing-acts/2024-2981?section=article-2"
         }
       ],
       "legalBasis": {
@@ -5359,7 +5359,7 @@
         "article": "Article 2",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2024-2981#article-2",
+      "legalBasisLink": "/implementing-acts/2024-2981?section=article-2",
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
@@ -5395,7 +5395,7 @@
           "regulation": "2014/910",
           "article": "Article 21",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-21"
+          "link": "/regulation/2014-910?section=article-21"
         }
       ],
       "legalBasis": {
@@ -5403,7 +5403,7 @@
         "article": "Article 21",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-21",
+      "legalBasisLink": "/regulation/2014-910?section=article-21",
       "legalText": "A trust service provider may start its activity as a qualified trust \nservice provider only after the qualified status, and where applicable, \nthe qualified status of the trust services it provides, has been \nverified.",
       "roles": [],
       "productCategories": [
@@ -5431,7 +5431,7 @@
           "regulation": "2014/910",
           "article": "Article 20",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-20"
+          "link": "/regulation/2014-910?section=article-20"
         }
       ],
       "legalBasis": {
@@ -5439,7 +5439,7 @@
         "article": "Article 20",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-20",
+      "legalBasisLink": "/regulation/2014-910?section=article-20",
       "legalText": "Qualified trust service providers shall be subject to audits at least \nevery 24 months by a conformity assessment body.",
       "roles": [],
       "productCategories": [
@@ -5467,7 +5467,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "2(i)",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -5475,7 +5475,7 @@
         "article": "Article 24",
         "paragraph": "2(i)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "roles": [],
       "productCategories": [
         "trust_services"
@@ -5502,7 +5502,7 @@
           "regulation": "2014/910",
           "article": "Article 29",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-29"
+          "link": "/regulation/2014-910?section=article-29"
         }
       ],
       "legalBasis": {
@@ -5510,7 +5510,7 @@
         "article": "Article 29",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-29",
+      "legalBasisLink": "/regulation/2014-910?section=article-29",
       "legalText": "Qualified electronic signatures shall be created by a qualified \nelectronic signature creation device.",
       "roles": [],
       "productCategories": [
@@ -5540,7 +5540,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "2(e)",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -5548,7 +5548,7 @@
         "article": "Article 24",
         "paragraph": "2(e)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "legalText": "Take appropriate measures against falsification and theft of data and \nagainst forgery or unauthorised modification of electronic signature \ncreation data.",
       "roles": [],
       "productCategories": [
@@ -5576,7 +5576,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "2(h)",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -5584,7 +5584,7 @@
         "article": "Article 24",
         "paragraph": "2(h)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "legalText": "Have a termination plan to ensure continuity of service, and have a \nvalid and up-to-date termination plan.",
       "roles": [],
       "productCategories": [
@@ -5612,7 +5612,7 @@
           "regulation": "2014/910",
           "article": "Article 19",
           "paragraph": "2",
-          "link": "/regulation/2014-910#article-19"
+          "link": "/regulation/2014-910?section=article-19"
         }
       ],
       "legalBasis": {
@@ -5620,7 +5620,7 @@
         "article": "Article 19",
         "paragraph": "2"
       },
-      "legalBasisLink": "/regulation/2014-910#article-19",
+      "legalBasisLink": "/regulation/2014-910?section=article-19",
       "legalText": "Where a trust service provider detects a breach of security or loss \nof integrity that has a significant impact on the trust service \nprovided, it shall notify the supervisory body within 24 hours.",
       "roles": [],
       "productCategories": [
@@ -5648,7 +5648,7 @@
           "regulation": "2014/910",
           "article": "Article 29",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-29"
+          "link": "/regulation/2014-910?section=article-29"
         }
       ],
       "legalBasis": {
@@ -5656,7 +5656,7 @@
         "article": "Article 29",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-29",
+      "legalBasisLink": "/regulation/2014-910?section=article-29",
       "roles": [],
       "productCategories": [
         "trust_services"
@@ -5684,7 +5684,7 @@
           "regulation": "2014/910",
           "article": "Article 26",
           "paragraph": "1(d)",
-          "link": "/regulation/2014-910#article-26"
+          "link": "/regulation/2014-910?section=article-26"
         }
       ],
       "legalBasis": {
@@ -5692,7 +5692,7 @@
         "article": "Article 26",
         "paragraph": "1(d)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-26",
+      "legalBasisLink": "/regulation/2014-910?section=article-26",
       "legalText": "An advanced electronic signature shall meet the following requirements: \n(d) it is linked to the data signed therewith in such a way that any \nsubsequent change in the data is detectable.",
       "roles": [],
       "productCategories": [
@@ -5720,7 +5720,7 @@
           "regulation": "2018/389",
           "article": "Article 4",
           "paragraph": "1",
-          "link": "/regulation/2018-389#article-4"
+          "link": "/regulation/2018-389?section=article-4"
         }
       ],
       "legalBasis": {
@@ -5728,7 +5728,7 @@
         "article": "Article 4",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2018-389#article-4",
+      "legalBasisLink": "/regulation/2018-389?section=article-4",
       "legalText": "Where the payment service provider applies strong customer authentication, \nthe authentication shall include elements which dynamically link the \ntransaction to a specific amount and a specific payee.",
       "roles": [],
       "productCategories": [
@@ -5756,7 +5756,7 @@
           "regulation": "2014/910",
           "article": "Article 42",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-42"
+          "link": "/regulation/2014-910?section=article-42"
         }
       ],
       "legalBasis": {
@@ -5764,7 +5764,7 @@
         "article": "Article 42",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-42",
+      "legalBasisLink": "/regulation/2014-910?section=article-42",
       "legalText": "A qualified electronic time stamp shall meet the following requirements: \n(a) it binds the date and time to data in such a manner as to reasonably \npreclude the possibility of the data being changed undetectably.",
       "roles": [],
       "productCategories": [
@@ -5792,7 +5792,7 @@
           "regulation": "2014/910",
           "article": "Article 45f",
           "paragraph": "2(b)",
-          "link": "/regulation/2014-910#article-45f"
+          "link": "/regulation/2014-910?section=article-45f"
         }
       ],
       "legalBasis": {
@@ -5800,7 +5800,7 @@
         "article": "Article 45f",
         "paragraph": "2(b)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalBasisLink": "/regulation/2014-910?section=article-45f",
       "legalText": "A qualified electronic attestation of attributes shall meet the \nfollowing requirements: (b) it is based on data from an authentic \nsource or on data that has been provided and verified by the person \nto whom the attestation was issued.",
       "roles": [
         "issuer"
@@ -5830,7 +5830,7 @@
           "regulation": "2014/910",
           "article": "Article 45f",
           "paragraph": "2(c)",
-          "link": "/regulation/2014-910#article-45f"
+          "link": "/regulation/2014-910?section=article-45f"
         }
       ],
       "legalBasis": {
@@ -5838,7 +5838,7 @@
         "article": "Article 45f",
         "paragraph": "2(c)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalBasisLink": "/regulation/2014-910?section=article-45f",
       "legalText": "A qualified electronic attestation of attributes shall meet the \nfollowing requirements: (c) it is issued by a qualified trust \nservice provider and signed with a qualified electronic signature \nor qualified electronic seal.",
       "roles": [
         "issuer"
@@ -5868,7 +5868,7 @@
           "regulation": "2014/910",
           "article": "Article 45f",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-45f"
+          "link": "/regulation/2014-910?section=article-45f"
         }
       ],
       "legalBasis": {
@@ -5876,7 +5876,7 @@
         "article": "Article 45f",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-45f",
+      "legalBasisLink": "/regulation/2014-910?section=article-45f",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_01"
@@ -5909,7 +5909,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "2(c)",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -5917,7 +5917,7 @@
         "article": "Article 24",
         "paragraph": "2(c)"
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "legalText": "Qualified trust service providers shall use trustworthy systems and \nproducts that are protected against modification, and ensure the \ntechnical security and reliability of the processes supported by them.",
       "roles": [],
       "productCategories": [
@@ -5945,7 +5945,7 @@
           "regulation": "2014/910",
           "article": "Article 13",
           "paragraph": "1",
-          "link": "/regulation/2014-910#article-13"
+          "link": "/regulation/2014-910?section=article-13"
         }
       ],
       "legalBasis": {
@@ -5953,7 +5953,7 @@
         "article": "Article 13",
         "paragraph": "1"
       },
-      "legalBasisLink": "/regulation/2014-910#article-13",
+      "legalBasisLink": "/regulation/2014-910?section=article-13",
       "legalText": "Trust service providers shall be liable for damage caused \nintentionally or negligently to any natural or legal person due to \na failure to comply with the obligations under this Regulation.",
       "roles": [],
       "productCategories": [
@@ -5981,7 +5981,7 @@
           "regulation": "2014/910",
           "article": "Article 22",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-22"
+          "link": "/regulation/2014-910?section=article-22"
         }
       ],
       "legalBasis": {
@@ -5989,7 +5989,7 @@
         "article": "Article 22",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-22",
+      "legalBasisLink": "/regulation/2014-910?section=article-22",
       "arfReference": {
         "topic": "Topic 27",
         "hlr": [
@@ -6023,7 +6023,7 @@
           "regulation": "2014/910",
           "article": "Article 20",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-20"
+          "link": "/regulation/2014-910?section=article-20"
         }
       ],
       "legalBasis": {
@@ -6031,7 +6031,7 @@
         "article": "Article 20",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-20",
+      "legalBasisLink": "/regulation/2014-910?section=article-20",
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
@@ -6065,7 +6065,7 @@
           "regulation": "2014/910",
           "article": "Article 24",
           "paragraph": "",
-          "link": "/regulation/2014-910#article-24"
+          "link": "/regulation/2014-910?section=article-24"
         }
       ],
       "legalBasis": {
@@ -6073,7 +6073,7 @@
         "article": "Article 24",
         "paragraph": ""
       },
-      "legalBasisLink": "/regulation/2014-910#article-24",
+      "legalBasisLink": "/regulation/2014-910?section=article-24",
       "arfReference": {
         "topic": "Topic 42",
         "hlr": [

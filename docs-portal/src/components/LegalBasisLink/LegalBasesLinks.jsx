@@ -12,18 +12,25 @@
  * Props:
  * - legalBases: Array of { regulation, article, paragraph, link }
  * - regulationsIndex: lookup object from useRegulationsIndex hook
+ * - getExcerpt: (regId, sectionId) => { title, excerpt } - optional for article previews
  */
 
 import { LegalBasisLink } from './LegalBasisLink';
 import './LegalBasesLinks.css';
 
-export function LegalBasesLinks({ legalBases, regulationsIndex }) {
+export function LegalBasesLinks({ legalBases, regulationsIndex, getExcerpt }) {
     // Handle empty/null input
     if (!legalBases || legalBases.length === 0) return null;
 
     // Single item - use original component (no numbering needed)
     if (legalBases.length === 1) {
-        return <LegalBasisLink legalBasis={legalBases[0]} regulationsIndex={regulationsIndex} />;
+        return (
+            <LegalBasisLink
+                legalBasis={legalBases[0]}
+                regulationsIndex={regulationsIndex}
+                getExcerpt={getExcerpt}
+            />
+        );
     }
 
     // Multiple items - show ALL stacked vertically with numbering
@@ -35,6 +42,7 @@ export function LegalBasesLinks({ legalBases, regulationsIndex }) {
                     <LegalBasisLink
                         legalBasis={basis}
                         regulationsIndex={regulationsIndex}
+                        getExcerpt={getExcerpt}
                         compact={true}
                     />
                 </div>

@@ -8,6 +8,7 @@
  * - legalBasis: { regulation, article, paragraph }
  * - regulationsIndex: lookup object from useRegulationsIndex hook
  * - compact: boolean - if true, shows shorter regulation name as pill badge
+ * - getExcerpt: (regId, sectionId) => { title, excerpt } - optional function for article previews
  * 
  * ID Anchor Convention:
  * - Articles: article-5a-para-1-point-a-subpoint-i
@@ -20,9 +21,9 @@ import { createPortal } from 'react-dom';
 import { buildDocumentLink, buildSectionId, parseParagraph, toHref } from '../../utils/linkBuilder';
 import './LegalBasisLink.css';
 
-export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }) {
+export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false, getExcerpt }) {
     const [showPopover, setShowPopover] = useState(false);
-    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0, showAbove: false });
     const triggerRef = useRef(null);
     const popoverRef = useRef(null);
     const hideTimeoutRef = useRef(null);
@@ -32,6 +33,17 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
     const regMeta = regulationsIndex[regId] || regulationsIndex[regId?.replace('/', '-')];
 
     const parsedParagraph = parseParagraph(legalBasis?.paragraph);
+
+    // Build section ID for excerpt lookup
+    const getSectionIdForExcerpt = () => {
+        if (!legalBasis?.article) return null;
+        return buildSectionId(legalBasis.article, parsedParagraph);
+    };
+
+    // Get article excerpt if available
+    const articleExcerpt = getExcerpt && regId
+        ? getExcerpt(regId, getSectionIdForExcerpt())
+        : null;
 
     // Build URL to article using centralized link builder
     const buildUrl = () => {
@@ -86,14 +98,19 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
         if (triggerRef.current) {
             const rect = triggerRef.current.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-            const popoverHeight = 150;
+            // Estimate height to decide direction, but use bottom positioning for above
+            const estimatedHeight = articleExcerpt ? 320 : 180;
 
             const spaceBelow = viewportHeight - rect.bottom;
-            const showAbove = spaceBelow < popoverHeight + 20;
+            const showAbove = spaceBelow < estimatedHeight + 20;
 
             setPopoverPosition({
-                top: showAbove ? rect.top - popoverHeight - 8 : rect.bottom + 8,
-                left: Math.max(8, Math.min(rect.left, window.innerWidth - 320))
+                // When showing above, use bottom positioning (viewport height - trigger top)
+                // When showing below, use top positioning (trigger bottom)
+                top: showAbove ? null : rect.bottom + 8,
+                bottom: showAbove ? viewportHeight - rect.top + 8 : null,
+                left: Math.max(8, Math.min(rect.left, window.innerWidth - 320)),
+                showAbove
             });
         }
         setShowPopover(true);
@@ -169,7 +186,9 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                     className="rca-legal-popover"
                     style={{
                         position: 'fixed',
-                        top: `${popoverPosition.top}px`,
+                        ...(popoverPosition.showAbove
+                            ? { bottom: `${popoverPosition.bottom}px` }
+                            : { top: `${popoverPosition.top}px` }),
                         left: `${popoverPosition.left}px`,
                     }}
                     onMouseEnter={handlePopoverMouseEnter}
@@ -186,6 +205,16 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                     <div className="rca-popover-title">
                         {regMeta.shortTitle || regMeta.title}
                     </div>
+                    {articleExcerpt && (
+                        <div className="rca-popover-excerpt">
+                            <div className="rca-popover-excerpt-title">
+                                {articleExcerpt.title}
+                            </div>
+                            <div className="rca-popover-excerpt-text">
+                                {articleExcerpt.excerpt}
+                            </div>
+                        </div>
+                    )}
                     <div className="rca-popover-meta">
                         <span>📅 {regMeta.date}</span>
                         <span>📄 CELEX: {regMeta.celex}</span>
@@ -197,7 +226,7 @@ export function LegalBasisLink({ legalBasis, regulationsIndex, compact = false }
                             rel="noopener noreferrer"
                             className="rca-popover-action"
                         >
-                            View in EUR-Lex →
+                            {articleExcerpt ? 'View full article →' : 'View in document →'}
                         </a>
                     )}
                 </div>,

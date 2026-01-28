@@ -16,6 +16,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
+import { useArticleExcerpts } from '../hooks/useArticleExcerpts';
 import { LegalBasisLink, LegalBasesLinks } from '../components/LegalBasisLink';
 import { exportToExcel } from '../utils/vcq/exportExcel';
 import './VendorQuestionnaire.css';
@@ -504,7 +505,7 @@ function SelectionSummary({ selectedRoles, selectedCategories, applicableTechSpe
 
 function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     const [showPopover, setShowPopover] = useState(false);
-    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+    const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0, showAbove: false });
     const triggerRef = useRef(null);
     const hideTimeoutRef = useRef(null);
 
@@ -528,11 +529,15 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
         if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
         if (triggerRef.current) {
             const rect = triggerRef.current.getBoundingClientRect();
-            const popoverHeight = isSingleHlr ? 200 : 250;
-            const showBelow = rect.top < popoverHeight + 20;
+            const viewportHeight = window.innerHeight;
+            const estimatedHeight = isSingleHlr ? 200 : 250;
+            const spaceBelow = viewportHeight - rect.bottom;
+            const showAbove = spaceBelow < estimatedHeight + 20;
             setPopoverPosition({
-                top: showBelow ? rect.bottom + 8 : rect.top - popoverHeight - 8,
-                left: Math.max(8, Math.min(rect.left, window.innerWidth - 420))
+                top: showAbove ? null : rect.bottom + 8,
+                bottom: showAbove ? viewportHeight - rect.top + 8 : null,
+                left: Math.max(8, Math.min(rect.left, window.innerWidth - 420)),
+                showAbove
             });
         }
         setShowPopover(true);
@@ -590,7 +595,13 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
             {showPopover && isSingleHlr && firstHlrData && (
                 <div
                     className="vcq-arf-popover"
-                    style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
+                    style={{
+                        position: 'fixed',
+                        ...(popoverPosition.showAbove
+                            ? { bottom: `${popoverPosition.bottom}px` }
+                            : { top: `${popoverPosition.top}px` }),
+                        left: `${popoverPosition.left}px`
+                    }}
                     onMouseEnter={() => hideTimeoutRef.current && clearTimeout(hideTimeoutRef.current)}
                     onMouseLeave={() => setShowPopover(false)}
                 >
@@ -646,7 +657,13 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
             {showPopover && hiddenCount > 0 && (
                 <div
                     className="vcq-arf-popover vcq-arf-popover-multi"
-                    style={{ position: 'fixed', top: `${popoverPosition.top}px`, left: `${popoverPosition.left}px` }}
+                    style={{
+                        position: 'fixed',
+                        ...(popoverPosition.showAbove
+                            ? { bottom: `${popoverPosition.bottom}px` }
+                            : { top: `${popoverPosition.top}px` }),
+                        left: `${popoverPosition.left}px`
+                    }}
                     onMouseEnter={() => hideTimeoutRef.current && clearTimeout(hideTimeoutRef.current)}
                     onMouseLeave={() => setShowPopover(false)}
                 >
@@ -775,7 +792,7 @@ function SummaryView({ requirements, categories, answers }) {
 // Requirements Table Component
 // ============================================================================
 
-function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData }) {
+function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData, getExcerpt }) {
     const [filterCategory, setFilterCategory] = useState('all');
     const [filterObligation, setFilterObligation] = useState('all');
 
@@ -867,7 +884,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                 <td className="col-legal">
                                                     {/* DEC-261: Multi-article support via legalBases array */}
                                                     {req.legalBases && req.legalBases.length > 0 && (
-                                                        <LegalBasesLinks legalBases={req.legalBases} regulationsIndex={regulationsIndex} />
+                                                        <LegalBasesLinks legalBases={req.legalBases} regulationsIndex={regulationsIndex} getExcerpt={getExcerpt} />
                                                     )}
                                                     {req.arfReference && (
                                                         <ARFReferenceLink arfReference={req.arfReference} arfData={arfData} />
@@ -894,89 +911,6 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
 }
 
 // ============================================================================
-// Export Panel Component
-// ============================================================================
-
-function ExportPanel({ requirements, answers, selectedRoles, selectedCategories, selectedSourceGroups, data }) {
-    const handleExportMarkdown = () => {
-        const roleLabels = selectedRoles.map(id => ORGANISATION_ROLES[id]?.label || id).join(', ');
-        const categoryLabels = selectedCategories.map(id => PRODUCT_CATEGORIES[id]?.label || id).join(', ');
-        const activeSources = Object.entries(selectedSourceGroups)
-            .filter(([_, isSelected]) => isSelected)
-            .map(([group]) => group.toUpperCase())
-            .join(', ');
-
-        let md = `# Vendor Compliance Questionnaire\n\n`;
-        md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
-        md += `**Organisation Role(s):** ${roleLabels}\n\n`;
-        md += `**Product Category:** ${categoryLabels}\n\n`;
-        md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
-        md += `**Total Requirements:** ${requirements.length}\n\n`;
-        md += `---\n\n`;
-
-        const grouped = {};
-        requirements.forEach(req => {
-            if (!grouped[req.category]) grouped[req.category] = [];
-            grouped[req.category].push(req);
-        });
-
-        const categories = data.categories;
-        categories.forEach(cat => {
-            const reqs = grouped[cat.id];
-            if (!reqs || reqs.length === 0) return;
-
-            md += `## ${cat.icon} ${cat.label}\n\n`;
-            reqs.forEach(req => {
-                const answer = answers[req.id]?.value || 'pending';
-                const answerIcon = answer === 'yes' ? '✅' : answer === 'no' ? '❌' :
-                    answer === 'partial' ? '⚠️' : answer === 'na' ? '➖' : '⏳';
-
-                md += `### ${req.id}\n\n`;
-                md += `**Requirement:** ${req.requirement}\n\n`;
-                md += `**Obligation:** ${req.obligation}\n\n`;
-                if (req.legalBasis) {
-                    md += `**Legal Basis:** ${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})\n\n`;
-                }
-                md += `**Response:** ${answerIcon} ${answer}\n\n`;
-                md += `---\n\n`;
-            });
-        });
-
-        const blob = new Blob([md], { type: 'text/markdown' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
-        a.click();
-        URL.revokeObjectURL(url);
-    };
-
-    const handleExportExcel = () => {
-        exportToExcel({
-            requirements,
-            answers,
-            selectedRoles,
-            selectedCategories,
-            data
-        });
-    };
-
-    return (
-        <div className="vcq-export-panel">
-            <h4>📤 Export Questionnaire</h4>
-            <div className="vcq-export-options">
-                <button className="vcq-export-btn" onClick={handleExportMarkdown}>
-                    📝 Export Markdown
-                </button>
-                <button className="vcq-export-btn" onClick={handleExportExcel}>
-                    📊 Export Excel
-                </button>
-            </div>
-        </div>
-    );
-}
-
-// ============================================================================
 // Main Component
 // ============================================================================
 
@@ -984,6 +918,7 @@ export default function VendorQuestionnaire() {
     const { data, loading, error } = useVCQData();
     const regulationsIndex = useRegulationsIndex();
     const arfData = useARFData();
+    const { getExcerpt } = useArticleExcerpts();
 
     // Step 1: Organisation Roles
     const [selectedRoles, setSelectedRoles] = useState([]);
@@ -1145,6 +1080,69 @@ export default function VendorQuestionnaire() {
         return { total, answered, compliant, nonCompliant };
     }, [applicableRequirements, answers]);
 
+    // Export handlers (inline like RCA)
+    const handleExportMarkdown = useCallback(() => {
+        const roleLabels = selectedRoles.map(id => ORGANISATION_ROLES[id]?.label || id).join(', ');
+        const categoryLabels = selectedCategories.map(id => PRODUCT_CATEGORIES[id]?.label || id).join(', ');
+        const activeSources = Object.entries(selectedSourceGroups)
+            .filter(([_, isSelected]) => isSelected)
+            .map(([group]) => group.toUpperCase())
+            .join(', ');
+
+        let md = `# Vendor Compliance Questionnaire\n\n`;
+        md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
+        md += `**Organisation Role(s):** ${roleLabels}\n\n`;
+        md += `**Product Category:** ${categoryLabels}\n\n`;
+        md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
+        md += `**Total Requirements:** ${applicableRequirements.length}\n\n`;
+        md += `---\n\n`;
+
+        const grouped = {};
+        applicableRequirements.forEach(req => {
+            if (!grouped[req.category]) grouped[req.category] = [];
+            grouped[req.category].push(req);
+        });
+
+        data.categories.forEach(cat => {
+            const reqs = grouped[cat.id];
+            if (!reqs || reqs.length === 0) return;
+
+            md += `## ${cat.icon} ${cat.label}\n\n`;
+            reqs.forEach(req => {
+                const answer = answers[req.id]?.value || 'pending';
+                const answerIcon = answer === 'yes' ? '✅' : answer === 'no' ? '❌' :
+                    answer === 'partial' ? '⚠️' : answer === 'na' ? '➖' : '⏳';
+
+                md += `### ${req.id}\n\n`;
+                md += `**Requirement:** ${req.requirement}\n\n`;
+                md += `**Obligation:** ${req.obligation}\n\n`;
+                if (req.legalBasis) {
+                    md += `**Legal Basis:** ${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})\n\n`;
+                }
+                md += `**Response:** ${answerIcon} ${answer}\n\n`;
+                md += `---\n\n`;
+            });
+        });
+
+        const blob = new Blob([md], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, data]);
+
+    const handleExportExcel = useCallback(() => {
+        exportToExcel({
+            requirements: applicableRequirements,
+            answers,
+            selectedRoles,
+            selectedCategories,
+            data
+        });
+    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data]);
+
     // Loading/error states
     if (loading) {
         return (
@@ -1201,25 +1199,54 @@ export default function VendorQuestionnaire() {
                 stats={data.stats}
             />
 
-            {/* Generate Button */}
+            {/* Summary Bar + Action Buttons (matching RCA pattern) */}
             {!showResults && (
-                <div className="vcq-generate-section">
-                    <button
-                        className={`vcq-generate-btn ${!canGenerate ? 'disabled' : ''}`}
-                        onClick={() => canGenerate && setShowResults(true)}
-                        disabled={!canGenerate}
-                    >
-                        Generate Questionnaire
-                        <span style={{ fontSize: 'var(--text-sm)', opacity: 0.8 }}>
-                            ({applicableRequirements.length} requirements)
-                        </span>
-                    </button>
+                <>
+                    {/* Summary bar - shows when selections are made */}
+                    {canGenerate && (
+                        <div className="tool-selection-summary-bar">
+                            <span className="tool-summary-stats">
+                                {selectedRoles.length} role{selectedRoles.length !== 1 ? 's' : ''} selected
+                                {' · '}
+                                {selectedCategories.length} categor{selectedCategories.length !== 1 ? 'ies' : 'y'}
+                            </span>
+                            <span className="tool-summary-req-count">
+                                {applicableRequirements.length} requirements
+                            </span>
+                        </div>
+                    )}
+
+                    {/* Action buttons - inline like RCA */}
+                    <div className="tool-actions">
+                        <button
+                            className={`tool-btn primary ${!canGenerate ? 'disabled' : ''}`}
+                            onClick={() => canGenerate && setShowResults(true)}
+                            disabled={!canGenerate}
+                        >
+                            📊 View Requirements ({applicableRequirements.length})
+                        </button>
+                        <button
+                            className="tool-btn secondary"
+                            onClick={handleExportExcel}
+                            disabled={!canGenerate || applicableRequirements.length === 0}
+                        >
+                            📥 Export Excel
+                        </button>
+                        <button
+                            className="tool-btn secondary"
+                            onClick={handleExportMarkdown}
+                            disabled={!canGenerate || applicableRequirements.length === 0}
+                        >
+                            📝 Export Markdown
+                        </button>
+                    </div>
+
                     {!canGenerate && (
                         <p className="vcq-generate-hint">
                             Select at least one organisation role and product category to generate.
                         </p>
                     )}
-                </div>
+                </>
             )}
 
             {/* Results Section */}
@@ -1287,18 +1314,9 @@ export default function VendorQuestionnaire() {
                             answers={answers}
                             regulationsIndex={regulationsIndex}
                             arfData={arfData}
+                            getExcerpt={getExcerpt}
                         />
                     )}
-
-                    {/* Export Panel */}
-                    <ExportPanel
-                        requirements={applicableRequirements}
-                        answers={answers}
-                        selectedRoles={selectedRoles}
-                        selectedCategories={selectedCategories}
-                        selectedSourceGroups={selectedSourceGroups}
-                        data={data}
-                    />
                 </>
             )}
         </div>

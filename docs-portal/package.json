@@ -24,6 +24,7 @@
     "build:citations": "node scripts/build-citations.js",
     "build:arf": "node scripts/import-arf.js",
     "normalize:regulation-ids": "node scripts/normalize-regulation-ids.js",
+    "extract:articles": "node scripts/extract-article-excerpts.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

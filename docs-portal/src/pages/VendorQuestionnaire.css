@@ -1478,49 +1478,6 @@
 }
 
 /* ============================================================================
-   Export Panel
-   ============================================================================ */
-
-.vcq-export-panel {
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.vcq-export-panel h4 {
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: var(--space-4);
-}
-
-.vcq-export-options {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.vcq-export-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.vcq-export-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--accent-primary);
-}
-
-/* ============================================================================
    Responsive
    ============================================================================ */
 
@@ -1953,6 +1910,8 @@
     margin-top: var(--space-2);
     text-align: center;
 }
+
+/* Selection Summary Bar and Action Buttons now use shared .tool-* classes from index.css */
 
 /* ============================================================================
    Includes More (for truncated lists)

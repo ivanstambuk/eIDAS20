@@ -33,11 +33,23 @@ const __dirname = path.dirname(__filename);
 
 const CONFIG_DIR = path.join(__dirname, '../config/vcq');
 const OUTPUT_FILE = path.join(__dirname, '../public/data/vcq-data.json');
+const REGULATIONS_INDEX = path.join(__dirname, '../public/data/regulations-index.json');
 
 // Ensure output directory exists
 const outputDir = path.dirname(OUTPUT_FILE);
 if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
+}
+
+// Load regulations index for document type lookup
+let regulationsIndex = {};
+if (fs.existsSync(REGULATIONS_INDEX)) {
+    const regIndexData = JSON.parse(fs.readFileSync(REGULATIONS_INDEX, 'utf-8'));
+    regIndexData.forEach(reg => {
+        // Index by both slug format and regulation format
+        regulationsIndex[reg.slug] = reg;
+        regulationsIndex[reg.slug.replace('-', '/')] = reg;
+    });
 }
 
 console.log('🔧 Building VCQ data...\n');
@@ -290,8 +302,18 @@ for (const req of allRequirements) {
         let link = null;
         if (basis.regulation && basis.article) {
             const regId = basis.regulation.replace('/', '-');
-            const articleNum = basis.article.replace('Article ', '').toLowerCase();
-            link = `/regulation/${regId}#article-${articleNum}`;
+            // Build section ID from article reference
+            const sectionId = basis.article.toLowerCase().replace(/\s+/g, '-');
+
+            // Determine URL path based on document type (DEC-226)
+            const regMeta = regulationsIndex[regId] || regulationsIndex[basis.regulation];
+            // Check type, category, and legalType fields for implementing act indicator
+            const docType = regMeta?.type || regMeta?.category || regMeta?.legalType || '';
+            const isImplementingAct = docType.toLowerCase().includes('implementing');
+            const basePath = isImplementingAct ? 'implementing-acts' : 'regulation';
+
+            // Use ?section= format for HashRouter compatibility
+            link = `/${basePath}/${regId}?section=${sectionId}`;
         }
         return { ...basis, link };
     });
