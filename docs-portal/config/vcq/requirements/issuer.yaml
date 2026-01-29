@@ -796,7 +796,7 @@ requirements:
   # Decision: Added during Article 45h interpretation audit
 
   - id: VEND-ISS-038
-    category: data_handling
+    category: security
     requirement: "Do not combine EAA personal data with other services"
     explanation: |
       Personal data collected during the provision of electronic attestation of 
@@ -827,7 +827,7 @@ requirements:
       complete isolation of EAA-related personal data.
 
   - id: VEND-ISS-039
-    category: data_handling
+    category: security
     requirement: "Keep EAA personal data logically separate"
     explanation: |
       Personal data relating to the provision of electronic attestation of 
@@ -857,7 +857,7 @@ requirements:
       not just access control restrictions.
 
   - id: VEND-ISS-040
-    category: data_handling
+    category: security
     requirement: "Implement QEAA services functionally separate from other services"
     explanation: |
       Qualified Electronic Attestation of Attributes (QEAA) providers must 
