@@ -2,7 +2,7 @@
  * Excel Export Utility for VCQ
  * 
  * Uses xlsx-js-style for professional formatting with colors, borders, and styling.
- * Mirrors the RCA export format for consistency.
+ * Single comprehensive sheet with all requirement data including legal text.
  */
 
 import XLSX from 'xlsx-js-style';
@@ -32,6 +32,14 @@ const COLORS = {
     shouldText: '9A7D0A',
     may: 'D5F5E3',           // Light green for MAY
     mayText: '1E8449',
+    critical: 'FADBD8',      // Same as MUST
+    criticalText: 'A93226',
+    high: 'FEF9E7',
+    highText: '9A7D0A',
+    medium: 'D5F5E3',
+    mediumText: '1E8449',
+    low: 'E2E3E5',
+    lowText: '383D41',
 };
 
 const createBorder = () => ({
@@ -47,14 +55,6 @@ const STYLES = {
         fill: { fgColor: { rgb: COLORS.headerBg } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
-    },
-    title: {
-        font: { bold: true, sz: 16, color: { rgb: COLORS.headerBg } },
-        alignment: { horizontal: 'left' },
-    },
-    subtitle: {
-        font: { sz: 11, color: { rgb: '666666' } },
-        alignment: { horizontal: 'left' },
     },
     cell: {
         font: { sz: 10 },
@@ -97,21 +97,21 @@ const STYLES = {
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    obligationMust: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.mustText } },
-        fill: { fgColor: { rgb: COLORS.must } },
+    criticalityHigh: {
+        font: { sz: 10, bold: true, color: { rgb: COLORS.criticalText } },
+        fill: { fgColor: { rgb: COLORS.critical } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    obligationShould: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.shouldText } },
-        fill: { fgColor: { rgb: COLORS.should } },
+    criticalityMedium: {
+        font: { sz: 10, bold: true, color: { rgb: COLORS.highText } },
+        fill: { fgColor: { rgb: COLORS.high } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    obligationMay: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.mayText } },
-        fill: { fgColor: { rgb: COLORS.may } },
+    criticalityLow: {
+        font: { sz: 10, color: { rgb: COLORS.lowText } },
+        fill: { fgColor: { rgb: COLORS.low } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
@@ -133,34 +133,38 @@ function getStatusStyle(status) {
 
 function getStatusLabel(status) {
     switch (status) {
-        case 'compliant': return '✅ Compliant';
-        case 'non_compliant': return '❌ Non-Compliant';
-        case 'partial': return '⚠️ Partial';
-        case 'na': return '➖ N/A';
-        default: return '⏳ Pending';
+        case 'compliant': return 'Compliant';
+        case 'non_compliant': return 'Non-Compliant';
+        case 'partial': return 'Partial';
+        case 'na': return 'N/A';
+        default: return 'Pending';
     }
 }
 
-function getObligationStyle(obligation) {
-    switch (obligation) {
-        case 'MUST':
-        case 'MUST NOT':
-            return STYLES.obligationMust;
-        case 'SHOULD':
-        case 'SHOULD NOT':
-            return STYLES.obligationShould;
-        case 'MAY':
-            return STYLES.obligationMay;
-        default:
-            return STYLES.cell;
-    }
+function getCriticalityStyle(criticality) {
+    const crit = (criticality || '').toLowerCase();
+    if (crit.includes('critical')) return STYLES.criticalityHigh;
+    if (crit.includes('high')) return STYLES.criticalityHigh;
+    if (crit.includes('medium')) return STYLES.criticalityMedium;
+    return STYLES.criticalityLow;
+}
+
+function formatCriticality(criticality) {
+    if (!criticality) return '';
+    const crit = criticality.toLowerCase();
+    if (crit.includes('critical')) return 'Critical';
+    if (crit.includes('high')) return 'High';
+    if (crit.includes('medium')) return 'Medium';
+    if (crit.includes('low')) return 'Low';
+    return criticality;
 }
 
 function formatLegalBasis(req) {
     if (!req.legalBasis) return '';
-    const parts = [req.legalBasis.article];
-    if (req.legalBasis.paragraph) parts.push(req.legalBasis.paragraph);
-    parts.push(`(Reg. ${req.legalBasis.regulation})`);
+    const parts = [];
+    if (req.legalBasis.regulation) parts.push(`Reg. ${req.legalBasis.regulation}`);
+    if (req.legalBasis.article) parts.push(req.legalBasis.article);
+    if (req.legalBasis.paragraph) parts.push(`(${req.legalBasis.paragraph})`);
     return parts.join(' ');
 }
 
@@ -169,7 +173,34 @@ function formatArfReference(req) {
     const hlrs = Array.isArray(req.arfReference.hlr)
         ? req.arfReference.hlr.join(', ')
         : req.arfReference.hlr || '';
-    return `${req.arfReference.topic}: ${hlrs}`;
+    return hlrs ? `${req.arfReference.topic}: ${hlrs}` : req.arfReference.topic || '';
+}
+
+function formatRoles(req) {
+    if (!req.roles || req.roles.length === 0) return 'Universal';
+    return req.roles.map(r =>
+        r === 'relying_party' ? 'RP' :
+            r === 'issuer' ? 'Issuer' : r
+    ).join(', ');
+}
+
+function formatProductCategories(req) {
+    if (!req.productCategories || req.productCategories.length === 0) return 'All';
+    return req.productCategories.map(c =>
+        c === 'connector' ? 'Connector' :
+            c === 'issuance_platform' ? 'Issuance Platform' :
+                c === 'trust_services' ? 'Trust Services' : c
+    ).join(', ');
+}
+
+function cleanText(text) {
+    if (!text) return '';
+    // Remove markdown bold/italic markers and clean up whitespace
+    return text
+        .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remove **bold**
+        .replace(/\*([^*]+)\*/g, '$1')      // Remove *italic*
+        .replace(/\n\s*\n/g, '\n')          // Collapse multiple newlines
+        .trim();
 }
 
 // ============================================================================
@@ -177,7 +208,7 @@ function formatArfReference(req) {
 // ============================================================================
 
 /**
- * Export VCQ data to Excel with professional formatting
+ * Export VCQ data to Excel with professional formatting - Single Sheet
  * 
  * @param {Object} options
  * @param {Array} options.requirements - Filtered requirements to export
@@ -194,73 +225,36 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
 
-    // Map role/category IDs to labels
+    // Map role/category IDs to labels for filename
     const roleLabels = selectedRoles.map(r =>
         r === 'relying_party' ? 'Relying Party' :
             r === 'issuer' ? 'Issuer' : r
     );
-    const categoryLabels = selectedCategories.map(c =>
-        c === 'connector' ? 'Connector' :
-            c === 'issuance_platform' ? 'Issuance Platform' :
-                c === 'trust_services' ? 'Trust Services' : c
-    );
 
     // ========================================
-    // Sheet 1: Summary
+    // Single Comprehensive Sheet
     // ========================================
-    const summaryData = [
-        [{ v: 'Vendor Compliance Questionnaire', s: STYLES.title }],
-        [{ v: `Generated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`, s: STYLES.subtitle }],
-        [],
-        [{ v: 'Roles:', s: { font: { bold: true } } }, { v: roleLabels.join(', ') || 'All' }],
-        [{ v: 'Product Categories:', s: { font: { bold: true } } }, { v: categoryLabels.join(', ') || 'All' }],
-        [{ v: 'Total Requirements:', s: { font: { bold: true } } }, { v: requirements.length }],
-        [],
-        [{ v: 'Status Summary', s: { font: { bold: true, sz: 12 } } }],
+    // Columns: ID, Category, Requirement, Criticality, Deadline, Roles, Products, 
+    //          Legal Basis, ARF Reference, Explanation, Legal Text, Notes, Status
+
+    const headers = [
+        'ID',
+        'Category',
+        'Requirement',
+        'Criticality',
+        'Deadline',
+        'Roles',
+        'Product Categories',
+        'Legal Basis',
+        'ARF Reference',
+        'Explanation',
+        'Legal Text',
+        'Notes',
+        'Status'
     ];
 
-    // Calculate status counts
-    const statusCounts = { compliant: 0, non_compliant: 0, partial: 0, na: 0, pending: 0 };
-    requirements.forEach(req => {
-        const status = answers[req.id]?.value || 'pending';
-        statusCounts[status]++;
-    });
-
-    summaryData.push(
-        [{ v: '✅ Compliant:', s: STYLES.statusCompliant }, { v: statusCounts.compliant }],
-        [{ v: '❌ Non-Compliant:', s: STYLES.statusNonCompliant }, { v: statusCounts.non_compliant }],
-        [{ v: '⚠️ Partial:', s: STYLES.statusPartial }, { v: statusCounts.partial }],
-        [{ v: '➖ N/A:', s: STYLES.statusNA }, { v: statusCounts.na }],
-        [{ v: '⏳ Pending:', s: STYLES.statusPending }, { v: statusCounts.pending }],
-    );
-
-    // Add obligation breakdown
-    summaryData.push(
-        [],
-        [{ v: 'Obligation Breakdown', s: { font: { bold: true, sz: 12 } } }],
-    );
-    const obligationCounts = { MUST: 0, 'MUST NOT': 0, SHOULD: 0, 'SHOULD NOT': 0, MAY: 0 };
-    requirements.forEach(req => {
-        if (obligationCounts[req.obligation] !== undefined) {
-            obligationCounts[req.obligation]++;
-        }
-    });
-    summaryData.push(
-        [{ v: 'MUST:', s: STYLES.obligationMust }, { v: obligationCounts.MUST }],
-        [{ v: 'SHOULD:', s: STYLES.obligationShould }, { v: obligationCounts.SHOULD }],
-        [{ v: 'MAY:', s: STYLES.obligationMay }, { v: obligationCounts.MAY }],
-    );
-
-    const wsSummary = XLSX.utils.aoa_to_sheet(summaryData);
-    wsSummary['!cols'] = [{ wch: 25 }, { wch: 60 }];
-    XLSX.utils.book_append_sheet(wb, wsSummary, 'Summary');
-
-    // ========================================
-    // Sheet 2: Requirements
-    // ========================================
-    const reqHeaders = ['ID', 'Category', 'Requirement', 'Obligation', 'Legal Basis', 'ARF Reference', 'Status'];
-    const reqData = [
-        reqHeaders.map(h => ({ v: h, s: STYLES.header })),
+    const sheetData = [
+        headers.map(h => ({ v: h, s: STYLES.header })),
     ];
 
     // Group by category (scheme-aware if getReqCategory provided, DEC-279)
@@ -293,60 +287,48 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
             const isAlt = rowIndex % 2 === 1;
             const cellStyle = isAlt ? STYLES.cellAlt : STYLES.cell;
 
-            reqData.push([
+            sheetData.push([
                 { v: req.id, s: cellStyle },
                 { v: cat.label || cat.id, s: cellStyle },
                 { v: req.requirement, s: cellStyle },
-                { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
+                { v: formatCriticality(req.criticality), s: getCriticalityStyle(req.criticality) },
+                { v: req.deadline || '', s: cellStyle },
+                { v: formatRoles(req), s: cellStyle },
+                { v: formatProductCategories(req), s: cellStyle },
                 { v: formatLegalBasis(req), s: cellStyle },
                 { v: formatArfReference(req), s: cellStyle },
+                { v: cleanText(req.explanation), s: cellStyle },
+                { v: cleanText(req.legalText), s: cellStyle },
+                { v: cleanText(req.notes), s: cellStyle },
                 { v: getStatusLabel(answer), s: getStatusStyle(answer) },
             ]);
             rowIndex++;
         });
     });
 
-    const wsRequirements = XLSX.utils.aoa_to_sheet(reqData);
-    wsRequirements['!cols'] = [
+    const ws = XLSX.utils.aoa_to_sheet(sheetData);
+
+    // Set column widths
+    ws['!cols'] = [
         { wch: 14 },  // ID
-        { wch: 18 },  // Category
-        { wch: 50 },  // Requirement
-        { wch: 12 },  // Obligation
+        { wch: 16 },  // Category
+        { wch: 45 },  // Requirement
+        { wch: 10 },  // Criticality
+        { wch: 12 },  // Deadline
+        { wch: 12 },  // Roles
+        { wch: 18 },  // Product Categories
         { wch: 22 },  // Legal Basis
-        { wch: 25 },  // ARF Reference
-        { wch: 15 },  // Status
-    ];
-    wsRequirements['!freeze'] = { xSplit: 0, ySplit: 1 };
-    XLSX.utils.book_append_sheet(wb, wsRequirements, 'Requirements');
-
-    // ========================================
-    // Sheet 3: Legal References
-    // ========================================
-    const legalHeaders = ['ID', 'Requirement', 'Legal Text', 'Explanation'];
-    const legalData = [
-        legalHeaders.map(h => ({ v: h, s: STYLES.header })),
-    ];
-
-    requirements.forEach((req, idx) => {
-        const isAlt = idx % 2 === 1;
-        const cellStyle = isAlt ? STYLES.cellAlt : STYLES.cell;
-
-        legalData.push([
-            { v: req.id, s: cellStyle },
-            { v: req.requirement, s: cellStyle },
-            { v: req.legalText || '', s: cellStyle },
-            { v: req.explanation || '', s: cellStyle },
-        ]);
-    });
-
-    const wsLegal = XLSX.utils.aoa_to_sheet(legalData);
-    wsLegal['!cols'] = [
-        { wch: 14 },  // ID
-        { wch: 40 },  // Requirement
-        { wch: 60 },  // Legal Text
+        { wch: 22 },  // ARF Reference
         { wch: 50 },  // Explanation
+        { wch: 50 },  // Legal Text
+        { wch: 40 },  // Notes
+        { wch: 14 },  // Status
     ];
-    XLSX.utils.book_append_sheet(wb, wsLegal, 'Legal References');
+
+    // Freeze header row
+    ws['!freeze'] = { xSplit: 0, ySplit: 1 };
+
+    XLSX.utils.book_append_sheet(wb, ws, 'VCQ Requirements');
 
     // ========================================
     // Generate and download
