@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T00:09:42.974Z",
+  "generatedAt": "2026-01-29T00:11:24.201Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1405,8 +1405,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Support pseudonym-based presentations where applicable",
-      "explanation": "Where Users choose to present pseudonymous attestations, the RP \nconnector must correctly process pseudonym presentations and not \nattempt to correlate pseudonyms across transactions.",
+      "requirement": "Support and correctly handle pseudonym-based presentations",
+      "explanation": "Where Users choose to present pseudonymous attestations, the RP connector \nmust correctly process pseudonym presentations. This includes validating that \nthe pseudonym belongs to the presenting User, verifying registration/authentication \nwith non-revoked Wallet Units, and preventing any attempt to derive the User's \ntrue identity or correlate pseudonyms across transactions.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -1424,8 +1424,11 @@
       "arfReference": {
         "topic": "Topic 11",
         "hlr": [
+          "PA_10",
+          "PA_11",
           "PA_13",
-          "PA_15"
+          "PA_15",
+          "PA_17"
         ]
       },
       "roles": [
@@ -1440,7 +1443,7 @@
       "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "high",
+      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1493,8 +1496,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Process data deletion requests from Users",
-      "explanation": "When Users exercise their right to data deletion, RPs must process \nthese requests according to GDPR requirements and ARF specifications. \nThis includes responding to deletion requests within mandated timeframes.",
+      "requirement": "Process data deletion requests from Users within required timeframes",
+      "explanation": "When Users exercise their right to data deletion under GDPR Article 17, RPs \nmust process these requests according to GDPR requirements and ARF specifications. \nThis includes responding within mandated timeframes and providing confirmation \nof deletion or valid grounds for refusal.",
       "legalBases": [
         {
           "regulation": "2016/679",
@@ -1528,95 +1531,7 @@
       "sourceGroup": "gdpr",
       "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "high",
-      "obligation": "MUST",
-      "_sourceFile": "core.yaml"
-    },
-    {
-      "id": "VEND-CORE-036",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Handle pseudonym verification requests correctly",
-      "explanation": "When a User presents using a pseudonym, the Relying Party must correctly \nprocess the pseudonymous presentation without attempting unlawful \nde-anonymization or cross-correlation.",
-      "legalBases": [
-        {
-          "regulation": "2014/910",
-          "article": "Article 5a",
-          "paragraph": "16",
-          "link": "/regulation/2014-910?section=article-5a"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5a",
-        "paragraph": "16"
-      },
-      "legalBasisLink": "/regulation/2014-910?section=article-5a",
-      "arfReference": {
-        "topic": "Topic 11",
-        "hlr": [
-          "PA_10",
-          "PA_11",
-          "PA_17"
-        ]
-      },
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
-      "obligation": "MUST",
-      "_sourceFile": "core.yaml"
-    },
-    {
-      "id": "VEND-CORE-037",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Respond to User deletion requests within timeframes",
-      "explanation": "When processing data deletion requests, the RP must respond within \nthe timeframes specified in GDPR Article 17, providing confirmation \nof deletion or valid grounds for refusal.",
-      "legalBases": [
-        {
-          "regulation": "2016/679",
-          "article": "Article 17",
-          "paragraph": "1",
-          "link": "/regulation/2016-679?section=article-17"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2016/679",
-        "article": "Article 17",
-        "paragraph": "1"
-      },
-      "legalBasisLink": "/regulation/2016-679?section=article-17",
-      "arfReference": {
-        "topic": "Topic 48",
-        "hlr": [
-          "DATA_DLT_07"
-        ]
-      },
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "gdpr",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
+      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -5901,8 +5816,6 @@
       "VEND-CORE-033",
       "VEND-CORE-034",
       "VEND-CORE-035",
-      "VEND-CORE-036",
-      "VEND-CORE-037",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -6064,8 +5977,6 @@
       "VEND-CORE-033",
       "VEND-CORE-034",
       "VEND-CORE-035",
-      "VEND-CORE-036",
-      "VEND-CORE-037",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -6231,7 +6142,6 @@
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-036",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -6337,7 +6247,6 @@
       "VEND-CORE-021",
       "VEND-CORE-028",
       "VEND-CORE-035",
-      "VEND-CORE-037",
       "VEND-INT-018",
       "VEND-ISS-022"
     ],
@@ -6369,8 +6278,6 @@
       "VEND-CORE-033",
       "VEND-CORE-034",
       "VEND-CORE-035",
-      "VEND-CORE-036",
-      "VEND-CORE-037",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -6434,26 +6341,26 @@
     ]
   },
   "stats": {
-    "totalRequirements": 140,
+    "totalRequirements": 138,
     "byRole": {
-      "relying_party": 62,
+      "relying_party": 60,
       "issuer": 60,
       "universal": 33
     },
     "byProductCategory": {
-      "connector": 50,
+      "connector": 48,
       "issuance_platform": 44,
       "trust_services": 23,
       "universal": 30
     },
     "bySourceGroup": {
-      "eidas": 112,
-      "gdpr": 16,
+      "eidas": 111,
+      "gdpr": 15,
       "dora": 12,
-      "arf": 75
+      "arf": 73
     },
     "byCategory": {
-      "usage": 43,
+      "usage": 41,
       "contracts": 22,
       "registration": 26,
       "security": 25,
@@ -6461,13 +6368,13 @@
       "revocation": 7
     },
     "byCriticality": {
-      "critical": 70,
-      "high": 53,
+      "critical": 72,
+      "high": 49,
       "medium": 17,
       "low": 0
     },
     "byObligation": {
-      "MUST": 125,
+      "MUST": 123,
       "MUST NOT": 9,
       "SHOULD": 6,
       "SHOULD NOT": 0,

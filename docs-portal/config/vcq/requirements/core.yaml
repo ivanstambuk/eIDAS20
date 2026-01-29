@@ -703,11 +703,13 @@ requirements:
     criticality: critical
   - id: VEND-CORE-033
     category: usage
-    requirement: Support pseudonym-based presentations where applicable
+    requirement: Support and correctly handle pseudonym-based presentations
     explanation: |
-      Where Users choose to present pseudonymous attestations, the RP 
-      connector must correctly process pseudonym presentations and not 
-      attempt to correlate pseudonyms across transactions.
+      Where Users choose to present pseudonymous attestations, the RP connector 
+      must correctly process pseudonym presentations. This includes validating that 
+      the pseudonym belongs to the presenting User, verifying registration/authentication 
+      with non-revoked Wallet Units, and preventing any attempt to derive the User's 
+      true identity or correlate pseudonyms across transactions.
     legalBasis:
       regulation: 2014/910
       article: Article 5a
@@ -715,14 +717,17 @@ requirements:
     arfReference:
       topic: Topic 11
       hlr:
+        - PA_10
+        - PA_11
         - PA_13
         - PA_15
+        - PA_17
     roles:
       - relying_party
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    criticality: critical
   - id: VEND-CORE-034
     category: registration
     requirement: Publish RP trust anchor information for Wallet verification
@@ -747,11 +752,12 @@ requirements:
     criticality: high
   - id: VEND-CORE-035
     category: usage
-    requirement: Process data deletion requests from Users
+    requirement: Process data deletion requests from Users within required timeframes
     explanation: |
-      When Users exercise their right to data deletion, RPs must process 
-      these requests according to GDPR requirements and ARF specifications. 
-      This includes responding to deletion requests within mandated timeframes.
+      When Users exercise their right to data deletion under GDPR Article 17, RPs 
+      must process these requests according to GDPR requirements and ARF specifications. 
+      This includes responding within mandated timeframes and providing confirmation 
+      of deletion or valid grounds for refusal.
     legalBasis:
       regulation: 2016/679
       article: Article 17
@@ -766,51 +772,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
-  - id: VEND-CORE-036
-    category: usage
-    requirement: Handle pseudonym verification requests correctly
-    explanation: |
-      When a User presents using a pseudonym, the Relying Party must correctly 
-      process the pseudonymous presentation without attempting unlawful 
-      de-anonymization or cross-correlation.
-    legalBasis:
-      regulation: 2014/910
-      article: Article 5a
-      paragraph: "16"
-    arfReference:
-      topic: Topic 11
-      hlr:
-        - PA_10
-        - PA_11
-        - PA_17
-    roles:
-      - relying_party
-    productCategories:
-      - connector
-    deadline: "2027-11-21"
-    criticality: high
-  - id: VEND-CORE-037
-    category: usage
-    requirement: Respond to User deletion requests within timeframes
-    explanation: |
-      When processing data deletion requests, the RP must respond within 
-      the timeframes specified in GDPR Article 17, providing confirmation 
-      of deletion or valid grounds for refusal.
-    legalBasis:
-      regulation: 2016/679
-      article: Article 17
-      paragraph: "1"
-    arfReference:
-      topic: Topic 48
-      hlr:
-        - DATA_DLT_07
-    roles:
-      - relying_party
-    productCategories:
-      - connector
-    deadline: "2027-11-21"
-    criticality: high
+    criticality: critical
   - id: VEND-CORE-038
     category: usage
     requirement: Support W3C Digital Credentials API for presentation requests
