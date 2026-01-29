@@ -929,8 +929,8 @@ export default function VendorQuestionnaire() {
     // Step 3: Source Groups
     const [selectedSourceGroups, setSelectedSourceGroups] = useState({
         eidas: true,
-        gdpr: true,
-        dora: true,
+        gdpr: false,
+        dora: false,
         arf: true,
         techSpecs: true,
         ruleBooks: true
