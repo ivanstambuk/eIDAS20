@@ -225,20 +225,20 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
     // ========================================
     // Single Comprehensive Sheet
     // ========================================
-    // Columns: ID, Category, Requirement, Criticality, Deadline, Roles, Products, 
-    //          Legal Basis, ARF Reference, Explanation, Legal Text, Notes, Status
+    // Columns: ID, Category, Requirement, Explanation, Obligation, Deadline, Roles, Products, 
+    //          Legal Basis, ARF Reference, Legal Text, Notes, Status
 
     const headers = [
         'ID',
         'Category',
         'Requirement',
+        'Explanation',
         'Obligation',
         'Deadline',
         'Roles',
         'Product Categories',
         'Legal Basis',
         'ARF Reference',
-        'Explanation',
         'Legal Text',
         'Notes',
         'Status'
@@ -282,13 +282,13 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: req.id, s: cellStyle },
                 { v: cat.label || cat.id, s: cellStyle },
                 { v: req.requirement, s: cellStyle },
+                { v: cleanText(req.explanation), s: cellStyle },
                 { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
                 { v: formatLegalBasis(req), s: cellStyle },
                 { v: formatArfReference(req), s: cellStyle },
-                { v: cleanText(req.explanation), s: cellStyle },
                 { v: cleanText(req.legalText), s: cellStyle },
                 { v: cleanText(req.notes), s: cellStyle },
                 { v: getStatusLabel(answer), s: getStatusStyle(answer) },
@@ -304,13 +304,13 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 14 },  // ID
         { wch: 16 },  // Category
         { wch: 45 },  // Requirement
+        { wch: 50 },  // Explanation
         { wch: 12 },  // Obligation
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories
         { wch: 22 },  // Legal Basis
         { wch: 22 },  // ARF Reference
-        { wch: 50 },  // Explanation
         { wch: 50 },  // Legal Text
         { wch: 40 },  // Notes
         { wch: 14 },  // Status

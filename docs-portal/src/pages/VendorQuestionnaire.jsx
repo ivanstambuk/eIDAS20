@@ -1208,6 +1208,9 @@ export default function VendorQuestionnaire() {
 
                 md += `### ${req.id}\n\n`;
                 md += `**Requirement:** ${req.requirement}\n\n`;
+                if (req.explanation) {
+                    md += `**Explanation:** ${req.explanation}\n\n`;
+                }
                 md += `**Obligation:** ${req.obligation}\n\n`;
                 if (req.legalBasis) {
                     md += `**Legal Basis:** ${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})\n\n`;
