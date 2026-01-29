@@ -127,6 +127,74 @@ const TECHNICAL_SPECIFICATIONS = {
 };
 
 // ============================================================================
+// Categorization Schemes (DEC-279)
+// ============================================================================
+
+/**
+ * Categorization schemes allow grouping requirements by different dimensions.
+ * - 'functional': 6 categories based on compliance domain (default)
+ * - 'role': 2 categories based on actor type (RP / Issuer)
+ */
+const CATEGORIZATION_SCHEMES = {
+    functional: {
+        id: 'functional',
+        label: 'Functional (6)',
+        description: 'Group by compliance domain',
+        // Uses data.categories from vcq-data.json
+        getCategory: (req) => req.category,
+        getCategoryLabel: (req, categories) => {
+            const cat = categories.find(c => c.id === req.category);
+            return cat?.label || req.category;
+        },
+        getCategoryIcon: (req, categories) => {
+            const cat = categories.find(c => c.id === req.category);
+            return cat?.icon || '📋';
+        }
+    },
+    role: {
+        id: 'role',
+        label: 'By Role (2)',
+        description: 'Group by actor type',
+        // Categories for role-based scheme
+        categories: [
+            { id: 'relying_party', label: 'Relying Party', icon: '🏢', order: 1 },
+            { id: 'issuer', label: 'Issuer', icon: '📝', order: 2 }
+        ],
+        /**
+         * Determine which role category a requirement belongs to.
+         * Context-aware: Universal requirements go to RP when both roles selected,
+         * otherwise to the single selected role.
+         */
+        getCategory: (req, selectedRoles) => {
+            const roles = req.roles || [];
+
+            // If requirement is role-specific, use that role
+            if (roles.length === 1) {
+                return roles[0];
+            }
+
+            // Universal (roles.length === 0) or multi-role
+            // When both roles selected: put in RP
+            // When only one role selected: put in that role
+            if (selectedRoles.includes('issuer') && !selectedRoles.includes('relying_party')) {
+                return 'issuer';
+            }
+            return 'relying_party'; // Default to RP for universal
+        },
+        getCategoryLabel: (req, categories, selectedRoles) => {
+            const catId = CATEGORIZATION_SCHEMES.role.getCategory(req, selectedRoles);
+            const cat = CATEGORIZATION_SCHEMES.role.categories.find(c => c.id === catId);
+            return cat?.label || catId;
+        },
+        getCategoryIcon: (req, categories, selectedRoles) => {
+            const catId = CATEGORIZATION_SCHEMES.role.getCategory(req, selectedRoles);
+            const cat = CATEGORIZATION_SCHEMES.role.categories.find(c => c.id === catId);
+            return cat?.icon || '📋';
+        }
+    }
+};
+
+// ============================================================================
 // Data Loading
 // ============================================================================
 
@@ -702,14 +770,16 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
 // Summary View Component
 // ============================================================================
 
-function SummaryView({ requirements, categories, answers }) {
+function SummaryView({ requirements, categories, answers, categorizationScheme, selectedRoles, getReqCategory }) {
     const categoryStats = useMemo(() => {
         const stats = {};
         categories.forEach(cat => {
             stats[cat.id] = { ...cat, total: 0, critical: 0, high: 0, answered: 0, compliant: 0, nonCompliant: 0 };
         });
         requirements.forEach(req => {
-            const cat = stats[req.category];
+            // Use getReqCategory for scheme-aware categorization (DEC-279)
+            const catId = getReqCategory ? getReqCategory(req) : req.category;
+            const cat = stats[catId];
             if (!cat) return;
             cat.total++;
             if (req.criticality === 'critical') cat.critical++;
@@ -722,7 +792,7 @@ function SummaryView({ requirements, categories, answers }) {
             }
         });
         return Object.values(stats).filter(s => s.total > 0);
-    }, [requirements, categories, answers]);
+    }, [requirements, categories, answers, getReqCategory]);
 
     const obligationBreakdown = useMemo(() => {
         const breakdown = { 'MUST': 0, 'MUST NOT': 0, 'SHOULD': 0, 'SHOULD NOT': 0, 'MAY': 0 };
@@ -792,26 +862,30 @@ function SummaryView({ requirements, categories, answers }) {
 // Requirements Table Component
 // ============================================================================
 
-function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData, getExcerpt }) {
+function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData, getExcerpt, categorizationScheme, selectedRoles, getReqCategory }) {
     const [filterCategory, setFilterCategory] = useState('all');
     const [filterObligation, setFilterObligation] = useState('all');
 
     const filteredRequirements = useMemo(() => {
         return requirements.filter(req => {
-            if (filterCategory !== 'all' && req.category !== filterCategory) return false;
+            // Use getReqCategory for scheme-aware filtering (DEC-279)
+            const catId = getReqCategory ? getReqCategory(req) : req.category;
+            if (filterCategory !== 'all' && catId !== filterCategory) return false;
             if (filterObligation !== 'all' && req.obligation !== filterObligation) return false;
             return true;
         });
-    }, [requirements, filterCategory, filterObligation]);
+    }, [requirements, filterCategory, filterObligation, getReqCategory]);
 
     const groupedRequirements = useMemo(() => {
         const groups = {};
         for (const req of filteredRequirements) {
-            if (!groups[req.category]) groups[req.category] = [];
-            groups[req.category].push(req);
+            // Use getReqCategory for scheme-aware grouping (DEC-279)
+            const catId = getReqCategory ? getReqCategory(req) : req.category;
+            if (!groups[catId]) groups[catId] = [];
+            groups[catId].push(req);
         }
         return groups;
-    }, [filteredRequirements]);
+    }, [filteredRequirements, getReqCategory]);
 
     const answerOptions = [
         { value: 'pending', label: 'Select...', icon: '⏳' },
@@ -943,6 +1017,12 @@ export default function VendorQuestionnaire() {
         return saved === 'table' ? 'table' : 'summary';
     });
 
+    // Categorization scheme (DEC-279): 'functional' (6 cats) or 'role' (2 cats)
+    const [categorizationScheme, setCategorizationScheme] = useState(() => {
+        const saved = localStorage.getItem('vcq-categorization-scheme');
+        return saved === 'role' ? 'role' : 'functional';
+    });
+
     // Load/save answers
     useEffect(() => {
         const savedAnswers = localStorage.getItem('vcq-answers');
@@ -960,6 +1040,10 @@ export default function VendorQuestionnaire() {
     useEffect(() => {
         localStorage.setItem('vcq-active-view', activeView);
     }, [activeView]);
+
+    useEffect(() => {
+        localStorage.setItem('vcq-categorization-scheme', categorizationScheme);
+    }, [categorizationScheme]);
 
     // Handlers
     const handleToggleRole = useCallback((roleId) => {
@@ -1063,6 +1147,30 @@ export default function VendorQuestionnaire() {
         return filtered;
     }, [data, selectedRoles, selectedCategories, selectedSourceGroups]);
 
+    // Compute effective categories based on active categorization scheme (DEC-279)
+    const effectiveCategories = useMemo(() => {
+        const scheme = CATEGORIZATION_SCHEMES[categorizationScheme];
+        if (categorizationScheme === 'functional') {
+            // Use the 6 functional categories from data
+            return data?.categories || [];
+        } else {
+            // Use role-based categories, filtered to selected roles
+            return scheme.categories.filter(cat =>
+                selectedRoles.length === 0 || selectedRoles.includes(cat.id)
+            );
+        }
+    }, [categorizationScheme, data?.categories, selectedRoles]);
+
+    // Get category for a requirement based on active scheme
+    const getReqCategory = useCallback((req) => {
+        const scheme = CATEGORIZATION_SCHEMES[categorizationScheme];
+        if (categorizationScheme === 'functional') {
+            return req.category;
+        } else {
+            return scheme.getCategory(req, selectedRoles);
+        }
+    }, [categorizationScheme, selectedRoles]);
+
     // Export handlers (inline like RCA)
     const handleExportMarkdown = useCallback(() => {
         const roleLabels = selectedRoles.map(id => ORGANISATION_ROLES[id]?.label || id).join(', ');
@@ -1077,16 +1185,19 @@ export default function VendorQuestionnaire() {
         md += `**Organisation Role(s):** ${roleLabels}\n\n`;
         md += `**Product Category:** ${categoryLabels}\n\n`;
         md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
+        md += `**Grouping:** ${CATEGORIZATION_SCHEMES[categorizationScheme].label}\n\n`;
         md += `**Total Requirements:** ${applicableRequirements.length}\n\n`;
         md += `---\n\n`;
 
+        // Group by current categorization scheme (DEC-279)
         const grouped = {};
         applicableRequirements.forEach(req => {
-            if (!grouped[req.category]) grouped[req.category] = [];
-            grouped[req.category].push(req);
+            const catId = getReqCategory(req);
+            if (!grouped[catId]) grouped[catId] = [];
+            grouped[catId].push(req);
         });
 
-        data.categories.forEach(cat => {
+        effectiveCategories.forEach(cat => {
             const reqs = grouped[cat.id];
             if (!reqs || reqs.length === 0) return;
 
@@ -1114,7 +1225,7 @@ export default function VendorQuestionnaire() {
         a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
         a.click();
         URL.revokeObjectURL(url);
-    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, data]);
+    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory]);
 
     const handleExportExcel = useCallback(() => {
         exportToExcel({
@@ -1122,9 +1233,12 @@ export default function VendorQuestionnaire() {
             answers,
             selectedRoles,
             selectedCategories,
-            data
+            data,
+            categorizationScheme,
+            effectiveCategories,
+            getReqCategory
         });
-    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data]);
+    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory]);
 
     // Loading/error states
     if (loading) {
@@ -1258,24 +1372,42 @@ export default function VendorQuestionnaire() {
                         >
                             📋 Details
                         </button>
+
+                        {/* Categorization Scheme Selector (DEC-279) */}
+                        <div className="vcq-scheme-selector">
+                            <label>Group by:</label>
+                            <select
+                                value={categorizationScheme}
+                                onChange={(e) => setCategorizationScheme(e.target.value)}
+                            >
+                                <option value="functional">Functional (6)</option>
+                                <option value="role">By Role (2)</option>
+                            </select>
+                        </div>
                     </div>
 
                     {/* View Content */}
                     {activeView === 'summary' ? (
                         <SummaryView
                             requirements={applicableRequirements}
-                            categories={data.categories}
+                            categories={effectiveCategories}
                             answers={answers}
+                            categorizationScheme={categorizationScheme}
+                            selectedRoles={selectedRoles}
+                            getReqCategory={getReqCategory}
                         />
                     ) : (
                         <RequirementsTable
                             requirements={applicableRequirements}
-                            categories={data.categories}
+                            categories={effectiveCategories}
                             onAnswerChange={handleAnswerChange}
                             answers={answers}
                             regulationsIndex={regulationsIndex}
                             arfData={arfData}
                             getExcerpt={getExcerpt}
+                            categorizationScheme={categorizationScheme}
+                            selectedRoles={selectedRoles}
+                            getReqCategory={getReqCategory}
                         />
                     )}
                 </>

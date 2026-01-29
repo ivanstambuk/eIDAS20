@@ -185,8 +185,11 @@ function formatArfReference(req) {
  * @param {Array} options.selectedRoles - Selected role IDs
  * @param {Array} options.selectedCategories - Selected product category IDs
  * @param {Object} options.data - VCQ data object with categories
+ * @param {string} [options.categorizationScheme] - Active scheme ('functional' or 'role')
+ * @param {Array} [options.effectiveCategories] - Categories to use for grouping
+ * @param {Function} [options.getReqCategory] - Function to get category for a requirement
  */
-export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data }) {
+export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -260,18 +263,19 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         reqHeaders.map(h => ({ v: h, s: STYLES.header })),
     ];
 
-    // Group by category
+    // Group by category (scheme-aware if getReqCategory provided, DEC-279)
     const grouped = {};
     requirements.forEach(req => {
-        if (!grouped[req.category]) grouped[req.category] = [];
-        grouped[req.category].push(req);
+        const catId = getReqCategory ? getReqCategory(req) : req.category;
+        if (!grouped[catId]) grouped[catId] = [];
+        grouped[catId].push(req);
     });
 
-    // Sort categories
-    const categories = data?.categories || [];
+    // Use effectiveCategories if provided, otherwise fall back to data.categories
+    const categories = effectiveCategories || data?.categories || [];
     const sortedCategories = categories
         .filter(cat => grouped[cat.id])
-        .sort((a, b) => a.order - b.order);
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     // Add any categories not in the config
     const configCatIds = new Set(categories.map(c => c.id));

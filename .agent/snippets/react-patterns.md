@@ -487,3 +487,60 @@ function CollapsibleNav() {
 
 **Real example:** `Sidebar.jsx` (DEC-224, 2026-01-23)
 
+---
+
+## LocalStorage-Backed Preference Pattern
+
+**Problem:** Need to persist a simple user preference (toggle, dropdown selection) across page refreshes and sessions.
+
+**Solution:** Use useState with lazy initializer from localStorage plus a useEffect to sync changes.
+
+### Simple Implementation (Single Value)
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function MyComponent() {
+    // Lazy initialization: read from localStorage only on first render
+    const [preference, setPreference] = useState(() => {
+        const saved = localStorage.getItem('my-preference-key');
+        // Validate and return, with fallback to default
+        return saved === 'option1' || saved === 'option2' ? saved : 'option1';
+    });
+
+    // Persist to localStorage whenever value changes
+    useEffect(() => {
+        localStorage.setItem('my-preference-key', preference);
+    }, [preference]);
+
+    return (
+        <select 
+            value={preference} 
+            onChange={(e) => setPreference(e.target.value)}
+        >
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+        </select>
+    );
+}
+```
+
+### Key Points
+
+1. **Lazy initialization** — The `useState(() => {...})` function only runs once on mount
+2. **Validate saved value** — Always validate localStorage values before using (could be stale/invalid)
+3. **Keep it simple** — Don't JSON.parse for single string values
+4. **Sync on change** — useEffect with the value in deps array ensures persistence
+5. **Choose descriptive keys** — Use namespaced keys like `vcq-categorization-scheme`
+
+### When to Use This vs. Collapsible Section Pattern
+
+| Use Case | Pattern |
+|----------|---------|
+| Single toggle/dropdown | LocalStorage-Backed Preference (this pattern) |
+| Multiple expand/collapse states | Collapsible Section (previous pattern) |
+| Complex object state | Collapsible Section with JSON.parse/stringify |
+
+**Real examples:**
+- `vcq-categorization-scheme` toggle (VendorQuestionnaire.jsx, 2026-01-29)
+- `rca-view-mode` preference (RCA.jsx)
