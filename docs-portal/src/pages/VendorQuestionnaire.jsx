@@ -1212,9 +1212,44 @@ export default function VendorQuestionnaire() {
                     md += `**Explanation:** ${req.explanation}\n\n`;
                 }
                 md += `**Obligation:** ${req.obligation}\n\n`;
+
+                // Legal basis with legal text immediately after
                 if (req.legalBasis) {
                     md += `**Legal Basis:** ${req.legalBasis.article} (Reg. ${req.legalBasis.regulation})\n\n`;
                 }
+                if (req.legalText) {
+                    md += `**Legal Text:** ${req.legalText}\n\n`;
+                }
+
+                // ARF reference with specification and notes immediately after
+                if (req.arfReference) {
+                    const hlrIds = Array.isArray(req.arfReference.hlr)
+                        ? req.arfReference.hlr.join(', ')
+                        : req.arfReference.hlr || '';
+                    if (hlrIds) {
+                        md += `**ARF Reference:** ${req.arfReference.topic}: ${hlrIds}\n\n`;
+
+                        // Look up ARF specification and notes
+                        const hlrIdList = Array.isArray(req.arfReference.hlr)
+                            ? req.arfReference.hlr
+                            : [req.arfReference.hlr];
+
+                        const arfSpecs = hlrIdList
+                            .map(id => arfData?.byHlrId?.[id]?.specification)
+                            .filter(Boolean);
+                        if (arfSpecs.length > 0) {
+                            md += `**ARF Specification:** ${arfSpecs.join(' | ')}\n\n`;
+                        }
+
+                        const arfNotes = hlrIdList
+                            .map(id => arfData?.byHlrId?.[id]?.notes)
+                            .filter(Boolean);
+                        if (arfNotes.length > 0) {
+                            md += `**ARF Notes:** ${arfNotes.join(' | ')}\n\n`;
+                        }
+                    }
+                }
+
                 md += `**Response:** ${answerIcon} ${answer}\n\n`;
                 md += `---\n\n`;
             });
@@ -1227,7 +1262,7 @@ export default function VendorQuestionnaire() {
         a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
         a.click();
         URL.revokeObjectURL(url);
-    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory]);
+    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory, arfData]);
 
     const handleExportExcel = useCallback(() => {
         exportToExcel({
@@ -1238,9 +1273,10 @@ export default function VendorQuestionnaire() {
             data,
             categorizationScheme,
             effectiveCategories,
-            getReqCategory
+            getReqCategory,
+            arfData
         });
-    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory]);
+    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData]);
 
     // Loading/error states
     if (loading) {

@@ -167,6 +167,38 @@ function formatArfReference(req) {
     return hlrs ? `${req.arfReference.topic}: ${hlrs}` : req.arfReference.topic || '';
 }
 
+/**
+ * Get ARF HLR specification text from arfData
+ */
+function getArfSpecification(req, arfData) {
+    if (!req.arfReference?.hlr || !arfData?.byHlrId) return '';
+    const hlrIds = Array.isArray(req.arfReference.hlr)
+        ? req.arfReference.hlr
+        : [req.arfReference.hlr];
+
+    const specs = hlrIds
+        .map(id => arfData.byHlrId[id]?.specification || '')
+        .filter(s => s)
+        .join('\n\n');
+    return specs;
+}
+
+/**
+ * Get ARF HLR notes from arfData
+ */
+function getArfNotes(req, arfData) {
+    if (!req.arfReference?.hlr || !arfData?.byHlrId) return '';
+    const hlrIds = Array.isArray(req.arfReference.hlr)
+        ? req.arfReference.hlr
+        : [req.arfReference.hlr];
+
+    const notes = hlrIds
+        .map(id => arfData.byHlrId[id]?.notes || '')
+        .filter(n => n)
+        .join('\n\n');
+    return notes;
+}
+
 function formatRoles(req) {
     if (!req.roles || req.roles.length === 0) return 'Universal';
     return req.roles.map(r =>
@@ -210,8 +242,9 @@ function cleanText(text) {
  * @param {string} [options.categorizationScheme] - Active scheme ('functional' or 'role')
  * @param {Array} [options.effectiveCategories] - Categories to use for grouping
  * @param {Function} [options.getReqCategory] - Function to get category for a requirement
+ * @param {Object} [options.arfData] - ARF HLR data for specification/notes lookup
  */
-export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory }) {
+export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -225,8 +258,12 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
     // ========================================
     // Single Comprehensive Sheet
     // ========================================
-    // Columns: ID, Category, Requirement, Explanation, Obligation, Deadline, Roles, Products, 
-    //          Legal Basis, ARF Reference, Legal Text, Notes, Status
+    // Columns grouped logically:
+    //   Core: ID, Category, Requirement, Explanation, Obligation
+    //   Context: Deadline, Roles, Product Categories
+    //   Legal: Legal Basis, Legal Text
+    //   ARF: ARF Reference, ARF Specification, ARF Notes
+    //   Meta: Notes, Status
 
     const headers = [
         'ID',
@@ -238,8 +275,10 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'Roles',
         'Product Categories',
         'Legal Basis',
-        'ARF Reference',
         'Legal Text',
+        'ARF Reference',
+        'ARF Specification',
+        'ARF Notes',
         'Notes',
         'Status'
     ];
@@ -288,8 +327,10 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
                 { v: formatLegalBasis(req), s: cellStyle },
-                { v: formatArfReference(req), s: cellStyle },
                 { v: cleanText(req.legalText), s: cellStyle },
+                { v: formatArfReference(req), s: cellStyle },
+                { v: cleanText(getArfSpecification(req, arfData)), s: cellStyle },
+                { v: cleanText(getArfNotes(req, arfData)), s: cellStyle },
                 { v: cleanText(req.notes), s: cellStyle },
                 { v: getStatusLabel(answer), s: getStatusStyle(answer) },
             ]);
@@ -310,8 +351,10 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories
         { wch: 22 },  // Legal Basis
-        { wch: 22 },  // ARF Reference
         { wch: 50 },  // Legal Text
+        { wch: 22 },  // ARF Reference
+        { wch: 50 },  // ARF Specification
+        { wch: 40 },  // ARF Notes
         { wch: 40 },  // Notes
         { wch: 14 },  // Status
     ];
