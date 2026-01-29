@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T00:01:38.786Z",
+  "generatedAt": "2026-01-29T00:03:04.936Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -3920,10 +3920,7 @@
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-6",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": [
-          "ISSU_01",
-          "ISSU_01a"
-        ]
+        "hlr": "ISSU_01a"
       },
       "roles": [
         "issuer"
@@ -4213,10 +4210,7 @@
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": [
-          "VCR_12",
-          "VCR_19"
-        ]
+        "hlr": "VCR_12"
       },
       "roles": [
         "issuer"
@@ -4298,7 +4292,7 @@
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-4",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": "VCR_01a"
+        "hlr": "VCR_09"
       },
       "roles": [
         "issuer"
@@ -4551,7 +4545,7 @@
       "legalText": "The controller shall implement appropriate technical and organisational \nmeasures for ensuring that, by default, only personal data which are \nnecessary for each specific purpose of the processing are processed.",
       "arfReference": {
         "topic": "Topic 43",
-        "hlr": "EDP_01"
+        "hlr": "EDP_09"
       },
       "roles": [
         "issuer"
@@ -4630,7 +4624,7 @@
       "legalText": "An electronic attestation of attributes issued in one Member State \nshall be recognised as an electronic attestation of attributes in \nall other Member States.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_02"
+        "hlr": "ISSU_12"
       },
       "roles": [
         "issuer"

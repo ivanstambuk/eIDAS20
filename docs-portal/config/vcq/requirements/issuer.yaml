@@ -152,9 +152,7 @@ requirements:
     criticality: critical
     arfReference:
       topic: Topic 10
-      hlr:
-        - ISSU_01
-        - ISSU_01a
+      hlr: ISSU_01a
   - id: VEND-ISS-008
     category: issuance
     requirement: Support batch issuance for multiple attestations
@@ -307,9 +305,7 @@ requirements:
     criticality: critical
     arfReference:
       topic: Topic 7
-      hlr:
-        - VCR_12
-        - VCR_19
+      hlr: VCR_12
   - id: VEND-ISS-015
     category: revocation
     requirement: Notify wallet users when their attestations are revoked
@@ -351,7 +347,7 @@ requirements:
     criticality: medium
     arfReference:
       topic: Topic 7
-      hlr: VCR_01a
+      hlr: VCR_09
   - id: VEND-ISS-017
     category: security
     requirement: Protect attestation signing keys in secure cryptographic devices
@@ -482,7 +478,7 @@ requirements:
     criticality: high
     arfReference:
       topic: Topic 43
-      hlr: EDP_01
+      hlr: EDP_09
   - id: VEND-ISS-023
     category: usage
     requirement: Do not embed tracking identifiers in attestations
@@ -523,7 +519,7 @@ requirements:
     criticality: critical
     arfReference:
       topic: Topic 10
-      hlr: ISSU_02
+      hlr: ISSU_12
   - id: VEND-ISS-025
     category: usage
     requirement: Support both SD-JWT and mDoc credential formats
