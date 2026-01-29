@@ -20,13 +20,10 @@ const CATEGORIES = {
         keywords: ['electronic identification', 'notification', 'peer review', 'identity matching', 'cross-border'],
         color: 'var(--accent-warning)',
         bgColor: 'var(--accent-warning-dim)'
-    },
-    security: {
-        label: 'Security',
-        keywords: ['security breach', 'certification', 'conformity assessment', 'accreditation', 'risk'],
-        color: 'var(--accent-error)',
-        bgColor: 'rgba(239, 68, 68, 0.15)'
     }
+    // Security category removed (DEC-286): All potential matches (security breach, certification,
+    // conformity assessment, accreditation, risk) are already claimed by Wallet or Trust Services
+    // due to first-match-wins logic, resulting in 0 displayed acts.
 };
 
 // Determine category from title
