@@ -92,19 +92,19 @@ requirements:
       hlr: QTSPAS_02
   - id: VEND-ISS-005
     category: issuance
-    requirement: Issue attestations in mandated credential formats (mDoc and/or W3C VC)
+    requirement: Issue attestations in mandated credential formats (mDoc and SD-JWT-VC)
     explanation: |
-      Attestations must be issued in one or both of the mandated formats: 
-      ISO/IEC 18013-5 (mDoc/mdoc) and/or W3C Verifiable Credentials Data Model 1.1. 
-      The format(s) supported must be published in Provider Information.
+      Attestations must be issued in the mandated formats: ISO/IEC 18013-5 (mDoc) 
+      and SD-JWT-based Verifiable Credentials (SD-JWT-VC). For maximum interoperability, 
+      the platform should support both formats, allowing relying parties to request 
+      their preferred format. The format(s) supported must be published in Provider Information.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
       paragraph: ""
-    legalText: |
-      Wallet units shall support the encoding of attestations in accordance 
-      with the technical specifications set out in Annex II.
-      hlr: "Iss_02"
+    arfReference:
+      topic: Topic 10
+      hlr: ISSU_12
     roles:
       - issuer
     productCategories:
@@ -417,7 +417,7 @@ requirements:
       topic: Topic 10
       hlr: ISSU_17
   - id: VEND-ISS-020
-    category: contracts
+    category: registration
     requirement: Publish attestation types to the Common Catalogue (TS11)
     explanation: |
       Attestation types issued by the provider should be registered in the 
@@ -434,7 +434,7 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-ISS-021
-    category: contracts
+    category: registration
     requirement: Document attestation schema including mandatory and optional attributes
     explanation: |
       Each attestation type must have a published schema defining the 
@@ -520,23 +520,6 @@ requirements:
     arfReference:
       topic: Topic 10
       hlr: ISSU_12
-  - id: VEND-ISS-025
-    category: usage
-    requirement: Support both SD-JWT and mDoc credential formats
-    explanation: |
-      For maximum interoperability, the platform should support issuing 
-      attestations in both SD-JWT-VC and ISO mDoc formats, allowing 
-      relying parties to request their preferred format.
-    legalBasis:
-      regulation: 2024/2979
-      article: Article 8
-      paragraph: ""
-    roles:
-      - issuer
-    productCategories:
-      - issuance_platform
-    deadline: "2027-11-21"
-    criticality: high
 
   # ============================================================================
   # PHASE 3: Consolidated ARF Gap Coverage (2026-01-28)
@@ -624,19 +607,21 @@ requirements:
     criticality: high
 
   - id: VEND-ISS-030
-    category: contracts
+    category: registration
     requirement: "Publish PID/Attestation Provider trust anchor information"
     explanation: |
       PID and Attestation Providers must publish trust anchor information that 
       enables Wallet Units and Relying Parties to verify issued attestations. 
-      This includes signing certificate publication and Trusted List inclusion.
+      This includes: (1) publishing trust anchor information according to the 
+      common format specified by the Commission, (2) signing certificate publication, 
+      and (3) Trusted List inclusion.
     legalBasis:
       regulation: "2024/2981"
       article: "Article 2"
       paragraph: ""
     arfReference:
       topic: "Topic 31"
-      hlr: ["PPNot_03", "PPNot_07", "PuBPNot_03"]
+      hlr: ["PPNot_02", "PPNot_03", "PPNot_04", "PPNot_07", "PuBPNot_03"]
     roles: [issuer]
     productCategories: [issuance_platform]
     deadline: "2027-11-21"
@@ -779,26 +764,3 @@ requirements:
     productCategories: [issuance_platform]
     deadline: "2027-11-21"
     criticality: critical
-
-  # ============================================================================
-  # PHASE 5: Additional Issuer Requirements from Manual Review
-  # ============================================================================
-
-  - id: VEND-ISS-038
-    category: contracts
-    requirement: "Publish trust anchor information in common format"
-    explanation: |
-      PID Providers must publish trust anchor information according to the 
-      common set of information specified by the Commission, enabling 
-      Wallet Units and Relying Parties to verify attestation authenticity.
-    legalBasis:
-      regulation: "2024/2981"
-      article: "Article 2"
-      paragraph: ""
-    arfReference:
-      topic: "Topic 31"
-      hlr: ["PPNot_02", "PPNot_04"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
-    deadline: "2027-11-21"
-    criticality: high

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T00:03:04.936Z",
+  "generatedAt": "2026-01-29T00:09:42.974Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2753,17 +2753,23 @@
     },
     {
       "id": "VEND-INT-013",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Verify presentation freshness (anti-replay)",
-      "explanation": "The intermediary must verify that presentations are fresh and not replayed \nby checking nonces, timestamps, or session binding. Stale or replayed \npresentations must be rejected.",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "Verify presentation freshness and prevent replay attacks",
+      "explanation": "The intermediary must verify that presentations are fresh and not replayed. \nThis includes checking nonces, timestamps, or session binding, and implementing \nmechanisms to detect replay of previously received presentations. Stale or \nreplayed presentations must be rejected.",
       "legalBases": [
         {
           "regulation": "2024/2979",
           "article": "Article 3",
           "paragraph": "",
           "link": "/implementing-acts/2024-2979?section=article-3"
+        },
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "9",
+          "link": "/regulation/2014-910?section=article-5b"
         }
       ],
       "legalBasis": {
@@ -2788,7 +2794,7 @@
       "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "high",
+      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2830,47 +2836,6 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "intermediary.yaml"
-    },
-    {
-      "id": "VEND-INT-015",
-      "category": "security",
-      "categoryLabel": "Security",
-      "categoryIcon": "🔒",
-      "requirement": "Implement measures to prevent replay attacks",
-      "explanation": "The intermediary must implement mechanisms to detect and prevent replay of \npreviously received wallet presentations. Nonce-based challenge-response \nand session binding are typical approaches.",
-      "legalBases": [
-        {
-          "regulation": "2014/910",
-          "article": "Article 5b",
-          "paragraph": "9",
-          "link": "/regulation/2014-910?section=article-5b"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5b",
-        "paragraph": "9"
-      },
-      "legalBasisLink": "/regulation/2014-910?section=article-5b",
-      "arfReference": {
-        "topic": "Topic 52",
-        "hlr": "RPI_09"
-      },
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3826,8 +3791,8 @@
       "category": "issuance",
       "categoryLabel": "Issuance",
       "categoryIcon": "📤",
-      "requirement": "Issue attestations in mandated credential formats (mDoc and/or W3C VC)",
-      "explanation": "Attestations must be issued in one or both of the mandated formats: \nISO/IEC 18013-5 (mDoc/mdoc) and/or W3C Verifiable Credentials Data Model 1.1. \nThe format(s) supported must be published in Provider Information.",
+      "requirement": "Issue attestations in mandated credential formats (mDoc and SD-JWT-VC)",
+      "explanation": "Attestations must be issued in the mandated formats: ISO/IEC 18013-5 (mDoc) \nand SD-JWT-based Verifiable Credentials (SD-JWT-VC). For maximum interoperability, \nthe platform should support both formats, allowing relying parties to request \ntheir preferred format. The format(s) supported must be published in Provider Information.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3842,7 +3807,10 @@
         "paragraph": ""
       },
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
-      "legalText": "Wallet units shall support the encoding of attestations in accordance \nwith the technical specifications set out in Annex II.\nhlr: \"Iss_02\"",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": "ISSU_12"
+      },
       "roles": [
         "issuer"
       ],
@@ -4442,9 +4410,9 @@
     },
     {
       "id": "VEND-ISS-020",
-      "category": "contracts",
-      "categoryLabel": "Contracts",
-      "categoryIcon": "📜",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Publish attestation types to the Common Catalogue (TS11)",
       "explanation": "Attestation types issued by the provider should be registered in the \nCommon Catalogue of Attestation Types, enabling discoverability by \nwallets, relying parties, and users.",
       "legalBases": [
@@ -4479,9 +4447,9 @@
     },
     {
       "id": "VEND-ISS-021",
-      "category": "contracts",
-      "categoryLabel": "Contracts",
-      "categoryIcon": "📜",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Document attestation schema including mandatory and optional attributes",
       "explanation": "Each attestation type must have a published schema defining the \nmandatory and optional attributes, data types, and semantic meaning \nof each field.",
       "legalBases": [
@@ -4640,43 +4608,6 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
-      "_sourceFile": "issuer.yaml"
-    },
-    {
-      "id": "VEND-ISS-025",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Support both SD-JWT and mDoc credential formats",
-      "explanation": "For maximum interoperability, the platform should support issuing \nattestations in both SD-JWT-VC and ISO mDoc formats, allowing \nrelying parties to request their preferred format.",
-      "legalBases": [
-        {
-          "regulation": "2024/2979",
-          "article": "Article 8",
-          "paragraph": "",
-          "link": "/implementing-acts/2024-2979?section=article-8"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2024/2979",
-        "article": "Article 8",
-        "paragraph": ""
-      },
-      "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
-      "roles": [
-        "issuer"
-      ],
-      "productCategories": [
-        "issuance_platform"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
-      "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
     },
     {
@@ -4866,11 +4797,11 @@
     },
     {
       "id": "VEND-ISS-030",
-      "category": "contracts",
-      "categoryLabel": "Contracts",
-      "categoryIcon": "📜",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
       "requirement": "Publish PID/Attestation Provider trust anchor information",
-      "explanation": "PID and Attestation Providers must publish trust anchor information that \nenables Wallet Units and Relying Parties to verify issued attestations. \nThis includes signing certificate publication and Trusted List inclusion.",
+      "explanation": "PID and Attestation Providers must publish trust anchor information that \nenables Wallet Units and Relying Parties to verify issued attestations. \nThis includes: (1) publishing trust anchor information according to the \ncommon format specified by the Commission, (2) signing certificate publication, \nand (3) Trusted List inclusion.",
       "legalBases": [
         {
           "regulation": "2024/2981",
@@ -4888,7 +4819,9 @@
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
+          "PPNot_02",
           "PPNot_03",
+          "PPNot_04",
           "PPNot_07",
           "PuBPNot_03"
         ]
@@ -5234,50 +5167,6 @@
       "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
-      "obligation": "MUST",
-      "_sourceFile": "issuer.yaml"
-    },
-    {
-      "id": "VEND-ISS-038",
-      "category": "contracts",
-      "categoryLabel": "Contracts",
-      "categoryIcon": "📜",
-      "requirement": "Publish trust anchor information in common format",
-      "explanation": "PID Providers must publish trust anchor information according to the \ncommon set of information specified by the Commission, enabling \nWallet Units and Relying Parties to verify attestation authenticity.",
-      "legalBases": [
-        {
-          "regulation": "2024/2981",
-          "article": "Article 2",
-          "paragraph": "",
-          "link": "/implementing-acts/2024-2981?section=article-2"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2024/2981",
-        "article": "Article 2",
-        "paragraph": ""
-      },
-      "legalBasisLink": "/implementing-acts/2024-2981?section=article-2",
-      "arfReference": {
-        "topic": "Topic 31",
-        "hlr": [
-          "PPNot_02",
-          "PPNot_04"
-        ]
-      },
-      "roles": [
-        "issuer"
-      ],
-      "productCategories": [
-        "issuance_platform"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroup": "eidas",
-      "linkedRCA": [],
-      "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -6044,7 +5933,6 @@
       "VEND-INT-012",
       "VEND-INT-013",
       "VEND-INT-014",
-      "VEND-INT-015",
       "VEND-INT-016",
       "VEND-INT-017",
       "VEND-INT-018",
@@ -6110,7 +5998,6 @@
       "VEND-ISS-022",
       "VEND-ISS-023",
       "VEND-ISS-024",
-      "VEND-ISS-025",
       "VEND-ISS-026",
       "VEND-ISS-027",
       "VEND-ISS-028",
@@ -6123,7 +6010,6 @@
       "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
-      "VEND-ISS-038",
       "VEND-TSP-012",
       "VEND-TSP-013",
       "VEND-TSP-014",
@@ -6198,7 +6084,6 @@
       "VEND-INT-012",
       "VEND-INT-013",
       "VEND-INT-014",
-      "VEND-INT-015",
       "VEND-INT-016",
       "VEND-INT-017",
       "VEND-INT-018",
@@ -6251,7 +6136,6 @@
       "VEND-ISS-022",
       "VEND-ISS-023",
       "VEND-ISS-024",
-      "VEND-ISS-025",
       "VEND-ISS-026",
       "VEND-ISS-027",
       "VEND-ISS-028",
@@ -6264,7 +6148,6 @@
       "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
-      "VEND-ISS-038",
       "VEND-TSP-019"
     ],
     "trust_services": [
@@ -6367,7 +6250,6 @@
       "VEND-INT-012",
       "VEND-INT-013",
       "VEND-INT-014",
-      "VEND-INT-015",
       "VEND-INT-016",
       "VEND-INT-017",
       "VEND-INT-019",
@@ -6409,7 +6291,6 @@
       "VEND-ISS-021",
       "VEND-ISS-023",
       "VEND-ISS-024",
-      "VEND-ISS-025",
       "VEND-ISS-026",
       "VEND-ISS-027",
       "VEND-ISS-028",
@@ -6422,7 +6303,6 @@
       "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
-      "VEND-ISS-038",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -6508,7 +6388,6 @@
       "VEND-INT-012",
       "VEND-INT-013",
       "VEND-INT-014",
-      "VEND-INT-015",
       "VEND-INT-017",
       "VEND-INT-021",
       "VEND-INT-022",
@@ -6521,6 +6400,7 @@
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-004",
+      "VEND-ISS-005",
       "VEND-ISS-007",
       "VEND-ISS-008",
       "VEND-ISS-011",
@@ -6547,7 +6427,6 @@
       "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
-      "VEND-ISS-038",
       "VEND-TSP-014",
       "VEND-TSP-017",
       "VEND-TSP-018",
@@ -6555,42 +6434,42 @@
     ]
   },
   "stats": {
-    "totalRequirements": 143,
+    "totalRequirements": 140,
     "byRole": {
-      "relying_party": 63,
-      "issuer": 62,
+      "relying_party": 62,
+      "issuer": 60,
       "universal": 33
     },
     "byProductCategory": {
-      "connector": 51,
-      "issuance_platform": 46,
+      "connector": 50,
+      "issuance_platform": 44,
       "trust_services": 23,
       "universal": 30
     },
     "bySourceGroup": {
-      "eidas": 115,
+      "eidas": 112,
       "gdpr": 16,
       "dora": 12,
-      "arf": 76
+      "arf": 75
     },
     "byCategory": {
-      "usage": 45,
-      "contracts": 26,
-      "registration": 23,
+      "usage": 43,
+      "contracts": 22,
+      "registration": 26,
       "security": 25,
       "issuance": 17,
       "revocation": 7
     },
     "byCriticality": {
-      "critical": 69,
-      "high": 57,
+      "critical": 70,
+      "high": 53,
       "medium": 17,
       "low": 0
     },
     "byObligation": {
-      "MUST": 127,
+      "MUST": 125,
       "MUST NOT": 9,
-      "SHOULD": 7,
+      "SHOULD": 6,
       "SHOULD NOT": 0,
       "MAY": 0
     }

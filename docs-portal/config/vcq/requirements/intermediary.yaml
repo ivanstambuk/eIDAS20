@@ -269,16 +269,20 @@ requirements:
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-013
-    category: usage
-    requirement: Verify presentation freshness (anti-replay)
+    category: security
+    requirement: Verify presentation freshness and prevent replay attacks
     explanation: |
-      The intermediary must verify that presentations are fresh and not replayed 
-      by checking nonces, timestamps, or session binding. Stale or replayed 
-      presentations must be rejected.
+      The intermediary must verify that presentations are fresh and not replayed. 
+      This includes checking nonces, timestamps, or session binding, and implementing 
+      mechanisms to detect replay of previously received presentations. Stale or 
+      replayed presentations must be rejected.
     legalBasis:
-      regulation: 2024/2979
-      article: Article 3
-      paragraph: ""
+      - regulation: 2024/2979
+        article: Article 3
+        paragraph: ""
+      - regulation: 2014/910
+        article: Article 5b
+        paragraph: "9"
     arfReference:
       topic: Topic 52
       hlr: RPI_09
@@ -287,7 +291,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    criticality: critical
   - id: VEND-INT-014
     category: security
     requirement: Ensure secure channel for transmission to RP
@@ -308,26 +312,6 @@ requirements:
       - connector
     deadline: "2027-11-21"
     criticality: critical
-  - id: VEND-INT-015
-    category: security
-    requirement: Implement measures to prevent replay attacks
-    explanation: |
-      The intermediary must implement mechanisms to detect and prevent replay of 
-      previously received wallet presentations. Nonce-based challenge-response 
-      and session binding are typical approaches.
-    legalBasis:
-      regulation: 2014/910
-      article: Article 5b
-      paragraph: "9"
-    arfReference:
-      topic: Topic 52
-      hlr: RPI_09
-    roles:
-      - relying_party
-    productCategories:
-      - connector
-    deadline: "2027-11-21"
-    criticality: high
   - id: VEND-INT-016
     category: security
     requirement: Implement secure key management for verification operations
