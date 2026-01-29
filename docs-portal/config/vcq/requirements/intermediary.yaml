@@ -46,8 +46,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-REG-003
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-003
@@ -112,8 +110,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-002
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-006
@@ -160,8 +156,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-001
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-008
@@ -407,8 +401,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-PRV-003
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-INT-021
@@ -457,8 +449,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-REG-003
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-023
@@ -480,8 +470,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-001
     deadline: "2027-11-21"
     criticality: critical
     arfReference:
@@ -502,8 +490,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-003
     deadline: "2027-11-21"
     criticality: high
     arfReference:
@@ -551,8 +537,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-PRV-010
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-027
@@ -577,8 +561,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-004
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-028
@@ -599,8 +581,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-005
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-029
@@ -623,8 +603,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-007
     deadline: "2027-11-21"
     criticality: critical
     arfReference:
@@ -650,8 +628,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-008
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-INT-031
@@ -674,8 +650,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-GOV-006
     deadline: "2027-11-21"
     criticality: medium
   - id: VEND-INT-032
@@ -703,8 +677,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-007
     deadline: "2027-11-21"
     criticality: critical
     notes: |
@@ -737,8 +709,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-REG-001
     deadline: "2027-11-21"
     criticality: high
     notes: |
@@ -766,8 +736,6 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    linkedRCA:
-      - RP-TEC-001
     deadline: "2027-11-21"
     criticality: high
     notes: |

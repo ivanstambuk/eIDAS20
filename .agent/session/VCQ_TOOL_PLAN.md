@@ -322,17 +322,7 @@ VEND-ICT-003:
 
 ## 7. RCA Linkage Strategy
 
-Requirements in the VCQ that correspond to existing RCA requirements for the "Relying Party" role should link by ID rather than duplicate content:
-
-| VCQ Requirement | Links to RCA |
-|-----------------|--------------|
-| `VEND-CORE-001` | `RP-SEC-001` (No-storage mandate) |
-| `VEND-CORE-002` | `RP-REG-001` (Registration) |
-| `VEND-PIF-001` | `RP-GOV-003` (Intermediary governance) |
-
-The UI should show:
-- VCQ requirement text
-- "See also: RP-SEC-001" link that navigates to RCA filtered to that requirement
+> ❌ **REMOVED (2026-01-29):** The `linkedRCA` field was never implemented in the UI and has been removed from VCQ. VCQ and RCA are now independent tools. This section is retained for historical reference only.
 
 ---
 
@@ -372,7 +362,6 @@ legalBasis:                   # Array of legal references
 category: string              # Category from taxonomy
 applicability: string[]       # ["PIF", "VIF"] or subset
 scope?: string                # "Core" or "Extended"
-linkedRCA?: string[]          # Array of RCA requirement IDs
 notes?: string                # Optional implementation notes
 ```
 
@@ -385,7 +374,7 @@ notes?: string                # Optional implementation notes
 1. **Validation Script:** `validate-vcq.js`
    - Schema validation for YAML files
    - Legal basis reference validation (regulation/article exists)
-   - RCA link validation (linked IDs exist)
+   - ARF HLR reference validation
    - Category taxonomy enforcement
 
 2. **Build Script:** `build-vcq.js`

@@ -75,7 +75,6 @@ requirements:
       - trust_services
     deadline: "2027-11-21"
     criticality: critical
-    linkedRCA:
       - TSP-SEC-001
   - id: VEND-TSP-005
     category: security

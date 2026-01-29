@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T07:40:38.873Z",
+  "generatedAt": "2026-01-29T08:11:43.083Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -247,9 +247,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-GOV-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST NOT",
@@ -283,9 +281,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
-      "linkedRCA": [
-        "RP-PRV-006"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -357,9 +353,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -430,9 +424,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
-      "linkedRCA": [
-        "RP-SEC-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -534,9 +526,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "gdpr",
-      "linkedRCA": [
-        "RP-PRV-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST NOT",
@@ -608,9 +598,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-005"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -749,9 +737,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -789,9 +775,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-006"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -829,9 +813,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -2244,9 +2226,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST NOT",
@@ -2367,9 +2347,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-002"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
       "obligation": "MUST",
@@ -2452,9 +2430,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -2939,9 +2915,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-PRV-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST NOT",
@@ -3024,9 +2998,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -3068,9 +3040,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -3111,9 +3081,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-003"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -3189,9 +3157,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-PRV-010"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -3230,9 +3196,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-004"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
       "obligation": "MUST",
@@ -3270,9 +3234,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-005"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
       "obligation": "MUST",
@@ -3314,9 +3276,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-007"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -3354,9 +3314,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-008"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -3394,9 +3352,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-GOV-006"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "medium",
       "obligation": "MUST",
@@ -3438,9 +3394,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-007"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
@@ -3483,9 +3437,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-REG-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "MUST",
@@ -3527,9 +3479,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "RP-TEC-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
       "criticality": "high",
       "obligation": "SHOULD",
@@ -5221,11 +5171,9 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroup": "eidas",
-      "linkedRCA": [
-        "TSP-SEC-001"
-      ],
+      "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "critical",
+      "criticality": "critical - TSP-SEC-001",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -6367,10 +6315,11 @@
       "revocation": 7
     },
     "byCriticality": {
-      "critical": 70,
+      "critical": 69,
       "high": 51,
       "medium": 16,
-      "low": 1
+      "low": 1,
+      "critical - TSP-SEC-001": 1
     },
     "byObligation": {
       "MUST": 120,

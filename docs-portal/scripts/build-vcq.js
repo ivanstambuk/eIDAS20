@@ -347,7 +347,6 @@ for (const req of allRequirements) {
         isExtended,
         scope: req.scope || 'core',
         sourceGroup,  // DEC-255: For 3-tile filtering
-        linkedRCA: req.linkedRCA || [],
         deadline: req.deadline,
         criticality: req.criticality || 'medium',
         obligation,  // RFC 2119: MUST, SHOULD, MAY, etc.

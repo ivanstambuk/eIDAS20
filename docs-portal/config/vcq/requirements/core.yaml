@@ -18,8 +18,6 @@ requirements:
       relying parties and shall not store data about the content of the transaction.
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-GOV-001
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-002
@@ -43,8 +41,6 @@ requirements:
       controller.
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-PRV-006
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-003
@@ -91,8 +87,6 @@ requirements:
       hlr: RPI_01
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-REG-001
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-005
@@ -133,8 +127,6 @@ requirements:
       appropriate to the risk.
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-SEC-001
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-007
@@ -190,8 +182,6 @@ requirements:
       of personal data to a third country or an international organisation.
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-PRV-001
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-010
@@ -233,8 +223,6 @@ requirements:
       hlr: RPI_06
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-REG-005
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-012
@@ -313,8 +301,6 @@ requirements:
       hlr: RPI_03
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-REG-003
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-017
@@ -338,8 +324,6 @@ requirements:
       hlr: RPI_04
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-REG-006
     deadline: "2027-11-21"
     criticality: high
   - id: VEND-CORE-018
@@ -364,8 +348,6 @@ requirements:
       hlr: RPI_09
     roles: []
     productCategories: []
-    linkedRCA:
-      - RP-TEC-003
     deadline: "2027-11-21"
     criticality: critical
   - id: VEND-CORE-019
