@@ -1355,6 +1355,20 @@ export default function VendorQuestionnaire() {
                             <button className="btn btn-secondary" onClick={() => setShowResults(false)}>
                                 ← Modify Selection
                             </button>
+                            <button
+                                className="tool-btn secondary"
+                                onClick={handleExportExcel}
+                                disabled={applicableRequirements.length === 0}
+                            >
+                                📥 Export Excel
+                            </button>
+                            <button
+                                className="tool-btn secondary"
+                                onClick={handleExportMarkdown}
+                                disabled={applicableRequirements.length === 0}
+                            >
+                                📝 Export Markdown
+                            </button>
                         </div>
                     </div>
 
