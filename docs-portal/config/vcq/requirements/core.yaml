@@ -841,3 +841,65 @@ requirements:
       - connector
     deadline: "2027-11-21"
     criticality: high
+
+  # ============================================================================
+  # Personal Data Classification Guidance (2026-01-29)
+  # ============================================================================
+  # Based on deep analysis of GDPR Article 4(1) and eIDAS 2.0 Article 3(43),
+  # attestations may be about natural persons, legal persons, or objects.
+  # However, the processing environment almost always contains personal data
+  # context. This requirement codifies the "Compliance by Environment" principle.
+
+  - id: VEND-CORE-042
+    category: usage
+    requirement: Apply personal data safeguards by default to all attestation processing
+    explanation: |
+      Vendor products must apply GDPR Article 28 (processor obligations) and 
+      Article 32 (security of processing) safeguards by default to ALL attestation 
+      processing, regardless of whether specific attestation content appears to be 
+      personal data.
+      
+      While eIDAS 2.0 Article 3(43) defines "attribute" as covering natural persons, 
+      legal persons, AND objects, the processing environment almost always contains 
+      personal data context (session tokens, wallet identifiers, IP addresses). 
+      Therefore, the product architecture must assume personal data processing.
+      
+      This "Compliance by Environment" principle means:
+      - Default to GDPR-compliant data handling for all attestations
+      - Apply encryption, access controls, and audit logging universally
+      - Do not create separate "non-personal data" processing paths that bypass 
+        security controls
+      - Treat the combination of attestation + session context as personal data
+      
+      The customer (RP) may document exceptions for truly anonymous processing 
+      scenarios, but the product must not assume such exceptions.
+    legalBasis:
+      regulation: 2016/679
+      article: Article 4
+      paragraph: "1"
+    legalText: |
+      'personal data' means any information relating to an identified or 
+      identifiable natural person ('data subject'); an identifiable natural 
+      person is one who can be identified, directly or indirectly, in particular 
+      by reference to an identifier such as a name, an identification number, 
+      location data, an online identifier or to one or more factors specific 
+      to the physical, physiological, genetic, mental, economic, cultural or 
+      social identity of that natural person.
+    roles: []
+    productCategories: []
+    deadline: "2027-11-21"
+    criticality: high
+    notes: |
+      This requirement implements the "Compliance by Environment" principle 
+      established in DEC-281 (Jan 2026 Alignment Audit). Even if a specific 
+      attestation relates to an object or organization (not personal data per se), 
+      the wallet session context and processing metadata create an identifiable 
+      data subject context.
+      
+      Exceptions (attestations that may not require full GDPR safeguards):
+      - Pure boolean ZKP proofs with high unlinkability
+      - Device-only attestations with no wallet user context
+      - Anonymous aggregate attestations
+      
+      However, the PRODUCT should not make these determinations - the CUSTOMER 
+      (RP as data controller) documents exceptions in their DPIA.
