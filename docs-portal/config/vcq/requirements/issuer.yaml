@@ -764,3 +764,107 @@ requirements:
     productCategories: [issuance_platform]
     deadline: "2027-11-21"
     criticality: critical
+
+  # ============================================================================
+  # PHASE 5: Article 45h Data Separation Requirements (2026-01-29)
+  # ============================================================================
+  # Article 45h establishes mandatory data separation requirements for all
+  # Electronic Attestation of Attributes (EAA) providers. These requirements
+  # apply to both qualified and non-qualified EAA issuers.
+  #
+  # Legal basis: Regulation EU 2014/910 as amended by 2024/1183, Article 45h
+  # Decision: Added during Article 45h interpretation audit
+
+  - id: VEND-ISS-038
+    category: data_handling
+    requirement: "Do not combine EAA personal data with other services"
+    explanation: |
+      Personal data collected during the provision of electronic attestation of 
+      attributes services must NOT be combined with personal data from any other 
+      services offered by the provider or their commercial partners. This is a 
+      fundamental data isolation requirement that goes beyond GDPR purpose limitation.
+      
+      Examples of prohibited combinations:
+      - Merging EAA user profiles with marketing databases
+      - Using EAA transaction data for other service analytics
+      - Sharing EAA user data with commercial partner systems
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45h"
+      paragraph: "1"
+    legalText: |
+      Providers of qualified and non-qualified electronic attestation of attributes 
+      services shall not combine personal data relating to the provision of those 
+      services with personal data from any other services offered by them or their 
+      commercial partners.
+    roles: [issuer]
+    productCategories: [issuance_platform, trust_services]
+    deadline: "2026-11-21"
+    criticality: critical
+    notes: |
+      Applies to ALL EAA providers (both qualified and non-qualified).
+      This is more restrictive than GDPR purpose limitation - it mandates
+      complete isolation of EAA-related personal data.
+
+  - id: VEND-ISS-039
+    category: data_handling
+    requirement: "Keep EAA personal data logically separate"
+    explanation: |
+      Personal data relating to the provision of electronic attestation of 
+      attributes services must be kept in logically separate data stores from 
+      other data held by the provider. This requires architectural separation
+      at the data layer.
+      
+      Implementation approaches:
+      - Separate database instances or schemas
+      - Logical partitioning with access controls
+      - Data classification and tagging systems
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45h"
+      paragraph: "2"
+    legalText: |
+      Personal data relating to the provision of electronic attestation of 
+      attributes services shall be kept logically separate from other data 
+      held by the provider of electronic attestation of attributes.
+    roles: [issuer]
+    productCategories: [issuance_platform, trust_services]
+    deadline: "2026-11-21"
+    criticality: critical
+    notes: |
+      Applies to ALL EAA providers (both qualified and non-qualified).
+      "Logically separate" means data isolation at the architectural level,
+      not just access control restrictions.
+
+  - id: VEND-ISS-040
+    category: data_handling
+    requirement: "Implement QEAA services functionally separate from other services"
+    explanation: |
+      Qualified Electronic Attestation of Attributes (QEAA) providers must 
+      implement the provision of such services in a manner that is functionally 
+      separate from other services they provide. This goes beyond data separation 
+      to require organizational and technical separation of the QEAA business unit.
+      
+      Functional separation includes:
+      - Dedicated operational teams or clear organizational boundaries
+      - Separate infrastructure and systems where practical
+      - Independent governance and management structures
+      - Isolated operational processes
+    legalBasis:
+      regulation: "2014/910"
+      article: "Article 45h"
+      paragraph: "3"
+    legalText: |
+      Providers of qualified electronic attestation of attributes' services 
+      shall implement the provision of such qualified trust services in a 
+      manner that is functionally separate from other services provided by them.
+    roles: [issuer]
+    productCategories: [trust_services]
+    deadline: "2026-11-21"
+    criticality: critical
+    notes: |
+      Only applies to QUALIFIED EAA providers (QTSPs). Non-qualified 
+      EAA providers are subject to 45h(1) and 45h(2) but not 45h(3).
+      
+      This requirement also applies to private Wallet Providers via 
+      Article 5a(14) "mutatis mutandis" - see RCA Wallet Provider track.

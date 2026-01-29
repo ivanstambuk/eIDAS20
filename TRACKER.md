@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-29 08:23 CET |
-| **Version** | V4.0.2 |
-| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 144 VCQ reqs, 559 ARF HLRs |
-| **Next Action** | VCQ categorization scheme complete — ready for next feature |
+| **Last Updated** | 2026-01-29 09:16 CET |
+| **Version** | V4.0.3 |
+| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 138 VCQ reqs, 559 ARF HLRs |
+| **Next Action** | VCQ complete — ready for next feature |
 
 
 ---
@@ -36,6 +36,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-29 09:16 | **Refactor: Remove linkedRCA + ARF Coverage Audit** — Removed unused `linkedRCA` field from VCQ codebase (25 requirements, 9 files). Created `audit-hlr-coverage.cjs` script for systematic ARF gap analysis. Confirmed 100% RP-topic coverage: 47 HLRs in VCQ + 70 excluded (wallet_provider, empty, member_state categories). All 6 "potential gaps" (OIA_15, OIA_16, RPA_02a, VCR_12, ProxId_01a, DATA_DLT_07) verified as already covered by existing VCQ requirements. Updated TERMINOLOGY.md with correct exclusion reason codes. VCQ and RCA now fully independent assessment tools. |
 | 2026-01-29 08:15 | **Feat: VCQ Categorization Scheme Toggle** — Added flexible categorization system with UI dropdown to switch between \"Functional (6)\" and \"By Role (2)\" groupings. LocalStorage persistence for user preference. Scheme-aware rendering in Summary/Details views. Updated Markdown and Excel exports to reflect active scheme. Universal requirements show under appropriate category based on selected roles. Retro: AGENTS.md updates (base URL routing, dev server check, browser screenshots), TERMINOLOGY.md updates, react-patterns.md snippet. |\n| 2026-01-28 16:35 | **DEC-260: Ambiguous HLR Resolution** — Reviewed 32 multi-role HLRs flagged during VCQ-ARF harmonization. All reclassified to definitive categories: 11→rulebook_author (ARB_*), 11→wallet_provider (ISSU_*, QES_*, PA_12, VCR_14, RPA_12), 7→member_state (Reg_*, TLPub_*, RPRC_08), 3→informative (VCR_07a/b, QTSPAS_07a). multi_role_review now empty (0 HLRs). 100% disposition achieved. |
 | 2026-01-28 15:51 | **VCQ-ARF Harmonization Complete (V4.0.0)** — Multi-role schema v2 with 144 requirements (64→144, +125%). 78 ARF references covering 134 unique HLRs. Fixed ARF source group counting (cross-cutting). Professional Excel export with xlsx-js-style (3 sheets, styled). Retro: VCQ Architecture docs in AGENTS.md, topic-HLR validation, 2 new terminology entries (Cross-cutting Reference, HLR Exclusion). 6 commits pushed. |
 | 2026-01-28 04:23 | **Plan: VCQ Role/Category Expansion (DEC-257)** — Deep audit revealed UI Steps 1-2 (Role/Category selection) are cosmetic — `applicableRequirements` ignores `selectedRoles`/`selectedCategories`. New schema v2: `roles[]` and `productCategories[]` arrays replace deprecated `applicability` field. Plan: 4 phases, 11 files. Phase 1 = schema migration (build-vcq, validate-vcq, existing YAML files). Phase 2 = new requirements (issuer.yaml ~25, trust_services.yaml ~15, payments.yaml ~12). Phase 3 = UI filtering logic. Target: 64→116 requirements. |

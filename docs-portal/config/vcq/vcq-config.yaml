@@ -18,7 +18,15 @@ tool:
     products to integrate with the EUDIW ecosystem. Select your organisation's 
     role, the product category you're evaluating, and the regulatory sources 
     to include.
+    
+    **Scope**: VCQ targets private sector commercial products. Public-sector-only 
+    mandates and organization-only requirements (registration with authorities, 
+    HR/personnel, financial obligations) are covered in the RCA tool.
   version: "3.0.0"
+  audit:
+    lastAudit: "2026-01-29"
+    decision: "DEC-281"
+    result: "100% vendor-applicable coverage (0 gaps)"
 
 # =============================================================================
 # LEGACY: Intermediary Types (kept for build-vcq.js compatibility)
