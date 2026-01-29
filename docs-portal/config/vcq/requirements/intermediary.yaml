@@ -229,12 +229,13 @@ requirements:
     criticality: critical
   - id: VEND-INT-011
     category: usage
-    requirement: Verify attestation revocation status before acceptance
+    requirement: Verify attestation revocation status before acceptance (recommended)
     explanation: |
-      Before accepting a presentation as valid, the intermediary must check the 
+      Before accepting a presentation as valid, the intermediary should check the 
       revocation status of the attestation. This may involve checking validity 
       status lists, OCSP responses, or other revocation mechanisms as specified 
-      by the issuer.
+      by the issuer. Note: Per ARF VCR_13, revocation verification is recommended 
+      but not mandatory.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
@@ -247,7 +248,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    criticality: high
   - id: VEND-INT-012
     category: usage
     requirement: Verify the wallet unit's device binding
@@ -747,12 +748,13 @@ requirements:
       failures.
   - id: VEND-INT-034
     category: usage
-    requirement: Support attestation status list verification mechanisms
+    requirement: Support attestation status list verification mechanisms (recommended)
     explanation: |
-      The intermediary must support attestation status verification using the mechanisms 
+      The intermediary should support attestation status verification using the mechanisms 
       specified in ARF Topic 7 (Attestation Revocation). This includes checking 
       Attestation Status Lists or Attestation Revocation Lists published by PID/EAA 
-      providers to verify that attestations have not been revoked.
+      providers to verify that attestations have not been revoked. Note: Per ARF VCR_13, 
+      revocation verification is recommended but not mandatory.
     arfReference:
       topic: Topic 7
       hlr: VCR_13
@@ -760,10 +762,6 @@ requirements:
       regulation: 2024/2979
       article: Article 3
       paragraph: ""
-    legalText: |
-      Wallet providers shall ensure that wallet units support mechanisms for 
-      checking the revocation status of attestations in accordance with the 
-      methods specified by the issuing PID Provider or Attestation Provider.
     roles:
       - relying_party
     productCategories:
@@ -771,7 +769,7 @@ requirements:
     linkedRCA:
       - RP-TEC-001
     deadline: "2027-11-21"
-    criticality: critical
+    criticality: high
     notes: |
       This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. 
       Attestation Status Lists (VCR_11) are the primary mechanism for efficient 

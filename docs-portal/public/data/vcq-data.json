@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T00:20:05.643Z",
+  "generatedAt": "2026-01-29T00:28:20.394Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2589,8 +2589,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Verify attestation revocation status before acceptance",
-      "explanation": "Before accepting a presentation as valid, the intermediary must check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer.",
+      "requirement": "Verify attestation revocation status before acceptance (recommended)",
+      "explanation": "Before accepting a presentation as valid, the intermediary should check the \nrevocation status of the attestation. This may involve checking validity \nstatus lists, OCSP responses, or other revocation mechanisms as specified \nby the issuer. Note: Per ARF VCR_13, revocation verification is recommended \nbut not mandatory.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -2621,8 +2621,8 @@
       "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
+      "criticality": "high",
+      "obligation": "SHOULD",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -3497,8 +3497,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Support attestation status list verification mechanisms",
-      "explanation": "The intermediary must support attestation status verification using the mechanisms \nspecified in ARF Topic 7 (Attestation Revocation). This includes checking \nAttestation Status Lists or Attestation Revocation Lists published by PID/EAA \nproviders to verify that attestations have not been revoked.",
+      "requirement": "Support attestation status list verification mechanisms (recommended)",
+      "explanation": "The intermediary should support attestation status verification using the mechanisms \nspecified in ARF Topic 7 (Attestation Revocation). This includes checking \nAttestation Status Lists or Attestation Revocation Lists published by PID/EAA \nproviders to verify that attestations have not been revoked. Note: Per ARF VCR_13, \nrevocation verification is recommended but not mandatory.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3513,7 +3513,6 @@
         "paragraph": ""
       },
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
-      "legalText": "Wallet providers shall ensure that wallet units support mechanisms for \nchecking the revocation status of attestations in accordance with the \nmethods specified by the issuing PID Provider or Attestation Provider.",
       "arfReference": {
         "topic": "Topic 7",
         "hlr": "VCR_13"
@@ -3532,8 +3531,8 @@
         "RP-TEC-001"
       ],
       "deadline": "2027-11-21",
-      "criticality": "critical",
-      "obligation": "MUST",
+      "criticality": "high",
+      "obligation": "SHOULD",
       "notes": "This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. \nAttestation Status Lists (VCR_11) are the primary mechanism for efficient \nbatch revocation checking without per-credential queries.",
       "_sourceFile": "intermediary.yaml"
     },
@@ -6368,15 +6367,15 @@
       "revocation": 7
     },
     "byCriticality": {
-      "critical": 72,
-      "high": 49,
+      "critical": 70,
+      "high": 51,
       "medium": 16,
       "low": 1
     },
     "byObligation": {
-      "MUST": 122,
+      "MUST": 120,
       "MUST NOT": 9,
-      "SHOULD": 6,
+      "SHOULD": 8,
       "SHOULD NOT": 0,
       "MAY": 1
     }
