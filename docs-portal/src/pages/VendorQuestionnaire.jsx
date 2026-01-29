@@ -153,33 +153,33 @@ const CATEGORIZATION_SCHEMES = {
     },
     role: {
         id: 'role',
-        label: 'By Role (2)',
+        label: 'By Role (3)',
         description: 'Group by actor type',
-        // Categories for role-based scheme
+        // Categories for role-based scheme (DEC-288: Added explicit Universal category)
         categories: [
-            { id: 'relying_party', label: 'Relying Party', icon: '🏢', order: 1 },
-            { id: 'issuer', label: 'Issuer', icon: '📝', order: 2 }
+            { id: 'universal', label: 'Universal', icon: '🌐', order: 0 },
+            { id: 'relying_party', label: 'Relying Party Only', icon: '🏢', order: 1 },
+            { id: 'issuer', label: 'Issuer Only', icon: '📝', order: 2 }
         ],
         /**
          * Determine which role category a requirement belongs to.
-         * Context-aware: Universal requirements go to RP when both roles selected,
-         * otherwise to the single selected role.
+         * DEC-288: Universal requirements (roles: []) are now explicitly categorized.
          */
         getCategory: (req, selectedRoles) => {
             const roles = req.roles || [];
 
-            // If requirement is role-specific, use that role
+            // Empty roles array = Universal (applies to all)
+            if (roles.length === 0) {
+                return 'universal';
+            }
+
+            // Single role = that specific role
             if (roles.length === 1) {
                 return roles[0];
             }
 
-            // Universal (roles.length === 0) or multi-role
-            // When both roles selected: put in RP
-            // When only one role selected: put in that role
-            if (selectedRoles.includes('issuer') && !selectedRoles.includes('relying_party')) {
-                return 'issuer';
-            }
-            return 'relying_party'; // Default to RP for universal
+            // Multi-role (rare) = universal
+            return 'universal';
         },
         getCategoryLabel: (req, categories, selectedRoles) => {
             const catId = CATEGORIZATION_SCHEMES.role.getCategory(req, selectedRoles);
