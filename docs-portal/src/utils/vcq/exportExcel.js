@@ -26,20 +26,13 @@ const COLORS = {
     pendingText: '0D47A1',   // Dark blue
     border: 'CCCCCC',        // Border color
     altRow: 'F8F9FA',        // Alternating row
+    // RFC 2119 Obligation colors
     must: 'FADBD8',          // Light red for MUST
     mustText: 'A93226',
     should: 'FEF9E7',        // Light yellow for SHOULD
     shouldText: '9A7D0A',
     may: 'D5F5E3',           // Light green for MAY
     mayText: '1E8449',
-    critical: 'FADBD8',      // Same as MUST
-    criticalText: 'A93226',
-    high: 'FEF9E7',
-    highText: '9A7D0A',
-    medium: 'D5F5E3',
-    mediumText: '1E8449',
-    low: 'E2E3E5',
-    lowText: '383D41',
 };
 
 const createBorder = () => ({
@@ -97,21 +90,22 @@ const STYLES = {
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    criticalityHigh: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.criticalText } },
-        fill: { fgColor: { rgb: COLORS.critical } },
+    // RFC 2119 Obligation styles
+    obligationMust: {
+        font: { sz: 10, bold: true, color: { rgb: COLORS.mustText } },
+        fill: { fgColor: { rgb: COLORS.must } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    criticalityMedium: {
-        font: { sz: 10, bold: true, color: { rgb: COLORS.highText } },
-        fill: { fgColor: { rgb: COLORS.high } },
+    obligationShould: {
+        font: { sz: 10, bold: true, color: { rgb: COLORS.shouldText } },
+        fill: { fgColor: { rgb: COLORS.should } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
-    criticalityLow: {
-        font: { sz: 10, color: { rgb: COLORS.lowText } },
-        fill: { fgColor: { rgb: COLORS.low } },
+    obligationMay: {
+        font: { sz: 10, color: { rgb: COLORS.mayText } },
+        fill: { fgColor: { rgb: COLORS.may } },
         border: createBorder(),
         alignment: { horizontal: 'center', vertical: 'center' },
     },
@@ -141,22 +135,19 @@ function getStatusLabel(status) {
     }
 }
 
-function getCriticalityStyle(criticality) {
-    const crit = (criticality || '').toLowerCase();
-    if (crit.includes('critical')) return STYLES.criticalityHigh;
-    if (crit.includes('high')) return STYLES.criticalityHigh;
-    if (crit.includes('medium')) return STYLES.criticalityMedium;
-    return STYLES.criticalityLow;
-}
-
-function formatCriticality(criticality) {
-    if (!criticality) return '';
-    const crit = criticality.toLowerCase();
-    if (crit.includes('critical')) return 'Critical';
-    if (crit.includes('high')) return 'High';
-    if (crit.includes('medium')) return 'Medium';
-    if (crit.includes('low')) return 'Low';
-    return criticality;
+function getObligationStyle(obligation) {
+    switch (obligation) {
+        case 'MUST':
+        case 'MUST NOT':
+            return STYLES.obligationMust;
+        case 'SHOULD':
+        case 'SHOULD NOT':
+            return STYLES.obligationShould;
+        case 'MAY':
+            return STYLES.obligationMay;
+        default:
+            return STYLES.cell;
+    }
 }
 
 function formatLegalBasis(req) {
@@ -241,7 +232,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'ID',
         'Category',
         'Requirement',
-        'Criticality',
+        'Obligation',
         'Deadline',
         'Roles',
         'Product Categories',
@@ -291,7 +282,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: req.id, s: cellStyle },
                 { v: cat.label || cat.id, s: cellStyle },
                 { v: req.requirement, s: cellStyle },
-                { v: formatCriticality(req.criticality), s: getCriticalityStyle(req.criticality) },
+                { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
@@ -313,7 +304,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 14 },  // ID
         { wch: 16 },  // Category
         { wch: 45 },  // Requirement
-        { wch: 10 },  // Criticality
+        { wch: 12 },  // Obligation
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories

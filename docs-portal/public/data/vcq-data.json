@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T09:22:12.372Z",
+  "generatedAt": "2026-01-29T12:45:20.385Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1658,6 +1658,40 @@
       "_sourceFile": "core.yaml"
     },
     {
+      "id": "VEND-CORE-042",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Apply personal data safeguards by default to all attestation processing",
+      "explanation": "Vendor products must apply GDPR Article 28 (processor obligations) and \nArticle 32 (security of processing) safeguards by default to ALL attestation \nprocessing, regardless of whether specific attestation content appears to be \npersonal data.\n\nWhile eIDAS 2.0 Article 3(43) defines \"attribute\" as covering natural persons, \nlegal persons, AND objects, the processing environment almost always contains \npersonal data context (session tokens, wallet identifiers, IP addresses). \nTherefore, the product architecture must assume personal data processing.\n\nThis \"Compliance by Environment\" principle means:\n- Default to GDPR-compliant data handling for all attestations\n- Apply encryption, access controls, and audit logging universally\n- Do not create separate \"non-personal data\" processing paths that bypass \n  security controls\n- Treat the combination of attestation + session context as personal data\n\nThe customer (RP) may document exceptions for truly anonymous processing \nscenarios, but the product must not assume such exceptions.",
+      "legalBases": [
+        {
+          "regulation": "2016/679",
+          "article": "Article 4",
+          "paragraph": "1",
+          "link": "/regulation/2016-679?section=article-4"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2016/679",
+        "article": "Article 4",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2016-679?section=article-4",
+      "legalText": "'personal data' means any information relating to an identified or \nidentifiable natural person ('data subject'); an identifiable natural \nperson is one who can be identified, directly or indirectly, in particular \nby reference to an identifier such as a name, an identification number, \nlocation data, an online identifier or to one or more factors specific \nto the physical, physiological, genetic, mental, economic, cultural or \nsocial identity of that natural person.",
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroup": "gdpr",
+      "deadline": "2027-11-21",
+      "criticality": "high",
+      "obligation": "MUST NOT",
+      "notes": "This requirement implements the \"Compliance by Environment\" principle \nestablished in DEC-281 (Jan 2026 Alignment Audit). Even if a specific \nattestation relates to an object or organization (not personal data per se), \nthe wallet session context and processing metadata create an identifiable \ndata subject context.\n\nExceptions (attestations that may not require full GDPR safeguards):\n- Pure boolean ZKP proofs with high unlinkability\n- Device-only attestations with no wallet user context\n- Anonymous aggregate attestations\n\nHowever, the PRODUCT should not make these determinations - the CUSTOMER \n(RP as data controller) documents exceptions in their DPIA.",
+      "_sourceFile": "core.yaml"
+    },
+    {
       "id": "VEND-ICT-001",
       "category": "contracts",
       "categoryLabel": "Contracts",
@@ -2943,8 +2977,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Support mandatory credential formats (ISO 18013-5 and W3C VC)",
-      "explanation": "The intermediary must be capable of verifying attestations in both mandated \nformats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data \nModel 1.1. This ensures interoperability across the EUDIW ecosystem.",
+      "requirement": "Support mandatory credential formats based on supported use cases",
+      "explanation": "Relying Party connectors and intermediaries must support the credential formats \nrelevant to their operational use cases:\n\n**Remote Presentations (online services):**\n- SD-JWT-VC format (Selective Disclosure JSON Web Token)\n- OpenID4VP protocol for presentation exchange\n\n**Proximity Presentations (in-person verification):**\n- ISO/IEC 18013-5:2021 (mDoc) format\n- BLE/NFC protocols per ISO/IEC 18013-5 and 18013-7\n\nIf the RP or intermediary supports BOTH remote and proximity use cases, \nthen BOTH formats MUST be supported. The requirement is use-case-dependent, \nbut within each use case the format is mandatory.\n\nNote: This differs from Issuers, who must unconditionally support both formats.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -2977,6 +3011,7 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
+      "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support \nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally \nsupport both formats per ISSU_12.",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -3573,8 +3608,8 @@
       "category": "issuance",
       "categoryLabel": "Issuance",
       "categoryIcon": "📤",
-      "requirement": "Issue attestations in mandated credential formats (mDoc and SD-JWT-VC)",
-      "explanation": "Attestations must be issued in the mandated formats: ISO/IEC 18013-5 (mDoc) \nand SD-JWT-based Verifiable Credentials (SD-JWT-VC). For maximum interoperability, \nthe platform should support both formats, allowing relying parties to request \ntheir preferred format. The format(s) supported must be published in Provider Information.",
+      "requirement": "Issue attestations in BOTH mandated credential formats (mDoc and SD-JWT-VC)",
+      "explanation": "Attestation providers MUST issue PIDs and attestations in ALL formats required \nby the applicable PID Rulebook or Attestation Rulebook. Currently, the mandated \nformats are:\n\n1. **ISO/IEC 18013-5 (mDoc)**: CBOR-based format for proximity and remote \n   presentations, originally designed for mobile driving licenses but extended \n   to all wallet attestations.\n\n2. **SD-JWT-VC**: Selective Disclosure JSON Web Token format for privacy-\n   preserving remote presentations, enabling holders to reveal only specific \n   claims.\n\nBoth formats MUST be supported - this is not optional. The formats supported \nmust be published in Provider Information to enable wallet units to request \nattestations in all available formats per ARF ISSU_12a.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3606,6 +3641,7 @@
       "deadline": "2027-11-21",
       "criticality": "critical",
       "obligation": "MUST",
+      "notes": "Per ARF ISSU_12: \"A PID Provider or Attestation Provider SHALL offer its \nPIDs or attestations in all formats required in the PID Rulebook or the \napplicable Attestation Rulebook.\"\n\nThis is distinct from the RP/Verifier requirement, where format support \ndepends on supported use cases (remote vs. proximity). For issuers, \nBOTH formats are unconditionally mandatory.",
       "_sourceFile": "issuer.yaml"
     },
     {
@@ -4922,9 +4958,9 @@
     },
     {
       "id": "VEND-ISS-038",
-      "category": "data_handling",
-      "categoryLabel": "data_handling",
-      "categoryIcon": "📋",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
       "requirement": "Do not combine EAA personal data with other services",
       "explanation": "Personal data collected during the provision of electronic attestation of \nattributes services must NOT be combined with personal data from any other \nservices offered by the provider or their commercial partners. This is a \nfundamental data isolation requirement that goes beyond GDPR purpose limitation.\n\nExamples of prohibited combinations:\n- Merging EAA user profiles with marketing databases\n- Using EAA transaction data for other service analytics\n- Sharing EAA user data with commercial partner systems",
       "legalBases": [
@@ -4961,9 +4997,9 @@
     },
     {
       "id": "VEND-ISS-039",
-      "category": "data_handling",
-      "categoryLabel": "data_handling",
-      "categoryIcon": "📋",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
       "requirement": "Keep EAA personal data logically separate",
       "explanation": "Personal data relating to the provision of electronic attestation of \nattributes services must be kept in logically separate data stores from \nother data held by the provider. This requires architectural separation\nat the data layer.\n\nImplementation approaches:\n- Separate database instances or schemas\n- Logical partitioning with access controls\n- Data classification and tagging systems",
       "legalBases": [
@@ -5000,9 +5036,9 @@
     },
     {
       "id": "VEND-ISS-040",
-      "category": "data_handling",
-      "categoryLabel": "data_handling",
-      "categoryIcon": "📋",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
       "requirement": "Implement QEAA services functionally separate from other services",
       "explanation": "Qualified Electronic Attestation of Attributes (QEAA) providers must \nimplement the provision of such services in a manner that is functionally \nseparate from other services they provide. This goes beyond data separation \nto require organizational and technical separation of the QEAA business unit.\n\nFunctional separation includes:\n- Dedicated operational teams or clear organizational boundaries\n- Separate infrastructure and systems where practical\n- Independent governance and management structures\n- Isolated operational processes",
       "legalBases": [
@@ -5880,6 +5916,7 @@
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-023",
+      "VEND-CORE-042",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -6043,6 +6080,7 @@
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-023",
+      "VEND-CORE-042",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6188,6 +6226,7 @@
       "VEND-CORE-021",
       "VEND-CORE-028",
       "VEND-CORE-035",
+      "VEND-CORE-042",
       "VEND-INT-018",
       "VEND-ISS-022"
     ],
@@ -6282,43 +6321,42 @@
     ]
   },
   "stats": {
-    "totalRequirements": 141,
+    "totalRequirements": 142,
     "byRole": {
       "relying_party": 60,
       "issuer": 63,
-      "universal": 33
+      "universal": 34
     },
     "byProductCategory": {
       "connector": 48,
       "issuance_platform": 46,
       "trust_services": 26,
-      "universal": 30
+      "universal": 31
     },
     "bySourceGroup": {
       "eidas": 114,
-      "gdpr": 15,
+      "gdpr": 16,
       "dora": 12,
       "arf": 73
     },
     "byCategory": {
-      "usage": 41,
+      "usage": 42,
       "contracts": 22,
       "registration": 26,
-      "security": 25,
+      "security": 28,
       "issuance": 17,
-      "revocation": 7,
-      "data_handling": 3
+      "revocation": 7
     },
     "byCriticality": {
       "critical": 72,
-      "high": 51,
+      "high": 52,
       "medium": 16,
       "low": 1,
       "critical - TSP-SEC-001": 1
     },
     "byObligation": {
       "MUST": 122,
-      "MUST NOT": 10,
+      "MUST NOT": 11,
       "SHOULD": 8,
       "SHOULD NOT": 0,
       "MAY": 1
