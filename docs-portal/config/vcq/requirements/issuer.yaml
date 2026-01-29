@@ -23,7 +23,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-ISS-002
     category: registration
     requirement: Publish Provider Information according to the standard schema
@@ -48,7 +48,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-ISS-003
     category: registration
     requirement: Update Provider Information within 24 hours of changes
@@ -65,7 +65,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-ISS-004
     category: registration
     requirement: Obtain inclusion in national or EU Trusted Lists if issuing qualified attestations
@@ -83,13 +83,13 @@ requirements:
       - issuance_platform
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
     notes: |
       This requirement only applies to QEAA issuance. Non-qualified EAAs 
       may be issued without QTSP status but must still register.
     arfReference:
       topic: Topic 42
       hlr: QTSPAS_02
+    obligation: MUST
   - id: VEND-ISS-005
     category: issuance
     requirement: Issue attestations in BOTH mandated credential formats (mDoc and SD-JWT-VC)
@@ -97,15 +97,15 @@ requirements:
       Attestation providers MUST issue PIDs and attestations in ALL formats required 
       by the applicable PID Rulebook or Attestation Rulebook. Currently, the mandated 
       formats are:
-      
+
       1. **ISO/IEC 18013-5 (mDoc)**: CBOR-based format for proximity and remote 
          presentations, originally designed for mobile driving licenses but extended 
          to all wallet attestations.
-      
+
       2. **SD-JWT-VC**: Selective Disclosure JSON Web Token format for privacy-
          preserving remote presentations, enabling holders to reveal only specific 
          claims.
-      
+
       Both formats MUST be supported - this is not optional. The formats supported 
       must be published in Provider Information to enable wallet units to request 
       attestations in all available formats per ARF ISSU_12a.
@@ -121,16 +121,15 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     notes: |
       Per ARF ISSU_12: "A PID Provider or Attestation Provider SHALL offer its 
       PIDs or attestations in all formats required in the PID Rulebook or the 
       applicable Attestation Rulebook."
-      
+
       This is distinct from the RP/Verifier requirement, where format support 
       depends on supported use cases (remote vs. proximity). For issuers, 
       BOTH formats are unconditionally mandatory.
-
+    obligation: MUST
   - id: VEND-ISS-006
     category: issuance
     requirement: Bind attestations to the Wallet Unit's cryptographic device
@@ -151,7 +150,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-ISS-007
     category: issuance
     requirement: Implement the OpenID4VCI issuance protocol (TS6)
@@ -169,10 +168,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 10
       hlr: ISSU_01a
+    obligation: MUST
   - id: VEND-ISS-008
     category: issuance
     requirement: Support batch issuance for multiple attestations
@@ -190,10 +189,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: medium
     arfReference:
       topic: Topic 10
       hlr: ISSU_03
+    obligation: SHOULD
   - id: VEND-ISS-009
     category: issuance
     requirement: Verify user identity before issuing attestations
@@ -214,7 +213,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-ISS-010
     category: issuance
     requirement: Obtain data from authentic sources with verified provenance
@@ -234,7 +233,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-ISS-011
     category: issuance
     requirement: Include attestation validity period and issuance timestamp
@@ -252,10 +251,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 10
       hlr: ISSU_50
+    obligation: MUST
   - id: VEND-ISS-012
     category: issuance
     requirement: Support attestation renewal and re-issuance workflows
@@ -273,12 +272,12 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 10
       hlr:
         - ISSU_05
         - ISSU_59
+    obligation: MUST
   - id: VEND-ISS-013
     category: revocation
     requirement: Publish attestation status lists for revocation checking
@@ -299,12 +298,12 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 7
       hlr:
         - VCR_11
         - VCR_12
+    obligation: MUST
   - id: VEND-ISS-014
     category: revocation
     requirement: Update revocation status within defined time limits
@@ -322,10 +321,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 7
       hlr: VCR_12
+    obligation: MUST
   - id: VEND-ISS-015
     category: revocation
     requirement: Notify wallet users when their attestations are revoked
@@ -343,10 +342,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 7
       hlr: VCR_09
+    obligation: SHOULD
   - id: VEND-ISS-016
     category: revocation
     requirement: Support suspension and reinstatement of attestations
@@ -364,10 +363,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: medium
     arfReference:
       topic: Topic 7
       hlr: VCR_09
+    obligation: SHOULD
   - id: VEND-ISS-017
     category: security
     requirement: Protect attestation signing keys in secure cryptographic devices
@@ -389,12 +388,12 @@ requirements:
       - issuance_platform
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 10
       hlr:
         - ISSU_35
         - ISSU_35a
+    obligation: MUST
   - id: VEND-ISS-018
     category: security
     requirement: Use signing algorithms from the approved list
@@ -412,10 +411,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 10
       hlr: ISSU_35
+    obligation: MUST
   - id: VEND-ISS-019
     category: security
     requirement: Implement key rotation procedures
@@ -432,10 +431,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 10
       hlr: ISSU_17
+    obligation: MUST
   - id: VEND-ISS-020
     category: registration
     requirement: Publish attestation types to the Common Catalogue (TS11)
@@ -452,7 +451,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
+    obligation: SHOULD
   - id: VEND-ISS-021
     category: registration
     requirement: Document attestation schema including mandatory and optional attributes
@@ -469,12 +468,12 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 12
       hlr:
         - ARB_03
         - ARB_04
+    obligation: MUST
   - id: VEND-ISS-022
     category: usage
     requirement: Apply data minimisation principles to attestation content
@@ -495,10 +494,10 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 43
       hlr: EDP_09
+    obligation: MUST
   - id: VEND-ISS-023
     category: usage
     requirement: Do not embed tracking identifiers in attestations
@@ -515,7 +514,7 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST NOT
   - id: VEND-ISS-024
     category: usage
     requirement: Enable cross-border recognition of attestations
@@ -536,99 +535,114 @@ requirements:
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 10
       hlr: ISSU_12
-
-  # ============================================================================
-  # PHASE 3: Consolidated ARF Gap Coverage (2026-01-28)
-  # ============================================================================
-
+    obligation: MUST
   - id: VEND-ISS-026
     category: issuance
-    requirement: "Comply with PID Rulebook format and attribute requirements"
+    requirement: Comply with PID Rulebook format and attribute requirements
     explanation: |
       When issuing Person Identification Data (PIDs), the issuance platform must 
       comply with the PID Rulebook specifications including namespace conventions, 
       attribute encoding (CBOR for mDoc), portrait image quality requirements, 
       and domestic namespace publication.
     legalBasis:
-      regulation: "2024/2977"
-      article: "Annex"
+      regulation: 2024/2977
+      article: Annex
       paragraph: ""
     arfReference:
-      topic: "Topic 3"
-      hlr: ["PID_01", "PID_04", "PID_05", "PID_08", "PID_09", "PID_10"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 3
+      hlr:
+        - PID_01
+        - PID_04
+        - PID_05
+        - PID_08
+        - PID_09
+        - PID_10
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
     notes: |
       Covers PID-specific format requirements. Non-PID attestation providers 
       should refer to the relevant Attestation Rulebook instead.
-
+    obligation: MUST
   - id: VEND-ISS-027
     category: issuance
-    requirement: "Support all mandatory attestation formats for the attestation type"
+    requirement: Support all mandatory attestation formats for the attestation type
     explanation: |
       The issuance platform must offer attestations in all formats required by 
       the applicable Rulebook. For most attestation types, this means supporting 
       both ISO 18013-5 (mDoc) and SD-JWT-VC formats with correct encoding.
     legalBasis:
-      regulation: "2024/2979"
-      article: "Article 8"
+      regulation: 2024/2979
+      article: Article 8
       paragraph: ""
     arfReference:
-      topic: "Topic 10"
-      hlr: ["ISSU_12", "ISSU_12d", "ISSU_27"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 10
+      hlr:
+        - ISSU_12
+        - ISSU_12d
+        - ISSU_27
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-028
     category: revocation
-    requirement: "Implement revocation according to applicable Rulebook specifications"
+    requirement: Implement revocation according to applicable Rulebook specifications
     explanation: |
       The platform must implement attestation revocation as specified in the 
       applicable Rulebook. This includes publishing revocation status, supporting 
       suspension where required, and ensuring revocation information is available 
       within defined propagation times.
     legalBasis:
-      regulation: "2024/2979"
-      article: "Article 4"
+      regulation: 2024/2979
+      article: Article 4
       paragraph: ""
     arfReference:
-      topic: "Topic 7"
-      hlr: ["VCR_02", "VCR_03", "VCR_03a", "VCR_04", "VCR_05"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 7
+      hlr:
+        - VCR_02
+        - VCR_03
+        - VCR_03a
+        - VCR_04
+        - VCR_05
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-029
     category: registration
-    requirement: "Maintain accurate registration information and update on changes"
+    requirement: Maintain accurate registration information and update on changes
     explanation: |
       Attestation providers must maintain accurate information in Member State 
       registries and update this information promptly when changes occur. This 
       includes contact details, supported attestation types, and operational status.
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 45d"
+      regulation: 2014/910
+      article: Article 45d
       paragraph: ""
     arfReference:
-      topic: "Topic 27"
-      hlr: ["Reg_08", "Reg_14"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 27
+      hlr:
+        - Reg_08
+        - Reg_14
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
-
+    obligation: MUST
   - id: VEND-ISS-030
     category: registration
-    requirement: "Publish PID/Attestation Provider trust anchor information"
+    requirement: Publish PID/Attestation Provider trust anchor information
     explanation: |
       PID and Attestation Providers must publish trust anchor information that 
       enables Wallet Units and Relying Parties to verify issued attestations. 
@@ -636,255 +650,294 @@ requirements:
       common format specified by the Commission, (2) signing certificate publication, 
       and (3) Trusted List inclusion.
     legalBasis:
-      regulation: "2024/2981"
-      article: "Article 2"
+      regulation: 2024/2981
+      article: Article 2
       paragraph: ""
     arfReference:
-      topic: "Topic 31"
-      hlr: ["PPNot_02", "PPNot_03", "PPNot_04", "PPNot_07", "PuBPNot_03"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 31
+      hlr:
+        - PPNot_02
+        - PPNot_03
+        - PPNot_04
+        - PPNot_07
+        - PuBPNot_03
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-031
     category: issuance
-    requirement: "Verify Wallet Unit Attestation during issuance"
+    requirement: Verify Wallet Unit Attestation during issuance
     explanation: |
       Before issuing a PID or device-bound attestation, the provider must verify 
       the Wallet Unit Attestation (WUA) to ensure the target Wallet Unit is 
       genuine and certified. This includes validating WUA signature and 
       checking revocation status.
     legalBasis:
-      regulation: "2024/2979"
-      article: "Article 3"
+      regulation: 2024/2979
+      article: Article 3
       paragraph: ""
     arfReference:
-      topic: "Topic 9"
-      hlr: ["WUA_11a", "WUA_20a"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 9
+      hlr:
+        - WUA_11a
+        - WUA_20a
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-032
     category: usage
-    requirement: "Include embedded disclosure policies in attestations"
+    requirement: Include embedded disclosure policies in attestations
     explanation: |
       Where applicable, attestation providers must include embedded disclosure 
       policies in issued attestations. These policies guide Wallet Units on 
       appropriate disclosure behavior for the attestation.
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 5a"
+      regulation: 2014/910
+      article: Article 5a
       paragraph: ""
     arfReference:
-      topic: "Topic 43"
-      hlr: ["EDP_09", "EDP_11"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 43
+      hlr:
+        - EDP_09
+        - EDP_11
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: medium
-
+    obligation: MUST
   - id: VEND-ISS-033
     category: registration
-    requirement: "Use registration certificates for Provider authentication"
+    requirement: Use registration certificates for Provider authentication
     explanation: |
       If a registration certificate was issued during registration, the 
       provider must use it for authentication in interactions with Wallet Units 
       as specified in the technical specifications.
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 45d"
+      regulation: 2014/910
+      article: Article 45d
       paragraph: ""
     arfReference:
-      topic: "Topic 44"
-      hlr: ["RPRC_14", "RPRC_22"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 44
+      hlr:
+        - RPRC_14
+        - RPRC_22
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
-
-  # ============================================================================
-  # PHASE 4.5: Additional PID Provider HLRs from Multi-Role Review
-  # ============================================================================
-
+    obligation: MUST
   - id: VEND-ISS-034
     category: issuance
-    requirement: "Comply with SD-JWT VC format requirements for PID issuance"
+    requirement: Comply with SD-JWT VC format requirements for PID issuance
     explanation: |
       When issuing PIDs in SD-JWT VC format, providers must include required 
       claims (vct), encode attributes per specification, ensure proper date 
       formatting, and make all claims selectively disclosable.
     legalBasis:
-      regulation: "2024/2977"
-      article: "Annex"
+      regulation: 2024/2977
+      article: Annex
       paragraph: ""
     arfReference:
-      topic: "Topic 3"
-      hlr: ["PID_14", "PID_17", "PID_18", "PID_19", "PID_20", "PID_21"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 3
+      hlr:
+        - PID_14
+        - PID_17
+        - PID_18
+        - PID_19
+        - PID_20
+        - PID_21
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-035
     category: issuance
-    requirement: "Comply with mDoc format requirements for PID issuance"
+    requirement: Comply with mDoc format requirements for PID issuance
     explanation: |
       When issuing PIDs in ISO 18013-5 mDoc format, providers must use correct 
       document types, element identifiers, value encodings, and ensure each 
       PID contains at most one attribute with the same identifier.
     legalBasis:
-      regulation: "2024/2977"
-      article: "Annex"
+      regulation: 2024/2977
+      article: Annex
       paragraph: ""
     arfReference:
-      topic: "Topic 3"
-      hlr: ["PID_06", "PID_07", "PID_11", "PID_12", "PID_13", "PID_16"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 3
+      hlr:
+        - PID_06
+        - PID_07
+        - PID_11
+        - PID_12
+        - PID_13
+        - PID_16
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
+    obligation: MUST
   - id: VEND-ISS-036
     category: revocation
-    requirement: "Support both attestation status mechanisms"
+    requirement: Support both attestation status mechanisms
     explanation: |
       PID and Attestation Providers must support both the Attestation Status 
       List mechanism and Token Status List mechanism for revocation checking 
       as specified in the technical specifications.
     legalBasis:
-      regulation: "2024/2979"
-      article: "Article 4"
+      regulation: 2024/2979
+      article: Article 4
       paragraph: ""
     arfReference:
-      topic: "Topic 7"
-      hlr: ["VCR_12a"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 7
+      hlr:
+        - VCR_12a
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
-
+    obligation: MUST
   - id: VEND-ISS-037
     category: issuance
-    requirement: "Implement complete OpenID4VCI protocol requirements"
+    requirement: Implement complete OpenID4VCI protocol requirements
     explanation: |
       Attestation Providers must implement all required elements of the 
       OpenID4VCI protocol, including credential offer structures, authorization 
       flows, and credential response handling.
     legalBasis:
-      regulation: "2024/2979"
-      article: "Article 3"
+      regulation: 2024/2979
+      article: Article 3
       paragraph: ""
     arfReference:
-      topic: "Topic 10"
-      hlr: ["ISSU_06", "ISSU_07", "ISSU_14", "ISSU_15", "ISSU_18", "ISSU_18a", "ISSU_22", "ISSU_22a", "ISSU_22b", "ISSU_25", "ISSU_26", "ISSU_27b", "ISSU_27c", "ISSU_32", "ISSU_32a"]
-    roles: [issuer]
-    productCategories: [issuance_platform]
+      topic: Topic 10
+      hlr:
+        - ISSU_06
+        - ISSU_07
+        - ISSU_14
+        - ISSU_15
+        - ISSU_18
+        - ISSU_18a
+        - ISSU_22
+        - ISSU_22a
+        - ISSU_22b
+        - ISSU_25
+        - ISSU_26
+        - ISSU_27b
+        - ISSU_27c
+        - ISSU_32
+        - ISSU_32a
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
     deadline: "2027-11-21"
-    criticality: critical
-
-  # ============================================================================
-  # PHASE 5: Article 45h Data Separation Requirements (2026-01-29)
-  # ============================================================================
-  # Article 45h establishes mandatory data separation requirements for all
-  # Electronic Attestation of Attributes (EAA) providers. These requirements
-  # apply to both qualified and non-qualified EAA issuers.
-  #
-  # Legal basis: Regulation EU 2014/910 as amended by 2024/1183, Article 45h
-  # Decision: Added during Article 45h interpretation audit
-
+    obligation: MUST
   - id: VEND-ISS-038
     category: security
-    requirement: "Do not combine EAA personal data with other services"
+    requirement: Do not combine EAA personal data with other services
     explanation: |
       Personal data collected during the provision of electronic attestation of 
       attributes services must NOT be combined with personal data from any other 
       services offered by the provider or their commercial partners. This is a 
       fundamental data isolation requirement that goes beyond GDPR purpose limitation.
-      
+
       Examples of prohibited combinations:
       - Merging EAA user profiles with marketing databases
       - Using EAA transaction data for other service analytics
       - Sharing EAA user data with commercial partner systems
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 45h"
+      regulation: 2014/910
+      article: Article 45h
       paragraph: "1"
     legalText: |
       Providers of qualified and non-qualified electronic attestation of attributes 
       services shall not combine personal data relating to the provision of those 
       services with personal data from any other services offered by them or their 
       commercial partners.
-    roles: [issuer]
-    productCategories: [issuance_platform, trust_services]
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+      - trust_services
     deadline: "2026-11-21"
-    criticality: critical
     notes: |
       Applies to ALL EAA providers (both qualified and non-qualified).
       This is more restrictive than GDPR purpose limitation - it mandates
       complete isolation of EAA-related personal data.
-
+    obligation: MUST NOT
   - id: VEND-ISS-039
     category: security
-    requirement: "Keep EAA personal data logically separate"
+    requirement: Keep EAA personal data logically separate
     explanation: |
       Personal data relating to the provision of electronic attestation of 
       attributes services must be kept in logically separate data stores from 
       other data held by the provider. This requires architectural separation
       at the data layer.
-      
+
       Implementation approaches:
       - Separate database instances or schemas
       - Logical partitioning with access controls
       - Data classification and tagging systems
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 45h"
+      regulation: 2014/910
+      article: Article 45h
       paragraph: "2"
     legalText: |
       Personal data relating to the provision of electronic attestation of 
       attributes services shall be kept logically separate from other data 
       held by the provider of electronic attestation of attributes.
-    roles: [issuer]
-    productCategories: [issuance_platform, trust_services]
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+      - trust_services
     deadline: "2026-11-21"
-    criticality: critical
     notes: |
       Applies to ALL EAA providers (both qualified and non-qualified).
       "Logically separate" means data isolation at the architectural level,
       not just access control restrictions.
-
+    obligation: MUST
   - id: VEND-ISS-040
     category: security
-    requirement: "Implement QEAA services functionally separate from other services"
+    requirement: Implement QEAA services functionally separate from other services
     explanation: |
       Qualified Electronic Attestation of Attributes (QEAA) providers must 
       implement the provision of such services in a manner that is functionally 
       separate from other services they provide. This goes beyond data separation 
       to require organizational and technical separation of the QEAA business unit.
-      
+
       Functional separation includes:
       - Dedicated operational teams or clear organizational boundaries
       - Separate infrastructure and systems where practical
       - Independent governance and management structures
       - Isolated operational processes
     legalBasis:
-      regulation: "2014/910"
-      article: "Article 45h"
+      regulation: 2014/910
+      article: Article 45h
       paragraph: "3"
     legalText: |
       Providers of qualified electronic attestation of attributes' services 
       shall implement the provision of such qualified trust services in a 
       manner that is functionally separate from other services provided by them.
-    roles: [issuer]
-    productCategories: [trust_services]
+    roles:
+      - issuer
+    productCategories:
+      - trust_services
     deadline: "2026-11-21"
-    criticality: critical
     notes: |
       Only applies to QUALIFIED EAA providers (QTSPs). Non-qualified 
       EAA providers are subject to 45h(1) and 45h(2) but not 45h(3).
-      
+
       This requirement also applies to private Wallet Providers via 
       Article 5a(14) "mutatis mutandis" - see RCA Wallet Provider track.
+    obligation: MUST

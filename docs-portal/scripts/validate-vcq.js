@@ -276,14 +276,24 @@ function validate() {
                 }
             }
 
-            // Validate criticality if present
-            const validCriticalities = ['critical', 'high', 'medium', 'low'];
-            if (req.criticality && !validCriticalities.includes(req.criticality)) {
+            // Validate obligation field (RFC 2119, replaces criticality)
+            const validObligations = ['MUST', 'MUST NOT', 'SHOULD', 'SHOULD NOT', 'MAY'];
+            if (req.obligation) {
+                if (!validObligations.includes(req.obligation)) {
+                    errors.push({
+                        file,
+                        reqId,
+                        field: 'obligation',
+                        value: req.obligation,
+                        message: `Invalid obligation: "${req.obligation}". Valid: ${validObligations.join(', ')}`
+                    });
+                }
+            } else {
                 warnings.push({
                     file,
                     reqId,
-                    field: 'criticality',
-                    message: `Non-standard criticality: "${req.criticality}". Recommended: ${validCriticalities.join(', ')}`
+                    field: 'obligation',
+                    message: `Missing 'obligation' field. Recommended: ${validObligations.join(', ')}`
                 });
             }
         }

@@ -774,7 +774,7 @@ function SummaryView({ requirements, categories, answers, categorizationScheme, 
     const categoryStats = useMemo(() => {
         const stats = {};
         categories.forEach(cat => {
-            stats[cat.id] = { ...cat, total: 0, critical: 0, high: 0, answered: 0, compliant: 0, nonCompliant: 0 };
+            stats[cat.id] = { ...cat, total: 0, must: 0, answered: 0, compliant: 0, nonCompliant: 0 };
         });
         requirements.forEach(req => {
             // Use getReqCategory for scheme-aware categorization (DEC-279)
@@ -782,8 +782,7 @@ function SummaryView({ requirements, categories, answers, categorizationScheme, 
             const cat = stats[catId];
             if (!cat) return;
             cat.total++;
-            if (req.criticality === 'critical') cat.critical++;
-            if (req.criticality === 'high') cat.high++;
+            if (req.obligation === 'MUST' || req.obligation === 'MUST NOT') cat.must++;
             const answer = answers[req.id]?.value;
             if (answer && answer !== 'pending') {
                 cat.answered++;
@@ -835,10 +834,10 @@ function SummaryView({ requirements, categories, answers, categorizationScheme, 
                                     <span>Total Requirements</span>
                                     <span className="vcq-stat-value">{cat.total}</span>
                                 </div>
-                                {cat.critical > 0 && (
-                                    <div className="vcq-category-stat-row critical">
-                                        <span>🔴 Critical</span>
-                                        <span className="vcq-stat-value">{cat.critical}</span>
+                                {cat.must > 0 && (
+                                    <div className="vcq-category-stat-row must">
+                                        <span>🔴 MUST</span>
+                                        <span className="vcq-stat-value">{cat.must}</span>
                                     </div>
                                 )}
                                 <div className="vcq-category-progress">

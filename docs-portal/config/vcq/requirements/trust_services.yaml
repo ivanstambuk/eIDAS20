@@ -20,7 +20,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-002
     category: registration
     requirement: Undergo regular conformity assessment (at least every 24 months)
@@ -39,7 +39,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-003
     category: registration
     requirement: Notify supervisory body of changes affecting qualified status
@@ -55,7 +55,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-004
     category: security
     requirement: Use qualified electronic signature/seal creation devices (QSCDs)
@@ -74,8 +74,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
-      - TSP-SEC-001
+    obligation: MUST
   - id: VEND-TSP-005
     category: security
     requirement: Protect signature/seal creation data against duplication and theft
@@ -95,7 +94,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-006
     category: security
     requirement: Maintain disaster recovery and business continuity capabilities
@@ -114,7 +113,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-007
     category: security
     requirement: Notify supervisory body of security breaches within 24 hours
@@ -134,7 +133,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-008
     category: security
     requirement: Implement secure remote signature creation (TS8) if offering remote QES
@@ -150,10 +149,10 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
     notes: |
       Remote QES allows signatories to create qualified signatures using 
       keys managed by the QTSP, rather than on a local QSCD.
+    obligation: SHOULD
   - id: VEND-TSP-009
     category: security
     requirement: Obtain sole control assurance for remote signing operations
@@ -173,7 +172,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-010
     category: security
     requirement: Support WYSIWYS (What You See Is What You Sign) for document signing
@@ -193,7 +192,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-011
     category: security
     requirement: Issue qualified timestamps from a trusted time source
@@ -213,7 +212,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-012
     category: issuance
     requirement: Issue QEAAs only after verifying data from authentic sources
@@ -235,7 +234,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-013
     category: issuance
     requirement: Sign QEAAs with qualified electronic signature or seal
@@ -257,7 +256,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-014
     category: revocation
     requirement: Provide QEAA revocation capability through status lists
@@ -277,7 +276,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-015
     category: contracts
     requirement: Maintain sufficient financial resources or liability insurance
@@ -297,7 +296,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-016
     category: contracts
     requirement: Accept liability for qualified signatures/attestations issued
@@ -317,7 +316,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-TSP-017
     category: registration
     requirement: Comply with common Access Certificate Policy requirements
@@ -338,7 +337,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-018
     category: contracts
     requirement: Handle suspension and cancellation of Trust Services
@@ -359,7 +358,7 @@ requirements:
     productCategories:
       - trust_services
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-TSP-019
     category: usage
     requirement: Implement authentic source verification for QTSPs
@@ -384,4 +383,4 @@ requirements:
       - trust_services
       - issuance_platform
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST

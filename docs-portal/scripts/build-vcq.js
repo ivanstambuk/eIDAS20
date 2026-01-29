@@ -224,70 +224,6 @@ function determineSourceGroup(req, legalBases) {
     return 'eidas';
 }
 
-/**
- * Derive RFC 2119 obligation level from requirement text.
- * 
- * Scans the requirement text and legalText for modal verbs per RFC 2119:
- * - MUST/SHALL/REQUIRED → "MUST" (absolute requirement)
- * - MUST NOT/SHALL NOT → "MUST NOT" (absolute prohibition)
- * - SHOULD/RECOMMENDED → "SHOULD" (recommended but exceptions exist)
- * - SHOULD NOT/NOT RECOMMENDED → "SHOULD NOT" (not recommended)
- * - MAY/OPTIONAL/CAN → "MAY" (truly optional)
- * 
- * Priority: MUST > MUST NOT > SHOULD > SHOULD NOT > MAY
- * If no modal verb found, defaults to SHOULD (recommendation without explicit mandate)
- * 
- * ⚠️ EXPECTED DISTRIBUTION: EU regulatory text overwhelmingly uses "shall" language,
- * resulting in ~87% of requirements being classified as MUST. This is correct behavior —
- * EU legislation is intentionally prescriptive. Low SHOULD/MAY counts are normal.
- * 
- * @param {Object} req - The requirement object
- * @returns {string} RFC 2119 obligation level
- */
-function deriveObligation(req) {
-    // Combine all text sources for scanning
-    const textSources = [
-        req.requirement || '',
-        req.legalText || '',
-        req.explanation || ''
-    ].join(' ').toLowerCase();
-
-    // Check for prohibitions first (MUST NOT / SHALL NOT)
-    if (/\b(must not|shall not)\b/.test(textSources)) {
-        return 'MUST NOT';
-    }
-
-    // Check for absolute requirements (MUST / SHALL / REQUIRED)
-    if (/\b(must|shall|required)\b/.test(textSources)) {
-        return 'MUST';
-    }
-
-    // Check for negative recommendations (SHOULD NOT / NOT RECOMMENDED)
-    if (/\b(should not|not recommended)\b/.test(textSources)) {
-        return 'SHOULD NOT';
-    }
-
-    // Check for recommendations (SHOULD / RECOMMENDED)
-    if (/\b(should|recommended)\b/.test(textSources)) {
-        return 'SHOULD';
-    }
-
-    // Check for optional (MAY / OPTIONAL / CAN)
-    if (/\b(may|optional|can)\b/.test(textSources)) {
-        return 'MAY';
-    }
-
-    // Default: if criticality is critical/high, assume MUST; otherwise SHOULD
-    if (req.criticality === 'critical') {
-        return 'MUST';
-    } else if (req.criticality === 'high') {
-        return 'SHOULD';
-    }
-
-    // Fallback default
-    return 'SHOULD';
-}
-
 for (const req of allRequirements) {
     // DEC-257: Schema v2 - roles and productCategories arrays
     const roles = req.roles || [];
@@ -321,9 +257,6 @@ for (const req of allRequirements) {
     // DEC-255: Determine source group for 3-tile filtering
     const sourceGroup = determineSourceGroup(req, legalBases);
 
-    // RFC 2119: Derive obligation level from requirement text
-    const obligation = deriveObligation(req);
-
     // Create processed requirement
     const processed = {
         id: req.id,
@@ -348,8 +281,7 @@ for (const req of allRequirements) {
         scope: req.scope || 'core',
         sourceGroup,  // DEC-255: For 3-tile filtering
         deadline: req.deadline,
-        criticality: req.criticality || 'medium',
-        obligation,  // RFC 2119: MUST, SHOULD, MAY, etc.
+        obligation: req.obligation || 'SHOULD',  // RFC 2119: MUST, SHOULD, MAY, etc. (stored in YAML)
         notes: req.notes?.trim(),
         _sourceFile: req._sourceFile
     };
@@ -415,12 +347,6 @@ const stats = {
         arf: requirementsBySourceGroup.arf.length
     },
     byCategory: {},
-    byCriticality: {
-        critical: 0,
-        high: 0,
-        medium: 0,
-        low: 0
-    },
     // RFC 2119 obligation counts
     byObligation: {
         'MUST': 0,
@@ -431,10 +357,9 @@ const stats = {
     }
 };
 
-// Count by category, criticality, and obligation
+// Count by category and obligation
 for (const req of processedRequirements) {
     stats.byCategory[req.category] = (stats.byCategory[req.category] || 0) + 1;
-    stats.byCriticality[req.criticality] = (stats.byCriticality[req.criticality] || 0) + 1;
     if (stats.byObligation[req.obligation] !== undefined) {
         stats.byObligation[req.obligation]++;
     }

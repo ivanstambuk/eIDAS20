@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T12:45:20.385Z",
+  "generatedAt": "2026-01-29T13:00:31.756Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -253,7 +253,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
@@ -286,7 +285,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -319,7 +317,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -356,7 +353,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -392,7 +388,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -425,7 +420,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -458,7 +452,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -491,7 +484,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -524,7 +516,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
@@ -557,7 +548,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -594,7 +584,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -626,7 +615,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -659,7 +647,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
     },
@@ -692,7 +679,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -729,7 +715,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -766,7 +751,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -803,7 +787,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -842,7 +825,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -879,7 +861,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -916,7 +897,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -953,7 +933,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -986,7 +965,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1023,7 +1001,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1061,7 +1038,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1098,7 +1074,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1137,7 +1112,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1176,7 +1150,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1222,7 +1195,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1265,7 +1237,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1309,7 +1280,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1352,7 +1322,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1398,7 +1367,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1441,7 +1409,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1484,7 +1451,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1526,7 +1492,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1568,7 +1533,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1610,7 +1574,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "low",
       "obligation": "MAY",
       "_sourceFile": "core.yaml"
     },
@@ -1653,7 +1616,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
     },
@@ -1686,7 +1648,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST NOT",
       "notes": "This requirement implements the \"Compliance by Environment\" principle \nestablished in DEC-281 (Jan 2026 Alignment Audit). Even if a specific \nattestation relates to an object or organization (not personal data per se), \nthe wallet session context and processing metadata create an identifiable \ndata subject context.\n\nExceptions (attestations that may not require full GDPR safeguards):\n- Pure boolean ZKP proofs with high unlinkability\n- Device-only attestations with no wallet user context\n- Anonymous aggregate attestations\n\nHowever, the PRODUCT should not make these determinations - the CUSTOMER \n(RP as data controller) documents exceptions in their DPIA.",
       "_sourceFile": "core.yaml"
@@ -1723,7 +1684,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.\nWhen the RP is a DORA-regulated financial entity, both sets apply.",
       "_sourceFile": "ict.yaml"
@@ -1766,7 +1726,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1802,7 +1761,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1837,7 +1795,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1872,7 +1829,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1907,7 +1863,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1949,7 +1904,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -1984,7 +1938,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -2020,7 +1973,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -2062,7 +2014,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "MUST NOT",
       "_sourceFile": "ict.yaml"
     },
@@ -2097,7 +2048,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
     },
@@ -2132,7 +2082,6 @@
       "scope": "extended",
       "sourceGroup": "dora",
       "deadline": "2025-01-17",
-      "criticality": "high",
       "obligation": "SHOULD",
       "notes": "This requirement is conditional - it only applies if the ESAs designate \nthe vendor as Critical based on systemic importance criteria (Art. 31(2)).\nMost intermediaries will NOT be designated as Critical ICT TPPs.",
       "_sourceFile": "ict.yaml"
@@ -2174,7 +2123,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2215,7 +2163,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2255,7 +2202,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2296,7 +2242,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2333,7 +2278,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2373,7 +2317,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2414,7 +2357,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2454,7 +2396,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2494,7 +2435,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2535,7 +2475,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2575,7 +2514,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "SHOULD",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2615,7 +2553,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2661,7 +2598,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2701,7 +2637,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2737,7 +2672,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2777,7 +2711,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2814,7 +2747,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate) \nbut may contain verification metadata (pass/fail, timestamp, error codes).",
       "_sourceFile": "intermediary.yaml"
@@ -2851,7 +2783,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2887,7 +2818,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2927,7 +2857,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -2968,7 +2897,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3009,7 +2937,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support \nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally \nsupport both formats per ISSU_12.",
       "_sourceFile": "intermediary.yaml"
@@ -3050,7 +2977,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3086,7 +3012,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all intermediaries will require \ncertification.",
       "_sourceFile": "intermediary.yaml"
@@ -3124,7 +3049,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3162,7 +3086,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3199,7 +3122,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3240,7 +3162,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3277,7 +3198,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3314,7 +3234,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
     },
@@ -3355,7 +3274,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "This is the technical implementation of RPI_06. The access certificate comes from \nthe intermediary's own registration. The RP registration certificate is obtained \nduring the intermediary's registration of each intermediated RP (per RPI_03).",
       "_sourceFile": "intermediary.yaml"
@@ -3397,7 +3315,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. \nThe intermediary must ensure this registration is complete BEFORE accepting \nintermediation requests from an RP, otherwise wallet users will see verification \nfailures.",
       "_sourceFile": "intermediary.yaml"
@@ -3438,7 +3355,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "SHOULD",
       "notes": "This covers ARF Topic 7 (VCR_*) verification requirements for attestation \nrevocation. Attestation Status Lists (VCR_11) are the primary mechanism \nfor efficient batch revocation checking without per-credential queries.",
       "_sourceFile": "intermediary.yaml"
@@ -3480,7 +3396,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3521,7 +3436,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3557,7 +3471,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3598,7 +3511,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "This requirement only applies to QEAA issuance. Non-qualified EAAs \nmay be issued without QTSP status but must still register.",
       "_sourceFile": "issuer.yaml"
@@ -3639,7 +3551,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "Per ARF ISSU_12: \"A PID Provider or Attestation Provider SHALL offer its \nPIDs or attestations in all formats required in the PID Rulebook or the \napplicable Attestation Rulebook.\"\n\nThis is distinct from the RP/Verifier requirement, where format support \ndepends on supported use cases (remote vs. proximity). For issuers, \nBOTH formats are unconditionally mandatory.",
       "_sourceFile": "issuer.yaml"
@@ -3677,7 +3588,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3717,7 +3627,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3757,7 +3666,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
     },
@@ -3794,7 +3702,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3831,7 +3738,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3871,7 +3777,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3914,7 +3819,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -3958,7 +3862,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4000,7 +3903,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4040,7 +3942,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
     },
@@ -4080,7 +3981,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
     },
@@ -4125,7 +4025,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4167,7 +4066,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4207,7 +4105,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4243,7 +4140,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
     },
@@ -4286,7 +4182,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4327,7 +4222,6 @@
       "scope": "core",
       "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4363,7 +4257,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "_sourceFile": "issuer.yaml"
     },
@@ -4404,7 +4297,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4451,7 +4343,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "Covers PID-specific format requirements. Non-PID attestation providers \nshould refer to the relevant Attestation Rulebook instead.",
       "_sourceFile": "issuer.yaml"
@@ -4496,7 +4387,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4542,7 +4432,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4585,7 +4474,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4631,7 +4519,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4674,7 +4561,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4717,7 +4603,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "medium",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4760,7 +4645,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4807,7 +4691,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4854,7 +4737,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4896,7 +4778,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4952,7 +4833,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
@@ -4990,7 +4870,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2026-11-21",
-      "criticality": "critical",
       "obligation": "MUST NOT",
       "notes": "Applies to ALL EAA providers (both qualified and non-qualified).\nThis is more restrictive than GDPR purpose limitation - it mandates\ncomplete isolation of EAA-related personal data.",
       "_sourceFile": "issuer.yaml"
@@ -5029,7 +4908,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2026-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "Applies to ALL EAA providers (both qualified and non-qualified).\n\"Logically separate\" means data isolation at the architectural level,\nnot just access control restrictions.",
       "_sourceFile": "issuer.yaml"
@@ -5067,7 +4945,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2026-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "notes": "Only applies to QUALIFIED EAA providers (QTSPs). Non-qualified \nEAA providers are subject to 45h(1) and 45h(2) but not 45h(3).\n\nThis requirement also applies to private Wallet Providers via \nArticle 5a(14) \"mutatis mutandis\" - see RCA Wallet Provider track.",
       "_sourceFile": "issuer.yaml"
@@ -5103,7 +4980,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5138,7 +5014,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5172,7 +5047,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5207,7 +5081,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical - TSP-SEC-001",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5242,7 +5115,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5277,7 +5149,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5312,7 +5183,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5346,7 +5216,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "SHOULD",
       "notes": "Remote QES allows signatories to create qualified signatures using \nkeys managed by the QTSP, rather than on a local QSCD.",
       "_sourceFile": "trust_services.yaml"
@@ -5382,7 +5251,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5417,7 +5285,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5452,7 +5319,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5489,7 +5355,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5526,7 +5391,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5566,7 +5430,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5601,7 +5464,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5636,7 +5498,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5677,7 +5538,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5718,7 +5578,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "critical",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     },
@@ -5764,7 +5623,6 @@
       "scope": "core",
       "sourceGroup": "eidas",
       "deadline": "2027-11-21",
-      "criticality": "high",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
     }
@@ -6346,13 +6204,6 @@
       "security": 28,
       "issuance": 17,
       "revocation": 7
-    },
-    "byCriticality": {
-      "critical": 72,
-      "high": 52,
-      "medium": 16,
-      "low": 1,
-      "critical - TSP-SEC-001": 1
     },
     "byObligation": {
       "MUST": 122,

@@ -24,7 +24,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-INT-002
     category: contracts
     requirement: Ensure RP's intended data requests are accurately communicated to wallet
@@ -47,7 +47,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST NOT
   - id: VEND-INT-003
     category: usage
     requirement: Forward presentation requests without modification of requested attributes
@@ -67,7 +67,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-INT-004
     category: usage
     requirement: Forward wallet presentations to RP without modification
@@ -90,7 +90,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST NOT
   - id: VEND-INT-005
     category: usage
     requirement: Support both remote and proximity presentation protocols
@@ -111,7 +111,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
+    obligation: MUST
   - id: VEND-INT-006
     category: usage
     requirement: Forward attributes only to the requesting RP after verification
@@ -132,7 +132,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-007
     category: usage
     requirement: Maintain up-to-date Trusted Lists for PID Providers
@@ -157,7 +157,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-008
     category: usage
     requirement: Maintain up-to-date Trusted Lists for Attestation Providers
@@ -177,7 +177,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-009
     category: usage
     requirement: Obtain trust anchors only from official Trusted List sources
@@ -197,7 +197,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-010
     category: usage
     requirement: Validate attestation signatures using official trust anchors
@@ -220,7 +220,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-011
     category: usage
     requirement: Verify attestation revocation status before acceptance (recommended)
@@ -242,7 +242,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: SHOULD
   - id: VEND-INT-012
     category: usage
     requirement: Verify the wallet unit's device binding
@@ -262,7 +262,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-013
     category: security
     requirement: Verify presentation freshness and prevent replay attacks
@@ -286,7 +286,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-014
     category: security
     requirement: Ensure secure channel for transmission to RP
@@ -306,7 +306,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-016
     category: security
     requirement: Implement secure key management for verification operations
@@ -323,7 +323,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-017
     category: security
     requirement: Protect verification results integrity
@@ -343,7 +343,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-018
     category: security
     requirement: Maintain audit logs of verification operations
@@ -365,10 +365,10 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
     notes: |
       Logs must not contain attestation content (due to no-storage mandate) 
       but may contain verification metadata (pass/fail, timestamp, error codes).
+    obligation: MUST
   - id: VEND-INT-019
     category: usage
     requirement: Do not extract or log individual attribute values from presentations
@@ -384,8 +384,8 @@ requirements:
       - relying_party
     productCategories:
       - connector
-    criticality: critical
     deadline: "2027-11-21"
+    obligation: MUST NOT
   - id: VEND-INT-020
     category: usage
     requirement: Do not correlate or link user presentations across different RPs
@@ -402,7 +402,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST NOT
   - id: VEND-INT-021
     category: usage
     requirement: Delete attestation data immediately after forwarding to RP
@@ -424,7 +424,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
+    obligation: MUST
   - id: VEND-INT-022
     category: contracts
     requirement: Specify RP details in each presentation request to wallet
@@ -450,26 +450,26 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-INT-023
     category: usage
     requirement: Support mandatory credential formats based on supported use cases
     explanation: |
       Relying Party connectors and intermediaries must support the credential formats 
       relevant to their operational use cases:
-      
+
       **Remote Presentations (online services):**
       - SD-JWT-VC format (Selective Disclosure JSON Web Token)
       - OpenID4VP protocol for presentation exchange
-      
+
       **Proximity Presentations (in-person verification):**
       - ISO/IEC 18013-5:2021 (mDoc) format
       - BLE/NFC protocols per ISO/IEC 18013-5 and 18013-7
-      
+
       If the RP or intermediary supports BOTH remote and proximity use cases, 
       then BOTH formats MUST be supported. The requirement is use-case-dependent, 
       but within each use case the format is mandatory.
-      
+
       Note: This differs from Issuers, who must unconditionally support both formats.
     legalBasis:
       regulation: 2024/2979
@@ -484,21 +484,21 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 3
       hlr: PID_02
     notes: |
       Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support 
       the extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]..."
-      
+
       The "or" indicates use-case dependency:
       - Online-only RPs: SD-JWT-VC / OpenID4VP required
       - In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required
       - Mixed-mode RPs: BOTH formats required
-      
+
       This contrasts with VEND-ISS-005 where issuers must unconditionally 
       support both formats per ISSU_12.
+    obligation: MUST
   - id: VEND-INT-024
     category: usage
     requirement: Support selective disclosure in both credential formats
@@ -515,10 +515,10 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
     arfReference:
       topic: Topic 12
       hlr: ARB_02
+    obligation: MUST
   - id: VEND-INT-025
     category: registration
     requirement: Consider certification for cryptographic components
@@ -536,11 +536,11 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
     notes: |
       This is a conditional requirement based on the RP's risk assessment and 
       the sensitivity of the use case. Not all intermediaries will require 
       certification.
+    obligation: MUST
   - id: VEND-INT-026
     category: usage
     requirement: Comply with embedded disclosure policies in attestations
@@ -562,7 +562,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-INT-027
     category: usage
     requirement: Support WebAuthn specification for pseudonym generation
@@ -586,7 +586,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
+    obligation: MUST
   - id: VEND-INT-028
     category: usage
     requirement: Support relying-party-specific pseudonyms
@@ -606,7 +606,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
+    obligation: MUST
   - id: VEND-INT-029
     category: usage
     requirement: Use valid Wallet-Relying Party Access Certificate
@@ -628,10 +628,10 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
     arfReference:
       topic: Topic 6
       hlr: RPA_01
+    obligation: MUST
   - id: VEND-INT-030
     category: usage
     requirement: Support data erasure request protocol
@@ -653,7 +653,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
+    obligation: MUST
   - id: VEND-INT-031
     category: contracts
     requirement: Support user reporting to data protection authorities
@@ -675,7 +675,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
+    obligation: MUST
   - id: VEND-INT-032
     category: usage
     requirement: Include intermediary access certificate and RP registration certificate in requests
@@ -702,11 +702,11 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: critical
     notes: |
       This is the technical implementation of RPI_06. The access certificate comes from 
       the intermediary's own registration. The RP registration certificate is obtained 
       during the intermediary's registration of each intermediated RP (per RPI_03).
+    obligation: MUST
   - id: VEND-INT-033
     category: contracts
     requirement: Ensure intermediary-RP contractual relationship is registered
@@ -734,12 +734,12 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
     notes: |
       This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. 
       The intermediary must ensure this registration is complete BEFORE accepting 
       intermediation requests from an RP, otherwise wallet users will see verification 
       failures.
+    obligation: MUST
   - id: VEND-INT-034
     category: usage
     requirement: Support attestation status list verification mechanisms (recommended)
@@ -761,8 +761,8 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: high
     notes: |
       This covers ARF Topic 7 (VCR_*) verification requirements for attestation 
       revocation. Attestation Status Lists (VCR_11) are the primary mechanism 
       for efficient batch revocation checking without per-credential queries.
+    obligation: SHOULD
