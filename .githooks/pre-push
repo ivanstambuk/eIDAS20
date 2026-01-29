@@ -18,5 +18,8 @@ npm run validate:css
 echo "📊 Validating RCA..."
 npm run validate:rca
 
+echo "📦 Validating VCQ..."
+npm run validate:vcq
+
 echo "✅ Pre-push validation passed!"
 echo "   (Full build will run in CI)"
