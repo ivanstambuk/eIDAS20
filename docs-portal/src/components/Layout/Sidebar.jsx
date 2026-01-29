@@ -22,7 +22,7 @@ const navigation = [
             { name: 'RCA', path: '/rca', icon: 'clipboard-check' },
             { name: 'VCQ', path: '/vcq', icon: 'clipboard-list' },
             { name: 'All Requirements', path: '/requirements', icon: 'layers' },
-            { name: 'AI Assistant', path: '/ai-chat', icon: 'message-circle' },
+            // AI Assistant removed — accessible via floating chat button (DEC-287)
         ]
     },
     {
