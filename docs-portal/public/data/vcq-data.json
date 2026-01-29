@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T23:56:26.302Z",
+  "generatedAt": "2026-01-29T00:01:38.786Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2275,7 +2275,7 @@
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_07"
+        "hlr": "RPI_06"
       },
       "roles": [
         "relying_party"
@@ -2339,9 +2339,9 @@
     },
     {
       "id": "VEND-INT-003",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Forward presentation requests without modification of requested attributes",
       "explanation": "The intermediary must accurately relay the RP's attribute request to the \nwallet without adding, removing, or modifying the requested attributes. The \nrequest must match what the RP registered with supervisory authorities.",
       "legalBases": [
@@ -2380,9 +2380,9 @@
     },
     {
       "id": "VEND-INT-004",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Forward wallet presentations to RP without modification",
       "explanation": "The intermediary must relay the wallet's presentation to the RP exactly as \nreceived, without altering, extracting, or processing the credential data. \nThe presentation integrity must be preserved.",
       "legalBases": [
@@ -2422,9 +2422,9 @@
     },
     {
       "id": "VEND-INT-005",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support both remote and proximity presentation protocols",
       "explanation": "If the RP requires both remote and proximity (offline) presentation \nscenarios, the intermediary must support the relevant ISO/IEC 18013-5 and \nISO/IEC TS 18013-7 protocols.",
       "legalBases": [
@@ -2441,13 +2441,6 @@
         "paragraph": "1-2"
       },
       "legalBasisLink": "/implementing-acts/2024-2982?section=article-5",
-      "arfReference": {
-        "topic": "Topic 1",
-        "hlr": [
-          "OIA_03a",
-          "OIA_04"
-        ]
-      },
       "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
       "roles": [
         "relying_party"
@@ -2469,9 +2462,9 @@
     },
     {
       "id": "VEND-INT-006",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Forward attributes only to the requesting RP after verification",
       "explanation": "After receiving attestation data from a wallet and verifying it, the \nintermediary must forward the attributes ONLY to the specific RP on whose \nbehalf the request was made. If verification fails, no attributes may be \nforwarded.",
       "legalBases": [
@@ -2510,9 +2503,9 @@
     },
     {
       "id": "VEND-INT-007",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
       "explanation": "The intermediary must maintain current copies of the Trusted Lists containing \nPID Provider trust anchors (public keys/certificates). These lists are \npublished by Member States and the Commission and must be refreshed \nregularly to capture additions, modifications, and revocations.",
       "legalBases": [
@@ -2554,9 +2547,9 @@
     },
     {
       "id": "VEND-INT-008",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
       "explanation": "The intermediary must maintain current copies of Trusted Lists for qualified \nand non-qualified electronic attestation of attributes (QEAA/EAA) providers. \nThese trust anchors are essential for validating attestation signatures.",
       "legalBases": [
@@ -2595,9 +2588,9 @@
     },
     {
       "id": "VEND-INT-009",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Obtain trust anchors only from official Trusted List sources",
       "explanation": "Trust anchors for verification must be obtained exclusively from official \nEU and Member State Trusted Lists, not from third-party aggregators or \nunofficial sources. This ensures the authenticity of verification keys.",
       "legalBases": [
@@ -2657,8 +2650,8 @@
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-8",
       "legalText": "The validity of attestations shall be verified using the trust anchors \npublished in official Trusted Lists.",
       "arfReference": {
-        "topic": "Topic 6",
-        "hlr": "RPA_05"
+        "topic": "Topic 1",
+        "hlr": "OIA_12"
       },
       "roles": [
         "relying_party"
@@ -2739,8 +2732,8 @@
       },
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
-        "topic": "Topic 6",
-        "hlr": "RPA_07"
+        "topic": "Topic 52",
+        "hlr": "RPI_09"
       },
       "roles": [
         "relying_party"
@@ -2780,8 +2773,8 @@
       },
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
       "arfReference": {
-        "topic": "Topic 6",
-        "hlr": "RPA_08"
+        "topic": "Topic 52",
+        "hlr": "RPI_09"
       },
       "roles": [
         "relying_party"
@@ -3286,9 +3279,9 @@
     },
     {
       "id": "VEND-INT-026",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Comply with embedded disclosure policies in attestations",
       "explanation": "Electronic attestations of attributes may contain embedded disclosure \npolicies that specify conditions the relying party must meet to access \nthe attestation. The intermediary must verify RP compliance with these \npolicies and ensure the wallet can inform the user of the result.",
       "legalBases": [
@@ -3326,9 +3319,9 @@
     },
     {
       "id": "VEND-INT-027",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support WebAuthn specification for pseudonym generation",
       "explanation": "When the intermediary supports pseudonymous authentication from wallet \nunits, it must support the WebAuthn specification as mandated in \nAnnex V of the Integrity regulation. This enables privacy-preserving \nauthentication without revealing user identity.",
       "legalBases": [
@@ -3367,9 +3360,9 @@
     },
     {
       "id": "VEND-INT-028",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Support relying-party-specific pseudonyms",
       "explanation": "Wallet units generate unique pseudonyms per relying party, ensuring \nunlinkability across different RPs. The intermediary must correctly \nhandle these RP-specific pseudonyms in verification flows.",
       "legalBases": [
@@ -3407,9 +3400,9 @@
     },
     {
       "id": "VEND-INT-029",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Use valid Wallet-Relying Party Access Certificate",
       "explanation": "The intermediary must use a valid Wallet-Relying Party Access Certificate \n(issued by its Registrar) when interacting with wallet units. The \ncertificate identifies the intermediary and enables the wallet to verify \nits registration status.",
       "legalBases": [
@@ -3531,9 +3524,9 @@
     },
     {
       "id": "VEND-INT-032",
-      "category": "issuance",
-      "categoryLabel": "Issuance",
-      "categoryIcon": "📤",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
       "requirement": "Include intermediary access certificate and RP registration certificate in requests",
       "explanation": "When requesting attestations from a wallet on behalf of an intermediated RP, the \nintermediary must include both: (1) its own access certificate (proving its identity \nas a registered intermediary), and (2) the registration certificate of the \nintermediated RP, if the RP has one. This enables the wallet to verify both \nthe intermediary and the ultimate service provider.",
       "legalBases": [
@@ -6512,7 +6505,6 @@
       "VEND-INT-002",
       "VEND-INT-003",
       "VEND-INT-004",
-      "VEND-INT-005",
       "VEND-INT-006",
       "VEND-INT-007",
       "VEND-INT-008",
@@ -6585,14 +6577,14 @@
       "eidas": 115,
       "gdpr": 16,
       "dora": 12,
-      "arf": 77
+      "arf": 76
     },
     "byCategory": {
-      "usage": 33,
+      "usage": 45,
       "contracts": 26,
       "registration": 23,
       "security": 25,
-      "issuance": 29,
+      "issuance": 17,
       "revocation": 7
     },
     "byCriticality": {
