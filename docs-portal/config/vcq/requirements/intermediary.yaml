@@ -771,6 +771,6 @@ requirements:
     deadline: "2027-11-21"
     criticality: high
     notes: |
-      This covers ARF Topic 7 (VCR_*) and Topic 14 (VAL_*) verification requirements. 
-      Attestation Status Lists (VCR_11) are the primary mechanism for efficient 
-      batch revocation checking without per-credential queries.
+      This covers ARF Topic 7 (VCR_*) verification requirements for attestation 
+      revocation. Attestation Status Lists (VCR_11) are the primary mechanism 
+      for efficient batch revocation checking without per-credential queries.
