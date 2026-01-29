@@ -1,14 +1,15 @@
 schemaVersion: 1
-generatedAt: '2026-01-28T16:33:00.000Z'
-# Updated: Resolved all 32 multi_role_review HLRs (DEC-260)
+generatedAt: '2026-01-29T09:06:00.000Z'
+# Updated: Added 14 remaining RP-topic HLRs from coverage audit (2026-01-29)
 summary:
-  totalExcluded: 315
-  wallet_provider: 182   # +11 from multi_role_review
-  member_state: 50       # +7 from multi_role_review
+  totalExcluded: 329
+  wallet_provider: 190   # +8 from RP-topic audit
+  member_state: 50
   user_behavior: 2
-  informative: 8         # +3 from multi_role_review
+  informative: 8
+  empty: 6               # New category for Empty placeholder HLRs
   multi_role_review: 0   # All resolved ✓
-  rulebook_author: 34    # +11 from multi_role_review
+  rulebook_author: 34
 exclusions:
   wallet_provider:
     reason: Wallet Provider obligation - out of scope for RP/Issuer vendors
@@ -195,6 +196,15 @@ exclusions:
       - WUA_17
       - WUA_18
       - WUA_20
+      # === Added 2026-01-29 from RP-topic coverage audit ===
+      - OIA_03a        # Wallet support OpenID4VP protocol
+      - OIA_04         # Wallet verify and process RP requests
+      - RPA_05         # Wallet inform User if RP auth fails
+      - RPA_08         # Wallet authenticate User before approval
+      - VCR_01a        # Wallet Provider use revocation methods
+      - VCR_19         # Wallet regularly check revocation status
+      - DATA_DLT_03    # Wallet provide deletion request function
+      - DATA_DLT_06    # Wallet log deletion request details
   member_state:
     reason: Member State or Commission obligation - government responsibility
     hlrs:
@@ -264,6 +274,16 @@ exclusions:
       - VCR_07a        # Was multi_role_review: SHOULD check revocation - already implied by VEND-CORE-030
       - VCR_07b        # Was multi_role_review: SHOULD check freshness - already implied by VEND-CORE-030
       - QTSPAS_07a     # Was multi_role_review: SHOULD align with OOTS - advisory guidance
+  empty:
+    reason: Empty placeholder HLR - no specification text
+    hlrs:
+      - OIA_03
+      - RPA_09
+      - ProxId_06
+      - DATA_DLT_04
+      - RPI_02
+      - RPI_06a
+      - RPI_07b
   multi_role_review:
     reason: Requires manual review - multi-role HLR (RESOLVED - all reviewed 2026-01-28)
     hlrs: []           # All 32 HLRs reclassified to appropriate categories
