@@ -7080,15 +7080,35 @@ Article 3(3) mandates that the audit produce a **comprehensive evaluation** cove
 
 # 9. Consolidated Gap Analysis
 
-The following gaps have been identified across the assessment. Items are categorized by severity and linked to their source sections.
+> **Gap Inventory Summary**
+> 
+> This assessment identifies **76 total gaps** across PSD2 RTS 2018/389 compliance:
+> 
+> | Category | Count | Purpose |
+> |----------|-------|---------|
+> | **Compliance Gaps** (§9.1-9.3) | 6 | Critical/Moderate/Low findings requiring action |
+> | **Implementation Clarity Gaps** (§9.4) | 70 | Specification ambiguities by control owner |
+> 
+> | Severity | Compliance Gaps | Clarity Gaps | Total |
+> |----------|-----------------|--------------|-------|
+> | 🔴 Critical | 1 | 3 | 4 |
+> | 🟡 Moderate | 4 | 25 | 29 |
+> | 🟢 Low | 1 | 42 | 43 |
+> 
+> **Reading Guide:**
+> - **For executives**: Focus on §9.1-9.3 (6 compliance gaps with remediation paths)
+> - **For auditors**: Review §9.4 for completeness and RTS article traceability
+> - **For engineers**: §9.4.2 (PSP-Addressable) lists what you must build
 
-## 9.1 Critical Gaps (Action Required)
+---
+
+## 9.1 Compliance Gaps: Critical (1)
 
 | Gap ID | Article | Description | Impact | Recommendation |
 |--------|---------|-------------|--------|----------------|
 | **GAP-01** | RTS Art. 4(3)(b) | **PIN lockout NOT implemented** — Reference implementation allows unlimited PIN retries | Regulatory non-compliance | Implement 5-attempt lockout with exponential backoff |
 
-## 9.2 Moderate Gaps (Monitor)
+## 9.2 Compliance Gaps: Moderate (4)
 
 | Gap ID | Article | Description | Impact | Recommendation |
 |--------|---------|-------------|--------|----------------|
@@ -7097,20 +7117,42 @@ The following gaps have been identified across the assessment. Items are categor
 | **GAP-04** | RTS Art. 5(1)(c) | TPP verification flow not fully specified | PSP cannot verify TPP identity in current TS12 | Monitor GitHub Discussion #439 |
 | **GAP-05** | PSD2 Art. 97(1) | Missing `urn:eudi:sca:consents:1` transaction type | AISP consent capture not supported | Requested by ETPPA, await TS12 v1.1 |
 
-## 9.3 Low-Risk Gaps (Acceptable)
+## 9.3 Compliance Gaps: Low (1)
 
 | Gap ID | Article | Description | Impact | Recommendation |
 |--------|---------|-------------|--------|----------------|
 | **GAP-06** | RTS Art. 5(1)(a) | Display duration not mandated | User may confirm too quickly | Recommend 3s minimum in SCA Attestation Rulebook |
 
+### 9.3.1 Compliance-to-Clarity Gap Mapping
+
+The 6 compliance gaps above relate to the following detailed clarity gaps documented in §9.4:
+
+| Compliance Gap | Related Clarity Gaps | Control Owner | Notes |
+|----------------|----------------------|---------------|-------|
+| **GAP-01** (PIN lockout) | K-3, K-4, MI-1, MI-2, SC-1 | Wallet | PIN UI/validation is wallet-controlled |
+| **GAP-02** (Overlay attack) | DP-1, DP-2 | Wallet | Display security is OS/wallet responsibility |
+| **GAP-03** (mDOC linking) | DL-1, DL-2 | Ecosystem | Requires TS12/ISO 18013-5 extension |
+| **GAP-04** (TPP verification) | FR-2, FD-2 | Ecosystem | Awaiting trust framework specification |
+| **GAP-05** (consents:1) | — | Ecosystem | Pure specification gap, no related clarity issues |
+| **GAP-06** (Display duration) | DL-1 | Ecosystem | Rulebook must specify minimum duration |
+
 ---
 
-## 9.4 Gap Controllability Analysis
+## 9.4 Implementation Clarity Gaps (70 Gaps)
 
-► **Purpose**: This section categorizes gaps by **who can address them**, helping PSPs understand:
-► - What they **must implement** themselves
-► - What they **depend on the wallet** for (and cannot fix)
-► - What requires **ecosystem-level changes** (neither party alone can fix)
+> **Purpose**: This section catalogs **specification ambiguities** discovered during 
+> article-by-article analysis. Unlike the compliance gaps above (which represent 
+> non-conformance), these are areas where **specifications lack clarity**, creating 
+> implementation variance risk.
+>
+> Gaps are categorized by **who can address them**:
+> 
+> | Owner | Count | PSP Strategy |
+> |-------|-------|--------------|
+> | **Wallet-Controlled** | 24 | Require certification, verify attestations |
+> | **PSP-Addressable** | 23 | Implement controls, define policies |
+> | **Ecosystem** | 22 | Monitor specs, participate in standards, accept residual risk |
+
 
 ### 9.4.1 Wallet-Controlled Gaps (PSP Cannot Fix)
 
