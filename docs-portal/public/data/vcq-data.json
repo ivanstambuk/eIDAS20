@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T00:11:24.201Z",
+  "generatedAt": "2026-01-29T00:20:05.643Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1626,8 +1626,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Support proximity identification flows",
-      "explanation": "Relying Party Instances that support proximity identification must \nimplement the specified BLE or NFC protocols for local credential \npresentation without internet connectivity.",
+      "requirement": "Support proximity identification flows (optional)",
+      "explanation": "Relying Party Instances may optionally support proximity identification flows. \nIf implemented, the specified BLE or NFC protocols (ISO/IEC 18013-5) are used \nfor local credential presentation without internet connectivity. \nNote: Support for proximity flows by Relying Parties is not mandatory per ARF.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -1660,8 +1660,8 @@
       "sourceGroup": "eidas",
       "linkedRCA": [],
       "deadline": "2027-11-21",
-      "criticality": "medium",
-      "obligation": "MUST",
+      "criticality": "low",
+      "obligation": "MAY",
       "_sourceFile": "core.yaml"
     },
     {
@@ -6370,15 +6370,15 @@
     "byCriticality": {
       "critical": 72,
       "high": 49,
-      "medium": 17,
-      "low": 0
+      "medium": 16,
+      "low": 1
     },
     "byObligation": {
-      "MUST": 123,
+      "MUST": 122,
       "MUST NOT": 9,
       "SHOULD": 6,
       "SHOULD NOT": 0,
-      "MAY": 0
+      "MAY": 1
     }
   }
 }

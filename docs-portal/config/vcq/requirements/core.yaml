@@ -817,11 +817,12 @@ requirements:
     criticality: medium
   - id: VEND-CORE-040
     category: usage
-    requirement: Support proximity identification flows
+    requirement: Support proximity identification flows (optional)
     explanation: |
-      Relying Party Instances that support proximity identification must 
-      implement the specified BLE or NFC protocols for local credential 
-      presentation without internet connectivity.
+      Relying Party Instances may optionally support proximity identification flows. 
+      If implemented, the specified BLE or NFC protocols (ISO/IEC 18013-5) are used 
+      for local credential presentation without internet connectivity. 
+      Note: Support for proximity flows by Relying Parties is not mandatory per ARF.
     legalBasis:
       regulation: 2024/2979
       article: Article 2
@@ -835,7 +836,7 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
-    criticality: medium
+    criticality: low
   - id: VEND-CORE-041
     category: registration
     requirement: Handle registration certificate updates and renewals
