@@ -453,11 +453,24 @@ requirements:
     criticality: high
   - id: VEND-INT-023
     category: usage
-    requirement: Support mandatory credential formats (ISO 18013-5 and W3C VC)
+    requirement: Support mandatory credential formats based on supported use cases
     explanation: |
-      The intermediary must be capable of verifying attestations in both mandated 
-      formats: ISO/IEC 18013-5:2021 (mDoc) and W3C Verifiable Credentials Data 
-      Model 1.1. This ensures interoperability across the EUDIW ecosystem.
+      Relying Party connectors and intermediaries must support the credential formats 
+      relevant to their operational use cases:
+      
+      **Remote Presentations (online services):**
+      - SD-JWT-VC format (Selective Disclosure JSON Web Token)
+      - OpenID4VP protocol for presentation exchange
+      
+      **Proximity Presentations (in-person verification):**
+      - ISO/IEC 18013-5:2021 (mDoc) format
+      - BLE/NFC protocols per ISO/IEC 18013-5 and 18013-7
+      
+      If the RP or intermediary supports BOTH remote and proximity use cases, 
+      then BOTH formats MUST be supported. The requirement is use-case-dependent, 
+      but within each use case the format is mandatory.
+      
+      Note: This differs from Issuers, who must unconditionally support both formats.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
@@ -475,6 +488,17 @@ requirements:
     arfReference:
       topic: Topic 3
       hlr: PID_02
+    notes: |
+      Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support 
+      the extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]..."
+      
+      The "or" indicates use-case dependency:
+      - Online-only RPs: SD-JWT-VC / OpenID4VP required
+      - In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required
+      - Mixed-mode RPs: BOTH formats required
+      
+      This contrasts with VEND-ISS-005 where issuers must unconditionally 
+      support both formats per ISSU_12.
   - id: VEND-INT-024
     category: usage
     requirement: Support selective disclosure in both credential formats

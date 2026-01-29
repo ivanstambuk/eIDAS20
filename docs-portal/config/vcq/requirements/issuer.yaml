@@ -92,12 +92,23 @@ requirements:
       hlr: QTSPAS_02
   - id: VEND-ISS-005
     category: issuance
-    requirement: Issue attestations in mandated credential formats (mDoc and SD-JWT-VC)
+    requirement: Issue attestations in BOTH mandated credential formats (mDoc and SD-JWT-VC)
     explanation: |
-      Attestations must be issued in the mandated formats: ISO/IEC 18013-5 (mDoc) 
-      and SD-JWT-based Verifiable Credentials (SD-JWT-VC). For maximum interoperability, 
-      the platform should support both formats, allowing relying parties to request 
-      their preferred format. The format(s) supported must be published in Provider Information.
+      Attestation providers MUST issue PIDs and attestations in ALL formats required 
+      by the applicable PID Rulebook or Attestation Rulebook. Currently, the mandated 
+      formats are:
+      
+      1. **ISO/IEC 18013-5 (mDoc)**: CBOR-based format for proximity and remote 
+         presentations, originally designed for mobile driving licenses but extended 
+         to all wallet attestations.
+      
+      2. **SD-JWT-VC**: Selective Disclosure JSON Web Token format for privacy-
+         preserving remote presentations, enabling holders to reveal only specific 
+         claims.
+      
+      Both formats MUST be supported - this is not optional. The formats supported 
+      must be published in Provider Information to enable wallet units to request 
+      attestations in all available formats per ARF ISSU_12a.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
@@ -111,6 +122,15 @@ requirements:
       - issuance_platform
     deadline: "2027-11-21"
     criticality: critical
+    notes: |
+      Per ARF ISSU_12: "A PID Provider or Attestation Provider SHALL offer its 
+      PIDs or attestations in all formats required in the PID Rulebook or the 
+      applicable Attestation Rulebook."
+      
+      This is distinct from the RP/Verifier requirement, where format support 
+      depends on supported use cases (remote vs. proximity). For issuers, 
+      BOTH formats are unconditionally mandatory.
+
   - id: VEND-ISS-006
     category: issuance
     requirement: Bind attestations to the Wallet Unit's cryptographic device
