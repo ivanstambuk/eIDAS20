@@ -68,6 +68,16 @@ This document is designed for **legal counsel, compliance officers, and regulato
 
 ---
 
+### Preliminary Chapters
+
+| Chapter | Description |
+|---------|-------------|
+| [1. Executive Summary](#1-executive-summary) | Compliance snapshot, key findings, critical ARF HLRs |
+| [2. Terminology & Definitions](#2-terminology--definitions) | PSD2 RTS terms, EUDI Wallet terms, factor mapping |
+| [3. Scope: Two SCA Lifecycle Phases](#3-scope-two-sca-lifecycle-phases) | Issuance/Binding vs. Usage/Authentication |
+
+---
+
 <details open>
 <summary><strong>📋 PART A: SCA CREDENTIAL ISSUANCE</strong> (Binding Phase) — RTS Articles 22-27</summary>
 
