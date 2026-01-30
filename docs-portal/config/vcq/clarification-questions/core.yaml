@@ -1,0 +1,1011 @@
+# Vendor Clarification Questions - Core Requirements
+# These questions help assess the depth and completeness of vendor compliance.
+# 
+# Usage: For each VCQ requirement, these sub-questions probe specific capabilities,
+# lifecycle coverage, automation levels, and compliance evidence. Vendors should
+# provide substantive answers, not just yes/no affirmations.
+
+schemaVersion: 1
+sourceFile: requirements/core.yaml
+modelPasses:
+  opus: true       # Completed 2026-01-30 - All core requirements processed
+  gemini: false    # Set to true after Gemini completes review pass
+
+requirements:
+  # ============================================================================
+  # VEND-CORE-001: No-Storage Mandate
+  # Requirement: Intermediaries shall not store data about the content of transactions
+  # ============================================================================
+  VEND-CORE-001:
+    questions:
+      - id: Q1
+        text: "How does your platform technically enforce the no-storage mandate for wallet transaction data?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "What data elements, if any, are transiently processed during verification (e.g., in memory), and what is their maximum retention duration?"
+        dimension: data_handling
+      - id: Q3
+        text: "Do you maintain any logs, metadata, or derived data from wallet presentations? If so, describe what is logged and retention periods."
+        dimension: data_handling
+      - id: Q4
+        text: "How can the organization verify that no transaction content is being stored (e.g., audit mechanisms, architectural diagrams, third-party attestations)?"
+        dimension: auditability
+      - id: Q5
+        text: "If your service uses sub-processors or cloud infrastructure, how do you ensure they also comply with the no-storage mandate?"
+        dimension: supply_chain
+      - id: Q6
+        text: "What technical controls prevent accidental or intentional storage of transaction content by your personnel?"
+        dimension: security
+
+  # ============================================================================
+  # VEND-CORE-002: GDPR Article 28 Data Processing Agreement
+  # Requirement: Implement a DPA meeting GDPR Article 28 requirements
+  # ============================================================================
+  VEND-CORE-002:
+    questions:
+      - id: Q1
+        text: "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs?"
+        dimension: capability
+      - id: Q2
+        text: "Does your DPA explicitly address all Article 28(3) mandatory provisions: (a) processing instructions, (b) confidentiality, (c) security, (d) sub-processors, (e) data subject request assistance, (f) breach notification, (g) deletion/return, (h) audit rights?"
+        dimension: compliance_completeness
+      - id: Q3
+        text: "How do you handle updates to the DPA when regulatory requirements change (e.g., new EDPB guidance)?"
+        dimension: lifecycle
+      - id: Q4
+        text: "What is your process for approving and documenting the organization's specific processing instructions?"
+        dimension: operational
+      - id: Q5
+        text: "Are there any provisions in your standard DPA that limit the organization's audit rights beyond what GDPR permits?"
+        dimension: contract_terms
+
+  # ============================================================================
+  # VEND-CORE-003: Audit Rights
+  # Requirement: Provide audit rights to the Relying Party
+  # ============================================================================
+  VEND-CORE-003:
+    questions:
+      - id: Q1
+        text: "Do you permit on-site audits of your facilities and systems by the organization or its designated auditors?"
+        dimension: capability
+      - id: Q2
+        text: "What third-party certifications or audit reports (e.g., SOC 2 Type II, ISO 27001) do you provide to support compliance verification?"
+        dimension: compliance_evidence
+      - id: Q3
+        text: "How frequently can the organization conduct audits, and what advance notice is required?"
+        dimension: operational
+      - id: Q4
+        text: "Are there any limitations on audit scope (e.g., shared infrastructure, sub-processor facilities, source code review)?"
+        dimension: limitations
+      - id: Q5
+        text: "What is the cost structure for audits (e.g., included in contract, reasonable cost recovery, prohibited)?"
+        dimension: commercial
+      - id: Q6
+        text: "How do you facilitate regulatory audits by supervisory authorities (e.g., DNB, ECB, national DPAs)?"
+        dimension: regulatory_access
+
+  # ============================================================================
+  # VEND-CORE-004: Relying Party Registration
+  # Requirement: Register as a Relying Party indicating intermediary status
+  # ============================================================================
+  VEND-CORE-004:
+    questions:
+      - id: Q1
+        text: "Do you offer an automated Registration Management Interface to support the organization in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States?"
+        dimension: capability
+      - id: Q2
+        text: "Do you support the full RP registration lifecycle, including initial onboarding, updates to intended uses, modification of requested data elements, certificate retrieval, and deregistration?"
+        dimension: lifecycle
+      - id: Q3
+        text: "In which Member States can you facilitate and perform RP registrations? Can you support registrations in all Member States where the organization has legal entities?"
+        dimension: geographic_scope
+      - id: Q4
+        text: "Is the registration process automated end-to-end, or does it require manual steps? If manual, describe the manual touchpoints."
+        dimension: automation
+      - id: Q5
+        text: "Is the registration process fully auditable? Can you provide registration history, change logs, and certificate issuance records?"
+        dimension: auditability
+      - id: Q6
+        text: "How do you handle registration renewals and expiration notifications?"
+        dimension: lifecycle
+      - id: Q7
+        text: "What is the typical turnaround time for new RP registrations and updates?"
+        dimension: sla
+      - id: Q8
+        text: "How do you handle discrepancies or rejections from national Registrars?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-005: Relying Party Access Certificate
+  # Requirement: Maintain a valid Relying Party Access Certificate
+  # ============================================================================
+  VEND-CORE-005:
+    questions:
+      - id: Q1
+        text: "Do you obtain and manage Relying Party Access Certificates on behalf of the organization, or does the organization manage certificates directly?"
+        dimension: capability
+      - id: Q2
+        text: "How do you ensure certificates remain valid and are renewed before expiration?"
+        dimension: lifecycle
+      - id: Q3
+        text: "What Access Certificate Authorities (ACAs) do you support for certificate issuance?"
+        dimension: interoperability
+      - id: Q4
+        text: "How are certificate private keys protected? Describe the key management infrastructure (e.g., HSM, cloud KMS, software keystore)."
+        dimension: security
+      - id: Q5
+        text: "What monitoring and alerting is in place for certificate expiration, revocation, or compromise?"
+        dimension: operational
+      - id: Q6
+        text: "How do you handle emergency certificate revocation and replacement?"
+        dimension: incident_response
+      - id: Q7
+        text: "Can you support multiple certificates for different intended uses or Member States?"
+        dimension: flexibility
+
+  # ============================================================================
+  # VEND-CORE-006: Technical and Organizational Security Measures
+  # Requirement: Implement appropriate technical and organizational security measures
+  # ============================================================================
+  VEND-CORE-006:
+    questions:
+      - id: Q1
+        text: "Describe your encryption approach: what data is encrypted at rest and in transit, and what algorithms/key lengths are used?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "What pseudonymization or anonymization techniques do you apply to wallet-related data?"
+        dimension: data_handling
+      - id: Q3
+        text: "How do you ensure the confidentiality, integrity, availability, and resilience of your processing systems?"
+        dimension: security
+      - id: Q4
+        text: "What is your approach to regular security testing (e.g., penetration testing frequency, vulnerability scanning, red team exercises)?"
+        dimension: security
+      - id: Q5
+        text: "Do you hold any security certifications (e.g., ISO 27001, SOC 2 Type II, CSA STAR)? Provide certificate details and scope."
+        dimension: compliance_evidence
+      - id: Q6
+        text: "How do you assess and document the appropriateness of your security measures relative to the risk (as required by GDPR Article 32)?"
+        dimension: risk_management
+      - id: Q7
+        text: "What physical security controls are in place at your data centers or processing facilities?"
+        dimension: physical_security
+      - id: Q8
+        text: "How do you handle security updates and patching for your systems?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-007: Data Breach Notification
+  # Requirement: Notify the RP of data breaches without undue delay
+  # ============================================================================
+  VEND-CORE-007:
+    questions:
+      - id: Q1
+        text: "What is your committed timeframe for notifying the organization of a personal data breach after becoming aware of it?"
+        dimension: sla
+      - id: Q2
+        text: "What information do you provide in breach notifications (e.g., nature of breach, categories of data, affected individuals, remediation steps)?"
+        dimension: compliance_completeness
+      - id: Q3
+        text: "How do you detect potential data breaches (e.g., SIEM, anomaly detection, intrusion detection systems)?"
+        dimension: technical_implementation
+      - id: Q4
+        text: "Do you have a documented incident response plan? Can the organization review this plan?"
+        dimension: documentation
+      - id: Q5
+        text: "What is your escalation path for breach notification (e.g., 24/7 security operations center, dedicated contact)?"
+        dimension: operational
+      - id: Q6
+        text: "How do you assist the organization in meeting its 72-hour notification obligation to supervisory authorities under GDPR Article 33?"
+        dimension: regulatory_support
+      - id: Q7
+        text: "What post-incident support do you provide (e.g., forensic analysis, evidence preservation, root cause analysis)?"
+        dimension: incident_response
+
+  # ============================================================================
+  # VEND-CORE-008: Personnel Confidentiality
+  # Requirement: Ensure personnel authorized to process data are bound by confidentiality
+  # ============================================================================
+  VEND-CORE-008:
+    questions:
+      - id: Q1
+        text: "Are all personnel with access to wallet transaction data or systems contractually bound by confidentiality obligations?"
+        dimension: capability
+      - id: Q2
+        text: "What background checks or vetting procedures do you apply to personnel with data access?"
+        dimension: personnel_security
+      - id: Q3
+        text: "How do you enforce the principle of least privilege for data access?"
+        dimension: access_control
+      - id: Q4
+        text: "What security awareness training do personnel receive, and how frequently is it updated?"
+        dimension: training
+      - id: Q5
+        text: "How are confidentiality obligations enforced for contractors, temporary staff, and sub-processor personnel?"
+        dimension: supply_chain
+      - id: Q6
+        text: "What procedures are in place for revoking access when personnel leave or change roles?"
+        dimension: lifecycle
+
+  # ============================================================================
+  # VEND-CORE-009: Processing Only on Documented Instructions
+  # Requirement: Process personal data only on documented instructions from the RP
+  # ============================================================================
+  VEND-CORE-009:
+    questions:
+      - id: Q1
+        text: "How do you document and track the organization's processing instructions?"
+        dimension: documentation
+      - id: Q2
+        text: "What technical and procedural controls prevent processing outside of documented instructions?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "Do you process any wallet data for your own purposes (e.g., analytics, product improvement, marketing)? If so, describe what and under what legal basis."
+        dimension: data_handling
+      - id: Q4
+        text: "Does your service involve any transfer of personal data to third countries or international organizations? If so, what safeguards are in place?"
+        dimension: international_transfers
+      - id: Q5
+        text: "How do you notify the organization if you believe an instruction infringes GDPR or other data protection law?"
+        dimension: compliance_monitoring
+      - id: Q6
+        text: "How can the organization update or modify processing instructions, and what is the implementation timeframe?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-010: Data Subject Rights Support
+  # Requirement: Support data subject rights requests
+  # ============================================================================
+  VEND-CORE-010:
+    questions:
+      - id: Q1
+        text: "What technical capabilities do you provide to assist the organization in responding to data subject access requests (DSARs)?"
+        dimension: capability
+      - id: Q2
+        text: "Can you search and retrieve all personal data relating to a specific data subject across your systems?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "What is your committed response time for assisting with data subject requests?"
+        dimension: sla
+      - id: Q4
+        text: "How do you support data subject erasure requests (right to be forgotten) given the no-storage mandate?"
+        dimension: data_handling
+      - id: Q5
+        text: "Can you support data portability requests by providing data in a structured, commonly used, machine-readable format?"
+        dimension: capability
+      - id: Q6
+        text: "How do you handle requests for restriction of processing or objection to processing?"
+        dimension: capability
+      - id: Q7
+        text: "What audit trail do you maintain of data subject request handling for compliance verification?"
+        dimension: auditability
+
+  # ============================================================================
+  # VEND-CORE-011: Display Both Intermediary and RP Identity
+  # Requirement: Display both intermediary and RP identity to wallet users
+  # ============================================================================
+  VEND-CORE-011:
+    questions:
+      - id: Q1
+        text: "How does your platform ensure that wallet users see both your identity (as intermediary) and the identity of the Relying Party on whose behalf you are acting?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "What information about the Relying Party is displayed to the wallet user (e.g., legal name, logo, registration ID, intended use description)?"
+        dimension: user_experience
+      - id: Q3
+        text: "How do you handle scenarios where the Relying Party's information changes (e.g., name change, merger)?"
+        dimension: lifecycle
+      - id: Q4
+        text: "Can wallet users easily distinguish between your identity and the Relying Party's identity in the consent flow?"
+        dimension: user_experience
+      - id: Q5
+        text: "How do you ensure the displayed Relying Party information is accurate and matches the registered data?"
+        dimension: data_integrity
+
+  # ============================================================================
+  # VEND-CORE-012: Notification of Legal Requirements Beyond Instructions
+  # Requirement: Inform the RP of any legal requirement to process data beyond instructions
+  # ============================================================================
+  VEND-CORE-012:
+    questions:
+      - id: Q1
+        text: "What is your process for notifying the organization if you receive a legal requirement (e.g., court order, law enforcement request) to process data beyond their instructions?"
+        dimension: operational
+      - id: Q2
+        text: "Do you notify the organization before complying with such requests, unless legally prohibited?"
+        dimension: compliance_completeness
+      - id: Q3
+        text: "How do you document and track government or law enforcement data access requests?"
+        dimension: auditability
+      - id: Q4
+        text: "Do you publish a transparency report on government access requests received and complied with?"
+        dimension: transparency
+      - id: Q5
+        text: "In which jurisdictions are you subject to data access laws, and what is your policy on challenging overbroad requests?"
+        dimension: legal_exposure
+
+  # ============================================================================
+  # VEND-CORE-013: Sub-Processor Authorization
+  # Requirement: Obtain RP authorization before engaging sub-processors
+  # ============================================================================
+  VEND-CORE-013:
+    questions:
+      - id: Q1
+        text: "Do you currently use sub-processors for any part of your EUDI Wallet intermediary service? If so, provide a complete list with their roles and locations."
+        dimension: supply_chain
+      - id: Q2
+        text: "What is your process for seeking authorization before adding or changing sub-processors?"
+        dimension: operational
+      - id: Q3
+        text: "Do you offer specific sub-processor authorization (per sub-processor) or general authorization with notification of changes?"
+        dimension: contract_terms
+      - id: Q4
+        text: "What advance notice do you provide before engaging new sub-processors?"
+        dimension: sla
+      - id: Q5
+        text: "How do you ensure sub-processors comply with the same data protection obligations as you?"
+        dimension: compliance_flow_down
+      - id: Q6
+        text: "Do you remain fully liable for sub-processor compliance, or do you seek to limit liability?"
+        dimension: liability
+      - id: Q7
+        text: "Can the organization object to a proposed sub-processor change, and what happens if they do?"
+        dimension: contract_terms
+
+  # ============================================================================
+  # VEND-CORE-014: Data Deletion or Return at End of Contract
+  # Requirement: Delete or return personal data at end of contract
+  # ============================================================================
+  VEND-CORE-014:
+    questions:
+      - id: Q1
+        text: "Given the no-storage mandate, what personal data might you hold at contract termination (e.g., configuration data, audit logs, registration data)?"
+        dimension: data_handling
+      - id: Q2
+        text: "What is your standard procedure for data return at contract termination? In what format is data returned?"
+        dimension: capability
+      - id: Q3
+        text: "What is your procedure for secure data deletion at contract termination? How is deletion verified?"
+        dimension: security
+      - id: Q4
+        text: "Do you provide a deletion certificate or attestation upon completion of data deletion?"
+        dimension: compliance_evidence
+      - id: Q5
+        text: "What is the timeframe for completing data deletion or return after contract termination?"
+        dimension: sla
+      - id: Q6
+        text: "Are there any circumstances where you are legally required to retain data beyond contract termination? If so, what data and for how long?"
+        dimension: legal_requirements
+      - id: Q7
+        text: "How do you ensure data in backups is also deleted within the required timeframe?"
+        dimension: data_handling
+
+  # ============================================================================
+  # VEND-CORE-016: Register Each Intermediated RP at Appropriate Registrar
+  # Requirement: Register each intermediated RP at the appropriate Registrar
+  # Note: VEND-CORE-015 does not exist in source requirements
+  # ============================================================================
+  VEND-CORE-016:
+    questions:
+      - id: Q1
+        text: "Do you perform the registration of intermediated Relying Parties at national Registrars, or does the organization do this directly?"
+        dimension: capability
+      - id: Q2
+        text: "Which Member State Registrars can you currently interface with for RP registration?"
+        dimension: geographic_scope
+      - id: Q3
+        text: "How do you handle registrations for Relying Parties established in Member States where you don't yet have Registrar integration?"
+        dimension: limitations
+      - id: Q4
+        text: "Do you obtain registration certificates for each registered intended use on behalf of the Relying Party?"
+        dimension: lifecycle
+      - id: Q5
+        text: "How do you manage updates to Relying Party registrations when their intended uses or requested data elements change?"
+        dimension: lifecycle
+      - id: Q6
+        text: "What is your process for deregistering a Relying Party when they terminate their relationship with you?"
+        dimension: lifecycle
+      - id: Q7
+        text: "How do you ensure compliance with each Member State's specific registration requirements and timelines?"
+        dimension: regulatory_variability
+
+  # ============================================================================
+  # VEND-CORE-017: Legal Evidence of RP Relationship
+  # Requirement: Provide legal evidence of RP relationship when registering
+  # ============================================================================
+  VEND-CORE-017:
+    questions:
+      - id: Q1
+        text: "What legal evidence do you submit to Registrars to prove the intermediary-Relying Party relationship (e.g., contract, power of attorney, letter of authorization)?"
+        dimension: documentation
+      - id: Q2
+        text: "How do you ensure the legal evidence meets each Registrar's specific requirements?"
+        dimension: regulatory_variability
+      - id: Q3
+        text: "What is your process for updating legal evidence when contracts are amended or renewed?"
+        dimension: lifecycle
+      - id: Q4
+        text: "How do you handle Registrar rejections due to insufficient or invalid legal evidence?"
+        dimension: operational
+      - id: Q5
+        text: "Is the legal evidence submission process automated or manual?"
+        dimension: automation
+      - id: Q6
+        text: "How long do you retain copies of the legal evidence submitted to Registrars?"
+        dimension: data_handling
+
+  # ============================================================================
+  # VEND-CORE-018: Attestation Verification
+  # Requirement: Perform verification of attestations as agreed with RP
+  # ============================================================================
+  VEND-CORE-018:
+    questions:
+      - id: Q1
+        text: "How do you verify the authenticity of PIDs and attestations received from wallet units?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "Which wallet implementations have you tested verification compatibility with (EUDI reference, Apple, Google, third-party)?"
+        dimension: interoperability
+      - id: Q3
+        text: "How do you check the revocation status of presented credentials, and what revocation mechanisms do you support (Status Lists, OCSP, etc.)?"
+        dimension: technical_implementation
+      - id: Q4
+        text: "How do you verify device binding (proof that the credential is bound to the presenting wallet's secure element)?"
+        dimension: security
+      - id: Q5
+        text: "How do you verify user binding (proof that the authorized user is presenting the credential)?"
+        dimension: security
+      - id: Q6
+        text: "Do you support Zero-Knowledge Proof (ZKP) verification for privacy-preserving claims (e.g., age over 18)?"
+        dimension: capability
+      - id: Q7
+        text: "Can the organization configure which verification checks are performed for different use cases?"
+        dimension: flexibility
+      - id: Q8
+        text: "What happens if a verification check fails? How is this communicated to the user and logged for the organization?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-019: PSD2 Strong Customer Authentication (TS12)
+  # Requirement: Implement TS12 for PSD2 SCA when processing payment transactions
+  # ============================================================================
+  VEND-CORE-019:
+    questions:
+      - id: Q1
+        text: "Do you support EUDI Wallet-based Strong Customer Authentication for payment transactions as specified in ARF Technical Specification 12 (TS12)?"
+        dimension: capability
+      - id: Q2
+        text: "How do you implement the two-factor authentication requirement (knowledge/possession/inherence) using the wallet's cryptographic mechanisms?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "How do you achieve dynamic linking of authentication to specific transaction amount and payee as required by PSD2 RTS Article 5?"
+        dimension: technical_implementation
+      - id: Q4
+        text: "How do you ensure independence of authentication elements (that compromise of one element does not compromise others)?"
+        dimension: security
+      - id: Q5
+        text: "What mechanisms are in place to detect and prevent fraud and transaction manipulation?"
+        dimension: security
+      - id: Q6
+        text: "How do you support SCA exemptions (low-value payments, recurring transactions, trusted beneficiaries) while maintaining compliance?"
+        dimension: flexibility
+      - id: Q7
+        text: "What integration is required with the organization's existing payment infrastructure (PSP, acquirer, card schemes)?"
+        dimension: interoperability
+      - id: Q8
+        text: "Have you obtained or are you pursuing any PSD2 SCA certifications or attestations?"
+        dimension: compliance_evidence
+
+  # ============================================================================
+  # VEND-CORE-020: OpenID4VCI for Attestation Issuance (TS6)
+  # Requirement: Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets
+  # ============================================================================
+  VEND-CORE-020:
+    questions:
+      - id: Q1
+        text: "Do you implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6?"
+        dimension: capability
+      - id: Q2
+        text: "Which OpenID4VCI flows do you support (pre-authorized code, authorization code, deferred issuance)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "What credential formats do you support for issuance (SD-JWT-VC, mdoc/mDL, both)?"
+        dimension: interoperability
+      - id: Q4
+        text: "How do you handle wallet unit authentication during issuance (WUA verification, key binding)?"
+        dimension: security
+      - id: Q5
+        text: "Do you support batch issuance of multiple credentials in a single session?"
+        dimension: capability
+      - id: Q6
+        text: "How do you handle credential refresh and re-issuance for expiring credentials?"
+        dimension: lifecycle
+      - id: Q7
+        text: "Have you participated in any OpenID4VCI interoperability testing or certification programs?"
+        dimension: compliance_evidence
+      - id: Q8
+        text: "How do you handle issuance failures and retries?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-021: Data Deletion Request Interface (TS7)
+  # Requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
+  # ============================================================================
+  VEND-CORE-021:
+    questions:
+      - id: Q1
+        text: "Do you implement the common data deletion request interface as specified in Technical Specification 7 (TS7)?"
+        dimension: capability
+      - id: Q2
+        text: "How do you authenticate users submitting deletion requests to ensure they are authorized to request deletion?"
+        dimension: security
+      - id: Q3
+        text: "What is your response time for processing data deletion requests received via the TS7 interface?"
+        dimension: sla
+      - id: Q4
+        text: "How do you handle deletion requests when legal retention requirements apply?"
+        dimension: legal_requirements
+      - id: Q5
+        text: "Do you provide confirmation to the wallet user upon completion of the deletion?"
+        dimension: user_experience
+      - id: Q6
+        text: "How do you ensure deletion is propagated to all systems and backups?"
+        dimension: data_handling
+      - id: Q7
+        text: "What audit logging is maintained for deletion request processing?"
+        dimension: auditability
+
+  # ============================================================================
+  # VEND-CORE-022: Attestation Schema Registration (TS11)
+  # Requirement: Register attestation schemas in the catalogue per TS11
+  # ============================================================================
+  VEND-CORE-022:
+    questions:
+      - id: Q1
+        text: "Do you register attestation types in the EU catalogue of attributes and attestations as specified in Technical Specification 11?"
+        dimension: capability
+      - id: Q2
+        text: "What attestation types do you currently issue, and are they registered in the catalogue?"
+        dimension: compliance_completeness
+      - id: Q3
+        text: "How do you ensure your attestation schemas comply with the common data model?"
+        dimension: interoperability
+      - id: Q4
+        text: "How do you handle schema versioning and updates?"
+        dimension: lifecycle
+      - id: Q5
+        text: "Do you follow any sector-specific rulebooks for attestation structure (e.g., mobile driving license, payment credentials)?"
+        dimension: regulatory_variability
+
+  # ============================================================================
+  # VEND-CORE-023: Open Standards Implementation (TS1)
+  # Requirement: Implement open standards per TS1 for EUDI Wallet interoperability
+  # ============================================================================
+  VEND-CORE-023:
+    questions:
+      - id: Q1
+        text: "Do you implement the open standards mapped in Technical Specification 1 (TS1) for EUDI Wallet interoperability?"
+        dimension: capability
+      - id: Q2
+        text: "Which specific standards do you implement (OpenID4VCI, OpenID4VP, SD-JWT, mdoc/mDL, ISO 18013-5, ISO 23220)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "Have you participated in EUDI Wallet plugfest or other interoperability testing events? What were the results?"
+        dimension: compliance_evidence
+      - id: Q4
+        text: "Which wallet implementations have you tested interoperability with?"
+        dimension: interoperability
+      - id: Q5
+        text: "How do you track and adopt updates to these standards as they evolve?"
+        dimension: lifecycle
+      - id: Q6
+        text: "Are there any proprietary extensions or deviations from the standard implementations? If so, describe them."
+        dimension: limitations
+
+  # ============================================================================
+  # VEND-CORE-024: Provider Information Publication (TS2)
+  # Requirement: Publish provider information per TS2 for discovery by wallets and RPs
+  # ============================================================================
+  VEND-CORE-024:
+    questions:
+      - id: Q1
+        text: "Do you publish provider information endpoints as specified in Technical Specification 2 (TS2)?"
+        dimension: capability
+      - id: Q2
+        text: "What metadata do you publish (supported credential types, signing algorithms, trust chain, issuer identifiers)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "How frequently is your published metadata updated when your service configuration changes?"
+        dimension: lifecycle
+      - id: Q4
+        text: "How do wallets and Relying Parties discover your published metadata?"
+        dimension: interoperability
+      - id: Q5
+        text: "Is your metadata endpoint highly available? What is the uptime SLA?"
+        dimension: sla
+
+  # ============================================================================
+  # VEND-CORE-025: Wallet Unit Attestation Verification (TS3)
+  # Requirement: Verify Wallet Unit Attestation (WUA) per TS3 before issuing credentials
+  # ============================================================================
+  VEND-CORE-025:
+    questions:
+      - id: Q1
+        text: "Do you verify the Wallet Unit Attestation (WUA) before issuing credentials as specified in Technical Specification 3?"
+        dimension: capability
+      - id: Q2
+        text: "What WUA verification checks do you perform (signature validation, certificate chain, revocation status, WSCD certification)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "How do you handle issuance requests from wallet instances with invalid, expired, or revoked WUAs?"
+        dimension: operational
+      - id: Q4
+        text: "How do you stay updated on the list of certified WSCDs and WUA trust anchors?"
+        dimension: lifecycle
+      - id: Q5
+        text: "What is the latency impact of WUA verification on the issuance process?"
+        dimension: sla
+      - id: Q6
+        text: "How do you handle WUA verification failures? What feedback is provided to the wallet user?"
+        dimension: user_experience
+
+  # ============================================================================
+  # VEND-CORE-026: Remote Signing Protocol (TS8)
+  # Requirement: Implement TS8 remote signing protocol for QES/QESeal via EUDI Wallet
+  # ============================================================================
+  VEND-CORE-026:
+    questions:
+      - id: Q1
+        text: "Do you support remote qualified electronic signature creation via EUDI Wallet as specified in Technical Specification 8 (TS8)?"
+        dimension: capability
+      - id: Q2
+        text: "How do you ensure sole control of the signatory over the remote signing process?"
+        dimension: security
+      - id: Q3
+        text: "What multi-factor authentication is required to authorize each signing operation?"
+        dimension: security
+      - id: Q4
+        text: "Are signing keys generated and stored in HSMs meeting QSCD requirements?"
+        dimension: compliance_evidence
+      - id: Q5
+        text: "How is the What You See Is What You Sign (WYSIWYS) principle implemented?"
+        dimension: user_experience
+      - id: Q6
+        text: "What document formats do you support for signing (PDF, XML, plain text)?"
+        dimension: interoperability
+      - id: Q7
+        text: "How do you support batch and automated signing scenarios while maintaining sole control?"
+        dimension: flexibility
+
+  # ============================================================================
+  # VEND-CORE-027: Pseudonym Attestations (TS9)
+  # Requirement: Support pseudonym attestations per TS9 for privacy-preserving identification
+  # ============================================================================
+  VEND-CORE-027:
+    questions:
+      - id: Q1
+        text: "Do you support pseudonym attestations as specified in Technical Specification 9 (TS9)?"
+        dimension: capability
+      - id: Q2
+        text: "Do you support User Pseudonyms (UP) for persistent pseudonymous relationships?"
+        dimension: capability
+      - id: Q3
+        text: "Do you support Wallet-RP Pseudonyms (WRP) for unlinkable transactions?"
+        dimension: capability
+      - id: Q4
+        text: "Do you support Zero-Knowledge Proofs (ZKP) to prove attributes without revealing underlying data?"
+        dimension: capability
+      - id: Q5
+        text: "How do you ensure pseudonyms cannot be correlated across different Relying Parties or transactions?"
+        dimension: privacy
+      - id: Q6
+        text: "Can pseudonymous users be re-identified if legally required (e.g., court order)? What is your process?"
+        dimension: legal_requirements
+
+  # ============================================================================
+  # VEND-CORE-028: Data Export Capability (TS10)
+  # Requirement: Provide data export capability per TS10 for GDPR portability compliance
+  # ============================================================================
+  VEND-CORE-028:
+    questions:
+      - id: Q1
+        text: "Do you provide data export capabilities as specified in Technical Specification 10 (TS10) for GDPR portability?"
+        dimension: capability
+      - id: Q2
+        text: "What data can be exported (transaction logs, credentials, presentation history)?"
+        dimension: data_handling
+      - id: Q3
+        text: "In what formats is data exported (JSON, XML, CSV)? Are these machine-readable and commonly used?"
+        dimension: interoperability
+      - id: Q4
+        text: "How do users request data export? Is it self-service or requires manual processing?"
+        dimension: automation
+      - id: Q5
+        text: "What is the response time for fulfilling data export requests?"
+        dimension: sla
+      - id: Q6
+        text: "How is exported data secured during transmission to the user?"
+        dimension: security
+
+  # ============================================================================
+  # VEND-CORE-029: Registration Certificate Verification
+  # Requirement: Verify registration certificates presented by counterparties
+  # ============================================================================
+  VEND-CORE-029:
+    questions:
+      - id: Q1
+        text: "How do you verify registration certificates presented by PID Providers, Attestation Providers, or other Relying Parties?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "Do you validate certificate signatures against the Trusted List published by Member States?"
+        dimension: security
+      - id: Q3
+        text: "How frequently do you update your local copy of Trusted Lists?"
+        dimension: lifecycle
+      - id: Q4
+        text: "What happens when a counterparty presents an invalid or revoked registration certificate?"
+        dimension: operational
+      - id: Q5
+        text: "Do you support certificate verification for all Member States, or only specific ones?"
+        dimension: geographic_scope
+
+  # ============================================================================
+  # VEND-CORE-030: Attestation Authenticity and Validity Verification
+  # Requirement: Verify attestation authenticity and validity before acceptance
+  # ============================================================================
+  VEND-CORE-030:
+    questions:
+      - id: Q1
+        text: "How do you verify the cryptographic signature on attestations received from wallets?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "How do you verify that attestations have not expired?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "What revocation status checking mechanisms do you support for attestation validation?"
+        dimension: technical_implementation
+      - id: Q4
+        text: "How do you verify the issuer's access certificate chain?"
+        dimension: security
+      - id: Q5
+        text: "What is the latency of your end-to-end attestation verification process?"
+        dimension: sla
+      - id: Q6
+        text: "How do you handle attestations from issuers not in your trust list?"
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-031: Intended Use Registration and Access Certificate Policies
+  # Requirement: Register intended uses and comply with access certificate policies
+  # ============================================================================
+  VEND-CORE-031:
+    questions:
+      - id: Q1
+        text: "Do you support registration of multiple intended uses for the organization?"
+        dimension: capability
+      - id: Q2
+        text: "How do you ensure the organization's intended uses remain aligned with the access certificate policies of each ACA?"
+        dimension: compliance_monitoring
+      - id: Q3
+        text: "What process is followed when an intended use needs to be added, modified, or removed?"
+        dimension: lifecycle
+      - id: Q4
+        text: "How are access certificate policy updates from ACAs communicated and operationalized?"
+        dimension: operational
+      - id: Q5
+        text: "How do you handle revocation procedures required by access certificate policies?"
+        dimension: incident_response
+
+  # ============================================================================
+  # VEND-CORE-032: RP Access Certificate for Wallet Authentication
+  # Requirement: Use valid RP Access Certificate for Wallet Unit authentication
+  # ============================================================================
+  VEND-CORE-032:
+    questions:
+      - id: Q1
+        text: "How do you present the organization's RP Access Certificate to Wallet Units during presentation requests?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "How do you ensure the presented certificate is current and not expired or revoked?"
+        dimension: lifecycle
+      - id: Q3
+        text: "What information from the certificate is displayed to wallet users?"
+        dimension: user_experience
+      - id: Q4
+        text: "How do you handle certificate rotation or renewal without service interruption?"
+        dimension: operational
+      - id: Q5
+        text: "Do you support different certificates for different intended uses?"
+        dimension: flexibility
+
+  # ============================================================================
+  # VEND-CORE-033: Pseudonym Presentation Handling
+  # Requirement: Support and correctly handle pseudonym-based presentations
+  # ============================================================================
+  VEND-CORE-033:
+    questions:
+      - id: Q1
+        text: "Do you correctly process pseudonym-based presentations when users choose to present them?"
+        dimension: capability
+      - id: Q2
+        text: "How do you validate that the pseudonym belongs to the presenting user?"
+        dimension: security
+      - id: Q3
+        text: "What controls prevent your system from attempting to derive the user's true identity from a pseudonym?"
+        dimension: privacy
+      - id: Q4
+        text: "How do you prevent correlation of pseudonyms across different transactions or sessions?"
+        dimension: privacy
+      - id: Q5
+        text: "How do you verify registration/authentication with non-revoked Wallet Units for pseudonym presentations?"
+        dimension: security
+      - id: Q6
+        text: "Do you maintain logs of pseudonym presentations? If so, how is this data protected?"
+        dimension: auditability
+
+  # ============================================================================
+  # VEND-CORE-034: RP Trust Anchor Publication
+  # Requirement: Publish RP trust anchor information for Wallet verification
+  # ============================================================================
+  VEND-CORE-034:
+    questions:
+      - id: Q1
+        text: "Do you publish trust anchor information through the Access Certificate Authority notification process on behalf of the organization?"
+        dimension: capability
+      - id: Q2
+        text: "What information is included in the published trust anchor?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "How do you handle updates to trust anchor information when organizational details change?"
+        dimension: lifecycle
+      - id: Q4
+        text: "How quickly are trust anchor updates propagated to Wallet Units?"
+        dimension: sla
+      - id: Q5
+        text: "How do you handle trust anchor revocation if required?"
+        dimension: incident_response
+
+  # ============================================================================
+  # VEND-CORE-035: Data Deletion Request Processing
+  # Requirement: Process data deletion requests from Users within required timeframes
+  # ============================================================================
+  VEND-CORE-035:
+    questions:
+      - id: Q1
+        text: "What is your standard response time for processing GDPR Article 17 deletion requests?"
+        dimension: sla
+      - id: Q2
+        text: "How do you verify the identity of users submitting deletion requests?"
+        dimension: security
+      - id: Q3
+        text: "How do you provide confirmation of deletion to the requesting user?"
+        dimension: user_experience
+      - id: Q4
+        text: "What valid grounds for refusal do you recognize, and how are these communicated?"
+        dimension: legal_requirements
+      - id: Q5
+        text: "How do you ensure all copies of the data, including backups, are deleted?"
+        dimension: data_handling
+      - id: Q6
+        text: "What audit trail is maintained for deletion request processing and completion?"
+        dimension: auditability
+
+  # ============================================================================
+  # VEND-CORE-038: W3C Digital Credentials API Support
+  # Requirement: Support W3C Digital Credentials API for presentation requests
+  # Note: VEND-CORE-036 and 037 do not exist in source requirements
+  # ============================================================================
+  VEND-CORE-038:
+    questions:
+      - id: Q1
+        text: "Do you support the W3C Digital Credentials API for browser-mediated presentation requests?"
+        dimension: capability
+      - id: Q2
+        text: "Which browsers are supported for the Digital Credentials API flow?"
+        dimension: interoperability
+      - id: Q3
+        text: "How do you handle fallback for browsers that do not support the Digital Credentials API?"
+        dimension: operational
+      - id: Q4
+        text: "How is the credential exchange flow secured against man-in-the-middle attacks?"
+        dimension: security
+      - id: Q5
+        text: "What user experience considerations have you implemented for the browser-mediated flow?"
+        dimension: user_experience
+
+  # ============================================================================
+  # VEND-CORE-039: Revocation Status Unavailability Handling
+  # Requirement: Handle revocation status unavailability gracefully
+  # ============================================================================
+  VEND-CORE-039:
+    questions:
+      - id: Q1
+        text: "How does your system behave when revocation status information is temporarily unavailable?"
+        dimension: operational
+      - id: Q2
+        text: "Do you implement rate limiting to avoid repeatedly requesting unavailable status lists?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "What fallback behavior is implemented when revocation checks cannot be completed?"
+        dimension: operational
+      - id: Q4
+        text: "How is the organization notified of revocation status unavailability events?"
+        dimension: alerting
+      - id: Q5
+        text: "How long do you cache revocation status information, and what is your refresh strategy?"
+        dimension: technical_implementation
+
+  # ============================================================================
+  # VEND-CORE-040: Proximity Identification Flows (Optional)
+  # Requirement: Support proximity identification flows (optional)
+  # ============================================================================
+  VEND-CORE-040:
+    questions:
+      - id: Q1
+        text: "Do you support proximity identification flows (BLE/NFC) for local credential presentation?"
+        dimension: capability
+      - id: Q2
+        text: "If supported, which protocols do you implement (ISO/IEC 18013-5, BLE, NFC)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "What hardware is required at the Relying Party location for proximity flows?"
+        dimension: operational
+      - id: Q4
+        text: "How do proximity flows operate without internet connectivity?"
+        dimension: technical_implementation
+      - id: Q5
+        text: "What is the range and reliability of the proximity communication?"
+        dimension: sla
+      - id: Q6
+        text: "How is security maintained in the proximity flow (key exchange, encryption)?"
+        dimension: security
+
+  # ============================================================================
+  # VEND-CORE-041: Registration Certificate Lifecycle
+  # Requirement: Handle registration certificate updates and renewals
+  # ============================================================================
+  VEND-CORE-041:
+    questions:
+      - id: Q1
+        text: "How do you handle updates to the organization's registration certificates?"
+        dimension: lifecycle
+      - id: Q2
+        text: "What is the process for certificate renewal before expiration?"
+        dimension: lifecycle
+      - id: Q3
+        text: "How do you handle emergency certificate revocation situations?"
+        dimension: incident_response
+      - id: Q4
+        text: "How are updated certificates distributed to all systems that need them?"
+        dimension: operational
+      - id: Q5
+        text: "What notifications are sent for upcoming certificate expirations?"
+        dimension: alerting
+      - id: Q6
+        text: "Is the certificate lifecycle fully automated or does it require manual intervention?"
+        dimension: automation
+
+  # ============================================================================
+  # VEND-CORE-042: Personal Data Safeguards by Default
+  # Requirement: Apply personal data safeguards by default to all attestation processing
+  # ============================================================================
+  VEND-CORE-042:
+    questions:
+      - id: Q1
+        text: "Does your platform apply GDPR-compliant data handling (encryption, access controls, audit logging) to ALL attestation processing by default?"
+        dimension: security
+      - id: Q2
+        text: "Do you have separate processing paths that bypass security controls for 'non-personal data'? If so, describe them."
+        dimension: architecture
+      - id: Q3
+        text: "How do you handle attestations relating to legal persons or objects that may still be processed alongside personal data context?"
+        dimension: data_handling
+      - id: Q4
+        text: "What guidance do you provide to customers (RPs) regarding DPIA requirements for different attestation types?"
+        dimension: documentation
+      - id: Q5
+        text: "How do you document exceptions for truly anonymous processing scenarios?"
+        dimension: flexibility
+      - id: Q6
+        text: "Do you implement 'Compliance by Environment' principles where session context (IP, wallet ID) is treated as personal data?"
+        dimension: architecture
