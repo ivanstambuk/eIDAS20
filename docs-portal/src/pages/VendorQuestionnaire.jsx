@@ -1248,6 +1248,17 @@ export default function VendorQuestionnaire() {
                 if (req.explanation) {
                     md += `**Explanation:** ${req.explanation}\n\n`;
                 }
+
+                // Clarification questions (immediately after explanation)
+                const reqQuestions = clarificationQuestions?.[req.id] || [];
+                if (reqQuestions.length > 0) {
+                    md += `**Clarification Questions:**\n\n`;
+                    reqQuestions.forEach((q, i) => {
+                        md += `${i + 1}. ${q.text}\n`;
+                    });
+                    md += `\n`;
+                }
+
                 md += `**Obligation:** ${req.obligation}\n\n`;
 
                 // Legal basis with legal text immediately after
@@ -1299,7 +1310,7 @@ export default function VendorQuestionnaire() {
         a.download = `vcq-questionnaire-${new Date().toISOString().split('T')[0]}.md`;
         a.click();
         URL.revokeObjectURL(url);
-    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory, arfData]);
+    }, [selectedRoles, selectedCategories, selectedSourceGroups, applicableRequirements, answers, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
 
     const handleExportExcel = useCallback(() => {
         exportToExcel({
@@ -1311,9 +1322,10 @@ export default function VendorQuestionnaire() {
             categorizationScheme,
             effectiveCategories,
             getReqCategory,
-            arfData
+            arfData,
+            clarificationQuestions
         });
-    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData]);
+    }, [applicableRequirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions]);
 
     // Loading/error states
     if (loading) {

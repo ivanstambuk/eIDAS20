@@ -260,8 +260,9 @@ function cleanText(text) {
  * @param {Array} [options.effectiveCategories] - Categories to use for grouping
  * @param {Function} [options.getReqCategory] - Function to get category for a requirement
  * @param {Object} [options.arfData] - ARF HLR data for specification/notes lookup
+ * @param {Object} [options.clarificationQuestions] - Clarification questions keyed by requirement ID
  */
-export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData }) {
+export function exportToExcel({ requirements, answers, selectedRoles, selectedCategories, data, categorizationScheme, effectiveCategories, getReqCategory, arfData, clarificationQuestions }) {
     const wb = XLSX.utils.book_new();
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
@@ -287,6 +288,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'Category',
         'Requirement',
         'Explanation',
+        'Clarification Questions',
         'Obligation',
         'Deadline',
         'Roles',
@@ -334,11 +336,18 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
             const isAlt = rowIndex % 2 === 1;
             const cellStyle = isAlt ? STYLES.cellAlt : STYLES.cell;
 
+            // Format clarification questions: one per line, just the text (no dimension)
+            const reqQuestions = clarificationQuestions?.[req.id] || [];
+            const questionsText = reqQuestions
+                .map((q, i) => `${i + 1}. ${q.text}`)
+                .join('\n');
+
             sheetData.push([
                 { v: req.id, s: cellStyle },
                 { v: cat.label || cat.id, s: cellStyle },
                 { v: req.requirement, s: cellStyle },
                 { v: cleanText(req.explanation), s: cellStyle },
+                { v: questionsText, s: cellStyle },
                 { v: req.obligation || 'SHOULD', s: getObligationStyle(req.obligation) },
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
@@ -363,6 +372,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 16 },  // Category
         { wch: 45 },  // Requirement
         { wch: 50 },  // Explanation
+        { wch: 60 },  // Clarification Questions
         { wch: 12 },  // Obligation
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
