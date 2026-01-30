@@ -250,7 +250,7 @@ Dimensions are derived dynamically per requirement. Common dimensions include:
 | 7.1 | Add `useClarificationQuestions` data loader hook | ✅ Complete |
 | 7.2 | Create side-by-side "Clarification Questions" toggle (Option A design) | ✅ Complete |
 | 7.3 | Add CSS styling for question list with dimension badges | ✅ Complete |
-| 7.4 | Add clarification questions to VCQ Excel export | ⬜ Future |
+| 7.4 | Add clarification questions to Excel and Markdown exports | ✅ Complete |
 | 7.5 | Add scoring input fields for each question | ⬜ Future |
 | 7.6 | Create vendor comparison matrix | ⬜ Future |
 

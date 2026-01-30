@@ -21,7 +21,7 @@ const navigation = [
         items: [
             { name: 'RCA', path: '/rca', icon: 'clipboard-check' },
             { name: 'VCQ', path: '/vcq', icon: 'clipboard-list' },
-            { name: 'All Requirements', path: '/requirements', icon: 'layers' },
+            // All Requirements removed — RCA and VCQ provide filtered requirement views
             // AI Assistant removed — accessible via floating chat button (DEC-287)
         ]
     },
