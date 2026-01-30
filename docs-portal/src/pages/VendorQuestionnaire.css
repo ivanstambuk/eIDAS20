@@ -1108,10 +1108,14 @@
 
 /* Side-by-side Details and Clarification Questions toggles (Phase 7: Option A) */
 .vcq-req-toggles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--space-4);
     margin-top: var(--space-2);
+}
+
+.vcq-req-toggles>details {
+    margin: 0;
 }
 
 .vcq-req-clarifications {
