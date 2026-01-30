@@ -405,10 +405,14 @@ requirements:
     requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
       Relying Parties must implement the common data deletion request interface 
-      specified in Technical Specification 7. This enables wallet users to exercise 
-      their GDPR Article 17 right to erasure by requesting deletion of any data 
-      the RP has collected from wallet presentations. The interface provides a 
-      standardized machine-readable format for deletion requests.
+      specified in Technical Specification 7 (TS7). This enables wallet users to 
+      exercise their GDPR Article 17 right to erasure by requesting deletion of 
+      any data the RP has collected from wallet presentations. The interface 
+      provides a standardized machine-readable format for deletion requests.
+      
+      Key obligations per ARF Topic 48:
+      - Authenticate the requesting user before executing deletion (DATA_DLT_07)
+      - Comply with TS7 technical interface requirements (DATA_DLT_08)
     legalBasis:
       regulation: 2016/679
       article: Article 17
@@ -418,6 +422,11 @@ requirements:
       erasure of personal data concerning him or her without undue delay and 
       the controller shall have the obligation to erase personal data without 
       undue delay.
+    arfReference:
+      topic: Topic 48
+      hlr:
+        - DATA_DLT_07
+        - DATA_DLT_08
     roles:
       - relying_party
     productCategories:

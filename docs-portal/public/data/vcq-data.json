@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-29T14:06:02.705Z",
+  "generatedAt": "2026-01-30T11:24:44.222Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -870,7 +870,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
-      "explanation": "Relying Parties must implement the common data deletion request interface \nspecified in Technical Specification 7. This enables wallet users to exercise \ntheir GDPR Article 17 right to erasure by requesting deletion of any data \nthe RP has collected from wallet presentations. The interface provides a \nstandardized machine-readable format for deletion requests.",
+      "explanation": "Relying Parties must implement the common data deletion request interface \nspecified in Technical Specification 7 (TS7). This enables wallet users to \nexercise their GDPR Article 17 right to erasure by requesting deletion of \nany data the RP has collected from wallet presentations. The interface \nprovides a standardized machine-readable format for deletion requests.\n\nKey obligations per ARF Topic 48:\n- Authenticate the requesting user before executing deletion (DATA_DLT_07)\n- Comply with TS7 technical interface requirements (DATA_DLT_08)",
       "legalBases": [
         {
           "regulation": "2016/679",
@@ -886,6 +886,13 @@
       },
       "legalBasisLink": "/regulation/2016-679?section=article-17",
       "legalText": "The data subject shall have the right to obtain from the controller the \nerasure of personal data concerning him or her without undue delay and \nthe controller shall have the obligation to erase personal data without \nundue delay.",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_07",
+          "DATA_DLT_08"
+        ]
+      },
       "roles": [
         "relying_party"
       ],
@@ -3170,23 +3177,30 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Support data erasure request protocol",
-      "explanation": "The intermediary must support the protocol for data erasure requests \nfrom wallet users. When a user requests erasure of their data from \nan RP (via the wallet), the intermediary must correctly relay or \nsupport this request.",
+      "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
+      "explanation": "The intermediary must implement the common data deletion request interface \nspecified in Technical Specification 7 (TS7). When a user requests erasure \nof their data from an RP (via the wallet), the intermediary must:\n1. Authenticate the requesting user using appropriate mechanisms (DATA_DLT_07)\n2. Correctly process or relay the deletion request per TS7 (DATA_DLT_08)\n3. Respond within GDPR mandated timeframes (without undue delay)\n\nNote: The intermediary's no-storage mandate (VEND-INT-021) means minimal \npersonal data will be retained, but any logs or metadata must still be \nsubject to erasure requests.",
       "legalBases": [
         {
-          "regulation": "2024/2982",
-          "article": "Article 6",
+          "regulation": "2016/679",
+          "article": "Article 17",
           "paragraph": "1",
-          "link": "/implementing-acts/2024-2982?section=article-6"
+          "link": "/regulation/2016-679?section=article-17"
         }
       ],
       "legalBasis": {
-        "regulation": "2024/2982",
-        "article": "Article 6",
+        "regulation": "2016/679",
+        "article": "Article 17",
         "paragraph": "1"
       },
-      "legalBasisLink": "/implementing-acts/2024-2982?section=article-6",
-      "legalText": "Wallet providers shall ensure that wallet solutions support protocols \nand interfaces which allow users to request erasure of their personal \ndata from wallet-relying parties.",
+      "legalBasisLink": "/regulation/2016-679?section=article-17",
+      "legalText": "The data subject shall have the right to obtain from the controller the \nerasure of personal data concerning him or her without undue delay and \nthe controller shall have the obligation to erase personal data without \nundue delay.",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_07",
+          "DATA_DLT_08"
+        ]
+      },
       "roles": [
         "relying_party"
       ],
@@ -3196,7 +3210,7 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroup": "gdpr",
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -6007,7 +6021,6 @@
       "VEND-INT-027",
       "VEND-INT-028",
       "VEND-INT-029",
-      "VEND-INT-030",
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
@@ -6086,6 +6099,7 @@
       "VEND-CORE-035",
       "VEND-CORE-042",
       "VEND-INT-018",
+      "VEND-INT-030",
       "VEND-ISS-022"
     ],
     "dora": [
@@ -6109,6 +6123,7 @@
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
+      "VEND-CORE-021",
       "VEND-CORE-029",
       "VEND-CORE-030",
       "VEND-CORE-031",
@@ -6139,6 +6154,7 @@
       "VEND-INT-023",
       "VEND-INT-024",
       "VEND-INT-029",
+      "VEND-INT-030",
       "VEND-INT-032",
       "VEND-INT-033",
       "VEND-INT-034",
@@ -6192,10 +6208,10 @@
       "universal": 31
     },
     "bySourceGroup": {
-      "eidas": 114,
-      "gdpr": 16,
+      "eidas": 113,
+      "gdpr": 17,
       "dora": 12,
-      "arf": 73
+      "arf": 75
     },
     "byCategory": {
       "usage": 42,

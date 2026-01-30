@@ -634,20 +634,32 @@ requirements:
     obligation: MUST
   - id: VEND-INT-030
     category: usage
-    requirement: Support data erasure request protocol
+    requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
-      The intermediary must support the protocol for data erasure requests 
-      from wallet users. When a user requests erasure of their data from 
-      an RP (via the wallet), the intermediary must correctly relay or 
-      support this request.
+      The intermediary must implement the common data deletion request interface 
+      specified in Technical Specification 7 (TS7). When a user requests erasure 
+      of their data from an RP (via the wallet), the intermediary must:
+      1. Authenticate the requesting user using appropriate mechanisms (DATA_DLT_07)
+      2. Correctly process or relay the deletion request per TS7 (DATA_DLT_08)
+      3. Respond within GDPR mandated timeframes (without undue delay)
+      
+      Note: The intermediary's no-storage mandate (VEND-INT-021) means minimal 
+      personal data will be retained, but any logs or metadata must still be 
+      subject to erasure requests.
     legalBasis:
-      regulation: 2024/2982
-      article: Article 6
+      regulation: 2016/679
+      article: Article 17
       paragraph: "1"
     legalText: |
-      Wallet providers shall ensure that wallet solutions support protocols 
-      and interfaces which allow users to request erasure of their personal 
-      data from wallet-relying parties.
+      The data subject shall have the right to obtain from the controller the 
+      erasure of personal data concerning him or her without undue delay and 
+      the controller shall have the obligation to erase personal data without 
+      undue delay.
+    arfReference:
+      topic: Topic 48
+      hlr:
+        - DATA_DLT_07
+        - DATA_DLT_08
     roles:
       - relying_party
     productCategories:
