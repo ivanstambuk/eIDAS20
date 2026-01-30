@@ -8,8 +8,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-29 15:13 CET |
-| **Version** | V4.0.5 |
+| **Last Updated** | 2026-01-30 13:07 CET |
+| **Version** | V4.0.6 |
 | **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 142 VCQ reqs, 559 ARF HLRs |
 | **Next Action** | All tools audit-complete — ready for next feature |
 
@@ -37,6 +37,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-01-30 13:07 | **Fix: VCQ Data Erasure + UI Polish** — Added TS7/ARF Topic 48 references to VEND-CORE-021 and VEND-INT-030 (data erasure requirements). UI: added requirement count badges to category headers (pill-style). Fixed Excel export line breaks from YAML block scalars (cleanText normalization). Confirmed `functional` categorization is already default. Retro: created text-processing.md snippet, documented TS7/Topic 48 in TERMINOLOGY.md, added JSDoc to cleanText(). 4 commits: `a9ef5a4`, `b25d972`, `3d6914d`, `d823b6d`. |
 | 2026-01-29 15:13 | **Refactor: VCQ Schema Hardening (DEC-285)** — Replaced `criticality` (critical/high/medium/low) with `obligation` (MUST/SHOULD/MAY) as source-of-truth field in all 142 VCQ YAML files. Build script now uses stored obligation, not derived. Excel export reordered: Explanation after Requirement; Legal Basis+Text grouped; ARF Reference+Specification+Notes grouped (15 columns). Markdown export enhanced with Legal Text and ARF Specification/Notes (popover data now in exports). Validator updated to check obligation field. 3 commits: `7a9f1d1`, `6b6582a`, `b71bb04`. |
 | 2026-01-29 10:25 | **Complete: RCA↔VCQ Systematic Alignment Audit (DEC-281)** — Full audit of 144 RCA requirements (42 Issuer + 102 RP) against VCQ. Result: 100% vendor-applicable coverage (0 gaps). 99 vendor-applicable requirements mapped to existing VCQ. 42 requirements properly excluded (23 org-only + 19 public-sector). Article 45h requirements (VEND-ISS-038/039/040) added for data separation. Retro: 5 improvements implemented — VCQ KI metadata updated with private-sector scope, vcq-config.yaml scope note, 5 new terminology entries (Disposition, Vendor-Applicable, Org-Only, Public-Sector-Only, Scope Boundary), `/rca-audit` workflow created, artifacts archived. All pushed. |
 | 2026-01-29 09:16 | **Refactor: Remove linkedRCA + ARF Coverage Audit** — Removed unused `linkedRCA` field from VCQ codebase (25 requirements, 9 files). Created `audit-hlr-coverage.cjs` script for systematic ARF gap analysis. Confirmed 100% RP-topic coverage: 47 HLRs in VCQ + 70 excluded (wallet_provider, empty, member_state categories). All 6 "potential gaps" (OIA_15, OIA_16, RPA_02a, VCR_12, ProxId_01a, DATA_DLT_07) verified as already covered by existing VCQ requirements. Updated TERMINOLOGY.md with correct exclusion reason codes. VCQ and RCA now fully independent assessment tools. |

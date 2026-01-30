@@ -57,6 +57,79 @@ This document is designed for **legal counsel, compliance officers, and regulato
 
 ---
 
+## Table of Contents
+
+> **Quick Navigation**: This document is organized into 4 parts with 10 chapters. Use the expandable sections below, or jump directly to key sections.
+
+**Jump to Key Sections**:
+- [Executive Summary](#1-executive-summary) — Compliance snapshot, key findings  
+- [Gap Analysis](#9-consolidated-gap-analysis) — All identified gaps with severity  
+- [Recommendations](#10-recommendations-for-sca-attestation-rulebook) — Actionable next steps  
+
+---
+
+<details open>
+<summary><strong>📋 PART A: SCA CREDENTIAL ISSUANCE</strong> (Binding Phase) — RTS Articles 22-27</summary>
+
+| Chapter | Section | Description |
+|---------|---------|-------------|
+| **[4. PSC Creation & Protection](#4-psc-creation--protection)** | | Personalised Security Credentials lifecycle |
+| | [4.1 General Requirements](#41-general-requirements) | Art. 22 — Confidentiality, integrity, masking |
+| | [4.2 Creation & Transmission](#42-creation--transmission-of-credentials) | Art. 23 — Secure environment for credential creation |
+| | [4.3 Association with User](#43-association-with-payment-service-user) | Art. 24 — User binding, SCA for remote association |
+| | [4.4 Secure Delivery](#44-secure-delivery-of-credentials) | Art. 25 — Protection against loss/theft/copying |
+| | [4.5 Renewal](#45-renewal-of-credentials) | Art. 26 — Renewal follows same procedures as creation |
+| | [4.6 Destruction & Revocation](#46-destruction-deactivation--revocation) | Art. 27 — Immediate invalidation |
+
+</details>
+
+<details open>
+<summary><strong>🔐 PART B: TRANSACTION AUTHENTICATION</strong> (Usage Phase) — RTS Articles 4-9</summary>
+
+| Chapter | Section | Description |
+|---------|---------|-------------|
+| **[5. SCA Triggers & Exemptions](#5-sca-triggers--exemptions)** | | When SCA is required |
+| | [5.1 When SCA is Required](#51-when-sca-is-required) | Art. 97 — Payment initiation, remote access |
+| **[6. SCA Elements & Independence](#6-sca-elements--independence)** | | Authentication factors |
+| | [6.1 Authentication Code](#61-authentication-code-requirements) | Art. 4 — Two-factor code generation |
+| | [6.2 Knowledge Element](#62-knowledge-element) | Art. 6 — PIN/passphrase requirements |
+| | [6.3 Possession Element](#63-possession-element) | Art. 7 — Device/key ownership proof |
+| | [6.4 Inherence Element](#64-inherence-element) | Art. 8 — Biometric requirements |
+| | [6.5 Independence](#65-independence-of-elements) | Art. 9 — Breach of one doesn't compromise other |
+| **[7. Dynamic Linking](#7-dynamic-linking)** | | Art. 5 — Amount + payee binding |
+| **[8. General Security Requirements](#8-general-security-requirements)** | | Art. 1-3 — Security measures |
+| | [8.1 Security Measures](#81-security-measures) | Art. 1 — General safeguards |
+| | [8.2 Periodic Review](#82-periodic-review) | Art. 3 — Security assessment |
+
+</details>
+
+<details>
+<summary><strong>📊 PART C: GAP ANALYSIS & RECOMMENDATIONS</strong></summary>
+
+| Chapter | Section | Description |
+|---------|---------|-------------|
+| **[9. Consolidated Gap Analysis](#9-consolidated-gap-analysis)** | | All identified gaps |
+| | [9.1 Critical Gaps (1)](#91-compliance-gaps-critical-1) | PIN lockout not implemented |
+| | [9.2 Moderate Gaps (4)](#92-compliance-gaps-moderate-4) | Entropy, session limits, etc. |
+| | [9.3 Low Gaps (1)](#93-compliance-gaps-low-1) | Documentation gaps |
+| | [9.4 Implementation Clarity Gaps (70)](#94-implementation-clarity-gaps-70-gaps) | Specification ambiguities |
+| **[10. Recommendations](#10-recommendations-for-sca-attestation-rulebook)** | | SCA Attestation Rulebook guidance |
+
+</details>
+
+<details>
+<summary><strong>📎 PART D: APPENDICES</strong></summary>
+
+| Appendix | Description |
+|----------|-------------|
+| [Appendix A: mDOC Protocol Gap Analysis](#appendix-a-mdoc-protocol-gap-analysis) | ISO 18013-5 support roadmap |
+| [Appendix B: GitHub Discussion Analysis](#appendix-b-github-discussion-analysis) | TS12 #439, Mastercard proposal |
+| [Appendix C: SCA Attestation Rulebook Status](#appendix-c-sca-attestation-rulebook-status) | Timeline and implications |
+
+</details>
+
+---
+
 # 1. Executive Summary
 
 EUDI Wallet, when implementing TS12 and ARF requirements, provides **substantial coverage** of PSD2 RTS requirements for SCA. Key findings:
