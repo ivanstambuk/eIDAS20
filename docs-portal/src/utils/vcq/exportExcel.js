@@ -216,9 +216,24 @@ function formatProductCategories(req) {
     ).join(', ');
 }
 
+/**
+ * Normalize YAML block scalar text for Excel export.
+ * 
+ * ⚠️ YAML block scalars (|) preserve literal line breaks from the source file.
+ * Without normalization, multi-line YAML strings appear with awkward mid-sentence
+ * breaks in Excel cells (e.g., "...must register as a Relying Party with\n
+ * Member State authorities...").
+ * 
+ * This function:
+ * 1. Removes markdown formatting (**bold**, *italic*)
+ * 2. Preserves intentional paragraph breaks (double newlines)
+ * 3. Converts single newlines to spaces (prose continuation)
+ * 4. Cleans up any resulting double spaces
+ * 
+ * @see .agent/snippets/text-processing.md for reusable pattern
+ */
 function cleanText(text) {
     if (!text) return '';
-    // Remove markdown markers and normalize line breaks for Excel
     return text
         .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remove **bold**
         .replace(/\*([^*]+)\*/g, '$1')      // Remove *italic*
