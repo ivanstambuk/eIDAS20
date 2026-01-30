@@ -218,11 +218,13 @@ function formatProductCategories(req) {
 
 function cleanText(text) {
     if (!text) return '';
-    // Remove markdown bold/italic markers and clean up whitespace
+    // Remove markdown markers and normalize line breaks for Excel
     return text
         .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remove **bold**
         .replace(/\*([^*]+)\*/g, '$1')      // Remove *italic*
-        .replace(/\n\s*\n/g, '\n')          // Collapse multiple newlines
+        .replace(/\n\s*\n/g, '\n\n')        // Preserve paragraph breaks (double newline)
+        .replace(/(?<!\n)\n(?!\n)/g, ' ')   // Convert single newlines to spaces
+        .replace(/  +/g, ' ')               // Collapse multiple spaces
         .trim();
 }
 
