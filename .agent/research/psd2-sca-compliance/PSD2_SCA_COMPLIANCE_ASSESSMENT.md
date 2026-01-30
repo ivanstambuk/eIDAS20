@@ -5,58 +5,6 @@
 
 ---
 
-## How to Use This Document
-
-This document is designed for **legal counsel, compliance officers, and regulators** evaluating EUDI Wallet for PSD2 Strong Customer Authentication (SCA).
-
-**Navigation**:
-- Each regulatory provision has its own heading (deep-linkable)
-- For each provision: regulatory text → fulfillment evidence → gaps/actions
-- Ctrl+F for any Article number (e.g., "Article 5(1)(b)")
-
-**Legend**:
-
-| Symbol | Meaning |
-|--------|---------|
-| ✅ **Wallet** | Built into EUDI Wallet per ARF HLRs / TS12 |
-| ⚠️ **Partial** | Wallet provides support, but PSP must also act |
-| ❌ **PSP** | Not in Wallet — PSP must implement |
-| 🔶 **Rulebook** | Deferred to SCA Attestation Rulebook (future) |
-| ➖ **N/A** | Not relevant for wallet-based SCA |
-
-**Reference Documents**:
-
-| Document | Link |
-|----------|------|
-| PSD2 Directive | [EUR-Lex 2015/2366](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) |
-| PSD2 RTS | [EUR-Lex 2018/389](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389) |
-| ARF v2.7.3 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework) |
-| TS12 v1.0 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) |
-| ARF Topic 20 | [HLRs for SCA](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) |
-
-**Reference Implementations** (commit-pinned):
-
-| Platform | Repository | Commit |
-|----------|-----------|--------|
-| iOS | [`eudi-app-ios-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) | [`055bdda8`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/tree/055bdda8b2a74d9df4892e7cf702479ac75f6ca6) |
-| Android | [`eudi-app-android-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) | [`48311b4d`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/tree/48311b4de1a0d2be57874824ea68a5e0914765e4) |
-
-**Local Clones** (for source code verification):
-
-| Platform | Local Path |
-|----------|------------|
-| iOS | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-ios-wallet-ui` |
-| Android | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-android-wallet-ui` |
-
-**Local Regulatory Sources** (full markdown — DO NOT look up EUR-Lex):
-
-| Document | Local Path |
-|----------|------------|
-| PSD2 Directive (2015/2366) | `.agent/research/psd2-sca-compliance/sources/32015L2366.md` |
-| PSD2 RTS (2018/389) | `.agent/research/psd2-sca-compliance/sources/32018R0389.md` |
-
----
-
 ## Table of Contents
 
 > **Quick Navigation**: This document is organized into 4 parts with 10 chapters. Use the expandable sections below, or jump directly to key sections.
@@ -72,6 +20,7 @@ This document is designed for **legal counsel, compliance officers, and regulato
 
 | Chapter | Description |
 |---------|-------------|
+| [How to Use This Document](#how-to-use-this-document) | Legend, reference documents, navigation tips |
 | [1. Executive Summary](#1-executive-summary) | Compliance snapshot, key findings, critical ARF HLRs |
 | [2. Terminology & Definitions](#2-terminology--definitions) | PSD2 RTS terms, EUDI Wallet terms, factor mapping |
 | [3. Scope: Two SCA Lifecycle Phases](#3-scope-two-sca-lifecycle-phases) | Issuance/Binding vs. Usage/Authentication |
@@ -137,6 +86,58 @@ This document is designed for **legal counsel, compliance officers, and regulato
 | [Appendix C: SCA Attestation Rulebook Status](#appendix-c-sca-attestation-rulebook-status) | Timeline and implications |
 
 </details>
+
+---
+
+## How to Use This Document
+
+This document is designed for **legal counsel, compliance officers, and regulators** evaluating EUDI Wallet for PSD2 Strong Customer Authentication (SCA).
+
+**Navigation**:
+- Each regulatory provision has its own heading (deep-linkable)
+- For each provision: regulatory text → fulfillment evidence → gaps/actions
+- Ctrl+F for any Article number (e.g., "Article 5(1)(b)")
+
+**Legend**:
+
+| Symbol | Meaning |
+|--------|---------|
+| ✅ **Wallet** | Built into EUDI Wallet per ARF HLRs / TS12 |
+| ⚠️ **Partial** | Wallet provides support, but PSP must also act |
+| ❌ **PSP** | Not in Wallet — PSP must implement |
+| 🔶 **Rulebook** | Deferred to SCA Attestation Rulebook (future) |
+| ➖ **N/A** | Not relevant for wallet-based SCA |
+
+**Reference Documents**:
+
+| Document | Link |
+|----------|------|
+| PSD2 Directive | [EUR-Lex 2015/2366](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366) |
+| PSD2 RTS | [EUR-Lex 2018/389](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018R0389) |
+| ARF v2.7.3 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework) |
+| TS12 v1.0 | [GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/55c5b744a2a620f44b9ca19b494ba3cbe2acf301/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) |
+| ARF Topic 20 | [HLRs for SCA](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments) |
+
+**Reference Implementations** (commit-pinned):
+
+| Platform | Repository | Commit |
+|----------|-----------|--------|
+| iOS | [`eudi-app-ios-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui) | [`055bdda8`](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui/tree/055bdda8b2a74d9df4892e7cf702479ac75f6ca6) |
+| Android | [`eudi-app-android-wallet-ui`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui) | [`48311b4d`](https://github.com/eu-digital-identity-wallet/eudi-app-android-wallet-ui/tree/48311b4de1a0d2be57874824ea68a5e0914765e4) |
+
+**Local Clones** (for source code verification):
+
+| Platform | Local Path |
+|----------|------------|
+| iOS | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-ios-wallet-ui` |
+| Android | `.agent/research/psd2-sca-compliance/reference-impl/eudi-app-android-wallet-ui` |
+
+**Local Regulatory Sources** (full markdown — DO NOT look up EUR-Lex):
+
+| Document | Local Path |
+|----------|------------|
+| PSD2 Directive (2015/2366) | `.agent/research/psd2-sca-compliance/sources/32015L2366.md` |
+| PSD2 RTS (2018/389) | `.agent/research/psd2-sca-compliance/sources/32018R0389.md` |
 
 ---
 
