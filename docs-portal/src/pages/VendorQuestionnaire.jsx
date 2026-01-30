@@ -929,7 +929,10 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                     .filter(cat => groupedRequirements[cat.id]?.length > 0)
                     .map(cat => (
                         <div key={cat.id} className="vcq-req-category-group">
-                            <h4 className="vcq-req-category-title">{cat.icon} {cat.label}</h4>
+                            <h4 className="vcq-req-category-title">
+                                {cat.icon} {cat.label}
+                                <span className="vcq-category-count-badge">{groupedRequirements[cat.id].length}</span>
+                            </h4>
                             <table className="vcq-req-table">
                                 <thead>
                                     <tr>

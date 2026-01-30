@@ -1001,6 +1001,23 @@
     color: var(--text-primary);
 }
 
+/* Category count badge (pill style) */
+.vcq-category-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 var(--space-2);
+    margin-left: var(--space-1);
+    background: rgba(0, 200, 200, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+}
+
 .vcq-req-table {
     width: 100%;
     table-layout: fixed;
