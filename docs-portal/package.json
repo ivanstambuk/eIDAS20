@@ -19,6 +19,7 @@
     "build:all-content": "npm run build:terminology && npm run build:search",
     "build:rca": "node scripts/build-rca.js",
     "build:vcq": "node scripts/build-vcq.js",
+    "build:vcq-clarifications": "node scripts/build-vcq-clarifications.js",
     "build:search": "node scripts/build-search-index.js",
     "build:embeddings": "node scripts/build-embeddings.js",
     "build:citations": "node scripts/build-citations.js",

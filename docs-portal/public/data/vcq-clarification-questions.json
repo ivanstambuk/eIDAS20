@@ -1,0 +1,4331 @@
+{
+  "generatedAt": "2026-01-30T14:24:26.795Z",
+  "schemaVersion": 1,
+  "stats": {
+    "totalRequirements": 142,
+    "totalQuestions": 797,
+    "byDimension": {
+      "technical_implementation": 99,
+      "data_handling": 15,
+      "auditability": 25,
+      "supply_chain": 7,
+      "security": 66,
+      "capability": 94,
+      "compliance_completeness": 20,
+      "lifecycle": 57,
+      "operational": 76,
+      "contract_terms": 3,
+      "compliance_evidence": 40,
+      "limitations": 5,
+      "commercial": 5,
+      "regulatory_access": 5,
+      "geographic_scope": 13,
+      "automation": 12,
+      "sla": 46,
+      "interoperability": 39,
+      "incident_response": 22,
+      "flexibility": 25,
+      "risk_management": 1,
+      "physical_security": 1,
+      "documentation": 17,
+      "regulatory_support": 1,
+      "personnel_security": 1,
+      "access_control": 1,
+      "training": 1,
+      "international_transfers": 1,
+      "compliance_monitoring": 19,
+      "user_experience": 17,
+      "data_integrity": 1,
+      "transparency": 1,
+      "legal_exposure": 1,
+      "compliance_flow_down": 1,
+      "liability": 1,
+      "legal_requirements": 4,
+      "regulatory_variability": 3,
+      "privacy": 12,
+      "performance": 2,
+      "alerting": 4,
+      "architecture": 12,
+      "governance": 2,
+      "reporting": 1,
+      "experience": 4,
+      "efficiency": 1,
+      "resilience": 1,
+      "regulatory_status": 1,
+      "roadmap": 4,
+      "scalability": 2,
+      "compliance_history": 5
+    }
+  },
+  "byRequirementId": {
+    "VEND-CORE-001": [
+      {
+        "id": "Q1",
+        "text": "How does your platform technically enforce the no-storage mandate for wallet transaction data?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What data elements, if any, are transiently processed during verification (e.g., in memory), and what is their maximum retention duration?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you maintain any logs, metadata, or derived data from wallet presentations? If so, describe what is logged and retention periods.",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q4",
+        "text": "How can the organization verify that no transaction content is being stored (e.g., audit mechanisms, architectural diagrams, third-party attestations)?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "If your service uses sub-processors or cloud infrastructure, how do you ensure they also comply with the no-storage mandate?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q6",
+        "text": "What technical controls prevent accidental or intentional storage of transaction content by your personnel?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you utilize secure enclaves or memory scrubbing techniques to ensure transient data is irrecoverable after processing?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-CORE-002": [
+      {
+        "id": "Q1",
+        "text": "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Does your DPA explicitly address all Article 28(3) mandatory provisions: (a) processing instructions, (b) confidentiality, (c) security, (d) sub-processors, (e) data subject request assistance, (f) breach notification, (g) deletion/return, (h) audit rights?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle updates to the DPA when regulatory requirements change (e.g., new EDPB guidance)?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "What is your process for approving and documenting the organization's specific processing instructions?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Are there any provisions in your standard DPA that limit the organization's audit rights beyond what GDPR permits?",
+        "dimension": "contract_terms"
+      }
+    ],
+    "VEND-CORE-003": [
+      {
+        "id": "Q1",
+        "text": "Do you permit on-site audits of your facilities and systems by the organization or its designated auditors?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What third-party certifications or audit reports (e.g., SOC 2 Type II, ISO 27001) do you provide to support compliance verification?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently can the organization conduct audits, and what advance notice is required?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "Are there any limitations on audit scope (e.g., shared infrastructure, sub-processor facilities, source code review)?",
+        "dimension": "limitations"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the cost structure for audits (e.g., included in contract, reasonable cost recovery, prohibited)?",
+        "dimension": "commercial"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you facilitate regulatory audits by supervisory authorities (e.g., DNB, ECB, national DPAs)?",
+        "dimension": "regulatory_access"
+      }
+    ],
+    "VEND-CORE-004": [
+      {
+        "id": "Q1",
+        "text": "Do you offer an automated Registration Management Interface to support the organization in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support the full RP registration lifecycle, including initial onboarding, updates to intended uses, modification of requested data elements, certificate retrieval, and deregistration?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "In which Member States can you facilitate and perform RP registrations? Can you support registrations in all Member States where the organization has legal entities?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q4",
+        "text": "Is the registration process automated end-to-end, or does it require manual steps? If manual, describe the manual touchpoints.",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q5",
+        "text": "Is the registration process fully auditable? Can you provide registration history, change logs, and certificate issuance records?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle registration renewals and expiration notifications?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q7",
+        "text": "What is the typical turnaround time for new RP registrations and updates?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q8",
+        "text": "How do you handle discrepancies or rejections from national Registrars?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-005": [
+      {
+        "id": "Q1",
+        "text": "Do you obtain and manage Relying Party Access Certificates on behalf of the organization, or does the organization manage certificates directly?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure certificates remain valid and are renewed before expiration?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "What Access Certificate Authorities (ACAs) do you support for certificate issuance?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How are certificate private keys protected? Describe the key management infrastructure (e.g., HSM, cloud KMS, software keystore).",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What monitoring and alerting is in place for certificate expiration, revocation, or compromise?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle emergency certificate revocation and replacement?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q7",
+        "text": "Can you support multiple certificates for different intended uses or Member States?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q8",
+        "text": "Does your lifecycle management process include automated key rotation for valid certificates?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-CORE-006": [
+      {
+        "id": "Q1",
+        "text": "Describe your encryption approach: what data is encrypted at rest and in transit, and what algorithms/key lengths are used?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What pseudonymization or anonymization techniques do you apply to wallet-related data?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you ensure the confidentiality, integrity, availability, and resilience of your processing systems?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What is your approach to regular security testing (e.g., penetration testing frequency, vulnerability scanning, red team exercises)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you hold any security certifications (e.g., ISO 27001, SOC 2 Type II, CSA STAR)? Provide certificate details and scope.",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you assess and document the appropriateness of your security measures relative to the risk (as required by GDPR Article 32)?",
+        "dimension": "risk_management"
+      },
+      {
+        "id": "Q7",
+        "text": "What physical security controls are in place at your data centers or processing facilities?",
+        "dimension": "physical_security"
+      },
+      {
+        "id": "Q8",
+        "text": "How do you handle security updates and patching for your systems?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-007": [
+      {
+        "id": "Q1",
+        "text": "What is your committed timeframe for notifying the organization of a personal data breach after becoming aware of it?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "What information do you provide in breach notifications (e.g., nature of breach, categories of data, affected individuals, remediation steps)?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you detect potential data breaches (e.g., SIEM, anomaly detection, intrusion detection systems)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you have a documented incident response plan? Can the organization review this plan?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "What is your escalation path for breach notification (e.g., 24/7 security operations center, dedicated contact)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you assist the organization in meeting its 72-hour notification obligation to supervisory authorities under GDPR Article 33?",
+        "dimension": "regulatory_support"
+      },
+      {
+        "id": "Q7",
+        "text": "What post-incident support do you provide (e.g., forensic analysis, evidence preservation, root cause analysis)?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-CORE-008": [
+      {
+        "id": "Q1",
+        "text": "Are all personnel with access to wallet transaction data or systems contractually bound by confidentiality obligations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What background checks or vetting procedures do you apply to personnel with data access?",
+        "dimension": "personnel_security"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you enforce the principle of least privilege for data access?",
+        "dimension": "access_control"
+      },
+      {
+        "id": "Q4",
+        "text": "What security awareness training do personnel receive, and how frequently is it updated?",
+        "dimension": "training"
+      },
+      {
+        "id": "Q5",
+        "text": "How are confidentiality obligations enforced for contractors, temporary staff, and sub-processor personnel?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q6",
+        "text": "What procedures are in place for revoking access when personnel leave or change roles?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-CORE-009": [
+      {
+        "id": "Q1",
+        "text": "How do you document and track the organization's processing instructions?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q2",
+        "text": "What technical and procedural controls prevent processing outside of documented instructions?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you process any wallet data for your own purposes (e.g., analytics, product improvement, marketing)? If so, describe what and under what legal basis.",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q4",
+        "text": "Does your service involve any transfer of personal data to third countries or international organizations? If so, what safeguards are in place?",
+        "dimension": "international_transfers"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you notify the organization if you believe an instruction infringes GDPR or other data protection law?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q6",
+        "text": "How can the organization update or modify processing instructions, and what is the implementation timeframe?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-010": [
+      {
+        "id": "Q1",
+        "text": "What technical capabilities do you provide to assist the organization in responding to data subject access requests (DSARs)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Can you search and retrieve all personal data relating to a specific data subject across your systems?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What is your committed response time for assisting with data subject requests?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you support data subject erasure requests (right to be forgotten) given the no-storage mandate?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q5",
+        "text": "Can you support data portability requests by providing data in a structured, commonly used, machine-readable format?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle requests for restriction of processing or objection to processing?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q7",
+        "text": "What audit trail do you maintain of data subject request handling for compliance verification?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-CORE-011": [
+      {
+        "id": "Q1",
+        "text": "How does your platform ensure that wallet users see both your identity (as intermediary) and the identity of the Relying Party on whose behalf you are acting?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What information about the Relying Party is displayed to the wallet user (e.g., legal name, logo, registration ID, intended use description)?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle scenarios where the Relying Party's information changes (e.g., name change, merger)?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "Can wallet users easily distinguish between your identity and the Relying Party's identity in the consent flow?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure the displayed Relying Party information is accurate and matches the registered data?",
+        "dimension": "data_integrity"
+      }
+    ],
+    "VEND-CORE-012": [
+      {
+        "id": "Q1",
+        "text": "What is your process for notifying the organization if you receive a legal requirement (e.g., court order, law enforcement request) to process data beyond their instructions?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you notify the organization before complying with such requests, unless legally prohibited?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you document and track government or law enforcement data access requests?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you publish a transparency report on government access requests received and complied with?",
+        "dimension": "transparency"
+      },
+      {
+        "id": "Q5",
+        "text": "In which jurisdictions are you subject to data access laws, and what is your policy on challenging overbroad requests?",
+        "dimension": "legal_exposure"
+      }
+    ],
+    "VEND-CORE-013": [
+      {
+        "id": "Q1",
+        "text": "Do you currently use sub-processors for any part of your EUDI Wallet intermediary service? If so, provide a complete list with their roles and locations.",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q2",
+        "text": "What is your process for seeking authorization before adding or changing sub-processors?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you offer specific sub-processor authorization (per sub-processor) or general authorization with notification of changes?",
+        "dimension": "contract_terms"
+      },
+      {
+        "id": "Q4",
+        "text": "What advance notice do you provide before engaging new sub-processors?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure sub-processors comply with the same data protection obligations as you?",
+        "dimension": "compliance_flow_down"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you remain fully liable for sub-processor compliance, or do you seek to limit liability?",
+        "dimension": "liability"
+      },
+      {
+        "id": "Q7",
+        "text": "Can the organization object to a proposed sub-processor change, and what happens if they do?",
+        "dimension": "contract_terms"
+      }
+    ],
+    "VEND-CORE-014": [
+      {
+        "id": "Q1",
+        "text": "Given the no-storage mandate, what personal data might you hold at contract termination (e.g., configuration data, audit logs, registration data)?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q2",
+        "text": "What is your standard procedure for data return at contract termination? In what format is data returned?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "What is your procedure for secure data deletion at contract termination? How is deletion verified?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you provide a deletion certificate or attestation upon completion of data deletion?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the timeframe for completing data deletion or return after contract termination?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q6",
+        "text": "Are there any circumstances where you are legally required to retain data beyond contract termination? If so, what data and for how long?",
+        "dimension": "legal_requirements"
+      },
+      {
+        "id": "Q7",
+        "text": "How do you ensure data in backups is also deleted within the required timeframe?",
+        "dimension": "data_handling"
+      }
+    ],
+    "VEND-CORE-016": [
+      {
+        "id": "Q1",
+        "text": "Do you perform the registration of intermediated Relying Parties at national Registrars, or does the organization do this directly?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which Member State Registrars can you currently interface with for RP registration?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle registrations for Relying Parties established in Member States where you don't yet have Registrar integration?",
+        "dimension": "limitations"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you obtain registration certificates for each registered intended use on behalf of the Relying Party?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you manage updates to Relying Party registrations when their intended uses or requested data elements change?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "What is your process for deregistering a Relying Party when they terminate their relationship with you?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q7",
+        "text": "How do you ensure compliance with each Member State's specific registration requirements and timelines?",
+        "dimension": "regulatory_variability"
+      }
+    ],
+    "VEND-CORE-017": [
+      {
+        "id": "Q1",
+        "text": "What legal evidence do you submit to Registrars to prove the intermediary-Relying Party relationship (e.g., contract, power of attorney, letter of authorization)?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure the legal evidence meets each Registrar's specific requirements?",
+        "dimension": "regulatory_variability"
+      },
+      {
+        "id": "Q3",
+        "text": "What is your process for updating legal evidence when contracts are amended or renewed?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle Registrar rejections due to insufficient or invalid legal evidence?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Is the legal evidence submission process automated or manual?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q6",
+        "text": "How long do you retain copies of the legal evidence submitted to Registrars?",
+        "dimension": "data_handling"
+      }
+    ],
+    "VEND-CORE-018": [
+      {
+        "id": "Q1",
+        "text": "How do you verify the authenticity of PIDs and attestations received from wallet units?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "Which wallet implementations have you tested verification compatibility with (EUDI reference, Apple, Google, third-party)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you check the revocation status of presented credentials, and what revocation mechanisms do you support (Status Lists, OCSP, etc.)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you verify device binding (proof that the credential is bound to the presenting wallet's secure element)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you verify user binding (proof that the authorized user is presenting the credential)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you support Zero-Knowledge Proof (ZKP) verification for privacy-preserving claims (e.g., age over 18)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q7",
+        "text": "Can the organization configure which verification checks are performed for different use cases?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q8",
+        "text": "What happens if a verification check fails? How is this communicated to the user and logged for the organization?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q9",
+        "text": "Do you support Selective Disclosure (SD) to allow verification of specific attributes without revealing the full credential coverage?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q10",
+        "text": "Do you support batch verification of multiple credentials/presentations for high-volume use cases?",
+        "dimension": "performance"
+      }
+    ],
+    "VEND-CORE-019": [
+      {
+        "id": "Q1",
+        "text": "Do you support EUDI Wallet-based Strong Customer Authentication for payment transactions as specified in ARF Technical Specification 12 (TS12)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you implement the two-factor authentication requirement (knowledge/possession/inherence) using the wallet's cryptographic mechanisms?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you achieve dynamic linking of authentication to specific transaction amount and payee as required by PSD2 RTS Article 5?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you ensure independence of authentication elements (that compromise of one element does not compromise others)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What mechanisms are in place to detect and prevent fraud and transaction manipulation?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you support SCA exemptions (low-value payments, recurring transactions, trusted beneficiaries) while maintaining compliance?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q7",
+        "text": "What integration is required with the organization's existing payment infrastructure (PSP, acquirer, card schemes)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q8",
+        "text": "Have you obtained or are you pursuing any PSD2 SCA certifications or attestations?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q9",
+        "text": "Do you support Delegated Authentication flows where the EUDI Wallet relies on an external authenticator (e.g., bank app)?If so, how is the trust model maintained?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-CORE-020": [
+      {
+        "id": "Q1",
+        "text": "Do you implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which OpenID4VCI flows do you support (pre-authorized code, authorization code, deferred issuance)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What credential formats do you support for issuance (SD-JWT-VC, mdoc/mDL, both)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle wallet unit authentication during issuance (WUA verification, key binding)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support batch issuance of multiple credentials in a single session?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle credential refresh and re-issuance for expiring credentials?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q7",
+        "text": "Have you participated in any OpenID4VCI interoperability testing or certification programs?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q8",
+        "text": "How do you handle issuance failures and retries?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q9",
+        "text": "Do you support both same-device (issuance directly to wallet on same device) and cross-device (issuance via QR code/link to separate device) flows?",
+        "dimension": "user_experience"
+      }
+    ],
+    "VEND-CORE-021": [
+      {
+        "id": "Q1",
+        "text": "Do you implement the common data deletion request interface as specified in Technical Specification 7 (TS7)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you authenticate users submitting deletion requests to ensure they are authorized to request deletion?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What is your response time for processing data deletion requests received via the TS7 interface?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle deletion requests when legal retention requirements apply?",
+        "dimension": "legal_requirements"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you provide confirmation to the wallet user upon completion of the deletion?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you ensure deletion is propagated to all systems and backups?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q7",
+        "text": "What audit logging is maintained for deletion request processing?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-CORE-022": [
+      {
+        "id": "Q1",
+        "text": "Do you register attestation types in the EU catalogue of attributes and attestations as specified in Technical Specification 11?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What attestation types do you currently issue, and are they registered in the catalogue?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you ensure your attestation schemas comply with the common data model?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle schema versioning and updates?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you follow any sector-specific rulebooks for attestation structure (e.g., mobile driving license, payment credentials)?",
+        "dimension": "regulatory_variability"
+      }
+    ],
+    "VEND-CORE-023": [
+      {
+        "id": "Q1",
+        "text": "Do you implement the open standards mapped in Technical Specification 1 (TS1) for EUDI Wallet interoperability?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which specific standards do you implement (OpenID4VCI, OpenID4VP, SD-JWT, mdoc/mDL, ISO 18013-5, ISO 23220)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Have you participated in EUDI Wallet plugfest or other interoperability testing events? What were the results?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q4",
+        "text": "Which wallet implementations have you tested interoperability with?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you track and adopt updates to these standards as they evolve?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "Are there any proprietary extensions or deviations from the standard implementations? If so, describe them.",
+        "dimension": "limitations"
+      },
+      {
+        "id": "Q7",
+        "text": "Given the evolving nature of EUDI standards, how do you manage breaking changes in draft specifications (e.g., OpenID4VCI drafts) to maintain backward compatibility?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-CORE-024": [
+      {
+        "id": "Q1",
+        "text": "Do you publish provider information endpoints as specified in Technical Specification 2 (TS2)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What metadata do you publish (supported credential types, signing algorithms, trust chain, issuer identifiers)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently is your published metadata updated when your service configuration changes?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How do wallets and Relying Parties discover your published metadata?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "Is your metadata endpoint highly available? What is the uptime SLA?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-CORE-025": [
+      {
+        "id": "Q1",
+        "text": "Do you verify the Wallet Unit Attestation (WUA) before issuing credentials as specified in Technical Specification 3?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What WUA verification checks do you perform (signature validation, certificate chain, revocation status, WSCD certification)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle issuance requests from wallet instances with invalid, expired, or revoked WUAs?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you stay updated on the list of certified WSCDs and WUA trust anchors?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the latency impact of WUA verification on the issuance process?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle WUA verification failures? What feedback is provided to the wallet user?",
+        "dimension": "user_experience"
+      }
+    ],
+    "VEND-CORE-026": [
+      {
+        "id": "Q1",
+        "text": "Do you support remote qualified electronic signature creation via EUDI Wallet as specified in Technical Specification 8 (TS8)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure sole control of the signatory over the remote signing process?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What multi-factor authentication is required to authorize each signing operation?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Are signing keys generated and stored in HSMs meeting QSCD requirements?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q5",
+        "text": "How is the What You See Is What You Sign (WYSIWYS) principle implemented?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q6",
+        "text": "What document formats do you support for signing (PDF, XML, plain text)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q7",
+        "text": "How do you support batch and automated signing scenarios while maintaining sole control?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q8",
+        "text": "Is your Server Signing Application (SSA) fully certified as part of a QSCD (Qualified Signature Creation Device)? Provide certification details.",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-CORE-027": [
+      {
+        "id": "Q1",
+        "text": "Do you support pseudonym attestations as specified in Technical Specification 9 (TS9)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support User Pseudonyms (UP) for persistent pseudonymous relationships?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support Wallet-RP Pseudonyms (WRP) for unlinkable transactions?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you support Zero-Knowledge Proofs (ZKP) to prove attributes without revealing underlying data?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure pseudonyms cannot be correlated across different Relying Parties or transactions?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q6",
+        "text": "Can pseudonymous users be re-identified if legally required (e.g., court order)? What is your process?",
+        "dimension": "legal_requirements"
+      }
+    ],
+    "VEND-CORE-028": [
+      {
+        "id": "Q1",
+        "text": "Do you provide data export capabilities as specified in Technical Specification 10 (TS10) for GDPR portability?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What data can be exported (transaction logs, credentials, presentation history)?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q3",
+        "text": "In what formats is data exported (JSON, XML, CSV)? Are these machine-readable and commonly used?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do users request data export? Is it self-service or requires manual processing?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the response time for fulfilling data export requests?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q6",
+        "text": "How is exported data secured during transmission to the user?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-CORE-029": [
+      {
+        "id": "Q1",
+        "text": "How do you verify registration certificates presented by PID Providers, Attestation Providers, or other Relying Parties?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you validate certificate signatures against the Trusted List published by Member States?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently do you update your local copy of Trusted Lists?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "What happens when a counterparty presents an invalid or revoked registration certificate?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support certificate verification for all Member States, or only specific ones?",
+        "dimension": "geographic_scope"
+      }
+    ],
+    "VEND-CORE-030": [
+      {
+        "id": "Q1",
+        "text": "How do you verify the cryptographic signature on attestations received from wallets?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you verify that attestations have not expired?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What revocation status checking mechanisms do you support for attestation validation?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you verify the issuer's access certificate chain?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the latency of your end-to-end attestation verification process?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle attestations from issuers not in your trust list?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-031": [
+      {
+        "id": "Q1",
+        "text": "Do you support registration of multiple intended uses for the organization?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure the organization's intended uses remain aligned with the access certificate policies of each ACA?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q3",
+        "text": "What process is followed when an intended use needs to be added, modified, or removed?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How are access certificate policy updates from ACAs communicated and operationalized?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle revocation procedures required by access certificate policies?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-CORE-032": [
+      {
+        "id": "Q1",
+        "text": "How do you present the organization's RP Access Certificate to Wallet Units during presentation requests?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure the presented certificate is current and not expired or revoked?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "What information from the certificate is displayed to wallet users?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle certificate rotation or renewal without service interruption?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support different certificates for different intended uses?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-CORE-033": [
+      {
+        "id": "Q1",
+        "text": "Do you correctly process pseudonym-based presentations when users choose to present them?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you validate that the pseudonym belongs to the presenting user?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What controls prevent your system from attempting to derive the user's true identity from a pseudonym?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you prevent correlation of pseudonyms across different transactions or sessions?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you verify registration/authentication with non-revoked Wallet Units for pseudonym presentations?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you maintain logs of pseudonym presentations? If so, how is this data protected?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-CORE-034": [
+      {
+        "id": "Q1",
+        "text": "Do you publish trust anchor information through the Access Certificate Authority notification process on behalf of the organization?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What information is included in the published trust anchor?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle updates to trust anchor information when organizational details change?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How quickly are trust anchor updates propagated to Wallet Units?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle trust anchor revocation if required?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-CORE-035": [
+      {
+        "id": "Q1",
+        "text": "What is your standard response time for processing GDPR Article 17 deletion requests?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you verify the identity of users submitting deletion requests?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you provide confirmation of deletion to the requesting user?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q4",
+        "text": "What valid grounds for refusal do you recognize, and how are these communicated?",
+        "dimension": "legal_requirements"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure all copies of the data, including backups, are deleted?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q6",
+        "text": "What audit trail is maintained for deletion request processing and completion?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-CORE-038": [
+      {
+        "id": "Q1",
+        "text": "Do you support the W3C Digital Credentials API for browser-mediated presentation requests?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which browsers are supported for the Digital Credentials API flow?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle fallback for browsers that do not support the Digital Credentials API?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How is the credential exchange flow secured against man-in-the-middle attacks?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What user experience considerations have you implemented for the browser-mediated flow?",
+        "dimension": "user_experience"
+      }
+    ],
+    "VEND-CORE-039": [
+      {
+        "id": "Q1",
+        "text": "How does your system behave when revocation status information is temporarily unavailable?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you implement rate limiting to avoid repeatedly requesting unavailable status lists?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What fallback behavior is implemented when revocation checks cannot be completed?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How is the organization notified of revocation status unavailability events?",
+        "dimension": "alerting"
+      },
+      {
+        "id": "Q5",
+        "text": "How long do you cache revocation status information, and what is your refresh strategy?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-CORE-040": [
+      {
+        "id": "Q1",
+        "text": "Do you support proximity identification flows (BLE/NFC) for local credential presentation?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "If supported, which protocols do you implement (ISO/IEC 18013-5, BLE, NFC)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What hardware is required at the Relying Party location for proximity flows?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How do proximity flows operate without internet connectivity?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the range and reliability of the proximity communication?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q6",
+        "text": "How is security maintained in the proximity flow (key exchange, encryption)?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-CORE-041": [
+      {
+        "id": "Q1",
+        "text": "How do you handle updates to the organization's registration certificates?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the process for certificate renewal before expiration?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle emergency certificate revocation situations?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q4",
+        "text": "How are updated certificates distributed to all systems that need them?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "What notifications are sent for upcoming certificate expirations?",
+        "dimension": "alerting"
+      },
+      {
+        "id": "Q6",
+        "text": "Is the certificate lifecycle fully automated or does it require manual intervention?",
+        "dimension": "automation"
+      }
+    ],
+    "VEND-CORE-042": [
+      {
+        "id": "Q1",
+        "text": "Does your platform apply GDPR-compliant data handling (encryption, access controls, audit logging) to ALL attestation processing by default?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you have separate processing paths that bypass security controls for 'non-personal data'? If so, describe them.",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle attestations relating to legal persons or objects that may still be processed alongside personal data context?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q4",
+        "text": "What guidance do you provide to customers (RPs) regarding DPIA requirements for different attestation types?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you document exceptions for truly anonymous processing scenarios?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you implement 'Compliance by Environment' principles where session context (IP, wallet ID) is treated as personal data?",
+        "dimension": "architecture"
+      }
+    ],
+    "VEND-ICT-001": [
+      {
+        "id": "Q1",
+        "text": "Does your standard contract include all mandatory provisions specified in DORA Article 30(2)?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you document service descriptions, processing locations, and data protection measures in contracts?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you have DORA-specific contract templates or amendments for financial entity customers?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle contract negotiations when the organization requires DORA-specific clauses?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q5",
+        "text": "Are processing locations documented and subject to approval by the financial entity?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q6",
+        "text": "Does your internal governance follow the 'three lines of defense' model (operations, risk management, internal audit)?",
+        "dimension": "governance"
+      }
+    ],
+    "VEND-ICT-002": [
+      {
+        "id": "Q1",
+        "text": "Do you grant full access, inspection, and audit rights to the financial entity and their supervisory authority?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the notice period required for audit requests?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "Are on-site audits supported, or only remote/third-party audits?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you facilitate GDPR Article 28(3)(h) audit requirements in addition to DORA?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q5",
+        "text": "What audit reports or certifications can you provide proactively (SOC 2, ISO 27001)?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "Are there any restrictions on audit scope or frequency?",
+        "dimension": "limitations"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you provide a 'Standard Audit Report' that specifically maps your internal controls to DORA Articles 28-30 requirements?",
+        "dimension": "reporting"
+      }
+    ],
+    "VEND-ICT-003": [
+      {
+        "id": "Q1",
+        "text": "What transition period do you guarantee during contract termination?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "What data migration assistance do you provide during exit?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you continue providing services during the transition to an alternative provider?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "In what formats can data be exported for migration?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the cost model for exit support services?",
+        "dimension": "commercial"
+      },
+      {
+        "id": "Q6",
+        "text": "Have you executed successful transitions for previous financial entity customers?",
+        "dimension": "experience"
+      }
+    ],
+    "VEND-ICT-004": [
+      {
+        "id": "Q1",
+        "text": "How do you cooperate with the organization's ICT risk management program?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you participate in the organization's risk assessments and control testing?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you support the organization's remediation activities?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q4",
+        "text": "What risk reporting do you provide to support the organization's risk framework?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization integrate your service into their risk monitoring tools?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-ICT-005": [
+      {
+        "id": "Q1",
+        "text": "What entity details do you provide for inclusion in the organization's ICT TPP register?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you provide criticality assessments for your services?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you notify the organization when register information changes?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "What contractual terms summary do you provide for registry purposes?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "How frequently do you update the information provided?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-ICT-006": [
+      {
+        "id": "Q1",
+        "text": "What financial stability information do you provide for due diligence?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you demonstrate ICT risk management capabilities?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "What compliance posture evidence can you provide (certifications, audit reports)?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you have a standard due diligence package for financial entity prospects?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you respond to security questionnaire/RFI processes?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "Can existing financial entity customers provide references?",
+        "dimension": "experience"
+      }
+    ],
+    "VEND-ICT-007": [
+      {
+        "id": "Q1",
+        "text": "What is your incident notification timeline (how quickly after detection)?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "What channels are used for incident notification (email, phone, ticketing)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support integration with the organization's SIEM or security monitoring tools for automated alerting?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "What information is included in incident notifications?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you support the organization's own regulatory incident reporting obligations?",
+        "dimension": "regulatory_access"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you provide root cause analysis and remediation plans after incidents?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q7",
+        "text": "How do you classify 'Major ICT Incidents' under DORA, and do you support accelerated reporting (< 4 hours) for such events?",
+        "dimension": "compliance_monitoring"
+      }
+    ],
+    "VEND-ICT-008": [
+      {
+        "id": "Q1",
+        "text": "Do you support customer-initiated threat-led penetration testing (TLPT)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the advance notice required for TLPT participation?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "Are there scope limitations on penetration testing of your systems?",
+        "dimension": "limitations"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle remediation of vulnerabilities discovered during TLPT?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you conduct your own regular penetration testing?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "Can TLPT results be shared with the organization's supervisory authority?",
+        "dimension": "regulatory_access"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you support 'pooled auditing' or 'pooled TLPT' where multiple financial entities coordinate a single test to reduce operational burden?",
+        "dimension": "efficiency"
+      }
+    ],
+    "VEND-ICT-009": [
+      {
+        "id": "Q1",
+        "text": "What is your service availability SLA?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "What disaster recovery capabilities do you maintain (RTO, RPO)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently are business continuity plans tested?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q4",
+        "text": "Where are backup facilities located?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you provide business continuity test results to customers?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "What was the outcome of your last disaster recovery test?",
+        "dimension": "experience"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you conduct specific scenario-based testing (e.g., ransomware, physical destruction) beyond generic availability tests?",
+        "dimension": "resilience"
+      }
+    ],
+    "VEND-ICT-010": [
+      {
+        "id": "Q1",
+        "text": "Do you use subcontractors for any part of the ICT service?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you obtain prior approval from the organization before engaging subcontractors?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you ensure subcontractors meet equivalent security and compliance requirements?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q4",
+        "text": "What visibility does the organization have into your subcontractor chain?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization reject specific subcontractors?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q6",
+        "text": "How are subcontractor changes communicated to the organization?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-ICT-011": [
+      {
+        "id": "Q1",
+        "text": "Can you disclose the approximate number of financial entities using your services?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q2",
+        "text": "What information do you provide on interdependencies with other ICT providers?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you support the organization's concentration risk analysis?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you have single points of failure that could affect multiple financial entities?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q5",
+        "text": "What is your geographic distribution of infrastructure?",
+        "dimension": "geographic_scope"
+      }
+    ],
+    "VEND-ICT-012": [
+      {
+        "id": "Q1",
+        "text": "Are you currently designated as a Critical ICT Third-Party Provider (CTPP) by the ESAs?",
+        "dimension": "regulatory_status"
+      },
+      {
+        "id": "Q2",
+        "text": "If designated, who is your Lead Overseer?",
+        "dimension": "regulatory_access"
+      },
+      {
+        "id": "Q3",
+        "text": "What additional oversight measures do you support for designated CTTPPs?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you anticipate designation as a CTPP in the future?",
+        "dimension": "roadmap"
+      },
+      {
+        "id": "Q5",
+        "text": "How would CTPP designation affect the organization's use of your services?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-INT-001": [
+      {
+        "id": "Q1",
+        "text": "How do you communicate both the intermediary's identity and the ultimate Relying Party's identity to the wallet for user display?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What data elements are included in the RP identity information (name, logo, registration status, intended use)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How is the RP identity information kept current when RP details change?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle cases where the wallet does not display dual identities correctly?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization customize how their identity is presented to wallet users?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q6",
+        "text": "How does your solution render the 'on behalf of' relationship in the wallet authorization screen (e.g., utilizing client_metadata vs client_id_scheme)?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-INT-002": [
+      {
+        "id": "Q1",
+        "text": "What technical controls prevent the intermediary from modifying, expanding, or altering the RP's registered data request?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you validate that request forwarding only includes attributes registered by the RP?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q3",
+        "text": "Is there an audit trail showing the RP's original request versus what was sent to the wallet?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "What happens if an RP attempts to request attributes not authorized in their registration?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure alignment between registered intended uses and actual requests?",
+        "dimension": "compliance_monitoring"
+      }
+    ],
+    "VEND-INT-003": [
+      {
+        "id": "Q1",
+        "text": "How do you technically ensure requests are relayed to wallets without attribute modification?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "Is the request payload signed or otherwise integrity-protected during relay?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What logging exists to demonstrate request forwarding integrity?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "How is request integrity verified at the wallet end?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-INT-004": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure wallet presentations are relayed to the RP without alteration, extraction, or processing?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What architectural controls prevent the intermediary from accessing or analyzing presentation content?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q3",
+        "text": "Is the presentation payload encrypted end-to-end from wallet to RP, with the intermediary unable to decrypt?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What audit evidence demonstrates that credential data is not accessed during transit?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "How would a breach of this integrity control be detected?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-INT-005": [
+      {
+        "id": "Q1",
+        "text": "Do you support remote presentation via OpenID4VP as specified in ISO/IEC TS 18013-7?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support proximity presentation via BLE/NFC as specified in ISO/IEC 18013-5?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "Which wallet implementations have you tested protocol compatibility with (EUDI reference, Apple, Google, third-party)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "What hardware is required for proximity presentation support at the organization's locations?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support SIOPv2 (Self-Issued OpenID Provider) as an alternative presentation protocol?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle mode switching when both remote and proximity are available?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q8",
+        "text": "Do you support the `response_uri` method for receiving large presentation payloads asynchronous to the wallet interaction?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-INT-006": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure attributes are forwarded ONLY to the specific RP on whose behalf the request was made?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "What happens if verification fails—how is it ensured no attributes are forwarded?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you prevent routing errors where data could be sent to the wrong RP?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What audit trail exists for successful and failed verification outcomes?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-INT-007": [
+      {
+        "id": "Q1",
+        "text": "How do you obtain and maintain Trusted Lists for PID Providers from Member States?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How frequently are Trusted Lists refreshed?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle additions, modifications, and revocations of trust anchors?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the latency between a trust anchor change and your system reflecting it?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "Which Member States' Trusted Lists do you currently support?",
+        "dimension": "geographic_scope"
+      }
+    ],
+    "VEND-INT-008": [
+      {
+        "id": "Q1",
+        "text": "How do you maintain Trusted Lists for QEAA and EAA providers?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you distinguish between qualified and non-qualified attestation providers in your trust store?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle attestation providers not yet on Trusted Lists?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "Can the organization configure additional trusted attestation providers beyond official lists?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-INT-009": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure trust anchors are obtained exclusively from official EU and Member State sources?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you use any third-party aggregators for trust anchor data? If so, how is their authenticity verified?",
+        "dimension": "supply_chain"
+      },
+      {
+        "id": "Q3",
+        "text": "What controls prevent injection of unauthorized trust anchors into your trust store?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "How is the authenticity of Trusted List downloads verified (signatures, certificates)?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-INT-010": [
+      {
+        "id": "Q1",
+        "text": "How do you verify cryptographic signatures on attestations and PIDs?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What happens when a signature is invalid—is the presentation rejected?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "What happens when a signature is valid but the issuer is not in your trust store?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "What cryptographic libraries do you use for signature verification?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle algorithm transitions as new algorithms are approved?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-INT-011": [
+      {
+        "id": "Q1",
+        "text": "Do you check attestation revocation status before accepting presentations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What revocation checking mechanisms do you support (status lists, OCSP, token status)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle revocation checking when status endpoints are unavailable?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the latency impact of revocation checking on verification time?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization configure whether revocation checking is mandatory or optional?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q6",
+        "text": "What caching strategies do you employ for Status Lists to minimize latency while ensuring freshness?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-INT-012": [
+      {
+        "id": "Q1",
+        "text": "How do you verify that presentations are cryptographically bound to the presenting wallet's WSCD?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What proof-of-possession mechanisms do you verify (device key signatures, key attestations)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you detect presentations that may have been exported from the original device?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the failure handling when device binding verification fails?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-INT-013": [
+      {
+        "id": "Q1",
+        "text": "How do you verify that presentations are fresh and not replayed from previous sessions?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What nonce or challenge mechanisms do you use?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle timestamp verification for presentation freshness?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the time window for accepting presentations (tolerance for clock skew)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you detect and block replay attempts?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you bind the wallet response to the specific browser session or client state initiating the request (e.g., state param handling)?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-INT-014": [
+      {
+        "id": "Q1",
+        "text": "What transport layer security do you use for transmitting presentations to the RP (TLS version, cipher suites)?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support mutual TLS (mTLS) for RP authentication?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "How are RP endpoints authenticated before forwarding data?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What happens if the secure channel to the RP cannot be established?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Is application-layer encryption used in addition to transport encryption?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-INT-016": [
+      {
+        "id": "Q1",
+        "text": "How do you securely store cryptographic material used in verification operations?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "Are verification keys stored in HSMs or equivalent secure storage?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "What access controls govern key usage?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you prevent unauthorized access, modification, or extraction of keys?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What is your key rotation and lifecycle management process?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-INT-017": [
+      {
+        "id": "Q1",
+        "text": "How do you protect verification results from tampering before they reach the RP?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "Are verification results signed or otherwise integrity-protected?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How can the RP verify that the verification outcome is authentic and unmodified?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "What audit trail exists for verification decisions?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-INT-018": [
+      {
+        "id": "Q1",
+        "text": "What verification operations are logged (timestamps, outcomes, error codes)?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure logs do not contain attestation content (per no-storage mandate)?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q3",
+        "text": "How long are verification logs retained?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q4",
+        "text": "Can logs be exported for dispute resolution or compliance audits?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How are logs protected against tampering?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-INT-019": [
+      {
+        "id": "Q1",
+        "text": "What technical controls prevent extraction of individual attribute values from presentations?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q2",
+        "text": "Are presentations treated as opaque payloads that cannot be decoded by the intermediary?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How would attribute extraction be detected if it occurred?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you undergo third-party audits to verify no-extraction compliance?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-INT-020": [
+      {
+        "id": "Q1",
+        "text": "What technical and architectural controls prevent correlation of wallet user activity across different RPs?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q2",
+        "text": "Are RP relationships logically isolated to prevent cross-linking?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What data isolation exists between different RP tenants in your platform?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q4",
+        "text": "How would unauthorized correlation be detected?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you undergo privacy audits verifying unlinkability?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-INT-021": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure complete deletion of PIDs, attestations, and user attributes immediately after forwarding to the RP?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the definition of 'immediately'—what is the maximum time window?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "How is deletion verified (not just marked for deletion, but actually purged)?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle deletion when forwarding fails?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Does deletion extend to all copies including memory, caches, and logs?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q6",
+        "text": "What audit evidence demonstrates compliance with immediate deletion?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-INT-022": [
+      {
+        "id": "Q1",
+        "text": "What RP details do you include in presentation requests (user-friendly name, unique ID, Registrar URL, intended use)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you obtain and maintain RP details for each intermediated RP?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "What happens when RP registration details change—how quickly is the update reflected?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "Can the organization customize the user-friendly name and description shown to users?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-INT-023": [
+      {
+        "id": "Q1",
+        "text": "Do you support SD-JWT-VC format for remote presentations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support ISO 18013-5 mDoc format for proximity presentations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "If both remote and proximity modes are supported, are both formats fully implemented?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "Which wallet implementations have you tested format compatibility with (EUDI reference, Apple, Google, third-party)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "Have you participated in EUDI Wallet plugfest or interoperability testing events?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "For SD-JWT-VC, do you support verification of individual disclosures (claims) independent of the full payload?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-INT-024": [
+      {
+        "id": "Q1",
+        "text": "Does your verification implementation correctly handle selectively disclosed attributes?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support partial attribute disclosure in both mDoc and SD-JWT-VC formats?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you verify presentations where only a subset of attributes is disclosed?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "What happens if an RP requests an attribute that was not disclosed?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-INT-025": [
+      {
+        "id": "Q1",
+        "text": "Do you have certifications for your cryptographic implementations (FIPS 140-2/3, Common Criteria)?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "What certified cryptographic libraries or modules do you use?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "If not currently certified, is certification on your roadmap?",
+        "dimension": "roadmap"
+      },
+      {
+        "id": "Q4",
+        "text": "Can you provide certification evidence to the organization for their risk assessment?",
+        "dimension": "documentation"
+      }
+    ],
+    "VEND-INT-026": [
+      {
+        "id": "Q1",
+        "text": "How do you verify RP compliance with embedded disclosure policies in attestations?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What happens when an RP does not meet the disclosure policy conditions?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "How is the disclosure policy verification result communicated to the wallet for user display?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "What disclosure policy types do you support?",
+        "dimension": "capability"
+      }
+    ],
+    "VEND-INT-027": [
+      {
+        "id": "Q1",
+        "text": "Do you support WebAuthn-based pseudonymous authentication from wallet units?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which WebAuthn attestation and assertion modes do you support?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle pseudonymous authentication without revealing user identity?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q4",
+        "text": "What WebAuthn authenticator types are supported?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-INT-028": [
+      {
+        "id": "Q1",
+        "text": "Do you correctly handle RP-specific pseudonyms generated by wallets?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure pseudonyms cannot be linked across different RPs using your service?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q3",
+        "text": "What technical controls prevent pseudonym correlation?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you maintain any mapping between pseudonyms and real identities?",
+        "dimension": "privacy"
+      }
+    ],
+    "VEND-INT-029": [
+      {
+        "id": "Q1",
+        "text": "How do you obtain and manage Wallet-Relying Party Access Certificates from Registrars?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure the certificate is valid and not expired when interacting with wallets?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What certificate lifecycle management is in place (renewal alerts, automated rotation)?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do wallets verify your access certificate?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "What happens if the access certificate is revoked or expires during operations?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-INT-030": [
+      {
+        "id": "Q1",
+        "text": "Do you implement the common data deletion request interface as specified in TS7?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you authenticate users submitting deletion requests via the TS7 interface?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "Given the no-storage mandate, what data is subject to deletion requests?",
+        "dimension": "data_handling"
+      },
+      {
+        "id": "Q4",
+        "text": "What is your response time for processing deletion requests?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you relay deletion requests to the ultimate RP when needed?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "Is the deletion request automatically routed to the backend RP systems via webhook/API, or is it a manual notification?",
+        "dimension": "automation"
+      }
+    ],
+    "VEND-INT-031": [
+      {
+        "id": "Q1",
+        "text": "How is your identity (as intermediary) presented to users and potentially included in DPA reports?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q2",
+        "text": "What contact information is provided to users for complaint purposes?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you support investigation requests from data protection authorities?",
+        "dimension": "regulatory_access"
+      },
+      {
+        "id": "Q4",
+        "text": "What process is in place to respond to DPA inquiries about intermediation activities?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-INT-032": [
+      {
+        "id": "Q1",
+        "text": "Do you include both your access certificate and the intermediated RP's registration certificate in wallet requests?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you obtain and maintain RP registration certificates?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "What happens when an RP does not have a registration certificate?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How are certificate updates reflected in ongoing operations?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-INT-033": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure the intermediary-RP relationship is registered with the Registrar before beginning operations?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q2",
+        "text": "What legal evidence do you provide to Registrars to establish the relationship?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle wallets that cannot verify the registered relationship?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the timeline from contract signing to registered relationship?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you manage relationship updates (new RPs, terminated RPs)?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-INT-034": [
+      {
+        "id": "Q1",
+        "text": "Do you support attestation status list verification as specified in ARF Topic 7?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What status list formats do you support (Attestation Status List, Token Status List)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently do you refresh status lists from issuers?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the fallback behavior when status lists are unavailable?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization configure revocation checking behavior (mandatory vs. optional)?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-ISS-001": [
+      {
+        "id": "Q1",
+        "text": "Do you provide tooling or services to register the organization as an Attestation Provider with Member State authorities?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which Member States do you currently support for Attestation Provider registration?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q3",
+        "text": "What documentation and prerequisites must the organization provide for registration?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the typical timeline from application to inclusion in Trusted Lists?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you track and alert on registration status and renewal requirements?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you manage ongoing compliance with registration conditions on behalf of the organization?",
+        "dimension": "compliance_monitoring"
+      }
+    ],
+    "VEND-ISS-002": [
+      {
+        "id": "Q1",
+        "text": "Do you publish machine-readable Provider Information according to the data model in Annex I of Regulation 2024/2981?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What metadata do you publish (supported attestation types, issuance policies, data sources, endpoints)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How is the Provider Information discovered by wallets and Relying Parties?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "Is the Provider Information endpoint highly available? What is the uptime SLA?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you validate that published information conforms to the required schema?",
+        "dimension": "compliance_monitoring"
+      }
+    ],
+    "VEND-ISS-003": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure Provider Information is updated within 24 hours when operational changes occur?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "Is the update process automated when configuration changes are made, or does it require manual intervention?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q3",
+        "text": "What audit trail exists for Provider Information updates?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "How are organizations alerted when an update is required but has not yet been published?",
+        "dimension": "alerting"
+      }
+    ],
+    "VEND-ISS-004": [
+      {
+        "id": "Q1",
+        "text": "Do you support the organization's application for QTSP status and Trusted List inclusion?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which Member States' Trusted Lists can you support for inclusion?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q3",
+        "text": "What assistance do you provide for the conformity assessment audit required for QTSP status?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you monitor Trusted List status and alert on any changes affecting the organization?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "What is your experience with QTSP certification timelines in different Member States?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-005": [
+      {
+        "id": "Q1",
+        "text": "Do you support issuing attestations in BOTH ISO 18013-5 (mDoc) and SD-JWT-VC formats simultaneously?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "When a wallet requests issuance, do you automatically issue in all mandated formats, or must each format be requested separately?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you ensure format parity—that both mDoc and SD-JWT-VC contain identical attribute data?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you publish supported formats in Provider Information per ARF ISSU_12a?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q5",
+        "text": "Which wallet implementations have you tested format compatibility with (e.g., EUDI reference wallet, Apple, Google, third-party)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q6",
+        "text": "Have you participated in EUDI Wallet plugfest or interoperability testing events?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q7",
+        "text": "What is the measured latency overhead of generating both mDoc and SD-JWT-VC formats simultaneously compared to a single format?",
+        "dimension": "performance"
+      }
+    ],
+    "VEND-ISS-006": [
+      {
+        "id": "Q1",
+        "text": "How do you cryptographically bind issued attestations to the Wallet Unit's secure cryptographic device (WSCD)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "What proof-of-possession mechanism do you use during issuance to verify key ownership?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support both single-attestation keys and wallet-wide device keys for binding?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "How is device binding verified during the issuance flow before the attestation is issued?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support key import (Bring Your Own Key) for device binding keys, or must keys be generated within your platform?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q6",
+        "text": "Can your issuance pipeline distinguish between keys bound to a Secure Element (SE) versus a Trusted Execution Environment (TEE) for LoA enforcement?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-ISS-007": [
+      {
+        "id": "Q1",
+        "text": "Do you fully implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Which OpenID4VCI grant types do you support (pre-authorized code flow, authorization code flow)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support deferred credential issuance for asynchronous processing?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "What credential offer mechanisms do you support (QR codes, deep links, pushed authorization requests)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "Which wallet implementations have you tested OpenID4VCI compatibility with?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle issuance errors, retries, and partial failures?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q7",
+        "text": "Do you support the OID4VCI Batch Issuance Endpoint capability to reduce round-trips for multiple credential issuance?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-ISS-008": [
+      {
+        "id": "Q1",
+        "text": "Do you support batch issuance of multiple attestations in a single session?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Is batch issuance processed synchronously or asynchronously?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you offer a bulk upload interface (CSV, JSON) for high-volume batch issuance?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the maximum batch size you have tested in production?",
+        "dimension": "scalability"
+      },
+      {
+        "id": "Q5",
+        "text": "How are failures handled in batch issuance—does one failure abort the batch or continue with remaining?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "Can different attestation types be combined in a single batch issuance?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q7",
+        "text": "What is your sustained throughput (credentials/second) for batch issuance jobs in a production environment?",
+        "dimension": "scalability"
+      }
+    ],
+    "VEND-ISS-009": [
+      {
+        "id": "Q1",
+        "text": "What identity verification methods do you support (video identification, national eID, in-person verification)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What levels of assurance (LoA) can you achieve for identity proofing (Low, Substantial, High)?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support identity verification using an existing PID in the wallet, in addition to independent proofing?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you support FIDO2/WebAuthn for authentication during identity verification flows?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you verify the identity of legal persons (organizations) requesting attestations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q6",
+        "text": "What audit trail is maintained for identity verification decisions?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-ISS-010": [
+      {
+        "id": "Q1",
+        "text": "Which authentic sources do you connect to for attestation data (national registries, authoritative databases)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support authentic sources in multiple EU Member States?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you use mutual TLS (mTLS) or equivalent secure channels when connecting to authentic sources?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you maintain cryptographic audit trails linking attestations to source queries?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle source unavailability or data freshness issues?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "Can the organization integrate additional authentic sources through your platform?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-ISS-011": [
+      {
+        "id": "Q1",
+        "text": "Do you include clearly defined validity periods (valid_from, valid_until) in all issued attestations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How are validity periods determined for different attestation types?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Can the organization configure attestation validity periods, or are they fixed?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle clock synchronization to ensure accurate issuance timestamps?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you notify users when their attestations are approaching expiry?",
+        "dimension": "user_experience"
+      }
+    ],
+    "VEND-ISS-012": [
+      {
+        "id": "Q1",
+        "text": "Do you support workflows for renewing attestations before expiry?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Can attestations be re-issued when the underlying data changes (e.g., address change)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "How do users receive notifications of upcoming expiry?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q4",
+        "text": "Is renewal automated, or does it require user action?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q5",
+        "text": "When an attestation is renewed, is the old attestation automatically revoked?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "What is the lead time for renewal notifications?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-013": [
+      {
+        "id": "Q1",
+        "text": "Do you maintain and publish attestation status lists for revocation checking?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What status list formats do you support (Token Status List, Attestation Status List)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently are status lists updated?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "Is status list publication highly available? What is the uptime SLA?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "How do Relying Parties discover and access your status list endpoints?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you support privacy-preserving status checks (e.g., using signed status assertions)?",
+        "dimension": "privacy"
+      }
+    ],
+    "VEND-ISS-014": [
+      {
+        "id": "Q1",
+        "text": "What is the maximum propagation time for standard attestation revocations?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you support immediate revocation for critical security situations?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q3",
+        "text": "How is revocation propagation time measured and audited?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "What caching strategy is used for status lists, and how does this affect effective revocation time?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle revocation during status list endpoint outages?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-015": [
+      {
+        "id": "Q1",
+        "text": "Do you notify users when their attestations are revoked?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Through what channels are revocation notifications sent (push notification, email, in-app)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How quickly are notifications sent after revocation occurs?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "Does the notification include the reason for revocation and guidance for resolution?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle notification delivery failures?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-016": [
+      {
+        "id": "Q1",
+        "text": "Do you support temporary suspension of attestations (as distinct from permanent revocation)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What triggers can initiate attestation suspension (fraud investigation, user request, authority order)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "Can suspended attestations be reinstated? What is the process?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How is suspension status reflected in the status lists?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "Are users notified when their attestations are suspended and when reinstated?",
+        "dimension": "user_experience"
+      }
+    ],
+    "VEND-ISS-017": [
+      {
+        "id": "Q1",
+        "text": "Are attestation signing keys stored and used within Hardware Security Modules (HSMs) or equivalent secure cryptographic devices?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What certification level do your cryptographic modules have (FIPS 140-2/3 Level 3, Common Criteria EAL4+)?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support Bring Your Own Key (BYOK) for organizations that want to manage their own signing keys?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you require multi-person approval (quorum/four-eye principle) for sensitive key operations?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you offer cloud-hosted HSM or require on-premises HSM deployment?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "How are HSM backup and disaster recovery handled without exposing keys?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-018": [
+      {
+        "id": "Q1",
+        "text": "Which signing algorithms do you support from the approved list (ECDSA P-256, EdDSA Ed25519, RSA-PSS)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure only approved algorithms are used for attestation signing?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support algorithm agility to transition when new algorithms are approved or deprecated?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap? Which algorithms are you evaluating?",
+        "dimension": "roadmap"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle cross-format algorithm compatibility (mDoc vs. SD-JWT-VC)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q6",
+        "text": "Can your signing service abstract away the underlying HSM specifics (e.g., support both Luna and nCipher via a unified API)?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-ISS-019": [
+      {
+        "id": "Q1",
+        "text": "Do you have documented key rotation procedures?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you transition to new signing keys while maintaining validity of previously issued attestations?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What is the recommended key rotation frequency?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How is key rotation communicated to Trusted Lists and verifiers?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "What happens to attestations signed with retired keys—do they remain valid until expiry?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "Is key rotation automated or does it require manual intervention?",
+        "dimension": "automation"
+      }
+    ],
+    "VEND-ISS-020": [
+      {
+        "id": "Q1",
+        "text": "Do you support registration of attestation types in the Common Catalogue of Attestation Types per TS11?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What information is published to the catalogue for each attestation type?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do wallets and RPs discover attestation types through the catalogue?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle updates to catalogue entries when attestation types change?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "Is catalogue registration automated as part of attestation type deployment?",
+        "dimension": "automation"
+      }
+    ],
+    "VEND-ISS-021": [
+      {
+        "id": "Q1",
+        "text": "Do you document and publish schemas for each attestation type?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do schemas clearly distinguish mandatory vs. optional attributes?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What schema format do you use (JSON Schema, CDDL for mDoc, etc.)?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle schema versioning and backwards compatibility?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "Are schemas published in machine-readable formats for automated validation?",
+        "dimension": "automation"
+      },
+      {
+        "id": "Q6",
+        "text": "Do schemas include semantic definitions for each attribute?",
+        "dimension": "documentation"
+      }
+    ],
+    "VEND-ISS-022": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure attestations contain only attributes necessary for their intended purpose?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you design attestations to be selective disclosure-friendly?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Can the organization configure which attributes are included in custom attestation types?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you offer guidance on data minimization during attestation type design?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle requests to include unnecessary attributes in attestations?",
+        "dimension": "compliance_monitoring"
+      }
+    ],
+    "VEND-ISS-023": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure attestations do not contain overt or hidden tracking identifiers?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q2",
+        "text": "Are unique attestation identifiers designed to prevent cross-RP correlation?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you conduct privacy reviews of attestation structures to identify potential correlation vectors?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle serial numbers or other identifiers required by format specifications?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the attestation structure be audited for privacy compliance by independent parties?",
+        "dimension": "auditability"
+      }
+    ],
+    "VEND-ISS-024": [
+      {
+        "id": "Q1",
+        "text": "Are attestations issued through your platform verifiable and recognizable in all EU Member States?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure interoperability through adherence to common standards?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q3",
+        "text": "Have you tested cross-border verification with wallets and verifiers from multiple Member States?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle Member State-specific attribute requirements or namespaces?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q5",
+        "text": "What languages are supported for attestation attribute labels and values?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-ISS-026": [
+      {
+        "id": "Q1",
+        "text": "Do you support Person Identification Data (PID) issuance compliant with the PID Rulebook?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you implement namespace conventions as specified in the PID Rulebook?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support domestic namespace publication for national attributes?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "What portrait image quality and encoding requirements do you support?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle CBOR encoding for mDoc format attributes?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "Have you validated PID format compliance with reference implementations?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-ISS-027": [
+      {
+        "id": "Q1",
+        "text": "Do you offer attestations in all formats required by the applicable Rulebook?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you track Rulebook changes that add new mandatory formats?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you validate format correctness against Rulebook specifications?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you ensure encoding consistency across different formats (mDoc, SD-JWT-VC)?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-ISS-028": [
+      {
+        "id": "Q1",
+        "text": "Do you implement attestation revocation as specified in the applicable Rulebook?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you meet the Rulebook-specified propagation times for revocation?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support suspension where the Rulebook requires it?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you adapt revocation implementation when Rulebook specifications change?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-ISS-029": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure registration information remains accurate in Member State registries?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the process for updating registration information when changes occur?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "How quickly can registration updates be submitted and reflected in registries?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "Who is responsible for maintaining registration information—the organization or vendor?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you alert the organization to registration information that may be out of date?",
+        "dimension": "alerting"
+      }
+    ],
+    "VEND-ISS-030": [
+      {
+        "id": "Q1",
+        "text": "Do you publish trust anchor information according to the Commission's common format?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What information is included in the published trust anchor (signing certificates, algorithms, validity)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do wallets and RPs access your trust anchor information?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "What is the process for Trusted List inclusion of your trust anchor?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle trust anchor updates during key rotation?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q6",
+        "text": "What is the uptime SLA for trust anchor endpoints?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-ISS-031": [
+      {
+        "id": "Q1",
+        "text": "Do you verify the Wallet Unit Attestation (WUA) before issuing PIDs or device-bound attestations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What WUA verification checks do you perform (signature, certificate chain, revocation, WSCD certification)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle issuance requests from wallets with invalid or revoked WUAs?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you stay updated on certified WSCD lists and WUA trust anchors?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the latency impact of WUA verification on the issuance process?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-ISS-032": [
+      {
+        "id": "Q1",
+        "text": "Do you support embedding disclosure policies in issued attestations?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you define disclosure policies for different attestation types?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do Wallet Units interpret and enforce embedded disclosure policies?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q4",
+        "text": "Can the organization customize disclosure policies for their attestations?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q5",
+        "text": "What guidance do you provide on best practices for disclosure policy design?",
+        "dimension": "documentation"
+      }
+    ],
+    "VEND-ISS-033": [
+      {
+        "id": "Q1",
+        "text": "Do you use registration certificates for Provider authentication in Wallet Unit interactions?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you manage registration certificate lifecycle (renewal, revocation, key rotation)?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "What certificate types do you support as registration certificates?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "How are registration certificates validated by Wallet Units?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "What happens if the registration certificate expires or is revoked during operations?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-ISS-034": [
+      {
+        "id": "Q1",
+        "text": "Do you issue PIDs in SD-JWT VC format compliant with ARF specifications?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you correctly include required claims (vct, iss, iat, etc.) in SD-JWT VCs?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you encode PID attributes per specification?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "Are all claims made selectively disclosable as required?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle date formatting requirements for SD-JWT VCs?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "Have you validated SD-JWT VC output against reference parsers?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q7",
+        "text": "Is your compliance validation integrated into your CI/CD pipeline, preferably against the official EUDI Reference Implementation test suite?",
+        "dimension": "automation"
+      }
+    ],
+    "VEND-ISS-035": [
+      {
+        "id": "Q1",
+        "text": "Do you issue PIDs in ISO 18013-5 mDoc format compliant with ARF specifications?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "Do you use correct document types (docType) and element identifiers?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle CBOR encoding for mDoc attributes?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "Do you ensure each PID contains at most one attribute with the same identifier?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle namespace definitions for mDoc?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "Have you validated mDoc output against reference validators (e.g., ISO 18013-5 test suites)?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-ISS-036": [
+      {
+        "id": "Q1",
+        "text": "Do you support both the Attestation Status List mechanism and the Token Status List mechanism?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do Relying Parties know which status mechanism to use for a given attestation?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q3",
+        "text": "Are both status mechanisms updated synchronously when revocation occurs?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "What are the performance characteristics of each status mechanism?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "Can the organization choose which status mechanisms to use?",
+        "dimension": "flexibility"
+      }
+    ],
+    "VEND-ISS-037": [
+      {
+        "id": "Q1",
+        "text": "Do you implement all required elements of the OpenID4VCI protocol as specified in ARF HLRs?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you structure credential offer payloads?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What authorization flows do you support and how are they configured?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle credential response formatting and error handling?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support notification endpoints for issuance status callbacks?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you handle metadata discovery for the OpenID4VCI endpoints?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-ISS-038": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure personal data collected during EAA provision is NOT combined with data from other services?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q2",
+        "text": "Is there a formal data isolation policy documented and auditable?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you prevent EAA user profiles from being merged with marketing or analytics databases?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What controls prevent sharing EAA user data with commercial partner systems?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Can independent auditors verify data isolation compliance?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q6",
+        "text": "What are the consequences if data isolation is breached?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-ISS-039": [
+      {
+        "id": "Q1",
+        "text": "How do you implement logical separation of EAA-related personal data from other data?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q2",
+        "text": "What architectural approach do you use (separate databases, schemas, partitioning, tagging)?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How are access controls enforced to prevent cross-data-store queries?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Is the logical separation verifiable through technical audits?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "How does logical separation work in multi-tenant environments?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q6",
+        "text": "What happens to data separation in backup and disaster recovery scenarios?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-ISS-040": [
+      {
+        "id": "Q1",
+        "text": "If offering QEAA services, how do you implement functional separation from other services?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q2",
+        "text": "Are QEAA operations handled by dedicated teams with organizational boundaries?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "Is QEAA infrastructure separated from non-QEAA infrastructure?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q4",
+        "text": "Are there independent governance structures for QEAA services?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "How is functional separation documented and audited for conformity assessment?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "What level of personnel separation exists for QEAA operations?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-TSP-001": [
+      {
+        "id": "Q1",
+        "text": "Do you hold QTSP status from an EU Member State conformity assessment body?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "Which Member State issued your QTSP status, and are you listed on their Trusted List?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q3",
+        "text": "Which qualified trust services does your QTSP status cover (QES, QSeal, QEAA, QTS)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "How long have you maintained QTSP status?",
+        "dimension": "experience"
+      },
+      {
+        "id": "Q5",
+        "text": "Have you ever had QTSP status suspended or revoked? If so, what were the circumstances?",
+        "dimension": "compliance_history"
+      }
+    ],
+    "VEND-TSP-002": [
+      {
+        "id": "Q1",
+        "text": "When was your last conformity assessment, and who conducted it?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "What was the outcome of your most recent conformity assessment?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "Were there any findings or non-conformities? How were they addressed?",
+        "dimension": "compliance_history"
+      },
+      {
+        "id": "Q4",
+        "text": "When is your next conformity assessment scheduled?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "Can you share the conformity assessment report with the organization?",
+        "dimension": "documentation"
+      }
+    ],
+    "VEND-TSP-003": [
+      {
+        "id": "Q1",
+        "text": "What process do you have for notifying your supervisory body of significant changes?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q2",
+        "text": "What types of changes trigger notification (organizational, security, policy)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you also notify customers when changes may affect the organization's use of your services?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "How quickly after a change do you notify the supervisory body?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you maintain a standing regular cadence with your Supervisory Body (SB) beyond mandatory incident reporting?",
+        "dimension": "governance"
+      }
+    ],
+    "VEND-TSP-004": [
+      {
+        "id": "Q1",
+        "text": "What QSCDs do you use for qualified signature and seal creation?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "Are your QSCDs certified per Annex II of eIDAS? By which certification body?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q3",
+        "text": "Do you support Bring Your Own Key (BYOK) for organizations that want to control their own signing keys within your QSCDs?",
+        "dimension": "flexibility"
+      },
+      {
+        "id": "Q4",
+        "text": "What physical and logical access controls protect QSCDs?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you require multi-person approval (quorum) for sensitive QSCD operations?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q6",
+        "text": "How do you manage QSCD lifecycle (procurement, activation, decommissioning)?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-TSP-005": [
+      {
+        "id": "Q1",
+        "text": "What measures protect electronic signature creation data (private keys) from duplication?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "What theft prevention controls are in place for signature creation data?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you detect and respond to unauthorized access attempts?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q4",
+        "text": "What audit logging exists for signature creation operations?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "Are signature creation operations monitored in real-time?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-TSP-006": [
+      {
+        "id": "Q1",
+        "text": "What is your Recovery Time Objective (RTO) for trust services?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q2",
+        "text": "What is your Recovery Point Objective (RPO) for trust service data?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "How frequently are disaster recovery procedures tested?",
+        "dimension": "compliance_monitoring"
+      },
+      {
+        "id": "Q4",
+        "text": "Where are your backup facilities located (geographic redundancy)?",
+        "dimension": "geographic_scope"
+      },
+      {
+        "id": "Q5",
+        "text": "What was the outcome of your last disaster recovery test?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you have a documented termination plan to ensure service continuity?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q7",
+        "text": "Does your termination plan include provisions for transfer of revocation lists/OCSP services to a 'Trusted Archivist' to ensure long-term verifiability of past signatures?",
+        "dimension": "lifecycle"
+      }
+    ],
+    "VEND-TSP-007": [
+      {
+        "id": "Q1",
+        "text": "What is your process for detecting and classifying security breaches?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you ensure supervisory body notification within 24 hours?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "Have you experienced any security breaches affecting trust services in the past 3 years?",
+        "dimension": "compliance_history"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you notify affected customers of security breaches?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q5",
+        "text": "What post-incident remediation and review processes do you follow?",
+        "dimension": "incident_response"
+      }
+    ],
+    "VEND-TSP-008": [
+      {
+        "id": "Q1",
+        "text": "Do you offer remote qualified electronic signature services?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "If so, how do you implement the remote signature creation protocols specified in TS8?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How is signature creation data (private keys) securely managed on behalf of signatories?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "What authentication mechanisms are used to authorize remote signature creation?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "Is your remote signing implementation certified by a conformity assessment body?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q6",
+        "text": "Is your specific implementation of 'Sole Control' (e.g., mobile app binding covers) explicitly named in your Conformity Assessment Report?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-TSP-009": [
+      {
+        "id": "Q1",
+        "text": "How do you ensure the signatory has sole control over the signature creation process?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q2",
+        "text": "What multi-factor authentication is required before signature creation?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How is explicit consent obtained for each signature operation?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q4",
+        "text": "What audit trail exists for sole control verification?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q5",
+        "text": "Is your sole control mechanism certified or audited?",
+        "dimension": "compliance_evidence"
+      }
+    ],
+    "VEND-TSP-010": [
+      {
+        "id": "Q1",
+        "text": "How do you present document content to signers before authorization (WYSIWYS)?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q2",
+        "text": "What document formats are supported for WYSIWYS rendering?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle documents with dynamic content or hidden elements?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q4",
+        "text": "Can signers scroll and review entire documents before signing?",
+        "dimension": "user_experience"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you ensure the signed document matches what was displayed?",
+        "dimension": "security"
+      }
+    ],
+    "VEND-TSP-011": [
+      {
+        "id": "Q1",
+        "text": "Do you offer qualified electronic timestamp services?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "What time source do you use, and is it traceable to UTC?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What is the accuracy of your timestamps?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you ensure timestamp data cannot be modified undetectably?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the availability SLA for your timestamp authority?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-TSP-012": [
+      {
+        "id": "Q1",
+        "text": "What authentic sources do you connect to for QEAA attribute verification?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you verify the data provenance from authentic sources?",
+        "dimension": "security"
+      },
+      {
+        "id": "Q3",
+        "text": "What audit trail links QEAAs back to source verification?",
+        "dimension": "auditability"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you handle attributes not available from authentic sources (person-provided data)?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the freshness of data from authentic sources at time of issuance?",
+        "dimension": "sla"
+      }
+    ],
+    "VEND-TSP-013": [
+      {
+        "id": "Q1",
+        "text": "Do you sign QEAAs with a qualified electronic signature or qualified electronic seal?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "What signing algorithm and key length do you use for QEAA signatures?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Is Post-Quantum Cryptography (PQC) on your roadmap for QEAA signing algorithms?",
+        "dimension": "roadmap"
+      },
+      {
+        "id": "Q4",
+        "text": "Is your QEAA signing certificate included in Member State Trusted Lists?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q5",
+        "text": "What is your key rotation schedule for QEAA signing keys?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q6",
+        "text": "Do you support 'pre-hashing' of large datasets on the client side before submission to the signing service to reduce bandwidth and privacy exposure?",
+        "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-TSP-014": [
+      {
+        "id": "Q1",
+        "text": "What revocation mechanisms do you provide for QEAAs?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How frequently are revocation status lists updated?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q3",
+        "text": "What is the maximum propagation time for QEAA revocation?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q4",
+        "text": "How do Relying Parties access your QEAA revocation information?",
+        "dimension": "interoperability"
+      },
+      {
+        "id": "Q5",
+        "text": "Do you support QEAA suspension in addition to permanent revocation?",
+        "dimension": "capability"
+      }
+    ],
+    "VEND-TSP-015": [
+      {
+        "id": "Q1",
+        "text": "What liability insurance coverage do you maintain for qualified trust services?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q2",
+        "text": "What is the coverage limit and scope of your liability insurance?",
+        "dimension": "commercial"
+      },
+      {
+        "id": "Q3",
+        "text": "Can you provide proof of current insurance coverage?",
+        "dimension": "documentation"
+      },
+      {
+        "id": "Q4",
+        "text": "How do you demonstrate adequate financial resources beyond insurance?",
+        "dimension": "compliance_evidence"
+      },
+      {
+        "id": "Q5",
+        "text": "What is the claims process if a customer experiences damages?",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-TSP-016": [
+      {
+        "id": "Q1",
+        "text": "Do you accept liability for qualified services as specified in eIDAS Article 13?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "What limitations on liability exist in your standard contract terms?",
+        "dimension": "commercial"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you handle claims for damages arising from verification or revocation failures?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q4",
+        "text": "What indemnification provisions do you offer?",
+        "dimension": "commercial"
+      },
+      {
+        "id": "Q5",
+        "text": "Have there been any liability claims against your trust services?",
+        "dimension": "compliance_history"
+      }
+    ],
+    "VEND-TSP-017": [
+      {
+        "id": "Q1",
+        "text": "If acting as an Access Certificate Authority, do you comply with the Commission's common Certificate Policy?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "What certificate issuance procedures do you follow?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you provide certificate validation services (OCSP, CRL)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q4",
+        "text": "What is your certificate revocation process and timeline?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you support ecosystem participants in verifying access certificates?",
+        "dimension": "interoperability"
+      }
+    ],
+    "VEND-TSP-018": [
+      {
+        "id": "Q1",
+        "text": "What notification process do you follow if your trust services are suspended or cancelled?",
+        "dimension": "incident_response"
+      },
+      {
+        "id": "Q2",
+        "text": "What transition procedures ensure continuity for customers during suspension/cancellation?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q3",
+        "text": "How long are certificates/attestations still verifiable after service cancellation?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "What arrangements exist for archive and repository access after service termination?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q5",
+        "text": "Have you ever had trust services suspended? If so, what were the circumstances?",
+        "dimension": "compliance_history"
+      }
+    ],
+    "VEND-TSP-019": [
+      {
+        "id": "Q1",
+        "text": "How do you implement the technical interfaces for authentic source access as specified in ARF Topic 42?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How do you obtain and record User consent for authentic source queries?",
+        "dimension": "privacy"
+      },
+      {
+        "id": "Q3",
+        "text": "How do you process verification responses according to ARF requirements (QTSPAS_05, QTSPAS_08)?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "What authentic source response types can you handle (positive, negative, partial data)?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q5",
+        "text": "How do you handle authentic source unavailability or errors?",
+        "dimension": "operational"
+      }
+    ]
+  }
+}

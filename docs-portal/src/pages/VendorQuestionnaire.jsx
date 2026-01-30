@@ -230,6 +230,23 @@ function useARFData() {
     return data;
 }
 
+/**
+ * Hook to load VCQ Clarification Questions data
+ * Returns a lookup object keyed by requirement ID
+ */
+function useClarificationQuestions() {
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        fetch(`${import.meta.env.BASE_URL}data/vcq-clarification-questions.json`)
+            .then(res => res.ok ? res.json() : null)
+            .then(json => setData(json?.byRequirementId || {}))
+            .catch(() => setData({}));
+    }, []);
+
+    return data;
+}
+
 // ============================================================================
 // Step 1: Organisation Role Selector
 // ============================================================================
@@ -861,7 +878,7 @@ function SummaryView({ requirements, categories, answers, categorizationScheme, 
 // Requirements Table Component
 // ============================================================================
 
-function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData, getExcerpt, categorizationScheme, selectedRoles, getReqCategory }) {
+function RequirementsTable({ requirements, categories, onAnswerChange, answers, regulationsIndex, arfData, getExcerpt, categorizationScheme, selectedRoles, getReqCategory, clarificationQuestions }) {
     const [filterCategory, setFilterCategory] = useState('all');
     const [filterObligation, setFilterObligation] = useState('all');
 
@@ -950,12 +967,28 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                 <td className="col-id">{req.id}</td>
                                                 <td className="col-requirement">
                                                     <div className="vcq-req-text">{req.requirement}</div>
-                                                    {req.explanation && (
-                                                        <details className="vcq-req-details">
-                                                            <summary>Details</summary>
-                                                            <p>{req.explanation}</p>
-                                                        </details>
-                                                    )}
+                                                    <div className="vcq-req-toggles">
+                                                        {req.explanation && (
+                                                            <details className="vcq-req-details">
+                                                                <summary>Details</summary>
+                                                                <p>{req.explanation}</p>
+                                                            </details>
+                                                        )}
+                                                        {clarificationQuestions[req.id] && clarificationQuestions[req.id].length > 0 && (
+                                                            <details className="vcq-req-clarifications">
+                                                                <summary>Clarification Questions ({clarificationQuestions[req.id].length})</summary>
+                                                                <ul className="vcq-cq-list">
+                                                                    {clarificationQuestions[req.id].map(q => (
+                                                                        <li key={q.id} className="vcq-cq-item">
+                                                                            <span className="vcq-cq-id">{q.id}</span>
+                                                                            <span className="vcq-cq-text">{q.text}</span>
+                                                                            <span className="vcq-cq-dimension">{q.dimension.replace(/_/g, ' ')}</span>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </details>
+                                                        )}
+                                                    </div>
                                                 </td>
                                                 <td className="col-legal">
                                                     {/* DEC-261: Multi-article support via legalBases array */}
@@ -994,6 +1027,7 @@ export default function VendorQuestionnaire() {
     const { data, loading, error } = useVCQData();
     const regulationsIndex = useRegulationsIndex();
     const arfData = useARFData();
+    const clarificationQuestions = useClarificationQuestions();
     const { getExcerpt } = useArticleExcerpts();
 
     // Step 1: Organisation Roles
@@ -1463,6 +1497,7 @@ export default function VendorQuestionnaire() {
                             categorizationScheme={categorizationScheme}
                             selectedRoles={selectedRoles}
                             getReqCategory={getReqCategory}
+                            clarificationQuestions={clarificationQuestions}
                         />
                     )}
                 </>

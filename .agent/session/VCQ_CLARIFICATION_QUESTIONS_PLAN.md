@@ -241,15 +241,18 @@ Dimensions are derived dynamically per requirement. Common dimensions include:
 | 6.6 | Set `gemini: true` in all modelPasses | ✅ Complete |
 | 6.7 | 🔒 COMMIT: "feat(vcq): complete Gemini review pass on clarification questions" | ✅ Complete |
 
-### Phase 7: Integration (Optional/Future)
+### Phase 7: UI Integration ✅ PARTIAL COMPLETE
 **Purpose**: Integrate clarification questions into portal UI and exports
 
 | Task | Description | Status |
 |------|-------------|--------|
-| 7.1 | Add clarification questions to VCQ Excel export | ⬜ Deferred |
-| 7.2 | Create VCQ clarification questions UI component | ⬜ Deferred |
-| 7.3 | Add scoring input fields for each question | ⬜ Deferred |
-| 7.4 | Create vendor comparison matrix | ⬜ Deferred |
+| 7.0 | Build script to compile YAML to JSON (`build-vcq-clarifications.js`) | ✅ Complete |
+| 7.1 | Add `useClarificationQuestions` data loader hook | ✅ Complete |
+| 7.2 | Create side-by-side "Clarification Questions" toggle (Option A design) | ✅ Complete |
+| 7.3 | Add CSS styling for question list with dimension badges | ✅ Complete |
+| 7.4 | Add clarification questions to VCQ Excel export | ⬜ Future |
+| 7.5 | Add scoring input fields for each question | ⬜ Future |
+| 7.6 | Create vendor comparison matrix | ⬜ Future |
 
 ---
 
