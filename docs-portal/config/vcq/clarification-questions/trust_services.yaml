@@ -12,7 +12,7 @@ schemaVersion: 1
 sourceFile: requirements/trust_services.yaml
 modelPasses:
   opus: true       # Completed 2026-01-30 - All trust services requirements processed
-  gemini: false    # Set to true after Gemini completes review pass
+  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -77,6 +77,9 @@ requirements:
       - id: Q4
         text: "How quickly after a change do you notify the supervisory body?"
         dimension: sla
+      - id: Q5
+        text: "Do you maintain a standing regular cadence with your Supervisory Body (SB) beyond mandatory incident reporting?"
+        dimension: governance
 
   # ============================================================================
   # VEND-TSP-004: Qualified Signature/Seal Creation Devices (QSCDs)
@@ -149,6 +152,9 @@ requirements:
       - id: Q6
         text: "Do you have a documented termination plan to ensure service continuity?"
         dimension: lifecycle
+      - id: Q7
+        text: "Does your termination plan include provisions for transfer of revocation lists/OCSP services to a 'Trusted Archivist' to ensure long-term verifiability of past signatures?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-TSP-007: Security Breach Notification
@@ -192,6 +198,9 @@ requirements:
         dimension: security
       - id: Q5
         text: "Is your remote signing implementation certified by a conformity assessment body?"
+        dimension: compliance_evidence
+      - id: Q6
+        text: "Is your specific implementation of 'Sole Control' (e.g., mobile app binding covers) explicitly named in your Conformity Assessment Report?"
         dimension: compliance_evidence
 
   # ============================================================================
@@ -303,6 +312,9 @@ requirements:
       - id: Q5
         text: "What is your key rotation schedule for QEAA signing keys?"
         dimension: lifecycle
+      - id: Q6
+        text: "Do you support 'pre-hashing' of large datasets on the client side before submission to the signing service to reduce bandwidth and privacy exposure?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-TSP-014: QEAA Revocation

@@ -13,7 +13,7 @@ schemaVersion: 1
 sourceFile: requirements/intermediary.yaml
 modelPasses:
   opus: true       # Completed 2026-01-30 - All intermediary requirements processed
-  gemini: false    # Set to true after Gemini completes review pass
+  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -37,6 +37,9 @@ requirements:
       - id: Q5
         text: "Can the organization customize how their identity is presented to wallet users?"
         dimension: flexibility
+      - id: Q6
+        text: "How does your solution render the 'on behalf of' relationship in the wallet authorization screen (e.g., utilizing client_metadata vs client_id_scheme)?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-002: Request Integrity - No Request Modification
@@ -125,6 +128,12 @@ requirements:
       - id: Q6
         text: "How do you handle mode switching when both remote and proximity are available?"
         dimension: user_experience
+      - id: Q7
+        text: "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows?"
+        dimension: capability
+      - id: Q8
+        text: "Do you support the `response_uri` method for receiving large presentation payloads asynchronous to the wallet interaction?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-006: Conditional Forwarding After Verification
@@ -248,6 +257,9 @@ requirements:
       - id: Q5
         text: "Can the organization configure whether revocation checking is mandatory or optional?"
         dimension: flexibility
+      - id: Q6
+        text: "What caching strategies do you employ for Status Lists to minimize latency while ensuring freshness?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-012: Device Binding Verification
@@ -288,6 +300,9 @@ requirements:
         dimension: operational
       - id: Q5
         text: "How do you detect and block replay attempts?"
+        dimension: security
+      - id: Q6
+        text: "How do you bind the wallet response to the specific browser session or client state initiating the request (e.g., state param handling)?"
         dimension: security
 
   # ============================================================================
@@ -482,6 +497,9 @@ requirements:
       - id: Q5
         text: "Have you participated in EUDI Wallet plugfest or interoperability testing events?"
         dimension: compliance_evidence
+      - id: Q6
+        text: "For SD-JWT-VC, do you support verification of individual disclosures (claims) independent of the full payload?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-024: Selective Disclosure Support
@@ -621,6 +639,9 @@ requirements:
       - id: Q5
         text: "How do you relay deletion requests to the ultimate RP when needed?"
         dimension: operational
+      - id: Q6
+        text: "Is the deletion request automatically routed to the backend RP systems via webhook/API, or is it a manual notification?"
+        dimension: automation
 
   # ============================================================================
   # VEND-INT-031: User Reporting Support

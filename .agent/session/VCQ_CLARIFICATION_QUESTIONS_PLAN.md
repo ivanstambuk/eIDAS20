@@ -227,19 +227,19 @@ Dimensions are derived dynamically per requirement. Common dimensions include:
 | **Authentication** | FIDO2/WebAuthn | "Do you support FIDO2/WebAuthn for authentication during identity verification flows?" |
 
 
-### Phase 6: Gemini Pro Review Pass ⬜ PENDING
+### Phase 6: Gemini Pro Review Pass ✅ COMPLETE
 **Scope**: All files  
 **Purpose**: Review and extend Opus questions with additional insights
 
 | Task | File | Status |
 |------|------|--------|
-| 6.1 | Review & extend core.yaml | ⬜ Pending |
-| 6.2 | Review & extend issuer.yaml | ⬜ Pending |
-| 6.3 | Review & extend intermediary.yaml | ⬜ Pending |
-| 6.4 | Review & extend ict.yaml | ⬜ Pending |
-| 6.5 | Review & extend trust_services.yaml | ⬜ Pending |
-| 6.6 | Set `gemini: true` in all modelPasses | ⬜ Pending |
-| 6.7 | 🔒 COMMIT: "feat(vcq): complete Gemini review pass on clarification questions" | ⬜ Pending |
+| 6.1 | Review & extend core.yaml | ✅ Complete |
+| 6.2 | Review & extend issuer.yaml | ✅ Complete |
+| 6.3 | Review & extend intermediary.yaml | ✅ Complete |
+| 6.4 | Review & extend ict.yaml | ✅ Complete |
+| 6.5 | Review & extend trust_services.yaml | ✅ Complete |
+| 6.6 | Set `gemini: true` in all modelPasses | ✅ Complete |
+| 6.7 | 🔒 COMMIT: "feat(vcq): complete Gemini review pass on clarification questions" | ✅ Complete |
 
 ### Phase 7: Integration (Optional/Future)
 **Purpose**: Integrate clarification questions into portal UI and exports

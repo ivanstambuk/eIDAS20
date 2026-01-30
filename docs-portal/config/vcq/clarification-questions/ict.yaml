@@ -14,7 +14,7 @@ schemaVersion: 1
 sourceFile: requirements/ict.yaml
 modelPasses:
   opus: true       # Completed 2026-01-30 - All ICT requirements processed
-  gemini: false    # Set to true after Gemini completes review pass
+  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -38,6 +38,9 @@ requirements:
       - id: Q5
         text: "Are processing locations documented and subject to approval by the financial entity?"
         dimension: geographic_scope
+      - id: Q6
+        text: "Does your internal governance follow the 'three lines of defense' model (operations, risk management, internal audit)?"
+        dimension: governance
 
   # ============================================================================
   # VEND-ICT-002: Audit Rights
@@ -63,6 +66,9 @@ requirements:
       - id: Q6
         text: "Are there any restrictions on audit scope or frequency?"
         dimension: limitations
+      - id: Q7
+        text: "Do you provide a 'Standard Audit Report' that specifically maps your internal controls to DORA Articles 28-30 requirements?"
+        dimension: reporting
 
   # ============================================================================
   # VEND-ICT-003: Exit Strategies and Transition Planning
@@ -182,6 +188,9 @@ requirements:
       - id: Q6
         text: "Do you provide root cause analysis and remediation plans after incidents?"
         dimension: incident_response
+      - id: Q7
+        text: "How do you classify 'Major ICT Incidents' under DORA, and do you support accelerated reporting (< 4 hours) for such events?"
+        dimension: compliance_monitoring
 
   # ============================================================================
   # VEND-ICT-008: Threat-Led Penetration Testing (TLPT)
@@ -207,6 +216,9 @@ requirements:
       - id: Q6
         text: "Can TLPT results be shared with the organization's supervisory authority?"
         dimension: regulatory_access
+      - id: Q7
+        text: "Do you support 'pooled auditing' or 'pooled TLPT' where multiple financial entities coordinate a single test to reduce operational burden?"
+        dimension: efficiency
 
   # ============================================================================
   # VEND-ICT-009: Business Continuity
@@ -232,6 +244,9 @@ requirements:
       - id: Q6
         text: "What was the outcome of your last disaster recovery test?"
         dimension: experience
+      - id: Q7
+        text: "Do you conduct specific scenario-based testing (e.g., ransomware, physical destruction) beyond generic availability tests?"
+        dimension: resilience
 
   # ============================================================================
   # VEND-ICT-010: Subcontracting Approval

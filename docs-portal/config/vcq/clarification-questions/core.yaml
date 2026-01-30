@@ -9,7 +9,7 @@ schemaVersion: 1
 sourceFile: requirements/core.yaml
 modelPasses:
   opus: true       # Completed 2026-01-30 - All core requirements processed
-  gemini: false    # Set to true after Gemini completes review pass
+  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -35,6 +35,9 @@ requirements:
         dimension: supply_chain
       - id: Q6
         text: "What technical controls prevent accidental or intentional storage of transaction content by your personnel?"
+        dimension: security
+      - id: Q7
+        text: "Do you utilize secure enclaves or memory scrubbing techniques to ensure transient data is irrecoverable after processing?"
         dimension: security
 
   # ============================================================================
@@ -142,6 +145,9 @@ requirements:
       - id: Q7
         text: "Can you support multiple certificates for different intended uses or Member States?"
         dimension: flexibility
+      - id: Q8
+        text: "Does your lifecycle management process include automated key rotation for valid certificates?"
+        dimension: security
 
   # ============================================================================
   # VEND-CORE-006: Technical and Organizational Security Measures
@@ -464,6 +470,12 @@ requirements:
       - id: Q8
         text: "What happens if a verification check fails? How is this communicated to the user and logged for the organization?"
         dimension: operational
+      - id: Q9
+        text: "Do you support Selective Disclosure (SD) to allow verification of specific attributes without revealing the full credential coverage?"
+        dimension: privacy
+      - id: Q10
+        text: "Do you support batch verification of multiple credentials/presentations for high-volume use cases?"
+        dimension: performance
 
   # ============================================================================
   # VEND-CORE-019: PSD2 Strong Customer Authentication (TS12)
@@ -495,6 +507,9 @@ requirements:
       - id: Q8
         text: "Have you obtained or are you pursuing any PSD2 SCA certifications or attestations?"
         dimension: compliance_evidence
+      - id: Q9
+        text: "Do you support Delegated Authentication flows where the EUDI Wallet relies on an external authenticator (e.g., bank app)?If so, how is the trust model maintained?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-CORE-020: OpenID4VCI for Attestation Issuance (TS6)
@@ -526,6 +541,9 @@ requirements:
       - id: Q8
         text: "How do you handle issuance failures and retries?"
         dimension: operational
+      - id: Q9
+        text: "Do you support both same-device (issuance directly to wallet on same device) and cross-device (issuance via QR code/link to separate device) flows?"
+        dimension: user_experience
 
   # ============================================================================
   # VEND-CORE-021: Data Deletion Request Interface (TS7)
@@ -601,6 +619,9 @@ requirements:
       - id: Q6
         text: "Are there any proprietary extensions or deviations from the standard implementations? If so, describe them."
         dimension: limitations
+      - id: Q7
+        text: "Given the evolving nature of EUDI standards, how do you manage breaking changes in draft specifications (e.g., OpenID4VCI drafts) to maintain backward compatibility?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-CORE-024: Provider Information Publication (TS2)
@@ -676,6 +697,9 @@ requirements:
       - id: Q7
         text: "How do you support batch and automated signing scenarios while maintaining sole control?"
         dimension: flexibility
+      - id: Q8
+        text: "Is your Server Signing Application (SSA) fully certified as part of a QSCD (Qualified Signature Creation Device)? Provide certification details."
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-027: Pseudonym Attestations (TS9)
