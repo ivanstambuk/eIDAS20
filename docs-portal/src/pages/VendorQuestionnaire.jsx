@@ -1169,13 +1169,18 @@ export default function VendorQuestionnaire() {
 
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
-        // Filter by source group (eIDAS, GDPR, DORA, ARF)
+        // DEC-286: Filter by source groups using union logic
+        // A requirement appears if ANY of its sourceGroups is selected
         const activeGroups = Object.entries(selectedSourceGroups)
             .filter(([_, isSelected]) => isSelected)
             .map(([group]) => group);
 
         if (activeGroups.length > 0) {
-            filtered = filtered.filter(req => activeGroups.includes(req.sourceGroup));
+            filtered = filtered.filter(req => {
+                // sourceGroups is now an array; show if ANY matches
+                const reqGroups = req.sourceGroups || [req.sourceGroup]; // Fallback for old data
+                return reqGroups.some(group => activeGroups.includes(group));
+            });
         } else {
             filtered = [];
         }

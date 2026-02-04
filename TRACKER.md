@@ -8,10 +8,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-01-30 13:07 CET |
-| **Version** | V4.0.6 |
+| **Last Updated** | 2026-02-04 09:36 CET |
+| **Version** | V4.0.7 |
 | **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 142 VCQ reqs, 559 ARF HLRs |
-| **Next Action** | All tools audit-complete — ready for next feature |
+| **Next Action** | DEC-286 complete — VCQ source filtering now uses union logic |
 
 
 ---
@@ -37,6 +37,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-04 09:36 | **Fix: VCQ Source Filter Union Logic (DEC-286)** — Changed source group filtering from exclusive (single `sourceGroup`) to additive (array `sourceGroups[]`). Requirements now appear if ANY of their sources is selected, not just ONE. Core.yaml requirements automatically tagged with 'eidas' since they define vendor obligations under Article 5b. Fixes: GDPR-citing requirements like VEND-CORE-002 now visible when either eIDAS or GDPR is selected. Changed: `build-vcq.js` (determineSourceGroups returns array), `VendorQuestionnaire.jsx` (filter uses `.some()`). |
 | 2026-01-30 13:07 | **Fix: VCQ Data Erasure + UI Polish** — Added TS7/ARF Topic 48 references to VEND-CORE-021 and VEND-INT-030 (data erasure requirements). UI: added requirement count badges to category headers (pill-style). Fixed Excel export line breaks from YAML block scalars (cleanText normalization). Confirmed `functional` categorization is already default. Retro: created text-processing.md snippet, documented TS7/Topic 48 in TERMINOLOGY.md, added JSDoc to cleanText(). 4 commits: `a9ef5a4`, `b25d972`, `3d6914d`, `d823b6d`. |
 | 2026-01-29 15:13 | **Refactor: VCQ Schema Hardening (DEC-285)** — Replaced `criticality` (critical/high/medium/low) with `obligation` (MUST/SHOULD/MAY) as source-of-truth field in all 142 VCQ YAML files. Build script now uses stored obligation, not derived. Excel export reordered: Explanation after Requirement; Legal Basis+Text grouped; ARF Reference+Specification+Notes grouped (15 columns). Markdown export enhanced with Legal Text and ARF Specification/Notes (popover data now in exports). Validator updated to check obligation field. 3 commits: `7a9f1d1`, `6b6582a`, `b71bb04`. |
 | 2026-01-29 10:25 | **Complete: RCA↔VCQ Systematic Alignment Audit (DEC-281)** — Full audit of 144 RCA requirements (42 Issuer + 102 RP) against VCQ. Result: 100% vendor-applicable coverage (0 gaps). 99 vendor-applicable requirements mapped to existing VCQ. 42 requirements properly excluded (23 org-only + 19 public-sector). Article 45h requirements (VEND-ISS-038/039/040) added for data separation. Retro: 5 improvements implemented — VCQ KI metadata updated with private-sector scope, vcq-config.yaml scope note, 5 new terminology entries (Disposition, Vendor-Applicable, Org-Only, Public-Sector-Only, Scope Boundary), `/rca-audit` workflow created, artifacts archived. All pushed. |

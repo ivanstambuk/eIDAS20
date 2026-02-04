@@ -201,27 +201,58 @@ function normalizeLegalBases(legalBasis) {
     return [legalBasis]; // Wrap single object in array
 }
 
-function determineSourceGroup(req, legalBases) {
-    // Check if it's an ARF-sourced requirement with no legal basis
-    if (req.arfReference && legalBases.length === 0) {
-        return 'arf';
+/**
+ * DEC-286: Determine ALL applicable source groups for a requirement.
+ * Returns an array of source groups, enabling union-based filtering.
+ * 
+ * A requirement appears if ANY of its sourceGroups is selected.
+ * This ensures requirements with multiple regulatory sources (e.g., eIDAS + GDPR)
+ * are visible when either source is selected.
+ * 
+ * @param {Object} req - The requirement object
+ * @param {Array} legalBases - Normalized array of legal basis objects
+ * @returns {string[]} Array of source group identifiers
+ */
+function determineSourceGroups(req, legalBases) {
+    const sources = new Set();
+
+    // Check ALL legal bases, not just the first one
+    for (const basis of legalBases) {
+        if (basis.regulation) {
+            if (eidasRegulationIds.has(basis.regulation)) sources.add('eidas');
+            if (gdprRegulationIds.has(basis.regulation)) sources.add('gdpr');
+            if (doraRegulationIds.has(basis.regulation)) sources.add('dora');
+        }
     }
 
-    // Check first legal basis regulation (primary source)
-    if (legalBases.length > 0 && legalBases[0].regulation) {
-        const regId = legalBases[0].regulation;
-        if (eidasRegulationIds.has(regId)) return 'eidas';
-        if (gdprRegulationIds.has(regId)) return 'gdpr';
-        if (doraRegulationIds.has(regId)) return 'dora';
+    // ARF reference implies eIDAS ecosystem (ARF implements eIDAS)
+    if (req.arfReference) {
+        sources.add('arf');
+        // ARF requirements are part of eIDAS ecosystem
+        if (sources.size === 0) {
+            sources.add('eidas');
+        }
     }
 
-    // Extended scope requirements are DORA
+    // Extended scope requirements include DORA
     if (req.scope === 'extended') {
-        return 'dora';
+        sources.add('dora');
     }
 
-    // Default to eidas for core requirements
-    return 'eidas';
+    // DEC-286: Core VCQ requirements are always part of eIDAS ecosystem.
+    // These define what vendors must do to operate as eIDAS wallet intermediaries.
+    // Even if a core req cites GDPR (e.g., Article 28 DPA), it's mandated by
+    // eIDAS Article 5b(10) which references data protection requirements.
+    if (req._sourceFile === 'core.yaml') {
+        sources.add('eidas');
+    }
+
+    // Default to eidas if no sources identified
+    if (sources.size === 0) {
+        sources.add('eidas');
+    }
+
+    return Array.from(sources);
 }
 
 for (const req of allRequirements) {
@@ -254,8 +285,8 @@ for (const req of allRequirements) {
         return { ...basis, link };
     });
 
-    // DEC-255: Determine source group for 3-tile filtering
-    const sourceGroup = determineSourceGroup(req, legalBases);
+    // DEC-286: Determine ALL source groups for union-based filtering
+    const sourceGroups = determineSourceGroups(req, legalBases);
 
     // Create processed requirement
     const processed = {
@@ -279,7 +310,7 @@ for (const req of allRequirements) {
         isUniversal: roles.length === 0 && productCategories.length === 0,
         isExtended,
         scope: req.scope || 'core',
-        sourceGroup,  // DEC-255: For 3-tile filtering
+        sourceGroups,  // DEC-286: Array for union-based filtering (was sourceGroup)
         deadline: req.deadline,
         obligation: req.obligation || 'SHOULD',  // RFC 2119: MUST, SHOULD, MAY, etc. (stored in YAML)
         notes: req.notes?.trim(),
@@ -288,13 +319,11 @@ for (const req of allRequirements) {
 
     processedRequirements.push(processed);
 
-    // Build source group index (DEC-255)
-    requirementsBySourceGroup[sourceGroup].push(req.id);
-
-    // ARF is a cross-cutting reference - count separately if arfReference exists
-    // This ensures requirements appear in BOTH their legal source AND ARF
-    if (req.arfReference) {
-        requirementsBySourceGroup.arf.push(req.id);
+    // DEC-286: Build source group index for all applicable sources
+    for (const group of sourceGroups) {
+        if (requirementsBySourceGroup[group]) {
+            requirementsBySourceGroup[group].push(req.id);
+        }
     }
 
     // DEC-257: Build role index

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-30T14:14:25.540Z",
+  "generatedAt": "2026-02-04T08:38:34.376Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -251,7 +251,9 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -283,7 +285,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -315,7 +320,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -351,7 +359,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -386,7 +397,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -418,7 +432,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -450,7 +467,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -482,7 +502,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -514,7 +537,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -546,7 +572,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -582,7 +611,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -613,7 +645,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -645,7 +680,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -677,7 +715,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -713,7 +754,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -749,7 +793,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -785,7 +832,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -823,7 +873,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -859,7 +911,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -902,7 +956,11 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "arf",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -938,7 +996,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -970,7 +1030,9 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1006,7 +1068,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1043,7 +1107,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1079,7 +1145,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1117,7 +1185,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1155,7 +1225,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1200,7 +1273,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1242,7 +1318,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1285,7 +1364,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1327,7 +1409,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1372,7 +1457,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1414,7 +1502,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1456,7 +1547,11 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "arf",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1497,7 +1592,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1538,7 +1636,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1579,7 +1680,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MAY",
       "_sourceFile": "core.yaml"
@@ -1621,7 +1725,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1653,7 +1760,10 @@
       "isUniversal": true,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "notes": "This requirement implements the \"Compliance by Environment\" principle \nestablished in DEC-281 (Jan 2026 Alignment Audit). Even if a specific \nattestation relates to an object or organization (not personal data per se), \nthe wallet session context and processing metadata create an identifiable \ndata subject context.\n\nExceptions (attestations that may not require full GDPR safeguards):\n- Pure boolean ZKP proofs with high unlinkability\n- Device-only attestations with no wallet user context\n- Anonymous aggregate attestations\n\nHowever, the PRODUCT should not make these determinations - the CUSTOMER \n(RP as data controller) documents exceptions in their DPIA.",
@@ -1689,7 +1799,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "notes": "DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.\nWhen the RP is a DORA-regulated financial entity, both sets apply.",
@@ -1731,7 +1843,10 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora",
+        "gdpr"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1766,7 +1881,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1800,7 +1917,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1834,7 +1953,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1868,7 +1989,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1909,7 +2032,10 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora",
+        "gdpr"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1943,7 +2069,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -1978,7 +2106,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2019,7 +2149,10 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora",
+        "gdpr"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST NOT",
       "_sourceFile": "ict.yaml"
@@ -2053,7 +2186,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2087,7 +2222,9 @@
       "isUniversal": false,
       "isExtended": true,
       "scope": "extended",
-      "sourceGroup": "dora",
+      "sourceGroups": [
+        "dora"
+      ],
       "deadline": "2025-01-17",
       "obligation": "SHOULD",
       "notes": "This requirement is conditional - it only applies if the ESAs designate \nthe vendor as Critical based on systemic importance criteria (Art. 31(2)).\nMost intermediaries will NOT be designated as Critical ICT TPPs.",
@@ -2128,7 +2265,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2168,7 +2308,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2207,7 +2350,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2247,7 +2393,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2283,7 +2432,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2322,7 +2473,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2362,7 +2516,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2401,7 +2558,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2440,7 +2600,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2480,7 +2643,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2519,7 +2685,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "intermediary.yaml"
@@ -2558,7 +2727,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2603,7 +2775,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2642,7 +2817,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2677,7 +2855,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2716,7 +2896,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2752,7 +2935,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate) \nbut may contain verification metadata (pass/fail, timestamp, error codes).",
@@ -2788,7 +2973,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2823,7 +3010,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2862,7 +3051,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2902,7 +3094,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2942,7 +3137,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support \nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally \nsupport both formats per ISSU_12.",
@@ -2982,7 +3180,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3017,7 +3218,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is a conditional requirement based on the RP's risk assessment and \nthe sensitivity of the use case. Not all intermediaries will require \ncertification.",
@@ -3054,7 +3257,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3091,7 +3296,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3127,7 +3334,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3167,7 +3376,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3210,7 +3422,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3246,7 +3461,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3286,7 +3503,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is the technical implementation of RPI_06. The access certificate comes from \nthe intermediary's own registration. The RP registration certificate is obtained \nduring the intermediary's registration of each intermediated RP (per RPI_03).",
@@ -3327,7 +3547,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. \nThe intermediary must ensure this registration is complete BEFORE accepting \nintermediation requests from an RP, otherwise wallet users will see verification \nfailures.",
@@ -3367,7 +3590,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "This covers ARF Topic 7 (VCR_*) verification requirements for attestation \nrevocation. Attestation Status Lists (VCR_11) are the primary mechanism \nfor efficient batch revocation checking without per-credential queries.",
@@ -3408,7 +3634,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3448,7 +3677,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3483,7 +3714,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3523,7 +3756,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This requirement only applies to QEAA issuance. Non-qualified EAAs \nmay be issued without QTSP status but must still register.",
@@ -3563,7 +3799,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF ISSU_12: \"A PID Provider or Attestation Provider SHALL offer its \nPIDs or attestations in all formats required in the PID Rulebook or the \napplicable Attestation Rulebook.\"\n\nThis is distinct from the RP/Verifier requirement, where format support \ndepends on supported use cases (remote vs. proximity). For issuers, \nBOTH formats are unconditionally mandatory.",
@@ -3600,7 +3839,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3639,7 +3880,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3678,7 +3922,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -3714,7 +3961,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3750,7 +3999,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3789,7 +4040,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3831,7 +4085,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3874,7 +4131,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3915,7 +4175,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -3954,7 +4217,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -3993,7 +4259,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4037,7 +4306,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4078,7 +4350,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4117,7 +4392,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4152,7 +4430,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4194,7 +4474,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4234,7 +4516,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "gdpr",
+      "sourceGroups": [
+        "gdpr",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4269,7 +4554,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "issuer.yaml"
@@ -4309,7 +4596,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4355,7 +4645,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Covers PID-specific format requirements. Non-PID attestation providers \nshould refer to the relevant Attestation Rulebook instead.",
@@ -4399,7 +4691,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4444,7 +4739,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4486,7 +4784,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4531,7 +4832,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4573,7 +4876,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4615,7 +4921,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4657,7 +4966,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4703,7 +5015,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4749,7 +5063,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4790,7 +5106,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4845,7 +5164,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4882,7 +5204,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2026-11-21",
       "obligation": "MUST NOT",
       "notes": "Applies to ALL EAA providers (both qualified and non-qualified).\nThis is more restrictive than GDPR purpose limitation - it mandates\ncomplete isolation of EAA-related personal data.",
@@ -4920,7 +5244,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2026-11-21",
       "obligation": "MUST",
       "notes": "Applies to ALL EAA providers (both qualified and non-qualified).\n\"Logically separate\" means data isolation at the architectural level,\nnot just access control restrictions.",
@@ -4957,7 +5283,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2026-11-21",
       "obligation": "MUST",
       "notes": "Only applies to QUALIFIED EAA providers (QTSPs). Non-qualified \nEAA providers are subject to 45h(1) and 45h(2) but not 45h(3).\n\nThis requirement also applies to private Wallet Providers via \nArticle 5a(14) \"mutatis mutandis\" - see RCA Wallet Provider track.",
@@ -4992,7 +5320,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5026,7 +5356,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5059,7 +5391,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5093,7 +5427,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5127,7 +5463,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5161,7 +5499,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5195,7 +5535,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5228,7 +5570,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "Remote QES allows signatories to create qualified signatures using \nkeys managed by the QTSP, rather than on a local QSCD.",
@@ -5263,7 +5607,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5297,7 +5643,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5331,7 +5679,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5367,7 +5717,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5403,7 +5755,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5442,7 +5796,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5476,7 +5833,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5510,7 +5869,9 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5550,7 +5911,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5590,7 +5954,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5635,7 +6002,10 @@
       "isUniversal": false,
       "isExtended": false,
       "scope": "core",
-      "sourceGroup": "eidas",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5970,30 +6340,44 @@
   "requirementsBySourceGroup": {
     "eidas": [
       "VEND-CORE-001",
+      "VEND-CORE-002",
+      "VEND-CORE-003",
       "VEND-CORE-004",
       "VEND-CORE-005",
+      "VEND-CORE-006",
+      "VEND-CORE-007",
+      "VEND-CORE-008",
+      "VEND-CORE-009",
+      "VEND-CORE-010",
       "VEND-CORE-011",
+      "VEND-CORE-012",
+      "VEND-CORE-013",
+      "VEND-CORE-014",
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-019",
       "VEND-CORE-020",
+      "VEND-CORE-021",
       "VEND-CORE-022",
       "VEND-CORE-023",
       "VEND-CORE-024",
       "VEND-CORE-025",
       "VEND-CORE-026",
       "VEND-CORE-027",
+      "VEND-CORE-028",
       "VEND-CORE-029",
       "VEND-CORE-030",
       "VEND-CORE-031",
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
+      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
+      "VEND-CORE-042",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6026,7 +6410,6 @@
       "VEND-INT-033",
       "VEND-INT-034",
       "VEND-ISS-001",
-      "VEND-ISS-002",
       "VEND-ISS-003",
       "VEND-ISS-004",
       "VEND-ISS-005",
@@ -6045,19 +6428,14 @@
       "VEND-ISS-018",
       "VEND-ISS-019",
       "VEND-ISS-020",
-      "VEND-ISS-021",
       "VEND-ISS-023",
       "VEND-ISS-024",
-      "VEND-ISS-026",
       "VEND-ISS-027",
       "VEND-ISS-028",
       "VEND-ISS-029",
-      "VEND-ISS-030",
       "VEND-ISS-031",
       "VEND-ISS-032",
       "VEND-ISS-033",
-      "VEND-ISS-034",
-      "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
       "VEND-ISS-038",
@@ -6098,6 +6476,9 @@
       "VEND-CORE-028",
       "VEND-CORE-035",
       "VEND-CORE-042",
+      "VEND-ICT-002",
+      "VEND-ICT-007",
+      "VEND-ICT-010",
       "VEND-INT-018",
       "VEND-INT-030",
       "VEND-ISS-022"
@@ -6208,8 +6589,8 @@
       "universal": 31
     },
     "bySourceGroup": {
-      "eidas": 113,
-      "gdpr": 17,
+      "eidas": 121,
+      "gdpr": 20,
       "dora": 12,
       "arf": 75
     },
