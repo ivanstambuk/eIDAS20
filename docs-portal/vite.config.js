@@ -1,11 +1,29 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { spawn } from 'child_process'
+import { spawn, execSync } from 'child_process'
 import { watch } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// Extract git info for build-time injection
+function getGitInfo() {
+  try {
+    return {
+      hash: execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim(),
+      date: execSync('git log -1 --format=%cI', { encoding: 'utf-8' }).trim(), // ISO 8601
+    };
+  } catch (e) {
+    // Fallback for builds outside git repo (e.g., CI edge cases)
+    return {
+      hash: 'dev',
+      date: new Date().toISOString(),
+    };
+  }
+}
+
+const gitInfo = getGitInfo();
 
 // Custom plugin to disable caching for JSON data files during development
 // This prevents needing hard refresh when rebuilding terminology/search
@@ -97,6 +115,12 @@ function autoRebuildPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [noCacheJsonPlugin(), autoRebuildPlugin(), react()],
+
+  // Build-time constants injected into the bundle
+  define: {
+    __GIT_HASH__: JSON.stringify(gitInfo.hash),
+    __GIT_DATE__: JSON.stringify(gitInfo.date),
+  },
 
   // GitHub Pages deployment configuration
   // Change 'eIDAS20' to your actual repo name if different

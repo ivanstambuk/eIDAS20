@@ -59,6 +59,23 @@ const Header = ({ onMenuToggle, sidebarCollapsed }) => {
                 </div>
 
                 <div className="header-right flex items-center gap-3">
+                    {/* Build info badge - shows last commit date + hash */}
+                    <a
+                        href={`https://github.com/ivanstambuk/eIDAS20/commit/${__GIT_HASH__}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="build-info-badge"
+                        title={`Last updated: ${new Date(__GIT_DATE__).toLocaleString()}\nCommit: ${__GIT_HASH__}`}
+                    >
+                        <span className="build-date">
+                            {new Date(__GIT_DATE__).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short'
+                            })}
+                        </span>
+                        <code className="build-hash">{__GIT_HASH__}</code>
+                    </a>
+
                     <button
                         className="btn btn-ghost"
                         onClick={toggleTheme}
