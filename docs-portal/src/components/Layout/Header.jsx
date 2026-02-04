@@ -71,6 +71,10 @@ const Header = ({ onMenuToggle, sidebarCollapsed }) => {
                             {new Date(__GIT_DATE__).toLocaleDateString('en-GB', {
                                 day: 'numeric',
                                 month: 'short'
+                            })} {new Date(__GIT_DATE__).toLocaleTimeString('en-GB', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: false
                             })}
                         </span>
                         <code className="build-hash">{__GIT_HASH__}</code>
