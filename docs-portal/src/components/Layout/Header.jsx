@@ -67,6 +67,7 @@ const Header = ({ onMenuToggle, sidebarCollapsed }) => {
                         className="build-info-badge"
                         title={`Last updated: ${new Date(__GIT_DATE__).toLocaleString()}\nCommit: ${__GIT_HASH__}`}
                     >
+                        <span className="build-icon" aria-hidden="true">🔄</span>
                         <span className="build-date">
                             {new Date(__GIT_DATE__).toLocaleDateString('en-GB', {
                                 day: 'numeric',
