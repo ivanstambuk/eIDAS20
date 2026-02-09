@@ -497,6 +497,29 @@ This runs `build:terminology` → `build:search` in sequence.
 
 **Debugging tip:** If search results are wrong or missing terms, first check if the index is stale by running `npm run build:all-content`.
 
+### Terminology Display Casing Convention
+
+The build pipeline **preserves original source casing by default**. Terms extracted from legal definitions appear lowercase (e.g., "biometric data", "risk", "authentication") because that's how they appear in the regulation text.
+
+**Overrides** are managed in `scripts/canonical-casing.yaml`, which maps `term-id: "Display Name"` for terms that need different casing:
+
+| Category | Count | Casing | Examples |
+|----------|-------|--------|----------|
+| **Proper concepts** | ~158 | Title Case | Wallet Unit Attestation, Relying Party, Trusted List |
+| **Generic terms** | ~174 | lowercase (default) | biometric data, risk, authentication, group |
+| **Acronyms** | ~12 | Preserve as-is | AdES, CAdES, PAdES, XAdES |
+| **Legal phrases** | ~15 | lowercase | without prejudice to, mutatis mutandis |
+| **Acronym-prefixed** | ~15 | Mixed | ICT risk, ICT-related incident |
+
+**When adding new terms:**
+- If it's a named eIDAS concept/role → Add to `canonical-casing.yaml` with Title Case
+- If it's a generic legal term → No action needed (default preserves lowercase)
+- If it contains an acronym → Add to `canonical-casing.yaml` to preserve the acronym
+
+**Anti-patterns:**
+- ❌ Re-introducing a `toTitleCase()` function (was removed deliberately)
+- ❌ Adding generic terms like "data", "risk", "consent" with Title Case
+
 ### Build Workflow (After Content/Terminology Changes for AI Chat)
 
 **The AI Chat RAG system uses pre-computed embeddings.** After modifying:
