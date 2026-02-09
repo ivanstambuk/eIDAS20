@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-04T08:38:34.376Z",
+  "generatedAt": "2026-02-09T22:59:41.128Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1767,6 +1767,90 @@
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "notes": "This requirement implements the \"Compliance by Environment\" principle \nestablished in DEC-281 (Jan 2026 Alignment Audit). Even if a specific \nattestation relates to an object or organization (not personal data per se), \nthe wallet session context and processing metadata create an identifiable \ndata subject context.\n\nExceptions (attestations that may not require full GDPR safeguards):\n- Pure boolean ZKP proofs with high unlinkability\n- Device-only attestations with no wallet user context\n- Anonymous aggregate attestations\n\nHowever, the PRODUCT should not make these determinations - the CUSTOMER \n(RP as data controller) documents exceptions in their DPIA.",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-043",
+      "category": "security",
+      "categoryLabel": "Security",
+      "categoryIcon": "🔒",
+      "requirement": "The product must be validated against the OIDF conformance suite for verifiable presentations, including SD-JWT VC and ISO mDoc credential formats",
+      "explanation": "Interoperability with EUDI Wallets requires correct implementation of the \nOID4VP protocol. The OpenID Foundation provides a free, open-source \nconformance suite that validates protocol correctness for verifier \nimplementations. The suite is publicly available at \nhttps://demo.certification.openid.net/ and can also be run locally via \nDocker.\n\nTesting must cover the credential formats supported by the product:\n- SD-JWT VC with the High Assurance Interoperability Profile (HAIP)\n- ISO mDocs (ISO 18013-5 / ISO 18013-7)\n\nAdditional protocol parameters to validate:\n- x509_san_dns client_id_scheme (as specified in the ARF)\n- direct_post and direct_post.jwt response modes\n- Signed request_uri\n\nConformance test results should be available for review upon request.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2014-910?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
+      "legalText": "Relying parties shall use EUDI Wallets in compliance with regulatory \ntechnical standards and interoperability requirements established under \nthis Regulation.",
+      "arfReference": {
+        "topic": "Topic 6",
+        "hlr": "OIA_03a"
+      },
+      "roles": [],
+      "productCategories": [],
+      "isUniversal": true,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OIDF \nconformance suite is a free, open-source tool — there is no cost barrier \nto running these tests. Vendors claiming OID4VP support without \nconformance test validation represent a significant interoperability risk.\n\nThe OIDF suite covers both SD-JWT VC and ISO mDoc credential formats \nwithin the same test infrastructure. ISO 18013-5 proximity (BLE) testing \nis covered by separate ISO 18013-6 lab-based test methods, which are \noutside the scope of this requirement.\n\nReferences:\n- OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/\n- OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-044",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "The product must be validated against the OIDF conformance suite for verifiable credential issuance, including SD-JWT VC and ISO mDoc credential formats",
+      "explanation": "Interoperability with EUDI Wallets requires correct implementation of the \nOID4VCI protocol for credential issuance. The OpenID Foundation provides a \nfree, open-source conformance suite that validates issuer implementations. \nThe suite is publicly available at https://demo.certification.openid.net/.\n\nTesting must cover the credential formats supported by the product:\n- SD-JWT VC credential format\n- ISO mDoc credential format\n\nThe conformance tests currently cover:\n- Issuer Metadata validation\n- Issuer Happy Flow (access token → credential endpoint → credential \n  inspection)\n- OAuth 2.0 Attestation-Based Client Authentication\n\nConformance test results should be available for review upon request.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45e",
+          "paragraph": "1",
+          "link": "/regulation/2014-910?section=article-45e"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45e",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-45e",
+      "legalText": "Providers of electronic attestations of attributes shall ensure \ninteroperability with EUDI Wallets through compliance with applicable \ntechnical standards and specifications.",
+      "arfReference": {
+        "topic": "Topic 9",
+        "hlr": "ISSU_01"
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OID4VCI \nconformance tests are under active development by the OpenID Foundation, \nwith preview tests covering OID4VCI draft 15 ID2, HAIP draft 03, and \nOAuth 2.0 Attestation-Based Client Authentication draft 05.\n\nAs the test suite matures, vendors should revalidate against updated \ntest plans. The requirement is for ongoing conformance, not a one-time \ncertification.\n\nReferences:\n- OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/\n- Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/",
       "_sourceFile": "core.yaml"
     },
     {
@@ -6083,6 +6167,7 @@
       "VEND-CORE-026",
       "VEND-CORE-027",
       "VEND-CORE-028",
+      "VEND-CORE-044",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6159,6 +6244,7 @@
       "VEND-CORE-018",
       "VEND-CORE-023",
       "VEND-CORE-042",
+      "VEND-CORE-043",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -6235,6 +6321,7 @@
       "VEND-CORE-025",
       "VEND-CORE-027",
       "VEND-CORE-028",
+      "VEND-CORE-044",
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-003",
@@ -6323,6 +6410,7 @@
       "VEND-CORE-018",
       "VEND-CORE-023",
       "VEND-CORE-042",
+      "VEND-CORE-043",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6378,6 +6466,8 @@
       "VEND-CORE-040",
       "VEND-CORE-041",
       "VEND-CORE-042",
+      "VEND-CORE-043",
+      "VEND-CORE-044",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6516,6 +6606,8 @@
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
+      "VEND-CORE-043",
+      "VEND-CORE-044",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6576,34 +6668,34 @@
     ]
   },
   "stats": {
-    "totalRequirements": 142,
+    "totalRequirements": 144,
     "byRole": {
       "relying_party": 60,
-      "issuer": 63,
-      "universal": 34
+      "issuer": 64,
+      "universal": 35
     },
     "byProductCategory": {
       "connector": 48,
-      "issuance_platform": 46,
+      "issuance_platform": 47,
       "trust_services": 26,
-      "universal": 31
+      "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 121,
+      "eidas": 123,
       "gdpr": 20,
       "dora": 12,
-      "arf": 75
+      "arf": 77
     },
     "byCategory": {
       "usage": 42,
       "contracts": 22,
       "registration": 26,
-      "security": 28,
-      "issuance": 17,
+      "security": 29,
+      "issuance": 18,
       "revocation": 7
     },
     "byObligation": {
-      "MUST": 122,
+      "MUST": 124,
       "MUST NOT": 11,
       "SHOULD": 8,
       "SHOULD NOT": 0,

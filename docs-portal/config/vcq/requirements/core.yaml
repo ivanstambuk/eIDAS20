@@ -903,3 +903,101 @@ requirements:
       However, the PRODUCT should not make these determinations - the CUSTOMER 
       (RP as data controller) documents exceptions in their DPIA.
     obligation: MUST NOT
+  - id: VEND-CORE-043
+    category: security
+    requirement: The product must be validated against the OIDF conformance suite for verifiable presentations, including SD-JWT VC and ISO mDoc credential formats
+    explanation: |
+      Interoperability with EUDI Wallets requires correct implementation of the 
+      OID4VP protocol. The OpenID Foundation provides a free, open-source 
+      conformance suite that validates protocol correctness for verifier 
+      implementations. The suite is publicly available at 
+      https://demo.certification.openid.net/ and can also be run locally via 
+      Docker.
+
+      Testing must cover the credential formats supported by the product:
+      - SD-JWT VC with the High Assurance Interoperability Profile (HAIP)
+      - ISO mDocs (ISO 18013-5 / ISO 18013-7)
+
+      Additional protocol parameters to validate:
+      - x509_san_dns client_id_scheme (as specified in the ARF)
+      - direct_post and direct_post.jwt response modes
+      - Signed request_uri
+
+      Conformance test results should be available for review upon request.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "1"
+    legalText: |
+      Relying parties shall use EUDI Wallets in compliance with regulatory 
+      technical standards and interoperability requirements established under 
+      this Regulation.
+    arfReference:
+      topic: Topic 6
+      hlr: OIA_03a
+    roles: []
+    productCategories: []
+    deadline: "2027-11-21"
+    notes: |
+      Derived from stakeholder feedback (2026-02-09, Item 2). The OIDF 
+      conformance suite is a free, open-source tool — there is no cost barrier 
+      to running these tests. Vendors claiming OID4VP support without 
+      conformance test validation represent a significant interoperability risk.
+
+      The OIDF suite covers both SD-JWT VC and ISO mDoc credential formats 
+      within the same test infrastructure. ISO 18013-5 proximity (BLE) testing 
+      is covered by separate ISO 18013-6 lab-based test methods, which are 
+      outside the scope of this requirement.
+
+      References:
+      - OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/
+      - OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/
+    obligation: MUST
+  - id: VEND-CORE-044
+    category: issuance
+    requirement: The product must be validated against the OIDF conformance suite for verifiable credential issuance, including SD-JWT VC and ISO mDoc credential formats
+    explanation: |
+      Interoperability with EUDI Wallets requires correct implementation of the 
+      OID4VCI protocol for credential issuance. The OpenID Foundation provides a 
+      free, open-source conformance suite that validates issuer implementations. 
+      The suite is publicly available at https://demo.certification.openid.net/.
+
+      Testing must cover the credential formats supported by the product:
+      - SD-JWT VC credential format
+      - ISO mDoc credential format
+
+      The conformance tests currently cover:
+      - Issuer Metadata validation
+      - Issuer Happy Flow (access token → credential endpoint → credential 
+        inspection)
+      - OAuth 2.0 Attestation-Based Client Authentication
+
+      Conformance test results should be available for review upon request.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45e
+      paragraph: "1"
+    legalText: |
+      Providers of electronic attestations of attributes shall ensure 
+      interoperability with EUDI Wallets through compliance with applicable 
+      technical standards and specifications.
+    arfReference:
+      topic: Topic 9
+      hlr: ISSU_01
+    roles: [issuer]
+    productCategories: [issuance_platform]
+    deadline: "2027-11-21"
+    notes: |
+      Derived from stakeholder feedback (2026-02-09, Item 2). The OID4VCI 
+      conformance tests are under active development by the OpenID Foundation, 
+      with preview tests covering OID4VCI draft 15 ID2, HAIP draft 03, and 
+      OAuth 2.0 Attestation-Based Client Authentication draft 05.
+
+      As the test suite matures, vendors should revalidate against updated 
+      test plans. The requirement is for ongoing conformance, not a one-time 
+      certification.
+
+      References:
+      - OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/
+      - Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/
+    obligation: MUST
