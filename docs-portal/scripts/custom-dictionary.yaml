@@ -669,6 +669,46 @@ terms:
     source: Synthesized from eIDAS Art. 3(41), 22, 33, 40, 5b(9); CIR 2024/2979 Annex II; CIR 2024/2982 Art. 3, 4(2), 5(2-3)
     note: Enriched functional definition; the terse legal definition ("the process of verifying and confirming that data in electronic form are valid") appears in eIDAS Art. 3(41)
 
+  - term: transaction
+    definition: >-
+      A discrete interaction between a user and another party, carried out
+      through the European Digital Identity Wallet or within the broader scope
+      of electronic identification and trust services. In the Regulation's
+      title and subject-matter clause, the full phrase "electronic transaction"
+      denotes the entire domain of interactions in the internal market that
+      require secure electronic identification, authentication, or trust
+      services (eIDAS Art. 1(b)); each individual wallet operation is a
+      species of this broader category. In the EUDI Wallet context, the term
+      takes on specific operational meaning: (1) dashboard logging — the
+      wallet must provide "a log of all transactions" recording the time
+      and date, counterpart identification, personal data requested, and
+      data shared (eIDAS Art. 5a(4)(d); Reg. 2024/1183 Recital 13); each
+      discrete wallet operation — issuance, presentation, signing, or
+      pseudonym exchange — constitutes a logged transaction; (2) anti-tracking —
+      providers of electronic attestations of attributes must prevent the
+      collection of data that allows "transactions or user behaviour" to be
+      tracked across relying parties (eIDAS Art. 5a(16)(a)); (3) intermediary
+      data protection — intermediaries involved in the presentation of
+      attestations of attributes shall not store data about the content of
+      the transaction (eIDAS Art. 5b(10)); (4) liability — liability arises
+      for failures "in a cross-border transaction" (eIDAS Art. 11a).
+      In the ARF, the term takes on further technical precision: "remote
+      presentation transaction flows" (ARF §4.4.3) and "Wallet-to-Wallet
+      transaction flows" (ARF §6.6.4.2) describe specific protocol-level
+      message exchanges for credential presentation.
+    source: Synthesized from eIDAS Art. 1(b), 5, 5a(4)(d), 5a(16)(a), 5b(10), 11a; Reg. 2024/1183 Recital 13; ARF §4.4.3, §6.6.4.2
+    note: >-
+      The full phrase "electronic transaction" appears in the Regulation's
+      title, Art. 1(b), Art. 5, and original eIDAS 1.0 Recitals (1), (2),
+      (17), (63), and functions as the domain-scoping term for the entire
+      Regulation. The bare form "transaction" is used operationally in the
+      EUDI Wallet provisions (Art. 5a, 5b, 11a) to denote individual logged
+      interactions. The two forms are in a genus–species relationship:
+      "electronic transaction" is the class, and each wallet "transaction"
+      is an instance. Not to be confused with "session" — a transaction may
+      comprise multiple protocol exchanges within a single session, or a
+      single session may involve multiple transactions.
+
   - term: Relying Party Instance
     definition: >-
       A software and/or hardware module with the capability to interact with 

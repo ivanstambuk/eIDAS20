@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T22:08:06.583Z",
+  "generated": "2026-02-09T22:27:44.493Z",
   "statistics": {
     "totalTerms": 359,
-    "totalDefinitions": 519,
+    "totalDefinitions": 520,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -15987,9 +15987,20 @@
           "articleId": "article-N/A-para-i",
           "articleNumber": "N/A(i)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A discrete interaction between a user and another party, carried out through the European Digital Identity Wallet or within the broader scope of electronic identification and trust services. In the Regulation's title and subject-matter clause, the full phrase \"electronic transaction\" denotes the entire domain of interactions in the internal market that require secure electronic identification, authentication, or trust services (eIDAS Art. 1(b)); each individual wallet operation is a species of this broader category. In the EUDI Wallet context, the term takes on specific operational meaning: (1) dashboard logging — the wallet must provide \"a log of all transactions\" recording the time and date, counterpart identification, personal data requested, and data shared (eIDAS Art. 5a(4)(d); Reg. 2024/1183 Recital 13); each discrete wallet operation — issuance, presentation, signing, or pseudonym exchange — constitutes a logged transaction; (2) anti-tracking — providers of electronic attestations of attributes must prevent the collection of data that allows \"transactions or user behaviour\" to be tracked across relying parties (eIDAS Art. 5a(16)(a)); (3) intermediary data protection — intermediaries involved in the presentation of attestations of attributes shall not store data about the content of the transaction (eIDAS Art. 5b(10)); (4) liability — liability arises for failures \"in a cross-border transaction\" (eIDAS Art. 11a). In the ARF, the term takes on further technical precision: \"remote presentation transaction flows\" (ARF §4.4.3) and \"Wallet-to-Wallet transaction flows\" (ARF §6.6.4.2) describe specific protocol-level message exchanges for credential presentation.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 1(b), 5, 5a(4)(d), 5a(16)(a), 5b(10), 11a; Reg. 2024/1183 Recital 13; ARF §4.4.3, §6.6.4.2",
+          "articleNumber": "Synthesized from eIDAS Art. 1(b), 5, 5a(4)(d), 5a(16)(a), 5b(10), 11a; Reg. 2024/1183 Recital 13; ARF §4.4.3, §6.6.4.2",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-N/A-para-i",
       "definitionGroups": [
         {
@@ -16008,6 +16019,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A discrete interaction between a user and another party, carried out through the European Digital Identity Wallet or within the broader scope of electronic identification and trust services. In the Regulation's title and subject-matter clause, the full phrase \"electronic transaction\" denotes the entire domain of interactions in the internal market that require secure electronic identification, authentication, or trust services (eIDAS Art. 1(b)); each individual wallet operation is a species of this broader category. In the EUDI Wallet context, the term takes on specific operational meaning: (1) dashboard logging — the wallet must provide \"a log of all transactions\" recording the time and date, counterpart identification, personal data requested, and data shared (eIDAS Art. 5a(4)(d); Reg. 2024/1183 Recital 13); each discrete wallet operation — issuance, presentation, signing, or pseudonym exchange — constitutes a logged transaction; (2) anti-tracking — providers of electronic attestations of attributes must prevent the collection of data that allows \"transactions or user behaviour\" to be tracked across relying parties (eIDAS Art. 5a(16)(a)); (3) intermediary data protection — intermediaries involved in the presentation of attestations of attributes shall not store data about the content of the transaction (eIDAS Art. 5b(10)); (4) liability — liability arises for failures \"in a cross-border transaction\" (eIDAS Art. 11a). In the ARF, the term takes on further technical precision: \"remote presentation transaction flows\" (ARF §4.4.3) and \"Wallet-to-Wallet transaction flows\" (ARF §6.6.4.2) describe specific protocol-level message exchanges for credential presentation.",
+          "sources": [
+            {
+              "definition": "A discrete interaction between a user and another party, carried out through the European Digital Identity Wallet or within the broader scope of electronic identification and trust services. In the Regulation's title and subject-matter clause, the full phrase \"electronic transaction\" denotes the entire domain of interactions in the internal market that require secure electronic identification, authentication, or trust services (eIDAS Art. 1(b)); each individual wallet operation is a species of this broader category. In the EUDI Wallet context, the term takes on specific operational meaning: (1) dashboard logging — the wallet must provide \"a log of all transactions\" recording the time and date, counterpart identification, personal data requested, and data shared (eIDAS Art. 5a(4)(d); Reg. 2024/1183 Recital 13); each discrete wallet operation — issuance, presentation, signing, or pseudonym exchange — constitutes a logged transaction; (2) anti-tracking — providers of electronic attestations of attributes must prevent the collection of data that allows \"transactions or user behaviour\" to be tracked across relying parties (eIDAS Art. 5a(16)(a)); (3) intermediary data protection — intermediaries involved in the presentation of attestations of attributes shall not store data about the content of the transaction (eIDAS Art. 5b(10)); (4) liability — liability arises for failures \"in a cross-border transaction\" (eIDAS Art. 11a). In the ARF, the term takes on further technical precision: \"remote presentation transaction flows\" (ARF §4.4.3) and \"Wallet-to-Wallet transaction flows\" (ARF §6.6.4.2) describe specific protocol-level message exchanges for credential presentation.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 1(b), 5, 5a(4)(d), 5a(16)(a), 5b(10), 11a; Reg. 2024/1183 Recital 13; ARF §4.4.3, §6.6.4.2",
+              "articleNumber": "Synthesized from eIDAS Art. 1(b), 5, 5a(4)(d), 5a(16)(a), 5b(10), 11a; Reg. 2024/1183 Recital 13; ARF §4.4.3, §6.6.4.2",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [],
