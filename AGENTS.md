@@ -797,6 +797,12 @@ Multiline JavaScript passed via `node -e "..."` gets mangled by bash — quotes,
 **Correct pattern:**
 - ✅ Write `scripts/analysis.cjs` → run `node scripts/analysis.cjs` → delete when done
 
+**⚠️ Large JSON files (>1MB) will hang interactive terminals:**
+- ❌ `node -e "const d = require('./public/data/arf-hlr-data.json')"` — 4.7MB file, blocks forever
+- ❌ `python3 -c "import json; json.load(open('large.json'))"` — same issue on large files
+- ✅ Use dedicated lookup scripts: `node scripts/lookup-hlr.cjs <topic>` for ARF HLR queries
+- ✅ Use `grep` or `jq` for quick JSON searches on large files
+
 ---
 
 ## 🖥️ WSL Browser Testing
