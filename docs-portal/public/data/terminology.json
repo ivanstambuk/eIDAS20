@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T20:05:47.065Z",
+  "generated": "2026-02-09T20:25:11.714Z",
   "statistics": {
     "totalTerms": 359,
-    "totalDefinitions": 497,
+    "totalDefinitions": 507,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -1467,9 +1467,20 @@
           "articleId": "article-3-para-43",
           "articleNumber": "3(43)",
           "displayOrder": 1
+        },
+        {
+          "definition": "A characteristic, quality, right, or permission of a natural or legal person or of an object. In the EUDI Wallet ecosystem, attributes are the fundamental units of information that are issued, stored, and presented through electronic attestations. They encompass a wide range of data: from person identification data (name, date of birth, nationality) to professional qualifications, health credentials, driving licences, and organisational permissions. Attributes are structured within namespaces that define their identifier, syntax, and semantics (ARF Annex 1 Section A.4), and are governed by attestation rulebooks that specify their encoding formats and issuance requirements (ARF Topic 12). During presentation, wallet users may selectively disclose individual attributes rather than the entire attestation (CIR 2024/2982 Art. 5(4)), and relying parties shall not request attributes beyond those registered for their intended purpose (eIDAS Art. 5b(3)). Attributes may be issued from authentic sources — repositories held by public or private entities recognised as authoritative for that information (eIDAS Art. 3(47)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(43, 44, 47), 5b(3); CIR 2024/2982 Art. 5(4); ARF Annex 1 Section A.2, A.4 (namespace, attestation type)",
+          "articleNumber": "Synthesized from eIDAS Art. 3(43, 44, 47), 5b(3); CIR 2024/2982 Art. 5(4); ARF Annex 1 Section A.2, A.4 (namespace, attestation type)",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-43",
       "definitionGroups": [
         {
@@ -1488,6 +1499,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A characteristic, quality, right, or permission of a natural or legal person or of an object. In the EUDI Wallet ecosystem, attributes are the fundamental units of information that are issued, stored, and presented through electronic attestations. They encompass a wide range of data: from person identification data (name, date of birth, nationality) to professional qualifications, health credentials, driving licences, and organisational permissions. Attributes are structured within namespaces that define their identifier, syntax, and semantics (ARF Annex 1 Section A.4), and are governed by attestation rulebooks that specify their encoding formats and issuance requirements (ARF Topic 12). During presentation, wallet users may selectively disclose individual attributes rather than the entire attestation (CIR 2024/2982 Art. 5(4)), and relying parties shall not request attributes beyond those registered for their intended purpose (eIDAS Art. 5b(3)). Attributes may be issued from authentic sources — repositories held by public or private entities recognised as authoritative for that information (eIDAS Art. 3(47)).",
+          "sources": [
+            {
+              "definition": "A characteristic, quality, right, or permission of a natural or legal person or of an object. In the EUDI Wallet ecosystem, attributes are the fundamental units of information that are issued, stored, and presented through electronic attestations. They encompass a wide range of data: from person identification data (name, date of birth, nationality) to professional qualifications, health credentials, driving licences, and organisational permissions. Attributes are structured within namespaces that define their identifier, syntax, and semantics (ARF Annex 1 Section A.4), and are governed by attestation rulebooks that specify their encoding formats and issuance requirements (ARF Topic 12). During presentation, wallet users may selectively disclose individual attributes rather than the entire attestation (CIR 2024/2982 Art. 5(4)), and relying parties shall not request attributes beyond those registered for their intended purpose (eIDAS Art. 5b(3)). Attributes may be issued from authentic sources — repositories held by public or private entities recognised as authoritative for that information (eIDAS Art. 3(47)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(43, 44, 47), 5b(3); CIR 2024/2982 Art. 5(4); ARF Annex 1 Section A.2, A.4 (namespace, attestation type)",
+              "articleNumber": "Synthesized from eIDAS Art. 3(43, 44, 47), 5b(3); CIR 2024/2982 Art. 5(4); ARF Annex 1 Section A.2, A.4 (namespace, attestation type)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -3730,9 +3758,20 @@
           "articleId": "article-2-para-16",
           "articleNumber": "2(16)",
           "displayOrder": 2
+        },
+        {
+          "definition": "The method used to link person identification data or electronic attestations of attributes to a wallet unit, ensuring that a credential can only be presented by the wallet unit to which it was issued. This is achieved by cryptographically tying the attestation to public keys whose corresponding private keys are protected within the wallet unit's WSCD (wallet secure cryptographic device). Specifically: (1) during issuance, the PID provider or attestation provider binds the credential to one or more public keys generated by the wallet unit's WSCA and protected by its WSCD (CIR 2024/2979 Art. 5, 6); (2) during presentation, the wallet unit proves possession of the corresponding private keys to the relying party, demonstrating that the credential has not been transferred to another device (CIR 2024/2982 Art. 5(3)); (3) the binding must follow the cryptographic standards listed in CIR 2024/2979 Annex II, which specify the acceptable signature schemes, key types, and binding mechanisms; and (4) the binding mechanism must be resistant to attackers with high attack potential, as required by the national certification schemes (CIR 2024/2981 Annex IV). Cryptographic binding is distinct from device binding (which ties credentials to the physical device) and is the primary mechanism preventing credential cloning, transfer, and replay attacks in the EUDI Wallet ecosystem.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(3), 5, 6, Annex II; CIR 2024/2982 Art. 5(3); CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(3), 5, 6, Annex II; CIR 2024/2982 Art. 5(3); CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-2-para-16",
       "definitionGroups": [
         {
@@ -3751,6 +3790,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "The method used to link person identification data or electronic attestations of attributes to a wallet unit, ensuring that a credential can only be presented by the wallet unit to which it was issued. This is achieved by cryptographically tying the attestation to public keys whose corresponding private keys are protected within the wallet unit's WSCD (wallet secure cryptographic device). Specifically: (1) during issuance, the PID provider or attestation provider binds the credential to one or more public keys generated by the wallet unit's WSCA and protected by its WSCD (CIR 2024/2979 Art. 5, 6); (2) during presentation, the wallet unit proves possession of the corresponding private keys to the relying party, demonstrating that the credential has not been transferred to another device (CIR 2024/2982 Art. 5(3)); (3) the binding must follow the cryptographic standards listed in CIR 2024/2979 Annex II, which specify the acceptable signature schemes, key types, and binding mechanisms; and (4) the binding mechanism must be resistant to attackers with high attack potential, as required by the national certification schemes (CIR 2024/2981 Annex IV). Cryptographic binding is distinct from device binding (which ties credentials to the physical device) and is the primary mechanism preventing credential cloning, transfer, and replay attacks in the EUDI Wallet ecosystem.",
+          "sources": [
+            {
+              "definition": "The method used to link person identification data or electronic attestations of attributes to a wallet unit, ensuring that a credential can only be presented by the wallet unit to which it was issued. This is achieved by cryptographically tying the attestation to public keys whose corresponding private keys are protected within the wallet unit's WSCD (wallet secure cryptographic device). Specifically: (1) during issuance, the PID provider or attestation provider binds the credential to one or more public keys generated by the wallet unit's WSCA and protected by its WSCD (CIR 2024/2979 Art. 5, 6); (2) during presentation, the wallet unit proves possession of the corresponding private keys to the relying party, demonstrating that the credential has not been transferred to another device (CIR 2024/2982 Art. 5(3)); (3) the binding must follow the cryptographic standards listed in CIR 2024/2979 Annex II, which specify the acceptable signature schemes, key types, and binding mechanisms; and (4) the binding mechanism must be resistant to attackers with high attack potential, as required by the national certification schemes (CIR 2024/2981 Annex IV). Cryptographic binding is distinct from device binding (which ties credentials to the physical device) and is the primary mechanism preventing credential cloning, transfer, and replay attacks in the EUDI Wallet ecosystem.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 2(3), 5, 6, Annex II; CIR 2024/2982 Art. 5(3); CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 2(3), 5, 6, Annex II; CIR 2024/2982 Art. 5(3); CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -4876,9 +4932,20 @@
           "articleId": "article-3-para-44",
           "articleNumber": "3(44)",
           "displayOrder": 1
+        },
+        {
+          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+          "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-44",
       "definitionGroups": [
         {
@@ -4897,6 +4964,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+          "sources": [
+            {
+              "definition": "An attestation in electronic form that allows attributes to be authenticated — a verifiable digital credential containing a set of attributes (characteristics, qualities, rights, or permissions) about a natural or legal person. Electronic attestations of attributes (EAAs) are the general credential type in the EUDI Wallet ecosystem and exist in three tiers: (1) Qualified EAAs (QEAAs), issued by qualified trust service providers and meeting the requirements of eIDAS Annex V, with the same legal effect as legally issued paper attestations (eIDAS Art. 45f); (2) EAAs issued by or on behalf of public sector bodies (PuB-EAAs), issued from authentic sources with equivalent recognition (eIDAS Art. 45f); and (3) non-qualified EAAs, which may be issued by any provider. Providers issuing EAAs to wallet units must identify themselves using wallet-relying party access certificates (CIR 2024/2977 Art. 4(2)) and ensure that attestations contain the information necessary for authentication and validation (CIR 2024/2977 Art. 4(3)). EAAs shall be cryptographically bound to the wallet unit using the standards in CIR 2024/2979 Annex II, and providers may embed disclosure policies specifying conditions that relying parties must meet to access the attestation (CIR 2024/2979 Art. 11, CIR 2024/2982 Art. 2(13)). Wallet users can selectively disclose individual attributes from an EAA without revealing the full credential (CIR 2024/2982 Art. 5(4)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+              "articleNumber": "Synthesized from eIDAS Art. 3(44-46), 45d-45g; CIR 2024/2977 Art. 4; CIR 2024/2979 Art. 8, 11, Annex II; CIR 2024/2982 Art. 2(13), 5(4); ARF Annex 1 Section A.2",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -12390,9 +12474,20 @@
           "articleId": "article-3-para-45",
           "articleNumber": "3(45)",
           "displayOrder": 1
+        },
+        {
+          "definition": "An electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V of the eIDAS Regulation. Qualified EAAs (QEAAs) represent the highest tier of verifiable credentials in the EUDI Wallet ecosystem and carry enhanced legal effects: they shall have the same legal effect as lawfully issued attestations in paper form (eIDAS Art. 45f(1)), and QEAAs issued in one Member State shall be recognised in all other Member States (eIDAS Art. 45f(2)). To achieve qualified status, the issuing QTSP must: (1) verify the attributes against authentic sources or equivalent authoritative records (eIDAS Annex V); (2) verify the identity of the person to whom the attestation is issued (eIDAS Art. 45d(2)); (3) include mandatory metadata such as the issuer identity, issuance and expiry dates, attestation type, and the scheme under which it was issued (eIDAS Annex V); (4) cryptographically bind the attestation to the wallet unit using standards from CIR 2024/2979 Annex II; and (5) provide mechanisms for verifying the attestation's validity status, including revocation checking (eIDAS Art. 45e). QTSPs issuing QEAAs must hold a valid wallet-relying party access certificate to identify themselves to wallet units during issuance (CIR 2024/2977 Art. 4(2)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(46), 45d-45f, Annex V; CIR 2024/2977 Art. 4(2-3); CIR 2024/2979 Art. 8, Annex II; ARF Annex 1 Section A.2",
+          "articleNumber": "Synthesized from eIDAS Art. 3(46), 45d-45f, Annex V; CIR 2024/2977 Art. 4(2-3); CIR 2024/2979 Art. 8, Annex II; ARF Annex 1 Section A.2",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-45",
       "definitionGroups": [
         {
@@ -12411,6 +12506,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "An electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V of the eIDAS Regulation. Qualified EAAs (QEAAs) represent the highest tier of verifiable credentials in the EUDI Wallet ecosystem and carry enhanced legal effects: they shall have the same legal effect as lawfully issued attestations in paper form (eIDAS Art. 45f(1)), and QEAAs issued in one Member State shall be recognised in all other Member States (eIDAS Art. 45f(2)). To achieve qualified status, the issuing QTSP must: (1) verify the attributes against authentic sources or equivalent authoritative records (eIDAS Annex V); (2) verify the identity of the person to whom the attestation is issued (eIDAS Art. 45d(2)); (3) include mandatory metadata such as the issuer identity, issuance and expiry dates, attestation type, and the scheme under which it was issued (eIDAS Annex V); (4) cryptographically bind the attestation to the wallet unit using standards from CIR 2024/2979 Annex II; and (5) provide mechanisms for verifying the attestation's validity status, including revocation checking (eIDAS Art. 45e). QTSPs issuing QEAAs must hold a valid wallet-relying party access certificate to identify themselves to wallet units during issuance (CIR 2024/2977 Art. 4(2)).",
+          "sources": [
+            {
+              "definition": "An electronic attestation of attributes which is issued by a qualified trust service provider and meets the requirements laid down in Annex V of the eIDAS Regulation. Qualified EAAs (QEAAs) represent the highest tier of verifiable credentials in the EUDI Wallet ecosystem and carry enhanced legal effects: they shall have the same legal effect as lawfully issued attestations in paper form (eIDAS Art. 45f(1)), and QEAAs issued in one Member State shall be recognised in all other Member States (eIDAS Art. 45f(2)). To achieve qualified status, the issuing QTSP must: (1) verify the attributes against authentic sources or equivalent authoritative records (eIDAS Annex V); (2) verify the identity of the person to whom the attestation is issued (eIDAS Art. 45d(2)); (3) include mandatory metadata such as the issuer identity, issuance and expiry dates, attestation type, and the scheme under which it was issued (eIDAS Annex V); (4) cryptographically bind the attestation to the wallet unit using standards from CIR 2024/2979 Annex II; and (5) provide mechanisms for verifying the attestation's validity status, including revocation checking (eIDAS Art. 45e). QTSPs issuing QEAAs must hold a valid wallet-relying party access certificate to identify themselves to wallet units during issuance (CIR 2024/2977 Art. 4(2)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(46), 45d-45f, Annex V; CIR 2024/2977 Art. 4(2-3); CIR 2024/2979 Art. 8, Annex II; ARF Annex 1 Section A.2",
+              "articleNumber": "Synthesized from eIDAS Art. 3(46), 45d-45f, Annex V; CIR 2024/2977 Art. 4(2-3); CIR 2024/2979 Art. 8, Annex II; ARF Annex 1 Section A.2",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -13051,6 +13163,17 @@
           "articleId": "what-does-qtspqts-mean",
           "articleNumber": "What does (Q)TSP/(Q)TS mean?",
           "displayOrder": 4
+        },
+        {
+          "definition": "A trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body. Qualified trust service providers (QTSPs) occupy the highest tier of trust in the eIDAS framework and must: (1) undergo an initial conformity assessment by an accredited conformity assessment body before commencing operations, then be assessed at least every 24 months thereafter (eIDAS Art. 20(1)); (2) submit a conformity assessment report to the supervisory body, which grants or withdraws qualified status (eIDAS Art. 21(1)); (3) be listed in the national Trusted List published by the Member State as providing qualified trust services (eIDAS Art. 22); (4) bear financial liability for damage caused to any person due to failure to comply with eIDAS obligations, with the burden of proof placed on the QTSP to demonstrate it did not act negligently (eIDAS Art. 13); (5) use trustworthy systems and products protected against modification, ensure that personal data can be processed only with consent or other legal basis, and take appropriate measures against forgery and theft (eIDAS Art. 24(2)); (6) maintain a termination plan to ensure continuity of service and inform the supervisory body at least three months before ceasing operations (eIDAS Art. 24(2)(h-i)); and (7) in the context of the EUDI Wallet, issue qualified electronic attestations of attributes (QEAAs), qualified certificates for electronic signatures and seals, and other qualified trust services (eIDAS Art. 45d-45e).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(18, 20), 13, 20-24, 45d-45e; ARF Annex 1 Section A.2",
+          "articleNumber": "Synthesized from eIDAS Art. 3(18, 20), 13, 20-24, 45d-45e; ARF Annex 1 Section A.2",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -13103,6 +13226,23 @@
               "articleId": "what-does-qtspqts-mean",
               "articleNumber": "What does (Q)TSP/(Q)TS mean?",
               "displayOrder": 4
+            }
+          ],
+          "isVariant": true
+        },
+        {
+          "definition": "A trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body. Qualified trust service providers (QTSPs) occupy the highest tier of trust in the eIDAS framework and must: (1) undergo an initial conformity assessment by an accredited conformity assessment body before commencing operations, then be assessed at least every 24 months thereafter (eIDAS Art. 20(1)); (2) submit a conformity assessment report to the supervisory body, which grants or withdraws qualified status (eIDAS Art. 21(1)); (3) be listed in the national Trusted List published by the Member State as providing qualified trust services (eIDAS Art. 22); (4) bear financial liability for damage caused to any person due to failure to comply with eIDAS obligations, with the burden of proof placed on the QTSP to demonstrate it did not act negligently (eIDAS Art. 13); (5) use trustworthy systems and products protected against modification, ensure that personal data can be processed only with consent or other legal basis, and take appropriate measures against forgery and theft (eIDAS Art. 24(2)); (6) maintain a termination plan to ensure continuity of service and inform the supervisory body at least three months before ceasing operations (eIDAS Art. 24(2)(h-i)); and (7) in the context of the EUDI Wallet, issue qualified electronic attestations of attributes (QEAAs), qualified certificates for electronic signatures and seals, and other qualified trust services (eIDAS Art. 45d-45e).",
+          "sources": [
+            {
+              "definition": "A trust service provider who provides one or more qualified trust services and is granted the qualified status by the supervisory body. Qualified trust service providers (QTSPs) occupy the highest tier of trust in the eIDAS framework and must: (1) undergo an initial conformity assessment by an accredited conformity assessment body before commencing operations, then be assessed at least every 24 months thereafter (eIDAS Art. 20(1)); (2) submit a conformity assessment report to the supervisory body, which grants or withdraws qualified status (eIDAS Art. 21(1)); (3) be listed in the national Trusted List published by the Member State as providing qualified trust services (eIDAS Art. 22); (4) bear financial liability for damage caused to any person due to failure to comply with eIDAS obligations, with the burden of proof placed on the QTSP to demonstrate it did not act negligently (eIDAS Art. 13); (5) use trustworthy systems and products protected against modification, ensure that personal data can be processed only with consent or other legal basis, and take appropriate measures against forgery and theft (eIDAS Art. 24(2)); (6) maintain a termination plan to ensure continuity of service and inform the supervisory body at least three months before ceasing operations (eIDAS Art. 24(2)(h-i)); and (7) in the context of the EUDI Wallet, issue qualified electronic attestations of attributes (QEAAs), qualified certificates for electronic signatures and seals, and other qualified trust services (eIDAS Art. 45d-45e).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(18, 20), 13, 20-24, 45d-45e; ARF Annex 1 Section A.2",
+              "articleNumber": "Synthesized from eIDAS Art. 3(18, 20), 13, 20-24, 45d-45e; ARF Annex 1 Section A.2",
+              "displayOrder": 5
             }
           ],
           "isVariant": true
@@ -13497,9 +13637,20 @@
           "articleId": "article-3-para-6",
           "articleNumber": "3(6)",
           "displayOrder": 1
+        },
+        {
+          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+          "articleNumber": "Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+          "displayOrder": 5
         }
       ],
-      "hasMultipleSources": false,
+      "hasMultipleSources": true,
       "primaryLinkTarget": "article-3-para-6",
       "definitionGroups": [
         {
@@ -13518,6 +13669,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+          "sources": [
+            {
+              "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+              "articleNumber": "Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -15831,6 +15999,17 @@
           "articleId": "what-does-qtspqts-mean",
           "articleNumber": "What does (Q)TSP/(Q)TS mean?",
           "displayOrder": 4
+        },
+        {
+          "definition": "A natural or a legal person who provides one or more trust services, either as a qualified or as a non-qualified trust service provider. Trust service providers (TSPs) form the backbone of the eIDAS trust infrastructure, offering services such as electronic signatures, seals, time stamps, registered delivery, website authentication certificates, and electronic attestations of attributes. Their obligations include: (1) taking appropriate technical and organisational measures to manage risks to the security of their services, and notifying the supervisory body and affected persons of any security breach without undue delay (eIDAS Art. 19); (2) where qualified, undergoing mandatory conformity assessments at least every 24 months (eIDAS Art. 20); (3) ensuring that qualified trust services are listed in national Trusted Lists (eIDAS Art. 22); (4) verifying the identity of applicants before issuing qualified certificates (eIDAS Art. 24(1)); and (5) in the EUDI Wallet context, identifying themselves to wallet units using wallet-relying party access certificates when issuing attestations (CIR 2024/2977 Art. 4(2)). Non-qualified TSPs are subject to lighter supervisory requirements but must still comply with baseline security and notification obligations. The distinction between qualified and non-qualified status determines the legal effect of services provided (eIDAS Art. 24 vs. Art. 19).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art. 3(19), 19-24; CIR 2024/2977 Art. 4(2); ARF Annex 1 Section A.2",
+          "articleNumber": "Synthesized from eIDAS Art. 3(19), 19-24; CIR 2024/2977 Art. 4(2); ARF Annex 1 Section A.2",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -15883,6 +16062,23 @@
               "articleId": "what-does-qtspqts-mean",
               "articleNumber": "What does (Q)TSP/(Q)TS mean?",
               "displayOrder": 4
+            }
+          ],
+          "isVariant": true
+        },
+        {
+          "definition": "A natural or a legal person who provides one or more trust services, either as a qualified or as a non-qualified trust service provider. Trust service providers (TSPs) form the backbone of the eIDAS trust infrastructure, offering services such as electronic signatures, seals, time stamps, registered delivery, website authentication certificates, and electronic attestations of attributes. Their obligations include: (1) taking appropriate technical and organisational measures to manage risks to the security of their services, and notifying the supervisory body and affected persons of any security breach without undue delay (eIDAS Art. 19); (2) where qualified, undergoing mandatory conformity assessments at least every 24 months (eIDAS Art. 20); (3) ensuring that qualified trust services are listed in national Trusted Lists (eIDAS Art. 22); (4) verifying the identity of applicants before issuing qualified certificates (eIDAS Art. 24(1)); and (5) in the EUDI Wallet context, identifying themselves to wallet units using wallet-relying party access certificates when issuing attestations (CIR 2024/2977 Art. 4(2)). Non-qualified TSPs are subject to lighter supervisory requirements but must still comply with baseline security and notification obligations. The distinction between qualified and non-qualified status determines the legal effect of services provided (eIDAS Art. 24 vs. Art. 19).",
+          "sources": [
+            {
+              "definition": "A natural or a legal person who provides one or more trust services, either as a qualified or as a non-qualified trust service provider. Trust service providers (TSPs) form the backbone of the eIDAS trust infrastructure, offering services such as electronic signatures, seals, time stamps, registered delivery, website authentication certificates, and electronic attestations of attributes. Their obligations include: (1) taking appropriate technical and organisational measures to manage risks to the security of their services, and notifying the supervisory body and affected persons of any security breach without undue delay (eIDAS Art. 19); (2) where qualified, undergoing mandatory conformity assessments at least every 24 months (eIDAS Art. 20); (3) ensuring that qualified trust services are listed in national Trusted Lists (eIDAS Art. 22); (4) verifying the identity of applicants before issuing qualified certificates (eIDAS Art. 24(1)); and (5) in the EUDI Wallet context, identifying themselves to wallet units using wallet-relying party access certificates when issuing attestations (CIR 2024/2977 Art. 4(2)). Non-qualified TSPs are subject to lighter supervisory requirements but must still comply with baseline security and notification obligations. The distinction between qualified and non-qualified status determines the legal effect of services provided (eIDAS Art. 24 vs. Art. 19).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art. 3(19), 19-24; CIR 2024/2977 Art. 4(2); ARF Annex 1 Section A.2",
+              "articleNumber": "Synthesized from eIDAS Art. 3(19), 19-24; CIR 2024/2977 Art. 4(2); ARF Annex 1 Section A.2",
+              "displayOrder": 5
             }
           ],
           "isVariant": true
@@ -16776,6 +16972,17 @@
           "articleId": "article-2-para-8",
           "articleNumber": "2(8)",
           "displayOrder": 2
+        },
+        {
+          "definition": "The application installed and configured on a wallet user's device or environment, which is part of a wallet unit (together with a WSCA and WSCD), and that the wallet user uses to interact with the wallet unit. The wallet instance serves as the primary interface for all wallet operations: (1) it presents wallet unit attestations (WUAs) to relying parties, PID providers, and attestation providers for trust establishment (CIR 2024/2982 Art. 3); (2) it manages the issuance flow for receiving person identification data and electronic attestations of attributes, verifying that issuers hold valid wallet-relying party access certificates before accepting credentials (CIR 2024/2982 Art. 4(2)); (3) it handles attribute presentation (both remote and proximity), ensuring selective disclosure and user consent (CIR 2024/2982 Art. 5); (4) it interfaces with the WSCA, which in turn uses the WSCD, to perform cryptographic operations such as signing, key generation, and proof-of-possession (CIR 2024/2979 Art. 4-5); (5) it maintains the transaction dashboard where users review interaction logs and manage their credentials (CIR 2024/2980); and (6) it supports qualified electronic signature and seal creation by interfacing with local, external, or remote QSCDs (CIR 2024/2979 Art. 12). The wallet provider must ensure the integrity, authenticity, and confidentiality of communication between wallet instances and WSCAs (CIR 2024/2979 Art. 4(2)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 4-5, 10, 12; CIR 2024/2980 Art. 3-5; CIR 2024/2982 Art. 3-7; ARF Annex 1 Section A.3",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 4-5, 10, 12; CIR 2024/2980 Art. 3-5; CIR 2024/2982 Art. 3-7; ARF Annex 1 Section A.3",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -16891,6 +17098,23 @@
             }
           ],
           "isVariant": true
+        },
+        {
+          "definition": "The application installed and configured on a wallet user's device or environment, which is part of a wallet unit (together with a WSCA and WSCD), and that the wallet user uses to interact with the wallet unit. The wallet instance serves as the primary interface for all wallet operations: (1) it presents wallet unit attestations (WUAs) to relying parties, PID providers, and attestation providers for trust establishment (CIR 2024/2982 Art. 3); (2) it manages the issuance flow for receiving person identification data and electronic attestations of attributes, verifying that issuers hold valid wallet-relying party access certificates before accepting credentials (CIR 2024/2982 Art. 4(2)); (3) it handles attribute presentation (both remote and proximity), ensuring selective disclosure and user consent (CIR 2024/2982 Art. 5); (4) it interfaces with the WSCA, which in turn uses the WSCD, to perform cryptographic operations such as signing, key generation, and proof-of-possession (CIR 2024/2979 Art. 4-5); (5) it maintains the transaction dashboard where users review interaction logs and manage their credentials (CIR 2024/2980); and (6) it supports qualified electronic signature and seal creation by interfacing with local, external, or remote QSCDs (CIR 2024/2979 Art. 12). The wallet provider must ensure the integrity, authenticity, and confidentiality of communication between wallet instances and WSCAs (CIR 2024/2979 Art. 4(2)).",
+          "sources": [
+            {
+              "definition": "The application installed and configured on a wallet user's device or environment, which is part of a wallet unit (together with a WSCA and WSCD), and that the wallet user uses to interact with the wallet unit. The wallet instance serves as the primary interface for all wallet operations: (1) it presents wallet unit attestations (WUAs) to relying parties, PID providers, and attestation providers for trust establishment (CIR 2024/2982 Art. 3); (2) it manages the issuance flow for receiving person identification data and electronic attestations of attributes, verifying that issuers hold valid wallet-relying party access certificates before accepting credentials (CIR 2024/2982 Art. 4(2)); (3) it handles attribute presentation (both remote and proximity), ensuring selective disclosure and user consent (CIR 2024/2982 Art. 5); (4) it interfaces with the WSCA, which in turn uses the WSCD, to perform cryptographic operations such as signing, key generation, and proof-of-possession (CIR 2024/2979 Art. 4-5); (5) it maintains the transaction dashboard where users review interaction logs and manage their credentials (CIR 2024/2980); and (6) it supports qualified electronic signature and seal creation by interfacing with local, external, or remote QSCDs (CIR 2024/2979 Art. 12). The wallet provider must ensure the integrity, authenticity, and confidentiality of communication between wallet instances and WSCAs (CIR 2024/2979 Art. 4(2)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 4-5, 10, 12; CIR 2024/2980 Art. 3-5; CIR 2024/2982 Art. 3-7; ARF Annex 1 Section A.3",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 4-5, 10, 12; CIR 2024/2980 Art. 3-5; CIR 2024/2982 Art. 3-7; ARF Annex 1 Section A.3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -17003,6 +17227,17 @@
           "articleId": "article-2-para-11",
           "articleNumber": "2(11)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A natural or legal person who provides wallet solutions and bears end-to-end responsibility for the lifecycle of every wallet unit issued under those solutions. Wallet providers must obtain certification of their wallet solutions under national certification schemes before deployment (CIR 2024/2981). Their core obligations include: (1) issuing and signing wallet unit attestations (WUAs) for each wallet unit, using certificates listed in the Trusted List (CIR 2024/2979 Art. 3(2), 6); (2) ensuring the integrity, authenticity, and confidentiality of communication between wallet instances and wallet secure cryptographic applications (CIR 2024/2979 Art. 4(2)); (3) guaranteeing that wallet units support standard protocols and interfaces for PID and EAA issuance, attribute presentation (both remote and proximity), selective disclosure, data erasure requests, and relying party reporting (CIR 2024/2982 Art. 3-8); (4) maintaining transaction logs with integrity, authenticity, and confidentiality, and enabling wallet users to export logged information (CIR 2024/2979 Art. 10); (5) being the sole entity capable of revoking WUAs, with obligations to publish revocation status in a privacy-preserving manner and inform affected users within 24 hours (CIR 2024/2979 Art. 7); (6) ensuring wallet users who are natural persons have free-of-charge access to signature creation applications for non-professional purposes (CIR 2024/2979 Art. 12(3)); and (7) processing embedded disclosure policies attached to attestations (CIR 2024/2979 Art. 11).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 3-12; CIR 2024/2981 Art. 3-5; CIR 2024/2982 Art. 3-8; CIR 2025/0847 Art. 5; eIDAS Art. 5a",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 3-12; CIR 2024/2981 Art. 3-5; CIR 2024/2982 Art. 3-8; CIR 2025/0847 Art. 5; eIDAS Art. 5a",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -17112,6 +17347,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A natural or legal person who provides wallet solutions and bears end-to-end responsibility for the lifecycle of every wallet unit issued under those solutions. Wallet providers must obtain certification of their wallet solutions under national certification schemes before deployment (CIR 2024/2981). Their core obligations include: (1) issuing and signing wallet unit attestations (WUAs) for each wallet unit, using certificates listed in the Trusted List (CIR 2024/2979 Art. 3(2), 6); (2) ensuring the integrity, authenticity, and confidentiality of communication between wallet instances and wallet secure cryptographic applications (CIR 2024/2979 Art. 4(2)); (3) guaranteeing that wallet units support standard protocols and interfaces for PID and EAA issuance, attribute presentation (both remote and proximity), selective disclosure, data erasure requests, and relying party reporting (CIR 2024/2982 Art. 3-8); (4) maintaining transaction logs with integrity, authenticity, and confidentiality, and enabling wallet users to export logged information (CIR 2024/2979 Art. 10); (5) being the sole entity capable of revoking WUAs, with obligations to publish revocation status in a privacy-preserving manner and inform affected users within 24 hours (CIR 2024/2979 Art. 7); (6) ensuring wallet users who are natural persons have free-of-charge access to signature creation applications for non-professional purposes (CIR 2024/2979 Art. 12(3)); and (7) processing embedded disclosure policies attached to attestations (CIR 2024/2979 Art. 11).",
+          "sources": [
+            {
+              "definition": "A natural or legal person who provides wallet solutions and bears end-to-end responsibility for the lifecycle of every wallet unit issued under those solutions. Wallet providers must obtain certification of their wallet solutions under national certification schemes before deployment (CIR 2024/2981). Their core obligations include: (1) issuing and signing wallet unit attestations (WUAs) for each wallet unit, using certificates listed in the Trusted List (CIR 2024/2979 Art. 3(2), 6); (2) ensuring the integrity, authenticity, and confidentiality of communication between wallet instances and wallet secure cryptographic applications (CIR 2024/2979 Art. 4(2)); (3) guaranteeing that wallet units support standard protocols and interfaces for PID and EAA issuance, attribute presentation (both remote and proximity), selective disclosure, data erasure requests, and relying party reporting (CIR 2024/2982 Art. 3-8); (4) maintaining transaction logs with integrity, authenticity, and confidentiality, and enabling wallet users to export logged information (CIR 2024/2979 Art. 10); (5) being the sole entity capable of revoking WUAs, with obligations to publish revocation status in a privacy-preserving manner and inform affected users within 24 hours (CIR 2024/2979 Art. 7); (6) ensuring wallet users who are natural persons have free-of-charge access to signature creation applications for non-professional purposes (CIR 2024/2979 Art. 12(3)); and (7) processing embedded disclosure policies attached to attestations (CIR 2024/2979 Art. 11).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 3-12; CIR 2024/2981 Art. 3-5; CIR 2024/2982 Art. 3-8; CIR 2025/0847 Art. 5; eIDAS Art. 5a",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 3-12; CIR 2024/2981 Art. 3-5; CIR 2024/2982 Art. 3-8; CIR 2025/0847 Art. 5; eIDAS Art. 5a",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
@@ -18257,6 +18509,17 @@
           "articleId": "article-2-para-2",
           "articleNumber": "2(2)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A user who is in control of the wallet unit — the natural or legal person (or a natural person representing another) who operates a wallet unit to store, manage, and present person identification data and electronic attestations of attributes. The wallet user's rights and protections include: (1) full control over which attributes are shared with relying parties, with the ability to selectively disclose a subset of attributes from any PID or attestation (CIR 2024/2982 Art. 5(4)); (2) the right to request erasure of personal data from relying parties via standardised wallet interfaces (CIR 2024/2982 Art. 6, GDPR Art. 17); (3) the ability to report relying parties to data protection authorities directly through the wallet dashboard (CIR 2024/2982 Art. 7); (4) access to a transaction log recording all interactions, with the ability to export logged data (CIR 2024/2979 Art. 10); (5) transparent notification within 24 hours if their wallet unit attestation is revoked by the wallet provider, including the reason and consequences (CIR 2024/2979 Art. 7(3)); (6) the right to verify the identity and registration status of relying parties before sharing data (eIDAS Art. 5a(4)(a), Art. 5b(8)); and (7) free-of-charge access to qualified electronic signature creation for non-professional purposes (CIR 2024/2979 Art. 12(3), eIDAS Art. 5a(2)).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 7(3), 10, 12(3); CIR 2024/2982 Art. 5(4), 6, 7; eIDAS Art. 5a(2), 5a(4), 5a(16); ARF Annex 1 Section A.3",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 7(3), 10, 12(3); CIR 2024/2982 Art. 5(4), 6, 7; eIDAS Art. 5a(2), 5a(4), 5a(16); ARF Annex 1 Section A.3",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -18366,6 +18629,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A user who is in control of the wallet unit — the natural or legal person (or a natural person representing another) who operates a wallet unit to store, manage, and present person identification data and electronic attestations of attributes. The wallet user's rights and protections include: (1) full control over which attributes are shared with relying parties, with the ability to selectively disclose a subset of attributes from any PID or attestation (CIR 2024/2982 Art. 5(4)); (2) the right to request erasure of personal data from relying parties via standardised wallet interfaces (CIR 2024/2982 Art. 6, GDPR Art. 17); (3) the ability to report relying parties to data protection authorities directly through the wallet dashboard (CIR 2024/2982 Art. 7); (4) access to a transaction log recording all interactions, with the ability to export logged data (CIR 2024/2979 Art. 10); (5) transparent notification within 24 hours if their wallet unit attestation is revoked by the wallet provider, including the reason and consequences (CIR 2024/2979 Art. 7(3)); (6) the right to verify the identity and registration status of relying parties before sharing data (eIDAS Art. 5a(4)(a), Art. 5b(8)); and (7) free-of-charge access to qualified electronic signature creation for non-professional purposes (CIR 2024/2979 Art. 12(3), eIDAS Art. 5a(2)).",
+          "sources": [
+            {
+              "definition": "A user who is in control of the wallet unit — the natural or legal person (or a natural person representing another) who operates a wallet unit to store, manage, and present person identification data and electronic attestations of attributes. The wallet user's rights and protections include: (1) full control over which attributes are shared with relying parties, with the ability to selectively disclose a subset of attributes from any PID or attestation (CIR 2024/2982 Art. 5(4)); (2) the right to request erasure of personal data from relying parties via standardised wallet interfaces (CIR 2024/2982 Art. 6, GDPR Art. 17); (3) the ability to report relying parties to data protection authorities directly through the wallet dashboard (CIR 2024/2982 Art. 7); (4) access to a transaction log recording all interactions, with the ability to export logged data (CIR 2024/2979 Art. 10); (5) transparent notification within 24 hours if their wallet unit attestation is revoked by the wallet provider, including the reason and consequences (CIR 2024/2979 Art. 7(3)); (6) the right to verify the identity and registration status of relying parties before sharing data (eIDAS Art. 5a(4)(a), Art. 5b(8)); and (7) free-of-charge access to qualified electronic signature creation for non-professional purposes (CIR 2024/2979 Art. 12(3), eIDAS Art. 5a(2)).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 7(3), 10, 12(3); CIR 2024/2982 Art. 5(4), 6, 7; eIDAS Art. 5a(2), 5a(4), 5a(16); ARF Annex 1 Section A.3",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 7(3), 10, 12(3); CIR 2024/2982 Art. 5(4), 6, 7; eIDAS Art. 5a(2), 5a(4), 5a(16); ARF Annex 1 Section A.3",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [
