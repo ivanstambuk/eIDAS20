@@ -181,9 +181,10 @@ terms:
       environment, which is part of a wallet unit (together with a WSCA and
       WSCD), and that the wallet user uses to interact with the wallet unit.
       The wallet instance serves as the primary interface for all wallet
-      operations: (1) it presents wallet unit attestations (WUAs) to relying
-      parties, PID providers, and attestation providers for trust establishment
-      (CIR 2024/2982 Art. 3); (2) it manages the issuance flow for receiving
+      operations: (1) it presents wallet unit attestations (WUAs) to PID
+      providers and attestation providers during issuance for trust
+      establishment (CIR 2024/2982 Art. 3) — WUAs are not presented to
+      relying parties (ARF §6.5.3.4, WUA_24); (2) it manages the issuance flow for receiving
       person identification data and electronic attestations of attributes,
       verifying that issuers hold valid wallet-relying party access certificates
       before accepting credentials (CIR 2024/2982 Art. 4(2)); (3) it handles
@@ -650,9 +651,11 @@ terms:
       the wallet-relying party access certificate presented by relying
       parties or issuers, checking its authenticity, validity period, and
       revocation status before proceeding (CIR 2024/2982 Art. 4(2), 5(2));
-      (2) WUA validation — relying parties and issuers validate the wallet
-      unit attestation to confirm they are interacting with a genuine,
-      certified wallet unit (CIR 2024/2982 Art. 3); (3) attestation
+      (2) WUA validation — PID providers and attestation providers validate
+      the wallet unit attestation during issuance to confirm they are
+      interacting with a genuine, certified wallet unit (CIR 2024/2982
+      Art. 3); relying parties do not receive or validate WUAs directly but
+      rely on transitive trust through the issuer's verification; (3) attestation
       validation — relying parties verify the cryptographic binding,
       issuer signatures/seals, validity period, and revocation status of
       PIDs and EAAs received from wallets (eIDAS Art. 5b(9), CIR 2024/2982

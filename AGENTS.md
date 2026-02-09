@@ -409,6 +409,58 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 16. Custom Dictionary Quality Checklist (MANDATORY — When Updating custom-dictionary.yaml)
+
+**Before committing any definition change, verify:**
+
+1. **Source authority hierarchy** — Cross-check definition against sources in authority order:
+   - **CIR (Implementing Acts)** → highest authority (legally binding)
+   - **ARF main document** → architectural authority
+   - **Technical Specifications (TS)** → technical authority (may supersede Discussion Papers)
+   - **Discussion Papers (Topics A–G)** → advisory only (HLRs may be superseded by TS versions)
+
+2. **Cascading impact scan** — After changing a definition, run:
+   ```bash
+   grep -n "<changed term>" docs-portal/scripts/custom-dictionary.yaml
+   ```
+   Fix any other definitions that reference the changed concept incorrectly.
+
+3. **Vague term avoidance** — Avoid imprecise terms that have no formal ARF definition. Known offenders:
+   - ❌ "transaction" → use "presentation", "issuance session", or "interaction"
+   - ❌ "process" (when vague) → be specific about what process
+
+4. **Cross-reference consistency** — If definition A refers to definition B, verify B exists and is consistent.
+
+**Why this matters:** The WUA definition required 3 successive commits because the Discussion Paper (Topic C) was treated as ground truth, but TS3 v1.0 had superseded its presentation WUA references. A cascading scan then found 2 more definitions (wallet instance, validation) still referencing the old incorrect behaviour.
+
+---
+
+### 17. WUA Source Authority (Reference)
+
+**For Wallet Unit Attestation topics:**
+- **TS3** (Technical Specification 3) is the definitive technical source
+- TS3 v1.0 (Aug 2025) explicitly **removed references to presentation WUA** — WUAs are issuance-only
+- The Discussion Paper (Topic C) HLRs (WUA_08b/08c) suggesting RP presentation were **superseded**
+- The ARF main document §6.5.3.4 confirms: "the Wallet Unit presents the WUA only to PID Providers and Attestation Providers, but not to Relying Parties"
+
+**Key facts:**
+- WUAs are NOT presented to Relying Parties
+- RPs verify the Wallet Unit through **transitive trust** (issuer signature + device key binding + cascaded revocation)
+- WUA_24: data related to the User device must not be released to RPs
+
+---
+
+### 18. Terminal Hygiene (Awareness)
+
+**When git commands return no output or hang indefinitely:**
+1. Check for stale terminal sessions from previous operations
+2. Clear git lock if needed: `rm -f .git/index.lock`
+3. Kill stuck background terminals before retrying
+
+**Root cause:** Stale terminal sessions from long-running or interrupted commands can block subsequent git operations.
+
+---
+
 ## Project Structure
 
 ```
