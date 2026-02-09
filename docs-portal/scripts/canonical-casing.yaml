@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Canonical Casing Map — Terminology Display Name Overrides
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# PURPOSE:
+# The build pipeline applies auto-Title Case to all term display names.
+# This file provides OVERRIDES for terms that need special casing:
+#   - Acronyms that must stay uppercase (e.g., AdES, ASiC, CAdES)
+#   - EU legal phrases with specific lowercase conventions
+#   - Compound terms with mixed casing
+#
+# FORMAT:
+#   term-id: "Display Name"
+#
+# The term-id is the normalized ID used in terminology.json (lowercase,
+# hyphens instead of spaces). Only list terms that need DIFFERENT casing
+# than what auto-Title Case would produce.
+#
+# Auto-Title Case rules:
+#   1. Capitalize first letter of each word
+#   2. Keep lowercase: a, an, and, as, at, but, by, for, from, if, in, into,
+#      nor, of, on, or, per, so, the, to, up, with, yet (unless first word)
+#   3. Keep ALL-CAPS words unchanged (e.g., ICT, EU, GDPR)
+#
+# EXAMPLES:
+#   "wallet unit attestation" → auto → "Wallet Unit Attestation" ✓ (no override needed)
+#   "ades" → auto → "Ades" ✗ → override: "AdES"
+#   "by way of derogation" → auto → "By Way of Derogation" ✗ → override: "By Way of Derogation" (actually OK)
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ─── Acronyms & technical identifiers ─────────────────────────────────────────
+# These have unusual capitalisation that auto-Title Case cannot produce
+
+ades: "AdES"
+ades-qc: "AdES/QC"
+asic: "ASiC"
+cades: "CAdES"
+xades: "XAdES"
+ce-marking: "CE Marking"
+teu: "TEU"
+tfeu: "TFEU"
+
+# ─── EU legal boilerplate phrases ─────────────────────────────────────────────
+# These are legal connectors that appear as terminology entries but should
+# preserve their conventional phrasing (mostly lowercase)
+
+by-way-of-derogation: "By Way of Derogation"
+shall-be-deemed: "Shall Be Deemed"
+where-applicable: "Where Applicable"
+without-prejudice-to: "Without Prejudice To"
+without-undue-delay: "Without Undue Delay"
+
+# ─── Compound terms with specific casing ──────────────────────────────────────
+# Terms where auto-Title Case gets it wrong or where we want specific styling
+
+sua-attestation: "SUA Attestation"
+certificate-authority: "Certificate Authority"
+certificate-policy: "Certificate Policy"
+trust-anchor: "Trust Anchor"
+trusted-list: "Trusted List"
+trusted-list-browser: "Trusted List Browser"
+third-country: "Third Country"
+strong-customer-authentication: "Strong Customer Authentication"
+verifier-wallet-unit: "Verifier Wallet Unit"
+
+# ─── ICT terms ────────────────────────────────────────────────────────────────
+critical-ict-third-party-service-provider: "Critical ICT Third-Party Service Provider"
+
+# ─── Terms with deliberate lowercase particles ───────────────────────────────
+# (auto-Title Case handles these correctly, but listed for documentation)
+# catalogue-of-attributes: "Catalogue of Attributes"
+# body-governed-by-public-law: "Body Governed by Public Law"

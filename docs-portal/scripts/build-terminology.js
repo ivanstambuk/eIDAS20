@@ -50,6 +50,10 @@ const ABBREVIATIONS_FILE = join(__dirname, 'abbreviations.yaml');
 // These terms blend into the terminology without "View Source" links
 const CUSTOM_DICTIONARY_FILE = join(__dirname, 'custom-dictionary.yaml');
 
+// Canonical casing overrides: maps term IDs to preferred display casing
+// Terms not in this file get auto-Title Case applied
+const CANONICAL_CASING_FILE = join(__dirname, 'canonical-casing.yaml');
+
 /**
  * Load human-friendly document titles from regulations-index.json
  * This provides shortTitle (e.g., "eIDAS 2.0 Regulation (Consolidated)") 
@@ -488,6 +492,90 @@ function loadAbbreviations() {
         console.warn('⚠️  Could not load abbreviations.yaml:', err.message);
         return new Map();
     }
+}
+
+/**
+ * Load canonical casing overrides from YAML file
+ * Maps term IDs to preferred display name casing
+ * 
+ * Returns: Map<termId, displayName>
+ */
+function loadCanonicalCasing() {
+    if (!existsSync(CANONICAL_CASING_FILE)) {
+        return new Map();
+    }
+
+    try {
+        const content = readFileSync(CANONICAL_CASING_FILE, 'utf-8');
+        const casings = new Map();
+
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim();
+
+            // Skip comments, empty lines, and section dividers
+            if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('─') || trimmed.startsWith('═')) continue;
+
+            // Parse "term-id: "Display Name"" format
+            const colonIndex = trimmed.indexOf(':');
+            if (colonIndex > 0) {
+                const termId = trimmed.substring(0, colonIndex).trim();
+                let displayName = trimmed.substring(colonIndex + 1).trim();
+
+                // Strip surrounding quotes
+                displayName = displayName.replace(/^["']|["']$/g, '');
+
+                if (termId && displayName) {
+                    casings.set(termId, displayName);
+                }
+            }
+        }
+
+        return casings;
+    } catch (err) {
+        console.warn('⚠️  Could not load canonical-casing.yaml:', err.message);
+        return new Map();
+    }
+}
+
+/**
+ * Apply Title Case to a term name
+ * Capitalises the first letter of each word, except for common
+ * prepositions/articles/conjunctions (unless first word).
+ *
+ * Words that are already ALL-CAPS (2+ chars) are left unchanged,
+ * preserving acronyms like ICT, EU, GDPR.
+ *
+ * @param {string} text — The raw term name
+ * @returns {string} — Title-cased term name
+ */
+function toTitleCase(text) {
+    // Lowercase words to skip (unless first word)
+    const MINOR_WORDS = new Set([
+        'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'from',
+        'if', 'in', 'into', 'nor', 'of', 'on', 'or', 'per', 'so',
+        'the', 'to', 'up', 'via', 'with', 'yet'
+    ]);
+
+    return text
+        .split(/\s+/)
+        .map((word, index) => {
+            // Keep ALL-CAPS words unchanged (acronyms: ICT, EU, GDPR)
+            if (word.length >= 2 && word === word.toUpperCase() && /^[A-Z]+$/.test(word)) {
+                return word;
+            }
+
+            const lower = word.toLowerCase();
+
+            // Minor words stay lowercase unless they are the first word
+            if (index > 0 && MINOR_WORDS.has(lower)) {
+                return lower;
+            }
+
+            // Capitalise first letter, lowercase the rest
+            // Handle hyphenated words: "third-party" → "Third-Party"
+            return lower.replace(/(^|-)([a-z])/g, (match, sep, char) => sep + char.toUpperCase());
+        })
+        .join(' ');
 }
 
 /**
@@ -965,6 +1053,47 @@ function build() {
 
     // Merge terms from multiple sources
     const mergedTerms = mergeTerms(allTerms, documentTitles);
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // CANONICAL CASING: Apply Title Case to term display names
+    //
+    // Legal definitions use lowercase (e.g., 'wallet unit attestation' means…)
+    // but display should use Title Case ("Wallet Unit Attestation").
+    //
+    // Strategy:
+    //   1. Load explicit overrides from canonical-casing.yaml
+    //   2. For all other terms, apply auto-Title Case
+    //   3. Overrides take priority (handles: AdES, CAdES, ICT, etc.)
+    // ═══════════════════════════════════════════════════════════════════════════
+    console.log('\n🔠 Applying canonical casing to term display names...');
+    const canonicalCasings = loadCanonicalCasing();
+    let overrideCount = 0;
+    let autoTitleCaseCount = 0;
+    let unchangedCount = 0;
+
+    for (const term of mergedTerms) {
+        const originalName = term.term;
+
+        if (canonicalCasings.has(term.id)) {
+            // Explicit override from canonical-casing.yaml
+            term.term = canonicalCasings.get(term.id);
+            if (term.term !== originalName) overrideCount++;
+            else unchangedCount++;
+        } else {
+            // Auto-Title Case
+            const titleCased = toTitleCase(originalName);
+            if (titleCased !== originalName) {
+                term.term = titleCased;
+                autoTitleCaseCount++;
+            } else {
+                unchangedCount++;
+            }
+        }
+    }
+
+    console.log(`   📋 Overrides from canonical-casing.yaml: ${overrideCount}`);
+    console.log(`   🔤 Auto-Title Cased: ${autoTitleCaseCount}`);
+    console.log(`   ✓  Already correct: ${unchangedCount}`);
 
     // Group sources by identical definition (DEC-058: Accordion Collapse UI)
     for (const term of mergedTerms) {
