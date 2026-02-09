@@ -1033,3 +1033,84 @@ requirements:
       - id: Q6
         text: "Do you implement 'Compliance by Environment' principles where session context (IP, wallet ID) is treated as personal data?"
         dimension: architecture
+
+  # ============================================================================
+  # VEND-CORE-043: OID4VP Conformance Testing
+  # Requirement: Validate product against OIDF conformance suite for OID4VP
+  # Added: 2026-02-09 (Stakeholder feedback Item 2)
+  # ============================================================================
+  VEND-CORE-043:
+    questions:
+      - id: Q1
+        text: "Which credential formats were tested against the OIDF OID4VP conformance suite — SD-JWT VC, ISO mDoc, or both?"
+        dimension: interoperability
+      - id: Q2
+        text: "Which version of the OID4VP specification was tested against (1.0 Final, ID2, draft-24)?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "Were both direct_post and direct_post.jwt (encrypted) response modes tested in the conformance suite?"
+        dimension: technical_implementation
+      - id: Q4
+        text: "Were both cross-device (QR code scanning) and same-device (app-to-app) presentation flows tested?"
+        dimension: capability
+      - id: Q5
+        text: "Was DCQL (Digital Credentials Query Language) support tested in addition to presentation_definition?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "Can you provide the OIDF conformance test results or report for OID4VP verification?"
+        dimension: compliance_evidence
+
+  # ============================================================================
+  # VEND-CORE-044: OID4VCI Conformance Testing
+  # Requirement: Validate product against OIDF conformance suite for OID4VCI
+  # Added: 2026-02-09 (Stakeholder feedback Item 2)
+  # ============================================================================
+  VEND-CORE-044:
+    questions:
+      - id: Q1
+        text: "Which credential formats were tested against the OIDF OID4VCI conformance suite — SD-JWT VC, ISO mDoc, or both?"
+        dimension: interoperability
+      - id: Q2
+        text: "Was OAuth 2.0 Attestation-Based Client Authentication tested as part of the conformance validation?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "Does the product support and test batch credential issuance flows in the conformance suite?"
+        dimension: capability
+      - id: Q4
+        text: "Does the product support deferred issuance (asynchronous credential delivery) and was this tested?"
+        dimension: capability
+      - id: Q5
+        text: "Can you provide the OIDF conformance test results or report for OID4VCI issuance?"
+        dimension: compliance_evidence
+
+  # ============================================================================
+  # VEND-CORE-045: TS5 RP Registration API
+  # Requirement: Implement the TS5 REST API for RP registration
+  # Added: 2026-02-09 (Stakeholder feedback Item 3)
+  # ============================================================================
+  VEND-CORE-045:
+    questions:
+      - id: Q1
+        text: "Does the product implement the full TS5 OpenAPI v3 specification, or a subset? Which endpoints are supported?"
+        dimension: technical_implementation
+      - id: Q2
+        text: "Does the product provide a management UI for registration data, or only the programmatic REST API?"
+        dimension: capability
+      - id: Q3
+        text: "Can the product register with multiple Member State registries simultaneously for cross-border operations?"
+        dimension: interoperability
+      - id: Q4
+        text: "Does the product validate JWS signatures on registry responses per IETF RFC 7515?"
+        dimension: security
+      - id: Q5
+        text: "Does the product support the full registration lifecycle — initial registration, updates, and de-registration?"
+        dimension: lifecycle
+      - id: Q6
+        text: "Does the product support configuring entitlements and sub-entitlements per Member State requirements?"
+        dimension: regulatory_variability
+      - id: Q7
+        text: "If the RP uses an intermediary, does the product correctly flag this in the registration data?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Does the product support automated registration renewal, or is manual intervention required?"
+        dimension: automation
