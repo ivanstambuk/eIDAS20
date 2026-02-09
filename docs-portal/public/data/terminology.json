@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-01-29T14:06:02.586Z",
+  "generated": "2026-02-09T19:47:06.346Z",
   "statistics": {
     "totalTerms": 359,
-    "totalDefinitions": 496,
+    "totalDefinitions": 497,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -11421,6 +11421,9 @@
       ],
       "domains": [
         "identity"
+      ],
+      "aliases": [
+        "PID Provider"
       ]
     },
     {
@@ -18057,6 +18060,17 @@
           "articleId": "article-2-para-10",
           "articleNumber": "2(10)",
           "displayOrder": 2
+        },
+        {
+          "definition": "A cryptographically signed or sealed data object, issued by the Wallet Provider for each Wallet Unit, that describes the components of the wallet unit and enables authentication and validation of those components. The WUA contains public keys whose corresponding private keys are protected by a WSCD, and is signed or sealed using a certificate listed in the Trusted List. It serves a dual trust function: (1) it is presented to PID Providers and Attestation Providers before issuance, enabling them to verify that they are issuing credentials to a genuine, certified wallet unit; and (2) it is presented to Relying Parties and other wallet units during attribute presentation, enabling them to verify the validity status of the wallet unit they are communicating with. Only the Wallet Provider may revoke a WUA, and privacy-preserving techniques (such as ephemeral attestations, batch issuance, or limited lifetimes) must be employed to ensure unlinkability across transactions.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from CIR 2024/2979 Art. 3(2), 6, 7, Rec. 8-9; CIR 2024/2982 Art. 3(8), 4(3)(b); CIR 2024/2977 Art. 3(9); CIR 2025/0847 Art. 5(1)",
+          "articleNumber": "Synthesized from CIR 2024/2979 Art. 3(2), 6, 7, Rec. 8-9; CIR 2024/2982 Art. 3(8), 4(3)(b); CIR 2024/2977 Art. 3(9); CIR 2025/0847 Art. 5(1)",
+          "displayOrder": 5
         }
       ],
       "hasMultipleSources": true,
@@ -18111,6 +18125,23 @@
             }
           ],
           "isVariant": false
+        },
+        {
+          "definition": "A cryptographically signed or sealed data object, issued by the Wallet Provider for each Wallet Unit, that describes the components of the wallet unit and enables authentication and validation of those components. The WUA contains public keys whose corresponding private keys are protected by a WSCD, and is signed or sealed using a certificate listed in the Trusted List. It serves a dual trust function: (1) it is presented to PID Providers and Attestation Providers before issuance, enabling them to verify that they are issuing credentials to a genuine, certified wallet unit; and (2) it is presented to Relying Parties and other wallet units during attribute presentation, enabling them to verify the validity status of the wallet unit they are communicating with. Only the Wallet Provider may revoke a WUA, and privacy-preserving techniques (such as ephemeral attestations, batch issuance, or limited lifetimes) must be employed to ensure unlinkability across transactions.",
+          "sources": [
+            {
+              "definition": "A cryptographically signed or sealed data object, issued by the Wallet Provider for each Wallet Unit, that describes the components of the wallet unit and enables authentication and validation of those components. The WUA contains public keys whose corresponding private keys are protected by a WSCD, and is signed or sealed using a certificate listed in the Trusted List. It serves a dual trust function: (1) it is presented to PID Providers and Attestation Providers before issuance, enabling them to verify that they are issuing credentials to a genuine, certified wallet unit; and (2) it is presented to Relying Parties and other wallet units during attribute presentation, enabling them to verify the validity status of the wallet unit they are communicating with. Only the Wallet Provider may revoke a WUA, and privacy-preserving techniques (such as ephemeral attestations, batch issuance, or limited lifetimes) must be employed to ensure unlinkability across transactions.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from CIR 2024/2979 Art. 3(2), 6, 7, Rec. 8-9; CIR 2024/2982 Art. 3(8), 4(3)(b); CIR 2024/2977 Art. 3(9); CIR 2025/0847 Art. 5(1)",
+              "articleNumber": "Synthesized from CIR 2024/2979 Art. 3(2), 6, 7, Rec. 8-9; CIR 2024/2982 Art. 3(8), 4(3)(b); CIR 2024/2977 Art. 3(9); CIR 2025/0847 Art. 5(1)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": true
         }
       ],
       "roles": [

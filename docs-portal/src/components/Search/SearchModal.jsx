@@ -132,6 +132,19 @@ function SearchResult({ result, query, onClick, isSemanticMode }) {
                 {isSemanticMode
                     ? result.sectionTitle
                     : highlightTerms(result.sectionTitle, query)}
+                {result.type === 'definition' && result.term && (() => {
+                    // Extract alias text from term field, preserving original casing
+                    // e.g., "relying party RP" → "RP", "provider of person identification data PID Provider" → "PID Provider"
+                    const termName = (result.sectionTitle || '').toLowerCase();
+                    const termField = result.term || '';
+                    // Strip the sectionTitle prefix (case-insensitive) to get the alias portion
+                    const aliasText = termField.toLowerCase().startsWith(termName)
+                        ? termField.substring(termName.length).trim()
+                        : '';
+                    return aliasText
+                        ? <span className="search-result-alias"> ({aliasText})</span>
+                        : null;
+                })()}
             </div>
             <div className="search-result-snippet">
                 {isSemanticMode

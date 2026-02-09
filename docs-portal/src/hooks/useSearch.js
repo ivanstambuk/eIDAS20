@@ -99,12 +99,29 @@ export function useSearch() {
         setIsSearching(true);
 
         try {
-            const searchResults = await search(searchDb, {
+            const DISPLAY_LIMIT = 20;
+
+            // ════════════════════════════════════════════════════════════════
+            // DUAL-SEARCH STRATEGY
+            //
+            // 1. FUZZY SEARCH: Standard Orama prefix/stemmed search across
+            //    all fields → general results (may miss terminology aliases)
+            // 2. EXACT SEARCH: Deterministic exact-token search on the `term`
+            //    field only → guarantees terminology entries with matching
+            //    aliases (e.g. "RP" in "relying party RP") are found
+            //
+            // This avoids the probabilistic "fetch more and hope" pattern.
+            // Orama's `exact: true` disables prefix expansion, so "RP" will
+            // match the exact token "rp" but NOT "rpi" (from "RPI_06").
+            // ════════════════════════════════════════════════════════════════
+
+            // Search 1: Normal fuzzy search (prefix + stemming enabled)
+            const fuzzyResults = await search(searchDb, {
                 term: searchQuery,
                 properties: ['term', 'content', 'sectionTitle', 'docTitle', 'section'],
-                limit: 20,
+                limit: DISPLAY_LIMIT,
                 boost: {
-                    term: 10,           // Terminology definitions: 10x boost
+                    term: 10,
                     sectionTitle: 3,
                     section: 2,
                     docTitle: 1.5,
@@ -112,18 +129,43 @@ export function useSearch() {
                 },
             });
 
-            // ════════════════════════════════════════════════════════════════════════════
+            // Search 2: Exact-match search on terminology aliases
+            // Only searches the `term` field (which contains aliases like "RP")
+            // with exact: true to disable prefix expansion
+            const exactResults = await search(searchDb, {
+                term: searchQuery,
+                properties: ['term'],
+                exact: true,
+                limit: 5,
+            });
+
+            // Merge: start with exact hits, then add fuzzy hits (deduplicating)
+            const seenIds = new Set();
+            const mergedHits = [];
+
+            // Exact hits first (these are the deterministic alias matches)
+            for (const hit of exactResults.hits) {
+                if (!seenIds.has(hit.document.id)) {
+                    seenIds.add(hit.document.id);
+                    mergedHits.push({ ...hit, isExactAliasMatch: true });
+                }
+            }
+
+            // Then fuzzy hits
+            for (const hit of fuzzyResults.hits) {
+                if (!seenIds.has(hit.document.id)) {
+                    seenIds.add(hit.document.id);
+                    mergedHits.push({ ...hit, isExactAliasMatch: false });
+                }
+            }
+
+            // ════════════════════════════════════════════════════════════════
             // POST-ORAMA RANKING: Apply exact match and multi-source boosts
             // 
-            // Orama's tokenized search may rank partial matches higher than exact matches.
-            // For example, searching "digital signature" might rank "electronic signature"
-            // higher because "signature" appears more frequently in the corpus.
-            // 
-            // We fix this by applying post-search boosts:
-            // 1. EXACT MATCH BOOST: If query exactly matches a term name → 100x score
-            // 2. PREFIX MATCH BOOST: If query is a prefix of term name → 10x score
-            // 3. MULTI-SOURCE BOOST: Terms from multiple sources → 1.5x score
-            // ════════════════════════════════════════════════════════════════════════════
+            // 1. EXACT MATCH BOOST: query matches term name or alias → 100x
+            // 2. PREFIX MATCH BOOST: query is a prefix of term name → 10x
+            // 3. MULTI-SOURCE BOOST: Terms from multiple sources → 1.5x
+            // ════════════════════════════════════════════════════════════════
             const EXACT_MATCH_BOOST = 100;
             const PREFIX_MATCH_BOOST = 10;
             const MULTI_SOURCE_BOOST = 1.5;
@@ -131,7 +173,7 @@ export function useSearch() {
             const normalizedQuery = searchQuery.toLowerCase().trim();
 
             // Transform results for display and apply boosts
-            const transformedResults = searchResults.hits.map((hit) => {
+            const transformedResults = mergedHits.map((hit) => {
                 const sourceCount = hit.document.sourceCount || 1;
                 const isMultiSource = sourceCount > 1;
                 let boostedScore = hit.score;
@@ -146,6 +188,22 @@ export function useSearch() {
                     } else if (termName.startsWith(normalizedQuery)) {
                         // Prefix match: "digital" query matches "digital signature" term
                         boostedScore *= PREFIX_MATCH_BOOST;
+                    } else if (hit.isExactAliasMatch && hit.document.type === 'definition') {
+                        // Deterministic alias match via exact search
+                        // e.g., "RP" query → exact match in term field "relying party RP"
+                        boostedScore *= EXACT_MATCH_BOOST;
+                    } else if (hit.document.term) {
+                        // Fallback: check aliases in term field for fuzzy results
+                        const termField = hit.document.term.toLowerCase();
+                        const aliasTokens = termField
+                            .replace(termName, '')
+                            .trim()
+                            .split(/\s+/)
+                            .filter(Boolean);
+
+                        if (aliasTokens.some(alias => alias === normalizedQuery)) {
+                            boostedScore *= EXACT_MATCH_BOOST;
+                        }
                     }
                 }
 
@@ -158,6 +216,7 @@ export function useSearch() {
                     id: hit.document.id,
                     slug: hit.document.slug,
                     type: hit.document.type,
+                    term: hit.document.term,
                     docTitle: hit.document.docTitle,
                     section: hit.document.section,
                     sectionTitle: hit.document.sectionTitle,
@@ -169,9 +228,10 @@ export function useSearch() {
             });
 
             // Re-sort by adjusted score (boosts may have changed order)
+            // then trim to display limit
             transformedResults.sort((a, b) => b.score - a.score);
 
-            setResults(transformedResults);
+            setResults(transformedResults.slice(0, DISPLAY_LIMIT));
         } catch (err) {
             console.error('Search error:', err);
             setError(err.message);

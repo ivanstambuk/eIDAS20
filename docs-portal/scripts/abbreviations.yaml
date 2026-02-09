@@ -34,6 +34,7 @@ QTSP: qualified-trust-service-provider
 # Person Identification Data
 # ═══════════════════════════════════════════════════════════════════════════════
 PID: person-identification-data
+PID Provider: provider-of-person-identification-data
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # European Digital Identity Wallet
