@@ -949,6 +949,20 @@ requirements:
       is covered by separate ISO 18013-6 lab-based test methods, which are 
       outside the scope of this requirement.
 
+      Clarification questions for vendor evaluation:
+
+      1. Credential formats tested: Which formats were tested — SD-JWT VC, 
+         ISO mDoc, or both?
+      2. Spec version: Which version of the OID4VP spec was tested against 
+         (1.0 Final, ID2, draft-24)?
+      3. Response modes: Were both direct_post and direct_post.jwt 
+         (encrypted) response modes tested?
+      4. Flow types: Were both cross-device (QR code) and same-device flows 
+         tested?
+      5. Query language: Was DCQL query support tested in addition to 
+         presentation_definition?
+      6. Test evidence: Can you provide the conformance test results/report?
+
       References:
       - OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/
       - OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/
@@ -997,7 +1011,83 @@ requirements:
       test plans. The requirement is for ongoing conformance, not a one-time 
       certification.
 
+      Clarification questions for vendor evaluation:
+
+      1. Credential formats tested: Which formats were tested — SD-JWT VC, 
+         ISO mDoc, or both?
+      2. Client authentication: Was OAuth 2.0 Attestation-Based Client 
+         Authentication tested?
+      3. Batch issuance: Does the product support and test batch credential 
+         issuance flows?
+      4. Deferred issuance: Does the product support deferred issuance 
+         (async credential delivery)?
+      5. Test evidence: Can you provide the conformance test results/report?
+
       References:
       - OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/
       - Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/
+    obligation: MUST
+  - id: VEND-CORE-045
+    category: registration
+    requirement: The product must implement the TS5 REST API for RP registration information exchange with Member State registries
+    explanation: |
+      The Technical Specification TS5 ("Common Formats and API for RP 
+      Registration Information", EC TS05 V1.0) defines the standardized REST 
+      API and data formats for exchanging registration information between 
+      Relying Parties and Member State registries.
+
+      Key technical requirements:
+      - REST API published per OpenAPI version 3 specification
+      - JSON data format for registration data exchange
+      - JWS signatures (IETF RFC 7515) for signed output data integrity
+      - Public read access for Registry API read methods
+      - Support for query parameters: official/business registration number, 
+        company name, privacy policy URL, entitlements (including 
+        sub-entitlements defined by Member States), and intermediary flag
+
+      The product must implement this API to enable RPs to register with 
+      Member State registries in a standardized, interoperable manner as 
+      required by Implementing Regulation 2025/848.
+    legalBasis:
+      regulation: 2025/848
+      article: Article 3
+      paragraph: "1"
+    legalText: |
+      Member States shall set up human and machine-readable interfaces that 
+      meet the technical specifications for broad access and interoperability 
+      for the registration of wallet-relying parties.
+    arfReference:
+      topic: Topic 27
+      hlr: RPA_01
+    roles: [relying_party]
+    productCategories: [connector]
+    deadline: "2027-11-21"
+    notes: |
+      Derived from stakeholder feedback (2026-02-09, Item 3). TS5 defines the 
+      technical interface that connector products must implement to enable 
+      their RP customers to register with Member State registries.
+
+      Clarification questions for vendor evaluation:
+
+      1. API implementation scope: Does the product implement the full TS5 
+         OpenAPI v3 specification, or a subset? Which endpoints are supported?
+      2. Management UI: Does the product provide a management UI for 
+         registration data, or only the programmatic API?
+      3. Multi-Member-State support: Can the product register with multiple 
+         Member State registries simultaneously (for cross-border operations)?
+      4. JWS verification: Does the product validate JWS signatures on 
+         registry responses per IETF RFC 7515?
+      5. Registration lifecycle: Does the product support the full 
+         registration lifecycle — initial registration, updates, and 
+         de-registration?
+      6. Entitlement management: Does the product support configuring 
+         entitlements and sub-entitlements per Member State requirements?
+      7. Intermediary flag: If the RP uses an intermediary, does the product 
+         correctly flag this in the registration data?
+      8. Automated renewal: Does the product support automated registration 
+         renewal, or is manual intervention required?
+
+      References:
+      - TS5 specification: EC TS05 V1.0 (2025-06)
+      - Legal basis: CIR (EU) 2025/848 (registration of wallet-relying parties)
     obligation: MUST

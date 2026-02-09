@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-09T22:59:41.128Z",
+  "generatedAt": "2026-02-09T23:18:49.509Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1806,7 +1806,7 @@
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
-      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OIDF \nconformance suite is a free, open-source tool — there is no cost barrier \nto running these tests. Vendors claiming OID4VP support without \nconformance test validation represent a significant interoperability risk.\n\nThe OIDF suite covers both SD-JWT VC and ISO mDoc credential formats \nwithin the same test infrastructure. ISO 18013-5 proximity (BLE) testing \nis covered by separate ISO 18013-6 lab-based test methods, which are \noutside the scope of this requirement.\n\nReferences:\n- OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/\n- OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OIDF \nconformance suite is a free, open-source tool — there is no cost barrier \nto running these tests. Vendors claiming OID4VP support without \nconformance test validation represent a significant interoperability risk.\n\nThe OIDF suite covers both SD-JWT VC and ISO mDoc credential formats \nwithin the same test infrastructure. ISO 18013-5 proximity (BLE) testing \nis covered by separate ISO 18013-6 lab-based test methods, which are \noutside the scope of this requirement.\n\nClarification questions for vendor evaluation:\n\n1. Credential formats tested: Which formats were tested — SD-JWT VC, \n   ISO mDoc, or both?\n2. Spec version: Which version of the OID4VP spec was tested against \n   (1.0 Final, ID2, draft-24)?\n3. Response modes: Were both direct_post and direct_post.jwt \n   (encrypted) response modes tested?\n4. Flow types: Were both cross-device (QR code) and same-device flows \n   tested?\n5. Query language: Was DCQL query support tested in addition to \n   presentation_definition?\n6. Test evidence: Can you provide the conformance test results/report?\n\nReferences:\n- OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/\n- OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/",
       "_sourceFile": "core.yaml"
     },
     {
@@ -1850,7 +1850,51 @@
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
-      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OID4VCI \nconformance tests are under active development by the OpenID Foundation, \nwith preview tests covering OID4VCI draft 15 ID2, HAIP draft 03, and \nOAuth 2.0 Attestation-Based Client Authentication draft 05.\n\nAs the test suite matures, vendors should revalidate against updated \ntest plans. The requirement is for ongoing conformance, not a one-time \ncertification.\n\nReferences:\n- OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/\n- Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OID4VCI \nconformance tests are under active development by the OpenID Foundation, \nwith preview tests covering OID4VCI draft 15 ID2, HAIP draft 03, and \nOAuth 2.0 Attestation-Based Client Authentication draft 05.\n\nAs the test suite matures, vendors should revalidate against updated \ntest plans. The requirement is for ongoing conformance, not a one-time \ncertification.\n\nClarification questions for vendor evaluation:\n\n1. Credential formats tested: Which formats were tested — SD-JWT VC, \n   ISO mDoc, or both?\n2. Client authentication: Was OAuth 2.0 Attestation-Based Client \n   Authentication tested?\n3. Batch issuance: Does the product support and test batch credential \n   issuance flows?\n4. Deferred issuance: Does the product support deferred issuance \n   (async credential delivery)?\n5. Test evidence: Can you provide the conformance test results/report?\n\nReferences:\n- OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/\n- Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-045",
+      "category": "registration",
+      "categoryLabel": "Registration",
+      "categoryIcon": "📋",
+      "requirement": "The product must implement the TS5 REST API for RP registration information exchange with Member State registries",
+      "explanation": "The Technical Specification TS5 (\"Common Formats and API for RP \nRegistration Information\", EC TS05 V1.0) defines the standardized REST \nAPI and data formats for exchanging registration information between \nRelying Parties and Member State registries.\n\nKey technical requirements:\n- REST API published per OpenAPI version 3 specification\n- JSON data format for registration data exchange\n- JWS signatures (IETF RFC 7515) for signed output data integrity\n- Public read access for Registry API read methods\n- Support for query parameters: official/business registration number, \n  company name, privacy policy URL, entitlements (including \n  sub-entitlements defined by Member States), and intermediary flag\n\nThe product must implement this API to enable RPs to register with \nMember State registries in a standardized, interoperable manner as \nrequired by Implementing Regulation 2025/848.",
+      "legalBases": [
+        {
+          "regulation": "2025/848",
+          "article": "Article 3",
+          "paragraph": "1",
+          "link": "/regulation/2025-848?section=article-3"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2025/848",
+        "article": "Article 3",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2025-848?section=article-3",
+      "legalText": "Member States shall set up human and machine-readable interfaces that \nmeet the technical specifications for broad access and interoperability \nfor the registration of wallet-relying parties.",
+      "arfReference": {
+        "topic": "Topic 27",
+        "hlr": "RPA_01"
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 3). TS5 defines the \ntechnical interface that connector products must implement to enable \ntheir RP customers to register with Member State registries.\n\nClarification questions for vendor evaluation:\n\n1. API implementation scope: Does the product implement the full TS5 \n   OpenAPI v3 specification, or a subset? Which endpoints are supported?\n2. Management UI: Does the product provide a management UI for \n   registration data, or only the programmatic API?\n3. Multi-Member-State support: Can the product register with multiple \n   Member State registries simultaneously (for cross-border operations)?\n4. JWS verification: Does the product validate JWS signatures on \n   registry responses per IETF RFC 7515?\n5. Registration lifecycle: Does the product support the full \n   registration lifecycle — initial registration, updates, and \n   de-registration?\n6. Entitlement management: Does the product support configuring \n   entitlements and sub-entitlements per Member State requirements?\n7. Intermediary flag: If the RP uses an intermediary, does the product \n   correctly flag this in the registration data?\n8. Automated renewal: Does the product support automated registration \n   renewal, or is manual intervention required?\n\nReferences:\n- TS5 specification: EC TS05 V1.0 (2025-06)\n- Legal basis: CIR (EU) 2025/848 (registration of wallet-relying parties)",
       "_sourceFile": "core.yaml"
     },
     {
@@ -6112,6 +6156,7 @@
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
+      "VEND-CORE-045",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6279,6 +6324,7 @@
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
+      "VEND-CORE-045",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6468,6 +6514,7 @@
       "VEND-CORE-042",
       "VEND-CORE-043",
       "VEND-CORE-044",
+      "VEND-CORE-045",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6608,6 +6655,7 @@
       "VEND-CORE-041",
       "VEND-CORE-043",
       "VEND-CORE-044",
+      "VEND-CORE-045",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6668,34 +6716,34 @@
     ]
   },
   "stats": {
-    "totalRequirements": 144,
+    "totalRequirements": 145,
     "byRole": {
-      "relying_party": 60,
+      "relying_party": 61,
       "issuer": 64,
       "universal": 35
     },
     "byProductCategory": {
-      "connector": 48,
+      "connector": 49,
       "issuance_platform": 47,
       "trust_services": 26,
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 123,
+      "eidas": 124,
       "gdpr": 20,
       "dora": 12,
-      "arf": 77
+      "arf": 78
     },
     "byCategory": {
       "usage": 42,
       "contracts": 22,
-      "registration": 26,
+      "registration": 27,
       "security": 29,
       "issuance": 18,
       "revocation": 7
     },
     "byObligation": {
-      "MUST": 124,
+      "MUST": 125,
       "MUST NOT": 11,
       "SHOULD": 8,
       "SHOULD NOT": 0,
