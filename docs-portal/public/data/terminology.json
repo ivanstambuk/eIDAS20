@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T20:58:17.986Z",
+  "generated": "2026-02-09T21:17:34.010Z",
   "statistics": {
     "totalTerms": 359,
     "totalDefinitions": 519,
@@ -594,7 +594,7 @@
     },
     {
       "id": "accreditation",
-      "term": "Accreditation",
+      "term": "accreditation",
       "sources": [
         {
           "definition": "an accreditation, as defined in Article 2, point 10 of Regulation (EC) No 765/2008",
@@ -866,7 +866,7 @@
     },
     {
       "id": "advanced-digital-skills",
-      "term": "Advanced Digital Skills",
+      "term": "advanced digital skills",
       "sources": [
         {
           "definition": "skills and professional competencies requiring knowledge and experience necessary to understand, design, develop, manage, test, deploy, use and maintain digital technologies, products and services",
@@ -1091,7 +1091,7 @@
     },
     {
       "id": "anonymous-credentials",
-      "term": "Anonymous Credentials",
+      "term": "anonymous credentials",
       "sources": [
         {
           "definition": "A family of privacy-preserving cryptographic mechanisms that support both selective disclosure and unlinkability requirements. Anonymous credentials enable authentication without identification when identification is not strictly necessary, using advanced cryptographic techniques such as Camenisch-Lysyanskaya (CL) signatures or BBS+ signatures to provide mathematical proof of a claim without disclosing any additional information. The term 'anonymous' refers to the ability to minimise data disclosure, not necessarily full anonymity in the broader context.",
@@ -1175,7 +1175,7 @@
     },
     {
       "id": "assurance-level",
-      "term": "Assurance Level",
+      "term": "assurance level",
       "sources": [
         {
           "definition": "a basis for confidence that an ICT product, ICT service or ICT process meets the security requirements of a specific European cybersecurity certification scheme, indicates the level at which an ICT product, ICT service or ICT process has been evaluated but as such does not measure the security of the ICT product, ICT service or ICT process concerned",
@@ -1215,7 +1215,7 @@
     },
     {
       "id": "attestation",
-      "term": "Attestation",
+      "term": "attestation",
       "sources": [
         {
           "definition": "A collective term for a QEAA (Qualified Electronic Attestation of Attributes), PuB-EAA (Public Sector Body EAA), or non-qualified EAA.",
@@ -1415,7 +1415,7 @@
     },
     {
       "id": "attestation-type",
-      "term": "Attestation Type",
+      "term": "attestation type",
       "sources": [
         {
           "definition": "An identifier for a type of attestation that is unique within the context of the EUDI Wallet ecosystem. Attestation types are used to categorize and identify different kinds of attestations, enabling Relying Parties to request specific types of credentials.",
@@ -1455,7 +1455,7 @@
     },
     {
       "id": "attribute",
-      "term": "Attribute",
+      "term": "attribute",
       "sources": [
         {
           "definition": "a characteristic, quality, right or permission of a natural or legal person or of an object",
@@ -1574,7 +1574,7 @@
     },
     {
       "id": "authentication",
-      "term": "Authentication",
+      "term": "authentication",
       "sources": [
         {
           "definition": "an electronic process that enables the confirmation of the electronic identification of a natural or legal person or the confirmation of the origin and integrity of data in electronic form",
@@ -1620,7 +1620,7 @@
     },
     {
       "id": "authorised-representative",
-      "term": "Authorised Representative",
+      "term": "authorised representative",
       "sources": [
         {
           "definition": "any natural or legal person established within the Community who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks with regard to the latter's obligations under the relevant Community legislation",
@@ -1664,7 +1664,7 @@
     },
     {
       "id": "basic-digital-skill",
-      "term": "Basic Digital Skill",
+      "term": "basic digital skill",
       "sources": [
         {
           "definition": "the ability to perform, by digital means, at least one activity related to the following areas: information, communication and collaboration, content creation, safety and personal data, and problem-solving",
@@ -1744,7 +1744,7 @@
     },
     {
       "id": "biometric-data",
-      "term": "Biometric Data",
+      "term": "biometric data",
       "sources": [
         {
           "definition": "personal data resulting from specific technical processing relating to the physical, physiological or behavioural characteristics of a natural person, which allow or confirm the unique identification of that natural person, such as facial images or dactyloscopic data",
@@ -1784,7 +1784,7 @@
     },
     {
       "id": "body-governed-by-public-law",
-      "term": "Body Governed by Public Law",
+      "term": "body governed by public law",
       "sources": [
         {
           "definition": "a body defined in point (4) of Article 2(1) of Directive 2014/24/EU of the European Parliament and of the Council \\[Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC (OJ L 94, 28",
@@ -2486,7 +2486,7 @@
     },
     {
       "id": "certification",
-      "term": "Certification",
+      "term": "certification",
       "sources": [
         {
           "definition": "The formal process by which an authorized body (conformity assessment body or certification body) attests that a product, service, process, or organization meets specified requirements or standards. In eIDAS context, certification confirms that trust services, wallets, or devices comply with regulatory requirements. Certification typically involves conformity assessment, documentation review, and ongoing surveillance.",
@@ -2570,7 +2570,7 @@
     },
     {
       "id": "certification-decision",
-      "term": "Certification Decision",
+      "term": "certification decision",
       "sources": [
         {
           "definition": "a certification decision, which follows a conformity assessment conducted by a conformity assessment body where that body positively or negatively confirms the conformity of a specific qualified trust service provider and the qualified trust service it provides with the requirements laid down in Regulation (EU) No 910/2014 and with Article 21 of Directive (EU) 2022/2555",
@@ -2614,7 +2614,7 @@
     },
     {
       "id": "cloud-computing-service",
-      "term": "Cloud Computing Service",
+      "term": "cloud computing service",
       "sources": [
         {
           "definition": "a digital service that enables on-demand administration and broad remote access to a scalable and elastic pool of shareable computing resources, including where such resources are distributed across several locations",
@@ -2694,7 +2694,7 @@
     },
     {
       "id": "communication",
-      "term": "Communication",
+      "term": "communication",
       "sources": [
         {
           "definition": "any information exchanged or conveyed between a finite number of parties by means of a publicly available electronic communications service",
@@ -2778,7 +2778,7 @@
     },
     {
       "id": "conformity-assessment",
-      "term": "Conformity Assessment",
+      "term": "conformity assessment",
       "sources": [
         {
           "definition": "the process demonstrating whether specified requirements relating to a product, process, service, system, person or body have been fulfilled",
@@ -3041,7 +3041,7 @@
     },
     {
       "id": "conformity-self-assessment",
-      "term": "Conformity Self-Assessment",
+      "term": "conformity self-assessment",
       "sources": [
         {
           "definition": "an action carried out by a manufacturer or provider of ICT products, ICT services or ICT processes, which evaluates whether those ICT products, ICT services or ICT processes meet the requirements of a specific European cybersecurity certification scheme",
@@ -3081,7 +3081,7 @@
     },
     {
       "id": "consensus",
-      "term": "Consensus",
+      "term": "consensus",
       "sources": [
         {
           "definition": "an agreement among distributed electronic ledger nodes on the validity of transactions and the maintenance of a consistent and ordered set of validated transactions across the distributed electronic ledger system",
@@ -3121,7 +3121,7 @@
     },
     {
       "id": "consensus-mechanism",
-      "term": "Consensus Mechanism",
+      "term": "consensus mechanism",
       "sources": [
         {
           "definition": "the set of rules and procedures by which consensus is reached",
@@ -3161,7 +3161,7 @@
     },
     {
       "id": "content-delivery-network",
-      "term": "Content Delivery Network",
+      "term": "content delivery network",
       "sources": [
         {
           "definition": "a network of geographically distributed servers for the purpose of ensuring high availability, accessibility or fast delivery of digital content and services to internet users on behalf of content and service providers",
@@ -3201,7 +3201,7 @@
     },
     {
       "id": "controller",
-      "term": "Controller",
+      "term": "controller",
       "sources": [
         {
           "definition": "the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data",
@@ -3241,7 +3241,7 @@
     },
     {
       "id": "creator-of-a-seal",
-      "term": "Creator of a Seal",
+      "term": "creator of a seal",
       "sources": [
         {
           "definition": "a legal person who creates an electronic seal",
@@ -3365,7 +3365,7 @@
     },
     {
       "id": "critical-assets",
-      "term": "Critical Assets",
+      "term": "critical assets",
       "sources": [
         {
           "definition": "assets within or in relation to a wallet unit of such extraordinary importance that where their availability, confidentiality or integrity are compromised, this would have a very serious, debilitating effect on the ability to rely on the wallet unit",
@@ -3626,7 +3626,7 @@
     },
     {
       "id": "critical-or-important-function",
-      "term": "Critical or Important Function",
+      "term": "critical or important function",
       "sources": [
         {
           "definition": "a function, the disruption of which would materially impair the financial performance of a financial entity, or the soundness or continuity of its services and activities, or the discontinued, defective or failed performance of that function would materially impair the continuing compliance of a financial entity with the conditions and obligations of its authorisation, or with its other obligations under applicable financial services law",
@@ -3746,7 +3746,7 @@
     },
     {
       "id": "cryptographic-binding",
-      "term": "Cryptographic Binding",
+      "term": "cryptographic binding",
       "sources": [
         {
           "definition": "the method to link person identification data or electronic attestations of attributes to wallet units through cryptographic means",
@@ -3820,7 +3820,7 @@
     },
     {
       "id": "cryptographic-link",
-      "term": "Cryptographic Link",
+      "term": "cryptographic link",
       "sources": [
         {
           "definition": "a reference to data that is established using suitable cryptographic techniques to ensure the integrity, authenticity, or traceability of the referenced data and the correct sequence of data records",
@@ -3860,7 +3860,7 @@
     },
     {
       "id": "cyber-threat",
-      "term": "Cyber Threat",
+      "term": "cyber threat",
       "sources": [
         {
           "definition": "any potential circumstance, event or action that could damage, disrupt or otherwise adversely impact network and information systems, the users of such systems and other persons",
@@ -3956,7 +3956,7 @@
     },
     {
       "id": "cyber-attack",
-      "term": "Cyber-Attack",
+      "term": "cyber-attack",
       "sources": [
         {
           "definition": "a malicious ICT-related incident caused by means of an attempt perpetrated by any threat actor to destroy, expose, alter, disable, steal or gain unauthorised access to, or make unauthorised use of, an asset",
@@ -3996,7 +3996,7 @@
     },
     {
       "id": "cybersecurity",
-      "term": "Cybersecurity",
+      "term": "cybersecurity",
       "sources": [
         {
           "definition": "the activities necessary to protect network and information systems, the users of such systems, and other persons affected by cyber threats",
@@ -4064,7 +4064,7 @@
     },
     {
       "id": "data-centre-service",
-      "term": "Data Centre Service",
+      "term": "data centre service",
       "sources": [
         {
           "definition": "a service that encompasses structures, or groups of structures, dedicated to the centralised accommodation, interconnection and operation of IT and network equipment providing data storage, processing and transport services together with all the facilities and infrastructures for power distribution and environmental control",
@@ -4104,7 +4104,7 @@
     },
     {
       "id": "data-concerning-health",
-      "term": "Data Concerning Health",
+      "term": "data concerning health",
       "sources": [
         {
           "definition": "personal data related to the physical or mental health of a natural person, including the provision of health care services, which reveal information about his or her health status",
@@ -4144,7 +4144,7 @@
     },
     {
       "id": "data-minimisation",
-      "term": "Data Minimisation",
+      "term": "data minimisation",
       "sources": [
         {
           "definition": "The principle that personal data collected and processed shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed.",
@@ -4227,7 +4227,7 @@
     },
     {
       "id": "data-record",
-      "term": "Data Record",
+      "term": "data record",
       "sources": [
         {
           "definition": "electronic data recorded with related meta-data supporting the processing of the data",
@@ -4311,7 +4311,7 @@
     },
     {
       "id": "device-binding",
-      "term": "Device Binding",
+      "term": "device binding",
       "sources": [
         {
           "definition": "A security feature ensuring that credentials are cryptographically tied to the specific wallet device that requests their issuance or verification. Device binding prevents credentials from being transferred to unauthorised devices, protecting against theft or cloning. High assurance is achieved by cryptographically linking a device's public key to a private key stored in a secure element.",
@@ -4351,7 +4351,7 @@
     },
     {
       "id": "digital-intensity",
-      "term": "Digital Intensity",
+      "term": "digital intensity",
       "sources": [
         {
           "definition": "the aggregated value attributed to an undertaking, on the basis of the number of technologies it uses, against a scoreboard of various technologies, in line with DESI",
@@ -4391,7 +4391,7 @@
     },
     {
       "id": "digital-operational-resilience",
-      "term": "Digital Operational Resilience",
+      "term": "digital operational resilience",
       "sources": [
         {
           "definition": "the ability of a financial entity to build, assure and review its operational integrity and reliability by ensuring, either directly or indirectly through the use of services provided by ICT third-party service providers, the full range of ICT-related capabilities needed to address the security of the network and information systems which a financial entity uses, and which support the continued provision of financial services and their quality, including throughout disruptions",
@@ -4431,7 +4431,7 @@
     },
     {
       "id": "digital-service",
-      "term": "Digital Service",
+      "term": "digital service",
       "sources": [
         {
           "definition": "a service as defined in Article 1(1), point (b), of Directive (EU) 2015/1535 of the European Parliament and of the Council \\[Directive (EU) 2015/1535 of the European Parliament and of the Council of 9 September 2015 laying down a procedure for the provision of information in the field of technical regulations and of rules on Information Society services (OJ L 241, 17",
@@ -4471,7 +4471,7 @@
     },
     {
       "id": "digital-service-provider",
-      "term": "Digital Service Provider",
+      "term": "digital service provider",
       "sources": [
         {
           "definition": "a digital service provider as defined in point (6) of Article 4 of Directive (EU) 2016/1148",
@@ -4511,7 +4511,7 @@
     },
     {
       "id": "digital-signature",
-      "term": "Digital Signature",
+      "term": "digital signature",
       "sources": [
         {
           "definition": "A digital signature refers to a mathematical and cryptographic concept that is widely used to provide concrete and practical instances of electronic signature. The definition given by ETSI TR 119 100 is that of data appended to, or a cryptographic transformation of a data unit that allows a recipient of the data unit to prove the source and integrity of the data unit and protect against forgery e.g. by the recipient. These two concepts should be distinguished, as all electronic signatures are not necessarily digital signatures.",
@@ -4556,7 +4556,7 @@
     },
     {
       "id": "directly-or-indirectly",
-      "term": "Directly or Indirectly",
+      "term": "directly or indirectly",
       "sources": [
         {
           "definition": "A fixed legal phrase extending the scope of a provision to cover both immediate effects (direct) and consequential or mediated effects (indirect). In regulatory contexts, this ensures that obligations or prohibitions cannot be circumvented through intermediaries, subsidiaries, or layered arrangements.",
@@ -4756,7 +4756,7 @@
     },
     {
       "id": "dns-service-provider",
-      "term": "DNS Service Provider",
+      "term": "DNS service provider",
       "sources": [
         {
           "definition": "an entity that provides:",
@@ -4796,7 +4796,7 @@
     },
     {
       "id": "draft-standard",
-      "term": "Draft Standard",
+      "term": "draft standard",
       "sources": [
         {
           "definition": "a document containing the text of the technical specifications concerning a given subject, which is being considered for adoption in accordance with the relevant standards procedure, as that document stands after the preparatory work and as circulated for public comment or scrutiny",
@@ -4836,7 +4836,7 @@
     },
     {
       "id": "edge-nodes",
-      "term": "Edge Nodes",
+      "term": "edge nodes",
       "sources": [
         {
           "definition": "distributed data-processing capacity connected to the network and located close to or in the physical endpoint where the data is generated, which offers distributed computing and storage capabilities for low-latency data processing",
@@ -5045,7 +5045,7 @@
     },
     {
       "id": "electronic-communications-service",
-      "term": "Electronic Communications Service",
+      "term": "electronic communications service",
       "sources": [
         {
           "definition": "an electronic communications service as defined in Article 2, point (4), of Directive (EU) 2018/1972",
@@ -5085,7 +5085,7 @@
     },
     {
       "id": "electronic-document",
-      "term": "Electronic Document",
+      "term": "electronic document",
       "sources": [
         {
           "definition": "any content stored in electronic form, in particular text or sound, visual or audiovisual recording",
@@ -5310,7 +5310,7 @@
     },
     {
       "id": "electronic-mail",
-      "term": "Electronic Mail",
+      "term": "electronic mail",
       "sources": [
         {
           "definition": "any text, voice, sound or image message sent over a public communications network which can be stored in the network or in the recipient's terminal equipment until it is collected by the recipient",
@@ -5390,7 +5390,7 @@
     },
     {
       "id": "electronic-money-institution-exempted-pursuant-to-directive-2009-110-ec",
-      "term": "Electronic Money Institution Exempted Pursuant to Directive 2009/110/ec",
+      "term": "Electronic Money Institution Exempted Pursuant to Directive 2009/110/EC",
       "sources": [
         {
           "definition": "an electronic money institution benefitting from a waiver as referred to in Article 9(1) of Directive 2009/110/EC",
@@ -6043,7 +6043,7 @@
     },
     {
       "id": "enterprise",
-      "term": "Enterprise",
+      "term": "enterprise",
       "sources": [
         {
           "definition": "a natural or legal person engaged in an economic activity, irrespective of its legal form, including partnerships or associations regularly engaged in an economic activity",
@@ -6083,7 +6083,7 @@
     },
     {
       "id": "entity",
-      "term": "Entity",
+      "term": "entity",
       "sources": [
         {
           "definition": "a natural or legal person created and recognised as such under the national law of its place of establishment, which may, acting under its own name, exercise rights and be subject to obligations",
@@ -6123,7 +6123,7 @@
     },
     {
       "id": "entity-providing-domain-name-registration-services",
-      "term": "Entity Providing Domain Name Registration Services",
+      "term": "entity providing domain name registration services",
       "sources": [
         {
           "definition": "a registrar or an agent acting on behalf of registrars, such as a privacy or proxy registration service provider or reseller",
@@ -6503,7 +6503,7 @@
     },
     {
       "id": "ex-ante",
-      "term": "Ex Ante",
+      "term": "ex ante",
       "sources": [
         {
           "definition": "Latin: \"from before.\" Refers to actions, assessments, or controls performed before an event or activity takes place. In regulatory contexts, ex ante supervision means proactive oversight conducted before potential harm occurs, such as pre-approval requirements or preventive audits.",
@@ -6543,7 +6543,7 @@
     },
     {
       "id": "ex-post",
-      "term": "Ex Post",
+      "term": "ex post",
       "sources": [
         {
           "definition": "Latin: \"from after.\" Refers to actions, assessments, or controls performed after an event or activity has occurred. In regulatory contexts, ex post supervision means reactive oversight triggered by evidence of non-compliance, incidents, or complaints received after the fact.",
@@ -6583,7 +6583,7 @@
     },
     {
       "id": "filing-system",
-      "term": "Filing System",
+      "term": "filing system",
       "sources": [
         {
           "definition": "any structured set of personal data which are accessible according to specific criteria, whether centralised, decentralised or dispersed on a functional or geographical basis",
@@ -6623,7 +6623,7 @@
     },
     {
       "id": "finality",
-      "term": "Finality",
+      "term": "finality",
       "sources": [
         {
           "definition": "the state of a data record of an electronic ledger wherein it has become irreversible and cannot be modified or removed",
@@ -6663,7 +6663,7 @@
     },
     {
       "id": "flexible-scope-accreditation",
-      "term": "Flexible Scope Accreditation",
+      "term": "flexible scope accreditation",
       "sources": [
         {
           "definition": "an accreditation where the specific conformity assessment activities for which accreditation is sought, or has been granted, are expressed to allow conformity assessment bodies to make changes in methodology and other parameters which fall within the competence of the conformity assessment body as confirmed by the national accreditation body",
@@ -6707,7 +6707,7 @@
     },
     {
       "id": "for-the-purposes-of",
-      "term": "For the Purposes of",
+      "term": "for the purposes of",
       "sources": [
         {
           "definition": "A legal phrase that introduces a definition or scope limitation specific to a particular context. It signals that the meaning or application of a term is limited to the specific article, section, or regulation being discussed. Example: \"For the purposes of this Article, 'provider' means...\"",
@@ -6747,7 +6747,7 @@
     },
     {
       "id": "genetic-data",
-      "term": "Genetic Data",
+      "term": "genetic data",
       "sources": [
         {
           "definition": "personal data relating to the inherited or acquired genetic characteristics of a natural person which give unique information about the physiology or the health of that natural person and which result, in particular, from an analysis of a biological sample from the natural person in question",
@@ -6787,7 +6787,7 @@
     },
     {
       "id": "governing-rules",
-      "term": "Governing Rules",
+      "term": "governing rules",
       "sources": [
         {
           "definition": "the set of protocols, policies, and mechanisms that dictates how the distributed electronic ledger system operates, how data is validated and added to an electronic ledger, and how participants interact",
@@ -6827,7 +6827,7 @@
     },
     {
       "id": "group",
-      "term": "Group",
+      "term": "group",
       "sources": [
         {
           "definition": "a group as defined in Article 2, point (11), of Directive 2013/34/EU",
@@ -6867,7 +6867,7 @@
     },
     {
       "id": "group-of-undertakings",
-      "term": "Group of Undertakings",
+      "term": "group of undertakings",
       "sources": [
         {
           "definition": "a controlling undertaking and its controlled undertakings",
@@ -7023,7 +7023,7 @@
     },
     {
       "id": "holder",
-      "term": "Holder",
+      "term": "holder",
       "sources": [
         {
           "definition": "An entity that possesses one or more verifiable credentials, stores them in a digital wallet, and has sole authority over when, where, and with whom those credentials are shared. The Holder generates verifiable presentations from their credentials when requested by a Verifier. In the EUDI Wallet ecosystem, the Holder is the Wallet User.",
@@ -7103,7 +7103,7 @@
     },
     {
       "id": "ict-asset",
-      "term": "ICT Asset",
+      "term": "ICT asset",
       "sources": [
         {
           "definition": "a software or hardware asset in the network and information systems used by the financial entity",
@@ -7143,7 +7143,7 @@
     },
     {
       "id": "ict-concentration-risk",
-      "term": "ICT Concentration Risk",
+      "term": "ICT concentration risk",
       "sources": [
         {
           "definition": "an exposure to individual or multiple related critical ICT third-party service providers creating a degree of dependency on such providers so that the unavailability, failure or other type of shortfall of such provider may potentially endanger the ability of a financial entity to deliver critical or important functions, or cause it to suffer other types of adverse effects, including large losses, or endanger the financial stability of the Union as a whole",
@@ -7183,7 +7183,7 @@
     },
     {
       "id": "ict-intra-group-service-provider",
-      "term": "ICT Intra-Group Service Provider",
+      "term": "ICT intra-group service provider",
       "sources": [
         {
           "definition": "an undertaking that is part of a financial group and that provides predominantly ICT services to financial entities within the same group or to financial entities belonging to the same institutional protection scheme, including to their parent undertakings, subsidiaries, branches or other entities that are under common ownership or control",
@@ -7223,7 +7223,7 @@
     },
     {
       "id": "ict-process",
-      "term": "ICT Process",
+      "term": "ICT process",
       "sources": [
         {
           "definition": "a set of activities performed to design, develop, deliver or maintain an ICT product or ICT service",
@@ -7291,7 +7291,7 @@
     },
     {
       "id": "ict-product",
-      "term": "ICT Product",
+      "term": "ICT product",
       "sources": [
         {
           "definition": "an element or a group of elements of a network or information system",
@@ -7359,7 +7359,7 @@
     },
     {
       "id": "ict-risk",
-      "term": "ICT Risk",
+      "term": "ICT risk",
       "sources": [
         {
           "definition": "any reasonably identifiable circumstance in relation to the use of network and information systems which, if materialised, may compromise the security of the network and information systems, of any technology dependent tool or process, of operations and processes, or of the provision of services by producing adverse effects in the digital or physical environment",
@@ -7399,7 +7399,7 @@
     },
     {
       "id": "ict-service",
-      "term": "ICT Service",
+      "term": "ICT service",
       "sources": [
         {
           "definition": "a service consisting fully or mainly in the transmission, storing, retrieving or processing of information by means of network and information systems",
@@ -7467,7 +7467,7 @@
     },
     {
       "id": "ict-services",
-      "term": "ICT Services",
+      "term": "ICT services",
       "sources": [
         {
           "definition": "digital and data services provided through ICT systems to one or more internal or external users on an ongoing basis, including hardware as a service and hardware services which includes the provision of technical support via software or firmware updates by the hardware provider, excluding traditional analogue telephone services",
@@ -7507,7 +7507,7 @@
     },
     {
       "id": "ict-subcontractor-established-in-a-third-country",
-      "term": "ICT Subcontractor Established in a Third Country",
+      "term": "ICT subcontractor established in a third country",
       "sources": [
         {
           "definition": "an ICT subcontractor that is a legal person established in a third-country and that has entered into a contractual arrangement either with an ICT third-party service provider, or with an ICT third-party service provider established in a third country",
@@ -7547,7 +7547,7 @@
     },
     {
       "id": "ict-technical-specification",
-      "term": "ICT Technical Specification",
+      "term": "ICT technical specification",
       "sources": [
         {
           "definition": "a technical specification in the field of information and communication technologies",
@@ -7587,7 +7587,7 @@
     },
     {
       "id": "ict-third-party-risk",
-      "term": "ICT Third-Party Risk",
+      "term": "ICT third-party risk",
       "sources": [
         {
           "definition": "an ICT risk that may arise for a financial entity in relation to its use of ICT services provided by ICT third-party service providers or by subcontractors of the latter, including through outsourcing arrangements",
@@ -7627,7 +7627,7 @@
     },
     {
       "id": "ict-third-party-service-provider",
-      "term": "ICT Third-Party Service Provider",
+      "term": "ICT third-party service provider",
       "sources": [
         {
           "definition": "an undertaking providing ICT services",
@@ -7667,7 +7667,7 @@
     },
     {
       "id": "ict-third-party-service-provider-established-in-a-third-country",
-      "term": "ICT Third-Party Service Provider Established in a Third Country",
+      "term": "ICT third-party service provider established in a third country",
       "sources": [
         {
           "definition": "an ICT third-party service provider that is a legal person established in a third-country and that has entered into a contractual arrangement with a financial entity for the provision of ICT services",
@@ -7707,7 +7707,7 @@
     },
     {
       "id": "ict-related-incident",
-      "term": "Ict-Related Incident",
+      "term": "ICT-related incident",
       "sources": [
         {
           "definition": "a single event or a series of linked events unplanned by the financial entity that compromises the security of the network and information systems, and have an adverse impact on the availability, authenticity, integrity or confidentiality of data, or on the services provided by the financial entity",
@@ -7792,7 +7792,7 @@
     },
     {
       "id": "incident",
-      "term": "Incident",
+      "term": "incident",
       "sources": [
         {
           "definition": "an incident as defined in point (6) of Article 6 of Directive (EU) 2022/2555 of the European Parliament and of the Council \\[Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, amending Regulation (EU) No 910/2014 and Directive (EU) 2018/1972, and repealing Directive (EU) 2016/1148 (NIS 2 Directive) (OJ L 333, 27",
@@ -7895,7 +7895,7 @@
     },
     {
       "id": "incident-handling",
-      "term": "Incident Handling",
+      "term": "incident handling",
       "sources": [
         {
           "definition": "incident handling as defined in point (8) of Article 4 of Directive (EU) 2016/1148",
@@ -7963,7 +7963,7 @@
     },
     {
       "id": "information-asset",
-      "term": "Information Asset",
+      "term": "information asset",
       "sources": [
         {
           "definition": "a collection of information, either tangible or intangible, that is worth protecting",
@@ -8003,7 +8003,7 @@
     },
     {
       "id": "information-society-service",
-      "term": "Information Society Service",
+      "term": "information society service",
       "sources": [
         {
           "definition": "a service as defined in point (b) of Article 1(1) of Directive (EU) 2015/1535 of the European Parliament and of the Council (19)",
@@ -8043,7 +8043,7 @@
     },
     {
       "id": "insofar-as",
-      "term": "Insofar as",
+      "term": "insofar as",
       "sources": [
         {
           "definition": "A legal phrase meaning \"to the extent that\" or \"in so far as.\" It creates a proportional or conditional scope, indicating that a provision applies only to the degree that certain conditions are met. Example: \"insofar as necessary for the provision of the service\" limits the scope to what is strictly needed.",
@@ -8083,7 +8083,7 @@
     },
     {
       "id": "institution-exempted-pursuant-to-directive-2013-36-eu",
-      "term": "Institution Exempted Pursuant to Directive 2013/36/eu",
+      "term": "institution exempted pursuant to Directive 2013/36/EU",
       "sources": [
         {
           "definition": "an entity as referred to in Article 2(5), points (4) to (23), of Directive 2013/36/EU",
@@ -8243,7 +8243,7 @@
     },
     {
       "id": "inter-alia",
-      "term": "Inter Alia",
+      "term": "inter alia",
       "sources": [
         {
           "definition": "Latin: \"among other things.\" Used in legal texts to indicate that the listed items are examples or part of a larger set, not an exhaustive enumeration. When legislation mentions \"inter alia\" before a list, there may be additional relevant items not explicitly mentioned.",
@@ -8283,7 +8283,7 @@
     },
     {
       "id": "intermediary",
-      "term": "Intermediary",
+      "term": "intermediary",
       "sources": [
         {
           "definition": "A Relying Party that offers services to other (intermediated) Relying Parties to, on their behalf, connect to Wallet Units and request the User attributes that these intermediated Relying Parties need.",
@@ -8363,7 +8363,7 @@
     },
     {
       "id": "international-organisation",
-      "term": "International Organisation",
+      "term": "international organisation",
       "sources": [
         {
           "definition": "an organisation and its subordinate bodies governed by public international law, or any other body which is set up by, or on the basis of, an agreement between two or more countries",
@@ -8403,7 +8403,7 @@
     },
     {
       "id": "international-standard",
-      "term": "International Standard",
+      "term": "international standard",
       "sources": [
         {
           "definition": "a standard adopted by an international standardisation body",
@@ -8443,7 +8443,7 @@
     },
     {
       "id": "international-standardisation-body",
-      "term": "International Standardisation Body",
+      "term": "international standardisation body",
       "sources": [
         {
           "definition": "the International Organisation for Standardisation (ISO), the International Electrotechnical Commission (IEC) and the International Telecommunication Union (ITU)",
@@ -8483,7 +8483,7 @@
     },
     {
       "id": "internet-exchange-point",
-      "term": "Internet Exchange Point",
+      "term": "internet exchange point",
       "sources": [
         {
           "definition": "a network facility which enables the interconnection of more than two independent networks (autonomous systems), primarily for the purpose of facilitating the exchange of internet traffic, which provides interconnection only for autonomous systems and which neither requires the internet traffic passing between any pair of participating autonomous systems to pass through any third autonomous system nor alters or otherwise interferes with such traffic",
@@ -8643,7 +8643,7 @@
     },
     {
       "id": "key-public-services",
-      "term": "Key Public Services",
+      "term": "key public services",
       "sources": [
         {
           "definition": "essential services provided by public entities to natural persons in their major life events and to legal persons in their professional life-cycle",
@@ -8683,7 +8683,7 @@
     },
     {
       "id": "keystore",
-      "term": "Keystore",
+      "term": "keystore",
       "sources": [
         {
           "definition": "A hardware-backed repository and service in which non-critical cryptographic assets are generated, stored, and used exclusively inside a dedicated hardware security boundary. Examples include Secure Elements, TPMs, TEEs, secure enclaves, or remote HSMs.",
@@ -8723,7 +8723,7 @@
     },
     {
       "id": "large-scale-cybersecurity-incident",
-      "term": "Large-Scale Cybersecurity Incident",
+      "term": "large-scale cybersecurity incident",
       "sources": [
         {
           "definition": "an incident which causes a level of disruption that exceeds a Member State’s capacity to respond to it or which has a significant impact on at least two Member States",
@@ -8803,7 +8803,7 @@
     },
     {
       "id": "ledger-report",
-      "term": "Ledger Report",
+      "term": "ledger report",
       "sources": [
         {
           "definition": "a structured presentation of verifiable information extracted from the data records of an electronic ledger, and providing insights into specific activities, states, or compliance with predefined rules",
@@ -8843,7 +8843,7 @@
     },
     {
       "id": "legacy-ict-system",
-      "term": "Legacy ICT System",
+      "term": "legacy ICT system",
       "sources": [
         {
           "definition": "an ICT system that has reached the end of its lifecycle (end-of-life), that is not suitable for upgrades or fixes, for technological or commercial reasons, or is no longer supported by its supplier or by an ICT third-party service provider, but that is still in use and supports the functions of the financial entity",
@@ -8883,7 +8883,7 @@
     },
     {
       "id": "legal-person",
-      "term": "Legal Person",
+      "term": "legal person",
       "sources": [
         {
           "definition": "An entity that has legal personality under applicable law, such as a company, corporation, association, or other organization. Legal persons can enter into contracts, own property, sue and be sued, independent of their members or shareholders. In EU law, legal persons are typically excluded from GDPR's personal data protections but can be controllers, processors, relying parties, or trust service providers.",
@@ -9011,7 +9011,7 @@
     },
     {
       "id": "location-data",
-      "term": "Location Data",
+      "term": "location data",
       "sources": [
         {
           "definition": "any data processed in an electronic communications network or by an electronic communications service, indicating the geographic position of the terminal equipment of a user of a publicly available electronic communications service",
@@ -9096,7 +9096,7 @@
     },
     {
       "id": "major-ict-related-incident",
-      "term": "Major Ict-Related Incident",
+      "term": "major ICT-related incident",
       "sources": [
         {
           "definition": "an ICT-related incident that has a high adverse impact on the network and information systems that support critical or important functions of the financial entity",
@@ -9136,7 +9136,7 @@
     },
     {
       "id": "major-operational-or-security-payment-related-incident",
-      "term": "Major Operational or Security Payment-Related Incident",
+      "term": "major operational or security payment-related incident",
       "sources": [
         {
           "definition": "an operational or security payment-related incident that has a high adverse impact on the payment-related services provided",
@@ -9176,7 +9176,7 @@
     },
     {
       "id": "managed-security-service-provider",
-      "term": "Managed Security Service Provider",
+      "term": "managed security service provider",
       "sources": [
         {
           "definition": "a managed service provider that carries out or provides assistance for activities relating to cybersecurity risk management",
@@ -9216,7 +9216,7 @@
     },
     {
       "id": "managed-service-provider",
-      "term": "Managed Service Provider",
+      "term": "managed service provider",
       "sources": [
         {
           "definition": "an entity that provides services related to the installation, management, operation or maintenance of ICT products, networks, infrastructure, applications or any other network and information systems, via assistance or active administration carried out either on customers’ premises or remotely",
@@ -9256,7 +9256,7 @@
     },
     {
       "id": "management-body",
-      "term": "Management Body",
+      "term": "management body",
       "sources": [
         {
           "definition": "a management body as defined in Article 4(1), point (36), of Directive 2014/65/EU, Article 3(1), point (7), of Directive 2013/36/EU, Article 2(1), point (s), of Directive 2009/65/EC of the European Parliament and of the Council (31), Article 2(1), point (45), of Regulation (EU) No 909/2014, Article 3(1), point (20), of Regulation (EU) 2016/1011, and in the relevant provision of the Regulation on markets in crypto-assets, or the equivalent persons who effectively run the entity or have key functions in accordance with relevant Union or national law",
@@ -9376,7 +9376,7 @@
     },
     {
       "id": "manufacturer",
-      "term": "Manufacturer",
+      "term": "manufacturer",
       "sources": [
         {
           "definition": "any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under his name or trademark",
@@ -9420,7 +9420,7 @@
     },
     {
       "id": "mdl-rulebook",
-      "term": "Mdl Rulebook",
+      "term": "mDL Rulebook",
       "sources": [
         {
           "definition": "A technical specification document that describes the attestation scheme, namespace, attribute definitions, encoding formats, and other detailed requirements for mobile Driving Licences (mDL) used within the EUDI Wallet ecosystem, compliant with ISO/IEC 18013-5.",
@@ -9460,7 +9460,7 @@
     },
     {
       "id": "medium-sized-enterprise",
-      "term": "Medium-Sized Enterprise",
+      "term": "medium-sized enterprise",
       "sources": [
         {
           "definition": "a financial entity that is not a small enterprise and employs fewer than 250 persons and has an annual turnover that does not exceed EUR 50 million and/or an annual balance sheet that does not exceed EUR 43 million",
@@ -9540,7 +9540,7 @@
     },
     {
       "id": "microenterprise",
-      "term": "Microenterprise",
+      "term": "microenterprise",
       "sources": [
         {
           "definition": "a financial entity, other than a trading venue, a central counterparty, a trade repository or a central securities depository, which employs fewer than 10 persons and has an annual turnover and/or annual balance sheet total that does not exceed EUR 2 million",
@@ -9580,7 +9580,7 @@
     },
     {
       "id": "multi-country-projects",
-      "term": "Multi-Country Projects",
+      "term": "multi-country projects",
       "sources": [
         {
           "definition": "large-scale projects identified in accordance with Article 12 that facilitate the achievement of the digital targets, including Union and Member State financing, in accordance with Article 10",
@@ -9620,7 +9620,7 @@
     },
     {
       "id": "mutatis-mutandis",
-      "term": "Mutatis Mutandis",
+      "term": "mutatis mutandis",
       "sources": [
         {
           "definition": "Latin: \"with the necessary changes having been made.\" A legal term indicating that a provision or requirement from one context applies to another context with the necessary adaptations. When legislation states that Article X applies \"mutatis mutandis\" to another situation, it means the same rules apply with appropriate modifications for the different context.",
@@ -9660,7 +9660,7 @@
     },
     {
       "id": "namespace",
-      "term": "Namespace",
+      "term": "namespace",
       "sources": [
         {
           "definition": "A specification of the attribute identifier, syntax and semantics of attributes that can be used in an attestation, having an identifier that is unique within the EUDI Wallet ecosystem.",
@@ -9804,7 +9804,7 @@
     },
     {
       "id": "national-cybersecurity-certification-scheme",
-      "term": "National Cybersecurity Certification Scheme",
+      "term": "national cybersecurity certification scheme",
       "sources": [
         {
           "definition": "a comprehensive set of rules, technical requirements, standards and procedures developed and adopted by a national public authority and that apply to the certification or conformity assessment of ICT products, ICT services and ICT processes falling under the scope of the specific scheme",
@@ -9844,7 +9844,7 @@
     },
     {
       "id": "national-cybersecurity-strategy",
-      "term": "National Cybersecurity Strategy",
+      "term": "national cybersecurity strategy",
       "sources": [
         {
           "definition": "a coherent framework of a Member State providing strategic objectives and priorities in the area of cybersecurity and the governance to achieve them in that Member State",
@@ -9884,7 +9884,7 @@
     },
     {
       "id": "national-law",
-      "term": "National Law",
+      "term": "national law",
       "sources": [
         {
           "definition": "The domestic legal system of each individual EU Member State, created and enforced by that state's legislative, executive, and judicial bodies. Where EU law applies, national law must conform to it (supremacy principle). However, Member States retain competence in areas not transferred to the EU. Many EU directives require implementation through national law.",
@@ -9970,7 +9970,7 @@
     },
     {
       "id": "national-standard",
-      "term": "National Standard",
+      "term": "national standard",
       "sources": [
         {
           "definition": "a standard adopted by a national standardisation body",
@@ -10010,7 +10010,7 @@
     },
     {
       "id": "national-standardisation-body",
-      "term": "National Standardisation Body",
+      "term": "national standardisation body",
       "sources": [
         {
           "definition": "a body notified to the Commission by a Member State in accordance with Article 27 of this Regulation",
@@ -10050,7 +10050,7 @@
     },
     {
       "id": "national-strategy-on-the-security-of-network-and-information-systems",
-      "term": "National Strategy on the Security of Network and Information Systems",
+      "term": "national strategy on the security of network and information systems",
       "sources": [
         {
           "definition": "a national strategy on the security of network and information systems as defined in point (3) of Article 4 of Directive (EU) 2016/1148",
@@ -10090,7 +10090,7 @@
     },
     {
       "id": "natural-or-legal-person",
-      "term": "Natural or Legal Person",
+      "term": "natural or legal person",
       "sources": [
         {
           "definition": "A fixed legal phrase indicating that a provision applies to any person, whether an individual human being (natural person) or an entity with legal personality such as a company or organization (legal person). This formulation ensures universal applicability of rights, obligations, or eligibility criteria to both individuals and organizations.",
@@ -10130,7 +10130,7 @@
     },
     {
       "id": "natural-person",
-      "term": "Natural Person",
+      "term": "natural person",
       "sources": [
         {
           "definition": "An individual human being, as opposed to a legal person (organization or entity). In EU law, natural persons are the subjects of fundamental rights protections, including data protection under GDPR. The term distinguishes human individuals who can hold rights and bear obligations from artificial legal entities. GDPR explicitly protects \"personal data\" relating to identified or identifiable natural persons.",
@@ -10170,7 +10170,7 @@
     },
     {
       "id": "near-miss",
-      "term": "Near Miss",
+      "term": "near miss",
       "sources": [
         {
           "definition": "an event that could have compromised the availability, authenticity, integrity or confidentiality of stored, transmitted or processed data or of the services offered by, or accessible via, network and information systems, but that was successfully prevented from materialising or that did not materialise",
@@ -10210,7 +10210,7 @@
     },
     {
       "id": "network-and-information-system",
-      "term": "Network and Information System",
+      "term": "network and information system",
       "sources": [
         {
           "definition": "a network and information system as defined in point (1) of Article 4 of Directive (EU) 2016/1148",
@@ -10278,7 +10278,7 @@
     },
     {
       "id": "node",
-      "term": "Node",
+      "term": "node",
       "sources": [
         {
           "definition": "a connection point which is part of the electronic identification interoperability architecture and is involved in cross-border authentication of persons and which has the capability to recognise and process or forward transmissions to other nodes by enabling the national electronic identification infrastructure of one Member State to interface with national electronic identification infrastructures of other Member States",
@@ -10318,7 +10318,7 @@
     },
     {
       "id": "node-operator",
-      "term": "Node Operator",
+      "term": "node operator",
       "sources": [
         {
           "definition": "the entity responsible for ensuring that the node performs correctly and reliably its functions as a connection point",
@@ -10358,7 +10358,7 @@
     },
     {
       "id": "notification",
-      "term": "Notification",
+      "term": "notification",
       "sources": [
         {
           "definition": "The act of transferring information to the European Commission, typically in the context of Member States notifying the Commission about their designated PID Providers, Wallet Providers, Attestation Providers, and Access Certificate Authorities.",
@@ -10398,7 +10398,7 @@
     },
     {
       "id": "notwithstanding",
-      "term": "Notwithstanding",
+      "term": "notwithstanding",
       "sources": [
         {
           "definition": "A legal phrase meaning \"despite\" or \"regardless of.\" It creates an exception to a general rule, signaling that the provision it introduces applies even though it may conflict with another provision. Example: \"Notwithstanding Article 5\" means this provision applies even if Article 5 would otherwise prevent it.",
@@ -10438,7 +10438,7 @@
     },
     {
       "id": "object-of-certification",
-      "term": "Object of Certification",
+      "term": "object of certification",
       "sources": [
         {
           "definition": "products, processes and services or a combination thereof to which specified requirements apply",
@@ -10482,7 +10482,7 @@
     },
     {
       "id": "offline-mode",
-      "term": "Offline Mode",
+      "term": "offline mode",
       "sources": [
         {
           "definition": "as regards the use of European Digital Identity Wallets, an interaction between a user and a third party at a physical location using close proximity technologies, whereby the European Digital Identity Wallet is not required to access remote systems via electronic communication networks for the purpose of the interaction",
@@ -10527,7 +10527,7 @@
     },
     {
       "id": "online-marketplace",
-      "term": "Online Marketplace",
+      "term": "online marketplace",
       "sources": [
         {
           "definition": "an online marketplace as defined in Article 2, point (n), of Directive 2005/29/EC of the European Parliament and of the Council \\[Directive 2005/29/EC of the European Parliament and of the Council of 11 May 2005 concerning unfair business-to-consumer commercial practices in the internal market and amending Council Directive 84/450/EEC, Directives 97/7/EC, 98/27/EC and 2002/65/EC of the European Parliament and of the Council and Regulation (EC) No 2006/2004 of the European Parliament and of the Council ('Unfair Commercial Practices Directive') (OJ L 149, 11",
@@ -10567,7 +10567,7 @@
     },
     {
       "id": "online-search-engine",
-      "term": "Online Search Engine",
+      "term": "online search engine",
       "sources": [
         {
           "definition": "an online search engine as defined in Article 2, point (5), of Regulation (EU) 2019/1150 of the European Parliament and of the Council \\[Regulation (EU) 2019/1150 of the European Parliament and of the Council of 20 June 2019 on promoting fairness and transparency for business users of online intermediation services (OJ L 186, 11",
@@ -10607,7 +10607,7 @@
     },
     {
       "id": "operational-or-security-payment-related-incident",
-      "term": "Operational or Security Payment-Related Incident",
+      "term": "operational or security payment-related incident",
       "sources": [
         {
           "definition": "a single event or a series of linked events unplanned by the financial entities referred to in Article 2(1), points (a) to (d), whether ICT-related or not, that has an adverse impact on the availability, authenticity, integrity or confidentiality of payment-related data, or on the payment-related services provided by the financial entity",
@@ -10731,7 +10731,7 @@
     },
     {
       "id": "pades",
-      "term": "Pades",
+      "term": "PAdES",
       "sources": [
         {
           "definition": "PDF advanced electronic signature (PAdES), based on PDF signatures. PDF documents are suggested to be signed/sealed using PAdES signature format.",
@@ -10775,7 +10775,7 @@
     },
     {
       "id": "parent-undertaking",
-      "term": "Parent Undertaking",
+      "term": "parent undertaking",
       "sources": [
         {
           "definition": "a parent undertaking within the meaning of Article 2, point (9), and Article 22 of Directive 2013/34/EU",
@@ -10855,7 +10855,7 @@
     },
     {
       "id": "payment-institution-exempted-pursuant-to-directive-eu-2015-2366",
-      "term": "Payment Institution Exempted Pursuant to Directive (eu) 2015/2366",
+      "term": "payment institution exempted pursuant to Directive (EU) 2015/2366",
       "sources": [
         {
           "definition": "a payment institution exempted pursuant to Article 32(1) of Directive (EU) 2015/2366",
@@ -10895,7 +10895,7 @@
     },
     {
       "id": "peer-evaluation",
-      "term": "Peer Evaluation",
+      "term": "peer evaluation",
       "sources": [
         {
           "definition": "a process for the assessment of a national accreditation body by other national accreditation bodies, carried out in accordance with the requirements of this Regulation, and, where applicable, additional sectoral technical specifications",
@@ -10939,7 +10939,7 @@
     },
     {
       "id": "peer-review-process",
-      "term": "Peer Review Process",
+      "term": "peer review process",
       "sources": [
         {
           "definition": "a mechanism whereby Member States exchange best practices on specific aspects of the policies, measures and actions proposed by a given Member State",
@@ -11055,7 +11055,7 @@
     },
     {
       "id": "personal-data",
-      "term": "Personal Data",
+      "term": "personal data",
       "sources": [
         {
           "definition": "any information as defined in Article 4, point (1), of Regulation (EU) 2016/679",
@@ -11127,7 +11127,7 @@
     },
     {
       "id": "personal-data-breach",
-      "term": "Personal Data Breach",
+      "term": "personal data breach",
       "sources": [
         {
           "definition": "a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed in connection with the provision of a publicly available electronic communications service in the Community",
@@ -11235,7 +11235,7 @@
     },
     {
       "id": "processing",
-      "term": "Processing",
+      "term": "processing",
       "sources": [
         {
           "definition": "any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction",
@@ -11275,7 +11275,7 @@
     },
     {
       "id": "processor",
-      "term": "Processor",
+      "term": "processor",
       "sources": [
         {
           "definition": "a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller",
@@ -11315,7 +11315,7 @@
     },
     {
       "id": "product",
-      "term": "Product",
+      "term": "product",
       "sources": [
         {
           "definition": "hardware or software, or relevant components of hardware or software, which are intended to be used for the provision of electronic identification and trust services",
@@ -11387,7 +11387,7 @@
     },
     {
       "id": "profiling",
-      "term": "Profiling",
+      "term": "profiling",
       "sources": [
         {
           "definition": "any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person's performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements",
@@ -11427,7 +11427,7 @@
     },
     {
       "id": "projected-trajectory",
-      "term": "Projected Trajectory",
+      "term": "projected trajectory",
       "sources": [
         {
           "definition": "the projected path per digital target until 2030, to achieve the digital targets, on the basis of historical data where available",
@@ -11850,7 +11850,7 @@
     },
     {
       "id": "pseudonym",
-      "term": "Pseudonym",
+      "term": "pseudonym",
       "sources": [
         {
           "definition": "Data uniquely representing a User which in itself does not allow inference of the User's attributes or person identification data, without additional information kept separately by the issuer of the data.",
@@ -11890,7 +11890,7 @@
     },
     {
       "id": "pseudonymisation",
-      "term": "Pseudonymisation",
+      "term": "pseudonymisation",
       "sources": [
         {
           "definition": "the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person",
@@ -11930,7 +11930,7 @@
     },
     {
       "id": "public-administration-entity",
-      "term": "Public Administration Entity",
+      "term": "public administration entity",
       "sources": [
         {
           "definition": "an entity recognised as such in a Member State in accordance with national law, not including the judiciary, parliaments or central banks, which complies with the following criteria:",
@@ -11970,7 +11970,7 @@
     },
     {
       "id": "public-authority",
-      "term": "Public Authority",
+      "term": "public authority",
       "sources": [
         {
           "definition": "any government or other public administration entity, including national central banks",
@@ -12010,7 +12010,7 @@
     },
     {
       "id": "public-electronic-communications-network",
-      "term": "Public Electronic Communications Network",
+      "term": "public electronic communications network",
       "sources": [
         {
           "definition": "a public electronic communications network as defined in Article 2, point (8), of Directive (EU) 2018/1972",
@@ -12093,7 +12093,7 @@
     },
     {
       "id": "public-or-private",
-      "term": "Public or Private",
+      "term": "public or private",
       "sources": [
         {
           "definition": "A fixed legal phrase indicating that a provision applies regardless of whether the entity or sector involved is part of government/public administration (public) or commercial/non-governmental (private). Used to ensure equal treatment and applicability across all sectors.",
@@ -12133,7 +12133,7 @@
     },
     {
       "id": "public-sector-body",
-      "term": "Public Sector Body",
+      "term": "public sector body",
       "sources": [
         {
           "definition": "a state, regional or local authority, a body governed by public law or an association formed by one or several such authorities or one or several such bodies governed by public law, or a private entity mandated by at least one of those authorities, bodies or associations to provide public services, when acting under such a mandate",
@@ -12178,7 +12178,7 @@
     },
     {
       "id": "pursuant-to",
-      "term": "Pursuant to",
+      "term": "pursuant to",
       "sources": [
         {
           "definition": "A legal phrase meaning \"in accordance with\" or \"as authorized by.\" It indicates that an action is taken based on the authority granted by a specific legal provision. Example: \"pursuant to Article 24\" means the action is authorized or required by that article.",
@@ -13457,7 +13457,7 @@
     },
     {
       "id": "recertification",
-      "term": "Recertification",
+      "term": "recertification",
       "sources": [
         {
           "definition": "The process of renewing or revalidating a certification after it expires, or when significant changes occur that may affect compliance. Recertification ensures continued adherence to applicable requirements over time. In eIDAS, qualified electronic signature creation devices must be recertified periodically (typically every 5 years, with vulnerability assessments every 2 years per Article 30).",
@@ -13497,7 +13497,7 @@
     },
     {
       "id": "recipient",
-      "term": "Recipient",
+      "term": "recipient",
       "sources": [
         {
           "definition": "a natural or legal person, public authority, agency or another body, to which the personal data are disclosed, whether a third party or not",
@@ -13737,7 +13737,7 @@
     },
     {
       "id": "release-for-free-circulation",
-      "term": "Release for Free Circulation",
+      "term": "release for free circulation",
       "sources": [
         {
           "definition": "the procedure laid down in Article 79 of Council Regulation (EEC) No 2913/92 of 12 October 1992 establishing the Community Customs Code",
@@ -13781,7 +13781,7 @@
     },
     {
       "id": "relevant-and-reasoned-objection",
-      "term": "Relevant and Reasoned Objection",
+      "term": "relevant and reasoned objection",
       "sources": [
         {
           "definition": "an objection to a draft decision as to whether there is an infringement of this Regulation, or whether envisaged action in relation to the controller or processor complies with this Regulation, which clearly demonstrates the significance of the risks posed by the draft decision as regards the fundamental rights and freedoms of data subjects and, where applicable, the free flow of personal data within the Union",
@@ -14075,7 +14075,7 @@
     },
     {
       "id": "representative",
-      "term": "Representative",
+      "term": "representative",
       "sources": [
         {
           "definition": "a natural or legal person established in the Union who, designated by the controller or processor in writing pursuant to Article 27, represents the controller or processor with regard to their respective obligations under this Regulation",
@@ -14143,7 +14143,7 @@
     },
     {
       "id": "research-organisation",
-      "term": "Research Organisation",
+      "term": "research organisation",
       "sources": [
         {
           "definition": "an entity which has as its primary goal to conduct applied research or experimental development with a view to exploiting the results of that research for commercial purposes, but which does not include educational institutions",
@@ -14183,7 +14183,7 @@
     },
     {
       "id": "restriction-of-processing",
-      "term": "Restriction of Processing",
+      "term": "restriction of processing",
       "sources": [
         {
           "definition": "the marking of stored personal data with the aim of limiting their processing in the future",
@@ -14223,7 +14223,7 @@
     },
     {
       "id": "risk",
-      "term": "Risk",
+      "term": "risk",
       "sources": [
         {
           "definition": "the potential for loss or disruption caused by an incident and is to be expressed as a combination of the magnitude of such loss or disruption and the likelihood of occurrence of the incident",
@@ -14263,7 +14263,7 @@
     },
     {
       "id": "risk-register",
-      "term": "Risk Register",
+      "term": "risk register",
       "sources": [
         {
           "definition": "a record of information relevant to the certification process about identified risks",
@@ -14353,7 +14353,7 @@
     },
     {
       "id": "scheme-owner",
-      "term": "Scheme Owner",
+      "term": "scheme owner",
       "sources": [
         {
           "definition": "an organisation which is responsible for developing and maintaining a certification scheme",
@@ -14426,7 +14426,7 @@
     },
     {
       "id": "secure-element",
-      "term": "Secure Element",
+      "term": "secure element",
       "sources": [
         {
           "definition": "A microprocessor chip engineered to store sensitive data and perform critical cryptographic operations while offering lower exposure to threats. Secure elements act as hardware vaults, protecting applications and cryptographic key material from malware attacks on the host operating system. Examples include SIM cards, embedded SIMs (eSIMs), embedded secure elements (eSEs), and external security tokens or smart cards.",
@@ -14506,7 +14506,7 @@
     },
     {
       "id": "security-of-network-and-information-systems",
-      "term": "Security of Network and Information Systems",
+      "term": "security of network and information systems",
       "sources": [
         {
           "definition": "security of network and information systems as defined in Article 6, point 2, of Directive (EU) 2022/2555",
@@ -14574,7 +14574,7 @@
     },
     {
       "id": "selective-disclosure",
-      "term": "Selective Disclosure",
+      "term": "selective disclosure",
       "sources": [
         {
           "definition": "The capability enabling the User to present a subset of the attributes included in a PID or attestation, rather than disclosing the entire credential. This feature reinforces the protection of personal data and the principle of data minimisation.",
@@ -14617,7 +14617,7 @@
     },
     {
       "id": "service",
-      "term": "Service",
+      "term": "service",
       "sources": [
         {
           "definition": "any self-employed economic activity normally provided for remuneration, as defined in Article 57 TFEU",
@@ -14697,7 +14697,7 @@
     },
     {
       "id": "signatory",
-      "term": "Signatory",
+      "term": "signatory",
       "sources": [
         {
           "definition": "a natural person who creates an electronic signature",
@@ -14742,7 +14742,7 @@
     },
     {
       "id": "significant-cyber-threat",
-      "term": "Significant Cyber Threat",
+      "term": "significant cyber threat",
       "sources": [
         {
           "definition": "a cyber threat the technical characteristics of which indicate that it could have the potential to result in a major ICT-related incident or a major operational or security payment-related incident",
@@ -14899,7 +14899,7 @@
     },
     {
       "id": "small-and-non-interconnected-investment-firm",
-      "term": "Small and Non-Interconnected Investment Firm",
+      "term": "small and non-interconnected investment firm",
       "sources": [
         {
           "definition": "an investment firm that meets the conditions laid out in Article 12(1) of Regulation (EU) 2019/2033 of the European Parliament and of the Council (33)",
@@ -14939,7 +14939,7 @@
     },
     {
       "id": "small-enterprise",
-      "term": "Small Enterprise",
+      "term": "small enterprise",
       "sources": [
         {
           "definition": "a financial entity that employs 10 or more persons, but fewer than 50 persons, and has an annual turnover and/or annual balance sheet total that exceeds EUR 2 million, but does not exceed EUR 10 million",
@@ -14979,7 +14979,7 @@
     },
     {
       "id": "small-institution-for-occupational-retirement-provision",
-      "term": "Small Institution for Occupational Retirement Provision",
+      "term": "small institution for occupational retirement provision",
       "sources": [
         {
           "definition": "an institution for occupational retirement provision which operates pension schemes which together have less than 100 members in total",
@@ -15019,7 +15019,7 @@
     },
     {
       "id": "social-networking-services-platform",
-      "term": "Social Networking Services Platform",
+      "term": "social networking services platform",
       "sources": [
         {
           "definition": "a platform that enables end-users to connect, share, discover and communicate with each other across multiple devices, in particular via chats, posts, videos and recommendations",
@@ -15059,7 +15059,7 @@
     },
     {
       "id": "standard",
-      "term": "Standard",
+      "term": "standard",
       "sources": [
         {
           "definition": "a technical specification, adopted by a recognised standardisation body, for repeated or continuous application, with which compliance is not compulsory, and which is one of the following: (a) ‘international standard’ means a standard adopted by an international standardisation body",
@@ -15155,7 +15155,7 @@
     },
     {
       "id": "statistics",
-      "term": "Statistics",
+      "term": "statistics",
       "sources": [
         {
           "definition": "statistics as defined in Article 3, point (1), of Regulation (EC) No 223/2009",
@@ -15327,7 +15327,7 @@
     },
     {
       "id": "subsidiary",
-      "term": "Subsidiary",
+      "term": "subsidiary",
       "sources": [
         {
           "definition": "a subsidiary undertaking within the meaning of Article 2, point (10), and Article 22 of Directive 2013/34/EU",
@@ -15447,7 +15447,7 @@
     },
     {
       "id": "technical-specification",
-      "term": "Technical Specification",
+      "term": "technical specification",
       "sources": [
         {
           "definition": "a document that prescribes technical requirements to be fulfilled by a product, process or service",
@@ -15735,7 +15735,7 @@
     },
     {
       "id": "third-party",
-      "term": "Third Party",
+      "term": "third party",
       "sources": [
         {
           "definition": "a natural or legal person, public authority, agency or body other than the data subject, controller, processor and persons who, under the direct authority of the controller or processor, are authorised to process personal data",
@@ -15775,7 +15775,7 @@
     },
     {
       "id": "threat-intelligence",
-      "term": "Threat Intelligence",
+      "term": "threat intelligence",
       "sources": [
         {
           "definition": "information that has been aggregated, transformed, analysed, interpreted or enriched to provide the necessary context for decision-making and to enable relevant and sufficient understanding in order to mitigate the impact of an ICT-related incident or of a cyber threat, including the technical details of a cyber-attack, those responsible for the attack and their modus operandi and motivations",
@@ -15815,7 +15815,7 @@
     },
     {
       "id": "threat-led-penetration-testing-tlpt-",
-      "term": "Threat-Led Penetration Testing (tlpt)",
+      "term": "Threat-Led Penetration Testing (TLPT)",
       "sources": [
         {
           "definition": "a framework that mimics the tactics, techniques and procedures of real-life threat actors perceived as posing a genuine cyber threat, that delivers a controlled, bespoke, intelligence-led (red team) test of the financial entity’s critical live production systems",
@@ -15935,7 +15935,7 @@
     },
     {
       "id": "traffic-data",
-      "term": "Traffic Data",
+      "term": "traffic data",
       "sources": [
         {
           "definition": "any data processed for the purpose of the conveyance of a communication on an electronic communications network or for the billing thereof",
@@ -15975,7 +15975,7 @@
     },
     {
       "id": "transaction",
-      "term": "Transaction",
+      "term": "transaction",
       "sources": [
         {
           "definition": "the smallest unit of a work process within an electronic ledger",
@@ -16426,7 +16426,7 @@
     },
     {
       "id": "type-of-electronic-attestation-of-attributes",
-      "term": "Type of Electronic Attestation of Attributes",
+      "term": "type of electronic attestation of attributes",
       "sources": [
         {
           "definition": "a specifically named and semantically described group of electronic attestation of attributes",
@@ -16470,7 +16470,7 @@
     },
     {
       "id": "union-law",
-      "term": "Union Law",
+      "term": "Union law",
       "sources": [
         {
           "definition": "The legal framework of the European Union, comprising primary law (founding treaties) and secondary law (regulations, directives, decisions). Union law has supremacy over conflicting national law in areas where Member States have transferred competence to the EU. Regulations apply directly, while directives require transposition into national law.",
@@ -16510,7 +16510,7 @@
     },
     {
       "id": "union-or-national-law",
-      "term": "Union or National Law",
+      "term": "Union or national law",
       "sources": [
         {
           "definition": "A fixed legal phrase indicating that provisions from either EU-level legislation (Union law) or Member State domestic legislation (national law) may apply to a given situation. This formulation acknowledges the dual-layer legal structure of the EU, where both supranational and national rules may govern the same subject matter.",
@@ -16550,7 +16550,7 @@
     },
     {
       "id": "unlinkability",
-      "term": "Unlinkability",
+      "term": "unlinkability",
       "sources": [
         {
           "definition": "A privacy-preserving property ensuring that an observer cannot sufficiently determine whether multiple items of interest (such as transactions, presentations, or actions) are related or originate from the same user. This prevents tracking and profiling of user behaviour. EDPS identifies four dimensions of unlinkability: (1) Unlinkability w.r.t. Relying Parties - RPs should not be able to determine whether multiple presentations correspond to the same user, even when colluding with other RPs; (2) Unlinkability w.r.t. Identity Providers - IdPs should not learn about wallet transactions (also called 'unobservability'); (3) Unlinkability w.r.t. Revocation Managers - entities managing credential status should not learn which RPs the wallet interacts with and when; (4) Unlinkability w.r.t. Colluding IdPs and RPs - transactions should remain unlinkable even when IdPs and RPs share information.",
@@ -16590,7 +16590,7 @@
     },
     {
       "id": "user",
-      "term": "User",
+      "term": "user",
       "sources": [
         {
           "definition": "a natural or legal person, or a natural person representing another natural person or a legal person, that uses trust services or electronic identification means provided in accordance with this Regulation",
@@ -16663,7 +16663,7 @@
     },
     {
       "id": "validated-transaction",
-      "term": "Validated Transaction",
+      "term": "validated transaction",
       "sources": [
         {
           "definition": "a transaction for which the required integrity, authenticity, and protocol-specific conditions have been checked in accordance with the governing rules of the distributed electronic ledger system",
@@ -16703,7 +16703,7 @@
     },
     {
       "id": "validation",
-      "term": "Validation",
+      "term": "validation",
       "sources": [
         {
           "definition": "the process of verifying and confirming that data in electronic form are valid in accordance with this Regulation",
@@ -16776,7 +16776,7 @@
     },
     {
       "id": "validation-data",
-      "term": "Validation Data",
+      "term": "validation data",
       "sources": [
         {
           "definition": "data that is used to validate an electronic signature or an electronic seal",
@@ -16820,7 +16820,7 @@
     },
     {
       "id": "value-added-service",
-      "term": "Value Added Service",
+      "term": "value added service",
       "sources": [
         {
           "definition": "any service which requires the processing of traffic data or location data other than traffic data beyond what is necessary for the transmission of a communication or the billing thereof",
@@ -16903,7 +16903,7 @@
     },
     {
       "id": "verifier",
-      "term": "Verifier",
+      "term": "verifier",
       "sources": [
         {
           "definition": "An entity that requests and receives verifiable credentials or presentations from a Holder, then validates the cryptographic proofs and attribute claims. In the EUDI Wallet ecosystem, Verifiers are typically Relying Parties, but in wallet-to-wallet interactions, another Wallet User can act as a Verifier.",
@@ -16983,7 +16983,7 @@
     },
     {
       "id": "vulnerability",
-      "term": "Vulnerability",
+      "term": "vulnerability",
       "sources": [
         {
           "definition": "a weakness, susceptibility or flaw of an asset, system, process or control that can be exploited",
@@ -17051,7 +17051,7 @@
     },
     {
       "id": "wallet-cryptographic-operation",
-      "term": "Wallet Cryptographic Operation",
+      "term": "wallet cryptographic operation",
       "sources": [
         {
           "definition": "a cryptographic mechanism necessary in the context of authentication of the wallet user and the issuance or presentation of person identification data or electronic attestations of attributes",
@@ -19479,7 +19479,7 @@
     },
     {
       "id": "work-process",
-      "term": "Work Process",
+      "term": "work process",
       "sources": [
         {
           "definition": "one or more sequences of actions required to produce an outcome that complies with governing rules of an electronic ledger",
@@ -19563,7 +19563,7 @@
     },
     {
       "id": "zero-knowledge-proof",
-      "term": "Zero Knowledge Proof",
+      "term": "zero knowledge proof",
       "sources": [
         {
           "definition": "A cryptographic method by which one party (the prover) can prove to another party (the verifier) that a statement is true, without revealing any information beyond the validity of the statement itself. In the EUDIW context, ZKPs can enable proving properties about attributes (e.g., \"age is over 18\") without disclosing the actual attribute value.",

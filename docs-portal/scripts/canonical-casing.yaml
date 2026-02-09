@@ -3,71 +3,240 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 #
 # PURPOSE:
-# The build pipeline applies auto-Title Case to all term display names.
-# This file provides OVERRIDES for terms that need special casing:
-#   - Acronyms that must stay uppercase (e.g., AdES, ASiC, CAdES)
-#   - EU legal phrases with specific lowercase conventions
-#   - Compound terms with mixed casing
+# Every term that needs non-default casing is listed here.
+# The build pipeline preserves original source casing by default.
+# This file provides OVERRIDES for:
+#   - Proper concepts that should be Title Case
+#   - Acronyms with special casing (AdES, CAdES, etc.)
+#   - Legal phrases that must stay lowercase
+#   - Generic terms starting with acronyms (ICT risk → preserve ICT)
 #
 # FORMAT:
 #   term-id: "Display Name"
 #
-# The term-id is the normalized ID used in terminology.json (lowercase,
-# hyphens instead of spaces). Only list terms that need DIFFERENT casing
-# than what auto-Title Case would produce.
-#
-# Auto-Title Case rules:
-#   1. Capitalize first letter of each word
-#   2. Keep lowercase: a, an, and, as, at, but, by, for, from, if, in, into,
-#      nor, of, on, or, per, so, the, to, up, with, yet (unless first word)
-#   3. Keep ALL-CAPS words unchanged (e.g., ICT, EU, GDPR)
-#
-# EXAMPLES:
-#   "wallet unit attestation" → auto → "Wallet Unit Attestation" ✓ (no override needed)
-#   "ades" → auto → "Ades" ✗ → override: "AdES"
-#   "by way of derogation" → auto → "By Way of Derogation" ✗ → override: "By Way of Derogation" (actually OK)
+# Terms NOT listed here keep their original extracted casing unchanged.
 #
 # ═══════════════════════════════════════════════════════════════════════════════
 
+# ─── Proper concepts (Title Case) ────────────────────────────────────────────
+# Named eIDAS/EU concepts, roles, artefacts, and services.
+# These deserve capitalisation as formal defined terms.
+
+account-information-service-provider: "Account Information Service Provider"
+administrative-validity-period: "Administrative Validity Period"
+administrator-of-critical-benchmarks: "Administrator of Critical Benchmarks"
+advanced-electronic-seal: "Advanced Electronic Seal"
+advanced-electronic-signature: "Advanced Electronic Signature"
+ancillary-insurance-intermediary: "Ancillary Insurance Intermediary"
+attestation-provider: "Attestation Provider"
+attestation-revocation-list: "Attestation Revocation List"
+attestation-rulebook: "Attestation Rulebook"
+attestation-status-list: "Attestation Status List"
+authentic-source: "Authentic Source"
+binding-corporate-rules: "Binding Corporate Rules"
+catalogue-of-attributes: "Catalogue of Attributes"
+catalogue-of-schemes-for-the-attestation-of-attributes: "Catalogue of Schemes for the Attestation of Attributes"
+ce-marking: "CE Marking"
+central-counterparty: "Central Counterparty"
+central-securities-depository: "Central Securities Depository"
+certificate-authority: "Certificate Authority"
+certificate-for-electronic-seal: "Certificate for Electronic Seal"
+certificate-for-electronic-seals: "Certificate for Electronic Seals"
+certificate-for-electronic-signature: "Certificate for Electronic Signature"
+certificate-for-electronic-signatures: "Certificate for Electronic Signatures"
+certificate-for-website-authentication: "Certificate for Website Authentication"
+certificate-of-conformity: "Certificate of Conformity"
+certificate-policy: "Certificate Policy"
+certification-body: "Certification Body"
+commission-communication: "Commission Communication"
+community-harmonisation-legislation: "Community Harmonisation Legislation"
+conformity-assessment-body: "Conformity Assessment Body"
+conformity-assessment-report: "Conformity Assessment Report"
+conformity-assessment-scheme: "Conformity Assessment Scheme"
+credit-institution: "Credit Institution"
+credit-rating-agency: "Credit Rating Agency"
+critical-ict-third-party-service-provider: "Critical ICT Third-Party Service Provider"
+crowdfunding-service-provider: "Crowdfunding Service Provider"
+crypto-asset-service-provider: "Crypto-Asset Service Provider"
+data-protection-authority: "Data Protection Authority"
+data-reporting-service-provider: "Data Reporting Service Provider"
+distributed-electronic-ledger: "Distributed Electronic Ledger"
+distributed-electronic-ledger-network: "Distributed Electronic Ledger Network"
+distributed-electronic-ledger-node: "Distributed Electronic Ledger Node"
+distributed-electronic-ledger-system: "Distributed Electronic Ledger System"
+electronic-archiving: "Electronic Archiving"
+electronic-attestation-of-attributes: "Electronic Attestation of Attributes"
+electronic-attestation-of-attributes-issued-by-or-on-behalf-of-a-public-sector-body-responsible-for-an-authentic-source: "Electronic Attestation of Attributes Issued by or on Behalf of a Public Sector Body Responsible for an Authentic Source"
+electronic-identification: "Electronic Identification"
+electronic-identification-means: "Electronic Identification Means"
+electronic-identification-scheme: "Electronic Identification Scheme"
+electronic-ledger: "Electronic Ledger"
+electronic-money-institution: "Electronic Money Institution"
+electronic-money-institution-exempted-pursuant-to-directive-2009-110-ec: "Electronic Money Institution Exempted Pursuant to Directive 2009/110/EC"
+electronic-registered-delivery-service: "Electronic Registered Delivery Service"
+electronic-seal: "Electronic Seal"
+electronic-seal-creation-data: "Electronic Seal Creation Data"
+electronic-seal-creation-device: "Electronic Seal Creation Device"
+electronic-signature: "Electronic Signature"
+electronic-signature-creation-data: "Electronic Signature Creation Data"
+electronic-signature-creation-device: "Electronic Signature Creation Device"
+electronic-time-stamp: "Electronic Time Stamp"
+embedded-disclosure-policy: "Embedded Disclosure Policy"
+eu-digital-identity-wallet-trust-mark: "EU Digital Identity Wallet Trust Mark"
+european-cybersecurity-certificate: "European Cybersecurity Certificate"
+european-cybersecurity-certification-scheme: "European Cybersecurity Certification Scheme"
+european-digital-identity-cooperation-group: "European Digital Identity Cooperation Group"
+european-digital-identity-wallet: "European Digital Identity Wallet"
+european-standard: "European Standard"
+european-standardisation-deliverable: "European Standardisation Deliverable"
+european-standardisation-organisation: "European Standardisation Organisation"
+hardware-security-module: "Hardware Security Module"
+harmonised-standard: "Harmonised Standard"
+holder-wallet-unit: "Holder Wallet Unit"
+identity-matching: "Identity Matching"
+institution-for-occupational-retirement-provision: "Institution for Occupational Retirement Provision"
+insurance-intermediary: "Insurance Intermediary"
+insurance-undertaking: "Insurance Undertaking"
+intermediated-relying-party: "Intermediated Relying Party"
+investment-firm: "Investment Firm"
+issuer-of-asset-referenced-tokens: "Issuer of Asset-Referenced Tokens"
+joint-committee: "Joint Committee"
+lead-overseer: "Lead Overseer"
+level-of-assurance: "Level of Assurance"
+list-of-trusted-lists: "List of Trusted Lists"
+management-company: "Management Company"
+manager-of-alternative-investment-funds: "Manager of Alternative Investment Funds"
+mdl-rulebook: "mDL Rulebook"
+member-state: "Member State"
+national-accreditation-body: "National Accreditation Body"
+national-register-of-wallet-relying-parties: "National Register of Wallet-Relying Parties"
+operator-of-essential-services: "Operator of Essential Services"
+owner-of-a-scheme-for-the-attestation-of-attributes: "Owner of a Scheme for the Attestation of Attributes"
+payment-institution: "Payment Institution"
+person-identification-data: "Person Identification Data"
+pid-rulebook: "PID Rulebook"
+provider-of-person-identification-data: "Provider of Person Identification Data"
+provider-of-qualified-electronic-ledger: "Provider of Qualified Electronic Ledger"
+provider-of-wallet-relying-party-access-certificates: "Provider of Wallet-Relying Party Access Certificates"
+provider-of-wallet-relying-party-registration-certificates: "Provider of Wallet-Relying Party Registration Certificates"
+public-key-infrastructure: "Public Key Infrastructure"
+qualified-certificate-for-electronic-seal: "Qualified Certificate for Electronic Seal"
+qualified-certificate-for-electronic-signature: "Qualified Certificate for Electronic Signature"
+qualified-certificate-for-website-authentication: "Qualified Certificate for Website Authentication"
+qualified-distributed-electronic-ledger: "Qualified Distributed Electronic Ledger"
+qualified-electronic-archiving-service: "Qualified Electronic Archiving Service"
+qualified-electronic-attestation-of-attributes: "Qualified Electronic Attestation of Attributes"
+qualified-electronic-ledger: "Qualified Electronic Ledger"
+qualified-electronic-registered-delivery-service: "Qualified Electronic Registered Delivery Service"
+qualified-electronic-seal: "Qualified Electronic Seal"
+qualified-electronic-seal-creation-device: "Qualified Electronic Seal Creation Device"
+qualified-electronic-signature: "Qualified Electronic Signature"
+qualified-electronic-signature-creation-device: "Qualified Electronic Signature Creation Device"
+qualified-electronic-time-stamp: "Qualified Electronic Time Stamp"
+qualified-seal-creation-device: "Qualified Seal Creation Device"
+qualified-signature-creation-device: "Qualified Signature Creation Device"
+qualified-trust-service: "Qualified Trust Service"
+qualified-trust-service-provider: "Qualified Trust Service Provider"
+register-of-wallet-relying-parties: "Register of Wallet-Relying Parties"
+registrar-of-wallet-relying-parties: "Registrar of Wallet-Relying Parties"
+reinsurance-intermediary: "Reinsurance Intermediary"
+reinsurance-undertaking: "Reinsurance Undertaking"
+relying-party: "Relying Party"
+relying-party-instance: "Relying Party Instance"
+remote-qscd: "Remote QSCD"
+remote-qualified-electronic-seal-creation-device: "Remote Qualified Electronic Seal Creation Device"
+remote-qualified-electronic-signature-creation-device: "Remote Qualified Electronic Signature Creation Device"
+scheme-for-the-attestation-of-attributes: "Scheme for the Attestation of Attributes"
+securitisation-repository: "Securitisation Repository"
+simple-electronic-seal: "Simple Electronic Seal"
+simple-electronic-signature: "Simple Electronic Signature"
+strong-customer-authentication: "Strong Customer Authentication"
+strong-user-authentication: "Strong User Authentication"
+sua-attestation: "SUA Attestation"
+supervisory-authority: "Supervisory Authority"
+supervisory-authority-concerned: "Supervisory Authority Concerned"
+technical-validity-period: "Technical Validity Period"
+threat-led-penetration-testing-tlpt-: "Threat-Led Penetration Testing (TLPT)"
+trade-repository: "Trade Repository"
+trading-venue: "Trading Venue"
+trust-anchor: "Trust Anchor"
+trust-service: "Trust Service"
+trust-service-provider: "Trust Service Provider"
+trusted-execution-environment: "Trusted Execution Environment"
+trusted-list: "Trusted List"
+trusted-list-browser: "Trusted List Browser"
+union-law: "Union law"
+union-or-national-law: "Union or national law"
+verifiable-credential: "Verifiable Credential"
+verifier-wallet-unit: "Verifier Wallet Unit"
+wallet-instance: "Wallet Instance"
+wallet-provider: "Wallet Provider"
+wallet-relying-party: "Wallet-Relying Party"
+wallet-relying-party-access-certificate: "Wallet-Relying Party Access Certificate"
+wallet-relying-party-registration-certificate: "Wallet-Relying Party Registration Certificate"
+wallet-secure-cryptographic-application: "Wallet Secure Cryptographic Application"
+wallet-secure-cryptographic-device: "Wallet Secure Cryptographic Device"
+wallet-solution: "Wallet Solution"
+wallet-unit: "Wallet Unit"
+wallet-unit-attestation: "Wallet Unit Attestation"
+wallet-user: "Wallet User"
+
 # ─── Acronyms & technical identifiers ─────────────────────────────────────────
-# These have unusual capitalisation that auto-Title Case cannot produce
+# Mixed-case abbreviations that auto-processing would mangle.
 
 ades: "AdES"
 ades-qc: "AdES/QC"
 asic: "ASiC"
 cades: "CAdES"
-xades: "XAdES"
-ce-marking: "CE Marking"
+lotl: "LOTL"
+pades: "PAdES"
+qc: "QC"
+qes: "QES"
+qscd: "QSCD"
 teu: "TEU"
 tfeu: "TFEU"
+xades: "XAdES"
 
-# ─── EU legal boilerplate phrases ─────────────────────────────────────────────
-# These are legal connectors that appear as terminology entries but should
-# preserve their conventional phrasing (lowercase, not Title Case)
+# ─── Generic terms with preserved acronyms ───────────────────────────────────
+# These are generic/lowercase terms but contain acronyms (ICT, DNS) that
+# must be preserved. Listed here to ensure the acronym casing is correct.
+
+dns-service-provider: "DNS service provider"
+ict-asset: "ICT asset"
+ict-concentration-risk: "ICT concentration risk"
+ict-intra-group-service-provider: "ICT intra-group service provider"
+ict-process: "ICT process"
+ict-product: "ICT product"
+ict-related-incident: "ICT-related incident"
+ict-risk: "ICT risk"
+ict-service: "ICT service"
+ict-services: "ICT services"
+ict-subcontractor-established-in-a-third-country: "ICT subcontractor established in a third country"
+ict-technical-specification: "ICT technical specification"
+ict-third-party-risk: "ICT third-party risk"
+ict-third-party-service-provider: "ICT third-party service provider"
+ict-third-party-service-provider-established-in-a-third-country: "ICT third-party service provider established in a third country"
+
+# ─── Legal boilerplate phrases ────────────────────────────────────────────────
+# Legal connectors and Latin phrases — always lowercase.
 
 by-way-of-derogation: "by way of derogation"
+directly-or-indirectly: "directly or indirectly"
+ex-ante: "ex ante"
+ex-post: "ex post"
+for-the-purposes-of: "for the purposes of"
+insofar-as: "insofar as"
+inter-alia: "inter alia"
+mutatis-mutandis: "mutatis mutandis"
+notwithstanding: "notwithstanding"
+public-or-private: "public or private"
+pursuant-to: "pursuant to"
 shall-be-deemed: "shall be deemed"
 where-applicable: "where applicable"
 without-prejudice-to: "without prejudice to"
 without-undue-delay: "without undue delay"
 
-# ─── Compound terms with specific casing ──────────────────────────────────────
-# Terms where auto-Title Case gets it wrong or where we want specific styling
+# ─── Special casing overrides ─────────────────────────────────────────────────
+# Generic terms that need specific casing different from their source form.
+# e.g., "Union law" where "Union" is a proper noun within a generic phrase.
 
-sua-attestation: "SUA Attestation"
-certificate-authority: "Certificate Authority"
-certificate-policy: "Certificate Policy"
-trust-anchor: "Trust Anchor"
-trusted-list: "Trusted List"
-trusted-list-browser: "Trusted List Browser"
-third-country: "Third Country"
-strong-customer-authentication: "Strong Customer Authentication"
-verifier-wallet-unit: "Verifier Wallet Unit"
-
-# ─── ICT terms ────────────────────────────────────────────────────────────────
-critical-ict-third-party-service-provider: "Critical ICT Third-Party Service Provider"
-
-# ─── Terms with deliberate lowercase particles ───────────────────────────────
-# (auto-Title Case handles these correctly, but listed for documentation)
-# catalogue-of-attributes: "Catalogue of Attributes"
-# body-governed-by-public-law: "Body Governed by Public Law"

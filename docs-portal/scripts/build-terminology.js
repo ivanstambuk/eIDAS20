@@ -51,7 +51,7 @@ const ABBREVIATIONS_FILE = join(__dirname, 'abbreviations.yaml');
 const CUSTOM_DICTIONARY_FILE = join(__dirname, 'custom-dictionary.yaml');
 
 // Canonical casing overrides: maps term IDs to preferred display casing
-// Terms not in this file get auto-Title Case applied
+// Terms not in this file keep their original source casing unchanged
 const CANONICAL_CASING_FILE = join(__dirname, 'canonical-casing.yaml');
 
 /**
@@ -496,7 +496,10 @@ function loadAbbreviations() {
 
 /**
  * Load canonical casing overrides from YAML file
- * Maps term IDs to preferred display name casing
+ * Maps term IDs to preferred display name casing.
+ *
+ * Terms listed here get their display name overridden.
+ * Terms NOT listed here keep their original source casing unchanged.
  * 
  * Returns: Map<termId, displayName>
  */
@@ -537,46 +540,10 @@ function loadCanonicalCasing() {
     }
 }
 
-/**
- * Apply Title Case to a term name
- * Capitalises the first letter of each word, except for common
- * prepositions/articles/conjunctions (unless first word).
- *
- * Words that are already ALL-CAPS (2+ chars) are left unchanged,
- * preserving acronyms like ICT, EU, GDPR.
- *
- * @param {string} text — The raw term name
- * @returns {string} — Title-cased term name
- */
-function toTitleCase(text) {
-    // Lowercase words to skip (unless first word)
-    const MINOR_WORDS = new Set([
-        'a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'from',
-        'if', 'in', 'into', 'nor', 'of', 'on', 'or', 'per', 'so',
-        'the', 'to', 'up', 'via', 'with', 'yet'
-    ]);
-
-    return text
-        .split(/\s+/)
-        .map((word, index) => {
-            // Keep ALL-CAPS words unchanged (acronyms: ICT, EU, GDPR)
-            if (word.length >= 2 && word === word.toUpperCase() && /^[A-Z]+$/.test(word)) {
-                return word;
-            }
-
-            const lower = word.toLowerCase();
-
-            // Minor words stay lowercase unless they are the first word
-            if (index > 0 && MINOR_WORDS.has(lower)) {
-                return lower;
-            }
-
-            // Capitalise first letter, lowercase the rest
-            // Handle hyphenated words: "third-party" → "Third-Party"
-            return lower.replace(/(^|-)([a-z])/g, (match, sep, char) => sep + char.toUpperCase());
-        })
-        .join(' ');
-}
+// NOTE: The toTitleCase() function was removed in the casing refactor.
+// Terms now preserve their original source casing by default.
+// Explicit overrides in canonical-casing.yaml handle Title Case for proper concepts,
+// acronyms, and legal phrases. See .agent/session/plan-terminology-casing-refactor.md.
 
 /**
  * Extract CELEX identifier from document content
@@ -1055,21 +1022,21 @@ function build() {
     const mergedTerms = mergeTerms(allTerms, documentTitles);
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // CANONICAL CASING: Apply Title Case to term display names
+    // CANONICAL CASING: Apply display name overrides from canonical-casing.yaml
     //
-    // Legal definitions use lowercase (e.g., 'wallet unit attestation' means…)
-    // but display should use Title Case ("Wallet Unit Attestation").
+    // Strategy: preserve original source casing by default.
+    // Only apply overrides for:
+    //   - Proper concepts → Title Case ("Wallet Unit Attestation")
+    //   - Acronyms → preserve special casing ("AdES", "CAdES")
+    //   - Legal phrases → explicit lowercase ("without prejudice to")
+    //   - Generic terms with acronyms → preserve acronym ("ICT risk")
     //
-    // Strategy:
-    //   1. Load explicit overrides from canonical-casing.yaml
-    //   2. For all other terms, apply auto-Title Case
-    //   3. Overrides take priority (handles: AdES, CAdES, ICT, etc.)
+    // Terms NOT in canonical-casing.yaml keep their original extracted casing.
     // ═══════════════════════════════════════════════════════════════════════════
-    console.log('\n🔠 Applying canonical casing to term display names...');
+    console.log('\n🔠 Applying canonical casing overrides to term display names...');
     const canonicalCasings = loadCanonicalCasing();
     let overrideCount = 0;
-    let autoTitleCaseCount = 0;
-    let unchangedCount = 0;
+    let preservedCount = 0;
 
     for (const term of mergedTerms) {
         const originalName = term.term;
@@ -1078,22 +1045,14 @@ function build() {
             // Explicit override from canonical-casing.yaml
             term.term = canonicalCasings.get(term.id);
             if (term.term !== originalName) overrideCount++;
-            else unchangedCount++;
         } else {
-            // Auto-Title Case
-            const titleCased = toTitleCase(originalName);
-            if (titleCased !== originalName) {
-                term.term = titleCased;
-                autoTitleCaseCount++;
-            } else {
-                unchangedCount++;
-            }
+            // Preserve original source casing
+            preservedCount++;
         }
     }
 
-    console.log(`   📋 Overrides from canonical-casing.yaml: ${overrideCount}`);
-    console.log(`   🔤 Auto-Title Cased: ${autoTitleCaseCount}`);
-    console.log(`   ✓  Already correct: ${unchangedCount}`);
+    console.log(`   📋 Overrides applied: ${overrideCount}`);
+    console.log(`   ✓  Original casing preserved: ${preservedCount}`);
 
     // Group sources by identical definition (DEC-058: Accordion Collapse UI)
     for (const term of mergedTerms) {
