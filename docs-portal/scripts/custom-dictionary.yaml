@@ -118,8 +118,9 @@ terms:
       (if a WUA is revoked, the PID Provider must revoke the PID per
       CIR 2024/2977 Art. 5(4)(b)). Only the Wallet Provider may revoke a WUA,
       and privacy-preserving techniques (such as once-only attestations, batch
-      issuance, or limited lifetimes) must be employed to ensure unlinkability
-      across transactions.
+      issuance, or limited lifetimes) must be employed to prevent colluding
+      PID Providers or Attestation Providers from correlating WUA presentations
+      across issuance sessions (ARF Topic A).
     source: Synthesized from CIR 2024/2979 Art. 3(2), 6, 7, Rec. 8-9; CIR 2024/2982 Art. 3(8), 4(3)(b); CIR 2024/2977 Art. 3(9), 5(4)(b); CIR 2025/0847 Art. 5(1); ARF §6.5.3.4; TS3 v1.3
     note: Enriched functional definition; WUA is issuance-only (TS3 v1.0 removed presentation references); the terse legal definition appears in Art. 2 of four implementing acts
 
