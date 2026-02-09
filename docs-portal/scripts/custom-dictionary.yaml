@@ -368,6 +368,303 @@ terms:
     source: Synthesized from CIR 2024/2979 Art. 2(3), 5, 6, Annex II; CIR 2024/2982 Art. 5(3); CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3
     note: Enriched functional definition; the terse legal definition ("the method to link person identification data or electronic attestations of attributes to a wallet unit") appears in CIR 2024/2979 Art. 2(3)
 
+  - term: wallet secure cryptographic device
+    definition: >-
+      A tamper-resistant device that provides an environment that is linked to
+      and used by the wallet secure cryptographic application (WSCA) to protect
+      critical assets and provide cryptographic functions for the secure
+      execution of critical operations. The WSCD is the hardware root of trust
+      in the EUDI Wallet architecture. Its key properties and requirements
+      include: (1) it protects cryptographic private keys throughout their
+      entire lifecycle — generation, storage, and use — such that private keys
+      are never exposed outside the WSCD boundary (CIR 2024/2979 Art. 4-5);
+      (2) it must be resistant to attackers with high attack potential, as
+      assessed under the requirements of assurance level high in Implementing
+      Regulation 2015/1502 (CIR 2024/2981 Annex IV); (3) it must be certified
+      to at least Common Criteria EAL4 with advanced methodical vulnerability
+      analysis comparable to AVA_VAN.5, or equivalent (CIR 2024/2981 Rec. 7);
+      (4) it may take several physical forms including embedded secure elements
+      (eSE) in user devices, external smartcards, or remote HSM-based
+      implementations (ARF Topic 9); (5) when not provided by the wallet
+      provider (e.g. an eSE embedded in the user's phone), the wallet solution
+      must establish and verify assumptions about the WSCD's security
+      properties as part of its certification (CIR 2024/2981 Annex IV);
+      and (6) cryptographic operations performed in the WSCD are not required
+      to be fully self-contained, but the WSCD must guarantee protection of
+      those operations against high-potential attacks (CIR 2024/2981 Annex IV).
+    source: Synthesized from CIR 2024/2979 Art. 2(12), 4-5; CIR 2024/2981 Rec. 7, Annex IV; ARF Annex 1 Section A.3 (Topic 9)
+    note: Enriched functional definition; the legal definition appears in Art. 2 of nine implementing acts
+
+  - term: wallet secure cryptographic application
+    definition: >-
+      An application that manages critical assets by being linked to and using
+      the cryptographic and non-cryptographic functions provided by the wallet
+      secure cryptographic device (WSCD). The WSCA is the software layer that
+      mediates between the wallet instance and the WSCD, orchestrating all
+      security-critical operations. Its key roles include: (1) managing
+      cryptographic keys — requesting key generation within the WSCD,
+      maintaining references to keys, and invoking signing and decryption
+      operations (CIR 2024/2979 Art. 4-5); (2) protecting critical assets
+      beyond just keys, including wallet unit attestation data, user
+      authentication secrets, and attestation-binding proofs (CIR 2024/2979
+      Rec. 6); (3) supporting the presentation of electronic attestations of
+      attributes, which is identified as a crucial WSCA functionality
+      (CIR 2024/2979 Rec. 6); (4) being subject to certification under
+      national certification schemes, where it must demonstrate resistance
+      against attackers with high attack potential (CIR 2024/2981 Annex IV);
+      (5) when provided as a Java Card applet to embedded secure elements,
+      following the technical specifications listed in CIR 2024/2979 Annex I
+      (CIR 2024/2979 Art. 4(2)); and (6) the wallet provider must ensure the
+      integrity, authenticity, and confidentiality of all communication between
+      wallet instances and WSCAs (CIR 2024/2979 Art. 4(2)).
+    source: Synthesized from CIR 2024/2979 Art. 2(11), 4-5, Rec. 6, Annex I; CIR 2024/2981 Annex IV; ARF Annex 1 Section A.3
+    note: Enriched functional definition; the legal definition appears in Art. 2 of nine implementing acts
+
+  - term: person identification data
+    definition: >-
+      A set of data that is issued in accordance with Union or national law
+      and that enables the establishment of the identity of a natural or legal
+      person, or of a natural person representing another natural person or
+      a legal person. Person identification data (PID) is the foundational
+      credential in the EUDI Wallet ecosystem — every wallet unit must
+      contain at least one valid PID before it can be used for other
+      operations (eIDAS Art. 5a(4)(d)). Key aspects include: (1) PID is
+      issued exclusively by Member States (or entities mandated by them)
+      and constitutes the authoritative digital identity of the holder
+      (eIDAS Art. 5a(12)); (2) it must be issued free of charge to every
+      natural person who requests it (eIDAS Art. 5a(16)); (3) PID must be
+      cryptographically bound to the wallet unit via the WSCD, preventing
+      transfer to another wallet (CIR 2024/2979 Art. 5-6); (4) PID
+      providers must identify themselves to the wallet unit using
+      wallet-relying party access certificates before issuance
+      (CIR 2024/2977 Art. 4(2)); (5) the minimum mandatory PID attributes
+      include current family name(s), current first name(s), date of birth,
+      and a unique persistent identifier, with optional attributes such as
+      nationality, address, and document metadata specified by the
+      Commission (eIDAS Art. 5a(13)); and (6) PID supports selective
+      disclosure, allowing users to present only a subset of their identity
+      attributes (CIR 2024/2982 Art. 5(4)).
+    source: Synthesized from eIDAS Art. 3(3), 5a(4)(d), 5a(12-16); CIR 2024/2977 Art. 4(2); CIR 2024/2979 Art. 5-6; CIR 2024/2982 Art. 5(4); ARF Annex 1 Section A.2
+    note: Enriched functional definition; the terse legal definition appears in eIDAS Art. 3(3)
+
+  - term: wallet-relying party access certificate
+    definition: >-
+      A certificate for electronic seals or signatures authenticating and
+      validating the wallet-relying party, issued by a provider of
+      wallet-relying party access certificates. These certificates are the
+      trust anchor through which relying parties prove their identity and
+      authorisation to wallet units during all interactions. Key aspects
+      include: (1) they are mandatory — any entity wishing to request
+      attributes from or issue attestations to a wallet unit must present
+      a valid access certificate (CIR 2024/2977 Art. 3(12), CIR 2024/2982
+      Art. 2(10-11)); (2) they are issued exclusively by providers mandated
+      by Member States (access certificate authorities), creating a
+      government-anchored chain of trust (CIR 2024/2977 Art. 3(13));
+      (3) the certificate must contain the relying party's registered
+      identity and the specific attributes they are authorised to request,
+      enabling the wallet to enforce data minimisation at the protocol
+      level (CIR 2024/2982 Art. 5(2)); (4) wallet instances must verify
+      the validity and revocation status of access certificates before
+      accepting issuance requests or sharing attributes (CIR 2024/2982
+      Art. 4(2), 5(2)); and (5) the technical format and content
+      requirements for access certificates are specified in CIR 2024/2977
+      Art. 3 and the standards listed in CIR 2024/2979 Annex II.
+    source: Synthesized from CIR 2024/2977 Art. 2(12-13), 3; CIR 2024/2979 Art. 2(14), Annex II; CIR 2024/2982 Art. 2(10-11), 4(2), 5(2)
+    note: Enriched functional definition; the legal definition appears in Art. 2 of five implementing acts
+
+  - term: wallet-relying party
+    definition: >-
+      A relying party that intends to rely upon wallet units. This term
+      distinguishes entities that interact specifically with EUDI Wallets
+      from the broader eIDAS concept of relying party. Wallet-relying
+      parties encompass three functional roles: (1) PID providers that
+      issue person identification data to wallet units (CIR 2024/2982
+      Art. 2(1)); (2) attestation providers that issue electronic
+      attestations of attributes (including QEAAs and PuB-EAAs) to wallet
+      units (CIR 2024/2982 Art. 2(1)); and (3) verifiers that request and
+      validate attributes from wallet units during presentation flows
+      (CIR 2024/2982 Art. 5). All wallet-relying parties must: register
+      with their Member State (eIDAS Art. 5b(1)); obtain a wallet-relying
+      party access certificate from a mandated provider (CIR 2024/2977
+      Art. 3(12-13)); authenticate themselves to wallet units using that
+      certificate (CIR 2024/2982 Art. 5(2)); and comply with embedded
+      disclosure policies attached to attestations (CIR 2024/2979 Art. 11).
+      The wallet must enable its user to verify the identity of the
+      wallet-relying party before proceeding with any data exchange (eIDAS
+      Art. 5a(4)(a), CIR 2024/2982 Art. 5(5)).
+    source: Synthesized from eIDAS Art. 5a(4)(a), 5b; CIR 2024/2977 Art. 3(12-13); CIR 2024/2979 Art. 11; CIR 2024/2982 Art. 2(1, 10-14), 5
+    note: Enriched functional definition; the legal definition appears in Art. 2 of six implementing acts
+
+  - term: embedded disclosure policy
+    definition: >-
+      A set of rules, embedded in an electronic attestation of attributes by
+      its provider, that indicates the conditions that a wallet-relying party
+      has to meet to access the electronic attestation of attributes. Embedded
+      disclosure policies are a privacy-by-design mechanism that allows
+      attestation providers to enforce access controls beyond what the wallet
+      user alone decides. Key aspects include: (1) the policy is embedded at
+      issuance time and travels with the attestation throughout its lifecycle
+      (CIR 2024/2979 Art. 11); (2) wallet providers must implement
+      mechanisms to evaluate and enforce these policies during presentation
+      flows, ensuring that relying parties meet the specified conditions
+      before attributes are disclosed (CIR 2024/2979 Art. 11); (3) the
+      conditions may restrict which categories of relying parties may access
+      the attestation, based on their registered purpose or sector
+      (CIR 2024/2982 Art. 2(13)); (4) the wallet instance must inform the
+      user about the embedded policy and its implications before presenting
+      the attestation (CIR 2024/2982 Art. 5(5)); and (5) embedded
+      disclosure policies work in conjunction with, not as a replacement
+      for, the user's own consent — the user retains final control over
+      whether to share the attestation (CIR 2024/2982 Art. 5(4)).
+    source: Synthesized from CIR 2024/2979 Art. 2(9), 11; CIR 2024/2981 Art. 2(14); CIR 2024/2982 Art. 2(13), 5(4-5)
+    note: Enriched functional definition; the legal definition appears in Art. 2 of three implementing acts
+
+  - term: electronic signature
+    definition: >-
+      Data in electronic form which is attached to or logically associated
+      with other data in electronic form and which is used by the signatory
+      to sign. The eIDAS Regulation establishes a three-tier hierarchy of
+      electronic signatures with increasing legal strength: (1) simple
+      electronic signatures, which shall not be denied legal effect solely
+      because they are in electronic form (eIDAS Art. 25(1)); (2) advanced
+      electronic signatures, which must be uniquely linked to and capable
+      of identifying the signatory, created using data under the signatory's
+      sole control, and linked to the signed data so that any subsequent
+      change is detectable (eIDAS Art. 26); and (3) qualified electronic
+      signatures, created by a qualified signature creation device and based
+      on a qualified certificate, which have the legal effect equivalent to
+      handwritten signatures across all Member States (eIDAS Art. 25(2-3)).
+      In the EUDI Wallet context, wallet users who are natural persons must
+      have free-of-charge access to qualified electronic signature creation
+      for non-professional purposes (eIDAS Art. 5a(2)), with the wallet
+      interfacing with local, external, or remote QSCDs for key operations
+      (CIR 2024/2979 Art. 12).
+    source: Synthesized from eIDAS Art. 3(10-12), 25-26; CIR 2024/2979 Art. 12; eIDAS Art. 5a(2)
+    note: Enriched functional definition; the terse legal definition appears in eIDAS Art. 3(10)
+
+  - term: electronic seal
+    definition: >-
+      Data in electronic form, which is attached to or logically associated
+      with other data in electronic form to ensure the latter's origin and
+      integrity. Electronic seals are the organisational counterpart of
+      electronic signatures — where signatures are for natural persons,
+      seals are for legal persons (organisations). The eIDAS Regulation
+      establishes a parallel three-tier hierarchy: (1) simple electronic
+      seals, which shall not be denied legal effect solely because they are
+      in electronic form (eIDAS Art. 35(1)); (2) advanced electronic seals,
+      which must be uniquely linked to and capable of identifying the
+      creator, created using data under the creator's high degree of
+      confidence, and linked to the sealed data so that changes are
+      detectable (eIDAS Art. 36); and (3) qualified electronic seals,
+      which enjoy a presumption of integrity and correctness of origin
+      across all Member States (eIDAS Art. 35(2)). In the EUDI Wallet
+      ecosystem, electronic seals play critical infrastructure roles:
+      wallet unit attestations are signed or sealed by wallet providers
+      (CIR 2024/2979 Art. 3(2)), wallet-relying party access certificates
+      are certificates for seals or signatures (CIR 2024/2977 Art. 3(12)),
+      and attestation providers seal the credentials they issue to wallet
+      units (CIR 2024/2977 Art. 4).
+    source: Synthesized from eIDAS Art. 3(25-27), 35-36; CIR 2024/2979 Art. 3(2); CIR 2024/2977 Art. 3(12), 4
+    note: Enriched functional definition; the terse legal definition appears in eIDAS Art. 3(25)
+
+  - term: qualified electronic signature
+    definition: >-
+      An advanced electronic signature that is created by a qualified
+      electronic signature creation device, and which is based on a
+      qualified certificate for electronic signatures. Qualified electronic
+      signatures represent the highest level of electronic signing under
+      eIDAS and carry the legal equivalence of handwritten signatures
+      (eIDAS Art. 25(2)). A QES issued in one Member State shall be
+      recognised as such in all other Member States (eIDAS Art. 25(3)).
+      In the EUDI Wallet context: (1) every wallet must provide access to
+      qualified electronic signature creation functionality for natural
+      persons, free of charge for non-professional purposes (eIDAS
+      Art. 5a(2)); (2) the wallet may use a local QSCD (embedded in the
+      user's device), an external QSCD (e.g. a smartcard), or a remote
+      QSCD managed by a qualified trust service provider (CIR 2024/2979
+      Art. 12); (3) the QSCD must meet the requirements of eIDAS Annex II
+      and be certified accordingly (eIDAS Art. 29-30); and (4) the wallet
+      provider must ensure the registration of the user's identity by a
+      QTSP before issuing qualified certificates for signatures
+      (eIDAS Art. 24(1)).
+    source: Synthesized from eIDAS Art. 3(12), 25-26, 28-30, Annex II; CIR 2024/2979 Art. 12; eIDAS Art. 5a(2)
+    note: Enriched functional definition; the legal definition appears in eIDAS Art. 3(12)
+
+  - term: qualified electronic seal
+    definition: >-
+      An advanced electronic seal, which is created by a qualified electronic
+      seal creation device, and that is based on a qualified certificate for
+      electronic seal. Qualified electronic seals are the organisational
+      equivalent of qualified electronic signatures — they provide the
+      strongest level of integrity and origin assurance for data sealed by
+      legal persons. A QESeal enjoys a presumption of integrity of the data
+      and of correctness of the origin of the data to which it is linked
+      (eIDAS Art. 35(2)), and when issued in one Member State it shall be
+      recognised in all others (eIDAS Art. 35(3)). In the EUDI Wallet
+      ecosystem, qualified electronic seals are integral to the trust
+      infrastructure: (1) wallet unit attestations (WUAs) are signed or
+      sealed by wallet providers using qualified certificates
+      (CIR 2024/2979 Art. 3(2)); (2) PID providers and attestation
+      providers seal the credentials they issue (CIR 2024/2977 Art. 4);
+      and (3) wallet-relying party access certificates may be certificates
+      for electronic seals (CIR 2024/2977 Art. 3(12)).
+    source: Synthesized from eIDAS Art. 3(27), 35-36, 38-40, Annex III; CIR 2024/2979 Art. 3(2); CIR 2024/2977 Art. 3(12), 4
+    note: Enriched functional definition; the legal definition appears in eIDAS Art. 3(27)
+
+  - term: qualified trust service
+    definition: >-
+      A trust service that meets the applicable requirements laid down in the
+      eIDAS Regulation. Qualified status is the regulatory quality mark that
+      elevates a trust service to the highest tier of legal recognition. To
+      achieve and maintain qualified status: (1) the trust service provider
+      must undergo a conformity assessment by an accredited conformity
+      assessment body (eIDAS Art. 20-21); (2) the service must be listed
+      in the national Trusted List published by the Member State (eIDAS
+      Art. 22); (3) the service must comply with the specific requirements
+      laid down for each service type — qualified certificates for
+      electronic signatures (eIDAS Art. 28, Annex I), qualified
+      certificates for electronic seals (eIDAS Art. 38, Annex III),
+      qualified time stamps (eIDAS Art. 42), qualified electronic
+      registered delivery (eIDAS Art. 44), qualified website authentication
+      certificates (eIDAS Art. 45a), qualified electronic attestations of
+      attributes (eIDAS Art. 45d-45e), qualified electronic archiving
+      (eIDAS Art. 45g), and qualified electronic ledgers (eIDAS Art. 45i);
+      and (4) qualified trust services shall be recognised across all
+      Member States without additional requirements, ensuring cross-border
+      interoperability. The distinction between qualified and non-qualified
+      services fundamentally affects legal effect: qualified electronic
+      signatures have handwritten-equivalent status (eIDAS Art. 25(2)),
+      qualified seals enjoy a presumption of integrity (eIDAS Art. 35(2)),
+      and QEAAs have the legal effect of lawfully issued paper attestations
+      (eIDAS Art. 45f(1)).
+    source: Synthesized from eIDAS Art. 3(17), 20-24, 25(2), 35(2), 45f(1); eIDAS Annexes I, III
+    note: Enriched functional definition; the extremely terse legal definition ("a trust service that meets the applicable requirements laid down in this Regulation") appears in eIDAS Art. 3(17)
+
+  - term: validation
+    definition: >-
+      The process of verifying and confirming that data in electronic form
+      are valid in accordance with the eIDAS Regulation. In the EUDI Wallet
+      ecosystem, validation is a multi-layered operation that occurs at
+      several points: (1) wallet instance validation — the wallet verifies
+      the wallet-relying party access certificate presented by relying
+      parties or issuers, checking its authenticity, validity period, and
+      revocation status before proceeding (CIR 2024/2982 Art. 4(2), 5(2));
+      (2) WUA validation — relying parties and issuers validate the wallet
+      unit attestation to confirm they are interacting with a genuine,
+      certified wallet unit (CIR 2024/2982 Art. 3); (3) attestation
+      validation — relying parties verify the cryptographic binding,
+      issuer signatures/seals, validity period, and revocation status of
+      PIDs and EAAs received from wallets (eIDAS Art. 5b(9), CIR 2024/2982
+      Art. 5(3)); (4) signature/seal validation — qualified validation
+      services for electronic signatures and seals confirm the qualified
+      status and validity of signatures/seals at a given time (eIDAS
+      Art. 33, 40); and (5) validation must be performed in accordance
+      with the cryptographic standards listed in CIR 2024/2979 Annex II,
+      using the trust anchors published in national Trusted Lists
+      (eIDAS Art. 22).
+    source: Synthesized from eIDAS Art. 3(41), 22, 33, 40, 5b(9); CIR 2024/2979 Annex II; CIR 2024/2982 Art. 3, 4(2), 5(2-3)
+    note: Enriched functional definition; the terse legal definition ("the process of verifying and confirming that data in electronic form are valid") appears in eIDAS Art. 3(41)
+
   - term: Relying Party Instance
     definition: >-
       A software and/or hardware module with the capability to interact with 
