@@ -43,13 +43,13 @@ tfeu: "TFEU"
 
 # ─── EU legal boilerplate phrases ─────────────────────────────────────────────
 # These are legal connectors that appear as terminology entries but should
-# preserve their conventional phrasing (mostly lowercase)
+# preserve their conventional phrasing (lowercase, not Title Case)
 
-by-way-of-derogation: "By Way of Derogation"
-shall-be-deemed: "Shall Be Deemed"
-where-applicable: "Where Applicable"
-without-prejudice-to: "Without Prejudice To"
-without-undue-delay: "Without Undue Delay"
+by-way-of-derogation: "by way of derogation"
+shall-be-deemed: "shall be deemed"
+where-applicable: "where applicable"
+without-prejudice-to: "without prejudice to"
+without-undue-delay: "without undue delay"
 
 # ─── Compound terms with specific casing ──────────────────────────────────────
 # Terms where auto-Title Case gets it wrong or where we want specific styling

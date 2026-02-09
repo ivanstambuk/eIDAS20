@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T20:53:21.816Z",
+  "generated": "2026-02-09T20:58:17.986Z",
   "statistics": {
     "totalTerms": 359,
     "totalDefinitions": 519,
@@ -1828,7 +1828,7 @@
     },
     {
       "id": "by-way-of-derogation",
-      "term": "By Way of Derogation",
+      "term": "by way of derogation",
       "sources": [
         {
           "definition": "A legal phrase introducing an exception or deviation from a general rule. It signals that the provision temporarily or conditionally sets aside the normal rules under specific circumstances. Unlike \"notwithstanding,\" a derogation is typically a formally recognized exception with specific conditions for its application.",
@@ -14657,7 +14657,7 @@
     },
     {
       "id": "shall-be-deemed",
-      "term": "Shall Be Deemed",
+      "term": "shall be deemed",
       "sources": [
         {
           "definition": "A legal phrase creating a legal fiction or presumption. It establishes that something is legally treated as true or equivalent to something else, regardless of actual facts. Example: \"shall be deemed to comply\" means the entity is legally presumed compliant if certain conditions are met, even without further verification.",
@@ -19359,7 +19359,7 @@
     },
     {
       "id": "where-applicable",
-      "term": "Where Applicable",
+      "term": "where applicable",
       "sources": [
         {
           "definition": "A legal phrase indicating that a provision applies only in certain circumstances or to certain entities. It creates conditional applicability, meaning the requirement only takes effect when the relevant conditions are met. Used to provide flexibility for diverse situations across Member States.",
@@ -19399,7 +19399,7 @@
     },
     {
       "id": "without-prejudice-to",
-      "term": "Without Prejudice To",
+      "term": "without prejudice to",
       "sources": [
         {
           "definition": "A legal phrase meaning \"this provision applies, but it does not affect, override, or diminish the rights, obligations, or provisions established by [the referenced provision].\" It signals that both rules coexist and the referenced provision maintains its full force. Example: \"Without prejudice to paragraph 1\" means paragraph 1 still fully applies.",
@@ -19439,7 +19439,7 @@
     },
     {
       "id": "without-undue-delay",
-      "term": "Without Undue Delay",
+      "term": "without undue delay",
       "sources": [
         {
           "definition": "A legal phrase requiring action as soon as reasonably possible under the circumstances, without unnecessary or unjustified postponement. It imposes a flexible but enforceable time obligation, allowing for reasonable delays caused by circumstances beyond control. Often paired with a maximum deadline: \"without undue delay and in any event within 24 hours.\"",
