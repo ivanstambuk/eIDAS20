@@ -694,6 +694,34 @@ https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:{CELEX}#{anchor}
 
 **Registry:** External documents are listed in `docs-portal/config/external-documents.yaml`.
 
+#### Node.js Script Execution (ESM Project — Use .cjs Files)
+
+The `docs-portal/` has `"type": "module"` in `package.json`, which means all `.js` files are treated as ES Modules. This has two consequences:
+
+**1. Inline `node -e` with multiline code WILL FAIL:**
+
+Multiline JavaScript passed via `node -e "..."` gets mangled by bash — quotes, parentheses, and special characters are interpreted as shell syntax. Symptoms: `bash: syntax error near unexpected token '('` and zombie processes.
+
+**2. Ad-hoc `.js` scripts using `require()` WILL FAIL:**
+
+`require()` is CommonJS and is not available in ESM mode.
+
+**Correct patterns:**
+
+| Need | Approach |
+|------|----------|
+| **Quick one-liner** | `node -p "require('fs').readFileSync('file.json','utf-8').length"` — BUT keep it genuinely one-line |
+| **Multi-line analysis** | Write a `.cjs` file (e.g., `scripts/my-analysis.cjs`) with `require()` syntax, run `node scripts/my-analysis.cjs` |
+| **Permanent script** | Write a proper `.js` file with `import` syntax (ESM) |
+
+**Anti-patterns:**
+- ❌ `node -e "const fs = require('fs');\nconst data = ..."` — multiline, will break
+- ❌ Creating `scripts/analysis.js` with `require()` — will fail because ESM
+- ❌ Retrying the same failing `node -e` multiple times
+
+**Correct pattern:**
+- ✅ Write `scripts/analysis.cjs` → run `node scripts/analysis.cjs` → delete when done
+
 ---
 
 ## 🖥️ WSL Browser Testing
