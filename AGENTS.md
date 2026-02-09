@@ -1304,6 +1304,28 @@ Uses **conventional commits**:
 - `docs:` - Documentation updates
 - `chore:` - Maintenance tasks
 
+### ⚠️ MANDATORY: Push immediately after every commit
+
+**Every `git commit` MUST be immediately followed by `git push`.**
+
+```bash
+# ✅ CORRECT — always commit + push together
+git add -A && git commit -m "feat: description" && git push
+
+# ❌ WRONG — NEVER accumulate local commits without pushing
+git commit -m "feat: first change"
+git commit -m "fix: second change"   # ← local-only, divergence risk
+git commit -m "chore: third change"  # ← will cause rebase conflicts
+git push                             # ← TOO LATE, remote may have diverged
+```
+
+**Why:** Accumulated local commits cause branch divergence when VS Code's git
+sync, file watchers, or other agents push to the same remote. Generated files
+(e.g., `vcq-data.json`, `metadata.json`) change on every build, causing
+merge conflicts during rebase that are extremely painful to resolve manually.
+
+**Rule:** One commit → one push. No exceptions.
+
 ---
 
-*Last updated: 2026-01-28*
+*Last updated: 2026-02-10*
