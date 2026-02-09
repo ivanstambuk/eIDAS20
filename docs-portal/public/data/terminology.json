@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T21:53:50.635Z",
+  "generated": "2026-02-09T22:00:57.005Z",
   "statistics": {
     "totalTerms": 359,
     "totalDefinitions": 519,
@@ -13835,14 +13835,14 @@
           "displayOrder": 1
         },
         {
-          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. Relying parties that specifically intend to interact with EUDI Wallet Units are termed wallet-relying parties and are subject to additional registration, authentication, and data-minimisation obligations (see wallet-relying party). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store personal data exchanged during the interaction (eIDAS Art. 5b(10)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)).",
           "documentId": null,
           "documentTitle": "Internal",
           "documentCategory": "internal",
           "documentType": "internal",
           "celex": null,
-          "articleId": "article-Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
-          "articleNumber": "Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+          "articleId": "article-eIDAS Art. 3(6), 5b, 5c",
+          "articleNumber": "eIDAS Art. 3(6), 5b, 5c",
           "displayOrder": 5
         }
       ],
@@ -13867,17 +13867,17 @@
           "isVariant": false
         },
         {
-          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+          "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. Relying parties that specifically intend to interact with EUDI Wallet Units are termed wallet-relying parties and are subject to additional registration, authentication, and data-minimisation obligations (see wallet-relying party). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store personal data exchanged during the interaction (eIDAS Art. 5b(10)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)).",
           "sources": [
             {
-              "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. In the EUDI Wallet ecosystem, relying parties that intend to rely upon wallet units (wallet-relying parties) must: (1) register with the Member State in which they are established, providing their identity, the attributes they intend to request, and their intended purpose (eIDAS Art. 5b(1-2)); (2) not request any data beyond what was indicated during registration (eIDAS Art. 5b(3)); (3) authenticate themselves to wallet users using wallet-relying party access certificates issued by a mandated access certificate authority (CIR 2024/2977 Art. 3(12), CIR 2024/2982 Art. 2(10-11)); (4) authenticate and validate the wallet unit attestation presented by the wallet (CIR 2024/2982 Art. 3); (5) accept pseudonyms when identification is not required by Union or national law (eIDAS Art. 5b(9)); and (6) be responsible for carrying out the authentication and validation of person identification data and attestations received from wallets (eIDAS Art. 5b(9)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors (transport, energy, banking, health, etc.) shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store transaction content data (eIDAS Art. 5b(10)).",
+              "definition": "A natural or legal person that relies upon electronic identification, European Digital Identity Wallets or other electronic identification means, or upon a trust service. Relying parties that specifically intend to interact with EUDI Wallet Units are termed wallet-relying parties and are subject to additional registration, authentication, and data-minimisation obligations (see wallet-relying party). Intermediaries acting on behalf of relying parties are deemed to be relying parties themselves and shall not store personal data exchanged during the interaction (eIDAS Art. 5b(10)). Public sector relying parties shall accept wallets within 24 months of the implementing acts entering into force; private sector relying parties in regulated sectors shall accept them within 36 months, upon voluntary user request (eIDAS Art. 5b(10), 5c(2)).",
               "documentId": null,
               "documentTitle": "Internal",
               "documentCategory": "internal",
               "documentType": "internal",
               "celex": null,
-              "articleId": "article-Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
-              "articleNumber": "Synthesized from eIDAS Art. 3(6), 5b, 5c; CIR 2024/2977 Art. 3(12-13); CIR 2024/2982 Art. 2(1, 10-14), 3, 5; ARF Annex 1 Section A.2, A.3",
+              "articleId": "article-eIDAS Art. 3(6), 5b, 5c",
+              "articleNumber": "eIDAS Art. 3(6), 5b, 5c",
               "displayOrder": 5
             }
           ],
