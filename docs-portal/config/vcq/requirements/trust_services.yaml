@@ -4,18 +4,51 @@ requirements:
     category: registration
     requirement: Obtain and maintain qualified trust service provider (QTSP) status
     explanation: |
-      To provide qualified trust services, the vendor must obtain QTSP status 
-      from a conformity assessment body in a Member State and be listed on 
-      the national Trusted List.
+      To provide qualified trust services, the vendor must obtain
+      QTSP status from a conformity assessment body in a Member
+      State and be listed on the national Trusted List.
+
+      **Article 21 — Initiation of qualified status:**
+      A trust service provider may start its activity as a
+      qualified trust service provider only after the qualified
+      status, and where applicable, the qualified status of the
+      trust services it provides, has been verified by the
+      supervisory body and the relevant information has been
+      entered in the Trusted List.
+
+      **Qualification process:**
+      The process to obtain QTSP status typically involves:
+      - Submitting a notification to the supervisory body
+      - Undergoing initial conformity assessment by an
+        accredited CAB (Conformity Assessment Body)
+      - Demonstrating compliance with Article 24 requirements
+      - Receiving formal qualification decision
+      - Being listed on the national Trusted List
+
+      **Trust service scope:**
+      QTSP status may cover one or more qualified trust services:
+      - Qualified Electronic Signatures (QES)
+      - Qualified Electronic Seals (QSeal)
+      - Qualified Electronic Attestations of Attributes (QEAA)
+      - Qualified Electronic Time Stamps (QTS)
+      - Qualified Electronic Registered Delivery Service (QERDS)
+      - Qualified Website Authentication Certificates (QWAC)
+      Each service type requires separate qualification.
+
+      **Trusted List inclusion:**
+      National Trusted Lists are published by Member States and
+      aggregated via the List of Trusted Lists (LOTL). Inclusion
+      on the Trusted List is the primary mechanism for cross-border
+      recognition of the QTSP status.
     legalBasis:
       regulation: 2014/910
       article: Article 21
-      paragraph: ""
+      paragraph: "1"
     legalText: |
-      A trust service provider may start its activity as a qualified trust 
-      service provider only after the qualified status, and where applicable, 
-      the qualified status of the trust services it provides, has been 
-      verified.
+      A trust service provider may start its activity as a
+      qualified trust service provider only after the qualified
+      status, and where applicable, the qualified status of the
+      trust services it provides, has been verified.
     roles: []
     productCategories:
       - trust_services
@@ -25,16 +58,47 @@ requirements:
     category: registration
     requirement: Undergo regular conformity assessment (at least every 24 months)
     explanation: |
-      QTSPs must undergo conformity assessment at least every 24 months 
-      by an accredited conformity assessment body to verify continued 
-      compliance with eIDAS requirements.
+      QTSPs must undergo conformity assessment at least every
+      24 months by an accredited conformity assessment body to
+      verify continued compliance with eIDAS requirements.
+
+      **Article 20(1) — Audit frequency:**
+      Qualified trust service providers shall be subject to
+      audits at least every 24 months by a conformity assessment
+      body. The CAB must be accredited under Regulation (EC)
+      No 765/2008 for the relevant scope.
+
+      **Conformity assessment scope:**
+      The assessment covers:
+      - Compliance with Article 24 general requirements
+      - Service-specific requirements (QES, QSeal, QEAA, etc.)
+      - Security measures and risk management
+      - Personnel competence and training
+      - Infrastructure and operational procedures
+      - Incident management and business continuity
+
+      **Assessment outcomes:**
+      Possible outcomes include:
+      - Full conformity — no findings
+      - Conformity with observations — minor issues noted
+      - Non-conformity — corrective actions required within
+        a specified timeframe
+      - Critical non-conformity — potential suspension of
+        qualified status
+
+      **Report submission:**
+      The conformity assessment report must be submitted to
+      the supervisory body. The supervisory body may request
+      additional assessments at any time if there is reason
+      to believe that the QTSP no longer meets the requirements.
     legalBasis:
       regulation: 2014/910
       article: Article 20
       paragraph: "1"
     legalText: |
-      Qualified trust service providers shall be subject to audits at least 
-      every 24 months by a conformity assessment body.
+      Qualified trust service providers shall be subject to
+      audits at least every 24 months by a conformity
+      assessment body.
     roles: []
     productCategories:
       - trust_services
@@ -44,13 +108,48 @@ requirements:
     category: registration
     requirement: Notify supervisory body of changes affecting qualified status
     explanation: |
-      The QTSP must notify the competent supervisory body of any significant 
-      changes that could affect the qualified status, including organizational 
-      changes, security incidents, or policy modifications.
+      The QTSP must notify the competent supervisory body of
+      any significant changes that could affect the qualified
+      status, including organisational changes, security
+      incidents, or policy modifications.
+
+      **Article 24(2)(i) — Notification obligation:**
+      The QTSP is required to inform the supervisory body
+      without undue delay of any changes that may affect
+      its ability to fulfil the requirements for qualified
+      trust service provision.
+
+      **Types of notifiable changes:**
+      - Organisational: ownership changes, mergers, relocations,
+        management restructuring
+      - Technical: infrastructure changes, algorithm migrations,
+        QSCD replacements, data centre moves
+      - Security: breaches (also covered by Art. 19), policy
+        changes, risk assessment updates
+      - Legal: regulatory changes affecting operations,
+        contractual disputes with CABs
+      - Personnel: changes in key personnel (CISO, DPO,
+        compliance officers)
+
+      **Customer notification:**
+      Beyond supervisory body notification, the QTSP should
+      also have procedures for notifying customers when
+      changes may affect their use of the trust services.
+
+      **Proactive engagement:**
+      Best practice includes maintaining a standing regular
+      cadence with the supervisory body beyond mandatory
+      incident reporting, such as annual reviews or quarterly
+      updates.
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: 2(i)
+      paragraph: "2(i)"
+    legalText: |
+      Qualified trust service providers shall inform the
+      supervisory body of any change in the provision of
+      qualified trust services and any intention to cease
+      those activities.
     roles: []
     productCategories:
       - trust_services
@@ -60,16 +159,50 @@ requirements:
     category: security
     requirement: Use qualified electronic signature/seal creation devices (QSCDs)
     explanation: |
-      Qualified signatures and seals must be created using QSCDs that meet 
-      the requirements of Annex II of eIDAS, ensuring keys cannot be 
-      extracted and that the creation environment is secure.
+      Qualified signatures and seals must be created using
+      QSCDs that meet the requirements of Annex II of eIDAS,
+      ensuring keys cannot be extracted and that the creation
+      environment is secure.
+
+      **Article 29 — QSCD mandate:**
+      Qualified electronic signatures shall be created by a
+      qualified electronic signature creation device. This is
+      a non-negotiable requirement for qualified status.
+
+      **Annex II requirements:**
+      QSCDs must ensure:
+      - Confidentiality of electronic signature creation data
+      - Signature creation data cannot practically be derived
+      - Signature creation data is protected against forgery
+      - Signature creation data can be reliably protected by
+        the legitimate signatory against use by others
+
+      **QSCD certification:**
+      QSCDs must be certified against:
+      - Common Criteria EAL4+ with AVA_VAN.5, or
+      - Equivalent security level per national scheme
+      The certification must cover the specific product version
+      and configuration in use.
+
+      **QSCD categories:**
+      - Local QSCDs: smart cards, USB tokens, TPMs
+      - Remote QSCDs: server-side HSMs managed by the QTSP
+        (see VEND-TSP-008 for remote signing)
+      Each category has different operational requirements.
+
+      **QSCD lifecycle management:**
+      - Procurement from certified manufacturers
+      - Secure provisioning and activation
+      - Ongoing monitoring and firmware updates
+      - Secure decommissioning and key destruction
+      - Multi-person approval for sensitive operations
     legalBasis:
       regulation: 2014/910
       article: Article 29
-      paragraph: ""
+      paragraph: "1"
     legalText: |
-      Qualified electronic signatures shall be created by a qualified 
-      electronic signature creation device.
+      Qualified electronic signatures shall be created by a
+      qualified electronic signature creation device.
     roles: []
     productCategories:
       - trust_services
@@ -79,17 +212,48 @@ requirements:
     category: security
     requirement: Protect signature/seal creation data against duplication and theft
     explanation: |
-      The QTSP must implement comprehensive security measures to protect 
-      electronic signature creation data (private keys) from duplication, 
-      theft, or unauthorized access.
+      The QTSP must implement comprehensive security measures
+      to protect electronic signature creation data (private
+      keys) from duplication, theft, or unauthorised access.
+
+      **Article 24(2)(e) — Protection obligation:**
+      Take appropriate measures against falsification and theft
+      of data and against forgery or unauthorised modification
+      of electronic signature creation data.
+
+      **Physical security:**
+      - Secure facilities with access control (biometric,
+        card-based, multi-factor)
+      - CCTV monitoring and intrusion detection
+      - Environmental controls (fire, flood, power)
+      - Secure storage for backup key material
+
+      **Logical security:**
+      - HSM-based key storage with tamper-evident seals
+      - Key usage logging and real-time monitoring
+      - Role-based access with separation of duties
+      - Multi-person authorisation for sensitive operations
+      - Encrypted key backup with split knowledge
+
+      **Operational security:**
+      - Background checks for personnel with key access
+      - Regular security audits and penetration testing
+      - Incident detection and response procedures
+      - Key compromise recovery plan
+
+      **Anti-duplication measures:**
+      - Hardware-backed key generation (keys never exist
+        outside HSM boundary)
+      - No key export capability in production configuration
+      - Audit trail for all key operations
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: 2(e)
+      paragraph: "2(e)"
     legalText: |
-      Take appropriate measures against falsification and theft of data and 
-      against forgery or unauthorised modification of electronic signature 
-      creation data.
+      Take appropriate measures against falsification and
+      theft of data and against forgery or unauthorised
+      modification of electronic signature creation data.
     roles: []
     productCategories:
       - trust_services
@@ -99,16 +263,56 @@ requirements:
     category: security
     requirement: Maintain disaster recovery and business continuity capabilities
     explanation: |
-      The QTSP must have tested disaster recovery procedures and business 
-      continuity plans to ensure service availability and data integrity 
-      even in adverse circumstances.
+      The QTSP must have tested disaster recovery procedures
+      and business continuity plans to ensure service
+      availability and data integrity even in adverse
+      circumstances.
+
+      **Article 24(2)(h) — Continuity obligation:**
+      Have a termination plan to ensure continuity of service,
+      and have a valid and up-to-date termination plan. This
+      extends to disaster recovery and business continuity
+      planning.
+
+      **Recovery objectives:**
+      The QTSP must define and test:
+      - Recovery Time Objective (RTO): maximum acceptable
+        downtime for trust services
+      - Recovery Point Objective (RPO): maximum acceptable
+        data loss window
+      These should be specified in SLAs and validated
+      through regular testing.
+
+      **Geographic redundancy:**
+      - Multiple data centres in different geographic
+        locations
+      - Real-time or near-real-time data replication
+      - Automatic failover capability
+      - Regular failover testing (at least annually)
+
+      **Termination plan:**
+      Per Article 24(2)(h), the QTSP must maintain a
+      termination plan that includes:
+      - Notification procedures for customers and the
+        supervisory body
+      - Transfer of revocation lists and OCSP services to
+        a Trusted Archivist for long-term verifiability
+      - Archive and repository access provisions
+      - Key destruction procedures
+      - Timeline for orderly wind-down
+
+      **Testing cadence:**
+      DR procedures should be tested at least annually,
+      with results documented and shared with the
+      supervisory body as part of conformity assessment.
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: 2(h)
+      paragraph: "2(h)"
     legalText: |
-      Have a termination plan to ensure continuity of service, and have a 
-      valid and up-to-date termination plan.
+      Have a termination plan to ensure continuity of
+      service, and have a valid and up-to-date termination
+      plan.
     roles: []
     productCategories:
       - trust_services
@@ -118,17 +322,55 @@ requirements:
     category: security
     requirement: Notify supervisory body of security breaches within 24 hours
     explanation: |
-      The QTSP must notify the supervisory body without undue delay, and 
-      in any case within 24 hours, of any security breach with significant 
-      impact on the trust service or personal data.
+      The QTSP must notify the supervisory body without undue
+      delay, and in any case within 24 hours, of any security
+      breach with significant impact on the trust service or
+      personal data.
+
+      **Article 19(2) — Notification timeline:**
+      Where a trust service provider detects a breach of
+      security or loss of integrity that has a significant
+      impact on the trust service provided, it shall notify
+      the supervisory body within 24 hours.
+
+      **Breach classification:**
+      The QTSP must have a process for classifying breaches:
+      - **Critical**: key compromise, CA certificate breach,
+        mass certificate revocation required
+      - **High**: system intrusion affecting trust service
+        infrastructure, data exfiltration
+      - **Medium**: operational disruption, failed controls
+      - **Low**: minor policy violations, resolved quickly
+      Only breaches with "significant impact" trigger the
+      24-hour notification requirement.
+
+      **Notification content:**
+      The notification to the supervisory body should include:
+      - Nature and scope of the breach
+      - Date and time of detection
+      - Systems and services affected
+      - Estimated number of affected users
+      - Measures taken or proposed to address the breach
+      - Contact point for further information
+
+      **Customer notification:**
+      Beyond supervisory body notification, the QTSP must
+      notify affected customers where the breach may affect
+      the integrity or availability of their trust services.
+
+      **GDPR interaction:**
+      If personal data is involved, parallel notification to
+      the Data Protection Authority under GDPR Article 33
+      (72-hour timeline) may also be required.
     legalBasis:
       regulation: 2014/910
       article: Article 19
       paragraph: "2"
     legalText: |
-      Where a trust service provider detects a breach of security or loss 
-      of integrity that has a significant impact on the trust service 
-      provided, it shall notify the supervisory body within 24 hours.
+      Where a trust service provider detects a breach of
+      security or loss of integrity that has a significant
+      impact on the trust service provided, it shall notify
+      the supervisory body within 24 hours.
     roles: []
     productCategories:
       - trust_services
@@ -138,36 +380,106 @@ requirements:
     category: security
     requirement: Implement secure remote signature creation (TS8) if offering remote QES
     explanation: |
-      If providing remote qualified signature services, implement the remote 
-      signature creation protocols specified in TS8, ensuring secure 
-      management of signature creation data on behalf of signatories.
+      If providing remote qualified signature services, the
+      QTSP must implement the remote signature creation
+      protocols specified in Technical Specification 8 (TS8),
+      ensuring secure management of signature creation data
+      on behalf of signatories.
+
+      **Remote QES concept:**
+      Remote QES allows signatories to create qualified
+      electronic signatures using keys managed by the QTSP
+      in server-side HSMs, rather than on a local QSCD
+      (smart card, USB token). This enables browser-based
+      and mobile signing workflows.
+
+      **TS8 requirements:**
+      Technical Specification 8 covers:
+      - Server-side QSCD requirements (HSM certification)
+      - Signatory authentication protocols
+      - Signature activation data management
+      - Sole control assurance mechanisms (see VEND-TSP-009)
+      - Session security and transport encryption
+
+      **Signature Activation Protocol (SAP):**
+      The SAP ensures that only the authenticated signatory
+      can trigger signature creation:
+      - Multi-factor authentication (knowledge + possession)
+      - Explicit consent per signature operation
+      - Session binding to prevent replay
+      - Timeout and re-authentication policies
+
+      **Certification:**
+      The remote signing implementation should be explicitly
+      named in the QTSP's Conformity Assessment Report,
+      including the specific sole control mechanism used
+      (e.g., mobile app binding, OTP token).
     legalBasis:
       regulation: 2014/910
       article: Article 29
       paragraph: "1"
+    legalText: |
+      Qualified electronic signatures shall be created by
+      a qualified electronic signature creation device.
     roles: []
     productCategories:
       - trust_services
     deadline: "2027-11-21"
     notes: |
-      Remote QES allows signatories to create qualified signatures using 
-      keys managed by the QTSP, rather than on a local QSCD.
+      Remote QES allows signatories to create qualified
+      signatures using keys managed by the QTSP, rather
+      than on a local QSCD.
     obligation: SHOULD
   - id: VEND-TSP-009
     category: security
     requirement: Obtain sole control assurance for remote signing operations
     explanation: |
-      For remote qualified signatures, the QTSP must ensure the signatory 
-      has sole control over the signature creation process, typically 
-      through multi-factor authentication and explicit consent.
+      For remote qualified signatures, the QTSP must ensure
+      the signatory has sole control over the signature
+      creation process, typically through multi-factor
+      authentication and explicit consent.
+
+      **Sole control requirement:**
+      The signatory must have exclusive control over the
+      use of their signature creation data. In a remote
+      signing context, this means the QTSP must prove that
+      no party (including the QTSP itself) can trigger
+      signature creation without the signatory's explicit
+      authorisation.
+
+      **Authentication mechanisms:**
+      Sole control is typically achieved through:
+      - Multi-factor authentication (MFA) combining:
+        - Knowledge factor (PIN, password)
+        - Possession factor (mobile device, hardware token)
+        - Inherence factor (biometrics — optional)
+      - Signature Activation Data (SAD) that is unique per
+        signing operation
+      - Session binding to the authenticated signatory
+
+      **Explicit consent:**
+      Each signature operation must require explicit consent:
+      - Presentation of the document to be signed (WYSIWYS)
+      - Active confirmation by the signatory
+      - No batch or automatic signing without per-document
+        consent
+      - Audit trail of consent actions
+
+      **Certification requirements:**
+      The sole control mechanism must be:
+      - Certified or audited by a CAB
+      - Explicitly named in the Conformity Assessment Report
+      - Tested against attack scenarios (session hijacking,
+        replay attacks, MITM)
     legalBasis:
       regulation: 2014/910
       article: Article 26
-      paragraph: 1(d)
+      paragraph: "1(d)"
     legalText: |
-      An advanced electronic signature shall meet the following requirements: 
-      (d) it is linked to the data signed therewith in such a way that any 
-      subsequent change in the data is detectable.
+      An advanced electronic signature shall meet the
+      following requirements: (d) it is linked to the data
+      signed therewith in such a way that any subsequent
+      change in the data is detectable.
     roles: []
     productCategories:
       - trust_services
@@ -177,17 +489,49 @@ requirements:
     category: security
     requirement: Support WYSIWYS (What You See Is What You Sign) for document signing
     explanation: |
-      When creating signatures on documents, the platform must present 
-      the document content to the signer in a way that allows them to 
-      verify what they are signing before authorization.
+      When creating signatures on documents, the platform
+      must present the document content to the signer in a
+      way that allows them to verify what they are signing
+      before authorisation.
+
+      **WYSIWYS principle:**
+      What You See Is What You Sign is a fundamental
+      requirement for legally valid electronic signatures.
+      The signer must be able to review the complete document
+      content before authorising the signature.
+
+      **Document rendering requirements:**
+      - Complete document display (scrollable, zoomable)
+      - Faithful visual rendering of the document content
+      - No hidden content or dynamic elements that could
+        change the signed content
+      - Support for common document formats (PDF, XML)
+
+      **Security considerations:**
+      - The rendered view must match the signed data hash
+      - Dynamic content (JavaScript, macros, external
+        references) must be either disabled or flagged
+      - Document integrity must be verified before rendering
+      - Active content warnings for unsigned document parts
+
+      **Accessibility:**
+      - WYSIWYS should accommodate accessibility needs
+      - Screen reader compatibility for visually impaired
+        signatories
+      - Sufficient contrast and font sizes
+
+      **Mobile considerations:**
+      - Responsive rendering for mobile devices
+      - Pinch-to-zoom for detailed review
+      - Clear indication of signature position
     legalBasis:
-      regulation: 2018/389
-      article: Article 4
+      regulation: 2014/910
+      article: Article 26
       paragraph: "1"
     legalText: |
-      Where the payment service provider applies strong customer authentication, 
-      the authentication shall include elements which dynamically link the 
-      transaction to a specific amount and a specific payee.
+      An advanced electronic signature shall meet the
+      requirements of being uniquely linked to the signatory
+      and capable of identifying the signatory.
     roles: []
     productCategories:
       - trust_services
@@ -197,17 +541,51 @@ requirements:
     category: security
     requirement: Issue qualified timestamps from a trusted time source
     explanation: |
-      If providing timestamp services, qualified timestamps must be derived 
-      from an accurate and reliable time source traceable to Coordinated 
-      Universal Time (UTC).
+      If providing timestamp services, qualified timestamps
+      must be derived from an accurate and reliable time
+      source traceable to Coordinated Universal Time (UTC).
+
+      **Article 42 — Qualified timestamp requirements:**
+      A qualified electronic time stamp shall meet the
+      following requirements:
+      (a) it binds the date and time to data in such a
+      manner as to reasonably preclude the possibility of
+      the data being changed undetectably;
+      (b) it is based on an accurate time source linked to
+      Coordinated Universal Time (UTC);
+      (c) it is signed using an advanced electronic signature
+      or sealed with an advanced electronic seal, or by some
+      equivalent method.
+
+      **Time source requirements:**
+      - Traceable to UTC via national metrology institute
+        or GPS/GNSS time signals
+      - Accuracy within specified tolerance (typically
+        ±1 second for qualified timestamps)
+      - Redundant time sources to detect drift
+      - NTP stratum 1 or equivalent
+
+      **Timestamp Authority (TSA) operations:**
+      - Secure association between time source and TSA
+      - Tamper-evident logging of all timestamp operations
+      - Key protection equivalent to QSCD requirements
+      - High availability to support signing workflows
+
+      **Long-term validation:**
+      Qualified timestamps are critical for long-term
+      validation of signatures (LTV), enabling verification
+      of signatures beyond certificate expiry through
+      archival timestamp chains.
     legalBasis:
       regulation: 2014/910
       article: Article 42
-      paragraph: ""
+      paragraph: "1"
     legalText: |
-      A qualified electronic time stamp shall meet the following requirements: 
-      (a) it binds the date and time to data in such a manner as to reasonably 
-      preclude the possibility of the data being changed undetectably.
+      A qualified electronic time stamp shall meet the
+      following requirements: (a) it binds the date and
+      time to data in such a manner as to reasonably
+      preclude the possibility of the data being changed
+      undetectably.
     roles: []
     productCategories:
       - trust_services
@@ -217,17 +595,53 @@ requirements:
     category: issuance
     requirement: Issue QEAAs only after verifying data from authentic sources
     explanation: |
-      Qualified Electronic Attestations of Attributes must be based on 
-      verified data from authentic sources. The QTSP must establish 
-      verified connections to authoritative data sources.
+      Qualified Electronic Attestations of Attributes must
+      be based on verified data from authentic sources. The
+      QTSP must establish verified connections to authoritative
+      data sources.
+
+      **Article 45f(2)(b) — Authentic source verification:**
+      A qualified electronic attestation of attributes shall
+      meet the following requirements: (b) it is based on
+      data from an authentic source or on data that has been
+      provided and verified by the person to whom the
+      attestation was issued.
+
+      **Authentic source types:**
+      - Government registries (civil status, tax, business)
+      - Regulated entities (financial institutions, insurers)
+      - Educational institutions (diplomas, qualifications)
+      - Professional bodies (licences, certifications)
+      - Healthcare systems (medical records, prescriptions)
+
+      **Verification procedures:**
+      The QTSP must:
+      - Establish secure connections to authentic sources
+      - Verify data provenance and integrity
+      - Record the verification chain for auditability
+      - Handle deferred verification responses
+      - Manage data freshness (time between verification
+        and attestation issuance)
+
+      **Person-provided data:**
+      Where data cannot be obtained from an authentic source,
+      it may be provided and verified by the person to whom
+      the attestation is issued. In this case, the QTSP must
+      implement appropriate identity verification procedures.
+
+      **Data minimisation:**
+      The QTSP should only request the minimum attributes
+      needed for the attestation, in compliance with GDPR
+      data minimisation principles.
     legalBasis:
       regulation: 2014/910
       article: Article 45f
-      paragraph: 2(b)
+      paragraph: "2(b)"
     legalText: |
-      A qualified electronic attestation of attributes shall meet the 
-      following requirements: (b) it is based on data from an authentic 
-      source or on data that has been provided and verified by the person 
+      A qualified electronic attestation of attributes
+      shall meet the following requirements: (b) it is
+      based on data from an authentic source or on data
+      that has been provided and verified by the person
       to whom the attestation was issued.
     roles:
       - issuer
@@ -239,18 +653,52 @@ requirements:
     category: issuance
     requirement: Sign QEAAs with qualified electronic signature or seal
     explanation: |
-      Qualified attestations must be signed using the QTSP's qualified 
-      electronic signature or seal, providing legally recognized 
-      authenticity and integrity assurance.
+      Qualified attestations must be signed using the QTSP's
+      qualified electronic signature or seal, providing
+      legally recognised authenticity and integrity assurance.
+
+      **Article 45f(2)(c) — Qualified signature/seal:**
+      A qualified electronic attestation of attributes shall
+      meet the following requirements: (c) it is issued by a
+      qualified trust service provider and signed with a
+      qualified electronic signature or qualified electronic
+      seal.
+
+      **Signing algorithm requirements:**
+      The signing algorithm must be from the approved list:
+      - ECDSA with P-256 or P-384
+      - EdDSA with Ed25519
+      - RSA-PSS with ≥3072-bit keys
+      The algorithm must be valid for both mDoc and SD-JWT-VC
+      formats if dual-format issuance is supported.
+
+      **Trusted List inclusion:**
+      The QEAA signing certificate must be included in the
+      Member State's Trusted List, enabling cross-border
+      verification via the LOTL chain.
+
+      **Key rotation:**
+      The QTSP must have a defined key rotation schedule for
+      QEAA signing keys, including:
+      - Planned rotation frequency
+      - Emergency rotation procedures (key compromise)
+      - Overlap period for verification continuity
+      - Trusted List update propagation
+
+      **Post-Quantum Cryptography (PQC):**
+      While not yet mandated, QTSPs should monitor PQC
+      standardisation and prepare for hybrid signatures
+      (classical + PQC) as recommended by ENISA.
     legalBasis:
       regulation: 2014/910
       article: Article 45f
-      paragraph: 2(c)
+      paragraph: "2(c)"
     legalText: |
-      A qualified electronic attestation of attributes shall meet the 
-      following requirements: (c) it is issued by a qualified trust 
-      service provider and signed with a qualified electronic signature 
-      or qualified electronic seal.
+      A qualified electronic attestation of attributes
+      shall meet the following requirements: (c) it is
+      issued by a qualified trust service provider and
+      signed with a qualified electronic signature or
+      qualified electronic seal.
     roles:
       - issuer
     productCategories:
@@ -261,13 +709,46 @@ requirements:
     category: revocation
     requirement: Provide QEAA revocation capability through status lists
     explanation: |
-      QTSPs issuing QEAAs must maintain revocation infrastructure that 
-      enables relying parties to verify the current validity status 
-      of issued QEAAs.
+      QTSPs issuing QEAAs must maintain revocation
+      infrastructure that enables relying parties to verify
+      the current validity status of issued QEAAs.
+
+      **VCR_01 — Revocation methods:**
+      A PID Provider, QEAA Provider, or PuB-EAA Provider
+      SHALL use one of the following methods for revocation:
+      - Only issue short-lived attestations having a validity
+        period of 24 hours or less (no revocation needed)
+      - Use an Attestation Status List mechanism (per VCR_11)
+      - Use an Attestation Revocation List mechanism
+        (per VCR_11)
+
+      **Status list infrastructure:**
+      The status list mechanism requires:
+      - Regularly updated status lists (publication frequency
+        specified in Rulebooks)
+      - High-availability endpoints for status checks
+      - Privacy-preserving design (herd privacy)
+      - Support for both revocation and suspension states
+
+      **Propagation time:**
+      The maximum time between a revocation decision and
+      its availability to relying parties must comply with
+      Rulebook-specified propagation times. The 24-hour
+      period from ETSI EN 319 411-1 V1.4.1 (REV-6.2.4-03A)
+      is the baseline.
+
+      **Suspension capability:**
+      Where applicable, QTSPs should support attestation
+      suspension (temporary revocation) in addition to
+      permanent revocation, allowing for reinstatement
+      if the suspension reason is resolved.
     legalBasis:
       regulation: 2014/910
       article: Article 45f
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      A qualified electronic attestation of attributes
+      shall be verifiable, including its validity status.
     arfReference:
       topic: Topic 7
       hlr: VCR_01
@@ -281,17 +762,48 @@ requirements:
     category: contracts
     requirement: Maintain sufficient financial resources or liability insurance
     explanation: |
-      QTSPs must maintain adequate financial resources or obtain appropriate 
-      liability insurance to cover damages arising from failure to meet 
-      their obligations.
+      QTSPs must maintain adequate financial resources or
+      obtain appropriate liability insurance to cover damages
+      arising from failure to meet their obligations.
+
+      **Article 24(2)(c) — Financial adequacy:**
+      Qualified trust service providers shall maintain
+      sufficient financial resources and/or obtain
+      appropriate liability insurance in accordance with
+      national law, to cover liabilities arising from
+      their activities.
+
+      **Insurance coverage scope:**
+      The liability insurance should cover:
+      - Damages to natural and legal persons arising from
+        failure to comply with eIDAS obligations
+      - Certificate mis-issuance or verification failures
+      - Revocation or suspension service failures
+      - Data breaches affecting personal data
+      - Service unavailability beyond SLA thresholds
+
+      **Coverage adequacy:**
+      The insurance coverage limit should be proportionate
+      to:
+      - Volume and value of trust services provided
+      - Number of relying parties and certificate holders
+      - Geographic scope of operations
+      - Risk profile of the specific trust services
+
+      **Proof of coverage:**
+      The QTSP should be able to provide:
+      - Current insurance policy documentation
+      - Coverage limits and scope
+      - Claims history
+      - Financial statements demonstrating resource adequacy
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: 2(c)
+      paragraph: "2(c)"
     legalText: |
-      Qualified trust service providers shall use trustworthy systems and 
-      products that are protected against modification, and ensure the 
-      technical security and reliability of the processes supported by them.
+      Qualified trust service providers shall maintain
+      sufficient financial resources and/or obtain
+      appropriate liability insurance.
     roles: []
     productCategories:
       - trust_services
@@ -301,17 +813,54 @@ requirements:
     category: contracts
     requirement: Accept liability for qualified signatures/attestations issued
     explanation: |
-      The QTSP is liable for qualified services issued and must accept 
-      responsibility for failures in verification, revocation, or 
-      security of qualified certificates and attestations.
+      The QTSP is liable for qualified services issued and
+      must accept responsibility for failures in verification,
+      revocation, or security of qualified certificates and
+      attestations.
+
+      **Article 13(1) — Liability framework:**
+      Trust service providers shall be liable for damage
+      caused intentionally or negligently to any natural or
+      legal person due to a failure to comply with the
+      obligations under this Regulation.
+
+      **Liability scope:**
+      The QTSP's liability covers:
+      - Incorrect issuance of qualified certificates or
+        attestations
+      - Failure to revoke compromised certificates
+      - Inaccurate or outdated revocation information
+      - Verification service failures
+      - Security breaches resulting in key compromise
+
+      **Burden of proof:**
+      Under Article 13(1), the burden of proof falls on the
+      QTSP for qualified trust services. The QTSP is presumed
+      liable unless it can prove that it acted without
+      negligence.
+
+      **Contractual limitations:**
+      While contract terms may specify certain conditions,
+      the QTSP cannot contractually exclude liability for
+      obligations mandated by eIDAS. Any limitation must
+      be clearly communicated to relying parties.
+
+      **Claims handling:**
+      The QTSP must have a defined process for:
+      - Receiving and registering claims
+      - Investigating the root cause
+      - Determining liability
+      - Providing compensation or remediation
+      - Reporting to the supervisory body if systemic
     legalBasis:
       regulation: 2014/910
       article: Article 13
       paragraph: "1"
     legalText: |
-      Trust service providers shall be liable for damage caused 
-      intentionally or negligently to any natural or legal person due to 
-      a failure to comply with the obligations under this Regulation.
+      Trust service providers shall be liable for damage
+      caused intentionally or negligently to any natural
+      or legal person due to a failure to comply with the
+      obligations under this Regulation.
     roles: []
     productCategories:
       - trust_services
@@ -321,13 +870,52 @@ requirements:
     category: registration
     requirement: Comply with common Access Certificate Policy requirements
     explanation: |
-      Access Certificate Authorities must comply with the common Certificate 
-      Policy established by the Commission. This includes certificate issuance, 
-      validation, and revocation procedures for all ecosystem participants.
+      Access Certificate Authorities must comply with the
+      common Certificate Policy established by the Commission.
+      This includes certificate issuance, validation, and
+      revocation procedures for all ecosystem participants.
+
+      **Reg_12 — Certificate Policy specification:**
+      The Commission SHALL provide technical specifications
+      establishing the common Access Certificate Authority
+      Certificate Policy. All ACAs operating within the
+      EUDI Wallet ecosystem must comply with this policy.
+
+      **Reg_13 — Certificate Transparency:**
+      The common Certificate Policy SHALL require that an
+      Access Certificate Authority logs all issued access
+      certificates for Certificate Transparency (CT),
+      according to all requirements in Topic 55. This
+      ensures public auditability of certificate issuance.
+
+      **Certificate services:**
+      The ACA must provide:
+      - Certificate issuance per the common CP
+      - Certificate validation services (OCSP and/or CRL)
+      - Certificate revocation procedures
+      - Certificate renewal and re-keying
+
+      **Ecosystem participant support:**
+      Access certificates are used by:
+      - PID Providers and Attestation Providers
+      - Relying Parties and intermediaries
+      - Wallet Providers
+      The ACA must support certificate issuance and
+      lifecycle management for all participant types.
+
+      **Cross-border recognition:**
+      Access certificates issued by any ACA within the
+      ecosystem must be recognisable and verifiable across
+      all Member States through the common CP and Trusted
+      List infrastructure.
     legalBasis:
       regulation: 2014/910
       article: Article 22
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Member States shall establish, maintain and publish
+      trusted lists, including information related to the
+      qualified trust service providers.
     arfReference:
       topic: Topic 27
       hlr:
@@ -342,13 +930,52 @@ requirements:
     category: contracts
     requirement: Handle suspension and cancellation of Trust Services
     explanation: |
-      When an Access Certificate Authority or Provider of registration certificates 
-      is suspended or cancelled, appropriate notification and transition procedures 
+      When an Access Certificate Authority or Provider of
+      registration certificates is suspended or cancelled,
+      appropriate notification and transition procedures
       must be followed to maintain ecosystem trust.
+
+      **RPACANot_06 — ACA suspension/cancellation:**
+      If an Access Certificate Authority is suspended or
+      cancelled, that ACA SHALL immediately revoke all of
+      its temporally valid access certificates. This means
+      any intermediary that obtained access certificates
+      from the suspended ACA will lose the ability to
+      request attributes from Wallet Units until new
+      certificates are obtained from another ACA.
+
+      **RPACANot_07 — Registration certificate provider:**
+      If a Provider of registration certificates is
+      suspended or cancelled, that Provider SHALL
+      immediately revoke all of its valid registration
+      certificates. Moreover, the corresponding Registrar
+      SHALL prohibit all access to the registry entries
+      published online.
+
+      **Transition procedures:**
+      - Notify affected customers immediately
+      - Provide guidance on obtaining replacement
+        certificates from alternative providers
+      - Maintain revocation/OCSP services during transition
+      - Coordinate with supervisory body on timeline
+      - Archive records per regulatory requirements
+
+      **Customer impact mitigation:**
+      The QTSP should have procedures to minimise customer
+      disruption:
+      - Advance notice where suspension is planned
+      - List of alternative ACAs/providers
+      - Automated migration tools where possible
+      - Temporary service continuity arrangements
     legalBasis:
       regulation: 2014/910
       article: Article 20
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      The supervisory body shall have the power to
+      withdraw the qualified status of the trust service
+      provider or of the qualified trust services it
+      provides.
     arfReference:
       topic: Topic 31
       hlr:
@@ -363,13 +990,53 @@ requirements:
     category: usage
     requirement: Implement authentic source verification for QTSPs
     explanation: |
-      QTSPs accessing Authentic Sources for attribute verification must 
-      implement the specified technical interfaces, obtain User consent, 
-      and process verification responses according to ARF requirements.
+      QTSPs accessing Authentic Sources for attribute
+      verification must implement the specified technical
+      interfaces, obtain User consent, and process
+      verification responses according to ARF requirements.
+
+      **QTSPAS_03 — Authentic Source response obligation:**
+      An Authentic Source or designated intermediary SHALL
+      respond to a verification request for attributes by
+      any QTSP issuing qualified electronic attestation
+      of attributes. This ensures QTSPs have access to
+      the data needed for QEAA issuance.
+
+      **QTSPAS_04 — Verification response handling:**
+      The response to the QTSP SHALL include the result
+      of the verification. If verification is deferred,
+      the response SHALL include the maximum time for
+      verification and a unique identifier for polling.
+
+      **QTSPAS_05 — Direct access requirement:**
+      A QTSP SHALL send an attribute verification request
+      directly to the Authentic Source or designated
+      intermediary recognised at national level, after
+      discovering it using the specified mechanisms.
+
+      **QTSPAS_08 — User consent:**
+      A QTSP SHALL obtain approval from the User to
+      verify the authenticity of attributes, before
+      requesting verification from the Authentic Source.
+      Consent must be:
+      - Informed (user understands what is being verified)
+      - Specific (per-attribute or per-request)
+      - Recorded (audit trail of consent)
+
+      **Error handling:**
+      The QTSP must handle various response scenarios:
+      - Positive verification (attributes confirmed)
+      - Negative verification (attributes not confirmed)
+      - Partial verification (some attributes confirmed)
+      - Authentic Source unavailability (retry/fallback)
+      - Deferred verification (polling mechanism)
     legalBasis:
       regulation: 2014/910
       article: Article 24
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers shall comply
+      with the requirements laid down in this Regulation.
     arfReference:
       topic: Topic 42
       hlr:
