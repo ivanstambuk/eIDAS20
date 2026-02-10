@@ -171,13 +171,13 @@ function formatArfReference(req) {
  * Get ARF HLR specification text from arfData
  */
 function getArfSpecification(req, arfData) {
-    if (!req.arfReference?.hlr || !arfData?.byHlrId) return '';
+    if (!req.arfReference?.hlr || !arfData) return '';
     const hlrIds = Array.isArray(req.arfReference.hlr)
         ? req.arfReference.hlr
         : [req.arfReference.hlr];
 
     const specs = hlrIds
-        .map(id => arfData.byHlrId[id]?.specification || '')
+        .map(id => (arfData.byHlrId?.[id] || arfData.byHarmonizedId?.[id])?.specification || '')
         .filter(s => s)
         .join('\n\n');
     return specs;
@@ -187,13 +187,13 @@ function getArfSpecification(req, arfData) {
  * Get ARF HLR notes from arfData
  */
 function getArfNotes(req, arfData) {
-    if (!req.arfReference?.hlr || !arfData?.byHlrId) return '';
+    if (!req.arfReference?.hlr || !arfData) return '';
     const hlrIds = Array.isArray(req.arfReference.hlr)
         ? req.arfReference.hlr
         : [req.arfReference.hlr];
 
     const notes = hlrIds
-        .map(id => arfData.byHlrId[id]?.notes || '')
+        .map(id => (arfData.byHlrId?.[id] || arfData.byHarmonizedId?.[id])?.notes || '')
         .filter(n => n)
         .join('\n\n');
     return notes;

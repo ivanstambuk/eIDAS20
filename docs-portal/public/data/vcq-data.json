@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T20:21:32.573Z",
+  "generatedAt": "2026-02-10T20:36:25.755Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -249,9 +249,9 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_08",
-          "RPI_09",
-          "RPI_10"
+          "AS-RP-51-011",
+          "AS-RP-51-012",
+          "AS-RP-51-013"
         ]
       },
       "roles": [
@@ -396,7 +396,7 @@
       "legalText": "Where a relying party intends to rely upon European Digital Identity\nWallets for the provision of public or private services by means of\ndigital interaction, the relying party shall register in the Member\nState where it is established.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_01"
+        "hlr": "AS-RP-51-001"
       },
       "roles": [
         "relying_party"
@@ -424,7 +424,7 @@
       "categoryLabel": "Registration",
       "categoryIcon": "📋",
       "requirement": "Maintain a valid Relying Party Access Certificate",
-      "explanation": "Access certificates are the primary trust mechanism between wallet units\nand relying parties. The RP connector must obtain and maintain a valid\nwallet-relying party access certificate to authenticate itself to\nwallet units during every presentation transaction.\n\n**Certificate issuance and policy (IR 2025/848):**\n- Article 7(1): Member States must authorise at least one certificate\n  authority to issue wallet-relying party access certificates\n- Article 7(2): access certificates are issued exclusively to\n  registered wallet-relying parties\n- Annex IV: the certificate must comply with ETSI EN 319411-1 NCP\n  requirements and the harmonised certificate policy\n- The certificate contains the RP's (or intermediary's) name and\n  unique identifier — this is how wallet units identify the requester\n\n**Usage requirements (ARF):**\n- RPA_03 (Topic 6): the RP connector and wallet unit must perform\n  Relying Party authentication in all PID or attestation presentation\n  transactions, whether proximity or remote, using the access certificate\n- RPA_02a: the access certificate must be included in the presentation\n  request by value, not by reference, ensuring atomic self-contained\n  transactions\n- RPI_06 (Topic 52): when acting on behalf of an intermediated RP,\n  the intermediary includes its own access certificate alongside the\n  RP's registration certificate and RPRC_19a extension data\n\nThe product must implement certificate lifecycle management including\nmonitoring for expiration, automated or assisted renewal, secure\nprivate key storage (preferably HSM-backed), and emergency revocation\nand replacement procedures.",
+      "explanation": "Access certificates are the primary trust mechanism between wallet units\nand relying parties. The RP connector must obtain and maintain a valid\nwallet-relying party access certificate to authenticate itself to\nwallet units during every presentation transaction.\n\n**Certificate issuance and policy (IR 2025/848):**\n- Article 7(1): Member States must authorise at least one certificate\n  authority to issue wallet-relying party access certificates\n- Article 7(2): access certificates are issued exclusively to\n  registered wallet-relying parties\n- Annex IV: the certificate must comply with ETSI EN 319411-1 NCP\n  requirements and the harmonised certificate policy\n- The certificate contains the RP's (or intermediary's) name and\n  unique identifier — this is how wallet units identify the requester\n\n**Usage requirements (ARF):**\n- RPA_03 (Topic 6): the RP connector and wallet unit must perform\n  Relying Party authentication in all PID or attestation presentation\n  transactions, whether proximity or remote, using the access certificate\n- RPA_02a (emptied in ARF v2.8.0, concept covered by RPA_03/AS-RP-06-004):\n  the access certificate must be included in the presentation\n  request by value, not by reference, ensuring atomic self-contained\n  transactions\n- RPI_06 (Topic 52): when acting on behalf of an intermediated RP,\n  the intermediary includes its own access certificate alongside the\n  RP's registration certificate and RPRC_19a extension data\n\nThe product must implement certificate lifecycle management including\nmonitoring for expiration, automated or assisted renewal, secure\nprivate key storage (preferably HSM-backed), and emergency revocation\nand replacement procedures.",
       "legalBases": [
         {
           "regulation": "2025/848",
@@ -442,10 +442,7 @@
       "legalText": "Member States shall authorise at least one certificate authority to issue\nwallet-relying party access certificates. Member States shall ensure that\nproviders of wallet-relying party access certificates issue wallet-relying\nparty access certificates exclusively to registered wallet-relying parties.",
       "arfReference": {
         "topic": "Topic 6",
-        "hlr": [
-          "RPA_03",
-          "RPA_02a"
-        ]
+        "hlr": "AS-WP-06-004"
       },
       "roles": [
         "relying_party"
@@ -684,9 +681,7 @@
       "legalText": "The processor shall, taking into account the nature of the processing,\nassist the controller by appropriate technical and organisational \nmeasures, insofar as this is possible, for the fulfilment of the \ncontroller's obligation to respond to requests for exercising the \ndata subject's rights laid down in Chapter III.",
       "arfReference": {
         "topic": "Topic 48",
-        "hlr": [
-          "DATA_DLT_07"
-        ]
+        "hlr": "AS-RP-48-005"
       },
       "roles": [
         "relying_party"
@@ -735,9 +730,9 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_05",
-          "RPI_06",
-          "RPI_07"
+          "AS-RP-51-005",
+          "AS-RP-51-006",
+          "AS-RP-51-008"
         ]
       },
       "roles": [
@@ -931,9 +926,7 @@
       "legalText": "Wallet-relying parties shall at least provide the information set out \nin Annex I to national registers. Annex I(14-15) requires indication \nof intermediary status and association to intermediated RPs.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": [
-          "RPI_03"
-        ]
+        "hlr": "AS-RP-51-003"
       },
       "roles": [
         "relying_party"
@@ -979,9 +972,7 @@
       "legalText": "Where possible, registrars shall verify in an automated manner:\n(a) the accuracy, validity, authenticity and integrity of the\ninformation required under Article 5; (b) where applicable, the\npower of attorney of representatives of the wallet-relying parties;\n(c) the type of entitlement or entitlements of the wallet-relying\nparties as set out in Annex I; (d) the absence of an existing\nregistration in another national register.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": [
-          "RPI_04"
-        ]
+        "hlr": "AS-RP-51-004"
       },
       "roles": [
         "relying_party"
@@ -1028,8 +1019,8 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_08",
-          "RPI_09"
+          "AS-RP-51-011",
+          "AS-RP-51-012"
         ]
       },
       "roles": [
@@ -1163,8 +1154,8 @@
       "arfReference": {
         "topic": "Topic 48",
         "hlr": [
-          "DATA_DLT_07",
-          "DATA_DLT_08"
+          "AS-RP-48-005",
+          "AS-WP-48-004"
         ]
       },
       "roles": [
@@ -1447,9 +1438,7 @@
       "legalText": "The data subject shall have the right to receive the personal data \nconcerning him or her, which he or she has provided to a controller, \nin a structured, commonly used and machine-readable format and have \nthe right to transmit those data to another controller.",
       "arfReference": {
         "topic": "Topic 48",
-        "hlr": [
-          "DATA_DLT_08"
-        ]
+        "hlr": "AS-WP-48-004"
       },
       "roles": [
         "relying_party",
@@ -1497,11 +1486,11 @@
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
-          "RPRC_03",
-          "RPRC_05",
-          "RPRC_10",
-          "RPRC_11",
-          "RPRC_12"
+          "EW-DM-44-003",
+          "EW-DM-44-006",
+          "EW-DM-44-011",
+          "EW-DM-44-012",
+          "EW-DM-44-013"
         ]
       },
       "roles": [
@@ -1547,8 +1536,8 @@
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
-          "OIA_15",
-          "OIA_16"
+          "EW-PIO-01-023",
+          "AS-RP-01-002"
         ]
       },
       "roles": [
@@ -1575,7 +1564,7 @@
       "categoryLabel": "Registration",
       "categoryIcon": "📋",
       "requirement": "Register intended uses and comply with access certificate policies",
-      "explanation": "Relying Parties must register their intended uses and comply with the\naccess certificate policies established by Access Certificate Authorities\n(ACAs). This is the mechanism that enforces data minimisation at the\necosystem level — an RP can only request data elements that match its\nregistered intended uses.\n\n**Intended use registration (Art 5b(2)(c)):**\n- An RP must specify which categories of data it intends to request\n  from wallet users\n- This registration is validated by the Registrar and encoded into\n  the RP's access certificate (Reg_31: user-friendly name; Reg_32:\n  EU-wide unique identifier)\n- The wallet uses the intended use in the access certificate to\n  verify that the RP's actual data request matches its registration\n\n**Access certificate policy compliance (Reg_15):**\nThe common Certificate Policy SHALL include a revocation policy\nrequiring ACA revocation when:\n- The RP is suspended or cancelled by its Registrar\n- On request of the certificate subject (the RP)\n- On request of a competent national authority\n\n**Intended use enforcement chain:**\n1. RP registers intended uses → Registrar validates\n2. ACA issues access certificate containing intended uses\n3. RP includes access certificate in presentation requests (RPA_02a)\n4. Wallet verifies intended use matches actual request\n5. If mismatch → wallet can warn user or block presentation\n\nFor intermediaries, intended use registration must cover the\nintended uses of each intermediated RP (per RPI_03, VEND-CORE-016).\nThe intermediary's own access certificate and the intermediated RP's\nregistration certificate must be consistent.",
+      "explanation": "Relying Parties must register their intended uses and comply with the\naccess certificate policies established by Access Certificate Authorities\n(ACAs). This is the mechanism that enforces data minimisation at the\necosystem level — an RP can only request data elements that match its\nregistered intended uses.\n\n**Intended use registration (Art 5b(2)(c)):**\n- An RP must specify which categories of data it intends to request\n  from wallet users\n- This registration is validated by the Registrar and encoded into\n  the RP's access certificate (Reg_31: user-friendly name; Reg_32:\n  EU-wide unique identifier)\n- The wallet uses the intended use in the access certificate to\n  verify that the RP's actual data request matches its registration\n\n**Access certificate policy compliance (Reg_15):**\nThe common Certificate Policy SHALL include a revocation policy\nrequiring ACA revocation when:\n- The RP is suspended or cancelled by its Registrar\n- On request of the certificate subject (the RP)\n- On request of a competent national authority\n\n**Intended use enforcement chain:**\n1. RP registers intended uses → Registrar validates\n2. ACA issues access certificate containing intended uses\n3. RP includes access certificate in presentation requests (formerly RPA_02a)\n4. Wallet verifies intended use matches actual request\n5. If mismatch → wallet can warn user or block presentation\n\nFor intermediaries, intended use registration must cover the\nintended uses of each intermediated RP (per RPI_03, VEND-CORE-016).\nThe intermediary's own access certificate and the intermediated RP's\nregistration certificate must be consistent.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -1594,9 +1583,8 @@
       "arfReference": {
         "topic": "Topic 27",
         "hlr": [
-          "Reg_15",
-          "Reg_31",
-          "Reg_32"
+          "AS-MS-27-038",
+          "AS-MS-27-039"
         ]
       },
       "roles": [
@@ -1623,7 +1611,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Use valid RP Access Certificate for Wallet Unit authentication",
-      "explanation": "When initiating a presentation request, the Relying Party must present\na valid RP Access Certificate that allows the Wallet Unit to verify\nthe RP's registration and intended use. This is the mechanism that\ngives the wallet user confidence that the RP is legitimate and has\nonly registered to request the specific data elements it is asking for.\n\n**Access certificate inclusion (RPA_02a):**\nThe RP Instance SHALL include its access certificates in the\npresentation request **by value, not by reference**. This design\ndecision ensures:\n- No external requests are necessary to carry out RP authentication\n- Transactions are atomic and self-contained\n- Offline/proximity scenarios work without internet connectivity\n\n**Wallet-side verification (RPA_06):**\nIf RP authentication succeeds, the Wallet Instance SHALL display to\nthe User:\n- The name of the Relying Party as included in the access certificate\n- The attributes requested by the Relying Party\n- For intermediary RPs: the names of both the intermediary and the\n  intermediated RP (per RPI_07)\n\n**Authentication failure handling (RPA_06a):**\nIf RP authentication fails for any reason, the Wallet Unit SHALL\nnotify the User and SHALL either:\n- Not present any attributes to the RP, or\n- Give the User the choice to present or not\n\n**Certificate contents:**\nThe access certificate encodes the RP's identity, the intended use\n(per VEND-CORE-031), and the signing chain to a notified ACA trust\nanchor. The wallet validates the certificate chain, checks revocation\nstatus, and verifies the intended use matches the actual request.\n\nArt 5b(8) requires RPs to identify themselves to the user when\nrelying on EUDI Wallets — the access certificate is the technical\ninstrument that fulfils this obligation.",
+      "explanation": "When initiating a presentation request, the Relying Party must present\na valid RP Access Certificate that allows the Wallet Unit to verify\nthe RP's registration and intended use. This is the mechanism that\ngives the wallet user confidence that the RP is legitimate and has\nonly registered to request the specific data elements it is asking for.\n\n**Access certificate inclusion (formerly RPA_02a, emptied in ARF v2.8.0):**\nThe RP Instance SHALL include its access certificates in the\npresentation request **by value, not by reference**. This design\ndecision ensures:\n- No external requests are necessary to carry out RP authentication\n- Transactions are atomic and self-contained\n- Offline/proximity scenarios work without internet connectivity\n\n**Wallet-side verification (RPA_06):**\nIf RP authentication succeeds, the Wallet Instance SHALL display to\nthe User:\n- The name of the Relying Party as included in the access certificate\n- The attributes requested by the Relying Party\n- For intermediary RPs: the names of both the intermediary and the\n  intermediated RP (per RPI_07)\n\n**Authentication failure handling (RPA_06a):**\nIf RP authentication fails for any reason, the Wallet Unit SHALL\nnotify the User and SHALL either:\n- Not present any attributes to the RP, or\n- Give the User the choice to present or not\n\n**Certificate contents:**\nThe access certificate encodes the RP's identity, the intended use\n(per VEND-CORE-031), and the signing chain to a notified ACA trust\nanchor. The wallet validates the certificate chain, checks revocation\nstatus, and verifies the intended use matches the actual request.\n\nArt 5b(8) requires RPs to identify themselves to the user when\nrelying on EUDI Wallets — the access certificate is the technical\ninstrument that fulfils this obligation.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -1641,10 +1629,7 @@
       "legalText": "Where relying parties intend to rely upon European Digital Identity \nWallets, they shall identify themselves to the user.",
       "arfReference": {
         "topic": "Topic 6",
-        "hlr": [
-          "RPA_02a",
-          "RPA_06"
-        ]
+        "hlr": "AS-WP-06-007"
       },
       "roles": [
         "relying_party"
@@ -1689,11 +1674,11 @@
       "arfReference": {
         "topic": "Topic 11",
         "hlr": [
-          "PA_10",
-          "PA_11",
-          "PA_13",
-          "PA_15",
-          "PA_17"
+          "AS-WP-11-011",
+          "AS-WP-11-012",
+          "AS-WP-11-014",
+          "AS-WP-11-016",
+          "AS-WP-11-018"
         ]
       },
       "roles": [
@@ -1739,8 +1724,8 @@
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
-          "RPACANot_03",
-          "RPACANot_03a"
+          "AS-MS-31-015",
+          "AS-MS-31-016"
         ]
       },
       "roles": [
@@ -1785,9 +1770,7 @@
       "legalText": "Where relying parties intend to rely upon European Digital Identity \nWallets, they shall identify themselves to the user.",
       "arfReference": {
         "topic": "Topic 1",
-        "hlr": [
-          "OIA_08c"
-        ]
+        "hlr": "EW-PIO-01-014"
       },
       "roles": [
         "relying_party"
@@ -1831,9 +1814,7 @@
       "legalText": "Relying parties shall be responsible for carrying out the procedure \nfor authenticating and validating person identification data and \nelectronic attestation of attributes requested from European Digital \nIdentity Wallets.",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": [
-          "VCR_15"
-        ]
+        "hlr": "AS-AP-07-022"
       },
       "roles": [
         "relying_party"
@@ -1877,9 +1858,7 @@
       "legalText": "The European Digital Identity Wallet shall, in particular, enable \nthe user to electronically identify and authenticate online and \noffline, in both cross-border and domestic scenarios, for the purpose \nof accessing public and private services.",
       "arfReference": {
         "topic": "Topic 24",
-        "hlr": [
-          "ProxId_01a"
-        ]
+        "hlr": "EW-PIO-24-002"
       },
       "roles": [
         "relying_party"
@@ -1924,8 +1903,8 @@
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
-          "RPRC_19",
-          "RPRC_19a"
+          "EW-DM-44-017",
+          "EW-DM-44-018"
         ]
       },
       "roles": [
@@ -2013,7 +1992,7 @@
       "legalText": "Relying parties shall use EUDI Wallets in compliance with regulatory \ntechnical standards and interoperability requirements established under \nthis Regulation.",
       "arfReference": {
         "topic": "Topic 6",
-        "hlr": "OIA_03a"
+        "hlr": "EW-PIO-01-004"
       },
       "roles": [],
       "productCategories": [],
@@ -2054,7 +2033,7 @@
       "legalText": "Providers of electronic attestations of attributes shall ensure \ninteroperability with EUDI Wallets through compliance with applicable \ntechnical standards and specifications.",
       "arfReference": {
         "topic": "Topic 9",
-        "hlr": "ISSU_01"
+        "hlr": "EW-PIO-10-001"
       },
       "roles": [
         "issuer"
@@ -2099,7 +2078,7 @@
       "legalText": "Member States shall set up human and machine-readable interfaces that \nmeet the technical specifications for broad access and interoperability \nfor the registration of wallet-relying parties.",
       "arfReference": {
         "topic": "Topic 27",
-        "hlr": "RPA_01"
+        "hlr": "AS-WP-06-001"
       },
       "roles": [
         "relying_party"
@@ -2144,10 +2123,10 @@
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
-          "RPRC_19a",
-          "RPRC_20a",
-          "RPRC_21",
-          "RPA_10"
+          "EW-DM-44-018",
+          "EW-DM-44-020",
+          "EW-DM-44-021",
+          "AS-WP-06-013"
         ]
       },
       "roles": [
@@ -2192,10 +2171,7 @@
       "legalBasisLink": "/regulation/2014-910?section=article-5b",
       "arfReference": {
         "topic": "Topic 44",
-        "hlr": [
-          "RPA_09",
-          "RPA_12"
-        ]
+        "hlr": "AS-WP-06-016"
       },
       "roles": [
         "relying_party"
@@ -2222,7 +2198,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Declare which RP Deployment Architecture(s) the product supports",
-      "explanation": "The ARF defines distinct models for how a Relying Party can interact\nwith EUDI Wallet Units. These models have fundamentally different legal,\noperational, and data-flow implications:\n\n- **Intermediary**: the vendor acts as a separate, registered\n  Relying Party with its own access certificate (ARF Topic 53, RPI_01).\n  The wallet shows a dual-party display to the user.\n- **Direct SaaS**: the vendor hosts managed connector infrastructure\n  in its cloud, but the RP's own access certificate is used.\n  The wallet sees only the RP. Personal data transits vendor infrastructure.\n- **Direct Self-Hosted**: the vendor provides deployable software\n  (Docker, Helm, etc.) that the RP operates on its own infrastructure.\n  No personal data transits third-party infrastructure.\n\nVendors must clearly state which architecture(s) their product supports\nso the RP customer can assess regulatory compliance, data residency,\nprivate key custody, and user experience impact.\n\nSee also: docs/plans/rp-deployment-architectures.md for the full\nbackground analysis including data-flow diagrams and comparison matrix.",
+      "explanation": "The ARF defines distinct models for how a Relying Party can interact\nwith EUDI Wallet Units. These models have fundamentally different legal,\noperational, and data-flow implications:\n\n- **Intermediary**: the vendor acts as a separate, registered\n  Relying Party with its own access certificate (ARF Topic 52, RPI_01).\n  The wallet shows a dual-party display to the user.\n- **Direct SaaS**: the vendor hosts managed connector infrastructure\n  in its cloud, but the RP's own access certificate is used.\n  The wallet sees only the RP. Personal data transits vendor infrastructure.\n- **Direct Self-Hosted**: the vendor provides deployable software\n  (Docker, Helm, etc.) that the RP operates on its own infrastructure.\n  No personal data transits third-party infrastructure.\n\nVendors must clearly state which architecture(s) their product supports\nso the RP customer can assess regulatory compliance, data residency,\nprivate key custody, and user experience impact.\n\nSee also: docs/plans/rp-deployment-architectures.md for the full\nbackground analysis including data-flow diagrams and comparison matrix.",
       "legalBases": [
         {
           "regulation": "2024/1183",
@@ -2238,10 +2214,8 @@
       },
       "legalBasisLink": "/regulation/2024-1183?section=article-5b",
       "arfReference": {
-        "topic": "Topic 53",
-        "hlr": [
-          "RPI_01"
-        ]
+        "topic": "Topic 52",
+        "hlr": "AS-RP-51-001"
       },
       "roles": [
         "relying_party"
@@ -2268,7 +2242,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Describe intermediary registration, dual-party wallet display, and data forwarding procedures",
-      "explanation": "When operating as an ARF Intermediary, the vendor registers as a\nseparate Relying Party with its own access certificate (RPI_01) and\nacts on behalf of intermediated RPs. This architecture has specific\nobligations under ARF Topic 53:\n\n- **Registration**: the intermediary registers itself at a Registrar\n  (RPI_01) and must also register each intermediated RP at the RP's\n  Registrar (RPI_03), providing legal evidence of the relationship (RPI_04).\n- **Dual-party display**: the wallet MUST show both the intermediary's\n  identity and the intermediated RP's identity to the user when\n  requesting approval (RPI_07). The RP customer cannot suppress this.\n- **VP Token verification**: the intermediary must verify attestation\n  signatures, issuer trust status, validity, revocation status, and\n  holder binding before forwarding (RPI_09).\n- **Immediate data deletion**: all PIDs, attestations, and user\n  attributes must be deleted immediately after forwarding to the\n  intermediated RP, or after verification failure (RPI_10).\n\nNote: as of February 2026, neither the Android nor iOS EU reference\nwallet implements the dual-party display (RPI_07). However, it is a\nSHALL requirement and compliant wallets will enforce it.",
+      "explanation": "When operating as an ARF Intermediary, the vendor registers as a\nseparate Relying Party with its own access certificate (RPI_01) and\nacts on behalf of intermediated RPs. This architecture has specific\nobligations under ARF Topic 52:\n\n- **Registration**: the intermediary registers itself at a Registrar\n  (RPI_01) and must also register each intermediated RP at the RP's\n  Registrar (RPI_03), providing legal evidence of the relationship (RPI_04).\n- **Dual-party display**: the wallet MUST show both the intermediary's\n  identity and the intermediated RP's identity to the user when\n  requesting approval (RPI_07). The RP customer cannot suppress this.\n- **VP Token verification**: the intermediary must verify attestation\n  signatures, issuer trust status, validity, revocation status, and\n  holder binding before forwarding (RPI_09).\n- **Immediate data deletion**: all PIDs, attestations, and user\n  attributes must be deleted immediately after forwarding to the\n  intermediated RP, or after verification failure (RPI_10).\n\nNote: as of February 2026, neither the Android nor iOS EU reference\nwallet implements the dual-party display (RPI_07). However, it is a\nSHALL requirement and compliant wallets will enforce it.",
       "legalBases": [
         {
           "regulation": "2024/1183",
@@ -2284,14 +2258,14 @@
       },
       "legalBasisLink": "/regulation/2024-1183?section=article-5b",
       "arfReference": {
-        "topic": "Topic 53",
+        "topic": "Topic 52",
         "hlr": [
-          "RPI_01",
-          "RPI_03",
-          "RPI_06",
-          "RPI_07",
-          "RPI_09",
-          "RPI_10"
+          "AS-RP-51-001",
+          "AS-RP-51-003",
+          "AS-RP-51-006",
+          "AS-RP-51-008",
+          "AS-RP-51-012",
+          "AS-RP-51-013"
         ]
       },
       "roles": [
@@ -2420,9 +2394,7 @@
       "legalBasisLink": "/regulation/2024-1183?section=article-5b",
       "arfReference": {
         "topic": "Topic 16",
-        "hlr": [
-          "ProxId_01a"
-        ]
+        "hlr": "EW-PIO-24-002"
       },
       "roles": [
         "relying_party"
@@ -2947,9 +2919,9 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_06",
-          "RPI_07",
-          "RPRC_19a"
+          "AS-RP-51-006",
+          "AS-RP-51-008",
+          "EW-DM-44-018"
         ]
       },
       "roles": [
@@ -2996,7 +2968,7 @@
       "legalText": "Relying parties shall not request users to provide any data other than\nthat indicated pursuant to paragraph 2, point (c).",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_06"
+        "hlr": "AS-RP-51-006"
       },
       "roles": [
         "relying_party"
@@ -3042,7 +3014,7 @@
       "legalText": "Relying parties shall not request users to provide any data other than\nthat indicated pursuant to paragraph 2, point (c).",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_06"
+        "hlr": "AS-RP-51-006"
       },
       "roles": [
         "relying_party"
@@ -3089,8 +3061,8 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_08",
-          "RPI_09"
+          "AS-RP-51-011",
+          "AS-RP-51-012"
         ]
       },
       "roles": [
@@ -3137,7 +3109,7 @@
       "legalText": "Wallet providers shall ensure that wallet solutions support protocols\nand interfaces for the presentation of person identification data and\nelectronic attestations of attributes.",
       "arfReference": {
         "topic": "Topic 24",
-        "hlr": "ProxId_01a"
+        "hlr": "EW-PIO-24-002"
       },
       "annexReference": "Annex to 2024/2982:\n- ISO/IEC 18013-5:2021 (proximity)\n- ISO/IEC TS 18013-7:2024 (remote)",
       "roles": [
@@ -3183,9 +3155,9 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_08",
-          "RPI_09",
-          "RPI_10"
+          "AS-RP-51-011",
+          "AS-RP-51-012",
+          "AS-RP-51-013"
         ]
       },
       "roles": [
@@ -3232,7 +3204,7 @@
       "legalText": "Each Member State shall establish, maintain and publish trusted lists,\nincluding information related to the qualified trust service providers\nfor which it is responsible.",
       "arfReference": {
         "topic": "Topic 1",
-        "hlr": "OIA_12"
+        "hlr": "EW-PIO-01-020"
       },
       "roles": [
         "relying_party"
@@ -3277,9 +3249,9 @@
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
-          "OIA_13",
-          "OIA_14",
-          "OIA_15"
+          "EW-PIO-01-021",
+          "EW-PIO-01-022",
+          "EW-PIO-01-023"
         ]
       },
       "roles": [
@@ -3324,7 +3296,7 @@
       "legalText": "Each Member State shall establish, maintain and publish trusted lists,\nincluding information related to the qualified trust service providers\nfor which it is responsible.",
       "arfReference": {
         "topic": "Topic 1",
-        "hlr": "OIA_14"
+        "hlr": "EW-PIO-01-022"
       },
       "roles": [
         "relying_party"
@@ -3369,8 +3341,8 @@
       "arfReference": {
         "topic": "Topic 1",
         "hlr": [
-          "OIA_12",
-          "OIA_13"
+          "EW-PIO-01-020",
+          "EW-PIO-01-021"
         ]
       },
       "roles": [
@@ -3416,9 +3388,9 @@
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
-          "VCR_11",
-          "VCR_12",
-          "VCR_13"
+          "AS-AP-07-017",
+          "AS-AP-07-018",
+          "AS-AP-07-020"
         ]
       },
       "roles": [
@@ -3464,7 +3436,7 @@
       "legalText": "Wallet providers shall ensure that wallet solutions support\nprotocols and interfaces that allow verification of the\nauthenticity of the wallet unit.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_09"
+        "hlr": "AS-RP-51-012"
       },
       "roles": [
         "relying_party"
@@ -3514,7 +3486,7 @@
       "legalText": "Relying parties shall implement appropriate measures to prevent\nfraud and ensure the authenticity of person identification data\nand electronic attestations of attributes.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_09"
+        "hlr": "AS-RP-51-012"
       },
       "roles": [
         "relying_party"
@@ -3558,7 +3530,7 @@
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed\nto be relying parties and shall not store data about the content\nof the transaction.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_08"
+        "hlr": "AS-RP-51-011"
       },
       "roles": [
         "relying_party"
@@ -3643,7 +3615,7 @@
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed\nto be relying parties and shall not store data about the content\nof the transaction.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_08"
+        "hlr": "AS-RP-51-011"
       },
       "roles": [
         "relying_party"
@@ -3813,7 +3785,7 @@
       "legalText": "Intermediaries acting on behalf of relying parties shall be deemed\nto be relying parties and shall not store data about the content\nof the transaction.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_10"
+        "hlr": "AS-RP-51-013"
       },
       "roles": [
         "relying_party"
@@ -3860,8 +3832,8 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_05",
-          "RPRC_19a"
+          "AS-RP-51-005",
+          "EW-DM-44-018"
         ]
       },
       "roles": [
@@ -3909,9 +3881,9 @@
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
-          "PID_02",
-          "RPRC_20a",
-          "ARB_02"
+          "EW-DM-03-02",
+          "EW-DM-44-020",
+          "EW-DM-12-003"
         ]
       },
       "annexReference": "Annex II of 2024/2979:\n- ISO/IEC.18013-5:2021\n- 'Verifiable Credentials Data Model 1.1', W3C Recommendation",
@@ -3958,7 +3930,7 @@
       "legalText": "Wallet solutions shall enable the wallet user to select which\nattributes within an attestation to present to a relying party.",
       "arfReference": {
         "topic": "Topic 12",
-        "hlr": "ARB_02"
+        "hlr": "EW-DM-12-003"
       },
       "roles": [
         "relying_party"
@@ -4163,8 +4135,8 @@
       "arfReference": {
         "topic": "Topic 6",
         "hlr": [
-          "RPA_01",
-          "RPI_07"
+          "AS-WP-06-001",
+          "AS-RP-51-008"
         ]
       },
       "roles": [
@@ -4210,8 +4182,8 @@
       "arfReference": {
         "topic": "Topic 48",
         "hlr": [
-          "DATA_DLT_07",
-          "DATA_DLT_08"
+          "AS-RP-48-005",
+          "AS-WP-48-004"
         ]
       },
       "roles": [
@@ -4302,9 +4274,9 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_06",
-          "RPI_03",
-          "RPI_07"
+          "AS-RP-51-006",
+          "AS-RP-51-003",
+          "AS-RP-51-008"
         ]
       },
       "roles": [
@@ -4353,8 +4325,8 @@
       "arfReference": {
         "topic": "Topic 52",
         "hlr": [
-          "RPI_04",
-          "RPI_07a"
+          "AS-RP-51-004",
+          "AS-RP-51-009"
         ]
       },
       "roles": [
@@ -4403,8 +4375,8 @@
       "arfReference": {
         "topic": "Topic 27",
         "hlr": [
-          "Reg_01",
-          "Reg_01a"
+          "AS-MS-27-001",
+          "AS-MS-27-002"
         ]
       },
       "roles": [
@@ -4450,8 +4422,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_29",
-          "ISSU_12a"
+          "AS-AP-10-044",
+          "AS-AP-10-014"
         ]
       },
       "roles": [
@@ -4495,7 +4467,7 @@
       "legalText": "Providers shall ensure that the information published in\naccordance with paragraph 1 is updated within 24 hours of\nany change.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_29"
+        "hlr": "AS-AP-10-044"
       },
       "roles": [
         "issuer"
@@ -4538,7 +4510,7 @@
       "legalText": "Qualified electronic attestations of attributes may only be\nissued by qualified trust service providers.",
       "arfReference": {
         "topic": "Topic 42",
-        "hlr": "QTSPAS_02"
+        "hlr": "AS-AP-42-002"
       },
       "roles": [
         "issuer"
@@ -4585,8 +4557,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_12",
-          "ISSU_12a"
+          "AS-AP-10-013",
+          "AS-AP-10-014"
         ]
       },
       "roles": [
@@ -4632,7 +4604,7 @@
       "legalText": "Wallet providers shall ensure that wallet units bind\nattestations to the wallet secure cryptographic device.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_01a"
+        "hlr": "AS-AP-10-001"
       },
       "roles": [
         "issuer"
@@ -4676,7 +4648,7 @@
       "legalText": "Wallet providers shall ensure that wallet units support the\nprotocols and interfaces necessary to receive and store PIDs\nand electronic attestations of attributes.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_01a"
+        "hlr": "AS-AP-10-001"
       },
       "roles": [
         "issuer"
@@ -4720,7 +4692,7 @@
       "legalText": "Wallet providers shall ensure that wallet units support the\nprotocols and interfaces necessary to receive and store PIDs\nand electronic attestations of attributes.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_03"
+        "hlr": "AS-AP-10-003"
       },
       "roles": [
         "issuer"
@@ -4764,7 +4736,7 @@
       "legalText": "Providers of electronic attestation of attributes shall\nverify the identity of the natural or legal person to whom\nthe electronic attestation of attributes is issued.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_05"
+        "hlr": "AS-AP-10-005"
       },
       "roles": [
         "issuer"
@@ -4808,7 +4780,7 @@
       "legalText": "Providers of electronic attestation of attributes shall\nobtain the data for the attributes from authentic sources.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_50"
+        "hlr": "AS-AP-10-074"
       },
       "roles": [
         "issuer"
@@ -4853,8 +4825,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_50",
-          "ISSU_59"
+          "AS-AP-10-074",
+          "AS-AP-10-085"
         ]
       },
       "roles": [
@@ -4900,8 +4872,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_05",
-          "ISSU_59"
+          "AS-AP-10-005",
+          "AS-AP-10-085"
         ]
       },
       "roles": [
@@ -4947,9 +4919,9 @@
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
-          "VCR_03",
-          "VCR_11",
-          "VCR_12"
+          "AS-AP-07-004",
+          "AS-AP-07-017",
+          "AS-AP-07-018"
         ]
       },
       "roles": [
@@ -4995,8 +4967,8 @@
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
-          "VCR_03",
-          "VCR_09"
+          "AS-AP-07-004",
+          "AS-AP-07-015"
         ]
       },
       "roles": [
@@ -5041,7 +5013,7 @@
       "legalText": "Providers should notify users when their attestations are\nrevoked and request re-issuance.",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": "VCR_09"
+        "hlr": "AS-AP-07-015"
       },
       "roles": [
         "issuer"
@@ -5085,7 +5057,7 @@
       "legalText": "PID Providers and Attestation Providers shall publish validity\nstatus information of revoked or suspended attestations.",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": "VCR_09"
+        "hlr": "AS-AP-07-015"
       },
       "roles": [
         "issuer"
@@ -5130,9 +5102,9 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_35",
-          "ISSU_35a",
-          "ISSU_35b"
+          "AS-AP-10-056",
+          "AS-AP-10-057",
+          "AS-AP-10-058"
         ]
       },
       "roles": [
@@ -5178,7 +5150,7 @@
       "legalText": "Attestation signatures shall use cryptographic algorithms\nfrom the approved list published in the Annex.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_35"
+        "hlr": "AS-AP-10-056"
       },
       "roles": [
         "issuer"
@@ -5204,7 +5176,7 @@
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Implement key rotation procedures",
-      "explanation": "The platform must support cryptographic key rotation with\ndocumented procedures for transitioning to new signing keys\nwhile maintaining validity of previously issued attestations.\n\n**ISSU_17 — Device binding key lifecycle:**\nA PID Provider SHALL implement device binding for all PIDs\nit issues, ensuring the PID is cryptographically bound to\nthe WSCA/WSCD in the Wallet Unit (per WUA_11–WUA_11b in\nTopic 9). When the provider's signing key rotates, existing\ndevice bindings remain valid (they reference the wallet's\nkey, not the provider's key), but the provider's public key\npublished in Trusted Lists must be updated.\n\n**Key rotation phases:**\n1. **Pre-rotation**: generate new key pair in HSM, publish\n   new public key to Trusted Lists with a future activation\n   date\n2. **Overlap period**: both old and new keys are valid for\n   signing. New attestations use the new key. Old\n   attestations remain verifiable with the old key.\n3. **Post-rotation**: old key is deactivated for signing\n   but its public key remains available for verification\n   until all attestations signed with it expire.\n4. **Retirement**: old key material is securely destroyed\n   after all attestations signed with it have expired.\n\n**Trusted List propagation:**\nKey rotation must be coordinated with Trusted List updates.\nThe new public key must be published before the new key is\nused for signing, to ensure verifiers can validate new\nattestations immediately.\n\n**Attestations in flight:**\nDuring rotation, attestations currently being issued must\nconsistently use either the old or the new key (not mix\nkeys within a single issuance session).",
+      "explanation": "The platform must support cryptographic key rotation with\ndocumented procedures for transitioning to new signing keys\nwhile maintaining validity of previously issued attestations.\n\n**ISSU_17 — Device binding key lifecycle:**\nA PID Provider SHALL implement device binding for all PIDs\nit issues, ensuring the PID is cryptographically bound to\nthe WSCA/WSCD in the Wallet Unit (per WUA_11a/AS-WP-09-015 in\nTopic 9). When the provider's signing key rotates, existing\ndevice bindings remain valid (they reference the wallet's\nkey, not the provider's key), but the provider's public key\npublished in Trusted Lists must be updated.\n\n**Key rotation phases:**\n1. **Pre-rotation**: generate new key pair in HSM, publish\n   new public key to Trusted Lists with a future activation\n   date\n2. **Overlap period**: both old and new keys are valid for\n   signing. New attestations use the new key. Old\n   attestations remain verifiable with the old key.\n3. **Post-rotation**: old key is deactivated for signing\n   but its public key remains available for verification\n   until all attestations signed with it expire.\n4. **Retirement**: old key material is securely destroyed\n   after all attestations signed with it have expired.\n\n**Trusted List propagation:**\nKey rotation must be coordinated with Trusted List updates.\nThe new public key must be published before the new key is\nused for signing, to ensure verifiers can validate new\nattestations immediately.\n\n**Attestations in flight:**\nDuring rotation, attestations currently being issued must\nconsistently use either the old or the new key (not mix\nkeys within a single issuance session).",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -5223,8 +5195,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_17",
-          "ISSU_35"
+          "AS-AP-10-022",
+          "AS-AP-10-056"
         ]
       },
       "roles": [
@@ -5269,7 +5241,7 @@
       "legalText": "Attestation types shall be made discoverable through the\nCommon Catalogue of Attestation Types.",
       "arfReference": {
         "topic": "Topic 12",
-        "hlr": "ARB_06"
+        "hlr": "EW-DM-12-007"
       },
       "roles": [
         "issuer"
@@ -5313,9 +5285,9 @@
       "arfReference": {
         "topic": "Topic 12",
         "hlr": [
-          "ARB_03",
-          "ARB_04",
-          "ARB_06"
+          "EW-DM-12-004",
+          "EW-DM-12-005",
+          "EW-DM-12-007"
         ]
       },
       "roles": [
@@ -5359,7 +5331,7 @@
       "legalText": "The controller shall implement appropriate technical and\norganisational measures for ensuring that, by default, only\npersonal data which are necessary for each specific purpose\nof the processing are processed.",
       "arfReference": {
         "topic": "Topic 43",
-        "hlr": "EDP_09"
+        "hlr": "EW-PIO-43-001"
       },
       "roles": [
         "issuer"
@@ -5404,8 +5376,8 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_35",
-          "ISSU_35b"
+          "AS-AP-10-056",
+          "AS-AP-10-058"
         ]
       },
       "roles": [
@@ -5450,7 +5422,7 @@
       "legalText": "An electronic attestation of attributes issued in one\nMember State shall be recognised as an electronic\nattestation of attributes in all other Member States.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "ISSU_12"
+        "hlr": "AS-AP-10-013"
       },
       "roles": [
         "issuer"
@@ -5495,12 +5467,12 @@
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
-          "PID_01",
-          "PID_04",
-          "PID_05",
-          "PID_08",
-          "PID_09",
-          "PID_10"
+          "EW-DM-03-01",
+          "EW-DM-03-04",
+          "EW-DM-03-05",
+          "EW-DM-03-08",
+          "EW-DM-03-09",
+          "EW-DM-03-10"
         ]
       },
       "roles": [
@@ -5527,7 +5499,7 @@
       "categoryLabel": "Issuance",
       "categoryIcon": "📤",
       "requirement": "Support all mandatory attestation formats for the attestation type",
-      "explanation": "The issuance platform must offer attestations in all formats\nrequired by the applicable Rulebook. For most attestation\ntypes, this means supporting both ISO 18013-5 (mDoc) and\nSD-JWT-VC formats with correct encoding.\n\n**ISSU_12 — Rulebook-driven format mandate:**\nA PID Provider or Attestation Provider SHALL offer its\nPIDs or attestations in all formats required in the PID\nRulebook or the applicable Attestation Rulebook. The\nRulebook specifies which formats are mandatory vs\noptional for that attestation type.\n\n**ISSU_12d — Revocation chaining constraint:**\nIf an Attestation Provider supports revocation chaining\nfor its attestations (per WURevocation_19 in Topic 38),\nthe expiration date of the attestation SHALL be no later\nthan the expiration date of the WUA presented during the\nissuance process. This constrains format-level validity\nmetadata.\n\n**ISSU_27 — Device binding per format:**\nAn Attestation Provider SHOULD implement device binding\nfor all attestations it issues. The binding mechanism\ndiffers by format:\n- **mDoc**: mdoc authentication per ISO 18013-5\n- **SD-JWT-VC**: key binding with `cnf` claim\nDevice binding requires the attestation key to be\ncryptographically bound to the WSCA/WSCD.\n\n**Encoding consistency:**\nWhen the same attestation is issued in multiple formats,\nthe attribute values must be semantically equivalent\nacross formats. The platform should validate cross-format\nconsistency during issuance.",
+      "explanation": "The issuance platform must offer attestations in all formats\nrequired by the applicable Rulebook. For most attestation\ntypes, this means supporting both ISO 18013-5 (mDoc) and\nSD-JWT-VC formats with correct encoding.\n\n**ISSU_12 — Rulebook-driven format mandate:**\nA PID Provider or Attestation Provider SHALL offer its\nPIDs or attestations in all formats required in the PID\nRulebook or the applicable Attestation Rulebook. The\nRulebook specifies which formats are mandatory vs\noptional for that attestation type.\n\n**ISSU_12d — Revocation chaining constraint:**\nIf an Attestation Provider supports revocation chaining\nfor its attestations (per WURevocation_19/AS-WP-38-019 in Topic 38),\nthe expiration date of the attestation SHALL be no later\nthan the expiration date of the WUA presented during the\nissuance process. This constrains format-level validity\nmetadata.\n\n**ISSU_27 — Device binding per format:**\nAn Attestation Provider SHOULD implement device binding\nfor all attestations it issues. The binding mechanism\ndiffers by format:\n- **mDoc**: mdoc authentication per ISO 18013-5\n- **SD-JWT-VC**: key binding with `cnf` claim\nDevice binding requires the attestation key to be\ncryptographically bound to the WSCA/WSCD.\n\n**Encoding consistency:**\nWhen the same attestation is issued in multiple formats,\nthe attribute values must be semantically equivalent\nacross formats. The platform should validate cross-format\nconsistency during issuance.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -5546,9 +5518,9 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_12",
-          "ISSU_12d",
-          "ISSU_27"
+          "AS-AP-10-013",
+          "AS-AP-10-017",
+          "AS-AP-10-039"
         ]
       },
       "roles": [
@@ -5594,11 +5566,11 @@
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
-          "VCR_02",
-          "VCR_03",
-          "VCR_03a",
-          "VCR_04",
-          "VCR_05"
+          "AS-AP-07-003",
+          "AS-AP-07-004",
+          "AS-AP-07-005",
+          "AS-AP-07-006",
+          "AS-AP-07-007"
         ]
       },
       "roles": [
@@ -5643,10 +5615,7 @@
       "legalText": "Providers shall maintain accurate registration information\nand update it without undue delay when changes occur.",
       "arfReference": {
         "topic": "Topic 27",
-        "hlr": [
-          "Reg_08",
-          "Reg_14"
-        ]
+        "hlr": "AS-MS-27-010"
       },
       "roles": [
         "issuer"
@@ -5691,11 +5660,11 @@
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
-          "PPNot_02",
-          "PPNot_03",
-          "PPNot_04",
-          "PPNot_07",
-          "PuBPNot_03"
+          "AS-WP-31-001",
+          "AS-MS-31-007",
+          "AS-MS-31-008",
+          "AS-MS-31-011",
+          "AS-MS-31-013"
         ]
       },
       "roles": [
@@ -5740,8 +5709,8 @@
       "arfReference": {
         "topic": "Topic 9",
         "hlr": [
-          "WUA_11a",
-          "WUA_20a"
+          "AS-WP-09-015",
+          "AS-WP-09-026"
         ]
       },
       "roles": [
@@ -5787,8 +5756,8 @@
       "arfReference": {
         "topic": "Topic 43",
         "hlr": [
-          "EDP_09",
-          "EDP_11"
+          "EW-PIO-43-001",
+          "AS-AP-43-001"
         ]
       },
       "roles": [
@@ -5834,8 +5803,8 @@
       "arfReference": {
         "topic": "Topic 44",
         "hlr": [
-          "RPRC_14",
-          "RPRC_22"
+          "AS-AP-44-002",
+          "AS-AP-44-004"
         ]
       },
       "roles": [
@@ -5881,12 +5850,12 @@
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
-          "PID_14",
-          "PID_17",
-          "PID_18",
-          "PID_19",
-          "PID_20",
-          "PID_21"
+          "EW-DM-03-14",
+          "EW-DM-03-17",
+          "EW-DM-03-18",
+          "EW-DM-03-19",
+          "EW-DM-03-20",
+          "EW-DM-03-21"
         ]
       },
       "roles": [
@@ -5931,12 +5900,12 @@
       "arfReference": {
         "topic": "Topic 3",
         "hlr": [
-          "PID_06",
-          "PID_07",
-          "PID_11",
-          "PID_12",
-          "PID_13",
-          "PID_16"
+          "EW-DM-03-06",
+          "EW-DM-03-07",
+          "EW-DM-03-11",
+          "EW-DM-03-12",
+          "EW-DM-03-13",
+          "EW-DM-03-16"
         ]
       },
       "roles": [
@@ -5980,9 +5949,7 @@
       "legalText": "PID and Attestation Providers shall support both\nattestation status mechanisms specified in the technical\nspecifications.",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": [
-          "VCR_12a"
-        ]
+        "hlr": "AS-AP-07-019"
       },
       "roles": [
         "issuer"
@@ -6027,21 +5994,18 @@
       "arfReference": {
         "topic": "Topic 10",
         "hlr": [
-          "ISSU_06",
-          "ISSU_07",
-          "ISSU_14",
-          "ISSU_15",
-          "ISSU_18",
-          "ISSU_18a",
-          "ISSU_22",
-          "ISSU_22a",
-          "ISSU_22b",
-          "ISSU_25",
-          "ISSU_26",
-          "ISSU_27b",
-          "ISSU_27c",
-          "ISSU_32",
-          "ISSU_32a"
+          "AS-AP-10-006",
+          "AS-AP-10-007",
+          "AS-AP-10-019",
+          "AS-AP-10-020",
+          "AS-AP-10-023",
+          "AS-AP-10-024",
+          "AS-AP-10-029",
+          "AS-AP-10-037",
+          "AS-AP-10-038",
+          "AS-AP-10-041",
+          "AS-AP-10-042",
+          "AS-AP-10-048"
         ]
       },
       "roles": [
@@ -6190,7 +6154,7 @@
       "categoryLabel": "Revocation",
       "categoryIcon": "🚫",
       "requirement": "Monitor WUA revocation status and implement cascading revocation policy",
-      "explanation": "After issuing a PID or attestation, the provider must monitor\nthe revocation status of the Wallet Unit on which the credential\nresides. If the Wallet Provider revokes the WUA, the issuer\nmust respond according to its cascading revocation obligations.\n\n**WURevocation_18 — PID Provider mandatory cascading (SHALL):**\nA PID Provider issuing revocable PIDs SHALL, for each of its\nvalid PIDs, regularly verify whether the Wallet Provider\nrevoked the Wallet Unit on which that PID is residing, using\nthe revocation information in the WUA it received during\nissuance of that PID. If the Wallet Unit is revoked, the PID\nProvider SHALL immediately revoke the respective PID.\n\nThis is a direct consequence of the legal requirement in\nCIR 2024/2977, Article 5, 4.(b). The verification mechanism\nis specified in Technical Specification 3 (TS3).\n\n**WURevocation_19 — Attestation Provider policy (MAY + SHALL):**\nAn Attestation Provider issuing revocable attestations MAY\ndecide to revoke an attestation when the Wallet Unit is\nrevoked, using the same mechanism as WURevocation_18.\nHowever, the Attestation Provider SHALL publish its policy\nregarding cascading revocation. This published policy allows\nRelying Parties to assess the level of trust they can place\nin attestations from that provider.\n\n**Asymmetry between PID Providers and Attestation Providers:**\n- PID Provider: cascading revocation is MANDATORY\n- Attestation Provider: cascading revocation is a POLICY\n  DECISION, but the policy MUST be published\n\n**Ongoing WUA monitoring implementation:**\nThe issuer must implement a mechanism to regularly check the\nWUA revocation status for all active credentials it has\nissued. This requires:\n1. Storing the WUA (or its status list reference) received\n   during each issuance session\n2. Periodically polling the Wallet Provider's Attestation\n   Status Lists or Attestation Revocation Lists\n3. Cross-referencing revoked WUAs against the issuer's\n   active credential registry\n4. Triggering cascading revocation when a match is found\n\n**Revocation latency:**\nThe time between WUA revocation and cascading credential\nrevocation should be minimised. The polling frequency and\nstatus list cache times determine the effective cascading\nrevocation latency.",
+      "explanation": "After issuing a PID or attestation, the provider must monitor\nthe revocation status of the Wallet Unit on which the credential\nresides. If the Wallet Provider revokes the WUA, the issuer\nmust respond according to its cascading revocation obligations.\n\n**WURevocation_18 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**\nA PID Provider issuing revocable PIDs SHALL, for each of its\nvalid PIDs, regularly verify whether the Wallet Provider\nrevoked the Wallet Unit on which that PID is residing, using\nthe revocation information in the WUA it received during\nissuance of that PID. If the Wallet Unit is revoked, the PID\nProvider SHALL immediately revoke the respective PID.\n\nThis is a direct consequence of the legal requirement in\nCIR 2024/2977, Article 5, 4.(b). The verification mechanism\nis specified in Technical Specification 3 (TS3).\n\n**WURevocation_19 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**\nAn Attestation Provider issuing revocable attestations MAY\ndecide to revoke an attestation when the Wallet Unit is\nrevoked, using the same mechanism as WURevocation_18/AS-WP-38-018.\nHowever, the Attestation Provider SHALL publish its policy\nregarding cascading revocation. This published policy allows\nRelying Parties to assess the level of trust they can place\nin attestations from that provider.\n\n**Asymmetry between PID Providers and Attestation Providers:**\n- PID Provider: cascading revocation is MANDATORY\n- Attestation Provider: cascading revocation is a POLICY\n  DECISION, but the policy MUST be published\n\n**Ongoing WUA monitoring implementation:**\nThe issuer must implement a mechanism to regularly check the\nWUA revocation status for all active credentials it has\nissued. This requires:\n1. Storing the WUA (or its status list reference) received\n   during each issuance session\n2. Periodically polling the Wallet Provider's Attestation\n   Status Lists or Attestation Revocation Lists\n3. Cross-referencing revoked WUAs against the issuer's\n   active credential registry\n4. Triggering cascading revocation when a match is found\n\n**Revocation latency:**\nThe time between WUA revocation and cascading credential\nrevocation should be minimised. The polling frequency and\nstatus list cache times determine the effective cascading\nrevocation latency.",
       "legalBases": [
         {
           "regulation": "2024/2977",
@@ -6737,7 +6701,7 @@
       "legalText": "A qualified electronic attestation of attributes\nshall be verifiable, including its validity status.",
       "arfReference": {
         "topic": "Topic 7",
-        "hlr": "VCR_01"
+        "hlr": "AS-AP-07-001"
       },
       "roles": [
         "issuer"
@@ -6854,11 +6818,7 @@
       "legalBasisLink": "/regulation/2014-910?section=article-22",
       "legalText": "Member States shall establish, maintain and publish\ntrusted lists, including information related to the\nqualified trust service providers.",
       "arfReference": {
-        "topic": "Topic 27",
-        "hlr": [
-          "Reg_12",
-          "Reg_13"
-        ]
+        "topic": "Topic 27"
       },
       "roles": [],
       "productCategories": [
@@ -6901,8 +6861,8 @@
       "arfReference": {
         "topic": "Topic 31",
         "hlr": [
-          "RPACANot_06",
-          "RPACANot_07"
+          "EW-DM-31-001",
+          "AS-MS-31-019"
         ]
       },
       "roles": [],
@@ -6946,10 +6906,10 @@
       "arfReference": {
         "topic": "Topic 42",
         "hlr": [
-          "QTSPAS_03",
-          "QTSPAS_04",
-          "QTSPAS_05",
-          "QTSPAS_08"
+          "AS-AP-42-003",
+          "AS-AP-42-004",
+          "AS-AP-42-005",
+          "AS-AP-42-009"
         ]
       },
       "roles": [

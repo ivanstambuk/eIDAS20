@@ -338,9 +338,10 @@ function validate() {
         try {
             const arfData = JSON.parse(readFileSync(arfDataPath, 'utf-8'));
             const validHlrIds = new Set(Object.keys(arfData.byHlrId || {}));
+            const validHarmonizedIds = new Set(Object.keys(arfData.byHarmonizedId || {}));
             arfValidation.checked = true;
 
-            console.log(`\n   📐 Validating ARF references against ${validHlrIds.size} HLRs`);
+            console.log(`   📐 Validating ARF references against ${validHlrIds.size} HLRs (+ ${validHarmonizedIds.size} Harmonized IDs)`);
 
             // Re-scan all requirements for arfReference
             for (const file of requirementFiles) {
@@ -357,19 +358,22 @@ function validate() {
                             : [req.arfReference.hlr];
 
                         for (const hlrId of hlrIds) {
-                            if (!validHlrIds.has(hlrId)) {
+                            // Check both Old IDs and Harmonized IDs
+                            const isValidOldId = validHlrIds.has(hlrId);
+                            const isValidHarmonizedId = validHarmonizedIds.has(hlrId);
+                            if (!isValidOldId && !isValidHarmonizedId) {
                                 arfValidation.invalid.push({ file, reqId: req.id, hlr: hlrId });
                                 errors.push({
                                     file,
                                     reqId: req.id,
                                     field: 'arfReference.hlr',
                                     value: hlrId,
-                                    message: `HLR "${hlrId}" not found in ARF data. Run: npm run build:arf`
+                                    message: `HLR "${hlrId}" not found in ARF data (checked both Old IDs and Harmonized IDs). Run: npm run build:arf`
                                 });
                             } else {
                                 arfValidation.valid++;
                                 // Check if HLR is marked as empty
-                                const hlrData = arfData.byHlrId[hlrId];
+                                const hlrData = arfData.byHlrId[hlrId] || arfData.byHarmonizedId?.[hlrId];
                                 if (hlrData?.isEmpty) {
                                     arfValidation.empty.push({ file, reqId: req.id, hlr: hlrId });
                                     warnings.push({

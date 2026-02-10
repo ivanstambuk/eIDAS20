@@ -36,9 +36,9 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_08
-        - RPI_09
-        - RPI_10
+        - AS-RP-51-011
+        - AS-RP-51-012
+        - AS-RP-51-013
     roles:
       - relying_party
     productCategories:
@@ -201,7 +201,7 @@ requirements:
       State where it is established.
     arfReference:
       topic: Topic 52
-      hlr: RPI_01
+      hlr: AS-RP-51-001
     roles:
       - relying_party
     productCategories:
@@ -232,7 +232,8 @@ requirements:
       - RPA_03 (Topic 6): the RP connector and wallet unit must perform
         Relying Party authentication in all PID or attestation presentation
         transactions, whether proximity or remote, using the access certificate
-      - RPA_02a: the access certificate must be included in the presentation
+      - RPA_02a (emptied in ARF v2.8.0, concept covered by RPA_03/AS-RP-06-004):
+        the access certificate must be included in the presentation
         request by value, not by reference, ensuring atomic self-contained
         transactions
       - RPI_06 (Topic 52): when acting on behalf of an intermediated RP,
@@ -254,9 +255,7 @@ requirements:
       party access certificates exclusively to registered wallet-relying parties.
     arfReference:
       topic: Topic 6
-      hlr:
-        - RPA_03
-        - RPA_02a
+      hlr: AS-WP-06-004
     roles:
       - relying_party
     productCategories:
@@ -525,8 +524,7 @@ requirements:
       data subject's rights laid down in Chapter III.
     arfReference:
       topic: Topic 48
-      hlr:
-        - DATA_DLT_07
+      hlr: AS-RP-48-005
     roles:
       - relying_party
     productCategories:
@@ -579,9 +577,9 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_05
-        - RPI_06
-        - RPI_07
+        - AS-RP-51-005
+        - AS-RP-51-006
+        - AS-RP-51-008
     roles:
       - relying_party
     productCategories:
@@ -805,8 +803,7 @@ requirements:
       of intermediary status and association to intermediated RPs.
     arfReference:
       topic: Topic 52
-      hlr:
-        - RPI_03
+      hlr: AS-RP-51-003
     roles:
       - relying_party
     productCategories:
@@ -864,8 +861,7 @@ requirements:
       registration in another national register.
     arfReference:
       topic: Topic 52
-      hlr:
-        - RPI_04
+      hlr: AS-RP-51-004
     roles:
       - relying_party
     productCategories:
@@ -923,8 +919,8 @@ requirements:
     arfReference:
       topic: Topic 52
       hlr:
-        - RPI_08
-        - RPI_09
+        - AS-RP-51-011
+        - AS-RP-51-012
     roles:
       - relying_party
     productCategories:
@@ -1097,8 +1093,8 @@ requirements:
     arfReference:
       topic: Topic 48
       hlr:
-        - DATA_DLT_07
-        - DATA_DLT_08
+        - AS-RP-48-005
+        - AS-WP-48-004
     roles:
       - relying_party
     productCategories:
@@ -1469,8 +1465,7 @@ requirements:
       the right to transmit those data to another controller.
     arfReference:
       topic: Topic 48
-      hlr:
-        - DATA_DLT_08
+      hlr: AS-WP-48-004
     roles:
       - relying_party
       - issuer
@@ -1523,11 +1518,11 @@ requirements:
     arfReference:
       topic: Topic 44
       hlr:
-        - RPRC_03
-        - RPRC_05
-        - RPRC_10
-        - RPRC_11
-        - RPRC_12
+        - EW-DM-44-003
+        - EW-DM-44-006
+        - EW-DM-44-011
+        - EW-DM-44-012
+        - EW-DM-44-013
     roles:
       - relying_party
     productCategories:
@@ -1583,8 +1578,8 @@ requirements:
     arfReference:
       topic: Topic 1
       hlr:
-        - OIA_15
-        - OIA_16
+        - EW-PIO-01-023
+        - AS-RP-01-002
     roles:
       - relying_party
     productCategories:
@@ -1620,7 +1615,7 @@ requirements:
       **Intended use enforcement chain:**
       1. RP registers intended uses → Registrar validates
       2. ACA issues access certificate containing intended uses
-      3. RP includes access certificate in presentation requests (RPA_02a)
+      3. RP includes access certificate in presentation requests (formerly RPA_02a)
       4. Wallet verifies intended use matches actual request
       5. If mismatch → wallet can warn user or block presentation
 
@@ -1638,9 +1633,8 @@ requirements:
     arfReference:
       topic: Topic 27
       hlr:
-        - Reg_15
-        - Reg_31
-        - Reg_32
+        - AS-MS-27-038
+        - AS-MS-27-039
     roles:
       - relying_party
     productCategories:
@@ -1657,7 +1651,7 @@ requirements:
       gives the wallet user confidence that the RP is legitimate and has
       only registered to request the specific data elements it is asking for.
 
-      **Access certificate inclusion (RPA_02a):**
+      **Access certificate inclusion (formerly RPA_02a, emptied in ARF v2.8.0):**
       The RP Instance SHALL include its access certificates in the
       presentation request **by value, not by reference**. This design
       decision ensures:
@@ -1697,9 +1691,7 @@ requirements:
       Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 6
-      hlr:
-        - RPA_02a
-        - RPA_06
+      hlr: AS-WP-06-007
     roles:
       - relying_party
     productCategories:
@@ -1762,11 +1754,11 @@ requirements:
     arfReference:
       topic: Topic 11
       hlr:
-        - PA_10
-        - PA_11
-        - PA_13
-        - PA_15
-        - PA_17
+        - AS-WP-11-011
+        - AS-WP-11-012
+        - AS-WP-11-014
+        - AS-WP-11-016
+        - AS-WP-11-018
     roles:
       - relying_party
     productCategories:
@@ -1824,8 +1816,8 @@ requirements:
     arfReference:
       topic: Topic 31
       hlr:
-        - RPACANot_03
-        - RPACANot_03a
+        - AS-MS-31-015
+        - AS-MS-31-016
     roles:
       - relying_party
     productCategories:
@@ -1882,8 +1874,7 @@ requirements:
       Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 1
-      hlr:
-        - OIA_08c
+      hlr: EW-PIO-01-014
     roles:
       - relying_party
     productCategories:
@@ -1944,8 +1935,7 @@ requirements:
       Identity Wallets.
     arfReference:
       topic: Topic 7
-      hlr:
-        - VCR_15
+      hlr: AS-AP-07-022
     roles:
       - relying_party
     productCategories:
@@ -2000,8 +1990,7 @@ requirements:
       of accessing public and private services.
     arfReference:
       topic: Topic 24
-      hlr:
-        - ProxId_01a
+      hlr: EW-PIO-24-002
     roles:
       - relying_party
     productCategories:
@@ -2065,8 +2054,8 @@ requirements:
     arfReference:
       topic: Topic 44
       hlr:
-        - RPRC_19
-        - RPRC_19a
+        - EW-DM-44-017
+        - EW-DM-44-018
     roles:
       - relying_party
     productCategories:
@@ -2160,7 +2149,7 @@ requirements:
       this Regulation.
     arfReference:
       topic: Topic 6
-      hlr: OIA_03a
+      hlr: EW-PIO-01-004
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -2223,7 +2212,7 @@ requirements:
       technical standards and specifications.
     arfReference:
       topic: Topic 9
-      hlr: ISSU_01
+      hlr: EW-PIO-10-001
     roles: [issuer]
     productCategories: [issuance_platform]
     deadline: "2027-11-21"
@@ -2284,7 +2273,7 @@ requirements:
       for the registration of wallet-relying parties.
     arfReference:
       topic: Topic 27
-      hlr: RPA_01
+      hlr: AS-WP-06-001
     roles: [relying_party]
     productCategories: [connector]
     deadline: "2027-11-21"
@@ -2376,10 +2365,10 @@ requirements:
     arfReference:
       topic: Topic 44
       hlr:
-        - RPRC_19a
-        - RPRC_20a
-        - RPRC_21
-        - RPA_10
+        - EW-DM-44-018
+        - EW-DM-44-020
+        - EW-DM-44-021
+        - AS-WP-06-013
     roles:
       - relying_party
     productCategories:
@@ -2473,9 +2462,7 @@ requirements:
       paragraph: "8"
     arfReference:
       topic: Topic 44
-      hlr:
-        - RPA_09
-        - RPA_12
+      hlr: AS-WP-06-016
     roles:
       - relying_party
     productCategories:
@@ -2517,7 +2504,7 @@ requirements:
       operational, and data-flow implications:
 
       - **Intermediary**: the vendor acts as a separate, registered
-        Relying Party with its own access certificate (ARF Topic 53, RPI_01).
+        Relying Party with its own access certificate (ARF Topic 52, RPI_01).
         The wallet shows a dual-party display to the user.
       - **Direct SaaS**: the vendor hosts managed connector infrastructure
         in its cloud, but the RP's own access certificate is used.
@@ -2537,9 +2524,8 @@ requirements:
       article: Article 5b
       paragraph: "1"
     arfReference:
-      topic: Topic 53
-      hlr:
-        - RPI_01
+      topic: Topic 52
+      hlr: AS-RP-51-001
     roles:
       - relying_party
     productCategories:
@@ -2564,7 +2550,7 @@ requirements:
       When operating as an ARF Intermediary, the vendor registers as a
       separate Relying Party with its own access certificate (RPI_01) and
       acts on behalf of intermediated RPs. This architecture has specific
-      obligations under ARF Topic 53:
+      obligations under ARF Topic 52:
 
       - **Registration**: the intermediary registers itself at a Registrar
         (RPI_01) and must also register each intermediated RP at the RP's
@@ -2587,14 +2573,14 @@ requirements:
       article: Article 5b
       paragraph: "1"
     arfReference:
-      topic: Topic 53
+      topic: Topic 52
       hlr:
-        - RPI_01
-        - RPI_03
-        - RPI_06
-        - RPI_07
-        - RPI_09
-        - RPI_10
+        - AS-RP-51-001
+        - AS-RP-51-003
+        - AS-RP-51-006
+        - AS-RP-51-008
+        - AS-RP-51-012
+        - AS-RP-51-013
     roles:
       - relying_party
     productCategories:
@@ -2718,8 +2704,7 @@ requirements:
       paragraph: "1"
     arfReference:
       topic: Topic 16
-      hlr:
-        - ProxId_01a
+      hlr: EW-PIO-24-002
     roles:
       - relying_party
     productCategories:

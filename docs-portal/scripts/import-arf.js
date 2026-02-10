@@ -166,6 +166,7 @@ function processRequirements(rawRequirements, config) {
 
     const processed = [];
     const byHlrId = {};
+    const byHarmonizedId = {};  // Content-wins: non-empty takes precedence
     const byTopic = {};
     const topicMetadata = {};
 
@@ -243,8 +244,16 @@ function processRequirements(rawRequirements, config) {
 
         processed.push(requirement);
 
-        // Index by HLR ID
+        // Index by HLR ID (Old ID)
         byHlrId[hlrId] = requirement;
+
+        // Index by Harmonized ID (content-wins: non-empty takes precedence)
+        const harmonizedId = raw.Harmonized_ID;
+        if (harmonizedId) {
+            if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
+                byHarmonizedId[harmonizedId] = requirement;
+            }
+        }
 
         // Index by topic
         if (!byTopic[topicNumber]) {
@@ -264,7 +273,7 @@ function processRequirements(rawRequirements, config) {
         topicMetadata[topicNumber].hlrCount++;
     }
 
-    return { processed, byHlrId, byTopic, topicMetadata };
+    return { processed, byHlrId, byHarmonizedId, byTopic, topicMetadata };
 }
 
 // ============================================================================
@@ -302,7 +311,7 @@ async function main() {
         const rawRequirements = parseCSV(csvText);
 
         // Process requirements
-        const { processed, byHlrId, byTopic, topicMetadata } =
+        const { processed, byHlrId, byHarmonizedId, byTopic, topicMetadata } =
             processRequirements(rawRequirements, config);
 
         // Generate stats
@@ -315,6 +324,7 @@ async function main() {
             stats,
             requirements: processed,
             byHlrId,
+            byHarmonizedId,
             byTopic,
             topicMetadata
         };

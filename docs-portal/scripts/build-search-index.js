@@ -257,15 +257,24 @@ function loadARFHLRs() {
             // Skip empty requirements
             if (req.isEmpty) continue;
 
+            // Include both Old ID (hlrId) and Harmonized ID for searchability
+            const harmonizedId = req.harmonizedId || '';
+            const termField = harmonizedId && harmonizedId !== req.hlrId
+                ? `${req.hlrId} ${harmonizedId}`
+                : req.hlrId;
+            const displayTitle = harmonizedId && harmonizedId !== req.hlrId
+                ? `${harmonizedId} (${req.hlrId}) - ${req.topicTitle}`
+                : `${req.hlrId} - ${req.topicTitle}`;
+
             arfSections.push({
                 id: `arf-${req.hlrId}`,
                 slug: 'arf',
                 type: 'arf-hlr',  // Special type for ARF requirements
-                term: req.hlrId,  // Original case for display
-                termLower: req.hlrId.toLowerCase(),  // Lowercased for case-insensitive exact search
+                term: termField,  // Both IDs for search
+                termLower: termField.toLowerCase(),  // Lowercased for case-insensitive exact search
                 docTitle: 'ARF High-Level Requirements',
                 section: `Topic ${req.topicNumber}`,
-                sectionTitle: `${req.hlrId} - ${req.topicTitle}`,
+                sectionTitle: displayTitle,
                 content: req.specification + (req.notes ? ` ${req.notes}` : ''),
                 sourceCount: 1,
             });

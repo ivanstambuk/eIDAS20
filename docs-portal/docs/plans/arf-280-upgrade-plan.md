@@ -4,7 +4,113 @@
 **Current version:** ARF v2.7.3 (in `03_arf/`)
 **Target version:** ARF v2.8.0 (released 2026-02-02)
 **Release URL:** https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases/tag/v2.8.0
-**Status:** Assessment complete, upgrade not yet started
+**Status:** 🔄 In progress — Phase 0+1 complete
+
+---
+
+## 📊 Progress Tracker
+
+> **Last updated:** 2026-02-10 21:30 CET
+> **Branch:** `feat/arf-280-upgrade` | **Tag:** `pre-arf-280`
+
+### Overview
+
+| Phase | Description | Status | Commit |
+|-------|-------------|--------|--------|
+| **0** | Create rollback safety net | ✅ Done | `6b7ff77d` |
+| **1** | Import v2.8.0 files | ✅ Done | `6b7ff77d` |
+| **2** | Update VCQ references + Harmonized ID migration | ✅ Done | `c0d6463a` |
+| **3** | Review new HLRs for coverage gaps | ⬜ Not started | — |
+| **3.5** | Validate deep links + pin URLs | ⬜ Not started | — |
+| **4** | Rebuild and validate | ⬜ Not started | — |
+| **5** | Document decisions + merge | ⬜ Not started | — |
+
+### Phase 0: Create rollback safety net ✅
+
+- [x] Create feature branch `feat/arf-280-upgrade`
+- [x] Tag current state `pre-arf-280`
+- [x] Verify current build is green (`validate:ci` + `npm run build`)
+
+### Phase 1: Import v2.8.0 files ✅
+
+- [x] Verify golden source at `/tmp/arf_v280/` (confirmed v2.8.0 tag)
+- [x] Diff local modifications vs v2.8.0 (link format changes only, no local annotations)
+- [x] Copy safe-to-overwrite files (CSV, annexes, main doc, index, media, root files)
+- [x] Merge discussion-topics (5 files) and technical-specifications (README + TS2)
+- [x] Handle Annex 5 media type change (files → directories)
+- [x] Fix `arf-config.yaml`: add Topics 38, 53, 56 to `relevantTopics`
+- [x] Fix `arf-config.yaml`: update Topic 9 anchor (added "and Wallet Instance Attestation")
+- [x] Fix `arf-config.yaml`: add `topicAnchors` for Topics 38, 53, 56
+- [x] Run `import-arf-hlr.js` (572 requirements)
+- [x] Run `import-arf.js` / `npm run build:arf` (510 HLRs, 20 topics)
+- [x] 🔒 COMMIT: `6b7ff77d`
+
+### Phase 2: Update VCQ references + Harmonized ID migration ✅
+
+- [x] Generate Old ID → Harmonized ID mapping table from v2.8.0 CSV
+- [x] Handle 8 newly emptied `hlr:` references (Tier 1a):
+  - [x] `core.yaml`: remove `RPA_02a` from VEND-CORE-005 + VEND-CORE-032
+  - [x] `core.yaml`: remove `Reg_15` from VEND-CORE-031
+  - [x] `issuer.yaml`: remove `ISSU_22a`, `ISSU_22b`, `ISSU_32a` from VEND-ISS-037
+  - [x] `issuer.yaml`: remove `Reg_14` from VEND-ISS-029
+  - [x] `trust_services.yaml`: remove `Reg_12`, `Reg_13` from VEND-TSP-017
+- [x] Handle 1 pre-existing empty `hlr:` reference (Tier 3):
+  - [x] `core.yaml`: remove `RPA_09` from VEND-CORE-047
+- [x] Fix Topic 53 → 52 mismatch in VEND-CORE-048, VEND-CORE-049
+- [x] Update 5 explanation-text mentions (Tier 2):
+  - [x] `WUA_11` / `WUA_11b` → `WUA_11a`/`AS-WP-09-015` in VEND-ISS-019
+  - [x] `RPA_02a` cross-ref annotated as emptied in VEND-CORE-005, VEND-CORE-031, VEND-CORE-032
+  - [x] `WURevocation_18` / `WURevocation_19` → added Harmonized IDs in VEND-ISS-041
+- [x] Migrate ALL `hlr:` values from Old IDs → Harmonized IDs (191 references across 4 YAML files)
+- [x] Update `import-arf.js`: add `byHarmonizedId` index with content-wins guard
+- [x] Update `validate-vcq-arf.js`: lookup by Harmonized ID
+- [x] Update `validate-vcq.js`: lookup by Harmonized ID
+- [x] Update `exportExcel.js`: use `byHarmonizedId` fallback
+- [x] Update `build-search-index.js`: show both IDs
+- [x] Run validation: `validate-vcq-arf.js` (0 errors) + `validate:vcq` (0 errors, 191 refs valid)
+- [x] 🔒 COMMIT: `c0d6463a`
+
+### Phase 3: Review new HLRs for coverage gaps ⬜
+
+- [ ] Assess Topic 56 (WPSM) — Wallet Provider maintenance
+- [ ] Assess Topic 10 (ISSU_64–73) — new ETSI issuance requirements
+- [ ] Assess Topic 11 (PA_23–31) — pseudonym rate-limiting
+- [ ] Assess Topic 38 — revocation restructuring reference integrity
+- [ ] Assess Topic 20 (SUA_06, SUA_07) — Wallet UI rendering for SCA
+
+### Phase 3.5: Validate deep links + pin URLs ⬜
+
+- [ ] Verify all `topicAnchors` against v2.8.0 golden source headings
+- [ ] Pin `csvUrl` to `refs/tags/v2.8.0` (currently `refs/heads/main`)
+- [ ] Pin `baseUrl` to `blob/v2.8.0` (currently `blob/main`)
+- [ ] Rebuild ARF data: `npm run build:arf`
+- [ ] Run/create link validation script
+- [ ] Verify in browser: ARF badge → deep link → correct scroll position
+- [ ] 🔒 COMMIT
+
+### Phase 4: Rebuild and validate ⬜
+
+- [ ] Rebuild: `npm run build:arf`
+- [ ] Rebuild: `node scripts/import-arf-hlr.js`
+- [ ] Rebuild: `node scripts/build-terminology.js`
+- [ ] Rebuild: `node scripts/build-vcq.js`
+- [ ] Rebuild: `node scripts/build-rca.js`
+- [ ] Rebuild: `node scripts/build-search-index.js`
+- [ ] Run: `npm run validate:ci`
+- [ ] Run: `node scripts/validate-vcq-arf.js`
+- [ ] Spot-check terminology, VCQ, RCA in browser
+- [ ] Verify ARF popover deep links in browser
+- [ ] Test Excel export (Harmonized ID columns)
+- [ ] 🔒 COMMIT
+
+### Phase 5: Document decisions + merge ⬜
+
+- [ ] Add DECISIONS.md entry for upgrade (DEC-29x)
+- [ ] Add DECISIONS.md entry for Harmonized ID migration (DEC-29y)
+- [ ] Update TRACKER.md with final log
+- [ ] Update ARF version references (search for "2.7.3")
+- [ ] Merge feature branch to master
+- [ ] Push + clean up tags
 
 ---
 

@@ -751,7 +751,7 @@ requirements:
       shall be verifiable, including its validity status.
     arfReference:
       topic: Topic 7
-      hlr: VCR_01
+      hlr: AS-AP-07-001
     roles:
       - issuer
     productCategories:
@@ -918,9 +918,6 @@ requirements:
       qualified trust service providers.
     arfReference:
       topic: Topic 27
-      hlr:
-        - Reg_12
-        - Reg_13
     roles: []
     productCategories:
       - trust_services
@@ -979,8 +976,8 @@ requirements:
     arfReference:
       topic: Topic 31
       hlr:
-        - RPACANot_06
-        - RPACANot_07
+        - EW-DM-31-001
+        - AS-MS-31-019
     roles: []
     productCategories:
       - trust_services
@@ -1040,10 +1037,10 @@ requirements:
     arfReference:
       topic: Topic 42
       hlr:
-        - QTSPAS_03
-        - QTSPAS_04
-        - QTSPAS_05
-        - QTSPAS_08
+        - AS-AP-42-003
+        - AS-AP-42-004
+        - AS-AP-42-005
+        - AS-AP-42-009
     roles:
       - issuer
     productCategories:
