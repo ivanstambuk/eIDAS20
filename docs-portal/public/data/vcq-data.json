@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T20:52:23.377Z",
+  "generatedAt": "2026-02-10T21:21:51.991Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -172,10 +172,10 @@
       "icon": "🏗️",
       "items": [
         {
-          "id": "ARF_2.7.3",
+          "id": "ARF_2.8.0",
           "name": "Architecture Reference Framework",
           "shortName": "ARF",
-          "version": "2.7.3",
+          "version": "2.8.0",
           "externalUrl": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
         },
         {

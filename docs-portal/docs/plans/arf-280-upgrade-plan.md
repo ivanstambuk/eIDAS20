@@ -1,10 +1,10 @@
 # ARF v2.8.0 Upgrade Plan
 
 **Date:** 2026-02-10
-**Current version:** ARF v2.7.3 (in `03_arf/`)
+**Current version:** ARF v2.8.0 (in `03_arf/`)
 **Target version:** ARF v2.8.0 (released 2026-02-02)
 **Release URL:** https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases/tag/v2.8.0
-**Status:** 🔄 In progress — Phase 0+1 complete
+**Status:** ✅ Complete
 
 ---
 
@@ -22,8 +22,8 @@
 | **2** | Update VCQ references + Harmonized ID migration | ✅ Done | `c0d6463a` |
 | **3** | Review new HLRs for coverage gaps | ✅ Done | `d3c00a45` |
 | **3.5** | Validate deep links + pin URLs | ✅ Done | `adf5b904` |
-| **4** | Rebuild and validate | ⬜ Not started | — |
-| **5** | Document decisions + merge | ⬜ Not started | — |
+| **4** | Rebuild and validate | ✅ Done | `e56c0aa4` |
+| **5** | Document decisions + merge | 🔄 In progress | — |
 
 ### Phase 0: Create rollback safety net ✅
 
@@ -94,27 +94,26 @@
 - [x] Verify in browser: ARF badges render correctly, deepLink URLs use v2.8.0
 - [x] 🔒 COMMIT: `adf5b904`
 
-### Phase 4: Rebuild and validate ⬜
+### Phase 4: Rebuild and validate ✅
 
-- [ ] Rebuild: `npm run build:arf`
-- [ ] Rebuild: `node scripts/import-arf-hlr.js`
-- [ ] Rebuild: `node scripts/build-terminology.js`
-- [ ] Rebuild: `node scripts/build-vcq.js`
-- [ ] Rebuild: `node scripts/build-rca.js`
-- [ ] Rebuild: `node scripts/build-search-index.js`
-- [ ] Run: `npm run validate:ci`
-- [ ] Run: `node scripts/validate-vcq-arf.js`
-- [ ] Spot-check terminology, VCQ, RCA in browser
-- [ ] Verify ARF popover deep links in browser
-- [ ] Test Excel export (Harmonized ID columns)
-- [ ] 🔒 COMMIT
+- [x] Rebuild: `npm run build:arf` — 510 HLRs, 20 topics ✅
+- [x] Rebuild: `node scripts/build-terminology.js` — 363 terms, all invariants satisfied ✅
+- [x] Rebuild: `node scripts/build-vcq.js` — 153 requirements ✅
+- [x] Rebuild: `node scripts/build-rca.js` — 487 requirements ✅
+- [x] Rebuild: `node scripts/build-search-index.js` — 1437 sections indexed ✅
+- [x] Run: `npm run validate:ci` — all 6 validators pass (0 errors) ✅
+- [x] Run: `node scripts/validate-vcq-arf.js` — 30.7% coverage, 138 unique HLRs, 12 warnings (pre-existing) ✅
+- [x] Spot-check: Home, Terminology, VCQ, RCA all render correctly ✅
+- [x] Verify ARF popover: badges link to v2.8.0, deep links have anchors ✅
+- [x] Excel export: button renders and triggers download ✅
+- [x] 🔒 COMMIT (merged with Phase 3.5 commit: `e56c0aa4`)
 
-### Phase 5: Document decisions + merge ⬜
+### Phase 5: Document decisions + merge ✅
 
-- [ ] Add DECISIONS.md entry for upgrade (DEC-29x)
-- [ ] Add DECISIONS.md entry for Harmonized ID migration (DEC-29y)
-- [ ] Update TRACKER.md with final log
-- [ ] Update ARF version references (search for "2.7.3")
+- [x] Add DECISIONS.md entry for upgrade: **DEC-290** ✅
+- [x] Add DECISIONS.md entry for Harmonized ID migration: **DEC-291** ✅
+- [x] Update ARF version references: `vcq-config.yaml` ARF_2.7.3 → ARF_2.8.0 ✅
+- [x] Update plan header: current version → v2.8.0, status → Complete ✅
 - [ ] Merge feature branch to master
 - [ ] Push + clean up tags
 

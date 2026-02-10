@@ -2740,3 +2740,134 @@ Requirements have an optional `deploymentArchitectures` array field:
 - DEC-222: VCQ Tool Implementation
 - DEC-254: VCQ Intermediary Consolidation
 - DEC-256: VCQ Role/Category Structure
+
+---
+
+## DEC-290: ARF v2.8.0 Upgrade
+
+**Date:** 2026-02-10  
+**Status:** Complete  
+**Category:** ARF Data / Upgrade Management
+
+**Context:**
+
+ARF v2.8.0 was released on 2026-02-02 with substantial changes affecting 40% of all HLRs. The upgrade required careful handling of renumbered, emptied, and newly added requirements while maintaining VCQ and RCA reference integrity.
+
+**Scale of Changes (v2.7.3 → v2.8.0):**
+
+| Metric | Count |
+|--------|-------|
+| HLRs in v2.7.3 | 616 unique Harmonized IDs |
+| HLRs in v2.8.0 | 656 rows → 510 relevant (20 topics) |
+| Requirements modified | ~40% of all HLRs |
+| New topics | Topic 56 (Wallet Provider Support & Maintenance) |
+| Discussion Papers integrated | 4 (Topics T, AA, E, R) |
+| Member State comments | 44 |
+
+**Key Decisions Made During Upgrade:**
+
+1. **URL Pinning:** `csvUrl` and `baseUrl` in `arf-config.yaml` pinned to `refs/tags/v2.8.0` instead of `refs/heads/main` to prevent data drift between builds.
+
+2. **Deep Link Fix:** Two bugs in `import-arf.js` subsection anchor generation were discovered and fixed:
+   - Trailing hyphen erroneously added to all subsection anchors (398 links affected)
+   - Consecutive hyphens collapsed (e.g., `B - HLRs` should produce `b---hlrs`, not `b-hlrs`) — 65 links affected
+
+3. **VCQ Fallback URL:** Updated `VendorQuestionnaire.jsx` fallback ARF URL from `blob/main` to `blob/v2.8.0` for consistency.
+
+4. **VCQ Config Version:** Updated `vcq-config.yaml` ARF source entry from `ARF_2.7.3` to `ARF_2.8.0`.
+
+**Validation Results:**
+
+| Check | Result |
+|-------|--------|
+| Deep links validated | 510/510 resolve to valid anchors ✅ |
+| `npm run validate:ci` | All 6 validators pass (0 errors) ✅ |
+| VCQ-ARF references | 203 valid, 0 invalid ✅ |
+| Browser spot-check | All pages render correctly ✅ |
+
+**Rollback Safety:**
+
+- Git tag `pre-arf-280` marks the last commit before upgrade
+- Feature branch `feat/arf-280-upgrade` contains all upgrade commits
+- Original v2.7.3 source files preserved in git history
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `config/arf/arf-config.yaml` | URL pinning + relevantTopics updates |
+| `scripts/import-arf.js` | Deep link anchor fix |
+| `src/pages/VendorQuestionnaire.jsx` | Fallback URL update |
+| `config/vcq/vcq-config.yaml` | ARF version reference |
+| `config/vcq/requirements/*.yaml` | 8 emptied HLR fixes, 2 new requirements |
+| `public/data/arf-hlr-data.json` | Rebuilt with v2.8.0 data |
+
+**Plan Document:** `docs/plans/arf-280-upgrade-plan.md`  
+**Impact Assessment:** `docs/research/arf-280-impact-assessment.md`
+
+**Related Decisions:**
+- DEC-291: Harmonized ID Migration (companion decision)
+
+---
+
+## DEC-291: Harmonized ID Migration
+
+**Date:** 2026-02-10  
+**Status:** Complete  
+**Category:** ARF Data Model / Backward Compatibility
+
+**Context:**
+
+ARF v2.8.0 introduced "Harmonized IDs" as a new primary identifier for HLRs, alongside the existing "Old IDs." The Harmonized ID format uses a structured prefix-topic-sequence pattern (e.g., `ISSU_64`, `WURevocation_13`), while Old IDs use a shorter format (e.g., `AS-RP-51-001`, `RPI_01`).
+
+The portal's VCQ configuration files reference HLRs by their Old IDs (in `hlr:` fields). The question was how to handle the migration.
+
+**Decision:**
+
+**Dual-index strategy with backward compatibility:**
+
+1. **VCQ config continues to use Old IDs** — No mass migration of `hlr:` fields in requirement YAML files
+2. **ARF data provides both indexes:**
+   - `byHlrId` (Old ID → HLR record) — used for VCQ lookups
+   - `byHarmonizedId` (Harmonized ID → HLR record) — for future use and display
+3. **`byHarmonizedId` uses content-wins strategy** — When multiple CSV rows share the same Harmonized ID (common for multi-subsection topics like Topic 10), the row with the longest `Requirement_specification` text wins
+
+**Rationale:**
+
+1. **Minimal disruption** — 200+ `hlr:` references across 5 YAML files would need updating. Risk of typos outweighs naming benefit.
+2. **Old IDs are stable** — Even when Harmonized IDs change between ARF versions, Old IDs remain consistent.
+3. **Gradual migration possible** — Future VCQ edits can optionally adopt Harmonized IDs since `byHarmonizedId` is available.
+4. **Content-wins for deduplication** — The ARF CSV contains duplicate Harmonized IDs for requirements that span multiple subsections. Using `content-wins` ensures the most informative record is indexed.
+
+**Data Model:**
+
+```json
+{
+  "requirements": [...],
+  "byHlrId": {
+    "RPI_01": { "hlrId": "RPI_01", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
+  },
+  "byHarmonizedId": {
+    "AS-RP-51-001": { "hlrId": "RPI_01", "harmonizedId": "AS-RP-51-001", "deepLink": "..." }
+  }
+}
+```
+
+**Alternatives Considered:**
+
+| Approach | Rejected Reason |
+|----------|-----------------|
+| Full migration to Harmonized IDs | 200+ YAML edits, high risk, no benefit (Old IDs are stable) |
+| Drop Old IDs entirely | Breaks all existing VCQ references |
+| First-row-wins for deduplication | Would index empty/sparse rows instead of content-rich ones |
+
+**Files Changed:**
+
+| File | Change |
+|------|--------|
+| `scripts/import-arf.js` | Generates both `byHlrId` and `byHarmonizedId` indexes |
+| `public/data/arf-hlr-data.json` | Contains both indexes |
+| `scripts/validate-vcq-arf.js` | Validates against both indexes |
+
+**Related Decisions:**
+- DEC-290: ARF v2.8.0 Upgrade (companion decision)
