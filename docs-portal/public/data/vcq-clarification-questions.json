@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-02-10T05:23:52.484Z",
+  "generatedAt": "2026-02-10T05:29:15.547Z",
   "schemaVersion": 1,
   "stats": {
-    "totalRequirements": 146,
-    "totalQuestions": 825,
+    "totalRequirements": 147,
+    "totalQuestions": 833,
     "byDimension": {
-      "technical_implementation": 105,
+      "technical_implementation": 109,
       "data_handling": 15,
       "auditability": 25,
       "supply_chain": 7,
       "security": 67,
-      "capability": 99,
-      "compliance_completeness": 24,
+      "capability": 101,
+      "compliance_completeness": 25,
       "lifecycle": 59,
-      "operational": 78,
+      "operational": 79,
       "contract_terms": 3,
       "compliance_evidence": 42,
       "limitations": 5,
@@ -1512,6 +1512,48 @@
         "id": "Q6",
         "text": "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured?",
         "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-047": [
+      {
+        "id": "Q1",
+        "text": "What distinct outcome states does the product surface to the integrating application (e.g., success, rejected, failed, timeout, error)? How are these distinguished?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q2",
+        "text": "How does the product handle the OID4VP 'access_denied' error response — does it distinguish between user-refused consent, missing credentials, and failed wallet authentication?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "What session timeout mechanism does the product implement for cases where the wallet never responds (user abandonment)? Is the timeout value configurable per RP or per use case?",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q4",
+        "text": "How does the product notify the integrating application of outcome events — callback/webhook, polling API, real-time push (WebSocket/SSE), or other mechanism?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q5",
+        "text": "What metadata is included with each outcome event (timestamp, error code, error description, session ID, correlation ID) to support downstream decision-making?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "Does the product support configurable retry or fallback logic when a timeout or rejection occurs — for example, automatic retry with a different credential type, or escalation to an alternative verification method?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q7",
+        "text": "How are rejection, timeout, and error events logged for audit purposes, and how does this logging comply with the GDPR data minimization principle (no user-identifying data in logs)?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q8",
+        "text": "For channel integrations (call centre, kiosk, in-branch), does the product provide real-time status updates during the wallet interaction (e.g., 'request sent', 'waiting for user', 'user responding') or only the final outcome?",
+        "dimension": "capability"
       }
     ],
     "VEND-ICT-001": [

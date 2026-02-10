@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T05:23:44.551Z",
+  "generatedAt": "2026-02-10T05:29:15.498Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1941,6 +1941,52 @@
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 4). The stakeholder \nasked whether wallets validate the OID4VP \"purpose\" parameter against \nregistered RP purposes. Analysis revealed that the ARF does not use the \nstandard OID4VP purpose field; instead it defines a richer mechanism via \nregistration certificates and the RPRC_19a extension. The wallet can \nverify requested attributes against registered ones (RPRC_21).\n\nExisting requirements cover registration (VEND-CORE-031), certificate \nlifecycle (VEND-CORE-041), and the TS5 API (VEND-CORE-045). This \nrequirement fills the operational gap: how the product selects the \ncorrect intended use for each transaction.\n\nSet to MUST because RPRC_19a is a SHALL requirement — the RP Instance \nmust include the intended use identifier and description in every \npresentation request. The connector product cannot enable this \ncompliance without a mechanism to configure and select intended uses.",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-047",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Surface user rejection, consent denial, and session timeout events to the integrating application",
+      "explanation": "When a wallet user declines a presentation request or a session times \nout, the product should provide clear, actionable status information to \nthe integrating application (the RP's backend or channel system). This \nis essential for usable RP integrations, particularly in mediated \nchannels such as call centres, kiosks, and in-branch services, where a \nhuman operator or automated system needs to know the outcome in real \ntime to proceed with the correct UX flow.\n\nThe OID4VP protocol defines error response codes that the wallet sends \nback to the verifier:\n\n- \"access_denied\": The user explicitly refused consent, or the wallet \n  could not satisfy the request (missing credentials, failed user \n  authentication). The RP receives this as a structured error response.\n- \"vp_formats_not_supported\": The wallet does not support the requested \n  credential format.\n- Other OAuth 2.0 error codes may apply in specific scenarios.\n\nHowever, the OID4VP protocol does NOT define a signal for user \nabandonment — when the user simply closes the wallet, navigates away, \nor walks away from a kiosk. In this case the RP receives nothing. The \nproduct must therefore implement its own session timeout mechanism and \nsurface a timeout event to the integrating application.\n\nThe product should provide the integrating application with at least \nthese distinct outcome states:\n1. SUCCESS — user approved, presentation received\n2. REJECTED — user explicitly denied consent (OID4VP \"access_denied\")\n3. FAILED — technical failure (format mismatch, missing credentials, \n   authentication failure)\n4. TIMEOUT — no response received within the configured timeout period\n5. ERROR — unexpected error during processing\n\nEach outcome should include sufficient metadata for the integrating \napplication to determine the appropriate next action (retry, escalate, \nshow alternative, terminate session).\n\nThis is particularly critical for channel scenarios:\n- Call centre: The operator needs to know immediately whether to offer \n  an alternative verification method or proceed with the service.\n- Kiosk: The screen must update to show the correct status and \n  instructions (e.g., \"Verification timed out — please try again\").\n- In-branch: The staff member needs real-time status to guide the \n  customer through the process.\n\nWithout this capability, channel integrations are left in an ambiguous \nstate when the user does not complete the flow, resulting in poor UX \nand operational inefficiency.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
+      "arfReference": {
+        "topic": "Topic 44",
+        "hlr": [
+          "RPA_09",
+          "RPA_12"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "SHOULD",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 7). The stakeholder \nasked whether the RP gets any indication when the user rejects or \nabandons a request, noting this is critical for channel UX.\n\nInvestigation found that OID4VP provides structured error responses for \nexplicit rejection (\"access_denied\") but has no protocol-level signal \nfor user abandonment/timeout. The product must bridge this gap.\n\nNo ARF HLR directly mandates this — RPA_09 (display request to user) \nand RPA_12 (user approval before release) address the happy path only. \nThe error/timeout handling is a quality-of-implementation concern with \nsignificant operational impact.\n\nSet to SHOULD because while the OID4VP error responses are part of the \nprotocol (and thus implicitly required), the structured surfacing of \nthese events with distinct outcome codes and the timeout mechanism are \nproduct-level quality features. The regulatory framework does not \nexplicitly mandate how the RP backend is notified of failure outcomes.",
       "_sourceFile": "core.yaml"
     },
     {
@@ -6210,6 +6256,7 @@
       "VEND-CORE-041",
       "VEND-CORE-045",
       "VEND-CORE-046",
+      "VEND-CORE-047",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6379,6 +6426,7 @@
       "VEND-CORE-041",
       "VEND-CORE-045",
       "VEND-CORE-046",
+      "VEND-CORE-047",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6570,6 +6618,7 @@
       "VEND-CORE-044",
       "VEND-CORE-045",
       "VEND-CORE-046",
+      "VEND-CORE-047",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6712,6 +6761,7 @@
       "VEND-CORE-044",
       "VEND-CORE-045",
       "VEND-CORE-046",
+      "VEND-CORE-047",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6772,26 +6822,26 @@
     ]
   },
   "stats": {
-    "totalRequirements": 146,
+    "totalRequirements": 147,
     "byRole": {
-      "relying_party": 62,
+      "relying_party": 63,
       "issuer": 64,
       "universal": 35
     },
     "byProductCategory": {
-      "connector": 50,
+      "connector": 51,
       "issuance_platform": 47,
       "trust_services": 26,
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 125,
+      "eidas": 126,
       "gdpr": 20,
       "dora": 12,
-      "arf": 79
+      "arf": 80
     },
     "byCategory": {
-      "usage": 43,
+      "usage": 44,
       "contracts": 22,
       "registration": 27,
       "security": 29,
@@ -6801,7 +6851,7 @@
     "byObligation": {
       "MUST": 126,
       "MUST NOT": 11,
-      "SHOULD": 8,
+      "SHOULD": 9,
       "SHOULD NOT": 0,
       "MAY": 1
     }

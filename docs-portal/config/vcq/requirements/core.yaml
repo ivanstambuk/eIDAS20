@@ -1146,3 +1146,89 @@ requirements:
       presentation request. The connector product cannot enable this 
       compliance without a mechanism to configure and select intended uses.
     obligation: MUST
+  - id: VEND-CORE-047
+    category: usage
+    requirement: Surface user rejection, consent denial, and session timeout events to the integrating application
+    explanation: |
+      When a wallet user declines a presentation request or a session times 
+      out, the product should provide clear, actionable status information to 
+      the integrating application (the RP's backend or channel system). This 
+      is essential for usable RP integrations, particularly in mediated 
+      channels such as call centres, kiosks, and in-branch services, where a 
+      human operator or automated system needs to know the outcome in real 
+      time to proceed with the correct UX flow.
+
+      The OID4VP protocol defines error response codes that the wallet sends 
+      back to the verifier:
+
+      - "access_denied": The user explicitly refused consent, or the wallet 
+        could not satisfy the request (missing credentials, failed user 
+        authentication). The RP receives this as a structured error response.
+      - "vp_formats_not_supported": The wallet does not support the requested 
+        credential format.
+      - Other OAuth 2.0 error codes may apply in specific scenarios.
+
+      However, the OID4VP protocol does NOT define a signal for user 
+      abandonment — when the user simply closes the wallet, navigates away, 
+      or walks away from a kiosk. In this case the RP receives nothing. The 
+      product must therefore implement its own session timeout mechanism and 
+      surface a timeout event to the integrating application.
+
+      The product should provide the integrating application with at least 
+      these distinct outcome states:
+      1. SUCCESS — user approved, presentation received
+      2. REJECTED — user explicitly denied consent (OID4VP "access_denied")
+      3. FAILED — technical failure (format mismatch, missing credentials, 
+         authentication failure)
+      4. TIMEOUT — no response received within the configured timeout period
+      5. ERROR — unexpected error during processing
+
+      Each outcome should include sufficient metadata for the integrating 
+      application to determine the appropriate next action (retry, escalate, 
+      show alternative, terminate session).
+
+      This is particularly critical for channel scenarios:
+      - Call centre: The operator needs to know immediately whether to offer 
+        an alternative verification method or proceed with the service.
+      - Kiosk: The screen must update to show the correct status and 
+        instructions (e.g., "Verification timed out — please try again").
+      - In-branch: The staff member needs real-time status to guide the 
+        customer through the process.
+
+      Without this capability, channel integrations are left in an ambiguous 
+      state when the user does not complete the flow, resulting in poor UX 
+      and operational inefficiency.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: ""
+    arfReference:
+      topic: Topic 44
+      hlr:
+        - RPA_09
+        - RPA_12
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Derived from stakeholder feedback (2026-02-09, Item 7). The stakeholder 
+      asked whether the RP gets any indication when the user rejects or 
+      abandons a request, noting this is critical for channel UX.
+
+      Investigation found that OID4VP provides structured error responses for 
+      explicit rejection ("access_denied") but has no protocol-level signal 
+      for user abandonment/timeout. The product must bridge this gap.
+
+      No ARF HLR directly mandates this — RPA_09 (display request to user) 
+      and RPA_12 (user approval before release) address the happy path only. 
+      The error/timeout handling is a quality-of-implementation concern with 
+      significant operational impact.
+
+      Set to SHOULD because while the OID4VP error responses are part of the 
+      protocol (and thus implicitly required), the structured surfacing of 
+      these events with distinct outcome codes and the timeout mechanism are 
+      product-level quality features. The regulatory framework does not 
+      explicitly mandate how the RP backend is notified of failure outcomes.
+    obligation: SHOULD
