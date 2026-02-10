@@ -257,13 +257,14 @@ function loadARFHLRs() {
             // Skip empty requirements
             if (req.isEmpty) continue;
 
-            // Include both Old ID (hlrId) and Harmonized ID for searchability
+            // Harmonized ID is the primary identifier; Old ID kept for backward-compatible search
             const harmonizedId = req.harmonizedId || '';
-            const termField = harmonizedId && harmonizedId !== req.hlrId
-                ? `${req.hlrId} ${harmonizedId}`
+            const hasHarmonized = harmonizedId && harmonizedId !== req.hlrId;
+            const termField = hasHarmonized
+                ? `${harmonizedId} ${req.hlrId}`
                 : req.hlrId;
-            const displayTitle = harmonizedId && harmonizedId !== req.hlrId
-                ? `${harmonizedId} (${req.hlrId}) - ${req.topicTitle}`
+            const displayTitle = hasHarmonized
+                ? `${harmonizedId} — ${req.topicTitle}`
                 : `${req.hlrId} - ${req.topicTitle}`;
 
             arfSections.push({
