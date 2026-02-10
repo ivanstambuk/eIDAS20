@@ -60,14 +60,14 @@ The ARF (Architecture and Reference Framework) defines two legal models:
                     │   Vendor-hosted (SaaS) │  RP-hosted (Self-host) │
 ┌───────────────────┼────────────────────────┼────────────────────────┤
 │                   │                        │                        │
-│   Intermediary    │   ✅ Common             │   ⚠️ Theoretically      │
+│   Intermediary    │   ✅ Common           │   ⚠️ Theoretically     │
 │   (vendor's cert) │   e.g. Hopae Connect   │   possible but rare    │
 │                   │                        │   (vendor's cert on    │
 │                   │                        │    RP's infra — why?)  │
 │                   │                        │                        │
 ├───────────────────┼────────────────────────┼────────────────────────┤
 │                   │                        │                        │
-│   Direct RP       │   ✅ Common             │   ✅ Common              │
+│   Direct RP       │   ✅ Common           │   ✅ Common            │
 │   Instance        │   e.g. Sproof Ident    │   e.g. Lissi EUDI      │
 │   (RP's cert)     │                        │   Wallet Connector     │
 │                   │                        │                        │
@@ -114,9 +114,9 @@ with EUDI Wallet Units.
 │   EUDI      │    (vendor's access   │   Intermediary   │
 │   Wallet    │     certificate)      │   Vendor         │
 │   Unit      │                       │   (own RP ID)    │
-│             │───────────────────────►│                  │
-│             │    VP Token response   │   Registered at  │
-│             │    (personal data)     │   Registrar with │
+│             │──────────────────────►│                  │
+│             │    VP Token response  │   Registered at  │
+│             │    (personal data)    │   Registrar with │
 └─────────────┘                       │   own access     │
        │                              │   certificate    │
        │                              │                  │
@@ -125,7 +125,7 @@ with EUDI Wallet Units.
        │  │ Requesting party:    │           │ Forward attributes
        │  │  🔀 Vendor Corp      │           │ (after RPI_09
        │  │ On behalf of:        │           │  verification)
-       │  │  � Acme Services    │           │
+       │  │  Acme Services       │           │
        │  │                      │           │ Immediately delete
        │  │ [Approve] [Decline]  │           │ all personal data
        │  └──────────────────────┘           │ (RPI_10)
@@ -202,18 +202,18 @@ the RP — there is no intermediary in the ARF sense, and no dual-party display.
 │   EUDI      │    (RP's access       │   Vendor Cloud   │
 │   Wallet    │     certificate)      │   Infrastructure │
 │   Unit      │                       │                  │
-│             │───────────────────────►│   Runs the       │
-│             │    VP Token response   │   connector      │
-│             │    (personal data      │   software       │
-│             │     transits vendor    │                  │
-│             │     infrastructure)    │   Uses RP's      │
+│             │──────────────────────►│   Runs the       │
+│             │    VP Token response  │   connector      │
+│             │    (personal data     │   software       │
+│             │     transits vendor   │                  │
+│             │     infrastructure)   │   Uses RP's      │
 └─────────────┘                       │   certificate    │
        │                              │                  │
        │                              └──────┬───────────┘
        │  Wallet displays:                   │
        │  ┌──────────────────────┐           │ Forward verified
        │  │ Requesting party:    │           │ attributes to RP
-       │  │  � Acme Services    │           │ (data transits
+       │  │  Acme Services      │           │ (data transits
        │  │                      │           │  vendor cloud)
        │  │ (single party only   │           │
        │  │  — no dual display)  │           │
@@ -252,7 +252,7 @@ This means:
 the service with its own DNS record, domain, and TLS certificate:
 
 ```
-┌─────────────┐                 ┌──────────────┐                 ┌──────────────┐
+┌─────────────┐                ┌──────────────┐                ┌──────────────┐
 │   EUDI      │   TLS to RP's  │  RP's        │   TLS to       │   Vendor     │
 │   Wallet    │───────────────►│  Reverse     │───────────────►│   Cloud      │
 │   Unit      │   domain       │  Proxy       │   vendor       │   Backend    │
@@ -274,29 +274,29 @@ The RP's access certificate private key must be available to sign OID4VP
 request objects. In a SaaS model, three custody options exist:
 
 ```
-Option 1: Vendor holds keys          Option 2: RP-controlled HSM
-┌──────────────┐                     ┌──────────────┐
-│  Vendor      │                     │  Vendor      │
-│  Cloud       │                     │  Cloud       │
-│  ┌────────┐  │                     │              │
-│  │ RP's   │  │                     │  Signs via   │──────┐
-│  │ private │  │                     │  remote API  │      │
-│  │ key     │  │                     │              │      ▼
-│  └────────┘  │                     └──────────────┘  ┌────────┐
-│  (vendor has │                                       │  HSM   │
-│   custody)   │                     Option 3:         │  (RP-  │
-└──────────────┘                     Split signing     │  owned)│
-                                     ┌──────────────┐  └────────┘
-                                     │  Vendor      │
-                                     │  prepares    │──────┐
-                                     │  unsigned    │      │
-                                     │  request     │      ▼
-                                     └──────────────┘  ┌────────┐
-                                                       │  RP    │
-                                                       │  signs │
-                                                       │  (own  │
-                                                       │  key)  │
-                                                       └────────┘
+Option 1: Vendor holds keys            Option 2: RP-controlled HSM
+┌────────────────┐                     ┌──────────────┐
+│  Vendor        │                     │  Vendor      │
+│  Cloud         │                     │  Cloud       │
+│  ┌──────────┐  │                     │              │
+│  │  RP's    │  │                     │  Signs via   │──────┐
+│  │  private │  │                     │  remote API  │      │
+│  │  key     │  │                     │              │      ▼
+│  └──────────┘  │                     └──────────────┘  ┌────────┐
+│  (vendor has   │                                       │  HSM   │
+│   custody)     │                     Option 3:         │  (RP-  │
+└────────────────┘                     Split signing     │  owned)│
+                                       ┌──────────────┐  └────────┘
+                                       │  Vendor      │
+                                       │  prepares    │──────┐
+                                       │  unsigned    │      │
+                                       │  request     │      ▼
+                                       └──────────────┘  ┌────────┐
+                                                         │  RP    │
+                                                         │  signs │
+                                                         │  (own  │
+                                                         │  key)  │
+                                                         └────────┘
 ```
 
 Each option has different trust and compliance implications:
@@ -337,18 +337,18 @@ RP's perimeter. The wallet connects directly to the RP's endpoint.
 │   EUDI      │    (RP's access       │   RP's Own       │
 │   Wallet    │     certificate)      │   Infrastructure │
 │   Unit      │                       │                  │
-│             │───────────────────────►│   Runs vendor's  │
-│             │    VP Token response   │   software       │
-│             │    (personal data      │   (Docker, Helm, │
-│             │     stays on RP's      │    etc.)         │
-│             │     infrastructure)    │                  │
+│             │──────────────────────►│   Runs vendor's  │
+│             │    VP Token response  │   software       │
+│             │    (personal data     │   (Docker, Helm, │
+│             │     stays on RP's     │    etc.)         │
+│             │     infrastructure)   │                  │
 └─────────────┘                       │   RP's private   │
        │                              │   keys stay here │
        │                              │                  │
        │  Wallet displays:            │   No personal    │
        │  ┌──────────────────────┐    │   data leaves    │
        │  │ Requesting party:    │    │   RP's perimeter │
-       │  │  � Acme Services    │    │                  │
+       │  │  Acme Services      │    │                  │
        │  │                      │    └──────────────────┘
        │  │ (single party only   │              │
        │  │  — no dual display)  │              │  May phone home?
