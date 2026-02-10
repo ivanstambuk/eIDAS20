@@ -783,9 +783,9 @@ Total requirement count: 82 → 80.
 |---|------|--------|
 | 6.a | Execute Cluster 2 merge (Data Deletion) | ✅ DONE — CORE-021 ← CORE-035: merged explanation + CQs (18→12), deleted CORE-035 |
 | 6.b | Execute Cluster 4 merge (Revocation) | ✅ DONE — INT-011 ← INT-034: merged explanation + CQs (18→13), added VCR_11, deleted INT-034 |
-| 6.c | Rebuild and validate: `node scripts/build-vcq.js && node scripts/validate-vcq.js` | ⬜ TODO |
-| 6.d | Manual verification: check merged requirements render correctly | ⬜ TODO |
-| 6.e | Git commit: `refactor: consolidate duplicate requirements (C2, C4)` | ⬜ TODO |
+| 6.c | Rebuild and validate: `node scripts/build-vcq.js && node scripts/validate-vcq.js` | ✅ DONE — build OK, 2 pre-existing ISS-041 HLR errors (unrelated) |
+| 6.d | Manual verification: check merged requirements render correctly | ✅ DONE — CORE-021 (12 CQs), INT-011 (13 CQs), retired IDs absent from JSON |
+| 6.e | Git commit: `refactor: consolidate duplicate requirements (C2, C4)` | ✅ DONE — c421f18e |
 
 ---
 
