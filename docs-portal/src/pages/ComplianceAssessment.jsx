@@ -6,6 +6,7 @@
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { exportToExcel, exportToMarkdown } from '../utils/rca';
 import { useRegulationsIndex } from '../hooks/useRegulationsIndex';
 import { useArticleExcerpts } from '../hooks/useArticleExcerpts';
@@ -326,7 +327,7 @@ function RequirementTable({ requirements, requirementCategories, regulationsInde
                                                 {req.explanation && (
                                                     <details className="rca-req-details">
                                                         <summary>Details</summary>
-                                                        <p>{req.explanation}</p>
+                                                        <div className="rca-explanation-md"><ReactMarkdown>{req.explanation}</ReactMarkdown></div>
                                                         {req.legalText && (
                                                             <blockquote className="rca-legal-text">
                                                                 {req.legalText}

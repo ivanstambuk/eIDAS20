@@ -1099,11 +1099,35 @@
     user-select: none;
 }
 
-.vcq-req-details p {
+.vcq-req-details p,
+.vcq-explanation-md {
     margin-top: var(--space-2);
     font-size: var(--text-xs);
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+/* Markdown rendering inside explanation details */
+.vcq-explanation-md p {
+    margin: 0 0 var(--space-2) 0;
+}
+
+.vcq-explanation-md p:last-child {
+    margin-bottom: 0;
+}
+
+.vcq-explanation-md ul,
+.vcq-explanation-md ol {
+    margin: var(--space-1) 0 var(--space-2) 0;
+    padding-left: var(--space-5);
+}
+
+.vcq-explanation-md li {
+    margin-bottom: var(--space-1);
+}
+
+.vcq-explanation-md li:last-child {
+    margin-bottom: 0;
 }
 
 /* Side-by-side Details and Clarification Questions toggles (Phase 7: Option A) */

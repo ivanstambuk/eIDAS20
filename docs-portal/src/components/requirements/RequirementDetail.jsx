@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import './RequirementDetail.css';
 
 function RequirementDetail({ requirement: req, sourcesConfig, onClose }) {
@@ -117,7 +118,7 @@ function RequirementDetail({ requirement: req, sourcesConfig, onClose }) {
                 {req.explanation && (
                     <section className="detail-section">
                         <h3>Explanation</h3>
-                        <p className="explanation-text">{req.explanation}</p>
+                        <div className="explanation-text"><ReactMarkdown>{req.explanation}</ReactMarkdown></div>
                     </section>
                 )}
 
@@ -125,7 +126,7 @@ function RequirementDetail({ requirement: req, sourcesConfig, onClose }) {
                 {req.notes && (
                     <section className="detail-section">
                         <h3>Notes</h3>
-                        <p className="notes-text">{req.notes}</p>
+                        <div className="notes-text"><ReactMarkdown>{req.notes}</ReactMarkdown></div>
                     </section>
                 )}
 

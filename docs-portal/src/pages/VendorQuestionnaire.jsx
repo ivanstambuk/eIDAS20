@@ -971,7 +971,7 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                                         {req.explanation && (
                                                             <details className="vcq-req-details">
                                                                 <summary>Details</summary>
-                                                                <p>{req.explanation}</p>
+                                                                <div className="vcq-explanation-md"><ReactMarkdown>{req.explanation}</ReactMarkdown></div>
                                                             </details>
                                                         )}
                                                         {clarificationQuestions[req.id] && clarificationQuestions[req.id].length > 0 && (

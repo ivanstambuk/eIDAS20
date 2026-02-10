@@ -813,11 +813,31 @@
     cursor: pointer;
 }
 
-.rca-req-details p {
+.rca-req-details p,
+.rca-explanation-md {
     margin: 0.5rem 0;
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.5;
+}
+
+/* Markdown rendering inside explanation details */
+.rca-explanation-md p {
+    margin: 0 0 0.5rem 0;
+}
+
+.rca-explanation-md p:last-child {
+    margin-bottom: 0;
+}
+
+.rca-explanation-md ul,
+.rca-explanation-md ol {
+    margin: 0.25rem 0 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.rca-explanation-md li {
+    margin-bottom: 0.25rem;
 }
 
 .rca-legal-text {
