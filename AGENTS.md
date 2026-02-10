@@ -507,7 +507,30 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 **RCA Extraction Rule:** RCA requirements come ONLY from binding legislation (eIDAS Regulation, Implementing Acts). Never extract RCA requirements from opinions, recommendations, or position papers (e.g., EDPS formal comments). These documents may inform understanding but do not create legal obligations.
 
----
+### ARF Version Tracking
+
+| Property | Value |
+|----------|-------|
+| **Current version** | v2.7.3 |
+| **Target version** | v2.8.0 (released 2026-02-02) |
+| **Location** | `03_arf/` (copy, not submodule) |
+| **Upgrade plan** | `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
+| **Diff script** | `docs-portal/scripts/diff-arf-hlrs.py` |
+
+### ARF CSV Data Format (⚠️ Important for Parsing)
+
+The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard formatting:
+
+- **Encoding:** UTF-8 with BOM — use `encoding='utf-8-sig'` in Python
+- **Delimiter:** Semicolon (`;`), NOT comma
+- **Columns:** `Harmonized_ID`, `Part`, `Category`, `Topic`, `Topic_Number`, `Topic_Title`, `Subsection`, `Index`, `Requirement_specification`, `Notes`
+- **Key fields:**
+  - `Harmonized_ID` = new-format ID (e.g., `AS-WP-09-026`)
+  - `Index` = legacy/old ID (e.g., `WUA_20a`)
+  - `Requirement_specification` = the actual requirement text
+  - "Empty" text = requirement withdrawn, consolidated, or deferred
+
+
 
 ## 🌐 Documentation Portal
 

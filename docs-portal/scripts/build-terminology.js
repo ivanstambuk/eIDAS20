@@ -1005,6 +1005,38 @@ function build() {
     const customDictionaryTerms = loadCustomDictionary();
     if (customDictionaryTerms.length > 0) {
         console.log(`   Found ${customDictionaryTerms.length} custom definitions\n`);
+
+        // Validate source field format (retro improvement: catch formatting errors early)
+        const VALID_SOURCE_PREFIXES = [
+            'eIDAS', 'PSD2', 'GDPR', 'DORA', 'NIS2', 'ARF',
+            'Article', 'Regulation', 'Directive', 'Commission',
+            'CIR', 'CIR ', // Commission Implementing Regulation references
+            'synthesized from', 'Synthesized from',
+            'derived from', 'adapted from', 'based on',
+            'commonly used', 'industry term', 'technical term',
+            'EC ', 'ETSI', 'ISO', 'W3C', 'IETF', 'ENISA',
+            'See ', 'DEC-', // Decision references
+        ];
+        let sourceWarnings = 0;
+        for (const term of customDictionaryTerms) {
+            const sourceText = term.source?.article;
+            if (!sourceText || sourceText === 'N/A') {
+                console.warn(`   ⚠️  Custom term "${term.term}" has no source field`);
+                sourceWarnings++;
+            } else {
+                const hasValidPrefix = VALID_SOURCE_PREFIXES.some(
+                    prefix => sourceText.startsWith(prefix)
+                );
+                if (!hasValidPrefix) {
+                    console.warn(`   ⚠️  Custom term "${term.term}" has non-standard source: "${sourceText.substring(0, 60)}"`);
+                    sourceWarnings++;
+                }
+            }
+        }
+        if (sourceWarnings > 0) {
+            console.warn(`   ${sourceWarnings} source warning(s) — review custom-dictionary.yaml\n`);
+        }
+
         allTerms.push(...customDictionaryTerms);
     } else {
         console.log('   No custom dictionary terms found\n');

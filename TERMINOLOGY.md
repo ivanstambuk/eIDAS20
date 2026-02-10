@@ -543,6 +543,17 @@ Hook: `useScrollRestoration.js` — shared between Terminology.jsx and Regulatio
 
 ---
 
+## ARF Data Model
+
+| Term | Description |
+|------|-------------|
+| **ARF Harmonized ID** | The EC's structured requirement identifier introduced in ARF v2.7.0 CSV. Format: `PART-CATEGORY-TOPIC_NUMBER-SEQUENCE` (e.g., `AS-WP-09-026`). PART is `AS` (Actor-Specific) or `EW` (Ecosystem-Wide). CATEGORY is a 2-3 letter code (e.g., `WP` = Wallet Providers, `RP` = Relying Parties, `DM` = Data Models, `PIO` = Protocols & Interoperability). Not to be confused with the portal's own `HLR-{TOPIC_CODE}-{NUMBER}` normalized format. |
+| **ARF Index (Old Identifier)** | The legacy requirement identifier used before ARF v2.7.0 (e.g., `WUA_20a`, `ISSU_32`, `Reg_15`). Still present as the `Index` column in the HLR CSV. Most cross-references in our VCQ/RCA use this format. During ARF upgrades, content may move to a different Harmonized ID while keeping the same Index, or the Index itself may change. |
+| **Emptied HLR** | An HLR whose `Requirement_specification` text was replaced with "Empty" in a newer ARF version. Indicates the requirement was withdrawn, consolidated into another HLR, or deferred to a future release. Emptied HLRs retain their Harmonized ID and Index but have no normative content. Must be treated as deprecated in VCQ/RCA references. |
+| **Scope Rate-Limited Pseudonym** | A privacy-preserving pseudonym mechanism introduced in ARF v2.8.0 (PA_23–PA_31, Topic 11, from Discussion Paper E). Allows a User to generate pseudonyms that are: (a) rate-limited per scope/RP to prevent Sybil attacks, (b) unlinkable across different RPs, (c) unlinkable within the same scope when rate > 1, and (d) persistent across Wallet Unit changes. Crypto material stored in WSCA/WSCD or keystore. |
+
+---
+
 ## See Also
 
 - [DECISIONS.md](DECISIONS.md) - Architectural and design decisions
