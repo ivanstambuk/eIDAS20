@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-ARF v2.8.0 is a **substantial release** that modifies 40% of all HLRs. It integrates 4 Discussion Papers (Topics T, AA, E, R), processes 44 Member State comments, and introduces a new Topic 56. The upgrade impacts **8 newly emptied `hlr:` references** (plus 1 pre-existing empty, 3 relocated, 3 doc-only, 2 structural) in our VCQ configuration and requires careful handling of renumbered, emptied, and newly added requirements.
+ARF v2.8.0 is a **substantial release** that modifies 40% of all HLRs. It integrates 4 Discussion Papers (Topics T, AA, E, R), processes 44 Member State comments, and introduces a new Topic 56. The upgrade impacts **8 newly emptied `hlr:` references** (plus 1 pre-existing empty, 3 relocated, 5 doc-only, 2+ structural) in our VCQ configuration and requires careful handling of renumbered, emptied, and newly added requirements.
 
 ### Scale of Changes
 
@@ -220,12 +220,12 @@ These HLRs had their text replaced with "Empty" — the requirement was withdraw
 
 > **Ground-truth verification (2026-02-10, pass 2):** Every entry below was verified against the **v2.8.0 golden source CSV** at `/tmp/arf_v280/hltr/high-level-requirements.csv`. The original impact assessment confused *Harmonized ID emptying* with *Old ID emptying* — when ARF restructures an HLR, the old Harmonized ID is emptied but the same Old ID gets a **new** Harmonized ID with content. Since `import-arf.js` indexes by Old ID (`byHlrId`), three HLRs that were flagged as "emptied" actually **still resolve to content** via their Old IDs.
 >
-> **Corrected impact (pass 3, 2026-02-10):**
+> **Corrected impact (pass 4, 2026-02-10):**
 > - **8 `hlr:` field references** newly emptied in v2.8.0 (will break validation)
 > - **1 `hlr:` field reference** already empty in v2.7.3 (pre-existing bug: `RPA_09`)
 > - **3 `hlr:` field references** with content relocated to new Harmonized IDs (no breakage via `byHlrId`)
-> - **3 documentation-only** mentions (explanation text, won't break validation)
-> - **2 structural issues** (pre-existing bugs: Topic 53↔52 mismatch + `RPA_09` empty reference)
+> - **5 documentation-only** mentions (explanation text, won't break validation) — includes `WUA_11`, `WUA_11b`, `RPA_02a` cross-refs
+> - **2+ structural issues** (pre-existing bugs: Topic 53↔52 mismatch, `RPA_09` empty reference, 19 topic-label mismatches)
 
 ### Tier 1a: Newly emptied `hlr:` references (8) — will break validation after v2.8.0 import
 
@@ -266,22 +266,40 @@ These HLRs had their **old Harmonized IDs emptied**, but the same Old IDs were r
 
 > **⚠️ Review needed for `ISSU_32`:** The text changed substantively — from "include access cert in metadata" to "sign metadata per OpenID4VCI". The VCQ requirement VEND-ISS-037 may need its explanation text updated to reflect the new ARF requirement text, even though the `hlr:` lookup won't break.
 
-### Tier 2: Documentation-only impacts (3) — won't break validation
+### Tier 2: Documentation-only impacts (5) — won't break validation
 
 These HLRs appear only in `explanation:` text (not in `arfReference.hlr:` fields). They won't trigger validation errors but should be updated for accuracy.
 
 | HLR | VCQ Requirement | Location | Status | Action |
 |-----|----------------|----------|--------|--------|
-| `WUA_11b` | VEND-ISS-??? (line 971) | `explanation:` text only | **Emptied** | Mentioned as "per WUA_11–WUA_11b" in explanation. Not in any `hlr:` field. **Update explanation text to reflect new HLR IDs.** |
+| `WUA_11` | VEND-ISS-019 (line 971), VEND-ISS-031 | `explanation:` text only | **Newly emptied** | Mentioned as "per WUA_11–WUA_11b" in VEND-ISS-019 explanation and in VEND-ISS-031 explanation. Not in any `hlr:` field. **Update explanation text.** |
+| `WUA_11b` | VEND-ISS-019 (line 971) | `explanation:` text only | **Newly emptied** | Same location as `WUA_11` above. **Update explanation text to reflect new HLR IDs.** |
+| `RPA_02a` | VEND-CORE-031 (lines 1623, 1660) | `explanation:` text only | **Newly emptied** | Already in Tier 1a `hlr:` arrays for VEND-CORE-005 and VEND-CORE-032, but ALSO mentioned in VEND-CORE-031 explanation text (not `hlr:` array). **Update explanation when removing from other `hlr:` arrays.** |
 | `WURevocation_18` | VEND-ISS-041 (lines 2257–2263) | `explanation:` text only | **Renumbered** | Discussed in explanation; VEND-ISS-041's `arfReference` has `topic: Topic 38` but deliberately omits `hlr:`. **Update explanation text; consider adding `hlr:` field after Topic 38 is added to `relevantTopics`.** |
 | `WURevocation_19` | VEND-ISS-041 (lines 2269–2276) | `explanation:` text only | **Renumbered** | Same as above — discussed in explanation only. **Update explanation text.** |
 
-### Tier 3: Structural issues (2) — pre-existing bugs
+### Tier 3: Structural issues (2+) — pre-existing bugs
 
 | Issue | VCQ Requirement | Location | Description |
 |-------|----------------|----------|-------------|
-| **Topic 53 ↔ 52 mismatch** | VEND-CORE-048 (line 2540), VEND-CORE-049 (line 2590) | `arfReference.topic` | These requirements reference `topic: Topic 53` with `hlr: RPI_01`, but `RPI_01` is actually assigned to **Topic 52** (Relying Party Intermediaries) in the ARF CSV. Topic 53 exists in ARF as "Zero-Knowledge Proofs" (`ZKP_01`–`ZKP_09`) — an unrelated topic. This is a **pre-existing bug** (topic mismatch, not missing topic). **Fix: change `topic: Topic 53` → `topic: Topic 52`.** |
-| **`RPA_09` already empty** | VEND-CORE-047 (line 2477) | `hlr:` array | `RPA_09` was **already Empty in v2.7.3** — this is a pre-existing VCQ data quality issue, not caused by the v2.8.0 upgrade. The VCQ reference was pointing to an empty HLR before the upgrade. **Remove from `hlr:` array; update explanation text (line 2498).** |
+| **Topic 53 ↔ 52 mismatch** | VEND-CORE-048, VEND-CORE-049 | `arfReference.topic` | These requirements reference `topic: Topic 53` with `hlr: RPI_01`, but `RPI_01` is actually assigned to **Topic 52** (Relying Party Intermediaries) in the ARF CSV. Topic 53 exists in ARF as "Zero-Knowledge Proofs" (`ZKP_01`–`ZKP_09`) — an unrelated topic. **Fix: change `topic: Topic 53` → `topic: Topic 52`.** |
+| **`RPA_09` already empty** | VEND-CORE-047 (line 2477) | `hlr:` array | `RPA_09` was **already Empty in v2.7.3** — pre-existing VCQ data quality issue. **Remove from `hlr:` array; update explanation text (line 2498).** |
+| **19 topic label mismatches** | Various (see below) | `arfReference.topic` | Comprehensive cross-check of all 201 `hlr:` references against the ARF CSV found **19 cases** where the VCQ `topic:` field doesn't match the HLR's actual ARF topic. All 19 are **pre-existing** (same in both v2.7.3 and v2.8.0). Of these, 4 are "grouped" (other HLRs in the same `arfReference` DO match the topic) — this is intentional design. **8 distinct requirements have ALL HLRs mismatching the topic** — these are data quality bugs. |
+
+**Topic mismatch detail (8 all-mismatch requirements):**
+
+| VCQ Requirement | VCQ Topic | HLR(s) | Actual ARF Topic | Severity |
+|-----------------|-----------|--------|-----------------|----------|
+| VEND-CORE-043 | Topic 6 | `OIA_03a` | Topic 1 | Low (cosmetic label) |
+| VEND-CORE-044 | Topic 9 | `ISSU_01` | Topic 10 | Low (cosmetic label) |
+| VEND-CORE-045 | Topic 27 | `RPA_01` | Topic 6 | Low (cosmetic label) |
+| VEND-CORE-047 | Topic 44 | `RPA_09`, `RPA_12` | Topic 6 | Low (cosmetic label) |
+| VEND-CORE-048 | Topic 53 | `RPI_01` | Topic 52 | Medium (wrong topic entirely) |
+| VEND-CORE-049 | Topic 53 | `RPI_01,03,06,07,09,10` | Topic 52 | Medium (wrong topic entirely) |
+| VEND-CORE-052 | Topic 16 | `ProxId_01a` | Topic 24 | Low (cosmetic label) |
+| VEND-INT-029 | Topic 6 | `RPI_07` | Topic 52 | Low (grouped context) |
+
+> **Note on VCQ topic semantics:** VCQ `arfReference.topic` is a **semantic label** indicating which ARF topic area the requirement relates to, not necessarily matching every HLR's CSV topic. Deep links use the HLR's actual CSV topic (via `topicAnchors`), so mismatched topic labels affect badge display text but NOT link destinations. The Topic 53↔52 case is the only one with functional impact (wrong `relevantTopics` inclusion).
 
 ### ~~`WUA_20` — false positive~~
 
@@ -366,11 +384,11 @@ The original assessment listed `WUA_20` (without `a`) as an issuer.yaml impact. 
 
 **Data flow affected:**
 ```
-VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → VendorQuestionnaire.jsx (ARFReferenceLink)
+VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → src/pages/VendorQuestionnaire.jsx (ARFReferenceLink)
                                                                      ↕
                                               arf-hlr-data.json (byHlrId index) → popover + deep link
                                                                      ↕
-                                              exportExcel.js (byHlrId lookup) → Excel export columns
+                                               src/utils/vcq/exportExcel.js¹ (byHlrId lookup) → Excel export columns
 ```
 
 **Steps:**
@@ -414,7 +432,7 @@ VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → VendorQuestio
    // Line 340:
    const validHlrIds = new Set(Object.keys(arfData.byHarmonizedId || arfData.byHlrId || {}));
    ```
-8. **Update `exportExcel.js`** (lines 174-196) — the Excel export uses `arfData.byHlrId[id]` to look up specs/notes. After migration, VCQ will pass Harmonized IDs. Update to check both indices:
+8. **Update `src/utils/vcq/exportExcel.js`** (lines 174-196) — the Excel export uses `arfData.byHlrId[id]` to look up specs/notes. After migration, VCQ will pass Harmonized IDs. Update to check both indices:
    ```js
    const hlrData = arfData.byHarmonizedId?.[id] || arfData.byHlrId?.[id];
    ```
@@ -451,7 +469,7 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 - `config/arf/arf-config.yaml` → `csvUrl` (source of HLR data for `import-arf.js`)
 - `scripts/import-arf.js` → `processRequirements()` (builds `deepLink` from base URL + anchor)
 - `public/data/arf-hlr-data.json` → ~1400 deep links in output JSON
-- `VendorQuestionnaire.jsx` → `ARFReferenceLink` renders these as `<a href>` tags
+- `src/pages/VendorQuestionnaire.jsx` → `ARFReferenceLink` renders these as `<a href>` tags
 
 **Note:** Deep links only appear in VCQ — confirmed RCA has no `arfReference` fields.
 
@@ -572,9 +590,11 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 | `csvUrl` race condition — `main` advances mid-upgrade | High | Phase 3.5 step 5: pin `csvUrl` to tag, not `refs/heads/main` |
 | `validate-vcq.js` also validates ARF (not just `validate-vcq-arf.js`) | Medium | Phase 2 step 7: update both validation scripts |
 | `validate:vcq-arf` not in `validate:ci` — CI gives false green | Medium | Consider adding `validate:vcq-arf` to `validate:ci` pipeline |
-| Excel export `byHlrId` lookup fails after Harmonized ID migration | Medium | Phase 2 step 8: update `exportExcel.js` to use `byHarmonizedId` fallback |
+| Excel export `byHlrId` lookup fails after Harmonized ID migration | Medium | Phase 2 step 8: update `src/utils/vcq/exportExcel.js` to use `byHarmonizedId` fallback |
 | **Pre-existing: Topic 53 ↔ 52 mismatch** in VEND-CORE-048/049 | Medium | Phase 2: fix `topic: Topic 53` → `topic: Topic 52` (RPI_01 belongs to Topic 52; Topic 53 is ZKP, unrelated) |
 | Impact assessment overcounted HLR impacts due to Harmonized ID confusion | Low | Corrected in §6 (2026-02-10, pass 2). Root cause: impact assessment compared Harmonized IDs which were emptied, but same Old IDs got new Harmonized IDs with content. |
+| **Pre-existing: 19 `arfReference.topic` label mismatches** | Low | §6 Tier 3: 8 requirements have VCQ topic labels that don't match any of their HLRs' actual ARF topics. Cosmetic only — deep links use CSV topic (correct), badge labels use VCQ topic (wrong). Consider batch-fixing during Phase 2 Harmonized ID migration. |
+| **5 explanation-text cross-references** to emptied HLRs | Low | §6 Tier 2: `WUA_11`, `WUA_11b`, `RPA_02a` (cross-ref in VEND-CORE-031), `WURevocation_18/19`. Don't break validation but show stale content. |
 
 ---
 
