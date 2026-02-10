@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-02-10T14:53:36.963Z",
+  "generatedAt": "2026-02-10T23:33:28.937Z",
   "schemaVersion": 1,
   "stats": {
-    "totalRequirements": 153,
-    "totalQuestions": 1339,
+    "totalRequirements": 151,
+    "totalQuestions": 1328,
     "byDimension": {
       "architecture": 76,
-      "data_handling": 17,
-      "auditability": 54,
+      "data_handling": 16,
+      "auditability": 53,
       "supply_chain": 11,
-      "security": 120,
-      "operational": 128,
-      "capability": 109,
+      "security": 118,
+      "operational": 127,
+      "capability": 108,
       "compliance_completeness": 106,
       "lifecycle": 84,
       "contract_terms": 6,
@@ -23,17 +23,17 @@
       "automation": 17,
       "interoperability": 74,
       "incident_response": 48,
-      "flexibility": 35,
-      "technical_implementation": 160,
+      "flexibility": 34,
+      "technical_implementation": 159,
       "risk_management": 1,
       "physical_security": 1,
-      "sla": 53,
+      "sla": 52,
       "documentation": 20,
       "regulatory_support": 4,
-      "user_experience": 22,
+      "user_experience": 21,
       "limitations": 3,
       "privacy": 26,
-      "legal_requirements": 2,
+      "legal_requirements": 1,
       "alerting": 5,
       "regulatory_variability": 1,
       "governance": 4,
@@ -88,7 +88,7 @@
       },
       {
         "id": "Q8",
-        "text": "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF RPI_09)? What data isolation architecture enforces this?",
+        "text": "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF AS-RP-51-012)? What data isolation architecture enforces this?",
         "dimension": "architecture"
       }
     ],
@@ -246,7 +246,7 @@
       },
       {
         "id": "Q7",
-        "text": "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF RPA_02a, ensuring atomic self-contained transactions?",
+        "text": "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF AS-RP-06-001, ensuring atomic self-contained transactions?",
         "dimension": "compliance_completeness"
       },
       {
@@ -434,7 +434,7 @@
       },
       {
         "id": "Q7",
-        "text": "In the EUDI Wallet intermediation context, how does the instruction-only principle interact with the ARF forward-only architecture (RPI_08)? Is the forwarding behaviour configurable per-RP, or is it a fixed platform behaviour?",
+        "text": "In the EUDI Wallet intermediation context, how does the instruction-only principle interact with the ARF forward-only architecture (AS-RP-51-011)? Is the forwarding behaviour configurable per-RP, or is it a fixed platform behaviour?",
         "dimension": "architecture"
       },
       {
@@ -493,12 +493,12 @@
     "VEND-CORE-011": [
       {
         "id": "Q1",
-        "text": "How does your platform implement the dual-identity display required by Art 5b(8) and ARF RPI_06/RPI_07? Do you include both your own access certificate and the intermediated RP's RPRC_19a extension data in every presentation request?",
+        "text": "How does your platform implement the dual-identity display required by Art 5b(8) and ARF AS-RP-51-006/AS-RP-51-008? Do you include both your own access certificate and the intermediated RP's EW-DM-44-018 extension data in every presentation request?",
         "dimension": "architecture"
       },
       {
         "id": "Q2",
-        "text": "What information about the intermediated Relying Party is displayed to the wallet user — do you include all five RPRC_19a fields (name, unique identifier, intended use description, Registrar URL, intended use identifier)?",
+        "text": "What information about the intermediated Relying Party is displayed to the wallet user — do you include all five EW-DM-44-018 fields (name, unique identifier, intended use description, Registrar URL, intended use identifier)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -508,22 +508,22 @@
       },
       {
         "id": "Q4",
-        "text": "How do you handle the RPI_05 input — when the intermediated RP specifies its identity data for a presentation request, how is this data received, validated, and packaged into the RPRC_19a extension?",
+        "text": "How do you handle the AS-RP-51-005 input — when the intermediated RP specifies its identity data for a presentation request, how is this data received, validated, and packaged into the EW-DM-44-018 extension?",
         "dimension": "architecture"
       },
       {
         "id": "Q5",
-        "text": "How do you handle scenarios where the intermediated RP's registered information changes (e.g., name change, merger, new intended use)? Are RPRC_19a extension fields updated dynamically from the Registrar, or cached?",
+        "text": "How do you handle scenarios where the intermediated RP's registered information changes (e.g., name change, merger, new intended use)? Are EW-DM-44-018 extension fields updated dynamically from the Registrar, or cached?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q6",
-        "text": "Do you support the optional wallet-side verification mechanism (RPI_07a) where the wallet unit queries the Registrar to confirm the intermediary-RP relationship? How do you ensure your registration data supports this verification?",
+        "text": "Do you support the optional wallet-side verification mechanism (AS-RP-51-009) where the wallet unit queries the Registrar to confirm the intermediary-RP relationship? How do you ensure your registration data supports this verification?",
         "dimension": "interoperability"
       },
       {
         "id": "Q7",
-        "text": "If the intermediated RP does not have a registration certificate (it may be optional in some scenarios), how do you still ensure the RP's identity is conveyed to the wallet user through the RPRC_19a extension data alone?",
+        "text": "If the intermediated RP does not have a registration certificate (it may be optional in some scenarios), how do you still ensure the RP's identity is conveyed to the wallet user through the EW-DM-44-018 extension data alone?",
         "dimension": "architecture"
       },
       {
@@ -676,7 +676,7 @@
     "VEND-CORE-016": [
       {
         "id": "Q1",
-        "text": "Per RPI_03, the intermediary must register each intermediated RP at the Registrar in the RP's Member State of establishment. Which Member State Registrars can you currently interface with, and what is your process for onboarding a new Registrar integration?",
+        "text": "Per AS-RP-51-003, the intermediary must register each intermediated RP at the Registrar in the RP's Member State of establishment. Which Member State Registrars can you currently interface with, and what is your process for onboarding a new Registrar integration?",
         "dimension": "geographic_scope"
       },
       {
@@ -701,7 +701,7 @@
       },
       {
         "id": "Q6",
-        "text": "Registration is a prerequisite for the dual-identity display (VEND-CORE-011) and wallet-side Registrar verification (RPI_07a). How do you handle the time gap between RP onboarding and Registrar registration completion — can presentation requests be made during this period?",
+        "text": "Registration is a prerequisite for the dual-identity display (VEND-CORE-011) and wallet-side Registrar verification (AS-RP-51-009). How do you handle the time gap between RP onboarding and Registrar registration completion — can presentation requests be made during this period?",
         "dimension": "operational"
       },
       {
@@ -723,7 +723,7 @@
     "VEND-CORE-017": [
       {
         "id": "Q1",
-        "text": "Per RPI_04, what specific forms of legally valid evidence do you submit to Registrars to prove the intermediary-RP relationship (contract, power of attorney, letter of authorisation)? Does the form of evidence vary by Member State?",
+        "text": "Per AS-RP-51-004, what specific forms of legally valid evidence do you submit to Registrars to prove the intermediary-RP relationship (contract, power of attorney, letter of authorisation)? Does the form of evidence vary by Member State?",
         "dimension": "documentation"
       },
       {
@@ -743,7 +743,7 @@
       },
       {
         "id": "Q5",
-        "text": "The Registrar's evidence verification underpins the wallet-side trust chain (RPI_07a). How confident are you that the evidence you provide would withstand a wallet user's Registrar verification query? Have you tested this end-to-end?",
+        "text": "The Registrar's evidence verification underpins the wallet-side trust chain (AS-RP-51-009). How confident are you that the evidence you provide would withstand a wallet user's Registrar verification query? Have you tested this end-to-end?",
         "dimension": "compliance_evidence"
       },
       {
@@ -770,7 +770,7 @@
     "VEND-CORE-018": [
       {
         "id": "Q1",
-        "text": "RPI_09 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?",
+        "text": "AS-RP-51-012 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?",
         "dimension": "capability"
       },
       {
@@ -790,7 +790,7 @@
       },
       {
         "id": "Q5",
-        "text": "Per RPI_08, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?",
+        "text": "Per AS-RP-51-011, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?",
         "dimension": "architecture"
       },
       {
@@ -896,48 +896,63 @@
     "VEND-CORE-021": [
       {
         "id": "Q1",
-        "text": "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per DATA_DLT_02?",
+        "text": "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per AS-RP-48-001? Is the TS7 interface fully implemented for wallet-mediated deletion requests?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "How do you authenticate users submitting deletion requests before executing deletion (DATA_DLT_07)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism?",
+        "text": "How do you authenticate users submitting deletion requests before executing deletion (AS-RP-48-005)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism? Does the user present their PID or a pseudonymous attestation to authenticate?",
         "dimension": "security"
       },
       {
         "id": "Q3",
-        "text": "What is your committed response time for processing data deletion requests? How does this align with the GDPR Art 17(1) 'without undue delay' obligation, and the Art 12(3) one-month response deadline?",
+        "text": "What is your committed response time for processing data deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?",
         "dimension": "sla"
       },
       {
         "id": "Q4",
-        "text": "How do you handle deletion request exceptions under Art 17(3) (legal obligation, public interest, legal claims, archiving)? Do you document the specific legal basis for each refusal and communicate it to the requesting user?",
+        "text": "How do you handle deletion request exceptions under Art 17(3) (freedom of expression, legal obligation, public interest, health, archiving/research, legal claims)? Do you document the specific legal basis for each refusal and communicate it to the requesting user? Can refusals be challenged?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q5",
-        "text": "In the intermediary context, given the no-storage mandate (VEND-CORE-001), what categories of data could be subject to deletion requests — transaction metadata, audit logs, registration data? How do you scope the deletion response appropriately?",
+        "text": "In the connector context, given the no-storage mandate (VEND-CORE-001), what categories of data could be subject to deletion requests — transaction metadata, audit logs, registration data? How do you scope the deletion response appropriately?",
         "dimension": "data_handling"
       },
       {
         "id": "Q6",
-        "text": "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?",
+        "text": "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?",
         "dimension": "data_handling"
       },
       {
         "id": "Q7",
-        "text": "Do you provide confirmation to the wallet user upon completion of deletion? Is this confirmation machine-readable (for wallet dashboard logging per DATA_DLT_05-06) or human-readable only?",
+        "text": "Do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation machine-readable (for wallet dashboard logging per AS-WP-48-003-06) and digitally signed?",
         "dimension": "user_experience"
       },
       {
         "id": "Q8",
-        "text": "What audit logging is maintained for deletion request processing? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation?",
+        "text": "What audit trail is maintained for deletion request processing and completion? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle eventual deletion of the audit trail?",
         "dimension": "auditability"
       },
       {
         "id": "Q9",
         "text": "If the intermediated RP is the data controller and you receive a deletion request as processor, how do you coordinate with the RP — do you forward the request, execute autonomously per DPA instructions, or require RP approval before deletion?",
         "dimension": "contract_terms"
+      },
+      {
+        "id": "Q10",
+        "text": "For connector deployments: when a deletion request is received, does the connector forward it to the intermediated RP? How do you coordinate deletion across both the connector and the RP to ensure complete data removal?",
+        "dimension": "architecture"
+      },
+      {
+        "id": "Q11",
+        "text": "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q12",
+        "text": "Can the user initiate deletion directly from the wallet via the TS7 interface, and if so, does the flow include the wallet's authentication/signature facilities per AS-RP-48-005? How does the wallet-to-RP deletion flow differ from a manual deletion request?",
+        "dimension": "technical_implementation"
       }
     ],
     "VEND-CORE-022": [
@@ -1297,17 +1312,17 @@
       },
       {
         "id": "Q6",
-        "text": "Per RPRC_11, registration certificates must contain data deletion contact information. Do you extract and use this information to facilitate user data deletion requests (integration with VEND-CORE-021)?",
+        "text": "Per EW-DM-44-012, registration certificates must contain data deletion contact information. Do you extract and use this information to facilitate user data deletion requests (integration with VEND-CORE-021)?",
         "dimension": "interoperability"
       },
       {
         "id": "Q7",
-        "text": "Per RPRC_12, registration certificates must contain DPA contact information for reporting suspicious requests. Do you surface this information to users, and do you have automated mechanisms for flagging potentially suspicious attribute requests?",
+        "text": "Per EW-DM-44-013, registration certificates must contain DPA contact information for reporting suspicious requests. Do you surface this information to users, and do you have automated mechanisms for flagging potentially suspicious attribute requests?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q8",
-        "text": "Per RPRC_10, RPs must distribute registration certificates to all their RP Instances. For intermediary deployments with multiple RP instances, how do you ensure consistent certificate distribution and synchronised revocation handling?",
+        "text": "Per EW-DM-44-011, RPs must distribute registration certificates to all their RP Instances. For intermediary deployments with multiple RP instances, how do you ensure consistent certificate distribution and synchronised revocation handling?",
         "dimension": "architecture"
       },
       {
@@ -1319,7 +1334,7 @@
     "VEND-CORE-030": [
       {
         "id": "Q1",
-        "text": "How do you verify the cryptographic signature on attestations received from wallets? Do you distinguish between attestation types (PID, QEAA, Pub-EAA, non-qualified EAA) and apply the appropriate trust anchor source for each type (OIA_12 through OIA_15)?",
+        "text": "How do you verify the cryptographic signature on attestations received from wallets? Do you distinguish between attestation types (PID, QEAA, Pub-EAA, non-qualified EAA) and apply the appropriate trust anchor source for each type (EW-PIO-01-020 through EW-PIO-01-023)?",
         "dimension": "technical_implementation"
       },
       {
@@ -1339,7 +1354,7 @@
       },
       {
         "id": "Q5",
-        "text": "Per OIA_16, the RP SHALL discard unique elements (ISSU_35 elements + timestamps) as soon as no longer needed and SHALL NOT communicate these to the RP backend. How do you implement this requirement technically? How do you verify that unique elements are genuinely discarded from memory and not persisted in logs?",
+        "text": "Per AS-RP-01-002, the RP SHALL discard unique elements (AS-AP-10-056 elements + timestamps) as soon as no longer needed and SHALL NOT communicate these to the RP backend. How do you implement this requirement technically? How do you verify that unique elements are genuinely discarded from memory and not persisted in logs?",
         "dimension": "privacy"
       },
       {
@@ -1354,12 +1369,12 @@
       },
       {
         "id": "Q8",
-        "text": "For non-qualified EAAs (per OIA_15), the trust anchor may be specified in a sector-specific Rulebook rather than a national Trusted List. How do you manage the integration and updates of Rulebook-specified trust anchors alongside national trust anchors?",
+        "text": "For non-qualified EAAs (per EW-PIO-01-023), the trust anchor may be specified in a sector-specific Rulebook rather than a national Trusted List. How do you manage the integration and updates of Rulebook-specified trust anchors alongside national trust anchors?",
         "dimension": "interoperability"
       },
       {
         "id": "Q9",
-        "text": "For intermediary deployments: do you perform the full verification chain before forwarding attestation attributes to the intermediated RP (per VEND-CORE-018, RPI_09), or is any verification deferred to the RP? How do you communicate the verification outcome to the RP?",
+        "text": "For intermediary deployments: do you perform the full verification chain before forwarding attestation attributes to the intermediated RP (per VEND-CORE-018, AS-RP-51-012), or is any verification deferred to the RP? How do you communicate the verification outcome to the RP?",
         "dimension": "architecture"
       }
     ],
@@ -1386,7 +1401,7 @@
       },
       {
         "id": "Q5",
-        "text": "How do you handle revocation procedures required by access certificate policies (per Reg_15)? Specifically, how quickly can you respond to: (a) Registrar suspension/cancellation, (b) requests from competent national authorities, and (c) voluntary RP-initiated revocation?",
+        "text": "How do you handle revocation procedures required by access certificate policies (per AS-MS-27-018)? Specifically, how quickly can you respond to: (a) Registrar suspension/cancellation, (b) requests from competent national authorities, and (c) voluntary RP-initiated revocation?",
         "dimension": "incident_response"
       },
       {
@@ -1401,7 +1416,7 @@
       },
       {
         "id": "Q8",
-        "text": "How are the intended use names and unique identifiers (per Reg_31 and Reg_32) displayed to the wallet user? Do you ensure these are human-readable and meaningful enough for the user to make an informed consent decision?",
+        "text": "How are the intended use names and unique identifiers (per AS-MS-27-038 and AS-MS-27-039) displayed to the wallet user? Do you ensure these are human-readable and meaningful enough for the user to make an informed consent decision?",
         "dimension": "user_experience"
       },
       {
@@ -1413,7 +1428,7 @@
     "VEND-CORE-032": [
       {
         "id": "Q1",
-        "text": "How do you present the organisation's RP Access Certificate to Wallet Units during presentation requests? Per RPA_02a, access certificates must be included **by value, not by reference** — confirm your implementation conforms to this requirement and explain the rationale (atomicity, offline support).",
+        "text": "How do you present the organisation's RP Access Certificate to Wallet Units during presentation requests? Per AS-RP-06-001, access certificates must be included **by value, not by reference** — confirm your implementation conforms to this requirement and explain the rationale (atomicity, offline support).",
         "dimension": "technical_implementation"
       },
       {
@@ -1423,7 +1438,7 @@
       },
       {
         "id": "Q3",
-        "text": "What information from the access certificate is displayed to wallet users (per RPA_06)? Confirm that the RP name and requested attributes are shown. For intermediary deployments, are both the intermediary and intermediated RP names displayed (per RPI_07)?",
+        "text": "What information from the access certificate is displayed to wallet users (per AS-WP-06-007)? Confirm that the RP name and requested attributes are shown. For intermediary deployments, are both the intermediary and intermediated RP names displayed (per AS-RP-51-008)?",
         "dimension": "user_experience"
       },
       {
@@ -1438,7 +1453,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per RPA_06a, if RP authentication fails, the wallet must notify the user and either block or give the user a choice. How do you minimise authentication failures on your side (certificate chain validation, correct trust anchor configuration)?",
+        "text": "Per AS-WP-06-008, if RP authentication fails, the wallet must notify the user and either block or give the user a choice. How do you minimise authentication failures on your side (certificate chain validation, correct trust anchor configuration)?",
         "dimension": "security"
       },
       {
@@ -1465,22 +1480,22 @@
       },
       {
         "id": "Q2",
-        "text": "How do you validate that the pseudonym belongs to the presenting user (PA_13)? Describe the binding verification mechanism — do you verify the wallet unit's proof-of-possession for the pseudonym key?",
+        "text": "How do you validate that the pseudonym belongs to the presenting user (AS-WP-11-014)? Describe the binding verification mechanism — do you verify the wallet unit's proof-of-possession for the pseudonym key?",
         "dimension": "security"
       },
       {
         "id": "Q3",
-        "text": "Per PA_15, the RP SHALL NOT be able to derive the User's true identity from the Pseudonym value. What technical controls prevent your system or personnel from attempting to derive real identity? Is there a code-level restriction, or is it policy-based?",
+        "text": "Per AS-WP-11-016, the RP SHALL NOT be able to derive the User's true identity from the Pseudonym value. What technical controls prevent your system or personnel from attempting to derive real identity? Is there a code-level restriction, or is it policy-based?",
         "dimension": "privacy"
       },
       {
         "id": "Q4",
-        "text": "Per PA_17, it SHALL NOT be possible to correlate Pseudonyms based on their values or metadata — colluding RPs SHALL NOT be able to conclude that different Pseudonyms belong to the same User. How do you prevent correlation through side channels (IP address, User-Agent, timing, session metadata)?",
+        "text": "Per AS-WP-11-018, it SHALL NOT be possible to correlate Pseudonyms based on their values or metadata — colluding RPs SHALL NOT be able to conclude that different Pseudonyms belong to the same User. How do you prevent correlation through side channels (IP address, User-Agent, timing, session metadata)?",
         "dimension": "privacy"
       },
       {
         "id": "Q5",
-        "text": "How do you verify that the user is registering or authenticating a Pseudonym using a non-revoked Wallet Unit (PA_10, PA_11)? Is the wallet revocation check part of the pseudonym verification flow, or is it a separate step?",
+        "text": "How do you verify that the user is registering or authenticating a Pseudonym using a non-revoked Wallet Unit (AS-WP-11-011, AS-WP-11-012)? Is the wallet revocation check part of the pseudonym verification flow, or is it a separate step?",
         "dimension": "security"
       },
       {
@@ -1507,12 +1522,12 @@
     "VEND-CORE-034": [
       {
         "id": "Q1",
-        "text": "Do you ensure that your access certificates can be authenticated using the trust anchors of an Access Certificate Authority (ACA) notified to the Commission (per RPACANot_03)? Identify the ACA(s) you use and confirm their notification status.",
+        "text": "Do you ensure that your access certificates can be authenticated using the trust anchors of an Access Certificate Authority (ACA) notified to the Commission (per AS-MS-31-015)? Identify the ACA(s) you use and confirm their notification status.",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "If registration certificates have been issued to you, do you ensure they can be authenticated using the trust anchors of a notified Provider of registration certificates (per RPACANot_03a)? Identify the Provider(s) and their notification status.",
+        "text": "If registration certificates have been issued to you, do you ensure they can be authenticated using the trust anchors of a notified Provider of registration certificates (per AS-MS-31-016)? Identify the Provider(s) and their notification status.",
         "dimension": "capability"
       },
       {
@@ -1551,53 +1566,6 @@
         "dimension": "architecture"
       }
     ],
-    "VEND-CORE-035": [
-      {
-        "id": "Q1",
-        "text": "What is your standard response time for processing GDPR Article 17 deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?",
-        "dimension": "sla"
-      },
-      {
-        "id": "Q2",
-        "text": "How do you verify the identity of users submitting deletion requests (per DATA_DLT_07)? Do you support wallet-based authentication for deletion requests, and if so, does the user present their PID or a pseudonymous attestation to authenticate?",
-        "dimension": "security"
-      },
-      {
-        "id": "Q3",
-        "text": "How do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation digitally signed?",
-        "dimension": "user_experience"
-      },
-      {
-        "id": "Q4",
-        "text": "What valid grounds for refusal do you recognise under Art 17(3) (freedom of expression, legal obligation, public interest, health, archiving/research, legal claims)? How are refusals communicated to the user, and can they be challenged?",
-        "dimension": "legal_requirements"
-      },
-      {
-        "id": "Q5",
-        "text": "How do you ensure all copies of the data, including backups and replicated data, are deleted? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems?",
-        "dimension": "data_handling"
-      },
-      {
-        "id": "Q6",
-        "text": "What audit trail is maintained for deletion request processing and completion? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle the eventual deletion of the audit trail?",
-        "dimension": "auditability"
-      },
-      {
-        "id": "Q7",
-        "text": "Is the TS7 common interface fully implemented for wallet-mediated deletion requests? Can the user initiate deletion directly from the wallet, and if so, does the flow include the wallet's authentication/signature facilities per DATA_DLT_07?",
-        "dimension": "technical_implementation"
-      },
-      {
-        "id": "Q8",
-        "text": "For intermediary deployments: when a deletion request is received, does the intermediary forward it to the intermediated RP? How do you coordinate deletion across both the intermediary and the RP to ensure complete data removal?",
-        "dimension": "architecture"
-      },
-      {
-        "id": "Q9",
-        "text": "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?",
-        "dimension": "compliance_completeness"
-      }
-    ],
     "VEND-CORE-038": [
       {
         "id": "Q1",
@@ -1616,7 +1584,7 @@
       },
       {
         "id": "Q4",
-        "text": "Per OIA_08c, the presentation request SHALL NOT be processed by the browser/OS for market analysis purposes. How do you verify that the browser is not using the request data for prohibited purposes? Do you have any contractual or technical controls with browser vendors?",
+        "text": "Per EW-PIO-01-014, the presentation request SHALL NOT be processed by the browser/OS for market analysis purposes. How do you verify that the browser is not using the request data for prohibited purposes? Do you have any contractual or technical controls with browser vendors?",
         "dimension": "privacy"
       },
       {
@@ -1658,12 +1626,12 @@
       },
       {
         "id": "Q3",
-        "text": "Per VCR_15, the RP SHOULD NOT request the status list each time an attestation is presented. Instead, the RP SHOULD download each new version once, at a time and location unrelated to the presentation. Confirm your implementation follows this privacy-preserving pattern and describe how you decouple status list fetching from presentation events.",
+        "text": "Per AS-AP-07-022, the RP SHOULD NOT request the status list each time an attestation is presented. Instead, the RP SHOULD download each new version once, at a time and location unrelated to the presentation. Confirm your implementation follows this privacy-preserving pattern and describe how you decouple status list fetching from presentation events.",
         "dimension": "privacy"
       },
       {
         "id": "Q4",
-        "text": "Per VCR_15, the RP SHOULD distribute downloaded status lists to all its RP Instances using an internal distribution mechanism. How do you distribute status lists across your RP Instances? What is the synchronisation latency, and how do you handle instances that miss an update?",
+        "text": "Per AS-AP-07-022, the RP SHOULD distribute downloaded status lists to all its RP Instances using an internal distribution mechanism. How do you distribute status lists across your RP Instances? What is the synchronisation latency, and how do you handle instances that miss an update?",
         "dimension": "architecture"
       },
       {
@@ -1700,7 +1668,7 @@
       },
       {
         "id": "Q2",
-        "text": "Per ProxId_01a, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?",
+        "text": "Per EW-PIO-24-002, RP Instances supporting proximity flows SHALL support device retrieval as specified in ISO/IEC 18013-5. Which specific transports do you implement — BLE (mandatory), NFC (optional), or both? Which device engagement methods are supported (QR code, NFC tap)?",
         "dimension": "technical_implementation"
       },
       {
@@ -1742,7 +1710,7 @@
     "VEND-CORE-041": [
       {
         "id": "Q1",
-        "text": "How do you handle updates to the organisation's registration certificates? Per RPRC_19, the RP Instance must include a single registration certificate applicable for its current intended use in each presentation request. How do you ensure the correct, current certificate is always used?",
+        "text": "How do you handle updates to the organisation's registration certificates? Per EW-DM-44-017, the RP Instance must include a single registration certificate applicable for its current intended use in each presentation request. How do you ensure the correct, current certificate is always used?",
         "dimension": "lifecycle"
       },
       {
@@ -1757,7 +1725,7 @@
       },
       {
         "id": "Q4",
-        "text": "Per RPRC_10, registration certificates must be distributed to all RP Instances. How are updated certificates distributed across your deployment topology? What is the propagation latency, and how do you handle instances that are temporarily offline during an update?",
+        "text": "Per EW-DM-44-011, registration certificates must be distributed to all RP Instances. How are updated certificates distributed across your deployment topology? What is the propagation latency, and how do you handle instances that are temporarily offline during an update?",
         "dimension": "operational"
       },
       {
@@ -1772,7 +1740,7 @@
       },
       {
         "id": "Q7",
-        "text": "Per RPRC_19a, each presentation request must include extension fields (RP name, RP identifier, intended use description, Registrar URL, intended use identifier). How do you ensure these fields remain consistent with the registration certificate content after updates?",
+        "text": "Per EW-DM-44-018, each presentation request must include extension fields (RP name, RP identifier, intended use description, Registrar URL, intended use identifier). How do you ensure these fields remain consistent with the registration certificate content after updates?",
         "dimension": "compliance_completeness"
       },
       {
@@ -1782,7 +1750,7 @@
       },
       {
         "id": "Q9",
-        "text": "For intermediary deployments: does the intermediary manage registration certificates on behalf of the intermediated RP (per RPI_03/RPI_06), or does the RP manage its own certificates independently?",
+        "text": "For intermediary deployments: does the intermediary manage registration certificates on behalf of the intermediated RP (per AS-RP-51-003/AS-RP-51-006), or does the RP manage its own certificates independently?",
         "dimension": "architecture"
       }
     ],
@@ -1992,12 +1960,12 @@
       },
       {
         "id": "Q4",
-        "text": "Per RPRC_21, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?",
+        "text": "Per EW-DM-44-021, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q5",
-        "text": "Per RPRC_20a, the RPRC_19a fields must be transferred via protocol extensions defined in ETSI TS 119 472-2 — NOT via the standard OID4VP `purpose` parameter. Does your product implement the ETSI-defined extensions for both OpenID4VP and ISO 18013-5 (proximity)? If you currently use the OID4VP `purpose` field, how will you migrate to the ETSI extension?",
+        "text": "Per EW-DM-44-020, the EW-DM-44-018 fields must be transferred via protocol extensions defined in ETSI TS 119 472-2 — NOT via the standard OID4VP `purpose` parameter. Does your product implement the ETSI-defined extensions for both OpenID4VP and ISO 18013-5 (proximity)? If you currently use the OID4VP `purpose` field, how will you migrate to the ETSI extension?",
         "dimension": "compliance_completeness"
       },
       {
@@ -2012,7 +1980,7 @@
       },
       {
         "id": "Q8",
-        "text": "For intermediary deployments: per RPI_05, the intermediated RP must specify its intended use identifier and description to the intermediary. How does the product facilitate this communication — API call, configuration file, or management UI?",
+        "text": "For intermediary deployments: per AS-RP-51-005, the intermediated RP must specify its intended use identifier and description to the intermediary. How does the product facilitate this communication — API call, configuration file, or management UI?",
         "dimension": "architecture"
       },
       {
@@ -2022,12 +1990,12 @@
       },
       {
         "id": "Q10",
-        "text": "Per RPA_10, the wallet displays the privacy policy link 'if available' — sourced from the registration certificate or from a TS5 Registrar query. How does your product ensure the privacy policy URL is included in either the registration certificate or the TS5 registration data? What user experience results if neither source provides the privacy policy link?",
+        "text": "Per AS-WP-06-013, the wallet displays the privacy policy link 'if available' — sourced from the registration certificate or from a TS5 Registrar query. How does your product ensure the privacy policy URL is included in either the registration certificate or the TS5 registration data? What user experience results if neither source provides the privacy policy link?",
         "dimension": "user_experience"
       },
       {
         "id": "Q11",
-        "text": "Per RPRC_21, attribute-to-registration mismatch triggers a wallet-side warning (not a block) — and only when the user has opted in to RP verification (RPRC_16). Does your product pre-validate that requested attributes align with the RP's registered entitlements before sending the presentation request, to proactively prevent these wallet warnings?",
+        "text": "Per EW-DM-44-021, attribute-to-registration mismatch triggers a wallet-side warning (not a block) — and only when the user has opted in to RP verification (EW-DM-44-014). Does your product pre-validate that requested attributes align with the RP's registered entitlements before sending the presentation request, to proactively prevent these wallet warnings?",
         "dimension": "compliance_completeness"
       }
     ],
@@ -2081,29 +2049,29 @@
     "VEND-CORE-048": [
       {
         "id": "Q1",
-        "text": "Which RP Deployment Architecture(s) does your product support?\nSelect all that apply:\n- **Intermediary**: your organisation acts as a registered intermediary\n  (per ARF Topic 53, RPI_01) with its own access certificate.\n- **Direct SaaS**: you host managed connector infrastructure in your\n  cloud, but the RP customer uses its own access certificate.\n- **Direct Self-Hosted**: you provide deployable software that the RP\n  customer operates on its own infrastructure.\nFor each supported architecture, briefly describe the engagement model\n(e.g., SaaS subscription, on-premise licence, managed service agreement).\n",
+        "text": "Which RP Deployment Architecture(s) does your product support?\nSelect all that apply:\n- **Intermediary**: your organisation acts as a registered intermediary\n  (per ARF Topic 53, AS-RP-51-001) with its own access certificate.\n- **Direct SaaS**: you host managed connector infrastructure in your\n  cloud, but the RP customer uses its own access certificate.\n- **Direct Self-Hosted**: you provide deployable software that the RP\n  customer operates on its own infrastructure.\nFor each supported architecture, briefly describe the engagement model\n(e.g., SaaS subscription, on-premise licence, managed service agreement).\n",
         "dimension": "capability"
       }
     ],
     "VEND-CORE-049": [
       {
         "id": "Q1",
-        "text": "Confirm that you register at a Registrar with your own access\ncertificate under your own Relying Party identity (per RPI_01).\nHow many intermediated RPs do you currently serve, and how do you\nregister each intermediated RP at their respective Registrar (per RPI_03)?\n",
+        "text": "Confirm that you register at a Registrar with your own access\ncertificate under your own Relying Party identity (per AS-RP-51-001).\nHow many intermediated RPs do you currently serve, and how do you\nregister each intermediated RP at their respective Registrar (per AS-RP-51-003)?\n",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q2",
-        "text": "Describe how the mandatory dual-party wallet display (RPI_07) is\nhandled. What identity information (names, identifiers) does the\nwallet show to the user for both your organisation and the intermediated\nRP? How do you ensure this information is accurate and up-to-date?\n",
+        "text": "Describe how the mandatory dual-party wallet display (AS-RP-51-008) is\nhandled. What identity information (names, identifiers) does the\nwallet show to the user for both your organisation and the intermediated\nRP? How do you ensure this information is accurate and up-to-date?\n",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q3",
-        "text": "What verifications do you perform on VP Tokens received from the\nwallet before forwarding attributes to the intermediated RP\n(per RPI_09)? Specifically address: attestation signature validation,\nissuer trust status check, attestation validity and revocation status,\nand holder binding verification.\n",
+        "text": "What verifications do you perform on VP Tokens received from the\nwallet before forwarding attributes to the intermediated RP\n(per AS-RP-51-012)? Specifically address: attestation signature validation,\nissuer trust status check, attestation validity and revocation status,\nand holder binding verification.\n",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q4",
-        "text": "Describe your data deletion procedure under RPI_10: how and when\nare personal data, PIDs, and attestations deleted after forwarding\nto the intermediated RP (or after verification failure)? What\ntechnical controls ensure immediate deletion occurs?\n",
+        "text": "Describe your data deletion procedure under AS-RP-51-013: how and when\nare personal data, PIDs, and attestations deleted after forwarding\nto the intermediated RP (or after verification failure)? What\ntechnical controls ensure immediate deletion occurs?\n",
         "dimension": "compliance_completeness"
       }
     ],
@@ -2730,12 +2698,12 @@
     "VEND-INT-001": [
       {
         "id": "Q1",
-        "text": "How does the product ensure both identity data sources are present in each presentation request — the intermediary's access certificate (containing the intermediary's name and identifier) and the RPRC_19a extension (containing the intermediated RP's name and identifier)?",
+        "text": "How does the product ensure both identity data sources are present in each presentation request — the intermediary's access certificate (containing the intermediary's name and identifier) and the EW-DM-44-018 extension (containing the intermediated RP's name and identifier)?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q2",
-        "text": "What RPRC_19a extension fields does the product populate for the intermediated RP (user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description), and how are these kept in sync with the RP's actual registration at the Registrar?",
+        "text": "What EW-DM-44-018 extension fields does the product populate for the intermediated RP (user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description), and how are these kept in sync with the RP's actual registration at the Registrar?",
         "dimension": "compliance_completeness"
       },
       {
@@ -2750,7 +2718,7 @@
       },
       {
         "id": "Q5",
-        "text": "What controls ensure the intermediated RP's identity in the RPRC_19a extension matches their actual registration at the Registrar?",
+        "text": "What controls ensure the intermediated RP's identity in the EW-DM-44-018 extension matches their actual registration at the Registrar?",
         "dimension": "compliance_monitoring"
       },
       {
@@ -2760,12 +2728,12 @@
       },
       {
         "id": "Q7",
-        "text": "Per RPI_07a, if the wallet verifies the contractual relationship between intermediary and RP at the Registrar and the verification fails, does the product receive notification of this failure? How is it handled operationally?",
+        "text": "Per AS-RP-51-009, if the wallet verifies the contractual relationship between intermediary and RP at the Registrar and the verification fails, does the product receive notification of this failure? How is it handled operationally?",
         "dimension": "incident_response"
       },
       {
         "id": "Q8",
-        "text": "How does the product handle the scenario where an intermediated RP has multiple registered intended uses (per RPI_05 items d and e) — can the RP dynamically select which intended use applies to each request?",
+        "text": "How does the product handle the scenario where an intermediated RP has multiple registered intended uses (per AS-RP-51-005 items d and e) — can the RP dynamically select which intended use applies to each request?",
         "dimension": "capability"
       },
       {
@@ -2782,7 +2750,7 @@
       },
       {
         "id": "Q2",
-        "text": "How do you validate that request forwarding only includes attributes registered by the RP? Per RPRC_21, the wallet may query the Registrar to verify — does your product perform the same pre-flight check?",
+        "text": "How do you validate that request forwarding only includes attributes registered by the RP? Per EW-DM-44-021, the wallet may query the Registrar to verify — does your product perform the same pre-flight check?",
         "dimension": "compliance_monitoring"
       },
       {
@@ -2844,7 +2812,7 @@
       },
       {
         "id": "Q5",
-        "text": "Per RPI_06, the intermediary must include its access certificate (RPI_01), the RP's registration certificate (RPI_03), and the RPRC_19a extension (RPI_05) in each request. How does the product assemble these three components — is it a single atomic operation or a multi-step construction?",
+        "text": "Per AS-RP-51-006, the intermediary must include its access certificate (AS-RP-51-001), the RP's registration certificate (AS-RP-51-003), and the EW-DM-44-018 extension (AS-RP-51-005) in each request. How does the product assemble these three components — is it a single atomic operation or a multi-step construction?",
         "dimension": "architecture"
       },
       {
@@ -2896,7 +2864,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per RPI_08, if any RPI_09 verification fails, the intermediary SHALL NOT forward any attributes. How does the product ensure zero partial forwarding — is the decision atomic (all-or-nothing)?",
+        "text": "Per AS-RP-51-011, if any AS-RP-51-012 verification fails, the intermediary SHALL NOT forward any attributes. How does the product ensure zero partial forwarding — is the decision atomic (all-or-nothing)?",
         "dimension": "technical_implementation"
       },
       {
@@ -2911,7 +2879,7 @@
       },
       {
         "id": "Q9",
-        "text": "What is the maximum time window between receiving a presentation from the wallet and forwarding it to the RP? How does this interact with the immediate deletion requirement (VEND-INT-021/RPI_10)?",
+        "text": "What is the maximum time window between receiving a presentation from the wallet and forwarding it to the RP? How does this interact with the immediate deletion requirement (VEND-INT-021/AS-RP-51-013)?",
         "dimension": "sla"
       }
     ],
@@ -2933,12 +2901,12 @@
       },
       {
         "id": "Q4",
-        "text": "What hardware is required for proximity presentation support at the RP's physical locations? Does the intermediary provide the hardware, or does the RP procure it independently?",
+        "text": "What hardware is required for proximity presentation support at the RP's physical locations? Does the connector provide the hardware, or does the RP procure it independently?",
         "dimension": "operational"
       },
       {
         "id": "Q5",
-        "text": "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows? How is the response_uri callback routed through the intermediary's infrastructure?",
+        "text": "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows? How is the response_uri callback routed through the connector's infrastructure?",
         "dimension": "technical_implementation"
       },
       {
@@ -2948,7 +2916,7 @@
       },
       {
         "id": "Q7",
-        "text": "For proximity flows, how does the intermediary perform RPI_09 verification on-site before forwarding to the RP backend? Is there a local verification module or does verification require a network round-trip?",
+        "text": "For proximity flows, how does the connector perform AS-RP-51-012 verification on-site before forwarding to the RP backend? Is there a local verification module or does verification require a network round-trip?",
         "dimension": "architecture"
       },
       {
@@ -2958,7 +2926,7 @@
       },
       {
         "id": "Q9",
-        "text": "What is the latency overhead introduced by the intermediary in both remote and proximity flows? Are there SLA commitments for end-to-end presentation processing time?",
+        "text": "What is the latency overhead introduced by the connector in both remote and proximity flows? Are there SLA commitments for end-to-end presentation processing time?",
         "dimension": "sla"
       }
     ],
@@ -2980,17 +2948,17 @@
       },
       {
         "id": "Q4",
-        "text": "What audit trail exists for successful and failed verification outcomes? Are RPI_09 verification results logged with sufficient detail for dispute resolution?",
+        "text": "What audit trail exists for successful and failed verification outcomes? Are AS-RP-51-012 verification results logged with sufficient detail for dispute resolution?",
         "dimension": "auditability"
       },
       {
         "id": "Q5",
-        "text": "Per RPI_09, the intermediary SHALL verify authenticity, revocation status, device binding, user binding, and combined presentation validity. Which of these verifications does the product perform by default, and which are configurable per RP agreement?",
+        "text": "Per AS-RP-51-012, the intermediary SHALL verify authenticity, revocation status, device binding, user binding, and combined presentation validity. Which of these verifications does the product perform by default, and which are configurable per RP agreement?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q6",
-        "text": "After forwarding (or after verification failure), per RPI_10, the intermediary SHALL delete all PIDs and attestations completely and immediately. How is this immediate deletion triggered — is it synchronous with the forwarding operation?",
+        "text": "After forwarding (or after verification failure), per AS-RP-51-013, the intermediary SHALL delete all PIDs and attestations completely and immediately. How is this immediate deletion triggered — is it synchronous with the forwarding operation?",
         "dimension": "technical_implementation"
       },
       {
@@ -3000,7 +2968,7 @@
       },
       {
         "id": "Q8",
-        "text": "How does the product handle the scenario where the intermediary serves an RP with both a direct and an intermediated relationship (per RPI_01 note c)? Can it correctly distinguish between the two modes?",
+        "text": "How does the product handle the scenario where the intermediary serves an RP with both a direct and an intermediated relationship (per AS-RP-51-001 note c)? Can it correctly distinguish between the two modes?",
         "dimension": "architecture"
       },
       {
@@ -3032,7 +3000,7 @@
       },
       {
         "id": "Q5",
-        "text": "Which Member States' Trusted Lists do you currently support? Since intermediaries may serve RPs across multiple Member States, do you maintain all 27 Member State lists simultaneously?",
+        "text": "Which Member States' Trusted Lists do you currently support? Since connectors may serve RPs across multiple Member States, do you maintain all 27 Member State lists simultaneously?",
         "dimension": "geographic_scope"
       },
       {
@@ -3047,7 +3015,7 @@
       },
       {
         "id": "Q8",
-        "text": "How do you ensure isolation between PID Provider trust anchors (OIA_12) and attestation provider trust anchors (OIA_13/14/15)? Could a PID trust anchor inadvertently validate an EAA, or vice versa?",
+        "text": "How do you ensure isolation between PID Provider trust anchors (EW-PIO-01-020) and attestation provider trust anchors (EW-PIO-01-021/14/15)? Could a PID trust anchor inadvertently validate an EAA, or vice versa?",
         "dimension": "architecture"
       },
       {
@@ -3064,7 +3032,7 @@
       },
       {
         "id": "Q2",
-        "text": "Do you distinguish between qualified (QEAA), public-body (PuB-EAA), and non-qualified (EAA) attestation providers in your trust store? Per OIA_13/14/15, each has different validation requirements.",
+        "text": "Do you distinguish between qualified (QEAA), public-body (PuB-EAA), and non-qualified (EAA) attestation providers in your trust store? Per EW-PIO-01-021/14/15, each has different validation requirements.",
         "dimension": "compliance_completeness"
       },
       {
@@ -3079,12 +3047,12 @@
       },
       {
         "id": "Q5",
-        "text": "Per OIA_14, PuB-EAA validation requires a two-step process: verify the QTSP's certificate against the Trusted List, then verify the attestation against the QTSP's public key. Does your product implement this full chain?",
+        "text": "Per EW-PIO-01-022, PuB-EAA validation requires a two-step process: verify the QTSP's certificate against the Trusted List, then verify the attestation against the QTSP's public key. Does your product implement this full chain?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q6",
-        "text": "How do you handle non-qualified EAAs where the trust mechanism is defined by a Rulebook (OIA_15/Topic 12) rather than the standard Trusted List infrastructure? Which Rulebook-defined mechanisms are currently supported?",
+        "text": "How do you handle non-qualified EAAs where the trust mechanism is defined by a Rulebook (EW-PIO-01-023/Topic 12) rather than the standard Trusted List infrastructure? Which Rulebook-defined mechanisms are currently supported?",
         "dimension": "capability"
       },
       {
@@ -3188,7 +3156,7 @@
       },
       {
         "id": "Q8",
-        "text": "What is the verification latency for a single attestation signature? How does this scale when a presentation contains multiple attestations (combined presentation per RPI_09)?",
+        "text": "What is the verification latency for a single attestation signature? How does this scale when a presentation contains multiple attestations (combined presentation per AS-RP-51-012)?",
         "dimension": "sla"
       },
       {
@@ -3200,32 +3168,32 @@
     "VEND-INT-011": [
       {
         "id": "Q1",
-        "text": "Do you check attestation revocation status before accepting presentations? If so, is this enabled by default or configured per RP agreement (per RPI_09 scope)?",
+        "text": "Do you check attestation revocation status before accepting presentations? Is this enabled by default or configured per RP agreement (per AS-RP-51-012 scope)? Is this verification performed as part of the AS-RP-51-012 verification gate (step b: revocation status)?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "What revocation checking mechanisms do you support? Per VCR_12, if you verify revocation status, you SHALL support both Attestation Status Lists and Attestation Revocation Lists.",
+        "text": "Do you support BOTH revocation checking mechanisms specified per AS-AP-07-017 — Attestation Status Lists (compressed bitstring) AND Attestation Revocation Lists (identifier lists)? Or do you support only one?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q3",
-        "text": "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation) or fail-open (accept with warning)? Is this policy configurable per RP?",
+        "text": "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation), fail-open (accept with warning), or use a cached (potentially stale) list? Is this policy configurable per RP?",
         "dimension": "operational"
       },
       {
         "id": "Q4",
-        "text": "What is the latency impact of revocation checking on verification time? How does this interact with the overall SLA for end-to-end presentation processing?",
+        "text": "What is the latency impact of revocation checking on verification time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does this interact with the overall SLA for end-to-end presentation processing?",
         "dimension": "sla"
       },
       {
         "id": "Q5",
-        "text": "Can the organisation configure whether revocation checking is mandatory or optional for each RP relationship? How does this interact with the RPI_09 agreement scope?",
+        "text": "Can the organisation configure whether revocation checking is mandatory or optional per RP relationship or per attestation type? Given AS-AP-07-020 is a SHOULD, is there an opt-out mechanism? How does this interact with the AS-RP-51-012 agreement scope?",
         "dimension": "flexibility"
       },
       {
         "id": "Q6",
-        "text": "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? What is the maximum age of a cached status list before re-fetch?",
+        "text": "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based, event-based, or configurable per attestation type? What is the maximum age of a cached status list before re-fetch?",
         "dimension": "technical_implementation"
       },
       {
@@ -3240,8 +3208,28 @@
       },
       {
         "id": "Q9",
-        "text": "If a previously valid attestation is revoked between the time it was presented and the time the intermediary forwards it, is there a re-check mechanism before forwarding?",
+        "text": "If a previously valid attestation is revoked between the time it was presented and the time the connector forwards it, is there a re-check mechanism before forwarding? How do you handle the cache consistency problem if a revocation occurs between cache refreshes?",
         "dimension": "security"
+      },
+      {
+        "id": "Q10",
+        "text": "How do you handle short-lived attestations (validity ≤24 hours per AS-AP-07-001) — do you skip revocation checking for these, or do you treat all attestations the same regardless of validity period?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q11",
+        "text": "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per AS-RP-51-011? What error information is returned to the wallet?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q12",
+        "text": "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?",
+        "dimension": "sla"
+      },
+      {
+        "id": "Q13",
+        "text": "What is the performance impact of revocation checking on overall transaction latency? How does the performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?",
+        "dimension": "performance"
       }
     ],
     "VEND-INT-012": [
@@ -3262,7 +3250,7 @@
       },
       {
         "id": "Q4",
-        "text": "What is the failure handling when device binding verification fails — is the entire presentation rejected (per RPI_08), and how is the failure communicated to the RP?",
+        "text": "What is the failure handling when device binding verification fails — is the entire presentation rejected (per AS-RP-51-011), and how is the failure communicated to the RP?",
         "dimension": "operational"
       },
       {
@@ -3282,7 +3270,7 @@
       },
       {
         "id": "Q8",
-        "text": "What is the verification latency for device binding checks? Does it add measurable overhead to the overall RPI_09 verification pipeline?",
+        "text": "What is the verification latency for device binding checks? Does it add measurable overhead to the overall AS-RP-51-012 verification pipeline?",
         "dimension": "sla"
       },
       {
@@ -3314,7 +3302,7 @@
       },
       {
         "id": "Q5",
-        "text": "How do you detect and block replay attempts? Is there a server-side nonce store, and is it distributed across multiple intermediary instances to prevent split-brain replay attacks?",
+        "text": "How do you detect and block replay attempts? Is there a server-side nonce store, and is it distributed across multiple connector instances to prevent split-brain replay attacks?",
         "dimension": "security"
       },
       {
@@ -3356,7 +3344,7 @@
       },
       {
         "id": "Q4",
-        "text": "What happens if the secure channel to the RP cannot be established (TLS handshake failure, certificate expired, network unreachable)? Are attributes deleted immediately per RPI_10, or is there a retry mechanism?",
+        "text": "What happens if the secure channel to the RP cannot be established (TLS handshake failure, certificate expired, network unreachable)? Are attributes deleted immediately per AS-RP-51-013, or is there a retry mechanism?",
         "dimension": "operational"
       },
       {
@@ -3403,7 +3391,7 @@
       },
       {
         "id": "Q4",
-        "text": "What key types does the intermediary manage: TLS server/client keys, JWS signing keys for verification results, trust anchor certificates? Are these stored in separate key hierarchies?",
+        "text": "What key types does the connector manage: TLS server/client keys, JWS signing keys for verification results, trust anchor certificates? Are these stored in separate key hierarchies?",
         "dimension": "architecture"
       },
       {
@@ -3455,7 +3443,7 @@
       },
       {
         "id": "Q5",
-        "text": "What fields are included in the verification result payload — overall outcome, per-check outcomes (RPI_09 breakdown), timestamp, nonce binding, intermediary identifier?",
+        "text": "What fields are included in the verification result payload — overall outcome, per-check outcomes (AS-RP-51-012 breakdown), timestamp, nonce binding, intermediary identifier?",
         "dimension": "technical_implementation"
       },
       {
@@ -3482,7 +3470,7 @@
     "VEND-INT-018": [
       {
         "id": "Q1",
-        "text": "What verification operations are logged — timestamps, per-check outcomes (RPI_09 breakdown), error codes, protocol used, processing duration? Is the logging schema documented and configurable?",
+        "text": "What verification operations are logged — timestamps, per-check outcomes (AS-RP-51-012 breakdown), error codes, protocol used, processing duration? Is the logging schema documented and configurable?",
         "dimension": "auditability"
       },
       {
@@ -3549,7 +3537,7 @@
       },
       {
         "id": "Q5",
-        "text": "For RPI_09 checks that require limited attribute access (e.g., user binding via biometric template), how do you ensure the accessed data is minimal, purpose-limited, and securely erased immediately after the check?",
+        "text": "For AS-RP-51-012 checks that require limited attribute access (e.g., user binding via biometric template), how do you ensure the accessed data is minimal, purpose-limited, and securely erased immediately after the check?",
         "dimension": "security"
       },
       {
@@ -3638,7 +3626,7 @@
       },
       {
         "id": "Q4",
-        "text": "How do you handle deletion when forwarding fails — is data still deleted immediately per RPI_10, even though the RP never received it? Are retry mechanisms that would require retaining attestation data prohibited?",
+        "text": "How do you handle deletion when forwarding fails — is data still deleted immediately per AS-RP-51-013, even though the RP never received it? Are retry mechanisms that would require retaining attestation data prohibited?",
         "dimension": "operational"
       },
       {
@@ -3670,7 +3658,7 @@
     "VEND-INT-022": [
       {
         "id": "Q1",
-        "text": "What RP details do you include in presentation requests — user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description? Are all 5 RPI_05 fields populated in every request?",
+        "text": "What RP details do you include in presentation requests — user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description? Are all 5 AS-RP-51-005 fields populated in every request?",
         "dimension": "technical_implementation"
       },
       {
@@ -3690,17 +3678,17 @@
       },
       {
         "id": "Q5",
-        "text": "How does the product populate the RPRC_19a extension fields in each presentation request? Is the population automated from RP configuration, or manually assembled per request?",
+        "text": "How does the product populate the EW-DM-44-018 extension fields in each presentation request? Is the population automated from RP configuration, or manually assembled per request?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q6",
-        "text": "How does the product ensure the RPRC_19a identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario per RPI_07?",
+        "text": "How does the product ensure the EW-DM-44-018 identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario per AS-RP-51-008?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q7",
-        "text": "What validation is performed to ensure the RPRC_19a fields are consistent with the RP's actual registration at the Registrar? Is there a check at onboarding and/or at each request?",
+        "text": "What validation is performed to ensure the EW-DM-44-018 fields are consistent with the RP's actual registration at the Registrar? Is there a check at onboarding and/or at each request?",
         "dimension": "compliance_monitoring"
       },
       {
@@ -3710,7 +3698,7 @@
       },
       {
         "id": "Q9",
-        "text": "If the intermediated RP has registration certificates (per RPI_03), how does the intermediary know which single certificate to include in the request? Is this part of the RP onboarding configuration?",
+        "text": "If the intermediated RP has registration certificates (per AS-RP-51-003), how does the intermediary know which single certificate to include in the request? Is this part of the RP onboarding configuration?",
         "dimension": "technical_implementation"
       }
     ],
@@ -3752,7 +3740,7 @@
       },
       {
         "id": "Q8",
-        "text": "How do you handle Attestation Rulebook (ARB_02) requirements that mandate mDoc format for specific attestation types requiring proximity presentation? Is format support configurable per attestation type?",
+        "text": "How do you handle Attestation Rulebook (EW-DM-12-003) requirements that mandate mDoc format for specific attestation types requiring proximity presentation? Is format support configurable per attestation type?",
         "dimension": "architecture"
       },
       {
@@ -3883,12 +3871,12 @@
       },
       {
         "id": "Q6",
-        "text": "How does the disclosure policy check interact with the RPI_06 attribute scope check? Are they performed independently, and what is the order of evaluation?",
+        "text": "How does the disclosure policy check interact with the AS-RP-51-006 attribute scope check? Are they performed independently, and what is the order of evaluation?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q7",
-        "text": "Can disclosure policies reference data that the intermediary cannot evaluate (e.g., the RP's internal data processing agreement)? How do you handle unresolvable policy conditions?",
+        "text": "Can disclosure policies reference data that the connector cannot evaluate (e.g., the RP's internal data processing agreement)? How do you handle unresolvable policy conditions?",
         "dimension": "operational"
       },
       {
@@ -3915,7 +3903,7 @@
       },
       {
         "id": "Q3",
-        "text": "How do you handle pseudonymous authentication without revealing user identity — is the public key (pseudonym) the only identifier visible to the intermediary, with no linkage to PID data?",
+        "text": "How do you handle pseudonymous authentication without revealing user identity — is the public key (pseudonym) the only identifier visible to the connector, with no linkage to PID data?",
         "dimension": "privacy"
       },
       {
@@ -3930,17 +3918,17 @@
       },
       {
         "id": "Q6",
-        "text": "How do you forward the verified pseudonym to the intermediated RP without associating it with any PID or attestation data? Is the pseudonym treated with the same deletion requirements as attestation data (per RPI_10)?",
+        "text": "How do you forward the verified pseudonym to the intermediated RP without associating it with any PID or attestation data? Is the pseudonym treated with the same deletion requirements as attestation data (per AS-RP-51-013)?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q7",
-        "text": "How do you handle WebAuthn challenge freshness — is the challenge (nonce) generated by the intermediary, by the intermediated RP, or collaboratively?",
+        "text": "How do you handle WebAuthn challenge freshness — is the challenge (nonce) generated by the connector, by the intermediated RP, or collaboratively?",
         "dimension": "security"
       },
       {
         "id": "Q8",
-        "text": "What is your credential registration flow — does the wallet register the WebAuthn credential directly with the intermediated RP (via the intermediary as proxy), or with the intermediary itself?",
+        "text": "What is your credential registration flow — does the wallet register the WebAuthn credential directly with the intermediated RP (via the connector as proxy), or with the connector itself?",
         "dimension": "architecture"
       },
       {
@@ -4034,12 +4022,12 @@
       },
       {
         "id": "Q8",
-        "text": "How does the intermediary's access certificate identity relate to the RPRC_19a identity of the intermediated RP? Can you explain how wallets detect the intermediary scenario by comparing these two identities (per RPI_07)?",
+        "text": "How does the connector's access certificate identity relate to the EW-DM-44-018 identity of the intermediated RP? Can you explain how wallets detect the connector scenario by comparing these two identities (per AS-RP-51-008)?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q9",
-        "text": "If the intermediary serves multiple Registrars (e.g., across Member States), how do you manage multiple access certificates and ensure the correct certificate is used for each RP context?",
+        "text": "If the connector serves multiple Registrars (e.g., across Member States), how do you manage multiple access certificates and ensure the correct certificate is used for each RP context?",
         "dimension": "architecture"
       }
     ],
@@ -4051,7 +4039,7 @@
       },
       {
         "id": "Q2",
-        "text": "How do you authenticate users submitting deletion requests (per DATA_DLT_07)? Do you use the wallet's authentication or signature facilities, or your own authentication mechanisms?",
+        "text": "How do you authenticate users submitting deletion requests (per AS-RP-48-005)? Do you use the wallet's authentication or signature facilities, or your own authentication mechanisms?",
         "dimension": "security"
       },
       {
@@ -4098,7 +4086,7 @@
       },
       {
         "id": "Q2",
-        "text": "What contact information is provided to users for complaint purposes — DPO contact details, registered address, supervisory authority details? Is this information included in the RPRC_19a extension or provided via a separate channel?",
+        "text": "What contact information is provided to users for complaint purposes — DPO contact details, registered address, supervisory authority details? Is this information included in the EW-DM-44-018 extension or provided via a separate channel?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4145,7 +4133,7 @@
       },
       {
         "id": "Q2",
-        "text": "How do you obtain and maintain RP registration certificates — are they retrieved during RP onboarding (per RPI_03) and refreshed automatically, or is this a manual process?",
+        "text": "How do you obtain and maintain RP registration certificates — are they retrieved during RP onboarding (per AS-RP-51-003) and refreshed automatically, or is this a manual process?",
         "dimension": "lifecycle"
       },
       {
@@ -4160,7 +4148,7 @@
       },
       {
         "id": "Q5",
-        "text": "For remote presentations (OID4VP), how is the RP's registration certificate included — as a field in the RPRC_19a extension, as a separate JWT claim, or within the request metadata?",
+        "text": "For remote presentations (OID4VP), how is the RP's registration certificate included — as a field in the EW-DM-44-018 extension, as a separate JWT claim, or within the request metadata?",
         "dimension": "technical_implementation"
       },
       {
@@ -4170,7 +4158,7 @@
       },
       {
         "id": "Q7",
-        "text": "How does the wallet use the dual-certificate to perform the RPI_07a relationship verification — does it inspect the registration certificate directly, or query the Registrar?",
+        "text": "How does the wallet use the dual-certificate to perform the AS-RP-51-009 relationship verification — does it inspect the registration certificate directly, or query the Registrar?",
         "dimension": "interoperability"
       },
       {
@@ -4197,7 +4185,7 @@
       },
       {
         "id": "Q3",
-        "text": "How do you handle wallets that cannot verify the registered relationship (RPI_07a verification failure) — does the transaction proceed with a user warning, or is it blocked entirely?",
+        "text": "How do you handle wallets that cannot verify the registered relationship (AS-RP-51-009 verification failure) — does the transaction proceed with a user warning, or is it blocked entirely?",
         "dimension": "operational"
       },
       {
@@ -4231,53 +4219,6 @@
         "dimension": "technical_implementation"
       }
     ],
-    "VEND-INT-034": [
-      {
-        "id": "Q1",
-        "text": "Do you support attestation status list verification as specified in ARF Topic 7? Is this verification performed as part of the RPI_09 verification gate (step b: revocation status)?",
-        "dimension": "capability"
-      },
-      {
-        "id": "Q2",
-        "text": "Do you support BOTH mechanisms specified per VCR_11 — Attestation Status Lists (compressed bitstring) AND Attestation Revocation Lists (identifier lists)? Or do you support only one?",
-        "dimension": "technical_implementation"
-      },
-      {
-        "id": "Q3",
-        "text": "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?",
-        "dimension": "sla"
-      },
-      {
-        "id": "Q4",
-        "text": "What is the fallback behaviour when status lists are unavailable (provider down, network error) — do you block the transaction, proceed with a warning, or use a cached (potentially stale) list?",
-        "dimension": "operational"
-      },
-      {
-        "id": "Q5",
-        "text": "Can the organisation configure revocation checking behaviour (mandatory vs. optional) per use case or per attestation type? Given VCR_13 is a SHOULD, is there an opt-out mechanism?",
-        "dimension": "flexibility"
-      },
-      {
-        "id": "Q6",
-        "text": "How do you handle short-lived attestations (validity ≤24 hours per VCR_01) — do you skip revocation checking for these, or do you treat all attestations the same regardless of validity period?",
-        "dimension": "technical_implementation"
-      },
-      {
-        "id": "Q7",
-        "text": "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per RPI_08? What error information is returned to the wallet?",
-        "dimension": "compliance_completeness"
-      },
-      {
-        "id": "Q8",
-        "text": "How do you handle the cache consistency problem — if a status list is cached and a revocation occurs between cache refreshes, do you have a mechanism to detect and handle the stale cache?",
-        "dimension": "security"
-      },
-      {
-        "id": "Q9",
-        "text": "What is the performance impact of revocation checking on transaction latency? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call?",
-        "dimension": "performance"
-      }
-    ],
     "VEND-ISS-001": [
       {
         "id": "Q1",
@@ -4291,7 +4232,7 @@
       },
       {
         "id": "Q3",
-        "text": "What documentation and prerequisites must the organisation provide for registration? Do you generate the Reg_01a common data set automatically from platform configuration?",
+        "text": "What documentation and prerequisites must the organisation provide for registration? Do you generate the AS-MS-27-002 common data set automatically from platform configuration?",
         "dimension": "operational"
       },
       {
@@ -4321,7 +4262,7 @@
       },
       {
         "id": "Q9",
-        "text": "How do you ensure that the attestation type(s) registered with the Registrar (per Reg_01a) remain synchronised with the types actually issued by the platform?",
+        "text": "How do you ensure that the attestation type(s) registered with the Registrar (per AS-MS-27-002) remain synchronised with the types actually issued by the platform?",
         "dimension": "compliance_completeness"
       }
     ],
@@ -4353,7 +4294,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per ISSU_29, do you ensure non-discrimination between Wallet Solutions? How do you verify that your Provider Information does not exclude specific wallets (except for SUA attestations)?",
+        "text": "Per AS-AP-10-044, do you ensure non-discrimination between Wallet Solutions? How do you verify that your Provider Information does not exclude specific wallets (except for SUA attestations)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4474,7 +4415,7 @@
       },
       {
         "id": "Q2",
-        "text": "When a wallet requests issuance, do you automatically issue in all mandated formats per ISSU_12a, or must each format be requested separately?",
+        "text": "When a wallet requests issuance, do you automatically issue in all mandated formats per AS-AP-10-014, or must each format be requested separately?",
         "dimension": "technical_implementation"
       },
       {
@@ -4484,7 +4425,7 @@
       },
       {
         "id": "Q4",
-        "text": "Do you publish supported formats in Provider Information per ARF ISSU_12a? Is the format list automatically synchronised with actual issuance capabilities?",
+        "text": "Do you publish supported formats in Provider Information per ARF AS-AP-10-014? Is the format list automatically synchronised with actual issuance capabilities?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4504,12 +4445,12 @@
       },
       {
         "id": "Q8",
-        "text": "How do you handle Rulebook-driven format mandates (per ARB_02) — if a Rulebook mandates mDoc for proximity, do you enforce this at the attestation type configuration level?",
+        "text": "How do you handle Rulebook-driven format mandates (per EW-DM-12-003) — if a Rulebook mandates mDoc for proximity, do you enforce this at the attestation type configuration level?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q9",
-        "text": "Do you support additional attestation formats beyond mDoc and SD-JWT-VC (e.g., W3C VCDM for non-qualified EAAs per ARB_01a)? Is format extensibility built into the architecture?",
+        "text": "Do you support additional attestation formats beyond mDoc and SD-JWT-VC (e.g., W3C VCDM for non-qualified EAAs per EW-DM-12-001)? Is format extensibility built into the architecture?",
         "dimension": "roadmap"
       }
     ],
@@ -4563,7 +4504,7 @@
     "VEND-ISS-007": [
       {
         "id": "Q1",
-        "text": "Do you fully implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as profiled by the High Assurance Interoperability Profile (HAIP) per ISSU_01a?",
+        "text": "Do you fully implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as profiled by the High Assurance Interoperability Profile (HAIP) per AS-AP-10-001?",
         "dimension": "capability"
       },
       {
@@ -4593,7 +4534,7 @@
       },
       {
         "id": "Q7",
-        "text": "Do you support the OID4VCI Batch Issuance Endpoint to reduce round-trips when issuing multiple formats (mDoc + SD-JWT-VC) simultaneously per ISSU_12/ISSU_12a?",
+        "text": "Do you support the OID4VCI Batch Issuance Endpoint to reduce round-trips when issuing multiple formats (mDoc + SD-JWT-VC) simultaneously per AS-AP-10-013/AS-AP-10-014?",
         "dimension": "technical_implementation"
       },
       {
@@ -4640,12 +4581,12 @@
       },
       {
         "id": "Q7",
-        "text": "How does batch issuance interact with dual-format requirements (ISSU_12/ISSU_12a) — does each credential in the batch automatically produce both mDoc and SD-JWT-VC?",
+        "text": "How does batch issuance interact with dual-format requirements (AS-AP-10-013/AS-AP-10-014) — does each credential in the batch automatically produce both mDoc and SD-JWT-VC?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q8",
-        "text": "Are you tracking the W3C Digital Credentials API (per ISSU_03)? If it becomes a W3C Recommendation, how quickly could you support browser-based batch issuance through it?",
+        "text": "Are you tracking the W3C Digital Credentials API (per AS-AP-10-003)? If it becomes a W3C Recommendation, how quickly could you support browser-based batch issuance through it?",
         "dimension": "roadmap"
       },
       {
@@ -4687,7 +4628,7 @@
       },
       {
         "id": "Q7",
-        "text": "How do you handle the ISSU_05 PID activation requirement — what is the activation process, and how do you verify the PID was delivered to the correct WSCA/WSCD?",
+        "text": "How do you handle the AS-AP-10-005 PID activation requirement — what is the activation process, and how do you verify the PID was delivered to the correct WSCA/WSCD?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4704,7 +4645,7 @@
     "VEND-ISS-010": [
       {
         "id": "Q1",
-        "text": "Which authentic sources do you connect to for attestation data (national registries, authoritative databases)? Do you support the QTSPAS_02 verification interface for QEAA Providers?",
+        "text": "Which authentic sources do you connect to for attestation data (national registries, authoritative databases)? Do you support the AS-AP-42-002 verification interface for QEAA Providers?",
         "dimension": "capability"
       },
       {
@@ -4739,7 +4680,7 @@
       },
       {
         "id": "Q8",
-        "text": "Do you support push-based authentic source notifications (the source alerts you of changes) in addition to pull-based queries, per VCR_09?",
+        "text": "Do you support push-based authentic source notifications (the source alerts you of changes) in addition to pull-based queries, per AS-AP-07-015?",
         "dimension": "technical_implementation"
       },
       {
@@ -4771,7 +4712,7 @@
       },
       {
         "id": "Q5",
-        "text": "Do you inform the Wallet Unit about the optimal re-issuance timing relative to expiry, per ISSU_50? How is the renewal window communicated?",
+        "text": "Do you inform the Wallet Unit about the optimal re-issuance timing relative to expiry, per AS-AP-10-074? How is the renewal window communicated?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4781,12 +4722,12 @@
       },
       {
         "id": "Q7",
-        "text": "How do you handle attestations that expire during a presentation flow — does the wallet warn the user, or is the expired attestation still presented (per ISSU_50 note)?",
+        "text": "How do you handle attestations that expire during a presentation flow — does the wallet warn the user, or is the expired attestation still presented (per AS-AP-10-074 note)?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q8",
-        "text": "After re-issuance, does your system automatically compare attribute values between the old and new attestation and alert the user of differences per ISSU_59?",
+        "text": "After re-issuance, does your system automatically compare attribute values between the old and new attestation and alert the user of differences per AS-AP-10-085?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4803,7 +4744,7 @@
       },
       {
         "id": "Q2",
-        "text": "Can attestations be re-issued when the underlying data changes (e.g., address change, name change) — is this triggered automatically from authentic source notifications (per VCR_09) or only on user request?",
+        "text": "Can attestations be re-issued when the underlying data changes (e.g., address change, name change) — is this triggered automatically from authentic source notifications (per AS-AP-07-015) or only on user request?",
         "dimension": "capability"
       },
       {
@@ -4818,12 +4759,12 @@
       },
       {
         "id": "Q5",
-        "text": "When an attestation is renewed, is the old attestation automatically revoked per VCR_09 to prevent duplicate active attestations? Is the revocation synchronous with re-issuance?",
+        "text": "When an attestation is renewed, is the old attestation automatically revoked per AS-AP-07-015 to prevent duplicate active attestations? Is the revocation synchronous with re-issuance?",
         "dimension": "lifecycle"
       },
       {
         "id": "Q6",
-        "text": "After re-issuance, does your system perform full attribute comparison (per ISSU_59) and present differences to the user for acknowledgement?",
+        "text": "After re-issuance, does your system perform full attribute comparison (per AS-AP-10-085) and present differences to the user for acknowledgement?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4845,7 +4786,7 @@
     "VEND-ISS-013": [
       {
         "id": "Q1",
-        "text": "Do you maintain and publish attestation status lists for revocation checking? Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per VCR_11/VCR_12?",
+        "text": "Do you maintain and publish attestation status lists for revocation checking? Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per AS-AP-07-017/AS-AP-07-018?",
         "dimension": "capability"
       },
       {
@@ -4875,7 +4816,7 @@
       },
       {
         "id": "Q7",
-        "text": "Per VCR_03, you are the sole party responsible for revocation. If you outsource the status list operation to a third party, how is the delegation governed and audited?",
+        "text": "Per AS-AP-07-004, you are the sole party responsible for revocation. If you outsource the status list operation to a third party, how is the delegation governed and audited?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4892,7 +4833,7 @@
     "VEND-ISS-014": [
       {
         "id": "Q1",
-        "text": "What is the maximum propagation time for standard attestation revocations? Does this meet the VCR_09 requirement of revoking within 24 hours of attribute changes?",
+        "text": "What is the maximum propagation time for standard attestation revocations? Does this meet the AS-AP-07-015 requirement of revoking within 24 hours of attribute changes?",
         "dimension": "sla"
       },
       {
@@ -4917,7 +4858,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per VCR_09, how do you ensure authentic sources notify you of attribute value changes? Do you implement push-based notifications, periodic polling, or both?",
+        "text": "Per AS-AP-07-015, how do you ensure authentic sources notify you of attribute value changes? Do you implement push-based notifications, periodic polling, or both?",
         "dimension": "compliance_completeness"
       },
       {
@@ -4939,7 +4880,7 @@
     "VEND-ISS-015": [
       {
         "id": "Q1",
-        "text": "Do you notify users when their attestations are revoked? Is notification mandatory for all revocations, or only when user contact details are available (per VCR_09 SHOULD)?",
+        "text": "Do you notify users when their attestations are revoked? Is notification mandatory for all revocations, or only when user contact details are available (per AS-AP-07-015 SHOULD)?",
         "dimension": "capability"
       },
       {
@@ -4969,7 +4910,7 @@
       },
       {
         "id": "Q7",
-        "text": "For VCR_09 attribute-change revocations, does the notification specifically state which attributes changed and suggest the user re-request the attestation with updated data?",
+        "text": "For AS-AP-07-015 attribute-change revocations, does the notification specifically state which attributes changed and suggest the user re-request the attestation with updated data?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5063,12 +5004,12 @@
       },
       {
         "id": "Q7",
-        "text": "Per ISSU_35, how do you ensure all unique elements (salts, hashes, revocation indexes, device binding keys, signatures) have negligible collision probability? Do you use a certified CSPRNG?",
+        "text": "Per AS-AP-10-056, how do you ensure all unique elements (salts, hashes, revocation indexes, device binding keys, signatures) have negligible collision probability? Do you use a certified CSPRNG?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q8",
-        "text": "Per ISSU_35b, how do you ensure unique element values and timestamps are discarded after issuance? Is the discarding process auditable and provable?",
+        "text": "Per AS-AP-10-058, how do you ensure unique element values and timestamps are discarded after issuance? Is the discarding process auditable and provable?",
         "dimension": "privacy"
       },
       {
@@ -5157,7 +5098,7 @@
       },
       {
         "id": "Q7",
-        "text": "Per ISSU_17, how does key rotation interact with device binding — do existing device bindings remain valid after the provider's signing key rotates (since they reference the wallet's key, not the provider's)?",
+        "text": "Per AS-AP-10-022, how does key rotation interact with device binding — do existing device bindings remain valid after the provider's signing key rotates (since they reference the wallet's key, not the provider's)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5226,7 +5167,7 @@
       },
       {
         "id": "Q2",
-        "text": "Do schemas clearly distinguish mandatory vs optional vs conditional attributes, per ARB_06's encoding-independent semantic definition requirement?",
+        "text": "Do schemas clearly distinguish mandatory vs optional vs conditional attributes, per EW-DM-12-007's encoding-independent semantic definition requirement?",
         "dimension": "technical_implementation"
       },
       {
@@ -5246,7 +5187,7 @@
       },
       {
         "id": "Q6",
-        "text": "Do schemas include semantic definitions for each attribute (encoding-independent description per ARB_06), beyond just data type and cardinality?",
+        "text": "Do schemas include semantic definitions for each attribute (encoding-independent description per EW-DM-12-007), beyond just data type and cardinality?",
         "dimension": "documentation"
       },
       {
@@ -5293,7 +5234,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per EDP_09, do you include an embedded disclosure policy by value in the Issuer metadata? How does this policy inform the wallet about mandatory vs optional attributes?",
+        "text": "Per EW-PIO-43-001, do you include an embedded disclosure policy by value in the Issuer metadata? How does this policy inform the wallet about mandatory vs optional attributes?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5320,7 +5261,7 @@
       },
       {
         "id": "Q2",
-        "text": "Are unique attestation identifiers (revocation indexes, serial numbers) designed to prevent cross-RP correlation per ISSU_35's negligible-collision requirement?",
+        "text": "Are unique attestation identifiers (revocation indexes, serial numbers) designed to prevent cross-RP correlation per AS-AP-10-056's negligible-collision requirement?",
         "dimension": "technical_implementation"
       },
       {
@@ -5330,7 +5271,7 @@
       },
       {
         "id": "Q4",
-        "text": "How do you handle serial numbers or other unique identifiers required by format specifications (mDoc document number, SD-JWT-VC `jti`) — are these randomised per ISSU_35?",
+        "text": "How do you handle serial numbers or other unique identifiers required by format specifications (mDoc document number, SD-JWT-VC `jti`) — are these randomised per AS-AP-10-056?",
         "dimension": "technical_implementation"
       },
       {
@@ -5340,7 +5281,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per ISSU_35b, do you discard all unique element values and timestamps after issuance to prevent the provider from correlating presentations retrospectively?",
+        "text": "Per AS-AP-10-058, do you discard all unique element values and timestamps after issuance to prevent the provider from correlating presentations retrospectively?",
         "dimension": "privacy"
       },
       {
@@ -5367,7 +5308,7 @@
       },
       {
         "id": "Q2",
-        "text": "How do you ensure interoperability through adherence to common standards — do you validate attestation format compliance against ISSU_12 (Rulebook-mandated formats) before issuance?",
+        "text": "How do you ensure interoperability through adherence to common standards — do you validate attestation format compliance against AS-AP-10-013 (Rulebook-mandated formats) before issuance?",
         "dimension": "interoperability"
       },
       {
@@ -5409,12 +5350,12 @@
     "VEND-ISS-026": [
       {
         "id": "Q1",
-        "text": "Do you support Person Identification Data (PID) issuance fully compliant with the PID Rulebook (PID_01)? Can you demonstrate compliance with all mandatory attribute requirements?",
+        "text": "Do you support Person Identification Data (PID) issuance fully compliant with the PID Rulebook (EW-DM-03-01)? Can you demonstrate compliance with all mandatory attribute requirements?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "How do you implement namespace conventions as specified in the PID Rulebook — do you use the EU namespace `eu.europa.ec.eudi.pid.1` for mDoc and standard claim names for SD-JWT-VC (per PID_04/PID_05)?",
+        "text": "How do you implement namespace conventions as specified in the PID Rulebook — do you use the EU namespace `eu.europa.ec.eudi.pid.1` for mDoc and standard claim names for SD-JWT-VC (per EW-DM-03-04/EW-DM-03-05)?",
         "dimension": "technical_implementation"
       },
       {
@@ -5424,12 +5365,12 @@
       },
       {
         "id": "Q4",
-        "text": "What portrait image quality and encoding requirements do you support per PID_08/PID_09 — resolution, colour depth, compression format, file size limits?",
+        "text": "What portrait image quality and encoding requirements do you support per EW-DM-03-08/EW-DM-03-09 — resolution, colour depth, compression format, file size limits?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q5",
-        "text": "How do you handle CBOR encoding for mDoc format attributes (PID_10) — do you validate element identifiers, data types, and encoding correctness before signing?",
+        "text": "How do you handle CBOR encoding for mDoc format attributes (EW-DM-03-10) — do you validate element identifiers, data types, and encoding correctness before signing?",
         "dimension": "technical_implementation"
       },
       {
@@ -5476,12 +5417,12 @@
       },
       {
         "id": "Q5",
-        "text": "Per ISSU_12d, if you support revocation chaining, how do you ensure the attestation expiration date does not exceed the WUA expiration date presented during issuance?",
+        "text": "Per AS-AP-10-017, if you support revocation chaining, how do you ensure the attestation expiration date does not exceed the WUA expiration date presented during issuance?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q6",
-        "text": "Per ISSU_27, do you implement device binding for all attestations? How does the binding mechanism differ between mDoc (mdoc authentication) and SD-JWT-VC (cnf claim)?",
+        "text": "Per AS-AP-10-039, do you implement device binding for all attestations? How does the binding mechanism differ between mDoc (mdoc authentication) and SD-JWT-VC (cnf claim)?",
         "dimension": "technical_implementation"
       },
       {
@@ -5496,14 +5437,14 @@
       },
       {
         "id": "Q9",
-        "text": "How do you handle optional formats — can the organisation choose to issue in additional formats beyond the Rulebook mandate (e.g., W3C VCDM v2.0 per ARB_04)?",
+        "text": "How do you handle optional formats — can the organisation choose to issue in additional formats beyond the Rulebook mandate (e.g., W3C VCDM v2.0 per EW-DM-12-005)?",
         "dimension": "flexibility"
       }
     ],
     "VEND-ISS-028": [
       {
         "id": "Q1",
-        "text": "Do you implement attestation revocation as specified in the applicable Rulebook? How do you determine the revocation method(s) required for each attestation type (per VCR_02)?",
+        "text": "Do you implement attestation revocation as specified in the applicable Rulebook? How do you determine the revocation method(s) required for each attestation type (per AS-AP-07-003)?",
         "dimension": "capability"
       },
       {
@@ -5513,7 +5454,7 @@
       },
       {
         "id": "Q3",
-        "text": "Do you support suspension where the Rulebook requires it? Is suspension treated as distinct from revocation in your status list mechanism (per VCR_04 irreversibility)?",
+        "text": "Do you support suspension where the Rulebook requires it? Is suspension treated as distinct from revocation in your status list mechanism (per AS-AP-07-006 irreversibility)?",
         "dimension": "capability"
       },
       {
@@ -5523,12 +5464,12 @@
       },
       {
         "id": "Q5",
-        "text": "Per VCR_03/VCR_03a, how do you ensure the attestation provider retains sole responsibility for the revocation decision, even when operation is outsourced to a third party?",
+        "text": "Per AS-AP-07-004/AS-AP-07-005, how do you ensure the attestation provider retains sole responsibility for the revocation decision, even when operation is outsourced to a third party?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q6",
-        "text": "Per VCR_04, how do you technically enforce revocation irreversibility — once an attestation is revoked, is it impossible to reverse at any level (API, database, administrative override)?",
+        "text": "Per AS-AP-07-006, how do you technically enforce revocation irreversibility — once an attestation is revoked, is it impossible to reverse at any level (API, database, administrative override)?",
         "dimension": "security"
       },
       {
@@ -5560,7 +5501,7 @@
       },
       {
         "id": "Q3",
-        "text": "Per Reg_08, how quickly can registration updates be submitted and reflected in registries — what is your SLA for 'without undue delay'?",
+        "text": "Per AS-MS-27-010, how quickly can registration updates be submitted and reflected in registries — what is your SLA for 'without undue delay'?",
         "dimension": "sla"
       },
       {
@@ -5575,7 +5516,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per Reg_14, how do you maintain the ability to revoke access certificates when registration information changes? Is access certificate lifecycle managed automatically?",
+        "text": "Per AS-MS-27-017, how do you maintain the ability to revoke access certificates when registration information changes? Is access certificate lifecycle managed automatically?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5597,12 +5538,12 @@
     "VEND-ISS-030": [
       {
         "id": "Q1",
-        "text": "Do you publish trust anchor information according to the Commission's common format (per PPNot_03/PPNot_04)? Is the publication automated and machine-readable?",
+        "text": "Do you publish trust anchor information according to the Commission's common format (per AS-MS-31-007/AS-MS-31-008)? Is the publication automated and machine-readable?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "Per PPNot_02, what information is included in the published trust anchor — identification data, trust anchor public keys, Access Certificate Authority trust anchors, service supply points?",
+        "text": "Per AS-WP-31-001, what information is included in the published trust anchor — identification data, trust anchor public keys, Access Certificate Authority trust anchors, service supply points?",
         "dimension": "technical_implementation"
       },
       {
@@ -5612,7 +5553,7 @@
       },
       {
         "id": "Q4",
-        "text": "What is the process for Trusted List inclusion of your trust anchor (per PPNot_07) — how long does initial inclusion typically take, and what documentation is required?",
+        "text": "What is the process for Trusted List inclusion of your trust anchor (per AS-MS-31-011) — how long does initial inclusion typically take, and what documentation is required?",
         "dimension": "lifecycle"
       },
       {
@@ -5627,7 +5568,7 @@
       },
       {
         "id": "Q7",
-        "text": "Per PuBPNot_03, if the organisation is a public body, do you support the additional notification requirements (legal basis, mandate scope)?",
+        "text": "Per AS-MS-31-013, if the organisation is a public body, do you support the additional notification requirements (legal basis, mandate scope)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5649,7 +5590,7 @@
       },
       {
         "id": "Q2",
-        "text": "Per WUA_11a, how do you verify that the WSCA/WSCD has proven possession of the new attestation private key — challenge-response, signed nonce, or other mechanism?",
+        "text": "Per AS-WP-09-015, how do you verify that the WSCA/WSCD has proven possession of the new attestation private key — challenge-response, signed nonce, or other mechanism?",
         "dimension": "technical_implementation"
       },
       {
@@ -5674,7 +5615,7 @@
       },
       {
         "id": "Q7",
-        "text": "Per WUA_20a, how do you ensure compliance with all relevant requirements in Technical Specification 3 (Wallet Unit Attestation)? Do you have a TS3 conformance test suite?",
+        "text": "Per AS-WP-09-026, how do you ensure compliance with all relevant requirements in Technical Specification 3 (Wallet Unit Attestation)? Do you have a TS3 conformance test suite?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5691,7 +5632,7 @@
     "VEND-ISS-032": [
       {
         "id": "Q1",
-        "text": "Do you support embedding disclosure policies in issued attestations per EDP_09? Are policies included by value (not by reference) in the Issuer metadata via OpenID4VCI?",
+        "text": "Do you support embedding disclosure policies in issued attestations per EW-PIO-43-001? Are policies included by value (not by reference) in the Issuer metadata via OpenID4VCI?",
         "dimension": "capability"
       },
       {
@@ -5701,7 +5642,7 @@
       },
       {
         "id": "Q3",
-        "text": "Per EDP_11, how do you handle the requirement to revoke attestations when a corresponding embedded disclosure policy is added, changed, or deleted? Is this automated?",
+        "text": "Per AS-AP-43-001, how do you handle the requirement to revoke attestations when a corresponding embedded disclosure policy is added, changed, or deleted? Is this automated?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5738,17 +5679,17 @@
     "VEND-ISS-033": [
       {
         "id": "Q1",
-        "text": "Do you use registration certificates for Provider authentication in Wallet Unit interactions? Is the certificate included in Issuer metadata per RPRC_22?",
+        "text": "Do you use registration certificates for Provider authentication in Wallet Unit interactions? Is the certificate included in Issuer metadata per AS-AP-44-004?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "Per RPRC_14, how do you distribute the registration certificate to all service supply points — is distribution automated when a new certificate is issued or rotated?",
+        "text": "Per AS-AP-44-002, how do you distribute the registration certificate to all service supply points — is distribution automated when a new certificate is issued or rotated?",
         "dimension": "operational"
       },
       {
         "id": "Q3",
-        "text": "Per RPRC_22, is the registration certificate included by value (not by reference) in your Issuer metadata? This ensures issuance transactions are atomic and self-contained.",
+        "text": "Per AS-AP-44-004, is the registration certificate included by value (not by reference) in your Issuer metadata? This ensures issuance transactions are atomic and self-contained.",
         "dimension": "compliance_completeness"
       },
       {
@@ -5785,22 +5726,22 @@
     "VEND-ISS-034": [
       {
         "id": "Q1",
-        "text": "Do you issue PIDs in SD-JWT VC format compliant with ARF specifications? Is the `vct` claim correctly set to a URN within the `urn:eudi:pid:` namespace (per PID_14)?",
+        "text": "Do you issue PIDs in SD-JWT VC format compliant with ARF specifications? Is the `vct` claim correctly set to a URN within the `urn:eudi:pid:` namespace (per EW-DM-03-14)?",
         "dimension": "capability"
       },
       {
         "id": "Q2",
-        "text": "Do you include all required SD-JWT VC claims — `vct`, `iss`, `iat`, `exp`, `cnf` (key binding), `status` (revocation reference) — per PID_17?",
+        "text": "Do you include all required SD-JWT VC claims — `vct`, `iss`, `iat`, `exp`, `cnf` (key binding), `status` (revocation reference) — per EW-DM-03-17?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q3",
-        "text": "How do you encode PID attributes per PID_18/PID_19 — JSON claim encoding per the PID Rulebook’s SD-JWT-VC profile, with correct data types?",
+        "text": "How do you encode PID attributes per EW-DM-03-18/EW-DM-03-19 — JSON claim encoding per the PID Rulebook’s SD-JWT-VC profile, with correct data types?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q4",
-        "text": "Per PID_20/PID_21, are all PID claims made selectively disclosable using the SD-JWT `_sd` mechanism? Which claims are excluded as issuer-protected (e.g., `vct`, `iss`, `cnf`)?",
+        "text": "Per EW-DM-03-20/EW-DM-03-21, are all PID claims made selectively disclosable using the SD-JWT `_sd` mechanism? Which claims are excluded as issuer-protected (e.g., `vct`, `iss`, `cnf`)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -5832,7 +5773,7 @@
     "VEND-ISS-035": [
       {
         "id": "Q1",
-        "text": "Do you issue PIDs in ISO 18013-5 mDoc format compliant with ARF specifications? Is the `docType` correctly set to `eu.europa.ec.eudi.pid.1` (per PID_07)?",
+        "text": "Do you issue PIDs in ISO 18013-5 mDoc format compliant with ARF specifications? Is the `docType` correctly set to `eu.europa.ec.eudi.pid.1` (per EW-DM-03-07)?",
         "dimension": "capability"
       },
       {
@@ -5847,12 +5788,12 @@
       },
       {
         "id": "Q4",
-        "text": "Per PID_13, do you enforce element uniqueness — each PID contains at most one attribute with the same element identifier within any namespace?",
+        "text": "Per EW-DM-03-13, do you enforce element uniqueness — each PID contains at most one attribute with the same element identifier within any namespace?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q5",
-        "text": "Per PID_06, how do you handle domestic namespace generation — appending ISO 3166-1 alpha-2 country codes (e.g., `eu.europa.ec.eudi.pid.de.1` for Germany)?",
+        "text": "Per EW-DM-03-06, how do you handle domestic namespace generation — appending ISO 3166-1 alpha-2 country codes (e.g., `eu.europa.ec.eudi.pid.de.1` for Germany)?",
         "dimension": "technical_implementation"
       },
       {
@@ -5862,12 +5803,12 @@
       },
       {
         "id": "Q7",
-        "text": "How do you implement the Mobile Security Object (MSO) structure — per-attribute digests with correct salt generation (CSPRNG per ISSU_35)?",
+        "text": "How do you implement the Mobile Security Object (MSO) structure — per-attribute digests with correct salt generation (CSPRNG per AS-AP-10-056)?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q8",
-        "text": "Do you support portrait image encoding in mDoc format — correct CBOR data type (bstr), compression format (JPEG2000 or JPEG), and quality requirements per PID_08/PID_09?",
+        "text": "Do you support portrait image encoding in mDoc format — correct CBOR data type (bstr), compression format (JPEG2000 or JPEG), and quality requirements per EW-DM-03-08/EW-DM-03-09?",
         "dimension": "technical_implementation"
       },
       {
@@ -5879,7 +5820,7 @@
     "VEND-ISS-036": [
       {
         "id": "Q1",
-        "text": "Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per VCR_12a? Are both operational in production?",
+        "text": "Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per AS-AP-07-019? Are both operational in production?",
         "dimension": "capability"
       },
       {
@@ -5926,7 +5867,7 @@
     "VEND-ISS-037": [
       {
         "id": "Q1",
-        "text": "Do you implement all required elements of the OpenID4VCI protocol as specified in the ARF HLRs — including ISSU_06/07 (issuance verification), ISSU_18/18a (authorization flows), ISSU_22-22b (access certificates), ISSU_25/26 (credential offers), ISSU_32/32a (deferred issuance)?",
+        "text": "Do you implement all required elements of the OpenID4VCI protocol as specified in the ARF HLRs — including AS-AP-10-006/07 (issuance verification), AS-AP-10-023/18a (authorization flows), AS-AP-10-029-22b (access certificates), AS-AP-10-037/26 (credential offers), AS-AP-10-048/32a (deferred issuance)?",
         "dimension": "capability"
       },
       {
@@ -5946,7 +5887,7 @@
       },
       {
         "id": "Q5",
-        "text": "Per ISSU_32/32a, do you support deferred issuance for scenarios where attestation cannot be issued immediately (e.g., pending authentic source verification)? What is the deferred issuance polling mechanism?",
+        "text": "Per AS-AP-10-048/32a, do you support deferred issuance for scenarios where attestation cannot be issued immediately (e.g., pending authentic source verification)? What is the deferred issuance polling mechanism?",
         "dimension": "capability"
       },
       {
@@ -5956,17 +5897,17 @@
       },
       {
         "id": "Q7",
-        "text": "Per ISSU_22/22a/22b, how do you include access certificates in Issuer metadata? Is the certificate chain verifiable by Wallet Units without external requests?",
+        "text": "Per AS-AP-10-029/22a/22b, how do you include access certificates in Issuer metadata? Is the certificate chain verifiable by Wallet Units without external requests?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q8",
-        "text": "Do you support notification endpoints (ISSU_25/26) for issuance status callbacks — can the Wallet Unit receive push notifications about credential readiness?",
+        "text": "Do you support notification endpoints (AS-AP-10-037/26) for issuance status callbacks — can the Wallet Unit receive push notifications about credential readiness?",
         "dimension": "capability"
       },
       {
         "id": "Q9",
-        "text": "How do you integrate device binding (ISSU_27b/27c) into the OpenID4VCI flow — proof-of-possession during the credential request, key attestation parameters?",
+        "text": "How do you integrate device binding (AS-AP-10-041/27c) into the OpenID4VCI flow — proof-of-possession during the credential request, key attestation parameters?",
         "dimension": "technical_implementation"
       }
     ],
@@ -6114,7 +6055,7 @@
     "VEND-ISS-041": [
       {
         "id": "Q1",
-        "text": "Do you monitor the revocation status of Wallet Unit Attestations (WUAs) received during issuance for all active credentials? Per WURevocation_18, PID Providers SHALL regularly verify whether the Wallet Unit has been revoked — describe your monitoring mechanism (polling status lists, webhook notifications, or other).",
+        "text": "Do you monitor the revocation status of Wallet Unit Attestations (WUAs) received during issuance for all active credentials? Per AS-WP-38-018, PID Providers SHALL regularly verify whether the Wallet Unit has been revoked — describe your monitoring mechanism (polling status lists, webhook notifications, or other).",
         "dimension": "capability"
       },
       {
@@ -6124,7 +6065,7 @@
       },
       {
         "id": "Q3",
-        "text": "Per WURevocation_19, Attestation Providers SHALL publish their policy regarding cascading revocation when a WUA is revoked. Have you published this policy? Where is it accessible to Relying Parties (e.g., in Provider Information, Trusted List metadata, or a public policy document)?",
+        "text": "Per AS-WP-38-019, Attestation Providers SHALL publish their policy regarding cascading revocation when a WUA is revoked. Have you published this policy? Where is it accessible to Relying Parties (e.g., in Provider Information, Trusted List metadata, or a public policy document)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -6134,7 +6075,7 @@
       },
       {
         "id": "Q5",
-        "text": "How do you store the WUA references received during issuance — do you persist the WUA itself, its status list URI and index, or a hash? How does this storage interact with ISSU_35b's requirement to discard unique elements after issuance?",
+        "text": "How do you store the WUA references received during issuance — do you persist the WUA itself, its status list URI and index, or a hash? How does this storage interact with AS-AP-10-058's requirement to discard unique elements after issuance?",
         "dimension": "technical_implementation"
       },
       {
@@ -6144,17 +6085,17 @@
       },
       {
         "id": "Q7",
-        "text": "What is the operational process when cascading revocation is triggered — automatic revocation without human review, alert-and-approve workflow, or manual investigation? Is the revocation immediate per WURevocation_18's requirement?",
+        "text": "What is the operational process when cascading revocation is triggered — automatic revocation without human review, alert-and-approve workflow, or manual investigation? Is the revocation immediate per AS-WP-38-018's requirement?",
         "dimension": "operational"
       },
       {
         "id": "Q8",
-        "text": "How do you notify affected users when their attestations are cascade-revoked due to WUA revocation — push notification, email, in-app banner? Per WURevocation_14, the Wallet Provider must inform the user about wallet revocation separately, but do you also inform them about the resulting attestation revocation?",
+        "text": "How do you notify affected users when their attestations are cascade-revoked due to WUA revocation — push notification, email, in-app banner? Per EW-DM-38-015, the Wallet Provider must inform the user about wallet revocation separately, but do you also inform them about the resulting attestation revocation?",
         "dimension": "user_experience"
       },
       {
         "id": "Q9",
-        "text": "Do you log cascading revocation events with full traceability — the WUA revocation event that triggered the cascade, all affected credentials, revocation timestamps, and the policy basis (WURevocation_18 for PIDs, WURevocation_19 policy for EAAs)?",
+        "text": "Do you log cascading revocation events with full traceability — the WUA revocation event that triggered the cascade, all affected credentials, revocation timestamps, and the policy basis (AS-WP-38-018 for PIDs, AS-WP-38-019 policy for EAAs)?",
         "dimension": "auditability"
       }
     ],
@@ -6913,7 +6854,7 @@
     "VEND-TSP-017": [
       {
         "id": "Q1",
-        "text": "If acting as an Access Certificate Authority (ACA), do you comply with the Commission's common Certificate Policy per Reg_12? Can you demonstrate compliance?",
+        "text": "If acting as an Access Certificate Authority (ACA), do you comply with the Commission's common Certificate Policy per AS-MS-27-015? Can you demonstrate compliance?",
         "dimension": "compliance_completeness"
       },
       {
@@ -6938,7 +6879,7 @@
       },
       {
         "id": "Q6",
-        "text": "Per Reg_13, do you log all issued access certificates for Certificate Transparency (CT) per Topic 55 requirements? Which CT logs do you use?",
+        "text": "Per AS-MS-27-016, do you log all issued access certificates for Certificate Transparency (CT) per Topic 55 requirements? Which CT logs do you use?",
         "dimension": "compliance_completeness"
       },
       {
@@ -6985,12 +6926,12 @@
       },
       {
         "id": "Q6",
-        "text": "Per RPACANot_06, if acting as an ACA, are you prepared to immediately revoke ALL temporally valid access certificates upon suspension — operational readiness, automation?",
+        "text": "Per EW-DM-31-001, if acting as an ACA, are you prepared to immediately revoke ALL temporally valid access certificates upon suspension — operational readiness, automation?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q7",
-        "text": "Per RPACANot_07, if acting as a Provider of registration certificates, are you prepared to immediately revoke ALL valid registration certificates and prohibit registry access upon suspension?",
+        "text": "Per AS-MS-31-019, if acting as a Provider of registration certificates, are you prepared to immediately revoke ALL valid registration certificates and prohibit registry access upon suspension?",
         "dimension": "compliance_completeness"
       },
       {
@@ -7007,17 +6948,17 @@
     "VEND-TSP-019": [
       {
         "id": "Q1",
-        "text": "How do you implement the technical interfaces for authentic source access per ARF Topic 42 — QTSPAS_01 technical specifications, discovery mechanism?",
+        "text": "How do you implement the technical interfaces for authentic source access per ARF Topic 42 — AS-AP-42-001 technical specifications, discovery mechanism?",
         "dimension": "technical_implementation"
       },
       {
         "id": "Q2",
-        "text": "How do you obtain and record User consent per QTSPAS_08 — informed consent (user understands what is verified), specific (per-attribute/per-request), auditable?",
+        "text": "How do you obtain and record User consent per AS-AP-42-009 — informed consent (user understands what is verified), specific (per-attribute/per-request), auditable?",
         "dimension": "privacy"
       },
       {
         "id": "Q3",
-        "text": "How do you process verification responses per QTSPAS_04/05 — positive, negative, partial data, deferred (polling with unique identifier)?",
+        "text": "How do you process verification responses per AS-AP-42-004/05 — positive, negative, partial data, deferred (polling with unique identifier)?",
         "dimension": "compliance_completeness"
       },
       {
@@ -7032,12 +6973,12 @@
       },
       {
         "id": "Q6",
-        "text": "Per QTSPAS_05, do you send verification requests directly to the Authentic Source or designated intermediary — no additional intermediaries in the chain?",
+        "text": "Per AS-AP-42-005, do you send verification requests directly to the Authentic Source or designated intermediary — no additional intermediaries in the chain?",
         "dimension": "compliance_completeness"
       },
       {
         "id": "Q7",
-        "text": "How do you discover Authentic Sources at national level — registry lookup, pre-configured endpoints, dynamic discovery per QTSPAS_01?",
+        "text": "How do you discover Authentic Sources at national level — registry lookup, pre-configured endpoints, dynamic discovery per AS-AP-42-001?",
         "dimension": "technical_implementation"
       },
       {
