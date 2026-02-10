@@ -8,7 +8,7 @@
 
 ## 1. Introduction
 
-When a Relying Party (RP) — for example, a bank verifying a customer's identity —
+When a Relying Party (RP) — for example, an organisation verifying a customer's identity —
 wants to accept EUDI Wallet credentials, it does not typically build the entire
 wallet-interaction stack from scratch. Instead, it procures a vendor product
 (a "wallet connector") that handles the OID4VP protocol, certificate management,
@@ -125,7 +125,7 @@ with EUDI Wallet Units.
        │  │ Requesting party:    │           │ Forward attributes
        │  │  🔀 Vendor Corp      │           │ (after RPI_09
        │  │ On behalf of:        │           │  verification)
-       │  │  🏦 Your Bank AG     │           │
+       │  │  � Acme Services    │           │
        │  │                      │           │ Immediately delete
        │  │ [Approve] [Decline]  │           │ all personal data
        │  └──────────────────────┘           │ (RPI_10)
@@ -135,7 +135,7 @@ with EUDI Wallet Units.
        │                              │                  │
        │                              │   Intermediated  │
        │                              │   Relying Party  │
-       │                              │   (Your Bank AG) │
+       │                              │  (Acme Services) │
        │                              │                  │
        │                              │   Receives only  │
        │                              │   the requested  │
@@ -213,7 +213,7 @@ the RP — there is no intermediary in the ARF sense, and no dual-party display.
        │  Wallet displays:                   │
        │  ┌──────────────────────┐           │ Forward verified
        │  │ Requesting party:    │           │ attributes to RP
-       │  │  🏦 Your Bank AG     │           │ (data transits
+       │  │  � Acme Services    │           │ (data transits
        │  │                      │           │  vendor cloud)
        │  │ (single party only   │           │
        │  │  — no dual display)  │           │
@@ -221,7 +221,7 @@ the RP — there is no intermediary in the ARF sense, and no dual-party display.
        │  │ [Approve] [Decline]  │    ┌──────────────────┐
        │  └──────────────────────┘    │                  │
        │                              │   Relying Party  │
-       │                              │   (Your Bank AG) │
+       │                              │  (Acme Services) │
        │                              │                  │
        │                              │   Receives       │
        │                              │   attributes via │
@@ -259,8 +259,8 @@ the service with its own DNS record, domain, and TLS certificate:
 │             │◄───────────────│  (RP's cert) │◄───────────────│              │
 └─────────────┘                └──────────────┘                └──────────────┘
                                                                       
-  response_uri: https://verify.yourbank.com/callback  (RP's domain)
-  Wallet sees: Your Bank AG's domain and TLS certificate
+  response_uri: https://verify.acme-services.com/callback  (RP's domain)
+  Wallet sees: Acme Services' domain and TLS certificate
   Data: VP Token still reaches vendor cloud (via RP's proxy)
 ```
 
@@ -348,7 +348,7 @@ RP's perimeter. The wallet connects directly to the RP's endpoint.
        │  Wallet displays:            │   No personal    │
        │  ┌──────────────────────┐    │   data leaves    │
        │  │ Requesting party:    │    │   RP's perimeter │
-       │  │  🏦 Your Bank AG     │    │                  │
+       │  │  � Acme Services    │    │                  │
        │  │                      │    └──────────────────┘
        │  │ (single party only   │              │
        │  │  — no dual display)  │              │  May phone home?
