@@ -261,26 +261,32 @@ requirements:
   VEND-ISS-008:
     questions:
       - id: Q1
-        text: "Do you support batch issuance of multiple attestations in a single session?"
+        text: "Do you support batch issuance of multiple attestations in a single OID4VCI session? Is this implemented via the Batch Issuance Endpoint or multiple sequential Credential Requests?"
         dimension: capability
       - id: Q2
-        text: "Is batch issuance processed synchronously or asynchronously?"
+        text: "Is batch issuance processed synchronously (all credentials returned in one response) or asynchronously with deferred polling per credential?"
         dimension: technical_implementation
       - id: Q3
-        text: "Do you offer a bulk upload interface (CSV, JSON) for high-volume batch issuance?"
+        text: "Do you offer a bulk upload interface (CSV, JSON, API) for high-volume batch issuance from enterprise systems (e.g., HR onboarding, educational institution graduation)?"
         dimension: capability
       - id: Q4
-        text: "What is the maximum batch size you have tested in production?"
+        text: "What is the maximum batch size you have tested in production? What is the sustained throughput (credentials/second) for batch issuance jobs?"
         dimension: scalability
       - id: Q5
-        text: "How are failures handled in batch issuance—does one failure abort the batch or continue with remaining?"
+        text: "How are failures handled in batch issuance — does one failure abort the entire batch, or does the system support partial success with per-credential error reporting?"
         dimension: operational
       - id: Q6
-        text: "Can different attestation types be combined in a single batch issuance?"
+        text: "Can different attestation types be combined in a single batch issuance (e.g., PID + professional qualification + mandate in one session)?"
         dimension: flexibility
       - id: Q7
-        text: "What is your sustained throughput (credentials/second) for batch issuance jobs in a production environment?"
-        dimension: scalability
+        text: "How does batch issuance interact with dual-format requirements (ISSU_12/ISSU_12a) — does each credential in the batch automatically produce both mDoc and SD-JWT-VC?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Are you tracking the W3C Digital Credentials API (per ISSU_03)? If it becomes a W3C Recommendation, how quickly could you support browser-based batch issuance through it?"
+        dimension: roadmap
+      - id: Q9
+        text: "How do you handle authentication deduplication in batch issuance — is user identity verified once for the entire batch, or per credential?"
+        dimension: security
 
   # ============================================================================
   # VEND-ISS-009: User Identity Verification
@@ -289,23 +295,32 @@ requirements:
   VEND-ISS-009:
     questions:
       - id: Q1
-        text: "What identity verification methods do you support (video identification, national eID, in-person verification)?"
+        text: "What identity verification methods do you support — video identification, national eID, face-to-face, document scan + liveness? Which methods achieve High LoA per Commission Implementing Regulation (EU) 2015/1502?"
         dimension: capability
       - id: Q2
-        text: "What levels of assurance (LoA) can you achieve for identity proofing (Low, Substantial, High)?"
+        text: "What levels of assurance (LoA) can you achieve for identity proofing — Low, Substantial, High? Is the LoA configurable per attestation type?"
         dimension: compliance_completeness
       - id: Q3
-        text: "Do you support identity verification using an existing PID in the wallet, in addition to independent proofing?"
+        text: "Do you support identity verification using an existing PID in the user's wallet (PID-based verification)? Does this eliminate the need for independent proofing for non-PID attestations?"
         dimension: flexibility
       - id: Q4
-        text: "Do you support FIDO2/WebAuthn for authentication during identity verification flows?"
+        text: "Do you support FIDO2/WebAuthn for authentication during identity verification flows? Is this used as a second factor or primary?  "
         dimension: capability
       - id: Q5
-        text: "How do you verify the identity of legal persons (organizations) requesting attestations?"
+        text: "How do you verify the identity of legal persons (organisations) requesting attestations — business register lookup, representative mandate verification, or both?"
         dimension: capability
       - id: Q6
-        text: "What audit trail is maintained for identity verification decisions?"
+        text: "What audit trail is maintained for identity verification decisions — verification method used, evidence captured, LoA achieved, timestamp, operator (if applicable)?"
         dimension: auditability
+      - id: Q7
+        text: "How do you handle the ISSU_05 PID activation requirement — what is the activation process, and how do you verify the PID was delivered to the correct WSCA/WSCD?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Can your identity verification pipeline adapt based on the requested attestation type (e.g., stricter proofing for qualified attestations, lighter for non-qualified)?"
+        dimension: flexibility
+      - id: Q9
+        text: "How do you handle identity verification failures or inconclusive results — retry, fallback to alternative method, manual review, or rejection?"
+        dimension: incident_response
 
   # ============================================================================
   # VEND-ISS-010: Authentic Source Data Provenance
@@ -314,23 +329,32 @@ requirements:
   VEND-ISS-010:
     questions:
       - id: Q1
-        text: "Which authentic sources do you connect to for attestation data (national registries, authoritative databases)?"
+        text: "Which authentic sources do you connect to for attestation data (national registries, authoritative databases)? Do you support the QTSPAS_02 verification interface for QEAA Providers?"
         dimension: capability
       - id: Q2
-        text: "Do you support authentic sources in multiple EU Member States?"
+        text: "Do you support authentic sources in multiple EU Member States? How many cross-border authentic source integrations are operational?"
         dimension: geographic_scope
       - id: Q3
-        text: "Do you use mutual TLS (mTLS) or equivalent secure channels when connecting to authentic sources?"
+        text: "Do you use mutual TLS (mTLS) or equivalent secure channels when connecting to authentic sources? Is certificate management automated?"
         dimension: security
       - id: Q4
-        text: "Do you maintain cryptographic audit trails linking attestations to source queries?"
+        text: "Do you maintain cryptographic audit trails linking issued attestations to the original authentic source queries — including query timestamp, attributes retrieved, and verification result?"
         dimension: auditability
       - id: Q5
-        text: "How do you handle source unavailability or data freshness issues?"
+        text: "How do you handle authentic source unavailability or data freshness issues — fallback to cached data, deferred issuance, or immediate failure?"
         dimension: operational
       - id: Q6
-        text: "Can the organization integrate additional authentic sources through your platform?"
+        text: "Can the organisation integrate additional authentic sources through your platform — via standard APIs, custom connectors, or only through pre-built integrations?"
         dimension: flexibility
+      - id: Q7
+        text: "How do you handle data discrepancies between multiple authentic sources for the same attribute (e.g., address from civil registry vs tax authority)?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "Do you support push-based authentic source notifications (the source alerts you of changes) in addition to pull-based queries, per VCR_09?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "How do you ensure data minimisation — do you only query the specific attributes needed for the requested attestation, or do you retrieve broader data sets from the authentic source?"
+        dimension: privacy
 
   # ============================================================================
   # VEND-ISS-011: Attestation Validity Period
@@ -339,20 +363,32 @@ requirements:
   VEND-ISS-011:
     questions:
       - id: Q1
-        text: "Do you include clearly defined validity periods (valid_from, valid_until) in all issued attestations?"
+        text: "Do you include clearly defined validity periods (valid_from, valid_until) in all issued attestations? Is this consistent across both mDoc (MSO validFrom/validUntil) and SD-JWT-VC (iat/nbf/exp)?"
         dimension: capability
       - id: Q2
-        text: "How are validity periods determined for different attestation types?"
+        text: "How are validity periods determined for different attestation types — configurable per type, derived from Rulebook requirements, or fixed platform-wide?"
         dimension: technical_implementation
       - id: Q3
-        text: "Can the organization configure attestation validity periods, or are they fixed?"
+        text: "Can the organisation configure attestation validity periods per attestation type? What is the minimum and maximum validity period supported?"
         dimension: flexibility
       - id: Q4
-        text: "How do you handle clock synchronization to ensure accurate issuance timestamps?"
+        text: "How do you handle clock synchronisation between issuer, wallet, and verifier to ensure accurate validity checks? Do you use NTP, and what clock skew tolerance is applied?"
         dimension: technical_implementation
       - id: Q5
-        text: "Do you notify users when their attestations are approaching expiry?"
+        text: "Do you inform the Wallet Unit about the optimal re-issuance timing relative to expiry, per ISSU_50? How is the renewal window communicated?"
+        dimension: compliance_completeness
+      - id: Q6
+        text: "Do you notify users when their attestations are approaching expiry? How far in advance, and through which channels?"
         dimension: user_experience
+      - id: Q7
+        text: "How do you handle attestations that expire during a presentation flow — does the wallet warn the user, or is the expired attestation still presented (per ISSU_50 note)?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "After re-issuance, does your system automatically compare attribute values between the old and new attestation and alert the user of differences per ISSU_59?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "Can validity periods differ between the mDoc and SD-JWT-VC formats of the same attestation, or are they always identical?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-ISS-012: Attestation Renewal and Re-issuance
@@ -361,23 +397,32 @@ requirements:
   VEND-ISS-012:
     questions:
       - id: Q1
-        text: "Do you support workflows for renewing attestations before expiry?"
+        text: "Do you support workflows for renewing attestations before expiry? Is the renewal flow seamless (no re-verification required) or does it require full re-authentication?"
         dimension: capability
       - id: Q2
-        text: "Can attestations be re-issued when the underlying data changes (e.g., address change)?"
+        text: "Can attestations be re-issued when the underlying data changes (e.g., address change, name change) — is this triggered automatically from authentic source notifications (per VCR_09) or only on user request?"
         dimension: capability
       - id: Q3
-        text: "How do users receive notifications of upcoming expiry?"
+        text: "How do users receive notifications of upcoming expiry — push notification, email, in-app banner? What is the configurable lead time before expiry?"
         dimension: user_experience
       - id: Q4
-        text: "Is renewal automated, or does it require user action?"
+        text: "Is renewal automated (silent re-issuance with fresh authentic source data) or does it require explicit user action? Is this configurable per attestation type?"
         dimension: automation
       - id: Q5
-        text: "When an attestation is renewed, is the old attestation automatically revoked?"
+        text: "When an attestation is renewed, is the old attestation automatically revoked per VCR_09 to prevent duplicate active attestations? Is the revocation synchronous with re-issuance?"
         dimension: lifecycle
       - id: Q6
-        text: "What is the lead time for renewal notifications?"
-        dimension: operational
+        text: "After re-issuance, does your system perform full attribute comparison (per ISSU_59) and present differences to the user for acknowledgement?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "How do you handle the scenario where re-issuance fails (e.g., authentic source unavailable) but the existing attestation is about to expire — is the user warned, or does the expiring attestation silently become invalid?"
+        dimension: incident_response
+      - id: Q8
+        text: "Can the organisation configure different renewal policies per attestation type (e.g., auto-renew for low-risk attestations, manual approval for high-value ones)?"
+        dimension: flexibility
+      - id: Q9
+        text: "How does the renewal flow handle format parity — is the renewed attestation re-issued in both mDoc and SD-JWT-VC simultaneously, or can formats be renewed independently?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-ISS-013: Attestation Status Lists (Revocation)
@@ -386,23 +431,32 @@ requirements:
   VEND-ISS-013:
     questions:
       - id: Q1
-        text: "Do you maintain and publish attestation status lists for revocation checking?"
+        text: "Do you maintain and publish attestation status lists for revocation checking? Do you support both the Attestation Status List mechanism and the Attestation Revocation List mechanism per VCR_11/VCR_12?"
         dimension: capability
       - id: Q2
-        text: "What status list formats do you support (Token Status List, Attestation Status List)?"
+        text: "What status list formats do you support — IETF Token Status List, compressed bitstring lists, identifier-based revocation lists? Are all formats published simultaneously?"
         dimension: technical_implementation
       - id: Q3
-        text: "How frequently are status lists updated?"
+        text: "How frequently are status lists updated? Is the update frequency configurable, and what is the minimum update interval for critical revocations?"
         dimension: sla
       - id: Q4
-        text: "Is status list publication highly available? What is the uptime SLA?"
+        text: "Is status list publication highly available? What is the uptime SLA, and do you have geographic redundancy for the status list endpoints?"
         dimension: sla
       - id: Q5
-        text: "How do Relying Parties discover and access your status list endpoints?"
+        text: "How do Relying Parties discover and access your status list endpoints — is the endpoint embedded in the attestation itself, discoverable via Provider Information, or both?"
         dimension: interoperability
       - id: Q6
-        text: "Do you support privacy-preserving status checks (e.g., using signed status assertions)?"
+        text: "Do you support privacy-preserving status checks (e.g., using signed status assertions, unlinkable checks, or oblivious HTTP) to prevent the issuer from tracking presentation events?"
         dimension: privacy
+      - id: Q7
+        text: "Per VCR_03, you are the sole party responsible for revocation. If you outsource the status list operation to a third party, how is the delegation governed and audited?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Are status lists signed by the provider? What signing algorithm and key management is used for status list integrity?"
+        dimension: security
+      - id: Q9
+        text: "How large can your status lists grow before performance deteriorates? What is the maximum number of attestation entries per status list, and do you support sharding?"
+        dimension: scalability
 
   # ============================================================================
   # VEND-ISS-014: Revocation Propagation Timeliness
@@ -411,20 +465,32 @@ requirements:
   VEND-ISS-014:
     questions:
       - id: Q1
-        text: "What is the maximum propagation time for standard attestation revocations?"
+        text: "What is the maximum propagation time for standard attestation revocations? Does this meet the VCR_09 requirement of revoking within 24 hours of attribute changes?"
         dimension: sla
       - id: Q2
-        text: "Do you support immediate revocation for critical security situations?"
+        text: "Do you support immediate revocation for critical security situations (e.g., WSCD compromise, fraud detection)? What is the measured time from revocation trigger to status list update?"
         dimension: incident_response
       - id: Q3
-        text: "How is revocation propagation time measured and audited?"
+        text: "How is revocation propagation time measured and audited? Do you log the timestamp of the revocation trigger, status list generation, and status list publication as separate events?"
         dimension: auditability
       - id: Q4
-        text: "What caching strategy is used for status lists, and how does this affect effective revocation time?"
+        text: "What caching strategy is used for status lists (Cache-Control, max-age)? How does RP-side caching affect effective revocation propagation time, and can you force cache invalidation for critical revocations?"
         dimension: technical_implementation
       - id: Q5
-        text: "How do you handle revocation during status list endpoint outages?"
+        text: "How do you handle revocation during status list endpoint outages — is there a failover mechanism, or do RPs fall back to the last-known status list?"
         dimension: operational
+      - id: Q6
+        text: "Per VCR_09, how do you ensure authentic sources notify you of attribute value changes? Do you implement push-based notifications, periodic polling, or both?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "Can Attestation Rulebook-specific propagation requirements (potentially stricter than 24 hours) be configured per attestation type?"
+        dimension: flexibility
+      - id: Q8
+        text: "How do you handle the scenario where an attestation has been presented to an RP but then revoked before the RP’s transaction completes — is there a grace period or immediate rejection?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Do you publish metrics on your revocation propagation performance (e.g., P50/P99 latencies) for transparency and compliance auditing?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-015: User Notification on Revocation
@@ -433,20 +499,32 @@ requirements:
   VEND-ISS-015:
     questions:
       - id: Q1
-        text: "Do you notify users when their attestations are revoked?"
+        text: "Do you notify users when their attestations are revoked? Is notification mandatory for all revocations, or only when user contact details are available (per VCR_09 SHOULD)?"
         dimension: capability
       - id: Q2
-        text: "Through what channels are revocation notifications sent (push notification, email, in-app)?"
+        text: "Through what channels are revocation notifications sent — push notification (wallet app), email, SMS, in-app banner? Do you support multi-channel delivery for critical revocations?"
         dimension: technical_implementation
       - id: Q3
-        text: "How quickly are notifications sent after revocation occurs?"
+        text: "How quickly are notifications sent after revocation occurs? Is the notification synchronous with the status list update, or is there a separate notification pipeline with its own SLA?"
         dimension: sla
       - id: Q4
-        text: "Does the notification include the reason for revocation and guidance for resolution?"
+        text: "Does the notification include the reason for revocation, guidance for resolution (re-issuance instructions), and expected timeline for re-issuance availability?"
         dimension: user_experience
       - id: Q5
-        text: "How do you handle notification delivery failures?"
+        text: "How do you handle notification delivery failures — retry with exponential backoff, fallback to alternative channel, or manual escalation?"
         dimension: operational
+      - id: Q6
+        text: "Do you track notification delivery status per revocation event? Can the organisation view a delivery receipt dashboard?"
+        dimension: auditability
+      - id: Q7
+        text: "For VCR_09 attribute-change revocations, does the notification specifically state which attributes changed and suggest the user re-request the attestation with updated data?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Can the organisation customise notification templates, branding, and language for their specific attestation types?"
+        dimension: flexibility
+      - id: Q9
+        text: "How do you handle notifications for users who have multiple wallet instances — is the notification sent to all instances, or only the one holding the revoked attestation?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-ISS-016: Attestation Suspension and Reinstatement
@@ -455,20 +533,32 @@ requirements:
   VEND-ISS-016:
     questions:
       - id: Q1
-        text: "Do you support temporary suspension of attestations (as distinct from permanent revocation)?"
+        text: "Do you support temporary suspension of attestations as distinct from permanent revocation? Is the tri-state (active/suspended/revoked) reflected in your status list mechanism?"
         dimension: capability
       - id: Q2
-        text: "What triggers can initiate attestation suspension (fraud investigation, user request, authority order)?"
+        text: "What triggers can initiate attestation suspension — fraud investigation, user request, authority order, authentic source data discrepancy? Are triggers configurable per attestation type?"
         dimension: operational
       - id: Q3
-        text: "Can suspended attestations be reinstated? What is the process?"
+        text: "Can suspended attestations be reinstated? What is the reinstatement process — automatic after timeout, manual approval, re-verification against authentic source?"
         dimension: lifecycle
       - id: Q4
-        text: "How is suspension status reflected in the status lists?"
+        text: "How is suspension status reflected in the status lists — a distinct bit/status code separate from revocation, or re-use of the revocation bit with metadata?"
         dimension: technical_implementation
       - id: Q5
-        text: "Are users notified when their attestations are suspended and when reinstated?"
+        text: "Are users notified when their attestations are suspended and when they are reinstated? Do notifications include the reason and expected resolution timeline?"
         dimension: user_experience
+      - id: Q6
+        text: "Is there a maximum suspension duration after which the attestation is automatically revoked (to prevent indefinite suspension)?"
+        dimension: lifecycle
+      - id: Q7
+        text: "How do wallets and RPs differentiate between suspended and revoked attestations during presentation — do both result in rejection, or is suspension handled differently (e.g., with a warning)?"
+        dimension: interoperability
+      - id: Q8
+        text: "Can suspension be initiated programmatically (API call) as well as through a management UI? Is there an approval workflow for reinstatement?"
+        dimension: automation
+      - id: Q9
+        text: "What audit trail exists for suspension and reinstatement events — who initiated, when, why, and the resolution outcome?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-017: Signing Key Protection

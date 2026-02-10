@@ -397,14 +397,44 @@ requirements:
     category: issuance
     requirement: Support batch issuance for multiple attestations
     explanation: |
-      The platform should support efficient batch issuance when a user 
-      requests multiple attestations simultaneously, avoiding redundant 
-      authentication steps.
-      hlr: "Iss_03"
+      The platform should support efficient batch issuance when a
+      user requests multiple attestations simultaneously, avoiding
+      redundant authentication steps.
+
+      **ISSU_03 — W3C Digital Credentials API:**
+      Wallet Units, PID Providers, and Attestation Providers SHALL
+      support the W3C Digital Credentials API for PID and
+      attestation issuance, provided the API is a W3C
+      Recommendation, complies with ARF expectations, and is
+      broadly supported by browsers and operating systems. This
+      API enables browser-based issuance flows.
+
+      **OpenID4VCI batch endpoint:**
+      The OID4VCI Batch Issuance Endpoint (also referred to in
+      VEND-ISS-007) allows issuing multiple credentials in a
+      single session. This is critical when both mDoc and SD-JWT-VC
+      formats are required (per ISSU_12/ISSU_12a), as it avoids
+      requiring separate authentication for each format.
+
+      **Synchronous vs asynchronous batch:**
+      The platform should support both synchronous batch issuance
+      (all credentials returned in one response) and asynchronous
+      batch (deferred credentials with polling), depending on the
+      attestation types and authentic source response times.
+
+      **Failure handling:**
+      When one credential in a batch fails (e.g., authentic source
+      unavailable), the platform should support partial success:
+      issue the credentials that succeed and report failures for
+      the rest, rather than failing the entire batch.
     legalBasis:
       regulation: 2024/2979
       article: Article 6
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units support the
+      protocols and interfaces necessary to receive and store PIDs
+      and electronic attestations of attributes.
     roles:
       - issuer
     productCategories:
@@ -418,37 +448,100 @@ requirements:
     category: issuance
     requirement: Verify user identity before issuing attestations
     explanation: |
-      Before issuing an attestation, the provider must verify the user's 
-      identity to a level of assurance appropriate for the attestation type. 
-      For qualified attestations, this requires high assurance identity proofing.
+      Before issuing an attestation, the provider must verify the
+      user's identity to a level of assurance appropriate for the
+      attestation type. For qualified attestations, this requires
+      high assurance identity proofing.
+
+      **Level of Assurance tiers:**
+      - **High LoA** (required for PIDs and QEAAs): face-to-face
+        or video identification, national eID, or equivalent
+        high-assurance proofing per Commission Implementing
+        Regulation (EU) 2015/1502
+      - **Substantial LoA**: remote identity verification with
+        additional checks (e.g., document scan + liveness)
+      - **Low LoA**: basic identity claims verification
+
+      **PID-based verification:**
+      For non-PID attestations, the provider can verify user
+      identity by requesting the user's PID from their wallet.
+      This avoids redundant identity proofing when the user
+      already holds a verified PID.
+
+      **Legal person verification:**
+      For attestations issued to legal persons (organisations),
+      the provider must verify both the organisation's identity
+      (e.g., via business register) and the natural person's
+      authority to act on behalf of the organisation.
+
+      **ISSU_05 — PID activation:**
+      A Wallet Unit SHALL support a process to activate a newly
+      issued PID, verifying that the PID was delivered into the
+      Wallet Unit and WSCA/WSCD of the correct user. The Wallet
+      Unit SHALL NOT allow use of a non-activated PID.
     legalBasis:
       regulation: 2014/910
       article: Article 45d
       paragraph: "3"
     legalText: |
-      Providers of electronic attestation of attributes shall verify the 
-      identity of the natural or legal person to whom the electronic 
-      attestation of attributes is issued.
+      Providers of electronic attestation of attributes shall
+      verify the identity of the natural or legal person to whom
+      the electronic attestation of attributes is issued.
     roles:
       - issuer
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
+    arfReference:
+      topic: Topic 10
+      hlr: ISSU_05
     obligation: MUST
   - id: VEND-ISS-010
     category: issuance
     requirement: Obtain data from authentic sources with verified provenance
     explanation: |
-      Attestation data must be obtained from authentic sources (authoritative 
-      databases, registries) with verified data provenance. The platform must 
-      maintain audit trails of data source queries.
+      Attestation data must be obtained from authentic sources
+      (authoritative databases, registries) with verified data
+      provenance. The platform must maintain audit trails of data
+      source queries.
+
+      **Article 45e — Authentic source data:**
+      Providers of electronic attestation of attributes SHALL
+      obtain the data for the attributes from authentic sources.
+      An authentic source is the authoritative database or registry
+      holding the original data (e.g., civil registries, tax
+      authorities, educational institutions).
+
+      **ISSU_50 — Data freshness:**
+      The provider must inform the Wallet Unit about the re-issuance
+      timing relative to expiration. For limited-time attestations,
+      this ensures data freshness: the attestation is re-issued
+      with fresh data from the authentic source before the existing
+      attestation expires.
+
+      **Secure channels:**
+      The connection to authentic sources must use secure channels
+      (mTLS or equivalent) to protect data in transit. For QEAA
+      Providers, the QTSPAS_02 interface (per Topic 42) specifies
+      the verification request/response protocol.
+
+      **Audit trail:**
+      Each query to an authentic source must be logged with:
+      - Timestamp of the query
+      - Authentic source identifier
+      - Attributes requested and received
+      - Verification result (match, no match, unknown)
+      - Correlation to the issued attestation
     legalBasis:
       regulation: 2014/910
       article: Article 45e
       paragraph: "1"
     legalText: |
-      Providers of electronic attestation of attributes shall obtain the 
-      data for the attributes from authentic sources.
+      Providers of electronic attestation of attributes shall
+      obtain the data for the attributes from authentic sources.
+    arfReference:
+      topic: Topic 10
+      hlr: ISSU_50
     roles:
       - issuer
     productCategories:
@@ -459,14 +552,39 @@ requirements:
     category: issuance
     requirement: Include attestation validity period and issuance timestamp
     explanation: |
-      Each attestation must include a clearly defined validity period 
-      (valid_from and valid_until) and issuance timestamp. Expired 
-      attestations must be rejected by wallets.
-      hlr: "Iss_07"
+      Each attestation must include a clearly defined validity
+      period (valid_from and valid_until) and issuance timestamp.
+      Expired attestations must be rejected by verifiers.
+
+      **ISSU_50 — Limited-time attestations:**
+      The provider SHALL inform the Wallet Unit about the moment
+      at which the Wallet Unit must request re-issuance, relative
+      to the expiration date of the existing attestation. This
+      creates a proactive renewal window.
+
+      **Format-specific validity encoding:**
+      - **mDoc**: validity is encoded in the MSO (validFrom,
+        validUntil fields) using full-date format
+      - **SD-JWT-VC**: validity is encoded using `iat` (issued at),
+        `nbf` (not before), and `exp` (expiration time) claims
+        in Unix timestamp format
+
+      **Clock synchronisation:**
+      Both issuer and verifier clocks must be synchronised to
+      avoid false validity rejections. The platform should use
+      NTP and include appropriate clock skew tolerance.
+
+      **ISSU_59 — Re-issuance comparison:**
+      After successful re-issuance, the Wallet Unit SHALL compare
+      attribute values of the re-issued attestation with the
+      existing one and SHALL notify the user of any differences.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestations shall contain information about their validity
+      period including an issuance timestamp.
     roles:
       - issuer
     productCategories:
@@ -474,20 +592,47 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: ISSU_50
+      hlr:
+        - ISSU_50
+        - ISSU_59
     obligation: MUST
   - id: VEND-ISS-012
     category: issuance
     requirement: Support attestation renewal and re-issuance workflows
     explanation: |
-      The platform must support workflows for renewing attestations before 
-      expiry and re-issuing attestations when the underlying data changes. 
-      Users should be notified of upcoming expiry.
-      hlr: "Iss_05"
+      The platform must support workflows for renewing attestations
+      before expiry and re-issuing attestations when the underlying
+      data changes. Users should be notified of upcoming expiry.
+
+      **ISSU_05 — Re-issuance triggers:**
+      Re-issuance can be triggered by:
+      - Approaching expiry (proactive renewal per ISSU_50)
+      - Data change at the authentic source (per VCR_09)
+      - User request (e.g., after attribute correction)
+      - Key rotation (new signing key requires re-issuance)
+
+      **ISSU_59 — Attribute comparison:**
+      After successful re-issuance, the Wallet Unit SHALL compare
+      attribute values and notify the user of any differences.
+      This ensures the user is aware of data changes.
+
+      **Old attestation handling:**
+      When an attestation is renewed, the old attestation should
+      be revoked (per VCR_09) to prevent duplicate active
+      attestations with different attribute values.
+
+      **User notification:**
+      The platform should notify users in advance of expiry,
+      providing enough lead time for re-issuance. Push
+      notifications, in-app alerts, and email are typical
+      channels.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units can request
+      re-issuance of attestations before expiry.
     roles:
       - issuer
     productCategories:
@@ -503,17 +648,44 @@ requirements:
     category: revocation
     requirement: Publish attestation status lists for revocation checking
     explanation: |
-      The issuer must maintain and publish attestation status lists 
-      (revocation/validity lists) that enable relying parties to verify 
-      that attestations have not been revoked since issuance.
+      The issuer must maintain and publish attestation status lists
+      (revocation/validity lists) that enable relying parties to
+      verify that attestations have not been revoked since issuance.
+
+      **VCR_03 — Sole-provider revocation:**
+      If a PID or attestation is revocable, the PID Provider or
+      Attestation Provider SHALL be the only party responsible for
+      executing the revocation. The provider MAY outsource the
+      operation of the revocation process to a third party, but
+      retains responsibility.
+
+      **VCR_11 — Technical specifications:**
+      The Commission SHALL create or reference technical
+      specifications for implementing an Attestation Status List
+      mechanism or an Attestation Revocation List mechanism.
+      These specifications define how providers publish status
+      data and how RPs consume it.
+
+      **VCR_12 — Dual-mechanism support:**
+      If a Relying Party verifies revocation status, it SHALL
+      support BOTH the Attestation Status List mechanism AND the
+      Attestation Revocation List mechanism. For issuers, this
+      means publishing status information in both mechanisms.
+
+      **Status list architecture:**
+      - **Attestation Status Lists**: compressed bitstring lists
+        where each bit represents the status of one attestation
+      - **Attestation Revocation Lists**: identifier-based lists
+        of revoked attestation IDs
+      - Both must be published at highly available endpoints
+      - Status lists must be signed by the provider
     legalBasis:
       regulation: 2024/2979
       article: Article 4
       paragraph: "1"
     legalText: |
-      PID Providers and Attestation Providers shall publish validity status 
-      information of revoked or suspended attestations.
-      hlr: "VCR_01"
+      PID Providers and Attestation Providers shall publish validity
+      status information of revoked or suspended attestations.
     roles:
       - issuer
     productCategories:
@@ -522,6 +694,7 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
+        - VCR_03
         - VCR_11
         - VCR_12
     obligation: MUST
@@ -529,35 +702,90 @@ requirements:
     category: revocation
     requirement: Update revocation status within defined time limits
     explanation: |
-      When an attestation is revoked, the status list must be updated within 
-      the defined maximum propagation time (typically 24 hours for standard 
-      attestations, immediate for critical security revocations).
+      When an attestation is revoked, the status list must be
+      updated within the defined maximum propagation time.
+
+      **VCR_09 — Attribute-change revocation:**
+      If the value of one or more attributes in a PID or
+      attestation has changed and the attestation is still valid
+      for at least 24 hours, the provider SHALL revoke it. If
+      the changed data comes from an authentic source, the
+      provider is responsible for ensuring the authentic source
+      notifies them of changes.
+
+      **Propagation time categories:**
+      - **Standard revocation**: status list updated within 24
+        hours (e.g., expired attestation, routine revocation)
+      - **Critical revocation**: immediate or near-immediate
+        update (e.g., security compromise, fraud detection,
+        WSCD compromise)
+      - **Attestation Rulebook-specific**: some Rulebooks may
+        define stricter propagation requirements
+
+      **Caching impact:**
+      Status list caching by RPs affects effective propagation
+      time. The provider should set appropriate cache headers
+      (Cache-Control, max-age) to balance between performance
+      and revocation freshness. For critical revocations, the
+      provider should support cache invalidation mechanisms.
     legalBasis:
       regulation: 2024/2979
       article: Article 4
       paragraph: "2"
-      hlr: VCR_03
+    legalText: |
+      The validity status information shall be updated within the
+      time limits specified in the applicable technical
+      specifications.
+    arfReference:
+      topic: Topic 7
+      hlr:
+        - VCR_03
+        - VCR_09
     roles:
       - issuer
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
-    arfReference:
-      topic: Topic 7
-      hlr: VCR_12
     obligation: MUST
   - id: VEND-ISS-015
     category: revocation
     requirement: Notify wallet users when their attestations are revoked
     explanation: |
-      When an attestation is revoked, the issuer should notify the affected 
-      wallet user through available channels, enabling them to take 
-      appropriate action (e.g., request re-issuance).
-      hlr: "VCR_04"
+      When an attestation is revoked, the issuer should notify the
+      affected wallet user through available channels, enabling
+      them to take appropriate action (e.g., request re-issuance).
+
+      **VCR_09 — Notification mandate:**
+      If the user's contact details are known, the PID Provider,
+      Attestation Provider, or Wallet Provider SHOULD, via an
+      out-of-band manner, notify the user about the revocation
+      and ask the user to request re-issuance using their Wallet
+      Unit.
+
+      **Notification channels:**
+      - Push notifications (via wallet app)
+      - Email (if registered)
+      - In-app notification banner
+      - SMS (for critical revocations)
+
+      **Notification content:**
+      The notification should include:
+      - Which attestation was revoked
+      - The reason for revocation (where appropriate)
+      - Guidance for resolution (re-issuance instructions)
+      - Timeline for re-issuance availability
+
+      **Delivery assurance:**
+      The platform should track notification delivery status and
+      retry failed deliveries. For critical revocations (e.g.,
+      security compromise), multiple channels should be used.
     legalBasis:
       regulation: 2024/2979
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Providers should notify users when their attestations are
+      revoked and request re-issuance.
     roles:
       - issuer
     productCategories:
@@ -571,14 +799,41 @@ requirements:
     category: revocation
     requirement: Support suspension and reinstatement of attestations
     explanation: |
-      Beyond permanent revocation, the platform should support temporary 
-      suspension of attestations (e.g., during fraud investigation) with 
-      the ability to reinstate if the issue is resolved.
-      hlr: "VCR_02"
+      Beyond permanent revocation, the platform should support
+      temporary suspension of attestations (e.g., during fraud
+      investigation) with the ability to reinstate if the issue
+      is resolved.
+
+      **Suspension vs revocation:**
+      - **Revocation**: permanent, irreversible status change.
+        The attestation cannot be used again.
+      - **Suspension**: temporary status change. The attestation
+        is treated as invalid during the suspension period but
+        can be reinstated to active status.
+
+      **Suspension triggers:**
+      - Fraud investigation (pending outcome)
+      - User request (e.g., lost device, temporary security concern)
+      - Authority order (e.g., judicial or regulatory mandate)
+      - Authentic source data discrepancy (pending verification)
+
+      **Status list representation:**
+      The status list mechanism must support a distinct suspension
+      status (not just revoked/valid). Wallets and RPs checking
+      the status list should be able to differentiate between
+      suspended and revoked attestations.
+
+      **User notification:**
+      Users must be notified when their attestations are suspended
+      and when they are reinstated. The notification should include
+      the reason for suspension and expected resolution timeline.
     legalBasis:
       regulation: 2024/2979
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID Providers and Attestation Providers shall publish validity
+      status information of revoked or suspended attestations.
     roles:
       - issuer
     productCategories:
