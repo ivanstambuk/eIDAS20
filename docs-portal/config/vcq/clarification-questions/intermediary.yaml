@@ -261,17 +261,32 @@ requirements:
   VEND-INT-008:
     questions:
       - id: Q1
-        text: "How do you maintain Trusted Lists for QEAA and EAA providers?"
+        text: "How do you maintain Trusted Lists for QEAA and EAA providers? Is the process unified with PID Provider Trusted List management (VEND-INT-007), or handled separately?"
         dimension: technical_implementation
       - id: Q2
-        text: "Do you distinguish between qualified and non-qualified attestation providers in your trust store?"
+        text: "Do you distinguish between qualified (QEAA), public-body (PuB-EAA), and non-qualified (EAA) attestation providers in your trust store? Per OIA_13/14/15, each has different validation requirements."
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you handle attestation providers not yet on Trusted Lists?"
+        text: "How do you handle attestation providers not yet on Trusted Lists — are their attestations rejected outright, or is there a provisional acceptance mechanism?"
         dimension: operational
       - id: Q4
-        text: "Can the organization configure additional trusted attestation providers beyond official lists?"
+        text: "Can the organisation configure additional trusted attestation providers beyond official lists? If so, what governance controls prevent unauthorised additions?"
         dimension: flexibility
+      - id: Q5
+        text: "Per OIA_14, PuB-EAA validation requires a two-step process: verify the QTSP's certificate against the Trusted List, then verify the attestation against the QTSP's public key. Does your product implement this full chain?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "How do you handle non-qualified EAAs where the trust mechanism is defined by a Rulebook (OIA_15/Topic 12) rather than the standard Trusted List infrastructure? Which Rulebook-defined mechanisms are currently supported?"
+        dimension: capability
+      - id: Q7
+        text: "What is the refresh frequency for attestation provider Trusted Lists? Is it the same as for PID Provider lists, or configured independently?"
+        dimension: sla
+      - id: Q8
+        text: "How do you prevent trust anchor cross-contamination — ensuring a QEAA trust anchor cannot inadvertently validate a PID, and vice versa?"
+        dimension: architecture
+      - id: Q9
+        text: "When a new attestation provider is added to or removed from a Trusted List, what is the maximum propagation delay before your system reflects the change?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-INT-009: Official Trust Sources Only
@@ -280,17 +295,32 @@ requirements:
   VEND-INT-009:
     questions:
       - id: Q1
-        text: "How do you ensure trust anchors are obtained exclusively from official EU and Member State sources?"
+        text: "How do you ensure trust anchors are obtained exclusively from official EU and Member State sources? Is there a hardcoded list of authoritative URLs, or is the discovery dynamic via the LOTL?"
         dimension: security
       - id: Q2
-        text: "Do you use any third-party aggregators for trust anchor data? If so, how is their authenticity verified?"
+        text: "Do you use any third-party aggregators for trust anchor data? If so, how is their integrity verified against the original Member State publications?"
         dimension: supply_chain
       - id: Q3
-        text: "What controls prevent injection of unauthorized trust anchors into your trust store?"
+        text: "What controls prevent injection of unauthorised trust anchors into your trust store — are write operations restricted to the automated Trusted List ingestion pipeline?"
         dimension: security
       - id: Q4
-        text: "How is the authenticity of Trusted List downloads verified (signatures, certificates)?"
+        text: "How is the authenticity of Trusted List downloads verified? Do you validate the XML/JSON signature on each list using the Member State's signing certificate chain?"
         dimension: technical_implementation
+      - id: Q5
+        text: "What is the chain of trust verification: Commission LOTL → Member State TL → Provider trust anchor? Is each step cryptographically verified?"
+        dimension: architecture
+      - id: Q6
+        text: "How do you handle the scenario where a Member State changes its Trusted List signing certificate? Is there an out-of-band verification process?"
+        dimension: lifecycle
+      - id: Q7
+        text: "Are there any hardcoded trust anchors in the product that bypass the Trusted List mechanism (e.g., for testing or bootstrapping)? How are these controlled in production?"
+        dimension: security
+      - id: Q8
+        text: "Does the product support operating in an air-gapped environment where Trusted Lists must be imported manually? What integrity verification is performed on manual imports?"
+        dimension: operational
+      - id: Q9
+        text: "How would a compromised trust anchor (e.g., a Trusted List signing key compromise at Member State level) be handled? Is there an emergency revocation mechanism?"
+        dimension: incident_response
 
   # ============================================================================
   # VEND-INT-010: Signature Validation
@@ -299,20 +329,32 @@ requirements:
   VEND-INT-010:
     questions:
       - id: Q1
-        text: "How do you verify cryptographic signatures on attestations and PIDs?"
+        text: "How do you verify cryptographic signatures on attestations and PIDs? Do you support both COSE signatures (mDoc) and JWS signatures (SD-JWT VC)?"
         dimension: technical_implementation
       - id: Q2
-        text: "What happens when a signature is invalid—is the presentation rejected?"
+        text: "What happens when a signature is invalid — is the entire presentation rejected, or only the specific attestation with the invalid signature?"
         dimension: operational
       - id: Q3
-        text: "What happens when a signature is valid but the issuer is not in your trust store?"
+        text: "What happens when a signature is valid but the issuer is not in your trust store — is this treated identically to an invalid signature, or does it produce a different error classification?"
         dimension: operational
       - id: Q4
-        text: "What cryptographic libraries do you use for signature verification?"
+        text: "What cryptographic libraries do you use for signature verification? Are they FIPS 140-2/3 certified or undergoing certification?"
         dimension: technical_implementation
       - id: Q5
-        text: "How do you handle algorithm transitions as new algorithms are approved?"
+        text: "How do you handle algorithm transitions as new algorithms are approved by the ARF? Is algorithm support configurable without a product update?"
         dimension: lifecycle
+      - id: Q6
+        text: "Do you verify the full certificate chain from the attestation issuer to the Trusted List root, or only validate against the immediate trust anchor?"
+        dimension: security
+      - id: Q7
+        text: "How do you ensure the trust anchor used for verification belongs to the correct category (PID vs QEAA vs PuB-EAA vs non-qualified EAA)? Could a PID trust anchor inadvertently validate an EAA?"
+        dimension: architecture
+      - id: Q8
+        text: "What is the verification latency for a single attestation signature? How does this scale when a presentation contains multiple attestations (combined presentation per RPI_09)?"
+        dimension: sla
+      - id: Q9
+        text: "When signature verification fails, what information is logged for dispute resolution — without logging any attestation content (per no-storage mandate)?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-INT-011: Revocation Status Verification
@@ -321,23 +363,32 @@ requirements:
   VEND-INT-011:
     questions:
       - id: Q1
-        text: "Do you check attestation revocation status before accepting presentations?"
+        text: "Do you check attestation revocation status before accepting presentations? If so, is this enabled by default or configured per RP agreement (per RPI_09 scope)?"
         dimension: capability
       - id: Q2
-        text: "What revocation checking mechanisms do you support (status lists, OCSP, token status)?"
+        text: "What revocation checking mechanisms do you support? Per VCR_12, if you verify revocation status, you SHALL support both Attestation Status Lists and Attestation Revocation Lists."
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle revocation checking when status endpoints are unavailable?"
+        text: "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation) or fail-open (accept with warning)? Is this policy configurable per RP?"
         dimension: operational
       - id: Q4
-        text: "What is the latency impact of revocation checking on verification time?"
+        text: "What is the latency impact of revocation checking on verification time? How does this interact with the overall SLA for end-to-end presentation processing?"
         dimension: sla
       - id: Q5
-        text: "Can the organization configure whether revocation checking is mandatory or optional?"
+        text: "Can the organisation configure whether revocation checking is mandatory or optional for each RP relationship? How does this interact with the RPI_09 agreement scope?"
         dimension: flexibility
       - id: Q6
-        text: "What caching strategies do you employ for Status Lists to minimize latency while ensuring freshness?"
+        text: "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? What is the maximum age of a cached status list before re-fetch?"
         dimension: technical_implementation
+      - id: Q7
+        text: "How does revocation checking interact with the no-storage mandate? Do you log individual attestation status identifiers during checking, or is the check performed without persistent state?"
+        dimension: privacy
+      - id: Q8
+        text: "For Attestation Status Lists (compressed bitstring format), how do you handle the decompression and lookup efficiently at scale? What is the memory footprint per status list?"
+        dimension: architecture
+      - id: Q9
+        text: "If a previously valid attestation is revoked between the time it was presented and the time the intermediary forwards it, is there a re-check mechanism before forwarding?"
+        dimension: security
 
   # ============================================================================
   # VEND-INT-012: Device Binding Verification
@@ -346,17 +397,32 @@ requirements:
   VEND-INT-012:
     questions:
       - id: Q1
-        text: "How do you verify that presentations are cryptographically bound to the presenting wallet's WSCD?"
+        text: "How do you verify that presentations are cryptographically bound to the presenting wallet's WSCD? Do you support both mDoc `deviceAuth` verification and SD-JWT VC Key Binding JWT (`kb-jwt`) verification?"
         dimension: technical_implementation
       - id: Q2
-        text: "What proof-of-possession mechanisms do you verify (device key signatures, key attestations)?"
+        text: "What proof-of-possession mechanisms do you verify — device key signatures (ECDSA), device MACs, key attestations? Which WSCD types are supported (hardware SE, TEE, cloud HSM)?"
         dimension: security
       - id: Q3
-        text: "How do you detect presentations that may have been exported from the original device?"
+        text: "How do you detect presentations that may have been exported from the original device? Is there any heuristic or protocol-level mechanism beyond the standard device key proof?"
         dimension: security
       - id: Q4
-        text: "What is the failure handling when device binding verification fails?"
+        text: "What is the failure handling when device binding verification fails — is the entire presentation rejected (per RPI_08), and how is the failure communicated to the RP?"
         dimension: operational
+      - id: Q5
+        text: "For mDoc format, do you verify the full `deviceAuth` structure including the session transcript (containing device engagement, eReader key, and session binding data)?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "For SD-JWT VC format, do you verify that the `cnf` claim in the issuer-signed JWT matches the public key used to sign the Key Binding JWT? What happens if they don't match?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "How does device binding verification interact with combined presentations (multiple attestations in a single session)? Must all attestations be bound to the same device key?"
+        dimension: architecture
+      - id: Q8
+        text: "What is the verification latency for device binding checks? Does it add measurable overhead to the overall RPI_09 verification pipeline?"
+        dimension: sla
+      - id: Q9
+        text: "How do you handle evolving WSCD standards — e.g., if Android StrongBox or Apple Secure Enclave introduce new key attestation formats, how quickly can you support them?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-INT-013: Replay Attack Prevention
@@ -365,23 +431,32 @@ requirements:
   VEND-INT-013:
     questions:
       - id: Q1
-        text: "How do you verify that presentations are fresh and not replayed from previous sessions?"
+        text: "How do you verify that presentations are fresh and not replayed from previous sessions? Do you use nonce challenge-response, timestamp validation, session binding, or a combination?"
         dimension: technical_implementation
       - id: Q2
-        text: "What nonce or challenge mechanisms do you use?"
+        text: "What nonce generation mechanism do you use — cryptographically random bytes, UUIDs, or another scheme? What is the nonce length and entropy?"
         dimension: security
       - id: Q3
-        text: "How do you handle timestamp verification for presentation freshness?"
+        text: "How do you handle timestamp verification for presentation freshness? What is the maximum clock skew tolerance, and is it configurable?"
         dimension: technical_implementation
       - id: Q4
-        text: "What is the time window for accepting presentations (tolerance for clock skew)?"
+        text: "What is the time window for accepting presentations (nonce validity period)? How was this duration chosen, and what are the tradeoffs between security and usability?"
         dimension: operational
       - id: Q5
-        text: "How do you detect and block replay attempts?"
+        text: "How do you detect and block replay attempts? Is there a server-side nonce store, and is it distributed across multiple intermediary instances to prevent split-brain replay attacks?"
         dimension: security
       - id: Q6
-        text: "How do you bind the wallet response to the specific browser session or client state initiating the request (e.g., state param handling)?"
+        text: "How do you bind the wallet response to the specific browser session or client state initiating the request (e.g., OID4VP `state` parameter handling)? Could a CSRF attack substitute a victim's presentation?"
         dimension: security
+      - id: Q7
+        text: "How does the nonce store interact with the no-storage mandate? Nonces must persist long enough to detect replays but must not contain any attestation content."
+        dimension: privacy
+      - id: Q8
+        text: "How does the nonce store scale in a multi-instance deployment? Is it backed by a shared database, distributed cache (Redis), or consensus mechanism?"
+        dimension: architecture
+      - id: Q9
+        text: "How frequently are expired nonces pruned from the store? Could an unbounded nonce store cause memory or storage issues under high volume?"
+        dimension: operational
 
   # ============================================================================
   # VEND-INT-014: Secure Channel to RP
@@ -390,19 +465,31 @@ requirements:
   VEND-INT-014:
     questions:
       - id: Q1
-        text: "What transport layer security do you use for transmitting presentations to the RP (TLS version, cipher suites)?"
+        text: "What transport layer security do you use for transmitting presentations to the RP? Do you require TLS 1.3, or is TLS 1.2 with approved cipher suites also supported? Are TLS 1.0/1.1 explicitly disabled?"
         dimension: security
       - id: Q2
-        text: "Do you support mutual TLS (mTLS) for RP authentication?"
+        text: "Do you support mutual TLS (mTLS) for RP authentication? Is mTLS mandatory or optional per RP relationship?"
         dimension: capability
       - id: Q3
-        text: "How are RP endpoints authenticated before forwarding data?"
+        text: "How are RP endpoints authenticated before forwarding data — certificate pinning, CA validation, or another mechanism?"
         dimension: security
       - id: Q4
-        text: "What happens if the secure channel to the RP cannot be established?"
+        text: "What happens if the secure channel to the RP cannot be established (TLS handshake failure, certificate expired, network unreachable)? Are attributes deleted immediately per RPI_10, or is there a retry mechanism?"
         dimension: operational
       - id: Q5
-        text: "Is application-layer encryption used in addition to transport encryption?"
+        text: "Is application-layer encryption used in addition to transport encryption (e.g., JWE for payload encryption, JWS for verification result signing)?"
+        dimension: security
+      - id: Q6
+        text: "What cipher suites are supported? Do you enforce perfect forward secrecy (PFS) via ephemeral key exchange (ECDHE)?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "How do you handle certificate rotation for the RP's TLS endpoint? Is there a grace period where both old and new certificates are accepted, or must the cutover be atomic?"
+        dimension: lifecycle
+      - id: Q8
+        text: "Does the product support multiple concurrent secure channels to different RPs? How are these channels isolated to prevent cross-contamination of presentation data?"
+        dimension: architecture
+      - id: Q9
+        text: "What API authentication mechanism is used between the intermediary and the RP (OAuth 2.0 client credentials, API keys, mTLS client certificates)? How are credentials rotated?"
         dimension: security
 
   # ============================================================================

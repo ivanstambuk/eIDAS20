@@ -354,16 +354,49 @@ requirements:
     category: usage
     requirement: Maintain up-to-date Trusted Lists for Attestation Providers
     explanation: |
-      The intermediary must maintain current copies of Trusted Lists for qualified 
-      and non-qualified electronic attestation of attributes (QEAA/EAA) providers. 
-      These trust anchors are essential for validating attestation signatures.
+      The intermediary must maintain current copies of Trusted Lists for
+      qualified and non-qualified electronic attestation of attributes
+      (QEAA/EAA) providers. These trust anchors are essential for
+      validating attestation signatures as part of the RPI_09
+      verification gate.
+
+      **QEAA Provider validation (OIA_13):**
+      For both proximity and remote flows, the intermediary SHALL validate
+      the qualified signature of a QEAA in accordance with Art 32 of the
+      eIDAS Regulation. The trust anchor must come from a QEAA Provider
+      Trusted List made available in accordance with Art 22.
+
+      **PuB-EAA Provider validation (OIA_14):**
+      For PuB-EAAs, the intermediary SHALL validate the qualified
+      signature using the public key from the qualified certificate of
+      the QTSP, and SHALL also validate the QTSP's certificate itself
+      using a trust anchor from the appropriate Trusted List.
+
+      **Non-qualified EAA validation (OIA_15):**
+      For non-qualified EAAs, trust anchors are provided according to
+      mechanisms specified in the applicable Rulebook (Topic 12). The
+      intermediary may also need to verify that the EAA Provider is
+      authorised to issue the specific type of attestation.
+
+      **Trust anchor isolation:**
+      The intermediary must distinguish between trust anchors for PIDs
+      (OIA_12, see VEND-INT-007), QEAAs (OIA_13), PuB-EAAs (OIA_14),
+      and non-qualified EAAs (OIA_15). A trust anchor valid for one
+      category must not inadvertently validate attestations from another.
     legalBasis:
       regulation: 2014/910
       article: Article 22
       paragraph: "1"
+    legalText: |
+      Each Member State shall establish, maintain and publish trusted lists,
+      including information related to the qualified trust service providers
+      for which it is responsible.
     arfReference:
       topic: Topic 1
-      hlr: OIA_13
+      hlr:
+        - OIA_13
+        - OIA_14
+        - OIA_15
     roles:
       - relying_party
     productCategories:
@@ -374,16 +407,43 @@ requirements:
     category: usage
     requirement: Obtain trust anchors only from official Trusted List sources
     explanation: |
-      Trust anchors for verification must be obtained exclusively from official 
-      EU and Member State Trusted Lists, not from third-party aggregators or 
-      unofficial sources. This ensures the authenticity of verification keys.
+      Trust anchors for verification must be obtained exclusively from
+      official EU and Member State Trusted Lists, not from third-party
+      aggregators or unofficial sources. This ensures the authenticity
+      of verification keys and prevents supply-chain attacks on the
+      trust infrastructure.
+
+      **Official sources (OIA_14):**
+      The eIDAS Regulation mandates that trust anchors come from Trusted
+      Lists published by Member States (Art 22) or the Commission. The
+      intermediary must use these authoritative sources directly, or
+      verify the chain of custody if an intermediary distribution point
+      is used.
+
+      **Prohibited practices:**
+      - Using third-party trust anchor aggregation services without
+        verifying their integrity against official sources
+      - Manually importing trust anchors from unverified downloads
+      - Accepting trust anchors from RP customers or other parties
+      - Using hardcoded trust anchors that bypass Trusted List updates
+
+      **Verification of Trusted List authenticity:**
+      Each Trusted List is itself signed. The intermediary must verify
+      the Trusted List's signature using the Member State's certificate
+      before extracting trust anchors. This creates a chain of trust:
+      Commission LOTL → Member State TL → Provider trust anchor →
+      Attestation signature.
     arfReference:
       topic: Topic 1
       hlr: OIA_14
     legalBasis:
       regulation: 2014/910
-      article: Article 32
-      paragraph: ""
+      article: Article 22
+      paragraph: "1"
+    legalText: |
+      Each Member State shall establish, maintain and publish trusted lists,
+      including information related to the qualified trust service providers
+      for which it is responsible.
     roles:
       - relying_party
     productCategories:
@@ -394,19 +454,46 @@ requirements:
     category: usage
     requirement: Validate attestation signatures using official trust anchors
     explanation: |
-      The intermediary must verify the cryptographic signatures on attestations 
-      and PIDs using the public keys from official Trusted Lists. Invalid or 
-      untrusted signatures must result in rejection.
+      The intermediary must verify the cryptographic signatures on
+      attestations and PIDs using the public keys from official Trusted
+      Lists. Invalid or untrusted signatures must result in rejection.
+
+      **Signature validation as RPI_09 prerequisite:**
+      Attestation authenticity verification is the first check in the
+      RPI_09 verification gate. Without a valid signature, no attributes
+      may be forwarded to the RP (per RPI_08). The intermediary must
+      verify:
+      - The attestation's issuer signature against the trust anchor
+      - The certificate chain from the issuer to the Trusted List root
+      - That the trust anchor is from the correct category (PID vs
+        QEAA vs PuB-EAA vs non-qualified EAA)
+
+      **Cryptographic algorithm support:**
+      The intermediary must support the algorithms mandated by the
+      ARF and implementing acts, including ECDSA with P-256/P-384
+      curves for SD-JWT VC and COSE signatures for mDoc format.
+      Algorithm agility is important as new algorithms may be
+      approved over time.
+
+      **Rejection handling:**
+      When a signature is invalid, the intermediary must:
+      - Reject the entire presentation (not just the invalid attestation)
+      - Log the verification failure with sufficient detail for dispute
+        resolution (without logging attestation content)
+      - Return an appropriate error to the RP
+      - Immediately delete all received attestation data (per RPI_10)
     legalBasis:
       regulation: 2024/2979
       article: Article 8
-      paragraph: ""
+      paragraph: "1"
     legalText: |
-      The validity of attestations shall be verified using the trust anchors 
-      published in official Trusted Lists.
+      The validity of electronic attestations of attributes shall be
+      verified using the trust anchors published in official Trusted Lists.
     arfReference:
       topic: Topic 1
-      hlr: OIA_12
+      hlr:
+        - OIA_12
+        - OIA_13
     roles:
       - relying_party
     productCategories:
@@ -417,18 +504,46 @@ requirements:
     category: usage
     requirement: Verify attestation revocation status before acceptance (recommended)
     explanation: |
-      Before accepting a presentation as valid, the intermediary should check the 
-      revocation status of the attestation. This may involve checking validity 
-      status lists, OCSP responses, or other revocation mechanisms as specified 
-      by the issuer. Note: Per ARF VCR_13, revocation verification is recommended 
-      but not mandatory.
+      Before accepting a presentation as valid, the intermediary should
+      check the revocation status of the attestation. This is a
+      recommended (SHOULD) step in the RPI_09 verification gate.
+
+      **Revocation checking mechanisms (VCR_12 + VCR_13):**
+      If the intermediary decides to verify revocation status, it SHALL
+      support both mechanisms specified by VCR_11:
+      - **Attestation Status Lists**: batch-oriented mechanism where the
+        issuer publishes a compressed bitstring indicating the status of
+        all issued attestations. Efficient for high-volume checking.
+      - **Attestation Revocation Lists**: list-based mechanism where
+        revoked attestation identifiers are published.
+
+      **SHOULD vs MUST:**
+      Per VCR_13, revocation verification is recommended but not
+      mandatory. However, if the intermediary and RP agree that
+      revocation checking is required (per RPI_09 agreement scope),
+      then it becomes effectively mandatory for that relationship.
+
+      **Operational considerations:**
+      - Status lists should be cached to minimise latency, with refresh
+        intervals aligned to the issuer's publication frequency
+      - When revocation endpoints are unavailable, the intermediary must
+        decide: reject the presentation (fail-closed) or accept with a
+        warning (fail-open). This policy should be configurable per RP.
+      - Revocation checking must not log individual attestation
+        identifiers, as this could create a tracking vector (no-storage
+        mandate applies).
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions verify the
+      validity of electronic attestations of attributes.
     arfReference:
       topic: Topic 7
-      hlr: VCR_13
+      hlr:
+        - VCR_12
+        - VCR_13
     roles:
       - relying_party
     productCategories:
@@ -439,13 +554,41 @@ requirements:
     category: usage
     requirement: Verify the wallet unit's device binding
     explanation: |
-      The intermediary must verify that the presentation is bound to the wallet 
-      unit's secure cryptographic device (WSCD), confirming that the presenter 
-      controls the private key associated with the attestations.
+      The intermediary must verify that the presentation is bound to the
+      wallet unit's secure cryptographic device (WSCD), confirming that
+      the presenter controls the private key associated with the
+      attestations. This is a core check in the RPI_09 verification gate.
+
+      **Device binding verification (RPI_09):**
+      The intermediary SHALL verify device binding by checking the
+      proof-of-possession mechanism:
+      - For mDoc (ISO 18013-5): verify the `deviceAuth` structure,
+        which contains either a MAC or ECDSA signature over session
+        data using the device's private key
+      - For SD-JWT VC: verify the Key Binding JWT (`kb-jwt`), which
+        proves possession of the key referenced in the `cnf` claim
+
+      **What device binding proves:**
+      - The presentation was created by the wallet that holds the
+        attestation (not copied or exported)
+      - The wallet's WSCD generated the proof in real-time (combined
+        with freshness checks in VEND-INT-013)
+      - The attestation has not been cloned or replayed from another
+        device
+
+      **Failure handling:**
+      If device binding verification fails, the intermediary SHALL NOT
+      forward any attributes (per RPI_08). This is a hard failure — the
+      entire presentation is rejected, and the RP is notified of the
+      verification failure.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support
+      protocols and interfaces that allow verification of the
+      authenticity of the wallet unit.
     arfReference:
       topic: Topic 52
       hlr: RPI_09
@@ -459,17 +602,49 @@ requirements:
     category: security
     requirement: Verify presentation freshness and prevent replay attacks
     explanation: |
-      The intermediary must verify that presentations are fresh and not replayed. 
-      This includes checking nonces, timestamps, or session binding, and implementing 
-      mechanisms to detect replay of previously received presentations. Stale or 
-      replayed presentations must be rejected.
+      The intermediary must verify that presentations are fresh and not
+      replayed. This includes checking nonces, timestamps, or session
+      binding, and implementing mechanisms to detect replay of
+      previously received presentations. Stale or replayed
+      presentations must be rejected.
+
+      **Freshness mechanisms:**
+      - **Nonce challenge-response**: the intermediary generates a
+        cryptographically random nonce included in the presentation
+        request; the wallet embeds this nonce in the response,
+        signed by the device key
+      - **Timestamp validation**: the presentation contains a creation
+        timestamp, which the intermediary validates against a
+        configurable time window (accounting for clock skew)
+      - **Session binding**: the OID4VP `state` parameter binds the
+        wallet response to the specific browser/client session
+
+      **Replay detection (Article 5b(9)):**
+      The intermediary must implement server-side nonce tracking to
+      detect replay attempts. Once a nonce has been used, it must be
+      marked as consumed and rejected if re-submitted. The nonce store
+      must be:
+      - Persistent across intermediary restarts (within the nonce's
+        validity window)
+      - Distributed if the intermediary runs in a multi-instance
+        deployment
+      - Automatically pruned after nonce expiry
+
+      **Combined with device binding (RPI_09):**
+      Freshness verification and device binding together ensure that
+      the presentation was created by the legitimate wallet user in
+      real-time, not replayed from a captured session.
     legalBasis:
       - regulation: 2024/2979
         article: Article 3
-        paragraph: ""
+        paragraph: "1"
       - regulation: 2014/910
         article: Article 5b
         paragraph: "9"
+    legalText: |
+      Relying parties shall implement appropriate measures to prevent
+      fraud and ensure the authenticity of person identification data
+      and electronic attestations of attributes.
     arfReference:
       topic: Topic 52
       hlr: RPI_09
@@ -483,13 +658,46 @@ requirements:
     category: security
     requirement: Ensure secure channel for transmission to RP
     explanation: |
-      The intermediary must establish and maintain a secure, encrypted channel 
-      when forwarding wallet presentations to the RP. Transport layer security 
-      (TLS 1.3 or equivalent) is required.
+      The intermediary must establish and maintain a secure, encrypted
+      channel when forwarding wallet presentations to the RP. This
+      protects the confidentiality and integrity of attestation data
+      in transit between the intermediary and the RP backend.
+
+      **Transport requirements (RPI_08):**
+      The channel used to forward attributes from the intermediary to
+      the RP must provide:
+      - **Confidentiality**: TLS 1.3 (or TLS 1.2 with approved cipher
+        suites as a minimum). TLS 1.0 and 1.1 must be disabled.
+      - **Server authentication**: the RP's endpoint must be
+        authenticated via its TLS certificate
+      - **Mutual authentication (recommended)**: mTLS provides
+        bidirectional authentication, ensuring the intermediary can
+        prove its identity to the RP and vice versa
+      - **Perfect forward secrecy**: cipher suites using ephemeral
+        key exchange (ECDHE) to protect past sessions if long-term
+        keys are compromised
+
+      **Application-layer protection:**
+      In addition to transport encryption, the intermediary should
+      consider application-layer protection such as:
+      - JWE (JSON Web Encryption) for payload encryption
+      - Signed verification results (JWS) so the RP can verify the
+        intermediary's verification outcome is authentic
+      - API authentication (OAuth 2.0 client credentials, API keys)
+
+      **Failure handling:**
+      If the secure channel cannot be established (e.g., TLS handshake
+      failure, certificate validation error), the intermediary SHALL
+      NOT forward any attributes. The presentation data must be deleted
+      immediately per RPI_10.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed
+      to be relying parties and shall not store data about the content
+      of the transaction.
     arfReference:
       topic: Topic 52
       hlr: RPI_08
