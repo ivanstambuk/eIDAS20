@@ -475,26 +475,32 @@ requirements:
   VEND-CORE-016:
     questions:
       - id: Q1
-        text: "Do you perform the registration of intermediated Relying Parties at national Registrars, or does the organization do this directly?"
-        dimension: capability
-      - id: Q2
-        text: "Which Member State Registrars can you currently interface with for RP registration?"
+        text: "Per RPI_03, the intermediary must register each intermediated RP at the Registrar in the RP's Member State of establishment. Which Member State Registrars can you currently interface with, and what is your process for onboarding a new Registrar integration?"
         dimension: geographic_scope
+      - id: Q2
+        text: "How do you handle the Annex I data set submission for intermediated RPs, specifically point 14 (intermediary indication) and point 15 (intermediary-RP association)? Is data mapping and submission automated or manual?"
+        dimension: technical_implementation
       - id: Q3
-        text: "How do you handle registrations for Relying Parties established in Member States where you don't yet have Registrar integration?"
-        dimension: limitations
+        text: "If the Registrar's associated certificate authority issues registration certificates (IR 2025/848 Art 8), do you obtain and manage these certificates for each registered intended use? How do you handle Member States that do not issue registration certificates?"
+        dimension: capability
       - id: Q4
-        text: "Do you obtain registration certificates for each registered intended use on behalf of the Relying Party?"
+        text: "How do you ensure the accuracy of registration data (Art 5(2)) and propagate updates without undue delay (Art 5(3)) when an intermediated RP changes its intended uses, requested data elements, or establishment details?"
         dimension: lifecycle
       - id: Q5
-        text: "How do you manage updates to Relying Party registrations when their intended uses or requested data elements change?"
+        text: "What is your process for deregistering an intermediated RP when the contractual relationship terminates? How do you coordinate with the Registrar, certificate authority, and wallet ecosystem to ensure clean revocation?"
         dimension: lifecycle
       - id: Q6
-        text: "What is your process for deregistering a Relying Party when they terminate their relationship with you?"
-        dimension: lifecycle
+        text: "Registration is a prerequisite for the dual-identity display (VEND-CORE-011) and wallet-side Registrar verification (RPI_07a). How do you handle the time gap between RP onboarding and Registrar registration completion — can presentation requests be made during this period?"
+        dimension: operational
       - id: Q7
-        text: "How do you ensure compliance with each Member State's specific registration requirements and timelines?"
-        dimension: regulatory_variability
+        text: "How do you manage cross-border registration when an intermediated RP operates in multiple Member States? Do you coordinate with multiple Registrars simultaneously, and how do you handle divergent national registration requirements?"
+        dimension: interoperability
+      - id: Q8
+        text: "What monitoring do you have in place to detect registration suspension or cancellation by the Registrar (Art 9)? How quickly can you respond to a notification of suspension, and what is the impact on active presentation flows for the affected RP?"
+        dimension: incident_response
+      - id: Q9
+        text: "Do you maintain an audit trail of all Registrar interactions (submissions, updates, certificate issuances, rejections) for compliance verification? How long are these records retained?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-017: Legal Evidence of RP Relationship
@@ -503,23 +509,32 @@ requirements:
   VEND-CORE-017:
     questions:
       - id: Q1
-        text: "What legal evidence do you submit to Registrars to prove the intermediary-Relying Party relationship (e.g., contract, power of attorney, letter of authorization)?"
+        text: "Per RPI_04, what specific forms of legally valid evidence do you submit to Registrars to prove the intermediary-RP relationship (contract, power of attorney, letter of authorisation)? Does the form of evidence vary by Member State?"
         dimension: documentation
       - id: Q2
-        text: "How do you ensure the legal evidence meets each Registrar's specific requirements?"
-        dimension: regulatory_variability
+        text: "How do you prepare evidence to satisfy the four verification checks in IR 2025/848 Art 6(3): (a) accuracy/validity/authenticity, (b) power of attorney, (c) entitlement type per Annex III, and (d) absence of duplicate registration?"
+        dimension: compliance_completeness
       - id: Q3
-        text: "What is your process for updating legal evidence when contracts are amended or renewed?"
-        dimension: lifecycle
-      - id: Q4
-        text: "How do you handle Registrar rejections due to insufficient or invalid legal evidence?"
+        text: "What is your process when a Registrar rejects the registration due to insufficient or invalid evidence (Art 6(6))? Do you have appeal or remediation procedures documented?"
         dimension: operational
+      - id: Q4
+        text: "How do you handle evidence updates when contracts between you and the intermediated RP are amended, renewed, or extended? Is there a proactive notification to the Registrar, or is re-verification triggered on next access?"
+        dimension: lifecycle
       - id: Q5
-        text: "Is the legal evidence submission process automated or manual?"
-        dimension: automation
+        text: "The Registrar's evidence verification underpins the wallet-side trust chain (RPI_07a). How confident are you that the evidence you provide would withstand a wallet user's Registrar verification query? Have you tested this end-to-end?"
+        dimension: compliance_evidence
       - id: Q6
-        text: "How long do you retain copies of the legal evidence submitted to Registrars?"
-        dimension: data_handling
+        text: "Is the evidence submission and verification process automated (API-based) or manual (document upload)? What is the typical turnaround time from evidence submission to Registrar approval?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "How do you handle multi-jurisdictional evidence requirements where the intermediated RP is established in a different Member State from the intermediary, potentially with different legal instruments and language requirements?"
+        dimension: interoperability
+      - id: Q8
+        text: "Do you retain copies of all evidence submitted to Registrars, including version history, for compliance audit purposes? How long are these records retained, and are they accessible to the intermediated RP for its own audit needs?"
+        dimension: auditability
+      - id: Q9
+        text: "In the scenario where the intermediated RP terminates the relationship but the Registrar has not yet processed the deregistration, how do you prevent the stale evidence from being relied upon by wallet units?"
+        dimension: security
 
   # ============================================================================
   # VEND-CORE-018: Attestation Verification
@@ -528,34 +543,31 @@ requirements:
   VEND-CORE-018:
     questions:
       - id: Q1
-        text: "How do you verify the authenticity of PIDs and attestations received from wallet units?"
-        dimension: technical_implementation
+        text: "RPI_09 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?"
+        dimension: capability
       - id: Q2
-        text: "Which wallet implementations have you tested verification compatibility with (EUDI reference, Apple, Google, third-party)?"
-        dimension: interoperability
+        text: "How do you verify PID/attestation authenticity — specifically, how do you resolve and validate the issuer's trust chain across different Member State trust frameworks?"
+        dimension: technical_implementation
       - id: Q3
-        text: "How do you check the revocation status of presented credentials, and what revocation mechanisms do you support (Status Lists, OCSP, etc.)?"
+        text: "Which revocation checking mechanisms do you support (Status Lists, OCSP, CRL)? How do you handle scenarios where the revocation infrastructure is temporarily unavailable — do you allow or block forwarding?"
         dimension: technical_implementation
       - id: Q4
-        text: "How do you verify device binding (proof that the credential is bound to the presenting wallet's secure element)?"
+        text: "How do you verify device binding (cryptographic proof that the credential is bound to the presenting wallet's WSCD)? Do you support both mdoc device authentication and SD-JWT key binding?"
         dimension: security
       - id: Q5
-        text: "How do you verify user binding (proof that the authorized user is presenting the credential)?"
+        text: "How do you verify user binding (proof that the authorised holder is presenting)? Do you support both biometric and PIN-based user authentication proofs?"
         dimension: security
       - id: Q6
-        text: "Do you support Zero-Knowledge Proof (ZKP) verification for privacy-preserving claims (e.g., age over 18)?"
-        dimension: capability
+        text: "Per RPI_08, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?"
+        dimension: architecture
       - id: Q7
-        text: "Can the organization configure which verification checks are performed for different use cases?"
-        dimension: flexibility
+        text: "How do you handle combined presentations (multiple attestations in a single session)? Do you verify cross-attestation consistency and combined presentation binding as described in the ARF?"
+        dimension: technical_implementation
       - id: Q8
-        text: "What happens if a verification check fails? How is this communicated to the user and logged for the organization?"
-        dimension: operational
+        text: "The RP retains ultimate legal responsibility for verification (Art 5b(9)). How do you provide verification evidence to the RP — do you include verification results, timestamps, and trust chain details in the forwarded response?"
+        dimension: auditability
       - id: Q9
-        text: "Do you support Selective Disclosure (SD) to allow verification of specific attributes without revealing the full credential coverage?"
-        dimension: privacy
-      - id: Q10
-        text: "Do you support batch verification of multiple credentials/presentations for high-volume use cases?"
+        text: "What is the latency impact of full verification (all 5 dimensions) on the end-to-end presentation flow? Have you benchmarked verification performance under high-volume scenarios?"
         dimension: performance
 
   # ============================================================================
@@ -565,32 +577,32 @@ requirements:
   VEND-CORE-019:
     questions:
       - id: Q1
-        text: "Do you support EUDI Wallet-based Strong Customer Authentication for payment transactions as specified in ARF Technical Specification 12 (TS12)?"
+        text: "Do you implement the EUDI Wallet-based Strong Customer Authentication flow as specified in ARF Technical Specification 12 (TS12)? If not yet implemented, what is your roadmap?"
         dimension: capability
       - id: Q2
-        text: "How do you implement the two-factor authentication requirement (knowledge/possession/inherence) using the wallet's cryptographic mechanisms?"
+        text: "How do you map the PSD2 SCA elements (knowledge, possession, inherence) to the EUDI Wallet's cryptographic mechanisms? Specifically, which wallet capabilities satisfy each SCA element?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you achieve dynamic linking of authentication to specific transaction amount and payee as required by PSD2 RTS Article 5?"
+        text: "How do you achieve dynamic linking of the authentication to a specific transaction amount and payee (PSD2 RTS Art 5)? Is the transaction detail included in the signed wallet presentation, or is a separate binding mechanism used?"
         dimension: technical_implementation
       - id: Q4
-        text: "How do you ensure independence of authentication elements (that compromise of one element does not compromise others)?"
+        text: "How do you ensure independence of SCA elements (PSD2 RTS Art 9) — that compromise of one element does not reveal another? Does the WSCD-backed key architecture provide sufficient hardware separation for your implementation?"
         dimension: security
       - id: Q5
-        text: "What mechanisms are in place to detect and prevent fraud and transaction manipulation?"
-        dimension: security
+        text: "Which SCA exemptions do you support (low-value transactions under Art 16, recurring transactions under Art 14, trusted beneficiaries under Art 13)? How is exemption eligibility determined and documented per transaction?"
+        dimension: compliance_completeness
       - id: Q6
-        text: "How do you support SCA exemptions (low-value payments, recurring transactions, trusted beneficiaries) while maintaining compliance?"
-        dimension: flexibility
+        text: "Which payment scenarios does your TS12 implementation cover: in-store (proximity), online card-not-present, account-to-account, or all three? Are there any payment scenarios you explicitly do not support?"
+        dimension: capability
       - id: Q7
-        text: "What integration is required with the organization's existing payment infrastructure (PSP, acquirer, card schemes)?"
+        text: "What integration is required with the organization's existing payment infrastructure (PSP acquirer, card scheme, payment gateway)? Do you support the standard TS5 (OpenID4VP) flow extended for payment context, or a separate protocol?"
         dimension: interoperability
       - id: Q8
-        text: "Have you obtained or are you pursuing any PSD2 SCA certifications or attestations?"
-        dimension: compliance_evidence
+        text: "What transaction monitoring and fraud detection mechanisms are in place to detect and prevent manipulation of the payment authentication flow? Does this include velocity checks, anomaly detection, or device fingerprinting?"
+        dimension: security
       - id: Q9
-        text: "Do you support Delegated Authentication flows where the EUDI Wallet relies on an external authenticator (e.g., bank app)?If so, how is the trust model maintained?"
-        dimension: technical_implementation
+        text: "Have you obtained or are you pursuing PSD2 SCA certification or attestation? Have you been tested by any NCA (national competent authority) for SCA compliance in a wallet context?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-020: OpenID4VCI for Attestation Issuance (TS6)
@@ -599,32 +611,32 @@ requirements:
   VEND-CORE-020:
     questions:
       - id: Q1
-        text: "Do you implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6?"
+        text: "Do you implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6 (TS6)? Which draft version of the specification have you implemented?"
         dimension: capability
       - id: Q2
-        text: "Which OpenID4VCI flows do you support (pre-authorized code, authorization code, deferred issuance)?"
+        text: "Which OpenID4VCI flows do you support: pre-authorized code (issuer-initiated), authorization code (wallet-initiated), and/or deferred issuance? Which flow is the default for your implementation?"
         dimension: technical_implementation
       - id: Q3
-        text: "What credential formats do you support for issuance (SD-JWT-VC, mdoc/mDL, both)?"
+        text: "Which credential formats do you support for issuance (SD-JWT-VC, mdoc/mDL, or both)? How do you determine which format to issue based on the attestation type and requesting wallet's capabilities?"
         dimension: interoperability
       - id: Q4
-        text: "How do you handle wallet unit authentication during issuance (WUA verification, key binding)?"
+        text: "How do you verify the Wallet Unit Attestation (WUA, per TS3/VEND-CORE-025) during issuance to ensure credentials are bound to a legitimate, certified wallet? What happens if WUA verification fails?"
         dimension: security
       - id: Q5
-        text: "Do you support batch issuance of multiple credentials in a single session?"
-        dimension: capability
+        text: "How is key binding implemented — are issued credentials bound to the wallet unit's WSCD-backed key pair? Do you support proof-of-possession during the credential request?"
+        dimension: security
       - id: Q6
-        text: "How do you handle credential refresh and re-issuance for expiring credentials?"
-        dimension: lifecycle
+        text: "Do you support both same-device (app-to-app) and cross-device (QR code/deep link) issuance flows? How do you handle the security differences between these models (especially for cross-device where the issuance session spans two devices)?"
+        dimension: architecture
       - id: Q7
-        text: "Have you participated in any OpenID4VCI interoperability testing or certification programs?"
-        dimension: compliance_evidence
-      - id: Q8
-        text: "How do you handle issuance failures and retries?"
+        text: "How do you handle issuance failures, network interruptions, and retry scenarios? For deferred issuance, what is the maximum polling duration and how is the user informed of credential readiness?"
         dimension: operational
+      - id: Q8
+        text: "Do you support batch issuance of multiple credentials in a single session (e.g., PID + driving licence)? If so, is each credential independently bound and signed?"
+        dimension: capability
       - id: Q9
-        text: "Do you support both same-device (issuance directly to wallet on same device) and cross-device (issuance via QR code/link to separate device) flows?"
-        dimension: user_experience
+        text: "Have you participated in OpenID4VCI interoperability testing events (EU plugfests, OIDF conformance testing)? Which wallet implementations have you successfully tested credential issuance with?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-021: Data Deletion Request Interface (TS7)
@@ -633,26 +645,32 @@ requirements:
   VEND-CORE-021:
     questions:
       - id: Q1
-        text: "Do you implement the common data deletion request interface as specified in Technical Specification 7 (TS7)?"
+        text: "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per DATA_DLT_02?"
         dimension: capability
       - id: Q2
-        text: "How do you authenticate users submitting deletion requests to ensure they are authorized to request deletion?"
+        text: "How do you authenticate users submitting deletion requests before executing deletion (DATA_DLT_07)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism?"
         dimension: security
       - id: Q3
-        text: "What is your response time for processing data deletion requests received via the TS7 interface?"
+        text: "What is your committed response time for processing data deletion requests? How does this align with the GDPR Art 17(1) 'without undue delay' obligation, and the Art 12(3) one-month response deadline?"
         dimension: sla
       - id: Q4
-        text: "How do you handle deletion requests when legal retention requirements apply?"
-        dimension: legal_requirements
+        text: "How do you handle deletion request exceptions under Art 17(3) (legal obligation, public interest, legal claims, archiving)? Do you document the specific legal basis for each refusal and communicate it to the requesting user?"
+        dimension: compliance_completeness
       - id: Q5
-        text: "Do you provide confirmation to the wallet user upon completion of the deletion?"
-        dimension: user_experience
+        text: "In the intermediary context, given the no-storage mandate (VEND-CORE-001), what categories of data could be subject to deletion requests — transaction metadata, audit logs, registration data? How do you scope the deletion response appropriately?"
+        dimension: data_handling
       - id: Q6
-        text: "How do you ensure deletion is propagated to all systems and backups?"
+        text: "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?"
         dimension: data_handling
       - id: Q7
-        text: "What audit logging is maintained for deletion request processing?"
+        text: "Do you provide confirmation to the wallet user upon completion of deletion? Is this confirmation machine-readable (for wallet dashboard logging per DATA_DLT_05-06) or human-readable only?"
+        dimension: user_experience
+      - id: Q8
+        text: "What audit logging is maintained for deletion request processing? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation?"
         dimension: auditability
+      - id: Q9
+        text: "If the intermediated RP is the data controller and you receive a deletion request as processor, how do you coordinate with the RP — do you forward the request, execute autonomously per DPA instructions, or require RP approval before deletion?"
+        dimension: contract_terms
 
   # ============================================================================
   # VEND-CORE-022: Attestation Schema Registration (TS11)
@@ -661,20 +679,32 @@ requirements:
   VEND-CORE-022:
     questions:
       - id: Q1
-        text: "Do you register attestation types in the EU catalogue of attributes and attestations as specified in Technical Specification 11?"
+        text: "Have you registered your attestation types in the EU catalogue of attributes and attestations as specified in Technical Specification 11 (TS11)? If not yet, what is your registration timeline relative to the 2027-11-21 deadline?"
         dimension: capability
       - id: Q2
-        text: "What attestation types do you currently issue, and are they registered in the catalogue?"
+        text: "What attestation types do you currently issue, and does each attestation's schema comply with the TS11 common data model — attribute names, types, encodings, and validity rules?"
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you ensure your attestation schemas comply with the common data model?"
+        text: "Do you follow sector-specific rulebooks for your attestation structures (e.g., mobile driving licence per ISO 18013-5, payment credentials, health records)? How do you ensure rulebook compliance as rulebooks are updated?"
         dimension: interoperability
       - id: Q4
-        text: "How do you handle schema versioning and updates?"
+        text: "How do you manage schema versioning? When you update an attestation schema, how do you ensure backward compatibility with wallets and verifiers that may still expect the previous version?"
         dimension: lifecycle
       - id: Q5
-        text: "Do you follow any sector-specific rulebooks for attestation structure (e.g., mobile driving license, payment credentials)?"
-        dimension: regulatory_variability
+        text: "How do RPs and wallets discover your attestation types through the catalogue? Do you publish supplementary metadata (issuer endpoints, supported formats, trust chain) alongside the schema registration?"
+        dimension: interoperability
+      - id: Q6
+        text: "What is your process for registering new attestation types when you expand your issuance portfolio? Is catalogue registration integrated into your attestation development lifecycle, or is it a separate compliance step?"
+        dimension: operational
+      - id: Q7
+        text: "How do you handle cross-border interoperability of your registered schemas — can a verifier in a different Member State reliably validate attestations issued under your registered schema?"
+        dimension: interoperability
+      - id: Q8
+        text: "Do you validate your schemas against the TS11 conformance test suite (if available)? How do you ensure ongoing compliance as the TS11 specification and catalogue structure evolve?"
+        dimension: compliance_evidence
+      - id: Q9
+        text: "If you issue both SD-JWT-VC and mdoc formats for the same attestation type, do you register separate schemas or a unified schema with format-specific encoding profiles? How is format selection communicated to wallets?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-023: Open Standards Implementation (TS1)
@@ -683,26 +713,32 @@ requirements:
   VEND-CORE-023:
     questions:
       - id: Q1
-        text: "Do you implement the open standards mapped in Technical Specification 1 (TS1) for EUDI Wallet interoperability?"
+        text: "Do you implement the full set of open standards mapped in Technical Specification 1 (TS1)? Provide a matrix of which TS1-mapped standards you implement and their version/draft level."
         dimension: capability
       - id: Q2
-        text: "Which specific standards do you implement (OpenID4VCI, OpenID4VP, SD-JWT, mdoc/mDL, ISO 18013-5, ISO 23220)?"
-        dimension: technical_implementation
+        text: "Do you support both SD-JWT-VC and mdoc credential formats for verification? For issuers, which format(s) do you issue in, and how is format selection determined per attestation type?"
+        dimension: interoperability
       - id: Q3
-        text: "Have you participated in EUDI Wallet plugfest or other interoperability testing events? What were the results?"
+        text: "Have you participated in EU-organised plugfest events or OIDF conformance testing? Provide details of results, including any interoperability issues discovered and their resolution."
         dimension: compliance_evidence
       - id: Q4
-        text: "Which wallet implementations have you tested interoperability with?"
+        text: "Which wallet implementations (EUDI reference implementation, national wallets, Apple, Google) have you tested interoperability with for both issuance (OpenID4VCI) and presentation (OpenID4VP) flows?"
         dimension: interoperability
       - id: Q5
-        text: "How do you track and adopt updates to these standards as they evolve?"
+        text: "The TS1-mapped specifications (OpenID4VCI, OpenID4VP) are still evolving through IETF/OIDF drafts. How do you track draft changes, and what is your process for adopting breaking changes while maintaining backward compatibility with deployed wallets?"
         dimension: lifecycle
       - id: Q6
-        text: "Are there any proprietary extensions or deviations from the standard implementations? If so, describe them."
+        text: "Are there any proprietary extensions, vendor-specific features, or deviations from the TS1-mapped standard implementations in your product? If so, document each deviation with its justification and impact on interoperability."
         dimension: limitations
       - id: Q7
-        text: "Given the evolving nature of EUDI standards, how do you manage breaking changes in draft specifications (e.g., OpenID4VCI drafts) to maintain backward compatibility?"
-        dimension: lifecycle
+        text: "Article 5a(23) eIDAS requires open standards specifically to prevent vendor lock-in. How do you demonstrate that your implementation achieves this — can an organisation migrate from your product to a competitor's without data loss or service interruption?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle the duality of credential formats (SD-JWT-VC vs mdoc) in verification scenarios where the incoming credential format is determined by the wallet, not the verifier? Can your verifier auto-detect and process either format?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "What conformance test suites do you use to validate your implementations against TS1-mapped standards? Do you run automated regression tests against these suites as part of your CI/CD pipeline?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-024: Provider Information Publication (TS2)

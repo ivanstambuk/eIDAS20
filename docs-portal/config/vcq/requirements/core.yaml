@@ -666,10 +666,38 @@ requirements:
     category: registration
     requirement: Register each intermediated RP at the appropriate Registrar
     explanation: |
-      The intermediary must register each RP it acts on behalf of at a 
-      Registrar in the Member State where that RP is established. If the 
-      Registrar issues registration certificates, the intermediary must 
-      obtain a certificate for each registered intended use.
+      ARF HLR RPI_03 mandates that an intermediary SHALL register each
+      intermediated Relying Party at a Registrar in the Member State where
+      that intermediated RP is established. This is a per-RP, per-Member-State
+      obligation — a multi-market intermediary must interface with multiple
+      national Registrars.
+
+      **The registration obligation has two elements:**
+      1. **Registration at the Registrar**: the intermediary registers the
+         intermediated RP according to the requirements in Topic 44
+         (registration certificates for RPs), providing the Annex I data
+         set including the intermediary-specific fields (pts 14-15)
+      2. **Registration certificate acquisition**: if the Registrar's
+         associated certificate authority issues registration certificates
+         (per IR 2025/848 Art 8 — this is optional per Member State), the
+         intermediary SHALL receive a registration certificate for each
+         registered intended use of the intermediated RP
+
+      **Annex I intermediary-specific data fields:**
+      - Point 14: indication that the RP relies upon an intermediary
+      - Point 15: association to the specific intermediary acting on behalf
+        of the RP
+
+      The implementing regulation (IR 2025/848) specifies in Article 5:
+      - Art 5(1): the information set out in Annex I must be provided
+      - Art 5(2): information must be accurate at time of registration
+      - Art 5(3): updates must be provided without undue delay
+
+      This registration is a prerequisite for the dual-identity display
+      mechanism (VEND-CORE-011, RPI_06) and the wallet-side Registrar
+      verification (RPI_07a). Without proper registration, presentation
+      requests will lack the registration certificate and the Registrar
+      will not be able to confirm the intermediary-RP relationship.
     legalBasis:
       regulation: 2025/848
       article: Article 5
@@ -680,7 +708,8 @@ requirements:
       of intermediary status and association to intermediated RPs.
     arfReference:
       topic: Topic 52
-      hlr: RPI_03
+      hlr:
+        - RPI_03
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -689,21 +718,53 @@ requirements:
     category: registration
     requirement: Provide legal evidence of RP relationship when registering
     explanation: |
-      When registering an intermediated RP, the intermediary must provide 
-      legally valid evidence (e.g., a contract) that the RP will use the 
-      intermediary's services. The Registrar must verify this evidence 
-      before registering the relationship.
+      ARF HLR RPI_04 requires the intermediary to provide legally valid
+      evidence that the intermediated RP will indeed use the intermediary's
+      services to interact with wallet units. This creates a two-party
+      verification chain:
+
+      **Step 1 — Intermediary provides evidence:**
+      The intermediary submits legally valid documentation to the Registrar.
+      The ARF notes suggest a contract between the intermediary and the
+      intermediated RP as a typical form of evidence, but other forms may
+      include power of attorney, letter of authorisation, or equivalent
+      legal instruments per Member State law.
+
+      **Step 2 — Registrar verifies evidence:**
+      The Registrar SHALL verify this evidence and, if found correct, SHALL
+      register the relationship between the intermediary and the
+      intermediated RP. IR 2025/848 Article 6(3-4) specifies that
+      registrars shall verify:
+      - (a) accuracy, validity, authenticity, and integrity of the Annex I
+        information
+      - (b) where applicable, the power of attorney of RP representatives
+      - (c) the type of entitlement(s) of the RP (per Annex III)
+      - (d) absence of existing registration in another national register
+
+      Verification must use supporting documentation or authentic sources
+      (Art 6(4)). If verification fails, the Registrar SHALL reject the
+      registration (Art 6(6)).
+
+      This evidence requirement is critical for the wallet-side trust chain.
+      When a wallet user verifies an intermediary-RP relationship via the
+      Registrar (RPI_07a, VEND-CORE-011), the Registrar's confirmation is
+      only as trustworthy as the evidence it originally verified.
     legalBasis:
       regulation: 2025/848
       article: Article 6
       paragraph: 3-4
     legalText: |
-      Registrars shall verify the accuracy, validity, authenticity and 
-      integrity of the information required, including the power of 
-      attorney of representatives of the wallet-relying parties.
+      Where possible, registrars shall verify in an automated manner:
+      (a) the accuracy, validity, authenticity and integrity of the
+      information required under Article 5; (b) where applicable, the
+      power of attorney of representatives of the wallet-relying parties;
+      (c) the type of entitlement or entitlements of the wallet-relying
+      parties as set out in Annex I; (d) the absence of an existing
+      registration in another national register.
     arfReference:
       topic: Topic 52
-      hlr: RPI_04
+      hlr:
+        - RPI_04
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -712,10 +773,39 @@ requirements:
     category: usage
     requirement: Perform verification of attestations as agreed with RP
     explanation: |
-      The intermediary must verify the authenticity, revocation status, 
-      device binding, and user binding of PIDs and attestations received 
-      from wallet units, as well as wallet unit authenticity, according to 
-      what has been agreed with the Relying Party.
+      ARF HLR RPI_09 mandates that the intermediary SHALL verify attributes
+      presented by wallet units before forwarding them to the intermediated
+      RP (per the forward-only rule RPI_08). This is a critical trust
+      function — the intermediary acts as a verification gateway.
+
+      **Five verification dimensions (as specified in the ARF):**
+      1. **Authenticity**: verify the digital signature on the PID or
+         attestation against the issuer's public key and trust chain
+      2. **Revocation status**: check that the PID/attestation has not been
+         revoked (using Status Lists, OCSP, or equivalent mechanism per the
+         attestation format)
+      3. **Device binding**: verify cryptographic proof that the credential
+         is bound to the presenting wallet's secure element (WSCD)
+      4. **User binding**: verify proof that the authorised user is
+         presenting the credential (biometric match, PIN verification, etc.)
+      5. **Wallet unit authenticity**: verify the Wallet Unit Attestation
+         (WUA) and its revocation status
+
+      **The "as agreed" qualification (critical):**
+      The ARF explicitly notes that it does not mandate a Relying Party to
+      require all verifications. The intermediary and each RP must agree on
+      which verifications the intermediary will carry out. This creates a
+      per-RP configuration requirement — some RPs may require full
+      verification while others may accept partial checks.
+
+      **Conditional forwarding (RPI_08 interaction):**
+      If any of the agreed verifications fail, the intermediary SHALL NOT
+      forward any attributes to the RP. Successful verification is a
+      prerequisite for forwarding (VEND-CORE-001).
+
+      The eIDAS legal basis (Art 5b(9)) places ultimate responsibility for
+      verification on the RP, but the intermediary performs it as a delegate
+      per contractual agreement.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -727,7 +817,9 @@ requirements:
       Identity Wallets.
     arfReference:
       topic: Topic 52
-      hlr: RPI_09
+      hlr:
+        - RPI_08
+        - RPI_09
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -736,12 +828,33 @@ requirements:
     category: security
     requirement: Implement TS12 for PSD2 Strong Customer Authentication when processing payment transactions
     explanation: |
-      Payment Service Providers (PSPs) using EUDI Wallet for Strong Customer 
-      Authentication must implement ARF Technical Specification 12 (Electronic 
-      Payments over SCA). TS12 defines how the wallet's cryptographic binding, 
-      dynamic linking, and attestation mechanisms satisfy PSD2 RTS requirements 
-      for authentication elements (knowledge, possession, inherence), independence 
-      of elements, and transaction linking.
+      Payment Service Providers (PSPs) using EUDI Wallets for Strong Customer
+      Authentication must implement ARF Technical Specification 12 (TS12),
+      which defines how the wallet's cryptographic binding, dynamic linking,
+      and attestation mechanisms satisfy PSD2 RTS requirements.
+
+      **PSD2 SCA requirements mapped to EUDI Wallet mechanisms:**
+      - **Two-factor authentication (Art 4)**: SCA requires at least two of
+        three elements: knowledge (PIN/passphrase), possession (device/WSCD),
+        inherence (biometric). The EUDI Wallet's user binding (biometric +
+        device binding) natively satisfies possession and inherence.
+      - **Dynamic linking (Art 5)**: authentication must link the transaction
+        to a specific amount and payee. The wallet can include transaction
+        details in the signed presentation, creating a cryptographic binding.
+      - **Independence of elements (Art 9)**: compromise of one factor must
+        not compromise others. The WSCD-backed key architecture provides
+        hardware-level element separation.
+
+      **TS12 extends the standard OpenID4VP flow (TS5) to include:**
+      - Transaction metadata in presentation requests
+      - Signed acknowledgement of transaction details
+      - Integration points with PSP infrastructure (acquirer, card scheme)
+
+      This requirement is role-restricted: it applies only to vendors whose
+      products are used by PSPs for payment authentication. The vendor should
+      clarify which payment scenarios they support (in-store, online card-
+      not-present, account-to-account) and which SCA exemptions they handle
+      (low-value, recurring, trusted beneficiaries).
     legalBasis:
       regulation: 2018/389
       article: Article 4
@@ -763,11 +876,38 @@ requirements:
     category: issuance
     requirement: Implement TS6 (OpenID4VCI) for attestation issuance into EUDI Wallets
     explanation: |
-      Attestation Issuers must implement the OpenID for Verifiable Credential 
-      Issuance (OpenID4VCI) protocol as specified in Technical Specification 6. 
-      This ensures interoperability with all compliant EUDI Wallet implementations 
-      across Member States. The protocol covers credential offer, authorization, 
-      token exchange, and credential endpoint interactions.
+      Attestation Issuers must implement the OpenID for Verifiable Credential
+      Issuance (OpenID4VCI) protocol as specified in Technical Specification 6
+      (TS6). This ensures interoperability with all compliant EUDI Wallet
+      implementations across Member States.
+
+      **OpenID4VCI protocol flows:**
+      - **Pre-authorized code flow**: the issuer generates a credential offer
+        (e.g., via QR code or deep link) containing a pre-authorized code.
+        The wallet exchanges this for an access token and requests credential
+        issuance. Used for scenarios where the user has already been
+        authenticated outside the wallet (e.g., at a government counter).
+      - **Authorization code flow**: the wallet initiates issuance by
+        directing the user to the issuer's authorization endpoint for
+        authentication. After authorization, the wallet obtains an access
+        token and requests credential issuance.
+      - **Deferred issuance**: the issuer returns a transaction ID indicating
+        the credential is not yet ready. The wallet polls the deferred
+        credential endpoint until issuance is complete.
+
+      **Key implementation requirements:**
+      - **Credential formats**: must support at least one of SD-JWT-VC
+        (IETF-based) or mdoc (ISO 18013-5-based), as mandated by TS1
+      - **Wallet unit authentication**: the issuer must verify the WUA
+        (Wallet Unit Attestation, per TS3) before binding credentials to
+        the wallet's cryptographic keys (VEND-CORE-025)
+      - **Key binding**: issued credentials must be bound to the wallet
+        unit's key pair within the WSCD
+      - **Same-device and cross-device**: support for both issuance models
+        (same device via app-to-app, cross-device via QR code)
+
+      This requirement applies to issuance platforms and is restricted to
+      the issuer role.
     legalBasis:
       regulation: 2024/2982
       article: Article 5
@@ -786,15 +926,42 @@ requirements:
     category: usage
     requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
-      Relying Parties must implement the common data deletion request interface 
-      specified in Technical Specification 7 (TS7). This enables wallet users to 
-      exercise their GDPR Article 17 right to erasure by requesting deletion of 
-      any data the RP has collected from wallet presentations. The interface 
-      provides a standardized machine-readable format for deletion requests.
+      Relying Parties must implement the common data deletion request interface
+      specified in Technical Specification 7 (TS7). This enables wallet users
+      to exercise their GDPR Article 17 right to erasure by requesting
+      deletion of any data the RP has collected from wallet presentations.
 
-      Key obligations per ARF Topic 48:
-      - Authenticate the requesting user before executing deletion (DATA_DLT_07)
-      - Comply with TS7 technical interface requirements (DATA_DLT_08)
+      **The data deletion request chain (Topic 48):**
+      1. **User initiation (DATA_DLT_01-03)**: the wallet unit provides a
+         function where the user can select an RP and initiate a deletion
+         request via URL (web form), email (draft template), or phone call
+      2. **Registrar lookup (DATA_DLT_02a)**: if no RP contact information
+         is in the transaction log, the wallet unit queries the Registrar
+         to obtain the RP's contact details
+      3. **Wallet logging (DATA_DLT_05-06)**: the wallet logs the deletion
+         request initiation (date/time, RP identifier, attributes requested
+         for deletion)
+      4. **RP authentication (DATA_DLT_07)**: before executing deletion, the
+         RP SHALL authenticate the requesting user using appropriate
+         mechanisms — the ARF recommends using the wallet's own
+         authentication or signature facilities for this purpose
+      5. **RP compliance with TS7 (DATA_DLT_08)**: wallets, RPs, and
+         Registrars must comply with the TS7 technical interface
+
+      **Key obligations for the RP/intermediary:**
+      - Implement the TS7 standardised interface for receiving deletion
+        requests in a machine-readable format
+      - Authenticate the requesting user before executing deletion
+      - Process deletion without undue delay (Art 17(1) GDPR)
+      - Handle exceptions (Art 17(3)) where deletion may be refused
+        (legal obligation, public interest, legal claims, archiving)
+      - Confirm completion of deletion to the user
+
+      In the EUDI Wallet intermediary context, the intermediary may receive
+      deletion requests for data it processed on behalf of the RP. Given
+      the no-storage mandate (VEND-CORE-001), the intermediary's deletable
+      data is limited to transaction metadata and audit logs — but the
+      interface must still be implemented.
     legalBasis:
       regulation: 2016/679
       article: Article 17
@@ -819,11 +986,38 @@ requirements:
     category: registration
     requirement: Register attestation schemas in the catalogue per TS11
     explanation: |
-      Attestation Issuers must register their attestation types in the catalogue 
-      of attributes and attestations as specified in Technical Specification 11. 
-      This enables discovery by Relying Parties and ensures attestations follow 
-      the common data model. The catalogue defines attribute schemas, rulebooks, 
-      and the relationship between attestation types.
+      Attestation Issuers must register their attestation types in the EU
+      catalogue of attributes and attestations as specified in Technical
+      Specification 11 (TS11). This catalogue is the authoritative registry
+      enabling discovery and interoperability across the EUDI Wallet ecosystem.
+
+      **Catalogue structure and governance:**
+      - The catalogue defines the **common data model** for attestation
+        schemas — a standardised way to describe attribute names, types,
+        encodings, and validity rules
+      - **Rulebooks** govern sector-specific attestation structures (e.g.,
+        mobile driving licence per ISO 18013-5, payment credentials, health
+        records). Issuers must follow the relevant rulebook for their
+        attestation type
+      - The catalogue maps the relationship between attestation types and
+        the attributes they contain, enabling RPs and wallets to discover
+        what attributes are available for specific attestation types
+
+      **Registration obligations:**
+      - Qualified trust service providers issuing QEAAs must ensure their
+        schemas comply with the TS11 specifications (IR 2024/2981 Art 3(1))
+      - Schemas must be registered before attestation issuance begins
+      - Schema versioning must be managed — updates to schemas must be
+        registered and backward compatibility considered
+
+      **Interoperability impact:**
+      Catalogue registration ensures that a verifier (RP or intermediary) in
+      any Member State can validate the structure and encoding of attestations
+      issued by any compliant issuer. Without catalogue registration, cross-
+      border interoperability of attestations is not possible.
+
+      This requirement applies to issuance platforms and is restricted to
+      the issuer role.
     legalBasis:
       regulation: 2024/2981
       article: Article 3
@@ -842,11 +1036,43 @@ requirements:
     category: usage
     requirement: Implement open standards per TS1 for EUDI Wallet interoperability
     explanation: |
-      All EUDIW ecosystem participants must implement the open standards mapped 
-      in Technical Specification 1. TS1 provides the authoritative mapping between 
-      regulatory requirements and specific open standards (e.g., OpenID4VCI, 
-      OpenID4VP, SD-JWT, mdoc/mDL). This ensures cross-border interoperability 
-      and prevents vendor lock-in.
+      All EUDI Wallet ecosystem participants must implement the open standards
+      mapped in Technical Specification 1 (TS1). TS1 is the authoritative
+      standards index — it provides the definitive mapping between regulatory
+      requirements and the specific open standards that must be used.
+
+      **Core standards mapped by TS1:**
+      - **OpenID4VCI**: issuance protocol (TS6, VEND-CORE-020)
+      - **OpenID4VP**: presentation/verification protocol (TS5)
+      - **SD-JWT-VC**: IETF-based credential format for selective disclosure
+      - **mdoc/mDL (ISO 18013-5)**: ISO-based credential format for mobile
+        documents
+      - **ISO 23220**: extended mobile document specifications
+      - **Status Lists**: credential revocation checking
+
+      **Format duality (SD-JWT + mdoc):**
+      The EUDI Wallet ecosystem mandates support for two credential format
+      families:
+      1. **SD-JWT-VC**: JSON-based, using selective disclosure JWT mechanism.
+         Supports selective disclosure at the claim level.
+      2. **mdoc**: CBOR-based, derived from mobile driving licence standard.
+         Uses CBOR encoding with MSO (Mobile Security Object) for integrity.
+
+      Intermediaries and connectors must be able to verify both formats.
+      Issuance platforms typically specialise in one format based on the
+      attestation type (e.g., mDL uses mdoc, PIDs may use either).
+
+      **Interoperability testing:**
+      Vendors should demonstrate interoperability through participation in
+      EU-organised plugfest events, cross-vendor testing, and conformance
+      test suites. The evolving nature of draft specifications (particularly
+      OpenID4VCI and OpenID4VP drafts) requires active standards tracking
+      and version management.
+
+      **Vendor lock-in prevention:**
+      Article 5a(23) eIDAS requires open standards specifically to prevent
+      vendor lock-in. Any proprietary extensions beyond the TS1-mapped
+      standards should be clearly documented and justified.
     legalBasis:
       regulation: 2024/2982
       article: Article 3
