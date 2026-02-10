@@ -1,5 +1,11 @@
 # RCA Configuration: Legal Sources
 # Hierarchy of regulations referenced in requirements
+#
+# ⚠️ SCOPE: This is a CURATED RCA-ONLY subset consumed by build-rca.js.
+# It is NOT the full portal regulations catalogue. The complete list of
+# imported regulations is in public/data/regulations-index.json (populated
+# by the import-regulation workflow). Do NOT assume a regulation is missing
+# from the portal just because it's not listed here.
 
 # Tier 1: Primary Regulation
 primaryRegulation:
@@ -46,7 +52,7 @@ technicalSpecifications:
     title: "Specification of EUDI Wallet Trust Mark"
     status: "draft"
     githubUrl: "https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications"
-    binding: false  # Not yet adopted
+    binding: false # Not yet adopted
 
   - id: "TS03"
     title: "Specification of Wallet Unit Attestations (WUA)"
@@ -100,4 +106,4 @@ relatedRegulations:
     shortTitle: "General Data Protection Regulation"
     eurLexUrl: "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
     binding: true
-    relevantFor: all  # Applies to all use cases
+    relevantFor: all # Applies to all use cases

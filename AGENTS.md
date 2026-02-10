@@ -606,6 +606,28 @@ if (!byHarmonizedId[harmonizedId] || !requirement.isEmpty) {
 - `src/utils/vcq/exportExcel.js` will look up specs via `byHarmonizedId` with `byHlrId` fallback
 - Search index will display both IDs for discoverability
 
+### Legal Source Data Pipeline Map
+
+The portal has **multiple overlapping data sources** for regulations and standards. Before suggesting "we should add X", trace how the data flows:
+
+| Config/Source | Build Script | Output | Scope |
+|---------------|-------------|--------|-------|
+| `config/rca/legal-sources.yaml` | `scripts/build-rca.js` | `rca-data.json` | **Curated RCA-only subset** — does NOT list all portal regulations |
+| `config/requirements/arf-hlr.json` | Direct load (no build) | Requirements Browser | ARF HLRs for browsing |
+| `01_regulation/` + `02_implementing_acts/` | `scripts/build-documents.js` | `public/data/regulations/*.json` | Full regulation content |
+| `scripts/documents.yaml` | `scripts/pipeline.py` | Source markdown | Document import registry |
+| `public/data/regulations-index.json` | `scripts/build-documents.js` | Sidebar + search | **Complete list of all imported regulations** |
+
+**⚠️ `legal-sources.yaml` ≠ full regulations catalogue.** A regulation may be fully imported (in `regulations-index.json`) but absent from `legal-sources.yaml` because it isn't consumed by the RCA build pipeline.
+
+### External Reference Repositories
+
+| Repository | Purpose | Canonical URL |
+|------------|---------|---------------|
+| **STS repo** | Canonical source for Technical Specifications (TS01–TS14) | `eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications` |
+| **ARF repo** | Architecture Reference Framework (TS dir contains stub redirects only) | `eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework` |
+
+**⚠️ The ARF repo's `docs/technical-specifications/` directory contains stub redirect files, NOT actual spec content.** Always link to the STS repo for TS content.
 
 
 ## 🌐 Documentation Portal
