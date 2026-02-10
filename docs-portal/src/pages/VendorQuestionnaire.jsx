@@ -658,10 +658,11 @@ function ARFReferenceLink({ arfReference, arfData, maxVisible = 2 }) {
     // Normalize hlr to array (supports both string and array)
     const hlrIds = Array.isArray(arfReference.hlr) ? arfReference.hlr : [arfReference.hlr];
 
-    // Get data for all HLRs
+    // Get data for all HLRs — try Old ID index first, then Harmonized ID index
+    // VCQ YAML files may use either format (Old IDs like RPI_01 or Harmonized IDs like AS-RP-51-001)
     const hlrDataList = hlrIds.map(hlrId => ({
         id: hlrId,
-        data: arfData?.byHlrId?.[hlrId] || null
+        data: arfData?.byHlrId?.[hlrId] || arfData?.byHarmonizedId?.[hlrId] || null
     }));
 
     const visibleHlrs = hlrDataList.slice(0, maxVisible);
