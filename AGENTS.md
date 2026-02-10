@@ -803,6 +803,11 @@ Multiline JavaScript passed via `node -e "..."` gets mangled by bash — quotes,
 - ✅ Use dedicated lookup scripts: `node scripts/lookup-hlr.cjs <topic>` for ARF HLR queries
 - ✅ Use `grep` or `jq` for quick JSON searches on large files
 
+**⚠️ Filenames with parentheses require quoting:**
+- ❌ `grep pattern ~/path/ts10-data-portability-and-download-(export).md` — shell interprets `(` as subshell
+- ✅ `grep pattern "$HOME/path/ts10-data-portability-and-download-(export).md"` — double-quote the path
+- Affected files: `04_technical_specs/docs/technical-specifications/ts10-data-portability-and-download-(export).md`
+
 ---
 
 ## 🖥️ WSL Browser Testing
