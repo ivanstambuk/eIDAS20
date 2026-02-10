@@ -500,20 +500,32 @@ requirements:
   VEND-INT-016:
     questions:
       - id: Q1
-        text: "How do you securely store cryptographic material used in verification operations?"
+        text: "How do you securely store cryptographic material used in verification operations? Are private keys stored in HSMs, TPMs, or equivalent hardware-backed secure storage for production deployments?"
         dimension: security
       - id: Q2
-        text: "Are verification keys stored in HSMs or equivalent secure storage?"
+        text: "Are the HSMs or secure enclaves used for key storage certified (e.g., FIPS 140-2/3, Common Criteria EAL4+)? Does your certification level meet the requirements of your RP customers' compliance frameworks?"
         dimension: compliance_evidence
       - id: Q3
-        text: "What access controls govern key usage?"
+        text: "What access controls govern key usage — is key access restricted to specific service accounts, and are all access attempts logged and audited?"
         dimension: security
       - id: Q4
-        text: "How do you prevent unauthorized access, modification, or extraction of keys?"
-        dimension: security
+        text: "What key types does the intermediary manage: TLS server/client keys, JWS signing keys for verification results, trust anchor certificates? Are these stored in separate key hierarchies?"
+        dimension: architecture
       - id: Q5
-        text: "What is your key rotation and lifecycle management process?"
+        text: "What is your key rotation schedule and lifecycle management process? Is rotation automated, and what is the overlap period during which both old and new keys are valid?"
         dimension: lifecycle
+      - id: Q6
+        text: "How do you handle ephemeral session keys generated during OID4VP or ISO 18013-5 device engagement? Are these keys held only in volatile memory and securely zeroed after the session completes?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "What is the emergency key revocation procedure if a key is suspected compromised? What is the maximum time from detection to revocation?"
+        dimension: incident_response
+      - id: Q8
+        text: "How do you prevent keys from appearing in logs, error messages, stack traces, or diagnostic output — especially during debugging or incident investigation?"
+        dimension: security
+      - id: Q9
+        text: "How is key material protected during backup and disaster recovery? Are backups encrypted with separate key encryption keys, and are backup media handled according to the same security policy?"
+        dimension: operational
 
   # ============================================================================
   # VEND-INT-017: Verification Result Integrity
@@ -522,17 +534,32 @@ requirements:
   VEND-INT-017:
     questions:
       - id: Q1
-        text: "How do you protect verification results from tampering before they reach the RP?"
+        text: "How do you protect verification results from tampering before they reach the RP? Do you sign the verification outcome with JWS, or use HMAC with a shared secret?"
         dimension: security
       - id: Q2
-        text: "Are verification results signed or otherwise integrity-protected?"
+        text: "Are verification results signed or otherwise integrity-protected? If signed, what algorithm and key length are used for the JWS signature?"
         dimension: technical_implementation
       - id: Q3
-        text: "How can the RP verify that the verification outcome is authentic and unmodified?"
+        text: "How can the RP independently verify that the verification outcome is authentic and unmodified? Is the intermediary's public key or certificate provided to the RP during onboarding?"
         dimension: interoperability
       - id: Q4
-        text: "What audit trail exists for verification decisions?"
+        text: "What audit trail exists for verification decisions? Can the signed verification result serve as non-repudiable evidence in dispute resolution without requiring access to the original attestation?"
         dimension: auditability
+      - id: Q5
+        text: "What fields are included in the verification result payload — overall outcome, per-check outcomes (RPI_09 breakdown), timestamp, nonce binding, intermediary identifier?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "How do you prevent the verification result from being replayed by a malicious RP to claim a presentation was verified when it was not? Is the result bound to a specific request nonce?"
+        dimension: security
+      - id: Q7
+        text: "Is the verification result format standardised, or is it proprietary to your product? How does this affect RP vendor lock-in?"
+        dimension: interoperability
+      - id: Q8
+        text: "How does verification result integrity interact with the no-storage mandate — can the RP retain the signed result as proof without retaining the underlying attestation data?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "What happens if the verification result signing key is rotated — can RPs still validate historical verification results signed with the previous key?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-INT-018: Verification Audit Logs
@@ -541,20 +568,32 @@ requirements:
   VEND-INT-018:
     questions:
       - id: Q1
-        text: "What verification operations are logged (timestamps, outcomes, error codes)?"
+        text: "What verification operations are logged — timestamps, per-check outcomes (RPI_09 breakdown), error codes, protocol used, processing duration? Is the logging schema documented and configurable?"
         dimension: auditability
       - id: Q2
-        text: "How do you ensure logs do not contain attestation content (per no-storage mandate)?"
+        text: "How do you ensure logs do not contain attestation content (per the no-storage mandate)? Is there an automated content filter or schema enforcement that rejects log entries containing prohibited data?"
         dimension: privacy
       - id: Q3
-        text: "How long are verification logs retained?"
+        text: "How long are verification logs retained, and is the retention period configurable per RP agreement? How do you ensure logs are deleted at the end of the retention period?"
         dimension: data_handling
       - id: Q4
-        text: "Can logs be exported for dispute resolution or compliance audits?"
+        text: "Can logs be exported for dispute resolution or compliance audits? What format and access controls apply to log exports?"
         dimension: operational
       - id: Q5
-        text: "How are logs protected against tampering?"
+        text: "How are logs protected against tampering — append-only storage, cryptographic signing, blockchain anchoring, or another tamper-evidence mechanism?"
         dimension: security
+      - id: Q6
+        text: "Do verification logs contain wallet unit identifiers or device key fingerprints that could enable user tracking across sessions? If so, how is this consistent with the unlinkability requirement (VEND-INT-020)?"
+        dimension: privacy
+      - id: Q7
+        text: "Are logs themselves treated as processing records under GDPR Article 30? Who is the data controller for log data, and is a DPIA required?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "What is the log volume per verification operation, and how does log storage scale with the number of RPs and transactions? Is log aggregation or sampling used at high volume?"
+        dimension: architecture
+      - id: Q9
+        text: "In a multi-instance deployment, how are logs correlated across instances to reconstruct the full verification flow for a single session?"
+        dimension: operational
 
   # ============================================================================
   # VEND-INT-019: No Attribute Extraction
@@ -563,17 +602,32 @@ requirements:
   VEND-INT-019:
     questions:
       - id: Q1
-        text: "What technical controls prevent extraction of individual attribute values from presentations?"
+        text: "What technical controls prevent extraction of individual attribute values from presentations? Is the attestation treated as an opaque binary blob throughout the intermediary's pipeline?"
         dimension: architecture
       - id: Q2
-        text: "Are presentations treated as opaque payloads that cannot be decoded by the intermediary?"
+        text: "Are presentations treated as opaque payloads that cannot be decoded by the intermediary? Or does the intermediary need to partially parse SD-JWT VC disclosures or mDoc IssuerSignedItems for any verification step?"
         dimension: technical_implementation
       - id: Q3
-        text: "How would attribute extraction be detected if it occurred?"
+        text: "How would attribute extraction be detected if it occurred — e.g., via code review, runtime monitoring, or DLP (Data Loss Prevention) controls?"
         dimension: incident_response
       - id: Q4
-        text: "Do you undergo third-party audits to verify no-extraction compliance?"
+        text: "Do you undergo third-party audits or penetration testing to verify no-extraction compliance? What is the audit frequency and scope?"
         dimension: compliance_evidence
+      - id: Q5
+        text: "For RPI_09 checks that require limited attribute access (e.g., user binding via biometric template), how do you ensure the accessed data is minimal, purpose-limited, and securely erased immediately after the check?"
+        dimension: security
+      - id: Q6
+        text: "Does the intermediary's codebase use attestation deserialisation libraries that could inadvertently expose attribute values to application logic? How is this risk controlled?"
+        dimension: architecture
+      - id: Q7
+        text: "How do you prevent analytics, profiling, or machine learning training on presentation content — is there an organisational policy, and is it enforced technically?"
+        dimension: privacy
+      - id: Q8
+        text: "If the product offers value-added services (e.g., age verification, nationality check) that require specific attribute inspection, how is this reconciled with the no-extraction mandate?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "How do you handle debugging and incident investigation without exposing attribute content — e.g., can you reproduce verification failures without access to the original attestation payload?"
+        dimension: operational
 
   # ============================================================================
   # VEND-INT-020: No Cross-RP Correlation
@@ -582,20 +636,32 @@ requirements:
   VEND-INT-020:
     questions:
       - id: Q1
-        text: "What technical and architectural controls prevent correlation of wallet user activity across different RPs?"
+        text: "What technical and architectural controls prevent correlation of wallet user activity across different RPs? Is there logical or physical tenant isolation per RP?"
         dimension: architecture
       - id: Q2
-        text: "Are RP relationships logically isolated to prevent cross-linking?"
+        text: "Are RP relationships logically isolated to prevent cross-linking — separate databases, namespaces, or encryption domains per RP?"
         dimension: security
       - id: Q3
-        text: "What data isolation exists between different RP tenants in your platform?"
+        text: "What data isolation exists between different RP tenants in your platform? Could a database query, log search, or API call inadvertently return data from multiple RP contexts?"
         dimension: architecture
       - id: Q4
-        text: "How would unauthorized correlation be detected?"
+        text: "How would unauthorised correlation be detected — is there monitoring for cross-RP queries, data access anomalies, or staff access pattern analysis?"
         dimension: incident_response
       - id: Q5
-        text: "Do you undergo privacy audits verifying unlinkability?"
+        text: "Do you undergo privacy audits verifying unlinkability? What methodology is used — code audit, data flow analysis, or privacy engineering review?"
         dimension: compliance_evidence
+      - id: Q6
+        text: "Are session identifiers, nonces, and internal correlation IDs designed to be meaningless outside their RP context? Could any identifier format enable cross-RP linking?"
+        dimension: security
+      - id: Q7
+        text: "How are verification logs partitioned per RP? Do log entries contain any common identifiers (wallet unit IDs, device key fingerprints) that could be joined across RP boundaries?"
+        dimension: privacy
+      - id: Q8
+        text: "What staff access controls prevent intermediary personnel from querying across RP tenant boundaries? Is there role-based access with RP-scope restrictions?"
+        dimension: security
+      - id: Q9
+        text: "If the intermediary processes presentations for the same user from two different RPs, are there any shared processing resources (memory pools, thread pools, caches) that could leak information between sessions?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-INT-021: Immediate Data Deletion
@@ -604,22 +670,31 @@ requirements:
   VEND-INT-021:
     questions:
       - id: Q1
-        text: "How do you ensure complete deletion of PIDs, attestations, and user attributes immediately after forwarding to the RP?"
+        text: "How do you ensure complete deletion of PIDs, attestations, and user attributes immediately after forwarding to the RP? Is secure memory zeroing used (not just pointer deallocation)?"
         dimension: technical_implementation
       - id: Q2
-        text: "What is the definition of 'immediately'—what is the maximum time window?"
+        text: "What is the definition of 'immediately' — what is the maximum time window between forwarding completion (or verification failure) and data deletion? Is this SLA contractually defined?"
         dimension: sla
       - id: Q3
-        text: "How is deletion verified (not just marked for deletion, but actually purged)?"
+        text: "How is deletion verified (not just marked for deletion, but actually purged from memory, disk, and swap)? Do you use secure memory APIs (e.g., `memset_s`, `SecureZeroMemory`) that cannot be optimised away by the compiler?"
         dimension: auditability
       - id: Q4
-        text: "How do you handle deletion when forwarding fails?"
+        text: "How do you handle deletion when forwarding fails — is data still deleted immediately per RPI_10, even though the RP never received it? Are retry mechanisms that would require retaining attestation data prohibited?"
         dimension: operational
       - id: Q5
-        text: "Does deletion extend to all copies including memory, caches, and logs?"
+        text: "Does deletion extend to all copies including volatile memory, CPU caches, swap/page files, temporary files, in-memory caches, and log entries? Do you use memory locking (e.g., `mlock`) to prevent paging of sensitive data?"
         dimension: data_handling
       - id: Q6
-        text: "What audit evidence demonstrates compliance with immediate deletion?"
+        text: "What audit evidence demonstrates compliance with immediate deletion — deletion timestamps, memory zeroing confirmations, file system attestation?"
+        dimension: compliance_evidence
+      - id: Q7
+        text: "In a managed/cloud environment, how do you ensure deletion extends to the hypervisor's memory management layer and any transparent encryption/caching layers?"
+        dimension: architecture
+      - id: Q8
+        text: "If the intermediary process crashes mid-verification, what ensures that attestation data in memory is not persisted to core dumps, crash reports, or diagnostic snapshots?"
+        dimension: incident_response
+      - id: Q9
+        text: "How frequently is the deletion mechanism tested? Is there an automated test (e.g., memory scanning after deletion) that verifies no residual data remains?"
         dimension: compliance_evidence
 
   # ============================================================================
@@ -629,26 +704,32 @@ requirements:
   VEND-INT-022:
     questions:
       - id: Q1
-        text: "What RP details do you include in presentation requests (user-friendly name, unique ID, Registrar URL, intended use)?"
+        text: "What RP details do you include in presentation requests — user-friendly name, unique identifier, Registrar URL, intended use identifier, intended use description? Are all 5 RPI_05 fields populated in every request?"
         dimension: technical_implementation
       - id: Q2
-        text: "How do you obtain and maintain RP details for each intermediated RP?"
+        text: "How do you obtain and maintain RP details for each intermediated RP? Is this a one-time onboarding process for static fields (a–c), and per-request selection for dynamic fields (d–e)?"
         dimension: operational
       - id: Q3
-        text: "What happens when RP registration details change—how quickly is the update reflected?"
+        text: "What happens when RP registration details change at the Registrar — how quickly is the update reflected in the intermediary's configuration? Is there automated synchronisation?"
         dimension: lifecycle
       - id: Q4
-        text: "Can the organization customize the user-friendly name and description shown to users?"
+        text: "Can the organisation customise the user-friendly name and description shown to wallet users, or are these strictly taken from the RP's Registrar entry?"
         dimension: flexibility
       - id: Q5
-        text: "How does the product populate the RPRC_19a extension fields (RP name, RP identifier, Registrar URL, intended use identifier, intended use description) in each presentation request?"
+        text: "How does the product populate the RPRC_19a extension fields in each presentation request? Is the population automated from RP configuration, or manually assembled per request?"
         dimension: technical_implementation
       - id: Q6
-        text: "How does the product ensure the RPRC_19a identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario?"
+        text: "How does the product ensure the RPRC_19a identity (intermediated RP) is distinct from the intermediary's own access certificate identity, so wallets correctly detect the intermediary scenario per RPI_07?"
         dimension: compliance_completeness
       - id: Q7
-        text: "What validation is performed to ensure the RPRC_19a fields are consistent with the RP's actual registration at the Registrar?"
+        text: "What validation is performed to ensure the RPRC_19a fields are consistent with the RP's actual registration at the Registrar? Is there a check at onboarding and/or at each request?"
         dimension: compliance_monitoring
+      - id: Q8
+        text: "If the intermediated RP has multiple registered intended uses, how does the product select the correct intended use (d) and description (e) for each specific request? Is this configurable per API call?"
+        dimension: architecture
+      - id: Q9
+        text: "If the intermediated RP has registration certificates (per RPI_03), how does the intermediary know which single certificate to include in the request? Is this part of the RP onboarding configuration?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-023: Credential Format Support

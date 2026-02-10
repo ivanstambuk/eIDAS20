@@ -711,13 +711,44 @@ requirements:
     category: security
     requirement: Implement secure key management for verification operations
     explanation: |
-      The intermediary must implement secure storage and handling of any 
-      cryptographic material used in verification operations. Keys must be 
-      protected against unauthorized access, modification, and extraction.
+      The intermediary must implement secure storage and handling of any
+      cryptographic material used in verification operations. Keys must
+      be protected against unauthorised access, modification, and
+      extraction.
+
+      **Key types requiring protection:**
+      - **TLS private keys** for the intermediary's server certificate
+        (inbound from wallets) and client certificate (outbound to RPs
+        if mTLS is used)
+      - **Ephemeral session keys** generated during OID4VP or ISO
+        18013-5 device engagement
+      - **Signing keys** for verification result JWS signatures
+        (if the intermediary signs its verification outcomes)
+      - **Trust anchor certificates** (public keys, but integrity must
+        be protected against tampering)
+
+      **Storage requirements:**
+      - Private keys SHOULD be stored in HSMs (Hardware Security
+        Modules) or equivalent secure enclaves for production
+        deployments
+      - At minimum, keys must be encrypted at rest using AES-256 or
+        equivalent, with key encryption keys stored separately
+      - Keys must never appear in logs, error messages, or diagnostic
+        output
+
+      **Lifecycle management:**
+      - Key generation with sufficient entropy (CSPRNG)
+      - Automated rotation schedules with overlap periods
+      - Secure destruction when decommissioned (cryptographic erasure)
+      - Emergency revocation procedures for compromised keys
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions implement
+      appropriate technical and organisational measures to ensure a
+      level of security appropriate to the risk.
     roles:
       - relying_party
     productCategories:
@@ -728,13 +759,41 @@ requirements:
     category: security
     requirement: Protect verification results integrity
     explanation: |
-      The verification result communicated to the RP must be protected against 
-      tampering. The RP must be able to trust that the intermediary's verification 
-      outcome is authentic and unmodified.
+      The verification result communicated to the RP must be protected
+      against tampering. The RP must be able to trust that the
+      intermediary's verification outcome is authentic and unmodified.
+
+      **Integrity protection mechanisms (RPI_08):**
+      The intermediary should protect verification results using:
+      - **JWS (JSON Web Signature)** for signing the verification
+        outcome, creating a non-repudiable proof of the intermediary's
+        verification decision
+      - **HMAC** with a shared secret for simpler deployments where
+        non-repudiation is not required
+      - **TLS channel binding** as a baseline transport-level
+        protection (necessary but not sufficient alone)
+
+      **Verification result payload:**
+      The signed result should include:
+      - Verification outcome (pass/fail per RPI_09 check)
+      - Timestamp of verification
+      - Nonce binding (linking the result to the original request)
+      - List of checks performed and their individual outcomes
+      - Intermediary's identifier (for accountability)
+
+      **Non-repudiation:**
+      If the intermediary signs its verification results with a JWS,
+      the RP can independently verify the result's authenticity and
+      retain the signed result as evidence for dispute resolution,
+      without needing to retain the underlying attestation data.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed
+      to be relying parties and shall not store data about the content
+      of the transaction.
     arfReference:
       topic: Topic 52
       hlr: RPI_08
@@ -748,38 +807,92 @@ requirements:
     category: security
     requirement: Maintain audit logs of verification operations
     explanation: |
-      The intermediary should maintain logs of verification operations including 
-      verification timestamps, outcomes, and any errors. These logs support 
-      dispute resolution and compliance auditing while respecting privacy 
-      (no attestation content should be logged).
+      The intermediary should maintain logs of verification operations
+      including verification timestamps, outcomes, and any errors.
+      These logs support dispute resolution and compliance auditing
+      while respecting privacy (no attestation content should be
+      logged).
+
+      **What may be logged (content-free metadata):**
+      - Verification timestamp (ISO 8601)
+      - Session/request identifier (internal correlation ID)
+      - RP identifier (which RP the request was for)
+      - Verification outcome per RPI_09 check (pass/fail)
+      - Error codes and failure reasons
+      - Protocol used (OID4VP / ISO 18013-5)
+      - Processing duration
+
+      **What must NOT be logged (no-storage mandate):**
+      - Individual attribute names or values from the attestation
+      - PID content (name, date of birth, etc.)
+      - Wallet unit identifiers that could enable user tracking
+      - Presentation payloads or fragments thereof
+      - Device binding keys or key material
+
+      **Log integrity and retention:**
+      - Logs should be tamper-evident (append-only, signed, or
+        blockchain-anchored) to support dispute resolution
+      - Retention period should be defined per RP agreement and
+        aligned with GDPR data minimisation
+      - Logs must themselves be protected as processing records
+        under GDPR Article 30
     legalBasis:
       regulation: 2016/679
       article: Article 32
-      paragraph: 1(d)
+      paragraph: "1"
     legalText: |
-      The controller and processor shall implement measures to ensure a process 
-      for regularly testing, assessing and evaluating the effectiveness of 
-      technical and organisational measures for ensuring the security of processing.
+      The controller and processor shall implement measures to ensure
+      a process for regularly testing, assessing and evaluating the
+      effectiveness of technical and organisational measures for
+      ensuring the security of processing.
     roles:
       - relying_party
     productCategories:
       - connector
     deadline: "2027-11-21"
     notes: |
-      Logs must not contain attestation content (due to no-storage mandate) 
+      Logs must not contain attestation content (due to no-storage mandate)
       but may contain verification metadata (pass/fail, timestamp, error codes).
     obligation: MUST
   - id: VEND-INT-019
     category: usage
     requirement: Do not extract or log individual attribute values from presentations
     explanation: |
-      Beyond the no-storage mandate, intermediaries must not extract, log, or 
-      analyze individual attribute values from wallet presentations. The 
-      presentation should be treated as an opaque payload for forwarding.
+      Beyond the no-storage mandate, intermediaries must not extract,
+      log, or analyse individual attribute values from wallet
+      presentations. The presentation should be treated as an opaque
+      payload for forwarding.
+
+      **Sealed pipeline architecture:**
+      The intermediary's processing pipeline should be designed so that
+      attestation content is never decoded into individual attributes.
+      Verification operations (RPI_09 checks) require cryptographic
+      validation of signatures, device binding, and revocation status,
+      but these operations can be performed without parsing the
+      attribute-level content.
+
+      **Prohibited actions:**
+      - Parsing SD-JWT VC disclosures to extract individual claims
+      - Decoding mDoc `IssuerSignedItem` elements to read attribute
+        values
+      - Logging attribute names or values in any form
+      - Indexing or searching over presentation content
+      - Performing analytics, profiling, or ML training on content
+
+      **Tension with verification:**
+      Some RPI_09 checks (e.g., user binding, where the attestation
+      may contain a user photo or biometric template) may require
+      limited attribute access. If such access is necessary, it must
+      be minimal, purpose-limited, and the accessed data must be
+      securely erased immediately after the verification step.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed
+      to be relying parties and shall not store data about the content
+      of the transaction.
     roles:
       - relying_party
     productCategories:
@@ -790,13 +903,45 @@ requirements:
     category: usage
     requirement: Do not correlate or link user presentations across different RPs
     explanation: |
-      Intermediaries serving multiple RPs must not correlate wallet user activity 
-      across different RP interactions. Each RP relationship must be treated 
-      independently to preserve user unlinkability.
+      Intermediaries serving multiple RPs must not correlate wallet
+      user activity across different RP interactions. Each RP
+      relationship must be treated independently to preserve user
+      unlinkability.
+
+      **Unlinkability as a fundamental right (Article 5a(16a)):**
+      The eIDAS Regulation explicitly mandates that providers of
+      electronic identity means shall not collect information about
+      the use of the wallet that is not necessary for the provision
+      of the service. This extends to intermediaries who, by serving
+      multiple RPs, have a unique vantage point for cross-RP tracking.
+
+      **Architectural isolation requirements:**
+      - **Session isolation**: each RP's sessions must be logically
+        separated; session identifiers must not enable cross-RP linking
+      - **Data isolation**: no shared databases, caches, or data
+        structures where user-identifiable data from different RP
+        contexts could be joined
+      - **Log isolation**: verification logs must not contain common
+        identifiers (wallet unit IDs, device keys) that could be
+        correlated across RP boundaries
+      - **Staff access controls**: intermediary personnel must not
+        have the ability to query across RP tenant boundaries
+
+      **Technical anti-correlation mechanisms:**
+      - Avoid storing or processing wallet unit identifiers beyond
+        the immediate session
+      - Use per-RP, per-session correlation IDs that are meaningless
+        outside their context
+      - Ensure nonce stores are partitioned per RP to prevent
+        cross-RP session linking
     legalBasis:
       regulation: 2014/910
       article: Article 5a
-      paragraph: 16(a)
+      paragraph: "16"
+    legalText: |
+      Providers of electronic identification means shall not collect
+      information on the use of the European Digital Identity Wallet
+      that is not necessary for the provision of the wallet services.
     roles:
       - relying_party
     productCategories:
@@ -807,11 +952,41 @@ requirements:
     category: usage
     requirement: Delete attestation data immediately after forwarding to RP
     explanation: |
-      The intermediary must completely delete all PIDs, attestations, and user 
-      attributes immediately after sending them to the intermediated RP. If 
-      forwarding fails or is not performed (e.g., due to verification failure), 
-      deletion must still occur immediately after completing all necessary 
-      verifications.
+      The intermediary must completely delete all PIDs, attestations,
+      and user attributes immediately after sending them to the
+      intermediated RP. If forwarding fails or is not performed
+      (e.g., due to verification failure), deletion must still occur
+      immediately after completing all necessary verifications.
+
+      **RPI_10 requirements:**
+      The intermediary SHALL delete any PIDs or attestations it
+      obtained from the Wallet Unit, including any user attributes,
+      completely and immediately after sending them to the RP. If
+      the intermediary does not send any attributes (e.g., because
+      a verification failed), deletion must occur immediately after
+      completing all verifications.
+
+      **Scope of deletion:**
+      - Attestation payloads in memory (secure zeroing, not just
+        deallocation)
+      - Any temporary files created during processing
+      - In-memory caches or buffers
+      - Database records (if any were created during processing)
+      - Log entries that may contain attestation fragments
+      - Swap/page file entries (consider memory locking to prevent
+        paging)
+
+      **Verification of deletion:**
+      The product should provide auditable evidence of deletion:
+      - Deletion timestamp recorded in the verification log
+      - Memory zeroing confirmation (e.g., via secure memory APIs)
+      - File system confirmation (if temporary files were used)
+
+      **Failure scenarios:**
+      If the RP's endpoint is unreachable and forwarding fails, the
+      intermediary MUST still delete immediately. Retry mechanisms
+      that would require retaining attestation data are prohibited
+      by the no-storage mandate.
     arfReference:
       topic: Topic 52
       hlr: RPI_10
@@ -819,6 +994,10 @@ requirements:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed
+      to be relying parties and shall not store data about the content
+      of the transaction.
     roles:
       - relying_party
     productCategories:
@@ -829,30 +1008,47 @@ requirements:
     category: contracts
     requirement: Specify RP details in each presentation request to wallet
     explanation: |
-      When requesting attestations from a wallet, the intermediary must include 
-      complete information about the intermediated RP via the RPRC_19a extension 
-      in the presentation request. The required fields are:
+      When requesting attestations from a wallet, the intermediary must
+      include complete information about the intermediated RP via the
+      RPRC_19a extension in the presentation request.
 
-      - User-friendly name of the intermediated RP
-      - Unique identifier of the intermediated RP
-      - URL of the Registrar where the RP is registered
-      - Intended use identifier (selecting the applicable registered use)
-      - User-friendly description of the intended use
+      **Required RPI_05 fields:**
+      The intermediated RP must supply the following to the
+      intermediary, which SHALL include them in each request:
+      - (a) User-friendly name of the intermediated RP
+      - (b) Unique identifier of the intermediated RP
+      - (c) URL of the Registrar where the RP is registered
+      - (d) Identifier of the intended use (selecting the applicable
+        registered use)
+      - (e) User-friendly description of the intended use
 
-      This data enables the wallet to (a) display accurate RP information to 
-      the user per RPI_07, (b) verify that requested attributes match what the 
-      RP registered per RPRC_21, and (c) detect that the request is from an 
-      intermediary rather than a direct RP (by comparing the RPRC_19a identity 
-      with the access certificate identity).
+      Since (a)-(c) are static, they can be configured once during
+      RP onboarding. Items (d)-(e) are also static if the RP has
+      only one registered intended use, but must be dynamically
+      selected per request if the RP has multiple uses.
+
+      **Registration certificate inclusion:**
+      If the intermediated RP has registration certificates (per
+      RPI_03), it SHALL also indicate which single registration
+      certificate the intermediary must include in the request.
+
+      **Wallet behaviour enabled by this data:**
+      This data enables the wallet to:
+      - Display accurate RP information to the user (per RPI_07)
+      - Verify that requested attributes match what the RP registered
+        (per RPRC_21)
+      - Detect that the request is from an intermediary rather than a
+        direct RP (by comparing RPRC_19a identity with the access
+        certificate identity)
     legalBasis:
       regulation: 2025/848
       article: Annex I
-      paragraph: 9-10
+      paragraph: "9"
     legalText: |
-      For each intended use, a list of the data, including attestations and 
-      attributes, that the relying party intends to request, a user-friendly 
-      name and a technical name, the attestation type and a description of 
-      intended use of the data.
+      For each intended use, a list of the data, including attestations
+      and attributes, that the relying party intends to request, a
+      user-friendly name and a technical name, the attestation type
+      and a description of intended use of the data.
     arfReference:
       topic: Topic 52
       hlr:
