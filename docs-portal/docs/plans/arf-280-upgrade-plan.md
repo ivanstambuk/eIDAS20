@@ -115,7 +115,7 @@
 - [x] Update ARF version references: `vcq-config.yaml` ARF_2.7.3 → ARF_2.8.0 ✅
 - [x] Update plan header: current version → v2.8.0, status → Complete ✅
 - [x] Merge feature branch to master: `74ca1faf` ✅
-- [ ] Push + clean up tags
+- [x] Push to origin + clean up: deleted `pre-arf-280` tag (local + remote), deleted `feat/arf-280-upgrade` branch ✅
 
 ---
 
