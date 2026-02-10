@@ -4,18 +4,23 @@ requirements:
     category: usage
     requirement: Intermediaries shall not store data about the content of transactions
     explanation: |
-      The no-storage mandate is the central privacy protection for wallet users 
-      when interacting through intermediaries. Vendors acting on behalf of RPs 
-      are deemed to be relying parties themselves and must not retain any data 
-      from wallet presentations beyond what is strictly necessary for immediate 
-      transaction completion.
+      The no-storage mandate is the central privacy protection for wallet users
+      when interacting through intermediaries. Vendors acting on behalf of RPs
+      are deemed to be relying parties themselves and are subject to an absolute
+      prohibition on storing data about the content of transactions. The ARF
+      further specifies (RPI_10) that intermediaries must delete any PIDs or
+      attestations obtained from the Wallet Unit completely and immediately
+      after forwarding user attributes to the intermediated Relying Party.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
     legalText: |
-      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      Intermediaries acting on behalf of relying parties shall be deemed to be
       relying parties and shall not store data about the content of the transaction.
+    arfReference:
+      topic: Topic 52
+      hlr: RPI_10
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -33,12 +38,20 @@ requirements:
       article: Article 28
       paragraph: "3"
     legalText: |
-      Processing by a processor shall be governed by a contract or other legal act 
-      under Union or Member State law, that is binding on the processor with regard 
-      to the controller and that sets out the subject-matter and duration of the 
-      processing, the nature and purpose of the processing, the type of personal 
-      data and categories of data subjects and the obligations and rights of the 
-      controller.
+      Processing by a processor shall be governed by a contract or other legal act
+      under Union or Member State law, that is binding on the processor with regard
+      to the controller and that sets out the subject-matter and duration of the
+      processing, the nature and purpose of the processing, the type of personal
+      data and categories of data subjects and the obligations and rights of the
+      controller. That contract or other legal act shall stipulate, in particular,
+      that the processor: (a) processes the personal data only on documented
+      instructions from the controller; (b) ensures that persons authorised to
+      process the personal data have committed themselves to confidentiality;
+      (c) takes all measures required pursuant to Article 32; [...]
+      (h) makes available to the controller all information necessary to
+      demonstrate compliance with the obligations laid down in this Article and
+      allow for and contribute to audits, including inspections, conducted by the
+      controller or another auditor mandated by the controller.
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -68,19 +81,24 @@ requirements:
     category: registration
     requirement: Register as a Relying Party indicating intermediary status
     explanation: |
-      Any entity acting as an intermediary must register as a Relying Party with 
-      Member State authorities according to Topic 27 requirements, while explicitly 
-      indicating its intent to act as an intermediary. This registration establishes 
-      the legal basis for operation, enables oversight, and allows the intermediary 
-      to obtain an access certificate containing its own name and unique ID.
+      Any entity acting as an intermediary must register as a Relying Party with
+      Member State authorities in accordance with the general registration
+      requirements (ARF Topic 27) and the intermediary-specific requirements
+      (ARF Topic 52, RPI_01), while explicitly indicating its intent to act as
+      an intermediary. The registration process is governed by Implementing
+      Regulation (EU) 2025/848, which specifies national register requirements,
+      registration policies, and the information to be provided (Annex I),
+      including an indication of reliance on an intermediary (Annex I, point 14).
+      Registration enables the intermediary to obtain an access certificate
+      containing its own name and unique identifier.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "1"
     legalText: |
-      Where a relying party intends to rely upon European Digital Identity 
-      Wallets for the provision of public or private services by means of 
-      digital interaction, the relying party shall register in the Member 
+      Where a relying party intends to rely upon European Digital Identity
+      Wallets for the provision of public or private services by means of
+      digital interaction, the relying party shall register in the Member
       State where it is established.
     arfReference:
       topic: Topic 52
@@ -93,13 +111,23 @@ requirements:
     category: registration
     requirement: Maintain a valid Relying Party Access Certificate
     explanation: |
-      Intermediaries must obtain and maintain access certificates from a 
-      notified Access Certificate Authority. This certificate authenticates 
-      the intermediary to wallet units and enables trust verification.
+      Intermediaries must obtain and maintain wallet-relying party access
+      certificates from a provider of access certificates mandated by the
+      Member State where they are registered (IR 2025/848, Article 7).
+      This certificate authenticates the intermediary to wallet units in all
+      PID or attestation presentation transactions, whether proximity or
+      remote (ARF RPA_03). The access certificate must comply with the
+      harmonised certificate policy requirements set out in Annex IV of
+      IR 2025/848, including the ETSI EN 319411-1 NCP requirements.
     legalBasis:
       regulation: 2025/848
-      article: Article 8
-      paragraph: "1"
+      article: Article 7
+      paragraph: "1-2"
+    legalText: |
+      Member States shall authorise at least one certificate authority to issue
+      wallet-relying party access certificates. Member States shall ensure that
+      providers of wallet-relying party access certificates issue wallet-relying
+      party access certificates exclusively to registered wallet-relying parties.
     arfReference:
       topic: Topic 6
       hlr: RPA_03
@@ -133,15 +161,20 @@ requirements:
     category: security
     requirement: Notify the RP of data breaches without undue delay
     explanation: |
-      When a personal data breach occurs at the intermediary, they must 
-      notify the RP (as controller) without undue delay so the RP can 
-      fulfill its obligations to supervisory authorities and data subjects.
+      When a personal data breach occurs at the intermediary (processor), they
+      must notify the RP (as controller) without undue delay after becoming
+      aware of the breach. This is critical because the controller must notify
+      the supervisory authority within 72 hours of becoming aware of the breach
+      (Article 33(1)), making timely processor-to-controller notification
+      essential to the entire breach response chain. The notification must
+      enable the controller to describe the nature of the breach, its likely
+      consequences, and the measures taken or proposed (Article 33(3)).
     legalBasis:
       regulation: 2016/679
       article: Article 33
       paragraph: "2"
     legalText: |
-      The processor shall notify the controller without undue delay after 
+      The processor shall notify the controller without undue delay after
       becoming aware of a personal data breach.
     roles: []
     productCategories: []
