@@ -200,16 +200,16 @@ Each question is a **single, focused question** — no (a)(b)(c)(d) sub-question
 
 | # | Task | Files affected | Status |
 |---|------|---------------|--------|
-| 3.1 | Add `selectedArchitectures` state (3 checkboxes, default all checked) | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.2 | Conditional rendering: show architecture filter only for `relying_party` + `connector` | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.3 | Integrate into `applicableRequirements` memo — filter by `deploymentArchitectures` union logic | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.4 | Render architecture badges next to requirement IDs in `RequirementsTable` | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.5 | Style architecture badges (CSS) — color-coded, compact | CSS file | ⬜ TODO |
-| 3.6 | Add architecture badges to clarification question items | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.7 | Update Markdown export with architecture badges | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.8 | Update Excel export with architecture column | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.9 | Update summary bar count for architecture-filtered count | `VendorQuestionnaire.jsx` | ⬜ TODO |
-| 3.10 | Manual verification in portal | — | ⬜ TODO |
+| 3.1 | Add `selectedArchitectures` state (3 checkboxes, default all checked) | `VendorQuestionnaire.jsx` | ✅ DONE |
+| 3.2 | Conditional rendering: show architecture filter only for `relying_party` + `connector` | `VendorQuestionnaire.jsx` | ✅ DONE |
+| 3.3 | Integrate into `applicableRequirements` memo — filter by `deploymentArchitectures` union logic | `VendorQuestionnaire.jsx` | ✅ DONE |
+| 3.4 | Render architecture badges next to requirement IDs in `RequirementsTable` | `VendorQuestionnaire.jsx` | ✅ DONE |
+| 3.5 | Style architecture badges (CSS) — color-coded, compact | CSS file | ✅ DONE |
+| 3.6 | Add architecture badges to clarification question items | `VendorQuestionnaire.jsx` | ⏭️ SKIPPED (badges on IDs sufficient) |
+| 3.7 | Update Markdown export with architecture badges | `VendorQuestionnaire.jsx` | ✅ DONE |
+| 3.8 | Update Excel export with architecture column | `exportExcel.js` | ✅ DONE |
+| 3.9 | Update summary bar count for architecture-filtered count | `VendorQuestionnaire.jsx` | ✅ DONE (uses existing count) |
+| 3.10 | Manual verification in portal | — | ✅ DONE |
 | 3.11 | Git commit: `feat: add deployment architecture filter and badges to VCQ UI` | — | ⬜ TODO |
 
 ### Phase 4: Documentation & cleanup

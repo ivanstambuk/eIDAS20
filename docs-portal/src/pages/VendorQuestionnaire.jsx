@@ -4,13 +4,16 @@
  * Vendor Compliance Questionnaire generator for organizations evaluating
  * third-party products to integrate with the EUDIW ecosystem.
  * 
- * Updated: 2026-01-28 (DEC-257: Role/Category filtering now functional)
+ * Updated: 2026-02-10 (DEC-TBD: Deployment Architecture filtering)
  * - Step 1: Organisation Role Selection (Relying Party, Issuer)
  * - Step 2: Product Category Selection (Connector, Issuance Platform, Trust Services)
+ * - Step 2b: Deployment Architecture Filter (Intermediary, Direct SaaS, Direct Self-Hosted)
  * - Step 3: Source Selection (eIDAS, Related Regulations, Tech Specs)
  * 
  * Note: Role/Category selection now filters requirements using schema v2
  * requirementsByRole and requirementsByProductCategory indexes.
+ * Architecture filtering applies union logic: show if ANY tag matches selected,
+ * or if deploymentArchitectures is empty (agnostic).
  */
 
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
@@ -24,6 +27,37 @@ import './VendorQuestionnaire.css';
 // ============================================================================
 // Constants
 // ============================================================================
+
+// Deployment Architecture definitions (DEC-TBD)
+const DEPLOYMENT_ARCHITECTURES = {
+    intermediary: {
+        id: 'intermediary',
+        label: 'Intermediary',
+        shortLabel: 'INT',
+        icon: '🔗',
+        color: '#3b82f6',       // Blue
+        bgColor: 'rgba(59, 130, 246, 0.12)',
+        description: 'Third-party acts as RP on behalf of the integrating organisation',
+    },
+    direct_saas: {
+        id: 'direct_saas',
+        label: 'Direct SaaS',
+        shortLabel: 'SaaS',
+        icon: '☁️',
+        color: '#8b5cf6',       // Purple
+        bgColor: 'rgba(139, 92, 246, 0.12)',
+        description: 'Organisation is the RP; vendor provides hosted connector service',
+    },
+    direct_onprem: {
+        id: 'direct_onprem',
+        label: 'Direct Self-Hosted',
+        shortLabel: 'OnPrem',
+        icon: '🏠',
+        color: '#10b981',       // Emerald
+        bgColor: 'rgba(16, 185, 129, 0.12)',
+        description: 'Organisation is the RP; deploys vendor software on own infrastructure',
+    },
+};
 
 const ORGANISATION_ROLES = {
     relying_party: {
@@ -372,6 +406,54 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }
 
 
                         </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// Step 2b: Deployment Architecture Selector (DEC-TBD)
+// ============================================================================
+
+function ArchitectureSelector({ selectedArchitectures, onToggle }) {
+    const allArchitectures = Object.values(DEPLOYMENT_ARCHITECTURES);
+
+    return (
+        <div className="vcq-step vcq-arch-step">
+            <div className="vcq-step-header">
+                <span className="vcq-step-number">2b</span>
+                <h3>Deployment Architecture</h3>
+            </div>
+            <p className="vcq-step-hint">
+                Filter requirements by how the vendor product integrates with your RP infrastructure.
+                Agnostic requirements always show regardless of selection.
+            </p>
+            <div className="vcq-arch-selector">
+                {allArchitectures.map(arch => {
+                    const isSelected = selectedArchitectures.includes(arch.id);
+                    return (
+                        <label
+                            key={arch.id}
+                            className={`vcq-arch-option ${isSelected ? 'selected' : ''}`}
+                            style={{
+                                '--arch-color': arch.color,
+                                '--arch-bg': arch.bgColor,
+                            }}
+                        >
+                            <input
+                                type="checkbox"
+                                checked={isSelected}
+                                onChange={() => onToggle(arch.id)}
+                                className="vcq-arch-checkbox"
+                            />
+                            <span className="vcq-arch-icon">{arch.icon}</span>
+                            <div className="vcq-arch-text">
+                                <span className="vcq-arch-label">{arch.label}</span>
+                                <span className="vcq-arch-desc">{arch.description}</span>
+                            </div>
+                        </label>
                     );
                 })}
             </div>
@@ -964,7 +1046,26 @@ function RequirementsTable({ requirements, categories, onAnswerChange, answers, 
                                         const answer = answers[req.id]?.value || 'pending';
                                         return (
                                             <tr key={req.id}>
-                                                <td className="col-id">{req.id}</td>
+                                                <td className="col-id">
+                                                    {req.id}
+                                                    {req.deploymentArchitectures && req.deploymentArchitectures.length > 0 && (
+                                                        <div className="vcq-arch-badges">
+                                                            {req.deploymentArchitectures.map(archId => {
+                                                                const arch = DEPLOYMENT_ARCHITECTURES[archId];
+                                                                if (!arch) return null;
+                                                                return (
+                                                                    <span
+                                                                        key={archId}
+                                                                        className={`vcq-arch-badge arch-${archId}`}
+                                                                        title={arch.description}
+                                                                    >
+                                                                        {arch.shortLabel}
+                                                                    </span>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    )}
+                                                </td>
                                                 <td className="col-requirement">
                                                     <div className="vcq-req-text">{req.requirement}</div>
                                                     <div className="vcq-req-toggles">
@@ -1035,6 +1136,12 @@ export default function VendorQuestionnaire() {
 
     // Step 2: Product Categories
     const [selectedCategories, setSelectedCategories] = useState([]);
+
+    // Step 2b: Deployment Architectures (DEC-TBD)
+    // Default all checked — agnostic requirements always show regardless
+    const [selectedArchitectures, setSelectedArchitectures] = useState(
+        () => Object.keys(DEPLOYMENT_ARCHITECTURES)
+    );
 
     // Step 3: Source Groups
     const [selectedSourceGroups, setSelectedSourceGroups] = useState({
@@ -1110,6 +1217,15 @@ export default function VendorQuestionnaire() {
         setShowResults(false);
     }, []);
 
+    const handleToggleArchitecture = useCallback((archId) => {
+        setSelectedArchitectures(prev =>
+            prev.includes(archId)
+                ? prev.filter(id => id !== archId)
+                : [...prev, archId]
+        );
+        setShowResults(false);
+    }, []);
+
     const handleToggleSourceGroup = useCallback((groupId) => {
         setSelectedSourceGroups(prev => ({
             ...prev,
@@ -1169,6 +1285,22 @@ export default function VendorQuestionnaire() {
 
         let filtered = data.requirements.filter(req => reqIds.has(req.id));
 
+        // DEC-TBD: Filter by deployment architectures (union logic)
+        // A requirement shows if:
+        //   - deploymentArchitectures is empty (agnostic — always shows)
+        //   - OR any of its architectures matches a selected architecture
+        // Only applies when architecture selector is visible (RP + Connector)
+        const showArchFilter = selectedRoles.includes('relying_party') &&
+            selectedCategories.includes('connector');
+
+        if (showArchFilter && selectedArchitectures.length < Object.keys(DEPLOYMENT_ARCHITECTURES).length) {
+            filtered = filtered.filter(req => {
+                const reqArchs = req.deploymentArchitectures || [];
+                if (reqArchs.length === 0) return true; // Agnostic — always show
+                return reqArchs.some(arch => selectedArchitectures.includes(arch));
+            });
+        }
+
         // DEC-286: Filter by source groups using union logic
         // A requirement appears if ANY of its sourceGroups is selected
         const activeGroups = Object.entries(selectedSourceGroups)
@@ -1186,7 +1318,7 @@ export default function VendorQuestionnaire() {
         }
 
         return filtered;
-    }, [data, selectedRoles, selectedCategories, selectedSourceGroups]);
+    }, [data, selectedRoles, selectedCategories, selectedSourceGroups, selectedArchitectures]);
 
     // Compute effective categories based on active categorization scheme (DEC-279)
     const effectiveCategories = useMemo(() => {
@@ -1225,6 +1357,10 @@ export default function VendorQuestionnaire() {
         md += `**Generated:** ${new Date().toLocaleDateString()}\n\n`;
         md += `**Organisation Role(s):** ${roleLabels}\n\n`;
         md += `**Product Category:** ${categoryLabels}\n\n`;
+        if (selectedRoles.includes('relying_party') && selectedCategories.includes('connector')) {
+            const archLabels = selectedArchitectures.map(id => DEPLOYMENT_ARCHITECTURES[id]?.label || id).join(', ');
+            md += `**Deployment Architecture(s):** ${archLabels || 'None'}\n\n`;
+        }
         md += `**Source Groups:** ${activeSources || 'None'}\n\n`;
         md += `**Grouping:** ${CATEGORIZATION_SCHEMES[categorizationScheme].label}\n\n`;
         md += `**Total Requirements:** ${applicableRequirements.length}\n\n`;
@@ -1248,7 +1384,15 @@ export default function VendorQuestionnaire() {
                 const answerIcon = answer === 'yes' ? '✅' : answer === 'no' ? '❌' :
                     answer === 'partial' ? '⚠️' : answer === 'na' ? '➖' : '⏳';
 
-                md += `### ${req.id}\n\n`;
+                md += `### ${req.id}`;
+                // Add architecture badges
+                if (req.deploymentArchitectures && req.deploymentArchitectures.length > 0) {
+                    const archTags = req.deploymentArchitectures
+                        .map(id => DEPLOYMENT_ARCHITECTURES[id]?.shortLabel || id)
+                        .join(', ');
+                    md += ` \`[${archTags}]\``;
+                }
+                md += `\n\n`;
                 md += `**Requirement:** ${req.requirement}\n\n`;
                 if (req.explanation) {
                     md += `**Explanation:** ${req.explanation}\n\n`;
@@ -1377,6 +1521,15 @@ export default function VendorQuestionnaire() {
                 selectedCategories={selectedCategories}
                 onToggle={handleToggleCategory}
             />
+
+            {/* Step 2b: Deployment Architecture Filter (DEC-TBD) */}
+            {/* Only visible when RP + Connector selected */}
+            {selectedRoles.includes('relying_party') && selectedCategories.includes('connector') && (
+                <ArchitectureSelector
+                    selectedArchitectures={selectedArchitectures}
+                    onToggle={handleToggleArchitecture}
+                />
+            )}
 
             {/* Step 3: Source Selection */}
             <SourceSelector

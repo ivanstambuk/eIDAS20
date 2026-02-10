@@ -216,6 +216,15 @@ function formatProductCategories(req) {
     ).join(', ');
 }
 
+function formatDeploymentArchitectures(req) {
+    if (!req.deploymentArchitectures || req.deploymentArchitectures.length === 0) return 'All';
+    return req.deploymentArchitectures.map(a =>
+        a === 'intermediary' ? 'Intermediary' :
+            a === 'direct_saas' ? 'Direct SaaS' :
+                a === 'direct_onprem' ? 'Direct Self-Hosted' : a
+    ).join(', ');
+}
+
 /**
  * Normalize YAML block scalar text for Excel export.
  * 
@@ -293,6 +302,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         'Deadline',
         'Roles',
         'Product Categories',
+        'Deployment Architecture',
         'Legal Basis',
         'Legal Text',
         'ARF Reference',
@@ -352,6 +362,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
                 { v: req.deadline || '', s: cellStyle },
                 { v: formatRoles(req), s: cellStyle },
                 { v: formatProductCategories(req), s: cellStyle },
+                { v: formatDeploymentArchitectures(req), s: cellStyle },
                 { v: formatLegalBasis(req), s: cellStyle },
                 { v: cleanText(req.legalText), s: cellStyle },
                 { v: formatArfReference(req), s: cellStyle },
@@ -377,6 +388,7 @@ export function exportToExcel({ requirements, answers, selectedRoles, selectedCa
         { wch: 12 },  // Deadline
         { wch: 12 },  // Roles
         { wch: 18 },  // Product Categories
+        { wch: 20 },  // Deployment Architecture
         { wch: 22 },  // Legal Basis
         { wch: 50 },  // Legal Text
         { wch: 22 },  // ARF Reference

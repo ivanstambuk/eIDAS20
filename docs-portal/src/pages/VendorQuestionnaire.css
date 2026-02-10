@@ -1292,6 +1292,117 @@
     text-align: center;
 }
 
+/* ============================================================================
+   Deployment Architecture Selector (Step 2b) & Badges
+   ============================================================================ */
+
+.vcq-arch-step {
+    border-left: 3px solid rgba(59, 130, 246, 0.3);
+}
+
+.vcq-arch-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+}
+
+.vcq-arch-option {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vcq-arch-option:hover {
+    border-color: var(--arch-color, var(--accent-primary));
+    background: var(--arch-bg, rgba(0, 200, 200, 0.05));
+}
+
+.vcq-arch-option.selected {
+    border-color: var(--arch-color, var(--accent-primary));
+    background: var(--arch-bg, rgba(0, 200, 200, 0.08));
+    box-shadow: 0 0 0 1px var(--arch-color, var(--accent-primary));
+}
+
+.vcq-arch-checkbox {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--arch-color, var(--accent-primary));
+}
+
+.vcq-arch-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.vcq-arch-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.vcq-arch-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.vcq-arch-desc {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Architecture badges in requirements table */
+.vcq-arch-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 4px;
+}
+
+.vcq-arch-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+    font-size: 9px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.vcq-arch-badge.arch-intermediary {
+    background: rgba(59, 130, 246, 0.12);
+    color: #3b82f6;
+}
+
+.vcq-arch-badge.arch-direct_saas {
+    background: rgba(139, 92, 246, 0.12);
+    color: #8b5cf6;
+}
+
+.vcq-arch-badge.arch-direct_onprem {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+}
+
+@media (max-width: 768px) {
+    .vcq-arch-selector {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Answer select */
 .vcq-answer-select {
     width: 100%;
