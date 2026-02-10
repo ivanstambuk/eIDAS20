@@ -20,7 +20,7 @@
 | **0** | Create rollback safety net | ✅ Done | `6b7ff77d` |
 | **1** | Import v2.8.0 files | ✅ Done | `6b7ff77d` |
 | **2** | Update VCQ references + Harmonized ID migration | ✅ Done | `c0d6463a` |
-| **3** | Review new HLRs for coverage gaps | ⬜ Not started | — |
+| **3** | Review new HLRs for coverage gaps | ✅ Done | `d3c00a45` |
 | **3.5** | Validate deep links + pin URLs | ⬜ Not started | — |
 | **4** | Rebuild and validate | ⬜ Not started | — |
 | **5** | Document decisions + merge | ⬜ Not started | — |
@@ -70,13 +70,16 @@
 - [x] Run validation: `validate-vcq-arf.js` (0 errors) + `validate:vcq` (0 errors, 191 refs valid)
 - [x] 🔒 COMMIT: `c0d6463a`
 
-### Phase 3: Review new HLRs for coverage gaps ⬜
+### Phase 3: Review new HLRs for coverage gaps ✅
 
-- [ ] Assess Topic 56 (WPSM) — Wallet Provider maintenance
-- [ ] Assess Topic 10 (ISSU_64–73) — new ETSI issuance requirements
-- [ ] Assess Topic 11 (PA_23–31) — pseudonym rate-limiting
-- [ ] Assess Topic 38 — revocation restructuring reference integrity
-- [ ] Assess Topic 20 (SUA_06, SUA_07) — Wallet UI rendering for SCA
+- [x] Assess Topic 56 (WPSM) — ⬜ No action (all Wallet Provider scope)
+- [x] Assess Topic 10 (ISSU_64–73) — 🔴 NEW: VEND-ISS-042, VEND-ISS-043 + updated ISS-008, ISS-012
+- [x] Assess Topic 11 (PA_23–31) — ⚠️ Note added to VEND-CORE-033 (rate-limited pseudonyms)
+- [x] Assess Topic 38 — ⚠️ Note + HLR refs added to VEND-ISS-041 (WURevocation_13 harm assessment)
+- [x] Assess Topic 20 (SUA_06, SUA_07) — ⬜ No action (all Wallet Unit scope)
+- [x] Full impact assessment: `docs/research/arf-280-new-hlr-assessment.md`
+- [x] Run validation: 0 errors, 203 valid ARF refs, 153 total reqs, 30.7% coverage
+- [x] 🔒 COMMIT: `d3c00a45`
 
 ### Phase 3.5: Validate deep links + pin URLs ⬜
 

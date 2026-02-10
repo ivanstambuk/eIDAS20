@@ -401,6 +401,12 @@ requirements:
       user requests multiple attestations simultaneously, avoiding
       redundant authentication steps.
 
+      **ISSU_64 — Mandatory batch issuance (ARF v2.8.0):**
+      PID Providers, Attestation Providers, and Wallet Units SHALL
+      support the features of OpenID4VCI enabling the batch
+      issuance of PIDs or attestations. This elevated batch
+      issuance from optional to mandatory in v2.8.0.
+
       **ISSU_03 — W3C Digital Credentials API:**
       Wallet Units, PID Providers, and Attestation Providers SHALL
       support the W3C Digital Credentials API for PID and
@@ -442,7 +448,9 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 10
-      hlr: AS-AP-10-003
+      hlr:
+        - AS-AP-10-003
+        - AS-AP-10-090
     obligation: SHOULD
   - id: VEND-ISS-009
     category: issuance
@@ -604,6 +612,14 @@ requirements:
       before expiry and re-issuing attestations when the underlying
       data changes. Users should be notified of upcoming expiry.
 
+      **ISSU_65 — Re-issuance identity binding (ARF v2.8.0):**
+      A PID Provider or Attestation Provider of device-bound
+      attestations SHALL verify that a re-issued PID or
+      device-bound attestation is issued to the **same Wallet Unit**
+      as the existing PID or attestation. This can be achieved by
+      issuing a refresh token during original issuance and
+      requiring it during re-issuance.
+
       **ISSU_05 — Re-issuance triggers:**
       Re-issuance can be triggered by:
       - Approaching expiry (proactive renewal per ISSU_50)
@@ -643,6 +659,7 @@ requirements:
       hlr:
         - AS-AP-10-005
         - AS-AP-10-085
+        - AS-AP-10-091
     obligation: MUST
   - id: VEND-ISS-013
     category: revocation
@@ -2291,6 +2308,15 @@ requirements:
       revocation should be minimised. The polling frequency and
       status list cache times determine the effective cascading
       revocation latency.
+
+      **WURevocation_13 (EW-DM-38-014) — Harm assessment (ARF v2.8.0):**
+      Before requesting a Wallet Provider to revoke a Wallet Unit
+      (e.g., when a natural person has died), the PID Provider
+      SHALL ensure that the revocation does not harm the interests
+      of any of the stakeholders. The PID Provider SHALL include a
+      documented policy ensuring this assessment is performed.
+      This is primarily a PID Provider obligation but affects the
+      issuance platform's revocation request workflow.
     legalBasis:
       regulation: 2024/2977
       article: Article 5
@@ -2301,6 +2327,10 @@ requirements:
       associated with that Wallet.
     arfReference:
       topic: Topic 38
+      hlr:
+        - AS-WP-38-018
+        - AS-WP-38-019
+        - EW-DM-38-014
     roles:
       - issuer
     productCategories:
@@ -2316,4 +2346,110 @@ requirements:
       - VEND-ISS-013: Status list publication mechanism
       - VEND-ISS-014: Revocation propagation times
       - VEND-ISS-031: WUA verification at issuance
+    obligation: MUST
+  - id: VEND-ISS-042
+    category: issuance
+    requirement: Comply with applicable ETSI issuance policy (NCP+ or QCP-l+)
+    explanation: |
+      ARF v2.8.0 introduced explicit ETSI certification requirements for
+      all issuer types. The applicable policy depends on the provider type:
+
+      **ISSU_67 — PID Provider policy (NCP+):**
+      A PID Provider SHALL have a policy governing all aspects of PID
+      issuance and management. The policy SHALL comply with at least the
+      extended normalised certificate policy ('NCP+') requirements as
+      specified in ETSI EN 319 411-1, insofar applicable for PIDs.
+
+      **ISSU_69 — QEAA Provider policy (QCP-l+):**
+      A QEAA Provider SHALL have a policy governing all aspects of QEAA
+      issuance and management. The policy SHALL comply with at least the
+      policy for qualified certificates issued to a natural person where
+      the private key and the related certificate reside on a qualified
+      electronic signature or seal creation device (QCP-l+) as specified
+      in ETSI EN 319 411-2, insofar applicable for QEAAs.
+
+      **ISSU_72 — PuB-EAA Provider policy (NCP+):**
+      A PuB-EAA Provider SHALL have a policy governing all aspects of
+      PuB-EAA issuance and management, also complying with NCP+
+      requirements as for PID Providers.
+
+      **Implementation impact:**
+      Vendors building issuance platforms need to ensure their operational
+      practices, key management, and audit trails meet the applicable ETSI
+      policy requirements, which include physical security, personnel
+      vetting, incident response procedures, and regular audits by a
+      conformity assessment body.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45d
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers issuing qualified electronic
+      attestations of attributes shall comply with the requirements laid
+      down in this Regulation.
+    arfReference:
+      topic: Topic 10
+      hlr:
+        - AS-AP-10-093
+        - AS-AP-10-095
+        - AS-AP-10-098
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+    deadline: "2027-11-21"
+    obligation: MUST
+  - id: VEND-ISS-043
+    category: issuance
+    requirement: Ensure signing certificates comply with ETSI TS 119 412-6
+    explanation: |
+      ARF v2.8.0 introduced explicit ETSI certificate profile requirements
+      for all issuer types. The applicable clause of ETSI TS 119 412-6
+      depends on the provider type:
+
+      **ISSU_68 — PID Provider signing certificates:**
+      PID Providers SHALL ensure that the certificates they use for
+      signing PIDs comply with all applicable requirements in
+      ETSI TS 119 412-6, in particular Clause 4.
+
+      **ISSU_70 — QEAA Provider signing certificates:**
+      QEAA Providers SHALL ensure that the certificates they use for
+      signing QEAAs comply with ETSI TS 119 412-6, in particular Clause 7.
+
+      **ISSU_71 — Non-qualified EAA Provider signing certificates:**
+      Providers of non-qualified EAAs SHALL ensure that the certificates
+      they use for signing EAAs comply with ETSI TS 119 412-6, in
+      particular Clause 6.
+
+      **ISSU_73 — PuB-EAA Provider signing certificates:**
+      PuB-EAA Providers SHALL ensure that the certificates they use for
+      signing PuB-EAAs comply with ETSI TS 119 412-6, in particular
+      Clause 8.
+
+      **Implementation impact:**
+      The vendor's certificate provisioning and lifecycle management
+      must produce certificates that conform to the applicable ETSI
+      clause. This includes specific certificate extensions, key usage
+      flags, subject fields, and validity constraints defined in
+      ETSI TS 119 412-6.
+    legalBasis:
+      regulation: 2014/910
+      article: Article 45d
+      paragraph: "1"
+    legalText: |
+      Qualified trust service providers issuing qualified electronic
+      attestations of attributes shall comply with the requirements laid
+      down in this Regulation.
+    arfReference:
+      topic: Topic 10
+      hlr:
+        - AS-AP-10-094
+        - AS-AP-10-096
+        - AS-AP-10-097
+        - AS-AP-10-099
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+    deadline: "2027-11-21"
     obligation: MUST

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T20:36:25.755Z",
+  "generatedAt": "2026-02-10T20:44:22.816Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1655,7 +1655,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support and correctly handle pseudonym-based presentations",
-      "explanation": "Where Users choose to present pseudonymous attestations, the RP\nconnector must correctly process these presentations without\nattempting to de-pseudonymise the user. Article 5a(16) requires the\nEUDI Wallet technical framework to prevent tracking and correlation,\nand Art 5b(9) explicitly prohibits RPs from refusing pseudonyms where\nidentification is not legally required.\n\n**Pseudonym verification requirements (PA HLRs):**\n- **PA_10**: the RP SHALL be able to verify that the User is\n  registering a Pseudonym using a **non-revoked** Wallet Unit\n- **PA_11**: the RP SHALL be able to verify that the User is\n  authenticating with a Pseudonym using a **non-revoked** Wallet Unit\n- **PA_13**: the RP SHALL be able to validate that the pseudonym\n  presented belongs to the User presenting it (binding verification)\n\n**Privacy safeguards (critical):**\n- **PA_15**: the RP SHALL NOT be able to derive the User's true\n  identity, or any data identifying the User, from the Pseudonym\n  value received\n- **PA_17**: it SHALL NOT be possible to correlate Pseudonyms based\n  on their values or other metadata sent by the Wallet Unit during\n  registration and authentication — colluding RPs SHALL NOT be able\n  to conclude that different Pseudonyms belong to the same User\n\n**Implementation obligations for RP connector:**\n- Accept pseudonym attestations in the same flow as identified\n  attestations (no separate code path that could leak identity)\n- Strip or avoid logging any metadata that could enable correlation\n  (IP addresses, session IDs, timing patterns)\n- Do not transmit pseudonym values to backend systems that also\n  process identified presentations for the same service\n- Where the RP legitimately needs re-identification (Art 5b(9)\n  exception), use a legally grounded procedure with independent\n  oversight\n\nThis requirement complements VEND-CORE-027 (TS9 pseudonym support)\nby focusing on the RP-side processing obligations rather than the\nissuance/wallet-side mechanisms.",
+      "explanation": "Where Users choose to present pseudonymous attestations, the RP\nconnector must correctly process these presentations without\nattempting to de-pseudonymise the user. Article 5a(16) requires the\nEUDI Wallet technical framework to prevent tracking and correlation,\nand Art 5b(9) explicitly prohibits RPs from refusing pseudonyms where\nidentification is not legally required.\n\n**Pseudonym verification requirements (PA HLRs):**\n- **PA_10**: the RP SHALL be able to verify that the User is\n  registering a Pseudonym using a **non-revoked** Wallet Unit\n- **PA_11**: the RP SHALL be able to verify that the User is\n  authenticating with a Pseudonym using a **non-revoked** Wallet Unit\n- **PA_13**: the RP SHALL be able to validate that the pseudonym\n  presented belongs to the User presenting it (binding verification)\n\n**Privacy safeguards (critical):**\n- **PA_15**: the RP SHALL NOT be able to derive the User's true\n  identity, or any data identifying the User, from the Pseudonym\n  value received\n- **PA_17**: it SHALL NOT be possible to correlate Pseudonyms based\n  on their values or other metadata sent by the Wallet Unit during\n  registration and authentication — colluding RPs SHALL NOT be able\n  to conclude that different Pseudonyms belong to the same User\n\n**Implementation obligations for RP connector:**\n- Accept pseudonym attestations in the same flow as identified\n  attestations (no separate code path that could leak identity)\n- Strip or avoid logging any metadata that could enable correlation\n  (IP addresses, session IDs, timing patterns)\n- Do not transmit pseudonym values to backend systems that also\n  process identified presentations for the same service\n- Where the RP legitimately needs re-identification (Art 5b(9)\n  exception), use a legally grounded procedure with independent\n  oversight\n\nThis requirement complements VEND-CORE-027 (TS9 pseudonym support)\nby focusing on the RP-side processing obligations rather than the\nissuance/wallet-side mechanisms.\n\n**Rate-limited pseudonyms (ARF v2.8.0, PA_25/PA_26):**\nv2.8.0 introduces scope rate-limited pseudonyms (PA_23–PA_31).\nWhen these are deployed, RPs will need to:\n- **PA_25**: verify that a user's pseudonym rate is not exceeded\n- **PA_26**: specify the scope and rate when requesting a\n  rate-limited pseudonym from a user\nThese HLRs are not yet referenced as mandatory because the\nunderlying protocol is still being specified, but RP vendors\nshould plan for this capability.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -4674,7 +4674,7 @@
       "categoryLabel": "Issuance",
       "categoryIcon": "📤",
       "requirement": "Support batch issuance for multiple attestations",
-      "explanation": "The platform should support efficient batch issuance when a\nuser requests multiple attestations simultaneously, avoiding\nredundant authentication steps.\n\n**ISSU_03 — W3C Digital Credentials API:**\nWallet Units, PID Providers, and Attestation Providers SHALL\nsupport the W3C Digital Credentials API for PID and\nattestation issuance, provided the API is a W3C\nRecommendation, complies with ARF expectations, and is\nbroadly supported by browsers and operating systems. This\nAPI enables browser-based issuance flows.\n\n**OpenID4VCI batch endpoint:**\nThe OID4VCI Batch Issuance Endpoint (also referred to in\nVEND-ISS-007) allows issuing multiple credentials in a\nsingle session. This is critical when both mDoc and SD-JWT-VC\nformats are required (per ISSU_12/ISSU_12a), as it avoids\nrequiring separate authentication for each format.\n\n**Synchronous vs asynchronous batch:**\nThe platform should support both synchronous batch issuance\n(all credentials returned in one response) and asynchronous\nbatch (deferred credentials with polling), depending on the\nattestation types and authentic source response times.\n\n**Failure handling:**\nWhen one credential in a batch fails (e.g., authentic source\nunavailable), the platform should support partial success:\nissue the credentials that succeed and report failures for\nthe rest, rather than failing the entire batch.",
+      "explanation": "The platform should support efficient batch issuance when a\nuser requests multiple attestations simultaneously, avoiding\nredundant authentication steps.\n\n**ISSU_64 — Mandatory batch issuance (ARF v2.8.0):**\nPID Providers, Attestation Providers, and Wallet Units SHALL\nsupport the features of OpenID4VCI enabling the batch\nissuance of PIDs or attestations. This elevated batch\nissuance from optional to mandatory in v2.8.0.\n\n**ISSU_03 — W3C Digital Credentials API:**\nWallet Units, PID Providers, and Attestation Providers SHALL\nsupport the W3C Digital Credentials API for PID and\nattestation issuance, provided the API is a W3C\nRecommendation, complies with ARF expectations, and is\nbroadly supported by browsers and operating systems. This\nAPI enables browser-based issuance flows.\n\n**OpenID4VCI batch endpoint:**\nThe OID4VCI Batch Issuance Endpoint (also referred to in\nVEND-ISS-007) allows issuing multiple credentials in a\nsingle session. This is critical when both mDoc and SD-JWT-VC\nformats are required (per ISSU_12/ISSU_12a), as it avoids\nrequiring separate authentication for each format.\n\n**Synchronous vs asynchronous batch:**\nThe platform should support both synchronous batch issuance\n(all credentials returned in one response) and asynchronous\nbatch (deferred credentials with polling), depending on the\nattestation types and authentic source response times.\n\n**Failure handling:**\nWhen one credential in a batch fails (e.g., authentic source\nunavailable), the platform should support partial success:\nissue the credentials that succeed and report failures for\nthe rest, rather than failing the entire batch.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -4692,7 +4692,10 @@
       "legalText": "Wallet providers shall ensure that wallet units support the\nprotocols and interfaces necessary to receive and store PIDs\nand electronic attestations of attributes.",
       "arfReference": {
         "topic": "Topic 10",
-        "hlr": "AS-AP-10-003"
+        "hlr": [
+          "AS-AP-10-003",
+          "AS-AP-10-090"
+        ]
       },
       "roles": [
         "issuer"
@@ -4853,7 +4856,7 @@
       "categoryLabel": "Issuance",
       "categoryIcon": "📤",
       "requirement": "Support attestation renewal and re-issuance workflows",
-      "explanation": "The platform must support workflows for renewing attestations\nbefore expiry and re-issuing attestations when the underlying\ndata changes. Users should be notified of upcoming expiry.\n\n**ISSU_05 — Re-issuance triggers:**\nRe-issuance can be triggered by:\n- Approaching expiry (proactive renewal per ISSU_50)\n- Data change at the authentic source (per VCR_09)\n- User request (e.g., after attribute correction)\n- Key rotation (new signing key requires re-issuance)\n\n**ISSU_59 — Attribute comparison:**\nAfter successful re-issuance, the Wallet Unit SHALL compare\nattribute values and notify the user of any differences.\nThis ensures the user is aware of data changes.\n\n**Old attestation handling:**\nWhen an attestation is renewed, the old attestation should\nbe revoked (per VCR_09) to prevent duplicate active\nattestations with different attribute values.\n\n**User notification:**\nThe platform should notify users in advance of expiry,\nproviding enough lead time for re-issuance. Push\nnotifications, in-app alerts, and email are typical\nchannels.",
+      "explanation": "The platform must support workflows for renewing attestations\nbefore expiry and re-issuing attestations when the underlying\ndata changes. Users should be notified of upcoming expiry.\n\n**ISSU_65 — Re-issuance identity binding (ARF v2.8.0):**\nA PID Provider or Attestation Provider of device-bound\nattestations SHALL verify that a re-issued PID or\ndevice-bound attestation is issued to the **same Wallet Unit**\nas the existing PID or attestation. This can be achieved by\nissuing a refresh token during original issuance and\nrequiring it during re-issuance.\n\n**ISSU_05 — Re-issuance triggers:**\nRe-issuance can be triggered by:\n- Approaching expiry (proactive renewal per ISSU_50)\n- Data change at the authentic source (per VCR_09)\n- User request (e.g., after attribute correction)\n- Key rotation (new signing key requires re-issuance)\n\n**ISSU_59 — Attribute comparison:**\nAfter successful re-issuance, the Wallet Unit SHALL compare\nattribute values and notify the user of any differences.\nThis ensures the user is aware of data changes.\n\n**Old attestation handling:**\nWhen an attestation is renewed, the old attestation should\nbe revoked (per VCR_09) to prevent duplicate active\nattestations with different attribute values.\n\n**User notification:**\nThe platform should notify users in advance of expiry,\nproviding enough lead time for re-issuance. Push\nnotifications, in-app alerts, and email are typical\nchannels.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -4873,7 +4876,8 @@
         "topic": "Topic 10",
         "hlr": [
           "AS-AP-10-005",
-          "AS-AP-10-085"
+          "AS-AP-10-085",
+          "AS-AP-10-091"
         ]
       },
       "roles": [
@@ -6154,7 +6158,7 @@
       "categoryLabel": "Revocation",
       "categoryIcon": "🚫",
       "requirement": "Monitor WUA revocation status and implement cascading revocation policy",
-      "explanation": "After issuing a PID or attestation, the provider must monitor\nthe revocation status of the Wallet Unit on which the credential\nresides. If the Wallet Provider revokes the WUA, the issuer\nmust respond according to its cascading revocation obligations.\n\n**WURevocation_18 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**\nA PID Provider issuing revocable PIDs SHALL, for each of its\nvalid PIDs, regularly verify whether the Wallet Provider\nrevoked the Wallet Unit on which that PID is residing, using\nthe revocation information in the WUA it received during\nissuance of that PID. If the Wallet Unit is revoked, the PID\nProvider SHALL immediately revoke the respective PID.\n\nThis is a direct consequence of the legal requirement in\nCIR 2024/2977, Article 5, 4.(b). The verification mechanism\nis specified in Technical Specification 3 (TS3).\n\n**WURevocation_19 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**\nAn Attestation Provider issuing revocable attestations MAY\ndecide to revoke an attestation when the Wallet Unit is\nrevoked, using the same mechanism as WURevocation_18/AS-WP-38-018.\nHowever, the Attestation Provider SHALL publish its policy\nregarding cascading revocation. This published policy allows\nRelying Parties to assess the level of trust they can place\nin attestations from that provider.\n\n**Asymmetry between PID Providers and Attestation Providers:**\n- PID Provider: cascading revocation is MANDATORY\n- Attestation Provider: cascading revocation is a POLICY\n  DECISION, but the policy MUST be published\n\n**Ongoing WUA monitoring implementation:**\nThe issuer must implement a mechanism to regularly check the\nWUA revocation status for all active credentials it has\nissued. This requires:\n1. Storing the WUA (or its status list reference) received\n   during each issuance session\n2. Periodically polling the Wallet Provider's Attestation\n   Status Lists or Attestation Revocation Lists\n3. Cross-referencing revoked WUAs against the issuer's\n   active credential registry\n4. Triggering cascading revocation when a match is found\n\n**Revocation latency:**\nThe time between WUA revocation and cascading credential\nrevocation should be minimised. The polling frequency and\nstatus list cache times determine the effective cascading\nrevocation latency.",
+      "explanation": "After issuing a PID or attestation, the provider must monitor\nthe revocation status of the Wallet Unit on which the credential\nresides. If the Wallet Provider revokes the WUA, the issuer\nmust respond according to its cascading revocation obligations.\n\n**WURevocation_18 (AS-WP-38-018) — PID Provider mandatory cascading (SHALL):**\nA PID Provider issuing revocable PIDs SHALL, for each of its\nvalid PIDs, regularly verify whether the Wallet Provider\nrevoked the Wallet Unit on which that PID is residing, using\nthe revocation information in the WUA it received during\nissuance of that PID. If the Wallet Unit is revoked, the PID\nProvider SHALL immediately revoke the respective PID.\n\nThis is a direct consequence of the legal requirement in\nCIR 2024/2977, Article 5, 4.(b). The verification mechanism\nis specified in Technical Specification 3 (TS3).\n\n**WURevocation_19 (AS-WP-38-019) — Attestation Provider policy (MAY + SHALL):**\nAn Attestation Provider issuing revocable attestations MAY\ndecide to revoke an attestation when the Wallet Unit is\nrevoked, using the same mechanism as WURevocation_18/AS-WP-38-018.\nHowever, the Attestation Provider SHALL publish its policy\nregarding cascading revocation. This published policy allows\nRelying Parties to assess the level of trust they can place\nin attestations from that provider.\n\n**Asymmetry between PID Providers and Attestation Providers:**\n- PID Provider: cascading revocation is MANDATORY\n- Attestation Provider: cascading revocation is a POLICY\n  DECISION, but the policy MUST be published\n\n**Ongoing WUA monitoring implementation:**\nThe issuer must implement a mechanism to regularly check the\nWUA revocation status for all active credentials it has\nissued. This requires:\n1. Storing the WUA (or its status list reference) received\n   during each issuance session\n2. Periodically polling the Wallet Provider's Attestation\n   Status Lists or Attestation Revocation Lists\n3. Cross-referencing revoked WUAs against the issuer's\n   active credential registry\n4. Triggering cascading revocation when a match is found\n\n**Revocation latency:**\nThe time between WUA revocation and cascading credential\nrevocation should be minimised. The polling frequency and\nstatus list cache times determine the effective cascading\nrevocation latency.\n\n**WURevocation_13 (EW-DM-38-014) — Harm assessment (ARF v2.8.0):**\nBefore requesting a Wallet Provider to revoke a Wallet Unit\n(e.g., when a natural person has died), the PID Provider\nSHALL ensure that the revocation does not harm the interests\nof any of the stakeholders. The PID Provider SHALL include a\ndocumented policy ensuring this assessment is performed.\nThis is primarily a PID Provider obligation but affects the\nissuance platform's revocation request workflow.",
       "legalBases": [
         {
           "regulation": "2024/2977",
@@ -6171,7 +6175,12 @@
       "legalBasisLink": "/implementing-acts/2024-2977?section=article-5",
       "legalText": "Where a European Digital Identity Wallet is revoked, the PID\nProvider shall revoke the person identification data\nassociated with that Wallet.",
       "arfReference": {
-        "topic": "Topic 38"
+        "topic": "Topic 38",
+        "hlr": [
+          "AS-WP-38-018",
+          "AS-WP-38-019",
+          "EW-DM-38-014"
+        ]
       },
       "roles": [
         "issuer"
@@ -6189,6 +6198,103 @@
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "The obligation level differs by issuer type:\n- PID Provider: MUST implement cascading revocation\n- Attestation Provider: MUST publish cascading revocation\n  policy, MAY implement cascading revocation\n\nRelated requirements:\n- VEND-ISS-013: Status list publication mechanism\n- VEND-ISS-014: Revocation propagation times\n- VEND-ISS-031: WUA verification at issuance",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-042",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Comply with applicable ETSI issuance policy (NCP+ or QCP-l+)",
+      "explanation": "ARF v2.8.0 introduced explicit ETSI certification requirements for\nall issuer types. The applicable policy depends on the provider type:\n\n**ISSU_67 — PID Provider policy (NCP+):**\nA PID Provider SHALL have a policy governing all aspects of PID\nissuance and management. The policy SHALL comply with at least the\nextended normalised certificate policy ('NCP+') requirements as\nspecified in ETSI EN 319 411-1, insofar applicable for PIDs.\n\n**ISSU_69 — QEAA Provider policy (QCP-l+):**\nA QEAA Provider SHALL have a policy governing all aspects of QEAA\nissuance and management. The policy SHALL comply with at least the\npolicy for qualified certificates issued to a natural person where\nthe private key and the related certificate reside on a qualified\nelectronic signature or seal creation device (QCP-l+) as specified\nin ETSI EN 319 411-2, insofar applicable for QEAAs.\n\n**ISSU_72 — PuB-EAA Provider policy (NCP+):**\nA PuB-EAA Provider SHALL have a policy governing all aspects of\nPuB-EAA issuance and management, also complying with NCP+\nrequirements as for PID Providers.\n\n**Implementation impact:**\nVendors building issuance platforms need to ensure their operational\npractices, key management, and audit trails meet the applicable ETSI\npolicy requirements, which include physical security, personnel\nvetting, incident response procedures, and regular audits by a\nconformity assessment body.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "1",
+          "link": "/regulation/2014-910?section=article-45d"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45d",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
+      "legalText": "Qualified trust service providers issuing qualified electronic\nattestations of attributes shall comply with the requirements laid\ndown in this Regulation.",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "AS-AP-10-093",
+          "AS-AP-10-095",
+          "AS-AP-10-098"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
+      "id": "VEND-ISS-043",
+      "category": "issuance",
+      "categoryLabel": "Issuance",
+      "categoryIcon": "📤",
+      "requirement": "Ensure signing certificates comply with ETSI TS 119 412-6",
+      "explanation": "ARF v2.8.0 introduced explicit ETSI certificate profile requirements\nfor all issuer types. The applicable clause of ETSI TS 119 412-6\ndepends on the provider type:\n\n**ISSU_68 — PID Provider signing certificates:**\nPID Providers SHALL ensure that the certificates they use for\nsigning PIDs comply with all applicable requirements in\nETSI TS 119 412-6, in particular Clause 4.\n\n**ISSU_70 — QEAA Provider signing certificates:**\nQEAA Providers SHALL ensure that the certificates they use for\nsigning QEAAs comply with ETSI TS 119 412-6, in particular Clause 7.\n\n**ISSU_71 — Non-qualified EAA Provider signing certificates:**\nProviders of non-qualified EAAs SHALL ensure that the certificates\nthey use for signing EAAs comply with ETSI TS 119 412-6, in\nparticular Clause 6.\n\n**ISSU_73 — PuB-EAA Provider signing certificates:**\nPuB-EAA Providers SHALL ensure that the certificates they use for\nsigning PuB-EAAs comply with ETSI TS 119 412-6, in particular\nClause 8.\n\n**Implementation impact:**\nThe vendor's certificate provisioning and lifecycle management\nmust produce certificates that conform to the applicable ETSI\nclause. This includes specific certificate extensions, key usage\nflags, subject fields, and validity constraints defined in\nETSI TS 119 412-6.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 45d",
+          "paragraph": "1",
+          "link": "/regulation/2014-910?section=article-45d"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 45d",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-45d",
+      "legalText": "Qualified trust service providers issuing qualified electronic\nattestations of attributes shall comply with the requirements laid\ndown in this Regulation.",
+      "arfReference": {
+        "topic": "Topic 10",
+        "hlr": [
+          "AS-AP-10-094",
+          "AS-AP-10-096",
+          "AS-AP-10-097",
+          "AS-AP-10-099"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
     },
     {
@@ -7079,6 +7185,8 @@
       "VEND-ISS-039",
       "VEND-ISS-040",
       "VEND-ISS-041",
+      "VEND-ISS-042",
+      "VEND-ISS-043",
       "VEND-TSP-012",
       "VEND-TSP-013",
       "VEND-TSP-014",
@@ -7227,6 +7335,8 @@
       "VEND-ISS-038",
       "VEND-ISS-039",
       "VEND-ISS-041",
+      "VEND-ISS-042",
+      "VEND-ISS-043",
       "VEND-TSP-019"
     ],
     "trust_services": [
@@ -7386,6 +7496,8 @@
       "VEND-ISS-038",
       "VEND-ISS-039",
       "VEND-ISS-040",
+      "VEND-ISS-042",
+      "VEND-ISS-043",
       "VEND-TSP-001",
       "VEND-TSP-002",
       "VEND-TSP-003",
@@ -7530,6 +7642,8 @@
       "VEND-ISS-036",
       "VEND-ISS-037",
       "VEND-ISS-041",
+      "VEND-ISS-042",
+      "VEND-ISS-043",
       "VEND-TSP-014",
       "VEND-TSP-017",
       "VEND-TSP-018",
@@ -7537,34 +7651,34 @@
     ]
   },
   "stats": {
-    "totalRequirements": 151,
+    "totalRequirements": 153,
     "byRole": {
       "relying_party": 82,
-      "issuer": 65,
+      "issuer": 67,
       "universal": 19
     },
     "byProductCategory": {
       "connector": 70,
-      "issuance_platform": 48,
+      "issuance_platform": 50,
       "trust_services": 26,
       "universal": 16
     },
     "bySourceGroup": {
-      "eidas": 127,
+      "eidas": 129,
       "gdpr": 19,
       "dora": 12,
-      "arf": 92
+      "arf": 94
     },
     "byCategory": {
       "usage": 47,
       "contracts": 22,
       "registration": 27,
       "security": 29,
-      "issuance": 18,
+      "issuance": 20,
       "revocation": 8
     },
     "byObligation": {
-      "MUST": 127,
+      "MUST": 129,
       "MUST NOT": 11,
       "SHOULD": 12,
       "SHOULD NOT": 0,

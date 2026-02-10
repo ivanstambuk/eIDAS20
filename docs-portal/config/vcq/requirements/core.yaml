@@ -1740,6 +1740,16 @@ requirements:
       This requirement complements VEND-CORE-027 (TS9 pseudonym support)
       by focusing on the RP-side processing obligations rather than the
       issuance/wallet-side mechanisms.
+
+      **Rate-limited pseudonyms (ARF v2.8.0, PA_25/PA_26):**
+      v2.8.0 introduces scope rate-limited pseudonyms (PA_23–PA_31).
+      When these are deployed, RPs will need to:
+      - **PA_25**: verify that a user's pseudonym rate is not exceeded
+      - **PA_26**: specify the scope and rate when requesting a
+        rate-limited pseudonym from a user
+      These HLRs are not yet referenced as mandatory because the
+      underlying protocol is still being specified, but RP vendors
+      should plan for this capability.
     legalBasis:
       regulation: 2014/910
       article: Article 5a
