@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T00:34:04.544Z",
+  "generatedAt": "2026-02-10T05:13:06.303Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2428,7 +2428,10 @@
       "legalText": "When an intermediary requests attestations from a wallet unit, the wallet \nunit shall display both the identity of the intermediary and the identity \nof the relying party on whose behalf the intermediary is acting.",
       "arfReference": {
         "topic": "Topic 52",
-        "hlr": "RPI_06"
+        "hlr": [
+          "RPI_06",
+          "RPI_07"
+        ]
       },
       "roles": [
         "relying_party"
