@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T14:53:36.814Z",
+  "generatedAt": "2026-02-10T16:43:23.221Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -424,7 +424,7 @@
       "categoryLabel": "Registration",
       "categoryIcon": "📋",
       "requirement": "Maintain a valid Relying Party Access Certificate",
-      "explanation": "Access certificates are the primary trust mechanism between wallet units\nand relying parties. The intermediary must obtain and maintain a valid\nwallet-relying party access certificate to authenticate itself to\nwallet units during every presentation transaction.\n\n**Certificate issuance and policy (IR 2025/848):**\n- Article 7(1): Member States must authorise at least one certificate\n  authority to issue wallet-relying party access certificates\n- Article 7(2): access certificates are issued exclusively to\n  registered wallet-relying parties\n- Annex IV: the certificate must comply with ETSI EN 319411-1 NCP\n  requirements and the harmonised certificate policy\n- The certificate contains the intermediary's own name and unique\n  identifier — this is how wallet units identify the intermediary\n\n**Usage requirements (ARF):**\n- RPA_03 (Topic 6): the intermediary and wallet unit must perform\n  Relying Party authentication in all PID or attestation presentation\n  transactions, whether proximity or remote, using the access certificate\n- RPA_02a: the access certificate must be included in the presentation\n  request by value, not by reference, ensuring atomic self-contained\n  transactions\n- RPI_06 (Topic 52): when acting on behalf of an intermediated RP,\n  the intermediary includes its own access certificate alongside the\n  RP's registration certificate and RPRC_19a extension data\n\nThe product must implement certificate lifecycle management including\nmonitoring for expiration, automated or assisted renewal, secure\nprivate key storage (preferably HSM-backed), and emergency revocation\nand replacement procedures.",
+      "explanation": "Access certificates are the primary trust mechanism between wallet units\nand relying parties. The RP connector must obtain and maintain a valid\nwallet-relying party access certificate to authenticate itself to\nwallet units during every presentation transaction.\n\n**Certificate issuance and policy (IR 2025/848):**\n- Article 7(1): Member States must authorise at least one certificate\n  authority to issue wallet-relying party access certificates\n- Article 7(2): access certificates are issued exclusively to\n  registered wallet-relying parties\n- Annex IV: the certificate must comply with ETSI EN 319411-1 NCP\n  requirements and the harmonised certificate policy\n- The certificate contains the RP's (or intermediary's) name and\n  unique identifier — this is how wallet units identify the requester\n\n**Usage requirements (ARF):**\n- RPA_03 (Topic 6): the RP connector and wallet unit must perform\n  Relying Party authentication in all PID or attestation presentation\n  transactions, whether proximity or remote, using the access certificate\n- RPA_02a: the access certificate must be included in the presentation\n  request by value, not by reference, ensuring atomic self-contained\n  transactions\n- RPI_06 (Topic 52): when acting on behalf of an intermediated RP,\n  the intermediary includes its own access certificate alongside the\n  RP's registration certificate and RPRC_19a extension data\n\nThe product must implement certificate lifecycle management including\nmonitoring for expiration, automated or assisted renewal, secure\nprivate key storage (preferably HSM-backed), and emergency revocation\nand replacement procedures.",
       "legalBases": [
         {
           "regulation": "2025/848",
@@ -1137,8 +1137,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Implement TS7 data deletion request interface for GDPR Article 17 compliance",
-      "explanation": "Relying Parties must implement the common data deletion request interface\nspecified in Technical Specification 7 (TS7). This enables wallet users\nto exercise their GDPR Article 17 right to erasure by requesting\ndeletion of any data the RP has collected from wallet presentations.\n\n**The data deletion request chain (Topic 48):**\n1. **User initiation (DATA_DLT_01-03)**: the wallet unit provides a\n   function where the user can select an RP and initiate a deletion\n   request via URL (web form), email (draft template), or phone call\n2. **Registrar lookup (DATA_DLT_02a)**: if no RP contact information\n   is in the transaction log, the wallet unit queries the Registrar\n   to obtain the RP's contact details\n3. **Wallet logging (DATA_DLT_05-06)**: the wallet logs the deletion\n   request initiation (date/time, RP identifier, attributes requested\n   for deletion)\n4. **RP authentication (DATA_DLT_07)**: before executing deletion, the\n   RP SHALL authenticate the requesting user using appropriate\n   mechanisms — the ARF recommends using the wallet's own\n   authentication or signature facilities for this purpose\n5. **RP compliance with TS7 (DATA_DLT_08)**: wallets, RPs, and\n   Registrars must comply with the TS7 technical interface\n\n**Key obligations for the RP/intermediary:**\n- Implement the TS7 standardised interface for receiving deletion\n  requests in a machine-readable format\n- Authenticate the requesting user before executing deletion\n- Process deletion without undue delay (Art 17(1) GDPR)\n- Handle exceptions (Art 17(3)) where deletion may be refused\n  (legal obligation, public interest, legal claims, archiving)\n- Confirm completion of deletion to the user\n\nIn the EUDI Wallet intermediary context, the intermediary may receive\ndeletion requests for data it processed on behalf of the RP. Given\nthe no-storage mandate (VEND-CORE-001), the intermediary's deletable\ndata is limited to transaction metadata and audit logs — but the\ninterface must still be implemented.",
+      "requirement": "Implement TS7 data deletion interface and process requests within GDPR Article 17 timeframes",
+      "explanation": "Relying Parties must implement the common data deletion request interface\nspecified in Technical Specification 7 (TS7) and process deletion requests\nin compliance with GDPR Article 17 timeframes. This enables wallet users\nto exercise their right to erasure by requesting deletion of any data the\nRP has collected from wallet presentations.\n\n**The data deletion request chain (Topic 48):**\n1. **User initiation (DATA_DLT_01-03)**: the wallet unit provides a\n   function where the user can select an RP and initiate a deletion\n   request via URL (web form), email (draft template), or phone call\n2. **Registrar lookup (DATA_DLT_02a)**: if no RP contact information\n   is in the transaction log, the wallet unit queries the Registrar\n   to obtain the RP's contact details\n3. **Wallet logging (DATA_DLT_05-06)**: the wallet logs the deletion\n   request initiation (date/time, RP identifier, attributes requested\n   for deletion)\n4. **RP authentication (DATA_DLT_07)**: before executing deletion, the\n   RP SHALL authenticate the requesting user using appropriate\n   mechanisms — the ARF recommends using the wallet's own\n   authentication or signature facilities for this purpose\n5. **RP compliance with TS7 (DATA_DLT_08)**: wallets, RPs, and\n   Registrars must comply with the TS7 technical interface\n\n**GDPR Article 17 processing requirements:**\n- Deletion must be performed \"without undue delay\" and in any event\n  within one month (Art 12(3))\n- The RP must inform the user of any valid grounds for refusal under\n  Art 17(3) exceptions: freedom of expression, legal obligation,\n  public interest, health, archiving/research, legal claims\n- If the data has been made public, the RP must take reasonable\n  steps to inform other controllers processing the data (Art 17(2))\n- All copies including backups must be addressed (though backup\n  deletion may follow a deferred schedule)\n\n**Key obligations for the RP connector:**\n- Implement the TS7 standardised interface for receiving deletion\n  requests in a machine-readable format\n- Authenticate the requesting user before executing deletion\n- Provide confirmation of deletion or a reasoned refusal following\n  the TS7 standardised response format\n- Handle Art 17(3) exceptions where deletion may be refused\n\nIn the EUDI Wallet connector context, the connector may receive\ndeletion requests for data it processed on behalf of the RP. Given\nthe no-storage mandate (VEND-CORE-001), the connector's deletable\ndata is limited to transaction metadata and audit logs — but the\ninterface must still be implemented. This requirement connects to\nVEND-CORE-029 (RPRC_11 deletion contact information in registration\ncertificates).",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -1754,60 +1754,6 @@
       "scope": "core",
       "sourceGroups": [
         "eidas",
-        "arf"
-      ],
-      "deploymentArchitectures": [],
-      "deadline": "2027-11-21",
-      "obligation": "MUST",
-      "_sourceFile": "core.yaml"
-    },
-    {
-      "id": "VEND-CORE-035",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Process data deletion requests from Users within required timeframes",
-      "explanation": "When Users exercise their right to data deletion (erasure) under GDPR\nArticle 17, RPs must process these requests according to both GDPR\nrequirements and the EUDI Wallet-specific data deletion blueprint\n(ARF Topic 48). The TS7 common interface provides a standardised\nmechanism for wallet-mediated deletion requests.\n\n**Pre-deletion authentication (DATA_DLT_07):**\nBefore executing a data deletion request, the RP SHALL authenticate\nthe requesting User (or the request itself) using appropriate\nauthentication mechanisms of its own choosing. The RP SHOULD use\nthe authentication or signature facilities offered by the User's\nWallet Unit for this purpose. This ensures that only the actual data\nsubject can trigger deletion of their data.\n\n**TS7 compliance (DATA_DLT_08):**\nWallet Units, Relying Parties, and Registrars SHALL comply with the\nrelevant requirements in Technical Specification 7. The common\ninterface provides standardised endpoints, request formats, and\nresponse codes to ensure interoperability across the ecosystem.\n\n**GDPR Art 17 requirements:**\n- Deletion must be performed \"without undue delay\" and in any event\n  within one month (Art 12(3))\n- The RP must inform the user of any valid grounds for refusal\n  (Art 17(3) exceptions: freedom of expression, legal obligation,\n  public interest, health, archiving/research, legal claims)\n- If the data has been made public, the RP must take reasonable\n  steps to inform other controllers processing the data\n- All copies including backups must be addressed (though backup\n  deletion may follow a deferred schedule)\n\n**Response obligations:**\nThe RP must provide confirmation of deletion or a reasoned refusal.\nFor wallet-mediated requests via TS7, responses must follow the\nstandardised response format.\n\nThis requirement connects to VEND-CORE-021 (data deletion chain)\nand VEND-CORE-029 (RPRC_11 deletion contact information in\nregistration certificates).",
-      "legalBases": [
-        {
-          "regulation": "2014/910",
-          "article": "Article 5a",
-          "paragraph": "4(d)(ii)",
-          "link": "/regulation/2014-910?section=article-5a"
-        },
-        {
-          "regulation": "2016/679",
-          "article": "Article 17",
-          "paragraph": "1",
-          "link": "/regulation/2016-679?section=article-17"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2014/910",
-        "article": "Article 5a",
-        "paragraph": "4(d)(ii)"
-      },
-      "legalBasisLink": "/regulation/2014-910?section=article-5a",
-      "legalText": "The data subject shall have the right to obtain from the controller \nthe erasure of personal data concerning him or her without undue \ndelay and the controller shall have the obligation to erase personal \ndata without undue delay.",
-      "arfReference": {
-        "topic": "Topic 48",
-        "hlr": [
-          "DATA_DLT_07",
-          "DATA_DLT_08"
-        ]
-      },
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroups": [
-        "eidas",
-        "gdpr",
         "arf"
       ],
       "deploymentArchitectures": [],
@@ -3173,7 +3119,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support both remote and proximity presentation protocols",
-      "explanation": "If the RP requires both remote and proximity (offline) presentation\nscenarios, the intermediary must support the relevant protocols for\neach mode.\n\n**Remote presentations:**\n- OpenID for Verifiable Presentations (OID4VP) per ISO/IEC TS\n  18013-7:2024\n- SD-JWT VC credential format with HAIP profile\n- Both same-device (app-to-app) and cross-device (QR code) flows\n- `direct_post` and `direct_post.jwt` response modes\n\n**Proximity presentations:**\n- ISO/IEC 18013-5:2021 device retrieval protocol\n- BLE as the mandatory transport, NFC as optional\n- Device engagement via QR code or NFC tap\n- mDoc credential format\n\n**Intermediary-specific considerations:**\nFor proximity flows, the intermediary's deployment must include\nhardware (BLE/NFC readers) at the RP's physical locations. The\nintermediary must handle the additional complexity of performing\nRPI_09 verification on-site before forwarding to the RP backend.\nFor remote flows, the intermediary must correctly route the\n`redirect_uri` / `response_uri` callbacks through its own\ninfrastructure while preserving the RP's session context.\n\nThe obligation is conditional: if the RP only uses remote flows,\nonly OID4VP is required. If the RP only uses proximity flows,\nonly ISO 18013-5 is required. If both modes are used, both\nMUST be supported.",
+      "explanation": "If the RP requires both remote and proximity (offline) presentation\nscenarios, the connector must support the relevant protocols for\neach mode.\n\n**Remote presentations:**\n- OpenID for Verifiable Presentations (OID4VP) per ISO/IEC TS\n  18013-7:2024\n- SD-JWT VC credential format with HAIP profile\n- Both same-device (app-to-app) and cross-device (QR code) flows\n- `direct_post` and `direct_post.jwt` response modes\n\n**Proximity presentations:**\n- ISO/IEC 18013-5:2021 device retrieval protocol\n- BLE as the mandatory transport, NFC as optional\n- Device engagement via QR code or NFC tap\n- mDoc credential format\n\n**Architecture-specific considerations:**\nFor proximity flows, the connector's deployment must include\nhardware (BLE/NFC readers) at the RP's physical locations. The\nintermediary must handle the additional complexity of performing\nRPI_09 verification on-site before forwarding to the RP backend.\nFor remote flows, the connector must correctly route the\n`redirect_uri` / `response_uri` callbacks through its own\ninfrastructure while preserving the RP's session context.\n\nThe obligation is conditional: if the RP only uses remote flows,\nonly OID4VP is required. If the RP only uses proximity flows,\nonly ISO 18013-5 is required. If both modes are used, both\nMUST be supported.",
       "legalBases": [
         {
           "regulation": "2024/2982",
@@ -3207,9 +3153,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3270,7 +3214,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Maintain up-to-date Trusted Lists for PID Providers",
-      "explanation": "The intermediary must maintain current copies of the Trusted Lists\ncontaining PID Provider trust anchors (public keys/certificates).\nThese lists are published by Member States and the Commission and\nmust be refreshed regularly to capture additions, modifications,\nand revocations.\n\n**Signature validation requirement (OIA_12):**\nFor both proximity and remote presentation flows, the intermediary\nSHALL validate the signature of a PID using a trust anchor provided\nin a PID Provider Trusted List made available in accordance with\nTopic 31 (notification and publication). This is a prerequisite for\nthe RPI_09 verification gate that determines whether attributes\nmay be forwarded to the RP.\n\n**Trust list discovery and refresh:**\nMember States publish Trusted Lists in a standardised format. The\nEU Commission publishes a List of Trusted Lists (LOTL) that\naggregates the Member State lists. The intermediary should:\n- Bootstrap from the LOTL to discover all Member State lists\n- Refresh lists at intervals aligned with the lists' own\n  `nextUpdate` timestamps (typically 24-72 hours)\n- Handle list signature verification (the list itself is signed)\n- Maintain a fallback if a Member State list is temporarily\n  unavailable\n\n**Intermediary-specific concern:**\nBecause intermediaries serve multiple RPs potentially operating\nacross different Member States, they may need to maintain Trusted\nLists from all 27 Member States simultaneously, rather than only\nthe subset relevant to a single RP's market.",
+      "explanation": "The connector must maintain current copies of the Trusted Lists\ncontaining PID Provider trust anchors (public keys/certificates).\nThese lists are published by Member States and the Commission and\nmust be refreshed regularly to capture additions, modifications,\nand revocations.\n\n**Signature validation requirement (OIA_12):**\nFor both proximity and remote presentation flows, the intermediary\nSHALL validate the signature of a PID using a trust anchor provided\nin a PID Provider Trusted List made available in accordance with\nTopic 31 (notification and publication). This is a prerequisite for\nthe RPI_09 verification gate that determines whether attributes\nmay be forwarded to the RP.\n\n**Trust list discovery and refresh:**\nMember States publish Trusted Lists in a standardised format. The\nEU Commission publishes a List of Trusted Lists (LOTL) that\naggregates the Member State lists. The connector should:\n- Bootstrap from the LOTL to discover all Member State lists\n- Refresh lists at intervals aligned with the lists' own\n  `nextUpdate` timestamps (typically 24-72 hours)\n- Handle list signature verification (the list itself is signed)\n- Maintain a fallback if a Member State list is temporarily\n  unavailable\n\n**Architecture-specific note:**\nBecause connectors serve multiple RPs potentially operating\nacross different Member States, they may need to maintain Trusted\nLists from all 27 Member States simultaneously, rather than only\nthe subset relevant to a single RP's market.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -3303,9 +3247,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3316,7 +3258,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Maintain up-to-date Trusted Lists for Attestation Providers",
-      "explanation": "The intermediary must maintain current copies of Trusted Lists for\nqualified and non-qualified electronic attestation of attributes\n(QEAA/EAA) providers. These trust anchors are essential for\nvalidating attestation signatures as part of the RPI_09\nverification gate.\n\n**QEAA Provider validation (OIA_13):**\nFor both proximity and remote flows, the intermediary SHALL validate\nthe qualified signature of a QEAA in accordance with Art 32 of the\neIDAS Regulation. The trust anchor must come from a QEAA Provider\nTrusted List made available in accordance with Art 22.\n\n**PuB-EAA Provider validation (OIA_14):**\nFor PuB-EAAs, the intermediary SHALL validate the qualified\nsignature using the public key from the qualified certificate of\nthe QTSP, and SHALL also validate the QTSP's certificate itself\nusing a trust anchor from the appropriate Trusted List.\n\n**Non-qualified EAA validation (OIA_15):**\nFor non-qualified EAAs, trust anchors are provided according to\nmechanisms specified in the applicable Rulebook (Topic 12). The\nintermediary may also need to verify that the EAA Provider is\nauthorised to issue the specific type of attestation.\n\n**Trust anchor isolation:**\nThe intermediary must distinguish between trust anchors for PIDs\n(OIA_12, see VEND-INT-007), QEAAs (OIA_13), PuB-EAAs (OIA_14),\nand non-qualified EAAs (OIA_15). A trust anchor valid for one\ncategory must not inadvertently validate attestations from another.",
+      "explanation": "The connector must maintain current copies of Trusted Lists for\nqualified and non-qualified electronic attestation of attributes\n(QEAA/EAA) providers. These trust anchors are essential for\nvalidating attestation signatures as part of the RPI_09\nverification gate.\n\n**QEAA Provider validation (OIA_13):**\nFor both proximity and remote flows, the connector SHALL validate\nthe qualified signature of a QEAA in accordance with Art 32 of the\neIDAS Regulation. The trust anchor must come from a QEAA Provider\nTrusted List made available in accordance with Art 22.\n\n**PuB-EAA Provider validation (OIA_14):**\nFor PuB-EAAs, the connector SHALL validate the qualified\nsignature using the public key from the qualified certificate of\nthe QTSP, and SHALL also validate the QTSP's certificate itself\nusing a trust anchor from the appropriate Trusted List.\n\n**Non-qualified EAA validation (OIA_15):**\nFor non-qualified EAAs, trust anchors are provided according to\nmechanisms specified in the applicable Rulebook (Topic 12). The\nconnector may also need to verify that the EAA Provider is\nauthorised to issue the specific type of attestation.\n\n**Trust anchor isolation:**\nThe connector must distinguish between trust anchors for PIDs\n(OIA_12, see VEND-INT-007), QEAAs (OIA_13), PuB-EAAs (OIA_14),\nand non-qualified EAAs (OIA_15). A trust anchor valid for one\ncategory must not inadvertently validate attestations from another.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -3353,9 +3295,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3366,7 +3306,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Obtain trust anchors only from official Trusted List sources",
-      "explanation": "Trust anchors for verification must be obtained exclusively from\nofficial EU and Member State Trusted Lists, not from third-party\naggregators or unofficial sources. This ensures the authenticity\nof verification keys and prevents supply-chain attacks on the\ntrust infrastructure.\n\n**Official sources (OIA_14):**\nThe eIDAS Regulation mandates that trust anchors come from Trusted\nLists published by Member States (Art 22) or the Commission. The\nintermediary must use these authoritative sources directly, or\nverify the chain of custody if an intermediary distribution point\nis used.\n\n**Prohibited practices:**\n- Using third-party trust anchor aggregation services without\n  verifying their integrity against official sources\n- Manually importing trust anchors from unverified downloads\n- Accepting trust anchors from RP customers or other parties\n- Using hardcoded trust anchors that bypass Trusted List updates\n\n**Verification of Trusted List authenticity:**\nEach Trusted List is itself signed. The intermediary must verify\nthe Trusted List's signature using the Member State's certificate\nbefore extracting trust anchors. This creates a chain of trust:\nCommission LOTL → Member State TL → Provider trust anchor →\nAttestation signature.",
+      "explanation": "Trust anchors for verification must be obtained exclusively from\nofficial EU and Member State Trusted Lists, not from third-party\naggregators or unofficial sources. This ensures the authenticity\nof verification keys and prevents supply-chain attacks on the\ntrust infrastructure.\n\n**Official sources (OIA_14):**\nThe eIDAS Regulation mandates that trust anchors come from Trusted\nLists published by Member States (Art 22) or the Commission. The\nintermediary must use these authoritative sources directly, or\nverify the chain of custody if a distribution point\nis used.\n\n**Prohibited practices:**\n- Using third-party trust anchor aggregation services without\n  verifying their integrity against official sources\n- Manually importing trust anchors from unverified downloads\n- Accepting trust anchors from RP customers or other parties\n- Using hardcoded trust anchors that bypass Trusted List updates\n\n**Verification of Trusted List authenticity:**\nEach Trusted List is itself signed. The connector must verify\nthe Trusted List's signature using the Member State's certificate\nbefore extracting trust anchors. This creates a chain of trust:\nCommission LOTL → Member State TL → Provider trust anchor →\nAttestation signature.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -3399,9 +3339,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3412,7 +3350,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Validate attestation signatures using official trust anchors",
-      "explanation": "The intermediary must verify the cryptographic signatures on\nattestations and PIDs using the public keys from official Trusted\nLists. Invalid or untrusted signatures must result in rejection.\n\n**Signature validation as RPI_09 prerequisite:**\nAttestation authenticity verification is the first check in the\nRPI_09 verification gate. Without a valid signature, no attributes\nmay be forwarded to the RP (per RPI_08). The intermediary must\nverify:\n- The attestation's issuer signature against the trust anchor\n- The certificate chain from the issuer to the Trusted List root\n- That the trust anchor is from the correct category (PID vs\n  QEAA vs PuB-EAA vs non-qualified EAA)\n\n**Cryptographic algorithm support:**\nThe intermediary must support the algorithms mandated by the\nARF and implementing acts, including ECDSA with P-256/P-384\ncurves for SD-JWT VC and COSE signatures for mDoc format.\nAlgorithm agility is important as new algorithms may be\napproved over time.\n\n**Rejection handling:**\nWhen a signature is invalid, the intermediary must:\n- Reject the entire presentation (not just the invalid attestation)\n- Log the verification failure with sufficient detail for dispute\n  resolution (without logging attestation content)\n- Return an appropriate error to the RP\n- Immediately delete all received attestation data (per RPI_10)",
+      "explanation": "The connector must verify the cryptographic signatures on\nattestations and PIDs using the public keys from official Trusted\nLists. Invalid or untrusted signatures must result in rejection.\n\n**Signature validation as RPI_09 prerequisite:**\nAttestation authenticity verification is the first check in the\nRPI_09 verification gate. Without a valid signature, no attributes\nmay be forwarded to the RP (per RPI_08). The connector must\nverify:\n- The attestation's issuer signature against the trust anchor\n- The certificate chain from the issuer to the Trusted List root\n- That the trust anchor is from the correct category (PID vs\n  QEAA vs PuB-EAA vs non-qualified EAA)\n\n**Cryptographic algorithm support:**\nThe connector must support the algorithms mandated by the\nARF and implementing acts, including ECDSA with P-256/P-384\ncurves for SD-JWT VC and COSE signatures for mDoc format.\nAlgorithm agility is important as new algorithms may be\napproved over time.\n\n**Rejection handling:**\nWhen a signature is invalid, the connector must:\n- Reject the entire presentation (not just the invalid attestation)\n- Log the verification failure with sufficient detail for dispute\n  resolution (without logging attestation content)\n- Return an appropriate error to the RP\n- Immediately delete all received attestation data (per RPI_10)",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3448,9 +3386,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3460,8 +3396,8 @@
       "category": "usage",
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
-      "requirement": "Verify attestation revocation status before acceptance (recommended)",
-      "explanation": "Before accepting a presentation as valid, the intermediary should\ncheck the revocation status of the attestation. This is a\nrecommended (SHOULD) step in the RPI_09 verification gate.\n\n**Revocation checking mechanisms (VCR_12 + VCR_13):**\nIf the intermediary decides to verify revocation status, it SHALL\nsupport both mechanisms specified by VCR_11:\n- **Attestation Status Lists**: batch-oriented mechanism where the\n  issuer publishes a compressed bitstring indicating the status of\n  all issued attestations. Efficient for high-volume checking.\n- **Attestation Revocation Lists**: list-based mechanism where\n  revoked attestation identifiers are published.\n\n**SHOULD vs MUST:**\nPer VCR_13, revocation verification is recommended but not\nmandatory. However, if the intermediary and RP agree that\nrevocation checking is required (per RPI_09 agreement scope),\nthen it becomes effectively mandatory for that relationship.\n\n**Operational considerations:**\n- Status lists should be cached to minimise latency, with refresh\n  intervals aligned to the issuer's publication frequency\n- When revocation endpoints are unavailable, the intermediary must\n  decide: reject the presentation (fail-closed) or accept with a\n  warning (fail-open). This policy should be configurable per RP.\n- Revocation checking must not log individual attestation\n  identifiers, as this could create a tracking vector (no-storage\n  mandate applies).",
+      "requirement": "Verify attestation revocation status using supported mechanisms before acceptance (recommended)",
+      "explanation": "Before accepting a presentation as valid, the connector should\ncheck the revocation status of the attestation. This is a\nrecommended (SHOULD) step in the RPI_09 verification gate.\n\n**VCR_13 — Recommended verification:**\nPer VCR_13, a Relying Party Instance SHOULD verify the\nrevocation status of a PID or attestation upon obtaining it\nfrom a Wallet Unit. This is a SHOULD (recommended), not a\nSHALL (mandatory), meaning the connector may choose not\nto verify revocation in low-risk scenarios. However, if the\nconnector and RP agree that revocation checking is required\n(per RPI_09 agreement scope), then it becomes effectively\nmandatory for that relationship.\n\n**VCR_12 — Dual-mechanism support:**\nIf the connector decides to verify revocation status, it SHALL\nsupport BOTH mechanisms specified per VCR_11:\n- **Attestation Status Lists**: compressed bitstring lists\n  where each bit represents the status of one attestation;\n  efficient for batch checking without per-credential queries\n- **Attestation Revocation Lists (Identifier Lists)**: lists\n  of revoked attestation identifiers; useful for targeted\n  checks\n\n**Short-lived attestation exception (VCR_01):**\nIf an attestation has a validity period of 24 hours or less\n(short-lived), revocation checking is unnecessary because the\nattestation will expire before a revocation could take effect.\n\n**Verification failure handling (RPI_08):**\nIf revocation verification fails (attestation is found to be\nrevoked), the connector SHALL NOT forward attributes to the\nRP per RPI_08. Status lists must be fetched from PID/EAA\nProviders via the URLs specified in the attestation metadata.\n\n**Operational considerations:**\n- Status lists should be cached to minimise latency, with refresh\n  intervals aligned to the issuer's publication frequency.\n  Cache strategy must balance freshness (detecting recent\n  revocations) against performance (avoiding per-request fetches).\n- When revocation endpoints are unavailable, the connector must\n  decide: reject the presentation (fail-closed) or accept with a\n  warning (fail-open). This policy should be configurable per RP.\n- Revocation checking must not log individual attestation\n  identifiers, as this could create a tracking vector (no-storage\n  mandate applies).",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3480,6 +3416,7 @@
       "arfReference": {
         "topic": "Topic 7",
         "hlr": [
+          "VCR_11",
           "VCR_12",
           "VCR_13"
         ]
@@ -3497,11 +3434,10 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
+      "notes": "This covers ARF Topic 7 (VCR_*) verification requirements\nfor attestation revocation. Attestation Status Lists (VCR_11)\nare the primary mechanism for efficient batch revocation\nchecking without per-credential queries.\nConsolidated from VEND-INT-011 + VEND-INT-034.",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -3510,7 +3446,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Verify the wallet unit's device binding",
-      "explanation": "The intermediary must verify that the presentation is bound to the\nwallet unit's secure cryptographic device (WSCD), confirming that\nthe presenter controls the private key associated with the\nattestations. This is a core check in the RPI_09 verification gate.\n\n**Device binding verification (RPI_09):**\nThe intermediary SHALL verify device binding by checking the\nproof-of-possession mechanism:\n- For mDoc (ISO 18013-5): verify the `deviceAuth` structure,\n  which contains either a MAC or ECDSA signature over session\n  data using the device's private key\n- For SD-JWT VC: verify the Key Binding JWT (`kb-jwt`), which\n  proves possession of the key referenced in the `cnf` claim\n\n**What device binding proves:**\n- The presentation was created by the wallet that holds the\n  attestation (not copied or exported)\n- The wallet's WSCD generated the proof in real-time (combined\n  with freshness checks in VEND-INT-013)\n- The attestation has not been cloned or replayed from another\n  device\n\n**Failure handling:**\nIf device binding verification fails, the intermediary SHALL NOT\nforward any attributes (per RPI_08). This is a hard failure — the\nentire presentation is rejected, and the RP is notified of the\nverification failure.",
+      "explanation": "The connector must verify that the presentation is bound to the\nwallet unit's secure cryptographic device (WSCD), confirming that\nthe presenter controls the private key associated with the\nattestations. This is a core check in the RPI_09 verification gate.\n\n**Device binding verification (RPI_09):**\nThe connector SHALL verify device binding by checking the\nproof-of-possession mechanism:\n- For mDoc (ISO 18013-5): verify the `deviceAuth` structure,\n  which contains either a MAC or ECDSA signature over session\n  data using the device's private key\n- For SD-JWT VC: verify the Key Binding JWT (`kb-jwt`), which\n  proves possession of the key referenced in the `cnf` claim\n\n**What device binding proves:**\n- The presentation was created by the wallet that holds the\n  attestation (not copied or exported)\n- The wallet's WSCD generated the proof in real-time (combined\n  with freshness checks in VEND-INT-013)\n- The attestation has not been cloned or replayed from another\n  device\n\n**Failure handling:**\nIf device binding verification fails, the connector SHALL NOT\nforward any attributes (per RPI_08). This is a hard failure — the\nentire presentation is rejected, and the RP is notified of the\nverification failure.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3543,9 +3479,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3556,7 +3490,7 @@
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Verify presentation freshness and prevent replay attacks",
-      "explanation": "The intermediary must verify that presentations are fresh and not\nreplayed. This includes checking nonces, timestamps, or session\nbinding, and implementing mechanisms to detect replay of\npreviously received presentations. Stale or replayed\npresentations must be rejected.\n\n**Freshness mechanisms:**\n- **Nonce challenge-response**: the intermediary generates a\n  cryptographically random nonce included in the presentation\n  request; the wallet embeds this nonce in the response,\n  signed by the device key\n- **Timestamp validation**: the presentation contains a creation\n  timestamp, which the intermediary validates against a\n  configurable time window (accounting for clock skew)\n- **Session binding**: the OID4VP `state` parameter binds the\n  wallet response to the specific browser/client session\n\n**Replay detection (Article 5b(9)):**\nThe intermediary must implement server-side nonce tracking to\ndetect replay attempts. Once a nonce has been used, it must be\nmarked as consumed and rejected if re-submitted. The nonce store\nmust be:\n- Persistent across intermediary restarts (within the nonce's\n  validity window)\n- Distributed if the intermediary runs in a multi-instance\n  deployment\n- Automatically pruned after nonce expiry\n\n**Combined with device binding (RPI_09):**\nFreshness verification and device binding together ensure that\nthe presentation was created by the legitimate wallet user in\nreal-time, not replayed from a captured session.",
+      "explanation": "The connector must verify that presentations are fresh and not\nreplayed. This includes checking nonces, timestamps, or session\nbinding, and implementing mechanisms to detect replay of\npreviously received presentations. Stale or replayed\npresentations must be rejected.\n\n**Freshness mechanisms:**\n- **Nonce challenge-response**: the connector generates a\n  cryptographically random nonce included in the presentation\n  request; the wallet embeds this nonce in the response,\n  signed by the device key\n- **Timestamp validation**: the presentation contains a creation\n  timestamp, which the connector validates against a\n  configurable time window (accounting for clock skew)\n- **Session binding**: the OID4VP `state` parameter binds the\n  wallet response to the specific browser/client session\n\n**Replay detection (Article 5b(9)):**\nThe connector must implement server-side nonce tracking to\ndetect replay attempts. Once a nonce has been used, it must be\nmarked as consumed and rejected if re-submitted. The nonce store\nmust be:\n- Persistent across intermediary restarts (within the nonce's\n  validity window)\n- Distributed if the connector runs in a multi-instance\n  deployment\n- Automatically pruned after nonce expiry\n\n**Combined with device binding (RPI_09):**\nFreshness verification and device binding together ensure that\nthe presentation was created by the legitimate wallet user in\nreal-time, not replayed from a captured session.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3595,9 +3529,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3654,7 +3586,7 @@
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Implement secure key management for verification operations",
-      "explanation": "The intermediary must implement secure storage and handling of any\ncryptographic material used in verification operations. Keys must\nbe protected against unauthorised access, modification, and\nextraction.\n\n**Key types requiring protection:**\n- **TLS private keys** for the intermediary's server certificate\n  (inbound from wallets) and client certificate (outbound to RPs\n  if mTLS is used)\n- **Ephemeral session keys** generated during OID4VP or ISO\n  18013-5 device engagement\n- **Signing keys** for verification result JWS signatures\n  (if the intermediary signs its verification outcomes)\n- **Trust anchor certificates** (public keys, but integrity must\n  be protected against tampering)\n\n**Storage requirements:**\n- Private keys SHOULD be stored in HSMs (Hardware Security\n  Modules) or equivalent secure enclaves for production\n  deployments\n- At minimum, keys must be encrypted at rest using AES-256 or\n  equivalent, with key encryption keys stored separately\n- Keys must never appear in logs, error messages, or diagnostic\n  output\n\n**Lifecycle management:**\n- Key generation with sufficient entropy (CSPRNG)\n- Automated rotation schedules with overlap periods\n- Secure destruction when decommissioned (cryptographic erasure)\n- Emergency revocation procedures for compromised keys",
+      "explanation": "The connector must implement secure storage and handling of any\ncryptographic material used in verification operations. Keys must\nbe protected against unauthorised access, modification, and\nextraction.\n\n**Key types requiring protection:**\n- **TLS private keys** for the connector's server certificate\n  (inbound from wallets) and client certificate (outbound to RPs\n  if mTLS is used)\n- **Ephemeral session keys** generated during OID4VP or ISO\n  18013-5 device engagement\n- **Signing keys** for verification result JWS signatures\n  (if the connector signs its verification outcomes)\n- **Trust anchor certificates** (public keys, but integrity must\n  be protected against tampering)\n\n**Storage requirements:**\n- Private keys SHOULD be stored in HSMs (Hardware Security\n  Modules) or equivalent secure enclaves for production\n  deployments\n- At minimum, keys must be encrypted at rest using AES-256 or\n  equivalent, with key encryption keys stored separately\n- Keys must never appear in logs, error messages, or diagnostic\n  output\n\n**Lifecycle management:**\n- Key generation with sufficient entropy (CSPRNG)\n- Automated rotation schedules with overlap periods\n- Secure destruction when decommissioned (cryptographic erasure)\n- Emergency revocation procedures for compromised keys",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3682,9 +3614,7 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3741,7 +3671,7 @@
       "categoryLabel": "Security",
       "categoryIcon": "🔒",
       "requirement": "Maintain audit logs of verification operations",
-      "explanation": "The intermediary should maintain logs of verification operations\nincluding verification timestamps, outcomes, and any errors.\nThese logs support dispute resolution and compliance auditing\nwhile respecting privacy (no attestation content should be\nlogged).\n\n**What may be logged (content-free metadata):**\n- Verification timestamp (ISO 8601)\n- Session/request identifier (internal correlation ID)\n- RP identifier (which RP the request was for)\n- Verification outcome per RPI_09 check (pass/fail)\n- Error codes and failure reasons\n- Protocol used (OID4VP / ISO 18013-5)\n- Processing duration\n\n**What must NOT be logged (no-storage mandate):**\n- Individual attribute names or values from the attestation\n- PID content (name, date of birth, etc.)\n- Wallet unit identifiers that could enable user tracking\n- Presentation payloads or fragments thereof\n- Device binding keys or key material\n\n**Log integrity and retention:**\n- Logs should be tamper-evident (append-only, signed, or\n  blockchain-anchored) to support dispute resolution\n- Retention period should be defined per RP agreement and\n  aligned with GDPR data minimisation\n- Logs must themselves be protected as processing records\n  under GDPR Article 30",
+      "explanation": "The connector should maintain logs of verification operations\nincluding verification timestamps, outcomes, and any errors.\nThese logs support dispute resolution and compliance auditing\nwhile respecting privacy (no attestation content should be\nlogged).\n\n**What may be logged (content-free metadata):**\n- Verification timestamp (ISO 8601)\n- Session/request identifier (internal correlation ID)\n- RP identifier (which RP the request was for)\n- Verification outcome per RPI_09 check (pass/fail)\n- Error codes and failure reasons\n- Protocol used (OID4VP / ISO 18013-5)\n- Processing duration\n\n**What must NOT be logged (no-storage mandate):**\n- Individual attribute names or values from the attestation\n- PID content (name, date of birth, etc.)\n- Wallet unit identifiers that could enable user tracking\n- Presentation payloads or fragments thereof\n- Device binding keys or key material\n\n**Log integrity and retention:**\n- Logs should be tamper-evident (append-only, signed, or\n  blockchain-anchored) to support dispute resolution\n- Retention period should be defined per RP agreement and\n  aligned with GDPR data minimisation\n- Logs must themselves be protected as processing records\n  under GDPR Article 30",
       "legalBases": [
         {
           "regulation": "2016/679",
@@ -3769,9 +3699,7 @@
       "sourceGroups": [
         "gdpr"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate)\nbut may contain verification metadata (pass/fail, timestamp, error codes).",
@@ -3812,7 +3740,8 @@
         "eidas"
       ],
       "deploymentArchitectures": [
-        "intermediary"
+        "intermediary",
+        "direct_saas"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
@@ -3853,7 +3782,8 @@
         "eidas"
       ],
       "deploymentArchitectures": [
-        "intermediary"
+        "intermediary",
+        "direct_saas"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
@@ -3960,7 +3890,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support mandatory credential formats based on supported use cases",
-      "explanation": "Relying Party connectors and intermediaries must support the\ncredential formats relevant to their operational use cases.\n\n**Remote Presentations (online services):**\n- **SD-JWT-VC** format (Selective Disclosure JSON Web Token for\n  Verifiable Credentials) as the primary credential format\n- **OpenID4VP** protocol for presentation exchange (same-device\n  and cross-device flows via `direct_post` response mode)\n- The intermediary must verify SD-JWT VC signatures, validate\n  selective disclosures, and check key binding JWTs\n\n**Proximity Presentations (in-person verification):**\n- **ISO/IEC 18013-5:2021 (mDoc)** format for proximity\n  credential presentation\n- **BLE and/or NFC** transport protocols per ISO/IEC 18013-5\n  and ISO/IEC 18013-7\n- The intermediary must handle device engagement, session\n  establishment, CBOR decoding, and COSE signature verification\n\n**Use-case dependency (RPRC_20a):**\nPer RPRC_20a, Relying Party Instances and Wallet Units SHALL\nsupport the extension for ISO/IEC 18013-5 OR the extension for\nOpenID4VP (as applicable). The \"or\" indicates use-case\ndependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs: mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\n**Attestation Rulebook impact (ARB_02):**\nThe Attestation Rulebook for each attestation type determines\nwhether proximity presentation is required. If so, the Rulebook\nmandates mDoc format issuance, meaning the intermediary must\nsupport mDoc verification for those attestation types.\n\nNote: This differs from Issuers, who must unconditionally\nsupport both formats (per ISSU_12).",
+      "explanation": "Relying Party connectors and connectors must support the\ncredential formats relevant to their operational use cases.\n\n**Remote Presentations (online services):**\n- **SD-JWT-VC** format (Selective Disclosure JSON Web Token for\n  Verifiable Credentials) as the primary credential format\n- **OpenID4VP** protocol for presentation exchange (same-device\n  and cross-device flows via `direct_post` response mode)\n- The connector must verify SD-JWT VC signatures, validate\n  selective disclosures, and check key binding JWTs\n\n**Proximity Presentations (in-person verification):**\n- **ISO/IEC 18013-5:2021 (mDoc)** format for proximity\n  credential presentation\n- **BLE and/or NFC** transport protocols per ISO/IEC 18013-5\n  and ISO/IEC 18013-7\n- The connector must handle device engagement, session\n  establishment, CBOR decoding, and COSE signature verification\n\n**Use-case dependency (RPRC_20a):**\nPer RPRC_20a, Relying Party Instances and Wallet Units SHALL\nsupport the extension for ISO/IEC 18013-5 OR the extension for\nOpenID4VP (as applicable). The \"or\" indicates use-case\ndependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs: mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\n**Attestation Rulebook impact (ARB_02):**\nThe Attestation Rulebook for each attestation type determines\nwhether proximity presentation is required. If so, the Rulebook\nmandates mDoc format issuance, meaning the connector must\nsupport mDoc verification for those attestation types.\n\nNote: This differs from Issuers, who must unconditionally\nsupport both formats (per ISSU_12).",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -3998,9 +3928,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support\nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally\nsupport both formats per ISSU_12.",
@@ -4012,7 +3940,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support selective disclosure in both credential formats",
-      "explanation": "The intermediary's verification implementation must correctly\nhandle selectively disclosed attributes in both mDoc and VC\nformats. Verification must succeed even when only a subset of\nattributes is presented.\n\n**SD-JWT-VC selective disclosure:**\n- The SD-JWT VC format uses hash-based selective disclosure:\n  the issuer includes salted hashes of each claim, and the\n  holder reveals only the claims they choose by including the\n  corresponding disclosure values\n- The intermediary must verify the hash of each disclosed claim\n  against the issuer-signed SD-JWT payload\n- Undisclosed claims must be ignored (not treated as missing\n  or invalid)\n- The key binding JWT (`kb-jwt`) must be verified to confirm\n  holder authorisation\n\n**mDoc selective disclosure:**\n- The mDoc format uses `IssuerSignedItem` elements within\n  namespaces; the holder selects which elements to release\n- The intermediary must verify the Mobile Security Object\n  (MSO) signature and check that each disclosed element's\n  digest matches the MSO\n- Undisclosed elements must be treated as absent, not as\n  verification failures\n\n**Intermediary-specific considerations:**\nThe intermediary must forward exactly the disclosed subset to\nthe RP (per VEND-INT-004). It must not infer, reconstruct,\nor flag undisclosed attributes. The verification pipeline\nshould be format-agnostic at the forwarding stage.",
+      "explanation": "The connector's verification implementation must correctly\nhandle selectively disclosed attributes in both mDoc and VC\nformats. Verification must succeed even when only a subset of\nattributes is presented.\n\n**SD-JWT-VC selective disclosure:**\n- The SD-JWT VC format uses hash-based selective disclosure:\n  the issuer includes salted hashes of each claim, and the\n  holder reveals only the claims they choose by including the\n  corresponding disclosure values\n- The connector must verify the hash of each disclosed claim\n  against the issuer-signed SD-JWT payload\n- Undisclosed claims must be ignored (not treated as missing\n  or invalid)\n- The key binding JWT (`kb-jwt`) must be verified to confirm\n  holder authorisation\n\n**mDoc selective disclosure:**\n- The mDoc format uses `IssuerSignedItem` elements within\n  namespaces; the holder selects which elements to release\n- The connector must verify the Mobile Security Object\n  (MSO) signature and check that each disclosed element's\n  digest matches the MSO\n- Undisclosed elements must be treated as absent, not as\n  verification failures\n\n**Architecture-specific considerations:**\nThe connector must forward exactly the disclosed subset to\nthe RP (per VEND-INT-004). It must not infer, reconstruct,\nor flag undisclosed attributes. The verification pipeline\nshould be format-agnostic at the forwarding stage.",
       "legalBases": [
         {
           "regulation": "2024/2982",
@@ -4045,9 +3973,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4058,7 +3984,7 @@
       "categoryLabel": "Registration",
       "categoryIcon": "📋",
       "requirement": "Consider certification for cryptographic components",
-      "explanation": "Depending on the assurance level required by the RP, the\nintermediary may need to demonstrate that its cryptographic\nimplementations meet recognised standards. This is especially\nrelevant for high-assurance use cases.\n\n**Applicable certification frameworks:**\n- **FIPS 140-2/3** (Level 1–4): US NIST standard for\n  cryptographic modules; widely accepted in EU for cross-border\n  interoperability\n- **Common Criteria (ISO/IEC 15408)**: EAL4+ is typical for\n  security-critical components; relevant under the EU\n  Cybersecurity Act (Regulation 2019/881)\n- **SOG-IS Crypto Evaluation Scheme**: European scheme for\n  cryptographic evaluation (relevant for Member State\n  requirements)\n- **eIDAS Article 24 audits**: QTSPs must be audited by a\n  conformity assessment body; intermediaries supporting QTSPs\n  may inherit audit requirements\n\n**Scope of certification:**\nCertification may cover:\n- Cryptographic libraries used for signature verification\n  (ECDSA P-256/P-384, EdDSA, RSA)\n- HSM or secure enclave hardware\n- Random number generators (DRBG per SP 800-90A)\n- TLS implementation (cipher suite compliance)\n- Key storage and lifecycle management\n\n**Conditional nature:**\nThis is a risk-based requirement. Not all intermediaries will\nrequire full certification, but the intermediary should be\nprepared to provide certification evidence when requested by\nhigh-assurance RPs or national supervisory authorities.",
+      "explanation": "Depending on the assurance level required by the RP, the\nconnector may need to demonstrate that its cryptographic\nimplementations meet recognised standards. This is especially\nrelevant for high-assurance use cases.\n\n**Applicable certification frameworks:**\n- **FIPS 140-2/3** (Level 1–4): US NIST standard for\n  cryptographic modules; widely accepted in EU for cross-border\n  interoperability\n- **Common Criteria (ISO/IEC 15408)**: EAL4+ is typical for\n  security-critical components; relevant under the EU\n  Cybersecurity Act (Regulation 2019/881)\n- **SOG-IS Crypto Evaluation Scheme**: European scheme for\n  cryptographic evaluation (relevant for Member State\n  requirements)\n- **eIDAS Article 24 audits**: QTSPs must be audited by a\n  conformity assessment body; connectors supporting QTSPs\n  may inherit audit requirements\n\n**Scope of certification:**\nCertification may cover:\n- Cryptographic libraries used for signature verification\n  (ECDSA P-256/P-384, EdDSA, RSA)\n- HSM or secure enclave hardware\n- Random number generators (DRBG per SP 800-90A)\n- TLS implementation (cipher suite compliance)\n- Key storage and lifecycle management\n\n**Conditional nature:**\nThis is a risk-based requirement. Not all connectors will\nrequire full certification, but the connector should be\nprepared to provide certification evidence when requested by\nhigh-assurance RPs or national supervisory authorities.",
       "legalBases": [
         {
           "regulation": "2019/881",
@@ -4086,12 +4012,10 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
-      "notes": "This is a conditional requirement based on the RP's risk assessment and\nthe sensitivity of the use case. Not all intermediaries will require\ncertification.",
+      "notes": "This is a conditional requirement based on the RP's risk assessment and\nthe sensitivity of the use case. Not all connectors will require\ncertification.",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -4100,7 +4024,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Comply with embedded disclosure policies in attestations",
-      "explanation": "Electronic attestations of attributes may contain embedded\ndisclosure policies that specify conditions the relying party\nmust meet to access the attestation. The intermediary must\nverify RP compliance with these policies and ensure the wallet\ncan inform the user of the result.\n\n**Disclosure policy mechanics:**\nAn embedded disclosure policy is a machine-readable set of\nconditions attached to individual attributes or to the\nattestation as a whole. These conditions may include:\n- **RP category requirements**: only certain RP types (e.g.,\n  financial institutions, healthcare providers) may access\n  specific attributes\n- **Purpose limitations**: attributes may only be used for\n  specified purposes (e.g., age verification, identity\n  proofing)\n- **Jurisdiction restrictions**: attributes may only be\n  disclosed to RPs in certain jurisdictions\n- **Temporal constraints**: attributes may only be disclosed\n  during certain time windows\n\n**Intermediary responsibilities:**\n- Parse the disclosure policy from the attestation metadata\n- Evaluate the intermediated RP's registration against the\n  policy conditions (using Registrar data)\n- Communicate the evaluation result to the wallet (pass/fail)\n  so the wallet can inform the user\n- If the RP does not meet the policy, the intermediary must\n  NOT forward the request to the wallet (or the wallet will\n  reject it)\n\n**Interaction with RPI_06:**\nThe disclosure policy check is complementary to the RPI_06\nattribute scope check: RPI_06 ensures the RP only requests\nattributes it has registered for, while the disclosure policy\nensures the RP meets the conditions set by the attestation\nissuer.",
+      "explanation": "Electronic attestations of attributes may contain embedded\ndisclosure policies that specify conditions the relying party\nmust meet to access the attestation. The connector must\nverify RP compliance with these policies and ensure the wallet\ncan inform the user of the result.\n\n**Disclosure policy mechanics:**\nAn embedded disclosure policy is a machine-readable set of\nconditions attached to individual attributes or to the\nattestation as a whole. These conditions may include:\n- **RP category requirements**: only certain RP types (e.g.,\n  financial institutions, healthcare providers) may access\n  specific attributes\n- **Purpose limitations**: attributes may only be used for\n  specified purposes (e.g., age verification, identity\n  proofing)\n- **Jurisdiction restrictions**: attributes may only be\n  disclosed to RPs in certain jurisdictions\n- **Temporal constraints**: attributes may only be disclosed\n  during certain time windows\n\n**Connector responsibilities:**\n- Parse the disclosure policy from the attestation metadata\n- Evaluate the intermediated RP's registration against the\n  policy conditions (using Registrar data)\n- Communicate the evaluation result to the wallet (pass/fail)\n  so the wallet can inform the user\n- If the RP does not meet the policy, the connector must\n  NOT forward the request to the wallet (or the wallet will\n  reject it)\n\n**Interaction with RPI_06:**\nThe disclosure policy check is complementary to the RPI_06\nattribute scope check: RPI_06 ensures the RP only requests\nattributes it has registered for, while the disclosure policy\nensures the RP meets the conditions set by the attestation\nissuer.",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -4128,9 +4052,7 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4141,7 +4063,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support WebAuthn specification for pseudonym generation",
-      "explanation": "When the intermediary supports pseudonymous authentication from\nwallet units, it must support the WebAuthn specification as\nmandated in Annex V of the Integrity Regulation. This enables\nprivacy-preserving authentication without revealing user\nidentity.\n\n**How pseudonyms work in the EUDI Wallet context:**\n- The wallet generates a WebAuthn credential (public/private\n  key pair) scoped to a specific RP\n- The public key serves as the pseudonym — a stable identifier\n  that the RP can use for return visits without knowing the\n  user's real identity\n- The private key remains in the wallet's WSCD and is used to\n  sign authentication challenges\n\n**Intermediary verification requirements:**\n- Verify the WebAuthn assertion signature using the registered\n  public key (pseudonym)\n- Support at minimum the `ES256` algorithm (ECDSA with P-256)\n  per WebAuthn recommendations\n- Handle `authenticatorData` fields including RP ID hash,\n  flags, and sign count\n- Forward the verified pseudonym to the intermediated RP\n  without associating it with any PID or attestation data\n\n**Privacy implications for intermediaries:**\nThe intermediary sees the pseudonym during verification but\nmust not store or correlate it across sessions (per the\nno-storage mandate). The pseudonym should be treated with the\nsame deletion requirements as attestation data (per RPI_10).",
+      "explanation": "When the connector supports pseudonymous authentication from\nwallet units, it must support the WebAuthn specification as\nmandated in Annex V of the Integrity Regulation. This enables\nprivacy-preserving authentication without revealing user\nidentity.\n\n**How pseudonyms work in the EUDI Wallet context:**\n- The wallet generates a WebAuthn credential (public/private\n  key pair) scoped to a specific RP\n- The public key serves as the pseudonym — a stable identifier\n  that the RP can use for return visits without knowing the\n  user's real identity\n- The private key remains in the wallet's WSCD and is used to\n  sign authentication challenges\n\n**Connector verification requirements:**\n- Verify the WebAuthn assertion signature using the registered\n  public key (pseudonym)\n- Support at minimum the `ES256` algorithm (ECDSA with P-256)\n  per WebAuthn recommendations\n- Handle `authenticatorData` fields including RP ID hash,\n  flags, and sign count\n- Forward the verified pseudonym to the intermediated RP\n  without associating it with any PID or attestation data\n\n**Privacy implications:**\nThe intermediary sees the pseudonym during verification but\nmust not store or correlate it across sessions (per the\nno-storage mandate). The pseudonym should be treated with the\nsame deletion requirements as attestation data (per RPI_10).",
       "legalBases": [
         {
           "regulation": "2024/2979",
@@ -4170,9 +4092,7 @@
       "sourceGroups": [
         "eidas"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4224,7 +4144,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Use valid Wallet-Relying Party Access Certificate",
-      "explanation": "The intermediary must use a valid Wallet-Relying Party Access\nCertificate (issued by its Registrar) when interacting with\nwallet units. The certificate identifies the intermediary and\nenables the wallet to verify its registration status.\n\n**RPA_01 authentication mechanism:**\nThe access certificate is part of the RP authentication\nmechanism that SHALL:\n- Enable the Wallet Unit to identify and authenticate the\n  Relying Party (i.e., the intermediary)\n- Enable the Wallet Unit to verify that the request was not\n  copied and replayed\n- Use certificates issued in accordance with Topic 27\n  (Registration of Relying Parties)\n\n**Intermediary-specific certificate usage:**\nThe intermediary's access certificate identifies the\n**intermediary itself**, not the intermediated RP. The\nintermediated RP's identity is conveyed via the RPRC_19a\nextension (per VEND-INT-022). The wallet detects the\nintermediary scenario by comparing these two identities\n(per RPI_07).\n\n**Certificate lifecycle requirements:**\n- Certificates have finite validity; the intermediary must\n  monitor expiration and renew before expiry\n- If a certificate is revoked (e.g., because the intermediary\n  loses its registration), all wallet interactions will fail\n- The intermediary should support automated renewal and have\n  fallback procedures for unexpected revocation\n\n**Protocol-specific certificate presentation:**\n- **OID4VP (remote)**: the access certificate is presented\n  during TLS handshake (server certificate) and/or in the\n  request JWT\n- **ISO 18013-5 (proximity)**: the access certificate is\n  included in the reader authentication structure",
+      "explanation": "The connector must use a valid Wallet-Relying Party Access\nCertificate (issued by its Registrar) when interacting with\nwallet units. The certificate identifies the intermediary and\nenables the wallet to verify its registration status.\n\n**RPA_01 authentication mechanism:**\nThe access certificate is part of the RP authentication\nmechanism that SHALL:\n- Enable the Wallet Unit to identify and authenticate the\n  Relying Party (i.e., the intermediary)\n- Enable the Wallet Unit to verify that the request was not\n  copied and replayed\n- Use certificates issued in accordance with Topic 27\n  (Registration of Relying Parties)\n\n**Architecture-specific certificate usage:**\nThe connector's access certificate identifies the\n**intermediary itself**, not the intermediated RP. The\nintermediated RP's identity is conveyed via the RPRC_19a\nextension (per VEND-INT-022). The wallet detects the\nintermediary scenario by comparing these two identities\n(per RPI_07).\n\n**Certificate lifecycle requirements:**\n- Certificates have finite validity; the connector must\n  monitor expiration and renew before expiry\n- If a certificate is revoked (e.g., because the intermediary\n  loses its registration), all wallet interactions will fail\n- The connector should support automated renewal and have\n  fallback procedures for unexpected revocation\n\n**Protocol-specific certificate presentation:**\n- **OID4VP (remote)**: the access certificate is presented\n  during TLS handshake (server certificate) and/or in the\n  request JWT\n- **ISO 18013-5 (proximity)**: the access certificate is\n  included in the reader authentication structure",
       "legalBases": [
         {
           "regulation": "2024/2982",
@@ -4260,9 +4180,7 @@
         "eidas",
         "arf"
       ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -4310,7 +4228,8 @@
         "arf"
       ],
       "deploymentArchitectures": [
-        "intermediary"
+        "intermediary",
+        "direct_saas"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -4351,7 +4270,8 @@
         "eidas"
       ],
       "deploymentArchitectures": [
-        "intermediary"
+        "intermediary",
+        "direct_saas"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -4456,57 +4376,6 @@
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet\nverification per RPI_07a. The intermediary must ensure\nregistration is complete BEFORE accepting intermediation\nrequests from an RP, otherwise wallet users will see\nverification failures.",
-      "_sourceFile": "intermediary.yaml"
-    },
-    {
-      "id": "VEND-INT-034",
-      "category": "usage",
-      "categoryLabel": "Usage",
-      "categoryIcon": "🔍",
-      "requirement": "Support attestation status list verification mechanisms (recommended)",
-      "explanation": "The intermediary should support attestation status verification\nusing the mechanisms specified in ARF Topic 7 (Attestation\nRevocation). This includes checking Attestation Status Lists\nor Attestation Revocation Lists published by PID/EAA providers\nto verify that attestations have not been revoked.\n\n**VCR_13 — Recommended verification:**\nPer VCR_13, a Relying Party Instance SHOULD verify the\nrevocation status of a PID or attestation upon obtaining it\nfrom a Wallet Unit. This is a SHOULD (recommended), not a\nSHALL (mandatory), meaning the intermediary may choose not\nto verify revocation in low-risk scenarios.\n\n**VCR_12 — Dual-mechanism support:**\nIf the intermediary decides to verify revocation, it SHALL\nsupport BOTH mechanisms specified per VCR_11:\n- **Attestation Status Lists**: compressed bitstring lists\n  where each bit represents the status of one attestation;\n  efficient for batch checking without per-credential\n  queries\n- **Attestation Revocation Lists (Identifier Lists)**: lists\n  of revoked attestation identifiers; useful for targeted\n  checks\n\n**Intermediary-specific considerations:**\n- Revocation checking occurs as part of the RPI_09\n  verification gate (specifically step (b): revocation\n  status)\n- If revocation verification fails, the intermediary SHALL\n  NOT forward attributes to the RP (per RPI_08)\n- Status lists must be fetched from PID/EAA Providers via\n  the URLs specified in the attestation metadata\n- Cache strategy must balance freshness (detecting recent\n  revocations) against performance (avoiding per-request\n  fetches)\n\n**Short-lived attestation exception:**\nPer VCR_01, if an attestation has a validity period of 24\nhours or less (short-lived), revocation checking is\nunnecessary because the attestation will expire before a\nrevocation could take effect.",
-      "legalBases": [
-        {
-          "regulation": "2024/2979",
-          "article": "Article 3",
-          "paragraph": "1",
-          "link": "/implementing-acts/2024-2979?section=article-3"
-        }
-      ],
-      "legalBasis": {
-        "regulation": "2024/2979",
-        "article": "Article 3",
-        "paragraph": "1"
-      },
-      "legalBasisLink": "/implementing-acts/2024-2979?section=article-3",
-      "legalText": "Wallet solutions shall support the protocols and interfaces\nnecessary to verify the validity of PIDs and electronic\nattestations of attributes.",
-      "arfReference": {
-        "topic": "Topic 7",
-        "hlr": [
-          "VCR_13",
-          "VCR_12",
-          "VCR_11"
-        ]
-      },
-      "roles": [
-        "relying_party"
-      ],
-      "productCategories": [
-        "connector"
-      ],
-      "isUniversal": false,
-      "isExtended": false,
-      "scope": "core",
-      "sourceGroups": [
-        "eidas",
-        "arf"
-      ],
-      "deploymentArchitectures": [
-        "intermediary"
-      ],
-      "deadline": "2027-11-21",
-      "obligation": "SHOULD",
-      "notes": "This covers ARF Topic 7 (VCR_*) verification requirements\nfor attestation revocation. Attestation Status Lists (VCR_11)\nare the primary mechanism for efficient batch revocation\nchecking without per-credential queries.",
       "_sourceFile": "intermediary.yaml"
     },
     {
@@ -7135,7 +7004,6 @@
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -7191,8 +7059,7 @@
       "VEND-INT-030",
       "VEND-INT-031",
       "VEND-INT-032",
-      "VEND-INT-033",
-      "VEND-INT-034"
+      "VEND-INT-033"
     ],
     "issuer": [
       "VEND-CORE-019",
@@ -7311,7 +7178,6 @@
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -7355,8 +7221,7 @@
       "VEND-INT-030",
       "VEND-INT-031",
       "VEND-INT-032",
-      "VEND-INT-033",
-      "VEND-INT-034"
+      "VEND-INT-033"
     ],
     "issuance_platform": [
       "VEND-CORE-019",
@@ -7490,7 +7355,6 @@
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -7536,7 +7400,6 @@
       "VEND-INT-031",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034",
       "VEND-ISS-001",
       "VEND-ISS-004",
       "VEND-ISS-005",
@@ -7600,7 +7463,6 @@
       "VEND-CORE-014",
       "VEND-CORE-021",
       "VEND-CORE-028",
-      "VEND-CORE-035",
       "VEND-CORE-042",
       "VEND-ICT-002",
       "VEND-ICT-007",
@@ -7640,7 +7502,6 @@
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
@@ -7676,7 +7537,6 @@
       "VEND-INT-030",
       "VEND-INT-032",
       "VEND-INT-033",
-      "VEND-INT-034",
       "VEND-ISS-001",
       "VEND-ISS-002",
       "VEND-ISS-003",
@@ -7721,26 +7581,26 @@
     ]
   },
   "stats": {
-    "totalRequirements": 153,
+    "totalRequirements": 151,
     "byRole": {
-      "relying_party": 84,
+      "relying_party": 82,
       "issuer": 65,
       "universal": 19
     },
     "byProductCategory": {
-      "connector": 72,
+      "connector": 70,
       "issuance_platform": 48,
       "trust_services": 26,
       "universal": 16
     },
     "bySourceGroup": {
-      "eidas": 129,
-      "gdpr": 20,
+      "eidas": 127,
+      "gdpr": 19,
       "dora": 12,
-      "arf": 94
+      "arf": 92
     },
     "byCategory": {
-      "usage": 49,
+      "usage": 47,
       "contracts": 22,
       "registration": 27,
       "security": 29,
@@ -7748,9 +7608,9 @@
       "revocation": 8
     },
     "byObligation": {
-      "MUST": 128,
+      "MUST": 127,
       "MUST NOT": 11,
-      "SHOULD": 13,
+      "SHOULD": 12,
       "SHOULD NOT": 0,
       "MAY": 1
     }

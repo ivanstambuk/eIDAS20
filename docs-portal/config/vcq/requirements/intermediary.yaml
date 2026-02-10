@@ -200,13 +200,12 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST NOT
   - id: VEND-INT-005
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Support both remote and proximity presentation protocols
     explanation: |
       If the RP requires both remote and proximity (offline) presentation
-      scenarios, the intermediary must support the relevant protocols for
+      scenarios, the connector must support the relevant protocols for
       each mode.
 
       **Remote presentations:**
@@ -222,12 +221,12 @@ requirements:
       - Device engagement via QR code or NFC tap
       - mDoc credential format
 
-      **Intermediary-specific considerations:**
-      For proximity flows, the intermediary's deployment must include
+      **Architecture-specific considerations:**
+      For proximity flows, the connector's deployment must include
       hardware (BLE/NFC readers) at the RP's physical locations. The
       intermediary must handle the additional complexity of performing
       RPI_09 verification on-site before forwarding to the RP backend.
-      For remote flows, the intermediary must correctly route the
+      For remote flows, the connector must correctly route the
       `redirect_uri` / `response_uri` callbacks through its own
       infrastructure while preserving the RP's session context.
 
@@ -312,12 +311,11 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-007
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Maintain up-to-date Trusted Lists for PID Providers
     explanation: |
-      The intermediary must maintain current copies of the Trusted Lists
+      The connector must maintain current copies of the Trusted Lists
       containing PID Provider trust anchors (public keys/certificates).
       These lists are published by Member States and the Commission and
       must be refreshed regularly to capture additions, modifications,
@@ -334,7 +332,7 @@ requirements:
       **Trust list discovery and refresh:**
       Member States publish Trusted Lists in a standardised format. The
       EU Commission publishes a List of Trusted Lists (LOTL) that
-      aggregates the Member State lists. The intermediary should:
+      aggregates the Member State lists. The connector should:
       - Bootstrap from the LOTL to discover all Member State lists
       - Refresh lists at intervals aligned with the lists' own
         `nextUpdate` timestamps (typically 24-72 hours)
@@ -342,8 +340,8 @@ requirements:
       - Maintain a fallback if a Member State list is temporarily
         unavailable
 
-      **Intermediary-specific concern:**
-      Because intermediaries serve multiple RPs potentially operating
+      **Architecture-specific note:**
+      Because connectors serve multiple RPs potentially operating
       across different Member States, they may need to maintain Trusted
       Lists from all 27 Member States simultaneously, rather than only
       the subset relevant to a single RP's market.
@@ -365,25 +363,24 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-008
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Maintain up-to-date Trusted Lists for Attestation Providers
     explanation: |
-      The intermediary must maintain current copies of Trusted Lists for
+      The connector must maintain current copies of Trusted Lists for
       qualified and non-qualified electronic attestation of attributes
       (QEAA/EAA) providers. These trust anchors are essential for
       validating attestation signatures as part of the RPI_09
       verification gate.
 
       **QEAA Provider validation (OIA_13):**
-      For both proximity and remote flows, the intermediary SHALL validate
+      For both proximity and remote flows, the connector SHALL validate
       the qualified signature of a QEAA in accordance with Art 32 of the
       eIDAS Regulation. The trust anchor must come from a QEAA Provider
       Trusted List made available in accordance with Art 22.
 
       **PuB-EAA Provider validation (OIA_14):**
-      For PuB-EAAs, the intermediary SHALL validate the qualified
+      For PuB-EAAs, the connector SHALL validate the qualified
       signature using the public key from the qualified certificate of
       the QTSP, and SHALL also validate the QTSP's certificate itself
       using a trust anchor from the appropriate Trusted List.
@@ -391,11 +388,11 @@ requirements:
       **Non-qualified EAA validation (OIA_15):**
       For non-qualified EAAs, trust anchors are provided according to
       mechanisms specified in the applicable Rulebook (Topic 12). The
-      intermediary may also need to verify that the EAA Provider is
+      connector may also need to verify that the EAA Provider is
       authorised to issue the specific type of attestation.
 
       **Trust anchor isolation:**
-      The intermediary must distinguish between trust anchors for PIDs
+      The connector must distinguish between trust anchors for PIDs
       (OIA_12, see VEND-INT-007), QEAAs (OIA_13), PuB-EAAs (OIA_14),
       and non-qualified EAAs (OIA_15). A trust anchor valid for one
       category must not inadvertently validate attestations from another.
@@ -420,8 +417,7 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-009
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Obtain trust anchors only from official Trusted List sources
     explanation: |
@@ -435,7 +431,7 @@ requirements:
       The eIDAS Regulation mandates that trust anchors come from Trusted
       Lists published by Member States (Art 22) or the Commission. The
       intermediary must use these authoritative sources directly, or
-      verify the chain of custody if an intermediary distribution point
+      verify the chain of custody if a distribution point
       is used.
 
       **Prohibited practices:**
@@ -446,7 +442,7 @@ requirements:
       - Using hardcoded trust anchors that bypass Trusted List updates
 
       **Verification of Trusted List authenticity:**
-      Each Trusted List is itself signed. The intermediary must verify
+      Each Trusted List is itself signed. The connector must verify
       the Trusted List's signature using the Member State's certificate
       before extracting trust anchors. This creates a chain of trust:
       Commission LOTL → Member State TL → Provider trust anchor →
@@ -469,19 +465,18 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-010
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Validate attestation signatures using official trust anchors
     explanation: |
-      The intermediary must verify the cryptographic signatures on
+      The connector must verify the cryptographic signatures on
       attestations and PIDs using the public keys from official Trusted
       Lists. Invalid or untrusted signatures must result in rejection.
 
       **Signature validation as RPI_09 prerequisite:**
       Attestation authenticity verification is the first check in the
       RPI_09 verification gate. Without a valid signature, no attributes
-      may be forwarded to the RP (per RPI_08). The intermediary must
+      may be forwarded to the RP (per RPI_08). The connector must
       verify:
       - The attestation's issuer signature against the trust anchor
       - The certificate chain from the issuer to the Trusted List root
@@ -489,14 +484,14 @@ requirements:
         QEAA vs PuB-EAA vs non-qualified EAA)
 
       **Cryptographic algorithm support:**
-      The intermediary must support the algorithms mandated by the
+      The connector must support the algorithms mandated by the
       ARF and implementing acts, including ECDSA with P-256/P-384
       curves for SD-JWT VC and COSE signatures for mDoc format.
       Algorithm agility is important as new algorithms may be
       approved over time.
 
       **Rejection handling:**
-      When a signature is invalid, the intermediary must:
+      When a signature is invalid, the connector must:
       - Reject the entire presentation (not just the invalid attestation)
       - Log the verification failure with sufficient detail for dispute
         resolution (without logging attestation content)
@@ -521,34 +516,51 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-011
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
-    requirement: Verify attestation revocation status before acceptance (recommended)
+    requirement: Verify attestation revocation status using supported mechanisms before acceptance (recommended)
     explanation: |
-      Before accepting a presentation as valid, the intermediary should
+      Before accepting a presentation as valid, the connector should
       check the revocation status of the attestation. This is a
       recommended (SHOULD) step in the RPI_09 verification gate.
 
-      **Revocation checking mechanisms (VCR_12 + VCR_13):**
-      If the intermediary decides to verify revocation status, it SHALL
-      support both mechanisms specified by VCR_11:
-      - **Attestation Status Lists**: batch-oriented mechanism where the
-        issuer publishes a compressed bitstring indicating the status of
-        all issued attestations. Efficient for high-volume checking.
-      - **Attestation Revocation Lists**: list-based mechanism where
-        revoked attestation identifiers are published.
+      **VCR_13 — Recommended verification:**
+      Per VCR_13, a Relying Party Instance SHOULD verify the
+      revocation status of a PID or attestation upon obtaining it
+      from a Wallet Unit. This is a SHOULD (recommended), not a
+      SHALL (mandatory), meaning the connector may choose not
+      to verify revocation in low-risk scenarios. However, if the
+      connector and RP agree that revocation checking is required
+      (per RPI_09 agreement scope), then it becomes effectively
+      mandatory for that relationship.
 
-      **SHOULD vs MUST:**
-      Per VCR_13, revocation verification is recommended but not
-      mandatory. However, if the intermediary and RP agree that
-      revocation checking is required (per RPI_09 agreement scope),
-      then it becomes effectively mandatory for that relationship.
+      **VCR_12 — Dual-mechanism support:**
+      If the connector decides to verify revocation status, it SHALL
+      support BOTH mechanisms specified per VCR_11:
+      - **Attestation Status Lists**: compressed bitstring lists
+        where each bit represents the status of one attestation;
+        efficient for batch checking without per-credential queries
+      - **Attestation Revocation Lists (Identifier Lists)**: lists
+        of revoked attestation identifiers; useful for targeted
+        checks
+
+      **Short-lived attestation exception (VCR_01):**
+      If an attestation has a validity period of 24 hours or less
+      (short-lived), revocation checking is unnecessary because the
+      attestation will expire before a revocation could take effect.
+
+      **Verification failure handling (RPI_08):**
+      If revocation verification fails (attestation is found to be
+      revoked), the connector SHALL NOT forward attributes to the
+      RP per RPI_08. Status lists must be fetched from PID/EAA
+      Providers via the URLs specified in the attestation metadata.
 
       **Operational considerations:**
       - Status lists should be cached to minimise latency, with refresh
-        intervals aligned to the issuer's publication frequency
-      - When revocation endpoints are unavailable, the intermediary must
+        intervals aligned to the issuer's publication frequency.
+        Cache strategy must balance freshness (detecting recent
+        revocations) against performance (avoiding per-request fetches).
+      - When revocation endpoints are unavailable, the connector must
         decide: reject the presentation (fail-closed) or accept with a
         warning (fail-open). This policy should be configurable per RP.
       - Revocation checking must not log individual attestation
@@ -564,6 +576,7 @@ requirements:
     arfReference:
       topic: Topic 7
       hlr:
+        - VCR_11
         - VCR_12
         - VCR_13
     roles:
@@ -571,20 +584,25 @@ requirements:
     productCategories:
       - connector
     deadline: "2027-11-21"
+    notes: |
+      This covers ARF Topic 7 (VCR_*) verification requirements
+      for attestation revocation. Attestation Status Lists (VCR_11)
+      are the primary mechanism for efficient batch revocation
+      checking without per-credential queries.
+      Consolidated from VEND-INT-011 + VEND-INT-034.
     obligation: SHOULD
   - id: VEND-INT-012
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Verify the wallet unit's device binding
     explanation: |
-      The intermediary must verify that the presentation is bound to the
+      The connector must verify that the presentation is bound to the
       wallet unit's secure cryptographic device (WSCD), confirming that
       the presenter controls the private key associated with the
       attestations. This is a core check in the RPI_09 verification gate.
 
       **Device binding verification (RPI_09):**
-      The intermediary SHALL verify device binding by checking the
+      The connector SHALL verify device binding by checking the
       proof-of-possession mechanism:
       - For mDoc (ISO 18013-5): verify the `deviceAuth` structure,
         which contains either a MAC or ECDSA signature over session
@@ -601,7 +619,7 @@ requirements:
         device
 
       **Failure handling:**
-      If device binding verification fails, the intermediary SHALL NOT
+      If device binding verification fails, the connector SHALL NOT
       forward any attributes (per RPI_08). This is a hard failure — the
       entire presentation is rejected, and the RP is notified of the
       verification failure.
@@ -623,36 +641,35 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-013
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: security
     requirement: Verify presentation freshness and prevent replay attacks
     explanation: |
-      The intermediary must verify that presentations are fresh and not
+      The connector must verify that presentations are fresh and not
       replayed. This includes checking nonces, timestamps, or session
       binding, and implementing mechanisms to detect replay of
       previously received presentations. Stale or replayed
       presentations must be rejected.
 
       **Freshness mechanisms:**
-      - **Nonce challenge-response**: the intermediary generates a
+      - **Nonce challenge-response**: the connector generates a
         cryptographically random nonce included in the presentation
         request; the wallet embeds this nonce in the response,
         signed by the device key
       - **Timestamp validation**: the presentation contains a creation
-        timestamp, which the intermediary validates against a
+        timestamp, which the connector validates against a
         configurable time window (accounting for clock skew)
       - **Session binding**: the OID4VP `state` parameter binds the
         wallet response to the specific browser/client session
 
       **Replay detection (Article 5b(9)):**
-      The intermediary must implement server-side nonce tracking to
+      The connector must implement server-side nonce tracking to
       detect replay attempts. Once a nonce has been used, it must be
       marked as consumed and rejected if re-submitted. The nonce store
       must be:
       - Persistent across intermediary restarts (within the nonce's
         validity window)
-      - Distributed if the intermediary runs in a multi-instance
+      - Distributed if the connector runs in a multi-instance
         deployment
       - Automatically pruned after nonce expiry
 
@@ -736,24 +753,23 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-016
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: security
     requirement: Implement secure key management for verification operations
     explanation: |
-      The intermediary must implement secure storage and handling of any
+      The connector must implement secure storage and handling of any
       cryptographic material used in verification operations. Keys must
       be protected against unauthorised access, modification, and
       extraction.
 
       **Key types requiring protection:**
-      - **TLS private keys** for the intermediary's server certificate
+      - **TLS private keys** for the connector's server certificate
         (inbound from wallets) and client certificate (outbound to RPs
         if mTLS is used)
       - **Ephemeral session keys** generated during OID4VP or ISO
         18013-5 device engagement
       - **Signing keys** for verification result JWS signatures
-        (if the intermediary signs its verification outcomes)
+        (if the connector signs its verification outcomes)
       - **Trust anchor certificates** (public keys, but integrity must
         be protected against tampering)
 
@@ -836,12 +852,11 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-018
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: security
     requirement: Maintain audit logs of verification operations
     explanation: |
-      The intermediary should maintain logs of verification operations
+      The connector should maintain logs of verification operations
       including verification timestamps, outcomes, and any errors.
       These logs support dispute resolution and compliance auditing
       while respecting privacy (no attestation content should be
@@ -891,6 +906,7 @@ requirements:
   - id: VEND-INT-019
     deploymentArchitectures:
       - intermediary
+      - direct_saas
     category: usage
     requirement: Do not extract or log individual attribute values from presentations
     explanation: |
@@ -938,6 +954,7 @@ requirements:
   - id: VEND-INT-020
     deploymentArchitectures:
       - intermediary
+      - direct_saas
     category: usage
     requirement: Do not correlate or link user presentations across different RPs
     explanation: |
@@ -1103,12 +1120,11 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-023
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Support mandatory credential formats based on supported use cases
     explanation: |
-      Relying Party connectors and intermediaries must support the
+      Relying Party connectors and connectors must support the
       credential formats relevant to their operational use cases.
 
       **Remote Presentations (online services):**
@@ -1116,7 +1132,7 @@ requirements:
         Verifiable Credentials) as the primary credential format
       - **OpenID4VP** protocol for presentation exchange (same-device
         and cross-device flows via `direct_post` response mode)
-      - The intermediary must verify SD-JWT VC signatures, validate
+      - The connector must verify SD-JWT VC signatures, validate
         selective disclosures, and check key binding JWTs
 
       **Proximity Presentations (in-person verification):**
@@ -1124,7 +1140,7 @@ requirements:
         credential presentation
       - **BLE and/or NFC** transport protocols per ISO/IEC 18013-5
         and ISO/IEC 18013-7
-      - The intermediary must handle device engagement, session
+      - The connector must handle device engagement, session
         establishment, CBOR decoding, and COSE signature verification
 
       **Use-case dependency (RPRC_20a):**
@@ -1139,7 +1155,7 @@ requirements:
       **Attestation Rulebook impact (ARB_02):**
       The Attestation Rulebook for each attestation type determines
       whether proximity presentation is required. If so, the Rulebook
-      mandates mDoc format issuance, meaning the intermediary must
+      mandates mDoc format issuance, meaning the connector must
       support mDoc verification for those attestation types.
 
       Note: This differs from Issuers, who must unconditionally
@@ -1180,12 +1196,11 @@ requirements:
       support both formats per ISSU_12.
     obligation: MUST
   - id: VEND-INT-024
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Support selective disclosure in both credential formats
     explanation: |
-      The intermediary's verification implementation must correctly
+      The connector's verification implementation must correctly
       handle selectively disclosed attributes in both mDoc and VC
       formats. Verification must succeed even when only a subset of
       attributes is presented.
@@ -1195,7 +1210,7 @@ requirements:
         the issuer includes salted hashes of each claim, and the
         holder reveals only the claims they choose by including the
         corresponding disclosure values
-      - The intermediary must verify the hash of each disclosed claim
+      - The connector must verify the hash of each disclosed claim
         against the issuer-signed SD-JWT payload
       - Undisclosed claims must be ignored (not treated as missing
         or invalid)
@@ -1205,14 +1220,14 @@ requirements:
       **mDoc selective disclosure:**
       - The mDoc format uses `IssuerSignedItem` elements within
         namespaces; the holder selects which elements to release
-      - The intermediary must verify the Mobile Security Object
+      - The connector must verify the Mobile Security Object
         (MSO) signature and check that each disclosed element's
         digest matches the MSO
       - Undisclosed elements must be treated as absent, not as
         verification failures
 
-      **Intermediary-specific considerations:**
-      The intermediary must forward exactly the disclosed subset to
+      **Architecture-specific considerations:**
+      The connector must forward exactly the disclosed subset to
       the RP (per VEND-INT-004). It must not infer, reconstruct,
       or flag undisclosed attributes. The verification pipeline
       should be format-agnostic at the forwarding stage.
@@ -1233,13 +1248,12 @@ requirements:
       hlr: ARB_02
     obligation: MUST
   - id: VEND-INT-025
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: registration
     requirement: Consider certification for cryptographic components
     explanation: |
       Depending on the assurance level required by the RP, the
-      intermediary may need to demonstrate that its cryptographic
+      connector may need to demonstrate that its cryptographic
       implementations meet recognised standards. This is especially
       relevant for high-assurance use cases.
 
@@ -1254,7 +1268,7 @@ requirements:
         cryptographic evaluation (relevant for Member State
         requirements)
       - **eIDAS Article 24 audits**: QTSPs must be audited by a
-        conformity assessment body; intermediaries supporting QTSPs
+        conformity assessment body; connectors supporting QTSPs
         may inherit audit requirements
 
       **Scope of certification:**
@@ -1267,8 +1281,8 @@ requirements:
       - Key storage and lifecycle management
 
       **Conditional nature:**
-      This is a risk-based requirement. Not all intermediaries will
-      require full certification, but the intermediary should be
+      This is a risk-based requirement. Not all connectors will
+      require full certification, but the connector should be
       prepared to provide certification evidence when requested by
       high-assurance RPs or national supervisory authorities.
     legalBasis:
@@ -1285,18 +1299,17 @@ requirements:
     deadline: "2027-11-21"
     notes: |
       This is a conditional requirement based on the RP's risk assessment and
-      the sensitivity of the use case. Not all intermediaries will require
+      the sensitivity of the use case. Not all connectors will require
       certification.
     obligation: MUST
   - id: VEND-INT-026
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Comply with embedded disclosure policies in attestations
     explanation: |
       Electronic attestations of attributes may contain embedded
       disclosure policies that specify conditions the relying party
-      must meet to access the attestation. The intermediary must
+      must meet to access the attestation. The connector must
       verify RP compliance with these policies and ensure the wallet
       can inform the user of the result.
 
@@ -1315,13 +1328,13 @@ requirements:
       - **Temporal constraints**: attributes may only be disclosed
         during certain time windows
 
-      **Intermediary responsibilities:**
+      **Connector responsibilities:**
       - Parse the disclosure policy from the attestation metadata
       - Evaluate the intermediated RP's registration against the
         policy conditions (using Registrar data)
       - Communicate the evaluation result to the wallet (pass/fail)
         so the wallet can inform the user
-      - If the RP does not meet the policy, the intermediary must
+      - If the RP does not meet the policy, the connector must
         NOT forward the request to the wallet (or the wallet will
         reject it)
 
@@ -1346,12 +1359,11 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-027
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Support WebAuthn specification for pseudonym generation
     explanation: |
-      When the intermediary supports pseudonymous authentication from
+      When the connector supports pseudonymous authentication from
       wallet units, it must support the WebAuthn specification as
       mandated in Annex V of the Integrity Regulation. This enables
       privacy-preserving authentication without revealing user
@@ -1366,7 +1378,7 @@ requirements:
       - The private key remains in the wallet's WSCD and is used to
         sign authentication challenges
 
-      **Intermediary verification requirements:**
+      **Connector verification requirements:**
       - Verify the WebAuthn assertion signature using the registered
         public key (pseudonym)
       - Support at minimum the `ES256` algorithm (ECDSA with P-256)
@@ -1376,7 +1388,7 @@ requirements:
       - Forward the verified pseudonym to the intermediated RP
         without associating it with any PID or attestation data
 
-      **Privacy implications for intermediaries:**
+      **Privacy implications:**
       The intermediary sees the pseudonym during verification but
       must not store or correlate it across sessions (per the
       no-storage mandate). The pseudonym should be treated with the
@@ -1451,12 +1463,11 @@ requirements:
     deadline: "2027-11-21"
     obligation: MUST
   - id: VEND-INT-029
-    deploymentArchitectures:
-      - intermediary
+    deploymentArchitectures: []
     category: usage
     requirement: Use valid Wallet-Relying Party Access Certificate
     explanation: |
-      The intermediary must use a valid Wallet-Relying Party Access
+      The connector must use a valid Wallet-Relying Party Access
       Certificate (issued by its Registrar) when interacting with
       wallet units. The certificate identifies the intermediary and
       enables the wallet to verify its registration status.
@@ -1471,8 +1482,8 @@ requirements:
       - Use certificates issued in accordance with Topic 27
         (Registration of Relying Parties)
 
-      **Intermediary-specific certificate usage:**
-      The intermediary's access certificate identifies the
+      **Architecture-specific certificate usage:**
+      The connector's access certificate identifies the
       **intermediary itself**, not the intermediated RP. The
       intermediated RP's identity is conveyed via the RPRC_19a
       extension (per VEND-INT-022). The wallet detects the
@@ -1480,11 +1491,11 @@ requirements:
       (per RPI_07).
 
       **Certificate lifecycle requirements:**
-      - Certificates have finite validity; the intermediary must
+      - Certificates have finite validity; the connector must
         monitor expiration and renew before expiry
       - If a certificate is revoked (e.g., because the intermediary
         loses its registration), all wallet interactions will fail
-      - The intermediary should support automated renewal and have
+      - The connector should support automated renewal and have
         fallback procedures for unexpected revocation
 
       **Protocol-specific certificate presentation:**
@@ -1515,6 +1526,7 @@ requirements:
   - id: VEND-INT-030
     deploymentArchitectures:
       - intermediary
+      - direct_saas
     category: usage
     requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
@@ -1584,6 +1596,7 @@ requirements:
   - id: VEND-INT-031
     deploymentArchitectures:
       - intermediary
+      - direct_saas
     category: contracts
     requirement: Support user reporting to data protection authorities
     explanation: |
@@ -1788,75 +1801,3 @@ requirements:
       requests from an RP, otherwise wallet users will see
       verification failures.
     obligation: MUST
-  - id: VEND-INT-034
-    deploymentArchitectures:
-      - intermediary
-    category: usage
-    requirement: Support attestation status list verification mechanisms (recommended)
-    explanation: |
-      The intermediary should support attestation status verification
-      using the mechanisms specified in ARF Topic 7 (Attestation
-      Revocation). This includes checking Attestation Status Lists
-      or Attestation Revocation Lists published by PID/EAA providers
-      to verify that attestations have not been revoked.
-
-      **VCR_13 — Recommended verification:**
-      Per VCR_13, a Relying Party Instance SHOULD verify the
-      revocation status of a PID or attestation upon obtaining it
-      from a Wallet Unit. This is a SHOULD (recommended), not a
-      SHALL (mandatory), meaning the intermediary may choose not
-      to verify revocation in low-risk scenarios.
-
-      **VCR_12 — Dual-mechanism support:**
-      If the intermediary decides to verify revocation, it SHALL
-      support BOTH mechanisms specified per VCR_11:
-      - **Attestation Status Lists**: compressed bitstring lists
-        where each bit represents the status of one attestation;
-        efficient for batch checking without per-credential
-        queries
-      - **Attestation Revocation Lists (Identifier Lists)**: lists
-        of revoked attestation identifiers; useful for targeted
-        checks
-
-      **Intermediary-specific considerations:**
-      - Revocation checking occurs as part of the RPI_09
-        verification gate (specifically step (b): revocation
-        status)
-      - If revocation verification fails, the intermediary SHALL
-        NOT forward attributes to the RP (per RPI_08)
-      - Status lists must be fetched from PID/EAA Providers via
-        the URLs specified in the attestation metadata
-      - Cache strategy must balance freshness (detecting recent
-        revocations) against performance (avoiding per-request
-        fetches)
-
-      **Short-lived attestation exception:**
-      Per VCR_01, if an attestation has a validity period of 24
-      hours or less (short-lived), revocation checking is
-      unnecessary because the attestation will expire before a
-      revocation could take effect.
-    arfReference:
-      topic: Topic 7
-      hlr:
-        - VCR_13
-        - VCR_12
-        - VCR_11
-    legalBasis:
-      regulation: 2024/2979
-      article: Article 3
-      paragraph: "1"
-    legalText: |
-      Wallet solutions shall support the protocols and interfaces
-      necessary to verify the validity of PIDs and electronic
-      attestations of attributes.
-    roles:
-      - relying_party
-    productCategories:
-      - connector
-    deadline: "2027-11-21"
-    notes: |
-      This covers ARF Topic 7 (VCR_*) verification requirements
-      for attestation revocation. Attestation Status Lists (VCR_11)
-      are the primary mechanism for efficient batch revocation
-      checking without per-credential queries.
-    obligation: SHOULD

@@ -214,7 +214,7 @@ requirements:
     requirement: Maintain a valid Relying Party Access Certificate
     explanation: |
       Access certificates are the primary trust mechanism between wallet units
-      and relying parties. The intermediary must obtain and maintain a valid
+      and relying parties. The RP connector must obtain and maintain a valid
       wallet-relying party access certificate to authenticate itself to
       wallet units during every presentation transaction.
 
@@ -225,11 +225,11 @@ requirements:
         registered wallet-relying parties
       - Annex IV: the certificate must comply with ETSI EN 319411-1 NCP
         requirements and the harmonised certificate policy
-      - The certificate contains the intermediary's own name and unique
-        identifier — this is how wallet units identify the intermediary
+      - The certificate contains the RP's (or intermediary's) name and
+        unique identifier — this is how wallet units identify the requester
 
       **Usage requirements (ARF):**
-      - RPA_03 (Topic 6): the intermediary and wallet unit must perform
+      - RPA_03 (Topic 6): the RP connector and wallet unit must perform
         Relying Party authentication in all PID or attestation presentation
         transactions, whether proximity or remote, using the access certificate
       - RPA_02a: the access certificate must be included in the presentation
@@ -1031,12 +1031,13 @@ requirements:
     obligation: MUST
   - id: VEND-CORE-021
     category: usage
-    requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
+    requirement: Implement TS7 data deletion interface and process requests within GDPR Article 17 timeframes
     explanation: |
       Relying Parties must implement the common data deletion request interface
-      specified in Technical Specification 7 (TS7). This enables wallet users
-      to exercise their GDPR Article 17 right to erasure by requesting
-      deletion of any data the RP has collected from wallet presentations.
+      specified in Technical Specification 7 (TS7) and process deletion requests
+      in compliance with GDPR Article 17 timeframes. This enables wallet users
+      to exercise their right to erasure by requesting deletion of any data the
+      RP has collected from wallet presentations.
 
       **The data deletion request chain (Topic 48):**
       1. **User initiation (DATA_DLT_01-03)**: the wallet unit provides a
@@ -1055,20 +1056,32 @@ requirements:
       5. **RP compliance with TS7 (DATA_DLT_08)**: wallets, RPs, and
          Registrars must comply with the TS7 technical interface
 
-      **Key obligations for the RP/intermediary:**
+      **GDPR Article 17 processing requirements:**
+      - Deletion must be performed "without undue delay" and in any event
+        within one month (Art 12(3))
+      - The RP must inform the user of any valid grounds for refusal under
+        Art 17(3) exceptions: freedom of expression, legal obligation,
+        public interest, health, archiving/research, legal claims
+      - If the data has been made public, the RP must take reasonable
+        steps to inform other controllers processing the data (Art 17(2))
+      - All copies including backups must be addressed (though backup
+        deletion may follow a deferred schedule)
+
+      **Key obligations for the RP connector:**
       - Implement the TS7 standardised interface for receiving deletion
         requests in a machine-readable format
       - Authenticate the requesting user before executing deletion
-      - Process deletion without undue delay (Art 17(1) GDPR)
-      - Handle exceptions (Art 17(3)) where deletion may be refused
-        (legal obligation, public interest, legal claims, archiving)
-      - Confirm completion of deletion to the user
+      - Provide confirmation of deletion or a reasoned refusal following
+        the TS7 standardised response format
+      - Handle Art 17(3) exceptions where deletion may be refused
 
-      In the EUDI Wallet intermediary context, the intermediary may receive
+      In the EUDI Wallet connector context, the connector may receive
       deletion requests for data it processed on behalf of the RP. Given
-      the no-storage mandate (VEND-CORE-001), the intermediary's deletable
+      the no-storage mandate (VEND-CORE-001), the connector's deletable
       data is limited to transaction metadata and audit logs — but the
-      interface must still be implemented.
+      interface must still be implemented. This requirement connects to
+      VEND-CORE-029 (RPRC_11 deletion contact information in registration
+      certificates).
     legalBasis:
       - regulation: 2014/910
         article: Article 5a
@@ -1813,72 +1826,6 @@ requirements:
       hlr:
         - RPACANot_03
         - RPACANot_03a
-    roles:
-      - relying_party
-    productCategories:
-      - connector
-    deadline: "2027-11-21"
-    obligation: MUST
-  - id: VEND-CORE-035
-    category: usage
-    requirement: Process data deletion requests from Users within required timeframes
-    explanation: |
-      When Users exercise their right to data deletion (erasure) under GDPR
-      Article 17, RPs must process these requests according to both GDPR
-      requirements and the EUDI Wallet-specific data deletion blueprint
-      (ARF Topic 48). The TS7 common interface provides a standardised
-      mechanism for wallet-mediated deletion requests.
-
-      **Pre-deletion authentication (DATA_DLT_07):**
-      Before executing a data deletion request, the RP SHALL authenticate
-      the requesting User (or the request itself) using appropriate
-      authentication mechanisms of its own choosing. The RP SHOULD use
-      the authentication or signature facilities offered by the User's
-      Wallet Unit for this purpose. This ensures that only the actual data
-      subject can trigger deletion of their data.
-
-      **TS7 compliance (DATA_DLT_08):**
-      Wallet Units, Relying Parties, and Registrars SHALL comply with the
-      relevant requirements in Technical Specification 7. The common
-      interface provides standardised endpoints, request formats, and
-      response codes to ensure interoperability across the ecosystem.
-
-      **GDPR Art 17 requirements:**
-      - Deletion must be performed "without undue delay" and in any event
-        within one month (Art 12(3))
-      - The RP must inform the user of any valid grounds for refusal
-        (Art 17(3) exceptions: freedom of expression, legal obligation,
-        public interest, health, archiving/research, legal claims)
-      - If the data has been made public, the RP must take reasonable
-        steps to inform other controllers processing the data
-      - All copies including backups must be addressed (though backup
-        deletion may follow a deferred schedule)
-
-      **Response obligations:**
-      The RP must provide confirmation of deletion or a reasoned refusal.
-      For wallet-mediated requests via TS7, responses must follow the
-      standardised response format.
-
-      This requirement connects to VEND-CORE-021 (data deletion chain)
-      and VEND-CORE-029 (RPRC_11 deletion contact information in
-      registration certificates).
-    legalBasis:
-      - regulation: 2014/910
-        article: Article 5a
-        paragraph: 4(d)(ii)
-      - regulation: 2016/679
-        article: Article 17
-        paragraph: "1"
-    legalText: |
-      The data subject shall have the right to obtain from the controller 
-      the erasure of personal data concerning him or her without undue 
-      delay and the controller shall have the obligation to erase personal 
-      data without undue delay.
-    arfReference:
-      topic: Topic 48
-      hlr:
-        - DATA_DLT_07
-        - DATA_DLT_08
     roles:
       - relying_party
     productCategories:

@@ -630,38 +630,48 @@ requirements:
         dimension: compliance_evidence
 
   # ============================================================================
-  # VEND-CORE-021: Data Deletion Request Interface (TS7)
-  # Requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
+  # VEND-CORE-021: Data Deletion Interface & Processing (TS7 + GDPR Art 17)
+  # Requirement: Implement TS7 data deletion interface and process requests within GDPR Article 17 timeframes
+  # Note: Consolidated from VEND-CORE-021 + VEND-CORE-035
   # ============================================================================
   VEND-CORE-021:
     questions:
       - id: Q1
-        text: "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per DATA_DLT_02?"
+        text: "Do you implement the TS7 common data deletion request interface? Which of the three request channels (URL/web form, email draft, phone call) do you support, per DATA_DLT_02? Is the TS7 interface fully implemented for wallet-mediated deletion requests?"
         dimension: capability
       - id: Q2
-        text: "How do you authenticate users submitting deletion requests before executing deletion (DATA_DLT_07)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism?"
+        text: "How do you authenticate users submitting deletion requests before executing deletion (DATA_DLT_07)? Do you use the wallet's own authentication/signature facilities as recommended by the ARF, or an alternative mechanism? Does the user present their PID or a pseudonymous attestation to authenticate?"
         dimension: security
       - id: Q3
-        text: "What is your committed response time for processing data deletion requests? How does this align with the GDPR Art 17(1) 'without undue delay' obligation, and the Art 12(3) one-month response deadline?"
+        text: "What is your committed response time for processing data deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?"
         dimension: sla
       - id: Q4
-        text: "How do you handle deletion request exceptions under Art 17(3) (legal obligation, public interest, legal claims, archiving)? Do you document the specific legal basis for each refusal and communicate it to the requesting user?"
+        text: "How do you handle deletion request exceptions under Art 17(3) (freedom of expression, legal obligation, public interest, health, archiving/research, legal claims)? Do you document the specific legal basis for each refusal and communicate it to the requesting user? Can refusals be challenged?"
         dimension: compliance_completeness
       - id: Q5
-        text: "In the intermediary context, given the no-storage mandate (VEND-CORE-001), what categories of data could be subject to deletion requests — transaction metadata, audit logs, registration data? How do you scope the deletion response appropriately?"
+        text: "In the connector context, given the no-storage mandate (VEND-CORE-001), what categories of data could be subject to deletion requests — transaction metadata, audit logs, registration data? How do you scope the deletion response appropriately?"
         dimension: data_handling
       - id: Q6
-        text: "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?"
+        text: "How do you ensure deletion is propagated to all systems including backups, disaster recovery sites, and logs? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems? Can you certify deletion from immutable storage (tape, WORM) within a defined timeframe?"
         dimension: data_handling
       - id: Q7
-        text: "Do you provide confirmation to the wallet user upon completion of deletion? Is this confirmation machine-readable (for wallet dashboard logging per DATA_DLT_05-06) or human-readable only?"
+        text: "Do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation machine-readable (for wallet dashboard logging per DATA_DLT_05-06) and digitally signed?"
         dimension: user_experience
       - id: Q8
-        text: "What audit logging is maintained for deletion request processing? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation?"
+        text: "What audit trail is maintained for deletion request processing and completion? Do your logs capture the request timestamp, requesting user identifier, data categories deleted, and completion attestation? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle eventual deletion of the audit trail?"
         dimension: auditability
       - id: Q9
         text: "If the intermediated RP is the data controller and you receive a deletion request as processor, how do you coordinate with the RP — do you forward the request, execute autonomously per DPA instructions, or require RP approval before deletion?"
         dimension: contract_terms
+      - id: Q10
+        text: "For connector deployments: when a deletion request is received, does the connector forward it to the intermediated RP? How do you coordinate deletion across both the connector and the RP to ensure complete data removal?"
+        dimension: architecture
+      - id: Q11
+        text: "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?"
+        dimension: compliance_completeness
+      - id: Q12
+        text: "Can the user initiate deletion directly from the wallet via the TS7 interface, and if so, does the flow include the wallet's authentication/signature facilities per DATA_DLT_07? How does the wallet-to-RP deletion flow differ from a manual deletion request?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-CORE-022: Attestation Schema Registration (TS11)
@@ -1106,38 +1116,6 @@ requirements:
         dimension: architecture
 
   # ============================================================================
-  # VEND-CORE-035: Data Deletion Request Processing
-  # Requirement: Process data deletion requests from Users within required timeframes
-  # ============================================================================
-  VEND-CORE-035:
-    questions:
-      - id: Q1
-        text: "What is your standard response time for processing GDPR Article 17 deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?"
-        dimension: sla
-      - id: Q2
-        text: "How do you verify the identity of users submitting deletion requests (per DATA_DLT_07)? Do you support wallet-based authentication for deletion requests, and if so, does the user present their PID or a pseudonymous attestation to authenticate?"
-        dimension: security
-      - id: Q3
-        text: "How do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation digitally signed?"
-        dimension: user_experience
-      - id: Q4
-        text: "What valid grounds for refusal do you recognise under Art 17(3) (freedom of expression, legal obligation, public interest, health, archiving/research, legal claims)? How are refusals communicated to the user, and can they be challenged?"
-        dimension: legal_requirements
-      - id: Q5
-        text: "How do you ensure all copies of the data, including backups and replicated data, are deleted? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems?"
-        dimension: data_handling
-      - id: Q6
-        text: "What audit trail is maintained for deletion request processing and completion? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle the eventual deletion of the audit trail?"
-        dimension: auditability
-      - id: Q7
-        text: "Is the TS7 common interface fully implemented for wallet-mediated deletion requests? Can the user initiate deletion directly from the wallet, and if so, does the flow include the wallet's authentication/signature facilities per DATA_DLT_07?"
-        dimension: technical_implementation
-      - id: Q8
-        text: "For intermediary deployments: when a deletion request is received, does the intermediary forward it to the intermediated RP? How do you coordinate deletion across both the intermediary and the RP to ensure complete data removal?"
-        dimension: architecture
-      - id: Q9
-        text: "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?"
-        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-CORE-038: W3C Digital Credentials API Support

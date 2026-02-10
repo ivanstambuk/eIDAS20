@@ -168,22 +168,22 @@ requirements:
         text: "Which wallet implementations have you tested protocol compatibility with (EUDI reference wallet, Apple, Google, third-party)? What interoperability issues were encountered?"
         dimension: interoperability
       - id: Q4
-        text: "What hardware is required for proximity presentation support at the RP's physical locations? Does the intermediary provide the hardware, or does the RP procure it independently?"
+        text: "What hardware is required for proximity presentation support at the RP's physical locations? Does the connector provide the hardware, or does the RP procure it independently?"
         dimension: operational
       - id: Q5
-        text: "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows? How is the response_uri callback routed through the intermediary's infrastructure?"
+        text: "Do you support both same-device (app-to-app) and cross-device (QR code) OID4VP presentation flows? How is the response_uri callback routed through the connector's infrastructure?"
         dimension: technical_implementation
       - id: Q6
         text: "How do you handle mode switching when both remote and proximity are available for the same RP? Is the mode selected by the RP per-request, or configured statically?"
         dimension: user_experience
       - id: Q7
-        text: "For proximity flows, how does the intermediary perform RPI_09 verification on-site before forwarding to the RP backend? Is there a local verification module or does verification require a network round-trip?"
+        text: "For proximity flows, how does the connector perform RPI_09 verification on-site before forwarding to the RP backend? Is there a local verification module or does verification require a network round-trip?"
         dimension: architecture
       - id: Q8
         text: "Do you support the `direct_post` and `direct_post.jwt` response modes for OID4VP? How is the response_uri endpoint secured against unauthorized submissions?"
         dimension: security
       - id: Q9
-        text: "What is the latency overhead introduced by the intermediary in both remote and proximity flows? Are there SLA commitments for end-to-end presentation processing time?"
+        text: "What is the latency overhead introduced by the connector in both remote and proximity flows? Are there SLA commitments for end-to-end presentation processing time?"
         dimension: sla
 
   # ============================================================================
@@ -239,7 +239,7 @@ requirements:
         text: "What is the maximum latency between a trust anchor change at the Member State level and your system reflecting it? What are the operational consequences if this latency exceeds the SLA?"
         dimension: sla
       - id: Q5
-        text: "Which Member States' Trusted Lists do you currently support? Since intermediaries may serve RPs across multiple Member States, do you maintain all 27 Member State lists simultaneously?"
+        text: "Which Member States' Trusted Lists do you currently support? Since connectors may serve RPs across multiple Member States, do you maintain all 27 Member State lists simultaneously?"
         dimension: geographic_scope
       - id: Q6
         text: "How do you verify the authenticity of downloaded Trusted Lists (signature verification, certificate chain validation)? What happens if a list's signature is invalid — is it rejected, and does the previous valid list remain active?"
@@ -357,28 +357,29 @@ requirements:
         dimension: auditability
 
   # ============================================================================
-  # VEND-INT-011: Revocation Status Verification
-  # Requirement: Verify attestation revocation status before acceptance (recommended)
+  # VEND-INT-011: Revocation Status Verification & Mechanisms
+  # Requirement: Verify attestation revocation status using supported mechanisms before acceptance (recommended)
+  # Note: Consolidated from VEND-INT-011 + VEND-INT-034
   # ============================================================================
   VEND-INT-011:
     questions:
       - id: Q1
-        text: "Do you check attestation revocation status before accepting presentations? If so, is this enabled by default or configured per RP agreement (per RPI_09 scope)?"
+        text: "Do you check attestation revocation status before accepting presentations? Is this enabled by default or configured per RP agreement (per RPI_09 scope)? Is this verification performed as part of the RPI_09 verification gate (step b: revocation status)?"
         dimension: capability
       - id: Q2
-        text: "What revocation checking mechanisms do you support? Per VCR_12, if you verify revocation status, you SHALL support both Attestation Status Lists and Attestation Revocation Lists."
+        text: "Do you support BOTH revocation checking mechanisms specified per VCR_11 — Attestation Status Lists (compressed bitstring) AND Attestation Revocation Lists (identifier lists)? Or do you support only one?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation) or fail-open (accept with warning)? Is this policy configurable per RP?"
+        text: "How do you handle revocation checking when status endpoints are unavailable — fail-closed (reject presentation), fail-open (accept with warning), or use a cached (potentially stale) list? Is this policy configurable per RP?"
         dimension: operational
       - id: Q4
-        text: "What is the latency impact of revocation checking on verification time? How does this interact with the overall SLA for end-to-end presentation processing?"
+        text: "What is the latency impact of revocation checking on verification time? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call? How does this interact with the overall SLA for end-to-end presentation processing?"
         dimension: sla
       - id: Q5
-        text: "Can the organisation configure whether revocation checking is mandatory or optional for each RP relationship? How does this interact with the RPI_09 agreement scope?"
+        text: "Can the organisation configure whether revocation checking is mandatory or optional per RP relationship or per attestation type? Given VCR_13 is a SHOULD, is there an opt-out mechanism? How does this interact with the RPI_09 agreement scope?"
         dimension: flexibility
       - id: Q6
-        text: "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? What is the maximum age of a cached status list before re-fetch?"
+        text: "What caching strategies do you employ for Status Lists to minimise latency while ensuring freshness? How frequently do you refresh status lists from PID/EAA Providers — time-based, event-based, or configurable per attestation type? What is the maximum age of a cached status list before re-fetch?"
         dimension: technical_implementation
       - id: Q7
         text: "How does revocation checking interact with the no-storage mandate? Do you log individual attestation status identifiers during checking, or is the check performed without persistent state?"
@@ -387,8 +388,20 @@ requirements:
         text: "For Attestation Status Lists (compressed bitstring format), how do you handle the decompression and lookup efficiently at scale? What is the memory footprint per status list?"
         dimension: architecture
       - id: Q9
-        text: "If a previously valid attestation is revoked between the time it was presented and the time the intermediary forwards it, is there a re-check mechanism before forwarding?"
+        text: "If a previously valid attestation is revoked between the time it was presented and the time the connector forwards it, is there a re-check mechanism before forwarding? How do you handle the cache consistency problem if a revocation occurs between cache refreshes?"
         dimension: security
+      - id: Q10
+        text: "How do you handle short-lived attestations (validity ≤24 hours per VCR_01) — do you skip revocation checking for these, or do you treat all attestations the same regardless of validity period?"
+        dimension: technical_implementation
+      - id: Q11
+        text: "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per RPI_08? What error information is returned to the wallet?"
+        dimension: compliance_completeness
+      - id: Q12
+        text: "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?"
+        dimension: sla
+      - id: Q13
+        text: "What is the performance impact of revocation checking on overall transaction latency? How does the performance differ between Attestation Status Lists (bitstring lookup) and Attestation Revocation Lists (identifier search)?"
+        dimension: performance
 
   # ============================================================================
   # VEND-INT-012: Device Binding Verification
@@ -443,7 +456,7 @@ requirements:
         text: "What is the time window for accepting presentations (nonce validity period)? How was this duration chosen, and what are the tradeoffs between security and usability?"
         dimension: operational
       - id: Q5
-        text: "How do you detect and block replay attempts? Is there a server-side nonce store, and is it distributed across multiple intermediary instances to prevent split-brain replay attacks?"
+        text: "How do you detect and block replay attempts? Is there a server-side nonce store, and is it distributed across multiple connector instances to prevent split-brain replay attacks?"
         dimension: security
       - id: Q6
         text: "How do you bind the wallet response to the specific browser session or client state initiating the request (e.g., OID4VP `state` parameter handling)? Could a CSRF attack substitute a victim's presentation?"
@@ -509,7 +522,7 @@ requirements:
         text: "What access controls govern key usage — is key access restricted to specific service accounts, and are all access attempts logged and audited?"
         dimension: security
       - id: Q4
-        text: "What key types does the intermediary manage: TLS server/client keys, JWS signing keys for verification results, trust anchor certificates? Are these stored in separate key hierarchies?"
+        text: "What key types does the connector manage: TLS server/client keys, JWS signing keys for verification results, trust anchor certificates? Are these stored in separate key hierarchies?"
         dimension: architecture
       - id: Q5
         text: "What is your key rotation schedule and lifecycle management process? Is rotation automated, and what is the overlap period during which both old and new keys are valid?"
@@ -858,7 +871,7 @@ requirements:
         text: "How does the disclosure policy check interact with the RPI_06 attribute scope check? Are they performed independently, and what is the order of evaluation?"
         dimension: compliance_completeness
       - id: Q7
-        text: "Can disclosure policies reference data that the intermediary cannot evaluate (e.g., the RP's internal data processing agreement)? How do you handle unresolvable policy conditions?"
+        text: "Can disclosure policies reference data that the connector cannot evaluate (e.g., the RP's internal data processing agreement)? How do you handle unresolvable policy conditions?"
         dimension: operational
       - id: Q8
         text: "Are disclosure policies cached or evaluated fresh for each request? If cached, how do you handle policy updates by attestation issuers?"
@@ -880,7 +893,7 @@ requirements:
         text: "Which WebAuthn attestation and assertion modes do you support? Do you support `direct` attestation for initial registration and `assertion` for subsequent authentications?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle pseudonymous authentication without revealing user identity — is the public key (pseudonym) the only identifier visible to the intermediary, with no linkage to PID data?"
+        text: "How do you handle pseudonymous authentication without revealing user identity — is the public key (pseudonym) the only identifier visible to the connector, with no linkage to PID data?"
         dimension: privacy
       - id: Q4
         text: "What WebAuthn authenticator types are supported (platform, cross-platform, WSCD-backed)? How do you handle the `authenticatorData` fields including RP ID hash, flags, and sign count?"
@@ -892,10 +905,10 @@ requirements:
         text: "How do you forward the verified pseudonym to the intermediated RP without associating it with any PID or attestation data? Is the pseudonym treated with the same deletion requirements as attestation data (per RPI_10)?"
         dimension: compliance_completeness
       - id: Q7
-        text: "How do you handle WebAuthn challenge freshness — is the challenge (nonce) generated by the intermediary, by the intermediated RP, or collaboratively?"
+        text: "How do you handle WebAuthn challenge freshness — is the challenge (nonce) generated by the connector, by the intermediated RP, or collaboratively?"
         dimension: security
       - id: Q8
-        text: "What is your credential registration flow — does the wallet register the WebAuthn credential directly with the intermediated RP (via the intermediary as proxy), or with the intermediary itself?"
+        text: "What is your credential registration flow — does the wallet register the WebAuthn credential directly with the intermediated RP (via the connector as proxy), or with the connector itself?"
         dimension: architecture
       - id: Q9
         text: "How do you handle the scenario where a user's WSCD changes (e.g., phone replacement) — is there a re-registration mechanism that preserves the pseudonym continuity for the RP?"
@@ -963,10 +976,10 @@ requirements:
         text: "For proximity presentations (ISO 18013-5), how is the access certificate included in the reader authentication structure? Do you support the certificate format specified in ETSI TS 119 472-2?"
         dimension: technical_implementation
       - id: Q8
-        text: "How does the intermediary's access certificate identity relate to the RPRC_19a identity of the intermediated RP? Can you explain how wallets detect the intermediary scenario by comparing these two identities (per RPI_07)?"
+        text: "How does the connector's access certificate identity relate to the RPRC_19a identity of the intermediated RP? Can you explain how wallets detect the connector scenario by comparing these two identities (per RPI_07)?"
         dimension: compliance_completeness
       - id: Q9
-        text: "If the intermediary serves multiple Registrars (e.g., across Member States), how do you manage multiple access certificates and ensure the correct certificate is used for each RP context?"
+        text: "If the connector serves multiple Registrars (e.g., across Member States), how do you manage multiple access certificates and ensure the correct certificate is used for each RP context?"
         dimension: architecture
 
   # ============================================================================
@@ -1106,35 +1119,3 @@ requirements:
         dimension: technical_implementation
 
   # ============================================================================
-  # VEND-INT-034: Attestation Status List Verification
-  # Requirement: Support attestation status list verification mechanisms (recommended)
-  # ============================================================================
-  VEND-INT-034:
-    questions:
-      - id: Q1
-        text: "Do you support attestation status list verification as specified in ARF Topic 7? Is this verification performed as part of the RPI_09 verification gate (step b: revocation status)?"
-        dimension: capability
-      - id: Q2
-        text: "Do you support BOTH mechanisms specified per VCR_11 — Attestation Status Lists (compressed bitstring) AND Attestation Revocation Lists (identifier lists)? Or do you support only one?"
-        dimension: technical_implementation
-      - id: Q3
-        text: "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?"
-        dimension: sla
-      - id: Q4
-        text: "What is the fallback behaviour when status lists are unavailable (provider down, network error) — do you block the transaction, proceed with a warning, or use a cached (potentially stale) list?"
-        dimension: operational
-      - id: Q5
-        text: "Can the organisation configure revocation checking behaviour (mandatory vs. optional) per use case or per attestation type? Given VCR_13 is a SHOULD, is there an opt-out mechanism?"
-        dimension: flexibility
-      - id: Q6
-        text: "How do you handle short-lived attestations (validity ≤24 hours per VCR_01) — do you skip revocation checking for these, or do you treat all attestations the same regardless of validity period?"
-        dimension: technical_implementation
-      - id: Q7
-        text: "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per RPI_08? What error information is returned to the wallet?"
-        dimension: compliance_completeness
-      - id: Q8
-        text: "How do you handle the cache consistency problem — if a status list is cached and a revocation occurs between cache refreshes, do you have a mechanism to detect and handle the stale cache?"
-        dimension: security
-      - id: Q9
-        text: "What is the performance impact of revocation checking on transaction latency? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call?"
-        dimension: performance
