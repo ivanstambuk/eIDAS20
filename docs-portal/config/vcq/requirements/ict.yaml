@@ -4,21 +4,58 @@ requirements:
     category: contracts
     requirement: Include mandatory contractual provisions per DORA Article 30
     explanation: |
-      When the RP is a DORA-regulated financial entity, the contract with the 
-      ICT third-party (intermediary) must include all provisions specified in 
-      DORA Article 30(2), covering service descriptions, locations, security 
+      When the RP is a DORA-regulated financial entity, the
+      contract with the ICT third-party (intermediary) must
+      include all provisions specified in DORA Article 30(2),
+      covering service descriptions, locations, security
       requirements, data protection, and termination rights.
+
+      **Article 30(2) — Mandatory contract elements:**
+      Contractual arrangements on the use of ICT services
+      shall include at least:
+      (a) a clear and complete description of all functions
+      and ICT services to be provided;
+      (b) the locations where functions and ICT services are
+      to be provided and data processed;
+      (c) provisions on availability, authenticity, integrity,
+      and confidentiality in relation to data protection;
+      (d) provisions on ensuring access, recovery, and return
+      in an easily accessible format of personal and
+      non-personal data processed by the ICT third-party;
+      (e) audit and inspection rights (see VEND-ICT-002);
+      (f) incident notification and assistance obligations
+      (see VEND-ICT-007);
+      (g) business continuity provisions (see VEND-ICT-009);
+      (h) termination rights;
+      (i) conditions for participation in the DORA oversight
+      framework;
+      (j) exit strategies (see VEND-ICT-003).
+
+      **eIDAS + DORA dual regime:**
+      These requirements apply IN ADDITION to eIDAS
+      intermediary requirements. When the RP is a
+      DORA-regulated financial entity, both regulatory
+      frameworks apply simultaneously. The contract must
+      satisfy both sets of requirements.
+
+      **Three lines of defence:**
+      DORA expects ICT third-party service providers to follow
+      the three lines of defence model:
+      1. Operational management (first line)
+      2. Risk management and compliance (second line)
+      3. Internal audit (third line)
     legalBasis:
       regulation: 2022/2554
       article: Article 30
       paragraph: "2"
     legalText: |
-      Contractual arrangements on the use of ICT services shall include at 
-      least the following: (a) a clear and complete description of all 
-      functions and ICT services to be provided; (b) the locations where 
-      functions and ICT services are to be provided and data processed; 
-      (c) provisions on availability, authenticity, integrity and 
-      confidentiality in relation to data protection...
+      Contractual arrangements on the use of ICT services
+      shall include at least the following: (a) a clear and
+      complete description of all functions and ICT services
+      to be provided; (b) the locations where functions and
+      ICT services are to be provided and data processed;
+      (c) provisions on availability, authenticity, integrity
+      and confidentiality in relation to data protection...
     roles:
       - relying_party
       - issuer
@@ -26,29 +63,64 @@ requirements:
     scope: extended
     deadline: "2025-01-17"
     notes: |
-      DORA ICT requirements apply IN ADDITION to eIDAS intermediary requirements.
-      When the RP is a DORA-regulated financial entity, both sets apply.
+      DORA ICT requirements apply IN ADDITION to eIDAS
+      intermediary requirements. When the RP is a
+      DORA-regulated financial entity, both sets apply.
     obligation: MUST
   - id: VEND-ICT-002
     category: contracts
     requirement: Provide audit rights as required by DORA Article 30(2)(e)
     explanation: |
-      The contract must grant the financial entity (and its supervisory 
-      authority) full rights of access, inspection, and audit of the ICT 
-      third-party service provider.
+      The contract must grant the financial entity (and its
+      supervisory authority) full rights of access, inspection,
+      and audit of the ICT third-party service provider.
+
+      **Article 30(2)(e) — DORA audit rights:**
+      The contract must include the rights of the financial
+      entity and, where applicable, the relevant competent
+      authority in relation to access, inspection and audit
+      of the ICT third-party service provider. This includes:
+      - On-site inspections of the provider's facilities
+      - Access to documents, records, and data
+      - Right to commission independent third-party audits
+      - Right for the supervisory authority to conduct its
+        own inspections
+
+      **GDPR Article 28(3)(h) — Processor audit obligations:**
+      In parallel, the processor shall make available to the
+      controller all information necessary to demonstrate
+      compliance with Article 28 obligations, and shall allow
+      for and contribute to audits, including inspections,
+      conducted by the controller or another auditor mandated
+      by the controller.
+
+      **Practical implementation:**
+      Many ICT TPPs offer pooled auditing arrangements where
+      multiple financial entities commission a single audit
+      (e.g., via ISAE 3402/SOC 2 reports), reducing the
+      operational burden on both parties. However, the right
+      to an individual on-site audit must be preserved.
+
+      **Supervisory authority access:**
+      The contract must not restrict the competent authority's
+      right to inspect the ICT TPP. This is particularly
+      important for designated Critical ICT TPPs under
+      Article 31.
     legalBasis:
       - regulation: 2022/2554
         article: Article 30
-        paragraph: 2(e)
+        paragraph: "2(e)"
       - regulation: 2016/679
         article: Article 28
-        paragraph: 3(h)
+        paragraph: "3(h)"
     legalText: |
-      DORA: The rights of the financial entity and, where applicable, the relevant 
-      competent authority in relation to access, inspection and audit of the 
-      ICT third-party service provider.
-      GDPR: The processor shall make available to the controller all information 
-      necessary to demonstrate compliance and allow for and contribute to audits.
+      DORA: The rights of the financial entity and, where
+      applicable, the relevant competent authority in relation
+      to access, inspection and audit of the ICT third-party
+      service provider.
+      GDPR: The processor shall make available to the
+      controller all information necessary to demonstrate
+      compliance and allow for and contribute to audits.
     roles:
       - relying_party
       - issuer
@@ -60,17 +132,52 @@ requirements:
     category: contracts
     requirement: Support exit strategies and transition planning
     explanation: |
-      The vendor must support the financial entity's exit strategy with 
-      mandatory transition periods, data migration, and continuity of service 
-      during transitions to alternative providers.
+      The vendor must support the financial entity's exit
+      strategy with mandatory transition periods, data
+      migration, and continuity of service during transitions
+      to alternative providers.
+
+      **Article 30(2)(j) — Exit strategy provisions:**
+      The contract must include provisions on exit strategies,
+      including a mandatory adequate transition period during
+      which the ICT third-party service provider will
+      continue providing the respective functions or ICT
+      services. This is a non-negotiable DORA requirement.
+
+      **Transition period requirements:**
+      - Minimum transition period agreed upfront
+      - Continued service delivery during transition
+      - No degradation of service quality during exit
+      - Data migration assistance at no additional cost
+        (or at pre-agreed costs)
+
+      **Data portability:**
+      The financial entity must be able to export all data
+      in an easily accessible, standard format:
+      - Personal and non-personal data
+      - Configuration and customisation data
+      - Logs and audit trails (for regulatory retention)
+      - Service documentation and runbooks
+
+      **Anti-lock-in provisions:**
+      DORA's exit strategy requirement is designed to prevent
+      vendor lock-in. The ICT TPP must not use proprietary
+      formats, contractual barriers, or technical measures
+      that would impede or delay a transition.
+
+      **Tested exit plans:**
+      Financial entities under DORA are expected to test
+      their exit plans periodically. The ICT TPP must
+      cooperate with such testing.
     legalBasis:
       regulation: 2022/2554
       article: Article 30
-      paragraph: 2(j)
+      paragraph: "2(j)"
     legalText: |
-      Provisions on exit strategies, including a mandatory adequate transition 
-      period during which the ICT third-party service provider will continue 
-      providing the respective functions or ICT services.
+      Provisions on exit strategies, including a mandatory
+      adequate transition period during which the ICT
+      third-party service provider will continue providing
+      the respective functions or ICT services.
     roles:
       - relying_party
       - issuer
@@ -82,13 +189,49 @@ requirements:
     category: contracts
     requirement: Participate in the financial entity's ICT risk management framework
     explanation: |
-      The intermediary must cooperate with the financial entity's overall ICT 
-      risk management program, including risk assessments, control testing, 
-      and remediation activities.
+      The intermediary must cooperate with the financial
+      entity's overall ICT risk management program, including
+      risk assessments, control testing, and remediation
+      activities.
+
+      **Article 28(1) — ICT third-party risk management:**
+      Financial entities shall manage ICT third-party risk
+      as an integral component of ICT risk within their ICT
+      risk management framework. The ICT TPP must cooperate
+      with this framework.
+
+      **Cooperation requirements:**
+      The ICT TPP must:
+      - Participate in the financial entity's periodic risk
+        assessments
+      - Provide input to control testing programmes
+      - Cooperate with remediation activities when control
+        gaps are identified
+      - Provide regular risk reporting data
+      - Support the financial entity's internal audit function
+
+      **Risk assessment integration:**
+      The financial entity must be able to integrate the
+      ICT TPP's risk profile into its own risk register.
+      This requires the ICT TPP to provide:
+      - Service-level risk assessments
+      - Control effectiveness reports
+      - Vulnerability scan results (where applicable)
+      - Threat intelligence relevant to the service
+
+      **Contractual basis:**
+      The cooperation obligation should be explicitly stated
+      in the contract, including the scope and frequency of
+      risk management activities, response timeframes for
+      risk-related queries, and cost allocation.
     legalBasis:
       regulation: 2022/2554
       article: Article 28
       paragraph: "1"
+    legalText: |
+      Financial entities shall manage ICT third-party risk
+      as an integral component of ICT risk within their
+      ICT risk management framework.
     roles:
       - relying_party
       - issuer
@@ -100,14 +243,50 @@ requirements:
     category: registration
     requirement: Provide information required for the financial entity's Register of ICT TPPs
     explanation: |
-      Financial entities must maintain a register of all ICT third-party 
-      providers. The intermediary must provide all required information 
-      including entity details, services provided, criticality assessments, 
-      and contractual terms.
+      Financial entities must maintain a register of all ICT
+      third-party providers. The intermediary must provide
+      all required information including entity details,
+      services provided, criticality assessments, and
+      contractual terms.
+
+      **Article 28(3) — Register of ICT TPPs:**
+      Financial entities are required to maintain and update
+      a register of information in relation to all
+      contractual arrangements on the use of ICT services
+      provided by ICT third-party service providers.
+
+      **Required information:**
+      The register must contain at minimum:
+      - Full legal entity name and LEI (if available)
+      - Registered office address and contact details
+      - Description of ICT services provided
+      - Contract start/end dates and renewal terms
+      - Criticality assessment of the services
+      - Subcontractor chain details
+      - Data processing locations
+      - Assessment of substitutability
+
+      **Reporting to supervisory authorities:**
+      Financial entities must make this register available
+      to their competent authority upon request. The ICT TPP
+      must therefore ensure the information is accurate,
+      complete, and up-to-date.
+
+      **Update obligation:**
+      The ICT TPP must notify the financial entity promptly
+      when any register-relevant information changes — new
+      subcontractors, data centre relocations, service scope
+      changes, etc.
     legalBasis:
       regulation: 2022/2554
       article: Article 28
       paragraph: "3"
+    legalText: |
+      Financial entities shall maintain and update at entity
+      level and at sub-consolidated and consolidated levels
+      a register of information in relation to all
+      contractual arrangements on the use of ICT services
+      provided by ICT third-party service providers.
     roles:
       - relying_party
       - issuer
@@ -119,14 +298,52 @@ requirements:
     category: registration
     requirement: Support due diligence assessment before contract signing
     explanation: |
-      Before entering into a contractual arrangement, the financial entity 
-      must conduct due diligence on the ICT TPP. The vendor must provide 
-      information on their financial stability, ICT risk management 
-      capabilities, and compliance posture.
+      Before entering into a contractual arrangement, the
+      financial entity must conduct due diligence on the ICT
+      TPP. The vendor must provide information on their
+      financial stability, ICT risk management capabilities,
+      and compliance posture.
+
+      **Article 29(1) — Pre-contractual due diligence:**
+      Before entering into a contractual arrangement on the
+      use of ICT services, financial entities shall identify
+      and assess all relevant risks in relation to the
+      contractual arrangement. This requires the ICT TPP to
+      provide comprehensive due diligence information.
+
+      **Due diligence areas:**
+      The financial entity's assessment typically covers:
+      - Financial stability (annual reports, credit ratings)
+      - ICT risk management maturity (policies, procedures)
+      - Security posture (certifications, penetration test
+        results, vulnerability management)
+      - Business continuity capability (DR plans, RTO/RPO)
+      - Regulatory compliance (DORA, GDPR, NIS2, eIDAS)
+      - Reputation and references
+      - Concentration risk implications
+
+      **Standard due diligence package:**
+      ICT TPPs serving financial entities should maintain
+      a pre-packaged due diligence response including:
+      - SOC 2 Type II report or ISO 27001 certificate
+      - Financial statements (last 3 years)
+      - Business continuity test results
+      - Insurance coverage summary
+      - Data processing inventory
+
+      **Ongoing due diligence:**
+      Due diligence is not a one-time exercise. The financial
+      entity must reassess the ICT TPP's risk profile
+      periodically and upon material changes.
     legalBasis:
       regulation: 2022/2554
       article: Article 29
       paragraph: "1"
+    legalText: |
+      Before entering into a contractual arrangement on the
+      use of ICT services, financial entities shall identify
+      and assess all relevant risks in relation to the
+      contractual arrangement.
     roles:
       - relying_party
       - issuer
@@ -138,21 +355,57 @@ requirements:
     category: security
     requirement: Notify the financial entity of ICT-related incidents
     explanation: |
-      The intermediary must notify the financial entity without undue delay 
-      of any ICT-related incidents that may impact the service, enabling 
-      the financial entity to fulfill its own incident reporting obligations.
+      The intermediary must notify the financial entity
+      without undue delay of any ICT-related incidents that
+      may impact the service, enabling the financial entity
+      to fulfil its own incident reporting obligations.
+
+      **Article 30(2)(f) — DORA incident notification:**
+      The contract must include the obligation of the ICT
+      third-party service provider to provide assistance
+      in case of an ICT incident at no additional cost.
+      This includes prompt notification and cooperation
+      with the financial entity's incident response.
+
+      **GDPR Article 33(2) — Processor breach notification:**
+      The processor shall notify the controller without
+      undue delay after becoming aware of a personal data
+      breach. This creates a parallel obligation for data
+      breach notifications.
+
+      **Major ICT incident classification:**
+      Under DORA, financial entities must classify ICT
+      incidents as 'major' based on criteria including:
+      - Duration of the incident
+      - Number of affected clients
+      - Economic impact
+      - Criticality of the affected services
+      - Geographic spread
+      Major incidents require accelerated reporting to
+      competent authorities (initial notification within
+      4 hours of classification).
+
+      **ICT TPP reporting chain:**
+      The ICT TPP must support the financial entity's
+      cascade reporting by providing:
+      - Initial notification with incident classification
+      - Regular status updates during the incident
+      - Root cause analysis after resolution
+      - Remediation plan and preventive measures
     legalBasis:
       - regulation: 2022/2554
         article: Article 30
-        paragraph: 2(f)
+        paragraph: "2(f)"
       - regulation: 2016/679
         article: Article 33
         paragraph: "2"
     legalText: |
-      DORA: The obligation of the ICT third-party service provider to provide 
-      assistance in case of an ICT incident at no additional cost.
-      GDPR: The processor shall notify the controller without undue delay after 
-      becoming aware of a personal data breach.
+      DORA: The obligation of the ICT third-party service
+      provider to provide assistance in case of an ICT
+      incident at no additional cost.
+      GDPR: The processor shall notify the controller
+      without undue delay after becoming aware of a
+      personal data breach.
     roles:
       - relying_party
       - issuer
@@ -164,13 +417,56 @@ requirements:
     category: security
     requirement: Participate in threat-led penetration testing if required
     explanation: |
-      If the financial entity is required to conduct threat-led penetration 
-      testing (TLPT), the ICT TPP must cooperate with such testing when 
-      relevant to the services provided.
+      If the financial entity is required to conduct
+      threat-led penetration testing (TLPT), the ICT TPP
+      must cooperate with such testing when relevant to
+      the services provided.
+
+      **Article 26(4) — TLPT participation:**
+      Financial entities identified by competent authorities
+      to carry out TLPT shall engage ICT third-party service
+      providers in the scope of such testing where relevant
+      services are included.
+
+      **TIBER-EU framework:**
+      DORA's TLPT requirements build on the TIBER-EU
+      framework. TLPT involves:
+      - Threat intelligence-based scenario design
+      - Red team testing by accredited providers
+      - Testing of detection and response capabilities
+      - Controlled attack simulation on production systems
+
+      **ICT TPP obligations:**
+      The ICT TPP must:
+      - Not restrict TLPT scope without justification
+      - Provide technical cooperation during testing
+      - Remediate identified vulnerabilities within
+        agreed timeframes
+      - Allow results to be shared with the competent
+        authority
+      - Participate in post-test debriefing
+
+      **Pooled testing:**
+      DORA Article 26(4) allows for pooled TLPT where
+      multiple financial entities share a single test
+      against a common ICT TPP. This reduces operational
+      burden while meeting regulatory requirements.
+
+      **Frequency:**
+      TLPT must be carried out at least every 3 years for
+      identified financial entities. The ICT TPP should
+      expect periodic testing cycles.
     legalBasis:
       regulation: 2022/2554
       article: Article 26
       paragraph: "4"
+    legalText: |
+      Financial entities that are identified to carry out
+      TLPT shall, where ICT third-party service providers
+      are included in the scope of the threat-led
+      penetration testing, take necessary measures and
+      safeguards to ensure the participation of such
+      ICT third-party service providers.
     roles:
       - relying_party
       - issuer
@@ -182,16 +478,50 @@ requirements:
     category: security
     requirement: Maintain business continuity arrangements for ICT services
     explanation: |
-      The intermediary must maintain adequate business continuity and disaster 
-      recovery arrangements to ensure service availability meets the financial 
+      The intermediary must maintain adequate business
+      continuity and disaster recovery arrangements to
+      ensure service availability meets the financial
       entity's requirements.
+
+      **Article 30(2)(g) — BC/DR contract provisions:**
+      The contract must include provisions on the
+      implementation and testing of business continuity
+      measures and on the establishment of contingency plans.
+
+      **Contractual BC/DR requirements:**
+      DORA requires that the ICT TPP:
+      - Documents and tests business continuity plans
+      - Defines RTO and RPO for critical services
+      - Maintains geographic redundancy
+      - Provides regular test results to the financial entity
+      - Aligns BC/DR capabilities with the financial entity's
+        own continuity requirements
+
+      **Scenario-based testing:**
+      Beyond generic availability tests, DORA expects
+      specific scenario-based testing including:
+      - Ransomware and cyber-attack scenarios
+      - Physical destruction of primary data centre
+      - Supply chain disruption (cloud provider outage)
+      - Key personnel unavailability
+      - Simultaneous multi-service failure
+
+      **Financial entity alignment:**
+      The ICT TPP's BC/DR capabilities must be compatible
+      with the financial entity's own business continuity
+      plan. This requires:
+      - Joint testing exercises (at least annually)
+      - Communication protocols during incidents
+      - Escalation procedures
+      - Coordination on recovery priorities
     legalBasis:
       regulation: 2022/2554
       article: Article 30
-      paragraph: 2(g)
+      paragraph: "2(g)"
     legalText: |
-      Provisions on the implementation and testing of business continuity 
-      measures and on the establishment of contingency plans.
+      Provisions on the implementation and testing of
+      business continuity measures and on the establishment
+      of contingency plans.
     roles:
       - relying_party
       - issuer
@@ -203,23 +533,61 @@ requirements:
     category: contracts
     requirement: Obtain approval for subcontracting of critical functions
     explanation: |
-      If the intermediary subcontracts any part of the ICT service that 
-      supports critical or important functions, prior approval from the 
-      financial entity is required. The subcontractor must meet equivalent 
-      requirements.
+      If the intermediary subcontracts any part of the ICT
+      service that supports critical or important functions,
+      prior approval from the financial entity is required.
+      The subcontractor must meet equivalent requirements.
+
+      **Article 30(2)(d) — DORA subcontracting provisions:**
+      The contract must include provisions on the
+      possibility, conditions and modalities of
+      subcontracting, and in particular for subcontracting
+      ICT services supporting critical or important
+      functions. The financial entity must have:
+      - Prior approval right (specific or general written)
+      - Right to object to new subcontractors
+      - Visibility into the subcontractor chain
+      - Right to terminate if subcontracting changes
+        materially affect the service
+
+      **GDPR Article 28(2) — Sub-processor authorisation:**
+      The processor shall not engage another processor
+      without prior specific or general written
+      authorisation of the controller. In case of general
+      authorisation, the processor shall inform the
+      controller of intended changes, giving the controller
+      the opportunity to object.
+
+      **Subcontractor requirements:**
+      Subcontractors must meet requirements equivalent to
+      those imposed on the primary ICT TPP:
+      - Security and data protection standards
+      - Audit rights (flow-down)
+      - Incident notification obligations
+      - Business continuity capabilities
+      - Geographic restrictions on data processing
+
+      **Chain accountability:**
+      The primary ICT TPP remains fully responsible for
+      the performance and compliance of its subcontractors.
+      The financial entity's contract is with the primary
+      provider, who cannot delegate liability.
     legalBasis:
       - regulation: 2022/2554
         article: Article 30
-        paragraph: 2(d)
+        paragraph: "2(d)"
       - regulation: 2016/679
         article: Article 28
         paragraph: "2"
     legalText: |
-      DORA: Provisions on the possibility, conditions and modalities of subcontracting 
-      by the ICT third-party service provider, and in particular for 
-      subcontracting ICT services supporting critical or important functions.
-      GDPR: The processor shall not engage another processor without prior specific 
-      or general written authorisation of the controller.
+      DORA: Provisions on the possibility, conditions and
+      modalities of subcontracting by the ICT third-party
+      service provider, and in particular for subcontracting
+      ICT services supporting critical or important
+      functions.
+      GDPR: The processor shall not engage another
+      processor without prior specific or general written
+      authorisation of the controller.
     roles:
       - relying_party
       - issuer
@@ -231,13 +599,55 @@ requirements:
     category: contracts
     requirement: Provide information for concentration risk assessment
     explanation: |
-      The intermediary must provide information enabling the financial entity 
-      to assess ICT concentration risk, including data on other financial 
-      entities served and interdependencies with other ICT providers.
+      The intermediary must provide information enabling the
+      financial entity to assess ICT concentration risk,
+      including data on other financial entities served and
+      interdependencies with other ICT providers.
+
+      **Article 28(4) — Concentration risk assessment:**
+      Financial entities shall take into account ICT
+      concentration risk when performing the identification
+      and assessment of the risks arising from the use of
+      ICT services provided by ICT third-party service
+      providers. The ICT TPP must support this assessment.
+
+      **Concentration risk factors:**
+      The financial entity must assess:
+      - Number of financial entities dependent on the same
+        ICT TPP (single points of failure)
+      - Geographic concentration of infrastructure
+      - Interdependencies with other ICT providers
+        (e.g., cloud, DNS, CDN)
+      - Substitutability — how easily the service can
+        be replaced
+      - Market share of the ICT TPP in the relevant
+        service category
+
+      **Information the ICT TPP must provide:**
+      - Approximate number and nature of financial entity
+        clients
+      - Infrastructure dependency map (cloud providers,
+        data centres, network providers)
+      - Geographic distribution of processing
+      - Substitutability assessment
+      - Any single points of failure
+
+      **Regulatory context:**
+      Concentration risk is a systemic concern. If many
+      financial entities depend on the same ICT TPP, a
+      failure at that provider could cause cascading
+      disruption across the financial system. This is why
+      DORA includes the Critical ICT TPP designation
+      (see VEND-ICT-012).
     legalBasis:
       regulation: 2022/2554
       article: Article 28
       paragraph: "4"
+    legalText: |
+      Financial entities shall, when performing the
+      identification and assessment of the risks referred
+      to in paragraph 1, take into account ICT
+      concentration risk.
     roles:
       - relying_party
       - issuer
@@ -249,14 +659,55 @@ requirements:
     category: registration
     requirement: Comply with enhanced oversight if designated as Critical ICT TPP
     explanation: |
-      If the ESAs designate the intermediary as a Critical ICT Third-Party 
-      Provider (CTPP), they become subject to enhanced oversight including 
-      direct supervision by the Lead Overseer, regular assessments, and 
+      If the ESAs designate the intermediary as a Critical
+      ICT Third-Party Provider (CTPP), they become subject
+      to enhanced oversight including direct supervision
+      by the Lead Overseer, regular assessments, and
       additional reporting requirements.
+
+      **Article 31 — Designation criteria:**
+      The ESAs (EBA, ESMA, EIOPA) jointly designate
+      Critical ICT TPPs based on:
+      - Systemic importance to the financial sector
+      - Degree of substitutability
+      - Number and weight of financial entities relying
+        on the provider
+      - Cross-border dependencies
+
+      **Lead Overseer supervision:**
+      Once designated, a Lead Overseer (one of the ESAs)
+      is appointed with powers to:
+      - Conduct general investigations and inspections
+      - Request information and documentation
+      - Issue recommendations to address identified risks
+      - Require the CTPP to adopt specific measures
+
+      **Enhanced oversight obligations:**
+      Designated CTPPs must:
+      - Take part in the oversight framework
+      - Respond to recommendations within specified
+        timeframes
+      - Provide regular reporting on ICT risk posture
+      - Facilitate on-site inspections
+      - Implement remediation plans for identified
+        deficiencies
+
+      **Conditional applicability:**
+      This requirement is conditional — it only applies if
+      the ESAs designate the vendor as Critical based on
+      systemic importance criteria (Art. 31(2)). Most
+      intermediaries will NOT be designated as Critical
+      ICT TPPs. However, preparation is prudent for larger
+      providers.
     legalBasis:
       regulation: 2022/2554
       article: Article 31
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      The ESAs shall designate, through the Joint Committee,
+      the ICT third-party service providers that are critical
+      for financial entities, bearing in mind the criteria
+      set out in paragraph 2.
     roles:
       - relying_party
       - issuer
@@ -264,7 +715,9 @@ requirements:
     scope: extended
     deadline: "2025-01-17"
     notes: |
-      This requirement is conditional - it only applies if the ESAs designate 
-      the vendor as Critical based on systemic importance criteria (Art. 31(2)).
-      Most intermediaries will NOT be designated as Critical ICT TPPs.
+      This requirement is conditional — it only applies if
+      the ESAs designate the vendor as Critical based on
+      systemic importance criteria (Art. 31(2)). Most
+      intermediaries will NOT be designated as Critical
+      ICT TPPs.
     obligation: SHOULD
