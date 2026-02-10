@@ -1342,3 +1342,37 @@ requirements:
       - id: Q9
         text: "How do you handle the Wallet Provider applicability of this requirement — per Article 5a(14), functional separation also applies to private Wallet Providers 'mutatis mutandis'?"
         dimension: compliance_completeness
+
+  # ============================================================================
+  # VEND-ISS-041: Cascading WUA Revocation
+  # Requirement: Monitor WUA revocation status and implement cascading revocation policy
+  # ============================================================================
+  VEND-ISS-041:
+    questions:
+      - id: Q1
+        text: "Do you monitor the revocation status of Wallet Unit Attestations (WUAs) received during issuance for all active credentials? Per WURevocation_18, PID Providers SHALL regularly verify whether the Wallet Unit has been revoked — describe your monitoring mechanism (polling status lists, webhook notifications, or other)."
+        dimension: capability
+      - id: Q2
+        text: "What is your polling frequency for WUA revocation status lists? How do you balance revocation detection latency against the load on Wallet Provider status endpoints — and what is your effective worst-case cascading revocation latency?"
+        dimension: sla
+      - id: Q3
+        text: "Per WURevocation_19, Attestation Providers SHALL publish their policy regarding cascading revocation when a WUA is revoked. Have you published this policy? Where is it accessible to Relying Parties (e.g., in Provider Information, Trusted List metadata, or a public policy document)?"
+        dimension: compliance_completeness
+      - id: Q4
+        text: "How does your platform handle the asymmetry between PID Providers (SHALL revoke) and Attestation Providers (MAY revoke) — is cascading revocation configurable per issuer role, or hardcoded by deployment type?"
+        dimension: architecture
+      - id: Q5
+        text: "How do you store the WUA references received during issuance — do you persist the WUA itself, its status list URI and index, or a hash? How does this storage interact with ISSU_35b's requirement to discard unique elements after issuance?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "When a WUA revocation is detected, how do you cross-reference all active credentials issued to that Wallet Unit — database lookup by WUA identifier, by Wallet Unit identifier, or by device binding key?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "What is the operational process when cascading revocation is triggered — automatic revocation without human review, alert-and-approve workflow, or manual investigation? Is the revocation immediate per WURevocation_18's requirement?"
+        dimension: operational
+      - id: Q8
+        text: "How do you notify affected users when their attestations are cascade-revoked due to WUA revocation — push notification, email, in-app banner? Per WURevocation_14, the Wallet Provider must inform the user about wallet revocation separately, but do you also inform them about the resulting attestation revocation?"
+        dimension: user_experience
+      - id: Q9
+        text: "Do you log cascading revocation events with full traceability — the WUA revocation event that triggered the cascade, all affected credentials, revocation timestamps, and the policy basis (WURevocation_18 for PIDs, WURevocation_19 policy for EAAs)?"
+        dimension: auditability

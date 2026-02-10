@@ -2245,3 +2245,84 @@ requirements:
       Providers via Article 5a(14) "mutatis mutandis" —
       see RCA Wallet Provider track.
     obligation: MUST
+  - id: VEND-ISS-041
+    category: revocation
+    requirement: Monitor WUA revocation status and implement cascading revocation policy
+    explanation: |
+      After issuing a PID or attestation, the provider must monitor
+      the revocation status of the Wallet Unit on which the credential
+      resides. If the Wallet Provider revokes the WUA, the issuer
+      must respond according to its cascading revocation obligations.
+
+      **WURevocation_18 — PID Provider mandatory cascading (SHALL):**
+      A PID Provider issuing revocable PIDs SHALL, for each of its
+      valid PIDs, regularly verify whether the Wallet Provider
+      revoked the Wallet Unit on which that PID is residing, using
+      the revocation information in the WUA it received during
+      issuance of that PID. If the Wallet Unit is revoked, the PID
+      Provider SHALL immediately revoke the respective PID.
+
+      This is a direct consequence of the legal requirement in
+      CIR 2024/2977, Article 5, 4.(b). The verification mechanism
+      is specified in Technical Specification 3 (TS3).
+
+      **WURevocation_19 — Attestation Provider policy (MAY + SHALL):**
+      An Attestation Provider issuing revocable attestations MAY
+      decide to revoke an attestation when the Wallet Unit is
+      revoked, using the same mechanism as WURevocation_18.
+      However, the Attestation Provider SHALL publish its policy
+      regarding cascading revocation. This published policy allows
+      Relying Parties to assess the level of trust they can place
+      in attestations from that provider.
+
+      **Asymmetry between PID Providers and Attestation Providers:**
+      - PID Provider: cascading revocation is MANDATORY
+      - Attestation Provider: cascading revocation is a POLICY
+        DECISION, but the policy MUST be published
+
+      **Ongoing WUA monitoring implementation:**
+      The issuer must implement a mechanism to regularly check the
+      WUA revocation status for all active credentials it has
+      issued. This requires:
+      1. Storing the WUA (or its status list reference) received
+         during each issuance session
+      2. Periodically polling the Wallet Provider's Attestation
+         Status Lists or Attestation Revocation Lists
+      3. Cross-referencing revoked WUAs against the issuer's
+         active credential registry
+      4. Triggering cascading revocation when a match is found
+
+      **Revocation latency:**
+      The time between WUA revocation and cascading credential
+      revocation should be minimised. The polling frequency and
+      status list cache times determine the effective cascading
+      revocation latency.
+    legalBasis:
+      regulation: 2024/2977
+      article: Article 5
+      paragraph: "4(b)"
+    legalText: |
+      Where a European Digital Identity Wallet is revoked, the PID
+      Provider shall revoke the person identification data
+      associated with that Wallet.
+    arfReference:
+      topic: Topic 38
+      hlr:
+        - WURevocation_18
+        - WURevocation_19
+    roles:
+      - issuer
+    productCategories:
+      - issuance_platform
+    deadline: "2027-11-21"
+    notes: |
+      The obligation level differs by issuer type:
+      - PID Provider: MUST implement cascading revocation
+      - Attestation Provider: MUST publish cascading revocation
+        policy, MAY implement cascading revocation
+
+      Related requirements:
+      - VEND-ISS-013: Status list publication mechanism
+      - VEND-ISS-014: Revocation propagation times
+      - VEND-ISS-031: WUA verification at issuance
+    obligation: MUST

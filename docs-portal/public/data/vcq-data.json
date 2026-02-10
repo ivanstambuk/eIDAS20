@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T12:34:48.839Z",
+  "generatedAt": "2026-02-10T12:53:18.731Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -5790,6 +5790,52 @@
       "_sourceFile": "issuer.yaml"
     },
     {
+      "id": "VEND-ISS-041",
+      "category": "revocation",
+      "categoryLabel": "Revocation",
+      "categoryIcon": "🚫",
+      "requirement": "Monitor WUA revocation status and implement cascading revocation policy",
+      "explanation": "After issuing a PID or attestation, the provider must monitor\nthe revocation status of the Wallet Unit on which the credential\nresides. If the Wallet Provider revokes the WUA, the issuer\nmust respond according to its cascading revocation obligations.\n\n**WURevocation_18 — PID Provider mandatory cascading (SHALL):**\nA PID Provider issuing revocable PIDs SHALL, for each of its\nvalid PIDs, regularly verify whether the Wallet Provider\nrevoked the Wallet Unit on which that PID is residing, using\nthe revocation information in the WUA it received during\nissuance of that PID. If the Wallet Unit is revoked, the PID\nProvider SHALL immediately revoke the respective PID.\n\nThis is a direct consequence of the legal requirement in\nCIR 2024/2977, Article 5, 4.(b). The verification mechanism\nis specified in Technical Specification 3 (TS3).\n\n**WURevocation_19 — Attestation Provider policy (MAY + SHALL):**\nAn Attestation Provider issuing revocable attestations MAY\ndecide to revoke an attestation when the Wallet Unit is\nrevoked, using the same mechanism as WURevocation_18.\nHowever, the Attestation Provider SHALL publish its policy\nregarding cascading revocation. This published policy allows\nRelying Parties to assess the level of trust they can place\nin attestations from that provider.\n\n**Asymmetry between PID Providers and Attestation Providers:**\n- PID Provider: cascading revocation is MANDATORY\n- Attestation Provider: cascading revocation is a POLICY\n  DECISION, but the policy MUST be published\n\n**Ongoing WUA monitoring implementation:**\nThe issuer must implement a mechanism to regularly check the\nWUA revocation status for all active credentials it has\nissued. This requires:\n1. Storing the WUA (or its status list reference) received\n   during each issuance session\n2. Periodically polling the Wallet Provider's Attestation\n   Status Lists or Attestation Revocation Lists\n3. Cross-referencing revoked WUAs against the issuer's\n   active credential registry\n4. Triggering cascading revocation when a match is found\n\n**Revocation latency:**\nThe time between WUA revocation and cascading credential\nrevocation should be minimised. The polling frequency and\nstatus list cache times determine the effective cascading\nrevocation latency.",
+      "legalBases": [
+        {
+          "regulation": "2024/2977",
+          "article": "Article 5",
+          "paragraph": "4(b)",
+          "link": "/implementing-acts/2024-2977?section=article-5"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/2977",
+        "article": "Article 5",
+        "paragraph": "4(b)"
+      },
+      "legalBasisLink": "/implementing-acts/2024-2977?section=article-5",
+      "legalText": "Where a European Digital Identity Wallet is revoked, the PID\nProvider shall revoke the person identification data\nassociated with that Wallet.",
+      "arfReference": {
+        "topic": "Topic 38",
+        "hlr": [
+          "WURevocation_18",
+          "WURevocation_19"
+        ]
+      },
+      "roles": [
+        "issuer"
+      ],
+      "productCategories": [
+        "issuance_platform"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "The obligation level differs by issuer type:\n- PID Provider: MUST implement cascading revocation\n- Attestation Provider: MUST publish cascading revocation\n  policy, MAY implement cascading revocation\n\nRelated requirements:\n- VEND-ISS-013: Status list publication mechanism\n- VEND-ISS-014: Revocation propagation times\n- VEND-ISS-031: WUA verification at issuance",
+      "_sourceFile": "issuer.yaml"
+    },
+    {
       "id": "VEND-TSP-001",
       "category": "registration",
       "categoryLabel": "Registration",
@@ -6642,6 +6688,7 @@
       "VEND-ISS-038",
       "VEND-ISS-039",
       "VEND-ISS-040",
+      "VEND-ISS-041",
       "VEND-TSP-012",
       "VEND-TSP-013",
       "VEND-TSP-014",
@@ -6786,6 +6833,7 @@
       "VEND-ISS-037",
       "VEND-ISS-038",
       "VEND-ISS-039",
+      "VEND-ISS-041",
       "VEND-TSP-019"
     ],
     "trust_services": [
@@ -7101,6 +7149,7 @@
       "VEND-ISS-035",
       "VEND-ISS-036",
       "VEND-ISS-037",
+      "VEND-ISS-041",
       "VEND-TSP-014",
       "VEND-TSP-017",
       "VEND-TSP-018",
@@ -7108,15 +7157,15 @@
     ]
   },
   "stats": {
-    "totalRequirements": 147,
+    "totalRequirements": 148,
     "byRole": {
       "relying_party": 63,
-      "issuer": 64,
+      "issuer": 65,
       "universal": 35
     },
     "byProductCategory": {
       "connector": 51,
-      "issuance_platform": 47,
+      "issuance_platform": 48,
       "trust_services": 26,
       "universal": 32
     },
@@ -7124,7 +7173,7 @@
       "eidas": 124,
       "gdpr": 20,
       "dora": 12,
-      "arf": 90
+      "arf": 91
     },
     "byCategory": {
       "usage": 44,
@@ -7132,10 +7181,10 @@
       "registration": 27,
       "security": 29,
       "issuance": 18,
-      "revocation": 7
+      "revocation": 8
     },
     "byObligation": {
-      "MUST": 126,
+      "MUST": 127,
       "MUST NOT": 11,
       "SHOULD": 9,
       "SHOULD NOT": 0,
