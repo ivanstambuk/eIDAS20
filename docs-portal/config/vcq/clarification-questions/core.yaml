@@ -1435,8 +1435,8 @@ requirements:
         text: "Per RPRC_21, the wallet may verify that requested attributes match what is registered for the selected intended use. Does the product verify this alignment locally before sending the presentation request, preventing mismatched requests from reaching the wallet?"
         dimension: compliance_completeness
       - id: Q5
-        text: "How does the product populate the RPRC_19a extension fields (intended use identifier, user-friendly description, Registrar URL) in presentation requests? Are these fields derived from the registration certificate, from product configuration, or from a dynamic Registrar API query?"
-        dimension: technical_implementation
+        text: "Per RPRC_20a, the RPRC_19a fields must be transferred via protocol extensions defined in ETSI TS 119 472-2 — NOT via the standard OID4VP `purpose` parameter. Does your product implement the ETSI-defined extensions for both OpenID4VP and ISO 18013-5 (proximity)? If you currently use the OID4VP `purpose` field, how will you migrate to the ETSI extension?"
+        dimension: compliance_completeness
       - id: Q6
         text: "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured? Does the product fail fast with a clear error, or does it send the request without the intended use metadata (risking wallet-side rejection)?"
         dimension: operational
@@ -1449,6 +1449,12 @@ requirements:
       - id: Q9
         text: "How does the product handle intended use changes that require re-registration with the Registrar? If an intended use is modified (e.g., new attributes added), does the product trigger a TS5 API update to the registry automatically?"
         dimension: lifecycle
+      - id: Q10
+        text: "Per RPA_10, the wallet displays the privacy policy link 'if available' — sourced from the registration certificate or from a TS5 Registrar query. How does your product ensure the privacy policy URL is included in either the registration certificate or the TS5 registration data? What user experience results if neither source provides the privacy policy link?"
+        dimension: user_experience
+      - id: Q11
+        text: "Per RPRC_21, attribute-to-registration mismatch triggers a wallet-side warning (not a block) — and only when the user has opted in to RP verification (RPRC_16). Does your product pre-validate that requested attributes align with the RP's registered entitlements before sending the presentation request, to proactively prevent these wallet warnings?"
+        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-CORE-047: User Rejection and Timeout Event Surfacing

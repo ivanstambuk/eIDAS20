@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T12:53:18.731Z",
+  "generatedAt": "2026-02-10T13:05:48.360Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -2035,7 +2035,7 @@
       "categoryLabel": "Usage",
       "categoryIcon": "🔍",
       "requirement": "Support intended use selection and management in presentation requests",
-      "explanation": "When a Relying Party has multiple registered intended uses, the product \nshould support selecting the correct intended use for each presentation \nrequest. Per RPRC_19a, each presentation request must include the \nintended use identifier and user-friendly description, which are tied to \nthe RP's registration at a Member State Registrar.\n\nThe product should provide:\n- Configuration of multiple intended uses per RP customer\n- Selection of the applicable intended use (and associated registration \n  certificate) when constructing a presentation request\n- Lifecycle management for intended uses (add, modify, deactivate)\n- Consistency checks ensuring the requested attributes align with what \n  is registered for the selected intended use\n\nThis is important because the ARF mandates that Wallet Units display the \nintended use to the user (RPA_10) and may verify that requested \nattributes match the RP's registration (RPRC_21). Incorrect or missing \nintended use metadata can result in transaction failure or user-facing \nwarnings from the wallet.",
+      "explanation": "When a Relying Party has multiple registered intended uses, the product \nmust support selecting the correct intended use for each presentation \nrequest. Per RPRC_19a, each presentation request must include the \nintended use identifier and user-friendly description, which are tied to \nthe RP's registration at a Member State Registrar.\n\nThe product should provide:\n- Configuration of multiple intended uses per RP customer\n- Selection of the applicable intended use (and associated registration \n  certificate) when constructing a presentation request\n- Lifecycle management for intended uses (add, modify, deactivate)\n- Consistency checks ensuring the requested attributes align with what \n  is registered for the selected intended use\n\n**RPRC_20a — Protocol extension mechanism (critical):**\nThe RPRC_19a information is NOT transferred via the standard OID4VP\n`purpose` parameter. The ARF defines its own richer mechanism via\nprotocol extensions specified in ETSI TS 119 472-2 (and amended by\na CIR in preparation). Both OpenID4VP and ISO 18013-5 have their\nown ETSI-defined extensions for carrying the RPRC_19a fields.\nVendors must implement these specific ETSI extensions — using\nthe standard OID4VP `purpose` field alone is insufficient for\nARF compliance.\n\n**TS5 — Intended use data model:**\nTechnical Specification 5 defines the structured data model for\nregistration information, including the intended use identifier,\ndescription, entitlements, sub-entitlements, and privacy policy\nURL. The Wallet Unit uses the Registrar URL (RPRC_19a item d)\nand intended use identifier (RPRC_19a item e) to query the TS5\nAPI and verify the RP's registration.\n\n**RPA_10 — Wallet display of intended use:**\nThe Wallet Unit SHALL show the intended use description (always\npresent in RPRC_19a item c) and, \"if available\", the privacy\npolicy link. The \"if available\" qualifier applies only to the\nprivacy policy link — which comes from the registration\ncertificate or from a TS5 Registrar query if the user opted in.\nThe intended use description itself is always mandatory.\n\n**RPRC_21 — Warning, not block:**\nIf the user opted in to verification (RPRC_16) and the wallet\ndetects that requested attributes don't match what the RP\nregistered, the wallet notifies (warns) the user but does NOT\nblock the transaction. The user retains the final decision per\nRPA_07. This is a warning-not-block model, unlike RPRC_23\nfor issuers where verification is always performed regardless\nof user preference.",
       "legalBases": [
         {
           "regulation": "2014/910",
@@ -2054,7 +2054,9 @@
         "topic": "Topic 44",
         "hlr": [
           "RPRC_19a",
-          "RPRC_21"
+          "RPRC_20a",
+          "RPRC_21",
+          "RPA_10"
         ]
       },
       "roles": [

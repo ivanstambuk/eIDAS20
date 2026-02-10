@@ -2302,7 +2302,7 @@ requirements:
     requirement: Support intended use selection and management in presentation requests
     explanation: |
       When a Relying Party has multiple registered intended uses, the product 
-      should support selecting the correct intended use for each presentation 
+      must support selecting the correct intended use for each presentation 
       request. Per RPRC_19a, each presentation request must include the 
       intended use identifier and user-friendly description, which are tied to 
       the RP's registration at a Member State Registrar.
@@ -2315,11 +2315,40 @@ requirements:
       - Consistency checks ensuring the requested attributes align with what 
         is registered for the selected intended use
 
-      This is important because the ARF mandates that Wallet Units display the 
-      intended use to the user (RPA_10) and may verify that requested 
-      attributes match the RP's registration (RPRC_21). Incorrect or missing 
-      intended use metadata can result in transaction failure or user-facing 
-      warnings from the wallet.
+      **RPRC_20a — Protocol extension mechanism (critical):**
+      The RPRC_19a information is NOT transferred via the standard OID4VP
+      `purpose` parameter. The ARF defines its own richer mechanism via
+      protocol extensions specified in ETSI TS 119 472-2 (and amended by
+      a CIR in preparation). Both OpenID4VP and ISO 18013-5 have their
+      own ETSI-defined extensions for carrying the RPRC_19a fields.
+      Vendors must implement these specific ETSI extensions — using
+      the standard OID4VP `purpose` field alone is insufficient for
+      ARF compliance.
+
+      **TS5 — Intended use data model:**
+      Technical Specification 5 defines the structured data model for
+      registration information, including the intended use identifier,
+      description, entitlements, sub-entitlements, and privacy policy
+      URL. The Wallet Unit uses the Registrar URL (RPRC_19a item d)
+      and intended use identifier (RPRC_19a item e) to query the TS5
+      API and verify the RP's registration.
+
+      **RPA_10 — Wallet display of intended use:**
+      The Wallet Unit SHALL show the intended use description (always
+      present in RPRC_19a item c) and, "if available", the privacy
+      policy link. The "if available" qualifier applies only to the
+      privacy policy link — which comes from the registration
+      certificate or from a TS5 Registrar query if the user opted in.
+      The intended use description itself is always mandatory.
+
+      **RPRC_21 — Warning, not block:**
+      If the user opted in to verification (RPRC_16) and the wallet
+      detects that requested attributes don't match what the RP
+      registered, the wallet notifies (warns) the user but does NOT
+      block the transaction. The user retains the final decision per
+      RPA_07. This is a warning-not-block model, unlike RPRC_23
+      for issuers where verification is always performed regardless
+      of user preference.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -2328,7 +2357,9 @@ requirements:
       topic: Topic 44
       hlr:
         - RPRC_19a
+        - RPRC_20a
         - RPRC_21
+        - RPA_10
     roles:
       - relying_party
     productCategories:
