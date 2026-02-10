@@ -1460,25 +1460,58 @@ requirements:
     category: usage
     requirement: Implement TS7 data deletion request interface for GDPR Article 17 compliance
     explanation: |
-      The intermediary must implement the common data deletion request interface 
-      specified in Technical Specification 7 (TS7). When a user requests erasure 
-      of their data from an RP (via the wallet), the intermediary must:
-      1. Authenticate the requesting user using appropriate mechanisms (DATA_DLT_07)
-      2. Correctly process or relay the deletion request per TS7 (DATA_DLT_08)
-      3. Respond within GDPR mandated timeframes (without undue delay)
+      The intermediary must implement the common data deletion
+      request interface specified in Technical Specification 7
+      (TS7). When a user requests erasure of their data from an RP
+      (via the wallet), the intermediary must process or relay the
+      request.
 
-      Note: The intermediary's no-storage mandate (VEND-INT-021) means minimal 
-      personal data will be retained, but any logs or metadata must still be 
-      subject to erasure requests.
+      **DATA_DLT_07 — User authentication:**
+      Before executing a data deletion request, the intermediary
+      SHALL authenticate the requesting user using appropriate
+      authentication mechanisms. The intermediary SHOULD use the
+      authentication or signature facilities offered by the user's
+      Wallet Unit for this purpose. This means the deletion request
+      flow may involve a presentation exchange specifically for
+      authentication (not for attribute disclosure).
+
+      **DATA_DLT_08 — TS7 compliance:**
+      Wallet Units, Relying Parties, and Registrars SHALL comply
+      with the relevant requirements in TS7. For the intermediary,
+      this means implementing the TS7 API endpoint(s) that wallet
+      units will use to submit deletion requests.
+
+      **Intermediary-specific relay pattern:**
+      Because the intermediary operates on behalf of an
+      intermediated RP, deletion requests may need to be relayed:
+      - The wallet sends the deletion request to the intermediary
+        (since that is the entity the wallet interacted with)
+      - The intermediary authenticates the user (per DATA_DLT_07)
+      - The intermediary relays the request to the intermediated
+        RP (the actual data controller)
+      - The intermediary confirms processing to the wallet
+
+      **No-storage interaction (VEND-INT-021):**
+      The intermediary's no-storage mandate means minimal personal
+      data will be retained. However, any operational metadata
+      (audit logs, transaction records, error logs) that could
+      contain personal data must still be subject to erasure
+      requests. The intermediary should be able to identify and
+      purge such data when a deletion request is received.
+
+      **GDPR Article 17 timeframes:**
+      The controller (intermediary or RP) must erase personal data
+      "without undue delay" — typically interpreted as within one
+      month, with possible extension for complex requests.
     legalBasis:
       regulation: 2016/679
       article: Article 17
       paragraph: "1"
     legalText: |
-      The data subject shall have the right to obtain from the controller the 
-      erasure of personal data concerning him or her without undue delay and 
-      the controller shall have the obligation to erase personal data without 
-      undue delay.
+      The data subject shall have the right to obtain from the
+      controller the erasure of personal data concerning him or
+      her without undue delay and the controller shall have the
+      obligation to erase personal data without undue delay.
     arfReference:
       topic: Topic 48
       hlr:
@@ -1494,18 +1527,48 @@ requirements:
     category: contracts
     requirement: Support user reporting to data protection authorities
     explanation: |
-      Wallet units allow users to report RPs to data protection authorities 
-      if they suspect unlawful data requests. The intermediary's identity 
-      (as the entity making the request on behalf of the RP) will be visible 
-      to users and may be included in such reports.
+      Wallet units allow users to report RPs to data protection
+      authorities (DPAs) if they suspect unlawful data requests.
+      The intermediary's identity (as the entity making the request
+      on behalf of the RP) will be visible to users and may be
+      included in such reports.
+
+      **How DPA reporting works in the EUDI Wallet ecosystem:**
+      - The wallet provides a reporting mechanism per Article 51
+        of the GDPR (supervisory authorities)
+      - The user can report an RP that they believe requested
+        excessive or unlawful data
+      - The report will include the RP's identity as displayed
+        during the consent flow
+
+      **Intermediary visibility in reports:**
+      In an intermediated scenario, the wallet displays both the
+      intermediary's identity (from its access certificate) and
+      the intermediated RP's identity (from RPRC_19a). A user
+      report may include either or both identities:
+      - The intermediary (as the entity that technically requested
+        the data)
+      - The intermediated RP (as the entity that instructed the
+        intermediary to request the data)
+
+      **Intermediary preparedness:**
+      The intermediary should be prepared to:
+      - Respond to DPA inquiries about its intermediation activities
+      - Provide evidence of which RP instructed each request
+      - Demonstrate that it complied with the no-storage mandate
+      - Show that it only requested attributes registered for the
+        RP's intended use (per RPI_06)
+      - Maintain sufficient audit trails to support investigations
+        without retaining personal data
     legalBasis:
       regulation: 2024/2982
       article: Article 7
       paragraph: "1"
     legalText: |
-      Wallet providers shall ensure that wallet units allow wallet users to 
-      easily report wallet-relying parties to supervisory authorities 
-      established under Article 51 of Regulation (EU) 2016/679.
+      Wallet providers shall ensure that wallet units allow wallet
+      users to easily report wallet-relying parties to supervisory
+      authorities established under Article 51 of Regulation (EU)
+      2016/679.
     roles:
       - relying_party
     productCategories:
@@ -1516,22 +1579,60 @@ requirements:
     category: usage
     requirement: Include intermediary access certificate and RP registration certificate in requests
     explanation: |
-      When requesting attestations from a wallet on behalf of an intermediated RP, the 
-      intermediary must include both: (1) its own access certificate (proving its identity 
-      as a registered intermediary), and (2) the registration certificate of the 
-      intermediated RP, if the RP has one. This enables the wallet to verify both 
-      the intermediary and the ultimate service provider.
+      When requesting attestations from a wallet on behalf of an
+      intermediated RP, the intermediary must include both:
+      (1) its own access certificate (proving its identity as a
+      registered intermediary), and (2) the registration certificate
+      of the intermediated RP, if the RP has one. This enables the
+      wallet to verify both the intermediary and the ultimate
+      service provider.
+
+      **Dual-certificate structure:**
+      - **Intermediary access certificate**: issued by the
+        intermediary's Registrar pursuant to RPA_01 and Topic 27;
+        identifies the intermediary as a registered entity
+      - **RP registration certificate**: obtained during the
+        intermediary's registration of the intermediated RP (per
+        RPI_03); contains the RP's registered attributes, intended
+        uses, and identity
+
+      **Protocol-specific inclusion:**
+      - **OID4VP (remote)**: the intermediary's access certificate
+        is part of the TLS handshake or request JWT; the RP's
+        registration certificate is included via the RPRC_19a
+        extension fields
+      - **ISO 18013-5 (proximity)**: both certificates are included
+        in the reader authentication structure
+
+      **Wallet verification flow:**
+      The wallet uses the dual-certificate to:
+      - Authenticate the intermediary (using its access certificate)
+      - Verify the intermediated RP's registration (using the RP's
+        registration certificate, if available)
+      - Check the intermediary-RP relationship (per RPI_07a)
+      - Display both identities to the user (per RPI_07)
+
+      **When the RP has no registration certificate:**
+      If the intermediated RP does not have a registration
+      certificate (e.g., because it has not registered intended
+      uses), the intermediary includes only its own access
+      certificate. The wallet may warn the user that the RP's
+      registration cannot be fully verified.
     arfReference:
       topic: Topic 52
-      hlr: RPI_06
+      hlr:
+        - RPI_06
+        - RPI_03
+        - RPI_07
     legalBasis:
       regulation: 2025/848
       article: Article 8
       paragraph: "2"
     legalText: |
-      When requested by an intermediated Relying Party, an intermediary SHALL request 
-      a presentation of attributes from a specific Wallet Unit. In the request, the 
-      intermediary SHALL include the intermediary's access certificate and the 
+      When requested by an intermediated Relying Party, an
+      intermediary SHALL request a presentation of attributes from
+      a specific Wallet Unit. In the request, the intermediary
+      SHALL include the intermediary's access certificate and the
       registration certificate of the Relying Party, if available.
     roles:
       - relying_party
@@ -1539,66 +1640,157 @@ requirements:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This is the technical implementation of RPI_06. The access certificate comes from 
-      the intermediary's own registration. The RP registration certificate is obtained 
-      during the intermediary's registration of each intermediated RP (per RPI_03).
+      This is the technical implementation of RPI_06. The access
+      certificate comes from the intermediary's own registration.
+      The RP registration certificate is obtained during the
+      intermediary's registration of each intermediated RP (per
+      RPI_03).
     obligation: MUST
   - id: VEND-INT-033
     category: contracts
     requirement: Ensure intermediary-RP contractual relationship is registered
     explanation: |
-      Before the intermediary can act on behalf of an RP, the contractual relationship 
-      between them must be registered with the relevant Registrar. The wallet verifies 
-      this registration when processing requests (per RPI_07a). If the relationship 
-      is not registered, the wallet will warn the user that the intermediary's 
-      authority to act for the RP cannot be verified.
+      Before the intermediary can act on behalf of an RP, the
+      contractual relationship between them must be registered with
+      the relevant Registrar. The wallet verifies this registration
+      when processing requests (per RPI_07a).
+
+      **RPI_04 registration requirement:**
+      When registering an intermediated Relying Party, the
+      intermediary SHALL provide legally valid evidence that the
+      RP will indeed use the intermediary's services to interact
+      with Wallet Units. Such evidence may be:
+      - A signed contract between the intermediary and the RP
+      - A service agreement with explicit wallet interaction scope
+      - A formal authorisation letter from the RP
+      The Registrar SHALL verify this evidence and, if correct,
+      register the relationship.
+
+      **RPI_07a wallet verification:**
+      When a Wallet Unit receives a request from an intermediary
+      on behalf of an intermediated RP, and the user wants to
+      verify the RP's registration, the wallet SHALL verify that
+      the intermediary-RP relationship is registered. This can be
+      done by:
+      - Inspecting the registration certificate (if available)
+      - Querying the Registrar directly
+      If verification fails, the wallet SHALL notify the user when
+      asking for consent — the user may still proceed, but with a
+      warning.
+
+      **Onboarding lifecycle:**
+      The intermediary must ensure registration is complete BEFORE
+      accepting intermediation requests from an RP. The typical
+      lifecycle is:
+      1. Contract signing between intermediary and RP
+      2. Intermediary submits registration request to Registrar
+         with contractual evidence
+      3. Registrar verifies evidence and registers the relationship
+      4. Intermediary obtains the RP's registration certificate
+         (per RPI_03)
+      5. Intermediary begins accepting wallet interaction requests
+         for that RP
+
+      **Relationship termination:**
+      When the intermediary-RP relationship ends, the intermediary
+      must notify the Registrar to de-register the relationship.
+      Failure to do so means wallets will still see the
+      relationship as active, potentially misleading users.
     arfReference:
       topic: Topic 52
-      hlr: RPI_04
+      hlr:
+        - RPI_04
+        - RPI_07a
     legalBasis:
       regulation: 2025/848
       article: Article 6
       paragraph: "5"
     legalText: |
-      When registering an intermediated Relying Party, an intermediary SHALL provide 
-      legally valid evidence that this Relying Party will indeed use the services of 
-      this intermediary to interact with Wallet Units. The Registrar SHALL verify 
-      this evidence and register the relationship between the intermediary and the 
-      intermediated Relying Party.
+      When registering an intermediated Relying Party, an
+      intermediary SHALL provide legally valid evidence that this
+      Relying Party will indeed use the services of this
+      intermediary to interact with Wallet Units. The Registrar
+      SHALL verify this evidence and register the relationship
+      between the intermediary and the intermediated Relying Party.
     roles:
       - relying_party
     productCategories:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This corresponds to ARF RPI_04 and supports wallet verification per RPI_07a. 
-      The intermediary must ensure this registration is complete BEFORE accepting 
-      intermediation requests from an RP, otherwise wallet users will see verification 
-      failures.
+      This corresponds to ARF RPI_04 and supports wallet
+      verification per RPI_07a. The intermediary must ensure
+      registration is complete BEFORE accepting intermediation
+      requests from an RP, otherwise wallet users will see
+      verification failures.
     obligation: MUST
   - id: VEND-INT-034
     category: usage
     requirement: Support attestation status list verification mechanisms (recommended)
     explanation: |
-      The intermediary should support attestation status verification using the mechanisms 
-      specified in ARF Topic 7 (Attestation Revocation). This includes checking 
-      Attestation Status Lists or Attestation Revocation Lists published by PID/EAA 
-      providers to verify that attestations have not been revoked. Note: Per ARF VCR_13, 
-      revocation verification is recommended but not mandatory.
+      The intermediary should support attestation status verification
+      using the mechanisms specified in ARF Topic 7 (Attestation
+      Revocation). This includes checking Attestation Status Lists
+      or Attestation Revocation Lists published by PID/EAA providers
+      to verify that attestations have not been revoked.
+
+      **VCR_13 — Recommended verification:**
+      Per VCR_13, a Relying Party Instance SHOULD verify the
+      revocation status of a PID or attestation upon obtaining it
+      from a Wallet Unit. This is a SHOULD (recommended), not a
+      SHALL (mandatory), meaning the intermediary may choose not
+      to verify revocation in low-risk scenarios.
+
+      **VCR_12 — Dual-mechanism support:**
+      If the intermediary decides to verify revocation, it SHALL
+      support BOTH mechanisms specified per VCR_11:
+      - **Attestation Status Lists**: compressed bitstring lists
+        where each bit represents the status of one attestation;
+        efficient for batch checking without per-credential
+        queries
+      - **Attestation Revocation Lists (Identifier Lists)**: lists
+        of revoked attestation identifiers; useful for targeted
+        checks
+
+      **Intermediary-specific considerations:**
+      - Revocation checking occurs as part of the RPI_09
+        verification gate (specifically step (b): revocation
+        status)
+      - If revocation verification fails, the intermediary SHALL
+        NOT forward attributes to the RP (per RPI_08)
+      - Status lists must be fetched from PID/EAA Providers via
+        the URLs specified in the attestation metadata
+      - Cache strategy must balance freshness (detecting recent
+        revocations) against performance (avoiding per-request
+        fetches)
+
+      **Short-lived attestation exception:**
+      Per VCR_01, if an attestation has a validity period of 24
+      hours or less (short-lived), revocation checking is
+      unnecessary because the attestation will expire before a
+      revocation could take effect.
     arfReference:
       topic: Topic 7
-      hlr: VCR_13
+      hlr:
+        - VCR_13
+        - VCR_12
+        - VCR_11
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet solutions shall support the protocols and interfaces
+      necessary to verify the validity of PIDs and electronic
+      attestations of attributes.
     roles:
       - relying_party
     productCategories:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This covers ARF Topic 7 (VCR_*) verification requirements for attestation 
-      revocation. Attestation Status Lists (VCR_11) are the primary mechanism 
-      for efficient batch revocation checking without per-credential queries.
+      This covers ARF Topic 7 (VCR_*) verification requirements
+      for attestation revocation. Attestation Status Lists (VCR_11)
+      are the primary mechanism for efficient batch revocation
+      checking without per-credential queries.
     obligation: SHOULD

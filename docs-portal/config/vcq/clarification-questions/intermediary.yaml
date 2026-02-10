@@ -976,23 +976,32 @@ requirements:
   VEND-INT-030:
     questions:
       - id: Q1
-        text: "Do you implement the common data deletion request interface as specified in TS7?"
+        text: "Do you implement the common data deletion request interface as specified in TS7? Which TS7 API endpoints are exposed, and what is the request/response format?"
         dimension: capability
       - id: Q2
-        text: "How do you authenticate users submitting deletion requests via the TS7 interface?"
+        text: "How do you authenticate users submitting deletion requests (per DATA_DLT_07)? Do you use the wallet's authentication or signature facilities, or your own authentication mechanisms?"
         dimension: security
       - id: Q3
-        text: "Given the no-storage mandate, what data is subject to deletion requests?"
+        text: "Given the no-storage mandate (VEND-INT-021), what data is actually subject to deletion requests — audit logs, transaction metadata, error logs, or other operational records?"
         dimension: data_handling
       - id: Q4
-        text: "What is your response time for processing deletion requests?"
+        text: "What is your response time for processing deletion requests? Do you meet the GDPR 'without undue delay' standard (typically within one month)? Is there a committed SLA?"
         dimension: sla
       - id: Q5
-        text: "How do you relay deletion requests to the ultimate RP when needed?"
+        text: "How do you relay deletion requests to the intermediated RP (the actual data controller) — via webhook, API call, or manual notification? What confirmation mechanism ensures the RP actually processes the deletion?"
         dimension: operational
       - id: Q6
-        text: "Is the deletion request automatically routed to the backend RP systems via webhook/API, or is it a manual notification?"
+        text: "Is the deletion request relay to the backend RP systems automated end-to-end, or does it require manual intervention at any stage? What is the automation coverage percentage?"
         dimension: automation
+      - id: Q7
+        text: "How do you handle deletion requests for data that has already been automatically deleted under the no-storage mandate? Do you confirm deletion even if no data was found?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "If the intermediated RP is unresponsive or refuses the deletion request, what is your escalation procedure? Do you notify the user or the relevant DPA?"
+        dimension: incident_response
+      - id: Q9
+        text: "Do you maintain a deletion request log (recording that a request was received, processed, and relayed) for accountability purposes without storing the personal data itself?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-INT-031: User Reporting Support
@@ -1001,17 +1010,32 @@ requirements:
   VEND-INT-031:
     questions:
       - id: Q1
-        text: "How is your identity (as intermediary) presented to users and potentially included in DPA reports?"
+        text: "How is your identity (as intermediary) presented to users during the consent flow, and how might it appear in DPA reports — is it the intermediary name from the access certificate, the legal entity name, or both?"
         dimension: operational
       - id: Q2
-        text: "What contact information is provided to users for complaint purposes?"
+        text: "What contact information is provided to users for complaint purposes — DPO contact details, registered address, supervisory authority details? Is this information included in the RPRC_19a extension or provided via a separate channel?"
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you support investigation requests from data protection authorities?"
+        text: "How do you support investigation requests from data protection authorities — can you produce a complete audit trail of intermediation activities for a specific user without retaining personal data beyond the no-storage mandate?"
         dimension: regulatory_access
       - id: Q4
-        text: "What process is in place to respond to DPA inquiries about intermediation activities?"
+        text: "What process is in place to respond to DPA inquiries about intermediation activities? Is there a dedicated DPA liaison team or contact point with defined response SLAs?"
         dimension: incident_response
+      - id: Q5
+        text: "In a DPA report, how do you distinguish between the intermediary's responsibility and the intermediated RP's responsibility? Can you provide evidence of which RP instructed each specific request?"
+        dimension: compliance_evidence
+      - id: Q6
+        text: "How do you demonstrate compliance with the no-storage mandate (VEND-INT-021) to a DPA during an investigation — what evidence can you produce that personal data was deleted immediately after forwarding?"
+        dimension: auditability
+      - id: Q7
+        text: "Does the wallet's DPA reporting interface include the intermediary's identity alongside the intermediated RP's identity, or only one of them? How do you ensure both are visible to the user?"
+        dimension: interoperability
+      - id: Q8
+        text: "If a DPA requests information about all users served on behalf of a specific RP, can you produce this from your audit logs without revealing attribute content (per VEND-INT-018)?"
+        dimension: privacy
+      - id: Q9
+        text: "Do you have a data protection impact assessment (DPIA) covering intermediation activities that can be shared with DPAs upon request?"
+        dimension: documentation
 
   # ============================================================================
   # VEND-INT-032: Dual Certificate Inclusion in Requests
@@ -1020,17 +1044,32 @@ requirements:
   VEND-INT-032:
     questions:
       - id: Q1
-        text: "Do you include both your access certificate and the intermediated RP's registration certificate in wallet requests?"
+        text: "Do you include both your access certificate and the intermediated RP's registration certificate in wallet requests? Is this dual-certificate inclusion implemented for both remote (OID4VP) and proximity (ISO 18013-5) flows?"
         dimension: capability
       - id: Q2
-        text: "How do you obtain and maintain RP registration certificates?"
+        text: "How do you obtain and maintain RP registration certificates — are they retrieved during RP onboarding (per RPI_03) and refreshed automatically, or is this a manual process?"
         dimension: lifecycle
       - id: Q3
-        text: "What happens when an RP does not have a registration certificate?"
+        text: "What happens when an intermediated RP does not have a registration certificate (e.g., has not registered intended uses)? Do you proceed with only the intermediary's access certificate and warn the wallet?"
         dimension: operational
       - id: Q4
-        text: "How are certificate updates reflected in ongoing operations?"
+        text: "How are certificate updates (renewal, re-issuance) reflected in ongoing operations? Is there a monitoring mechanism that detects when an RP's registration certificate has been updated or revoked?"
         dimension: lifecycle
+      - id: Q5
+        text: "For remote presentations (OID4VP), how is the RP's registration certificate included — as a field in the RPRC_19a extension, as a separate JWT claim, or within the request metadata?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "For proximity presentations (ISO 18013-5), how are both certificates included in the reader authentication structure? Are they included as separate certificate entries in the COSE structure?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "How does the wallet use the dual-certificate to perform the RPI_07a relationship verification — does it inspect the registration certificate directly, or query the Registrar?"
+        dimension: interoperability
+      - id: Q8
+        text: "If the RP's registration certificate is expired or revoked at the time of request, do you detect this and block the request, or do you forward the expired certificate and let the wallet handle it?"
+        dimension: security
+      - id: Q9
+        text: "Do you support serving multiple intermediated RPs concurrently, each with their own registration certificate? How do you ensure the correct RP certificate is included in each request?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-INT-033: Contractual Relationship Registration
@@ -1039,20 +1078,32 @@ requirements:
   VEND-INT-033:
     questions:
       - id: Q1
-        text: "How do you ensure the intermediary-RP relationship is registered with the Registrar before beginning operations?"
+        text: "How do you ensure the intermediary-RP relationship is registered with the Registrar before beginning operations — is there a technical gate that blocks wallet interactions until registration is confirmed?"
         dimension: compliance_monitoring
       - id: Q2
-        text: "What legal evidence do you provide to Registrars to establish the relationship?"
+        text: "What legal evidence do you provide to Registrars to establish the relationship (contract, service agreement, authorisation letter)? Does the evidence format vary by Registrar or Member State?"
         dimension: compliance_evidence
       - id: Q3
-        text: "How do you handle wallets that cannot verify the registered relationship?"
+        text: "How do you handle wallets that cannot verify the registered relationship (RPI_07a verification failure) — does the transaction proceed with a user warning, or is it blocked entirely?"
         dimension: operational
       - id: Q4
-        text: "What is the timeline from contract signing to registered relationship?"
+        text: "What is the typical timeline from contract signing to registered relationship — hours, days, or weeks? Is there an SLA with the Registrar for registration processing time?"
         dimension: sla
       - id: Q5
-        text: "How do you manage relationship updates (new RPs, terminated RPs)?"
+        text: "How do you manage relationship lifecycle changes — onboarding new RPs, updating registration details (e.g., new intended uses), and de-registering terminated RPs? Is the de-registration automated when the contractual relationship ends?"
         dimension: lifecycle
+      - id: Q6
+        text: "Can you onboard an intermediated RP across multiple Registrars (e.g., if the RP operates in multiple Member States)? How do you manage registration consistency across Registrars?"
+        dimension: architecture
+      - id: Q7
+        text: "How do you handle the scenario where a Registrar rejects the registration (e.g., insufficient evidence)? Is there an appeal mechanism or alternative evidence submission process?"
+        dimension: incident_response
+      - id: Q8
+        text: "If an RP's registration is suspended or revoked by the Registrar (e.g., due to non-compliance), how quickly do you detect this and stop accepting intermediation requests for that RP?"
+        dimension: compliance_monitoring
+      - id: Q9
+        text: "Do you maintain an internal registry of all registered intermediary-RP relationships with their registration status? Is this synchronised with the Registrar in real time or on a polling basis?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-INT-034: Attestation Status List Verification
@@ -1061,17 +1112,29 @@ requirements:
   VEND-INT-034:
     questions:
       - id: Q1
-        text: "Do you support attestation status list verification as specified in ARF Topic 7?"
+        text: "Do you support attestation status list verification as specified in ARF Topic 7? Is this verification performed as part of the RPI_09 verification gate (step b: revocation status)?"
         dimension: capability
       - id: Q2
-        text: "What status list formats do you support (Attestation Status List, Token Status List)?"
+        text: "Do you support BOTH mechanisms specified per VCR_11 — Attestation Status Lists (compressed bitstring) AND Attestation Revocation Lists (identifier lists)? Or do you support only one?"
         dimension: technical_implementation
       - id: Q3
-        text: "How frequently do you refresh status lists from issuers?"
+        text: "How frequently do you refresh status lists from PID/EAA Providers? Is the refresh strategy time-based (e.g., every N minutes), event-based (on each request), or configurable per attestation type?"
         dimension: sla
       - id: Q4
-        text: "What is the fallback behavior when status lists are unavailable?"
+        text: "What is the fallback behaviour when status lists are unavailable (provider down, network error) — do you block the transaction, proceed with a warning, or use a cached (potentially stale) list?"
         dimension: operational
       - id: Q5
-        text: "Can the organization configure revocation checking behavior (mandatory vs. optional)?"
+        text: "Can the organisation configure revocation checking behaviour (mandatory vs. optional) per use case or per attestation type? Given VCR_13 is a SHOULD, is there an opt-out mechanism?"
         dimension: flexibility
+      - id: Q6
+        text: "How do you handle short-lived attestations (validity ≤24 hours per VCR_01) — do you skip revocation checking for these, or do you treat all attestations the same regardless of validity period?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "If revocation verification fails (attestation is found to be revoked), do you correctly block attribute forwarding to the RP per RPI_08? What error information is returned to the wallet?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "How do you handle the cache consistency problem — if a status list is cached and a revocation occurs between cache refreshes, do you have a mechanism to detect and handle the stale cache?"
+        dimension: security
+      - id: Q9
+        text: "What is the performance impact of revocation checking on transaction latency? Do you pre-fetch and cache status lists proactively, or is each check a synchronous remote call?"
+        dimension: performance
