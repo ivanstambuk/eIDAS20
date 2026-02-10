@@ -1522,13 +1522,50 @@ requirements:
     category: usage
     requirement: Use valid RP Access Certificate for Wallet Unit authentication
     explanation: |
-      When initiating a presentation request, the Relying Party must present 
-      a valid RP Access Certificate that allows the Wallet Unit to verify 
-      the RP's registration and intended use.
+      When initiating a presentation request, the Relying Party must present
+      a valid RP Access Certificate that allows the Wallet Unit to verify
+      the RP's registration and intended use. This is the mechanism that
+      gives the wallet user confidence that the RP is legitimate and has
+      only registered to request the specific data elements it is asking for.
+
+      **Access certificate inclusion (RPA_02a):**
+      The RP Instance SHALL include its access certificates in the
+      presentation request **by value, not by reference**. This design
+      decision ensures:
+      - No external requests are necessary to carry out RP authentication
+      - Transactions are atomic and self-contained
+      - Offline/proximity scenarios work without internet connectivity
+
+      **Wallet-side verification (RPA_06):**
+      If RP authentication succeeds, the Wallet Instance SHALL display to
+      the User:
+      - The name of the Relying Party as included in the access certificate
+      - The attributes requested by the Relying Party
+      - For intermediary RPs: the names of both the intermediary and the
+        intermediated RP (per RPI_07)
+
+      **Authentication failure handling (RPA_06a):**
+      If RP authentication fails for any reason, the Wallet Unit SHALL
+      notify the User and SHALL either:
+      - Not present any attributes to the RP, or
+      - Give the User the choice to present or not
+
+      **Certificate contents:**
+      The access certificate encodes the RP's identity, the intended use
+      (per VEND-CORE-031), and the signing chain to a notified ACA trust
+      anchor. The wallet validates the certificate chain, checks revocation
+      status, and verifies the intended use matches the actual request.
+
+      Art 5b(8) requires RPs to identify themselves to the user when
+      relying on EUDI Wallets — the access certificate is the technical
+      instrument that fulfils this obligation.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "8"
+    legalText: |
+      Where relying parties intend to rely upon European Digital Identity 
+      Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 6
       hlr:
@@ -1544,15 +1581,55 @@ requirements:
     category: usage
     requirement: Support and correctly handle pseudonym-based presentations
     explanation: |
-      Where Users choose to present pseudonymous attestations, the RP connector 
-      must correctly process pseudonym presentations. This includes validating that 
-      the pseudonym belongs to the presenting User, verifying registration/authentication 
-      with non-revoked Wallet Units, and preventing any attempt to derive the User's 
-      true identity or correlate pseudonyms across transactions.
+      Where Users choose to present pseudonymous attestations, the RP
+      connector must correctly process these presentations without
+      attempting to de-pseudonymise the user. Article 5a(16) requires the
+      EUDI Wallet technical framework to prevent tracking and correlation,
+      and Art 5b(9) explicitly prohibits RPs from refusing pseudonyms where
+      identification is not legally required.
+
+      **Pseudonym verification requirements (PA HLRs):**
+      - **PA_10**: the RP SHALL be able to verify that the User is
+        registering a Pseudonym using a **non-revoked** Wallet Unit
+      - **PA_11**: the RP SHALL be able to verify that the User is
+        authenticating with a Pseudonym using a **non-revoked** Wallet Unit
+      - **PA_13**: the RP SHALL be able to validate that the pseudonym
+        presented belongs to the User presenting it (binding verification)
+
+      **Privacy safeguards (critical):**
+      - **PA_15**: the RP SHALL NOT be able to derive the User's true
+        identity, or any data identifying the User, from the Pseudonym
+        value received
+      - **PA_17**: it SHALL NOT be possible to correlate Pseudonyms based
+        on their values or other metadata sent by the Wallet Unit during
+        registration and authentication — colluding RPs SHALL NOT be able
+        to conclude that different Pseudonyms belong to the same User
+
+      **Implementation obligations for RP connector:**
+      - Accept pseudonym attestations in the same flow as identified
+        attestations (no separate code path that could leak identity)
+      - Strip or avoid logging any metadata that could enable correlation
+        (IP addresses, session IDs, timing patterns)
+      - Do not transmit pseudonym values to backend systems that also
+        process identified presentations for the same service
+      - Where the RP legitimately needs re-identification (Art 5b(9)
+        exception), use a legally grounded procedure with independent
+        oversight
+
+      This requirement complements VEND-CORE-027 (TS9 pseudonym support)
+      by focusing on the RP-side processing obligations rather than the
+      issuance/wallet-side mechanisms.
     legalBasis:
       regulation: 2014/910
       article: Article 5a
       paragraph: "16"
+    legalText: |
+      The technical framework of the European Digital Identity Wallet shall 
+      not allow providers of electronic attestations of attributes or any 
+      other party, after the issuance of the attestation of attributes, to 
+      obtain data that allows transactions or user behaviour to be tracked, 
+      linked or correlated, or knowledge of transactions or user behaviour 
+      to be otherwise obtained, unless explicitly authorised by the user.
     arfReference:
       topic: Topic 11
       hlr:
@@ -1571,13 +1648,50 @@ requirements:
     category: registration
     requirement: Publish RP trust anchor information for Wallet verification
     explanation: |
-      Relying Parties accessing EUDI Wallets must publish trust anchor 
-      information through the Access Certificate Authority notification 
-      process, enabling Wallet Units to verify RP legitimacy.
+      Relying Parties accessing EUDI Wallets must ensure their access
+      certificates and registration certificates can be authenticated
+      using the trust anchors of a notified Access Certificate Authority
+      (ACA) or Provider of registration certificates. This is the RP-side
+      obligation that complements the wallet's verification chain.
+
+      **ACA notification requirements (RPACANot HLRs):**
+      - **RPACANot_03**: RPs, PID Providers, QEAA Providers, Pub-EAA
+        Providers, and non-qualified EAA Providers SHALL ensure that their
+        **access certificates** can be authenticated using the trust
+        anchors of an ACA **notified to the Commission**
+      - **RPACANot_03a**: the same parties SHALL ensure that their
+        **registration certificates**, if issued to them, can be
+        authenticated using the trust anchors of a **Provider of
+        registration certificates notified to the Commission**
+
+      **Publication and discoverability:**
+      Art 5b(5) requires Member States to make RP registration information
+      publicly available online in electronically signed or sealed form
+      suitable for automated processing. This means:
+      - RP trust anchor information must be discoverable by wallets and
+        other ecosystem participants
+      - The publication format must support automated machine processing
+      - Electronic signatures/seals on the published information must be
+        verifiable
+
+      **Operational implications:**
+      - The RP must select and onboard with a notified ACA before operating
+      - If the chosen ACA loses its notification status, the RP must
+        migrate to another notified ACA
+      - Trust anchor updates (key rotations) must be coordinated with the
+        ACA to avoid disruption
+
+      This requirement is foundational for the EUDI Wallet trust model:
+      if wallet units cannot verify RP access certificates, they cannot
+      authenticate RPs, and the entire presentation flow breaks down.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "5"
+    legalText: |
+      Member States shall make the information referred to in paragraph 2 
+      publicly available online in electronically signed or sealed form 
+      suitable for automated processing.
     arfReference:
       topic: Topic 31
       hlr:
@@ -1593,14 +1707,54 @@ requirements:
     category: usage
     requirement: Process data deletion requests from Users within required timeframes
     explanation: |
-      When Users exercise their right to data deletion under GDPR Article 17, RPs 
-      must process these requests according to GDPR requirements and ARF specifications. 
-      This includes responding within mandated timeframes and providing confirmation 
-      of deletion or valid grounds for refusal.
+      When Users exercise their right to data deletion (erasure) under GDPR
+      Article 17, RPs must process these requests according to both GDPR
+      requirements and the EUDI Wallet-specific data deletion blueprint
+      (ARF Topic 48). The TS7 common interface provides a standardised
+      mechanism for wallet-mediated deletion requests.
+
+      **Pre-deletion authentication (DATA_DLT_07):**
+      Before executing a data deletion request, the RP SHALL authenticate
+      the requesting User (or the request itself) using appropriate
+      authentication mechanisms of its own choosing. The RP SHOULD use
+      the authentication or signature facilities offered by the User's
+      Wallet Unit for this purpose. This ensures that only the actual data
+      subject can trigger deletion of their data.
+
+      **TS7 compliance (DATA_DLT_08):**
+      Wallet Units, Relying Parties, and Registrars SHALL comply with the
+      relevant requirements in Technical Specification 7. The common
+      interface provides standardised endpoints, request formats, and
+      response codes to ensure interoperability across the ecosystem.
+
+      **GDPR Art 17 requirements:**
+      - Deletion must be performed "without undue delay" and in any event
+        within one month (Art 12(3))
+      - The RP must inform the user of any valid grounds for refusal
+        (Art 17(3) exceptions: freedom of expression, legal obligation,
+        public interest, health, archiving/research, legal claims)
+      - If the data has been made public, the RP must take reasonable
+        steps to inform other controllers processing the data
+      - All copies including backups must be addressed (though backup
+        deletion may follow a deferred schedule)
+
+      **Response obligations:**
+      The RP must provide confirmation of deletion or a reasoned refusal.
+      For wallet-mediated requests via TS7, responses must follow the
+      standardised response format.
+
+      This requirement connects to VEND-CORE-021 (data deletion chain)
+      and VEND-CORE-029 (RPRC_11 deletion contact information in
+      registration certificates).
     legalBasis:
       regulation: 2016/679
       article: Article 17
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      The data subject shall have the right to obtain from the controller 
+      the erasure of personal data concerning him or her without undue 
+      delay and the controller shall have the obligation to erase personal 
+      data without undue delay.
     arfReference:
       topic: Topic 48
       hlr:
@@ -1616,13 +1770,50 @@ requirements:
     category: usage
     requirement: Support W3C Digital Credentials API for presentation requests
     explanation: |
-      If the Relying Party supports the W3C Digital Credentials API, presentation 
-      requests must conform to the API specification and properly handle the 
-      browser-mediated credential exchange flow.
+      If the Relying Party supports browser-based wallet interactions, it
+      must conform to the W3C Digital Credentials API specification. This
+      API provides the standardised browser-mediated credential exchange
+      flow that enables wallet attestations to be presented through web
+      browsers.
+
+      **API processing constraints (OIA_08c — strict privacy rule):**
+      If a Relying Party supports the W3C Digital Credentials API, the
+      presentation request:
+      - **MAY** be processed by the browser/OS for: searching available
+        attestations, preventing fraud targeting the User, or
+        troubleshooting purposes
+      - **SHOULD** be processed by the browser/OS for: User security
+        purposes
+      - **SHALL NOT** be processed by the browser/OS for: market analysis
+        purposes (including as a secondary purpose) or for the browser's/
+        OS's own purposes
+
+      This "SHALL NOT for market analysis" constraint is critical — it
+      prevents browser vendors from using attestation request data to
+      build user profiles or sell advertising insights.
+
+      **Implementation considerations:**
+      - The API flow differs from the OpenID4VP same-device flow and
+        requires specific browser integration
+      - Browser support is evolving; the RP must handle fallback for
+        browsers that do not yet support the API
+      - The W3C Digital Credentials API provides a more user-friendly
+        experience than deep-link or QR-code based flows for desktop
+        browsers
+      - Cross-origin security protections apply — the RP must properly
+        configure CORS and Content-Security-Policy headers
+
+      **Relationship to OpenID4VP:**
+      The W3C Digital Credentials API can serve as the transport layer
+      for OpenID4VP requests in same-device web browser scenarios,
+      while OpenID4VP handles cross-device flows via QR codes.
     legalBasis:
-      regulation: 2024/2979
-      article: Article 2
-      paragraph: ""
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "8"
+    legalText: |
+      Where relying parties intend to rely upon European Digital Identity 
+      Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 1
       hlr:
@@ -1637,13 +1828,54 @@ requirements:
     category: usage
     requirement: Handle revocation status unavailability gracefully
     explanation: |
-      When revocation status information is unavailable, the Relying Party 
-      Instance should not repeatedly request status lists and must implement 
-      appropriate fallback behavior as specified.
+      When revocation status information is temporarily unavailable, the
+      Relying Party Instance must implement intelligent fallback behaviour
+      rather than repeatedly hammering the status endpoint. VCR_15
+      specifies a privacy-preserving approach to revocation checking that
+      prevents correlation.
+
+      **Privacy-preserving revocation checking (VCR_15):**
+      - The RP Instance SHOULD NOT request the relevant Attestation Status
+        List or Attestation Revocation List each time an attestation is
+        presented by a Wallet Unit
+      - Instead, the Relying Party operating the RP Instance SHOULD
+        download each new version of the list **once**, at a time and from
+        a location **unrelated to the presentation** of a PID or
+        attestation by a User
+      - The RP SHOULD then distribute the list to all of its RP Instances
+        using an RP-internal distribution mechanism
+
+      **Rationale (privacy-critical):**
+      If the RP fetches revocation status at the time of presentation,
+      the status provider (typically the issuer) can correlate:
+      - Which RP is checking which attestation
+      - When the attestation was presented
+      - Potentially, which user presented it
+
+      By pre-fetching and internally distributing status lists, this
+      correlation vector is eliminated.
+
+      **Unavailability handling:**
+      When the status list endpoint is unreachable:
+      1. Use the most recent cached version of the status list
+      2. Implement exponential backoff for retry attempts
+      3. Alert operations teams if unavailability exceeds a threshold
+      4. Decide on a fail-open vs fail-closed policy based on the
+         risk profile of the service (high-assurance services should
+         fail closed; low-risk services may accept cached status)
+
+      For intermediary deployments, the intermediary should maintain
+      its own status list cache and not rely on per-presentation
+      fetches, aligning with the same privacy rationale.
     legalBasis:
-      regulation: 2024/2979
-      article: Article 4
-      paragraph: ""
+      regulation: 2014/910
+      article: Article 5b
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure 
+      for authenticating and validating person identification data and 
+      electronic attestation of attributes requested from European Digital 
+      Identity Wallets.
     arfReference:
       topic: Topic 7
       hlr:

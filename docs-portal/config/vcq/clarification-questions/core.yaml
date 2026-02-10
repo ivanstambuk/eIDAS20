@@ -1019,20 +1019,32 @@ requirements:
   VEND-CORE-032:
     questions:
       - id: Q1
-        text: "How do you present the organization's RP Access Certificate to Wallet Units during presentation requests?"
+        text: "How do you present the organisation's RP Access Certificate to Wallet Units during presentation requests? Per RPA_02a, access certificates must be included **by value, not by reference** — confirm your implementation conforms to this requirement and explain the rationale (atomicity, offline support)."
         dimension: technical_implementation
       - id: Q2
-        text: "How do you ensure the presented certificate is current and not expired or revoked?"
+        text: "How do you ensure the presented certificate is current and not expired or revoked? What pre-flight checks are performed before including the certificate in a presentation request? Do you monitor certificate expiry proactively?"
         dimension: lifecycle
       - id: Q3
-        text: "What information from the certificate is displayed to wallet users?"
+        text: "What information from the access certificate is displayed to wallet users (per RPA_06)? Confirm that the RP name and requested attributes are shown. For intermediary deployments, are both the intermediary and intermediated RP names displayed (per RPI_07)?"
         dimension: user_experience
       - id: Q4
-        text: "How do you handle certificate rotation or renewal without service interruption?"
+        text: "How do you handle certificate rotation or renewal without service interruption? Is there a overlap window where both old and new certificates are accepted? What is the maximum downtime during rotation?"
         dimension: operational
       - id: Q5
-        text: "Do you support different certificates for different intended uses?"
+        text: "Do you support different access certificates for different intended uses, or does a single certificate cover all your data requests? If multiple certificates, how do you select the appropriate one for each presentation request?"
         dimension: flexibility
+      - id: Q6
+        text: "Per RPA_06a, if RP authentication fails, the wallet must notify the user and either block or give the user a choice. How do you minimise authentication failures on your side (certificate chain validation, correct trust anchor configuration)?"
+        dimension: security
+      - id: Q7
+        text: "For intermediary deployments: does the intermediary present its own access certificate, the intermediated RP's certificate, or both? How does the wallet distinguish between the intermediary and the intermediated RP?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle scenarios where the access certificate's intended use does not match the actual data request? Is there a validation step in the connector that prevents sending mismatched requests?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "What certificate transparency requirements apply to your access certificates (per CT_06)? Do your certificates include valid Signed Certificate Timestamps (SCTs)? What happens if they don't?"
+        dimension: security
 
   # ============================================================================
   # VEND-CORE-033: Pseudonym Presentation Handling
@@ -1041,23 +1053,32 @@ requirements:
   VEND-CORE-033:
     questions:
       - id: Q1
-        text: "Do you correctly process pseudonym-based presentations when users choose to present them?"
+        text: "Do you correctly process pseudonym-based presentations when users choose to present them? Confirm that pseudonymous presentations follow the same processing flow as identified presentations (no separate code path that could leak identity information)."
         dimension: capability
       - id: Q2
-        text: "How do you validate that the pseudonym belongs to the presenting user?"
+        text: "How do you validate that the pseudonym belongs to the presenting user (PA_13)? Describe the binding verification mechanism — do you verify the wallet unit's proof-of-possession for the pseudonym key?"
         dimension: security
       - id: Q3
-        text: "What controls prevent your system from attempting to derive the user's true identity from a pseudonym?"
+        text: "Per PA_15, the RP SHALL NOT be able to derive the User's true identity from the Pseudonym value. What technical controls prevent your system or personnel from attempting to derive real identity? Is there a code-level restriction, or is it policy-based?"
         dimension: privacy
       - id: Q4
-        text: "How do you prevent correlation of pseudonyms across different transactions or sessions?"
+        text: "Per PA_17, it SHALL NOT be possible to correlate Pseudonyms based on their values or metadata — colluding RPs SHALL NOT be able to conclude that different Pseudonyms belong to the same User. How do you prevent correlation through side channels (IP address, User-Agent, timing, session metadata)?"
         dimension: privacy
       - id: Q5
-        text: "How do you verify registration/authentication with non-revoked Wallet Units for pseudonym presentations?"
+        text: "How do you verify that the user is registering or authenticating a Pseudonym using a non-revoked Wallet Unit (PA_10, PA_11)? Is the wallet revocation check part of the pseudonym verification flow, or is it a separate step?"
         dimension: security
       - id: Q6
-        text: "Do you maintain logs of pseudonym presentations? If so, how is this data protected?"
+        text: "Do you maintain logs of pseudonym presentations? If so, how do you ensure that logging does not create a correlation vector? Are pseudonym values hashed or excluded from logs entirely?"
         dimension: auditability
+      - id: Q7
+        text: "How does your system handle the refusal prohibition under Art 5b(9)? If the RP's service does not legally require user identification, can the RP technically be prevented from rejecting a pseudonym presentation and demanding real identity?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "For intermediary deployments: when forwarding pseudonymous presentations to the intermediated RP, does the intermediary strip or preserve the pseudonym? How do you prevent the intermediary from injecting correlatable metadata into the forwarded request?"
+        dimension: architecture
+      - id: Q9
+        text: "How do you handle the edge case where a user has previously identified themselves to the RP and now wants to interact pseudonymously? Can the RP be forced to 'forget' the association between the real identity and the pseudonym?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-CORE-034: RP Trust Anchor Publication
@@ -1066,20 +1087,32 @@ requirements:
   VEND-CORE-034:
     questions:
       - id: Q1
-        text: "Do you publish trust anchor information through the Access Certificate Authority notification process on behalf of the organization?"
+        text: "Do you ensure that your access certificates can be authenticated using the trust anchors of an Access Certificate Authority (ACA) notified to the Commission (per RPACANot_03)? Identify the ACA(s) you use and confirm their notification status."
         dimension: capability
       - id: Q2
-        text: "What information is included in the published trust anchor?"
-        dimension: technical_implementation
+        text: "If registration certificates have been issued to you, do you ensure they can be authenticated using the trust anchors of a notified Provider of registration certificates (per RPACANot_03a)? Identify the Provider(s) and their notification status."
+        dimension: capability
       - id: Q3
-        text: "How do you handle updates to trust anchor information when organizational details change?"
+        text: "How are trust anchor updates (e.g., ACA key rotations) coordinated? What is the process when your ACA updates its trust anchors, and how do you ensure wallet units can still verify your certificates during the transition?"
         dimension: lifecycle
       - id: Q4
-        text: "How quickly are trust anchor updates propagated to Wallet Units?"
+        text: "How quickly are trust anchor updates propagated to Wallet Units? What is the maximum window during which a wallet might reject your certificate due to a stale trust anchor?"
         dimension: sla
       - id: Q5
-        text: "How do you handle trust anchor revocation if required?"
+        text: "How do you handle trust anchor revocation if your ACA loses its notification status or is de-certified? What is your contingency plan, and how quickly can you migrate to another notified ACA?"
         dimension: incident_response
+      - id: Q6
+        text: "Per Art 5b(5), your registration information must be publicly available in electronically signed or sealed form suitable for automated processing. Confirm that your published trust anchor information meets this requirement and describe the format used."
+        dimension: compliance_completeness
+      - id: Q7
+        text: "For multi-Member-State deployments: do you use the same ACA across all Member States, or different ACAs per jurisdiction? How do you manage the operational complexity of multiple ACA relationships?"
+        dimension: geographic_scope
+      - id: Q8
+        text: "How do you monitor the validity and accessibility of your published trust anchor information? Is there automated checking to verify that wallet units can successfully authenticate your certificates at any time?"
+        dimension: operational
+      - id: Q9
+        text: "For intermediary deployments: does the intermediary's trust anchor information cover the intermediated RP, or must the intermediated RP maintain its own ACA relationship independently?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-035: Data Deletion Request Processing
@@ -1088,23 +1121,32 @@ requirements:
   VEND-CORE-035:
     questions:
       - id: Q1
-        text: "What is your standard response time for processing GDPR Article 17 deletion requests?"
+        text: "What is your standard response time for processing GDPR Article 17 deletion requests? Do you meet the Art 12(3) one-month deadline? For wallet-mediated deletion requests via TS7, is the response time faster than for manual requests?"
         dimension: sla
       - id: Q2
-        text: "How do you verify the identity of users submitting deletion requests?"
+        text: "How do you verify the identity of users submitting deletion requests (per DATA_DLT_07)? Do you support wallet-based authentication for deletion requests, and if so, does the user present their PID or a pseudonymous attestation to authenticate?"
         dimension: security
       - id: Q3
-        text: "How do you provide confirmation of deletion to the requesting user?"
+        text: "How do you provide confirmation of deletion to the requesting user? For TS7 wallet-mediated requests, does the confirmation follow the standardised response format? Is the confirmation digitally signed?"
         dimension: user_experience
       - id: Q4
-        text: "What valid grounds for refusal do you recognize, and how are these communicated?"
+        text: "What valid grounds for refusal do you recognise under Art 17(3) (freedom of expression, legal obligation, public interest, health, archiving/research, legal claims)? How are refusals communicated to the user, and can they be challenged?"
         dimension: legal_requirements
       - id: Q5
-        text: "How do you ensure all copies of the data, including backups, are deleted?"
+        text: "How do you ensure all copies of the data, including backups and replicated data, are deleted? What is the timeline for backup deletion? Do you support 'crypto-shredding' (deleting encryption keys rather than data) for backup systems?"
         dimension: data_handling
       - id: Q6
-        text: "What audit trail is maintained for deletion request processing and completion?"
+        text: "What audit trail is maintained for deletion request processing and completion? Does the audit trail itself contain personal data (creating a retention paradox), and if so, how do you handle the eventual deletion of the audit trail?"
         dimension: auditability
+      - id: Q7
+        text: "Is the TS7 common interface fully implemented for wallet-mediated deletion requests? Can the user initiate deletion directly from the wallet, and if so, does the flow include the wallet's authentication/signature facilities per DATA_DLT_07?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "For intermediary deployments: when a deletion request is received, does the intermediary forward it to the intermediated RP? How do you coordinate deletion across both the intermediary and the RP to ensure complete data removal?"
+        dimension: architecture
+      - id: Q9
+        text: "How do you handle deletion requests for data that has already been shared with third parties (Art 17(2))? Do you notify downstream processors, and if so, what mechanism do you use?"
+        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-CORE-038: W3C Digital Credentials API Support
@@ -1114,20 +1156,32 @@ requirements:
   VEND-CORE-038:
     questions:
       - id: Q1
-        text: "Do you support the W3C Digital Credentials API for browser-mediated presentation requests?"
+        text: "Do you support the W3C Digital Credentials API for browser-mediated presentation requests? If so, is this the primary browser flow, or is it offered alongside deep-link / QR-code based flows? Which version of the API specification do you implement?"
         dimension: capability
       - id: Q2
-        text: "Which browsers are supported for the Digital Credentials API flow?"
+        text: "Which browsers are supported for the Digital Credentials API flow? Provide a compatibility matrix (Chrome, Firefox, Safari, Edge) with version numbers. How do you handle updates when browser vendors release new API versions?"
         dimension: interoperability
       - id: Q3
-        text: "How do you handle fallback for browsers that do not support the Digital Credentials API?"
+        text: "How do you handle fallback for browsers that do not support the Digital Credentials API? Is the fallback automatic (detect and redirect to alternative flow), or does the user need to manually switch? What is the alternative flow (deep-link, QR code)?"
         dimension: operational
       - id: Q4
-        text: "How is the credential exchange flow secured against man-in-the-middle attacks?"
-        dimension: security
+        text: "Per OIA_08c, the presentation request SHALL NOT be processed by the browser/OS for market analysis purposes. How do you verify that the browser is not using the request data for prohibited purposes? Do you have any contractual or technical controls with browser vendors?"
+        dimension: privacy
       - id: Q5
-        text: "What user experience considerations have you implemented for the browser-mediated flow?"
+        text: "How is the credential exchange flow secured against man-in-the-middle attacks? What cross-origin protections are in place (CORS, Content-Security-Policy, origin binding)? How is the session between the RP and the wallet authenticated through the browser?"
+        dimension: security
+      - id: Q6
+        text: "What user experience considerations have you implemented for the browser-mediated flow? Is the flow seamless (no page redirects), and how do you handle scenarios where the wallet app is not installed or not responsive?"
         dimension: user_experience
+      - id: Q7
+        text: "How does the W3C Digital Credentials API interact with your OpenID4VP implementation? Can the same presentation request be served through both the Digital Credentials API (same-device browser) and OpenID4VP (cross-device QR)? Is the request format shared?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle mobile browser scenarios where the wallet is on the same device? Does the Digital Credentials API correctly invoke the wallet app, and how do you handle the return flow after the user approves the presentation?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "For intermediary deployments: when the intermediary serves the presentation request via the Digital Credentials API, who is shown as the requesting party in the browser UI — the intermediary, the intermediated RP, or both?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-039: Revocation Status Unavailability Handling
@@ -1136,20 +1190,32 @@ requirements:
   VEND-CORE-039:
     questions:
       - id: Q1
-        text: "How does your system behave when revocation status information is temporarily unavailable?"
+        text: "How does your system behave when revocation status information is temporarily unavailable? Do you fail open (accept the attestation anyway), fail closed (reject it), or use a cached version of the status list? How is this decision configured?"
         dimension: operational
       - id: Q2
-        text: "Do you implement rate limiting to avoid repeatedly requesting unavailable status lists?"
+        text: "Do you implement rate limiting to avoid repeatedly requesting unavailable status lists? Describe your backoff strategy (fixed, exponential, jitter-based) and the maximum number of retries before giving up."
         dimension: technical_implementation
       - id: Q3
-        text: "What fallback behavior is implemented when revocation checks cannot be completed?"
-        dimension: operational
+        text: "Per VCR_15, the RP SHOULD NOT request the status list each time an attestation is presented. Instead, the RP SHOULD download each new version once, at a time and location unrelated to the presentation. Confirm your implementation follows this privacy-preserving pattern and describe how you decouple status list fetching from presentation events."
+        dimension: privacy
       - id: Q4
-        text: "How is the organization notified of revocation status unavailability events?"
-        dimension: alerting
+        text: "Per VCR_15, the RP SHOULD distribute downloaded status lists to all its RP Instances using an internal distribution mechanism. How do you distribute status lists across your RP Instances? What is the synchronisation latency, and how do you handle instances that miss an update?"
+        dimension: architecture
       - id: Q5
-        text: "How long do you cache revocation status information, and what is your refresh strategy?"
+        text: "How long do you cache revocation status information, and what is your refresh strategy? Do you respect HTTP cache headers from the status list endpoint, or do you use a custom refresh interval?"
         dimension: technical_implementation
+      - id: Q6
+        text: "How is the organisation notified of revocation status unavailability events? What alerting thresholds are configured, and what is the escalation path when unavailability exceeds the threshold?"
+        dimension: alerting
+      - id: Q7
+        text: "What is your fail-open vs fail-closed policy for different service risk levels? Can this policy be configured per attestation type (e.g., strict for PID verification, lenient for loyalty card attestations)?"
+        dimension: security
+      - id: Q8
+        text: "How do you handle the scenario where a status list was recently updated to revoke an attestation, but your cached copy is stale? What is the maximum window during which a revoked attestation could be accepted?"
+        dimension: sla
+      - id: Q9
+        text: "For intermediary deployments: does the intermediary maintain its own status list cache independently from the intermediated RP, or do they share a cache? How is cache consistency ensured across the intermediary and RP?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-040: Proximity Identification Flows (Optional)
