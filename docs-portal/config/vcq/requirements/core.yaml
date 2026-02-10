@@ -335,8 +335,32 @@ requirements:
     category: security
     requirement: Ensure personnel authorized to process data are bound by confidentiality
     explanation: |
-      All staff with access to wallet transaction data must be contractually 
-      or legally bound to maintain confidentiality.
+      Article 28(3)(b) GDPR requires the processor to ensure that all persons
+      authorised to process personal data have committed themselves to
+      confidentiality or are under an appropriate statutory obligation of
+      confidentiality. This is a prerequisite obligation — it must be in place
+      *before* personnel are granted access to personal data.
+
+      **Scope of the obligation:**
+      - All employees with access to wallet transaction data, system logs,
+        configuration data, or cryptographic material
+      - Contractors, temporary staff, and consultants
+      - Sub-processor personnel (flow-down via Art 28(4))
+      - On-call and support staff who may access production systems
+
+      In the EUDI Wallet intermediary context, confidentiality is particularly
+      critical because personnel may have transient access to:
+      - PID attributes (name, date of birth, nationality) during forwarding
+      - Attestation content during verification operations
+      - Access certificate private keys and signing material
+      - Transaction metadata that could reveal user behaviour patterns
+
+      The product vendor should demonstrate:
+      - Contractual confidentiality clauses in all employment/service agreements
+      - Background checks and security vetting proportionate to access level
+      - Role-based access control (RBAC) enforcing least-privilege
+      - Regular security awareness training including wallet-specific scenarios
+      - Immediate access revocation upon role change or contract termination
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -353,9 +377,32 @@ requirements:
     category: contracts
     requirement: Process personal data only on documented instructions from the RP
     explanation: |
-      The vendor must not process wallet data for their own purposes. 
-      All processing must be based on the RP's documented instructions, 
-      including with regard to transfers of data to third countries.
+      Article 28(3)(a) GDPR imposes a fundamental limitation on the processor:
+      personal data may only be processed on documented instructions from the
+      controller (RP). This is the cornerstone of the controller-processor
+      relationship — the processor has no autonomous decision-making authority
+      over the purposes or means of processing.
+
+      **The instruction-only principle has two important qualifications:**
+      1. International transfers: the instruction scope explicitly includes
+         rules on transfers to third countries or international organisations.
+         The processor must not transfer data outside the EEA unless the
+         controller's documented instructions permit it and appropriate
+         safeguards (Art 46) or derogations (Art 49) are in place.
+      2. Legal override: if Union or Member State law requires the processor
+         to process data beyond the controller's instructions, the processor
+         must inform the controller of that legal requirement *before*
+         processing, unless the law prohibits such disclosure on important
+         grounds of public interest (see VEND-CORE-012).
+
+      In the EUDI Wallet intermediary context, this principle is reinforced
+      by the eIDAS Article 5b(10) no-storage mandate (VEND-CORE-001) and the
+      ARF forward-only architecture (RPI_08). The intermediary must:
+      - Process wallet data exclusively for the purpose of forwarding to
+        the intermediated RP — no analytics, profiling, or product improvement
+      - Not repurpose transaction metadata for any secondary use
+      - Maintain a documented record of the RP's processing instructions
+      - Implement technical controls that prevent processing outside scope
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -363,7 +410,11 @@ requirements:
     legalText: |
       The processor shall process the personal data only on documented 
       instructions from the controller, including with regard to transfers 
-      of personal data to a third country or an international organisation.
+      of personal data to a third country or an international organisation,
+      unless required to do so by Union or Member State law to which the
+      processor is subject; in such a case, the processor shall inform the
+      controller of that legal requirement before processing, unless that
+      law prohibits such information on important grounds of public interest.
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -372,18 +423,45 @@ requirements:
     category: contracts
     requirement: Support data subject rights requests
     explanation: |
-      The vendor must assist the RP in responding to data subject requests 
-      (access, rectification, erasure, restriction, portability, objection) 
-      to the extent the vendor has relevant data.
+      Article 28(3)(e) GDPR requires the processor to assist the controller
+      by appropriate technical and organisational measures, insofar as
+      possible, for the fulfilment of the controller's obligation to respond
+      to data subject rights requests under GDPR Chapter III.
+
+      **Data subject rights that may be exercised (Chapter III):**
+      - Art 15: Right of access — confirmation of processing and copy of data
+      - Art 16: Right to rectification — correction of inaccurate data
+      - Art 17: Right to erasure ("right to be forgotten") — deletion
+      - Art 18: Right to restriction of processing
+      - Art 20: Right to data portability — structured, machine-readable format
+      - Art 21: Right to object to processing
+      - Art 22: Rights related to automated decision-making and profiling
+
+      In the EUDI Wallet intermediary context, the no-storage mandate
+      (Art 5b(10) eIDAS, VEND-CORE-001) fundamentally limits the scope of
+      data subject requests since the intermediary should not hold any
+      transaction content data. However, the intermediary may still process:
+      - Configuration and registration data (RP identifiers, intended uses)
+      - Audit logs and transaction metadata (timestamps, success/failure)
+      - Certificate-related data (access certificate details)
+
+      The vendor must provide:
+      - Technical capability to search and identify all data relating to a
+        specific data subject across all systems (including backups and logs)
+      - Documented procedures for handling each type of DSAR
+      - Committed response timeframes to assist the controller in meeting
+        the one-month response deadline (Art 12(3))
+      - Audit trail of DSAR handling for compliance verification
     legalBasis:
       regulation: 2016/679
       article: Article 28
       paragraph: 3(e)
     legalText: |
-      The processor shall assist the controller by appropriate technical 
-      and organisational measures, insofar as this is possible, for the 
-      fulfilment of the controller's obligation to respond to requests for 
-      exercising the data subject's rights.
+      The processor shall, taking into account the nature of the processing,
+      assist the controller by appropriate technical and organisational 
+      measures, insofar as this is possible, for the fulfilment of the 
+      controller's obligation to respond to requests for exercising the 
+      data subject's rights laid down in Chapter III.
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -392,9 +470,36 @@ requirements:
     category: contracts
     requirement: Display both intermediary and RP identity to wallet users
     explanation: |
-      When requesting data from wallets, the intermediary must ensure that 
-      wallet users can see both their own identity and the identity of the 
-      RP on whose behalf they are acting. This enables informed consent.
+      Article 5b(8) eIDAS requires relying parties to identify themselves
+      to the user when relying on EUDI Wallets. For intermediaries, this
+      creates a dual-identity disclosure obligation: the wallet user must
+      see both the intermediary's identity and the identity of the
+      intermediated RP on whose behalf the request is made.
+
+      **The mechanism for dual-identity display (ARF Topic 52):**
+      - RPI_05: the intermediated RP specifies its identity data (name,
+        unique identifier, Registrar URL, intended use identifier and
+        description) when requesting a presentation through the intermediary
+      - RPI_06: the intermediary includes in each presentation request:
+        (a) its own access certificate (containing its name and identifier),
+        (b) the RP's registration certificate (if available, per RPI_03),
+        and (c) the RPRC_19a extension data for the intermediated RP
+      - RPI_07: the wallet unit displays the names and identifiers of both
+        the intermediary and the intermediated RP when asking for user
+        approval, as described in RPA_07
+
+      **RPRC_19a extension fields (included per-request):**
+      - (a) User-friendly name of the Relying Party
+      - (b) Unique identifier of the Relying Party
+      - (c) User-friendly description of the intended use
+      - (d) URL of the Registrar of the Relying Party
+      - (e) Identifier of the intended use
+
+      This dual-identity mechanism enables informed consent — the user can
+      see who is technically requesting their data (intermediary) and who
+      will ultimately receive and use it (intermediated RP). The wallet unit
+      can also optionally verify the registered information with the Registrar
+      (RPI_07a) to confirm that the intermediary-RP relationship is genuine.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -404,7 +509,10 @@ requirements:
       Wallets, they shall identify themselves to the user.
     arfReference:
       topic: Topic 52
-      hlr: RPI_06
+      hlr:
+        - RPI_05
+        - RPI_06
+        - RPI_07
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -413,13 +521,45 @@ requirements:
     category: contracts
     requirement: Inform the RP of any legal requirement to process data beyond instructions
     explanation: |
-      If the vendor is legally required (e.g., by law enforcement) to process 
-      data beyond the RP's instructions, they must inform the RP before doing 
-      so (unless prohibited by law from disclosing).
+      The second part of Article 28(3)(a) GDPR addresses the scenario where
+      the processor is required by Union or Member State law to process
+      personal data beyond the controller's documented instructions — for
+      example, in response to a court order, law enforcement data access
+      request, or regulatory investigation.
+
+      **The dual obligation:**
+      1. The processor must inform the controller of the legal requirement
+         *before* processing the data beyond instructions
+      2. Exception: the processor is not required to inform the controller
+         if the law prohibits such disclosure on important grounds of public
+         interest (e.g., secrecy orders accompanying criminal investigations)
+
+      In the EUDI Wallet intermediary context, this obligation intersects
+      with the no-storage mandate (Art 5b(10) eIDAS). Since the intermediary
+      should not hold transaction content data, the scope of data that could
+      be subject to legal demands is limited to:
+      - Transaction metadata and audit logs
+      - Registration and configuration data
+      - Cryptographic material (access certificate data)
+      - Server-side operational logs
+
+      The vendor should have:
+      - A documented process for evaluating and responding to government
+        access requests, including legal review procedures
+      - A commitment to challenge overbroad or unlawful requests
+      - A transparency report or willingness to disclose statistics on
+        government access requests received and complied with
+      - Clear documentation of all jurisdictions where it is subject to
+        data access laws (including foreign surveillance laws)
     legalBasis:
       regulation: 2016/679
       article: Article 28
       paragraph: 3(a)
+    legalText: |
+      Unless required to do so by Union or Member State law to which the
+      processor is subject; in such a case, the processor shall inform the
+      controller of that legal requirement before processing, unless that
+      law prohibits such information on important grounds of public interest.
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -428,9 +568,37 @@ requirements:
     category: contracts
     requirement: Obtain RP authorization before engaging sub-processors
     explanation: |
-      The vendor must not engage another processor (sub-processor) without 
-      prior written authorization from the RP. This can be specific or general 
-      authorization with notification of changes.
+      Article 28(2) GDPR prohibits the processor from engaging another
+      processor (sub-processor) without the prior written authorisation of
+      the controller. This is a fundamental control that ensures the RP
+      retains oversight of the entire processing chain.
+
+      **Two authorisation models are available:**
+      1. **Specific authorisation**: the RP approves each sub-processor
+         individually before engagement. This gives maximum control.
+      2. **General authorisation**: the RP grants blanket permission, but
+         the processor must inform the RP of any intended changes
+         (additions or replacements of sub-processors), thereby giving
+         the RP the opportunity to object to such changes.
+
+      **Flow-down obligations (Article 28(4)):**
+      When engaging a sub-processor, the same data protection obligations
+      from the controller-processor contract must be imposed on the
+      sub-processor via a binding contract. Critically:
+      - The initial processor remains **fully liable** for the sub-processor's
+        performance — this cannot be contracted away
+      - The sub-processor must be bound by equivalent security measures,
+        confidentiality, no-storage mandate compliance, and audit rights
+
+      In the EUDI Wallet intermediary context, sub-processors may include:
+      - Cloud infrastructure providers (IaaS/PaaS)
+      - HSM-as-a-Service providers for key management
+      - Certificate management service providers
+      - Monitoring and logging service providers
+      - CDN or DDoS mitigation providers handling encrypted traffic
+
+      The DPA (VEND-CORE-002) must specify whether the authorisation model
+      is specific or general, and the advance notice period for changes.
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -440,7 +608,8 @@ requirements:
       or general written authorisation of the controller. In the case of 
       general written authorisation, the processor shall inform the controller 
       of any intended changes concerning the addition or replacement of other 
-      processors.
+      processors, thereby giving the controller the opportunity to object to
+      such changes.
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -449,9 +618,37 @@ requirements:
     category: contracts
     requirement: Delete or return personal data at end of contract
     explanation: |
-      Upon termination of the service contract, the vendor must delete or 
-      return all personal data to the RP and certify deletion, unless EU or 
-      Member State law requires storage.
+      Article 28(3)(g) GDPR gives the controller (RP) the choice: at the
+      end of the service contract, the processor must either delete or
+      return all personal data, and must also delete existing copies —
+      unless Union or Member State law requires continued storage.
+
+      **Key aspects of the obligation:**
+      - The choice (delete vs return) belongs to the controller, not the
+        processor — the DPA should clearly specify which option applies
+      - "All personal data" includes data in primary systems, backups,
+        disaster recovery sites, logs, and any derived data
+      - The processor must certify completion of deletion
+      - The retention exception for legal requirements must be documented
+        and the specific legal basis identified
+
+      **Intersection with the eIDAS no-storage mandate:**
+      In the EUDI Wallet intermediary context, the no-storage mandate
+      (Art 5b(10), VEND-CORE-001) means the intermediary should already
+      hold minimal personal data at any point. At contract termination,
+      the data that may need deletion or return includes:
+      - Registration and configuration data (RP identifiers, intended uses)
+      - Audit logs containing transaction metadata
+      - Certificate and key management records
+      - Any DPA-related documentation containing personal data references
+      - Data in backups that may contain historical transaction metadata
+
+      The vendor should provide:
+      - A documented data return/deletion procedure with defined timelines
+      - A deletion certificate or formal attestation upon completion
+      - A commitment to delete data from all backup media within a
+        specified timeframe (which may be longer than primary deletion)
+      - Identification of any data subject to legal retention requirements
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -459,7 +656,8 @@ requirements:
     legalText: |
       At the choice of the controller, the processor shall delete or return 
       all the personal data to the controller after the end of the provision 
-      of services relating to processing.
+      of services relating to processing, and delete existing copies unless
+      Union or Member State law requires storage of the personal data.
     roles: []
     productCategories: []
     deadline: "2027-11-21"

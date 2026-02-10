@@ -242,23 +242,32 @@ requirements:
   VEND-CORE-008:
     questions:
       - id: Q1
-        text: "Are all personnel with access to wallet transaction data or systems contractually bound by confidentiality obligations?"
-        dimension: capability
+        text: "Are all personnel with access to wallet transaction data, system logs, cryptographic material, or production systems contractually bound by confidentiality obligations? Does this include employment contracts, NDAs, or statutory obligations?"
+        dimension: compliance_completeness
       - id: Q2
-        text: "What background checks or vetting procedures do you apply to personnel with data access?"
-        dimension: personnel_security
+        text: "What background checks and security vetting procedures do you apply to personnel with access to the wallet intermediation service, and how are vetting levels tiered based on access sensitivity?"
+        dimension: security
       - id: Q3
-        text: "How do you enforce the principle of least privilege for data access?"
-        dimension: access_control
+        text: "How do you enforce role-based access control (RBAC) and the principle of least privilege? What is the process for granting, reviewing, and revoking access permissions?"
+        dimension: architecture
       - id: Q4
-        text: "What security awareness training do personnel receive, and how frequently is it updated?"
-        dimension: training
+        text: "What security awareness training do personnel receive specifically on EUDI Wallet data sensitivity, the no-storage mandate, and handling of PID attributes and attestation content during forwarding operations?"
+        dimension: operational
       - id: Q5
-        text: "How are confidentiality obligations enforced for contractors, temporary staff, and sub-processor personnel?"
+        text: "How are confidentiality obligations extended to contractors, temporary staff, on-call engineers, and sub-processor personnel (per Art 28(4) flow-down)? Do sub-processor contracts mandate equivalent confidentiality provisions?"
         dimension: supply_chain
       - id: Q6
-        text: "What procedures are in place for revoking access when personnel leave or change roles?"
+        text: "What procedures ensure immediate access revocation when personnel leave, change roles, or are terminated? Is access revocation automated through identity management systems?"
         dimension: lifecycle
+      - id: Q7
+        text: "How do you monitor and audit personnel access to sensitive systems — do you maintain access logs, detect anomalous access patterns, and conduct periodic access reviews?"
+        dimension: auditability
+      - id: Q8
+        text: "In the EUDI Wallet intermediation context, can you confirm that no individual employee can access both PID attribute content in transit and access certificate private keys simultaneously (separation of duties)?"
+        dimension: architecture
+      - id: Q9
+        text: "What disciplinary or legal consequences are in place for confidentiality breaches by personnel, and have any such incidents occurred in the past 3 years?"
+        dimension: incident_response
 
   # ============================================================================
   # VEND-CORE-009: Processing Only on Documented Instructions
@@ -267,23 +276,29 @@ requirements:
   VEND-CORE-009:
     questions:
       - id: Q1
-        text: "How do you document and track the organization's processing instructions?"
-        dimension: documentation
+        text: "How do you document and track the organization's processing instructions? Is there a version-controlled instruction register, and how are changes to instructions recorded and acknowledged?"
+        dimension: compliance_completeness
       - id: Q2
-        text: "What technical and procedural controls prevent processing outside of documented instructions?"
-        dimension: technical_implementation
+        text: "What technical and architectural controls prevent processing outside of documented instructions — for example, are there hard-coded restrictions that prevent analytics, profiling, or data repurposing even by privileged administrators?"
+        dimension: architecture
       - id: Q3
-        text: "Do you process any wallet data for your own purposes (e.g., analytics, product improvement, marketing)? If so, describe what and under what legal basis."
+        text: "Can you confirm that you do not process any wallet data for your own purposes (analytics, product improvement, ML training, marketing, benchmarking)? If any secondary processing occurs, describe the data, purpose, and legal basis."
         dimension: data_handling
       - id: Q4
-        text: "Does your service involve any transfer of personal data to third countries or international organizations? If so, what safeguards are in place?"
-        dimension: international_transfers
+        text: "Does your service involve any transfer of personal data to third countries or international organisations? If so, what safeguards are in place (Art 46 SCCs, Art 45 adequacy decisions, Art 49 derogations), and is the organization's explicit instruction required for all transfers?"
+        dimension: interoperability
       - id: Q5
-        text: "How do you notify the organization if you believe an instruction infringes GDPR or other data protection law?"
-        dimension: compliance_monitoring
+        text: "How do you implement the Art 28(3)(a) infringement notification obligation — if you believe an instruction from the organization would infringe GDPR, how do you communicate this, and what is the escalation process?"
+        dimension: regulatory_support
       - id: Q6
-        text: "How can the organization update or modify processing instructions, and what is the implementation timeframe?"
+        text: "How can the organization update or modify processing instructions, and what is the implementation timeframe? Is there a formal change management process, and do you commit to SLA-backed response times?"
         dimension: operational
+      - id: Q7
+        text: "In the EUDI Wallet intermediation context, how does the instruction-only principle interact with the ARF forward-only architecture (RPI_08)? Is the forwarding behaviour configurable per-RP, or is it a fixed platform behaviour?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you audit compliance with the instruction-only principle? Do you maintain logs showing that all processing operations were performed pursuant to documented instructions, and are these logs available to the organization?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-010: Data Subject Rights Support
@@ -292,26 +307,32 @@ requirements:
   VEND-CORE-010:
     questions:
       - id: Q1
-        text: "What technical capabilities do you provide to assist the organization in responding to data subject access requests (DSARs)?"
+        text: "What technical capabilities do you provide to assist the organization in responding to data subject access requests (DSARs)? Can you produce a comprehensive report of all personal data held on a specific data subject across all systems?"
         dimension: capability
       - id: Q2
-        text: "Can you search and retrieve all personal data relating to a specific data subject across your systems?"
-        dimension: technical_implementation
+        text: "Given the no-storage mandate (Art 5b(10), VEND-CORE-001), what categories of personal data could you potentially hold that would be in scope for data subject requests — e.g., audit logs, transaction metadata, registration data, certificate records?"
+        dimension: data_handling
       - id: Q3
-        text: "What is your committed response time for assisting with data subject requests?"
-        dimension: sla
+        text: "What is your committed response time (SLA) for assisting with data subject requests? Can you meet the support timeline needed for the organization to respond within the Art 12(3) one-month deadline?"
+        dimension: operational
       - id: Q4
-        text: "How do you support data subject erasure requests (right to be forgotten) given the no-storage mandate?"
+        text: "How do you support erasure requests (right to be forgotten, Art 17) given the no-storage mandate? If transaction metadata or audit logs exist, can these be selectively erased per data subject?"
         dimension: data_handling
       - id: Q5
-        text: "Can you support data portability requests by providing data in a structured, commonly used, machine-readable format?"
+        text: "Can you support portability requests (Art 20) by providing data in a structured, commonly used, machine-readable format? What format is used (JSON, CSV, XML)?"
         dimension: capability
       - id: Q6
-        text: "How do you handle requests for restriction of processing or objection to processing?"
-        dimension: capability
+        text: "How do you handle requests for restriction of processing (Art 18) or objection to processing (Art 21) — can processing for a specific data subject be suspended without disrupting service for others?"
+        dimension: architecture
       - id: Q7
-        text: "What audit trail do you maintain of data subject request handling for compliance verification?"
+        text: "What audit trail do you maintain of DSAR handling for compliance verification — including request receipt timestamp, internal processing steps, response delivery, and completion confirmation?"
         dimension: auditability
+      - id: Q8
+        text: "How do you verify the identity of the data subject making the request to prevent unauthorised disclosure, and how does this work in the intermediated EUDI Wallet context where the intermediary may not have direct user relationships?"
+        dimension: security
+      - id: Q9
+        text: "How do you handle DSARs that span both your systems and sub-processor systems — do you coordinate with sub-processors, and what are the sub-processor SLAs for DSAR assistance?"
+        dimension: supply_chain
 
   # ============================================================================
   # VEND-CORE-011: Display Both Intermediary and RP Identity
@@ -320,20 +341,32 @@ requirements:
   VEND-CORE-011:
     questions:
       - id: Q1
-        text: "How does your platform ensure that wallet users see both your identity (as intermediary) and the identity of the Relying Party on whose behalf you are acting?"
-        dimension: technical_implementation
+        text: "How does your platform implement the dual-identity display required by Art 5b(8) and ARF RPI_06/RPI_07? Do you include both your own access certificate and the intermediated RP's RPRC_19a extension data in every presentation request?"
+        dimension: architecture
       - id: Q2
-        text: "What information about the Relying Party is displayed to the wallet user (e.g., legal name, logo, registration ID, intended use description)?"
-        dimension: user_experience
+        text: "What information about the intermediated Relying Party is displayed to the wallet user — do you include all five RPRC_19a fields (name, unique identifier, intended use description, Registrar URL, intended use identifier)?"
+        dimension: compliance_completeness
       - id: Q3
-        text: "How do you handle scenarios where the Relying Party's information changes (e.g., name change, merger)?"
-        dimension: lifecycle
+        text: "How does the wallet user distinguish between your identity (as intermediary) and the intermediated RP's identity in the consent flow? Is the distinction clearly labelled and unambiguous?"
+        dimension: capability
       - id: Q4
-        text: "Can wallet users easily distinguish between your identity and the Relying Party's identity in the consent flow?"
-        dimension: user_experience
+        text: "How do you handle the RPI_05 input — when the intermediated RP specifies its identity data for a presentation request, how is this data received, validated, and packaged into the RPRC_19a extension?"
+        dimension: architecture
       - id: Q5
-        text: "How do you ensure the displayed Relying Party information is accurate and matches the registered data?"
-        dimension: data_integrity
+        text: "How do you handle scenarios where the intermediated RP's registered information changes (e.g., name change, merger, new intended use)? Are RPRC_19a extension fields updated dynamically from the Registrar, or cached?"
+        dimension: lifecycle
+      - id: Q6
+        text: "Do you support the optional wallet-side verification mechanism (RPI_07a) where the wallet unit queries the Registrar to confirm the intermediary-RP relationship? How do you ensure your registration data supports this verification?"
+        dimension: interoperability
+      - id: Q7
+        text: "If the intermediated RP does not have a registration certificate (it may be optional in some scenarios), how do you still ensure the RP's identity is conveyed to the wallet user through the RPRC_19a extension data alone?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you ensure the displayed RP information is accurate and matches the data registered at the Registrar? What reconciliation process exists to detect and correct mismatches?"
+        dimension: auditability
+      - id: Q9
+        text: "How do you handle multi-language scenarios — if the RP operates across Member States, can the user-friendly name and intended use description be localised for the wallet user's language?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-CORE-012: Notification of Legal Requirements Beyond Instructions
@@ -342,20 +375,29 @@ requirements:
   VEND-CORE-012:
     questions:
       - id: Q1
-        text: "What is your process for notifying the organization if you receive a legal requirement (e.g., court order, law enforcement request) to process data beyond their instructions?"
+        text: "What is your documented process for evaluating and responding to legal requirements (court orders, law enforcement requests, regulatory demands) to process data beyond the organization's instructions? Is there a standing legal review procedure?"
         dimension: operational
       - id: Q2
-        text: "Do you notify the organization before complying with such requests, unless legally prohibited?"
+        text: "Do you commit to notifying the organization before complying with such requests, unless legally prohibited? What is the notification mechanism and expected timeframe?"
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you document and track government or law enforcement data access requests?"
+        text: "How do you document and track government or law enforcement data access requests — do you maintain a log of all requests received, their legal basis, your assessment, and the outcome?"
         dimension: auditability
       - id: Q4
-        text: "Do you publish a transparency report on government access requests received and complied with?"
-        dimension: transparency
+        text: "Do you publish a transparency report disclosing statistics on government access requests received and complied with? If not, are you willing to provide this information to the organization under NDA?"
+        dimension: compliance_evidence
       - id: Q5
-        text: "In which jurisdictions are you subject to data access laws, and what is your policy on challenging overbroad requests?"
-        dimension: legal_exposure
+        text: "In which jurisdictions are you subject to data access laws (including foreign surveillance laws such as FISA 702, CLOUD Act, or equivalent)? Do any of these potentially conflict with GDPR obligations?"
+        dimension: interoperability
+      - id: Q6
+        text: "What is your policy on challenging overbroad, unlawful, or disproportionate government access requests? Do you have a track record of successfully challenging such requests?"
+        dimension: contract_terms
+      - id: Q7
+        text: "In the EUDI Wallet intermediation context, given the no-storage mandate (VEND-CORE-001), what categories of data could realistically be subject to legal demands — transaction metadata, audit logs, registration data, certificate records?"
+        dimension: data_handling
+      - id: Q8
+        text: "If a secrecy order prohibits you from informing the organization about a legal demand, how do you handle the conflict between the secrecy obligation and the Art 28(3)(a) pre-notification obligation? Do you seek judicial review of the secrecy order?"
+        dimension: regulatory_support
 
   # ============================================================================
   # VEND-CORE-013: Sub-Processor Authorization
@@ -364,26 +406,32 @@ requirements:
   VEND-CORE-013:
     questions:
       - id: Q1
-        text: "Do you currently use sub-processors for any part of your EUDI Wallet intermediary service? If so, provide a complete list with their roles and locations."
+        text: "Do you currently use sub-processors for any part of your EUDI Wallet intermediary service? Provide a complete list with their legal names, roles (e.g., cloud hosting, HSM, monitoring), processing locations, and the data they access."
         dimension: supply_chain
       - id: Q2
-        text: "What is your process for seeking authorization before adding or changing sub-processors?"
-        dimension: operational
+        text: "Which authorisation model do you use — specific (per sub-processor approval) or general (blanket with notification of changes)? If general, what advance notice period do you provide before engaging new sub-processors?"
+        dimension: contract_terms
       - id: Q3
-        text: "Do you offer specific sub-processor authorization (per sub-processor) or general authorization with notification of changes?"
+        text: "Can the organization object to a proposed sub-processor change? If so, what is the process and timeline — and what happens if the organization objects (contract termination right, alternative sub-processor, etc.)?"
         dimension: contract_terms
       - id: Q4
-        text: "What advance notice do you provide before engaging new sub-processors?"
-        dimension: sla
+        text: "How do you impose equivalent data protection obligations on sub-processors per Art 28(4)? Do sub-processor contracts include the no-storage mandate (Art 5b(10)), confidentiality obligations, audit rights, and breach notification obligations?"
+        dimension: compliance_completeness
       - id: Q5
-        text: "How do you ensure sub-processors comply with the same data protection obligations as you?"
-        dimension: compliance_flow_down
+        text: "Given Art 28(4), you remain fully liable for sub-processor compliance. How do you monitor and verify ongoing sub-processor compliance — do you conduct audits, require certifications, or implement technical controls?"
+        dimension: auditability
       - id: Q6
-        text: "Do you remain fully liable for sub-processor compliance, or do you seek to limit liability?"
-        dimension: liability
+        text: "Do any of your sub-processors process data outside the EEA? If so, what international transfer safeguards are in place, and does the organization's DPA explicitly authorise these transfers?"
+        dimension: interoperability
       - id: Q7
-        text: "Can the organization object to a proposed sub-processor change, and what happens if they do?"
-        dimension: contract_terms
+        text: "In the EUDI Wallet intermediation context, do any sub-processors have access to PID attributes, attestation content, or access certificate private keys — even transiently? How is the no-storage mandate enforced across the sub-processor chain?"
+        dimension: data_handling
+      - id: Q8
+        text: "What is your incident response process if a sub-processor experiences a data breach? How quickly are you notified, and how does this feed into the Art 33(2) notification chain to the organization (VEND-CORE-007)?"
+        dimension: incident_response
+      - id: Q9
+        text: "Can the organization audit sub-processors directly (either itself or through a mandated auditor), or must audits go through you? What provisions exist in sub-processor contracts for audit access?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-014: Data Deletion or Return at End of Contract
@@ -392,26 +440,32 @@ requirements:
   VEND-CORE-014:
     questions:
       - id: Q1
-        text: "Given the no-storage mandate, what personal data might you hold at contract termination (e.g., configuration data, audit logs, registration data)?"
+        text: "Given the no-storage mandate (Art 5b(10), VEND-CORE-001), what categories of personal data might you hold at contract termination — e.g., configuration data, audit logs, registration data, certificate records, DPA documentation? Provide a comprehensive inventory."
         dimension: data_handling
       - id: Q2
-        text: "What is your standard procedure for data return at contract termination? In what format is data returned?"
+        text: "What is your standard procedure for data return at contract termination? In what format is data returned (structured export, API access, manual handover), and is the return process automated or manual?"
         dimension: capability
       - id: Q3
-        text: "What is your procedure for secure data deletion at contract termination? How is deletion verified?"
+        text: "What is your procedure for secure data deletion at contract termination? What deletion standards do you follow (e.g., NIST 800-88, DoD 5220.22-M), and how is deletion verified across all storage media?"
         dimension: security
       - id: Q4
-        text: "Do you provide a deletion certificate or attestation upon completion of data deletion?"
+        text: "Do you provide a formal deletion certificate or attestation upon completion? Is this signed by an authorised officer, and does it cover all data categories including backups?"
         dimension: compliance_evidence
       - id: Q5
-        text: "What is the timeframe for completing data deletion or return after contract termination?"
-        dimension: sla
+        text: "What is the committed timeframe for completing data return or deletion after contract termination — for primary systems and for backup media (which may have a longer deletion cycle)?"
+        dimension: operational
       - id: Q6
-        text: "Are there any circumstances where you are legally required to retain data beyond contract termination? If so, what data and for how long?"
-        dimension: legal_requirements
+        text: "Are there any circumstances where you are legally required to retain data beyond contract termination? If so, specify which data, under which legal basis, for how long, and how retained data is isolated from active processing."
+        dimension: regulatory_support
       - id: Q7
-        text: "How do you ensure data in backups is also deleted within the required timeframe?"
-        dimension: data_handling
+        text: "How do you ensure data in backups, disaster recovery sites, and cold storage is also deleted within the required timeframe? Can you verify deletion from immutable backup media (e.g., tape, WORM storage)?"
+        dimension: security
+      - id: Q8
+        text: "What happens to audit logs and transaction metadata at contract termination that may be needed for regulatory compliance or dispute resolution — is there a grace period, and how is it governed?"
+        dimension: contract_terms
+      - id: Q9
+        text: "How do you handle data deletion across sub-processors at contract termination? Do sub-processor contracts include equivalent deletion obligations and attestation requirements (Art 28(4) flow-down)?"
+        dimension: supply_chain
 
   # ============================================================================
   # VEND-CORE-016: Register Each Intermediated RP at Appropriate Registrar
