@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T16:43:23.221Z",
+  "generatedAt": "2026-02-10T17:05:09.934Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -6207,11 +6207,7 @@
       "legalBasisLink": "/implementing-acts/2024-2977?section=article-5",
       "legalText": "Where a European Digital Identity Wallet is revoked, the PID\nProvider shall revoke the person identification data\nassociated with that Wallet.",
       "arfReference": {
-        "topic": "Topic 38",
-        "hlr": [
-          "WURevocation_18",
-          "WURevocation_19"
-        ]
+        "topic": "Topic 38"
       },
       "roles": [
         "issuer"

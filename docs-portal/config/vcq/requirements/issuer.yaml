@@ -2307,9 +2307,6 @@ requirements:
       associated with that Wallet.
     arfReference:
       topic: Topic 38
-      hlr:
-        - WURevocation_18
-        - WURevocation_19
     roles:
       - issuer
     productCategories:
