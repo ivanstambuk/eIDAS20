@@ -546,29 +546,20 @@ requirements:
         text: "RPI_09 defines five verification dimensions (authenticity, revocation, device binding, user binding, wallet unit authenticity). Which of these do you support, and which are configurable per-RP as described by the 'as agreed' qualification?"
         dimension: capability
       - id: Q2
-        text: "How do you verify PID/attestation authenticity — specifically, how do you resolve and validate the issuer's trust chain across different Member State trust frameworks?"
+        text: "How do you manage and synchronize trust anchors (Trusted Lists) across multiple Member State trust frameworks? Describe your update frequency, failover strategy, and how you handle the transition period when a new Member State's trust framework is added or an existing issuer is removed."
         dimension: technical_implementation
       - id: Q3
         text: "Which revocation checking mechanisms do you support (Status Lists, OCSP, CRL)? How do you handle scenarios where the revocation infrastructure is temporarily unavailable — do you allow or block forwarding?"
         dimension: technical_implementation
       - id: Q4
-        text: "How do you verify device binding (cryptographic proof that the credential is bound to the presenting wallet's WSCD)? Do you support both mdoc device authentication and SD-JWT key binding?"
-        dimension: security
+        text: "Which attestation formats do you support for verification (mdoc per ISO 18013-5, SD-JWT VC per HAIP, or both)? If both, how do you handle format-specific verification differences (e.g., MSO signature validation vs JWS validation, mdoc deviceAuth vs SD-JWT Key Binding JWT)?"
+        dimension: interoperability
       - id: Q5
-        text: "How do you verify user binding (proof that the authorised holder is presenting)? Do you support both biometric and PIN-based user authentication proofs?"
-        dimension: security
-      - id: Q6
         text: "Per RPI_08, if any agreed verification fails, you must not forward any attributes. How is this conditional forwarding implemented — is it atomic (all-or-nothing), and how are partial verification failures communicated to the wallet user and logged?"
         dimension: architecture
-      - id: Q7
-        text: "How do you handle combined presentations (multiple attestations in a single session)? Do you verify cross-attestation consistency and combined presentation binding as described in the ARF?"
-        dimension: technical_implementation
-      - id: Q8
+      - id: Q6
         text: "The RP retains ultimate legal responsibility for verification (Art 5b(9)). How do you provide verification evidence to the RP — do you include verification results, timestamps, and trust chain details in the forwarded response?"
         dimension: auditability
-      - id: Q9
-        text: "What is the latency impact of full verification (all 5 dimensions) on the end-to-end presentation flow? Have you benchmarked verification performance under high-volume scenarios?"
-        dimension: performance
 
   # ============================================================================
   # VEND-CORE-019: PSD2 Strong Customer Authentication (TS12)
