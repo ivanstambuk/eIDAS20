@@ -4,20 +4,38 @@ requirements:
     category: contracts
     requirement: Display both intermediary and RP identity before requesting attestations
     explanation: |
-      When the intermediary requests attestations from a wallet user, the wallet 
-      must display both the intermediary's identity (as the direct requester) and 
-      the identity of the ultimate Relying Party on whose behalf the intermediary 
+      When the intermediary requests attestations from a wallet user, the wallet
+      must display both the intermediary's identity (as the direct requester) and
+      the identity of the ultimate Relying Party on whose behalf the intermediary
       is acting. This ensures informed consent.
 
-      The wallet detects the intermediary scenario by comparing two data sources:
-      - The intermediary's identity (name, identifier) from its access certificate
-      - The intermediated RP's identity (name, identifier) from the RPRC_19a 
-        extension in the presentation request, and from the RP's registration 
-        certificate if available
-      
-      If these identities differ, the wallet knows it is an intermediary scenario 
-      and displays both names. The intermediary product must therefore ensure both 
-      data sources are correctly populated in every presentation request.
+      **Wallet detection mechanism (RPI_07):**
+      The wallet detects an intermediary scenario by comparing two data sources:
+      - The intermediary's identity (name, identifier) from its **access
+        certificate** (obtained via RPI_01 registration)
+      - The intermediated RP's identity (name, identifier) from the **RPRC_19a
+        extension** in the presentation request, and from the RP's registration
+        certificate if available (obtained via RPI_03)
+
+      If these identities differ, the wallet knows the request is from an
+      intermediary and displays both names. The intermediary product must
+      therefore ensure both data sources are correctly populated in every
+      presentation request.
+
+      **Data that must be populated (RPI_05 → RPRC_19a):**
+      The intermediated RP must supply to the intermediary: (a) its
+      user-friendly name, (b) its unique identifier, (c) the URL of its
+      Registrar, (d) the identifier of its intended use, and (e) a
+      user-friendly description of its intended use. Since (a)-(c) are
+      static, they can be configured once; (d)-(e) vary only if the RP
+      has multiple registered intended uses.
+
+      **Relationship verification (RPI_07a):**
+      If the user requests it, the wallet will additionally verify that
+      the contractual relationship between intermediary and RP is
+      registered at the responsible Registrar (per RPI_04). Failure to
+      register this relationship will cause the wallet to warn the user,
+      potentially blocking the transaction.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -42,15 +60,36 @@ requirements:
     category: contracts
     requirement: Ensure RP's intended data requests are accurately communicated to wallet
     explanation: |
-      The intermediary must not modify, expand, or alter the RP's registered data 
-      request when forwarding to wallets. Only the attributes registered by the RP 
-      may be requested.
+      The intermediary must not modify, expand, or alter the RP's registered
+      data request when forwarding to wallets. Only the attributes registered
+      by the RP with its Registrar may be requested.
+
+      **Request scope guarantee (RPI_06 + Art 5b(3)):**
+      The intermediary SHALL include in the request only those attributes that
+      the intermediated RP has registered for the selected intended use. The
+      wallet can verify this: per RPRC_21, the wallet may query the Registrar
+      using the intended-use identifier from RPRC_19a to retrieve the list of
+      attributes the RP is authorised to request. Any discrepancy between the
+      RPRC_19a request and the registered attribute set is a compliance
+      violation.
+
+      **Prohibited intermediary behaviours:**
+      - Adding attributes beyond the RP's registration
+        ("attribute expansion")
+      - Removing attributes the RP expects ("attribute suppression")
+      - Modifying attribute type identifiers or namespaces
+      - Requesting attributes for the intermediary's own purposes under
+        the RP's identity
+
+      This is a MUST NOT obligation because over-requesting undermines user
+      consent and may trigger DPA complaints via the wallet's reporting
+      mechanism.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "3"
     legalText: |
-      Relying parties shall not request users to provide any data other than 
+      Relying parties shall not request users to provide any data other than
       that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: Topic 52
@@ -65,13 +104,38 @@ requirements:
     category: usage
     requirement: Forward presentation requests without modification of requested attributes
     explanation: |
-      The intermediary must accurately relay the RP's attribute request to the 
-      wallet without adding, removing, or modifying the requested attributes. The 
-      request must match what the RP registered with supervisory authorities.
+      The intermediary must accurately relay the RP's attribute request to the
+      wallet without adding, removing, or modifying the requested attributes.
+      The request must match what the RP registered with supervisory
+      authorities.
+
+      **Differentiation from VEND-INT-002:**
+      While VEND-INT-002 addresses the **scope** constraint (only registered
+      attributes may be requested), this requirement addresses the
+      **forwarding integrity** guarantee: the technical relay mechanism must
+      preserve the request exactly as constructed.
+
+      **Technical relay requirements (RPI_06):**
+      When the intermediated RP triggers a presentation request, the
+      intermediary SHALL construct the OID4VP or ISO 18013-5 request
+      containing:
+      - The intermediary's own access certificate (RPI_01)
+      - The RP's registration certificate, if available (RPI_03)
+      - The RPRC_19a extension fields for the intermediated RP (RPI_05)
+      - The exact set of requested attributes as specified by the RP
+
+      The product must ensure no transformation, filtering, or enrichment
+      occurs between the RP's internal request and the wallet-facing
+      protocol message. This is especially important for selective
+      disclosure: the attribute identifiers and namespaces must be
+      bit-exact with the RP's registration.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "3"
+    legalText: |
+      Relying parties shall not request users to provide any data other than
+      that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: Topic 52
       hlr: RPI_06
@@ -85,19 +149,42 @@ requirements:
     category: usage
     requirement: Forward wallet presentations to RP without modification
     explanation: |
-      The intermediary must relay the wallet's presentation to the RP exactly as 
-      received, without altering, extracting, or processing the credential data. 
-      The presentation integrity must be preserved.
+      The intermediary must relay the wallet's presentation to the RP exactly
+      as received, without altering, extracting, or processing the credential
+      data. The presentation integrity must be preserved.
+
+      **Forwarding after verification (RPI_08 + RPI_09):**
+      After receiving a presentation from a Wallet Unit, the intermediary
+      SHALL first perform the verifications specified in RPI_09 (authenticity,
+      revocation status, device binding, user binding, combined presentation
+      validity). Only if all verifications succeed SHALL the intermediary
+      forward the attributes to the requesting RP. If any verification
+      fails, the intermediary SHALL NOT forward any attributes.
+
+      **No-storage mandate (Article 5b(10)):**
+      The intermediary is deemed a Relying Party and SHALL NOT store data
+      about the content of the transaction. This means:
+      - No persistent storage of attestation payloads
+      - No caching of attribute values between sessions
+      - No logging of individual attribute content
+      - Memory-only processing with secure erasure after forwarding
+
+      **Integrity preservation:**
+      The presentation payload must be forwarded without modification so
+      that the RP can independently verify signatures and selective-
+      disclosure proofs if it chooses to do so.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
     legalText: |
-      Intermediaries acting on behalf of relying parties shall be deemed to be 
+      Intermediaries acting on behalf of relying parties shall be deemed to be
       relying parties and shall not store data about the content of the transaction.
     arfReference:
       topic: Topic 52
-      hlr: RPI_08
+      hlr:
+        - RPI_08
+        - RPI_09
     roles:
       - relying_party
     productCategories:
@@ -108,17 +195,51 @@ requirements:
     category: usage
     requirement: Support both remote and proximity presentation protocols
     explanation: |
-      If the RP requires both remote and proximity (offline) presentation 
-      scenarios, the intermediary must support the relevant ISO/IEC 18013-5 and 
-      ISO/IEC TS 18013-7 protocols.
+      If the RP requires both remote and proximity (offline) presentation
+      scenarios, the intermediary must support the relevant protocols for
+      each mode.
+
+      **Remote presentations:**
+      - OpenID for Verifiable Presentations (OID4VP) per ISO/IEC TS
+        18013-7:2024
+      - SD-JWT VC credential format with HAIP profile
+      - Both same-device (app-to-app) and cross-device (QR code) flows
+      - `direct_post` and `direct_post.jwt` response modes
+
+      **Proximity presentations:**
+      - ISO/IEC 18013-5:2021 device retrieval protocol
+      - BLE as the mandatory transport, NFC as optional
+      - Device engagement via QR code or NFC tap
+      - mDoc credential format
+
+      **Intermediary-specific considerations:**
+      For proximity flows, the intermediary's deployment must include
+      hardware (BLE/NFC readers) at the RP's physical locations. The
+      intermediary must handle the additional complexity of performing
+      RPI_09 verification on-site before forwarding to the RP backend.
+      For remote flows, the intermediary must correctly route the
+      `redirect_uri` / `response_uri` callbacks through its own
+      infrastructure while preserving the RP's session context.
+
+      The obligation is conditional: if the RP only uses remote flows,
+      only OID4VP is required. If the RP only uses proximity flows,
+      only ISO 18013-5 is required. If both modes are used, both
+      MUST be supported.
     legalBasis:
       regulation: 2024/2982
       article: Article 5
-      paragraph: 1-2
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet solutions support protocols
+      and interfaces for the presentation of person identification data and
+      electronic attestations of attributes.
     annexReference: |
       Annex to 2024/2982:
       - ISO/IEC 18013-5:2021 (proximity)
       - ISO/IEC TS 18013-7:2024 (remote)
+    arfReference:
+      topic: Topic 24
+      hlr: ProxId_01a
     roles:
       - relying_party
     productCategories:
@@ -129,17 +250,49 @@ requirements:
     category: usage
     requirement: Forward attributes only to the requesting RP after verification
     explanation: |
-      After receiving attestation data from a wallet and verifying it, the 
-      intermediary must forward the attributes ONLY to the specific RP on whose 
-      behalf the request was made. If verification fails, no attributes may be 
-      forwarded.
+      After receiving attestation data from a wallet, the intermediary must
+      perform all agreed verifications (RPI_09) and forward the attributes
+      ONLY to the specific RP on whose behalf the request was made. If any
+      verification fails, no attributes may be forwarded.
+
+      **Verification gate (RPI_09):**
+      Before forwarding, the intermediary SHALL verify (as agreed with the
+      RP):
+      - Authenticity of the PID or attestation (signature validation)
+      - Revocation status
+      - Device binding (WSCD key proof-of-possession)
+      - User binding
+      - Combined presentation validity (if multiple attestations)
+      - Wallet Unit authenticity and revocation status
+
+      **Conditional forwarding (RPI_08):**
+      If ALL verifications succeed → forward attributes only to the
+      requesting RP. If ANY verification fails → forward NOTHING. The
+      intermediary must never partially forward verified attributes.
+
+      **Routing isolation:**
+      When serving multiple RPs, the intermediary must enforce strict
+      routing isolation to prevent attributes from being delivered to
+      the wrong RP. This requires per-session RP binding from request
+      initiation through to attribute delivery.
+
+      **Immediate deletion (RPI_10):**
+      After forwarding (or after verification failure), the intermediary
+      SHALL delete all PIDs, attestations, and user attributes completely
+      and immediately (see also VEND-INT-021).
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "10"
+    legalText: |
+      Intermediaries acting on behalf of relying parties shall be deemed to be
+      relying parties and shall not store data about the content of the transaction.
     arfReference:
       topic: Topic 52
-      hlr: RPI_08
+      hlr:
+        - RPI_08
+        - RPI_09
+        - RPI_10
     roles:
       - relying_party
     productCategories:
@@ -150,17 +303,43 @@ requirements:
     category: usage
     requirement: Maintain up-to-date Trusted Lists for PID Providers
     explanation: |
-      The intermediary must maintain current copies of the Trusted Lists containing 
-      PID Provider trust anchors (public keys/certificates). These lists are 
-      published by Member States and the Commission and must be refreshed 
-      regularly to capture additions, modifications, and revocations.
+      The intermediary must maintain current copies of the Trusted Lists
+      containing PID Provider trust anchors (public keys/certificates).
+      These lists are published by Member States and the Commission and
+      must be refreshed regularly to capture additions, modifications,
+      and revocations.
+
+      **Signature validation requirement (OIA_12):**
+      For both proximity and remote presentation flows, the intermediary
+      SHALL validate the signature of a PID using a trust anchor provided
+      in a PID Provider Trusted List made available in accordance with
+      Topic 31 (notification and publication). This is a prerequisite for
+      the RPI_09 verification gate that determines whether attributes
+      may be forwarded to the RP.
+
+      **Trust list discovery and refresh:**
+      Member States publish Trusted Lists in a standardised format. The
+      EU Commission publishes a List of Trusted Lists (LOTL) that
+      aggregates the Member State lists. The intermediary should:
+      - Bootstrap from the LOTL to discover all Member State lists
+      - Refresh lists at intervals aligned with the lists' own
+        `nextUpdate` timestamps (typically 24-72 hours)
+      - Handle list signature verification (the list itself is signed)
+      - Maintain a fallback if a Member State list is temporarily
+        unavailable
+
+      **Intermediary-specific concern:**
+      Because intermediaries serve multiple RPs potentially operating
+      across different Member States, they may need to maintain Trusted
+      Lists from all 27 Member States simultaneously, rather than only
+      the subset relevant to a single RP's market.
     legalBasis:
       regulation: 2014/910
       article: Article 22
       paragraph: "1"
     legalText: |
-      Each Member State shall establish, maintain and publish trusted lists, 
-      including information related to the qualified trust service providers 
+      Each Member State shall establish, maintain and publish trusted lists,
+      including information related to the qualified trust service providers
       for which it is responsible.
     arfReference:
       topic: Topic 1
@@ -668,7 +847,7 @@ requirements:
       1. Authenticate the requesting user using appropriate mechanisms (DATA_DLT_07)
       2. Correctly process or relay the deletion request per TS7 (DATA_DLT_08)
       3. Respond within GDPR mandated timeframes (without undue delay)
-      
+
       Note: The intermediary's no-storage mandate (VEND-INT-021) means minimal 
       personal data will be retained, but any logs or metadata must still be 
       subject to erasure requests.
