@@ -2486,3 +2486,226 @@ requirements:
       product-level quality features. The regulatory framework does not 
       explicitly mandate how the RP backend is notified of failure outcomes.
     obligation: SHOULD
+
+  - id: VEND-CORE-048
+    category: usage
+    deploymentArchitectures: []
+    requirement: Declare which RP Deployment Architecture(s) the product supports
+    explanation: |
+      The ARF defines distinct models for how a Relying Party can interact
+      with EUDI Wallet Units. These models have fundamentally different legal,
+      operational, and data-flow implications:
+
+      - **Intermediary**: the vendor acts as a separate, registered
+        Relying Party with its own access certificate (ARF Topic 53, RPI_01).
+        The wallet shows a dual-party display to the user.
+      - **Direct SaaS**: the vendor hosts managed connector infrastructure
+        in its cloud, but the RP's own access certificate is used.
+        The wallet sees only the RP. Personal data transits vendor infrastructure.
+      - **Direct Self-Hosted**: the vendor provides deployable software
+        (Docker, Helm, etc.) that the RP operates on its own infrastructure.
+        No personal data transits third-party infrastructure.
+
+      Vendors must clearly state which architecture(s) their product supports
+      so the RP customer can assess regulatory compliance, data residency,
+      private key custody, and user experience impact.
+
+      See also: docs/plans/rp-deployment-architectures.md for the full
+      background analysis including data-flow diagrams and comparison matrix.
+    legalBasis:
+      regulation: 2024/1183
+      article: Article 5b
+      paragraph: "1"
+    arfReference:
+      topic: Topic 53
+      hlr:
+        - RPI_01
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Gate requirement: establishes which deployment architecture(s) the
+      vendor supports. Architecture-specific details are covered by
+      VEND-CORE-049 (Intermediary), VEND-CORE-050 (Direct SaaS),
+      VEND-CORE-051 (Direct Self-Hosted), and VEND-CORE-052 (cross-cutting).
+
+      Three-architecture taxonomy derived from stakeholder analysis
+      (2026-02-10). See docs/plans/rp-deployment-architectures.md.
+    obligation: SHOULD
+
+  - id: VEND-CORE-049
+    category: usage
+    deploymentArchitectures:
+      - intermediary
+    requirement: Describe intermediary registration, dual-party wallet display, and data forwarding procedures
+    explanation: |
+      When operating as an ARF Intermediary, the vendor registers as a
+      separate Relying Party with its own access certificate (RPI_01) and
+      acts on behalf of intermediated RPs. This architecture has specific
+      obligations under ARF Topic 53:
+
+      - **Registration**: the intermediary registers itself at a Registrar
+        (RPI_01) and must also register each intermediated RP at the RP's
+        Registrar (RPI_03), providing legal evidence of the relationship (RPI_04).
+      - **Dual-party display**: the wallet MUST show both the intermediary's
+        identity and the intermediated RP's identity to the user when
+        requesting approval (RPI_07). The RP customer cannot suppress this.
+      - **VP Token verification**: the intermediary must verify attestation
+        signatures, issuer trust status, validity, revocation status, and
+        holder binding before forwarding (RPI_09).
+      - **Immediate data deletion**: all PIDs, attestations, and user
+        attributes must be deleted immediately after forwarding to the
+        intermediated RP, or after verification failure (RPI_10).
+
+      Note: as of February 2026, neither the Android nor iOS EU reference
+      wallet implements the dual-party display (RPI_07). However, it is a
+      SHALL requirement and compliant wallets will enforce it.
+    legalBasis:
+      regulation: 2024/1183
+      article: Article 5b
+      paragraph: "1"
+    arfReference:
+      topic: Topic 53
+      hlr:
+        - RPI_01
+        - RPI_03
+        - RPI_06
+        - RPI_07
+        - RPI_09
+        - RPI_10
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Intermediary-specific companion to VEND-CORE-048.
+      Only applicable when the vendor operates as an ARF Intermediary.
+      Vendor examples: Hopae Connect.
+    obligation: MUST
+
+  - id: VEND-CORE-050
+    category: usage
+    deploymentArchitectures:
+      - direct_saas
+    requirement: Describe SaaS connector data path, response_uri domain, private key custody, and GDPR role
+    explanation: |
+      When operating as a Direct SaaS connector, the vendor hosts managed
+      wallet-connector infrastructure in its cloud but uses the RP
+      customer's own access certificate and registration. The wallet sees
+      only the RP — there is no dual-party display.
+
+      This architecture raises specific questions:
+
+      - **response_uri domain**: does the OID4VP response_uri (the
+        endpoint the wallet sends the VP Token to) point to the vendor's
+        domain or the RP customer's domain? Can the RP front the service
+        with its own DNS, domain name, and TLS certificate (reverse proxy)?
+      - **Private key custody**: where are the RP's access certificate
+        private keys stored? Options include: (a) vendor holds keys in its
+        infrastructure, (b) RP-controlled HSM accessed via remote signing
+        API, or (c) split-signing where the vendor prepares unsigned
+        request objects and the RP signs locally.
+      - **VP Token data path**: VP Tokens containing personal data transit
+        the vendor's infrastructure. The vendor is therefore a GDPR data
+        processor under Article 28, requiring a Data Processing Agreement
+        with the RP.
+      - **Data retention**: unlike the intermediary model (which mandates
+        immediate deletion per RPI_10), the SaaS model's retention is
+        governed by the DPA terms agreed between vendor and RP.
+    legalBasis:
+      regulation: 2024/1183
+      article: Article 5b
+      paragraph: "1"
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Direct SaaS companion to VEND-CORE-048.
+      Only applicable when the vendor hosts the connector (RP's certificate).
+      Vendor examples: Sproof Ident (EU-hosted SaaS connector).
+    obligation: SHOULD
+
+  - id: VEND-CORE-051
+    category: usage
+    deploymentArchitectures:
+      - direct_onprem
+    requirement: Describe self-hosted connector deployment format, runtime dependencies, and update delivery
+    explanation: |
+      When the vendor provides a Direct Self-Hosted connector, the RP
+      operates the vendor's software on its own infrastructure. The RP's
+      access certificate private keys never leave the RP's perimeter, and
+      no personal data transits third-party infrastructure.
+
+      Key areas to clarify:
+
+      - **Deployment format**: what artifacts are delivered? (Docker images,
+        Helm charts, VM images, JAR files, native packages). What are the
+        minimum infrastructure requirements?
+      - **Runtime cloud dependencies**: does the deployed product require any
+        runtime connection back to the vendor's cloud? (telemetry, licence
+        validation, feature flags, trust-list feeds, configuration sync).
+        Can it run fully air-gapped?
+      - **Update delivery**: how are patches and wallet-compatibility updates
+        delivered? (container registry push, apt/yum repository, manual
+        download). What is the expected lead time for critical security
+        patches?
+      - **GDPR role**: the vendor is a software provider, not a data
+        processor. No Data Processing Agreement is needed for wallet
+        interaction data, since no personal data leaves the RP's perimeter.
+    legalBasis:
+      regulation: 2024/1183
+      article: Article 5b
+      paragraph: "1"
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Direct Self-Hosted companion to VEND-CORE-048.
+      Only applicable when the RP deploys the vendor's software on its own
+      infrastructure. Vendor examples: Lissi EUDI-Wallet Connector (Docker).
+    obligation: SHOULD
+
+  - id: VEND-CORE-052
+    category: usage
+    deploymentArchitectures: []
+    requirement: Confirm EU wallet coverage, trust-list integration, and proximity flow support
+    explanation: |
+      Regardless of deployment architecture, certain cross-cutting
+      capabilities affect the RP's ability to accept credentials from
+      all EU member state wallets:
+
+      - **EU wallet coverage**: which member state EUDI Wallet implementations
+        has the product been tested against? Is interoperability validation
+        performed against the EU reference implementation only, or also
+        against national implementations?
+      - **Trust-list integration**: how does the product obtain and update
+        the Trusted List of issuers and wallet providers? Does it consume
+        the TS2 publication feed automatically, or does it require manual
+        configuration? What is the refresh interval?
+      - **Proximity flows**: does the product support BLE/NFC-based proximity
+        identification flows (per Topic 16, ProxId_01a)? If so, describe the
+        hardware requirements and integration model (SDK, relay service, etc.).
+    legalBasis:
+      regulation: 2024/1183
+      article: Article 5b
+      paragraph: "1"
+    arfReference:
+      topic: Topic 16
+      hlr:
+        - ProxId_01a
+    roles:
+      - relying_party
+    productCategories:
+      - connector
+    deadline: "2027-11-21"
+    notes: |
+      Cross-cutting companion to VEND-CORE-048.
+      Applies to all deployment architectures (architecture-agnostic).
+    obligation: SHOULD

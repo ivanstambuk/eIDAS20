@@ -1490,3 +1490,154 @@ requirements:
       - id: Q9
         text: "How does the product handle partial completions — e.g., the user approves presentation of some attributes but not others? Does the product surface this as a PARTIAL_SUCCESS state, or does it treat it as a REJECTED outcome?"
         dimension: technical_implementation
+
+  # ============================================================================
+  # VEND-CORE-048: RP Deployment Architecture (Gate)
+  # Requirement: Declare supported deployment architecture(s)
+  # Added: 2026-02-10 (Stakeholder analysis)
+  # Rewritten: 2026-02-10 (Split into 048–052)
+  # ============================================================================
+  VEND-CORE-048:
+    questions:
+      - id: Q1
+        text: |
+          Which RP Deployment Architecture(s) does your product support?
+          Select all that apply:
+          - **Intermediary**: your organisation acts as a registered intermediary
+            (per ARF Topic 53, RPI_01) with its own access certificate.
+          - **Direct SaaS**: you host managed connector infrastructure in your
+            cloud, but the RP customer uses its own access certificate.
+          - **Direct Self-Hosted**: you provide deployable software that the RP
+            customer operates on its own infrastructure.
+          For each supported architecture, briefly describe the engagement model
+          (e.g., SaaS subscription, on-premise licence, managed service agreement).
+        dimension: capability
+
+  # ============================================================================
+  # VEND-CORE-049: Intermediary Details
+  # ============================================================================
+  VEND-CORE-049:
+    questions:
+      - id: Q1
+        text: |
+          Confirm that you register at a Registrar with your own access
+          certificate under your own Relying Party identity (per RPI_01).
+          How many intermediated RPs do you currently serve, and how do you
+          register each intermediated RP at their respective Registrar (per RPI_03)?
+        dimension: compliance_completeness
+      - id: Q2
+        text: |
+          Describe how the mandatory dual-party wallet display (RPI_07) is
+          handled. What identity information (names, identifiers) does the
+          wallet show to the user for both your organisation and the intermediated
+          RP? How do you ensure this information is accurate and up-to-date?
+        dimension: compliance_completeness
+      - id: Q3
+        text: |
+          What verifications do you perform on VP Tokens received from the
+          wallet before forwarding attributes to the intermediated RP
+          (per RPI_09)? Specifically address: attestation signature validation,
+          issuer trust status check, attestation validity and revocation status,
+          and holder binding verification.
+        dimension: compliance_completeness
+      - id: Q4
+        text: |
+          Describe your data deletion procedure under RPI_10: how and when
+          are personal data, PIDs, and attestations deleted after forwarding
+          to the intermediated RP (or after verification failure)? What
+          technical controls ensure immediate deletion occurs?
+        dimension: compliance_completeness
+
+  # ============================================================================
+  # VEND-CORE-050: Direct SaaS Details
+  # ============================================================================
+  VEND-CORE-050:
+    questions:
+      - id: Q1
+        text: |
+          Does the OID4VP response_uri (the endpoint the wallet sends the
+          VP Token to) point to your domain or the RP customer's domain?
+          Do you support RP-side reverse proxying — i.e., can the RP customer
+          front your service with its own DNS record, domain name, and TLS
+          certificate, so the wallet-facing endpoint appears to be the RP's
+          own infrastructure?
+        dimension: compliance_completeness
+      - id: Q2
+        text: |
+          Where are the RP customer's access certificate private keys stored?
+          Indicate which option(s) you support:
+          (a) Vendor holds keys in its infrastructure.
+          (b) RP-controlled HSM accessed via remote signing API.
+          (c) Split-signing: vendor prepares unsigned request objects, RP signs locally.
+          Who has custody of the private keys under each supported option?
+        dimension: compliance_completeness
+      - id: Q3
+        text: |
+          Describe the data flow path for VP Tokens: does the VP Token
+          (containing personal data) transit your infrastructure? What GDPR
+          role do you assume — data processor, joint controller, or other?
+          What Data Processing Agreement provisions apply?
+        dimension: compliance_completeness
+      - id: Q4
+        text: |
+          What data retention policy applies to VP Tokens and personal data
+          that transit your infrastructure? How long is presentation data
+          retained, and what mechanisms ensure deletion after the agreed
+          retention period?
+        dimension: compliance_completeness
+
+  # ============================================================================
+  # VEND-CORE-051: Direct Self-Hosted Details
+  # ============================================================================
+  VEND-CORE-051:
+    questions:
+      - id: Q1
+        text: |
+          What is the deployment format for the self-hosted connector?
+          (e.g., Docker containers, Kubernetes Helm charts, VM images,
+          JAR files, native packages). What are the minimum infrastructure
+          and platform requirements?
+        dimension: operational
+      - id: Q2
+        text: |
+          Does the deployed product require any runtime connection back to
+          your cloud services during normal operation — for example, telemetry,
+          licence validation, trust-list feeds, wallet-compatibility updates,
+          or feature flags? If so, describe what data is transmitted. Can the
+          product operate fully air-gapped?
+        dimension: operational
+      - id: Q3
+        text: |
+          How are security patches, protocol updates, and wallet-compatibility
+          updates delivered to the RP customer? (e.g., container registry push,
+          apt/yum repository, manual download). What is the typical lead time
+          for critical security patches?
+        dimension: operational
+
+  # ============================================================================
+  # VEND-CORE-052: Cross-cutting (Architecture-agnostic)
+  # ============================================================================
+  VEND-CORE-052:
+    questions:
+      - id: Q1
+        text: |
+          How many EU Member State EUDI Wallets does your product currently
+          support? Is interoperability validation performed against the EU
+          reference implementation only, or also against national wallet
+          implementations? What is your roadmap for coverage of all 27+
+          national wallets?
+        dimension: capability
+      - id: Q2
+        text: |
+          How does your product obtain and update the Trusted List of issuers
+          and wallet providers? Does it consume the trust-list publication
+          feed automatically, or does it require manual configuration? What
+          is the refresh interval? How does it handle trust anchor rotations
+          or signing key updates?
+        dimension: capability
+      - id: Q3
+        text: |
+          Does your product support proximity presentation flows (ISO 18013-5
+          via BLE or NFC, per ARF Topic 16)? If so, describe the hardware
+          requirements and integration model (SDK, relay service, etc.).
+        dimension: capability

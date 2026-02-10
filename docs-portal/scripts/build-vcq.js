@@ -281,6 +281,9 @@ for (const req of allRequirements) {
     // DEC-286: Determine ALL source groups for union-based filtering
     const sourceGroups = determineSourceGroups(req, legalBases);
 
+    // Deployment architecture tagging (DEC-TBD)
+    const deploymentArchitectures = req.deploymentArchitectures || [];
+
     // Create processed requirement
     const processed = {
         id: req.id,
@@ -304,6 +307,7 @@ for (const req of allRequirements) {
         isExtended,
         scope: req.scope || 'core',
         sourceGroups,  // DEC-286: Array for union-based filtering (was sourceGroup)
+        deploymentArchitectures,  // DEC-TBD: Architecture filter (intermediary, direct_saas, direct_onprem)
         deadline: req.deadline,
         obligation: req.obligation || 'SHOULD',  // RFC 2119: MUST, SHOULD, MAY, etc. (stored in YAML)
         notes: req.notes?.trim(),

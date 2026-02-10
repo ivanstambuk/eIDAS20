@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T13:08:54.530Z",
+  "generatedAt": "2026-02-10T14:47:03.057Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -263,6 +263,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -304,6 +305,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -345,6 +347,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -384,6 +387,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -426,6 +430,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -467,6 +472,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -508,6 +514,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -549,6 +556,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -590,6 +598,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -638,6 +647,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -681,6 +691,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -722,6 +733,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -763,6 +775,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "core.yaml"
@@ -804,6 +817,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -845,6 +859,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -886,6 +901,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -928,6 +944,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -968,6 +985,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1006,6 +1024,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1059,6 +1078,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1097,6 +1117,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1131,6 +1152,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1169,6 +1191,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1208,6 +1231,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1246,6 +1270,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1286,6 +1311,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1338,6 +1364,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1387,6 +1414,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1433,6 +1461,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1480,6 +1509,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1526,6 +1556,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1575,6 +1606,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1621,6 +1653,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1674,6 +1707,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1719,6 +1753,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1764,6 +1799,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1809,6 +1845,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MAY",
       "_sourceFile": "core.yaml"
@@ -1855,6 +1892,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "core.yaml"
@@ -1896,6 +1934,7 @@
         "eidas",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "notes": "This requirement implements the \"Compliance by Environment\" principle \nestablished in DEC-281 (Jan 2026 Alignment Audit). Even if a specific \nattestation relates to an object or organization (not personal data per se), \nthe wallet session context and processing metadata create an identifiable \ndata subject context.\n\nExceptions (attestations that may not require full GDPR safeguards):\n- Pure boolean ZKP proofs with high unlinkability\n- Device-only attestations with no wallet user context\n- Anonymous aggregate attestations\n\nHowever, the PRODUCT should not make these determinations - the CUSTOMER \n(RP as data controller) documents exceptions in their DPIA.",
@@ -1936,6 +1975,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OIDF \nconformance suite is a free, open-source tool — there is no cost barrier \nto running these tests. Vendors claiming OID4VP support without \nconformance test validation represent a significant interoperability risk.\n\nThe OIDF suite covers both SD-JWT VC and ISO mDoc credential formats \nwithin the same test infrastructure. ISO 18013-5 proximity (BLE) testing \nis covered by separate ISO 18013-6 lab-based test methods, which are \noutside the scope of this requirement.\n\nClarification questions for vendor evaluation:\n\n1. Credential formats tested: Which formats were tested — SD-JWT VC, \n   ISO mDoc, or both?\n2. Spec version: Which version of the OID4VP spec was tested against \n   (1.0 Final, ID2, draft-24)?\n3. Response modes: Were both direct_post and direct_post.jwt \n   (encrypted) response modes tested?\n4. Flow types: Were both cross-device (QR code) and same-device flows \n   tested?\n5. Query language: Was DCQL query support tested in addition to \n   presentation_definition?\n6. Test evidence: Can you provide the conformance test results/report?\n\nReferences:\n- OIDF OID4VP conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-presentations/\n- OIDF conformance suite (open source): https://gitlab.com/openid/conformance-suite/",
@@ -1980,6 +2020,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 2). The OID4VCI \nconformance tests are under active development by the OpenID Foundation, \nwith preview tests covering OID4VCI draft 15 ID2, HAIP draft 03, and \nOAuth 2.0 Attestation-Based Client Authentication draft 05.\n\nAs the test suite matures, vendors should revalidate against updated \ntest plans. The requirement is for ongoing conformance, not a one-time \ncertification.\n\nClarification questions for vendor evaluation:\n\n1. Credential formats tested: Which formats were tested — SD-JWT VC, \n   ISO mDoc, or both?\n2. Client authentication: Was OAuth 2.0 Attestation-Based Client \n   Authentication tested?\n3. Batch issuance: Does the product support and test batch credential \n   issuance flows?\n4. Deferred issuance: Does the product support deferred issuance \n   (async credential delivery)?\n5. Test evidence: Can you provide the conformance test results/report?\n\nReferences:\n- OIDF OID4VCI conformance: https://openid.net/certification/conformance-testing-for-openid-for-verifiable-credential-issuance/\n- Test instructions: https://docs.google.com/document/d/1MaTk6dtk8FhkLy-mFp8XzI51yKTTVHnJvUwUcEHoQqE/",
@@ -2024,6 +2065,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 3). TS5 defines the \ntechnical interface that connector products must implement to enable \ntheir RP customers to register with Member State registries.\n\nClarification questions for vendor evaluation:\n\n1. API implementation scope: Does the product implement the full TS5 \n   OpenAPI v3 specification, or a subset? Which endpoints are supported?\n2. Management UI: Does the product provide a management UI for \n   registration data, or only the programmatic API?\n3. Multi-Member-State support: Can the product register with multiple \n   Member State registries simultaneously (for cross-border operations)?\n4. JWS verification: Does the product validate JWS signatures on \n   registry responses per IETF RFC 7515?\n5. Registration lifecycle: Does the product support the full \n   registration lifecycle — initial registration, updates, and \n   de-registration?\n6. Entitlement management: Does the product support configuring \n   entitlements and sub-entitlements per Member State requirements?\n7. Intermediary flag: If the RP uses an intermediary, does the product \n   correctly flag this in the registration data?\n8. Automated renewal: Does the product support automated registration \n   renewal, or is manual intervention required?\n\nReferences:\n- TS5 specification: EC TS05 V1.0 (2025-06)\n- Legal basis: CIR (EU) 2025/848 (registration of wallet-relying parties)",
@@ -2072,6 +2114,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 4). The stakeholder \nasked whether wallets validate the OID4VP \"purpose\" parameter against \nregistered RP purposes. Analysis revealed that the ARF does not use the \nstandard OID4VP purpose field; instead it defines a richer mechanism via \nregistration certificates and the RPRC_19a extension. The wallet can \nverify requested attributes against registered ones (RPRC_21).\n\nExisting requirements cover registration (VEND-CORE-031), certificate \nlifecycle (VEND-CORE-041), and the TS5 API (VEND-CORE-045). This \nrequirement fills the operational gap: how the product selects the \ncorrect intended use for each transaction.\n\nSet to MUST because RPRC_19a is a SHALL requirement — the RP Instance \nmust include the intended use identifier and description in every \npresentation request. The connector product cannot enable this \ncompliance without a mechanism to configure and select intended uses.",
@@ -2118,9 +2161,237 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 7). The stakeholder \nasked whether the RP gets any indication when the user rejects or \nabandons a request, noting this is critical for distribution channel UX.\n\nInvestigation found that OID4VP provides structured error responses for \nexplicit rejection (\"access_denied\") but has no protocol-level signal \nfor user abandonment/timeout. The product must bridge this gap.\n\nThe requirement applies across all distribution channels: web\n(same-device redirect), mobile app (deep link), cross-device (QR),\nunattended terminals, staffed locations, contact centres, and\nproximity flows.\n\nNo ARF HLR directly mandates this — RPA_09 (display request to user) \nand RPA_12 (user approval before release) address the happy path only. \nThe error/timeout handling is a quality-of-implementation concern with \nsignificant operational impact.\n\nSet to SHOULD because while the OID4VP error responses are part of the \nprotocol (and thus implicitly required), the structured surfacing of \nthese events with distinct outcome codes and the timeout mechanism are \nproduct-level quality features. The regulatory framework does not \nexplicitly mandate how the RP backend is notified of failure outcomes.",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-048",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Declare which RP Deployment Architecture(s) the product supports",
+      "explanation": "The ARF defines distinct models for how a Relying Party can interact\nwith EUDI Wallet Units. These models have fundamentally different legal,\noperational, and data-flow implications:\n\n- **Intermediary**: the vendor acts as a separate, registered\n  Relying Party with its own access certificate (ARF Topic 53, RPI_01).\n  The wallet shows a dual-party display to the user.\n- **Direct SaaS**: the vendor hosts managed connector infrastructure\n  in its cloud, but the RP's own access certificate is used.\n  The wallet sees only the RP. Personal data transits vendor infrastructure.\n- **Direct Self-Hosted**: the vendor provides deployable software\n  (Docker, Helm, etc.) that the RP operates on its own infrastructure.\n  No personal data transits third-party infrastructure.\n\nVendors must clearly state which architecture(s) their product supports\nso the RP customer can assess regulatory compliance, data residency,\nprivate key custody, and user experience impact.\n\nSee also: docs/plans/rp-deployment-architectures.md for the full\nbackground analysis including data-flow diagrams and comparison matrix.",
+      "legalBases": [
+        {
+          "regulation": "2024/1183",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2024-1183?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/1183",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-1183?section=article-5b",
+      "arfReference": {
+        "topic": "Topic 53",
+        "hlr": [
+          "RPI_01"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [],
+      "deadline": "2027-11-21",
+      "obligation": "SHOULD",
+      "notes": "Gate requirement: establishes which deployment architecture(s) the\nvendor supports. Architecture-specific details are covered by\nVEND-CORE-049 (Intermediary), VEND-CORE-050 (Direct SaaS),\nVEND-CORE-051 (Direct Self-Hosted), and VEND-CORE-052 (cross-cutting).\n\nThree-architecture taxonomy derived from stakeholder analysis\n(2026-02-10). See docs/plans/rp-deployment-architectures.md.",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-049",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Describe intermediary registration, dual-party wallet display, and data forwarding procedures",
+      "explanation": "When operating as an ARF Intermediary, the vendor registers as a\nseparate Relying Party with its own access certificate (RPI_01) and\nacts on behalf of intermediated RPs. This architecture has specific\nobligations under ARF Topic 53:\n\n- **Registration**: the intermediary registers itself at a Registrar\n  (RPI_01) and must also register each intermediated RP at the RP's\n  Registrar (RPI_03), providing legal evidence of the relationship (RPI_04).\n- **Dual-party display**: the wallet MUST show both the intermediary's\n  identity and the intermediated RP's identity to the user when\n  requesting approval (RPI_07). The RP customer cannot suppress this.\n- **VP Token verification**: the intermediary must verify attestation\n  signatures, issuer trust status, validity, revocation status, and\n  holder binding before forwarding (RPI_09).\n- **Immediate data deletion**: all PIDs, attestations, and user\n  attributes must be deleted immediately after forwarding to the\n  intermediated RP, or after verification failure (RPI_10).\n\nNote: as of February 2026, neither the Android nor iOS EU reference\nwallet implements the dual-party display (RPI_07). However, it is a\nSHALL requirement and compliant wallets will enforce it.",
+      "legalBases": [
+        {
+          "regulation": "2024/1183",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2024-1183?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/1183",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-1183?section=article-5b",
+      "arfReference": {
+        "topic": "Topic 53",
+        "hlr": [
+          "RPI_01",
+          "RPI_03",
+          "RPI_06",
+          "RPI_07",
+          "RPI_09",
+          "RPI_10"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [
+        "intermediary"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "Intermediary-specific companion to VEND-CORE-048.\nOnly applicable when the vendor operates as an ARF Intermediary.\nVendor examples: Hopae Connect.",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-050",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Describe SaaS connector data path, response_uri domain, private key custody, and GDPR role",
+      "explanation": "When operating as a Direct SaaS connector, the vendor hosts managed\nwallet-connector infrastructure in its cloud but uses the RP\ncustomer's own access certificate and registration. The wallet sees\nonly the RP — there is no dual-party display.\n\nThis architecture raises specific questions:\n\n- **response_uri domain**: does the OID4VP response_uri (the\n  endpoint the wallet sends the VP Token to) point to the vendor's\n  domain or the RP customer's domain? Can the RP front the service\n  with its own DNS, domain name, and TLS certificate (reverse proxy)?\n- **Private key custody**: where are the RP's access certificate\n  private keys stored? Options include: (a) vendor holds keys in its\n  infrastructure, (b) RP-controlled HSM accessed via remote signing\n  API, or (c) split-signing where the vendor prepares unsigned\n  request objects and the RP signs locally.\n- **VP Token data path**: VP Tokens containing personal data transit\n  the vendor's infrastructure. The vendor is therefore a GDPR data\n  processor under Article 28, requiring a Data Processing Agreement\n  with the RP.\n- **Data retention**: unlike the intermediary model (which mandates\n  immediate deletion per RPI_10), the SaaS model's retention is\n  governed by the DPA terms agreed between vendor and RP.",
+      "legalBases": [
+        {
+          "regulation": "2024/1183",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2024-1183?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/1183",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-1183?section=article-5b",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas"
+      ],
+      "deploymentArchitectures": [
+        "direct_saas"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "SHOULD",
+      "notes": "Direct SaaS companion to VEND-CORE-048.\nOnly applicable when the vendor hosts the connector (RP's certificate).\nVendor examples: Sproof Ident (EU-hosted SaaS connector).",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-051",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Describe self-hosted connector deployment format, runtime dependencies, and update delivery",
+      "explanation": "When the vendor provides a Direct Self-Hosted connector, the RP\noperates the vendor's software on its own infrastructure. The RP's\naccess certificate private keys never leave the RP's perimeter, and\nno personal data transits third-party infrastructure.\n\nKey areas to clarify:\n\n- **Deployment format**: what artifacts are delivered? (Docker images,\n  Helm charts, VM images, JAR files, native packages). What are the\n  minimum infrastructure requirements?\n- **Runtime cloud dependencies**: does the deployed product require any\n  runtime connection back to the vendor's cloud? (telemetry, licence\n  validation, feature flags, trust-list feeds, configuration sync).\n  Can it run fully air-gapped?\n- **Update delivery**: how are patches and wallet-compatibility updates\n  delivered? (container registry push, apt/yum repository, manual\n  download). What is the expected lead time for critical security\n  patches?\n- **GDPR role**: the vendor is a software provider, not a data\n  processor. No Data Processing Agreement is needed for wallet\n  interaction data, since no personal data leaves the RP's perimeter.",
+      "legalBases": [
+        {
+          "regulation": "2024/1183",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2024-1183?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/1183",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-1183?section=article-5b",
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas"
+      ],
+      "deploymentArchitectures": [
+        "direct_onprem"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "SHOULD",
+      "notes": "Direct Self-Hosted companion to VEND-CORE-048.\nOnly applicable when the RP deploys the vendor's software on its own\ninfrastructure. Vendor examples: Lissi EUDI-Wallet Connector (Docker).",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-052",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Confirm EU wallet coverage, trust-list integration, and proximity flow support",
+      "explanation": "Regardless of deployment architecture, certain cross-cutting\ncapabilities affect the RP's ability to accept credentials from\nall EU member state wallets:\n\n- **EU wallet coverage**: which member state EUDI Wallet implementations\n  has the product been tested against? Is interoperability validation\n  performed against the EU reference implementation only, or also\n  against national implementations?\n- **Trust-list integration**: how does the product obtain and update\n  the Trusted List of issuers and wallet providers? Does it consume\n  the TS2 publication feed automatically, or does it require manual\n  configuration? What is the refresh interval?\n- **Proximity flows**: does the product support BLE/NFC-based proximity\n  identification flows (per Topic 16, ProxId_01a)? If so, describe the\n  hardware requirements and integration model (SDK, relay service, etc.).",
+      "legalBases": [
+        {
+          "regulation": "2024/1183",
+          "article": "Article 5b",
+          "paragraph": "1",
+          "link": "/regulation/2024-1183?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2024/1183",
+        "article": "Article 5b",
+        "paragraph": "1"
+      },
+      "legalBasisLink": "/regulation/2024-1183?section=article-5b",
+      "arfReference": {
+        "topic": "Topic 16",
+        "hlr": [
+          "ProxId_01a"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deploymentArchitectures": [],
+      "deadline": "2027-11-21",
+      "obligation": "SHOULD",
+      "notes": "Cross-cutting companion to VEND-CORE-048.\nApplies to all deployment architectures (architecture-agnostic).",
       "_sourceFile": "core.yaml"
     },
     {
@@ -2156,6 +2427,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "notes": "DORA ICT requirements apply IN ADDITION to eIDAS\nintermediary requirements. When the RP is a\nDORA-regulated financial entity, both sets apply.",
@@ -2201,6 +2473,7 @@
         "dora",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2238,6 +2511,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2275,6 +2549,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2312,6 +2587,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2349,6 +2625,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2393,6 +2670,7 @@
         "dora",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2430,6 +2708,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2467,6 +2746,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2511,6 +2791,7 @@
         "dora",
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST NOT",
       "_sourceFile": "ict.yaml"
@@ -2548,6 +2829,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "MUST",
       "_sourceFile": "ict.yaml"
@@ -2585,6 +2867,7 @@
       "sourceGroups": [
         "dora"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2025-01-17",
       "obligation": "SHOULD",
       "notes": "This requirement is conditional — it only applies if\nthe ESAs designate the vendor as Critical based on\nsystemic importance criteria (Art. 31(2)). Most\nintermediaries will NOT be designated as Critical\nICT TPPs.",
@@ -2633,6 +2916,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2676,6 +2960,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2719,6 +3004,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2765,6 +3051,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -2809,6 +3096,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2856,6 +3144,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2899,6 +3188,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2946,6 +3236,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -2989,6 +3280,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3035,6 +3327,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3081,6 +3374,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "intermediary.yaml"
@@ -3124,6 +3418,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3173,6 +3468,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3216,6 +3512,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3254,6 +3551,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3297,6 +3595,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3335,6 +3634,7 @@
       "sourceGroups": [
         "gdpr"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Logs must not contain attestation content (due to no-storage mandate)\nbut may contain verification metadata (pass/fail, timestamp, error codes).",
@@ -3374,6 +3674,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3412,6 +3713,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "intermediary.yaml"
@@ -3455,6 +3757,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3501,6 +3804,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3549,6 +3853,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF RPRC_20a: \"Relying Party Instances and Wallet Units SHALL support\nthe extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]...\"\n\nThe \"or\" indicates use-case dependency:\n- Online-only RPs: SD-JWT-VC / OpenID4VP required\n- In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required\n- Mixed-mode RPs: BOTH formats required\n\nThis contrasts with VEND-ISS-005 where issuers must unconditionally\nsupport both formats per ISSU_12.",
@@ -3593,6 +3898,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3631,6 +3937,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is a conditional requirement based on the RP's risk assessment and\nthe sensitivity of the use case. Not all intermediaries will require\ncertification.",
@@ -3670,6 +3977,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3709,6 +4017,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3747,6 +4056,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3793,6 +4103,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3839,6 +4150,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3877,6 +4189,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "intermediary.yaml"
@@ -3924,6 +4237,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This is the technical implementation of RPI_06. The access\ncertificate comes from the intermediary's own registration.\nThe RP registration certificate is obtained during the\nintermediary's registration of each intermediated RP (per\nRPI_03).",
@@ -3971,6 +4285,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This corresponds to ARF RPI_04 and supports wallet\nverification per RPI_07a. The intermediary must ensure\nregistration is complete BEFORE accepting intermediation\nrequests from an RP, otherwise wallet users will see\nverification failures.",
@@ -4019,6 +4334,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "This covers ARF Topic 7 (VCR_*) verification requirements\nfor attestation revocation. Attestation Status Lists (VCR_11)\nare the primary mechanism for efficient batch revocation\nchecking without per-credential queries.",
@@ -4066,6 +4382,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4111,6 +4428,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4153,6 +4471,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4197,6 +4516,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "This requirement only applies to QEAA issuance. Non-qualified\nEAAs may be issued without QTSP status but must still\nregister.",
@@ -4244,6 +4564,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Per ARF ISSU_12: \"A PID Provider or Attestation Provider\nSHALL offer its PIDs or attestations in all formats required\nin the PID Rulebook or the applicable Attestation Rulebook.\"\n\nThis is distinct from the RP/Verifier requirement, where\nformat support depends on supported use cases (remote vs.\nproximity). For issuers, BOTH formats are unconditionally\nmandatory.",
@@ -4288,6 +4609,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4331,6 +4653,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4374,6 +4697,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4417,6 +4741,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4460,6 +4785,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4506,6 +4832,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4552,6 +4879,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4599,6 +4927,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4645,6 +4974,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4688,6 +5018,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4731,6 +5062,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4779,6 +5111,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4822,6 +5155,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4868,6 +5202,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4910,6 +5245,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "_sourceFile": "issuer.yaml"
@@ -4956,6 +5292,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -4999,6 +5336,7 @@
         "gdpr",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5045,6 +5383,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
       "_sourceFile": "issuer.yaml"
@@ -5088,6 +5427,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5137,6 +5477,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Covers PID-specific format requirements. Non-PID\nattestation providers should refer to the relevant\nAttestation Rulebook instead.",
@@ -5185,6 +5526,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5234,6 +5576,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5280,6 +5623,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5328,6 +5672,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5374,6 +5719,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5420,6 +5766,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5466,6 +5813,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5515,6 +5863,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5564,6 +5913,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5609,6 +5959,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5668,6 +6019,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "issuer.yaml"
@@ -5707,6 +6059,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2026-11-21",
       "obligation": "MUST NOT",
       "notes": "Applies to ALL EAA providers (both qualified and\nnon-qualified). This is more restrictive than GDPR\npurpose limitation — it mandates complete isolation\nof EAA-related personal data.",
@@ -5747,6 +6100,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2026-11-21",
       "obligation": "MUST",
       "notes": "Applies to ALL EAA providers (both qualified and\nnon-qualified). \"Logically separate\" means data\nisolation at the architectural level, not just access\ncontrol restrictions.",
@@ -5786,6 +6140,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2026-11-21",
       "obligation": "MUST",
       "notes": "Only applies to QUALIFIED EAA providers (QTSPs).\nNon-qualified EAA providers are subject to 45h(1)\nand 45h(2) but not 45h(3).\n\nThis requirement also applies to private Wallet\nProviders via Article 5a(14) \"mutatis mutandis\" —\nsee RCA Wallet Provider track.",
@@ -5832,6 +6187,7 @@
       "sourceGroups": [
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "The obligation level differs by issuer type:\n- PID Provider: MUST implement cascading revocation\n- Attestation Provider: MUST publish cascading revocation\n  policy, MAY implement cascading revocation\n\nRelated requirements:\n- VEND-ISS-013: Status list publication mechanism\n- VEND-ISS-014: Revocation propagation times\n- VEND-ISS-031: WUA verification at issuance",
@@ -5869,6 +6225,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5905,6 +6262,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5941,6 +6299,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -5977,6 +6336,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6013,6 +6373,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6049,6 +6410,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6085,6 +6447,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6121,6 +6484,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "SHOULD",
       "notes": "Remote QES allows signatories to create qualified\nsignatures using keys managed by the QTSP, rather\nthan on a local QSCD.",
@@ -6158,6 +6522,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6194,6 +6559,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6230,6 +6596,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6268,6 +6635,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6306,6 +6674,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6349,6 +6718,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6385,6 +6755,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6421,6 +6792,7 @@
       "sourceGroups": [
         "eidas"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6465,6 +6837,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6509,6 +6882,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6558,6 +6932,7 @@
         "eidas",
         "arf"
       ],
+      "deploymentArchitectures": [],
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "_sourceFile": "trust_services.yaml"
@@ -6583,6 +6958,11 @@
       "VEND-CORE-045",
       "VEND-CORE-046",
       "VEND-CORE-047",
+      "VEND-CORE-048",
+      "VEND-CORE-049",
+      "VEND-CORE-050",
+      "VEND-CORE-051",
+      "VEND-CORE-052",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6754,6 +7134,11 @@
       "VEND-CORE-045",
       "VEND-CORE-046",
       "VEND-CORE-047",
+      "VEND-CORE-048",
+      "VEND-CORE-049",
+      "VEND-CORE-050",
+      "VEND-CORE-051",
+      "VEND-CORE-052",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6947,6 +7332,11 @@
       "VEND-CORE-045",
       "VEND-CORE-046",
       "VEND-CORE-047",
+      "VEND-CORE-048",
+      "VEND-CORE-049",
+      "VEND-CORE-050",
+      "VEND-CORE-051",
+      "VEND-CORE-052",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -7091,6 +7481,9 @@
       "VEND-CORE-045",
       "VEND-CORE-046",
       "VEND-CORE-047",
+      "VEND-CORE-048",
+      "VEND-CORE-049",
+      "VEND-CORE-052",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -7159,26 +7552,26 @@
     ]
   },
   "stats": {
-    "totalRequirements": 148,
+    "totalRequirements": 153,
     "byRole": {
-      "relying_party": 63,
+      "relying_party": 68,
       "issuer": 65,
       "universal": 35
     },
     "byProductCategory": {
-      "connector": 51,
+      "connector": 56,
       "issuance_platform": 48,
       "trust_services": 26,
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 124,
+      "eidas": 129,
       "gdpr": 20,
       "dora": 12,
-      "arf": 91
+      "arf": 94
     },
     "byCategory": {
-      "usage": 44,
+      "usage": 49,
       "contracts": 22,
       "registration": 27,
       "security": 29,
@@ -7186,9 +7579,9 @@
       "revocation": 8
     },
     "byObligation": {
-      "MUST": 127,
+      "MUST": 128,
       "MUST NOT": 11,
-      "SHOULD": 9,
+      "SHOULD": 13,
       "SHOULD NOT": 0,
       "MAY": 1
     }

@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-02-10T13:08:54.682Z",
+  "generatedAt": "2026-02-10T14:47:09.598Z",
   "schemaVersion": 1,
   "stats": {
-    "totalRequirements": 148,
-    "totalQuestions": 1324,
+    "totalRequirements": 153,
+    "totalQuestions": 1339,
     "byDimension": {
       "architecture": 76,
       "data_handling": 17,
       "auditability": 54,
       "supply_chain": 11,
       "security": 120,
-      "operational": 125,
-      "capability": 105,
-      "compliance_completeness": 98,
+      "operational": 128,
+      "capability": 109,
+      "compliance_completeness": 106,
       "lifecycle": 84,
       "contract_terms": 6,
       "compliance_evidence": 56,
@@ -2076,6 +2076,91 @@
         "id": "Q9",
         "text": "How does the product handle partial completions — e.g., the user approves presentation of some attributes but not others? Does the product surface this as a PARTIAL_SUCCESS state, or does it treat it as a REJECTED outcome?",
         "dimension": "technical_implementation"
+      }
+    ],
+    "VEND-CORE-048": [
+      {
+        "id": "Q1",
+        "text": "Which RP Deployment Architecture(s) does your product support?\nSelect all that apply:\n- **Intermediary**: your organisation acts as a registered intermediary\n  (per ARF Topic 53, RPI_01) with its own access certificate.\n- **Direct SaaS**: you host managed connector infrastructure in your\n  cloud, but the RP customer uses its own access certificate.\n- **Direct Self-Hosted**: you provide deployable software that the RP\n  customer operates on its own infrastructure.\nFor each supported architecture, briefly describe the engagement model\n(e.g., SaaS subscription, on-premise licence, managed service agreement).\n",
+        "dimension": "capability"
+      }
+    ],
+    "VEND-CORE-049": [
+      {
+        "id": "Q1",
+        "text": "Confirm that you register at a Registrar with your own access\ncertificate under your own Relying Party identity (per RPI_01).\nHow many intermediated RPs do you currently serve, and how do you\nregister each intermediated RP at their respective Registrar (per RPI_03)?\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "Describe how the mandatory dual-party wallet display (RPI_07) is\nhandled. What identity information (names, identifiers) does the\nwallet show to the user for both your organisation and the intermediated\nRP? How do you ensure this information is accurate and up-to-date?\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "What verifications do you perform on VP Tokens received from the\nwallet before forwarding attributes to the intermediated RP\n(per RPI_09)? Specifically address: attestation signature validation,\nissuer trust status check, attestation validity and revocation status,\nand holder binding verification.\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "Describe your data deletion procedure under RPI_10: how and when\nare personal data, PIDs, and attestations deleted after forwarding\nto the intermediated RP (or after verification failure)? What\ntechnical controls ensure immediate deletion occurs?\n",
+        "dimension": "compliance_completeness"
+      }
+    ],
+    "VEND-CORE-050": [
+      {
+        "id": "Q1",
+        "text": "Does the OID4VP response_uri (the endpoint the wallet sends the\nVP Token to) point to your domain or the RP customer's domain?\nDo you support RP-side reverse proxying — i.e., can the RP customer\nfront your service with its own DNS record, domain name, and TLS\ncertificate, so the wallet-facing endpoint appears to be the RP's\nown infrastructure?\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q2",
+        "text": "Where are the RP customer's access certificate private keys stored?\nIndicate which option(s) you support:\n(a) Vendor holds keys in its infrastructure.\n(b) RP-controlled HSM accessed via remote signing API.\n(c) Split-signing: vendor prepares unsigned request objects, RP signs locally.\nWho has custody of the private keys under each supported option?\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q3",
+        "text": "Describe the data flow path for VP Tokens: does the VP Token\n(containing personal data) transit your infrastructure? What GDPR\nrole do you assume — data processor, joint controller, or other?\nWhat Data Processing Agreement provisions apply?\n",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q4",
+        "text": "What data retention policy applies to VP Tokens and personal data\nthat transit your infrastructure? How long is presentation data\nretained, and what mechanisms ensure deletion after the agreed\nretention period?\n",
+        "dimension": "compliance_completeness"
+      }
+    ],
+    "VEND-CORE-051": [
+      {
+        "id": "Q1",
+        "text": "What is the deployment format for the self-hosted connector?\n(e.g., Docker containers, Kubernetes Helm charts, VM images,\nJAR files, native packages). What are the minimum infrastructure\nand platform requirements?\n",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q2",
+        "text": "Does the deployed product require any runtime connection back to\nyour cloud services during normal operation — for example, telemetry,\nlicence validation, trust-list feeds, wallet-compatibility updates,\nor feature flags? If so, describe what data is transmitted. Can the\nproduct operate fully air-gapped?\n",
+        "dimension": "operational"
+      },
+      {
+        "id": "Q3",
+        "text": "How are security patches, protocol updates, and wallet-compatibility\nupdates delivered to the RP customer? (e.g., container registry push,\napt/yum repository, manual download). What is the typical lead time\nfor critical security patches?\n",
+        "dimension": "operational"
+      }
+    ],
+    "VEND-CORE-052": [
+      {
+        "id": "Q1",
+        "text": "How many EU Member State EUDI Wallets does your product currently\nsupport? Is interoperability validation performed against the EU\nreference implementation only, or also against national wallet\nimplementations? What is your roadmap for coverage of all 27+\nnational wallets?\n",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How does your product obtain and update the Trusted List of issuers\nand wallet providers? Does it consume the trust-list publication\nfeed automatically, or does it require manual configuration? What\nis the refresh interval? How does it handle trust anchor rotations\nor signing key updates?\n",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q3",
+        "text": "Does your product support proximity presentation flows (ISO 18013-5\nvia BLE or NFC, per ARF Topic 16)? If so, describe the hardware\nrequirements and integration model (SDK, relay service, etc.).\n",
+        "dimension": "capability"
       }
     ],
     "VEND-ICT-001": [

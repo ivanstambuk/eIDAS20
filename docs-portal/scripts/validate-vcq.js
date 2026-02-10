@@ -296,6 +296,32 @@ function validate() {
                     message: `Missing 'obligation' field. Recommended: ${validObligations.join(', ')}`
                 });
             }
+
+            // Validate deploymentArchitectures field (DEC-TBD)
+            const validArchitectures = ['intermediary', 'direct_saas', 'direct_onprem'];
+            if (req.deploymentArchitectures !== undefined) {
+                if (!Array.isArray(req.deploymentArchitectures)) {
+                    errors.push({
+                        file,
+                        reqId,
+                        field: 'deploymentArchitectures',
+                        value: req.deploymentArchitectures,
+                        message: `'deploymentArchitectures' must be an array (empty for agnostic, or [${validArchitectures.join(', ')}])`
+                    });
+                } else {
+                    for (const arch of req.deploymentArchitectures) {
+                        if (!validArchitectures.includes(arch)) {
+                            errors.push({
+                                file,
+                                reqId,
+                                field: 'deploymentArchitectures',
+                                value: arch,
+                                message: `Invalid deployment architecture: "${arch}". Valid: ${validArchitectures.join(', ')}`
+                            });
+                        }
+                    }
+                }
+            }
         }
 
         console.log(`   ✓ Validated ${file}: ${config.requirements.length} requirements`);
