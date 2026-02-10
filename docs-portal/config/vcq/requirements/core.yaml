@@ -2389,11 +2389,10 @@ requirements:
     explanation: |
       When a wallet user declines a presentation request or a session times 
       out, the product should provide clear, actionable status information to 
-      the integrating application (the RP's backend or channel system). This 
-      is essential for usable RP integrations, particularly in mediated 
-      channels such as call centres, kiosks, and in-branch services, where a 
-      human operator or automated system needs to know the outcome in real 
-      time to proceed with the correct UX flow.
+      the integrating application (the RP's backend or distribution channel).
+      This is essential for usable RP integrations across all distribution
+      channels where a human operator or automated system needs to know the
+      outcome in real time to proceed with the correct UX flow.
 
       The OID4VP protocol defines error response codes that the wallet sends 
       back to the verifier:
@@ -2407,9 +2406,10 @@ requirements:
 
       However, the OID4VP protocol does NOT define a signal for user 
       abandonment — when the user simply closes the wallet, navigates away, 
-      or walks away from a kiosk. In this case the RP receives nothing. The 
-      product must therefore implement its own session timeout mechanism and 
-      surface a timeout event to the integrating application.
+      or walks away from a self-service terminal. In this case the RP 
+      receives nothing. The product must therefore implement its own session 
+      timeout mechanism and surface a timeout event to the integrating 
+      application.
 
       The product should provide the integrating application with at least 
       these distinct outcome states:
@@ -2424,17 +2424,29 @@ requirements:
       application to determine the appropriate next action (retry, escalate, 
       show alternative, terminate session).
 
-      This is particularly critical for channel scenarios:
-      - Call centre: The operator needs to know immediately whether to offer 
-        an alternative verification method or proceed with the service.
-      - Kiosk: The screen must update to show the correct status and 
-        instructions (e.g., "Verification timed out — please try again").
-      - In-branch: The staff member needs real-time status to guide the 
-        customer through the process.
+      **Distribution channel scenarios where this is critical:**
+      - **Web (same-device)**: The browser must update the page state when
+        the user returns from the wallet app via redirect or W3C Digital
+        Credentials API callback.
+      - **Mobile app (deep link)**: The RP's native app must handle the
+        return from the wallet app and display the correct outcome screen.
+      - **Cross-device (QR code)**: The desktop browser or display must
+        update when the user completes (or abandons) the flow on their
+        phone — requiring a server-side push or poll mechanism.
+      - **Unattended terminal (kiosk, gate)**: The screen must update to
+        show the correct status and instructions (e.g., "Verification
+        timed out — please try again").
+      - **Staffed location (service counter, reception)**: The operator
+        needs real-time status to guide the customer through the process
+        or offer an alternative verification method.
+      - **Contact centre**: The remote operator needs to know immediately
+        whether to proceed with the service or offer an alternative.
+      - **Proximity (BLE/NFC)**: Face-to-face ISO 18013-5 flows where the
+        reader device must handle verification failure gracefully.
 
-      Without this capability, channel integrations are left in an ambiguous 
-      state when the user does not complete the flow, resulting in poor UX 
-      and operational inefficiency.
+      Without this capability, distribution channel integrations are left
+      in an ambiguous state when the user does not complete the flow,
+      resulting in poor UX and operational inefficiency.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -2452,11 +2464,16 @@ requirements:
     notes: |
       Derived from stakeholder feedback (2026-02-09, Item 7). The stakeholder 
       asked whether the RP gets any indication when the user rejects or 
-      abandons a request, noting this is critical for channel UX.
+      abandons a request, noting this is critical for distribution channel UX.
 
       Investigation found that OID4VP provides structured error responses for 
       explicit rejection ("access_denied") but has no protocol-level signal 
       for user abandonment/timeout. The product must bridge this gap.
+
+      The requirement applies across all distribution channels: web
+      (same-device redirect), mobile app (deep link), cross-device (QR),
+      unattended terminals, staffed locations, contact centres, and
+      proximity flows.
 
       No ARF HLR directly mandates this — RPA_09 (display request to user) 
       and RPA_12 (user approval before release) address the happy path only. 
