@@ -1322,13 +1322,13 @@
 }
 
 .vcq-arch-inline-option:hover {
-    color: var(--arch-color, var(--accent-primary));
+    color: var(--accent-primary);
 }
 
 .vcq-arch-inline-option input {
     width: 14px;
     height: 14px;
-    accent-color: var(--arch-color, var(--accent-primary));
+    accent-color: #22d3ee;
     cursor: pointer;
 }
 
@@ -1345,7 +1345,7 @@
 }
 
 .vcq-arch-inline-option.selected .vcq-arch-inline-label {
-    color: var(--arch-color, var(--accent-primary));
+    color: var(--text-primary);
 }
 
 /* Architecture badges in requirements table */
@@ -1367,21 +1367,8 @@
     letter-spacing: 0.03em;
     text-transform: uppercase;
     white-space: nowrap;
-}
-
-.vcq-arch-badge.arch-intermediary {
-    background: rgba(59, 130, 246, 0.12);
-    color: #3b82f6;
-}
-
-.vcq-arch-badge.arch-direct_saas {
-    background: rgba(139, 92, 246, 0.12);
-    color: #8b5cf6;
-}
-
-.vcq-arch-badge.arch-direct_onprem {
-    background: rgba(16, 185, 129, 0.12);
-    color: #10b981;
+    background: rgba(34, 211, 238, 0.1);
+    color: #22d3ee;
 }
 
 /* Answer select */

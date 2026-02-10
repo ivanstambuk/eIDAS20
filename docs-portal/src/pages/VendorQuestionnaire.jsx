@@ -35,8 +35,6 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Intermediary',
         shortLabel: 'INT',
         icon: '🔗',
-        color: '#3b82f6',       // Blue
-        bgColor: 'rgba(59, 130, 246, 0.12)',
         description: 'Third-party acts as RP on behalf of the integrating organisation',
     },
     direct_saas: {
@@ -44,8 +42,6 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Direct SaaS',
         shortLabel: 'SaaS',
         icon: '☁️',
-        color: '#8b5cf6',       // Purple
-        bgColor: 'rgba(139, 92, 246, 0.12)',
         description: 'Organisation is the RP; vendor provides hosted connector service',
     },
     direct_onprem: {
@@ -53,8 +49,6 @@ const DEPLOYMENT_ARCHITECTURES = {
         label: 'Direct Self-Hosted',
         shortLabel: 'OnPrem',
         icon: '🏠',
-        color: '#10b981',       // Emerald
-        bgColor: 'rgba(16, 185, 129, 0.12)',
         description: 'Organisation is the RP; deploys vendor software on own infrastructure',
     },
 };
@@ -418,7 +412,6 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle, 
                                             <label
                                                 key={arch.id}
                                                 className={`vcq-arch-inline-option ${isArchSelected ? 'selected' : ''}`}
-                                                style={{ '--arch-color': arch.color }}
                                             >
                                                 <input
                                                     type="checkbox"
