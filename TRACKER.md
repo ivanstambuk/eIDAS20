@@ -8,9 +8,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Last Updated** | 2026-02-10 00:39 CET |
-| **Version** | V4.0.9 |
-| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 145 VCQ reqs (816 clarification Qs), 559 ARF HLRs |
+| **Last Updated** | 2026-02-10 12:05 CET |
+| **Version** | V4.1.1 |
+| **Portal Stats** | 44 docs, 391K words, 359 terms, 2,384 article links, 487 RCA reqs, 147 VCQ reqs (1,323 clarification Qs), 559 ARF HLRs |
 | **Next Action** | Stakeholder feedback Items 4-7 remaining (OID4VP purpose, RPI_07, intermediary naming, user rejection) |
 
 
@@ -37,6 +37,7 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-02-10 12:05 | **Fix: VCQ Source Group Filtering (DEC-286)** — Fixed bug where GDPR-only requirements (VEND-CORE-028 and 13 others) appeared when GDPR was not selected. Root cause: blanket `core.yaml → eidas` rule in `determineSourceGroups()` force-tagged all core requirements with `sourceGroups: ['gdpr', 'eidas']`, even those citing only GDPR (2016/679). Since eIDAS is always selected by default, these leaked through the union-based source filter. Fix: removed the blanket rule; the existing fallback (`sources.size === 0 → eidas`) already handles unmatched regulations correctly. eIDAS count corrected from 124→110. 1 commit. |
 | 2026-02-10 00:39 | **Fix: VCQ Clarification Questions + Git Workflow Hardening** — Discovered clarification questions for VEND-CORE-043/044/045 were missing from `clarification-questions/core.yaml` (questions lived only in `requirements/core.yaml` notes field). Added 19 structured questions (6+5+8) to the dedicated YAML. Rebuilt VCQ clarifications: 142→145 requirements with questions, 797→816 total questions. Fixed git divergence caused by accumulated local commits (4 commits without push). Force-pushed to resolve. Added **mandatory push-after-commit rule** to AGENTS.md — every `git commit` must be immediately followed by `git push`, no exceptions. 2 commits: `5357de9`, `96f0db5`. |
 | 2026-02-10 00:22 | **Feat: Stakeholder Feedback Processing (Items 1-3)** — Processed 7-item stakeholder feedback list. Item 1 (Wallet Provider detection): parked, WUA terminology updated, B-REQ IDs are internal. Item 2 (Conformance testing): added VEND-CORE-043 (OID4VP) and VEND-CORE-044 (OID4VCI) as MUST requirements with SD-JWT VC + ISO mDoc in titles, 6+5 clarification questions. Item 3 (TS5 RP Registration API): added VEND-CORE-045 as MUST with 8 clarification questions (API scope, UI, multi-MS, JWS, lifecycle, entitlements, intermediary flag, renewal). VCQ: 142→145 requirements. Items 4-7 remain open. Retro: created `lookup-hlr.cjs`, documented large JSON anti-pattern in AGENTS.md. |
 | 2026-01-30 13:07 | **Fix: VCQ Data Erasure + UI Polish** — Added TS7/ARF Topic 48 references to VEND-CORE-021 and VEND-INT-030 (data erasure requirements). UI: added requirement count badges to category headers (pill-style). Fixed Excel export line breaks from YAML block scalars (cleanText normalization). Confirmed `functional` categorization is already default. Retro: created text-processing.md snippet, documented TS7/Topic 48 in TERMINOLOGY.md, added JSDoc to cleanText(). 4 commits: `a9ef5a4`, `b25d972`, `3d6914d`, `d823b6d`. |

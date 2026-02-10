@@ -239,15 +239,8 @@ function determineSourceGroups(req, legalBases) {
         sources.add('dora');
     }
 
-    // DEC-286: Core VCQ requirements are always part of eIDAS ecosystem.
-    // These define what vendors must do to operate as eIDAS wallet intermediaries.
-    // Even if a core req cites GDPR (e.g., Article 28 DPA), it's mandated by
-    // eIDAS Article 5b(10) which references data protection requirements.
-    if (req._sourceFile === 'core.yaml') {
-        sources.add('eidas');
-    }
-
     // Default to eidas if no sources identified
+    // This handles requirements that don't match any known regulation set.
     if (sources.size === 0) {
         sources.add('eidas');
     }

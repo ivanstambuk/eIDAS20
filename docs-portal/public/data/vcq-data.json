@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T08:47:59.513Z",
+  "generatedAt": "2026-02-10T11:05:45.733Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -295,8 +295,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -330,8 +329,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -446,8 +444,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -481,8 +478,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -516,8 +512,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -551,8 +546,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
@@ -586,8 +580,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -664,8 +657,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -699,8 +691,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
@@ -734,8 +725,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -983,8 +973,7 @@
       "scope": "core",
       "sourceGroups": [
         "gdpr",
-        "arf",
-        "eidas"
+        "arf"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -1251,8 +1240,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -1581,8 +1569,7 @@
       "scope": "core",
       "sourceGroups": [
         "gdpr",
-        "arf",
-        "eidas"
+        "arf"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -1797,8 +1784,7 @@
       "isExtended": false,
       "scope": "core",
       "sourceGroups": [
-        "gdpr",
-        "eidas"
+        "gdpr"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST NOT",
@@ -6758,44 +6744,30 @@
   "requirementsBySourceGroup": {
     "eidas": [
       "VEND-CORE-001",
-      "VEND-CORE-002",
-      "VEND-CORE-003",
       "VEND-CORE-004",
       "VEND-CORE-005",
-      "VEND-CORE-006",
-      "VEND-CORE-007",
-      "VEND-CORE-008",
-      "VEND-CORE-009",
-      "VEND-CORE-010",
       "VEND-CORE-011",
-      "VEND-CORE-012",
-      "VEND-CORE-013",
-      "VEND-CORE-014",
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-019",
       "VEND-CORE-020",
-      "VEND-CORE-021",
       "VEND-CORE-022",
       "VEND-CORE-023",
       "VEND-CORE-024",
       "VEND-CORE-025",
       "VEND-CORE-026",
       "VEND-CORE-027",
-      "VEND-CORE-028",
       "VEND-CORE-029",
       "VEND-CORE-030",
       "VEND-CORE-031",
       "VEND-CORE-032",
       "VEND-CORE-033",
       "VEND-CORE-034",
-      "VEND-CORE-035",
       "VEND-CORE-038",
       "VEND-CORE-039",
       "VEND-CORE-040",
       "VEND-CORE-041",
-      "VEND-CORE-042",
       "VEND-CORE-043",
       "VEND-CORE-044",
       "VEND-CORE-045",
@@ -7023,7 +6995,7 @@
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 124,
+      "eidas": 110,
       "gdpr": 20,
       "dora": 12,
       "arf": 88
