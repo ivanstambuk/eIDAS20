@@ -1088,11 +1088,39 @@ requirements:
     category: registration
     requirement: Publish provider information per TS2 for discovery by wallets and RPs
     explanation: |
-      PID Providers, QEAA Providers, and Pub-EAA Providers must publish their 
-      provider information according to Technical Specification 2. This includes 
-      metadata endpoints, supported credential types, signing algorithms, and 
-      trust chain information. Publication enables wallet and RP discovery of 
-      available attestation providers.
+      PID Providers, QEAA Providers, and Pub-EAA Providers must publish their
+      provider information according to Technical Specification 2 (TS2). This
+      publication enables the discovery layer of the EUDI Wallet ecosystem —
+      wallets and RPs can dynamically discover available attestation providers
+      and their capabilities.
+
+      **Published metadata must include:**
+      - **Issuer identifier**: unique identifier for the provider within the
+        EUDI Wallet trust framework
+      - **Supported credential types**: which attestation types the provider
+        can issue (PID, QEAA, Pub-EAA), linked to catalogue entries (TS11,
+        VEND-CORE-022)
+      - **Credential formats**: which formats are supported for each type
+        (SD-JWT-VC, mdoc, or both per TS1)
+      - **Signing algorithms**: cryptographic algorithms used for credential
+        signing (aligned with TS1 algorithm profile)
+      - **Trust chain information**: how the provider's signing keys chain
+        to the EUDI Wallet trust anchors
+      - **Endpoints**: credential, authorization, and token endpoints per
+        the OpenID4VCI protocol (TS6, VEND-CORE-020)
+
+      **Publication requirements:**
+      - Metadata must be published in machine-readable format at a
+        well-known URL (per OpenID4VCI issuer metadata specification)
+      - Updates must be reflected promptly when service configuration changes
+        (e.g., new credential types, algorithm rotations)
+      - High availability is expected — wallet and RP discovery flows depend
+        on metadata endpoint accessibility
+
+      This requirement applies to issuance platforms and is restricted to
+      the issuer role. For intermediaries acting as connectors, the
+      requirement applies to the extent they need to discover and relay
+      provider information to intermediated RPs.
     legalBasis:
       regulation: 2024/2981
       article: Article 4
@@ -1111,19 +1139,47 @@ requirements:
     category: security
     requirement: Verify Wallet Unit Attestation (WUA) per TS3 before issuing credentials
     explanation: |
-      Before issuing attestations, Issuers must verify the Wallet Unit Attestation 
-      as specified in Technical Specification 3. The WUA proves that the target 
-      wallet instance runs on a certified WSCD, has not been revoked, and possesses 
-      the cryptographic keys for device binding. This prevents issuance to 
-      compromised or non-compliant wallet instances.
+      Before issuing attestations to a wallet unit, issuers must verify the
+      Wallet Unit Attestation (WUA) as specified in Technical Specification 3
+      (TS3). The WUA is the cornerstone of the EUDI Wallet trust model —
+      it cryptographically proves that the target wallet instance is
+      legitimate and trustworthy.
+
+      **WUA verification checks:**
+      1. **Signature validation**: verify the WUA's digital signature against
+         the Wallet Provider's signing key
+      2. **Certificate chain**: validate the chain from the WUA signing key
+         to the trust anchor in the EUDI Wallet Trusted List
+      3. **Revocation status**: check that the WUA has not been revoked
+         (indicating a compromised or decommissioned wallet unit)
+      4. **WSCD certification**: verify that the wallet's secure cryptographic
+         device (WSCD) is certified — this confirms the hardware security
+         level of key storage
+      5. **Key possession proof**: verify that the wallet unit holds the
+         private key corresponding to the key pair in the WUA
+
+      **Security rationale:**
+      Without WUA verification, an issuer could bind credentials to:
+      - A compromised wallet unit (keys extracted)
+      - A non-certified wallet (inadequate key protection)
+      - A revoked wallet (no longer under user's sole control)
+
+      **Issuance flow integration:**
+      WUA verification occurs during the OpenID4VCI credential request
+      (TS6, VEND-CORE-020). The wallet presents its WUA alongside the
+      proof-of-possession for the key pair. If WUA verification fails,
+      the issuer SHALL reject the credential request and return an
+      appropriate error response.
+
+      This requirement applies to issuance platforms and trust services.
     legalBasis:
-      regulation: 2024/2979
+      regulation: 2024/2982
       article: Article 5
-      paragraph: "1"
+      paragraph: "4"
     legalText: |
       Before issuing person identification data or electronic attestations of 
       attributes, providers shall verify the authenticity and validity of the 
-      wallet unit requesting the credential.
+      European Digital Identity Wallet to which the credential is to be issued.
     roles:
       - issuer
     productCategories:
@@ -1135,10 +1191,42 @@ requirements:
     category: security
     requirement: Implement TS8 remote signing protocol for QES/QESeal via EUDI Wallet
     explanation: |
-      Trust service providers offering remote qualified electronic signatures 
-      must implement the protocol specified in Technical Specification 8. This 
-      enables EUDI Wallet users to create legally binding QES using QTSP-managed 
-      signing keys while maintaining sole control through wallet-based authorization.
+      Trust service providers offering remote qualified electronic signatures
+      (QES) or qualified electronic seals (QESeal) must implement the protocol
+      specified in Technical Specification 8 (TS8). This enables EUDI Wallet
+      users to create legally binding electronic signatures using QTSP-managed
+      signing keys while maintaining sole control through wallet-based
+      authorisation.
+
+      **Remote signing architecture:**
+      - **Server Signing Application (SSA)**: the QTSP's server-side component
+        that manages signing keys in a Qualified Signature Creation Device
+        (QSCD — typically an HSM)
+      - **Wallet-based authorisation**: the user authorises each signing
+        operation through the EUDI Wallet, which acts as the Sole Control
+        Interface (SCI). Multi-factor authentication is required for each
+        signing operation
+      - **WYSIWYS**: What You See Is What You Sign — the user must be shown
+        the document to be signed before authorising. The wallet or the
+        signing application must render the document faithfully
+
+      **Key security requirements:**
+      - Signing keys must be generated and stored exclusively in certified
+        QSCDs (Art 29(1) eIDAS for QES)
+      - The user must have sole control over the signing key activation
+        (Art 26(1)(c) eIDAS)
+      - Each signing operation must be independently authorised — batch
+        signing requires per-document or per-batch explicit consent
+      - The link between the signing key and the user's identity must be
+        established through the PID in the wallet
+
+      **Document format support:**
+      The signing protocol must support at least PAdES (PDF), XAdES (XML),
+      CAdES (binary), and JAdES (JSON) signature formats to cover the
+      range of eIDAS-mandated signature types.
+
+      This requirement applies to trust service providers and is role-
+      restricted to the issuer (QTSP) role.
     legalBasis:
       regulation: 2014/910
       article: Article 26
@@ -1158,11 +1246,39 @@ requirements:
     category: usage
     requirement: Support pseudonym attestations per TS9 for privacy-preserving identification
     explanation: |
-      RPs and Issuers should support pseudonym attestations as specified in 
-      Technical Specification 9 when full identification is not required. This 
-      includes User Pseudonyms (UP) for persistent pseudonymous relationships 
-      and Wallet-RP Pseudonyms (WRP) for unlinkable transactions. Pseudonyms 
-      enable data minimization while maintaining accountability.
+      RPs and Issuers must support pseudonym attestations as specified in
+      Technical Specification 9 (TS9) when full identification is not legally
+      required. Article 5a(4)(b) eIDAS mandates that EUDI Wallets enable
+      selective disclosure "including by means of pseudonyms", and Art 5b(9)
+      prohibits RPs from refusing pseudonyms where identification is not
+      required by law.
+
+      **Pseudonym types (per ARF Topic 11):**
+      - **User Pseudonyms (UP)**: persistent pseudonymous identifiers that
+        allow a user to maintain an ongoing relationship with an RP without
+        revealing their true identity. Useful for subscription services,
+        loyalty programs, or recurring interactions
+      - **Wallet-RP Pseudonyms (WRP)**: per-RP, per-session pseudonyms that
+        prevent cross-RP linkability. Each interaction generates a fresh
+        pseudonym, ensuring that two RPs cannot collude to correlate users
+
+      **Privacy preservation mechanisms:**
+      - **Selective disclosure**: present only the minimum attributes required
+        (e.g., "age over 18" instead of full date of birth)
+      - **Zero-Knowledge Proofs (ZKP)**: prove a property about an attribute
+        without revealing the attribute value itself
+      - **Unlinkability**: ensure that multiple presentations by the same user
+        to different RPs (or even the same RP at different times) cannot be
+        correlated
+
+      **Re-identification safeguards:**
+      Pseudonymous users may need to be re-identified in specific circumstances
+      (court order, fraud investigation). The mechanism for re-identification
+      must be legally grounded and procedurally constrained.
+
+      For the intermediary context, the intermediary must preserve the
+      pseudonymous nature of the presentation when forwarding attributes —
+      it must not de-pseudonymise or add correlatable metadata.
     legalBasis:
       regulation: 2014/910
       article: Article 5a
@@ -1184,11 +1300,39 @@ requirements:
     category: usage
     requirement: Provide data export capability per TS10 for GDPR portability compliance
     explanation: |
-      RPs and Issuers must provide data export capabilities as specified in 
-      Technical Specification 10. This supports GDPR Article 20 data portability 
-      rights, enabling users to obtain transaction logs, backup credentials, 
-      and migrate between wallet providers. Export formats must be machine-readable 
-      and commonly used.
+      RPs and Issuers must provide data export capabilities as specified in
+      Technical Specification 10 (TS10). This supports GDPR Article 20 data
+      portability rights, enabling users to obtain and transfer their data
+      in a structured, commonly used, and machine-readable format.
+
+      **Data portability scope in the EUDI Wallet context:**
+      - **Transaction logs**: history of attestation presentations, issuances,
+        and data deletion requests
+      - **User preferences**: stored consent records, selective disclosure
+        configurations, and RP relationship metadata
+      - **Credential backup data**: depending on the wallet architecture,
+        users may need to export credential metadata for migration between
+        wallet providers
+
+      **GDPR Art 20 requirements:**
+      - Data must be provided in a structured, commonly used, and machine-
+        readable format (Art 20(1))
+      - Where technically feasible, the user has the right to have data
+        transmitted directly from one controller to another (Art 20(2))
+      - The right applies only to data "provided by" the data subject and
+        processed on consent or contract basis
+
+      **Implementation obligations:**
+      - Self-service export interface to minimise processing time
+      - Support for at least one structured/machine-readable format
+        (JSON recommended, XML and CSV as alternatives)
+      - Secure transmission of exported data (encryption in transit and
+        at rest during download)
+      - Response within the Art 12(3) one-month deadline
+
+      For intermediaries, the portability scope is limited to the data the
+      intermediary holds as processor — primarily transaction metadata and
+      audit logs, given the no-storage mandate (VEND-CORE-001).
     legalBasis:
       regulation: 2016/679
       article: Article 20
@@ -1210,14 +1354,43 @@ requirements:
     category: usage
     requirement: Verify registration certificates presented by counterparties
     explanation: |
-      Relying Parties must verify registration certificates presented by PID 
-      Providers, Attestation Providers, or other RPs to confirm their legitimate 
-      registration status. This includes validating certificate signatures and 
-      checking against Trusted Lists.
+      Relying Parties must verify registration certificates presented by PID
+      Providers, Attestation Providers, or other RPs (Topic 44). Registration
+      certificates are the EUDI Wallet ecosystem's mechanism for conveying
+      verified registration information in cryptographically signed form.
+
+      **Registration certificate verification chain (RPRC HLRs):**
+      - **RPRC_03**: certificate contents must include at least the
+        information required in Annex V of IR 2025/848
+      - **RPRC_05**: if the subject is not an RP (i.e., a provider), the
+        certificate SHALL NOT contain intended use (Annex I pts 9-10)
+      - **RPRC_10**: if an RP received registration certificates during
+        registration, it SHALL distribute these to all its RP Instances
+      - **RPRC_11**: the certificate SHALL contain at least one data deletion
+        contact channel (web form URL, email, or phone number)
+      - **RPRC_12**: the certificate SHALL contain the supervising DPA's
+        name, country, and contact information for reporting suspicious
+        attribute requests
+
+      **Verification steps:**
+      1. Validate the certificate's digital signature
+      2. Verify the certificate chain to a trusted anchor
+      3. Check the certificate's revocation status
+      4. Validate the certificate contents against the expected structure
+      5. Verify the intended use matches the actual data request
+
+      Art 5b(7) provides the legal basis: Member States must provide a
+      "common mechanism for allowing the identification and authentication
+      of relying parties". Registration certificates are the realisation
+      of this mechanism.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: ""
+      paragraph: "7"
+    legalText: |
+      Member States shall provide a common mechanism for allowing the 
+      identification and authentication of relying parties, as referred 
+      to in Article 5a(5), point (c).
     arfReference:
       topic: Topic 44
       hlr:
@@ -1236,13 +1409,48 @@ requirements:
     category: usage
     requirement: Verify attestation authenticity and validity before acceptance
     explanation: |
-      Before accepting an attestation, the RP must verify its cryptographic 
-      signature, check it has not expired, and verify its revocation status. 
-      This includes verifying the issuer's access certificate chain.
+      Before accepting any attestation (PID, QEAA, Pub-EAA, or non-qualified
+      EAA), the RP must perform a multi-step verification process. This
+      implements Art 5b(9) eIDAS, which places verification responsibility
+      squarely on the RP.
+
+      **Verification requirements per attestation type (OIA_12-15):**
+      - **PID**: validate signature using the trust anchor from the national
+        Trusted List (OIA_12)
+      - **QEAA**: validate signature using the trust anchor from the QEAA
+        Trusted List (OIA_13)
+      - **Pub-EAA**: validate signature using the trust anchor provided by
+        the Member State (OIA_14)
+      - **Non-qualified EAA**: validate signature using the trust anchor
+        specified in the applicable Rulebook (OIA_15) — additional issuer
+        authorisation verification may be required
+
+      **Unique element handling (OIA_16 — critical privacy requirement):**
+      After verification, the RP SHALL discard the values of all unique
+      elements (ISSU_35 elements + timestamps) as soon as they are no longer
+      needed. These values SHALL NOT be communicated to the RP backend or
+      any other party. This prevents correlation and tracking.
+
+      **Additional verification steps:**
+      - Check attestation expiry (validity period)
+      - Verify revocation status (Status Lists, OCSP)
+      - Verify the issuer's access certificate chain
+      - For intermediaries: perform verification before forwarding
+        (VEND-CORE-018, RPI_09)
+
+      The RP must distinguish between attestation types at verification
+      time because each type has a different trust anchor source. This
+      requires the RP to maintain and regularly update multiple trust
+      anchor stores.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
-      paragraph: "4"
+      paragraph: "9"
+    legalText: |
+      Relying parties shall be responsible for carrying out the procedure 
+      for authenticating and validating person identification data and 
+      electronic attestation of attributes requested from European Digital 
+      Identity Wallets.
     arfReference:
       topic: Topic 1
       hlr:
@@ -1258,14 +1466,46 @@ requirements:
     category: registration
     requirement: Register intended uses and comply with access certificate policies
     explanation: |
-      Relying Parties must register their intended uses for requesting data 
-      and comply with the access certificate policies established by the 
-      Access Certificate Authority. Certificate revocation procedures must 
-      be followed.
+      Relying Parties must register their intended uses and comply with the
+      access certificate policies established by Access Certificate Authorities
+      (ACAs). This is the mechanism that enforces data minimisation at the
+      ecosystem level — an RP can only request data elements that match its
+      registered intended uses.
+
+      **Intended use registration (Art 5b(2)(c)):**
+      - An RP must specify which categories of data it intends to request
+        from wallet users
+      - This registration is validated by the Registrar and encoded into
+        the RP's access certificate (Reg_31: user-friendly name; Reg_32:
+        EU-wide unique identifier)
+      - The wallet uses the intended use in the access certificate to
+        verify that the RP's actual data request matches its registration
+
+      **Access certificate policy compliance (Reg_15):**
+      The common Certificate Policy SHALL include a revocation policy
+      requiring ACA revocation when:
+      - The RP is suspended or cancelled by its Registrar
+      - On request of the certificate subject (the RP)
+      - On request of a competent national authority
+
+      **Intended use enforcement chain:**
+      1. RP registers intended uses → Registrar validates
+      2. ACA issues access certificate containing intended uses
+      3. RP includes access certificate in presentation requests (RPA_02a)
+      4. Wallet verifies intended use matches actual request
+      5. If mismatch → wallet can warn user or block presentation
+
+      For intermediaries, intended use registration must cover the
+      intended uses of each intermediated RP (per RPI_03, VEND-CORE-016).
+      The intermediary's own access certificate and the intermediated RP's
+      registration certificate must be consistent.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
       paragraph: "3"
+    legalText: |
+      Relying parties shall not request users to provide any data other 
+      than that indicated pursuant to paragraph 2, point (c).
     arfReference:
       topic: Topic 27
       hlr:

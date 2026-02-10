@@ -747,20 +747,32 @@ requirements:
   VEND-CORE-024:
     questions:
       - id: Q1
-        text: "Do you publish provider information endpoints as specified in Technical Specification 2 (TS2)?"
+        text: "Do you publish provider information endpoints as specified in Technical Specification 2 (TS2)? Provide the well-known URL(s) where your issuer metadata is published and confirm they follow the OpenID4VCI issuer metadata specification."
         dimension: capability
       - id: Q2
-        text: "What metadata do you publish (supported credential types, signing algorithms, trust chain, issuer identifiers)?"
+        text: "What metadata elements do you publish? Provide a complete inventory including: issuer identifier, supported credential types (with catalogue links), credential formats (SD-JWT-VC / mdoc), signing algorithms, trust chain to EUDI Wallet trust anchors, and all endpoint URLs (credential, authorization, token, deferred)."
         dimension: technical_implementation
       - id: Q3
-        text: "How frequently is your published metadata updated when your service configuration changes?"
+        text: "How frequently is your published metadata updated when your service configuration changes (e.g., new credential types, algorithm rotations, endpoint migrations)? Is metadata publication automated or manual, and what is the maximum propagation delay?"
         dimension: lifecycle
       - id: Q4
-        text: "How do wallets and Relying Parties discover your published metadata?"
+        text: "How do wallets and Relying Parties discover your published metadata? Do you support automatic discovery via well-known URIs, or do you rely on out-of-band distribution? How does your metadata integrate with the catalogue of attestations (TS11)?"
         dimension: interoperability
       - id: Q5
-        text: "Is your metadata endpoint highly available? What is the uptime SLA?"
+        text: "What is the availability SLA for your metadata endpoint? What redundancy and failover mechanisms are in place? If the metadata endpoint is unreachable, how does this affect wallet and RP operations?"
         dimension: sla
+      - id: Q6
+        text: "How do you handle metadata versioning when transitioning between configurations (e.g., adding a new credential format or deprecating an old signing algorithm)? Do you support concurrent old and new configurations during transition periods?"
+        dimension: operational
+      - id: Q7
+        text: "Is your published metadata digitally signed, and if so, using which key and trust chain? How can consumers verify the authenticity and integrity of the metadata they retrieve?"
+        dimension: security
+      - id: Q8
+        text: "For intermediary deployments, how does the intermediary's metadata relate to the metadata of the underlying issuer? Does the intermediary publish its own metadata, relay the issuer's metadata, or both?"
+        dimension: architecture
+      - id: Q9
+        text: "How do you monitor metadata endpoint health and detect stale or incorrect metadata? What alerting is in place for metadata publication failures?"
+        dimension: operational
 
   # ============================================================================
   # VEND-CORE-025: Wallet Unit Attestation Verification (TS3)
@@ -769,23 +781,32 @@ requirements:
   VEND-CORE-025:
     questions:
       - id: Q1
-        text: "Do you verify the Wallet Unit Attestation (WUA) before issuing credentials as specified in Technical Specification 3?"
+        text: "Do you verify the Wallet Unit Attestation (WUA) before issuing credentials as specified in Technical Specification 3? Describe the verification flow — at which stage in the OpenID4VCI issuance flow (TS6) does WUA verification occur, and what happens to the credential request if verification fails?"
         dimension: capability
       - id: Q2
-        text: "What WUA verification checks do you perform (signature validation, certificate chain, revocation status, WSCD certification)?"
+        text: "Enumerate the WUA verification checks you perform: (a) signature validation against the Wallet Provider's signing key, (b) certificate chain validation to the Trusted List, (c) revocation status check, (d) WSCD certification verification, (e) key possession proof. Which of these do you implement, and which are you unable to perform?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle issuance requests from wallet instances with invalid, expired, or revoked WUAs?"
+        text: "How do you handle issuance requests from wallet instances with invalid, expired, or revoked WUAs? Do you return a specific error code? Do you log the failed attempt for security monitoring? Is the user informed of the reason for rejection?"
         dimension: operational
       - id: Q4
-        text: "How do you stay updated on the list of certified WSCDs and WUA trust anchors?"
+        text: "How do you stay updated on the list of certified WSCDs and WUA trust anchors? What is your process for integrating new trust anchors (e.g., when a new wallet provider onboards) and for removing trust anchors (e.g., when a wallet provider is de-certified)?"
         dimension: lifecycle
       - id: Q5
-        text: "What is the latency impact of WUA verification on the issuance process?"
+        text: "What is the latency impact of WUA verification on the issuance process? Have you optimised the verification flow (e.g., caching trust anchors, pre-fetching revocation status) to minimise added latency?"
         dimension: sla
       - id: Q6
-        text: "How do you handle WUA verification failures? What feedback is provided to the wallet user?"
-        dimension: user_experience
+        text: "How do you handle scenarios where the WUA revocation status check is inconclusive (e.g., revocation endpoint unavailable, status unknown)? Do you fail open (issue anyway), fail closed (reject), or defer (retry later)?"
+        dimension: security
+      - id: Q7
+        text: "Does your WUA verification distinguish between different WSCD types (internal, external, remote)? If so, do you apply different trust policies or issuance constraints based on the WSCD type?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle WUA verification for cross-device issuance scenarios where the wallet unit presenting the WUA may be on a different device than the one initiating the issuance flow?"
+        dimension: interoperability
+      - id: Q9
+        text: "What evidence of WUA verification do you retain for compliance auditing? Do you log the verification outcome, the WUA details (without storing the WUA itself), and the trust chain used?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-026: Remote Signing Protocol (TS8)
@@ -794,29 +815,32 @@ requirements:
   VEND-CORE-026:
     questions:
       - id: Q1
-        text: "Do you support remote qualified electronic signature creation via EUDI Wallet as specified in Technical Specification 8 (TS8)?"
+        text: "Do you support remote qualified electronic signature (QES) and/or qualified electronic seal (QESeal) creation via EUDI Wallet as specified in Technical Specification 8 (TS8)? Specify which signing types you support and whether the protocol is fully implemented or partially."
         dimension: capability
       - id: Q2
-        text: "How do you ensure sole control of the signatory over the remote signing process?"
+        text: "How do you ensure sole control of the signatory over the remote signing process? Describe the Sole Control Interface (SCI) architecture — how does the wallet authorise each signing operation, and what multi-factor authentication is required?"
         dimension: security
       - id: Q3
-        text: "What multi-factor authentication is required to authorize each signing operation?"
-        dimension: security
+        text: "Are signing keys generated and stored exclusively in certified QSCDs (HSMs meeting Art 29(1) eIDAS requirements)? Provide the certification details and standards met (e.g., EN 419 241-2, Common Criteria EAL4+)."
+        dimension: compliance_evidence
       - id: Q4
-        text: "Are signing keys generated and stored in HSMs meeting QSCD requirements?"
-        dimension: compliance_evidence
-      - id: Q5
-        text: "How is the What You See Is What You Sign (WYSIWYS) principle implemented?"
+        text: "How is the What You See Is What You Sign (WYSIWYS) principle implemented? Who renders the document — the wallet, the SSA, or both? How do you prevent tampering between the displayed document and the signed document?"
         dimension: user_experience
-      - id: Q6
-        text: "What document formats do you support for signing (PDF, XML, plain text)?"
+      - id: Q5
+        text: "What document and signature formats do you support? Cover at minimum PAdES (PDF), XAdES (XML), CAdES (binary), and JAdES (JSON). Which signature levels are supported (B-B, B-T, B-LT, B-LTA)?"
         dimension: interoperability
-      - id: Q7
-        text: "How do you support batch and automated signing scenarios while maintaining sole control?"
+      - id: Q6
+        text: "How do you handle batch and automated signing scenarios while maintaining sole control per Art 26(1)(c)? Is per-document consent required, or can the user authorise a batch? What is the maximum batch size?"
         dimension: flexibility
+      - id: Q7
+        text: "How is the link between the signing key and the user's identity established? Is the user's PID from the wallet used for this purpose, and if so, how is the PID verified before key binding?"
+        dimension: technical_implementation
       - id: Q8
-        text: "Is your Server Signing Application (SSA) fully certified as part of a QSCD (Qualified Signature Creation Device)? Provide certification details."
+        text: "Is your Server Signing Application (SSA) independently certified as part of a QSCD? Provide certification body, certificate ID, and validity period. How does recertification work when the SSA is updated?"
         dimension: compliance_evidence
+      - id: Q9
+        text: "What audit trail is generated for each signing operation? Does the trail include the signatory's identity (pseudonymised), the document hash, the signing timestamp, and the authorisation mechanism used?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-027: Pseudonym Attestations (TS9)
@@ -825,23 +849,32 @@ requirements:
   VEND-CORE-027:
     questions:
       - id: Q1
-        text: "Do you support pseudonym attestations as specified in Technical Specification 9 (TS9)?"
+        text: "Do you support pseudonym attestations as specified in Technical Specification 9 (TS9)? Indicate which of the following you support: User Pseudonyms (UP), Wallet-RP Pseudonyms (WRP), Zero-Knowledge Proofs (ZKP), and age-over / threshold predicates."
         dimension: capability
       - id: Q2
-        text: "Do you support User Pseudonyms (UP) for persistent pseudonymous relationships?"
-        dimension: capability
+        text: "For User Pseudonyms (UP): how do you generate, store, and manage persistent pseudonymous identifiers? How do you ensure a UP remains stable across sessions with the same RP but unlinkable to UPs used with other RPs?"
+        dimension: technical_implementation
       - id: Q3
-        text: "Do you support Wallet-RP Pseudonyms (WRP) for unlinkable transactions?"
-        dimension: capability
+        text: "For Wallet-RP Pseudonyms (WRP): how do you ensure that each transaction generates a fresh pseudonym? What cryptographic mechanisms prevent correlation between sessions, even for the same RP?"
+        dimension: security
       - id: Q4
-        text: "Do you support Zero-Knowledge Proofs (ZKP) to prove attributes without revealing underlying data?"
-        dimension: capability
+        text: "Article 5b(9) prohibits RPs from refusing pseudonyms where identification is not required by law. How does your system enforce this — can the RP be technically prevented from demanding real identity when pseudonymous presentation is sufficient?"
+        dimension: compliance_completeness
       - id: Q5
-        text: "How do you ensure pseudonyms cannot be correlated across different Relying Parties or transactions?"
+        text: "How do you ensure pseudonyms cannot be correlated across different Relying Parties or transactions? What technical and operational controls prevent side-channel linkability (e.g., timing analysis, IP-based correlation)?"
         dimension: privacy
       - id: Q6
-        text: "Can pseudonymous users be re-identified if legally required (e.g., court order)? What is your process?"
+        text: "Can pseudonymous users be re-identified if legally required (e.g., court order, Article 5b(9) exception)? What is your process, and how do you verify the legal basis before re-identification?"
         dimension: legal_requirements
+      - id: Q7
+        text: "For the intermediary context: when forwarding a pseudonymous presentation from the wallet to the RP, how do you ensure the intermediary does not de-pseudonymise the user or add correlatable metadata (e.g., user session IDs, IP addresses)?"
+        dimension: architecture
+      - id: Q8
+        text: "How do you handle the transition when an RP that previously accepted pseudonyms now requires identification (or vice versa)? Is there a mechanism for identity escalation from pseudonymous to identified within the same session?"
+        dimension: lifecycle
+      - id: Q9
+        text: "What audit evidence do you retain for pseudonymous transactions? How do you balance the need for audit trails with the requirement to not undermine pseudonymity through logging?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-028: Data Export Capability (TS10)
@@ -850,23 +883,32 @@ requirements:
   VEND-CORE-028:
     questions:
       - id: Q1
-        text: "Do you provide data export capabilities as specified in Technical Specification 10 (TS10) for GDPR portability?"
+        text: "Do you provide data export capabilities as specified in Technical Specification 10 (TS10) for GDPR Article 20 portability? Describe the scope of exportable data: transaction logs, consent records, credential metadata, RP relationship data, and any other user data you hold."
         dimension: capability
       - id: Q2
-        text: "What data can be exported (transaction logs, credentials, presentation history)?"
-        dimension: data_handling
-      - id: Q3
-        text: "In what formats is data exported (JSON, XML, CSV)? Are these machine-readable and commonly used?"
+        text: "In what formats is data exported? Do you support at least one structured, commonly used, and machine-readable format (JSON, XML, CSV)? Is the export format documented so that another system can parse and import the data?"
         dimension: interoperability
+      - id: Q3
+        text: "How do users request data export? Is it self-service (e.g., dashboard button) or requires manual processing? What authentication is required before initiating an export? Is there a limit on export frequency?"
+        dimension: user_experience
       - id: Q4
-        text: "How do users request data export? Is it self-service or requires manual processing?"
-        dimension: automation
-      - id: Q5
-        text: "What is the response time for fulfilling data export requests?"
+        text: "What is the response time for fulfilling data export requests? Do you meet the GDPR Art 12(3) one-month deadline? For large datasets, do you support progressive/streaming export?"
         dimension: sla
-      - id: Q6
-        text: "How is exported data secured during transmission to the user?"
+      - id: Q5
+        text: "How is exported data secured during transmission and storage? Is the export encrypted? Can the user specify a destination (download link, direct transfer to another controller per Art 20(2))?"
         dimension: security
+      - id: Q6
+        text: "For the intermediary context: given the no-storage mandate (VEND-CORE-001), what data does the intermediary actually hold that is subject to portability? Is it limited to transaction metadata and audit logs, or does it include any cached presentation data?"
+        dimension: data_handling
+      - id: Q7
+        text: "How do you handle data export requests that span data held by both the intermediary and the intermediated RP? Is the user required to make separate requests, or can the intermediary coordinate a unified export?"
+        dimension: architecture
+      - id: Q8
+        text: "Does your data export include data about the user that was derived or inferred (e.g., risk scores, fraud flags) as opposed to directly provided? How do you distinguish between 'provided by' the data subject and 'generated by' the controller for Art 20 scope?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "What audit trail is generated for data export requests? Do you log the request timestamp, the data categories exported, the export format, and the delivery mechanism?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-029: Registration Certificate Verification
@@ -875,20 +917,32 @@ requirements:
   VEND-CORE-029:
     questions:
       - id: Q1
-        text: "How do you verify registration certificates presented by PID Providers, Attestation Providers, or other Relying Parties?"
+        text: "How do you verify registration certificates presented by PID Providers, Attestation Providers, or other Relying Parties? Describe the full verification chain: signature validation, certificate chain to trusted anchor, revocation status, and structural validation against Annex V of IR 2025/848."
         dimension: technical_implementation
       - id: Q2
-        text: "Do you validate certificate signatures against the Trusted List published by Member States?"
+        text: "Do you validate certificate signatures against the Trusted List published by each Member State? How do you handle the federation of multiple national Trusted Lists — do you maintain a local aggregate, or query per-Member-State endpoints dynamically?"
         dimension: security
       - id: Q3
-        text: "How frequently do you update your local copy of Trusted Lists?"
+        text: "How frequently do you update your local copy of Trusted Lists? What is the maximum staleness window, and how do you handle the period between a revocation event and your next Trusted List refresh?"
         dimension: lifecycle
       - id: Q4
-        text: "What happens when a counterparty presents an invalid or revoked registration certificate?"
+        text: "What happens when a counterparty presents an invalid, expired, or revoked registration certificate? Is the transaction blocked, degraded, or flagged for review? Is the user informed, and how?"
         dimension: operational
       - id: Q5
-        text: "Do you support certificate verification for all Member States, or only specific ones?"
+        text: "Do you support certificate verification for registration certificates from all 27 Member States, or only specific ones? If limited, what is your coverage roadmap, and how do you handle presentation requests from unsupported Member States?"
         dimension: geographic_scope
+      - id: Q6
+        text: "Per RPRC_11, registration certificates must contain data deletion contact information. Do you extract and use this information to facilitate user data deletion requests (integration with VEND-CORE-021)?"
+        dimension: interoperability
+      - id: Q7
+        text: "Per RPRC_12, registration certificates must contain DPA contact information for reporting suspicious requests. Do you surface this information to users, and do you have automated mechanisms for flagging potentially suspicious attribute requests?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Per RPRC_10, RPs must distribute registration certificates to all their RP Instances. For intermediary deployments with multiple RP instances, how do you ensure consistent certificate distribution and synchronised revocation handling?"
+        dimension: architecture
+      - id: Q9
+        text: "What audit trail do you maintain for registration certificate verification outcomes? Do you log verification successes, failures, and the specific checks that failed for compliance reporting?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-030: Attestation Authenticity and Validity Verification
@@ -897,23 +951,32 @@ requirements:
   VEND-CORE-030:
     questions:
       - id: Q1
-        text: "How do you verify the cryptographic signature on attestations received from wallets?"
+        text: "How do you verify the cryptographic signature on attestations received from wallets? Do you distinguish between attestation types (PID, QEAA, Pub-EAA, non-qualified EAA) and apply the appropriate trust anchor source for each type (OIA_12 through OIA_15)?"
         dimension: technical_implementation
       - id: Q2
-        text: "How do you verify that attestations have not expired?"
+        text: "How do you verify that attestations have not expired? Do you check both the validity period of the attestation itself and the validity of the issuer's signing certificate?"
         dimension: technical_implementation
       - id: Q3
-        text: "What revocation status checking mechanisms do you support for attestation validation?"
+        text: "What revocation status checking mechanisms do you support for attestation validation? Do you support Status Lists, OCSP, or both? What is the freshness guarantee for revocation checks?"
         dimension: technical_implementation
       - id: Q4
-        text: "How do you verify the issuer's access certificate chain?"
+        text: "How do you verify the issuer's access certificate chain back to the appropriate trust anchor? Do you maintain separate trust anchor stores for each attestation type, and how do you keep them synchronised with the Trusted Lists?"
         dimension: security
       - id: Q5
-        text: "What is the latency of your end-to-end attestation verification process?"
-        dimension: sla
+        text: "Per OIA_16, the RP SHALL discard unique elements (ISSU_35 elements + timestamps) as soon as no longer needed and SHALL NOT communicate these to the RP backend. How do you implement this requirement technically? How do you verify that unique elements are genuinely discarded from memory and not persisted in logs?"
+        dimension: privacy
       - id: Q6
-        text: "How do you handle attestations from issuers not in your trust list?"
+        text: "What is the end-to-end latency of your attestation verification process? Have you optimised verification (e.g., parallelising signature check, revocation check, and chain validation) to minimise user-facing delay?"
+        dimension: sla
+      - id: Q7
+        text: "How do you handle attestations from issuers not yet in your trust list (e.g., a newly onboarded QEAA Provider)? Is there a graceful degradation path, or is the attestation rejected outright?"
         dimension: operational
+      - id: Q8
+        text: "For non-qualified EAAs (per OIA_15), the trust anchor may be specified in a sector-specific Rulebook rather than a national Trusted List. How do you manage the integration and updates of Rulebook-specified trust anchors alongside national trust anchors?"
+        dimension: interoperability
+      - id: Q9
+        text: "For intermediary deployments: do you perform the full verification chain before forwarding attestation attributes to the intermediated RP (per VEND-CORE-018, RPI_09), or is any verification deferred to the RP? How do you communicate the verification outcome to the RP?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-031: Intended Use Registration and Access Certificate Policies
@@ -922,20 +985,32 @@ requirements:
   VEND-CORE-031:
     questions:
       - id: Q1
-        text: "Do you support registration of multiple intended uses for the organization?"
+        text: "Do you support registration of multiple intended uses for the organisation? Describe how intended uses are defined, validated against the data catalogue (TS11), and how many distinct intended uses your system can manage per RP."
         dimension: capability
       - id: Q2
-        text: "How do you ensure the organization's intended uses remain aligned with the access certificate policies of each ACA?"
+        text: "How do you ensure the organisation's intended uses remain aligned with the access certificate policies of each ACA? Describe the monitoring process — is it manual review, automated policy checking, or both?"
         dimension: compliance_monitoring
       - id: Q3
-        text: "What process is followed when an intended use needs to be added, modified, or removed?"
+        text: "What process is followed when an intended use needs to be added, modified, or removed? What is the lead time for each operation, and does it require re-issuance of the access certificate?"
         dimension: lifecycle
       - id: Q4
-        text: "How are access certificate policy updates from ACAs communicated and operationalized?"
+        text: "How are access certificate policy updates from ACAs communicated and operationalised? Do you receive automated notifications of policy changes, or do you rely on manual monitoring of ACA publications?"
         dimension: operational
       - id: Q5
-        text: "How do you handle revocation procedures required by access certificate policies?"
+        text: "How do you handle revocation procedures required by access certificate policies (per Reg_15)? Specifically, how quickly can you respond to: (a) Registrar suspension/cancellation, (b) requests from competent national authorities, and (c) voluntary RP-initiated revocation?"
         dimension: incident_response
+      - id: Q6
+        text: "Per Art 5b(3), RPs shall not request data other than that indicated in their registration. How does your system enforce this at the technical level — does the connector validate the presentation request against the access certificate's intended use before sending it to the wallet?"
+        dimension: security
+      - id: Q7
+        text: "For intermediary deployments: how do you manage the intended uses of each intermediated RP? Does the intermediary's access certificate contain a superset of all intermediated RPs' intended uses, or does it use per-RP registration certificates (RPRC) to distinguish individual RP scopes?"
+        dimension: architecture
+      - id: Q8
+        text: "How are the intended use names and unique identifiers (per Reg_31 and Reg_32) displayed to the wallet user? Do you ensure these are human-readable and meaningful enough for the user to make an informed consent decision?"
+        dimension: user_experience
+      - id: Q9
+        text: "What audit evidence do you maintain showing that your actual data requests have consistently matched your registered intended uses? Can you produce a compliance report demonstrating no unauthorised attribute requests over a given period?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-032: RP Access Certificate for Wallet Authentication
