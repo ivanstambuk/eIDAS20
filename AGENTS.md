@@ -622,6 +622,29 @@ The portal uses 4 standard breakpoints for responsive design:
 
 ### 🔧 Portal Architecture Gotchas
 
+#### CSS-First Debugging for JSX Spacing Issues
+
+When fixing spacing/layout problems in JSX, **always inspect parent CSS properties first** before assuming JSX whitespace is the cause.
+
+| CSS Property | Common Surprise |
+|-------------|----------------|
+| `display: inline-flex` + `gap` | Inserts space between text nodes and inline elements (flex children) |
+| `display: flex` + `gap` | Same — each JSX child node becomes a flex item with gap |
+| `white-space: pre` | Preserves all whitespace including JSX newlines |
+
+**Example bug:** `— Internal , synthesized from...` — the space before comma was caused by `gap: var(--space-1)` on the parent `inline-flex` element, NOT JSX whitespace between `</span>` and `{', '}`.
+
+**Fix pattern:** Wrap adjacent elements that should have no gap in a single `<span>` to make them one flex child.
+
+#### Case-Insensitive Exact Search (termLower Pattern)
+
+Orama's `exact: true` is **case-sensitive** against stored field values. To support case-insensitive abbreviation matching:
+
+1. **Build time** (`build-search-index.js`): Store original case in `term` (for display), lowercase in `termLower` (for search)
+2. **Runtime** (`useSearch.js`): Query `termLower` with `searchQuery.toLowerCase()`
+
+**When to apply this pattern:** Any new searchable field that needs case-insensitive exact matching should follow the same `field` + `fieldLower` convention.
+
 #### Dual Popover Implementations (Keep in Sync)
 
 The portal has **TWO term popover implementations** that must stay synchronized:

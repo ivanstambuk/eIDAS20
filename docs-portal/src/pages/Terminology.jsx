@@ -82,6 +82,8 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                             color: 'var(--text-secondary)'
                         }}
                     >
+                        {/* ⚠️ Wrapped in single <span> to prevent flex `gap` from inserting space before comma.
+                            Parent uses display:inline-flex + gap:var(--space-1), which splits text nodes into flex children. */}
                         <span>{'— '}<span style={{ color: 'var(--text-tertiary)' }}>Internal</span>{`, ${sources[0].articleNumber.replace(/^Synthesized/, 'synthesized')}`}</span>
                     </span>
                 ) : (
@@ -154,6 +156,7 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                                             color: 'var(--text-secondary)'
                                         }}
                                     >
+                                        {/* ⚠️ Single <span> wrapper — see comment above re: flex gap */}
                                         <span>{'— '}<span style={{ color: 'var(--text-tertiary)' }}>Internal</span>{`, ${source.articleNumber.replace(/^Synthesized/, 'synthesized')}`}</span>
                                     </span>
                                 ) : (

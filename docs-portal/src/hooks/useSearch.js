@@ -131,11 +131,11 @@ export function useSearch() {
             });
 
             // Search 2: Exact-match search on terminology aliases
-            // Searches the `termLower` field (lowercased at build time)
-            // with exact: true to disable prefix expansion.
-            //
-            // Query is lowercased to match the lowercased termLower field.
-            // This ensures case-insensitive matching ("wua" finds "WUA").
+            // ⚠️ Orama's `exact: true` is CASE-SENSITIVE against stored field values.
+            // We use `termLower` (lowercased at build time in build-search-index.js)
+            // and lowercase the query here to achieve case-insensitive matching.
+            // Without this pattern, searching "wua" would NOT match "WUA".
+            // See: build-search-index.js for the `termLower` field generation.
             const exactResults = await search(searchDb, {
                 term: searchQuery.toLowerCase(),
                 properties: ['termLower'],
