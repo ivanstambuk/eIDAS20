@@ -1,9 +1,9 @@
 {
   "version": "2.0",
-  "generated": "2026-02-09T23:22:50.651Z",
+  "generated": "2026-02-10T17:01:00.281Z",
   "statistics": {
-    "totalTerms": 359,
-    "totalDefinitions": 520,
+    "totalTerms": 363,
+    "totalDefinitions": 524,
     "sources": {
       "regulations": 252,
       "implementingActs": 143,
@@ -319,6 +319,7 @@
       "institution-for-occupational-retirement-provision",
       "insurance-intermediary",
       "insurance-undertaking",
+      "intended-use",
       "inter-alia",
       "intermediary",
       "intermediated-relying-party",
@@ -402,6 +403,7 @@
       "personal-data",
       "personal-data-breach",
       "pid-rulebook",
+      "presentation-request",
       "processing",
       "processor",
       "product",
@@ -411,6 +413,7 @@
       "provider-of-qualified-electronic-ledger",
       "provider-of-wallet-relying-party-access-certificates",
       "provider-of-wallet-relying-party-registration-certificates",
+      "proximity-flow",
       "pseudonym",
       "pseudonymisation",
       "public-administration-entity",
@@ -454,6 +457,7 @@
       "relevant-and-reasoned-objection",
       "relying-party",
       "relying-party-instance",
+      "remote-flow",
       "remote-qscd",
       "remote-qualified-electronic-seal-creation-device",
       "remote-qualified-electronic-signature-creation-device",
@@ -8242,6 +8246,46 @@
       "domains": []
     },
     {
+      "id": "intended-use",
+      "term": "intended use",
+      "sources": [
+        {
+          "definition": "A formally registered declaration at the Registrar specifying why a Relying Party requests data and which data elements it needs. Each intended use has a unique identifier (Reg_32) and a user-friendly description shown to wallet users for informed consent (RPRC_19a field (c)). Intended uses are bound to registration certificates — one certificate per intended use — and the wallet may verify that requested attributes match the registered scope (RPRC_21). An RP may register multiple intended uses.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)",
+          "articleNumber": "Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)",
+      "definitionGroups": [
+        {
+          "definition": "A formally registered declaration at the Registrar specifying why a Relying Party requests data and which data elements it needs. Each intended use has a unique identifier (Reg_32) and a user-friendly description shown to wallet users for informed consent (RPRC_19a field (c)). Intended uses are bound to registration certificates — one certificate per intended use — and the wallet may verify that requested attributes match the registered scope (RPRC_21). An RP may register multiple intended uses.",
+          "sources": [
+            {
+              "definition": "A formally registered declaration at the Registrar specifying why a Relying Party requests data and which data elements it needs. Each intended use has a unique identifier (Reg_32) and a user-friendly description shown to wallet users for informed consent (RPRC_19a field (c)). Intended uses are bound to registration certificates — one certificate per intended use — and the wallet may verify that requested attributes match the registered scope (RPRC_21). An RP may register multiple intended uses.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)",
+              "articleNumber": "Synthesized from IR 2025/848 Art 5, ARF Topic 27 (Reg_31, Reg_32), Topic 33 (RPRC_19a, RPRC_21)",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "inter-alia",
       "term": "inter alia",
       "sources": [
@@ -11234,6 +11278,46 @@
       "domains": []
     },
     {
+      "id": "presentation-request",
+      "term": "presentation request",
+      "sources": [
+        {
+          "definition": "A protocol message sent by a Relying Party (or its RP Instance) to a Wallet Unit, asking the user to share specific attributes from their PID or attestations. The request must be authenticated using the RP's wallet-relying party access certificate (CIR 2024/2982 Art 5(2)), must specify only the attributes registered for the RP's intended use (eIDAS Art 5b(3)), and must be presented to the wallet user for informed consent before any data is disclosed (CIR 2024/2982 Art 5(4-5)). Presentation requests may be transmitted remotely via OID4VP or in proximity via ISO 18013-5.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from eIDAS Art 5b(3), CIR 2024/2982 Art 5, ARF Topic 33",
+          "articleNumber": "Synthesized from eIDAS Art 5b(3), CIR 2024/2982 Art 5, ARF Topic 33",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from eIDAS Art 5b(3), CIR 2024/2982 Art 5, ARF Topic 33",
+      "definitionGroups": [
+        {
+          "definition": "A protocol message sent by a Relying Party (or its RP Instance) to a Wallet Unit, asking the user to share specific attributes from their PID or attestations. The request must be authenticated using the RP's wallet-relying party access certificate (CIR 2024/2982 Art 5(2)), must specify only the attributes registered for the RP's intended use (eIDAS Art 5b(3)), and must be presented to the wallet user for informed consent before any data is disclosed (CIR 2024/2982 Art 5(4-5)). Presentation requests may be transmitted remotely via OID4VP or in proximity via ISO 18013-5.",
+          "sources": [
+            {
+              "definition": "A protocol message sent by a Relying Party (or its RP Instance) to a Wallet Unit, asking the user to share specific attributes from their PID or attestations. The request must be authenticated using the RP's wallet-relying party access certificate (CIR 2024/2982 Art 5(2)), must specify only the attributes registered for the RP's intended use (eIDAS Art 5b(3)), and must be presented to the wallet user for informed consent before any data is disclosed (CIR 2024/2982 Art 5(4-5)). Presentation requests may be transmitted remotely via OID4VP or in proximity via ISO 18013-5.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from eIDAS Art 5b(3), CIR 2024/2982 Art 5, ARF Topic 33",
+              "articleNumber": "Synthesized from eIDAS Art 5b(3), CIR 2024/2982 Art 5, ARF Topic 33",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
       "id": "processing",
       "term": "processing",
       "sources": [
@@ -11847,6 +11931,46 @@
         "wallet_ecosystem",
         "attestation"
       ]
+    },
+    {
+      "id": "proximity-flow",
+      "term": "proximity flow",
+      "sources": [
+        {
+          "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate in close physical range — typically via BLE, NFC, or QR code — without requiring internet connectivity for the data exchange itself. Proximity flows follow ISO/IEC 18013-5 and are designed for in-person verification scenarios such as border control, age verification, or physical access. Support for proximity flows is not mandatory per the ARF but may be required by specific Attestation Rulebooks (ARB_02).",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5",
+          "articleNumber": "Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5",
+      "definitionGroups": [
+        {
+          "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate in close physical range — typically via BLE, NFC, or QR code — without requiring internet connectivity for the data exchange itself. Proximity flows follow ISO/IEC 18013-5 and are designed for in-person verification scenarios such as border control, age verification, or physical access. Support for proximity flows is not mandatory per the ARF but may be required by specific Attestation Rulebooks (ARB_02).",
+          "sources": [
+            {
+              "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate in close physical range — typically via BLE, NFC, or QR code — without requiring internet connectivity for the data exchange itself. Proximity flows follow ISO/IEC 18013-5 and are designed for in-person verification scenarios such as border control, age verification, or physical access. Support for proximity flows is not mandatory per the ARF but may be required by specific Attestation Rulebooks (ARB_02).",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5",
+              "articleNumber": "Synthesized from ARF Topic 6, ISO/IEC 18013-5, CIR 2024/2982 Art 5",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
     },
     {
       "id": "pseudonym",
@@ -13925,6 +14049,46 @@
               "celex": null,
               "articleId": "article-ARF Annex 1, Section A.4",
               "articleNumber": "ARF Annex 1, Section A.4",
+              "displayOrder": 5
+            }
+          ],
+          "isVariant": false
+        }
+      ],
+      "roles": [],
+      "domains": []
+    },
+    {
+      "id": "remote-flow",
+      "term": "remote flow",
+      "sources": [
+        {
+          "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate over the internet, typically using the OID4VP (OpenID for Verifiable Presentations) protocol. Remote flows are the default interaction model for online services — the RP sends a presentation request via HTTPS and receives the VP Token containing the disclosed attributes. All EUDI Wallet Units must support remote flows as the baseline presentation mechanism.",
+          "documentId": null,
+          "documentTitle": "Internal",
+          "documentCategory": "internal",
+          "documentType": "internal",
+          "celex": null,
+          "articleId": "article-Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5",
+          "articleNumber": "Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5",
+          "displayOrder": 5
+        }
+      ],
+      "hasMultipleSources": false,
+      "primaryLinkTarget": "article-Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5",
+      "definitionGroups": [
+        {
+          "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate over the internet, typically using the OID4VP (OpenID for Verifiable Presentations) protocol. Remote flows are the default interaction model for online services — the RP sends a presentation request via HTTPS and receives the VP Token containing the disclosed attributes. All EUDI Wallet Units must support remote flows as the baseline presentation mechanism.",
+          "sources": [
+            {
+              "definition": "A presentation interaction where the Relying Party and the Wallet Unit communicate over the internet, typically using the OID4VP (OpenID for Verifiable Presentations) protocol. Remote flows are the default interaction model for online services — the RP sends a presentation request via HTTPS and receives the VP Token containing the disclosed attributes. All EUDI Wallet Units must support remote flows as the baseline presentation mechanism.",
+              "documentId": null,
+              "documentTitle": "Internal",
+              "documentCategory": "internal",
+              "documentType": "internal",
+              "celex": null,
+              "articleId": "article-Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5",
+              "articleNumber": "Synthesized from ARF Topic 6, OID4VP specification, CIR 2024/2982 Art 5",
               "displayOrder": 5
             }
           ],
