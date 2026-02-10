@@ -179,8 +179,8 @@ Each question is a **single, focused question** — no (a)(b)(c)(d) sub-question
 | 1.8 | Rewrite clarification questions for VEND-CORE-048 (trim to 1 gate Q) | `config/vcq/clarification-questions/core.yaml` | ✅ DONE |
 | 1.9 | Write focused clarification questions for VEND-CORE-049 through 052 | `config/vcq/clarification-questions/core.yaml` | ✅ DONE |
 | 1.10 | Build and validate — `node scripts/build-vcq.js && node scripts/build-vcq-clarifications.js` | — | ✅ DONE |
-| 1.11 | Verify new requirements appear in portal (manual check) | — | ⬜ TODO |
-| 1.12 | Git commit: `feat: split VEND-CORE-048 into architecture-specific requirements` | — | ⬜ TODO |
+| 1.11 | Verify new requirements appear in portal (manual check) | — | ✅ DONE |
+| 1.12 | Git commit: `feat: split VEND-CORE-048 into architecture-specific requirements` | — | ✅ DONE — 205236db |
 
 ### Phase 2: Architecture tagging of existing requirements
 **Scope:** Audit and tag existing core.yaml requirements
@@ -193,7 +193,7 @@ Each question is a **single, focused question** — no (a)(b)(c)(d) sub-question
 | 2.3 | Audit VEND-CORE-019 through VEND-CORE-047 for architecture tagging | `config/vcq/requirements/core.yaml` | ✅ DONE (all agnostic — no tags needed) |
 | 2.4 | Audit `intermediary.yaml` — all 33 should get `[intermediary]` (confirm) | `config/vcq/requirements/intermediary.yaml` | ✅ DONE (33/33 tagged) |
 | 2.5 | Build and validate | — | ✅ DONE |
-| 2.6 | Git commit: `feat: tag existing VCQ requirements with deploymentArchitectures` | — | ⬜ TODO |
+| 2.6 | Git commit: `feat: tag existing VCQ requirements with deploymentArchitectures` | — | ✅ DONE — 205236db |
 
 ### Phase 3: UI — Architecture filter & badges
 **Scope:** VCQ page component, CSS
@@ -532,11 +532,11 @@ and proximity flows.
 | # | Task | Status |
 |---|------|--------|
 | 5.7.1 | Apply all tag corrections to YAML files | ✅ DONE — 21 corrections (17→agnostic, 4→[int,saas]) applied to intermediary.yaml |
-| 5.7.2 | Resolve identified duplications (merge, remove, or differentiate) | 🔄 → **Phase 6** (planned below) |
+| 5.7.2 | Resolve identified duplications (merge, remove, or differentiate) | ✅ DONE → **Phase 6** (C2+C4 merged, C1/C3/C5/C6 kept separate) |
 | 5.7.3 | Update explanations/CQs affected by scope changes | ✅ DONE — 68 explanation text fixes + 16 CQ text fixes across both YAML files |
-| 5.7.4 | Rebuild and validate: `node scripts/build-vcq.js && node scripts/validate-vcq.js` | ⬜ TODO |
-| 5.7.5 | Manual verification: re-test filter counts for each architecture | ⬜ TODO |
-| 5.7.6 | Git commit: `fix: correct deployment architecture tags after audit` | ⬜ TODO |
+| 5.7.4 | Rebuild and validate: `node scripts/build-vcq.js && node scripts/validate-vcq.js` | ✅ DONE |
+| 5.7.5 | Manual verification: re-test filter counts for each architecture | ✅ DONE |
+| 5.7.6 | Git commit: `fix: correct deployment architecture tags after audit` | ✅ DONE — c421f18e + 43c23bfc |
 
 ---
 
@@ -622,11 +622,11 @@ purpose — it's the data handler's relay/governance obligation, correctly tagge
 
 | # | Task | Status |
 |---|------|--------|
-| 6.2.1 | Semantic inventory: extract unique content from CORE-021 + CORE-035 | ⬜ TODO |
-| 6.2.2 | CQ deduplication: map 18 CQs → deduplicated set (~9–12) | ⬜ TODO |
-| 6.2.3 | Write merged VEND-CORE-021 (API + process + timeframes) | ⬜ TODO |
-| 6.2.4 | Delete VEND-CORE-035 from YAML | ⬜ TODO |
-| 6.2.5 | Update any cross-references pointing to VEND-CORE-035 | ⬜ TODO |
+| 6.2.1 | Semantic inventory: extract unique content from CORE-021 + CORE-035 | ✅ DONE |
+| 6.2.2 | CQ deduplication: map 18 CQs → deduplicated set (→12) | ✅ DONE |
+| 6.2.3 | Write merged VEND-CORE-021 (API + process + timeframes) | ✅ DONE |
+| 6.2.4 | Delete VEND-CORE-035 from YAML | ✅ DONE |
+| 6.2.5 | Update any cross-references pointing to VEND-CORE-035 | ✅ DONE — none found |
 
 ---
 
@@ -690,11 +690,11 @@ fails*, not about the checking itself. Different HLR (VCR_15), different concern
 
 | # | Task | Status |
 |---|------|--------|
-| 6.4.1 | Semantic inventory: extract unique content from INT-011 + INT-034 | ⬜ TODO |
-| 6.4.2 | CQ deduplication: map 18 CQs → deduplicated set (~9–12) | ⬜ TODO |
-| 6.4.3 | Write merged VEND-INT-011 (obligation + mechanisms + short-lived exception) | ⬜ TODO |
-| 6.4.4 | Delete VEND-INT-034 from YAML (and its CQs) | ⬜ TODO |
-| 6.4.5 | Update any cross-references pointing to VEND-INT-034 | ⬜ TODO |
+| 6.4.1 | Semantic inventory: extract unique content from INT-011 + INT-034 | ✅ DONE |
+| 6.4.2 | CQ deduplication: map 18 CQs → deduplicated set (→13) | ✅ DONE |
+| 6.4.3 | Write merged VEND-INT-011 (obligation + mechanisms + short-lived exception) | ✅ DONE |
+| 6.4.4 | Delete VEND-INT-034 from YAML (and its CQs) | ✅ DONE |
+| 6.4.5 | Update any cross-references pointing to VEND-INT-034 | ✅ DONE — none found |
 
 ---
 
