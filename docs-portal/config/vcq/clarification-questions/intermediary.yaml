@@ -738,23 +738,32 @@ requirements:
   VEND-INT-023:
     questions:
       - id: Q1
-        text: "Do you support SD-JWT-VC format for remote presentations?"
+        text: "Do you support SD-JWT-VC format for remote presentations? Can you verify SD-JWT signatures, validate selective disclosures (hash verification), and check key binding JWTs?"
         dimension: capability
       - id: Q2
-        text: "Do you support ISO 18013-5 mDoc format for proximity presentations?"
+        text: "Do you support ISO 18013-5 mDoc format for proximity presentations? Can you handle device engagement, session establishment, CBOR decoding, and COSE signature verification?"
         dimension: capability
       - id: Q3
-        text: "If both remote and proximity modes are supported, are both formats fully implemented?"
+        text: "If both remote and proximity modes are supported, are both formats fully implemented with equivalent verification depth, or is one format a secondary/limited implementation?"
         dimension: compliance_completeness
       - id: Q4
-        text: "Which wallet implementations have you tested format compatibility with (EUDI reference, Apple, Google, third-party)?"
+        text: "Which wallet implementations have you tested format compatibility with (EUDI reference wallet, Apple, Google, third-party)? Have you participated in EUDI Wallet plugfest or interoperability testing events?"
         dimension: interoperability
       - id: Q5
-        text: "Have you participated in EUDI Wallet plugfest or interoperability testing events?"
-        dimension: compliance_evidence
-      - id: Q6
-        text: "For SD-JWT-VC, do you support verification of individual disclosures (claims) independent of the full payload?"
+        text: "For proximity presentations, which transport protocols do you support — BLE, NFC, or both? Do you support ISO 18013-7 for additional proximity modes?"
         dimension: technical_implementation
+      - id: Q6
+        text: "For SD-JWT-VC, do you support verification of individual disclosures (claims) independent of the full payload? How do you handle the `_sd` claim array and disclosure hashing?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "For mDoc, do you correctly verify the Mobile Security Object (MSO) including the `ValidityInfo` and per-namespace digests? How do you handle expired MSOs?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "How do you handle Attestation Rulebook (ARB_02) requirements that mandate mDoc format for specific attestation types requiring proximity presentation? Is format support configurable per attestation type?"
+        dimension: architecture
+      - id: Q9
+        text: "What is your roadmap for supporting future credential format versions or new formats (e.g., W3C VC Data Model 2.0, ISO 18013-5 amendments)? How do you manage format version negotiation?"
+        dimension: roadmap
 
   # ============================================================================
   # VEND-INT-024: Selective Disclosure Support
@@ -763,17 +772,32 @@ requirements:
   VEND-INT-024:
     questions:
       - id: Q1
-        text: "Does your verification implementation correctly handle selectively disclosed attributes?"
+        text: "Does your verification implementation correctly handle selectively disclosed attributes, verifying only the disclosed subset without treating undisclosed claims as errors?"
         dimension: capability
       - id: Q2
-        text: "Do you support partial attribute disclosure in both mDoc and SD-JWT-VC formats?"
+        text: "For SD-JWT-VC selective disclosure, do you verify the hash of each disclosed claim against the issuer-signed payload? How do you handle the `_sd` array and salt validation?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you verify presentations where only a subset of attributes is disclosed?"
+        text: "For mDoc selective disclosure, do you verify each `IssuerSignedItem` digest against the Mobile Security Object (MSO)? How do you handle namespace-scoped disclosure?"
         dimension: technical_implementation
       - id: Q4
-        text: "What happens if an RP requests an attribute that was not disclosed?"
+        text: "What happens if an RP requests an attribute that was not disclosed by the user — do you return an error, silently omit it, or forward a partial result?"
         dimension: operational
+      - id: Q5
+        text: "When forwarding selectively disclosed attributes to the RP (per VEND-INT-004), do you forward exactly the disclosed subset without inferring, reconstructing, or flagging undisclosed attributes?"
+        dimension: compliance_completeness
+      - id: Q6
+        text: "Do you verify the key binding JWT (`kb-jwt`) in SD-JWT-VC presentations to confirm the holder is authorised to present the disclosed claims?"
+        dimension: security
+      - id: Q7
+        text: "How do you handle combined presentations where some attestations use SD-JWT-VC and others use mDoc — is the verification pipeline format-agnostic at the forwarding stage?"
+        dimension: architecture
+      - id: Q8
+        text: "Have you tested selective disclosure edge cases: single-attribute disclosure, empty disclosure (no claims), disclosure of nested objects, and disclosure of array elements?"
+        dimension: interoperability
+      - id: Q9
+        text: "How does your selective disclosure verification interact with the no-extraction mandate (VEND-INT-019) — does verification require decoding attribute values, or can it be performed purely on hashes/digests?"
+        dimension: privacy
 
   # ============================================================================
   # VEND-INT-025: Cryptographic Certification
@@ -782,17 +806,32 @@ requirements:
   VEND-INT-025:
     questions:
       - id: Q1
-        text: "Do you have certifications for your cryptographic implementations (FIPS 140-2/3, Common Criteria)?"
+        text: "Do you have certifications for your cryptographic implementations (FIPS 140-2/3, Common Criteria EAL4+, SOG-IS)? At what level, and for which specific modules?"
         dimension: compliance_evidence
       - id: Q2
-        text: "What certified cryptographic libraries or modules do you use?"
+        text: "What certified cryptographic libraries or modules do you use (e.g., OpenSSL FIPS module, BouncyCastle FIPS, AWS CloudHSM, Azure Key Vault)? Are these libraries used consistently across all verification paths?"
         dimension: technical_implementation
       - id: Q3
-        text: "If not currently certified, is certification on your roadmap?"
+        text: "If not currently certified, is certification on your roadmap? What certification level are you targeting, and what is the expected timeline?"
         dimension: roadmap
       - id: Q4
-        text: "Can you provide certification evidence to the organization for their risk assessment?"
+        text: "Can you provide certification evidence to the organisation for their risk assessment? What form does this take (certificate copy, audit report, vendor attestation letter)?"
         dimension: documentation
+      - id: Q5
+        text: "How do you handle algorithm agility — if a certified algorithm is deprecated or weakened, what is your process for migrating to a replacement while maintaining certification?"
+        dimension: lifecycle
+      - id: Q6
+        text: "Does your certification cover the full scope of cryptographic operations: signature verification (ECDSA/EdDSA/RSA), hash functions (SHA-256/SHA-384), TLS (cipher suites), and random number generation?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "For HSM-backed deployments, is the HSM itself certified (FIPS 140-2/3 Level 2+), and does the certification cover the specific key usage patterns in your intermediary product?"
+        dimension: security
+      - id: Q8
+        text: "How do you maintain certification across software updates — does each update require re-certification, or are updates covered under the original certification scope?"
+        dimension: operational
+      - id: Q9
+        text: "Are your cryptographic implementations subject to regular penetration testing or side-channel analysis beyond formal certification? What is the testing frequency?"
+        dimension: security
 
   # ============================================================================
   # VEND-INT-026: Embedded Disclosure Policy Compliance
@@ -801,17 +840,32 @@ requirements:
   VEND-INT-026:
     questions:
       - id: Q1
-        text: "How do you verify RP compliance with embedded disclosure policies in attestations?"
+        text: "How do you verify RP compliance with embedded disclosure policies in attestations? Is policy evaluation performed before or after the wallet presents the attestation?"
         dimension: technical_implementation
       - id: Q2
-        text: "What happens when an RP does not meet the disclosure policy conditions?"
+        text: "What happens when the intermediated RP does not meet the disclosure policy conditions — is the request blocked before reaching the wallet, or is the wallet informed and left to reject?"
         dimension: operational
       - id: Q3
-        text: "How is the disclosure policy verification result communicated to the wallet for user display?"
+        text: "How is the disclosure policy verification result communicated to the wallet for user display? Is this via a standard protocol mechanism or a proprietary API?"
         dimension: interoperability
       - id: Q4
-        text: "What disclosure policy types do you support?"
+        text: "What disclosure policy types do you support — RP category restrictions, purpose limitations, jurisdiction constraints, temporal windows, or others?"
         dimension: capability
+      - id: Q5
+        text: "How do you obtain the intermediated RP's registration data (RP category, registered purposes, jurisdiction) for evaluation against disclosure policies? Is this queried from the Registrar in real time?"
+        dimension: architecture
+      - id: Q6
+        text: "How does the disclosure policy check interact with the RPI_06 attribute scope check? Are they performed independently, and what is the order of evaluation?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "Can disclosure policies reference data that the intermediary cannot evaluate (e.g., the RP's internal data processing agreement)? How do you handle unresolvable policy conditions?"
+        dimension: operational
+      - id: Q8
+        text: "Are disclosure policies cached or evaluated fresh for each request? If cached, how do you handle policy updates by attestation issuers?"
+        dimension: lifecycle
+      - id: Q9
+        text: "What audit trail exists for disclosure policy evaluations — is the policy check result logged (pass/fail, which conditions were evaluated) without logging the attestation content?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-INT-027: WebAuthn for Pseudonyms
@@ -820,17 +874,32 @@ requirements:
   VEND-INT-027:
     questions:
       - id: Q1
-        text: "Do you support WebAuthn-based pseudonymous authentication from wallet units?"
+        text: "Do you support WebAuthn-based pseudonymous authentication from wallet units? Which WebAuthn specification version do you implement (Level 2, Level 3)?"
         dimension: capability
       - id: Q2
-        text: "Which WebAuthn attestation and assertion modes do you support?"
+        text: "Which WebAuthn attestation and assertion modes do you support? Do you support `direct` attestation for initial registration and `assertion` for subsequent authentications?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle pseudonymous authentication without revealing user identity?"
+        text: "How do you handle pseudonymous authentication without revealing user identity — is the public key (pseudonym) the only identifier visible to the intermediary, with no linkage to PID data?"
         dimension: privacy
       - id: Q4
-        text: "What WebAuthn authenticator types are supported?"
+        text: "What WebAuthn authenticator types are supported (platform, cross-platform, WSCD-backed)? How do you handle the `authenticatorData` fields including RP ID hash, flags, and sign count?"
         dimension: interoperability
+      - id: Q5
+        text: "Do you support the `ES256` algorithm (ECDSA P-256) at minimum per WebAuthn recommendations? Which additional algorithms are supported?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "How do you forward the verified pseudonym to the intermediated RP without associating it with any PID or attestation data? Is the pseudonym treated with the same deletion requirements as attestation data (per RPI_10)?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "How do you handle WebAuthn challenge freshness — is the challenge (nonce) generated by the intermediary, by the intermediated RP, or collaboratively?"
+        dimension: security
+      - id: Q8
+        text: "What is your credential registration flow — does the wallet register the WebAuthn credential directly with the intermediated RP (via the intermediary as proxy), or with the intermediary itself?"
+        dimension: architecture
+      - id: Q9
+        text: "How do you handle the scenario where a user's WSCD changes (e.g., phone replacement) — is there a re-registration mechanism that preserves the pseudonym continuity for the RP?"
+        dimension: lifecycle
 
   # ============================================================================
   # VEND-INT-028: RP-Specific Pseudonyms
@@ -839,17 +908,32 @@ requirements:
   VEND-INT-028:
     questions:
       - id: Q1
-        text: "Do you correctly handle RP-specific pseudonyms generated by wallets?"
+        text: "Do you correctly handle RP-specific pseudonyms generated by wallets? Is the RP ID used for pseudonym derivation the intermediated RP's identifier (not the intermediary's own identifier)?"
         dimension: capability
       - id: Q2
-        text: "How do you ensure pseudonyms cannot be linked across different RPs using your service?"
+        text: "How do you ensure pseudonyms cannot be linked across different RPs using your service? Since the intermediary sees pseudonyms for multiple RPs, what controls prevent cross-RP correlation?"
         dimension: privacy
       - id: Q3
-        text: "What technical controls prevent pseudonym correlation?"
+        text: "What technical controls prevent pseudonym correlation — are pseudonyms stored in per-RP isolated contexts, or processed in a shared pipeline where correlation could theoretically occur?"
         dimension: security
       - id: Q4
-        text: "Do you maintain any mapping between pseudonyms and real identities?"
+        text: "Do you maintain any mapping between pseudonyms and real identities (PIDs)? If pseudonym verification occurs alongside PID verification in the same session, how do you prevent linkage?"
         dimension: privacy
+      - id: Q5
+        text: "How do you ensure the RP ID used for pseudonym scoping is the intermediated RP's registered identifier and not the intermediary's domain? Is this configured per RP during onboarding?"
+        dimension: architecture
+      - id: Q6
+        text: "After forwarding the pseudonym to the RP, is it deleted from the intermediary's systems per the no-storage mandate? Or does the intermediary retain it for session continuity?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "How does RP-specific pseudonym handling interact with the cross-RP unlinkability requirement (VEND-INT-020)? Are there any shared data structures that could leak pseudonym information across RP contexts?"
+        dimension: security
+      - id: Q8
+        text: "If the intermediated RP changes its registered identifier (e.g., domain change), how does this affect existing pseudonyms? Is there a migration mechanism?"
+        dimension: lifecycle
+      - id: Q9
+        text: "Do you undergo privacy engineering reviews or formal unlinkability analysis to verify that RP-specific pseudonyms remain unlinkable across your intermediary platform?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-INT-029: Valid Access Certificate Usage
@@ -858,20 +942,32 @@ requirements:
   VEND-INT-029:
     questions:
       - id: Q1
-        text: "How do you obtain and manage Wallet-Relying Party Access Certificates from Registrars?"
+        text: "How do you obtain Wallet-Relying Party Access Certificates from Registrars? Is the enrolment process automated, and how long does initial provisioning take?"
         dimension: lifecycle
       - id: Q2
-        text: "How do you ensure the certificate is valid and not expired when interacting with wallets?"
+        text: "How do you ensure the access certificate is valid and not expired when interacting with wallets? Is there automated monitoring with renewal alerts well before expiry?"
         dimension: technical_implementation
       - id: Q3
-        text: "What certificate lifecycle management is in place (renewal alerts, automated rotation)?"
+        text: "What certificate lifecycle management is in place — automated rotation, overlap periods with both old and new certificates, and grace periods for renewal?"
         dimension: automation
       - id: Q4
-        text: "How do wallets verify your access certificate?"
+        text: "How do wallets verify your access certificate? Is the certificate chain verifiable against a Registrar Trusted List, and how do you ensure chain completeness?"
         dimension: interoperability
       - id: Q5
-        text: "What happens if the access certificate is revoked or expires during operations?"
+        text: "What happens if the access certificate is revoked or expires during operations — do all in-flight sessions fail, or is there a graceful degradation mechanism?"
         dimension: incident_response
+      - id: Q6
+        text: "For remote presentations (OID4VP), how is the access certificate presented — as the TLS server certificate, in the request JWT, or both? Is the presentation mechanism configurable?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "For proximity presentations (ISO 18013-5), how is the access certificate included in the reader authentication structure? Do you support the certificate format specified in ETSI TS 119 472-2?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "How does the intermediary's access certificate identity relate to the RPRC_19a identity of the intermediated RP? Can you explain how wallets detect the intermediary scenario by comparing these two identities (per RPI_07)?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "If the intermediary serves multiple Registrars (e.g., across Member States), how do you manage multiple access certificates and ensure the correct certificate is used for each RP context?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-INT-030: TS7 Data Deletion Interface

@@ -1064,26 +1064,50 @@ requirements:
     category: usage
     requirement: Support mandatory credential formats based on supported use cases
     explanation: |
-      Relying Party connectors and intermediaries must support the credential formats 
-      relevant to their operational use cases:
+      Relying Party connectors and intermediaries must support the
+      credential formats relevant to their operational use cases.
 
       **Remote Presentations (online services):**
-      - SD-JWT-VC format (Selective Disclosure JSON Web Token)
-      - OpenID4VP protocol for presentation exchange
+      - **SD-JWT-VC** format (Selective Disclosure JSON Web Token for
+        Verifiable Credentials) as the primary credential format
+      - **OpenID4VP** protocol for presentation exchange (same-device
+        and cross-device flows via `direct_post` response mode)
+      - The intermediary must verify SD-JWT VC signatures, validate
+        selective disclosures, and check key binding JWTs
 
       **Proximity Presentations (in-person verification):**
-      - ISO/IEC 18013-5:2021 (mDoc) format
-      - BLE/NFC protocols per ISO/IEC 18013-5 and 18013-7
+      - **ISO/IEC 18013-5:2021 (mDoc)** format for proximity
+        credential presentation
+      - **BLE and/or NFC** transport protocols per ISO/IEC 18013-5
+        and ISO/IEC 18013-7
+      - The intermediary must handle device engagement, session
+        establishment, CBOR decoding, and COSE signature verification
 
-      If the RP or intermediary supports BOTH remote and proximity use cases, 
-      then BOTH formats MUST be supported. The requirement is use-case-dependent, 
-      but within each use case the format is mandatory.
+      **Use-case dependency (RPRC_20a):**
+      Per RPRC_20a, Relying Party Instances and Wallet Units SHALL
+      support the extension for ISO/IEC 18013-5 OR the extension for
+      OpenID4VP (as applicable). The "or" indicates use-case
+      dependency:
+      - Online-only RPs: SD-JWT-VC / OpenID4VP required
+      - In-person-only RPs: mDoc / ISO 18013-5 required
+      - Mixed-mode RPs: BOTH formats required
 
-      Note: This differs from Issuers, who must unconditionally support both formats.
+      **Attestation Rulebook impact (ARB_02):**
+      The Attestation Rulebook for each attestation type determines
+      whether proximity presentation is required. If so, the Rulebook
+      mandates mDoc format issuance, meaning the intermediary must
+      support mDoc verification for those attestation types.
+
+      Note: This differs from Issuers, who must unconditionally
+      support both formats (per ISSU_12).
     legalBasis:
       regulation: 2024/2979
       article: Article 8
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet solutions shall support the technical standards and
+      specifications set out in Annex II for the formats of PIDs and
+      electronic attestations of attributes.
     annexReference: |
       Annex II of 2024/2979:
       - ISO/IEC.18013-5:2021
@@ -1095,9 +1119,12 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 3
-      hlr: PID_02
+      hlr:
+        - PID_02
+        - RPRC_20a
+        - ARB_02
     notes: |
-      Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support 
+      Per ARF RPRC_20a: "Relying Party Instances and Wallet Units SHALL support
       the extension for [ISO/IEC 18013-5] or the extension for [OpenID4VP]..."
 
       The "or" indicates use-case dependency:
@@ -1105,20 +1132,51 @@ requirements:
       - In-person-only RPs (e.g., age verification at venue): mDoc / ISO 18013-5 required
       - Mixed-mode RPs: BOTH formats required
 
-      This contrasts with VEND-ISS-005 where issuers must unconditionally 
+      This contrasts with VEND-ISS-005 where issuers must unconditionally
       support both formats per ISSU_12.
     obligation: MUST
   - id: VEND-INT-024
     category: usage
     requirement: Support selective disclosure in both credential formats
     explanation: |
-      The intermediary's verification implementation must correctly handle 
-      selectively disclosed attributes in both mDoc and VC formats. Verification 
-      must succeed even when only a subset of attributes is presented.
+      The intermediary's verification implementation must correctly
+      handle selectively disclosed attributes in both mDoc and VC
+      formats. Verification must succeed even when only a subset of
+      attributes is presented.
+
+      **SD-JWT-VC selective disclosure:**
+      - The SD-JWT VC format uses hash-based selective disclosure:
+        the issuer includes salted hashes of each claim, and the
+        holder reveals only the claims they choose by including the
+        corresponding disclosure values
+      - The intermediary must verify the hash of each disclosed claim
+        against the issuer-signed SD-JWT payload
+      - Undisclosed claims must be ignored (not treated as missing
+        or invalid)
+      - The key binding JWT (`kb-jwt`) must be verified to confirm
+        holder authorisation
+
+      **mDoc selective disclosure:**
+      - The mDoc format uses `IssuerSignedItem` elements within
+        namespaces; the holder selects which elements to release
+      - The intermediary must verify the Mobile Security Object
+        (MSO) signature and check that each disclosed element's
+        digest matches the MSO
+      - Undisclosed elements must be treated as absent, not as
+        verification failures
+
+      **Intermediary-specific considerations:**
+      The intermediary must forward exactly the disclosed subset to
+      the RP (per VEND-INT-004). It must not infer, reconstruct,
+      or flag undisclosed attributes. The verification pipeline
+      should be format-agnostic at the forwarding stage.
     legalBasis:
       regulation: 2024/2982
       article: Article 5
       paragraph: "4"
+    legalText: |
+      Wallet solutions shall enable the wallet user to select which
+      attributes within an attestation to present to a relying party.
     roles:
       - relying_party
     productCategories:
@@ -1132,40 +1190,105 @@ requirements:
     category: registration
     requirement: Consider certification for cryptographic components
     explanation: |
-      Depending on the assurance level required by the RP, the intermediary may 
-      need to demonstrate that its cryptographic implementations meet recognized 
-      standards (e.g., FIPS 140-2/3, Common Criteria). This is especially relevant 
-      for high-assurance use cases.
+      Depending on the assurance level required by the RP, the
+      intermediary may need to demonstrate that its cryptographic
+      implementations meet recognised standards. This is especially
+      relevant for high-assurance use cases.
+
+      **Applicable certification frameworks:**
+      - **FIPS 140-2/3** (Level 1–4): US NIST standard for
+        cryptographic modules; widely accepted in EU for cross-border
+        interoperability
+      - **Common Criteria (ISO/IEC 15408)**: EAL4+ is typical for
+        security-critical components; relevant under the EU
+        Cybersecurity Act (Regulation 2019/881)
+      - **SOG-IS Crypto Evaluation Scheme**: European scheme for
+        cryptographic evaluation (relevant for Member State
+        requirements)
+      - **eIDAS Article 24 audits**: QTSPs must be audited by a
+        conformity assessment body; intermediaries supporting QTSPs
+        may inherit audit requirements
+
+      **Scope of certification:**
+      Certification may cover:
+      - Cryptographic libraries used for signature verification
+        (ECDSA P-256/P-384, EdDSA, RSA)
+      - HSM or secure enclave hardware
+      - Random number generators (DRBG per SP 800-90A)
+      - TLS implementation (cipher suite compliance)
+      - Key storage and lifecycle management
+
+      **Conditional nature:**
+      This is a risk-based requirement. Not all intermediaries will
+      require full certification, but the intermediary should be
+      prepared to provide certification evidence when requested by
+      high-assurance RPs or national supervisory authorities.
     legalBasis:
       regulation: 2019/881
       article: Article 47
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      A European cybersecurity certification scheme shall be designed
+      to achieve, as applicable, the following security objectives.
     roles:
       - relying_party
     productCategories:
       - connector
     deadline: "2027-11-21"
     notes: |
-      This is a conditional requirement based on the RP's risk assessment and 
-      the sensitivity of the use case. Not all intermediaries will require 
+      This is a conditional requirement based on the RP's risk assessment and
+      the sensitivity of the use case. Not all intermediaries will require
       certification.
     obligation: MUST
   - id: VEND-INT-026
     category: usage
     requirement: Comply with embedded disclosure policies in attestations
     explanation: |
-      Electronic attestations of attributes may contain embedded disclosure 
-      policies that specify conditions the relying party must meet to access 
-      the attestation. The intermediary must verify RP compliance with these 
-      policies and ensure the wallet can inform the user of the result.
+      Electronic attestations of attributes may contain embedded
+      disclosure policies that specify conditions the relying party
+      must meet to access the attestation. The intermediary must
+      verify RP compliance with these policies and ensure the wallet
+      can inform the user of the result.
+
+      **Disclosure policy mechanics:**
+      An embedded disclosure policy is a machine-readable set of
+      conditions attached to individual attributes or to the
+      attestation as a whole. These conditions may include:
+      - **RP category requirements**: only certain RP types (e.g.,
+        financial institutions, healthcare providers) may access
+        specific attributes
+      - **Purpose limitations**: attributes may only be used for
+        specified purposes (e.g., age verification, identity
+        proofing)
+      - **Jurisdiction restrictions**: attributes may only be
+        disclosed to RPs in certain jurisdictions
+      - **Temporal constraints**: attributes may only be disclosed
+        during certain time windows
+
+      **Intermediary responsibilities:**
+      - Parse the disclosure policy from the attestation metadata
+      - Evaluate the intermediated RP's registration against the
+        policy conditions (using Registrar data)
+      - Communicate the evaluation result to the wallet (pass/fail)
+        so the wallet can inform the user
+      - If the RP does not meet the policy, the intermediary must
+        NOT forward the request to the wallet (or the wallet will
+        reject it)
+
+      **Interaction with RPI_06:**
+      The disclosure policy check is complementary to the RPI_06
+      attribute scope check: RPI_06 ensures the RP only requests
+      attributes it has registered for, while the disclosure policy
+      ensures the RP meets the conditions set by the attestation
+      issuer.
     legalBasis:
       regulation: 2024/2979
       article: Article 10
       paragraph: "3"
     legalText: |
-      Wallet instances shall verify whether the wallet-relying party complies 
-      with the requirements of the embedded disclosure policy and inform the 
-      wallet user of the result.
+      Wallet instances shall verify whether the wallet-relying party
+      complies with the requirements of the embedded disclosure
+      policy and inform the wallet user of the result.
     roles:
       - relying_party
     productCategories:
@@ -1176,17 +1299,44 @@ requirements:
     category: usage
     requirement: Support WebAuthn specification for pseudonym generation
     explanation: |
-      When the intermediary supports pseudonymous authentication from wallet 
-      units, it must support the WebAuthn specification as mandated in 
-      Annex V of the Integrity regulation. This enables privacy-preserving 
-      authentication without revealing user identity.
+      When the intermediary supports pseudonymous authentication from
+      wallet units, it must support the WebAuthn specification as
+      mandated in Annex V of the Integrity Regulation. This enables
+      privacy-preserving authentication without revealing user
+      identity.
+
+      **How pseudonyms work in the EUDI Wallet context:**
+      - The wallet generates a WebAuthn credential (public/private
+        key pair) scoped to a specific RP
+      - The public key serves as the pseudonym — a stable identifier
+        that the RP can use for return visits without knowing the
+        user's real identity
+      - The private key remains in the wallet's WSCD and is used to
+        sign authentication challenges
+
+      **Intermediary verification requirements:**
+      - Verify the WebAuthn assertion signature using the registered
+        public key (pseudonym)
+      - Support at minimum the `ES256` algorithm (ECDSA with P-256)
+        per WebAuthn recommendations
+      - Handle `authenticatorData` fields including RP ID hash,
+        flags, and sign count
+      - Forward the verified pseudonym to the intermediated RP
+        without associating it with any PID or attestation data
+
+      **Privacy implications for intermediaries:**
+      The intermediary sees the pseudonym during verification but
+      must not store or correlate it across sessions (per the
+      no-storage mandate). The pseudonym should be treated with the
+      same deletion requirements as attestation data (per RPI_10).
     legalBasis:
       regulation: 2024/2979
       article: Article 14
       paragraph: "1"
     legalText: |
-      Wallet units shall support the generation of pseudonyms for wallet users 
-      in compliance with the technical specifications set out in Annex V.
+      Wallet units shall support the generation of pseudonyms for
+      wallet users in compliance with the technical specifications
+      set out in Annex V.
     annexReference: |
       Annex V of 2024/2979:
       - 'Web Authentication', W3C Recommendation
@@ -1200,16 +1350,46 @@ requirements:
     category: usage
     requirement: Support relying-party-specific pseudonyms
     explanation: |
-      Wallet units generate unique pseudonyms per relying party, ensuring 
-      unlinkability across different RPs. The intermediary must correctly 
-      handle these RP-specific pseudonyms in verification flows.
+      Wallet units generate unique pseudonyms per relying party,
+      ensuring unlinkability across different RPs. The intermediary
+      must correctly handle these RP-specific pseudonyms in
+      verification flows.
+
+      **RP-specific pseudonym mechanics:**
+      - The wallet derives a unique key pair per RP using the RP's
+        identifier (typically the RP ID in WebAuthn terms, derived
+        from the RP's domain or registered identifier)
+      - Different RPs receive different pseudonyms for the same
+        user, making cross-RP correlation impossible at the
+        cryptographic level
+
+      **Intermediary-specific challenges:**
+      Because the intermediary operates on behalf of multiple RPs,
+      it must ensure:
+      - The RP ID used for pseudonym derivation is the
+        **intermediated RP's** identifier, not the intermediary's
+        own identifier — otherwise all RPs behind the intermediary
+        would receive the same pseudonym, defeating unlinkability
+      - The intermediary does not maintain any mapping between
+        pseudonyms and real identities (or between pseudonyms of
+        the same user across different RPs)
+      - Pseudonym handling follows the same no-storage mandate as
+        attestation data: the pseudonym is forwarded to the RP and
+        then deleted
+
+      **Interaction with VEND-INT-020:**
+      This requirement reinforces the cross-RP unlinkability mandate.
+      Even if the intermediary processes the pseudonyms of the same
+      user for two different RPs, those pseudonyms are
+      cryptographically distinct and should be treated as unrelated.
     legalBasis:
       regulation: 2024/2979
       article: Article 14
       paragraph: "2"
     legalText: |
-      A pseudonym shall be relying-party specific, meaning that only wallets 
-      and relying parties can link different transactions to the same pseudonym.
+      A pseudonym shall be relying-party specific, meaning that only
+      wallets and relying parties can link different transactions to
+      the same pseudonym.
     roles:
       - relying_party
     productCategories:
@@ -1220,18 +1400,51 @@ requirements:
     category: usage
     requirement: Use valid Wallet-Relying Party Access Certificate
     explanation: |
-      The intermediary must use a valid Wallet-Relying Party Access Certificate 
-      (issued by its Registrar) when interacting with wallet units. The 
-      certificate identifies the intermediary and enables the wallet to verify 
-      its registration status.
+      The intermediary must use a valid Wallet-Relying Party Access
+      Certificate (issued by its Registrar) when interacting with
+      wallet units. The certificate identifies the intermediary and
+      enables the wallet to verify its registration status.
+
+      **RPA_01 authentication mechanism:**
+      The access certificate is part of the RP authentication
+      mechanism that SHALL:
+      - Enable the Wallet Unit to identify and authenticate the
+        Relying Party (i.e., the intermediary)
+      - Enable the Wallet Unit to verify that the request was not
+        copied and replayed
+      - Use certificates issued in accordance with Topic 27
+        (Registration of Relying Parties)
+
+      **Intermediary-specific certificate usage:**
+      The intermediary's access certificate identifies the
+      **intermediary itself**, not the intermediated RP. The
+      intermediated RP's identity is conveyed via the RPRC_19a
+      extension (per VEND-INT-022). The wallet detects the
+      intermediary scenario by comparing these two identities
+      (per RPI_07).
+
+      **Certificate lifecycle requirements:**
+      - Certificates have finite validity; the intermediary must
+        monitor expiration and renew before expiry
+      - If a certificate is revoked (e.g., because the intermediary
+        loses its registration), all wallet interactions will fail
+      - The intermediary should support automated renewal and have
+        fallback procedures for unexpected revocation
+
+      **Protocol-specific certificate presentation:**
+      - **OID4VP (remote)**: the access certificate is presented
+        during TLS handshake (server certificate) and/or in the
+        request JWT
+      - **ISO 18013-5 (proximity)**: the access certificate is
+        included in the reader authentication structure
     legalBasis:
       regulation: 2024/2982
       article: Article 3
       paragraph: "1"
     legalText: |
-      Wallet providers shall ensure that wallet solutions support protocols 
-      and interfaces which allow wallet-relying parties to present a valid 
-      wallet-relying party access certificate.
+      Wallet providers shall ensure that wallet solutions support
+      protocols and interfaces which allow wallet-relying parties
+      to present a valid wallet-relying party access certificate.
     roles:
       - relying_party
     productCategories:
@@ -1239,7 +1452,9 @@ requirements:
     deadline: "2027-11-21"
     arfReference:
       topic: Topic 6
-      hlr: RPA_01
+      hlr:
+        - RPA_01
+        - RPI_07
     obligation: MUST
   - id: VEND-INT-030
     category: usage
