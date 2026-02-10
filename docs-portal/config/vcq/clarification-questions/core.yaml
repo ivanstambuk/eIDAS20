@@ -1114,3 +1114,29 @@ requirements:
       - id: Q8
         text: "Does the product support automated registration renewal, or is manual intervention required?"
         dimension: automation
+
+  # ============================================================================
+  # VEND-CORE-046: Intended Use Selection and Management
+  # Requirement: Support intended use selection and management in presentation requests
+  # Added: 2026-02-09 (Stakeholder feedback Item 4)
+  # ============================================================================
+  VEND-CORE-046:
+    questions:
+      - id: Q1
+        text: "Does the product support configuring multiple intended uses per Relying Party customer?"
+        dimension: capability
+      - id: Q2
+        text: "How does the product select the correct intended use (and associated registration certificate) when constructing a presentation request?"
+        dimension: technical_implementation
+      - id: Q3
+        text: "Does the product support adding, modifying, or deactivating intended uses without service disruption?"
+        dimension: lifecycle
+      - id: Q4
+        text: "Does the product verify that the attributes requested in a presentation request align with what is registered for the selected intended use?"
+        dimension: compliance_completeness
+      - id: Q5
+        text: "How does the product populate the RPRC_19a extension fields (intended use identifier, user-friendly description, Registrar URL) in presentation requests?"
+        dimension: technical_implementation
+      - id: Q6
+        text: "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured?"
+        dimension: operational

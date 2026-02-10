@@ -3,61 +3,32 @@
 
 ## Current State
 
-- **Focus**: VCQ Clarification Questions - Opus Pass
-- **Status**: 🟡 In Progress (Phase 1: Core Requirements)
-- **Plan**: `.agent/session/VCQ_CLARIFICATION_QUESTIONS_PLAN.md`
-
-## Session Summary (2026-01-30)
-
-### VCQ Clarification Questions Initiative
-
-Adding detailed clarification questions to all VCQ requirements to enable rigorous vendor assessment. Vendors claim compliance but don't describe how or to what extent—these sub-questions probe implementation details.
-
-**Approach:**
-- Two-model sequential pass: Opus (first), then Gemini Pro (review)
-- Output: `config/vcq/clarification-questions/*.yaml`
-- Scope: ~150 requirements across 5 files
-
-**Progress:**
-
-| Phase | File | Requirements | Opus | Gemini |
-|-------|------|--------------|------|--------|
-| 1 | core.yaml | 45 | 5/45 ✅ | ⬜ |
-| 2 | issuer.yaml | 40 | ⬜ | ⬜ |
-| 3 | intermediary.yaml | 34 | ⬜ | ⬜ |
-| 4 | ict.yaml | 12 | ⬜ | ⬜ |
-| 5 | trust_services.yaml | 19 | ⬜ | ⬜ |
-
-**Pattern validated with VEND-CORE-001 to 005:**
-- Questions probe: capability, lifecycle, automation, auditability, security, etc.
-- Dimensions derived dynamically per requirement
-- User approved pattern (2026-01-30 14:15)
+- **Focus**: VCQ clarification questions for new requirements VEND-CORE-043/044/045 — now complete and visible
+- **Next**: Stakeholder feedback Items 4-7 (OID4VP purpose, RPI_07, intermediary naming, user rejection)
+- **Status**: Ready
+- **Phase**: VCQ Enhancement (stakeholder feedback processing)
 
 ## Key Files
 
-| Purpose | Path |
-|---------|------|
-| Implementation Plan | `.agent/session/VCQ_CLARIFICATION_QUESTIONS_PLAN.md` |
-| Output (in progress) | `docs-portal/config/vcq/clarification-questions/core.yaml` |
-| Source requirements | `docs-portal/config/vcq/requirements/*.yaml` |
+- `docs-portal/config/vcq/requirements/core.yaml` — 42 reqs, VEND-CORE-043/044/045 at bottom
+- `docs-portal/config/vcq/clarification-questions/core.yaml` — structured questions (separate from requirements!)
+- `docs-portal/scripts/build-vcq-clarifications.js` — builds the clarification JSON from the questions YAML
+- `.agent/session/stakeholder-feedback-2026-02-09.md` — Items 1-3 resolved, Items 4-7 open
+- `AGENTS.md` — Git workflow section updated with push-after-commit rule
 
-## Next Steps
+## Context Notes
 
-1. ✅ Pattern validation (5 requirements) — Done
-2. ⬜ Complete Phase 1: VEND-CORE-006 to VEND-CORE-039
-3. ⬜ Commit Phase 1
-4. ⬜ Continue Phases 2-5 (Issuer, Intermediary, ICT, Trust Services)
-5. ⬜ Gemini review pass (Phase 6)
+Things git commits don't capture:
+
+- **Two-file system for clarification questions**: Requirements live in `config/vcq/requirements/*.yaml`, but clarification questions for the UI live in a SEPARATE directory `config/vcq/clarification-questions/*.yaml`. Adding a requirement without adding to both files means the UI won't show the "Clarification Questions" button. This was the root bug.
+- **Generated file conflicts**: `vcq-data.json` and other generated files in `public/data/` change on EVERY build. If you accumulate commits without pushing, these files WILL conflict during rebase. The new AGENTS.md rule (one commit → one push) prevents this.
+- **Force push was safe**: The overwritten remote commit `475d5d6` was a subset of local commit `261a301` (same feature, fewer lines). Verified via `git diff`.
+- **Stakeholder feedback Items 4-7**: These are documented in `.agent/session/stakeholder-feedback-2026-02-09.md` (Items 4-7 sections). They cover OID4VP purpose restriction, RP intermediary RPI_07 alignment, intermediary naming, and user rejection rights.
 
 ## Quick Start
 
 ```bash
-# View the implementation plan
-cat ~/.agent/session/VCQ_CLARIFICATION_QUESTIONS_PLAN.md
-
-# View current progress
-cat ~/dev/eIDAS20/docs-portal/config/vcq/clarification-questions/core.yaml | head -50
-
-# Source requirements to process
-ls ~/dev/eIDAS20/docs-portal/config/vcq/requirements/
+cd ~/dev/eIDAS20/docs-portal && npm run dev
+# Review: VCQ Core tab → VEND-CORE-044 → "Clarification Questions" button should now appear
+# Next: Read stakeholder-feedback Items 4-7 and process them
 ```

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-09T23:27:09.514Z",
+  "generatedAt": "2026-02-10T00:34:04.544Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -1895,6 +1895,52 @@
       "deadline": "2027-11-21",
       "obligation": "MUST",
       "notes": "Derived from stakeholder feedback (2026-02-09, Item 3). TS5 defines the \ntechnical interface that connector products must implement to enable \ntheir RP customers to register with Member State registries.\n\nClarification questions for vendor evaluation:\n\n1. API implementation scope: Does the product implement the full TS5 \n   OpenAPI v3 specification, or a subset? Which endpoints are supported?\n2. Management UI: Does the product provide a management UI for \n   registration data, or only the programmatic API?\n3. Multi-Member-State support: Can the product register with multiple \n   Member State registries simultaneously (for cross-border operations)?\n4. JWS verification: Does the product validate JWS signatures on \n   registry responses per IETF RFC 7515?\n5. Registration lifecycle: Does the product support the full \n   registration lifecycle — initial registration, updates, and \n   de-registration?\n6. Entitlement management: Does the product support configuring \n   entitlements and sub-entitlements per Member State requirements?\n7. Intermediary flag: If the RP uses an intermediary, does the product \n   correctly flag this in the registration data?\n8. Automated renewal: Does the product support automated registration \n   renewal, or is manual intervention required?\n\nReferences:\n- TS5 specification: EC TS05 V1.0 (2025-06)\n- Legal basis: CIR (EU) 2025/848 (registration of wallet-relying parties)",
+      "_sourceFile": "core.yaml"
+    },
+    {
+      "id": "VEND-CORE-046",
+      "category": "usage",
+      "categoryLabel": "Usage",
+      "categoryIcon": "🔍",
+      "requirement": "Support intended use selection and management in presentation requests",
+      "explanation": "When a Relying Party has multiple registered intended uses, the product \nshould support selecting the correct intended use for each presentation \nrequest. Per RPRC_19a, each presentation request must include the \nintended use identifier and user-friendly description, which are tied to \nthe RP's registration at a Member State Registrar.\n\nThe product should provide:\n- Configuration of multiple intended uses per RP customer\n- Selection of the applicable intended use (and associated registration \n  certificate) when constructing a presentation request\n- Lifecycle management for intended uses (add, modify, deactivate)\n- Consistency checks ensuring the requested attributes align with what \n  is registered for the selected intended use\n\nThis is important because the ARF mandates that Wallet Units display the \nintended use to the user (RPA_10) and may verify that requested \nattributes match the RP's registration (RPRC_21). Incorrect or missing \nintended use metadata can result in transaction failure or user-facing \nwarnings from the wallet.",
+      "legalBases": [
+        {
+          "regulation": "2014/910",
+          "article": "Article 5b",
+          "paragraph": "",
+          "link": "/regulation/2014-910?section=article-5b"
+        }
+      ],
+      "legalBasis": {
+        "regulation": "2014/910",
+        "article": "Article 5b",
+        "paragraph": ""
+      },
+      "legalBasisLink": "/regulation/2014-910?section=article-5b",
+      "arfReference": {
+        "topic": "Topic 44",
+        "hlr": [
+          "RPRC_19a",
+          "RPRC_21"
+        ]
+      },
+      "roles": [
+        "relying_party"
+      ],
+      "productCategories": [
+        "connector"
+      ],
+      "isUniversal": false,
+      "isExtended": false,
+      "scope": "core",
+      "sourceGroups": [
+        "eidas",
+        "arf"
+      ],
+      "deadline": "2027-11-21",
+      "obligation": "MUST",
+      "notes": "Derived from stakeholder feedback (2026-02-09, Item 4). The stakeholder \nasked whether wallets validate the OID4VP \"purpose\" parameter against \nregistered RP purposes. Analysis revealed that the ARF does not use the \nstandard OID4VP purpose field; instead it defines a richer mechanism via \nregistration certificates and the RPRC_19a extension. The wallet can \nverify requested attributes against registered ones (RPRC_21).\n\nExisting requirements cover registration (VEND-CORE-031), certificate \nlifecycle (VEND-CORE-041), and the TS5 API (VEND-CORE-045). This \nrequirement fills the operational gap: how the product selects the \ncorrect intended use for each transaction.\n\nSet to MUST because RPRC_19a is a SHALL requirement — the RP Instance \nmust include the intended use identifier and description in every \npresentation request. The connector product cannot enable this \ncompliance without a mechanism to configure and select intended uses.",
       "_sourceFile": "core.yaml"
     },
     {
@@ -6157,6 +6203,7 @@
       "VEND-CORE-040",
       "VEND-CORE-041",
       "VEND-CORE-045",
+      "VEND-CORE-046",
       "VEND-ICT-001",
       "VEND-ICT-002",
       "VEND-ICT-003",
@@ -6325,6 +6372,7 @@
       "VEND-CORE-040",
       "VEND-CORE-041",
       "VEND-CORE-045",
+      "VEND-CORE-046",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6515,6 +6563,7 @@
       "VEND-CORE-043",
       "VEND-CORE-044",
       "VEND-CORE-045",
+      "VEND-CORE-046",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6656,6 +6705,7 @@
       "VEND-CORE-043",
       "VEND-CORE-044",
       "VEND-CORE-045",
+      "VEND-CORE-046",
       "VEND-INT-001",
       "VEND-INT-002",
       "VEND-INT-003",
@@ -6716,26 +6766,26 @@
     ]
   },
   "stats": {
-    "totalRequirements": 145,
+    "totalRequirements": 146,
     "byRole": {
-      "relying_party": 61,
+      "relying_party": 62,
       "issuer": 64,
       "universal": 35
     },
     "byProductCategory": {
-      "connector": 49,
+      "connector": 50,
       "issuance_platform": 47,
       "trust_services": 26,
       "universal": 32
     },
     "bySourceGroup": {
-      "eidas": 124,
+      "eidas": 125,
       "gdpr": 20,
       "dora": 12,
-      "arf": 78
+      "arf": 79
     },
     "byCategory": {
-      "usage": 42,
+      "usage": 43,
       "contracts": 22,
       "registration": 27,
       "security": 29,
@@ -6743,7 +6793,7 @@
       "revocation": 7
     },
     "byObligation": {
-      "MUST": 125,
+      "MUST": 126,
       "MUST NOT": 11,
       "SHOULD": 8,
       "SHOULD NOT": 0,

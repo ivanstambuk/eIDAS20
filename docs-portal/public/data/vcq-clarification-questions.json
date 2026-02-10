@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-02-09T23:27:18.571Z",
+  "generatedAt": "2026-02-09T23:50:55.625Z",
   "schemaVersion": 1,
   "stats": {
-    "totalRequirements": 145,
-    "totalQuestions": 816,
+    "totalRequirements": 146,
+    "totalQuestions": 822,
     "byDimension": {
-      "technical_implementation": 104,
+      "technical_implementation": 106,
       "data_handling": 15,
       "auditability": 25,
       "supply_chain": 7,
       "security": 67,
-      "capability": 98,
-      "compliance_completeness": 21,
-      "lifecycle": 58,
-      "operational": 76,
+      "capability": 99,
+      "compliance_completeness": 22,
+      "lifecycle": 59,
+      "operational": 77,
       "contract_terms": 3,
       "compliance_evidence": 42,
       "limitations": 5,
@@ -1480,6 +1480,38 @@
         "id": "Q8",
         "text": "Does the product support automated registration renewal, or is manual intervention required?",
         "dimension": "automation"
+      }
+    ],
+    "VEND-CORE-046": [
+      {
+        "id": "Q1",
+        "text": "Does the product support configuring multiple intended uses per Relying Party customer?",
+        "dimension": "capability"
+      },
+      {
+        "id": "Q2",
+        "text": "How does the product select the correct intended use (and associated registration certificate) when constructing a presentation request?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q3",
+        "text": "Does the product support adding, modifying, or deactivating intended uses without service disruption?",
+        "dimension": "lifecycle"
+      },
+      {
+        "id": "Q4",
+        "text": "Does the product verify that the attributes requested in a presentation request align with what is registered for the selected intended use?",
+        "dimension": "compliance_completeness"
+      },
+      {
+        "id": "Q5",
+        "text": "How does the product populate the RPRC_19a extension fields (intended use identifier, user-friendly description, Registrar URL) in presentation requests?",
+        "dimension": "technical_implementation"
+      },
+      {
+        "id": "Q6",
+        "text": "What happens when an RP customer initiates a presentation request but no matching intended use or registration certificate is configured?",
+        "dimension": "operational"
       }
     ],
     "VEND-ICT-001": [
