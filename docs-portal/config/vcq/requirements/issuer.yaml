@@ -1248,17 +1248,49 @@ requirements:
     category: usage
     requirement: Enable cross-border recognition of attestations
     explanation: |
-      Attestations issued in one Member State must be verifiable and 
-      recognisable in all other Member States. The platform must ensure 
-      interoperability through adherence to common standards.
+      Attestations issued in one Member State must be verifiable
+      and recognisable in all other Member States. The platform
+      must ensure interoperability through adherence to common
+      standards.
+
+      **ISSU_12 — Mandatory format compliance:**
+      A PID Provider or Attestation Provider SHALL offer its
+      PIDs or attestations in all formats required in the PID
+      Rulebook or the applicable Attestation Rulebook. By
+      issuing in standard formats (mDoc and/or SD-JWT-VC),
+      attestations become verifiable by any compliant wallet
+      or RP across all Member States.
+
+      **Trusted List cross-MS resolution:**
+      For an attestation to be recognised in another Member
+      State, the verifier must be able to resolve the issuer's
+      trust anchor via Trusted Lists. This requires:
+      - The issuer's public key to be published in the
+        National Trusted List
+      - National Trusted Lists to be aggregated in the EU
+        List of Trusted Lists (LOTL)
+      - Verifiers to traverse the LOTL → National TL chain
+
+      **Interoperability testing:**
+      Cross-border recognition should be validated through
+      participation in EU interoperability testing exercises
+      (e.g., EU Digital Identity Wallet Consortium pilots,
+      Large-Scale Pilots). The platform should maintain
+      evidence of successful cross-border verification.
+
+      **Language considerations:**
+      Attestation attribute labels should follow the encoding
+      defined in the applicable Rulebook (typically language-
+      neutral identifiers). Display names may be localised,
+      but the underlying data encoding must be standardised.
     legalBasis:
       regulation: 2014/910
       article: Article 45g
       paragraph: "1"
     legalText: |
-      An electronic attestation of attributes issued in one Member State 
-      shall be recognised as an electronic attestation of attributes in 
-      all other Member States.
+      An electronic attestation of attributes issued in one
+      Member State shall be recognised as an electronic
+      attestation of attributes in all other Member States.
     roles:
       - issuer
     productCategories:
@@ -1272,14 +1304,44 @@ requirements:
     category: issuance
     requirement: Comply with PID Rulebook format and attribute requirements
     explanation: |
-      When issuing Person Identification Data (PIDs), the issuance platform must 
-      comply with the PID Rulebook specifications including namespace conventions, 
-      attribute encoding (CBOR for mDoc), portrait image quality requirements, 
-      and domestic namespace publication.
+      When issuing Person Identification Data (PIDs), the issuance
+      platform must comply with the PID Rulebook specifications
+      including namespace conventions, attribute encoding, portrait
+      image quality requirements, and domestic namespace publication.
+
+      **PID_01 — Full Rulebook compliance:**
+      PIDs and PID Providers SHALL comply with all requirements
+      in the PID Rulebook. This is a blanket compliance
+      requirement covering format, encoding, attributes, and
+      operational procedures.
+
+      **Mandatory PID attributes:**
+      The PID Rulebook defines the mandatory attribute set:
+      - Family name, given names, date of birth
+      - Nationality, document number (where applicable)
+      - Portrait image (per PID_08/PID_09 quality requirements)
+      - Issuance and expiry dates
+      - Issuer identifier and trust anchor reference
+
+      **Namespace conventions (PID_04/PID_05):**
+      - EU namespace: `eu.europa.ec.eudi.pid.1` for mDoc,
+        standard claim names for SD-JWT-VC
+      - Domestic namespace: Member States MAY define additional
+        national attributes under a domestic namespace
+
+      **Encoding requirements:**
+      - **mDoc (PID_10)**: CBOR encoding per ISO 18013-5, with
+        correct element identifiers and data types
+      - **SD-JWT-VC**: JSON encoding with standard claim names
+        and selective disclosure markers
     legalBasis:
       regulation: 2024/2977
       article: Annex
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Person Identification Data shall comply with the PID
+      Rulebook specifications for format, encoding, and
+      attribute requirements.
     arfReference:
       topic: Topic 3
       hlr:
@@ -1295,20 +1357,55 @@ requirements:
       - issuance_platform
     deadline: "2027-11-21"
     notes: |
-      Covers PID-specific format requirements. Non-PID attestation providers 
-      should refer to the relevant Attestation Rulebook instead.
+      Covers PID-specific format requirements. Non-PID
+      attestation providers should refer to the relevant
+      Attestation Rulebook instead.
     obligation: MUST
   - id: VEND-ISS-027
     category: issuance
     requirement: Support all mandatory attestation formats for the attestation type
     explanation: |
-      The issuance platform must offer attestations in all formats required by 
-      the applicable Rulebook. For most attestation types, this means supporting 
-      both ISO 18013-5 (mDoc) and SD-JWT-VC formats with correct encoding.
+      The issuance platform must offer attestations in all formats
+      required by the applicable Rulebook. For most attestation
+      types, this means supporting both ISO 18013-5 (mDoc) and
+      SD-JWT-VC formats with correct encoding.
+
+      **ISSU_12 — Rulebook-driven format mandate:**
+      A PID Provider or Attestation Provider SHALL offer its
+      PIDs or attestations in all formats required in the PID
+      Rulebook or the applicable Attestation Rulebook. The
+      Rulebook specifies which formats are mandatory vs
+      optional for that attestation type.
+
+      **ISSU_12d — Revocation chaining constraint:**
+      If an Attestation Provider supports revocation chaining
+      for its attestations (per WURevocation_19 in Topic 38),
+      the expiration date of the attestation SHALL be no later
+      than the expiration date of the WUA presented during the
+      issuance process. This constrains format-level validity
+      metadata.
+
+      **ISSU_27 — Device binding per format:**
+      An Attestation Provider SHOULD implement device binding
+      for all attestations it issues. The binding mechanism
+      differs by format:
+      - **mDoc**: mdoc authentication per ISO 18013-5
+      - **SD-JWT-VC**: key binding with `cnf` claim
+      Device binding requires the attestation key to be
+      cryptographically bound to the WSCA/WSCD.
+
+      **Encoding consistency:**
+      When the same attestation is issued in multiple formats,
+      the attribute values must be semantically equivalent
+      across formats. The platform should validate cross-format
+      consistency during issuance.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestation providers shall offer attestations in all
+      formats required by the applicable Rulebook specifications.
     arfReference:
       topic: Topic 10
       hlr:
@@ -1325,14 +1422,49 @@ requirements:
     category: revocation
     requirement: Implement revocation according to applicable Rulebook specifications
     explanation: |
-      The platform must implement attestation revocation as specified in the 
-      applicable Rulebook. This includes publishing revocation status, supporting 
-      suspension where required, and ensuring revocation information is available 
+      The platform must implement attestation revocation as
+      specified in the applicable Rulebook. This includes
+      publishing revocation status, supporting suspension where
+      required, and ensuring revocation information is available
       within defined propagation times.
+
+      **VCR_02 — Rulebook-specified revocability:**
+      For non-qualified EAAs, the relevant Rulebook SHALL
+      specify whether that type of EAA must be revocable.
+      If a non-qualified EAA type must be revocable, the
+      Rulebook determines which revocation methods must be
+      implemented.
+
+      **VCR_03/VCR_03a — Sole-provider revocation:**
+      The PID Provider or Attestation Provider SHALL be the
+      only party responsible for executing the revocation.
+      The provider MAY outsource operation, but retains
+      responsibility for the revocation decision.
+
+      **VCR_04 — Irreversibility:**
+      A Provider that revoked a PID, attestation, or WUA
+      SHALL NOT reverse the revocation. Revocation is
+      permanent and irreversible (suspension is the
+      mechanism for temporary invalidity).
+
+      **VCR_05 — Revocation checking:**
+      The Rulebook specifies the revocation checking
+      mechanisms that RPs must support. The provider's
+      revocation publication must be compatible with these
+      mechanisms.
+
+      **Rulebook-specific propagation times:**
+      Different Rulebooks may specify different maximum
+      propagation times for revocation status updates.
+      The platform must support configurable propagation
+      time targets per attestation type.
     legalBasis:
       regulation: 2024/2979
       article: Article 4
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Attestation providers shall implement revocation in
+      accordance with the applicable Rulebook specifications.
     arfReference:
       topic: Topic 7
       hlr:
@@ -1351,13 +1483,50 @@ requirements:
     category: registration
     requirement: Maintain accurate registration information and update on changes
     explanation: |
-      Attestation providers must maintain accurate information in Member State 
-      registries and update this information promptly when changes occur. This 
-      includes contact details, supported attestation types, and operational status.
+      Attestation providers must maintain accurate information in
+      Member State registries and update this information promptly
+      when changes occur. This includes contact details, supported
+      attestation types, and operational status.
+
+      **Reg_08 — Update without undue delay:**
+      A registered PID Provider, QEAA Provider, PuB-EAA Provider,
+      non-qualified EAA Provider, or Relying Party SHALL make any
+      updates necessary to ensure the continued correctness of
+      the registered information without undue delay.
+
+      **Reg_14 — Access certificate revocation:**
+      The common Certificate Policy SHALL require that an Access
+      Certificate Authority provides one or more methods to
+      revoke the access certificates it issued. This means the
+      provider must maintain the ability to revoke its own access
+      certificates when registration information changes.
+
+      **Types of registration information:**
+      - Provider identification (name, business registration)
+      - Contact details (technical and administrative)
+      - Supported attestation types and formats
+      - Service supply points (issuance endpoint URLs)
+      - Trust anchor information (signing certificates)
+      - Operational status (active, suspended, decommissioned)
+
+      **Change triggers:**
+      Registration updates should be triggered by:
+      - Organisational changes (name, legal entity, address)
+      - Technical changes (new attestation types, endpoint URLs)
+      - Key rotation (new signing certificates)
+      - Operational changes (service suspension, decommission)
+
+      **Monitoring and alerting:**
+      The platform should proactively monitor registration
+      information for staleness and alert the organisation
+      when updates may be needed.
     legalBasis:
       regulation: 2014/910
       article: Article 45d
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Providers shall maintain accurate registration information
+      and update it without undue delay when changes occur.
     arfReference:
       topic: Topic 27
       hlr:
@@ -1373,15 +1542,50 @@ requirements:
     category: registration
     requirement: Publish PID/Attestation Provider trust anchor information
     explanation: |
-      PID and Attestation Providers must publish trust anchor information that 
-      enables Wallet Units and Relying Parties to verify issued attestations. 
-      This includes: (1) publishing trust anchor information according to the 
-      common format specified by the Commission, (2) signing certificate publication, 
-      and (3) Trusted List inclusion.
+      PID and Attestation Providers must publish trust anchor
+      information that enables Wallet Units and Relying Parties
+      to verify issued attestations.
+
+      **PPNot_02 — Notification data set:**
+      The common set of information to be notified about a PID
+      Provider SHALL include at least:
+      1. Identification data (MS/Country, registered name,
+         business registration number)
+      2. PID Provider trust anchors (public keys and name)
+      3. Trust anchors of Access Certificate Authorities
+      4. Service supply points (issuance endpoint URLs)
+
+      **PPNot_03/PPNot_04 — Publication format:**
+      Trust anchor information must be published according to
+      the common format specified by the Commission. This
+      enables automated trust chain resolution by wallets and
+      RPs across all Member States.
+
+      **PPNot_07 — Trusted List inclusion:**
+      The provider's trust anchor must be included in the
+      National Trusted List of the Member State where the
+      provider is established. This is the primary mechanism
+      for cross-MS trust resolution.
+
+      **PuBPNot_03 — Public body providers:**
+      Public body Attestation Providers have additional
+      notification requirements, including the legal basis
+      for issuing attestations and the scope of their mandate.
+
+      **Trust anchor lifecycle:**
+      Trust anchor information must be updated when:
+      - Signing keys are rotated (new public key publication)
+      - Service endpoints change (new URLs)
+      - Provider status changes (suspension, decommission)
+      - Access Certificate Authority changes
     legalBasis:
       regulation: 2024/2981
       article: Article 2
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID and Attestation Providers shall publish trust anchor
+      information according to the common format specified by
+      the Commission.
     arfReference:
       topic: Topic 31
       hlr:
@@ -1400,14 +1604,53 @@ requirements:
     category: issuance
     requirement: Verify Wallet Unit Attestation during issuance
     explanation: |
-      Before issuing a PID or device-bound attestation, the provider must verify 
-      the Wallet Unit Attestation (WUA) to ensure the target Wallet Unit is 
-      genuine and certified. This includes validating WUA signature and 
-      checking revocation status.
+      Before issuing a PID or device-bound attestation, the
+      provider must verify the Wallet Unit Attestation (WUA)
+      to ensure the target Wallet Unit is genuine and certified.
+
+      **WUA_11a — Key possession proof:**
+      During issuance of a PID or device-bound attestation,
+      the PID Provider or Attestation Provider SHALL verify
+      that the WSCA/WSCD or keystore has proven possession of
+      the new PID or attestation private key. This ensures the
+      attestation will be bound to a genuine secure element.
+
+      **WUA_20a — TS3 compliance:**
+      A PID Provider or Attestation Provider SHALL comply with
+      all relevant requirements specified in Technical
+      Specification 3 (Wallet Unit Attestation). TS3 defines
+      the WUA data model, validation procedures, and trust
+      chain requirements.
+
+      **WUA verification checks:**
+      The provider must perform the following checks:
+      1. WUA signature validation (verify against Wallet
+         Provider trust anchor)
+      2. Certificate chain validation (WUA → Wallet Provider
+         → Trusted List)
+      3. WUA revocation status check
+      4. WSCD certification level verification
+      5. WUA expiry check
+
+      **Issuance rejection:**
+      If WUA verification fails (invalid signature, revoked,
+      expired, insufficient WSCD certification), the provider
+      SHALL reject the issuance request and return an
+      appropriate error to the Wallet Unit.
+
+      **Performance considerations:**
+      WUA verification adds latency to the issuance process.
+      The platform should cache trusted Wallet Provider
+      certificates and WUA revocation status to minimise
+      verification overhead.
     legalBasis:
       regulation: 2024/2979
       article: Article 3
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      PID and Attestation Providers shall verify the Wallet
+      Unit Attestation before issuing PIDs or device-bound
+      attestations.
     arfReference:
       topic: Topic 9
       hlr:

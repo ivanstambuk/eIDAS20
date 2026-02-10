@@ -805,20 +805,32 @@ requirements:
   VEND-ISS-024:
     questions:
       - id: Q1
-        text: "Are attestations issued through your platform verifiable and recognizable in all EU Member States?"
+        text: "Are attestations issued through your platform verifiable and recognisable in all 27 EU Member States? Have you tested cross-border verification with wallets and RPs from at least 3 different Member States?"
         dimension: capability
       - id: Q2
-        text: "How do you ensure interoperability through adherence to common standards?"
+        text: "How do you ensure interoperability through adherence to common standards — do you validate attestation format compliance against ISSU_12 (Rulebook-mandated formats) before issuance?"
         dimension: interoperability
       - id: Q3
-        text: "Have you tested cross-border verification with wallets and verifiers from multiple Member States?"
+        text: "Have you participated in EU interoperability testing exercises (Large-Scale Pilots, EUDI Wallet Consortium)? Can you provide evidence of successful cross-border verification results?"
         dimension: compliance_evidence
       - id: Q4
-        text: "How do you handle Member State-specific attribute requirements or namespaces?"
+        text: "How do you handle Member State-specific attribute requirements or namespaces — do you support domestic namespace extensions alongside the EU-standard namespace?"
         dimension: geographic_scope
       - id: Q5
-        text: "What languages are supported for attestation attribute labels and values?"
+        text: "What languages are supported for attestation attribute display labels? Is the display localisation separate from the underlying encoding-neutral attribute identifiers?"
         dimension: interoperability
+      - id: Q6
+        text: "How does your platform support Trusted List cross-MS resolution — is the issuer's public key published in the National Trusted List, and do verifiers traverse the LOTL → National TL chain?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "Do you support the EU List of Trusted Lists (LOTL) infrastructure? How frequently do you synchronise with LOTL updates to ensure your trust anchor is propagated?"
+        dimension: operational
+      - id: Q8
+        text: "How do you handle the scenario where a verifier in another Member State cannot resolve your trust anchor — is there a fallback mechanism or does verification fail?"
+        dimension: incident_response
+      - id: Q9
+        text: "Do you maintain a cross-border verification test report that can be shared with prospective organisations as evidence of interoperability?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-026: PID Rulebook Compliance
@@ -828,23 +840,32 @@ requirements:
   VEND-ISS-026:
     questions:
       - id: Q1
-        text: "Do you support Person Identification Data (PID) issuance compliant with the PID Rulebook?"
+        text: "Do you support Person Identification Data (PID) issuance fully compliant with the PID Rulebook (PID_01)? Can you demonstrate compliance with all mandatory attribute requirements?"
         dimension: capability
       - id: Q2
-        text: "How do you implement namespace conventions as specified in the PID Rulebook?"
+        text: "How do you implement namespace conventions as specified in the PID Rulebook — do you use the EU namespace `eu.europa.ec.eudi.pid.1` for mDoc and standard claim names for SD-JWT-VC (per PID_04/PID_05)?"
         dimension: technical_implementation
       - id: Q3
-        text: "Do you support domestic namespace publication for national attributes?"
+        text: "Do you support domestic namespace publication for national attributes? Can Member States add national-specific PID attributes under their domestic namespace?"
         dimension: capability
       - id: Q4
-        text: "What portrait image quality and encoding requirements do you support?"
+        text: "What portrait image quality and encoding requirements do you support per PID_08/PID_09 — resolution, colour depth, compression format, file size limits?"
         dimension: technical_implementation
       - id: Q5
-        text: "How do you handle CBOR encoding for mDoc format attributes?"
+        text: "How do you handle CBOR encoding for mDoc format attributes (PID_10) — do you validate element identifiers, data types, and encoding correctness before signing?"
         dimension: technical_implementation
       - id: Q6
-        text: "Have you validated PID format compliance with reference implementations?"
+        text: "Have you validated PID format compliance with reference implementations from the EU Digital Identity Wallet Reference Implementation or Large-Scale Pilots?"
         dimension: compliance_evidence
+      - id: Q7
+        text: "How do you handle the full mandatory PID attribute set (family name, given names, date of birth, nationality, document number, portrait, issuance/expiry dates, issuer identifier)?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "Do you support the PID Rulebook's requirements for age-over attributes (e.g., `age_over_18`) as derived/computed attributes from date of birth?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "How do you ensure semantic equivalence between the mDoc and SD-JWT-VC encodings of the same PID — are both formats generated from a single canonical source?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-ISS-027: Mandatory Format Support per Rulebook
@@ -853,17 +874,32 @@ requirements:
   VEND-ISS-027:
     questions:
       - id: Q1
-        text: "Do you offer attestations in all formats required by the applicable Rulebook?"
+        text: "Do you offer attestations in all formats required by the applicable Rulebook? How do you determine which formats are mandatory vs optional for each attestation type?"
         dimension: capability
       - id: Q2
-        text: "How do you track Rulebook changes that add new mandatory formats?"
+        text: "How do you track Rulebook changes that add new mandatory formats — is there an automated monitoring mechanism, or manual review?"
         dimension: lifecycle
       - id: Q3
-        text: "Do you validate format correctness against Rulebook specifications?"
+        text: "Do you validate format correctness against Rulebook specifications — is there pre-issuance format validation (structure, encoding, mandatory fields)?"
         dimension: compliance_monitoring
       - id: Q4
-        text: "How do you ensure encoding consistency across different formats (mDoc, SD-JWT-VC)?"
+        text: "How do you ensure encoding consistency across different formats (mDoc CBOR vs SD-JWT-VC JSON) — are attribute values semantically equivalent in both encodings?"
         dimension: technical_implementation
+      - id: Q5
+        text: "Per ISSU_12d, if you support revocation chaining, how do you ensure the attestation expiration date does not exceed the WUA expiration date presented during issuance?"
+        dimension: compliance_completeness
+      - id: Q6
+        text: "Per ISSU_27, do you implement device binding for all attestations? How does the binding mechanism differ between mDoc (mdoc authentication) and SD-JWT-VC (cnf claim)?"
+        dimension: technical_implementation
+      - id: Q7
+        text: "When a Rulebook adds a new mandatory format, what is the expected lead time for your platform to support it? Is there a phased rollout process?"
+        dimension: sla
+      - id: Q8
+        text: "Do you support issuing the same attestation in multiple formats simultaneously (batch dual-format issuance) or must the user request each format separately?"
+        dimension: operational
+      - id: Q9
+        text: "How do you handle optional formats — can the organisation choose to issue in additional formats beyond the Rulebook mandate (e.g., W3C VCDM v2.0 per ARB_04)?"
+        dimension: flexibility
 
   # ============================================================================
   # VEND-ISS-028: Rulebook-Compliant Revocation
@@ -872,17 +908,32 @@ requirements:
   VEND-ISS-028:
     questions:
       - id: Q1
-        text: "Do you implement attestation revocation as specified in the applicable Rulebook?"
+        text: "Do you implement attestation revocation as specified in the applicable Rulebook? How do you determine the revocation method(s) required for each attestation type (per VCR_02)?"
         dimension: capability
       - id: Q2
-        text: "Do you meet the Rulebook-specified propagation times for revocation?"
+        text: "Do you meet the Rulebook-specified maximum propagation times for revocation status updates? What are your actual P50/P99 propagation latencies?"
         dimension: sla
       - id: Q3
-        text: "Do you support suspension where the Rulebook requires it?"
+        text: "Do you support suspension where the Rulebook requires it? Is suspension treated as distinct from revocation in your status list mechanism (per VCR_04 irreversibility)?"
         dimension: capability
       - id: Q4
-        text: "How do you adapt revocation implementation when Rulebook specifications change?"
+        text: "How do you adapt revocation implementation when Rulebook specifications change — is there a change management process for revocation method updates?"
         dimension: lifecycle
+      - id: Q5
+        text: "Per VCR_03/VCR_03a, how do you ensure the attestation provider retains sole responsibility for the revocation decision, even when operation is outsourced to a third party?"
+        dimension: compliance_completeness
+      - id: Q6
+        text: "Per VCR_04, how do you technically enforce revocation irreversibility — once an attestation is revoked, is it impossible to reverse at any level (API, database, administrative override)?"
+        dimension: security
+      - id: Q7
+        text: "Can revocation propagation time targets be configured per attestation type to accommodate Rulebook-specific requirements (e.g., 1 hour for QEAA vs 24 hours for non-qualified EAA)?"
+        dimension: flexibility
+      - id: Q8
+        text: "How do you handle the scenario where a Rulebook specifies that a non-qualified EAA type is NOT revocable — do you omit revocation infrastructure for that type?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "Do you provide per-Rulebook revocation compliance reports showing actual propagation times vs Rulebook-specified maximums?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-029: Registration Information Maintenance
@@ -891,20 +942,32 @@ requirements:
   VEND-ISS-029:
     questions:
       - id: Q1
-        text: "How do you ensure registration information remains accurate in Member State registries?"
+        text: "How do you ensure registration information remains accurate in Member State registries — is there periodic validation against the actual operational state?"
         dimension: compliance_monitoring
       - id: Q2
-        text: "What is the process for updating registration information when changes occur?"
+        text: "What is the process for updating registration information when changes occur — API-driven, portal-based, or manual submission to the registry operator?"
         dimension: lifecycle
       - id: Q3
-        text: "How quickly can registration updates be submitted and reflected in registries?"
+        text: "Per Reg_08, how quickly can registration updates be submitted and reflected in registries — what is your SLA for 'without undue delay'?"
         dimension: sla
       - id: Q4
-        text: "Who is responsible for maintaining registration information—the organization or vendor?"
+        text: "Who is responsible for maintaining registration information — the organisation directly, or does the vendor manage it on behalf of the organisation?"
         dimension: operational
       - id: Q5
-        text: "How do you alert the organization to registration information that may be out of date?"
+        text: "How do you alert the organisation to registration information that may be out of date — proactive staleness monitoring, periodic reminders, or manual checks?"
         dimension: alerting
+      - id: Q6
+        text: "Per Reg_14, how do you maintain the ability to revoke access certificates when registration information changes? Is access certificate lifecycle managed automatically?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "What types of registration information changes are supported — organisational (name, legal entity), technical (endpoints, formats), key rotation (new certificates), operational (status)?"
+        dimension: flexibility
+      - id: Q8
+        text: "Is there a change audit trail showing who updated registration information, when, and what was changed?"
+        dimension: auditability
+      - id: Q9
+        text: "How do you handle registration updates for organisations operating in multiple Member States — must each MS registry be updated independently, or is there a federated update mechanism?"
+        dimension: geographic_scope
 
   # ============================================================================
   # VEND-ISS-030: Trust Anchor Publication
@@ -913,23 +976,32 @@ requirements:
   VEND-ISS-030:
     questions:
       - id: Q1
-        text: "Do you publish trust anchor information according to the Commission's common format?"
+        text: "Do you publish trust anchor information according to the Commission's common format (per PPNot_03/PPNot_04)? Is the publication automated and machine-readable?"
         dimension: capability
       - id: Q2
-        text: "What information is included in the published trust anchor (signing certificates, algorithms, validity)?"
+        text: "Per PPNot_02, what information is included in the published trust anchor — identification data, trust anchor public keys, Access Certificate Authority trust anchors, service supply points?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do wallets and RPs access your trust anchor information?"
+        text: "How do wallets and RPs access your trust anchor information — via Trusted List lookup, direct endpoint, or both? What protocol is used (HTTPS, LDAP)?"
         dimension: interoperability
       - id: Q4
-        text: "What is the process for Trusted List inclusion of your trust anchor?"
+        text: "What is the process for Trusted List inclusion of your trust anchor (per PPNot_07) — how long does initial inclusion typically take, and what documentation is required?"
         dimension: lifecycle
       - id: Q5
-        text: "How do you handle trust anchor updates during key rotation?"
+        text: "How do you handle trust anchor updates during key rotation — is the new public key published before the old key is deactivated to ensure continuous verifiability?"
         dimension: operational
       - id: Q6
-        text: "What is the uptime SLA for trust anchor endpoints?"
+        text: "What is the uptime SLA for trust anchor endpoints? Is there geographic redundancy to ensure availability across all Member States?"
         dimension: sla
+      - id: Q7
+        text: "Per PuBPNot_03, if the organisation is a public body, do you support the additional notification requirements (legal basis, mandate scope)?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "How do you handle trust anchor lifecycle events (signing key rotation, endpoint changes, provider status changes, Access Certificate Authority changes) — is the update propagation automated?"
+        dimension: automation
+      - id: Q9
+        text: "Do you provide monitoring of trust anchor publication health — alerts for endpoint downtime, certificate expiry, or Trusted List desynchronisation?"
+        dimension: operational
 
   # ============================================================================
   # VEND-ISS-031: Wallet Unit Attestation Verification During Issuance
@@ -938,20 +1010,32 @@ requirements:
   VEND-ISS-031:
     questions:
       - id: Q1
-        text: "Do you verify the Wallet Unit Attestation (WUA) before issuing PIDs or device-bound attestations?"
+        text: "Do you verify the Wallet Unit Attestation (WUA) before issuing PIDs or device-bound attestations? Is WUA verification mandatory for all issuance flows, or configurable per attestation type?"
         dimension: capability
       - id: Q2
-        text: "What WUA verification checks do you perform (signature, certificate chain, revocation, WSCD certification)?"
+        text: "Per WUA_11a, how do you verify that the WSCA/WSCD has proven possession of the new attestation private key — challenge-response, signed nonce, or other mechanism?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you handle issuance requests from wallets with invalid or revoked WUAs?"
-        dimension: operational
+        text: "What WUA verification checks do you perform — signature validation, certificate chain validation, revocation status check, WSCD certification level verification, expiry check?"
+        dimension: technical_implementation
       - id: Q4
-        text: "How do you stay updated on certified WSCD lists and WUA trust anchors?"
-        dimension: lifecycle
+        text: "How do you handle issuance requests from wallets with invalid or revoked WUAs — reject with specific error code, log the attempt, alert the Wallet Provider?"
+        dimension: operational
       - id: Q5
-        text: "What is the latency impact of WUA verification on the issuance process?"
+        text: "How do you stay updated on certified WSCD lists and WUA trust anchors — automated synchronisation, manual updates, or Trusted List-based resolution?"
+        dimension: lifecycle
+      - id: Q6
+        text: "What is the latency impact of WUA verification on the issuance process? Do you cache Wallet Provider certificates and WUA revocation status to minimise overhead?"
         dimension: sla
+      - id: Q7
+        text: "Per WUA_20a, how do you ensure compliance with all relevant requirements in Technical Specification 3 (Wallet Unit Attestation)? Do you have a TS3 conformance test suite?"
+        dimension: compliance_completeness
+      - id: Q8
+        text: "How do you handle WUA verification failure due to network issues (e.g., revocation status endpoint unreachable) — fail-open, fail-closed, or configurable policy?"
+        dimension: security
+      - id: Q9
+        text: "Do you log WUA verification results for audit purposes — including which checks passed/failed, the Wallet Provider identity, and WSCD certification level?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-ISS-032: Embedded Disclosure Policies
