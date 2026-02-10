@@ -248,6 +248,23 @@ These HLRs had their text replaced with "Empty" — the requirement was withdraw
 
 ## 7. Recommended Upgrade Steps
 
+### Phase 0: Create rollback safety net
+
+> **Rationale:** This upgrade touches 4 YAML files, 3+ build scripts, a React component, config files, and validation scripts. A clean rollback point is essential.
+
+1. **Create a feature branch:**
+   ```bash
+   git checkout -b feat/arf-280-upgrade
+   ```
+2. **Tag the current state** (for easy diffing later):
+   ```bash
+   git tag pre-arf-280
+   ```
+3. **Verify current build is green:**
+   ```bash
+   npm run validate:ci && npm run build
+   ```
+
 ### Phase 1: Import the v2.8.0 files
 
 > ⚠️ **Do NOT blindly overwrite** — our `03_arf/docs/` contains local annotations in discussion-topics and technical-specifications markdown files that we've modified.
@@ -274,61 +291,95 @@ These HLRs had their text replaced with "Empty" — the requirement was withdraw
    - `docs/discussion-topics/*.md` — we have local annotations
    - `docs/technical-specifications/*.md` — we have local copies (e.g., TS12)
 6. **Update CHANGELOG.md** in our repo root or TRACKER.md
+7. **Fix missing topics in `arf-config.yaml`:**
+   > ⚠️ **Pre-existing bug:** VCQ YAML files reference Topics 38 and 53, but these are **not listed** in `relevantTopics`, so `import-arf.js` silently drops all their HLRs. The `byHlrId` index never contains them, causing broken popover lookups and validation errors.
 
-### Phase 2: Update VCQ/RCA references
+   Add to `relevantTopics`:
+   - `38` — Wallet Unit Revocation (referenced by `issuer.yaml`, restructured in v2.8.0)
+   - `53` — referenced by `core.yaml` but currently excluded from import
+   - `56` — Wallet Provider Support and Maintenance (new in v2.8.0)
 
-For each of the 13 affected references:
+   Add corresponding entries to `topicAnchors` for all three topics.
 
-1. Open the relevant YAML file
-2. Find the HLR reference
-3. For **emptied** HLRs: determine if content moved to a new HLR (update reference) or was withdrawn (remove reference + update explanation)
-4. For **removed** HLRs (WURevocation_18/19): update Harmonized ID to new format
-5. Run `node scripts/build-vcq.js` to verify no broken references
-6. Verify the portal renders correctly
+8. **Re-run the local ARF import script** (separate from the GitHub-fetching `import-arf.js`):
+   ```bash
+   node scripts/import-arf-hlr.js
+   ```
+   > ⚠️ **Two parallel ARF scripts exist:**
+   > - `import-arf.js` → fetches from **GitHub CSV** → writes `public/data/arf-hlr-data.json` (VCQ UI)
+   > - `import-arf-hlr.js` → reads **local** `03_arf/hltr/high-level-requirements.csv` → writes `config/requirements/arf-hlr.json` (Requirements Browser)
+   >
+   > Both must be updated after the CSV changes. Only `import-arf.js` is in the `npm run build` pipeline.
 
-### Phase 2.5: Migrate VCQ references from Old IDs to Harmonized IDs
+9. **🔒 COMMIT:** `chore: import ARF v2.8.0 source files and fix arf-config.yaml`
 
-> **Rationale:** VCQ YAML files currently use **Old IDs** (e.g., `ISSU_29`, `RPI_01`, `WUA_20a`) in `arfReference.hlr` fields. Old IDs are not stable across ARF versions — when HLRs are renumbered (like Topic 38's `AS-WP` → `EW-DM` restructuring), the Old ID stays but the Harmonized ID changes. Using Harmonized IDs makes references **version-pinned and unambiguous**.
+### Phase 2: Update VCQ references and migrate to Harmonized IDs
+
+> **Rationale:** This phase combines two related tasks: (a) handling the 13 HLR references that are emptied/removed in v2.8.0, and (b) migrating all VCQ `arfReference.hlr` values from Old IDs to Harmonized IDs. Doing these together **in one pass** avoids touching the same YAML lines twice.
+>
+> **Why Harmonized IDs?** VCQ YAML files currently use Old IDs (e.g., `ISSU_29`, `RPI_01`, `WUA_20a`) in `arfReference.hlr` fields. Old IDs are not stable across ARF versions — when HLRs are renumbered (like Topic 38's `AS-WP` → `EW-DM` restructuring), the Old ID stays but the Harmonized ID changes. Using Harmonized IDs makes references **version-pinned and unambiguous**.
 
 **Data flow affected:**
 ```
 VCQ YAML (arfReference.hlr) → build-vcq.js → vcq-data.json → VendorQuestionnaire.jsx (ARFReferenceLink)
                                                                      ↕
                                               arf-hlr-data.json (byHlrId index) → popover + deep link
+                                                                     ↕
+                                              exportExcel.js (byHlrId lookup) → Excel export columns
 ```
 
 **Steps:**
 
 1. **Generate a mapping table** of Old ID → Harmonized ID from the v2.8.0 CSV:
    ```bash
-   # Extract from the CSV: Index (Old ID) → Harmonized_ID
    python3 -c "
-   import csv, io
+   import csv
    with open('03_arf/hltr/high-level-requirements.csv', 'r', encoding='utf-8-sig') as f:
        reader = csv.DictReader(f, delimiter=';')
        for row in reader:
            print(f\"{row['Index']} → {row['Harmonized_ID']}\")
    "
    ```
-2. **Update all VCQ YAML files** — replace `hlr: <Old_ID>` with `hlr: <Harmonized_ID>`:
+2. **Triage the 13 affected references** — for each, decide:
+   - **Emptied but content moved**: update `hlr:` to the *new* HLR's Harmonized ID (e.g., `WUA_20` → Harmonized ID of `WUA_21`)
+   - **Emptied and withdrawn**: remove the `hlr:` line, update `explanation:` to note the withdrawal
+   - **Removed/renumbered**: use the new Harmonized ID (e.g., `WURevocation_18` → `AS-WP-38-018`)
+3. **Migrate ALL remaining `hlr:` values** from Old IDs to Harmonized IDs:
    - `config/vcq/requirements/core.yaml` (28 arfReferences)
    - `config/vcq/requirements/issuer.yaml` (36 arfReferences)
    - `config/vcq/requirements/trust_services.yaml` (4 arfReferences)
-   - `config/vcq/requirements/intermediary.yaml` (20 arfReferences)
-3. **Update `validate-vcq-arf.js`** — change validation lookup from `hlrId` (Old ID) to `harmonizedId`:
+   - `config/vcq/requirements/intermediary.yaml` (23 arfReferences)
+4. **Update `import-arf.js`** — add a `byHarmonizedId` index alongside `byHlrId`:
+   ```js
+   // Line 247: add parallel index
+   byHlrId[hlrId] = requirement;
+   byHarmonizedId[raw.Harmonized_ID] = requirement;
+   ```
+   This ensures both Old IDs (for search, backward compat) and Harmonized IDs (for VCQ lookups) resolve.
+5. **Update `validate-vcq-arf.js`** — change validation lookup to use Harmonized IDs:
    ```js
    // Before:
    const validHlrIds = new Set(arf.requirements.map(r => r.hlrId));
    // After:
    const validHlrIds = new Set(arf.requirements.map(r => r.harmonizedId));
    ```
-4. **Update `build-vcq.js`** — ensure the ARF data lookup uses `byHlrId` or add `byHarmonizedId` index
-5. **Update `import-arf.js`** — ensure `byHlrId` index accommodates Harmonized IDs (or add a parallel `byHarmonizedId` index)
-6. **Update the ARFReferenceLink component** in `VendorQuestionnaire.jsx` — ensure the `arfData.byHlrId[hlrId]` lookup works with Harmonized IDs
-7. **Run validation:** `node scripts/validate-vcq-arf.js` — all references should resolve
-8. **🔒 COMMIT:** `feat: migrate VCQ ARF references from Old IDs to Harmonized IDs`
+6. **Update `validate-vcq.js`** (lines 340-384) — this script **also** validates ARF references against `byHlrId`. Update the lookup to use `byHarmonizedId`:
+   ```js
+   // Line 340:
+   const validHlrIds = new Set(Object.keys(arfData.byHarmonizedId || arfData.byHlrId || {}));
+   ```
+7. **Update `exportExcel.js`** (lines 174-196) — the Excel export uses `arfData.byHlrId[id]` to look up specs/notes. After migration, VCQ will pass Harmonized IDs. Update to check both indices:
+   ```js
+   const hlrData = arfData.byHarmonizedId?.[id] || arfData.byHlrId?.[id];
+   ```
+8. **Update search index display** — `build-search-index.js` (line 261-268) uses `req.hlrId` for the search `term` and `sectionTitle`. Show both IDs for discoverability:
+   ```js
+   term: `${req.hlrId} (${req.harmonizedId})`,
+   ```
+9. **Run validation:** `node scripts/validate-vcq-arf.js && npm run validate:vcq` — all references should resolve
+10. **🔒 COMMIT:** `feat: migrate VCQ ARF references to Harmonized IDs and handle v2.8.0 emptied HLRs`
 
-**Scope:** 88 `arfReference` entries across 4 YAML files. Only entries with a non-empty `hlr:` field need updating (currently ~20 have populated `hlr:` values).
+**Scope:** 91 `arfReference` entries across 4 YAML files. Only entries with a non-empty `hlr:` field need updating.
 
 ### Phase 3: Review new HLRs for coverage gaps
 
@@ -342,7 +393,7 @@ Assess whether any of the 43 new HLRs create requirements that should be reflect
 
 ### Phase 3.5: Validate deep links
 
-> **Rationale:** Every HLR in `arf-hlr-data.json` has a `deepLink` field — a clickable URL that appears in the VCQ popover (`ARFReferenceLink` component, line 701 in `VendorQuestionnaire.jsx`). These links use anchor fragments from `arf-config.yaml` → `topicAnchors`. The v2.8.0 release changed the Annex 2 heading format (`SUBCATEGORY` → `TOPIC`), which likely **changes the anchor slugs** on GitHub.
+> **Rationale:** Every HLR in `arf-hlr-data.json` has a `deepLink` field — a clickable URL that appears in the VCQ popover (`ARFReferenceLink` component in `VendorQuestionnaire.jsx`). These links use anchor fragments from `arf-config.yaml` → `topicAnchors`. The v2.8.0 release changed the Annex 2 heading format (`SUBCATEGORY` → `TOPIC`), which likely **changes the anchor slugs** on GitHub. Additionally, the `csvUrl` currently points to `refs/heads/main` — if `main` advances to v2.9.0 between our Phase 1 and this phase, we'd import **mismatched data** (local files = v2.8.0, HLR JSON = v2.9.0).
 
 **Current link format:**
 ```
@@ -350,7 +401,8 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 ```
 
 **Affected components:**
-- `config/arf/arf-config.yaml` → `topicAnchors` (defines anchor slugs for 15 topics)
+- `config/arf/arf-config.yaml` → `topicAnchors` (defines anchor slugs for 15+ topics)
+- `config/arf/arf-config.yaml` → `csvUrl` (source of HLR data for `import-arf.js`)
 - `scripts/import-arf.js` → `processRequirements()` (builds `deepLink` from base URL + anchor)
 - `public/data/arf-hlr-data.json` → ~1400 deep links in output JSON
 - `VendorQuestionnaire.jsx` → `ARFReferenceLink` renders these as `<a href>` tags
@@ -366,46 +418,68 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
    ```
 2. **Compare with current `topicAnchors`** in `arf-config.yaml` — identify any that changed
 3. **Add new entries:**
+   - Topic 38 (Wallet Unit Revocation) — added in Phase 1, verify anchor
+   - Topic 53 — added in Phase 1, verify anchor
    - Topic 56 (Wallet Provider Support and Maintenance) — needs new anchor
-   - Any other new topics from v2.8.0
 4. **Update `arf-config.yaml`** with corrected anchor slugs
-5. **Consider pinning `baseUrl` to `blob/v2.8.0`** instead of `blob/main`:
+5. **Pin both `csvUrl` AND `baseUrl` to `v2.8.0` tag** instead of `main`:
    ```yaml
-   # Before:
-   baseUrl: ".../blob/main/docs/annexes/annex-2"
-   # After:
-   baseUrl: ".../blob/v2.8.0/docs/annexes/annex-2"
+   source:
+     # Before:
+     csvUrl: ".../refs/heads/main/hltr/high-level-requirements.csv"
+     baseUrl: ".../blob/main/docs/annexes/annex-2"
+     # After:
+     csvUrl: ".../refs/tags/v2.8.0/hltr/high-level-requirements.csv"
+     baseUrl: ".../blob/v2.8.0/docs/annexes/annex-2"
    ```
-   This ensures links remain valid even if `main` moves to v2.9.0 later.
+   This eliminates the race condition where `main` could advance to v2.9.0 between builds.
 6. **Rebuild ARF data:** `npm run build:arf`
 7. **Create/run a link validation script** (one-time check, can be manual):
    ```bash
-   # Extract unique deep links and check HTTP status
+   # Download the target .md, extract all anchors, cross-check against arf-hlr-data.json deepLinks
    python3 -c "
-   import json, urllib.request
+   import json, re, urllib.request
+   # Fetch the actual document
+   url = 'https://raw.githubusercontent.com/.../v2.8.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md'
+   doc = urllib.request.urlopen(url).read().decode()
+   # Extract all heading anchors (GitHub slug format)
+   headings = re.findall(r'^#+\s+(.+)$', doc, re.MULTILINE)
+   anchors = set()
+   for h in headings:
+       slug = re.sub(r'[^\w\s-]', '', h.lower()).replace(' ', '-')
+       anchors.add(slug)
+   # Check deep links
    with open('public/data/arf-hlr-data.json') as f:
        data = json.load(f)
-   links = set(r['deepLink'] for r in data['requirements'] if r.get('deepLink'))
-   # Check a sample (full check would be slow due to rate limiting)
-   for link in sorted(links)[:5]:
-       print(link)
+   broken = []
+   for r in data['requirements']:
+       if '#' in r.get('deepLink', ''):
+           anchor = r['deepLink'].split('#', 1)[1]
+           if anchor not in anchors:
+               broken.append(f\"{r['hlrId']}: #{anchor}\")
+   print(f'Checked {len(data[\"requirements\"])} links, {len(broken)} broken')
+   for b in broken[:20]:
+       print(f'  ❌ {b}')
    "
    ```
-   For anchor validation: download the target `.md` file once, parse all anchors, and cross-check.
 8. **Verify in browser:** Open VCQ, hover over an ARF badge, click "View in ARF →" — should scroll to correct section.
-9. **🔒 COMMIT:** `fix: update ARF deep link anchors for v2.8.0 heading format`
+9. **🔒 COMMIT:** `fix: update ARF deep link anchors and pin URLs to v2.8.0 tag`
 
 ### Phase 4: Rebuild and validate
 
-1. Rebuild ARF: `npm run build:arf`
-2. Rebuild terminology: `node scripts/build-terminology.js`
-3. Rebuild VCQ: `node scripts/build-vcq.js`
-4. Rebuild RCA: `node scripts/build-rca.js`
-5. Run validator: `node scripts/validate-vcq-arf.js`
-6. Run portal locally: `npm run dev`
-7. Spot-check terminology, VCQ, and RCA pages
-8. Verify ARF popover deep links in browser
-9. Commit and push
+1. Rebuild ARF (from pinned tag): `npm run build:arf`
+2. Rebuild local ARF requirements: `node scripts/import-arf-hlr.js`
+3. Rebuild terminology: `node scripts/build-terminology.js`
+4. Rebuild VCQ: `node scripts/build-vcq.js`
+5. Rebuild RCA: `node scripts/build-rca.js`
+6. **Rebuild search index:** `node scripts/build-search-index.js` (ingests `arf-hlr-data.json`)
+7. Run all validators: `npm run validate:ci`
+8. Run ARF-specific validator: `node scripts/validate-vcq-arf.js`
+9. Run portal locally: `npm run dev`
+10. Spot-check terminology, VCQ, and RCA pages
+11. Verify ARF popover deep links in browser (click "View in ARF →" and check scroll position)
+12. **Test Excel export** — verify ARF spec/notes columns populate correctly with Harmonized IDs
+13. Commit and push
 
 ### Phase 5: Document decisions
 
@@ -414,6 +488,11 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 3. Update TRACKER.md with the upgrade log entry
 4. Update any references to ARF version in docs (search for "2.7.3")
 5. Update `arf-config.yaml` version comment to reflect v2.8.0
+6. **Merge feature branch** and clean up:
+   ```bash
+   git checkout master && git merge feat/arf-280-upgrade
+   git tag -d pre-arf-280  # optional cleanup
+   ```
 
 ---
 
@@ -427,8 +506,13 @@ https://github.com/.../blob/main/docs/annexes/annex-2/annex-2.02-high-level-requ
 | Topic 56 creates vendor obligations not in VCQ | Low | Only relevant if vendor is Wallet Provider (most are not in VCQ scope) |
 | Legal Person PID (Topic 28) entirely deferred | Low | If we have LP-related requirements, flag as deferred |
 | Deep links 404 after v2.8.0 heading format change | High | Phase 3.5: validate all `topicAnchors` against actual v2.8.0 headings |
-| Old IDs silently point to wrong content after renumbering | Medium | Phase 2.5: migrate all `arfReference.hlr` to Harmonized IDs |
-| `blob/main` links break when `main` moves to v2.9.0 | Medium | Phase 3.5: pin `baseUrl` to `blob/v2.8.0` tag |
+| Old IDs silently point to wrong content after renumbering | Medium | Phase 2: migrate all `arfReference.hlr` to Harmonized IDs |
+| `blob/main` links break when `main` moves to v2.9.0 | Medium | Phase 3.5: pin both `baseUrl` and `csvUrl` to `v2.8.0` tag |
+| Topics 38 + 53 excluded from `relevantTopics` — HLRs silently dropped | High | Phase 1 step 7: add missing topics to `arf-config.yaml` |
+| `import-arf-hlr.js` not run — Requirements Browser shows stale data | Medium | Phase 1 step 8 + Phase 4 step 2: run both ARF import scripts |
+| `csvUrl` race condition — `main` advances mid-upgrade | High | Phase 3.5 step 5: pin `csvUrl` to tag, not `refs/heads/main` |
+| `validate-vcq.js` also validates ARF (not just `validate-vcq-arf.js`) | Medium | Phase 2 step 6: update both validation scripts |
+| Excel export `byHlrId` lookup fails after Harmonized ID migration | Medium | Phase 2 step 7: update `exportExcel.js` to use `byHarmonizedId` fallback |
 
 ---
 
