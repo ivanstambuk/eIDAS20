@@ -7,7 +7,8 @@
  * Checks:
  * 1. All arfReference.hlr values (string or array) exist in ARF data
  * 2. All arfReference.topic values exist in ARF data
- * 3. Reports coverage statistics
+ * 3. All referenced topics are in arf-config.yaml relevantTopics (prevents silent drops)
+ * 4. Reports coverage statistics
  * 
  * Usage: node scripts/validate-vcq-arf.js
  */
@@ -15,12 +16,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const VCQ_DATA = path.join(__dirname, '../public/data/vcq-data.json');
 const ARF_DATA = path.join(__dirname, '../public/data/arf-hlr-data.json');
+const ARF_CONFIG = path.join(__dirname, '../config/arf/arf-config.yaml');
 
 console.log('🔍 Validating VCQ-ARF Reference Integrity...\n');
 
@@ -38,6 +41,19 @@ if (!fs.existsSync(ARF_DATA)) {
 const vcq = JSON.parse(fs.readFileSync(VCQ_DATA, 'utf-8'));
 const arf = JSON.parse(fs.readFileSync(ARF_DATA, 'utf-8'));
 
+// Load ARF config for relevantTopics cross-check
+let relevantTopics = null;
+if (fs.existsSync(ARF_CONFIG)) {
+    try {
+        const arfConfig = yaml.load(fs.readFileSync(ARF_CONFIG, 'utf-8'));
+        if (arfConfig.relevantTopics && Array.isArray(arfConfig.relevantTopics)) {
+            relevantTopics = new Set(arfConfig.relevantTopics);
+        }
+    } catch (e) {
+        console.warn(`⚠️  Could not load ARF config: ${e.message}`);
+    }
+}
+
 // Build ARF lookup sets
 const validHlrIds = new Set(arf.requirements.map(r => r.hlrId));
 const validTopics = new Set(arf.requirements.map(r => `Topic ${r.topicNumber}`));
@@ -46,6 +62,36 @@ const validTopics = new Set(arf.requirements.map(r => `Topic ${r.topicNumber}`))
 const hlrToTopic = new Map();
 for (const r of arf.requirements) {
     hlrToTopic.set(r.hlrId, r.topicNumber);
+}
+
+// ========================================================================
+// Cross-check: VCQ-referenced topics vs arf-config.yaml relevantTopics
+// Catches the bug where a topic is referenced in VCQ YAML but not in the
+// import filter, causing HLR lookups to silently fail.
+// ========================================================================
+if (relevantTopics) {
+    const vcqReferencedTopics = new Set();
+    for (const req of vcq.requirements) {
+        if (!req.arfReference?.topic) continue;
+        const topicNum = parseInt(req.arfReference.topic.replace('Topic ', ''), 10);
+        if (!isNaN(topicNum)) {
+            vcqReferencedTopics.add(topicNum);
+        }
+    }
+
+    const missingFromConfig = [...vcqReferencedTopics].filter(t => !relevantTopics.has(t)).sort((a, b) => a - b);
+    if (missingFromConfig.length > 0) {
+        console.log(`\n🚨 CRITICAL: Topics referenced in VCQ but MISSING from arf-config.yaml relevantTopics:\n`);
+        for (const topic of missingFromConfig) {
+            console.log(`   Topic ${topic} — HLRs from this topic are NOT being imported!`);
+            console.log(`   → Add ${topic} to relevantTopics in config/arf/arf-config.yaml`);
+        }
+        console.log('');
+        // This is a critical config error — treat as validation failure
+        process.exit(1);
+    } else {
+        console.log(`✅ All ${vcqReferencedTopics.size} VCQ-referenced topics are in arf-config.yaml relevantTopics`);
+    }
 }
 
 // Validation results

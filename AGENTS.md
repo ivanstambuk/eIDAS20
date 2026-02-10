@@ -461,6 +461,25 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 
 ---
 
+### 19. Codebase-First Plan Review (MANDATORY — When Reviewing Plans)
+
+**When reviewing any plan that references scripts, configs, or data flows, you MUST inspect the actual source code BEFORE proposing changes.**
+
+**Required steps:**
+1. **`grep`/`view` every script** mentioned in the plan to understand what it actually does
+2. **Cross-check data flows** — trace how data moves from YAML → build script → JSON → React component
+3. **Search for parallel implementations** — `grep -r` for the same data/concept to find ALL consumers
+4. **Verify config completeness** — check that config files include all referenced values (e.g., `relevantTopics` includes all topics referenced in YAML)
+
+**Why this matters:** A plan review that only reads the plan text misses real issues. In the ARF v2.8.0 upgrade plan, text-only review found 2 issues; codebase-first review found 9 (including 3 critical bugs).
+
+**Anti-patterns:**
+- ❌ Reviewing a plan by reading only the plan document
+- ❌ Proposing changes without checking if the affected scripts actually work the way the plan assumes
+- ❌ Missing parallel implementations (e.g., two scripts that import the same data)
+
+---
+
 ## Project Structure
 
 ```
@@ -517,6 +536,27 @@ The user should never need to ask "why?" as a follow-up. Provide complete reason
 | **Upgrade plan** | `docs-portal/docs/plans/arf-280-upgrade-plan.md` |
 | **Diff script** | `docs-portal/scripts/diff-arf-hlrs.py` |
 
+### ARF Import Scripts (⚠️ Two Parallel Scripts)
+
+There are **two separate ARF import scripts** with different purposes:
+
+| Script | Input | Output | Used By |
+|--------|-------|--------|---------|
+| `scripts/import-arf.js` | GitHub CSV (remote fetch) | `public/data/arf-hlr-data.json` | VCQ UI (popovers, deep links, Excel export) |
+| `scripts/import-arf-hlr.js` | Local `03_arf/hltr/high-level-requirements.csv` | `config/requirements/arf-hlr.json` | Requirements Browser |
+
+**Only `import-arf.js` is in the `npm run build` pipeline.** After updating the local CSV (e.g., ARF version upgrade), you must **manually run** `import-arf-hlr.js` to update the Requirements Browser data.
+
+### ARF Configuration (⚠️ Critical Config File)
+
+**`config/arf/arf-config.yaml`** controls:
+- **`relevantTopics`** — which ARF topics are imported (HLRs from unlisted topics are **silently dropped**)
+- **`topicAnchors`** — anchor slugs for deep links to GitHub
+- **`csvUrl`** — URL for fetching HLR data (must be pinned to a version tag, not `main`)
+- **`baseUrl`** — base URL for deep links (must match `csvUrl` version)
+
+**⚠️ If a VCQ YAML file references a topic not in `relevantTopics`, the HLR lookup will silently fail.** Always cross-check when adding new `arfReference` entries.
+
 ### ARF CSV Data Format (⚠️ Important for Parsing)
 
 The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard formatting:
@@ -529,6 +569,21 @@ The HLR CSV at `03_arf/hltr/high-level-requirements.csv` has non-standard format
   - `Index` = legacy/old ID (e.g., `WUA_20a`)
   - `Requirement_specification` = the actual requirement text
   - "Empty" text = requirement withdrawn, consolidated, or deferred
+
+### ARF Data Indices (`byHlrId` / `byHarmonizedId`)
+
+`arf-hlr-data.json` provides lookup indices for ARF requirements:
+
+| Index | Key Format | Example | Used By |
+|-------|------------|---------|---------|
+| `byHlrId` | Old ID (Index column) | `ISSU_29` | Search index, backward compat |
+| `byHarmonizedId` | EC Harmonized ID | `AS-AP-10-029` | VCQ references (after migration) |
+
+**After the Harmonized ID migration (Phase 2 of ARF v2.8.0 upgrade):**
+- VCQ YAML `arfReference.hlr` will use Harmonized IDs
+- `validate-vcq.js` and `validate-vcq-arf.js` will validate against `byHarmonizedId`
+- `exportExcel.js` will look up specs via `byHarmonizedId` with `byHlrId` fallback
+- Search index will display both IDs for discoverability
 
 
 
