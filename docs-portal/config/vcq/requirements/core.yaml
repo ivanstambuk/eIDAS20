@@ -5,12 +5,25 @@ requirements:
     requirement: Intermediaries shall not store data about the content of transactions
     explanation: |
       The no-storage mandate is the central privacy protection for wallet users
-      when interacting through intermediaries. Vendors acting on behalf of RPs
-      are deemed to be relying parties themselves and are subject to an absolute
-      prohibition on storing data about the content of transactions. The ARF
-      further specifies (RPI_10) that intermediaries must delete any PIDs or
-      attestations obtained from the Wallet Unit completely and immediately
-      after forwarding user attributes to the intermediated Relying Party.
+      when interacting through intermediaries. Article 5b(10) establishes an
+      absolute prohibition: vendors acting on behalf of RPs are deemed to be
+      relying parties themselves and shall not store data about the content of
+      the transaction. There are no exceptions — this is not a "minimize" or
+      "limit" obligation but a full prohibition on storage.
+
+      The ARF reinforces this through multiple HLRs:
+      - RPI_08: the intermediary must forward user attributes to the
+        intermediated RP without processing or storing them
+      - RPI_10: the intermediary must delete any PIDs or attestations obtained
+        from the Wallet Unit completely and immediately after forwarding
+      - RPI_09: the intermediary must not combine data from multiple
+        transactions or across different intermediated RPs
+
+      The product must demonstrate architectural controls that enforce this
+      mandate — for example, in-memory-only processing, no persistence layer
+      for transaction content, and no logging of attribute values. Transient
+      processing in memory for the duration of a single request-response cycle
+      is permissible, but no data may survive beyond forwarding completion.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -20,7 +33,10 @@ requirements:
       relying parties and shall not store data about the content of the transaction.
     arfReference:
       topic: Topic 52
-      hlr: RPI_10
+      hlr:
+        - RPI_08
+        - RPI_09
+        - RPI_10
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -29,10 +45,29 @@ requirements:
     category: contracts
     requirement: Implement a Data Processing Agreement meeting GDPR Article 28 requirements
     explanation: |
-      When intermediaries process personal data on behalf of the RP, they act as 
-      data processors. A written contract (DPA) must exist specifying processing 
-      instructions, confidentiality, security measures, sub-processor conditions, 
-      data subject request assistance, and audit rights.
+      When intermediaries process personal data on behalf of the RP, they act
+      as data processors under GDPR. Article 28(3) mandates a binding written
+      contract (DPA) between the controller (RP) and processor (intermediary)
+      that governs the processing relationship.
+
+      The DPA must address all eight mandatory provisions of Article 28(3):
+      - (a) Processing only on documented instructions from the controller,
+        including rules on international data transfers
+      - (b) Confidentiality obligations for all authorized personnel
+      - (c) Implementation of Article 32 security measures
+      - (d) Conditions for engaging sub-processors (see VEND-CORE-013)
+      - (e) Assistance with data subject rights requests (see VEND-CORE-010)
+      - (f) Assistance with security, breach notification, and DPIA
+        obligations (Articles 32-36)
+      - (g) Deletion or return of data at contract end (see VEND-CORE-014)
+      - (h) Audit rights and compliance demonstration (see VEND-CORE-003)
+
+      In the EUDI Wallet context, the DPA must also specifically address the
+      no-storage mandate (Article 5b(10) eIDAS) and the forward-only nature
+      of intermediary data handling, since these constraints are unique to
+      wallet intermediation and go beyond standard GDPR processor obligations.
+
+      The DPA must be in writing (including electronic form) per Article 28(9).
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -60,10 +95,33 @@ requirements:
     category: contracts
     requirement: Provide audit rights to the Relying Party
     explanation: |
-      The RP must be able to verify the vendor's compliance with processing 
-      instructions and security requirements. This includes rights to conduct 
-      audits and inspections, or to mandate that an independent auditor 
-      performs such verification.
+      Article 28(3)(h) imposes two distinct obligations on the processor
+      (intermediary vendor):
+
+      1. **Information provision**: the processor must make available to the
+         controller (RP) all information necessary to demonstrate compliance
+         with the processing obligations set out in Article 28
+      2. **Active audit support**: the processor must allow for and actively
+         contribute to audits, including on-site inspections, conducted by
+         the controller or by an independent auditor mandated by the controller
+
+      In the EUDI Wallet intermediary context, audits are particularly
+      important for verifying:
+      - Compliance with the no-storage mandate (Art 5b(10) eIDAS) — that no
+        transaction content is persisted beyond the forwarding operation
+      - Correct implementation of the forward-only architecture (RPI_08)
+      - Security of cryptographic key management for access certificates
+      - Proper handling of sub-processor relationships
+      - Data isolation between intermediated RPs (no cross-RP correlation)
+
+      The last sentence of Article 28(3) also obliges the processor to
+      immediately inform the controller if an instruction infringes GDPR or
+      other EU/Member State data protection law — this is an active
+      compliance monitoring obligation, not just a passive audit right.
+
+      Vendors should be prepared to demonstrate compliance through a
+      combination of third-party certifications (ISO 27001, SOC 2 Type II),
+      architectural documentation, and facilitation of direct inspections.
     legalBasis:
       regulation: 2016/679
       article: Article 28
@@ -81,16 +139,35 @@ requirements:
     category: registration
     requirement: Register as a Relying Party indicating intermediary status
     explanation: |
-      Any entity acting as an intermediary must register as a Relying Party with
-      Member State authorities in accordance with the general registration
-      requirements (ARF Topic 27) and the intermediary-specific requirements
-      (ARF Topic 52, RPI_01), while explicitly indicating its intent to act as
-      an intermediary. The registration process is governed by Implementing
-      Regulation (EU) 2025/848, which specifies national register requirements,
-      registration policies, and the information to be provided (Annex I),
-      including an indication of reliance on an intermediary (Annex I, point 14).
-      Registration enables the intermediary to obtain an access certificate
-      containing its own name and unique identifier.
+      Any entity acting as an intermediary must register as a Relying Party
+      with Member State authorities before interacting with EUDI Wallets.
+      The registration is governed by two layers of requirements:
+
+      **Legal framework (eIDAS + IR 2025/848):**
+      - Article 5b(1) eIDAS: base obligation to register in the Member State
+        where the RP is established
+      - IR 2025/848, Article 3: Member States must set up human-readable and
+        machine-readable (API) interfaces for registration
+      - IR 2025/848, Annex I: specifies the 17 data elements to be provided,
+        including point 14 ("indication of reliance on an intermediary") and
+        point 15 ("relationship to intermediated RPs")
+      - IR 2025/848, Article 5: registration policies and verification
+
+      **ARF requirements:**
+      - RPI_01 (Topic 52): an intermediary must register as a Relying Party,
+        indicating that it will act as an intermediary
+      - Topic 27: general RP registration including intended uses and
+        requested attribute sets
+
+      Upon successful registration, the intermediary receives:
+      - An access certificate (via Article 7, IR 2025/848) containing the
+        intermediary's own name and unique identifier
+      - Optionally, registration certificates for each intended use (via
+        Article 8, IR 2025/848)
+
+      The product should support the full registration lifecycle via the
+      TS5 REST API (see VEND-CORE-045) or provide a management interface
+      for manual registration workflows.
     legalBasis:
       regulation: 2014/910
       article: Article 5b
@@ -111,14 +188,36 @@ requirements:
     category: registration
     requirement: Maintain a valid Relying Party Access Certificate
     explanation: |
-      Intermediaries must obtain and maintain wallet-relying party access
-      certificates from a provider of access certificates mandated by the
-      Member State where they are registered (IR 2025/848, Article 7).
-      This certificate authenticates the intermediary to wallet units in all
-      PID or attestation presentation transactions, whether proximity or
-      remote (ARF RPA_03). The access certificate must comply with the
-      harmonised certificate policy requirements set out in Annex IV of
-      IR 2025/848, including the ETSI EN 319411-1 NCP requirements.
+      Access certificates are the primary trust mechanism between wallet units
+      and relying parties. The intermediary must obtain and maintain a valid
+      wallet-relying party access certificate to authenticate itself to
+      wallet units during every presentation transaction.
+
+      **Certificate issuance and policy (IR 2025/848):**
+      - Article 7(1): Member States must authorise at least one certificate
+        authority to issue wallet-relying party access certificates
+      - Article 7(2): access certificates are issued exclusively to
+        registered wallet-relying parties
+      - Annex IV: the certificate must comply with ETSI EN 319411-1 NCP
+        requirements and the harmonised certificate policy
+      - The certificate contains the intermediary's own name and unique
+        identifier — this is how wallet units identify the intermediary
+
+      **Usage requirements (ARF):**
+      - RPA_03 (Topic 6): the intermediary and wallet unit must perform
+        Relying Party authentication in all PID or attestation presentation
+        transactions, whether proximity or remote, using the access certificate
+      - RPA_02a: the access certificate must be included in the presentation
+        request by value, not by reference, ensuring atomic self-contained
+        transactions
+      - RPI_06 (Topic 52): when acting on behalf of an intermediated RP,
+        the intermediary includes its own access certificate alongside the
+        RP's registration certificate and RPRC_19a extension data
+
+      The product must implement certificate lifecycle management including
+      monitoring for expiration, automated or assisted renewal, secure
+      private key storage (preferably HSM-backed), and emergency revocation
+      and replacement procedures.
     legalBasis:
       regulation: 2025/848
       article: Article 7
@@ -130,7 +229,9 @@ requirements:
       party access certificates exclusively to registered wallet-relying parties.
     arfReference:
       topic: Topic 6
-      hlr: RPA_03
+      hlr:
+        - RPA_03
+        - RPA_02a
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -139,9 +240,35 @@ requirements:
     category: security
     requirement: Implement appropriate technical and organizational security measures
     explanation: |
-      Vendors must implement security measures appropriate to the risk, 
-      including encryption, pseudonymization, confidentiality assurance, 
-      availability and resilience, and regular testing.
+      Article 32(1) GDPR mandates that both controllers and processors
+      implement technical and organisational security measures appropriate to
+      the risk, taking into account the state of the art, implementation
+      costs, and the nature/scope/context of processing.
+
+      Article 32(1) specifically enumerates four categories of measures:
+      - (a) Pseudonymization and encryption of personal data
+      - (b) Ability to ensure ongoing confidentiality, integrity,
+        availability, and resilience of processing systems
+      - (c) Ability to restore availability and access to data in a timely
+        manner after a physical or technical incident
+      - (d) Regular testing, assessing, and evaluating the effectiveness of
+        measures (penetration testing, vulnerability scanning, red-teaming)
+
+      In the EUDI Wallet intermediary context, the following security
+      considerations are particularly critical:
+      - Secure handling of cryptographic material (access certificate private
+        keys, signing keys) — preferably in HSMs or equivalent
+      - Transport-layer security (TLS 1.2+ with strong cipher suites) for
+        all wallet-to-intermediary and intermediary-to-RP communication
+      - Application-layer encryption for sensitive payloads where applicable
+      - Network segmentation and access controls between RP tenants
+      - Secure development lifecycle (SDLC) practices for the product
+      - Incident detection capabilities (SIEM, anomaly detection, IDS/IPS)
+
+      The vendor should demonstrate appropriateness through certifications
+      (ISO 27001, SOC 2 Type II, CSA STAR) and documented risk assessments
+      per Article 32(2) that specifically address the wallet intermediation
+      processing context.
     legalBasis:
       regulation: 2016/679
       article: Article 32
@@ -161,14 +288,38 @@ requirements:
     category: security
     requirement: Notify the RP of data breaches without undue delay
     explanation: |
-      When a personal data breach occurs at the intermediary (processor), they
-      must notify the RP (as controller) without undue delay after becoming
-      aware of the breach. This is critical because the controller must notify
-      the supervisory authority within 72 hours of becoming aware of the breach
-      (Article 33(1)), making timely processor-to-controller notification
-      essential to the entire breach response chain. The notification must
-      enable the controller to describe the nature of the breach, its likely
-      consequences, and the measures taken or proposed (Article 33(3)).
+      Article 33(2) GDPR requires the processor (intermediary) to notify the
+      controller (RP) without undue delay after becoming aware of a personal
+      data breach. This obligation is time-critical because it sits at the
+      start of a cascading notification chain:
+
+      **The breach notification chain:**
+      1. Processor → Controller: "without undue delay" (Art 33(2))
+      2. Controller → Supervisory Authority: within 72 hours of becoming
+         aware (Art 33(1)), unless the breach is unlikely to result in a risk
+      3. Controller → Data Subjects: "without undue delay" if the breach is
+         likely to result in a high risk to rights and freedoms (Art 34(1))
+
+      The processor's notification must provide sufficient information for
+      the controller to fulfil its own obligations under Article 33(3):
+      - (a) Nature of the breach, including categories and approximate
+        number of data subjects and records concerned
+      - (b) Name and contact details of the DPO or other contact point
+      - (c) Description of likely consequences of the breach
+      - (d) Description of measures taken or proposed to address the breach
+        and mitigate its adverse effects
+
+      In the EUDI Wallet intermediary context, breaches may involve:
+      - Compromise of access certificate private keys
+      - Unauthorized access to transaction metadata or logs
+      - Failure of the no-storage controls (accidental data persistence)
+      - Interception of wallet presentations during forwarding
+
+      The vendor should have a documented incident response plan with
+      defined escalation paths, 24/7 security operations capability, and
+      contractually committed notification timeframes (ideally within hours,
+      not days) to ensure the RP can meet its 72-hour supervisory authority
+      notification deadline.
     legalBasis:
       regulation: 2016/679
       article: Article 33
@@ -442,7 +593,7 @@ requirements:
       exercise their GDPR Article 17 right to erasure by requesting deletion of 
       any data the RP has collected from wallet presentations. The interface 
       provides a standardized machine-readable format for deletion requests.
-      
+
       Key obligations per ARF Topic 48:
       - Authenticate the requesting user before executing deletion (DATA_DLT_07)
       - Comply with TS7 technical interface requirements (DATA_DLT_08)

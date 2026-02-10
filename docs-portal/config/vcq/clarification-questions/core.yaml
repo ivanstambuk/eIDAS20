@@ -1,6 +1,6 @@
 # Vendor Clarification Questions - Core Requirements
 # These questions help assess the depth and completeness of vendor compliance.
-# 
+#
 # Usage: For each VCQ requirement, these sub-questions probe specific capabilities,
 # lifecycle coverage, automation levels, and compliance evidence. Vendors should
 # provide substantive answers, not just yes/no affirmations.
@@ -8,8 +8,8 @@
 schemaVersion: 1
 sourceFile: requirements/core.yaml
 modelPasses:
-  opus: true       # Completed 2026-01-30 - All core requirements processed
-  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
+  opus: true # Completed 2026-01-30 - All core requirements processed
+  gemini: true # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -19,26 +19,29 @@ requirements:
   VEND-CORE-001:
     questions:
       - id: Q1
-        text: "How does your platform technically enforce the no-storage mandate for wallet transaction data?"
-        dimension: technical_implementation
+        text: "How does your platform technically enforce the no-storage mandate for wallet transaction data — what architectural controls prevent any persistence of PIDs, attestations, or user attributes beyond the forwarding operation?"
+        dimension: architecture
       - id: Q2
-        text: "What data elements, if any, are transiently processed during verification (e.g., in memory), and what is their maximum retention duration?"
+        text: "What data elements, if any, are transiently processed during verification (e.g., in memory), and what is their maximum retention duration before guaranteed deletion?"
         dimension: data_handling
       - id: Q3
-        text: "Do you maintain any logs, metadata, or derived data from wallet presentations? If so, describe what is logged and retention periods."
+        text: "Do you maintain any logs, metadata, or derived data from wallet presentations (e.g., transaction success/failure status, timestamps, attribute names without values)? If so, describe exactly what is logged and the retention periods."
         dimension: data_handling
       - id: Q4
-        text: "How can the organization verify that no transaction content is being stored (e.g., audit mechanisms, architectural diagrams, third-party attestations)?"
+        text: "How can the organization verify that no transaction content is being stored — do you support independent architectural audits, provide third-party attestations (SOC 2), or offer real-time compliance dashboards?"
         dimension: auditability
       - id: Q5
-        text: "If your service uses sub-processors or cloud infrastructure, how do you ensure they also comply with the no-storage mandate?"
+        text: "If your service uses sub-processors or cloud infrastructure, how do you ensure they also comply with the no-storage mandate? What contractual and technical controls are in place?"
         dimension: supply_chain
       - id: Q6
-        text: "What technical controls prevent accidental or intentional storage of transaction content by your personnel?"
+        text: "What technical controls prevent accidental or intentional storage of transaction content by your personnel — do you use secure enclaves, memory scrubbing, or ephemeral compute environments?"
         dimension: security
       - id: Q7
-        text: "Do you utilize secure enclaves or memory scrubbing techniques to ensure transient data is irrecoverable after processing?"
-        dimension: security
+        text: "How do you handle forwarding failures — if the intermediated RP is temporarily unreachable, is transaction data buffered, and if so, how is this reconciled with the no-storage mandate?"
+        dimension: operational
+      - id: Q8
+        text: "Does the product prevent combining data from multiple transactions or across different intermediated RPs (ARF RPI_09)? What data isolation architecture enforces this?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-002: GDPR Article 28 Data Processing Agreement
@@ -47,20 +50,26 @@ requirements:
   VEND-CORE-002:
     questions:
       - id: Q1
-        text: "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs?"
+        text: "Do you provide a standard Data Processing Agreement (DPA) that meets GDPR Article 28 requirements, or do you negotiate custom DPAs per customer? Can the organization review a template DPA before contract signing?"
         dimension: capability
       - id: Q2
-        text: "Does your DPA explicitly address all Article 28(3) mandatory provisions: (a) processing instructions, (b) confidentiality, (c) security, (d) sub-processors, (e) data subject request assistance, (f) breach notification, (g) deletion/return, (h) audit rights?"
+        text: "Does your DPA explicitly address all eight Article 28(3) mandatory provisions: (a) processing instructions, (b) confidentiality, (c) security measures per Art 32, (d) sub-processor conditions, (e) data subject request assistance, (f) DPIA and breach notification support, (g) deletion/return at contract end, (h) audit rights?"
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you handle updates to the DPA when regulatory requirements change (e.g., new EDPB guidance)?"
+        text: "How do you handle updates to the DPA when regulatory requirements change (e.g., new EDPB guidance, changes to eIDAS implementing acts)? Is the organization notified proactively?"
         dimension: lifecycle
       - id: Q4
-        text: "What is your process for approving and documenting the organization's specific processing instructions?"
-        dimension: operational
+        text: "Does the DPA specifically address the eIDAS Article 5b(10) no-storage mandate and the forward-only nature of intermediary data handling, or is it a generic GDPR DPA?"
+        dimension: compliance_completeness
       - id: Q5
-        text: "Are there any provisions in your standard DPA that limit the organization's audit rights beyond what GDPR permits?"
+        text: "Are there any provisions in your standard DPA that limit the organization's audit rights beyond what GDPR Article 28(3)(h) permits?"
         dimension: contract_terms
+      - id: Q6
+        text: "Does the DPA specify the exact categories of personal data processed (e.g., PIDs, attestation attributes) and the specific processing operations performed (forwarding, verification, deletion)?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "What is your process for approving and documenting the organization's specific processing instructions, and how are changes tracked over time?"
+        dimension: operational
 
   # ============================================================================
   # VEND-CORE-003: Audit Rights
@@ -69,23 +78,29 @@ requirements:
   VEND-CORE-003:
     questions:
       - id: Q1
-        text: "Do you permit on-site audits of your facilities and systems by the organization or its designated auditors?"
+        text: "Do you permit on-site audits of your facilities and systems by the organization or its designated auditors? Are there any restrictions on audit scope (e.g., shared infrastructure, source code)?"
         dimension: capability
       - id: Q2
-        text: "What third-party certifications or audit reports (e.g., SOC 2 Type II, ISO 27001) do you provide to support compliance verification?"
+        text: "What third-party certifications or audit reports do you provide (e.g., SOC 2 Type II, ISO 27001, CSA STAR)? Do these cover the specific wallet intermediation service, or only your general infrastructure?"
         dimension: compliance_evidence
       - id: Q3
-        text: "How frequently can the organization conduct audits, and what advance notice is required?"
+        text: "How frequently can the organization conduct audits, and what advance notice is required? Is there a limit on annual audit frequency?"
         dimension: operational
       - id: Q4
-        text: "Are there any limitations on audit scope (e.g., shared infrastructure, sub-processor facilities, source code review)?"
-        dimension: limitations
-      - id: Q5
-        text: "What is the cost structure for audits (e.g., included in contract, reasonable cost recovery, prohibited)?"
+        text: "What is the cost structure for audits — are they included in the contract, charged at reasonable cost recovery, or separately priced?"
         dimension: commercial
-      - id: Q6
-        text: "How do you facilitate regulatory audits by supervisory authorities (e.g., DNB, ECB, national DPAs)?"
+      - id: Q5
+        text: "How do you facilitate regulatory audits by supervisory authorities (e.g., national DPAs, DNB, ECB, ENISA) that may need to inspect the intermediation service?"
         dimension: regulatory_access
+      - id: Q6
+        text: "Can the organization audit your compliance with the eIDAS no-storage mandate specifically — including inspection of memory handling, log configurations, and data persistence controls?"
+        dimension: auditability
+      - id: Q7
+        text: "If an instruction from the organization infringes GDPR, how do you notify them per Article 28(3) last paragraph? What is the escalation process?"
+        dimension: compliance_monitoring
+      - id: Q8
+        text: "Do audit reports cover sub-processor compliance? Can the organization audit sub-processors directly or only through your audit reports?"
+        dimension: supply_chain
 
   # ============================================================================
   # VEND-CORE-004: Relying Party Registration
@@ -94,29 +109,29 @@ requirements:
   VEND-CORE-004:
     questions:
       - id: Q1
-        text: "Do you offer an automated Registration Management Interface to support the organization in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States?"
+        text: "Does the product provide an automated Registration Management Interface to support the organization in completing, updating, and maintaining its registration as a Relying Party across all relevant Member States (via the TS5 REST API or equivalent)?"
         dimension: capability
       - id: Q2
-        text: "Do you support the full RP registration lifecycle, including initial onboarding, updates to intended uses, modification of requested data elements, certificate retrieval, and deregistration?"
+        text: "Does the product support the full RP registration lifecycle per IR 2025/848: initial onboarding, updates to intended uses, modification of requested data elements, certificate retrieval, and deregistration?"
         dimension: lifecycle
       - id: Q3
-        text: "In which Member States can you facilitate and perform RP registrations? Can you support registrations in all Member States where the organization has legal entities?"
+        text: "In which Member States can you facilitate RP registrations? Can you support registrations in all Member States where the organization has legal entities?"
         dimension: geographic_scope
       - id: Q4
-        text: "Is the registration process automated end-to-end, or does it require manual steps? If manual, describe the manual touchpoints."
+        text: "Is the registration process automated end-to-end, or does it require manual steps? If manual, describe the manual touchpoints and typical turnaround times."
         dimension: automation
       - id: Q5
-        text: "Is the registration process fully auditable? Can you provide registration history, change logs, and certificate issuance records?"
-        dimension: auditability
+        text: "How does the product populate the intermediary-specific fields required by IR 2025/848 Annex I — specifically point 14 (indication of reliance on an intermediary) and point 15 (relationship to intermediated RPs)?"
+        dimension: compliance_completeness
       - id: Q6
-        text: "How do you handle registration renewals and expiration notifications?"
-        dimension: lifecycle
+        text: "Is the registration process fully auditable? Can you provide registration history, change logs, and certificate issuance records for compliance verification?"
+        dimension: auditability
       - id: Q7
-        text: "What is the typical turnaround time for new RP registrations and updates?"
-        dimension: sla
-      - id: Q8
-        text: "How do you handle discrepancies or rejections from national Registrars?"
+        text: "How do you handle registration renewals, expiration notifications, and discrepancies or rejections from national Registrars?"
         dimension: operational
+      - id: Q8
+        text: "How does the product handle cross-border scenarios where the intermediary is established in one Member State but intermediated RPs are established in others?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-CORE-005: Relying Party Access Certificate
@@ -125,29 +140,32 @@ requirements:
   VEND-CORE-005:
     questions:
       - id: Q1
-        text: "Do you obtain and manage Relying Party Access Certificates on behalf of the organization, or does the organization manage certificates directly?"
+        text: "Does the product obtain and manage Relying Party Access Certificates on behalf of the organization, or does the organization manage certificates directly with the certificate authority?"
         dimension: capability
       - id: Q2
-        text: "How do you ensure certificates remain valid and are renewed before expiration?"
+        text: "How does the product ensure certificates remain valid and are renewed before expiration? Is renewal automated, semi-automated (with alerts), or fully manual?"
         dimension: lifecycle
       - id: Q3
-        text: "What Access Certificate Authorities (ACAs) do you support for certificate issuance?"
+        text: "Which Access Certificate Authorities (ACAs) mandated by Member States do you currently support for certificate issuance? Do you support multiple ACAs across different Member States?"
         dimension: interoperability
       - id: Q4
-        text: "How are certificate private keys protected? Describe the key management infrastructure (e.g., HSM, cloud KMS, software keystore)."
+        text: "How are certificate private keys protected? Describe the key management infrastructure (HSM, cloud KMS, software keystore) and its certification level."
         dimension: security
       - id: Q5
-        text: "What monitoring and alerting is in place for certificate expiration, revocation, or compromise?"
+        text: "What monitoring and alerting is in place for certificate expiration, revocation, or potential compromise?"
         dimension: operational
       - id: Q6
-        text: "How do you handle emergency certificate revocation and replacement?"
+        text: "How do you handle emergency certificate revocation and replacement — what is the expected time-to-recovery?"
         dimension: incident_response
       - id: Q7
-        text: "Can you support multiple certificates for different intended uses or Member States?"
-        dimension: flexibility
+        text: "Does the product include the access certificate in each presentation request by value (not by reference) as required by ARF RPA_02a, ensuring atomic self-contained transactions?"
+        dimension: compliance_completeness
       - id: Q8
-        text: "Does your lifecycle management process include automated key rotation for valid certificates?"
-        dimension: security
+        text: "Does the product support multiple certificates for different intended uses or Member States? How is the correct certificate selected per presentation request?"
+        dimension: flexibility
+      - id: Q9
+        text: "Does the access certificate comply with the Annex IV certificate policy requirements of IR 2025/848, including ETSI EN 319411-1 NCP? Can you provide compliance documentation?"
+        dimension: compliance_evidence
 
   # ============================================================================
   # VEND-CORE-006: Technical and Organizational Security Measures
@@ -156,29 +174,32 @@ requirements:
   VEND-CORE-006:
     questions:
       - id: Q1
-        text: "Describe your encryption approach: what data is encrypted at rest and in transit, and what algorithms/key lengths are used?"
+        text: "Describe your encryption approach: what data is encrypted at rest and in transit, and what algorithms/key lengths are used? Do you meet ETSI-approved algorithm requirements?"
         dimension: technical_implementation
       - id: Q2
-        text: "What pseudonymization or anonymization techniques do you apply to wallet-related data?"
+        text: "What pseudonymization or anonymization techniques do you apply to wallet-related data, including transaction metadata and logs?"
         dimension: data_handling
       - id: Q3
-        text: "How do you ensure the confidentiality, integrity, availability, and resilience of your processing systems?"
+        text: "How do you ensure the confidentiality, integrity, availability, and resilience of your processing systems as enumerated in Article 32(1)(b)?"
         dimension: security
       - id: Q4
-        text: "What is your approach to regular security testing (e.g., penetration testing frequency, vulnerability scanning, red team exercises)?"
+        text: "What is your approach to regular security testing (penetration testing frequency, vulnerability scanning, red team exercises)? Do these tests specifically cover the wallet intermediation service?"
         dimension: security
       - id: Q5
-        text: "Do you hold any security certifications (e.g., ISO 27001, SOC 2 Type II, CSA STAR)? Provide certificate details and scope."
+        text: "Do you hold security certifications (ISO 27001, SOC 2 Type II, CSA STAR)? Does the certification scope explicitly cover the EUDI Wallet intermediation service?"
         dimension: compliance_evidence
       - id: Q6
-        text: "How do you assess and document the appropriateness of your security measures relative to the risk (as required by GDPR Article 32)?"
+        text: "How do you assess and document the appropriateness of your security measures relative to the risk, as required by Article 32(1) — do you maintain a formal risk assessment that addresses wallet intermediation processing?"
         dimension: risk_management
       - id: Q7
-        text: "What physical security controls are in place at your data centers or processing facilities?"
+        text: "What physical security controls are in place at your data centers or processing facilities? Are you hosted in EU-based facilities with GDPR-compliant providers?"
         dimension: physical_security
       - id: Q8
-        text: "How do you handle security updates and patching for your systems?"
+        text: "What is your disaster recovery and business continuity capability — can you restore availability and access to data in a timely manner after a physical or technical incident (Art 32(1)(c))?"
         dimension: operational
+      - id: Q9
+        text: "How do you implement network segmentation and access controls between different RP tenants to prevent cross-tenant data leakage?"
+        dimension: architecture
 
   # ============================================================================
   # VEND-CORE-007: Data Breach Notification
@@ -187,26 +208,32 @@ requirements:
   VEND-CORE-007:
     questions:
       - id: Q1
-        text: "What is your committed timeframe for notifying the organization of a personal data breach after becoming aware of it?"
+        text: "What is your committed timeframe for notifying the organization of a personal data breach after becoming aware of it? Is this contractually guaranteed (e.g., within 4 hours, 12 hours, 24 hours)?"
         dimension: sla
       - id: Q2
-        text: "What information do you provide in breach notifications (e.g., nature of breach, categories of data, affected individuals, remediation steps)?"
+        text: "What information do you provide in breach notifications to enable the organization to fulfil its Article 33(3) obligations — do you include nature of breach, categories of affected data, approximate number of affected subjects, likely consequences, and remediation measures?"
         dimension: compliance_completeness
       - id: Q3
-        text: "How do you detect potential data breaches (e.g., SIEM, anomaly detection, intrusion detection systems)?"
+        text: "How do you detect potential data breaches — do you operate a 24/7 Security Operations Center (SOC) with SIEM, anomaly detection, and intrusion detection systems?"
         dimension: technical_implementation
       - id: Q4
-        text: "Do you have a documented incident response plan? Can the organization review this plan?"
+        text: "Do you have a documented incident response plan specific to the wallet intermediation service? Can the organization review this plan and participate in tabletop exercises?"
         dimension: documentation
       - id: Q5
-        text: "What is your escalation path for breach notification (e.g., 24/7 security operations center, dedicated contact)?"
+        text: "What is your escalation path for breach notification — do you have a dedicated incident contact for the organization, and is it available 24/7?"
         dimension: operational
       - id: Q6
-        text: "How do you assist the organization in meeting its 72-hour notification obligation to supervisory authorities under GDPR Article 33?"
+        text: "How do you assist the organization in meeting its 72-hour notification obligation to supervisory authorities under GDPR Article 33(1) — do you provide pre-formatted regulatory notification templates?"
         dimension: regulatory_support
       - id: Q7
-        text: "What post-incident support do you provide (e.g., forensic analysis, evidence preservation, root cause analysis)?"
+        text: "What post-incident support do you provide — forensic analysis, evidence preservation, root cause analysis, and remediation verification?"
         dimension: incident_response
+      - id: Q8
+        text: "In the EUDI Wallet intermediation context, how would you detect and respond to a breach involving compromise of access certificate private keys, failure of no-storage controls (accidental data persistence), or interception of wallet presentations during forwarding?"
+        dimension: incident_response
+      - id: Q9
+        text: "How are breach notifications documented for regulatory audit purposes, and how long are incident records retained?"
+        dimension: auditability
 
   # ============================================================================
   # VEND-CORE-008: Personnel Confidentiality
