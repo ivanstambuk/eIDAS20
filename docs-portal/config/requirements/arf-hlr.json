@@ -6576,7 +6576,7 @@
       "harmonizedId": "AS-WP-19-010",
       "source": "arf-hlr",
       "requirement": "If a presentation request contains transactional data, the Wallet Unit SHALL log the value of this transactional data only to the extent explicitly required by the applicable Technical Specification associated with the requested SUA attestation, and in accordance with data minimisation principles. If the applicable Technical Specification does not explicitly specify that transactional data shall be logged, the Wallet Unit SHALL NOT log the value of any transactional data.",
-      "notes": "a) For the concepts of transactional data and SUA attestations and their related Technical Specifications, see [Topic 20](./annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments). b) For example, for PSD2 Strong Customer Authentication transactions, the scope of transactional data to be included in the transaction log is defined in [Technical Specification 12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications-private/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) and includes the payment transaction identifier and merchant name.",
+      "notes": "a) For the concepts of transactional data and SUA attestations and their related Technical Specifications, see [Topic 20](./annex-2.02-high-level-requirements-by-topic.md#a2313-topic-20---strong-user-authentication-for-electronic-payments). b) For example, for PSD2 Strong Customer Authentication transactions, the scope of transactional data to be included in the transaction log is defined in [Technical Specification 12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) and includes the payment transaction identifier and merchant name.",
       "category": "wallet-provider",
       "part": "Actor-Specific Requirements",
       "arfTopic": {
@@ -6857,7 +6857,7 @@
       "id": "SUA_01",
       "harmonizedId": "AS-WP-20-001",
       "source": "arf-hlr",
-      "requirement": "A Wallet Unit SHALL be able to process the transactional data included in a presentation request for the SUA attestation(s) specified in [Technical Specification 12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications-private/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md), according to all requirements in that Technical Specification.",
+      "requirement": "A Wallet Unit SHALL be able to process the transactional data included in a presentation request for the SUA attestation(s) specified in [Technical Specification 12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md), according to all requirements in that Technical Specification.",
       "notes": "Technical Specification 12 specifies a SUA attestation intended for performing SCA as specified in the PSD2 Regulation. The related Rulebook is called SCA Attestation Rulebook.",
       "category": "wallet-provider",
       "part": "Actor-Specific Requirements",
@@ -6881,7 +6881,7 @@
       "id": "SUA_02",
       "harmonizedId": "AS-WP-20-002",
       "source": "arf-hlr",
-      "requirement": "Scheme Providers MAY specify Attestation Rulebooks (see [Topic 12](./annex-2.02-high-level-requirements-by-topic.md#a239-topic-12---attestation-rulebooks)) and associated technical specifications for SUA attestations other that the ones specified in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications-private/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md). The Attestation Rulebook or the technical specification of such of a SUA attestation SHALL specify the syntax and semantics of the transactional data associated with that attestation.",
+      "requirement": "Scheme Providers MAY specify Attestation Rulebooks (see [Topic 12](./annex-2.02-high-level-requirements-by-topic.md#a239-topic-12---attestation-rulebooks)) and associated technical specifications for SUA attestations other that the ones specified in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md). The Attestation Rulebook or the technical specification of such of a SUA attestation SHALL specify the syntax and semantics of the transactional data associated with that attestation.",
       "category": "wallet-provider",
       "part": "Actor-Specific Requirements",
       "arfTopic": {
@@ -6916,7 +6916,7 @@
       "id": "SUA_03",
       "harmonizedId": "AS-WP-20-004",
       "source": "arf-hlr",
-      "requirement": "The Attestation Provider of a SUA attestation other than the one(s) specified in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications-private/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) SHALL NOT issue such an attestation to a Wallet Unit that does not comply with all relevant requirements in the SUA Attestation Rulebook and the technical specification for that attestation.",
+      "requirement": "The Attestation Provider of a SUA attestation other than the one(s) specified in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md) SHALL NOT issue such an attestation to a Wallet Unit that does not comply with all relevant requirements in the SUA Attestation Rulebook and the technical specification for that attestation.",
       "category": "wallet-provider",
       "part": "Actor-Specific Requirements",
       "arfTopic": {
@@ -6978,7 +6978,7 @@
       "id": "SUA_06",
       "harmonizedId": "AS-WP-20-007",
       "source": "arf-hlr",
-      "requirement": "The Wallet Unit SHALL render or adapt the dialogue message(s) displayed to the User (like font size and colour, background colour, text position, labels in the buttons to 'approve' or 'reject' a transaction), according to requirements in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications-private/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md).",
+      "requirement": "The Wallet Unit SHALL render or adapt the dialogue message(s) displayed to the User (like font size and colour, background colour, text position, labels in the buttons to 'approve' or 'reject' a transaction), according to requirements in [TS12](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md).",
       "category": "wallet-provider",
       "part": "Actor-Specific Requirements",
       "arfTopic": {
