@@ -339,7 +339,7 @@ function OrganisationRoleSelector({ selectedRoles, onToggle }) {
 // Step 2: Product Category Selector
 // ============================================================================
 
-function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }) {
+function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle, selectedArchitectures, onToggleArchitecture }) {
     // Filter categories based on selected roles
     const availableCategories = useMemo(() => {
         if (selectedRoles.length === 0) return [];
@@ -348,6 +348,9 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }
             cat.applicableRoles.some(role => selectedRoles.includes(role))
         );
     }, [selectedRoles]);
+
+    // Show architecture sub-options when RP + Connector are selected
+    const showArchitectures = selectedRoles.includes('relying_party') && selectedCategories.includes('connector');
 
     if (selectedRoles.length === 0) {
         return (
@@ -376,6 +379,7 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }
             <div className="vcq-category-grid">
                 {availableCategories.map(cat => {
                     const isSelected = selectedCategories.includes(cat.id);
+                    const isConnector = cat.id === 'connector';
 
                     return (
                         <div
@@ -404,56 +408,31 @@ function ProductCategorySelector({ selectedRoles, selectedCategories, onToggle }
                                 </ul>
                             </div>
 
-
+                            {/* Deployment Architecture sub-options (inline, RCA profile pattern) */}
+                            {isConnector && isSelected && showArchitectures && (
+                                <div className="vcq-category-architectures" onClick={e => e.stopPropagation()}>
+                                    <span className="vcq-arch-section-label">Deployment Architecture:</span>
+                                    {Object.values(DEPLOYMENT_ARCHITECTURES).map(arch => {
+                                        const isArchSelected = selectedArchitectures.includes(arch.id);
+                                        return (
+                                            <label
+                                                key={arch.id}
+                                                className={`vcq-arch-inline-option ${isArchSelected ? 'selected' : ''}`}
+                                                style={{ '--arch-color': arch.color }}
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    checked={isArchSelected}
+                                                    onChange={() => onToggleArchitecture(arch.id)}
+                                                />
+                                                <span className="vcq-arch-inline-icon">{arch.icon}</span>
+                                                <span className="vcq-arch-inline-label">{arch.label}</span>
+                                            </label>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
-
-// ============================================================================
-// Step 2b: Deployment Architecture Selector (DEC-TBD)
-// ============================================================================
-
-function ArchitectureSelector({ selectedArchitectures, onToggle }) {
-    const allArchitectures = Object.values(DEPLOYMENT_ARCHITECTURES);
-
-    return (
-        <div className="vcq-step vcq-arch-step">
-            <div className="vcq-step-header">
-                <span className="vcq-step-number">2b</span>
-                <h3>Deployment Architecture</h3>
-            </div>
-            <p className="vcq-step-hint">
-                Filter requirements by how the vendor product integrates with your RP infrastructure.
-                Agnostic requirements always show regardless of selection.
-            </p>
-            <div className="vcq-arch-selector">
-                {allArchitectures.map(arch => {
-                    const isSelected = selectedArchitectures.includes(arch.id);
-                    return (
-                        <label
-                            key={arch.id}
-                            className={`vcq-arch-option ${isSelected ? 'selected' : ''}`}
-                            style={{
-                                '--arch-color': arch.color,
-                                '--arch-bg': arch.bgColor,
-                            }}
-                        >
-                            <input
-                                type="checkbox"
-                                checked={isSelected}
-                                onChange={() => onToggle(arch.id)}
-                                className="vcq-arch-checkbox"
-                            />
-                            <span className="vcq-arch-icon">{arch.icon}</span>
-                            <div className="vcq-arch-text">
-                                <span className="vcq-arch-label">{arch.label}</span>
-                                <span className="vcq-arch-desc">{arch.description}</span>
-                            </div>
-                        </label>
                     );
                 })}
             </div>
@@ -1515,21 +1494,14 @@ export default function VendorQuestionnaire() {
                 onToggle={handleToggleRole}
             />
 
-            {/* Step 2: Product Category Selection */}
+            {/* Step 2: Product Category Selection (with inline architecture filter for Connector) */}
             <ProductCategorySelector
                 selectedRoles={selectedRoles}
                 selectedCategories={selectedCategories}
                 onToggle={handleToggleCategory}
+                selectedArchitectures={selectedArchitectures}
+                onToggleArchitecture={handleToggleArchitecture}
             />
-
-            {/* Step 2b: Deployment Architecture Filter (DEC-TBD) */}
-            {/* Only visible when RP + Connector selected */}
-            {selectedRoles.includes('relying_party') && selectedCategories.includes('connector') && (
-                <ArchitectureSelector
-                    selectedArchitectures={selectedArchitectures}
-                    onToggle={handleToggleArchitecture}
-                />
-            )}
 
             {/* Step 3: Source Selection */}
             <SourceSelector
