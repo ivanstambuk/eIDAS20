@@ -82,8 +82,7 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                             color: 'var(--text-secondary)'
                         }}
                     >
-                        — <span style={{ color: 'var(--text-tertiary)' }}>Internal</span>,{' '}
-                        {sources[0].articleNumber}
+                        <span>{'— '}<span style={{ color: 'var(--text-tertiary)' }}>Internal</span>{`, ${sources[0].articleNumber.replace(/^Synthesized/, 'synthesized')}`}</span>
                     </span>
                 ) : (
                     <Link
@@ -155,8 +154,7 @@ const DefinitionGroup = ({ group, getDocumentPath, handleSaveScroll }) => {
                                             color: 'var(--text-secondary)'
                                         }}
                                     >
-                                        <span style={{ color: 'var(--text-tertiary)' }}>Internal</span>,{' '}
-                                        {source.articleNumber}
+                                        <span>{'— '}<span style={{ color: 'var(--text-tertiary)' }}>Internal</span>{`, ${source.articleNumber.replace(/^Synthesized/, 'synthesized')}`}</span>
                                     </span>
                                 ) : (
                                     <Link
