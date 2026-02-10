@@ -716,7 +716,7 @@ requirements:
         text: "Which wallet implementations (EUDI reference implementation, national wallets, Apple, Google) have you tested interoperability with for both issuance (OpenID4VCI) and presentation (OpenID4VP) flows?"
         dimension: interoperability
       - id: Q5
-        text: "The TS1-mapped specifications (OpenID4VCI, OpenID4VP) are still evolving through IETF/OIDF drafts. How do you track draft changes, and what is your process for adopting breaking changes while maintaining backward compatibility with deployed wallets?"
+        text: "Several EUDI technical standards are still being finalized (e.g., ETSI specifications referenced by TS12 for PSD2 SCA, TS3 for WUA profiles, and future Commission implementing acts). How do you track specification changes, and what is your process for adopting breaking changes while maintaining backward compatibility with deployed wallets and issuers?"
         dimension: lifecycle
       - id: Q6
         text: "Are there any proprietary extensions, vendor-specific features, or deviations from the TS1-mapped standard implementations in your product? If so, document each deviation with its justification and impact on interoperability."
