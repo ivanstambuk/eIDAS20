@@ -12,8 +12,8 @@
 schemaVersion: 1
 sourceFile: requirements/issuer.yaml
 modelPasses:
-  opus: true       # Completed 2026-01-30 - All issuer requirements processed
-  gemini: true    # Completed 2026-01-30 - Gemini review pass finished
+  opus: true # Completed 2026-01-30 - All issuer requirements processed
+  gemini: true # Completed 2026-01-30 - Gemini review pass finished
 
 requirements:
   # ============================================================================
@@ -23,23 +23,32 @@ requirements:
   VEND-ISS-001:
     questions:
       - id: Q1
-        text: "Do you provide tooling or services to register the organization as an Attestation Provider with Member State authorities?"
+        text: "Do you provide tooling or services to register the organisation as an Attestation Provider with Member State authorities? Is the registration workflow automated or manual?"
         dimension: capability
       - id: Q2
-        text: "Which Member States do you currently support for Attestation Provider registration?"
+        text: "Which Member States do you currently support for Attestation Provider registration? Is multi-jurisdiction registration managed from a single platform?"
         dimension: geographic_scope
       - id: Q3
-        text: "What documentation and prerequisites must the organization provide for registration?"
+        text: "What documentation and prerequisites must the organisation provide for registration? Do you generate the Reg_01a common data set automatically from platform configuration?"
         dimension: operational
       - id: Q4
-        text: "What is the typical timeline from application to inclusion in Trusted Lists?"
+        text: "What is the typical timeline from application to inclusion in Trusted Lists? Does this vary significantly across Member States?"
         dimension: sla
       - id: Q5
-        text: "How do you track and alert on registration status and renewal requirements?"
+        text: "How do you track and alert on registration status and renewal requirements? Are alerts sent proactively with sufficient lead time before expiry?"
         dimension: lifecycle
       - id: Q6
-        text: "Do you manage ongoing compliance with registration conditions on behalf of the organization?"
+        text: "Do you manage ongoing compliance with registration conditions on behalf of the organisation — including monitoring for regulatory changes that affect registration requirements?"
         dimension: compliance_monitoring
+      - id: Q7
+        text: "How do you handle registration failures or rejections — is there a structured remediation process with guidance on addressing the rejection reasons?"
+        dimension: incident_response
+      - id: Q8
+        text: "Can you register an organisation for multiple roles simultaneously (e.g., as both a PID Provider and a QEAA Provider) through a single process?"
+        dimension: flexibility
+      - id: Q9
+        text: "How do you ensure that the attestation type(s) registered with the Registrar (per Reg_01a) remain synchronised with the types actually issued by the platform?"
+        dimension: compliance_completeness
 
   # ============================================================================
   # VEND-ISS-002: Provider Information Publication
@@ -48,20 +57,32 @@ requirements:
   VEND-ISS-002:
     questions:
       - id: Q1
-        text: "Do you publish machine-readable Provider Information according to the data model in Annex I of Regulation 2024/2981?"
+        text: "Do you publish machine-readable Provider Information according to the data model in Annex I of Regulation 2024/2981? Is the information automatically generated from platform configuration?"
         dimension: capability
       - id: Q2
-        text: "What metadata do you publish (supported attestation types, issuance policies, data sources, endpoints)?"
+        text: "What metadata do you publish — supported attestation types, issuance policies, data sources, endpoints, credential formats? Does this cover the full Annex I schema?"
         dimension: technical_implementation
       - id: Q3
-        text: "How is the Provider Information discovered by wallets and Relying Parties?"
+        text: "How is the Provider Information discovered by wallets and Relying Parties — via OpenID4VCI credential issuer metadata endpoint, Registrar lookup, or Common Catalogue (TS11)?"
         dimension: interoperability
       - id: Q4
-        text: "Is the Provider Information endpoint highly available? What is the uptime SLA?"
+        text: "Is the Provider Information endpoint highly available? What is the uptime SLA, and what happens if the endpoint is temporarily unavailable?"
         dimension: sla
       - id: Q5
-        text: "How do you validate that published information conforms to the required schema?"
+        text: "How do you validate that published information conforms to the required Annex I schema — automated validation in CI/CD, or manual review?"
         dimension: compliance_monitoring
+      - id: Q6
+        text: "Per ISSU_29, do you ensure non-discrimination between Wallet Solutions? How do you verify that your Provider Information does not exclude specific wallets (except for SUA attestations)?"
+        dimension: compliance_completeness
+      - id: Q7
+        text: "Is the Provider Information versioned? Can wallets and RPs determine when the information was last updated and detect stale cached versions?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "How do you handle the discoverability of newly deployed attestation types — are they automatically published to the metadata endpoint, or is a manual step required?"
+        dimension: automation
+      - id: Q9
+        text: "Do you support localised Provider Information for different Member States (e.g., different supported attestation types or policies per jurisdiction)?"
+        dimension: geographic_scope
 
   # ============================================================================
   # VEND-ISS-003: Provider Information Update Timeliness
@@ -70,17 +91,32 @@ requirements:
   VEND-ISS-003:
     questions:
       - id: Q1
-        text: "How do you ensure Provider Information is updated within 24 hours when operational changes occur?"
+        text: "How do you ensure Provider Information is updated within 24 hours when operational changes occur? Is update latency measured and monitored?"
         dimension: sla
       - id: Q2
-        text: "Is the update process automated when configuration changes are made, or does it require manual intervention?"
+        text: "Is the update process automated when configuration changes are made (e.g., new attestation type deployed), or does it require manual intervention?"
         dimension: automation
       - id: Q3
-        text: "What audit trail exists for Provider Information updates?"
+        text: "What audit trail exists for Provider Information updates — timestamp, change description, triggering user/system, diff of changed fields?"
         dimension: auditability
       - id: Q4
-        text: "How are organizations alerted when an update is required but has not yet been published?"
+        text: "How are organisations alerted when an update is required but has not yet been published — automated monitoring alert, manual review, or dashboard check?"
         dimension: alerting
+      - id: Q5
+        text: "What types of changes trigger a Provider Information update — do you have a comprehensive list of change triggers (endpoint URL, attestation types, format support, policy changes)?"
+        dimension: compliance_completeness
+      - id: Q6
+        text: "Do you have a staging/preview mechanism to review Provider Information changes before they go live, to prevent publishing incorrect metadata?"
+        dimension: operational
+      - id: Q7
+        text: "How do you handle the scenario where a change occurs outside business hours — is the 24-hour update window still met through automated processes?"
+        dimension: operational
+      - id: Q8
+        text: "Do you support rollback of Provider Information changes if an error is detected after publication?"
+        dimension: incident_response
+      - id: Q9
+        text: "How do you ensure cache-busting for consumers (wallets, RPs) that may have cached stale Provider Information after an update?"
+        dimension: technical_implementation
 
   # ============================================================================
   # VEND-ISS-004: Trusted List Inclusion (Qualified Attestations)
@@ -89,20 +125,32 @@ requirements:
   VEND-ISS-004:
     questions:
       - id: Q1
-        text: "Do you support the organization's application for QTSP status and Trusted List inclusion?"
+        text: "Do you support the organisation's application for QTSP status and Trusted List inclusion? Is the application workflow guided or self-service?"
         dimension: capability
       - id: Q2
-        text: "Which Member States' Trusted Lists can you support for inclusion?"
+        text: "Which Member States' Trusted Lists can you support for inclusion? Do requirements vary significantly across Member States?"
         dimension: geographic_scope
       - id: Q3
-        text: "What assistance do you provide for the conformity assessment audit required for QTSP status?"
+        text: "What assistance do you provide for the conformity assessment audit required for QTSP status — audit preparation, documentation generation, gap analysis, mock audits?"
         dimension: compliance_evidence
       - id: Q4
-        text: "How do you monitor Trusted List status and alert on any changes affecting the organization?"
+        text: "How do you monitor Trusted List status and alert on any changes affecting the organisation — removal, suspension, or status downgrades?"
         dimension: lifecycle
       - id: Q5
-        text: "What is your experience with QTSP certification timelines in different Member States?"
+        text: "What is your experience with QTSP certification timelines in different Member States? What is the typical duration from application to Trusted List inclusion?"
         dimension: operational
+      - id: Q6
+        text: "Do you support the biennial re-assessment requirement for QTSP status? How do you prepare the organisation for each re-assessment cycle?"
+        dimension: lifecycle
+      - id: Q7
+        text: "How do you handle the scenario where QTSP status is suspended or revoked — what is the impact on in-flight attestations, and what is the recovery procedure?"
+        dimension: incident_response
+      - id: Q8
+        text: "Can the platform distinguish between QEAA and non-qualified EAA issuance modes, enforcing QTSP status requirements only for qualified attestations?"
+        dimension: flexibility
+      - id: Q9
+        text: "How quickly is the Trusted List entry propagated to wallets and RPs after inclusion — is there a typical propagation delay?"
+        dimension: interoperability
 
   # ============================================================================
   # VEND-ISS-005: Dual Credential Format Support (mDoc + SD-JWT-VC)
@@ -111,26 +159,32 @@ requirements:
   VEND-ISS-005:
     questions:
       - id: Q1
-        text: "Do you support issuing attestations in BOTH ISO 18013-5 (mDoc) and SD-JWT-VC formats simultaneously?"
+        text: "Do you support issuing attestations in BOTH ISO 18013-5 (mDoc) and SD-JWT-VC formats simultaneously? Is dual-format issuance the default or opt-in?"
         dimension: capability
       - id: Q2
-        text: "When a wallet requests issuance, do you automatically issue in all mandated formats, or must each format be requested separately?"
+        text: "When a wallet requests issuance, do you automatically issue in all mandated formats per ISSU_12a, or must each format be requested separately?"
         dimension: technical_implementation
       - id: Q3
-        text: "How do you ensure format parity—that both mDoc and SD-JWT-VC contain identical attribute data?"
+        text: "How do you ensure format parity — that both mDoc and SD-JWT-VC contain identical attribute data with consistent encoding and semantic meaning?"
         dimension: interoperability
       - id: Q4
-        text: "Do you publish supported formats in Provider Information per ARF ISSU_12a?"
+        text: "Do you publish supported formats in Provider Information per ARF ISSU_12a? Is the format list automatically synchronised with actual issuance capabilities?"
         dimension: compliance_completeness
       - id: Q5
-        text: "Which wallet implementations have you tested format compatibility with (e.g., EUDI reference wallet, Apple, Google, third-party)?"
+        text: "Which wallet implementations have you tested format compatibility with (e.g., EUDI reference wallet, Apple, Google, third-party)? Have you participated in plugfest events?"
         dimension: interoperability
       - id: Q6
-        text: "Have you participated in EUDI Wallet plugfest or interoperability testing events?"
+        text: "Have you participated in EUDI Wallet plugfest or interoperability testing events? What were the results for dual-format issuance?"
         dimension: compliance_evidence
       - id: Q7
-        text: "What is the measured latency overhead of generating both mDoc and SD-JWT-VC formats simultaneously compared to a single format?"
+        text: "What is the measured latency overhead of generating both mDoc and SD-JWT-VC formats simultaneously compared to a single format? Is this acceptable for user experience?"
         dimension: performance
+      - id: Q8
+        text: "How do you handle Rulebook-driven format mandates (per ARB_02) — if a Rulebook mandates mDoc for proximity, do you enforce this at the attestation type configuration level?"
+        dimension: compliance_completeness
+      - id: Q9
+        text: "Do you support additional attestation formats beyond mDoc and SD-JWT-VC (e.g., W3C VCDM for non-qualified EAAs per ARB_01a)? Is format extensibility built into the architecture?"
+        dimension: roadmap
 
   # ============================================================================
   # VEND-ISS-006: Cryptographic Device Binding
@@ -139,23 +193,32 @@ requirements:
   VEND-ISS-006:
     questions:
       - id: Q1
-        text: "How do you cryptographically bind issued attestations to the Wallet Unit's secure cryptographic device (WSCD)?"
+        text: "How do you cryptographically bind issued attestations to the Wallet Unit's WSCD? Is the binding mechanism consistent across mDoc (DeviceAuth) and SD-JWT-VC (kb-jwt/cnf)?"
         dimension: technical_implementation
       - id: Q2
-        text: "What proof-of-possession mechanism do you use during issuance to verify key ownership?"
+        text: "What proof-of-possession mechanism do you use during issuance to verify key ownership — challenge-response, signed nonce, or OpenID4VCI DPoP proof?"
         dimension: security
       - id: Q3
-        text: "Do you support both single-attestation keys and wallet-wide device keys for binding?"
+        text: "Do you support both single-attestation keys and wallet-wide device keys for binding? Can the organisation configure the binding strategy per attestation type?"
         dimension: flexibility
       - id: Q4
-        text: "How is device binding verified during the issuance flow before the attestation is issued?"
+        text: "How is device binding verified during the issuance flow before the attestation is issued? Is the proof-of-possession validated server-side or delegated?"
         dimension: technical_implementation
       - id: Q5
-        text: "Do you support key import (Bring Your Own Key) for device binding keys, or must keys be generated within your platform?"
+        text: "Do you support key import (Bring Your Own Key) for device binding keys, or must keys be generated within the WSCD only?"
         dimension: flexibility
       - id: Q6
-        text: "Can your issuance pipeline distinguish between keys bound to a Secure Element (SE) versus a Trusted Execution Environment (TEE) for LoA enforcement?"
+        text: "Can your issuance pipeline distinguish between keys bound to a Secure Element (SE) versus a Trusted Execution Environment (TEE) for LoA enforcement? How is this determined from the WUA?"
         dimension: security
+      - id: Q7
+        text: "How do you handle the mDoc-specific DeviceAuth structure — do you include the device public key in the MSO during issuance, and verify the key type (EC P-256 vs P-384)?"
+        dimension: technical_implementation
+      - id: Q8
+        text: "For SD-JWT-VC, how is the `cnf` (confirmation) claim structured — do you support JWK-based confirmation, and which key types are supported?"
+        dimension: technical_implementation
+      - id: Q9
+        text: "How do you handle the scenario where the WSCD is compromised or the device is lost — can the binding be revoked independently of the attestation content?"
+        dimension: incident_response
 
   # ============================================================================
   # VEND-ISS-007: OpenID4VCI Protocol Implementation (TS6)
@@ -164,26 +227,32 @@ requirements:
   VEND-ISS-007:
     questions:
       - id: Q1
-        text: "Do you fully implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as specified in ARF Technical Specification 6?"
+        text: "Do you fully implement the OpenID for Verifiable Credential Issuance (OpenID4VCI) protocol as profiled by the High Assurance Interoperability Profile (HAIP) per ISSU_01a?"
         dimension: capability
       - id: Q2
-        text: "Which OpenID4VCI grant types do you support (pre-authorized code flow, authorization code flow)?"
+        text: "Which OpenID4VCI grant types do you support — pre-authorized code flow, authorization code flow, or both? Is the grant type configurable per attestation type?"
         dimension: technical_implementation
       - id: Q3
-        text: "Do you support deferred credential issuance for asynchronous processing?"
+        text: "Do you support deferred credential issuance for asynchronous processing (e.g., when authentic source verification takes time)? What is the maximum deferral period?"
         dimension: capability
       - id: Q4
-        text: "What credential offer mechanisms do you support (QR codes, deep links, pushed authorization requests)?"
+        text: "What credential offer mechanisms do you support — QR codes, deep links, pushed authorization requests (PAR)? Are all three implemented for maximum wallet compatibility?"
         dimension: interoperability
       - id: Q5
-        text: "Which wallet implementations have you tested OpenID4VCI compatibility with?"
+        text: "Which wallet implementations have you tested OpenID4VCI compatibility with? Have you validated against the EUDI Reference Implementation test suite?"
         dimension: interoperability
       - id: Q6
-        text: "How do you handle issuance errors, retries, and partial failures?"
+        text: "How do you handle issuance errors, retries, and partial failures — does the protocol gracefully recover, or must the user restart the entire flow?"
         dimension: operational
       - id: Q7
-        text: "Do you support the OID4VCI Batch Issuance Endpoint capability to reduce round-trips for multiple credential issuance?"
+        text: "Do you support the OID4VCI Batch Issuance Endpoint to reduce round-trips when issuing multiple formats (mDoc + SD-JWT-VC) simultaneously per ISSU_12/ISSU_12a?"
         dimension: technical_implementation
+      - id: Q8
+        text: "How do you handle the credential issuer metadata endpoint — is it automatically generated from platform configuration and kept in sync with Provider Information (VEND-ISS-002)?"
+        dimension: automation
+      - id: Q9
+        text: "Do you support issuance via both same-device and cross-device flows (e.g., user scans QR code from laptop with wallet on phone)? How are these flows secured against phishing?"
+        dimension: security
 
   # ============================================================================
   # VEND-ISS-008: Batch Issuance

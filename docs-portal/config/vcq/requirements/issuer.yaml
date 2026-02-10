@@ -4,20 +4,52 @@ requirements:
     category: registration
     requirement: Register as an Attestation Provider with the competent authority
     explanation: |
-      Any entity issuing electronic attestations of attributes must register 
-      with a Member State authority. Registration establishes eligibility to 
-      issue attestations and enables inclusion in Trusted Lists.
+      Any entity issuing electronic attestations of attributes must
+      register with a Member State authority. Registration
+      establishes the organisation's legal eligibility to issue
+      attestations and enables inclusion in Trusted Lists.
+
+      **Reg_01 — Registration process:**
+      Member States SHALL provide processes and mechanisms for PID
+      Providers, QEAA Providers, PuB-EAA Providers, non-qualified
+      EAA Providers, and Relying Parties to register in a registry.
+      Member States may implement a single registry for all roles
+      or separate registries per role.
+
+      **Reg_01a — Common data set:**
+      Member States SHALL register a common set of data about
+      each provider, according to the requirements in Technical
+      Specification 6. This data includes the attestation type(s)
+      that the provider intends to issue to Wallet Units.
+
+      **Vendor platform implications:**
+      An issuance platform must support the registration workflow
+      by:
+      - Generating the required machine-readable registration data
+      - Supporting registration submissions to Member State
+        registries in each target jurisdiction
+      - Tracking registration status and renewal deadlines
+      - Alerting the organisation when registration conditions
+        change or renewal is required
+
+      **Multi-jurisdiction considerations:**
+      Providers operating across multiple Member States must
+      register separately in each jurisdiction. The platform
+      should support managing multiple concurrent registrations.
     legalBasis:
       regulation: 2014/910
       article: Article 45d
       paragraph: "1"
     legalText: |
-      Electronic attestation of attributes issued by or on behalf of a public 
-      sector body responsible for an authentic source shall be issued in 
-      accordance with the requirements laid down in this Regulation.
+      Electronic attestation of attributes issued by or on behalf
+      of a public sector body responsible for an authentic source
+      shall be issued in accordance with the requirements laid down
+      in this Regulation.
     arfReference:
       topic: Topic 27
-      hlr: Reg_01
+      hlr:
+        - Reg_01
+        - Reg_01a
     roles:
       - issuer
     productCategories:
@@ -28,21 +60,50 @@ requirements:
     category: registration
     requirement: Publish Provider Information according to the standard schema
     explanation: |
-      Attestation Providers must publish machine-readable information about 
-      their services, including supported attestation types, data sources, 
-      and issuance policies. This enables wallets and relying parties to 
+      Attestation Providers must publish machine-readable information
+      about their services, enabling wallets and relying parties to
       discover and evaluate providers.
+
+      **ISSU_29 — Non-discrimination mandate:**
+      A QEAA Provider or PuB-EAA Provider SHALL support all Wallet
+      Solutions (with a narrow exception for SUA attestations when
+      the Wallet Provider does not support transactional data
+      processing). The provider SHALL NOT discriminate between
+      Wallet Solutions when processing issuance requests. This
+      means the published Provider Information must be universally
+      accessible.
+
+      **Annex I data model (Regulation 2024/2981):**
+      The published information must conform to the data model in
+      Annex I and include:
+      - Supported attestation types
+      - Issuance policies and conditions
+      - Data sources (authentic sources used)
+      - Technical endpoints (OpenID4VCI credential issuer metadata)
+      - Supported credential formats (mDoc, SD-JWT-VC)
+      - Geographic scope (Member States served)
+
+      **Discovery mechanisms:**
+      Provider Information enables multiple discovery paths:
+      - Wallet-initiated: wallet queries the provider's metadata
+        endpoint to determine available attestation types
+      - Registrar-mediated: the Registrar publishes provider
+        information from the common data set (per Reg_01a)
+      - Catalogue-based: attestation types are discoverable via
+        the Common Catalogue (TS11, per VEND-ISS-020)
     legalBasis:
       regulation: 2024/2981
       article: Article 3
       paragraph: "1"
     legalText: |
-      Providers issuing attestations to European Digital Identity Wallet units 
-      shall publish information in accordance with the data model set out in 
-      Annex I.
+      Providers issuing attestations to European Digital Identity
+      Wallet units shall publish information in accordance with the
+      data model set out in Annex I.
     arfReference:
       topic: Topic 10
-      hlr: ISSU_29
+      hlr:
+        - ISSU_29
+        - ISSU_12a
     roles:
       - issuer
     productCategories:
@@ -53,13 +114,41 @@ requirements:
     category: registration
     requirement: Update Provider Information within 24 hours of changes
     explanation: |
-      When any information in the published Provider Information changes 
-      (e.g., new attestation types, policy updates), the provider must 
-      update the published data within 24 hours.
+      When any information in the published Provider Information
+      changes (e.g., new attestation types, policy updates, endpoint
+      changes), the provider must update the published data within
+      24 hours.
+
+      **Types of changes requiring update:**
+      - New attestation types added or removed
+      - Issuance policy modifications
+      - Endpoint URL changes
+      - Format support changes (e.g., adding SD-JWT-VC support)
+      - Data source changes (new authentic sources)
+      - Geographic scope changes
+
+      **Automation requirement:**
+      The 24-hour window implies that manual update processes are
+      high-risk. The platform should automate Provider Information
+      updates so that configuration changes are automatically
+      reflected in the published metadata.
+
+      **Audit trail:**
+      The platform should maintain an audit trail of all Provider
+      Information updates, including timestamps, change descriptions,
+      and the identity of the person/system that triggered the
+      update. This supports supervisory audits.
     legalBasis:
       regulation: 2024/2981
       article: Article 3
       paragraph: "2"
+    legalText: |
+      Providers shall ensure that the information published in
+      accordance with paragraph 1 is updated within 24 hours of
+      any change.
+    arfReference:
+      topic: Topic 10
+      hlr: ISSU_29
     roles:
       - issuer
     productCategories:
@@ -70,13 +159,45 @@ requirements:
     category: registration
     requirement: Obtain inclusion in national or EU Trusted Lists if issuing qualified attestations
     explanation: |
-      Providers of Qualified Electronic Attestations of Attributes (QEAAs) 
-      must be included in the national Trusted List as a QTSP. This enables 
-      relying parties to verify the qualified status of the attestations.
+      Providers of Qualified Electronic Attestations of Attributes
+      (QEAAs) must be included in the national Trusted List as a
+      Qualified Trust Service Provider (QTSP). This enables relying
+      parties to verify the qualified status of attestations.
+
+      **Article 45f — Qualified status:**
+      QEAAs may only be issued by QTSPs that have obtained
+      qualified status through the conformity assessment process.
+      The QTSP must be listed in the national Trusted List before
+      issuing any qualified attestations.
+
+      **Conformity assessment:**
+      To become a QTSP, the provider must undergo a conformity
+      assessment audit by an accredited Conformity Assessment Body
+      (CAB). The audit covers:
+      - Security measures and key management
+      - Operational procedures and staff qualification
+      - Data protection compliance
+      - Service continuity and disaster recovery
+      - Compliance with the applicable technical specifications
+
+      **Trusted List infrastructure:**
+      - Each Member State maintains a national Trusted List
+      - The Commission publishes a List of Trusted Lists (LOTL)
+      - Wallets and RPs use Trusted Lists to verify provider status
+      - Trusted List entries include provider certificates, service
+        descriptions, and status information
+
+      **Non-qualified EAA note:**
+      This requirement only applies to QEAA issuance. Non-qualified
+      EAAs may be issued without QTSP status but must still
+      register per VEND-ISS-001.
     legalBasis:
       regulation: 2014/910
       article: Article 45f
       paragraph: "1"
+    legalText: |
+      Qualified electronic attestations of attributes may only be
+      issued by qualified trust service providers.
     roles:
       - issuer
     productCategories:
@@ -84,8 +205,9 @@ requirements:
       - trust_services
     deadline: "2027-11-21"
     notes: |
-      This requirement only applies to QEAA issuance. Non-qualified EAAs 
-      may be issued without QTSP status but must still register.
+      This requirement only applies to QEAA issuance. Non-qualified
+      EAAs may be issued without QTSP status but must still
+      register.
     arfReference:
       topic: Topic 42
       hlr: QTSPAS_02
@@ -94,57 +216,121 @@ requirements:
     category: issuance
     requirement: Issue attestations in BOTH mandated credential formats (mDoc and SD-JWT-VC)
     explanation: |
-      Attestation providers MUST issue PIDs and attestations in ALL formats required 
-      by the applicable PID Rulebook or Attestation Rulebook. Currently, the mandated 
+      Attestation providers MUST issue PIDs and attestations in ALL
+      formats required by the applicable PID Rulebook or Attestation
+      Rulebook.
+
+      **ISSU_12 — Provider obligation:**
+      A PID Provider or Attestation Provider SHALL offer its PIDs
+      or attestations in all formats required in the PID Rulebook
+      or the applicable Attestation Rulebook. The two mandated
       formats are:
 
-      1. **ISO/IEC 18013-5 (mDoc)**: CBOR-based format for proximity and remote 
-         presentations, originally designed for mobile driving licenses but extended 
-         to all wallet attestations.
+      **ISO/IEC 18013-5 (mDoc):**
+      CBOR-based format using Mobile Security Objects (MSOs) for
+      integrity. Originally designed for mobile driving licenses,
+      now extended to all wallet attestations. Required for
+      proximity presentation use cases (per ARB_02) and also
+      usable for remote presentation.
 
-      2. **SD-JWT-VC**: Selective Disclosure JSON Web Token format for privacy-
-         preserving remote presentations, enabling holders to reveal only specific 
-         claims.
+      **SD-JWT-VC:**
+      Selective Disclosure JSON Web Token format for privacy-
+      preserving remote presentations. Uses salted hashes and the
+      `_sd` claim array to enable holders to reveal only specific
+      claims. Includes kb-jwt (key binding JWT) for proof of
+      possession.
 
-      Both formats MUST be supported - this is not optional. The formats supported 
-      must be published in Provider Information to enable wallet units to request 
-      attestations in all available formats per ARF ISSU_12a.
+      **ISSU_12a — Wallet-side obligation:**
+      Wallet Providers SHALL ensure that when a user requests a PID
+      or attestation, the Wallet Unit requests it in ALL formats
+      offered by the provider. This means issuance always produces
+      both formats simultaneously.
+
+      **ARB_02 — Proximity mandate:**
+      If an Attestation Rulebook requires proximity presentation,
+      it SHALL mandate the mDoc format (since OID4VP cannot
+      operate without internet connectivity).
+
+      **Format parity:**
+      Both mDoc and SD-JWT-VC attestations must contain identical
+      attribute data. The platform must ensure that attribute
+      mapping, encoding, and semantic meaning are consistent across
+      formats.
     legalBasis:
       regulation: 2024/2979
       article: Article 8
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet solutions shall support the protocols and interfaces
+      necessary to receive and store PIDs and electronic
+      attestations of attributes in all formats specified in the
+      applicable Rulebooks.
     arfReference:
       topic: Topic 10
-      hlr: ISSU_12
+      hlr:
+        - ISSU_12
+        - ISSU_12a
     roles:
       - issuer
     productCategories:
       - issuance_platform
     deadline: "2027-11-21"
     notes: |
-      Per ARF ISSU_12: "A PID Provider or Attestation Provider SHALL offer its 
-      PIDs or attestations in all formats required in the PID Rulebook or the 
-      applicable Attestation Rulebook."
+      Per ARF ISSU_12: "A PID Provider or Attestation Provider
+      SHALL offer its PIDs or attestations in all formats required
+      in the PID Rulebook or the applicable Attestation Rulebook."
 
-      This is distinct from the RP/Verifier requirement, where format support 
-      depends on supported use cases (remote vs. proximity). For issuers, 
-      BOTH formats are unconditionally mandatory.
+      This is distinct from the RP/Verifier requirement, where
+      format support depends on supported use cases (remote vs.
+      proximity). For issuers, BOTH formats are unconditionally
+      mandatory.
     obligation: MUST
   - id: VEND-ISS-006
     category: issuance
     requirement: Bind attestations to the Wallet Unit's cryptographic device
     explanation: |
-      Attestations must be cryptographically bound to the Wallet Unit's 
-      secure cryptographic device (WSCD), ensuring that the attestation 
-      can only be presented from the authorised wallet instance.
+      Attestations must be cryptographically bound to the Wallet
+      Unit's secure cryptographic device (WSCD), ensuring that the
+      attestation can only be presented from the authorised wallet
+      instance.
+
+      **ISSU_01a — Binding mechanism:**
+      During issuance, the Wallet Unit generates a key pair within
+      the WSCD. The public key is sent to the issuer as part of
+      the OpenID4VCI flow (proof-of-possession). The issuer binds
+      the attestation to this public key, meaning only the holder
+      of the corresponding private key (stored in the WSCD) can
+      present the attestation.
+
+      **mDoc binding:**
+      In the mDoc format, device binding is achieved via the
+      DeviceAuth structure. The MSO (Mobile Security Object)
+      contains the device key. During presentation, the device
+      signs a challenge using the WSCD-held private key.
+
+      **SD-JWT-VC binding:**
+      In the SD-JWT-VC format, device binding is achieved via the
+      kb-jwt (key binding JWT). The `cnf` (confirmation) claim in
+      the SD-JWT contains the device public key. During
+      presentation, the holder creates a kb-jwt signed by the
+      WSCD-held private key.
+
+      **SE vs TEE LoA distinction:**
+      The WSCD can be either a Secure Element (SE) or a Trusted
+      Execution Environment (TEE). For High Level of Assurance
+      (LoA), a certified SE is typically required. The issuance
+      platform should be able to verify the WSCD type (via the
+      Wallet Unit Attestation) and enforce LoA-appropriate binding.
     legalBasis:
       regulation: 2024/2979
-      article: Article 3
+      article: Article 6
       paragraph: "1"
     legalText: |
-      Wallet providers shall ensure that wallet units bind attestations to 
-      the wallet secure cryptographic device.
-      hlr: "Iss_06"
+      Wallet providers shall ensure that wallet units bind
+      attestations to the wallet secure cryptographic device.
+    arfReference:
+      topic: Topic 10
+      hlr: ISSU_01a
     roles:
       - issuer
     productCategories:
@@ -155,14 +341,49 @@ requirements:
     category: issuance
     requirement: Implement the OpenID4VCI issuance protocol (TS6)
     explanation: |
-      The issuance platform must support the OpenID for Verifiable Credential 
-      Issuance (OpenID4VCI) protocol as specified in TS6, enabling standardised 
+      The issuance platform must support the OpenID for Verifiable
+      Credential Issuance (OpenID4VCI) protocol as specified in
+      Technical Specification 6 (TS6), enabling standardised
       credential issuance to EUDI Wallets across Member States.
-      hlr: "Iss_01"
+
+      **ISSU_01a — Protocol mandate:**
+      PID Providers and Attestation Providers SHALL support the
+      OpenID4VCI protocol as profiled by the High Assurance
+      Interoperability Profile (HAIP), with additions and changes
+      documented in the ARF.
+
+      **Grant types:**
+      The platform should support:
+      - **Pre-authorized code flow**: the issuer pre-authorises
+        credential issuance (e.g., after identity verification)
+        and provides a code to the wallet
+      - **Authorization code flow**: the wallet initiates issuance
+        and the user authenticates at the issuer
+
+      **Credential offer mechanisms:**
+      - QR codes (for in-person or web-to-wallet flows)
+      - Deep links (for app-to-wallet flows)
+      - Pushed Authorization Requests (PAR)
+
+      **Deferred issuance:**
+      The platform should support deferred credential issuance for
+      asynchronous workflows (e.g., when authentic source
+      verification takes time). The wallet receives a transaction
+      ID and polls for completion.
+
+      **Batch issuance endpoint:**
+      The OID4VCI Batch Issuance Endpoint allows issuing multiple
+      credentials in a single session, reducing round-trips when
+      both mDoc and SD-JWT-VC formats are issued simultaneously
+      (per ISSU_12/ISSU_12a).
     legalBasis:
       regulation: 2024/2979
       article: Article 6
-      paragraph: ""
+      paragraph: "1"
+    legalText: |
+      Wallet providers shall ensure that wallet units support the
+      protocols and interfaces necessary to receive and store PIDs
+      and electronic attestations of attributes.
     roles:
       - issuer
     productCategories:
