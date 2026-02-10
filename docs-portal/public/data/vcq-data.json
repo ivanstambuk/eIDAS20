@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-10T11:13:55.380Z",
+  "generatedAt": "2026-02-10T11:33:50.710Z",
   "schemaVersion": 2,
   "tool": {
     "name": "Vendor Compliance Questionnaire",
@@ -622,6 +622,12 @@
       },
       "legalBasisLink": "/regulation/2014-910?section=article-5a",
       "legalText": "The processor shall, taking into account the nature of the processing,\nassist the controller by appropriate technical and organisational \nmeasures, insofar as this is possible, for the fulfilment of the \ncontroller's obligation to respond to requests for exercising the \ndata subject's rights laid down in Chapter III.",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_07"
+        ]
+      },
       "roles": [],
       "productCategories": [],
       "isUniversal": true,
@@ -629,7 +635,8 @@
       "scope": "core",
       "sourceGroups": [
         "eidas",
-        "gdpr"
+        "gdpr",
+        "arf"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -1309,6 +1316,12 @@
       },
       "legalBasisLink": "/implementing-acts/2024-2979?section=article-13",
       "legalText": "The data subject shall have the right to receive the personal data \nconcerning him or her, which he or she has provided to a controller, \nin a structured, commonly used and machine-readable format and have \nthe right to transmit those data to another controller.",
+      "arfReference": {
+        "topic": "Topic 48",
+        "hlr": [
+          "DATA_DLT_08"
+        ]
+      },
       "roles": [
         "relying_party",
         "issuer"
@@ -1322,7 +1335,8 @@
       "scope": "core",
       "sourceGroups": [
         "eidas",
-        "gdpr"
+        "gdpr",
+        "arf"
       ],
       "deadline": "2027-11-21",
       "obligation": "MUST",
@@ -7004,11 +7018,13 @@
       "VEND-CORE-001",
       "VEND-CORE-004",
       "VEND-CORE-005",
+      "VEND-CORE-010",
       "VEND-CORE-011",
       "VEND-CORE-016",
       "VEND-CORE-017",
       "VEND-CORE-018",
       "VEND-CORE-021",
+      "VEND-CORE-028",
       "VEND-CORE-029",
       "VEND-CORE-030",
       "VEND-CORE-031",
@@ -7108,7 +7124,7 @@
       "eidas": 124,
       "gdpr": 20,
       "dora": 12,
-      "arf": 88
+      "arf": 90
     },
     "byCategory": {
       "usage": 44,

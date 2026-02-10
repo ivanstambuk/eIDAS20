@@ -483,6 +483,10 @@ requirements:
       measures, insofar as this is possible, for the fulfilment of the 
       controller's obligation to respond to requests for exercising the 
       data subject's rights laid down in Chapter III.
+    arfReference:
+      topic: Topic 48
+      hlr:
+        - DATA_DLT_07
     roles: []
     productCategories: []
     deadline: "2027-11-21"
@@ -1377,6 +1381,10 @@ requirements:
       concerning him or her, which he or she has provided to a controller, 
       in a structured, commonly used and machine-readable format and have 
       the right to transmit those data to another controller.
+    arfReference:
+      topic: Topic 48
+      hlr:
+        - DATA_DLT_08
     roles:
       - relying_party
       - issuer
